@@ -1,0 +1,13 @@
+{
+  "name": "@it-tech-blog/accessibility-zone",
+  "targets": {
+    "dev": {
+      "options": {
+        "command": "next dev",
+        "env": {
+          "PORT": "4001"
+        }
+      }
+    }
+  }
+}
