@@ -1,15 +1,24 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
-  // Use this to set Nx-specific options
-  // See: https://nx.dev/recipes/next/next-config-setup
-  nx: {},
+  async rewrites() {
+    const ACCESSIBILITY = process.env.ACCESSIBILITY_DOMAIN ?? 'http://localhost:4001';
+
+    return [
+      // accessibility zone
+      { source: '/accessibility', destination: `${ACCESSIBILITY}/accessibility` },
+      { source: '/accessibility/:path*', destination: `${ACCESSIBILITY}/accessibility/:path*` },
+      {
+        source: '/accessibility-static/:path*',
+        destination: `${ACCESSIBILITY}/accessibility-static/:path*`,
+      },
+    ];
+  },
 };
 
 const plugins = [
