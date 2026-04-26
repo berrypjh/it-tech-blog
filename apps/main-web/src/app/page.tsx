@@ -1,7 +1,5 @@
-export default function Index() {
-  return (
-    <div>
-      <a href="/accessibility">accessibility</a>
-    </div>
-  );
+import PageClient from './_components/page-client';
+
+export default function Page() {
+  return <PageClient />;
 }

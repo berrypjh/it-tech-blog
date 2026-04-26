@@ -1,3 +1,4 @@
+import '@berrypjh/react-ui/styles.css';
 import './global.css';
 
 export const metadata = {
