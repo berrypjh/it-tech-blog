@@ -4,13 +4,7 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/main-web-e2e"
-    },
-    {
       "path": "./apps/main-web"
-    },
-    {
-      "path": "./apps/accessibility-zone-e2e"
     },
     {
       "path": "./apps/accessibility-zone"
