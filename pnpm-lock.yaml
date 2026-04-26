@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@berrypjh/react-ui':
+        specifier: 0.0.0-e2e
+        version: 0.0.0-e2e(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       next:
         specifier: ~16.1.6
         version: 16.1.7(@babel/core@7.29.0)(@playwright/test@1.59.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0)
@@ -737,6 +740,18 @@ packages:
   '@babel/types@7.29.0':
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
+
+  '@berrypjh/design-tokens@0.0.0-e2e':
+    resolution: {integrity: sha512-fmXKqCJszWnNKf0O8kLeeG0w6RZo+Evn4c0ohz+PgkcJuNdYZMPiK/nuWOi7w/L9B5g3zigkDOhRIrwtvyZLQA==}
+
+  '@berrypjh/react-ui@0.0.0-e2e':
+    resolution: {integrity: sha512-JsvNW7mIbWfOgzOLtHn5j23hD+XGwoMJj0vsDXFnU1yOTz9O/8nmjZ8hgBdYMW8oxf85qC9d+9dMHGu0AeW1UA==}
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  '@berrypjh/ui-core@0.0.0-e2e':
+    resolution: {integrity: sha512-Zd+mgVt2mFbOcMkynfuEDmD+x6blIIIqMsXkeAH6B58umnSDAo+irMlC4UBZk1k3ynxN/zLdfh3rPrms/0xT2Q==}
 
   '@borewit/text-codec@0.2.2':
     resolution: {integrity: sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==}
@@ -7921,6 +7936,18 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@berrypjh/design-tokens@0.0.0-e2e': {}
+
+  '@berrypjh/react-ui@0.0.0-e2e(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+    dependencies:
+      '@berrypjh/ui-core': 0.0.0-e2e
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+
+  '@berrypjh/ui-core@0.0.0-e2e':
+    dependencies:
+      '@berrypjh/design-tokens': 0.0.0-e2e
 
   '@borewit/text-codec@0.2.2': {}
 

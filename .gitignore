@@ -1,53 +1,141 @@
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
 # compiled output
-dist
-tmp
-out-tsc
+dist/
+tmp/
+out-tsc/
+out/
+web-build/
 
 # dependencies
-node_modules
+node_modules/
+.yarn/
+
+# Nx
+.nx/cache/
+.nx/workspace-data/
+
+# Next.js
+.next/
+next-env.d.ts
+
+# Expo
+.expo/
+
+# React Native / Metro
+*.jsbundle
+.metro-health-check*
+
+# Xcode / iOS
+build/
+DerivedData/
+xcuserdata/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.xcuserstate
+**/.xcode.env.local
+
+# Android / IntelliJ
+.gradle/
+local.properties
+*.iml
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+
+# Environment variables
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
 
 # IDEs and editors
-/.idea
+/.idea/
+.idea/
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+!.env.example
 
-# IDE - VSCode
+# VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+# Claude / Cursor / GitHub local instructions
+.claude/worktrees/
+.claude/settings.local.json
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
 
-# System Files
+# Storybook
+storybook-static/
+
+# design token generated files
+**/.generated/
+**/_generated/
+
+# test / coverage
+coverage/
+test-output/
+
+# logs
+*.log
+npm-debug.log*
+yarn-error.log*
+testem.log
+libpeerconnection.log
+
+# misc
+.sass-cache/
+connect.lock
+typings/
+cache/
+*.orig.*
+
+# npm
+.npmrc
+
+# Ruby / CocoaPods
+**/Pods/
+**/vendor/bundle/
+
+# fastlane
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots/
+**/fastlane/test_output/
+
+# Certificates / mobile provisioning
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# System files
 .DS_Store
 Thumbs.db
 
-.nx/cache
-.nx/workspace-data
-.claude/worktrees
-.claude/settings.local.json
-
-# Next.js
-.next
-out
-
-test-output
-
-# local environment variables
-.env*
+# Vite / Vitest temporary files
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
