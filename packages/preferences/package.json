@@ -1,0 +1,10 @@
+{
+  "name": "@it-tech-blog/preferences",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts"
+  }
+}
