@@ -3,7 +3,8 @@ import type { FileStatus, ScopeGroups } from './types.js';
 export const getScopeFromFilePath = (filePath: string): string => {
   const [first, second] = filePath.split('/');
 
-  if ((first === 'apps' || first === 'libs' || first === 'tools') && second) {
+  // scope 설정
+  if ((first === 'apps' || first === 'packages' || first === 'tools') && second) {
     return second;
   }
 

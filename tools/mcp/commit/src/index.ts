@@ -14,7 +14,7 @@ const server = new McpServer(
   },
   {
     instructions:
-      'Use list_staged_scopes to discover staged scope groups, get_scope_details to inspect a scope, and commit_scope only after the user explicitly approves the commit message.',
+      '커밋 메시지는 Conventional Commits 형식을 사용해야한다. list_staged_scopes를 사용해서 staged scope 그룹을 확인하고, get_scope_details를 사용해서 scope의 내용을 확인한 후, commit_scope를 사용해서 scope를 커밋한다. 커밋 메시지는 사용자가 명시적으로 승인한 후에 커밋한다.',
   },
 );
 
@@ -89,8 +89,7 @@ server.registerTool(
   'get_scope_details',
   {
     title: 'Get scope details',
-    description:
-      '특정 scope의 staged 파일 목록과 diff를 가져온다. 커밋 메시지 제안 전에 호출하는 용도다.',
+    description: '특정 scope의 staged 파일 목록과 diff를 가져온다. 커밋 메시지 제안 전에 호출하는 용도다.',
     inputSchema: z.object({
       scope: z.string().min(1),
       maxDiffChars: z.number().int().positive().max(100_000).optional(),
@@ -130,8 +129,7 @@ server.registerTool(
   'commit_scope',
   {
     title: 'Commit scope',
-    description:
-      '특정 scope에 속한 staged 파일만 git commit 한다. title은 Conventional Commits 형식이어야 한다.',
+    description: '특정 scope에 속한 staged 파일만 git commit 한다. title은 Conventional Commits 형식이어야 한다.',
     inputSchema: z.object({
       scope: z.string().min(1),
       title: z.string().min(1),
