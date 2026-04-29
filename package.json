@@ -9,6 +9,7 @@
     "build": "nx run-many -t build --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone",
     "build:main": "nx run @it-tech-blog/main-web:build",
     "build:a11y": "nx run @it-tech-blog/accessibility-zone:build",
+    "build:mcp:commit": "nx run commit-mcp:build",
     "lint": "nx run-many -t lint --parallel",
     "typecheck": "nx run-many -t typecheck --parallel",
     "format": "prettier --write .",

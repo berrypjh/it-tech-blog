@@ -139,3 +139,6 @@ Thumbs.db
 # Vite / Vitest temporary files
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
+
+# TypeScript build info
+**/*.tsbuildinfo

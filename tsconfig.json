@@ -8,6 +8,15 @@
     },
     {
       "path": "./apps/accessibility-zone"
+    },
+    {
+      "path": "./apps/accessibility-zone-e2e"
+    },
+    {
+      "path": "./apps/main-web-e2e"
+    },
+    {
+      "path": "./packages/preferences"
     }
   ]
 }
