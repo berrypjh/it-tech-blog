@@ -17,6 +17,12 @@
     },
     {
       "path": "./packages/preferences"
+    },
+    {
+      "path": "./packages/icons"
+    },
+    {
+      "path": "./packages/utils"
     }
   ]
 }
