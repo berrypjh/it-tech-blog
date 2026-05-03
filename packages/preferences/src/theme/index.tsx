@@ -24,7 +24,14 @@ export const ThemeProvider = ({
   children: React.ReactNode;
   defaultTheme?: Theme;
 }) => {
-  const [resolvedTheme, setResolvedTheme] = useState<Theme>(defaultTheme);
+  const [resolvedTheme, setResolvedTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const cls = document.documentElement.className;
+      if (cls === 'dark' || cls === 'light') return cls;
+    }
+
+    return defaultTheme;
+  });
 
   const setTheme = useCallback((theme: Theme) => {
     setResolvedTheme(theme);

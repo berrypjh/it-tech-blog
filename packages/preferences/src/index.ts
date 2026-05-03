@@ -1,3 +1,9 @@
 export { ThemeProvider, useTheme } from './theme';
 export { LocaleProvider, useLocale } from './locale';
 export type { Locale } from './locale';
+export { FontFamilyProvider, useFontFamily } from './font-family';
+export type { FontFamily } from './font-family';
+export { FontSizeProvider, useFontSize } from './font-size';
+export type { FontSize } from './font-size';
+export { MotionProvider, useMotion } from './motion';
+export type { Motion } from './motion';
