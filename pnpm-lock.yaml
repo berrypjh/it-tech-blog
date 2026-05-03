@@ -143,6 +143,9 @@ importers:
 
   apps/main-web:
     dependencies:
+      '@it-tech-blog/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@it-tech-blog/preferences':
         specifier: workspace:*
         version: link:../../packages/preferences
@@ -158,9 +161,9 @@ importers:
 
   apps/main-web-e2e: {}
 
-  packages/preferences: {}
+  packages/icons: {}
 
-  packages/theme: {}
+  packages/preferences: {}
 
   tools/mcp/commit:
     dependencies:
