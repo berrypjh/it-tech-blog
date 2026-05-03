@@ -19,6 +19,13 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang={locale} className={theme}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(!document.cookie.match(/(?:^|;\\s*)theme=/)){document.documentElement.className=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         <ThemeClientProvider defaultTheme={theme} defaultLocale={locale}>
           {children}
