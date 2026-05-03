@@ -1,5 +1,5 @@
 import PageClient from '../components/page-client';
 
-export default function Page() {
-  return <PageClient />;
-}
+const Page = () => <PageClient />;
+
+export default Page;

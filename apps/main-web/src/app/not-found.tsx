@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 import ThemeToggle from '@/components/theme-toggle';
 
@@ -17,7 +18,7 @@ const content = {
   },
 };
 
-export default async function NotFound() {
+const NotFoundPage = async () => {
   const locale = await getServerLocale();
   const c = content[locale] ?? content.ko;
 
@@ -43,4 +44,6 @@ export default async function NotFound() {
       </div>
     </div>
   );
-}
+};
+
+export default NotFoundPage;

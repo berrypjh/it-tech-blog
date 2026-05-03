@@ -19,7 +19,7 @@ const content = {
   },
 };
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+const ErrorPage = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
   const { locale } = useLocale();
   const c = content[locale as 'ko' | 'en'] ?? content.ko;
 
@@ -50,4 +50,6 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
       </div>
     </div>
   );
-}
+};
+
+export default ErrorPage;

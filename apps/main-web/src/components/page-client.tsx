@@ -6,7 +6,7 @@ import { useLocale } from '@it-tech-blog/preferences';
 import { TOPICS } from './topics';
 import ThemeToggle from './theme-toggle';
 
-export default function PageClient() {
+const PageClient = () => {
   const { locale } = useLocale();
 
   return (
@@ -52,4 +52,6 @@ export default function PageClient() {
       </div>
     </div>
   );
-}
+};
+
+export default PageClient;

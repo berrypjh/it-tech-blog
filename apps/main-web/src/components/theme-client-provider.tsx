@@ -10,7 +10,7 @@ const UIThemeBridge = ({ children }: { children: React.ReactNode }) => {
   return <UIThemeProvider mode={resolvedTheme === 'dark' ? 'dark' : 'global'}>{children}</UIThemeProvider>;
 };
 
-export default function ThemeClientProvider({
+const ThemeClientProvider = ({
   children,
   defaultTheme,
   defaultLocale,
@@ -18,12 +18,12 @@ export default function ThemeClientProvider({
   children: React.ReactNode;
   defaultTheme: 'dark' | 'light';
   defaultLocale: Locale;
-}) {
-  return (
-    <ThemeProvider defaultTheme={defaultTheme}>
-      <LocaleProvider defaultLocale={defaultLocale}>
-        <UIThemeBridge>{children}</UIThemeBridge>
-      </LocaleProvider>
-    </ThemeProvider>
-  );
-}
+}) => (
+  <ThemeProvider defaultTheme={defaultTheme}>
+    <LocaleProvider defaultLocale={defaultLocale}>
+      <UIThemeBridge>{children}</UIThemeBridge>
+    </LocaleProvider>
+  </ThemeProvider>
+);
+
+export default ThemeClientProvider;
