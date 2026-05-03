@@ -47,7 +47,13 @@
   ],
   "references": [
     {
+      "path": "../../packages/utils"
+    },
+    {
       "path": "../../packages/preferences"
+    },
+    {
+      "path": "../../packages/icons"
     }
   ]
 }
