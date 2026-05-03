@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@it-tech-blog/icons": "workspace:*",
     "@it-tech-blog/preferences": "workspace:*",
     "next": "~16.1.6",
     "react": "^19.0.0",

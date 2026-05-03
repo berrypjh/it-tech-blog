@@ -1,4 +1,4 @@
-import PageClient from './_components/page-client';
+import PageClient from '../components/page-client';
 
 export default function Page() {
   return <PageClient />;

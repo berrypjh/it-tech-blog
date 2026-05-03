@@ -1,7 +1,8 @@
 import '@berrypjh/react-ui/styles.css';
+
 import './global.css';
 import { getServerTheme, getServerLocale } from '@it-tech-blog/preferences/server';
-import ThemeClientProvider from './_components/theme-client-provider';
+import ThemeClientProvider from '@/components/theme-client-provider';
 
 export const metadata = {
   title: 'Interactive Tech Lab',

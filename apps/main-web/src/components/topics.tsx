@@ -11,7 +11,7 @@ import {
   LighthouseIcon,
   NetworkIcon,
   DataStructureIcon,
-} from './icons';
+} from '@it-tech-blog/icons';
 
 export type TopicSize = 'sm' | 'md' | 'lg';
 

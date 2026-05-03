@@ -1,6 +1,7 @@
 'use client';
 
 import { ThemeProvider as UIThemeProvider } from '@berrypjh/react-ui';
+
 import { ThemeProvider, useTheme, LocaleProvider } from '@it-tech-blog/preferences';
 import type { Locale } from '@it-tech-blog/preferences';
 
