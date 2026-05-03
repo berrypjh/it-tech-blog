@@ -48,6 +48,9 @@
   "references": [
     {
       "path": "../../packages/preferences"
+    },
+    {
+      "path": "../../packages/icons"
     }
   ]
 }

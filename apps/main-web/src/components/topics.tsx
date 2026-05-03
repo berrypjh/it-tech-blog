@@ -46,7 +46,7 @@ export const TOPICS: Topic[] = [
     label: { ko: 'Git', en: 'Git' },
     size: 'lg',
     delay: 0.2,
-    style: { top: '4rem', right: '20rem' },
+    style: { top: '12rem', right: '42%', transform: 'translateX(-50%)' },
     href: '/',
   },
   {
@@ -54,7 +54,7 @@ export const TOPICS: Topic[] = [
     label: { ko: 'LLM', en: 'LLM' },
     size: 'md',
     delay: 0.25,
-    style: { top: '6rem', right: '4rem' },
+    style: { top: '4rem', right: '8rem' },
     href: '/',
   },
   {
@@ -62,7 +62,7 @@ export const TOPICS: Topic[] = [
     label: { ko: 'CSS', en: 'CSS' },
     size: 'sm',
     delay: 0.3,
-    style: { top: '18rem', left: '6rem' },
+    style: { top: '16rem', left: '10rem' },
     href: '/',
   },
   {
@@ -70,7 +70,7 @@ export const TOPICS: Topic[] = [
     label: { ko: 'HTML', en: 'HTML' },
     size: 'lg',
     delay: 0.35,
-    style: { top: '14rem', left: '24rem' },
+    style: { top: '9rem', right: '22%', transform: 'translateX(-50%)' },
     href: '/',
   },
   {
@@ -78,7 +78,7 @@ export const TOPICS: Topic[] = [
     label: { ko: '디자인 패턴', en: 'Design Patterns' },
     size: 'md',
     delay: 0.4,
-    style: { top: '18rem', right: '6rem' },
+    style: { top: '14rem', right: '4rem' },
     href: '/',
   },
   {
@@ -94,7 +94,7 @@ export const TOPICS: Topic[] = [
     label: { ko: '네트워크', en: 'Network' },
     size: 'lg',
     delay: 0.6,
-    style: { bottom: '14rem', left: '50%', transform: 'translateX(-50%)' },
+    style: { bottom: '11rem', left: '50%', transform: 'translateX(-50%)' },
     href: '/',
   },
   {
@@ -102,7 +102,7 @@ export const TOPICS: Topic[] = [
     label: { ko: '개발자도구', en: 'Devtools' },
     size: 'md',
     delay: 0.7,
-    style: { bottom: '10rem', right: '20rem' },
+    style: { bottom: '10rem', right: '15rem' },
     href: '/',
   },
   {
@@ -110,7 +110,7 @@ export const TOPICS: Topic[] = [
     label: { ko: 'Lighthouse', en: 'Lighthouse' },
     size: 'sm',
     delay: 0.8,
-    style: { bottom: '6rem', left: '18rem' },
+    style: { bottom: '6rem', left: '12rem' },
     href: '/',
   },
   {
