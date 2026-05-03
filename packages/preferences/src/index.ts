@@ -1,3 +1,3 @@
-export { ThemeProvider, useTheme } from './provider';
+export { ThemeProvider, useTheme } from './theme';
 export { LocaleProvider, useLocale } from './locale';
 export type { Locale } from './locale';
