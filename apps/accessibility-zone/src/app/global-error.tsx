@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
   useEffect(() => {
     // TODO: 에러 트래킹 서비스로 전송
     console.error(error);
@@ -49,4 +49,6 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
       </body>
     </html>
   );
-}
+};
+
+export default GlobalError;

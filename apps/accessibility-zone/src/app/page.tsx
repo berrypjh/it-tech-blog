@@ -1,12 +1,7 @@
-export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
-  return (
-    <div>
-      <a href="/">main</a>
-    </div>
-  );
-}
+import { redirect } from 'next/navigation';
+
+const Page = () => {
+  redirect('/intro');
+};
+
+export default Page;

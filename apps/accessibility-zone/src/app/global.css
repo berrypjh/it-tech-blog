@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html[data-font-size='sm'] {
+  font-size: 14px;
+}
+
+html[data-font-size='lg'] {
+  font-size: 18px;
+}
+
+html[data-motion='reduce'] *,
+html[data-motion='reduce'] *::before,
+html[data-motion='reduce'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+:root {
+  --font-family: system-ui, -apple-system, sans-serif;
+}
+
+html[data-font='serif'] {
+  --font-family: Georgia, 'Batang', serif;
+}
+
+html[data-font='mono'] {
+  --font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+/* Semantic color tokens mapped from design-tokens (--ds-neutral-*, --ds-primary-*) */
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #101828; /* ds-neutral-ne900 */
+  --color-border: #d0d5dd; /* ds-neutral-ne300 */
+  --color-muted-foreground: #667085; /* ds-neutral-ne500 */
+  --color-canvas: #f1f5f9; /* app 외부 영역 (1440px 초과 시) */
+}
+
+.dark {
+  --color-background: #101828; /* ds-neutral-ne900 */
+  --color-foreground: #f2f4f7; /* ds-neutral-ne100 */
+  --color-border: #344054; /* ds-neutral-ne700 */
+  --color-muted-foreground: #98a2b3; /* ds-neutral-ne400 */
+  --color-canvas: #0d1117; /* app 외부 영역 다크 */
+}
+
+body {
+  background-color: var(--color-canvas);
+}
