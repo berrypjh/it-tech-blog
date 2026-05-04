@@ -41,6 +41,13 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       data-motion={motion === 'reduce' ? 'reduce' : undefined}
       data-font={fontFamily !== 'sans' ? fontFamily : undefined}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(!document.cookie.match(/(?:^|;\\s*)theme=/)){document.documentElement.className=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         <ThemeProvider defaultTheme={theme}>
           <LocaleProvider defaultLocale={locale}>

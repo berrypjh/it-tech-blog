@@ -5,16 +5,41 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { useLocale } from '@it-tech-blog/preferences';
-import { CollapseAllIcon, ExpandAllIcon, ChevronDownIcon, AccessibilityIcon, BackArrowIcon } from '@it-tech-blog/icons';
+import {
+  CollapseAllIcon,
+  ExpandAllIcon,
+  ChevronDownIcon,
+  AccessibilityIcon,
+  BackArrowIcon,
+  RocketIcon,
+  HtmlIcon,
+  KeyboardIcon,
+  VolumeIcon,
+  ClipboardListIcon,
+  DesignPatternIcon,
+  PaletteIcon,
+  CheckCircleIcon,
+  BriefcaseIcon,
+} from '@it-tech-blog/icons';
 import { cn } from '@it-tech-blog/utils';
 import { navData, sidebarStrings, type NavGroup } from '@/data';
 
 import { SettingsPopover } from './SettingsPopover';
 
+const sectionIcons = [
+  RocketIcon,
+  HtmlIcon,
+  KeyboardIcon,
+  VolumeIcon,
+  ClipboardListIcon,
+  DesignPatternIcon,
+  PaletteIcon,
+  CheckCircleIcon,
+  BriefcaseIcon,
+];
+
 const getInitialExpanded = (navGroups: NavGroup[], pathname: string): Set<number> => {
-  const activeIndex = navGroups.findIndex((group) =>
-    group.items.some((item) => !item.disabled && pathname === `/${item.id}`),
-  );
+  const activeIndex = navGroups.findIndex((group) => group.items.some((item) => pathname === `/${item.id}`));
 
   return new Set([activeIndex >= 0 ? activeIndex : 0]);
 };
@@ -46,7 +71,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       {/* 헤더 */}
       <div className="px-5 pt-5 pb-4 space-y-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/intro" className="flex items-center gap-2 group">
             <div className="w-7 h-7 rounded bg-emerald-500 group-hover:bg-emerald-600 transition-colors flex items-center justify-center">
               <AccessibilityIcon color="white" />
             </div>
@@ -79,8 +104,8 @@ export const Sidebar = ({ className }: { className?: string }) => {
         {currentNavData.map((group, groupIndex) => {
           const isExpanded = expanded.has(groupIndex);
           const panelId = `nav-panel-${groupIndex}`;
-          const hasActiveItem = group.items.some((item) => !item.disabled && pathname === `/${item.id}`);
-          const sectionNum = String(groupIndex + 1).padStart(2, '0');
+          const hasActiveItem = group.items.some((item) => pathname === `/${item.id}`);
+          const SectionIcon = sectionIcons[groupIndex] ?? RocketIcon;
 
           return (
             <div key={groupIndex}>
@@ -95,20 +120,22 @@ export const Sidebar = ({ className }: { className?: string }) => {
               >
                 <span
                   className={cn(
-                    'font-mono text-xs tabular-nums shrink-0 transition-colors',
-                    hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/30',
+                    'shrink-0 transition-colors',
+                    hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/40',
                   )}
                 >
-                  {sectionNum}
+                  <SectionIcon />
                 </span>
 
-                <span className="flex-1 text-xs font-semibold uppercase tracking-[0.07em]">{group.title}</span>
+                <span className="flex-1 text-sm font-semibold uppercase tracking-[0.07em]">{group.title}</span>
 
-                <span
-                  className={cn('transition-colors', hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/30')}
-                >
-                  <ChevronDownIcon className={cn('transition-transform duration-200', isExpanded && 'rotate-180')} />
-                </span>
+                <ChevronDownIcon
+                  className={cn(
+                    'transition-all duration-200',
+                    hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/30',
+                    isExpanded && 'rotate-180',
+                  )}
+                />
               </button>
 
               <div
@@ -123,55 +150,40 @@ export const Sidebar = ({ className }: { className?: string }) => {
                     {group.items.map((item) => {
                       const isActive = pathname === `/${item.id}`;
 
-                      const badges = (
-                        <div className="flex items-center gap-1 ml-2 shrink-0">
-                          {item.badge && (
-                            <span
-                              className={cn(
-                                'text-[10px] px-1.5 py-0.5 rounded-sm font-bold uppercase tracking-wide',
-                                item.badgeColor === 'warning' &&
-                                  'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
-                                item.badgeColor === 'purple' &&
-                                  'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400',
-                                item.badgeColor === 'default' &&
-                                  'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400',
-                              )}
-                            >
-                              {item.badge}
-                            </span>
+                      const badge = item.badge ? (
+                        <span
+                          className={cn(
+                            'ml-2 shrink-0 text-[10px] px-1.5 py-0.5 rounded-sm font-bold uppercase tracking-wide',
+                            item.badgeColor === 'warning' &&
+                              'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
+                            item.badgeColor === 'purple' &&
+                              'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400',
+                            item.badgeColor === 'default' &&
+                              'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400',
                           )}
-                        </div>
-                      );
+                        >
+                          {item.badge}
+                        </span>
+                      ) : null;
 
-                      const labelClass = 'truncate text-[12.5px] leading-snug';
+                      const labelClass = 'truncate text-xs leading-snug';
 
                       return (
                         <li key={item.id}>
-                          {item.disabled ? (
-                            <span
-                              className="flex items-center justify-between px-2.5 py-1.5 rounded text-muted-foreground/25 cursor-not-allowed"
-                              aria-disabled="true"
-                            >
-                              <span className={labelClass}>{item.label}</span>
+                          <Link
+                            href={`/${item.id}`}
+                            aria-current={isActive ? 'page' : undefined}
+                            className={cn(
+                              'flex items-center justify-between px-2.5 py-1.5 rounded transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
+                              isActive
+                                ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 font-medium'
+                                : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
+                            )}
+                          >
+                            <span className={labelClass}>{item.label}</span>
 
-                              {badges}
-                            </span>
-                          ) : (
-                            <Link
-                              href={`/${item.id}`}
-                              aria-current={isActive ? 'page' : undefined}
-                              className={cn(
-                                'flex items-center justify-between px-2.5 py-1.5 rounded transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
-                                isActive
-                                  ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 font-medium'
-                                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
-                              )}
-                            >
-                              <span className={labelClass}>{item.label}</span>
-
-                              {badges}
-                            </Link>
-                          )}
+                            {badge}
+                          </Link>
                         </li>
                       );
                     })}
@@ -189,7 +201,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       <div className="px-5 py-3">
         <a
           href="/"
-          className="flex items-center gap-2 text-[11px] text-muted-foreground/50 hover:text-muted-foreground transition-colors group"
+          className="flex items-center gap-2 text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors group"
         >
           <BackArrowIcon />
           {t.backToMain}
