@@ -1,3 +1,3 @@
-export * from './theme';
-export * from './tech';
 export * from './general';
+export * from './tech';
+export * from './theme';
