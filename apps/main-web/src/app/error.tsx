@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useLocale } from '@it-tech-blog/preferences';
+
 import ThemeToggle from '@/components/theme-toggle';
 
 const content = {

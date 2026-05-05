@@ -1,6 +1,7 @@
 'use client';
 
 import { BubbleButton } from '@berrypjh/react-ui';
+
 import type { Topic } from './topics';
 
 const TopicBubbles = ({ topics, locale }: { topics: Topic[]; locale: 'ko' | 'en' }) => (

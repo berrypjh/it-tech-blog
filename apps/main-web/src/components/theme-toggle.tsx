@@ -1,10 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { IconButton } from '@berrypjh/react-ui';
-import { useTheme, useLocale } from '@it-tech-blog/preferences';
 
-import { SunIcon, MoonIcon } from '@it-tech-blog/icons';
+import { MoonIcon, SunIcon } from '@it-tech-blog/icons';
+import { useLocale, useTheme } from '@it-tech-blog/preferences';
+
+import { IconButton } from '@berrypjh/react-ui';
 
 const ThemeToggle = () => {
   const router = useRouter();

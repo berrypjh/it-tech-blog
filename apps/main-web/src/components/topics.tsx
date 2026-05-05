@@ -1,16 +1,16 @@
 import {
   AccessibilityIcon,
-  ShieldIcon,
+  BundlerIcon,
+  CssIcon,
+  DataStructureIcon,
+  DesignPatternIcon,
+  DevtoolsIcon,
   GitBranchIcon,
   HtmlIcon,
-  CssIcon,
-  LlmIcon,
-  DesignPatternIcon,
-  BundlerIcon,
-  DevtoolsIcon,
   LighthouseIcon,
+  LlmIcon,
   NetworkIcon,
-  DataStructureIcon,
+  ShieldIcon,
 } from '@it-tech-blog/icons';
 
 export type TopicSize = 'sm' | 'md' | 'lg';

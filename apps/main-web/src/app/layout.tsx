@@ -1,8 +1,9 @@
-import '@berrypjh/react-ui/styles.css';
+import { getServerLocale, getServerTheme } from '@it-tech-blog/preferences/server';
 
-import './global.css';
-import { getServerTheme, getServerLocale } from '@it-tech-blog/preferences/server';
 import ThemeClientProvider from '@/components/theme-client-provider';
+
+import '@berrypjh/react-ui/styles.css';
+import './global.css';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { getServerLocale } from '@it-tech-blog/preferences/server';
+
 import ThemeToggle from '@/components/theme-toggle';
 
 const content = {
