@@ -14,7 +14,8 @@
     "typecheck": "nx run-many -t typecheck --parallel",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "e2e": "nx run-many -t e2e --parallel"
+    "e2e": "nx run-many -t e2e --parallel",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^9.8.0",
     "@next/eslint-plugin-next": "^16.1.6",
     "@nx/devkit": "22.6.5",
@@ -50,6 +53,10 @@
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "nx": "22.6.5",
     "nx-ignore": "^19.8.0",
     "postcss": "8.4.38",
@@ -58,5 +65,14 @@
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.40.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md,yaml,yml}": [
+      "prettier --write"
+    ]
   }
 }
