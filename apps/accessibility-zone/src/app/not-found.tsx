@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
-import { AppShell } from '@/components/shell';
-import { PageContainer } from '@/components/page';
 import { getServerLocale } from '@it-tech-blog/preferences/server';
+
+import { PageContainer } from '@/components/page';
+import { AppShell } from '@/components/shell';
 
 const content = {
   ko: {

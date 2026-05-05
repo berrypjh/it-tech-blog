@@ -1,4 +1,5 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
+
 import { PageContainer } from '@/components/page';
 
 const content = {

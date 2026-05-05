@@ -1,18 +1,19 @@
-import './global.css';
 import {
-  getServerTheme,
-  getServerLocale,
-  getServerFontSize,
-  getServerMotion,
-  getServerFontFamily,
-} from '@it-tech-blog/preferences/server';
-import {
-  ThemeProvider,
-  LocaleProvider,
-  FontSizeProvider,
-  MotionProvider,
   FontFamilyProvider,
+  FontSizeProvider,
+  LocaleProvider,
+  MotionProvider,
+  ThemeProvider,
 } from '@it-tech-blog/preferences';
+import {
+  getServerFontFamily,
+  getServerFontSize,
+  getServerLocale,
+  getServerMotion,
+  getServerTheme,
+} from '@it-tech-blog/preferences/server';
+
+import './global.css';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

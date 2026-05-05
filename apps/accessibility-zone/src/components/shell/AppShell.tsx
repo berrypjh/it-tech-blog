@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { HamburgerIcon } from '@it-tech-blog/icons';
+
 import { Sidebar } from './Sidebar';
 
 export const AppShell = ({ children }: { children: React.ReactNode }) => {

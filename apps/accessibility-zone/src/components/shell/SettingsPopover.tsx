@@ -1,18 +1,18 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import {
-  useTheme,
-  useLocale,
-  useFontSize,
-  useMotion,
-  useFontFamily,
-  type FontSize,
-  type FontFamily,
-} from '@it-tech-blog/preferences';
 import { SettingsIcon } from '@it-tech-blog/icons';
+import {
+  type FontFamily,
+  type FontSize,
+  useFontFamily,
+  useFontSize,
+  useLocale,
+  useMotion,
+  useTheme,
+} from '@it-tech-blog/preferences';
 import { cn } from '@it-tech-blog/utils';
 
 const strings = {

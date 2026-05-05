@@ -1,28 +1,29 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 
-import { useLocale } from '@it-tech-blog/preferences';
 import {
-  CollapseAllIcon,
-  ExpandAllIcon,
-  ChevronDownIcon,
   AccessibilityIcon,
   BackArrowIcon,
-  RocketIcon,
+  BriefcaseIcon,
+  CheckCircleIcon,
+  ChevronDownIcon,
+  ClipboardListIcon,
+  CollapseAllIcon,
+  DesignPatternIcon,
+  ExpandAllIcon,
   HtmlIcon,
   KeyboardIcon,
-  VolumeIcon,
-  ClipboardListIcon,
-  DesignPatternIcon,
   PaletteIcon,
-  CheckCircleIcon,
-  BriefcaseIcon,
+  RocketIcon,
+  VolumeIcon,
 } from '@it-tech-blog/icons';
+import { useLocale } from '@it-tech-blog/preferences';
 import { cn } from '@it-tech-blog/utils';
-import { navData, sidebarStrings, type NavGroup } from '@/data';
+
+import { navData, type NavGroup, sidebarStrings } from '@/data';
 
 import { SettingsPopover } from './SettingsPopover';
 
