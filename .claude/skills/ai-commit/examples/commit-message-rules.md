@@ -14,11 +14,17 @@
 - `fix`: 버그 수정
 - `refactor`: 동작 변화 없이 구조 개선
 - `docs`: 문서 수정
+- `design`: 시각/UX 디자인 변경
 - `style`: 포맷/스타일만 수정
 - `test`: 테스트 추가/수정
 - `chore`: 설정, 스크립트, 유지보수성 변경
 - `build`: 빌드 관련 변경
 - `ci`: CI/CD 관련 변경
+- `revert`: 이전 커밋 되돌리기
+
+## 금지 표기
+
+- `feat!:`, `fix!:` 등 `!:` 표기 금지 — Major 변경은 본문 Footer의 `BREAKING CHANGE`로 표기
 
 ## 제목 작성 규칙
 

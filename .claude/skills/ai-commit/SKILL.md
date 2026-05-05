@@ -39,7 +39,8 @@ disable-model-invocation: true
 4. 각 대상 scope마다 `get_scope_details` tool을 호출한다.
 5. 각 scope에 대해 커밋 메시지를 제안한다.
    - title 형식: `type(scope): 설명`
-   - type은 영어 (`feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`, `build`, `ci`)
+   - type은 영어 (`feat`, `fix`, `refactor`, `docs`, `design`, `style`, `test`, `chore`, `build`, `ci`, `revert`)
+   - `feat!:` 등 `!:` 표기는 금지 (Major 변경은 Footer의 `BREAKING CHANGE`로 표기)
    - scope는 MCP가 반환한 값 그대로 사용한다
    - 설명은 한국어로 작성한다
    - body는 최대 3줄
