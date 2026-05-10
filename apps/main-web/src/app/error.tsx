@@ -36,16 +36,16 @@ const ErrorPage = ({ error, reset }: { error: Error & { digest?: string }; reset
 
       <ThemeToggle />
 
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-6 text-center">
-        <span className="text-8xl font-black tracking-tight text-gray-900 dark:text-white">{c.code}</span>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-mdl px-xlg text-center">
+        <span className="text-[96px] font-black tracking-tight text-text-default">{c.code}</span>
 
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{c.title}</h1>
+        <h1 className="text-xl font-bold text-text-default">{c.title}</h1>
 
-        <p className="text-gray-600 dark:text-white/70">{c.description}</p>
+        <p className="text-text-light">{c.description}</p>
 
         <button
           onClick={reset}
-          className="mt-2 text-sm font-medium text-gray-900 dark:text-white underline underline-offset-4 hover:opacity-70 transition-opacity"
+          className="mt-sm text-xsm font-medium text-text-default underline underline-offset-4 hover:opacity-70 transition-opacity"
         >
           {c.retry}
         </button>

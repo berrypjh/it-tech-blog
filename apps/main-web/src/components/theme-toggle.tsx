@@ -20,11 +20,13 @@ const ThemeToggle = () => {
 
   return (
     <div
-      className="fixed top-6 z-50 flex items-center gap-2"
-      style={{ right: 'max(1.5rem, calc((100vw - 1440px) / 2 + 1.5rem))' }}
+      className="fixed top-xlg z-50 flex items-center gap-sm"
+      style={{
+        right: 'max(var(--ds-spacing-xlg), calc((100vw - 1440px) / 2 + var(--ds-spacing-xlg)))',
+      }}
     >
       <IconButton size="md" onClick={handleLocaleToggle} aria-label="Toggle language">
-        <span className="text-sm font-semibold leading-none">{locale === 'ko' ? 'KO' : 'EN'}</span>
+        <span className="text-xsm font-semiBold leading-none">{locale === 'ko' ? 'KO' : 'EN'}</span>
       </IconButton>
 
       <IconButton size="md" onClick={() => setTheme(isDark ? 'light' : 'dark')} aria-label="Toggle theme">
