@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import { PageContainer } from '@/components/page';
-import { AppShell } from '@/components/shell';
 
 const content = {
   ko: {
@@ -25,24 +24,22 @@ const NotFoundPage = async () => {
   const c = content[locale] ?? content.ko;
 
   return (
-    <AppShell>
-      <PageContainer>
-        <div className="flex flex-col items-start gap-mdl py-4xl">
-          <span className="font-mono text-5xl font-black text-text-primary">{c.code}</span>
+    <PageContainer>
+      <div className="flex flex-col items-start gap-mdl py-4xl">
+        <span className="font-mono text-5xl font-black text-text-primary">{c.code}</span>
 
-          <h1 className="text-xl font-bold text-text-default">{c.title}</h1>
+        <h1 className="text-xl font-bold text-text-default">{c.title}</h1>
 
-          <p className="text-xsm text-text-light">{c.description}</p>
+        <p className="text-xsm text-text-light">{c.description}</p>
 
-          <Link
-            href="/intro"
-            className="mt-sm text-xsm font-medium text-text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary rounded-xs"
-          >
-            {c.back}
-          </Link>
-        </div>
-      </PageContainer>
-    </AppShell>
+        <Link
+          href="/intro"
+          className="mt-sm text-xsm font-medium text-text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary rounded-xs"
+        >
+          {c.back}
+        </Link>
+      </div>
+    </PageContainer>
   );
 };
 

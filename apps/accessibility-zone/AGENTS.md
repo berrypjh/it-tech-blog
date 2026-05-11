@@ -11,18 +11,16 @@
 
 ```
 app/
-├── layout.tsx          # root — providers, html 속성
+├── layout.tsx          # root — providers, AppShell 래핑, html 속성
 ├── page.tsx            # redirect('/intro')
-├── not-found.tsx       # URL 미매칭 404 — AppShell 직접 임포트
+├── not-found.tsx       # URL 미매칭 404
 ├── global-error.tsx    # root layout 에러 — inline style만 사용
-└── (main)/
-    ├── layout.tsx      # AppShell 래핑
-    ├── intro/
-    ├── contrast/
-    └── keyboard/
+├── intro/
+├── contrast/
+└── keyboard/
 ```
 
-`(main)` route group의 모든 페이지는 AppShell(사이드바 + 메인 영역)을 자동으로 상속한다.
+모든 페이지가 동일한 AppShell(사이드바 + 메인 영역) 레이아웃을 공유하므로 root `layout.tsx`에서 일괄 래핑한다. `global-error.tsx`는 root layout 자체가 깨졌을 때 fallback이라 AppShell을 거치지 않는다.
 
 ## 주요 컴포넌트
 

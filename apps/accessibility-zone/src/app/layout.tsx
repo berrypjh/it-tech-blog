@@ -13,6 +13,7 @@ import {
   getServerTheme,
 } from '@it-tech-blog/preferences/server';
 
+import { AppShell } from '@/components/shell';
 import { UIThemeBridge } from '@/components/theme';
 
 import '@berrypjh/react-ui/styles.css';
@@ -58,7 +59,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             <FontSizeProvider defaultFontSize={fontSize}>
               <MotionProvider defaultMotion={motion}>
                 <FontFamilyProvider defaultFontFamily={fontFamily}>
-                  <UIThemeBridge>{children}</UIThemeBridge>
+                  <UIThemeBridge>
+                    <AppShell>{children}</AppShell>
+                  </UIThemeBridge>
                 </FontFamilyProvider>
               </MotionProvider>
             </FontSizeProvider>
