@@ -68,31 +68,31 @@ export const Sidebar = ({ className }: { className?: string }) => {
   const toggleAll = () => setExpanded(anyExpanded ? new Set() : new Set(currentNavData.map((_, i) => i)));
 
   return (
-    <aside className={cn('flex flex-col h-full bg-background border-r border-border', className)}>
+    <aside className={cn('flex flex-col h-full bg-background-surface border-r border-stroke-default', className)}>
       {/* 헤더 */}
-      <div className="px-5 pt-5 pb-4 space-y-3">
+      <div className="px-lg pt-lg pb-mdl space-y-sml">
         <div className="flex items-center justify-between">
-          <Link href="/intro" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded bg-emerald-500 group-hover:bg-emerald-600 transition-colors flex items-center justify-center">
+          <Link href="/intro" className="flex items-center gap-sm group">
+            <div className="w-7 h-7 rounded bg-background-primary group-hover:bg-primary-pr700 transition-colors flex items-center justify-center">
               <AccessibilityIcon color="white" />
             </div>
 
-            <span className="font-bold text-base tracking-tight text-foreground">{t.title}</span>
+            <span className="font-bold text-sm tracking-tight text-text-default">{t.title}</span>
           </Link>
 
           <SettingsPopover />
         </div>
 
-        <p className="text-xs text-muted-foreground/60 leading-snug">{t.subtitle}</p>
+        <p className="text-xxsm text-text-light/60 leading-snug">{t.subtitle}</p>
       </div>
 
-      <div className="h-px bg-border mx-5" />
+      <div className="h-px bg-stroke-default mx-lg" />
 
       {/* 모든 섹션 확장/축소 버튼 */}
-      <div className="flex justify-end px-3 pt-1.5">
+      <div className="flex justify-end px-sml pt-xsm">
         <button
           onClick={toggleAll}
-          className="flex items-center gap-1 px-1.5 py-1 rounded text-muted-foreground/40 hover:text-muted-foreground hover:bg-muted/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500"
+          className="flex items-center gap-xxsm px-xsm py-xxsm rounded text-text-light/40 hover:text-text-light hover:bg-background-grey/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
         >
           {anyExpanded ? <CollapseAllIcon /> : <ExpandAllIcon />}
 
@@ -101,7 +101,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       </div>
 
       {/* nav */}
-      <nav className="flex-1 overflow-y-auto py-1" aria-label={t.menu}>
+      <nav className="flex-1 overflow-y-auto py-xxsm" aria-label={t.menu}>
         {currentNavData.map((group, groupIndex) => {
           const isExpanded = expanded.has(groupIndex);
           const panelId = `nav-panel-${groupIndex}`;
@@ -115,25 +115,25 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 aria-expanded={isExpanded}
                 aria-controls={panelId}
                 className={cn(
-                  'w-full flex items-center gap-2.5 px-5 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-500',
-                  hasActiveItem ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+                  'w-full flex items-center gap-2.5 px-lg py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-stroke-primary',
+                  hasActiveItem ? 'text-text-default' : 'text-text-light hover:text-text-default',
                 )}
               >
                 <span
                   className={cn(
                     'shrink-0 transition-colors',
-                    hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/40',
+                    hasActiveItem ? 'text-text-primary' : 'text-text-light/40',
                   )}
                 >
                   <SectionIcon />
                 </span>
 
-                <span className="flex-1 text-sm font-semibold uppercase tracking-[0.07em]">{group.title}</span>
+                <span className="flex-1 text-xsm font-semiBold uppercase tracking-[0.07em]">{group.title}</span>
 
                 <ChevronDownIcon
                   className={cn(
                     'transition-all duration-200',
-                    hasActiveItem ? 'text-emerald-500' : 'text-muted-foreground/30',
+                    hasActiveItem ? 'text-text-primary' : 'text-text-light/30',
                     isExpanded && 'rotate-180',
                   )}
                 />
@@ -147,27 +147,24 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 )}
               >
                 <div className="overflow-hidden">
-                  <ul className="px-4 pb-2 pt-0.5 space-y-px">
+                  <ul className="px-mdl pb-sm pt-0.5 space-y-px">
                     {group.items.map((item) => {
                       const isActive = pathname === `/${item.id}`;
 
                       const badge = item.badge ? (
                         <span
                           className={cn(
-                            'ml-2 shrink-0 text-[10px] px-1.5 py-0.5 rounded-sm font-bold uppercase tracking-wide',
-                            item.badgeColor === 'warning' &&
-                              'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
-                            item.badgeColor === 'purple' &&
-                              'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400',
-                            item.badgeColor === 'default' &&
-                              'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400',
+                            'ml-sm shrink-0 text-[10px] px-xsm py-0.5 rounded-xs font-bold uppercase tracking-wide',
+                            item.badgeColor === 'warning' && 'bg-warning-wa100 text-text-warning',
+                            item.badgeColor === 'purple' && 'bg-secondary-se100 text-text-secondary',
+                            item.badgeColor === 'default' && 'bg-background-grey/20 text-text-light',
                           )}
                         >
                           {item.badge}
                         </span>
                       ) : null;
 
-                      const labelClass = 'truncate text-xs leading-snug';
+                      const labelClass = 'truncate text-xxsm leading-snug';
 
                       return (
                         <li key={item.id}>
@@ -175,10 +172,10 @@ export const Sidebar = ({ className }: { className?: string }) => {
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
                             className={cn(
-                              'flex items-center justify-between px-2.5 py-1.5 rounded transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
+                              'flex items-center justify-between px-2.5 py-1.5 rounded-xs transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
                               isActive
-                                ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 font-medium'
-                                : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
+                                ? 'bg-primary-pr100 text-text-primary font-medium'
+                                : 'text-text-light hover:text-text-default hover:bg-background-grey/10',
                             )}
                           >
                             <span className={labelClass}>{item.label}</span>
@@ -196,13 +193,13 @@ export const Sidebar = ({ className }: { className?: string }) => {
         })}
       </nav>
 
-      <div className="h-px bg-border mx-5" />
+      <div className="h-px bg-stroke-default mx-lg" />
 
       {/* 홈으로 */}
-      <div className="px-5 py-3">
+      <div className="px-lg py-sml">
         <a
           href="/"
-          className="flex items-center gap-2 text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors group"
+          className="flex items-center gap-sm text-xxsm text-text-light/50 hover:text-text-light transition-colors group"
         >
           <BackArrowIcon />
           {t.backToMain}

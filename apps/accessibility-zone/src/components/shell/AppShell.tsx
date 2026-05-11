@@ -16,16 +16,16 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    <div className="flex h-screen w-full max-w-[1440px] mx-auto bg-background text-foreground overflow-hidden">
+    <div className="flex h-screen w-full max-w-[1440px] mx-auto bg-background-surface text-text-default overflow-hidden">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:rounded-md focus:bg-emerald-500 focus:text-white focus:text-sm focus:font-medium focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-mdl focus:left-mdl focus:px-mdl focus:py-sm focus:rounded-md focus:bg-background-primary focus:text-text-contrastText focus:text-xsm focus:font-medium focus:shadow-lg"
       >
         본문으로 건너뛰기
       </a>
 
       {/* 데스크탑 사이드바 */}
-      <div className="hidden lg:block w-[280px] shrink-0 h-full border-r border-border relative">
+      <div className="hidden lg:block w-[280px] shrink-0 h-full border-r border-stroke-default relative">
         <div className="absolute inset-0">
           <Sidebar />
         </div>
@@ -35,7 +35,7 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-background-dark/50 backdrop-blur-sm"
             aria-hidden="true"
             onClick={() => setMobileOpen(false)}
           />
@@ -48,17 +48,17 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
 
       <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
         {/* 모바일 헤더 */}
-        <header className="lg:hidden flex items-center gap-3 px-4 h-14 border-b border-border bg-background shrink-0">
+        <header className="lg:hidden flex items-center gap-sml px-mdl h-14 border-b border-stroke-default bg-background-surface shrink-0">
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="메뉴 열기"
             aria-expanded={mobileOpen}
-            className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            className="p-xsm rounded-md text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary"
           >
             <HamburgerIcon />
           </button>
 
-          <span className="font-bold text-sm text-foreground tracking-tight">A11y Lab</span>
+          <span className="font-bold text-xsm text-text-default tracking-tight">A11y Lab</span>
         </header>
 
         <main id="main-content" className="flex-1 overflow-y-auto">

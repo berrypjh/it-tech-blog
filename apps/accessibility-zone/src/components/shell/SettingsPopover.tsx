@@ -53,15 +53,15 @@ const strings = {
 };
 
 const fontSizeOptions: { value: FontSize; label: string; style: string }[] = [
-  { value: 'sm', label: 'A', style: 'text-xs' },
-  { value: 'md', label: 'A', style: 'text-sm' },
-  { value: 'lg', label: 'A', style: 'text-base' },
+  { value: 'sm', label: 'A', style: 'text-xxsm' },
+  { value: 'md', label: 'A', style: 'text-xsm' },
+  { value: 'lg', label: 'A', style: 'text-sm' },
 ];
 
 const segmentBase =
-  'flex-1 py-1.5 rounded text-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500';
-const segmentActive = 'bg-emerald-500 text-white';
-const segmentInactive = 'text-muted-foreground hover:text-foreground hover:bg-muted';
+  'flex-1 py-1.5 rounded-xs text-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary';
+const segmentActive = 'bg-background-primary text-text-contrastText';
+const segmentInactive = 'text-text-light hover:text-text-default hover:bg-background-grey/15';
 
 export const SettingsPopover = () => {
   const router = useRouter();
@@ -129,7 +129,7 @@ export const SettingsPopover = () => {
         aria-label={t.label}
         aria-expanded={open}
         aria-haspopup="dialog"
-        className="w-9 h-9 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+        className="w-9 h-9 flex items-center justify-center rounded-sm text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors"
       >
         <SettingsIcon />
       </button>
@@ -139,17 +139,17 @@ export const SettingsPopover = () => {
           ref={panelRef}
           role="dialog"
           aria-label={t.panel}
-          className="absolute right-0 top-11 z-50 w-52 bg-background border border-border rounded-lg shadow-lg p-3 space-y-3"
+          className="absolute right-0 top-11 z-50 w-52 bg-background-surface border border-stroke-default rounded-md shadow-lg p-sml space-y-sml"
         >
           {/* 테마 */}
           <div>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{t.theme}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.theme}</p>
 
-            <div className="flex gap-1 bg-muted rounded p-0.5">
+            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => setTheme('light')}
                 aria-pressed={resolvedTheme === 'light'}
-                className={cn(segmentBase, 'text-xs', resolvedTheme === 'light' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', resolvedTheme === 'light' ? segmentActive : segmentInactive)}
               >
                 {t.light}
               </button>
@@ -157,7 +157,7 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => setTheme('dark')}
                 aria-pressed={resolvedTheme === 'dark'}
-                className={cn(segmentBase, 'text-xs', resolvedTheme === 'dark' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', resolvedTheme === 'dark' ? segmentActive : segmentInactive)}
               >
                 {t.dark}
               </button>
@@ -166,15 +166,13 @@ export const SettingsPopover = () => {
 
           {/* 언어 */}
           <div>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-              {t.language}
-            </p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.language}</p>
 
-            <div className="flex gap-1 bg-muted rounded p-0.5">
+            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => handleLocaleChange('ko')}
                 aria-pressed={locale === 'ko'}
-                className={cn(segmentBase, 'text-xs', locale === 'ko' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', locale === 'ko' ? segmentActive : segmentInactive)}
               >
                 한국어
               </button>
@@ -182,7 +180,7 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => handleLocaleChange('en')}
                 aria-pressed={locale === 'en'}
-                className={cn(segmentBase, 'text-xs', locale === 'en' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', locale === 'en' ? segmentActive : segmentInactive)}
               >
                 English
               </button>
@@ -191,11 +189,9 @@ export const SettingsPopover = () => {
 
           {/* 글자 크기 */}
           <div>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-              {t.fontSize}
-            </p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.fontSize}</p>
 
-            <div className="flex gap-1 bg-muted rounded p-0.5">
+            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               {fontSizeOptions.map((opt) => (
                 <button
                   key={opt.value}
@@ -212,15 +208,15 @@ export const SettingsPopover = () => {
 
           {/* 폰트 */}
           <div>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{t.font}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.font}</p>
 
-            <div className="flex gap-1 bg-muted rounded p-0.5">
+            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               {(['sans', 'serif', 'mono'] as FontFamily[]).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFontFamily(f)}
                   aria-pressed={fontFamily === f}
-                  className={cn(segmentBase, 'text-xs', fontFamily === f ? segmentActive : segmentInactive)}
+                  className={cn(segmentBase, 'text-xxsm', fontFamily === f ? segmentActive : segmentInactive)}
                 >
                   {f === 'sans' ? 'Sans' : f === 'serif' ? 'Serif' : 'Mono'}
                 </button>
@@ -230,15 +226,13 @@ export const SettingsPopover = () => {
 
           {/* 모션 */}
           <div>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
-              {t.motion}
-            </p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.motion}</p>
 
-            <div className="flex gap-1 bg-muted rounded p-0.5">
+            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => setMotion('default')}
                 aria-pressed={motion === 'default'}
-                className={cn(segmentBase, 'text-xs', motion === 'default' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', motion === 'default' ? segmentActive : segmentInactive)}
               >
                 {t.motionDefault}
               </button>
@@ -246,23 +240,23 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => setMotion('reduce')}
                 aria-pressed={motion === 'reduce'}
-                className={cn(segmentBase, 'text-xs', motion === 'reduce' ? segmentActive : segmentInactive)}
+                className={cn(segmentBase, 'text-xxsm', motion === 'reduce' ? segmentActive : segmentInactive)}
               >
                 {t.motionReduce}
               </button>
             </div>
           </div>
 
-          <div className="h-px bg-border" />
+          <div className="h-px bg-stroke-default" />
 
           <button
             onClick={resetAll}
             disabled={isDefault}
             className={cn(
-              'w-full text-[10px] py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
+              'w-full text-[10px] py-1.5 rounded-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
               isDefault
-                ? 'text-muted-foreground/25 cursor-default'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted',
+                ? 'text-text-light/25 cursor-default'
+                : 'text-text-light hover:text-text-default hover:bg-background-grey/15',
             )}
           >
             {t.reset}

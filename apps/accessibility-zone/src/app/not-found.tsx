@@ -27,16 +27,16 @@ const NotFoundPage = async () => {
   return (
     <AppShell>
       <PageContainer>
-        <div className="flex flex-col items-start gap-4 py-10">
-          <span className="font-mono text-5xl font-black text-emerald-500">{c.code}</span>
+        <div className="flex flex-col items-start gap-mdl py-4xl">
+          <span className="font-mono text-5xl font-black text-text-primary">{c.code}</span>
 
-          <h1 className="text-2xl font-bold text-foreground">{c.title}</h1>
+          <h1 className="text-xl font-bold text-text-default">{c.title}</h1>
 
-          <p className="text-sm text-muted-foreground">{c.description}</p>
+          <p className="text-xsm text-text-light">{c.description}</p>
 
           <Link
             href="/intro"
-            className="mt-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
+            className="mt-sm text-xsm font-medium text-text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary rounded-xs"
           >
             {c.back}
           </Link>

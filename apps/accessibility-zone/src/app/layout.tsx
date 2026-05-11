@@ -13,6 +13,9 @@ import {
   getServerTheme,
 } from '@it-tech-blog/preferences/server';
 
+import { UIThemeBridge } from '@/components/theme';
+
+import '@berrypjh/react-ui/styles.css';
 import './global.css';
 
 export const generateMetadata = async () => {
@@ -54,7 +57,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <LocaleProvider defaultLocale={locale}>
             <FontSizeProvider defaultFontSize={fontSize}>
               <MotionProvider defaultMotion={motion}>
-                <FontFamilyProvider defaultFontFamily={fontFamily}>{children}</FontFamilyProvider>
+                <FontFamilyProvider defaultFontFamily={fontFamily}>
+                  <UIThemeBridge>{children}</UIThemeBridge>
+                </FontFamilyProvider>
               </MotionProvider>
             </FontSizeProvider>
           </LocaleProvider>

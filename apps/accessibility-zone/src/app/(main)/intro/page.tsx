@@ -23,7 +23,7 @@ const IntroPage = async () => {
 
   return (
     <PageContainer>
-      <h1 className="text-2xl font-bold text-foreground mb-2">{c.title}</h1>
+      <h1 className="text-xl font-bold text-text-default mb-sm">{c.title}</h1>
     </PageContainer>
   );
 };

@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@config '../../tailwind.config.js';
+@config '../../tailwind.config.mjs';
 
 html[data-font-size='sm'] {
   font-size: 14px;
@@ -19,7 +19,7 @@ html[data-motion='reduce'] *::after {
 }
 
 :focus-visible {
-  outline: 2px solid #10b981;
+  outline: 2px solid var(--ds-border-primary-color);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -40,22 +40,14 @@ body {
   font-family: var(--font-family);
 }
 
-/* Semantic color tokens mapped from design-tokens (--ds-neutral-*, --ds-primary-*) */
+/* 1440px 초과 영역 배경 (앱 외부 캔버스) */
 :root {
-  --color-background: #ffffff;
-  --color-foreground: #101828; /* ds-neutral-ne900 */
-  --color-border: #d0d5dd; /* ds-neutral-ne300 */
-  --color-muted-foreground: #667085; /* ds-neutral-ne500 */
-  --color-canvas: #f1f5f9; /* app 외부 영역 (1440px 초과 시) */
+  --color-canvas: #f1f5f9;
   color-scheme: light;
 }
 
 .dark {
-  --color-background: #101828; /* ds-neutral-ne900 */
-  --color-foreground: #f2f4f7; /* ds-neutral-ne100 */
-  --color-border: #344054; /* ds-neutral-ne700 */
-  --color-muted-foreground: #98a2b3; /* ds-neutral-ne400 */
-  --color-canvas: #0d1117; /* app 외부 영역 다크 */
+  --color-canvas: #0d1117;
   color-scheme: dark;
 }
 
@@ -63,9 +55,9 @@ body {
   background-color: var(--color-canvas);
 }
 
-/* 스크롤바 — 테마 색상 토큰과 자연스럽게 연결 */
+/* 스크롤바 — 디자인 토큰과 연결 */
 * {
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: rgb(var(--ds-stroke-default-rgb)) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -78,11 +70,11 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--color-border);
+  background-color: rgb(var(--ds-stroke-default-rgb));
   border-radius: 8px;
   border: 2px solid var(--color-canvas);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-muted-foreground);
+  background-color: rgb(var(--ds-stroke-grey-rgb));
 }
