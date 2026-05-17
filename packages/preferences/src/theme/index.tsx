@@ -39,5 +39,7 @@ export const ThemeProvider = ({
     document.documentElement.className = theme;
   }, []);
 
-  return <ThemeContext.Provider value={{ resolvedTheme, setTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ resolvedTheme, setTheme }}>{children}</ThemeContext.Provider>
+  );
 };

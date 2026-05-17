@@ -32,5 +32,9 @@ export const FontSizeProvider = ({
     document.documentElement.dataset.fontSize = size;
   }, []);
 
-  return <FontSizeContext.Provider value={{ fontSize, setFontSize }}>{children}</FontSizeContext.Provider>;
+  return (
+    <FontSizeContext.Provider value={{ fontSize, setFontSize }}>
+      {children}
+    </FontSizeContext.Provider>
+  );
 };

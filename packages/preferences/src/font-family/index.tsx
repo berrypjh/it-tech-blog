@@ -32,5 +32,9 @@ export const FontFamilyProvider = ({
     document.documentElement.dataset.font = family;
   }, []);
 
-  return <FontFamilyContext.Provider value={{ fontFamily, setFontFamily }}>{children}</FontFamilyContext.Provider>;
+  return (
+    <FontFamilyContext.Provider value={{ fontFamily, setFontFamily }}>
+      {children}
+    </FontFamilyContext.Provider>
+  );
 };
