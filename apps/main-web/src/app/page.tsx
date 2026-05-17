@@ -1,9 +1,8 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import ThemeToggle from '@/components/theme-toggle';
-import TopicBubbles from '@/components/topic-bubbles';
-import TopicGrid from '@/components/topic-grid';
-import { TOPICS } from '@/components/topics';
+import { ThemeToggle } from '@/components/theme';
+import { TopicBubbles, TopicGrid } from '@/components/topic';
+import { TOPICS } from '@/data/topics';
 
 const Page = async () => {
   const locale = await getServerLocale();

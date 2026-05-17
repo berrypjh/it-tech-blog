@@ -1,6 +1,6 @@
-import type { Topic } from './topics';
+import type { Topic } from '@/data/topics';
 
-const TopicGrid = ({ topics, locale }: { topics: Topic[]; locale: 'ko' | 'en' }) => (
+export const TopicGrid = ({ topics, locale }: { topics: Topic[]; locale: 'ko' | 'en' }) => (
   <div className="lg:hidden [@media(max-height:900px)]:!grid grid grid-cols-[repeat(3,auto)] gap-x-7xl gap-y-5xl">
     {topics.map(({ icon, label, href }) => (
       <a
@@ -10,10 +10,10 @@ const TopicGrid = ({ topics, locale }: { topics: Topic[]; locale: 'ko' | 'en' })
       >
         <span className="text-3xl">{icon}</span>
 
-        <span className="text-xsm font-medium text-center leading-tight break-keep">{label[locale]}</span>
+        <span className="text-xsm font-medium text-center leading-tight break-keep">
+          {label[locale]}
+        </span>
       </a>
     ))}
   </div>
 );
-
-export default TopicGrid;

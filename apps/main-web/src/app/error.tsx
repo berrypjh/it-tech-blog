@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useLocale } from '@it-tech-blog/preferences';
 
-import ThemeToggle from '@/components/theme-toggle';
+import { ThemeToggle } from '@/components/theme';
 
 const content = {
   ko: {

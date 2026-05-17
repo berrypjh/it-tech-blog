@@ -2,7 +2,13 @@
 
 import { useEffect } from 'react';
 
-const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
+const GlobalError = ({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) => {
   useEffect(() => {
     // TODO: 에러 트래킹 서비스로 전송
     console.error(error);
@@ -10,7 +16,14 @@ const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; res
 
   return (
     <html lang="ko">
-      <body style={{ margin: 0, background: '#0d0a28', color: '#ffffff', fontFamily: 'system-ui, sans-serif' }}>
+      <body
+        style={{
+          margin: 0,
+          background: '#0d0a28',
+          color: '#ffffff',
+          fontFamily: 'system-ui, sans-serif',
+        }}
+      >
         <div
           style={{
             display: 'flex',

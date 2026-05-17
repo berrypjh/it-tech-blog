@@ -7,7 +7,7 @@ import { useLocale, useTheme } from '@it-tech-blog/preferences';
 
 import { IconButton } from '@berrypjh/react-ui';
 
-const ThemeToggle = () => {
+export const ThemeToggle = () => {
   const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
   const { locale, setLocale } = useLocale();
@@ -29,11 +29,13 @@ const ThemeToggle = () => {
         <span className="text-xsm font-semiBold leading-none">{locale === 'ko' ? 'KO' : 'EN'}</span>
       </IconButton>
 
-      <IconButton size="md" onClick={() => setTheme(isDark ? 'light' : 'dark')} aria-label="Toggle theme">
+      <IconButton
+        size="md"
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        aria-label="Toggle theme"
+      >
         {isDark ? <SunIcon /> : <MoonIcon />}
       </IconButton>
     </div>
   );
 };
-
-export default ThemeToggle;
