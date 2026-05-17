@@ -2,6 +2,7 @@
   "name": "@it-tech-blog/source",
   "version": "0.0.0",
   "license": "MIT",
+  "prettier": "@berrypjh/prettier-config",
   "scripts": {
     "dev": "nx run-many -t dev --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone --parallel",
     "dev:main": "nx run @it-tech-blog/main-web:dev",
@@ -19,7 +20,11 @@
   },
   "private": true,
   "dependencies": {
-    "@berrypjh/react-ui": "^0.0.6",
+    "@berrypjh/commitlint-config": "^1.0.0",
+    "@berrypjh/eslint-config": "^1.0.0",
+    "@berrypjh/prettier-config": "^1.0.0",
+    "@berrypjh/react-ui": "^1.0.0",
+    "@berrypjh/tsconfig": "^1.0.0",
     "next": "~16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

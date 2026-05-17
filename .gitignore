@@ -112,9 +112,6 @@ typings/
 cache/
 *.orig.*
 
-# npm
-.npmrc
-
 # Ruby / CocoaPods
 **/Pods/
 **/vendor/bundle/
