@@ -1,7 +1,12 @@
 import { execSync, spawnSync } from 'node:child_process';
 
 import { buildConventionalCommitTitlePattern } from './format.js';
-import type { CommitExecutionResult, CommitMessage, FileStatus, GitCommandResult } from './types.js';
+import type {
+  CommitExecutionResult,
+  CommitMessage,
+  FileStatus,
+  GitCommandResult,
+} from './types.js';
 
 const runGit = (args: string[]): GitCommandResult => {
   const result = spawnSync('git', args, {
@@ -23,7 +28,9 @@ export const getStagedFilesWithStatus = (): FileStatus[] => {
       encoding: 'utf8',
     });
   } catch {
-    throw new Error('git diff --cached --name-status --find-renames --find-copies 실행에 실패했습니다.');
+    throw new Error(
+      'git diff --cached --name-status --find-renames --find-copies 실행에 실패했습니다.',
+    );
   }
 
   const lines = output
@@ -72,7 +79,9 @@ export const getStagedFilesWithStatus = (): FileStatus[] => {
 export const getScopedDiff = (files: FileStatus[]): string => {
   const filePaths = files.map((fileStatus) => fileStatus.file);
   const oldFilePaths = files
-    .filter((fileStatus): fileStatus is FileStatus & { oldFile: string } => fileStatus.oldFile != null)
+    .filter(
+      (fileStatus): fileStatus is FileStatus & { oldFile: string } => fileStatus.oldFile != null,
+    )
     .map((fileStatus) => fileStatus.oldFile);
 
   const allPaths = [...new Set([...filePaths, ...oldFilePaths])];
@@ -94,27 +103,37 @@ export const assertCommitTitleMatchesScope = (title: string, scope: string): voi
   const pattern = buildConventionalCommitTitlePattern(scope);
 
   if (!pattern.test(title)) {
-    throw new Error(`title은 반드시 "type(${scope}): 설명" 형식을 따라야 합니다. 전달된 title: "${title}"`);
+    throw new Error(
+      `title은 반드시 "type(${scope}): 설명" 형식을 따라야 합니다. 전달된 title: "${title}"`,
+    );
   }
 };
 
 const getCommitPathspec = (files: FileStatus[]): string[] => {
   const filePaths = files.map((fileStatus) => fileStatus.file);
   const oldFilePaths = files
-    .filter((fileStatus): fileStatus is FileStatus & { oldFile: string } => fileStatus.oldFile != null)
+    .filter(
+      (fileStatus): fileStatus is FileStatus & { oldFile: string } => fileStatus.oldFile != null,
+    )
     .map((fileStatus) => fileStatus.oldFile);
 
   return [...new Set([...filePaths, ...oldFilePaths])];
 };
 
-export const commitScope = (scope: string, message: CommitMessage, files: FileStatus[]): CommitExecutionResult => {
+export const commitScope = (
+  scope: string,
+  message: CommitMessage,
+  files: FileStatus[],
+): CommitExecutionResult => {
   assertCommitTitleMatchesScope(message.title, scope);
 
   const targetPaths = new Set(getCommitPathspec(files));
   const allStaged = getStagedFilesWithStatus();
   const otherPaths = [
     ...new Set(
-      allStaged.flatMap((f) => (f.oldFile ? [f.oldFile, f.file] : [f.file])).filter((path) => !targetPaths.has(path)),
+      allStaged
+        .flatMap((f) => (f.oldFile ? [f.oldFile, f.file] : [f.file]))
+        .filter((path) => !targetPaths.has(path)),
     ),
   ];
 
@@ -125,7 +144,10 @@ export const commitScope = (scope: string, message: CommitMessage, files: FileSt
   }
 
   const command = ['git', ...args].join(' ');
-  const buildResult = (ok: boolean, extra: { stdout: string; stderr: string }): CommitExecutionResult => ({
+  const buildResult = (
+    ok: boolean,
+    extra: { stdout: string; stderr: string },
+  ): CommitExecutionResult => ({
     ok,
     scope,
     title: message.title,

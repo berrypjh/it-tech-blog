@@ -89,7 +89,8 @@ server.registerTool(
   'get_scope_details',
   {
     title: 'Get scope details',
-    description: '특정 scope의 staged 파일 목록과 diff를 가져온다. 커밋 메시지 제안 전에 호출하는 용도다.',
+    description:
+      '특정 scope의 staged 파일 목록과 diff를 가져온다. 커밋 메시지 제안 전에 호출하는 용도다.',
     inputSchema: z.object({
       scope: z.string().min(1),
       maxDiffChars: z.number().int().positive().max(100_000).optional(),
@@ -129,7 +130,8 @@ server.registerTool(
   'commit_scope',
   {
     title: 'Commit scope',
-    description: '특정 scope에 속한 staged 파일만 git commit 한다. title은 Conventional Commits 형식이어야 한다.',
+    description:
+      '특정 scope에 속한 staged 파일만 git commit 한다. title은 Conventional Commits 형식이어야 한다.',
     inputSchema: z.object({
       scope: z.string().min(1),
       title: z.string().min(1),

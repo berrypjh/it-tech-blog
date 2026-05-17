@@ -31,7 +31,8 @@ export const formatFileStatus = (fileStatus: FileStatus): FormattedFileStatus =>
   };
 };
 
-export const formatFileStatuses = (files: FileStatus[]): FormattedFileStatus[] => files.map(formatFileStatus);
+export const formatFileStatuses = (files: FileStatus[]): FormattedFileStatus[] =>
+  files.map(formatFileStatus);
 
 export const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
