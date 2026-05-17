@@ -22,10 +22,14 @@ import './global.css';
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
   return locale === 'en'
-    ? { title: 'A11y Lab — Web Accessibility Lab', description: 'A hands-on learning platform for web accessibility.' }
+    ? {
+        title: 'A11y Lab — Web Accessibility Lab',
+        description: 'A hands-on learning platform for web accessibility.',
+      }
     : {
         title: 'A11y Lab — 웹 접근성 실험실',
-        description: '모두를 위한 웹 접근성 학습 플랫폼. 실습과 예제로 웹 접근성을 쉽게 배워보세요.',
+        description:
+          '모두를 위한 웹 접근성 학습 플랫폼. 실습과 예제로 웹 접근성을 쉽게 배워보세요.',
       };
 };
 

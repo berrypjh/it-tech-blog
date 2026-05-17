@@ -37,7 +37,13 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: '키보드 접근성',
       items: [
-        { id: 'keyboard', label: '키보드 탐색 기본', type: 'link', badge: '실습', badgeColor: 'warning' },
+        {
+          id: 'keyboard',
+          label: '키보드 탐색 기본',
+          type: 'link',
+          badge: '실습',
+          badgeColor: 'warning',
+        },
         { id: 'tab-order', label: 'tab 순서 설계', type: 'link' },
         { id: 'focus', label: 'focus와 focus-visible', type: 'link' },
         { id: 'skip-link', label: 'skip link', type: 'link' },
@@ -146,7 +152,13 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Keyboard Accessibility',
       items: [
-        { id: 'keyboard', label: 'Keyboard Navigation Basics', type: 'link', badge: 'Lab', badgeColor: 'warning' },
+        {
+          id: 'keyboard',
+          label: 'Keyboard Navigation Basics',
+          type: 'link',
+          badge: 'Lab',
+          badgeColor: 'warning',
+        },
         { id: 'tab-order', label: 'Designing Tab Order', type: 'link' },
         { id: 'focus', label: 'focus & focus-visible', type: 'link' },
         { id: 'skip-link', label: 'Skip Links', type: 'link' },
@@ -195,7 +207,13 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Color / Media',
       items: [
-        { id: 'contrast', label: 'Color Contrast', type: 'link', badge: 'Tool', badgeColor: 'purple' },
+        {
+          id: 'contrast',
+          label: 'Color Contrast',
+          type: 'link',
+          badge: 'Tool',
+          badgeColor: 'purple',
+        },
         { id: 'color-only', label: 'Avoid Color-only Information', type: 'link' },
         { id: 'focus-ring', label: 'Focus Ring Design', type: 'link' },
         { id: 'dark-mode', label: 'Dark Mode Accessibility', type: 'link' },

@@ -40,7 +40,9 @@ const sectionIcons = [
 ];
 
 const getInitialExpanded = (navGroups: NavGroup[], pathname: string): Set<number> => {
-  const activeIndex = navGroups.findIndex((group) => group.items.some((item) => pathname === `/${item.id}`));
+  const activeIndex = navGroups.findIndex((group) =>
+    group.items.some((item) => pathname === `/${item.id}`),
+  );
 
   return new Set([activeIndex >= 0 ? activeIndex : 0]);
 };
@@ -52,7 +54,9 @@ export const Sidebar = ({ className }: { className?: string }) => {
   const currentNavData = navData[lang];
   const t = sidebarStrings[lang];
 
-  const [expanded, setExpanded] = useState<Set<number>>(() => getInitialExpanded(currentNavData, pathname));
+  const [expanded, setExpanded] = useState<Set<number>>(() =>
+    getInitialExpanded(currentNavData, pathname),
+  );
 
   const toggle = (index: number) => {
     setExpanded((prev) => {
@@ -65,10 +69,16 @@ export const Sidebar = ({ className }: { className?: string }) => {
   };
 
   const anyExpanded = expanded.size > 0;
-  const toggleAll = () => setExpanded(anyExpanded ? new Set() : new Set(currentNavData.map((_, i) => i)));
+  const toggleAll = () =>
+    setExpanded(anyExpanded ? new Set() : new Set(currentNavData.map((_, i) => i)));
 
   return (
-    <aside className={cn('flex flex-col h-full bg-background-surface border-r border-stroke-default', className)}>
+    <aside
+      className={cn(
+        'flex flex-col h-full bg-background-surface border-r border-stroke-default',
+        className,
+      )}
+    >
       {/* 헤더 */}
       <div className="px-lg pt-lg pb-mdl space-y-sml">
         <div className="flex items-center justify-between">
@@ -128,7 +138,9 @@ export const Sidebar = ({ className }: { className?: string }) => {
                   <SectionIcon />
                 </span>
 
-                <span className="flex-1 text-xsm font-semiBold uppercase tracking-[0.07em]">{group.title}</span>
+                <span className="flex-1 text-xsm font-semiBold uppercase tracking-[0.07em]">
+                  {group.title}
+                </span>
 
                 <ChevronDownIcon
                   className={cn(
@@ -156,8 +168,10 @@ export const Sidebar = ({ className }: { className?: string }) => {
                           className={cn(
                             'ml-sm shrink-0 text-[10px] px-xsm py-0.5 rounded-xs font-bold uppercase tracking-wide',
                             item.badgeColor === 'warning' && 'bg-warning-wa100 text-text-warning',
-                            item.badgeColor === 'purple' && 'bg-secondary-se100 text-text-secondary',
-                            item.badgeColor === 'default' && 'bg-background-grey/20 text-text-light',
+                            item.badgeColor === 'purple' &&
+                              'bg-secondary-se100 text-text-secondary',
+                            item.badgeColor === 'default' &&
+                              'bg-background-grey/20 text-text-light',
                           )}
                         >
                           {item.badge}

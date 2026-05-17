@@ -2,7 +2,13 @@
 
 import { useEffect } from 'react';
 
-const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
+const GlobalError = ({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) => {
   useEffect(() => {
     // TODO: 에러 트래킹 서비스로 전송
     console.error(error);
@@ -10,7 +16,14 @@ const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; res
 
   return (
     <html lang="ko">
-      <body style={{ margin: 0, background: '#101828', color: '#f2f4f7', fontFamily: 'system-ui, sans-serif' }}>
+      <body
+        style={{
+          margin: 0,
+          background: '#101828',
+          color: '#f2f4f7',
+          fontFamily: 'system-ui, sans-serif',
+        }}
+      >
         <div
           style={{
             display: 'flex',
@@ -23,11 +36,17 @@ const GlobalError = ({ error, reset }: { error: Error & { digest?: string }; res
             padding: '1.5rem',
           }}
         >
-          <span style={{ fontSize: '4rem', fontWeight: 900, color: '#10b981', fontFamily: 'monospace' }}>500</span>
+          <span
+            style={{ fontSize: '4rem', fontWeight: 900, color: '#10b981', fontFamily: 'monospace' }}
+          >
+            500
+          </span>
 
           <h1 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>오류가 발생했습니다</h1>
 
-          <p style={{ fontSize: '0.875rem', color: '#98a2b3', margin: 0 }}>Something went wrong. Please try again.</p>
+          <p style={{ fontSize: '0.875rem', color: '#98a2b3', margin: 0 }}>
+            Something went wrong. Please try again.
+          </p>
 
           <button
             onClick={reset}

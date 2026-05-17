@@ -79,7 +79,11 @@ export const SettingsPopover = () => {
   const { fontFamily, setFontFamily } = useFontFamily();
 
   const isDefault =
-    resolvedTheme === 'light' && locale === 'ko' && fontSize === 'md' && fontFamily === 'sans' && motion === 'default';
+    resolvedTheme === 'light' &&
+    locale === 'ko' &&
+    fontSize === 'md' &&
+    fontFamily === 'sans' &&
+    motion === 'default';
 
   const resetAll = () => {
     setTheme('light');
@@ -143,13 +147,19 @@ export const SettingsPopover = () => {
         >
           {/* 테마 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.theme}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
+              {t.theme}
+            </p>
 
             <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => setTheme('light')}
                 aria-pressed={resolvedTheme === 'light'}
-                className={cn(segmentBase, 'text-xxsm', resolvedTheme === 'light' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  resolvedTheme === 'light' ? segmentActive : segmentInactive,
+                )}
               >
                 {t.light}
               </button>
@@ -157,7 +167,11 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => setTheme('dark')}
                 aria-pressed={resolvedTheme === 'dark'}
-                className={cn(segmentBase, 'text-xxsm', resolvedTheme === 'dark' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  resolvedTheme === 'dark' ? segmentActive : segmentInactive,
+                )}
               >
                 {t.dark}
               </button>
@@ -166,13 +180,19 @@ export const SettingsPopover = () => {
 
           {/* 언어 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.language}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
+              {t.language}
+            </p>
 
             <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => handleLocaleChange('ko')}
                 aria-pressed={locale === 'ko'}
-                className={cn(segmentBase, 'text-xxsm', locale === 'ko' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  locale === 'ko' ? segmentActive : segmentInactive,
+                )}
               >
                 한국어
               </button>
@@ -180,7 +200,11 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => handleLocaleChange('en')}
                 aria-pressed={locale === 'en'}
-                className={cn(segmentBase, 'text-xxsm', locale === 'en' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  locale === 'en' ? segmentActive : segmentInactive,
+                )}
               >
                 English
               </button>
@@ -189,7 +213,9 @@ export const SettingsPopover = () => {
 
           {/* 글자 크기 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.fontSize}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
+              {t.fontSize}
+            </p>
 
             <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               {fontSizeOptions.map((opt) => (
@@ -197,8 +223,18 @@ export const SettingsPopover = () => {
                   key={opt.value}
                   onClick={() => setFontSize(opt.value)}
                   aria-pressed={fontSize === opt.value}
-                  aria-label={opt.value === 'sm' ? t.fontSizeSm : opt.value === 'md' ? t.fontSizeMd : t.fontSizeLg}
-                  className={cn(segmentBase, opt.style, fontSize === opt.value ? segmentActive : segmentInactive)}
+                  aria-label={
+                    opt.value === 'sm'
+                      ? t.fontSizeSm
+                      : opt.value === 'md'
+                        ? t.fontSizeMd
+                        : t.fontSizeLg
+                  }
+                  className={cn(
+                    segmentBase,
+                    opt.style,
+                    fontSize === opt.value ? segmentActive : segmentInactive,
+                  )}
                 >
                   {opt.label}
                 </button>
@@ -208,7 +244,9 @@ export const SettingsPopover = () => {
 
           {/* 폰트 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.font}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
+              {t.font}
+            </p>
 
             <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               {(['sans', 'serif', 'mono'] as FontFamily[]).map((f) => (
@@ -216,7 +254,11 @@ export const SettingsPopover = () => {
                   key={f}
                   onClick={() => setFontFamily(f)}
                   aria-pressed={fontFamily === f}
-                  className={cn(segmentBase, 'text-xxsm', fontFamily === f ? segmentActive : segmentInactive)}
+                  className={cn(
+                    segmentBase,
+                    'text-xxsm',
+                    fontFamily === f ? segmentActive : segmentInactive,
+                  )}
                 >
                   {f === 'sans' ? 'Sans' : f === 'serif' ? 'Serif' : 'Mono'}
                 </button>
@@ -226,13 +268,19 @@ export const SettingsPopover = () => {
 
           {/* 모션 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">{t.motion}</p>
+            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
+              {t.motion}
+            </p>
 
             <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
               <button
                 onClick={() => setMotion('default')}
                 aria-pressed={motion === 'default'}
-                className={cn(segmentBase, 'text-xxsm', motion === 'default' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  motion === 'default' ? segmentActive : segmentInactive,
+                )}
               >
                 {t.motionDefault}
               </button>
@@ -240,7 +288,11 @@ export const SettingsPopover = () => {
               <button
                 onClick={() => setMotion('reduce')}
                 aria-pressed={motion === 'reduce'}
-                className={cn(segmentBase, 'text-xxsm', motion === 'reduce' ? segmentActive : segmentInactive)}
+                className={cn(
+                  segmentBase,
+                  'text-xxsm',
+                  motion === 'reduce' ? segmentActive : segmentInactive,
+                )}
               >
                 {t.motionReduce}
               </button>
