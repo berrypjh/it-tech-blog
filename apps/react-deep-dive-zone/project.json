@@ -1,0 +1,13 @@
+{
+  "name": "@it-tech-blog/react-deep-dive-zone",
+  "targets": {
+    "dev": {
+      "options": {
+        "command": "next dev",
+        "env": {
+          "PORT": "4002"
+        }
+      }
+    }
+  }
+}
