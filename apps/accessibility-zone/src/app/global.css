@@ -9,6 +9,46 @@ html[data-font-size='lg'] {
   font-size: 18px;
 }
 
+/*
+ * 디자인 시스템 토큰을 rem 기반으로 override.
+ * 기본값이 px라 html font-size 변경에 반응하지 않으므로 rem으로 재정의.
+ * → 사용자 폰트 크기 설정(sm/기본/lg)에 따라 텍스트뿐 아니라 spacing도 비례.
+ */
+:root {
+  /* font-size */
+  --ds-font-size-xxsm: 0.75rem; /* 12px */
+  --ds-font-size-xsm: 0.875rem; /* 14px */
+  --ds-font-size-sm: 1rem; /* 16px */
+  --ds-font-size-md: 1.125rem; /* 18px */
+  --ds-font-size-lg: 1.25rem; /* 20px */
+  --ds-font-size-xl: 1.5rem; /* 24px */
+  --ds-font-size-xxl: 1.75rem; /* 28px */
+  --ds-font-size-3xl: 2rem; /* 32px */
+  --ds-font-size-4xl: 2.25rem; /* 36px */
+  --ds-font-size-5xl: 2.5rem; /* 40px */
+  --ds-font-size-6xl: 3rem; /* 48px */
+  --ds-font-size-7xl: 3.5rem; /* 56px */
+
+  /* spacing — padding/gap/margin 등 폰트 크기와 함께 비례 */
+  --ds-spacing-xxxsm: 0.125rem; /* 2px */
+  --ds-spacing-xxsm: 0.25rem; /* 4px */
+  --ds-spacing-xsm: 0.375rem; /* 6px */
+  --ds-spacing-sm: 0.5rem; /* 8px */
+  --ds-spacing-sml: 0.75rem; /* 12px */
+  --ds-spacing-md: 0.875rem; /* 14px */
+  --ds-spacing-mdl: 1rem; /* 16px */
+  --ds-spacing-lg: 1.25rem; /* 20px */
+  --ds-spacing-xlg: 1.5rem; /* 24px */
+  --ds-spacing-xl: 1.75rem; /* 28px */
+  --ds-spacing-xxl: 2rem; /* 32px */
+  --ds-spacing-3xl: 2.25rem; /* 36px */
+  --ds-spacing-4xl: 2.5rem; /* 40px */
+  --ds-spacing-5xl: 3rem; /* 48px */
+  --ds-spacing-6xl: 4rem; /* 64px */
+  --ds-spacing-7xl: 6rem; /* 96px */
+  --ds-spacing-8xl: 8rem; /* 128px */
+}
+
 html[data-motion='reduce'] *,
 html[data-motion='reduce'] *::before,
 html[data-motion='reduce'] *::after {
