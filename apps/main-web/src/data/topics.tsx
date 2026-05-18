@@ -1,16 +1,16 @@
 import {
   AccessibilityIcon,
+  AtomIcon,
   BundlerIcon,
-  CssIcon,
   DataStructureIcon,
   DesignPatternIcon,
   DevtoolsIcon,
-  GitBranchIcon,
-  HtmlIcon,
   LighthouseIcon,
   LlmIcon,
   NetworkIcon,
+  RocketIcon,
   ShieldIcon,
+  SmartphoneIcon,
 } from '@it-tech-blog/icons';
 
 export type TopicSize = 'sm' | 'md' | 'lg';
@@ -42,12 +42,12 @@ export const TOPICS: Topic[] = [
     href: '/',
   },
   {
-    icon: <GitBranchIcon />,
-    label: { ko: 'Git', en: 'Git' },
+    icon: <AtomIcon />,
+    label: { ko: 'React 심층 탐구', en: 'React Deep Dive' },
     size: 'lg',
     delay: 0.2,
     style: { top: '12rem', right: '42%', transform: 'translateX(-50%)' },
-    href: '/',
+    href: '/react',
   },
   {
     icon: <LlmIcon />,
@@ -58,16 +58,16 @@ export const TOPICS: Topic[] = [
     href: '/',
   },
   {
-    icon: <CssIcon />,
-    label: { ko: 'CSS', en: 'CSS' },
+    icon: <NetworkIcon />,
+    label: { ko: '네트워크', en: 'Network' },
     size: 'sm',
     delay: 0.3,
     style: { top: '16rem', left: '10rem' },
     href: '/',
   },
   {
-    icon: <HtmlIcon />,
-    label: { ko: 'HTML', en: 'HTML' },
+    icon: <RocketIcon />,
+    label: { ko: 'Next 심층 탐구', en: 'Next Deep Dive' },
     size: 'lg',
     delay: 0.35,
     style: { top: '9rem', right: '22%', transform: 'translateX(-50%)' },
@@ -90,8 +90,8 @@ export const TOPICS: Topic[] = [
     href: '/',
   },
   {
-    icon: <NetworkIcon />,
-    label: { ko: '네트워크', en: 'Network' },
+    icon: <SmartphoneIcon />,
+    label: { ko: 'React Native 심층 탐구', en: 'React Native Deep Dive' },
     size: 'lg',
     delay: 0.6,
     style: { bottom: '11rem', left: '50%', transform: 'translateX(-50%)' },
