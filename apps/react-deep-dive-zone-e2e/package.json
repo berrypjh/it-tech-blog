@@ -1,0 +1,10 @@
+{
+  "name": "@it-tech-blog/react-deep-dive-zone-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@it-tech-blog/react-deep-dive-zone"
+    ]
+  }
+}
