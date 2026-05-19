@@ -5,7 +5,15 @@ import { usePathname } from 'next/navigation';
 
 import { HamburgerIcon } from '@it-tech-blog/icons';
 
+import { SkipLink } from '@berrypjh/react-ui';
+import type { CSSProperties } from 'react';
+
 import { Sidebar } from './Sidebar';
+
+const skipLinkStyle = {
+  '--ui-skip-link-bg': 'var(--term-accent)',
+  '--ui-skip-link-fg': 'var(--term-bg)',
+} as CSSProperties;
 
 export const AppShell = ({ children }: { children: React.ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,12 +25,9 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex h-screen w-full max-w-[1440px] mx-auto bg-[var(--term-bg)] text-[var(--term-fg)] overflow-hidden">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-mdl focus:left-mdl focus:px-mdl focus:py-sm focus:bg-[var(--term-accent)] focus:text-[var(--term-bg)] focus:text-xsm focus:font-medium focus:shadow-lg"
-      >
+      <SkipLink targetId="main-content" style={skipLinkStyle}>
         본문으로 건너뛰기
-      </a>
+      </SkipLink>
 
       {/* 데스크탑 사이드바 */}
       <div className="hidden lg:block w-[300px] shrink-0 h-full relative">
@@ -48,12 +53,12 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
 
       <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
         {/* 모바일 헤더 */}
-        <header className="lg:hidden flex items-center gap-sml px-mdl h-12 border-b border-[var(--term-border)] bg-[var(--term-bg)] shrink-0">
+        <header className="lg:hidden flex items-center gap-md px-lg h-12 border-b border-[var(--term-border)] bg-[var(--term-bg)] shrink-0">
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="메뉴 열기"
             aria-expanded={mobileOpen}
-            className="p-xsm text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]"
+            className="p-sm text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]"
           >
             <HamburgerIcon />
           </button>

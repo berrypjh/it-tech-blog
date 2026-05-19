@@ -77,11 +77,11 @@ export const Sidebar = ({ className }: { className?: string }) => {
       )}
     >
       {/* 프롬프트 헤더 */}
-      <div className="px-mdl pt-mdl pb-sml border-b border-dashed border-[var(--term-border)]">
+      <div className="px-lg pt-lg pb-md border-b border-dashed border-[var(--term-border)]">
         <div className="flex items-center justify-between">
           <Link
             href="/intro"
-            className="flex items-center gap-xsm text-xsm leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]"
+            className="flex items-center gap-sm text-xsm leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]"
           >
             <span className="text-[var(--term-accent)] font-bold">$</span>
             <span className="text-[var(--term-fg)] font-bold tracking-tight">react-lab</span>
@@ -91,14 +91,14 @@ export const Sidebar = ({ className }: { className?: string }) => {
           <SettingsPopover />
         </div>
 
-        <p className="mt-xsm text-[10px] text-[var(--term-muted)] leading-snug">
+        <p className="mt-sm text-[10px] text-[var(--term-muted)] leading-snug">
           {'// '}
           {t.subtitle}
         </p>
       </div>
 
       {/* expand/collapse all */}
-      <div className="flex justify-between items-center px-mdl py-xsm border-b border-dashed border-[var(--term-border)]">
+      <div className="flex justify-between items-center px-lg py-sm border-b border-dashed border-[var(--term-border)]">
         <span className="text-[10px] text-[var(--term-dim)] uppercase tracking-wider">
           {t.menu}
         </span>
@@ -124,9 +124,8 @@ export const Sidebar = ({ className }: { className?: string }) => {
             <div
               key={groupIndex}
               className={cn(
-                'mb-xxsm',
-                groupIndex > 0 &&
-                  'mt-xsm pt-xsm border-t border-dashed border-[var(--term-border)]',
+                'mb-xs',
+                groupIndex > 0 && 'mt-sm pt-sm border-t border-dashed border-[var(--term-border)]',
               )}
             >
               <button
@@ -134,20 +133,20 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 aria-expanded={isExpanded}
                 aria-controls={panelId}
                 className={cn(
-                  'w-full flex flex-col px-mdl py-1 text-left text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
+                  'w-full flex flex-col px-lg py-1 text-left text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                   hasActiveItem
                     ? 'text-[var(--term-accent)]'
                     : 'text-[var(--term-fg)] hover:text-[var(--term-accent)]',
                 )}
               >
-                <span className="flex items-start gap-xsm">
+                <span className="flex items-start gap-sm">
                   <span className="text-[var(--term-dim)] shrink-0 w-3 text-center">{arrow}</span>
                   <span className="text-[var(--term-muted)] shrink-0 tabular-nums">
                     {sectionNumber(groupIndex)}
                   </span>
                   <span className="font-medium">{slug}/</span>
                 </span>
-                <span className="flex items-start gap-xsm">
+                <span className="flex items-start gap-sm">
                   <span className="shrink-0 w-3" aria-hidden="true" />
                   <span className="shrink-0 tabular-nums invisible" aria-hidden="true">
                     {sectionNumber(groupIndex)}
@@ -166,7 +165,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 )}
               >
                 <div className="overflow-hidden">
-                  <ul className="pb-xsm">
+                  <ul className="pb-sm">
                     {group.items.map((item, itemIndex) => {
                       const isActive = pathname === `/${item.id}`;
                       const isLast = itemIndex === group.items.length - 1;
@@ -178,7 +177,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
                             className={cn(
-                              'group flex items-start gap-xsm pl-mdl pr-mdl py-0.5 text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
+                              'group flex items-start gap-sm pl-lg pr-lg py-0.5 text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                               isActive
                                 ? 'bg-[var(--term-accent-soft)] text-[var(--term-accent)]'
                                 : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
@@ -223,10 +222,10 @@ export const Sidebar = ({ className }: { className?: string }) => {
       </nav>
 
       {/* footer */}
-      <div className="px-mdl py-sml border-t border-dashed border-[var(--term-border)]">
+      <div className="px-lg py-md border-t border-dashed border-[var(--term-border)]">
         <a
           href="/"
-          className="flex items-center gap-xsm text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors"
+          className="flex items-center gap-sm text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors"
         >
           <span>↩</span>
           <span>cd ~/ &mdash; {t.backToMain}</span>

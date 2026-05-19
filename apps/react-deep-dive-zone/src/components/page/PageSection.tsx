@@ -17,7 +17,7 @@ export const PageSection = ({
     <section aria-labelledby={`heading-${id}`} className={className}>
       <h2
         id={`heading-${id}`}
-        className="flex items-baseline gap-xsm text-xsm mb-mdl text-[var(--term-muted)]"
+        className="flex items-baseline gap-sm text-xsm mb-lg text-[var(--term-muted)]"
       >
         <span className="text-[var(--term-dim)]">{'//'}</span>
         <span className="text-[var(--term-dim)] tabular-nums">{id}</span>
