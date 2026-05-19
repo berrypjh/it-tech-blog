@@ -1,15 +1,5 @@
-export type NavItem = {
-  id: string;
-  label: string;
-  type: 'link' | 'header';
-  badge?: string;
-  badgeColor?: 'default' | 'warning' | 'purple';
-};
-
-export type NavGroup = {
-  title: string;
-  items: NavItem[];
-};
+import type { NavGroup } from '@it-tech-blog/ui';
+import { commonSidebarStrings } from '@it-tech-blog/ui';
 
 export const navData: Record<'ko' | 'en', NavGroup[]> = {
   ko: [
@@ -252,23 +242,15 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
 
 export const sidebarStrings = {
   ko: {
+    ...commonSidebarStrings.ko,
     title: 'A11y Lab',
     subtitle: '모두를 위한 웹 접근성 실험실',
-    progressTitle: '학습 진행중',
     progressStep: '웹접근성이란? 완료',
-    menu: '메뉴',
-    backToMain: '홈으로 가기',
-    collapseAll: '모두 닫기',
-    expandAll: '모두 열기',
   },
   en: {
+    ...commonSidebarStrings.en,
     title: 'A11y Lab',
     subtitle: 'Web Accessibility Lab for Everyone',
-    progressTitle: 'In Progress',
     progressStep: 'What is Accessibility? Done',
-    menu: 'Menu',
-    backToMain: 'Back to Home',
-    collapseAll: 'Collapse all',
-    expandAll: 'Expand all',
   },
 };
