@@ -139,3 +139,5 @@ vitest.config.*.timestamp*
 
 # TypeScript build info
 **/*.tsbuildinfo
+# Storybook
+apps/storybook/storybook-static
