@@ -7,7 +7,5 @@ import { ThemeProvider as UIThemeProvider } from '@berrypjh/react-ui';
 export const UIThemeBridge = ({ children }: { children: React.ReactNode }) => {
   const { resolvedTheme } = useTheme();
 
-  return (
-    <UIThemeProvider mode={resolvedTheme === 'dark' ? 'dark' : 'light'}>{children}</UIThemeProvider>
-  );
+  return <UIThemeProvider mode={resolvedTheme}>{children}</UIThemeProvider>;
 };
