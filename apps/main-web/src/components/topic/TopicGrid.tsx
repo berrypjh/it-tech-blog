@@ -6,7 +6,7 @@ export const TopicGrid = ({ topics, locale }: { topics: Topic[]; locale: 'ko' | 
       <a
         key={label.en}
         href={href}
-        className="flex flex-col items-center gap-sm p-mdl rounded-[12px] text-text-default hover:bg-background-grey/15 transition-colors"
+        className="flex flex-col items-center gap-sm p-lg rounded-[12px] text-text-default hover:bg-background-grey/15 transition-colors"
       >
         <span className="text-3xl">{icon}</span>
 

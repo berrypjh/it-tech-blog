@@ -20,9 +20,9 @@ export const ThemeToggle = () => {
 
   return (
     <div
-      className="fixed top-xlg z-50 flex items-center gap-sm"
+      className="fixed top-xl z-50 flex items-center gap-sm"
       style={{
-        right: 'max(var(--ds-spacing-xlg), calc((100vw - 1440px) / 2 + var(--ds-spacing-xlg)))',
+        right: 'max(var(--ds-spacing-xl), calc((100vw - 1440px) / 2 + var(--ds-spacing-xl)))',
       }}
     >
       <IconButton size="md" onClick={handleLocaleToggle} aria-label="Toggle language">

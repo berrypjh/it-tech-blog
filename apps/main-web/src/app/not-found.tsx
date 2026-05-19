@@ -29,7 +29,7 @@ const NotFoundPage = async () => {
 
       <ThemeToggle />
 
-      <div className="flex flex-col items-center justify-center min-h-screen gap-mdl px-xlg text-center">
+      <div className="flex flex-col items-center justify-center min-h-screen gap-lg px-xl text-center">
         <span className="text-[96px] font-black tracking-tight text-text-default">{c.code}</span>
 
         <h1 className="text-xl font-bold text-text-default">{c.title}</h1>
