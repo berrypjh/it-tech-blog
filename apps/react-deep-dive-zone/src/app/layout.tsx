@@ -1,10 +1,4 @@
-import {
-  FontFamilyProvider,
-  FontSizeProvider,
-  LocaleProvider,
-  MotionProvider,
-  ThemeProvider,
-} from '@it-tech-blog/preferences';
+import { PreferencesProviders, ThemeDetectionScript } from '@it-tech-blog/preferences';
 import {
   getServerFontFamily,
   getServerFontSize,
@@ -12,9 +6,9 @@ import {
   getServerMotion,
   getServerTheme,
 } from '@it-tech-blog/preferences/server';
+import { UIThemeBridge } from '@it-tech-blog/ui';
 
 import { AppShell } from '@/components/shell';
-import { UIThemeBridge } from '@/components/theme';
 
 import '@berrypjh/react-ui/styles.css';
 import './global.css';
@@ -51,26 +45,20 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       data-font={fontFamily !== 'sans' ? fontFamily : undefined}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(!document.cookie.match(/(?:^|;\\s*)theme=/)){document.documentElement.className=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}}catch(e){}})();`,
-          }}
-        />
+        <ThemeDetectionScript />
       </head>
       <body>
-        <ThemeProvider defaultTheme={theme}>
-          <LocaleProvider defaultLocale={locale}>
-            <FontSizeProvider defaultFontSize={fontSize}>
-              <MotionProvider defaultMotion={motion}>
-                <FontFamilyProvider defaultFontFamily={fontFamily}>
-                  <UIThemeBridge>
-                    <AppShell>{children}</AppShell>
-                  </UIThemeBridge>
-                </FontFamilyProvider>
-              </MotionProvider>
-            </FontSizeProvider>
-          </LocaleProvider>
-        </ThemeProvider>
+        <PreferencesProviders
+          theme={theme}
+          locale={locale}
+          fontSize={fontSize}
+          motion={motion}
+          fontFamily={fontFamily}
+        >
+          <UIThemeBridge>
+            <AppShell>{children}</AppShell>
+          </UIThemeBridge>
+        </PreferencesProviders>
       </body>
     </html>
   );
