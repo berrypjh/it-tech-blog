@@ -1,0 +1,13 @@
+{
+  "name": "@it-tech-blog/ui",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@it-tech-blog/preferences": "workspace:*",
+    "@it-tech-blog/utils": "workspace:*"
+  }
+}
