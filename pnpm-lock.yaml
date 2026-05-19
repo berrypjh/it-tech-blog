@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@berrypjh/react-ui':
-        specifier: ^1.0.0
-        version: 1.0.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: ^1.0.1
+        version: 1.0.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@berrypjh/tsconfig':
         specifier: ^1.0.0
         version: 1.0.0
@@ -834,8 +834,8 @@ packages:
   '@berrypjh/prettier-config@1.0.0':
     resolution: {integrity: sha512-njPqLVTYA3qcvGlffHbSJNf0+teiXbCyL20F6Vd5PNnHZuu9dXhB2Wf9EUszaXeKwZefzRM7n+erWB3ga1VFtg==, tarball: https://npm.pkg.github.com/download/@berrypjh/prettier-config/1.0.0/e03c746fdbd9e3c7fee20e807124eba33b8004e2}
 
-  '@berrypjh/react-ui@1.0.0':
-    resolution: {integrity: sha512-LILfWUXZvD1ZWvydayNrtMb0XwRgKmdgDJuCn5pBqoTHXNo8FIpKtWdwT3NvWntRfgUVF2Qkp9EXmE7bRrLHFw==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.0.0/dce4dd389c6ca37a6dd750fca0c1b99dde096930}
+  '@berrypjh/react-ui@1.0.1':
+    resolution: {integrity: sha512-1NmVLQoNR5QRCXL6rOEVCzdXq3O9grB+/5krlAwsuOsoJTmOi8A+fAU+74NPDWM6C5/s1/PaS4svXAlDzytjWg==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.0.1/7bb9d7977225a5cf7fe59e35cecb96a317636f4b}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -8321,7 +8321,7 @@ snapshots:
 
   '@berrypjh/prettier-config@1.0.0': {}
 
-  '@berrypjh/react-ui@1.0.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@berrypjh/react-ui@1.0.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
