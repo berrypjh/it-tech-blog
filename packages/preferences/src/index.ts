@@ -6,4 +6,7 @@ export type { Locale } from './locale';
 export { LocaleProvider, useLocale } from './locale';
 export type { Motion } from './motion';
 export { MotionProvider, useMotion } from './motion';
+export { PreferencesProviders } from './PreferencesProviders';
+export type { Theme } from './theme';
 export { ThemeProvider, useTheme } from './theme';
+export { ThemeDetectionScript } from './ThemeDetectionScript';
