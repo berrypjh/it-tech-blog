@@ -1,16 +1,8 @@
 'use client';
 
 import type { Locale } from '@it-tech-blog/preferences';
-import { LocaleProvider, ThemeProvider, useTheme } from '@it-tech-blog/preferences';
-
-import { ThemeProvider as UIThemeProvider } from '@berrypjh/react-ui';
-
-const UIThemeBridge = ({ children }: { children: React.ReactNode }) => {
-  const { resolvedTheme } = useTheme();
-  return (
-    <UIThemeProvider mode={resolvedTheme === 'dark' ? 'dark' : 'light'}>{children}</UIThemeProvider>
-  );
-};
+import { LocaleProvider, ThemeProvider } from '@it-tech-blog/preferences';
+import { UIThemeBridge } from '@it-tech-blog/ui';
 
 export const ThemeClientProvider = ({
   children,

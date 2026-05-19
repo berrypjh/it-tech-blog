@@ -1,3 +1,4 @@
+import { ThemeDetectionScript } from '@it-tech-blog/preferences';
 import { getServerLocale, getServerTheme } from '@it-tech-blog/preferences/server';
 
 import { ThemeClientProvider } from '@/components/theme';
@@ -25,11 +26,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang={locale} className={theme}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(!document.cookie.match(/(?:^|;\\s*)theme=/)){document.documentElement.className=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}}catch(e){}})();`,
-          }}
-        />
+        <ThemeDetectionScript />
       </head>
       <body>
         <ThemeClientProvider defaultTheme={theme} defaultLocale={locale}>
