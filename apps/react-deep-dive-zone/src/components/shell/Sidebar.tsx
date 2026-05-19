@@ -1,15 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { useLocale } from '@it-tech-blog/preferences';
+import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
 import { cn } from '@it-tech-blog/utils';
 
-import { navData, type NavGroup, sidebarStrings } from '@/data';
-
-import { SettingsPopover } from './SettingsPopover';
+import { navData, sidebarStrings } from '@/data';
 
 /**
  * 네비게이션 그룹 제목을 파일시스템 경로처럼 보이는 슬러그로.
@@ -35,38 +33,13 @@ const groupSlugs = [
 
 const sectionNumber = (i: number) => i.toString().padStart(2, '0');
 
-const getInitialExpanded = (navGroups: NavGroup[], pathname: string): Set<number> => {
-  const activeIndex = navGroups.findIndex((group) =>
-    group.items.some((item) => pathname === `/${item.id}`),
-  );
-
-  return new Set([activeIndex >= 0 ? activeIndex : 0]);
-};
-
 export const Sidebar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const { locale } = useLocale();
-  const lang = (locale as 'ko' | 'en') ?? 'ko';
-  const currentNavData = navData[lang];
-  const t = sidebarStrings[lang];
-
-  const [expanded, setExpanded] = useState<Set<number>>(() =>
-    getInitialExpanded(currentNavData, pathname),
-  );
-
-  const toggle = (index: number) => {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-
-      return next;
-    });
-  };
-
-  const anyExpanded = expanded.size > 0;
-  const toggleAll = () =>
-    setExpanded(anyExpanded ? new Set() : new Set(currentNavData.map((_, i) => i)));
+  const currentNavData = navData[locale];
+  const t = sidebarStrings[locale];
+  const { expanded, toggle, toggleAll, anyExpanded } = useSidebarNav(currentNavData, pathname);
 
   return (
     <aside
@@ -80,7 +53,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       <div className="px-lg pt-lg pb-md border-b border-dashed border-[var(--term-border)]">
         <div className="flex items-center justify-between">
           <Link
-            href="/intro"
+            href="/why-source"
             className="flex items-center gap-sm text-xsm leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]"
           >
             <span className="text-[var(--term-accent)] font-bold">$</span>
@@ -88,7 +61,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
             <span className="term-cursor" aria-hidden="true" />
           </Link>
 
-          <SettingsPopover />
+          <SettingsPopover onLocaleChange={() => router.refresh()} />
         </div>
 
         <p className="mt-sm text-[10px] text-[var(--term-muted)] leading-snug">

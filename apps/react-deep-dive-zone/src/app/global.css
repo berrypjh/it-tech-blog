@@ -125,6 +125,19 @@ body {
     'calt' 0;
 }
 
+/* app-shell 토큰 매핑 — 터미널 팔레트 기반 */
+:root {
+  --shell-bg: var(--term-bg);
+  --shell-fg: var(--term-fg);
+  --shell-border: var(--term-border);
+  --shell-overlay: rgba(0, 0, 0, 0.6);
+  --shell-accent: var(--term-accent);
+  --shell-sidebar-w: 300px;
+  --shell-header-h: 48px;
+  --ui-skip-link-bg: var(--term-accent);
+  --ui-skip-link-fg: var(--term-bg);
+}
+
 /* 깜빡이는 커서 — 헤더 프롬프트용 */
 @keyframes term-blink {
   0%,
