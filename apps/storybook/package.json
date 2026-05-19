@@ -1,0 +1,10 @@
+{
+  "name": "@it-tech-blog/storybook",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@it-tech-blog/preferences": "workspace:*",
+    "@it-tech-blog/ui": "workspace:*",
+    "@it-tech-blog/utils": "workspace:*"
+  }
+}

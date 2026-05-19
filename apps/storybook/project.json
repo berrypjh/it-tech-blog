@@ -1,0 +1,28 @@
+{
+  "name": "@it-tech-blog/storybook",
+  "root": "apps/storybook",
+  "sourceRoot": "apps/storybook",
+  "projectType": "application",
+  "targets": {
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "storybook dev -p 6006 -c apps/storybook/.storybook"
+      },
+      "continuous": true
+    },
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "storybook build -c apps/storybook/.storybook -o apps/storybook/storybook-static"
+      },
+      "outputs": ["{workspaceRoot}/apps/storybook/storybook-static"]
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook --config-dir apps/storybook/.storybook"
+      }
+    }
+  }
+}

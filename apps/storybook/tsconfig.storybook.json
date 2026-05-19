@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "out-tsc/storybook",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "noEmit": true,
+    "composite": false,
+    "emitDeclarationOnly": false,
+    "declarationMap": false,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  },
+  "exclude": ["src/**/*.spec.*", "src/**/*.test.*"],
+  "include": [
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../packages/ui/src/**/*.stories.ts",
+    "../../packages/ui/src/**/*.stories.tsx"
+  ]
+}
