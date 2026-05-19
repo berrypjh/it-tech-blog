@@ -13,7 +13,7 @@ export const PageSection = ({
     <section aria-labelledby={`heading-${id}`} className={className}>
       <h2
         id={`heading-${id}`}
-        className="text-sm font-semiBold text-text-default mb-sml pb-sm border-b border-stroke-default"
+        className="text-sm font-semiBold text-text-default mb-md pb-sm border-b border-stroke-default"
       >
         {title}
       </h2>

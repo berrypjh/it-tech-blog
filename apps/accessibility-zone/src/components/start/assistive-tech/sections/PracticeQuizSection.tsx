@@ -34,7 +34,7 @@ const AccessibleNameQuizCard = ({
 }) => {
   const [selected, setSelected] = useState<AccessibleNameAnswer>(null);
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <div className="flex items-start gap-2">
         <span
           aria-hidden="true"
@@ -84,7 +84,7 @@ const HeadingStructureQuizCard = ({
 }) => {
   const [selected, setSelected] = useState<string | null>(null);
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <div className="flex items-start gap-2">
         <span
           aria-hidden="true"
@@ -137,7 +137,7 @@ const AccessibleInputQuizCard = ({
   const [selected, setSelected] = useState<InputAnswer>(null);
   const afterId = 'quiz-accessible-input';
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <div className="flex items-start gap-2">
         <span
           aria-hidden="true"
@@ -155,7 +155,7 @@ const AccessibleInputQuizCard = ({
           aria-checked={selected === 'before'}
           onClick={() => setSelected('before')}
           className={cn(
-            'flex flex-col gap-1.5 rounded-md border px-sml py-sml text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
+            'flex flex-col gap-1.5 rounded-md border px-md py-md text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
             selected === 'before' && 'border-stroke-error bg-error-er100/40 dark:bg-error-er900/30',
             selected !== 'before' &&
               'border-stroke-default bg-background-surface hover:border-stroke-primary',
@@ -183,7 +183,7 @@ const AccessibleInputQuizCard = ({
           aria-checked={selected === 'after'}
           onClick={() => setSelected('after')}
           className={cn(
-            'flex flex-col gap-1.5 rounded-md border px-sml py-sml text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
+            'flex flex-col gap-1.5 rounded-md border px-md py-md text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
             selected === 'after' &&
               'border-stroke-success bg-success-su100/40 dark:bg-success-su900/30',
             selected !== 'after' &&
@@ -240,7 +240,7 @@ export const PracticeQuizSection = ({ content }: { content: AssistiveTechContent
       aria-labelledby="quiz-heading"
       className="rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm sm:p-xl"
     >
-      <header className="mb-mdl flex flex-col items-start justify-between gap-sm sm:flex-row sm:items-center">
+      <header className="mb-lg flex flex-col items-start justify-between gap-sm sm:flex-row sm:items-center">
         <div className="flex flex-col gap-1">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-rounded bg-background-default px-2 py-0.5 text-[0.625rem] font-extraBold uppercase tracking-wider text-text-primary">
             <span className="inline-flex h-4 w-4 items-center justify-center rounded-rounded bg-background-primary text-[0.5625rem] text-text-contrastText">

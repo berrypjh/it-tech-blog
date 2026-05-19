@@ -84,7 +84,7 @@ export const ScreenReaderExperienceSection = ({
       aria-labelledby="screen-reader-heading"
       className="rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm sm:p-xl"
     >
-      <header className="mb-mdl flex flex-col items-start justify-between gap-sm sm:flex-row sm:items-center">
+      <header className="mb-lg flex flex-col items-start justify-between gap-sm sm:flex-row sm:items-center">
         <div className="flex flex-col gap-1">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-rounded bg-background-default px-2 py-0.5 text-[0.625rem] font-extraBold uppercase tracking-wider text-text-primary">
             <span className="inline-flex h-4 w-4 items-center justify-center rounded-rounded bg-background-primary text-[0.5625rem] text-text-contrastText">
@@ -106,7 +106,7 @@ export const ScreenReaderExperienceSection = ({
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1.5 rounded-md border border-stroke-default bg-background-surface px-mdl py-sml text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-1.5 rounded-md border border-stroke-default bg-background-surface px-lg py-md text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
           >
             <ResetIcon />
             {content.resetLabel}
@@ -115,7 +115,7 @@ export const ScreenReaderExperienceSection = ({
             type="button"
             onClick={handleStart}
             aria-pressed={isReading}
-            className="inline-flex items-center gap-1.5 rounded-md bg-background-primary px-mdl py-sml text-xsm font-semiBold text-text-contrastText shadow-sm transition-colors hover:bg-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-1.5 rounded-md bg-background-primary px-lg py-md text-xsm font-semiBold text-text-contrastText shadow-sm transition-colors hover:bg-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
           >
             {isReading ? <PauseIcon /> : <PlayIcon />}
             {isReading ? content.stopLabel : content.startLabel}

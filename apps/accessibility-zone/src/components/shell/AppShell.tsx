@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 
 import { HamburgerIcon } from '@it-tech-blog/icons';
 
+import { SkipLink } from '@berrypjh/react-ui';
+
 import { Sidebar } from './Sidebar';
 
 export const AppShell = ({ children }: { children: React.ReactNode }) => {
@@ -17,12 +19,7 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex h-screen w-full max-w-[1440px] mx-auto bg-background-surface text-text-default overflow-hidden">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-mdl focus:left-mdl focus:px-mdl focus:py-sm focus:rounded-md focus:bg-background-primary focus:text-text-contrastText focus:text-xsm focus:font-medium focus:shadow-lg"
-      >
-        본문으로 건너뛰기
-      </a>
+      <SkipLink targetId="main-content">본문으로 건너뛰기</SkipLink>
 
       {/* 데스크탑 사이드바 */}
       <div className="hidden lg:block w-[280px] shrink-0 h-full border-r border-stroke-default relative">
@@ -48,12 +45,12 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
 
       <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
         {/* 모바일 헤더 */}
-        <header className="lg:hidden flex items-center gap-sml px-mdl h-14 border-b border-stroke-default bg-background-surface shrink-0">
+        <header className="lg:hidden flex items-center gap-md px-lg h-14 border-b border-stroke-default bg-background-surface shrink-0">
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="메뉴 열기"
             aria-expanded={mobileOpen}
-            className="p-xsm rounded-md text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary"
+            className="p-sm rounded-md text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary"
           >
             <HamburgerIcon />
           </button>

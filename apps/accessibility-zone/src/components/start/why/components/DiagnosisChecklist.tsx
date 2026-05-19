@@ -72,7 +72,7 @@ export const DiagnosisChecklist = ({
 }: Props) => {
   const groupId = useId();
   return (
-    <div className="flex h-full flex-col gap-sml">
+    <div className="flex h-full flex-col gap-md">
       <header className="flex items-center gap-2">
         <span className="flex h-9 w-9 items-center justify-center rounded-md bg-success-su100 text-text-success dark:bg-success-su900/40">
           <ChecklistIcon />

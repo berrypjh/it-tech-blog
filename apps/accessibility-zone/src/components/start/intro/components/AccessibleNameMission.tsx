@@ -48,7 +48,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
   const isCorrect = selected === content.correctIndex;
 
   return (
-    <article className="flex h-full flex-col gap-sml rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <header className="space-y-1">
         <p className="text-[0.625rem] font-semiBold uppercase tracking-wide text-text-secondary">
           mission 2
@@ -62,7 +62,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
         <button
           type="button"
           aria-label={content.buttonLabel}
-          className="inline-flex items-center gap-1.5 rounded-md bg-background-primary px-mdl py-sml text-xsm font-semiBold text-text-contrastText shadow-sm hover:bg-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-1.5 rounded-md bg-background-primary px-lg py-md text-xsm font-semiBold text-text-contrastText shadow-sm hover:bg-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
         >
           <CartIcon />
           {content.buttonLabel}

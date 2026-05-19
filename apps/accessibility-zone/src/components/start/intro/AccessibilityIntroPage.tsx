@@ -8,8 +8,8 @@ import { introContent, type IntroLocale } from './content';
 export const AccessibilityIntroPage = ({ locale }: { locale: IntroLocale }) => {
   const c = introContent[locale] ?? introContent.ko;
   return (
-    <div className="relative mx-auto w-full max-w-[1280px] px-mdl py-xl sm:px-xlg lg:px-xxl lg:py-xxl">
-      <div className="flex flex-col gap-xl lg:gap-xxl">
+    <div className="relative mx-auto w-full max-w-[1280px] px-lg py-xl sm:px-xl lg:px-2xl lg:py-2xl">
+      <div className="flex flex-col gap-xl lg:gap-2xl">
         <IntroHeroSection content={c.hero} />
         <CorePrinciplesSection content={c.principles} />
         <BeforeAfterSection content={c.comparison} />

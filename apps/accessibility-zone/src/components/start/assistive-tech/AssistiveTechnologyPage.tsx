@@ -12,8 +12,8 @@ import { assistiveTechContent, type AssistiveTechLocale } from './content';
 export const AssistiveTechnologyPage = ({ locale }: { locale: AssistiveTechLocale }) => {
   const c = assistiveTechContent[locale] ?? assistiveTechContent.ko;
   return (
-    <div className="relative mx-auto w-full max-w-[1280px] px-mdl py-xl sm:px-xlg lg:px-xxl lg:py-xxl">
-      <div className="flex flex-col gap-xl lg:gap-xxl">
+    <div className="relative mx-auto w-full max-w-[1280px] px-lg py-xl sm:px-xl lg:px-2xl lg:py-2xl">
+      <div className="flex flex-col gap-xl lg:gap-2xl">
         <AssistiveTechnologyHeroSection content={c.hero} />
         <AssistiveTechnologyTypesSection content={c.types} />
         <ScreenReaderExperienceSection content={c.screenReader} />

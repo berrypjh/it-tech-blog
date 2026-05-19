@@ -25,7 +25,7 @@ const NotFoundPage = async () => {
 
   return (
     <PageContainer>
-      <div className="flex flex-col items-start gap-mdl py-4xl">
+      <div className="flex flex-col items-start gap-lg py-3xl">
         <span className="font-mono text-5xl font-black text-text-primary">{c.code}</span>
 
         <h1 className="text-xl font-bold text-text-default">{c.title}</h1>

@@ -38,7 +38,7 @@ type Props = {
 
 export const SimulationExplanationPanel = ({ mode, labels }: Props) => {
   return (
-    <div className="flex h-full flex-col gap-mdl">
+    <div className="flex h-full flex-col gap-lg">
       <section>
         <h3 className="mb-sm flex items-center gap-1.5 text-sm font-bold text-text-default">
           <span

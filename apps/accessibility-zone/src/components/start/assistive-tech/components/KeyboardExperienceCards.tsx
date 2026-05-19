@@ -34,7 +34,7 @@ const CardShell = ({
 }) => (
   <article
     className={cn(
-      'flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2',
+      'flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2',
       className,
     )}
   >
@@ -83,7 +83,7 @@ export const FocusRingCard = ({
   const id = 'focus-ring-demo-input';
   return (
     <CardShell card={card}>
-      <div className="mt-auto flex flex-col gap-sm rounded-md border border-stroke-default bg-background-default/40 p-sml">
+      <div className="mt-auto flex flex-col gap-sm rounded-md border border-stroke-default bg-background-default/40 p-md">
         <label htmlFor={id} className="text-[0.625rem] font-semiBold text-text-light">
           {focusRing.searchLabel}
         </label>
@@ -153,7 +153,7 @@ export const FocusTrapModalCard = ({
       <div
         role="group"
         aria-label={focusTrap.modalTitle}
-        className="rounded-md border border-stroke-default bg-background-surface p-sml shadow-md"
+        className="rounded-md border border-stroke-default bg-background-surface p-md shadow-md"
       >
         <p className="text-xsm font-bold text-text-default">{focusTrap.modalTitle}</p>
         <p className="mt-1 text-[0.6875rem] leading-relaxed text-text-light">

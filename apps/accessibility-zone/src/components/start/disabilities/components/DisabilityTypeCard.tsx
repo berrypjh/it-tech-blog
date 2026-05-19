@@ -25,7 +25,7 @@ const toneMap = {
 export const DisabilityTypeCard = ({ card, icon }: Props) => {
   const t = toneMap[card.tone];
   return (
-    <article className="flex h-full flex-col gap-sml rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
+    <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
       <div
         className={cn(
           'flex h-11 w-11 items-center justify-center rounded-rounded',

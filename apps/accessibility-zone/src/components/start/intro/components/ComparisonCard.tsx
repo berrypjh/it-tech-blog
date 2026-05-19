@@ -54,7 +54,7 @@ export const ComparisonCard = ({
 }: Props) => {
   return (
     <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
-      <header className="flex items-start gap-sml">
+      <header className="flex items-start gap-md">
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-rounded bg-background-primary text-xsm font-bold text-text-contrastText">
           {index + 1}
         </span>
@@ -62,7 +62,7 @@ export const ComparisonCard = ({
       </header>
 
       <div className="grid grid-cols-1 gap-md sm:grid-cols-2 sm:divide-x sm:divide-stroke-default sm:gap-0">
-        <div className="flex flex-col gap-sml pb-md sm:pb-0 sm:pr-lg">
+        <div className="flex flex-col gap-md pb-md sm:pb-0 sm:pr-lg">
           <div className="flex items-center gap-1 text-[0.625rem] font-semiBold uppercase tracking-wide text-text-error">
             <span
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-error-er100 text-text-error"
@@ -74,7 +74,7 @@ export const ComparisonCard = ({
           </div>
           <div
             className={cn(
-              'flex min-h-[5rem] items-center rounded-md border border-stroke-default/70 bg-background-default/40 p-sml',
+              'flex min-h-[5rem] items-center rounded-md border border-stroke-default/70 bg-background-default/40 p-md',
             )}
           >
             {beforeVisual}
@@ -82,7 +82,7 @@ export const ComparisonCard = ({
           <p className="text-[0.6875rem] leading-relaxed text-text-error">{beforeNote}</p>
         </div>
 
-        <div className="flex flex-col gap-sml border-t border-stroke-default pt-md sm:border-t-0 sm:pl-lg sm:pt-0">
+        <div className="flex flex-col gap-md border-t border-stroke-default pt-md sm:border-t-0 sm:pl-lg sm:pt-0">
           <div className="flex items-center gap-1 text-[0.625rem] font-semiBold uppercase tracking-wide text-text-success">
             <span
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-success-su100 text-text-success"
@@ -92,7 +92,7 @@ export const ComparisonCard = ({
             </span>
             {afterLabel}
           </div>
-          <div className="flex min-h-[5rem] items-center rounded-md border border-stroke-success/40 bg-success-su100/30 p-sml">
+          <div className="flex min-h-[5rem] items-center rounded-md border border-stroke-success/40 bg-success-su100/30 p-md">
             {afterVisual}
           </div>
           <p className="text-[0.6875rem] leading-relaxed text-text-success">{afterNote}</p>

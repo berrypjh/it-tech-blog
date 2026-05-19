@@ -46,7 +46,7 @@ export const SelfDiagnosisSection = ({ content }: { content: ImportanceContent['
       <h2 id="diagnosis-heading" className="sr-only">
         {content.title}
       </h2>
-      <div className="mb-mdl">
+      <div className="mb-lg">
         <span className="inline-flex w-fit items-center gap-1.5 rounded-rounded bg-background-default px-2 py-0.5 text-[0.625rem] font-extraBold uppercase tracking-wider text-text-primary">
           <span className="inline-flex h-4 w-4 items-center justify-center rounded-rounded bg-background-primary text-[0.5625rem] text-text-contrastText">
             04

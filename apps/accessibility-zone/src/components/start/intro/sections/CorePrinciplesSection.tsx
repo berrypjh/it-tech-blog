@@ -83,7 +83,7 @@ export const CorePrinciplesSection = ({ content }: { content: IntroContent['prin
       aria-labelledby="principles-heading"
       className="rounded-xl border border-stroke-default bg-background-default/40 p-lg sm:p-xl"
     >
-      <header className="mb-mdl flex flex-col gap-1">
+      <header className="mb-lg flex flex-col gap-1">
         <span className="inline-flex w-fit items-center gap-1.5 rounded-rounded bg-background-surface px-2 py-0.5 text-[0.625rem] font-extraBold uppercase tracking-wider text-text-primary">
           <span className="inline-flex h-4 w-4 items-center justify-center rounded-rounded bg-background-primary text-[0.5625rem] text-text-contrastText">
             01

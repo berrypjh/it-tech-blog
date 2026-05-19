@@ -33,7 +33,7 @@ const toneMap = {
 export const AssistiveTechnologyCard = ({ card, icon }: Props) => {
   const t = toneMap[card.tone];
   return (
-    <article className="group flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
+    <article className="group flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
       <div className="flex items-center justify-between">
         <span
           aria-hidden="true"
@@ -55,7 +55,7 @@ export const AssistiveTechnologyCard = ({ card, icon }: Props) => {
       <h3 className="text-md font-bold text-text-default">{card.title}</h3>
       <p className="text-xsm leading-relaxed text-text-light">{card.body}</p>
 
-      <div className="mt-auto flex flex-col gap-sml border-t border-stroke-default/60 pt-sm">
+      <div className="mt-auto flex flex-col gap-md border-t border-stroke-default/60 pt-sm">
         <div>
           <p className="text-[0.625rem] font-semiBold uppercase tracking-wide text-text-light/80">
             {card.userLabel}

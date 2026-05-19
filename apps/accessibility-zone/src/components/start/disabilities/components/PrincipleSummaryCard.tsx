@@ -14,7 +14,7 @@ const CheckIcon = () => (
 
 export const PrincipleSummaryCard = ({ card }: { card: PrincipleCard }) => {
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-success/30 bg-success-su100/30 p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-success hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2 dark:bg-success-su900/20">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-success/30 bg-success-su100/30 p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-success hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2 dark:bg-success-su900/20">
       <span
         aria-hidden="true"
         className="flex h-10 w-10 items-center justify-center rounded-rounded bg-background-success text-text-contrastText shadow-sm"

@@ -31,7 +31,7 @@ const BulbIcon = () => (
 
 export const SituationalBarrierCard = ({ card, illustration }: Props) => {
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md">
       <div
         className="flex h-24 items-center justify-center rounded-md bg-background-default/60"
         aria-hidden="true"

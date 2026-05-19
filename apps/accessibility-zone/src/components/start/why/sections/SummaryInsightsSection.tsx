@@ -36,7 +36,7 @@ const CheckIcon = () => (
 );
 
 const SummaryCard = ({ summary }: { summary: ImportanceContent['summary'] }) => (
-  <article className="flex h-full flex-col gap-sml rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+  <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
     <header className="flex items-center gap-2">
       <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary-pr100 text-text-primary dark:bg-primary-pr900/40">
         <DocIcon />
@@ -64,7 +64,7 @@ const SummaryCard = ({ summary }: { summary: ImportanceContent['summary'] }) => 
 );
 
 const ThreeInsightsCard = ({ insights }: { insights: ImportanceContent['insights'] }) => (
-  <article className="flex h-full flex-col gap-sml rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+  <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
     <header className="flex items-center gap-2">
       <span className="flex h-9 w-9 items-center justify-center rounded-md bg-secondary-se100 text-text-secondary dark:bg-secondary-se900/40">
         <SparkleIcon />

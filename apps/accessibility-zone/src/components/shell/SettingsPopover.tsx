@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { SettingsIcon } from '@it-tech-blog/icons';
@@ -14,6 +14,14 @@ import {
   useTheme,
 } from '@it-tech-blog/preferences';
 import { cn } from '@it-tech-blog/utils';
+
+import {
+  Popover,
+  PopoverPanel,
+  PopoverTrigger,
+  SegmentControl,
+  type SegmentOption,
+} from '@berrypjh/react-ui';
 
 const strings = {
   ko: {
@@ -52,16 +60,8 @@ const strings = {
   },
 };
 
-const fontSizeOptions: { value: FontSize; label: string; style: string }[] = [
-  { value: 'sm', label: 'A', style: 'text-xxsm' },
-  { value: 'md', label: 'A', style: 'text-xsm' },
-  { value: 'lg', label: 'A', style: 'text-sm' },
-];
-
-const segmentBase =
-  'flex-1 py-1.5 rounded-xs text-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary';
-const segmentActive = 'bg-background-primary text-text-contrastText';
-const segmentInactive = 'text-text-light hover:text-text-default hover:bg-background-grey/15';
+const sectionLabelClass =
+  'text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-sm';
 
 export const SettingsPopover = () => {
   const router = useRouter();
@@ -92,211 +92,98 @@ export const SettingsPopover = () => {
     setMotion('default');
     handleLocaleChange('ko');
   };
-  const panelRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
+  const themeOptions: SegmentOption<'light' | 'dark'>[] = [
+    { value: 'light', label: t.light },
+    { value: 'dark', label: t.dark },
+  ];
 
-    const handler = (e: MouseEvent) => {
-      if (
-        panelRef.current &&
-        !panelRef.current.contains(e.target as Node) &&
-        !triggerRef.current?.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
+  const localeOptions: SegmentOption<'ko' | 'en'>[] = [
+    { value: 'ko', label: '한국어' },
+    { value: 'en', label: 'English' },
+  ];
 
-    document.addEventListener('mousedown', handler);
+  const fontSizeOptions: SegmentOption<FontSize>[] = [
+    { value: 'sm', label: 'A', ariaLabel: t.fontSizeSm, className: 'text-xxsm' },
+    { value: 'md', label: 'A', ariaLabel: t.fontSizeMd, className: 'text-xsm' },
+    { value: 'lg', label: 'A', ariaLabel: t.fontSizeLg, className: 'text-sm' },
+  ];
 
-    return () => document.removeEventListener('mousedown', handler);
-  }, [open]);
+  const fontFamilyOptions: SegmentOption<FontFamily>[] = [
+    { value: 'sans', label: 'Sans' },
+    { value: 'serif', label: 'Serif' },
+    { value: 'mono', label: 'Mono' },
+  ];
 
-  useEffect(() => {
-    if (!open) return;
-
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-
-    document.addEventListener('keydown', handler);
-
-    return () => document.removeEventListener('keydown', handler);
-  }, [open]);
+  const motionOptions: SegmentOption<'default' | 'reduce'>[] = [
+    { value: 'default', label: t.motionDefault },
+    { value: 'reduce', label: t.motionReduce },
+  ];
 
   return (
-    <div className="relative">
-      <button
-        ref={triggerRef}
-        onClick={() => setOpen((prev) => !prev)}
-        aria-label={t.label}
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        className="w-9 h-9 flex items-center justify-center rounded-sm text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors"
-      >
-        <SettingsIcon />
-      </button>
+    <Popover open={open} onOpenChange={setOpen}>
+      <div className="relative">
+        <PopoverTrigger>
+          <button
+            aria-label={t.label}
+            className="w-9 h-9 flex items-center justify-center rounded-sm text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors"
+          >
+            <SettingsIcon />
+          </button>
+        </PopoverTrigger>
 
-      {open && (
-        <div
-          ref={panelRef}
-          role="dialog"
+        <PopoverPanel
           aria-label={t.panel}
-          className="absolute right-0 top-11 z-50 w-52 bg-background-surface border border-stroke-default rounded-md shadow-lg p-sml space-y-sml"
+          className="absolute right-0 top-11 z-50 w-52 space-y-md text-xxsm"
         >
-          {/* 테마 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
-              {t.theme}
-            </p>
-
-            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
-              <button
-                onClick={() => setTheme('light')}
-                aria-pressed={resolvedTheme === 'light'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  resolvedTheme === 'light' ? segmentActive : segmentInactive,
-                )}
-              >
-                {t.light}
-              </button>
-
-              <button
-                onClick={() => setTheme('dark')}
-                aria-pressed={resolvedTheme === 'dark'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  resolvedTheme === 'dark' ? segmentActive : segmentInactive,
-                )}
-              >
-                {t.dark}
-              </button>
-            </div>
+            <p className={sectionLabelClass}>{t.theme}</p>
+            <SegmentControl
+              aria-label={t.theme}
+              value={resolvedTheme}
+              onChange={setTheme}
+              options={themeOptions}
+            />
           </div>
 
-          {/* 언어 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
-              {t.language}
-            </p>
-
-            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
-              <button
-                onClick={() => handleLocaleChange('ko')}
-                aria-pressed={locale === 'ko'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  locale === 'ko' ? segmentActive : segmentInactive,
-                )}
-              >
-                한국어
-              </button>
-
-              <button
-                onClick={() => handleLocaleChange('en')}
-                aria-pressed={locale === 'en'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  locale === 'en' ? segmentActive : segmentInactive,
-                )}
-              >
-                English
-              </button>
-            </div>
+            <p className={sectionLabelClass}>{t.language}</p>
+            <SegmentControl
+              aria-label={t.language}
+              value={(locale as 'ko' | 'en') ?? 'ko'}
+              onChange={handleLocaleChange}
+              options={localeOptions}
+            />
           </div>
 
-          {/* 글자 크기 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
-              {t.fontSize}
-            </p>
-
-            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
-              {fontSizeOptions.map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setFontSize(opt.value)}
-                  aria-pressed={fontSize === opt.value}
-                  aria-label={
-                    opt.value === 'sm'
-                      ? t.fontSizeSm
-                      : opt.value === 'md'
-                        ? t.fontSizeMd
-                        : t.fontSizeLg
-                  }
-                  className={cn(
-                    segmentBase,
-                    opt.style,
-                    fontSize === opt.value ? segmentActive : segmentInactive,
-                  )}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
+            <p className={sectionLabelClass}>{t.fontSize}</p>
+            <SegmentControl
+              aria-label={t.fontSize}
+              value={fontSize}
+              onChange={setFontSize}
+              options={fontSizeOptions}
+            />
           </div>
 
-          {/* 폰트 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
-              {t.font}
-            </p>
-
-            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
-              {(['sans', 'serif', 'mono'] as FontFamily[]).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFontFamily(f)}
-                  aria-pressed={fontFamily === f}
-                  className={cn(
-                    segmentBase,
-                    'text-xxsm',
-                    fontFamily === f ? segmentActive : segmentInactive,
-                  )}
-                >
-                  {f === 'sans' ? 'Sans' : f === 'serif' ? 'Serif' : 'Mono'}
-                </button>
-              ))}
-            </div>
+            <p className={sectionLabelClass}>{t.font}</p>
+            <SegmentControl
+              aria-label={t.font}
+              value={fontFamily}
+              onChange={setFontFamily}
+              options={fontFamilyOptions}
+            />
           </div>
 
-          {/* 모션 */}
           <div>
-            <p className="text-[10px] font-semiBold text-text-light uppercase tracking-wider mb-xsm">
-              {t.motion}
-            </p>
-
-            <div className="flex gap-xxsm bg-background-grey/15 rounded-xs p-0.5">
-              <button
-                onClick={() => setMotion('default')}
-                aria-pressed={motion === 'default'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  motion === 'default' ? segmentActive : segmentInactive,
-                )}
-              >
-                {t.motionDefault}
-              </button>
-
-              <button
-                onClick={() => setMotion('reduce')}
-                aria-pressed={motion === 'reduce'}
-                className={cn(
-                  segmentBase,
-                  'text-xxsm',
-                  motion === 'reduce' ? segmentActive : segmentInactive,
-                )}
-              >
-                {t.motionReduce}
-              </button>
-            </div>
+            <p className={sectionLabelClass}>{t.motion}</p>
+            <SegmentControl
+              aria-label={t.motion}
+              value={motion}
+              onChange={setMotion}
+              options={motionOptions}
+            />
           </div>
 
           <div className="h-px bg-stroke-default" />
@@ -313,8 +200,8 @@ export const SettingsPopover = () => {
           >
             {t.reset}
           </button>
-        </div>
-      )}
-    </div>
+        </PopoverPanel>
+      </div>
+    </Popover>
   );
 };

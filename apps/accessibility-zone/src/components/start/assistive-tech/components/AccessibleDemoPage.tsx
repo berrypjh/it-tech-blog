@@ -91,7 +91,7 @@ export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
   const inputId = 'sr-demo-email';
   return (
     <div className="overflow-hidden rounded-xl border border-stroke-default bg-background-surface shadow-md">
-      <div className="flex items-center gap-2 border-b border-stroke-default bg-background-default px-mdl py-2">
+      <div className="flex items-center gap-2 border-b border-stroke-default bg-background-default px-lg py-2">
         <span className="flex gap-1">
           <span className="h-2.5 w-2.5 rounded-rounded bg-stroke-default" />
           <span className="h-2.5 w-2.5 rounded-rounded bg-stroke-default" />
@@ -105,7 +105,7 @@ export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
         </span>
       </div>
 
-      <ul className="flex flex-col gap-1.5 p-mdl">
+      <ul className="flex flex-col gap-1.5 p-lg">
         {items.map((item) => {
           const isActive = item.index === activeIndex;
           if (item.type === 'heading') {

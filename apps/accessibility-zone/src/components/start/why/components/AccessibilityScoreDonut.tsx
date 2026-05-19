@@ -80,7 +80,7 @@ export const AccessibilityScoreDonut = ({ score, counts, diagnosis }: Props) => 
   const level = scoreLevel(score, diagnosis.scoreLevels);
 
   return (
-    <div className="flex h-full flex-col gap-sml">
+    <div className="flex h-full flex-col gap-md">
       <header className="flex items-center justify-between">
         <h3 className="text-sm font-bold text-text-default sm:text-md">{diagnosis.scoreTitle}</h3>
         <span

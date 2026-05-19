@@ -45,7 +45,7 @@ export const PreviewControlBar = ({
 }: Props) => {
   const contrastSliderId = 'simulator-contrast-slider';
   return (
-    <div className="flex flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-mdl">
+    <div className="flex flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-lg">
       <div className="flex min-w-0 flex-1 items-center gap-sm">
         <label
           htmlFor={contrastSliderId}

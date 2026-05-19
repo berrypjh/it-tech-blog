@@ -80,7 +80,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       )}
     >
       {/* 헤더 */}
-      <div className="px-lg pt-lg pb-mdl space-y-sml">
+      <div className="px-lg pt-lg pb-lg space-y-md">
         <div className="flex items-center justify-between">
           <Link href="/intro" className="flex items-center gap-sm group">
             <div className="w-7 h-7 rounded bg-background-primary group-hover:bg-primary-pr700 transition-colors flex items-center justify-center">
@@ -99,10 +99,10 @@ export const Sidebar = ({ className }: { className?: string }) => {
       <div className="h-px bg-stroke-default mx-lg" />
 
       {/* 모든 섹션 확장/축소 버튼 */}
-      <div className="flex justify-end px-sml pt-xsm">
+      <div className="flex justify-end px-md pt-sm">
         <button
           onClick={toggleAll}
-          className="flex items-center gap-xxsm px-xsm py-xxsm rounded text-text-light/40 hover:text-text-light hover:bg-background-grey/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
+          className="flex items-center gap-xs px-sm py-xs rounded text-text-light/40 hover:text-text-light hover:bg-background-grey/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
         >
           {anyExpanded ? <CollapseAllIcon /> : <ExpandAllIcon />}
 
@@ -111,7 +111,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       </div>
 
       {/* nav */}
-      <nav className="flex-1 overflow-y-auto py-xxsm" aria-label={t.menu}>
+      <nav className="flex-1 overflow-y-auto py-xs" aria-label={t.menu}>
         {currentNavData.map((group, groupIndex) => {
           const isExpanded = expanded.has(groupIndex);
           const panelId = `nav-panel-${groupIndex}`;
@@ -159,14 +159,14 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 )}
               >
                 <div className="overflow-hidden">
-                  <ul className="px-mdl pb-sm pt-0.5 space-y-px">
+                  <ul className="px-lg pb-sm pt-0.5 space-y-px">
                     {group.items.map((item) => {
                       const isActive = pathname === `/${item.id}`;
 
                       const badge = item.badge ? (
                         <span
                           className={cn(
-                            'ml-sm shrink-0 text-[10px] px-xsm py-0.5 rounded-xs font-bold uppercase tracking-wide',
+                            'ml-sm shrink-0 text-[10px] px-sm py-0.5 rounded-xs font-bold uppercase tracking-wide',
                             item.badgeColor === 'warning' && 'bg-warning-wa100 text-text-warning',
                             item.badgeColor === 'purple' &&
                               'bg-secondary-se100 text-text-secondary',
@@ -210,7 +210,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       <div className="h-px bg-stroke-default mx-lg" />
 
       {/* 홈으로 */}
-      <div className="px-lg py-sml">
+      <div className="px-lg py-md">
         <a
           href="/"
           className="flex items-center gap-sm text-xxsm text-text-light/50 hover:text-text-light transition-colors group"

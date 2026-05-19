@@ -37,7 +37,7 @@ export const ScreenReaderLogPanel = ({ content, activeIndex }: Props) => {
     .replace('{total}', String(total));
 
   return (
-    <div className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-neutral-ne900 p-mdl text-neutral-ne100 shadow-md dark:bg-neutral-ne100 dark:text-neutral-ne900">
+    <div className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-neutral-ne900 p-lg text-neutral-ne100 shadow-md dark:bg-neutral-ne100 dark:text-neutral-ne900">
       <header className="flex items-center justify-between gap-2">
         <h3 className="text-sm font-bold text-neutral-ne100 dark:text-neutral-ne900 sm:text-md">
           {content.logTitle}

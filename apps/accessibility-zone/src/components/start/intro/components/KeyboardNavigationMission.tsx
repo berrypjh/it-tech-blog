@@ -13,7 +13,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
   const statusMessage = content.statusTemplate.replace('{n}', String(focusIndex + 1));
 
   return (
-    <article className="flex h-full flex-col gap-sml rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <header className="flex items-start justify-between gap-sm">
         <div className="space-y-1">
           <p className="text-[0.625rem] font-semiBold uppercase tracking-wide text-text-primary">

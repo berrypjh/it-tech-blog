@@ -28,7 +28,7 @@ const CheckIcon = () => (
 
 export const AccessibilityProblemCard = ({ card, icon, problemLabel, solutionLabel }: Props) => {
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md">
       <span
         aria-hidden="true"
         className="flex h-9 w-9 items-center justify-center rounded-md bg-error-er100 text-text-error"
@@ -41,7 +41,7 @@ export const AccessibilityProblemCard = ({ card, icon, problemLabel, solutionLab
       </h3>
       <p className="text-xsm leading-relaxed text-text-light">{card.body}</p>
 
-      <div className="mt-auto flex flex-col gap-sml border-t border-stroke-default/60 pt-sm">
+      <div className="mt-auto flex flex-col gap-md border-t border-stroke-default/60 pt-sm">
         <div>
           <p className="flex items-center gap-1 text-[0.625rem] font-semiBold uppercase tracking-wide text-text-error">
             <span

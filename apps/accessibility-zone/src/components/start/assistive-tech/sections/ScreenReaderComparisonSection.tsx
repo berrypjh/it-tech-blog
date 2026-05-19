@@ -54,7 +54,7 @@ const PairLabel = ({ label, tone }: { label: string; tone: 'error' | 'success' }
 const PairBox = ({ tone, children }: { tone: 'error' | 'success'; children: React.ReactNode }) => (
   <div
     className={
-      'flex min-h-[6.25rem] flex-col gap-1 rounded-md border p-sml ' +
+      'flex min-h-[6.25rem] flex-col gap-1 rounded-md border p-md ' +
       (tone === 'error'
         ? 'border-stroke-error/40 bg-error-er100/30'
         : 'border-stroke-success/40 bg-success-su100/30')
@@ -75,7 +75,7 @@ const LabelCard = ({
 }) => {
   const afterId = 'compare-label-after';
   return (
-    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+    <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
       <h3 className="text-sm font-bold text-text-default">라벨 없는 input vs 올바른 input</h3>
       <div className="grid grid-cols-1 gap-sm sm:grid-cols-2">
         <div className="flex flex-col gap-sm">
@@ -120,7 +120,7 @@ const IconButtonCard = ({
   beforeLabel: string;
   afterLabel: string;
 }) => (
-  <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+  <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
     <h3 className="text-sm font-bold text-text-default">이름 없는 아이콘 버튼 vs 올바른 버튼</h3>
     <div className="grid grid-cols-1 gap-sm sm:grid-cols-2">
       <div className="flex flex-col gap-sm">
@@ -169,7 +169,7 @@ const HeadingCard = ({
   beforeLabel: string;
   afterLabel: string;
 }) => (
-  <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-mdl shadow-sm">
+  <article className="flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm">
     <h3 className="text-sm font-bold text-text-default">
       잘못된 heading 구조 vs 적절한 heading 구조
     </h3>
@@ -222,7 +222,7 @@ export const ScreenReaderComparisonSection = ({
       aria-labelledby="comparison-heading"
       className="rounded-xl border border-stroke-default bg-background-default/40 p-lg sm:p-xl"
     >
-      <header className="mb-mdl flex flex-col gap-1">
+      <header className="mb-lg flex flex-col gap-1">
         <span className="inline-flex w-fit items-center gap-1.5 rounded-rounded bg-background-surface px-2 py-0.5 text-[0.625rem] font-extraBold uppercase tracking-wider text-text-primary">
           <span className="inline-flex h-4 w-4 items-center justify-center rounded-rounded bg-background-primary text-[0.5625rem] text-text-contrastText">
             03

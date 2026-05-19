@@ -71,7 +71,7 @@ export const ProblemFlowItem = ({ step, icon, isLast }: Props) => {
 
       <div
         className={cn(
-          'mb-md flex flex-1 flex-col gap-1.5 rounded-lg border bg-background-surface p-mdl shadow-sm sm:flex-row sm:items-center sm:gap-md',
+          'mb-md flex flex-1 flex-col gap-1.5 rounded-lg border bg-background-surface p-lg shadow-sm sm:flex-row sm:items-center sm:gap-md',
           t.border,
         )}
       >

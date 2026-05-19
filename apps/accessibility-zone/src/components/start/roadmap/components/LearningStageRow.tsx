@@ -19,7 +19,7 @@ export const LearningStageRow = ({ stage, isLast }: Props) => {
   return (
     <li
       className={cn(
-        'grid grid-cols-[auto_auto_1fr] items-center gap-sm px-mdl py-md transition-colors hover:bg-background-default/40 sm:gap-md sm:px-lg',
+        'grid grid-cols-[auto_auto_1fr] items-center gap-sm px-lg py-md transition-colors hover:bg-background-default/40 sm:gap-md sm:px-lg',
         !isLast && 'border-b border-stroke-default/60',
       )}
     >

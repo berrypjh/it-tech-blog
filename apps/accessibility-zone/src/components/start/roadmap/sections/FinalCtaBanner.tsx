@@ -86,13 +86,13 @@ export const FinalCtaBanner = ({ content }: { content: RoadmapContent['finalCta'
           <Link
             href="/intro"
             aria-label={content.ariaPrimary}
-            className="group inline-flex items-center justify-center gap-2 rounded-md bg-background-surface px-mdl py-sml text-xsm font-bold text-text-primary shadow-sm transition-all hover:scale-[1.02] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-surface focus-visible:ring-offset-2 focus-visible:ring-offset-primary-pr500 sm:text-sm"
+            className="group inline-flex items-center justify-center gap-2 rounded-md bg-background-surface px-lg py-md text-xsm font-bold text-text-primary shadow-sm transition-all hover:scale-[1.02] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-surface focus-visible:ring-offset-2 focus-visible:ring-offset-primary-pr500 sm:text-sm"
           >
             {content.primary}
           </Link>
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-md border border-background-surface/40 bg-background-surface/10 px-mdl py-sml text-xsm font-semiBold text-text-contrastText backdrop-blur-sm transition-colors hover:bg-background-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-surface focus-visible:ring-offset-2 focus-visible:ring-offset-primary-pr500 sm:text-sm"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-background-surface/40 bg-background-surface/10 px-lg py-md text-xsm font-semiBold text-text-contrastText backdrop-blur-sm transition-colors hover:bg-background-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-surface focus-visible:ring-offset-2 focus-visible:ring-offset-primary-pr500 sm:text-sm"
           >
             <BookmarkIcon />
             {content.secondary}

@@ -122,7 +122,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
           }}
         >
           {/* nav */}
-          <div className="flex items-center justify-between gap-2 border-b border-stroke-default bg-background-surface px-mdl py-2.5">
+          <div className="flex items-center justify-between gap-2 border-b border-stroke-default bg-background-surface px-lg py-2.5">
             <span className="flex min-w-0 items-center gap-1.5 text-xsm font-extraBold text-text-success">
               <span
                 aria-hidden="true"
@@ -160,7 +160,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
           </div>
 
           {/* hero */}
-          <div className="grid grid-cols-1 gap-md p-mdl md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-lg md:p-lg">
+          <div className="grid grid-cols-1 gap-md p-lg md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-lg md:p-lg">
             <div className="flex min-w-0 flex-col justify-center gap-1.5">
               <p className="text-xsm font-semiBold text-text-success">{preview.heroLine1}</p>
               <p className="text-md font-extraBold leading-snug text-text-default sm:text-lg">
@@ -206,7 +206,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
           </div>
 
           {/* feature row */}
-          <div className="grid grid-cols-1 gap-1.5 border-t border-stroke-default bg-background-default/40 px-mdl py-sm sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-1.5 border-t border-stroke-default bg-background-default/40 px-lg py-sm sm:grid-cols-3">
             {preview.featureCards.map((label) => (
               <div
                 key={label}
