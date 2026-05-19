@@ -1,4 +1,4 @@
-export type IntroLocale = 'ko' | 'en';
+import type { Locale } from '@it-tech-blog/preferences';
 
 export type IntroContent = {
   hero: {
@@ -76,7 +76,7 @@ export type IntroContent = {
   };
 };
 
-export const introContent: Record<IntroLocale, IntroContent> = {
+export const introContent: Record<Locale, IntroContent> = {
   ko: {
     hero: {
       title: '웹접근성이란?',

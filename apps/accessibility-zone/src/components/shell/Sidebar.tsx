@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
+import { useLocale } from '@it-tech-blog/preferences';
+import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
 import {
   AccessibilityIcon,
   BackArrowIcon,
@@ -19,13 +20,10 @@ import {
   PaletteIcon,
   RocketIcon,
   VolumeIcon,
-} from '@it-tech-blog/icons';
-import { useLocale } from '@it-tech-blog/preferences';
+} from '@it-tech-blog/ui';
 import { cn } from '@it-tech-blog/utils';
 
-import { navData, type NavGroup, sidebarStrings } from '@/data';
-
-import { SettingsPopover } from './SettingsPopover';
+import { navData, sidebarStrings } from '@/data';
 
 const sectionIcons = [
   RocketIcon,
@@ -39,38 +37,13 @@ const sectionIcons = [
   BriefcaseIcon,
 ];
 
-const getInitialExpanded = (navGroups: NavGroup[], pathname: string): Set<number> => {
-  const activeIndex = navGroups.findIndex((group) =>
-    group.items.some((item) => pathname === `/${item.id}`),
-  );
-
-  return new Set([activeIndex >= 0 ? activeIndex : 0]);
-};
-
 export const Sidebar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const { locale } = useLocale();
-  const lang = (locale as 'ko' | 'en') ?? 'ko';
-  const currentNavData = navData[lang];
-  const t = sidebarStrings[lang];
-
-  const [expanded, setExpanded] = useState<Set<number>>(() =>
-    getInitialExpanded(currentNavData, pathname),
-  );
-
-  const toggle = (index: number) => {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-
-      return next;
-    });
-  };
-
-  const anyExpanded = expanded.size > 0;
-  const toggleAll = () =>
-    setExpanded(anyExpanded ? new Set() : new Set(currentNavData.map((_, i) => i)));
+  const currentNavData = navData[locale];
+  const t = sidebarStrings[locale];
+  const { expanded, toggle, toggleAll, anyExpanded } = useSidebarNav(currentNavData, pathname);
 
   return (
     <aside
@@ -90,7 +63,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
             <span className="font-bold text-sm tracking-tight text-text-default">{t.title}</span>
           </Link>
 
-          <SettingsPopover />
+          <SettingsPopover onLocaleChange={() => router.refresh()} />
         </div>
 
         <p className="text-xxsm text-text-light/60 leading-snug">{t.subtitle}</p>

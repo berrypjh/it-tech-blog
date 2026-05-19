@@ -1,4 +1,4 @@
-export type RoadmapLocale = 'ko' | 'en';
+import type { Locale } from '@it-tech-blog/preferences';
 
 export type StageStatus = 'done' | 'in-progress' | 'todo';
 
@@ -59,7 +59,7 @@ export type RoadmapContent = {
   };
 };
 
-export const roadmapContent: Record<RoadmapLocale, RoadmapContent> = {
+export const roadmapContent: Record<Locale, RoadmapContent> = {
   ko: {
     meta: {
       pageTitle: '웹접근성 학습 로드맵 — A11y Lab',

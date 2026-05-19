@@ -7,5 +7,6 @@ export default {
   content: [
     './{src,pages,components,app}/**/*.{ts,tsx,js,jsx,html}',
     '!./{src,pages,components,app}/**/*.{stories,spec}.{ts,tsx,js,jsx,html}',
+    '../../packages/ui/src/**/*.{ts,tsx}',
   ],
 };

@@ -55,6 +55,17 @@ body {
   background-color: var(--color-canvas);
 }
 
+/* app-shell 토큰 매핑 — 디자인 시스템 기반 */
+:root {
+  --shell-bg: var(--ds-background-surface);
+  --shell-fg: var(--ds-text-default);
+  --shell-border: var(--ds-stroke-default);
+  --shell-overlay: rgba(0, 0, 0, 0.5);
+  --shell-accent: var(--ds-stroke-primary);
+  --shell-sidebar-w: 280px;
+  --shell-header-h: 56px;
+}
+
 /* 스크롤바 — 디자인 토큰과 연결 */
 * {
   scrollbar-color: rgb(var(--ds-stroke-default-rgb)) transparent;

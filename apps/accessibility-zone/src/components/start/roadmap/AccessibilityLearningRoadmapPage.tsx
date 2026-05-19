@@ -1,9 +1,11 @@
+import type { Locale } from '@it-tech-blog/preferences';
+
 import { FinalCtaBanner } from './sections/FinalCtaBanner';
 import { FullLearningStagesSection } from './sections/FullLearningStagesSection';
 import { LearningRoadmapHeroSection } from './sections/LearningRoadmapHeroSection';
-import { roadmapContent, type RoadmapLocale } from './content';
+import { roadmapContent } from './content';
 
-export const AccessibilityLearningRoadmapPage = ({ locale }: { locale: RoadmapLocale }) => {
+export const AccessibilityLearningRoadmapPage = ({ locale }: { locale: Locale }) => {
   const c = roadmapContent[locale] ?? roadmapContent.ko;
   return (
     <div className="relative mx-auto w-full max-w-[1280px] px-lg py-xl sm:px-xl lg:px-2xl lg:py-2xl">

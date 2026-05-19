@@ -1,4 +1,4 @@
-export type AssistiveTechLocale = 'ko' | 'en';
+import type { Locale } from '@it-tech-blog/preferences';
 
 export type AssistiveTechTone = 'primary' | 'secondary' | 'success' | 'warning' | 'info';
 
@@ -198,7 +198,7 @@ export type AssistiveTechContent = {
   };
 };
 
-export const assistiveTechContent: Record<AssistiveTechLocale, AssistiveTechContent> = {
+export const assistiveTechContent: Record<Locale, AssistiveTechContent> = {
   ko: {
     meta: {
       pageTitle: '보조 기술 이해하기 — A11y Lab',

@@ -1,4 +1,4 @@
-export type DisabilitiesLocale = 'ko' | 'en';
+import type { Locale } from '@it-tech-blog/preferences';
 
 export type DisabilityTypeTone = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
 
@@ -121,7 +121,7 @@ export type DisabilitiesContent = {
   };
 };
 
-export const disabilitiesContent: Record<DisabilitiesLocale, DisabilitiesContent> = {
+export const disabilitiesContent: Record<Locale, DisabilitiesContent> = {
   ko: {
     meta: {
       pageTitle: '장애 유형과 사용자 환경 — A11y Lab',

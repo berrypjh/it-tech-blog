@@ -1,4 +1,4 @@
-export type ImportanceLocale = 'ko' | 'en';
+import type { Locale } from '@it-tech-blog/preferences';
 
 export type ReasonTone = 'primary' | 'success' | 'secondary' | 'warning';
 
@@ -152,7 +152,7 @@ export type ImportanceContent = {
   };
 };
 
-export const importanceContent: Record<ImportanceLocale, ImportanceContent> = {
+export const importanceContent: Record<Locale, ImportanceContent> = {
   ko: {
     meta: {
       pageTitle: '왜 웹접근성이 중요한가? — A11y Lab',
