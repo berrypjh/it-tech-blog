@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
-import { MoonIcon, SunIcon } from '@it-tech-blog/icons';
 import { useLocale, useTheme } from '@it-tech-blog/preferences';
+import { MoonIcon, SunIcon } from '@it-tech-blog/ui';
 
 import { IconButton } from '@berrypjh/react-ui';
 

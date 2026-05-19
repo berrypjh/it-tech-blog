@@ -11,7 +11,7 @@ import {
   RocketIcon,
   ShieldIcon,
   SmartphoneIcon,
-} from '@it-tech-blog/icons';
+} from '@it-tech-blog/ui';
 
 export type TopicSize = 'sm' | 'md' | 'lg';
 
