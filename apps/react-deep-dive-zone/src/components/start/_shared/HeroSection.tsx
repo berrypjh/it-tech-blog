@@ -20,10 +20,6 @@ const alignClass: Record<Align, string> = {
   center: 'items-center',
 };
 
-/**
- * Hero 섹션 쉘: section + 상단 TerminalPrompt + 2컬럼 그리드.
- * children에 HeroTextColumn / HeroVisualColumn 순서로 배치한다.
- */
 export const HeroSection = ({
   promptCommand,
   promptPath,

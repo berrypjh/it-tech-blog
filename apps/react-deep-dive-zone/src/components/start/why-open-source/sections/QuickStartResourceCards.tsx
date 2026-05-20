@@ -1,13 +1,24 @@
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyOpenSourceContent } from '../content';
-import { ArrowRightIcon, ExternalLinkIcon, GithubIcon, resourceIconByName } from '../icons';
+import {
+  ArrowRightIcon,
+  CursorIcon,
+  ExternalLinkIcon,
+  GithubIcon,
+  resourceIconByName,
+} from '../icons';
 
 type Props = { content: WhyOpenSourceContent['quickStart'] };
 
 export const QuickStartResourceCards = ({ content }: Props) => {
   return (
     <section id="section-quick-start" aria-labelledby="heading-quick-start" className="space-y-lg">
-      <StepSectionHeader id="quick-start" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="quick-start"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CursorIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
         {content.cards.map((card) => {

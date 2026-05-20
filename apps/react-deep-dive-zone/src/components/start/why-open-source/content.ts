@@ -87,41 +87,41 @@ export type WhyOpenSourceContent = {
     };
   };
   perspectives: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: PerspectiveCard[];
   };
   readingPriorities: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     rows: ReadingPriorityRow[];
   };
   repoExplorer: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     repoLabel: string;
     tree: RepoTreeNode[];
     detail: DetailPanel;
   };
   chain: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: ChainCard[];
   };
   routine: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     steps: RoutineStep[];
   };
   quickStart: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: ResourceCard[];
   };
   nextStep: {
-    sectionNum: string;
-    title: string;
     eyebrow: string;
+    title: string;
+    bannerEyebrow: string;
     nextTitle: string;
     description: string;
     cta: string;
@@ -196,7 +196,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      sectionNum: '01',
+      eyebrow: '01 · perspectives',
       title: 'GitHub가 제공하는 4가지 관점',
       cards: [
         {
@@ -234,7 +234,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      sectionNum: '02',
+      eyebrow: '02 · reading list',
       title: 'React GitHub에서 읽어야 할 4가지',
       rows: [
         {
@@ -276,7 +276,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      sectionNum: '03',
+      eyebrow: '03 · repo',
       title: '저장소 구조 훑어보기 (예: facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -295,7 +295,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      sectionNum: '04',
+      eyebrow: '04 · chain',
       title: 'API → 구현 → 테스트로 이어서 읽기 (예: useState)',
       cards: [
         {
@@ -335,7 +335,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      sectionNum: '05',
+      eyebrow: '05 · routine',
       title: 'GitHub 기반 학습 루틴',
       steps: [
         {
@@ -376,7 +376,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     quickStart: {
-      sectionNum: '06',
+      eyebrow: '06 · quick start',
       title: '바로 체험해보기',
       cards: [
         {
@@ -414,9 +414,9 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '07',
+      eyebrow: '07 · next step',
       title: '다음 단계로 이동하기',
-      eyebrow: '다음 학습으로 이어집니다',
+      bannerEyebrow: '다음 학습으로 이어집니다',
       nextTitle: '다음: 모든 파일을 읽지 않아도 되는 이유',
       description: '효율적으로 핵심을 파악하는 방법과 우선순위를 배웁니다.',
       cta: '다음 페이지로 이동',
@@ -457,7 +457,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      sectionNum: '01',
+      eyebrow: '01 · perspectives',
       title: 'Four perspectives GitHub offers',
       cards: [
         {
@@ -495,7 +495,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      sectionNum: '02',
+      eyebrow: '02 · reading list',
       title: 'Four things to read in React GitHub',
       rows: [
         {
@@ -536,7 +536,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      sectionNum: '03',
+      eyebrow: '03 · repo',
       title: 'Skim the repository structure (e.g. facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -555,7 +555,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      sectionNum: '04',
+      eyebrow: '04 · chain',
       title: 'Read API → implementation → test in sequence (e.g. useState)',
       cards: [
         {
@@ -597,7 +597,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      sectionNum: '05',
+      eyebrow: '05 · routine',
       title: 'A GitHub-based learning routine',
       steps: [
         {
@@ -638,7 +638,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     quickStart: {
-      sectionNum: '06',
+      eyebrow: '06 · quick start',
       title: 'Try it right now',
       cards: [
         {
@@ -676,9 +676,9 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '07',
+      eyebrow: '07 · next step',
       title: 'Move on to the next page',
-      eyebrow: 'The journey continues',
+      bannerEyebrow: 'The journey continues',
       nextTitle: "Next: Why you don't have to read every file",
       description: 'Learn how to identify the core efficiently and how to prioritize.',
       cta: 'Go to the next page',

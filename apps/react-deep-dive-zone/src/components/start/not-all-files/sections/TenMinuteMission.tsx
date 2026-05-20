@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { NotAllFilesContent } from '../content';
-import { CheckIcon, TrophyIcon } from '../icons';
+import { BoltIcon, CheckIcon, TrophyIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['mission'] };
 
@@ -18,7 +18,12 @@ export const TenMinuteMission = ({ content }: Props) => {
 
   return (
     <section id="section-mission" aria-labelledby="heading-mission" className="space-y-lg">
-      <StepSectionHeader id="mission" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="mission"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BoltIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.68fr)]">

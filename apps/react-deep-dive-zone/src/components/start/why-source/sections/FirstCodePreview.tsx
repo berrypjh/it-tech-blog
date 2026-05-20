@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
-import { SectionHeader } from '../components/SectionHeader';
 import type { WhySourceContent } from '../content';
 import { ArrowRightIcon, CodeIcon, GithubIcon } from '../icons';
 

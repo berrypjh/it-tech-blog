@@ -4,12 +4,13 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ExplorerOption, NotAllFilesContent } from '../content';
 import {
   ChevronDownIcon,
   ChevronRightIcon,
   FileIcon,
+  FolderOpenIcon,
   LightbulbIcon,
   PencilIcon,
   PinIcon,
@@ -70,7 +71,12 @@ export const MiniExplorationTool = ({ content }: Props) => {
 
   return (
     <section id="section-mini-tool" aria-labelledby="heading-mini-tool" className="space-y-lg">
-      <StepSectionHeader id="mini-tool" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="mini-tool"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FolderOpenIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.42fr)_minmax(0,_0.58fr)]">

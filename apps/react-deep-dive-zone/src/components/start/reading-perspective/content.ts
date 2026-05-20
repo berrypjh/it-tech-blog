@@ -84,25 +84,25 @@ export type ReadingPerspectiveContent = {
     };
   };
   sixStages: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: StageQuestionCard[];
   };
   mapping: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     headers: { stage: string; file: string; role: string };
     rows: MappingRow[];
   };
   example: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     codeFile: string;
     code: string;
     steps: ExampleFlowStep[];
   };
   quiz: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     answerPrefix: string;
     explainLabel: string;
@@ -111,7 +111,7 @@ export type ReadingPerspectiveContent = {
     cards: QuizCard[];
   };
   workshop: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     tipLabel: string;
     tipBody: string;
@@ -123,9 +123,9 @@ export type ReadingPerspectiveContent = {
     resetLabel: string;
   };
   nextStep: {
-    sectionNum: string;
-    title: string;
     eyebrow: string;
+    title: string;
+    bannerEyebrow: string;
     nextTitle: string;
     description: string;
     cta: string;
@@ -215,7 +215,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       },
     },
     sixStages: {
-      sectionNum: '02',
+      eyebrow: '02 · six stages',
       title: 'React 내부의 6단계 흐름',
       cards: [
         {
@@ -275,7 +275,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     mapping: {
-      sectionNum: '03',
+      eyebrow: '03 · file mapping',
       title: '단계별 대표 파일 매핑',
       headers: { stage: '단계', file: '대표 파일', role: '핵심 역할' },
       rows: [
@@ -335,7 +335,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     example: {
-      sectionNum: '04',
+      eyebrow: '04 · walkthrough',
       title: '예제 코드로 모든 단계를 따라보기',
       codeFile: 'App.js',
       code: appCode,
@@ -368,7 +368,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     quiz: {
-      sectionNum: '05',
+      eyebrow: '05 · quiz',
       title: '현재 위치 판별 퀴즈',
       answerPrefix: '정답',
       explainLabel: '해설',
@@ -418,7 +418,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     workshop: {
-      sectionNum: '06',
+      eyebrow: '06 · workshop',
       title: '직접 흐름도를 완성해보세요',
       tipLabel: 'TIP',
       tipBody: '아래 힌트를 클릭해 빈칸에 배치해보세요.',
@@ -441,9 +441,9 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     nextStep: {
-      sectionNum: '07',
+      eyebrow: '07 · next step',
       title: '다음 단계로 이동하기',
-      eyebrow: '학습 로드맵이 이어집니다',
+      bannerEyebrow: '학습 로드맵이 이어집니다',
       nextTitle: '다음: React 소스코드 탐구 로드맵',
       description: '단계별 학습 로드맵과 구체적인 학습 계획을 확인하세요.',
       cta: '다음 페이지로 이동',
@@ -527,7 +527,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       },
     },
     sixStages: {
-      sectionNum: '02',
+      eyebrow: '02 · six stages',
       title: "React's six internal stages",
       cards: [
         {
@@ -587,7 +587,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     mapping: {
-      sectionNum: '03',
+      eyebrow: '03 · file mapping',
       title: 'Representative files per stage',
       headers: { stage: 'Stage', file: 'Files', role: 'Core role' },
       rows: [
@@ -647,7 +647,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     example: {
-      sectionNum: '04',
+      eyebrow: '04 · walkthrough',
       title: 'Follow one example through every stage',
       codeFile: 'App.js',
       code: appCode,
@@ -675,7 +675,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     quiz: {
-      sectionNum: '05',
+      eyebrow: '05 · quiz',
       title: 'Stage recognition quiz',
       answerPrefix: 'Answer',
       explainLabel: 'Explanation',
@@ -731,7 +731,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     workshop: {
-      sectionNum: '06',
+      eyebrow: '06 · workshop',
       title: 'Complete the flow yourself',
       tipLabel: 'TIP',
       tipBody: 'Click a hint below to drop it into a blank.',
@@ -764,9 +764,9 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     nextStep: {
-      sectionNum: '07',
+      eyebrow: '07 · next step',
       title: 'Move on to the next page',
-      eyebrow: 'The learning roadmap continues',
+      bannerEyebrow: 'The learning roadmap continues',
       nextTitle: 'Next: React source-code exploration roadmap',
       description: 'See the per-stage roadmap and a concrete study plan.',
       cta: 'Go to the next page',

@@ -18,9 +18,6 @@ const sizeClass: Record<Size, string> = {
   md: 'px-2.5 py-1 text-xxsm',
 };
 
-/**
- * 터미널 톤 알약 배지. border + term-surface + 선택적 dot.
- */
 export const TerminalBadge = ({
   size = 'sm',
   dotClassName,

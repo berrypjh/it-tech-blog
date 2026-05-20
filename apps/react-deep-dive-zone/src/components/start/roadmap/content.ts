@@ -80,7 +80,7 @@ export type RoadmapContent = {
     };
   };
   journey: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     currentLabel: string;
     statusLabel: string;
@@ -88,19 +88,19 @@ export type RoadmapContent = {
     footerNote: string;
   };
   roadmap: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     coreFilesLabel: string;
     rows: RoadmapRow[];
   };
   deliverables: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     supporting: string;
     cards: DeliverableCard[];
   };
   selfCheck: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     supporting: string;
     progressLabel: string;
@@ -108,17 +108,17 @@ export type RoadmapContent = {
     right: ChecklistItem[];
   };
   courses: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: CourseCard[];
   };
   usage: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     steps: UsageStep[];
   };
   finale: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     copyLine1: string;
     copyLine2: string;
@@ -195,7 +195,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     journey: {
-      sectionNum: '01',
+      eyebrow: '01 · journey',
       title: '전체 여정 한눈에 보기',
       currentLabel: '시작하기',
       statusLabel: '완료',
@@ -215,7 +215,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       footerNote: '계속 업데이트 예정',
     },
     roadmap: {
-      sectionNum: '02',
+      eyebrow: '02 · roadmap',
       title: '8단계 학습 로드맵',
       coreFilesLabel: '핵심 파일',
       rows: [
@@ -286,7 +286,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     deliverables: {
-      sectionNum: '03',
+      eyebrow: '03 · deliverables',
       title: '단계별 산출물',
       supporting: '학습 후, 내가 만들어야 할 결과물',
       cards: [
@@ -342,7 +342,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     selfCheck: {
-      sectionNum: '04',
+      eyebrow: '04 · self-check',
       title: '나는 설명할 수 있는가?',
       supporting: '자기 점검 체크리스트',
       progressLabel: '확인 완료',
@@ -368,7 +368,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     courses: {
-      sectionNum: '05',
+      eyebrow: '05 · courses',
       title: '학습 목적별 추천 코스',
       cards: [
         {
@@ -413,7 +413,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     usage: {
-      sectionNum: '06',
+      eyebrow: '06 · usage',
       title: '이 사이트는 이렇게 활용하세요',
       steps: [
         {
@@ -454,7 +454,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      sectionNum: '07',
+      eyebrow: '07 · launch',
       title: '이제 실제 탐구를 시작해요!',
       copyLine1: '준비가 끝났습니다.',
       copyLine2: '이제 실제 React 저장소를 열고,',
@@ -529,7 +529,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     journey: {
-      sectionNum: '01',
+      eyebrow: '01 · journey',
       title: 'The full journey at a glance',
       currentLabel: 'Getting Started',
       statusLabel: 'Done',
@@ -549,7 +549,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       footerNote: 'More chapters coming soon',
     },
     roadmap: {
-      sectionNum: '02',
+      eyebrow: '02 · roadmap',
       title: '8-step learning roadmap',
       coreFilesLabel: 'Core files',
       rows: [
@@ -620,7 +620,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     deliverables: {
-      sectionNum: '03',
+      eyebrow: '03 · deliverables',
       title: 'Per-stage deliverables',
       supporting: 'What you should be able to produce after learning',
       cards: [
@@ -676,7 +676,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     selfCheck: {
-      sectionNum: '04',
+      eyebrow: '04 · self-check',
       title: 'Can you explain it?',
       supporting: 'Self-check list',
       progressLabel: 'Checked',
@@ -699,7 +699,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     courses: {
-      sectionNum: '05',
+      eyebrow: '05 · courses',
       title: 'Recommended courses by goal',
       cards: [
         {
@@ -744,7 +744,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     usage: {
-      sectionNum: '06',
+      eyebrow: '06 · usage',
       title: 'How to use this site',
       steps: [
         {
@@ -785,7 +785,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      sectionNum: '07',
+      eyebrow: '07 · launch',
       title: 'Time to start exploring!',
       copyLine1: 'You are ready.',
       copyLine2: 'Open the real React repository',

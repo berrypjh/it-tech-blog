@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { deliverableIconByName } from '../icons';
+import { CheckCircleIcon, deliverableIconByName } from '../icons';
 import { tones } from '../tones';
 
 type Props = { content: RoadmapContent['deliverables'] };
@@ -14,7 +14,12 @@ export const StageDeliverables = ({ content }: Props) => {
       aria-labelledby="heading-deliverables"
       className="space-y-md"
     >
-      <StepSectionHeader id="deliverables" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="deliverables"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CheckCircleIcon className="h-5 w-5" />}
+      />
 
       <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep -mt-sm">
         {content.supporting}

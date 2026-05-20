@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { ChevronRightIcon, StarIcon, StarOutlineIcon } from '../icons';
+import { BookIcon, ChevronRightIcon, StarIcon, StarOutlineIcon } from '../icons';
 import { tones } from '../tones';
 
 type Props = { content: RoadmapContent['courses'] };
@@ -26,7 +26,12 @@ const StarRating = ({ count, max = 5 }: { count: number; max?: number }) => {
 export const RecommendedCourses = ({ content }: Props) => {
   return (
     <section id="section-courses" aria-labelledby="heading-courses" className="space-y-lg">
-      <StepSectionHeader id="courses" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="courses"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BookIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {

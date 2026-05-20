@@ -71,7 +71,7 @@ export type NotAllFilesContent = {
     };
   };
   approaches: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     wrong: {
       title: string;
@@ -83,24 +83,24 @@ export type NotAllFilesContent = {
     };
   };
   questions: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: QuestionCard[];
   };
   mapping: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     rows: MappingRow[];
     labels: { question: string; file: string; fn: string };
   };
   followFlow: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     mainQuestion: string;
     steps: FlowStep[];
   };
   miniTool: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     selectLabel: string;
     tipLabel: string;
@@ -111,16 +111,16 @@ export type NotAllFilesContent = {
     defaultOptionId: ExplorerOption['id'];
   };
   mission: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     motivation: { title: string[]; body: string[] };
     items: MissionItem[];
     checkboxLabel: string;
   };
   nextStep: {
-    sectionNum: string;
-    title: string;
     eyebrow: string;
+    title: string;
+    bannerEyebrow: string;
     nextTitle: string;
     description: string;
     cta: string;
@@ -282,7 +282,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      sectionNum: '02',
+      eyebrow: '02 · compare',
       title: '잘못된 접근 vs 좋은 접근',
       wrong: {
         title: '잘못된 접근',
@@ -338,7 +338,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     questions: {
-      sectionNum: '03',
+      eyebrow: '03 · question-first',
       title: '질문 중심 독해법',
       cards: [
         {
@@ -372,7 +372,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     mapping: {
-      sectionNum: '04',
+      eyebrow: '04 · mapping',
       title: '질문 → 파일 → 핵심 함수 매핑',
       labels: { question: '질문', file: '파일', fn: '함수' },
       rows: [
@@ -415,7 +415,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      sectionNum: '05',
+      eyebrow: '05 · follow flow',
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
@@ -458,7 +458,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     miniTool: {
-      sectionNum: '06',
+      eyebrow: '06 · explore',
       title: '미니 탐색 도구',
       selectLabel: '질문 선택',
       tipLabel: 'TIP',
@@ -474,7 +474,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       defaultOptionId: 'setstate',
     },
     mission: {
-      sectionNum: '07',
+      eyebrow: '07 · mission',
       title: '오늘 바로 할 수 있는 10분 미션',
       motivation: {
         title: ['작게 시작해도', '큰 이해로 이어집니다.'],
@@ -505,9 +505,9 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: '다음 단계로 이동하기',
-      eyebrow: '다음 학습으로 이어집니다',
+      bannerEyebrow: '다음 학습으로 이어집니다',
       nextTitle: '다음: 먼저 볼 파일과 나중에 볼 파일',
       description: '학습 효율을 높이는 파일 우선순위를 알려드립니다.',
       cta: '다음 페이지로 이동',
@@ -572,7 +572,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      sectionNum: '02',
+      eyebrow: '02 · compare',
       title: 'Wrong approach vs Good approach',
       wrong: {
         title: 'Wrong approach',
@@ -628,7 +628,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     questions: {
-      sectionNum: '03',
+      eyebrow: '03 · question-first',
       title: 'Question-first reading',
       cards: [
         {
@@ -662,7 +662,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     mapping: {
-      sectionNum: '04',
+      eyebrow: '04 · mapping',
       title: 'Question → File → Key function mapping',
       labels: { question: 'Question', file: 'File', fn: 'Function' },
       rows: [
@@ -705,7 +705,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      sectionNum: '05',
+      eyebrow: '05 · follow flow',
       title: 'Follow one question end-to-end',
       mainQuestion: 'How does setState end up triggering a render?',
       steps: [
@@ -748,7 +748,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     miniTool: {
-      sectionNum: '06',
+      eyebrow: '06 · explore',
       title: 'Mini exploration tool',
       selectLabel: 'Pick a question',
       tipLabel: 'TIP',
@@ -759,7 +759,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       defaultOptionId: 'setstate',
     },
     mission: {
-      sectionNum: '07',
+      eyebrow: '07 · mission',
       title: 'A 10-minute mission you can do today',
       motivation: {
         title: ['Start small —', 'the understanding compounds.'],
@@ -790,9 +790,9 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: 'Move on to the next page',
-      eyebrow: 'The journey continues',
+      bannerEyebrow: 'The journey continues',
       nextTitle: 'Next: Files to read first vs files to read later',
       description: 'Learn the file priority that boosts your learning efficiency.',
       cta: 'Go to the next page',

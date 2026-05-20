@@ -1,6 +1,6 @@
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
-import { ArrowLongRightIcon, ArrowRightIcon } from '../icons';
+import { ArrowLongRightIcon, ArrowRightIcon, RefreshIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['reinterpret'] };
 
@@ -24,7 +24,12 @@ const formatInline = (text: string): React.ReactNode => {
 export const ModernReinterpretationTable = ({ content }: Props) => {
   return (
     <section id="section-reinterpret" aria-labelledby="heading-reinterpret" className="space-y-lg">
-      <StepSectionHeader id="reinterpret" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="reinterpret"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<RefreshIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {/* 데스크톱 테이블 */}

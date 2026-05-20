@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
-import { ArrowRightIcon, BookIcon, SparkIcon } from '../icons';
+import { ArrowRightIcon, BoltIcon, BookIcon, SparkIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['nextStep'] };
 
@@ -123,7 +123,12 @@ const BookDecoration = () => (
 export const NextPageBanner = ({ content }: Props) => {
   return (
     <section id="section-next" aria-labelledby="heading-next" className="space-y-md">
-      <StepSectionHeader id="next" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="next"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BoltIcon className="h-5 w-5" />}
+      />
 
       <Link
         href={content.href}
@@ -142,7 +147,7 @@ export const NextPageBanner = ({ content }: Props) => {
               <p className="text-[10px] uppercase tracking-wider text-teal-300 font-bold inline-flex items-center gap-1.5">
                 <BookIcon className="h-3.5 w-3.5" />
                 <SparkIcon className="h-3 w-3" />
-                {content.eyebrow}
+                {content.bannerEyebrow}
               </p>
               <h3
                 id="heading-next-title"

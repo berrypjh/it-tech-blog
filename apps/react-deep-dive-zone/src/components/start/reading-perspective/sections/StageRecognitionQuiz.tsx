@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { QuizCard as QuizCardType, ReadingPerspectiveContent } from '../content';
-import { CheckCircleIcon, XIcon } from '../icons';
+import { CheckCircleIcon, TargetIcon, XIcon } from '../icons';
 
 type Props = { content: ReadingPerspectiveContent['quiz'] };
 
@@ -150,7 +150,12 @@ const QuizCard = ({
 export const StageRecognitionQuiz = ({ content }: Props) => {
   return (
     <section id="section-quiz" aria-labelledby="heading-quiz" className="space-y-lg">
-      <StepSectionHeader id="quiz" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="quiz"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<TargetIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => (

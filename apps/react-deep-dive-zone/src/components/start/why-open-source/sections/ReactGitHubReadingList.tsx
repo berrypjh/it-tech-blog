@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadingPriorityRow, WhyOpenSourceContent } from '../content';
-import { ChevronRightIcon, priorityIconByName } from '../icons';
+import { ChevronRightIcon, CodeIcon, priorityIconByName } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['readingPriorities'] };
 
@@ -45,7 +45,12 @@ const toneClasses: Record<
 export const ReactGitHubReadingList = ({ content }: Props) => {
   return (
     <section id="section-priorities" aria-labelledby="heading-priorities" className="space-y-lg">
-      <StepSectionHeader id="priorities" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="priorities"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CodeIcon className="h-5 w-5" />}
+      />
 
       <ol className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] divide-y divide-[var(--term-border)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {content.rows.map((row) => {

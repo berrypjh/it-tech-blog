@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { PerspectiveCard, WhyOpenSourceContent } from '../content';
-import { perspectiveIconByName } from '../icons';
+import { DocIcon, perspectiveIconByName } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['perspectives'] };
 
@@ -60,7 +60,12 @@ export const GitHubPerspectiveCards = ({ content }: Props) => {
       aria-labelledby="heading-perspectives"
       className="space-y-lg"
     >
-      <StepSectionHeader id="perspectives" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="perspectives"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<DocIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
         {content.cards.map((card) => {

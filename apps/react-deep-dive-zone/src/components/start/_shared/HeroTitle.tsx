@@ -7,10 +7,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-/**
- * Hero h1. 8개 Hero가 공유하는 타이포/색/줄바꿈 규칙을 캡슐화한다.
- * children에 <span className="block">로 줄을 나누거나 accent 색을 자유롭게 적용한다.
- */
 export const HeroTitle = ({ id = 'hero-heading', className, children }: Props) => (
   <h1
     id={id}

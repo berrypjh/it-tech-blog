@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
+import { FxIcon } from '../icons';
 import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['table'] };
@@ -9,7 +10,12 @@ type Props = { content: UsageVsInternalsContent['table'] };
 export const InterpretationTable = ({ content }: Props) => {
   return (
     <section id="section-table" aria-labelledby="heading-table" className="space-y-lg">
-      <StepSectionHeader id="table" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="table"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FxIcon className="h-5 w-5" />}
+      />
 
       {/* 데스크톱: 테이블 / 모바일: 카드형 */}
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden">

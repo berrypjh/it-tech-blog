@@ -4,14 +4,21 @@ import { Fragment, useCallback, useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type {
   HintCard as HintCardType,
   ReadingPerspectiveContent,
   StageId,
   WorksheetSlot,
 } from '../content';
-import { CheckCircleIcon, ChevronRightIcon, LightbulbIcon, RefreshIcon, XIcon } from '../icons';
+import {
+  CheckCircleIcon,
+  CheckIcon,
+  ChevronRightIcon,
+  LightbulbIcon,
+  RefreshIcon,
+  XIcon,
+} from '../icons';
 import { stageTones } from '../tones';
 
 type Props = { content: ReadingPerspectiveContent['workshop'] };
@@ -72,7 +79,12 @@ export const FlowCompletionWorkshop = ({ content }: Props) => {
 
   return (
     <section id="section-workshop" aria-labelledby="heading-workshop" className="space-y-lg">
-      <StepSectionHeader id="workshop" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="workshop"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CheckIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         {/* 워크시트 flow */}

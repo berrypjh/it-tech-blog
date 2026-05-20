@@ -47,11 +47,6 @@ const toneClasses: Record<StackTone, { bg: string; border: string; text: string;
   },
 };
 
-/**
- * Hero 우측 — 층층이 쌓인 React 내부 처리 흐름.
- * perspective + 각 레이어 살짝 비스듬한 transform으로
- * floating glass plate 인상을 낸다.
- */
 export const InternalStackVisual = ({ layers }: Props) => {
   return (
     <div

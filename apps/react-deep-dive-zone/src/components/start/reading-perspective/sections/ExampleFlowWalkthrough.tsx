@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadingPerspectiveContent } from '../content';
-import { ArrowRightIcon } from '../icons';
+import { ArrowRightIcon, CodeIcon } from '../icons';
 import { stageTones } from '../tones';
 
 type Props = { content: ReadingPerspectiveContent['example'] };
@@ -81,7 +81,12 @@ const colorize = (line: string): React.ReactNode => {
 export const ExampleFlowWalkthrough = ({ content }: Props) => {
   return (
     <section id="section-example" aria-labelledby="heading-example" className="space-y-lg">
-      <StepSectionHeader id="example" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="example"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CodeIcon className="h-5 w-5" />}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.68fr)] gap-md lg:gap-lg items-start">
         {/* 좌측 code panel */}

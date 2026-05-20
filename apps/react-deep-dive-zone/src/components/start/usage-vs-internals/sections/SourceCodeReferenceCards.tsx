@@ -1,7 +1,8 @@
 import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { ArrowRightIcon, GithubIcon } from '../../why-source/icons';
-import { StepSectionHeader } from '../components/StepSectionHeader';
 import type { UsageVsInternalsContent } from '../content';
+import { BookIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['sourceCode'] };
 
@@ -12,7 +13,12 @@ export const SourceCodeReferenceCards = ({ content }: Props) => {
       aria-labelledby="heading-source"
       className="space-y-lg rounded-lg border border-[var(--term-border)] bg-sky-50/30 dark:bg-sky-950/15 p-md sm:p-lg lg:p-xl"
     >
-      <StepSectionHeader id="source" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="source"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BookIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
         {content.cards.map((card) => (

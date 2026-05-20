@@ -1,13 +1,18 @@
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadOrderContent } from '../content';
-import { ArrowRightIcon, ExternalLinkIcon, FileIcon, GithubIcon } from '../icons';
+import { ArrowRightIcon, ExternalLinkIcon, FileIcon, FlagIcon, GithubIcon } from '../icons';
 
 type Props = { content: ReadOrderContent['firstThree'] };
 
 export const FirstThreeFiles = ({ content }: Props) => {
   return (
     <section id="section-first-three" aria-labelledby="heading-first-three" className="space-y-lg">
-      <StepSectionHeader id="first-three" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="first-three"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FlagIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => (

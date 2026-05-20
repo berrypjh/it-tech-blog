@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { CompareColumn } from '../components/CompareColumn';
-import { SectionHeader } from '../components/SectionHeader';
 import type { WhySourceContent } from '../content';
-import { SparkIcon } from '../icons';
+import { EyeIcon, SparkIcon } from '../icons';
 
 type Props = { content: WhySourceContent['compare'] };
 
@@ -15,6 +15,7 @@ export const LearningPerspectiveCompare = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
+        icon={<EyeIcon className="h-5 w-5" />}
       />
 
       <div

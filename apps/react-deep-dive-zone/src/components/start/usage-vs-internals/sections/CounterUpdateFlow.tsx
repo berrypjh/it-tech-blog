@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { type ToneKey, toneTokens } from '../../_shared/tones';
-import { StepSectionHeader } from '../components/StepSectionHeader';
 import type { UsageVsInternalsContent } from '../content';
-import { flowIconByName } from '../icons';
+import { CursorIcon, flowIconByName } from '../icons';
 import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['flow'] };
@@ -13,7 +13,12 @@ const stepTones: ToneKey[] = ['sky', 'blue', 'indigo', 'cyan', 'teal', 'emerald'
 export const CounterUpdateFlow = ({ content }: Props) => {
   return (
     <section id="section-flow" aria-labelledby="heading-flow" className="space-y-lg">
-      <StepSectionHeader id="flow" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="flow"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CursorIcon className="h-5 w-5" />}
+      />
 
       <ol className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
         {content.steps.map((step, idx) => {

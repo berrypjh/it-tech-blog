@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ResourceCard, WhyReact19Content } from '../content';
-import { ArrowRightIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
+import { ArrowRightIcon, BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['resources'] };
 
@@ -182,7 +182,12 @@ const renderBulletInline = (text: string): React.ReactNode => {
 export const OfficialChangeRecordCards = ({ content }: Props) => {
   return (
     <section id="section-resources" aria-labelledby="heading-resources" className="space-y-lg">
-      <StepSectionHeader id="resources" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="resources"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BookIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md lg:gap-lg">
         {content.cards.map((card) => (

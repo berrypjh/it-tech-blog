@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RepoTreeNode, WhyOpenSourceContent } from '../content';
 import {
   ChevronDownIcon,
@@ -75,7 +75,12 @@ const TreeNode = ({ node, depth }: { node: RepoTreeNode; depth: number }) => {
 export const RepositoryStructureExplorer = ({ content }: Props) => {
   return (
     <section id="section-explorer" aria-labelledby="heading-explorer" className="space-y-lg">
-      <StepSectionHeader id="explorer" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="explorer"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FolderIcon className="h-5 w-5" />}
+      />
 
       {/* 큰 white card 안 2열 */}
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">

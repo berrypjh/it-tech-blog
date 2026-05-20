@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { PathCard, ReadOrderContent } from '../content';
-import { ChevronRightIcon, pathIconByName } from '../icons';
+import { ChevronRightIcon, pathIconByName, RouteIcon } from '../icons';
 
 type Props = { content: ReadOrderContent['paths'] };
 
@@ -62,7 +62,12 @@ const toneClasses: Record<
 export const PersonalizedLearningPaths = ({ content }: Props) => {
   return (
     <section id="section-paths" aria-labelledby="heading-paths" className="space-y-md">
-      <StepSectionHeader id="paths" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="paths"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<RouteIcon className="h-5 w-5" />}
+      />
 
       {/* 보조 문구 */}
       <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep max-w-[60ch]">

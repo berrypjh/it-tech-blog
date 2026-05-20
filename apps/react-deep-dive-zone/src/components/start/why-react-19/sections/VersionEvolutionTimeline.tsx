@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
+import { ArrowLongRightIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['timeline'] };
 
@@ -25,7 +26,12 @@ const formatInline = (text: string): React.ReactNode => {
 export const VersionEvolutionTimeline = ({ content }: Props) => {
   return (
     <section id="section-timeline" aria-labelledby="heading-timeline" className="space-y-lg">
-      <StepSectionHeader id="timeline" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="timeline"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<ArrowLongRightIcon className="h-5 w-5" />}
+      />
 
       <ol className="relative pl-6 sm:pl-8 flex flex-col gap-md">
         {/* 세로 축 */}

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { CoreFileRow, ReadOrderContent } from '../content';
 import { EyeIcon, FileIcon, TargetGoalIcon } from '../icons';
 
@@ -47,7 +47,12 @@ const toneClasses: Record<
 export const CoreFilesByStage = ({ content }: Props) => {
   return (
     <section id="section-core-files" aria-labelledby="heading-core-files" className="space-y-lg">
-      <StepSectionHeader id="core-files" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="core-files"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FileIcon className="h-5 w-5" />}
+      />
 
       {/* column header (data-board 인상) */}
       <div className="hidden md:grid grid-cols-[auto_minmax(0,_0.95fr)_minmax(0,_1.2fr)_minmax(0,_1.5fr)] gap-md px-md py-2 rounded-md bg-[var(--term-surface)] border border-dashed border-[var(--term-border)]">

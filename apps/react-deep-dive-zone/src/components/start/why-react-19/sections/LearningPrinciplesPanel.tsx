@@ -1,13 +1,18 @@
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
-import { principleIconByName } from '../icons';
+import { principleIconByName, ShieldIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['principles'] };
 
 export const LearningPrinciplesPanel = ({ content }: Props) => {
   return (
     <section id="section-principles" aria-labelledby="heading-principles" className="space-y-lg">
-      <StepSectionHeader id="principles" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="principles"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<ShieldIcon className="h-5 w-5" />}
+      />
 
       {/* 넓은 카드 안에 4 컬럼 — 세로 구분선 */}
       <div className="rounded-lg border border-sky-200/80 dark:border-sky-800/60 bg-gradient-to-br from-sky-50/70 via-white to-teal-50/40 dark:from-sky-950/30 dark:via-transparent dark:to-teal-950/20 p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">

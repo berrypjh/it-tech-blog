@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ChainCard, WhyOpenSourceContent } from '../content';
-import { ArrowRightIcon, ExternalLinkIcon } from '../icons';
+import { ArrowRightIcon, ExternalLinkIcon, FlaskIcon } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['chain'] };
 
@@ -38,7 +38,12 @@ const toneClasses: Record<
 export const ApiToImplementationToTestFlow = ({ content }: Props) => {
   return (
     <section id="section-chain" aria-labelledby="heading-chain" className="space-y-lg">
-      <StepSectionHeader id="chain" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="chain"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FlaskIcon className="h-5 w-5" />}
+      />
 
       {/* lg: 3 카드 + 사이 화살표 / 모바일: 세로 흐름 */}
       <ol className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr] gap-md lg:gap-sm items-stretch">

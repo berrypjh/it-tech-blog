@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { FileIcon, roadmapIconByName } from '../icons';
+import { FileIcon, roadmapIconByName, RouteIcon } from '../icons';
 import { tones } from '../tones';
 
 type Props = { content: RoadmapContent['roadmap'] };
@@ -10,7 +10,12 @@ type Props = { content: RoadmapContent['roadmap'] };
 export const EightStepLearningRoadmap = ({ content }: Props) => {
   return (
     <section id="section-roadmap" aria-labelledby="heading-roadmap" className="space-y-lg">
-      <StepSectionHeader id="roadmap" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="roadmap"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<RouteIcon className="h-5 w-5" />}
+      />
 
       <ol className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] divide-y divide-[var(--term-border)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {content.rows.map((row) => {

@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadingPerspectiveContent } from '../content';
-import { stageQuestionIconByName } from '../icons';
+import { NetworkIcon, stageQuestionIconByName } from '../icons';
 import { stageTones } from '../tones';
 
 type Props = { content: ReadingPerspectiveContent['sixStages'] };
@@ -10,7 +10,12 @@ type Props = { content: ReadingPerspectiveContent['sixStages'] };
 export const SixStageQuestionCards = ({ content }: Props) => {
   return (
     <section id="section-six-stages" aria-labelledby="heading-six-stages" className="space-y-lg">
-      <StepSectionHeader id="six-stages" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="six-stages"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<NetworkIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-md">
         {content.cards.map((card) => {

@@ -1,13 +1,18 @@
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
-import { CheckIcon, RefreshIcon, XIcon } from '../icons';
+import { CheckIcon, RefreshIcon, SwapIcon, XIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['terminology'] };
 
 export const TerminologyShiftCompare = ({ content }: Props) => {
   return (
     <section id="section-terminology" aria-labelledby="heading-terminology" className="space-y-lg">
-      <StepSectionHeader id="terminology" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="terminology"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<SwapIcon className="h-5 w-5" />}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(220px,_0.7fr)_1fr] gap-md lg:gap-lg items-stretch">
         {/* 왼쪽: 과거 자료 (neutral) */}

@@ -38,24 +38,22 @@ export type UsageVsInternalsContent = {
     stepBadge: string;
     title: string[];
     description: string;
-    fileTab: string;
     code: string;
     stackLayers: StackLayer[];
   };
   perspectives: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
-    toggle: { usage: string; internal: string };
     left: { title: string; subtitle: string; steps: UsageStep[] };
     right: { title: string; subtitle: string; steps: InternalStep[] };
   };
   flow: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     steps: FlowStep[];
   };
   demo: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     counter: { title: string; button: string; hint: string };
     progress: {
@@ -65,25 +63,25 @@ export type UsageVsInternalsContent = {
     };
   };
   table: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     headers: { phenomenon: string; usage: string; internal: string };
     rows: TableRow[];
   };
   sourceCode: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: CodeCard[];
   };
   takeaway: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     lines: string[];
   };
   nextStep: {
-    sectionNum: string;
-    title: string;
     eyebrow: string;
+    title: string;
+    bannerEyebrow: string;
     nextTitle: string;
     description: string;
     cta: string;
@@ -133,7 +131,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       title: ['같은 React 코드도,', '사용법으로 읽을 때와', '내부 구조로 읽을 때는 다릅니다.'],
       description:
         '겉으로는 단순한 Counter 컴포넌트지만, 내부에서는 이벤트 처리부터 커밋까지 여러 단계가 이어집니다.',
-      fileTab: 'Counter.js',
       code: counterCode,
       stackLayers: [
         { id: 'event', label: 'Event', sub: 'onClick', tone: 'sky' },
@@ -145,9 +142,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      sectionNum: '02',
+      eyebrow: '02 · perspective',
       title: '두 관점으로 읽어보기',
-      toggle: { usage: '사용법 관점', internal: '내부 구조 관점' },
       left: {
         title: '사용법 관점 (4단계)',
         subtitle: '개발자가 코드로 사용하는 흐름',
@@ -189,7 +185,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      sectionNum: '03',
+      eyebrow: '03 · counter flow',
       title: '버튼을 누르면 내부에서는 무슨 일이 일어날까?',
       steps: [
         { id: 'click', num: '1', title: 'Click', hint: '사용자 클릭', icon: 'cursor' },
@@ -219,7 +215,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      sectionNum: '04',
+      eyebrow: '04 · live demo',
       title: '직접 경험해보기 (상상 데모)',
       counter: {
         title: 'Counter 데모',
@@ -244,7 +240,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      sectionNum: '05',
+      eyebrow: '05 · interpretation',
       title: '같은 현상, 다른 해석',
       headers: {
         phenomenon: '현상',
@@ -270,7 +266,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      sectionNum: '06',
+      eyebrow: '06 · source code',
       title: '실제 React 코드에서 확인하기',
       cards: [
         {
@@ -292,7 +288,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      sectionNum: '07',
+      eyebrow: '07 · takeaway',
       title: '핵심 takeaway',
       lines: [
         '상태가 바뀌었다고 DOM이 바로 바뀌는 것이 아닙니다.',
@@ -300,9 +296,9 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: '다음으로 넘어가기',
-      eyebrow: '다음 학습으로 이어집니다',
+      bannerEyebrow: '다음 학습으로 이어집니다',
       nextTitle: '다음: 왜 React 19 코드를 기준으로 읽는가?',
       description: '최신 React의 구조와 실제 방향을 이해하는 것이 중요합니다.',
       cta: '다음 페이지로 이동',
@@ -315,7 +311,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       title: ['The same React code,', 'read as usage and', 'read as internals, are different.'],
       description:
         'On the surface it is a simple Counter component, but inside, several steps run from event handling all the way to commit.',
-      fileTab: 'Counter.js',
       code: counterCode,
       stackLayers: [
         { id: 'event', label: 'Event', sub: 'onClick', tone: 'sky' },
@@ -327,9 +322,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      sectionNum: '02',
+      eyebrow: '02 · perspective',
       title: 'Two Perspectives, Same Code',
-      toggle: { usage: 'Usage', internal: 'Internals' },
       left: {
         title: 'Usage perspective (4 steps)',
         subtitle: 'The flow a developer writes in code',
@@ -375,7 +369,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      sectionNum: '03',
+      eyebrow: '03 · counter flow',
       title: 'When you press the button, what happens inside?',
       steps: [
         { id: 'click', num: '1', title: 'Click', hint: 'User click', icon: 'cursor' },
@@ -411,7 +405,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      sectionNum: '04',
+      eyebrow: '04 · live demo',
       title: 'Try it yourself (imagined demo)',
       counter: {
         title: 'Counter Demo',
@@ -436,7 +430,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      sectionNum: '05',
+      eyebrow: '05 · interpretation',
       title: 'Same phenomenon, different interpretation',
       headers: {
         phenomenon: 'Phenomenon',
@@ -462,7 +456,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      sectionNum: '06',
+      eyebrow: '06 · source code',
       title: 'See it in the real React source',
       cards: [
         {
@@ -484,7 +478,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      sectionNum: '07',
+      eyebrow: '07 · takeaway',
       title: 'Core takeaway',
       lines: [
         "Changing state doesn't change the DOM instantly.",
@@ -492,9 +486,9 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: 'Move on to the next page',
-      eyebrow: 'The next chapter continues',
+      bannerEyebrow: 'The next chapter continues',
       nextTitle: 'Next: Why read against React 19?',
       description: "Understanding modern React's structure and direction is what matters.",
       cta: 'Go to the next page',

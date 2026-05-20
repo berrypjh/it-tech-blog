@@ -1,7 +1,7 @@
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { ToneBadge } from '../../_shared/ToneBadge';
 import { ToneCard } from '../../_shared/ToneCard';
 import { ToneIconBox } from '../../_shared/ToneIconBox';
-import { SectionHeader } from '../components/SectionHeader';
 import type { WhySourceContent } from '../content';
 import { iconByName, QuestionIcon } from '../icons';
 

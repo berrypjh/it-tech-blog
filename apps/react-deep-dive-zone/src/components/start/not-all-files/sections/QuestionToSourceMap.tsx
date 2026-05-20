@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { MappingRow, NotAllFilesContent } from '../content';
-import { ArrowRightIcon, ChevronRightIcon, FileIcon } from '../icons';
+import { ArrowRightIcon, ChevronRightIcon, FileIcon, RouteIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['mapping'] };
 
@@ -100,7 +100,12 @@ const Arrow = ({ cls }: { cls: string }) => (
 export const QuestionToSourceMap = ({ content }: Props) => {
   return (
     <section id="section-mapping" aria-labelledby="heading-mapping" className="space-y-lg">
-      <StepSectionHeader id="mapping" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="mapping"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<RouteIcon className="h-5 w-5" />}
+      />
 
       {/* legend */}
       <div className="flex flex-wrap items-center gap-2 text-[10px] text-[var(--term-muted)]">

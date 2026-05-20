@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { ArrowRightIcon, RefreshIcon, SparkIcon } from '../icons';
+import { ArrowRightIcon, FlagIcon, RefreshIcon, SparkIcon } from '../icons';
 
 type Props = { content: RoadmapContent['finale'] };
 
@@ -151,7 +151,12 @@ const RocketDecoration = () => (
 export const FinalLaunchBanner = ({ content }: Props) => {
   return (
     <section id="section-finale" aria-labelledby="heading-finale" className="space-y-md">
-      <StepSectionHeader id="finale" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="finale"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FlagIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-sky-950 text-white p-md sm:p-lg lg:p-xl shadow-[0_6px_0_var(--term-border)] overflow-hidden relative">
         {/* 배경 spark 장식 */}

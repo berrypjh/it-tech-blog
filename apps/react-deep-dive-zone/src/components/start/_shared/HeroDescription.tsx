@@ -11,11 +11,6 @@ type Props = {
 
 const baseClass = 'text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep';
 
-/**
- * Hero 본문 설명.
- * - 단일 단락: children 전달 → <p>로 렌더.
- * - 다중 단락: lines 전달 → <div> 안에 여러 <p>로 렌더(gap 없음, 텍스트 스타일 상속).
- */
 export const HeroDescription = ({
   maxWidth = 'max-w-[56ch]',
   className,

@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoutineStep, WhyOpenSourceContent } from '../content';
-import { ChevronRightIcon, routineIconByName } from '../icons';
+import { BookIcon, ChevronRightIcon, routineIconByName } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['routine'] };
 
@@ -47,7 +47,12 @@ const toneClasses: Record<
 export const GitHubLearningRoutine = ({ content }: Props) => {
   return (
     <section id="section-routine" aria-labelledby="heading-routine" className="space-y-lg">
-      <StepSectionHeader id="routine" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="routine"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<BookIcon className="h-5 w-5" />}
+      />
 
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-md lg:gap-2 items-stretch">
         {content.steps.map((step, idx) => {

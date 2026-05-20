@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { FocusTopic, WhyReact19Content } from '../content';
-import { topicIconByName } from '../icons';
+import { SparkIcon, topicIconByName } from '../icons';
 
 type Props = { content: WhyReact19Content['focusTopics'] };
 
@@ -45,7 +45,12 @@ const toneClasses: Record<
 export const React19FocusTopics = ({ content }: Props) => {
   return (
     <section id="section-focus" aria-labelledby="heading-focus" className="space-y-lg">
-      <StepSectionHeader id="focus" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="focus"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<SparkIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
         {content.cards.map((card) => {

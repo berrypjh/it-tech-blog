@@ -1,13 +1,18 @@
-import { StepSectionHeader } from '../components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
-import { CheckCircleIcon, QuoteIcon } from '../icons';
+import { CheckCircleIcon, LightbulbIcon, QuoteIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['takeaway'] };
 
 export const CoreTakeawayBanner = ({ content }: Props) => {
   return (
     <section id="section-takeaway" aria-labelledby="heading-takeaway" className="space-y-md">
-      <StepSectionHeader id="takeaway" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="takeaway"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<LightbulbIcon className="h-5 w-5" />}
+      />
 
       <div className="relative rounded-lg border border-sky-500/40 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 text-white p-md sm:p-lg lg:p-xl shadow-[0_4px_0_var(--term-border)] overflow-hidden">
         {/* 배경 장식 점선 */}

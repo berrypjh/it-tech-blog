@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { ChevronRightIcon, usageIconByName } from '../icons';
+import { ChevronRightIcon, PencilIcon, usageIconByName } from '../icons';
 import { tones } from '../tones';
 
 type Props = { content: RoadmapContent['usage'] };
@@ -12,7 +12,12 @@ type Props = { content: RoadmapContent['usage'] };
 export const SiteUsageFlow = ({ content }: Props) => {
   return (
     <section id="section-usage" aria-labelledby="heading-usage" className="space-y-lg">
-      <StepSectionHeader id="usage" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="usage"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<PencilIcon className="h-5 w-5" />}
+      />
 
       <article className="rounded-lg border border-[var(--term-border)] bg-gradient-to-br from-sky-50/50 via-white to-teal-50/40 dark:from-sky-950/30 dark:via-transparent dark:to-teal-950/20 p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-md lg:gap-2 items-stretch">

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadingPerspectiveContent } from '../content';
 import { FileIcon } from '../icons';
 import { stageTones } from '../tones';
@@ -10,7 +10,12 @@ type Props = { content: ReadingPerspectiveContent['mapping'] };
 export const StageFileMappingTable = ({ content }: Props) => {
   return (
     <section id="section-mapping" aria-labelledby="heading-mapping" className="space-y-lg">
-      <StepSectionHeader id="mapping" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="mapping"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<FileIcon className="h-5 w-5" />}
+      />
 
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {/* 데스크톱 테이블 */}

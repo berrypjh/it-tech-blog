@@ -1,9 +1,5 @@
 type Props = { code: string; language?: string };
 
-/**
- * 코드 패널 — 첫 코드 맛보기의 시각적 focal point.
- * 라이트/다크 모드 모두 지원, 줄 번호 + 가벼운 토큰 하이라이트.
- */
 export const CodePreviewPanel = ({ code, language = 'js' }: Props) => {
   const lines = code.split('\n');
   return (

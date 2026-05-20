@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ReadOrderContent, SequenceStep } from '../content';
+import { LayersIcon } from '../icons';
 
 type Props = { content: ReadOrderContent['sequence'] };
 
@@ -46,7 +47,12 @@ const toneClasses: Record<
 export const RecommendedSequenceTimeline = ({ content }: Props) => {
   return (
     <section id="section-sequence" aria-labelledby="heading-sequence" className="space-y-lg">
-      <StepSectionHeader id="sequence" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="sequence"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<LayersIcon className="h-5 w-5" />}
+      />
 
       <ol className="relative pl-7 flex flex-col gap-sm">
         {/* 세로 축 — 그라데이션 sky → indigo */}

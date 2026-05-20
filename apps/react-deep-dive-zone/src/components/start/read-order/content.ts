@@ -79,43 +79,43 @@ export type ReadOrderContent = {
     };
   };
   sequence: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     steps: SequenceStep[];
   };
   coreFiles: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     columnLabels: { file: string; read: string; goal: string };
     rows: CoreFileRow[];
   };
   deferred: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: DeferredCard[];
     infoStrip: string;
   };
   difficulty: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     levels: DifficultyLevel[];
   };
   firstThree: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     cards: FirstFileCard[];
     cta: string;
   };
   paths: {
-    sectionNum: string;
+    eyebrow: string;
     title: string;
     supporting: string[];
     cards: PathCard[];
   };
   nextStep: {
-    sectionNum: string;
-    title: string;
     eyebrow: string;
+    title: string;
+    bannerEyebrow: string;
     nextTitle: string;
     description: string;
     cta: string;
@@ -171,7 +171,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       },
     },
     sequence: {
-      sectionNum: '02',
+      eyebrow: '02 · order',
       title: '추천 학습 순서 8단계',
       steps: [
         {
@@ -225,7 +225,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     coreFiles: {
-      sectionNum: '03',
+      eyebrow: '03 · core files',
       title: '단계별 핵심 파일',
       columnLabels: { file: '파일', read: '볼 것', goal: '학습 목표' },
       rows: [
@@ -296,7 +296,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     deferred: {
-      sectionNum: '04',
+      eyebrow: '04 · defer',
       title: '처음부터 깊게 보지 않아도 되는 것',
       cards: [
         {
@@ -338,7 +338,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       infoStrip: '중요하지 않다는 뜻이 아니라, 지금 단계에서 우선순위가 낮다는 뜻입니다.',
     },
     difficulty: {
-      sectionNum: '05',
+      eyebrow: '05 · difficulty',
       title: '난이도 지도',
       levels: [
         {
@@ -379,7 +379,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     firstThree: {
-      sectionNum: '06',
+      eyebrow: '06 · first three',
       title: '처음에는 이 3개만 보세요.',
       cta: 'GitHub에서 보기',
       cards: [
@@ -410,7 +410,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     paths: {
-      sectionNum: '07',
+      eyebrow: '07 · path',
       title: '나에게 맞는 학습 경로 선택',
       supporting: ['관심사에 따라 시작점은 다르게 잡아도,', '결국 흐름은 연결됩니다.'],
       cards: [
@@ -441,9 +441,9 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: '다음 단계로 이동하기',
-      eyebrow: '다음 학습으로 이어집니다',
+      bannerEyebrow: '다음 학습으로 이어집니다',
       nextTitle: '다음: React 내부 흐름을 읽는 기본 관점',
       description: '코드를 읽기 전에, 전체 구조와 용어를 먼저 정리합니다.',
       cta: '다음 페이지로 이동',
@@ -495,7 +495,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       },
     },
     sequence: {
-      sectionNum: '02',
+      eyebrow: '02 · order',
       title: 'Recommended 8-step reading order',
       steps: [
         {
@@ -549,7 +549,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     coreFiles: {
-      sectionNum: '03',
+      eyebrow: '03 · core files',
       title: 'Core files per stage',
       columnLabels: { file: 'File', read: 'Read', goal: 'Goal' },
       rows: [
@@ -620,7 +620,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     deferred: {
-      sectionNum: '04',
+      eyebrow: '04 · defer',
       title: "Topics you don't have to read deeply at first",
       cards: [
         {
@@ -662,7 +662,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       infoStrip: 'Not unimportant — just lower priority for now.',
     },
     difficulty: {
-      sectionNum: '05',
+      eyebrow: '05 · difficulty',
       title: 'Difficulty map',
       levels: [
         {
@@ -703,7 +703,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     firstThree: {
-      sectionNum: '06',
+      eyebrow: '06 · first three',
       title: 'Just read these 3 first.',
       cta: 'View on GitHub',
       cards: [
@@ -737,7 +737,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     paths: {
-      sectionNum: '07',
+      eyebrow: '07 · path',
       title: 'Pick a path that fits you',
       supporting: ['Your starting point varies by interest,', 'but the flow eventually connects.'],
       cards: [
@@ -768,9 +768,9 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
       ],
     },
     nextStep: {
-      sectionNum: '08',
+      eyebrow: '08 · next step',
       title: 'Move on to the next page',
-      eyebrow: 'The journey continues',
+      bannerEyebrow: 'The journey continues',
       nextTitle: 'Next: A mental model for reading React internals',
       description: 'Before the code, line up the overall structure and vocabulary.',
       cta: 'Go to the next page',

@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
-import { LightbulbIcon } from '../icons';
+import { AtomIcon, LightbulbIcon } from '../icons';
 import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['demo'] };
@@ -53,7 +53,12 @@ export const InternalFlowDemo = ({ content }: Props) => {
 
   return (
     <section id="section-demo" aria-labelledby="heading-demo" className="space-y-lg">
-      <StepSectionHeader id="demo" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="demo"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<AtomIcon className="h-5 w-5" />}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
         {/* 좌: Counter 데모 */}

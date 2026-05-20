@@ -9,9 +9,6 @@ type Props = {
   className?: string;
 };
 
-/**
- * Hero 상단 터미널 프롬프트 라인. `$ <command> <path><suffix>` 패턴.
- */
 export const TerminalPrompt = ({ command, path, suffix, className }: Props) => (
   <p className={cn('mb-md text-xxsm text-[var(--term-muted)] tabular-nums', className)}>
     <span className="text-[var(--term-accent)] font-bold">$</span> {command}

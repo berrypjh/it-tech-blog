@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ChecklistItem, RoadmapContent } from '../content';
-import { CheckIcon } from '../icons';
+import { CheckIcon, QuestionIcon } from '../icons';
 
 type Props = { content: RoadmapContent['selfCheck'] };
 
@@ -69,7 +69,12 @@ export const SelfCheckChecklist = ({ content }: Props) => {
 
   return (
     <section id="section-self-check" aria-labelledby="heading-self-check" className="space-y-md">
-      <StepSectionHeader id="self-check" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="self-check"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<QuestionIcon className="h-5 w-5" />}
+      />
 
       <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep -mt-sm">
         {content.supporting}

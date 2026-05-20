@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { NotAllFilesContent, QuestionCard } from '../content';
-import { questionCardIconByName } from '../icons';
+import { questionCardIconByName, QuestionIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['questions'] };
 
@@ -56,7 +56,12 @@ const toneClasses: Record<
 export const QuestionCenteredCards = ({ content }: Props) => {
   return (
     <section id="section-questions" aria-labelledby="heading-questions" className="space-y-lg">
-      <StepSectionHeader id="questions" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="questions"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<QuestionIcon className="h-5 w-5" />}
+      />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
         {content.cards.map((card) => {

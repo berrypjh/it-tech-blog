@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { StartPageShell } from '../_shared/StartPageShell';
+
 import { FirstCodePreview } from './sections/FirstCodePreview';
 import { LearningPerspectiveCompare } from './sections/LearningPerspectiveCompare';
 import { NextLearningStepBanner } from './sections/NextLearningStepBanner';
@@ -14,15 +16,13 @@ export const WhyReadReactSourcePage = ({ locale }: Props) => {
   const c = whySourceContent[locale];
 
   return (
-    <article className="mx-auto w-full max-w-[1200px] px-lg sm:px-xl lg:px-2xl py-xl lg:py-2xl">
-      <div className="flex flex-col gap-12 lg:gap-20">
-        <SourceLearningHero content={c.hero} />
-        <ReactQuestionCards content={c.questions} />
-        <LearningPerspectiveCompare content={c.compare} />
-        <SourceReadingBenefits content={c.benefits} />
-        <FirstCodePreview content={c.firstCode} />
-        <NextLearningStepBanner content={c.nextStep} />
-      </div>
-    </article>
+    <StartPageShell>
+      <SourceLearningHero content={c.hero} />
+      <ReactQuestionCards content={c.questions} />
+      <LearningPerspectiveCompare content={c.compare} />
+      <SourceReadingBenefits content={c.benefits} />
+      <FirstCodePreview content={c.firstCode} />
+      <NextLearningStepBanner content={c.nextStep} />
+    </StartPageShell>
   );
 };

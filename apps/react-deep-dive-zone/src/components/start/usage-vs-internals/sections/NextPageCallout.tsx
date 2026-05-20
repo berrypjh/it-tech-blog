@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
+import { SectionHeader } from '../../_shared/SectionHeader';
 import { ArrowRightIcon } from '../../why-source/icons';
-import { StepSectionHeader } from '../components/StepSectionHeader';
 import type { UsageVsInternalsContent } from '../content';
 import { BookIcon, SparkleIcon } from '../icons';
 
@@ -123,7 +123,12 @@ const BookDecoration = () => (
 export const NextPageCallout = ({ content }: Props) => {
   return (
     <section id="section-next" aria-labelledby="heading-next" className="space-y-md">
-      <StepSectionHeader id="next" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="next"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<SparkleIcon className="h-5 w-5" />}
+      />
 
       <Link
         href={content.href}
@@ -136,7 +141,7 @@ export const NextPageCallout = ({ content }: Props) => {
             <p className="text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-300 font-bold inline-flex items-center gap-1.5">
               <BookIcon className="h-3.5 w-3.5" />
               <SparkleIcon className="h-3 w-3 text-teal-500 dark:text-teal-300" />
-              {content.eyebrow}
+              {content.bannerEyebrow}
             </p>
             <h3
               id="heading-next-title"

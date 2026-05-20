@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { ApproachItem, NotAllFilesContent } from '../content';
 import { approachIconByName, CheckIcon, XIcon } from '../icons';
 
@@ -123,7 +123,12 @@ const ApproachPanel = ({
 export const WrongVsGoodApproach = ({ content }: Props) => {
   return (
     <section id="section-approaches" aria-labelledby="heading-approaches" className="space-y-lg">
-      <StepSectionHeader id="approaches" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="approaches"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<XIcon className="h-5 w-5" />}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
         <ApproachPanel variant="wrong" title={content.wrong.title} items={content.wrong.items} />

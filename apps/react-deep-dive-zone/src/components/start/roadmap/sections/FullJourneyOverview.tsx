@@ -1,15 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { RoadmapContent } from '../content';
-import { CheckCircleIcon } from '../icons';
+import { CheckCircleIcon, EyeIcon } from '../icons';
 
 type Props = { content: RoadmapContent['journey'] };
 
 export const FullJourneyOverview = ({ content }: Props) => {
   return (
     <section id="section-journey" aria-labelledby="heading-journey" className="space-y-lg">
-      <StepSectionHeader id="journey" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="journey"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<EyeIcon className="h-5 w-5" />}
+      />
 
       <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         {/* 현재 위치 + 완료 pill */}

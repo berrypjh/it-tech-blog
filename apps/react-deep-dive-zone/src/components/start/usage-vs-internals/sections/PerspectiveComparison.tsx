@@ -1,11 +1,8 @@
-'use client';
-
-import { useState } from 'react';
-
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { UsageStep, UsageVsInternalsContent } from '../content';
+import { CubeWireframeIcon } from '../icons';
 import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['perspectives'] };
@@ -91,53 +88,22 @@ const PerspectivePanel = ({
 };
 
 export const PerspectiveComparison = ({ content }: Props) => {
-  const [active, setActive] = useState<PerspectiveTone>('internal');
   return (
     <section
       id="section-perspectives"
       aria-labelledby="heading-perspectives"
       className="space-y-lg rounded-lg border border-[var(--term-border)] bg-sky-50/30 dark:bg-sky-950/15 p-md sm:p-lg lg:p-xl"
     >
-      <StepSectionHeader id="perspectives" num={content.sectionNum} title={content.title} />
-
-      {/* 탭 토글 (시각/aria-pressed) */}
-      <div
-        role="group"
-        aria-label={content.title}
-        className="inline-flex w-full sm:w-fit mx-auto items-center gap-1 p-1 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]"
-      >
-        {(
-          [
-            ['usage', content.toggle.usage],
-            ['internal', content.toggle.internal],
-          ] as const
-        ).map(([key, label]) => (
-          <button
-            key={key}
-            type="button"
-            aria-pressed={active === key}
-            onClick={() => setActive(key)}
-            className={cn(
-              'flex-1 sm:flex-none px-md py-1.5 rounded-full text-xsm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              active === key
-                ? key === 'usage'
-                  ? 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900'
-                  : 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900'
-                : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
-            )}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+      <SectionHeader
+        id="perspectives"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<CubeWireframeIcon className="h-5 w-5" />}
+      />
 
       {/* 좌우 카드 + 중앙 VS */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
-        <div
-          className={cn('transition-opacity', active === 'internal' && 'opacity-60 lg:opacity-100')}
-        >
-          <PerspectivePanel tone="usage" panel={content.left} />
-        </div>
+        <PerspectivePanel tone="usage" panel={content.left} />
 
         {/* VS */}
         <div className="relative flex lg:flex-col items-center justify-center py-md">
@@ -154,11 +120,7 @@ export const PerspectiveComparison = ({ content }: Props) => {
           </span>
         </div>
 
-        <div
-          className={cn('transition-opacity', active === 'usage' && 'opacity-60 lg:opacity-100')}
-        >
-          <PerspectivePanel tone="internal" panel={content.right} />
-        </div>
+        <PerspectivePanel tone="internal" panel={content.right} />
       </div>
     </section>
   );

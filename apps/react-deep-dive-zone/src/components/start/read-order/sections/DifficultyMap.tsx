@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { StepSectionHeader } from '../../usage-vs-internals/components/StepSectionHeader';
+import { SectionHeader } from '../../_shared/SectionHeader';
 import type { DifficultyLevel, ReadOrderContent } from '../content';
+import { GaugeIcon } from '../icons';
 
 type Props = { content: ReadOrderContent['difficulty'] };
 
@@ -57,7 +58,12 @@ export const DifficultyMap = ({ content }: Props) => {
   const total = content.levels.length;
   return (
     <section id="section-difficulty" aria-labelledby="heading-difficulty" className="space-y-lg">
-      <StepSectionHeader id="difficulty" num={content.sectionNum} title={content.title} />
+      <SectionHeader
+        id="difficulty"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        icon={<GaugeIcon className="h-5 w-5" />}
+      />
 
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md items-end">
         {content.levels.map((level, idx) => {
