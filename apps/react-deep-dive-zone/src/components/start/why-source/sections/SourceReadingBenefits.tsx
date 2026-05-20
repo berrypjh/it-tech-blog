@@ -23,6 +23,7 @@ export const SourceReadingBenefits = ({ content }: Props) => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
         {content.cards.map((card) => {
           const Icon = iconByName[card.icon];
+
           return (
             <li key={card.id}>
               <ToneCard tone={card.tone}>

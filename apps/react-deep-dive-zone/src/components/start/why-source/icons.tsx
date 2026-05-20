@@ -289,12 +289,6 @@ export const SparkIcon = ({ className }: IconProps) => (
   </svg>
 );
 
-export const QuoteIcon = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" className={base(className)} fill="currentColor" aria-hidden="true">
-    <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3v2a5 5 0 0 0 5-5V9a2 2 0 0 0 0-2Zm12 0h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3v2a5 5 0 0 0 5-5V9a2 2 0 0 0 0-2Z" />
-  </svg>
-);
-
 export const MapPinIcon = ({ className }: IconProps) => (
   <svg
     viewBox="0 0 24 24"

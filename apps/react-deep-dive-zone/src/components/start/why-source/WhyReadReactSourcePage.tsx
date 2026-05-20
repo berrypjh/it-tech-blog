@@ -2,7 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import { FirstCodePreview } from './sections/FirstCodePreview';
 import { LearningPerspectiveCompare } from './sections/LearningPerspectiveCompare';
-import { LearningQuoteBanner } from './sections/LearningQuoteBanner';
 import { NextLearningStepBanner } from './sections/NextLearningStepBanner';
 import { ReactQuestionCards } from './sections/ReactQuestionCards';
 import { SourceLearningHero } from './sections/SourceLearningHero';
@@ -22,7 +21,6 @@ export const WhyReadReactSourcePage = ({ locale }: Props) => {
         <LearningPerspectiveCompare content={c.compare} />
         <SourceReadingBenefits content={c.benefits} />
         <FirstCodePreview content={c.firstCode} />
-        <LearningQuoteBanner content={c.quote} />
         <NextLearningStepBanner content={c.nextStep} />
       </div>
     </article>

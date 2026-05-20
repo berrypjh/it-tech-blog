@@ -44,8 +44,8 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
         })}
       </ul>
 
-      {/* 메인 플로우 6단계: 데스크톱은 6열, 태블릿/모바일은 wrap */}
-      <ol className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 sm:gap-1">
+      {/* 메인 플로우 6단계: xl 이상에서 6열 1행, 그 미만은 3열 2행 */}
+      <ol className="grid grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-1">
         {stages.map((stage, idx) => {
           const t = toneTokens[stage.tone];
           const isLastInRow = idx === stages.length - 1;
@@ -81,7 +81,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
               {!isLastInRow && (
                 <span
                   aria-hidden="true"
-                  className="hidden sm:flex absolute top-1/2 -right-1 -translate-y-1/2 text-[var(--term-dim)] text-[10px] z-10"
+                  className="hidden xl:flex absolute top-1/2 -right-1 -translate-y-1/2 text-[var(--term-muted)] text-[10px] z-10"
                 >
                   →
                 </span>

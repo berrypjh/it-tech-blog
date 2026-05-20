@@ -20,6 +20,7 @@ export const ReactQuestionCards = ({ content }: Props) => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
         {content.cards.map((card) => {
           const Icon = iconByName[card.icon];
+
           return (
             <li key={card.id}>
               <ToneCard tone={card.tone} className="relative">
@@ -27,7 +28,7 @@ export const ReactQuestionCards = ({ content }: Props) => {
                   <ToneIconBox tone={card.tone}>
                     <Icon className="h-5 w-5" />
                   </ToneIconBox>
-                  <span className="text-xxsm tabular-nums text-[var(--term-dim)] font-bold">
+                  <span className="text-xxsm tabular-nums text-[var(--term-muted)] font-bold">
                     {card.number}
                   </span>
                 </div>

@@ -1,4 +1,4 @@
-export type ToneKey = 'sky' | 'cyan' | 'violet' | 'emerald' | 'blue' | 'teal' | 'indigo';
+export type ToneKey = 'sky' | 'cyan' | 'violet' | 'emerald' | 'blue' | 'teal' | 'indigo' | 'amber';
 
 export type ToneTokens = {
   text: string;
@@ -57,5 +57,12 @@ export const toneTokens: Record<ToneKey, ToneTokens> = {
     dot: 'bg-indigo-500 dark:bg-indigo-400',
     border: 'border-indigo-200/70 dark:border-indigo-800/60',
     borderHover: 'hover:border-indigo-400/70 dark:hover:border-indigo-500/60',
+  },
+  amber: {
+    text: 'text-amber-700 dark:text-amber-300',
+    chip: 'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/70',
+    dot: 'bg-amber-500 dark:bg-amber-400',
+    border: 'border-amber-200/70 dark:border-amber-800/60',
+    borderHover: 'hover:border-amber-400/70 dark:hover:border-amber-500/60',
   },
 };

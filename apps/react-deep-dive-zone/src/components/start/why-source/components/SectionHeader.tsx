@@ -9,11 +9,6 @@ type Props = {
   align?: 'left' | 'center';
 };
 
-/**
- * 터미널 스타일 섹션 헤더.
- *   // 01 · question pool ─────────── title
- *   설명 문장 (있을 때만)
- */
 export const SectionHeader = ({ id, eyebrow, title, description, icon, align = 'left' }: Props) => {
   return (
     <header

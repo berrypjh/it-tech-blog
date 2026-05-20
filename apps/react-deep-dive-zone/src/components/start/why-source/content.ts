@@ -87,14 +87,9 @@ export type WhySourceContent = {
       parameters: string;
       link: string;
       stats: { stars: string; forks: string; watchers: string };
-      commits: { title: string; time: string }[];
     };
     primaryCta: string;
     secondaryCta: string;
-  };
-  quote: {
-    eyebrow: string;
-    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -140,13 +135,13 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         '소스코드를 읽으면 렌더링, 상태 업데이트, Hooks, Suspense가 하나의 구조로 연결되어 보입니다.',
       flowCategories: [
         { id: 'input', label: '입력', tone: 'sky', stages: ['jsx'] },
-        { id: 'abstraction', label: '내부 추상화', tone: 'cyan', stages: ['element', 'fiber'] },
+        { id: 'abstraction', label: '내부 추상화', tone: 'amber', stages: ['element', 'fiber'] },
         { id: 'process', label: '처리 단계', tone: 'violet', stages: ['render', 'commit'] },
         { id: 'result', label: '결과', tone: 'emerald', stages: ['dom'] },
       ],
       flowStages: [
         { id: 'jsx', label: 'JSX', hint: '코드로 UI를 표현', tone: 'sky' },
-        { id: 'element', label: 'Element', hint: '불변 객체 트리 생성', tone: 'cyan' },
+        { id: 'element', label: 'Element', hint: '불변 객체 트리 생성', tone: 'amber' },
         { id: 'fiber', label: 'Fiber', hint: '작업 단위로 분해, 연결', tone: 'violet' },
         { id: 'render', label: 'Render', hint: 'Diff 계산 및 작업 수행', tone: 'blue' },
         { id: 'commit', label: 'Commit', hint: '변경 사항을 적용', tone: 'emerald' },
@@ -311,21 +306,9 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         parameters: 'Parameters: type, key, ref, self, source, props',
         link: 'View on GitHub',
         stats: { stars: '25.7k', forks: '5.2k', watchers: '1.1k' },
-        commits: [
-          { title: 'Refactor element creation logic', time: '2일 전' },
-          { title: 'Add DEV warnings for key', time: '5일 전' },
-          { title: 'Improve element type checks', time: '1주 전' },
-        ],
       },
       primaryCta: 'GitHub에서 코드 열기',
       secondaryCta: '이 코드가 왜 중요한지 보기',
-    },
-    quote: {
-      eyebrow: '05 · learning attitude',
-      lines: [
-        'React 소스코드는 처음부터 끝까지 외우는 책이 아니라,',
-        '질문을 들고 찾아가는 지도입니다.',
-      ],
     },
     nextStep: {
       eyebrow: '다음 여정으로 함께 떠나요',
@@ -347,13 +330,13 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         'Reading the source connects rendering, state updates, Hooks, and Suspense as one structure.',
       flowCategories: [
         { id: 'input', label: 'Input', tone: 'sky', stages: ['jsx'] },
-        { id: 'abstraction', label: 'Abstraction', tone: 'cyan', stages: ['element', 'fiber'] },
+        { id: 'abstraction', label: 'Abstraction', tone: 'amber', stages: ['element', 'fiber'] },
         { id: 'process', label: 'Processing', tone: 'violet', stages: ['render', 'commit'] },
         { id: 'result', label: 'Result', tone: 'emerald', stages: ['dom'] },
       ],
       flowStages: [
         { id: 'jsx', label: 'JSX', hint: 'Expressing UI in code', tone: 'sky' },
-        { id: 'element', label: 'Element', hint: 'Immutable object tree', tone: 'cyan' },
+        { id: 'element', label: 'Element', hint: 'Immutable object tree', tone: 'amber' },
         { id: 'fiber', label: 'Fiber', hint: 'Splitting into work units', tone: 'violet' },
         { id: 'render', label: 'Render', hint: 'Diff and work execution', tone: 'blue' },
         { id: 'commit', label: 'Commit', hint: 'Applying the changes', tone: 'emerald' },
@@ -522,21 +505,9 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         parameters: 'Parameters: type, key, ref, self, source, props',
         link: 'View on GitHub',
         stats: { stars: '25.7k', forks: '5.2k', watchers: '1.1k' },
-        commits: [
-          { title: 'Refactor element creation logic', time: '2 days ago' },
-          { title: 'Add DEV warnings for key', time: '5 days ago' },
-          { title: 'Improve element type checks', time: '1 week ago' },
-        ],
       },
       primaryCta: 'Open on GitHub',
       secondaryCta: 'Why this file matters',
-    },
-    quote: {
-      eyebrow: '05 · learning attitude',
-      lines: [
-        'The React source is not a book you memorize cover to cover —',
-        'it is a map you travel with a question in hand.',
-      ],
     },
     nextStep: {
       eyebrow: 'Continue the journey',
