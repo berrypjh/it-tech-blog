@@ -129,7 +129,7 @@ const githubBase = 'https://github.com/facebook/react/blob/main/packages/react-r
 export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = {
   ko: {
     hero: {
-      stepBadge: '01 시작하기',
+      stepBadge: '시작하기 · 2/8단계',
       title: ['같은 React 코드도,', '사용법으로 읽을 때와', '내부 구조로 읽을 때는 다릅니다.'],
       description:
         '겉으로는 단순한 Counter 컴포넌트지만, 내부에서는 이벤트 처리부터 커밋까지 여러 단계가 이어집니다.',
@@ -311,7 +311,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
   },
   en: {
     hero: {
-      stepBadge: '01 getting started',
+      stepBadge: 'Getting Started · 2/8',
       title: ['The same React code,', 'read as usage and', 'read as internals, are different.'],
       description:
         'On the surface it is a simple Counter component, but inside, several steps run from event handling all the way to commit.',

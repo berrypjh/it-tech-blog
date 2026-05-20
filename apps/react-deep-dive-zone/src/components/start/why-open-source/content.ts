@@ -165,7 +165,7 @@ const repoTreeKo: RepoTreeNode[] = [
 export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
   ko: {
     hero: {
-      stepBadge: 'GitHub로 학습하기',
+      stepBadge: '시작하기 · 4/8단계',
       title: ['공식 문서는 사용법을 알려주고,', 'GitHub는 설계 의도를 보여줍니다.'],
       description: 'React를 깊게 이해하려면 문서, 소스코드, 테스트, 변경 이력을 함께 봐야 합니다.',
       pills: [
@@ -425,7 +425,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
   },
   en: {
     hero: {
-      stepBadge: 'Learning via GitHub',
+      stepBadge: 'Getting Started · 4/8',
       title: ['The docs teach how to use,', 'GitHub shows why it was designed that way.'],
       description:
         'To really understand React, read docs, source code, tests, and change history together.',

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../components/CodePreviewPanel';
+import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
 import { SectionHeader } from '../components/SectionHeader';
 import type { WhySourceContent } from '../content';
 import { ArrowRightIcon, CodeIcon, GithubIcon } from '../icons';

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { TerminalBadge } from '../../_shared/TerminalBadge';
+import { toneTokens } from '../../_shared/tones';
 import type { WhySourceContent } from '../content';
 import { ArrowLoopIcon } from '../icons';
-import { toneTokens } from '../tones';
 
 type Props = {
   categories: WhySourceContent['hero']['flowCategories'];
@@ -96,10 +97,10 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
           aria-hidden="true"
           className="flex-1 border-t border-dashed border-[var(--term-border)]"
         />
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] text-[var(--term-muted)]">
+        <TerminalBadge showDot={false}>
           <ArrowLoopIcon className="h-3 w-3 text-[var(--term-accent)]" />
           {loop}
-        </span>
+        </TerminalBadge>
         <span
           aria-hidden="true"
           className="flex-1 border-t border-dashed border-[var(--term-border)]"

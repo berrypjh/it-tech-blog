@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { TerminalBadge } from '../../_shared/TerminalBadge';
 import type { ReadOrderContent, StairTone } from '../content';
 import { FlagIcon } from '../icons';
 
@@ -89,10 +90,7 @@ export const StairLearningRoadmap = ({ stair }: Props) => {
 
       {/* 상단 라벨 */}
       <div className="relative flex items-center justify-between mb-md">
-        <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] text-[var(--term-muted)]">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" aria-hidden="true" />
-          {stair.stairTitle}
-        </span>
+        <TerminalBadge dotClassName="bg-sky-500">{stair.stairTitle}</TerminalBadge>
         <span className="text-[10px] font-mono text-[var(--term-muted)]">
           {'//'} ascending difficulty
         </span>

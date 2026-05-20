@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { TerminalBadge } from '../../_shared/TerminalBadge';
 import type { StackLayer } from '../content';
 import { AtomIcon } from '../icons';
 
@@ -68,10 +69,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
 
       {/* 상단 라벨 + atom 아이콘 */}
       <div className="relative flex items-center justify-between mb-md">
-        <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] text-[var(--term-muted)]">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" aria-hidden="true" />
-          internal flow
-        </span>
+        <TerminalBadge dotClassName="bg-sky-500">internal flow</TerminalBadge>
         <span
           className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-cyan-200 bg-cyan-50 text-cyan-600 dark:border-cyan-800/60 dark:bg-cyan-950/40 dark:text-cyan-300"
           aria-hidden="true"

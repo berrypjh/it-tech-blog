@@ -140,7 +140,7 @@ const appCode = `function App() {
 export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent> = {
   ko: {
     hero: {
-      stepBadge: '01 가장 먼저 가져야 할 관점',
+      stepBadge: '시작하기 · 7/8단계',
       title: ['파일보다 먼저,', '지금 어느 단계의 코드인지', '봐야 합니다.'],
       description: ['React 내부를 읽을 때는', '위치보다 흐름을 먼저 이해하는 것이 중요합니다.'],
       points: [
@@ -452,7 +452,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
   },
   en: {
     hero: {
-      stepBadge: '01 The first perspective to hold',
+      stepBadge: 'Getting Started · 7/8',
       title: ['Before the filename,', 'first ask which stage', 'this code belongs to.'],
       description: ['When reading React internals,', 'understand the flow before the location.'],
       points: [

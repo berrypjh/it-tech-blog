@@ -116,7 +116,7 @@ export type WhyReact19Content = {
 export const whyReact19Content: Record<Locale, WhyReact19Content> = {
   ko: {
     hero: {
-      stepBadge: '01 왜 최신 React 기준으로 읽어야 할까?',
+      stepBadge: '시작하기 · 3/8단계',
       title: ['React 내부를 읽는다면,', '지금의 React를 기준으로 읽어야 합니다.'],
       description: ['과거 강의가 틀린 것이 아니라,', '설명하던 React의 시대가 다를 수 있습니다.'],
       points: [
@@ -357,7 +357,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
   },
   en: {
     hero: {
-      stepBadge: '01 Why read against modern React?',
+      stepBadge: 'Getting Started · 3/8',
       title: ['When you read React internals,', 'read against React as it is today.'],
       description: [
         "It's not that older lectures were wrong —",

@@ -62,7 +62,6 @@ const KEYWORDS = new Set([
  * 교육용 코드 미리보기에는 충분하다.
  */
 const highlight = (line: string): React.ReactNode => {
-  // 한 줄 주석/블록주석 한 줄 처리
   const commentMatch = line.match(/^(\s*)(\/\/.*|\/\*.*|\*.*|\*\/)$/);
   if (commentMatch) {
     return (

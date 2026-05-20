@@ -1,15 +1,5 @@
-import type { ToneKey } from './content';
+export type ToneKey = 'sky' | 'cyan' | 'violet' | 'emerald' | 'blue' | 'teal' | 'indigo';
 
-/**
- * 정보 계층용 accent 톤 매핑. 프로젝트 베이스(amber/터미널)는 유지하되,
- * 디자인 스펙의 파랑/민트/보라/초록 정보 위계를 카드 accent로 표현한다.
- *
- * - text: 글자/아이콘 색
- * - chip: pill 배경 (라이트/다크 모두 은은하게)
- * - dot: 작은 dot 마커
- * - border: 카드 강조 시 사용하는 left/border 강조선
- * - softText: 본문 톤
- */
 export type ToneTokens = {
   text: string;
   chip: string;
@@ -60,5 +50,12 @@ export const toneTokens: Record<ToneKey, ToneTokens> = {
     dot: 'bg-teal-500 dark:bg-teal-400',
     border: 'border-teal-200/70 dark:border-teal-800/60',
     borderHover: 'hover:border-teal-400/70 dark:hover:border-teal-500/60',
+  },
+  indigo: {
+    text: 'text-indigo-600 dark:text-indigo-300',
+    chip: 'bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-200 dark:border-indigo-800/70',
+    dot: 'bg-indigo-500 dark:bg-indigo-400',
+    border: 'border-indigo-200/70 dark:border-indigo-800/60',
+    borderHover: 'hover:border-indigo-400/70 dark:hover:border-indigo-500/60',
   },
 };

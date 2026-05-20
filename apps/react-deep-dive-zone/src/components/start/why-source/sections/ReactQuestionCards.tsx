@@ -1,9 +1,9 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { ToneBadge } from '../../_shared/ToneBadge';
+import { ToneCard } from '../../_shared/ToneCard';
+import { ToneIconBox } from '../../_shared/ToneIconBox';
 import { SectionHeader } from '../components/SectionHeader';
 import type { WhySourceContent } from '../content';
 import { iconByName, QuestionIcon } from '../icons';
-import { toneTokens } from '../tones';
 
 type Props = { content: WhySourceContent['questions'] };
 
@@ -19,36 +19,19 @@ export const ReactQuestionCards = ({ content }: Props) => {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
         {content.cards.map((card) => {
-          const t = toneTokens[card.tone];
           const Icon = iconByName[card.icon];
           return (
             <li key={card.id}>
-              <article
-                className={cn(
-                  'group relative flex flex-col gap-md h-full',
-                  'rounded-lg border bg-[var(--term-bg)] p-md',
-                  'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
-                  'border-[var(--term-border)]',
-                  t.borderHover,
-                )}
-              >
-                {/* 상단: 아이콘 + 번호 */}
+              <ToneCard tone={card.tone} className="relative">
                 <div className="flex items-start justify-between">
-                  <span
-                    className={cn(
-                      'inline-flex items-center justify-center w-11 h-11 rounded-md border',
-                      t.chip,
-                    )}
-                    aria-hidden="true"
-                  >
+                  <ToneIconBox tone={card.tone}>
                     <Icon className="h-5 w-5" />
-                  </span>
+                  </ToneIconBox>
                   <span className="text-xxsm tabular-nums text-[var(--term-dim)] font-bold">
                     {card.number}
                   </span>
                 </div>
 
-                {/* 질문: 3줄 리듬 */}
                 <p className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
                   {card.question.map((line, i) => (
                     <span key={i} className="block">
@@ -57,22 +40,10 @@ export const ReactQuestionCards = ({ content }: Props) => {
                   ))}
                 </p>
 
-                {/* 하단: concept badge */}
                 <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
-                  <span
-                    className={cn(
-                      'inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10px] font-medium',
-                      t.chip,
-                    )}
-                  >
-                    <span
-                      className={cn('inline-block w-1 h-1 rounded-full', t.dot)}
-                      aria-hidden="true"
-                    />
-                    {card.badge}
-                  </span>
+                  <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
                 </div>
-              </article>
+              </ToneCard>
             </li>
           );
         })}

@@ -1,4 +1,4 @@
-import { CodePreviewPanel } from '../../why-source/components/CodePreviewPanel';
+import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
 import { ArrowRightIcon, GithubIcon } from '../../why-source/icons';
 import { StepSectionHeader } from '../components/StepSectionHeader';
 import type { UsageVsInternalsContent } from '../content';

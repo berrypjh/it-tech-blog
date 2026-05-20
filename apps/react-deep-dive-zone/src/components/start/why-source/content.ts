@@ -1,6 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type ToneKey = 'sky' | 'cyan' | 'violet' | 'emerald' | 'blue' | 'teal';
+import type { ToneKey } from '../_shared/tones';
+
+export type { ToneKey };
 
 export type FlowStage = {
   id: 'jsx' | 'element' | 'fiber' | 'render' | 'commit' | 'dom';
@@ -46,8 +48,6 @@ export type WhySourceContent = {
     badge: string;
     title: { lead: string; accent: string; tail: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
     flowCategories: FlowCategory[];
     flowStages: FlowStage[];
     flowLoop: string;
@@ -130,7 +130,7 @@ export function ReactElement(type, key, ref, self, source, props) {
 export const whySourceContent: Record<Locale, WhySourceContent> = {
   ko: {
     hero: {
-      badge: 'React 내부 구조 학습 가이드',
+      badge: '시작하기 · 1/8단계',
       title: {
         lead: 'React를 오래 썼다면,',
         accent: '이제는 내부 흐름을',
@@ -138,8 +138,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       },
       description:
         '소스코드를 읽으면 렌더링, 상태 업데이트, Hooks, Suspense가 하나의 구조로 연결되어 보입니다.',
-      primaryCta: '왜 읽어야 하는지 보기',
-      secondaryCta: '첫 코드부터 확인하기',
       flowCategories: [
         { id: 'input', label: '입력', tone: 'sky', stages: ['jsx'] },
         { id: 'abstraction', label: '내부 추상화', tone: 'cyan', stages: ['element', 'fiber'] },
@@ -339,7 +337,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
   },
   en: {
     hero: {
-      badge: 'React Internals Learning Guide',
+      badge: 'Getting Started · 1/8',
       title: {
         lead: "If you've used React for a while,",
         accent: "it's time to read",
@@ -347,8 +345,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       },
       description:
         'Reading the source connects rendering, state updates, Hooks, and Suspense as one structure.',
-      primaryCta: 'See why it matters',
-      secondaryCta: 'Start with the first file',
       flowCategories: [
         { id: 'input', label: 'Input', tone: 'sky', stages: ['jsx'] },
         { id: 'abstraction', label: 'Abstraction', tone: 'cyan', stages: ['element', 'fiber'] },

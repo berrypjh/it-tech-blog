@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { TerminalBadge } from '../../_shared/TerminalBadge';
 import type { VersionCard } from '../content';
 import { ArrowUpIcon } from '../icons';
 
@@ -104,10 +105,7 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
 
       {/* 상단 라벨 + 화살표 (현재) */}
       <div className="relative flex items-center justify-between mb-md">
-        <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] text-[var(--term-muted)]">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" aria-hidden="true" />
-          version timeline
-        </span>
+        <TerminalBadge dotClassName="bg-sky-500">version timeline</TerminalBadge>
         <span className="inline-flex items-center gap-1 text-[10px] font-bold text-teal-600 dark:text-teal-300">
           <ArrowUpIcon className="h-3 w-3" />
           {axisTop}

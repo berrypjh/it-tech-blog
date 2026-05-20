@@ -6,6 +6,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { StepSectionHeader } from '../components/StepSectionHeader';
 import type { UsageStep, UsageVsInternalsContent } from '../content';
+import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['perspectives'] };
 
@@ -56,24 +57,6 @@ const StepRow = ({ step, tone }: { step: UsageStep; tone: PerspectiveTone }) => 
       </article>
     </li>
   );
-};
-
-/** 백틱 `code` 부분에 mono + accent 처리 */
-const formatInline = (text: string): React.ReactNode => {
-  const parts = text.split(/(`[^`]+`)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return (
-        <code
-          key={i}
-          className="px-1 py-0.5 rounded border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[0.9em] font-mono"
-        >
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
 };
 
 const PerspectivePanel = ({

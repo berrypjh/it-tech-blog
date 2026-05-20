@@ -128,7 +128,7 @@ const githubBase = 'https://github.com/facebook/react/blob/main/packages';
 export const readOrderContent: Record<Locale, ReadOrderContent> = {
   ko: {
     hero: {
-      stepBadge: '01 왜 순서가 중요할까?',
+      stepBadge: '시작하기 · 6/8단계',
       title: ['React 소스코드에도', '읽는 순서가 있습니다.'],
       description: [
         'Element를 모른 채 Scheduler부터 읽으면 막히고,',
@@ -452,7 +452,7 @@ export const readOrderContent: Record<Locale, ReadOrderContent> = {
   },
   en: {
     hero: {
-      stepBadge: '01 Why does order matter?',
+      stepBadge: 'Getting Started · 6/8',
       title: ['Even React source has', 'a reading order.'],
       description: [
         'Start with Scheduler without knowing Element and you stall;',

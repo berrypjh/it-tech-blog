@@ -1,5 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDescription } from '../../_shared/HeroDescription';
+import { HeroSection } from '../../_shared/HeroSection';
+import { HeroTextColumn } from '../../_shared/HeroTextColumn';
+import { HeroTitle } from '../../_shared/HeroTitle';
+import { HeroVisualColumn } from '../../_shared/HeroVisualColumn';
+import { TerminalBadge } from '../../_shared/TerminalBadge';
 import { GitHubConnectedDiagram } from '../components/GitHubConnectedDiagram';
 import type { KeywordPill, WhyOpenSourceContent } from '../content';
 import { ChatIcon, CodeIcon, FlaskIcon, GitCommitIcon } from '../icons';
@@ -51,80 +57,58 @@ const pillIcon = {
 
 export const GitHubLearningHero = ({ content }: Props) => {
   return (
-    <section aria-labelledby="hero-heading" className="relative">
-      {/* 프롬프트 라인 */}
-      <p className="mb-md text-xxsm text-[var(--term-muted)] tabular-nums">
-        <span className="text-[var(--term-accent)] font-bold">$</span> gh repo view{' '}
-        <span className="text-[var(--term-fg)]">facebook/react</span>
-      </p>
+    <HeroSection promptCommand="gh repo view" promptPath="facebook/react">
+      <HeroTextColumn>
+        <TerminalBadge size="md" className="w-fit">
+          {content.stepBadge}
+        </TerminalBadge>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-xl lg:gap-2xl items-start">
-        {/* 좌측 */}
-        <div className="flex flex-col gap-md min-w-0">
-          {/* Step badge */}
-          <span className="inline-flex w-fit items-center gap-1.5 px-2 py-1 rounded-md bg-sky-500 text-white text-xxsm font-bold tracking-wide dark:bg-sky-400 dark:text-slate-900 shadow-[0_1px_0_var(--term-border)]">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full bg-white/80"
-              aria-hidden="true"
-            />
-            {content.stepBadge}
-          </span>
+        <HeroTitle>
+          {content.title.map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
+        </HeroTitle>
 
-          {/* h1 */}
-          <h1
-            id="hero-heading"
-            className="text-3xl sm:text-4xl lg:text-[2.625rem] font-bold leading-[1.18] tracking-tight text-[var(--term-fg)] break-keep"
-          >
-            {content.title.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </h1>
+        <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
 
-          {/* description */}
-          <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] max-w-[58ch] break-keep">
-            {content.description}
-          </p>
-
-          {/* keyword pills */}
-          <ul className="flex flex-wrap gap-2 mt-1">
-            {content.pills.map((p) => {
-              const t = pillToneClasses[p.tone];
-              const Icon = pillIcon[p.id];
-              return (
-                <li key={p.id}>
+        {/* keyword pills */}
+        <ul className="flex flex-wrap gap-2 mt-1">
+          {content.pills.map((p) => {
+            const t = pillToneClasses[p.tone];
+            const Icon = pillIcon[p.id];
+            return (
+              <li key={p.id}>
+                <span
+                  className={cn(
+                    'inline-flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full text-xxsm font-bold border',
+                    t.bg,
+                    t.text,
+                    t.border,
+                  )}
+                >
                   <span
+                    aria-hidden="true"
                     className={cn(
-                      'inline-flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full text-xxsm font-bold border',
-                      t.bg,
-                      t.text,
-                      t.border,
+                      'inline-flex items-center justify-center w-5 h-5 rounded-full',
+                      t.iconBg,
+                      t.iconText,
                     )}
                   >
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        'inline-flex items-center justify-center w-5 h-5 rounded-full',
-                        t.iconBg,
-                        t.iconText,
-                      )}
-                    >
-                      <Icon className="h-3 w-3" />
-                    </span>
-                    {p.label}
+                    <Icon className="h-3 w-3" />
                   </span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                  {p.label}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </HeroTextColumn>
 
-        {/* 우측 — diagram */}
-        <div className="order-first lg:order-none">
-          <GitHubConnectedDiagram diagram={content.diagram} />
-        </div>
-      </div>
-    </section>
+      <HeroVisualColumn>
+        <GitHubConnectedDiagram diagram={content.diagram} />
+      </HeroVisualColumn>
+    </HeroSection>
   );
 };

@@ -226,7 +226,7 @@ const enOptions: ExplorerOption[] = [
 export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
   ko: {
     hero: {
-      stepBadge: '01 무엇부터 읽어야 할까?',
+      stepBadge: '시작하기 · 5/8단계',
       title: ['React 저장소는', '처음부터 끝까지 읽는 책이 아닙니다.'],
       description: [
         '핵심은 모든 파일을 이해하는 것이 아니라,',
@@ -516,7 +516,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
   },
   en: {
     hero: {
-      stepBadge: '01 Where do I start?',
+      stepBadge: 'Getting Started · 5/8',
       title: ['The React repo is not', 'a book you read cover to cover.'],
       description: [
         "It isn't about understanding every file —",

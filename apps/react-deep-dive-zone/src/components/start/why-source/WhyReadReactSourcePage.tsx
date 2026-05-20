@@ -16,7 +16,7 @@ export const WhyReadReactSourcePage = ({ locale }: Props) => {
 
   return (
     <article className="mx-auto w-full max-w-[1200px] px-lg sm:px-xl lg:px-2xl py-xl lg:py-2xl">
-      <div className="flex flex-col gap-xl lg:gap-2xl">
+      <div className="flex flex-col gap-12 lg:gap-20">
         <SourceLearningHero content={c.hero} />
         <ReactQuestionCards content={c.questions} />
         <LearningPerspectiveCompare content={c.compare} />

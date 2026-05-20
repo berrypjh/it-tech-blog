@@ -133,7 +133,7 @@ export type RoadmapContent = {
 export const roadmapContent: Record<Locale, RoadmapContent> = {
   ko: {
     hero: {
-      stepBadge: '01 시작하기 마지막 페이지',
+      stepBadge: '시작하기 · 8/8단계',
       title: ['React 소스코드는', '길을 알고 들어가면', '훨씬 빠르게 이해됩니다.'],
       description: [
         'JSX에서 시작해 Fiber, Render, Commit, Hooks,',
@@ -467,7 +467,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
   },
   en: {
     hero: {
-      stepBadge: '01 Final page of Getting Started',
+      stepBadge: 'Getting Started · 8/8',
       title: ['React source becomes', 'much easier to read', 'once you know the route.'],
       description: [
         'From JSX through Fiber, Render, Commit, Hooks',
