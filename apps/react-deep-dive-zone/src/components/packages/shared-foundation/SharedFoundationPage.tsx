@@ -1,0 +1,34 @@
+import type { Locale } from '@it-tech-blog/preferences';
+
+import { StartPageShell } from '../../start/_shared/StartPageShell';
+
+import { ClientImportSection } from './sections/ClientImportSection';
+import { ConnectionDiagram } from './sections/ConnectionDiagram';
+import { FilesSection } from './sections/FilesSection';
+import { QuizSection } from './sections/QuizSection';
+import { SharedHero } from './sections/SharedHero';
+import { SharedNextCTA } from './sections/SharedNextCTA';
+import { SymbolsCheckpoint } from './sections/SymbolsCheckpoint';
+import { WhyShared } from './sections/WhyShared';
+import { sharedContent } from './content';
+
+type Props = { locale: Locale };
+
+const SYMBOLS_SECTION_ID = 'section-symbols';
+
+export const SharedFoundationPage = ({ locale }: Props) => {
+  const c = sharedContent[locale];
+
+  return (
+    <StartPageShell>
+      <SharedHero content={c.hero} />
+      <WhyShared content={c.why} />
+      <FilesSection content={c.files} />
+      <SymbolsCheckpoint content={c.symbolsCheckpoint} sectionId={SYMBOLS_SECTION_ID} />
+      <ClientImportSection content={c.clientImport} />
+      <ConnectionDiagram content={c.connection} />
+      <QuizSection content={c.quiz} />
+      <SharedNextCTA content={c.nextStep} />
+    </StartPageShell>
+  );
+};

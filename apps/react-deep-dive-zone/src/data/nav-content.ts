@@ -38,11 +38,12 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'React 패키지 구조와 역할',
       items: [
+        { id: 'why-split', label: 'React는 왜 여러 패키지로 나뉘어 있을까?', type: 'link' },
         { id: 'react-package', label: 'react 패키지는 무엇을 담당하나?', type: 'link' },
         { id: 'react-dom-package', label: 'react-dom 패키지는 무엇을 담당하나?', type: 'link' },
         {
           id: 'reconciler-separation',
-          label: 'react-reconciler는 왜 분리되어 있나?',
+          label: 'react-reconciler: 렌더링 알고리즘의 중심',
           type: 'link',
         },
         { id: 'renderer-vs-reconciler', label: 'renderer와 reconciler의 차이', type: 'link' },
@@ -296,9 +297,14 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'React Package Structure & Roles',
       items: [
+        { id: 'why-split', label: 'Why Is React Split Into Many Packages?', type: 'link' },
         { id: 'react-package', label: 'What the react Package Does', type: 'link' },
         { id: 'react-dom-package', label: 'What the react-dom Package Does', type: 'link' },
-        { id: 'reconciler-separation', label: 'Why react-reconciler Is Separated', type: 'link' },
+        {
+          id: 'reconciler-separation',
+          label: 'react-reconciler: The Core of Rendering',
+          type: 'link',
+        },
         { id: 'renderer-vs-reconciler', label: 'Renderer vs Reconciler', type: 'link' },
         { id: 'scheduler-usage', label: 'Where Scheduler Is Used Inside React', type: 'link' },
         { id: 'shared-constants', label: 'What shared Collects', type: 'link' },
