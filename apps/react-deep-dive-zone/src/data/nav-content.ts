@@ -61,14 +61,14 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'React Element와 JSX의 정체',
       items: [
-        { id: 'jsx-sugar', label: 'JSX는 문법 설탕인가?', type: 'link' },
+        { id: 'jsx-is-not-html', label: 'JSX는 HTML이 아니라 무엇인가?', type: 'link' },
+        { id: 'jsx-sugar', label: 'JSX는 어떤 코드로 변환되는가?', type: 'link' },
         { id: 'jsx-runtime', label: 'jsx / jsxs / jsxDEV 런타임', type: 'link' },
         { id: 'create-element', label: 'React.createElement', type: 'link' },
         { id: 'element-structure', label: 'React Element 객체 구조', type: 'link' },
         { id: 'element-type', label: 'type', type: 'link' },
         { id: 'element-key', label: 'key', type: 'link' },
         { id: 'element-ref', label: 'ref', type: 'link' },
-        { id: 'element-props', label: 'props', type: 'link' },
         { id: 'element-owner', label: 'owner와 개발 모드 정보', type: 'link' },
         { id: 'element-not-dom', label: 'Element는 DOM이 아니라 설명 객체', type: 'link' },
       ],
@@ -316,14 +316,14 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'React Elements & JSX',
       items: [
-        { id: 'jsx-sugar', label: 'Is JSX Just Syntactic Sugar?', type: 'link' },
+        { id: 'jsx-is-not-html', label: 'JSX Is Not HTML — Then What?', type: 'link' },
+        { id: 'jsx-sugar', label: 'What Code Does JSX Compile To?', type: 'link' },
         { id: 'jsx-runtime', label: 'jsx / jsxs / jsxDEV Runtime', type: 'link' },
         { id: 'create-element', label: 'React.createElement', type: 'link' },
         { id: 'element-structure', label: 'React Element Object Structure', type: 'link' },
         { id: 'element-type', label: 'type', type: 'link' },
         { id: 'element-key', label: 'key', type: 'link' },
         { id: 'element-ref', label: 'ref', type: 'link' },
-        { id: 'element-props', label: 'props', type: 'link' },
         { id: 'element-owner', label: 'owner & Dev-mode Info', type: 'link' },
         { id: 'element-not-dom', label: 'Element Is a Description, Not DOM', type: 'link' },
       ],

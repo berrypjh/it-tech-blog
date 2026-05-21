@@ -1,0 +1,32 @@
+import type { Locale } from '@it-tech-blog/preferences';
+
+import { StartPageShell } from '../../start/_shared/StartPageShell';
+
+import { CreateElementFlow } from './sections/CreateElementFlow';
+import { CreateElementHero } from './sections/CreateElementHero';
+import { CreateElementInputStructure } from './sections/CreateElementInputStructure';
+import { CreateElementNextPageCta } from './sections/CreateElementNextPageCta';
+import { CreateElementSourceCheckpoint } from './sections/CreateElementSourceCheckpoint';
+import { CreateElementTransformCard } from './sections/CreateElementTransformCard';
+import { JsxCreateElementComparison } from './sections/JsxCreateElementComparison';
+import { JsxRuntimeCreateElementRelation } from './sections/JsxRuntimeCreateElementRelation';
+import { reactCreateElementContent } from './content';
+
+type Props = { locale: Locale };
+
+export const ReactCreateElementPage = ({ locale }: Props) => {
+  const c = reactCreateElementContent[locale];
+
+  return (
+    <StartPageShell>
+      <CreateElementHero content={c.hero} />
+      <JsxCreateElementComparison content={c.compare} />
+      <CreateElementInputStructure content={c.input} />
+      <CreateElementSourceCheckpoint content={c.checkpoint} />
+      <CreateElementFlow content={c.flow} />
+      <JsxRuntimeCreateElementRelation content={c.relation} />
+      <CreateElementTransformCard content={c.transform} />
+      <CreateElementNextPageCta content={c.next} />
+    </StartPageShell>
+  );
+};
