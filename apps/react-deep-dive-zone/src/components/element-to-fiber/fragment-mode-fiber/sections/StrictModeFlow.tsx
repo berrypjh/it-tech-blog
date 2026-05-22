@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../react-elements/_shared/CodePanel';
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import { FlowSteps } from '../components/FlowSteps';
 import type { FragmentModeFiberContent } from '../content';
 import { LightbulbIcon, ShieldCheckIcon } from '../icons';

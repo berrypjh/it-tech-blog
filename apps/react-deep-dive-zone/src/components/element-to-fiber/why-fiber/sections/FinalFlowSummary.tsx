@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import type { FiberWhyNeededContent, FinalFlowRow } from '../content';
 import { ArrowDownIcon, BoxIcon, HexagonIcon, MapIcon, PlayCircleIcon, WandIcon } from '../icons';
 

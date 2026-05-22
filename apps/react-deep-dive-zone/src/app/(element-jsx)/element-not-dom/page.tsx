@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   reactElementSummaryBeforeFiberContent,
   ReactElementSummaryBeforeFiberPage,
-} from '@/components/react-elements/react-element-summary-before-fiber';
+} from '@/components/element-jsx/react-element-summary-before-fiber';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../react-elements/_shared/CodePanel';
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import type { CreateFiberFromElementContent } from '../content';
 import { Code2Icon, FileCodeIcon, HelpCircleIcon, LightbulbIcon, Settings2Icon } from '../icons';
 

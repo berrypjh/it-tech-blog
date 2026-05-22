@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import type { HostComponentFiberContent, TreeNode } from '../content';
 import { ArrowRightIcon, LayersIcon, MonitorIcon } from '../icons';
 

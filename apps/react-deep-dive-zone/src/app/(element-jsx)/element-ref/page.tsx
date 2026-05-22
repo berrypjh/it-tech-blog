@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   reactElementRefReact19Content,
   ReactElementRefReact19Page,
-} from '@/components/react-elements/react-element-ref-react19';
+} from '@/components/element-jsx/react-element-ref-react19';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

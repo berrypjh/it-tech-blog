@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import { toneTokens } from '../../../start/_shared/tones';
 import type { ElementVsFiberContent, WhyFiberCard } from '../content';
 import { FlagIcon, LoaderIcon, NetworkIcon, RefreshIcon, SparklesIcon } from '../icons';

@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   jsxRuntimeFunctionsContent,
   JsxRuntimeFunctionsPage,
-} from '@/components/react-elements/jsx-runtime-functions';
+} from '@/components/element-jsx/jsx-runtime-functions';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import { FlowArrow } from '../components/FlowArrow';
 import { FunctionCard } from '../components/FunctionCard';
 import { ObjectPreviewCard } from '../components/ObjectPreviewCard';

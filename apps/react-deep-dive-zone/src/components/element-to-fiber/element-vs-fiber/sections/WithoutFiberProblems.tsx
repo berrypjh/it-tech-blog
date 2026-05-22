@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import { toneTokens } from '../../../start/_shared/tones';
 import type { ElementVsFiberContent, ProblemCard } from '../content';
 import { AlertTriangleIcon, HelpCircleIcon, LayersIcon, PauseIcon, TargetIcon } from '../icons';

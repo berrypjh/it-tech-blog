@@ -1,26 +1,23 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import {
-  jsxTransformFlowContent,
-  JsxTransformFlowPage,
-} from '@/components/react-elements/jsx-transform-flow';
+import { jsxIsNotHtmlContent, JsxIsNotHtmlPage } from '@/components/element-jsx/jsx-is-not-html';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = jsxTransformFlowContent[locale];
+  const c = jsxIsNotHtmlContent[locale];
 
   return {
     title:
       locale === 'en'
-        ? 'What Code Does JSX Compile To? — React Lab'
-        : 'JSX는 어떤 코드로 변환되는가? — React Lab',
+        ? 'JSX Is Not HTML — Then What? — React Lab'
+        : 'JSX는 HTML이 아니라 무엇인가? — React Lab',
     description: c.hero.description,
   };
 };
 
 const Page = async () => {
   const locale = await getServerLocale();
-  return <JsxTransformFlowPage locale={locale} />;
+  return <JsxIsNotHtmlPage locale={locale} />;
 };
 
 export default Page;

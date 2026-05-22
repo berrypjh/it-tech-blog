@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   reactElementTypeMeaningContent,
   ReactElementTypeMeaningPage,
-} from '@/components/react-elements/react-element-type-meaning';
+} from '@/components/element-jsx/react-element-type-meaning';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../react-elements/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
 import { MiniFiberTree } from '../components/FiberPairCard';
 import type { AlternateFiberContent } from '../content';
 import { ArrowLeftRightIcon, LinkIcon, NetworkIcon } from '../icons';
