@@ -126,16 +126,36 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: '업데이트는 어떻게 시작되는가?',
       items: [
-        { id: 'state-update-start', label: '상태 업데이트의 출발점', type: 'link' },
-        { id: 'dispatch-set-state', label: 'dispatchSetState', type: 'link' },
-        { id: 'enqueue-update', label: 'enqueueUpdate', type: 'link' },
-        { id: 'schedule-update-on-fiber', label: 'scheduleUpdateOnFiber', type: 'link' },
+        {
+          id: 'state-update-start',
+          label: 'setState를 호출하면 실제로 무엇이 시작되는가?',
+          type: 'link',
+        },
+        {
+          id: 'dispatch-set-state',
+          label: 'setState 함수는 어떻게 Fiber와 queue를 기억하나?',
+          type: 'link',
+        },
+        { id: 'enqueue-update', label: 'dispatchSetState: 업데이트 진입점 읽기', type: 'link' },
+        { id: 'lane-selection', label: 'lane 선택과 update 객체 생성', type: 'link' },
+        {
+          id: 'root-pending',
+          label: 'eager bailout: 같은 상태면 왜 렌더를 건너뛸 수 있나?',
+          type: 'link',
+        },
+        {
+          id: 'enqueue-concurrent-hook-update',
+          label: 'update queue에 연결하기: enqueueConcurrentHookUpdate',
+          type: 'link',
+        },
         { id: 'fiber-to-root', label: 'Fiber에서 Root까지 올라가기', type: 'link' },
-        { id: 'lane-selection', label: 'lane 선택', type: 'link' },
-        { id: 'root-pending', label: 'root에 pending work 표시', type: 'link' },
+        { id: 'schedule-update-on-fiber', label: 'scheduleUpdateOnFiber', type: 'link' },
         { id: 'ensure-root-scheduled', label: 'ensureRootIsScheduled', type: 'link' },
-        { id: 'sync-vs-async', label: '동기 업데이트와 비동기 업데이트', type: 'link' },
-        { id: 'update-to-render', label: '업데이트 요청이 render로 이어지는 흐름', type: 'link' },
+        {
+          id: 'update-to-render',
+          label: '업데이트 요청이 Render Phase로 이어지는 전체 흐름',
+          type: 'link',
+        },
       ],
     },
     {
@@ -398,16 +418,40 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'How Updates Begin',
       items: [
-        { id: 'state-update-start', label: 'Where State Updates Start', type: 'link' },
-        { id: 'dispatch-set-state', label: 'dispatchSetState', type: 'link' },
-        { id: 'enqueue-update', label: 'enqueueUpdate', type: 'link' },
+        {
+          id: 'state-update-start',
+          label: 'What setState actually triggers internally',
+          type: 'link',
+        },
+        {
+          id: 'dispatch-set-state',
+          label: 'How setState remembers its Fiber and queue',
+          type: 'link',
+        },
+        {
+          id: 'enqueue-update',
+          label: 'dispatchSetState: reading the update entry point',
+          type: 'link',
+        },
+        { id: 'lane-selection', label: 'Lane selection and update object creation', type: 'link' },
+        {
+          id: 'root-pending',
+          label: 'eager bailout: when React can skip a render',
+          type: 'link',
+        },
+        {
+          id: 'enqueue-concurrent-hook-update',
+          label: 'Linking into the update queue: enqueueConcurrentHookUpdate',
+          type: 'link',
+        },
+        { id: 'fiber-to-root', label: 'Walking from Fiber up to Root', type: 'link' },
         { id: 'schedule-update-on-fiber', label: 'scheduleUpdateOnFiber', type: 'link' },
-        { id: 'fiber-to-root', label: 'Walking from Fiber to Root', type: 'link' },
-        { id: 'lane-selection', label: 'Lane Selection', type: 'link' },
-        { id: 'root-pending', label: 'Marking Pending Work on Root', type: 'link' },
         { id: 'ensure-root-scheduled', label: 'ensureRootIsScheduled', type: 'link' },
-        { id: 'sync-vs-async', label: 'Sync vs Async Updates', type: 'link' },
-        { id: 'update-to-render', label: 'From Update Request to Render', type: 'link' },
+        {
+          id: 'update-to-render',
+          label: 'From an update request to the Render Phase',
+          type: 'link',
+        },
       ],
     },
     {
