@@ -1,5 +1,18 @@
 {
   "files": [],
   "include": [],
-  "references": [{ "path": "./tsconfig.storybook.json" }]
+  "references": [
+    {
+      "path": "../../packages/utils"
+    },
+    {
+      "path": "../../packages/ui"
+    },
+    {
+      "path": "../../packages/preferences"
+    },
+    {
+      "path": "./tsconfig.storybook.json"
+    }
+  ]
 }
