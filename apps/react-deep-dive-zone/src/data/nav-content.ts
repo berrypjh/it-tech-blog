@@ -95,18 +95,32 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Fiber 트리와 렌더링 자료구조',
       items: [
-        { id: 'fiber-tag', label: 'tag', type: 'link' },
-        { id: 'fiber-key', label: 'key', type: 'link' },
-        { id: 'fiber-element-type', label: 'elementType / type', type: 'link' },
+        { id: 'fiber-node-overview', label: 'Fiber node란 무엇인가?', type: 'link' },
+        {
+          id: 'fiber-identity-fields',
+          label: 'tag / key / elementType / type',
+          type: 'link',
+        },
         { id: 'fiber-state-node', label: 'stateNode', type: 'link' },
         { id: 'fiber-pointers', label: 'return / child / sibling', type: 'link' },
         { id: 'fiber-props', label: 'pendingProps / memoizedProps', type: 'link' },
-        { id: 'fiber-memoized-state', label: 'memoizedState', type: 'link' },
-        { id: 'fiber-update-queue', label: 'updateQueue', type: 'link' },
-        { id: 'fiber-flags', label: 'flags / subtreeFlags', type: 'link' },
-        { id: 'fiber-lanes', label: 'lanes', type: 'link' },
-        { id: 'fiber-alternate', label: 'alternate', type: 'link' },
-        { id: 'current-wip-tree', label: 'current tree와 workInProgress tree', type: 'link' },
+        {
+          id: 'fiber-state-and-queue',
+          label: 'memoizedState / updateQueue',
+          type: 'link',
+        },
+        { id: 'fiber-flags', label: 'flags / subtreeFlags / deletions', type: 'link' },
+        { id: 'fiber-lanes', label: 'lanes / childLanes', type: 'link' },
+        {
+          id: 'current-wip-alternate',
+          label: 'current tree / workInProgress tree / alternate',
+          type: 'link',
+        },
+        {
+          id: 'why-fiber-tree',
+          label: 'Fiber는 왜 렌더링 자료구조의 중심인가?',
+          type: 'link',
+        },
       ],
     },
     {
@@ -349,18 +363,36 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Fiber Tree & Render Data Structures',
       items: [
-        { id: 'fiber-tag', label: 'tag', type: 'link' },
-        { id: 'fiber-key', label: 'key', type: 'link' },
-        { id: 'fiber-element-type', label: 'elementType / type', type: 'link' },
+        { id: 'fiber-node-overview', label: 'What Is a Fiber Node?', type: 'link' },
+        {
+          id: 'fiber-identity-fields',
+          label: 'tag / key / elementType / type',
+          type: 'link',
+        },
         { id: 'fiber-state-node', label: 'stateNode', type: 'link' },
         { id: 'fiber-pointers', label: 'return / child / sibling', type: 'link' },
         { id: 'fiber-props', label: 'pendingProps / memoizedProps', type: 'link' },
-        { id: 'fiber-memoized-state', label: 'memoizedState', type: 'link' },
-        { id: 'fiber-update-queue', label: 'updateQueue', type: 'link' },
-        { id: 'fiber-flags', label: 'flags / subtreeFlags', type: 'link' },
-        { id: 'fiber-lanes', label: 'lanes', type: 'link' },
-        { id: 'fiber-alternate', label: 'alternate', type: 'link' },
-        { id: 'current-wip-tree', label: 'current vs workInProgress Tree', type: 'link' },
+        {
+          id: 'fiber-state-and-queue',
+          label: 'memoizedState / updateQueue',
+          type: 'link',
+        },
+        {
+          id: 'fiber-flags',
+          label: 'flags / subtreeFlags / deletions',
+          type: 'link',
+        },
+        { id: 'fiber-lanes', label: 'lanes / childLanes', type: 'link' },
+        {
+          id: 'current-wip-alternate',
+          label: 'current tree / workInProgress tree / alternate',
+          type: 'link',
+        },
+        {
+          id: 'why-fiber-tree',
+          label: 'Why Fiber Sits at the Center of the Render Data Structure',
+          type: 'link',
+        },
       ],
     },
     {
