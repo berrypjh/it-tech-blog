@@ -238,18 +238,42 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: '이벤트 시스템 내부 흐름',
       items: [
-        { id: 'why-event-system', label: 'React 이벤트 시스템은 왜 따로 존재하나?', type: 'link' },
-        { id: 'root-delegation', label: 'root에 이벤트 위임하기', type: 'link' },
-        { id: 'listener-register', label: 'listener 등록', type: 'link' },
-        { id: 'native-event', label: 'native event 수신', type: 'link' },
-        { id: 'dispatch-event', label: 'dispatchEvent', type: 'link' },
-        { id: 'find-target', label: 'event target 찾기', type: 'link' },
-        { id: 'capture-bubble', label: 'capture / bubble 단계', type: 'link' },
-        { id: 'plugin-event', label: 'plugin event system', type: 'link' },
-        { id: 'priority-event', label: 'priority가 있는 이벤트', type: 'link' },
+        { id: 'why-event-system', label: 'React 이벤트 시스템은 왜 따로 존재할까?', type: 'link' },
         {
-          id: 'event-meets-update',
-          label: '이벤트가 업데이트 우선순위와 만나는 지점',
+          id: 'root-native-event',
+          label: 'createRoot는 왜 root에 Native Event를 등록할까?',
+          type: 'link',
+        },
+        { id: 'onclick-to-click', label: 'onClick은 click과 어떻게 연결되는가?', type: 'link' },
+        {
+          id: 'dispatch-selection',
+          label: 'Native Event가 들어오면 어떤 Dispatch 함수가 선택될까?',
+          type: 'link',
+        },
+        {
+          id: 'target-to-fiber',
+          label: 'React는 이벤트 target을 어떻게 Fiber로 찾을까?',
+          type: 'link',
+        },
+        {
+          id: 'plugin-event-system',
+          label: 'Plugin Event System은 이벤트를 어떻게 해석할까?',
+          type: 'link',
+        },
+        { id: 'synthetic-event', label: 'SyntheticEvent는 무엇이고 왜 필요한가?', type: 'link' },
+        {
+          id: 'accumulate-listeners',
+          label: 'Capture / Bubble 리스너는 Fiber 트리에서 어떻게 수집될까?',
+          type: 'link',
+        },
+        {
+          id: 'dispatch-queue',
+          label: 'dispatchQueue는 이벤트 핸들러를 어떤 순서로 실행할까?',
+          type: 'link',
+        },
+        {
+          id: 'priority-replay-action',
+          label: '이벤트 우선순위, Hydration Replay, Form Action은 어디서 만날까?',
           type: 'link',
         },
       ],
@@ -562,16 +586,56 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Event System Internals',
       items: [
-        { id: 'why-event-system', label: 'Why a Separate Event System?', type: 'link' },
-        { id: 'root-delegation', label: 'Event Delegation to Root', type: 'link' },
-        { id: 'listener-register', label: 'Listener Registration', type: 'link' },
-        { id: 'native-event', label: 'Native Event Reception', type: 'link' },
-        { id: 'dispatch-event', label: 'dispatchEvent', type: 'link' },
-        { id: 'find-target', label: 'Finding the Event Target', type: 'link' },
-        { id: 'capture-bubble', label: 'Capture / Bubble Phases', type: 'link' },
-        { id: 'plugin-event', label: 'Plugin Event System', type: 'link' },
-        { id: 'priority-event', label: 'Priority Events', type: 'link' },
-        { id: 'event-meets-update', label: 'Where Events Meet Update Priority', type: 'link' },
+        {
+          id: 'why-event-system',
+          label: 'Why does React have its own event system?',
+          type: 'link',
+        },
+        {
+          id: 'root-native-event',
+          label: 'Why does createRoot attach native events to the root?',
+          type: 'link',
+        },
+        {
+          id: 'onclick-to-click',
+          label: 'How is onClick wired to the native click event?',
+          type: 'link',
+        },
+        {
+          id: 'dispatch-selection',
+          label: 'Which dispatch function handles an incoming native event?',
+          type: 'link',
+        },
+        {
+          id: 'target-to-fiber',
+          label: 'How does React resolve an event target to a Fiber?',
+          type: 'link',
+        },
+        {
+          id: 'plugin-event-system',
+          label: 'How does the Plugin Event System interpret events?',
+          type: 'link',
+        },
+        {
+          id: 'synthetic-event',
+          label: 'What is SyntheticEvent and why is it needed?',
+          type: 'link',
+        },
+        {
+          id: 'accumulate-listeners',
+          label: 'How are capture / bubble listeners collected from the Fiber tree?',
+          type: 'link',
+        },
+        {
+          id: 'dispatch-queue',
+          label: 'In what order does dispatchQueue invoke event handlers?',
+          type: 'link',
+        },
+        {
+          id: 'priority-replay-action',
+          label: 'Where do event priority, hydration replay, and form actions meet?',
+          type: 'link',
+        },
       ],
     },
     {
