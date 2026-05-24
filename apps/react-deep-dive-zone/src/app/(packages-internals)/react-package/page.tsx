@@ -1,6 +1,9 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { reactPackageContent, ReactPackagePage } from '@/components/packages/react-package';
+import {
+  reactPackageContent,
+  ReactPackagePage,
+} from '@/components/packages-internals/react-package';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

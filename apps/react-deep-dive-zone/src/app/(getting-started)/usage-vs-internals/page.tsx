@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   usageVsInternalsContent,
   UsageVsInternalsPage,
-} from '@/components/start/usage-vs-internals';
+} from '@/components/getting-started/usage-vs-internals';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

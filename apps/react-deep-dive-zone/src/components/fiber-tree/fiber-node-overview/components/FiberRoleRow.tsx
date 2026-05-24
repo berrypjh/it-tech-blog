@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { ToneKey } from '../../../start/_shared/tones';
+import type { ToneKey } from '../../../getting-started/_shared/tones';
 import type { PreviewRole } from '../content';
 import {
   DatabaseIcon,

@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   enqueueConcurrentHookUpdateContent,
   EnqueueConcurrentHookUpdatePage,
-} from '@/components/updates/enqueue-concurrent-hook-update';
+} from '@/components/update-flow/enqueue-concurrent-hook-update';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

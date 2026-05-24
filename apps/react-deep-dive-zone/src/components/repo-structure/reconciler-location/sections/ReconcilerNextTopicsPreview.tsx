@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
-import { ToneBadge } from '../../../start/_shared/ToneBadge';
-import { ToneCard } from '../../../start/_shared/ToneCard';
-import { toneTokens } from '../../../start/_shared/tones';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { ToneBadge } from '../../../getting-started/_shared/ToneBadge';
+import { ToneCard } from '../../../getting-started/_shared/ToneCard';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
 

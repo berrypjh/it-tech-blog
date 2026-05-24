@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { CodePreviewPanel } from '../../../start/_shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
 import { commitToneTokens } from '../../_shared/tones';
 import type { UpdatePhaseContent } from '../content';
 import { CodeIcon, FileCodeIcon, HelpCircleIcon, PackageOpenIcon } from '../icons';

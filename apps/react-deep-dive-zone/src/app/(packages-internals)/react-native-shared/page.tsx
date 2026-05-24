@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { rnContent, RnSharedPage } from '@/components/packages/rn-shared';
+import { rnContent, RnSharedPage } from '@/components/packages-internals/rn-shared';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

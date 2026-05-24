@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { LanesDiagram } from '../components/LanesDiagram';
 import type { FiberLanesContent } from '../content';
 import { SparklesIcon } from '../icons';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { commitToneTokens } from '../../_shared/tones';
 import type { CommitTimelineItem, RootCurrentRefContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, LightbulbIcon, SwapIcon, TreeIcon } from '../icons';

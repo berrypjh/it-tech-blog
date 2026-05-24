@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   laneUpdateObjectContent,
   LaneUpdateObjectPage,
-} from '@/components/updates/lane-update-object';
+} from '@/components/update-flow/lane-update-object';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { notAllFilesContent, NotAllFilesPage } from '@/components/start/not-all-files';
+import { notAllFilesContent, NotAllFilesPage } from '@/components/getting-started/not-all-files';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

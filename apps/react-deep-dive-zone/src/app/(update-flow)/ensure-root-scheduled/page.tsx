@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   ensureRootScheduledContent,
   EnsureRootScheduledPage,
-} from '@/components/updates/ensure-root-scheduled';
+} from '@/components/update-flow/ensure-root-scheduled';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   updateToRenderSummaryContent,
   UpdateToRenderSummaryPage,
-} from '@/components/updates/update-to-render-summary';
+} from '@/components/update-flow/update-to-render-summary';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

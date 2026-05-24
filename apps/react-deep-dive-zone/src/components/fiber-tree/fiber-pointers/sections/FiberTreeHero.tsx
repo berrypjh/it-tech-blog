@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { PointerTreeDiagram } from '../components/PointerTreeDiagram';
 import type { FiberTreePointersContent } from '../content';
 import { SparklesIcon } from '../icons';

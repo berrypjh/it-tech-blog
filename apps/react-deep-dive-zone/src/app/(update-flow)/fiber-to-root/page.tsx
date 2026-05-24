@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { fiberToRootContent, FiberToRootPage } from '@/components/updates/fiber-to-root';
+import { fiberToRootContent, FiberToRootPage } from '@/components/update-flow/fiber-to-root';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

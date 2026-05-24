@@ -4,10 +4,10 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
-import { ToneBadge } from '../../../start/_shared/ToneBadge';
-import { ToneIconBox } from '../../../start/_shared/ToneIconBox';
-import { toneTokens } from '../../../start/_shared/tones';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { ToneBadge } from '../../../getting-started/_shared/ToneBadge';
+import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
 

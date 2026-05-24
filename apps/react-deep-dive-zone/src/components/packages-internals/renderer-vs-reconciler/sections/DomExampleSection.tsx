@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
-import { ToneIconBox } from '../../../start/_shared/ToneIconBox';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
 import type { RvrContent } from '../content';
 import { CheckCircleIcon, rvrIcon, StarIcon } from '../icons';
 

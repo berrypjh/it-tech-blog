@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
-import { toneTokens } from '../../../start/_shared/tones';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import { ReactClientCodePanel } from '../components/ReactClientCodePanel';
 import type { InternalFileCard, ReactPackageContent } from '../content';
 import { InfoIcon, MapIcon } from '../icons';

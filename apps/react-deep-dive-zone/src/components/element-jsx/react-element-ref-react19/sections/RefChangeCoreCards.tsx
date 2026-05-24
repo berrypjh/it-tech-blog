@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../start/_shared/tones';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
 import type { CoreChangeCard, ReactElementRefReact19Content } from '../content';
 import { CheckCircleIcon, ListChecksIcon, UserCheckIcon, WorkflowIcon, ZapIcon } from '../icons';

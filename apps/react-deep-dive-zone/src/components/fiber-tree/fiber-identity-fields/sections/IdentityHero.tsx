@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { IdentityDiagram } from '../components/IdentityDiagram';
 import type { FiberIdentityFieldsContent } from '../content';
 import { SparklesIcon } from '../icons';

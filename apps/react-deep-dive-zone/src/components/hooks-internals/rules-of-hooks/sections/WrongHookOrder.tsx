@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import type { HeroRenderSide, HookSlot, RulesOfHooksContent } from '../content';
 import { AlertTriangleIcon, CheckCircleIcon, ShieldAlertIcon, XCircleIcon } from '../icons';
 

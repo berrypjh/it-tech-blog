@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { WhyReadReactSourcePage, whySourceContent } from '@/components/start/why-source';
+import { WhyReadReactSourcePage, whySourceContent } from '@/components/getting-started/why-source';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

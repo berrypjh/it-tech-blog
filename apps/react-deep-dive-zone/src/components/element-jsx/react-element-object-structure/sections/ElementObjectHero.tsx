@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
-import { toneTokens } from '../../../start/_shared/tones';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import { CodePanel } from '../../_shared/CodePanel';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
 import { ArrowRightIcon, BookOpenIcon, ScanSearchIcon } from '../icons';

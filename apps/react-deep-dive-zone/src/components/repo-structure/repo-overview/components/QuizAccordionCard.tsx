@@ -4,7 +4,7 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { type ToneKey, toneTokens } from '../../../start/_shared/tones';
+import { type ToneKey, toneTokens } from '../../../getting-started/_shared/tones';
 import { CheckCircleIcon, ChevronDownIcon, HelpCircleIcon } from '../icons';
 
 /** QuizAccordionCard가 요구하는 최소 구조. id 등 다른 필드는 자유롭게 가능. */

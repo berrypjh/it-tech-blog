@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { DomVsCommonPage, dvcContent } from '@/components/packages/dom-vs-common';
+import { DomVsCommonPage, dvcContent } from '@/components/packages-internals/dom-vs-common';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

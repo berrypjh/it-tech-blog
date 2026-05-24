@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';

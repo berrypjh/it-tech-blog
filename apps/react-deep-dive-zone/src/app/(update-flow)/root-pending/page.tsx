@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { eagerBailoutContent, EagerBailoutPage } from '@/components/updates/eager-bailout';
+import { eagerBailoutContent, EagerBailoutPage } from '@/components/update-flow/eager-bailout';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

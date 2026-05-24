@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import type { ToneKey } from '../../../start/_shared/tones';
+import type { ToneKey } from '../../../getting-started/_shared/tones';
 import type { FiberNodeOverviewContent, ReviewStep } from '../content';
 import {
   ArrowDownIcon,

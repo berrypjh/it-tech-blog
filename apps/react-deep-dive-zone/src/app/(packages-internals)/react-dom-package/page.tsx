@@ -1,6 +1,9 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { reactDomContent, ReactDomPackagePage } from '@/components/packages/react-dom-package';
+import {
+  reactDomContent,
+  ReactDomPackagePage,
+} from '@/components/packages-internals/react-dom-package';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { readOrderContent, ReadOrderPage } from '@/components/start/read-order';
+import { readOrderContent, ReadOrderPage } from '@/components/getting-started/read-order';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

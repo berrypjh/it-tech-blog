@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { type ToneKey, toneTokens } from '../../../start/_shared/tones';
+import { type ToneKey, toneTokens } from '../../../getting-started/_shared/tones';
 import type { DvcContent, HeroSideArea } from '../content';
 import { dvcIcon } from '../icons';
 

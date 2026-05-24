@@ -1,6 +1,9 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { sharedContent, SharedFoundationPage } from '@/components/packages/shared-foundation';
+import {
+  sharedContent,
+  SharedFoundationPage,
+} from '@/components/packages-internals/shared-foundation';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

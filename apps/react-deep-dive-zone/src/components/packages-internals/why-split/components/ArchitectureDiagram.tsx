@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../start/_shared/ToneIconBox';
-import { toneTokens } from '../../../start/_shared/tones';
+import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
 import { architectureIcon } from '../icons';
 

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { ExpansionArrow } from '../components/ExpansionArrow';
 import { ObjectCard } from '../components/ObjectCard';
 import type { ElementVsFiberContent } from '../content';

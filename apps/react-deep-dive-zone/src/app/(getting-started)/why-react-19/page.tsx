@@ -1,6 +1,9 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { WhyReact19BaselinePage, whyReact19Content } from '@/components/start/why-react-19';
+import {
+  WhyReact19BaselinePage,
+  whyReact19Content,
+} from '@/components/getting-started/why-react-19';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

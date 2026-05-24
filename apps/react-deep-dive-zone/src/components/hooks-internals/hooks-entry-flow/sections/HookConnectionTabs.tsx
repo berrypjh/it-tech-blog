@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import type { HooksEntryFlowContent, TabKey } from '../content';
 import {
   ArrowDownIcon,

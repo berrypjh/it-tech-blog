@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { rvrContent, RvrPage } from '@/components/packages/renderer-vs-reconciler';
+import { rvrContent, RvrPage } from '@/components/packages-internals/renderer-vs-reconciler';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

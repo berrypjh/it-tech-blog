@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   scheduleUpdateOnFiberContent,
   ScheduleUpdateOnFiberPage,
-} from '@/components/updates/schedule-update-on-fiber';
+} from '@/components/update-flow/schedule-update-on-fiber';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

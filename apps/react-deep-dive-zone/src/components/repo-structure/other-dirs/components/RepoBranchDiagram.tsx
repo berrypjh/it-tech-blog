@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../start/_shared/tones';
+import { toneTokens } from '../../../getting-started/_shared/tones';
 import type { HeroBranchNode, SurroundingContent } from '../content';
 import { FolderIcon, iconByName } from '../icons';
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { ReconcilerEntryContent } from '../content';

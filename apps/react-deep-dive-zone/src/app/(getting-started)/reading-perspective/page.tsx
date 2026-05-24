@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   readingPerspectiveContent,
   ReadingPerspectivePage,
-} from '@/components/start/reading-perspective';
+} from '@/components/getting-started/reading-perspective';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

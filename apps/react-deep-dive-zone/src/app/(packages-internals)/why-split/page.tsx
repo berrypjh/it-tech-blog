@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { whySplitContent, WhySplitPage } from '@/components/packages/why-split';
+import { whySplitContent, WhySplitPage } from '@/components/packages-internals/why-split';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

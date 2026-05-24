@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import type { HeroPhase, Tone, UseEffectInternalsContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, ClipboardIcon, PlayCircleIcon } from '../icons';
 

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../start/_shared/ToneIconBox';
+import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
 import type { RnContent } from '../content';
 import { rnIcon } from '../icons';
 

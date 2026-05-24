@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { schedulerContent, SchedulerPage } from '@/components/packages/scheduler-usage';
+import { schedulerContent, SchedulerPage } from '@/components/packages-internals/scheduler-usage';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

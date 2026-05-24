@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   dispatchSetStateContent,
   DispatchSetStatePage,
-} from '@/components/updates/dispatch-set-state';
+} from '@/components/update-flow/dispatch-set-state';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

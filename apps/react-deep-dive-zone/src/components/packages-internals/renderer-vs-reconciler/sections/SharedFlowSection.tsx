@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
-import { ToneIconBox } from '../../../start/_shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../start/_shared/tones';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
+import { type ToneKey, toneTokens } from '../../../getting-started/_shared/tones';
 import type { RvrContent } from '../content';
 import { rvrIcon } from '../icons';
 

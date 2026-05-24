@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import type { UseEffectInternalsContent } from '../content';
 import { CheckCircleIcon, SplitIcon, XCircleIcon } from '../icons';
 

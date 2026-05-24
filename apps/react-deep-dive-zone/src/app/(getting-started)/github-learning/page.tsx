@@ -3,7 +3,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 import {
   whyOpenSourceContent,
   WhyOpenSourceLearningPage,
-} from '@/components/start/why-open-source';
+} from '@/components/getting-started/why-open-source';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

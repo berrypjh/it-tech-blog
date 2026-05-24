@@ -1,6 +1,6 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { roadmapContent, RoadmapPage } from '@/components/start/roadmap';
+import { roadmapContent, RoadmapPage } from '@/components/getting-started/roadmap';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

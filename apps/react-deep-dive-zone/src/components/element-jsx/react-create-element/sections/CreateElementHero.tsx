@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { CodePanel } from '../../_shared/CodePanel';
 import type { ReactCreateElementContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, AtomIcon, BookOpenIcon, GitCompareIcon } from '../icons';

@@ -1,6 +1,9 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
-import { reconcilerContent, ReconcilerCorePage } from '@/components/packages/reconciler-core';
+import {
+  reconcilerContent,
+  ReconcilerCorePage,
+} from '@/components/packages-internals/reconciler-core';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();

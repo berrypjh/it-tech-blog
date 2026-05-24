@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../../start/_shared/SectionHeader';
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
 import { QuizAccordionCard } from '../../repo-overview/components/QuizAccordionCard';
 import type { TestCodeContent } from '../content';
 import { CircleHelpIcon } from '../icons';

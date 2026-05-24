@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../start/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
 import { FlowArrow } from '../components/FlowArrow';
 import { FunctionCard } from '../components/FunctionCard';
 import { ObjectPreviewCard } from '../components/ObjectPreviewCard';

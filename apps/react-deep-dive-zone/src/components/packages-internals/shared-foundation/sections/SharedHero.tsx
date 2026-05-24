@@ -1,9 +1,9 @@
-import { HeroDescription } from '../../../start/_shared/HeroDescription';
-import { HeroSection } from '../../../start/_shared/HeroSection';
-import { HeroTextColumn } from '../../../start/_shared/HeroTextColumn';
-import { HeroTitle } from '../../../start/_shared/HeroTitle';
-import { HeroVisualColumn } from '../../../start/_shared/HeroVisualColumn';
-import { TerminalBadge } from '../../../start/_shared/TerminalBadge';
+import { HeroDescription } from '../../../getting-started/_shared/HeroDescription';
+import { HeroSection } from '../../../getting-started/_shared/HeroSection';
+import { HeroTextColumn } from '../../../getting-started/_shared/HeroTextColumn';
+import { HeroTitle } from '../../../getting-started/_shared/HeroTitle';
+import { HeroVisualColumn } from '../../../getting-started/_shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../getting-started/_shared/TerminalBadge';
 import { SharedHubDiagram } from '../components/SharedHubDiagram';
 import type { SharedContent } from '../content';
 
