@@ -1,0 +1,47 @@
+import type { Tone } from '../content';
+
+export type TonePalette = {
+  border: string;
+  bg: string;
+  chip: string;
+  text: string;
+  arrow: string;
+};
+
+export const tonePalette: Record<Tone, TonePalette> = {
+  teal: {
+    border: 'border-teal-300/80 dark:border-teal-700/70',
+    bg: 'bg-teal-50/60 dark:bg-teal-950/25',
+    chip: 'bg-teal-100 text-teal-700 border-teal-200/80 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
+    text: 'text-teal-800 dark:text-teal-100',
+    arrow: 'text-teal-500/80 dark:text-teal-300/80',
+  },
+  violet: {
+    border: 'border-violet-300/80 dark:border-violet-700/70',
+    bg: 'bg-violet-50/60 dark:bg-violet-950/25',
+    chip: 'bg-violet-100 text-violet-700 border-violet-200/80 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
+    text: 'text-violet-800 dark:text-violet-100',
+    arrow: 'text-violet-500/80 dark:text-violet-300/80',
+  },
+  sky: {
+    border: 'border-sky-300/80 dark:border-sky-700/70',
+    bg: 'bg-sky-50/60 dark:bg-sky-950/25',
+    chip: 'bg-sky-100 text-sky-700 border-sky-200/80 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
+    text: 'text-sky-800 dark:text-sky-100',
+    arrow: 'text-sky-500/80 dark:text-sky-300/80',
+  },
+  indigo: {
+    border: 'border-indigo-300/80 dark:border-indigo-700/70',
+    bg: 'bg-indigo-50/60 dark:bg-indigo-950/25',
+    chip: 'bg-indigo-100 text-indigo-700 border-indigo-200/80 dark:bg-indigo-950/60 dark:text-indigo-200 dark:border-indigo-800/60',
+    text: 'text-indigo-800 dark:text-indigo-100',
+    arrow: 'text-indigo-500/80 dark:text-indigo-300/80',
+  },
+  amber: {
+    border: 'border-amber-300/80 dark:border-amber-700/70',
+    bg: 'bg-amber-50/60 dark:bg-amber-950/25',
+    chip: 'bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
+    text: 'text-amber-800 dark:text-amber-100',
+    arrow: 'text-amber-500/80 dark:text-amber-300/80',
+  },
+};
