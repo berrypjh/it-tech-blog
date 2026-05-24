@@ -19,10 +19,16 @@
       "path": "./packages/preferences"
     },
     {
-      "path": "./packages/icons"
+      "path": "./packages/utils"
     },
     {
-      "path": "./packages/utils"
+      "path": "./apps/react-deep-dive-zone-e2e"
+    },
+    {
+      "path": "./apps/react-deep-dive-zone"
+    },
+    {
+      "path": "./packages/ui"
     }
   ]
 }
