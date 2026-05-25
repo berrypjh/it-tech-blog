@@ -1,0 +1,125 @@
+import { cn } from '@it-tech-blog/utils';
+
+import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import type { CorrectVersionDiffContent } from '../content';
+import { ArrowRightIcon, ClockIcon, ReplaceIcon, TargetIcon } from '../icons';
+
+type Props = { content: CorrectVersionDiffContent['whyOld'] };
+
+export const WhyOldSection = ({ content }: Props) => {
+  return (
+    <section id="section-why-old" aria-labelledby="heading-why-old" className="space-y-lg">
+      <SectionHeader
+        id="why-old"
+        eyebrow={content.eyebrow}
+        title={content.title}
+        description={content.intro}
+        icon={<ClockIcon className="h-5 w-5" />}
+      />
+
+      <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
+        {content.cards.map((card) => (
+          <li key={card.number}>
+            <article
+              className={cn(
+                'group flex h-full flex-col gap-sm rounded-xl border-2 p-md',
+                'border-amber-200 bg-amber-50/40',
+                'dark:border-amber-800/60 dark:bg-amber-950/20',
+                'shadow-[0_2px_0_var(--term-border)]',
+                'transition-all motion-safe:hover:-translate-y-0.5',
+                'motion-safe:hover:border-amber-400 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
+                'dark:motion-safe:hover:border-amber-500/80',
+              )}
+            >
+              <div className="flex items-center justify-between">
+                <span
+                  className={cn(
+                    'inline-flex items-center gap-1.5 rounded-full border px-2 py-1',
+                    'border-amber-300 bg-white text-amber-800',
+                    'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
+                    'text-[10px] font-mono font-bold tabular-nums',
+                  )}
+                >
+                  <span aria-hidden="true" className="block h-1 w-1 rounded-full bg-amber-500" />
+                  {card.number}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'inline-flex h-7 w-7 items-center justify-center rounded-md',
+                    'border border-amber-300 bg-amber-100 text-amber-700',
+                    'dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200',
+                  )}
+                >
+                  <ReplaceIcon className="h-3.5 w-3.5" />
+                </span>
+              </div>
+
+              <h3 className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
+                {card.title}
+              </h3>
+
+              <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+                {card.body}
+              </p>
+
+              <div className="mt-auto pt-sm border-t border-dashed border-amber-300/70 dark:border-amber-700/60">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <code
+                    className={cn(
+                      'inline-flex items-center rounded-md border px-1.5 py-0.5',
+                      'border-amber-300 bg-white text-amber-800',
+                      'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
+                      'font-mono text-[10.5px] line-through decoration-amber-400/60',
+                    )}
+                  >
+                    {card.before}
+                  </code>
+                  <ArrowRightIcon className="h-3 w-3 text-blue-500 shrink-0" aria-hidden="true" />
+                  <code
+                    className={cn(
+                      'inline-flex items-center rounded-md border-2 px-1.5 py-0.5',
+                      'border-blue-300 bg-blue-50 text-blue-800',
+                      'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
+                      'font-mono text-[10.5px] font-bold',
+                    )}
+                  >
+                    {card.after}
+                  </code>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+
+      <aside
+        className={cn(
+          'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
+          'border-slate-800 bg-slate-900 text-slate-50',
+          'dark:border-slate-700 dark:bg-slate-950',
+          'shadow-[0_3px_0_var(--term-border)]',
+        )}
+        aria-label="emphasis"
+      >
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
+            'border border-blue-400/60 bg-blue-500/15 text-blue-200',
+          )}
+        >
+          <TargetIcon className="h-5 w-5" />
+        </span>
+        <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
+          <span className="block text-slate-300">{content.bannerLines[0]}</span>
+          <span className="block text-white">
+            <span className="bg-gradient-to-r from-amber-300 to-blue-300 bg-clip-text text-transparent">
+              {content.bannerLines[1]}
+            </span>
+          </span>
+        </p>
+      </aside>
+    </section>
+  );
+};

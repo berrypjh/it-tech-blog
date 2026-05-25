@@ -1,0 +1,123 @@
+import { Fragment } from 'react';
+
+import { cn } from '@it-tech-blog/utils';
+
+import type { CorrectVersionDiffContent } from '../content';
+import { HelpCircleIcon, QuoteIcon } from '../icons';
+import { RoleBadge } from '../RoleBadge';
+
+type Props = { content: CorrectVersionDiffContent['todayQuestion'] };
+
+const renderLine = (line: string, emphasize: string) => {
+  const parts = line.split(/(\{emphasize\})/g);
+  return parts.map((part, i) => {
+    if (part === '{emphasize}') {
+      return (
+        <span
+          key={i}
+          className={cn(
+            'mx-0.5 inline-flex items-center rounded-md px-1.5 py-0.5 align-baseline',
+            'bg-amber-100 text-amber-900',
+            'dark:bg-amber-950/60 dark:text-amber-200',
+            'font-bold',
+          )}
+        >
+          {emphasize}
+        </span>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+};
+
+export const TodayQuestionSection = ({ content }: Props) => {
+  return (
+    <section
+      id="section-today-question"
+      aria-labelledby="heading-today-question"
+      className="space-y-md"
+    >
+      <article
+        className={cn(
+          'relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
+          'border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-amber-50/30',
+          'dark:border-blue-800/60 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-amber-950/30',
+          'shadow-[0_3px_0_var(--term-border)]',
+        )}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute -top-2 -right-2 text-blue-100 dark:text-blue-900/40"
+        >
+          <QuoteIcon className="h-24 w-24" />
+        </span>
+
+        <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,_auto)_minmax(0,_1fr)] gap-md lg:gap-lg items-center">
+          <div className="flex items-center gap-2">
+            <span
+              aria-hidden="true"
+              className={cn(
+                'inline-flex h-9 w-9 items-center justify-center rounded-lg',
+                'border border-blue-300 bg-blue-100 text-blue-700',
+                'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
+              )}
+            >
+              <HelpCircleIcon className="h-5 w-5" />
+            </span>
+            <span className="flex flex-col">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-blue-700/80 dark:text-blue-300/80">
+                {content.eyebrow}
+              </span>
+              <span className="text-xsm font-bold text-blue-700 dark:text-blue-200">
+                {content.label}
+              </span>
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-md">
+            <h2
+              id="heading-today-question"
+              className={cn(
+                'text-xl sm:text-xxl lg:text-[1.65rem] font-bold leading-[1.35] tracking-tight',
+                'text-[var(--term-fg)] break-keep',
+              )}
+            >
+              {content.questionLines.map((line, idx) => (
+                <span key={idx} className="block">
+                  {renderLine(line, content.emphasize)}
+                </span>
+              ))}
+            </h2>
+
+            <ul className="flex flex-wrap gap-2">
+              {content.badges.map((badge) => (
+                <li key={badge.text}>
+                  {badge.tone ? (
+                    <RoleBadge tone={badge.tone} size="md" strong>
+                      {badge.text}
+                    </RoleBadge>
+                  ) : (
+                    <span
+                      className={cn(
+                        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
+                        'border-blue-300 bg-white text-blue-700',
+                        'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
+                        'text-[11px] font-mono font-bold',
+                      )}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="block h-1.5 w-1.5 rounded-full bg-blue-500"
+                      />
+                      {badge.text}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+  );
+};
