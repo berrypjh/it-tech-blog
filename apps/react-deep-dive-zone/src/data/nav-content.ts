@@ -351,19 +351,56 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'React 19 코드에서 달라진 지점',
       items: [
-        { id: 'why-react-19-base', label: 'React 19를 기준으로 읽는 이유', type: 'link' },
         {
-          id: 'actions-flow',
-          label: 'Actions와 Form Actions는 내부 흐름 어디에 걸리는가?',
+          id: 'react-19-change-map',
+          label: 'React 19 전체 변화의 지도부터 잡는다',
           type: 'link',
         },
-        { id: 'use-suspense-flow', label: 'use()와 Suspense 흐름', type: 'link' },
-        { id: 'ref-as-prop', label: 'ref as prop이 기존 경로와 어떻게 달라졌나?', type: 'link' },
-        { id: 'metadata-react-dom', label: 'metadata 지원과 react-dom', type: 'link' },
-        { id: 'rsc-boundary', label: 'Server Components 관련 패키지 경계', type: 'link' },
-        { id: 'repo-19-2-changes', label: 'React 19.2 이후 저장소 변화', type: 'link' },
-        { id: 'old-vs-current', label: '이전 버전 강의와 현재 코드가 달라지는 이유', type: 'link' },
-        { id: 'version-reading', label: '버전 차이를 읽는 방법', type: 'link' },
+        {
+          id: 'actions-update-flow',
+          label: 'Actions가 업데이트 흐름을 어떻게 넓혔는지 본다',
+          type: 'link',
+        },
+        {
+          id: 'form-actions-event-system',
+          label: 'Form Actions가 이벤트 시스템과 만나는 지점을 본다',
+          type: 'link',
+        },
+        {
+          id: 'use-suspense-error-model',
+          label: 'use()가 Suspense / Error 모델을 어떻게 공식화했는지 본다',
+          type: 'link',
+        },
+        {
+          id: 'ref-as-prop-element-shape',
+          label: 'ref as prop이 Element와 props 표현을 어떻게 바꿨는지 본다',
+          type: 'link',
+        },
+        {
+          id: 'metadata-resource-react-dom',
+          label: 'Metadata / Resource가 react-dom의 책임을 어떻게 넓혔는지 본다',
+          type: 'link',
+        },
+        {
+          id: 'server-components-contract',
+          label: 'Server Components의 경계와 계약을 정리한다',
+          type: 'link',
+        },
+        {
+          id: 'activity-hidden-ui',
+          label: 'Activity로 숨겨진 UI 관리 모델을 본다',
+          type: 'link',
+        },
+        {
+          id: 'use-effect-event-design',
+          label: 'useEffectEvent로 Effect 설계 변화를 본다',
+          type: 'link',
+        },
+        {
+          id: 'react-19-2-reading-method',
+          label: '19.2 이후 변화를 스스로 추적하는 읽기법으로 마무리한다',
+          type: 'link',
+        },
       ],
     },
     {
@@ -747,15 +784,56 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: "What's Different in React 19",
       items: [
-        { id: 'why-react-19-base', label: 'Why Read React 19 as Baseline', type: 'link' },
-        { id: 'actions-flow', label: 'Where Actions & Form Actions Hook In', type: 'link' },
-        { id: 'use-suspense-flow', label: 'use() and Suspense Flow', type: 'link' },
-        { id: 'ref-as-prop', label: 'ref as prop vs the Old Path', type: 'link' },
-        { id: 'metadata-react-dom', label: 'Metadata Support in react-dom', type: 'link' },
-        { id: 'rsc-boundary', label: 'Server Components Package Boundary', type: 'link' },
-        { id: 'repo-19-2-changes', label: 'Repo Changes After React 19.2', type: 'link' },
-        { id: 'old-vs-current', label: 'Why Old Tutorials Differ from Current Code', type: 'link' },
-        { id: 'version-reading', label: 'How to Read Version Differences', type: 'link' },
+        {
+          id: 'react-19-change-map',
+          label: 'Map out the full picture of React 19 changes',
+          type: 'link',
+        },
+        {
+          id: 'actions-update-flow',
+          label: 'See how Actions widened the update flow',
+          type: 'link',
+        },
+        {
+          id: 'form-actions-event-system',
+          label: 'See where Form Actions meet the event system',
+          type: 'link',
+        },
+        {
+          id: 'use-suspense-error-model',
+          label: 'See how use() formalized the Suspense / Error model',
+          type: 'link',
+        },
+        {
+          id: 'ref-as-prop-element-shape',
+          label: 'See how ref as prop reshaped Element and props',
+          type: 'link',
+        },
+        {
+          id: 'metadata-resource-react-dom',
+          label: "See how Metadata / Resource widened react-dom's role",
+          type: 'link',
+        },
+        {
+          id: 'server-components-contract',
+          label: 'Frame the boundary and contract of Server Components',
+          type: 'link',
+        },
+        {
+          id: 'activity-hidden-ui',
+          label: 'See the hidden-UI management model through Activity',
+          type: 'link',
+        },
+        {
+          id: 'use-effect-event-design',
+          label: 'See the Effect design shift through useEffectEvent',
+          type: 'link',
+        },
+        {
+          id: 'react-19-2-reading-method',
+          label: 'Close out with a reading method for tracking 19.2+ changes',
+          type: 'link',
+        },
       ],
     },
     {

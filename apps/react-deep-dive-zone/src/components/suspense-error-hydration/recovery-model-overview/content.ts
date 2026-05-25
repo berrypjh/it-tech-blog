@@ -472,7 +472,7 @@ const ko: RecoveryModelOverviewContent = {
     title: 'Suspense / Error / Hydration 학습 완료',
     description:
       '대기, 실패, 복구가 하나의 렌더링 모델이 되는 과정을 정리했습니다. 이제 실제 React 19 코드에서 달라진 지점을 더 깊게 읽어볼 수 있습니다.',
-    primary: { label: '다음: React 19 코드에서 달라진 지점', href: '/why-react-19-base' },
+    primary: { label: '다음: React 19 코드에서 달라진 지점', href: '/react-19-change-map' },
     secondary: [
       { label: '전체 복구 모델 다시 보기', href: '#hero-heading' },
       {
@@ -790,7 +790,7 @@ const en: RecoveryModelOverviewContent = {
     title: 'Suspense / Error / Hydration · part complete',
     description:
       'You wrapped up how waiting, failing, and recovering form a single rendering model. Next, dive into what changed in React 19 source code.',
-    primary: { label: "Next: What's different in React 19 code", href: '/why-react-19-base' },
+    primary: { label: "Next: What's different in React 19 code", href: '/react-19-change-map' },
     secondary: [
       { label: 'Replay the recovery model', href: '#hero-heading' },
       {
