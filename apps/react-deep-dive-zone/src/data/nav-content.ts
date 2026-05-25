@@ -304,16 +304,48 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Suspense / Error / Hydration',
       items: [
-        { id: 'promise-in-render', label: '렌더 중 Promise를 만나면 어떻게 되는가?', type: 'link' },
-        { id: 'suspense-boundary', label: 'Suspense boundary', type: 'link' },
-        { id: 'fallback-flow', label: 'fallback으로 전환되는 흐름', type: 'link' },
-        { id: 'error-boundary-capture', label: 'error boundary와 capture', type: 'link' },
-        { id: 'hydration-intro', label: 'hydration이란?', type: 'link' },
-        { id: 'server-client-link', label: '서버 HTML과 클라이언트 Fiber 연결', type: 'link' },
-        { id: 'hydration-mismatch', label: 'hydration mismatch', type: 'link' },
-        { id: 'replay-recover', label: 'replay와 복구 흐름', type: 'link' },
-        { id: 'use-suspense-19', label: 'React 19의 use()와 Suspense 연결', type: 'link' },
-        { id: 'failable-render', label: '실패 가능한 렌더링을 다루는 구조', type: 'link' },
+        { id: 'why-failable-render', label: '왜 실패 가능한 렌더링을 봐야 하는가?', type: 'link' },
+        {
+          id: 'use-promise-suspend',
+          label: 'use(Promise)는 어떻게 suspend를 만드는가?',
+          type: 'link',
+        },
+        {
+          id: 'promise-vs-error-split',
+          label: 'Promise와 Error는 어디서 갈라지는가?',
+          type: 'link',
+        },
+        {
+          id: 'suspense-fallback-retry',
+          label: 'Suspense Boundary는 어떻게 fallback/retry를 처리하는가?',
+          type: 'link',
+        },
+        {
+          id: 'error-boundary-recover',
+          label: 'Error Boundary는 어떻게 복구하는가?',
+          type: 'link',
+        },
+        {
+          id: 'react-19-error-reporting',
+          label: 'React 19는 에러 보고를 어떻게 분리했는가?',
+          type: 'link',
+        },
+        { id: 'hydration-start', label: 'Hydration은 어떻게 시작되는가?', type: 'link' },
+        {
+          id: 'mismatch-detect-recover',
+          label: 'Mismatch는 어떻게 감지되고 복구되는가?',
+          type: 'link',
+        },
+        {
+          id: 'suspense-hydration-link',
+          label: 'Suspense와 Hydration은 어떻게 연결되는가?',
+          type: 'link',
+        },
+        {
+          id: 'recovery-model-overview',
+          label: '전체 복구 모델을 어떻게 한 장으로 정리할까?',
+          type: 'link',
+        },
       ],
     },
     {
@@ -676,16 +708,40 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
     {
       title: 'Suspense / Error / Hydration',
       items: [
-        { id: 'promise-in-render', label: 'When Render Meets a Promise', type: 'link' },
-        { id: 'suspense-boundary', label: 'Suspense Boundary', type: 'link' },
-        { id: 'fallback-flow', label: 'Transitioning to Fallback', type: 'link' },
-        { id: 'error-boundary-capture', label: 'Error Boundary & Capture', type: 'link' },
-        { id: 'hydration-intro', label: 'What Is Hydration?', type: 'link' },
-        { id: 'server-client-link', label: 'Linking Server HTML to Client Fiber', type: 'link' },
-        { id: 'hydration-mismatch', label: 'Hydration Mismatch', type: 'link' },
-        { id: 'replay-recover', label: 'Replay and Recovery Flow', type: 'link' },
-        { id: 'use-suspense-19', label: 'use() and Suspense in React 19', type: 'link' },
-        { id: 'failable-render', label: 'Structuring Failable Renders', type: 'link' },
+        { id: 'why-failable-render', label: 'Why Look at Failable Renders?', type: 'link' },
+        { id: 'use-promise-suspend', label: 'How Does use(Promise) Suspend?', type: 'link' },
+        {
+          id: 'promise-vs-error-split',
+          label: 'Where Do Promise and Error Diverge?',
+          type: 'link',
+        },
+        {
+          id: 'suspense-fallback-retry',
+          label: 'How Does Suspense Boundary Handle Fallback/Retry?',
+          type: 'link',
+        },
+        { id: 'error-boundary-recover', label: 'How Does Error Boundary Recover?', type: 'link' },
+        {
+          id: 'react-19-error-reporting',
+          label: 'How Did React 19 Split Error Reporting?',
+          type: 'link',
+        },
+        { id: 'hydration-start', label: 'How Does Hydration Start?', type: 'link' },
+        {
+          id: 'mismatch-detect-recover',
+          label: 'How Are Mismatches Detected and Recovered?',
+          type: 'link',
+        },
+        {
+          id: 'suspense-hydration-link',
+          label: 'How Are Suspense and Hydration Connected?',
+          type: 'link',
+        },
+        {
+          id: 'recovery-model-overview',
+          label: 'How to Sum Up the Recovery Model in One Page?',
+          type: 'link',
+        },
       ],
     },
     {

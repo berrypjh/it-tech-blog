@@ -1,0 +1,47 @@
+import type { SVGProps } from 'react';
+
+export {
+  AlertTriangle as AlertTriangleIcon,
+  ArrowDown as ArrowDownIcon,
+  ArrowLeftRight as ArrowLeftRightIcon,
+  ArrowRight as ArrowRightIcon,
+  AtomIcon,
+  Boxes as BoxesIcon,
+  Box as BoxIcon,
+  CheckCircle2 as CheckCircleIcon,
+  ChevronRight as ChevronRightIcon,
+  CircleHelp as CircleHelpIcon,
+  Code2 as CodeIcon,
+  ExternalLink as ExternalLinkIcon,
+  FileCode as FileCodeIcon,
+  FileSearch as FileSearchIcon,
+  GitBranch as GitBranchIcon,
+  Globe as GlobeIcon,
+  HelpCircle as HelpCircleIcon,
+  Layers as LayersIcon,
+  Link2 as LinkIcon,
+  ListChecks as ListChecksIcon,
+  Loader as LoaderIcon,
+  MapPin as MapPinIcon,
+  Network as NetworkIcon,
+  PlayCircle as PlayCircleIcon,
+  Play as PlayIcon,
+  PlugZap as PlugZapIcon,
+  RefreshCcw as RefreshCcwIcon,
+  Rocket as RocketIcon,
+  Route as RouteIcon,
+  Search as SearchIcon,
+  Server as ServerIcon,
+  ShieldCheck as ShieldCheckIcon,
+  Sparkles as SparklesIcon,
+  Target as TargetIcon,
+  Workflow as WorkflowIcon,
+  XCircle as XCircleIcon,
+  Zap as ZapIcon,
+} from 'lucide-react';
+
+export const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true" {...props}>
+    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.69.08-.69 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.71 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.12 3.04.73.81 1.18 1.84 1.18 3.1 0 4.44-2.69 5.41-5.26 5.7.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.21.67.8.55C20.21 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+  </svg>
+);
