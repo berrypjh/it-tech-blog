@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { LearningPrinciplesPanel } from './sections/LearningPrinciplesPanel';
 import { ModernReinterpretationTable } from './sections/ModernReinterpretationTable';

@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
-import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, WhySplitContent } from '../content';
 import { architectureIcon, ArrowRightIcon } from '../icons';
 

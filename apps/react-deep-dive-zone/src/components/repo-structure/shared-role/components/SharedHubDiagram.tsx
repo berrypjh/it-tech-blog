@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { PackageBranch, SharedContent } from '../content';
 import { iconByName, PackageIcon } from '../icons';
 

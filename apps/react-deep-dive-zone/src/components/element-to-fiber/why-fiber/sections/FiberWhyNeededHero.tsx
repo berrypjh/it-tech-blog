@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { HeroFlow } from '../components/HeroFlow';
 import type { FiberWhyNeededContent } from '../content';
 import { TrophyIcon } from '../icons';

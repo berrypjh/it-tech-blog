@@ -1,4 +1,4 @@
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 /** 이 페이지의 역할 색상 매핑. */
 export type RoleKey = 'implementation' | 'test' | 'intent' | 'edge' | 'regression';

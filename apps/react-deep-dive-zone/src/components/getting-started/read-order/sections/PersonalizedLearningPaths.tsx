@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { PathCard, ReadOrderContent } from '../content';
 import { ChevronRightIcon, pathIconByName, RouteIcon } from '../icons';
 

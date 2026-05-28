@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { AspectBadge } from '../AspectBadge';
 import type { NoteField, ReconstructContent } from '../content';
 import { FileTextIcon, MessageSquareTextIcon, NotebookIcon } from '../icons';

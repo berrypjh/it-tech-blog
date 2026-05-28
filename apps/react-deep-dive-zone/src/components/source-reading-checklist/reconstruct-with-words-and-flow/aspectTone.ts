@@ -1,4 +1,4 @@
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 /** 이 페이지의 4개 상태 톤. */
 export type AspectKey = 'reading' | 'compression' | 'note' | 'completion';

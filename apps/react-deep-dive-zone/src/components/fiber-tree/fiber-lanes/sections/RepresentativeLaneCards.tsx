@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { LaneIcon } from '../components/LaneIcon';
 import { laneBgTint, laneBorder, laneIconBg, laneTitleText } from '../components/laneStyles';
 import type { FiberLanesContent, LaneCard } from '../content';

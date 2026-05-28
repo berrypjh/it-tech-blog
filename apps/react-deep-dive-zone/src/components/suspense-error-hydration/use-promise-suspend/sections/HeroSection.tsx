@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { UsePromiseSuspendContent } from '../content';
 import { CheckCircleIcon, HourglassIcon, TriangleAlertIcon } from '../icons';
 import type { PromiseState } from '../tone';

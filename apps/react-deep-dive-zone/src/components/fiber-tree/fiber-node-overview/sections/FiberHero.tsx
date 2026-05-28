@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { FiberObjectGroupCard } from '../components/FiberObjectGroupCard';
 import type { FiberNodeOverviewContent } from '../content';
 import { CircuitBoardIcon, SparklesIcon } from '../icons';

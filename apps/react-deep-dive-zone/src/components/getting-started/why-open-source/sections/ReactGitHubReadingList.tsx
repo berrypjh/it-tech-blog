@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ReadingPriorityRow, WhyOpenSourceContent } from '../content';
 import { ChevronRightIcon, CodeIcon, priorityIconByName } from '../icons';
 

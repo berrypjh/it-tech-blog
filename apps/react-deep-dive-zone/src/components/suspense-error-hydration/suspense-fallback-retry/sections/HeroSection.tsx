@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { HeroFlowStep, SuspenseFallbackRetryContent } from '../content';
 import { BoxIcon, CheckCircleIcon, LoaderIcon, PauseCircleIcon, RefreshCcwIcon } from '../icons';
 import { phaseAccent } from '../tone';

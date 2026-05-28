@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { RulesOfHooksContent } from '../content';
 import { ChevronRightIcon, FileCodeIcon, FileSearchIcon } from '../icons';
 

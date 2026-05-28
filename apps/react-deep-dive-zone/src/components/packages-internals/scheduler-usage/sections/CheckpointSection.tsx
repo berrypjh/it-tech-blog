@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
-import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { SchedulerCodePanel } from '../components/SchedulerCodePanel';
 import type { CheckpointItem, SchedulerContent } from '../content';
 import { schedulerIcon } from '../icons';

@@ -1,4 +1,4 @@
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 /** call path step의 의미별 톤 매핑. */
 export type StepKind = 'api' | 'lane' | 'scheduling' | 'render' | 'result' | 'extra';

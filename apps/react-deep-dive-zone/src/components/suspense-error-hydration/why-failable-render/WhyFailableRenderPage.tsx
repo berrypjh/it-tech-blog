@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../../getting-started/_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeEntryMap } from './sections/CodeEntryMap';
 import { FollowAlongSection } from './sections/FollowAlongSection';

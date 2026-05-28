@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { laneCardBorder, laneDot, laneIconBox, laneTextStrong } from '../../_shared/laneAccent';
 import type { LaneAccent, LaneBitmaskContent } from '../content';

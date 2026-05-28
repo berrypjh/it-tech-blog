@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { RootCurrentRefContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, BoxIcon, LightbulbIcon, LinkIcon } from '../icons';
 

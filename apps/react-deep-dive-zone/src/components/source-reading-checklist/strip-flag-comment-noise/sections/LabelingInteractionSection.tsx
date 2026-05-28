@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { LabelingOption, StripFlagCommentNoiseContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, ScanLineIcon, SparkIcon, TagsIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';

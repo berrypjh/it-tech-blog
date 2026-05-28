@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalBadge } from '../../_shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { RoadmapContent } from '../content';
 import { CheckCircleIcon, FlagIcon, FolderOpenIcon, MapPinIcon, PencilIcon } from '../icons';
 

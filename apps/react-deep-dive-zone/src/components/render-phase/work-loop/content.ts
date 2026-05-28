@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type FlowNode = {
   /** A/B/C/D 등 큰 글자 라벨 (yield 노드는 비워두고 yield: true) */

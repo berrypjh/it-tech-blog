@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ReconstructContent } from '../content';
 import { BadgeCheckIcon, CheckCircleIcon, ClipboardCheckIcon } from '../icons';
 

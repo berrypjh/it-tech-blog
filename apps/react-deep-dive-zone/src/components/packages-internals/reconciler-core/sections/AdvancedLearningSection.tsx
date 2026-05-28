@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
-import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { toneTokens } from '../../../shared/tones';
 import type { AdvancedLink, ReconcilerContent } from '../content';
 import { ArrowRightIcon, BookOpenIcon, reconcilerIcon } from '../icons';
 

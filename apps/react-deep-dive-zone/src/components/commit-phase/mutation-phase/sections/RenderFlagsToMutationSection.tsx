@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { commitToneTokens } from '../../_shared/tones';
 import type { ConnectionCard, MutationPhaseContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, FlagIcon, WorkflowIcon, ZapIcon } from '../icons';

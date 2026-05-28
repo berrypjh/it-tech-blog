@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type FunctionFlowVariant = 'outline' | 'soft' | 'mint' | 'dark';
 

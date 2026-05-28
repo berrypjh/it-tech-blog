@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { CurvedArrow } from '../components/CurvedArrow';
 import { DomTagCard } from '../components/DomTagCard';
 import { HostComponentCard } from '../components/HostComponentCard';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
 import { CheckCircleIcon, ListChecksIcon, SparklesIcon, TrophyIcon } from '../icons';
 

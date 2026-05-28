@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
 import { CheckCircleIcon, sharedIcon } from '../icons';
 

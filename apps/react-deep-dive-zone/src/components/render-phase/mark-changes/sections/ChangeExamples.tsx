@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ExampleCard, MarkChangesContent } from '../content';
 import { ArrowDownIcon, FlagIcon, MoveIcon, SparklesIcon, Trash2Icon } from '../icons';
 

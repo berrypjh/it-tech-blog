@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
 import { principleIconByName, ShieldIcon } from '../icons';
 

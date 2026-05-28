@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CommitPhaseIntroContent, FlowStep } from '../content';
 import { ArrowRightIcon, TargetIcon } from '../icons';
 import { commitToneTokens } from '../palette';

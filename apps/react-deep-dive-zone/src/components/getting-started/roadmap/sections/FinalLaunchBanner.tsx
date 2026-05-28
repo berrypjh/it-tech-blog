@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { RoadmapContent } from '../content';
 import { ArrowRightIcon, FlagIcon, RefreshIcon, SparkIcon } from '../icons';
 

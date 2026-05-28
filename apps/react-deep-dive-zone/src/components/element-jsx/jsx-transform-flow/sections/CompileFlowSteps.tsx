@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../getting-started/_shared/tones';
-import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, JsxTransformFlowContent } from '../content';
 import { ArrowRightIcon, AtomIcon, BoxIcon, CodeIcon, SettingsIcon, WorkflowIcon } from '../icons';
 

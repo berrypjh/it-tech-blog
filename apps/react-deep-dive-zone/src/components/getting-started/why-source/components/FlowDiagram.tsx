@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalBadge } from '../../_shared/TerminalBadge';
-import { toneTokens } from '../../_shared/tones';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { toneTokens } from '../../../shared/tones';
 import type { WhySourceContent } from '../content';
 import { ArrowLoopIcon } from '../icons';
 

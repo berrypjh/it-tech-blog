@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { BranchMap } from '../components/BranchMap';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
 import { SparklesIcon } from '../icons';

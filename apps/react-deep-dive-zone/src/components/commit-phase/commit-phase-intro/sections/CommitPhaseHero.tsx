@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { CommitPhaseIntroContent } from '../content';
 import { ArrowDownIcon, CheckCircleIcon, CpuIcon, LayersIcon, LightbulbIcon } from '../icons';
 

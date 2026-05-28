@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
 import { FxIcon } from '../icons';
 import { formatInline } from '../utils/inlineCode';

@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../../getting-started/_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { JsxRuntimeHero } from './sections/JsxRuntimeHero';
 import { RuntimeEntryMap } from './sections/RuntimeEntryMap';

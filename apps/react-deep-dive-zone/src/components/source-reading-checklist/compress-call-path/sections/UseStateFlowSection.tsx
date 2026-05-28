@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { CallPathFlow } from '../CallPathFlow';
 import type { CallPathCompressionContent } from '../content';
 import { CableIcon, CompassIcon, SparkIcon } from '../icons';

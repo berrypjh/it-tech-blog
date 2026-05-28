@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { effectBadge, effectIconWrap, effectText } from '../components/effectStyles';
 import type { EffectKind, FiberFlagsContent, SimulationRow } from '../content';
 import { MoveIcon, PencilIcon, SparklesIcon, TrashIcon } from '../icons';

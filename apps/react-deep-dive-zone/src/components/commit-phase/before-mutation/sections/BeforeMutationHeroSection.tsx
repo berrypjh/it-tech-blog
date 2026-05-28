@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { commitToneTokens } from '../../_shared/tones';
 import type { BeforeMutationContent, PhaseTimelineStep } from '../content';
 import { ArrowRightIcon, CameraIcon, EyeIcon, LightbulbIcon } from '../icons';

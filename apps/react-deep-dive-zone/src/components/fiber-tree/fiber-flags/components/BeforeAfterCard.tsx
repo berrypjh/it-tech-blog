@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
+import { CodePanel } from '../../../shared/CodePanel';
 import type { EffectKind, RepresentativeFlagCard } from '../content';
 import { ArrowDownIcon, MoveIcon, PencilIcon, TrashIcon } from '../icons';
 

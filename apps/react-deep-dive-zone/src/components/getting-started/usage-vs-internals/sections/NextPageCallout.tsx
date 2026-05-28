@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { ArrowRightIcon } from '../../why-source/icons';
 import type { UsageVsInternalsContent } from '../content';
 import { BookIcon, SparkleIcon } from '../icons';

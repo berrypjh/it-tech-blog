@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { GithubIcon } from '../../repo-overview/icons';
 import { DarkCodePanel } from '../components/DarkCodePanel';
 import type { SurroundingContent } from '../content';

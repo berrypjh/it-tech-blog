@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import type { ToneKey } from '../../../getting-started/_shared/tones';
+import { CodePanel } from '../../../shared/CodePanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import type { ToneKey } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
 import { ExternalLinkIcon, EyeIcon, FileCodeIcon, HelpCircleIcon } from '../icons';
 

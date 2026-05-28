@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent, MissionIconName, MissionStep } from '../content';
 import { ArrowRightIcon, FileTextIcon, FlagIcon, Link2Icon, SearchIcon } from '../icons';
 

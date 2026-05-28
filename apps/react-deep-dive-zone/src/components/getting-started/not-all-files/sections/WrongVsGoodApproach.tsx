@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ApproachItem, NotAllFilesContent } from '../content';
 import { approachIconByName, CheckIcon, XIcon } from '../icons';
 

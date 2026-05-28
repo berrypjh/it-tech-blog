@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
 import { ArrowRightIcon, BoltIcon, BookIcon, SparkIcon } from '../icons';
 

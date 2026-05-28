@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
-import { type ToneKey, toneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UsageVsInternalsContent } from '../content';
 import { CursorIcon, flowIconByName } from '../icons';
 import { formatInline } from '../utils/inlineCode';

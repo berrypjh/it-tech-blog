@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../getting-started/_shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../getting-started/_shared/tones';
+import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CodeField, ReconcilerIconName } from '../content';
 import { reconcilerIcon } from '../icons';
 

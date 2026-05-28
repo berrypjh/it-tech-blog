@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { SchedulerPackageContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, CheckCircleIcon, CpuIcon, PackageIcon } from '../icons';
 import { pkgCardBorder, pkgIconBox, pkgTextStrong } from '../packageAccent';

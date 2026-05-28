@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { AlternateLink } from '../components/AlternateLink';
 import { FiberPairCard } from '../components/FiberPairCard';
 import type { AlternateFiberContent } from '../content';

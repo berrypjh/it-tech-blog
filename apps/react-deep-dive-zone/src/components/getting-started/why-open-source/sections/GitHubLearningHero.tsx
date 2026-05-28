@@ -1,11 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDescription } from '../../_shared/HeroDescription';
-import { HeroSection } from '../../_shared/HeroSection';
-import { HeroTextColumn } from '../../_shared/HeroTextColumn';
-import { HeroTitle } from '../../_shared/HeroTitle';
-import { HeroVisualColumn } from '../../_shared/HeroVisualColumn';
-import { TerminalBadge } from '../../_shared/TerminalBadge';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { GitHubConnectedDiagram } from '../components/GitHubConnectedDiagram';
 import type { KeywordPill, WhyOpenSourceContent } from '../content';
 import { ChatIcon, CodeIcon, FlaskIcon, GitCommitIcon } from '../icons';

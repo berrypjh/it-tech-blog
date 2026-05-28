@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { groupBorder, groupFieldChip, groupIconBg, groupTitle } from '../components/groupStyles';
 import type { FiberCentralContent, FieldGroup } from '../content';
 import {

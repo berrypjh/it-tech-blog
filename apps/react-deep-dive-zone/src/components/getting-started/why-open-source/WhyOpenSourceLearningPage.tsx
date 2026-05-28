@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ApiToImplementationToTestFlow } from './sections/ApiToImplementationToTestFlow';
 import { GitHubLearningHero } from './sections/GitHubLearningHero';

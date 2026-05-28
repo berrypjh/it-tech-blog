@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { axisCardBorder, axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
 import type { RootAccent, RootPendingWorkContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, ClockIcon, DatabaseIcon, ZapIcon } from '../icons';

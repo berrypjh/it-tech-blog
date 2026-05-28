@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { DispatchSelectionContent } from '../content';
 import { CircleIcon, FilterIcon, MousePointerClickIcon, WavesIcon, ZapIcon } from '../icons';
 import { priorityCard, priorityIconBox, priorityText } from '../priorityStyle';

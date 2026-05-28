@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { QuizCard as QuizCardType, ReadingPerspectiveContent } from '../content';
 import { CheckCircleIcon, TargetIcon, XIcon } from '../icons';
 

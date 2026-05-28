@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CoreTakeawayBanner } from './sections/CoreTakeawayBanner';
 import { CounterUpdateFlow } from './sections/CounterUpdateFlow';

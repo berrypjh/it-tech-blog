@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { PropsCompareCard } from '../components/PropsCompareCard';
 import type { FiberPropsContent } from '../content';
 import { SparklesIcon } from '../icons';

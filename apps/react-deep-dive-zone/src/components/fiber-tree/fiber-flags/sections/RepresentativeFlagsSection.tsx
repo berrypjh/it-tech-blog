@@ -1,4 +1,4 @@
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { BeforeAfterCard } from '../components/BeforeAfterCard';
 import type { FiberFlagsContent } from '../content';
 import { FlagIcon } from '../icons';

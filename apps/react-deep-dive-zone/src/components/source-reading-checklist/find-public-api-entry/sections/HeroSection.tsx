@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent, HeroLayer } from '../content';
 import {
   ArrowDownIcon,

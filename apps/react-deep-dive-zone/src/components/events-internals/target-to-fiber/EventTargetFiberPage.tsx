@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../../getting-started/_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BrowserDomTargetSection } from './sections/BrowserDomTargetSection';
 import { DomFiberMappingLab } from './sections/DomFiberMappingLab';

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { CallPathCompressionContent } from '../content';
 import { ArrowRightIcon, ArrowRightLeftIcon, CircleDotIcon, RouteIcon } from '../icons';
 import { getStepClasses } from '../StepBadge';

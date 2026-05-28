@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../shared/CodePanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ChatState, KeyFiberReuseContent } from '../content';
 import {
   ArrowDownIcon,

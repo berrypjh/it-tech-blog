@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
-import type { ToneKey } from '../../../getting-started/_shared/tones';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import type { ToneKey } from '../../../shared/tones';
 import { PackagePill } from '../components/PackagePill';
 import type { PackagesDirectoryContent } from '../content';
 import { LayersIcon, LightbulbIcon } from '../icons';

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CommitPhaseIntroContent } from '../content';
 import { ArrowRightIcon, RefreshIcon, RocketIcon } from '../icons';
 

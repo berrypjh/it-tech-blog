@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ReadOrderContent } from '../content';
 import { ArrowRightIcon, ExternalLinkIcon, FileIcon, FlagIcon, GithubIcon } from '../icons';
 

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { AnnotatedCodePanel } from '../components/AnnotatedCodePanel';
 import type { FiberStateNodeContent } from '../content';
 import { ExternalLinkIcon, EyeIcon, FileCodeIcon, HelpCircleIcon, LightbulbIcon } from '../icons';

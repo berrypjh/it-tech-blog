@@ -1,5 +1,5 @@
-import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { ArrowRightIcon, GithubIcon } from '../../why-source/icons';
 import type { UsageVsInternalsContent } from '../content';
 import { BookIcon } from '../icons';

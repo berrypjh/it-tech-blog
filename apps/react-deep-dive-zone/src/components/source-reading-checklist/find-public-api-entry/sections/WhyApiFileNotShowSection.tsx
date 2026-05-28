@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { SectionHeader } from '../../../shared/SectionHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent } from '../content';
 import { ArrowRightIcon, DoorOpenIcon, FileCodeIcon, SparkIcon } from '../icons';
 

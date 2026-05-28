@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
-import { toneTokens } from '../../../getting-started/_shared/tones';
-import { CodePanel } from '../../_shared/CodePanel';
+import { CodePanel } from '../../../shared/CodePanel';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
 import { ArrowRightIcon, BracesIcon, EyeIcon, FileTextIcon } from '../icons';
 

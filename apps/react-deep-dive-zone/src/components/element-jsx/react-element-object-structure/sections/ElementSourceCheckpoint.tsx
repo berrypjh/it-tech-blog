@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../_shared/CodePanel';
-import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../shared/CodePanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementObjectStructureContent } from '../content';
 import { ArrowRightIcon, CodeIcon, FileTextIcon, LightbulbIcon } from '../icons';
 

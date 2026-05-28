@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { MiniPointerDiagram } from '../components/MiniPointerDiagram';
 import { pointerCardBorder, pointerIconBg, pointerText } from '../components/pointerStyles';
 import type { FiberTreePointersContent, PointerCard } from '../content';

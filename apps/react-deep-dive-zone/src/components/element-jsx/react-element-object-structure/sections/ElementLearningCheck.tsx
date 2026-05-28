@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementObjectStructureContent } from '../content';
 import { HelpCircleIcon, LightbulbIcon } from '../icons';
 

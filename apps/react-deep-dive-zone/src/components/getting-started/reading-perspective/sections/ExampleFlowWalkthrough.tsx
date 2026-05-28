@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ReadingPerspectiveContent } from '../content';
 import { ArrowRightIcon, CodeIcon } from '../icons';
 import { stageTones } from '../tones';

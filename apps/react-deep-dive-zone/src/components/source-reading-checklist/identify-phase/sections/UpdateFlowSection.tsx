@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { FlowBlock, PhaseDetectionContent } from '../content';
 import { ArrowDownIcon, MousePointerClickIcon, RouteIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';

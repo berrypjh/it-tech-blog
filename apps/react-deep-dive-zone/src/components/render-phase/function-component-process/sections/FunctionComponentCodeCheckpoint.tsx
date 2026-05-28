@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CodeCallout, FunctionComponentContent } from '../content';
 import { CodeIcon, FileCodeIcon, HelpCircleIcon } from '../icons';
 

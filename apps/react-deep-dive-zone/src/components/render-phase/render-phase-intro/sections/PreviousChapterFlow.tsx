@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { toneTokens } from '../../../shared/tones';
 import type {
   PreviousChapterStep,
   PreviousChapterStepIcon,

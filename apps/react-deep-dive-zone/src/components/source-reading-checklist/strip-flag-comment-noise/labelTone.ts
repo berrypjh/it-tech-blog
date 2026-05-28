@@ -1,4 +1,4 @@
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 /** 이 페이지의 라벨 종류. */
 export type LabelKey = 'dev' | 'feature-flag' | 'type' | 'comment' | 'core' | 'legacy' | 'env';

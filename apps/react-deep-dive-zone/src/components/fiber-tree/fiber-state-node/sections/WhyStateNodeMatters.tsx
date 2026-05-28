@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import type { ToneKey } from '../../../getting-started/_shared/tones';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import type { ToneKey } from '../../../shared/tones';
 import type { FiberStateNodeContent, ReasonCard } from '../content';
 import { AlertTriangleIcon, LinkIcon, SparklesIcon, WorkflowIcon } from '../icons';
 

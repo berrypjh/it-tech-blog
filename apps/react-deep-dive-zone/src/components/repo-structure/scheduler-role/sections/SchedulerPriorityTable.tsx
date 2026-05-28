@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { tintByPriority } from '../components/HeroPriorityCards';
 import type { PriorityRow, SchedulerContent } from '../content';
 import { iconByName, ListOrderedIcon } from '../icons';

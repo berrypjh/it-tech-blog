@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { toneTokens } from '../../../getting-started/_shared/tones';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { FiberToRootContent } from '../content';
 import { ArrowUpIcon, DatabaseIcon, GitBranchIcon, NetworkIcon } from '../icons';
 

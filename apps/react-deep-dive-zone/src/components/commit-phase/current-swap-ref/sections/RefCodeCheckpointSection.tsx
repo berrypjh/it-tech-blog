@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
-import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { commitToneTokens } from '../../_shared/tones';
 import type { CodeBlock, RootCurrentRefContent } from '../content';
 import {

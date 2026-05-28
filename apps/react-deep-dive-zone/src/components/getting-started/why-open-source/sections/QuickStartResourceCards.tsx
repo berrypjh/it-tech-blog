@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { WhyOpenSourceContent } from '../content';
 import {
   ArrowRightIcon,

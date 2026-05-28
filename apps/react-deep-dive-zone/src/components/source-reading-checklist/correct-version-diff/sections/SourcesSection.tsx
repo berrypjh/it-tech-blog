@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { CorrectVersionDiffContent } from '../content';
 import { BookOpenIcon, ListTreeIcon, MegaphoneIcon, NewspaperIcon, TagIcon } from '../icons';
 

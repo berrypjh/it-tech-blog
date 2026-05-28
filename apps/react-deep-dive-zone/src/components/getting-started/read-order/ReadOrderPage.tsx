@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CoreFilesByStage } from './sections/CoreFilesByStage';
 import { DeferredTopicsGrid } from './sections/DeferredTopicsGrid';

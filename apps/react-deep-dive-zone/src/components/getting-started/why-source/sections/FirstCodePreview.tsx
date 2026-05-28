@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
 import type { WhySourceContent } from '../content';

@@ -1,10 +1,10 @@
-import { CodePreviewPanel } from '../../_shared/CodePreviewPanel';
-import { HeroDescription } from '../../_shared/HeroDescription';
-import { HeroSection } from '../../_shared/HeroSection';
-import { HeroTextColumn } from '../../_shared/HeroTextColumn';
-import { HeroTitle } from '../../_shared/HeroTitle';
-import { HeroVisualColumn } from '../../_shared/HeroVisualColumn';
-import { TerminalBadge } from '../../_shared/TerminalBadge';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { InternalStackVisual } from '../components/InternalStackVisual';
 import type { UsageVsInternalsContent } from '../content';
 

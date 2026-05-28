@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../getting-started/_shared/tones';
-import { CodePanel } from '../../_shared/CodePanel';
-import { SectionBadgeHeader } from '../../_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../shared/CodePanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, CheckCircleIcon, HelpCircleIcon } from '../icons';
 

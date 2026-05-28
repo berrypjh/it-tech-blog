@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
-import { CodePanel } from '../../_shared/CodePanel';
+import { CodePanel } from '../../../shared/CodePanel';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { JsxTransformFlowContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, BookOpenIcon, CodeIcon, SettingsIcon } from '../icons';
 

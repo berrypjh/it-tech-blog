@@ -1,4 +1,4 @@
-import type { ToneKey } from '../../getting-started/_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type PackageKey =
   | 'react'

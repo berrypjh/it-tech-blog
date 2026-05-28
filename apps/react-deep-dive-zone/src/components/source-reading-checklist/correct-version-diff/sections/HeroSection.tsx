@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../getting-started/_shared/TerminalPrompt';
+import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { CorrectVersionDiffContent } from '../content';
 import { ArchiveIcon, ArrowRightIcon, CompassIcon, FileCheckIcon, HistoryIcon } from '../icons';
 import { RoleBadge } from '../RoleBadge';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ResourceCard, WhyReact19Content } from '../content';
 import { ArrowRightIcon, BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
 

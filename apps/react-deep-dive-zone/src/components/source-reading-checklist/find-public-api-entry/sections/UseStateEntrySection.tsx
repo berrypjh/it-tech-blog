@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { FindPublicApiEntryContent } from '../content';
 import { FileCodeIcon, RouteIcon, SparkIcon, TargetIcon } from '../icons';
 

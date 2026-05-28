@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../../getting-started/_shared/StartPageShell';
+import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClassificationGameSection } from './sections/ClassificationGameSection';
 import { ConfusedValuesSection } from './sections/ConfusedValuesSection';

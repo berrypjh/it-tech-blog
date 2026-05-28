@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalBadge } from '../../_shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { WhyOpenSourceContent } from '../content';
 import { CheckCircleIcon, GitBranchIcon, GitCommitIcon, GithubIcon } from '../icons';
 

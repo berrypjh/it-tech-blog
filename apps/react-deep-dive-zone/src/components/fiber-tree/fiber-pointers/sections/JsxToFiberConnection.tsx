@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../element-jsx/_shared/CodePanel';
-import { SectionBadgeHeader } from '../../../element-jsx/_shared/SectionBadgeHeader';
+import { CodePanel } from '../../../shared/CodePanel';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { ConnectionTable } from '../components/ConnectionTable';
 import { JsxFiberDiagram } from '../components/JsxFiberDiagram';
 import type { FiberTreePointersContent } from '../content';

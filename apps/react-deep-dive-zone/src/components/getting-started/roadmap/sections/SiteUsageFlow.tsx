@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { RoadmapContent } from '../content';
 import { ChevronRightIcon, PencilIcon, usageIconByName } from '../icons';
 import { tones } from '../tones';

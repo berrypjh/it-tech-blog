@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../getting-started/_shared/CodePreviewPanel';
-import { SectionHeader } from '../../../getting-started/_shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ValueClassificationContent } from '../content';
 import { AtomIcon, CheckCircleIcon, SparkIcon } from '../icons';
 import { ValueBadge } from '../ValueBadge';

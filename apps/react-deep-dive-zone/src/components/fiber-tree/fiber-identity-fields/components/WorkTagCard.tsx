@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { ToneKey } from '../../../getting-started/_shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import type { WorkTagCard as WorkTagCardData } from '../content';
 
 type Props = { card: WorkTagCardData };

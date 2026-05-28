@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { SectionHeader } from '../../_shared/SectionHeader';
+import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ReadOrderContent } from '../content';
 import { ArrowRightIcon, BookIcon, SparkIcon, SparklesIcon } from '../icons';
 
