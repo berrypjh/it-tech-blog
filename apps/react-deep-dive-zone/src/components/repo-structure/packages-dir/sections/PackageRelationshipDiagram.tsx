@@ -43,28 +43,45 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
           />
         </div>
 
-        {/* 메인 흐름 3카드 + solid arrow */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1.1fr_auto_1fr] gap-md items-stretch">
-          <DiagramNodeCard node={react} />
-          <FlowArrow />
-          <DiagramNodeCard node={reconciler} emphasized />
-          <FlowArrow />
-          <DiagramNodeCard node={reactDom} />
-        </div>
+        {/* 메인 흐름: react → reconciler → react-dom (1행), reconciler ↓ scheduler (2행) */}
+        <div
+          className={cn(
+            'grid grid-cols-1 gap-md',
+            'lg:grid-cols-[1fr_auto_1.15fr_auto_1fr] lg:gap-y-lg lg:items-stretch',
+          )}
+        >
+          <div className="lg:col-start-1 lg:row-start-1">
+            <DiagramNodeCard node={react} />
+          </div>
+          <FlowArrow className="lg:col-start-2 lg:row-start-1" />
+          <div className="lg:col-start-3 lg:row-start-1">
+            <DiagramNodeCard node={reconciler} emphasized />
+          </div>
+          <FlowArrow className="lg:col-start-4 lg:row-start-1" />
+          <div className="lg:col-start-5 lg:row-start-1">
+            <DiagramNodeCard node={reactDom} />
+          </div>
 
-        {/* 중앙 아래 scheduler — 보조 노드 */}
-        <div className="flex flex-col items-center gap-sm">
-          <span
-            aria-hidden="true"
-            className="block w-px h-md border-l border-dashed border-[var(--term-border)]"
-          />
-          <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] inline-flex items-center gap-1">
-            <span aria-hidden="true" className="text-[var(--term-dim)]">
-              dashed
+          {/* reconciler 컬럼 바로 아래에 scheduler 정렬 */}
+          <div className="flex flex-col items-center gap-xs lg:col-start-3 lg:row-start-2">
+            <span
+              aria-hidden="true"
+              className="block w-0 h-xl border-l border-dashed border-[var(--term-border)]"
+            />
+            <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono inline-flex items-center gap-1 px-2 py-1 rounded-full border border-dashed border-[var(--term-border)] bg-[var(--term-surface)]">
+              <span aria-hidden="true" className="text-[var(--term-dim)]">
+                dashed
+              </span>
+              uses
             </span>
-            uses
-          </span>
-          <DiagramNodeCard node={scheduler} compact />
+            <span
+              aria-hidden="true"
+              className="block w-0 h-md border-l border-dashed border-[var(--term-border)]"
+            />
+            <div className="w-full">
+              <DiagramNodeCard node={scheduler} />
+            </div>
+          </div>
         </div>
 
         {/* 최하단 shared wide card */}
@@ -77,22 +94,20 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
 type DiagramNodeCardProps = {
   node: DiagramNode;
   emphasized?: boolean;
-  compact?: boolean;
 };
 
-const DiagramNodeCard = ({ node, emphasized, compact }: DiagramNodeCardProps) => {
+const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
   const tone = toneTokens[node.tone];
   const Icon = packageIconByName[node.icon];
 
   return (
     <article
       className={cn(
-        'group flex flex-col gap-sm rounded-lg border p-md transition-all',
+        'group flex h-full flex-col gap-sm rounded-lg border p-md transition-all',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         emphasized ? tone.border : 'border-[var(--term-border)]',
         tone.borderHover,
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)] lg:scale-[1.02]',
-        compact && 'max-w-sm mx-auto',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -130,8 +145,8 @@ const DiagramNodeCard = ({ node, emphasized, compact }: DiagramNodeCardProps) =>
   );
 };
 
-const FlowArrow = () => (
-  <div className="flex items-center justify-center" aria-hidden="true">
+const FlowArrow = ({ className }: { className?: string }) => (
+  <div className={cn('flex items-center justify-center', className)} aria-hidden="true">
     {/* 데스크톱: 가로 화살표 */}
     <span className="hidden lg:inline-flex items-center text-[var(--term-accent)] text-xl">→</span>
     {/* 모바일: 세로 화살표 */}
