@@ -71,7 +71,7 @@ export const TOPICS: Topic[] = [
     size: 'lg',
     delay: 0.35,
     style: { top: '9rem', right: '22%', transform: 'translateX(-50%)' },
-    href: '/',
+    href: '/next',
   },
   {
     icon: <DesignPatternIcon />,
