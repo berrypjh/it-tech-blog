@@ -1,0 +1,13 @@
+{
+  "name": "@it-tech-blog/next-deep-dive-zone",
+  "targets": {
+    "dev": {
+      "options": {
+        "command": "next dev",
+        "env": {
+          "PORT": "4003"
+        }
+      }
+    }
+  }
+}
