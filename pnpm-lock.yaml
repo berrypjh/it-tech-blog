@@ -239,6 +239,29 @@ importers:
 
   apps/main-web-e2e: {}
 
+  apps/next-deep-dive-zone:
+    dependencies:
+      '@it-tech-blog/preferences':
+        specifier: workspace:*
+        version: link:../../packages/preferences
+      '@it-tech-blog/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@it-tech-blog/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      next:
+        specifier: ~16.1.6
+        version: 16.1.7(@babel/core@7.29.0)(@playwright/test@1.59.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.5
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.5(react@19.2.5)
+
+  apps/next-deep-dive-zone-e2e: {}
+
   apps/react-deep-dive-zone:
     dependencies:
       '@it-tech-blog/preferences':
