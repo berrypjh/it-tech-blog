@@ -17,3 +17,179 @@ html[data-motion='reduce'] *::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+/*
+ * 터미널 팔레트 오버라이드.
+ * - 액센트: cyan (Next.js의 차가운 모노톤 위에 올린 cyan glow — react-lab의 amber와 대비)
+ * - 베이스: 라이트는 차가운 slate #f8fafc, 다크는 deep navy #0b1120
+ * - text-primary는 디자인 시스템 default 토큰을 cyan으로 치환
+ */
+:root {
+  --ds-background-primary: #0891b2;
+  --ds-background-primary-rgb: 8 145 178;
+  --ds-stroke-primary: #0891b2;
+  --ds-stroke-primary-rgb: 8 145 178;
+  --ds-border-primary-color: #0891b2;
+  --ds-border-primary-color-rgb: 8 145 178;
+  --ds-text-primary: #0891b2;
+  --ds-text-primary-rgb: 8 145 178;
+  --ds-background-surface: #f8fafc;
+  --ds-background-surface-rgb: 248 250 252;
+  --ds-stroke-default: #cbd5e1;
+  --ds-stroke-default-rgb: 203 213 225;
+  --ds-stroke-light: #e2e8f0;
+  --ds-stroke-light-rgb: 226 232 240;
+  --ds-text-default: #0f172a;
+  --ds-text-default-rgb: 15 23 42;
+  --ds-text-light: #64748b;
+  --ds-text-light-rgb: 100 116 139;
+  --ds-text-contrast-text: #f8fafc;
+  --ds-text-contrast-text-rgb: 248 250 252;
+
+  --term-bg: #f8fafc;
+  --term-surface: #eef2f6;
+  --term-fg: #0f172a;
+  --term-muted: #64748b;
+  --term-dim: #94a3b8;
+  --term-border: #cbd5e1;
+  --term-accent: #0891b2;
+  --term-accent-soft: #cffafe;
+
+  --color-canvas: #e2e8f0;
+  color-scheme: light;
+}
+
+.dark {
+  --ds-background-primary: #22d3ee;
+  --ds-background-primary-rgb: 34 211 238;
+  --ds-stroke-primary: #22d3ee;
+  --ds-stroke-primary-rgb: 34 211 238;
+  --ds-border-primary-color: #22d3ee;
+  --ds-border-primary-color-rgb: 34 211 238;
+  --ds-text-primary: #22d3ee;
+  --ds-text-primary-rgb: 34 211 238;
+  --ds-background-surface: #0b1120;
+  --ds-background-surface-rgb: 11 17 32;
+  --ds-stroke-default: #1e293b;
+  --ds-stroke-default-rgb: 30 41 59;
+  --ds-stroke-light: #131a2a;
+  --ds-stroke-light-rgb: 19 26 42;
+  --ds-text-default: #e2e8f0;
+  --ds-text-default-rgb: 226 232 240;
+  --ds-text-light: #7c8aa0;
+  --ds-text-light-rgb: 124 138 160;
+  --ds-text-contrast-text: #0b1120;
+  --ds-text-contrast-text-rgb: 11 17 32;
+
+  --term-bg: #0b1120;
+  --term-surface: #131a2a;
+  --term-fg: #e2e8f0;
+  --term-muted: #7c8aa0;
+  --term-dim: #3b475c;
+  --term-border: #1e293b;
+  --term-accent: #22d3ee;
+  --term-accent-soft: #0c2c33;
+
+  --color-canvas: #060912;
+  color-scheme: dark;
+}
+
+:focus-visible {
+  outline: 2px solid var(--term-accent);
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/*
+ * 폰트는 mono 기본. 사용자가 명시적으로 sans/serif를 고르면 존중.
+ */
+:root {
+  --font-family:
+    ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+}
+
+html[data-font='sans'] {
+  --font-family: system-ui, -apple-system, sans-serif;
+}
+
+html[data-font='serif'] {
+  --font-family: Georgia, 'Batang', serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-canvas);
+  font-feature-settings:
+    'liga' 0,
+    'calt' 0;
+}
+
+/* app-shell 토큰 매핑 — 터미널 팔레트 기반 */
+:root {
+  --shell-bg: var(--term-bg);
+  --shell-fg: var(--term-fg);
+  --shell-border: var(--term-border);
+  --shell-overlay: rgba(0, 0, 0, 0.6);
+  --shell-accent: var(--term-accent);
+  --shell-sidebar-w: 300px;
+  --shell-header-h: 48px;
+  --ui-skip-link-bg: var(--term-accent);
+  --ui-skip-link-fg: var(--term-bg);
+}
+
+/* 깜빡이는 커서 — 헤더 프롬프트용 */
+@keyframes term-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background-color: var(--term-accent);
+  vertical-align: text-bottom;
+  animation: term-blink 1.1s steps(2, end) infinite;
+}
+
+html[data-motion='reduce'] .term-cursor {
+  animation: none;
+  opacity: 1;
+}
+
+/* 스크롤바 */
+* {
+  scrollbar-color: var(--term-dim) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--term-dim);
+  border-radius: 0;
+  border: 2px solid var(--color-canvas);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--term-muted);
+}
+
+/* selection */
+::selection {
+  background-color: var(--term-accent);
+  color: var(--term-bg);
+}

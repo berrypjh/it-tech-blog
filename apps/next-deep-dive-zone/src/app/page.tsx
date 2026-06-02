@@ -1,5 +1,7 @@
+import { redirect } from 'next/navigation';
+
 const Page = () => {
-  return <h1>Hello</h1>;
+  redirect('/why-source');
 };
 
 export default Page;

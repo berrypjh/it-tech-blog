@@ -8,6 +8,8 @@ import {
 } from '@it-tech-blog/preferences/server';
 import { UIThemeBridge } from '@it-tech-blog/ui';
 
+import { AppShell } from '@/components/shell';
+
 import '@berrypjh/react-ui/styles.css';
 import './global.css';
 
@@ -52,7 +54,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           motion={motion}
           fontFamily={fontFamily}
         >
-          <UIThemeBridge>{children}</UIThemeBridge>
+          <UIThemeBridge>
+            <AppShell>{children}</AppShell>
+          </UIThemeBridge>
         </PreferencesProviders>
       </body>
     </html>
