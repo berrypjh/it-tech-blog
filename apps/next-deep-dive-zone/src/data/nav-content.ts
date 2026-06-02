@@ -7,32 +7,22 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
       title: '시작하기',
       items: [
         { id: 'why-source', label: '왜 Next.js 소스코드를 읽는가?', type: 'link' },
-        { id: 'usage-vs-internals', label: '사용법 학습과 내부 구조 학습의 차이', type: 'link' },
+        {
+          id: 'usage-vs-internals',
+          label: 'Next.js 사용법과 내부 구조 학습의 차이',
+          type: 'link',
+        },
         { id: 'why-next-16', label: 'Next.js 16 코드를 기준으로 읽는 이유', type: 'link' },
-        { id: 'app-router-complexity', label: 'App Router 이후 복잡해진 이유', type: 'link' },
+        {
+          id: 'app-router-complexity',
+          label: 'App Router 이후 Next.js가 복잡해진 이유',
+          type: 'link',
+        },
         { id: 'react-next-boundary', label: 'React와 Next.js의 역할 경계', type: 'link' },
         { id: 'docs-limitations', label: '공식 문서만으로 부족한 지점', type: 'link' },
         {
           id: 'github-reading-method',
           label: 'GitHub 코드, 테스트, PR, issue를 함께 읽는 방법',
-          type: 'link',
-        },
-        { id: 'stable-vs-canary', label: 'stable tag와 canary branch를 읽는 기준', type: 'link' },
-        { id: 'core-terms', label: '소스코드를 읽기 전에 알아야 할 핵심 용어', type: 'link' },
-        {
-          id: 'server-client-build-axes',
-          label: 'server / client / build 축으로 나누어 보는 방법',
-          type: 'link',
-        },
-        { id: 'app-router-focus', label: 'App Router 중심으로 읽어야 하는 이유', type: 'link' },
-        {
-          id: 'pages-router-distinction',
-          label: 'Pages Router 코드를 만났을 때의 구분법',
-          type: 'link',
-        },
-        {
-          id: 'request-flow-reading',
-          label: '기능 단위가 아니라 요청 흐름 단위로 읽는 법',
           type: 'link',
         },
         { id: 'roadmap', label: 'Next.js 소스코드 탐구 로드맵', type: 'link' },
@@ -924,24 +914,6 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         {
           id: 'github-reading-method',
           label: 'Reading Code, Tests, PRs, and Issues Together',
-          type: 'link',
-        },
-        { id: 'stable-vs-canary', label: 'Reading stable tags vs canary branches', type: 'link' },
-        { id: 'core-terms', label: 'Core Terms to Know Before Reading', type: 'link' },
-        {
-          id: 'server-client-build-axes',
-          label: 'Splitting by server / client / build Axes',
-          type: 'link',
-        },
-        { id: 'app-router-focus', label: 'Why to Read App Router First', type: 'link' },
-        {
-          id: 'pages-router-distinction',
-          label: 'Telling Pages Router Code Apart',
-          type: 'link',
-        },
-        {
-          id: 'request-flow-reading',
-          label: 'Reading by Request Flow, Not by Feature',
           type: 'link',
         },
         { id: 'roadmap', label: 'Next.js Source Exploration Roadmap', type: 'link' },

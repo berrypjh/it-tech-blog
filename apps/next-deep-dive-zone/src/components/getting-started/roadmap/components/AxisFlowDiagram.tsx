@@ -1,0 +1,91 @@
+'use client';
+
+import { useState } from 'react';
+
+import { cn } from '@it-tech-blog/utils';
+
+import { toneTokens } from '../../../shared/tones';
+import type { FlowStep, RoadmapContent } from '../content';
+import { axisIconByName } from '../icons';
+
+type Props = { content: RoadmapContent['hero']['flow'] };
+
+export const AxisFlowDiagram = ({ content }: Props) => {
+  const [selectedId, setSelectedId] = useState<FlowStep['id']>(content.initialStepId);
+  const selected = content.steps.find((s) => s.id === selectedId) ?? content.steps[0];
+  const st = toneTokens[selected.tone];
+
+  return (
+    <div className="relative w-full min-w-0 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_1px_0_var(--term-border)]">
+      <div className="mb-md flex flex-col gap-0.5">
+        <p className="text-xsm font-bold text-[var(--term-fg)] break-keep">{content.title}</p>
+        <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
+          {content.subtitle}
+        </p>
+      </div>
+
+      <ol className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {content.steps.map((step) => {
+          const t = toneTokens[step.tone];
+          const Icon = axisIconByName[step.id];
+          const isSelected = step.id === selected.id;
+          return (
+            <li key={step.id} className="flex min-w-0">
+              <button
+                type="button"
+                aria-pressed={isSelected}
+                onClick={() => setSelectedId(step.id)}
+                className={cn(
+                  'group flex w-full min-w-0 flex-col items-center gap-1 text-center rounded-md border bg-[var(--term-surface)] px-1.5 py-2.5 transition-all',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-bg)]',
+                  'motion-safe:hover:-translate-y-0.5',
+                  isSelected
+                    ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
+                    : cn('border-[var(--term-border)]', t.borderHover),
+                )}
+              >
+                <span
+                  className={cn(
+                    'inline-flex h-8 w-8 items-center justify-center rounded border',
+                    t.chip,
+                  )}
+                  aria-hidden="true"
+                >
+                  <Icon className="h-4 w-4" />
+                </span>
+                <span
+                  className={cn(
+                    'text-[11px] font-bold leading-tight break-keep',
+                    isSelected ? t.text : 'text-[var(--term-fg)]',
+                  )}
+                >
+                  {step.label}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+
+      <div
+        aria-live="polite"
+        className="mt-md rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-md"
+      >
+        <div className="flex items-center gap-sm flex-wrap">
+          <span className={cn('text-sm font-bold tracking-tight', st.text)}>{selected.label}</span>
+          <code
+            className={cn(
+              'inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] [overflow-wrap:anywhere]',
+              st.chip,
+            )}
+          >
+            {content.categoryLabel}: {selected.category}
+          </code>
+        </div>
+        <p className="mt-1.5 text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
+          {selected.description}
+        </p>
+      </div>
+    </div>
+  );
+};
