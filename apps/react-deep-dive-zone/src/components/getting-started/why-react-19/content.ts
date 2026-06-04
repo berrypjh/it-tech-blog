@@ -105,8 +105,6 @@ export type WhyReact19Content = {
   nextStep: {
     eyebrow: string;
     title: string;
-    bannerEyebrow: string;
-    nextTitle: string;
     description: string;
     cta: string;
     href: string;
@@ -145,7 +143,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     terminology: {
-      eyebrow: '02 · terms',
+      eyebrow: '01 · terms',
       title: '용어와 개념도 시대에 따라 달라집니다',
       left: {
         header: '과거 자료에서 자주 보는 용어',
@@ -170,7 +168,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '03 · timeline',
+      eyebrow: '02 · timeline',
       title: 'React 버전별 핵심 변화',
       rows: [
         {
@@ -212,7 +210,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '04 · focus topics',
+      eyebrow: '03 · focus topics',
       title: 'React 19에서 특히 읽을 가치가 큰 주제',
       cards: [
         {
@@ -254,7 +252,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '05 · reinterpret',
+      eyebrow: '04 · reinterpret',
       title: '오래된 용어를 최신 관점으로 다시 읽기',
       headers: {
         legacy: '과거 자료에서 자주 보던 용어',
@@ -284,7 +282,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '06 · resources',
+      eyebrow: '05 · resources',
       title: '공식 변경 기록 확인하기',
       cards: [
         {
@@ -316,7 +314,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     principles: {
-      eyebrow: '07 · principles',
+      eyebrow: '06 · principles',
       title: '이 사이트의 학습 원칙',
       items: [
         {
@@ -346,10 +344,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      bannerEyebrow: '다음 학습으로 이어집니다',
-      nextTitle: '다음: 오픈소스 GitHub 기반 학습이 좋은 이유',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: '다음: 오픈소스 GitHub 기반 학습이 좋은 이유',
       description: '소스코드를 더 정확히, 더 깊이 이해하는 방법을 알아봅니다.',
       cta: '다음 페이지로 이동',
       href: '/github-learning',
@@ -394,7 +390,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     terminology: {
-      eyebrow: '02 · terms',
+      eyebrow: '01 · terms',
       title: 'Terms and concepts shift across eras',
       left: {
         header: 'Terms you often see in older material',
@@ -419,7 +415,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '03 · timeline',
+      eyebrow: '02 · timeline',
       title: 'Key shifts across React versions',
       rows: [
         {
@@ -458,7 +454,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '04 · focus topics',
+      eyebrow: '03 · focus topics',
       title: 'Topics most worth reading in React 19',
       cards: [
         {
@@ -499,7 +495,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '05 · reinterpret',
+      eyebrow: '04 · reinterpret',
       title: 'Re-reading older terms through a modern lens',
       headers: {
         legacy: 'Terms common in older material',
@@ -529,7 +525,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '06 · resources',
+      eyebrow: '05 · resources',
       title: 'Check the official change records',
       cards: [
         {
@@ -561,7 +557,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     principles: {
-      eyebrow: '07 · principles',
+      eyebrow: '06 · principles',
       title: 'Learning principles of this site',
       items: [
         {
@@ -591,10 +587,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Move on to the next page',
-      bannerEyebrow: 'The journey continues',
-      nextTitle: 'Next: Why GitHub-based open-source learning works',
+      eyebrow: 'The journey continues',
+      title: 'Next: Why GitHub-based open-source learning works',
       description: 'Learn how to read the source more accurately and more deeply.',
       cta: 'Go to the next page',
       href: '/github-learning',

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { MapDecoration } from '../components/MapDecoration';
 import type { WhySourceContent } from '../content';
 import { ArrowRightIcon } from '../icons';
 
@@ -13,9 +12,7 @@ export const NextLearningStepBanner = ({ content }: Props) => {
         href={content.href}
         className="group block rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:border-[var(--term-accent)] hover:shadow-[0_2px_0_var(--term-border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.4fr)_minmax(0,_1fr)_auto] gap-md lg:gap-lg items-center">
-          <MapDecoration />
-
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto] gap-md lg:gap-lg items-center">
           <div className="flex flex-col gap-1 min-w-0">
             <p className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold inline-flex items-center gap-1">
               <span

@@ -125,8 +125,6 @@ export type ReadingPerspectiveContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    bannerEyebrow: string;
-    nextTitle: string;
     description: string;
     cta: string;
     href: string;
@@ -215,7 +213,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       },
     },
     sixStages: {
-      eyebrow: '02 · six stages',
+      eyebrow: '01 · six stages',
       title: 'React 내부의 6단계 흐름',
       cards: [
         {
@@ -275,7 +273,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     mapping: {
-      eyebrow: '03 · file mapping',
+      eyebrow: '02 · file mapping',
       title: '단계별 대표 파일 매핑',
       headers: { stage: '단계', file: '대표 파일', role: '핵심 역할' },
       rows: [
@@ -335,7 +333,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     example: {
-      eyebrow: '04 · walkthrough',
+      eyebrow: '03 · walkthrough',
       title: '예제 코드로 모든 단계를 따라보기',
       codeFile: 'App.js',
       code: appCode,
@@ -368,7 +366,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     quiz: {
-      eyebrow: '05 · quiz',
+      eyebrow: '04 · quiz',
       title: '현재 위치 판별 퀴즈',
       answerPrefix: '정답',
       explainLabel: '해설',
@@ -418,7 +416,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     workshop: {
-      eyebrow: '06 · workshop',
+      eyebrow: '05 · workshop',
       title: '직접 흐름도를 완성해보세요',
       tipLabel: 'TIP',
       tipBody: '아래 힌트를 클릭해 빈칸에 배치해보세요.',
@@ -441,10 +439,8 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     nextStep: {
-      eyebrow: '07 · next step',
-      title: '다음 단계로 이동하기',
-      bannerEyebrow: '학습 로드맵이 이어집니다',
-      nextTitle: '다음: React 소스코드 탐구 로드맵',
+      eyebrow: '학습 로드맵이 이어집니다',
+      title: '다음: React 소스코드 탐구 로드맵',
       description: '단계별 학습 로드맵과 구체적인 학습 계획을 확인하세요.',
       cta: '다음 페이지로 이동',
       href: '/roadmap',
@@ -527,7 +523,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       },
     },
     sixStages: {
-      eyebrow: '02 · six stages',
+      eyebrow: '01 · six stages',
       title: "React's six internal stages",
       cards: [
         {
@@ -587,7 +583,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     mapping: {
-      eyebrow: '03 · file mapping',
+      eyebrow: '02 · file mapping',
       title: 'Representative files per stage',
       headers: { stage: 'Stage', file: 'Files', role: 'Core role' },
       rows: [
@@ -647,7 +643,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     example: {
-      eyebrow: '04 · walkthrough',
+      eyebrow: '03 · walkthrough',
       title: 'Follow one example through every stage',
       codeFile: 'App.js',
       code: appCode,
@@ -675,7 +671,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     quiz: {
-      eyebrow: '05 · quiz',
+      eyebrow: '04 · quiz',
       title: 'Stage recognition quiz',
       answerPrefix: 'Answer',
       explainLabel: 'Explanation',
@@ -731,7 +727,7 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     workshop: {
-      eyebrow: '06 · workshop',
+      eyebrow: '05 · workshop',
       title: 'Complete the flow yourself',
       tipLabel: 'TIP',
       tipBody: 'Click a hint below to drop it into a blank.',
@@ -764,10 +760,8 @@ export const readingPerspectiveContent: Record<Locale, ReadingPerspectiveContent
       ],
     },
     nextStep: {
-      eyebrow: '07 · next step',
-      title: 'Move on to the next page',
-      bannerEyebrow: 'The learning roadmap continues',
-      nextTitle: 'Next: React source-code exploration roadmap',
+      eyebrow: 'The learning roadmap continues',
+      title: 'Next: React source-code exploration roadmap',
       description: 'See the per-stage roadmap and a concrete study plan.',
       cta: 'Go to the next page',
       href: '/roadmap',

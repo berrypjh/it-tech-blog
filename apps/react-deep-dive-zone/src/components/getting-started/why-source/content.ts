@@ -89,7 +89,6 @@ export type WhySourceContent = {
       stats: { stars: string; forks: string; watchers: string };
     };
     primaryCta: string;
-    secondaryCta: string;
   };
   nextStep: {
     eyebrow: string;
@@ -308,7 +307,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         stats: { stars: '25.7k', forks: '5.2k', watchers: '1.1k' },
       },
       primaryCta: 'GitHub에서 코드 열기',
-      secondaryCta: '이 코드가 왜 중요한지 보기',
     },
     nextStep: {
       eyebrow: '다음 여정으로 함께 떠나요',
@@ -507,7 +505,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         stats: { stars: '25.7k', forks: '5.2k', watchers: '1.1k' },
       },
       primaryCta: 'Open on GitHub',
-      secondaryCta: 'Why this file matters',
     },
     nextStep: {
       eyebrow: 'Continue the journey',

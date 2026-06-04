@@ -50,13 +50,6 @@ export const FirstCodePreview = ({ content }: Props) => {
           {content.primaryCta}
           <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </a>
-        <a
-          href="#section-benefits"
-          className="group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] text-xsm font-bold transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
-        >
-          {content.secondaryCta}
-          <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </a>
       </div>
     </section>
   );

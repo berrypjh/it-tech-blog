@@ -44,7 +44,7 @@ export const SectionHeader = ({ id, eyebrow, title, description, icon, align = '
       </div>
 
       {description && (
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] max-w-[60ch]">
+        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)]">
           {description}
         </p>
       )}

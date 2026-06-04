@@ -81,8 +81,6 @@ export type UsageVsInternalsContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    bannerEyebrow: string;
-    nextTitle: string;
     description: string;
     cta: string;
     href: string;
@@ -142,7 +140,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '02 · perspective',
+      eyebrow: '01 · perspective',
       title: '두 관점으로 읽어보기',
       left: {
         title: '사용법 관점 (4단계)',
@@ -185,7 +183,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '03 · counter flow',
+      eyebrow: '02 · counter flow',
       title: '버튼을 누르면 내부에서는 무슨 일이 일어날까?',
       steps: [
         { id: 'click', num: '1', title: 'Click', hint: '사용자 클릭', icon: 'cursor' },
@@ -215,7 +213,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      eyebrow: '04 · live demo',
+      eyebrow: '03 · live demo',
       title: '직접 경험해보기 (상상 데모)',
       counter: {
         title: 'Counter 데모',
@@ -240,7 +238,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '05 · interpretation',
+      eyebrow: '04 · interpretation',
       title: '같은 현상, 다른 해석',
       headers: {
         phenomenon: '현상',
@@ -266,7 +264,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '06 · source code',
+      eyebrow: '05 · source code',
       title: '실제 React 코드에서 확인하기',
       cards: [
         {
@@ -288,7 +286,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '07 · takeaway',
+      eyebrow: '06 · takeaway',
       title: '핵심 takeaway',
       lines: [
         '상태가 바뀌었다고 DOM이 바로 바뀌는 것이 아닙니다.',
@@ -296,10 +294,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음으로 넘어가기',
-      bannerEyebrow: '다음 학습으로 이어집니다',
-      nextTitle: '다음: 왜 React 19 코드를 기준으로 읽는가?',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: '다음: 왜 React 19 코드를 기준으로 읽는가?',
       description: '최신 React의 구조와 실제 방향을 이해하는 것이 중요합니다.',
       cta: '다음 페이지로 이동',
       href: '/why-react-19',
@@ -322,7 +318,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '02 · perspective',
+      eyebrow: '01 · perspective',
       title: 'Two Perspectives, Same Code',
       left: {
         title: 'Usage perspective (4 steps)',
@@ -369,7 +365,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '03 · counter flow',
+      eyebrow: '02 · counter flow',
       title: 'When you press the button, what happens inside?',
       steps: [
         { id: 'click', num: '1', title: 'Click', hint: 'User click', icon: 'cursor' },
@@ -405,7 +401,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      eyebrow: '04 · live demo',
+      eyebrow: '03 · live demo',
       title: 'Try it yourself (imagined demo)',
       counter: {
         title: 'Counter Demo',
@@ -430,7 +426,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '05 · interpretation',
+      eyebrow: '04 · interpretation',
       title: 'Same phenomenon, different interpretation',
       headers: {
         phenomenon: 'Phenomenon',
@@ -456,7 +452,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '06 · source code',
+      eyebrow: '05 · source code',
       title: 'See it in the real React source',
       cards: [
         {
@@ -478,7 +474,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '07 · takeaway',
+      eyebrow: '06 · takeaway',
       title: 'Core takeaway',
       lines: [
         "Changing state doesn't change the DOM instantly.",
@@ -486,10 +482,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Move on to the next page',
-      bannerEyebrow: 'The next chapter continues',
-      nextTitle: 'Next: Why read against React 19?',
+      eyebrow: 'The next chapter continues',
+      title: 'Next: Why read against React 19?',
       description: "Understanding modern React's structure and direction is what matters.",
       cta: 'Go to the next page',
       href: '/why-react-19',

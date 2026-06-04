@@ -121,8 +121,6 @@ export type WhyOpenSourceContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    bannerEyebrow: string;
-    nextTitle: string;
     description: string;
     cta: string;
     href: string;
@@ -414,10 +412,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '07 · next step',
-      title: '다음 단계로 이동하기',
-      bannerEyebrow: '다음 학습으로 이어집니다',
-      nextTitle: '다음: 모든 파일을 읽지 않아도 되는 이유',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: '다음: 모든 파일을 읽지 않아도 되는 이유',
       description: '효율적으로 핵심을 파악하는 방법과 우선순위를 배웁니다.',
       cta: '다음 페이지로 이동',
       href: '/not-all-files',
@@ -676,10 +672,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '07 · next step',
-      title: 'Move on to the next page',
-      bannerEyebrow: 'The journey continues',
-      nextTitle: "Next: Why you don't have to read every file",
+      eyebrow: 'The journey continues',
+      title: "Next: Why you don't have to read every file",
       description: 'Learn how to identify the core efficiently and how to prioritize.',
       cta: 'Go to the next page',
       href: '/not-all-files',

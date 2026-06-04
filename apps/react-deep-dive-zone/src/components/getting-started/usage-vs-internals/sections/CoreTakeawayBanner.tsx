@@ -14,11 +14,11 @@ export const CoreTakeawayBanner = ({ content }: Props) => {
         icon={<LightbulbIcon className="h-5 w-5" />}
       />
 
-      <div className="relative rounded-lg border border-sky-500/40 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 text-white p-md sm:p-lg lg:p-xl shadow-[0_4px_0_var(--term-border)] overflow-hidden">
+      <div className="relative rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)] p-md sm:p-lg lg:p-xl shadow-[0_2px_0_var(--term-border)] overflow-hidden">
         {/* 배경 장식 점선 */}
         <svg
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full opacity-25"
+          className="absolute inset-0 w-full h-full text-[var(--term-accent)] opacity-[0.08]"
           preserveAspectRatio="none"
         >
           <defs>
@@ -30,7 +30,7 @@ export const CoreTakeawayBanner = ({ content }: Props) => {
               height="22"
               patternUnits="userSpaceOnUse"
             >
-              <path d="M22 0H0v22" fill="none" stroke="white" strokeWidth="0.5" />
+              <path d="M22 0H0v22" fill="none" stroke="currentColor" strokeWidth="0.5" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#takeaway-grid)" />
@@ -40,7 +40,7 @@ export const CoreTakeawayBanner = ({ content }: Props) => {
           {/* 좌측 quote 아이콘 */}
           <span
             aria-hidden="true"
-            className="inline-flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white"
+            className="inline-flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
           >
             <QuoteIcon className="h-5 w-5" />
           </span>
@@ -60,7 +60,7 @@ export const CoreTakeawayBanner = ({ content }: Props) => {
           {/* 우측 check */}
           <span
             aria-hidden="true"
-            className="inline-flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-emerald-400/30 backdrop-blur-sm border border-emerald-300/40 text-white shadow-[0_0_24px_rgba(16,185,129,0.45)]"
+            className="inline-flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
           >
             <CheckCircleIcon className="h-6 w-6" />
           </span>

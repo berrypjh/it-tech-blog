@@ -120,8 +120,6 @@ export type NotAllFilesContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    bannerEyebrow: string;
-    nextTitle: string;
     description: string;
     cta: string;
     href: string;
@@ -282,7 +280,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '02 · compare',
+      eyebrow: '01 · compare',
       title: '잘못된 접근 vs 좋은 접근',
       wrong: {
         title: '잘못된 접근',
@@ -338,7 +336,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     questions: {
-      eyebrow: '03 · question-first',
+      eyebrow: '02 · question-first',
       title: '질문 중심 독해법',
       cards: [
         {
@@ -372,7 +370,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     mapping: {
-      eyebrow: '04 · mapping',
+      eyebrow: '03 · mapping',
       title: '질문 → 파일 → 핵심 함수 매핑',
       labels: { question: '질문', file: '파일', fn: '함수' },
       rows: [
@@ -415,7 +413,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '05 · follow flow',
+      eyebrow: '04 · follow flow',
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
@@ -458,7 +456,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     miniTool: {
-      eyebrow: '06 · explore',
+      eyebrow: '05 · explore',
       title: '미니 탐색 도구',
       selectLabel: '질문 선택',
       tipLabel: 'TIP',
@@ -474,7 +472,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       defaultOptionId: 'setstate',
     },
     mission: {
-      eyebrow: '07 · mission',
+      eyebrow: '06 · mission',
       title: '오늘 바로 할 수 있는 10분 미션',
       motivation: {
         title: ['작게 시작해도', '큰 이해로 이어집니다.'],
@@ -505,10 +503,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      bannerEyebrow: '다음 학습으로 이어집니다',
-      nextTitle: '다음: 먼저 볼 파일과 나중에 볼 파일',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: '다음: 먼저 볼 파일과 나중에 볼 파일',
       description: '학습 효율을 높이는 파일 우선순위를 알려드립니다.',
       cta: '다음 페이지로 이동',
       href: '/read-order',
@@ -572,7 +568,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '02 · compare',
+      eyebrow: '01 · compare',
       title: 'Wrong approach vs Good approach',
       wrong: {
         title: 'Wrong approach',
@@ -628,7 +624,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     questions: {
-      eyebrow: '03 · question-first',
+      eyebrow: '02 · question-first',
       title: 'Question-first reading',
       cards: [
         {
@@ -662,7 +658,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     mapping: {
-      eyebrow: '04 · mapping',
+      eyebrow: '03 · mapping',
       title: 'Question → File → Key function mapping',
       labels: { question: 'Question', file: 'File', fn: 'Function' },
       rows: [
@@ -705,7 +701,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '05 · follow flow',
+      eyebrow: '04 · follow flow',
       title: 'Follow one question end-to-end',
       mainQuestion: 'How does setState end up triggering a render?',
       steps: [
@@ -748,7 +744,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     miniTool: {
-      eyebrow: '06 · explore',
+      eyebrow: '05 · explore',
       title: 'Mini exploration tool',
       selectLabel: 'Pick a question',
       tipLabel: 'TIP',
@@ -759,7 +755,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       defaultOptionId: 'setstate',
     },
     mission: {
-      eyebrow: '07 · mission',
+      eyebrow: '06 · mission',
       title: 'A 10-minute mission you can do today',
       motivation: {
         title: ['Start small —', 'the understanding compounds.'],
@@ -790,10 +786,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Move on to the next page',
-      bannerEyebrow: 'The journey continues',
-      nextTitle: 'Next: Files to read first vs files to read later',
+      eyebrow: 'The journey continues',
+      title: 'Next: Files to read first vs files to read later',
       description: 'Learn the file priority that boosts your learning efficiency.',
       cta: 'Go to the next page',
       href: '/read-order',
