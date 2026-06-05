@@ -1,11 +1,19 @@
 import Link from 'next/link';
 
-import type { ReadOrderContent } from '../content';
-import { ArrowRightIcon } from '../icons';
+import { ArrowRight } from 'lucide-react';
 
-type Props = { content: ReadOrderContent['nextStep'] };
+type NextStepContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+};
 
-export const NextPageBanner = ({ content }: Props) => {
+type Props = { content: NextStepContent };
+
+/** getting-started 공용 "다음 페이지" CTA 배너. */
+export const NextStepBanner = ({ content }: Props) => {
   return (
     <section aria-labelledby="heading-next" className="space-y-md">
       <Link
@@ -34,7 +42,7 @@ export const NextPageBanner = ({ content }: Props) => {
 
           <span className="inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md bg-[var(--term-accent)] text-[var(--term-bg)] text-xsm font-bold transition-transform group-hover:translate-x-0.5 self-stretch lg:self-auto">
             {content.cta}
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" />
           </span>
         </div>
       </Link>

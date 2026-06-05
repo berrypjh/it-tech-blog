@@ -28,12 +28,6 @@ export type QuestionCard = {
   icon: 'clock' | 'zap' | 'key' | 'gauge';
 };
 
-export type CompareItem = {
-  title: string;
-  body: string;
-  icon: 'cube' | 'code' | 'layout' | 'wrench' | 'layers' | 'network' | 'timer' | 'hook';
-};
-
 export type BenefitCard = {
   id: 'render' | 'debug' | 'performance' | 'design';
   title: string;
@@ -56,14 +50,6 @@ export type WhySourceContent = {
     eyebrow: string;
     title: string;
     cards: QuestionCard[];
-  };
-  compare: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    left: { title: string; description: string; items: CompareItem[] };
-    right: { title: string; description: string; items: CompareItem[] };
-    banner: string;
   };
   benefits: {
     eyebrow: string;
@@ -124,7 +110,7 @@ export function ReactElement(type, key, ref, self, source, props) {
 export const whySourceContent: Record<Locale, WhySourceContent> = {
   ko: {
     hero: {
-      badge: '시작하기 · 1/8단계',
+      badge: '시작하기 · 1/6단계',
       title: {
         lead: 'React를 오래 썼다면,',
         accent: '이제는 내부 흐름을',
@@ -186,63 +172,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         },
       ],
     },
-    compare: {
-      eyebrow: '02 · perspective',
-      title: 'React 사용법 학습 vs React 내부 구조 학습',
-      description:
-        '같은 코드도 어떤 관점으로 보느냐에 따라 다르게 읽힙니다. 두 학습은 다른 능력을 길러줍니다.',
-      left: {
-        title: 'React 사용법 학습',
-        description: '무엇을 만들고, 어떻게 사용할지에 집중합니다.',
-        items: [
-          {
-            title: '컴포넌트 작성과 조합',
-            body: 'props, state, 이벤트, 조건부 렌더링',
-            icon: 'cube',
-          },
-          { title: 'API 사용 방법', body: 'useState, useEffect, useMemo 등', icon: 'code' },
-          {
-            title: 'UI 완성과 사용자 경험',
-            body: '스타일링, 라우팅, 상태 관리 라이브러리',
-            icon: 'layout',
-          },
-          {
-            title: '문제 해결 (사용 관점)',
-            body: '에러 메시지, 경고, 개발 도구 활용',
-            icon: 'wrench',
-          },
-        ],
-      },
-      right: {
-        title: 'React 내부 구조 학습',
-        description: '어떻게 동작하는지, 왜 그렇게 설계되었는지 이해합니다.',
-        items: [
-          {
-            title: '렌더링 파이프라인 이해',
-            body: 'JSX → Element → Fiber → Render → Commit',
-            icon: 'layers',
-          },
-          {
-            title: '재조정(Reconciliation)과 Fiber',
-            body: '트리 비교, 작업 단위, 더블 버퍼 구조',
-            icon: 'network',
-          },
-          {
-            title: '스케줄링과 우선순위',
-            body: 'Scheduler, Lane, Interruptible Render',
-            icon: 'timer',
-          },
-          {
-            title: 'Hooks 내부 동작 원리',
-            body: 'Hook 리스트, Dispatcher, Queue 구조',
-            icon: 'hook',
-          },
-        ],
-      },
-      banner: '같은 코드도, 어떤 관점으로 보느냐에 따라 완전히 다르게 읽힙니다.',
-    },
     benefits: {
-      eyebrow: '03 · what you gain',
+      eyebrow: '02 · what you gain',
       title: '소스코드를 읽으면 얻는 것',
       cards: [
         {
@@ -280,7 +211,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '04 · first read',
+      eyebrow: '03 · first read',
       title: '첫 코드 맛보기',
       file: {
         fileName: 'ReactJSXElement.js',
@@ -318,7 +249,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
   },
   en: {
     hero: {
-      badge: 'Getting Started · 1/8',
+      badge: 'Getting Started · 1/6',
       title: {
         lead: "If you've used React for a while,",
         accent: "it's time to read",
@@ -380,67 +311,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
         },
       ],
     },
-    compare: {
-      eyebrow: '02 · perspective',
-      title: 'Using React vs Learning React Internals',
-      description:
-        'The same code reads differently depending on the lens. Each path grows a different muscle.',
-      left: {
-        title: 'Using React',
-        description: 'Focus on what to build and how to use the APIs.',
-        items: [
-          {
-            title: 'Composing components',
-            body: 'props, state, events, conditional rendering',
-            icon: 'cube',
-          },
-          {
-            title: 'How to call the APIs',
-            body: 'useState, useEffect, useMemo, ...',
-            icon: 'code',
-          },
-          {
-            title: 'Polished UI and UX',
-            body: 'Styling, routing, state libraries',
-            icon: 'layout',
-          },
-          {
-            title: 'Troubleshooting from the surface',
-            body: 'Error messages, warnings, devtools',
-            icon: 'wrench',
-          },
-        ],
-      },
-      right: {
-        title: 'Learning React Internals',
-        description: 'Understand how it works and why it was designed that way.',
-        items: [
-          {
-            title: 'The rendering pipeline',
-            body: 'JSX → Element → Fiber → Render → Commit',
-            icon: 'layers',
-          },
-          {
-            title: 'Reconciliation & Fiber',
-            body: 'Tree diff, work units, double buffering',
-            icon: 'network',
-          },
-          {
-            title: 'Scheduling and priority',
-            body: 'Scheduler, Lane, interruptible render',
-            icon: 'timer',
-          },
-          {
-            title: 'Hooks internals',
-            body: 'Hook list, Dispatcher, queue structure',
-            icon: 'hook',
-          },
-        ],
-      },
-      banner: 'The same code reads completely differently when you change the lens.',
-    },
     benefits: {
-      eyebrow: '03 · what you gain',
+      eyebrow: '02 · what you gain',
       title: 'What You Gain by Reading the Source',
       cards: [
         {
@@ -478,7 +350,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '04 · first read',
+      eyebrow: '03 · first read',
       title: 'First Taste of the Source',
       file: {
         fileName: 'ReactJSXElement.js',

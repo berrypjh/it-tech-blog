@@ -9,9 +9,7 @@ import {
   Database,
   FolderOpen,
   FunctionSquare,
-  HelpCircle,
   Monitor,
-  Network,
   Pencil,
   Pin,
   Route,
@@ -22,30 +20,18 @@ import {
 export {
   ArrowRight as ArrowRightIcon,
   BookOpen as BookIcon,
-  Brain as BrainIcon,
   CircleCheck as CheckCircleIcon,
   Check as CheckIcon,
-  Clock as ClockIcon,
   Code as CodeIcon,
-  Box as CubeIcon,
-  Database as DatabaseIcon,
   Network as DiagramIcon,
   File as FileIcon,
   FolderOpen as FolderOpenIcon,
   FunctionSquare as FxIcon,
-  Anchor as HookIcon,
-  Monitor as MonitorIcon,
   HelpCircle as QuestionIcon,
   Route as RouteIcon,
   Sparkles as SparkIcon,
   X as XIcon,
 } from 'lucide-react';
-
-export const insightIconByName = {
-  question: HelpCircle,
-  route: Route,
-  diagram: Network,
-} as const;
 
 export const approachIconByName = {
   x: X,

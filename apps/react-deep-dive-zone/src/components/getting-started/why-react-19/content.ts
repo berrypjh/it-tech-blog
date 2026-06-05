@@ -61,8 +61,6 @@ export type WhyReact19Content = {
     stepBadge: string;
     title: string[];
     description: string[];
-    points: string[];
-    infoCard: { title: string; description: string };
     visual: {
       versions: VersionCard[];
       axisBottom: string;
@@ -114,18 +112,9 @@ export type WhyReact19Content = {
 export const whyReact19Content: Record<Locale, WhyReact19Content> = {
   ko: {
     hero: {
-      stepBadge: '시작하기 · 3/8단계',
+      stepBadge: '시작하기 · 3/6단계',
       title: ['React 내부를 읽는다면,', '지금의 React를 기준으로 읽어야 합니다.'],
       description: ['과거 강의가 틀린 것이 아니라,', '설명하던 React의 시대가 다를 수 있습니다.'],
-      points: [
-        '내부 구조는 계속 진화합니다.',
-        '용어와 흐름이 바뀌었습니다.',
-        '최신 기능은 최신 코드에 반영됩니다.',
-      ],
-      infoCard: {
-        title: '이 사이트는 React 19.2를 기준으로',
-        description: '현재의 코드와 흐름을 가장 정확하게 설명합니다.',
-      },
       visual: {
         versions: [
           { id: '16', version: 'React 16', year: '2017', highlight: 'Fiber 도입' },
@@ -353,21 +342,12 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
   },
   en: {
     hero: {
-      stepBadge: 'Getting Started · 3/8',
+      stepBadge: 'Getting Started · 3/6',
       title: ['When you read React internals,', 'read against React as it is today.'],
       description: [
         "It's not that older lectures were wrong —",
         'they may simply describe a different era of React.',
       ],
-      points: [
-        'The internals keep evolving.',
-        'Terminology and flow have shifted.',
-        'New features land in modern code.',
-      ],
-      infoCard: {
-        title: 'This site is based on React 19.2',
-        description: 'so it most accurately describes the current code and flow.',
-      },
       visual: {
         versions: [
           { id: '16', version: 'React 16', year: '2017', highlight: 'Fiber introduced' },

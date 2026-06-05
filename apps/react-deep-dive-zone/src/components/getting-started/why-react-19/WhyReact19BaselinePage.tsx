@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { LearningPrinciplesPanel } from './sections/LearningPrinciplesPanel';
 import { ModernReinterpretationTable } from './sections/ModernReinterpretationTable';
-import { NextPageBanner } from './sections/NextPageBanner';
 import { OfficialChangeRecordCards } from './sections/OfficialChangeRecordCards';
 import { React19FocusTopics } from './sections/React19FocusTopics';
 import { React19Hero } from './sections/React19Hero';
@@ -26,7 +26,7 @@ export const WhyReact19BaselinePage = ({ locale }: Props) => {
       <ModernReinterpretationTable content={c.reinterpret} />
       <OfficialChangeRecordCards content={c.resources} />
       <LearningPrinciplesPanel content={c.principles} />
-      <NextPageBanner content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

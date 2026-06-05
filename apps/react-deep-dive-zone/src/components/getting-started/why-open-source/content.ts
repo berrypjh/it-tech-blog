@@ -62,15 +62,6 @@ export type RoutineStep = {
   description: string;
 };
 
-export type ResourceCard = {
-  id: 'packages' | 'reconciler' | 'releases' | 'hooks';
-  icon: 'folder' | 'book' | 'tag' | 'code';
-  title: string;
-  description: string;
-  cta: string;
-  href: string;
-};
-
 export type WhyOpenSourceContent = {
   hero: {
     stepBadge: string;
@@ -114,11 +105,6 @@ export type WhyOpenSourceContent = {
     eyebrow: string;
     title: string;
     steps: RoutineStep[];
-  };
-  quickStart: {
-    eyebrow: string;
-    title: string;
-    cards: ResourceCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -165,7 +151,7 @@ const repoTreeKo: RepoTreeNode[] = [
 export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
   ko: {
     hero: {
-      stepBadge: '시작하기 · 4/8단계',
+      stepBadge: '시작하기 · 4/6단계',
       title: ['공식 문서는 사용법을 알려주고,', 'GitHub는 설계 의도를 보여줍니다.'],
       description: 'React를 깊게 이해하려면 문서, 소스코드, 테스트, 변경 이력을 함께 봐야 합니다.',
       pills: [
@@ -434,44 +420,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
       ],
     },
-    quickStart: {
-      eyebrow: '06 · quick start',
-      title: '지금 바로 살펴보기',
-      cards: [
-        {
-          id: 'packages',
-          icon: 'folder',
-          title: 'React packages 열기',
-          description: '핵심 패키지 구조를 살펴보고 역할을 빠르게 파악해보세요.',
-          cta: 'GitHub에서 열기',
-          href: 'https://github.com/facebook/react/tree/main/packages',
-        },
-        {
-          id: 'reconciler',
-          icon: 'book',
-          title: 'react-reconciler README 보기',
-          description: 'Fiber와 렌더링 엔진에 대해 공식 설명을 확인하세요.',
-          cta: 'README 보기',
-          href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler',
-        },
-        {
-          id: 'releases',
-          icon: 'tag',
-          title: 'React Releases 보기',
-          description: '버전별 주요 변경 사항과 하이라이트를 확인하세요.',
-          cta: 'Releases 보기',
-          href: 'https://github.com/facebook/react/releases',
-        },
-        {
-          id: 'hooks',
-          icon: 'code',
-          title: 'Hooks 관련 코드 보기',
-          description: 'ReactFiberHooks.js에서 Hook 구현을 직접 읽어보세요.',
-          cta: '코드로 이동',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-        },
-      ],
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '다음: 모든 파일을 읽지 않아도 되는 이유',
@@ -482,7 +430,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
   },
   en: {
     hero: {
-      stepBadge: 'Getting Started · 4/8',
+      stepBadge: 'Getting Started · 4/6',
       title: ['The docs teach how to use,', 'GitHub shows why it was designed that way.'],
       description:
         'To really understand React, read docs, source code, tests, and change history together.',
@@ -752,44 +700,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           tone: 'lavender',
           title: 'Read releases / PRs',
           description: 'Understand the context behind why things changed.',
-        },
-      ],
-    },
-    quickStart: {
-      eyebrow: '06 · quick start',
-      title: 'Explore it now',
-      cards: [
-        {
-          id: 'packages',
-          icon: 'folder',
-          title: 'Open React packages',
-          description: 'Skim the core package structure and learn what each one is for.',
-          cta: 'Open on GitHub',
-          href: 'https://github.com/facebook/react/tree/main/packages',
-        },
-        {
-          id: 'reconciler',
-          icon: 'book',
-          title: 'Read the react-reconciler README',
-          description: "See the official write-up on Fiber and React's rendering engine.",
-          cta: 'View README',
-          href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler',
-        },
-        {
-          id: 'releases',
-          icon: 'tag',
-          title: 'Browse React Releases',
-          description: 'See per-version highlights and notable changes.',
-          cta: 'View releases',
-          href: 'https://github.com/facebook/react/releases',
-        },
-        {
-          id: 'hooks',
-          icon: 'code',
-          title: 'Read the Hooks source',
-          description: 'Open ReactFiberHooks.js and read the hooks implementation directly.',
-          cta: 'Go to code',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
         },
       ],
     },

@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { RoadmapContent } from '../content';
-import { CheckCircleIcon, FlagIcon, FolderOpenIcon, MapPinIcon, PencilIcon } from '../icons';
+import { CheckCircleIcon, FlagIcon, FolderOpenIcon, PencilIcon } from '../icons';
 
 type Props = { visual: RoadmapContent['hero']['visual'] };
 
@@ -40,12 +40,7 @@ const colorize = (line: string): React.ReactNode => {
 
 /**
  * Hero 우측: React 소스코드 탐험 지도.
- * - 좌상단 dark code card
- * - 좌하단 checkpoint card
- * - 우중앙 notes card
- * - 우상단 repository tree card
- * - 카드 사이 teal dotted route path + map pin waypoint
- * - 우상단 끝 flag
+ * 반응형 카드 그리드 — 모바일 1열, sm+ 2x2 (code / repo / checkpoint / notes).
  */
 export const ExplorationMapVisual = ({ visual }: Props) => {
   return (
@@ -54,7 +49,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
         'relative w-full',
         'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
         'p-md sm:p-lg overflow-hidden',
-        'min-h-[460px] sm:min-h-[500px] lg:min-h-[540px]',
       )}
     >
       {/* 배경 grad */}
@@ -90,42 +84,12 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
         </span>
       </div>
 
-      {/* dotted route path SVG */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 400 400"
-        preserveAspectRatio="none"
-        className="absolute inset-x-0 top-12 mx-auto w-full h-[82%] pointer-events-none"
-      >
-        {/* code (좌상) → checkpoint (좌하) → notes (중하) → repo (우상) → flag (우상끝) */}
-        <path
-          d="M90 100 C 100 170, 90 210, 90 250
-             M90 250 C 130 260, 170 270, 200 280
-             M200 280 C 250 250, 290 180, 330 110
-             M330 110 C 340 90, 360 75, 370 65"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeDasharray="3 5"
-          strokeLinecap="round"
-          className="text-teal-400 dark:text-teal-500"
-        />
-        {/* waypoint pins (3개) */}
-        <circle cx="90" cy="180" r="4" className="fill-white dark:fill-slate-900" />
-        <circle cx="90" cy="180" r="4" className="stroke-teal-500" strokeWidth="2" fill="none" />
-        <circle cx="160" cy="270" r="4" className="fill-white dark:fill-slate-900" />
-        <circle cx="160" cy="270" r="4" className="stroke-teal-500" strokeWidth="2" fill="none" />
-        <circle cx="280" cy="190" r="4" className="fill-white dark:fill-slate-900" />
-        <circle cx="280" cy="190" r="4" className="stroke-teal-500" strokeWidth="2" fill="none" />
-      </svg>
-
-      {/* 카드 그리드 */}
-      <div className="relative grid grid-cols-12 gap-2 sm:gap-3">
-        {/* 좌상: dark code card (살짝 tilt) */}
+      {/* 카드 그리드 — 모바일 1열, sm+ 2x2 */}
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 items-stretch">
+        {/* code card */}
         <article
           aria-label={visual.codeFile}
-          className="col-span-7 sm:col-span-6 rounded-md border border-slate-800 bg-slate-950 overflow-hidden shadow-[0_4px_0_var(--term-border)]"
-          style={{ transform: 'rotate(-1.5deg)' }}
+          className="rounded-md border border-slate-800 bg-slate-950 overflow-hidden shadow-[0_2px_0_var(--term-border)] min-w-0"
         >
           <div className="flex items-center justify-between px-2 py-1.5 border-b border-slate-800">
             <div className="flex items-center gap-1">
@@ -140,7 +104,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
               {visual.codeFile}
             </span>
           </div>
-          <pre className="px-2 py-1.5 text-[9.5px] sm:text-[10px] leading-[1.55] font-mono text-slate-100 whitespace-pre overflow-hidden">
+          <pre className="px-2 py-1.5 text-[9.5px] sm:text-[10px] leading-[1.55] font-mono text-slate-100 whitespace-pre overflow-x-auto">
             {visual.codeLines.map((line, i) => (
               <div key={i} className="block">
                 {colorize(line)}
@@ -149,19 +113,19 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </pre>
         </article>
 
-        {/* 우상: repo tree */}
+        {/* repo tree */}
         <article
           aria-label={visual.repoTitle}
-          className="col-span-5 sm:col-span-6 rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)]"
+          className="rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)] min-w-0"
         >
           <header className="flex items-center gap-1.5 pb-1 mb-1 border-b border-dashed border-[var(--term-border)]">
-            <FolderOpenIcon className="h-3 w-3 text-sky-600 dark:text-sky-300" />
+            <FolderOpenIcon className="h-3 w-3 shrink-0 text-sky-600 dark:text-sky-300" />
             <span className="text-[10px] font-mono font-bold text-[var(--term-fg)] truncate">
               {visual.repoTitle}
             </span>
             <span
               aria-hidden="true"
-              className="ml-auto inline-flex items-center justify-center w-4 h-4 rounded bg-amber-400 text-amber-950 dark:bg-amber-300"
+              className="ml-auto inline-flex shrink-0 items-center justify-center w-4 h-4 rounded bg-amber-400 text-amber-950 dark:bg-amber-300"
             >
               <FlagIcon className="h-2.5 w-2.5" />
             </span>
@@ -183,11 +147,11 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
                   )}
                 >
                   <span className="text-[var(--term-dim)]">{isLast ? '└─' : '├─'}</span>
-                  <span>{p.name}</span>
+                  <span className="truncate">{p.name}</span>
                   {p.active && (
                     <span
                       aria-hidden="true"
-                      className="ml-auto inline-block w-1.5 h-1.5 rounded-full bg-teal-500"
+                      className="ml-auto inline-block w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0"
                     />
                   )}
                 </li>
@@ -196,10 +160,10 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </ul>
         </article>
 
-        {/* 좌하: checkpoint card */}
+        {/* checkpoint card */}
         <article
           aria-label={`${visual.checkpointLabel}: ${visual.checkpointSub}`}
-          className="col-span-6 sm:col-span-5 col-start-1 rounded-md border border-emerald-200 dark:border-emerald-800/60 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 p-2 shadow-[0_2px_0_var(--term-border)] flex items-center gap-2"
+          className="rounded-md border border-emerald-200 dark:border-emerald-800/60 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 p-2 shadow-[0_2px_0_var(--term-border)] flex items-center gap-2 min-w-0"
         >
           <span
             aria-hidden="true"
@@ -217,21 +181,20 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </div>
         </article>
 
-        {/* 우중앙: notes card */}
+        {/* notes card */}
         <article
           aria-label={visual.notesTitle}
-          className="col-span-6 sm:col-span-7 col-start-7 sm:col-start-6 rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)]"
-          style={{ transform: 'rotate(0.8deg)' }}
+          className="rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)] min-w-0"
         >
           <header className="flex items-center gap-1.5 mb-1.5">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-5 h-5 rounded bg-violet-100 text-violet-600 dark:bg-violet-950/60 dark:text-violet-300"
+              className="inline-flex shrink-0 items-center justify-center w-5 h-5 rounded bg-violet-100 text-violet-600 dark:bg-violet-950/60 dark:text-violet-300"
             >
               <PencilIcon className="h-2.5 w-2.5" />
             </span>
             <div className="flex flex-col leading-tight min-w-0">
-              <span className="text-[10px] font-bold text-[var(--term-fg)]">
+              <span className="text-[10px] font-bold text-[var(--term-fg)] truncate">
                 {visual.notesTitle}
               </span>
               <span className="text-[9px] text-[var(--term-muted)] truncate">
@@ -256,25 +219,8 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
         </article>
       </div>
 
-      {/* 우상단 flag (절대 위치) */}
-      <span
-        aria-hidden="true"
-        className="absolute top-12 right-md sm:right-lg inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-400 text-amber-950 dark:bg-amber-300 dark:text-amber-950 text-[10px] font-bold shadow-[0_2px_0_var(--term-border)] z-10"
-      >
-        <FlagIcon className="h-3 w-3" />
-        {visual.flagLabel}
-      </span>
-
-      {/* 좌측 waypoint pin 장식 (절대 위치) */}
-      <span
-        aria-hidden="true"
-        className="absolute left-1/2 -translate-x-1/2 bottom-10 text-teal-500"
-      >
-        <MapPinIcon className="h-4 w-4" />
-      </span>
-
-      <p className="absolute bottom-2 inset-x-md sm:inset-x-lg text-center text-[10px] text-[var(--term-muted)]">
-        {'//'} checkpoint → notes → real repository
+      <p className="relative mt-md text-center text-[10px] text-[var(--term-muted)]">
+        {'//'} code → checkpoint → notes → repository
       </p>
     </div>
   );

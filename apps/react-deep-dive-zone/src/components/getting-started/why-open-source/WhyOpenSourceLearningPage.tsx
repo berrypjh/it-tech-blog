@@ -1,13 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ApiToImplementationToTestFlow } from './sections/ApiToImplementationToTestFlow';
 import { GitHubLearningHero } from './sections/GitHubLearningHero';
 import { GitHubLearningRoutine } from './sections/GitHubLearningRoutine';
 import { GitHubPerspectiveCards } from './sections/GitHubPerspectiveCards';
-import { NextPageBanner } from './sections/NextPageBanner';
-import { QuickStartResourceCards } from './sections/QuickStartResourceCards';
 import { ReactGitHubReadingList } from './sections/ReactGitHubReadingList';
 import { RepositoryStructureExplorer } from './sections/RepositoryStructureExplorer';
 import { whyOpenSourceContent } from './content';
@@ -25,8 +24,7 @@ export const WhyOpenSourceLearningPage = ({ locale }: Props) => {
       <RepositoryStructureExplorer content={c.repoExplorer} />
       <ApiToImplementationToTestFlow content={c.chain} />
       <GitHubLearningRoutine content={c.routine} />
-      <QuickStartResourceCards content={c.quickStart} />
-      <NextPageBanner content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

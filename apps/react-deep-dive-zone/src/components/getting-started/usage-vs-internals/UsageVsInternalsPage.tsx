@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CoreTakeawayBanner } from './sections/CoreTakeawayBanner';
 import { CounterUpdateFlow } from './sections/CounterUpdateFlow';
 import { InternalFlowDemo } from './sections/InternalFlowDemo';
 import { InterpretationTable } from './sections/InterpretationTable';
-import { NextPageCallout } from './sections/NextPageCallout';
 import { PerspectiveComparison } from './sections/PerspectiveComparison';
 import { SourceCodeReferenceCards } from './sections/SourceCodeReferenceCards';
 import { UsageVsInternalsHero } from './sections/UsageVsInternalsHero';
@@ -26,7 +26,7 @@ export const UsageVsInternalsPage = ({ locale }: Props) => {
       <InterpretationTable content={c.table} />
       <SourceCodeReferenceCards content={c.sourceCode} />
       <CoreTakeawayBanner content={c.takeaway} />
-      <NextPageCallout content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

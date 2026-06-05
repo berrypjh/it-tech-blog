@@ -1,4 +1,3 @@
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -15,7 +14,7 @@ export const UsageVsInternalsHero = ({ content }: Props) => {
     <HeroSection
       promptCommand="open"
       promptPath="usage-vs-internals/Counter.js"
-      gridColumns="xl:grid-cols-[minmax(0,_0.96fr)_minmax(0,_1.04fr)]"
+      gridColumns="lg:grid-cols-[minmax(0,_0.96fr)_minmax(0,_1.04fr)]"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
@@ -31,8 +30,6 @@ export const UsageVsInternalsHero = ({ content }: Props) => {
         </HeroTitle>
 
         <HeroDescription>{content.description}</HeroDescription>
-
-        <CodePreviewPanel code={content.code} language="jsx" />
       </HeroTextColumn>
 
       <HeroVisualColumn>

@@ -38,7 +38,6 @@ export type UsageVsInternalsContent = {
     stepBadge: string;
     title: string[];
     description: string;
-    code: string;
     stackLayers: StackLayer[];
   };
   perspectives: {
@@ -87,21 +86,6 @@ export type UsageVsInternalsContent = {
   };
 };
 
-const counterCode = `import { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="counter">
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-    </div>
-  );
-}
-
-export default Counter;`;
-
 const dispatchCode = `function dispatchSetState(fiber, queue, action) {
   const lane = requestUpdateLane(fiber);
   const update = { lane, action, next: null };
@@ -125,11 +109,10 @@ const githubBase = 'https://github.com/facebook/react/blob/main/packages/react-r
 export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = {
   ko: {
     hero: {
-      stepBadge: '시작하기 · 2/8단계',
+      stepBadge: '시작하기 · 2/6단계',
       title: ['같은 React 코드도,', '사용법으로 읽을 때와', '내부 구조로 읽을 때는 다릅니다.'],
       description:
         '겉으로는 단순한 Counter 컴포넌트지만, 내부에서는 이벤트 처리부터 커밋까지 여러 단계가 이어집니다.',
-      code: counterCode,
       stackLayers: [
         { id: 'event', label: 'Event', sub: 'onClick', tone: 'sky' },
         { id: 'updateQueue', label: 'Update Queue', sub: 'enqueueUpdate', tone: 'blue' },
@@ -303,11 +286,10 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
   },
   en: {
     hero: {
-      stepBadge: 'Getting Started · 2/8',
+      stepBadge: 'Getting Started · 2/6',
       title: ['The same React code,', 'read as usage and', 'read as internals, are different.'],
       description:
         'On the surface it is a simple Counter component, but inside, several steps run from event handling all the way to commit.',
-      code: counterCode,
       stackLayers: [
         { id: 'event', label: 'Event', sub: 'onClick', tone: 'sky' },
         { id: 'updateQueue', label: 'Update Queue', sub: 'enqueueUpdate', tone: 'blue' },

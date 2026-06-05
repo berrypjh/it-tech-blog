@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowQuestionFlow } from './sections/FollowQuestionFlow';
-import { NextPageBanner } from './sections/NextPageBanner';
 import { QuestionCenteredCards } from './sections/QuestionCenteredCards';
 import { QuestionToSourceMap } from './sections/QuestionToSourceMap';
 import { SelectiveReadingHero } from './sections/SelectiveReadingHero';
@@ -22,7 +22,7 @@ export const NotAllFilesPage = ({ locale }: Props) => {
       <QuestionCenteredCards content={c.questions} />
       <QuestionToSourceMap content={c.mapping} />
       <FollowQuestionFlow content={c.followFlow} />
-      <NextPageBanner content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,13 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type HeroInsight = {
-  id: 'question' | 'flow' | 'structure';
-  icon: 'question' | 'route' | 'diagram';
-  title: string;
-  description: string;
-  tone: 'sky' | 'teal' | 'violet';
-};
-
 export type ApproachItem = {
   num: string;
   icon: 'x' | 'open' | 'brain' | 'check' | 'pin' | 'route' | 'pencil';
@@ -46,7 +38,6 @@ export type NotAllFilesContent = {
     stepBadge: string;
     title: string[];
     description: string[];
-    insights: HeroInsight[];
     visual: {
       stackLabel: string;
       fileNames: string[];
@@ -96,34 +87,11 @@ export type NotAllFilesContent = {
 export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
   ko: {
     hero: {
-      stepBadge: '시작하기 · 5/8단계',
+      stepBadge: '시작하기 · 5/6단계',
       title: ['React 저장소는', '처음부터 끝까지 읽는 책이 아닙니다.'],
       description: [
         '핵심은 모든 파일을 이해하는 것이 아니라,',
         '내가 가진 질문에 필요한 흐름만 찾아가는 것입니다.',
-      ],
-      insights: [
-        {
-          id: 'question',
-          icon: 'question',
-          tone: 'sky',
-          title: '질문 중심',
-          description: '필요한 것만 읽기',
-        },
-        {
-          id: 'flow',
-          icon: 'route',
-          tone: 'teal',
-          title: '흐름 추적',
-          description: '연관된 함수만 따라가기',
-        },
-        {
-          id: 'structure',
-          icon: 'diagram',
-          tone: 'violet',
-          title: '구조화',
-          description: '흐름도로 정리하기',
-        },
       ],
       visual: {
         stackLabel: 'noisy/files',
@@ -328,43 +296,20 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '다음 학습으로 이어집니다',
-      title: '다음: 먼저 볼 파일과 나중에 볼 파일',
-      description: '학습 효율을 높이는 파일 우선순위를 알려드립니다.',
+      eyebrow: '학습 로드맵이 이어집니다',
+      title: '다음: React 소스코드 탐구 로드맵',
+      description: '단계별 학습 로드맵과 구체적인 학습 계획을 확인하세요.',
       cta: '다음 페이지로 이동',
-      href: '/read-order',
+      href: '/roadmap',
     },
   },
   en: {
     hero: {
-      stepBadge: 'Getting Started · 5/8',
+      stepBadge: 'Getting Started · 5/6',
       title: ['The React repo is not', 'a book you read cover to cover.'],
       description: [
         "It isn't about understanding every file —",
         "it's about following the flow your question needs.",
-      ],
-      insights: [
-        {
-          id: 'question',
-          icon: 'question',
-          tone: 'sky',
-          title: 'Question-first',
-          description: 'Read only what you need',
-        },
-        {
-          id: 'flow',
-          icon: 'route',
-          tone: 'teal',
-          title: 'Trace the flow',
-          description: 'Follow only the related functions',
-        },
-        {
-          id: 'structure',
-          icon: 'diagram',
-          tone: 'violet',
-          title: 'Structure it',
-          description: 'Sketch a flow diagram',
-        },
       ],
       visual: {
         stackLabel: 'noisy/files',
@@ -569,11 +514,11 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: 'The journey continues',
-      title: 'Next: Files to read first vs files to read later',
-      description: 'Learn the file priority that boosts your learning efficiency.',
+      eyebrow: 'The learning roadmap continues',
+      title: 'Next: React source-code exploration roadmap',
+      description: 'See the step-by-step roadmap and a concrete study plan.',
       cta: 'Go to the next page',
-      href: '/read-order',
+      href: '/roadmap',
     },
   },
 };
