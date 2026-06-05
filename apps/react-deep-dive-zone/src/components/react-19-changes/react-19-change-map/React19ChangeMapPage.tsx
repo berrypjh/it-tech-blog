@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChangeAxisGridSection } from './sections/ChangeAxisGridSection';
@@ -8,7 +9,6 @@ import { FeatureListTrapSection } from './sections/FeatureListTrapSection';
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeyTakeawaysSection } from './sections/KeyTakeawaysSection';
-import { NextTopicCTA } from './sections/NextTopicCTA';
 import { PageVersionNote } from './sections/PageVersionNote';
 import { PreviousTopicConnectionMapSection } from './sections/PreviousTopicConnectionMapSection';
 import { TenPageRoadmapSection } from './sections/TenPageRoadmapSection';
@@ -31,7 +31,7 @@ export const React19ChangeMapPage = ({ locale }: Props) => {
       <ChangeLayerClassifierSection content={c.changeLayerClassifier} />
       <FollowAlongMissionSection content={c.followAlongMission} />
       <KeyTakeawaysSection content={c.keyTakeaways} />
-      <NextTopicCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
       <PageVersionNote content={c.versionNote} />
     </StartPageShell>
   );

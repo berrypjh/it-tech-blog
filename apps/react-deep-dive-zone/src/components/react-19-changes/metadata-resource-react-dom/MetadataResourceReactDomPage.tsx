@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowAlongMission } from './sections/FollowAlongMission';
@@ -9,7 +10,6 @@ import { InternalCodePreviewSection } from './sections/InternalCodePreviewSectio
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MetadataExampleSection } from './sections/MetadataExampleSection';
 import { MetadataHero } from './sections/MetadataHero';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PreviousHeadManagementProblems } from './sections/PreviousHeadManagementProblems';
 import { ReactTreeDomHeadSplit } from './sections/ReactTreeDomHeadSplit';
 import { ResourceComponentsGrid } from './sections/ResourceComponentsGrid';
@@ -36,7 +36,7 @@ export const MetadataResourceReactDomPage = ({ locale }: Props) => {
       <HeadHoistingSimulator content={c.simulator} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -152,7 +152,7 @@ export type CallPathCompressionContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -435,7 +435,7 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: '테스트 코드는 실행 가능한 문서다',
       description: '흐름은 압축했다. 이제 구현 의도가 맞는지 테스트로 확인해야 합니다.',
@@ -718,7 +718,7 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Test code is executable documentation',
       description: "You compressed the flow. Now verify the implementation's intent through tests.",

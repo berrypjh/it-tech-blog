@@ -110,13 +110,12 @@ export type ReconcileChildrenContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -318,14 +317,13 @@ const ko: ReconcileChildrenContent = {
     answer:
       '아니다. 다음 child Fiber 구조를 계산할 뿐, 실제 DOM 변경은 Commit Phase에서 이루어진다.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: 같은 type과 key는 어떻게 Fiber 재사용으로 이어지는가?',
     description:
       'reconcileChildren이 새 child Fiber를 계산하는 입구라는 점을 봤다면, 이제 React가 무엇을 재사용하고 무엇을 새로 만드는지 판단 기준을 살펴봅니다.',
-    buttonLabel: '다음: 같은 type과 key는 어떻게 Fiber 재사용으로 이어지는가?',
-    buttonHref: '/type-key-reuse',
+    cta: '다음 페이지로 이동',
+    href: '/type-key-reuse',
   },
 };
 
@@ -514,14 +512,13 @@ const en: ReconcileChildrenContent = {
     answer:
       'No — it only computes the next child Fiber structure; real DOM changes happen in the Commit Phase.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: How Same type and key Lead to Fiber Reuse',
     description:
       'Now that you see reconcileChildren as the entry that computes the next child Fibers, look at the criteria React uses to decide what to reuse and what to recreate.',
-    buttonLabel: 'Next: How Same type and key Lead to Fiber Reuse',
-    buttonHref: '/type-key-reuse',
+    cta: 'Go to the next page',
+    href: '/type-key-reuse',
   },
 };
 

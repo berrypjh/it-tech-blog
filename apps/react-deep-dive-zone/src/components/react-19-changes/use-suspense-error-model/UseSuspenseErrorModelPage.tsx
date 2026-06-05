@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PromiseStateFlow } from './sections/PromiseStateFlow';
 import { RejectedPromiseErrorBoundaryFlow } from './sections/RejectedPromiseErrorBoundaryFlow';
 import { ThenableTrackingSection } from './sections/ThenableTrackingSection';
@@ -36,7 +36,7 @@ export const UseSuspenseErrorModelPage = ({ locale }: Props) => {
       <UseStateBoard content={c.stateBoard} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

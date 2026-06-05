@@ -128,18 +128,12 @@ export type JsxIsNotHtmlContent = {
     line2After: string;
     pills: ConceptPill[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -355,18 +349,13 @@ const ko: JsxIsNotHtmlContent = {
       { id: 'renderer-makes-dom', label: '렌더러가 DOM을 만든다', tone: 'amber' },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: '문법이 어떻게 코드로 바뀌는지 보러 갑니다',
-    line1: 'JSX가 HTML이 아니라는 점을 이해했다면,',
-    line2Before: '이제 이 문법이 실제로 어떤 ',
-    line2Accent: '코드',
-    line2After: '로 변환되는지 살펴봅니다.',
-    primaryCta: '다음: JSX는 어떤 코드로 변환되는가?',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/jsx-sugar',
-    secondaryHref: '/package-design',
+    title: '다음: JSX는 어떤 코드로 변환되는가?',
+    description:
+      'JSX가 HTML이 아니라는 점을 이해했다면, 이제 이 문법이 실제로 어떤 코드로 변환되는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/jsx-sugar',
   },
 };
 
@@ -583,18 +572,13 @@ const en: JsxIsNotHtmlContent = {
       { id: 'renderer-makes-dom', label: 'The renderer builds the DOM', tone: 'amber' },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Move to the next step',
-    title: 'See how this syntax turns into code',
-    line1: 'Now that you know JSX is not HTML,',
-    line2Before: 'let us look at what actual ',
-    line2Accent: 'code',
-    line2After: ' JSX compiles into.',
-    primaryCta: 'Next: What code does JSX compile to?',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/jsx-sugar',
-    secondaryHref: '/package-design',
+    title: 'Next: What code does JSX compile to?',
+    description:
+      'Now that you know JSX is not HTML, let us look at what actual code JSX compiles into.',
+    cta: 'Go to the next page',
+    href: '/jsx-sugar',
   },
 };
 

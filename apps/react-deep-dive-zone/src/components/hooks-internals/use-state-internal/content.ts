@@ -118,10 +118,12 @@ export type UseStateInternalsContent = {
     title: string;
     items: SummaryItem[];
   };
-  cta: {
-    label: string;
-    href: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -463,11 +465,13 @@ const ko: UseStateInternalsContent = {
       },
     ],
   },
-  cta: {
-    label: '다음: setState 이후 실제로 무슨 일이 일어나는가?',
-    href: '/set-state-flow',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: setState 이후 실제로 무슨 일이 일어나는가?',
     description:
       'useState가 무엇을 준비하는지 알았다면, 이제 setState를 호출했을 때 queue가 어떻게 움직이는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/set-state-flow',
   },
 };
 
@@ -765,11 +769,13 @@ const en: UseStateInternalsContent = {
       },
     ],
   },
-  cta: {
-    label: 'Next: what really happens after setState?',
-    href: '/set-state-flow',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: what really happens after setState?',
     description:
       'Now that you know what useState prepares, see how the queue moves the moment setState is called.',
+    cta: 'Go to the next page',
+    href: '/set-state-flow',
   },
 };
 

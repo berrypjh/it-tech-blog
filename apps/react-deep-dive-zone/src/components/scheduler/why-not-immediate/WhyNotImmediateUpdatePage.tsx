@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ActualProcessingFlow } from './sections/ActualProcessingFlow';
@@ -10,7 +11,6 @@ import { IntuitionVsActualFlow } from './sections/IntuitionVsActualFlow';
 import { SchedulerComparisonTable } from './sections/SchedulerComparisonTable';
 import { SchedulerIntroHero } from './sections/SchedulerIntroHero';
 import { SchedulerKeyTakeaways } from './sections/SchedulerKeyTakeaways';
-import { SchedulerNextCTA } from './sections/SchedulerNextCTA';
 import { TodayQuestionPanel } from './sections/TodayQuestionPanel';
 import { whyNotImmediateContent } from './content';
 
@@ -30,7 +30,7 @@ export const WhyNotImmediateUpdatePage = ({ locale }: Props) => {
       <CodeFlowPreview content={c.code} />
       <FollowAlongMission content={c.mission} />
       <SchedulerKeyTakeaways content={c.takeaways} />
-      <SchedulerNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

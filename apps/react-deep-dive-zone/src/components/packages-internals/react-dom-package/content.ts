@@ -150,15 +150,9 @@ export type ReactDomContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2: string;
-    line3Before: string;
-    line3Accent: string;
-    line3After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -416,15 +410,10 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '다음 단계로 이동하기',
-      line1: 'React를 실제 환경에 연결하는 renderer를 봤다면,',
-      line2: '이제 그 렌더링 결과를 계산하는 중심 엔진,',
-      line3Before: '',
-      line3Accent: 'react-reconciler',
-      line3After: '로 들어갑니다.',
-      primaryCta: '다음: react-reconciler →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/reconciler-separation',
-      secondaryHref: '/react-package',
+      description:
+        'React를 실제 환경에 연결하는 renderer를 봤다면, 이제 그 렌더링 결과를 계산하는 중심 엔진 react-reconciler로 들어갑니다.',
+      cta: '다음: react-reconciler →',
+      href: '/reconciler-separation',
     },
   },
   en: {
@@ -670,15 +659,10 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'Move to the next step',
-      line1: 'You have seen the renderer that connects React to a real environment.',
-      line2: 'Next, the engine that computes the rendering result itself —',
-      line3Before: '',
-      line3Accent: 'react-reconciler',
-      line3After: '.',
-      primaryCta: 'Next: react-reconciler →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/reconciler-separation',
-      secondaryHref: '/react-package',
+      description:
+        'You have seen the renderer that connects React to a real environment. Next, the engine that computes the rendering result itself — react-reconciler.',
+      cta: 'Next: react-reconciler →',
+      href: '/reconciler-separation',
     },
   },
 };

@@ -136,16 +136,9 @@ export type SchedulerContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1Before: string;
-    line1Accent: string;
-    line1After: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -404,17 +397,11 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      line1Before: '작업 실행 시점을 조율하는 ',
-      line1Accent: 'scheduler',
-      line1After: '를 봤다면,',
-      line2Before: '이제 여러 패키지가 공유하는 공통 기반층, ',
-      line2Accent: 'shared',
-      line2After: '를 살펴봅니다.',
-      primaryCta: '다음: shared →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/shared-constants',
-      secondaryHref: '/renderer-vs-reconciler',
+      title: '다음: shared',
+      description:
+        '작업 실행 시점을 조율하는 scheduler를 봤다면, 이제 여러 패키지가 공유하는 공통 기반층 shared를 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/shared-constants',
     },
   },
   en: {
@@ -638,17 +625,11 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: 'Move to the next step',
-      line1Before: 'You have seen the layer that schedules work — ',
-      line1Accent: 'scheduler',
-      line1After: '.',
-      line2Before: 'Next, the foundation every package shares — ',
-      line2Accent: 'shared',
-      line2After: '.',
-      primaryCta: 'Next: shared →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/shared-constants',
-      secondaryHref: '/renderer-vs-reconciler',
+      title: 'Next: shared',
+      description:
+        'You have seen the layer that schedules work — scheduler. Next, the foundation every package shares — shared.',
+      cta: 'Go to the next page',
+      href: '/shared-constants',
     },
   },
 };

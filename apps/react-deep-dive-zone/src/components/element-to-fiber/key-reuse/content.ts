@@ -123,13 +123,12 @@ export type KeyFiberReuseContent = {
     title: string;
     items: ChecklistItem[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -146,6 +145,13 @@ const afterItems: ListItem[] = [
 ];
 
 const ko: KeyFiberReuseContent = {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: alternate는 왜 등장하는가?',
+    description: '더블 버퍼링과 alternate 포인터가 왜 필요한지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/alternate-intro',
+  },
   hero: {
     badge: 'Fiber 생성 · 7/10단계',
     title: {
@@ -316,18 +322,16 @@ const ko: KeyFiberReuseContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
-    eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
-    description:
-      'key가 Fiber 재사용 판단과 연결된다는 점을 이해했다면, 이제 current와 workInProgress를 잇는 alternate 개념을 처음 만나봅니다.',
-    primaryCta: '다음: alternate는 왜 등장하는가?',
-    primaryHref: '/alternate-intro',
-  },
 };
 
 const en: KeyFiberReuseContent = {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: why does alternate appear?',
+    description: 'See why double buffering and the alternate pointer are needed.',
+    cta: 'Go to the next page',
+    href: '/alternate-intro',
+  },
   hero: {
     badge: 'Element → Fiber · 7/10',
     title: {
@@ -506,15 +510,6 @@ const en: KeyFiberReuseContent = {
         text: 'index keys can lead to unintended reuse on reorder',
       },
     ],
-  },
-  next: {
-    badge: '08',
-    eyebrow: 'Next page',
-    title: 'Move on',
-    description:
-      'Now that key is clearly linked to Fiber reuse, take your first look at the alternate concept that bridges current and workInProgress.',
-    primaryCta: 'Next: why does alternate appear?',
-    primaryHref: '/alternate-intro',
   },
 };
 

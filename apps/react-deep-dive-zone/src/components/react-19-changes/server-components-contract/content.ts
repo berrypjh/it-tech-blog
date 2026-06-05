@@ -94,8 +94,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type ServerComponentsContractContent = {
   hero: {
     badge: string;
@@ -203,12 +201,12 @@ export type ServerComponentsContractContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -585,19 +583,13 @@ export async function saveComment(formData: FormData) {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'Activity는 숨긴 UI를 어떻게 관리할까?'],
+    title: '다음: Activity는 숨긴 UI를 어떻게 관리할까?',
     description:
       '다음 페이지에서는 React 19.2의 Activity가 숨겨진 UI의 상태와 우선순위를 어떻게 관리하는지 살펴봅니다.',
-    primary: {
-      label: '다음: Activity는 숨긴 UI를 어떻게 관리할까?',
-      href: '/activity-hidden-ui',
-    },
-    secondary: [
-      { label: '경계 다이어그램 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/activity-hidden-ui',
   },
 };
 
@@ -977,18 +969,12 @@ export async function saveComment(formData: FormData) {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'How does Activity manage hidden UI?'],
+    title: 'Next: How does Activity manage hidden UI?',
     description: "We'll look at how React 19.2's Activity manages hidden UI state and priority.",
-    primary: {
-      label: 'Next: How does Activity manage hidden UI?',
-      href: '/activity-hidden-ui',
-    },
-    secondary: [
-      { label: 'Replay the boundary diagram', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/activity-hidden-ui',
   },
 };
 

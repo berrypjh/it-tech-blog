@@ -113,15 +113,12 @@ export type ElementVsFiberContent = {
     answer: string;
     hint: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -341,16 +338,13 @@ const ko: ElementVsFiberContent = {
     answer: '트리 관계, 업데이트 상태, 작업 진행 정보가 부족하기 때문이다.',
     hint: 'Element는 무엇을 그릴지만 알고, 어떻게 그릴지의 정보가 빠져 있습니다.',
   },
-  next: {
-    badge: '07',
-    eyebrow: '다음 단계',
-    title: '다음 단계',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: createFiberFromElement',
     description:
       'Element와 Fiber의 차이를 이해했다면, 이제 실제 코드에서 Element가 Fiber로 바뀌는 입구를 살펴봅니다.',
-    primaryCta: '다음: createFiberFromElement',
-    secondaryCta: '앞 내용 다시 보기',
-    primaryHref: '/create-fiber-from-element',
-    secondaryHref: '/element-not-dom',
+    cta: '다음 페이지로 이동',
+    href: '/create-fiber-from-element',
   },
 };
 
@@ -571,16 +565,13 @@ const en: ElementVsFiberContent = {
     answer: 'It lacks tree relationships, update state, and work-progress information.',
     hint: 'An Element knows what to draw, but not how to drive the actual work.',
   },
-  next: {
-    badge: '07',
-    eyebrow: 'Next step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: createFiberFromElement',
     description:
       'Now that the difference between Element and Fiber is clear, look at the actual code where an Element becomes a Fiber.',
-    primaryCta: 'Next: createFiberFromElement',
-    secondaryCta: 'Re-read the previous chapter',
-    primaryHref: '/create-fiber-from-element',
-    secondaryHref: '/element-not-dom',
+    cta: 'Go to the next page',
+    href: '/create-fiber-from-element',
   },
 };
 

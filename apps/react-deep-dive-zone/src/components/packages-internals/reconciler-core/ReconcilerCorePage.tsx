@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AdvancedLearningSection } from './sections/AdvancedLearningSection';
@@ -8,7 +9,6 @@ import { ConceptCheckSection } from './sections/ConceptCheckSection';
 import { ElementFiberSection } from './sections/ElementFiberSection';
 import { PositionSection } from './sections/PositionSection';
 import { ReconcilerHero } from './sections/ReconcilerHero';
-import { ReconcilerNextCTA } from './sections/ReconcilerNextCTA';
 import { ResponsibilitiesSection } from './sections/ResponsibilitiesSection';
 import { reconcilerContent } from './content';
 
@@ -29,7 +29,7 @@ export const ReconcilerCorePage = ({ locale }: Props) => {
       <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
       <AdvancedLearningSection content={c.advanced} />
       <ConceptCheckSection content={c.concept} />
-      <ReconcilerNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

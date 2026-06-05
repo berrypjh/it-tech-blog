@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DifferentKeyCase } from './sections/DifferentKeyCase';
@@ -24,7 +25,8 @@ export const FiberReuseTypeKeyPage = ({ locale }: Props) => {
       <DifferentTypeCase content={c.differentType} />
       <FiberReuseCodeCheckpoint content={c.code} />
       <StatePreservationConnection content={c.statePreserve} />
-      <FiberReuseQuizAndCTA quiz={c.quiz} cta={c.cta} />
+      <FiberReuseQuizAndCTA quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

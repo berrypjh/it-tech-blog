@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
@@ -8,7 +9,6 @@ import { EnqueueUpdateMeaningSection } from './sections/EnqueueUpdateMeaningSect
 import { FourElementsSection } from './sections/FourElementsSection';
 import { FullFunctionFlowSection } from './sections/FullFunctionFlowSection';
 import { MiniQuizSection } from './sections/MiniQuizSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { RootReasonSection } from './sections/RootReasonSection';
 import { enqueueConcurrentHookUpdateContent } from './content';
 
@@ -26,7 +26,7 @@ export const EnqueueConcurrentHookUpdatePage = ({ locale }: Props) => {
       <EnqueueUpdateMeaningSection content={c.meaning} />
       <RootReasonSection content={c.rootReason} />
       <MiniQuizSection content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

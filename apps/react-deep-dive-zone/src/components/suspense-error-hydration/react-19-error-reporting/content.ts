@@ -164,8 +164,11 @@ export type React19ErrorReportingContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -542,8 +545,11 @@ const ko: React19ErrorReportingContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: Hydration은 어떻게 시작되는가?',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Hydration은 어떻게 시작되는가?',
+    description: '서버 HTML과 클라이언트 트리를 잇는 Hydration의 시작 지점을 이어서 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/hydration-start',
   },
 };
@@ -880,8 +886,11 @@ const en: React19ErrorReportingContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: How does Hydration start?',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: How does Hydration start?',
+    description: 'Continue with where hydration begins as it links server HTML to the client tree.',
+    cta: 'Go to the next page',
     href: '/hydration-start',
   },
 };

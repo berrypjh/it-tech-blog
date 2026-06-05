@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementKeyHero } from './sections/ElementKeyHero';
@@ -9,7 +10,6 @@ import { KeyMisconceptions } from './sections/KeyMisconceptions';
 import { KeyPropsSeparation } from './sections/KeyPropsSeparation';
 import { KeySourceCheckpoint } from './sections/KeySourceCheckpoint';
 import { ListKeyScene } from './sections/ListKeyScene';
-import { NextRefCta } from './sections/NextRefCta';
 import { reactElementKeySeparatedContent } from './content';
 
 type Props = { locale: Locale };
@@ -26,7 +26,7 @@ export const ReactElementKeySeparatedPage = ({ locale }: Props) => {
       <KeySourceCheckpoint content={c.checkpoint} />
       <KeyMisconceptions content={c.misconceptions} />
       <FiberReuseConnection content={c.fiber} />
-      <NextRefCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

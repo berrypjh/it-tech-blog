@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BoundaryHydrationFlowSection } from './sections/BoundaryHydrationFlowSection';
@@ -10,7 +11,6 @@ import { FollowAlongSection } from './sections/FollowAlongSection';
 import { ForceClientRenderFlowSection } from './sections/ForceClientRenderFlowSection';
 import { HeroSection } from './sections/HeroSection';
 import { InteractiveTimelineSection } from './sections/InteractiveTimelineSection';
-import { NextCTA } from './sections/NextCTA';
 import { QuestionSection } from './sections/QuestionSection';
 import { ServerSuspendErrorSection } from './sections/ServerSuspendErrorSection';
 import { TakeawaysSection } from './sections/TakeawaysSection';
@@ -36,7 +36,7 @@ export const SuspenseHydrationLinkPage = ({ locale }: Props) => {
       <InteractiveTimelineSection content={c.interactive} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

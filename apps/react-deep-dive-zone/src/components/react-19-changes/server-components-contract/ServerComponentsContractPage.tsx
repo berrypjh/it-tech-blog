@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { FrameworkReactBoundarySection } from './sections/FrameworkReactBoundarySection';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { ModuleBoundaryExplorer } from './sections/ModuleBoundaryExplorer';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { ReactServerExportConditionSection } from './sections/ReactServerExportConditionSection';
 import { ServerComponentDefinitionCards } from './sections/ServerComponentDefinitionCards';
 import { ServerComponentsHero } from './sections/ServerComponentsHero';
@@ -34,7 +34,7 @@ export const ServerComponentsContractPage = ({ locale }: Props) => {
       <ModuleBoundaryExplorer content={c.explorer} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

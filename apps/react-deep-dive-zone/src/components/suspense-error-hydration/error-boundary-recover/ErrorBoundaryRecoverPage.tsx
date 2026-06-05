@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BoundarySearchSection } from './sections/BoundarySearchSection';
@@ -10,7 +11,6 @@ import { ErrorPathSection } from './sections/ErrorPathSection';
 import { FallbackRerenderSection } from './sections/FallbackRerenderSection';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
-import { NextCTA } from './sections/NextCTA';
 import { QuestionSection } from './sections/QuestionSection';
 import { RecoverySimulator } from './sections/RecoverySimulator';
 import { TakeawaysSection } from './sections/TakeawaysSection';
@@ -36,7 +36,7 @@ export const ErrorBoundaryRecoverPage = ({ locale }: Props) => {
       <RecoverySimulator content={c.simulator} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

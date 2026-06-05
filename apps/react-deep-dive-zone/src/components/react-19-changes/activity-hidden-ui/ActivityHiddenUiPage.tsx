@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ActivityHero } from './sections/ActivityHero';
@@ -9,7 +10,6 @@ import { FollowAlongMission } from './sections/FollowAlongMission';
 import { HiddenBehaviorCards } from './sections/HiddenBehaviorCards';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { LowPriorityUpdateFlow } from './sections/LowPriorityUpdateFlow';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { OffscreenConnectionSection } from './sections/OffscreenConnectionSection';
 import { SourceCodePreview } from './sections/SourceCodePreview';
 import { StatePreservationTimeline } from './sections/StatePreservationTimeline';
@@ -36,7 +36,7 @@ export const ActivityHiddenUiPage = ({ locale }: Props) => {
       <ActivityModeSimulator content={c.simulator} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

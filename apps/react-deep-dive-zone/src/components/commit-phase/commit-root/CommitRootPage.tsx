@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CommitRootCodeCheckpointSection } from './sections/CommitRootCodeCheckpointSection';
@@ -8,7 +9,6 @@ import { CommitRootModernCorrectionSection } from './sections/CommitRootModernCo
 import { CommitRootPositionSection } from './sections/CommitRootPositionSection';
 import { CommitRootPreparationSection } from './sections/CommitRootPreparationSection';
 import { CommitTimelineOverviewSection } from './sections/CommitTimelineOverviewSection';
-import { NextBeforeMutationCTA } from './sections/NextBeforeMutationCTA';
 import { RenderToCommitFlowSection } from './sections/RenderToCommitFlowSection';
 import { RootCommitMeaningSection } from './sections/RootCommitMeaningSection';
 import { commitRootContent } from './content';
@@ -28,7 +28,7 @@ export const CommitRootPage = ({ locale }: Props) => {
       <CommitRootCodeCheckpointSection content={c.checkpoint} />
       <RootCommitMeaningSection content={c.rootMeaning} />
       <CommitRootModernCorrectionSection content={c.modern} />
-      <NextBeforeMutationCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

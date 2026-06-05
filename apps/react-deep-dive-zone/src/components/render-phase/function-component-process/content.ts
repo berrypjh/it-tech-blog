@@ -109,13 +109,12 @@ export type FunctionComponentContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -301,14 +300,13 @@ const ko: FunctionComponentContent = {
     question: 'renderWithHooks의 반환값은 무엇이며, 그 다음에는 무엇이 일어날까?',
     answer: '반환값은 nextChildren이며, 그 다음 reconcileChildren으로 자식 Fiber 계산이 시작된다.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Host Component는 Render Phase에서 어떻게 처리되는가?',
     description:
       '함수 컴포넌트가 Render Phase에서 어떻게 다시 실행되는지 봤다면, 이제 DOM 요소를 표현하는 Host Component의 흐름을 살펴봅니다.',
-    buttonLabel: '다음: Host Component는 Render Phase에서 어떻게 처리되는가?',
-    buttonHref: '/host-component-process',
+    cta: '다음 페이지로 이동',
+    href: '/host-component-process',
   },
 };
 
@@ -476,14 +474,13 @@ const en: FunctionComponentContent = {
     question: 'What does renderWithHooks return, and what happens next?',
     answer: 'It returns nextChildren — then reconcileChildren starts computing the child Fibers.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: How Host Components Are Processed in Render Phase',
     description:
       'Now that you see how function components re-run during the Render Phase, follow how Host Components — DOM elements — are processed.',
-    buttonLabel: 'Next: How Host Components Are Processed in Render Phase',
-    buttonHref: '/host-component-process',
+    cta: 'Go to the next page',
+    href: '/host-component-process',
   },
 };
 

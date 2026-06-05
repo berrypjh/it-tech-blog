@@ -128,13 +128,12 @@ export type FiberStateAndQueueContent = {
     title: string;
     items: string[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -400,14 +399,13 @@ const ko: FiberStateAndQueueContent = {
       'Hooks는 memoizedState에 Hook chain을 보관한다',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: flags / subtreeFlags / deletions',
     description:
       '상태와 업데이트가 Fiber에 저장되는 위치를 봤다면, 이제 React가 실제 반영이 필요한 변경을 어떻게 표시해두는지 살펴봅니다.',
-    buttonLabel: '다음: flags / subtreeFlags / deletions',
-    buttonHref: '/fiber-flags',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-flags',
   },
 };
 
@@ -650,14 +648,13 @@ const en: FiberStateAndQueueContent = {
       'Hooks keep the Hook chain on memoizedState',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: flags / subtreeFlags / deletions',
     description:
       'Now that you know where state and updates live on a Fiber, see how React marks the changes that actually need to be applied.',
-    buttonLabel: 'Next: flags / subtreeFlags / deletions',
-    buttonHref: '/fiber-flags',
+    cta: 'Go to the next page',
+    href: '/fiber-flags',
   },
 };
 

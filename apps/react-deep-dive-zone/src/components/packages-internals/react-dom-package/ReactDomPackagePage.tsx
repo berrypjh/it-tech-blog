@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CheckpointSection } from './sections/CheckpointSection';
@@ -9,7 +10,6 @@ import { ConcernsSection } from './sections/ConcernsSection';
 import { CreateHydrateFlowSection } from './sections/CreateHydrateFlowSection';
 import { QuickQuizSection } from './sections/QuickQuizSection';
 import { ReactDomHero } from './sections/ReactDomHero';
-import { ReactDomNextCTA } from './sections/ReactDomNextCTA';
 import { reactDomContent } from './content';
 
 type Props = { locale: Locale };
@@ -29,7 +29,7 @@ export const ReactDomPackagePage = ({ locale }: Props) => {
       <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
       <ConcernsSection content={c.concerns} />
       <QuickQuizSection content={c.quiz} />
-      <ReactDomNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

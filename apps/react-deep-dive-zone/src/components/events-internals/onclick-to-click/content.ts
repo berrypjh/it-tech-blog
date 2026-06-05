@@ -113,8 +113,11 @@ export type OnClickClickContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -369,8 +372,12 @@ const ko: OnClickClickContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: 이벤트 우선순위와 dispatch wrapper 보기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: 이벤트 우선순위와 dispatch wrapper 보기',
+    description:
+      'onClick과 click 매핑을 이해했으니, 이벤트 우선순위와 dispatch wrapper의 동작을 이어서 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/dispatch-selection',
   },
 };
@@ -568,8 +575,12 @@ const en: OnClickClickContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: event priority and the dispatch wrapper',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: event priority and the dispatch wrapper',
+    description:
+      'Now that onClick maps to click, follow event priority and how the dispatch wrapper works.',
+    cta: 'Go to the next page',
     href: '/dispatch-selection',
   },
 };

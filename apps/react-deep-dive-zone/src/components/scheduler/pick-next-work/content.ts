@@ -147,12 +147,12 @@ export type RootSchedulerContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    label: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
-    hint: string;
   };
 };
 
@@ -445,12 +445,12 @@ const ko: RootSchedulerContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    label: '다음: Scheduler 패키지는 무엇을 맡을까?',
-    nextTitle: 'Scheduler 패키지가 host task를 어떻게 실행하는지 살펴봅니다.',
+    title: '다음: Scheduler 패키지는 무엇을 맡을까?',
+    description: 'Scheduler 패키지가 host task를 어떻게 실행하는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/host-task-runner',
-    hint: 'Enter 또는 클릭으로 다음 페이지로 이동',
   },
 };
 
@@ -723,12 +723,12 @@ const en: RootSchedulerContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    label: 'Next: what does the Scheduler package own?',
-    nextTitle: 'See how the Scheduler package actually runs host tasks.',
+    title: 'Next: what does the Scheduler package own?',
+    description: 'See how the Scheduler package actually runs host tasks.',
+    cta: 'Go to the next page',
     href: '/host-task-runner',
-    hint: 'Press Enter or click to continue',
   },
 };
 

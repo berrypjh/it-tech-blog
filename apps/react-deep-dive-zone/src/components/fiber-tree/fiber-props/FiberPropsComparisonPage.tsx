@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberPropsMeaningFlow } from './sections/FiberPropsMeaningFlow';
@@ -8,7 +9,6 @@ import { PropsChangeScenario } from './sections/PropsChangeScenario';
 import { PropsCodeCheckpoint } from './sections/PropsCodeCheckpoint';
 import { PropsComparisonHero } from './sections/PropsComparisonHero';
 import { PropsMiniQuiz } from './sections/PropsMiniQuiz';
-import { PropsNextCTA } from './sections/PropsNextCTA';
 import { WhyComparePropsSection } from './sections/WhyComparePropsSection';
 import { fiberPropsContent } from './content';
 
@@ -26,7 +26,7 @@ export const FiberPropsComparisonPage = ({ locale }: Props) => {
       <PropsCodeCheckpoint content={c.checkpoint} />
       <WhyComparePropsSection content={c.reasons} />
       <PropsMiniQuiz content={c.quiz} />
-      <PropsNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

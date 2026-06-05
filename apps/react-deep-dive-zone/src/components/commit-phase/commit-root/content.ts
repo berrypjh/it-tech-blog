@@ -148,10 +148,12 @@ export type CommitRootContent = {
     bottomNote: string;
     relatedFileNote: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -633,11 +635,13 @@ const ko: CommitRootContent = {
       '학습을 위해 기본 3~5단계의 큰 흐름을 먼저 이해하고, 더 세부적인 분리는 이 보정 카드로 확인하세요.',
     relatedFileNote: '관련 파일: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 여정으로 함께 떠나요',
+    title: '다음: Before Mutation Phase',
     description:
       'commitRoot는 전체 commit 파이프라인의 입구입니다. 이제 실제 DOM이 바뀌기 직전 단계인 Before Mutation부터 살펴봅니다.',
-    primaryLabel: '다음: Before Mutation Phase',
-    primaryHref: '/before-mutation',
+    cta: '다음 페이지로 이동',
+    href: '/before-mutation',
   },
 };
 
@@ -739,11 +743,13 @@ const en: CommitRootContent = {
       'First grasp the broad 3~5 step flow for learning, then look at this correction card for the more granular split.',
     relatedFileNote: 'Related files: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'Continue the journey',
+    title: 'Next: Before Mutation Phase',
     description:
       'commitRoot is the entry to the whole commit pipeline. Up next is Before Mutation — the step right before the real DOM changes.',
-    primaryLabel: 'Next: Before Mutation Phase',
-    primaryHref: '/before-mutation',
+    cta: 'Go to the next page',
+    href: '/before-mutation',
   },
 };
 

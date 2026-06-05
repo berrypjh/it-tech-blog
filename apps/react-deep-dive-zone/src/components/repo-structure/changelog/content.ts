@@ -134,11 +134,9 @@ export type ChangelogContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -383,15 +381,9 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '저장소 구조와 버전 맥락까지 읽을 수 있게 되었다면,',
-      accentLine: {
-        before: '마지막으로 전체 ',
-        accent: '탐색 루틴',
-        after: '을 하나의 실전 순서로 정리합니다.',
-      },
-      primaryCta: '다음: 저장소 탐색 순서',
-      secondaryCta: '이전 페이지 다시 보기',
+      description: '마지막으로 전체 ' + '탐색 루틴' + '을 하나의 실전 순서로 정리합니다.',
+      cta: '다음: 저장소 탐색 순서',
       href: '/exploration-order',
-      restartHref: '/why-tests',
     },
   },
   en: {
@@ -635,15 +627,10 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'With repo structure and version context behind you,',
-      accentLine: {
-        before: 'finally turn the full ',
-        accent: 'exploration order',
-        after: ' into a single practical sequence.',
-      },
-      primaryCta: 'Next: repository exploration order',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'finally turn the full ' + 'exploration order' + ' into a single practical sequence.',
+      cta: 'Next: repository exploration order',
       href: '/exploration-order',
-      restartHref: '/why-tests',
     },
   },
 };

@@ -163,7 +163,7 @@ export type StripFlagCommentNoiseContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -504,7 +504,7 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: '릴리즈 노트와 버전 태그 함께 읽기',
       description:
@@ -827,7 +827,7 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Read release notes and version tags together',
       description:

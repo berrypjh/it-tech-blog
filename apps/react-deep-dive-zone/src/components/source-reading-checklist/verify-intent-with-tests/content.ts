@@ -146,7 +146,7 @@ export type TestAsDocContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -430,7 +430,7 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: 'Feature Flag, 타입, 주석부터 읽기',
       description:
@@ -717,7 +717,7 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Read feature flags, types, and comments first',
       description:

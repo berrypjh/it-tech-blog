@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateFiberCheckpoint } from './sections/CreateFiberCheckpoint';
 import { ReconcilerConceptQuestion } from './sections/ReconcilerConceptQuestion';
 import { ReconcilerHero } from './sections/ReconcilerHero';
 import { ReconcilerInternalProcess } from './sections/ReconcilerInternalProcess';
-import { ReconcilerNextCTA } from './sections/ReconcilerNextCTA';
 import { ReconcilerNextTopicsPreview } from './sections/ReconcilerNextTopicsPreview';
 import { ReconcilerPositionFlow } from './sections/ReconcilerPositionFlow';
 import { ReconcilerVsRenderer } from './sections/ReconcilerVsRenderer';
@@ -28,7 +28,7 @@ export const ReactReconcilerEntryPage = ({ locale }: Props) => {
       <CreateFiberCheckpoint content={c.checkpoint} />
       <ReconcilerNextTopicsPreview content={c.preview} />
       <ReconcilerConceptQuestion content={c.question} />
-      <ReconcilerNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

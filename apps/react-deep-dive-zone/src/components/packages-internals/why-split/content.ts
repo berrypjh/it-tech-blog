@@ -145,15 +145,10 @@ export type WhySplitContent = {
   };
   nextStep: {
     eyebrow: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    line3: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    title: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -551,15 +546,11 @@ function App() {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      line1: '전체 구조를 잡았다면,',
-      line2Before: '이제 사용자가 직접 만나는 첫 패키지, ',
-      line2Accent: 'react',
-      line2After: '의 역할부터 자세히 살펴봅니다.',
-      line3: '',
-      primaryCta: '다음: react 패키지 →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/react-package',
-      secondaryHref: '/exploration-order',
+      title: '다음: react 패키지',
+      description:
+        '전체 구조를 잡았다면, 이제 사용자가 직접 만나는 첫 패키지 react의 역할부터 자세히 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/react-package',
     },
   },
   en: {
@@ -785,15 +776,11 @@ function App() {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      line1: 'You now have the whole map.',
-      line2Before: 'Next, the first package developers touch — ',
-      line2Accent: 'react',
-      line2After: ' — and what it really does.',
-      line3: '',
-      primaryCta: 'Next: the react package →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/react-package',
-      secondaryHref: '/exploration-order',
+      title: 'Next: the react package',
+      description:
+        'You now have the whole map. Next, the first package developers touch — react — and what it really does.',
+      cta: 'Go to the next page',
+      href: '/react-package',
     },
   },
 };

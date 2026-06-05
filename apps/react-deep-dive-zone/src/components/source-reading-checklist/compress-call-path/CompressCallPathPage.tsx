@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CompressionRulesSection } from './sections/CompressionRulesSection';
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { OrderMatchingSection } from './sections/OrderMatchingSection';
 import { ReadingNotePanelSection } from './sections/ReadingNotePanelSection';
 import { SetStateFlowSection } from './sections/SetStateFlowSection';
@@ -34,7 +34,7 @@ export const CompressCallPathPage = ({ locale }: Props) => {
       <ReadingNotePanelSection content={c.readingNote} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

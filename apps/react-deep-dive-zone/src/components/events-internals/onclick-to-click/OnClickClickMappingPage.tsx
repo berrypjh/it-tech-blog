@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EventMappingHero } from './sections/EventMappingHero';
 import { EventNameConverter } from './sections/EventNameConverter';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PropNativeEventCompare } from './sections/PropNativeEventCompare';
 import { RealCodePreview } from './sections/RealCodePreview';
 import { RegisterSimpleEventsFlow } from './sections/RegisterSimpleEventsFlow';
@@ -32,7 +32,7 @@ export const OnClickClickMappingPage = ({ locale }: Props) => {
       <TwoPhaseRegistrationPreview content={c.twoPhase} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

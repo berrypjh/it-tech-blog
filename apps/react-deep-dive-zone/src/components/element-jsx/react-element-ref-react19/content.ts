@@ -120,18 +120,12 @@ export type ReactElementRefReact19Content = {
     answerLabel: string;
     cards: QuizCard[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -324,18 +318,13 @@ const ko: ReactElementRefReact19Content = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
     title: '이제 Fiber 챕터로 넘어갑니다',
-    line1: 'ref가 더 강력해진 배경을 이해했다면,',
-    line2Before: '이번에는 React가 상태를 어떻게 관리하고 연결하는지 공식 객체인 ',
-    line2Accent: 'Fiber',
-    line2After: '를 깊이 살펴봅니다.',
-    primaryCta: '다음: Fiber란 무엇인가?',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/element-vs-fiber',
-    secondaryHref: '/element-key',
+    description:
+      'ref가 더 강력해진 배경을 이해했다면, 이번에는 React가 상태를 어떻게 관리하고 연결하는지 공식 객체인 Fiber를 깊이 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/element-vs-fiber',
   },
 };
 
@@ -532,18 +521,13 @@ const en: ReactElementRefReact19Content = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Continue to the next step',
     title: 'Time to enter the Fiber chapter',
-    line1: 'Now that you understand why ref became stronger,',
-    line2Before: 'next, look at how React manages and connects state through its core object — ',
-    line2Accent: 'Fiber',
-    line2After: '.',
-    primaryCta: 'Next: what is Fiber?',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/element-vs-fiber',
-    secondaryHref: '/element-key',
+    description:
+      'Now that you understand why ref became stronger, next look at how React manages and connects state through its core object — Fiber.',
+    cta: 'Go to the next page',
+    href: '/element-vs-fiber',
   },
 };
 

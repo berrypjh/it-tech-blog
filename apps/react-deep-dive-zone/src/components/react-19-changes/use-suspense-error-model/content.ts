@@ -93,8 +93,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type UseSuspenseErrorModelContent = {
   hero: {
     badge: string;
@@ -213,12 +211,12 @@ export type UseSuspenseErrorModelContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -609,19 +607,13 @@ throw SuspenseException;`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'ref as prop은 무엇을 바꿨나?'],
+    title: '다음: ref as prop은 무엇을 바꿨나?',
     description:
       '다음 페이지에서는 ref 전달 방식이 Element와 props 표현을 어떻게 바꾸는지 살펴봅니다.',
-    primary: {
-      label: '다음: ref as prop은 무엇을 바꿨나?',
-      href: '/ref-as-prop-element-shape',
-    },
-    secondary: [
-      { label: 'use() 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/ref-as-prop-element-shape',
   },
 };
 
@@ -1015,19 +1007,13 @@ throw SuspenseException;`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'What did ref as prop change?'],
+    title: 'Next: What did ref as prop change?',
     description:
       'Next we look at how passing ref differently changes how Element and props are shaped.',
-    primary: {
-      label: 'Next: What did ref as prop change?',
-      href: '/ref-as-prop-element-shape',
-    },
-    secondary: [
-      { label: 'Replay the use() flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/ref-as-prop-element-shape',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { HostParentSiblingSection } from './sections/HostParentSiblingSection';
@@ -8,7 +9,6 @@ import { PlacementCommitFlowSection } from './sections/PlacementCommitFlowSectio
 import { PlacementExampleAndQuizSection } from './sections/PlacementExampleAndQuizSection';
 import { PlacementFlagReviewSection } from './sections/PlacementFlagReviewSection';
 import { PlacementHeroSection } from './sections/PlacementHeroSection';
-import { PlacementNextCTASection } from './sections/PlacementNextCTASection';
 import { placementContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,7 +24,7 @@ export const PlacementPage = ({ locale }: Props) => {
       <HostParentSiblingSection content={c.hostParent} />
       <PlacementCodeCheckpointSection content={c.checkpoint} />
       <PlacementExampleAndQuizSection example={c.example} quiz={c.quiz} />
-      <PlacementNextCTASection content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

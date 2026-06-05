@@ -121,11 +121,9 @@ export type SurroundingContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -367,15 +365,10 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '저장소 전체 주변 구조를 파악했다면,',
-      accentLine: {
-        before: '이제 가장 자주 혼동되는 두 패키지, ',
-        accent: 'react와 react-dom',
-        after: '의 차이를 정리합니다.',
-      },
-      primaryCta: '다음: react와 react-dom',
-      secondaryCta: '이전 페이지 다시 보기',
+      description:
+        '이제 가장 자주 혼동되는 두 패키지, ' + 'react와 react-dom' + '의 차이를 정리합니다.',
+      cta: '다음: react와 react-dom',
       href: '/react-vs-react-dom',
-      restartHref: '/packages-dir',
     },
   },
   en: {
@@ -599,15 +592,9 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'With the surrounding structure mapped out,',
-      accentLine: {
-        before: 'time to clear up the most-confused pair — ',
-        accent: 'react vs react-dom',
-        after: '.',
-      },
-      primaryCta: 'Next: react vs react-dom',
-      secondaryCta: 'Revisit the previous page',
+      description: 'time to clear up the most-confused pair — ' + 'react vs react-dom' + '.',
+      cta: 'Next: react vs react-dom',
       href: '/react-vs-react-dom',
-      restartHref: '/packages-dir',
     },
   },
 };

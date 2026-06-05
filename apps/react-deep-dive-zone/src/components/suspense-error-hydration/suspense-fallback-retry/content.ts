@@ -156,8 +156,11 @@ export type SuspenseFallbackRetryContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -502,8 +505,12 @@ const ko: SuspenseFallbackRetryContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: Error Boundary는 렌더링 에러를 어떻게 붙잡을까?',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Error Boundary는 렌더링 에러를 어떻게 붙잡을까?',
+    description:
+      'Promise 대신 일반 에러가 던져졌을 때 Error Boundary가 어떻게 잡아 복구하는지 이어서 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/error-boundary-recover',
   },
 };
@@ -832,8 +839,12 @@ const en: SuspenseFallbackRetryContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: How does the Error Boundary catch render errors?',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: How does the Error Boundary catch render errors?',
+    description:
+      'Continue with how an Error Boundary catches and recovers when a regular error is thrown instead of a Promise.',
+    cta: 'Go to the next page',
     href: '/error-boundary-recover',
   },
 };

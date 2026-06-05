@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CompilerIntroSection } from './sections/CompilerIntroSection';
@@ -9,7 +10,6 @@ import { ErrorCodesFilePreview } from './sections/ErrorCodesFilePreview';
 import { FixturesDeepDive } from './sections/FixturesDeepDive';
 import { ScriptsDeepDive } from './sections/ScriptsDeepDive';
 import { SurroundingDirectoriesHero } from './sections/SurroundingDirectoriesHero';
-import { SurroundingDirectoriesNextCTA } from './sections/SurroundingDirectoriesNextCTA';
 import { surroundingContent } from './content';
 
 type Props = { locale: Locale };
@@ -28,7 +28,7 @@ export const SurroundingDirectoriesPage = ({ locale }: Props) => {
       <CompilerIntroSection content={c.compiler} />
       <ErrorCodesFilePreview content={c.errorCodes} />
       <DirectoryChoiceGuide content={c.choice} />
-      <SurroundingDirectoriesNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

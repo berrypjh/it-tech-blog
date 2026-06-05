@@ -137,8 +137,11 @@ export type SyntheticEventContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -452,8 +455,12 @@ const ko: SyntheticEventContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: Capture / Bubble listener 수집 보기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Capture / Bubble listener 수집 보기',
+    description:
+      'SyntheticEvent가 만들어진 뒤, React가 어떤 listener들을 모아 dispatch하는지 살펴본다.',
+    cta: '다음 페이지로 이동',
     href: '/accumulate-listeners',
   },
 };
@@ -678,8 +685,12 @@ const en: SyntheticEventContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: capture / bubble listener accumulation',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Capture / bubble listener accumulation',
+    description:
+      'Once the SyntheticEvent is built, see which listeners React gathers and dispatches.',
+    cta: 'Go to the next page',
     href: '/accumulate-listeners',
   },
 };

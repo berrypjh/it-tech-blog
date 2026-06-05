@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChildShapePreview } from './sections/ChildShapePreview';
@@ -26,7 +27,8 @@ export const ReconcileChildrenPage = ({ locale }: Props) => {
       <ReconcileChildrenCodeCheckpoint content={c.code} />
       <ReconcileChildrenVisualization content={c.visualization} />
       <ReconciliationGoal content={c.goal} />
-      <ReconcileChildrenQuizAndCTA quiz={c.quiz} cta={c.cta} />
+      <ReconcileChildrenQuizAndCTA quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

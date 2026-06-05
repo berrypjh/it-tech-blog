@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { PriorityLevelCards } from './sections/PriorityLevelCards';
@@ -11,7 +12,6 @@ import { SchedulerPackageCodePreview } from './sections/SchedulerPackageCodePrev
 import { SchedulerPackageHero } from './sections/SchedulerPackageHero';
 import { SchedulerPackageKeyTakeaways } from './sections/SchedulerPackageKeyTakeaways';
 import { SchedulerPackageMission } from './sections/SchedulerPackageMission';
-import { SchedulerPackageNextCTA } from './sections/SchedulerPackageNextCTA';
 import { SchedulerPackageQuestionPanel } from './sections/SchedulerPackageQuestionPanel';
 import { TaskQueueLab } from './sections/TaskQueueLab';
 import { TaskQueueVisualization } from './sections/TaskQueueVisualization';
@@ -36,7 +36,7 @@ export const SchedulerPackageRolePage = ({ locale }: Props) => {
       <TaskQueueLab content={c.lab} />
       <SchedulerPackageMission content={c.mission} />
       <SchedulerPackageKeyTakeaways content={c.takeaways} />
-      <SchedulerPackageNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BrowserDomTargetSection } from './sections/BrowserDomTargetSection';
@@ -8,7 +9,6 @@ import { DomToFiberFlow } from './sections/DomToFiberFlow';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { HydrationBlockedPreview } from './sections/HydrationBlockedPreview';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PluginEventSystemHandoff } from './sections/PluginEventSystemHandoff';
 import { ReactFiberTargetSection } from './sections/ReactFiberTargetSection';
 import { RealCodePreview } from './sections/RealCodePreview';
@@ -34,7 +34,7 @@ export const EventTargetFiberPage = ({ locale }: Props) => {
       <DomFiberMappingLab content={c.lab} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementFieldCards } from './sections/ElementFieldCards';
@@ -8,7 +9,6 @@ import { ElementObjectHero } from './sections/ElementObjectHero';
 import { ElementShapeOverview } from './sections/ElementShapeOverview';
 import { ElementSourceCheckpoint } from './sections/ElementSourceCheckpoint';
 import { IsValidElementPlayground } from './sections/IsValidElementPlayground';
-import { NextTypeCta } from './sections/NextTypeCta';
 import { PlainObjectComparison } from './sections/PlainObjectComparison';
 import { reactElementObjectStructureContent } from './content';
 
@@ -26,7 +26,7 @@ export const ReactElementObjectStructurePage = ({ locale }: Props) => {
       <IsValidElementPlayground content={c.isValid} />
       <PlainObjectComparison content={c.compare} />
       <ElementLearningCheck content={c.learningCheck} />
-      <NextTypeCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

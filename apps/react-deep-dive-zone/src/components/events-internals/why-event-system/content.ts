@@ -107,13 +107,12 @@ export type WhyEventSystemContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    question: string;
-    nextLabel: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
-    button: string;
   };
 };
 
@@ -358,13 +357,12 @@ const ko: WhyEventSystemContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 여정',
-    question: '그렇다면 React는 이 이벤트 시스템을 언제 준비할까?',
-    nextLabel: '다음 페이지',
-    nextTitle: 'createRoot는 왜 root에 Native Event를 등록할까?',
+    title: 'createRoot는 왜 root에 Native Event를 등록할까?',
+    description: '그렇다면 React는 이 이벤트 시스템을 언제 준비할까?',
+    cta: '다음 페이지로 이동',
     href: '/root-native-event',
-    button: '다음 페이지로 이동',
   },
 };
 
@@ -579,13 +577,12 @@ const en: WhyEventSystemContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next stop',
-    question: 'So when does React actually set up this event system?',
-    nextLabel: 'Next page',
-    nextTitle: 'Why does createRoot attach native events to the root?',
+    title: 'Why does createRoot attach native events to the root?',
+    description: 'So when does React actually set up this event system?',
+    cta: 'Go to the next page',
     href: '/root-native-event',
-    button: 'Go to the next page',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CommitExecutionPath } from './sections/CommitExecutionPath';
@@ -10,7 +11,6 @@ import { EffectObjectStructure } from './sections/EffectObjectStructure';
 import { FollowCodeMission } from './sections/FollowCodeMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MisconceptionReality } from './sections/MisconceptionReality';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { RealEffectCodePreview } from './sections/RealEffectCodePreview';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { UseEffectHero } from './sections/UseEffectHero';
@@ -34,7 +34,7 @@ export const UseEffectInternalsPage = ({ locale }: Props) => {
       <DependenciesExperiment content={c.depsExperiment} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -157,7 +157,7 @@ export type CorrectVersionDiffContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -457,7 +457,7 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: '내 말로 재구성하기',
       description: '이제 마지막이다. 읽은 내용을 내 말과 흐름도로 다시 만드는 단계로 가자.',
@@ -759,7 +759,7 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Reconstruct it in your own words',
       description:

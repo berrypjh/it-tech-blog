@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeginVsCompleteCompare } from './sections/BeginVsCompleteCompare';
 import { BubblePropertiesPreview } from './sections/BubblePropertiesPreview';
 import { CompleteWorkCodeCheckpoint } from './sections/CompleteWorkCodeCheckpoint';
-import { CompleteWorkCTA } from './sections/CompleteWorkCTA';
 import { CompleteWorkHero } from './sections/CompleteWorkHero';
 import { CompleteWorkMoveDirection } from './sections/CompleteWorkMoveDirection';
 import { FinalChecklist } from './sections/FinalChecklist';
@@ -30,7 +30,7 @@ export const CompleteWorkPage = ({ locale }: Props) => {
         <RenderPhaseSummary content={c.summary} />
         <FinalChecklist content={c.checklist} />
       </div>
-      <CompleteWorkCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

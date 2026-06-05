@@ -154,12 +154,12 @@ export type SchedulerPackageContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    label: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
-    hint: string;
   };
 };
 
@@ -518,12 +518,12 @@ const ko: SchedulerPackageContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    label: '다음: Yielding과 Continuation 보기',
-    nextTitle: 'Scheduler가 어떻게 yield하고 task를 이어가는지 살펴봅니다.',
+    title: '다음: Yielding과 Continuation 보기',
+    description: 'Scheduler가 어떻게 yield하고 task를 이어가는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/pause-resume-render',
-    hint: 'Enter 또는 클릭으로 다음 페이지로 이동',
   },
 };
 
@@ -845,12 +845,12 @@ const en: SchedulerPackageContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    label: 'Next: Yielding and Continuation',
-    nextTitle: 'Learn how the Scheduler yields and continues tasks.',
+    title: 'Next: Yielding and Continuation',
+    description: 'Learn how the Scheduler yields and continues tasks.',
+    cta: 'Go to the next page',
     href: '/pause-resume-render',
-    hint: 'Press Enter or click to continue',
   },
 };
 

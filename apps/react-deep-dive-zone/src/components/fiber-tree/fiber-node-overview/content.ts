@@ -142,13 +142,12 @@ export type FiberNodeOverviewContent = {
       afterNodes: { label: string; iconName: 'refresh' | 'flag' | 'zap' | 'link' }[];
     };
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -509,14 +508,13 @@ const ko: FiberNodeOverviewContent = {
       ],
     },
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: tag / key / elementType / type',
     description:
       'Fiber 전체 구조를 훑어봤다면, 이제 이 Fiber가 무엇인지를 식별하는 필드부터 살펴봅니다.',
-    buttonLabel: '다음: tag / key / elementType / type',
-    buttonHref: '/fiber-identity-fields',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-identity-fields',
   },
 };
 
@@ -824,14 +822,13 @@ const en: FiberNodeOverviewContent = {
       ],
     },
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next chapter',
-    title: 'Up next',
+    title: 'Next: tag / key / elementType / type',
     description:
       'Now that you have skimmed the whole Fiber structure, look at the fields that identify what a Fiber is.',
-    buttonLabel: 'Next: tag / key / elementType / type',
-    buttonHref: '/fiber-identity-fields',
+    cta: 'Go to the next page',
+    href: '/fiber-identity-fields',
   },
 };
 

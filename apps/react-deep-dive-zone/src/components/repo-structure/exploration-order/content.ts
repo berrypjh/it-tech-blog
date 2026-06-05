@@ -115,11 +115,9 @@ export type ExplorationContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -386,15 +384,10 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
     nextStep: {
       eyebrow: '07 · 다음 단계로 이동하기',
       title: '저장소 구조를 읽는 준비가 끝났습니다.',
-      accentLine: {
-        before: '이제 React가 여러 패키지로 나뉜 이유와 각 ',
-        accent: '패키지의 역할',
-        after: '을 더 깊게 살펴봅니다.',
-      },
-      primaryCta: '다음: React 패키지 구조와 역할',
-      secondaryCta: '저장소 구조 다시 복습하기',
+      description:
+        '이제 React가 여러 패키지로 나뉜 이유와 각 ' + '패키지의 역할' + '을 더 깊게 살펴봅니다.',
+      cta: '다음: React 패키지 구조와 역할',
       href: '/react-package',
-      restartHref: '/repo-overview',
     },
   },
   en: {
@@ -661,15 +654,12 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
     nextStep: {
       eyebrow: '07 · next step',
       title: 'You are ready to read the repository structure.',
-      accentLine: {
-        before: 'Next, look closer at why React splits into multiple packages and each ',
-        accent: 'package’s role',
-        after: '.',
-      },
-      primaryCta: 'Next: React package structure & roles',
-      secondaryCta: 'Revisit the repository structure',
+      description:
+        'Next, look closer at why React splits into multiple packages and each ' +
+        'package’s role' +
+        '.',
+      cta: 'Next: React package structure & roles',
       href: '/react-package',
-      restartHref: '/repo-overview',
     },
   },
 };

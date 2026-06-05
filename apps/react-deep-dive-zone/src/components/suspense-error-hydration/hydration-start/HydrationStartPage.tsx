@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodePreviewSection } from './sections/CodePreviewSection';
@@ -9,7 +10,6 @@ import { EnterFlowSection } from './sections/EnterFlowSection';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
 import { HydrationStatesSection } from './sections/HydrationStatesSection';
-import { NextCTA } from './sections/NextCTA';
 import { QuestionSection } from './sections/QuestionSection';
 import { ServerHtmlAndCallSection } from './sections/ServerHtmlAndCallSection';
 import { TakeawaysSection } from './sections/TakeawaysSection';
@@ -32,7 +32,7 @@ export const HydrationStartPage = ({ locale }: Props) => {
       <DomFiberMatcherSection content={c.matcher} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

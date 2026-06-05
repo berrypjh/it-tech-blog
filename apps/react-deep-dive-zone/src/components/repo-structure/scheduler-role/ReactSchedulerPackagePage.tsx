@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ReconcilerSchedulerRelation } from './sections/ReconcilerSchedulerRelation';
 import { ScheduleCallbackCheckpoint } from './sections/ScheduleCallbackCheckpoint';
 import { SchedulerHero } from './sections/SchedulerHero';
 import { SchedulerNeedCards } from './sections/SchedulerNeedCards';
-import { SchedulerNextCTA } from './sections/SchedulerNextCTA';
 import { SchedulerPriorityTable } from './sections/SchedulerPriorityTable';
 import { SchedulerQueueSimulation } from './sections/SchedulerQueueSimulation';
 import { SchedulerResponsibilityBoundary } from './sections/SchedulerResponsibilityBoundary';
@@ -28,7 +28,7 @@ export const ReactSchedulerPackagePage = ({ locale }: Props) => {
       <ScheduleCallbackCheckpoint content={c.checkpoint} />
       <SchedulerResponsibilityBoundary content={c.responsibility} />
       <SchedulerQueueSimulation content={c.simulation} />
-      <SchedulerNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

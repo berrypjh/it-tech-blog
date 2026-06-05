@@ -141,11 +141,9 @@ export type ReactVsReactDomContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -403,15 +401,10 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'React와 DOM renderer의 경계를 이해했다면,',
-      accentLine: {
-        before: '이제 그 사이에서 실제 렌더링 계산을 담당하는 ',
-        accent: 'react-reconciler',
-        after: '를 살펴봅니다.',
-      },
-      primaryCta: '다음: react-reconciler',
-      secondaryCta: '이전 페이지 다시 보기',
+      description:
+        '이제 그 사이에서 실제 렌더링 계산을 담당하는 ' + 'react-reconciler' + '를 살펴봅니다.',
+      cta: '다음: react-reconciler',
       href: '/reconciler-location',
-      restartHref: '/other-dirs',
     },
   },
   en: {
@@ -647,15 +640,12 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'Now that the React–DOM renderer boundary is clear,',
-      accentLine: {
-        before: 'turn to the engine in between — ',
-        accent: 'react-reconciler',
-        after: ' — that runs the actual rendering math.',
-      },
-      primaryCta: 'Next: react-reconciler',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'turn to the engine in between — ' +
+        'react-reconciler' +
+        ' — that runs the actual rendering math.',
+      cta: 'Next: react-reconciler',
       href: '/reconciler-location',
-      restartHref: '/other-dirs',
     },
   },
 };

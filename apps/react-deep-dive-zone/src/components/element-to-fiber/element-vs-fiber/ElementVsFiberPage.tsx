@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementFiberComparisonTable } from './sections/ElementFiberComparisonTable';
 import { ElementFiberHero } from './sections/ElementFiberHero';
 import { ElementToFiberFlow } from './sections/ElementToFiberFlow';
 import { MiniConceptQuiz } from './sections/MiniConceptQuiz';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { PreviousChapterRecap } from './sections/PreviousChapterRecap';
 import { WhyFiberNeeded } from './sections/WhyFiberNeeded';
 import { WithoutFiberProblems } from './sections/WithoutFiberProblems';
@@ -26,7 +26,7 @@ export const ElementVsFiberPage = ({ locale }: Props) => {
       <ElementToFiberFlow content={c.flow} />
       <WithoutFiberProblems content={c.problems} />
       <MiniConceptQuiz content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

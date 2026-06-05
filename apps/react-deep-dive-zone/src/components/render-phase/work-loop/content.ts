@@ -135,13 +135,12 @@ export type WorkLoopContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -343,14 +342,13 @@ const ko: WorkLoopContent = {
     question: 'workLoopSync와 workLoopConcurrent의 가장 큰 차이는?',
     answer: '중간에 작업을 양보할 수 있는지 여부다.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: performUnitOfWork',
     description:
       'Render Phase가 Fiber를 하나씩 처리하는 반복 루프라는 점을 봤다면, 이제 그 Fiber 하나를 실제로 처리하는 핵심 함수로 들어갑니다.',
-    buttonLabel: '다음: performUnitOfWork',
-    buttonHref: '/perform-unit-of-work',
+    cta: '다음 페이지로 이동',
+    href: '/perform-unit-of-work',
   },
 };
 
@@ -536,14 +534,13 @@ const en: WorkLoopContent = {
     question: 'What is the biggest difference between workLoopSync and workLoopConcurrent?',
     answer: 'Whether the loop can yield mid-work.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: performUnitOfWork',
     description:
       'Now that you see the Render Phase as a loop that processes Fibers one by one, dive into the function that actually processes one of those Fibers.',
-    buttonLabel: 'Next: performUnitOfWork',
-    buttonHref: '/perform-unit-of-work',
+    cta: 'Go to the next page',
+    href: '/perform-unit-of-work',
   },
 };
 

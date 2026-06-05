@@ -151,10 +151,12 @@ export type BeforeMutationContent = {
     answer: string;
     tip: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -518,11 +520,13 @@ const ko: BeforeMutationContent = {
     answer: '아니다. 변경 직전에 실행된다.',
     tip: '값을 읽을 "마지막 기회"가 Mutation 직전이라는 점을 기억하세요.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 여정으로 함께 떠나요',
+    title: '다음: Mutation Phase',
     description:
       'DOM을 바꾸기 직전 필요한 값을 확보했다면, 이제 실제 host tree를 변경하는 Mutation Phase로 넘어갑니다.',
-    primaryLabel: '다음: Mutation Phase',
-    primaryHref: '/mutation-phase',
+    cta: '다음 페이지로 이동',
+    href: '/mutation-phase',
   },
 };
 
@@ -648,11 +652,13 @@ const en: BeforeMutationContent = {
     answer: 'No. It runs right before the change.',
     tip: 'Remember — the "last chance" to read values is right before Mutation.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'Continue the journey',
+    title: 'Next: Mutation Phase',
     description:
       'With the values needed right before DOM changes captured, we now enter the Mutation Phase that changes the host tree.',
-    primaryLabel: 'Next: Mutation Phase',
-    primaryHref: '/mutation-phase',
+    cta: 'Go to the next page',
+    href: '/mutation-phase',
   },
 };
 

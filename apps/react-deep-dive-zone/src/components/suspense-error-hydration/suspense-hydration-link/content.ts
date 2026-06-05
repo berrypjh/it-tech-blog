@@ -138,8 +138,11 @@ export type SuspenseHydrationLinkContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -459,8 +462,12 @@ const ko: SuspenseHydrationLinkContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: 전체 복구 흐름 복습',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: 전체 복구 흐름 복습',
+    description:
+      '대기·실패·복구가 하나의 렌더링 모델로 이어지는 전체 흐름을 마지막으로 정리합니다.',
+    cta: '다음 페이지로 이동',
     href: '/recovery-model-overview',
   },
 };
@@ -752,8 +759,12 @@ const en: SuspenseHydrationLinkContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: Review the whole recovery model',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Review the whole recovery model',
+    description:
+      'Wrap up by reviewing how waiting, failing, and recovering form a single rendering model.',
+    cta: 'Go to the next page',
     href: '/recovery-model-overview',
   },
 };

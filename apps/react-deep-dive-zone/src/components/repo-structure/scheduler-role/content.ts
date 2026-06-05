@@ -149,11 +149,9 @@ export type SchedulerContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -417,15 +415,10 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '실행 타이밍을 조율하는 scheduler를 봤다면,',
-      accentLine: {
-        before: '이번에는 여러 패키지가 공통으로 쓰는 기반층인 ',
-        accent: 'shared 패키지',
-        after: '를 살펴봅니다.',
-      },
-      primaryCta: '다음: shared 패키지',
-      secondaryCta: '이전 페이지 다시 보기',
+      description:
+        '이번에는 여러 패키지가 공통으로 쓰는 기반층인 ' + 'shared 패키지' + '를 살펴봅니다.',
+      cta: '다음: shared 패키지',
       href: '/shared-role',
-      restartHref: '/reconciler-location',
     },
   },
   en: {
@@ -661,15 +654,10 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'With the scheduler in view,',
-      accentLine: {
-        before: 'next look at the foundation layer many packages depend on — ',
-        accent: 'shared package',
-        after: '.',
-      },
-      primaryCta: 'Next: shared package',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'next look at the foundation layer many packages depend on — ' + 'shared package' + '.',
+      cta: 'Next: shared package',
       href: '/shared-role',
-      restartHref: '/reconciler-location',
     },
   },
 };

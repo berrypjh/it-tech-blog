@@ -128,8 +128,11 @@ export type PluginEventSystemContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -453,8 +456,12 @@ const ko: PluginEventSystemContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: SyntheticEvent 이해하기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: SyntheticEvent 이해하기',
+    description:
+      'Plugin이 만들어 내는 SyntheticEvent가 어떤 구조이고 어떻게 동작하는지 이어서 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/synthetic-event',
   },
 };
@@ -767,8 +774,11 @@ const en: PluginEventSystemContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: understanding SyntheticEvent',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: understanding SyntheticEvent',
+    description: 'See the structure and behavior of the SyntheticEvent that plugins produce.',
+    cta: 'Go to the next page',
     href: '/synthetic-event',
   },
 };

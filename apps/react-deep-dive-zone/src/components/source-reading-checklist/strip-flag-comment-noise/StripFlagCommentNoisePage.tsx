@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CommentSection } from './sections/CommentSection';
@@ -10,7 +11,6 @@ import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection'
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
 import { LabelingInteractionSection } from './sections/LabelingInteractionSection';
-import { NextCTASection } from './sections/NextCTASection';
 import { TemplateSection } from './sections/TemplateSection';
 import { TodayQuestionSection } from './sections/TodayQuestionSection';
 import { WhyBranchySection } from './sections/WhyBranchySection';
@@ -34,7 +34,7 @@ export const StripFlagCommentNoisePage = ({ locale }: Props) => {
       <TemplateSection content={c.template} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

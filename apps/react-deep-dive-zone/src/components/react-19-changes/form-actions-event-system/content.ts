@@ -45,8 +45,6 @@ export type PluginRoleCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type FormActionsEventSystemContent = {
   hero: {
     badge: string;
@@ -201,12 +199,12 @@ export type FormActionsEventSystemContent = {
       iconKey: IconKey;
     }[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -586,19 +584,13 @@ startHostTransition(formInst, pendingState, action, formData);`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?'],
+    title: '다음: use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?',
     description:
       '다음 페이지에서는 use()가 Promise, Suspense, Error Boundary, thenable tracking과 어떻게 연결되는지 살펴봅니다.',
-    primary: {
-      label: '다음: use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?',
-      href: '/use-suspense-error-model',
-    },
-    secondary: [
-      { label: 'Form Actions 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/use-suspense-error-model',
   },
 };
 
@@ -976,19 +968,13 @@ startHostTransition(formInst, pendingState, action, formData);`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'What did use() add to Suspense / Error Boundary?'],
+    title: 'Next: What did use() add to Suspense / Error Boundary?',
     description:
       'Next we look at how use() connects Promise, Suspense, Error Boundary, and thenable tracking.',
-    primary: {
-      label: 'Next: What did use() add to Suspense / Error Boundary?',
-      href: '/use-suspense-error-model',
-    },
-    secondary: [
-      { label: 'Replay the Form Actions flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/use-suspense-error-model',
   },
 };
 

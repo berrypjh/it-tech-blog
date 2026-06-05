@@ -123,13 +123,12 @@ export type CurrentWipAlternateContent = {
     title: string;
     items: string[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -391,14 +390,13 @@ const ko: CurrentWipAlternateContent = {
       'Commit 후 트리가 전환된다',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: Fiber는 왜 중심 자료구조인가?',
     description:
       'Fiber 트리가 현재와 다음 버전으로 나뉜다는 것까지 이해했다면, 이제 이 모든 필드가 왜 React 렌더링의 중심 자료구조를 이루는지 정리합니다.',
-    buttonLabel: '다음: Fiber는 왜 중심 자료구조인가?',
-    buttonHref: '/why-fiber-tree',
+    cta: '다음 페이지로 이동',
+    href: '/why-fiber-tree',
   },
 };
 
@@ -619,14 +617,13 @@ const en: CurrentWipAlternateContent = {
       'After commit, the tree is swapped',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: why is Fiber the central data structure?',
     description:
       'Now that you understand how a Fiber tree splits into current and next versions, see why all these fields make Fiber the central data structure of React rendering.',
-    buttonLabel: 'Next: why is Fiber the central data structure?',
-    buttonHref: '/why-fiber-tree',
+    cta: 'Go to the next page',
+    href: '/why-fiber-tree',
   },
 };
 

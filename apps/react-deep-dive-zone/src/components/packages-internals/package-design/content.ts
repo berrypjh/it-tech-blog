@@ -131,20 +131,12 @@ export type PackageDesignContent = {
     intro: string;
     cards: BridgeCard[];
   };
-  finalCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    line3Before: string;
-    line3Accent: string;
-    line3After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -437,20 +429,13 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         },
       ],
     },
-    finalCta: {
+    nextStep: {
       eyebrow: '08 · finale',
       title: '마무리',
-      line1: 'React 패키지 구조를 이해했다면,',
-      line2Before: '이제 ',
-      line2Accent: 'JSX',
-      line2After: '와',
-      line3Before: ' ',
-      line3Accent: 'React Element',
-      line3After: '가 실제로 어떤 객체가 되는지 코드 레벨에서 살펴볼 준비가 된 것입니다.',
-      primaryCta: '다음: React Element와 JSX의 정체 →',
-      secondaryCta: '패키지 구조 다시 복습하기',
-      primaryHref: '/jsx-sugar',
-      secondaryHref: '/why-split',
+      description:
+        'React 패키지 구조를 이해했다면, 이제 JSX와 React Element가 실제로 어떤 객체가 되는지 코드 레벨에서 살펴볼 준비가 된 것입니다.',
+      cta: '다음: React Element와 JSX의 정체 →',
+      href: '/jsx-sugar',
     },
   },
   en: {
@@ -679,20 +664,13 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         },
       ],
     },
-    finalCta: {
+    nextStep: {
       eyebrow: '08 · finale',
       title: 'Wrap-up',
-      line1: 'With React’s package structure in mind,',
-      line2Before: 'you are ready to inspect ',
-      line2Accent: 'JSX',
-      line2After: ' and',
-      line3Before: ' ',
-      line3Accent: 'React Element',
-      line3After: ' at the code level.',
-      primaryCta: 'Next: React Element & JSX →',
-      secondaryCta: 'Revisit the package structure',
-      primaryHref: '/jsx-sugar',
-      secondaryHref: '/why-split',
+      description:
+        'With React’s package structure in mind, you are ready to inspect JSX and React Element at the code level.',
+      cta: 'Next: React Element & JSX →',
+      href: '/jsx-sugar',
     },
   },
 };

@@ -133,8 +133,11 @@ export type DispatchSelectionContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -501,8 +504,12 @@ const ko: DispatchSelectionContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: DOM target에서 Fiber target 찾기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: DOM target에서 Fiber target 찾기',
+    description:
+      '이벤트 우선순위를 정한 뒤, DOM target에서 어떻게 대응하는 Fiber target을 찾는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/target-to-fiber',
   },
 };
@@ -842,8 +849,12 @@ const en: DispatchSelectionContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: from DOM target to Fiber target',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: from DOM target to Fiber target',
+    description:
+      'After deciding event priority, see how React finds the matching Fiber target from a DOM target.',
+    cta: 'Go to the next page',
     href: '/target-to-fiber',
   },
 };

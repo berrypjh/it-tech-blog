@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ActionFlowSimulatorSection } from './sections/ActionFlowSimulatorSection';
@@ -10,7 +11,6 @@ import { ApiFeatureCardsSection } from './sections/ApiFeatureCardsSection';
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { KeyTakeawaysSection } from './sections/KeyTakeawaysSection';
 import { LegacyAsyncSubmitSection } from './sections/LegacyAsyncSubmitSection';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { OfficialDocsCardsSection } from './sections/OfficialDocsCardsSection';
 import { TodayQuestionSection } from './sections/TodayQuestionSection';
 import { actionsUpdateFlowContent } from './content';
@@ -32,7 +32,7 @@ export const ActionsUpdateFlowPage = ({ locale }: Props) => {
       <OfficialDocsCardsSection content={c.officialDocs} />
       <FollowAlongMissionSection content={c.mission} />
       <KeyTakeawaysSection content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AlternateUpdateReasonSection } from './sections/AlternateUpdateReasonSection';
@@ -8,7 +9,6 @@ import { FiberPathVisualizationSection } from './sections/FiberPathVisualization
 import { FiberToRootHero } from './sections/FiberToRootHero';
 import { LaneRoleCompareSection } from './sections/LaneRoleCompareSection';
 import { MiniQuizSection } from './sections/MiniQuizSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { ReturnPointerReasonSection } from './sections/ReturnPointerReasonSection';
 import { fiberToRootContent } from './content';
 
@@ -26,7 +26,7 @@ export const FiberToRootPage = ({ locale }: Props) => {
       <AlternateUpdateReasonSection content={c.alternate} />
       <ReturnPointerReasonSection content={c.returnPointer} />
       <MiniQuizSection content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

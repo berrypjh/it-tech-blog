@@ -145,11 +145,11 @@ export type RequestUpdateLaneContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    text: string;
-    button: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -484,11 +484,12 @@ const ko: RequestUpdateLaneContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    text: '문맥별 Lane 분기를 익혔다면, transition과 deferred update가 어떻게 낮은 우선순위를 얻는지 살펴봅니다.',
-    button: '다음: Transition과 Deferred Update 보기',
-    nextTitle: 'Transition과 Deferred Update는 어떻게 낮은 우선순위를 얻을까?',
+    title: '다음: Transition과 Deferred Update 보기',
+    description:
+      '문맥별 Lane 분기를 익혔다면, transition과 deferred update가 어떻게 낮은 우선순위를 얻는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/transition-deferred-split',
   },
 };
@@ -781,11 +782,12 @@ const en: RequestUpdateLaneContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    text: "Now that you know context-based branching, let's see how transitions and deferred updates earn low priority.",
-    button: 'Next: Transition & Deferred Update',
-    nextTitle: 'How do Transitions and Deferred Updates get their low priority?',
+    title: 'Next: Transition & Deferred Update',
+    description:
+      "Now that you know context-based branching, let's see how transitions and deferred updates earn low priority.",
+    cta: 'Go to the next page',
     href: '/transition-deferred-split',
   },
 };

@@ -153,8 +153,11 @@ export type DispatchQueueOrderContent = {
     title: string;
     cards: { title: string; body: string; tone: Tone }[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -493,8 +496,12 @@ const ko: DispatchQueueOrderContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: Hydration Replay와 Form Action 보기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Hydration Replay와 Form Action 보기',
+    description:
+      'dispatchQueue 실행 이후, Hydration 중 보류된 이벤트와 Form Action 흐름을 이어서 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/priority-replay-action',
   },
 };
@@ -794,8 +801,12 @@ const en: DispatchQueueOrderContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: Hydration Replay and Form Action',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Hydration Replay and Form Action',
+    description:
+      'After the dispatchQueue runs, follow events deferred during hydration and the form action flow.',
+    cta: 'Go to the next page',
     href: '/priority-replay-action',
   },
 };

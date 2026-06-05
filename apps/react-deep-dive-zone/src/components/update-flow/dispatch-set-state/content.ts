@@ -160,13 +160,12 @@ export type DispatchSetStateContent = {
     main: { lead: string; emphasis: string; tail: string };
     pills: SummaryPill[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -465,14 +464,13 @@ const ko: DispatchSetStateContent = {
       { iconName: 'shield', text: '나중 호출에도 정확한 저장소(queue)로 업데이트를 보낼 수 있음' },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: dispatchSetState',
     description:
       'setState가 Fiber와 queue를 기억한 dispatch 함수라는 점을 알았다면, 이제 실제 업데이트 진입점인 dispatchSetState를 읽어봅니다.',
-    buttonLabel: '다음: dispatchSetState',
-    buttonHref: '/enqueue-update',
+    cta: '다음: dispatchSetState',
+    href: '/enqueue-update',
   },
 };
 
@@ -738,14 +736,13 @@ const en: DispatchSetStateContent = {
       { iconName: 'shield', text: 'Later calls still land on the exact queue' },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: dispatchSetState',
     description:
       'Now that you know setState is a dispatch that remembers its Fiber and queue, read the actual entry point: dispatchSetState.',
-    buttonLabel: 'Next: dispatchSetState',
-    buttonHref: '/enqueue-update',
+    cta: 'Next: dispatchSetState',
+    href: '/enqueue-update',
   },
 };
 

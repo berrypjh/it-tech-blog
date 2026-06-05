@@ -98,10 +98,12 @@ export type HostComponentContent = {
     question: string;
     answer: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -280,11 +282,13 @@ const ko: HostComponentContent = {
     question: 'Host Component의 beginWork가 즉시 DOM node를 만드는가?',
     answer: '아니다. DOM을 만들지 않고 먼저 children 구조를 계산한다.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: reconcileChildren',
     description:
       '함수 컴포넌트와 Host Component가 모두 reconcileChildren으로 이어진다는 점을 봤다면, 이제 그 핵심 함수 자체를 살펴봅니다.',
-    buttonLabel: '다음: reconcileChildren',
-    buttonHref: '/child-reconciliation',
+    cta: '다음 페이지로 이동',
+    href: '/child-reconciliation',
   },
 };
 
@@ -447,11 +451,13 @@ const en: HostComponentContent = {
     question: "Does a Host Component's beginWork create the DOM node immediately?",
     answer: 'No — it first computes the children structure, without creating any DOM.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: reconcileChildren',
     description:
       'Now that you see how both function components and Host Components hand off to reconcileChildren, take a closer look at the function itself.',
-    buttonLabel: 'Next: reconcileChildren',
-    buttonHref: '/child-reconciliation',
+    cta: 'Go to the next page',
+    href: '/child-reconciliation',
   },
 };
 

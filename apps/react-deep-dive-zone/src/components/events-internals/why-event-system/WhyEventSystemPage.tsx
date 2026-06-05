@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EventMiddleLayer } from './sections/EventMiddleLayer';
@@ -8,7 +9,6 @@ import { EventSystemOverview } from './sections/EventSystemOverview';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MisconceptionVsReality } from './sections/MisconceptionVsReality';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { SourceEntryMap } from './sections/SourceEntryMap';
 import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
 import { UserOnClickView } from './sections/UserOnClickView';
@@ -30,7 +30,7 @@ export const WhyEventSystemPage = ({ locale }: Props) => {
       <SourceEntryMap content={c.sourceMap} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

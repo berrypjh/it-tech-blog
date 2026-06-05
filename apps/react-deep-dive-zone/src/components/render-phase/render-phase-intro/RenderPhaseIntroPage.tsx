@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DomNotChangedWarning } from './sections/DomNotChangedWarning';
-import { NextRenderPhaseCTA } from './sections/NextRenderPhaseCTA';
 import { PhaseComparisonTable } from './sections/PhaseComparisonTable';
 import { PreviousChapterFlow } from './sections/PreviousChapterFlow';
 import { RenderPhaseFlowPreview } from './sections/RenderPhaseFlowPreview';
@@ -26,7 +26,7 @@ export const RenderPhaseIntroPage = ({ locale }: Props) => {
       <RenderPhaseFlowPreview content={c.flowPreview} />
       <DomNotChangedWarning content={c.warning} />
       <RenderPhaseMiniQuiz content={c.quiz} />
-      <NextRenderPhaseCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

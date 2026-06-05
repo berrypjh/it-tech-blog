@@ -150,14 +150,12 @@ export type WhyFailableRenderContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primary: { label: string; href: string };
-    secondary: { label: string; href: string };
-    goalsLabel: string;
-    goals: string[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -538,15 +536,13 @@ const ko: WhyFailableRenderContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 파트로 이동',
     title: '다음: use(Promise)는 렌더링을 어떻게 멈추는가?',
     description:
       'use(Promise)가 내부에서 throw로 연결되어 Suspense 흐름을 어떻게 시작하는지 코드와 함께 읽어봅니다.',
-    primary: { label: '다음 파트 시작하기', href: '/use-promise-suspend' },
-    secondary: { label: '학습 로드맵 보기', href: '/' },
-    goalsLabel: '학습 목표',
-    goals: ['Suspense 흐름의 시작점 이해', 'thenable 처리 로직 확인', 'retry와 재시도 모델 이해'],
+    cta: '다음 페이지로 이동',
+    href: '/use-promise-suspend',
   },
 };
 
@@ -923,19 +919,13 @@ const en: WhyFailableRenderContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Move to the next part',
     title: 'Next: How does use(Promise) pause rendering?',
     description:
       'Read how use(Promise) wires into throw internally and starts the Suspense flow, side by side with the code.',
-    primary: { label: 'Start the next part', href: '/use-promise-suspend' },
-    secondary: { label: 'See the learning roadmap', href: '/' },
-    goalsLabel: 'Learning goals',
-    goals: [
-      'Understand where the Suspense flow starts',
-      'Confirm how thenable is processed',
-      'Grasp the retry model',
-    ],
+    cta: 'Go to the next page',
+    href: '/use-promise-suspend',
   },
 };
 

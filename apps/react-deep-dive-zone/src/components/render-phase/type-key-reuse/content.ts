@@ -129,13 +129,12 @@ export type TypeKeyReuseContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -320,14 +319,13 @@ const ko: TypeKeyReuseContent = {
     question: 'key는 같지만 type이 다르면 그대로 재사용될까?',
     answer: '보통은 아니다. React는 key와 type을 함께 비교해 같을 때만 기존 Fiber를 재사용한다.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Placement / Deletion / 이동 표시는 언제 남는가?',
     description:
       '재사용 판단이 끝났다면, React는 새로 배치해야 할 것과 삭제해야 할 것을 표시합니다.',
-    buttonLabel: '다음: Placement / Deletion / 이동 표시는 언제 남는가?',
-    buttonHref: '/mark-changes',
+    cta: '다음 페이지로 이동',
+    href: '/mark-changes',
   },
 };
 
@@ -505,14 +503,13 @@ const en: TypeKeyReuseContent = {
     answer:
       'Usually not. React compares both key and type, and only reuses the existing Fiber when both match.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: When Placement / Deletion / Move Marks Are Set',
     description:
       'Once reuse decisions are made, React marks what needs to be placed, deleted, or moved.',
-    buttonLabel: 'Next: When Placement / Deletion / Move Marks Are Set',
-    buttonHref: '/mark-changes',
+    cta: 'Go to the next page',
+    href: '/mark-changes',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { JavaScriptEvidenceCards } from './sections/JavaScriptEvidenceCards';
@@ -7,7 +8,6 @@ import { JsxCoreSummary } from './sections/JsxCoreSummary';
 import { JsxHeroSection } from './sections/JsxHeroSection';
 import { JsxHtmlComparisonTable } from './sections/JsxHtmlComparisonTable';
 import { JsxMiniQuizSection } from './sections/JsxMiniQuizSection';
-import { JsxNextPageCta } from './sections/JsxNextPageCta';
 import { JsxUiFitSection } from './sections/JsxUiFitSection';
 import { MisconceptionCards } from './sections/MisconceptionCards';
 import { jsxIsNotHtmlContent } from './content';
@@ -26,7 +26,7 @@ export const JsxIsNotHtmlPage = ({ locale }: Props) => {
       <JsxHtmlComparisonTable content={c.comparison} />
       <JsxMiniQuizSection content={c.quiz} />
       <JsxCoreSummary content={c.summary} />
-      <JsxNextPageCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

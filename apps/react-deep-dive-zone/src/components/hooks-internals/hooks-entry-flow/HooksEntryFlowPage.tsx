@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CounterQuizSection } from './sections/CounterQuizSection';
@@ -9,7 +10,6 @@ import { HookConnectionTabs } from './sections/HookConnectionTabs';
 import { HookFlowOverview } from './sections/HookFlowOverview';
 import { HooksEntryHero } from './sections/HooksEntryHero';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PublicUseStateCodePreview } from './sections/PublicUseStateCodePreview';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { hooksEntryFlowContent } from './content';
@@ -30,7 +30,7 @@ export const HooksEntryFlowPage = ({ locale }: Props) => {
       <HookConnectionTabs content={c.tabs} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -94,8 +94,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type ActivityHiddenUiContent = {
   hero: {
     badge: string;
@@ -214,12 +212,12 @@ export type ActivityHiddenUiContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -605,19 +603,13 @@ const ko: ActivityHiddenUiContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'useEffectEvent는 Effect 설계에 무엇을 추가했나?'],
+    title: '다음: useEffectEvent는 Effect 설계에 무엇을 추가했나?',
     description:
       '다음 페이지에서는 useEffectEvent가 Effect 본체와 이벤트성 로직을 어떻게 분리하는지 살펴봅니다.',
-    primary: {
-      label: '다음: useEffectEvent는 Effect 설계에 무엇을 추가했나?',
-      href: '/use-effect-event-design',
-    },
-    secondary: [
-      { label: 'Activity 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/use-effect-event-design',
   },
 };
 
@@ -992,18 +984,12 @@ const en: ActivityHiddenUiContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'What did useEffectEvent add to Effect design?'],
+    title: 'Next: What did useEffectEvent add to Effect design?',
     description: "We'll look at how useEffectEvent separates an Effect body from event-like logic.",
-    primary: {
-      label: 'Next: What did useEffectEvent add to Effect design?',
-      href: '/use-effect-event-design',
-    },
-    secondary: [
-      { label: 'Replay the Activity flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/use-effect-event-design',
   },
 };
 

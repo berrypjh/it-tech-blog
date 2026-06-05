@@ -129,10 +129,12 @@ export type LayoutPhaseContent = {
     answer: string;
     tip: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -486,11 +488,13 @@ const ko: LayoutPhaseContent = {
     answer: 'useLayoutEffect. DOM mutation 이후, paint 전에 동기적으로 실행되어 보정이 가능합니다.',
     tip: 'useEffect는 paint 이후 비동기로 실행되므로, 이미 한 번 화면이 그려진 뒤에 동작합니다. 깜빡임이 생길 수 있습니다.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Passive Effects',
     description:
       'Layout Phase까지 이해했다면, 마지막으로 commit 이후 이어지는 Passive Effects까지 정리해봅니다.',
-    primaryLabel: '다음: Passive Effects',
-    primaryHref: '/passive-effects',
+    cta: '다음 페이지로 이동',
+    href: '/passive-effects',
   },
 };
 
@@ -595,11 +599,13 @@ const en: LayoutPhaseContent = {
       'useLayoutEffect. It runs synchronously after DOM mutation and before paint, so the fix is possible.',
     tip: 'useEffect runs asynchronously after paint, which means the screen has already been drawn once — flicker can occur.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Passive Effects',
     description:
       'With the Layout Phase covered, lastly the Passive Effects that follow the commit.',
-    primaryLabel: 'Next: Passive Effects',
-    primaryHref: '/passive-effects',
+    cta: 'Go to the next page',
+    href: '/passive-effects',
   },
 };
 

@@ -125,15 +125,12 @@ export type DeletionContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
-    secondaryLabel: string;
-    secondaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -585,16 +582,13 @@ const ko: DeletionContent = {
     question: '삭제 시 React는 DOM node만 제거할까?',
     answer: '아니다. 삭제 subtree의 ref와 effects까지 정리한다.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로 이동',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: root.current 전환과 ref detach / attach',
     description:
       '삭제 흐름까지 봤다면, 이제 Commit Phase에서 현재 트리가 어떻게 새 트리로 바뀌고 refs가 언제 갱신되는지 살펴봅니다.',
-    primaryLabel: '다음: root.current 전환과 ref detach / attach',
-    primaryHref: '/current-swap-ref',
-    secondaryLabel: '이번 챕터 다시 복습하기',
-    secondaryHref: '/commit-phase',
+    cta: '다음 페이지로 이동',
+    href: '/current-swap-ref',
   },
 };
 
@@ -694,16 +688,13 @@ const en: DeletionContent = {
     question: 'When deleting, does React only remove the DOM node?',
     answer: 'No. It also cleans up refs and effects in the deleted subtree.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: root.current swap and ref detach / attach',
     description:
       'Now that the deletion flow is clear, see how the current tree is swapped for the new tree and when refs are updated in the Commit Phase.',
-    primaryLabel: 'Next: root.current swap and ref detach / attach',
-    primaryHref: '/current-swap-ref',
-    secondaryLabel: 'Review this chapter again',
-    secondaryHref: '/commit-phase',
+    cta: 'Go to the next page',
+    href: '/current-swap-ref',
   },
 };
 

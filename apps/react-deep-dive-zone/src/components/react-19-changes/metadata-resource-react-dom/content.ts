@@ -69,8 +69,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type TreeLine = { indent: number; tag: string; iconKey?: IconKey; domain?: DomainKey };
 
 export type DomLine = { indent: number; tag: string; zone: 'html' | 'head' | 'body' };
@@ -184,12 +182,12 @@ export type MetadataResourceContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -591,19 +589,13 @@ getPublicInstance(...)`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'Server Components의 경계와 계약'],
+    title: '다음: Server Components의 경계와 계약',
     description:
       '다음 페이지에서는 React 19가 서버와 클라이언트의 경계를 어떤 계약으로 안정화했는지 살펴봅니다.',
-    primary: {
-      label: '다음: Server Components의 경계와 계약',
-      href: '/server-components-contract',
-    },
-    secondary: [
-      { label: 'Metadata 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/server-components-contract',
   },
 };
 
@@ -1007,19 +999,13 @@ getPublicInstance(...)`,
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'Server Components: boundary & contract'],
+    title: 'Next: Server Components — boundary & contract',
     description:
       'Next we look at how React 19 stabilized the server / client boundary with a clear contract.',
-    primary: {
-      label: 'Next: Server Components — boundary & contract',
-      href: '/server-components-contract',
-    },
-    secondary: [
-      { label: 'Replay the metadata flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/server-components-contract',
   },
 };
 

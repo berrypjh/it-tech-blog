@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeginWorkReturnDecision } from './sections/BeginWorkReturnDecision';
 import { CurrentWorkInProgressCompare } from './sections/CurrentWorkInProgressCompare';
 import { DescendCompleteFlow } from './sections/DescendCompleteFlow';
-import { NextBeginWorkCTA } from './sections/NextBeginWorkCTA';
 import { PerformUnitCodeCheckpoint } from './sections/PerformUnitCodeCheckpoint';
 import { PerformUnitFlow } from './sections/PerformUnitFlow';
 import { PerformUnitHero } from './sections/PerformUnitHero';
@@ -26,7 +26,7 @@ export const PerformUnitOfWorkPage = ({ locale }: Props) => {
       <PerformUnitCodeCheckpoint content={c.code} />
       <DescendCompleteFlow content={c.descendComplete} />
       <PerformUnitMiniQuiz content={c.quiz} />
-      <NextBeginWorkCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

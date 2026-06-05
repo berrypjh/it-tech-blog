@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BoundarySearchSection } from './sections/BoundarySearchSection';
@@ -7,7 +8,6 @@ import { CaptureFallbackSection } from './sections/CaptureFallbackSection';
 import { CodePreviewSection } from './sections/CodePreviewSection';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
-import { NextCTA } from './sections/NextCTA';
 import { PendingFlowSection } from './sections/PendingFlowSection';
 import { QuestionSection } from './sections/QuestionSection';
 import { RetryQueueFlowSection } from './sections/RetryQueueFlowSection';
@@ -34,7 +34,7 @@ export const SuspenseFallbackRetryPage = ({ locale }: Props) => {
       <RetrySimulator content={c.simulator} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

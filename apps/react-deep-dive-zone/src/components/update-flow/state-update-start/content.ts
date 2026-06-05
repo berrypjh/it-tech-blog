@@ -132,13 +132,12 @@ export type StateUpdateStartContent = {
     sub: string;
     flowLine: string[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -326,14 +325,13 @@ const ko: StateUpdateStartContent = {
     sub: '요청 기록 → 우선순위 결정 → 스케줄링 → 계산(Render) → 반영(Commit) — 이 긴 여정의 첫 걸음이 바로 setState다.',
     flowLine: ['요청 기록', '우선순위 결정', '스케줄링', '계산(Render)', '반영(Commit)'],
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
     description:
       'setState가 즉시 DOM을 바꾸는 함수가 아니라는 점을 이해했다면, 이제 그 setState 함수가 어떻게 Fiber와 queue를 기억하는지 살펴봅니다.',
-    buttonLabel: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
-    buttonHref: '/dispatch-set-state',
+    cta: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
+    href: '/dispatch-set-state',
   },
 };
 
@@ -513,14 +511,13 @@ const en: StateUpdateStartContent = {
     sub: 'Record → choose priority → schedule → compute (Render) → apply (Commit). setState is the first step of that long journey.',
     flowLine: ['Record', 'Pick priority', 'Schedule', 'Compute (Render)', 'Apply (Commit)'],
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: How setState remembers its Fiber and queue',
     description:
       'Now that you know setState does not immediately change the DOM, look at how the setState function remembers its Fiber and queue.',
-    buttonLabel: 'Next: How setState remembers its Fiber and queue',
-    buttonHref: '/dispatch-set-state',
+    cta: 'Next: How setState remembers its Fiber and queue',
+    href: '/dispatch-set-state',
   },
 };
 

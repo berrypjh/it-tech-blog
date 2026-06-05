@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementFiberMappingTable } from './sections/ElementFiberMappingTable';
 import { FiberInfoGroups } from './sections/FiberInfoGroups';
 import { FiberStoredInfoHero } from './sections/FiberStoredInfoHero';
 import { MiniQuestionCard } from './sections/MiniQuestionCard';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { StructureExpansionVisualization } from './sections/StructureExpansionVisualization';
 import { WhyFieldsNeeded } from './sections/WhyFieldsNeeded';
@@ -26,7 +26,7 @@ export const FiberStoredInformationPage = ({ locale }: Props) => {
       <StructureExpansionVisualization content={c.expansion} />
       <WhyFieldsNeeded content={c.reasons} />
       <MiniQuestionCard content={c.miniQuestion} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -142,10 +142,12 @@ export type SetStateFlowContent = {
     title: string;
     items: SummaryItem[];
   };
-  cta: {
-    label: string;
-    href: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -497,11 +499,13 @@ const ko: SetStateFlowContent = {
       },
     ],
   },
-  cta: {
-    label: '다음: useReducer와 공통 구조 보기',
-    href: '/use-reducer-shared',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: useReducer와 공통 구조 보기',
     description:
       'useState 업데이트 흐름을 봤다면, 이제 useReducer가 이 queue 모델을 어떻게 공유하는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/use-reducer-shared',
   },
 };
 
@@ -800,11 +804,13 @@ const en: SetStateFlowContent = {
       },
     ],
   },
-  cta: {
-    label: 'Next: shared structure with useReducer',
-    href: '/use-reducer-shared',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: shared structure with useReducer',
     description:
       'Now that you know the setState update flow, see how useReducer shares this same queue model.',
+    cta: 'Go to the next page',
+    href: '/use-reducer-shared',
   },
 };
 

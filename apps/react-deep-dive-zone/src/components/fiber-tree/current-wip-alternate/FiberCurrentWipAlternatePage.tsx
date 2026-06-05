@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AlternateCodeCheckpoint } from './sections/AlternateCodeCheckpoint';
@@ -7,7 +8,6 @@ import { AlternateDiagram } from './sections/AlternateDiagram';
 import { AlternateHero } from './sections/AlternateHero';
 import { AlternateKeyChecklist } from './sections/AlternateKeyChecklist';
 import { AlternateMiniQuiz } from './sections/AlternateMiniQuiz';
-import { AlternateNextCTA } from './sections/AlternateNextCTA';
 import { CurrentWipComparison } from './sections/CurrentWipComparison';
 import { RenderingScenarioFlow } from './sections/RenderingScenarioFlow';
 import { RootCurrentStructure } from './sections/RootCurrentStructure';
@@ -28,7 +28,7 @@ export const FiberCurrentWipAlternatePage = ({ locale }: Props) => {
       <RenderingScenarioFlow content={c.scenario} />
       <AlternateMiniQuiz content={c.quiz} />
       <AlternateKeyChecklist content={c.checklist} />
-      <AlternateNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

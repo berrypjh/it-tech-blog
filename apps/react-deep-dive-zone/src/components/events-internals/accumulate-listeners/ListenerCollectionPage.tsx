@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AccumulateSinglePhaseFlow } from './sections/AccumulateSinglePhaseFlow';
@@ -11,7 +12,6 @@ import { InteractiveListenerCollector } from './sections/InteractiveListenerColl
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { ListenerCollectionHero } from './sections/ListenerCollectionHero';
 import { NestedJsxExample } from './sections/NestedJsxExample';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { RealCodePreview } from './sections/RealCodePreview';
 import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
 import { listenerCollectionContent } from './content';
@@ -34,7 +34,7 @@ export const ListenerCollectionPage = ({ locale }: Props) => {
       <InteractiveListenerCollector content={c.collector} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

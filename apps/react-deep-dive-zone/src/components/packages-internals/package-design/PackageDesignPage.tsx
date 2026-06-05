@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BridgeSection } from './sections/BridgeSection';
 import { ChecklistSection } from './sections/ChecklistSection';
 import { FinalDiagramSection } from './sections/FinalDiagramSection';
-import { PdFinalCTA } from './sections/PdFinalCTA';
 import { PdHero } from './sections/PdHero';
 import { RecapSection } from './sections/RecapSection';
 import { UserFlowSection } from './sections/UserFlowSection';
@@ -29,7 +29,7 @@ export const PackageDesignPage = ({ locale }: Props) => {
       <UserFlowSection content={c.userFlow} />
       <ChecklistSection content={c.checklist} sectionId={CHECKLIST_SECTION_ID} />
       <BridgeSection content={c.bridge} />
-      <PdFinalCTA content={c.finalCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

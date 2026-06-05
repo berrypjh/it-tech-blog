@@ -145,14 +145,9 @@ export type RvrContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -364,15 +359,11 @@ export const rvrContent: Record<Locale, RvrContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      line1: '계산과 반영의 분리를 이해했다면,',
-      line2Before: '이번에는 그 작업이 언제 실행될지 조율하는 ',
-      line2Accent: 'scheduler',
-      line2After: '를 살펴봅니다.',
-      primaryCta: '다음: scheduler →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/scheduler-usage',
-      secondaryHref: '/reconciler-separation',
+      title: '다음: scheduler',
+      description:
+        '계산과 반영의 분리를 이해했다면, 이번에는 그 작업이 언제 실행될지 조율하는 scheduler를 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/scheduler-usage',
     },
   },
   en: {
@@ -553,15 +544,11 @@ export const rvrContent: Record<Locale, RvrContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: 'Move to the next step',
-      line1: 'Now that compute vs apply is clear,',
-      line2Before: 'next we look at the layer that decides *when* the work runs — ',
-      line2Accent: 'scheduler',
-      line2After: '.',
-      primaryCta: 'Next: scheduler →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/scheduler-usage',
-      secondaryHref: '/reconciler-separation',
+      title: 'Next: scheduler',
+      description:
+        'Now that compute vs apply is clear, next we look at the layer that decides when the work runs — scheduler.',
+      cta: 'Go to the next page',
+      href: '/scheduler-usage',
     },
   },
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
@@ -7,7 +8,6 @@ import { DuplicateRootGuardSection } from './sections/DuplicateRootGuardSection'
 import { EnsureRootHero } from './sections/EnsureRootHero';
 import { MicrotaskConceptSection } from './sections/MicrotaskConceptSection';
 import { MiniQuizSection } from './sections/MiniQuizSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { RootScheduleVisualizationSection } from './sections/RootScheduleVisualizationSection';
 import { TwoRolesSection } from './sections/TwoRolesSection';
 import { ensureRootScheduledContent } from './content';
@@ -26,7 +26,7 @@ export const EnsureRootScheduledPage = ({ locale }: Props) => {
       <MicrotaskConceptSection content={c.microtask} />
       <DuplicateRootGuardSection content={c.duplicate} />
       <MiniQuizSection content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

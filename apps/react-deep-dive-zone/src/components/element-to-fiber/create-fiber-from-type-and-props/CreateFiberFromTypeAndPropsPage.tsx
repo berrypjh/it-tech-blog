@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClassificationQuiz } from './sections/ClassificationQuiz';
 import { JsxToFiberTagCards } from './sections/JsxToFiberTagCards';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { SpecialFiberTypes } from './sections/SpecialFiberTypes';
 import { TypeBranchMap } from './sections/TypeBranchMap';
@@ -26,7 +26,7 @@ export const CreateFiberFromTypeAndPropsPage = ({ locale }: Props) => {
       <TypeShapeComparisonTable content={c.comparison} />
       <SpecialFiberTypes content={c.special} />
       <ClassificationQuiz content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

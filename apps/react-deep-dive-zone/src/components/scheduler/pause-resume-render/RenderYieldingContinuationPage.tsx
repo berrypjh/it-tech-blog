@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ContinuationResumeSection } from './sections/ContinuationResumeSection';
@@ -9,7 +10,6 @@ import { RenderYieldingCodePreview } from './sections/RenderYieldingCodePreview'
 import { RenderYieldingHero } from './sections/RenderYieldingHero';
 import { RenderYieldingKeyTakeaways } from './sections/RenderYieldingKeyTakeaways';
 import { RenderYieldingMission } from './sections/RenderYieldingMission';
-import { RenderYieldingNextCTA } from './sections/RenderYieldingNextCTA';
 import { RenderYieldingQuestionPanel } from './sections/RenderYieldingQuestionPanel';
 import { SchedulerWorkLoopFlow } from './sections/SchedulerWorkLoopFlow';
 import { ShouldYieldToHostSection } from './sections/ShouldYieldToHostSection';
@@ -36,7 +36,7 @@ export const RenderYieldingContinuationPage = ({ locale }: Props) => {
       <YieldContinuationSimulator content={c.simulator} />
       <RenderYieldingMission content={c.mission} />
       <RenderYieldingKeyTakeaways content={c.takeaways} />
-      <RenderYieldingNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

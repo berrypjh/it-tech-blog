@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AxisSection } from './sections/AxisSection';
@@ -9,7 +10,6 @@ import { CompareSection } from './sections/CompareSection';
 import { ConceptSection } from './sections/ConceptSection';
 import { ModesSection } from './sections/ModesSection';
 import { RnHero } from './sections/RnHero';
-import { RnNextCTA } from './sections/RnNextCTA';
 import { rnContent } from './content';
 
 type Props = { locale: Locale };
@@ -29,7 +29,7 @@ export const RnSharedPage = ({ locale }: Props) => {
       <ModesSection content={c.modes} />
       <BenefitSection content={c.benefit} sectionId={BENEFIT_SECTION_ID} />
       <ConceptSection content={c.concept} />
-      <RnNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

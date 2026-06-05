@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementToFiberReview } from './sections/ElementToFiberReview';
@@ -8,7 +9,6 @@ import { FiberFieldGroups } from './sections/FiberFieldGroups';
 import { FiberHero } from './sections/FiberHero';
 import { FiberIsNotJustNode } from './sections/FiberIsNotJustNode';
 import { FiberMiniQuiz } from './sections/FiberMiniQuiz';
-import { FiberNextCTA } from './sections/FiberNextCTA';
 import { FiberStructurePreview } from './sections/FiberStructurePreview';
 import { fiberNodeOverviewContent } from './content';
 
@@ -26,7 +26,7 @@ export const FiberNodeOverviewPage = ({ locale }: Props) => {
       <FiberIsNotJustNode content={c.notJustNode} />
       <FiberCodeCheckpoint content={c.checkpoint} />
       <FiberMiniQuiz content={c.quiz} />
-      <FiberNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

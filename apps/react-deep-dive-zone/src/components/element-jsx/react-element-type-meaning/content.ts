@@ -133,18 +133,12 @@ export type ReactElementTypeMeaningContent = {
     answerLabel: string;
     cards: QuizCard[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -389,18 +383,13 @@ const ko: ReactElementTypeMeaningContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
     title: '이제 key로 넘어갑니다',
-    line1: 'type이 렌더링 대상의 종류를 가리킨다는 점을 알았다면,',
-    line2Before: '이제 형제 요소 비교를 위해 별도로 관리되는 ',
-    line2Accent: 'key',
-    line2After: '를 살펴봅니다.',
-    primaryCta: '다음: key는 왜 특별한가?',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/element-key',
-    secondaryHref: '/element-structure',
+    description:
+      'type이 렌더링 대상의 종류를 가리킨다는 점을 알았다면, 이제 형제 요소 비교를 위해 별도로 관리되는 key를 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/element-key',
   },
 };
 
@@ -645,18 +634,13 @@ const en: ReactElementTypeMeaningContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Continue to the next step',
     title: 'Next up: the key',
-    line1: 'Now that you know type names the kind of render target,',
-    line2Before: 'look at ',
-    line2Accent: 'key',
-    line2After: ', the separate field used for sibling comparison.',
-    primaryCta: 'Next: why is key special?',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/element-key',
-    secondaryHref: '/element-structure',
+    description:
+      'Now that you know type names the kind of render target, look at key, the separate field used for sibling comparison.',
+    cta: 'Go to the next page',
+    href: '/element-key',
   },
 };
 

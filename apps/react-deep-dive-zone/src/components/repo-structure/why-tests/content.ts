@@ -131,11 +131,9 @@ export type TestCodeContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -375,15 +373,9 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '구현과 테스트를 함께 읽는 방법을 익혔다면,',
-      accentLine: {
-        before: '이제 버전 맥락을 읽는 법, 즉 ',
-        accent: 'CHANGELOG와 Releases',
-        after: '를 구분해봅니다.',
-      },
-      primaryCta: '다음: CHANGELOG와 Releases',
-      secondaryCta: '이전 페이지 다시 보기',
+      description: '이제 버전 맥락을 읽는 법, 즉 ' + 'CHANGELOG와 Releases' + '를 구분해봅니다.',
+      cta: '다음: CHANGELOG와 Releases',
       href: '/changelog',
-      restartHref: '/shared-role',
     },
   },
   en: {
@@ -591,15 +583,9 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'With implementation + tests mastered,',
-      accentLine: {
-        before: 'next learn to read the version context — ',
-        accent: 'CHANGELOG vs Releases',
-        after: '.',
-      },
-      primaryCta: 'Next: CHANGELOG vs Releases',
-      secondaryCta: 'Revisit the previous page',
+      description: 'next learn to read the version context — ' + 'CHANGELOG vs Releases' + '.',
+      cta: 'Next: CHANGELOG vs Releases',
       href: '/changelog',
-      restartHref: '/shared-role',
     },
   },
 };

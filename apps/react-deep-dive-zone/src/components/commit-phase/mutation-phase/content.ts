@@ -149,15 +149,12 @@ export type MutationPhaseContent = {
     description: string;
     points: ExtraPoint[];
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
-    secondaryLabel: string;
-    secondaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -571,16 +568,13 @@ const ko: MutationPhaseContent = {
     description: '실무에서 Mutation Phase를 생각할 때 짚어두면 좋은 4가지입니다.',
     points: extraKo,
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: '다음 단계로 이동',
+  nextStep: {
+    eyebrow: '다음 여정으로 함께 떠나요',
+    title: '다음: Placement',
     description:
       'Mutation Phase가 실제 반영 단계라면, 가장 먼저 이해하기 좋은 사례는 새 DOM node 삽입인 Placement입니다.',
-    primaryLabel: '다음: Placement',
-    primaryHref: '/placement',
-    secondaryLabel: '이번 챕터 다시 복습하기',
-    secondaryHref: '/commit-phase',
+    cta: '다음 페이지로 이동',
+    href: '/placement',
   },
 };
 
@@ -689,16 +683,13 @@ const en: MutationPhaseContent = {
     description: 'Four points worth keeping in mind when thinking about the Mutation Phase.',
     points: extraEn,
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'Continue the journey',
+    title: 'Next: Placement',
     description:
       'If the Mutation Phase is where the apply actually happens, the easiest case to start with is Placement — inserting a new DOM node.',
-    primaryLabel: 'Next: Placement',
-    primaryHref: '/placement',
-    secondaryLabel: 'Review this chapter again',
-    secondaryHref: '/commit-phase',
+    cta: 'Go to the next page',
+    href: '/placement',
   },
 };
 

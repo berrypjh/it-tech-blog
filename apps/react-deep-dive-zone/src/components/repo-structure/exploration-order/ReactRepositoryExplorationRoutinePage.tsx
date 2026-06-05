@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateRootPracticePanel } from './sections/CreateRootPracticePanel';
@@ -9,7 +10,6 @@ import { FinalExplorationRoutineSteps } from './sections/FinalExplorationRoutine
 import { FinalReadinessChecklist } from './sections/FinalReadinessChecklist';
 import { QuestionBasedPathCards } from './sections/QuestionBasedPathCards';
 import { ReadingFlowDiagram } from './sections/ReadingFlowDiagram';
-import { RepositoryStructureNextCTA } from './sections/RepositoryStructureNextCTA';
 import { explorationContent } from './content';
 
 type Props = { locale: Locale };
@@ -28,7 +28,7 @@ export const ReactRepositoryExplorationRoutinePage = ({ locale }: Props) => {
       <CreateRootPracticePanel content={c.practice1} />
       <ElementToFiberPracticePanel content={c.practice2} />
       <FinalReadinessChecklist content={c.checklist} />
-      <RepositoryStructureNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

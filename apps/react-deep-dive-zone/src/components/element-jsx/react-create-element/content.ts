@@ -134,18 +134,12 @@ export type ReactCreateElementContent = {
     resultCode: string;
     callouts: FieldCallout[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -370,18 +364,13 @@ const ko: ReactCreateElementContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: '이제 객체 자체를 해부할 시간',
-    line1: 'createElement가 실제로 Element 생성 흐름으로 이어진다는 점을 알았다면,',
-    line2Before: '이제 ',
-    line2Accent: 'React Element 객체 자체',
-    line2After: '를 해부해봅니다.',
-    primaryCta: '다음: React Element 객체 구조',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/element-structure',
-    secondaryHref: '/jsx-runtime',
+    title: '다음: React Element 객체 구조',
+    description:
+      'createElement가 실제로 Element 생성 흐름으로 이어진다는 점을 알았다면, 이제 React Element 객체 자체를 해부해봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/element-structure',
   },
 };
 
@@ -607,18 +596,13 @@ const en: ReactCreateElementContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Move to the next step',
-    title: 'Time to dissect the object itself',
-    line1: 'Now that you know createElement leads into Element creation,',
-    line2Before: 'next, dissect the ',
-    line2Accent: 'React Element object',
-    line2After: ' itself.',
-    primaryCta: 'Next: React Element object structure',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/element-structure',
-    secondaryHref: '/jsx-runtime',
+    title: 'Next: React Element object structure',
+    description:
+      'Now that you know createElement leads into Element creation, next, dissect the React Element object itself.',
+    cta: 'Go to the next page',
+    href: '/element-structure',
   },
 };
 

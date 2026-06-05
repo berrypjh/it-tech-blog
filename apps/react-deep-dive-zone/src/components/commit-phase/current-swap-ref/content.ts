@@ -157,10 +157,12 @@ export type RootCurrentRefContent = {
     answer: string;
     tip: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -522,11 +524,13 @@ const ko: RootCurrentRefContent = {
     answer: '아니다. commit 이후에 detach / attach가 끝난 최신 DOM과 맞춰진다.',
     tip: 'ref는 컴포넌트 생명주기와 연결된 값입니다. Render 중에는 사용하지 말고, commit 이후 Layout 이후 시점에서 사용하는 것이 안전합니다.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Layout Phase',
     description:
       '현재 트리 전환과 ref 처리를 이해했다면, 이제 DOM이 바뀐 직후 실행되는 Layout Phase로 넘어갑니다.',
-    primaryLabel: '다음: Layout Phase',
-    primaryHref: '/layout-phase',
+    cta: '다음 페이지로 이동',
+    href: '/layout-phase',
   },
 };
 
@@ -650,11 +654,13 @@ const en: RootCurrentRefContent = {
       'No. After the commit, it is aligned with the latest DOM that has gone through detach / attach.',
     tip: 'Refs are tied to component lifecycle. Avoid using them during Render — read them after the commit, after Layout.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Layout Phase',
     description:
       'Now that current-tree swap and ref handling are clear, the next stop is the Layout Phase that runs right after DOM changes.',
-    primaryLabel: 'Next: Layout Phase',
-    primaryHref: '/layout-phase',
+    cta: 'Go to the next page',
+    href: '/layout-phase',
   },
 };
 

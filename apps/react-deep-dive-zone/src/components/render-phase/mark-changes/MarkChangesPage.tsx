@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChangeExamples } from './sections/ChangeExamples';
@@ -24,7 +25,8 @@ export const MarkChangesPage = ({ locale }: Props) => {
       <MarkChangesCodeCheckpoint content={c.code} />
       <RenderVsCommit content={c.renderCommit} />
       <WhyTwoPhases content={c.whyTwoPhases} />
-      <MarkChangesQuizAndCTA quiz={c.quiz} cta={c.cta} />
+      <MarkChangesQuizAndCTA quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

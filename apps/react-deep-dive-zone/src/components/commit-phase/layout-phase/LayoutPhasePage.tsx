@@ -1,11 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClassLifecycleAndGuaranteeSection } from './sections/ClassLifecycleAndGuaranteeSection';
 import { LayoutCodeCheckpointSection } from './sections/LayoutCodeCheckpointSection';
 import { LayoutHeroSection } from './sections/LayoutHeroSection';
-import { LayoutQuizAndNextSection } from './sections/LayoutQuizAndNextSection';
+import { LayoutQuizSection } from './sections/LayoutQuizSection';
 import { LayoutWorkItemsSection } from './sections/LayoutWorkItemsSection';
 import { TooltipMeasurementExampleSection } from './sections/TooltipMeasurementExampleSection';
 import { UseLayoutEffectTimingSection } from './sections/UseLayoutEffectTimingSection';
@@ -27,7 +28,8 @@ export const LayoutPhasePage = ({ locale }: Props) => {
         guarantee={c.guarantee}
       />
       <LayoutCodeCheckpointSection content={c.checkpoint} />
-      <LayoutQuizAndNextSection quiz={c.quiz} cta={c.cta} />
+      <LayoutQuizSection quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

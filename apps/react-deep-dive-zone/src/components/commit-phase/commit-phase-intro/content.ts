@@ -141,15 +141,12 @@ export type CommitPhaseIntroContent = {
     answer: string;
     explanation: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
-    secondaryLabel: string;
-    secondaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -626,16 +623,13 @@ const ko: CommitPhaseIntroContent = {
     explanation:
       'Placement flag는 "이 노드를 삽입해야 한다"라는 계획일 뿐, DOM에 실제로 붙이는 작업은 Commit Phase의 Mutation 단계에서 이루어집니다.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 여정으로 함께 떠나요',
+    title: '다음: commitRoot',
     description:
       'Commit Phase의 역할을 잡았다면, 이제 finishedWork가 어떻게 실제 반영 파이프라인으로 들어가는지 살펴봅니다.',
-    primaryLabel: '다음: commitRoot',
-    primaryHref: '/commit-root',
-    secondaryLabel: '이번 챕터 다시 복습하기',
-    secondaryHref: '/commit-phase',
+    cta: '다음 페이지로 이동',
+    href: '/commit-root',
   },
 };
 
@@ -801,16 +795,13 @@ const en: CommitPhaseIntroContent = {
     explanation:
       'A Placement flag is only a plan that says "this node should be inserted". The actual DOM insertion is done during the Mutation step of the Commit Phase.',
   },
-  cta: {
-    number: '8',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'Continue the journey',
+    title: 'Next: commitRoot',
     description:
       'Now that the role of the Commit Phase is clear, see how finishedWork actually enters the real apply pipeline.',
-    primaryLabel: 'Next: commitRoot',
-    primaryHref: '/commit-root',
-    secondaryLabel: 'Review this chapter again',
-    secondaryHref: '/commit-phase',
+    cta: 'Go to the next page',
+    href: '/commit-root',
   },
 };
 

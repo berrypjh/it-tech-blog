@@ -123,13 +123,12 @@ export type FiberToRootContent = {
     answerTitle: string;
     answerBody: string;
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -365,14 +364,13 @@ const ko: FiberToRootContent = {
     answerBody:
       'childLanes가 없다면 React는 매 렌더마다 모든 자식을 다시 훑어야 합니다. childLanes에 lane이 한 번 표시되면 부모는 "이 서브트리에 작업이 있다"는 사실만 보고도 빠르게 분기할 수 있습니다.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: scheduleUpdateOnFiber',
     description:
       'Fiber에서 Root까지 업데이트 흔적을 표시했다면, 이제 Root 자체를 스케줄링 흐름에 등록할 차례입니다.',
-    buttonLabel: '다음: scheduleUpdateOnFiber',
-    buttonHref: '/schedule-update-on-fiber',
+    cta: '다음: scheduleUpdateOnFiber',
+    href: '/schedule-update-on-fiber',
   },
 };
 
@@ -588,14 +586,13 @@ const en: FiberToRootContent = {
     answerBody:
       'Without childLanes, React would have to re-scan every child each render. With childLanes set once, a parent can skip subtrees that have no work and dive into only the ones that do.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: scheduleUpdateOnFiber',
     description:
       'Now that the lane trail is laid from Fiber to Root, it is time to register the Root itself into the scheduling pipeline.',
-    buttonLabel: 'Next: scheduleUpdateOnFiber',
-    buttonHref: '/schedule-update-on-fiber',
+    cta: 'Next: scheduleUpdateOnFiber',
+    href: '/schedule-update-on-fiber',
   },
 };
 

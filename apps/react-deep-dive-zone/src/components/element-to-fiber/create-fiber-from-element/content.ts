@@ -118,13 +118,12 @@ export type CreateFiberFromElementContent = {
     githubCta: string;
     githubHref: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -329,14 +328,13 @@ const ko: CreateFiberFromElementContent = {
     githubHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
-  next: {
-    badge: '07',
+  nextStep: {
     eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
+    title: '다음: createFiberFromTypeAndProps',
     description:
       'Fiber 변환의 입구를 확인했다면, 이제 React가 type을 보고 어떤 Fiber를 만들지 고르는 핵심 분기를 살펴봅니다.',
-    primaryCta: '다음: createFiberFromTypeAndProps',
-    primaryHref: '/create-fiber-from-type-and-props',
+    cta: '다음 페이지로 이동',
+    href: '/create-fiber-from-type-and-props',
   },
 };
 
@@ -542,14 +540,13 @@ const en: CreateFiberFromElementContent = {
     githubHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
-  next: {
-    badge: '07',
+  nextStep: {
     eyebrow: 'Next page',
-    title: 'Move on',
+    title: 'Next: createFiberFromTypeAndProps',
     description:
       'Now that the entry point of Fiber conversion is clear, look at the branch where React turns type into a specific Fiber kind.',
-    primaryCta: 'Next: createFiberFromTypeAndProps',
-    primaryHref: '/create-fiber-from-type-and-props',
+    cta: 'Go to the next page',
+    href: '/create-fiber-from-type-and-props',
   },
 };
 

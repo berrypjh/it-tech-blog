@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CleanupVsHostRemoveSection } from './sections/CleanupVsHostRemoveSection';
@@ -7,7 +8,7 @@ import { DeletionCleanupItemsSection } from './sections/DeletionCleanupItemsSect
 import { DeletionCodeCheckpointSection } from './sections/DeletionCodeCheckpointSection';
 import { DeletionHeroSection } from './sections/DeletionHeroSection';
 import { DeletionPipelineSection } from './sections/DeletionPipelineSection';
-import { DeletionQuizAndNextSection } from './sections/DeletionQuizAndNextSection';
+import { DeletionQuizSection } from './sections/DeletionQuizSection';
 import { ModalDeletionExampleSection } from './sections/ModalDeletionExampleSection';
 import { deletionContent } from './content';
 
@@ -24,7 +25,8 @@ export const DeletionPage = ({ locale }: Props) => {
       <ModalDeletionExampleSection content={c.modal} />
       <DeletionCodeCheckpointSection content={c.checkpoint} />
       <CleanupVsHostRemoveSection content={c.cleanupVsRemove} />
-      <DeletionQuizAndNextSection quiz={c.quiz} cta={c.cta} />
+      <DeletionQuizSection quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -139,10 +139,12 @@ export type UpdatePhaseContent = {
     answer: string;
     tip: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -378,11 +380,13 @@ const ko: UpdatePhaseContent = {
     answer: 'Update. 텍스트 노드는 기존 node를 유지하고 내용만 새 값으로 갱신합니다.',
     tip: 'type과 key가 같이 Fiber가 재사용된 경우에만 Update로 처리됩니다. 다른 type / key라면 삭제 및 작성이 필요할 수 있습니다.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Deletion',
     description:
       '삽입과 수정까지 봤다면, 이제 가장 많은 cleanup을 동반하는 삭제 흐름을 살펴봅니다.',
-    primaryLabel: '다음: Deletion',
-    primaryHref: '/deletion',
+    cta: '다음 페이지로 이동',
+    href: '/deletion',
   },
 };
 
@@ -536,11 +540,13 @@ const en: UpdatePhaseContent = {
     answer: 'Update. The text node is kept and only its value is updated.',
     tip: 'Update applies when the same Fiber is reused with the same type / key. Different type / key may require delete + insert instead.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Deletion',
     description:
       'Now that insert and mutate are clear, the next stop is the delete flow — the one with the most cleanup.',
-    primaryLabel: 'Next: Deletion',
-    primaryHref: '/deletion',
+    cta: 'Go to the next page',
+    href: '/deletion',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ExampleJsxTypeCheck } from './sections/ExampleJsxTypeCheck';
@@ -8,7 +9,6 @@ import { HostComponentHero } from './sections/HostComponentHero';
 import { HostMiniQuiz } from './sections/HostMiniQuiz';
 import { HostVsDomComparison } from './sections/HostVsDomComparison';
 import { ModernHostFamily } from './sections/ModernHostFamily';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { hostComponentFiberContent } from './content';
@@ -28,7 +28,7 @@ export const HostComponentFiberPage = ({ locale }: Props) => {
       <ModernHostFamily content={c.modern} />
       <HostMiniQuiz content={c.quiz} />
       <QuickChecklist content={c.checklist} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

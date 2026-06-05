@@ -118,13 +118,12 @@ export type EnsureRootScheduledContent = {
     answerTitle: string;
     answerBody: string;
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -288,14 +287,13 @@ const ko: EnsureRootScheduledContent = {
     answerTitle: '아니다.',
     answerBody: 'Root를 스케줄에 넣고 이후 처리 흐름이 진행되도록 예약한다.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: 전체 업데이트 흐름 정리',
     description:
       '업데이트를 받은 Root가 스케줄링 흐름에 들어갔다면, 이제 지금까지의 과정을 한 번에 연결해봅니다.',
-    buttonLabel: '다음: 전체 업데이트 흐름 정리',
-    buttonHref: '/update-to-render',
+    cta: '다음: 전체 업데이트 흐름 정리',
+    href: '/update-to-render',
   },
 };
 
@@ -447,14 +445,13 @@ const en: EnsureRootScheduledContent = {
     answerTitle: 'No, it does not.',
     answerBody: 'It puts the Root on the schedule and reserves later processing.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: the full update flow',
     description:
       'With the Root in the scheduling flow, it is time to connect every step we have walked through into one picture.',
-    buttonLabel: 'Next: the full update flow',
-    buttonHref: '/update-to-render',
+    cta: 'Next: the full update flow',
+    href: '/update-to-render',
   },
 };
 

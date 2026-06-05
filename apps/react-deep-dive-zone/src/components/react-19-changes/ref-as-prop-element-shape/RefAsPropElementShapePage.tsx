@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementRefDeprecationSection } from './sections/ElementRefDeprecationSection';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PatternSection } from './sections/PatternSection';
 import { PropsRefSourceOfTruthFlow } from './sections/PropsRefSourceOfTruthFlow';
 import { RefAsPropHero } from './sections/RefAsPropHero';
@@ -53,7 +53,7 @@ export const RefAsPropElementShapePage = ({ locale }: Props) => {
       <RefPathComparisonInteractor content={c.pathInteractor} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

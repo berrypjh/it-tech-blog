@@ -122,13 +122,12 @@ export type FragmentModeFiberContent = {
     title: string;
     items: ChecklistItem[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -342,14 +341,13 @@ const ko: FragmentModeFiberContent = {
       { id: 'c5', text: '일반 타입과 다르게 처리되어야 하는 이유가 있다' },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
+    title: '다음: key와 Fiber 재사용',
     description:
       '어떤 Element가 어떤 Fiber가 되는지 봤다면, 이제 기존 Fiber를 재사용할지 판단하는 key의 역할로 넘어갑니다.',
-    primaryCta: '다음: key와 Fiber 재사용',
-    primaryHref: '/key-reuse',
+    cta: '다음 페이지로 이동',
+    href: '/key-reuse',
   },
 };
 
@@ -568,14 +566,13 @@ const en: FragmentModeFiberContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Next page',
-    title: 'Move on',
+    title: 'Next: key & Fiber reuse',
     description:
       'You have seen which Elements become which Fibers. Next, look at how key decides whether to reuse an existing Fiber.',
-    primaryCta: 'Next: key & Fiber reuse',
-    primaryHref: '/key-reuse',
+    cta: 'Go to the next page',
+    href: '/key-reuse',
   },
 };
 

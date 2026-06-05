@@ -141,18 +141,12 @@ export type JsxTransformFlowContent = {
     answerLabel: string;
     cards: QuizCard[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -371,18 +365,13 @@ const ko: JsxTransformFlowContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: '변환의 “결과 함수들”을 차례로 봅니다',
-    line1: 'JSX가 함수 호출로 바뀐다는 점을 알았다면,',
-    line2Before: '이제 그 중심에 있는 ',
-    line2Accent: 'jsx / jsxs / jsxDEV',
-    line2After: '가 각각 어떤 역할을 하는지 살펴봅니다.',
-    primaryCta: '다음: jsx / jsxs / jsxDEV',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/jsx-runtime',
-    secondaryHref: '/jsx-is-not-html',
+    title: '다음: jsx / jsxs / jsxDEV',
+    description:
+      'JSX가 함수 호출로 바뀐다는 점을 알았다면, 이제 그 중심에 있는 jsx / jsxs / jsxDEV가 각각 어떤 역할을 하는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/jsx-runtime',
   },
 };
 
@@ -601,18 +590,13 @@ const en: JsxTransformFlowContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Continue to the next step',
-    title: 'Meet the runtime functions themselves',
-    line1: 'Now that you know JSX becomes function calls,',
-    line2Before: 'next, see what ',
-    line2Accent: 'jsx / jsxs / jsxDEV',
-    line2After: ' each actually do.',
-    primaryCta: 'Next: jsx / jsxs / jsxDEV',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/jsx-runtime',
-    secondaryHref: '/jsx-is-not-html',
+    title: 'Next: jsx / jsxs / jsxDEV',
+    description:
+      'Now that you know JSX becomes function calls, next, see what jsx / jsxs / jsxDEV each actually do.',
+    cta: 'Go to the next page',
+    href: '/jsx-runtime',
   },
 };
 

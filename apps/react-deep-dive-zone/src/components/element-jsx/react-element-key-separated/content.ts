@@ -135,18 +135,12 @@ export type ReactElementKeySeparatedContent = {
     steps: FiberFlowStep[];
     emphasis: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -349,18 +343,13 @@ const ko: ReactElementKeySeparatedContent = {
     ],
     emphasis: 'key가 같으면 상태를 유지하고, 다르면 새로운 Fiber가 만들어진다.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: '이제 ref로 시선을 옮깁니다',
-    line1: 'key가 React 내부 비교를 위한 별도 값이라는 점을 알았다면,',
-    line2Before: '이번에는 React 19에서 특히 중요해진 ',
-    line2Accent: 'ref',
-    line2After: '의 변화로 넘어갑니다.',
-    primaryCta: '다음: ref는 React 19에서 어떻게 달라졌나?',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/element-ref',
-    secondaryHref: '/element-type',
+    title: '다음: ref는 React 19에서 어떻게 달라졌나?',
+    description:
+      'key가 React 내부 비교를 위한 별도 값이라는 점을 알았다면, 이번에는 React 19에서 특히 중요해진 ref의 변화로 넘어갑니다.',
+    cta: '다음 페이지로 이동',
+    href: '/element-ref',
   },
 };
 
@@ -565,18 +554,13 @@ const en: ReactElementKeySeparatedContent = {
     ],
     emphasis: 'Same key keeps state; different key creates a new Fiber.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Continue to the next step',
-    title: 'Next up: ref',
-    line1: 'Now that you know key is a separate value for React-side comparison,',
-    line2Before: 'next, look at how ',
-    line2Accent: 'ref',
-    line2After: ' changed in React 19.',
-    primaryCta: 'Next: how did ref change in React 19?',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/element-ref',
-    secondaryHref: '/element-type',
+    title: 'Next: how did ref change in React 19?',
+    description:
+      'Now that you know key is a separate value for React-side comparison, next, look at how ref changed in React 19.',
+    cta: 'Go to the next page',
+    href: '/element-ref',
   },
 };
 

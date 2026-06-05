@@ -134,14 +134,9 @@ export type ReconcilerContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -443,15 +438,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      line1: 'reconciler가 무엇을 계산하는지 알았다면,',
-      line2Before: '이제 그 계산 결과를 실제 환경에 반영하는 쪽과의 경계, ',
-      line2Accent: 'renderer와 reconciler',
-      line2After: '를 살펴봅니다.',
-      primaryCta: '다음: renderer와 reconciler →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/renderer-vs-reconciler',
-      secondaryHref: '/react-dom-package',
+      title: '다음: renderer와 reconciler',
+      description:
+        'reconciler가 무엇을 계산하는지 알았다면, 이제 그 계산 결과를 실제 환경에 반영하는 쪽과의 경계, renderer와 reconciler를 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/renderer-vs-reconciler',
     },
   },
   en: {
@@ -648,15 +639,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: 'Move to the next step',
-      line1: 'You now know what the reconciler computes.',
-      line2Before: 'Next, the boundary between the renderer and the reconciler — ',
-      line2Accent: 'renderer vs reconciler',
-      line2After: '.',
-      primaryCta: 'Next: renderer vs reconciler →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/renderer-vs-reconciler',
-      secondaryHref: '/react-dom-package',
+      title: 'Next: renderer vs reconciler',
+      description:
+        'You now know what the reconciler computes. Next, the boundary between the renderer and the reconciler — renderer vs reconciler.',
+      cta: 'Go to the next page',
+      href: '/renderer-vs-reconciler',
     },
   },
 };

@@ -118,12 +118,9 @@ export type RepoOverviewContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    /** [before, accent, after] — accent는 mint/teal로 강조된다. */
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -417,15 +414,9 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '저장소 루트 구조를 읽었다면,',
-      accentLine: {
-        before: '이제 React 구현의 중심인 ',
-        accent: 'packages 디렉터리',
-        after: '로 들어갑니다.',
-      },
-      primaryCta: '다음: packages 디렉터리 읽기',
-      secondaryCta: '처음부터 다시 보기',
+      description: '이제 React 구현의 중심인 ' + 'packages 디렉터리' + '로 들어갑니다.',
+      cta: '다음: packages 디렉터리 읽기',
       href: '/packages-dir',
-      restartHref: '#hero-heading',
     },
   },
   en: {
@@ -720,15 +711,9 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'You have read the repo root structure,',
-      accentLine: {
-        before: 'now step into ',
-        accent: 'packages',
-        after: ', the heart of the React implementation.',
-      },
-      primaryCta: 'Next: Read the packages directory',
-      secondaryCta: 'Restart from the top',
+      description: 'now step into ' + 'packages' + ', the heart of the React implementation.',
+      cta: 'Next: Read the packages directory',
       href: '/packages-dir',
-      restartHref: '#hero-heading',
     },
   },
 };

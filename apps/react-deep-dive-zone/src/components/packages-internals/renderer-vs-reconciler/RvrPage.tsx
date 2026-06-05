@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ComparisonSection } from './sections/ComparisonSection';
@@ -8,7 +9,6 @@ import { HostConfigSection } from './sections/HostConfigSection';
 import { QuickCheckSection } from './sections/QuickCheckSection';
 import { RoleSummarySection } from './sections/RoleSummarySection';
 import { RvrHero } from './sections/RvrHero';
-import { RvrNextCTA } from './sections/RvrNextCTA';
 import { SharedFlowSection } from './sections/SharedFlowSection';
 import { rvrContent } from './content';
 
@@ -29,7 +29,7 @@ export const RvrPage = ({ locale }: Props) => {
       <DomExampleSection content={c.domExample} sectionId={DOM_EXAMPLE_SECTION_ID} />
       <SharedFlowSection content={c.flow} />
       <QuickCheckSection content={c.quiz} />
-      <RvrNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

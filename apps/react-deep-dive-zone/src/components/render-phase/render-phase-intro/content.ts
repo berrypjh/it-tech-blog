@@ -114,13 +114,12 @@ export type RenderPhaseIntroContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -441,14 +440,13 @@ const ko: RenderPhaseIntroContent = {
       'Render Phase에서 새로운 div가 필요하다고 판단되면 즉시 DOM에 appendChild가 실행될까?',
     answer: '아니다. 실제 DOM 반영은 Commit Phase에서 일어난다.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: workLoopSync와 workLoopConcurrent',
     description:
       'Render Phase가 계산 단계라는 점을 이해했다면, 이제 React가 그 계산을 어떤 반복 구조로 진행하는지 살펴봅니다.',
-    buttonLabel: '다음: workLoopSync와 workLoopConcurrent',
-    buttonHref: '/work-loop',
+    cta: '다음 페이지로 이동',
+    href: '/work-loop',
   },
 };
 
@@ -571,14 +569,13 @@ const en: RenderPhaseIntroContent = {
       'If the Render Phase decides a new div is needed, will appendChild fire on the DOM immediately?',
     answer: 'No. Real DOM updates only happen in the Commit Phase.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: workLoopSync and workLoopConcurrent',
     description:
       'Now that you understand the Render Phase as a compute step, see what loop structure React uses to drive that compute.',
-    buttonLabel: 'Next: workLoopSync and workLoopConcurrent',
-    buttonHref: '/work-loop',
+    cta: 'Go to the next page',
+    href: '/work-loop',
   },
 };
 

@@ -160,14 +160,12 @@ export type PromiseVsErrorSplitContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    number: string;
+  nextStep: {
+    eyebrow: string;
     title: string;
     description: string;
-    nextLabel: string;
-    nextTitle: string;
-    nextHref: string;
-    secondary: { label: string; href: string }[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -440,17 +438,12 @@ throw new Error("failed");`,
       },
     ],
   },
-  cta: {
-    number: '12',
-    title: '다음 단계로 이동하기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Suspense Boundary의 fallback과 retry',
     description: '이제 Suspense가 어떻게 fallback을 표시하고, 다시 시도하는지 알아보세요.',
-    nextLabel: '다음',
-    nextTitle: 'Suspense Boundary의 fallback과 retry',
-    nextHref: '/suspense-fallback-retry',
-    secondary: [
-      { label: '진행 흐름 다시 보기', href: '#flowmap-heading' },
-      { label: 'React 소스코드 열기', href: THROW_URL },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/suspense-fallback-retry',
   },
 };
 
@@ -717,17 +710,12 @@ throw new Error("failed");`,
       },
     ],
   },
-  cta: {
-    number: '12',
-    title: 'Move on to the next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Suspense Boundary fallback and retry',
     description: 'Next, see how Suspense actually shows the fallback and retries.',
-    nextLabel: 'Next',
-    nextTitle: 'Suspense Boundary fallback and retry',
-    nextHref: '/suspense-fallback-retry',
-    secondary: [
-      { label: 'Replay the flow', href: '#flowmap-heading' },
-      { label: 'Open the React source', href: THROW_URL },
-    ],
+    cta: 'Go to the next page',
+    href: '/suspense-fallback-retry',
   },
 };
 

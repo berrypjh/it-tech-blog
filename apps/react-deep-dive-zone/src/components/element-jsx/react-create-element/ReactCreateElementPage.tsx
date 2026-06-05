@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateElementFlow } from './sections/CreateElementFlow';
 import { CreateElementHero } from './sections/CreateElementHero';
 import { CreateElementInputStructure } from './sections/CreateElementInputStructure';
-import { CreateElementNextPageCta } from './sections/CreateElementNextPageCta';
 import { CreateElementSourceCheckpoint } from './sections/CreateElementSourceCheckpoint';
 import { CreateElementTransformCard } from './sections/CreateElementTransformCard';
 import { JsxCreateElementComparison } from './sections/JsxCreateElementComparison';
@@ -26,7 +26,7 @@ export const ReactCreateElementPage = ({ locale }: Props) => {
       <CreateElementFlow content={c.flow} />
       <JsxRuntimeCreateElementRelation content={c.relation} />
       <CreateElementTransformCard content={c.transform} />
-      <CreateElementNextPageCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateRootCheckpoint } from './sections/CreateRootCheckpoint';
 import { ReactDomComparisonTable } from './sections/ReactDomComparisonTable';
 import { ReactDomEntrypointsSection } from './sections/ReactDomEntrypointsSection';
 import { ReactDomMisconceptionSection } from './sections/ReactDomMisconceptionSection';
-import { ReactDomNextCTA } from './sections/ReactDomNextCTA';
 import { ReactDomQuickQuiz } from './sections/ReactDomQuickQuiz';
 import { ReactDomUsageFlowSection } from './sections/ReactDomUsageFlowSection';
 import { ReactVsReactDomHero } from './sections/ReactVsReactDomHero';
@@ -28,7 +28,7 @@ export const ReactVsReactDomPage = ({ locale }: Props) => {
       <CreateRootCheckpoint content={c.checkpoint} />
       <ReactDomEntrypointsSection content={c.entrypoints} />
       <ReactDomQuickQuiz content={c.quiz} />
-      <ReactDomNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FunctionComponentCodeCheckpoint } from './sections/FunctionComponentCodeCheckpoint';
@@ -26,7 +27,8 @@ export const FunctionComponentRenderPhasePage = ({ locale }: Props) => {
       <NextChildrenExplanation content={c.nextChildren} />
       <FunctionComponentCodeCheckpoint content={c.code} />
       <HooksChapterConnection content={c.hooksLink} />
-      <FunctionComponentQuizAndCTA quiz={c.quiz} cta={c.cta} />
+      <FunctionComponentQuizAndCTA quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

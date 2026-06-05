@@ -1,12 +1,13 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeforeMutationCodeCheckpointSection } from './sections/BeforeMutationCodeCheckpointSection';
 import { BeforeMutationHeroSection } from './sections/BeforeMutationHeroSection';
 import { BeforeMutationModernCorrectionSection } from './sections/BeforeMutationModernCorrectionSection';
 import { BeforeMutationNeedSection } from './sections/BeforeMutationNeedSection';
-import { BeforeMutationQuizAndNextSection } from './sections/BeforeMutationQuizAndNextSection';
+import { BeforeMutationQuizSection } from './sections/BeforeMutationQuizSection';
 import { ClassSnapshotSection } from './sections/ClassSnapshotSection';
 import { RootBeforeMutationSection } from './sections/RootBeforeMutationSection';
 import { SnapshotConceptSection } from './sections/SnapshotConceptSection';
@@ -26,7 +27,8 @@ export const BeforeMutationPage = ({ locale }: Props) => {
       <BeforeMutationCodeCheckpointSection content={c.checkpoint} />
       <RootBeforeMutationSection content={c.rootPerspective} />
       <BeforeMutationModernCorrectionSection content={c.modern} />
-      <BeforeMutationQuizAndNextSection quiz={c.quiz} cta={c.cta} />
+      <BeforeMutationQuizSection quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

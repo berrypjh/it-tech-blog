@@ -124,13 +124,12 @@ export type CreateFiberFromTypeAndPropsContent = {
     answerLabel: string;
     cards: QuizCard[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -450,14 +449,13 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       },
     ],
   },
-  next: {
-    badge: '07',
+  nextStep: {
     eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
+    title: '다음: Host Component Fiber',
     description:
       'type이 Fiber 종류를 결정한다는 점을 이해했다면, 이제 문자열 type을 가진 DOM 태그가 어떻게 Host Component Fiber가 되는지 살펴봅니다.',
-    primaryCta: '다음: Host Component Fiber',
-    primaryHref: '/host-fiber',
+    cta: '다음 페이지로 이동',
+    href: '/host-fiber',
   },
 };
 
@@ -707,14 +705,13 @@ const en: CreateFiberFromTypeAndPropsContent = {
       },
     ],
   },
-  next: {
-    badge: '07',
+  nextStep: {
     eyebrow: 'Next page',
-    title: 'Move on',
+    title: 'Next: Host Component Fiber',
     description:
       'Now that you see how type drives the Fiber kind, look at how a string-typed DOM tag becomes a Host Component Fiber.',
-    primaryCta: 'Next: Host Component Fiber',
-    primaryHref: '/host-fiber',
+    cta: 'Go to the next page',
+    href: '/host-fiber',
   },
 };
 

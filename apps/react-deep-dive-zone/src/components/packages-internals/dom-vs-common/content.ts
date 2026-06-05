@@ -144,17 +144,9 @@ export type DvcContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1Before: string;
-    line1Accent: string;
-    line1After: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    line3: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -446,17 +438,10 @@ export const dvcContent: Record<Locale, DvcContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '다음 단계로 이동하기',
-      line1Before: '',
-      line1Accent: '공통 로직',
-      line1After: '과',
-      line2Before: ' ',
-      line2Accent: 'DOM 전용 로직',
-      line2After: '의 경계까지 보았다면,',
-      line3: '마지막으로 패키지 분리가 React 설계에 어떤 의미를 가지는지 정리합니다.',
-      primaryCta: '다음: 패키지 분리가 주는 의미 →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/package-design',
-      secondaryHref: '/react-native-shared',
+      description:
+        '공통 로직과 DOM 전용 로직의 경계까지 보았다면, 마지막으로 패키지 분리가 React 설계에 어떤 의미를 가지는지 정리합니다.',
+      cta: '다음: 패키지 분리가 주는 의미 →',
+      href: '/package-design',
     },
   },
   en: {
@@ -707,17 +692,10 @@ export const dvcContent: Record<Locale, DvcContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'Move to the next step',
-      line1Before: 'Now that you have seen the line between ',
-      line1Accent: 'shared logic',
-      line1After: ' and',
-      line2Before: ' ',
-      line2Accent: 'DOM-only logic',
-      line2After: ',',
-      line3: 'we wrap up with the design meaning of package separation.',
-      primaryCta: 'Next: design meaning of package split →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/package-design',
-      secondaryHref: '/react-native-shared',
+      description:
+        'Now that you have seen the line between shared logic and DOM-only logic, we wrap up with the design meaning of package separation.',
+      cta: 'Next: design meaning of package split →',
+      href: '/package-design',
     },
   },
 };

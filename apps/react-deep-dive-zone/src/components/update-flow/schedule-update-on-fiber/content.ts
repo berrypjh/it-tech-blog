@@ -125,13 +125,12 @@ export type ScheduleUpdateOnFiberContent = {
     answerTitle: string;
     answerBody: string;
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -323,14 +322,13 @@ const ko: ScheduleUpdateOnFiberContent = {
     answerTitle: '아니다.',
     answerBody: 'Root에 작업이 있다는 사실을 표시하고 다음 스케줄링 단계로 넘긴다.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: ensureRootIsScheduled',
     description:
       'Root가 업데이트 대기 상태로 표시되었다면, 이제 React는 그 Root를 실제 스케줄 목록에 등록해야 합니다.',
-    buttonLabel: '다음: ensureRootIsScheduled',
-    buttonHref: '/ensure-root-scheduled',
+    cta: '다음: ensureRootIsScheduled',
+    href: '/ensure-root-scheduled',
   },
 };
 
@@ -517,14 +515,13 @@ const en: ScheduleUpdateOnFiberContent = {
     answerBody:
       'It only records that the Root has work, then passes control to the next scheduling step.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: ensureRootIsScheduled',
     description:
       'Once the Root is marked as having pending work, React needs to actually put that Root on the scheduling list.',
-    buttonLabel: 'Next: ensureRootIsScheduled',
-    buttonHref: '/ensure-root-scheduled',
+    cta: 'Next: ensureRootIsScheduled',
+    href: '/ensure-root-scheduled',
   },
 };
 

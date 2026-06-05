@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FunctionClassExampleComparison } from './sections/FunctionClassExampleComparison';
 import { FunctionClassHero } from './sections/FunctionClassHero';
 import { FunctionClassMiniQuiz } from './sections/FunctionClassMiniQuiz';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { QuickChecklist } from './sections/QuickChecklist';
 import { ShouldConstructExplanation } from './sections/ShouldConstructExplanation';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
@@ -28,7 +28,7 @@ export const FunctionClassComponentFiberPage = ({ locale }: Props) => {
       <WhyFiberTagsDiffer content={c.reasons} />
       <FunctionClassMiniQuiz content={c.quiz} />
       <QuickChecklist content={c.checklist} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

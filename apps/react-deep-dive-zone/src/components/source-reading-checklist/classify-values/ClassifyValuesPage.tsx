@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClassificationGameSection } from './sections/ClassificationGameSection';
@@ -10,7 +11,6 @@ import { FiberStructureSection } from './sections/FiberStructureSection';
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { TodayQuestionSection } from './sections/TodayQuestionSection';
 import { WhyClassifySection } from './sections/WhyClassifySection';
 import { valueClassificationContent } from './content';
@@ -32,7 +32,7 @@ export const ClassifyValuesPage = ({ locale }: Props) => {
       <ClassificationGameSection content={c.game} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClientImportSection } from './sections/ClientImportSection';
@@ -7,7 +8,6 @@ import { ConnectionDiagram } from './sections/ConnectionDiagram';
 import { FilesSection } from './sections/FilesSection';
 import { QuizSection } from './sections/QuizSection';
 import { SharedHero } from './sections/SharedHero';
-import { SharedNextCTA } from './sections/SharedNextCTA';
 import { SymbolsCheckpoint } from './sections/SymbolsCheckpoint';
 import { WhyShared } from './sections/WhyShared';
 import { sharedContent } from './content';
@@ -28,7 +28,7 @@ export const SharedFoundationPage = ({ locale }: Props) => {
       <ClientImportSection content={c.clientImport} />
       <ConnectionDiagram content={c.connection} />
       <QuizSection content={c.quiz} />
-      <SharedNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

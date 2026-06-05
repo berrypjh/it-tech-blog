@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BoundaryQuizSection } from './sections/BoundaryQuizSection';
 import { ComparisonTableSection } from './sections/ComparisonTableSection';
 import { ConcernsSection } from './sections/ConcernsSection';
 import { DvcHero } from './sections/DvcHero';
-import { DvcNextCTA } from './sections/DvcNextCTA';
 import { FileCompareSection } from './sections/FileCompareSection';
 import { PathSection } from './sections/PathSection';
 import { ReadingMethodSection } from './sections/ReadingMethodSection';
@@ -29,7 +29,7 @@ export const DomVsCommonPage = ({ locale }: Props) => {
       <ConcernsSection content={c.concerns} />
       <BoundaryQuizSection content={c.quiz} />
       <PathSection content={c.path} />
-      <DvcNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

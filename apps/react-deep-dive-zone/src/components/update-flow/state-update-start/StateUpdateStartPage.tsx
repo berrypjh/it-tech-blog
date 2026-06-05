@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { InternalFlowPreviewSection } from './sections/InternalFlowPreviewSection';
 import { KeySummaryBanner } from './sections/KeySummaryBanner';
 import { LearningQuestionSection } from './sections/LearningQuestionSection';
 import { MisconceptionCompareSection } from './sections/MisconceptionCompareSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { SetStateHero } from './sections/SetStateHero';
 import { StateSnapshotSection } from './sections/StateSnapshotSection';
 import { VisibleCodeSection } from './sections/VisibleCodeSection';
@@ -26,7 +26,7 @@ export const StateUpdateStartPage = ({ locale }: Props) => {
       <StateSnapshotSection content={c.snapshot} />
       <LearningQuestionSection content={c.question} />
       <KeySummaryBanner content={c.summary} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

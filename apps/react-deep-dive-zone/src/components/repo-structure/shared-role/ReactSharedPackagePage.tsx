@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { SharedHero } from './sections/SharedHero';
-import { SharedNextCTA } from './sections/SharedNextCTA';
 import { SharedPackageConnectionDiagram } from './sections/SharedPackageConnectionDiagram';
 import { SharedQuickQuiz } from './sections/SharedQuickQuiz';
 import { SharedRepresentativeFiles } from './sections/SharedRepresentativeFiles';
@@ -28,7 +28,7 @@ export const ReactSharedPackagePage = ({ locale }: Props) => {
       <SharedUsageCheckpoint content={c.checkpoint} />
       <SharedPackageConnectionDiagram content={c.connection} />
       <SharedQuickQuiz content={c.quiz} />
-      <SharedNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

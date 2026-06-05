@@ -142,17 +142,9 @@ export type RnContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    line3Before: string;
-    line3Accent: string;
-    line3After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -366,18 +358,11 @@ export const rnContent: Record<Locale, RnContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: '다음 단계로 이동하기',
-      line1: '공통 계산과 환경별 반영의 차이를 봤다면,',
-      line2Before: '이번에는 ',
-      line2Accent: 'DOM',
-      line2After: '에만 필요한 코드와',
-      line3Before: '',
-      line3Accent: 'renderer 공통 코드',
-      line3After: '의 경계를 더 정확히 살펴봅니다.',
-      primaryCta: '다음: DOM 전용 코드와 공통 코드 →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/dom-vs-common',
-      secondaryHref: '/shared-constants',
+      title: '다음: DOM 전용 코드와 공통 코드',
+      description:
+        '공통 계산과 환경별 반영의 차이를 봤다면, 이번에는 DOM에만 필요한 코드와 renderer 공통 코드의 경계를 더 정확히 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/dom-vs-common',
     },
   },
   en: {
@@ -597,18 +582,11 @@ export const rnContent: Record<Locale, RnContent> = {
     },
     nextStep: {
       eyebrow: '08 · next step',
-      title: 'Move to the next step',
-      line1: 'Now that compute vs apply is clear,',
-      line2Before: 'we look closer at what is ',
-      line2Accent: 'DOM',
-      line2After: '-only code versus',
-      line3Before: ' ',
-      line3Accent: 'renderer-common code',
-      line3After: ' — and where the line is.',
-      primaryCta: 'Next: DOM-only vs common renderer code →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/dom-vs-common',
-      secondaryHref: '/shared-constants',
+      title: 'Next: DOM-only vs common renderer code',
+      description:
+        'Now that compute vs apply is clear, we look closer at what is DOM-only code versus renderer-common code — and where the line is.',
+      cta: 'Go to the next page',
+      href: '/dom-vs-common',
     },
   },
 };

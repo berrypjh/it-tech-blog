@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BridgeToFiberHooksSection } from './sections/BridgeToFiberHooksSection';
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { PublicApiCallGraphSection } from './sections/PublicApiCallGraphSection';
 import { ResolveDispatcherSection } from './sections/ResolveDispatcherSection';
 import { SamePatternAcrossApisSection } from './sections/SamePatternAcrossApisSection';
@@ -32,7 +32,7 @@ export const FindPublicApiEntryPage = ({ locale }: Props) => {
       <PublicApiCallGraphSection content={c.callGraph} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

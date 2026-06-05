@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { InteractivePriorityMap } from './sections/InteractivePriorityMap';
@@ -11,7 +12,6 @@ import { PriorityComparisonTable } from './sections/PriorityComparisonTable';
 import { PriorityConnectionFlow } from './sections/PriorityConnectionFlow';
 import { PriorityFollowAlongMission } from './sections/PriorityFollowAlongMission';
 import { PriorityKeyTakeaways } from './sections/PriorityKeyTakeaways';
-import { PriorityNextCTA } from './sections/PriorityNextCTA';
 import { PriorityQuestionPanel } from './sections/PriorityQuestionPanel';
 import { threePriorityAxesContent } from './content';
 
@@ -32,7 +32,7 @@ export const ThreePriorityAxesPage = ({ locale }: Props) => {
       <InteractivePriorityMap content={c.interactive} />
       <PriorityFollowAlongMission content={c.mission} />
       <PriorityKeyTakeaways content={c.takeaways} />
-      <PriorityNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

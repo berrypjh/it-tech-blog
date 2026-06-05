@@ -98,13 +98,12 @@ export type FiberStoredInformationContent = {
     answerLabel: string;
     answer: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -320,14 +319,13 @@ const ko: FiberStoredInformationContent = {
     answer:
       'React가 Fiber 트리를 순회하며 작업을 진행해야 하기 때문이다. 이 포인터들이 있어야 부모-자식-형제 관계를 따라가며 렌더링 단위를 찾을 수 있다.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
+    title: '다음: Fiber는 왜 필요한가?',
     description:
       'Fiber가 얼마나 많은 작업 정보를 갖고 있는지 알았다. 마지막으로 왜 React가 이 구조를 선택했는지 알아보자.',
-    primaryCta: '다음: Fiber는 왜 필요한가?',
-    primaryHref: '/why-fiber',
+    cta: '다음 페이지로 이동',
+    href: '/why-fiber',
   },
 };
 
@@ -543,14 +541,13 @@ const en: FiberStoredInformationContent = {
     answer:
       'Because React has to walk the Fiber tree while doing work. These pointers let it follow parent / child / sibling relationships and find the next unit of rendering work.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Next page',
-    title: 'Move on',
+    title: 'Next: why is Fiber needed?',
     description:
       'Now you know how much work-related info a Fiber holds. Finally, find out why React chose this structure in the first place.',
-    primaryCta: 'Next: why is Fiber needed?',
-    primaryHref: '/why-fiber',
+    cta: 'Go to the next page',
+    href: '/why-fiber',
   },
 };
 

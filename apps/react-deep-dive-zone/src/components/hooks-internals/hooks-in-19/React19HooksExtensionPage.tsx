@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ExtensionComparisonTable } from './sections/ExtensionComparisonTable';
@@ -7,7 +8,6 @@ import { ExtensionMap } from './sections/ExtensionMap';
 import { FollowCodeMission } from './sections/FollowCodeMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { LearningPriority } from './sections/LearningPriority';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { React19HooksHero } from './sections/React19HooksHero';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { UseActionStateSection } from './sections/UseActionStateSection';
@@ -34,7 +34,7 @@ export const React19HooksExtensionPage = ({ locale }: Props) => {
       <LearningPriority content={c.priority} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EnsureRootScheduledRole } from './sections/EnsureRootScheduledRole';
@@ -11,7 +12,6 @@ import { RootSchedulerCodePreview } from './sections/RootSchedulerCodePreview';
 import { RootSchedulerHero } from './sections/RootSchedulerHero';
 import { RootSchedulerKeyTakeaways } from './sections/RootSchedulerKeyTakeaways';
 import { RootSchedulerMission } from './sections/RootSchedulerMission';
-import { RootSchedulerNextCTA } from './sections/RootSchedulerNextCTA';
 import { RootSchedulerQuestionPanel } from './sections/RootSchedulerQuestionPanel';
 import { ScheduleTaskDuringMicrotaskFlow } from './sections/ScheduleTaskDuringMicrotaskFlow';
 import { SyncAsyncExecutionPath } from './sections/SyncAsyncExecutionPath';
@@ -36,7 +36,7 @@ export const RootSchedulerPage = ({ locale }: Props) => {
       <NextLanesSelectionLab content={c.lab} />
       <RootSchedulerMission content={c.mission} />
       <RootSchedulerKeyTakeaways content={c.takeaways} />
-      <RootSchedulerNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

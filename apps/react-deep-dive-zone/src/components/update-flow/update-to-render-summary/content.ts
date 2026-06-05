@@ -123,14 +123,12 @@ export type UpdateToRenderSummaryContent = {
     rightTitle: string;
     rightItems: NextChapterItem[];
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    primaryButton: string;
-    primaryHref: string;
-    secondaryButton: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -590,14 +588,13 @@ const ko: UpdateToRenderSummaryContent = {
       },
     ],
   },
-  cta: {
-    number: '08',
+  nextStep: {
     eyebrow: '챕터 마무리',
-    title: '다음으로 가기',
-    primaryButton: '다음: Reconciler와 Render Phase',
-    primaryHref: '/render-phase',
-    secondaryButton: '이번 챕터 다시 복습하기',
-    secondaryHref: '/state-update-start',
+    title: '다음: Reconciler와 Render Phase',
+    description:
+      '업데이트가 시작되어 스케줄링되기까지의 흐름을 정리했다면, 이제 Reconciler가 render phase에서 실제로 무엇을 하는지 살펴봅니다.',
+    cta: '다음: Reconciler와 Render Phase',
+    href: '/render-phase',
   },
 };
 
@@ -860,14 +857,13 @@ const en: UpdateToRenderSummaryContent = {
       },
     ],
   },
-  cta: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Wrap up',
-    title: 'Move on',
-    primaryButton: 'Next: Reconciler and Render Phase',
-    primaryHref: '/render-phase',
-    secondaryButton: 'Review this chapter from the start',
-    secondaryHref: '/state-update-start',
+    title: 'Next: Reconciler and Render Phase',
+    description:
+      'Now that the path from state update to scheduling is clear, see what the Reconciler actually does during the render phase.',
+    cta: 'Next: Reconciler and Render Phase',
+    href: '/render-phase',
   },
 };
 

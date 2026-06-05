@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { WhySplitArchitectureMap } from './sections/WhySplitArchitectureMap';
 import { WhySplitCodeFlow } from './sections/WhySplitCodeFlow';
 import { WhySplitHero } from './sections/WhySplitHero';
 import { WhySplitMisconception } from './sections/WhySplitMisconception';
-import { WhySplitNextCTA } from './sections/WhySplitNextCTA';
 import { WhySplitPackageQuestions } from './sections/WhySplitPackageQuestions';
 import { WhySplitQuickQuiz } from './sections/WhySplitQuickQuiz';
 import { WhySplitReasons } from './sections/WhySplitReasons';
@@ -30,7 +30,7 @@ export const WhySplitPage = ({ locale }: Props) => {
       <WhySplitCodeFlow content={c.codeFlow} />
       <WhySplitPackageQuestions content={c.questions} />
       <WhySplitQuickQuiz content={c.quiz} />
-      <WhySplitNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

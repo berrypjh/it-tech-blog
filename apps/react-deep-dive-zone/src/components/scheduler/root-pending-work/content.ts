@@ -154,12 +154,12 @@ export type RootPendingWorkContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    label: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
-    hint: string;
   };
 };
 
@@ -483,12 +483,12 @@ const ko: RootPendingWorkContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    label: '다음: Root Scheduler 보기',
-    nextTitle: 'Root Scheduler는 무엇을 결정할까?',
+    title: '다음: Root Scheduler 보기',
+    description: 'Root Scheduler는 무엇을 결정할까?',
+    cta: '다음 페이지로 이동',
     href: '/pick-next-work',
-    hint: 'Enter 또는 클릭으로 다음 페이지로 이동',
   },
 };
 
@@ -768,12 +768,12 @@ const en: RootPendingWorkContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    label: 'Next: meet the Root Scheduler',
-    nextTitle: 'What does the Root Scheduler decide?',
+    title: 'Next: meet the Root Scheduler',
+    description: 'What does the Root Scheduler decide?',
+    cta: 'Go to the next page',
     href: '/pick-next-work',
-    hint: 'Press Enter or click to continue',
   },
 };
 

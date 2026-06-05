@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BitfieldVisualization } from './sections/BitfieldVisualization';
@@ -8,7 +9,6 @@ import { LanesChildLanesComparison } from './sections/LanesChildLanesComparison'
 import { LanesCodeCheckpoint } from './sections/LanesCodeCheckpoint';
 import { LanesHero } from './sections/LanesHero';
 import { LanesMiniQuiz } from './sections/LanesMiniQuiz';
-import { LanesNextCTA } from './sections/LanesNextCTA';
 import { RepresentativeLaneCards } from './sections/RepresentativeLaneCards';
 import { fiberLanesContent } from './content';
 
@@ -26,7 +26,7 @@ export const FiberLanesChildLanesPage = ({ locale }: Props) => {
       <LanesCodeCheckpoint content={c.checkpoint} />
       <ChildLanesPropagation content={c.propagation} />
       <LanesMiniQuiz content={c.quiz} />
-      <LanesNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

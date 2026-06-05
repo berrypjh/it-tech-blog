@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberStructureBreakdown } from './sections/FiberStructureBreakdown';
@@ -10,7 +11,6 @@ import { HookObjectStructure } from './sections/HookObjectStructure';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MountWorkInProgressHookPreview } from './sections/MountWorkInProgressHookPreview';
 import { MultipleHooksRepresentation } from './sections/MultipleHooksRepresentation';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { WhyHookOrderMatters } from './sections/WhyHookOrderMatters';
 import { hookLinkedListContent } from './content';
@@ -32,7 +32,7 @@ export const HookLinkedListPage = ({ locale }: Props) => {
       <WhyHookOrderMatters content={c.whyOrder} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

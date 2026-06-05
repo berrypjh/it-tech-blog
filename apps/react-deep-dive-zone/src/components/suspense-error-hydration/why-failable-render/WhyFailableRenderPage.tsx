@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeEntryMap } from './sections/CodeEntryMap';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
-import { NextCTA } from './sections/NextCTA';
 import { NormalVsExtendedFlows } from './sections/NormalVsExtendedFlows';
 import { PartFlowMap } from './sections/PartFlowMap';
 import { QuestionAndNormalRender } from './sections/QuestionAndNormalRender';
@@ -32,7 +32,7 @@ export const WhyFailableRenderPage = ({ locale }: Props) => {
       <RecoveryPathSelector content={c.selector} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CorePackageSelector } from './sections/CorePackageSelector';
@@ -8,7 +9,6 @@ import { PackageQuickQuiz } from './sections/PackageQuickQuiz';
 import { PackageRelationshipDiagram } from './sections/PackageRelationshipDiagram';
 import { PackagesHero } from './sections/PackagesHero';
 import { PackagesLandscape } from './sections/PackagesLandscape';
-import { PackagesNextStepCTA } from './sections/PackagesNextStepCTA';
 import { ReactClientCheckpoint } from './sections/ReactClientCheckpoint';
 import { packagesDirectoryContent } from './content';
 
@@ -28,7 +28,7 @@ export const PackagesDirectoryPage = ({ locale }: Props) => {
       <ReactClientCheckpoint content={c.checkpoint} />
       <LaterPackagesGrid content={c.later} />
       <PackageQuickQuiz content={c.quiz} />
-      <PackagesNextStepCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -174,7 +174,7 @@ export type StartWithQuestionContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -493,7 +493,7 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: 'Public API에서 내부 구현까지',
       description: '질문을 만들었다면, 이제 그 질문의 공개 API 입구부터 찾아야 합니다.',
@@ -819,7 +819,7 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'From public APIs to the implementation',
       description: 'Once you have a question, the next thing to find is its public API entry.',

@@ -120,15 +120,12 @@ export type PlacementContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryLabel: string;
-    primaryHref: string;
-    secondaryLabel: string;
-    secondaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -367,16 +364,13 @@ const ko: PlacementContent = {
     question: 'Placement flag가 표시된 순간 사용자가 이미 화면에서 새 노드를 볼 수 있을까?',
     answer: '아니다. Commit Phase의 host placement가 끝나야 보인다.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로 이동',
+  nextStep: {
+    eyebrow: '다음 여정으로 함께 떠나요',
+    title: '다음: Update',
     description:
       '새 node 삽입을 이해했다면, 이제 이미 존재하는 DOM을 어떻게 갱신하는지 살펴봅니다.',
-    primaryLabel: '다음: Update',
-    primaryHref: '/update-flag',
-    secondaryLabel: '이번 챕터 다시 복습하기',
-    secondaryHref: '/commit-phase',
+    cta: '다음 페이지로 이동',
+    href: '/update-flag',
   },
 };
 
@@ -476,16 +470,13 @@ const en: PlacementContent = {
     question: 'The moment a Placement flag appears, can the user already see the new node?',
     answer: 'No. It only appears after the Commit Phase host placement finishes.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'Continue the journey',
+    title: 'Next: Update',
     description:
       'Now that inserting a new node is clear, see how an existing DOM node gets updated.',
-    primaryLabel: 'Next: Update',
-    primaryHref: '/update-flag',
-    secondaryLabel: 'Review this chapter again',
-    secondaryHref: '/commit-phase',
+    cta: 'Go to the next page',
+    href: '/update-flag',
   },
 };
 

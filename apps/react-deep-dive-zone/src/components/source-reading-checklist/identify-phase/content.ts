@@ -151,7 +151,7 @@ export type PhaseDetectionContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -438,7 +438,7 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: '업데이트 흐름은 한 줄 호출 경로로 복원한다',
       description: '단계를 구분했다면, 이제 흩어진 함수를 한 줄 호출 경로로 압축해야 합니다.',
@@ -724,7 +724,7 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Compress an update flow into a single call path',
       description:

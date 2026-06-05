@@ -98,13 +98,12 @@ export type AlternateFiberContent = {
     alternateLabel: string;
     workTreeLabel: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -274,14 +273,13 @@ const ko: AlternateFiberContent = {
     alternateLabel: 'alternate',
     workTreeLabel: 'workInProgress tree',
   },
-  next: {
-    badge: '07',
-    eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Fiber에 저장되는 정보',
     description:
       'alternate의 첫 의미를 잡았다면, 이번에는 Element 정보가 Fiber에서 얼마나 크게 확장되는지 살펴봅니다.',
-    primaryCta: '다음: Fiber에 저장되는 정보',
-    primaryHref: '/fiber-node',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-node',
   },
 };
 
@@ -457,14 +455,13 @@ const en: AlternateFiberContent = {
     alternateLabel: 'alternate',
     workTreeLabel: 'workInProgress tree',
   },
-  next: {
-    badge: '07',
-    eyebrow: 'Next page',
-    title: 'Move on',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: what a Fiber stores',
     description:
       'With the first meaning of alternate in hand, see how much Element info gets expanded inside a Fiber.',
-    primaryCta: 'Next: what a Fiber stores',
-    primaryHref: '/fiber-node',
+    cta: 'Go to the next page',
+    href: '/fiber-node',
   },
 };
 

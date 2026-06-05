@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EnsureRootScheduledConnection } from './sections/EnsureRootScheduledConnection';
@@ -11,7 +12,6 @@ import { RootPendingWorkCodePreview } from './sections/RootPendingWorkCodePrevie
 import { RootPendingWorkHero } from './sections/RootPendingWorkHero';
 import { RootPendingWorkKeyTakeaways } from './sections/RootPendingWorkKeyTakeaways';
 import { RootPendingWorkMission } from './sections/RootPendingWorkMission';
-import { RootPendingWorkNextCTA } from './sections/RootPendingWorkNextCTA';
 import { RootPendingWorkQuestionPanel } from './sections/RootPendingWorkQuestionPanel';
 import { ScheduleUpdateOnFiberFlow } from './sections/ScheduleUpdateOnFiberFlow';
 import { SuspendedRenderHandling } from './sections/SuspendedRenderHandling';
@@ -36,7 +36,7 @@ export const RootPendingWorkPage = ({ locale }: Props) => {
       <PendingLanesSimulator content={c.simulator} />
       <RootPendingWorkMission content={c.mission} />
       <RootPendingWorkKeyTakeaways content={c.takeaways} />
-      <RootPendingWorkNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

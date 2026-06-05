@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EventMethodComparison } from './sections/EventMethodComparison';
@@ -8,7 +9,6 @@ import { HandlerEventObjectSection } from './sections/HandlerEventObjectSection'
 import { InteractiveEventInspector } from './sections/InteractiveEventInspector';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { NativeEventRelationship } from './sections/NativeEventRelationship';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PersistModernNote } from './sections/PersistModernNote';
 import { PropagationStateFlow } from './sections/PropagationStateFlow';
 import { RealCodePreview } from './sections/RealCodePreview';
@@ -36,7 +36,7 @@ export const SyntheticEventPage = ({ locale }: Props) => {
       <InteractiveEventInspector content={c.inspector} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

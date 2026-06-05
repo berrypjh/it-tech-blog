@@ -144,13 +144,12 @@ export type FiberStateNodeContent = {
     title: string;
     items: string[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -378,14 +377,13 @@ const ko: FiberStateNodeContent = {
       'ClassComponent는 클래스 인스턴스와 연결된다',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: return / child / sibling',
     description:
       'Fiber가 외부 대상과 연결되는 방식까지 봤다면, 이제 Fiber들이 실제로 트리를 이루는 포인터 구조를 살펴봅니다.',
-    buttonLabel: '다음: return / child / sibling',
-    buttonHref: '/fiber-pointers',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-pointers',
   },
 };
 
@@ -604,14 +602,13 @@ const en: FiberStateNodeContent = {
       'ClassComponent links to a class instance',
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: return / child / sibling',
     description:
       'Now that you know how a Fiber connects to something external, look at the pointer structure that actually forms the Fiber tree.',
-    buttonLabel: 'Next: return / child / sibling',
-    buttonHref: '/fiber-pointers',
+    cta: 'Go to the next page',
+    href: '/fiber-pointers',
   },
 };
 

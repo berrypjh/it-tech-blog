@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CorePackageMapSection } from './sections/CorePackageMapSection';
@@ -7,7 +8,6 @@ import { CrossPackageExamplesSection } from './sections/CrossPackageExamplesSect
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { PackageBoundaryPracticeSection } from './sections/PackageBoundaryPracticeSection';
 import { PackageNavigatorSection } from './sections/PackageNavigatorSection';
 import { PickFirstPackageSection } from './sections/PickFirstPackageSection';
@@ -32,7 +32,7 @@ export const FollowPackageBoundaryPage = ({ locale }: Props) => {
       <PackageNavigatorSection content={c.navigator} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

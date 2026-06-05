@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AdditionalExpansionPoints } from './sections/AdditionalExpansionPoints';
@@ -7,7 +8,6 @@ import { After192Hero } from './sections/After192Hero';
 import { CacheSignalFlowSection } from './sections/CacheSignalFlowSection';
 import { ExpansionOverviewCards } from './sections/ExpansionOverviewCards';
 import { FinalQuizSection } from './sections/FinalQuizSection';
-import { LearningCompleteCTA } from './sections/LearningCompleteCTA';
 import { PartialPreRenderingFlowSection } from './sections/PartialPreRenderingFlowSection';
 import { ReleaseDiffReadingGuide } from './sections/ReleaseDiffReadingGuide';
 import { ResumeFlowSection } from './sections/ResumeFlowSection';
@@ -34,7 +34,7 @@ export const After192Page = ({ locale }: Props) => {
       <VersionComparisonTable content={c.versionTable} />
       <ReleaseDiffReadingGuide content={c.releaseDiff} />
       <FinalQuizSection content={c.quiz} />
-      <LearningCompleteCTA content={c.completeCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ComponentExecutionCompare } from './sections/ComponentExecutionCompare';
@@ -7,7 +8,6 @@ import { CurrentFiberCodePreview } from './sections/CurrentFiberCodePreview';
 import { DispatcherSelection } from './sections/DispatcherSelection';
 import { FollowCodeMission } from './sections/FollowCodeMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { RenderSimulator } from './sections/RenderSimulator';
 import { RenderWithHooksHero } from './sections/RenderWithHooksHero';
 import { RenderWithHooksTimeline } from './sections/RenderWithHooksTimeline';
@@ -30,7 +30,7 @@ export const RenderWithHooksPage = ({ locale }: Props) => {
       <RenderSimulator content={c.simulator} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

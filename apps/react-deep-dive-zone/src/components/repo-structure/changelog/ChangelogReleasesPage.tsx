@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChangelogReleasesComparisonTable } from './sections/ChangelogReleasesComparisonTable';
-import { ChangelogReleasesNextCTA } from './sections/ChangelogReleasesNextCTA';
 import { ChangelogTimeline } from './sections/ChangelogTimeline';
 import { ChangeToCodeTrace } from './sections/ChangeToCodeTrace';
 import { LatestReleaseExample } from './sections/LatestReleaseExample';
@@ -28,7 +28,7 @@ export const ChangelogReleasesPage = ({ locale }: Props) => {
       <ChangelogTimeline content={c.timeline} />
       <ChangeToCodeTrace content={c.trace} />
       <VersionMemoPanel content={c.memo} />
-      <ChangelogReleasesNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

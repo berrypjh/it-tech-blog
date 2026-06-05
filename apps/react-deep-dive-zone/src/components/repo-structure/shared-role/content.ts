@@ -135,11 +135,9 @@ export type SharedContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -375,15 +373,9 @@ export const sharedContent: Record<Locale, SharedContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '이제 디렉터리와 패키지 구조를 읽을 수 있게 되었습니다.',
-      accentLine: {
-        before: '다음은 구현만큼 중요한 ',
-        accent: '테스트 코드',
-        after: '를 어떻게 볼지 살펴봅니다.',
-      },
-      primaryCta: '다음: 테스트 코드 읽기',
-      secondaryCta: '이전 페이지 다시 보기',
+      description: '다음은 구현만큼 중요한 ' + '테스트 코드' + '를 어떻게 볼지 살펴봅니다.',
+      cta: '다음: 테스트 코드 읽기',
       href: '/why-tests',
-      restartHref: '/scheduler-role',
     },
   },
   en: {
@@ -606,15 +598,12 @@ export const sharedContent: Record<Locale, SharedContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'You can now read the directory and package structure.',
-      accentLine: {
-        before: 'Next, look at how to read ',
-        accent: 'test code',
-        after: ' — which is as important as the implementation itself.',
-      },
-      primaryCta: 'Next: reading test code',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'Next, look at how to read ' +
+        'test code' +
+        ' — which is as important as the implementation itself.',
+      cta: 'Next: reading test code',
       href: '/why-tests',
-      restartHref: '/scheduler-role',
     },
   },
 };

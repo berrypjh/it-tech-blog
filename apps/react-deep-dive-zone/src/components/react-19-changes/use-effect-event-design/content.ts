@@ -105,8 +105,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type LegendItem = { label: string; legend: SimulatorStep['legend'] };
 
 export type UseEffectEventContent = {
@@ -231,12 +229,12 @@ export type UseEffectEventContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -637,19 +635,13 @@ const ko: UseEffectEventContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'React 19.2 이후 변화 읽기'],
+    title: '다음: React 19.2 이후 변화 읽기',
     description:
       'cacheSignal, Partial Pre-rendering, SSR batching 등 React 19.2 이후 변화를 읽는 기준을 정리합니다.',
-    primary: {
-      label: '다음: React 19.2 이후 변화 읽기',
-      href: '/react-19-2-reading-method',
-    },
-    secondary: [
-      { label: 'useEffectEvent 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/react-19-2-reading-method',
   },
 };
 
@@ -995,19 +987,13 @@ const en: UseEffectEventContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'Reading React 19.2 and beyond'],
+    title: 'Next: Reading React 19.2 and beyond',
     description:
       "We'll set up a frame for reading cacheSignal, Partial Pre-rendering, SSR batching, and beyond.",
-    primary: {
-      label: 'Next: Reading React 19.2 and beyond',
-      href: '/react-19-2-reading-method',
-    },
-    secondary: [
-      { label: 'Replay the useEffectEvent flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/react-19-2-reading-method',
   },
 };
 

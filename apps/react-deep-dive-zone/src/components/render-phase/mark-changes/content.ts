@@ -126,10 +126,12 @@ export type MarkChangesContent = {
     question: string;
     answer: string;
   };
-  cta: {
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -365,11 +367,13 @@ const ko: MarkChangesContent = {
     question: 'Placement가 표시되었다는 것은 DOM 삽입이 이미 끝났다는 뜻일까?',
     answer: '아니다. 실제 DOM 삽입은 Commit Phase에서 일어난다.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: completeUnitOfWork와 completeWork',
     description:
       'Render Phase가 필요한 변경 표시까지 남겼다면, 마지막으로 React가 위로 올라오며 한 서브트리의 계산을 어떻게 마무리하는지 봅니다.',
-    buttonLabel: '다음: completeUnitOfWork와 completeWork',
-    buttonHref: '/complete-work',
+    cta: '다음 페이지로 이동',
+    href: '/complete-work',
   },
 };
 
@@ -602,11 +606,13 @@ const en: MarkChangesContent = {
     question: 'Does a Placement mark mean the DOM insertion has already happened?',
     answer: 'No — actual DOM insertion happens in the Commit Phase.',
   },
-  cta: {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: completeUnitOfWork and completeWork',
     description:
       "Now that the Render Phase has left all the change marks, follow how React walks back up and finishes a subtree's computation.",
-    buttonLabel: 'Next: completeUnitOfWork and completeWork',
-    buttonHref: '/complete-work',
+    cta: 'Go to the next page',
+    href: '/complete-work',
   },
 };
 

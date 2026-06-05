@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ElementTypeHero } from './sections/ElementTypeHero';
 import { FiberClassificationPreview } from './sections/FiberClassificationPreview';
 import { JsxToTypeRows } from './sections/JsxToTypeRows';
-import { NextKeyCta } from './sections/NextKeyCta';
 import { TypeComparisonTable } from './sections/TypeComparisonTable';
 import { TypeKindCards } from './sections/TypeKindCards';
 import { TypeQuickQuiz } from './sections/TypeQuickQuiz';
@@ -26,7 +26,7 @@ export const ReactElementTypeMeaningPage = ({ locale }: Props) => {
       <TypeSourceConnection content={c.source} />
       <FiberClassificationPreview content={c.fiber} />
       <TypeQuickQuiz content={c.quiz} />
-      <NextKeyCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

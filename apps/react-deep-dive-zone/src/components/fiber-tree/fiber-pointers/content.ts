@@ -110,13 +110,12 @@ export type FiberTreePointersContent = {
     };
     drawingPlaceholder: { lines: string[] };
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -320,14 +319,13 @@ const ko: FiberTreePointersContent = {
       lines: ['여기에 Fiber 연결도를 직접 그려보세요.', '노드를 추가하고 화살표도 연결해보세요.'],
     },
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: pendingProps와 memoizedProps',
     description:
       'Fiber가 어떻게 트리로 연결되는지 이해했다면, 이제 그 Fiber가 입력값을 어떻게 기억하는지 살펴봅니다.',
-    buttonLabel: '다음: pendingProps와 memoizedProps',
-    buttonHref: '/fiber-props',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-props',
   },
 };
 
@@ -510,14 +508,13 @@ const en: FiberTreePointersContent = {
       lines: ['Draw the Fiber connection diagram here.', 'Add nodes and arrows yourself.'],
     },
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: pendingProps & memoizedProps',
     description:
       'Now that you know how a Fiber tree is connected, look at how a Fiber remembers its inputs.',
-    buttonLabel: 'Next: pendingProps & memoizedProps',
-    buttonHref: '/fiber-props',
+    cta: 'Go to the next page',
+    href: '/fiber-props',
   },
 };
 

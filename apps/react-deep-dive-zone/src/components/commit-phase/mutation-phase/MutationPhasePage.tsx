@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { MutationBeforeAfterSection } from './sections/MutationBeforeAfterSection';
@@ -7,7 +8,6 @@ import { MutationCodeCheckpointSection } from './sections/MutationCodeCheckpoint
 import { MutationEffectsSection } from './sections/MutationEffectsSection';
 import { MutationHeroSection } from './sections/MutationHeroSection';
 import { MutationNextConceptSection } from './sections/MutationNextConceptSection';
-import { MutationNextCTASection } from './sections/MutationNextCTASection';
 import { MutationSummaryTableSection } from './sections/MutationSummaryTableSection';
 import { RenderFlagsToMutationSection } from './sections/RenderFlagsToMutationSection';
 import { mutationPhaseContent } from './content';
@@ -26,7 +26,7 @@ export const MutationPhasePage = ({ locale }: Props) => {
       <MutationCodeCheckpointSection content={c.checkpoint} />
       <MutationBeforeAfterSection content={c.beforeAfter} />
       <MutationNextConceptSection rootCurrent={c.rootCurrent} extra={c.extra} />
-      <MutationNextCTASection content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

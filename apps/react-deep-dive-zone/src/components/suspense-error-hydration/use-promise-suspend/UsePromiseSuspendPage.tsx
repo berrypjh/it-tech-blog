@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BranchDiagram } from './sections/BranchDiagram';
@@ -8,7 +9,6 @@ import { ExplainCards } from './sections/ExplainCards';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextCTA } from './sections/NextCTA';
 import { PromiseStatesGrid } from './sections/PromiseStatesGrid';
 import { PromiseStateSwitcher } from './sections/PromiseStateSwitcher';
 import { ThenableTracking } from './sections/ThenableTracking';
@@ -32,7 +32,7 @@ export const UsePromiseSuspendPage = ({ locale }: Props) => {
       <PromiseStateSwitcher content={c.switcher} />
       <FollowAlongSection content={c.followAlong} />
       <KeyTakeaways content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

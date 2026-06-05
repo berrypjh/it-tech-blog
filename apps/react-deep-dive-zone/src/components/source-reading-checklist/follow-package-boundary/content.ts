@@ -169,7 +169,7 @@ export type FollowPackageBoundaryContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -521,7 +521,7 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: '지금 보고 있는 값이 무엇인지 먼저 분류한다',
       description: '패키지 위치를 파악했다면, 이제 지금 보고 있는 값이 무엇인지 분류해야 합니다.',
@@ -875,7 +875,7 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Classify the value you are looking at first',
       description:

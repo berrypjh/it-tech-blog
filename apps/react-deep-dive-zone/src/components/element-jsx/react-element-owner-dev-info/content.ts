@@ -130,18 +130,12 @@ export type ReactElementOwnerDevInfoContent = {
     description: string;
     cards: DebugBenefit[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -348,18 +342,13 @@ const ko: ReactElementOwnerDevInfoContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: '챕터 전체를 한 흐름으로 정리합니다',
-    line1: 'Element 객체가 개발 모드에서 어떤 정보를 더 품는지 이해했다면,',
-    line2Before: '이제 전체 챕터를 ',
-    line2Accent: '하나의 흐름',
-    line2After: '으로 정리합니다.',
-    primaryCta: '다음: Element는 DOM이 아니라 Fiber 이전 단계의 설명 객체다',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/element-not-dom',
-    secondaryHref: '/element-ref',
+    title: '다음: Element는 DOM이 아니라 Fiber 이전 단계의 설명 객체다',
+    description:
+      'Element 객체가 개발 모드에서 어떤 정보를 더 품는지 이해했다면, 이제 전체 챕터를 하나의 흐름으로 정리합니다.',
+    cta: '다음 페이지로 이동',
+    href: '/element-not-dom',
   },
 };
 
@@ -569,18 +558,13 @@ const en: ReactElementOwnerDevInfoContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Continue to the next step',
-    title: 'Wrap the whole chapter into one flow',
-    line1: 'Now that you have seen what extra info the dev-mode Element carries,',
-    line2Before: 'next, summarize the whole chapter into ',
-    line2Accent: 'a single flow',
-    line2After: '.',
-    primaryCta: 'Next: an Element is not the DOM — it is a description before Fiber',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/element-not-dom',
-    secondaryHref: '/element-ref',
+    title: 'Next: an Element is not the DOM — it is a description before Fiber',
+    description:
+      'Now that you have seen what extra info the dev-mode Element carries, next, summarize the whole chapter into a single flow.',
+    cta: 'Go to the next page',
+    href: '/element-not-dom',
   },
 };
 

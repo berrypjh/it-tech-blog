@@ -109,10 +109,12 @@ export type DispatchSetStateEntryContent = {
     description: string;
     steps: MissionStep[];
   };
-  cta: {
-    main: { lead: string; emphasis: string; tail: string };
-    buttonLabel: string;
-    buttonHref: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -325,14 +327,13 @@ const ko: DispatchSetStateEntryContent = {
       },
     ],
   },
-  cta: {
-    main: {
-      lead: '업데이트 진입점에서 lane이 선택된다는 점을 봤다면,',
-      emphasis: '이제 React가 실제 update 객체를 어떻게 만드는지',
-      tail: ' 살펴봅니다.',
-    },
-    buttonLabel: '다음: lane 선택과 update 객체 생성',
-    buttonHref: '/lane-selection',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: lane 선택과 update 객체 생성',
+    description:
+      '업데이트 진입점에서 lane이 선택된다는 점을 봤다면, 이제 React가 실제 update 객체를 어떻게 만드는지 살펴봅니다.',
+    cta: '다음: lane 선택과 update 객체 생성',
+    href: '/lane-selection',
   },
 };
 
@@ -521,14 +522,13 @@ const en: DispatchSetStateEntryContent = {
       },
     ],
   },
-  cta: {
-    main: {
-      lead: 'Now that you have seen the lane chosen at the entry point,',
-      emphasis: 'see how React actually builds the update object next',
-      tail: '.',
-    },
-    buttonLabel: 'Next: lane selection and update object creation',
-    buttonHref: '/lane-selection',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: lane selection and update object creation',
+    description:
+      'Now that you have seen the lane chosen at the entry point, see how React actually builds the update object next.',
+    cta: 'Next: lane selection and update object creation',
+    href: '/lane-selection',
   },
 };
 

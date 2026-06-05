@@ -128,13 +128,9 @@ export type SharedContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2: string;
-    line3Before: string;
-    line3Accent: string;
-    line3After: string;
-    primaryCta: string;
-    primaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -379,14 +375,11 @@ export const sharedContent: Record<Locale, SharedContent> = {
     },
     nextStep: {
       eyebrow: '7',
-      title: '다음으로 넘어가기',
-      line1: '공통 기반층까지 봤다면,',
-      line2: '이제 React가 웹뿐 아니라 Native 환경과도',
-      line3Before: '어떻게 내부 구조를 공유하는지 ',
-      line3Accent: 'Native',
-      line3After: ' 쪽 흐름을 살펴봅니다.',
-      primaryCta: '다음: React Native와 공유되는 구조 →',
-      primaryHref: '/react-native-shared',
+      title: '다음: React Native와 공유되는 구조',
+      description:
+        '공통 기반층까지 봤다면, 이제 React가 웹뿐 아니라 Native 환경과도 어떻게 내부 구조를 공유하는지 Native 쪽 흐름을 살펴봅니다.',
+      cta: '다음 페이지로 이동',
+      href: '/react-native-shared',
     },
   },
   en: {
@@ -557,14 +550,11 @@ export const sharedContent: Record<Locale, SharedContent> = {
     },
     nextStep: {
       eyebrow: '7',
-      title: 'Move to the next step',
-      line1: 'Now that you have seen the common foundation,',
-      line2: 'next we look at how React shares its internals',
-      line3Before: 'with the ',
-      line3Accent: 'Native',
-      line3After: ' environment, beyond the web.',
-      primaryCta: 'Next: structure shared with React Native →',
-      primaryHref: '/react-native-shared',
+      title: 'Next: structure shared with React Native',
+      description:
+        'Now that you have seen the common foundation, next we look at how React shares its internals with the Native environment, beyond the web.',
+      cta: 'Go to the next page',
+      href: '/react-native-shared',
     },
   },
 };

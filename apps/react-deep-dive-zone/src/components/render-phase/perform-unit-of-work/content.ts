@@ -110,13 +110,12 @@ export type PerformUnitContent = {
     question: string;
     answer: string;
   };
-  cta: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -313,14 +312,13 @@ const ko: PerformUnitContent = {
     question: 'performUnitOfWork가 completeUnitOfWork를 호출하는 조건은?',
     answer: 'beginWork가 더 내려갈 다음 Fiber를 반환하지 않을 때.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: '다음 단계로',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: beginWork',
     description:
       'Fiber 하나의 처리 흐름을 봤다면, 이제 그 핵심인 beginWork가 실제로 무엇을 하는지 살펴봅니다.',
-    buttonLabel: '다음: beginWork',
-    buttonHref: '/begin-work',
+    cta: '다음 페이지로 이동',
+    href: '/begin-work',
   },
 };
 
@@ -503,14 +501,13 @@ const en: PerformUnitContent = {
     question: 'When does performUnitOfWork call completeUnitOfWork?',
     answer: 'When beginWork returns no next Fiber to descend into.',
   },
-  cta: {
-    number: '7',
-    eyebrow: 'next-step',
-    title: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: beginWork',
     description:
       'Now that you see the flow of a single Fiber, dive into what beginWork — the core of that flow — actually does.',
-    buttonLabel: 'Next: beginWork',
-    buttonHref: '/begin-work',
+    cta: 'Go to the next page',
+    href: '/begin-work',
   },
 };
 

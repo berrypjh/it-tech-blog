@@ -144,13 +144,12 @@ export type RenderYieldingContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    pretext: string;
-    label: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
-    hint: string;
   };
 };
 
@@ -441,14 +440,12 @@ const ko: RenderYieldingContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    pretext:
-      '각 조각은 다 봤다. 마지막으로 click, transition, deferred update가 실제로 어떻게 다르게 렌더링되는지 한 장으로 복원해보자.',
-    label: '다음: 전체 흐름 복습',
-    nextTitle: '클릭/전환/지연 업데이트가 한 화면에서 어떻게 다르게 흐르는지 살펴봅니다.',
+    title: '다음: 전체 흐름 복습',
+    description: '클릭/전환/지연 업데이트가 한 화면에서 어떻게 다르게 흐르는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/scheduler-overall-flow',
-    hint: 'Enter 또는 클릭으로 다음 페이지로 이동',
   },
 };
 
@@ -736,14 +733,12 @@ const en: RenderYieldingContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    pretext:
-      "We've seen all the pieces. Now let's reconstruct in one picture how click / transition / deferred updates flow differently.",
-    label: 'Next: end-to-end recap',
-    nextTitle: 'See in one place how click / transition / deferred renders differ.',
+    title: 'Next: end-to-end recap',
+    description: 'See in one place how click / transition / deferred renders differ.',
+    cta: 'Go to the next page',
     href: '/scheduler-overall-flow',
-    hint: 'Press Enter or click to continue',
   },
 };
 

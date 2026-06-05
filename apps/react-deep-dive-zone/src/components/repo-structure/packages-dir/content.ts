@@ -137,11 +137,9 @@ export type PackagesDirectoryContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -518,15 +516,12 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
     nextStep: {
       eyebrow: '08 · next step',
       title: 'packages의 중심 축을 잡았다면,',
-      accentLine: {
-        before: '이제 저장소 루트의 다른 디렉터리인 ',
-        accent: 'fixtures / scripts / compiler',
-        after: '가 어떤 역할을 하는지 살펴봅니다.',
-      },
-      primaryCta: '다음: fixtures / scripts / compiler',
-      secondaryCta: '이전 페이지 다시 보기',
+      description:
+        '이제 저장소 루트의 다른 디렉터리인 ' +
+        'fixtures / scripts / compiler' +
+        '가 어떤 역할을 하는지 살펴봅니다.',
+      cta: '다음: fixtures / scripts / compiler',
       href: '/other-dirs',
-      restartHref: '/repo-overview',
     },
   },
   en: {
@@ -830,15 +825,12 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
     nextStep: {
       eyebrow: '08 · next step',
       title: 'You have the core axis of packages,',
-      accentLine: {
-        before: 'now look at the other root directories — ',
-        accent: 'fixtures / scripts / compiler',
-        after: ' — and what each is responsible for.',
-      },
-      primaryCta: 'Next: fixtures / scripts / compiler',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'now look at the other root directories — ' +
+        'fixtures / scripts / compiler' +
+        ' — and what each is responsible for.',
+      cta: 'Next: fixtures / scripts / compiler',
       href: '/other-dirs',
-      restartHref: '/repo-overview',
     },
   },
 };

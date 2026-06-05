@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { KeyFiberReuseHero } from './sections/KeyFiberReuseHero';
 import { KeyMiniQuiz } from './sections/KeyMiniQuiz';
 import { KeyStableComparison } from './sections/KeyStableComparison';
 import { KeyTrackingPrinciple } from './sections/KeyTrackingPrinciple';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { StateResetExample } from './sections/StateResetExample';
@@ -28,7 +28,7 @@ export const KeyFiberReusePage = ({ locale }: Props) => {
       <VisualSimulation content={c.simulation} />
       <KeyMiniQuiz content={c.quiz} />
       <QuickChecklist content={c.checklist} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

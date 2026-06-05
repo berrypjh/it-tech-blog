@@ -1,8 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { BottomCTASection } from './sections/BottomCTASection';
 import { FinalChecklistSection } from './sections/FinalChecklistSection';
 import { FullFlowDiagramSection } from './sections/FullFlowDiagramSection';
 import { MisconceptionsSection } from './sections/MisconceptionsSection';
@@ -26,7 +26,7 @@ export const UpdateToRenderSummaryPage = ({ locale }: Props) => {
       <FinalChecklistSection content={c.checklist} />
       <MisconceptionsSection content={c.misconceptions} />
       <NextChapterPreviewSection content={c.nextChapter} />
-      <BottomCTASection content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

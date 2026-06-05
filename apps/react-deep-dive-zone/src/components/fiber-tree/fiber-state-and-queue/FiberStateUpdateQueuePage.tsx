@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { HooksClassConnection } from './sections/HooksClassConnection';
@@ -10,7 +11,6 @@ import { StateQueueCodeCheckpoint } from './sections/StateQueueCodeCheckpoint';
 import { StateQueueComparison } from './sections/StateQueueComparison';
 import { StateQueueHero } from './sections/StateQueueHero';
 import { StateQueueMiniQuiz } from './sections/StateQueueMiniQuiz';
-import { StateQueueNextCTA } from './sections/StateQueueNextCTA';
 import { fiberStateAndQueueContent } from './content';
 
 type Props = { locale: Locale };
@@ -28,7 +28,7 @@ export const FiberStateUpdateQueuePage = ({ locale }: Props) => {
       <HooksClassConnection content={c.connections} />
       <StateQueueMiniQuiz content={c.quiz} />
       <StateQueueChecklist content={c.checklist} />
-      <StateQueueNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

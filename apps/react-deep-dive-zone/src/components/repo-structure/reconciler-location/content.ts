@@ -145,11 +145,9 @@ export type ReconcilerEntryContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    accentLine: { before: string; accent: string; after: string };
-    primaryCta: string;
-    secondaryCta: string;
+    description: string;
+    cta: string;
     href: string;
-    restartHref: string;
   };
 };
 
@@ -399,15 +397,9 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '렌더링 계산의 중심을 이해했다면,',
-      accentLine: {
-        before: '이제 그 작업을 언제 실행할지 조율하는 ',
-        accent: 'scheduler 패키지',
-        after: '를 살펴봅니다.',
-      },
-      primaryCta: '다음: scheduler 패키지',
-      secondaryCta: '이전 페이지 다시 보기',
+      description: '이제 그 작업을 언제 실행할지 조율하는 ' + 'scheduler 패키지' + '를 살펴봅니다.',
+      cta: '다음: scheduler 패키지',
       href: '/scheduler-role',
-      restartHref: '/react-vs-react-dom',
     },
   },
   en: {
@@ -632,15 +624,12 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'With the rendering core understood,',
-      accentLine: {
-        before: 'next we look at the ',
-        accent: 'scheduler package',
-        after: ' — the one that decides when that work runs.',
-      },
-      primaryCta: 'Next: scheduler package',
-      secondaryCta: 'Revisit the previous page',
+      description:
+        'next we look at the ' +
+        'scheduler package' +
+        ' — the one that decides when that work runs.',
+      cta: 'Next: scheduler package',
       href: '/scheduler-role',
-      restartHref: '/react-vs-react-dom',
     },
   },
 };

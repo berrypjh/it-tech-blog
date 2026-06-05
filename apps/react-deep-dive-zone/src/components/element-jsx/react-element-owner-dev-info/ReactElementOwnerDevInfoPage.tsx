@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DebugExperienceBenefits } from './sections/DebugExperienceBenefits';
 import { DebugMetaInfoCards } from './sections/DebugMetaInfoCards';
-import { NextElementSummaryCta } from './sections/NextElementSummaryCta';
 import { ObjectFreezeSection } from './sections/ObjectFreezeSection';
 import { OwnerDevInfoHero } from './sections/OwnerDevInfoHero';
 import { OwnerDevSourceCheckpoint } from './sections/OwnerDevSourceCheckpoint';
@@ -26,7 +26,7 @@ export const ReactElementOwnerDevInfoPage = ({ locale }: Props) => {
       <ObjectFreezeSection content={c.freeze} />
       <OwnerDevSourceCheckpoint content={c.checkpoint} />
       <DebugExperienceBenefits content={c.benefits} />
-      <NextElementSummaryCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

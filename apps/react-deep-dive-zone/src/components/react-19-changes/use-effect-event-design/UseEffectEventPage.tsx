@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeforeAfterBehaviorTable } from './sections/BeforeAfterBehaviorTable';
@@ -10,7 +11,6 @@ import { EffectReconnectSimulator } from './sections/EffectReconnectSimulator';
 import { ExistingEffectProblem } from './sections/ExistingEffectProblem';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { UsageRestrictionSection } from './sections/UsageRestrictionSection';
 import { UseEffectEventHero } from './sections/UseEffectEventHero';
@@ -57,7 +57,7 @@ export const UseEffectEventPage = ({ locale }: Props) => {
       <EffectReconnectSimulator content={c.simulator} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

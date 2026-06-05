@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FourThingsTestsReveal } from './sections/FourThingsTestsReveal';
 import { ImplementationTestPairMap } from './sections/ImplementationTestPairMap';
 import { ReactCreateElementTestSpotlight } from './sections/ReactCreateElementTestSpotlight';
 import { TestCodeHero } from './sections/TestCodeHero';
-import { TestCodeNextCTA } from './sections/TestCodeNextCTA';
 import { TestNameAnalysisQuiz } from './sections/TestNameAnalysisQuiz';
 import { TestReadingSteps } from './sections/TestReadingSteps';
 import { WhyTestsMatterComparison } from './sections/WhyTestsMatterComparison';
@@ -28,7 +28,7 @@ export const ReactTestCodeImportancePage = ({ locale }: Props) => {
       <ReactCreateElementTestSpotlight content={c.spotlight} />
       <TestReadingSteps content={c.steps} />
       <TestNameAnalysisQuiz content={c.quiz} />
-      <TestCodeNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

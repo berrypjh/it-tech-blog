@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberDrawingMission } from './sections/FiberDrawingMission';
 import { FiberPointerCodeCheckpoint } from './sections/FiberPointerCodeCheckpoint';
 import { FiberTraversalReason } from './sections/FiberTraversalReason';
 import { FiberTreeHero } from './sections/FiberTreeHero';
-import { FiberTreePointersNextCTA } from './sections/FiberTreePointersNextCTA';
 import { JsxToFiberConnection } from './sections/JsxToFiberConnection';
 import { ThreeFiberPointers } from './sections/ThreeFiberPointers';
 import { UiTreeVsFiberPointers } from './sections/UiTreeVsFiberPointers';
@@ -26,7 +26,7 @@ export const FiberTreePointersPage = ({ locale }: Props) => {
       <FiberPointerCodeCheckpoint content={c.checkpoint} />
       <FiberTraversalReason content={c.traversal} />
       <FiberDrawingMission content={c.mission} />
-      <FiberTreePointersNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

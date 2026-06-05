@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CompleteWorkPreview } from './sections/CompleteWorkPreview';
@@ -24,7 +25,8 @@ export const HostComponentRenderPhasePage = ({ locale }: Props) => {
       <TextVsNestedChildren content={c.childCompare} />
       <HostComponentCodeCheckpoint content={c.code} />
       <CompleteWorkPreview content={c.completeWork} />
-      <HostComponentQuizAndCTA quiz={c.quiz} cta={c.cta} />
+      <HostComponentQuizAndCTA quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

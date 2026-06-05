@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { RecommendedFilesSection } from './sections/RecommendedFilesSection';
 import { TestDirectoryMapSection } from './sections/TestDirectoryMapSection';
 import { TestExplorerSection } from './sections/TestExplorerSection';
@@ -32,7 +32,7 @@ export const VerifyIntentWithTestsPage = ({ locale }: Props) => {
       <TestExplorerSection content={c.explorer} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { HostRootExample } from './sections/HostRootExample';
@@ -9,7 +10,6 @@ import { StateNodeCodeCheckpoint } from './sections/StateNodeCodeCheckpoint';
 import { StateNodeHero } from './sections/StateNodeHero';
 import { StateNodeMiniQuiz } from './sections/StateNodeMiniQuiz';
 import { StateNodeMisconception } from './sections/StateNodeMisconception';
-import { StateNodeNextCTA } from './sections/StateNodeNextCTA';
 import { WhyStateNodeMatters } from './sections/WhyStateNodeMatters';
 import { fiberStateNodeContent } from './content';
 
@@ -28,7 +28,7 @@ export const FiberStateNodePage = ({ locale }: Props) => {
       <WhyStateNodeMatters content={c.reasons} />
       <StateNodeMiniQuiz content={c.quiz} />
       <StateNodeChecklist content={c.checklist} />
-      <StateNodeNextCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

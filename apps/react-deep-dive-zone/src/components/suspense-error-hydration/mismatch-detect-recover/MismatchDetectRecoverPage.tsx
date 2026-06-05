@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodePreviewSection } from './sections/CodePreviewSection';
@@ -9,7 +10,6 @@ import { HeroSection } from './sections/HeroSection';
 import { MatchingFailFlowSection } from './sections/MatchingFailFlowSection';
 import { MismatchCasesSection } from './sections/MismatchCasesSection';
 import { MismatchExperimentSection } from './sections/MismatchExperimentSection';
-import { NextCTA } from './sections/NextCTA';
 import { QuestionSection } from './sections/QuestionSection';
 import { QueueRecoverFlowSection } from './sections/QueueRecoverFlowSection';
 import { SuppressSection } from './sections/SuppressSection';
@@ -36,7 +36,7 @@ export const MismatchDetectRecoverPage = ({ locale }: Props) => {
       <MismatchExperimentSection content={c.experiment} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

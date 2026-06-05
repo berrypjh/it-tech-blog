@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
@@ -7,7 +8,6 @@ import { CoreResponsibilitiesSection } from './sections/CoreResponsibilitiesSect
 import { FunctionPositionFlowSection } from './sections/FunctionPositionFlowSection';
 import { MarkRootUpdatedMeaningSection } from './sections/MarkRootUpdatedMeaningSection';
 import { MiniQuizSection } from './sections/MiniQuizSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { RenderPhaseVsNormalUpdateSection } from './sections/RenderPhaseVsNormalUpdateSection';
 import { ScheduleUpdateHero } from './sections/ScheduleUpdateHero';
 import { scheduleUpdateOnFiberContent } from './content';
@@ -26,7 +26,7 @@ export const ScheduleUpdateOnFiberPage = ({ locale }: Props) => {
       <RenderPhaseVsNormalUpdateSection content={c.contextCompare} />
       <MarkRootUpdatedMeaningSection content={c.markRoot} />
       <MiniQuizSection content={c.quiz} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

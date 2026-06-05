@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ContextLaneSimulator } from './sections/ContextLaneSimulator';
@@ -8,7 +9,6 @@ import { RequestUpdateLaneCodePreview } from './sections/RequestUpdateLaneCodePr
 import { RequestUpdateLaneHero } from './sections/RequestUpdateLaneHero';
 import { RequestUpdateLaneKeyTakeaways } from './sections/RequestUpdateLaneKeyTakeaways';
 import { RequestUpdateLaneMission } from './sections/RequestUpdateLaneMission';
-import { RequestUpdateLaneNextCTA } from './sections/RequestUpdateLaneNextCTA';
 import { RequestUpdateLaneQuestionPanel } from './sections/RequestUpdateLaneQuestionPanel';
 import { SameSetStateDifferentLane } from './sections/SameSetStateDifferentLane';
 import { requestUpdateLaneContent } from './content';
@@ -28,7 +28,7 @@ export const RequestUpdateLanePage = ({ locale }: Props) => {
       <ContextLaneSimulator content={c.simulator} />
       <RequestUpdateLaneMission content={c.mission} />
       <RequestUpdateLaneKeyTakeaways content={c.takeaways} />
-      <RequestUpdateLaneNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

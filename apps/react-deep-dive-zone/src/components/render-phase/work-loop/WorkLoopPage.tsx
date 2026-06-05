@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberProcessingTree } from './sections/FiberProcessingTree';
-import { NextPerformUnitCTA } from './sections/NextPerformUnitCTA';
 import { PerformUnitRepeatFlow } from './sections/PerformUnitRepeatFlow';
 import { SyncVsConcurrentTimeline } from './sections/SyncVsConcurrentTimeline';
 import { WorkLoopCodeCheckpoint } from './sections/WorkLoopCodeCheckpoint';
@@ -26,7 +26,7 @@ export const WorkLoopPage = ({ locale }: Props) => {
       <WorkLoopCodeCheckpoint content={c.code} />
       <FiberProcessingTree content={c.fiberTree} />
       <WorkLoopMiniQuiz content={c.quiz} />
-      <NextPerformUnitCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

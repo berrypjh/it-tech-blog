@@ -128,10 +128,12 @@ export type React19HooksContent = {
     title: string;
     items: SummaryItem[];
   };
-  cta: {
-    label: string;
-    href: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -478,11 +480,13 @@ const ko: React19HooksContent = {
       },
     ],
   },
-  cta: {
-    label: '다음: Hooks 전체 흐름 복습하기',
-    href: '/hooks-recap',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Hooks 전체 흐름 복습하기',
     description:
       'React 19 Hook 확장까지 봤다면, 이제 Hooks 내부 구조 전체를 하나의 흐름으로 다시 연결해봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/hooks-recap',
   },
 };
 
@@ -779,11 +783,13 @@ const en: React19HooksContent = {
       },
     ],
   },
-  cta: {
-    label: 'Next: recap the full Hooks flow',
-    href: '/hooks-recap',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: recap the full Hooks flow',
     description:
       'With the React 19 extensions in view, recap the entire Hook internals as one connected flow.',
+    cta: 'Go to the next page',
+    href: '/hooks-recap',
   },
 };
 

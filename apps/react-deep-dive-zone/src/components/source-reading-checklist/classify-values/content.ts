@@ -151,7 +151,7 @@ export type ValueClassificationContent = {
     title: string;
     cards: SummaryCard[];
   };
-  nextCta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -479,7 +479,7 @@ export const valueClassificationContent: Record<Locale, ValueClassificationConte
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: '다음 단계',
       title: 'Render / Commit / Scheduling 중 어디에 있는지 판별한다',
       description: '값을 분류했다면, 이제 그 값이 어떤 실행 단계에서 쓰이는지 판별해야 합니다.',
@@ -780,7 +780,7 @@ export const valueClassificationContent: Record<Locale, ValueClassificationConte
         },
       ],
     },
-    nextCta: {
+    nextStep: {
       eyebrow: 'Next step',
       title: 'Identify whether it is render, commit, or scheduling',
       description: 'Once classified, identify which execution phase the value is actually used in.',

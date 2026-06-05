@@ -61,8 +61,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type RefAsPropElementShapeContent = {
   hero: {
     badge: string;
@@ -164,12 +162,12 @@ export type RefAsPropElementShapeContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -517,19 +515,13 @@ function CustomInput({
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'Metadata와 Resource Components'],
+    title: '다음: Metadata와 Resource Components',
     description:
       '다음 페이지에서는 React 19가 문서 자원과 head 관리 모델을 어떻게 확장했는지 살펴봅니다.',
-    primary: {
-      label: '다음: Metadata와 Resource Components',
-      href: '/metadata-resource-react-dom',
-    },
-    secondary: [
-      { label: 'ref 변화 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/metadata-resource-react-dom',
   },
 };
 
@@ -886,19 +878,13 @@ function CustomInput({
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'Metadata & Resource Components'],
+    title: 'Next: Metadata & Resource Components',
     description:
       'Next we look at how React 19 extended document-resource and head-management model.',
-    primary: {
-      label: 'Next: Metadata & Resource Components',
-      href: '/metadata-resource-react-dom',
-    },
-    secondary: [
-      { label: 'Replay the ref shift', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/metadata-resource-react-dom',
   },
 };
 

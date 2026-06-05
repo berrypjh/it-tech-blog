@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeReadingMission } from './sections/CodeReadingMission';
@@ -8,7 +9,6 @@ import { DevModeDebugInfo } from './sections/DevModeDebugInfo';
 import { ElementFieldMapping } from './sections/ElementFieldMapping';
 import { FunctionCallFlow } from './sections/FunctionCallFlow';
 import { InputOutputStructure } from './sections/InputOutputStructure';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { createFiberFromElementContent } from './content';
 
@@ -26,7 +26,7 @@ export const CreateFiberFromElementPage = ({ locale }: Props) => {
       <FunctionCallFlow content={c.flow} />
       <DevModeDebugInfo content={c.devInfo} />
       <CodeReadingMission content={c.mission} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

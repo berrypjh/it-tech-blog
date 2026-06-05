@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClassifierSection } from './sections/ClassifierSection';
 import { CodePreviewSection } from './sections/CodePreviewSection';
 import { FollowAlongSection } from './sections/FollowAlongSection';
 import { HeroSection } from './sections/HeroSection';
-import { NextCTA } from './sections/NextCTA';
 import { QuestionSection } from './sections/QuestionSection';
 import { ReasonCards } from './sections/ReasonCards';
 import { StepFlowSection } from './sections/StepFlowSection';
@@ -32,7 +32,7 @@ export const PromiseVsErrorSplitPage = ({ locale }: Props) => {
       <ClassifierSection content={c.classifier} />
       <FollowAlongSection content={c.followAlong} />
       <TakeawaysSection content={c.takeaways} />
-      <NextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

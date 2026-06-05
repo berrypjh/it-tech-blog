@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FragmentFlow } from './sections/FragmentFlow';
 import { FragmentModeHero } from './sections/FragmentModeHero';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { OtherSpecialTypes } from './sections/OtherSpecialTypes';
 import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
@@ -28,7 +28,7 @@ export const FragmentModeFiberPage = ({ locale }: Props) => {
       <OtherSpecialTypes content={c.others} />
       <UnderstandingCheck content={c.understanding} />
       <QuickChecklist content={c.checklist} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

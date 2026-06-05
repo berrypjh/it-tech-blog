@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CorrectHookOrder } from './sections/CorrectHookOrder';
@@ -9,7 +10,6 @@ import { HookMatchingComparisonTable } from './sections/HookMatchingComparisonTa
 import { HookOrderBreakExperiment } from './sections/HookOrderBreakExperiment';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MemorizationVsStructure } from './sections/MemorizationVsStructure';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { RealCodeCheck } from './sections/RealCodeCheck';
 import { RulesOfHooksHero } from './sections/RulesOfHooksHero';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
@@ -34,7 +34,7 @@ export const RulesOfHooksPage = ({ locale }: Props) => {
       <RealCodeCheck content={c.realCode} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

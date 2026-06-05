@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CommitFlagsSection } from './sections/CommitFlagsSection';
@@ -8,7 +9,6 @@ import { CommitMiniQuizSection } from './sections/CommitMiniQuizSection';
 import { CommitPhaseHero } from './sections/CommitPhaseHero';
 import { CommitPhaseMapSection } from './sections/CommitPhaseMapSection';
 import { CommitWorkItemsSection } from './sections/CommitWorkItemsSection';
-import { NextCommitRootCTA } from './sections/NextCommitRootCTA';
 import { PhaseComparisonTableSection } from './sections/PhaseComparisonTableSection';
 import { PreviousChapterConnection } from './sections/PreviousChapterConnection';
 import { commitPhaseIntroContent } from './content';
@@ -28,7 +28,7 @@ export const CommitPhaseIntroPage = ({ locale }: Props) => {
       <CommitFlagsSection content={c.flags} />
       <CommitKeySummarySection content={c.summary} />
       <CommitMiniQuizSection content={c.quiz} />
-      <NextCommitRootCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

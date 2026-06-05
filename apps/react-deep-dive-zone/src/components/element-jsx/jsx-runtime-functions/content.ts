@@ -122,18 +122,12 @@ export type JsxRuntimeFunctionsContent = {
     hintLabel: string;
     hint: string;
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -331,18 +325,13 @@ const ko: JsxRuntimeFunctionsContent = {
     hintLabel: '힌트',
     hint: '실행 성능과 디버깅 품질을 동시에 잡기 위해서.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: '다음 단계로 이동하기',
-    title: 'Runtime 입구 다음은 공개 API입니다',
-    line1: '현대 JSX Runtime의 입구를 봤다면,',
-    line2Before: '이번에는 직접 React Element를 만드는 공개 API, ',
-    line2Accent: 'createElement',
-    line2After: '를 살펴봅니다.',
-    primaryCta: '다음: React.createElement',
-    secondaryCta: '이전 페이지 다시 보기',
-    primaryHref: '/create-element',
-    secondaryHref: '/jsx-sugar',
+    title: '다음: React.createElement',
+    description:
+      '현대 JSX Runtime의 입구를 봤다면, 이번에는 직접 React Element를 만드는 공개 API, createElement를 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/create-element',
   },
 };
 
@@ -542,18 +531,13 @@ const en: JsxRuntimeFunctionsContent = {
     hintLabel: 'Hint',
     hint: 'To balance execution performance and debugging quality at the same time.',
   },
-  next: {
-    badge: '08',
+  nextStep: {
     eyebrow: 'Move to the next step',
-    title: "After the runtime door: React's public API",
-    line1: 'Now that you have seen the modern JSX runtime entry,',
-    line2Before: 'next, the public API that builds React Elements directly — ',
-    line2Accent: 'createElement',
-    line2After: '.',
-    primaryCta: 'Next: React.createElement',
-    secondaryCta: 'Revisit the previous page',
-    primaryHref: '/create-element',
-    secondaryHref: '/jsx-sugar',
+    title: 'Next: React.createElement',
+    description:
+      'Now that you have seen the modern JSX runtime entry, next is the public API that builds React Elements directly — createElement.',
+    cta: 'Go to the next page',
+    href: '/create-element',
   },
 };
 

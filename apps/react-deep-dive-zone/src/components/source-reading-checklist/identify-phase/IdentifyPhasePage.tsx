@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { PhaseCodePreviewSection } from './sections/PhaseCodePreviewSection';
 import { PhaseDetectionQuizSection } from './sections/PhaseDetectionQuizSection';
 import { PhaseRoleComparisonSection } from './sections/PhaseRoleComparisonSection';
@@ -32,7 +32,7 @@ export const IdentifyPhasePage = ({ locale }: Props) => {
       <PhaseCodePreviewSection content={c.codePreview} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

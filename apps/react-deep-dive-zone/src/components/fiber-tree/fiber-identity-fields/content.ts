@@ -143,13 +143,12 @@ export type FiberIdentityFieldsContent = {
       fiberType: string;
     };
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -383,14 +382,13 @@ const ko: FiberIdentityFieldsContent = {
       fiberType: 'type: App',
     },
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: stateNode',
     description:
       'Fiber가 무엇인지를 식별하는 필드를 봤다면, 이제 그 Fiber가 무엇과 연결되는지를 저장하는 stateNode를 살펴봅니다.',
-    buttonLabel: '다음: stateNode',
-    buttonHref: '/fiber-state-node',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-state-node',
   },
 };
 
@@ -611,14 +609,13 @@ const en: FiberIdentityFieldsContent = {
       fiberType: 'type: App',
     },
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: stateNode',
     description:
       'Now that you have seen the fields that identify a Fiber, look at stateNode — the field that stores what the Fiber is connected to.',
-    buttonLabel: 'Next: stateNode',
-    buttonHref: '/fiber-state-node',
+    cta: 'Go to the next page',
+    href: '/fiber-state-node',
   },
 };
 

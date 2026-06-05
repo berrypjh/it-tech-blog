@@ -1,8 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { NextFiberCta } from './sections/NextFiberCta';
 import { React19RefHero } from './sections/React19RefHero';
 import { RefBeforeAfterCompare } from './sections/RefBeforeAfterCompare';
 import { RefBenefits } from './sections/RefBenefits';
@@ -26,7 +26,7 @@ export const ReactElementRefReact19Page = ({ locale }: Props) => {
       <RefSourceCheckpoint content={c.checkpoint} />
       <RefBenefits content={c.benefits} />
       <RefQuickQuiz content={c.quiz} />
-      <NextFiberCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -1,12 +1,12 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeforeAfterUpdateState } from './sections/BeforeAfterUpdateState';
 import { DispatchSetStateFlow } from './sections/DispatchSetStateFlow';
 import { FollowCodeMission } from './sections/FollowCodeMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { QueuePendingCircularList } from './sections/QueuePendingCircularList';
 import { RealUpdateCodePreview } from './sections/RealUpdateCodePreview';
 import { RenderVsCommitComparison } from './sections/RenderVsCommitComparison';
@@ -34,7 +34,7 @@ export const SetStateUpdateFlowPage = ({ locale }: Props) => {
       <ThreeSetStateExperiment content={c.experiment} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

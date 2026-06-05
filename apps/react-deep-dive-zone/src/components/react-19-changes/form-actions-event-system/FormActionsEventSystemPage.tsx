@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ActionExtractionSection } from './sections/ActionExtractionSection';
@@ -10,7 +11,6 @@ import { FormActionsHero } from './sections/FormActionsHero';
 import { FormDataCreationSection } from './sections/FormDataCreationSection';
 import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PendingStateSection } from './sections/PendingStateSection';
 import { StartHostTransitionSection } from './sections/StartHostTransitionSection';
 import { SubmitEventPipeline } from './sections/SubmitEventPipeline';
@@ -38,7 +38,7 @@ export const FormActionsEventSystemPage = ({ locale }: Props) => {
       <FormActionPipelineInteractor content={c.interactor} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.nextCTA} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -167,10 +167,11 @@ export type ThreePriorityAxesContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    label: string;
+  nextStep: {
     eyebrow: string;
-    nextTitle: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -527,10 +528,11 @@ const ko: ThreePriorityAxesContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 페이지',
-    label: '다음: Lane 자료구조 해부하기',
-    nextTitle: 'Lane은 무엇이고 왜 비트마스크로 관리될까?',
+    title: '다음: Lane 자료구조 해부하기',
+    description: 'Lane은 무엇이고 왜 비트마스크로 관리될까?',
+    cta: '다음 페이지로 이동',
     href: '/lane-shape',
   },
 };
@@ -904,10 +906,11 @@ const en: ThreePriorityAxesContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next page',
-    label: 'Next: Anatomy of the Lane data structure',
-    nextTitle: 'What is a Lane and why is it a bitmask?',
+    title: 'Next: Anatomy of the Lane data structure',
+    description: 'What is a Lane and why is it a bitmask?',
+    cta: 'Go to the next page',
     href: '/lane-shape',
   },
 };

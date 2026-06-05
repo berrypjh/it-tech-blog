@@ -129,8 +129,11 @@ export type ListenerCollectionContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -385,8 +388,11 @@ const ko: ListenerCollectionContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: dispatchQueue 실행 순서 보기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: dispatchQueue 실행 순서 보기',
+    description: '수집된 listener들이 dispatchQueue에서 어떤 순서로 실행되는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
     href: '/dispatch-queue',
   },
 };
@@ -610,8 +616,11 @@ const en: ListenerCollectionContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: dispatchQueue execution order',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: dispatchQueue execution order',
+    description: 'See the order in which the collected listeners run inside the dispatchQueue.',
+    cta: 'Go to the next page',
     href: '/dispatch-queue',
   },
 };

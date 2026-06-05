@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DispatchPriorityHero } from './sections/DispatchPriorityHero';
@@ -9,7 +10,6 @@ import { EventUrgencyCards } from './sections/EventUrgencyCards';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { InteractivePriorityLab } from './sections/InteractivePriorityLab';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PriorityWrapperFlow } from './sections/PriorityWrapperFlow';
 import { RealCodePreview } from './sections/RealCodePreview';
 import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
@@ -34,7 +34,7 @@ export const NativeEventDispatchPriorityPage = ({ locale }: Props) => {
       <RealCodePreview content={c.realCode} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

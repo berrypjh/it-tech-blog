@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AllNativeEventsGrid } from './sections/AllNativeEventsGrid';
@@ -9,7 +10,6 @@ import { ExceptionEventHints } from './sections/ExceptionEventHints';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { ListenToAllSupportedEventsFlow } from './sections/ListenToAllSupportedEventsFlow';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { RealCodePreview } from './sections/RealCodePreview';
 import { RootContainerVisualization } from './sections/RootContainerVisualization';
 import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
@@ -32,7 +32,7 @@ export const RootNativeEventPage = ({ locale }: Props) => {
       <ExceptionEventHints content={c.exceptions} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

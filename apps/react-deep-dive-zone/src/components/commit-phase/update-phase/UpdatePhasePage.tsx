@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { PlacementUpdateCompareSection } from './sections/PlacementUpdateCompareSection';
@@ -9,7 +10,7 @@ import { TextChangeExampleSection } from './sections/TextChangeExampleSection';
 import { UpdateBeforeAfterSection } from './sections/UpdateBeforeAfterSection';
 import { UpdateCodeCheckpointSection } from './sections/UpdateCodeCheckpointSection';
 import { UpdateHeroSection } from './sections/UpdateHeroSection';
-import { UpdateQuizAndNextSection } from './sections/UpdateQuizAndNextSection';
+import { UpdateQuizSection } from './sections/UpdateQuizSection';
 import { updatePhaseContent } from './content';
 
 type Props = { locale: Locale };
@@ -26,7 +27,8 @@ export const UpdatePhasePage = ({ locale }: Props) => {
       <UpdateCodeCheckpointSection content={c.checkpoint} />
       <UpdateBeforeAfterSection content={c.beforeAfter} />
       <PropsVsTextUpdateSection content={c.propsVsText} />
-      <UpdateQuizAndNextSection quiz={c.quiz} cta={c.cta} />
+      <UpdateQuizSection quiz={c.quiz} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

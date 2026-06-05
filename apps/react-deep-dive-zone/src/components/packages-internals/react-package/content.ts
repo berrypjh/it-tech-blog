@@ -141,14 +141,9 @@ export type ReactPackageContent = {
   nextStep: {
     eyebrow: string;
     title: string;
-    line1: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -553,14 +548,10 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: '다음 단계로 이동하기',
-      line1: '사용자-facing API의 입구를 봤다면,',
-      line2Before: '이제 그 UI를 실제 브라우저와 서버 환경에 연결하는 ',
-      line2Accent: 'react-dom',
-      line2After: '으로 이동합니다.',
-      primaryCta: '다음: react-dom 패키지 →',
-      secondaryCta: '이전 페이지 다시 보기',
-      primaryHref: '/react-dom-package',
-      secondaryHref: '/why-split',
+      description:
+        '사용자-facing API의 입구를 봤다면, 이제 그 UI를 실제 브라우저와 서버 환경에 연결하는 react-dom으로 이동합니다.',
+      cta: '다음: react-dom 패키지 →',
+      href: '/react-dom-package',
     },
   },
   en: {
@@ -783,14 +774,10 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     nextStep: {
       eyebrow: '08 · next step',
       title: 'Move to the next step',
-      line1: 'You have seen the doorway for the user-facing API.',
-      line2Before: 'Next, the package that wires that UI into the browser and the server: ',
-      line2Accent: 'react-dom',
-      line2After: '.',
-      primaryCta: 'Next: the react-dom package →',
-      secondaryCta: 'Revisit the previous page',
-      primaryHref: '/react-dom-package',
-      secondaryHref: '/why-split',
+      description:
+        'You have seen the doorway for the user-facing API. Next, the package that wires that UI into the browser and the server: react-dom.',
+      cta: 'Next: the react-dom package →',
+      href: '/react-dom-package',
     },
   },
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DispatchEventForPluginFlow } from './sections/DispatchEventForPluginFlow';
@@ -9,7 +10,6 @@ import { ExtractEventsFlow } from './sections/ExtractEventsFlow';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { FormActionEventPluginSupplement } from './sections/FormActionEventPluginSupplement';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PluginRoleCards } from './sections/PluginRoleCards';
 import { PluginSystemHero } from './sections/PluginSystemHero';
 import { RealCodePreview } from './sections/RealCodePreview';
@@ -36,7 +36,7 @@ export const PluginEventSystemPage = ({ locale }: Props) => {
       <FormActionEventPluginSupplement content={c.formAction} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

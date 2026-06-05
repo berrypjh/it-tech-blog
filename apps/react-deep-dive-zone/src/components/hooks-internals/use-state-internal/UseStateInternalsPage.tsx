@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { DispatchCreationFlow } from './sections/DispatchCreationFlow';
@@ -7,7 +8,6 @@ import { FollowCodeMission } from './sections/FollowCodeMission';
 import { HookInternalStructure } from './sections/HookInternalStructure';
 import { KeyTakeaways } from './sections/KeyTakeaways';
 import { MountStateImplPreview } from './sections/MountStateImplPreview';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { TodayQuestionCard } from './sections/TodayQuestionCard';
 import { UseStateDissectionExperiment } from './sections/UseStateDissectionExperiment';
 import { UseStateFullProcess } from './sections/UseStateFullProcess';
@@ -30,7 +30,7 @@ export const UseStateInternalsPage = ({ locale }: Props) => {
       <UseStateDissectionExperiment content={c.experiment} />
       <FollowCodeMission content={c.mission} />
       <KeyTakeaways content={c.summary} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -95,12 +95,12 @@ export type WhyNotImmediateContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
+  nextStep: {
     eyebrow: string;
-    mainText: string;
+    title: string;
     description: string;
-    primary: { label: string; href: string };
-    secondary: { label: string; href: string }[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -349,15 +349,12 @@ const ko: WhyNotImmediateContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: '다음 여정',
-    mainText: '업데이트가 왜 즉시 실행되지 않는지, 이제 전체 그림이 보이나요?',
+    title: '다음: React 내부의 3가지 우선순위 축',
     description: '다음 파트에서 Scheduler와 우선순위 시스템을 더 깊이 파헤쳐 봅니다.',
-    primary: { label: '다음: React 내부의 3가지 우선순위 축', href: '/priority-axes' },
-    secondary: [
-      { label: '전체 흐름 다시 보기', href: '#flow-heading' },
-      { label: 'React 소스코드 열기', href: REACT_FIBER_WORK_LOOP_URL },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/priority-axes',
   },
 };
 
@@ -577,18 +574,12 @@ const en: WhyNotImmediateContent = {
       },
     ],
   },
-  cta: {
+  nextStep: {
     eyebrow: 'Next stop',
-    mainText: 'Can you see the whole picture of why updates are not run immediately?',
+    title: "Next: React's three priority axes",
     description: "Next we'll dive deeper into the Scheduler and its priority system.",
-    primary: {
-      label: "Next: React's three priority axes",
-      href: '/priority-axes',
-    },
-    secondary: [
-      { label: 'Replay the whole flow', href: '#flow-heading' },
-      { label: 'Open the React source', href: REACT_FIBER_WORK_LOOP_URL },
-    ],
+    cta: 'Go to the next page',
+    href: '/priority-axes',
   },
 };
 

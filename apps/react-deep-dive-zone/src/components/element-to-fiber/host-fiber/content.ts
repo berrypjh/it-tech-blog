@@ -124,13 +124,12 @@ export type HostComponentFiberContent = {
     title: string;
     items: ChecklistItem[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -143,6 +142,13 @@ const treeNodes: TreeNode[] = [
 ];
 
 const ko: HostComponentFiberContent = {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Function / Class Component Fiber',
+    description: '함수형·클래스 컴포넌트가 Fiber로 어떻게 표현되는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/function-fiber',
+  },
   hero: {
     badge: 'Fiber 생성 · 4/10단계',
     title: {
@@ -325,18 +331,16 @@ const ko: HostComponentFiberContent = {
       },
     ],
   },
-  next: {
-    badge: '08',
-    eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
-    description:
-      '문자열 type의 Fiber 흐름을 봤다면, 이제 사용자 정의 컴포넌트가 Function 또는 Class Fiber로 어떻게 갈라지는지 살펴봅니다.',
-    primaryCta: '다음: Function / Class Component Fiber',
-    primaryHref: '/function-fiber',
-  },
 };
 
 const en: HostComponentFiberContent = {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Function / Class Component Fiber',
+    description: 'See how function and class components are represented as fibers.',
+    cta: 'Go to the next page',
+    href: '/function-fiber',
+  },
   hero: {
     badge: 'Element → Fiber · 4/10',
     title: {
@@ -531,15 +535,6 @@ const en: HostComponentFiberContent = {
         text: 'Real DOM is created and inserted during the commit phase.',
       },
     ],
-  },
-  next: {
-    badge: '08',
-    eyebrow: 'Next page',
-    title: 'Move on',
-    description:
-      'Now that the string-type flow is clear, look at how user-defined components split into Function or Class Fibers.',
-    primaryCta: 'Next: Function / Class Component Fiber',
-    primaryHref: '/function-fiber',
   },
 };
 

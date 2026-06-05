@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CollectionExecutionSeparation } from './sections/CollectionExecutionSeparation';
@@ -8,7 +9,6 @@ import { DispatchQueueHero } from './sections/DispatchQueueHero';
 import { DispatchQueueStructure } from './sections/DispatchQueueStructure';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { KeyTakeaways } from './sections/KeyTakeaways';
-import { NextPageCTA } from './sections/NextPageCTA';
 import { PhaseExecutionOrder } from './sections/PhaseExecutionOrder';
 import { ProcessDispatchQueueFlow } from './sections/ProcessDispatchQueueFlow';
 import { PropagationTimeline } from './sections/PropagationTimeline';
@@ -36,7 +36,7 @@ export const DispatchQueueOrderPage = ({ locale }: Props) => {
       <PropagationTimeline content={c.timeline} />
       <FollowAlongMission content={c.mission} />
       <KeyTakeaways content={c.takeaways} />
-      <NextPageCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

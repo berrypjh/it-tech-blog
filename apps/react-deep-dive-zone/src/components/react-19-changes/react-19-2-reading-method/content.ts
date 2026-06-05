@@ -117,8 +117,6 @@ export type Quiz = {
   correct: 'A' | 'B' | 'C' | 'D';
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type After192Content = {
   hero: {
     badge: string;
@@ -224,13 +222,12 @@ export type After192Content = {
     description: string;
     questions: Quiz[];
   };
-  completeCTA: {
-    badge: string;
-    heading: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton;
-    tertiary: LinkButton;
+    cta: string;
+    href: string;
   };
 };
 
@@ -639,23 +636,13 @@ const ko: After192Content = {
       },
     ],
   },
-  completeCTA: {
-    badge: 'COMPLETE',
-    heading: 'React 19 코드 변화 학습 완료',
+  nextStep: {
+    eyebrow: 'React 19 코드 변화 학습 완료',
+    title: '다음: 실전 소스코드 읽기 체크리스트',
     description:
       'React 19.2 이후 변화까지 모두 학습했습니다. 이제 최신 소스코드를 직접 탐험해 보세요!',
-    primary: {
-      label: '다음: 실전 소스코드 읽기 체크리스트',
-      href: '/which-package',
-    },
-    secondary: {
-      label: 'React 19 전체 변화 다시 보기',
-      href: '/react-19-change-map',
-    },
-    tertiary: {
-      label: '릴리즈 노트 읽기',
-      href: 'https://github.com/facebook/react/releases',
-    },
+    cta: '다음 페이지로 이동',
+    href: '/which-package',
   },
 };
 
@@ -1040,23 +1027,13 @@ const en: After192Content = {
       },
     ],
   },
-  completeCTA: {
-    badge: 'COMPLETE',
-    heading: 'React 19 source-reading course complete',
+  nextStep: {
+    eyebrow: 'React 19 source-reading course complete',
+    title: 'Next: Source-reading checklist',
     description:
       "You've covered the React 19 changes through 19.2 and beyond. Now go explore the latest source on your own.",
-    primary: {
-      label: 'Next: Source-reading checklist',
-      href: '/which-package',
-    },
-    secondary: {
-      label: 'Replay the React 19 change map',
-      href: '/react-19-change-map',
-    },
-    tertiary: {
-      label: 'Open the release notes',
-      href: 'https://github.com/facebook/react/releases',
-    },
+    cta: 'Go to the next page',
+    href: '/which-package',
   },
 };
 

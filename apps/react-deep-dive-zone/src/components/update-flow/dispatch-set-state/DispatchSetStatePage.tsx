@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BindReasonCards } from './sections/BindReasonCards';
@@ -8,7 +9,6 @@ import { KeySummaryBanner } from './sections/KeySummaryBanner';
 import { MiniQuizSection } from './sections/MiniQuizSection';
 import { MountStateCodeCheckpoint } from './sections/MountStateCodeCheckpoint';
 import { MountStateFlowSection } from './sections/MountStateFlowSection';
-import { NextStepCTA } from './sections/NextStepCTA';
 import { PublicApiInternalCompare } from './sections/PublicApiInternalCompare';
 import { SetStateMemoryHero } from './sections/SetStateMemoryHero';
 import { dispatchSetStateContent } from './content';
@@ -28,7 +28,7 @@ export const DispatchSetStatePage = ({ locale }: Props) => {
       <FiberQueueDispatchDiagram content={c.relationship} />
       <MiniQuizSection content={c.quiz} />
       <KeySummaryBanner content={c.summary} />
-      <NextStepCTA content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

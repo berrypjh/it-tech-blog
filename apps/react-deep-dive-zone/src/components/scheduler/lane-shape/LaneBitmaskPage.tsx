@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { LaneBitmaskHero } from './sections/LaneBitmaskHero';
@@ -8,7 +9,6 @@ import { LaneCodePreview } from './sections/LaneCodePreview';
 import { LaneCombinationInteractive } from './sections/LaneCombinationInteractive';
 import { LaneFollowAlongMission } from './sections/LaneFollowAlongMission';
 import { LaneKeyTakeaways } from './sections/LaneKeyTakeaways';
-import { LaneNextCTA } from './sections/LaneNextCTA';
 import { LaneVsLanesCompare } from './sections/LaneVsLanesCompare';
 import { MultipleLanesNeed } from './sections/MultipleLanesNeed';
 import { PendingLanesCombination } from './sections/PendingLanesCombination';
@@ -34,7 +34,7 @@ export const LaneBitmaskPage = ({ locale }: Props) => {
       <LaneCombinationInteractive content={c.interactive} />
       <LaneFollowAlongMission content={c.mission} />
       <LaneKeyTakeaways content={c.takeaways} />
-      <LaneNextCTA content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

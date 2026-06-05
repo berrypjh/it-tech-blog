@@ -147,13 +147,12 @@ export type LaneUpdateObjectContent = {
     main: { lead: string; emphasis: string; tail: string };
     pills: SummaryPill[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -401,14 +400,13 @@ const ko: LaneUpdateObjectContent = {
       { iconName: 'link', text: 'next는 update들을 queue로 연결한다' },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: eager bailout',
     description:
       'update 객체가 만들어졌다면, 이제 React가 경우에 따라 렌더링을 아예 건너뛸 수 있는 eager bailout을 살펴봅니다.',
-    buttonLabel: '다음: eager bailout',
-    buttonHref: '/root-pending',
+    cta: '다음: eager bailout',
+    href: '/root-pending',
   },
 };
 
@@ -637,14 +635,13 @@ const en: LaneUpdateObjectContent = {
       { iconName: 'link', text: 'next links updates into the queue' },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: eager bailout',
     description:
       'Now that the update object is built, see how React can sometimes skip the render entirely — the eager bailout.',
-    buttonLabel: 'Next: eager bailout',
-    buttonHref: '/root-pending',
+    cta: 'Next: eager bailout',
+    href: '/root-pending',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ApiEntryRoutesSection } from './sections/ApiEntryRoutesSection';
@@ -9,7 +10,6 @@ import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
 import { PublicApiHubSection } from './sections/PublicApiHubSection';
 import { QuickQuizSection } from './sections/QuickQuizSection';
 import { ReactPackageHero } from './sections/ReactPackageHero';
-import { ReactPackageNextCTA } from './sections/ReactPackageNextCTA';
 import { reactPackageContent } from './content';
 
 type Props = { locale: Locale };
@@ -29,7 +29,7 @@ export const ReactPackagePage = ({ locale }: Props) => {
       <ApiEntryRoutesSection content={c.routes} sectionId={ROUTES_SECTION_ID} />
       <CapabilitiesSection content={c.capabilities} />
       <QuickQuizSection content={c.quiz} />
-      <ReactPackageNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

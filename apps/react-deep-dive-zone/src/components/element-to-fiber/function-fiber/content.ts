@@ -137,17 +137,23 @@ export type FunctionClassComponentFiberContent = {
     title: string;
     items: ChecklistItem[];
   };
-  next: {
-    badge: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    primaryCta: string;
-    primaryHref: string;
+    cta: string;
+    href: string;
   };
 };
 
 const ko: FunctionClassComponentFiberContent = {
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: Fragment와 Mode Fiber',
+    description: 'Fragment와 StrictMode처럼 React가 특별하게 다루는 타입을 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/fragment-mode-fiber',
+  },
   hero: {
     badge: 'Fiber 생성 · 5/10단계',
     title: {
@@ -378,18 +384,16 @@ const ko: FunctionClassComponentFiberContent = {
       { id: 'c4', text: '서로 다른 상태/업데이트 로직이 필요하다' },
     ],
   },
-  next: {
-    badge: '08',
-    eyebrow: '다음 페이지',
-    title: '다음으로 넘어가기',
-    description:
-      '사용자 컴포넌트 분류까지 봤다면, 이번에는 Fragment와 StrictMode처럼 React가 특별하게 다루는 타입을 살펴봅니다.',
-    primaryCta: '다음: Fragment와 Mode Fiber',
-    primaryHref: '/fragment-mode-fiber',
-  },
 };
 
 const en: FunctionClassComponentFiberContent = {
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: Fragment & Mode Fiber',
+    description: 'Explore types React treats specially, like Fragment and StrictMode.',
+    cta: 'Go to the next page',
+    href: '/fragment-mode-fiber',
+  },
   hero: {
     badge: 'Element → Fiber · 5/10',
     title: {
@@ -621,15 +625,6 @@ const en: FunctionClassComponentFiberContent = {
       { id: 'c3', text: 'Class → Work Tag 1 / Function → Work Tag 0' },
       { id: 'c4', text: 'They need different state / update logic' },
     ],
-  },
-  next: {
-    badge: '08',
-    eyebrow: 'Next page',
-    title: 'Move on',
-    description:
-      'You have seen how user-defined components split. Next, look at Fragment and StrictMode — types React handles specially.',
-    primaryCta: 'Next: Fragment & Mode Fiber',
-    primaryHref: '/fragment-mode-fiber',
   },
 };
 

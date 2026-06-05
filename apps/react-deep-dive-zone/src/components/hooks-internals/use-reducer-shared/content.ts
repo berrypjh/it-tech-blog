@@ -135,10 +135,12 @@ export type UseReducerSharedContent = {
     title: string;
     items: SummaryItem[];
   };
-  cta: {
-    label: string;
-    href: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
     description: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -411,11 +413,13 @@ const ko: UseReducerSharedContent = {
       },
     ],
   },
-  cta: {
-    label: '다음: useEffect 내부 구조 보기',
-    href: '/use-effect-internal',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '다음: useEffect 내부 구조 보기',
     description:
       '상태 Hook의 공통 구조를 이해했다면, 이제 React가 나중에 실행할 작업인 Effect를 어떻게 저장하는지 살펴봅니다.',
+    cta: '다음 페이지로 이동',
+    href: '/use-effect-internal',
   },
 };
 
@@ -684,11 +688,13 @@ const en: UseReducerSharedContent = {
       },
     ],
   },
-  cta: {
-    label: 'Next: explore useEffect internals',
-    href: '/use-effect-internal',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'Next: explore useEffect internals',
     description:
       'Now that the shared state model is clear, see how React stores Effects that run later.',
+    cta: 'Go to the next page',
+    href: '/use-effect-internal',
   },
 };
 

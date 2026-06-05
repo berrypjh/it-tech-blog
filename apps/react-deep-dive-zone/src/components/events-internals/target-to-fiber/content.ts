@@ -126,8 +126,11 @@ export type TargetFiberContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  cta: {
-    text: string;
+  nextStep: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: string;
     href: string;
   };
 };
@@ -362,8 +365,12 @@ const ko: TargetFiberContent = {
       },
     ],
   },
-  cta: {
-    text: '다음: Plugin Event System 보기',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Plugin Event System 보기',
+    description:
+      'Fiber로 찾은 target을 기준으로 실제 이벤트 dispatch가 어떻게 일어나는지 살펴본다.',
+    cta: '다음 페이지로 이동',
     href: '/plugin-event-system',
   },
 };
@@ -565,8 +572,12 @@ const en: TargetFiberContent = {
       },
     ],
   },
-  cta: {
-    text: 'Next: the Plugin Event System',
+  nextStep: {
+    eyebrow: 'The journey continues',
+    title: 'The Plugin Event System',
+    description:
+      'See how the actual event dispatch unfolds based on the target you resolved to a Fiber.',
+    cta: 'Go to the next page',
     href: '/plugin-event-system',
   },
 };

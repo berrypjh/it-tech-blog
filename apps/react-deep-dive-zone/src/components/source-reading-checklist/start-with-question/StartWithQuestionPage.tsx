@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BadGoodCompareSection } from './sections/BadGoodCompareSection';
@@ -8,7 +9,6 @@ import { FollowAlongMissionSection } from './sections/FollowAlongMissionSection'
 import { FourQuestionTypesSection } from './sections/FourQuestionTypesSection';
 import { HeroSection } from './sections/HeroSection';
 import { KeySummarySection } from './sections/KeySummarySection';
-import { NextCTASection } from './sections/NextCTASection';
 import { QuestionConverterSection } from './sections/QuestionConverterSection';
 import { QuestionToEntryFlowSection } from './sections/QuestionToEntryFlowSection';
 import { ThreeReactExamplesSection } from './sections/ThreeReactExamplesSection';
@@ -32,7 +32,7 @@ export const StartWithQuestionPage = ({ locale }: Props) => {
       <QuestionConverterSection content={c.converter} />
       <FollowAlongMissionSection content={c.mission} />
       <KeySummarySection content={c.summary} />
-      <NextCTASection content={c.nextCta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

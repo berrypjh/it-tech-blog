@@ -120,13 +120,12 @@ export type EagerBailoutContent = {
     answerTitle: string;
     answerBody: string;
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -322,13 +321,12 @@ const ko: EagerBailoutContent = {
     answerTitle: '그럴 수 있다.',
     answerBody: 'React가 같은 상태로 판단해 eager bailout할 수 있다.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: '다음 단계로',
-    title: '다음 단계로',
+    title: '다음: enqueueConcurrentHookUpdate',
     description: '렌더가 필요하다고 판단되면, 이제 update 객체는 queue 처리 경로로 넘어갑니다.',
-    buttonLabel: '다음: enqueueConcurrentHookUpdate',
-    buttonHref: '/enqueue-concurrent-hook-update',
+    cta: '다음: enqueueConcurrentHookUpdate',
+    href: '/enqueue-concurrent-hook-update',
   },
 };
 
@@ -511,14 +509,13 @@ const en: EagerBailoutContent = {
     answerTitle: 'Yes, it can.',
     answerBody: 'React may decide the state is unchanged and take the eager bailout.',
   },
-  next: {
-    number: '07',
+  nextStep: {
     eyebrow: 'Next up',
-    title: 'Up next',
+    title: 'Next: enqueueConcurrentHookUpdate',
     description:
       'When a render really is needed, the update object travels into the queue-processing path next.',
-    buttonLabel: 'Next: enqueueConcurrentHookUpdate',
-    buttonHref: '/enqueue-concurrent-hook-update',
+    cta: 'Next: enqueueConcurrentHookUpdate',
+    href: '/enqueue-concurrent-hook-update',
   },
 };
 

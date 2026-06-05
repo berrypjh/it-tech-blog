@@ -129,13 +129,12 @@ export type FiberFlagsContent = {
     explanationLabel: string;
     cards: QuizCard[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -412,14 +411,13 @@ const ko: FiberFlagsContent = {
       },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: lanes / childLanes',
     description:
       '변경 효과가 Fiber에 어떻게 남는지 봤다면, 이제 React가 어떤 작업을 먼저 처리할지 Fiber가 어떻게 우선순위를 품는지 살펴봅니다.',
-    buttonLabel: '다음: lanes / childLanes',
-    buttonHref: '/fiber-lanes',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-lanes',
   },
 };
 
@@ -670,14 +668,13 @@ const en: FiberFlagsContent = {
       },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: lanes / childLanes',
     description:
       'Now that you have seen how effects are marked on a Fiber, look at how a Fiber carries priority so React knows which work to handle first.',
-    buttonLabel: 'Next: lanes / childLanes',
-    buttonHref: '/fiber-lanes',
+    cta: 'Go to the next page',
+    href: '/fiber-lanes',
   },
 };
 

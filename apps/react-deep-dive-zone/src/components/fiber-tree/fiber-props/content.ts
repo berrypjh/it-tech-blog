@@ -118,13 +118,12 @@ export type FiberPropsContent = {
     answer: string;
     explanationParts: { text: string; bold?: boolean }[];
   };
-  next: {
-    number: string;
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
-    buttonLabel: string;
-    buttonHref: string;
+    cta: string;
+    href: string;
   };
 };
 
@@ -342,14 +341,13 @@ const ko: FiberPropsContent = {
       },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
+    title: '다음: memoizedState와 updateQueue',
     description:
       'props가 어떻게 기억되는지 봤다면, 이제 상태와 업데이트 요청이 Fiber 안에서 어디에 쌓이는지 살펴봅니다.',
-    buttonLabel: '다음: memoizedState와 updateQueue',
-    buttonHref: '/fiber-state-and-queue',
+    cta: '다음 페이지로 이동',
+    href: '/fiber-state-and-queue',
   },
 };
 
@@ -535,14 +533,13 @@ const en: FiberPropsContent = {
       },
     ],
   },
-  next: {
-    number: '08',
+  nextStep: {
     eyebrow: 'Up next',
-    title: 'Up next',
+    title: 'Next: memoizedState & updateQueue',
     description:
       'Now that you have seen how a Fiber remembers props, look at where state and update requests pile up inside the Fiber.',
-    buttonLabel: 'Next: memoizedState & updateQueue',
-    buttonHref: '/fiber-state-and-queue',
+    cta: 'Go to the next page',
+    href: '/fiber-state-and-queue',
   },
 };
 

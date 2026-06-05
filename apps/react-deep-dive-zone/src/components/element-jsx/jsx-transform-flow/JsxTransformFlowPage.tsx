@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CodeTransformExamples } from './sections/CodeTransformExamples';
@@ -8,7 +9,6 @@ import { FunctionCallBenefits } from './sections/FunctionCallBenefits';
 import { JsxTransformHero } from './sections/JsxTransformHero';
 import { React19TransformReasons } from './sections/React19TransformReasons';
 import { TransformComparison } from './sections/TransformComparison';
-import { TransformNextPageCta } from './sections/TransformNextPageCta';
 import { TransformQuickQuiz } from './sections/TransformQuickQuiz';
 import { jsxTransformFlowContent } from './content';
 
@@ -26,7 +26,7 @@ export const JsxTransformFlowPage = ({ locale }: Props) => {
       <CodeTransformExamples content={c.examples} />
       <FunctionCallBenefits content={c.benefits} />
       <TransformQuickQuiz content={c.quiz} />
-      <TransformNextPageCta content={c.next} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

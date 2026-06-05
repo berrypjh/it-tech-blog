@@ -92,8 +92,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type ActionsUpdateFlowContent = {
   hero: {
     badge: string;
@@ -183,12 +181,12 @@ export type ActionsUpdateFlowContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
 };
 
@@ -567,19 +565,13 @@ const ko: ActionsUpdateFlowContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'Form Actions는 이벤트 시스템과 어떻게 연결되는가?'],
+    title: '다음: Form Actions는 이벤트 시스템과 어떻게 연결되는가?',
     description:
       '`<form action={fn}>`이 submit event, FormActionEventPlugin, FormData, pendingState, startHostTransition으로 어떻게 이어지는지 살펴봅니다.',
-    primary: {
-      label: '다음: Form Actions는 이벤트 시스템과 어떻게 연결되는가?',
-      href: '/form-actions-event-system',
-    },
-    secondary: [
-      { label: 'Actions 흐름 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/form-actions-event-system',
   },
 };
 
@@ -959,19 +951,13 @@ const en: ActionsUpdateFlowContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'How do Form Actions connect to the event system?'],
+    title: 'Next: How do Form Actions connect to the event system?',
     description:
       'See how `<form action={fn}>` reaches submit event, FormActionEventPlugin, FormData, pendingState, and startHostTransition.',
-    primary: {
-      label: 'Next: How do Form Actions connect to the event system?',
-      href: '/form-actions-event-system',
-    },
-    secondary: [
-      { label: 'Replay the Actions flow', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/form-actions-event-system',
   },
 };
 

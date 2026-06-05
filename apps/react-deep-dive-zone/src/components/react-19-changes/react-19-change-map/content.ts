@@ -87,8 +87,6 @@ export type TakeawayCard = {
   iconKey: IconKey;
 };
 
-export type LinkButton = { label: string; href: string };
-
 export type React19ChangeMapContent = {
   hero: {
     badge: string;
@@ -182,12 +180,12 @@ export type React19ChangeMapContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  nextCTA: {
+  nextStep: {
     eyebrow: string;
-    titleLines: [string, string];
+    title: string;
     description: string;
-    primary: LinkButton;
-    secondary: LinkButton[];
+    cta: string;
+    href: string;
   };
   versionNote: {
     left: string;
@@ -556,18 +554,12 @@ const ko: React19ChangeMapContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: '다음 단계로',
-    titleLines: ['다음:', 'Actions는 왜 업데이트 모델의 확장일까?'],
+    title: '다음: Actions는 왜 업데이트 모델의 확장일까?',
     description: '업데이트 흐름의 진입점과 상태 / 서버 연결을 깊이 파헤쳐 봅니다.',
-    primary: {
-      label: '다음: Actions는 왜 업데이트 모델의 확장일까?',
-      href: '/actions-update-flow',
-    },
-    secondary: [
-      { label: '전체 변화 지도 다시 보기', href: '#hero-heading' },
-      { label: 'React 소스코드 열기', href: 'https://github.com/facebook/react' },
-    ],
+    cta: '다음 페이지로 이동',
+    href: '/actions-update-flow',
   },
   versionNote: {
     left: '기준 버전: react@19.2.6',
@@ -944,18 +936,12 @@ const en: React19ChangeMapContent = {
       },
     ],
   },
-  nextCTA: {
+  nextStep: {
     eyebrow: 'Next step',
-    titleLines: ['Next:', 'Why are Actions an extension of the update model?'],
+    title: 'Next: Why are Actions an extension of the update model?',
     description: 'Dig into the entry points of the update flow and the state / server connections.',
-    primary: {
-      label: 'Next: Why are Actions an extension of the update model?',
-      href: '/actions-update-flow',
-    },
-    secondary: [
-      { label: 'Replay the whole change map', href: '#hero-heading' },
-      { label: 'Open the React source', href: 'https://github.com/facebook/react' },
-    ],
+    cta: 'Go to the next page',
+    href: '/actions-update-flow',
   },
   versionNote: {
     left: 'Baseline version: react@19.2.6',

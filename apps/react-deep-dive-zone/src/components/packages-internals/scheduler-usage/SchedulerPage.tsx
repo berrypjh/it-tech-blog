@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CheckpointSection } from './sections/CheckpointSection';
@@ -9,7 +10,6 @@ import { NeedSection } from './sections/NeedSection';
 import { PrioritySection } from './sections/PrioritySection';
 import { QueueSection } from './sections/QueueSection';
 import { SchedulerHero } from './sections/SchedulerHero';
-import { SchedulerNextCTA } from './sections/SchedulerNextCTA';
 import { schedulerContent } from './content';
 
 type Props = { locale: Locale };
@@ -29,7 +29,7 @@ export const SchedulerPage = ({ locale }: Props) => {
       <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
       <DoesNotSection content={c.doesNot} />
       <QueueSection content={c.queue} />
-      <SchedulerNextCTA content={c.nextStep} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };
