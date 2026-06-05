@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { NextStepBanner } from '../../shared/NextStepBanner';
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateRootPracticePanel } from './sections/CreateRootPracticePanel';
@@ -28,7 +28,7 @@ export const ReactRepositoryExplorationRoutinePage = ({ locale }: Props) => {
       <CreateRootPracticePanel content={c.practice1} />
       <ElementToFiberPracticePanel content={c.practice2} />
       <FinalReadinessChecklist content={c.checklist} />
-      <NextStepBanner content={c.nextStep} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { ToneKey } from '../../shared/tones';
 
 import type { AspectKey } from './aspectTone';
@@ -58,14 +59,6 @@ export type LoopStep = {
   label: string;
   /** 마지막 step만 highlight */
   highlight?: boolean;
-};
-
-export type CompletionButton = {
-  id: 'roadmap' | 'note' | 'repo';
-  label: string;
-  href: string;
-  variant: 'primary' | 'secondary' | 'tertiary';
-  iconKey: 'route' | 'notebook' | 'gitBranch';
 };
 
 export type ReconstructContent = {
@@ -170,12 +163,7 @@ export type ReconstructContent = {
     steps: LoopStep[];
     description: string;
   };
-  completion: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    buttons: CompletionButton[];
-  };
+  finale: FinaleBannerContent;
 };
 
 export const reconstructContent: Record<Locale, ReconstructContent> = {
@@ -426,34 +414,15 @@ export const reconstructContent: Record<Locale, ReconstructContent> = {
         { id: 'explain', label: '내 설명', highlight: true },
       ],
     },
-    completion: {
-      eyebrow: '코스 완료',
-      title: 'React 소스코드 탐구 완료',
-      description:
-        '이제 React 저장소를 다시 열 때, 단순히 파일을 따라가는 것이 아니라 질문과 흐름으로 읽을 수 있습니다.',
-      buttons: [
-        {
-          id: 'roadmap',
-          label: '전체 로드맵 다시 보기',
-          href: '/start-with-question',
-          variant: 'primary',
-          iconKey: 'route',
-        },
-        {
-          id: 'note',
-          label: '내 학습 노트 정리하기',
-          href: '/compress-call-path',
-          variant: 'secondary',
-          iconKey: 'notebook',
-        },
-        {
-          id: 'repo',
-          label: 'React 저장소 열기',
-          href: 'https://github.com/facebook/react',
-          variant: 'tertiary',
-          iconKey: 'gitBranch',
-        },
-      ],
+    finale: {
+      progressLabel: '15/15 챕터 완료',
+      copyLine1: '모든 챕터를',
+      copyLine2: '끝까지 완주했습니다.',
+      copyLine3: '이제 스스로 소스를 읽어보세요.',
+      primaryCta: '처음부터 다시 깊게 읽기',
+      primaryHref: '/why-source',
+      secondaryCta: '체크리스트 다시 보기',
+      secondaryHref: '/start-with-question',
     },
   },
   en: {
@@ -717,34 +686,15 @@ export const reconstructContent: Record<Locale, ReconstructContent> = {
         { id: 'explain', label: 'Your explanation', highlight: true },
       ],
     },
-    completion: {
-      eyebrow: 'Course completed',
-      title: 'React source-reading course completed',
-      description:
-        'Next time you open the React repo, you can read it by question and flow — not by following files.',
-      buttons: [
-        {
-          id: 'roadmap',
-          label: 'See the full roadmap again',
-          href: '/start-with-question',
-          variant: 'primary',
-          iconKey: 'route',
-        },
-        {
-          id: 'note',
-          label: 'Tidy up my learning notes',
-          href: '/compress-call-path',
-          variant: 'secondary',
-          iconKey: 'notebook',
-        },
-        {
-          id: 'repo',
-          label: 'Open the React repo',
-          href: 'https://github.com/facebook/react',
-          variant: 'tertiary',
-          iconKey: 'gitBranch',
-        },
-      ],
+    finale: {
+      progressLabel: 'Chapter 15 of 15 complete',
+      copyLine1: 'You completed',
+      copyLine2: 'every chapter.',
+      copyLine3: 'Now go read the source yourself.',
+      primaryCta: 'Start over and read deeper',
+      primaryHref: '/why-source',
+      secondaryCta: 'Review the checklist',
+      secondaryHref: '/start-with-question',
     },
   },
 };

@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { NextStepBanner } from '../../shared/NextStepBanner';
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BridgeSection } from './sections/BridgeSection';
@@ -29,7 +29,7 @@ export const PackageDesignPage = ({ locale }: Props) => {
       <UserFlowSection content={c.userFlow} />
       <ChecklistSection content={c.checklist} sectionId={CHECKLIST_SECTION_ID} />
       <BridgeSection content={c.bridge} />
-      <NextStepBanner content={c.nextStep} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

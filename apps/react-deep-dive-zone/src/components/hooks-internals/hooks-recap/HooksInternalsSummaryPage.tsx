@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CoreDataStructures } from './sections/CoreDataStructures';
 import { CoreFunctionReview } from './sections/CoreFunctionReview';
-import { FinalCTA } from './sections/FinalCTA';
 import { FullFlowSummary } from './sections/FullFlowSummary';
 import { HooksSummaryHero } from './sections/HooksSummaryHero';
 import { IntegratedCounterSimulator } from './sections/IntegratedCounterSimulator';
@@ -30,7 +30,7 @@ export const HooksInternalsSummaryPage = ({ locale }: Props) => {
       <PracticalReadingChecklist content={c.checklist} />
       <MiniQuiz content={c.quiz} />
       <NextLearningPath content={c.nextPath} />
-      <FinalCTA content={c.finalCta} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

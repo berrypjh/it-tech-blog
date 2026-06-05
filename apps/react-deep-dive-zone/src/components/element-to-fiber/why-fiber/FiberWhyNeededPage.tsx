@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChapterCoreFive } from './sections/ChapterCoreFive';
@@ -8,7 +9,6 @@ import { FiberProblemCards } from './sections/FiberProblemCards';
 import { FiberWhyNeededHero } from './sections/FiberWhyNeededHero';
 import { FinalChecklist } from './sections/FinalChecklist';
 import { FinalFlowSummary } from './sections/FinalFlowSummary';
-import { FinishNextStepCTA } from './sections/FinishNextStepCTA';
 import { NextChapterPreview } from './sections/NextChapterPreview';
 import { fiberWhyNeededContent } from './content';
 
@@ -36,7 +36,7 @@ export const FiberWhyNeededPage = ({ locale }: Props) => {
       </div>
 
       <ClosingQuote content={c.quote} />
-      <FinishNextStepCTA content={c.next} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

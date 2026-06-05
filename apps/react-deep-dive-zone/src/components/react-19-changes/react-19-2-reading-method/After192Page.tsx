@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { NextStepBanner } from '../../shared/NextStepBanner';
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AdditionalExpansionPoints } from './sections/AdditionalExpansionPoints';
@@ -34,7 +34,7 @@ export const After192Page = ({ locale }: Props) => {
       <VersionComparisonTable content={c.versionTable} />
       <ReleaseDiffReadingGuide content={c.releaseDiff} />
       <FinalQuizSection content={c.quiz} />
-      <NextStepBanner content={c.nextStep} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

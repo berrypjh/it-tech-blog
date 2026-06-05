@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type Tone = 'sky' | 'teal' | 'violet' | 'amber' | 'indigo' | 'rose';
 
 export type LegendItem = {
@@ -131,13 +133,7 @@ export type CompleteWorkContent = {
     items: ChecklistItem[];
     completionNote: string;
   };
-  nextStep: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const CODE = `function completeUnitOfWork(unitOfWork) {
@@ -463,13 +459,15 @@ const ko: CompleteWorkContent = {
     ],
     completionNote: '모든 항목을 설명할 수 있다면, 이제 Commit Phase로 넘어갈 준비 완료!',
   },
-  nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Commit Phase와 실제 DOM 반영',
-    description:
-      'Render Phase가 무엇을 바꿀지 계산하고 flags까지 남겼습니다. 그렇다면 이제 React는 이 계산 결과를 실제 DOM에 어떻게 반영할까요?',
-    cta: 'Commit Phase로 이동',
-    href: '/commit-phase',
+  finale: {
+    progressLabel: '8/15 챕터 완료',
+    copyLine1: 'Render Phase의 흐름을',
+    copyLine2: '끝까지 따라갔습니다.',
+    copyLine3: '이제 Commit Phase로.',
+    primaryCta: 'Commit Phase와 DOM 반영 읽기',
+    primaryHref: '/commit-phase',
+    secondaryCta: 'Render Phase 처음부터 다시 보기',
+    secondaryHref: '/render-phase',
   },
 };
 
@@ -697,13 +695,15 @@ const en: CompleteWorkContent = {
     ],
     completionNote: 'If you can explain all of these, you are ready for the Commit Phase!',
   },
-  nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Commit Phase & Real DOM Updates',
-    description:
-      'The Render Phase computed what to change and left flags. So how does React actually apply that result to the real DOM?',
-    cta: 'Go to Commit Phase',
-    href: '/commit-phase',
+  finale: {
+    progressLabel: 'Chapter 8 of 15 complete',
+    copyLine1: 'You followed the Render',
+    copyLine2: 'Phase to the end.',
+    copyLine3: 'Now into the Commit Phase.',
+    primaryCta: 'Read the Commit Phase & DOM updates',
+    primaryHref: '/commit-phase',
+    secondaryCta: 'Review the Render Phase from the start',
+    secondaryHref: '/render-phase',
   },
 };
 

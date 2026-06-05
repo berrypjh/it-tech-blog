@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 import type { ToneKey } from './tone';
 
 export type IconKey =
@@ -222,13 +224,7 @@ export type After192Content = {
     description: string;
     questions: Quiz[];
   };
-  nextStep: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const CACHE_CODE = `import { cache, cacheSignal } from "react";
@@ -636,13 +632,15 @@ const ko: After192Content = {
       },
     ],
   },
-  nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: '실전 소스코드 읽기 체크리스트',
-    description:
-      'React 19.2 이후 변화까지 모두 학습했습니다. 이제 최신 소스코드를 직접 탐험해 보세요!',
-    cta: '다음 페이지로 이동',
-    href: '/which-package',
+  finale: {
+    progressLabel: '14/15 챕터 완료',
+    copyLine1: 'React 19의 변화를',
+    copyLine2: '모두 짚어봤습니다.',
+    copyLine3: '이제 실전 체크리스트로.',
+    primaryCta: '실전 소스코드 읽기 체크리스트',
+    primaryHref: '/start-with-question',
+    secondaryCta: 'React 19 변화 처음부터 다시 보기',
+    secondaryHref: '/react-19-change-map',
   },
 };
 
@@ -1027,13 +1025,15 @@ const en: After192Content = {
       },
     ],
   },
-  nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Source-reading checklist',
-    description:
-      "You've covered the React 19 changes through 19.2 and beyond. Now go explore the latest source on your own.",
-    cta: 'Go to the next page',
-    href: '/which-package',
+  finale: {
+    progressLabel: 'Chapter 14 of 15 complete',
+    copyLine1: 'You covered every',
+    copyLine2: 'React 19 change.',
+    copyLine3: 'Now to the practical checklist.',
+    primaryCta: 'Go to the source-reading checklist',
+    primaryHref: '/start-with-question',
+    secondaryCta: 'Review React 19 changes from the start',
+    secondaryHref: '/react-19-change-map',
   },
 };
 

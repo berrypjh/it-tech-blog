@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
@@ -131,13 +132,7 @@ export type PackageDesignContent = {
     intro: string;
     cards: BridgeCard[];
   };
-  nextStep: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const APP_CODE = `function App() {
@@ -429,13 +424,15 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         },
       ],
     },
-    nextStep: {
-      eyebrow: '다음 학습으로 이어집니다',
-      title: '마무리',
-      description:
-        'React 패키지 구조를 이해했다면, 이제 JSX와 React Element가 실제로 어떤 객체가 되는지 코드 레벨에서 살펴볼 준비가 된 것입니다.',
-      cta: '다음: React Element와 JSX의 정체 →',
-      href: '/jsx-sugar',
+    finale: {
+      progressLabel: '3/15 챕터 완료',
+      copyLine1: '패키지 구조와 역할을',
+      copyLine2: '모두 살펴봤습니다.',
+      copyLine3: '이제 React Element와 JSX로.',
+      primaryCta: 'React Element와 JSX의 정체 읽기',
+      primaryHref: '/jsx-is-not-html',
+      secondaryCta: '패키지 구조 처음부터 다시 보기',
+      secondaryHref: '/why-split',
     },
   },
   en: {
@@ -664,13 +661,15 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         },
       ],
     },
-    nextStep: {
-      eyebrow: 'The journey continues',
-      title: 'Wrap-up',
-      description:
-        'With React’s package structure in mind, you are ready to inspect JSX and React Element at the code level.',
-      cta: 'Next: React Element & JSX →',
-      href: '/jsx-sugar',
+    finale: {
+      progressLabel: 'Chapter 3 of 15 complete',
+      copyLine1: 'You explored the package',
+      copyLine2: 'structure and roles.',
+      copyLine3: 'Now on to Elements and JSX.',
+      primaryCta: 'Read what Elements & JSX really are',
+      primaryHref: '/jsx-is-not-html',
+      secondaryCta: 'Review packages from the start',
+      secondaryHref: '/why-split',
     },
   },
 };

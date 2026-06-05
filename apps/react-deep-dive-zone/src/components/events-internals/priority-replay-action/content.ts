@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type Tone =
   | 'sky'
   | 'cyan'
@@ -147,15 +149,7 @@ export type AdvancedWrapupContent = {
     title: string;
     cards: TakeawayCard[];
   };
-  finalCta: {
-    title: string;
-    description: string;
-    buttons: {
-      label: string;
-      href: string;
-      variant: 'primary' | 'outline';
-    }[];
-  };
+  finale: FinaleBannerContent;
 };
 
 const REPLAY_CODE = `// 보류 가능한 이벤트를 queue에 넣기
@@ -475,26 +469,15 @@ const ko: AdvancedWrapupContent = {
       },
     ],
   },
-  finalCta: {
-    title: '이벤트 시스템 내부 흐름 학습 완료',
-    description: '이제 React 이벤트 시스템의 전체 흐름과 확장 테마를 이해했습니다.',
-    buttons: [
-      {
-        label: '다음: Scheduler와 우선순위로 이동',
-        href: '/why-scheduler',
-        variant: 'primary',
-      },
-      {
-        label: '전체 이벤트 흐름 다시 보기',
-        href: '/why-event-system',
-        variant: 'outline',
-      },
-      {
-        label: 'React 소스코드 열기',
-        href: 'https://github.com/facebook/react',
-        variant: 'outline',
-      },
-    ],
+  finale: {
+    progressLabel: '11/15 챕터 완료',
+    copyLine1: '이벤트 시스템의 내부',
+    copyLine2: '흐름을 끝까지 봤습니다.',
+    copyLine3: '이제 Scheduler와 우선순위로.',
+    primaryCta: 'Scheduler와 우선순위 읽기',
+    primaryHref: '/why-not-immediate',
+    secondaryCta: '이벤트 챕터 처음부터 다시 보기',
+    secondaryHref: '/why-event-system',
   },
 };
 
@@ -777,27 +760,15 @@ const en: AdvancedWrapupContent = {
       },
     ],
   },
-  finalCta: {
-    title: 'Event system internals — complete',
-    description:
-      'You now understand the full React event pipeline and the React 19 extensions on top of it.',
-    buttons: [
-      {
-        label: 'Next: head to Scheduler & priorities',
-        href: '/why-scheduler',
-        variant: 'primary',
-      },
-      {
-        label: 'Revisit the whole event flow',
-        href: '/why-event-system',
-        variant: 'outline',
-      },
-      {
-        label: 'Open the React source',
-        href: 'https://github.com/facebook/react',
-        variant: 'outline',
-      },
-    ],
+  finale: {
+    progressLabel: 'Chapter 11 of 15 complete',
+    copyLine1: 'You followed the event',
+    copyLine2: "system's inner flow.",
+    copyLine3: 'Now the Scheduler & priorities.',
+    primaryCta: 'Read the Scheduler & priorities',
+    primaryHref: '/why-not-immediate',
+    secondaryCta: 'Review events from the start',
+    secondaryHref: '/why-event-system',
   },
 };
 

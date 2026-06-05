@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { ToneKey } from '../../shared/tones';
 
 export type FlowStepIconName =
@@ -123,13 +124,7 @@ export type UpdateToRenderSummaryContent = {
     rightTitle: string;
     rightItems: NextChapterItem[];
   };
-  nextStep: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const flowStepsKo: FlowStep[] = [
@@ -588,13 +583,15 @@ const ko: UpdateToRenderSummaryContent = {
       },
     ],
   },
-  nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Reconciler와 Render Phase',
-    description:
-      '업데이트가 시작되어 스케줄링되기까지의 흐름을 정리했다면, 이제 Reconciler가 render phase에서 실제로 무엇을 하는지 살펴봅니다.',
-    cta: '다음: Reconciler와 Render Phase',
-    href: '/render-phase',
+  finale: {
+    progressLabel: '7/15 챕터 완료',
+    copyLine1: '업데이트가 어떻게',
+    copyLine2: '시작되는지 따라갔습니다.',
+    copyLine3: '이제 Render Phase로.',
+    primaryCta: 'Reconciler와 Render Phase 읽기',
+    primaryHref: '/render-phase',
+    secondaryCta: '업데이트 흐름 처음부터 다시 보기',
+    secondaryHref: '/state-update-start',
   },
 };
 
@@ -857,13 +854,15 @@ const en: UpdateToRenderSummaryContent = {
       },
     ],
   },
-  nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Reconciler and Render Phase',
-    description:
-      'Now that the path from state update to scheduling is clear, see what the Reconciler actually does during the render phase.',
-    cta: 'Next: Reconciler and Render Phase',
-    href: '/render-phase',
+  finale: {
+    progressLabel: 'Chapter 7 of 15 complete',
+    copyLine1: 'You followed how an',
+    copyLine2: 'update begins.',
+    copyLine3: 'Now into the Render Phase.',
+    primaryCta: 'Read the Reconciler & Render Phase',
+    primaryHref: '/render-phase',
+    secondaryCta: 'Review the update flow from the start',
+    secondaryHref: '/state-update-start',
   },
 };
 

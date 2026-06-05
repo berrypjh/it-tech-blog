@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type Tone = 'blue' | 'teal' | 'lavender' | 'cyan' | 'mint' | 'coral' | 'indigo';
 
 export type RoadmapRow = {
@@ -48,17 +50,7 @@ export type RoadmapContent = {
     supporting: string;
     cards: DeliverableCard[];
   };
-  finale: {
-    eyebrow: string;
-    title: string;
-    copyLine1: string;
-    copyLine2: string;
-    copyLine3: string;
-    primaryCta: string;
-    primaryHref: string;
-    secondaryCta: string;
-    secondaryHref: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 export const roadmapContent: Record<Locale, RoadmapContent> = {
@@ -222,8 +214,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      eyebrow: '03 · launch',
-      title: '이제 실제 탐구를 시작해요!',
+      progressLabel: '1/15 챕터 완료',
       copyLine1: '준비가 끝났습니다.',
       copyLine2: '이제 실제 React 저장소를 열고,',
       copyLine3: '전체 구조부터 읽어봅니다.',
@@ -393,8 +384,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      eyebrow: '03 · launch',
-      title: 'Time to start exploring!',
+      progressLabel: 'Chapter 1 of 15 complete',
       copyLine1: 'You are ready.',
       copyLine2: 'Open the real React repository',
       copyLine3: 'and start with the overall structure.',

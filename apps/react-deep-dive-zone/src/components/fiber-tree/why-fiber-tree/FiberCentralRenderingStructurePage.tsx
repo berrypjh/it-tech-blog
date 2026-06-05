@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberChapterCompleteHero } from './sections/FiberChapterCompleteHero';
 import { FiberClosingMessage } from './sections/FiberClosingMessage';
 import { FiberFinalChecklist } from './sections/FiberFinalChecklist';
-import { FiberFinalCTA } from './sections/FiberFinalCTA';
 import { FiberNextChapterPreview } from './sections/FiberNextChapterPreview';
 import { FiberRenderingFlowConnection } from './sections/FiberRenderingFlowConnection';
 import { FiberStructureFinalSummary } from './sections/FiberStructureFinalSummary';
@@ -24,7 +24,7 @@ export const FiberCentralRenderingStructurePage = ({ locale }: Props) => {
       <FiberFinalChecklist content={c.checklist} />
       <FiberNextChapterPreview content={c.nextPreview} />
       <FiberClosingMessage content={c.closing} />
-      <FiberFinalCTA content={c.cta} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

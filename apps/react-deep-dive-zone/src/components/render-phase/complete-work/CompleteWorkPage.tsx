@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { NextStepBanner } from '../../shared/NextStepBanner';
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BeginVsCompleteCompare } from './sections/BeginVsCompleteCompare';
@@ -30,7 +30,7 @@ export const CompleteWorkPage = ({ locale }: Props) => {
         <RenderPhaseSummary content={c.summary} />
         <FinalChecklist content={c.checklist} />
       </div>
-      <NextStepBanner content={c.nextStep} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

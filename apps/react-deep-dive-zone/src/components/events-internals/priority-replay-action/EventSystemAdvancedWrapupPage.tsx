@@ -1,11 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AdvancedWrapupHero } from './sections/AdvancedWrapupHero';
 import { ComprehensiveComparisonTable } from './sections/ComprehensiveComparisonTable';
 import { EventPriorityReconnect } from './sections/EventPriorityReconnect';
-import { FinalCTA } from './sections/FinalCTA';
 import { FollowAlongMission } from './sections/FollowAlongMission';
 import { FormActionSubmitFlow } from './sections/FormActionSubmitFlow';
 import { FullEventFlowReview } from './sections/FullEventFlowReview';
@@ -36,7 +36,7 @@ export const EventSystemAdvancedWrapupPage = ({ locale }: Props) => {
       <RealCodePreview content={c.realCode} />
       <FollowAlongMission content={c.mission} />
       <WholeChapterTakeaways content={c.takeaways} />
-      <FinalCTA content={c.finalCta} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

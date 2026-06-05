@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type ScenarioId = 'click' | 'transition' | 'deferred';
 
 export type FlowAccent = 'click' | 'transition' | 'deferred' | 'common';
@@ -137,14 +139,7 @@ export type FullFlowContent = {
     answerHeading: string;
     items: QuizItem[];
   };
-  cta: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    label: string;
-    href: string;
-    hint: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const ko: FullFlowContent = {
@@ -412,13 +407,15 @@ const ko: FullFlowContent = {
       },
     ],
   },
-  cta: {
-    eyebrow: 'Scheduler 학습 완료',
-    title: 'Scheduler와 우선순위 학습 완료',
-    body: '이제 업데이트가 언제, 어떤 우선순위로 실행되는지 보았습니다. 다음은 렌더링 도중 멈춤, 에러, hydration이 어떻게 처리되는지 이어서 살펴봅니다.',
-    label: '다음: Suspense / Error / Hydration',
-    href: '/suspense-error-hydration',
-    hint: '다음 대주제로 이어집니다',
+  finale: {
+    progressLabel: '12/15 챕터 완료',
+    copyLine1: 'Scheduler의 전체',
+    copyLine2: '흐름을 정리했습니다.',
+    copyLine3: '이제 Suspense와 복구 모델로.',
+    primaryCta: 'Suspense / Error / Hydration 읽기',
+    primaryHref: '/why-failable-render',
+    secondaryCta: 'Scheduler 챕터 처음부터 다시 보기',
+    secondaryHref: '/why-not-immediate',
   },
 };
 
@@ -711,13 +708,15 @@ const en: FullFlowContent = {
       },
     ],
   },
-  cta: {
-    eyebrow: 'Scheduler chapter complete',
-    title: 'Scheduler & priorities — chapter complete',
-    body: "You have seen when and at what priority updates run. Next, let's see how pauses, errors, and hydration are handled during rendering.",
-    label: 'Next: Suspense / Error / Hydration',
-    href: '/suspense-error-hydration',
-    hint: 'Continues to the next chapter',
+  finale: {
+    progressLabel: 'Chapter 12 of 15 complete',
+    copyLine1: 'You pulled together the',
+    copyLine2: "Scheduler's whole flow.",
+    copyLine3: 'Now Suspense and recovery.',
+    primaryCta: 'Read Suspense / Error / Hydration',
+    primaryHref: '/why-failable-render',
+    secondaryCta: 'Review the Scheduler from the start',
+    secondaryHref: '/why-not-immediate',
   },
 };
 

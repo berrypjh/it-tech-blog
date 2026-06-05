@@ -1,9 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { EightStepLearningRoadmap } from './sections/EightStepLearningRoadmap';
-import { FinalLaunchBanner } from './sections/FinalLaunchBanner';
 import { RoadmapHero } from './sections/RoadmapHero';
 import { StageDeliverables } from './sections/StageDeliverables';
 import { roadmapContent } from './content';

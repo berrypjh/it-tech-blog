@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
@@ -123,16 +124,7 @@ export type ReactElementSummaryBeforeFiberContent = {
     completionTitle: string;
     completionBody: string;
   };
-  next: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const ko: ReactElementSummaryBeforeFiberContent = {
@@ -420,15 +412,14 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     completionTitle: '모두 체크했다면',
     completionBody: '다음 단계로!',
   },
-  next: {
-    badge: '08',
-    eyebrow: '다음 단계로 이동하기',
-    title: 'Element의 정체를 이해했습니다.',
-    description:
-      '이제 React가 이 설명 객체를 어떻게 Fiber라는 작업 단위로 바꾸는지 다음 챕터에서 살펴봅니다.',
-    primaryCta: '다음: 컴포넌트는 어떻게 Fiber가 되는가?',
-    secondaryCta: '이번 챕터 다시 복습하기',
+  finale: {
+    progressLabel: '4/15 챕터 완료',
+    copyLine1: 'React Element와 JSX의',
+    copyLine2: '정체를 파악했습니다.',
+    copyLine3: '이제 Element가 Fiber로.',
+    primaryCta: '컴포넌트가 Fiber가 되는 과정 읽기',
     primaryHref: '/element-vs-fiber',
+    secondaryCta: 'Element와 JSX 처음부터 다시 보기',
     secondaryHref: '/jsx-is-not-html',
   },
 };
@@ -723,15 +714,14 @@ const en: ReactElementSummaryBeforeFiberContent = {
     completionTitle: 'All checked?',
     completionBody: 'Move on to the next chapter.',
   },
-  next: {
-    badge: '08',
-    eyebrow: 'Move to the next step',
-    title: 'You now understand what an Element really is.',
-    description:
-      'Next chapter looks at how React turns this description object into a unit of work called a Fiber.',
-    primaryCta: 'Next: how do components become Fibers?',
-    secondaryCta: 'Re-read this chapter',
+  finale: {
+    progressLabel: 'Chapter 4 of 15 complete',
+    copyLine1: 'You understand what',
+    copyLine2: 'Elements and JSX really are.',
+    copyLine3: 'Now Elements become Fibers.',
+    primaryCta: 'Read how components become Fibers',
     primaryHref: '/element-vs-fiber',
+    secondaryCta: 'Review Elements & JSX from the start',
     secondaryHref: '/jsx-is-not-html',
   },
 };

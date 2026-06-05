@@ -1,8 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { CompletionCTASection } from './sections/CompletionCTASection';
 import { CourseLoopSection } from './sections/CourseLoopSection';
 import { FinalChecklistSection } from './sections/FinalChecklistSection';
 import { FiveStepSection } from './sections/FiveStepSection';
@@ -32,7 +32,7 @@ export const ReconstructWithWordsAndFlowPage = ({ locale }: Props) => {
       <FlowBuilderSection content={c.builder} />
       <FinalChecklistSection content={c.checklist} />
       <CourseLoopSection content={c.courseLoop} />
-      <CompletionCTASection content={c.completion} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

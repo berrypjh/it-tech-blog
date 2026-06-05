@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CommitPhaseFullTimelineSection } from './sections/CommitPhaseFullTimelineSection';
@@ -24,7 +25,8 @@ export const PassiveEffectsSummaryPage = ({ locale }: Props) => {
       <PassiveMountUnmountSection content={c.lifecycle} />
       <PassiveEffectExampleSection content={c.example} />
       <CommitPhaseFullTimelineSection content={c.fullTimeline} />
-      <FinalChecklistSection checklist={c.checklist} nextChapter={c.nextChapter} cta={c.cta} />
+      <FinalChecklistSection checklist={c.checklist} nextChapter={c.nextChapter} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

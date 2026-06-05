@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type HeroFlowStep = {
   id: string;
   title: string;
@@ -82,16 +84,7 @@ export type FiberWhyNeededContent = {
     quote: string;
     supporting: string;
   };
-  next: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    primaryCta: string;
-    primaryHref: string;
-    secondaryCta: string;
-    secondaryHref: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const ko: FiberWhyNeededContent = {
@@ -292,15 +285,14 @@ const ko: FiberWhyNeededContent = {
     quote: 'Element는 설명이다. Fiber는 실행 단위다.',
     supporting: '이 차이를 이해하는 순간, React 내부 렌더링이 실제 구조로 보이기 시작한다.',
   },
-  next: {
-    badge: '07',
-    eyebrow: '마무리',
-    title: '마무리 & 다음 단계',
-    description:
-      '멋진 학습 여정의 마무리입니다! 🎉 이제 다음 챕터에서 Fiber들이 모여 트리를 이루고, React가 그 트리를 어떻게 순회하는지 알아봅시다.',
-    primaryCta: '다음: Fiber 트리와 렌더링 자료구조',
-    primaryHref: '/fiber-tag',
-    secondaryCta: '이번 챕터 다시 복습하기',
+  finale: {
+    progressLabel: '5/15 챕터 완료',
+    copyLine1: '컴포넌트가 어떻게',
+    copyLine2: 'Fiber가 되는지 익혔습니다.',
+    copyLine3: '이제 Fiber 트리 구조로.',
+    primaryCta: 'Fiber 트리와 렌더링 자료구조 읽기',
+    primaryHref: '/fiber-node-overview',
+    secondaryCta: '이 챕터 처음부터 다시 보기',
     secondaryHref: '/element-vs-fiber',
   },
 };
@@ -503,15 +495,14 @@ const en: FiberWhyNeededContent = {
     supporting:
       "The moment you grasp that difference, React's internal rendering starts to look like a real structure.",
   },
-  next: {
-    badge: '07',
-    eyebrow: 'Wrap-up',
-    title: 'Wrap-up & next step',
-    description:
-      'A wonderful end to a wonderful learning journey! 🎉 In the next chapter, see how Fibers form a tree — and how React walks it.',
-    primaryCta: 'Next: Fiber tree & render data structures',
-    primaryHref: '/fiber-tag',
-    secondaryCta: 'Re-read this chapter',
+  finale: {
+    progressLabel: 'Chapter 5 of 15 complete',
+    copyLine1: 'You learned how',
+    copyLine2: 'components become Fibers.',
+    copyLine3: 'Now the Fiber tree structure.',
+    primaryCta: 'Read the Fiber tree & render data structures',
+    primaryHref: '/fiber-node-overview',
+    secondaryCta: 'Review this chapter from the start',
     secondaryHref: '/element-vs-fiber',
   },
 };

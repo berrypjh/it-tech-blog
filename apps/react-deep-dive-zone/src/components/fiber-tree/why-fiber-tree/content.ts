@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type GroupTone = 'sky' | 'emerald' | 'violet' | 'amber' | 'rose' | 'teal';
 
 export type FieldGroup = {
@@ -74,21 +76,7 @@ export type FiberCentralContent = {
     emphasis: string;
     body: string;
   };
-  cta: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    primary: {
-      title: string;
-      description: string;
-      href: string;
-    };
-    secondary: {
-      title: string;
-      description: string;
-      href: string;
-    };
-  };
+  finale: FinaleBannerContent;
 };
 
 const ko: FiberCentralContent = {
@@ -294,20 +282,15 @@ const ko: FiberCentralContent = {
     emphasis: '중심 자료구조',
     body: '이 객체를 이해하면, 이후 업데이트 흐름과 Render Phase가 실제 코드 구조로 보이기 시작한다.',
   },
-  cta: {
-    number: '06',
-    eyebrow: '다음으로 넘어가기',
-    title: '다음으로 넘어가기',
-    primary: {
-      title: '업데이트는 어떻게 시작되는가?',
-      description: '업데이트 흐름의 첫 단계를 확인합니다.',
-      href: '/state-update-start',
-    },
-    secondary: {
-      title: '이번 챕터 다시 복습하기',
-      description: '지금 배운 내용을 한 번 더 정리합니다.',
-      href: '/fiber-node-overview',
-    },
+  finale: {
+    progressLabel: '6/15 챕터 완료',
+    copyLine1: 'Fiber 트리가 렌더링의',
+    copyLine2: '중심임을 이해했습니다.',
+    copyLine3: '이제 업데이트의 시작으로.',
+    primaryCta: '업데이트는 어떻게 시작되는가 읽기',
+    primaryHref: '/state-update-start',
+    secondaryCta: 'Fiber 트리 처음부터 다시 보기',
+    secondaryHref: '/fiber-node-overview',
   },
 };
 
@@ -513,20 +496,15 @@ const en: FiberCentralContent = {
     emphasis: 'central data structure',
     body: 'Once this object makes sense, the update flow and Render Phase become recognisable in the actual code structure.',
   },
-  cta: {
-    number: '06',
-    eyebrow: 'Up next',
-    title: 'Up next',
-    primary: {
-      title: 'how does an update begin?',
-      description: 'Walk through the first step of the update flow.',
-      href: '/state-update-start',
-    },
-    secondary: {
-      title: 'Review this chapter',
-      description: 'Revisit what you have just learned.',
-      href: '/fiber-node-overview',
-    },
+  finale: {
+    progressLabel: 'Chapter 6 of 15 complete',
+    copyLine1: 'You see why the Fiber',
+    copyLine2: 'tree is central to rendering.',
+    copyLine3: 'Now how updates begin.',
+    primaryCta: 'Read how updates begin',
+    primaryHref: '/state-update-start',
+    secondaryCta: 'Review the Fiber tree from the start',
+    secondaryHref: '/fiber-node-overview',
   },
 };
 

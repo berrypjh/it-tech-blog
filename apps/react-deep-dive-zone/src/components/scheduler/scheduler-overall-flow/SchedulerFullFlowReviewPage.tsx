@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ClickUpdateFlowSection } from './sections/ClickUpdateFlowSection';
@@ -7,7 +8,6 @@ import { CodePathMapSection } from './sections/CodePathMapSection';
 import { CommonRootSchedulingSection } from './sections/CommonRootSchedulingSection';
 import { DeferredUpdateFlowSection } from './sections/DeferredUpdateFlowSection';
 import { FinalQuizSection } from './sections/FinalQuizSection';
-import { FullFlowNextCTA } from './sections/FullFlowNextCTA';
 import { FullFlowQuestionPanel } from './sections/FullFlowQuestionPanel';
 import { ReadingChecklistSection } from './sections/ReadingChecklistSection';
 import { SchedulerExecutionSection } from './sections/SchedulerExecutionSection';
@@ -36,7 +36,7 @@ export const SchedulerFullFlowReviewPage = ({ locale }: Props) => {
       <CodePathMapSection content={c.codePath} />
       <ReadingChecklistSection content={c.checklist} />
       <FinalQuizSection content={c.quiz} />
-      <FullFlowNextCTA content={c.cta} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

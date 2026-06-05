@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 export type Tone =
   | 'sky'
   | 'cyan'
@@ -70,12 +72,6 @@ export type LearningPathItem = {
   visual: 'event' | 'scheduler' | 'suspense';
 };
 
-export type FinalCtaButton = {
-  label: string;
-  href: string;
-  variant: 'primary' | 'secondary';
-};
-
 export type HooksRecapContent = {
   hero: {
     badge: string;
@@ -135,12 +131,7 @@ export type HooksRecapContent = {
     title: string;
     items: LearningPathItem[];
   };
-  finalCta: {
-    label: string;
-    title: string;
-    description: string;
-    buttons: FinalCtaButton[];
-  };
+  finale: FinaleBannerContent;
 };
 
 const COUNTER_CODE = `function Counter() {
@@ -615,16 +606,15 @@ const ko: HooksRecapContent = {
       },
     ],
   },
-  finalCta: {
-    label: '학습 마무리',
-    title: 'Hooks 내부 구조 학습 완료!',
-    description:
-      '여기까지 왔다면 이제 Hooks를 "API 암기"가 아니라 내부 흐름으로 설명할 수 있습니다.',
-    buttons: [
-      { label: '다음 대주제 시작하기', href: '/why-event-system', variant: 'primary' },
-      { label: '전체 흐름 다시 보기', href: '/hooks-entry-point', variant: 'secondary' },
-      { label: '학습 여정 전체 지도', href: '/', variant: 'secondary' },
-    ],
+  finale: {
+    progressLabel: '10/15 챕터 완료',
+    copyLine1: 'Hooks 내부 구조를',
+    copyLine2: '전체적으로 복습했습니다.',
+    copyLine3: '이제 이벤트 시스템으로.',
+    primaryCta: '이벤트 시스템 내부 흐름 읽기',
+    primaryHref: '/why-event-system',
+    secondaryCta: 'Hooks 챕터 처음부터 다시 보기',
+    secondaryHref: '/hooks-entry-point',
   },
 };
 
@@ -1096,16 +1086,15 @@ const en: HooksRecapContent = {
       },
     ],
   },
-  finalCta: {
-    label: 'Learning complete',
-    title: 'Hook internals — done!',
-    description:
-      'You can now explain Hooks not by memorizing the API, but by following the internal flow.',
-    buttons: [
-      { label: 'Start the next chapter', href: '/why-event-system', variant: 'primary' },
-      { label: 'Walk the full flow again', href: '/hooks-entry-point', variant: 'secondary' },
-      { label: 'See the full learning map', href: '/', variant: 'secondary' },
-    ],
+  finale: {
+    progressLabel: 'Chapter 10 of 15 complete',
+    copyLine1: 'You reviewed Hooks',
+    copyLine2: 'internals end to end.',
+    copyLine3: 'Now the event system.',
+    primaryCta: 'Read the event system internals',
+    primaryHref: '/why-event-system',
+    secondaryCta: 'Review Hooks from the start',
+    secondaryHref: '/hooks-entry-point',
   },
 };
 

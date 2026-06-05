@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { CommitToneKey } from '../_shared/tones';
 
 export type HeroPhaseIcon = 'eye' | 'pencil' | 'zap' | 'clock';
@@ -142,13 +143,7 @@ export type PassiveEffectsContent = {
     chapterTitle: string;
     cards: NextChapterCard[];
   };
-  cta: {
-    description: string;
-    primaryLabel: string;
-    primaryHref: string;
-    secondaryLabel: string;
-    secondaryHref: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 const heroPhasesKo: HeroPhase[] = [
@@ -546,12 +541,14 @@ const ko: PassiveEffectsContent = {
     chapterTitle: '다음 챕터: Hooks 내부 구조',
     cards: nextChapterCardsKo,
   },
-  cta: {
-    description:
-      '이제 Commit Phase의 전체 흐름과 passive effects까지 모두 정리했습니다. 다음 챕터에서 React Hooks의 내부 세계로 들어가 봅시다.',
-    primaryLabel: '다음: Hooks 내부 구조',
-    primaryHref: '/hooks-nature',
-    secondaryLabel: '이번 챕터 다시 복습하기',
+  finale: {
+    progressLabel: '9/15 챕터 완료',
+    copyLine1: 'Commit Phase와 DOM',
+    copyLine2: '반영까지 끝냈습니다.',
+    copyLine3: '이제 Hooks 내부 구조로.',
+    primaryCta: 'Hooks 내부 구조 읽기',
+    primaryHref: '/hooks-entry-point',
+    secondaryCta: 'Commit Phase 처음부터 다시 보기',
     secondaryHref: '/commit-phase',
   },
 };
@@ -660,12 +657,14 @@ const en: PassiveEffectsContent = {
     chapterTitle: 'Next chapter: Hooks Internals',
     cards: nextChapterCardsEn,
   },
-  cta: {
-    description:
-      'You have wrapped the whole Commit Phase flow and passive effects. Next chapter — into the inner world of React Hooks.',
-    primaryLabel: 'Next: Hooks Internals',
-    primaryHref: '/hooks-nature',
-    secondaryLabel: 'Review this chapter again',
+  finale: {
+    progressLabel: 'Chapter 9 of 15 complete',
+    copyLine1: 'You finished the Commit',
+    copyLine2: 'Phase and DOM updates.',
+    copyLine3: 'Now into Hooks internals.',
+    primaryCta: 'Read Hooks internals',
+    primaryHref: '/hooks-entry-point',
+    secondaryCta: 'Review the Commit Phase from the start',
     secondaryHref: '/commit-phase',
   },
 };

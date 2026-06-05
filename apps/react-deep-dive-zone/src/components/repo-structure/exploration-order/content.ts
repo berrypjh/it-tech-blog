@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
@@ -112,13 +113,7 @@ export type ExplorationContent = {
     groupTwo: string[];
     celebration: { title: string; description: string };
   };
-  nextStep: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  finale: FinaleBannerContent;
 };
 
 export const explorationContent: Record<Locale, ExplorationContent> = {
@@ -381,13 +376,15 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
         description: '이제 React 저장소를 스스로 탐색할 준비가 되었습니다.',
       },
     },
-    nextStep: {
-      eyebrow: '다음 학습으로 이어집니다',
-      title: '저장소 구조를 읽는 준비가 끝났습니다.',
-      description:
-        '이제 React가 여러 패키지로 나뉜 이유와 각 ' + '패키지의 역할' + '을 더 깊게 살펴봅니다.',
-      cta: '다음: React 패키지 구조와 역할',
-      href: '/react-package',
+    finale: {
+      progressLabel: '2/15 챕터 완료',
+      copyLine1: '저장소 구조를 읽는',
+      copyLine2: '준비가 끝났습니다.',
+      copyLine3: '이제 패키지 내부로 들어갑니다.',
+      primaryCta: 'React 패키지 구조와 역할 읽기',
+      primaryHref: '/react-package',
+      secondaryCta: '저장소 구조 처음부터 다시 보기',
+      secondaryHref: '/repo-overview',
     },
   },
   en: {
@@ -651,15 +648,15 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
         description: 'You are now ready to explore the React repository on your own.',
       },
     },
-    nextStep: {
-      eyebrow: 'The journey continues',
-      title: 'You are ready to read the repository structure.',
-      description:
-        'Next, look closer at why React splits into multiple packages and each ' +
-        'package’s role' +
-        '.',
-      cta: 'Next: React package structure & roles',
-      href: '/react-package',
+    finale: {
+      progressLabel: 'Chapter 2 of 15 complete',
+      copyLine1: 'You are ready to read',
+      copyLine2: 'the repository structure.',
+      copyLine3: 'Now step inside the packages.',
+      primaryCta: 'Read React package structure & roles',
+      primaryHref: '/react-package',
+      secondaryCta: 'Review the structure from the start',
+      secondaryHref: '/repo-overview',
     },
   },
 };

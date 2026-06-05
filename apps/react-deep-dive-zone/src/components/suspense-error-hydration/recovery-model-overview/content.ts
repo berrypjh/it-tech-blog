@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+
 import type { Domain } from './tone';
 
 export type HeroInputCard = {
@@ -140,12 +142,7 @@ export type RecoveryModelOverviewContent = {
     explanationLabel: string;
     cards: QuizCard[];
   };
-  cta: {
-    title: string;
-    description: string;
-    primary: { label: string; href: string };
-    secondary: { label: string; href: string }[];
-  };
+  finale: FinaleBannerContent;
 };
 
 const RENDER_ERROR_CODE = `function Profile() {
@@ -465,18 +462,15 @@ const ko: RecoveryModelOverviewContent = {
       },
     ],
   },
-  cta: {
-    title: 'Suspense / Error / Hydration 학습 완료',
-    description:
-      '대기, 실패, 복구가 하나의 렌더링 모델이 되는 과정을 정리했습니다. 이제 실제 React 19 코드에서 달라진 지점을 더 깊게 읽어볼 수 있습니다.',
-    primary: { label: '다음: React 19 코드에서 달라진 지점', href: '/react-19-change-map' },
-    secondary: [
-      { label: '전체 복구 모델 다시 보기', href: '#hero-heading' },
-      {
-        label: 'React 소스코드 열기',
-        href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src',
-      },
-    ],
+  finale: {
+    progressLabel: '13/15 챕터 완료',
+    copyLine1: '실패와 복구 모델을',
+    copyLine2: '한 장으로 정리했습니다.',
+    copyLine3: '이제 React 19의 변화로.',
+    primaryCta: 'React 19에서 달라진 지점 읽기',
+    primaryHref: '/react-19-change-map',
+    secondaryCta: 'Suspense 챕터 처음부터 다시 보기',
+    secondaryHref: '/why-failable-render',
   },
 };
 
@@ -780,18 +774,15 @@ const en: RecoveryModelOverviewContent = {
       },
     ],
   },
-  cta: {
-    title: 'Suspense / Error / Hydration · part complete',
-    description:
-      'You wrapped up how waiting, failing, and recovering form a single rendering model. Next, dive into what changed in React 19 source code.',
-    primary: { label: "Next: What's different in React 19 code", href: '/react-19-change-map' },
-    secondary: [
-      { label: 'Replay the recovery model', href: '#hero-heading' },
-      {
-        label: 'Open the React source',
-        href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src',
-      },
-    ],
+  finale: {
+    progressLabel: 'Chapter 13 of 15 complete',
+    copyLine1: 'You mapped the failure',
+    copyLine2: 'and recovery model.',
+    copyLine3: 'Now what changed in React 19.',
+    primaryCta: 'Read what changed in React 19',
+    primaryHref: '/react-19-change-map',
+    secondaryCta: 'Review Suspense from the start',
+    secondaryHref: '/why-failable-render',
   },
 };
 

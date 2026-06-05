@@ -1,10 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ChecklistSection } from './sections/ChecklistSection';
 import { CodePathMapSection } from './sections/CodePathMapSection';
-import { CompletionCTA } from './sections/CompletionCTA';
 import { ConceptMapSection } from './sections/ConceptMapSection';
 import { FinalQuizSection } from './sections/FinalQuizSection';
 import { HeroSection } from './sections/HeroSection';
@@ -34,7 +34,7 @@ export const RecoveryModelOverviewPage = ({ locale }: Props) => {
       <CodePathMapSection content={c.codePathMap} />
       <ChecklistSection content={c.checklist} />
       <FinalQuizSection content={c.quiz} />
-      <CompletionCTA content={c.cta} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

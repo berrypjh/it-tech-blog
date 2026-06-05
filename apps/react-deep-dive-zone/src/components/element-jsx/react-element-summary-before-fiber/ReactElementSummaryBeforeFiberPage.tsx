@@ -1,5 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { ConceptConnectionQuiz } from './sections/ConceptConnectionQuiz';
@@ -9,7 +10,6 @@ import { FinalChecklist } from './sections/FinalChecklist';
 import { FinalFlowDiagram } from './sections/FinalFlowDiagram';
 import { FiveKeyTakeaways } from './sections/FiveKeyTakeaways';
 import { JsxElementFiberDomComparison } from './sections/JsxElementFiberDomComparison';
-import { NextFiberChapterCta } from './sections/NextFiberChapterCta';
 import { reactElementSummaryBeforeFiberContent } from './content';
 
 type Props = { locale: Locale };
@@ -26,7 +26,7 @@ export const ReactElementSummaryBeforeFiberPage = ({ locale }: Props) => {
       <ConceptConnectionQuiz content={c.quiz} />
       <FiberChapterPreview content={c.fiberPreview} />
       <FinalChecklist content={c.checklist} />
-      <NextFiberChapterCta content={c.next} />
+      <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );
 };

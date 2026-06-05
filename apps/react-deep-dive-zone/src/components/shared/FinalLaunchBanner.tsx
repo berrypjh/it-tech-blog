@@ -1,9 +1,20 @@
 import Link from 'next/link';
 
-import type { RoadmapContent } from '../content';
-import { ArrowRightIcon, RefreshIcon, SparkIcon } from '../icons';
+import { ArrowRight, RefreshCw, Sparkle } from 'lucide-react';
 
-type Props = { content: RoadmapContent['finale'] };
+export type FinaleBannerContent = {
+  /** 챕터 진행도 라벨 (예: '2/15 챕터 완료'). */
+  progressLabel: string;
+  copyLine1: string;
+  copyLine2: string;
+  copyLine3: string;
+  primaryCta: string;
+  primaryHref: string;
+  secondaryCta: string;
+  secondaryHref: string;
+};
+
+type Props = { content: FinaleBannerContent };
 
 /** Rocket launching illustration — accent-tinted, transparent background. */
 const RocketDecoration = () => (
@@ -123,16 +134,17 @@ const RocketDecoration = () => (
   </div>
 );
 
+/** 챕터 마지막 페이지 공용 졸업 배너 (로켓 + 다음 챕터/다시 보기 CTA). */
 export const FinalLaunchBanner = ({ content }: Props) => {
   return (
     <section id="section-finale" aria-labelledby="heading-finale-title" className="space-y-md">
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)] p-md sm:p-lg lg:p-xl shadow-[0_2px_0_var(--term-border)] overflow-hidden relative">
         {/* 배경 spark 장식 */}
         <span aria-hidden="true" className="absolute right-3 top-3 text-[var(--term-accent)]">
-          <SparkIcon className="h-5 w-5" />
+          <Sparkle className="h-5 w-5" />
         </span>
         <span aria-hidden="true" className="absolute left-4 bottom-4 text-[var(--term-dim)]">
-          <SparkIcon className="h-3 w-3" />
+          <Sparkle className="h-3 w-3" />
         </span>
 
         <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,_0.4fr)_minmax(0,_1fr)_auto] gap-md lg:gap-lg items-center">
@@ -142,8 +154,8 @@ export const FinalLaunchBanner = ({ content }: Props) => {
           {/* 중앙: copy */}
           <div className="flex flex-col gap-1.5 min-w-0">
             <p className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold inline-flex items-center gap-1.5">
-              <SparkIcon className="h-3 w-3" />
-              ready to launch
+              <Sparkle className="h-3 w-3" />
+              {content.progressLabel}
             </p>
             <h3
               id="heading-finale-title"
@@ -162,14 +174,14 @@ export const FinalLaunchBanner = ({ content }: Props) => {
               className="group inline-flex items-center justify-between gap-2 px-md py-3 rounded-md bg-[var(--term-accent)] text-[var(--term-bg)] text-xsm font-bold shadow-[0_2px_0_var(--term-border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)] transition-all"
             >
               <span className="leading-tight break-keep text-left">{content.primaryCta}</span>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={content.secondaryHref}
               className="group inline-flex items-center justify-between gap-2 px-md py-3 rounded-md border border-[var(--term-border)] bg-transparent text-[var(--term-fg)] hover:border-[var(--term-accent)] hover:text-[var(--term-accent)] text-xsm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)] transition-all"
             >
               <span className="leading-tight break-keep text-left">{content.secondaryCta}</span>
-              <RefreshIcon className="h-4 w-4 shrink-0" />
+              <RefreshCw className="h-4 w-4 shrink-0" />
             </Link>
           </div>
         </div>
