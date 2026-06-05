@@ -299,7 +299,7 @@ const ko: FiberCentralContent = {
     eyebrow: '다음으로 넘어가기',
     title: '다음으로 넘어가기',
     primary: {
-      title: '다음: 업데이트는 어떻게 시작되는가?',
+      title: '업데이트는 어떻게 시작되는가?',
       description: '업데이트 흐름의 첫 단계를 확인합니다.',
       href: '/state-update-start',
     },
@@ -518,7 +518,7 @@ const en: FiberCentralContent = {
     eyebrow: 'Up next',
     title: 'Up next',
     primary: {
-      title: 'Next: how does an update begin?',
+      title: 'how does an update begin?',
       description: 'Walk through the first step of the update flow.',
       href: '/state-update-start',
     },

@@ -149,7 +149,7 @@ export type FunctionClassComponentFiberContent = {
 const ko: FunctionClassComponentFiberContent = {
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Fragment와 Mode Fiber',
+    title: 'Fragment와 Mode Fiber',
     description: 'Fragment와 StrictMode처럼 React가 특별하게 다루는 타입을 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/fragment-mode-fiber',
@@ -389,7 +389,7 @@ const ko: FunctionClassComponentFiberContent = {
 const en: FunctionClassComponentFiberContent = {
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Fragment & Mode Fiber',
+    title: 'Fragment & Mode Fiber',
     description: 'Explore types React treats specially, like Fragment and StrictMode.',
     cta: 'Go to the next page',
     href: '/fragment-mode-fiber',

@@ -637,8 +637,8 @@ const ko: After192Content = {
     ],
   },
   nextStep: {
-    eyebrow: 'React 19 코드 변화 학습 완료',
-    title: '다음: 실전 소스코드 읽기 체크리스트',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '실전 소스코드 읽기 체크리스트',
     description:
       'React 19.2 이후 변화까지 모두 학습했습니다. 이제 최신 소스코드를 직접 탐험해 보세요!',
     cta: '다음 페이지로 이동',
@@ -1028,8 +1028,8 @@ const en: After192Content = {
     ],
   },
   nextStep: {
-    eyebrow: 'React 19 source-reading course complete',
-    title: 'Next: Source-reading checklist',
+    eyebrow: 'The journey continues',
+    title: 'Source-reading checklist',
     description:
       "You've covered the React 19 changes through 19.2 and beyond. Now go explore the latest source on your own.",
     cta: 'Go to the next page',

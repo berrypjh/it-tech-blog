@@ -383,8 +383,8 @@ const ko: FiberIdentityFieldsContent = {
     },
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: stateNode',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'stateNode',
     description:
       'Fiber가 무엇인지를 식별하는 필드를 봤다면, 이제 그 Fiber가 무엇과 연결되는지를 저장하는 stateNode를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -610,8 +610,8 @@ const en: FiberIdentityFieldsContent = {
     },
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: stateNode',
+    eyebrow: 'The journey continues',
+    title: 'stateNode',
     description:
       'Now that you have seen the fields that identify a Fiber, look at stateNode — the field that stores what the Fiber is connected to.',
     cta: 'Go to the next page',

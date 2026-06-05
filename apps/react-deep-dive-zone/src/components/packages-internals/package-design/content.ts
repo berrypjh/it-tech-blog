@@ -430,7 +430,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · finale',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '마무리',
       description:
         'React 패키지 구조를 이해했다면, 이제 JSX와 React Element가 실제로 어떤 객체가 되는지 코드 레벨에서 살펴볼 준비가 된 것입니다.',
@@ -665,7 +665,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · finale',
+      eyebrow: 'The journey continues',
       title: 'Wrap-up',
       description:
         'With React’s package structure in mind, you are ready to inspect JSX and React Element at the code level.',

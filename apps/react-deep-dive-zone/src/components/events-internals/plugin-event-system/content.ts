@@ -458,7 +458,7 @@ const ko: PluginEventSystemContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: SyntheticEvent 이해하기',
+    title: 'SyntheticEvent 이해하기',
     description:
       'Plugin이 만들어 내는 SyntheticEvent가 어떤 구조이고 어떻게 동작하는지 이어서 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -776,7 +776,7 @@ const en: PluginEventSystemContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: understanding SyntheticEvent',
+    title: 'understanding SyntheticEvent',
     description: 'See the structure and behavior of the SyntheticEvent that plugins produce.',
     cta: 'Go to the next page',
     href: '/synthetic-event',

@@ -458,7 +458,7 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '내 말로 재구성하기',
       description: '이제 마지막이다. 읽은 내용을 내 말과 흐름도로 다시 만드는 단계로 가자.',
       cta: '다음 페이지로 이동',
@@ -760,7 +760,7 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Reconstruct it in your own words',
       description:
         'This is the last step. Rebuild what you read in your own words and a flow diagram.',

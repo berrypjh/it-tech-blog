@@ -412,7 +412,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 루트 구조를 읽었다면,',
       description: '이제 React 구현의 중심인 ' + 'packages 디렉터리' + '로 들어갑니다.',
       cta: '다음: packages 디렉터리 읽기',
@@ -709,7 +709,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'You have read the repo root structure,',
       description: 'now step into ' + 'packages' + ', the heart of the React implementation.',
       cta: 'Next: Read the packages directory',

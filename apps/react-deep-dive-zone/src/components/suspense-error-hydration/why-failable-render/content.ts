@@ -537,8 +537,8 @@ const ko: WhyFailableRenderContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 파트로 이동',
-    title: '다음: use(Promise)는 렌더링을 어떻게 멈추는가?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'use(Promise)는 렌더링을 어떻게 멈추는가?',
     description:
       'use(Promise)가 내부에서 throw로 연결되어 Suspense 흐름을 어떻게 시작하는지 코드와 함께 읽어봅니다.',
     cta: '다음 페이지로 이동',
@@ -920,8 +920,8 @@ const en: WhyFailableRenderContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Move to the next part',
-    title: 'Next: How does use(Promise) pause rendering?',
+    eyebrow: 'The journey continues',
+    title: 'How does use(Promise) pause rendering?',
     description:
       'Read how use(Promise) wires into throw internally and starts the Suspense flow, side by side with the code.',
     cta: 'Go to the next page',

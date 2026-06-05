@@ -490,7 +490,7 @@ const ko: LayoutPhaseContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Passive Effects',
+    title: 'Passive Effects',
     description:
       'Layout Phase까지 이해했다면, 마지막으로 commit 이후 이어지는 Passive Effects까지 정리해봅니다.',
     cta: '다음 페이지로 이동',
@@ -601,7 +601,7 @@ const en: LayoutPhaseContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Passive Effects',
+    title: 'Passive Effects',
     description:
       'With the Layout Phase covered, lastly the Passive Effects that follow the commit.',
     cta: 'Go to the next page',

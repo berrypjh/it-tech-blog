@@ -401,8 +401,8 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: eager bailout',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'eager bailout',
     description:
       'update 객체가 만들어졌다면, 이제 React가 경우에 따라 렌더링을 아예 건너뛸 수 있는 eager bailout을 살펴봅니다.',
     cta: '다음: eager bailout',
@@ -636,8 +636,8 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: eager bailout',
+    eyebrow: 'The journey continues',
+    title: 'eager bailout',
     description:
       'Now that the update object is built, see how React can sometimes skip the render entirely — the eager bailout.',
     cta: 'Next: eager bailout',

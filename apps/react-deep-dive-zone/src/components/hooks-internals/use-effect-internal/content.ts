@@ -481,7 +481,7 @@ const ko: UseEffectInternalsContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Rules of Hooks의 이유 이해하기',
+    title: 'Rules of Hooks의 이유 이해하기',
     description:
       'Hooks가 상태와 Effect를 어떻게 저장하는지 알았다면, 이제 왜 Hook을 조건문 안에서 부르면 안 되는지 내부 구조로 설명할 수 있습니다.',
     cta: '다음 페이지로 이동',
@@ -789,7 +789,7 @@ const en: UseEffectInternalsContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: understanding why Rules of Hooks exist',
+    title: 'understanding why Rules of Hooks exist',
     description:
       'Now that you know how Hooks store state and Effects, you can explain — from internals — why Hooks must not be called inside conditionals.',
     cta: 'Go to the next page',

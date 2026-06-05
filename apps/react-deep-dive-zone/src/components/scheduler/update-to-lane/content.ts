@@ -485,8 +485,8 @@ const ko: RequestUpdateLaneContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: Transition과 Deferred Update 보기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Transition과 Deferred Update 보기',
     description:
       '문맥별 Lane 분기를 익혔다면, transition과 deferred update가 어떻게 낮은 우선순위를 얻는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -783,8 +783,8 @@ const en: RequestUpdateLaneContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: Transition & Deferred Update',
+    eyebrow: 'The journey continues',
+    title: 'Transition & Deferred Update',
     description:
       "Now that you know context-based branching, let's see how transitions and deferred updates earn low priority.",
     cta: 'Go to the next page',

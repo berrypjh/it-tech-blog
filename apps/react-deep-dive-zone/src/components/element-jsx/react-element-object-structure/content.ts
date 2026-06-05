@@ -374,8 +374,8 @@ const ko: ReactElementObjectStructureContent = {
       '브라우저 DOM은 renderer가 commit 단계에서 만들어내는 결과이고, Element는 그 이전 단계에서 React가 무엇을, 어떻게 렌더링할지 설명하는 데이터입니다.',
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: type의 의미',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'type의 의미',
     description:
       'Element 전체 구조를 봤다면, 이제 그 안의 핵심 값 중 하나인 type이 정확히 무엇을 가리키는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -623,8 +623,8 @@ const en: ReactElementObjectStructureContent = {
       'The browser DOM is what the renderer commits at the end. The Element is the description React reasons over before that.',
   },
   nextStep: {
-    eyebrow: 'Continue to the next step',
-    title: 'Next: what type means',
+    eyebrow: 'The journey continues',
+    title: 'what type means',
     description:
       'You have seen the full Element shape; next, see exactly what type inside it points to.',
     cta: 'Go to the next page',

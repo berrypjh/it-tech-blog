@@ -519,8 +519,8 @@ const ko: SchedulerPackageContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: Yielding과 Continuation 보기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Yielding과 Continuation 보기',
     description: 'Scheduler가 어떻게 yield하고 task를 이어가는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/pause-resume-render',
@@ -846,8 +846,8 @@ const en: SchedulerPackageContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: Yielding and Continuation',
+    eyebrow: 'The journey continues',
+    title: 'Yielding and Continuation',
     description: 'Learn how the Scheduler yields and continues tasks.',
     cta: 'Go to the next page',
     href: '/pause-resume-render',

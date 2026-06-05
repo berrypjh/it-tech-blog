@@ -314,7 +314,7 @@ const ko: PerformUnitContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: beginWork',
+    title: 'beginWork',
     description:
       'Fiber 하나의 처리 흐름을 봤다면, 이제 그 핵심인 beginWork가 실제로 무엇을 하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -503,7 +503,7 @@ const en: PerformUnitContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: beginWork',
+    title: 'beginWork',
     description:
       'Now that you see the flow of a single Fiber, dive into what beginWork — the core of that flow — actually does.',
     cta: 'Go to the next page',

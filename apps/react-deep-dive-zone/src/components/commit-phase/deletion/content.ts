@@ -584,7 +584,7 @@ const ko: DeletionContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: root.current 전환과 ref detach / attach',
+    title: 'root.current 전환과 ref detach / attach',
     description:
       '삭제 흐름까지 봤다면, 이제 Commit Phase에서 현재 트리가 어떻게 새 트리로 바뀌고 refs가 언제 갱신되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -690,7 +690,7 @@ const en: DeletionContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: root.current swap and ref detach / attach',
+    title: 'root.current swap and ref detach / attach',
     description:
       'Now that the deletion flow is clear, see how the current tree is swapped for the new tree and when refs are updated in the Commit Phase.',
     cta: 'Go to the next page',

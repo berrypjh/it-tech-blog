@@ -439,7 +439,7 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '업데이트 흐름은 한 줄 호출 경로로 복원한다',
       description: '단계를 구분했다면, 이제 흩어진 함수를 한 줄 호출 경로로 압축해야 합니다.',
       cta: '다음 페이지로 이동',
@@ -725,7 +725,7 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Compress an update flow into a single call path',
       description:
         'Once you can split phases, the next step is to compress the scattered functions into a single call path.',

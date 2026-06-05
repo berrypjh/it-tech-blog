@@ -400,8 +400,8 @@ const ko: FiberStateAndQueueContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: flags / subtreeFlags / deletions',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'flags / subtreeFlags / deletions',
     description:
       '상태와 업데이트가 Fiber에 저장되는 위치를 봤다면, 이제 React가 실제 반영이 필요한 변경을 어떻게 표시해두는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -649,8 +649,8 @@ const en: FiberStateAndQueueContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: flags / subtreeFlags / deletions',
+    eyebrow: 'The journey continues',
+    title: 'flags / subtreeFlags / deletions',
     description:
       'Now that you know where state and updates live on a Fiber, see how React marks the changes that actually need to be applied.',
     cta: 'Go to the next page',

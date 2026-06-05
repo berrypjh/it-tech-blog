@@ -608,8 +608,8 @@ throw SuspenseException;`,
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: ref as prop은 무엇을 바꿨나?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'ref as prop은 무엇을 바꿨나?',
     description:
       '다음 페이지에서는 ref 전달 방식이 Element와 props 표현을 어떻게 바꾸는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -1008,8 +1008,8 @@ throw SuspenseException;`,
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: What did ref as prop change?',
+    eyebrow: 'The journey continues',
+    title: 'What did ref as prop change?',
     description:
       'Next we look at how passing ref differently changes how Element and props are shaped.',
     cta: 'Go to the next page',

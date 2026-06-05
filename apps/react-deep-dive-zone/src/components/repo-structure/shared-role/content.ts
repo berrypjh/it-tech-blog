@@ -371,7 +371,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '이제 디렉터리와 패키지 구조를 읽을 수 있게 되었습니다.',
       description: '다음은 구현만큼 중요한 ' + '테스트 코드' + '를 어떻게 볼지 살펴봅니다.',
       cta: '다음: 테스트 코드 읽기',
@@ -596,7 +596,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'You can now read the directory and package structure.',
       description:
         'Next, look at how to read ' +

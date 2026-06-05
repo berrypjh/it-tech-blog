@@ -412,8 +412,8 @@ const ko: FiberFlagsContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: lanes / childLanes',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'lanes / childLanes',
     description:
       '변경 효과가 Fiber에 어떻게 남는지 봤다면, 이제 React가 어떤 작업을 먼저 처리할지 Fiber가 어떻게 우선순위를 품는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -669,8 +669,8 @@ const en: FiberFlagsContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: lanes / childLanes',
+    eyebrow: 'The journey continues',
+    title: 'lanes / childLanes',
     description:
       'Now that you have seen how effects are marked on a Fiber, look at how a Fiber carries priority so React knows which work to handle first.',
     cta: 'Go to the next page',

@@ -358,8 +358,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음: scheduler',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'scheduler',
       description:
         '계산과 반영의 분리를 이해했다면, 이번에는 그 작업이 언제 실행될지 조율하는 scheduler를 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -543,8 +543,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Next: scheduler',
+      eyebrow: 'The journey continues',
+      title: 'scheduler',
       description:
         'Now that compute vs apply is clear, next we look at the layer that decides when the work runs — scheduler.',
       cta: 'Go to the next page',

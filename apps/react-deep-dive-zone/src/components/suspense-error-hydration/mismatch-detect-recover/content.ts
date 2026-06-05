@@ -545,7 +545,7 @@ const ko: MismatchDetectRecoverContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Suspense와 Hydration은 어디서 만나는가?',
+    title: 'Suspense와 Hydration은 어디서 만나는가?',
     description: 'Suspense 경계가 Hydration 과정과 어디서 맞물리는지 이어서 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/suspense-hydration-link',
@@ -899,7 +899,7 @@ const en: MismatchDetectRecoverContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Where do Suspense and Hydration meet?',
+    title: 'Where do Suspense and Hydration meet?',
     description: 'Continue with where Suspense boundaries intersect with the hydration process.',
     cta: 'Go to the next page',
     href: '/suspense-hydration-link',

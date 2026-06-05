@@ -513,7 +513,7 @@ const ko: ErrorBoundaryRecoverContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: React 19의 Error Reporting',
+    title: 'React 19의 Error Reporting',
     description: 'React 19가 복구 가능한 에러를 root 레벨에서 어떻게 보고하는지 이어서 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/react-19-error-reporting',

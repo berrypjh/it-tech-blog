@@ -431,7 +431,7 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: 'Feature Flag, 타입, 주석부터 읽기',
       description:
         '테스트로 의도를 확인했다. 이제 본문 코드를 더 빨리 읽기 위해 주석, 타입, feature flag를 먼저 보자.',
@@ -718,7 +718,7 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Read feature flags, types, and comments first',
       description:
         'You confirmed intent through tests. Now speed up reading the body by checking comments, types, and feature flags first.',

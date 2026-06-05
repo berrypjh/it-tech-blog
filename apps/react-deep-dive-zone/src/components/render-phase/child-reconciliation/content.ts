@@ -319,7 +319,7 @@ const ko: ReconcileChildrenContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: 같은 type과 key는 어떻게 Fiber 재사용으로 이어지는가?',
+    title: '같은 type과 key는 어떻게 Fiber 재사용으로 이어지는가?',
     description:
       'reconcileChildren이 새 child Fiber를 계산하는 입구라는 점을 봤다면, 이제 React가 무엇을 재사용하고 무엇을 새로 만드는지 판단 기준을 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -514,7 +514,7 @@ const en: ReconcileChildrenContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: How Same type and key Lead to Fiber Reuse',
+    title: 'How Same type and key Lead to Fiber Reuse',
     description:
       'Now that you see reconcileChildren as the entry that computes the next child Fibers, look at the criteria React uses to decide what to reuse and what to recreate.',
     cta: 'Go to the next page',

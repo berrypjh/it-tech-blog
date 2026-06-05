@@ -422,7 +422,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
-      title: '다음: 모든 파일을 읽지 않아도 되는 이유',
+      title: '모든 파일을 읽지 않아도 되는 이유',
       description: '효율적으로 핵심을 파악하는 방법과 우선순위를 배웁니다.',
       cta: '다음 페이지로 이동',
       href: '/not-all-files',

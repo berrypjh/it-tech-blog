@@ -323,8 +323,8 @@ const ko: ScheduleUpdateOnFiberContent = {
     answerBody: 'Root에 작업이 있다는 사실을 표시하고 다음 스케줄링 단계로 넘긴다.',
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: ensureRootIsScheduled',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'ensureRootIsScheduled',
     description:
       'Root가 업데이트 대기 상태로 표시되었다면, 이제 React는 그 Root를 실제 스케줄 목록에 등록해야 합니다.',
     cta: '다음: ensureRootIsScheduled',
@@ -516,8 +516,8 @@ const en: ScheduleUpdateOnFiberContent = {
       'It only records that the Root has work, then passes control to the next scheduling step.',
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: ensureRootIsScheduled',
+    eyebrow: 'The journey continues',
+    title: 'ensureRootIsScheduled',
     description:
       'Once the Root is marked as having pending work, React needs to actually put that Root on the scheduling list.',
     cta: 'Next: ensureRootIsScheduled',

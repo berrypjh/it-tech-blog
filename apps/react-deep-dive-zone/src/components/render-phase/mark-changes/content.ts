@@ -369,7 +369,7 @@ const ko: MarkChangesContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: completeUnitOfWork와 completeWork',
+    title: 'completeUnitOfWork와 completeWork',
     description:
       'Render Phase가 필요한 변경 표시까지 남겼다면, 마지막으로 React가 위로 올라오며 한 서브트리의 계산을 어떻게 마무리하는지 봅니다.',
     cta: '다음 페이지로 이동',
@@ -608,7 +608,7 @@ const en: MarkChangesContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: completeUnitOfWork and completeWork',
+    title: 'completeUnitOfWork and completeWork',
     description:
       "Now that the Render Phase has left all the change marks, follow how React walks back up and finishes a subtree's computation.",
     cta: 'Go to the next page',

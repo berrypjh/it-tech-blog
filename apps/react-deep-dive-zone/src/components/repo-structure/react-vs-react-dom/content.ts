@@ -399,7 +399,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: 'React와 DOM renderer의 경계를 이해했다면,',
       description:
         '이제 그 사이에서 실제 렌더링 계산을 담당하는 ' + 'react-reconciler' + '를 살펴봅니다.',
@@ -638,7 +638,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'Now that the React–DOM renderer boundary is clear,',
       description:
         'turn to the engine in between — ' +

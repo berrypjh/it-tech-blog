@@ -555,8 +555,8 @@ const ko: React19ChangeMapContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Actions는 왜 업데이트 모델의 확장일까?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Actions는 왜 업데이트 모델의 확장일까?',
     description: '업데이트 흐름의 진입점과 상태 / 서버 연결을 깊이 파헤쳐 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/actions-update-flow',
@@ -937,8 +937,8 @@ const en: React19ChangeMapContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: Why are Actions an extension of the update model?',
+    eyebrow: 'The journey continues',
+    title: 'Why are Actions an extension of the update model?',
     description: 'Dig into the entry points of the update flow and the state / server connections.',
     cta: 'Go to the next page',
     href: '/actions-update-flow',

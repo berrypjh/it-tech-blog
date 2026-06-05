@@ -529,8 +529,8 @@ const ko: ThreePriorityAxesContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: Lane 자료구조 해부하기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Lane 자료구조 해부하기',
     description: 'Lane은 무엇이고 왜 비트마스크로 관리될까?',
     cta: '다음 페이지로 이동',
     href: '/lane-shape',
@@ -907,8 +907,8 @@ const en: ThreePriorityAxesContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: Anatomy of the Lane data structure',
+    eyebrow: 'The journey continues',
+    title: 'Anatomy of the Lane data structure',
     description: 'What is a Lane and why is it a bitmask?',
     cta: 'Go to the next page',
     href: '/lane-shape',

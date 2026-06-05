@@ -343,8 +343,8 @@ const ko: ReactElementOwnerDevInfoContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: Element는 DOM이 아니라 Fiber 이전 단계의 설명 객체다',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Element는 DOM이 아니라 Fiber 이전 단계의 설명 객체다',
     description:
       'Element 객체가 개발 모드에서 어떤 정보를 더 품는지 이해했다면, 이제 전체 챕터를 하나의 흐름으로 정리합니다.',
     cta: '다음 페이지로 이동',
@@ -559,8 +559,8 @@ const en: ReactElementOwnerDevInfoContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Continue to the next step',
-    title: 'Next: an Element is not the DOM — it is a description before Fiber',
+    eyebrow: 'The journey continues',
+    title: 'an Element is not the DOM — it is a description before Fiber',
     description:
       'Now that you have seen what extra info the dev-mode Element carries, next, summarize the whole chapter into a single flow.',
     cta: 'Go to the next page',

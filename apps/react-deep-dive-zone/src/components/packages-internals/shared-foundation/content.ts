@@ -374,8 +374,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '7',
-      title: '다음: React Native와 공유되는 구조',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'React Native와 공유되는 구조',
       description:
         '공통 기반층까지 봤다면, 이제 React가 웹뿐 아니라 Native 환경과도 어떻게 내부 구조를 공유하는지 Native 쪽 흐름을 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -549,8 +549,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '7',
-      title: 'Next: structure shared with React Native',
+      eyebrow: 'The journey continues',
+      title: 'structure shared with React Native',
       description:
         'Now that you have seen the common foundation, next we look at how React shares its internals with the Native environment, beyond the web.',
       cta: 'Go to the next page',

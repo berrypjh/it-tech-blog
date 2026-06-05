@@ -322,8 +322,8 @@ const ko: EagerBailoutContent = {
     answerBody: 'React가 같은 상태로 판단해 eager bailout할 수 있다.',
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: enqueueConcurrentHookUpdate',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'enqueueConcurrentHookUpdate',
     description: '렌더가 필요하다고 판단되면, 이제 update 객체는 queue 처리 경로로 넘어갑니다.',
     cta: '다음: enqueueConcurrentHookUpdate',
     href: '/enqueue-concurrent-hook-update',
@@ -510,8 +510,8 @@ const en: EagerBailoutContent = {
     answerBody: 'React may decide the state is unchanged and take the eager bailout.',
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: enqueueConcurrentHookUpdate',
+    eyebrow: 'The journey continues',
+    title: 'enqueueConcurrentHookUpdate',
     description:
       'When a render really is needed, the update object travels into the queue-processing path next.',
     cta: 'Next: enqueueConcurrentHookUpdate',

@@ -340,7 +340,7 @@ const ko: ElementVsFiberContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: createFiberFromElement',
+    title: 'createFiberFromElement',
     description:
       'Element와 Fiber의 차이를 이해했다면, 이제 실제 코드에서 Element가 Fiber로 바뀌는 입구를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -567,7 +567,7 @@ const en: ElementVsFiberContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: createFiberFromElement',
+    title: 'createFiberFromElement',
     description:
       'Now that the difference between Element and Fiber is clear, look at the actual code where an Element becomes a Fiber.',
     cta: 'Go to the next page',

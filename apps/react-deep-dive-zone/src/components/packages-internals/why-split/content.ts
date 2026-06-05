@@ -545,8 +545,8 @@ function App() {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음: react 패키지',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'react 패키지',
       description:
         '전체 구조를 잡았다면, 이제 사용자가 직접 만나는 첫 패키지 react의 역할부터 자세히 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -775,8 +775,8 @@ function App() {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Next: the react package',
+      eyebrow: 'The journey continues',
+      title: 'the react package',
       description:
         'You now have the whole map. Next, the first package developers touch — react — and what it really does.',
       cta: 'Go to the next page',

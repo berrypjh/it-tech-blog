@@ -320,8 +320,8 @@ const ko: FiberTreePointersContent = {
     },
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: pendingProps와 memoizedProps',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'pendingProps와 memoizedProps',
     description:
       'Fiber가 어떻게 트리로 연결되는지 이해했다면, 이제 그 Fiber가 입력값을 어떻게 기억하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -509,8 +509,8 @@ const en: FiberTreePointersContent = {
     },
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: pendingProps & memoizedProps',
+    eyebrow: 'The journey continues',
+    title: 'pendingProps & memoizedProps',
     description:
       'Now that you know how a Fiber tree is connected, look at how a Fiber remembers its inputs.',
     cta: 'Go to the next page',

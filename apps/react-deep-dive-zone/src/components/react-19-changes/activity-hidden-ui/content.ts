@@ -604,8 +604,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: useEffectEvent는 Effect 설계에 무엇을 추가했나?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'useEffectEvent는 Effect 설계에 무엇을 추가했나?',
     description:
       '다음 페이지에서는 useEffectEvent가 Effect 본체와 이벤트성 로직을 어떻게 분리하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -985,8 +985,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: What did useEffectEvent add to Effect design?',
+    eyebrow: 'The journey continues',
+    title: 'What did useEffectEvent add to Effect design?',
     description: "We'll look at how useEffectEvent separates an Effect body from event-like logic.",
     cta: 'Go to the next page',
     href: '/use-effect-event-design',

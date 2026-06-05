@@ -624,8 +624,8 @@ const ko: CommitPhaseIntroContent = {
       'Placement flag는 "이 노드를 삽입해야 한다"라는 계획일 뿐, DOM에 실제로 붙이는 작업은 Commit Phase의 Mutation 단계에서 이루어집니다.',
   },
   nextStep: {
-    eyebrow: '다음 여정으로 함께 떠나요',
-    title: '다음: commitRoot',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'commitRoot',
     description:
       'Commit Phase의 역할을 잡았다면, 이제 finishedWork가 어떻게 실제 반영 파이프라인으로 들어가는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -796,8 +796,8 @@ const en: CommitPhaseIntroContent = {
       'A Placement flag is only a plan that says "this node should be inserted". The actual DOM insertion is done during the Mutation step of the Commit Phase.',
   },
   nextStep: {
-    eyebrow: 'Continue the journey',
-    title: 'Next: commitRoot',
+    eyebrow: 'The journey continues',
+    title: 'commitRoot',
     description:
       'Now that the role of the Commit Phase is clear, see how finishedWork actually enters the real apply pipeline.',
     cta: 'Go to the next page',

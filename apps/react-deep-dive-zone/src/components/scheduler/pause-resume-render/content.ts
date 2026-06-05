@@ -441,8 +441,8 @@ const ko: RenderYieldingContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: 전체 흐름 복습',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '전체 흐름 복습',
     description: '클릭/전환/지연 업데이트가 한 화면에서 어떻게 다르게 흐르는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/scheduler-overall-flow',
@@ -734,8 +734,8 @@ const en: RenderYieldingContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: end-to-end recap',
+    eyebrow: 'The journey continues',
+    title: 'end-to-end recap',
     description: 'See in one place how click / transition / deferred renders differ.',
     cta: 'Go to the next page',
     href: '/scheduler-overall-flow',

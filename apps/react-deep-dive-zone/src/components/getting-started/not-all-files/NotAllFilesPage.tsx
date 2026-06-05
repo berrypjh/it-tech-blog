@@ -4,7 +4,6 @@ import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FollowQuestionFlow } from './sections/FollowQuestionFlow';
-import { QuestionCenteredCards } from './sections/QuestionCenteredCards';
 import { QuestionToSourceMap } from './sections/QuestionToSourceMap';
 import { SelectiveReadingHero } from './sections/SelectiveReadingHero';
 import { WrongVsGoodApproach } from './sections/WrongVsGoodApproach';
@@ -19,7 +18,6 @@ export const NotAllFilesPage = ({ locale }: Props) => {
     <StartPageShell>
       <SelectiveReadingHero content={c.hero} />
       <WrongVsGoodApproach content={c.approaches} />
-      <QuestionCenteredCards content={c.questions} />
       <QuestionToSourceMap content={c.mapping} />
       <FollowQuestionFlow content={c.followFlow} />
       <NextStepBanner content={c.nextStep} />

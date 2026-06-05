@@ -585,8 +585,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?',
     description:
       '다음 페이지에서는 use()가 Promise, Suspense, Error Boundary, thenable tracking과 어떻게 연결되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -969,8 +969,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: What did use() add to Suspense / Error Boundary?',
+    eyebrow: 'The journey continues',
+    title: 'What did use() add to Suspense / Error Boundary?',
     description:
       'Next we look at how use() connects Promise, Suspense, Error Boundary, and thenable tracking.',
     cta: 'Go to the next page',

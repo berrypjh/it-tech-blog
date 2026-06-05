@@ -442,7 +442,7 @@ const ko: RenderPhaseIntroContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: workLoopSync와 workLoopConcurrent',
+    title: 'workLoopSync와 workLoopConcurrent',
     description:
       'Render Phase가 계산 단계라는 점을 이해했다면, 이제 React가 그 계산을 어떤 반복 구조로 진행하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -571,7 +571,7 @@ const en: RenderPhaseIntroContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: workLoopSync and workLoopConcurrent',
+    title: 'workLoopSync and workLoopConcurrent',
     description:
       'Now that you understand the Render Phase as a compute step, see what loop structure React uses to drive that compute.',
     cta: 'Go to the next page',

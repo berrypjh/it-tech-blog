@@ -516,8 +516,8 @@ function CustomInput({
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Metadata와 Resource Components',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Metadata와 Resource Components',
     description:
       '다음 페이지에서는 React 19가 문서 자원과 head 관리 모델을 어떻게 확장했는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -879,8 +879,8 @@ function CustomInput({
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: Metadata & Resource Components',
+    eyebrow: 'The journey continues',
+    title: 'Metadata & Resource Components',
     description:
       'Next we look at how React 19 extended document-resource and head-management model.',
     cta: 'Go to the next page',

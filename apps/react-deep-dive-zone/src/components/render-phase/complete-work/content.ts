@@ -464,8 +464,8 @@ const ko: CompleteWorkContent = {
     completionNote: '모든 항목을 설명할 수 있다면, 이제 Commit Phase로 넘어갈 준비 완료!',
   },
   nextStep: {
-    eyebrow: '다음 챕터로 이어집니다',
-    title: '다음: Commit Phase와 실제 DOM 반영',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Commit Phase와 실제 DOM 반영',
     description:
       'Render Phase가 무엇을 바꿀지 계산하고 flags까지 남겼습니다. 그렇다면 이제 React는 이 계산 결과를 실제 DOM에 어떻게 반영할까요?',
     cta: 'Commit Phase로 이동',
@@ -698,8 +698,8 @@ const en: CompleteWorkContent = {
     completionNote: 'If you can explain all of these, you are ready for the Commit Phase!',
   },
   nextStep: {
-    eyebrow: 'The next chapter continues',
-    title: 'Next: Commit Phase & Real DOM Updates',
+    eyebrow: 'The journey continues',
+    title: 'Commit Phase & Real DOM Updates',
     description:
       'The Render Phase computed what to change and left flags. So how does React actually apply that result to the real DOM?',
     cta: 'Go to Commit Phase',

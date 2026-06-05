@@ -144,7 +144,7 @@ const treeNodes: TreeNode[] = [
 const ko: HostComponentFiberContent = {
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Function / Class Component Fiber',
+    title: 'Function / Class Component Fiber',
     description: '함수형·클래스 컴포넌트가 Fiber로 어떻게 표현되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/function-fiber',
@@ -336,7 +336,7 @@ const ko: HostComponentFiberContent = {
 const en: HostComponentFiberContent = {
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Function / Class Component Fiber',
+    title: 'Function / Class Component Fiber',
     description: 'See how function and class components are represented as fibers.',
     cta: 'Go to the next page',
     href: '/function-fiber',

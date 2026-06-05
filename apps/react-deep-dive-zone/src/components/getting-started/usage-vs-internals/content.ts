@@ -278,7 +278,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
-      title: '다음: 왜 React 19 코드를 기준으로 읽는가?',
+      title: '왜 React 19 코드를 기준으로 읽는가?',
       description: '최신 React의 구조와 실제 방향을 이해하는 것이 중요합니다.',
       cta: '다음 페이지로 이동',
       href: '/why-react-19',
@@ -464,8 +464,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     nextStep: {
-      eyebrow: 'The next chapter continues',
-      title: 'Next: Why read against React 19?',
+      eyebrow: 'The journey continues',
+      title: 'Why read against React 19?',
       description: "Understanding modern React's structure and direction is what matters.",
       cta: 'Go to the next page',
       href: '/why-react-19',

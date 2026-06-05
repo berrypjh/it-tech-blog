@@ -415,8 +415,8 @@ const ko: FiberLanesContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: current / workInProgress / alternate',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'current / workInProgress / alternate',
     description:
       'Fiber가 우선순위 정보까지 품는다는 점을 봤다면, 이제 React가 왜 Fiber 트리를 두 벌로 관리하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -671,8 +671,8 @@ const en: FiberLanesContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: current / workInProgress / alternate',
+    eyebrow: 'The journey continues',
+    title: 'current / workInProgress / alternate',
     description:
       'Now that you have seen how a Fiber carries priority, look at why React maintains the Fiber tree in two copies.',
     cta: 'Go to the next page',

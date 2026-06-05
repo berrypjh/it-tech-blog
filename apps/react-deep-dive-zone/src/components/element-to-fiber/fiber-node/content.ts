@@ -320,8 +320,8 @@ const ko: FiberStoredInformationContent = {
       'React가 Fiber 트리를 순회하며 작업을 진행해야 하기 때문이다. 이 포인터들이 있어야 부모-자식-형제 관계를 따라가며 렌더링 단위를 찾을 수 있다.',
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: Fiber는 왜 필요한가?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Fiber는 왜 필요한가?',
     description:
       'Fiber가 얼마나 많은 작업 정보를 갖고 있는지 알았다. 마지막으로 왜 React가 이 구조를 선택했는지 알아보자.',
     cta: '다음 페이지로 이동',
@@ -542,8 +542,8 @@ const en: FiberStoredInformationContent = {
       'Because React has to walk the Fiber tree while doing work. These pointers let it follow parent / child / sibling relationships and find the next unit of rendering work.',
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: why is Fiber needed?',
+    eyebrow: 'The journey continues',
+    title: 'why is Fiber needed?',
     description:
       'Now you know how much work-related info a Fiber holds. Finally, find out why React chose this structure in the first place.',
     cta: 'Go to the next page',

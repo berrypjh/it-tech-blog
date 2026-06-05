@@ -326,8 +326,8 @@ const ko: JsxRuntimeFunctionsContent = {
     hint: '실행 성능과 디버깅 품질을 동시에 잡기 위해서.',
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: React.createElement',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'React.createElement',
     description:
       '현대 JSX Runtime의 입구를 봤다면, 이번에는 직접 React Element를 만드는 공개 API, createElement를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -532,8 +532,8 @@ const en: JsxRuntimeFunctionsContent = {
     hint: 'To balance execution performance and debugging quality at the same time.',
   },
   nextStep: {
-    eyebrow: 'Move to the next step',
-    title: 'Next: React.createElement',
+    eyebrow: 'The journey continues',
+    title: 'React.createElement',
     description:
       'Now that you have seen the modern JSX runtime entry, next is the public API that builds React Elements directly — createElement.',
     cta: 'Go to the next page',

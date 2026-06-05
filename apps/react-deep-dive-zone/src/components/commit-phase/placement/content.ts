@@ -365,8 +365,8 @@ const ko: PlacementContent = {
     answer: '아니다. Commit Phase의 host placement가 끝나야 보인다.',
   },
   nextStep: {
-    eyebrow: '다음 여정으로 함께 떠나요',
-    title: '다음: Update',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Update',
     description:
       '새 node 삽입을 이해했다면, 이제 이미 존재하는 DOM을 어떻게 갱신하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -471,8 +471,8 @@ const en: PlacementContent = {
     answer: 'No. It only appears after the Commit Phase host placement finishes.',
   },
   nextStep: {
-    eyebrow: 'Continue the journey',
-    title: 'Next: Update',
+    eyebrow: 'The journey continues',
+    title: 'Update',
     description:
       'Now that inserting a new node is clear, see how an existing DOM node gets updated.',
     cta: 'Go to the next page',

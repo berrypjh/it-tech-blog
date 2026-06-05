@@ -379,7 +379,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       tipText: '버전 정보를 함께 남기면 나중에 다시 읽을 때 맥락을 잃지 않습니다.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 구조와 버전 맥락까지 읽을 수 있게 되었다면,',
       description: '마지막으로 전체 ' + '탐색 루틴' + '을 하나의 실전 순서로 정리합니다.',
       cta: '다음: 저장소 탐색 순서',
@@ -625,7 +625,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       tipText: 'Recording the baseline version keeps the context intact when you revisit later.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'With repo structure and version context behind you,',
       description:
         'finally turn the full ' + 'exploration order' + ' into a single practical sequence.',

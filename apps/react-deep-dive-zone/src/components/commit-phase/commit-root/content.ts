@@ -636,8 +636,8 @@ const ko: CommitRootContent = {
     relatedFileNote: '관련 파일: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
   nextStep: {
-    eyebrow: '다음 여정으로 함께 떠나요',
-    title: '다음: Before Mutation Phase',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Before Mutation Phase',
     description:
       'commitRoot는 전체 commit 파이프라인의 입구입니다. 이제 실제 DOM이 바뀌기 직전 단계인 Before Mutation부터 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -744,8 +744,8 @@ const en: CommitRootContent = {
     relatedFileNote: 'Related files: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
   nextStep: {
-    eyebrow: 'Continue the journey',
-    title: 'Next: Before Mutation Phase',
+    eyebrow: 'The journey continues',
+    title: 'Before Mutation Phase',
     description:
       'commitRoot is the entry to the whole commit pipeline. Up next is Before Mutation — the step right before the real DOM changes.',
     cta: 'Go to the next page',

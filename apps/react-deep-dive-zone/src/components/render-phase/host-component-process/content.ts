@@ -284,7 +284,7 @@ const ko: HostComponentContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: reconcileChildren',
+    title: 'reconcileChildren',
     description:
       '함수 컴포넌트와 Host Component가 모두 reconcileChildren으로 이어진다는 점을 봤다면, 이제 그 핵심 함수 자체를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -453,7 +453,7 @@ const en: HostComponentContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: reconcileChildren',
+    title: 'reconcileChildren',
     description:
       'Now that you see how both function components and Host Components hand off to reconcileChildren, take a closer look at the function itself.',
     cta: 'Go to the next page',

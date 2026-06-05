@@ -7,14 +7,6 @@ export type ApproachItem = {
   description: string;
 };
 
-export type QuestionCard = {
-  id: 'jsx' | 'element' | 'setstate' | 'dom';
-  icon: 'code' | 'cube' | 'bolt' | 'monitor';
-  tone: 'blue' | 'lavender' | 'mint' | 'coral';
-  title: string[];
-  tags: string[];
-};
-
 export type MappingRow = {
   id: 'jsx' | 'element' | 'setstate' | 'dom';
   tone: 'blue' | 'lavender' | 'mint' | 'coral';
@@ -57,11 +49,6 @@ export type NotAllFilesContent = {
       title: string;
       items: ApproachItem[];
     };
-  };
-  questions: {
-    eyebrow: string;
-    title: string;
-    cards: QuestionCard[];
   };
   mapping: {
     eyebrow: string;
@@ -175,42 +162,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         ],
       },
     },
-    questions: {
-      eyebrow: '02 · question-first',
-      title: '질문 중심 독해법',
-      cards: [
-        {
-          id: 'jsx',
-          icon: 'code',
-          tone: 'blue',
-          title: ['JSX는 어떻게', 'React Element가 되는가?'],
-          tags: ['ReactJSXElement.js', 'ReactElement.js'],
-        },
-        {
-          id: 'element',
-          icon: 'cube',
-          tone: 'lavender',
-          title: ['Element는 어떻게', 'Fiber가 되는가?'],
-          tags: ['ReactFiber.js', 'ReactChildFiber.js'],
-        },
-        {
-          id: 'setstate',
-          icon: 'bolt',
-          tone: 'mint',
-          title: ['setState는 어떻게', '업데이트를 시작하는가?'],
-          tags: ['ReactFiberHooks.js', 'ReactFiberWorkLoop.js'],
-        },
-        {
-          id: 'dom',
-          icon: 'monitor',
-          tone: 'coral',
-          title: ['DOM은 언제', '실제로 바뀌는가?'],
-          tags: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
-        },
-      ],
-    },
     mapping: {
-      eyebrow: '03 · mapping',
+      eyebrow: '02 · mapping',
       title: '질문 → 파일 → 핵심 함수 매핑',
       labels: { question: '질문', file: '파일', fn: '함수' },
       rows: [
@@ -253,7 +206,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '04 · follow flow',
+      eyebrow: '03 · follow flow',
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
@@ -296,8 +249,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '학습 로드맵이 이어집니다',
-      title: '다음: React 소스코드 탐구 로드맵',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'React 소스코드 탐구 로드맵',
       description: '단계별 학습 로드맵과 구체적인 학습 계획을 확인하세요.',
       cta: '다음 페이지로 이동',
       href: '/roadmap',
@@ -393,42 +346,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         ],
       },
     },
-    questions: {
-      eyebrow: '02 · question-first',
-      title: 'Question-first reading',
-      cards: [
-        {
-          id: 'jsx',
-          icon: 'code',
-          tone: 'blue',
-          title: ['How does JSX become', 'a React Element?'],
-          tags: ['ReactJSXElement.js', 'ReactElement.js'],
-        },
-        {
-          id: 'element',
-          icon: 'cube',
-          tone: 'lavender',
-          title: ['How does an Element', 'become a Fiber?'],
-          tags: ['ReactFiber.js', 'ReactChildFiber.js'],
-        },
-        {
-          id: 'setstate',
-          icon: 'bolt',
-          tone: 'mint',
-          title: ['How does setState', 'start an update?'],
-          tags: ['ReactFiberHooks.js', 'ReactFiberWorkLoop.js'],
-        },
-        {
-          id: 'dom',
-          icon: 'monitor',
-          tone: 'coral',
-          title: ['When does the DOM', 'actually change?'],
-          tags: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
-        },
-      ],
-    },
     mapping: {
-      eyebrow: '03 · mapping',
+      eyebrow: '02 · mapping',
       title: 'Question → File → Key function mapping',
       labels: { question: 'Question', file: 'File', fn: 'Function' },
       rows: [
@@ -471,7 +390,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '04 · follow flow',
+      eyebrow: '03 · follow flow',
       title: 'Follow one question end-to-end',
       mainQuestion: 'How does setState end up triggering a render?',
       steps: [
@@ -514,8 +433,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     nextStep: {
-      eyebrow: 'The learning roadmap continues',
-      title: 'Next: React source-code exploration roadmap',
+      eyebrow: 'The journey continues',
+      title: 'React source-code exploration roadmap',
       description: 'See the step-by-step roadmap and a concrete study plan.',
       cta: 'Go to the next page',
       href: '/roadmap',

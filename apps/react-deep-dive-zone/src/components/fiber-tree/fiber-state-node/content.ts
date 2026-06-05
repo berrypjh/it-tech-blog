@@ -378,8 +378,8 @@ const ko: FiberStateNodeContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: return / child / sibling',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'return / child / sibling',
     description:
       'Fiber가 외부 대상과 연결되는 방식까지 봤다면, 이제 Fiber들이 실제로 트리를 이루는 포인터 구조를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -603,8 +603,8 @@ const en: FiberStateNodeContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: return / child / sibling',
+    eyebrow: 'The journey continues',
+    title: 'return / child / sibling',
     description:
       'Now that you know how a Fiber connects to something external, look at the pointer structure that actually forms the Fiber tree.',
     cta: 'Go to the next page',

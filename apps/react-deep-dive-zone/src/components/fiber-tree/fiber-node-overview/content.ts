@@ -509,8 +509,8 @@ const ko: FiberNodeOverviewContent = {
     },
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: tag / key / elementType / type',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'tag / key / elementType / type',
     description:
       'Fiber 전체 구조를 훑어봤다면, 이제 이 Fiber가 무엇인지를 식별하는 필드부터 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -823,8 +823,8 @@ const en: FiberNodeOverviewContent = {
     },
   },
   nextStep: {
-    eyebrow: 'Next chapter',
-    title: 'Next: tag / key / elementType / type',
+    eyebrow: 'The journey continues',
+    title: 'tag / key / elementType / type',
     description:
       'Now that you have skimmed the whole Fiber structure, look at the fields that identify what a Fiber is.',
     cta: 'Go to the next page',

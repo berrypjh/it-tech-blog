@@ -366,8 +366,8 @@ const ko: JsxTransformFlowContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: jsx / jsxs / jsxDEV',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'jsx / jsxs / jsxDEV',
     description:
       'JSX가 함수 호출로 바뀐다는 점을 알았다면, 이제 그 중심에 있는 jsx / jsxs / jsxDEV가 각각 어떤 역할을 하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -591,8 +591,8 @@ const en: JsxTransformFlowContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Continue to the next step',
-    title: 'Next: jsx / jsxs / jsxDEV',
+    eyebrow: 'The journey continues',
+    title: 'jsx / jsxs / jsxDEV',
     description:
       'Now that you know JSX becomes function calls, next, see what jsx / jsxs / jsxDEV each actually do.',
     cta: 'Go to the next page',

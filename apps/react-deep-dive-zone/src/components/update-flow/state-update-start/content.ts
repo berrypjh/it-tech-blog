@@ -326,8 +326,8 @@ const ko: StateUpdateStartContent = {
     flowLine: ['요청 기록', '우선순위 결정', '스케줄링', '계산(Render)', '반영(Commit)'],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'setState 함수는 어떻게 Fiber와 queue를 기억하나?',
     description:
       'setState가 즉시 DOM을 바꾸는 함수가 아니라는 점을 이해했다면, 이제 그 setState 함수가 어떻게 Fiber와 queue를 기억하는지 살펴봅니다.',
     cta: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
@@ -512,8 +512,8 @@ const en: StateUpdateStartContent = {
     flowLine: ['Record', 'Pick priority', 'Schedule', 'Compute (Render)', 'Apply (Commit)'],
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: How setState remembers its Fiber and queue',
+    eyebrow: 'The journey continues',
+    title: 'How setState remembers its Fiber and queue',
     description:
       'Now that you know setState does not immediately change the DOM, look at how the setState function remembers its Fiber and queue.',
     cta: 'Next: How setState remembers its Fiber and queue',

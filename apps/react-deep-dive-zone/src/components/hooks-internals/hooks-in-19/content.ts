@@ -482,7 +482,7 @@ const ko: React19HooksContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Hooks 전체 흐름 복습하기',
+    title: 'Hooks 전체 흐름 복습하기',
     description:
       'React 19 Hook 확장까지 봤다면, 이제 Hooks 내부 구조 전체를 하나의 흐름으로 다시 연결해봅니다.',
     cta: '다음 페이지로 이동',
@@ -785,7 +785,7 @@ const en: React19HooksContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: recap the full Hooks flow',
+    title: 'recap the full Hooks flow',
     description:
       'With the React 19 extensions in view, recap the entire Hook internals as one connected flow.',
     cta: 'Go to the next page',

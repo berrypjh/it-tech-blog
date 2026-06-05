@@ -357,8 +357,8 @@ export const rnContent: Record<Locale, RnContent> = {
         'Element와 Fiber, 변경 계산 알고리즘, 작업 우선순위 개념은 공통으로 사용됩니다. 실제 화면에 반영하는 방식만 환경에 맞게 다르게 구현됩니다.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음: DOM 전용 코드와 공통 코드',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'DOM 전용 코드와 공통 코드',
       description:
         '공통 계산과 환경별 반영의 차이를 봤다면, 이번에는 DOM에만 필요한 코드와 renderer 공통 코드의 경계를 더 정확히 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -581,8 +581,8 @@ export const rnContent: Record<Locale, RnContent> = {
         'Element, Fiber, the diff algorithm, and the priority concept are all shared. Only how the result is applied to the screen differs per environment.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Next: DOM-only vs common renderer code',
+      eyebrow: 'The journey continues',
+      title: 'DOM-only vs common renderer code',
       description:
         'Now that compute vs apply is clear, we look closer at what is DOM-only code versus renderer-common code — and where the line is.',
       cta: 'Go to the next page',

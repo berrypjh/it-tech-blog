@@ -342,8 +342,8 @@ const ko: FiberPropsContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음으로 넘어가기',
-    title: '다음: memoizedState와 updateQueue',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'memoizedState와 updateQueue',
     description:
       'props가 어떻게 기억되는지 봤다면, 이제 상태와 업데이트 요청이 Fiber 안에서 어디에 쌓이는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -534,8 +534,8 @@ const en: FiberPropsContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Up next',
-    title: 'Next: memoizedState & updateQueue',
+    eyebrow: 'The journey continues',
+    title: 'memoizedState & updateQueue',
     description:
       'Now that you have seen how a Fiber remembers props, look at where state and update requests pile up inside the Fiber.',
     cta: 'Go to the next page',

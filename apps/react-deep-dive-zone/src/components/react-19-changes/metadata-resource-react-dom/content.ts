@@ -590,8 +590,8 @@ getPublicInstance(...)`,
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Server Components의 경계와 계약',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Server Components의 경계와 계약',
     description:
       '다음 페이지에서는 React 19가 서버와 클라이언트의 경계를 어떤 계약으로 안정화했는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -1000,8 +1000,8 @@ getPublicInstance(...)`,
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: Server Components — boundary & contract',
+    eyebrow: 'The journey continues',
+    title: 'Server Components — boundary & contract',
     description:
       'Next we look at how React 19 stabilized the server / client boundary with a clear contract.',
     cta: 'Go to the next page',

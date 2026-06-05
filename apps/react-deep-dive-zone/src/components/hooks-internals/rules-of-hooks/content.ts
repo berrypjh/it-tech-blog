@@ -514,7 +514,7 @@ const ko: RulesOfHooksContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: React 19 Hooks 확장 읽기',
+    title: 'React 19 Hooks 확장 읽기',
     description:
       '기본 Hook 규칙과 내부 구조를 이해했다면, 이제 React 19에서 추가된 Hook들도 같은 내부 지형 위에서 읽어봅니다.',
     cta: '다음 페이지로 이동',
@@ -766,7 +766,7 @@ const en: RulesOfHooksContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: reading React 19 Hooks',
+    title: 'reading React 19 Hooks',
     description:
       'Now that the rules and internals are clear, read the new React 19 Hooks against the same internal terrain.',
     cta: 'Go to the next page',

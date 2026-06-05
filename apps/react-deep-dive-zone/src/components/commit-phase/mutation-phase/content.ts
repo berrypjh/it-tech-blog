@@ -569,8 +569,8 @@ const ko: MutationPhaseContent = {
     points: extraKo,
   },
   nextStep: {
-    eyebrow: '다음 여정으로 함께 떠나요',
-    title: '다음: Placement',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Placement',
     description:
       'Mutation Phase가 실제 반영 단계라면, 가장 먼저 이해하기 좋은 사례는 새 DOM node 삽입인 Placement입니다.',
     cta: '다음 페이지로 이동',
@@ -684,8 +684,8 @@ const en: MutationPhaseContent = {
     points: extraEn,
   },
   nextStep: {
-    eyebrow: 'Continue the journey',
-    title: 'Next: Placement',
+    eyebrow: 'The journey continues',
+    title: 'Placement',
     description:
       'If the Mutation Phase is where the apply actually happens, the easiest case to start with is Placement — inserting a new DOM node.',
     cta: 'Go to the next page',

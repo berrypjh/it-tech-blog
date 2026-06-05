@@ -339,8 +339,8 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     answerBody: '반환 타입: FiberRoot | null',
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Fiber에서 Root까지 올라가기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Fiber에서 Root까지 올라가기',
     description:
       'update가 queue 처리 경로로 넘어갔다면, 이제 React는 Fiber에서 Root까지 올라가며 작업 흔적을 표시합니다.',
     cta: '다음: Fiber에서 Root까지 올라가기',
@@ -553,8 +553,8 @@ const en: EnqueueConcurrentHookUpdateContent = {
     answerBody: 'Return type: FiberRoot | null',
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: walking from Fiber up to Root',
+    eyebrow: 'The journey continues',
+    title: 'walking from Fiber up to Root',
     description:
       'Now that the update is on the queue-processing path, React walks from the Fiber up to the Root, leaving trail markers along the way.',
     cta: 'Next: walking from Fiber up to Root',

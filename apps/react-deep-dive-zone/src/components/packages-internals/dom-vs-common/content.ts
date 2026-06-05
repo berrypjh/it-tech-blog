@@ -436,7 +436,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '다음 단계로 이동하기',
       description:
         '공통 로직과 DOM 전용 로직의 경계까지 보았다면, 마지막으로 패키지 분리가 React 설계에 어떤 의미를 가지는지 정리합니다.',
@@ -690,7 +690,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'Move to the next step',
       description:
         'Now that you have seen the line between shared logic and DOM-only logic, we wrap up with the design meaning of package separation.',

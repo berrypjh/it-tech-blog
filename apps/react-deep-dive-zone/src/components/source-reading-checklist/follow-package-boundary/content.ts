@@ -522,7 +522,7 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '지금 보고 있는 값이 무엇인지 먼저 분류한다',
       description: '패키지 위치를 파악했다면, 이제 지금 보고 있는 값이 무엇인지 분류해야 합니다.',
       cta: '다음 페이지로 이동',
@@ -876,7 +876,7 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Classify the value you are looking at first',
       description:
         'Once you know the package, the next thing to do is classify the value in front of you.',

@@ -498,7 +498,7 @@ export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '패키지 경계를 먼저 읽어야 길을 잃지 않는다',
       description: '입구를 찾았다면, 이제 그 코드가 어느 패키지에 속해 있는지 읽어야 합니다.',
       cta: '다음 페이지로 이동',
@@ -827,7 +827,7 @@ export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Read package boundaries first so you do not get lost',
       description:
         'Once you have the entry, the next thing to read is which package the code belongs to.',

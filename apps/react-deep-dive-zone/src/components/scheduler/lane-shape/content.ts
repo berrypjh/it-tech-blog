@@ -441,7 +441,7 @@ const ko: LaneBitmaskContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: 업데이트는 어떤 Lane을 받을까?',
+    title: '업데이트는 어떤 Lane을 받을까?',
     description: 'Lane 개념을 이해했다면, 이제 업데이트가 어떤 Lane을 받는지 알아볼까요?',
     cta: '다음 페이지로 이동',
     href: '/update-to-lane',
@@ -695,7 +695,7 @@ const en: LaneBitmaskContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Which Lane does an update get?',
+    title: 'Which Lane does an update get?',
     description:
       "Now that you understand the Lane concept, let's see what Lane an update actually gets.",
     cta: 'Go to the next page',

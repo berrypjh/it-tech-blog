@@ -344,7 +344,7 @@ const ko: WorkLoopContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: performUnitOfWork',
+    title: 'performUnitOfWork',
     description:
       'Render Phase가 Fiber를 하나씩 처리하는 반복 루프라는 점을 봤다면, 이제 그 Fiber 하나를 실제로 처리하는 핵심 함수로 들어갑니다.',
     cta: '다음 페이지로 이동',
@@ -536,7 +536,7 @@ const en: WorkLoopContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: performUnitOfWork',
+    title: 'performUnitOfWork',
     description:
       'Now that you see the Render Phase as a loop that processes Fibers one by one, dive into the function that actually processes one of those Fibers.',
     cta: 'Go to the next page',

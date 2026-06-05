@@ -465,8 +465,8 @@ const ko: DispatchSetStateContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: dispatchSetState',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'dispatchSetState',
     description:
       'setState가 Fiber와 queue를 기억한 dispatch 함수라는 점을 알았다면, 이제 실제 업데이트 진입점인 dispatchSetState를 읽어봅니다.',
     cta: '다음: dispatchSetState',
@@ -737,8 +737,8 @@ const en: DispatchSetStateContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: dispatchSetState',
+    eyebrow: 'The journey continues',
+    title: 'dispatchSetState',
     description:
       'Now that you know setState is a dispatch that remembers its Fiber and queue, read the actual entry point: dispatchSetState.',
     cta: 'Next: dispatchSetState',

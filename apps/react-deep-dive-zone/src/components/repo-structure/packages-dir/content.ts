@@ -514,7 +514,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: 'packages의 중심 축을 잡았다면,',
       description:
         '이제 저장소 루트의 다른 디렉터리인 ' +
@@ -823,7 +823,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'You have the core axis of packages,',
       description:
         'now look at the other root directories — ' +

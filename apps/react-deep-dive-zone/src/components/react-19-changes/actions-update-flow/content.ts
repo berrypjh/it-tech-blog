@@ -566,8 +566,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Form Actions는 이벤트 시스템과 어떻게 연결되는가?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Form Actions는 이벤트 시스템과 어떻게 연결되는가?',
     description:
       '`<form action={fn}>`이 submit event, FormActionEventPlugin, FormData, pendingState, startHostTransition으로 어떻게 이어지는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -952,8 +952,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: How do Form Actions connect to the event system?',
+    eyebrow: 'The journey continues',
+    title: 'How do Form Actions connect to the event system?',
     description:
       'See how `<form action={fn}>` reaches submit event, FormActionEventPlugin, FormData, pendingState, and startHostTransition.',
     cta: 'Go to the next page',

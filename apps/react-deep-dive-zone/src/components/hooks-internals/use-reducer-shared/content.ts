@@ -415,7 +415,7 @@ const ko: UseReducerSharedContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: useEffect 내부 구조 보기',
+    title: 'useEffect 내부 구조 보기',
     description:
       '상태 Hook의 공통 구조를 이해했다면, 이제 React가 나중에 실행할 작업인 Effect를 어떻게 저장하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -690,7 +690,7 @@ const en: UseReducerSharedContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: explore useEffect internals',
+    title: 'explore useEffect internals',
     description:
       'Now that the shared state model is clear, see how React stores Effects that run later.',
     cta: 'Go to the next page',

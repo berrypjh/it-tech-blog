@@ -363,7 +363,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       banner: '궁금한 목표에 따라 적절한 디렉터리를 선택하면 학습 효율이 크게 올라갑니다.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 전체 주변 구조를 파악했다면,',
       description:
         '이제 가장 자주 혼동되는 두 패키지, ' + 'react와 react-dom' + '의 차이를 정리합니다.',
@@ -590,7 +590,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       banner: 'Picking the right directory for your question makes learning far more efficient.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'With the surrounding structure mapped out,',
       description: 'time to clear up the most-confused pair — ' + 'react vs react-dom' + '.',
       cta: 'Next: react vs react-dom',

@@ -342,8 +342,8 @@ const ko: FragmentModeFiberContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: key와 Fiber 재사용',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'key와 Fiber 재사용',
     description:
       '어떤 Element가 어떤 Fiber가 되는지 봤다면, 이제 기존 Fiber를 재사용할지 판단하는 key의 역할로 넘어갑니다.',
     cta: '다음 페이지로 이동',
@@ -567,8 +567,8 @@ const en: FragmentModeFiberContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: key & Fiber reuse',
+    eyebrow: 'The journey continues',
+    title: 'key & Fiber reuse',
     description:
       'You have seen which Elements become which Fibers. Next, look at how key decides whether to reuse an existing Fiber.',
     cta: 'Go to the next page',

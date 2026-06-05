@@ -344,8 +344,8 @@ const ko: ReactElementKeySeparatedContent = {
     emphasis: 'key가 같으면 상태를 유지하고, 다르면 새로운 Fiber가 만들어진다.',
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: ref는 React 19에서 어떻게 달라졌나?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'ref는 React 19에서 어떻게 달라졌나?',
     description:
       'key가 React 내부 비교를 위한 별도 값이라는 점을 알았다면, 이번에는 React 19에서 특히 중요해진 ref의 변화로 넘어갑니다.',
     cta: '다음 페이지로 이동',
@@ -555,8 +555,8 @@ const en: ReactElementKeySeparatedContent = {
     emphasis: 'Same key keeps state; different key creates a new Fiber.',
   },
   nextStep: {
-    eyebrow: 'Continue to the next step',
-    title: 'Next: how did ref change in React 19?',
+    eyebrow: 'The journey continues',
+    title: 'how did ref change in React 19?',
     description:
       'Now that you know key is a separate value for React-side comparison, next, look at how ref changed in React 19.',
     cta: 'Go to the next page',

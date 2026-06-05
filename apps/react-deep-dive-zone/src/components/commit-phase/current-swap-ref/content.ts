@@ -526,7 +526,7 @@ const ko: RootCurrentRefContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Layout Phase',
+    title: 'Layout Phase',
     description:
       '현재 트리 전환과 ref 처리를 이해했다면, 이제 DOM이 바뀐 직후 실행되는 Layout Phase로 넘어갑니다.',
     cta: '다음 페이지로 이동',
@@ -656,7 +656,7 @@ const en: RootCurrentRefContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Layout Phase',
+    title: 'Layout Phase',
     description:
       'Now that current-tree swap and ref handling are clear, the next stop is the Layout Phase that runs right after DOM changes.',
     cta: 'Go to the next page',

@@ -240,8 +240,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       primaryCta: 'GitHub에서 코드 열기',
     },
     nextStep: {
-      eyebrow: '다음 여정으로 함께 떠나요',
-      title: '다음: React 사용법과 내부 구조 학습의 차이',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'React 사용법과 내부 구조 학습의 차이',
       description: '두 학습의 관점을 비교하며, 앞으로 우리가 어떻게 학습할지 안내합니다.',
       cta: '다음 페이지로 이동',
       href: '/usage-vs-internals',
@@ -379,8 +379,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       primaryCta: 'Open on GitHub',
     },
     nextStep: {
-      eyebrow: 'Continue the journey',
-      title: 'Next: Using React vs Learning React Internals',
+      eyebrow: 'The journey continues',
+      title: 'Using React vs Learning React Internals',
       description: 'Compare the two perspectives and see how the rest of this series unfolds.',
       cta: 'Go to the next page',
       href: '/usage-vs-internals',

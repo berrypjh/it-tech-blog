@@ -436,7 +436,7 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '테스트 코드는 실행 가능한 문서다',
       description: '흐름은 압축했다. 이제 구현 의도가 맞는지 테스트로 확인해야 합니다.',
       cta: '다음 페이지로 이동',
@@ -719,7 +719,7 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Test code is executable documentation',
       description: "You compressed the flow. Now verify the implementation's intent through tests.",
       cta: 'Go to the next page',

@@ -350,8 +350,8 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: JSX는 어떤 코드로 변환되는가?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'JSX는 어떤 코드로 변환되는가?',
     description:
       'JSX가 HTML이 아니라는 점을 이해했다면, 이제 이 문법이 실제로 어떤 코드로 변환되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -573,8 +573,8 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Move to the next step',
-    title: 'Next: What code does JSX compile to?',
+    eyebrow: 'The journey continues',
+    title: 'What code does JSX compile to?',
     description:
       'Now that you know JSX is not HTML, let us look at what actual code JSX compiles into.',
     cta: 'Go to the next page',

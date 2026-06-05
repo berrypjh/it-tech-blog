@@ -584,8 +584,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: Activity는 숨긴 UI를 어떻게 관리할까?',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Activity는 숨긴 UI를 어떻게 관리할까?',
     description:
       '다음 페이지에서는 React 19.2의 Activity가 숨겨진 UI의 상태와 우선순위를 어떻게 관리하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -970,8 +970,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: How does Activity manage hidden UI?',
+    eyebrow: 'The journey continues',
+    title: 'How does Activity manage hidden UI?',
     description: "We'll look at how React 19.2's Activity manages hidden UI state and priority.",
     cta: 'Go to the next page',
     href: '/activity-hidden-ui',

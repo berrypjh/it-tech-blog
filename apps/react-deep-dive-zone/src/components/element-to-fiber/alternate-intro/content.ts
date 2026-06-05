@@ -275,7 +275,7 @@ const ko: AlternateFiberContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Fiber에 저장되는 정보',
+    title: 'Fiber에 저장되는 정보',
     description:
       'alternate의 첫 의미를 잡았다면, 이번에는 Element 정보가 Fiber에서 얼마나 크게 확장되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -457,7 +457,7 @@ const en: AlternateFiberContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: what a Fiber stores',
+    title: 'what a Fiber stores',
     description:
       'With the first meaning of alternate in hand, see how much Element info gets expanded inside a Fiber.',
     cta: 'Go to the next page',

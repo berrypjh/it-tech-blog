@@ -413,7 +413,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       waitingLabel: '대기 중',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '실행 타이밍을 조율하는 scheduler를 봤다면,',
       description:
         '이번에는 여러 패키지가 공통으로 쓰는 기반층인 ' + 'shared 패키지' + '를 살펴봅니다.',
@@ -652,7 +652,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       waitingLabel: 'Pending',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'With the scheduler in view,',
       description:
         'next look at the foundation layer many packages depend on — ' + 'shared package' + '.',

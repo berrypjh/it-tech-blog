@@ -367,7 +367,7 @@ const ko: RootNativeEventContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: onClick과 click 매핑 보기',
+    title: 'onClick과 click 매핑 보기',
     description:
       'root에 등록된 native event를 바탕으로, onClick prop이 어떤 native click 이벤트로 매핑되는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -546,7 +546,7 @@ const en: RootNativeEventContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: How onClick maps to click',
+    title: 'How onClick maps to click',
     description:
       'With native events attached to the root, see how the onClick prop maps to the native click event.',
     cta: 'Go to the next page',

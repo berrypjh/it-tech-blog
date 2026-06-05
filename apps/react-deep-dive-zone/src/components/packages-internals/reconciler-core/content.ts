@@ -437,8 +437,8 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
         'Element는 불변의 요청서에 가깝고, Fiber는 그 요청을 처리하기 위해 상태를 가지고 진행되는 작업 단위입니다.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음: renderer와 reconciler',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'renderer와 reconciler',
       description:
         'reconciler가 무엇을 계산하는지 알았다면, 이제 그 계산 결과를 실제 환경에 반영하는 쪽과의 경계, renderer와 reconciler를 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -638,8 +638,8 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
         'Element is an immutable request slip; Fiber carries state to actually run the work for that request.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Next: renderer vs reconciler',
+      eyebrow: 'The journey continues',
+      title: 'renderer vs reconciler',
       description:
         'You now know what the reconciler computes. Next, the boundary between the renderer and the reconciler — renderer vs reconciler.',
       cta: 'Go to the next page',

@@ -472,7 +472,7 @@ const ko: TransitionDeferredContent = {
     ],
     cta: {
       eyebrow: '다음 단계로 이동하기',
-      title: '다음: root pending work 보기',
+      title: 'root pending work 보기',
       description: '루트의 pending work가 어떻게 스케줄되는지 알아보세요.',
       button: '다음 페이지로 이동',
       href: '/root-pending-work',
@@ -732,7 +732,7 @@ const en: TransitionDeferredContent = {
     ],
     cta: {
       eyebrow: 'Move on to the next step',
-      title: 'Next: root pending work',
+      title: 'root pending work',
       description: 'Learn how the root pending work gets scheduled.',
       button: 'Go to next page',
       href: '/root-pending-work',

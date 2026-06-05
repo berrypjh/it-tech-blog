@@ -382,7 +382,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       },
     },
     nextStep: {
-      eyebrow: '07 · 다음 단계로 이동하기',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 구조를 읽는 준비가 끝났습니다.',
       description:
         '이제 React가 여러 패키지로 나뉜 이유와 각 ' + '패키지의 역할' + '을 더 깊게 살펴봅니다.',
@@ -652,7 +652,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       },
     },
     nextStep: {
-      eyebrow: '07 · next step',
+      eyebrow: 'The journey continues',
       title: 'You are ready to read the repository structure.',
       description:
         'Next, look closer at why React splits into multiple packages and each ' +

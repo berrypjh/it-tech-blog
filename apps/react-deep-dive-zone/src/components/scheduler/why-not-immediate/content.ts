@@ -350,8 +350,8 @@ const ko: WhyNotImmediateContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 여정',
-    title: '다음: React 내부의 3가지 우선순위 축',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'React 내부의 3가지 우선순위 축',
     description: '다음 파트에서 Scheduler와 우선순위 시스템을 더 깊이 파헤쳐 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/priority-axes',
@@ -575,7 +575,7 @@ const en: WhyNotImmediateContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next stop',
+    eyebrow: 'The journey continues',
     title: "Next: React's three priority axes",
     description: "Next we'll dive deeper into the Scheduler and its priority system.",
     cta: 'Go to the next page',

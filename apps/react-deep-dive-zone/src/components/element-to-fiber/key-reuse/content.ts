@@ -147,7 +147,7 @@ const afterItems: ListItem[] = [
 const ko: KeyFiberReuseContent = {
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: alternate는 왜 등장하는가?',
+    title: 'alternate는 왜 등장하는가?',
     description: '더블 버퍼링과 alternate 포인터가 왜 필요한지 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/alternate-intro',
@@ -327,7 +327,7 @@ const ko: KeyFiberReuseContent = {
 const en: KeyFiberReuseContent = {
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: why does alternate appear?',
+    title: 'why does alternate appear?',
     description: 'See why double buffering and the alternate pointer are needed.',
     cta: 'Go to the next page',
     href: '/alternate-intro',

@@ -494,7 +494,7 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: 'Public API에서 내부 구현까지',
       description: '질문을 만들었다면, 이제 그 질문의 공개 API 입구부터 찾아야 합니다.',
       cta: '다음 페이지로 이동',
@@ -820,7 +820,7 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'From public APIs to the implementation',
       description: 'Once you have a question, the next thing to find is its public API entry.',
       cta: 'Go to the next page',

@@ -321,7 +321,7 @@ const ko: TypeKeyReuseContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Placement / Deletion / 이동 표시는 언제 남는가?',
+    title: 'Placement / Deletion / 이동 표시는 언제 남는가?',
     description:
       '재사용 판단이 끝났다면, React는 새로 배치해야 할 것과 삭제해야 할 것을 표시합니다.',
     cta: '다음 페이지로 이동',
@@ -505,7 +505,7 @@ const en: TypeKeyReuseContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: When Placement / Deletion / Move Marks Are Set',
+    title: 'When Placement / Deletion / Move Marks Are Set',
     description:
       'Once reuse decisions are made, React marks what needs to be placed, deleted, or moved.',
     cta: 'Go to the next page',

@@ -334,7 +334,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
-      title: '다음: 오픈소스 GitHub 기반 학습이 좋은 이유',
+      title: '오픈소스 GitHub 기반 학습이 좋은 이유',
       description: '소스코드를 더 정확히, 더 깊이 이해하는 방법을 알아봅니다.',
       cta: '다음 페이지로 이동',
       href: '/why-open-source',
@@ -568,7 +568,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
     },
     nextStep: {
       eyebrow: 'The journey continues',
-      title: 'Next: Why GitHub-based open-source learning works',
+      title: 'Why GitHub-based open-source learning works',
       description: 'Learn how to read the source more accurately and more deeply.',
       cta: 'Go to the next page',
       href: '/why-open-source',

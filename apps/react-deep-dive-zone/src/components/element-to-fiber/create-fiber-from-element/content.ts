@@ -329,8 +329,8 @@ const ko: CreateFiberFromElementContent = {
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: createFiberFromTypeAndProps',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'createFiberFromTypeAndProps',
     description:
       'Fiber 변환의 입구를 확인했다면, 이제 React가 type을 보고 어떤 Fiber를 만들지 고르는 핵심 분기를 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -541,8 +541,8 @@ const en: CreateFiberFromElementContent = {
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: createFiberFromTypeAndProps',
+    eyebrow: 'The journey continues',
+    title: 'createFiberFromTypeAndProps',
     description:
       'Now that the entry point of Fiber conversion is clear, look at the branch where React turns type into a specific Fiber kind.',
     cta: 'Go to the next page',

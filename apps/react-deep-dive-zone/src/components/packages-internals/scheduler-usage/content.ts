@@ -396,8 +396,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: '다음: shared',
+      eyebrow: '다음 학습으로 이어집니다',
+      title: 'shared',
       description:
         '작업 실행 시점을 조율하는 scheduler를 봤다면, 이제 여러 패키지가 공유하는 공통 기반층 shared를 살펴봅니다.',
       cta: '다음 페이지로 이동',
@@ -624,8 +624,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
     },
     nextStep: {
-      eyebrow: '08 · next step',
-      title: 'Next: shared',
+      eyebrow: 'The journey continues',
+      title: 'shared',
       description:
         'You have seen the layer that schedules work — scheduler. Next, the foundation every package shares — shared.',
       cta: 'Go to the next page',

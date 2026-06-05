@@ -382,7 +382,7 @@ const ko: UpdatePhaseContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Deletion',
+    title: 'Deletion',
     description:
       '삽입과 수정까지 봤다면, 이제 가장 많은 cleanup을 동반하는 삭제 흐름을 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -542,7 +542,7 @@ const en: UpdatePhaseContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Deletion',
+    title: 'Deletion',
     description:
       'Now that insert and mutate are clear, the next stop is the delete flow — the one with the most cleanup.',
     cta: 'Go to the next page',

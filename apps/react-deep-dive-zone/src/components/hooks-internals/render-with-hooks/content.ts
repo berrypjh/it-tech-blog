@@ -375,7 +375,7 @@ const ko: RenderWithHooksContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Hook linked list 구조 보기',
+    title: 'Hook linked list 구조 보기',
     description:
       'renderWithHooks의 다음 단계로, Hook 상태가 어떻게 연결되어 관리되는지 알아봅니다.',
     cta: '다음 페이지로 이동',
@@ -607,7 +607,7 @@ const en: RenderWithHooksContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: explore the Hook linked list',
+    title: 'explore the Hook linked list',
     description: 'Next, see how Hook state is linked and managed after renderWithHooks.',
     cta: 'Go to the next page',
     href: '/hook-linked-list',

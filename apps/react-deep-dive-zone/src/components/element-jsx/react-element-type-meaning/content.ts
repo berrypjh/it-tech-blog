@@ -384,7 +384,7 @@ const ko: ReactElementTypeMeaningContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
+    eyebrow: '다음 학습으로 이어집니다',
     title: '이제 key로 넘어갑니다',
     description:
       'type이 렌더링 대상의 종류를 가리킨다는 점을 알았다면, 이제 형제 요소 비교를 위해 별도로 관리되는 key를 살펴봅니다.',
@@ -635,7 +635,7 @@ const en: ReactElementTypeMeaningContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Continue to the next step',
+    eyebrow: 'The journey continues',
     title: 'Next up: the key',
     description:
       'Now that you know type names the kind of render target, look at key, the separate field used for sibling comparison.',

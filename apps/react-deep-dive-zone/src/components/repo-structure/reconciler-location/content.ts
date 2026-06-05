@@ -395,7 +395,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       hint: '작업 단위를 관리하고, 변경 계산을 나누어 처리하기 위해서.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '렌더링 계산의 중심을 이해했다면,',
       description: '이제 그 작업을 언제 실행할지 조율하는 ' + 'scheduler 패키지' + '를 살펴봅니다.',
       cta: '다음: scheduler 패키지',
@@ -622,7 +622,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       hint: 'To manage units of work and split change calculation into chunks.',
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'With the rendering core understood,',
       description:
         'next we look at the ' +

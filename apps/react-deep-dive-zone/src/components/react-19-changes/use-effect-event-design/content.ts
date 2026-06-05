@@ -636,8 +636,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: React 19.2 이후 변화 읽기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'React 19.2 이후 변화 읽기',
     description:
       'cacheSignal, Partial Pre-rendering, SSR batching 등 React 19.2 이후 변화를 읽는 기준을 정리합니다.',
     cta: '다음 페이지로 이동',
@@ -988,8 +988,8 @@ const en: UseEffectEventContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next step',
-    title: 'Next: Reading React 19.2 and beyond',
+    eyebrow: 'The journey continues',
+    title: 'Reading React 19.2 and beyond',
     description:
       "We'll set up a frame for reading cacheSignal, Partial Pre-rendering, SSR batching, and beyond.",
     cta: 'Go to the next page',

@@ -5,16 +5,13 @@ import {
   Check,
   CircleCheck,
   Clock,
-  Code,
   Database,
   FolderOpen,
   FunctionSquare,
-  Monitor,
   Pencil,
   Pin,
   Route,
   X,
-  Zap,
 } from 'lucide-react';
 
 export {
@@ -27,7 +24,6 @@ export {
   File as FileIcon,
   FolderOpen as FolderOpenIcon,
   FunctionSquare as FxIcon,
-  HelpCircle as QuestionIcon,
   Route as RouteIcon,
   Sparkles as SparkIcon,
   X as XIcon,
@@ -41,13 +37,6 @@ export const approachIconByName = {
   pin: Pin,
   route: Route,
   pencil: Pencil,
-} as const;
-
-export const questionCardIconByName = {
-  code: Code,
-  cube: Box,
-  bolt: Zap,
-  monitor: Monitor,
 } as const;
 
 export const flowIconByName = {

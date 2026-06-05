@@ -371,7 +371,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '구현과 테스트를 함께 읽는 방법을 익혔다면,',
       description: '이제 버전 맥락을 읽는 법, 즉 ' + 'CHANGELOG와 Releases' + '를 구분해봅니다.',
       cta: '다음: CHANGELOG와 Releases',
@@ -581,7 +581,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'With implementation + tests mastered,',
       description: 'next learn to read the version context — ' + 'CHANGELOG vs Releases' + '.',
       cta: 'Next: CHANGELOG vs Releases',

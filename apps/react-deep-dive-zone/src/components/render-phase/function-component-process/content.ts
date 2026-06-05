@@ -302,7 +302,7 @@ const ko: FunctionComponentContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: Host Component는 Render Phase에서 어떻게 처리되는가?',
+    title: 'Host Component는 Render Phase에서 어떻게 처리되는가?',
     description:
       '함수 컴포넌트가 Render Phase에서 어떻게 다시 실행되는지 봤다면, 이제 DOM 요소를 표현하는 Host Component의 흐름을 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -476,7 +476,7 @@ const en: FunctionComponentContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: How Host Components Are Processed in Render Phase',
+    title: 'How Host Components Are Processed in Render Phase',
     description:
       'Now that you see how function components re-run during the Render Phase, follow how Host Components — DOM elements — are processed.',
     cta: 'Go to the next page',

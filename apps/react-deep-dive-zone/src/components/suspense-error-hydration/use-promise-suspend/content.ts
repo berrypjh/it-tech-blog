@@ -437,7 +437,7 @@ const ko: UsePromiseSuspendContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: throwException은 Promise와 Error를 어떻게 구분할까?',
+    title: 'throwException은 Promise와 Error를 어떻게 구분할까?',
     description:
       'render 중 던져진 값이 thenable인지 일반 에러인지 throwException이 어떻게 가르는지 이어서 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -706,7 +706,7 @@ const en: UsePromiseSuspendContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: How does throwException tell Promise from Error?',
+    title: 'How does throwException tell Promise from Error?',
     description:
       'Continue with how throwException decides whether a thrown value is a thenable or a regular error.',
     cta: 'Go to the next page',

@@ -331,7 +331,7 @@ const ko: HooksEntryFlowContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: renderWithHooks 이해하기',
+    title: 'renderWithHooks 이해하기',
     description: '다음 단계에서는 Hook이 렌더링 과정에서 어떻게 실행되는지 이어서 살펴봅니다.',
     cta: '다음 페이지로 이동',
     href: '/render-with-hooks',
@@ -544,7 +544,7 @@ const en: HooksEntryFlowContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: Understanding renderWithHooks',
+    title: 'Understanding renderWithHooks',
     description: 'Next we look at how Hooks actually run during rendering.',
     cta: 'Go to the next page',
     href: '/render-with-hooks',

@@ -589,8 +589,8 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   nextStep: {
-    eyebrow: '챕터 마무리',
-    title: '다음: Reconciler와 Render Phase',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Reconciler와 Render Phase',
     description:
       '업데이트가 시작되어 스케줄링되기까지의 흐름을 정리했다면, 이제 Reconciler가 render phase에서 실제로 무엇을 하는지 살펴봅니다.',
     cta: '다음: Reconciler와 Render Phase',
@@ -858,8 +858,8 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Wrap up',
-    title: 'Next: Reconciler and Render Phase',
+    eyebrow: 'The journey continues',
+    title: 'Reconciler and Render Phase',
     description:
       'Now that the path from state update to scheduling is clear, see what the Reconciler actually does during the render phase.',
     cta: 'Next: Reconciler and Render Phase',

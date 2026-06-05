@@ -358,7 +358,7 @@ const ko: WhyEventSystemContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 여정',
+    eyebrow: '다음 학습으로 이어집니다',
     title: 'createRoot는 왜 root에 Native Event를 등록할까?',
     description: '그렇다면 React는 이 이벤트 시스템을 언제 준비할까?',
     cta: '다음 페이지로 이동',
@@ -578,7 +578,7 @@ const en: WhyEventSystemContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next stop',
+    eyebrow: 'The journey continues',
     title: 'Why does createRoot attach native events to the root?',
     description: 'So when does React actually set up this event system?',
     cta: 'Go to the next page',

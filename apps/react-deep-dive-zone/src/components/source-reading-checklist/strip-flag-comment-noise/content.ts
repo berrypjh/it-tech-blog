@@ -505,7 +505,7 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
       ],
     },
     nextStep: {
-      eyebrow: '다음 단계',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '릴리즈 노트와 버전 태그 함께 읽기',
       description:
         '읽기 속도는 높아졌다. 하지만 지금 보는 코드가 어느 버전 기준인지도 반드시 확인해야 합니다.',
@@ -828,7 +828,7 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
       ],
     },
     nextStep: {
-      eyebrow: 'Next step',
+      eyebrow: 'The journey continues',
       title: 'Read release notes and version tags together',
       description:
         'Your reading speed is up. But you must also confirm which version the code in front of you is based on.',

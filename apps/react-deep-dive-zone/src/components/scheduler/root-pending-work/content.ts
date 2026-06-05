@@ -484,8 +484,8 @@ const ko: RootPendingWorkContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 페이지',
-    title: '다음: Root Scheduler 보기',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'Root Scheduler 보기',
     description: 'Root Scheduler는 무엇을 결정할까?',
     cta: '다음 페이지로 이동',
     href: '/pick-next-work',
@@ -769,8 +769,8 @@ const en: RootPendingWorkContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Next page',
-    title: 'Next: meet the Root Scheduler',
+    eyebrow: 'The journey continues',
+    title: 'meet the Root Scheduler',
     description: 'What does the Root Scheduler decide?',
     cta: 'Go to the next page',
     href: '/pick-next-work',

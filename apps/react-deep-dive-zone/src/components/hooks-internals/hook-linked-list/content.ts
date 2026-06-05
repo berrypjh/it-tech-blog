@@ -465,7 +465,7 @@ const ko: HookLinkedListContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: useState 내부 구조 해부하기',
+    title: 'useState 내부 구조 해부하기',
     description:
       'Hook 노드 구조를 알았다면, 이제 가장 익숙한 useState가 이 구조를 어떻게 사용하는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -722,7 +722,7 @@ const en: HookLinkedListContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: dissect useState internals',
+    title: 'dissect useState internals',
     description:
       'Now that you know the Hook node shape, see how the most familiar Hook — useState — uses it.',
     cta: 'Go to the next page',

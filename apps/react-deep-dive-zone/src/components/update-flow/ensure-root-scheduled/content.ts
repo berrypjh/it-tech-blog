@@ -288,8 +288,8 @@ const ko: EnsureRootScheduledContent = {
     answerBody: 'Root를 스케줄에 넣고 이후 처리 흐름이 진행되도록 예약한다.',
   },
   nextStep: {
-    eyebrow: '다음 단계로',
-    title: '다음: 전체 업데이트 흐름 정리',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: '전체 업데이트 흐름 정리',
     description:
       '업데이트를 받은 Root가 스케줄링 흐름에 들어갔다면, 이제 지금까지의 과정을 한 번에 연결해봅니다.',
     cta: '다음: 전체 업데이트 흐름 정리',
@@ -446,8 +446,8 @@ const en: EnsureRootScheduledContent = {
     answerBody: 'It puts the Root on the schedule and reserves later processing.',
   },
   nextStep: {
-    eyebrow: 'Next up',
-    title: 'Next: the full update flow',
+    eyebrow: 'The journey continues',
+    title: 'the full update flow',
     description:
       'With the Root in the scheduling flow, it is time to connect every step we have walked through into one picture.',
     cta: 'Next: the full update flow',

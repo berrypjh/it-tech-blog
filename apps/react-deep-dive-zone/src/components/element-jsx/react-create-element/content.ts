@@ -365,8 +365,8 @@ const ko: ReactCreateElementContent = {
     ],
   },
   nextStep: {
-    eyebrow: '다음 단계로 이동하기',
-    title: '다음: React Element 객체 구조',
+    eyebrow: '다음 학습으로 이어집니다',
+    title: 'React Element 객체 구조',
     description:
       'createElement가 실제로 Element 생성 흐름으로 이어진다는 점을 알았다면, 이제 React Element 객체 자체를 해부해봅니다.',
     cta: '다음 페이지로 이동',
@@ -597,8 +597,8 @@ const en: ReactCreateElementContent = {
     ],
   },
   nextStep: {
-    eyebrow: 'Move to the next step',
-    title: 'Next: React Element object structure',
+    eyebrow: 'The journey continues',
+    title: 'React Element object structure',
     description:
       'Now that you know createElement leads into Element creation, next, dissect the React Element object itself.',
     cta: 'Go to the next page',

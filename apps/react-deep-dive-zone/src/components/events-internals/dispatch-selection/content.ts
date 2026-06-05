@@ -506,7 +506,7 @@ const ko: DispatchSelectionContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '다음: DOM target에서 Fiber target 찾기',
+    title: 'DOM target에서 Fiber target 찾기',
     description:
       '이벤트 우선순위를 정한 뒤, DOM target에서 어떻게 대응하는 Fiber target을 찾는지 살펴봅니다.',
     cta: '다음 페이지로 이동',
@@ -851,7 +851,7 @@ const en: DispatchSelectionContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Next: from DOM target to Fiber target',
+    title: 'from DOM target to Fiber target',
     description:
       'After deciding event priority, see how React finds the matching Fiber target from a DOM target.',
     cta: 'Go to the next page',

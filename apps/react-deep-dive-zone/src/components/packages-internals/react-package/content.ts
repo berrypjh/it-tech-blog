@@ -546,7 +546,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: '다음 학습으로 이어집니다',
       title: '다음 단계로 이동하기',
       description:
         '사용자-facing API의 입구를 봤다면, 이제 그 UI를 실제 브라우저와 서버 환경에 연결하는 react-dom으로 이동합니다.',
@@ -772,7 +772,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     nextStep: {
-      eyebrow: '08 · next step',
+      eyebrow: 'The journey continues',
       title: 'Move to the next step',
       description:
         'You have seen the doorway for the user-facing API. Next, the package that wires that UI into the browser and the server: react-dom.',
