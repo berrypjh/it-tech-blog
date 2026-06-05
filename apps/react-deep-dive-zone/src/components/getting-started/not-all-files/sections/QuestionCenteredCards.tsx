@@ -68,10 +68,10 @@ export const QuestionCenteredCards = ({ content }: Props) => {
           const t = toneClasses[card.tone];
           const Icon = questionCardIconByName[card.icon];
           return (
-            <li key={card.id} className="flex">
+            <li key={card.id} className="flex min-w-0">
               <article
                 className={cn(
-                  'group relative flex flex-col w-full h-full gap-sm rounded-lg border bg-[var(--term-bg)]',
+                  'group relative flex flex-col w-full min-w-0 h-full gap-sm rounded-lg border bg-[var(--term-bg)]',
                   'p-md sm:p-lg pt-lg transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
                   t.border,
@@ -108,7 +108,7 @@ export const QuestionCenteredCards = ({ content }: Props) => {
                     <li
                       key={tag}
                       className={cn(
-                        'inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-bold border w-fit',
+                        'inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-bold border w-fit max-w-full [overflow-wrap:anywhere]',
                         t.chip,
                       )}
                     >

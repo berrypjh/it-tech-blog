@@ -46,15 +46,15 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
       />
 
       {/* lg: 3 카드 + 사이 화살표 / 모바일: 세로 흐름 */}
-      <ol className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr] gap-md lg:gap-sm items-stretch">
+      <ol className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-sm items-stretch">
         {content.cards.map((card, idx) => {
           const t = toneClasses[card.tone];
           const isLast = idx === content.cards.length - 1;
           return [
-            <li key={card.id} className="flex">
+            <li key={card.id} className="flex min-w-0">
               <article
                 className={cn(
-                  'group flex flex-col w-full gap-sm rounded-lg border bg-[var(--term-bg)]',
+                  'group flex flex-col w-full min-w-0 gap-sm rounded-lg border bg-[var(--term-bg)]',
                   'p-md sm:p-lg transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
                   t.border,

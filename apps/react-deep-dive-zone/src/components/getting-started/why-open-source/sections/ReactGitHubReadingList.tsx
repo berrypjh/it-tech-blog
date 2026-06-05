@@ -58,10 +58,14 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
           const Icon = priorityIconByName[row.icon];
           return (
             <li key={row.id} className="group transition-colors">
-              <div
+              <a
+                href={row.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   'grid grid-cols-[auto_auto_1fr_auto] sm:grid-cols-[auto_auto_minmax(120px,_180px)_1fr_auto] items-center gap-sm sm:gap-md',
                   'px-md sm:px-lg py-md sm:py-lg',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-inset',
                   t.hoverBg,
                 )}
               >
@@ -113,7 +117,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 <p className="sm:hidden col-span-full -mt-1 text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
                   {row.description}
                 </p>
-              </div>
+              </a>
             </li>
           );
         })}

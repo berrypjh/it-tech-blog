@@ -41,21 +41,6 @@ export type FlowStep = {
   description: string;
 };
 
-export type ExplorerOption = {
-  id: 'jsx' | 'element' | 'setstate' | 'dom';
-  question: string;
-  steps: {
-    title: string;
-    detail: string;
-  }[];
-};
-
-export type MissionItem = {
-  num: string;
-  title: string;
-  detail: string;
-};
-
 export type NotAllFilesContent = {
   hero: {
     stepBadge: string;
@@ -99,24 +84,6 @@ export type NotAllFilesContent = {
     mainQuestion: string;
     steps: FlowStep[];
   };
-  miniTool: {
-    eyebrow: string;
-    title: string;
-    selectLabel: string;
-    tipLabel: string;
-    tipBody: string;
-    recommendedTitle: string;
-    stepLabels: { file: string; fn: string; next: string; draw: string };
-    options: ExplorerOption[];
-    defaultOptionId: ExplorerOption['id'];
-  };
-  mission: {
-    eyebrow: string;
-    title: string;
-    motivation: { title: string[]; body: string[] };
-    items: MissionItem[];
-    checkboxLabel: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -125,101 +92,6 @@ export type NotAllFilesContent = {
     href: string;
   };
 };
-
-const koOptions: ExplorerOption[] = [
-  {
-    id: 'jsx',
-    question: 'JSX는 어떻게 React Element가 되는가?',
-    steps: [
-      { title: 'ReactJSXElement.js 열기', detail: 'packages/react/src/jsx/ReactJSXElement.js' },
-      { title: 'jsx / jsxDEV 찾기', detail: '런타임 진입점 함수 위치 확인' },
-      { title: 'ReactElement 연결 확인', detail: 'jsx → ReactElement 호출 흐름 추적' },
-      { title: 'JSX → Element 흐름을 그려보세요', detail: '자신만의 한 장 다이어그램' },
-    ],
-  },
-  {
-    id: 'element',
-    question: 'Element는 어떻게 Fiber가 되는가?',
-    steps: [
-      {
-        title: 'ReactChildFiber.js 열기',
-        detail: 'packages/react-reconciler/src/ReactChildFiber.js',
-      },
-      { title: 'reconcileChildFibers 찾기', detail: 'child 재조정 진입점 확인' },
-      { title: 'createFiberFromElement 연결 확인', detail: 'ReactFiber.js로 흐름 이동' },
-      {
-        title: 'Element → Fiber 흐름을 그려보세요',
-        detail: '재조정 결과로 어떤 fiber가 생기는지 정리',
-      },
-    ],
-  },
-  {
-    id: 'setstate',
-    question: 'setState는 어떻게 업데이트를 시작하는가?',
-    steps: [
-      { title: '이 파일을 여세요.', detail: 'ReactFiberHooks.js (코드 위치로 이동)' },
-      { title: '이 함수를 찾으세요.', detail: 'dispatchSetState 정의 위치 확인' },
-      { title: '다음 함수 흐름을 따라가세요.', detail: 'scheduleUpdateOnFiber 호출 이동' },
-      { title: '마지막에 전체 흐름을 그려보세요.', detail: '자신만의 흐름도로 정리' },
-    ],
-  },
-  {
-    id: 'dom',
-    question: 'DOM은 언제 실제로 바뀌는가?',
-    steps: [
-      { title: 'ReactFiberWorkLoop.js 열기', detail: 'commit 단계 진입 위치 찾기' },
-      { title: 'commitRoot 찾기', detail: '커밋 단계 시작 함수 확인' },
-      { title: 'commitMutationEffects 호출 확인', detail: 'ReactFiberCommitWork.js로 흐름 이동' },
-      { title: 'DOM 반영 흐름을 그려보세요', detail: '어떤 effect가 언제 적용되는지 정리' },
-    ],
-  },
-];
-
-const enOptions: ExplorerOption[] = [
-  {
-    id: 'jsx',
-    question: 'How does JSX become a React Element?',
-    steps: [
-      { title: 'Open ReactJSXElement.js', detail: 'packages/react/src/jsx/ReactJSXElement.js' },
-      { title: 'Find jsx / jsxDEV', detail: 'Locate the runtime entry function' },
-      { title: 'Trace the call to ReactElement', detail: 'Follow jsx → ReactElement' },
-      { title: 'Sketch the JSX → Element flow', detail: 'Write your own one-pager diagram' },
-    ],
-  },
-  {
-    id: 'element',
-    question: 'How does an Element become a Fiber?',
-    steps: [
-      {
-        title: 'Open ReactChildFiber.js',
-        detail: 'packages/react-reconciler/src/ReactChildFiber.js',
-      },
-      { title: 'Find reconcileChildFibers', detail: 'Child reconciliation entry point' },
-      { title: 'Trace createFiberFromElement', detail: 'Follow the flow into ReactFiber.js' },
-      { title: 'Sketch the Element → Fiber flow', detail: 'Note which fiber is produced and when' },
-    ],
-  },
-  {
-    id: 'setstate',
-    question: 'How does setState start an update?',
-    steps: [
-      { title: 'Open this file.', detail: 'ReactFiberHooks.js (jump to source)' },
-      { title: 'Find this function.', detail: 'Locate dispatchSetState' },
-      { title: 'Follow the next call.', detail: 'Move to scheduleUpdateOnFiber' },
-      { title: 'Sketch the whole flow at the end.', detail: 'Draw your own diagram' },
-    ],
-  },
-  {
-    id: 'dom',
-    question: 'When does the DOM actually change?',
-    steps: [
-      { title: 'Open ReactFiberWorkLoop.js', detail: 'Find the commit-phase entry' },
-      { title: 'Find commitRoot', detail: 'Commit-phase entry function' },
-      { title: 'Trace commitMutationEffects', detail: 'Follow into ReactFiberCommitWork.js' },
-      { title: 'Sketch the DOM-update flow', detail: 'Which effect applies, and when' },
-    ],
-  },
-];
 
 export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
   ko: {
@@ -452,53 +324,6 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
           tone: 'teal',
           title: 'commit',
           description: 'DOM에 실제 반영',
-        },
-      ],
-    },
-    miniTool: {
-      eyebrow: '05 · explore',
-      title: '미니 탐색 도구',
-      selectLabel: '질문 선택',
-      tipLabel: 'TIP',
-      tipBody: '질문을 바꾸면 추천 경로가 달라집니다.',
-      recommendedTitle: '추천 학습 경로',
-      stepLabels: {
-        file: '시작 파일',
-        fn: '핵심 함수',
-        next: '다음 흐름',
-        draw: '정리',
-      },
-      options: koOptions,
-      defaultOptionId: 'setstate',
-    },
-    mission: {
-      eyebrow: '06 · mission',
-      title: '오늘 바로 할 수 있는 10분 미션',
-      motivation: {
-        title: ['작게 시작해도', '큰 이해로 이어집니다.'],
-        body: ['하나의 파일만 제대로 읽어도', 'React 내부가 보이기 시작합니다.'],
-      },
-      checkboxLabel: '완료',
-      items: [
-        {
-          num: '1',
-          title: 'ReactJSXElement.js 열기',
-          detail: 'packages/react/src/jsx/ReactJSXElement.js',
-        },
-        {
-          num: '2',
-          title: 'ReactElement 함수 찾기',
-          detail: 'export function ReactElement(...)',
-        },
-        {
-          num: '3',
-          title: 'type / key / props 확인하기',
-          detail: 'ReactElement가 가진 필드 구조 파악',
-        },
-        {
-          num: '4',
-          title: 'JSX는 DOM이 아니라 설명 객체라는 점을 자기 말로 적기',
-          detail: '내가 이해한 내용을 한 문장으로 정리',
         },
       ],
     },
@@ -741,48 +566,6 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
           description: 'Compute the fiber tree (Reconciliation)',
         },
         { num: '6', icon: 'check', tone: 'teal', title: 'commit', description: 'Apply to the DOM' },
-      ],
-    },
-    miniTool: {
-      eyebrow: '05 · explore',
-      title: 'Mini exploration tool',
-      selectLabel: 'Pick a question',
-      tipLabel: 'TIP',
-      tipBody: 'Switch the question and the recommended path updates.',
-      recommendedTitle: 'Recommended learning path',
-      stepLabels: { file: 'Start file', fn: 'Key function', next: 'Next flow', draw: 'Wrap up' },
-      options: enOptions,
-      defaultOptionId: 'setstate',
-    },
-    mission: {
-      eyebrow: '06 · mission',
-      title: 'A 10-minute mission you can do today',
-      motivation: {
-        title: ['Start small —', 'the understanding compounds.'],
-        body: ['Reading even one file properly', 'starts to reveal React internals.'],
-      },
-      checkboxLabel: 'Done',
-      items: [
-        {
-          num: '1',
-          title: 'Open ReactJSXElement.js',
-          detail: 'packages/react/src/jsx/ReactJSXElement.js',
-        },
-        {
-          num: '2',
-          title: 'Find the ReactElement function',
-          detail: 'export function ReactElement(...)',
-        },
-        {
-          num: '3',
-          title: 'Inspect type / key / props',
-          detail: 'Understand the fields a ReactElement holds',
-        },
-        {
-          num: '4',
-          title: 'Write — in your own words — that JSX is a description object, not DOM',
-          detail: 'One sentence on what you learned',
-        },
       ],
     },
     nextStep: {

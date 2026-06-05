@@ -21,13 +21,10 @@ import {
 
 export {
   ArrowRight as ArrowRightIcon,
-  Zap as BoltIcon,
   BookOpen as BookIcon,
   Brain as BrainIcon,
   CircleCheck as CheckCircleIcon,
   Check as CheckIcon,
-  ChevronDown as ChevronDownIcon,
-  ChevronRight as ChevronRightIcon,
   Clock as ClockIcon,
   Code as CodeIcon,
   Box as CubeIcon,
@@ -37,14 +34,10 @@ export {
   FolderOpen as FolderOpenIcon,
   FunctionSquare as FxIcon,
   Anchor as HookIcon,
-  Lightbulb as LightbulbIcon,
   Monitor as MonitorIcon,
-  Pencil as PencilIcon,
-  Pin as PinIcon,
   HelpCircle as QuestionIcon,
   Route as RouteIcon,
   Sparkles as SparkIcon,
-  Trophy as TrophyIcon,
   X as XIcon,
 } from 'lucide-react';
 

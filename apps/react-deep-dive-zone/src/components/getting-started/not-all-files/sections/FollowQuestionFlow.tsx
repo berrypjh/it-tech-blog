@@ -71,16 +71,16 @@ export const FollowQuestionFlow = ({ content }: Props) => {
       </div>
 
       {/* 6-step flow */}
-      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-md lg:gap-1 items-stretch">
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-1 items-stretch">
         {content.steps.map((step, idx) => {
           const t = toneClasses[step.tone];
           const Icon = flowIconByName[step.icon];
           const isLast = idx === content.steps.length - 1;
           return [
-            <li key={step.num} className="flex">
+            <li key={step.num} className="flex min-w-0">
               <article
                 className={cn(
-                  'group relative flex flex-col items-center text-center w-full gap-sm',
+                  'group relative flex flex-col items-center text-center w-full min-w-0 gap-sm',
                   'rounded-lg border bg-[var(--term-bg)] p-md transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
                   t.border,
@@ -108,11 +108,11 @@ export const FollowQuestionFlow = ({ content }: Props) => {
                   <Icon className="h-[1.125rem] w-[1.125rem]" />
                 </span>
 
-                <h4 className="text-xsm sm:text-sm font-bold font-mono text-[var(--term-fg)] break-keep leading-snug">
+                <h4 className="text-xsm sm:text-sm font-bold font-mono text-[var(--term-fg)] break-keep [overflow-wrap:anywhere] leading-snug">
                   {step.title}
                 </h4>
 
-                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep flex-1">
+                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep [overflow-wrap:anywhere] flex-1">
                   {step.description}
                 </p>
               </article>

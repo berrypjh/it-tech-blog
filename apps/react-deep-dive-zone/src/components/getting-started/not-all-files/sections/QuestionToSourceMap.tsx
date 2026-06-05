@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { MappingRow, NotAllFilesContent } from '../content';
-import { ArrowRightIcon, ChevronRightIcon, FileIcon, RouteIcon } from '../icons';
+import { ArrowRightIcon, FileIcon, RouteIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['mapping'] };
 
@@ -68,32 +68,26 @@ const toneClasses: Record<
 const FilePill = ({ name, cls }: { name: string; cls: string }) => (
   <span
     className={cn(
-      'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono font-bold shrink-0',
+      'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono font-bold min-w-0 max-w-full',
       cls,
     )}
   >
-    <FileIcon className="h-3 w-3" />
-    <span className="truncate">{name}</span>
+    <FileIcon className="h-3 w-3 shrink-0" />
+    <span className="[overflow-wrap:anywhere]">{name}</span>
   </span>
 );
 
 const FnPill = ({ name, cls }: { name: string; cls: string }) => (
   <span
     className={cn(
-      'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono shrink-0',
+      'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono min-w-0 max-w-full',
       cls,
     )}
   >
-    <span aria-hidden="true" className="text-[8px] opacity-60">
+    <span aria-hidden="true" className="text-[8px] opacity-60 shrink-0">
       fn
     </span>
-    <span className="truncate">{name}</span>
-  </span>
-);
-
-const Arrow = ({ cls }: { cls: string }) => (
-  <span aria-hidden="true" className={cn('shrink-0 inline-flex items-center justify-center', cls)}>
-    <ChevronRightIcon className="h-3.5 w-3.5" />
+    <span className="[overflow-wrap:anywhere]">{name}</span>
   </span>
 );
 
@@ -127,71 +121,54 @@ export const QuestionToSourceMap = ({ content }: Props) => {
         </span>
       </div>
 
-      <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
-        <ol className="divide-y divide-[var(--term-border)]">
-          {content.rows.map((row) => {
-            const t = toneClasses[row.tone];
-            return (
-              <li key={row.id} className={cn('transition-colors', t.rowBg)}>
-                <div className="px-md py-md sm:px-lg sm:py-lg">
-                  {/* desktop / tablet: 가로 flow */}
-                  <div className="hidden md:flex items-center gap-2 flex-nowrap overflow-x-auto">
-                    {/* question pill */}
-                    <span
-                      className={cn(
-                        'inline-flex items-center gap-1.5 px-3 py-2 rounded-full border text-[11px] sm:text-xsm font-bold tracking-tight max-w-[36ch] truncate shrink-0',
-                        t.questionPill,
-                      )}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="inline-block w-1.5 h-1.5 rounded-full bg-white/80"
-                      />
-                      {row.question}
-                    </span>
-                    <Arrow cls={t.arrow} />
-                    <FilePill name={row.file1} cls={t.filePill} />
-                    <Arrow cls={t.arrow} />
-                    <FnPill name={row.fn1} cls={t.fnPill} />
-                    <Arrow cls={t.arrow} />
-                    <FilePill name={row.file2} cls={t.filePill} />
-                    <Arrow cls={t.arrow} />
-                    <FnPill name={row.fn2} cls={t.fnPill} />
-                  </div>
+      {/* 4개 매핑을 2행 2열 카드로 표기 (모바일은 1열) */}
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md items-stretch">
+        {content.rows.map((row) => {
+          const t = toneClasses[row.tone];
+          return (
+            <li
+              key={row.id}
+              className={cn(
+                'flex flex-col gap-sm rounded-lg border p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-colors',
+                t.rowBorder,
+                t.rowBg,
+              )}
+            >
+              {/* question pill */}
+              <span
+                className={cn(
+                  'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xsm font-bold tracking-tight w-fit max-w-full break-keep',
+                  t.questionPill,
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-1.5 h-1.5 rounded-full bg-white/80 shrink-0"
+                />
+                {row.question}
+              </span>
 
-                  {/* mobile: 세로 카드 — 질문 → 단계 list */}
-                  <div className="md:hidden flex flex-col gap-sm">
-                    <span
-                      className={cn(
-                        'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xsm font-bold tracking-tight w-fit',
-                        t.questionPill,
-                      )}
-                    >
-                      {row.question}
-                    </span>
-                    <ol className={cn('flex flex-col gap-1.5 pl-3 border-l-2', t.rowBorder)}>
-                      <li className="flex items-center gap-1.5">
-                        <FilePill name={row.file1} cls={t.filePill} />
-                      </li>
-                      <li className="flex items-center gap-1.5">
-                        <span className="text-[10px] text-[var(--term-dim)] pl-0.5">↳</span>
-                        <FnPill name={row.fn1} cls={t.fnPill} />
-                      </li>
-                      <li className="flex items-center gap-1.5">
-                        <FilePill name={row.file2} cls={t.filePill} />
-                      </li>
-                      <li className="flex items-center gap-1.5">
-                        <span className="text-[10px] text-[var(--term-dim)] pl-0.5">↳</span>
-                        <FnPill name={row.fn2} cls={t.fnPill} />
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      </div>
+              {/* 질문 → 파일 → fn 단계 */}
+              <ol className={cn('flex flex-col gap-1.5 pl-3 border-l-2', t.rowBorder)}>
+                <li className="flex items-start gap-1.5 min-w-0">
+                  <FilePill name={row.file1} cls={t.filePill} />
+                </li>
+                <li className="flex items-start gap-1.5 min-w-0">
+                  <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
+                  <FnPill name={row.fn1} cls={t.fnPill} />
+                </li>
+                <li className="flex items-start gap-1.5 min-w-0">
+                  <FilePill name={row.file2} cls={t.filePill} />
+                </li>
+                <li className="flex items-start gap-1.5 min-w-0">
+                  <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
+                  <FnPill name={row.fn2} cls={t.fnPill} />
+                </li>
+              </ol>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 };

@@ -24,7 +24,7 @@ export const QuickStartResourceCards = ({ content }: Props) => {
         {content.cards.map((card) => {
           const Icon = resourceIconByName[card.icon];
           return (
-            <li key={card.id} className="flex">
+            <li key={card.id} className="flex min-w-0">
               <article className="group flex flex-col w-full h-full gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)] hover:border-sky-400 dark:hover:border-sky-500">
                 <div className="flex items-center justify-between">
                   <span
@@ -39,11 +39,11 @@ export const QuickStartResourceCards = ({ content }: Props) => {
                   />
                 </div>
 
-                <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep leading-snug">
+                <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep [overflow-wrap:anywhere] leading-snug">
                   {card.title}
                 </h3>
 
-                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep flex-1">
+                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep [overflow-wrap:anywhere] flex-1">
                   {card.description}
                 </p>
 

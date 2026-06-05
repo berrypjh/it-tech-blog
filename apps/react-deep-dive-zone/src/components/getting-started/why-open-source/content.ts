@@ -22,6 +22,7 @@ export type ReadingPriorityRow = {
   tone: 'blue' | 'teal' | 'lavender' | 'coral';
   title: string;
   description: string;
+  href: string;
 };
 
 export type RepoTreeNode = {
@@ -101,7 +102,8 @@ export type WhyOpenSourceContent = {
     title: string;
     repoLabel: string;
     tree: RepoTreeNode[];
-    detail: DetailPanel;
+    details: Record<string, DetailPanel>;
+    defaultFolder: string;
   };
   chain: {
     eyebrow: string;
@@ -240,6 +242,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '1',
           icon: 'folder',
           tone: 'blue',
+          href: 'https://github.com/facebook/react/tree/main/packages',
           title: 'packages',
           description:
             'React의 모듈 구조를 이해하는 시작점입니다. 핵심 패키지와 각 패키지의 역할을 파악합니다.',
@@ -249,6 +252,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '2',
           icon: 'flask',
           tone: 'teal',
+          href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src/__tests__',
           title: 'tests',
           description:
             '구현 의도를 가장 정확히 보여주는 자료입니다. 어떤 동작이 보장되어야 하는지 확인합니다.',
@@ -258,6 +262,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '3',
           icon: 'chat',
           tone: 'lavender',
+          href: 'https://github.com/facebook/react/issues',
           title: 'issues',
           description:
             '버그, 제안, 질문을 통해 설계 결정의 배경을 이해합니다. 실제 사용자와 문제의 맥락을 함께 볼 수 있습니다.',
@@ -267,6 +272,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '4',
           icon: 'tag',
           tone: 'coral',
+          href: 'https://github.com/facebook/react/releases',
           title: 'releases',
           description:
             '버전별 변경 사항과 하이라이트를 통해 큰 흐름을 파악합니다. 새로운 기능이 왜 추가되었는지 이해합니다.',
@@ -278,18 +284,73 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       title: '저장소 구조 훑어보기 (예: facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
-      detail: {
-        folder: 'react-reconciler',
-        lead: 'React 렌더링의 핵심 엔진(Fiber)을 포함합니다.',
-        supporting: 'ReactDOM, React Native 등 다양한 renderer가 이 패키지를 사용합니다.',
-        tags: ['Fiber', 'Reconciler', 'Renderer', 'Scheduling', 'Priority'],
-        bullets: [
-          'Fiber 트리 생성 및 관리',
-          '업데이트 스케줄링 및 우선순위 처리',
-          'Reconciliation 알고리즘 구현',
-          '렌더링 단계(Render / Commit) 조율',
-        ],
-        callout: '대부분의 렌더링 로직과 우선순위, 작업 루프가 이곳에 있습니다.',
+      defaultFolder: 'react-reconciler',
+      details: {
+        react: {
+          folder: 'react',
+          lead: 'React의 공개 API와 컴포넌트 모델을 정의합니다.',
+          supporting: '실제 렌더링은 하지 않으며, 특정 renderer에 의존하지 않습니다.',
+          tags: ['Core API', 'createElement', 'Hooks API', 'Component'],
+          bullets: [
+            'JSX가 만드는 Element 객체 정의',
+            'useState 등 Hook의 공개 시그니처',
+            'Component, memo, Fragment 등 핵심 API',
+            'renderer에 독립적인 순수 코어',
+          ],
+          callout: '"무엇을 그릴지"의 표현과 API만 정의하고, 실제 그리기는 renderer에 맡깁니다.',
+        },
+        'react-dom': {
+          folder: 'react-dom',
+          lead: '브라우저 DOM을 위한 renderer입니다.',
+          supporting: 'react-reconciler가 계산한 결과를 실제 DOM에 반영합니다.',
+          tags: ['Renderer', 'DOM', 'createRoot', 'Events'],
+          bullets: [
+            'createRoot / hydrateRoot 진입점',
+            '합성 이벤트(Synthetic Event) 시스템',
+            'Fiber의 변경 사항을 DOM에 commit',
+            '서버 렌더링 결과의 하이드레이션',
+          ],
+          callout: 'reconciler의 추상적 결과를 브라우저가 이해하는 DOM 조작으로 변환합니다.',
+        },
+        'react-reconciler': {
+          folder: 'react-reconciler',
+          lead: 'React 렌더링의 핵심 엔진(Fiber)을 포함합니다.',
+          supporting: 'ReactDOM, React Native 등 다양한 renderer가 이 패키지를 사용합니다.',
+          tags: ['Fiber', 'Reconciler', 'Renderer', 'Scheduling', 'Priority'],
+          bullets: [
+            'Fiber 트리 생성 및 관리',
+            '업데이트 스케줄링 및 우선순위 처리',
+            'Reconciliation 알고리즘 구현',
+            '렌더링 단계(Render / Commit) 조율',
+          ],
+          callout: '대부분의 렌더링 로직과 우선순위, 작업 루프가 이곳에 있습니다.',
+        },
+        scheduler: {
+          folder: 'scheduler',
+          lead: '작업의 우선순위와 실행 시점을 관리합니다.',
+          supporting: '무거운 업데이트가 메인 스레드를 막지 않도록 작업을 분할합니다.',
+          tags: ['Scheduling', 'Priority', 'Time slicing'],
+          bullets: [
+            '우선순위별 작업 큐 관리',
+            '프레임마다 메인 스레드에 양보',
+            '긴 작업을 잘게 나눠 실행',
+            'reconciler의 동시성 기능 지원',
+          ],
+          callout: '언제 무엇을 실행할지 결정해 UI 반응성을 유지합니다.',
+        },
+        shared: {
+          folder: 'shared',
+          lead: '여러 패키지가 함께 쓰는 상수와 유틸을 모읍니다.',
+          supporting: 'react, react-dom, react-reconciler 등이 공통으로 참조합니다.',
+          tags: ['Constants', 'Symbols', 'Feature flags'],
+          bullets: [
+            '$$typeof 등 공용 React 심볼',
+            '빌드별 기능 토글(feature flag)',
+            '공용 경고 및 개발 도구 유틸',
+            '패키지 간 중복 제거',
+          ],
+          callout: '중복을 피하기 위해 공통 코드를 한 곳에 모아둔 패키지입니다.',
+        },
       },
     },
     chain: {
@@ -375,7 +436,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
     },
     quickStart: {
       eyebrow: '06 · quick start',
-      title: '바로 체험해보기',
+      title: '지금 바로 살펴보기',
       cards: [
         {
           id: 'packages',
@@ -499,6 +560,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '1',
           icon: 'folder',
           tone: 'blue',
+          href: 'https://github.com/facebook/react/tree/main/packages',
           title: 'packages',
           description:
             "The starting point for React's module structure. Read what each core package is responsible for.",
@@ -508,6 +570,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '2',
           icon: 'flask',
           tone: 'teal',
+          href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src/__tests__',
           title: 'tests',
           description: 'The most precise expression of intent. Read what behavior must hold.',
         },
@@ -516,6 +579,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '3',
           icon: 'chat',
           tone: 'lavender',
+          href: 'https://github.com/facebook/react/issues',
           title: 'issues',
           description:
             'Bugs, proposals, and questions show the reasoning behind design decisions, with real user context.',
@@ -525,6 +589,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           index: '4',
           icon: 'tag',
           tone: 'coral',
+          href: 'https://github.com/facebook/react/releases',
           title: 'releases',
           description:
             'Per-version changes and highlights show the overall trajectory and why features were added.',
@@ -536,18 +601,75 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       title: 'Skim the repository structure (e.g. facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
-      detail: {
-        folder: 'react-reconciler',
-        lead: "Holds React's core rendering engine (Fiber).",
-        supporting: 'Many renderers — ReactDOM, React Native, etc. — depend on this package.',
-        tags: ['Fiber', 'Reconciler', 'Renderer', 'Scheduling', 'Priority'],
-        bullets: [
-          'Create and manage the fiber tree',
-          'Schedule updates and handle priority',
-          'Implement the reconciliation algorithm',
-          'Coordinate the render and commit phases',
-        ],
-        callout: 'Most rendering logic, priorities, and the work loop live here.',
+      defaultFolder: 'react-reconciler',
+      details: {
+        react: {
+          folder: 'react',
+          lead: "Defines React's public API and component model.",
+          supporting: 'It does no rendering itself and stays independent of any renderer.',
+          tags: ['Core API', 'createElement', 'Hooks API', 'Component'],
+          bullets: [
+            'Defines the Element object JSX produces',
+            'Public signatures of Hooks like useState',
+            'Core APIs such as Component, memo, Fragment',
+            'A pure core independent of any renderer',
+          ],
+          callout:
+            'It defines what to render and the API; the actual rendering is left to a renderer.',
+        },
+        'react-dom': {
+          folder: 'react-dom',
+          lead: 'The renderer for the browser DOM.',
+          supporting: 'It applies what react-reconciler computes to the real DOM.',
+          tags: ['Renderer', 'DOM', 'createRoot', 'Events'],
+          bullets: [
+            'createRoot / hydrateRoot entry points',
+            'The synthetic event system',
+            'Commits fiber changes to the DOM',
+            'Hydrates server-rendered output',
+          ],
+          callout:
+            "Turns the reconciler's abstract result into DOM operations the browser understands.",
+        },
+        'react-reconciler': {
+          folder: 'react-reconciler',
+          lead: "Holds React's core rendering engine (Fiber).",
+          supporting: 'Many renderers — ReactDOM, React Native, etc. — depend on this package.',
+          tags: ['Fiber', 'Reconciler', 'Renderer', 'Scheduling', 'Priority'],
+          bullets: [
+            'Create and manage the fiber tree',
+            'Schedule updates and handle priority',
+            'Implement the reconciliation algorithm',
+            'Coordinate the render and commit phases',
+          ],
+          callout: 'Most rendering logic, priorities, and the work loop live here.',
+        },
+        scheduler: {
+          folder: 'scheduler',
+          lead: 'Manages the priority and timing of work.',
+          supporting: "Splits work so heavy updates don't block the main thread.",
+          tags: ['Scheduling', 'Priority', 'Time slicing'],
+          bullets: [
+            'Queues work by priority',
+            'Yields to the main thread each frame',
+            'Breaks long work into smaller chunks',
+            "Backs the reconciler's concurrent features",
+          ],
+          callout: 'Decides when to run what, keeping the UI responsive.',
+        },
+        shared: {
+          folder: 'shared',
+          lead: 'Collects constants and utilities used across packages.',
+          supporting: 'Referenced in common by react, react-dom, react-reconciler, and more.',
+          tags: ['Constants', 'Symbols', 'Feature flags'],
+          bullets: [
+            'Common React symbols like $$typeof',
+            'Per-build feature flags',
+            'Shared warning and dev-tool utilities',
+            'Removes duplication across packages',
+          ],
+          callout: 'Gathers common code in one place to avoid duplication.',
+        },
       },
     },
     chain: {
@@ -635,7 +757,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
     },
     quickStart: {
       eyebrow: '06 · quick start',
-      title: 'Try it right now',
+      title: 'Explore it now',
       cards: [
         {
           id: 'packages',
