@@ -41,7 +41,7 @@ export const FirstCodePreview = ({ content }: Props) => {
       {/* 하단 버튼 */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-sm pt-sm">
         <a
-          href="https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js"
+          href="https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js#L170"
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md border border-transparent bg-slate-900 dark:border-slate-600 dark:bg-slate-800 text-slate-50 text-xsm font-bold transition-colors hover:bg-slate-800 dark:hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"

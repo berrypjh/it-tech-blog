@@ -116,7 +116,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
                   'group relative mx-auto w-[88%] sm:w-[90%]',
                   'flex items-center justify-between gap-sm',
                   'px-md py-2.5 sm:py-3',
-                  'rounded-md border backdrop-blur-sm',
+                  'rounded-md border',
                   t.bg,
                   t.border,
                   'shadow-[0_2px_0_var(--term-border)] transition-transform',

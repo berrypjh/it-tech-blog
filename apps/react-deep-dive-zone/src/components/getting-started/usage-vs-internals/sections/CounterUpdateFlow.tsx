@@ -20,18 +20,17 @@ export const CounterUpdateFlow = ({ content }: Props) => {
         icon={<CursorIcon className="h-5 w-5" />}
       />
 
-      <ol className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.steps.map((step, idx) => {
           const tone = stepTones[idx] ?? 'sky';
           const t = toneTokens[tone];
           const Icon = flowIconByName[step.icon];
-          const isLast = idx === content.steps.length - 1;
           return (
-            <li key={step.id} className="relative flex flex-col">
+            <li key={step.id} className="flex">
               <article
                 className={cn(
-                  'group flex flex-col items-start gap-sm h-full',
-                  'rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
+                  'group flex flex-col items-start gap-sm h-full w-full',
+                  'rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
                   'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   t.border,
                 )}
@@ -46,29 +45,19 @@ export const CounterUpdateFlow = ({ content }: Props) => {
                   >
                     <Icon className={cn('h-5 w-5', t.text)} />
                   </span>
-                  <span className="text-[10px] tabular-nums text-[var(--term-dim)] font-bold">
+                  <span className="text-xsm tabular-nums text-[var(--term-dim)] font-bold">
                     {step.num.padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] leading-tight break-keep">
+                <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight break-keep [overflow-wrap:anywhere]">
                   {step.title}
                 </h3>
 
-                <p className="text-[11px] sm:text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
+                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
                   {formatInline(step.hint)}
                 </p>
               </article>
-
-              {/* 카드 사이 화살표 — sm 이상에서만 노출 */}
-              {!isLast && (
-                <span
-                  aria-hidden="true"
-                  className="hidden lg:flex absolute top-1/2 -right-2 -translate-y-1/2 text-[var(--term-dim)] text-xsm z-10"
-                >
-                  →
-                </span>
-              )}
             </li>
           );
         })}

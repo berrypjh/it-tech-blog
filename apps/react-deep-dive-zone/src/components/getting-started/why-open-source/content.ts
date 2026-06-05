@@ -316,7 +316,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           code: fiberHooksCode,
           description: 'Hook 객체를 생성하고, 업데이트 큐와 dispatch 함수를 연결합니다.',
           cta: '코드에서 보기',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js#L1922',
           tone: 'teal',
         },
         {
@@ -575,7 +575,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           description:
             'Creates the hook object and wires up the update queue and dispatch function.',
           cta: 'View source',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js#L1922',
           tone: 'teal',
         },
         {

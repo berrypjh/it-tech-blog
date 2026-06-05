@@ -20,7 +20,7 @@ export const SourceCodeReferenceCards = ({ content }: Props) => {
         icon={<BookIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
+      <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md">
         {content.cards.map((card) => (
           <li key={card.num}>
             <article className="flex flex-col gap-md h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
