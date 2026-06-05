@@ -71,7 +71,7 @@ export type SummaryItem = {
 
 export type SetStateFlowContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -209,10 +209,7 @@ setCount((c) => c + 1);
 
 const ko: SetStateFlowContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '상태 업데이트 흐름', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 5/10단계',
     titleLine1: 'setState는',
     titleAccent: '즉시 DOM을 바꾸지 않는다',
     description:
@@ -510,10 +507,7 @@ const ko: SetStateFlowContent = {
 
 const en: SetStateFlowContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'State Update Flow', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 5/10',
     titleLine1: 'setState does not',
     titleAccent: 'change the DOM immediately',
     description:

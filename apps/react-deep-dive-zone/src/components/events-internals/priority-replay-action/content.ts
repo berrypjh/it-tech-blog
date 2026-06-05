@@ -46,7 +46,7 @@ export type TakeawayCard = {
 
 export type AdvancedWrapupContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     diagramTitle: string;
@@ -203,10 +203,7 @@ const FORM_CODE_EN = `<form action={saveTodo}>
 
 const ko: AdvancedWrapupContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 완성', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 10/10단계',
     titleLines: ['React 이벤트 시스템은', 'handler 실행기로 끝나지 않는다'],
     description:
       '이벤트는 업데이트 우선순위를 만들고, hydration 중에는 보류될 수 있으며, React 19의 form action 흐름과도 연결됩니다.',
@@ -503,10 +500,7 @@ const ko: AdvancedWrapupContent = {
 
 const en: AdvancedWrapupContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Complete', tone: 'cyan' },
-    ],
+    badge: 'Event System · 10/10',
     titleLines: ['React event system', "doesn't end at the handler"],
     description:
       'Events create update priority context, can be deferred during hydration, and connect to the React 19 form action flow.',

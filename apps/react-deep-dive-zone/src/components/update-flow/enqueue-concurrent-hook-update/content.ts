@@ -35,7 +35,7 @@ export type EnqueueMeaningStep = {
 
 export type EnqueueConcurrentHookUpdateContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     elements: FourElement[];
@@ -138,10 +138,7 @@ const checkpointCodeKo = `export function enqueueConcurrentHookUpdate(
 
 const ko: EnqueueConcurrentHookUpdateContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Step 5', tone: 'slate' },
-    ],
+    badge: '업데이트 시작 · 6/10단계',
     title: {
       line1: '렌더가 필요하다고',
       line2: '판단되면, React는 update를',
@@ -355,10 +352,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
 
 const en: EnqueueConcurrentHookUpdateContent = {
   hero: {
-    pills: [
-      { label: 'Reading React internals', tone: 'sky' },
-      { label: 'Step 5', tone: 'slate' },
-    ],
+    badge: 'Update Flow · 6/10',
     title: {
       line1: 'When a render is needed,',
       line2: 'React hands the update off',

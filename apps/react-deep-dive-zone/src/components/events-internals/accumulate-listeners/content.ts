@@ -31,7 +31,7 @@ export type TakeawayCard = {
 
 export type ListenerCollectionContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     code: { fileLabel: string; code: string };
@@ -172,10 +172,7 @@ const FIBER_NODES_EN = FIBER_NODES_KO;
 
 const ko: ListenerCollectionContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 심화', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 8/10단계',
     titleLines: ['React는 이벤트 listener를', 'Fiber 경로를 따라 모은다'],
     description:
       'target Fiber에서 시작해 부모 방향으로 올라가며 capture와 bubble listener를 수집합니다.',
@@ -396,10 +393,7 @@ const ko: ListenerCollectionContent = {
 
 const en: ListenerCollectionContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Deep Dive', tone: 'cyan' },
-    ],
+    badge: 'Event System · 8/10',
     titleLines: ['React collects event listeners', 'along the Fiber path'],
     description:
       'Starting at the target Fiber, React walks toward the parent direction to gather both capture and bubble listeners.',

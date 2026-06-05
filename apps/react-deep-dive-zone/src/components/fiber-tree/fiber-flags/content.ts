@@ -167,7 +167,7 @@ const internalTypesCodeEn = `export type Fiber = {
 
 const ko: FiberFlagsContent = {
   hero: {
-    badge: 'CHAPTER 20',
+    badge: 'Fiber 트리 · 7/10단계',
     title: {
       line1: 'React는 변경을',
       line2: '바로 반영하지 않고,',
@@ -425,7 +425,7 @@ const ko: FiberFlagsContent = {
 
 const en: FiberFlagsContent = {
   hero: {
-    badge: 'CHAPTER 20',
+    badge: 'Fiber Tree · 7/10',
     title: {
       line1: 'React does not apply changes',
       line2: 'right away — it marks them',

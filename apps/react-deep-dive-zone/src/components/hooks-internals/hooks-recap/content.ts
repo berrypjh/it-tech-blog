@@ -78,7 +78,7 @@ export type FinalCtaButton = {
 
 export type HooksRecapContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -276,10 +276,7 @@ const FULL_FLOW_STEPS_KO: FlowStep[] = [
 
 const ko: HooksRecapContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '전체 복습 가이드', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 10/10단계',
     titleLine1: 'Hooks 내부 구조,',
     titleAccent: '이제 한 장으로 정리해보자',
     description:
@@ -759,10 +756,7 @@ const FULL_FLOW_STEPS_EN: FlowStep[] = [
 
 const en: HooksRecapContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Full Recap', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 10/10',
     titleLine1: 'Hook internals,',
     titleAccent: 'wrapped up on one page',
     description:

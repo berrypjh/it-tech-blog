@@ -137,7 +137,7 @@ export type ReactElementSummaryBeforeFiberContent = {
 
 const ko: ReactElementSummaryBeforeFiberContent = {
   hero: {
-    badge: 'JSX & React Element 챕터 마무리',
+    badge: 'Element와 JSX · 10/10단계',
     title: {
       line1: 'React Element는',
       line2: 'DOM도 아니고,',
@@ -435,7 +435,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
 
 const en: ReactElementSummaryBeforeFiberContent = {
   hero: {
-    badge: 'JSX & React Element chapter wrap-up',
+    badge: 'Elements & JSX · 10/10',
     title: {
       line1: 'A React Element is',
       line2: 'not the DOM,',

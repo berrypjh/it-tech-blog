@@ -27,7 +27,7 @@ export type DiffRow = {
 
 export type UpdatePhaseContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -230,10 +230,7 @@ if (flags & Update) {
 
 const ko: UpdatePhaseContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 25', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 6/10단계',
     title: {
       line1: '기존 DOM 노드는',
       line2: 'Update flag를 통해',
@@ -391,10 +388,7 @@ const ko: UpdatePhaseContent = {
 
 const en: UpdatePhaseContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 25', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 6/10',
     title: {
       line1: 'Existing DOM nodes are',
       line2: 'updated through',

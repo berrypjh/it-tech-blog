@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { axisCardBorder, axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
 import type { RootAccent, RootPendingWorkContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, ClockIcon, DatabaseIcon, ZapIcon } from '../icons';
@@ -14,67 +19,36 @@ const stepIcon: Record<RootAccent, typeof ZapIcon> = {
 };
 
 export const RootPendingWorkHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react-reconciler/root-pending-work.md"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' // fiber → root.pendingLanes → scheduler'}
-        </span>
-      }
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react-reconciler/root-pending-work.md"
+    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">
+        {' // fiber -> root.pendingLanes -> scheduler'}
+      </span>
+    }
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <ul className="mt-md flex flex-wrap items-center gap-2">
-      {content.badges.map((badge) => (
-        <li
-          key={badge.label}
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-            'text-[10px] font-mono font-bold uppercase tracking-wider',
-            badge.tone === 'blue' &&
-              'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500',
-            badge.tone === 'cyan' &&
-              'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-          )}
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              'block h-1.5 w-1.5 rounded-full',
-              badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-            )}
-          />
-          {badge.label}
-        </li>
-      ))}
-    </ul>
+      <HeroTitle>
+        <span className="block">{content.titleLines[0]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+      </HeroTitle>
 
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-stretch">
-      {/* LEFT: title + subtitle */}
-      <div className="flex flex-col gap-md justify-center">
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem]',
-            'font-bold leading-[1.18] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[1]}</span>
-        </h1>
+      <HeroDescription>{content.subtitle}</HeroDescription>
 
-        <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep max-w-[44ch]">
-          {content.subtitle}
-        </p>
-
-        <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
-          <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
-          <span>Fiber update | root.pendingLanes | Root Scheduler</span>
-        </div>
+      <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
+        <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
+        <span>Fiber update / root.pendingLanes / Root Scheduler</span>
       </div>
+    </HeroTextColumn>
 
-      {/* RIGHT: 3-step diagram */}
+    <HeroVisualColumn>
+      {/* 3-step diagram */}
       <ol className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-3 sm:gap-4 relative">
         {content.steps.map((step, i) => {
           const isLast = i === content.steps.length - 1;
@@ -160,6 +134,6 @@ export const RootPendingWorkHero = ({ content }: Props) => (
           );
         })}
       </ol>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );

@@ -142,7 +142,7 @@ const checkpointCodeKo = `function dispatchSetState(
 
 const ko: DispatchSetStateEntryContent = {
   hero: {
-    badge: 'CHAPTER 27',
+    badge: '업데이트 시작 · 3/10단계',
     title: {
       line1: 'setState의 내부 진입점은',
       line2: 'dispatchSetState입니다.',
@@ -338,7 +338,7 @@ const ko: DispatchSetStateEntryContent = {
 
 const en: DispatchSetStateEntryContent = {
   hero: {
-    badge: 'CHAPTER 27',
+    badge: 'Update Flow · 3/10',
     title: {
       line1: 'The internal entry point of setState',
       line2: 'is dispatchSetState.',

@@ -25,7 +25,7 @@ export type FiberPathNode = {
 
 export type FiberToRootContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -155,10 +155,7 @@ const checkpointCodeKo = `export function markUpdateLaneFromFiberToRoot(
 
 const ko: FiberToRootContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Step 6', tone: 'slate' },
-    ],
+    badge: '업데이트 시작 · 7/10단계',
     title: {
       line1: '업데이트 흔적은',
       line2: 'Fiber 하나에만',
@@ -381,10 +378,7 @@ const ko: FiberToRootContent = {
 
 const en: FiberToRootContent = {
   hero: {
-    pills: [
-      { label: 'Reading React internals', tone: 'sky' },
-      { label: 'Step 6', tone: 'slate' },
-    ],
+    badge: 'Update Flow · 7/10',
     title: {
       line1: 'An update mark does not',
       line2: 'live on a single Fiber',

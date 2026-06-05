@@ -167,7 +167,7 @@ const checkpointCode = `function createFiberRoot(containerInfo, tag, isStrictMod
 
 const ko: FiberStateNodeContent = {
   hero: {
-    badge: 'CHAPTER 15',
+    badge: 'Fiber 트리 · 3/10단계',
     title: {
       line1: 'stateNode는 Fiber가',
       line2: '외부 대상과 연결되는',
@@ -391,7 +391,7 @@ const ko: FiberStateNodeContent = {
 
 const en: FiberStateNodeContent = {
   hero: {
-    badge: 'CHAPTER 15',
+    badge: 'Fiber Tree · 3/10',
     title: {
       line1: 'stateNode is the slot',
       line2: 'where a Fiber connects',

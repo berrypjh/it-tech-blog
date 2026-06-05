@@ -44,7 +44,7 @@ export type TakeawayCard = {
 
 export type RootSchedulerContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string, string];
     highlight: string;
     subtitle: string;
@@ -185,10 +185,7 @@ const CODE_B_EN = `if (includesSyncLane(nextLanes)) {
 
 const ko: RootSchedulerContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Root Scheduler 편', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 7/10단계',
     titleLines: ['React는', 'pending work를 전부', '한 번에 실행하지 않는다'],
     highlight: '한 번에 실행하지 않는다',
     subtitle: 'Root Scheduler는 지금 처리해야 할 nextLanes를 고르고 실행 경로를 결정합니다.',
@@ -459,10 +456,7 @@ const ko: RootSchedulerContent = {
 
 const en: RootSchedulerContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Root Scheduler', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 7/10',
     titleLines: ['React does not run', 'every pending work', 'all at once'],
     highlight: 'all at once',
     subtitle: 'Root Scheduler picks the nextLanes to run now and decides the execution path.',

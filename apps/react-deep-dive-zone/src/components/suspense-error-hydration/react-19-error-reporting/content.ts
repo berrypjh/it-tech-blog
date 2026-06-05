@@ -81,7 +81,7 @@ export type TakeawayCard = {
 
 export type React19ErrorReportingContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     callbacks: RootCallbackCard[];
@@ -208,10 +208,7 @@ hydrateRoot(container, <App />, {
 
 const ko: React19ErrorReportingContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'React 19 Error Reporting', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 6/10단계',
     titleLines: ['React 19는 복구와', '보고를 분리했다'],
     description:
       '화면 복구는 React가 수행하고, 로깅과 모니터링은 root callback으로 다룰 수 있습니다.',
@@ -553,10 +550,7 @@ const ko: React19ErrorReportingContent = {
 
 const en: React19ErrorReportingContent = {
   hero: {
-    badges: [
-      { label: 'React deep dive', tone: 'solid' },
-      { label: 'React 19 Error Reporting', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 6/10',
     titleLines: ['React 19 split', 'recovery and reporting'],
     description:
       'React handles UI recovery; logging and monitoring are routed through root callbacks.',

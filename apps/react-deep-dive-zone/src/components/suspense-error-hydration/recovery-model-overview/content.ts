@@ -47,7 +47,7 @@ export type QuizCard = {
 
 export type RecoveryModelOverviewContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     inputs: HeroInputCard[];
@@ -160,10 +160,7 @@ const RENDER_ERROR_CODE_EN = `function Profile() {
 
 const ko: RecoveryModelOverviewContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'Suspense / Error / Hydration 복습', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 10/10단계',
     titleLines: ['Suspense / Error / Hydration,', '하나의 복구 모델로 정리해보자'],
     description:
       'Promise 대기, 렌더 실패, hydration mismatch, server fallback과 client recovery를 하나의 렌더링 모델로 연결해봅니다.',
@@ -485,10 +482,7 @@ const ko: RecoveryModelOverviewContent = {
 
 const en: RecoveryModelOverviewContent = {
   hero: {
-    badges: [
-      { label: 'React deep dive', tone: 'solid' },
-      { label: 'Suspense / Error / Hydration recap', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 10/10',
     titleLines: ['Suspense / Error / Hydration,', 'now folded into one recovery model'],
     description:
       'Tie together Promise waiting, render failure, hydration mismatch, server fallback, and client recovery into one rendering model.',

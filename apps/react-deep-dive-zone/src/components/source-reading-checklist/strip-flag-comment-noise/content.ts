@@ -199,7 +199,7 @@ const commentCode = `// This is a fallback implementation
 export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 8/10단계',
       titleLines: ['Feature Flag, 타입, 주석을 먼저 읽으면', '코드가 훨씬 짧아진다'],
       accentTail: '코드가 훨씬 짧아진다',
       description: '본문 로직부터 달려들기 전에 조건과 의도를 먼저 정리해야 합니다.',
@@ -515,7 +515,7 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 8/10',
       titleLines: ['Read feature flags, types, comments first', 'and the code becomes far shorter'],
       accentTail: 'and the code becomes far shorter',
       description: 'Sort out the conditions and intent before diving into the body logic.',

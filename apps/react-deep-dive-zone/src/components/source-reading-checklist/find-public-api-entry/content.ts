@@ -188,7 +188,7 @@ const useStateCodeKo = `export function useState<S>(
 export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 2/10단계',
       titleLines: ['Public API에서 내부 구현까지,', '입구를 먼저 찾는다'],
       accentTail: '입구를 먼저 찾는다',
       description: '사용자가 호출하는 API와 실제 동작을 수행하는 구현은 대개 다른 층에 있습니다.',
@@ -507,7 +507,7 @@ export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 2/10',
       titleLines: ['From public API to implementation,', 'find the entry first'],
       accentTail: 'find the entry first',
       description:

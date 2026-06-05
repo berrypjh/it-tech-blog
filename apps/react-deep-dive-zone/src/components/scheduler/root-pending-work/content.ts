@@ -66,7 +66,7 @@ export type TakeawayCard = {
 
 export type RootPendingWorkContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     highlight: string;
     subtitle: string;
@@ -207,10 +207,7 @@ const CODE_B_EN = `function markRootUpdated(root, updateLane) {
 
 const ko: RootPendingWorkContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '스케줄링 입문', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 6/10단계',
     titleLines: ['Lane을 받았다고', '바로 렌더링이 시작되지는 않는다'],
     highlight: '바로 렌더링이 시작되지는 않는다',
     subtitle: '먼저 root가 처리해야 할 작업이 있다는 사실을 기록합니다.',
@@ -497,10 +494,7 @@ const ko: RootPendingWorkContent = {
 
 const en: RootPendingWorkContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Scheduling intro', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 6/10',
     titleLines: ['Getting a Lane', "doesn't start rendering right away"],
     highlight: "doesn't start rendering right away",
     subtitle: 'First the root records that there is work to do.',

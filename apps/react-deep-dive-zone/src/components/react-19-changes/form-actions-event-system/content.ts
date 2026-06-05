@@ -49,7 +49,7 @@ export type LinkButton = { label: string; href: string };
 
 export type FormActionsEventSystemContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string, string];
     heroCode: {
@@ -212,10 +212,7 @@ export type FormActionsEventSystemContent = {
 
 const ko: FormActionsEventSystemContent = {
   hero: {
-    badges: [
-      { label: 'React 19 실제 연결', tone: 'soft' },
-      { label: 'Form Actions 내부 진입', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 3/10단계',
     titleLines: ['Form Actions는', '이벤트 시스템과', '어떻게 연결되는가?'],
     subtitleLines: [
       '<form action={fn}>은 submit 이벤트를',
@@ -607,10 +604,7 @@ startHostTransition(formInst, pendingState, action, formData);`,
 
 const en: FormActionsEventSystemContent = {
   hero: {
-    badges: [
-      { label: 'React 19 in practice', tone: 'soft' },
-      { label: 'Form Actions internals', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 3/10',
     titleLines: ['How do Form Actions', 'connect to the', 'event system?'],
     subtitleLines: [
       '<form action={fn}> is the internal pipeline that',

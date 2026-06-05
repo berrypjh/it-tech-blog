@@ -29,7 +29,7 @@ export type TakeawayCard = {
 
 export type WhyEventSystemContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     highlight: string;
     description: string;
@@ -151,10 +151,7 @@ const USER_CODE_EN = `function SaveButton() {
 
 const ko: WhyEventSystemContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 입문', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 1/10단계',
     titleLines: ['React 이벤트 시스템은', '왜 따로 존재할까?'],
     highlight: 'onClick은 단순히 DOM에 붙은 listener가 아닙니다.',
     description:
@@ -373,10 +370,7 @@ const ko: WhyEventSystemContent = {
 
 const en: WhyEventSystemContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Intro', tone: 'cyan' },
-    ],
+    badge: 'Event System · 1/10',
     titleLines: ['Why does React have', 'its own event system?'],
     highlight: 'onClick is not a plain listener bound to the DOM button.',
     description:

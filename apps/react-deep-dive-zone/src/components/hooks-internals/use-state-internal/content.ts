@@ -56,7 +56,7 @@ export type SummaryItem = {
 
 export type UseStateInternalsContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -169,10 +169,7 @@ const DISPATCH_BIND_CODE = `queue.dispatch = dispatchSetState.bind(
 
 const ko: UseStateInternalsContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Hook 심화', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 4/10단계',
     titleLine1: 'useState는',
     titleAccent: '값만 저장하지 않는다',
     description:
@@ -476,10 +473,7 @@ const ko: UseStateInternalsContent = {
 
 const en: UseStateInternalsContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Hook Deep Dive', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 4/10',
     titleLine1: 'useState does not',
     titleAccent: 'just store a value',
     description:

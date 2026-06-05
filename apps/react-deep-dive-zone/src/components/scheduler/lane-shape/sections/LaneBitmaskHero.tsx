@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { laneCardBorder, laneDot, laneIconBox, laneTextStrong } from '../../_shared/laneAccent';
 import type { LaneAccent, LaneBitmaskContent } from '../content';
@@ -18,64 +23,35 @@ const heroIcon: Record<LaneAccent, typeof ZapIcon> = {
 };
 
 export const LaneBitmaskHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react-reconciler/lane-bitmask.md"
-      suffix={<span className="text-[var(--term-dim)]">{' // Lane | Lanes | pendingLanes'}</span>}
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react-reconciler/lane-bitmask.md"
+    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">{' // Lane / Lanes / pendingLanes'}</span>
+    }
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <ul className="mt-md flex flex-wrap items-center gap-2">
-      {content.badges.map((badge) => (
-        <li
-          key={badge.label}
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-            'text-[10px] font-mono font-bold uppercase tracking-wider',
-            badge.tone === 'blue' &&
-              'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500',
-            badge.tone === 'cyan' &&
-              'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-          )}
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              'block h-1.5 w-1.5 rounded-full',
-              badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-            )}
-          />
-          {badge.label}
-        </li>
-      ))}
-    </ul>
+      <HeroTitle>
+        <span className="block">{content.titleLines[0]}</span>
+        <span className="block">{content.titleLines[1]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[2]}</span>
+      </HeroTitle>
 
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-stretch">
-      {/* LEFT: heading + subtitle */}
-      <div className="flex flex-col gap-md justify-center">
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem]',
-            'font-bold leading-[1.18] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-[var(--term-fg)]">{content.titleLines[1]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[2]}</span>
-        </h1>
+      <HeroDescription>{content.subtitle}</HeroDescription>
 
-        <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep max-w-[44ch]">
-          {content.subtitle}
-        </p>
-
-        <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
-          <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
-          <span>SyncLane | DefaultLane | TransitionLane &rarr; bitmask</span>
-        </div>
+      <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
+        <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
+        <span>SyncLane / DefaultLane / TransitionLane &rarr; bitmask</span>
       </div>
+    </HeroTextColumn>
 
-      {/* RIGHT: diagram */}
+    <HeroVisualColumn>
+      {/* diagram */}
       <div className="flex flex-col gap-md">
         {/* lane cards */}
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
@@ -189,6 +165,6 @@ export const LaneBitmaskHero = ({ content }: Props) => (
           </ul>
         </article>
       </div>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );

@@ -43,7 +43,7 @@ export type ConnectionFlow = {
 
 export type HooksEntryFlowContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     title: string;
     description: string;
     leftCard: { title: string; code: string };
@@ -127,10 +127,7 @@ const USE_STATE_SOURCE = `export function useState(initialState) {
 
 const ko: HooksEntryFlowContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Hook Entry Flow', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 1/10단계',
     title: 'Hooks는 어디서 시작될까?',
     description:
       '우리가 호출하는 useState와 useEffect는 실제 구현체가 아니라, React 내부 Hook 시스템으로 들어가는 입구입니다.',
@@ -339,10 +336,7 @@ const ko: HooksEntryFlowContent = {
 
 const en: HooksEntryFlowContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Hook Entry Flow', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 1/10',
     title: 'Where Do Hooks Begin?',
     description:
       'The useState and useEffect you call are not the real implementation — they are the entry points into React’s internal Hook system.',

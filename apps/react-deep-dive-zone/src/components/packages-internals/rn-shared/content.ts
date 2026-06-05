@@ -159,7 +159,7 @@ export type RnContent = {
 export const rnContent: Record<Locale, RnContent> = {
   ko: {
     hero: {
-      badge: '01 · React 아키텍처 이해하기',
+      badge: '패키지 구조 · 8/10단계',
       title: {
         line1: 'React는 웹만을 위한',
         line2: '내부 구조로 설계되지',
@@ -382,7 +382,7 @@ export const rnContent: Record<Locale, RnContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understanding React architecture',
+      badge: 'Packages · 8/10',
       title: {
         line1: 'React was not designed',
         line2: 'only for the web.',

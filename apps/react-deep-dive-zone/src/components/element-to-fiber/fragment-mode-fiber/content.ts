@@ -134,7 +134,7 @@ export type FragmentModeFiberContent = {
 
 const ko: FragmentModeFiberContent = {
   hero: {
-    badge: 'CHAPTER 10',
+    badge: 'Fiber 생성 · 6/10단계',
     title: {
       line1: '모든 Element가',
       line2: '같은 방식으로 Fiber가',
@@ -355,7 +355,7 @@ const ko: FragmentModeFiberContent = {
 
 const en: FragmentModeFiberContent = {
   hero: {
-    badge: 'CHAPTER 10',
+    badge: 'Element → Fiber · 6/10',
     title: {
       line1: 'Not every Element',
       line2: 'becomes a Fiber',

@@ -126,7 +126,7 @@ export type ExplorationContent = {
 export const explorationContent: Record<Locale, ExplorationContent> = {
   ko: {
     hero: {
-      badge: '01 · 최종 정리',
+      badge: '저장소 구조 · 10/10단계',
       title: {
         line1: '이제 React 저장소를',
         line2: '처음부터 헤매지 않고',
@@ -399,7 +399,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
   },
   en: {
     hero: {
-      badge: '01 · final summary',
+      badge: 'Repo Structure · 10/10',
       title: {
         line1: 'You can now explore the React repository',
         line2: 'without getting lost',

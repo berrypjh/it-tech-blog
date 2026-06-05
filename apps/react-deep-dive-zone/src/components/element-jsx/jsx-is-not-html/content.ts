@@ -67,7 +67,6 @@ export type ConceptPill = {
 export type JsxIsNotHtmlContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -146,8 +145,7 @@ export type JsxIsNotHtmlContent = {
 
 const ko: JsxIsNotHtmlContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'JSX 첫 번째 개념',
+    badge: 'Element와 JSX · 1/10단계',
     title: { line1: 'JSX는', line2: 'HTML이 아닙니다.' },
     description:
       'HTML처럼 보이지만, 브라우저가 그대로 그리는 마크업이 아니라 JavaScript 안에서 UI 구조를 표현하는 문법입니다.',
@@ -374,8 +372,7 @@ const ko: JsxIsNotHtmlContent = {
 
 const en: JsxIsNotHtmlContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'JSX · first concept',
+    badge: 'Elements & JSX · 1/10',
     title: { line1: 'JSX is', line2: 'not HTML.' },
     description:
       'It looks like HTML, but it is not markup the browser paints — it is a syntax for describing UI structure inside JavaScript.',

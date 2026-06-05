@@ -145,7 +145,7 @@ export type ChangelogContent = {
 export const changelogContent: Record<Locale, ChangelogContent> = {
   ko: {
     hero: {
-      badge: '01 · 버전 맥락 이해하기',
+      badge: '저장소 구조 · 9/10단계',
       title: {
         line1: 'React 내부 코드를 읽는다면,',
         line2: '그 코드가 어느 시점의 코드인지도',
@@ -396,7 +396,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand version context',
+      badge: 'Repo Structure · 9/10',
       title: {
         line1: 'When you read React internals,',
         line2: 'you also need to know which version',

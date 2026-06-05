@@ -150,7 +150,7 @@ const codesJsonEn = `{
 export const surroundingContent: Record<Locale, SurroundingContent> = {
   ko: {
     hero: {
-      badge: '01 · 저장소 주변 구조 이해하기',
+      badge: '저장소 구조 · 3/10단계',
       title: {
         lead: 'React 저장소에는',
         tail: '제품 코드만 있는 것이 아닙니다.',
@@ -380,7 +380,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand the surrounding structure',
+      badge: 'Repo Structure · 3/10',
       title: {
         lead: 'The React repo holds more',
         tail: 'than just the product code.',

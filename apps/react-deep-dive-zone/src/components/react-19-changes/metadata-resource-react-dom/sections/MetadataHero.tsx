@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { MetadataResourceContent } from '../content';
 import { ArrowDownIcon, SparklesIcon } from '../icons';
 
@@ -11,67 +16,36 @@ import { TreeMock } from './_TreeMock';
 type Props = { content: MetadataResourceContent['hero'] };
 
 export const MetadataHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react-19-changes/metadata-resource-react-dom.md"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' // React Tree → react-dom hoisting → DOM <head>'}
-        </span>
-      }
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react-19-changes/metadata-resource-react-dom.md"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">
+        {' // React Tree → react-dom hoisting → DOM <head>'}
+      </span>
+    }
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <div className="mt-md grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-2 items-stretch">
-      {/* LEFT: badges + heading + subtitle + code */}
-      <div className="flex flex-col gap-md">
-        <ul className="flex flex-wrap items-center gap-2">
-          {content.badges.map((badge) => (
-            <li
-              key={badge.label}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-                'text-[10px] font-mono font-bold uppercase tracking-wider',
-                badge.tone === 'solid'
-                  ? 'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500'
-                  : 'border border-blue-300/80 bg-blue-50 text-blue-700 dark:border-blue-700/70 dark:bg-blue-950/50 dark:text-blue-200',
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'block h-1.5 w-1.5 rounded-full',
-                  badge.tone === 'solid' ? 'bg-white/90' : 'bg-blue-500 dark:bg-blue-400',
-                )}
-              />
-              {badge.label}
-            </li>
-          ))}
-        </ul>
+      <HeroTitle>
+        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+      </HeroTitle>
 
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.3rem] xl:text-[2.5rem]',
-            'font-bold leading-[1.16] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[1]}</span>
-        </h1>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.subtitleLines.join(' ')}</HeroDescription>
 
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep max-w-[60ch]">
-          {content.subtitleLines.join(' ')}
-        </p>
+      <CodePanel
+        code={content.heroCode.code}
+        fileName={content.heroCode.fileName}
+        langBadge={content.heroCode.langBadge}
+      />
+    </HeroTextColumn>
 
-        <CodePanel
-          code={content.heroCode.code}
-          fileName={content.heroCode.fileName}
-          langBadge={content.heroCode.langBadge}
-        />
-      </div>
-
-      {/* RIGHT: React Tree → DOM diagram */}
+    <HeroVisualColumn className="w-full">
+      {/* React Tree → DOM diagram */}
       <article
         className={cn(
           'relative flex flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
@@ -126,6 +100,6 @@ export const MetadataHero = ({ content }: Props) => (
           <DomMock dom={content.diagram.dom} ariaLabel={content.diagram.rightTitle} />
         </div>
       </article>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );

@@ -46,7 +46,7 @@ export type InteractiveTimeline = {
 
 export type SuspenseHydrationLinkContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     description: string;
     topCards: HeroTopCard[];
@@ -183,10 +183,7 @@ const HYDRATION_URL =
 
 const ko: SuspenseHydrationLinkContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'Suspense & Hydration 통합', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 9/10단계',
     titleLines: [
       'Suspense Boundary는',
       '클라이언트 로딩 UI를 넘어서',
@@ -470,10 +467,7 @@ const ko: SuspenseHydrationLinkContent = {
 
 const en: SuspenseHydrationLinkContent = {
   hero: {
-    badges: [
-      { label: 'React deep dive', tone: 'solid' },
-      { label: 'Suspense & Hydration', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 9/10',
     titleLines: [
       'A Suspense Boundary is not only',
       'a client loading UI — it also acts as',

@@ -177,7 +177,7 @@ const checkpointCodeEn = `function createWorkInProgress(current, pendingProps) {
 
 const ko: CurrentWipAlternateContent = {
   hero: {
-    badge: 'CHAPTER 22',
+    badge: 'Fiber 트리 · 9/10단계',
     title: {
       line1: 'React는 Fiber 트리를',
       line2: '한 벌만 들고 있지 않습니다.',
@@ -404,7 +404,7 @@ const ko: CurrentWipAlternateContent = {
 
 const en: CurrentWipAlternateContent = {
   hero: {
-    badge: 'CHAPTER 22',
+    badge: 'Fiber Tree · 9/10',
     title: {
       line1: 'React does not keep just one',
       line2: 'copy of the Fiber tree.',

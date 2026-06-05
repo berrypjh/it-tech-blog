@@ -130,7 +130,7 @@ export type CreateFiberFromElementContent = {
 
 const ko: CreateFiberFromElementContent = {
   hero: {
-    badge: 'CHAPTER 3',
+    badge: 'Fiber 생성 · 2/10단계',
     title: {
       line1: 'Element는',
       line2: '어디서 Fiber로 바뀔까?',
@@ -342,7 +342,7 @@ const ko: CreateFiberFromElementContent = {
 
 const en: CreateFiberFromElementContent = {
   hero: {
-    badge: 'CHAPTER 3',
+    badge: 'Element → Fiber · 2/10',
     title: {
       line1: 'Where does an Element',
       line2: 'become a Fiber?',

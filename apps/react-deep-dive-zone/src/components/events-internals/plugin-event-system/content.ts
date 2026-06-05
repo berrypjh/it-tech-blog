@@ -58,7 +58,7 @@ export type FormActionStep = { name: string; body: string; tone: Tone };
 
 export type PluginEventSystemContent = {
   hero: {
-    sectionNumber: string;
+    badge: string;
     title: string;
     description: string;
     steps: FlowStep[];
@@ -151,7 +151,7 @@ processDispatchQueue(dispatchQueue, eventSystemFlags);`;
 
 const ko: PluginEventSystemContent = {
   hero: {
-    sectionNumber: '01',
+    badge: '이벤트 시스템 · 6/10단계',
     title: 'React는 native event를 그대로 handler에 넘기지 않는다',
     description:
       'Plugin Event System은 이벤트를 어떤 React 이벤트로 다룰지 분석하는 중앙 처리소입니다.',
@@ -461,7 +461,7 @@ const ko: PluginEventSystemContent = {
 
 const en: PluginEventSystemContent = {
   hero: {
-    sectionNumber: '01',
+    badge: 'Event System · 6/10',
     title: 'React does not hand the native event directly to your handler',
     description:
       'The Plugin Event System is the central interpreter that decides which React event a native event becomes.',

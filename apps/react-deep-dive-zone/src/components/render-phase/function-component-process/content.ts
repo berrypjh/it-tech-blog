@@ -24,7 +24,7 @@ export type HooksSidePoint = {
 
 export type FunctionComponentContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -143,10 +143,7 @@ const UPDATE_FUNCTION_CODE = `function updateFunctionComponent(current, workInPr
 
 const ko: FunctionComponentContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 14', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 5/10단계',
     title: {
       line1: '함수 컴포넌트는',
       line2: 'Render Phase에서',
@@ -317,10 +314,7 @@ const ko: FunctionComponentContent = {
 
 const en: FunctionComponentContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 14', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 5/10',
     title: {
       line1: 'Function components',
       line2: 'really run during',

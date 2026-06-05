@@ -56,7 +56,7 @@ export type SelectorResult = {
 
 export type UsePromiseSuspendContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     code: {
@@ -175,10 +175,7 @@ const THENABLE_URL =
 
 const ko: UsePromiseSuspendContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'Suspense & use(Promise) 입문', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 2/10단계',
     titleLines: ['use(Promise)는', '렌더링을 어떻게 멈출까?'],
     description:
       'Promise가 아직 준비되지 않았다면 React는 값을 기다리는 대신 Suspense 경로로 렌더링을 넘깁니다.',
@@ -443,10 +440,7 @@ const ko: UsePromiseSuspendContent = {
 
 const en: UsePromiseSuspendContent = {
   hero: {
-    badges: [
-      { label: 'React Deep Dive', tone: 'solid' },
-      { label: 'Suspense & use(Promise) intro', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 2/10',
     titleLines: ['How does use(Promise)', 'pause rendering?'],
     description:
       'When a Promise is not ready yet, React does not wait for it — it hands the render over to the Suspense path.',

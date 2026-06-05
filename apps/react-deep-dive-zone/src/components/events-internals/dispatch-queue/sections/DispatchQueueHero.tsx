@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { DispatchQueueOrderContent } from '../content';
 import { ArrowRightIcon, DatabaseIcon, HourglassIcon, ListOrderedIcon } from '../icons';
 
@@ -21,109 +26,78 @@ const toneNumber = (tone: 'violet' | 'teal' | 'rose') => {
 };
 
 export const DispatchQueueHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react-dom/events/dispatch-queue.md"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' // collect → dispatchQueue → execute (capture / bubble)'}
-        </span>
-      }
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react-dom/events/dispatch-queue.md"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">
+        {' // collect → dispatchQueue → execute (capture / bubble)'}
+      </span>
+    }
+    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <ul className="mt-md flex flex-wrap items-center gap-2">
-      {content.badges.map((badge) => (
-        <li
-          key={badge.label}
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-            'text-[10px] font-mono font-bold uppercase tracking-wider',
-            badge.tone === 'blue' &&
-              'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500',
-            badge.tone === 'cyan' &&
-              'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-          )}
-        >
+      <HeroTitle>
+        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+      </HeroTitle>
+
+      <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
+
+      <article
+        className={cn(
+          'flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg',
+          'border-blue-200/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',
+          'shadow-[0_2px_0_var(--term-border)]',
+        )}
+      >
+        <header className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
-              'block h-1.5 w-1.5 rounded-full',
-              badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-            )}
-          />
-          {badge.label}
-        </li>
-      ))}
-    </ul>
-
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-stretch">
-      {/* LEFT */}
-      <div className="flex flex-col gap-md">
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.4rem] xl:text-[2.8rem]',
-            'font-bold leading-[1.14] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[1]}</span>
-        </h1>
-
-        <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep max-w-[55ch]">
-          {content.description}
-        </p>
-
-        <article
-          className={cn(
-            'flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg',
-            'border-blue-200/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',
-            'shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <header className="flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
+          >
+            <ListOrderedIcon className="h-4 w-4" />
+          </span>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
+            {content.listenerTitle}
+          </span>
+        </header>
+        <ol className="flex flex-col gap-1.5">
+          {content.collected.map((entry) => (
+            <li
+              key={entry.label}
+              className={cn(
+                'flex items-center gap-2 rounded-lg border px-3 py-2',
+                toneBadge(entry.tone),
+              )}
             >
-              <ListOrderedIcon className="h-4 w-4" />
-            </span>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-              {content.listenerTitle}
-            </span>
-          </header>
-          <ol className="flex flex-col gap-1.5">
-            {content.collected.map((entry) => (
-              <li
-                key={entry.label}
+              <span
+                aria-hidden="true"
                 className={cn(
-                  'flex items-center gap-2 rounded-lg border px-3 py-2',
-                  toneBadge(entry.tone),
+                  'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
+                  toneNumber(entry.tone),
                 )}
               >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
-                    toneNumber(entry.tone),
-                  )}
-                >
-                  {entry.step}
-                </span>
-                <code className="font-mono text-[11px] sm:text-xsm font-bold break-all flex-1">
-                  {entry.label}
-                </code>
-                <code className="font-mono text-[10px] uppercase tracking-wider opacity-80">
-                  {entry.phase}
-                </code>
-              </li>
-            ))}
-          </ol>
-        </article>
-      </div>
+                {entry.step}
+              </span>
+              <code className="font-mono text-[11px] sm:text-xsm font-bold break-all flex-1">
+                {entry.label}
+              </code>
+              <code className="font-mono text-[10px] uppercase tracking-wider opacity-80">
+                {entry.phase}
+              </code>
+            </li>
+          ))}
+        </ol>
+      </article>
+    </HeroTextColumn>
 
-      {/* RIGHT: dispatchQueue → timeline diagram */}
+    <HeroVisualColumn>
+      {/* dispatchQueue timeline diagram */}
       <article
         className={cn(
           'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
@@ -243,6 +217,6 @@ export const DispatchQueueHero = ({ content }: Props) => (
           </div>
         </div>
       </article>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );

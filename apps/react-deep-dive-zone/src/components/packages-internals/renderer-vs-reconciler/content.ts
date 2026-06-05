@@ -187,7 +187,7 @@ parent.appendChild(div);`;
 export const rvrContent: Record<Locale, RvrContent> = {
   ko: {
     hero: {
-      badge: '01 · renderer와 reconciler 이해하기',
+      badge: '패키지 구조 · 5/10단계',
       title: {
         line1: 'React의 렌더링 계산과',
         line2: '실제 환경 반영은',
@@ -377,7 +377,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
   },
   en: {
     hero: {
-      badge: '01 · renderer vs reconciler',
+      badge: 'Packages · 5/10',
       title: {
         line1: "React's rendering computation",
         line2: 'and real-environment output',

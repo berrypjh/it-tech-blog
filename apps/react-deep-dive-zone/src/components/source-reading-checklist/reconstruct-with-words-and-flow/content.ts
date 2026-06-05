@@ -181,7 +181,7 @@ export type ReconstructContent = {
 export const reconstructContent: Record<Locale, ReconstructContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 완료 루틴',
+      badge: '읽기 체크리스트 · 10/10단계',
       titleLines: ['마지막은 흐름도를 직접 그리는 것:', '내 말로 재구성하기'],
       accentTail: '내 말로 재구성하기',
       description:
@@ -458,7 +458,7 @@ export const reconstructContent: Record<Locale, ReconstructContent> = {
   },
   en: {
     hero: {
-      badge: 'React source reading completion routine',
+      badge: 'Reading Checklist · 10/10',
       titleLines: [
         'The final step is drawing the flow yourself:',
         'reconstruct it in your own words',

@@ -40,7 +40,7 @@ export type ScheduleRow = {
 
 export type EagerBailoutContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     diagram: {
@@ -145,10 +145,7 @@ if (is(eagerState, currentState)) {
 
 const ko: EagerBailoutContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Step 3', tone: 'slate' },
-    ],
+    badge: '업데이트 시작 · 5/10단계',
     title: {
       line1: '업데이트 요청이 있어도',
       line2: '항상 렌더링이 시작되는',
@@ -337,10 +334,7 @@ const ko: EagerBailoutContent = {
 
 const en: EagerBailoutContent = {
   hero: {
-    pills: [
-      { label: 'Reading React internals', tone: 'sky' },
-      { label: 'Step 3', tone: 'slate' },
-    ],
+    badge: 'Update Flow · 5/10',
     title: {
       line1: 'An update request does not',
       line2: 'always trigger a render',

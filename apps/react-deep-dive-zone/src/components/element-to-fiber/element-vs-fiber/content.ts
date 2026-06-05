@@ -58,10 +58,6 @@ export type ElementVsFiberContent = {
     title: { line1: string; line2: string };
     description: string;
     emphasis: { line1: string; line2: string };
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     elementLabel: string;
     elementCode: string;
     fiberLabel: string;
@@ -131,7 +127,7 @@ export type ElementVsFiberContent = {
 
 const ko: ElementVsFiberContent = {
   hero: {
-    badge: 'React 내부 구조',
+    badge: 'Fiber 생성 · 1/10단계',
     title: {
       line1: 'React Element는 설명이고,',
       line2: 'Fiber는 작업 단위입니다.',
@@ -142,10 +138,6 @@ const ko: ElementVsFiberContent = {
       line1: 'Element와 Fiber는',
       line2: '무엇이 다른가?',
     },
-    primaryCta: '핵심 개념 보기',
-    secondaryCta: '예시로 이해하기',
-    primaryHref: '#comparison',
-    secondaryHref: '#flow',
     elementLabel: 'React Element 객체',
     elementCode: '{\n  type,\n  key,\n  props,\n}',
     fiberLabel: 'Fiber 객체',
@@ -364,7 +356,7 @@ const ko: ElementVsFiberContent = {
 
 const en: ElementVsFiberContent = {
   hero: {
-    badge: 'React internals',
+    badge: 'Element → Fiber · 1/10',
     title: {
       line1: 'A React Element is a description,',
       line2: 'a Fiber is a unit of work.',
@@ -375,10 +367,6 @@ const en: ElementVsFiberContent = {
       line1: 'How are Elements and',
       line2: 'Fibers different?',
     },
-    primaryCta: 'See the core concepts',
-    secondaryCta: 'Walk through an example',
-    primaryHref: '#comparison',
-    secondaryHref: '#flow',
     elementLabel: 'React Element object',
     elementCode: '{\n  type,\n  key,\n  props,\n}',
     fiberLabel: 'Fiber object',

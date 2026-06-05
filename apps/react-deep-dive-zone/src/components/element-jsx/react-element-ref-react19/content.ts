@@ -47,7 +47,6 @@ export type QuizCard = {
 export type ReactElementRefReact19Content = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -138,8 +137,7 @@ export type ReactElementRefReact19Content = {
 
 const ko: ReactElementRefReact19Content = {
   hero: {
-    badge: '01',
-    eyebrow: 'React 19 핵심 변화 이해하기',
+    badge: 'Element와 JSX · 8/10단계',
     title: { line1: 'ref는 React 19에서', line2: '어떻게 달라졌나?' },
     description:
       'ref가 단순히 DOM을 가리키는 도구에서 벗어나, 컴포넌트와 상태, 상위-하위 경계를 넘나드는 더 강력한 API가 되었습니다.',
@@ -343,8 +341,7 @@ const ko: ReactElementRefReact19Content = {
 
 const en: ReactElementRefReact19Content = {
   hero: {
-    badge: '01',
-    eyebrow: 'Key React 19 change',
+    badge: 'Elements & JSX · 8/10',
     title: { line1: 'How did ref change', line2: 'in React 19?' },
     description:
       'ref is no longer just a tool that points to the DOM — it became a stronger API that flows through components, state, and parent-child boundaries.',

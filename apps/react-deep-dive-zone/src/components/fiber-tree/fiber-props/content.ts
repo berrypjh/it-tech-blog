@@ -162,7 +162,7 @@ const checkpointCodeEn = `export type Fiber = {
 
 const ko: FiberPropsContent = {
   hero: {
-    badge: '1',
+    badge: 'Fiber 트리 · 5/10단계',
     title: {
       line1: 'Fiber는 props를',
       line2: '한 벌만 들고 있지 않습니다.',
@@ -355,7 +355,7 @@ const ko: FiberPropsContent = {
 
 const en: FiberPropsContent = {
   hero: {
-    badge: '1',
+    badge: 'Fiber Tree · 5/10',
     title: {
       line1: 'A Fiber does not hold',
       line2: 'just one set of props.',

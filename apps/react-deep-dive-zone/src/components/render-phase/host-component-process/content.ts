@@ -34,7 +34,7 @@ export type CompleteWorkFlowNode = {
 
 export type HostComponentContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -124,10 +124,7 @@ const UPDATE_HOST_CODE = `function updateHostComponent(current, workInProgress, 
 
 const ko: HostComponentContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 15', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 6/10단계',
     title: {
       line1: 'Host Component도',
       line2: 'Render Phase에서',
@@ -293,10 +290,7 @@ const ko: HostComponentContent = {
 
 const en: HostComponentContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 15', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 6/10',
     title: {
       line1: 'Host Components also',
       line2: 'compute children',

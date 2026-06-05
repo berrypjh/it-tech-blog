@@ -55,7 +55,6 @@ export type DebugBenefit = {
 export type ReactElementOwnerDevInfoContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -148,8 +147,7 @@ export type ReactElementOwnerDevInfoContent = {
 
 const ko: ReactElementOwnerDevInfoContent = {
   hero: {
-    badge: '01',
-    eyebrow: '개발 모드 Element 이해하기',
+    badge: 'Element와 JSX · 9/10단계',
     title: { line1: '개발 모드의 React Element는', line2: '디버깅 정보를 더 많이 품고 있습니다.' },
     description:
       'React는 더 나은 경고와 오류 메시지를 위해 Element 생성 시 추가 메타데이터를 함께 관리합니다. 이 정보들은 렌더링 결과를 바꾸기 위한 것이 아니라, 개발자가 문제를 더 빠르게 찾도록 돕기 위한 장치입니다.',
@@ -367,8 +365,7 @@ const ko: ReactElementOwnerDevInfoContent = {
 
 const en: ReactElementOwnerDevInfoContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Understanding the dev-mode Element',
+    badge: 'Elements & JSX · 9/10',
     title: {
       line1: 'A dev-mode React Element carries',
       line2: 'extra debugging information.',

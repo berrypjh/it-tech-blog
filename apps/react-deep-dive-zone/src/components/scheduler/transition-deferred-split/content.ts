@@ -50,9 +50,7 @@ export type TakeawayCard = {
 
 export type TransitionDeferredContent = {
   hero: {
-    number: string;
-    eyebrow: string;
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     highlight: string;
     subtitle: string;
@@ -223,12 +221,7 @@ const REACT_REPO_SEARCH =
 
 const ko: TransitionDeferredContent = {
   hero: {
-    number: '1',
-    eyebrow: '핵심 개념 한눈에 보기',
-    badges: [
-      { label: 'React 내부 개념 한눈에 보기', tone: 'blue' },
-      { label: 'Transition / Deferred Update', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 5/10단계',
     titleLines: ['입력은 먼저 반응하고,', '무거운 UI는 뒤로 미룬다'],
     highlight: '무거운 UI는 뒤로 미룬다',
     subtitle:
@@ -489,12 +482,7 @@ const ko: TransitionDeferredContent = {
 
 const en: TransitionDeferredContent = {
   hero: {
-    number: '1',
-    eyebrow: 'Key concept at a glance',
-    badges: [
-      { label: 'React internals at a glance', tone: 'blue' },
-      { label: 'Transition / Deferred Update', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 5/10',
     titleLines: ['Input responds first,', 'heavy UI gets deferred'],
     highlight: 'heavy UI gets deferred',
     subtitle:

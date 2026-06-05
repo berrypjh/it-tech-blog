@@ -86,7 +86,7 @@ export type LaneSummaryItem = {
 
 export type RequestUpdateLaneContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string, string];
     highlight: string;
     subtitle: string;
@@ -194,10 +194,7 @@ const RENDER_CODE =
 
 const ko: RequestUpdateLaneContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '업데이트의 Lane 배정', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 4/10단계',
     titleLines: ['같은 setState라도', '어떤 문맥에서 호출되었는지에 따라', '다른 Lane을 받는다'],
     highlight: '다른 Lane을 받는다',
     subtitle: 'React는 update가 발생한 상황을 보고 적절한 lane을 결정합니다.',
@@ -498,10 +495,7 @@ const ko: RequestUpdateLaneContent = {
 
 const en: RequestUpdateLaneContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Lane assignment of updates', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 4/10',
     titleLines: ['The same setState', 'gets a different Lane', 'depending on where it is called'],
     highlight: 'depending on where it is called',
     subtitle: 'React looks at the context in which an update occurs to pick the right lane.',

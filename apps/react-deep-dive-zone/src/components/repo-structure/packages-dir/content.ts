@@ -223,7 +223,7 @@ const coreEn: CorePackage[] = [
 export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> = {
   ko: {
     hero: {
-      badge: '01 · packages 디렉터리 이해하기',
+      badge: '저장소 구조 · 2/10단계',
       title: {
         line1: 'React의 실제 구현은',
         line2: 'packages 디렉터리 안에서',
@@ -531,7 +531,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
   },
   en: {
     hero: {
-      badge: '01 · understand the packages directory',
+      badge: 'Repo Structure · 2/10',
       title: {
         line1: 'The real React implementation',
         line2: 'splits inside the packages',

@@ -60,7 +60,6 @@ export type FiberFlowStep = {
 export type ReactElementKeySeparatedContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -155,8 +154,7 @@ const itemTones = { a: 'cyan', b: 'sky', c: 'violet' } as const;
 
 const ko: ReactElementKeySeparatedContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'key의 역할 이해하기',
+    badge: 'Element와 JSX · 7/10단계',
     title: { line1: 'key는 왜 props와', line2: '따로 다뤄질까?' },
     description:
       'key는 컴포넌트가 직접 읽는 일반 입력값이라기보다, React가 형제 요소를 비교하고 추적하기 위해 관리하는 별도 식별자입니다.',
@@ -368,8 +366,7 @@ const ko: ReactElementKeySeparatedContent = {
 
 const en: ReactElementKeySeparatedContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Understanding the role of key',
+    badge: 'Elements & JSX · 7/10',
     title: { line1: 'Why is key treated', line2: 'separately from props?' },
     description:
       'key is not really an ordinary input the component reads — it is a separate identifier React keeps for comparing and tracking sibling elements.',

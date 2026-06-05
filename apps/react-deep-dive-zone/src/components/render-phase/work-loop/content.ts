@@ -62,7 +62,7 @@ export type LegendItem = {
 
 export type WorkLoopContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -166,10 +166,7 @@ function workLoopConcurrent(
 
 const ko: WorkLoopContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 11', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 2/10단계',
     title: {
       line1: 'React는 Fiber를',
       line2: '하나씩 처리하는',
@@ -359,10 +356,7 @@ const ko: WorkLoopContent = {
 
 const en: WorkLoopContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 11', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 2/10',
     title: {
       line1: 'React processes',
       line2: 'Fibers one by one',

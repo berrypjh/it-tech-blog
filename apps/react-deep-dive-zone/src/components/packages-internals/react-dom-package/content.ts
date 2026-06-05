@@ -183,7 +183,7 @@ export function createRoot(container, options) {
 export const reactDomContent: Record<Locale, ReactDomContent> = {
   ko: {
     hero: {
-      badge: '01 · renderer와 연결',
+      badge: '패키지 구조 · 3/10단계',
       title: {
         line1: 'react-dom은 React를',
         line2: '실제 브라우저와 서버 환경에',
@@ -429,7 +429,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
   },
   en: {
     hero: {
-      badge: '01 · renderer & connection',
+      badge: 'Packages · 3/10',
       title: {
         line1: 'react-dom connects React',
         line2: 'to real browser and server',

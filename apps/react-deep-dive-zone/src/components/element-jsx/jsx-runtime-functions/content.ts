@@ -59,7 +59,6 @@ export type ModeCard = {
 export type JsxRuntimeFunctionsContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -140,8 +139,7 @@ export type JsxRuntimeFunctionsContent = {
 
 const ko: JsxRuntimeFunctionsContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'JSX Runtime 이해하기',
+    badge: 'Element와 JSX · 3/10단계',
     title: { line1: '컴파일된 JSX는', line2: '어떤 함수로 들어갈까?' },
     description: '현대 React에서는 jsx, jsxs, jsxDEV가 React Element 생성 흐름의 첫 관문입니다.',
     primaryCta: 'Runtime entry 보기',
@@ -350,8 +348,7 @@ const ko: JsxRuntimeFunctionsContent = {
 
 const en: JsxRuntimeFunctionsContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Understand the JSX runtime',
+    badge: 'Elements & JSX · 3/10',
     title: { line1: 'Compiled JSX —', line2: 'which function does it enter?' },
     description:
       'In modern React, jsx, jsxs, and jsxDEV are the front door of the React Element creation flow.',

@@ -206,7 +206,7 @@ const branchesEn: Branch[] = [
 
 const ko: CreateFiberFromTypeAndPropsContent = {
   hero: {
-    badge: 'CHAPTER 3',
+    badge: 'Fiber 생성 · 3/10단계',
     title: {
       line1: 'React는 type을 보고',
       line2: '어떤 Fiber를 만들지 결정합니다.',
@@ -463,7 +463,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
 
 const en: CreateFiberFromTypeAndPropsContent = {
   hero: {
-    badge: 'CHAPTER 3',
+    badge: 'Element → Fiber · 3/10',
     title: {
       line1: 'React looks at type',
       line2: 'to decide which Fiber to build.',

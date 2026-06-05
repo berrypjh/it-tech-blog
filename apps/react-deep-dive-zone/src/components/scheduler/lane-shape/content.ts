@@ -77,7 +77,7 @@ export type InteractiveLane = {
 
 export type LaneBitmaskContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string, string];
     highlight: string;
     subtitle: string;
@@ -199,10 +199,7 @@ const activeFromBits = (bits: string): number[] => {
 
 const ko: LaneBitmaskContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 동작', tone: 'blue' },
-      { label: 'Lane & Bitmask', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 3/10단계',
     titleLines: ['Lane은 단순한', '우선순위 숫자가 아니라', '작업 집합이다'],
     highlight: '작업 집합이다',
     subtitle: 'React는 여러 종류의 pending work를 비트마스크로 동시에 표현합니다.',
@@ -451,10 +448,7 @@ const ko: LaneBitmaskContent = {
 
 const en: LaneBitmaskContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Lane & Bitmask', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 3/10',
     titleLines: ['A Lane is not just', 'a priority number —', 'it is a work set'],
     highlight: 'it is a work set',
     subtitle: 'React represents many kinds of pending work simultaneously as one bitmask.',

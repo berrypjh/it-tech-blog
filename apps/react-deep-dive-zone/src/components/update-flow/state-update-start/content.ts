@@ -152,7 +152,7 @@ function Counter() {
 
 const ko: StateUpdateStartContent = {
   hero: {
-    badge: 'CHAPTER 25',
+    badge: '업데이트 시작 · 1/10단계',
     title: {
       line1: 'setState를 호출해도',
       line2: 'DOM은 즉시 바뀌지 않습니다.',
@@ -339,7 +339,7 @@ const ko: StateUpdateStartContent = {
 
 const en: StateUpdateStartContent = {
   hero: {
-    badge: 'CHAPTER 25',
+    badge: 'Update Flow · 1/10',
     title: {
       line1: 'Calling setState does not',
       line2: 'change the DOM immediately.',

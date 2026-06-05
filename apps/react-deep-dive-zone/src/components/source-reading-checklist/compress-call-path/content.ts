@@ -164,7 +164,7 @@ export type CallPathCompressionContent = {
 export const callPathCompressionContent: Record<Locale, CallPathCompressionContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 6/10단계',
       titleLines: ['업데이트 흐름은', '한 줄 호출 경로로 복원한다'],
       accentTail: '한 줄 호출 경로로 복원한다',
       description: '수십 개의 함수를 읽어도, 마지막에는 핵심 흐름을 한 줄로 말할 수 있어야 합니다.',
@@ -445,7 +445,7 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 6/10',
       titleLines: ['Restore the update flow', 'as a single call path'],
       accentTail: 'as a single call path',
       description:

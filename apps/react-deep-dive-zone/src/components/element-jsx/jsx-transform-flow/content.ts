@@ -62,7 +62,6 @@ export type QuizCard = {
 export type JsxTransformFlowContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -159,8 +158,7 @@ export type JsxTransformFlowContent = {
 
 const ko: JsxTransformFlowContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'JSX 변환 흐름 이해하기',
+    badge: 'Element와 JSX · 2/10단계',
     title: { line1: 'JSX는', line2: '그대로 실행되지 않습니다.' },
     description:
       '컴파일러는 JSX를 React가 실행할 수 있는 함수 호출 코드로 바꿉니다. 이 페이지에서 그 흐름을 단계별로 따라갑니다.',
@@ -390,8 +388,7 @@ const ko: JsxTransformFlowContent = {
 
 const en: JsxTransformFlowContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'How JSX is transformed',
+    badge: 'Elements & JSX · 2/10',
     title: { line1: 'JSX does not', line2: 'run as-is.' },
     description:
       'A compiler turns JSX into function-call code that React can run. This page walks through that flow step by step.',

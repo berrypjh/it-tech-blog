@@ -53,7 +53,7 @@ export type FlowStep = {
 
 export type CommitPhaseIntroContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: {
       line1: string;
       line2: string;
@@ -469,10 +469,7 @@ const flagRowsEn: FlagRow[] = [
 
 const ko: CommitPhaseIntroContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 20', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 1/10단계',
     title: {
       line1: 'React는 계산을',
       line2: '마친 뒤에야',
@@ -644,10 +641,7 @@ const ko: CommitPhaseIntroContent = {
 
 const en: CommitPhaseIntroContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 20', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 1/10',
     title: {
       line1: 'React only changes',
       line2: 'the screen after',

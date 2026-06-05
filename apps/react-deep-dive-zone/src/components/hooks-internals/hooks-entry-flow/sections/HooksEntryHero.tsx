@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { HooksEntryFlowContent } from '../content';
 import { ArrowRightIcon, CodeIcon, SparklesIcon } from '../icons';
 
@@ -41,65 +46,30 @@ const renderCounterCode = (code: string) => {
 };
 
 export const HooksEntryHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react/hooks/entry-flow.md"
-      suffix={
-        <span className="text-[var(--term-dim)]"> {'// public Hook → Dispatcher → impl'}</span>
-      }
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react/hooks/entry-flow.md"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]"> {'// public Hook → Dispatcher → impl'}</span>
+    }
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    {/* Top badges */}
-    <ul className="mt-md flex flex-wrap items-center gap-2">
-      {content.badges.map((badge) => (
-        <li
-          key={badge.label}
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-            'text-[10px] font-mono font-bold uppercase tracking-wider',
-            badge.tone === 'blue' &&
-              'bg-blue-600 text-white dark:bg-blue-500 dark:text-white shadow-[0_1px_0_var(--term-border)]',
-            badge.tone === 'cyan' &&
-              'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-          )}
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              'block h-1.5 w-1.5 rounded-full',
-              badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-            )}
-          />
-          {badge.label}
-        </li>
-      ))}
-    </ul>
+      <HeroTitle>
+        <span className="block">{content.title}</span>
+      </HeroTitle>
 
-    {/* Heading + description */}
-    <div className="mt-md flex flex-col gap-md max-w-[60ch]">
-      <h1
-        id="hero-heading"
-        className={cn(
-          'text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem]',
-          'font-bold leading-[1.12] tracking-tight text-[var(--term-fg)] break-keep',
-        )}
-      >
-        {content.title}
-      </h1>
-      <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep">
-        {content.description}
-      </p>
-    </div>
+      <HeroDescription>{content.description}</HeroDescription>
 
-    {/* Two-column hero cards */}
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
       {/* Left: code card */}
       <article
         className={cn(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          'transition-colors hover:border-sky-300/70 dark:hover:border-sky-700/70',
+          'transition-colors hover:border-[var(--term-accent)]',
         )}
       >
         <header className="flex items-center justify-between gap-2">
@@ -127,8 +97,10 @@ export const HooksEntryHero = ({ content }: Props) => (
           </div>
         </div>
       </article>
+    </HeroTextColumn>
 
-      {/* Right: entry flow card */}
+    <HeroVisualColumn id="hero-visual">
+      {/* Entry flow card */}
       <article
         className={cn(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
@@ -175,6 +147,6 @@ export const HooksEntryHero = ({ content }: Props) => (
           ))}
         </ol>
       </article>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );

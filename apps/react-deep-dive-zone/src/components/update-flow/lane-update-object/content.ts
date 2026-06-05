@@ -183,7 +183,7 @@ const structureCodeKo = `const update = {
 
 const ko: LaneUpdateObjectContent = {
   hero: {
-    badge: 'CHAPTER 28',
+    badge: '업데이트 시작 · 4/10단계',
     categoryPills: [
       { label: 'React 내부 구조', tone: 'sky' },
       { label: '상태 업데이트 흐름', tone: 'emerald' },
@@ -414,7 +414,7 @@ const ko: LaneUpdateObjectContent = {
 
 const en: LaneUpdateObjectContent = {
   hero: {
-    badge: 'CHAPTER 28',
+    badge: 'Update Flow · 4/10',
     categoryPills: [
       { label: 'React internals', tone: 'sky' },
       { label: 'State update flow', tone: 'emerald' },

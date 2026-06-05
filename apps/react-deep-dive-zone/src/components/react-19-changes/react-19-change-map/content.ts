@@ -91,7 +91,7 @@ export type LinkButton = { label: string; href: string };
 
 export type React19ChangeMapContent = {
   hero: {
-    badge: { number: string; label: string };
+    badge: string;
     titleLines: [string, string];
     subtitleLines: [string, string, string];
     diagram: {
@@ -197,7 +197,7 @@ export type React19ChangeMapContent = {
 
 const ko: React19ChangeMapContent = {
   hero: {
-    badge: { number: '01', label: '하이브: 변화의 전체 구조 보기' },
+    badge: 'React 19 변화 · 1/10단계',
     titleLines: ['React 19는 무엇이 달라졌고,', '어떤 기준으로 읽어야 할까?'],
     subtitleLines: [
       '신기능 목록을 외우는 대신,',
@@ -577,7 +577,7 @@ const ko: React19ChangeMapContent = {
 
 const en: React19ChangeMapContent = {
   hero: {
-    badge: { number: '01', label: 'Hive · See the whole change structure' },
+    badge: 'React 19 Changes · 1/10',
     titleLines: ['What changed in React 19,', 'and how should we read it?'],
     subtitleLines: [
       'Instead of memorizing a list of new features,',

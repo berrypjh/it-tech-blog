@@ -53,7 +53,7 @@ export type DescendCompleteExplanation = {
 
 export type PerformUnitContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -136,10 +136,7 @@ const CODE_LINES = `function performUnitOfWork(unitOfWork) {
 
 const ko: PerformUnitContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 12', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 3/10단계',
     title: {
       line1: 'Render Phase의',
       line2: '최소 실행 단위는',
@@ -329,10 +326,7 @@ const ko: PerformUnitContent = {
 
 const en: PerformUnitContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 12', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 3/10',
     title: {
       line1: 'The smallest unit of',
       line2: 'the Render Phase',

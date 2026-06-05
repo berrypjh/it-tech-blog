@@ -67,7 +67,7 @@ export type ModernStep = {
 
 export type CommitRootContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -539,10 +539,7 @@ const modernStepsEn: ModernStep[] = [
 
 const ko: CommitRootContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 21', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 2/10단계',
     title: {
       line1: 'finishedWork는',
       line2: 'commitRoot를 통해',
@@ -646,10 +643,7 @@ const ko: CommitRootContent = {
 
 const en: CommitRootContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 21', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 2/10',
     title: {
       line1: 'finishedWork enters',
       line2: 'the real apply step',

@@ -41,7 +41,7 @@ export type LabState = {
 
 export type DispatchSelectionContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     examples: { name: string; tag: string; tone: PriorityKey }[];
@@ -172,10 +172,7 @@ function createEventListenerWrapperWithPriority(
 
 const ko: DispatchSelectionContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 원리', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 4/10단계',
     titleLines: ['React는 모든 이벤트를', '같은 급도로 처리하지 않는다'],
     description:
       'click은 즉각적이고, mousemove는 연속적이며, 일부 이벤트는 기본 우선순위로 처리됩니다.',
@@ -512,10 +509,7 @@ const ko: DispatchSelectionContent = {
 
 const en: DispatchSelectionContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System How-It-Works', tone: 'cyan' },
-    ],
+    badge: 'Event System · 4/10',
     titleLines: ['React does not treat every event', 'with the same urgency'],
     description:
       'click is immediate, mousemove is continuous, and some events are simply handled at default priority.',

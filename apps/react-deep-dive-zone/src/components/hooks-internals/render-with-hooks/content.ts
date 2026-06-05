@@ -45,7 +45,7 @@ export type SummaryItem = {
 
 export type RenderWithHooksContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -152,10 +152,7 @@ export default function Counter() {
 
 const ko: RenderWithHooksContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '심화 단계', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 2/10단계',
     titleLine1: 'Hooks가 동작하는 무대:',
     titleAccent: 'renderWithHooks',
     description:
@@ -384,10 +381,7 @@ const ko: RenderWithHooksContent = {
 
 const en: RenderWithHooksContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Deep Dive', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 2/10',
     titleLine1: 'Where Hooks actually run:',
     titleAccent: 'renderWithHooks',
     description:

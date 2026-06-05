@@ -55,7 +55,7 @@ export type SummaryItem = {
 
 export type UseReducerSharedContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -154,10 +154,7 @@ const UPDATE_STATE_CODE = `function updateState(initialState) {
 
 const ko: UseReducerSharedContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Hook 공통 구조', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 6/10단계',
     titleLine1: 'useState와 useReducer는',
     titleAccent: '같은 뿌리를 공유한다',
     description:
@@ -424,10 +421,7 @@ const ko: UseReducerSharedContent = {
 
 const en: UseReducerSharedContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Hook Common Structure', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 6/10',
     titleLine1: 'useState and useReducer',
     titleAccent: 'share the same root',
     description:

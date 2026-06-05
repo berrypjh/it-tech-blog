@@ -174,7 +174,7 @@ export const OffscreenComponent = 16;`;
 
 const ko: FiberIdentityFieldsContent = {
   hero: {
-    badge: 'CHAPTER 14',
+    badge: 'Fiber 트리 · 2/10단계',
     title: {
       line1: 'Fiber는 자기 정체성을',
       line2: '여러 필드로 나누어 저장합니다.',
@@ -396,7 +396,7 @@ const ko: FiberIdentityFieldsContent = {
 
 const en: FiberIdentityFieldsContent = {
   hero: {
-    badge: 'CHAPTER 14',
+    badge: 'Fiber Tree · 2/10',
     title: {
       line1: 'A Fiber stores its identity',
       line2: 'across several fields.',

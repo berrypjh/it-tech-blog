@@ -149,7 +149,7 @@ export type FunctionClassComponentFiberContent = {
 
 const ko: FunctionClassComponentFiberContent = {
   hero: {
-    badge: 'CHAPTER 9',
+    badge: 'Fiber 생성 · 5/10단계',
     title: {
       line1: 'type이 함수라고 해서',
       line2: '항상 Function Component는 아닙니다.',
@@ -391,7 +391,7 @@ const ko: FunctionClassComponentFiberContent = {
 
 const en: FunctionClassComponentFiberContent = {
   hero: {
-    badge: 'CHAPTER 9',
+    badge: 'Element → Fiber · 5/10',
     title: {
       line1: 'A function type does not mean',
       line2: 'a Function Component every time.',

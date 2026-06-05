@@ -72,7 +72,7 @@ export type NextChapterCard = {
 
 export type PassiveEffectsContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -452,10 +452,7 @@ const exampleCodeEn = exampleCodeKo;
 
 const ko: PassiveEffectsContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 30', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 10/10단계',
     title: {
       line1: 'Commit이 끝났다고',
       line2: '모든 effect 처리가',
@@ -561,10 +558,7 @@ const ko: PassiveEffectsContent = {
 
 const en: PassiveEffectsContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 30', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 10/10',
     title: {
       line1: 'Commit ending does not mean',
       line2: 'all effect work',

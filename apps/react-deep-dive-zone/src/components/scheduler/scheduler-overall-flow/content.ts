@@ -41,7 +41,7 @@ export type QuizItem = {
 
 export type FullFlowContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     highlight: string;
     subtitle: string;
@@ -149,10 +149,7 @@ export type FullFlowContent = {
 
 const ko: FullFlowContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Scheduler 전체 흐름', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 10/10단계',
     titleLines: ['Scheduler와 우선순위,', '이제 한 장으로 복원해보자'],
     highlight: '한 장으로 복원해보자',
     subtitle:
@@ -427,10 +424,7 @@ const ko: FullFlowContent = {
 
 const en: FullFlowContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Scheduler end-to-end recap', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 10/10',
     titleLines: ['Scheduler & priorities,', "let's restore the whole picture"],
     highlight: "let's restore the whole picture",
     subtitle:

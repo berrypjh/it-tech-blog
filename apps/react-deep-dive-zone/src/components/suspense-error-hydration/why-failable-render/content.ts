@@ -169,7 +169,7 @@ const HYDRATION_URL = `${REACT_REPO}/ReactFiberHydrationContext.js`;
 
 const ko: WhyFailableRenderContent = {
   hero: {
-    badge: 'React 렌더링 심화 시리즈 · Suspense / Error / Hydration',
+    badge: 'Suspense/Error · 1/10단계',
     titleLines: ['정상 렌더링만 이해하면', 'React의 절반만 이해한 것이다'],
     description:
       'React는 UI가 한 번에 완성되지 않아도 대기, 실패, 복구, 재시도 흐름을 렌더링 모델 안에서 처리합니다.',
@@ -552,7 +552,7 @@ const ko: WhyFailableRenderContent = {
 
 const en: WhyFailableRenderContent = {
   hero: {
-    badge: 'React Rendering Deep Dive · Suspense / Error / Hydration',
+    badge: 'Suspense·Error · 1/10',
     titleLines: ['Understanding only the happy path', 'means knowing half of React'],
     description:
       'React handles waiting, failing, recovery, and retry inside the same rendering model — even when the UI cannot finish in one pass.',

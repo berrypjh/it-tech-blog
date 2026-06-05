@@ -30,7 +30,7 @@ export type VisualNode = {
 
 export type ReconcileChildrenContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -135,10 +135,7 @@ const CODE = `function reconcileChildren(current, workInProgress, nextChildren, 
 
 const ko: ReconcileChildrenContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 16', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 7/10단계',
     title: {
       line1: '새 JSX 결과는',
       line2: 'reconcileChildren으로',
@@ -334,10 +331,7 @@ const ko: ReconcileChildrenContent = {
 
 const en: ReconcileChildrenContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 16', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 7/10',
     title: {
       line1: 'New JSX results',
       line2: 'flow into',

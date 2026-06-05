@@ -169,7 +169,7 @@ export type CorrectVersionDiffContent = {
 export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 9/10단계',
       titleLines: ['릴리즈 노트와 버전 태그를 함께 읽어야', '오래된 강의를 교정할 수 있다'],
       accentTail: '오래된 강의를 교정할 수 있다',
       description: '무엇을 읽는가만큼, 어느 버전의 코드를 읽는가가 중요합니다.',
@@ -467,7 +467,7 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 9/10',
       titleLines: ['You need release notes and version tags together', 'to correct old lectures'],
       accentTail: 'to correct old lectures',
       description:

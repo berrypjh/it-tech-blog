@@ -163,7 +163,7 @@ export type PhaseDetectionContent = {
 export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 5/10단계',
       titleLines: ['Render / Commit / Scheduling 중', '어디에 있는지 먼저 판별한다'],
       accentTail: '어디에 있는지 먼저 판별한다',
       description: "코드가 '무엇을 한다'보다 먼저, '언제 하는가'를 읽어야 합니다.",
@@ -448,7 +448,7 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 5/10',
       titleLines: ['Identify whether it is Render, Commit,', 'or Scheduling first'],
       accentTail: 'or Scheduling first',
       description: "Before 'what the code does,' read 'when it runs.'",

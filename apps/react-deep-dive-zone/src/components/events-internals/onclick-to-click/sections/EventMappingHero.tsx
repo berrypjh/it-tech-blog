@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { OnClickClickContent } from '../content';
 import { ArrowRightIcon, BracesIcon, GlobeIcon, LinkIcon } from '../icons';
 
@@ -58,103 +63,68 @@ export const EventMappingHero = ({ content }: Props) => {
   const lines = content.codeCard.code.split('\n');
 
   return (
-    <section aria-labelledby="hero-heading" className="relative">
-      <TerminalPrompt
-        command="cat"
-        path="react-dom/events/onclick-to-click.md"
-        suffix={
-          <span className="text-[var(--term-dim)]">
-            {' // click → onClick · focusin → onFocus · dblclick → onDoubleClick'}
-          </span>
-        }
-      />
+    <HeroSection
+      promptCommand="cat"
+      promptPath="react-dom/events/onclick-to-click.md"
+      promptSuffix={
+        <span className="text-[var(--term-dim)]">
+          {' // click → onClick · focusin → onFocus · dblclick → onDoubleClick'}
+        </span>
+      }
+      gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+    >
+      <HeroTextColumn>
+        <TerminalBadge size="md" className="w-fit">
+          {content.badge}
+        </TerminalBadge>
 
-      {/* Top badges */}
-      <ul className="mt-md flex flex-wrap items-center gap-2">
-        {content.badges.map((badge) => (
-          <li
-            key={badge.label}
-            className={cn(
-              'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-              'text-[10px] font-mono font-bold uppercase tracking-wider',
-              badge.tone === 'blue' &&
-                'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500',
-              badge.tone === 'cyan' &&
-                'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-            )}
-          >
-            <span
-              aria-hidden="true"
-              className={cn(
-                'block h-1.5 w-1.5 rounded-full',
-                badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-              )}
-            />
-            {badge.label}
-          </li>
-        ))}
-      </ul>
+        <HeroTitle>
+          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
+          <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+        </HeroTitle>
 
-      <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-stretch">
-        {/* LEFT */}
-        <div className="flex flex-col gap-md">
-          <h1
-            id="hero-heading"
-            className={cn(
-              'text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem]',
-              'font-bold leading-[1.14] tracking-tight break-keep',
-            )}
-          >
-            <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-            <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[1]}</span>
-          </h1>
+        <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
 
-          <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] break-keep max-w-[55ch]">
-            {content.description}
-          </p>
-
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
-            <div className="flex items-center justify-between gap-2 border-b border-slate-800 px-md py-2">
-              <div className="flex items-center gap-1.5">
-                <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
-                <span
-                  aria-hidden="true"
-                  className="block h-2.5 w-2.5 rounded-full bg-amber-300/80"
-                />
-                <span
-                  aria-hidden="true"
-                  className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80"
-                />
-                <span className="ml-2 text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                  {content.codeCard.fileLabel}
-                </span>
-              </div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                jsx
+        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
+          <div className="flex items-center justify-between gap-2 border-b border-slate-800 px-md py-2">
+            <div className="flex items-center gap-1.5">
+              <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
+              <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
+              <span
+                aria-hidden="true"
+                className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80"
+              />
+              <span className="ml-2 text-[10px] font-mono uppercase tracking-wider text-slate-500">
+                {content.codeCard.fileLabel}
               </span>
             </div>
-            <pre className="overflow-x-auto px-md py-md text-[12px] sm:text-xsm leading-[1.75] font-mono">
-              <code>
-                {lines.map((line, i) => {
-                  const tokens = line.split(/(\s+|[(){}[\];,.<>=/])/);
-                  return (
-                    <div key={i} className="flex">
-                      <span
-                        aria-hidden="true"
-                        className="select-none w-7 shrink-0 pr-3 text-right text-slate-600 tabular-nums"
-                      >
-                        {i + 1}
-                      </span>
-                      <span className="whitespace-pre">{tokens.map(renderHeroToken)}</span>
-                    </div>
-                  );
-                })}
-              </code>
-            </pre>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+              jsx
+            </span>
           </div>
+          <pre className="overflow-x-auto px-md py-md text-[12px] sm:text-xsm leading-[1.75] font-mono">
+            <code>
+              {lines.map((line, i) => {
+                const tokens = line.split(/(\s+|[(){}[\];,.<>=/])/);
+                return (
+                  <div key={i} className="flex">
+                    <span
+                      aria-hidden="true"
+                      className="select-none w-7 shrink-0 pr-3 text-right text-slate-600 tabular-nums"
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="whitespace-pre">{tokens.map(renderHeroToken)}</span>
+                  </div>
+                );
+              })}
+            </code>
+          </pre>
         </div>
+      </HeroTextColumn>
 
-        {/* RIGHT: mapping table diagram */}
+      <HeroVisualColumn>
+        {/* mapping table visual */}
         <article
           className={cn(
             'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
@@ -245,7 +215,7 @@ export const EventMappingHero = ({ content }: Props) => {
             </aside>
           </div>
         </article>
-      </div>
-    </section>
+      </HeroVisualColumn>
+    </HeroSection>
   );
 };

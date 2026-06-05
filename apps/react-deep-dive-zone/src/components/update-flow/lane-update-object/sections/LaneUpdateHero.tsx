@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { toneTokens } from '../../../shared/tones';
 import type {
   HeroFlowIconName,
@@ -17,7 +22,6 @@ import {
   HandIcon,
   Link2Icon,
   RouteIcon,
-  SparklesIcon,
 } from '../icons';
 
 type Props = { content: LaneUpdateObjectContent['hero'] };
@@ -36,114 +40,86 @@ const summaryIconMap: Record<HeroSummaryPill['iconName'], typeof CrosshairIcon> 
 };
 
 export const LaneUpdateHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="grep -n"
-      path="dispatchSetStateInternal"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' '}
-          packages/react-reconciler/src/ReactFiberHooks.js
-        </span>
-      }
-    />
+  <HeroSection
+    promptCommand="grep -n"
+    promptPath="dispatchSetStateInternal"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">
+        {' '}
+        packages/react-reconciler/src/ReactFiberHooks.js
+      </span>
+    }
+    gridColumns="lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)]"
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)] gap-xl lg:gap-2xl items-start">
-      {/* Left text */}
-      <div className="flex flex-col gap-md min-w-0">
-        <span
+      {/* Category pills */}
+      <ul className="flex flex-wrap items-center gap-2">
+        {content.categoryPills.map((pill) => {
+          const t = toneTokens[pill.tone];
+          return (
+            <li
+              key={pill.label}
+              className={cn(
+                'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5',
+                'text-[10px] font-mono uppercase tracking-wider',
+                t.chip,
+              )}
+            >
+              <span aria-hidden="true" className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} />
+              {pill.label}
+            </li>
+          );
+        })}
+      </ul>
+
+      <HeroTitle>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
+      </HeroTitle>
+
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
+
+      {/* CTA buttons */}
+      <div className="flex flex-wrap items-center gap-2 pt-2">
+        <a
+          href="#requestlane"
           className={cn(
-            'inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1',
-            'text-xxsm font-bold uppercase tracking-wider',
-            'border-sky-300/80 bg-sky-50 text-sky-700',
-            'dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200',
+            'group inline-flex items-center gap-2 rounded-md px-4 py-2',
+            'bg-sky-600 text-white text-xsm font-bold tracking-tight',
+            'transition-colors hover:bg-sky-700',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+            'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
           )}
         >
-          <SparklesIcon className="h-3.5 w-3.5" aria-hidden="true" />
-          {content.badge}
-        </span>
-
-        {/* Category pills */}
-        <ul className="flex flex-wrap items-center gap-2">
-          {content.categoryPills.map((pill) => {
-            const t = toneTokens[pill.tone];
-            return (
-              <li
-                key={pill.label}
-                className={cn(
-                  'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5',
-                  'text-[10px] font-mono uppercase tracking-wider',
-                  t.chip,
-                )}
-              >
-                <span aria-hidden="true" className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} />
-                {pill.label}
-              </li>
-            );
-          })}
-        </ul>
-
-        <h1
-          id="hero-heading"
+          {content.ctaPrimary}
+          <ArrowRightIcon
+            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </a>
+        <a
+          href="#checkpoint"
           className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem]',
-            'font-bold leading-[1.18] tracking-tight text-[var(--term-fg)] break-keep',
+            'inline-flex items-center gap-2 rounded-md border px-4 py-2',
+            'border-sky-300/80 bg-white text-sky-700 text-xsm font-bold tracking-tight',
+            'transition-colors hover:bg-sky-50',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
+            'dark:border-sky-700/70 dark:bg-slate-950/50 dark:text-sky-200 dark:hover:bg-sky-950/40',
           )}
         >
-          <span className="block">{content.title.line1}</span>
-          <span
-            className={cn(
-              'block bg-gradient-to-r from-sky-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent',
-              'dark:from-sky-300 dark:via-cyan-300 dark:to-teal-300',
-            )}
-          >
-            {content.title.line2}
-          </span>
-        </h1>
-
-        <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] max-w-[60ch] break-keep">
-          {content.description}
-        </p>
-
-        {/* CTA buttons */}
-        <div className="flex flex-wrap items-center gap-2 pt-2">
-          <a
-            href="#requestlane"
-            className={cn(
-              'group inline-flex items-center gap-2 rounded-md px-4 py-2',
-              'bg-sky-600 text-white text-xsm font-bold tracking-tight',
-              'transition-colors hover:bg-sky-700',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
-            )}
-          >
-            {content.ctaPrimary}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href="#checkpoint"
-            className={cn(
-              'inline-flex items-center gap-2 rounded-md border px-4 py-2',
-              'border-sky-300/80 bg-white text-sky-700 text-xsm font-bold tracking-tight',
-              'transition-colors hover:bg-sky-50',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
-              'dark:border-sky-700/70 dark:bg-slate-950/50 dark:text-sky-200 dark:hover:bg-sky-950/40',
-            )}
-          >
-            {content.ctaSecondary}
-          </a>
-        </div>
+          {content.ctaSecondary}
+        </a>
       </div>
+    </HeroTextColumn>
 
-      {/* Right diagram */}
-      <div className="order-first lg:order-none min-w-0">
-        <HeroDiagram content={content} />
-      </div>
-    </div>
-  </section>
+    <HeroVisualColumn className="min-w-0">
+      <HeroDiagram content={content} />
+    </HeroVisualColumn>
+  </HeroSection>
 );
 
 const HeroDiagram = ({ content }: { content: LaneUpdateObjectContent['hero'] }) => (

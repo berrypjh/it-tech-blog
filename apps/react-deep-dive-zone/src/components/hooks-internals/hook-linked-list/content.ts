@@ -56,7 +56,7 @@ export type SummaryItem = {
 
 export type HookLinkedListContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     titleLine2: string;
@@ -224,10 +224,7 @@ const HOOK_NODE_FIELDS = [
 
 const ko: HookLinkedListContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '실행 단계', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 3/10단계',
     titleLine1: 'Hooks는 Fiber 안에',
     titleAccent: '연결 리스트',
     titleLine2: '로 저장된다',
@@ -474,10 +471,7 @@ const ko: HookLinkedListContent = {
 
 const en: HookLinkedListContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Execution Stage', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 3/10',
     titleLine1: 'Hooks live inside a Fiber',
     titleAccent: 'as a linked list',
     titleLine2: '',

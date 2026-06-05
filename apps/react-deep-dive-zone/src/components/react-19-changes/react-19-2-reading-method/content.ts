@@ -121,7 +121,7 @@ export type LinkButton = { label: string; href: string };
 
 export type After192Content = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     subtitleLines: [string, string, string];
     cards: TimelineCard[];
@@ -267,10 +267,7 @@ const PRERENDER_HTML = `<html>
 
 const ko: After192Content = {
   hero: {
-    badges: [
-      { label: 'React 19 학습 완성', tone: 'soft' },
-      { label: '19.2 이후 변화 읽기', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 10/10단계',
     titleLines: ['React 19.2 이후 변화는', '어떻게 읽어야 할까?'],
     subtitleLines: [
       '새 API를 하나씩 외우기보다,',
@@ -664,10 +661,7 @@ const ko: After192Content = {
 
 const en: After192Content = {
   hero: {
-    badges: [
-      { label: 'React 19 course wrap-up', tone: 'soft' },
-      { label: 'Reading after 19.2', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 10/10',
     titleLines: ['How should we read', "React's changes after 19.2?"],
     subtitleLines: [
       'Rather than memorizing each new API,',

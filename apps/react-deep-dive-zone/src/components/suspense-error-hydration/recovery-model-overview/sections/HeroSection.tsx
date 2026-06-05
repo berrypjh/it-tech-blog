@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection as HeroShell } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { RecoveryModelOverviewContent } from '../content';
 import {
   CompassIcon,
@@ -42,61 +47,29 @@ const outputIcon: Record<Domain, React.ComponentType<{ className?: string }>> = 
 };
 
 export const HeroSection = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="suspense-error-hydration/recap.md"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' // 5 inputs → Recovery Model → 4 outputs'}
-        </span>
-      }
-    />
+  <HeroShell
+    promptCommand="cat"
+    promptPath="suspense-error-hydration/recap.md"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">{' // 5 inputs → Recovery Model → 4 outputs'}</span>
+    }
+    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <div className="mt-md grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
-      {/* LEFT title */}
-      <div className="flex flex-col gap-md">
-        <ul className="flex flex-wrap items-center gap-2">
-          {content.badges.map((badge) => (
-            <li
-              key={badge.label}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-                'text-[10px] font-mono font-bold uppercase tracking-wider',
-                badge.tone === 'solid'
-                  ? 'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500'
-                  : 'border border-blue-300/80 bg-blue-50 text-blue-700 dark:border-blue-700/70 dark:bg-blue-950/50 dark:text-blue-200',
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'block h-1.5 w-1.5 rounded-full',
-                  badge.tone === 'solid' ? 'bg-white/90' : 'bg-blue-500 dark:bg-blue-400',
-                )}
-              />
-              {badge.label}
-            </li>
-          ))}
-        </ul>
+      <HeroTitle>
+        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+      </HeroTitle>
 
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.4rem] xl:text-[2.8rem]',
-            'font-bold leading-[1.16] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[1]}</span>
-        </h1>
+      <HeroDescription maxWidth="max-w-[42ch]">{content.description}</HeroDescription>
+    </HeroTextColumn>
 
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep max-w-[42ch]">
-          {content.description}
-        </p>
-      </div>
-
-      {/* RIGHT diagram */}
+    <HeroVisualColumn>
+      {/* diagram */}
       <div className="flex flex-col gap-3">
         {/* inputs */}
         <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
@@ -214,6 +187,6 @@ export const HeroSection = ({ content }: Props) => (
           })}
         </ul>
       </div>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroShell>
 );

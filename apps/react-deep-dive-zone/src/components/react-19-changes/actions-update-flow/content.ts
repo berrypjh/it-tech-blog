@@ -96,7 +96,7 @@ export type LinkButton = { label: string; href: string };
 
 export type ActionsUpdateFlowContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string, string];
     diagram: {
@@ -194,10 +194,7 @@ export type ActionsUpdateFlowContent = {
 
 const ko: ActionsUpdateFlowContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'soft' },
-      { label: 'React 19 Actions', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 2/10단계',
     titleLines: ['Actions는 왜', '단순한 폼 API가 아니라', '업데이트 모델의 확장일까?'],
     subtitleLines: [
       'React 19는 비동기 UI 업데이트를',
@@ -588,10 +585,7 @@ const ko: ActionsUpdateFlowContent = {
 
 const en: ActionsUpdateFlowContent = {
   hero: {
-    badges: [
-      { label: 'React deep dive', tone: 'soft' },
-      { label: 'React 19 Actions', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 2/10',
     titleLines: ['Why Actions are not', 'just a form API but an', 'extension of the update model?'],
     subtitleLines: [
       'React 19 lets you handle async UI updates',

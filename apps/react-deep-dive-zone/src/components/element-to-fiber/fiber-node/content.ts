@@ -110,7 +110,7 @@ export type FiberStoredInformationContent = {
 
 const ko: FiberStoredInformationContent = {
   hero: {
-    badge: '01',
+    badge: 'Fiber 생성 · 9/10단계',
     title: {
       line1: 'Fiber는 Element를',
       line2: '복사한 객체가 아닙니다.',
@@ -333,7 +333,7 @@ const ko: FiberStoredInformationContent = {
 
 const en: FiberStoredInformationContent = {
   hero: {
-    badge: '01',
+    badge: 'Element → Fiber · 9/10',
     title: {
       line1: 'A Fiber is not',
       line2: 'a copy of the Element.',

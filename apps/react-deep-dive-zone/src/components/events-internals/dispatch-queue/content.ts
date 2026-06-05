@@ -26,7 +26,7 @@ export type FlowStep = {
 
 export type DispatchQueueOrderContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     listenerTitle: string;
@@ -200,10 +200,7 @@ const COLLECTED_EN: CollectedListener[] = [
 
 const ko: DispatchQueueOrderContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 심화', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 9/10단계',
     titleLines: ['React는 listener를 찾는 즉시', '바로 실행하지 않는다'],
     description:
       '먼저 dispatchQueue를 만들고, phase 규칙에 따라 정해진 순서로 handler를 실행합니다.',
@@ -504,10 +501,7 @@ const ko: DispatchQueueOrderContent = {
 
 const en: DispatchQueueOrderContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Deep Dive', tone: 'cyan' },
-    ],
+    badge: 'Event System · 9/10',
     titleLines: ['React does not run a listener', 'the instant it finds one'],
     description:
       'It first builds a dispatchQueue and then runs handlers in the order dictated by phase rules.',

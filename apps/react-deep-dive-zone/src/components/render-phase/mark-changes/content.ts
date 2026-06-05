@@ -68,7 +68,7 @@ export type FlagsAndReorderContent = {
 
 export type MarkChangesContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -135,10 +135,7 @@ export type MarkChangesContent = {
 
 const ko: MarkChangesContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 18', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 9/10단계',
     title: {
       line1: 'Render Phase는',
       line2: '변경을 직접 실행하지 않고,',
@@ -378,10 +375,7 @@ const ko: MarkChangesContent = {
 
 const en: MarkChangesContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 18', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 9/10',
     title: {
       line1: 'The Render Phase',
       line2: 'does not change the DOM —',

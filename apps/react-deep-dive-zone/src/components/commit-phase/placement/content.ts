@@ -43,7 +43,7 @@ export type HostBullet = {
 
 export type PlacementContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insightLabel: string;
@@ -273,10 +273,7 @@ const codeEn = codeKo;
 
 const ko: PlacementContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 24', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 5/10단계',
     title: {
       line1: 'Placement flag는',
       line2: '실제 DOM 삽입으로',
@@ -385,10 +382,7 @@ const ko: PlacementContent = {
 
 const en: PlacementContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 24', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 5/10',
     title: {
       line1: 'Placement flags become',
       line2: 'real DOM',

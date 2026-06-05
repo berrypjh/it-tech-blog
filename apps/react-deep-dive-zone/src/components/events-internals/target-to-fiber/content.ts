@@ -25,7 +25,7 @@ export type LabResult = {
 
 export type TargetFiberContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     domCard: {
@@ -168,10 +168,7 @@ const HOST_FIBER_ROWS: FiberRow[] = [
 
 const ko: TargetFiberContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: '이벤트 시스템 2/6', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 5/10단계',
     titleLines: ['event.target은 DOM,', 'React는 Fiber를 원한다'],
     description:
       '브라우저는 DOM 요소를 알려주지만, React는 그 DOM을 가장 가까운 Fiber 노드로 해석합니다.',
@@ -373,10 +370,7 @@ const ko: TargetFiberContent = {
 
 const en: TargetFiberContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System 2/6', tone: 'cyan' },
-    ],
+    badge: 'Event System · 5/10',
     titleLines: ['event.target is DOM,', 'React wants a Fiber'],
     description:
       'The browser hands you a DOM element, but React reinterprets it as the closest Fiber node.',

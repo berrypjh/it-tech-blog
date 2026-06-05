@@ -182,7 +182,7 @@ const createRootCode = `export function createRoot(container, options) {
 export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
   ko: {
     hero: {
-      badge: '01 · react / react-dom 이해하기',
+      badge: '저장소 구조 · 4/10단계',
       title: { line1: 'React와 React DOM은', line2: '역할이 다릅니다.' },
       description:
         'react는 컴포넌트와 상태를 설명하는 API를 제공하고, react-dom은 그 결과를 브라우저 DOM에 연결합니다.',
@@ -416,7 +416,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand react vs react-dom',
+      badge: 'Repo Structure · 4/10',
       title: { line1: 'React and React DOM', line2: 'play different roles.' },
       description:
         'react provides APIs that describe components and state, while react-dom connects those descriptions to the browser DOM.',

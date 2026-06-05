@@ -254,7 +254,7 @@ const HERO_FIBER_FIELDS_EN: CodeField[] = [
 export const reconcilerContent: Record<Locale, ReconcilerContent> = {
   ko: {
     hero: {
-      badge: '01 · react-reconciler 이해하기',
+      badge: '패키지 구조 · 4/10단계',
       title: {
         line1: 'React 내부 렌더링을',
         line2: '읽고 싶다면,',
@@ -456,7 +456,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand react-reconciler',
+      badge: 'Packages · 4/10',
       title: {
         line1: 'If you want to read',
         line2: 'React internals,',

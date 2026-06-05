@@ -97,7 +97,7 @@ export type LinkButton = { label: string; href: string };
 
 export type UseSuspenseErrorModelContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string];
     heroCode: {
@@ -224,10 +224,7 @@ export type UseSuspenseErrorModelContent = {
 
 const ko: UseSuspenseErrorModelContent = {
   hero: {
-    badges: [
-      { label: 'React 19 신화 학습', tone: 'soft' },
-      { label: 'use() 선언 이해', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 4/10단계',
     titleLines: ['use()는 Suspense /', 'Error Boundary 흐름에', '무엇을 추가했나?'],
     subtitleLines: ['React 19는 렌더 중 리소스를 읽는 흐름을', '공식 API로 끌어올렸습니다.'],
     heroCode: {
@@ -630,10 +627,7 @@ throw SuspenseException;`,
 
 const en: UseSuspenseErrorModelContent = {
   hero: {
-    badges: [
-      { label: 'React 19 deep dive', tone: 'soft' },
-      { label: 'Read use() declaratively', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 4/10',
     titleLines: ['What did use() add', 'to the Suspense / Error', 'Boundary flow?'],
     subtitleLines: [
       'React 19 promoted the "read a resource during render" flow',

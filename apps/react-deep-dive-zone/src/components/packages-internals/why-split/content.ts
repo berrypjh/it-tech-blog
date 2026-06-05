@@ -330,7 +330,7 @@ const enArchitecture: WhySplitContent['architecture'] = {
 export const whySplitContent: Record<Locale, WhySplitContent> = {
   ko: {
     hero: {
-      badge: '01 · React 아키텍처 이해하기',
+      badge: '패키지 구조 · 1/10단계',
       title: {
         line1: 'React는 하나의 패키지가',
         line2: '아니라, 역할이 분리된',
@@ -564,7 +564,7 @@ function App() {
   },
   en: {
     hero: {
-      badge: '01 · Understand React architecture',
+      badge: 'Packages · 1/10',
       title: {
         line1: 'React is not one package —',
         line2: 'it is a system of',

@@ -68,7 +68,6 @@ export type QuizCard = {
 export type ReactElementTypeMeaningContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2Accent: string; line2After: string };
     description: string;
     primaryCta: string;
@@ -151,8 +150,7 @@ export type ReactElementTypeMeaningContent = {
 
 const ko: ReactElementTypeMeaningContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'React Element 깊이 이해하기',
+    badge: 'Element와 JSX · 6/10단계',
     title: {
       line1: 'type은 이 Element가',
       line2Accent: '무엇을 의미하는지',
@@ -408,8 +406,7 @@ const ko: ReactElementTypeMeaningContent = {
 
 const en: ReactElementTypeMeaningContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Going deeper into React Element',
+    badge: 'Elements & JSX · 6/10',
     title: {
       line1: 'type tells you',
       line2Accent: 'what this Element means',

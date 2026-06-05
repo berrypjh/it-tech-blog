@@ -211,7 +211,7 @@ const checkpointCodeKo = `export type Fiber = {
 
 const ko: FiberNodeOverviewContent = {
   hero: {
-    badge: 'CHAPTER 13',
+    badge: 'Fiber 트리 · 1/10단계',
     title: {
       line1: 'Fiber는',
       line2: 'React 렌더링의',
@@ -525,7 +525,7 @@ const checkpointCodeEn = checkpointCodeKo;
 
 const en: FiberNodeOverviewContent = {
   hero: {
-    badge: 'CHAPTER 13',
+    badge: 'Fiber Tree · 1/10',
     title: {
       line1: 'Fiber is the',
       line2: 'fundamental unit of work',

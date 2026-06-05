@@ -96,7 +96,7 @@ export type FiberWhyNeededContent = {
 
 const ko: FiberWhyNeededContent = {
   hero: {
-    badge: '챕터 마무리',
+    badge: 'Fiber 생성 · 10/10단계',
     title: {
       line1: '왜 React는 Element에서',
       line2: '멈추지 않고 Fiber를 만들까?',
@@ -307,7 +307,7 @@ const ko: FiberWhyNeededContent = {
 
 const en: FiberWhyNeededContent = {
   hero: {
-    badge: 'Chapter wrap-up',
+    badge: 'Element → Fiber · 10/10',
     title: {
       line1: "Why doesn't React stop at the Element",
       line2: 'and instead build a Fiber?',

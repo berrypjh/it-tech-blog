@@ -56,7 +56,7 @@ export type SimulatorResult = {
 
 export type ErrorBoundaryRecoverContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     description: string;
     code: {
@@ -253,10 +253,7 @@ const THROW_CODE = `if (
 
 const ko: ErrorBoundaryRecoverContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 학습', tone: 'solid' },
-      { label: 'Error Boundary 내부 판단', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 5/10단계',
     titleLines: ['Error Boundary는', '렌더링 에러를 어떻게', '붙잡고 복구할까?'],
     description:
       'React는 실패한 자식 트리를 버리고, 가장 가까운 복구 경계를 기준으로 fallback UI를 다시 렌더링합니다.',
@@ -519,10 +516,7 @@ const ko: ErrorBoundaryRecoverContent = {
 
 const en: ErrorBoundaryRecoverContent = {
   hero: {
-    badges: [
-      { label: 'React internals', tone: 'solid' },
-      { label: 'Error Boundary decision', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 5/10',
     titleLines: ['How does an Error Boundary', 'catch and recover', 'render errors?'],
     description:
       'React drops the failed child tree and re-renders the fallback UI based on the nearest recovery boundary.',

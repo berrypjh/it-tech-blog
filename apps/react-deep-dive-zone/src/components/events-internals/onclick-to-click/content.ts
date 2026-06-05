@@ -22,7 +22,7 @@ export type TakeawayCard = {
 
 export type OnClickClickContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     codeCard: { fileLabel: string; code: string };
@@ -182,10 +182,7 @@ const CONVERTER_OPTIONS: ConverterOption[] = [
 
 const ko: OnClickClickContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 입문', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 3/10단계',
     titleLines: ['onClick과 click은', '같은 이름이 아니다'],
     description:
       'React는 사용자가 쓰는 prop 이름과 브라우저 native event 이름을 내부에서 연결합니다.',
@@ -380,10 +377,7 @@ const ko: OnClickClickContent = {
 
 const en: OnClickClickContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Intro', tone: 'cyan' },
-    ],
+    badge: 'Event System · 3/10',
     titleLines: ['onClick and click', 'are not the same name'],
     description:
       'React internally connects the prop name you write to the native event name fired by the browser.',

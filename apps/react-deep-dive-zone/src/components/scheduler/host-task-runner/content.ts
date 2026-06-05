@@ -59,7 +59,7 @@ export type LabAction = {
 
 export type SchedulerPackageContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string, string];
     highlight: string;
     subtitle: string;
@@ -185,10 +185,7 @@ const CODE_B_EN = `function unstable_scheduleCallback(priorityLevel, callback, o
 
 const ko: SchedulerPackageContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Scheduler 패키지', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 8/10단계',
     titleLines: ['React의 Root Scheduler와', 'scheduler 패키지는', '같은 것이 아니다'],
     highlight: '같은 것이 아니다',
     subtitle:
@@ -532,10 +529,7 @@ const ko: SchedulerPackageContent = {
 
 const en: SchedulerPackageContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Scheduler package', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 8/10',
     titleLines: ["React's Root Scheduler and", 'the scheduler package are', 'not the same thing'],
     highlight: 'not the same thing',
     subtitle:

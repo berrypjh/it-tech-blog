@@ -215,7 +215,7 @@ const PACKAGES_EN: PackageNode[] = [
 export const sharedContent: Record<Locale, SharedContent> = {
   ko: {
     hero: {
-      chapterBadge: 'CHAPTER 24',
+      chapterBadge: '패키지 구조 · 7/10단계',
       title: {
         line1: 'React 코드를 읽다 보면',
         line2: 'shared가 계속 등장합니다.',
@@ -391,7 +391,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
   },
   en: {
     hero: {
-      chapterBadge: 'CHAPTER 24',
+      chapterBadge: 'Packages · 7/10',
       title: {
         line1: 'When reading React source,',
         line2: 'shared keeps showing up.',

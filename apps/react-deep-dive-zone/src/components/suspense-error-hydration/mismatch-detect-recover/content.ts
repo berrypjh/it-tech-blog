@@ -63,7 +63,7 @@ export type TakeawayCard = {
 
 export type MismatchDetectRecoverContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     description: string;
     serverCard: {
@@ -193,10 +193,7 @@ const HYDRATION_URL =
 
 const ko: MismatchDetectRecoverContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'Hydration 내부 동작', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 8/10단계',
     titleLines: ['Hydration Mismatch는', '단순 경고가 아니라', '복구 분기다'],
     description:
       'React는 서버 DOM을 계속 재사용할 수 있는지 판단하고, 실패하면 복구 경로로 전환합니다.',
@@ -551,10 +548,7 @@ const ko: MismatchDetectRecoverContent = {
 
 const en: MismatchDetectRecoverContent = {
   hero: {
-    badges: [
-      { label: 'React deep dive', tone: 'solid' },
-      { label: 'Hydration internals', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 8/10',
     titleLines: ['Hydration Mismatch is not', 'a mere warning —', 'it is a recovery branch'],
     description:
       'React decides whether the server DOM can still be reused, and switches to the recovery path when it cannot.',

@@ -55,7 +55,6 @@ export type CompareRow = {
 export type ReactElementObjectStructureContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     primaryCta: string;
@@ -144,8 +143,7 @@ export type ReactElementObjectStructureContent = {
 
 const ko: ReactElementObjectStructureContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'React Element 구조 이해하기',
+    badge: 'Element와 JSX · 5/10단계',
     title: { line1: 'JSX의 실제 결과물은', line2: 'React Element 객체입니다.' },
     description:
       'Element는 화면이 아니라, React에게 무엇을 렌더링할지 설명하는 값입니다. 실제 DOM 노드가 아니라 렌더링 계산을 시작하기 위한 입력 객체입니다.',
@@ -398,8 +396,7 @@ const ko: ReactElementObjectStructureContent = {
 
 const en: ReactElementObjectStructureContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Understand the React Element shape',
+    badge: 'Elements & JSX · 5/10',
     title: { line1: 'The real output of JSX is', line2: 'a React Element object.' },
     description:
       'A React Element is not a screen — it is a value that tells React what to render. It is not a DOM node; it is the input object that starts a render computation.',

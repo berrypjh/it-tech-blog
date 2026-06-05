@@ -179,7 +179,7 @@ export function unstable_scheduleCallback(
 export const schedulerContent: Record<Locale, SchedulerContent> = {
   ko: {
     hero: {
-      badge: '01 · scheduler 이해하기',
+      badge: '패키지 구조 · 6/10단계',
       title: {
         line1: '모든 업데이트가',
         line2: '같은 긴급도를 가지지는',
@@ -419,7 +419,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understanding scheduler',
+      badge: 'Packages · 6/10',
       title: {
         line1: 'Not every update',
         line2: 'is equally urgent.',

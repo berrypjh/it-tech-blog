@@ -34,7 +34,7 @@ export type TakeawayCard = {
 
 export type HydrationStartContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     serverHtml: {
@@ -169,10 +169,7 @@ const THROW_URL =
 
 const ko: HydrationStartContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 동작 시리즈', tone: 'solid' },
-      { label: 'Part. Hydration 시작점', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 7/10단계',
     titleLines: ['Hydration은 DOM을 새로 만드는', '렌더링이 아니다'],
     description: '이미 있는 서버 HTML을 React Fiber 트리와 연결해가는 과정입니다.',
     serverHtml: {
@@ -369,10 +366,7 @@ const ko: HydrationStartContent = {
 
 const en: HydrationStartContent = {
   hero: {
-    badges: [
-      { label: 'React internals series', tone: 'solid' },
-      { label: 'Part. Hydration start', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 7/10',
     titleLines: ['Hydration is not a render', 'that creates new DOM'],
     description: 'It connects existing server HTML with the React Fiber tree.',
     serverHtml: {

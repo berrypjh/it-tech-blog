@@ -338,7 +338,7 @@ export {
 export const reactPackageContent: Record<Locale, ReactPackageContent> = {
   ko: {
     hero: {
-      badge: '01 · 히어로',
+      badge: '패키지 구조 · 2/10단계',
       title: {
         line1: 'react 패키지는 우리가',
         line2: '직접 호출하는 API의 입구입니다.',
@@ -565,7 +565,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
   },
   en: {
     hero: {
-      badge: '01 · hero',
+      badge: 'Packages · 2/10',
       title: {
         line1: 'The react package is the doorway',
         line2: 'to every API developers call directly.',

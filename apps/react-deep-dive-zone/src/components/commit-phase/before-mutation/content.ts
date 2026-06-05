@@ -56,7 +56,7 @@ export type ModernStep = {
 
 export type BeforeMutationContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -403,10 +403,7 @@ const modernStepsEn: ModernStep[] = [
 
 const ko: BeforeMutationContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 22', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 3/10단계',
     title: {
       line1: 'DOM이 바뀌기 직전,',
       line2: 'React는 먼저',
@@ -531,10 +528,7 @@ const ko: BeforeMutationContent = {
 
 const en: BeforeMutationContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 22', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 3/10',
     title: {
       line1: 'Right before the DOM changes,',
       line2: 'React first reads',

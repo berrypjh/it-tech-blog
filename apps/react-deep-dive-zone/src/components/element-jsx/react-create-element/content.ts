@@ -57,7 +57,6 @@ export type FieldCallout = {
 export type ReactCreateElementContent = {
   hero: {
     badge: string;
-    eyebrow: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     primaryCta: string;
@@ -152,8 +151,7 @@ export type ReactCreateElementContent = {
 
 const ko: ReactCreateElementContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'createElement 이해하기',
+    badge: 'Element와 JSX · 4/10단계',
     title: {
       line1: 'JSX를 쓴다고 해서',
       line2: 'createElement가',
@@ -389,8 +387,7 @@ const ko: ReactCreateElementContent = {
 
 const en: ReactCreateElementContent = {
   hero: {
-    badge: '01',
-    eyebrow: 'Understand createElement',
+    badge: 'Elements & JSX · 4/10',
     title: {
       line1: 'Using JSX does not',
       line2: 'make createElement',

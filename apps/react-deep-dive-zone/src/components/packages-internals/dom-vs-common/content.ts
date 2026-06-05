@@ -198,7 +198,7 @@ const REACT_DOM_ROOT_CODE = `export function createRoot(container, options) {
 export const dvcContent: Record<Locale, DvcContent> = {
   ko: {
     hero: {
-      badge: '01 · DOM 전용 코드와 renderer 공통 코드 이해하기',
+      badge: '패키지 구조 · 9/10단계',
       title: {
         line1: '모든 React 내부 코드가',
         line2: '웹 전용은 아닙니다.',
@@ -461,7 +461,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
   },
   en: {
     hero: {
-      badge: '01 · DOM-only code vs common renderer code',
+      badge: 'Packages · 9/10',
       title: {
         line1: 'Not every React internal',
         line2: 'is web-only.',

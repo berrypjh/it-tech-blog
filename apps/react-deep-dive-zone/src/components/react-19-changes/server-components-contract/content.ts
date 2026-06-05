@@ -98,7 +98,7 @@ export type LinkButton = { label: string; href: string };
 
 export type ServerComponentsContractContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string];
     diagram: {
@@ -214,10 +214,7 @@ export type ServerComponentsContractContent = {
 
 const ko: ServerComponentsContractContent = {
   hero: {
-    badges: [
-      { label: 'React 19 심화 학습', tone: 'soft' },
-      { label: 'Server Components 이해', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 7/10단계',
     titleLines: ['Server Components는', 'React 19에서 어떤 경계와', '계약을 안정화했나?'],
     subtitleLines: [
       '핵심은 서버에서 실행되는 컴포넌트가 아니라,',
@@ -606,10 +603,7 @@ export async function saveComment(formData: FormData) {
 
 const en: ServerComponentsContractContent = {
   hero: {
-    badges: [
-      { label: 'React 19 deep dive', tone: 'soft' },
-      { label: 'Server Components', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 7/10',
     titleLines: [
       'What boundaries and contracts',
       'did Server Components stabilize',

@@ -26,7 +26,7 @@ export type TakeawayCard = {
 
 export type RootNativeEventContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     codeCard: { fileLabel: string; code: string };
@@ -197,10 +197,7 @@ const FULL_LISTENERS: ListenerEntry[] = [
 
 const ko: RootNativeEventContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 입문', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 2/10단계',
     titleLines: ['React 앱이 시작될 때', '이벤트 시스템도 함께 준비된다'],
     description: 'onClick을 만나기 전부터 React root는 이벤트를 받을 준비를 합니다.',
     codeCard: { fileLabel: 'JSX', code: HERO_CODE },
@@ -373,10 +370,7 @@ const ko: RootNativeEventContent = {
 
 const en: RootNativeEventContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Intro', tone: 'cyan' },
-    ],
+    badge: 'Event System · 2/10',
     titleLines: ['When a React app starts', 'the event system gets ready too'],
     description:
       'Before any onClick is touched, the React root is already preparing to receive events.',

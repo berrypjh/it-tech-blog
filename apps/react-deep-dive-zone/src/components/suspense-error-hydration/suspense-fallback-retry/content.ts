@@ -53,7 +53,7 @@ export type TakeawayCard = {
 
 export type SuspenseFallbackRetryContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     description: string;
     code: {
@@ -195,10 +195,7 @@ attachPingListener(root, wakeable, rootRenderLanes);`;
 
 const ko: SuspenseFallbackRetryContent = {
   hero: {
-    badges: [
-      { label: 'React 심화 학습', tone: 'solid' },
-      { label: 'Suspense 내부 동작', tone: 'soft' },
-    ],
+    badge: 'Suspense/Error · 4/10단계',
     titleLines: ['Suspense는 어떻게', 'fallback으로 전환되고', '다시 원래 UI로 돌아올까?'],
     description:
       'React는 Boundary를 capture 대상으로 표시하고, Promise가 풀리면 retry render를 준비합니다.',
@@ -513,10 +510,7 @@ const ko: SuspenseFallbackRetryContent = {
 
 const en: SuspenseFallbackRetryContent = {
   hero: {
-    badges: [
-      { label: 'React Deep Dive', tone: 'solid' },
-      { label: 'Suspense internals', tone: 'soft' },
-    ],
+    badge: 'Suspense·Error · 4/10',
     titleLines: ['How does Suspense', 'switch to a fallback', 'and come back to the original UI?'],
     description:
       'React marks the Boundary as a capture target, and prepares a retry render once the Promise resolves.',

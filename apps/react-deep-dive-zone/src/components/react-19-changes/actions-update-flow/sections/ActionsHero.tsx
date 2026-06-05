@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { ActionsUpdateFlowContent } from '../content';
 import { AtomIcon } from '../icons';
 import { stateTone } from '../tone';
@@ -10,62 +15,33 @@ import { iconRegistry } from './_iconRegistry';
 type Props = { content: ActionsUpdateFlowContent['hero'] };
 
 export const ActionsHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="react-19-changes/actions-update-flow.md"
-      suffix={
-        <span className="text-[var(--term-dim)]">
-          {' // pending + error + form + optimistic → one declarative model'}
-        </span>
-      }
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="react-19-changes/actions-update-flow.md"
+    promptSuffix={
+      <span className="text-[var(--term-dim)]">
+        {' // pending + error + form + optimistic → one declarative model'}
+      </span>
+    }
+    gridColumns="lg:grid-cols-[minmax(0,_9fr)_minmax(0,_11fr)]"
+    align="center"
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <div className="mt-md grid grid-cols-1 gap-lg lg:gap-xl lg:grid-cols-[minmax(0,_9fr)_minmax(0,_11fr)] items-stretch">
-      {/* LEFT: badges + heading */}
-      <div className="flex flex-col gap-md">
-        <ul className="flex flex-wrap items-center gap-2">
-          {content.badges.map((badge) => (
-            <li
-              key={badge.label}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-                'text-[10px] font-mono font-bold uppercase tracking-wider',
-                badge.tone === 'solid'
-                  ? 'bg-blue-600 text-white shadow-[0_1px_0_var(--term-border)] dark:bg-blue-500'
-                  : 'border border-blue-300/80 bg-blue-50 text-blue-700 dark:border-blue-700/70 dark:bg-blue-950/50 dark:text-blue-200',
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'block h-1.5 w-1.5 rounded-full',
-                  badge.tone === 'solid' ? 'bg-white/90' : 'bg-blue-500 dark:bg-blue-400',
-                )}
-              />
-              {badge.label}
-            </li>
-          ))}
-        </ul>
+      <HeroTitle>
+        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
+        <span className="block text-[var(--term-fg)]">{content.titleLines[1]}</span>
+        <span className="block text-[var(--term-accent)]">{content.titleLines[2]}</span>
+      </HeroTitle>
 
-        <h1
-          id="hero-heading"
-          className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.4rem] xl:text-[2.7rem]',
-            'font-bold leading-[1.16] tracking-tight break-keep',
-          )}
-        >
-          <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-          <span className="block text-[var(--term-fg)]">{content.titleLines[1]}</span>
-          <span className="block text-blue-600 dark:text-blue-400">{content.titleLines[2]}</span>
-        </h1>
+      <HeroDescription maxWidth="max-w-[46ch]">{content.subtitleLines.join(' ')}</HeroDescription>
+    </HeroTextColumn>
 
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep max-w-[46ch]">
-          {content.subtitleLines.join(' ')}
-        </p>
-      </div>
-
-      {/* RIGHT: Action Orbit Diagram */}
+    <HeroVisualColumn className="w-full">
+      {/* Action Orbit Diagram */}
       <div
         className={cn(
           'relative rounded-2xl border-2 p-md sm:p-lg lg:p-xl overflow-hidden',
@@ -133,8 +109,8 @@ export const ActionsHero = ({ content }: Props) => (
           );
         })()}
       </div>
-    </div>
-  </section>
+    </HeroVisualColumn>
+  </HeroSection>
 );
 
 type OrbitCardProps = {

@@ -186,7 +186,7 @@ export type StartWithQuestionContent = {
 export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해법',
+      badge: '읽기 체크리스트 · 1/10단계',
       titleLines: ['소스코드 독해는', '파일이 아니라', '질문에서 시작한다'],
       accentLast: '질문에서 시작한다',
       description: '무엇을 읽을지 정하기 전에, 무엇을 알고 싶은지부터 정해야 합니다.',
@@ -503,7 +503,7 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
   },
   en: {
     hero: {
-      badge: 'React source reading',
+      badge: 'Reading Checklist · 1/10',
       titleLines: ['Reading source code', 'does not start from files,', 'it starts from questions'],
       accentLast: 'it starts from questions',
       description: 'Before deciding what to read, decide what you want to know.',

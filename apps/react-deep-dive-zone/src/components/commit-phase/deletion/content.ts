@@ -47,7 +47,7 @@ export type CleanupVsRemoveRow = {
 
 export type DeletionContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insightLabel: string;
@@ -492,10 +492,7 @@ const cleanupVsRemoveRowsEn: CleanupVsRemoveRow[] = [
 
 const ko: DeletionContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 26', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 7/10단계',
     title: {
       line1: '삭제는 DOM 제거',
       line2: '한 번으로 끝나지',
@@ -603,10 +600,7 @@ const ko: DeletionContent = {
 
 const en: DeletionContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 26', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 7/10',
     title: {
       line1: 'Deletion is not just',
       line2: 'one DOM',

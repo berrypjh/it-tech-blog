@@ -18,7 +18,7 @@ export type TakeawayCard = {
 
 export type SyntheticEventContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     description: string;
     code: { fileLabel: string; code: string };
@@ -234,10 +234,7 @@ const SYNTHETIC_PROPS_EN: PropertyRow[] = [
 
 const ko: SyntheticEventContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '이벤트 시스템 입문', tone: 'cyan' },
-    ],
+    badge: '이벤트 시스템 · 7/10단계',
     titleLines: ['handler가 받는 e는', '그냥 브라우저 Event일까?'],
     description:
       'React는 일관된 인터페이스를 제공하기 위해 SyntheticEvent 객체를 만들어 handler에 전달합니다.',
@@ -463,10 +460,7 @@ const ko: SyntheticEventContent = {
 
 const en: SyntheticEventContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Event System Intro', tone: 'cyan' },
-    ],
+    badge: 'Event System · 7/10',
     titleLines: ['Is the e your handler receives', 'just the browser Event?'],
     description:
       'React builds a SyntheticEvent object and passes it to your handler so the interface stays consistent.',

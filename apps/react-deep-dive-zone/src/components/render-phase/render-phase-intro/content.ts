@@ -46,7 +46,7 @@ export type WarningStep = {
 
 export type RenderPhaseIntroContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: {
       line1: string;
       line2: string;
@@ -329,10 +329,7 @@ const warningStepsEn: WarningStep[] = [
 
 const ko: RenderPhaseIntroContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 10', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 1/10단계',
     title: { line1: 'React는', line2: '먼저 계산하고,', line3: '그 다음에 반영합니다.' },
     description:
       'Render Phase는 다음 화면을 계산하는 단계이고, Commit Phase는 계산된 변경을 실제 환경에 반영하는 단계입니다.',
@@ -457,10 +454,7 @@ const ko: RenderPhaseIntroContent = {
 
 const en: RenderPhaseIntroContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 10', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 1/10',
     title: { line1: 'React computes first,', line2: 'then commits', line3: 'the changes.' },
     description:
       'The Render Phase computes the next screen. The Commit Phase applies the computed changes to the real environment.',

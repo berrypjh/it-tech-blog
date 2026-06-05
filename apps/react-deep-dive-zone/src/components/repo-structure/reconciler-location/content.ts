@@ -180,7 +180,7 @@ const elementSnippet = `{
 export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
   ko: {
     hero: {
-      badge: '01 · react-reconciler 이해하기',
+      badge: '저장소 구조 · 5/10단계',
       title: {
         line1: 'React 내부 렌더링을',
         line2: '읽고 싶다면, 결국',
@@ -412,7 +412,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand react-reconciler',
+      badge: 'Repo Structure · 5/10',
       title: {
         line1: 'If you want to read',
         line2: 'React’s internal renderer,',

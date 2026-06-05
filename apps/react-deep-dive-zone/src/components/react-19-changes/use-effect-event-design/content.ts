@@ -111,7 +111,7 @@ export type LegendItem = { label: string; legend: SimulatorStep['legend'] };
 
 export type UseEffectEventContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string];
     beforeCode: {
@@ -270,10 +270,7 @@ useEffect(() => {
 
 const ko: UseEffectEventContent = {
   hero: {
-    badges: [
-      { label: 'React 19.2 심화 학습', tone: 'soft' },
-      { label: 'useEffectEvent 이해', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 9/10단계',
     titleLines: ['useEffectEvent는', 'Effect 설계에 무엇을', '새로 추가했나?'],
     subtitleLines: [
       'Effect가 하는 일과 Effect 안에서',
@@ -658,10 +655,7 @@ const ko: UseEffectEventContent = {
 
 const en: UseEffectEventContent = {
   hero: {
-    badges: [
-      { label: 'React 19.2 deep dive', tone: 'soft' },
-      { label: 'useEffectEvent', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 9/10',
     titleLines: ['What did useEffectEvent', 'add to Effect design', 'in React 19.2?'],
     subtitleLines: [
       'An API for separating what an Effect does',

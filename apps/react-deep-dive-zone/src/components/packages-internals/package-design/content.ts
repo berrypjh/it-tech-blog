@@ -213,7 +213,7 @@ const MAIN_FLOW_EN: FlowNode[] = [
 export const packageDesignContent: Record<Locale, PackageDesignContent> = {
   ko: {
     hero: {
-      badge: '10 · 설계 의미 정리하기',
+      badge: '패키지 구조 · 10/10단계',
       title: {
         line1: '패키지 분리는',
         line2: 'React의 확장성을 만든',
@@ -455,7 +455,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
   },
   en: {
     hero: {
-      badge: '10 · design takeaways',
+      badge: 'Packages · 10/10',
       title: {
         line1: 'Package separation is',
         line2: 'the design choice that gave React',

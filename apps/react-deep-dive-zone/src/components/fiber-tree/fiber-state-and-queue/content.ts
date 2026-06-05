@@ -164,7 +164,7 @@ const checkpointCodeEn = `export type Fiber = {
 
 const ko: FiberStateAndQueueContent = {
   hero: {
-    badge: 'CHAPTER 19',
+    badge: 'Fiber 트리 · 6/10단계',
     title: {
       line1: '현재 상태와 대기 중인',
       line2: '업데이트는 같은 것이 아닙니다.',
@@ -413,7 +413,7 @@ const ko: FiberStateAndQueueContent = {
 
 const en: FiberStateAndQueueContent = {
   hero: {
-    badge: 'CHAPTER 19',
+    badge: 'Fiber Tree · 6/10',
     title: {
       line1: 'Current state and pending updates',
       line2: 'are not the same thing.',

@@ -65,7 +65,7 @@ export type LinkButton = { label: string; href: string };
 
 export type RefAsPropElementShapeContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     subtitleLines: [string, string];
     before: { label: string; langBadge: 'JSX'; code: string };
@@ -175,10 +175,7 @@ export type RefAsPropElementShapeContent = {
 
 const ko: RefAsPropElementShapeContent = {
   hero: {
-    badges: [
-      { label: 'React 19 심화 학습', tone: 'soft' },
-      { label: 'ref as prop 이해', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 5/10단계',
     titleLines: ['ref as prop은 React Element와', '컴포넌트 호출 경로를 어떻게 바꿨나?'],
     subtitleLines: ['React 19에서는 함수 컴포넌트도', 'ref를 일반 prop처럼 받을 수 있습니다.'],
     before: {
@@ -538,10 +535,7 @@ function CustomInput({
 
 const en: RefAsPropElementShapeContent = {
   hero: {
-    badges: [
-      { label: 'React 19 deep dive', tone: 'soft' },
-      { label: 'ref as prop', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 5/10',
     titleLines: ['How did ref as prop reshape React Element', 'and the component call path?'],
     subtitleLines: [
       'In React 19, function components can also',

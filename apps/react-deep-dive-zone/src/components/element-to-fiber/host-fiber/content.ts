@@ -144,7 +144,7 @@ const treeNodes: TreeNode[] = [
 
 const ko: HostComponentFiberContent = {
   hero: {
-    badge: 'CHAPTER 7',
+    badge: 'Fiber 생성 · 4/10단계',
     title: {
       line1: '<div />는',
       line2: '어떤 Fiber가 될까?',
@@ -338,7 +338,7 @@ const ko: HostComponentFiberContent = {
 
 const en: HostComponentFiberContent = {
   hero: {
-    badge: 'CHAPTER 7',
+    badge: 'Element → Fiber · 4/10',
     title: {
       line1: 'What kind of Fiber',
       line2: 'does <div /> become?',

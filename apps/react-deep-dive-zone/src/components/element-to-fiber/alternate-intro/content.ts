@@ -110,7 +110,7 @@ export type AlternateFiberContent = {
 
 const ko: AlternateFiberContent = {
   hero: {
-    badge: 'CHAPTER 12',
+    badge: 'Fiber 생성 · 8/10단계',
     title: {
       line1: '왜 Fiber에는',
       line2: 'alternate가 있을까?',
@@ -287,7 +287,7 @@ const ko: AlternateFiberContent = {
 
 const en: AlternateFiberContent = {
   hero: {
-    badge: 'CHAPTER 12',
+    badge: 'Element → Fiber · 8/10',
     title: {
       line1: 'Why does a Fiber',
       line2: 'have an alternate?',

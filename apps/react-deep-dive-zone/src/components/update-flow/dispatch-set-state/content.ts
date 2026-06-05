@@ -206,7 +206,7 @@ const checkpointCodeEn = `function mountState(initialState) {
 
 const ko: DispatchSetStateContent = {
   hero: {
-    badge: 'CHAPTER 26',
+    badge: '업데이트 시작 · 2/10단계',
     title: {
       line1: 'setState는 컴포넌트와',
       line2: '무관한 함수가 아닙니다.',
@@ -478,7 +478,7 @@ const ko: DispatchSetStateContent = {
 
 const en: DispatchSetStateContent = {
   hero: {
-    badge: 'CHAPTER 26',
+    badge: 'Update Flow · 2/10',
     title: {
       line1: 'setState is not a function',
       line2: 'detached from the component.',

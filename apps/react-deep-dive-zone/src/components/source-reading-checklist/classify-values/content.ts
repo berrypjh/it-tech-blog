@@ -188,7 +188,7 @@ this.alternate = null;`;
 export const valueClassificationContent: Record<Locale, ValueClassificationContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 4/10단계',
       titleLines: ['지금 보고 있는 값이 무엇인지', '먼저 분류한다'],
       accentTail: '먼저 분류한다',
       description:
@@ -489,7 +489,7 @@ export const valueClassificationContent: Record<Locale, ValueClassificationConte
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 4/10',
       titleLines: ['Classify the value', 'in front of you first'],
       accentTail: 'in front of you first',
       description:

@@ -70,7 +70,7 @@ export type PriorityTabScenario = {
 
 export type ThreePriorityAxesContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     subtitle: string;
     axes: AxisCard[];
@@ -196,10 +196,7 @@ const REACT_FIBER_WORK_LOOP_URL =
 
 const ko: ThreePriorityAxesContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '우선순위의 3가지 축', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 2/10단계',
     titleLines: ['React의 우선순위는', '하나가 아니다'],
     subtitle:
       '이벤트 문맥, 업데이트 저장 단위, 브라우저 task 실행 우선순위는 서로 다른 층위의 개념입니다.',
@@ -541,10 +538,7 @@ ko.overview.axes = ko.hero.axes;
 
 const en: ThreePriorityAxesContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Three Priority Axes', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 2/10',
     titleLines: ["React's priority is", 'not a single concept'],
     subtitle:
       'Event context, the internal update unit, and the browser task execution priority live at different layers.',

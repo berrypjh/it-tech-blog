@@ -77,7 +77,7 @@ export type DomLine = { indent: number; tag: string; zone: 'html' | 'head' | 'bo
 
 export type MetadataResourceContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string];
     subtitleLines: [string, string];
     heroCode: { fileName: string; langBadge: 'TSX'; code: string };
@@ -195,10 +195,7 @@ export type MetadataResourceContent = {
 
 const ko: MetadataResourceContent = {
   hero: {
-    badges: [
-      { label: 'React 19 심화 학습', tone: 'soft' },
-      { label: 'Metadata & Resources', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 6/10단계',
     titleLines: ['Metadata와 Resource Components는', 'react-dom의 역할을 어떻게 넓혔나?'],
     subtitleLines: [
       'React 19는 컴포넌트 트리 안의 문서 자원을',
@@ -612,10 +609,7 @@ getPublicInstance(...)`,
 
 const en: MetadataResourceContent = {
   hero: {
-    badges: [
-      { label: 'React 19 deep dive', tone: 'soft' },
-      { label: 'Metadata & Resources', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 6/10',
     titleLines: ['How did Metadata & Resource Components', "broaden react-dom's role?"],
     subtitleLines: [
       'React 19 wires document resources declared inside',

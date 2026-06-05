@@ -175,7 +175,7 @@ const spotlightCode = `it('should warn when key is spread', () => {
 export const testCodeContent: Record<Locale, TestCodeContent> = {
   ko: {
     hero: {
-      badge: '01 · 시작하기',
+      badge: '저장소 구조 · 8/10단계',
       title: {
         line1: '구현 코드는 "어떻게"를',
         line2: '보여주고, 테스트 코드는',
@@ -388,7 +388,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
   },
   en: {
     hero: {
-      badge: '01 · getting started',
+      badge: 'Repo Structure · 8/10',
       title: {
         line1: 'Implementation code shows',
         line2: '"how"; test code shows',

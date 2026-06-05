@@ -181,7 +181,7 @@ export type FollowPackageBoundaryContent = {
 export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 3/10단계',
       titleLines: ['패키지 경계를 먼저 읽어야', '길을 잃지 않는다'],
       accentTail: '길을 잃지 않는다',
       description: '파일명보다 먼저, 이 코드가 React의 어느 레이어에 속하는지 봅니다.',
@@ -531,7 +531,7 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 3/10',
       titleLines: ['Read package boundaries first', "so you don't get lost"],
       accentTail: "so you don't get lost",
       description: 'Before the filename, ask which layer of React this code belongs to.',

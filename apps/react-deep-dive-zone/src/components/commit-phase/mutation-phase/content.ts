@@ -53,7 +53,7 @@ export type ExtraPoint = {
 
 export type MutationPhaseContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -467,10 +467,7 @@ const extraEn: ExtraPoint[] = [
 
 const ko: MutationPhaseContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 23', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 4/10단계',
     title: {
       line1: '실제 DOM 변경은',
       line2: 'Mutation Phase에서',
@@ -589,10 +586,7 @@ const ko: MutationPhaseContent = {
 
 const en: MutationPhaseContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 23', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 4/10',
     title: {
       line1: 'Real DOM changes',
       line2: 'happen in the',

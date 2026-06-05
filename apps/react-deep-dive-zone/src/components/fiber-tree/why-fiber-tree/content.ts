@@ -93,7 +93,7 @@ export type FiberCentralContent = {
 
 const ko: FiberCentralContent = {
   hero: {
-    badge: 'CHAPTER COMPLETE',
+    badge: 'Fiber 트리 · 10/10단계',
     title: {
       line1: 'Fiber를 이해하면',
       line2: 'React 내부 렌더링의',
@@ -313,7 +313,7 @@ const ko: FiberCentralContent = {
 
 const en: FiberCentralContent = {
   hero: {
-    badge: 'CHAPTER COMPLETE',
+    badge: 'Fiber Tree · 10/10',
     title: {
       line1: 'Once you understand Fiber,',
       line2: 'half of React’s internal',

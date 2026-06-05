@@ -158,7 +158,7 @@ export type TestAsDocContent = {
 export const testAsDocContent: Record<Locale, TestAsDocContent> = {
   ko: {
     hero: {
-      badge: 'React 소스코드 독해 루틴',
+      badge: '읽기 체크리스트 · 7/10단계',
       titleLines: ['테스트 코드는', '구현 의도를 설명하는', '실행 가능한 문서다'],
       accentLine: '실행 가능한 문서다',
       description: '테스트를 읽으면 무엇을 보장하려는 구현인지 훨씬 빨리 이해할 수 있습니다.',
@@ -441,7 +441,7 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
   },
   en: {
     hero: {
-      badge: 'React source reading routine',
+      badge: 'Reading Checklist · 7/10',
       titleLines: ['Test code is', 'executable documentation', "of the implementation's intent"],
       accentLine: "of the implementation's intent",
       description:

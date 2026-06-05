@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { HeroPhase, Tone, UseEffectInternalsContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, ClipboardIcon, PlayCircleIcon } from '../icons';
 
@@ -172,81 +177,41 @@ const PhaseCard = ({ phase }: { phase: HeroPhase }) => {
 export const UseEffectHero = ({ content }: Props) => {
   const lines = content.leftCode.split('\n');
   return (
-    <section aria-labelledby="hero-heading" className="relative">
-      <TerminalPrompt
-        command="cat"
-        path="react/hooks/use-effect-internal.md"
-        suffix={
-          <span className="text-[var(--term-dim)]"> {'// render → register, commit → run'}</span>
-        }
-      />
+    <HeroSection
+      promptCommand="cat"
+      promptPath="react/hooks/use-effect-internal.md"
+      promptSuffix={
+        <span className="text-[var(--term-dim)]"> {'// render → register, commit → run'}</span>
+      }
+      gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    >
+      {/* Left: text + compact code */}
+      <HeroTextColumn>
+        <TerminalBadge size="md" className="w-fit">
+          {content.badge}
+        </TerminalBadge>
 
-      <ul className="mt-md flex flex-wrap items-center gap-2">
-        {content.badges.map((badge) => (
-          <li
-            key={badge.label}
-            className={cn(
-              'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
-              'text-[10px] font-mono font-bold uppercase tracking-wider',
-              badge.tone === 'blue' &&
-                'bg-blue-600 text-white dark:bg-blue-500 dark:text-white shadow-[0_1px_0_var(--term-border)]',
-              badge.tone === 'cyan' &&
-                'border border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/50 dark:text-cyan-200',
-            )}
-          >
-            <span
-              aria-hidden="true"
-              className={cn(
-                'block h-1.5 w-1.5 rounded-full',
-                badge.tone === 'blue' ? 'bg-white/90' : 'bg-cyan-500 dark:bg-cyan-400',
-              )}
-            />
-            {badge.label}
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)] gap-lg items-start">
-        {/* Left: text + compact code */}
-        <div className="flex flex-col gap-md min-w-0">
-          <h1
-            id="hero-heading"
-            className={cn(
-              'text-3xl sm:text-4xl lg:text-[2.4rem] xl:text-[2.7rem]',
-              'font-bold leading-[1.14] tracking-tight text-[var(--term-fg)] break-keep',
-            )}
-          >
-            <span className="block">{content.titleLine1}</span>
-            <span
-              className={cn(
-                'block bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent',
-                'dark:from-blue-400 dark:via-cyan-300 dark:to-teal-300',
-              )}
-            >
-              {content.titleAccent}
-            </span>
-          </h1>
-          <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] max-w-[55ch] break-keep">
-            {content.description}
-          </p>
-          {/* Compact code panel */}
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
-            <div className="flex items-center gap-2 border-b border-slate-800 px-md py-1.5">
-              <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
-              <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
-              <span
-                aria-hidden="true"
-                className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80"
-              />
-              <span className="ml-2 text-[10px] font-mono text-slate-500">useEffect</span>
-            </div>
-            <pre className="overflow-x-auto px-md py-md text-[12px] sm:text-xsm leading-[1.7] font-mono">
-              <code>{lines.map((line, i) => renderCodeLine(line, i))}</code>
-            </pre>
+        <HeroTitle>
+          <span className="block">{content.titleLine1}</span>
+          <span className="block text-[var(--term-accent)]">{content.titleAccent}</span>
+        </HeroTitle>
+        <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
+        {/* Compact code panel */}
+        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
+          <div className="flex items-center gap-2 border-b border-slate-800 px-md py-1.5">
+            <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
+            <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
+            <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+            <span className="ml-2 text-[10px] font-mono text-slate-500">useEffect</span>
           </div>
+          <pre className="overflow-x-auto px-md py-md text-[12px] sm:text-xsm leading-[1.7] font-mono">
+            <code>{lines.map((line, i) => renderCodeLine(line, i))}</code>
+          </pre>
         </div>
+      </HeroTextColumn>
 
-        {/* Right: 2-phase flow */}
+      {/* Right: 2-phase flow */}
+      <HeroVisualColumn>
         <ol className="grid grid-cols-1 sm:grid-cols-2 items-stretch gap-3 relative">
           {content.phases.map((phase, i) => {
             const isLast = i === content.phases.length - 1;
@@ -273,7 +238,7 @@ export const UseEffectHero = ({ content }: Props) => {
             );
           })}
         </ol>
-      </div>
-    </section>
+      </HeroVisualColumn>
+    </HeroSection>
   );
 };

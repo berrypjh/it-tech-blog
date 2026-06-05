@@ -159,7 +159,7 @@ import { enableProfilerTimer } from 'shared/ReactFeatureFlags';
 export const sharedContent: Record<Locale, SharedContent> = {
   ko: {
     hero: {
-      badge: '01 · shared 이해하기',
+      badge: '저장소 구조 · 7/10단계',
       title: {
         line1: 'React 코드를 읽다 보면',
         line2: 'shared가 계속 등장합니다.',
@@ -388,7 +388,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
   },
   en: {
     hero: {
-      badge: '01 · understand shared',
+      badge: 'Repo Structure · 7/10',
       title: {
         line1: 'Read enough React code',
         line2: 'and you keep meeting shared.',

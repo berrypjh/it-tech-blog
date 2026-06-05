@@ -1,6 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from '../../../shared/TerminalPrompt';
+import { HeroDescription } from '../../../shared/HeroDescription';
+import { HeroSection } from '../../../shared/HeroSection';
+import { HeroTextColumn } from '../../../shared/HeroTextColumn';
+import { HeroTitle } from '../../../shared/HeroTitle';
+import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, FlowStepIconName, UpdateToRenderSummaryContent } from '../content';
 import {
@@ -42,93 +47,55 @@ export const flowIconMap: Record<FlowStepIconName, typeof MousePointerClickIcon>
 };
 
 export const SummaryHero = ({ content }: Props) => (
-  <section aria-labelledby="hero-heading" className="relative">
-    <TerminalPrompt
-      command="cat"
-      path="update-request → render-phase.md"
-      suffix={<span className="text-[var(--term-dim)]"> {'// summary'}</span>}
-    />
+  <HeroSection
+    promptCommand="cat"
+    promptPath="update-request → render-phase.md"
+    promptSuffix={<span className="text-[var(--term-dim)]"> {'// summary'}</span>}
+    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+  >
+    <HeroTextColumn>
+      <TerminalBadge size="md" className="w-fit">
+        {content.badge}
+      </TerminalBadge>
 
-    <div className="mt-lg grid grid-cols-1 lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)] gap-xl lg:gap-2xl items-start">
-      {/* Left text */}
-      <div className="flex flex-col gap-md min-w-0">
-        <ul className="flex flex-wrap items-center gap-2">
-          {content.pills.map((pill) => (
-            <li
-              key={pill.label}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
-                'text-[10px] font-mono font-bold uppercase tracking-wider',
-                pill.tone === 'sky' &&
-                  'border-sky-300/80 bg-sky-50 text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200',
-                pill.tone === 'slate' &&
-                  'border-[var(--term-border)] bg-white text-[var(--term-muted)] dark:bg-slate-950/40',
-              )}
-            >
-              {pill.tone === 'sky' && (
-                <span aria-hidden="true" className="block h-1.5 w-1.5 rounded-full bg-sky-500" />
-              )}
-              {pill.label}
-            </li>
-          ))}
-        </ul>
+      <HeroTitle>
+        <span className="block">{content.title.line1}</span>
+        <span className="block">{content.title.line2}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line3}</span>
+      </HeroTitle>
 
-        <h1
-          id="hero-heading"
+      <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
+
+      <aside
+        className={cn(
+          'mt-sm flex items-start gap-sm rounded-2xl border-2 p-md',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
+        )}
+      >
+        <span
+          aria-hidden="true"
           className={cn(
-            'text-3xl sm:text-4xl lg:text-[2.4rem] xl:text-[2.7rem]',
-            'font-bold leading-[1.2] tracking-tight text-[var(--term-fg)] break-keep',
+            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
+            'bg-amber-100 text-amber-700 border border-amber-200/80',
+            'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
           )}
         >
-          <span className="block">{content.title.line1}</span>
-          <span className="block">{content.title.line2}</span>
-          <span
-            className={cn(
-              'block bg-gradient-to-r from-sky-600 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent',
-              'dark:from-sky-300 dark:via-violet-300 dark:to-fuchsia-300',
-            )}
-          >
-            {content.title.line3}
-          </span>
-        </h1>
-
-        <p className="text-sm sm:text-md leading-relaxed text-[var(--term-muted)] max-w-[58ch] break-keep">
-          {content.description}
+          <LightbulbIcon className="h-4 w-4" />
+        </span>
+        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
+          {content.callout}
         </p>
+      </aside>
+    </HeroTextColumn>
 
-        <aside
-          className={cn(
-            'mt-sm flex items-start gap-sm rounded-2xl border-2 p-md',
-            'border-sky-200/80 bg-sky-50/70',
-            'dark:border-sky-800/70 dark:bg-sky-950/40',
-          )}
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-              'bg-amber-100 text-amber-700 border border-amber-200/80',
-              'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
-            )}
-          >
-            <LightbulbIcon className="h-4 w-4" />
-          </span>
-          <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
-            {content.callout}
-          </p>
-        </aside>
-      </div>
-
-      {/* Right diagram */}
-      <div className="order-first lg:order-none min-w-0">
-        <SummaryFlowDiagram
-          title={content.diagram.title}
-          steps={content.diagram.steps}
-          variant="hero"
-        />
-      </div>
-    </div>
-  </section>
+    <HeroVisualColumn className="min-w-0">
+      <SummaryFlowDiagram
+        title={content.diagram.title}
+        steps={content.diagram.steps}
+        variant="hero"
+      />
+    </HeroVisualColumn>
+  </HeroSection>
 );
 
 type DiagramProps = {

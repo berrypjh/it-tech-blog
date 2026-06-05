@@ -73,7 +73,7 @@ export type SummaryItem = {
 
 export type UseEffectInternalsContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -195,10 +195,7 @@ const EXPERIMENT_CODE = `useEffect(() => {
 
 const ko: UseEffectInternalsContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Hook 실행 구조', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 7/10단계',
     titleLine1: 'useEffect는',
     titleAccent: '렌더 중 실행되는 코드가 아니다',
     description:
@@ -496,10 +493,7 @@ const EXPERIMENT_CODE_EN = `useEffect(() => {
 
 const en: UseEffectInternalsContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Hook Execution', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 7/10',
     titleLine1: 'useEffect is not',
     titleAccent: 'code that runs during render',
     description:

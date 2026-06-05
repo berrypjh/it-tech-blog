@@ -29,7 +29,7 @@ export type RootStateField = {
 
 export type ScheduleUpdateOnFiberContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
     callout: string;
@@ -145,10 +145,7 @@ const checkpointCodeKo = `export function scheduleUpdateOnFiber(root, fiber, lan
 
 const ko: ScheduleUpdateOnFiberContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Step 7', tone: 'slate' },
-    ],
+    badge: '업데이트 시작 · 8/10단계',
     title: {
       line1: '업데이트가 Root까지',
       line2: '올라갔다면,',
@@ -339,10 +336,7 @@ const ko: ScheduleUpdateOnFiberContent = {
 
 const en: ScheduleUpdateOnFiberContent = {
   hero: {
-    pills: [
-      { label: 'Reading React internals', tone: 'sky' },
-      { label: 'Step 7', tone: 'slate' },
-    ],
+    badge: 'Update Flow · 8/10',
     title: {
       line1: 'Once the update reaches',
       line2: 'the Root,',

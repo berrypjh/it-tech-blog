@@ -130,7 +130,7 @@ export type RepoOverviewContent = {
 export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
   ko: {
     hero: {
-      badge: '01 · 시작하기',
+      badge: '저장소 구조 · 1/10단계',
       title: {
         lead: 'React 저장소를 열었을 때,',
         tail: '처음부터 코드를 읽지 않아도 됩니다.',
@@ -430,7 +430,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
   },
   en: {
     hero: {
-      badge: '01 · Getting Started',
+      badge: 'Repo Structure · 1/10',
       title: {
         lead: 'When you open the React repository,',
         tail: 'you do not need to read the code first.',

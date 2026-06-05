@@ -37,7 +37,7 @@ export type TakeawayCard = {
 
 export type RenderYieldingContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     highlight: string;
     subtitle: string;
@@ -171,10 +171,7 @@ return true;`;
 
 const ko: RenderYieldingContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Yielding과 Continuation', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 9/10단계',
     titleLines: ['렌더링은 끝날 때까지', '무조건 밀어붙이지 않는다'],
     highlight: '무조건 밀어붙이지 않는다',
     subtitle:
@@ -457,10 +454,7 @@ const ko: RenderYieldingContent = {
 
 const en: RenderYieldingContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Yielding & Continuation', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 9/10',
     titleLines: ['Rendering does not always', 'push through to the end'],
     highlight: 'push through to the end',
     subtitle:

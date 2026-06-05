@@ -70,7 +70,7 @@ export type SummaryItem = {
 
 export type React19HooksContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -248,10 +248,7 @@ const API_CARDS_KO: ApiHero[] = [
 
 const ko: React19HooksContent = {
   hero: {
-    badges: [
-      { label: 'React 19 학습', tone: 'blue' },
-      { label: 'Hook 확장 가이드', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 9/10단계',
     titleLine1: 'React 19의 Hook도',
     titleAccent: '기존 Hook 시스템 위에서 읽는다',
     description:
@@ -551,10 +548,7 @@ const API_CARDS_EN: ApiHero[] = [
 
 const en: React19HooksContent = {
   hero: {
-    badges: [
-      { label: 'React 19', tone: 'blue' },
-      { label: 'Hook Extensions', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 9/10',
     titleLine1: 'React 19 Hooks',
     titleAccent: 'read on top of the existing Hook system',
     description:

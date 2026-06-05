@@ -68,7 +68,7 @@ export type NextChapterItem = {
 
 export type UpdateToRenderSummaryContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -334,10 +334,7 @@ const flowStepsEn: FlowStep[] = [
 
 const ko: UpdateToRenderSummaryContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Step 9 · 종합 정리', tone: 'slate' },
-    ],
+    badge: '업데이트 시작 · 10/10단계',
     title: {
       line1: 'setState 한 줄 뒤에는',
       line2: '긴 내부 준비 과정이',
@@ -606,10 +603,7 @@ const ko: UpdateToRenderSummaryContent = {
 
 const en: UpdateToRenderSummaryContent = {
   hero: {
-    pills: [
-      { label: 'Reading React internals', tone: 'sky' },
-      { label: 'Step 9 · wrap-up', tone: 'slate' },
-    ],
+    badge: 'Update Flow · 10/10',
     title: {
       line1: 'Behind a single setState call',
       line2: 'sits a long internal',

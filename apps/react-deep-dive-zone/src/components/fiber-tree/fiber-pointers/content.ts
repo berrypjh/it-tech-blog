@@ -143,7 +143,7 @@ void heroTree;
 
 const ko: FiberTreePointersContent = {
   hero: {
-    badge: 'CHAPTER 16',
+    badge: 'Fiber 트리 · 4/10단계',
     title: {
       line1: 'Fiber 트리는 배열이',
       line2: '아니라 포인터로 연결됩니다.',
@@ -333,7 +333,7 @@ const ko: FiberTreePointersContent = {
 
 const en: FiberTreePointersContent = {
   hero: {
-    badge: 'CHAPTER 16',
+    badge: 'Fiber Tree · 4/10',
     title: {
       line1: 'A Fiber tree is not an array —',
       line2: 'it is connected by pointers.',

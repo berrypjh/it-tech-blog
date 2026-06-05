@@ -52,7 +52,7 @@ export type LifecycleStep = {
 
 export type RootCurrentRefContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     insight: string;
@@ -406,10 +406,7 @@ const lifecycleStepsEn: LifecycleStep[] = [
 
 const ko: RootCurrentRefContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 26', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 8/10단계',
     title: {
       line1: 'DOM 변경이 끝난 뒤,',
       line2: '새 Fiber 트리가',
@@ -535,10 +532,7 @@ const ko: RootCurrentRefContent = {
 
 const en: RootCurrentRefContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 26', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 8/10',
     title: {
       line1: 'Once DOM changes finish,',
       line2: 'the new Fiber tree',

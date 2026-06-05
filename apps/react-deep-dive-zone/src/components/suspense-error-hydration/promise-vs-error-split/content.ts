@@ -41,7 +41,7 @@ export type ClassifierResult = {
 
 export type PromiseVsErrorSplitContent = {
   hero: {
-    number: string;
+    badge: string;
     titleLines: [string, string];
     description: string;
     promiseCode: {
@@ -194,7 +194,7 @@ const CODE_THROW_EN = `if (value !== null && typeof value === "object") {
 
 const ko: PromiseVsErrorSplitContent = {
   hero: {
-    number: '01',
+    badge: 'Suspense/Error · 3/10단계',
     titleLines: ['React는 던져진 값을', '무조건 에러로 보지 않는다'],
     description: 'thenable이면 Suspense, 일반 Error이면 Error Boundary 경로로 다르게 처리합니다.',
     promiseCode: {
@@ -456,7 +456,7 @@ throw new Error("failed");`,
 
 const en: PromiseVsErrorSplitContent = {
   hero: {
-    number: '01',
+    badge: 'Suspense·Error · 3/10',
     titleLines: ['React does not treat every thrown value', 'as an error'],
     description:
       'A thenable is sent down the Suspense path; a regular Error is sent to the Error Boundary path.',

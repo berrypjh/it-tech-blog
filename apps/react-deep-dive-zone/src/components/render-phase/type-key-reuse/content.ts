@@ -44,7 +44,7 @@ export type StatePreserveSide = {
 
 export type TypeKeyReuseContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -159,10 +159,7 @@ if (newChild.key === key) {
 
 const ko: TypeKeyReuseContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 17', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 8/10단계',
     title: {
       line1: 'React는 가능한 한',
       line2: '기존 Fiber를',
@@ -336,10 +333,7 @@ const ko: TypeKeyReuseContent = {
 
 const en: TypeKeyReuseContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 17', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 8/10',
     title: {
       line1: 'React tries to reuse',
       line2: 'existing Fibers',

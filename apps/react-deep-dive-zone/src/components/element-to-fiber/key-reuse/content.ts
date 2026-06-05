@@ -147,7 +147,7 @@ const afterItems: ListItem[] = [
 
 const ko: KeyFiberReuseContent = {
   hero: {
-    badge: 'CHAPTER 11',
+    badge: 'Fiber 생성 · 7/10단계',
     title: {
       line1: 'key는 Fiber 재사용',
       line2: '판단과 연결됩니다.',
@@ -329,7 +329,7 @@ const ko: KeyFiberReuseContent = {
 
 const en: KeyFiberReuseContent = {
   hero: {
-    badge: 'CHAPTER 11',
+    badge: 'Element → Fiber · 7/10',
     title: {
       line1: 'key feeds into',
       line2: 'Fiber-reuse decisions.',

@@ -66,7 +66,7 @@ export type SummaryItem = {
 
 export type RulesOfHooksContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLine1: string;
     titleAccent: string;
     description: string;
@@ -270,10 +270,7 @@ const EXPERIMENT_CODE = `function Demo({ visible }) {
 
 const ko: RulesOfHooksContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: 'Rules of Hooks', tone: 'cyan' },
-    ],
+    badge: 'Hooks 내부 · 8/10단계',
     titleLine1: 'Rules of Hooks는',
     titleAccent: '예쁜 코드 규칙이 아니다',
     description:
@@ -523,10 +520,7 @@ const ko: RulesOfHooksContent = {
 
 const en: RulesOfHooksContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Rules of Hooks', tone: 'cyan' },
-    ],
+    badge: 'Hooks Internals · 8/10',
     titleLine1: 'Rules of Hooks are',
     titleAccent: 'not just nice-to-have style',
     description:

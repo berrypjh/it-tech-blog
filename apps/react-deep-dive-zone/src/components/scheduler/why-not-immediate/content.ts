@@ -30,7 +30,7 @@ export type TakeawayCard = { title: string; body: string; tone: Tone };
 
 export type WhyNotImmediateContent = {
   hero: {
-    badges: { label: string; tone: 'blue' | 'cyan' }[];
+    badge: string;
     titleLines: [string, string];
     subtitle: string;
     codeCard: { fileLabel: string; code: string };
@@ -134,10 +134,7 @@ const REACT_FIBER_WORK_LOOP_URL =
 
 const ko: WhyNotImmediateContent = {
   hero: {
-    badges: [
-      { label: 'React 내부 탐구', tone: 'blue' },
-      { label: '업데이트와 스케줄링 입문', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 1/10단계',
     titleLines: ['React는 왜', '업데이트를 바로 실행하지 않을까?'],
     subtitle: '상태가 바뀌었다고 React가 즉시 전체 렌더링을 밀어붙이지는 않습니다.',
     codeCard: { fileLabel: 'SearchBox.jsx', code: HERO_CODE },
@@ -366,10 +363,7 @@ const ko: WhyNotImmediateContent = {
 
 const en: WhyNotImmediateContent = {
   hero: {
-    badges: [
-      { label: 'React Internals', tone: 'blue' },
-      { label: 'Updates & Scheduling Intro', tone: 'cyan' },
-    ],
+    badge: 'Scheduler · 1/10',
     titleLines: ['Why does React not', 'run updates immediately?'],
     subtitle: "A state change doesn't push React into rendering everything right away.",
     codeCard: { fileLabel: 'SearchBox.jsx', code: HERO_CODE_EN },

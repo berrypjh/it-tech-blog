@@ -33,7 +33,7 @@ export type FlowStep = {
 
 export type BeginWorkContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
     callout: string;
@@ -393,10 +393,7 @@ return workInProgress.child;`;
 
 const ko: BeginWorkContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 13', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 4/10단계',
     title: {
       line1: 'beginWork는 아래로',
       line2: '내려가며 다음 계산을',
@@ -498,10 +495,7 @@ const ko: BeginWorkContent = {
 
 const en: BeginWorkContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 13', tone: 'slate' },
-    ],
+    badge: 'Render Phase · 4/10',
     title: {
       line1: 'beginWork descends',
       line2: 'and starts the next',

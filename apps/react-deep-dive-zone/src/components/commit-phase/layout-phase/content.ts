@@ -53,7 +53,7 @@ export type CodePanel = {
 
 export type LayoutPhaseContent = {
   hero: {
-    pills: { label: string; tone: 'sky' | 'slate' }[];
+    badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
     insight: string;
@@ -387,10 +387,7 @@ const codePanel2En = `function commitLayoutEffectOnFiber(finishedWork, root, lan
 
 const ko: LayoutPhaseContent = {
   hero: {
-    pills: [
-      { label: 'React 내부 구조 읽기 시리즈', tone: 'sky' },
-      { label: 'Chapter 28', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 9/10단계',
     title: {
       line1: 'DOM이 바뀐 직후,',
       line2: '브라우저가 다시 그리기 전,',
@@ -499,10 +496,7 @@ const ko: LayoutPhaseContent = {
 
 const en: LayoutPhaseContent = {
   hero: {
-    pills: [
-      { label: 'React Internals Reading Series', tone: 'sky' },
-      { label: 'Chapter 28', tone: 'slate' },
-    ],
+    badge: 'Commit Phase · 9/10',
     title: {
       line1: 'Right after the DOM changes,',
       line2: 'before the browser repaints,',

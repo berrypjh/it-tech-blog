@@ -98,7 +98,7 @@ export type LinkButton = { label: string; href: string };
 
 export type ActivityHiddenUiContent = {
   hero: {
-    badges: { label: string; tone: 'solid' | 'soft' }[];
+    badge: string;
     titleLines: [string, string, string];
     subtitleLines: [string, string];
     conditionalCode: {
@@ -225,10 +225,7 @@ export type ActivityHiddenUiContent = {
 
 const ko: ActivityHiddenUiContent = {
   hero: {
-    badges: [
-      { label: 'React 19.2 심화 학습', tone: 'soft' },
-      { label: 'Activity 이해', tone: 'solid' },
-    ],
+    badge: 'React 19 변화 · 8/10단계',
     titleLines: ['Activity는 숨긴 UI를', '어떻게 관리하고', '우선순위를 낮출까?'],
     subtitleLines: [
       '보이지 않는 UI를 언마운트하지 않고,',
@@ -626,10 +623,7 @@ const ko: ActivityHiddenUiContent = {
 
 const en: ActivityHiddenUiContent = {
   hero: {
-    badges: [
-      { label: 'React 19.2 deep dive', tone: 'soft' },
-      { label: 'Activity', tone: 'solid' },
-    ],
+    badge: 'React 19 Changes · 8/10',
     titleLines: ['How does Activity manage', 'hidden UI and lower its', 'update priority?'],
     subtitleLines: [
       "Invisible UI isn't unmounted —",

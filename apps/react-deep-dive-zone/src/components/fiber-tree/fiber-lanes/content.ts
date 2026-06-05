@@ -56,7 +56,6 @@ export type QuizCard = {
 export type FiberLanesContent = {
   hero: {
     badge: string;
-    pill: string;
     title: { line1: string; line2: string };
     emphasis: string;
     description: string;
@@ -165,8 +164,7 @@ export { SyncLane, InputContinuousLane, DefaultLane, TransitionLanes };`;
 
 const ko: FiberLanesContent = {
   hero: {
-    badge: '01',
-    pill: '핵심 개념',
+    badge: 'Fiber 트리 · 8/10단계',
     title: {
       line1: 'Fiber는 작업 우선순위',
       line2: '정보도 품고 있습니다.',
@@ -430,8 +428,7 @@ const ko: FiberLanesContent = {
 
 const en: FiberLanesContent = {
   hero: {
-    badge: '01',
-    pill: 'Core concept',
+    badge: 'Fiber Tree · 8/10',
     title: {
       line1: 'A Fiber also carries',
       line2: 'work-priority information.',
