@@ -23,20 +23,20 @@ export const CodeEditorPanel = ({ header, badge, caption, code }: Props) => {
     >
       {/* macOS dots + tabs */}
       <div className="flex items-center gap-sm px-md py-2 border-b border-dashed border-[var(--term-border)] bg-[var(--term-bg)]">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
         </div>
         <span
           className={cn(
-            'truncate text-[11px] font-mono px-2 py-0.5 rounded',
+            'min-w-0 truncate text-[11px] font-mono px-2 py-0.5 rounded',
             'bg-[var(--term-surface)] text-[var(--term-fg)] border border-[var(--term-border)]',
           )}
         >
           {header}
         </span>
-        <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-sky-200 bg-sky-50 text-[10px] uppercase tracking-wider text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200">
+        <span className="ml-auto shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-sky-200 bg-sky-50 text-[10px] uppercase tracking-wider text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200">
           <span aria-hidden="true" className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" />
           {badge}
         </span>

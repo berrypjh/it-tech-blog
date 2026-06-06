@@ -53,24 +53,11 @@ export type LaterPackage = {
   icon: CorePackageIconName;
 };
 
-export type PackageQuiz = {
-  id: 'dom-quiz' | 'fiber-quiz';
-  question: string;
-  hint: string;
-  accordionLabel: string;
-  answer: string;
-  answerDescription: string;
-  tone: ToneKey;
-};
-
 export type PackagesDirectoryContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    repoUrl: string;
     hubLabel: string;
     hubCaption: string;
     coreNodes: CorePackage[];
@@ -83,7 +70,6 @@ export type PackagesDirectoryContent = {
     coreNames: string[];
     additionalRow1: string[];
     additionalRow2: string[];
-    banner: string;
   };
   selector: {
     eyebrow: string;
@@ -128,11 +114,6 @@ export type PackagesDirectoryContent = {
     title: string;
     cards: LaterPackage[];
     banner: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    cards: PackageQuiz[];
   };
   nextStep: {
     eyebrow: string;
@@ -229,9 +210,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
       description:
         'API, DOM 렌더러, Fiber, 스케줄링, 공통 상수는 각각 다른 패키지에 배치되어 있습니다.',
-      primaryCta: '패키지 지도 보기',
-      secondaryCta: 'React GitHub 열기',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages',
       hubLabel: 'packages',
       hubCaption: 'React 구현의 중심 허브',
       coreNodes: coreKo,
@@ -257,7 +235,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         'eslint-plugin-react-hooks',
         '...',
       ],
-      banner: '입문자는 모든 패키지를 한 번에 볼 필요가 없습니다.',
     },
     selector: {
       eyebrow: '03 · core packages',
@@ -489,30 +466,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       banner:
         '중요하지 않아서가 아니라, 지금은 렌더링 핵심 축을 먼저 잡는 것이 더 빠르기 때문입니다.',
     },
-    quiz: {
-      eyebrow: '07 · quick quiz',
-      title: '빠른 패키지 선택 퀴즈',
-      cards: [
-        {
-          id: 'dom-quiz',
-          question: 'Q. 실제 브라우저 DOM 연결을 담당하는 패키지는?',
-          hint: '힌트: createRoot로 트리를 마운트할 때 사용하는 패키지',
-          accordionLabel: '정답 보기',
-          answer: '정답: react-dom',
-          answerDescription: '브라우저 DOM에 실제로 요소를 부착하고 업데이트합니다.',
-          tone: 'emerald',
-        },
-        {
-          id: 'fiber-quiz',
-          question: 'Q. Fiber 구조와 render/commit 핵심은?',
-          hint: '힌트: 호스트 환경과 분리된 순수 로직이 모여 있는 곳',
-          accordionLabel: '정답 보기',
-          answer: '정답: react-reconciler',
-          answerDescription: 'Fiber 트리 구성, 재조정, render/commit의 코어가 구현되어 있습니다.',
-          tone: 'violet',
-        },
-      ],
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: 'packages의 중심 축을 잡았다면,',
@@ -534,9 +487,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
       description:
         'APIs, the DOM renderer, Fiber, scheduling and shared constants each live in their own package.',
-      primaryCta: 'See the package map',
-      secondaryCta: 'Open React on GitHub',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages',
       hubLabel: 'packages',
       hubCaption: 'The hub of React’s implementation',
       coreNodes: coreEn,
@@ -563,7 +513,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         'eslint-plugin-react-hooks',
         '...',
       ],
-      banner: 'Beginners do not need to read every package at once.',
     },
     selector: {
       eyebrow: '03 · core packages',
@@ -796,31 +745,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
       banner:
         'Not because they don’t matter — but locking down the rendering core first is the faster path.',
-    },
-    quiz: {
-      eyebrow: '07 · quick quiz',
-      title: 'Quick package picker',
-      cards: [
-        {
-          id: 'dom-quiz',
-          question: 'Q. Which package handles the actual browser DOM connection?',
-          hint: 'Hint: The package you use with createRoot to mount a tree',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: react-dom',
-          answerDescription: 'It attaches and updates real DOM elements in the browser.',
-          tone: 'emerald',
-        },
-        {
-          id: 'fiber-quiz',
-          question: 'Q. Where do Fiber structure and the render/commit core live?',
-          hint: 'Hint: The package isolated from host environments',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: react-reconciler',
-          answerDescription:
-            'It contains Fiber tree construction, reconciliation and the render/commit core.',
-          tone: 'violet',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

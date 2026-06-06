@@ -70,16 +70,15 @@ export const ReactClientCheckpoint = ({ content }: Props) => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-2 pt-xs">
+          <div className="flex flex-col gap-2 pt-xs">
             <a
               href={content.primaryHref}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-                'bg-sky-600 text-white transition-colors hover:bg-sky-700',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
+                'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
+                'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               )}
             >
               <GithubIcon className="h-3.5 w-3.5" />
@@ -94,7 +93,7 @@ export const ReactClientCheckpoint = ({ content }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+                'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
                 'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
                 'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',

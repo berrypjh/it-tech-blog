@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CorePackageSelector } from './sections/CorePackageSelector';
 import { LaterPackagesGrid } from './sections/LaterPackagesGrid';
-import { PackageQuickQuiz } from './sections/PackageQuickQuiz';
 import { PackageRelationshipDiagram } from './sections/PackageRelationshipDiagram';
 import { PackagesHero } from './sections/PackagesHero';
 import { PackagesLandscape } from './sections/PackagesLandscape';
@@ -21,13 +20,12 @@ export const PackagesDirectoryPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <PackagesHero content={c.hero} landscapeId={LANDSCAPE_SECTION_ID} />
+      <PackagesHero content={c.hero} />
       <PackagesLandscape content={c.landscape} sectionId={LANDSCAPE_SECTION_ID} />
       <CorePackageSelector content={c.selector} />
       <PackageRelationshipDiagram content={c.diagram} />
       <ReactClientCheckpoint content={c.checkpoint} />
       <LaterPackagesGrid content={c.later} />
-      <PackageQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

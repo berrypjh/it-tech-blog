@@ -179,7 +179,7 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
       tabIndex={isActive ? 0 : -1}
       onClick={onSelect}
       className={cn(
-        'group flex flex-col items-start gap-1 rounded-lg border p-md text-left',
+        'group flex flex-col items-start gap-1 rounded-lg border p-md text-left min-w-0',
         'transition-all hover:-translate-y-0.5',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         isActive
@@ -190,11 +190,11 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
             ),
       )}
     >
-      <span className="flex items-center gap-2">
+      <span className="flex w-full items-center gap-2 min-w-0">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-7 h-7 rounded border',
+            'inline-flex items-center justify-center w-7 h-7 rounded border shrink-0',
             isActive
               ? 'bg-[var(--term-bg)] border-current'
               : cn(tone.chip, 'border-[var(--term-border)]'),
@@ -204,7 +204,7 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
         </span>
         <span
           className={cn(
-            'text-sm font-bold font-mono tracking-tight',
+            'min-w-0 break-words text-sm font-bold font-mono tracking-tight',
             isActive ? tone.text : 'text-[var(--term-fg)]',
           )}
         >

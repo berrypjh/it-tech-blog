@@ -63,10 +63,6 @@ export type SurroundingContent = {
     rootLabel: string;
     rootCaption: string;
     branches: HeroBranchNode[];
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
   };
   comparison: {
     eyebrow: string;
@@ -181,10 +177,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           icon: 'cuboid',
         },
       ],
-      primaryCta: '비교 카드부터 보기',
-      secondaryCta: 'React GitHub 열기',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react',
     },
     comparison: {
       eyebrow: '02 · core comparison',
@@ -406,10 +398,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           icon: 'cuboid',
         },
       ],
-      primaryCta: 'See the comparison',
-      secondaryCta: 'Open React on GitHub',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react',
     },
     comparison: {
       eyebrow: '02 · core comparison',
