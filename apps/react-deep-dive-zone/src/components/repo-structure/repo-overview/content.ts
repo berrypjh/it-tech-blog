@@ -32,33 +32,11 @@ export type RootFileCard = {
   tone: ToneKey;
 };
 
-export type TimelineStep = {
-  id: 'overview' | 'core' | 'remember';
-  number: string;
-  title: string;
-  description: string;
-  goal: string;
-  tone: ToneKey;
-  icon: 'check-list' | 'folder' | 'brain';
-};
-
-export type QuizCard = {
-  id: 'packages-quiz' | 'compiler-quiz';
-  question: string;
-  hint: string;
-  accordionLabel: string;
-  answer: string;
-  answerDescription: string;
-  tone: ToneKey;
-};
-
 export type RepoOverviewContent = {
   hero: {
     badge: string;
     title: { lead: string; tail: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
     repoUrlLabel: string;
     repoUrl: string;
     treeHeader: string;
@@ -72,7 +50,7 @@ export type RepoOverviewContent = {
     title: string;
     floatingDirs: RepoTreeRow[];
     floatingDocs: RepoTreeRow[];
-    centerMessage: string;
+    answer: string;
     highlightPill: string;
   };
   miniMap: {
@@ -105,16 +83,6 @@ export type RepoOverviewContent = {
     cards: RootFileCard[];
     banner: string;
   };
-  timeline: {
-    eyebrow: string;
-    title: string;
-    steps: TimelineStep[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    cards: QuizCard[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -134,8 +102,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       },
       description:
         '먼저 구조를 읽으세요. 어디에 무엇이 있는지 알면 이후 소스코드 독해 속도가 훨씬 빨라집니다.',
-      primaryCta: '저장소 지도부터 보기',
-      secondaryCta: 'React GitHub 열기',
       repoUrlLabel: '저장소',
       repoUrl: 'https://github.com/facebook/react',
       treeHeader: 'facebook / react',
@@ -170,7 +136,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         { id: 'contributing', name: 'CONTRIBUTING.md', kind: 'doc' },
         { id: 'config', name: 'config files', kind: 'doc' },
       ],
-      centerMessage: '어디부터 봐야 할지 감이 오지 않는다...',
+      answer:
+        '폴더와 문서가 한꺼번에 펼쳐질 뿐, 정작 어디부터 봐야 할지는 어디에도 적혀 있지 않기 때문입니다.',
       highlightPill: '하지만 볼 순서가 있다!',
     },
     miniMap: {
@@ -353,64 +320,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       banner:
         '내부 구현을 깊게 보기 전, README와 CHANGELOG의 위치만 알아도 저장소가 덜 낯설어집니다.',
     },
-    timeline: {
-      eyebrow: '06 · first 3 minutes',
-      title: '처음 3분 동안 무엇을 볼까?',
-      steps: [
-        {
-          id: 'overview',
-          number: '1',
-          title: 'Step 1. 루트 디렉터리 확인',
-          description: 'packages, fixtures, scripts, compiler와 문서 파일들의 위치를 확인합니다.',
-          goal: '목표: 전체 지도 파악',
-          tone: 'sky',
-          icon: 'check-list',
-        },
-        {
-          id: 'core',
-          number: '2',
-          title: 'Step 2. packages 안의 핵심 패키지 찾기',
-          description:
-            'packages/react, react-dom, react-reconciler, scheduler, shared를 확인합니다.',
-          goal: '목표: 핵심 움직임 파악',
-          tone: 'teal',
-          icon: 'folder',
-        },
-        {
-          id: 'remember',
-          number: '3',
-          title: 'Step 3. 핵심 패키지의 역할을 기억하기',
-          description: '각 패키지가 어떤 역할을 하는지 한 줄로 정리해둡니다.',
-          goal: '목표: 구조 기억하기',
-          tone: 'emerald',
-          icon: 'brain',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '07 · exploration quiz',
-      title: '직접 탐색 체험',
-      cards: [
-        {
-          id: 'packages-quiz',
-          question: 'Q. React의 핵심 구현 패키지가 모여 있는 폴더는?',
-          hint: '힌트: React, ReactDOM, Reconciler 등이 있는 곳',
-          accordionLabel: '정답 보기',
-          answer: '정답: packages',
-          answerDescription: 'packages 디렉터리 안에 React의 실제 구현 패키지들이 위치합니다.',
-          tone: 'sky',
-        },
-        {
-          id: 'compiler-quiz',
-          question: 'Q. React Compiler는 루트의 어느 디렉터리에 있을까?',
-          hint: '힌트: 컴파일러 관련 프로젝트와 도구 체인이 있는 곳',
-          accordionLabel: '정답 보기',
-          answer: '정답: compiler',
-          answerDescription: 'React Compiler 프로젝트와 관련 코드가 compiler 디렉터리에 있습니다.',
-          tone: 'emerald',
-        },
-      ],
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 루트 구조를 읽었다면,',
@@ -428,8 +337,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       },
       description:
         'Read the structure first. Knowing where things live makes everything you read afterwards much faster.',
-      primaryCta: 'Start with the repo map',
-      secondaryCta: 'Open React on GitHub',
       repoUrlLabel: 'Repository',
       repoUrl: 'https://github.com/facebook/react',
       treeHeader: 'facebook / react',
@@ -464,7 +371,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         { id: 'contributing', name: 'CONTRIBUTING.md', kind: 'doc' },
         { id: 'config', name: 'config files', kind: 'doc' },
       ],
-      centerMessage: 'I have no idea where to start...',
+      answer: 'Folders and docs all show up at once, and nothing tells you where to begin reading.',
       highlightPill: 'But there is an order!',
     },
     miniMap: {
@@ -648,65 +555,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
       banner:
         'Before diving into the internals, just knowing where README and CHANGELOG live already makes the repo feel less foreign.',
-    },
-    timeline: {
-      eyebrow: '06 · first 3 minutes',
-      title: 'What to look at in the first 3 minutes',
-      steps: [
-        {
-          id: 'overview',
-          number: '1',
-          title: 'Step 1. Skim the root directory',
-          description: 'Locate packages, fixtures, scripts, compiler and the documentation files.',
-          goal: 'Goal: Get the overall map',
-          tone: 'sky',
-          icon: 'check-list',
-        },
-        {
-          id: 'core',
-          number: '2',
-          title: 'Step 2. Find the core packages inside packages/',
-          description: 'Check packages/react, react-dom, react-reconciler, scheduler and shared.',
-          goal: 'Goal: See the core moving parts',
-          tone: 'teal',
-          icon: 'folder',
-        },
-        {
-          id: 'remember',
-          number: '3',
-          title: 'Step 3. Remember what each core package does',
-          description: 'Write a one-line role for each package so you can recall it later.',
-          goal: 'Goal: Remember the structure',
-          tone: 'emerald',
-          icon: 'brain',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '07 · exploration quiz',
-      title: 'Try exploring it yourself',
-      cards: [
-        {
-          id: 'packages-quiz',
-          question: 'Q. Which folder holds the core React implementation packages?',
-          hint: 'Hint: It contains React, ReactDOM, Reconciler and friends',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: packages',
-          answerDescription:
-            'The packages directory is where the actual React implementation packages live.',
-          tone: 'sky',
-        },
-        {
-          id: 'compiler-quiz',
-          question: 'Q. Which root directory contains the React Compiler?',
-          hint: 'Hint: The folder for the compiler project and its toolchain',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: compiler',
-          answerDescription:
-            'The compiler directory holds the React Compiler project and its related code.',
-          tone: 'emerald',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

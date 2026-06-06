@@ -3,8 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { FirstThreeMinutesGuide } from './sections/FirstThreeMinutesGuide';
-import { RepoExplorationQuiz } from './sections/RepoExplorationQuiz';
 import { RepoOverviewHero } from './sections/RepoOverviewHero';
 import { RepoOverwhelmCard } from './sections/RepoOverwhelmCard';
 import { RepoRootMiniMap } from './sections/RepoRootMiniMap';
@@ -21,13 +19,11 @@ export const RepoOverviewPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <RepoOverviewHero content={c.hero} nextSectionId={DIRECTORY_SECTION_ID} />
+      <RepoOverviewHero content={c.hero} />
       <RepoOverwhelmCard content={c.overwhelm} />
       <RepoRootMiniMap content={c.miniMap} />
       <RootDirectorySummary content={c.directory} sectionId={DIRECTORY_SECTION_ID} />
       <RootFilesSummary content={c.rootFiles} />
-      <FirstThreeMinutesGuide content={c.timeline} />
-      <RepoExplorationQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

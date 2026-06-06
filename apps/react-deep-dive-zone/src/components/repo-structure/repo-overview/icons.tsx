@@ -1,11 +1,10 @@
-import { Brain, FlaskConical, Folder, ListChecks, Sparkles, TerminalSquare } from 'lucide-react';
+import { FlaskConical, Folder, Sparkles, TerminalSquare } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 
 export {
   ArrowRight as ArrowRightIcon,
   CheckCircle2 as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
-  ExternalLink as ExternalLinkIcon,
   FileText as FileTextIcon,
   Folder as FolderIcon,
   HelpCircle as HelpCircleIcon,
@@ -44,10 +43,4 @@ export const directoryIconByName: Record<string, LucideLike> = {
   flask: FlaskConical,
   terminal: TerminalSquare,
   sparkles: Sparkles,
-};
-
-export const stepIconByName: Record<string, LucideLike> = {
-  'check-list': ListChecks,
-  folder: Folder,
-  brain: Brain,
 };
