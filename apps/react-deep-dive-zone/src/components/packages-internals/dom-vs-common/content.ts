@@ -95,10 +95,6 @@ export type DvcContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     a11y: string;
     common: HeroSideArea;
     domSpecific: HeroSideArea;
@@ -197,10 +193,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
       description:
         'Fiber 생성과 렌더 계산은 공통 로직이고, DOM node 생성과 브라우저 환경 대응은 react-dom 쪽 구현입니다.',
-      primaryCta: '공개 한눈에 보기',
-      secondaryCta: '관련 파일 바로가기',
-      primaryHref: '#section-table',
-      secondaryHref: '#section-file-compare',
       a11y: '왼쪽 영역은 공통 렌더링 구조(환경 독립)로 Element/Fiber/Reconciler/Scheduler 칩이 모여있고, 오른쪽 영역은 DOM 전용 구현(브라우저 특화)으로 DOM Renderer/DOM Node/Browser Env 칩이 모여 있다. 중앙 세로 분리선이 두 영역을 구분한다.',
       common: {
         title: '공통 렌더링 구조',
@@ -453,10 +445,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
       description:
         'Fiber creation and render computation are shared logic; DOM node creation and browser-environment handling are react-dom code.',
-      primaryCta: 'See the gist',
-      secondaryCta: 'Jump to the files',
-      primaryHref: '#section-table',
-      secondaryHref: '#section-file-compare',
       a11y: 'On the left, the shared rendering structure (environment-independent) holds Element/Fiber/Reconciler/Scheduler chips. On the right, the DOM-only area (browser-specific) holds DOM Renderer/DOM Node/Browser Env chips. A vertical divider separates them.',
       common: {
         title: 'Shared rendering structure',

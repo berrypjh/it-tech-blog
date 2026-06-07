@@ -99,10 +99,6 @@ export type ReactDomContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryCtaHref: string;
-    secondaryCtaHref: string;
     centerCard: { title: string; caption: string };
     nodes: HeroDiagramNode[];
     a11yFlow: string;
@@ -185,10 +181,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       },
       description:
         '컴포넌트와 상태를 설명하는 것만으로는 화면이 나타나지 않습니다. react-dom은 그 설명을 DOM 컨테이너와 서버 출력으로 이어줍니다.',
-      primaryCta: 'ReactDOMRoot.js 먼저 보기',
-      secondaryCta: 'renderer 흐름 보기',
-      primaryCtaHref: '#section-checkpoint',
-      secondaryCtaHref: '#section-flow',
       centerCard: { title: 'react-dom', caption: 'renderer' },
       nodes: [
         {
@@ -426,10 +418,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       },
       description:
         'Describing components and state alone does not paint a screen. react-dom is what wires that description into a DOM container — or into a server output.',
-      primaryCta: 'Open ReactDOMRoot.js first',
-      secondaryCta: 'Follow the renderer flow',
-      primaryCtaHref: '#section-checkpoint',
-      secondaryCtaHref: '#section-flow',
       centerCard: { title: 'react-dom', caption: 'renderer' },
       nodes: [
         {

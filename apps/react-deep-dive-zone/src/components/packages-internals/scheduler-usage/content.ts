@@ -71,10 +71,6 @@ export type SchedulerContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryCtaHref: string;
-    secondaryCtaHref: string;
     a11yFlow: string;
     mixedTitle: string;
     mixed: string[];
@@ -180,10 +176,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
       description:
         '입력 반응은 빠르게, 덜 급한 화면 갱신은 뒤로. scheduler는 작업을 언제 실행할지 조율하는 기반층입니다.',
-      primaryCta: '우선순위 모델 보기',
-      secondaryCta: '코드로 확인하기',
-      primaryCtaHref: '#section-priority',
-      secondaryCtaHref: '#section-checkpoint',
       a11yFlow:
         '왼쪽 카드에는 도착 순서로 섞여 있는 5개 작업이 있고, 가운데 scheduler 카드가 우선순위를 판단하여, 오른쪽 카드에서 실행 순서가 1부터 5까지 재정렬된다.',
       mixedTitle: '섞여 있는 작업',
@@ -414,10 +406,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
       description:
         'Input reactions go fast; less urgent screen updates go later. scheduler is the layer that decides *when* work runs.',
-      primaryCta: 'See the priority model',
-      secondaryCta: 'Inspect the code',
-      primaryCtaHref: '#section-priority',
-      secondaryCtaHref: '#section-checkpoint',
       a11yFlow:
         'On the left, five mixed tasks arrive in arrival order. The center scheduler card decides their priority. On the right, the same five tasks appear reordered from 1 to 5 in execution order.',
       mixedTitle: 'Mixed tasks',

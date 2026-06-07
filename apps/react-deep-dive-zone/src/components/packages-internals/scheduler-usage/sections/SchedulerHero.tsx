@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -8,7 +6,6 @@ import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { QueueFlowDiagram } from '../components/QueueFlowDiagram';
 import type { SchedulerContent } from '../content';
-import { ArrowRightIcon, CodeIcon, ListOrderedIcon } from '../icons';
 
 type Props = { content: SchedulerContent['hero'] };
 
@@ -32,42 +29,6 @@ export const SchedulerHero = ({ content }: Props) => {
         </HeroTitle>
 
         <HeroDescription>{content.description}</HeroDescription>
-
-        <div className="flex flex-col sm:flex-row gap-sm pt-xs">
-          <a
-            href={content.primaryCtaHref}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'bg-violet-600 text-white text-xsm font-bold tracking-tight',
-              'transition-colors hover:bg-violet-700',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              'dark:bg-violet-500 dark:hover:bg-violet-400 dark:text-slate-950',
-            )}
-          >
-            <ListOrderedIcon className="h-4 w-4" aria-hidden="true" />
-            {content.primaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href={content.secondaryCtaHref}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] text-xsm font-bold',
-              'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            )}
-          >
-            <CodeIcon className="h-4 w-4" aria-hidden="true" />
-            {content.secondaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-        </div>
       </HeroTextColumn>
 
       <HeroVisualColumn id="hero-queue">

@@ -65,10 +65,6 @@ export type RnContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     a11y: string;
     elementLabel: string;
     elementCode: string;
@@ -159,10 +155,6 @@ export const rnContent: Record<Locale, RnContent> = {
       },
       description:
         'React DOM과 React Native는 실제 출력 대상은 다르지만, Element와 reconciler라는 공통 계산 축을 공유합니다.',
-      primaryCta: '전체 구조도 보기',
-      secondaryCta: 'React Native 연결 보기',
-      primaryHref: '#section-common',
-      secondaryHref: '#section-benefit',
       a11y: 'React Element 노드가 react-reconciler 공통 계산 엔진으로 이어진 뒤, 왼쪽 Web (React DOM)과 오른쪽 Native (React Native) 두 분기로 갈라져 각각 DOM node 브라우저 화면 / Native view 네이티브 화면으로 출력된다.',
       elementLabel: 'React Element',
       elementCode: '<View title="Hello" />',
@@ -375,10 +367,6 @@ export const rnContent: Record<Locale, RnContent> = {
       },
       description:
         'React DOM and React Native target different outputs, but share the same Element and reconciler computation axis.',
-      primaryCta: 'See the full structure',
-      secondaryCta: 'See the React Native link',
-      primaryHref: '#section-common',
-      secondaryHref: '#section-benefit',
       a11y: 'A React Element node flows into the react-reconciler shared compute engine, then branches to two outputs: Web (React DOM) on the left and Native (React Native) on the right.',
       elementLabel: 'React Element',
       elementCode: '<View title="Hello" />',

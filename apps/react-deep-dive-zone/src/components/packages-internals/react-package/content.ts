@@ -88,10 +88,6 @@ export type ReactPackageContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryCtaHref: string;
-    secondaryCtaHref: string;
     centerCard: { title: string; caption: string };
     tokens: ApiToken[];
     apiNetworkAriaLabel: string;
@@ -340,10 +336,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       },
       description:
         'useState, useEffect, createElement, memo, lazy, use, useActionState 같은 기능이 여기서 노출됩니다.',
-      primaryCta: 'ReactClient.js 먼저 보기',
-      secondaryCta: 'API 흐름 따라가기',
-      primaryCtaHref: '#section-hub',
-      secondaryCtaHref: '#section-routes',
       centerCard: { title: 'react', caption: 'public API의 입구' },
       tokens: HERO_TOKENS_KO,
       apiNetworkAriaLabel:
@@ -563,10 +555,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       },
       description:
         'useState, useEffect, createElement, memo, lazy, use, useActionState — all start here.',
-      primaryCta: 'Open ReactClient.js first',
-      secondaryCta: 'Follow the API flow',
-      primaryCtaHref: '#section-hub',
-      secondaryCtaHref: '#section-routes',
       centerCard: { title: 'react', caption: 'doorway to the public API' },
       tokens: HERO_TOKENS_EN,
       apiNetworkAriaLabel:

@@ -53,10 +53,6 @@ export type RvrContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryCtaHref: string;
-    secondaryCtaHref: string;
     a11yFlow: string;
     calculation: {
       title: string;
@@ -190,10 +186,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
       description:
         'reconciler는 무엇이 바뀌어야 하는지 계산하고, renderer는 그 결과를 DOM이나 Native 환경에 반영합니다.',
-      primaryCta: '구조 가지도 보기',
-      secondaryCta: 'DOM 렌더링 흐름 보기',
-      primaryCtaHref: '#section-host-config',
-      secondaryCtaHref: '#section-dom-example',
       a11yFlow:
         '왼쪽 카드는 reconciler가 React Element를 Fiber 트리로 만들고 변경을 계산하는 흐름이고, 오른쪽 카드는 renderer가 Host Config를 호출해 DOM/Native에 반영하는 흐름이다. 두 카드는 점선 화살표로 연결된다.',
       calculation: {
@@ -376,10 +368,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
       description:
         'reconciler figures out what must change; renderer applies that result to the DOM or Native environment.',
-      primaryCta: 'See the structure first',
-      secondaryCta: 'Follow the DOM rendering flow',
-      primaryCtaHref: '#section-host-config',
-      secondaryCtaHref: '#section-dom-example',
       a11yFlow:
         'Left card shows the reconciler building a Fiber tree from React Elements and computing diffs; right card shows the renderer calling Host Config to update DOM/Native. The cards are connected by a dashed arrow.',
       calculation: {

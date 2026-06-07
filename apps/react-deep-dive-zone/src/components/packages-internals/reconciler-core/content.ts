@@ -68,10 +68,6 @@ export type ReconcilerContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryCtaHref: string;
-    secondaryCtaHref: string;
     a11yFlow: string;
     jsxCode: string;
     elementFields: CodeField[];
@@ -258,10 +254,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       },
       description:
         'Element를 Fiber로 바꾸고, 현재 화면과 다음 화면을 비교하고, 어떤 변경이 필요한지 정리하는 핵심이 이 패키지에 모여 있습니다.',
-      primaryCta: '구조도 먼저 보기',
-      secondaryCta: '코드 진입점 살펴보기',
-      primaryCtaHref: '#section-element-fiber',
-      secondaryCtaHref: '#section-checkpoint',
       a11yFlow:
         'JSX 코드가 React Element 설명 객체로 변환되고, 그 Element가 Fiber 작업 단위로 바뀐 뒤, Fiber 노드들이 return/child/sibling 관계로 연결된 트리를 이룬다.',
       jsxCode: '<MyButton label="저장" />',
@@ -456,10 +448,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       },
       description:
         'Converting Elements into Fibers, comparing the current and next screen, and figuring out what needs to change — all of it lives in this package.',
-      primaryCta: 'See the diagram first',
-      secondaryCta: 'Inspect the code entry',
-      primaryCtaHref: '#section-element-fiber',
-      secondaryCtaHref: '#section-checkpoint',
       a11yFlow:
         'JSX becomes a React Element description object, which is then converted into a Fiber work unit; Fibers connect through return/child/sibling pointers to form a tree.',
       jsxCode: '<MyButton label="Save" />',

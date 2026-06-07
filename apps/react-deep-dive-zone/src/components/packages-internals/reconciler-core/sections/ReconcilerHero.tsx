@@ -10,7 +10,6 @@ import { FiberTreeGraphic } from '../components/FiberTreeGraphic';
 import { FieldCard } from '../components/FieldCard';
 import { JsxExampleCard } from '../components/JsxExampleCard';
 import type { ReconcilerContent } from '../content';
-import { ArrowRightIcon, CodeIcon, MapIcon } from '../icons';
 
 type Props = { content: ReconcilerContent['hero'] };
 
@@ -35,42 +34,6 @@ export const ReconcilerHero = ({ content }: Props) => {
         </HeroTitle>
 
         <HeroDescription>{content.description}</HeroDescription>
-
-        <div className="flex flex-col sm:flex-row gap-sm pt-xs">
-          <a
-            href={content.primaryCtaHref}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'bg-teal-600 text-white text-xsm font-bold tracking-tight',
-              'transition-colors hover:bg-teal-700',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              'dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-slate-950',
-            )}
-          >
-            <MapIcon className="h-4 w-4" aria-hidden="true" />
-            {content.primaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href={content.secondaryCtaHref}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] text-xsm font-bold',
-              'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            )}
-          >
-            <CodeIcon className="h-4 w-4" aria-hidden="true" />
-            {content.secondaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-        </div>
       </HeroTextColumn>
 
       <HeroVisualColumn id="hero-element-fiber">

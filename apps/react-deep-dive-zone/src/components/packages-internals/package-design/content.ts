@@ -79,10 +79,6 @@ export type PackageDesignContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     a11y: string;
     main: FlowNode[];
     sideScheduler: { title: string; subtitle: string; description: string };
@@ -208,10 +204,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
       description:
         'API, 렌더링 계산, 환경별 반영, 작업 조율, 공통 기반을 나누었기 때문에 React는 더 넓은 환경과 더 복잡한 기능을 수용할 수 있었습니다.',
-      primaryCta: '최종 구조 보기',
-      secondaryCta: '체크리스트 확인하기',
-      primaryHref: '#section-final-diagram',
-      secondaryHref: '#section-checklist',
       a11y: '사용자 코드 → react → react-reconciler → renderer → DOM / Native 다섯 단계의 중앙 흐름이 위에서 아래로 이어지고, 우측에 scheduler(실행 타이밍 조율)와 shared(공통 타입 / 상수 / 심벌) 두 보조 축이 점선으로 연결된다.',
       main: MAIN_FLOW_KO,
       sideScheduler: {
@@ -445,10 +437,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
       description:
         'By splitting the user API, render computation, per-environment application, work coordination, and shared foundation, React can absorb broader environments and more complex features.',
-      primaryCta: 'See the final structure',
-      secondaryCta: 'Check the checklist',
-      primaryHref: '#section-final-diagram',
-      secondaryHref: '#section-checklist',
       a11y: 'A five-step vertical main flow connects user code → react → react-reconciler → renderer → DOM / Native, with two side axes (scheduler for timing, shared for common types/constants/symbols) dashed-connected on the right.',
       main: MAIN_FLOW_EN,
       sideScheduler: {
