@@ -81,8 +81,6 @@ export type PackageDesignContent = {
     description: string;
     a11y: string;
     main: FlowNode[];
-    sideScheduler: { title: string; subtitle: string; description: string };
-    sideShared: { title: string; subtitle: string; description: string };
   };
   recap: {
     eyebrow: string;
@@ -115,12 +113,6 @@ export type PackageDesignContent = {
     steps: FlowStep[];
     sideScheduler: { title: string; description: string };
     sideShared: { title: string; description: string };
-  };
-  checklist: {
-    eyebrow: string;
-    title: string;
-    intro: string;
-    items: { id: string; text: string; done: boolean }[];
   };
   bridge: {
     eyebrow: string;
@@ -204,18 +196,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
       description:
         'API, 렌더링 계산, 환경별 반영, 작업 조율, 공통 기반을 나누었기 때문에 React는 더 넓은 환경과 더 복잡한 기능을 수용할 수 있었습니다.',
-      a11y: '사용자 코드 → react → react-reconciler → renderer → DOM / Native 다섯 단계의 중앙 흐름이 위에서 아래로 이어지고, 우측에 scheduler(실행 타이밍 조율)와 shared(공통 타입 / 상수 / 심벌) 두 보조 축이 점선으로 연결된다.',
+      a11y: '사용자 코드 → react → react-reconciler → renderer → DOM / Native 다섯 단계가 위에서 아래로 이어지는 핵심 파이프라인 다이어그램.',
       main: MAIN_FLOW_KO,
-      sideScheduler: {
-        title: 'scheduler',
-        subtitle: '실행 타이밍 조율',
-        description: '작업의 우선순위와 실행 시점을 결정',
-      },
-      sideShared: {
-        title: 'shared',
-        subtitle: '공통 기반',
-        description: '공통 타입 / 상수 / 심벌',
-      },
     },
     recap: {
       eyebrow: '01 · recap',
@@ -371,23 +353,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         description: '공통 심벌 / 타입 제공 — 모든 단계 기반',
       },
     },
-    checklist: {
-      eyebrow: '05 · final checklist',
-      title: '최종 체크리스트',
-      intro: '나는 설명할 수 있는가?',
-      items: [
-        { id: 'q1', text: 'React는 왜 여러 패키지로 나뉘는가?', done: true },
-        { id: 'q2', text: 'react와 react-dom은 무엇이 다른가?', done: true },
-        { id: 'q3', text: 'react-reconciler가 왜 핵심인가?', done: true },
-        { id: 'q4', text: 'renderer와 reconciler의 역할 차이는 무엇인가?', done: true },
-        { id: 'q5', text: 'scheduler는 무엇을 조율하는가?', done: false },
-        { id: 'q6', text: 'shared는 왜 필요한가?', done: false },
-        { id: 'q7', text: 'React Native와 무엇을 공유하는가?', done: false },
-        { id: 'q8', text: 'DOM 전용 코드와 공통 코드의 경계는 어디인가?', done: false },
-      ],
-    },
     bridge: {
-      eyebrow: '06 · next chapter',
+      eyebrow: '05 · next chapter',
       title: '다음 대주제 연결',
       intro:
         '이제 React의 패키지 경계를 이해했습니다. 다음은 그 패키지들이 실제로 무엇을 주고받는지, 즉 React Element와 JSX가 어떤 내부 표현으로 바뀌는지 살펴볼 차례입니다.',
@@ -437,18 +404,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
       description:
         'By splitting the user API, render computation, per-environment application, work coordination, and shared foundation, React can absorb broader environments and more complex features.',
-      a11y: 'A five-step vertical main flow connects user code → react → react-reconciler → renderer → DOM / Native, with two side axes (scheduler for timing, shared for common types/constants/symbols) dashed-connected on the right.',
+      a11y: 'A core pipeline diagram flowing top to bottom: user code → react → react-reconciler → renderer → DOM / Native.',
       main: MAIN_FLOW_EN,
-      sideScheduler: {
-        title: 'scheduler',
-        subtitle: 'Timing coordination',
-        description: 'Decides work priority and when to run it',
-      },
-      sideShared: {
-        title: 'shared',
-        subtitle: 'Common foundation',
-        description: 'Shared types / constants / symbols',
-      },
     },
     recap: {
       eyebrow: '01 · recap',
@@ -604,23 +561,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         description: 'Common symbols / types — the base for every step',
       },
     },
-    checklist: {
-      eyebrow: '05 · final checklist',
-      title: 'Final checklist',
-      intro: 'Can I explain…',
-      items: [
-        { id: 'q1', text: 'Why React is split into multiple packages?', done: true },
-        { id: 'q2', text: 'How react and react-dom differ?', done: true },
-        { id: 'q3', text: 'Why react-reconciler is the core?', done: true },
-        { id: 'q4', text: 'The role difference between renderer and reconciler?', done: true },
-        { id: 'q5', text: 'What scheduler coordinates?', done: false },
-        { id: 'q6', text: 'Why shared is necessary?', done: false },
-        { id: 'q7', text: 'What React shares with React Native?', done: false },
-        { id: 'q8', text: 'Where the boundary between DOM-only and shared code is?', done: false },
-      ],
-    },
     bridge: {
-      eyebrow: '06 · next chapter',
+      eyebrow: '05 · next chapter',
       title: 'Bridge to the next topic',
       intro:
         'Now that the package boundaries are clear, the next topic is what those packages actually exchange — how JSX and React Element turn into internal representations.',

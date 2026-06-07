@@ -26,9 +26,14 @@ export const BridgeSection = ({ content }: Props) => {
             {index < content.cards.length - 1 && (
               <span
                 aria-hidden="true"
-                className="hidden md:inline-flex absolute -right-2 top-1/2 -translate-y-1/2 text-[var(--term-accent)]"
+                className={cn(
+                  'hidden md:flex absolute -right-3 top-1/2 z-10 -translate-y-1/2',
+                  'h-6 w-6 items-center justify-center rounded-full',
+                  'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
+                  'shadow-[0_2px_0_var(--term-border)]',
+                )}
               >
-                <ChevronRightIcon className="h-4 w-4" />
+                <ChevronRightIcon className="h-3.5 w-3.5" />
               </span>
             )}
           </li>

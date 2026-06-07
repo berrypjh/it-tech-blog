@@ -44,7 +44,7 @@ export const ConnectionDiagram = ({ content }: Props) => {
         {/* 3 packages */}
         <ul className="relative grid grid-cols-1 md:grid-cols-3 gap-md mt-md md:mt-lg">
           {content.packages.map((pkg) => (
-            <li key={pkg.id} className="flex">
+            <li key={pkg.id} className="flex min-w-0">
               <PackageCardLarge pkg={pkg} />
             </li>
           ))}
@@ -90,20 +90,21 @@ const SharedHub = ({ label, subtitle }: { label: string; subtitle: string }) => 
   <div
     className={cn(
       'relative inline-flex flex-col items-center justify-center gap-1 px-md py-md min-w-[14rem]',
-      'rounded-2xl border-2 border-slate-700 bg-slate-900 text-slate-100',
+      'rounded-2xl border-2 border-cyan-300/80 bg-cyan-50/80 text-cyan-900',
+      'dark:border-cyan-700/60 dark:bg-cyan-950/40 dark:text-cyan-100',
       'shadow-[0_4px_0_var(--term-border)] overflow-hidden',
     )}
     aria-hidden="true"
   >
     <span
       aria-hidden="true"
-      className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_50%_45%,rgba(125,211,252,0.32),transparent_60%)]"
+      className="absolute inset-0 -z-0 opacity-70 bg-[radial-gradient(circle_at_50%_42%,rgba(34,211,238,0.25),transparent_60%)]"
     />
-    <CubeIcon className="relative h-7 w-7 text-cyan-300" />
-    <span className="relative text-md font-bold font-mono tracking-tight text-cyan-200">
+    <CubeIcon className="relative h-7 w-7 text-cyan-600 dark:text-cyan-300" />
+    <span className="relative text-md font-bold font-mono tracking-tight text-cyan-700 dark:text-cyan-200">
       {label}
     </span>
-    <span className="relative text-[10px] uppercase tracking-wider text-cyan-300/80">
+    <span className="relative text-[10px] uppercase tracking-wider text-cyan-700/80 dark:text-cyan-300/80">
       {subtitle}
     </span>
   </div>
@@ -116,7 +117,7 @@ const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 items-center gap-sm rounded-xl border p-md',
+        'group flex min-w-0 flex-1 items-center gap-sm rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         tone.border,
         tone.borderHover,

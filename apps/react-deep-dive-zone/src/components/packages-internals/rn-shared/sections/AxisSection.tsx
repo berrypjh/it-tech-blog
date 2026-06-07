@@ -26,9 +26,14 @@ export const AxisSection = ({ content }: Props) => {
             {index < content.cards.length - 1 && (
               <span
                 aria-hidden="true"
-                className="hidden lg:inline-flex absolute -right-2 top-1/2 -translate-y-1/2 text-[var(--term-accent)]"
+                className={cn(
+                  'hidden lg:flex absolute -right-3 top-1/2 z-10 -translate-y-1/2',
+                  'h-6 w-6 items-center justify-center rounded-full',
+                  'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
+                  'shadow-[0_2px_0_var(--term-border)]',
+                )}
               >
-                <ChevronRightIcon className="h-4 w-4" />
+                <ChevronRightIcon className="h-3.5 w-3.5" />
               </span>
             )}
           </li>
@@ -45,7 +50,7 @@ const AxisCardView = ({ card }: { card: AxisCard }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
+        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
         tone.borderHover,
@@ -55,8 +60,8 @@ const AxisCardView = ({ card }: { card: AxisCard }) => {
         <Icon className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
 
-      <h3 className={cn('text-md font-bold tracking-tight', tone.text)}>{card.title}</h3>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono break-keep">
         {card.subtitle}
       </span>
 

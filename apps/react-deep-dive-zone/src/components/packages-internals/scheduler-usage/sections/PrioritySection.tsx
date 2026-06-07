@@ -87,23 +87,28 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
 
 const variantClass: Record<PriorityLevel['variant'], { container: string; badge: string }> = {
   navy: {
-    container: 'bg-slate-900 text-white border-slate-700 dark:border-slate-700',
-    badge: 'bg-white/15 text-white border-white/30',
+    container:
+      'bg-slate-100 text-slate-800 border-slate-300/80 dark:bg-slate-800/50 dark:text-slate-100 dark:border-slate-700/60',
+    badge:
+      'bg-slate-200/70 text-slate-700 border-slate-300 dark:bg-slate-700/60 dark:text-slate-100 dark:border-slate-600/60',
   },
   teal: {
-    container: 'bg-teal-600 text-white border-teal-700 dark:bg-teal-700 dark:border-teal-700',
-    badge: 'bg-white/15 text-white border-white/30',
+    container:
+      'bg-teal-100 text-teal-900 border-teal-200/80 dark:bg-teal-950/40 dark:text-teal-100 dark:border-teal-800/60',
+    badge:
+      'bg-teal-200/70 text-teal-900 border-teal-300 dark:bg-teal-900/60 dark:text-teal-100 dark:border-teal-700/60',
   },
   mint: {
     container:
-      'bg-cyan-100 text-cyan-900 border-cyan-200 dark:bg-cyan-950/40 dark:text-cyan-100 dark:border-cyan-800/60',
+      'bg-cyan-100 text-cyan-900 border-cyan-200/80 dark:bg-cyan-950/40 dark:text-cyan-100 dark:border-cyan-800/60',
     badge:
       'bg-cyan-200/70 text-cyan-900 border-cyan-300 dark:bg-cyan-900/60 dark:text-cyan-100 dark:border-cyan-700/60',
   },
   violet: {
     container:
-      'bg-violet-600 text-white border-violet-700 dark:bg-violet-700 dark:border-violet-700',
-    badge: 'bg-white/15 text-white border-white/30',
+      'bg-violet-100 text-violet-900 border-violet-200/80 dark:bg-violet-950/40 dark:text-violet-100 dark:border-violet-800/60',
+    badge:
+      'bg-violet-200/70 text-violet-900 border-violet-300 dark:bg-violet-900/60 dark:text-violet-100 dark:border-violet-700/60',
   },
 };
 
@@ -128,7 +133,7 @@ const PriorityBar = ({ level }: { level: PriorityLevel }) => {
 
       <span
         aria-hidden="true"
-        className="hidden sm:inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-md border border-white/25 bg-white/10"
+        className="hidden sm:inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-md border border-current/20 bg-current/10"
       >
         <Icon className="h-5 w-5" />
       </span>

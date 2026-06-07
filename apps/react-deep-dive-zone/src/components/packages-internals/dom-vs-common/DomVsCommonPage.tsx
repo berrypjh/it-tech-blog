@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { BoundaryQuizSection } from './sections/BoundaryQuizSection';
 import { ComparisonTableSection } from './sections/ComparisonTableSection';
 import { ConcernsSection } from './sections/ConcernsSection';
 import { DvcHero } from './sections/DvcHero';
@@ -27,7 +26,6 @@ export const DomVsCommonPage = ({ locale }: Props) => {
       <ReadingMethodSection content={c.reading} />
       <FileCompareSection content={c.fileCompare} sectionId={FILE_COMPARE_SECTION_ID} />
       <ConcernsSection content={c.concerns} />
-      <BoundaryQuizSection content={c.quiz} />
       <PathSection content={c.path} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

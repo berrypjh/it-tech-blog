@@ -87,7 +87,6 @@ export type RvrContent = {
     cardTitle: string;
     cardBody: string;
     emphasis: string;
-    codeCaption: string;
     code: string;
     infoBanner: string;
   };
@@ -125,18 +124,6 @@ export type RvrContent = {
     nativeViewSubtitle: string;
     leftHelper: { title: string; body: string };
     rightHelper: { title: string; body: string };
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: {
-      id: string;
-      question: string;
-      answer: string;
-      explanation: string;
-      tone: ToneKey;
-    }[];
   };
   nextStep: {
     eyebrow: string;
@@ -275,7 +262,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'reconciler는 추상적인 작업만 알고, 실제 환경의 세부 구현은 Host Config가 담당합니다.',
       emphasis:
         'DOM renderer라면 DOM node 생성, 속성 설정, 이벤트 연결, 브라우저 특화 동작이 여기에 들어갑니다.',
-      codeCaption: 'packages/react-reconciler/src/ReactFiberHostConfig.ts',
       code: HOST_CONFIG_CODE,
       infoBanner:
         'DOM renderer라면 DOM node 생성, 속성 설정, 이벤트 연결, 브라우저 특화 동작이 여기에 들어갑니다.',
@@ -325,29 +311,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
         title: '환경별 반영 계층',
         body: 'renderer는 Host Config를 통해 각 환경의 세부 동작을 구현합니다.',
       },
-    },
-    quiz: {
-      eyebrow: '06 · concept check',
-      title: '빠른 개념 점검',
-      description: '계산 쪽인지 반영 쪽인지 즉시 답할 수 있나요?',
-      cards: [
-        {
-          id: 'createFiberFromElement',
-          question: 'createFiberFromElement는 renderer 쪽일까?',
-          answer: '아니다, reconciler',
-          explanation:
-            'createFiberFromElement는 Element를 Fiber로 변환하는 함수로, react-reconciler의 핵심 로직입니다.',
-          tone: 'teal',
-        },
-        {
-          id: 'appendChild',
-          question: 'appendChild는 어느 쪽 개념일까?',
-          answer: 'renderer / Host Config',
-          explanation:
-            'appendChild는 Host Config 함수로, DOM이나 Native 환경의 자식 추가를 실제로 수행합니다.',
-          tone: 'violet',
-        },
-      ],
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -457,7 +420,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'reconciler only knows abstract operations; the concrete environment is implemented inside Host Config.',
       emphasis:
         'For the DOM renderer, this is where DOM-node creation, attribute setting, event wiring, and browser-specific behavior live.',
-      codeCaption: 'packages/react-reconciler/src/ReactFiberHostConfig.ts',
       code: HOST_CONFIG_CODE,
       infoBanner:
         'For the DOM renderer, this is where DOM-node creation, attribute setting, event wiring, and browser-specific behavior live.',
@@ -506,29 +468,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
         title: 'Per-environment apply layer',
         body: 'Renderers implement per-environment details through Host Config.',
       },
-    },
-    quiz: {
-      eyebrow: '06 · concept check',
-      title: 'Quick concept check',
-      description: 'Compute side or apply side — answer in a second.',
-      cards: [
-        {
-          id: 'createFiberFromElement',
-          question: 'Is createFiberFromElement on the renderer side?',
-          answer: 'No — reconciler.',
-          explanation:
-            'createFiberFromElement turns an Element into a Fiber — the heart of react-reconciler.',
-          tone: 'teal',
-        },
-        {
-          id: 'appendChild',
-          question: 'Which side does appendChild belong to?',
-          answer: 'renderer / Host Config',
-          explanation:
-            'appendChild is a Host Config function — it physically appends to DOM or Native.',
-          tone: 'violet',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

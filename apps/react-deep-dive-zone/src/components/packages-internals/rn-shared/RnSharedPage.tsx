@@ -7,7 +7,6 @@ import { AxisSection } from './sections/AxisSection';
 import { BenefitSection } from './sections/BenefitSection';
 import { CommonReconcilerSection } from './sections/CommonReconcilerSection';
 import { CompareSection } from './sections/CompareSection';
-import { ConceptSection } from './sections/ConceptSection';
 import { ModesSection } from './sections/ModesSection';
 import { RnHero } from './sections/RnHero';
 import { rnContent } from './content';
@@ -28,7 +27,6 @@ export const RnSharedPage = ({ locale }: Props) => {
       <CommonReconcilerSection content={c.common} sectionId={COMMON_SECTION_ID} />
       <ModesSection content={c.modes} />
       <BenefitSection content={c.benefit} sectionId={BENEFIT_SECTION_ID} />
-      <ConceptSection content={c.concept} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -128,13 +128,6 @@ export type RnContent = {
     centerSubtitle: string;
     cards: BenefitCard[];
   };
-  concept: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-    explanation: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -339,14 +332,6 @@ export const rnContent: Record<Locale, RnContent> = {
           tone: 'emerald',
         },
       ],
-    },
-    concept: {
-      eyebrow: '06 · concept check',
-      title: '개념 점검',
-      question: 'React DOM과 React Native가 공통으로 공유하는 가장 중요한 축은?',
-      answer: 'reconciler 중심의 렌더링 계산 모델',
-      explanation:
-        'Element와 Fiber, 변경 계산 알고리즘, 작업 우선순위 개념은 공통으로 사용됩니다. 실제 화면에 반영하는 방식만 환경에 맞게 다르게 구현됩니다.',
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -559,14 +544,6 @@ export const rnContent: Record<Locale, RnContent> = {
           tone: 'emerald',
         },
       ],
-    },
-    concept: {
-      eyebrow: '06 · concept check',
-      title: 'Concept check',
-      question: 'What is the most important axis React DOM and React Native share?',
-      answer: 'The reconciler-centered rendering model.',
-      explanation:
-        'Element, Fiber, the diff algorithm, and the priority concept are all shared. Only how the result is applied to the screen differs per environment.',
     },
     nextStep: {
       eyebrow: 'The journey continues',

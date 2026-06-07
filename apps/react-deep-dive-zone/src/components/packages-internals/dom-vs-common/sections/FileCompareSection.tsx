@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
-import { MiniCodePanel } from '../components/MiniCodePanel';
 import type { DvcContent, FileCard } from '../content';
 import { dvcIcon, ScaleIcon } from '../icons';
 
@@ -27,7 +28,10 @@ export const FileCompareSection = ({ content, sectionId }: Props) => {
         <FileCardView card={content.leftFile} />
 
         {/* 중앙 원형 메시지 */}
-        <div className="flex md:flex-col items-center justify-center md:py-md" aria-hidden="true">
+        <div
+          className="flex lg:flex-col items-center justify-center py-sm lg:py-md"
+          aria-hidden="true"
+        >
           <div
             className={cn(
               'flex flex-col items-center justify-center text-center gap-1',
@@ -60,7 +64,6 @@ export const FileCompareSection = ({ content, sectionId }: Props) => {
 const FileCardView = ({ card }: { card: FileCard }) => {
   const tone = toneTokens[card.tone];
   const Icon = dvcIcon[card.iconName];
-  const accentForCode = card.tone === 'teal' ? 'teal' : 'violet';
 
   return (
     <article
@@ -100,7 +103,25 @@ const FileCardView = ({ card }: { card: FileCard }) => {
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.role}</p>
       </div>
 
-      <MiniCodePanel caption={card.path} code={card.code} accent={accentForCode} />
+      <CodePreviewPanel header={card.fn} code={card.code} />
+
+      <a
+        href={card.codeLink.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          'group mt-auto inline-flex min-w-0 items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+          'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+        )}
+      >
+        <GithubIcon className="h-3.5 w-3.5" />
+        <span className="font-mono">{card.codeLink.label}</span>
+        <dvcIcon.arrowRight
+          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+          aria-hidden="true"
+        />
+      </a>
     </article>
   );
 };

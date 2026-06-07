@@ -20,22 +20,15 @@ export const UserFlowSection = ({ content }: Props) => {
         icon={<pdIcon.workflow className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.4fr)] gap-md items-stretch">
-        <div className="flex flex-col gap-2">
-          <CodePreviewPanel code={content.code} language={content.codeCaption} />
-          <p className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-            {'// '}사용자 코드 예시
-          </p>
-        </div>
+      <CodePreviewPanel header={content.codeCaption} code={content.code} />
 
-        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-sm content-start">
-          {content.steps.map((step, index) => (
-            <li key={step.id}>
-              <FlowStepCard step={step} index={index + 1} />
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm items-stretch">
+        {content.steps.map((step, index) => (
+          <li key={step.id} className="flex min-w-0">
+            <FlowStepCard step={step} index={index + 1} />
+          </li>
+        ))}
+      </ol>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
         <SideAxisCard
@@ -60,7 +53,7 @@ const FlowStepCard = ({ step, index }: { step: FlowStep; index: number }) => {
   return (
     <article
       className={cn(
-        'group flex h-full flex-col gap-1.5 rounded-xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-1.5 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
         tone.borderHover,

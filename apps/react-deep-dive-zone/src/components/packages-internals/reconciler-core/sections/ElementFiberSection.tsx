@@ -5,7 +5,7 @@ import { FiberTreeGraphic } from '../components/FiberTreeGraphic';
 import { FieldCard } from '../components/FieldCard';
 import { JsxExampleCard } from '../components/JsxExampleCard';
 import type { ReconcilerContent } from '../content';
-import { ChevronRightIcon, MapIcon, StarIcon } from '../icons';
+import { MapIcon, StarIcon } from '../icons';
 
 type Props = { content: ReconcilerContent['elementFiber']; sectionId: string };
 
@@ -24,9 +24,8 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_0.85fr)] gap-md items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
         <JsxExampleCard title="JSX 예시" code={content.jsxCode} />
-        <FlowArrow />
         <FieldCard
           title={content.elementTitle}
           subtitle={content.elementSubtitle}
@@ -34,7 +33,6 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
           iconName="layers"
           tone="violet"
         />
-        <FlowArrow />
         <FieldCard
           title={content.fiberTitle}
           subtitle={content.fiberSubtitle}
@@ -43,7 +41,6 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
           tone="teal"
           emphasized
         />
-        <FlowArrow />
         <FiberTreeGraphic title={content.treeTitle} description={content.treeDescription} />
       </div>
 
@@ -63,12 +60,3 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
     </section>
   );
 };
-
-const FlowArrow = () => (
-  <div className="flex items-center justify-center text-[var(--term-accent)]" aria-hidden="true">
-    <span className="hidden lg:inline-flex">
-      <ChevronRightIcon className="h-5 w-5" />
-    </span>
-    <span className="inline-flex lg:hidden text-xl">↓</span>
-  </div>
-);

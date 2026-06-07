@@ -5,8 +5,8 @@ import { StartPageShell } from '../../shared/StartPageShell';
 
 import { AdvancedLearningSection } from './sections/AdvancedLearningSection';
 import { CheckpointSection } from './sections/CheckpointSection';
-import { ConceptCheckSection } from './sections/ConceptCheckSection';
 import { ElementFiberSection } from './sections/ElementFiberSection';
+import { KeyTakeawaySection } from './sections/KeyTakeawaySection';
 import { PositionSection } from './sections/PositionSection';
 import { ReconcilerHero } from './sections/ReconcilerHero';
 import { ResponsibilitiesSection } from './sections/ResponsibilitiesSection';
@@ -28,7 +28,7 @@ export const ReconcilerCorePage = ({ locale }: Props) => {
       <ElementFiberSection content={c.elementFiber} sectionId={ELEMENT_FIBER_SECTION_ID} />
       <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
       <AdvancedLearningSection content={c.advanced} />
-      <ConceptCheckSection content={c.concept} />
+      <KeyTakeawaySection content={c.concept} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

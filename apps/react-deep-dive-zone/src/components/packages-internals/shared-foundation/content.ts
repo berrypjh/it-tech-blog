@@ -46,13 +46,6 @@ export type CheckpointItem = {
 
 export type ConceptTag = { id: string; label: string };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-};
-
 export type PackageNode = {
   id: 'react' | 'react-dom' | 'react-reconciler';
   name: string;
@@ -93,10 +86,10 @@ export type SharedContent = {
       file: { label: string; value: string };
       look: { label: string; values: string[] };
       question: { label: string; value: string };
-      button: string;
     };
     codeCaption: string;
     code: string;
+    codeLinks: { label: string; href: string }[];
     callouts: { id: string; title: string; code: string }[];
   };
   clientImport: {
@@ -104,9 +97,9 @@ export type SharedContent = {
     title: string;
     description: string;
     explanation: { title: string; lines: string[] };
-    buttons: { primary: string; secondary: string };
     codeCaption: string;
     code: string;
+    codeLinks: { label: string; href: string }[];
     callout: string;
   };
   connection: {
@@ -118,12 +111,6 @@ export type SharedContent = {
     packages: PackageNode[];
     conceptTags: ConceptTag[];
     banner: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -226,7 +213,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       checklist: ['공통 심벌', '공통 타입 정의', '공통 버전 정보', '공통 기능 플래그'],
     },
     why: {
-      eyebrow: '1',
+      eyebrow: '01 · why shared',
       title: 'shared가 필요한 이유',
       description: '같은 개념을 제각각 정의하면 일관성이 깨집니다. shared가 그 문제를 해결합니다.',
       problem: {
@@ -249,7 +236,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
     },
     files: {
-      eyebrow: '2',
+      eyebrow: '02 · representative files',
       title: 'shared의 대표 파일들',
       description: '네 개의 대표 파일이 shared의 책임을 보여줍니다.',
       cards: [
@@ -293,7 +280,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbolsCheckpoint: {
-      eyebrow: '3',
+      eyebrow: '03 · code checkpoint',
       title: 'ReactSymbols.js 코드 체크포인트',
       checkpoint: {
         file: { label: '파일', value: 'packages/shared/ReactSymbols.js' },
@@ -305,17 +292,22 @@ export const sharedContent: Record<Locale, SharedContent> = {
           label: '학습 질문',
           value: 'React는 특별한 요소 종류를 어떤 심벌로 식별할까?',
         },
-        button: '코드 보기',
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
       code: REACT_SYMBOLS_CODE,
+      codeLinks: [
+        {
+          label: 'ReactSymbols.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
+        },
+      ],
       callouts: [
         { id: 'fragment', title: '프래그먼트 식별 심벌', code: "Symbol.for('react.fragment')" },
         { id: 'suspense', title: '서스펜스 식별 심벌', code: "Symbol.for('react.suspense')" },
       ],
     },
     clientImport: {
-      eyebrow: '4',
+      eyebrow: '04 · client import',
       title: 'ReactClient.js에서 shared import 확인',
       description:
         'shared가 public API 구성에도 직접 연결되는 흐름을 import 한 블록으로 확인합니다.',
@@ -326,13 +318,18 @@ export const sharedContent: Record<Locale, SharedContent> = {
           '이 심벌들은 React 요소 타입을 식별하는 기준이 됩니다.',
         ],
       },
-      buttons: { primary: 'ReactClient.js 열기', secondary: 'ReactSymbols.js 보기' },
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_IMPORT_CODE,
+      codeLinks: [
+        {
+          label: 'ReactClient.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
+        },
+      ],
       callout: 'shared에서 가져온 심벌들을 React public API 구성 및 내부 처리에 사용',
     },
     connection: {
-      eyebrow: '5',
+      eyebrow: '05 · package connections',
       title: 'shared가 연결하는 패키지',
       description: '하나의 shared가 세 패키지의 공통 언어를 만들어 줍니다.',
       centerLabel: 'shared',
@@ -345,33 +342,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
         { id: 'flags', label: '공통 기능 플래그' },
       ],
       banner: 'shared는 기능 실행 패키지라기보다, 여러 패키지의 공통 언어를 만드는 기반층이다.',
-    },
-    quiz: {
-      eyebrow: '6',
-      title: '빠른 분류 퀴즈',
-      description: '각 항목이 shared의 어느 파일과 가장 가까운지 떠올려 보세요.',
-      cards: [
-        {
-          id: 'suspense',
-          question: 'Suspense 내부 식별자는 어디서 관리될까?',
-          answer: 'ReactSymbols.js',
-          explanation:
-            'Suspense와 같은 요소 타입을 식별하는 심벌은 ReactSymbols.js에서 정의됩니다.',
-        },
-        {
-          id: 'version',
-          question: 'React 버전 문자열은 어디에 가까울까?',
-          answer: 'ReactVersion.js',
-          explanation:
-            '모든 패키지가 동일한 버전 문자열을 사용하도록 ReactVersion.js에서 관리합니다.',
-        },
-        {
-          id: 'feature-flag',
-          question: '기능을 켜고 끄는 내부 관리는?',
-          answer: 'ReactFeatureFlags.js',
-          explanation: '실험적 기능, 내부 옵션 등의 on/off는 ReactFeatureFlags.js에서 관리됩니다.',
-        },
-      ],
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -404,7 +374,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     why: {
-      eyebrow: '1',
+      eyebrow: '01 · why shared',
       title: 'Why shared is needed',
       description:
         'When packages define the same concept independently, consistency breaks. shared fixes that.',
@@ -428,7 +398,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
     },
     files: {
-      eyebrow: '2',
+      eyebrow: '02 · representative files',
       title: 'Representative shared files',
       description: 'Four files show what shared is responsible for.',
       cards: [
@@ -472,7 +442,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbolsCheckpoint: {
-      eyebrow: '3',
+      eyebrow: '03 · code checkpoint',
       title: 'ReactSymbols.js code checkpoint',
       checkpoint: {
         file: { label: 'File', value: 'packages/shared/ReactSymbols.js' },
@@ -481,17 +451,22 @@ export const sharedContent: Record<Locale, SharedContent> = {
           label: 'Question',
           value: 'How does React identify special element types?',
         },
-        button: 'View the code',
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
       code: REACT_SYMBOLS_CODE,
+      codeLinks: [
+        {
+          label: 'ReactSymbols.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
+        },
+      ],
       callouts: [
         { id: 'fragment', title: 'Fragment identifier', code: "Symbol.for('react.fragment')" },
         { id: 'suspense', title: 'Suspense identifier', code: "Symbol.for('react.suspense')" },
       ],
     },
     clientImport: {
-      eyebrow: '4',
+      eyebrow: '04 · client import',
       title: 'shared import inside ReactClient.js',
       description: 'Confirm that shared also wires into the public API construction.',
       explanation: {
@@ -501,13 +476,18 @@ export const sharedContent: Record<Locale, SharedContent> = {
           'These symbols are how React identifies element types.',
         ],
       },
-      buttons: { primary: 'Open ReactClient.js', secondary: 'View ReactSymbols.js' },
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_IMPORT_CODE,
+      codeLinks: [
+        {
+          label: 'ReactClient.js',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
+        },
+      ],
       callout: 'The symbols imported from shared drive React’s public API and internal processing.',
     },
     connection: {
-      eyebrow: '5',
+      eyebrow: '05 · package connections',
       title: 'Packages that shared connects',
       description: 'A single shared layer becomes the common vocabulary of three packages.',
       centerLabel: 'shared',
@@ -521,32 +501,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
       banner:
         'shared is not an execution package — it is the foundation that creates the common vocabulary.',
-    },
-    quiz: {
-      eyebrow: '6',
-      title: 'Quick classification quiz',
-      description: 'Match each item with the most likely shared file.',
-      cards: [
-        {
-          id: 'suspense',
-          question: 'Where does the Suspense identifier live?',
-          answer: 'ReactSymbols.js',
-          explanation:
-            'Identifier symbols for special element types are defined in ReactSymbols.js.',
-        },
-        {
-          id: 'version',
-          question: 'And the React version string?',
-          answer: 'ReactVersion.js',
-          explanation: 'ReactVersion.js owns the version so every package uses the same string.',
-        },
-        {
-          id: 'feature-flag',
-          question: 'Turning internal features on and off?',
-          answer: 'ReactFeatureFlags.js',
-          explanation: 'ReactFeatureFlags.js manages experimental flags and internal options.',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

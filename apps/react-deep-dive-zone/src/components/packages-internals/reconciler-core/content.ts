@@ -426,8 +426,8 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       moreLabel: '자세히 보기',
     },
     concept: {
-      eyebrow: '06 · concept check',
-      title: '개념 점검',
+      eyebrow: '06 · key takeaway',
+      title: '핵심 정리',
       question: 'Element와 Fiber의 가장 큰 차이는?',
       answer: 'Element는 UI 설명 객체, Fiber는 렌더링을 처리하는 작업 단위입니다.',
       answerDetail:
@@ -628,8 +628,8 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       moreLabel: 'Read more',
     },
     concept: {
-      eyebrow: '06 · concept check',
-      title: 'Concept check',
+      eyebrow: '06 · key takeaway',
+      title: 'Key takeaway',
       question: 'What is the biggest difference between Element and Fiber?',
       answer: 'Element is a UI description object; Fiber is the work unit that runs the rendering.',
       answerDetail:

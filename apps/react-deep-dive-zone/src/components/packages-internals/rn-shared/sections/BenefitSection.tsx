@@ -45,7 +45,7 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
         {/* 우측 다이어그램 + 3 카드 */}
         <div
           className={cn(
-            'relative flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg overflow-hidden',
+            '@container relative flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg overflow-hidden',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
         >
@@ -75,14 +75,14 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
           </div>
 
           {/* branch arrows */}
-          <span aria-hidden="true" className="relative hidden md:block">
+          <span aria-hidden="true" className="relative hidden @lg:block">
             <BranchSvg />
           </span>
 
           {/* 3 cards */}
-          <ul className="relative grid grid-cols-1 md:grid-cols-3 gap-md">
+          <ul className="relative grid grid-cols-1 @lg:grid-cols-3 gap-lg">
             {content.cards.map((card) => (
-              <li key={card.id} className="flex">
+              <li key={card.id} className="flex min-w-0">
                 <BenefitCardView card={card} />
               </li>
             ))}
@@ -99,7 +99,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         tone.border,
         tone.borderHover,

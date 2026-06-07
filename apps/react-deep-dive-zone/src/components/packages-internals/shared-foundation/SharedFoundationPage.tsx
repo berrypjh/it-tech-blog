@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/StartPageShell';
 import { ClientImportSection } from './sections/ClientImportSection';
 import { ConnectionDiagram } from './sections/ConnectionDiagram';
 import { FilesSection } from './sections/FilesSection';
-import { QuizSection } from './sections/QuizSection';
 import { SharedHero } from './sections/SharedHero';
 import { SymbolsCheckpoint } from './sections/SymbolsCheckpoint';
 import { WhyShared } from './sections/WhyShared';
@@ -27,7 +26,6 @@ export const SharedFoundationPage = ({ locale }: Props) => {
       <SymbolsCheckpoint content={c.symbolsCheckpoint} sectionId={SYMBOLS_SECTION_ID} />
       <ClientImportSection content={c.clientImport} />
       <ConnectionDiagram content={c.connection} />
-      <QuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

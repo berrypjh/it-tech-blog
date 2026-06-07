@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { FinalArchitectureDiagram } from '../components/FinalArchitectureDiagram';
+import { PdHeroDiagram } from '../components/PdHeroDiagram';
 import type { PackageDesignContent } from '../content';
 
 type Props = { content: PackageDesignContent['hero'] };
@@ -32,13 +32,7 @@ export const PdHero = ({ content }: Props) => {
       </HeroTextColumn>
 
       <HeroVisualColumn id="hero-final">
-        <FinalArchitectureDiagram
-          main={content.main}
-          scheduler={content.sideScheduler}
-          shared={content.sideShared}
-          a11y={content.a11y}
-          compact
-        />
+        <PdHeroDiagram main={content.main} a11y={content.a11y} />
       </HeroVisualColumn>
     </HeroSection>
   );

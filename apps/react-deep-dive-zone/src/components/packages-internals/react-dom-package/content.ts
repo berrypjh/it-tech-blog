@@ -366,7 +366,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
-      title: '다음 단계로 이동하기',
+      title: 'react-reconciler',
       description:
         'React를 실제 환경에 연결하는 renderer를 봤다면, 이제 그 렌더링 결과를 계산하는 중심 엔진 react-reconciler로 들어갑니다.',
       cta: '다음 페이지로 이동',
@@ -590,7 +590,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
     },
     nextStep: {
       eyebrow: 'The journey continues',
-      title: 'Move to the next step',
+      title: 'react-reconciler',
       description:
         'You have seen the renderer that connects React to a real environment. Next, the engine that computes the rendering result itself — react-reconciler.',
       cta: 'Go to the next page',

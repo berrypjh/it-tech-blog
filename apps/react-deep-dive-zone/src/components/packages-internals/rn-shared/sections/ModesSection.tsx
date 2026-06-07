@@ -20,35 +20,35 @@ export const ModesSection = ({ content }: Props) => {
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
-        {content.cards.map((card) => (
-          <li key={card.id} className="flex">
-            <ModeCardView card={card} />
-          </li>
-        ))}
-      </ul>
-
-      <ul className="flex flex-col sm:flex-row gap-sm">
-        {content.pills.map((pill) => {
-          const tone = toneTokens[pill.tone];
+        {content.cards.map((card, i) => {
+          const pill = content.pills[i];
           return (
-            <li key={pill.id} className="flex-1">
-              <span
-                className={cn(
-                  'flex items-center justify-center gap-2 rounded-full border px-md py-2 text-xsm font-bold font-mono tracking-tight',
-                  tone.chip,
-                )}
-              >
-                <span>{pill.left}</span>
-                <span aria-hidden="true" className="text-[var(--term-accent)]">
-                  →
-                </span>
-                <span>{pill.right}</span>
-              </span>
+            <li key={card.id} className="flex flex-col gap-sm">
+              <ModeCardView card={card} />
+              {pill && <ModePill pill={pill} />}
             </li>
           );
         })}
       </ul>
     </section>
+  );
+};
+
+const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => {
+  const tone = toneTokens[pill.tone];
+  return (
+    <span
+      className={cn(
+        'flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border px-md py-2 text-center text-xsm font-bold font-mono tracking-tight',
+        tone.chip,
+      )}
+    >
+      <span className="break-keep">{pill.left}</span>
+      <span aria-hidden="true" className="text-[var(--term-accent)]">
+        →
+      </span>
+      <span className="break-keep">{pill.right}</span>
+    </span>
   );
 };
 
@@ -59,7 +59,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
   return (
     <article
       className={cn(
-        'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
+        'group flex flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
         tone.chip,
         tone.border,
         tone.borderHover,

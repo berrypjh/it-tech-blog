@@ -4,7 +4,6 @@ import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { BridgeSection } from './sections/BridgeSection';
-import { ChecklistSection } from './sections/ChecklistSection';
 import { FinalDiagramSection } from './sections/FinalDiagramSection';
 import { PdHero } from './sections/PdHero';
 import { RecapSection } from './sections/RecapSection';
@@ -15,7 +14,6 @@ import { packageDesignContent } from './content';
 type Props = { locale: Locale };
 
 const FINAL_DIAGRAM_SECTION_ID = 'section-final-diagram';
-const CHECKLIST_SECTION_ID = 'section-checklist';
 
 export const PackageDesignPage = ({ locale }: Props) => {
   const c = packageDesignContent[locale];
@@ -27,7 +25,6 @@ export const PackageDesignPage = ({ locale }: Props) => {
       <ValuesSection content={c.values} />
       <FinalDiagramSection content={c.finalDiagram} sectionId={FINAL_DIAGRAM_SECTION_ID} />
       <UserFlowSection content={c.userFlow} />
-      <ChecklistSection content={c.checklist} sectionId={CHECKLIST_SECTION_ID} />
       <BridgeSection content={c.bridge} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>

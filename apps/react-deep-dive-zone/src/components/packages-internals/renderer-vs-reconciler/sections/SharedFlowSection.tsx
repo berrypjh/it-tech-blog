@@ -52,7 +52,6 @@ export const SharedFlowSection = ({ content }: Props) => {
               tone="teal"
               iconName="cube"
               emphasized
-              wide
             />
 
             {/* 갈래 */}
@@ -64,17 +63,19 @@ export const SharedFlowSection = ({ content }: Props) => {
                 subtitle={content.domRendererSubtitle}
                 tone="violet"
                 iconName="monitor"
+                fill
               />
               <FlowNode
                 label={content.nativeRendererLabel}
                 subtitle={content.nativeRendererSubtitle}
                 tone="indigo"
                 iconName="smartphone"
+                fill
               />
             </div>
 
             <div className="grid grid-cols-2 gap-sm w-full">
-              <div className="flex flex-col items-center gap-sm">
+              <div className="flex min-w-0 flex-col items-center gap-sm">
                 <DownArrow />
                 <FlowNode
                   label={content.domNodeLabel}
@@ -82,9 +83,10 @@ export const SharedFlowSection = ({ content }: Props) => {
                   tone="sky"
                   iconName="code"
                   small
+                  fill
                 />
               </div>
-              <div className="flex flex-col items-center gap-sm">
+              <div className="flex min-w-0 flex-col items-center gap-sm">
                 <DownArrow />
                 <FlowNode
                   label={content.nativeViewLabel}
@@ -92,6 +94,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                   tone="indigo"
                   iconName="smartphone"
                   small
+                  fill
                 />
               </div>
             </div>
@@ -116,32 +119,33 @@ type FlowNodeProps = {
   tone: ToneKey;
   iconName: keyof typeof rvrIcon;
   emphasized?: boolean;
-  wide?: boolean;
   small?: boolean;
+  /** 그리드 칸을 가득 채워 라벨이 칸 안에서 줄바꿈되게 한다. */
+  fill?: boolean;
 };
 
-const FlowNode = ({ label, subtitle, tone, iconName, emphasized, wide, small }: FlowNodeProps) => {
+const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
   const t = toneTokens[tone];
   const Icon = rvrIcon[iconName];
 
   return (
     <article
       className={cn(
-        'inline-flex flex-col items-center gap-1 rounded-xl border',
+        'inline-flex min-w-0 flex-col items-center gap-1 rounded-xl border',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         emphasized ? `${t.chip} ${t.border}` : `${t.border}`,
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)]',
         small ? 'px-2 py-1.5' : 'px-md py-2.5',
-        wide ? 'w-full max-w-md' : '',
+        fill ? 'w-full' : '',
       )}
     >
-      <span className="inline-flex items-center gap-2">
+      <span className="flex w-full min-w-0 items-center justify-center gap-2">
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
         <span
           className={cn(
-            'font-bold font-mono tracking-tight',
+            'min-w-0 font-bold font-mono tracking-tight break-keep',
             small ? 'text-xsm' : 'text-sm',
             t.text,
           )}

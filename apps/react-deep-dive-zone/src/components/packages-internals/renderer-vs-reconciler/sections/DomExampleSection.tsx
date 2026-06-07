@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { RvrContent } from '../content';
@@ -100,15 +101,7 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
             </div>
           </header>
 
-          <pre
-            className={cn(
-              'overflow-x-auto rounded-lg border p-md text-[11.5px] sm:text-[12px] leading-relaxed font-mono',
-              'border-slate-700 bg-slate-950 text-slate-100',
-              'shadow-[0_2px_0_var(--term-border)]',
-            )}
-          >
-            <code>{content.renderer.code}</code>
-          </pre>
+          <CodePreviewPanel code={content.renderer.code} language="js" />
 
           <ul className="flex flex-col gap-1.5">
             {content.renderer.items.map((item) => (

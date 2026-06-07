@@ -59,6 +59,7 @@ export type FileCard = {
   fn: string;
   role: string;
   code: string;
+  codeLink: { label: string; href: string };
   tone: ToneKey;
   iconName: DvcIconName;
 };
@@ -71,21 +72,12 @@ export type ConcernCard = {
   tone: ToneKey;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-  relatedFile: string;
-  positive: boolean;
-  tone: ToneKey;
-};
-
 export type PathCard = {
   id: string;
   title: string;
   subtitle: string;
   description: string;
+  href: string;
   iconName: DvcIconName;
   tone: ToneKey;
 };
@@ -125,16 +117,11 @@ export type DvcContent = {
     description: string;
     cards: ConcernCard[];
   };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: QuizCard[];
-  };
   path: {
     eyebrow: string;
     title: string;
     description: string;
+    moreLabel: string;
     cards: PathCard[];
   };
   nextStep: {
@@ -146,42 +133,30 @@ export type DvcContent = {
   };
 };
 
-const REACT_FIBER_CODE = `export function createFiberFromElement(
-  element,
-  mode,
-  lanes,
-) {
-  const type = element.type;
-  const key = element.key;
-  const pendingProps = element.props;
-
-  const fiber = createFiberFromTypeAndProps(
-    type,
-    key,
-    pendingProps,
-    owner,
-    mode,
-    lanes,
-  );
-
-  return fiber;
+const REACT_FIBER_CODE = `export function createFiberFromElement(element, mode, lanes) {
+  const { type, key, props } = element;
+  // Element -> Fiber (environment-independent compute)
+  return createFiberFromTypeAndProps(type, key, props, owner, mode, lanes);
 }`;
 
 const REACT_DOM_ROOT_CODE = `export function createRoot(container, options) {
   if (!isValidContainer(container)) {
-    throw new Error(
-      'Target container is not a DOM element.',
-    );
+    throw new Error('Target container is not a DOM element.');
   }
-
-  const root = createContainer(
-    container,
-    ConcurrentRoot,
-    options,
-  );
-
+  // browser DOM container -> root
+  const root = createContainer(container, ConcurrentRoot, options);
   return new ReactDOMRoot(root);
 }`;
+
+const FIBER_LINK = {
+  label: 'ReactFiber.js',
+  href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+};
+
+const DOM_ROOT_LINK = {
+  label: 'ReactDOMRoot.js',
+  href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+};
 
 export const dvcContent: Record<Locale, DvcContent> = {
   ko: {
@@ -306,6 +281,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
         fn: 'createFiberFromElement',
         role: 'Element를 Fiber로 변환하는 환경 독립적 계산 로직',
         code: REACT_FIBER_CODE,
+        codeLink: FIBER_LINK,
         tone: 'teal',
         iconName: 'fileCode',
       },
@@ -316,6 +292,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
         fn: 'createRoot',
         role: 'DOM container를 받아 브라우저 환경에서 사용할 root를 생성',
         code: REACT_DOM_ROOT_CODE,
+        codeLink: DOM_ROOT_LINK,
         tone: 'violet',
         iconName: 'fileCode',
       },
@@ -358,53 +335,18 @@ export const dvcContent: Record<Locale, DvcContent> = {
         },
       ],
     },
-    quiz: {
-      eyebrow: '05 · boundary quiz',
-      title: '경계 읽기 퀴즈',
-      description: '특정 코드가 공통 로직인지, DOM 전용 로직인지 판단해 보세요.',
-      cards: [
-        {
-          id: 'fiber',
-          question: 'createFiberFromElement는 브라우저 DOM을 직접 다룰까?',
-          answer: '아니다.',
-          explanation:
-            '이 함수는 Element와 props를 읽어 Fiber 객체를 만드는 계산 로직입니다. DOM을 생성하거나 조작하지 않습니다.',
-          relatedFile: 'ReactFiber.js (react-reconciler)',
-          positive: false,
-          tone: 'teal',
-        },
-        {
-          id: 'create-root',
-          question: 'createRoot는 실제 DOM container를 받는가?',
-          answer: '그렇다.',
-          explanation:
-            'createRoot(container)는 브라우저 DOM 컨테이너를 입력으로 받아 새로운 root를 생성합니다.',
-          relatedFile: 'ReactDOMRoot.js (react-dom)',
-          positive: true,
-          tone: 'violet',
-        },
-        {
-          id: 'selection',
-          question: 'selection 복원과 같은 브라우저 특화 처리는 어디에 더 가까운가?',
-          answer: 'DOM renderer 쪽이다.',
-          explanation:
-            '선택 영역, focus, 스크롤 유지 등은 브라우저 환경의 특수 요구사항으로 react-dom에서 처리됩니다.',
-          relatedFile: 'react-dom (DOM renderer)',
-          positive: true,
-          tone: 'sky',
-        },
-      ],
-    },
     path: {
-      eyebrow: '06 · future learning',
+      eyebrow: '05 · future learning',
       title: '이후 학습으로 이어지는 여정',
       description: '이 페이지에서 잡은 경계가 다음 챕터들과 어떻게 연결되는지 살펴보세요.',
+      moreLabel: '자세히 보기',
       cards: [
         {
           id: 'element',
           title: 'React Element와 JSX의 정체',
           subtitle: '공통 설명 객체',
           description: 'Element는 UI를 설명하는 객체이며, 모든 플랫폼에서 공통으로 사용됩니다.',
+          href: '/element-vs-fiber',
           iconName: 'code',
           tone: 'sky',
         },
@@ -414,6 +356,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           subtitle: '공통 계산 로직',
           description:
             'reconciler가 Element를 Fiber로 바꾸고 렌더링 계산을 수행하는 과정을 배웁니다.',
+          href: '/create-fiber-from-element',
           iconName: 'cube',
           tone: 'teal',
         },
@@ -422,6 +365,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'Commit Phase와 실제 DOM 반영',
           subtitle: 'renderer와 환경별 반영 연결',
           description: '계산된 변경이 renderer를 통해 실제 DOM 또는 Native에 반영됩니다.',
+          href: '/commit-phase',
           iconName: 'monitor',
           tone: 'violet',
         },
@@ -429,7 +373,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
-      title: '다음 단계로 이동하기',
+      title: '패키지 분리 설계',
       description:
         '공통 로직과 DOM 전용 로직의 경계까지 보았다면, 마지막으로 패키지 분리가 React 설계에 어떤 의미를 가지는지 정리합니다.',
       cta: '다음 페이지로 이동',
@@ -558,6 +502,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
         fn: 'createFiberFromElement',
         role: 'Environment-independent compute that turns Elements into Fibers.',
         code: REACT_FIBER_CODE,
+        codeLink: FIBER_LINK,
         tone: 'teal',
         iconName: 'fileCode',
       },
@@ -568,6 +513,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
         fn: 'createRoot',
         role: 'Takes a DOM container and creates a root for the browser environment.',
         code: REACT_DOM_ROOT_CODE,
+        codeLink: DOM_ROOT_LINK,
         tone: 'violet',
         iconName: 'fileCode',
       },
@@ -610,52 +556,18 @@ export const dvcContent: Record<Locale, DvcContent> = {
         },
       ],
     },
-    quiz: {
-      eyebrow: '05 · boundary quiz',
-      title: 'Boundary reading quiz',
-      description: 'Decide whether a piece of code is shared logic or DOM-specific.',
-      cards: [
-        {
-          id: 'fiber',
-          question: 'Does createFiberFromElement touch the browser DOM directly?',
-          answer: 'No.',
-          explanation:
-            'It reads Element/props and builds a Fiber object. No DOM creation or mutation.',
-          relatedFile: 'ReactFiber.js (react-reconciler)',
-          positive: false,
-          tone: 'teal',
-        },
-        {
-          id: 'create-root',
-          question: 'Does createRoot accept a real DOM container?',
-          answer: 'Yes.',
-          explanation: 'createRoot(container) accepts a DOM container and creates a new root.',
-          relatedFile: 'ReactDOMRoot.js (react-dom)',
-          positive: true,
-          tone: 'violet',
-        },
-        {
-          id: 'selection',
-          question: 'Where do browser-specific concerns like selection restoration live?',
-          answer: 'On the DOM renderer side.',
-          explanation:
-            'Selection, focus and scroll restoration are browser concerns owned by react-dom.',
-          relatedFile: 'react-dom (DOM renderer)',
-          positive: true,
-          tone: 'sky',
-        },
-      ],
-    },
     path: {
-      eyebrow: '06 · future learning',
+      eyebrow: '05 · future learning',
       title: 'Where this leads next',
       description: 'How the boundary you just learned connects to upcoming chapters.',
+      moreLabel: 'Read more',
       cards: [
         {
           id: 'element',
           title: 'React Elements and JSX',
           subtitle: 'Shared description object',
           description: 'Elements describe UI and are used the same way across every platform.',
+          href: '/element-vs-fiber',
           iconName: 'code',
           tone: 'sky',
         },
@@ -664,6 +576,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'How components become Fibers',
           subtitle: 'Shared compute logic',
           description: 'Learn how the reconciler turns Elements into Fibers and runs the render.',
+          href: '/create-fiber-from-element',
           iconName: 'cube',
           tone: 'teal',
         },
@@ -672,6 +585,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'Commit phase & real DOM updates',
           subtitle: 'Renderer & per-env application',
           description: 'Computed changes flow through the renderer to the real DOM or Native.',
+          href: '/commit-phase',
           iconName: 'monitor',
           tone: 'violet',
         },
@@ -679,7 +593,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
     },
     nextStep: {
       eyebrow: 'The journey continues',
-      title: 'Move to the next step',
+      title: 'package design',
       description:
         'Now that you have seen the line between shared logic and DOM-only logic, we wrap up with the design meaning of package separation.',
       cta: 'Go to the next page',

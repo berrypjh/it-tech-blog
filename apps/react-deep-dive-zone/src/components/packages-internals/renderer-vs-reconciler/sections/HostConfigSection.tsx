@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { HostConfigCodePanel } from '../components/HostConfigCodePanel';
 import type { RvrContent } from '../content';
 import { InfoIcon, MapIcon, rvrIcon } from '../icons';
 
@@ -22,7 +22,7 @@ export const HostConfigSection = ({ content, sectionId }: Props) => {
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.45fr)] gap-md items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.45fr)] gap-md items-start">
         <article
           className={cn(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg h-full',
@@ -53,7 +53,7 @@ export const HostConfigSection = ({ content, sectionId }: Props) => {
           </p>
         </article>
 
-        <HostConfigCodePanel caption={content.codeCaption} code={content.code} />
+        <CodePreviewPanel code={content.code} language="ts" />
       </div>
 
       <aside
