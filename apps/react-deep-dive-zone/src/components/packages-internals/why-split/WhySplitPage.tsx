@@ -8,7 +8,6 @@ import { WhySplitCodeFlow } from './sections/WhySplitCodeFlow';
 import { WhySplitHero } from './sections/WhySplitHero';
 import { WhySplitMisconception } from './sections/WhySplitMisconception';
 import { WhySplitPackageQuestions } from './sections/WhySplitPackageQuestions';
-import { WhySplitQuickQuiz } from './sections/WhySplitQuickQuiz';
 import { WhySplitReasons } from './sections/WhySplitReasons';
 import { whySplitContent } from './content';
 
@@ -29,7 +28,6 @@ export const WhySplitPage = ({ locale }: Props) => {
       <WhySplitReasons content={c.reasons} sectionId={c.hero.relationsSectionId} />
       <WhySplitCodeFlow content={c.codeFlow} />
       <WhySplitPackageQuestions content={c.questions} />
-      <WhySplitQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

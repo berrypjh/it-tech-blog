@@ -1,14 +1,11 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
+import { PackageOverviewCard } from '../components/PackageOverviewCard';
 import type { WhySplitContent } from '../content';
-import { ArrowRightIcon, CompassIcon, MapIcon } from '../icons';
 
 type Props = { content: WhySplitContent['hero']; architecture: WhySplitContent['architecture'] };
 
@@ -32,52 +29,15 @@ export const WhySplitHero = ({ content, architecture }: Props) => {
         </HeroTitle>
 
         <HeroDescription>{content.description}</HeroDescription>
-
-        <div className="flex flex-col sm:flex-row gap-sm pt-xs">
-          <a
-            href={`#${content.architectureSectionId}`}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'bg-sky-600 text-white text-xsm font-bold tracking-tight',
-              'transition-colors hover:bg-sky-700',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
-            )}
-          >
-            <MapIcon className="h-4 w-4" aria-hidden="true" />
-            {content.primaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href={`#${content.relationsSectionId}`}
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-              'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] text-xsm font-bold',
-              'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            )}
-          >
-            <CompassIcon className="h-4 w-4" aria-hidden="true" />
-            {content.secondaryCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-        </div>
       </HeroTextColumn>
 
       <HeroVisualColumn id="hero-architecture">
-        <ArchitectureDiagram
+        <PackageOverviewCard
           mainFlow={architecture.mainFlow}
           side={architecture.side}
           flowLabel={content.diagramFlowLabel}
           sideLabel={content.diagramSideLabel}
           a11yFlow="사용자 코드 → react → react-reconciler → renderer → DOM 또는 Native. scheduler와 shared는 보조 축으로 모든 단계를 떠받칩니다."
-          compact
         />
       </HeroVisualColumn>
     </HeroSection>

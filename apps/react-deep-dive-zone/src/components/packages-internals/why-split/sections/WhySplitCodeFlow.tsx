@@ -20,70 +20,63 @@ export const WhySplitCodeFlow = ({ content }: Props) => {
         icon={<ArrowRightIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.95fr)_minmax(0,_1.05fr)] gap-md items-stretch">
-        <div className="flex flex-col gap-2">
-          <CodePreviewPanel code={content.code} language={content.codeCaption} />
-          <p className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-            {'// '}사용자 코드 예시
-          </p>
-        </div>
+      {/* 상단: 사용자 코드 */}
+      <CodePreviewPanel
+        code={content.code}
+        header={content.codeCaption}
+        caption="사용자 코드 예시"
+      />
 
-        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-sm content-start">
-          {content.steps.map((step, index) => (
-            <li key={step.id}>
-              <FlowStepCard
-                step={step}
-                index={index + 1}
-                isLast={index === content.steps.length - 1}
-              />
-            </li>
-          ))}
-        </ol>
-      </div>
+      {/* 하단: 코드가 거치는 단계 (01 → N) */}
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+        {content.steps.map((step, index) => (
+          <li key={step.id}>
+            <FlowStepCard step={step} index={index + 1} />
+          </li>
+        ))}
+      </ol>
     </section>
   );
 };
 
-type FlowStepCardProps = { step: FlowStep; index: number; isLast: boolean };
+type FlowStepCardProps = { step: FlowStep; index: number };
 
-const FlowStepCard = ({ step, index, isLast }: FlowStepCardProps) => {
+const FlowStepCard = ({ step, index }: FlowStepCardProps) => {
   const tone = toneTokens[step.tone];
   const Icon = architectureIcon[step.iconName];
 
   return (
     <article
       className={cn(
-        'group relative flex h-full flex-col gap-1.5 rounded-xl border p-md',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
+        'group flex h-full flex-col gap-1.5 rounded-xl border p-md',
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] border-[var(--term-border)]',
+        'transition-all hover:-translate-y-0.5',
         tone.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">
+        <span
+          className={cn(
+            'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border',
+            'text-[11px] font-bold font-mono tabular-nums',
+            tone.chip,
+          )}
+        >
+          {String(index).padStart(2, '0')}
+        </span>
         <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] tabular-nums">
-          step {String(index).padStart(2, '0')}
-        </span>
+        <h3 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+          {step.title}
+        </h3>
       </header>
-      <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-        {step.title}
-      </h3>
       <p className={cn('text-[11px] uppercase tracking-wider font-mono font-bold', tone.text)}>
         → {step.pkg}
       </p>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
         {step.description}
       </p>
-      {!isLast && (
-        <span
-          aria-hidden="true"
-          className="hidden sm:block absolute -right-2 top-1/2 -translate-y-1/2 text-[var(--term-accent)] text-xl"
-        >
-          →
-        </span>
-      )}
     </article>
   );
 };

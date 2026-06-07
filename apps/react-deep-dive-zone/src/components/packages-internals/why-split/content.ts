@@ -79,21 +79,11 @@ export type QuestionCard = {
   iconName: ArchitectureIconName;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-  tone: ToneKey;
-};
-
 export type WhySplitContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
     diagramFlowLabel: string;
     diagramSideLabel: string;
     architectureSectionId: string;
@@ -117,6 +107,8 @@ export type WhySplitContent = {
     flowLabel: string;
     a11yFlow: string;
     sideLabel: string;
+    inputsLabel: string;
+    packagesLabel: string;
   };
   reasons: {
     eyebrow: string;
@@ -136,12 +128,6 @@ export type WhySplitContent = {
     eyebrow: string;
     title: string;
     cards: QuestionCard[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -333,8 +319,6 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       },
       description:
         '사용자 API, 렌더링 계산, 실제 출력 환경, 스케줄링, 공통 기반층이 서로 다른 패키지로 협력합니다.',
-      primaryCta: '전체 구조 먼저 보기',
-      secondaryCta: '패키지 관계 살펴보기',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
       architectureSectionId: 'section-architecture',
@@ -377,6 +361,8 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       a11yFlow:
         '사용자 코드 → react → react-reconciler → renderer → DOM 또는 Native. scheduler와 shared는 모든 단계를 떠받치는 보조 축입니다.',
       sideLabel: 'side axis',
+      inputsLabel: '흐름의 출발점',
+      packagesLabel: '패키지별 역할',
     },
     reasons: {
       eyebrow: '03 · why split',
@@ -516,34 +502,6 @@ function App() {
         },
       ],
     },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: '빠른 분류 퀴즈',
-      description: '핵심 함수와 상수가 어느 패키지에 속하는지 떠올려 보세요.',
-      cards: [
-        {
-          id: 'create-root',
-          question: 'createRoot는 어느 패키지와 가까울까?',
-          answer: 'react-dom',
-          explanation: 'DOM과 연결하는 renderer의 진입점입니다.',
-          tone: 'violet',
-        },
-        {
-          id: 'create-fiber',
-          question: 'createFiberFromElement는?',
-          answer: 'react-reconciler',
-          explanation: 'Element를 Fiber로 만드는 함수입니다.',
-          tone: 'cyan',
-        },
-        {
-          id: 'fragment',
-          question: 'REACT_FRAGMENT_TYPE은?',
-          answer: 'shared',
-          explanation: '모든 패키지가 사용하는 공통 심벌입니다.',
-          tone: 'amber',
-        },
-      ],
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: 'react 패키지',
@@ -563,8 +521,6 @@ function App() {
       },
       description:
         'The user API, render computation, output environments, scheduling, and a shared foundation each live in their own package and cooperate.',
-      primaryCta: 'Start with the full map',
-      secondaryCta: 'Inspect package relations',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
       architectureSectionId: 'section-architecture',
@@ -607,6 +563,8 @@ function App() {
       a11yFlow:
         'User code → react → react-reconciler → renderer → DOM or Native. scheduler and shared are auxiliary axes that support every stage.',
       sideLabel: 'side axis',
+      inputsLabel: 'Where the flow starts',
+      packagesLabel: 'What each package does',
     },
     reasons: {
       eyebrow: '03 · why split',
@@ -743,34 +701,6 @@ function App() {
           question: 'Why do packages share the same internal constants?',
           tone: 'amber',
           iconName: 'layers',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: 'Quick classification quiz',
-      description: 'Place each function or constant in the correct package.',
-      cards: [
-        {
-          id: 'create-root',
-          question: 'createRoot belongs to which package?',
-          answer: 'react-dom',
-          explanation: 'It is the entry point of the DOM renderer.',
-          tone: 'violet',
-        },
-        {
-          id: 'create-fiber',
-          question: 'createFiberFromElement?',
-          answer: 'react-reconciler',
-          explanation: 'It turns an Element into a Fiber.',
-          tone: 'cyan',
-        },
-        {
-          id: 'fragment',
-          question: 'REACT_FRAGMENT_TYPE?',
-          answer: 'shared',
-          explanation: 'A shared symbol every package uses.',
-          tone: 'amber',
         },
       ],
     },

@@ -11,16 +11,15 @@ type Props = {
   flowLabel: string;
   sideLabel: string;
   a11yFlow: string;
-  /** sm 카드 사이즈로 축소된 hero 변형. 기본값 false. */
-  compact?: boolean;
   className?: string;
 };
 
 /**
- * Hero와 전체 지도 섹션 모두에서 쓰는 React 패키지 아키텍처 다이어그램.
+ * React 패키지 아키텍처 다이어그램.
  * 위에서 아래로 user-code → react → reconciler → renderer 흐름을 보여주고
- * renderer 아래에서 DOM/Native로 두 갈래로 갈라진다.
- * scheduler와 shared는 우측 보조 축으로 점선 연결된다.
+ * renderer 아래에 출력 대상 DOM / Native를 둔다.
+ * scheduler와 shared는 보조 축으로 표시된다.
+ * 컨테이너 폭(@xl)에 따라 보조 축이 우측 열 또는 하단 행으로 배치된다.
  */
 export const ArchitectureDiagram = ({
   mainFlow,
@@ -28,7 +27,6 @@ export const ArchitectureDiagram = ({
   flowLabel,
   sideLabel,
   a11yFlow,
-  compact = false,
   className,
 }: Props) => {
   const [userCode, react, reconciler, renderer, dom, native] = mainFlow;
@@ -36,10 +34,9 @@ export const ArchitectureDiagram = ({
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        compact ? 'px-md py-md sm:p-md' : 'px-md py-lg sm:p-lg',
-        'overflow-hidden',
+        'px-md py-lg sm:p-lg overflow-hidden',
         className,
       )}
     >
@@ -66,38 +63,35 @@ export const ArchitectureDiagram = ({
         />
       </div>
 
-      <div className="relative mt-md grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-md lg:gap-lg items-stretch">
+      <div className="relative mt-md grid grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto] gap-md @xl:gap-lg items-stretch">
         {/* 중앙 main flow */}
         <div className="flex flex-col items-center gap-sm" aria-hidden="true">
-          <FlowBox node={userCode} compact={compact} />
-          <Arrow tone="accent" />
-          <FlowBox node={react} compact={compact} emphasized />
-          <Arrow tone="accent" />
-          <FlowBox node={reconciler} compact={compact} emphasized />
-          <Arrow tone="accent" />
-          <FlowBox node={renderer} compact={compact} emphasized />
+          <FlowBox node={userCode} />
+          <Arrow />
+          <FlowBox node={react} emphasized />
+          <Arrow />
+          <FlowBox node={reconciler} emphasized />
+          <Arrow />
+          <FlowBox node={renderer} emphasized />
+          <Arrow />
 
-          {/* 두 갈래 분기 */}
-          <div className="relative w-full max-w-md">
-            <div className="grid grid-cols-2 gap-sm pt-md">
-              <div className="flex flex-col items-center">
-                <BranchLine direction="left" />
-                <FlowBox node={dom} compact={compact} />
-              </div>
-              <div className="flex flex-col items-center">
-                <BranchLine direction="right" />
-                <FlowBox node={native} compact={compact} />
-              </div>
-            </div>
-          </div>
+          {/* renderer 출력 대상: DOM / Native — 화살표 아래 가운데로 모은 한 쌍 */}
+          <ul className="flex w-full flex-wrap justify-center gap-sm">
+            <li className="flex w-36 max-w-full min-w-0">
+              <FlowBox node={dom} />
+            </li>
+            <li className="flex w-36 max-w-full min-w-0">
+              <FlowBox node={native} />
+            </li>
+          </ul>
         </div>
 
         {/* 우측 side axis */}
         <aside
           aria-hidden="true"
-          className="flex lg:flex-col flex-row items-stretch gap-sm lg:gap-md lg:w-[160px] justify-center lg:justify-start"
+          className="flex @xl:flex-col flex-row items-stretch gap-sm @xl:gap-md @xl:w-[160px] justify-center @xl:justify-start"
         >
-          <div className="hidden lg:flex items-center gap-sm pl-2">
+          <div className="hidden @xl:flex items-center gap-sm pl-2">
             <span className="block w-px h-md border-l border-dashed border-[var(--term-border)]" />
             <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
               {sideLabel}
@@ -105,7 +99,7 @@ export const ArchitectureDiagram = ({
           </div>
 
           {side.map((node) => (
-            <SideNodeBox key={node.id} node={node} compact={compact} />
+            <SideNodeBox key={node.id} node={node} />
           ))}
         </aside>
       </div>
@@ -115,30 +109,31 @@ export const ArchitectureDiagram = ({
 
 type FlowBoxProps = {
   node: ArchitectureNode;
-  compact: boolean;
   emphasized?: boolean;
 };
 
-const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
+const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
   const tone = toneTokens[node.tone];
   const Icon = architectureIcon[node.iconName];
 
   return (
     <div
       className={cn(
-        'group inline-flex flex-col items-center gap-1 rounded-lg border',
+        'group inline-flex min-w-0 flex-col items-center gap-1 rounded-lg border',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized ? tone.border : 'border-[var(--term-border)]',
         tone.borderHover,
-        compact ? 'px-3 py-2 w-[10.5rem]' : 'px-md py-2.5 w-[12rem]',
+        'px-md py-2.5 w-full max-w-[12rem]',
       )}
     >
-      <span className="inline-flex items-center gap-2">
+      <span className="flex min-w-0 max-w-full items-center gap-2">
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
+        <span
+          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+        >
           {node.label}
         </span>
       </span>
@@ -151,10 +146,9 @@ const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
 
 type SideNodeBoxProps = {
   node: SideNode;
-  compact: boolean;
 };
 
-const SideNodeBox = ({ node, compact }: SideNodeBoxProps) => {
+const SideNodeBox = ({ node }: SideNodeBoxProps) => {
   const tone = toneTokens[node.tone];
   const Icon = architectureIcon[node.iconName];
 
@@ -164,8 +158,7 @@ const SideNodeBox = ({ node, compact }: SideNodeBoxProps) => {
         'group inline-flex flex-col items-start gap-1 rounded-lg border-2 border-dashed',
         tone.border,
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
-        compact ? 'px-3 py-2' : 'px-md py-md',
-        'flex-1 lg:flex-none',
+        'px-md py-md flex-1 @xl:flex-none',
       )}
     >
       <span className="inline-flex items-center gap-2">
@@ -183,27 +176,11 @@ const SideNodeBox = ({ node, compact }: SideNodeBoxProps) => {
   );
 };
 
-const Arrow = ({ tone = 'accent' }: { tone?: 'accent' | 'muted' }) => (
+const Arrow = () => (
   <span
     aria-hidden="true"
-    className={cn(
-      'inline-flex items-center justify-center text-xl leading-none',
-      tone === 'accent' ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
-    )}
+    className="inline-flex items-center justify-center text-xl leading-none text-[var(--term-accent)]"
   >
     ↓
   </span>
-);
-
-const BranchLine = ({ direction }: { direction: 'left' | 'right' }) => (
-  <svg aria-hidden="true" className="h-md w-full" viewBox="0 0 100 32" preserveAspectRatio="none">
-    <path
-      d={direction === 'left' ? 'M 80 0 L 50 32' : 'M 20 0 L 50 32'}
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeDasharray="3 4"
-      fill="none"
-      className="text-[var(--term-accent)]"
-    />
-  </svg>
 );
