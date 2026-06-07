@@ -325,7 +325,7 @@ const ko: EagerBailoutContent = {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'enqueueConcurrentHookUpdate',
     description: '렌더가 필요하다고 판단되면, 이제 update 객체는 queue 처리 경로로 넘어갑니다.',
-    cta: '다음: enqueueConcurrentHookUpdate',
+    cta: '다음 페이지로 이동',
     href: '/enqueue-concurrent-hook-update',
   },
 };
@@ -514,7 +514,7 @@ const en: EagerBailoutContent = {
     title: 'enqueueConcurrentHookUpdate',
     description:
       'When a render really is needed, the update object travels into the queue-processing path next.',
-    cta: 'Next: enqueueConcurrentHookUpdate',
+    cta: 'Go to the next page',
     href: '/enqueue-concurrent-hook-update',
   },
 };

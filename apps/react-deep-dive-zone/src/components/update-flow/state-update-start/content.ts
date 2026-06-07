@@ -330,7 +330,7 @@ const ko: StateUpdateStartContent = {
     title: 'setState 함수는 어떻게 Fiber와 queue를 기억하나?',
     description:
       'setState가 즉시 DOM을 바꾸는 함수가 아니라는 점을 이해했다면, 이제 그 setState 함수가 어떻게 Fiber와 queue를 기억하는지 살펴봅니다.',
-    cta: '다음: setState 함수는 어떻게 Fiber와 queue를 기억하나?',
+    cta: '다음 페이지로 이동',
     href: '/dispatch-set-state',
   },
 };
@@ -516,7 +516,7 @@ const en: StateUpdateStartContent = {
     title: 'How setState remembers its Fiber and queue',
     description:
       'Now that you know setState does not immediately change the DOM, look at how the setState function remembers its Fiber and queue.',
-    cta: 'Next: How setState remembers its Fiber and queue',
+    cta: 'Go to the next page',
     href: '/dispatch-set-state',
   },
 };

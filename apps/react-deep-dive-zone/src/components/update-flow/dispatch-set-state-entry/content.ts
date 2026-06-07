@@ -332,7 +332,7 @@ const ko: DispatchSetStateEntryContent = {
     title: 'lane 선택과 update 객체 생성',
     description:
       '업데이트 진입점에서 lane이 선택된다는 점을 봤다면, 이제 React가 실제 update 객체를 어떻게 만드는지 살펴봅니다.',
-    cta: '다음: lane 선택과 update 객체 생성',
+    cta: '다음 페이지로 이동',
     href: '/lane-selection',
   },
 };
@@ -527,7 +527,7 @@ const en: DispatchSetStateEntryContent = {
     title: 'lane selection and update object creation',
     description:
       'Now that you have seen the lane chosen at the entry point, see how React actually builds the update object next.',
-    cta: 'Next: lane selection and update object creation',
+    cta: 'Go to the next page',
     href: '/lane-selection',
   },
 };

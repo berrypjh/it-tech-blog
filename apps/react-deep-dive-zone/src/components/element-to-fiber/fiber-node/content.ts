@@ -135,7 +135,7 @@ const ko: FiberStoredInformationContent = {
     ],
   },
   mapping: {
-    badge: '02',
+    badge: '01',
     eyebrow: '출발점 매핑',
     title: 'Element → Fiber 매핑 표',
     description: 'Element의 세 가지 핵심 필드가 Fiber의 어느 자리로 옮겨가는지부터 정리합니다.',
@@ -163,7 +163,7 @@ const ko: FiberStoredInformationContent = {
     note: 'Element 정보는 Fiber의 출발점일 뿐이다.',
   },
   groups: {
-    badge: '03',
+    badge: '02',
     eyebrow: '추가 정보 묶음',
     title: 'Fiber가 추가로 가지는 정보 묶음',
     description: 'Fiber가 Element 위에 얹어서 들고 다니는 정보는 크게 네 갈래로 묶입니다.',
@@ -199,7 +199,7 @@ const ko: FiberStoredInformationContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: '소스 코드로 들어가기',
     title: '실제 코드 체크포인트',
     description: 'FiberNode 생성자에서 필드가 어떻게 초기화되는지 그대로 봅니다.',
@@ -251,7 +251,7 @@ const ko: FiberStoredInformationContent = {
     ],
   },
   expansion: {
-    badge: '05',
+    badge: '04',
     eyebrow: '확장 다이어그램',
     title: '구조 확장 시각화',
     description: 'Element의 작은 세 칸이 Fiber의 12칸으로 부풀어 오릅니다.',
@@ -274,7 +274,7 @@ const ko: FiberStoredInformationContent = {
     ],
   },
   reasons: {
-    badge: '06',
+    badge: '05',
     eyebrow: '필드별 이유',
     title: '왜 이런 필드가 필요한가?',
     description: '각 필드 묶음은 React가 “작업”을 처리하기 위해 필요한 구체적인 역할을 가집니다.',
@@ -310,7 +310,7 @@ const ko: FiberStoredInformationContent = {
     ],
   },
   miniQuestion: {
-    badge: '07',
+    badge: '06',
     eyebrow: '한 줄 질문',
     title: '미니 질문 카드',
     questionLabel: 'Q',
@@ -357,7 +357,7 @@ const en: FiberStoredInformationContent = {
     ],
   },
   mapping: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Starting points',
     title: 'Element → Fiber mapping',
     description: 'See where the three Element fields land on the Fiber.',
@@ -385,7 +385,7 @@ const en: FiberStoredInformationContent = {
     note: 'The Element is only the starting point for the Fiber.',
   },
   groups: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Added information',
     title: 'Information the Fiber adds on top',
     description: 'On top of the Element, a Fiber carries four bundles of additional information.',
@@ -421,7 +421,7 @@ const en: FiberStoredInformationContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Into the source',
     title: 'Source-code checkpoint',
     description: 'Look at the FiberNode constructor and how its fields are initialized.',
@@ -473,7 +473,7 @@ const en: FiberStoredInformationContent = {
     ],
   },
   expansion: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Expansion diagram',
     title: 'Structure expansion',
     description: 'The three small slots in the Element balloon into twelve slots in the Fiber.',
@@ -496,7 +496,7 @@ const en: FiberStoredInformationContent = {
     ],
   },
   reasons: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Why each field',
     title: 'Why these fields are needed',
     description: 'Each bundle of fields exists because React has specific work to do.',
@@ -532,7 +532,7 @@ const en: FiberStoredInformationContent = {
     ],
   },
   miniQuestion: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'One question',
     title: 'Mini question card',
     questionLabel: 'Q',

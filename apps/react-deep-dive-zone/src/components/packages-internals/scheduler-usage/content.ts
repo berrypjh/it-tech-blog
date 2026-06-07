@@ -208,7 +208,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       emphasis: '중요한 것은 먼저, 덜 중요한 것은 나중에.',
     },
     needs: {
-      eyebrow: '02 · need',
+      eyebrow: '01 · need',
       title: 'scheduler가 필요한 상황',
       description: '세 가지 대표 상황으로 scheduler가 왜 필요한지 살펴봅니다.',
       cards: [
@@ -239,7 +239,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     compare: {
-      eyebrow: '03 · reconciler vs scheduler',
+      eyebrow: '02 · reconciler vs scheduler',
       title: 'reconciler와 scheduler의 차이',
       description: 'reconciler는 "무엇을", scheduler는 "언제"를 책임집니다.',
       centerBadge: { line1: '계산과 시간 관리도', line2: '분리되어 있다.' },
@@ -265,7 +265,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     priority: {
-      eyebrow: '04 · priority model',
+      eyebrow: '03 · priority model',
       title: '우선순위 모델 요약',
       description: '높은 우선순위는 먼저, 낮은 우선순위는 뒤로. 4단계로 정리합니다.',
       levels: [
@@ -316,7 +316,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: '높은 우선순위일수록 먼저 실행됩니다.',
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드 체크포인트',
       items: [
         {
@@ -346,7 +346,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeButtons: { primary: 'Scheduler.js 열기', secondary: 'scheduler 흐름 보기' },
     },
     doesNot: {
-      eyebrow: '06 · does / does not',
+      eyebrow: '05 · does / does not',
       title: 'scheduler가 하는 일 / 하지 않는 일',
       description: 'scheduler의 책임과 다른 패키지의 책임을 분명히 나눕니다.',
       doesTitle: 'scheduler가 하는 일',
@@ -366,7 +366,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'scheduler는 렌더링 엔진이 아니라 예약 조율 계층이다.',
     },
     queue: {
-      eyebrow: '07 · task queue',
+      eyebrow: '06 · task queue',
       title: '작업 대기열 체험하기',
       description: '도착 순서와 실제 처리 순서가 어떻게 달라지는지 카드 세 장으로 살펴봅니다.',
       waiting: {
@@ -442,7 +442,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       emphasis: 'Important things first; less important things later.',
     },
     needs: {
-      eyebrow: '02 · need',
+      eyebrow: '01 · need',
       title: 'When scheduler is needed',
       description: 'Three scenarios that explain why scheduler exists.',
       cards: [
@@ -471,7 +471,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     compare: {
-      eyebrow: '03 · reconciler vs scheduler',
+      eyebrow: '02 · reconciler vs scheduler',
       title: 'reconciler vs scheduler',
       description: 'reconciler owns "what"; scheduler owns "when".',
       centerBadge: { line1: 'Compute and timing', line2: 'are separated too.' },
@@ -497,7 +497,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     priority: {
-      eyebrow: '04 · priority model',
+      eyebrow: '03 · priority model',
       title: 'Priority model summary',
       description: 'High priority first, low priority later — four tiers.',
       levels: [
@@ -548,7 +548,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'Higher priority runs first.',
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Code checkpoint',
       items: [
         {
@@ -578,7 +578,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeButtons: { primary: 'Open Scheduler.js', secondary: 'See the scheduler flow' },
     },
     doesNot: {
-      eyebrow: '06 · does / does not',
+      eyebrow: '05 · does / does not',
       title: 'What scheduler does — and does not — do',
       description: 'Map scheduler’s responsibilities versus the other packages’.',
       doesTitle: 'scheduler does',
@@ -598,7 +598,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'scheduler is a coordination layer, not a rendering engine.',
     },
     queue: {
-      eyebrow: '07 · task queue',
+      eyebrow: '06 · task queue',
       title: 'Walk through a task queue',
       description: 'See how arrival order is reshaped into execution order across three cards.',
       waiting: {

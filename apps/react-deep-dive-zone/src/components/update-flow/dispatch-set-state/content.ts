@@ -469,7 +469,7 @@ const ko: DispatchSetStateContent = {
     title: 'dispatchSetState',
     description:
       'setState가 Fiber와 queue를 기억한 dispatch 함수라는 점을 알았다면, 이제 실제 업데이트 진입점인 dispatchSetState를 읽어봅니다.',
-    cta: '다음: dispatchSetState',
+    cta: '다음 페이지로 이동',
     href: '/enqueue-update',
   },
 };
@@ -741,7 +741,7 @@ const en: DispatchSetStateContent = {
     title: 'dispatchSetState',
     description:
       'Now that you know setState is a dispatch that remembers its Fiber and queue, read the actual entry point: dispatchSetState.',
-    cta: 'Next: dispatchSetState',
+    cta: 'Go to the next page',
     href: '/enqueue-update',
   },
 };

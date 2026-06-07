@@ -292,7 +292,7 @@ const ko: EnsureRootScheduledContent = {
     title: '전체 업데이트 흐름 정리',
     description:
       '업데이트를 받은 Root가 스케줄링 흐름에 들어갔다면, 이제 지금까지의 과정을 한 번에 연결해봅니다.',
-    cta: '다음: 전체 업데이트 흐름 정리',
+    cta: '다음 페이지로 이동',
     href: '/update-to-render',
   },
 };
@@ -450,7 +450,7 @@ const en: EnsureRootScheduledContent = {
     title: 'the full update flow',
     description:
       'With the Root in the scheduling flow, it is time to connect every step we have walked through into one picture.',
-    cta: 'Next: the full update flow',
+    cta: 'Go to the next page',
     href: '/update-to-render',
   },
 };

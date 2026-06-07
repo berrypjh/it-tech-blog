@@ -350,7 +350,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'useState, useEffect, createElement, memo, lazy, useTransition, useActionState, use API가 중앙 react 카드와 점선으로 연결되는 네트워크',
     },
     groups: {
-      eyebrow: '02 · api groups',
+      eyebrow: '01 · api groups',
       title: '우리가 실제로 쓰는 API 묶음',
       description: 'react 패키지가 외부로 공개하는 API는 크게 다섯 가지 묶음으로 나눠집니다.',
       cards: [
@@ -402,7 +402,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     hub: {
-      eyebrow: '03 · public api hub',
+      eyebrow: '02 · public api hub',
       title: 'public API와 내부 구현 파일의 분리',
       description:
         'ReactClient.js는 직접 구현하지 않고, 여러 내부 파일에서 import해 public API로 export합니다.',
@@ -429,7 +429,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       codeButtons: { primary: 'ReactClient.js 열기', secondary: 'API 흐름 보기' },
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '03 · code checkpoint',
       title: '코드 체크포인트',
       items: [
         {
@@ -456,7 +456,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     routes: {
-      eyebrow: '05 · api entry routes',
+      eyebrow: '04 · api entry routes',
       title: 'API별 내부 진입 경로',
       description: '대표 API 3개가 ReactClient.js를 거쳐 어떤 내부 파일로 이어지는지 따라갑니다.',
       cards: [
@@ -490,7 +490,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     capabilities: {
-      eyebrow: '06 · does / does not',
+      eyebrow: '05 · does / does not',
       title: 'react 패키지가 하는 일 / 하지 않는 일',
       doesTitle: '하는 일',
       doesItems: [
@@ -525,7 +525,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       banner: 'react는 UI를 설명하는 데 집중하고, 실제 환경 반영은 다른 패키지에 맡긴다.',
     },
     quiz: {
-      eyebrow: '07 · quick quiz',
+      eyebrow: '06 · quick quiz',
       title: '퀵 학습 퀴즈',
       description: 'ReactClient.js 다음에 들여다볼 파일을 짚을 수 있는지 확인해 보세요.',
       cards: [
@@ -550,7 +550,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       title: '다음 단계로 이동하기',
       description:
         '사용자-facing API의 입구를 봤다면, 이제 그 UI를 실제 브라우저와 서버 환경에 연결하는 react-dom으로 이동합니다.',
-      cta: '다음: react-dom 패키지 →',
+      cta: '다음 페이지로 이동',
       href: '/react-dom-package',
     },
   },
@@ -573,7 +573,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'useState, useEffect, createElement, memo, lazy, useTransition, useActionState, use connect to the central react card with dashed lines.',
     },
     groups: {
-      eyebrow: '02 · api groups',
+      eyebrow: '01 · api groups',
       title: 'The API bundles you actually use',
       description: 'The public API of react divides into five clear bundles.',
       cards: [
@@ -625,7 +625,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     hub: {
-      eyebrow: '03 · public api hub',
+      eyebrow: '02 · public api hub',
       title: 'Separating public API from internal files',
       description:
         'ReactClient.js does not implement anything itself — it imports from several internal files and re-exports them as the public API.',
@@ -653,7 +653,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       codeButtons: { primary: 'Open ReactClient.js', secondary: 'See the API flow' },
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '03 · code checkpoint',
       title: 'Code checkpoint',
       items: [
         {
@@ -680,7 +680,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     routes: {
-      eyebrow: '05 · api entry routes',
+      eyebrow: '04 · api entry routes',
       title: 'Internal entry paths per API',
       description:
         'Three flagship APIs and the internal file each one routes to from ReactClient.js.',
@@ -715,7 +715,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     capabilities: {
-      eyebrow: '06 · does / does not',
+      eyebrow: '05 · does / does not',
       title: 'What the react package does and does not do',
       doesTitle: 'Does',
       doesItems: [
@@ -751,7 +751,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'react focuses on describing the UI — applying it to real environments belongs to other packages.',
     },
     quiz: {
-      eyebrow: '07 · quick quiz',
+      eyebrow: '06 · quick quiz',
       title: 'Quick learning quiz',
       description: 'Can you name the file to read after ReactClient.js?',
       cards: [
@@ -776,7 +776,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       title: 'Move to the next step',
       description:
         'You have seen the doorway for the user-facing API. Next, the package that wires that UI into the browser and the server: react-dom.',
-      cta: 'Next: the react-dom package →',
+      cta: 'Go to the next page',
       href: '/react-dom-package',
     },
   },

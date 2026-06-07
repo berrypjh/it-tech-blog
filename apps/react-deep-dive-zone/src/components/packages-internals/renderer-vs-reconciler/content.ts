@@ -218,7 +218,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     summary: {
-      eyebrow: '02 · roles in one sentence',
+      eyebrow: '01 · roles in one sentence',
       title: '두 역할을 한 문장으로 정리',
       description: '두 패키지의 책임을 한 문장으로 구분합니다.',
       centerBadge: { lead: '계산', symbol: '≠', tail: '반영' },
@@ -244,7 +244,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     comparison: {
-      eyebrow: '03 · comparison',
+      eyebrow: '02 · comparison',
       title: 'reconciler vs renderer 비교',
       description: '네 가지 관점에서 두 패키지의 책임을 한 번에 정리합니다.',
       columns: { reconciler: 'reconciler', renderer: 'renderer' },
@@ -276,7 +276,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     hostConfig: {
-      eyebrow: '04 · host config',
+      eyebrow: '03 · host config',
       title: 'Host Config란 무엇인가?',
       cardTitle: 'renderer는 환경별 구현을 Host Config 형태로 제공합니다.',
       cardBody:
@@ -289,7 +289,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'DOM renderer라면 DOM node 생성, 속성 설정, 이벤트 연결, 브라우저 특화 동작이 여기에 들어갑니다.',
     },
     domExample: {
-      eyebrow: '05 · dom renderer flow',
+      eyebrow: '04 · dom renderer flow',
       title: 'DOM renderer 예시 흐름',
       description: '계산이 끝난 변경 목록이 어떻게 실제 DOM 조작으로 이어지는지 따라갑니다.',
       reconciler: {
@@ -310,7 +310,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       banner: '계산 결과를 실제 환경에 반영하는 역할은 renderer가 맡는다.',
     },
     flow: {
-      eyebrow: '06 · shared / per-env flow',
+      eyebrow: '05 · shared / per-env flow',
       title: '공통 reconciler / 환경별 renderer 흐름도',
       description:
         '하나의 reconciler가 DOM과 Native 두 환경으로 갈라지는 구조를 한 번에 보여줍니다.',
@@ -335,7 +335,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     quiz: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: '빠른 개념 점검',
       description: '계산 쪽인지 반영 쪽인지 즉시 답할 수 있나요?',
       cards: [
@@ -404,7 +404,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     summary: {
-      eyebrow: '02 · roles in one sentence',
+      eyebrow: '01 · roles in one sentence',
       title: 'Both roles, in one sentence',
       description: 'A single line per package, side by side.',
       centerBadge: { lead: 'compute', symbol: '≠', tail: 'apply' },
@@ -430,7 +430,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     comparison: {
-      eyebrow: '03 · comparison',
+      eyebrow: '02 · comparison',
       title: 'reconciler vs renderer',
       description: 'Four angles, two answers — at a glance.',
       columns: { reconciler: 'reconciler', renderer: 'renderer' },
@@ -462,7 +462,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     hostConfig: {
-      eyebrow: '04 · host config',
+      eyebrow: '03 · host config',
       title: 'What is Host Config?',
       cardTitle: 'Renderers expose their per-environment implementation through a Host Config.',
       cardBody:
@@ -475,7 +475,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'For the DOM renderer, this is where DOM-node creation, attribute setting, event wiring, and browser-specific behavior live.',
     },
     domExample: {
-      eyebrow: '05 · dom renderer flow',
+      eyebrow: '04 · dom renderer flow',
       title: 'A DOM renderer example flow',
       description: 'Follow a single change list from computation to actual DOM mutation.',
       reconciler: {
@@ -496,7 +496,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       banner: 'Applying the computed result to the real environment is the renderer’s job.',
     },
     flow: {
-      eyebrow: '06 · shared / per-env flow',
+      eyebrow: '05 · shared / per-env flow',
       title: 'Shared reconciler / per-environment renderer',
       description: 'One reconciler, two environments — DOM and Native — in a single picture.',
       elementLabel: 'React Element',
@@ -520,7 +520,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     quiz: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: 'Quick concept check',
       description: 'Compute side or apply side — answer in a second.',
       cards: [

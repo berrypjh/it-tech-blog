@@ -169,7 +169,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   misconception: {
-    badge: '02',
+    badge: '01',
     eyebrow: '가장 흔한 오해 3가지',
     title: '먼저 익숙한 착각부터 깨봅니다',
     description: '많은 사람이 JSX를 HTML이나 DOM과 동일시합니다. 셋은 모두 다른 층위입니다.',
@@ -207,7 +207,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   evidence: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'JSX가 JavaScript라는 증거',
     title: 'JSX는 어떻게 JavaScript처럼 다뤄지는가?',
     description:
@@ -237,7 +237,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   uiFit: {
-    badge: '04',
+    badge: '03',
     eyebrow: '왜 JSX가 UI 표현에 잘 맞을까?',
     title: 'HTML을 닮은 형태는 의도된 설계입니다',
     description:
@@ -274,7 +274,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   comparison: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'JSX vs HTML',
     title: '같아 보이지만 분명히 다른 4가지 지점',
     description: '문법이 비슷하다고 실행 모델까지 같진 않습니다. 같은 모양 다른 의미를 비교합니다.',
@@ -307,7 +307,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   quiz: {
-    badge: '06',
+    badge: '05',
     eyebrow: '직접 판단해 보세요',
     title: '이 코드는 HTML일까, JavaScript일까?',
     description: '두 문제를 풀어보면 JSX의 위치가 더 분명해집니다.',
@@ -331,7 +331,7 @@ const ko: JsxIsNotHtmlContent = {
     ],
   },
   summary: {
-    badge: '07',
+    badge: '06',
     eyebrow: '핵심 요약',
     title: '이 페이지의 결론',
     line1Before: 'JSX는 ',
@@ -391,7 +391,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   misconception: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Three common misconceptions',
     title: 'Clear the familiar mix-ups first',
     description: 'Many people treat JSX, HTML, and DOM as one thing. They sit on different layers.',
@@ -429,7 +429,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   evidence: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Evidence that JSX is JavaScript',
     title: 'How JSX behaves like any other JS value',
     description:
@@ -459,7 +459,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   uiFit: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Why JSX fits UI so well',
     title: 'Looking like HTML is an intentional design',
     description:
@@ -496,7 +496,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   comparison: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'JSX vs HTML',
     title: 'Four places they look alike but really differ',
     description:
@@ -530,7 +530,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   quiz: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Judge for yourself',
     title: 'Is this HTML or JavaScript?',
     description: 'Two quick questions to anchor where JSX lives.',
@@ -554,7 +554,7 @@ const en: JsxIsNotHtmlContent = {
     ],
   },
   summary: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'Core summary',
     title: 'The conclusion of this page',
     line1Before: 'JSX is not ',

@@ -186,7 +186,7 @@ const ko: ReactElementObjectStructureContent = {
     ],
   },
   overview: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'React Element 전체 구조',
     title: '한눈에 보는 Element 객체 모양',
     description:
@@ -224,7 +224,7 @@ const ko: ReactElementObjectStructureContent = {
     ],
   },
   fields: {
-    badge: '03',
+    badge: '02',
     eyebrow: '필드별 세부 해설',
     title: '5개 필드, 각자의 역할',
     description: '각 필드가 무엇을 가리키는지 따로 익혀두면 이후 소스코드가 훨씬 잘 읽힙니다.',
@@ -277,7 +277,7 @@ const ko: ReactElementObjectStructureContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: '실제 코드 체크포인트',
     title: 'ReactElement 함수에서 객체가 만들어지는 순간',
     description:
@@ -295,7 +295,7 @@ const ko: ReactElementObjectStructureContent = {
     secondaryHref: '#overview',
   },
   isValid: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'isValidElement 체험',
     title: '어떤 값이 정말 React Element인가요?',
     description:
@@ -328,7 +328,7 @@ const ko: ReactElementObjectStructureContent = {
     ],
   },
   compare: {
-    badge: '06',
+    badge: '05',
     eyebrow: '일반 객체와 React Element 비교',
     title: '비슷해 보여도 다른 객체',
     description:
@@ -363,7 +363,7 @@ const ko: ReactElementObjectStructureContent = {
     emphasis: 'React Element는 단순한 object처럼 보이지만, React가 해석하는 특별한 객체다.',
   },
   learningCheck: {
-    badge: '07',
+    badge: '06',
     eyebrow: '학습 점검',
     title: '한 줄로 정리하기',
     questionLabel: 'Q.',
@@ -434,7 +434,7 @@ const en: ReactElementObjectStructureContent = {
     ],
   },
   overview: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'The full React Element shape',
     title: 'Element object, at a glance',
     description:
@@ -472,7 +472,7 @@ const en: ReactElementObjectStructureContent = {
     ],
   },
   fields: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Field-by-field breakdown',
     title: 'Five fields, five roles',
     description: 'Knowing each field separately makes the source code easier to follow.',
@@ -525,7 +525,7 @@ const en: ReactElementObjectStructureContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Source code checkpoint',
     title: 'See ReactElement build the object',
     description:
@@ -543,7 +543,7 @@ const en: ReactElementObjectStructureContent = {
     secondaryHref: '#overview',
   },
   isValid: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Try isValidElement',
     title: 'Which values are actually React Elements?',
     description:
@@ -576,7 +576,7 @@ const en: ReactElementObjectStructureContent = {
     ],
   },
   compare: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Plain object vs React Element',
     title: 'They look similar — they are not',
     description:
@@ -612,7 +612,7 @@ const en: ReactElementObjectStructureContent = {
       'A React Element looks like a plain object — but it is a special object that React interprets.',
   },
   learningCheck: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'Check yourself',
     title: 'Put it in one sentence',
     questionLabel: 'Q.',

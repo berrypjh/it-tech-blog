@@ -169,7 +169,7 @@ const ko: ReactElementOwnerDevInfoContent = {
     bottomNote: '목적은 렌더링 결과 변경이 아니라, 더 좋은 경고와 디버깅 경험입니다.',
   },
   prodDev: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'production vs development 비교',
     title: '두 모드, 다른 의도',
     description:
@@ -206,7 +206,7 @@ const ko: ReactElementOwnerDevInfoContent = {
     emphasis: 'production은 가볍게, development는 더 설명력 있게 관리됩니다.',
   },
   owner: {
-    badge: '03',
+    badge: '02',
     eyebrow: '_owner의 의미',
     title: '누가 이 Element를 만들었나?',
     description:
@@ -242,7 +242,7 @@ const ko: ReactElementOwnerDevInfoContent = {
     ],
   },
   debug: {
-    badge: '04',
+    badge: '03',
     eyebrow: '_debugStack / _debugTask의 의미',
     title: '디버깅 경험을 받쳐주는 두 메타데이터',
     description:
@@ -269,7 +269,7 @@ const ko: ReactElementOwnerDevInfoContent = {
       'debug 정보는 사용자 화면을 바꾸기 위한 값이 아니라, 문제를 더 잘 설명하기 위한 개발 모드 메타데이터입니다.',
   },
   freeze: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Object.freeze와 개발 편의성',
     title: '잘못된 변경을 더 빨리 잡기',
     description:
@@ -295,7 +295,7 @@ const ko: ReactElementOwnerDevInfoContent = {
     emphasis: 'React Element는 불변 값처럼 다루는 것이 안전합니다.',
   },
   checkpoint: {
-    badge: '06',
+    badge: '05',
     eyebrow: '실제 코드 체크포인트',
     title: '__DEV__ 분기 안의 메타데이터 코드',
     description:
@@ -313,7 +313,7 @@ const ko: ReactElementOwnerDevInfoContent = {
     secondaryHref: '#prod-dev',
   },
   benefits: {
-    badge: '07',
+    badge: '06',
     eyebrow: '디버깅 경험과의 연결',
     title: '이 메타데이터가 만들어내는 세 가지 차이',
     description:
@@ -386,7 +386,7 @@ const en: ReactElementOwnerDevInfoContent = {
       'The goal is not to change render output — it is better warnings and a better debugging experience.',
   },
   prodDev: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'production vs development',
     title: 'Two modes, two intents',
     description:
@@ -423,7 +423,7 @@ const en: ReactElementOwnerDevInfoContent = {
     emphasis: 'production stays light; development stays more expressive.',
   },
   owner: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'What _owner means',
     title: 'Who created this Element?',
     description: '_owner helps track the component context in which an Element was created.',
@@ -458,7 +458,7 @@ const en: ReactElementOwnerDevInfoContent = {
     ],
   },
   debug: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'What _debugStack and _debugTask do',
     title: 'Two metadata fields that back debugging',
     description:
@@ -485,7 +485,7 @@ const en: ReactElementOwnerDevInfoContent = {
       'Debug info is not for the user screen — it is dev-mode metadata that makes problems easier to explain.',
   },
   freeze: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Object.freeze and dev ergonomics',
     title: 'Catch accidental mutations sooner',
     description:
@@ -511,7 +511,7 @@ const en: ReactElementOwnerDevInfoContent = {
     emphasis: 'Treat a React Element as immutable — it is the safe assumption.',
   },
   checkpoint: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Source code checkpoint',
     title: 'The metadata code inside the __DEV__ branch',
     description:
@@ -529,7 +529,7 @@ const en: ReactElementOwnerDevInfoContent = {
     secondaryHref: '#prod-dev',
   },
   benefits: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'Connection to debugging experience',
     title: 'Three concrete wins this metadata buys',
     description:

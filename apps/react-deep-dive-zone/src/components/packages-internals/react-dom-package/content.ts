@@ -225,7 +225,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'DOM 컨테이너와 HTML 문서가 중앙 react-dom renderer 카드와 점선으로 연결되고, 서버 스트림 / HTML 출력 카드가 그 아래로 이어진다.',
     },
     compare: {
-      eyebrow: '02 · react vs react-dom',
+      eyebrow: '01 · react vs react-dom',
       title: 'react와 react-dom의 역할 차이',
       description: '같은 React 생태계라도 두 패키지의 역할은 분명히 다릅니다.',
       cards: [
@@ -250,7 +250,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: 'react는 UI를 설명하고, react-dom은 환경에 붙인다.',
     },
     clientServer: {
-      eyebrow: '03 · client / server',
+      eyebrow: '02 · client / server',
       title: 'client renderer와 server renderer',
       description: 'react-dom은 진입점부터 클라이언트와 서버를 분리해 제공합니다.',
       cards: [
@@ -276,7 +276,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: '같은 React 트리라도 브라우저에서 붙이는 방식과 서버에서 만드는 방식은 다르다.',
     },
     flow: {
-      eyebrow: '04 · createRoot / hydrateRoot',
+      eyebrow: '03 · createRoot / hydrateRoot',
       title: 'createRoot와 hydrateRoot 흐름 비교',
       description: '같은 진입점이지만 시작 상태가 다릅니다. 빈 컨테이너인지, 이미 있는 HTML인지.',
       cards: [
@@ -314,7 +314,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '실제 코드 체크포인트',
       items: [
         {
@@ -344,7 +344,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       codeButtons: { primary: 'ReactDOMRoot.js 열기', secondary: 'react-dom 구조 보기' },
     },
     concerns: {
-      eyebrow: '06 · environment concerns',
+      eyebrow: '05 · environment concerns',
       title: 'react-dom이 다루는 환경 특화 관심사',
       cards: [
         {
@@ -382,7 +382,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     quiz: {
-      eyebrow: '07 · quick quiz',
+      eyebrow: '06 · quick quiz',
       title: '빠른 판단 퀴즈',
       description: 'react와 react-dom 중 어디에 가까운지 즉시 판단할 수 있나요?',
       cards: [
@@ -412,7 +412,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       title: '다음 단계로 이동하기',
       description:
         'React를 실제 환경에 연결하는 renderer를 봤다면, 이제 그 렌더링 결과를 계산하는 중심 엔진 react-reconciler로 들어갑니다.',
-      cta: '다음: react-reconciler →',
+      cta: '다음 페이지로 이동',
       href: '/reconciler-separation',
     },
   },
@@ -466,7 +466,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'The DOM container and HTML document cards connect to the central react-dom renderer card with dashed lines; below them sits the server stream / HTML output card.',
     },
     compare: {
-      eyebrow: '02 · react vs react-dom',
+      eyebrow: '01 · react vs react-dom',
       title: 'How react and react-dom differ',
       description: 'They belong to the same ecosystem, but their roles are clearly distinct.',
       cards: [
@@ -491,7 +491,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: 'react describes the UI; react-dom mounts it onto an environment.',
     },
     clientServer: {
-      eyebrow: '03 · client / server',
+      eyebrow: '02 · client / server',
       title: 'client renderer vs server renderer',
       description: 'react-dom splits the entry points by environment from day one.',
       cards: [
@@ -518,7 +518,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'Same React tree — but attaching it in the browser and producing it on the server are different jobs.',
     },
     flow: {
-      eyebrow: '04 · createRoot / hydrateRoot',
+      eyebrow: '03 · createRoot / hydrateRoot',
       title: 'createRoot vs hydrateRoot flow',
       description:
         'Both are entry points — but one starts empty, the other starts from existing HTML.',
@@ -562,7 +562,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Real-code checkpoint',
       items: [
         {
@@ -592,7 +592,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       codeButtons: { primary: 'Open ReactDOMRoot.js', secondary: 'See react-dom structure' },
     },
     concerns: {
-      eyebrow: '06 · environment concerns',
+      eyebrow: '05 · environment concerns',
       title: 'Environment-specific concerns react-dom owns',
       cards: [
         {
@@ -630,7 +630,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     quiz: {
-      eyebrow: '07 · quick quiz',
+      eyebrow: '06 · quick quiz',
       title: 'Quick judgment quiz',
       description: 'Can you decide on the right package in one second?',
       cards: [
@@ -661,7 +661,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       title: 'Move to the next step',
       description:
         'You have seen the renderer that connects React to a real environment. Next, the engine that computes the rendering result itself — react-reconciler.',
-      cta: 'Next: react-reconciler →',
+      cta: 'Go to the next page',
       href: '/reconciler-separation',
     },
   },

@@ -215,14 +215,14 @@ const ko: OnClickClickContent = {
     ],
   },
   compare: {
-    step: 2,
+    step: 1,
     eyebrow: 'prop-vs-native',
     title: 'React prop vs Native Event 비교',
     columnLabels: { native: 'Native Event (브라우저)', prop: 'React Prop (사용자 코드)' },
     rows: FULL_TABLE,
   },
   mapping: {
-    step: 3,
+    step: 2,
     eyebrow: 'simple-vs-special',
     title: '단순 매핑 vs 특수 매핑',
     simple: {
@@ -240,7 +240,7 @@ const ko: OnClickClickContent = {
     insight: 'React 이벤트 이름은 브라우저 이벤트 이름의 단순 대문자 변환만으로 결정되지 않습니다.',
   },
   flow: {
-    step: 4,
+    step: 3,
     eyebrow: 'register-simple-events',
     title: 'registerSimpleEvents 흐름',
     steps: [
@@ -272,7 +272,7 @@ const ko: OnClickClickContent = {
     ],
   },
   converter: {
-    step: 5,
+    step: 4,
     eyebrow: 'name-converter',
     title: '이벤트 이름 변환기',
     hint: '직접 선택해 보세요',
@@ -287,7 +287,7 @@ const ko: OnClickClickContent = {
     },
   },
   realCode: {
-    step: 6,
+    step: 5,
     eyebrow: 'real-code',
     title: '실제 코드 미리보기',
     smallDescription: '특수 이벤트 매핑 일부',
@@ -307,7 +307,7 @@ const ko: OnClickClickContent = {
     },
   },
   twoPhase: {
-    step: 7,
+    step: 6,
     eyebrow: 'two-phase-preview',
     title: 'two-phase registration 미리보기',
     bubbleCard: {
@@ -327,7 +327,7 @@ const ko: OnClickClickContent = {
     },
   },
   mission: {
-    step: 8,
+    step: 7,
     eyebrow: 'follow-along',
     title: '직접 코드에서 따라가 보기',
     description: 'React 저장소를 직접 열어 매핑 등록 흐름을 손으로 확인해 보세요.',
@@ -351,7 +351,7 @@ const ko: OnClickClickContent = {
     ],
   },
   takeaways: {
-    step: 9,
+    step: 8,
     eyebrow: 'key-takeaways',
     title: '핵심 정리',
     cards: [
@@ -418,14 +418,14 @@ const en: OnClickClickContent = {
     ],
   },
   compare: {
-    step: 2,
+    step: 1,
     eyebrow: 'prop-vs-native',
     title: 'React prop vs Native Event compared',
     columnLabels: { native: 'Native Event (browser)', prop: 'React Prop (your code)' },
     rows: FULL_TABLE,
   },
   mapping: {
-    step: 3,
+    step: 2,
     eyebrow: 'simple-vs-special',
     title: 'Simple mapping vs Special mapping',
     simple: {
@@ -443,7 +443,7 @@ const en: OnClickClickContent = {
     insight: "React event names are not just upper-cased versions of the browser's event names.",
   },
   flow: {
-    step: 4,
+    step: 3,
     eyebrow: 'register-simple-events',
     title: 'How registerSimpleEvents runs',
     steps: [
@@ -475,7 +475,7 @@ const en: OnClickClickContent = {
     ],
   },
   converter: {
-    step: 5,
+    step: 4,
     eyebrow: 'name-converter',
     title: 'Event name converter',
     hint: 'pick one to see the mapping',
@@ -490,7 +490,7 @@ const en: OnClickClickContent = {
     },
   },
   realCode: {
-    step: 6,
+    step: 5,
     eyebrow: 'real-code',
     title: 'Real source preview',
     smallDescription: 'A slice of special-mapping registration',
@@ -510,7 +510,7 @@ const en: OnClickClickContent = {
     },
   },
   twoPhase: {
-    step: 7,
+    step: 6,
     eyebrow: 'two-phase-preview',
     title: 'Two-phase registration preview',
     bubbleCard: {
@@ -530,7 +530,7 @@ const en: OnClickClickContent = {
     },
   },
   mission: {
-    step: 8,
+    step: 7,
     eyebrow: 'follow-along',
     title: 'Walk it in the source',
     description: 'Open the React repository and verify the mapping registration by hand.',
@@ -554,7 +554,7 @@ const en: OnClickClickContent = {
     ],
   },
   takeaways: {
-    step: 9,
+    step: 8,
     eyebrow: 'key-takeaways',
     title: 'Key takeaways',
     cards: [

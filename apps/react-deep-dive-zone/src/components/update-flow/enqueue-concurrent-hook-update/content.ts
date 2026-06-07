@@ -343,7 +343,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     title: 'Fiber에서 Root까지 올라가기',
     description:
       'update가 queue 처리 경로로 넘어갔다면, 이제 React는 Fiber에서 Root까지 올라가며 작업 흔적을 표시합니다.',
-    cta: '다음: Fiber에서 Root까지 올라가기',
+    cta: '다음 페이지로 이동',
     href: '/fiber-to-root',
   },
 };
@@ -557,7 +557,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
     title: 'walking from Fiber up to Root',
     description:
       'Now that the update is on the queue-processing path, React walks from the Fiber up to the Root, leaving trail markers along the way.',
-    cta: 'Next: walking from Fiber up to Root',
+    cta: 'Go to the next page',
     href: '/fiber-to-root',
   },
 };

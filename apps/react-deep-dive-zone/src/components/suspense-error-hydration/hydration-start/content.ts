@@ -361,7 +361,7 @@ const ko: HydrationStartContent = {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Hydration Mismatch는 어떻게 감지되고 복구되는가?',
     description: 'Hydration 과정에서 문제가 발생했을 때의 감지와 복구 로직을 알아봅니다.',
-    cta: '다음 강의로 이동',
+    cta: '다음 페이지로 이동',
     href: '/mismatch-detect-recover',
   },
 };
@@ -562,7 +562,7 @@ const en: HydrationStartContent = {
     title: 'How are Hydration Mismatches detected and recovered?',
     description:
       'Learn the detection and recovery logic when something goes wrong during hydration.',
-    cta: 'Go to the next lesson',
+    cta: 'Go to the next page',
     href: '/mismatch-detect-recover',
   },
 };

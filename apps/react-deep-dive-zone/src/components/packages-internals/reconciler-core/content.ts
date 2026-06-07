@@ -273,7 +273,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       treeDescription: 'return / child / sibling 으로 연결',
     },
     position: {
-      eyebrow: '02 · position',
+      eyebrow: '01 · position',
       title: 'react-reconciler는 어디에 위치할까?',
       description: 'react가 설명하고 renderer가 출력하는 사이, reconciler가 계산을 책임집니다.',
       cards: [
@@ -305,7 +305,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       banner: 'reconciler는 react와 renderer 사이에서 계산을 책임지는 핵심 패키지입니다.',
     },
     responsibilities: {
-      eyebrow: '03 · responsibilities',
+      eyebrow: '02 · responsibilities',
       title: 'react-reconciler가 맡는 4가지 일',
       description: '내부 렌더링은 순서대로 네 단계로 진행됩니다.',
       cards: [
@@ -344,7 +344,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
     },
     elementFiber: {
-      eyebrow: '04 · element → fiber',
+      eyebrow: '03 · element → fiber',
       title: 'Element → Fiber 변환 시각화',
       description: 'JSX 한 줄이 Element 설명 객체를 거쳐 Fiber 작업 단위로 바뀌어 트리를 이룹니다.',
       jsxCode: '<MyButton label="저장" />',
@@ -359,7 +359,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       banner: 'Element는 설명이고, Fiber는 작업 단위다.',
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드로 보기: Element → Fiber 변환의 진입점',
       items: [
         {
@@ -389,7 +389,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       codeButtons: { primary: 'ReactFiber.js 열기', secondary: 'Element → Fiber 흐름 보기' },
     },
     advanced: {
-      eyebrow: '06 · advanced learning',
+      eyebrow: '05 · advanced learning',
       title: '이후 심화 학습과 연결',
       description: 'reconciler 개념이 잡혔다면 다음 챕터로 자연스럽게 이어집니다.',
       cards: [
@@ -429,7 +429,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       moreLabel: '자세히 보기',
     },
     concept: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: '개념 점검',
       question: 'Element와 Fiber의 가장 큰 차이는?',
       answer: 'Element는 UI 설명 객체, Fiber는 렌더링을 처리하는 작업 단위입니다.',
@@ -471,7 +471,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       treeDescription: 'connected by return / child / sibling',
     },
     position: {
-      eyebrow: '02 · position',
+      eyebrow: '01 · position',
       title: 'Where does react-reconciler sit?',
       description:
         'Between the description (react) and the output (renderer), reconciler does the computation.',
@@ -505,7 +505,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
         'reconciler is the core package that owns the computation between react and renderer.',
     },
     responsibilities: {
-      eyebrow: '03 · responsibilities',
+      eyebrow: '02 · responsibilities',
       title: 'Four jobs react-reconciler owns',
       description: 'React rendering moves through four ordered steps inside this package.',
       cards: [
@@ -544,7 +544,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
     },
     elementFiber: {
-      eyebrow: '04 · element → fiber',
+      eyebrow: '03 · element → fiber',
       title: 'Visualizing the Element → Fiber conversion',
       description:
         'A single line of JSX turns into a description object, then a work unit, then a tree.',
@@ -560,7 +560,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       banner: 'Element is a description; Fiber is a work unit.',
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'See the code: where Element becomes Fiber',
       items: [
         {
@@ -590,7 +590,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       codeButtons: { primary: 'Open ReactFiber.js', secondary: 'See the Element → Fiber flow' },
     },
     advanced: {
-      eyebrow: '06 · advanced learning',
+      eyebrow: '05 · advanced learning',
       title: 'Connect to deeper topics',
       description: 'Once the reconciler picture is clear, these are the natural next reads.',
       cards: [
@@ -630,7 +630,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       moreLabel: 'Read more',
     },
     concept: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: 'Concept check',
       question: 'What is the biggest difference between Element and Fiber?',
       answer: 'Element is a UI description object; Fiber is the work unit that runs the rendering.',

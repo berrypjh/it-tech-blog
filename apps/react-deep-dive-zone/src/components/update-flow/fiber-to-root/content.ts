@@ -369,7 +369,7 @@ const ko: FiberToRootContent = {
     title: 'scheduleUpdateOnFiber',
     description:
       'Fiber에서 Root까지 업데이트 흔적을 표시했다면, 이제 Root 자체를 스케줄링 흐름에 등록할 차례입니다.',
-    cta: '다음: scheduleUpdateOnFiber',
+    cta: '다음 페이지로 이동',
     href: '/schedule-update-on-fiber',
   },
 };
@@ -591,7 +591,7 @@ const en: FiberToRootContent = {
     title: 'scheduleUpdateOnFiber',
     description:
       'Now that the lane trail is laid from Fiber to Root, it is time to register the Root itself into the scheduling pipeline.',
-    cta: 'Next: scheduleUpdateOnFiber',
+    cta: 'Go to the next page',
     href: '/schedule-update-on-fiber',
   },
 };

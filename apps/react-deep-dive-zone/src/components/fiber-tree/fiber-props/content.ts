@@ -186,7 +186,7 @@ const ko: FiberPropsContent = {
     },
   },
   comparison: {
-    number: '02',
+    number: '01',
     eyebrow: '두 props 비교',
     title: 'pendingProps / memoizedProps 비교',
     cards: [
@@ -213,7 +213,7 @@ const ko: FiberPropsContent = {
     ],
   },
   scenario: {
-    number: '03',
+    number: '02',
     eyebrow: '시나리오',
     title: '예시 변화 시나리오',
     previousLabel: '이전 렌더 (커밋됨)',
@@ -230,7 +230,7 @@ const ko: FiberPropsContent = {
     bannerSuffix: '이 동시에 존재합니다.',
   },
   meaning: {
-    number: '04',
+    number: '03',
     eyebrow: '내부 의미',
     title: 'Fiber 내부에서 두 값의 의미',
     steps: [
@@ -264,7 +264,7 @@ const ko: FiberPropsContent = {
     descriptionEmphasis: '변경이 있을 때만',
   },
   checkpoint: {
-    number: '05',
+    number: '04',
     eyebrow: '실제 코드와 연결',
     title: '실제 코드 체크포인트',
     info: {
@@ -286,7 +286,7 @@ const ko: FiberPropsContent = {
     },
   },
   reasons: {
-    number: '06',
+    number: '05',
     eyebrow: '비교 이유',
     title: '왜 둘을 비교해야 하는가?',
     cards: [
@@ -317,7 +317,7 @@ const ko: FiberPropsContent = {
     ],
   },
   quiz: {
-    number: '07',
+    number: '06',
     eyebrow: '판단 퀴즈',
     title: '미니 판단 퀴즈',
     questionLabel: '질문',
@@ -378,7 +378,7 @@ const en: FiberPropsContent = {
     },
   },
   comparison: {
-    number: '02',
+    number: '01',
     eyebrow: 'Compare both',
     title: 'pendingProps vs memoizedProps',
     cards: [
@@ -405,7 +405,7 @@ const en: FiberPropsContent = {
     ],
   },
   scenario: {
-    number: '03',
+    number: '02',
     eyebrow: 'A change scenario',
     title: 'A concrete change scenario',
     previousLabel: 'Previous render (committed)',
@@ -422,7 +422,7 @@ const en: FiberPropsContent = {
     bannerSuffix: ' exist at the same time.',
   },
   meaning: {
-    number: '04',
+    number: '03',
     eyebrow: 'What they mean',
     title: 'What the two values mean inside a Fiber',
     steps: [
@@ -456,7 +456,7 @@ const en: FiberPropsContent = {
     descriptionEmphasis: 'only then',
   },
   checkpoint: {
-    number: '05',
+    number: '04',
     eyebrow: 'Connect to real source',
     title: 'Source code checkpoint',
     info: {
@@ -478,7 +478,7 @@ const en: FiberPropsContent = {
     },
   },
   reasons: {
-    number: '06',
+    number: '05',
     eyebrow: 'Why compare',
     title: 'Why compare the two?',
     cards: [
@@ -509,7 +509,7 @@ const en: FiberPropsContent = {
     ],
   },
   quiz: {
-    number: '07',
+    number: '06',
     eyebrow: 'Mini judgment quiz',
     title: 'Mini judgment quiz',
     questionLabel: 'Question',
