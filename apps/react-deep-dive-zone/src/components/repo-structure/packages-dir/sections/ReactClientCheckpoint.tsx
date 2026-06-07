@@ -69,8 +69,18 @@ export const ReactClientCheckpoint = ({ content }: Props) => {
               {content.learningQuestion}
             </p>
           </div>
+        </article>
 
-          <div className="flex flex-col gap-2 pt-xs">
+        {/* 우측 코드 패널 + 버튼 */}
+        <div className="flex flex-col gap-md min-w-0">
+          <CodePreviewPanel
+            header={content.codeHeader}
+            badge={content.codeBadge}
+            caption={content.codeCaption}
+            code={content.code}
+          />
+
+          <div className="flex flex-col sm:flex-row gap-2">
             <a
               href={content.primaryHref}
               target="_blank"
@@ -103,16 +113,6 @@ export const ReactClientCheckpoint = ({ content }: Props) => {
               <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           </div>
-        </article>
-
-        {/* 우측 코드 패널 */}
-        <div className="min-w-0">
-          <CodePreviewPanel
-            header={content.codeHeader}
-            badge={content.codeBadge}
-            caption={content.codeCaption}
-            code={content.code}
-          />
         </div>
       </div>
     </section>

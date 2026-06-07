@@ -64,41 +64,6 @@ export const CreateRootCheckpoint = ({ content }: Props) => {
               {content.learningQuestion}
             </p>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-2">
-            <a
-              href={content.primaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-                'bg-sky-600 text-white transition-colors hover:bg-sky-700',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
-              )}
-            >
-              <GithubIcon className="h-3.5 w-3.5" />
-              {content.primaryCta}
-              <ArrowRightIcon
-                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </a>
-            <a
-              href={content.secondaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-                'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
-                'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-              )}
-            >
-              {content.secondaryCta}
-              <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
-            </a>
-          </div>
         </article>
 
         {/* 우측 코드 패널 + 포인트 */}
@@ -134,6 +99,41 @@ export const CreateRootCheckpoint = ({ content }: Props) => {
                 {content.pointMessage}
               </p>
             </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-2">
+            <a
+              href={content.primaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+                'bg-sky-600 text-white transition-colors hover:bg-sky-700',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+                'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
+              )}
+            >
+              <GithubIcon className="h-3.5 w-3.5" />
+              {content.primaryCta}
+              <ArrowRightIcon
+                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+            <a
+              href={content.secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+                'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
+                'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+              )}
+            >
+              {content.secondaryCta}
+              <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>

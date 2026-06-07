@@ -58,6 +58,16 @@ export const ScheduleCallbackCheckpoint = ({ content }: Props) => {
               {content.learningQuestion}
             </p>
           </div>
+        </article>
+
+        {/* 우측 dark code panel + 버튼 */}
+        <div className="flex flex-col gap-md min-w-0">
+          <CodePreviewPanel
+            header={content.codeHeader}
+            badge={content.codeBadge}
+            code={content.code}
+            language="js"
+          />
 
           <div className="flex flex-col sm:flex-row gap-2">
             <a
@@ -93,16 +103,6 @@ export const ScheduleCallbackCheckpoint = ({ content }: Props) => {
               <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           </div>
-        </article>
-
-        {/* 우측 dark code panel */}
-        <div className="min-w-0">
-          <CodePreviewPanel
-            header={content.codeHeader}
-            badge={content.codeBadge}
-            code={content.code}
-            language="js"
-          />
         </div>
       </div>
     </section>
