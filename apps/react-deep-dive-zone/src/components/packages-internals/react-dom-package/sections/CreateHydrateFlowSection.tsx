@@ -34,9 +34,9 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
   return (
     <article
       className={cn(
-        'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
+        'group flex h-full flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        tone.chip,
+        tone.border,
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
       )}
@@ -51,37 +51,32 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
       <CodePreviewPanel code={card.code} />
 
       {/* 3단계 흐름 */}
-      <ol className="flex flex-col gap-sm">
+      <ol className="flex flex-col gap-2">
         {card.steps.map((step, i) => (
-          <li key={step.id} className="flex items-stretch gap-sm">
+          <li key={step.id} className="flex gap-sm rounded-lg bg-[var(--term-surface)] p-3">
             <span
               aria-hidden="true"
               className={cn(
-                'inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-mono text-[10px] font-bold mt-1',
-                tone.chip,
+                'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border',
+                'bg-[var(--term-bg)] font-mono text-[10px] font-bold',
+                tone.border,
+                tone.text,
               )}
             >
               {i + 1}
             </span>
-            <div
-              className={cn(
-                'flex-1 flex flex-col gap-1 rounded-lg border p-3',
-                'bg-[var(--term-bg)] border-[var(--term-border)]',
-              )}
-            >
+            <div className="flex min-w-0 flex-col gap-0.5">
               <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
                 {step.step}
               </span>
-              <span
-                className={cn('text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep')}
-              >
+              <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
                 {step.title}
               </span>
               {step.caption && (
                 <code
                   className={cn(
-                    'text-[11px] leading-snug font-mono rounded-md border px-2 py-1 w-fit max-w-full overflow-x-auto',
-                    'border-dashed border-[var(--term-border)] bg-[var(--term-surface)]',
+                    'mt-0.5 w-fit max-w-full overflow-x-auto rounded-md px-2 py-1 text-[11px] leading-snug font-mono',
+                    'bg-[var(--term-bg)]',
                     tone.text,
                   )}
                 >
@@ -93,12 +88,7 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
         ))}
       </ol>
 
-      <p
-        className={cn(
-          'mt-auto rounded-lg border p-md text-xsm leading-relaxed break-keep',
-          'border-dashed border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-        )}
-      >
+      <p className="mt-auto rounded-lg bg-[var(--term-surface)] p-md text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
         {card.description}
       </p>
     </article>

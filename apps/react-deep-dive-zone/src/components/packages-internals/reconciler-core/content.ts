@@ -111,7 +111,7 @@ export type ReconcilerContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeButtons: { primary: string; secondary: string };
+    codeLinks: { label: string; href: string }[];
   };
   advanced: {
     eyebrow: string;
@@ -378,7 +378,12 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
       code: REACT_FIBER_CODE,
-      codeButtons: { primary: 'ReactFiber.js 열기', secondary: 'Element → Fiber 흐름 보기' },
+      codeLinks: [
+        {
+          label: 'createFiberFromElement',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+        },
+      ],
     },
     advanced: {
       eyebrow: '05 · advanced learning',
@@ -575,7 +580,12 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
       code: REACT_FIBER_CODE,
-      codeButtons: { primary: 'Open ReactFiber.js', secondary: 'See the Element → Fiber flow' },
+      codeLinks: [
+        {
+          label: 'createFiberFromElement',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+        },
+      ],
     },
     advanced: {
       eyebrow: '05 · advanced learning',

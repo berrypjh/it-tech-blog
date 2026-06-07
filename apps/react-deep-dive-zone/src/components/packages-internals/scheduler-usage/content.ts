@@ -109,7 +109,7 @@ export type SchedulerContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeButtons: { primary: string; secondary: string };
+    codeLinks: { label: string; href: string }[];
   };
   doesNot: {
     eyebrow: string;
@@ -335,7 +335,12 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',
       code: SCHEDULER_CODE,
-      codeButtons: { primary: 'Scheduler.js 열기', secondary: 'scheduler 흐름 보기' },
+      codeLinks: [
+        {
+          label: 'unstable_scheduleCallback',
+          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js#L335',
+        },
+      ],
     },
     doesNot: {
       eyebrow: '05 · does / does not',
@@ -563,7 +568,12 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',
       code: SCHEDULER_CODE,
-      codeButtons: { primary: 'Open Scheduler.js', secondary: 'See the scheduler flow' },
+      codeLinks: [
+        {
+          label: 'unstable_scheduleCallback',
+          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js#L335',
+        },
+      ],
     },
     doesNot: {
       eyebrow: '05 · does / does not',

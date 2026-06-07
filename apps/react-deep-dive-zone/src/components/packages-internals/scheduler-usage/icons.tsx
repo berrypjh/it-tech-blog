@@ -32,6 +32,7 @@ export {
   CheckCircle2 as CheckCircleIcon,
   ChevronRight as ChevronRightIcon,
   Code2 as CodeIcon,
+  ExternalLink as ExternalLinkIcon,
   HelpCircle as HelpCircleIcon,
   Info as InfoIcon,
   Lightbulb as LightbulbIcon,

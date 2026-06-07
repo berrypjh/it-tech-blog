@@ -8,7 +8,6 @@ import { ClientServerSection } from './sections/ClientServerSection';
 import { CompareSection } from './sections/CompareSection';
 import { ConcernsSection } from './sections/ConcernsSection';
 import { CreateHydrateFlowSection } from './sections/CreateHydrateFlowSection';
-import { QuickQuizSection } from './sections/QuickQuizSection';
 import { ReactDomHero } from './sections/ReactDomHero';
 import { reactDomContent } from './content';
 
@@ -28,7 +27,6 @@ export const ReactDomPackagePage = ({ locale }: Props) => {
       <CreateHydrateFlowSection content={c.flow} sectionId={FLOW_SECTION_ID} />
       <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
       <ConcernsSection content={c.concerns} />
-      <QuickQuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

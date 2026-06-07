@@ -85,13 +85,6 @@ export type ConcernCard = {
   tone: ToneKey;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-};
-
 export type ReactDomContent = {
   hero: {
     badge: string;
@@ -128,18 +121,12 @@ export type ReactDomContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeButtons: { primary: string; secondary: string };
+    codeLinks: { label: string; href: string }[];
   };
   concerns: {
     eyebrow: string;
     title: string;
     cards: ConcernCard[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -328,7 +315,16 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
       code: REACT_DOM_ROOT_CODE,
-      codeButtons: { primary: 'ReactDOMRoot.js 열기', secondary: 'react-dom 구조 보기' },
+      codeLinks: [
+        {
+          label: 'createRoot',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+        },
+        {
+          label: 'hydrateRoot',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L276',
+        },
+      ],
     },
     concerns: {
       eyebrow: '05 · environment concerns',
@@ -365,32 +361,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           tags: ['스트리밍', '리소스 관리'],
           iconName: 'layers',
           tone: 'amber',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: '빠른 판단 퀴즈',
-      description: 'react와 react-dom 중 어디에 가까운지 즉시 판단할 수 있나요?',
-      cards: [
-        {
-          id: 'useEffect',
-          question: 'useEffect는 react와 react-dom 중 어디에 가까울까?',
-          answer: 'react',
-          explanation: 'useEffect는 상태/부수 효과를 설명하는 API로, ReactHooks.js에서 시작합니다.',
-        },
-        {
-          id: 'hydrateRoot',
-          question: 'hydrateRoot는 어디에 가까울까?',
-          answer: 'react-dom',
-          explanation: 'hydrateRoot는 서버 HTML과 연결하는 기능으로, react-dom/client에 속합니다.',
-        },
-        {
-          id: 'renderToPipeable',
-          question: 'renderToPipeableStream은 어느 계열일까?',
-          answer: 'react-dom/server',
-          explanation:
-            'renderToPipeableStream은 서버에서 스트리밍 HTML을 생성하는 서버 렌더링 API입니다.',
         },
       ],
     },
@@ -569,7 +539,16 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
       code: REACT_DOM_ROOT_CODE,
-      codeButtons: { primary: 'Open ReactDOMRoot.js', secondary: 'See react-dom structure' },
+      codeLinks: [
+        {
+          label: 'createRoot',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+        },
+        {
+          label: 'hydrateRoot',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L276',
+        },
+      ],
     },
     concerns: {
       eyebrow: '05 · environment concerns',
@@ -606,33 +585,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           tags: ['Streaming', 'Resource management'],
           iconName: 'layers',
           tone: 'amber',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: 'Quick judgment quiz',
-      description: 'Can you decide on the right package in one second?',
-      cards: [
-        {
-          id: 'useEffect',
-          question: 'Is useEffect closer to react or react-dom?',
-          answer: 'react',
-          explanation:
-            'useEffect describes side effects — it starts inside ReactHooks.js in the react package.',
-        },
-        {
-          id: 'hydrateRoot',
-          question: 'Where does hydrateRoot live?',
-          answer: 'react-dom',
-          explanation: 'hydrateRoot wires React onto server HTML — it belongs to react-dom/client.',
-        },
-        {
-          id: 'renderToPipeable',
-          question: 'Which family does renderToPipeableStream belong to?',
-          answer: 'react-dom/server',
-          explanation:
-            'renderToPipeableStream is a server-side streaming HTML API in react-dom/server.',
         },
       ],
     },

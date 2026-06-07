@@ -109,21 +109,23 @@ type RowProps = {
 const CheckpointRow = ({ label, value, iconName, tone, isMonoValue = false }: RowProps) => {
   const Icon = sharedIcon[iconName];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,6.5rem)_minmax(0,1fr)] items-start gap-sm">
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono pt-2">
+    <div className="flex flex-col gap-1.5">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
         {label}
       </span>
-      <span
-        className={cn(
-          'text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-words pt-1.5',
-          isMonoValue && 'font-mono',
-        )}
-      >
-        {value}
-      </span>
+      <div className="flex items-start gap-2">
+        <ToneIconBox tone={tone} size="sm">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </ToneIconBox>
+        <span
+          className={cn(
+            'min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-all',
+            isMonoValue && 'font-mono',
+          )}
+        >
+          {value}
+        </span>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { SchedulerCodePanel } from '../components/SchedulerCodePanel';
 import type { CheckpointItem, SchedulerContent } from '../content';
-import { schedulerIcon } from '../icons';
+import { ArrowRightIcon, ExternalLinkIcon, schedulerIcon } from '../icons';
 
 type Props = { content: SchedulerContent['checkpoint']; sectionId: string };
 
@@ -19,25 +20,18 @@ export const CheckpointSection = ({ content, sectionId }: Props) => {
         id="checkpoint"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CheckIcon />}
+        icon={<CheckpointHeaderIcon />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.65fr)_minmax(0,_1.35fr)] gap-md items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-start">
         <article
           className={cn(
-            'relative flex flex-col gap-sm rounded-2xl border p-md sm:p-lg overflow-hidden',
+            'flex flex-col gap-sm rounded-2xl border p-md sm:p-lg',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
           )}
         >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-2 -bottom-4 text-[6rem] font-bold leading-none text-violet-100/60 dark:text-violet-900/30 select-none"
-          >
-            ?
-          </span>
-
-          <ul className="relative flex flex-col divide-y divide-dashed divide-[var(--term-border)]">
+          <ul className="flex flex-col divide-y divide-dashed divide-[var(--term-border)]">
             {content.items.map((item) => (
               <li key={item.id} className="py-3 first:pt-0 last:pb-0">
                 <CheckpointRow item={item} />
@@ -46,12 +40,38 @@ export const CheckpointSection = ({ content, sectionId }: Props) => {
           </ul>
         </article>
 
-        <SchedulerCodePanel
-          caption={content.codeCaption}
-          code={content.code}
-          primaryLabel={content.codeButtons.primary}
-          secondaryLabel={content.codeButtons.secondary}
-        />
+        <div className="flex flex-col gap-md min-w-0">
+          <CodePreviewPanel header={content.codeCaption} badge="main" code={content.code} />
+
+          <div className="flex flex-col sm:flex-row gap-2">
+            {content.codeLinks.map((link, i) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+                  i === 0
+                    ? 'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90'
+                    : 'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+                )}
+              >
+                <GithubIcon className="h-3.5 w-3.5" />
+                <span className="font-mono">{link.label}</span>
+                {i === 0 ? (
+                  <ArrowRightIcon
+                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -60,21 +80,23 @@ export const CheckpointSection = ({ content, sectionId }: Props) => {
 const CheckpointRow = ({ item }: { item: CheckpointItem }) => {
   const Icon = schedulerIcon[item.iconName];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,7rem)_minmax(0,1fr)] items-start gap-sm">
-      <ToneIconBox tone={item.tone} size="sm">
-        <Icon className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono pt-2">
+    <div className="flex flex-col gap-1.5">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
         {item.label}
       </span>
-      <span className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-words pt-1.5">
-        {item.value}
-      </span>
+      <div className="flex items-start gap-2">
+        <ToneIconBox tone={item.tone} size="sm">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </ToneIconBox>
+        <span className="min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-all">
+          {item.value}
+        </span>
+      </div>
     </div>
   );
 };
 
-const CheckIcon = () => (
+const CheckpointHeaderIcon = () => (
   <svg
     viewBox="0 0 24 24"
     className="h-5 w-5"

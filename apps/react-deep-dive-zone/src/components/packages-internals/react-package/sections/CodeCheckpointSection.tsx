@@ -55,16 +55,18 @@ const CheckpointHeaderIcon = () => (
 const CheckpointRow = ({ item }: { item: CheckpointItem }) => {
   const Icon = reactPackageIcon[item.iconName];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,8rem)_minmax(0,1fr)] items-start gap-sm">
-      <ToneIconBox tone={item.tone} size="sm">
-        <Icon className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono pt-2">
+    <div className="flex flex-col gap-1.5">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
         {item.label}
       </span>
-      <span className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-words pt-1.5">
-        {item.value}
-      </span>
+      <div className="flex items-start gap-2">
+        <ToneIconBox tone={item.tone} size="sm">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </ToneIconBox>
+        <span className="min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-all">
+          {item.value}
+        </span>
+      </div>
     </div>
   );
 };
