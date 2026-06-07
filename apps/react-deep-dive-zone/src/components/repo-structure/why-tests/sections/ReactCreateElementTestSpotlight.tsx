@@ -44,9 +44,8 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
           rel="noopener noreferrer"
           className={cn(
             'group inline-flex items-center justify-center gap-2 rounded-lg px-lg py-4 text-sm font-bold',
-            'bg-blue-600 text-white transition-colors hover:bg-blue-700',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            'dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-slate-950',
+            'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
           )}
         >
           <GithubIcon className="h-4 w-4" />
@@ -63,9 +62,9 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
           rel="noopener noreferrer"
           className={cn(
             'group inline-flex items-center justify-center gap-2 rounded-lg px-lg py-4 text-sm font-bold',
-            'bg-emerald-600 text-white transition-colors hover:bg-emerald-700',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            'dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950',
+            'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
+            'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
           )}
         >
           <GithubIcon className="h-4 w-4" />

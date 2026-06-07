@@ -13,7 +13,7 @@ export const HeroCodeComparison = ({ content }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
       )}
@@ -23,7 +23,7 @@ export const HeroCodeComparison = ({ content }: Props) => {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(56,189,248,0.10),transparent_45%,transparent_55%,rgba(45,212,191,0.10))]"
       />
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-sm items-stretch">
+      <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md @lg:gap-sm items-stretch">
         <CodeCard
           label={content.implLabel}
           code={content.implCode}
@@ -43,7 +43,7 @@ export const HeroCodeComparison = ({ content }: Props) => {
 };
 
 const ArrowConnector = () => (
-  <div className="flex lg:flex-col items-center justify-center" aria-hidden="true">
+  <div className="flex @lg:flex-col items-center justify-center" aria-hidden="true">
     <span
       className={cn(
         'inline-flex items-center justify-center w-10 h-10 rounded-full',
@@ -51,7 +51,7 @@ const ArrowConnector = () => (
         'shadow-[0_2px_0_var(--term-border)] text-[var(--term-accent)]',
       )}
     >
-      <ArrowLeftRightIcon className="h-5 w-5 lg:rotate-0 rotate-90" />
+      <ArrowLeftRightIcon className="h-5 w-5 @lg:rotate-0 rotate-90" />
     </span>
   </div>
 );

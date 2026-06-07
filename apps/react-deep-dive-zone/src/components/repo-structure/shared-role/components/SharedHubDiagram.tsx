@@ -68,7 +68,7 @@ export const SharedHubDiagram = ({ content }: Props) => {
         {/* 3개 패키지 카드 */}
         <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full">
           {content.branches.map((branch) => (
-            <li key={branch.id}>
+            <li key={branch.id} className="min-w-0">
               <BranchCard branch={branch} />
             </li>
           ))}
@@ -157,7 +157,9 @@ const BranchCard = ({ branch }: BranchProps) => {
       >
         <Icon className="h-4 w-4" />
       </span>
-      <h4 className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>
+      <h4
+        className={cn('text-xsm font-bold font-mono tracking-tight min-w-0 break-words', tone.text)}
+      >
         {branch.title}
       </h4>
       <p className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

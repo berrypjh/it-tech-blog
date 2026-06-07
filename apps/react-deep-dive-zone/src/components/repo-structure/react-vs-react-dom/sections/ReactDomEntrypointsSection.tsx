@@ -57,7 +57,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>
+          <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', tone.text)}>
             {card.title}
           </h3>
           <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -76,7 +76,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
               className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
               aria-hidden="true"
             />
-            <span>{bullet}</span>
+            <span className="min-w-0 break-words">{bullet}</span>
           </li>
         ))}
       </ul>

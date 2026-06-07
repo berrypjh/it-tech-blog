@@ -9,14 +9,16 @@ type Props = { content: ReactVsReactDomContent['hero'] };
 /**
  * Hero 우측 비교 비주얼.
  * react 카드 → 중앙 연결 화살표 → react-dom 카드 구조.
- * 모바일에서는 세로 스택으로 자연 전환.
+ * 컨테이너 폭이 좁으면(@lg 미만) 세로 스택으로 자연 전환.
  */
 export const HeroComparePair = ({ content }: Props) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-sm items-stretch">
-      <RoleCardItem card={content.reactCard} />
-      <Connector top={content.relationTopLine} bottom={content.relationBottomLine} />
-      <RoleCardItem card={content.reactDomCard} />
+    <div className="@container">
+      <div className="grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md @lg:gap-sm items-stretch">
+        <RoleCardItem card={content.reactCard} />
+        <Connector top={content.relationTopLine} bottom={content.relationBottomLine} />
+        <RoleCardItem card={content.reactDomCard} />
+      </div>
     </div>
   );
 };
@@ -53,7 +55,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>
+          <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', tone.text)}>
             {card.title}
           </h3>
           <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -72,7 +74,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
               className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
               aria-hidden="true"
             />
-            <span>{bullet}</span>
+            <span className="min-w-0 break-words">{bullet}</span>
           </li>
         ))}
       </ul>
@@ -101,10 +103,10 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
 type ConnectorProps = { top: string; bottom: string };
 
 const Connector = ({ top, bottom }: ConnectorProps) => (
-  <div className="flex lg:flex-col items-center justify-center gap-2">
+  <div className="flex @lg:flex-col items-center justify-center gap-2">
     <span
       aria-hidden="true"
-      className="hidden lg:block w-px h-md border-l border-dashed border-[var(--term-border)]"
+      className="hidden @lg:block w-px h-md border-l border-dashed border-[var(--term-border)]"
     />
     <div className="flex flex-col items-center gap-1 text-center text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">
       <span>{top}</span>
@@ -112,13 +114,13 @@ const Connector = ({ top, bottom }: ConnectorProps) => (
     </div>
     <span
       aria-hidden="true"
-      className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] rotate-90 lg:rotate-0"
+      className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] rotate-90 @lg:rotate-0"
     >
       <ArrowRightIcon className="h-4 w-4" />
     </span>
     <span
       aria-hidden="true"
-      className="hidden lg:block w-px h-md border-l border-dashed border-[var(--term-border)]"
+      className="hidden @lg:block w-px h-md border-l border-dashed border-[var(--term-border)]"
     />
   </div>
 );

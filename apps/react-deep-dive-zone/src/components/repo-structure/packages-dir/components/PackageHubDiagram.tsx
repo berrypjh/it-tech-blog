@@ -48,7 +48,7 @@ export const PackageHubDiagram = ({ content }: Props) => {
           />
           <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
             {content.coreNodes.map((pkg) => (
-              <li key={pkg.id} className="flex flex-col items-center">
+              <li key={pkg.id} className="flex flex-col items-center min-w-0">
                 <span
                   aria-hidden="true"
                   className="block w-px h-md border-l border-dashed border-[var(--term-border)]"
@@ -115,7 +115,12 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
       >
         <Icon className="h-4 w-4" />
       </span>
-      <span className={cn('text-[11px] font-bold font-mono tracking-tight', tone.text)}>
+      <span
+        className={cn(
+          'text-[11px] font-bold font-mono tracking-tight min-w-0 break-words',
+          tone.text,
+        )}
+      >
         {pkg.name}
       </span>
       <span className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

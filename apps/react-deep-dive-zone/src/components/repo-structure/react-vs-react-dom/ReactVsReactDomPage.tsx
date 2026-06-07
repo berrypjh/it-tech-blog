@@ -7,7 +7,6 @@ import { CreateRootCheckpoint } from './sections/CreateRootCheckpoint';
 import { ReactDomComparisonTable } from './sections/ReactDomComparisonTable';
 import { ReactDomEntrypointsSection } from './sections/ReactDomEntrypointsSection';
 import { ReactDomMisconceptionSection } from './sections/ReactDomMisconceptionSection';
-import { ReactDomQuickQuiz } from './sections/ReactDomQuickQuiz';
 import { ReactDomUsageFlowSection } from './sections/ReactDomUsageFlowSection';
 import { ReactVsReactDomHero } from './sections/ReactVsReactDomHero';
 import { reactVsReactDomContent } from './content';
@@ -27,7 +26,6 @@ export const ReactVsReactDomPage = ({ locale }: Props) => {
       <ReactDomUsageFlowSection content={c.usage} />
       <CreateRootCheckpoint content={c.checkpoint} />
       <ReactDomEntrypointsSection content={c.entrypoints} />
-      <ReactDomQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

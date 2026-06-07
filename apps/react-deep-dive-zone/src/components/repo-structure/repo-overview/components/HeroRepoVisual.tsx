@@ -88,7 +88,7 @@ const CodeCard = ({ caption, code }: CodeCardProps) => {
           {caption}
         </span>
       </div>
-      <pre className="px-md py-3 text-[11px] leading-[1.65] font-mono text-[var(--term-fg)]">
+      <pre className="px-md py-3 text-[11px] leading-[1.65] font-mono text-[var(--term-fg)] overflow-x-auto">
         <code>
           {lines.map((line, i) => (
             <div key={i} className="flex">

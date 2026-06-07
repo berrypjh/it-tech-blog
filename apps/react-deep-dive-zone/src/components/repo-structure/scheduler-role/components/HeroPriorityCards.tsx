@@ -70,7 +70,7 @@ export const HeroPriorityCards = ({ content }: Props) => {
         {/* 3개 카드 */}
         <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
           {content.priorityCards.map((card) => (
-            <li key={card.id}>
+            <li key={card.id} className="min-w-0">
               <PriorityCard card={card} />
             </li>
           ))}

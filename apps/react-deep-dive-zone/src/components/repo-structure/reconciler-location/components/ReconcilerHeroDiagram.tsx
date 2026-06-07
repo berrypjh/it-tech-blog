@@ -4,19 +4,17 @@ import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
 import { CheckCircleIcon, CuboidIcon, FiberCubeIcon, iconByName } from '../icons';
 
-import { FiberNodeNetwork } from './FiberNodeNetwork';
-
 type Props = { content: ReconcilerEntryContent['hero'] };
 
 /**
  * Hero 우측 메인 비주얼.
- * React Element → react-reconciler → Renderer 흐름 + 하단 Fiber 노드 네트워크.
+ * React Element → react-reconciler → Renderer 흐름.
  */
 export const ReconcilerHeroDiagram = ({ content }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
       )}
@@ -27,24 +25,13 @@ export const ReconcilerHeroDiagram = ({ content }: Props) => {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(139,92,246,0.16),transparent_60%)]"
       />
 
-      <div className="relative flex flex-col gap-md">
-        {/* 메인 3카드 흐름 */}
-        <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_0.9fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_0.9fr)] gap-2 items-stretch">
-          <ElementCard data={content.elementCard} />
-          <FlowArrow />
-          <ReconcilerCard data={content.reconcilerCard} />
-          <FlowArrow />
-          <RendererCard data={content.rendererCard} />
-        </div>
-
-        {/* Fiber 노드 네트워크 (중앙 아래) */}
-        <div className="relative">
-          <span
-            aria-hidden="true"
-            className="absolute left-1/2 -top-1 -translate-x-1/2 w-px h-3 border-l border-dashed border-violet-300 dark:border-violet-700"
-          />
-          <FiberNodeNetwork />
-        </div>
+      {/* 메인 3카드 흐름 */}
+      <div className="relative grid grid-cols-1 @xl:grid-cols-[minmax(0,_0.9fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_0.9fr)] gap-2 items-stretch">
+        <ElementCard data={content.elementCard} />
+        <FlowArrow />
+        <ReconcilerCard data={content.reconcilerCard} />
+        <FlowArrow />
+        <RendererCard data={content.rendererCard} />
       </div>
     </div>
   );
@@ -52,8 +39,8 @@ export const ReconcilerHeroDiagram = ({ content }: Props) => {
 
 const FlowArrow = () => (
   <div aria-hidden="true" className="flex items-center justify-center">
-    <span className="hidden sm:inline-flex text-[var(--term-accent)] text-lg">→</span>
-    <span className="inline-flex sm:hidden text-[var(--term-accent)] text-lg">↓</span>
+    <span className="hidden @xl:inline-flex text-[var(--term-accent)] text-lg">→</span>
+    <span className="inline-flex @xl:hidden text-[var(--term-accent)] text-lg">↓</span>
   </div>
 );
 

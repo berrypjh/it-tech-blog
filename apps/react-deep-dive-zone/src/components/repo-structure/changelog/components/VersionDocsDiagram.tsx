@@ -13,7 +13,7 @@ export const VersionDocsDiagram = ({ content }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
       )}
@@ -28,7 +28,7 @@ export const VersionDocsDiagram = ({ content }: Props) => {
         <VersionBadge version={content.version} badge={content.versionBadge} />
 
         {/* 두 문서 카드 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-md w-full">
+        <div className="grid grid-cols-1 @lg:grid-cols-2 gap-md w-full">
           <DocCard
             title={content.releasesCard.title}
             description={content.releasesCard.description}

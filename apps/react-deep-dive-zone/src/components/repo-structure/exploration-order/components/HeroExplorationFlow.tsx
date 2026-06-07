@@ -10,7 +10,7 @@ export const HeroExplorationFlow = ({ content }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
       )}
@@ -21,7 +21,7 @@ export const HeroExplorationFlow = ({ content }: Props) => {
       />
 
       <div className="relative flex flex-col gap-md">
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-2 items-stretch">
+        <ol className="grid grid-cols-1 @2xl:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-2 items-stretch">
           {content.flowNodes.map((node, idx) => (
             <FlowNodeWithArrow
               key={node.id}
@@ -63,8 +63,8 @@ const FlowNodeWithArrow = ({ node, isLast }: WithArrowProps) => (
 
 const FlowArrow = () => (
   <div aria-hidden="true" className="flex items-center justify-center">
-    <ArrowRightIcon className="hidden lg:inline-flex h-4 w-4 text-[var(--term-accent)]" />
-    <ArrowRightIcon className="inline-flex lg:hidden h-4 w-4 rotate-90 text-[var(--term-accent)]" />
+    <ArrowRightIcon className="hidden @2xl:inline-flex h-4 w-4 text-[var(--term-accent)]" />
+    <ArrowRightIcon className="inline-flex @2xl:hidden h-4 w-4 rotate-90 text-[var(--term-accent)]" />
   </div>
 );
 

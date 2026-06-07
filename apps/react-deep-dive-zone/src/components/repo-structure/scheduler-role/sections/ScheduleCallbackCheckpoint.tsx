@@ -76,9 +76,8 @@ export const ScheduleCallbackCheckpoint = ({ content }: Props) => {
               rel="noopener noreferrer"
               className={cn(
                 'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-                'bg-teal-600 text-white transition-colors hover:bg-teal-700',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                'dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-slate-950',
+                'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               )}
             >
               <GithubIcon className="h-3.5 w-3.5" />

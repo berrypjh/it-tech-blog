@@ -52,16 +52,6 @@ export type EntrypointCard = {
   icon: IconName;
 };
 
-export type SimpleQuiz = {
-  id: 'hydrate-quiz' | 'reducer-quiz';
-  question: string;
-  hint: string;
-  accordionLabel: string;
-  answer: string;
-  answerDescription: string;
-  tone: ToneKey;
-};
-
 export type ReactVsReactDomContent = {
   hero: {
     badge: string;
@@ -132,11 +122,6 @@ export type ReactVsReactDomContent = {
     server: EntrypointCard;
     centerHeading: string;
     centerCaption: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    cards: SimpleQuiz[];
   };
   nextStep: {
     eyebrow: string;
@@ -374,30 +359,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       centerHeading: '환경이 다르면\n진입점도 달라진다',
       centerCaption: '같은 React라도 실행 환경에 따라 사용하는 엔트리가 다릅니다.',
     },
-    quiz: {
-      eyebrow: '06 · quick check',
-      title: '빠른 판단 퀴즈',
-      cards: [
-        {
-          id: 'hydrate-quiz',
-          question: 'Q. hydrateRoot는 어디에 가까울까?',
-          hint: '힌트: 서버에서 보낸 HTML과 브라우저 DOM을 이어붙이는 작업',
-          accordionLabel: '정답 보기',
-          answer: '정답: react-dom',
-          answerDescription: 'DOM 하이드레이션은 DOM 렌더러의 책임이므로 react-dom에 있습니다.',
-          tone: 'emerald',
-        },
-        {
-          id: 'reducer-quiz',
-          question: 'Q. useReducer는 어디에 가까울까?',
-          hint: '힌트: 상태 변화 로직을 정의하는 코어 API',
-          accordionLabel: '정답 보기',
-          answer: '정답: react',
-          answerDescription: '상태 관리 로직 API를 제공하는 코어 레이어로 react에 있습니다.',
-          tone: 'blue',
-        },
-      ],
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: 'React와 DOM renderer의 경계를 이해했다면,',
@@ -610,32 +571,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       },
       centerHeading: 'Different environments\nmean different entrypoints',
       centerCaption: 'Same React — but the entry you use depends on where it runs.',
-    },
-    quiz: {
-      eyebrow: '06 · quick check',
-      title: 'Quick judgement quiz',
-      cards: [
-        {
-          id: 'hydrate-quiz',
-          question: 'Q. Which package does hydrateRoot live in?',
-          hint: 'Hint: It stitches server HTML to browser DOM',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: react-dom',
-          answerDescription:
-            'DOM hydration is a renderer responsibility, so it ships with react-dom.',
-          tone: 'emerald',
-        },
-        {
-          id: 'reducer-quiz',
-          question: 'Q. Which package does useReducer live in?',
-          hint: 'Hint: It is a core API that defines state-change logic',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: react',
-          answerDescription:
-            'It is part of the core state-management API layer, so it ships with react.',
-          tone: 'blue',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',
