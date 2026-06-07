@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { GithubIcon } from '../../repo-overview/icons';
-import { CodeEditorPanel } from '../components/CodeEditorPanel';
 import type { PackagesDirectoryContent } from '../content';
 import { ArrowRightIcon, CodeIcon, ExternalLinkIcon, FileCodeIcon, LightbulbIcon } from '../icons';
 
@@ -107,7 +107,7 @@ export const ReactClientCheckpoint = ({ content }: Props) => {
 
         {/* 우측 코드 패널 */}
         <div className="min-w-0">
-          <CodeEditorPanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             caption={content.codeCaption}

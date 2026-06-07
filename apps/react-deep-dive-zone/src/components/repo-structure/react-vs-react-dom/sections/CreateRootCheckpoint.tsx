@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { CodeEditorPanel } from '../../packages-dir/components/CodeEditorPanel';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { ReactVsReactDomContent } from '../content';
 import {
@@ -103,7 +103,7 @@ export const CreateRootCheckpoint = ({ content }: Props) => {
 
         {/* 우측 코드 패널 + 포인트 */}
         <div className="flex flex-col gap-md min-w-0">
-          <CodeEditorPanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             caption="ReactDOMRoot.js"

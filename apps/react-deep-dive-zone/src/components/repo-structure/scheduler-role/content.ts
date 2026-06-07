@@ -226,7 +226,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       railLowLabel: '늦은 실행',
     },
     need: {
-      eyebrow: '02 · why scheduler',
+      eyebrow: '01 · why scheduler',
       title: '왜 scheduler가 필요한가?',
       description: 'scheduler가 해결하는 세 가지 문제는 다음과 같습니다.',
       cards: [
@@ -258,7 +258,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     relation: {
-      eyebrow: '03 · reconciler vs scheduler',
+      eyebrow: '02 · reconciler vs scheduler',
       title: 'React와 scheduler의 관계',
       description: 'Reconciler는 “무엇을”을 계산하고, Scheduler는 “언제”를 조율합니다.',
       left: {
@@ -296,7 +296,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
     },
     priority: {
-      eyebrow: '04 · priority visualization',
+      eyebrow: '03 · priority visualization',
       title: '우선순위 개념 시각화',
       description: '같은 업데이트라도 긴급도에 따라 처리 순서가 달라집니다.',
       scaleHigh: '긴급도 높음',
@@ -329,7 +329,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드로 보기: 작업 예약은 어떻게 시작될까?',
       fileLabel: '파일',
       filePath: 'packages/scheduler/src/forks/Scheduler.js',
@@ -349,7 +349,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       code: scheduleCallbackCode,
     },
     responsibility: {
-      eyebrow: '06 · responsibility boundary',
+      eyebrow: '05 · responsibility boundary',
       title: 'scheduler가 하는 것 / 직접 하지 않는 것',
       leftTitle: 'scheduler가 하는 것',
       leftItems: [
@@ -368,7 +368,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: '조율과 계산은 다른 역할이다.',
     },
     simulation: {
-      eyebrow: '07 · task queue simulation',
+      eyebrow: '06 · task queue simulation',
       title: '생활형 체험 시뮬레이션: 작업 대기열',
       incomingTitle: '새로 들어온 작업',
       tasks: [
@@ -417,7 +417,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       title: '실행 타이밍을 조율하는 scheduler를 봤다면,',
       description:
         '이번에는 여러 패키지가 공통으로 쓰는 기반층인 ' + 'shared 패키지' + '를 살펴봅니다.',
-      cta: '다음: shared 패키지',
+      cta: '다음 페이지로 이동',
       href: '/shared-role',
     },
   },
@@ -464,7 +464,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       railLowLabel: 'Later',
     },
     need: {
-      eyebrow: '02 · why scheduler',
+      eyebrow: '01 · why scheduler',
       title: 'Why is a scheduler needed?',
       description: 'The scheduler solves three core problems.',
       cards: [
@@ -496,7 +496,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     relation: {
-      eyebrow: '03 · reconciler vs scheduler',
+      eyebrow: '02 · reconciler vs scheduler',
       title: 'React and scheduler relationship',
       description: 'Reconciler decides *what* the work is, scheduler arranges *when* it runs.',
       left: {
@@ -534,7 +534,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
     },
     priority: {
-      eyebrow: '04 · priority visualization',
+      eyebrow: '03 · priority visualization',
       title: 'Priority visualisation',
       description:
         'Even the same update can have a different execution order depending on its urgency.',
@@ -568,7 +568,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Code checkpoint: where does scheduling start?',
       fileLabel: 'File',
       filePath: 'packages/scheduler/src/forks/Scheduler.js',
@@ -588,7 +588,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       code: scheduleCallbackCode,
     },
     responsibility: {
-      eyebrow: '06 · responsibility boundary',
+      eyebrow: '05 · responsibility boundary',
       title: 'What the scheduler does / does not do',
       leftTitle: 'What the scheduler does',
       leftItems: [
@@ -607,7 +607,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'Coordination and calculation are different jobs.',
     },
     simulation: {
-      eyebrow: '07 · task queue simulation',
+      eyebrow: '06 · task queue simulation',
       title: 'Task queue simulation',
       incomingTitle: 'Incoming tasks',
       tasks: [
@@ -656,7 +656,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       title: 'With the scheduler in view,',
       description:
         'next look at the foundation layer many packages depend on — ' + 'shared package' + '.',
-      cta: 'Next: shared package',
+      cta: 'Go to the next page',
       href: '/shared-role',
     },
   },

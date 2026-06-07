@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { TestCodeContent } from '../content';
 import {
@@ -204,7 +204,7 @@ const RightCard = ({ content }: SubProps) => (
     </div>
 
     <div className="mt-auto min-w-0">
-      <DarkCodePanel
+      <CodePreviewPanel
         header={content.codeHeader}
         badge={content.codeBadge}
         code={content.code}

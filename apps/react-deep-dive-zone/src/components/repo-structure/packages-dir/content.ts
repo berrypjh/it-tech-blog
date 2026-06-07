@@ -216,7 +216,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       secondaryNodes: ['react-server', 'react-devtools', 'react-native-renderer', '...'],
     },
     landscape: {
-      eyebrow: '02 · packages landscape',
+      eyebrow: '01 · packages landscape',
       title: 'packages 전체 풍경',
       description: '한눈에 보면 압도적이지만, 처음 잡아야 할 핵심은 5개로 좁혀집니다.',
       coreNames: ['react', 'react-dom', 'react-reconciler', 'scheduler', 'shared'],
@@ -237,7 +237,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     selector: {
-      eyebrow: '03 · core packages',
+      eyebrow: '02 · core packages',
       title: '처음 볼 핵심 패키지 5개',
       description: '탭을 눌러 각 패키지의 역할과 대표 디렉터리를 확인해보세요.',
       tabs: coreKo,
@@ -347,7 +347,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     diagram: {
-      eyebrow: '04 · package relationships',
+      eyebrow: '03 · package relationships',
       title: '패키지 간 관계 다이어그램',
       description: '핵심 5개가 어떻게 역할을 나누고 서로 연결되는지 한 장으로 정리합니다.',
       flowLabel: 'react → react-reconciler → react-dom',
@@ -395,7 +395,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드로 확인하기: React 공개 API는 어디서 모일까?',
       fileLabel: '파일',
       filePath: 'packages/react/src/ReactClient.js',
@@ -419,7 +419,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       code: codeBody,
     },
     later: {
-      eyebrow: '06 · later packages',
+      eyebrow: '05 · later packages',
       title: '처음엔 나중에 봐도 되는 패키지',
       cards: [
         {
@@ -473,7 +473,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         '이제 저장소 루트의 다른 디렉터리인 ' +
         'fixtures / scripts / compiler' +
         '가 어떤 역할을 하는지 살펴봅니다.',
-      cta: '다음: fixtures / scripts / compiler',
+      cta: '다음 페이지로 이동',
       href: '/other-dirs',
     },
   },
@@ -493,7 +493,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       secondaryNodes: ['react-server', 'react-devtools', 'react-native-renderer', '...'],
     },
     landscape: {
-      eyebrow: '02 · packages landscape',
+      eyebrow: '01 · packages landscape',
       title: 'The whole packages landscape',
       description:
         'It looks overwhelming at a glance, but the must-read set narrows down to five packages.',
@@ -515,7 +515,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     selector: {
-      eyebrow: '03 · core packages',
+      eyebrow: '02 · core packages',
       title: 'The five core packages to read first',
       description:
         'Click a tab to see what each package is responsible for and its representative directory.',
@@ -626,7 +626,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     diagram: {
-      eyebrow: '04 · package relationships',
+      eyebrow: '03 · package relationships',
       title: 'How the core packages connect',
       description:
         'A one-glance summary of how the five core packages split responsibilities and connect.',
@@ -675,7 +675,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Code checkpoint: where do React’s public APIs converge?',
       fileLabel: 'File',
       filePath: 'packages/react/src/ReactClient.js',
@@ -699,7 +699,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       code: codeBody,
     },
     later: {
-      eyebrow: '06 · later packages',
+      eyebrow: '05 · later packages',
       title: 'Packages you can read later',
       cards: [
         {
@@ -753,7 +753,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         'now look at the other root directories — ' +
         'fixtures / scripts / compiler' +
         ' — and what each is responsible for.',
-      cta: 'Next: fixtures / scripts / compiler',
+      cta: 'Go to the next page',
       href: '/other-dirs',
     },
   },

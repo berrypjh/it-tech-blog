@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, CircleHelpIcon, ExternalLinkIcon, FileCodeIcon, InfoIcon } from '../icons';
@@ -97,7 +97,7 @@ export const CreateFiberCheckpoint = ({ content }: Props) => {
 
         {/* 우측 dark code panel + 포인트 */}
         <div className="flex flex-col gap-md min-w-0">
-          <DarkCodePanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             code={content.code}

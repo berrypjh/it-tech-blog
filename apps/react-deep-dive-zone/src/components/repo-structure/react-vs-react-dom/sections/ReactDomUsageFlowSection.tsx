@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';
 import { CodeIcon } from '../icons';
@@ -21,7 +21,7 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
         {/* 좌측 dark code + explanation pills */}
         <div className="flex flex-col gap-md min-w-0">
-          <DarkCodePanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             code={content.code}

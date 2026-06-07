@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { GithubIcon } from '../../repo-overview/icons';
-import { DarkCodePanel } from '../components/DarkCodePanel';
 import type { SurroundingContent } from '../content';
 import {
   ArrowRightIcon,
@@ -51,7 +51,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
 
         {/* 우측 코드 패널 + 버튼 */}
         <div className="flex flex-col gap-md min-w-0">
-          <DarkCodePanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             code={content.code}

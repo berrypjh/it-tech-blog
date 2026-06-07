@@ -179,7 +179,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       ],
     },
     comparison: {
-      eyebrow: '02 · core comparison',
+      eyebrow: '01 · core comparison',
       title: '3가지 디렉터리 핵심 비교',
       description:
         '역할과 학습 초반 중요도를 한 줄로 비교하면 어떤 폴더를 먼저 열지 감이 잡힙니다.',
@@ -218,7 +218,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       ],
     },
     fixtures: {
-      eyebrow: '03 · fixtures deep dive',
+      eyebrow: '02 · fixtures deep dive',
       title: 'fixtures 심화: 실험과 예제 공간',
       cards: [
         {
@@ -254,7 +254,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
         'fixtures는 문서에서 배운 개념을 눈으로 확인하고, 다양한 환경에서 재현하는 데 큰 도움이 됩니다.',
     },
     scripts: {
-      eyebrow: '04 · scripts deep dive',
+      eyebrow: '03 · scripts deep dive',
       title: 'scripts 심화: 저장소를 움직이는 자동화 도구',
       cards: [
         {
@@ -290,7 +290,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       banner: '소스코드만으로는 React가 어떻게 빌드되고 관리되는지 보이지 않습니다.',
     },
     compiler: {
-      eyebrow: '05 · compiler intro',
+      eyebrow: '04 · compiler intro',
       title: 'compiler 영역 소개',
       treeHeader: 'compiler',
       treeSubtitle: 'React Compiler 프로젝트',
@@ -309,7 +309,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       callout: '이 시리즈 초반에는 우선순위가 낮고, 별도 고급 주제로 분리하는 것이 적절합니다.',
     },
     errorCodes: {
-      eyebrow: '06 · code outside of code',
+      eyebrow: '05 · code outside of code',
       title: '코드 밖의 흥미로운 파일: React 오류 메시지는 어떻게 관리될까?',
       fileLabel: '파일',
       filePath: 'scripts/error-codes/codes.json',
@@ -327,7 +327,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       secondaryHref: 'https://github.com/facebook/react/tree/main/scripts',
     },
     choice: {
-      eyebrow: '07 · choose your goal',
+      eyebrow: '06 · choose your goal',
       title: '목적별 디렉터리 선택',
       cards: [
         {
@@ -359,7 +359,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       title: '저장소 전체 주변 구조를 파악했다면,',
       description:
         '이제 가장 자주 혼동되는 두 패키지, ' + 'react와 react-dom' + '의 차이를 정리합니다.',
-      cta: '다음: react와 react-dom',
+      cta: '다음 페이지로 이동',
       href: '/react-vs-react-dom',
     },
   },
@@ -400,7 +400,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       ],
     },
     comparison: {
-      eyebrow: '02 · core comparison',
+      eyebrow: '01 · core comparison',
       title: 'Compare the three directories',
       description:
         'A one-line comparison of role and early-stage priority makes it easy to pick where to look first.',
@@ -440,7 +440,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       ],
     },
     fixtures: {
-      eyebrow: '03 · fixtures deep dive',
+      eyebrow: '02 · fixtures deep dive',
       title: 'fixtures deep dive: where React experiments live',
       cards: [
         {
@@ -476,7 +476,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
         'fixtures help you see concepts from the docs in action and reproduce them across environments.',
     },
     scripts: {
-      eyebrow: '04 · scripts deep dive',
+      eyebrow: '03 · scripts deep dive',
       title: 'scripts deep dive: the automation that keeps the repo moving',
       cards: [
         {
@@ -512,7 +512,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       banner: 'Source code alone does not show you how React is built and managed.',
     },
     compiler: {
-      eyebrow: '05 · compiler intro',
+      eyebrow: '04 · compiler intro',
       title: 'compiler intro',
       treeHeader: 'compiler',
       treeSubtitle: 'React Compiler project',
@@ -532,7 +532,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
         'Early in this series it is lower priority, and best handled as a separate advanced topic.',
     },
     errorCodes: {
-      eyebrow: '06 · code outside of code',
+      eyebrow: '05 · code outside of code',
       title: 'Interesting non-code file: how React error messages are managed',
       fileLabel: 'File',
       filePath: 'scripts/error-codes/codes.json',
@@ -550,7 +550,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       secondaryHref: 'https://github.com/facebook/react/tree/main/scripts',
     },
     choice: {
-      eyebrow: '07 · choose your goal',
+      eyebrow: '06 · choose your goal',
       title: 'Pick the directory by goal',
       cards: [
         {
@@ -581,7 +581,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       eyebrow: 'The journey continues',
       title: 'With the surrounding structure mapped out,',
       description: 'time to clear up the most-confused pair — ' + 'react vs react-dom' + '.',
-      cta: 'Next: react vs react-dom',
+      cta: 'Go to the next page',
       href: '/react-vs-react-dom',
     },
   },

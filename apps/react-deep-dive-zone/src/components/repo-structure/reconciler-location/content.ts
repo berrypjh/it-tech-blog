@@ -218,7 +218,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     position: {
-      eyebrow: '02 · reconciler position',
+      eyebrow: '01 · reconciler position',
       title: 'reconciler의 위치 한눈에 보기',
       description: '전체 렌더링 파이프라인에서 reconciler가 어디에 위치하는지 짚어둡니다.',
       cards: [
@@ -254,7 +254,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     compare: {
-      eyebrow: '03 · reconciler vs renderer',
+      eyebrow: '02 · reconciler vs renderer',
       title: 'renderer와 reconciler의 차이',
       description: '계산과 반영은 분리되어 있고, 각자 다른 책임을 가집니다.',
       left: {
@@ -286,7 +286,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       centerCopy: '계산과 반영은\n분리되어 있다.',
     },
     process: {
-      eyebrow: '04 · what happens inside',
+      eyebrow: '03 · what happens inside',
       title: 'reconciler 안에서 벌어지는 일',
       description: 'Element가 들어오면 reconciler는 다음 4단계를 순서대로 수행합니다.',
       steps: [
@@ -332,7 +332,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드 체크포인트: Element가 Fiber로 바뀌는 순간',
       fileLabel: '파일',
       filePath: 'packages/react-reconciler/src/ReactFiber.js',
@@ -353,7 +353,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       pointMessage: 'Element의 type, key, props(pendingProps)가 Fiber 생성으로 전달됩니다.',
     },
     preview: {
-      eyebrow: '06 · what comes next',
+      eyebrow: '05 · what comes next',
       title: '이후 심화 페이지 예고',
       description: '이번 페이지는 React 내부 구조 학습의 관문일 뿐입니다.',
       cards: [
@@ -388,7 +388,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     question: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: '개념 점검 질문',
       question: 'React가 Element를 바로 DOM으로 바꾸지 않고 중간에 Fiber를 두는 이유는 무엇일까?',
       hintLabel: '힌트',
@@ -398,7 +398,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       eyebrow: '다음 학습으로 이어집니다',
       title: '렌더링 계산의 중심을 이해했다면,',
       description: '이제 그 작업을 언제 실행할지 조율하는 ' + 'scheduler 패키지' + '를 살펴봅니다.',
-      cta: '다음: scheduler 패키지',
+      cta: '다음 페이지로 이동',
       href: '/scheduler-role',
     },
   },
@@ -444,7 +444,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     position: {
-      eyebrow: '02 · reconciler position',
+      eyebrow: '01 · reconciler position',
       title: 'Where reconciler sits in the flow',
       description: 'A quick look at where reconciler lives inside the broader rendering pipeline.',
       cards: [
@@ -480,7 +480,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     compare: {
-      eyebrow: '03 · reconciler vs renderer',
+      eyebrow: '02 · reconciler vs renderer',
       title: 'How reconciler and renderer differ',
       description: 'Calculation and reflection are split — each side owns its responsibility.',
       left: {
@@ -512,7 +512,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       centerCopy: 'Calculation and reflection\nare separated.',
     },
     process: {
-      eyebrow: '04 · what happens inside',
+      eyebrow: '03 · what happens inside',
       title: 'What happens inside the reconciler',
       description: 'When Elements come in, the reconciler runs these four steps in order.',
       steps: [
@@ -558,7 +558,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Code checkpoint: the moment Element becomes Fiber',
       fileLabel: 'File',
       filePath: 'packages/react-reconciler/src/ReactFiber.js',
@@ -579,7 +579,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       pointMessage: 'Element.type, key and props (pendingProps) flow into Fiber creation.',
     },
     preview: {
-      eyebrow: '06 · what comes next',
+      eyebrow: '05 · what comes next',
       title: 'What comes next in this series',
       description: 'This page is only the doorway to a deeper internals tour.',
       cards: [
@@ -614,7 +614,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     question: {
-      eyebrow: '07 · concept check',
+      eyebrow: '06 · concept check',
       title: 'Concept-check question',
       question:
         'Why does React put a Fiber in between, instead of turning Element directly into DOM?',
@@ -628,7 +628,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         'next we look at the ' +
         'scheduler package' +
         ' — the one that decides when that work runs.',
-      cta: 'Next: scheduler package',
+      cta: 'Go to the next page',
       href: '/scheduler-role',
     },
   },

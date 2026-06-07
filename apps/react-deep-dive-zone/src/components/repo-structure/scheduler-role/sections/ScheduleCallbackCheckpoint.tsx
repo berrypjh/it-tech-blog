@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { DarkCodePanel } from '../../other-dirs/components/DarkCodePanel';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { SchedulerContent } from '../content';
 import { ArrowRightIcon, CircleHelpIcon, ExternalLinkIcon, FileCodeIcon } from '../icons';
@@ -97,7 +97,7 @@ export const ScheduleCallbackCheckpoint = ({ content }: Props) => {
 
         {/* 우측 dark code panel */}
         <div className="min-w-0">
-          <DarkCodePanel
+          <CodePreviewPanel
             header={content.codeHeader}
             badge={content.codeBadge}
             code={content.code}

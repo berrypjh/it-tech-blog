@@ -1,20 +1,51 @@
-type Props = { code: string; language?: string };
+type Props = {
+  code: string;
+  language?: string;
+  /** 좌측에 표시할 파일 경로 칩 (예: packages/react/src/ReactClient.js) */
+  header?: string;
+  /** 우측에 표시할 배지 (예: main). 없으면 language 라벨을 보여준다. */
+  badge?: string;
+  /** 헤더 아래 보조 캡션 줄 */
+  caption?: string;
+};
 
-export const CodePreviewPanel = ({ code, language = 'js' }: Props) => {
-  const lines = code.split('\n');
+export const CodePreviewPanel = ({ code, language = 'js', header, badge, caption }: Props) => {
+  const lines = code.replace(/\n$/, '').split('\n');
   return (
     <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-50 shadow-[0_4px_0_var(--term-border)] dark:border-slate-800 dark:bg-slate-950">
       {/* 패널 헤더 */}
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-md py-2">
-        <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-sm border-b border-slate-200 dark:border-slate-800 px-md py-2">
+        <div className="flex items-center gap-1.5 shrink-0">
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
           <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
         </div>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
-          {language}
-        </span>
+
+        {header ? (
+          <span className="min-w-0 truncate rounded border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-mono text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            {header}
+          </span>
+        ) : null}
+
+        {badge ? (
+          <span className="ml-auto shrink-0 inline-flex items-center gap-1 rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-[10px] uppercase tracking-wider text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200">
+            <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rounded-full bg-sky-500" />
+            {badge}
+          </span>
+        ) : (
+          <span className="ml-auto shrink-0 text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {language}
+          </span>
+        )}
       </div>
+
+      {caption ? (
+        <div className="border-b border-slate-200 dark:border-slate-800 px-md py-1.5">
+          <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {caption}
+          </span>
+        </div>
+      ) : null}
 
       {/* 코드 본문 */}
       <pre className="overflow-x-auto px-md py-md text-[12px] leading-[1.7] font-mono text-slate-800 dark:text-slate-100">

@@ -210,7 +210,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       relationBottomLine: '현실로 연결',
     },
     misconception: {
-      eyebrow: '02 · misconception',
+      eyebrow: '01 · misconception',
       title: '흔한 오해 바로잡기',
       leftBadge: '오해',
       leftQuote: '“React = 브라우저 DOM을 직접 다루는 라이브러리”',
@@ -220,7 +220,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       rightCaption: '관심사의 분리가 React 구조를 이해하는 핵심입니다.',
     },
     comparison: {
-      eyebrow: '03 · role comparison',
+      eyebrow: '02 · role comparison',
       title: 'react / react-dom 역할 비교',
       description: '같은 React라도 어느 패키지에서 무엇을 담당하는지 한 표로 정리합니다.',
       columnLabels: { axis: '구분', react: 'react', reactDom: 'react-dom' },
@@ -252,7 +252,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     usage: {
-      eyebrow: '04 · usage split',
+      eyebrow: '03 · usage split',
       title: '실제 사용 코드에서 역할 나누기',
       code: counterCode,
       codeHeader: 'app/Counter.tsx',
@@ -320,7 +320,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: '코드 체크포인트: 브라우저 DOM과 React는 어디서 연결될까?',
       fileLabel: '파일',
       filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -343,7 +343,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         '유효한 DOM 컨테이너인지 먼저 확인해야, 이후 렌더링 과정이 안전하게 진행됩니다.',
     },
     entrypoints: {
-      eyebrow: '06 · entrypoints',
+      eyebrow: '05 · entrypoints',
       title: '브라우저 / 서버 진입점 분리',
       client: {
         id: 'client',
@@ -375,7 +375,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       centerCaption: '같은 React라도 실행 환경에 따라 사용하는 엔트리가 다릅니다.',
     },
     quiz: {
-      eyebrow: '07 · quick check',
+      eyebrow: '06 · quick check',
       title: '빠른 판단 퀴즈',
       cards: [
         {
@@ -403,7 +403,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       title: 'React와 DOM renderer의 경계를 이해했다면,',
       description:
         '이제 그 사이에서 실제 렌더링 계산을 담당하는 ' + 'react-reconciler' + '를 살펴봅니다.',
-      cta: '다음: react-reconciler',
+      cta: '다음 페이지로 이동',
       href: '/reconciler-location',
     },
   },
@@ -447,7 +447,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       relationBottomLine: 'to reality',
     },
     misconception: {
-      eyebrow: '02 · misconception',
+      eyebrow: '01 · misconception',
       title: 'Correcting a common misconception',
       leftBadge: 'Misconception',
       leftQuote: '“React = a library that directly manipulates the browser DOM.”',
@@ -457,7 +457,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       rightCaption: 'Separation of concerns is the heart of React’s structure.',
     },
     comparison: {
-      eyebrow: '03 · role comparison',
+      eyebrow: '02 · role comparison',
       title: 'react vs react-dom role comparison',
       description: 'A single table summarising who is responsible for what across both packages.',
       columnLabels: { axis: 'Aspect', react: 'react', reactDom: 'react-dom' },
@@ -489,7 +489,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     usage: {
-      eyebrow: '04 · usage split',
+      eyebrow: '03 · usage split',
       title: 'Split roles in actual usage code',
       code: counterCode,
       codeHeader: 'app/Counter.tsx',
@@ -557,7 +557,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '05 · code checkpoint',
+      eyebrow: '04 · code checkpoint',
       title: 'Code checkpoint: where do the browser DOM and React meet?',
       fileLabel: 'File',
       filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -580,7 +580,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         'Validating the DOM container first keeps the rest of the render pipeline safe.',
     },
     entrypoints: {
-      eyebrow: '06 · entrypoints',
+      eyebrow: '05 · entrypoints',
       title: 'Browser vs server entrypoints',
       client: {
         id: 'client',
@@ -612,7 +612,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       centerCaption: 'Same React — but the entry you use depends on where it runs.',
     },
     quiz: {
-      eyebrow: '07 · quick check',
+      eyebrow: '06 · quick check',
       title: 'Quick judgement quiz',
       cards: [
         {
@@ -644,7 +644,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         'turn to the engine in between — ' +
         'react-reconciler' +
         ' — that runs the actual rendering math.',
-      cta: 'Next: react-reconciler',
+      cta: 'Go to the next page',
       href: '/reconciler-location',
     },
   },

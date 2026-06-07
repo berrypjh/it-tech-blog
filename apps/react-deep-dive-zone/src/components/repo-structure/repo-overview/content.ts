@@ -122,7 +122,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       logoCaption: 'React',
     },
     overwhelm: {
-      eyebrow: '02 · first impression',
+      eyebrow: '01 · first impression',
       title: '처음 열면 왜 막막할까?',
       floatingDirs: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },
@@ -141,7 +141,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       highlightPill: '하지만 볼 순서가 있다!',
     },
     miniMap: {
-      eyebrow: '03 · root mini map',
+      eyebrow: '02 · root mini map',
       title: '저장소 루트 구조 미니맵',
       description:
         '폴더와 문서 파일을 클릭하면, 각 항목이 어떤 역할을 하는지 한 줄씩 살펴볼 수 있습니다.',
@@ -247,7 +247,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       defaultSelected: 'packages',
     },
     directory: {
-      eyebrow: '04 · key directories',
+      eyebrow: '03 · key directories',
       title: '루트 디렉터리 4개 핵심 요약',
       cards: [
         {
@@ -289,7 +289,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     rootFiles: {
-      eyebrow: '05 · root files',
+      eyebrow: '04 · root files',
       title: '루트 파일들은 왜 존재할까?',
       cards: [
         {
@@ -324,7 +324,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 루트 구조를 읽었다면,',
       description: '이제 React 구현의 중심인 ' + 'packages 디렉터리' + '로 들어갑니다.',
-      cta: '다음: packages 디렉터리 읽기',
+      cta: '다음 페이지로 이동',
       href: '/packages-dir',
     },
   },
@@ -357,7 +357,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       logoCaption: 'React',
     },
     overwhelm: {
-      eyebrow: '02 · first impression',
+      eyebrow: '01 · first impression',
       title: 'Why does it feel overwhelming at first?',
       floatingDirs: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },
@@ -375,7 +375,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       highlightPill: 'But there is an order!',
     },
     miniMap: {
-      eyebrow: '03 · root mini map',
+      eyebrow: '02 · root mini map',
       title: 'Repository Root Mini Map',
       description:
         'Click a folder or file to see what each item is responsible for in one short line.',
@@ -481,7 +481,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       defaultSelected: 'packages',
     },
     directory: {
-      eyebrow: '04 · key directories',
+      eyebrow: '03 · key directories',
       title: 'Four Key Root Directories',
       cards: [
         {
@@ -523,7 +523,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     rootFiles: {
-      eyebrow: '05 · root files',
+      eyebrow: '04 · root files',
       title: 'Why the root files exist',
       cards: [
         {
@@ -560,7 +560,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       eyebrow: 'The journey continues',
       title: 'You have read the repo root structure,',
       description: 'now step into ' + 'packages' + ', the heart of the React implementation.',
-      cta: 'Next: Read the packages directory',
+      cta: 'Go to the next page',
       href: '/packages-dir',
     },
   },
