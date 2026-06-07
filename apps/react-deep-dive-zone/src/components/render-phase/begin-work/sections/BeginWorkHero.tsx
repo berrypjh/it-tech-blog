@@ -64,7 +64,7 @@ export const BeginWorkHero = ({ content }: Props) => (
 const HeroBranchDiagram = ({ diagram }: { diagram: BeginWorkContent['hero']['diagram'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/30',
       'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -117,11 +117,11 @@ const HeroBranchDiagram = ({ diagram }: { diagram: BeginWorkContent['hero']['dia
 
     {/* Branch grid */}
     <ul
-      className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2"
+      className="grid grid-cols-2 @sm:grid-cols-3 @2xl:grid-cols-4 gap-2"
       aria-label="Fiber tag branches"
     >
       {diagram.branches.map((branch) => (
-        <li key={branch.id}>
+        <li key={branch.id} className="min-w-0">
           <BranchChip branch={branch} />
         </li>
       ))}

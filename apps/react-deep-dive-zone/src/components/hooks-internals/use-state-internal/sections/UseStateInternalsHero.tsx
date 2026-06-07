@@ -161,7 +161,7 @@ export const UseStateInternalsHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <div
         className={cn(
-          'flex flex-col gap-md rounded-3xl border p-md sm:p-lg',
+          '@container flex flex-col gap-md rounded-3xl border p-md sm:p-lg',
           'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/30',
           'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -184,7 +184,7 @@ export const UseStateInternalsHero = ({ content }: Props) => (
         </header>
 
         {/* Pieces row with + separators */}
-        <ol className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-stretch gap-2">
+        <ol className="grid grid-cols-1 @2xl:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-stretch gap-2">
           {content.pieces.map((piece, i) => {
             const Icon = visualIconMap[piece.visual];
             const isLast = i === content.pieces.length - 1;
@@ -223,9 +223,9 @@ export const UseStateInternalsHero = ({ content }: Props) => (
                 {!isLast && (
                   <span
                     aria-hidden="true"
-                    className="flex items-center justify-center text-[var(--term-muted)] py-2 sm:py-0"
+                    className="flex items-center justify-center text-[var(--term-muted)] py-2 @2xl:py-0"
                   >
-                    <span className="hidden sm:inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]">
+                    <span className="hidden @2xl:inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]">
                       <PlusIcon className="h-3.5 w-3.5" />
                     </span>
                     <span className="sm:hidden inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)]">

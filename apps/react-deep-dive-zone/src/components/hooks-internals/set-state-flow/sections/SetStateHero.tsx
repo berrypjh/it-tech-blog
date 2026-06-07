@@ -112,8 +112,8 @@ export const SetStateHero = ({ content }: Props) => (
     </HeroTextColumn>
 
     {/* Right: 3-step flow */}
-    <HeroVisualColumn>
-      <ol className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
+    <HeroVisualColumn className="@container">
+      <ol className="grid grid-cols-1 @xl:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
         {content.steps.map((step, i) => {
           const Icon = visualMap[step.visual];
           const isLast = i === content.steps.length - 1;
@@ -163,7 +163,7 @@ export const SetStateHero = ({ content }: Props) => (
                 <>
                   <span
                     aria-hidden="true"
-                    className="hidden sm:inline-flex absolute -right-[7px] top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
+                    className="hidden @xl:inline-flex absolute -right-[7px] top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                   >
                     <ArrowRightIcon className="h-3.5 w-3.5" />
                   </span>

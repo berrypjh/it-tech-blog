@@ -36,9 +36,9 @@ export const HeroSection = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[42ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
+    <HeroVisualColumn className="@container">
       {/* server → mismatch → client */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch">
+      <div className="grid grid-cols-1 gap-3 @2xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch">
         {/* server card */}
         <article
           className={cn(
@@ -76,8 +76,8 @@ export const HeroSection = ({ content }: Props) => (
           aria-hidden="true"
           className="self-center inline-flex items-center justify-center text-rose-500 dark:text-rose-400"
         >
-          <ArrowRightIcon className="hidden sm:block h-5 w-5" />
-          <ArrowRightIcon className="sm:hidden h-4 w-4 rotate-90 mx-auto" />
+          <ArrowRightIcon className="hidden @2xl:block h-5 w-5" />
+          <ArrowRightIcon className="@2xl:hidden h-4 w-4 rotate-90 mx-auto" />
         </span>
 
         {/* mismatch card */}
@@ -107,8 +107,8 @@ export const HeroSection = ({ content }: Props) => (
           aria-hidden="true"
           className="self-center inline-flex items-center justify-center text-rose-500 dark:text-rose-400"
         >
-          <ArrowRightIcon className="hidden sm:block h-5 w-5" />
-          <ArrowRightIcon className="sm:hidden h-4 w-4 rotate-90 mx-auto" />
+          <ArrowRightIcon className="hidden @2xl:block h-5 w-5" />
+          <ArrowRightIcon className="@2xl:hidden h-4 w-4 rotate-90 mx-auto" />
         </span>
 
         {/* client card */}

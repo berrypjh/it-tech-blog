@@ -103,7 +103,7 @@ export const HooksEntryHero = ({ content }: Props) => (
       {/* Entry flow card */}
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
+          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'transition-colors hover:border-cyan-300/70 dark:hover:border-cyan-700/70',
         )}
@@ -120,7 +120,7 @@ export const HooksEntryHero = ({ content }: Props) => (
           </h3>
         </header>
 
-        <ol className="grid grid-cols-3 items-stretch gap-1.5 sm:gap-2">
+        <ol className="grid grid-cols-1 @sm:grid-cols-3 items-stretch gap-1.5 sm:gap-2">
           {content.rightCard.steps.map((step, i) => (
             <li
               key={step.label}

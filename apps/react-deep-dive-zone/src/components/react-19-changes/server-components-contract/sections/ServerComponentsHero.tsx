@@ -43,7 +43,7 @@ export const ServerComponentsHero = ({ content }: Props) => (
       {/* boundary diagram */}
       <article
         className={cn(
-          'relative flex flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
+          '@container relative flex flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-gradient-to-br from-white via-blue-50/30 to-white',
           'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-blue-950/20 dark:to-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -58,7 +58,7 @@ export const ServerComponentsHero = ({ content }: Props) => (
         <ol
           className={cn(
             'grid grid-cols-1 gap-2',
-            'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-2 lg:items-stretch',
+            '@2xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] @2xl:gap-2 @2xl:items-stretch',
           )}
         >
           {/* Server Component card */}
@@ -148,12 +148,12 @@ const HeroCard = ({ card }: { card: BoundaryCard }) => {
 };
 
 const BoundaryLabel = ({ primary, secondary }: { primary: string; secondary: string }) => (
-  <li aria-hidden="true" className="flex lg:flex-col items-center justify-center gap-1">
+  <li aria-hidden="true" className="flex @2xl:flex-col items-center justify-center gap-1">
     <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-blue-300 bg-blue-50 text-blue-700 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200">
-      <span className="hidden lg:inline-flex">
+      <span className="hidden @2xl:inline-flex">
         <ArrowRightIcon className="h-3.5 w-3.5" />
       </span>
-      <span className="inline-flex lg:hidden">
+      <span className="inline-flex @2xl:hidden">
         <ArrowDownIcon className="h-3.5 w-3.5" />
       </span>
     </span>

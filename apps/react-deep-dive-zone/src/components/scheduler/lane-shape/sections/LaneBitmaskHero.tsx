@@ -52,9 +52,9 @@ export const LaneBitmaskHero = ({ content }: Props) => (
 
     <HeroVisualColumn>
       {/* diagram */}
-      <div className="flex flex-col gap-md">
+      <div className="@container flex flex-col gap-md">
         {/* lane cards */}
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+        <ol className="grid grid-cols-1 @xl:grid-cols-3 gap-3 sm:gap-4">
           {content.laneCards.map((lc) => {
             const Icon = heroIcon[lc.accent];
             return (
@@ -107,7 +107,7 @@ export const LaneBitmaskHero = ({ content }: Props) => (
         {/* dotted bridge */}
         <div
           aria-hidden="true"
-          className="hidden md:block h-px border-t border-dashed border-[var(--term-border)] mx-md"
+          className="hidden @xl:block h-px border-t border-dashed border-[var(--term-border)] mx-md"
         />
 
         {/* result card */}

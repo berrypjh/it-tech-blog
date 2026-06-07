@@ -40,9 +40,9 @@ export const BranchDecisionMap = ({
   classLine1,
   classLine2,
 }: Props) => (
-  <div className="flex flex-col gap-sm lg:gap-md min-w-0">
+  <div className="@container flex flex-col gap-sm @2xl:gap-md min-w-0">
     {/* Mobile/tablet: vertical stack */}
-    <div className="lg:hidden flex flex-col gap-2 min-w-0">
+    <div className="@2xl:hidden flex flex-col gap-2 min-w-0">
       <StartCard title={startTitle} subtitle={startSubtitle} />
       <DownArrow tone="blue" />
       <QuestionCard title={questionTitle} />
@@ -55,7 +55,7 @@ export const BranchDecisionMap = ({
     {/* Desktop: type → question → (function / class) */}
     <div
       className={cn(
-        'hidden lg:grid items-stretch min-w-0',
+        'hidden @2xl:grid items-stretch min-w-0',
         'grid-cols-[minmax(0,_0.95fr)_auto_minmax(0,_0.95fr)_auto_minmax(0,_1.2fr)]',
         'gap-md',
       )}

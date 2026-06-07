@@ -22,7 +22,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
         className,
@@ -39,30 +39,30 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
       <div
         className={cn(
           'relative grid items-center gap-sm',
-          'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
+          'grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         )}
       >
         {/* 좌측 토큰 */}
-        <ul className="grid grid-cols-2 gap-2 sm:gap-3 order-2 lg:order-1">
+        <ul className="grid grid-cols-2 gap-2 sm:gap-3 order-2 @xl:order-1">
           {leftTokens.map((token) => (
-            <li key={token.id} className="flex">
+            <li key={token.id} className="flex min-w-0">
               <TokenCard token={token} side="left" />
             </li>
           ))}
         </ul>
 
         {/* 중앙 react 카드 + 점선 connector */}
-        <div className="flex flex-col items-center order-1 lg:order-2 relative">
+        <div className="flex flex-col items-center order-1 @xl:order-2 relative">
           {/* desktop dashed connectors */}
           <span
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute left-[-120%] top-1/2 -translate-y-1/2 w-[120%] h-[90%]"
+            className="hidden @xl:block pointer-events-none absolute left-[-120%] top-1/2 -translate-y-1/2 w-[120%] h-[90%]"
           >
             <ConnectorLines direction="left" count={leftTokens.length} />
           </span>
           <span
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute right-[-120%] top-1/2 -translate-y-1/2 w-[120%] h-[90%]"
+            className="hidden @xl:block pointer-events-none absolute right-[-120%] top-1/2 -translate-y-1/2 w-[120%] h-[90%]"
           >
             <ConnectorLines direction="right" count={rightTokens.length} />
           </span>
@@ -73,7 +73,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
         {/* 우측 토큰 */}
         <ul className="grid grid-cols-2 gap-2 sm:gap-3 order-3">
           {rightTokens.map((token) => (
-            <li key={token.id} className="flex">
+            <li key={token.id} className="flex min-w-0">
               <TokenCard token={token} side="right" />
             </li>
           ))}
@@ -127,11 +127,16 @@ const TokenCard = ({ token }: TokenCardProps) => {
         tone.borderHover,
       )}
     >
-      <span className="inline-flex items-center gap-1.5">
+      <span className="inline-flex items-center gap-1.5 min-w-0">
         <ToneIconBox tone={token.tone} size="sm">
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-[11px] font-bold font-mono tracking-tight truncate', tone.text)}>
+        <span
+          className={cn(
+            'text-[11px] font-bold font-mono tracking-tight truncate min-w-0',
+            tone.text,
+          )}
+        >
           {token.label}
         </span>
       </span>

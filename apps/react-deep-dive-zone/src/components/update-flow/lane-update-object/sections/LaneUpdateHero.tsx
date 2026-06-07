@@ -125,7 +125,7 @@ export const LaneUpdateHero = ({ content }: Props) => (
 const HeroDiagram = ({ content }: { content: LaneUpdateObjectContent['hero'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-amber-50/30',
       'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-amber-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -157,14 +157,14 @@ const HeroDiagram = ({ content }: { content: LaneUpdateObjectContent['hero'] }) 
     </ol>
 
     {/* Bottom summary */}
-    <ul className="mt-md grid grid-cols-3 gap-2">
+    <ul className="mt-md grid grid-cols-1 @sm:grid-cols-3 gap-2">
       {content.summary.map((pill) => {
         const Icon = summaryIconMap[pill.iconName];
         return (
           <li
             key={pill.label}
             className={cn(
-              'flex items-center gap-2 rounded-xl border px-2.5 py-2',
+              'flex items-center gap-2 rounded-xl border px-2.5 py-2 min-w-0',
               'border-sky-200/70 bg-white/70 text-xsm font-mono text-sky-800',
               'dark:border-sky-800/60 dark:bg-slate-950/40 dark:text-sky-200',
             )}
@@ -172,14 +172,14 @@ const HeroDiagram = ({ content }: { content: LaneUpdateObjectContent['hero'] }) 
             <span
               aria-hidden="true"
               className={cn(
-                'inline-flex h-7 w-7 items-center justify-center rounded-lg border',
+                'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                 'border-sky-200/80 bg-sky-50 text-sky-700',
                 'dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-300',
               )}
             >
               <Icon className="h-3.5 w-3.5" />
             </span>
-            <span className="truncate text-[11px] sm:text-xxsm">{pill.label}</span>
+            <span className="min-w-0 truncate text-[11px] sm:text-xxsm">{pill.label}</span>
           </li>
         );
       })}

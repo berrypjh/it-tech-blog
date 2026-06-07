@@ -67,18 +67,18 @@ export const JsxHeroSection = ({ content }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="flex flex-col gap-md">
+    <HeroVisualColumn className="@container flex flex-col gap-md">
       <CodePanel code={content.code} showWindowDots caption={content.codeCaption} size="md" />
 
-      {/* connector lines: 코드창에서 두 카드로 내려가는 점선 + 보조 점 */}
-      <div className="relative h-6" aria-hidden="true">
+      {/* connector lines: 코드창에서 두 카드로 내려가는 점선 + 보조 점 (가로 2열일 때만) */}
+      <div className="relative h-6 hidden @lg:block" aria-hidden="true">
         <span className="absolute left-[18%] top-0 h-full w-px border-l border-dashed border-teal-400/70 dark:border-teal-400/60" />
         <span className="absolute left-[18%] -top-1 h-2 w-2 -translate-x-1/2 rounded-full bg-teal-400/80" />
         <span className="absolute right-[18%] top-0 h-full w-px border-l border-dashed border-violet-400/70 dark:border-violet-400/60" />
         <span className="absolute right-[18%] -top-1 h-2 w-2 translate-x-1/2 rounded-full bg-violet-400/80" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+      <div className="grid grid-cols-1 @lg:grid-cols-2 gap-md">
         {content.explanationCards.map((card) => (
           <HeroExplanationView key={card.id} card={card} />
         ))}

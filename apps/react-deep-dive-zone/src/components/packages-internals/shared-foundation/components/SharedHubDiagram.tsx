@@ -53,7 +53,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => {
           </div>
           {/* 하단 center: react-reconciler */}
           <div className="sm:col-start-2 sm:row-start-2 flex justify-center sm:mt-md">
-            <PackageCardNode pkg={reconciler} wide />
+            <PackageCardNode pkg={reconciler} />
           </div>
         </div>
 
@@ -103,7 +103,7 @@ const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => 
   </div>
 );
 
-const PackageCardNode = ({ pkg, wide = false }: { pkg: PackageNode; wide?: boolean }) => {
+const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
   const tone = toneTokens[pkg.tone];
   const Icon = sharedIcon[pkg.iconName];
 
@@ -115,14 +115,16 @@ const PackageCardNode = ({ pkg, wide = false }: { pkg: PackageNode; wide?: boole
         tone.border,
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
-        wide ? 'w-full max-w-xs' : 'min-w-[10rem]',
+        'w-full min-w-0 max-w-xs',
       )}
     >
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-2 min-w-0">
         <ToneIconBox tone={pkg.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight truncate', tone.text)}>
+        <span
+          className={cn('text-sm font-bold font-mono tracking-tight truncate min-w-0', tone.text)}
+        >
           {pkg.name}
         </span>
       </span>

@@ -82,20 +82,20 @@ export const JsxRuntimeHero = ({ content }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="flex flex-col gap-md">
+    <HeroVisualColumn className="@container flex flex-col gap-md">
       <ul
         aria-label="JSX runtime 함수"
-        className="grid grid-cols-1 sm:grid-cols-3 gap-md items-stretch"
+        className="grid grid-cols-1 @xl:grid-cols-3 gap-md items-stretch"
       >
         {content.runtimeCards.map((card) => (
-          <li key={card.id} className="flex">
+          <li key={card.id} className="flex min-w-0">
             <RuntimeFnCard card={card} />
           </li>
         ))}
       </ul>
 
-      {/* connector lines (dashed) */}
-      <div className="relative h-7" aria-hidden="true">
+      {/* connector lines (dashed) — 가로 3열일 때만 노출 */}
+      <div className="relative h-7 hidden @xl:block" aria-hidden="true">
         <span className="absolute left-[16%] top-0 h-full w-px border-l border-dashed border-sky-400/70 dark:border-sky-400/60" />
         <span className="absolute left-1/2 top-0 h-full w-px border-l border-dashed border-teal-400/70 dark:border-teal-400/60" />
         <span className="absolute right-[16%] top-0 h-full w-px border-l border-dashed border-violet-400/70 dark:border-violet-400/60" />
@@ -130,7 +130,9 @@ const RuntimeFnCard = ({ card }: { card: RuntimeFunctionCard }) => {
       >
         <Icon className="h-5 w-5" />
       </span>
-      <span className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{card.name}</span>
+      <span className={cn('font-mono text-md font-bold tracking-tight break-words', t.text)}>
+        {card.name}
+      </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body1}</p>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body2}</p>
     </article>

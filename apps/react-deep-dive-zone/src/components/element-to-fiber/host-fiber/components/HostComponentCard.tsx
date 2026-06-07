@@ -13,7 +13,7 @@ type Props = {
 export const HostComponentCard = ({ title, items }: Props) => (
   <article
     className={cn(
-      'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg h-full',
+      'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg h-full min-w-0',
       'bg-gradient-to-br from-sky-50 via-white to-sky-50/40',
       'dark:from-sky-950/40 dark:via-[var(--term-bg)] dark:to-sky-950/20',
       'border-sky-500/70 dark:border-sky-400/70',

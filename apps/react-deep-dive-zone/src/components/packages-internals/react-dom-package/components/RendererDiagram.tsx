@@ -19,7 +19,7 @@ export const RendererDiagram = ({ content, className }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
         className,
@@ -34,22 +34,22 @@ export const RendererDiagram = ({ content, className }: Props) => {
 
       <div className="relative flex flex-col gap-md">
         {/* 상단 두 노드 + 중앙 react-dom */}
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-md">
-          <div className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-md">
+          <div className="order-2 @xl:order-1">
             <NodeCard node={top[0]} alignRight />
           </div>
 
-          <div className="order-1 lg:order-2 flex justify-center relative">
+          <div className="order-1 @xl:order-2 flex justify-center relative">
             {/* desktop dashed connectors to top nodes */}
             <span
               aria-hidden="true"
-              className="hidden lg:block pointer-events-none absolute left-[-90%] top-1/2 -translate-y-1/2 w-[90%] h-[60%]"
+              className="hidden @xl:block pointer-events-none absolute left-[-90%] top-1/2 -translate-y-1/2 w-[90%] h-[60%]"
             >
               <ConnectorCurve from="left" />
             </span>
             <span
               aria-hidden="true"
-              className="hidden lg:block pointer-events-none absolute right-[-90%] top-1/2 -translate-y-1/2 w-[90%] h-[60%]"
+              className="hidden @xl:block pointer-events-none absolute right-[-90%] top-1/2 -translate-y-1/2 w-[90%] h-[60%]"
             >
               <ConnectorCurve from="right" />
             </span>
@@ -123,8 +123,8 @@ const NodeCard = ({
         tone.border,
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
-        wide ? 'w-full max-w-xl mx-auto' : 'min-w-[10rem]',
-        alignRight && 'lg:ml-auto lg:max-w-[18rem]',
+        wide ? 'w-full max-w-xl mx-auto' : 'min-w-0',
+        alignRight && '@xl:ml-auto @xl:max-w-[18rem]',
       )}
     >
       <header className="flex items-center gap-sm">

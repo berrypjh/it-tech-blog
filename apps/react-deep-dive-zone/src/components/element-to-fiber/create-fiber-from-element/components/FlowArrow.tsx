@@ -13,7 +13,7 @@ type Props = {
 export const FlowArrow = ({ className }: Props) => (
   <div
     aria-hidden="true"
-    className={cn('flex items-center justify-center shrink-0 py-1 lg:py-0', className)}
+    className={cn('flex items-center justify-center shrink-0 py-1 @2xl:py-0', className)}
   >
     <span
       className={cn(
@@ -23,8 +23,8 @@ export const FlowArrow = ({ className }: Props) => (
       )}
     >
       <span className="contents">
-        <ArrowDownIcon className="h-4 w-4 lg:hidden" />
-        <ArrowRightIcon className="h-4 w-4 hidden lg:block" />
+        <ArrowDownIcon className="h-4 w-4 @2xl:hidden" />
+        <ArrowRightIcon className="h-4 w-4 hidden @2xl:block" />
       </span>
     </span>
   </div>

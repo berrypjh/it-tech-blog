@@ -77,7 +77,7 @@ export const ElementKeyHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -129,9 +129,9 @@ const ListRow = ({ label, items }: { label: string; items: DiagramItem[] }) => (
     <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
       {label}
     </span>
-    <ul className="grid grid-cols-3 gap-2">
+    <ul className="grid grid-cols-1 @sm:grid-cols-3 gap-2">
       {items.map((item) => (
-        <li key={`${item.id}-${item.label}`} className="flex">
+        <li key={`${item.id}-${item.label}`} className="flex min-w-0">
           <ItemCard item={item} />
         </li>
       ))}
@@ -162,7 +162,7 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
         <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
           item
         </span>
-        <code className={cn('font-mono text-[11px] font-bold tracking-tight', t.text)}>
+        <code className={cn('font-mono text-[11px] font-bold tracking-tight break-all', t.text)}>
           {item.keyText}
         </code>
       </div>

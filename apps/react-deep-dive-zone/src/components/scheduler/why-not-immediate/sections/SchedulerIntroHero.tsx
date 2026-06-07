@@ -172,7 +172,7 @@ export const SchedulerIntroHero = ({ content }: Props) => {
         {/* 3-step flow card */}
         <article
           className={cn(
-            'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
+            '@container flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
             'border-blue-200/80 dark:border-blue-800/60 shadow-[0_2px_0_var(--term-border)]',
           )}
         >
@@ -188,7 +188,7 @@ export const SchedulerIntroHero = ({ content }: Props) => {
             </span>
           </header>
 
-          <ol className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
+          <ol className="grid grid-cols-1 @xl:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
             {content.diagram.steps.map((step, i) => {
               const isLast = i === content.diagram.steps.length - 1;
               const Icon = stepIcons[i] ?? PencilIcon;
@@ -234,13 +234,13 @@ export const SchedulerIntroHero = ({ content }: Props) => {
                     <>
                       <span
                         aria-hidden="true"
-                        className="hidden md:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
+                        className="hidden @xl:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
                       >
                         <ArrowRightIcon className="h-3.5 w-3.5" />
                       </span>
                       <span
                         aria-hidden="true"
-                        className="md:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
+                        className="@xl:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                       >
                         <ArrowDownIcon className="h-4 w-4" />
                       </span>

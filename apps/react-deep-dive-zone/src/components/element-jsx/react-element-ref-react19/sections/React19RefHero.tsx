@@ -69,7 +69,7 @@ export const React19RefHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -88,18 +88,18 @@ export const React19RefHero = ({ content }: Props) => (
           </h2>
         </header>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-md items-start">
+        <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-md items-start">
           <FlowColumn title={content.leftColumnTitle} steps={content.leftFlow} variant="legacy" />
           <FlowColumn title={content.rightColumnTitle} steps={content.rightFlow} variant="modern" />
 
           {/* center arrow */}
           <span
             aria-hidden="true"
-            className="hidden sm:inline-flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-9 h-9 rounded-full bg-sky-600 text-white shadow-md"
+            className="hidden @lg:inline-flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-9 h-9 rounded-full bg-sky-600 text-white shadow-md"
           >
             <ArrowRightIcon className="h-4 w-4" />
           </span>
-          <span aria-hidden="true" className="sm:hidden flex justify-center -my-2">
+          <span aria-hidden="true" className="@lg:hidden flex justify-center -my-2">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-600 text-white shadow-md">
               <ArrowDownIcon className="h-4 w-4" />
             </span>

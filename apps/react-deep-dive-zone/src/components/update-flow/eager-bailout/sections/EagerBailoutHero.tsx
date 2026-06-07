@@ -61,14 +61,14 @@ export const EagerBailoutHero = ({ content }: Props) => (
 const BranchDiagram = ({ diagram }: { diagram: EagerBailoutContent['hero']['diagram'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-emerald-50/30 via-white to-violet-50/30',
       'dark:from-emerald-950/15 dark:via-[var(--term-bg)] dark:to-violet-950/15',
       'shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     {/* Compare row */}
-    <div className="grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 sm:gap-3 items-stretch">
+    <div className="grid grid-cols-1 @lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 sm:gap-3 items-stretch">
       <CompareCard title={diagram.currentTitle} value={diagram.currentValue} tone="cyan" />
 
       <div className="flex flex-col items-center justify-center gap-1">
@@ -119,7 +119,7 @@ const BranchDiagram = ({ diagram }: { diagram: EagerBailoutContent['hero']['diag
     </div>
 
     {/* Result row */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 gap-2 sm:gap-3">
       <ResultCard
         branch={diagram.leftBranch}
         title={diagram.leftResultTitle}

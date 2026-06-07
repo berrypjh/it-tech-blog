@@ -43,7 +43,7 @@ export const FiberHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <div
         className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
+          '@container relative rounded-3xl p-md sm:p-lg',
           'bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900',
           'border border-slate-800/80',
           'shadow-[0_24px_48px_-24px_rgba(2,6,23,0.7),0_2px_0_var(--term-border)]',
@@ -58,7 +58,7 @@ export const FiberHero = ({ content }: Props) => (
           </span>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+        <div className="grid grid-cols-1 @lg:grid-cols-2 gap-2 @lg:gap-3">
           {content.groups.map((group) => (
             <FiberObjectGroupCard key={group.id} group={group} />
           ))}

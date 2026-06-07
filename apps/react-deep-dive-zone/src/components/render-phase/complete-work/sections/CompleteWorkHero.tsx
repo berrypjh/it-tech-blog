@@ -70,7 +70,7 @@ export const CompleteWorkHero = ({ content }: Props) => (
 const HeroDiagram = ({ diagram }: { diagram: CompleteWorkContent['hero']['diagram'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-teal-50/30 via-white to-violet-50/40',
       'dark:from-teal-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -85,7 +85,7 @@ const HeroDiagram = ({ diagram }: { diagram: CompleteWorkContent['hero']['diagra
       </span>
     </header>
 
-    <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_0.6fr)_minmax(0,_0.9fr)_minmax(0,_0.8fr)] gap-3 items-stretch">
+    <div className="grid grid-cols-1 @xl:grid-cols-[minmax(0,_0.6fr)_minmax(0,_0.9fr)_minmax(0,_0.8fr)] gap-3 items-stretch">
       {/* Legend */}
       <article
         className={cn(

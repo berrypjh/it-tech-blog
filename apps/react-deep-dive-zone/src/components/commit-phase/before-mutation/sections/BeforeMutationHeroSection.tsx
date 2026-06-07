@@ -182,10 +182,10 @@ const CenterSnapshot = ({ label }: { label: string }) => (
 );
 
 const PhaseTimeline = ({ steps }: { steps: PhaseTimelineStep[] }) => (
-  <div className="mt-md pt-md border-t border-dashed border-[var(--term-border)]">
-    <ol className="grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div className="@container mt-md pt-md border-t border-dashed border-[var(--term-border)]">
+    <ol className="grid grid-cols-2 @xl:grid-cols-4 gap-2">
       {steps.map((step) => (
-        <li key={step.key}>
+        <li key={step.key} className="min-w-0">
           <PhaseStep step={step} />
         </li>
       ))}

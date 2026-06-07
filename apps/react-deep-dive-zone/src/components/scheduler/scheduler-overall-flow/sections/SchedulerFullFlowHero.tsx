@@ -80,7 +80,7 @@ export const SchedulerFullFlowHero = ({ content }: Props) => (
       {/* 3 sources -> merge -> pipeline -> commit */}
       <div
         className={cn(
-          'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
+          '@container flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -97,7 +97,7 @@ export const SchedulerFullFlowHero = ({ content }: Props) => (
         </header>
 
         {/* 3 source cards */}
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <ul className="grid grid-cols-1 @xl:grid-cols-3 gap-2">
           {content.sourceCards.map((card) => {
             const a = sourceAccent[card.id];
             const Icon = a.icon;

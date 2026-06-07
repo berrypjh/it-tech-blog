@@ -13,7 +13,7 @@ type Props = {
 export const DomTagCard = ({ code, type }: Props) => (
   <article
     className={cn(
-      'flex items-center gap-sm rounded-xl border-2 p-sm pl-md',
+      'flex items-center gap-sm rounded-xl border-2 p-sm pl-md min-w-0',
       'bg-white shadow-[0_2px_0_var(--term-border)]',
       'border-emerald-300/80 dark:border-emerald-700/70',
       'dark:bg-[var(--term-bg)]',

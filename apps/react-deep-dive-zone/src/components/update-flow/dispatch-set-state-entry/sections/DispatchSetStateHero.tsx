@@ -66,14 +66,14 @@ export const DispatchSetStateHero = ({ content }: Props) => (
 const HeroDiagram = ({ content }: { content: DispatchSetStateEntryContent['hero'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-emerald-50/40 via-white to-violet-50/40',
       'dark:from-emerald-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     {/* Three cards row */}
-    <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.25fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
+    <div className="grid grid-cols-1 @2xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.25fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
       <SideCard
         tone="emerald"
         title={content.leftCard.title}
@@ -225,7 +225,7 @@ const CenterCard = ({
 const Connector = () => (
   <div
     aria-hidden="true"
-    className="hidden sm:flex flex-col items-center justify-center gap-1 px-1"
+    className="hidden @2xl:flex flex-col items-center justify-center gap-1 px-1"
   >
     <span
       className={cn(

@@ -60,7 +60,7 @@ export const FragmentModeHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <div
         className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
+          '@container relative rounded-3xl p-md sm:p-lg',
           'bg-gradient-to-br from-violet-50/50 via-white to-emerald-50/60',
           'dark:from-violet-950/20 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
           'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',

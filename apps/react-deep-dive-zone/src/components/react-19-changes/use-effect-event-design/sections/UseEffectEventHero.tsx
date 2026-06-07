@@ -37,9 +37,9 @@ export const UseEffectEventHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.subtitleLines.join(' ')}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="w-full">
+    <HeroVisualColumn className="w-full @container">
       {/* 3-area code/reconnect/code */}
-      <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_7fr)_minmax(0,_4fr)_minmax(0,_7fr)] lg:gap-md items-stretch">
+      <div className="grid grid-cols-1 gap-md @2xl:grid-cols-[minmax(0,_7fr)_minmax(0,_4fr)_minmax(0,_7fr)] @2xl:gap-md items-stretch">
         {/* Before code */}
         <article className="flex flex-col gap-sm">
           <header>

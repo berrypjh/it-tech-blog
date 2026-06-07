@@ -68,8 +68,8 @@ export const CreateElementHero = ({ content }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="flex flex-col gap-md">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+    <HeroVisualColumn className="@container flex flex-col gap-md">
+      <div className="grid grid-cols-1 @lg:grid-cols-2 gap-md">
         <HeroCodeCard
           label={content.leftCardLabel}
           code={content.leftCode}
@@ -84,8 +84,8 @@ export const CreateElementHero = ({ content }: Props) => (
         />
       </div>
 
-      {/* Converging connectors */}
-      <div className="relative h-8" aria-hidden="true">
+      {/* Converging connectors (가로 2열일 때만) */}
+      <div className="relative h-8 hidden @lg:block" aria-hidden="true">
         <span className="absolute left-[20%] top-0 h-full w-px border-l border-dashed border-sky-400/70 dark:border-sky-400/60" />
         <span className="absolute right-[20%] top-0 h-full w-px border-l border-dashed border-violet-400/70 dark:border-violet-400/60" />
         <span className="absolute left-1/2 -bottom-1 inline-flex items-center justify-center w-7 h-7 -translate-x-1/2 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">

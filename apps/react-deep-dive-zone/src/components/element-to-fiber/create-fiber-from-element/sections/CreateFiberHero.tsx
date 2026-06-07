@@ -36,7 +36,7 @@ export const CreateFiberHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <div
         className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
+          '@container relative rounded-3xl p-md sm:p-lg',
           'bg-[var(--term-surface)]',
           'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -44,8 +44,8 @@ export const CreateFiberHero = ({ content }: Props) => (
         <div
           className={cn(
             'grid items-stretch min-w-0',
-            'grid-cols-1 lg:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.15fr)_auto_minmax(0,1.1fr)]',
-            'gap-sm lg:gap-md',
+            'grid-cols-1 @2xl:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.15fr)_auto_minmax(0,1.1fr)]',
+            'gap-sm @2xl:gap-md',
           )}
         >
           <ObjectPreviewCard

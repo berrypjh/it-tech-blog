@@ -73,7 +73,7 @@ export const RvrHero = ({ content }: Props) => {
       <HeroVisualColumn id="hero-compute-apply">
         <div
           className={cn(
-            'relative rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
+            '@container relative rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] overflow-hidden',
           )}
         >
@@ -98,7 +98,7 @@ export const RvrHero = ({ content }: Props) => {
             />
           </div>
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
+          <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
             <RoleStepsCard
               title={content.calculation.title}
               subtitle={content.calculation.subtitle}
@@ -113,10 +113,10 @@ export const RvrHero = ({ content }: Props) => {
               className="flex items-center justify-center text-[var(--term-accent)]"
               aria-hidden="true"
             >
-              <span className="hidden lg:inline-flex">
+              <span className="hidden @lg:inline-flex">
                 <DashedArrow direction="horizontal" />
               </span>
-              <span className="inline-flex lg:hidden">
+              <span className="inline-flex @lg:hidden">
                 <DashedArrow direction="vertical" />
               </span>
             </div>

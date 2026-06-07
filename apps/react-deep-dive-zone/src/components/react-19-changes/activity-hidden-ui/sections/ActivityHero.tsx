@@ -37,9 +37,9 @@ export const ActivityHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.subtitleLines.join(' ')}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="w-full">
+    <HeroVisualColumn className="w-full @container">
       {/* 3-area: conditional code / mode switch / Activity code */}
-      <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_7fr)_minmax(0,_4fr)_minmax(0,_7fr)] lg:gap-md items-stretch">
+      <div className="grid grid-cols-1 gap-md @2xl:grid-cols-[minmax(0,_7fr)_minmax(0,_4fr)_minmax(0,_7fr)] @2xl:gap-md items-stretch">
         {/* Conditional code */}
         <article className="flex flex-col gap-sm">
           <header className="flex items-center justify-between gap-2">

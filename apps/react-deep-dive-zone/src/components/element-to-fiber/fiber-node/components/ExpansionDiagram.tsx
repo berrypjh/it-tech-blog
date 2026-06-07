@@ -194,7 +194,7 @@ const CodeBlock = ({
 }) => (
   <pre
     className={cn(
-      'overflow-hidden rounded-lg border bg-slate-950',
+      'overflow-x-auto rounded-lg border bg-slate-950',
       'px-sm py-sm font-mono text-[12.5px] leading-[1.65] text-slate-100',
       'shadow-[0_8px_24px_-12px_rgba(15,23,42,0.65)]',
       'border-slate-800',

@@ -87,7 +87,7 @@ export const ElementSummaryHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -103,15 +103,15 @@ export const ElementSummaryHero = ({ content }: Props) => (
           </span>
         </header>
 
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm items-stretch">
+        <ol className="grid grid-cols-1 @sm:grid-cols-2 @2xl:grid-cols-4 gap-sm items-stretch">
           {content.flowItems.map((item, idx) => (
-            <li key={item.id} className="relative flex">
+            <li key={item.id} className="relative flex min-w-0">
               <FlowCard item={item} />
               {idx < content.flowItems.length - 1 && (
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'pointer-events-none absolute hidden lg:flex items-center justify-center',
+                    'pointer-events-none absolute hidden @2xl:flex items-center justify-center',
                     'top-1/2 -right-2 -translate-y-1/2 w-5 h-5 rounded-full z-10',
                     'bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
                   )}
@@ -160,7 +160,9 @@ const FlowCard = ({ item }: { item: HeroFlowItem }) => {
           </span>
         )}
       </header>
-      <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{item.title}</code>
+      <code className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
+        {item.title}
+      </code>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
         {item.iconHint}
       </span>

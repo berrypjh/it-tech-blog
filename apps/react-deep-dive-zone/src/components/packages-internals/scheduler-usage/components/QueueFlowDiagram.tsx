@@ -14,7 +14,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
         className,
@@ -30,7 +30,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       <div
         className={cn(
           'relative grid items-stretch gap-md',
-          'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
+          'grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         )}
       >
         {/* 좌측: 섞여 있는 작업 */}
@@ -65,13 +65,13 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
           {/* desktop dashed connectors */}
           <span
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute left-[-60%] top-1/2 -translate-y-1/2 w-[60%] h-[40%]"
+            className="hidden @xl:block pointer-events-none absolute left-[-60%] top-1/2 -translate-y-1/2 w-[60%] h-[40%]"
           >
             <DashedSide direction="left" />
           </span>
           <span
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute right-[-60%] top-1/2 -translate-y-1/2 w-[60%] h-[40%]"
+            className="hidden @xl:block pointer-events-none absolute right-[-60%] top-1/2 -translate-y-1/2 w-[60%] h-[40%]"
           >
             <DashedSide direction="right" />
           </span>

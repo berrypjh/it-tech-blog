@@ -89,7 +89,7 @@ export const ElementTypeHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -105,9 +105,9 @@ export const ElementTypeHero = ({ content }: Props) => (
           </span>
         </header>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-sm items-stretch">
+        <ul className="grid grid-cols-1 @xl:grid-cols-3 gap-sm items-stretch">
           {content.diagramItems.map((item) => (
-            <li key={item.id} className="flex">
+            <li key={item.id} className="flex min-w-0">
               <DiagramCard item={item} />
             </li>
           ))}

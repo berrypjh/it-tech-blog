@@ -14,7 +14,7 @@ export const SplitDiagram = ({ hero, className }: Props) => {
   return (
     <div
       className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
+        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
         className,
@@ -26,15 +26,15 @@ export const SplitDiagram = ({ hero, className }: Props) => {
       />
       <p className="sr-only">{hero.a11y}</p>
 
-      <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
+      <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
         <SideArea area={hero.common} tone="teal" />
-        {/* 중앙 세로 분리선 — 모바일에서는 dashed 가로 separator */}
-        <div className="hidden md:flex flex-col items-center justify-center" aria-hidden="true">
+        {/* 중앙 세로 분리선 — 좁은 폭에서는 dashed 가로 separator */}
+        <div className="hidden @lg:flex flex-col items-center justify-center" aria-hidden="true">
           <span className="block w-px h-full border-l border-dashed border-[var(--term-border)]" />
         </div>
         <hr
           aria-hidden="true"
-          className="md:hidden border-t border-dashed border-[var(--term-border)]"
+          className="@lg:hidden border-t border-dashed border-[var(--term-border)]"
         />
         <SideArea area={hero.domSpecific} tone="violet" />
       </div>

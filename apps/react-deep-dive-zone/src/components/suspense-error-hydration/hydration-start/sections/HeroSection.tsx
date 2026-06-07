@@ -38,7 +38,7 @@ export const HeroSection = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[48ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
+    <HeroVisualColumn className="@container">
       <div
         aria-hidden="true"
         className={cn(
@@ -110,7 +110,7 @@ export const HeroSection = ({ content }: Props) => (
         </div>
       </div>
 
-      <div className="mt-md grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,5fr)_auto_minmax(0,5fr)] items-stretch">
+      <div className="mt-md grid grid-cols-1 gap-md @lg:grid-cols-[minmax(0,5fr)_auto_minmax(0,5fr)] items-stretch">
         <article
           className={cn(
             'flex flex-col gap-3 rounded-2xl border-2 overflow-hidden',
@@ -142,7 +142,7 @@ export const HeroSection = ({ content }: Props) => (
           <span
             aria-hidden="true"
             className={cn(
-              'hidden lg:block h-px w-12 border-t border-dashed border-blue-300 dark:border-blue-700',
+              'hidden @lg:block h-px w-12 border-t border-dashed border-blue-300 dark:border-blue-700',
             )}
           />
           <span
@@ -162,7 +162,7 @@ export const HeroSection = ({ content }: Props) => (
           <span
             aria-hidden="true"
             className={cn(
-              'hidden lg:block h-px w-12 border-t border-dashed border-blue-300 dark:border-blue-700',
+              'hidden @lg:block h-px w-12 border-t border-dashed border-blue-300 dark:border-blue-700',
             )}
           />
         </div>

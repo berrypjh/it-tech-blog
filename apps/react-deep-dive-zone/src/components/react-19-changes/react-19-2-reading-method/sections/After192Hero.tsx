@@ -41,7 +41,7 @@ export const After192Hero = ({ content }: Props) => (
       {/* 4 timeline cards with dotted connector */}
       <article
         className={cn(
-          'relative flex flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
+          '@container relative flex flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-gradient-to-br from-white via-blue-50/30 to-white',
           'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-blue-950/20 dark:to-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -50,10 +50,10 @@ export const After192Hero = ({ content }: Props) => (
         {/* Timeline dotted connector (desktop only) */}
         <div
           aria-hidden="true"
-          className="hidden sm:block absolute left-[10%] right-[10%] top-[64px] h-px border-t-2 border-dashed border-slate-300/80 dark:border-slate-700/70 pointer-events-none"
+          className="hidden @2xl:block absolute left-[10%] right-[10%] top-[64px] h-px border-t-2 border-dashed border-slate-300/80 dark:border-slate-700/70 pointer-events-none"
         />
 
-        <ol className="relative grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+        <ol className="relative grid grid-cols-1 gap-2 @sm:grid-cols-2 @2xl:grid-cols-4 items-stretch">
           {content.cards.map((card) => {
             const t = tone[card.tone];
             const Icon = iconRegistry[card.iconKey];

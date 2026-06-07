@@ -84,23 +84,23 @@ export const EnqueueHero = ({ content }: Props) => (
 const HeroDiagram = ({ content }: { content: EnqueueConcurrentHookUpdateContent['hero'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-sky-50/35 via-white to-amber-50/30',
       'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-amber-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     {/* 4 element cards */}
-    <ul className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    <ul className="grid grid-cols-2 @xl:grid-cols-4 gap-2">
       {content.elements.map((el) => (
-        <li key={el.id} className="flex">
+        <li key={el.id} className="flex min-w-0">
           <ElementCard element={el} />
         </li>
       ))}
     </ul>
 
-    {/* Converging dashed connectors */}
-    <div aria-hidden="true" className="relative h-10 sm:h-12 mt-1">
+    {/* Converging dashed connectors (4열일 때만) */}
+    <div aria-hidden="true" className="relative h-10 sm:h-12 mt-1 hidden @xl:block">
       {/* dashed vertical lines from each card column toward center */}
       <svg
         viewBox="0 0 400 56"

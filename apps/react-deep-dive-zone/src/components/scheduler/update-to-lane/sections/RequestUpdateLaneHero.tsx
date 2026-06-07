@@ -54,7 +54,7 @@ export const RequestUpdateLaneHero = ({ content }: Props) => (
 
     <HeroVisualColumn>
       {/* diagram */}
-      <div className="flex flex-col gap-md">
+      <div className="@container flex flex-col gap-md">
         {/* code pill */}
         <div className="flex justify-center">
           <span
@@ -75,13 +75,13 @@ export const RequestUpdateLaneHero = ({ content }: Props) => (
         {/* dotted connector bridge */}
         <div
           aria-hidden="true"
-          className="hidden md:flex items-center justify-center text-[var(--term-muted)]"
+          className="hidden @xl:flex items-center justify-center text-[var(--term-muted)]"
         >
           <span className="inline-block h-3 w-px border-l-2 border-dashed border-[var(--term-border)]" />
         </div>
 
         {/* 3 context cards */}
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+        <ol className="grid grid-cols-1 @xl:grid-cols-3 gap-3 sm:gap-4">
           {content.contextCards.map((c) => {
             const Icon = cardIcon[c.accent];
             return (
@@ -138,7 +138,7 @@ export const RequestUpdateLaneHero = ({ content }: Props) => (
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'hidden md:block absolute left-1/2 -translate-x-1/2 -top-3 h-3 w-px border-l-2 border-dashed',
+                    'hidden @xl:block absolute left-1/2 -translate-x-1/2 -top-3 h-3 w-px border-l-2 border-dashed',
                     connectorBorder[c.accent],
                   )}
                 />
@@ -149,7 +149,7 @@ export const RequestUpdateLaneHero = ({ content }: Props) => (
 
         <div
           aria-hidden="true"
-          className="md:hidden flex items-center justify-center text-[var(--term-muted)]"
+          className="@xl:hidden flex items-center justify-center text-[var(--term-muted)]"
         >
           <ArrowDownIcon className="h-4 w-4" />
         </div>

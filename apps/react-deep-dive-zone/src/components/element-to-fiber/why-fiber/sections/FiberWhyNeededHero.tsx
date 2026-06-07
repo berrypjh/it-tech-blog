@@ -34,7 +34,7 @@ export const FiberWhyNeededHero = ({ content }: Props) => (
     <HeroVisualColumn>
       <div
         className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
+          '@container relative rounded-3xl p-md sm:p-lg',
           'bg-[var(--term-surface)]',
           'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}

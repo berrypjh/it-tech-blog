@@ -39,8 +39,8 @@ export const PropsComparisonHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-sm items-stretch">
+    <HeroVisualColumn className="@container">
+      <div className="grid grid-cols-1 @lg:grid-cols-[1fr_auto_1fr] gap-sm items-stretch">
         <PropsCompareCard
           kind="memoizedProps"
           title={content.memoizedCard.title}

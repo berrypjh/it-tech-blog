@@ -37,9 +37,9 @@ export const HeroSection = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
+    <HeroVisualColumn className="@container">
       {/* 3-area panel */}
-      <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,4fr)_minmax(0,4fr)_minmax(0,4fr)] items-stretch">
+      <div className="grid grid-cols-1 gap-md @xl:gap-lg @xl:grid-cols-[minmax(0,4fr)_minmax(0,4fr)_minmax(0,4fr)] items-stretch">
         {/* LEFT: Promise code */}
         <article
           className={cn(

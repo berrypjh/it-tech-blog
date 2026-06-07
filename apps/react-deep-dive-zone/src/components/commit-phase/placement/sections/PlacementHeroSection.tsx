@@ -79,7 +79,7 @@ export const PlacementHeroSection = ({ content }: Props) => (
 const HeroDiagram = ({ diagram }: { diagram: PlacementContent['hero']['diagram'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-violet-50/55 via-white to-teal-50/55',
       'dark:from-violet-950/25 dark:via-[var(--term-bg)] dark:to-teal-950/25',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -99,7 +99,7 @@ const HeroDiagram = ({ diagram }: { diagram: PlacementContent['hero']['diagram']
     </h2>
 
     {/* Desktop horizontal */}
-    <ol className="hidden md:grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
+    <ol className="hidden @2xl:grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
       {diagram.steps.map((step, idx) => (
         <Fragment key={step.kind}>
           <li className="flex">
@@ -118,7 +118,7 @@ const HeroDiagram = ({ diagram }: { diagram: PlacementContent['hero']['diagram']
     </ol>
 
     {/* Mobile vertical */}
-    <ol className="md:hidden flex flex-col">
+    <ol className="@2xl:hidden flex flex-col">
       {diagram.steps.map((step, idx) => (
         <li key={step.kind} className="flex flex-col">
           <StepCard step={step} index={idx + 1} />

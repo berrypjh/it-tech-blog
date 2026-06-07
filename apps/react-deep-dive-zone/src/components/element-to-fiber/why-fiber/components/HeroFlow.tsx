@@ -45,10 +45,10 @@ type Props = { steps: HeroFlowStep[] };
 
 export const HeroFlow = ({ steps }: Props) => (
   <>
-    {/* Desktop: 4 horizontal cards with → */}
+    {/* Desktop: 4 horizontal cards with → (컨테이너가 충분히 넓을 때만) */}
     <ol
       className={cn(
-        'hidden lg:grid items-stretch min-w-0',
+        'hidden @2xl:grid items-stretch min-w-0',
         'grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)]',
         'gap-sm',
       )}
@@ -62,7 +62,7 @@ export const HeroFlow = ({ steps }: Props) => (
     </ol>
 
     {/* Tablet: 2x2 */}
-    <ol className="hidden sm:grid lg:hidden grid-cols-2 gap-sm">
+    <ol className="hidden @sm:grid @2xl:hidden grid-cols-2 gap-sm">
       {steps.map((step) => (
         <li key={step.id} className="flex">
           <FlowCard step={step} />
@@ -71,7 +71,7 @@ export const HeroFlow = ({ steps }: Props) => (
     </ol>
 
     {/* Mobile: vertical with ↓ */}
-    <ol className="sm:hidden flex flex-col gap-2">
+    <ol className="@sm:hidden flex flex-col gap-2">
       {steps.map((step, idx) => (
         <li key={step.id} className="flex flex-col">
           <FlowCard step={step} />

@@ -62,14 +62,14 @@ export const SetStateMemoryHero = ({ content }: Props) => (
 const HeroDiagram = ({ content }: { content: DispatchSetStateContent['hero'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/40',
       'dark:from-sky-950/25 dark:via-[var(--term-bg)] dark:to-violet-950/25',
       'shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     {/* Three-card row */}
-    <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.2fr)_auto_minmax(0,_1fr)] gap-2 sm:gap-2 items-stretch">
+    <div className="grid grid-cols-1 @2xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.2fr)_auto_minmax(0,_1fr)] gap-2 sm:gap-2 items-stretch">
       <SideCard
         tone="emerald"
         title={content.leftCard.title}
@@ -230,7 +230,7 @@ const CenterCard = ({ content }: { content: DispatchSetStateContent['hero']['cen
 const Connector = ({ label, direction }: { label: string; direction: 'left' | 'right' }) => (
   <div
     aria-hidden="true"
-    className="hidden sm:flex flex-col items-center justify-center gap-1 px-1"
+    className="hidden @2xl:flex flex-col items-center justify-center gap-1 px-1"
   >
     {/* horizontal dashed line */}
     <span className="block h-px w-full bg-[length:6px_1px] bg-repeat-x [background-image:linear-gradient(to_right,var(--term-border)_50%,transparent_50%)]" />

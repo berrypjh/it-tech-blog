@@ -42,7 +42,7 @@ export const TypeForkDiagram = ({
     {/* Desktop: + grid */}
     <div
       className={cn(
-        'hidden lg:grid items-stretch min-w-0',
+        'hidden @2xl:grid items-stretch min-w-0',
         'grid-cols-[minmax(0,_0.75fr)_auto_minmax(0,_0.95fr)_auto_minmax(0,_1.25fr)]',
         'gap-md',
       )}
@@ -66,7 +66,7 @@ export const TypeForkDiagram = ({
     </div>
 
     {/* Mobile/tablet stack */}
-    <div className="lg:hidden flex flex-col gap-sm">
+    <div className="@2xl:hidden flex flex-col gap-sm">
       <TypeStartCard label={typeLabel} />
       <DownArrow tone="purple" />
       <BranchCard tone="purple" title={fragmentTitle} subtitle={fragmentSubtitle} />

@@ -71,7 +71,7 @@ export const ReconcileChildrenHero = ({ content }: Props) => (
 const HeroPreview = ({ diagram }: { diagram: ReconcileChildrenContent['hero']['diagram'] }) => (
   <div
     className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
+      '@container relative rounded-3xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/30',
       'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -91,7 +91,7 @@ const HeroPreview = ({ diagram }: { diagram: ReconcileChildrenContent['hero']['d
     </h2>
 
     {/* Top row: 3 cards */}
-    <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_1fr)] items-stretch gap-2">
+    <div className="grid grid-cols-1 @2xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_1fr)] items-stretch gap-2">
       {/* current.child */}
       <article
         className={cn(
@@ -121,13 +121,13 @@ const HeroPreview = ({ diagram }: { diagram: ReconcileChildrenContent['hero']['d
 
       <span
         aria-hidden="true"
-        className="hidden sm:flex items-center justify-center text-teal-500/80 dark:text-teal-300/80"
+        className="hidden @2xl:flex items-center justify-center text-teal-500/80 dark:text-teal-300/80"
       >
         <ArrowRightIcon className="h-4 w-4" />
       </span>
       <span
         aria-hidden="true"
-        className="sm:hidden flex justify-center text-teal-500/80 dark:text-teal-300/80"
+        className="@2xl:hidden flex justify-center text-teal-500/80 dark:text-teal-300/80"
       >
         <ChevronDownIcon className="h-5 w-5" />
       </span>
@@ -161,13 +161,13 @@ const HeroPreview = ({ diagram }: { diagram: ReconcileChildrenContent['hero']['d
 
       <span
         aria-hidden="true"
-        className="hidden sm:flex items-center justify-center text-violet-500/80 dark:text-violet-300/80"
+        className="hidden @2xl:flex items-center justify-center text-violet-500/80 dark:text-violet-300/80"
       >
         <ArrowRightIcon className="h-4 w-4" />
       </span>
       <span
         aria-hidden="true"
-        className="sm:hidden flex justify-center text-violet-500/80 dark:text-violet-300/80"
+        className="@2xl:hidden flex justify-center text-violet-500/80 dark:text-violet-300/80"
       >
         <ChevronDownIcon className="h-5 w-5" />
       </span>

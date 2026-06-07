@@ -69,11 +69,11 @@ export const HeroSection = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[42ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
+    <HeroVisualColumn className="@container">
       {/* diagram */}
       <div className="flex flex-col gap-3">
         {/* top 3 cards */}
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-3 @xl:grid-cols-3">
           {content.topCards.map((card) => {
             const s = cardStyle[card.kind];
             const Icon = s.Icon;
@@ -107,7 +107,7 @@ export const HeroSection = ({ content }: Props) => (
         </ul>
 
         {/* connector */}
-        <div aria-hidden="true" className="grid grid-cols-3 px-md">
+        <div aria-hidden="true" className="hidden @xl:grid grid-cols-3 px-md">
           {[0, 1, 2].map((i) => (
             <div key={i} className="flex justify-center">
               <span className="block h-5 w-px border-l border-dashed border-violet-400/60 dark:border-violet-600/60" />

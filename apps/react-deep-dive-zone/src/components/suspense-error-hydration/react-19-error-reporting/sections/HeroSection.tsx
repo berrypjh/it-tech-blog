@@ -43,9 +43,9 @@ export const HeroSection = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[42ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
+    <HeroVisualColumn className="@container">
       {/* 3 callback cards */}
-      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-3 @xl:grid-cols-3">
         {content.callbacks.map((card) => {
           const accent = callbackAccent[card.kind];
           const Icon = callbackIcon[card.kind];

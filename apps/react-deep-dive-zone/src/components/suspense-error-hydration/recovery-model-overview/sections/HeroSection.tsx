@@ -70,9 +70,9 @@ export const HeroSection = ({ content }: Props) => (
 
     <HeroVisualColumn>
       {/* diagram */}
-      <div className="flex flex-col gap-3">
+      <div className="@container flex flex-col gap-3">
         {/* inputs */}
-        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+        <ul className="grid grid-cols-2 gap-2 @sm:grid-cols-3 @3xl:grid-cols-5">
           {content.inputs.map((card) => {
             const accent = domainAccent[card.domain];
             const Icon = inputIcon[card.domain];
@@ -109,7 +109,7 @@ export const HeroSection = ({ content }: Props) => (
         </ul>
 
         {/* connector down */}
-        <div aria-hidden="true" className="grid grid-cols-5 px-md">
+        <div aria-hidden="true" className="hidden @3xl:grid grid-cols-5 px-md">
           {[0, 1, 2, 3, 4].map((i) => (
             <div key={i} className="flex justify-center">
               <span className="block h-4 w-px border-l border-dashed border-blue-400/60 dark:border-blue-500/60" />
@@ -145,7 +145,7 @@ export const HeroSection = ({ content }: Props) => (
         </article>
 
         {/* connector down */}
-        <div aria-hidden="true" className="grid grid-cols-4 px-md">
+        <div aria-hidden="true" className="hidden @xl:grid grid-cols-4 px-md">
           {[0, 1, 2, 3].map((i) => (
             <div key={i} className="flex justify-center">
               <span className="block h-4 w-px border-l border-dashed border-blue-400/60 dark:border-blue-500/60" />
@@ -154,7 +154,7 @@ export const HeroSection = ({ content }: Props) => (
         </div>
 
         {/* outputs */}
-        <ul className="grid grid-cols-2 gap-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-2 @xl:grid-cols-4">
           {content.outputs.map((card) => {
             const accent = domainAccent[card.domain];
             const Icon = outputIcon[card.domain];
