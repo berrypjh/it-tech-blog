@@ -9,7 +9,6 @@ import { ChangeToCodeTrace } from './sections/ChangeToCodeTrace';
 import { LatestReleaseExample } from './sections/LatestReleaseExample';
 import { SourceChoiceScenarioCards } from './sections/SourceChoiceScenarioCards';
 import { VersionContextHero } from './sections/VersionContextHero';
-import { VersionMemoPanel } from './sections/VersionMemoPanel';
 import { changelogContent } from './content';
 
 type Props = { locale: Locale };
@@ -27,7 +26,6 @@ export const ChangelogReleasesPage = ({ locale }: Props) => {
       <LatestReleaseExample content={c.latest} />
       <ChangelogTimeline content={c.timeline} />
       <ChangeToCodeTrace content={c.trace} />
-      <VersionMemoPanel content={c.memo} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

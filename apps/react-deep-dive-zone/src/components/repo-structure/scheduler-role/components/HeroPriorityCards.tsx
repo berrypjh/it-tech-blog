@@ -97,11 +97,11 @@ const PriorityCard = ({ card }: CardProps) => {
         tint.card,
       )}
     >
-      <header className="flex items-center justify-between gap-2">
+      <header className="flex flex-wrap items-center justify-between gap-2">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-md border',
+            'inline-flex shrink-0 items-center justify-center w-8 h-8 rounded-md border',
             tint.chip,
           )}
         >
@@ -109,12 +109,15 @@ const PriorityCard = ({ card }: CardProps) => {
         </span>
         <span
           className={cn(
-            'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            'inline-flex min-w-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             tint.chip,
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', tint.dot)} />
-          {card.badge}
+          <span
+            aria-hidden="true"
+            className={cn('inline-block shrink-0 w-1 h-1 rounded-full', tint.dot)}
+          />
+          <span className="truncate">{card.badge}</span>
         </span>
       </header>
       <h3 className={cn('text-xsm font-bold tracking-tight break-keep', tint.text)}>

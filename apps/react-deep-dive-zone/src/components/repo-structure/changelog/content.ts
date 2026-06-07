@@ -168,7 +168,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       },
     },
     comparison: {
-      eyebrow: '01 · 역할 비교',
+      eyebrow: '01 · role comparison',
       title: 'CHANGELOG와 Releases 역할 비교',
       description: '두 자료의 차이를 한 표에 정리합니다.',
       columnLabel: '항목',
@@ -203,7 +203,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     scenarios: {
-      eyebrow: '02 · 상황별 선택',
+      eyebrow: '02 · pick the right source',
       title: '이런 상황에는 무엇을 볼까?',
       description: '읽으려는 목적에 따라 어디를 먼저 볼지 정해보세요.',
       cards: [
@@ -244,7 +244,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     latest: {
-      eyebrow: '03 · 최신 릴리즈 확인 예시',
+      eyebrow: '03 · latest release example',
       title: '최신 릴리즈 확인 예시',
       versionLabel: '현재 버전 확인',
       version: 'v19.2.0',
@@ -280,7 +280,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       linkText: '전체 변경사항 보기 →',
     },
     timeline: {
-      eyebrow: '04 · 과거 흐름 (CHANGELOG)',
+      eyebrow: '04 · long-term flow (CHANGELOG)',
       title: '과거 흐름 확인 예시',
       description: '버전 사이의 큰 변화는 CHANGELOG를 따라가면 한눈에 들어옵니다.',
       items: [
@@ -312,7 +312,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       banner: '장기적인 변화 흐름은 CHANGELOG 쪽이 더 보기 좋다.',
     },
     trace: {
-      eyebrow: '05 · 변경점 → 코드 탐색',
+      eyebrow: '05 · changes → code',
       title: '변경점 → 코드 탐색 연결 흐름',
       description: '릴리즈 노트에서 시작해 실제 코드까지 내려가는 4단계 추적 루틴입니다.',
       steps: [
@@ -355,7 +355,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     memo: {
-      eyebrow: '06 · 버전 메모 남기기',
+      eyebrow: '06 · leave a version memo',
       title: '버전 메모 남기기',
       promptTitle: 'Note',
       promptText: '이 코드 설명은\n어느 버전을 기준으로\n읽었는가?',

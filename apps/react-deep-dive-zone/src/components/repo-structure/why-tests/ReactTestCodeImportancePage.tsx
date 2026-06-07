@@ -7,7 +7,6 @@ import { FourThingsTestsReveal } from './sections/FourThingsTestsReveal';
 import { ImplementationTestPairMap } from './sections/ImplementationTestPairMap';
 import { ReactCreateElementTestSpotlight } from './sections/ReactCreateElementTestSpotlight';
 import { TestCodeHero } from './sections/TestCodeHero';
-import { TestNameAnalysisQuiz } from './sections/TestNameAnalysisQuiz';
 import { TestReadingSteps } from './sections/TestReadingSteps';
 import { WhyTestsMatterComparison } from './sections/WhyTestsMatterComparison';
 import { testCodeContent } from './content';
@@ -27,7 +26,6 @@ export const ReactTestCodeImportancePage = ({ locale }: Props) => {
       <ImplementationTestPairMap content={c.pairMap} />
       <ReactCreateElementTestSpotlight content={c.spotlight} />
       <TestReadingSteps content={c.steps} />
-      <TestNameAnalysisQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

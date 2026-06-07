@@ -31,8 +31,8 @@ export const SharedHubDiagram = ({ content }: Props) => {
           tags={content.hubTags}
         />
 
-        {/* 곡선 SVG connector */}
-        <div className="relative w-full h-12" aria-hidden="true">
+        {/* 곡선 SVG connector (가로 3열 배치일 때) */}
+        <div className="relative hidden sm:block w-full h-12" aria-hidden="true">
           <svg
             viewBox="0 0 320 48"
             preserveAspectRatio="none"
@@ -65,6 +65,11 @@ export const SharedHubDiagram = ({ content }: Props) => {
           </svg>
         </div>
 
+        {/* 세로 스택(모바일)일 때 단일 세로 커넥터 */}
+        <div className="sm:hidden flex h-8 w-full items-center justify-center" aria-hidden="true">
+          <span className="h-full w-px border-l border-dashed border-teal-300 dark:border-teal-700" />
+        </div>
+
         {/* 3개 패키지 카드 */}
         <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full">
           {content.branches.map((branch) => (
@@ -83,7 +88,7 @@ type HubProps = { title: string; subtitle: string; tags: string[] };
 const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
   <article
     className={cn(
-      'flex flex-col items-center gap-2 rounded-xl border w-full max-w-md',
+      'flex flex-col items-center gap-2 rounded-xl border w-full',
       'px-md py-md',
       'border-teal-300 bg-teal-50/80 text-teal-900',
       'dark:border-teal-700/60 dark:bg-teal-950/40 dark:text-teal-100',

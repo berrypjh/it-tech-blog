@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { FilePair, TestCodeContent } from '../content';
-import { ArrowLeftRightIcon, CodeIcon, FlaskIcon, StarIcon } from '../icons';
+import { ArrowLeftRightIcon, CodeIcon, FlaskIcon } from '../icons';
 
 type Props = { content: TestCodeContent['pairMap'] };
 
@@ -28,25 +28,6 @@ export const ImplementationTestPairMap = ({ content }: Props) => {
           </li>
         ))}
       </ul>
-
-      <div
-        className={cn(
-          'flex items-start gap-sm rounded-lg border px-md py-md',
-          'border-emerald-200/80 bg-emerald-50/70 text-emerald-900',
-          'dark:border-emerald-800/60 dark:bg-emerald-950/30 dark:text-emerald-100',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950',
-          )}
-        >
-          <StarIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md leading-snug font-bold break-keep">{content.banner}</p>
-      </div>
     </section>
   );
 };

@@ -24,11 +24,12 @@ export const LatestReleaseExample = ({ content }: Props) => {
         icon={<TagIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.46fr)_minmax(0,_0.54fr)] gap-md items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
         <CurrentReleaseCard content={content} />
         <div className="flex flex-col gap-md min-w-0">
           <ChecklistCard title={content.checklistTitle} items={content.checklistItems} />
           <HighlightsCard content={content} />
+          <CtaButtons content={content} />
         </div>
       </div>
     </section>
@@ -78,19 +79,19 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
       {content.descriptionText}
     </p>
 
-    <ul className="grid grid-cols-3 gap-2 mt-auto">
+    <ul className="grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-2 mt-auto">
       {content.stats.map((stat) => {
         const Icon = iconByName[stat.icon];
         return (
           <li
             key={stat.label}
             className={cn(
-              'flex flex-col items-center gap-1 rounded-lg border p-2.5 text-center',
+              'flex flex-col items-center gap-1 rounded-lg border p-2 text-center',
               'border-[var(--term-border)] bg-[var(--term-surface)]',
             )}
           >
-            <Icon className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />
-            <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">
+            <Icon className="h-4 w-4 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
+            <span className="text-[10px] uppercase tracking-wide text-[var(--term-muted)] font-bold">
               {stat.label}
             </span>
             <span className="text-md sm:text-lg font-bold font-mono tabular-nums text-[var(--term-fg)]">
@@ -100,41 +101,45 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
         );
       })}
     </ul>
-
-    <div className="flex flex-col sm:flex-row gap-2">
-      <a
-        href={content.primaryHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-          'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-          'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-        )}
-      >
-        <GithubIcon className="h-3.5 w-3.5" />
-        {content.primaryCta}
-        <ArrowRightIcon
-          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </a>
-      <a
-        href={content.secondaryHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-          'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-          'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
-          'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-        )}
-      >
-        {content.secondaryCta}
-        <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
-      </a>
-    </div>
   </article>
+);
+
+type CtaProps = { content: ChangelogContent['latest'] };
+
+const CtaButtons = ({ content }: CtaProps) => (
+  <div className="flex flex-col sm:flex-row gap-2">
+    <a
+      href={content.primaryHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+        'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+      )}
+    >
+      <GithubIcon className="h-3.5 w-3.5" />
+      {content.primaryCta}
+      <ArrowRightIcon
+        className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+        aria-hidden="true"
+      />
+    </a>
+    <a
+      href={content.secondaryHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+        'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
+        'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+      )}
+    >
+      {content.secondaryCta}
+      <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+    </a>
+  </div>
 );
 
 type ChecklistProps = { title: string; items: string[] };

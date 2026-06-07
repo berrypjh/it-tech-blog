@@ -4,7 +4,6 @@ import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { CreateFiberCheckpoint } from './sections/CreateFiberCheckpoint';
-import { ReconcilerConceptQuestion } from './sections/ReconcilerConceptQuestion';
 import { ReconcilerHero } from './sections/ReconcilerHero';
 import { ReconcilerInternalProcess } from './sections/ReconcilerInternalProcess';
 import { ReconcilerNextTopicsPreview } from './sections/ReconcilerNextTopicsPreview';
@@ -27,7 +26,6 @@ export const ReactReconcilerEntryPage = ({ locale }: Props) => {
       <ReconcilerInternalProcess content={c.process} />
       <CreateFiberCheckpoint content={c.checkpoint} />
       <ReconcilerNextTopicsPreview content={c.preview} />
-      <ReconcilerConceptQuestion content={c.question} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -33,7 +33,7 @@ export const ScheduleCallbackCheckpoint = ({ content }: Props) => {
           <InfoRow
             label={content.functionLabel}
             value={
-              <code className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+              <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
                 {content.functionName}
               </code>
             }

@@ -57,6 +57,7 @@ export type PreviewCard = {
   description: string;
   badge: string;
   tone: ToneKey;
+  href: string;
 };
 
 export type ReconcilerEntryContent = {
@@ -363,6 +364,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: '함수/클래스 컴포넌트가 Fiber로 변환되는 과정을 이해합니다.',
           badge: '다음 페이지',
           tone: 'violet',
+          href: '/element-vs-fiber',
         },
         {
           id: 'tree',
@@ -370,6 +372,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'FiberNode 구조, 연결 방식, 트리 탐색 원리를 살펴봅니다.',
           badge: '2단계',
           tone: 'indigo',
+          href: '/fiber-node-overview',
         },
         {
           id: 'render',
@@ -377,6 +380,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'beginWork / completeWork 흐름과 변경 계산 과정을 이해합니다.',
           badge: '3단계',
           tone: 'blue',
+          href: '/render-phase',
         },
         {
           id: 'commit',
@@ -384,6 +388,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'commit 단계의 세부 과정과 DOM 반영 메커니즘을 살펴봅니다.',
           badge: '4단계',
           tone: 'emerald',
+          href: '/commit-phase',
         },
       ],
     },
@@ -589,6 +594,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Understand how function/class components are converted into Fibers.',
           badge: 'Next page',
           tone: 'violet',
+          href: '/element-vs-fiber',
         },
         {
           id: 'tree',
@@ -596,6 +602,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Explore FiberNode shape, linking and tree traversal rules.',
           badge: 'Stage 2',
           tone: 'indigo',
+          href: '/fiber-node-overview',
         },
         {
           id: 'render',
@@ -603,6 +610,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Walk through beginWork / completeWork and change calculation.',
           badge: 'Stage 3',
           tone: 'blue',
+          href: '/render-phase',
         },
         {
           id: 'commit',
@@ -610,6 +618,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Inspect the commit phase in detail and how it lands in the DOM.',
           badge: 'Stage 4',
           tone: 'emerald',
+          href: '/commit-phase',
         },
       ],
     },

@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/StartPageShell';
 
 import { SharedHero } from './sections/SharedHero';
 import { SharedPackageConnectionDiagram } from './sections/SharedPackageConnectionDiagram';
-import { SharedQuickQuiz } from './sections/SharedQuickQuiz';
 import { SharedRepresentativeFiles } from './sections/SharedRepresentativeFiles';
 import { SharedUsageCheckpoint } from './sections/SharedUsageCheckpoint';
 import { WhyReactSymbolsMatter } from './sections/WhyReactSymbolsMatter';
@@ -27,7 +26,6 @@ export const ReactSharedPackagePage = ({ locale }: Props) => {
       <WhyReactSymbolsMatter content={c.symbols} />
       <SharedUsageCheckpoint content={c.checkpoint} />
       <SharedPackageConnectionDiagram content={c.connection} />
-      <SharedQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

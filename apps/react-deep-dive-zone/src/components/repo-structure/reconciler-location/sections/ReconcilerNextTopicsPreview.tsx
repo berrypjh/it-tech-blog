@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -54,24 +56,32 @@ type ItemProps = { card: PreviewCard };
 const PreviewCardItem = ({ card }: ItemProps) => {
   const tone = toneTokens[card.tone];
   return (
-    <ToneCard tone={card.tone} className="w-full">
-      <header className="flex items-center justify-between gap-sm">
-        <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
-      </header>
-      <h3
-        className={cn(
-          'text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line',
-        )}
-      >
-        {card.title}
-      </h3>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
-        {card.description}
-      </p>
-      <div className={cn('pt-xs text-xsm font-bold inline-flex items-center gap-1', tone.text)}>
-        <span className="uppercase tracking-wider text-[10px]">explore</span>
-        <ArrowRightIcon className="h-3 w-3" aria-hidden="true" />
-      </div>
-    </ToneCard>
+    <Link
+      href={card.href}
+      className="group/card h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
+    >
+      <ToneCard tone={card.tone} className="w-full">
+        <header className="flex items-center justify-between gap-sm">
+          <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
+        </header>
+        <h3
+          className={cn(
+            'text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line',
+          )}
+        >
+          {card.title}
+        </h3>
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
+          {card.description}
+        </p>
+        <div className={cn('pt-xs text-xsm font-bold inline-flex items-center gap-1', tone.text)}>
+          <span className="uppercase tracking-wider text-[10px]">explore</span>
+          <ArrowRightIcon
+            className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </div>
+      </ToneCard>
+    </Link>
   );
 };

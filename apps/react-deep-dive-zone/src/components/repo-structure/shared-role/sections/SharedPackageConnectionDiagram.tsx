@@ -25,7 +25,7 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
           'p-md sm:p-lg',
         )}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.68fr)] gap-md items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.68fr)] gap-md lg:gap-12 items-stretch">
           {/* 좌측 shared hub */}
           <SharedHubCard
             title={content.hubTitle}
@@ -35,12 +35,12 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
 
           {/* 우측 3개 row */}
           <ul className="flex flex-col gap-3 relative">
-            {/* SVG dotted curve connector — sm 이상에서만 */}
+            {/* SVG dotted curve connector — lg 이상에서만, 컬럼 간격(48px)에 맞춤 */}
             <svg
               aria-hidden="true"
               viewBox="0 0 80 240"
               preserveAspectRatio="none"
-              className="hidden lg:block pointer-events-none absolute -left-12 top-2 bottom-2 w-12 h-[calc(100%-1rem)]"
+              className="hidden lg:block pointer-events-none absolute -left-12 top-2 bottom-2 w-12"
             >
               <path
                 d="M0 120 C 30 60, 60 30, 80 30"
