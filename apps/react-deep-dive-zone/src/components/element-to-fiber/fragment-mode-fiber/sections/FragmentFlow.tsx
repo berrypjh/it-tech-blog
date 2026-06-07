@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { FlowSteps } from '../components/FlowSteps';
 import type { FragmentModeFiberContent } from '../content';
@@ -36,7 +36,12 @@ export const FragmentFlow = ({ content }: Props) => (
         >
           {content.jsxLabel}
         </span>
-        <CodePanel code={content.jsxCode} caption="fragment.jsx" language="JSX" showWindowDots />
+        <CodePreviewPanel
+          code={content.jsxCode}
+          caption="fragment.jsx"
+          language="JSX"
+          showWindowDots
+        />
       </article>
 
       {/* Flow steps */}

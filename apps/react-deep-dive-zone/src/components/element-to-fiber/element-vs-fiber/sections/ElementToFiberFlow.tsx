@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ElementVsFiberContent, FlowCard, FlowCardKind } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, SproutIcon, WorkflowIcon } from '../icons';
@@ -112,7 +112,7 @@ const FlowCardView = ({ card }: { card: FlowCard }) => {
         {card.description}
       </p>
 
-      {card.code && <CodePanel code={card.code} language="JSX" />}
+      {card.code && <CodePreviewPanel code={card.code} language="JSX" />}
 
       {card.items && (
         <ul className="flex flex-col gap-1.5 mt-1">

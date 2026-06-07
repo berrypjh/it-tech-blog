@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { FieldCallout, ReactCreateElementContent } from '../content';
@@ -151,7 +151,7 @@ const FlowStep = ({
       >
         {label}
       </span>
-      <CodePanel code={code} language={language} />
+      <CodePreviewPanel code={code} language={language} />
       <p className={cn('text-xsm leading-relaxed break-keep', a.text)}>{footer}</p>
     </article>
   );
@@ -176,7 +176,7 @@ const FlowResult = ({ active, label, code }: { active: boolean; label: string; c
     <span className="inline-flex w-fit items-center rounded-full border border-teal-300/80 bg-teal-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/60 dark:text-teal-200">
       {label}
     </span>
-    <CodePanel code={code} language="JS" />
+    <CodePreviewPanel code={code} language="JS" />
   </article>
 );
 

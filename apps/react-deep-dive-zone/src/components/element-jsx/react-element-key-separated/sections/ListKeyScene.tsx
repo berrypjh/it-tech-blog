@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, RenderedItem } from '../content';
@@ -26,7 +26,7 @@ export const ListKeyScene = ({ content }: Props) => (
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <CodePanel
+        <CodePreviewPanel
           code={content.code}
           language="JSX"
           showWindowDots

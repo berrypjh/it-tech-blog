@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CompareCard, FunctionClassComponentFiberContent } from '../content';
 import {
@@ -91,7 +91,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         </div>
       </header>
 
-      <CodePanel
+      <CodePreviewPanel
         code={card.code}
         caption={card.id === 'function' ? 'function.jsx' : 'class.jsx'}
         language="JSX"

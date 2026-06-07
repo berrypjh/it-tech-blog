@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
@@ -42,7 +42,7 @@ export const ConceptConnectionQuiz = ({ content }: Props) => (
         <p className="text-md font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
           {content.question}
         </p>
-        <CodePanel code={content.questionCode} language="JSX" />
+        <CodePreviewPanel code={content.questionCode} language="JSX" />
         <p className="text-xsm leading-relaxed text-sky-800/90 dark:text-sky-200/80 break-keep">
           {content.hint}
         </p>

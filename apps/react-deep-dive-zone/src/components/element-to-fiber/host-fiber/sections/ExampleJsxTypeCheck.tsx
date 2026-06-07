@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { HostComponentFiberContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, BracesIcon, CheckCircleIcon } from '../icons';
@@ -28,7 +28,12 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
       {/* JSX panel */}
       <article className="flex flex-col gap-2 min-w-0">
         <Label tone="navy">{content.jsxLabel}</Label>
-        <CodePanel code={content.jsxCode} caption="button.jsx" language="JSX" showWindowDots />
+        <CodePreviewPanel
+          code={content.jsxCode}
+          caption="button.jsx"
+          language="JSX"
+          showWindowDots
+        />
       </article>
 
       <Connector />
@@ -36,7 +41,12 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
       {/* Element object panel */}
       <article className="flex flex-col gap-2 min-w-0">
         <Label tone="navy">{content.elementLabel}</Label>
-        <CodePanel code={content.elementCode} caption="element" language="JS" showWindowDots />
+        <CodePreviewPanel
+          code={content.elementCode}
+          caption="element"
+          language="JS"
+          showWindowDots
+        />
       </article>
 
       <Connector />

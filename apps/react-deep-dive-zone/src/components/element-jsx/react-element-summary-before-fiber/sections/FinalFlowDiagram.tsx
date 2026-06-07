@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { FinalFlowStep, ReactElementSummaryBeforeFiberContent } from '../content';
@@ -70,7 +70,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
       <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {step.title}
       </h3>
-      {step.code && <CodePanel code={step.code} language="JS" />}
+      {step.code && <CodePreviewPanel code={step.code} language="JS" />}
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{step.body}</p>
     </article>
   );

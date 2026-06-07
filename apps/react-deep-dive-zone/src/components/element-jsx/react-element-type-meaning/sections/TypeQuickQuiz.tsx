@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { QuizCard, ReactElementTypeMeaningContent } from '../content';
@@ -62,7 +62,7 @@ const QuizCardView = ({
         </p>
       </header>
 
-      {card.questionCode && <CodePanel code={card.questionCode} language="JSX" />}
+      {card.questionCode && <CodePreviewPanel code={card.questionCode} language="JSX" />}
 
       <div
         role="group"

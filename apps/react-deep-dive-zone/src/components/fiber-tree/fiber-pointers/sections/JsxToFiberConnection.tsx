@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { ConnectionTable } from '../components/ConnectionTable';
 import { JsxFiberDiagram } from '../components/JsxFiberDiagram';
@@ -27,7 +27,7 @@ export const JsxToFiberConnection = ({ content }: Props) => (
     >
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.42fr)_minmax(0,_0.26fr)] gap-md lg:gap-lg items-start">
         <div className="min-w-0">
-          <CodePanel
+          <CodePreviewPanel
             code={content.jsx}
             caption="snippet.jsx"
             language={content.jsxLabel}

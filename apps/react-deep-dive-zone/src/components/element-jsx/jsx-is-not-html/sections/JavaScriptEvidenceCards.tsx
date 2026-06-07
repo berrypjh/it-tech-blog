@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { EvidenceCard, JsxIsNotHtmlContent } from '../content';
@@ -54,7 +54,7 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
         </span>
       </header>
 
-      <CodePanel code={card.code} language="JS" />
+      <CodePreviewPanel code={card.code} language="JS" />
 
       <div
         className={cn(

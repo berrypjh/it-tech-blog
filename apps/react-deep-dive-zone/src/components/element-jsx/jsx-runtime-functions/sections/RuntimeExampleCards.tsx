@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ExampleCard, JsxRuntimeFunctionsContent } from '../content';
@@ -54,7 +54,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
         )}
       </header>
 
-      <CodePanel code={card.code} language="JSX" />
+      <CodePreviewPanel code={card.code} language="JSX" />
 
       <div className="flex justify-center" aria-hidden="true">
         <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">

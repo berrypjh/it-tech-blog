@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementRefReact19Content } from '../content';
 import { ArrowRightIcon, CodeIcon, FileTextIcon, LightbulbIcon, SettingsIcon } from '../icons';
@@ -62,7 +62,12 @@ export const RefSourceCheckpoint = ({ content }: Props) => (
       </article>
 
       <div className="min-w-0">
-        <CodePanel code={content.code} language="JS" showWindowDots caption="ReactBaseClasses.js" />
+        <CodePreviewPanel
+          code={content.code}
+          language="JS"
+          showWindowDots
+          caption="ReactBaseClasses.js"
+        />
       </div>
     </div>
 

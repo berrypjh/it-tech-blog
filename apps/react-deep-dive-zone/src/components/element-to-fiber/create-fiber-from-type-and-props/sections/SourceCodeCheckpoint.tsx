@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
 import { Code2Icon, FileCodeIcon, HelpCircleIcon, LightbulbIcon, Settings2Icon } from '../icons';
@@ -89,7 +89,7 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
       {/* Right: code panel + annotations */}
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-sm lg:gap-md items-stretch min-w-0">
         <div className="min-w-0">
-          <CodePanel
+          <CodePreviewPanel
             code={content.code}
             caption={content.codeTitle}
             language="JS"

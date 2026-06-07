@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxRow, ReactElementTypeMeaningContent } from '../content';
@@ -45,7 +45,7 @@ const RowView = ({ row }: { row: JsxRow }) => {
         <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
           JSX
         </span>
-        <CodePanel code={row.jsx} language="JSX" />
+        <CodePreviewPanel code={row.jsx} language="JSX" />
       </div>
 
       {/* arrow */}

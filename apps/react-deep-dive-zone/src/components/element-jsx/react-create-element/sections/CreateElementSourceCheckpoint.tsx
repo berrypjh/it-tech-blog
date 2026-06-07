@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CheckpointInfo, ReactCreateElementContent } from '../content';
 import {
@@ -79,7 +79,12 @@ export const CreateElementSourceCheckpoint = ({ content }: Props) => (
       </article>
 
       <div className="min-w-0">
-        <CodePanel code={content.code} language="JS" showWindowDots caption="ReactJSXElement.js" />
+        <CodePreviewPanel
+          code={content.code}
+          language="JS"
+          showWindowDots
+          caption="ReactJSXElement.js"
+        />
       </div>
     </div>
   </section>

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CurrentWipAlternateContent } from '../content';
 import { BracesIcon, ExternalLinkIcon, EyeIcon, FileCodeIcon, HelpCircleIcon } from '../icons';
@@ -82,7 +82,7 @@ export const AlternateCodeCheckpoint = ({ content }: Props) => (
       </article>
 
       <div className="flex flex-col gap-md min-w-0">
-        <CodePanel
+        <CodePreviewPanel
           code={content.code.content}
           caption={content.code.fileName}
           language={content.code.language}

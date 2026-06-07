@@ -59,6 +59,7 @@ export type EntryRouteCard = {
   route: { from: string; to: string };
   description: string;
   buttonLabel: string;
+  href: string;
   tone: ToneKey;
   iconName: ReactPackageIconName;
 };
@@ -74,13 +75,6 @@ export type CheckpointItem = {
   value: string;
   iconName: ReactPackageIconName;
   tone: ToneKey;
-};
-
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
 };
 
 export type ReactPackageContent = {
@@ -106,7 +100,8 @@ export type ReactPackageContent = {
     emphasis: string;
     codeCaption: string;
     code: string;
-    codeButtons: { primary: string; secondary: string };
+    codeCta: string;
+    codeHref: string;
   };
   checkpoint: {
     eyebrow: string;
@@ -127,12 +122,6 @@ export type ReactPackageContent = {
     doesNotTitle: string;
     doesNotItems: CapabilityItem[];
     banner: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -277,25 +266,12 @@ const HERO_TOKENS_EN: ApiToken[] = [
   },
 ];
 
-const REACT_CLIENT_CODE = `// 내부 구현 파일들에서 필요한 기능을 가져온다
-import {
-  useState,
-  useReducer,
-  useEffect,
-  useContext,
-  use,
-} from './ReactHooks';
-
-import {
-  createElement,
-  cloneElement,
-  isValidElement,
-} from './ReactJSXElement';
-
+const REACT_CLIENT_CODE = `// 내부 구현 파일에서 기능을 가져온다
+import { useState, useEffect, use } from './ReactHooks';
+import { createElement, cloneElement } from './ReactJSXElement';
 import { memo } from './ReactMemo';
 import { lazy } from './ReactLazy';
-import { startTransition } from './ReactStartTransition';
-import { useActionState } from './ReactActionState';
+// ...
 
 // public API를 외부로 내보낸다
 export {
@@ -304,26 +280,17 @@ export {
   cloneElement,
   isValidElement,
 
-  // Component API
-  Component,
-  PureComponent,
-
-  // Context API
-  createContext,
-  useContext,
-
   // Hooks
   useState,
-  useReducer,
   useEffect,
   useTransition,
-  useActionState,
   use,
 
   // Composition API
   memo,
   lazy,
   forwardRef,
+  // ...
 };`;
 
 export const reactPackageContent: Record<Locale, ReactPackageContent> = {
@@ -418,7 +385,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       emphasis: 'ReactClient.js는 구현의 끝이 아니라 public API가 모이는 입구다.',
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_CODE,
-      codeButtons: { primary: 'ReactClient.js 열기', secondary: 'API 흐름 보기' },
+      codeCta: 'GitHub에서 ReactClient.js 보기',
+      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     checkpoint: {
       eyebrow: '03 · code checkpoint',
@@ -458,6 +426,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactHooks.js' },
           description: 'dispatcher 기반 호출',
           buttonLabel: '코드로 보기',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactHooks.js',
           tone: 'sky',
           iconName: 'database',
         },
@@ -467,6 +436,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactJSXElement.js' },
           description: 'React Element 생성 로직',
           buttonLabel: '코드로 보기',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
           tone: 'violet',
           iconName: 'code',
         },
@@ -476,6 +446,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactStartTransition.js' },
           description: '전환(transition) 시작 처리',
           buttonLabel: '코드로 보기',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactStartTransition.js',
           tone: 'teal',
           iconName: 'refresh',
         },
@@ -515,27 +486,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         },
       ],
       banner: 'react는 UI를 설명하는 데 집중하고, 실제 환경 반영은 다른 패키지에 맡긴다.',
-    },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: '퀵 학습 퀴즈',
-      description: 'ReactClient.js 다음에 들여다볼 파일을 짚을 수 있는지 확인해 보세요.',
-      cards: [
-        {
-          id: 'useState-quiz',
-          question: 'useState 구현을 깊게 보려면 ReactClient.js 다음으로 어디를 볼까?',
-          answer: 'ReactHooks.js',
-          explanation:
-            'useState를 포함한 모든 Hooks는 ReactHooks.js에서 구현되며, 내부 dispatcher를 통해 renderer와 연결됩니다.',
-        },
-        {
-          id: 'element-quiz',
-          question: 'JSX로 만든 Element의 내부 구조는 어느 파일과 연결될까?',
-          answer: 'ReactJSXElement.js',
-          explanation:
-            'createElement 등은 ReactJSXElement.js에서 구현되며, React Element 객체 구조 생성과 검증을 담당합니다.',
-        },
-      ],
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -638,7 +588,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'ReactClient.js is not the end of the implementation — it is the doorway where the public API meets.',
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_CODE,
-      codeButtons: { primary: 'Open ReactClient.js', secondary: 'See the API flow' },
+      codeCta: 'View ReactClient.js on GitHub',
+      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     checkpoint: {
       eyebrow: '03 · code checkpoint',
@@ -679,6 +630,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactHooks.js' },
           description: 'Dispatcher-based call',
           buttonLabel: 'View the code',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactHooks.js',
           tone: 'sky',
           iconName: 'database',
         },
@@ -688,6 +640,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactJSXElement.js' },
           description: 'React Element creation',
           buttonLabel: 'View the code',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
           tone: 'violet',
           iconName: 'code',
         },
@@ -697,6 +650,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           route: { from: 'ReactClient.js', to: 'ReactStartTransition.js' },
           description: 'Transition kickoff',
           buttonLabel: 'View the code',
+          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactStartTransition.js',
           tone: 'teal',
           iconName: 'refresh',
         },
@@ -737,27 +691,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
       banner:
         'react focuses on describing the UI — applying it to real environments belongs to other packages.',
-    },
-    quiz: {
-      eyebrow: '06 · quick quiz',
-      title: 'Quick learning quiz',
-      description: 'Can you name the file to read after ReactClient.js?',
-      cards: [
-        {
-          id: 'useState-quiz',
-          question: 'Where do you look right after ReactClient.js to study useState?',
-          answer: 'ReactHooks.js',
-          explanation:
-            'Every Hook — including useState — is implemented in ReactHooks.js and reaches the renderer through the internal dispatcher.',
-        },
-        {
-          id: 'element-quiz',
-          question: 'Which file owns the internal structure of JSX-created Elements?',
-          answer: 'ReactJSXElement.js',
-          explanation:
-            'createElement and friends live in ReactJSXElement.js, which builds and validates the React Element object.',
-        },
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

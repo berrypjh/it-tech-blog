@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import type { EffectKind, RepresentativeFlagCard } from '../content';
 import { ArrowDownIcon, MoveIcon, PencilIcon, TrashIcon } from '../icons';
 
@@ -62,7 +62,7 @@ export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {`// ${beforeLabel}`}
         </span>
-        <CodePanel code={card.before} caption="before.html" language="HTML" size="sm" />
+        <CodePreviewPanel code={card.before} caption="before.html" language="HTML" size="sm" />
       </div>
 
       <div aria-hidden="true" className="flex justify-center">
@@ -75,7 +75,7 @@ export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {`// ${afterLabel}`}
         </span>
-        <CodePanel code={card.after} caption="after.html" language="HTML" size="sm" />
+        <CodePreviewPanel code={card.after} caption="after.html" language="HTML" size="sm" />
       </div>
     </article>
   );

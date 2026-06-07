@@ -8,7 +8,6 @@ import { ApiGroupsSection } from './sections/ApiGroupsSection';
 import { CapabilitiesSection } from './sections/CapabilitiesSection';
 import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
 import { PublicApiHubSection } from './sections/PublicApiHubSection';
-import { QuickQuizSection } from './sections/QuickQuizSection';
 import { ReactPackageHero } from './sections/ReactPackageHero';
 import { reactPackageContent } from './content';
 
@@ -28,7 +27,6 @@ export const ReactPackagePage = ({ locale }: Props) => {
       <CodeCheckpointSection content={c.checkpoint} />
       <ApiEntryRoutesSection content={c.routes} sectionId={ROUTES_SECTION_ID} />
       <CapabilitiesSection content={c.capabilities} />
-      <QuickQuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

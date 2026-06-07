@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ExampleLegend, JsxTransformFlowContent, TransformExample } from '../content';
@@ -180,7 +180,7 @@ const ExampleRow = ({
     >
       <div className="flex flex-col gap-2 min-w-0">
         <h3 className="text-xsm font-bold tracking-tight text-[var(--term-fg)]">{example.title}</h3>
-        <CodePanel code={example.jsx} language="JSX" />
+        <CodePreviewPanel code={example.jsx} language="JSX" />
       </div>
 
       <div aria-hidden="true" className="hidden lg:flex items-center justify-center">
@@ -193,7 +193,7 @@ const ExampleRow = ({
         <h4 className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
           {tab === 'jsx' ? previewLabel : compiledLabel}
         </h4>
-        <CodePanel code={example.compiled} language="JS" />
+        <CodePreviewPanel code={example.compiled} language="JS" />
       </div>
 
       <aside

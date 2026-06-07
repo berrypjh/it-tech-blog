@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementRefReact19Content } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, GitCompareIcon } from '../icons';
@@ -101,7 +101,7 @@ const CompareCard = ({
         </span>
       </header>
 
-      <CodePanel code={code} language="JSX" />
+      <CodePreviewPanel code={code} language="JSX" />
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{note}</p>
     </article>

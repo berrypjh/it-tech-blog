@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ComparisonSideCard, ReactCreateElementContent } from '../content';
@@ -82,7 +82,7 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
       >
         {card.label}
       </span>
-      <CodePanel code={card.code} language={card.id === 'jsx' ? 'JSX' : 'JS'} />
+      <CodePreviewPanel code={card.code} language={card.id === 'jsx' ? 'JSX' : 'JS'} />
       <p className={cn('text-xsm leading-relaxed break-keep', t.text)}>{card.body}</p>
     </article>
   );

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateHydrateCard, ReactDomContent } from '../content';
-import { ChevronRightIcon, MapIcon } from '../icons';
+import { MapIcon } from '../icons';
 
 type Props = { content: ReactDomContent['flow']; sectionId: string };
 
@@ -47,18 +48,7 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
         </span>
       </header>
 
-      {/* dark code bar */}
-      <pre
-        className={cn(
-          'overflow-x-auto rounded-lg border p-md text-[11.5px] sm:text-[12px] leading-relaxed font-mono',
-          'border-slate-700 bg-slate-950 text-slate-100',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <code>
-          <span className="text-sky-300">{card.code}</span>
-        </code>
-      </pre>
+      <CodePreviewPanel code={card.code} />
 
       {/* 3단계 흐름 */}
       <ol className="flex flex-col gap-sm">
@@ -99,16 +89,6 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
                 </code>
               )}
             </div>
-            {i < card.steps.length - 1 && (
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'hidden md:inline-flex items-center justify-center text-[var(--term-accent)]',
-                )}
-              >
-                <ChevronRightIcon className="h-4 w-4" />
-              </span>
-            )}
           </li>
         ))}
       </ol>

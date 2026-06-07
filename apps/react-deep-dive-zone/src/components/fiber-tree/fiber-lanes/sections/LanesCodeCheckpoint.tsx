@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { FiberLanesContent } from '../content';
 import { ExternalLinkIcon, EyeIcon, FileCodeIcon, HelpCircleIcon } from '../icons';
@@ -65,7 +65,7 @@ export const LanesCodeCheckpoint = ({ content }: Props) => (
       </article>
 
       <div className="min-w-0">
-        <CodePanel
+        <CodePreviewPanel
           code={content.code.content}
           caption={content.code.fileName}
           language={content.code.language}

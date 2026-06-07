@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { FreezeCard, ReactElementOwnerDevInfoContent } from '../content';
@@ -77,7 +77,7 @@ const CardView = ({ card }: { card: FreezeCard }) => {
         </span>
         <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       </header>
-      <CodePanel code={card.code} language="JS" />
+      <CodePreviewPanel code={card.code} language="JS" />
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
     </article>
   );

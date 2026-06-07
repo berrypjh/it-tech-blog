@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CodeBlock, FiberFlagsContent } from '../content';
 import { ExternalLinkIcon, EyeIcon, FileCodeIcon, HelpCircleIcon } from '../icons';
@@ -80,7 +80,7 @@ export const FlagsCodeCheckpoint = ({ content }: Props) => (
       <div className="flex flex-col gap-md min-w-0">
         {content.blocks.map((block) => (
           <div key={block.fileName} className="flex flex-col gap-2 min-w-0">
-            <CodePanel
+            <CodePreviewPanel
               code={block.content}
               caption={block.fileName}
               language={block.language}

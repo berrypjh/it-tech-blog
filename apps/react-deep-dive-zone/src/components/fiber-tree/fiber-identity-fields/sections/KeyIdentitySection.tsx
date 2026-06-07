@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { FiberIdentityFieldsContent } from '../content';
 import { KeyIcon } from '../icons';
@@ -19,7 +19,7 @@ export const KeyIdentitySection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.95fr)_minmax(0,_1.05fr)] gap-md lg:gap-lg items-start">
       <div className="min-w-0">
-        <CodePanel
+        <CodePreviewPanel
           code={content.code}
           caption="todo-list.jsx"
           language={content.codeLabel}

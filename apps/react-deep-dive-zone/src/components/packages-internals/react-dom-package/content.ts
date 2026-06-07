@@ -28,8 +28,6 @@ export type HeroDiagramNode = {
   caption: string;
   iconName: ReactDomIconName;
   tone: ToneKey;
-  /** 우측 다이어그램의 자리 (좌상/우상/하단) */
-  slot: 'top-left' | 'top-right' | 'bottom';
   code?: string;
   description: string;
 };
@@ -189,7 +187,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: '브라우저',
           iconName: 'container',
           tone: 'teal',
-          slot: 'top-left',
           code: '<div id="root"></div>',
           description: 'createRoot / hydrateRoot가 붙는 진입점',
         },
@@ -199,7 +196,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: '브라우저',
           iconName: 'monitor',
           tone: 'violet',
-          slot: 'top-right',
           description: '최종 HTML 구조 — 브라우저에 표시',
         },
         {
@@ -208,7 +204,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: '서버',
           iconName: 'server',
           tone: 'emerald',
-          slot: 'bottom',
           code: '<html>\n  ...\n</html>',
           description: 'renderTo* 계열로 생성',
         },
@@ -426,7 +421,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: 'Browser',
           iconName: 'container',
           tone: 'teal',
-          slot: 'top-left',
           code: '<div id="root"></div>',
           description: 'Where createRoot / hydrateRoot attach',
         },
@@ -436,7 +430,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: 'Browser',
           iconName: 'monitor',
           tone: 'violet',
-          slot: 'top-right',
           description: 'The final HTML rendered for the browser',
         },
         {
@@ -445,7 +438,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           caption: 'Server',
           iconName: 'server',
           tone: 'emerald',
-          slot: 'bottom',
           code: '<html>\n  ...\n</html>',
           description: 'Produced by renderTo* APIs',
         },

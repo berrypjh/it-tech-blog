@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
@@ -79,7 +79,10 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
       </div>
       <div className="sm:w-1/2 min-w-0 sm:self-stretch flex">
         <div className="w-full">
-          <CodePanel code={card.miniCode} language={card.id === 'production' ? 'JS' : 'DEV'} />
+          <CodePreviewPanel
+            code={card.miniCode}
+            language={card.id === 'production' ? 'JS' : 'DEV'}
+          />
         </div>
       </div>
     </article>

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -68,7 +68,12 @@ export const JsxHeroSection = ({ content }: Props) => (
     </HeroTextColumn>
 
     <HeroVisualColumn className="@container flex flex-col gap-md">
-      <CodePanel code={content.code} showWindowDots caption={content.codeCaption} size="md" />
+      <CodePreviewPanel
+        code={content.code}
+        showWindowDots
+        caption={content.codeCaption}
+        size="md"
+      />
 
       {/* connector lines: 코드창에서 두 카드로 내려가는 점선 + 보조 점 (가로 2열일 때만) */}
       <div className="relative h-6 hidden @lg:block" aria-hidden="true">

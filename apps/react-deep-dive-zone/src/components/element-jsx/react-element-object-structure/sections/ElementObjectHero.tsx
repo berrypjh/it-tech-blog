@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -79,7 +79,7 @@ export const ElementObjectHero = ({ content }: Props) => (
         <span className="inline-flex w-fit items-center rounded-full border border-sky-300/80 bg-sky-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200">
           {content.codeCardLabel}
         </span>
-        <CodePanel code={content.code} language="JS" showWindowDots caption="ReactElement" />
+        <CodePreviewPanel code={content.code} language="JS" showWindowDots caption="ReactElement" />
       </div>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">

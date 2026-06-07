@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ElementCallout, ReactElementKeySeparatedContent } from '../content';
@@ -21,7 +21,7 @@ export const ElementKeyPosition = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-md items-stretch">
       <div className="min-w-0">
-        <CodePanel
+        <CodePreviewPanel
           code={content.elementShape}
           language="JS"
           showWindowDots

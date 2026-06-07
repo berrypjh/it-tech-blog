@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ChatState, KeyFiberReuseContent } from '../content';
 import {
@@ -42,7 +42,12 @@ export const StateResetExample = ({ content }: Props) => (
         >
           JSX
         </span>
-        <CodePanel code={content.code} caption="chat-route.jsx" language="JSX" showWindowDots />
+        <CodePreviewPanel
+          code={content.code}
+          caption="chat-route.jsx"
+          language="JSX"
+          showWindowDots
+        />
       </article>
 
       <article

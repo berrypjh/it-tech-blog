@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ToneKey } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
@@ -88,7 +88,7 @@ export const IdentityCodeCheckpoint = ({ content }: Props) => (
         {content.blocks.map((block) => (
           <div key={block.fileName} className="flex flex-col gap-1">
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start gap-sm">
-              <CodePanel
+              <CodePreviewPanel
                 code={block.content}
                 caption={block.fileName}
                 language={block.language}

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { FiberPropsContent } from '../content';
 import { ArrowDownIcon, GitCompareIcon, LightbulbIcon } from '../icons';
@@ -88,7 +88,7 @@ const RenderCard = ({
   return (
     <article className={cn('rounded-2xl border-2 p-md', t)}>
       <h3 className={cn('text-xsm font-bold tracking-tight mb-sm', labelColor)}>{label}</h3>
-      <CodePanel code={code} caption="render.jsx" language="JSX" size="sm" />
+      <CodePreviewPanel code={code} caption="render.jsx" language="JSX" size="sm" />
     </article>
   );
 };

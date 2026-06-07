@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { pointerText } from '../components/pointerStyles';
 import type { FiberTreePointersContent } from '../content';
@@ -36,7 +36,12 @@ export const FiberDrawingMission = ({ content }: Props) => (
         >
           {content.problemLabel}
         </span>
-        <CodePanel code={content.problemJsx} caption="problem.jsx" language="JSX" size="sm" />
+        <CodePreviewPanel
+          code={content.problemJsx}
+          caption="problem.jsx"
+          language="JSX"
+          size="sm"
+        />
       </article>
 
       {/* Question */}

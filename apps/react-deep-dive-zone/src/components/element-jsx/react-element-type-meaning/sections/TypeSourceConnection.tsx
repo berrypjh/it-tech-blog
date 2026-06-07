@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementTypeMeaningContent } from '../content';
 import { ArrowRightIcon, CheckCircleIcon, CodeIcon, FileTextIcon } from '../icons';
@@ -70,7 +70,12 @@ export const TypeSourceConnection = ({ content }: Props) => (
       </article>
 
       <div className="min-w-0">
-        <CodePanel code={content.code} language="JS" showWindowDots caption={content.fileName} />
+        <CodePreviewPanel
+          code={content.code}
+          language="JS"
+          showWindowDots
+          caption={content.fileName}
+        />
       </div>
     </div>
 

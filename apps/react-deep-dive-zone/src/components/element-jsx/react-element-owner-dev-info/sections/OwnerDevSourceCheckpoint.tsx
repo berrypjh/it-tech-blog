@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { ReactElementOwnerDevInfoContent } from '../content';
 import { ArrowRightIcon, CodeIcon, FileTextIcon, LightbulbIcon, ScanSearchIcon } from '../icons';
@@ -88,7 +88,12 @@ export const OwnerDevSourceCheckpoint = ({ content }: Props) => (
       </article>
 
       <div className="min-w-0">
-        <CodePanel code={content.code} language="JS" showWindowDots caption="ReactJSXElement.js" />
+        <CodePreviewPanel
+          code={content.code}
+          language="JS"
+          showWindowDots
+          caption="ReactJSXElement.js"
+        />
       </div>
     </div>
 

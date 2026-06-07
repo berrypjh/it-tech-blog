@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { FiberRoleRow } from '../components/FiberRoleRow';
 import type { FiberNodeOverviewContent } from '../content';
@@ -21,7 +21,7 @@ export const FiberStructurePreview = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)] gap-md lg:gap-lg items-start">
       <div className="min-w-0">
-        <CodePanel code={content.code} caption="fiber.ts" language="TS" size="sm" />
+        <CodePreviewPanel code={content.code} caption="fiber.ts" language="TS" size="sm" />
       </div>
 
       <div className="min-w-0 flex flex-col gap-sm">

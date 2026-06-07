@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CheckPoint, JsxTransformFlowContent } from '../content';
 import { CheckCircleIcon, GitCompareIcon, SparklesIcon } from '../icons';
@@ -33,7 +33,7 @@ export const TransformComparison = ({ content }: Props) => (
         <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.sampleTitle}</h3>
       </div>
       <div className="md:w-1/2 lg:w-2/5">
-        <CodePanel code={content.sampleCode} language="JSX" />
+        <CodePreviewPanel code={content.sampleCode} language="JSX" />
       </div>
     </div>
 
@@ -159,7 +159,7 @@ const TransformCard = ({
         </span>
       </header>
 
-      <CodePanel code={code} language="JS" />
+      <CodePreviewPanel code={code} language="JS" />
 
       <ul className="flex flex-col gap-2">
         {checks.map((check) => (

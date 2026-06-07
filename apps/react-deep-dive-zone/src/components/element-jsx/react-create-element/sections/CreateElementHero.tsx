@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -158,7 +158,7 @@ const HeroCodeCard = ({
       >
         {label}
       </span>
-      <CodePanel code={code} language={language} />
+      <CodePreviewPanel code={code} language={language} />
     </article>
   );
 };

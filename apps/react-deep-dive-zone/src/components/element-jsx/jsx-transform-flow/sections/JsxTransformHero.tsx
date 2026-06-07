@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -78,7 +78,12 @@ const TransformDiagram = ({ content }: { content: JsxTransformFlowContent['hero'
     {/* left flow column */}
     <div className="flex flex-col gap-2 min-w-0">
       <FlowStepLabel index={1} label="JSX" />
-      <CodePanel code={content.inputCode} showWindowDots caption={content.inputCaption} size="md" />
+      <CodePreviewPanel
+        code={content.inputCode}
+        showWindowDots
+        caption={content.inputCaption}
+        size="md"
+      />
       <FlowConnector />
       <FlowStepLabel index={2} label="Compile" />
       <div
@@ -96,7 +101,7 @@ const TransformDiagram = ({ content }: { content: JsxTransformFlowContent['hero'
       </div>
       <FlowConnector />
       <FlowStepLabel index={3} label="Function Call" />
-      <CodePanel
+      <CodePreviewPanel
         code={content.outputCode}
         caption={content.outputCaption}
         language="JS"

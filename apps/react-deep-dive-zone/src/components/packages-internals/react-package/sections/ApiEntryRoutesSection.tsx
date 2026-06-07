@@ -4,7 +4,7 @@ import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { EntryRouteCard, ReactPackageContent } from '../content';
-import { ChevronRightIcon, CodeIcon, reactPackageIcon } from '../icons';
+import { ChevronRightIcon, CodeIcon, ExternalLinkIcon, reactPackageIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['routes']; sectionId: string };
 
@@ -69,8 +69,10 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
         {card.description}
       </p>
 
-      <button
-        type="button"
+      <a
+        href={card.href}
+        target="_blank"
+        rel="noopener noreferrer"
         className={cn(
           'group/btn mt-auto inline-flex items-center justify-center gap-2 rounded-md px-md py-2 text-[11px] font-bold',
           'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -80,7 +82,8 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
       >
         <CodeIcon className="h-3.5 w-3.5" aria-hidden="true" />
         {card.buttonLabel}
-      </button>
+        <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+      </a>
     </article>
   );
 };

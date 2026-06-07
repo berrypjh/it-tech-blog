@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { CheckpointCard, JsxRuntimeFunctionsContent } from '../content';
@@ -62,7 +62,7 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
         </span>
       </header>
 
-      <CodePanel code={card.code} language="JS" />
+      <CodePreviewPanel code={card.code} language="JS" />
 
       <ol aria-label="source flow" className="flex flex-wrap items-center gap-1.5">
         {card.flowPills.map((pill, idx) => (

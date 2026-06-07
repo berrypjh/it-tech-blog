@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePanel } from '../../../shared/CodePanel';
+import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CreateFiberFromElementContent } from '../content';
 import { Code2Icon, FileCodeIcon, HelpCircleIcon, LightbulbIcon, Settings2Icon } from '../icons';
@@ -80,7 +80,7 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
 
       {/* Right code panel */}
       <div className="min-w-0">
-        <CodePanel
+        <CodePreviewPanel
           code={content.code}
           caption={content.codeTitle}
           language="JS"
