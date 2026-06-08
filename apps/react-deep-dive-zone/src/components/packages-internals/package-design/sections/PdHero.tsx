@@ -15,7 +15,7 @@ export const PdHero = ({ content }: Props) => {
       promptCommand="cat"
       promptPath="packages/README.md"
       gridColumns="lg:grid-cols-[minmax(0,_0.8fr)_minmax(0,_1.2fr)]"
-      align="start"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">

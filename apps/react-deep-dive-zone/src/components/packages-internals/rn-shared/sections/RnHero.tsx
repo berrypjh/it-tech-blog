@@ -15,7 +15,7 @@ export const RnHero = ({ content }: Props) => {
       promptCommand="cat"
       promptPath="packages/react-reconciler/README.md"
       gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
-      align="start"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">

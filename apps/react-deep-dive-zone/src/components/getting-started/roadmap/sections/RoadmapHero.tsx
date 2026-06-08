@@ -11,7 +11,7 @@ type Props = { content: RoadmapContent['hero'] };
 
 export const RoadmapHero = ({ content }: Props) => {
   return (
-    <HeroSection promptCommand="ready" promptPath="--launch">
+    <HeroSection promptCommand="ready" promptPath="--launch" align="center">
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
           {content.stepBadge}

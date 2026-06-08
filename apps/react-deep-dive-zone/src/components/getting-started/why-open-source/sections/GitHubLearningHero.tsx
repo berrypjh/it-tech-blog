@@ -57,7 +57,7 @@ const pillIcon = {
 
 export const GitHubLearningHero = ({ content }: Props) => {
   return (
-    <HeroSection promptCommand="gh repo view" promptPath="facebook/react">
+    <HeroSection promptCommand="gh repo view" promptPath="facebook/react" align="center">
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
           {content.stepBadge}

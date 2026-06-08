@@ -15,6 +15,7 @@ export const UsageVsInternalsHero = ({ content }: Props) => {
       promptCommand="open"
       promptPath="usage-vs-internals/Counter.js"
       gridColumns="lg:grid-cols-[minmax(0,_0.96fr)_minmax(0,_1.04fr)]"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">

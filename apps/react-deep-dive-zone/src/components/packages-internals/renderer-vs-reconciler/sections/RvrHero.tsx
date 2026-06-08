@@ -17,7 +17,7 @@ export const RvrHero = ({ content }: Props) => {
       promptCommand="cat"
       promptPath="packages/react-reconciler/src/ReactFiberHostConfig.ts"
       gridColumns="lg:grid-cols-[minmax(0,_0.9fr)_minmax(0,_1.1fr)]"
-      align="start"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">

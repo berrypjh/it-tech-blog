@@ -16,6 +16,7 @@ export const SelectiveReadingHero = ({ content }: Props) => {
       promptPath="'question'"
       promptSuffix=" packages/"
       gridColumns="lg:grid-cols-[minmax(0,_1.04fr)_minmax(0,_0.96fr)]"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">

@@ -46,7 +46,7 @@ export const CheckpointSection = ({ content, sectionId }: Props) => {
           <div className="flex flex-col sm:flex-row gap-2">
             {content.codeLinks.map((link, i) => (
               <a
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
