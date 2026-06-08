@@ -381,7 +381,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       codeLinks: [
         {
           label: 'createFiberFromElement',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
         },
       ],
     },
@@ -583,7 +583,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       codeLinks: [
         {
           label: 'createFiberFromElement',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
         },
       ],
     },

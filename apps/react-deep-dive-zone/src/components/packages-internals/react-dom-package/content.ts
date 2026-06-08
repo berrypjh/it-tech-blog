@@ -318,11 +318,11 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       codeLinks: [
         {
           label: 'createRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
         },
         {
           label: 'hydrateRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L276',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
         },
       ],
     },
@@ -542,11 +542,11 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       codeLinks: [
         {
           label: 'createRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
         },
         {
           label: 'hydrateRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L276',
+          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
         },
       ],
     },

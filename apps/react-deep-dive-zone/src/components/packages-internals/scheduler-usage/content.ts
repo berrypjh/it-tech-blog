@@ -338,7 +338,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeLinks: [
         {
           label: 'unstable_scheduleCallback',
-          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js#L335',
+          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
         },
       ],
     },
@@ -571,7 +571,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeLinks: [
         {
           label: 'unstable_scheduleCallback',
-          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js#L335',
+          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
         },
       ],
     },

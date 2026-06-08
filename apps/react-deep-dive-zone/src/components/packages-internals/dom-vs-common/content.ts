@@ -150,12 +150,12 @@ const REACT_DOM_ROOT_CODE = `export function createRoot(container, options) {
 
 const FIBER_LINK = {
   label: 'ReactFiber.js',
-  href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L753',
+  href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
 };
 
 const DOM_ROOT_LINK = {
   label: 'ReactDOMRoot.js',
-  href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js#L171',
+  href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
 };
 
 export const dvcContent: Record<Locale, DvcContent> = {
