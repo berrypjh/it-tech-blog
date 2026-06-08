@@ -2,10 +2,11 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import { ThemeToggle } from '@/components/theme';
 import { TopicBubbles, TopicGrid } from '@/components/topic';
-import { TOPICS } from '@/data/topics';
+import { getVisibleTopics } from '@/data/topics';
 
 const Page = async () => {
   const locale = await getServerLocale();
+  const topics = getVisibleTopics();
 
   return (
     <div className="min-w-[500px] overflow-hidden">
@@ -14,7 +15,7 @@ const Page = async () => {
       <ThemeToggle />
 
       <div className="relative max-w-[1440px] mx-auto flex flex-col items-center justify-center min-h-[max(100vh,700px)] gap-8 px-6">
-        <TopicBubbles topics={TOPICS} locale={locale} />
+        <TopicBubbles topics={topics} locale={locale} />
 
         <h1 className="text-4xl min-[500px]:text-6xl lg:text-[96px] font-bold tracking-tight text-center cursor-default transition-colors duration-500 text-text-default">
           Interactive Tech Lab
@@ -26,7 +27,7 @@ const Page = async () => {
             : 'Explore complex tech concepts through interactive examples and hands-on content'}
         </p>
 
-        <TopicGrid topics={TOPICS} locale={locale} />
+        <TopicGrid topics={topics} locale={locale} />
       </div>
     </div>
   );

@@ -24,6 +24,30 @@ export type Topic = {
   href: string;
 };
 
+/** href → 존 식별자. 매핑이 없으면 준비중 자리표시자 토픽이다. */
+const ZONE_BY_HREF: Record<string, string> = {
+  '/accessibility': 'accessibility',
+  '/react': 'react',
+  '/next': 'next',
+};
+
+/**
+ * 배포 시 노출할 토픽을 거른다.
+ * ENABLED_ZONES가 비어 있으면(개발) 전체 토픽을, 값이 있으면 해당 존 토픽만 반환한다.
+ */
+export const getVisibleTopics = (): Topic[] => {
+  const enabled = process.env.ENABLED_ZONES?.split(',')
+    .map((zone) => zone.trim())
+    .filter(Boolean);
+
+  if (!enabled?.length) return TOPICS;
+
+  return TOPICS.filter((topic) => {
+    const zone = ZONE_BY_HREF[topic.href];
+    return zone ? enabled.includes(zone) : false;
+  });
+};
+
 export const TOPICS: Topic[] = [
   {
     icon: <AccessibilityIcon />,
