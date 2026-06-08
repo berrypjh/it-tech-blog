@@ -6,22 +6,11 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { HooksEntryHeroDiagram } from '../components/HooksEntryHeroDiagram';
 import type { HooksEntryFlowContent } from '../content';
-import { ArrowRightIcon, CodeIcon, SparklesIcon } from '../icons';
+import { CodeIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['hero'] };
-
-const toneRing: Record<'sky' | 'cyan' | 'emerald' | 'teal' | 'violet' | 'amber', string> = {
-  sky: 'border-sky-300/80 bg-sky-50 text-sky-700 dark:border-sky-700/70 dark:bg-sky-950/40 dark:text-sky-200',
-  cyan: 'border-cyan-300/80 bg-cyan-50 text-cyan-700 dark:border-cyan-700/70 dark:bg-cyan-950/40 dark:text-cyan-200',
-  emerald:
-    'border-emerald-300/80 bg-emerald-50 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200',
-  teal: 'border-teal-300/80 bg-teal-50 text-teal-700 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200',
-  violet:
-    'border-violet-300/80 bg-violet-50 text-violet-700 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',
-  amber:
-    'border-amber-300/80 bg-amber-50 text-amber-700 dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-200',
-};
 
 const renderCounterCode = (code: string) => {
   const parts = code.match(
@@ -52,6 +41,7 @@ export const HooksEntryHero = ({ content }: Props) => (
     promptSuffix={
       <span className="text-[var(--term-dim)]"> {'// public Hook → Dispatcher → impl'}</span>
     }
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -99,54 +89,8 @@ export const HooksEntryHero = ({ content }: Props) => (
       </article>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-visual">
-      {/* Entry flow card */}
-      <article
-        className={cn(
-          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
-          'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          'transition-colors hover:border-cyan-300/70 dark:hover:border-cyan-700/70',
-        )}
-      >
-        <header className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-cyan-100 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-200"
-          >
-            <SparklesIcon className="h-3.5 w-3.5" />
-          </span>
-          <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)]">
-            {content.rightCard.title}
-          </h3>
-        </header>
-
-        <ol className="grid grid-cols-1 @sm:grid-cols-3 items-stretch gap-1.5 sm:gap-2">
-          {content.rightCard.steps.map((step, i) => (
-            <li
-              key={step.label}
-              className={cn(
-                'relative flex flex-col items-center justify-center gap-1 rounded-xl border-2 px-2 py-3 sm:py-4 text-center',
-                toneRing[step.tone],
-              )}
-            >
-              <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider opacity-70">
-                step {i + 1}
-              </span>
-              <code className="font-mono text-[11px] sm:text-xsm font-bold leading-tight break-all">
-                {step.label}
-              </code>
-              {i < content.rightCard.steps.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className="absolute -right-[12px] top-1/2 z-10 hidden -translate-y-1/2 sm:inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
-                >
-                  <ArrowRightIcon className="h-3 w-3" />
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </article>
+    <HeroVisualColumn id="hero-hooks-entry">
+      <HooksEntryHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

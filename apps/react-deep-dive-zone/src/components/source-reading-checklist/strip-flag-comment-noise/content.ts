@@ -63,8 +63,6 @@ export type StripFlagCommentNoiseContent = {
     accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftCode: string;
@@ -205,8 +203,6 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
       description: '본문 로직부터 달려들기 전에 조건과 의도를 먼저 정리해야 합니다.',
       supporting:
         'React 내부 코드는 처음 보면 분기가 많아 복잡해 보입니다. 하지만 모든 줄이 같은 중요도를 갖는 것은 아닙니다. __DEV__ warning, feature flag, Flow 타입, 설계 주석을 먼저 분류하면 실제로 읽어야 할 핵심 runtime 경로가 훨씬 선명해집니다.',
-      primaryCta: '읽기 우선순위 보기',
-      secondaryCta: '라벨링 연습하기',
       visualTitle: '복잡해 보이는 코드를 읽기 가능한 경로로 줄입니다',
       leftPanelTitle: '처음 열었을 때',
       leftCode: heroLeftCode,
@@ -521,8 +517,6 @@ export const stripFlagCommentNoiseContent: Record<Locale, StripFlagCommentNoiseC
       description: 'Sort out the conditions and intent before diving into the body logic.',
       supporting:
         'React internals look branchy at first, but not every line carries equal weight. Classify __DEV__ warnings, feature flags, Flow types, and design comments first — and the core runtime path that actually matters becomes far sharper.',
-      primaryCta: 'See the reading priority',
-      secondaryCta: 'Try labeling practice',
       visualTitle: 'Shrink branchy-looking code into a readable path',
       leftPanelTitle: 'When you first open it',
       leftCode: heroLeftCode,

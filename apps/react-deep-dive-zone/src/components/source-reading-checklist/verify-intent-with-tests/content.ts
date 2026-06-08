@@ -60,11 +60,8 @@ export type TestAsDocContent = {
   hero: {
     badge: string;
     titleLines: [string, string, string];
-    accentLine: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftFiles: string[];
@@ -160,12 +157,9 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
     hero: {
       badge: '읽기 체크리스트 · 7/10단계',
       titleLines: ['테스트 코드는', '구현 의도를 설명하는', '실행 가능한 문서다'],
-      accentLine: '실행 가능한 문서다',
       description: '테스트를 읽으면 무엇을 보장하려는 구현인지 훨씬 빨리 이해할 수 있습니다.',
       supporting:
         '구현 코드는 "어떻게 처리하는가"를 보여줍니다. 하지만 테스트 코드는 "무엇을 반드시 보장해야 하는가"를 보여줍니다. React 같은 대형 오픈소스에서는 구현 파일만 읽는 것보다 테스트를 함께 읽을 때 edge case와 설계 의도가 더 빨리 보입니다.',
-      primaryCta: '테스트 디렉터리 보기',
-      secondaryCta: '테스트 탐색해보기',
       visualTitle: '구현 코드만 보던 시야를 테스트로 확장합니다',
       leftPanelTitle: '구현 코드만 읽기',
       leftFiles: ['ReactFiberBeginWork.js', 'ReactFiberHooks.js', 'ReactFiberWorkLoop.js'],
@@ -443,13 +437,10 @@ export const testAsDocContent: Record<Locale, TestAsDocContent> = {
     hero: {
       badge: 'Reading Checklist · 7/10',
       titleLines: ['Test code is', 'executable documentation', "of the implementation's intent"],
-      accentLine: "of the implementation's intent",
       description:
         'Reading tests reveals what an implementation is trying to guarantee — much faster than reading the impl alone.',
       supporting:
         "Implementation code shows 'how it processes things.' But test code shows 'what must be guaranteed.' In a large open-source codebase like React, reading the tests alongside the implementation reveals edge cases and design intent far faster.",
-      primaryCta: 'See the test directories',
-      secondaryCta: 'Try exploring tests',
       visualTitle: 'Expand from "implementation only" to "implementation + tests"',
       leftPanelTitle: 'Reading implementation only',
       leftFiles: ['ReactFiberBeginWork.js', 'ReactFiberHooks.js', 'ReactFiberWorkLoop.js'],

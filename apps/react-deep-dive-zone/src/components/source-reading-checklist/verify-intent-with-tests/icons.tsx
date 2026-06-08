@@ -1,7 +1,6 @@
 export {
   AlertTriangle as AlertTriangleIcon,
   ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
   Beaker as BeakerIcon,
   Boxes as BoxesIcon,
   CheckCircle2 as CheckCircleIcon,
@@ -18,7 +17,6 @@ export {
   ListChecks as ListChecksIcon,
   Network as NetworkIcon,
   Quote as QuoteIcon,
-  Repeat as RepeatIcon,
   RotateCcw as RotateCcwIcon,
   Route as RouteIcon,
   ScanSearch as ScanSearchIcon,

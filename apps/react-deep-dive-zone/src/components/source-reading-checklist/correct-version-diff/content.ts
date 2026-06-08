@@ -68,17 +68,13 @@ export type CorrectVersionDiffContent = {
   hero: {
     badge: string;
     titleLines: [string, string];
-    accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftItems: string[];
     leftCaption: string;
     connectorLabel: string;
-    connectorSub: string;
     connectorChips: string[];
     rightPanelTitle: string;
     rightItems: string[];
@@ -171,18 +167,14 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
     hero: {
       badge: '읽기 체크리스트 · 9/10단계',
       titleLines: ['릴리즈 노트와 버전 태그를 함께 읽어야', '오래된 강의를 교정할 수 있다'],
-      accentTail: '오래된 강의를 교정할 수 있다',
       description: '무엇을 읽는가만큼, 어느 버전의 코드를 읽는가가 중요합니다.',
       supporting:
         '예전 강의에서 본 함수명이 최신 React 코드에 없다고 해서 그 자료가 곧바로 틀렸다는 뜻은 아닙니다. 그 자료가 설명하던 React의 시대와 지금 우리가 읽는 React의 버전이 다를 수 있습니다. 릴리즈 노트, CHANGELOG, 공식 블로그, GitHub tag를 함께 보면 과거 기준과 최신 기준을 분리해서 읽을 수 있습니다.',
-      primaryCta: '버전 비교 보기',
-      secondaryCta: '학습 노트 템플릿 보기',
       visualTitle: '오래된 설명을 최신 기준으로 보정합니다',
       leftPanelTitle: '오래된 강의 노트',
       leftItems: ['scheduleWork', 'expirationTime', 'legacy render', 'React 16.x 기준 설명'],
       leftCaption: '당시 기준으로는 맞는 설명이어도 현재 코드와 이름과 구조가 다를 수 있습니다.',
       connectorLabel: 'Version Check',
-      connectorSub: '버전 확인',
       connectorChips: ['Release Notes', 'CHANGELOG', 'GitHub Tag', 'Official Blog'],
       rightPanelTitle: '최신 기준 학습 노트',
       rightItems: [
@@ -469,20 +461,16 @@ export const correctVersionDiffContent: Record<Locale, CorrectVersionDiffContent
     hero: {
       badge: 'Reading Checklist · 9/10',
       titleLines: ['You need release notes and version tags together', 'to correct old lectures'],
-      accentTail: 'to correct old lectures',
       description:
         'What you read matters — but which version of the code you read matters just as much.',
       supporting:
         'A function name from an old lecture missing in the latest React code does not automatically mean the material was wrong. The React era it described may simply differ from the React version you are reading now. Look at release notes, CHANGELOG, the official blog, and GitHub tags together — that lets you separate the old baseline from the modern one.',
-      primaryCta: 'See the version comparison',
-      secondaryCta: 'See the note template',
       visualTitle: 'Correct old explanations against the modern baseline',
       leftPanelTitle: 'Old lecture notes',
       leftItems: ['scheduleWork', 'expirationTime', 'legacy render', 'React 16.x baseline'],
       leftCaption:
         'Even if accurate for its time, the names and shapes may differ from current code.',
       connectorLabel: 'Version Check',
-      connectorSub: 'Confirm version',
       connectorChips: ['Release Notes', 'CHANGELOG', 'GitHub Tag', 'Official Blog'],
       rightPanelTitle: 'Modern reading notes',
       rightItems: [

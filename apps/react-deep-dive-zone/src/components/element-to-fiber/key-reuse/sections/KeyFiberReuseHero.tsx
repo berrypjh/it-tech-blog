@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { KeyTrackingDiagram } from '../components/KeyTrackingDiagram';
+import { KeyFiberReuseHeroDiagram } from '../components/KeyFiberReuseHeroDiagram';
 import type { KeyFiberReuseContent } from '../content';
 
 type Props = { content: KeyFiberReuseContent['hero'] };
@@ -17,6 +17,7 @@ export const KeyFiberReuseHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactChildFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # updateSlot — key match</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -60,24 +61,8 @@ export const KeyFiberReuseHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <KeyTrackingDiagram
-          beforeLabel={content.beforeLabel}
-          afterLabel={content.afterLabel}
-          beforeItems={content.beforeItems}
-          afterItems={content.afterItems}
-          centerLabel={content.centerLabel}
-          resultTitle={content.resultTitle}
-          resultItems={content.resultItems}
-        />
-      </div>
+    <HeroVisualColumn id="hero-key-reuse">
+      <KeyFiberReuseHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

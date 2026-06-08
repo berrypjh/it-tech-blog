@@ -67,13 +67,9 @@ export type PhaseDetectionContent = {
   hero: {
     badge: string;
     titleLines: [string, string];
-    accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
-    mainFlow: string[];
     flowStart: string;
     phaseCards: HeroPhaseCard[];
     visualCaption: string;
@@ -165,14 +161,10 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
     hero: {
       badge: '읽기 체크리스트 · 5/10단계',
       titleLines: ['Render / Commit / Scheduling 중', '어디에 있는지 먼저 판별한다'],
-      accentTail: '어디에 있는지 먼저 판별한다',
       description: "코드가 '무엇을 한다'보다 먼저, '언제 하는가'를 읽어야 합니다.",
       supporting:
         'React의 update 흐름은 하나로 이어지지만, 그 안에는 할 일을 예약하는 단계, 다음 트리를 계산하는 단계, 실제 환경에 반영하는 단계가 분리되어 있습니다. 같은 update 흐름 안에서도 어느 phase에 있는지에 따라 코드의 의미는 완전히 달라집니다.',
-      primaryCta: 'Phase 비교 보기',
-      secondaryCta: '판별 퀴즈 풀기',
       visualTitle: '같은 update 흐름도 phase에 따라 의미가 달라집니다',
-      mainFlow: ['Scheduling', 'Render', 'Commit'],
       flowStart: 'setState',
       phaseCards: [
         {
@@ -450,14 +442,10 @@ export const phaseDetectionContent: Record<Locale, PhaseDetectionContent> = {
     hero: {
       badge: 'Reading Checklist · 5/10',
       titleLines: ['Identify whether it is Render, Commit,', 'or Scheduling first'],
-      accentTail: 'or Scheduling first',
       description: "Before 'what the code does,' read 'when it runs.'",
       supporting:
         "React's update flow is continuous, but inside it there are separate stages: scheduling work, computing the next tree, and committing changes to the real environment. The meaning of code in the same update flow changes completely depending on which phase it lives in.",
-      primaryCta: 'Compare phases',
-      secondaryCta: 'Try the detection quiz',
       visualTitle: 'Same update flow — the meaning shifts with the phase.',
-      mainFlow: ['Scheduling', 'Render', 'Commit'],
       flowStart: 'setState',
       phaseCards: [
         {

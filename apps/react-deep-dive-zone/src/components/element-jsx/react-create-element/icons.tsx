@@ -3,7 +3,6 @@ export {
   ArrowLeftRight as ArrowLeftRightIcon,
   ArrowRight as ArrowRightIcon,
   Atom as AtomIcon,
-  BookOpen as BookOpenIcon,
   Box as BoxIcon,
   Braces as BracesIcon,
   Code2 as Code2Icon,

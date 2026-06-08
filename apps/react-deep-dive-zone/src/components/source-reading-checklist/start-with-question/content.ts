@@ -71,11 +71,8 @@ export type StartWithQuestionContent = {
   hero: {
     badge: string;
     titleLines: [string, string, string];
-    accentLast: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     leftPanel: {
       title: string;
       files: FileListItem[];
@@ -188,12 +185,9 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
     hero: {
       badge: '읽기 체크리스트 · 1/10단계',
       titleLines: ['소스코드 독해는', '파일이 아니라', '질문에서 시작한다'],
-      accentLast: '질문에서 시작한다',
       description: '무엇을 읽을지 정하기 전에, 무엇을 알고 싶은지부터 정해야 합니다.',
       supporting:
         'React 저장소는 파일이 많고, 개념이 여러 패키지에 흩어져 있습니다. 그래서 좋은 질문 없이 파일부터 열면 흐름이 아니라 조각만 남습니다.',
-      primaryCta: '질문 설계법 보기',
-      secondaryCta: '코드 입구 찾기',
       leftPanel: {
         title: '파일 목록만 훑기',
         files: [
@@ -505,12 +499,9 @@ export const startWithQuestionContent: Record<Locale, StartWithQuestionContent> 
     hero: {
       badge: 'Reading Checklist · 1/10',
       titleLines: ['Reading source code', 'does not start from files,', 'it starts from questions'],
-      accentLast: 'it starts from questions',
       description: 'Before deciding what to read, decide what you want to know.',
       supporting:
         'The React repo has many files and concepts spread across packages. Open files without a good question and you collect fragments, not a flow.',
-      primaryCta: 'See how to design questions',
-      secondaryCta: 'Find code entry points',
       leftPanel: {
         title: 'Scrolling file lists',
         files: [

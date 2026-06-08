@@ -1,37 +1,21 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { toneTokens } from '../../../shared/tones';
-import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
-import {
-  ArrowRightIcon,
-  BoxIcon,
-  CodeIcon,
-  FileTextIcon,
-  MapIcon,
-  NetworkIcon,
-  StarIcon,
-} from '../icons';
+import { ElementSummaryHeroDiagram } from '../components/ElementSummaryHeroDiagram';
+import type { ReactElementSummaryBeforeFiberContent } from '../content';
+import { StarIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['hero'] };
-
-const iconMap = {
-  code: CodeIcon,
-  cube: BoxIcon,
-  document: FileTextIcon,
-  tree: NetworkIcon,
-} as const;
 
 export const ElementSummaryHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
     promptPath="packages/react/CHAPTER_WRAPUP.md"
     gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" showDot={false} className="w-fit">
@@ -46,127 +30,10 @@ export const ElementSummaryHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
-
-      <div className="flex flex-col sm:flex-row gap-sm pt-xs">
-        <a
-          href={content.primaryHref}
-          className={cn(
-            'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-            'bg-sky-600 text-white text-xsm font-bold tracking-tight',
-            'transition-colors hover:bg-sky-700',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            'dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950',
-          )}
-        >
-          <MapIcon className="h-4 w-4" aria-hidden="true" />
-          {content.primaryCta}
-          <ArrowRightIcon
-            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </a>
-        <a
-          href={content.secondaryHref}
-          className={cn(
-            'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md',
-            'border border-teal-300/80 bg-[var(--term-bg)] text-teal-700 text-xsm font-bold',
-            'transition-colors hover:bg-teal-50',
-            'dark:border-teal-700/70 dark:text-teal-200 dark:hover:bg-teal-950/30',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400',
-          )}
-        >
-          {content.secondaryCta}
-          <ArrowRightIcon
-            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </a>
-      </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <article
-        className={cn(
-          '@container flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
-          'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <header className="flex items-center justify-between gap-sm">
-          <h2
-            id="heading-hero-flow"
-            className="text-xsm font-bold tracking-tight text-[var(--term-fg)]"
-          >
-            {content.flowTitle}
-          </h2>
-          <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-            chapter flow
-          </span>
-        </header>
-
-        <ol className="grid grid-cols-1 @sm:grid-cols-2 @2xl:grid-cols-4 gap-sm items-stretch">
-          {content.flowItems.map((item, idx) => (
-            <li key={item.id} className="relative flex min-w-0">
-              <FlowCard item={item} />
-              {idx < content.flowItems.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'pointer-events-none absolute hidden @2xl:flex items-center justify-center',
-                    'top-1/2 -right-2 -translate-y-1/2 w-5 h-5 rounded-full z-10',
-                    'bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
-                  )}
-                >
-                  <ArrowRightIcon className="h-3 w-3" />
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </article>
+    <HeroVisualColumn id="hero-element-summary">
+      <ElementSummaryHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );
-
-const FlowCard = ({ item }: { item: HeroFlowItem }) => {
-  const t = toneTokens[item.tone];
-  const Icon = iconMap[item.iconName];
-  return (
-    <article
-      className={cn(
-        'flex flex-1 flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-md',
-        'shadow-[0_2px_0_var(--term-border)]',
-        item.highlighted
-          ? cn('ring-2 ring-sky-400/60 ring-offset-2 ring-offset-[var(--term-bg)]', t.border)
-          : t.border,
-      )}
-    >
-      <header className="flex items-center justify-between">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-xl border',
-            t.chip,
-          )}
-        >
-          <Icon className="h-4 w-4" />
-        </span>
-        {item.highlighted && (
-          <span
-            className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300"
-            aria-hidden="true"
-          >
-            <StarIcon className="h-3 w-3" />
-            here
-          </span>
-        )}
-      </header>
-      <code className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
-        {item.title}
-      </code>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-        {item.iconHint}
-      </span>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{item.body}</p>
-    </article>
-  );
-};

@@ -71,11 +71,8 @@ export type FindPublicApiEntryContent = {
   hero: {
     badge: string;
     titleLines: [string, string];
-    accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     layers: HeroLayer[];
     flowSummary: string;
@@ -190,12 +187,9 @@ export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent
     hero: {
       badge: '읽기 체크리스트 · 2/10단계',
       titleLines: ['Public API에서 내부 구현까지,', '입구를 먼저 찾는다'],
-      accentTail: '입구를 먼저 찾는다',
       description: '사용자가 호출하는 API와 실제 동작을 수행하는 구현은 대개 다른 층에 있습니다.',
       supporting:
         'ReactHooks.js에서 useState를 찾았다고 해서 상태 큐와 업데이트 처리 로직이 바로 보이는 것은 아닙니다. public API는 실제 구현으로 내려가기 위한 입구입니다.',
-      primaryCta: 'useState 입구 보기',
-      secondaryCta: 'Dispatcher 흐름 보기',
       visualTitle: 'public API는 구현의 전부가 아니라 입구입니다',
       layers: [
         {
@@ -509,13 +503,10 @@ export const findPublicApiEntryContent: Record<Locale, FindPublicApiEntryContent
     hero: {
       badge: 'Reading Checklist · 2/10',
       titleLines: ['From public API to implementation,', 'find the entry first'],
-      accentTail: 'find the entry first',
       description:
         'The API the user calls and the implementation that actually runs usually live on different layers.',
       supporting:
         'Finding useState in ReactHooks.js does not mean the state queue and update logic are right there. The public API is the entry that takes you down to the real implementation.',
-      primaryCta: 'See the useState entry',
-      secondaryCta: 'See the dispatcher flow',
       visualTitle: 'A public API is not the whole implementation — it is the entry.',
       layers: [
         {

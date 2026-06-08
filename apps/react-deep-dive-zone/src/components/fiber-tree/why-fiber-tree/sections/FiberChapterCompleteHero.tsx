@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { FiberSummaryDiagram } from '../components/FiberSummaryDiagram';
+import { FiberChapterCompleteHeroDiagram } from '../components/FiberChapterCompleteHeroDiagram';
 import type { FiberCentralContent } from '../content';
 import { SparklesIcon } from '../icons';
 
@@ -20,6 +20,7 @@ export const FiberChapterCompleteHero = ({ hero, groups }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactInternalTypes.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -61,13 +62,8 @@ export const FiberChapterCompleteHero = ({ hero, groups }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <FiberSummaryDiagram
-        visualTitle={hero.visualTitle}
-        fiberLabel={hero.fiberLabel}
-        fiberGroupFields={hero.fiberGroupFields}
-        groups={groups}
-      />
+    <HeroVisualColumn id="hero-why-fiber-tree">
+      <FiberChapterCompleteHeroDiagram content={hero} groups={groups} />
     </HeroVisualColumn>
   </HeroSection>
 );

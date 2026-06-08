@@ -1,42 +1,13 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import type { Tone, WhyEventSystemContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, AtomIcon, CodeIcon, PlayCircleIcon } from '../icons';
+import { EventSystemHeroDiagram } from '../components/EventSystemHeroDiagram';
+import type { WhyEventSystemContent } from '../content';
 
 type Props = { content: WhyEventSystemContent['hero'] };
-
-const toneColumn: Record<Tone, string> = {
-  sky: 'border-sky-300/80 bg-sky-50/70 dark:border-sky-700/70 dark:bg-sky-950/30',
-  cyan: 'border-cyan-300/80 bg-cyan-50/70 dark:border-cyan-700/70 dark:bg-cyan-950/30',
-  teal: 'border-teal-300/80 bg-teal-50/70 dark:border-teal-700/70 dark:bg-teal-950/30',
-  emerald:
-    'border-emerald-300/80 bg-emerald-50/70 dark:border-emerald-700/70 dark:bg-emerald-950/30',
-  violet:
-    'border-violet-300/90 bg-gradient-to-br from-violet-50 to-blue-50/60 dark:border-violet-600/80 dark:from-violet-950/40 dark:to-blue-950/30',
-  blue: 'border-blue-300/80 bg-blue-50/70 dark:border-blue-700/70 dark:bg-blue-950/30',
-  amber: 'border-amber-300/80 bg-amber-50/70 dark:border-amber-700/70 dark:bg-amber-950/30',
-  rose: 'border-rose-300/80 bg-rose-50/70 dark:border-rose-700/70 dark:bg-rose-950/30',
-};
-
-const toneIcon: Record<Tone, string> = {
-  sky: 'bg-sky-100 text-sky-700 border-sky-200 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-  cyan: 'bg-cyan-100 text-cyan-700 border-cyan-200 dark:bg-cyan-950/60 dark:text-cyan-200 dark:border-cyan-800/60',
-  teal: 'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
-  emerald:
-    'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60',
-  violet:
-    'bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-  blue: 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60',
-  amber:
-    'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
-  rose: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
-};
 
 const KEYWORDS = new Set(['function', 'const', 'return']);
 const STRINGS = /^['"`].*['"`]$/;
@@ -99,6 +70,7 @@ export const EventSystemHero = ({ content }: Props) => {
         </span>
       }
       gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
@@ -155,111 +127,8 @@ export const EventSystemHero = ({ content }: Props) => {
         </div>
       </HeroTextColumn>
 
-      <HeroVisualColumn>
-        {/* 3-step diagram card */}
-        <article
-          className={cn(
-            '@container flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-            'border-blue-200/80 dark:border-blue-800/60 shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <header className="flex items-center justify-between gap-2">
-            <h2 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)]">
-              {content.diagram.title}
-            </h2>
-            <span
-              aria-hidden="true"
-              className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-blue-200/80 bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:border-blue-800/60 dark:text-blue-200"
-            >
-              <AtomIcon className="h-3.5 w-3.5" />
-            </span>
-          </header>
-
-          <ol className="grid grid-cols-1 @xl:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
-            {content.diagram.columns.map((col, i) => {
-              const isLast = i === content.diagram.columns.length - 1;
-              const isMiddle = i === 1;
-              const Icon = i === 0 ? CodeIcon : i === 1 ? AtomIcon : PlayCircleIcon;
-              return (
-                <li
-                  key={col.title}
-                  className={cn(
-                    'relative flex flex-col gap-2 rounded-2xl border-2 p-3 sm:p-md transition-colors',
-                    'hover:-translate-y-0.5 motion-reduce:transform-none',
-                    toneColumn[col.tone],
-                    isMiddle && 'md:scale-[1.02] md:shadow-[0_4px_0_var(--term-border)]',
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
-                        toneIcon[col.tone],
-                      )}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
-                      step {i + 1}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xsm sm:text-sm font-bold leading-tight text-[var(--term-fg)] break-keep">
-                    {col.title}
-                  </h3>
-
-                  {col.kind === 'code' && col.code && (
-                    <pre className="overflow-x-auto rounded-lg border border-slate-800 bg-slate-950 px-2 py-2 font-mono text-[10px] sm:text-[11px] leading-[1.55] text-slate-100">
-                      <code className="whitespace-pre">{col.code}</code>
-                    </pre>
-                  )}
-
-                  {col.kind === 'bullet' && col.bullets && (
-                    <ul className="flex flex-col gap-1">
-                      {col.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-1.5 text-[10px] sm:text-[11px] text-[var(--term-fg)]"
-                        >
-                          <span
-                            aria-hidden="true"
-                            className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500 dark:bg-violet-400"
-                          />
-                          <span className="break-keep">{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <p className="mt-auto text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-                    {col.subtitle}
-                  </p>
-
-                  {!isLast && (
-                    <>
-                      <span
-                        aria-hidden="true"
-                        className="hidden @xl:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
-                      >
-                        <ArrowRightIcon className="h-3.5 w-3.5" />
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="@xl:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
-                      >
-                        <ArrowDownIcon className="h-4 w-4" />
-                      </span>
-                    </>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-
-          {/* Visually-hidden text alt for the diagram */}
-          <p className="sr-only">{content.diagram.columns.map((c) => c.title).join(' → ')}</p>
-        </article>
+      <HeroVisualColumn id="hero-why-event-system">
+        <EventSystemHeroDiagram content={content} />
       </HeroVisualColumn>
     </HeroSection>
   );

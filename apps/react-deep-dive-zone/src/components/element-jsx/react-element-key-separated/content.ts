@@ -62,10 +62,6 @@ export type ReactElementKeySeparatedContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     diagramTitle: string;
     previousLabel: string;
     nextLabel: string;
@@ -152,10 +148,6 @@ const ko: ReactElementKeySeparatedContent = {
     title: { line1: 'key는 왜 props와', line2: '따로 다뤄질까?' },
     description:
       'key는 컴포넌트가 직접 읽는 일반 입력값이라기보다, React가 형제 요소를 비교하고 추적하기 위해 관리하는 별도 식별자입니다.',
-    primaryCta: 'key가 중요한 이유 보기',
-    secondaryCta: 'Reconciliation 미리보기',
-    primaryHref: '#position',
-    secondaryHref: '#fiber',
     diagramTitle: '형제 요소를 key로 식별하고 추적한다',
     previousLabel: '이전 리스트',
     nextLabel: '다음 리스트 (순서 변경)',
@@ -359,10 +351,6 @@ const en: ReactElementKeySeparatedContent = {
     title: { line1: 'Why is key treated', line2: 'separately from props?' },
     description:
       'key is not really an ordinary input the component reads — it is a separate identifier React keeps for comparing and tracking sibling elements.',
-    primaryCta: 'See why key matters',
-    secondaryCta: 'Preview reconciliation',
-    primaryHref: '#position',
-    secondaryHref: '#fiber',
     diagramTitle: 'React tracks siblings by key',
     previousLabel: 'Previous list',
     nextLabel: 'Next list (reordered)',

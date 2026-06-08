@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { TypeForkDiagram } from '../components/TypeForkDiagram';
+import { FragmentModeHeroDiagram } from '../components/FragmentModeHeroDiagram';
 import type { FragmentModeFiberContent } from '../content';
 
 type Props = { content: FragmentModeFiberContent['hero'] };
@@ -17,6 +17,7 @@ export const FragmentModeHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # special-type branches</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -57,27 +58,8 @@ export const FragmentModeHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          '@container relative rounded-3xl p-md sm:p-lg',
-          'bg-gradient-to-br from-violet-50/50 via-white to-emerald-50/60',
-          'dark:from-violet-950/20 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <TypeForkDiagram
-          typeLabel={content.typeLabel}
-          fragmentTitle={content.fragmentTitle}
-          fragmentSubtitle={content.fragmentSubtitle}
-          fragmentResultTitle={content.fragmentResultTitle}
-          fragmentResultItems={content.fragmentResultItems}
-          strictTitle={content.strictTitle}
-          strictSubtitle={content.strictSubtitle}
-          modeResultTitle={content.modeResultTitle}
-          modeResultItems={content.modeResultItems}
-        />
-      </div>
+    <HeroVisualColumn id="hero-fragment-mode">
+      <FragmentModeHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

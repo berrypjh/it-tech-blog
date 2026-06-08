@@ -6,8 +6,9 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { DispatchQueueHeroDiagram } from '../components/DispatchQueueHeroDiagram';
 import type { DispatchQueueOrderContent } from '../content';
-import { ArrowRightIcon, DatabaseIcon, HourglassIcon, ListOrderedIcon } from '../icons';
+import { ListOrderedIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['hero'] };
 
@@ -35,6 +36,7 @@ export const DispatchQueueHero = ({ content }: Props) => (
       </span>
     }
     gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -96,127 +98,8 @@ export const DispatchQueueHero = ({ content }: Props) => (
       </article>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      {/* dispatchQueue timeline diagram */}
-      <article
-        className={cn(
-          'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-          'border-violet-300/80 dark:border-violet-700/70 shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <header className="flex items-center justify-between gap-2">
-          <h2 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
-            {content.diagram.title}
-          </h2>
-          <span
-            aria-hidden="true"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
-          >
-            <HourglassIcon className="h-4 w-4" />
-          </span>
-        </header>
-
-        <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-md">
-          {/* Queue card */}
-          <div
-            className={cn(
-              'rounded-2xl border-2 bg-white p-md',
-              'border-violet-200/80 dark:border-violet-700/60 dark:bg-slate-950/40',
-              'shadow-[0_1px_0_var(--term-border)]',
-            )}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <span
-                aria-hidden="true"
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-violet-100 text-violet-700 dark:bg-violet-950/60 dark:text-violet-200"
-              >
-                <DatabaseIcon className="h-3.5 w-3.5" />
-              </span>
-              <code className="font-mono text-xsm font-bold text-violet-700 dark:text-violet-200">
-                {content.diagram.queueTitle}
-              </code>
-            </div>
-            <div className="text-[10px] font-mono uppercase tracking-wider text-violet-600/80 dark:text-violet-300/70">
-              event
-            </div>
-            <code className="block rounded-md border border-violet-100/80 bg-violet-50/40 px-2 py-1 mt-0.5 font-mono text-[11px] text-violet-700 dark:border-violet-800/40 dark:bg-violet-950/30 dark:text-violet-200 break-all">
-              {content.diagram.eventLabel}
-            </code>
-            <div className="mt-2 text-[10px] font-mono uppercase tracking-wider text-violet-600/80 dark:text-violet-300/70">
-              {content.diagram.listenersLabel}
-            </div>
-            <ul className="mt-0.5 flex flex-col gap-1">
-              {content.diagram.listeners.map((entry) => (
-                <li
-                  key={entry.label}
-                  className="flex items-center gap-1.5 rounded-md border border-violet-100/80 bg-violet-50/40 px-2 py-1 font-mono text-[10px] text-violet-700 dark:border-violet-800/40 dark:bg-violet-950/30 dark:text-violet-200"
-                >
-                  <span aria-hidden="true">#{entry.step}</span>
-                  <span className="break-all">{entry.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Arrow */}
-          <span
-            aria-hidden="true"
-            className="self-center inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-blue-500 text-white shadow-[0_2px_0_rgba(124,58,237,0.3)] sm:rotate-0 rotate-90"
-          >
-            <ArrowRightIcon className="h-5 w-5" strokeWidth={2.4} />
-          </span>
-
-          {/* Timeline */}
-          <div
-            className={cn(
-              'rounded-2xl border-2 bg-white p-md',
-              'border-blue-200/80 dark:border-blue-700/60 dark:bg-slate-950/40',
-              'shadow-[0_1px_0_var(--term-border)]',
-            )}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <span
-                aria-hidden="true"
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-200"
-              >
-                <ListOrderedIcon className="h-3.5 w-3.5" />
-              </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-                {content.diagram.timelineTitle}
-              </span>
-            </div>
-            <ol className="flex flex-col gap-1.5">
-              {content.diagram.timeline.map((entry) => (
-                <li
-                  key={entry.label}
-                  className={cn(
-                    'flex items-center gap-2 rounded-md border px-2.5 py-1.5',
-                    toneBadge(entry.tone),
-                  )}
-                >
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
-                      toneNumber(entry.tone),
-                    )}
-                  >
-                    {entry.step}
-                  </span>
-                  <code className="font-mono text-[11px] font-bold break-all flex-1">
-                    {entry.label}
-                  </code>
-                  {entry.phase && (
-                    <code className="font-mono text-[9px] uppercase tracking-wider opacity-80">
-                      {entry.phase}
-                    </code>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </article>
+    <HeroVisualColumn id="hero-dispatch-queue">
+      <DispatchQueueHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

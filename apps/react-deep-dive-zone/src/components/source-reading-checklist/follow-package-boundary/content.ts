@@ -78,11 +78,8 @@ export type FollowPackageBoundaryContent = {
   hero: {
     badge: string;
     titleLines: [string, string];
-    accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftFiles: string[];
@@ -183,12 +180,9 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
     hero: {
       badge: '읽기 체크리스트 · 3/10단계',
       titleLines: ['패키지 경계를 먼저 읽어야', '길을 잃지 않는다'],
-      accentTail: '길을 잃지 않는다',
       description: '파일명보다 먼저, 이 코드가 React의 어느 레이어에 속하는지 봅니다.',
       supporting:
         'React 저장소는 하나의 거대한 파일 묶음이 아닙니다. react, react-dom, react-reconciler, scheduler, shared 같은 패키지들이 서로 다른 책임을 나누어 갖고 있습니다.',
-      primaryCta: '패키지 지도 보기',
-      secondaryCta: '질문별 입구 찾기',
       visualTitle: '파일은 점이고, 패키지는 지도입니다',
       leftPanelTitle: '파일명만 보고 들어가기',
       leftFiles: [
@@ -533,12 +527,9 @@ export const followPackageBoundaryContent: Record<Locale, FollowPackageBoundaryC
     hero: {
       badge: 'Reading Checklist · 3/10',
       titleLines: ['Read package boundaries first', "so you don't get lost"],
-      accentTail: "so you don't get lost",
       description: 'Before the filename, ask which layer of React this code belongs to.',
       supporting:
         'The React repo is not one giant pile of files. Packages like react, react-dom, react-reconciler, scheduler, and shared each own a different responsibility.',
-      primaryCta: 'See the package map',
-      secondaryCta: 'Find entries by question',
       visualTitle: 'A file is a dot. A package is a map.',
       leftPanelTitle: 'Walking in by filename',
       leftFiles: [

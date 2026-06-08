@@ -65,11 +65,8 @@ export type ReconstructContent = {
   hero: {
     badge: string;
     titleLines: [string, string];
-    accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftItems: string[];
@@ -171,13 +168,10 @@ export const reconstructContent: Record<Locale, ReconstructContent> = {
     hero: {
       badge: '읽기 체크리스트 · 10/10단계',
       titleLines: ['마지막은 흐름도를 직접 그리는 것:', '내 말로 재구성하기'],
-      accentTail: '내 말로 재구성하기',
       description:
         '끝까지 읽는 것이 목표가 아니라, 다른 사람에게 설명할 수 있을 만큼 구조를 다시 만드는 것이 목표입니다.',
       supporting:
         'React 소스코드를 많이 읽는 것만으로는 충분하지 않습니다. 함수 이름을 많이 봤더라도 그 흐름을 한 문장으로 말하지 못한다면 아직 내 지식이 되었다고 보기 어렵습니다. 마지막에는 반드시 읽은 내용을 압축하고, 연결하고, 내 말과 흐름도로 다시 구성해야 합니다.',
-      primaryCta: '흐름도 만들기',
-      secondaryCta: '최종 체크리스트 보기',
       visualTitle: '읽은 코드를 내 설명으로 바꾸는 과정',
       leftPanelTitle: '읽은 코드 조각',
       leftItems: [
@@ -432,13 +426,10 @@ export const reconstructContent: Record<Locale, ReconstructContent> = {
         'The final step is drawing the flow yourself:',
         'reconstruct it in your own words',
       ],
-      accentTail: 'reconstruct it in your own words',
       description:
         'The goal is not to finish reading — it is to rebuild the structure well enough to explain it to someone else.',
       supporting:
         "Just reading a lot of React source code is not enough. Even after seeing many function names, if you can't state the flow in one sentence, it has not yet become your knowledge. At the end, you must compress, connect, and rebuild it in your own words and a flow diagram.",
-      primaryCta: 'Build a flow',
-      secondaryCta: 'See the final checklist',
       visualTitle: 'Turn the code you read into your own explanation',
       leftPanelTitle: 'Code fragments you read',
       leftItems: [

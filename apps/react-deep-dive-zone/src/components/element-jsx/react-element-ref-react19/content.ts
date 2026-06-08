@@ -49,10 +49,6 @@ export type ReactElementRefReact19Content = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     diagramTitle: string;
     leftColumnTitle: string;
     leftFlow: HeroFlowStep[];
@@ -135,10 +131,6 @@ const ko: ReactElementRefReact19Content = {
     title: { line1: 'ref는 React 19에서', line2: '어떻게 달라졌나?' },
     description:
       'ref가 단순히 DOM을 가리키는 도구에서 벗어나, 컴포넌트와 상태, 상위-하위 경계를 넘나드는 더 강력한 API가 되었습니다.',
-    primaryCta: '변화 한눈에 보기',
-    secondaryCta: 'ref 흐름 미리보기',
-    primaryHref: '#compare',
-    secondaryHref: '#flow',
     diagramTitle: 'React 18 이전과 React 19의 ref 차이',
     leftColumnTitle: 'React 18 이전',
     leftFlow: [
@@ -334,10 +326,6 @@ const en: ReactElementRefReact19Content = {
     title: { line1: 'How did ref change', line2: 'in React 19?' },
     description:
       'ref is no longer just a tool that points to the DOM — it became a stronger API that flows through components, state, and parent-child boundaries.',
-    primaryCta: 'See the change at a glance',
-    secondaryCta: 'Preview the ref flow',
-    primaryHref: '#compare',
-    secondaryHref: '#flow',
     diagramTitle: 'ref before React 18 vs ref in React 19',
     leftColumnTitle: 'Before React 18',
     leftFlow: [

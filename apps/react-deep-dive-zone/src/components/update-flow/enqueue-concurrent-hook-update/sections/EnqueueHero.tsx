@@ -1,34 +1,13 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { toneTokens } from '../../../shared/tones';
-import type {
-  EnqueueConcurrentHookUpdateContent,
-  FourElement,
-  FourElementIconName,
-} from '../content';
-import {
-  ArrowDownIcon,
-  DatabaseIcon,
-  FileTextIcon,
-  FlagIcon,
-  FunctionSquareIcon,
-  SquareDashedIcon,
-} from '../icons';
+import { EnqueueHeroDiagram } from '../components/EnqueueHeroDiagram';
+import type { EnqueueConcurrentHookUpdateContent } from '../content';
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['hero'] };
-
-const iconMap: Record<FourElementIconName, typeof SquareDashedIcon> = {
-  squareDashed: SquareDashedIcon,
-  database: DatabaseIcon,
-  fileText: FileTextIcon,
-  flag: FlagIcon,
-};
 
 export const EnqueueHero = ({ content }: Props) => (
   <HeroSection
@@ -41,6 +20,7 @@ export const EnqueueHero = ({ content }: Props) => (
       </span>
     }
     gridColumns="lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -75,133 +55,8 @@ export const EnqueueHero = ({ content }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="min-w-0">
-      <HeroDiagram content={content} />
+    <HeroVisualColumn id="hero-enqueue-concurrent" className="min-w-0">
+      <EnqueueHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );
-
-const HeroDiagram = ({ content }: { content: EnqueueConcurrentHookUpdateContent['hero'] }) => (
-  <div
-    className={cn(
-      '@container relative rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-gradient-to-br from-sky-50/35 via-white to-amber-50/30',
-      'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-amber-950/20',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    {/* 4 element cards */}
-    <ul className="grid grid-cols-2 @xl:grid-cols-4 gap-2">
-      {content.elements.map((el) => (
-        <li key={el.id} className="flex min-w-0">
-          <ElementCard element={el} />
-        </li>
-      ))}
-    </ul>
-
-    {/* Converging dashed connectors (4열일 때만) */}
-    <div aria-hidden="true" className="relative h-10 sm:h-12 mt-1 hidden @xl:block">
-      {/* dashed vertical lines from each card column toward center */}
-      <svg
-        viewBox="0 0 400 56"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full"
-      >
-        <defs>
-          <pattern id="dot" patternUnits="userSpaceOnUse" width="4" height="4">
-            <circle cx="2" cy="2" r="1" fill="currentColor" />
-          </pattern>
-        </defs>
-        <g className="text-sky-300 dark:text-sky-700">
-          <line x1="50" y1="0" x2="200" y2="48" stroke="currentColor" strokeDasharray="3 3" />
-        </g>
-        <g className="text-emerald-300 dark:text-emerald-700">
-          <line x1="150" y1="0" x2="200" y2="48" stroke="currentColor" strokeDasharray="3 3" />
-        </g>
-        <g className="text-violet-300 dark:text-violet-700">
-          <line x1="250" y1="0" x2="200" y2="48" stroke="currentColor" strokeDasharray="3 3" />
-        </g>
-        <g className="text-amber-300 dark:text-amber-700">
-          <line x1="350" y1="0" x2="200" y2="48" stroke="currentColor" strokeDasharray="3 3" />
-        </g>
-        <g className="text-sky-400 dark:text-sky-500">
-          <polygon points="195,42 205,42 200,52" fill="currentColor" />
-        </g>
-      </svg>
-    </div>
-
-    {/* Function card */}
-    <div
-      className={cn(
-        'relative rounded-3xl border-2 p-md sm:p-lg overflow-hidden',
-        'border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950 text-slate-100',
-        'shadow-[0_24px_48px_-24px_rgba(2,6,23,0.7)]',
-      )}
-    >
-      <header className="mb-2 flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-sky-400/40 bg-sky-400/10 text-sky-200"
-        >
-          <FunctionSquareIcon className="h-4 w-4" />
-        </span>
-        <span className="text-[10px] uppercase tracking-wider font-mono text-sky-200/80">
-          dispatch · register · find root
-        </span>
-      </header>
-
-      <pre className="overflow-x-auto rounded-xl border border-white/10 bg-white/5 px-3 py-3 font-mono text-xsm sm:text-sm leading-[1.7] text-slate-100">
-        <code>
-          <span className="text-amber-300 font-bold">enqueueConcurrentHookUpdate</span>
-          <span className="text-slate-400">(</span>
-          <span className="text-sky-200">fiber</span>
-          <span className="text-slate-400">,</span> <span className="text-emerald-200">queue</span>
-          <span className="text-slate-400">,</span> <span className="text-violet-200">update</span>
-          <span className="text-slate-400">,</span> <span className="text-amber-200">lane</span>
-          <span className="text-slate-400">);</span>
-        </code>
-      </pre>
-
-      <p className="mt-2 text-[10px] font-mono text-sky-200/80 break-keep">
-        {content.functionCard.caption}
-      </p>
-    </div>
-  </div>
-);
-
-const ElementCard = ({ element }: { element: FourElement }) => {
-  const Icon = iconMap[element.iconName];
-  const t = toneTokens[element.tone];
-  return (
-    <article
-      className={cn(
-        'flex flex-col gap-1.5 rounded-2xl border-2 bg-[var(--term-bg)] p-sm w-full',
-        t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-      )}
-    >
-      <header className="flex items-center justify-between gap-1.5">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
-            t.chip,
-          )}
-        >
-          <Icon className="h-4 w-4" />
-        </span>
-        <span aria-hidden="true" className={cn('block h-2 w-2 rounded-full', t.dot)} />
-      </header>
-      <span className={cn('font-mono text-sm font-bold', t.text)}>{element.title}</span>
-      <span className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">
-        {element.question}
-      </span>
-      <span
-        aria-hidden="true"
-        className="mt-auto inline-flex justify-center text-[var(--term-dim)]"
-      >
-        <ArrowDownIcon className="h-3 w-3" />
-      </span>
-    </article>
-  );
-};

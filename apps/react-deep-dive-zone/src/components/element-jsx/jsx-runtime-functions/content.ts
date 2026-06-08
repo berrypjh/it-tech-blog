@@ -61,10 +61,6 @@ export type JsxRuntimeFunctionsContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     runtimeCards: RuntimeFunctionCard[];
     resultTitle: string;
     resultBody: string;
@@ -136,10 +132,6 @@ const ko: JsxRuntimeFunctionsContent = {
     badge: 'Element와 JSX · 3/10단계',
     title: { line1: '컴파일된 JSX는', line2: '어떤 함수로 들어갈까?' },
     description: '현대 React에서는 jsx, jsxs, jsxDEV가 React Element 생성 흐름의 첫 관문입니다.',
-    primaryCta: 'Runtime entry 보기',
-    secondaryCta: '코드 진입점 보기',
-    primaryHref: '#entry-map',
-    secondaryHref: '#checkpoints',
     runtimeCards: [
       {
         id: 'jsx',
@@ -341,10 +333,6 @@ const en: JsxRuntimeFunctionsContent = {
     title: { line1: 'Compiled JSX —', line2: 'which function does it enter?' },
     description:
       'In modern React, jsx, jsxs, and jsxDEV are the front door of the React Element creation flow.',
-    primaryCta: 'See the runtime entry',
-    secondaryCta: 'Open the source entry',
-    primaryHref: '#entry-map',
-    secondaryHref: '#checkpoints',
     runtimeCards: [
       {
         id: 'jsx',

@@ -61,8 +61,6 @@ export type ValueClassificationContent = {
     accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftFields: string[];
@@ -195,8 +193,6 @@ export const valueClassificationContent: Record<Locale, ValueClassificationConte
         'Element인지, Fiber인지, 실제 DOM인지, 업데이트 큐인지 구분하면 코드가 훨씬 짧아집니다.',
       supporting:
         'React 내부 코드는 비슷해 보이는 필드가 많습니다. 하지만 각 값이 맡은 역할은 다릅니다. 필드 이름을 바로 해석하기 전에, 먼저 그 값이 어떤 종류의 값인지 분류해야 합니다.',
-      primaryCta: '핵심 분류표 보기',
-      secondaryCta: '분류 게임 해보기',
       visualTitle: '필드 이름보다 먼저 값의 역할을 분류합니다',
       leftPanelTitle: '필드 이름만 보고 해석하기',
       leftFields: [
@@ -496,8 +492,6 @@ export const valueClassificationContent: Record<Locale, ValueClassificationConte
         'Element, Fiber, real DOM, or update queue — naming the category shrinks the code in front of you.',
       supporting:
         "React's internals are full of similarly named fields, but each value owns a different role. Before reading a field name, classify what kind of value it is.",
-      primaryCta: 'See the classification table',
-      secondaryCta: 'Try the classification game',
       visualTitle: 'Classify the role before the field name.',
       leftPanelTitle: 'Reading by field name only',
       leftFields: [

@@ -1,13 +1,11 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { ListenerCollectionHeroDiagram } from '../components/ListenerCollectionHeroDiagram';
 import type { ListenerCollectionContent } from '../content';
-import { BoxIcon, GitBranchIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['hero'] };
 
@@ -72,6 +70,7 @@ export const ListenerCollectionHero = ({ content }: Props) => {
         </span>
       }
       gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
@@ -123,68 +122,8 @@ export const ListenerCollectionHero = ({ content }: Props) => {
         </div>
       </HeroTextColumn>
 
-      <HeroVisualColumn>
-        {/* Fiber tree diagram */}
-        <article
-          className={cn(
-            'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-            'border-teal-300/80 dark:border-teal-700/70 shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <header className="flex items-center justify-between gap-2">
-            <h2 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
-              {content.diagram.title}
-            </h2>
-            <span
-              aria-hidden="true"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-teal-500 text-white shadow-[0_2px_0_rgba(13,148,136,0.3)] dark:bg-teal-400 dark:text-slate-900"
-            >
-              <GitBranchIcon className="h-4 w-4" />
-            </span>
-          </header>
-
-          <ul className="flex flex-col gap-2">
-            {content.diagram.nodes.map((node, i) => (
-              <li
-                key={node.name}
-                style={{ marginLeft: `${i * 16}px` }}
-                className={cn(
-                  'flex items-center gap-3 rounded-2xl border-2 p-md transition-colors',
-                  'shadow-[0_1px_0_var(--term-border)]',
-                  'border-teal-200/80 bg-white dark:border-teal-800/60 dark:bg-slate-950/40',
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-                    'bg-teal-100 text-teal-700 dark:bg-teal-950/60 dark:text-teal-200',
-                  )}
-                >
-                  <BoxIcon className="h-4 w-4" />
-                </span>
-                <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <code className="font-mono text-xsm sm:text-sm font-bold text-teal-700 dark:text-teal-200 break-all">
-                    {node.name}
-                  </code>
-                  <span className="text-[10px] font-mono text-[var(--term-muted)]">
-                    {node.type}
-                  </span>
-                </div>
-                <code
-                  className={cn(
-                    'inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] font-bold whitespace-nowrap',
-                    node.propKind === 'capture'
-                      ? 'border-violet-300/80 bg-violet-50 text-violet-700 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200'
-                      : 'border-teal-300/80 bg-teal-50 text-teal-700 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200',
-                  )}
-                >
-                  {node.prop}
-                </code>
-              </li>
-            ))}
-          </ul>
-        </article>
+      <HeroVisualColumn id="hero-accumulate-listeners">
+        <ListenerCollectionHeroDiagram content={content} />
       </HeroVisualColumn>
     </HeroSection>
   );

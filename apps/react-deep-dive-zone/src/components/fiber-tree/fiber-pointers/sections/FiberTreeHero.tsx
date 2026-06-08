@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { PointerTreeDiagram } from '../components/PointerTreeDiagram';
+import { FiberTreeHeroDiagram } from '../components/FiberTreeHeroDiagram';
 import type { FiberTreePointersContent } from '../content';
 
 type Props = { content: FiberTreePointersContent['hero'] };
@@ -14,6 +14,7 @@ export const FiberTreeHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactInternalTypes.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -37,12 +38,8 @@ export const FiberTreeHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <PointerTreeDiagram
-        nodes={content.nodes}
-        legendTitle={content.legendTitle}
-        legendItems={content.legendItems}
-      />
+    <HeroVisualColumn id="hero-fiber-pointers">
+      <FiberTreeHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

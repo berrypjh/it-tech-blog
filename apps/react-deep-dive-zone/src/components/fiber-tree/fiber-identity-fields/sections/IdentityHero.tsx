@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { IdentityDiagram } from '../components/IdentityDiagram';
+import { IdentityHeroDiagram } from '../components/IdentityHeroDiagram';
 import type { FiberIdentityFieldsContent } from '../content';
 
 type Props = { content: FiberIdentityFieldsContent['hero'] };
@@ -14,6 +14,7 @@ export const IdentityHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactInternalTypes.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -37,12 +38,8 @@ export const IdentityHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <IdentityDiagram
-        cardLabel={content.cardLabel}
-        fields={content.fiberFields}
-        extraNote={content.extraNote}
-      />
+    <HeroVisualColumn id="hero-fiber-identity">
+      <IdentityHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

@@ -6,8 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { AlternateLink } from '../components/AlternateLink';
-import { FiberPairCard } from '../components/FiberPairCard';
+import { AlternateHeroDiagram } from '../components/AlternateHeroDiagram';
 import type { AlternateFiberContent } from '../content';
 
 type Props = { content: AlternateFiberContent['hero'] };
@@ -18,6 +17,7 @@ export const AlternateHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # createWorkInProgress</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -63,45 +63,8 @@ export const AlternateHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <div
-          className={cn(
-            'grid items-stretch min-w-0',
-            'grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)]',
-            'gap-sm lg:gap-md',
-          )}
-        >
-          <FiberPairCard
-            variant="current"
-            title={content.currentTitle}
-            items={content.currentItems}
-            compact
-          />
-          <AlternateLink
-            forwardLabel={content.forwardLabel}
-            backwardLabel={content.backwardLabel}
-          />
-          <FiberPairCard
-            variant="workInProgress"
-            title={content.workTitle}
-            items={content.workItems}
-            compact
-          />
-        </div>
-
-        <p className="sr-only">
-          React는 같은 노드에 대해 current Fiber와 workInProgress Fiber 두 가지를 동시에 가지며,
-          alternate 포인터로 서로 양방향 연결합니다. current는 화면에 반영된 안정적인 트리이고,
-          workInProgress는 다음 화면을 계산 중인 작업 트리입니다.
-        </p>
-      </div>
+    <HeroVisualColumn id="hero-alternate-fiber">
+      <AlternateHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

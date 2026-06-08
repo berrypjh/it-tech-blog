@@ -6,14 +6,14 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { DispatchPriorityHeroDiagram } from '../components/DispatchPriorityHeroDiagram';
 import type { DispatchSelectionContent } from '../content';
-import { CircleIcon, FilterIcon, MousePointerClickIcon, WavesIcon, ZapIcon } from '../icons';
+import { CircleIcon, MousePointerClickIcon, WavesIcon } from '../icons';
 import { priorityCard, priorityIconBox, priorityText } from '../priorityStyle';
 
 type Props = { content: DispatchSelectionContent['hero'] };
 
 const exampleIcons = [MousePointerClickIcon, WavesIcon, CircleIcon];
-const rowIcons = [ZapIcon, WavesIcon, CircleIcon];
 
 export const DispatchPriorityHero = ({ content }: Props) => (
   <HeroSection
@@ -25,6 +25,7 @@ export const DispatchPriorityHero = ({ content }: Props) => (
       </span>
     }
     gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -77,65 +78,8 @@ export const DispatchPriorityHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      {/* priority classification diagram */}
-      <article
-        className={cn(
-          'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-          'border-blue-200/80 dark:border-blue-800/60 shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <header className="flex items-center justify-between gap-2">
-          <h2 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)]">
-            {content.diagram.title}
-          </h2>
-          <span
-            aria-hidden="true"
-            className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-blue-200/80 bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:border-blue-800/60 dark:text-blue-200"
-          >
-            <FilterIcon className="h-3.5 w-3.5" />
-          </span>
-        </header>
-
-        <ul className="flex flex-col gap-2">
-          {content.diagram.rows.map((row, i) => {
-            const Icon = rowIcons[i] ?? CircleIcon;
-            return (
-              <li
-                key={row.priority}
-                className={cn(
-                  'group flex items-center gap-3 rounded-2xl border-2 p-md transition-all',
-                  'hover:-translate-y-0.5 motion-reduce:transform-none',
-                  priorityCard[row.tone],
-                )}
-              >
-                <div className="flex flex-col gap-1 min-w-0 flex-1">
-                  <code
-                    className={cn('font-mono text-md sm:text-lg font-bold', priorityText[row.tone])}
-                  >
-                    {row.priority}
-                  </code>
-                  <p className="text-[11px] sm:text-xsm text-[var(--term-fg)] break-keep">
-                    {row.description}
-                  </p>
-                  <code className="text-[10px] sm:text-[11px] font-mono text-[var(--term-muted)] break-all">
-                    예: {row.example}
-                  </code>
-                </div>
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
-                    priorityIconBox[row.tone],
-                  )}
-                >
-                  <Icon className="h-5 w-5" />
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </article>
+    <HeroVisualColumn id="hero-dispatch-selection">
+      <DispatchPriorityHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

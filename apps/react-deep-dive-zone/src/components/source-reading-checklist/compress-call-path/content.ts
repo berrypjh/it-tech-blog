@@ -60,8 +60,6 @@ export type CallPathCompressionContent = {
     accentTail: string;
     description: string;
     supporting: string;
-    primaryCta: string;
-    secondaryCta: string;
     visualTitle: string;
     leftPanelTitle: string;
     leftFunctions: string[];
@@ -170,8 +168,6 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
       description: '수십 개의 함수를 읽어도, 마지막에는 핵심 흐름을 한 줄로 말할 수 있어야 합니다.',
       supporting:
         'React 내부 흐름은 여러 파일과 함수로 흩어져 있습니다. 하지만 독해가 끝난 뒤에는 핵심 API 입구, 상태 생성 지점, phase 전환 함수, 실제 반영 지점만 남겨 다시 설명 가능한 호출 경로로 압축해야 합니다.',
-      primaryCta: 'setState 흐름 보기',
-      secondaryCta: '순서 맞추기 해보기',
       visualTitle: '흩어진 함수들을 호출 경로로 복원합니다',
       leftPanelTitle: '흩어진 함수 카드',
       leftFunctions: [
@@ -452,8 +448,6 @@ export const callPathCompressionContent: Record<Locale, CallPathCompressionConte
         'Even after reading dozens of functions, you should be able to state the core flow in one line.',
       supporting:
         "React's internals are scattered across many files and functions. After reading, keep only the public API entry, the core state-creation point, the phase-switch functions, and the actual application point — and compress them into a re-explainable call path.",
-      primaryCta: 'See the setState flow',
-      secondaryCta: 'Try order matching',
       visualTitle: 'Restore scattered functions into a call path',
       leftPanelTitle: 'Scattered function cards',
       leftFunctions: [

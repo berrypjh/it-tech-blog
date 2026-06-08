@@ -1,7 +1,6 @@
 export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  BookOpen as BookOpenIcon,
   Boxes as BoxesIcon,
   CheckCircle2 as CheckCircleIcon,
   Code as CodeIcon,
@@ -17,7 +16,6 @@ export {
   Network as NetworkIcon,
   Package as PackageIcon,
   RotateCcw as RotateIcon,
-  ScanSearch as ScanSearchIcon,
   Settings as SettingsIcon,
   Sparkles as SparklesIcon,
   UserCheck as UserCheckIcon,

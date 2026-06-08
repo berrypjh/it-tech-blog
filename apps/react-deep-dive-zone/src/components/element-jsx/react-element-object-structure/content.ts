@@ -57,10 +57,6 @@ export type ReactElementObjectStructureContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     codeCardLabel: string;
     code: string;
     callouts: HeroCallout[];
@@ -141,10 +137,6 @@ const ko: ReactElementObjectStructureContent = {
     title: { line1: 'JSX의 실제 결과물은', line2: 'React Element 객체입니다.' },
     description:
       'Element는 화면이 아니라, React에게 무엇을 렌더링할지 설명하는 값입니다. 실제 DOM 노드가 아니라 렌더링 계산을 시작하기 위한 입력 객체입니다.',
-    primaryCta: 'Element 구조 해부하기',
-    secondaryCta: 'isValidElement 체험하기',
-    primaryHref: '#overview',
-    secondaryHref: '#is-valid',
     codeCardLabel: 'React Element 예시',
     code: "{\n  $$typeof: Symbol(react.element),\n  type: 'button',\n  key: null,\n  props: {\n    disabled: true,\n    children: '저장'\n  },\n  _owner: null\n}",
     callouts: [
@@ -389,10 +381,6 @@ const en: ReactElementObjectStructureContent = {
     title: { line1: 'The real output of JSX is', line2: 'a React Element object.' },
     description:
       'A React Element is not a screen — it is a value that tells React what to render. It is not a DOM node; it is the input object that starts a render computation.',
-    primaryCta: 'Dissect the Element shape',
-    secondaryCta: 'Try isValidElement',
-    primaryHref: '#overview',
-    secondaryHref: '#is-valid',
     codeCardLabel: 'React Element example',
     code: "{\n  $$typeof: Symbol(react.element),\n  type: 'button',\n  key: null,\n  props: {\n    disabled: true,\n    children: 'Save'\n  },\n  _owner: null\n}",
     callouts: [

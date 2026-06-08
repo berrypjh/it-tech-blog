@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { BranchDecisionMap } from '../components/BranchDecisionMap';
+import { FunctionClassHeroDiagram } from '../components/FunctionClassHeroDiagram';
 import type { FunctionClassComponentFiberContent } from '../content';
 
 type Props = { content: FunctionClassComponentFiberContent['hero'] };
@@ -17,6 +17,7 @@ export const FunctionClassHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # shouldConstruct</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -61,28 +62,8 @@ export const FunctionClassHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <BranchDecisionMap
-          startTitle={content.startTitle}
-          startSubtitle={content.startSubtitle}
-          questionTitle={content.questionTitle}
-          noLabel={content.noLabel}
-          yesLabel={content.yesLabel}
-          functionTitle={content.functionTitle}
-          functionLine1={content.functionLine1}
-          functionLine2={content.functionLine2}
-          classTitle={content.classTitle}
-          classLine1={content.classLine1}
-          classLine2={content.classLine2}
-        />
-      </div>
+    <HeroVisualColumn id="hero-function-class">
+      <FunctionClassHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

@@ -59,10 +59,6 @@ export type ReactCreateElementContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     leftCardLabel: string;
     leftCode: string;
     rightCardLabel: string;
@@ -153,10 +149,6 @@ const ko: ReactCreateElementContent = {
     },
     description:
       'createElement는 React Element를 직접 만드는 공개 API이며, JSX의 내부 목표를 가장 직관적으로 보여줍니다.',
-    primaryCta: 'createElement 코드 보기',
-    secondaryCta: 'JSX와 비교하기',
-    primaryHref: '#checkpoint',
-    secondaryHref: '#compare',
     leftCardLabel: 'JSX 문법',
     leftCode: '<button disabled>저장</button>',
     rightCardLabel: '명시적 API',
@@ -384,10 +376,6 @@ const en: ReactCreateElementContent = {
     },
     description:
       'createElement is the public API that builds React Elements directly — it shows the goal of JSX in its most explicit form.',
-    primaryCta: 'See the createElement source',
-    secondaryCta: 'Compare with JSX',
-    primaryHref: '#checkpoint',
-    secondaryHref: '#compare',
     leftCardLabel: 'JSX syntax',
     leftCode: '<button disabled>Save</button>',
     rightCardLabel: 'Explicit API',

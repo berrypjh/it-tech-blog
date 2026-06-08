@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { BranchMap } from '../components/BranchMap';
+import { TypeDecisionHeroDiagram } from '../components/TypeDecisionHeroDiagram';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['hero'] };
@@ -17,6 +17,7 @@ export const TypeDecisionHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # createFiberFromTypeAndProps</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -69,16 +70,8 @@ export const TypeDecisionHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <BranchMap centerLabel={content.centerLabel} branches={content.branches} size="lg" />
-      </div>
+    <HeroVisualColumn id="hero-type-decision">
+      <TypeDecisionHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

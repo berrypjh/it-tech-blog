@@ -1,7 +1,6 @@
 export {
   AlertTriangle as AlertTriangleIcon,
   ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
   CalendarClock as CalendarClockIcon,
   CheckCircle2 as CheckCircleIcon,
   Circle as CircleIcon,

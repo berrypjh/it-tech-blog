@@ -6,10 +6,9 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { toneTokens } from '../../../shared/tones';
-import type { FlowStep, FlowStepIconName, UpdateToRenderSummaryContent } from '../content';
+import { SummaryHeroDiagram } from '../components/SummaryHeroDiagram';
+import type { FlowStepIconName, UpdateToRenderSummaryContent } from '../content';
 import {
-  ArrowDownIcon,
   CheckCircleIcon,
   CircleHelpIcon,
   ClockIcon,
@@ -52,6 +51,7 @@ export const SummaryHero = ({ content }: Props) => (
     promptPath="update-request → render-phase.md"
     promptSuffix={<span className="text-[var(--term-dim)]"> {'// summary'}</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -88,105 +88,8 @@ export const SummaryHero = ({ content }: Props) => (
       </aside>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="min-w-0">
-      <SummaryFlowDiagram
-        title={content.diagram.title}
-        steps={content.diagram.steps}
-        variant="hero"
-      />
+    <HeroVisualColumn id="hero-update-summary" className="min-w-0">
+      <SummaryHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );
-
-type DiagramProps = {
-  title: string;
-  steps: FlowStep[];
-  variant?: 'hero' | 'body';
-};
-
-export const SummaryFlowDiagram = ({ title, steps, variant = 'hero' }: DiagramProps) => (
-  <div
-    className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/30',
-      'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="mb-md flex items-center justify-between gap-2">
-      <h2 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight">{title}</h2>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-sky-700/80 dark:text-sky-300/80 rounded-md border border-sky-200/70 dark:border-sky-800/60 px-2 py-0.5">
-        14 steps
-      </span>
-    </header>
-
-    <ol className="flex flex-col">
-      {steps.map((step, idx) => (
-        <li key={step.number} className="flex flex-col">
-          <StepCard step={step} variant={variant} />
-          {idx < steps.length - 1 && (
-            <span aria-hidden="true" className="my-0.5 flex justify-center text-[var(--term-dim)]">
-              <ArrowDownIcon className="h-3 w-3" />
-            </span>
-          )}
-        </li>
-      ))}
-    </ol>
-  </div>
-);
-
-const StepCard = ({ step, variant }: { step: FlowStep; variant: 'hero' | 'body' }) => {
-  const Icon = flowIconMap[step.iconName];
-  const t = toneTokens[step.tone];
-  return (
-    <article
-      className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)_auto] gap-sm items-center rounded-xl border bg-[var(--term-bg)] px-sm py-2',
-        step.final
-          ? 'border-2 border-violet-300/80 dark:border-violet-700/70 bg-violet-50/40 dark:bg-violet-950/25'
-          : t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
-          step.final
-            ? 'bg-violet-100 text-violet-700 border-violet-200/80 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60'
-            : t.chip,
-        )}
-      >
-        <Icon className="h-4 w-4" />
-      </span>
-      <div className="flex flex-col min-w-0">
-        <span
-          className={cn(
-            'flex items-center gap-1.5 text-xsm sm:text-sm font-bold break-keep',
-            step.final ? 'text-violet-800 dark:text-violet-100' : t.text,
-          )}
-        >
-          <span className="text-[10px] font-mono tabular-nums text-[var(--term-muted)]">
-            {step.number}.
-          </span>
-          <span className={variant === 'hero' ? 'truncate' : 'break-keep'}>{step.title}</span>
-        </span>
-        <span className="text-[10px] text-[var(--term-muted)] leading-snug break-keep">
-          {step.description}
-        </span>
-      </div>
-      {step.final && (
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center rounded-md border px-1.5 py-0.5',
-            'border-violet-300/70 bg-violet-100/70 text-[9px] font-mono uppercase tracking-wider text-violet-700',
-            'dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200',
-          )}
-        >
-          next
-        </span>
-      )}
-    </article>
-  );
-};

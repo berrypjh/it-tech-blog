@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { StateNodeDiagram } from '../components/StateNodeDiagram';
+import { StateNodeHeroDiagram } from '../components/StateNodeHeroDiagram';
 import type { FiberStateNodeContent } from '../content';
 
 type Props = { content: FiberStateNodeContent['hero'] };
@@ -14,6 +14,7 @@ export const StateNodeHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactFiberRoot.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -29,13 +30,8 @@ export const StateNodeHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <StateNodeDiagram
-        cardLabel={content.cardLabel}
-        fields={content.fiberFields}
-        pillLabel={content.pillLabel}
-        targets={content.targets}
-      />
+    <HeroVisualColumn id="hero-fiber-state-node">
+      <StateNodeHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

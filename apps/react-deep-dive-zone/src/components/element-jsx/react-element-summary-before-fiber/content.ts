@@ -60,10 +60,6 @@ export type ReactElementSummaryBeforeFiberContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     flowTitle: string;
     flowItems: HeroFlowItem[];
   };
@@ -137,10 +133,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     },
     description:
       'Element는 무엇을 렌더링할지 설명하는 객체이며, React 내부 계산이 시작되는 첫 번째 입력입니다.',
-    primaryCta: '전체 흐름 한눈에 보기',
-    secondaryCta: '다음: Fiber로 넘어가기',
-    primaryHref: '#final-flow',
-    secondaryHref: '#next',
     flowTitle: 'JSX에서 Fiber로 넘어가는 흐름',
     flowItems: [
       {
@@ -434,10 +426,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
     },
     description:
       'An Element is the object that describes what to render — the very first input into React’s internal computation.',
-    primaryCta: 'See the full flow',
-    secondaryCta: 'Next: enter the Fiber chapter',
-    primaryHref: '#final-flow',
-    secondaryHref: '#next',
     flowTitle: 'JSX → runtime → Element → Fiber',
     flowItems: [
       {

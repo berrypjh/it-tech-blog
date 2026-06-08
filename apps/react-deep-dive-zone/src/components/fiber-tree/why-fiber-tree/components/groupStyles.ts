@@ -41,12 +41,3 @@ export const groupFieldChip: Record<GroupTone, string> = {
   rose: 'bg-rose-50 text-rose-800 border-rose-200/80 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-800/60',
   teal: 'bg-teal-50 text-teal-800 border-teal-200/80 dark:bg-teal-950/40 dark:text-teal-200 dark:border-teal-800/60',
 };
-
-export const fiberRowAccent: Record<GroupTone, string> = {
-  sky: 'border-l-sky-400 bg-sky-500/15 text-sky-200',
-  emerald: 'border-l-emerald-400 bg-emerald-500/15 text-emerald-200',
-  violet: 'border-l-violet-400 bg-violet-500/15 text-violet-200',
-  amber: 'border-l-amber-400 bg-amber-500/15 text-amber-200',
-  rose: 'border-l-rose-400 bg-rose-500/15 text-rose-200',
-  teal: 'border-l-teal-400 bg-teal-500/15 text-teal-200',
-};

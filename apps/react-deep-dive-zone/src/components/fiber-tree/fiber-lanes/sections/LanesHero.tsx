@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { LanesDiagram } from '../components/LanesDiagram';
+import { LanesHeroDiagram } from '../components/LanesHeroDiagram';
 import type { FiberLanesContent } from '../content';
 
 type Props = { content: FiberLanesContent['hero'] };
@@ -14,6 +14,7 @@ export const LanesHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactFiberLane.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -37,13 +38,8 @@ export const LanesHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <LanesDiagram
-        cardLabel={content.cardLabel}
-        fields={content.fields}
-        stackTitle={content.stackTitle}
-        items={content.items}
-      />
+    <HeroVisualColumn id="hero-fiber-lanes">
+      <LanesHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

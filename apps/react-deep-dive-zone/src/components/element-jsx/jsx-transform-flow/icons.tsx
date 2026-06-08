@@ -2,7 +2,6 @@ export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   Atom as AtomIcon,
-  BookOpen as BookOpenIcon,
   Box as BoxIcon,
   Calculator as CalculatorIcon,
   CheckCircle2 as CheckCircleIcon,

@@ -1,7 +1,6 @@
 export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  BookOpen as BookOpenIcon,
   Bug as BugIcon,
   CheckCircle2 as CheckCircleIcon,
   Code as CodeIcon,

@@ -9,7 +9,11 @@ import { Code2Icon } from '../icons';
 type Props = { content: JsxIsNotHtmlContent['evidence'] };
 
 export const JavaScriptEvidenceCards = ({ content }: Props) => (
-  <section id="evidence" aria-labelledby="heading-evidence" className="space-y-md scroll-mt-xl">
+  <section
+    id="evidence"
+    aria-labelledby="heading-evidence"
+    className="@container space-y-md scroll-mt-xl"
+  >
     <SectionBadgeHeader
       id="evidence"
       number={content.badge}
@@ -19,7 +23,7 @@ export const JavaScriptEvidenceCards = ({ content }: Props) => (
       icon={<Code2Icon className="h-5 w-5" />}
     />
 
-    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
+    <ul className="grid grid-cols-1 @2xl:grid-cols-2 @4xl:grid-cols-3 gap-md items-stretch">
       {content.cards.map((card) => (
         <li key={card.id} className="flex">
           <EvidenceCardView card={card} />

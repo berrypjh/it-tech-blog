@@ -1,12 +1,10 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { HeroFlow } from '../components/HeroFlow';
+import { FiberWhyNeededHeroDiagram } from '../components/FiberWhyNeededHeroDiagram';
 import type { FiberWhyNeededContent } from '../content';
 
 type Props = { content: FiberWhyNeededContent['hero'] };
@@ -17,6 +15,7 @@ export const FiberWhyNeededHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # chapter wrap-up</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -31,16 +30,8 @@ export const FiberWhyNeededHero = ({ content }: Props) => (
       <HeroDescription>{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          '@container relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <HeroFlow steps={content.flowSteps} />
-      </div>
+    <HeroVisualColumn id="hero-why-fiber">
+      <FiberWhyNeededHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

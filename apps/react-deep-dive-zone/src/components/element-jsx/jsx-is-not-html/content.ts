@@ -49,30 +49,11 @@ export type ComparisonRow = {
   html: string;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  code?: string;
-  answer: string;
-  explanation: string;
-  tone: ToneKey;
-};
-
-export type ConceptPill = {
-  id: string;
-  label: string;
-  tone: ToneKey;
-};
-
 export type JsxIsNotHtmlContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     codeCaption: string;
     code: string;
     explanationCards: HeroExplanationCard[];
@@ -106,28 +87,6 @@ export type JsxIsNotHtmlContent = {
     columns: { label: string; jsx: string; html: string };
     rows: ComparisonRow[];
   };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    answerLabel: string;
-    cards: QuizCard[];
-  };
-  summary: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    line1Before: string;
-    line1Accent1: string;
-    line1Middle: string;
-    line1Accent2: string;
-    line1After: string;
-    line2Before: string;
-    line2Accent: string;
-    line2After: string;
-    pills: ConceptPill[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -143,10 +102,6 @@ const ko: JsxIsNotHtmlContent = {
     title: { line1: 'JSX는', line2: 'HTML이 아닙니다.' },
     description:
       'HTML처럼 보이지만, 브라우저가 그대로 그리는 마크업이 아니라 JavaScript 안에서 UI 구조를 표현하는 문법입니다.',
-    primaryCta: 'JSX의 정체 보기',
-    secondaryCta: '변환 흐름 살펴보기',
-    primaryHref: '#misconception',
-    secondaryHref: '#evidence',
     codeCaption: 'button.jsx',
     code: 'const button = <button>저장</button>;',
     explanationCards: [
@@ -306,49 +261,6 @@ const ko: JsxIsNotHtmlContent = {
       },
     ],
   },
-  quiz: {
-    badge: '05',
-    eyebrow: '직접 판단해 보세요',
-    title: '이 코드는 HTML일까, JavaScript일까?',
-    description: '두 문제를 풀어보면 JSX의 위치가 더 분명해집니다.',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Q1. 아래 코드는 HTML일까, JavaScript일까?',
-        code: 'const node = <div>{name}</div>;',
-        answer: 'JavaScript 안의 JSX 표현식',
-        explanation: '이 코드는 변수에 할당되는 값이며, {name}도 JavaScript 표현식입니다.',
-        tone: 'teal',
-      },
-      {
-        id: 'q2',
-        question: 'Q2. JSX 안에서 {count + 1}을 쓸 수 있는 이유는?',
-        answer: 'JavaScript 표현식과 결합되기 때문',
-        explanation: 'JSX의 중괄호 안에는 모든 JavaScript 표현식을 삽입할 수 있습니다.',
-        tone: 'violet',
-      },
-    ],
-  },
-  summary: {
-    badge: '06',
-    eyebrow: '핵심 요약',
-    title: '이 페이지의 결론',
-    line1Before: 'JSX는 ',
-    line1Accent1: 'HTML',
-    line1Middle: '이 아니다. JSX는 ',
-    line1Accent2: 'DOM',
-    line1After: '도 아니다.',
-    line2Before: 'JSX는 ',
-    line2Accent: 'React Element',
-    line2After: ' 생성으로 이어지는 JavaScript 문법이다.',
-    pills: [
-      { id: 'looks-like-html', label: 'HTML처럼 보인다', tone: 'teal' },
-      { id: 'runs-in-js', label: 'JavaScript 안에서 동작한다', tone: 'violet' },
-      { id: 'makes-element', label: 'React Element를 만든다', tone: 'sky' },
-      { id: 'renderer-makes-dom', label: '렌더러가 DOM을 만든다', tone: 'amber' },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'JSX는 어떤 코드로 변환되는가?',
@@ -365,10 +277,6 @@ const en: JsxIsNotHtmlContent = {
     title: { line1: 'JSX is', line2: 'not HTML.' },
     description:
       'It looks like HTML, but it is not markup the browser paints — it is a syntax for describing UI structure inside JavaScript.',
-    primaryCta: 'See what JSX really is',
-    secondaryCta: 'Inspect the transform flow',
-    primaryHref: '#misconception',
-    secondaryHref: '#evidence',
     codeCaption: 'button.jsx',
     code: 'const button = <button>Save</button>;',
     explanationCards: [
@@ -527,49 +435,6 @@ const en: JsxIsNotHtmlContent = {
         jsx: 'React Element object → renderer creates DOM',
         html: 'Browser parses and creates DOM directly',
       },
-    ],
-  },
-  quiz: {
-    badge: '05',
-    eyebrow: 'Judge for yourself',
-    title: 'Is this HTML or JavaScript?',
-    description: 'Two quick questions to anchor where JSX lives.',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Q1. Is the line below HTML or JavaScript?',
-        code: 'const node = <div>{name}</div>;',
-        answer: 'JSX expression inside JavaScript',
-        explanation: 'It is a value assigned to a variable, and {name} is a JavaScript expression.',
-        tone: 'teal',
-      },
-      {
-        id: 'q2',
-        question: 'Q2. Why can you write {count + 1} inside JSX?',
-        answer: 'Because JSX composes with JavaScript expressions',
-        explanation: 'Inside the braces, any valid JavaScript expression is allowed.',
-        tone: 'violet',
-      },
-    ],
-  },
-  summary: {
-    badge: '06',
-    eyebrow: 'Core summary',
-    title: 'The conclusion of this page',
-    line1Before: 'JSX is not ',
-    line1Accent1: 'HTML',
-    line1Middle: '. JSX is not the ',
-    line1Accent2: 'DOM',
-    line1After: ' either.',
-    line2Before: 'JSX is the JavaScript syntax that leads to creating ',
-    line2Accent: 'React Elements',
-    line2After: '.',
-    pills: [
-      { id: 'looks-like-html', label: 'Looks like HTML', tone: 'teal' },
-      { id: 'runs-in-js', label: 'Runs inside JavaScript', tone: 'violet' },
-      { id: 'makes-element', label: 'Produces a React Element', tone: 'sky' },
-      { id: 'renderer-makes-dom', label: 'The renderer builds the DOM', tone: 'amber' },
     ],
   },
   nextStep: {

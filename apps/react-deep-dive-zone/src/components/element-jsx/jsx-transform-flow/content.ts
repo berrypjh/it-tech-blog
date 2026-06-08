@@ -64,10 +64,6 @@ export type JsxTransformFlowContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     inputCode: string;
     inputCaption: string;
     inputNote: string;
@@ -156,10 +152,6 @@ const ko: JsxTransformFlowContent = {
     title: { line1: 'JSX는', line2: '그대로 실행되지 않습니다.' },
     description:
       '컴파일러는 JSX를 React가 실행할 수 있는 함수 호출 코드로 바꿉니다. 이 페이지에서 그 흐름을 단계별로 따라갑니다.',
-    primaryCta: '변환 흐름 한눈에 보기',
-    secondaryCta: '예제 코드로 이해하기',
-    primaryHref: '#compile-flow',
-    secondaryHref: '#examples',
     inputCode: '<MyButton />',
     inputCaption: 'src/App.jsx',
     inputNote: '우리가 작성한 JSX (JavaScript 안의 문법)',
@@ -381,10 +373,6 @@ const en: JsxTransformFlowContent = {
     title: { line1: 'JSX does not', line2: 'run as-is.' },
     description:
       'A compiler turns JSX into function-call code that React can run. This page walks through that flow step by step.',
-    primaryCta: 'See the flow at a glance',
-    secondaryCta: 'Inspect example code',
-    primaryHref: '#compile-flow',
-    secondaryHref: '#examples',
     inputCode: '<MyButton />',
     inputCaption: 'src/App.jsx',
     inputNote: 'JSX we wrote — syntax inside JavaScript',

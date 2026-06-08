@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { FiberEffectTree } from '../components/FiberEffectTree';
+import { FlagsEffectsHeroDiagram } from '../components/FlagsEffectsHeroDiagram';
 import type { FiberFlagsContent } from '../content';
 
 type Props = { content: FiberFlagsContent['hero'] };
@@ -14,6 +14,7 @@ export const FlagsEffectsHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactFiberFlags.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -38,8 +39,8 @@ export const FlagsEffectsHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <FiberEffectTree tree={content.tree} legend={content.legend} />
+    <HeroVisualColumn id="hero-fiber-flags">
+      <FlagsEffectsHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

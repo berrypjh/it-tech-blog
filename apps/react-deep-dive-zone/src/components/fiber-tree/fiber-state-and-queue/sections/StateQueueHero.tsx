@@ -4,7 +4,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { StateQueueDiagram } from '../components/StateQueueDiagram';
+import { StateQueueHeroDiagram } from '../components/StateQueueHeroDiagram';
 import type { FiberStateAndQueueContent } from '../content';
 
 type Props = { content: FiberStateAndQueueContent['hero'] };
@@ -14,6 +14,7 @@ export const StateQueueHero = ({ content }: Props) => (
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactInternalTypes.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -37,13 +38,8 @@ export const StateQueueHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <StateQueueDiagram
-        cardLabel={content.cardLabel}
-        fields={content.fiberFields}
-        memoizedCard={content.memoizedCard}
-        updateQueueCard={content.updateQueueCard}
-      />
+    <HeroVisualColumn id="hero-fiber-state-queue">
+      <StateQueueHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

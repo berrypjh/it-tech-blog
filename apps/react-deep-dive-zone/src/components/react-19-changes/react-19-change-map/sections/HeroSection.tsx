@@ -6,11 +6,10 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { ChangeMapHeroDiagram } from '../components/ChangeMapHeroDiagram';
 import type { React19ChangeMapContent } from '../content';
-import { CompassIcon, LayersIcon } from '../icons';
+import { LayersIcon } from '../icons';
 import { layerTone } from '../tone';
-
-import { iconRegistry } from './_iconRegistry';
 
 type Props = { content: React19ChangeMapContent['hero'] };
 
@@ -22,6 +21,7 @@ export const HeroSection = ({ content }: Props) => (
       <span className="text-[var(--term-dim)]">{' // 6 layers × 6 features → one change map'}</span>
     }
     gridColumns="lg:grid-cols-[minmax(0,_13fr)_minmax(0,_7fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -138,95 +138,8 @@ export const HeroSection = ({ content }: Props) => (
       </div>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="flex flex-col gap-md">
-      {/* Question card */}
-      <article
-        className={cn(
-          'rounded-2xl border-2 p-md sm:p-lg',
-          'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <div className="flex items-center gap-2 mb-md">
-          <span
-            aria-hidden="true"
-            className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-[10px] font-mono font-bold text-white tabular-nums dark:bg-blue-500"
-          >
-            {content.questionCard.number}
-          </span>
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-200">
-            {content.questionCard.eyebrow}
-          </span>
-        </div>
-
-        <h3 className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
-          {content.questionCard.questionLines.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </h3>
-
-        <ul className="mt-md grid grid-cols-3 gap-1.5">
-          {content.questionCard.badges.map((badge) => {
-            const Icon = iconRegistry[badge.iconKey];
-            return (
-              <li
-                key={badge.label}
-                className={cn(
-                  'flex flex-col items-center gap-1 rounded-xl border p-2 text-center',
-                  'border-blue-200 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
-                >
-                  <Icon className="h-3.5 w-3.5" />
-                </span>
-                <span className="text-[10px] font-mono font-bold text-blue-700 dark:text-blue-200 break-keep">
-                  {badge.label}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </article>
-
-      {/* Guide card */}
-      <article
-        className={cn(
-          'rounded-2xl border-2 p-md sm:p-lg flex flex-col gap-sm',
-          'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <div className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/60 dark:text-emerald-300"
-          >
-            <CompassIcon className="h-3.5 w-3.5" />
-          </span>
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-            {content.guideCard.eyebrow}
-          </span>
-        </div>
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
-          {content.guideCard.bodyLines.join(' ')}
-        </p>
-        <span
-          className={cn(
-            'inline-flex items-center gap-1.5 self-start rounded-full border px-2.5 py-1',
-            'border-emerald-300 bg-emerald-50 text-emerald-700',
-            'dark:border-emerald-700/70 dark:bg-emerald-950/60 dark:text-emerald-200',
-            'text-[10px] font-mono font-bold tabular-nums',
-          )}
-        >
-          <span aria-hidden="true" className="block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          {content.guideCard.source}
-        </span>
-      </article>
+    <HeroVisualColumn id="hero-react-19-change-map">
+      <ChangeMapHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroLayout>
 );

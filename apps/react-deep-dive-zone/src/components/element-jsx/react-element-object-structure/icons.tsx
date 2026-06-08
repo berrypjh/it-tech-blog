@@ -1,7 +1,6 @@
 export {
   ArrowRight as ArrowRightIcon,
   Atom as AtomIcon,
-  BookOpen as BookOpenIcon,
   Box as BoxIcon,
   CheckCircle2 as CheckCircleIcon,
   Code as CodeIcon,

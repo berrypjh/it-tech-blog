@@ -57,10 +57,6 @@ export type ReactElementOwnerDevInfoContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     diagramTitle: string;
     baseLabel: string;
     baseFields: FieldChip[];
@@ -145,10 +141,6 @@ const ko: ReactElementOwnerDevInfoContent = {
     title: { line1: '개발 모드의 React Element는', line2: '디버깅 정보를 더 많이 품고 있습니다.' },
     description:
       'React는 더 나은 경고와 오류 메시지를 위해 Element 생성 시 추가 메타데이터를 함께 관리합니다. 이 정보들은 렌더링 결과를 바꾸기 위한 것이 아니라, 개발자가 문제를 더 빠르게 찾도록 돕기 위한 장치입니다.',
-    primaryCta: '개발 모드 정보 보기',
-    secondaryCta: '실제 코드 확인하기',
-    primaryHref: '#prod-dev',
-    secondaryHref: '#checkpoint',
     diagramTitle: 'Development Element 구조',
     baseLabel: 'Base Element',
     baseFields: [
@@ -361,10 +353,6 @@ const en: ReactElementOwnerDevInfoContent = {
     },
     description:
       'React attaches additional metadata when creating Elements in dev mode to power better warnings and error messages — not to change render output, but to help you find problems faster.',
-    primaryCta: 'See the dev-mode info',
-    secondaryCta: 'Open the actual source',
-    primaryHref: '#prod-dev',
-    secondaryHref: '#checkpoint',
     diagramTitle: 'Development Element shape',
     baseLabel: 'Base Element',
     baseFields: [

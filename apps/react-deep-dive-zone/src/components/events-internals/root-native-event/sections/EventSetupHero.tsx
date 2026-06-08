@@ -1,14 +1,11 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { EventSetupHeroDiagram } from '../components/EventSetupHeroDiagram';
 import type { RootNativeEventContent } from '../content';
-import { ArrowRightIcon, ContainerIcon, GlobeIcon, MousePointerIcon } from '../icons';
-import { ListenerPill } from '../ListenerPill';
 
 type Props = { content: RootNativeEventContent['hero'] };
 
@@ -55,7 +52,6 @@ const renderHeroToken = (tok: string, i: number) => {
 
 export const EventSetupHero = ({ content }: Props) => {
   const lines = content.codeCard.code.split('\n');
-  const domLines = content.diagram.rootDom.split('\n');
 
   return (
     <HeroSection
@@ -67,6 +63,7 @@ export const EventSetupHero = ({ content }: Props) => {
         </span>
       }
       gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+      align="center"
     >
       <HeroTextColumn>
         <TerminalBadge size="md" className="w-fit">
@@ -118,108 +115,8 @@ export const EventSetupHero = ({ content }: Props) => {
         </div>
       </HeroTextColumn>
 
-      <HeroVisualColumn>
-        {/* Browser to root container listener pills diagram */}
-        <article
-          className={cn(
-            'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-            'border-blue-200/80 dark:border-blue-800/60 shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-md">
-            {/* Browser card */}
-            <div
-              className={cn(
-                'flex flex-col gap-1.5 rounded-2xl border-2 px-md py-3 text-center',
-                'border-sky-300/80 bg-sky-50/70 dark:border-sky-700/70 dark:bg-sky-950/30',
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className="mx-auto inline-flex h-9 w-9 items-center justify-center rounded-xl border border-sky-200 bg-sky-100 text-sky-700 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60"
-              >
-                <GlobeIcon className="h-4 w-4" />
-              </span>
-              <h3 className="text-xsm font-bold text-[var(--term-fg)]">
-                {content.diagram.browserTitle}
-              </h3>
-              <ul className="flex flex-col gap-0.5">
-                {content.diagram.browserBullets.map((b) => (
-                  <li
-                    key={b}
-                    className="text-[10px] font-mono text-sky-700 dark:text-sky-200 leading-snug"
-                  >
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <span
-                aria-hidden="true"
-                className="mx-auto mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-200"
-              >
-                <MousePointerIcon className="h-3 w-3" />
-              </span>
-            </div>
-
-            {/* Arrow between Browser and root */}
-            <span
-              aria-hidden="true"
-              className="hidden md:flex items-center justify-center text-blue-500 dark:text-blue-300"
-            >
-              <span className="block w-full border-t-2 border-dashed border-blue-300/80" />
-              <ArrowRightIcon className="h-5 w-5 -ml-2" />
-            </span>
-
-            {/* Root container card */}
-            <div
-              className={cn(
-                'flex flex-col gap-2 rounded-2xl border-2 p-md',
-                'border-violet-300/90 bg-gradient-to-br from-violet-50 to-blue-50/60',
-                'dark:border-violet-600/80 dark:from-violet-950/40 dark:to-blue-950/30',
-                'shadow-[0_3px_0_var(--term-border)]',
-              )}
-            >
-              <header className="flex items-center gap-2">
-                <span
-                  aria-hidden="true"
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-violet-200 bg-violet-100 text-violet-700 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60"
-                >
-                  <ContainerIcon className="h-4 w-4" />
-                </span>
-                <h3 className="text-xsm font-bold text-[var(--term-fg)]">
-                  {content.diagram.rootTitle}
-                </h3>
-              </header>
-              <pre className="overflow-x-auto rounded-lg border border-violet-200/70 bg-white px-2 py-2 font-mono text-[10px] sm:text-[11px] leading-[1.55] text-slate-700 dark:border-violet-800/60 dark:bg-slate-950/40 dark:text-slate-200">
-                <code className="whitespace-pre">{domLines.join('\n')}</code>
-              </pre>
-              <div
-                aria-hidden="true"
-                className="rounded-md border border-dashed border-violet-300/70 px-2 py-1 text-center text-[10px] font-mono text-violet-600 dark:border-violet-700/60 dark:text-violet-300"
-              >
-                rootContainerElement
-              </div>
-            </div>
-          </div>
-
-          {/* dashed connector lines + listener pills row */}
-          <div className="flex flex-col gap-2">
-            <span aria-hidden="true" className="self-center text-blue-500 dark:text-blue-300 -mt-1">
-              <ArrowRightIcon className="h-4 w-4 rotate-90" />
-            </span>
-            <ul className="flex flex-wrap items-center justify-center gap-2">
-              {content.diagram.listeners.map((l) => (
-                <li key={l.label}>
-                  <ListenerPill label={l.label} kind={l.kind} size="sm" />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="text-[11px] sm:text-xsm text-center text-[var(--term-muted)] break-keep">
-            {content.diagram.caption}
-          </p>
-        </article>
+      <HeroVisualColumn id="hero-root-native-event">
+        <EventSetupHeroDiagram content={content} />
       </HeroVisualColumn>
     </HeroSection>
   );

@@ -6,7 +6,7 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { ExpansionDiagram } from '../components/ExpansionDiagram';
+import { FiberStoredInfoHeroDiagram } from '../components/FiberStoredInfoHeroDiagram';
 import type { FiberStoredInformationContent } from '../content';
 
 type Props = { content: FiberStoredInformationContent['hero'] };
@@ -17,6 +17,7 @@ export const FiberStoredInfoHero = ({ content }: Props) => (
     promptPath="packages/react-reconciler/src/ReactFiber.js"
     promptSuffix={<span className="text-[var(--term-muted)]"> # FiberNode</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -60,22 +61,8 @@ export const FiberStoredInfoHero = ({ content }: Props) => (
       </ul>
     </HeroTextColumn>
 
-    <HeroVisualColumn>
-      <div
-        className={cn(
-          'relative rounded-3xl p-md sm:p-lg',
-          'bg-[var(--term-surface)]',
-          'border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <ExpansionDiagram
-          elementTitle={content.elementTitle}
-          elementFields={content.elementFields}
-          fiberTitle={content.fiberTitle}
-          fiberFields={content.fiberFields}
-          size="sm"
-        />
-      </div>
+    <HeroVisualColumn id="hero-fiber-stored-info">
+      <FiberStoredInfoHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );

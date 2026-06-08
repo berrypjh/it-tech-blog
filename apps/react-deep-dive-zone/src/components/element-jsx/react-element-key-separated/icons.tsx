@@ -3,7 +3,6 @@ export {
   ArrowRight as ArrowRightIcon,
   ArrowRightLeft as ArrowRightLeftIcon,
   AtSign as AtSignIcon,
-  BookOpen as BookOpenIcon,
   CheckCircle2 as CheckCircleIcon,
   Code as CodeIcon,
   FileText as FileTextIcon,

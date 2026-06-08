@@ -21,11 +21,6 @@ export type HeroSummaryPill = {
   label: string;
 };
 
-export type CategoryPill = {
-  label: string;
-  tone: 'sky' | 'emerald';
-};
-
 export type LaneDecisionStepIconName = 'hand' | 'workflow' | 'split' | 'crosshair';
 
 export type LaneDecisionStep = {
@@ -64,11 +59,8 @@ export type SummaryPill = {
 export type LaneUpdateObjectContent = {
   hero: {
     badge: string;
-    categoryPills: CategoryPill[];
     title: { line1: string; line2: string };
     description: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
     flow: {
       caption: string;
       heading: string;
@@ -183,18 +175,12 @@ const structureCodeKo = `const update = {
 const ko: LaneUpdateObjectContent = {
   hero: {
     badge: '업데이트 시작 · 4/10단계',
-    categoryPills: [
-      { label: 'React 내부 구조', tone: 'sky' },
-      { label: '상태 업데이트 흐름', tone: 'emerald' },
-    ],
     title: {
       line1: 'React는 업데이트를',
       line2: '객체로 만들어 관리합니다.',
     },
     description:
       'setState(count + 1)은 내부적으로 하나의 update 객체가 됩니다. 이 객체는 어떤 우선순위로 처리할지, 어떤 값을 적용할지, 미리 계산된 상태가 있는지까지 함께 들고 있습니다.',
-    ctaPrimary: '핵심 흐름 보기',
-    ctaSecondary: '코드부터 읽기',
     flow: {
       caption: '한 호출 안의 4단계',
       heading: 'setCount → update 객체',
@@ -413,18 +399,12 @@ const ko: LaneUpdateObjectContent = {
 const en: LaneUpdateObjectContent = {
   hero: {
     badge: 'Update Flow · 4/10',
-    categoryPills: [
-      { label: 'React internals', tone: 'sky' },
-      { label: 'State update flow', tone: 'emerald' },
-    ],
     title: {
       line1: 'React turns updates',
       line2: 'into structured objects.',
     },
     description:
       'setState(count + 1) becomes a single update object inside React. That object carries the priority, the value to apply, and even a pre-computed next state when available.',
-    ctaPrimary: 'See the flow',
-    ctaSecondary: 'Jump to the code',
     flow: {
       caption: 'Four stages inside one call',
       heading: 'setCount → update object',

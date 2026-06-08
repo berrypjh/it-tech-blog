@@ -6,8 +6,9 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { HookLinkedListHeroDiagram } from '../components/HookLinkedListHeroDiagram';
 import type { HookLinkedListContent, Tone } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, DatabaseIcon, Link2Icon } from '../icons';
+import { DatabaseIcon, Link2Icon } from '../icons';
 
 type Props = { content: HookLinkedListContent['hero'] };
 
@@ -55,6 +56,7 @@ export const HookLinkedListHero = ({ content }: Props) => (
       </span>
     }
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     {/* Left: text + concept cards */}
     <HeroTextColumn>
@@ -118,138 +120,8 @@ export const HookLinkedListHero = ({ content }: Props) => (
     </HeroTextColumn>
 
     {/* Right: Fiber → Hook linked list diagram */}
-    <HeroVisualColumn>
-      <FiberDiagram content={content} />
+    <HeroVisualColumn id="hero-hook-linked-list">
+      <HookLinkedListHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
-);
-
-const FiberDiagram = ({ content }: { content: HookLinkedListContent['hero'] }) => (
-  <div
-    className={cn(
-      'relative flex flex-col gap-md rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-violet-50/30',
-      'dark:from-sky-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/20',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <h2 className="text-center text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
-      {content.diagramTitle}
-    </h2>
-
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1.55fr)] gap-md items-stretch">
-      {/* Fiber box */}
-      <article className="flex flex-col gap-1 rounded-2xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_1px_0_var(--term-border)]">
-        <header className="mb-1 flex items-center justify-between gap-2">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
-            Fiber
-          </span>
-        </header>
-        <ul className="flex flex-col gap-1 text-[11px] font-mono">
-          {content.fiberFields.slice(0, 3).map((f) => (
-            <li key={f} className="text-[var(--term-muted)] break-all">
-              {f}
-            </li>
-          ))}
-          <li
-            className={cn(
-              'rounded-md border-2 border-cyan-400/80 bg-cyan-50 px-2 py-1 font-bold text-cyan-700 break-all',
-              'dark:border-cyan-500/80 dark:bg-cyan-950/60 dark:text-cyan-200',
-            )}
-          >
-            {content.fiberHighlight}
-            <span className="ml-1 text-[9px] font-normal opacity-80">→ Hook #1</span>
-          </li>
-          {content.fiberFields.slice(3).map((f) => (
-            <li key={f} className="text-[var(--term-muted)] break-all">
-              {f}
-            </li>
-          ))}
-        </ul>
-      </article>
-
-      {/* Hook nodes row */}
-      <div className="flex flex-col lg:flex-row items-stretch gap-2 lg:gap-1.5 min-w-0">
-        {content.hookNodes.map((node, i) => {
-          const isLast = i === content.hookNodes.length - 1;
-          return (
-            <div
-              key={node.index}
-              className="flex flex-col lg:flex-row items-stretch gap-1.5 min-w-0 lg:flex-1"
-            >
-              <article
-                className={cn(
-                  'group flex-1 flex flex-col gap-2 rounded-2xl border-2 p-3 transition-all',
-                  toneCard[node.tone],
-                  'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
-                )}
-              >
-                <header className="flex items-center justify-between gap-1">
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      'inline-flex h-6 px-2 items-center justify-center rounded-full text-[10px] font-mono font-bold',
-                      toneHeader[node.tone],
-                    )}
-                  >
-                    Hook #{node.index}
-                  </span>
-                  <code
-                    className={cn(
-                      'font-mono text-[10px] font-bold break-all text-right',
-                      toneTextStrong[node.tone],
-                    )}
-                  >
-                    {node.hookName}
-                  </code>
-                </header>
-                <ul className="flex flex-col gap-0.5 text-[10px] font-mono text-[var(--term-muted)]">
-                  {node.fields.map((field) => (
-                    <li
-                      key={field.name}
-                      className="flex items-center justify-between gap-1 break-all"
-                    >
-                      <span>{field.name}</span>
-                      {field.value && (
-                        <span className="text-orange-500 dark:text-orange-300 font-bold">
-                          {field.value}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-              {!isLast && (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className="hidden lg:inline-flex self-center h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
-                  >
-                    <ArrowRightIcon className="h-3 w-3" />
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="lg:hidden flex justify-center text-[var(--term-muted)]"
-                  >
-                    <ArrowDownIcon className="h-4 w-4" />
-                  </span>
-                </>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    {/* Bottom dashed bracket */}
-    <div className="mt-1 flex flex-col items-center gap-1">
-      <span
-        aria-hidden="true"
-        className="block w-full border-t-2 border-dashed border-[var(--term-border)]"
-      />
-      <span className="text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
-        {content.bottomLabel}
-      </span>
-    </div>
-  </div>
 );

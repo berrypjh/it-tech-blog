@@ -70,10 +70,6 @@ export type ReactElementTypeMeaningContent = {
     badge: string;
     title: { line1: string; line2Accent: string; line2After: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     diagramTitle: string;
     diagramItems: HeroDiagramItem[];
     bottomNoteTitle: string;
@@ -152,10 +148,6 @@ const ko: ReactElementTypeMeaningContent = {
     },
     description:
       '문자열 태그인지, 사용자 정의 컴포넌트인지, React 내부의 특별한 타입인지 — type이 이후 렌더링 방향을 결정합니다.',
-    primaryCta: 'type 분류 한눈에 보기',
-    secondaryCta: 'Fiber 연결 미리보기',
-    primaryHref: '#kinds',
-    secondaryHref: '#fiber',
     diagramTitle: 'Element.type 분류도',
     diagramItems: [
       {
@@ -403,10 +395,6 @@ const en: ReactElementTypeMeaningContent = {
     },
     description:
       'A string tag, a user-defined component, or a React-internal special type — type decides the path the rest of rendering takes.',
-    primaryCta: 'See the type categories',
-    secondaryCta: 'Preview the Fiber link',
-    primaryHref: '#kinds',
-    secondaryHref: '#fiber',
     diagramTitle: 'Element.type categories',
     diagramItems: [
       {

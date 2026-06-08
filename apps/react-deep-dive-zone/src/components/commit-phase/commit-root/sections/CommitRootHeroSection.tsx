@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDescription } from '../../../shared/HeroDescription';
@@ -8,27 +6,11 @@ import { HeroTextColumn } from '../../../shared/HeroTextColumn';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
-import { commitToneTokens } from '../../_shared/tones';
-import type { CommitRootContent, HeroFlowCard, HeroFlowCardIcon } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  CpuIcon,
-  GateIcon,
-  GitMergeIcon,
-  LayersIcon,
-  LightbulbIcon,
-} from '../icons';
+import { CommitRootHeroDiagram } from '../components/CommitRootHeroDiagram';
+import type { CommitRootContent } from '../content';
+import { LightbulbIcon } from '../icons';
 
 type Props = { content: CommitRootContent['hero'] };
-
-const iconMap: Record<HeroFlowCardIcon, typeof CpuIcon> = {
-  cpu: CpuIcon,
-  gitMerge: GitMergeIcon,
-  gate: GateIcon,
-  layers: LayersIcon,
-};
 
 export const CommitRootHeroSection = ({ content }: Props) => (
   <HeroSection
@@ -36,6 +18,7 @@ export const CommitRootHeroSection = ({ content }: Props) => (
     promptPath="reconciler/commit-root.md"
     promptSuffix={<span className="text-[var(--term-dim)]"> {'// finishedWork → commitRoot'}</span>}
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    align="center"
   >
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
@@ -73,135 +56,8 @@ export const CommitRootHeroSection = ({ content }: Props) => (
       </aside>
     </HeroTextColumn>
 
-    <HeroVisualColumn className="min-w-0">
-      <HeroDiagram diagram={content.diagram} />
+    <HeroVisualColumn id="hero-commit-root" className="min-w-0">
+      <CommitRootHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>
 );
-
-const HeroDiagram = ({ diagram }: { diagram: CommitRootContent['hero']['diagram'] }) => (
-  <div
-    className={cn(
-      'relative rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-gradient-to-br from-sky-50/55 via-white to-teal-50/55',
-      'dark:from-sky-950/25 dark:via-[var(--term-bg)] dark:to-teal-950/25',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="mb-md flex items-center justify-between gap-2">
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] truncate">
-        {`// ${diagram.flowLabel}`}
-      </span>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
-        {diagram.eyebrow}
-      </span>
-    </header>
-
-    {/* Desktop: 4 cards in a row */}
-    <ol className="hidden md:flex items-stretch gap-1.5">
-      {diagram.cards.map((card, idx) => (
-        <Fragment key={card.title}>
-          <li className="flex-1 min-w-0">
-            <FlowCard card={card} />
-          </li>
-          {idx < diagram.cards.length - 1 && (
-            <li
-              aria-hidden="true"
-              className="flex items-center justify-center text-[var(--term-dim)] px-0.5"
-            >
-              <ArrowRightIcon className="h-4 w-4" />
-            </li>
-          )}
-        </Fragment>
-      ))}
-    </ol>
-
-    {/* Mobile: vertical stack */}
-    <ol className="md:hidden flex flex-col">
-      {diagram.cards.map((card, idx) => (
-        <li key={card.title} className="flex flex-col">
-          <FlowCard card={card} />
-          {idx < diagram.cards.length - 1 && (
-            <span aria-hidden="true" className="my-1 flex justify-center text-[var(--term-dim)]">
-              <ArrowDownIcon className="h-4 w-4" />
-            </span>
-          )}
-        </li>
-      ))}
-    </ol>
-  </div>
-);
-
-const FlowCard = ({ card }: { card: HeroFlowCard }) => {
-  const Icon = iconMap[card.iconName];
-  const t = commitToneTokens[card.tone];
-  const isGate = card.isGate;
-  return (
-    <article
-      className={cn(
-        'relative flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
-        isGate ? cn('border-2', t.borderStrong, t.bg) : cn(t.border),
-        'shadow-[0_1px_0_var(--term-border)]',
-        isGate && 'ring-2 ring-teal-300/40 dark:ring-teal-500/30',
-      )}
-    >
-      {isGate && (
-        <span
-          aria-hidden="true"
-          className={cn(
-            'absolute -top-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
-            'text-[9px] font-mono uppercase tracking-wider font-bold',
-            'bg-teal-500 text-white border-teal-600',
-            'dark:bg-teal-400 dark:text-slate-950 dark:border-teal-300',
-          )}
-        >
-          gate
-        </span>
-      )}
-      <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            t.chipSolid,
-          )}
-        >
-          <Icon className="h-4 w-4" />
-        </span>
-        <CheckCircleIcon aria-hidden="true" className={cn('h-3.5 w-3.5 shrink-0', t.text)} />
-      </header>
-      <div className="flex flex-col gap-0.5 min-w-0">
-        <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.textStrong)}>
-          {card.title}
-        </h3>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] break-keep">
-          {card.subtitle}
-        </span>
-      </div>
-      {card.description && (
-        <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
-          {card.description}
-        </p>
-      )}
-      {card.items && (
-        <ul className="flex flex-col gap-0.5 mt-auto">
-          {card.items.map((item) => (
-            <li
-              key={item}
-              className={cn(
-                'flex items-center gap-1.5 text-[11px] sm:text-xsm leading-tight break-keep',
-                t.text,
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cn('inline-block h-1 w-1 rounded-full shrink-0', t.dot)}
-              />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </article>
-  );
-};
