@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { WhyOpenSourceContent } from '../content';
 import { CheckCircleIcon, GitBranchIcon, GitCommitIcon, GithubIcon } from '../icons';
@@ -15,19 +16,11 @@ type Props = { diagram: WhyOpenSourceContent['hero']['diagram'] };
  */
 export const GitHubConnectedDiagram = ({ diagram }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg overflow-hidden',
-        'min-h-[460px] sm:min-h-[520px] lg:min-h-[540px]',
-      )}
+    <HeroDiagramShell
+      a11yLabel="GitHub을 중심으로 코드·커밋·패키지·상태 자료가 점선으로 연결되는 학습 맵"
+      className="min-h-[460px] sm:min-h-[520px] lg:min-h-[540px]"
     >
-      {/* 배경 grid + grad */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-50/70 via-transparent to-teal-50/40 dark:from-sky-950/30 dark:to-teal-950/20 pointer-events-none"
-      />
+      {/* 배경 grid */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
@@ -216,7 +209,7 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
       <p className="relative mt-md text-center text-[10px] text-[var(--term-muted)]">
         {'//'} GitHub connects code / commits / packages / checks
       </p>
-    </div>
+    </HeroDiagramShell>
   );
 };
 

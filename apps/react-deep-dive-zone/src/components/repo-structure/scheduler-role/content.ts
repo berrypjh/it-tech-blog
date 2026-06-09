@@ -119,9 +119,7 @@ export type SchedulerContent = {
     descriptionValue: string;
     learningQuestion: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
@@ -340,10 +338,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         '주어진 우선순위에 따라 특정 작업을 예약하고, 언제 실행할지 결정하는 핵심 함수입니다.',
       learningQuestion: '왜 작업 예약 함수는\npriorityLevel을 함께 받을까?',
       primaryCta: 'Scheduler.js 읽기',
-      secondaryCta: 'scheduler 패키지 보기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/scheduler',
       codeHeader: 'packages/scheduler/src/forks/Scheduler.js',
       codeBadge: 'main',
       code: scheduleCallbackCode,
@@ -579,10 +575,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         'The core function that schedules a callback at a given priority and decides when it should run.',
       learningQuestion: 'Why does the schedule\nfunction take a priorityLevel?',
       primaryCta: 'Read Scheduler.js',
-      secondaryCta: 'Open the scheduler package',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/scheduler',
       codeHeader: 'packages/scheduler/src/forks/Scheduler.js',
       codeBadge: 'main',
       code: scheduleCallbackCode,

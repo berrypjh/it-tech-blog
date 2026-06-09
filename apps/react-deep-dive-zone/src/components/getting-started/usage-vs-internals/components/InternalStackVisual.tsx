@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { StackLayer } from '../content';
 import { AtomIcon } from '../icons';
@@ -49,19 +50,7 @@ const toneClasses: Record<StackTone, { bg: string; border: string; text: string;
 
 export const InternalStackVisual = ({ layers }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg overflow-hidden',
-      )}
-    >
-      {/* 옅은 그라데이션 배경 */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-50/60 via-transparent to-teal-50/40 dark:from-sky-950/30 dark:to-teal-950/20 pointer-events-none"
-      />
-
+    <HeroDiagramShell a11yLabel="React 내부 동작이 위에서 아래로 층층이 처리되는 흐름을 보여주는 스택 다이어그램">
       {/* 상단 라벨 + atom 아이콘 */}
       <div className="relative flex items-center justify-between mb-md">
         <TerminalBadge dotClassName="bg-sky-500">internal flow</TerminalBadge>
@@ -163,7 +152,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
               {!isLast && (
                 <span
                   aria-hidden="true"
-                  className="my-0.5 mx-auto text-[var(--term-dim)] text-xsm leading-none"
+                  className="my-0.5 mx-auto text-[var(--term-accent)] text-xsm leading-none"
                 >
                   ↓
                 </span>
@@ -177,6 +166,6 @@ export const InternalStackVisual = ({ layers }: Props) => {
       <p className="relative mt-md text-center text-[10px] text-[var(--term-muted)]">
         {'//'} layered processing — top to bottom
       </p>
-    </div>
+    </HeroDiagramShell>
   );
 };

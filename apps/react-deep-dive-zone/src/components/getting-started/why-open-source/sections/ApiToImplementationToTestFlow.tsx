@@ -122,10 +122,10 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                 className="flex items-center justify-center text-[var(--term-dim)] lg:px-1"
               >
                 {/* lg: 가로 화살표 / 모바일: 세로 chevron */}
-                <span className="hidden lg:inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-sky-500 dark:text-sky-400">
+                <span className="hidden lg:inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
                   <ArrowRightIcon className="h-4 w-4" />
                 </span>
-                <span className="lg:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-sky-500 dark:text-sky-400 rotate-90">
+                <span className="lg:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] rotate-90">
                   <ArrowRightIcon className="h-4 w-4" />
                 </span>
               </li>

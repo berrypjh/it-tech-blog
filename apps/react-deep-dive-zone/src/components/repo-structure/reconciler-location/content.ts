@@ -121,14 +121,10 @@ export type ReconcilerEntryContent = {
     descriptionValue: string;
     learningQuestion: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
-    pointLabel: string;
-    pointMessage: string;
   };
   preview: {
     eyebrow: string;
@@ -140,7 +136,6 @@ export type ReconcilerEntryContent = {
     eyebrow: string;
     title: string;
     question: string;
-    hintLabel: string;
     hint: string;
   };
   nextStep: {
@@ -343,15 +338,11 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       descriptionValue: 'Element의 type, key, props 등을 읽어 Fiber 노드를 생성합니다.',
       learningQuestion: 'Element의 어떤 값들이\nFiber 생성에 사용되는가?',
       primaryCta: 'ReactFiber.js 읽기',
-      secondaryCta: 'Element → Fiber 설명 보기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
-      secondaryHref: '/element-vs-fiber',
       codeHeader: 'packages/react-reconciler/src/ReactFiber.js',
       codeBadge: 'main',
       code: createFiberFromElementCode,
-      pointLabel: '포인트',
-      pointMessage: 'Element의 type, key, props(pendingProps)가 Fiber 생성으로 전달됩니다.',
     },
     preview: {
       eyebrow: '05 · what comes next',
@@ -396,7 +387,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       eyebrow: '06 · concept check',
       title: '개념 점검 질문',
       question: 'React가 Element를 바로 DOM으로 바꾸지 않고 중간에 Fiber를 두는 이유는 무엇일까?',
-      hintLabel: '힌트',
       hint: '작업 단위를 관리하고, 변경 계산을 나누어 처리하기 위해서.',
     },
     nextStep: {
@@ -573,15 +563,11 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       descriptionValue: 'Reads type, key, props from an Element and creates a Fiber node.',
       learningQuestion: 'Which Element values\nflow into Fiber creation?',
       primaryCta: 'Read ReactFiber.js',
-      secondaryCta: 'See Element → Fiber',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
-      secondaryHref: '/element-vs-fiber',
       codeHeader: 'packages/react-reconciler/src/ReactFiber.js',
       codeBadge: 'main',
       code: createFiberFromElementCode,
-      pointLabel: 'Takeaway',
-      pointMessage: 'Element.type, key and props (pendingProps) flow into Fiber creation.',
     },
     preview: {
       eyebrow: '05 · what comes next',
@@ -627,7 +613,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       title: 'Concept-check question',
       question:
         'Why does React put a Fiber in between, instead of turning Element directly into DOM?',
-      hintLabel: 'Hint',
       hint: 'To manage units of work and split change calculation into chunks.',
     },
     nextStep: {

@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { VersionCard } from '../content';
 import { ArrowUpIcon } from '../icons';
@@ -56,19 +57,7 @@ const tones: VersionTone[] = [
 
 export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg overflow-hidden',
-      )}
-    >
-      {/* 옅은 grad 배경 */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-50/60 via-transparent to-teal-50/40 dark:from-sky-950/30 dark:to-teal-950/20 pointer-events-none"
-      />
-
+    <HeroDiagramShell a11yLabel="React 16부터 19.2까지 버전이 아래에서 위로 쌓이며 최신 버전일수록 강조되는 타임라인">
       {/* 미세한 grid pattern */}
       <svg
         aria-hidden="true"
@@ -161,6 +150,6 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
         </span>
         <span className="inline-flex items-center gap-1">{'//'} evolving</span>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };

@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { NotAllFilesContent } from '../content';
 import { FileIcon, FolderOpenIcon } from '../icons';
@@ -15,19 +16,10 @@ type Props = { visual: NotAllFilesContent['hero']['visual'] };
  */
 export const QuestionPathVisual = ({ visual }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg overflow-hidden',
-        'min-h-[480px] sm:min-h-[520px] lg:min-h-[540px]',
-      )}
+    <HeroDiagramShell
+      a11yLabel="흩어진 파일 더미에서 질문을 따라 핵심 경로로 이어지는 독해 경로 비주얼"
+      className="min-h-[480px] sm:min-h-[520px] lg:min-h-[540px]"
     >
-      {/* 배경 grad */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-50/70 via-transparent to-teal-50/40 dark:from-sky-950/30 dark:to-teal-950/20 pointer-events-none"
-      />
       {/* 미세한 grid */}
       <svg
         aria-hidden="true"
@@ -221,6 +213,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
       <p className="absolute bottom-2 left-md right-md text-center text-[10px] text-[var(--term-muted)]">
         {'//'} from noise to a single guided path
       </p>
-    </div>
+    </HeroDiagramShell>
   );
 };

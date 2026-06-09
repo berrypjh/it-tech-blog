@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { toneTokens } from '../../../shared/tones';
 import type { WhySourceContent } from '../content';
@@ -13,14 +14,7 @@ type Props = {
 
 export const FlowDiagram = ({ categories, stages, loop }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg',
-        'shadow-[0_1px_0_var(--term-border)]',
-      )}
-    >
+    <HeroDiagramShell a11yLabel="React 소스 코드를 읽는 6단계 흐름과 분류, 반복 학습 루프를 보여주는 다이어그램">
       {/* 상단 분류 pill 4개 */}
       <ul className="flex flex-wrap gap-1.5 sm:gap-2 mb-md">
         {categories.map((cat) => {
@@ -81,7 +75,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
               {!isLastInRow && (
                 <span
                   aria-hidden="true"
-                  className="hidden xl:flex absolute top-1/2 -right-1 -translate-y-1/2 text-[var(--term-muted)] text-[10px] z-10"
+                  className="hidden xl:flex absolute top-1/2 -right-1 -translate-y-1/2 text-[var(--term-accent)] text-[10px] z-10"
                 >
                   →
                 </span>
@@ -106,6 +100,6 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
           className="flex-1 border-t border-dashed border-[var(--term-border)]"
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };

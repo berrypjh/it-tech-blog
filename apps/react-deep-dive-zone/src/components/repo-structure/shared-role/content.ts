@@ -111,9 +111,7 @@ export type SharedContent = {
     whyValue: string;
     learningQuestion: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
@@ -296,9 +294,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       whyValue: 'ReactClient.js는 여러 타입 심벌을 shared/ReactSymbols에서 가져오기 때문입니다.',
       learningQuestion: '왜 여러 패키지가\n동일한 심벌을 사용해야 할까?',
       primaryCta: 'ReactClient.js 읽기',
-      secondaryCta: 'ReactSymbols.js 보기',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      secondaryHref: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
       code: reactClientImportCode,
@@ -520,9 +516,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       whyValue: 'ReactClient.js imports a number of type symbols from shared/ReactSymbols.',
       learningQuestion: 'Why must many packages\nuse the same symbol?',
       primaryCta: 'Read ReactClient.js',
-      secondaryCta: 'Open ReactSymbols.js',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      secondaryHref: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
       code: reactClientImportCode,

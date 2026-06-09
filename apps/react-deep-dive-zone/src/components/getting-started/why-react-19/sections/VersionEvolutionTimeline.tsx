@@ -121,7 +121,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
               {!isLast && (
                 <span
                   aria-hidden="true"
-                  className="block ml-2 my-1 text-[var(--term-dim)] text-[10px] leading-none"
+                  className="block ml-2 my-1 text-[var(--term-accent)] text-[10px] leading-none"
                 >
                   ↓
                 </span>

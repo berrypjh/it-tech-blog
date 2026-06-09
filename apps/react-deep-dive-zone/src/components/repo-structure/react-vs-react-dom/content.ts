@@ -106,14 +106,10 @@ export type ReactVsReactDomContent = {
     descriptionValue: string;
     learningQuestion: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
-    pointLabel: string;
-    pointMessage: string;
   };
   entrypoints: {
     eyebrow: string;
@@ -316,16 +312,11 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         'React 애플리케이션의 진입점을 만들고, DOM 컨테이너와 Fiber 루트를 연결합니다.',
       learningQuestion: '왜 createRoot는\nDOM container를 먼저 검증할까?',
       primaryCta: 'ReactDOMRoot.js 읽기',
-      secondaryCta: 'react-dom 패키지 보기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react-dom',
       codeHeader: 'packages/react-dom/src/client/ReactDOMRoot.js',
       codeBadge: 'main',
       code: createRootCode,
-      pointLabel: '포인트',
-      pointMessage:
-        '유효한 DOM 컨테이너인지 먼저 확인해야, 이후 렌더링 과정이 안전하게 진행됩니다.',
     },
     entrypoints: {
       eyebrow: '05 · entrypoints',
@@ -529,16 +520,11 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         'Creates the entry point of a React app and links a DOM container with a Fiber root.',
       learningQuestion: 'Why does createRoot validate\nthe DOM container first?',
       primaryCta: 'Read ReactDOMRoot.js',
-      secondaryCta: 'Open the react-dom package',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react-dom',
       codeHeader: 'packages/react-dom/src/client/ReactDOMRoot.js',
       codeBadge: 'main',
       code: createRootCode,
-      pointLabel: 'Takeaway',
-      pointMessage:
-        'Validating the DOM container first keeps the rest of the render pipeline safe.',
     },
     entrypoints: {
       eyebrow: '05 · entrypoints',

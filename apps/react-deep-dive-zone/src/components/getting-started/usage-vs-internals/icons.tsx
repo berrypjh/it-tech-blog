@@ -1,12 +1,4 @@
-import {
-  Atom,
-  Box,
-  CircleCheck,
-  Database,
-  FunctionSquare,
-  History,
-  MousePointer2,
-} from 'lucide-react';
+import { Box, CircleCheck, Database, FunctionSquare, History, MousePointer2 } from 'lucide-react';
 
 export {
   Atom as AtomIcon,
@@ -26,5 +18,4 @@ export const flowIconByName = {
   clockRefresh: History,
   cube: Box,
   checkCircle: CircleCheck,
-  atom: Atom,
 } as const;

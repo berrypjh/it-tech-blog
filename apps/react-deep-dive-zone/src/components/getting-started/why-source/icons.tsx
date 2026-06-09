@@ -1,21 +1,4 @@
-import {
-  Anchor,
-  BarChart3,
-  Box,
-  Clock,
-  Code,
-  Eye,
-  Gauge,
-  Key,
-  Layers,
-  Layout,
-  Network,
-  Puzzle,
-  Search,
-  Timer,
-  Wrench,
-  Zap,
-} from 'lucide-react';
+import { BarChart3, Clock, Eye, Gauge, Key, Puzzle, Search, Zap } from 'lucide-react';
 
 export { GithubIcon } from '../../shared/GithubIcon';
 export {
@@ -32,14 +15,6 @@ export const iconByName = {
   zap: Zap,
   key: Key,
   gauge: Gauge,
-  cube: Box,
-  code: Code,
-  layout: Layout,
-  wrench: Wrench,
-  layers: Layers,
-  network: Network,
-  timer: Timer,
-  hook: Anchor,
   eye: Eye,
   search: Search,
   'bar-chart': BarChart3,

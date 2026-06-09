@@ -101,9 +101,7 @@ export type PackagesDirectoryContent = {
     seeItems: string[];
     learningQuestion: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
     codeHeader: string;
     codeBadge: string;
     codeCaption: string;
@@ -410,9 +408,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
       learningQuestion: 'React 패키지의 public API는\n어디서 최종적으로 모이는가?',
       primaryCta: 'ReactClient.js 읽기',
-      secondaryCta: 'react 패키지 보기',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
       codeCaption: '최신 코드 기준 · 교육용 발췌',
@@ -690,9 +686,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
       learningQuestion: 'Where do React’s public APIs\nfinally come together?',
       primaryCta: 'Read ReactClient.js',
-      secondaryCta: 'Open the react package',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
       codeCaption: 'Educational excerpt — latest main',

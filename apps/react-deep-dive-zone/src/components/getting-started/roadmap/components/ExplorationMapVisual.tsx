@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { RoadmapContent } from '../content';
 import { CheckCircleIcon, FlagIcon, FolderOpenIcon, PencilIcon } from '../icons';
@@ -44,18 +45,7 @@ const colorize = (line: string): React.ReactNode => {
  */
 export const ExplorationMapVisual = ({ visual }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full',
-        'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)]',
-        'p-md sm:p-lg overflow-hidden',
-      )}
-    >
-      {/* 배경 grad */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-50/70 via-transparent to-teal-50/40 dark:from-sky-950/30 dark:to-teal-950/20 pointer-events-none"
-      />
+    <HeroDiagramShell a11yLabel="React 소스코드 탐험 지도: 코드, 저장소, 체크포인트, 노트 카드를 격자로 배치">
       {/* 미세 grid */}
       <svg
         aria-hidden="true"
@@ -222,6 +212,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
       <p className="relative mt-md text-center text-[10px] text-[var(--term-muted)]">
         {'//'} code → checkpoint → notes → repository
       </p>
-    </div>
+    </HeroDiagramShell>
   );
 };

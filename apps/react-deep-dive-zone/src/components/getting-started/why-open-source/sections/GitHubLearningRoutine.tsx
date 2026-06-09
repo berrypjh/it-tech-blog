@@ -106,7 +106,7 @@ export const GitHubLearningRoutine = ({ content }: Props) => {
               <li
                 key={`arrow-${step.num}`}
                 aria-hidden="true"
-                className="hidden lg:flex items-center justify-center text-sky-500 dark:text-sky-400"
+                className="hidden lg:flex items-center justify-center text-[var(--term-accent)]"
               >
                 <ChevronRightIcon className="h-5 w-5" />
               </li>
