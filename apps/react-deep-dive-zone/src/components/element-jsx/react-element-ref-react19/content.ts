@@ -36,14 +36,6 @@ export type FlowStep = {
   tone: ToneKey;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-  tone: ToneKey;
-};
-
 export type ReactElementRefReact19Content = {
   hero: {
     badge: string;
@@ -97,9 +89,7 @@ export type ReactElementRefReact19Content = {
     coreIdea: string;
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   benefits: {
     badge: string;
@@ -107,14 +97,6 @@ export type ReactElementRefReact19Content = {
     title: string;
     description: string;
     cards: BenefitCard[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -148,7 +130,7 @@ const ko: ReactElementRefReact19Content = {
     ],
   },
   core: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'React 19의 ref 변화 핵심 3가지',
     title: '세 가지 핵심 변화',
     description: '문법의 작은 차이가 아니라, ref가 흐르는 길 자체가 바뀐 변화입니다.',
@@ -183,7 +165,7 @@ const ko: ReactElementRefReact19Content = {
     ],
   },
   compare: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Before (React 18) vs After (React 19)',
     title: '같은 결과, 달라진 작성 방식',
     description: '같은 컴포넌트가 React 18 이전과 19에서 어떻게 다르게 적혀지는지 직접 봅니다.',
@@ -199,7 +181,7 @@ const ko: ReactElementRefReact19Content = {
     rightNote: 'ref가 일반 prop처럼 전달되어 더 간결해졌습니다.',
   },
   flow: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'React 19에서의 ref 흐름',
     title: '상위 → 중간 → 하위 → DOM',
     description:
@@ -241,25 +223,24 @@ const ko: ReactElementRefReact19Content = {
     emphasis: '별도의 API 없이, 모든 함수 컴포넌트에서 동일한 방식으로 사용 가능합니다.',
   },
   checkpoint: {
-    badge: '05',
+    badge: '04',
     eyebrow: '실제 코드 체크포인트',
     title: '소스에서 보는 ref 처리 단순화',
     description:
       'React 19에서는 ref가 단순히 props로 들어옵니다. 별도의 ref 필드로 분리되지 않습니다.',
     fileLabel: '파일',
-    filePath: 'packages/react/src/ReactBaseClasses.js',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     changeLabel: '변경 포인트',
     changePoint: 'ref 처리 방식 단순화',
     ideaLabel: '핵심 아이디어',
     coreIdea: 'ref를 더 이상 특별한 경로에서 처리하지 않고, 일반 prop과 동일하게 흐르게 한다.',
-    code: 'class Component {\n  // ...\n\n  constructor(props, context, updater) {\n    this.props = props;\n    this.context = context;\n\n    // React 19: ref가 단순히 props로 들어옵니다.\n    // 더 이상 별도의 ref 필드로 분리하지 않습니다.\n    this.ref = props.ref ?? null;\n  }\n\n  // ...\n}',
+    code: "function createElement(type, config, children) {\n  const props = {};\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) key = '' + config.key;\n\n    // React 19: ref를 따로 추출하지 않고 props에 그대로 둡니다.\n    for (const name in config) {\n      if (name !== 'key') props[name] = config[name];\n    }\n  }\n\n  return ReactElement(type, key, props);\n}",
     primaryCta: '관련 코드 더 보기',
-    secondaryCta: '변경 히스토리 보기',
-    primaryHref: '#flow',
-    secondaryHref: '#compare',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   benefits: {
-    badge: '06',
+    badge: '05',
     eyebrow: '이 변화가 주는 이점',
     title: '단순함이 만드는 세 가지 변화',
     description: '문법이 단순해진 만큼, 그 위에서 만들 수 있는 추상화도 더 자유로워집니다.',
@@ -284,29 +265,6 @@ const ko: ReactElementRefReact19Content = {
         body: '더 일관된 패턴으로 더 강력한 컴포넌트 API를 만들 수 있습니다.',
         iconName: 'package',
         tone: 'violet',
-      },
-    ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: '빠른 퀴즈',
-    title: '한 줄로 답해 봅니다',
-    description: '두 문제를 풀면 핵심 메시지가 더 또렷해집니다.',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        question: 'React 19에서 ref를 사용하려면 forwardRef가 여전히 필요할까?',
-        answer: '아니다. ref가 일반 prop처럼 전달되므로 필요하지 않다.',
-        explanation: '모든 함수 컴포넌트가 ref를 props로 받을 수 있습니다.',
-        tone: 'violet',
-      },
-      {
-        id: 'q2',
-        question: 'React 19의 ref 변화 핵심을 한 문장으로 말하면?',
-        answer: 'ref가 일반 prop처럼 흐르게 되었고, 사용 범위가 넓어졌다.',
-        explanation: '더 단순하고 일관된 모델로 컴포넌트 설계가 유연해졌습니다.',
-        tone: 'teal',
       },
     ],
   },
@@ -343,7 +301,7 @@ const en: ReactElementRefReact19Content = {
     ],
   },
   core: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Three core React 19 ref changes',
     title: 'Three core changes',
     description:
@@ -382,7 +340,7 @@ const en: ReactElementRefReact19Content = {
     ],
   },
   compare: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Before (React 18) vs After (React 19)',
     title: 'Same outcome, different shape',
     description: 'See the same component written before and after React 19.',
@@ -398,7 +356,7 @@ const en: ReactElementRefReact19Content = {
     rightNote: 'ref flows like any other prop — simpler.',
   },
   flow: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'The React 19 ref flow',
     title: 'Parent → Middle → Child → DOM',
     description:
@@ -440,25 +398,24 @@ const en: ReactElementRefReact19Content = {
     emphasis: 'No special API — the same usage works in every function component.',
   },
   checkpoint: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Source code checkpoint',
     title: 'Simpler ref handling in the source',
     description:
       'In React 19, ref simply arrives via props. There is no separate ref field anymore.',
     fileLabel: 'File',
-    filePath: 'packages/react/src/ReactBaseClasses.js',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     changeLabel: 'Change point',
     changePoint: 'Ref handling simplified',
     ideaLabel: 'Core idea',
     coreIdea: 'Stop treating ref as a special path; let it flow exactly like an ordinary prop.',
-    code: 'class Component {\n  // ...\n\n  constructor(props, context, updater) {\n    this.props = props;\n    this.context = context;\n\n    // React 19: ref now arrives via props.\n    // It is no longer split into a separate ref field.\n    this.ref = props.ref ?? null;\n  }\n\n  // ...\n}',
+    code: "function createElement(type, config, children) {\n  const props = {};\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) key = '' + config.key;\n\n    // React 19: ref is no longer extracted; it stays in props.\n    for (const name in config) {\n      if (name !== 'key') props[name] = config[name];\n    }\n  }\n\n  return ReactElement(type, key, props);\n}",
     primaryCta: 'Open related source',
-    secondaryCta: 'See change history',
-    primaryHref: '#flow',
-    secondaryHref: '#compare',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   benefits: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'What this change enables',
     title: 'Three downstream wins',
     description: 'Simpler syntax means more room for abstractions you build on top.',
@@ -483,29 +440,6 @@ const en: ReactElementRefReact19Content = {
         body: 'A more consistent pattern enables more powerful component APIs.',
         iconName: 'package',
         tone: 'violet',
-      },
-    ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: 'Quick quiz',
-    title: 'Answer in one line',
-    description: 'Two questions sharpen the key takeaway.',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Do you still need forwardRef to use ref in React 19?',
-        answer: 'No — ref flows like an ordinary prop, no forwardRef needed.',
-        explanation: 'Every function component can now receive ref via props.',
-        tone: 'violet',
-      },
-      {
-        id: 'q2',
-        question: 'Summarize the React 19 ref change in one sentence.',
-        answer: 'ref now flows like a regular prop and applies in more places.',
-        explanation: 'A simpler, more consistent model gives component design more freedom.',
-        tone: 'teal',
       },
     ],
   },

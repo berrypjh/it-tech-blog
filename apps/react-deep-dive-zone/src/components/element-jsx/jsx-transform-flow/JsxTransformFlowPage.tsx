@@ -9,7 +9,6 @@ import { FunctionCallBenefits } from './sections/FunctionCallBenefits';
 import { JsxTransformHero } from './sections/JsxTransformHero';
 import { React19TransformReasons } from './sections/React19TransformReasons';
 import { TransformComparison } from './sections/TransformComparison';
-import { TransformQuickQuiz } from './sections/TransformQuickQuiz';
 import { jsxTransformFlowContent } from './content';
 
 type Props = { locale: Locale };
@@ -25,7 +24,6 @@ export const JsxTransformFlowPage = ({ locale }: Props) => {
       <React19TransformReasons content={c.react19} />
       <CodeTransformExamples content={c.examples} />
       <FunctionCallBenefits content={c.benefits} />
-      <TransformQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

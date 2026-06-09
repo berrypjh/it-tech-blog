@@ -23,23 +23,23 @@ export const KeyPropsSeparation = ({ content }: Props) => (
       icon={<ArrowRightLeftIcon className="h-5 w-5" />}
     />
 
-    <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
-      {content.cards.map((card) => (
-        <CardView key={card.id} card={card} />
-      ))}
+    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
+      <CardView card={content.cards[0]} />
 
-      {/* Center badge */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:inline-flex',
-          'items-center justify-center w-16 h-16 rounded-full text-center',
-          'bg-[var(--term-bg)] border-2 border-[var(--term-border)] shadow-md',
-          'text-[10px] font-extrabold text-[var(--term-fg)] tracking-tight whitespace-pre-line leading-tight',
-        )}
-      >
-        {content.centerBadge}
-      </span>
+      {/* Center badge (desktop, 카드 사이 전용 컬럼) */}
+      <div aria-hidden="true" className="hidden lg:flex items-center justify-center -mx-2">
+        <span
+          className={cn(
+            'inline-flex items-center justify-center w-14 h-14 rounded-full text-center shrink-0',
+            'bg-[var(--term-bg)] border-2 border-[var(--term-border)] shadow-md',
+            'text-[10px] font-extrabold text-[var(--term-fg)] tracking-tight whitespace-pre-line leading-tight',
+          )}
+        >
+          {content.centerBadge}
+        </span>
+      </div>
+
+      <CardView card={content.cards[1]} />
     </div>
 
     {/* mobile center badge */}
@@ -63,7 +63,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
         t.borderHover,

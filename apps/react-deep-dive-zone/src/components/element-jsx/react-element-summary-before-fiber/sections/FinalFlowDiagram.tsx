@@ -24,8 +24,8 @@ export const FinalFlowDiagram = ({ content }: Props) => (
         <li key={step.id} className="flex flex-col">
           <StepCard step={step} />
           {idx < content.steps.length - 1 && (
-            <span className="flex justify-center py-1" aria-hidden="true">
-              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
+            <span className="flex justify-center py-1 lg:hidden" aria-hidden="true">
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
                 <ArrowDownIcon className="h-3.5 w-3.5" />
               </span>
             </span>

@@ -56,19 +56,10 @@ export type FiberFlowStep = {
   chips?: string[];
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  questionCode?: string;
-  answer: string;
-  explanation: string;
-  tone: ToneKey;
-};
-
 export type ReactElementTypeMeaningContent = {
   hero: {
     badge: string;
-    title: { line1: string; line2Accent: string; line2After: string };
+    title: { line1: string; line2: string };
     description: string;
     diagramTitle: string;
     diagramItems: HeroDiagramItem[];
@@ -109,9 +100,7 @@ export type ReactElementTypeMeaningContent = {
     fileName: string;
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   fiber: {
     badge: string;
@@ -120,14 +109,6 @@ export type ReactElementTypeMeaningContent = {
     description: string;
     steps: FiberFlowStep[];
     summary: string;
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -143,8 +124,7 @@ const ko: ReactElementTypeMeaningContent = {
     badge: 'Element와 JSX · 6/10단계',
     title: {
       line1: 'type은 이 Element가',
-      line2Accent: '무엇을 의미하는지',
-      line2After: ' 알려줍니다.',
+      line2: '무엇을 의미하는지 알려줍니다.',
     },
     description:
       '문자열 태그인지, 사용자 정의 컴포넌트인지, React 내부의 특별한 타입인지 — type이 이후 렌더링 방향을 결정합니다.',
@@ -182,7 +162,7 @@ const ko: ReactElementTypeMeaningContent = {
     bottomNoteBody: 'type이 이후 과정의 길을 정합니다.',
   },
   kinds: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'type의 대표적인 형태 3가지',
     title: 'Host · Custom · Special — 세 갈래',
     description: 'JSX의 결과로 만들어지는 Element의 type은 거의 모든 경우 이 세 갈래로 정리됩니다.',
@@ -224,7 +204,7 @@ const ko: ReactElementTypeMeaningContent = {
     ],
   },
   rows: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'JSX 예제와 type 결과 연결',
     title: '같은 모양의 JSX, 다른 type 값',
     description: 'JSX 한 줄이 어떤 type 값을 만들고, 어떤 후속 의미로 이어지는지 직접 매핑합니다.',
@@ -259,7 +239,7 @@ const ko: ReactElementTypeMeaningContent = {
     ],
   },
   compare: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Host / Custom / Special type 비교',
     title: '세 분류, 한 표에서 정리',
     description:
@@ -299,7 +279,7 @@ const ko: ReactElementTypeMeaningContent = {
     emphasis: 'type은 다음 Fiber 생성 단계에서 분류의 기준이 된다.',
   },
   source: {
-    badge: '05',
+    badge: '04',
     eyebrow: '실제 코드 연결',
     title: 'ReactElement가 type을 어떻게 다루는지',
     descriptionTitle: 'ReactElement는 전달받은 type을 객체에 그대로 넣습니다.',
@@ -310,12 +290,11 @@ const ko: ReactElementTypeMeaningContent = {
     fileName: 'ReactJSXElement.js',
     code: 'function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  // 개발 모드 필드 생략...\n\n  return element;\n}',
     primaryCta: 'ReactElement 코드 읽기',
-    secondaryCta: 'Fiber 연결 미리보기',
-    primaryHref: '#fiber',
-    secondaryHref: '#kinds',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   fiber: {
-    badge: '06',
+    badge: '05',
     eyebrow: '다음 챕터와의 연결: Fiber 분류의 출발점',
     title: 'type에서 Fiber 갈래까지',
     description:
@@ -349,32 +328,6 @@ const ko: ReactElementTypeMeaningContent = {
     ],
     summary: 'type을 이해하면 다음 챕터의 Fiber 분류가 훨씬 쉬워진다.',
   },
-  quiz: {
-    badge: '07',
-    eyebrow: '빠른 판단 퀴즈',
-    title: '한 줄로 답해 봅니다',
-    description: '두 문제를 풀면 type의 위치가 더 분명해집니다.',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        question: "<MyButton />의 type은 문자열 'MyButton'일까?",
-        questionCode: '<MyButton />',
-        answer: '아니다. 실제 컴포넌트 함수 자체다.',
-        explanation:
-          'type에는 함수나 클래스 자체가 들어갑니다. 문자열이 아니라 컴포넌트의 실제 참조값입니다.',
-        tone: 'violet',
-      },
-      {
-        id: 'q2',
-        question: '<div />의 type은?',
-        questionCode: '<div />',
-        answer: "문자열 'div'",
-        explanation: "Host 컴포넌트이므로 브라우저 태그 이름인 문자열 'div'가 저장됩니다.",
-        tone: 'cyan',
-      },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: '이제 key로 넘어갑니다',
@@ -390,8 +343,7 @@ const en: ReactElementTypeMeaningContent = {
     badge: 'Elements & JSX · 6/10',
     title: {
       line1: 'type tells you',
-      line2Accent: 'what this Element means',
-      line2After: '.',
+      line2: 'what this Element means.',
     },
     description:
       'A string tag, a user-defined component, or a React-internal special type — type decides the path the rest of rendering takes.',
@@ -429,7 +381,7 @@ const en: ReactElementTypeMeaningContent = {
     bottomNoteBody: 'type sets the path for what comes next.',
   },
   kinds: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Three representative shapes of type',
     title: 'Host · Custom · Special — the three branches',
     description: 'Almost every Element type produced by JSX lands in one of these three branches.',
@@ -475,7 +427,7 @@ const en: ReactElementTypeMeaningContent = {
     ],
   },
   rows: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'JSX example → type result',
     title: 'Same shape, different type value',
     description: 'See what type value each JSX line produces and the meaning that follows.',
@@ -510,7 +462,7 @@ const en: ReactElementTypeMeaningContent = {
     ],
   },
   compare: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Host / Custom / Special type compared',
     title: 'Three categories, one table',
     description:
@@ -545,7 +497,7 @@ const en: ReactElementTypeMeaningContent = {
     emphasis: 'type is the criterion used to split Fibers in the next stage.',
   },
   source: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Real source code link',
     title: 'How ReactElement stores type',
     descriptionTitle: 'ReactElement stores the received type as-is on the object.',
@@ -556,12 +508,11 @@ const en: ReactElementTypeMeaningContent = {
     fileName: 'ReactJSXElement.js',
     code: 'function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  // dev-mode fields omitted...\n\n  return element;\n}',
     primaryCta: 'Open ReactElement source',
-    secondaryCta: 'Preview the Fiber link',
-    primaryHref: '#fiber',
-    secondaryHref: '#kinds',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   fiber: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Next chapter link — origin of the Fiber split',
     title: 'From type to Fiber branches',
     description:
@@ -594,33 +545,6 @@ const en: ReactElementTypeMeaningContent = {
       },
     ],
     summary: 'Understanding type makes the next chapter — Fiber classification — much easier.',
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: 'Quick decision quiz',
-    title: 'Answer in one line',
-    description: 'Two quick questions anchor where type lives.',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        question: "Is the type of <MyButton /> the string 'MyButton'?",
-        questionCode: '<MyButton />',
-        answer: 'No — it is the actual component function itself.',
-        explanation:
-          'type holds the function or class itself, not its name string — a real reference to the component.',
-        tone: 'violet',
-      },
-      {
-        id: 'q2',
-        question: 'What is the type of <div />?',
-        questionCode: '<div />',
-        answer: "The string 'div'",
-        explanation:
-          'Because it is a Host component, the browser tag name string is stored as type.',
-        tone: 'cyan',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

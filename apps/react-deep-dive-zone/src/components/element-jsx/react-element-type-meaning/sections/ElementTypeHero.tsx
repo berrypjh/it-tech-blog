@@ -22,14 +22,8 @@ export const ElementTypeHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">
-          <span className="font-mono text-[var(--term-accent)]">type</span>
-          <span>{content.title.line1.replace('type', '')}</span>
-        </span>
-        <span className="block">
-          <span className="text-[var(--term-fg)]">{content.title.line2Accent}</span>
-          <span>{content.title.line2After}</span>
-        </span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>

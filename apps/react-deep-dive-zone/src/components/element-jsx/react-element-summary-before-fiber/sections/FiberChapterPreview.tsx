@@ -34,17 +34,9 @@ export const FiberChapterPreview = ({ content }: Props) => (
         >
           <ScanSearchIcon className="h-5 w-5" />
         </span>
-        <div className="flex items-center gap-sm">
-          <span
-            aria-hidden="true"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-950/60 dark:text-violet-200 font-mono font-bold"
-          >
-            Q.
-          </span>
-          <span className="text-[10px] uppercase tracking-wider font-mono text-violet-700/80 dark:text-violet-300/80">
-            preview question
-          </span>
-        </div>
+        <span className="text-[10px] uppercase tracking-wider font-mono text-violet-700/80 dark:text-violet-300/80">
+          next chapter
+        </span>
         <p className="text-md font-bold leading-snug text-violet-900 dark:text-violet-100 break-keep">
           {content.previewQuestion}
         </p>

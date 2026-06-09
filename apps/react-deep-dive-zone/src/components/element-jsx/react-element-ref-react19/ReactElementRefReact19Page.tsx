@@ -8,7 +8,6 @@ import { RefBeforeAfterCompare } from './sections/RefBeforeAfterCompare';
 import { RefBenefits } from './sections/RefBenefits';
 import { RefChangeCoreCards } from './sections/RefChangeCoreCards';
 import { RefFlowDiagram } from './sections/RefFlowDiagram';
-import { RefQuickQuiz } from './sections/RefQuickQuiz';
 import { RefSourceCheckpoint } from './sections/RefSourceCheckpoint';
 import { reactElementRefReact19Content } from './content';
 
@@ -25,7 +24,6 @@ export const ReactElementRefReact19Page = ({ locale }: Props) => {
       <RefFlowDiagram content={c.flow} />
       <RefSourceCheckpoint content={c.checkpoint} />
       <RefBenefits content={c.benefits} />
-      <RefQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

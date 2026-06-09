@@ -8,7 +8,7 @@ import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ExampleLegend, JsxTransformFlowContent, TransformExample } from '../content';
-import { ArrowRightIcon, InfoIcon, LayersIcon } from '../icons';
+import { ArrowDownIcon, InfoIcon, LayersIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['examples'] };
 
@@ -28,58 +28,51 @@ export const CodeTransformExamples = ({ content }: Props) => {
         icon={<LayersIcon className="h-5 w-5" />}
       />
 
-      <div
-        className={cn(
-          'overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-          'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        {/* top controls */}
-        <div className="flex flex-col gap-md md:flex-row md:items-center md:justify-between border-b border-dashed border-[var(--term-border)] p-md">
-          <TabSwitch
-            tab={tab}
-            onChange={setTab}
-            jsxLabel={content.tabJsxLabel}
-            compiledLabel={content.tabCompiledLabel}
-          />
-          <ul className="flex flex-wrap gap-2">
-            {content.legend.map((item) => (
-              <LegendPill key={item.id} item={item} />
-            ))}
-          </ul>
-        </div>
-
-        {/* examples */}
-        <ul className="flex flex-col divide-y divide-dashed divide-[var(--term-border)]">
-          {content.examples.map((example) => (
-            <li key={example.id} className="p-md">
-              <ExampleRow
-                example={example}
-                tab={tab}
-                legend={content.legend}
-                descriptionLabel={content.descriptionLabel}
-                compiledLabel={content.compiledLabel}
-                previewLabel={content.previewLabel}
-                panelId={`example-panel-${example.id}`}
-              />
-            </li>
+      {/* controls: 탭 전환 + 범례 */}
+      <div className="flex flex-col gap-md md:flex-row md:items-center md:justify-between">
+        <TabSwitch
+          tab={tab}
+          onChange={setTab}
+          jsxLabel={content.tabJsxLabel}
+          compiledLabel={content.tabCompiledLabel}
+        />
+        <ul className="flex flex-wrap gap-2">
+          {content.legend.map((item) => (
+            <LegendPill key={item.id} item={item} />
           ))}
         </ul>
+      </div>
 
-        {/* bottom note */}
-        <div
-          className={cn(
-            'flex items-start gap-sm border-t border-[var(--term-border)] px-md py-3',
-            'bg-sky-50/70 dark:bg-sky-950/30',
-          )}
-        >
-          <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5">
-            <InfoIcon className="h-4 w-4" />
-          </span>
-          <p className="text-xsm leading-relaxed text-sky-900 dark:text-sky-100 break-keep">
-            {content.bottomNote}
-          </p>
-        </div>
+      {/* 예제 카드 그리드 */}
+      <ul className="grid grid-cols-1 gap-md lg:grid-cols-2">
+        {content.examples.map((example) => (
+          <li key={example.id} className="flex">
+            <ExampleCard
+              example={example}
+              tab={tab}
+              legend={content.legend}
+              descriptionLabel={content.descriptionLabel}
+              compiledLabel={content.compiledLabel}
+              previewLabel={content.previewLabel}
+              panelId={`example-panel-${example.id}`}
+            />
+          </li>
+        ))}
+      </ul>
+
+      {/* 하단 참고 노트 */}
+      <div
+        className={cn(
+          'flex items-start gap-sm rounded-2xl border px-md py-3',
+          'border-sky-200/70 bg-sky-50/70 dark:border-sky-800/60 dark:bg-sky-950/30',
+        )}
+      >
+        <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5">
+          <InfoIcon className="h-4 w-4" />
+        </span>
+        <p className="text-xsm leading-relaxed text-sky-900 dark:text-sky-100 break-keep">
+          {content.bottomNote}
+        </p>
       </div>
     </section>
   );
@@ -124,7 +117,7 @@ const TabButton = ({
     aria-pressed={active}
     onClick={onClick}
     className={cn(
-      'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
+      'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
       active
         ? 'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950'
@@ -154,7 +147,7 @@ const LegendPill = ({ item }: { item: ExampleLegend }) => {
   );
 };
 
-const ExampleRow = ({
+const ExampleCard = ({
   example,
   tab,
   legend,
@@ -174,33 +167,75 @@ const ExampleRow = ({
   const matchedLegend = legend.find((l) => l.id === example.legendId);
   const tone = matchedLegend ? toneTokens[matchedLegend.tone] : null;
   return (
-    <div
+    <article
       id={panelId}
-      className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.2fr)_minmax(0,_0.9fr)] gap-md items-stretch"
+      className={cn(
+        'flex flex-1 flex-col overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        tone ? tone.border : 'border-[var(--term-border)]',
+        tone ? tone.borderHover : '',
+      )}
     >
-      <div className="flex flex-col gap-2 min-w-0">
-        <h3 className="text-xsm font-bold tracking-tight text-[var(--term-fg)]">{example.title}</h3>
-        <CodePreviewPanel code={example.jsx} language="JSX" />
+      {/* 카드 헤더: 제목 + 범례 토큰 */}
+      <header className="flex items-center justify-between gap-sm border-b border-dashed border-[var(--term-border)] px-md py-3">
+        <h3 className="flex items-center gap-2 text-xsm font-bold tracking-tight text-[var(--term-fg)]">
+          <span
+            aria-hidden="true"
+            className={cn(
+              'inline-block w-1.5 h-1.5 rounded-full',
+              tone ? tone.dot : 'bg-slate-400',
+            )}
+          />
+          {example.title}
+        </h3>
+        {matchedLegend ? (
+          <span
+            className={cn(
+              'inline-flex shrink-0 items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono',
+              tone ? tone.chip : 'border-[var(--term-border)] text-[var(--term-muted)]',
+            )}
+          >
+            {matchedLegend.label}
+          </span>
+        ) : null}
+      </header>
+
+      {/* 코드 비교: JSX ↓ 컴파일 결과 */}
+      <div className="flex flex-col gap-2 p-md">
+        <div>
+          <PanelLabel active={tab === 'jsx'}>{previewLabel}</PanelLabel>
+          <div className={cn('rounded-lg transition-all duration-200', emphasis(tab === 'jsx'))}>
+            <CodePreviewPanel code={example.jsx} language="JSX" />
+          </div>
+        </div>
+
+        <div aria-hidden="true" className="flex items-center justify-center py-0.5">
+          <span
+            className={cn(
+              'inline-flex items-center justify-center w-7 h-7 rounded-full text-white shadow-md',
+              tone ? tone.dot : 'bg-sky-600',
+            )}
+          >
+            <ArrowDownIcon className="h-4 w-4" />
+          </span>
+        </div>
+
+        <div>
+          <PanelLabel active={tab === 'compiled'}>{compiledLabel}</PanelLabel>
+          <div
+            className={cn('rounded-lg transition-all duration-200', emphasis(tab === 'compiled'))}
+          >
+            <CodePreviewPanel code={example.compiled} language="JS" />
+          </div>
+        </div>
       </div>
 
-      <div aria-hidden="true" className="hidden lg:flex items-center justify-center">
-        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-600 text-white shadow-md">
-          <ArrowRightIcon className="h-4 w-4" />
-        </span>
-      </div>
-
-      <div className={cn('flex flex-col gap-2 min-w-0', tab === 'jsx' && 'opacity-60')}>
-        <h4 className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-          {tab === 'jsx' ? previewLabel : compiledLabel}
-        </h4>
-        <CodePreviewPanel code={example.compiled} language="JS" />
-      </div>
-
-      <aside
+      {/* 설명 */}
+      <div
         className={cn(
-          'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
-          'bg-[var(--term-surface)]',
+          'mt-auto flex flex-col gap-1.5 border-t px-md py-3',
           tone ? tone.border : 'border-[var(--term-border)]',
+          'bg-[var(--term-surface)]',
         )}
       >
         <span
@@ -216,7 +251,27 @@ const ExampleRow = ({
         <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
           {example.description}
         </p>
-      </aside>
-    </div>
+      </div>
+    </article>
   );
 };
+
+/** 비활성 패널은 더 흐리게/축소, 활성 패널은 sky 링으로 강조한다. */
+const emphasis = (active: boolean) =>
+  active
+    ? 'ring-2 ring-sky-400/60 ring-offset-2 ring-offset-[var(--term-bg)] dark:ring-sky-500/50'
+    : 'opacity-40 saturate-50 scale-[0.98]';
+
+const PanelLabel = ({ active, children }: { active: boolean; children: React.ReactNode }) => (
+  <h4
+    className={cn(
+      'mb-1.5 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-mono transition-colors',
+      active ? 'font-bold text-sky-600 dark:text-sky-300' : 'text-[var(--term-muted)]',
+    )}
+  >
+    {active ? (
+      <span aria-hidden="true" className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" />
+    ) : null}
+    {children}
+  </h4>
+);

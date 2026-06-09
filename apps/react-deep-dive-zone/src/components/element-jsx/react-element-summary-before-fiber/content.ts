@@ -50,11 +50,6 @@ export type AnswerStep = {
   tone: ToneKey;
 };
 
-export type ChecklistItem = {
-  id: string;
-  text: string;
-};
-
 export type ReactElementSummaryBeforeFiberContent = {
   hero: {
     badge: string;
@@ -87,15 +82,10 @@ export type ReactElementSummaryBeforeFiberContent = {
     description: string;
     cards: SummaryCard[];
   };
-  quiz: {
+  conceptFlow: {
     badge: string;
     eyebrow: string;
     title: string;
-    questionLabel: string;
-    question: string;
-    questionCode: string;
-    hint: string;
-    answerLabel: string;
     answerSteps: AnswerStep[];
     emphasis: string;
   };
@@ -109,16 +99,6 @@ export type ReactElementSummaryBeforeFiberContent = {
     flowSteps: { id: string; title: string; body: string; tone: ToneKey }[];
     fiberChips: string[];
     infoBanner: string;
-  };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    leftTitle: string;
-    leftBody: string;
-    items: ChecklistItem[];
-    completionTitle: string;
-    completionBody: string;
   };
   finale: FinaleBannerContent;
 };
@@ -171,7 +151,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     ],
   },
   finalFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: '전체 흐름 최종 다이어그램',
     title: 'JSX 한 줄이 화면이 되기까지',
     description:
@@ -227,7 +207,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     ],
   },
   compare: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'JSX / Element / Fiber / DOM 비교표',
     title: '네 가지 개념, 한 번에 정리',
     description: '각각이 무엇이고 어디에 있으며 언제 만들어지는지 표 하나로 모았습니다.',
@@ -283,7 +263,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     emphasis: 'Element는 Fiber 이전 단계의 설명 객체다.',
   },
   summary: {
-    badge: '04',
+    badge: '03',
     eyebrow: '지금까지 배운 5개 핵심 요약',
     title: '챕터의 다섯 가지 결론',
     description: '한 카드 한 문장으로 챕터를 다시 끌어모읍니다.',
@@ -330,15 +310,10 @@ const ko: ReactElementSummaryBeforeFiberContent = {
       },
     ],
   },
-  quiz: {
-    badge: '05',
-    eyebrow: '실제 개념 연결 미니 퀴즈',
+  conceptFlow: {
+    badge: '04',
+    eyebrow: '한 줄 JSX가 거치는 전체 흐름',
     title: '한 줄 JSX의 여정',
-    questionLabel: '질문',
-    question: '아래 JSX는 어떤 흐름을 거칠까?',
-    questionCode: '<MyButton label="저장" />',
-    hint: '정답 흐름을 순서대로 확인해 보세요.',
-    answerLabel: '정답 흐름',
     answerSteps: [
       { id: 'a1', number: '1', title: 'JSX', body: '<MyButton label="저장" />', tone: 'sky' },
       {
@@ -354,7 +329,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     emphasis: '이 흐름은 모든 React UI의 출발점입니다.',
   },
   fiberPreview: {
-    badge: '06',
+    badge: '05',
     eyebrow: '다음 챕터 예고: Fiber로 넘어가기',
     title: 'Element가 만나는 다음 단계',
     description: 'React는 Element를 보고 어떤 종류의 Fiber로 다룰지 결정합니다.',
@@ -384,25 +359,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     fiberChips: ['Host Fiber', 'Function Fiber', 'Class Fiber', 'Fragment Fiber'],
     infoBanner:
       'type 값의 성격에 따라 Host / Function / Class / Fragment 등 서로 다른 Fiber가 만들어집니다.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: '최종 체크리스트',
-    title: '챕터 마무리 점검',
-    leftTitle: '나는 설명할 수 있는가?',
-    leftBody: '아래 항목을 스스로 설명할 수 있다면 다음 챕터로 넘어가세요.',
-    items: [
-      { id: 'jsx-html', text: 'JSX가 HTML이 아닌 이유' },
-      { id: 'jsx-fn', text: 'JSX가 함수 호출로 변환되는 이유' },
-      { id: 'jsx-runtime', text: 'jsx / jsxs / jsxDEV의 역할' },
-      { id: 'create-element', text: 'createElement가 중요한 이유' },
-      { id: 'element-fields', text: 'React Element의 핵심 필드' },
-      { id: 'type-vs-key', text: 'type과 key의 차이' },
-      { id: 'react19-ref', text: 'React 19의 ref 변화' },
-      { id: 'element-vs-dom', text: 'Element와 DOM의 차이' },
-    ],
-    completionTitle: '모두 체크했다면',
-    completionBody: '다음 단계로!',
   },
   finale: {
     progressLabel: '4/15 챕터 완료',
@@ -464,7 +420,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
     ],
   },
   finalFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'The full flow, one final diagram',
     title: 'From one JSX line to the screen',
     description:
@@ -520,7 +476,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
     ],
   },
   compare: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'JSX / Element / Fiber / DOM compared',
     title: 'Four concepts, side by side',
     description: 'What each one is, where it lives, what it means, and when it is created.',
@@ -576,7 +532,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
     emphasis: 'An Element is a description object that comes before Fiber.',
   },
   summary: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Five takeaways from this chapter',
     title: 'Five sentences, the whole chapter',
     description: 'One card per sentence, recapping the chapter.',
@@ -623,15 +579,10 @@ const en: ReactElementSummaryBeforeFiberContent = {
       },
     ],
   },
-  quiz: {
-    badge: '05',
-    eyebrow: 'Connect the concepts — mini quiz',
+  conceptFlow: {
+    badge: '04',
+    eyebrow: 'The full flow one line of JSX goes through',
     title: 'One JSX line’s journey',
-    questionLabel: 'Question',
-    question: 'What flow does the JSX below go through?',
-    questionCode: '<MyButton label="Save" />',
-    hint: 'Walk through the answer steps in order.',
-    answerLabel: 'Answer flow',
     answerSteps: [
       { id: 'a1', number: '1', title: 'JSX', body: '<MyButton label="Save" />', tone: 'sky' },
       {
@@ -653,7 +604,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
     emphasis: 'This flow is the starting point of every React UI.',
   },
   fiberPreview: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Next chapter preview: into Fiber',
     title: 'The step Element meets next',
     description: 'React looks at the Element to decide what kind of Fiber to build.',
@@ -682,25 +633,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
     ],
     fiberChips: ['Host Fiber', 'Function Fiber', 'Class Fiber', 'Fragment Fiber'],
     infoBanner: 'The type drives the split into Host / Function / Class / Fragment Fibers.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: 'Final checklist',
-    title: 'Wrap-up check',
-    leftTitle: 'Can I explain this?',
-    leftBody: 'If you can explain every item below yourself, you are ready for the next chapter.',
-    items: [
-      { id: 'jsx-html', text: 'Why JSX is not HTML' },
-      { id: 'jsx-fn', text: 'Why JSX becomes function calls' },
-      { id: 'jsx-runtime', text: 'The role of jsx / jsxs / jsxDEV' },
-      { id: 'create-element', text: 'Why createElement still matters' },
-      { id: 'element-fields', text: 'The core fields of a React Element' },
-      { id: 'type-vs-key', text: 'The difference between type and key' },
-      { id: 'react19-ref', text: 'How ref changed in React 19' },
-      { id: 'element-vs-dom', text: 'How an Element differs from the DOM' },
-    ],
-    completionTitle: 'All checked?',
-    completionBody: 'Move on to the next chapter.',
   },
   finale: {
     progressLabel: 'Chapter 4 of 15 complete',

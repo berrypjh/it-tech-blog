@@ -42,7 +42,7 @@ export const FiberReuseConnection = ({ content }: Props) => (
               className={cn(
                 'pointer-events-none absolute hidden lg:flex items-center justify-center',
                 'top-1/2 -right-3 -translate-y-1/2 w-6 h-6 rounded-full z-10',
-                'bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+                'bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]',
               )}
             >
               <ArrowRightIcon className="h-3.5 w-3.5" />

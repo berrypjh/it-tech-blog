@@ -21,7 +21,7 @@ export const RuntimeExampleCards = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
       {content.cards.map((card) => (
-        <li key={card.id} className="flex">
+        <li key={card.id} className="flex min-w-0">
           <ExampleCardView card={card} resultLabel={content.resultLabel} />
         </li>
       ))}
@@ -34,7 +34,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
         t.borderHover,

@@ -26,7 +26,6 @@ export type CheckpointInfo = {
   id: string;
   label: string;
   value: string;
-  iconName: 'fileText' | 'functionSquare' | 'helpCircle';
 };
 
 export type FlowStep = {
@@ -92,9 +91,7 @@ export type ReactCreateElementContent = {
     infos: CheckpointInfo[];
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   flow: {
     badge: string;
@@ -157,7 +154,7 @@ const ko: ReactCreateElementContent = {
     resultBody: 'React가 이해할 수 있는 불변 객체',
   },
   compare: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'JSX와 createElement 비교',
     title: '같은 결과로 가는 두 표현',
     description:
@@ -180,7 +177,7 @@ const ko: ReactCreateElementContent = {
     },
   },
   input: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'createElement가 받는 입력 구조',
     title: '함수 시그니처를 한눈에',
     description:
@@ -218,7 +215,7 @@ const ko: ReactCreateElementContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: '실제 코드 체크포인트',
     title: 'React 저장소에서 createElement 본문 보기',
     description:
@@ -228,29 +225,25 @@ const ko: ReactCreateElementContent = {
         id: 'file',
         label: '파일',
         value: 'packages/react/src/jsx/ReactJSXElement.js',
-        iconName: 'fileText',
       },
       {
         id: 'function',
         label: '볼 함수',
         value: 'createElement',
-        iconName: 'functionSquare',
       },
       {
         id: 'question',
         label: '학습 질문',
         value: 'createElement는 어떤 값들을 정리한 뒤 ReactElement를 호출할까?',
-        iconName: 'helpCircle',
       },
     ],
     code: "function createElement(type, config, children) {\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) {\n      key = '' + config.key;\n    }\n  }\n\n  const props = {};\n  // ...attributes 정리 (props에 복사)\n\n  return ReactElement(type, key, props, children);\n}",
     primaryCta: 'createElement 코드 열기',
-    secondaryCta: 'ReactElement 연결 보기',
-    primaryHref: '#flow',
-    secondaryHref: '#transform',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   flow: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'createElement가 ReactElement로 이어지는 흐름',
     title: '4단계로 정리되는 호출 경로',
     description: 'createElement는 직접 DOM을 만들지 않습니다. 정리한 값을 다음 함수로 넘깁니다.',
@@ -292,7 +285,7 @@ const ko: ReactCreateElementContent = {
     bottomNoteLine2: 'React Element는 설명 객체일 뿐, 실제 UI 적용은 Reconciler가 담당한다.',
   },
   relation: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'JSX Runtime과 createElement의 관계',
     title: '두 경로, 같은 목적지',
     description:
@@ -326,7 +319,7 @@ const ko: ReactCreateElementContent = {
     resultNote: 'ReactJSXElement.js → Element 객체',
   },
   transform: {
-    badge: '07',
+    badge: '06',
     eyebrow: '체험형 변환 카드',
     title: 'JSX → createElement → 객체 구조',
     description: '하나의 JSX가 함수 호출 식을 거쳐 어떤 객체로 정착되는지 한 화면에서 따라갑니다.',
@@ -384,7 +377,7 @@ const en: ReactCreateElementContent = {
     resultBody: 'The immutable object React understands',
   },
   compare: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'JSX vs createElement',
     title: 'Two expressions, one destination',
     description:
@@ -407,7 +400,7 @@ const en: ReactCreateElementContent = {
     },
   },
   input: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Input shape that createElement accepts',
     title: 'The function signature, at a glance',
     description: 'createElement takes three inputs and arranges them for React Element creation.',
@@ -444,7 +437,7 @@ const en: ReactCreateElementContent = {
     ],
   },
   checkpoint: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Source code checkpoint',
     title: 'Open the createElement body in the repo',
     description:
@@ -454,29 +447,25 @@ const en: ReactCreateElementContent = {
         id: 'file',
         label: 'File',
         value: 'packages/react/src/jsx/ReactJSXElement.js',
-        iconName: 'fileText',
       },
       {
         id: 'function',
         label: 'Function',
         value: 'createElement',
-        iconName: 'functionSquare',
       },
       {
         id: 'question',
         label: 'Learning question',
         value: 'What values does createElement organize before calling ReactElement?',
-        iconName: 'helpCircle',
       },
     ],
     code: "function createElement(type, config, children) {\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) {\n      key = '' + config.key;\n    }\n  }\n\n  const props = {};\n  // ...copy attributes into props\n\n  return ReactElement(type, key, props, children);\n}",
     primaryCta: 'Open createElement source',
-    secondaryCta: 'See ReactElement next',
-    primaryHref: '#flow',
-    secondaryHref: '#transform',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   flow: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'How createElement reaches ReactElement',
     title: 'Four-step call path',
     description:
@@ -520,7 +509,7 @@ const en: ReactCreateElementContent = {
       'A React Element is a description; turning it into UI is the Reconciler’s job.',
   },
   relation: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'JSX runtime vs createElement',
     title: 'Two paths, one destination',
     description:
@@ -554,7 +543,7 @@ const en: ReactCreateElementContent = {
     resultNote: 'ReactJSXElement.js → Element object',
   },
   transform: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'Interactive transform card',
     title: 'JSX → createElement → object shape',
     description: 'Watch a single JSX line travel through the function call into its object form.',

@@ -110,9 +110,7 @@ export type ReactElementKeySeparatedContent = {
     question: string;
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   misconceptions: {
     badge: string;
@@ -164,7 +162,7 @@ const ko: ReactElementKeySeparatedContent = {
     resultNote: '같은 key라면 이름으로 식별하고 상태를 유지한다.',
   },
   list: {
-    badge: '02',
+    badge: '01',
     eyebrow: '리스트 렌더링에서 key가 필요한 장면',
     title: '형제 목록 안에서 안정적으로 식별',
     description:
@@ -182,7 +180,7 @@ const ko: ReactElementKeySeparatedContent = {
     ],
   },
   position: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Element 구조 안에서 key의 위치',
     title: 'props 안이 아닌, 별도의 필드',
     description: 'Element 객체를 펼쳐보면 key는 props와 같은 층에 따로 존재합니다.',
@@ -210,7 +208,7 @@ const ko: ReactElementKeySeparatedContent = {
     emphasis: 'key는 props 안으로 들어가지 않고 별도의 필드로 존재한다.',
   },
   separation: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'key와 props의 분리',
     title: '두 값은 같은 곳에 두지 않습니다',
     description: 'props는 컴포넌트가 읽는 값, key는 React가 관리하는 식별자 — 역할이 다릅니다.',
@@ -241,7 +239,7 @@ const ko: ReactElementKeySeparatedContent = {
     centerBadge: '역할이\n다름',
   },
   checkpoint: {
-    badge: '05',
+    badge: '04',
     eyebrow: '실제 코드 체크포인트',
     title: 'React가 key를 props에서 떼어내는 순간',
     description:
@@ -254,12 +252,11 @@ const ko: ReactElementKeySeparatedContent = {
     question: '왜 React는 key를 props와 별도로 뽑아낼까?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  // ...\n}\n\nlet keyValue = null;\n\nif (hasValidKey(config)) {\n  keyValue = '' + config.key;\n}\n\n// key는 props에서 제거되며\n// ReactElement 객체의 별도 필드로 저장된다.\n// ...",
     primaryCta: 'key 처리 코드 열기',
-    secondaryCta: 'JSX key 경고 보기',
-    primaryHref: '#misconceptions',
-    secondaryHref: '#fiber',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   misconceptions: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'key 전달에서 자주 생기는 오해',
     title: '두 번 마주치는 함정',
     description: 'key를 처음 다룰 때 가장 흔히 생기는 오해 두 가지를 정확히 정리합니다.',
@@ -294,7 +291,7 @@ const ko: ReactElementKeySeparatedContent = {
     ],
   },
   fiber: {
-    badge: '07',
+    badge: '06',
     eyebrow: '이후 Fiber 재사용과의 연결',
     title: 'key가 만들어내는 다음 결정들',
     description:
@@ -367,7 +364,7 @@ const en: ReactElementKeySeparatedContent = {
     resultNote: 'Same key — same identity — keeps state.',
   },
   list: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Where key matters in list rendering',
     title: 'Stable identity across siblings',
     description: 'A single line builds a sibling list, and React follows each one by its key.',
@@ -384,7 +381,7 @@ const en: ReactElementKeySeparatedContent = {
     ],
   },
   position: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Where key sits in the Element shape',
     title: 'A separate field, not inside props',
     description: 'When you open the Element object, key lives next to props — not inside it.',
@@ -412,7 +409,7 @@ const en: ReactElementKeySeparatedContent = {
     emphasis: 'key is not folded into props — it lives as its own field.',
   },
   separation: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Separating key and props',
     title: 'They are not stored in the same place',
     description:
@@ -448,7 +445,7 @@ const en: ReactElementKeySeparatedContent = {
     centerBadge: 'Different\nroles',
   },
   checkpoint: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Source code checkpoint',
     title: 'See React pull key out of props',
     description:
@@ -461,12 +458,11 @@ const en: ReactElementKeySeparatedContent = {
     question: 'Why does React pull key out, separate from props?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  // ...\n}\n\nlet keyValue = null;\n\nif (hasValidKey(config)) {\n  keyValue = '' + config.key;\n}\n\n// key is removed from props and stored as a\n// separate field on the ReactElement object.\n// ...",
     primaryCta: 'Open key handling source',
-    secondaryCta: 'See JSX key warning',
-    primaryHref: '#misconceptions',
-    secondaryHref: '#fiber',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   misconceptions: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Common misconceptions about key',
     title: 'Two pitfalls you only fall into once',
     description: 'The two most frequent mix-ups when first encountering key.',
@@ -501,7 +497,7 @@ const en: ReactElementKeySeparatedContent = {
     ],
   },
   fiber: {
-    badge: '07',
+    badge: '06',
     eyebrow: 'Connection to Fiber reuse',
     title: 'Decisions that key drives downstream',
     description:

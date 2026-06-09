@@ -52,11 +52,10 @@ export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
 
         <DownArrow />
 
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
-          {content.callouts.map((callout, i) => (
-            <li key={callout.id} className="flex flex-col gap-sm">
+        <ol className="grid grid-cols-1 @sm:grid-cols-2 gap-sm items-stretch" aria-hidden="true">
+          {content.callouts.map((callout) => (
+            <li key={callout.id} className="flex min-w-0">
               <FieldCard callout={callout} />
-              {i < content.callouts.length - 1 && <DownArrow />}
             </li>
           ))}
         </ol>
@@ -71,7 +70,7 @@ const FieldCard = ({ callout }: { callout: HeroCallout }) => {
   return (
     <article
       className={cn(
-        'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
+        'group flex flex-1 min-w-0 items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         t.borderHover,
@@ -90,9 +89,6 @@ const FieldCard = ({ callout }: { callout: HeroCallout }) => {
           {callout.field}
         </span>
         <h3 className={cn('text-sm font-bold tracking-tight', t.text)}>{callout.label}</h3>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {callout.description}
-        </p>
       </div>
     </article>
   );

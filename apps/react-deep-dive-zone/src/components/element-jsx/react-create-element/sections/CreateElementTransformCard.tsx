@@ -158,9 +158,9 @@ const FlowStep = ({
 };
 
 const FlowArrow = () => (
-  <div className="hidden lg:flex items-center justify-center" aria-hidden="true">
-    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-600 text-white shadow-md">
-      <ArrowRightIcon className="h-4 w-4" />
+  <div className="hidden lg:flex items-center justify-center -mx-2" aria-hidden="true">
+    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
+      <ArrowRightIcon className="h-3.5 w-3.5" />
     </span>
   </div>
 );

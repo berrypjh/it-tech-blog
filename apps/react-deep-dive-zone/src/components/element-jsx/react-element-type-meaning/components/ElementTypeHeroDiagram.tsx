@@ -60,15 +60,14 @@ export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
 
         <div
           className={cn(
-            'mt-2 rounded-xl px-md py-3',
-            'bg-slate-900 text-slate-100 dark:bg-slate-950',
-            'shadow-[0_2px_8px_-4px_rgba(15,23,42,0.6)]',
+            'mt-2 flex flex-col gap-0.5 rounded-xl border px-md py-3',
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
           )}
         >
-          <p className="text-xsm font-bold tracking-tight text-sky-300">
+          <p className="text-xsm font-bold tracking-tight text-[var(--term-accent)]">
             {content.bottomNoteTitle}
           </p>
-          <p className="text-xsm leading-relaxed text-slate-300 break-keep">
+          <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
             {content.bottomNoteBody}
           </p>
         </div>
@@ -83,7 +82,7 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-2 rounded-xl border p-sm',
+        'group flex flex-1 flex-col gap-2 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',

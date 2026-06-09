@@ -23,7 +23,9 @@ export const CreateElementHero = ({ content }: Props) => (
 
       <HeroTitle>
         <span className="block">{content.title.line1}</span>
-        <span className="block font-mono text-[var(--term-accent)]">{content.title.line2}</span>
+        <span className="block break-words font-mono text-[var(--term-accent)]">
+          {content.title.line2}
+        </span>
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 

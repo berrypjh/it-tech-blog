@@ -60,16 +60,16 @@ export const FiberClassificationPreview = ({ content }: Props) => (
 
 const ItemWithArrow = ({ step, last }: { step: FiberFlowStep; last: boolean }) => (
   <>
-    <li className="flex">
+    <li className="flex min-w-0">
       <FlowCard step={step} />
     </li>
     {!last && (
-      <li className="flex items-center justify-center" aria-hidden="true">
-        <span className="lg:hidden inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
-          <ArrowDownIcon className="h-4 w-4" />
+      <li className="flex items-center justify-center lg:-mx-2" aria-hidden="true">
+        <span className="lg:hidden inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
+          <ArrowDownIcon className="h-3.5 w-3.5" />
         </span>
-        <span className="hidden lg:inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-600 text-white shadow-md">
-          <ArrowRightIcon className="h-4 w-4" />
+        <span className="hidden lg:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
+          <ArrowRightIcon className="h-3.5 w-3.5" />
         </span>
       </li>
     )}
@@ -82,7 +82,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
         t.borderHover,
@@ -107,7 +107,12 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
           <Icon className="h-5 w-5" />
         </span>
       </header>
-      <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <h3
+        className={cn(
+          'font-mono text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
+          t.text,
+        )}
+      >
         {step.title}
       </h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{step.body}</p>

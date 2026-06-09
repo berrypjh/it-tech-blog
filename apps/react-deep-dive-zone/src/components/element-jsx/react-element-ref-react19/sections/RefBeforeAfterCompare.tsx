@@ -37,7 +37,7 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
       {/* desktop center arrow */}
       <span
         aria-hidden="true"
-        className="hidden lg:inline-flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full bg-sky-600 text-white shadow-md"
+        className="hidden lg:inline-flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
       >
         <ArrowRightIcon className="h-5 w-5" />
       </span>
@@ -45,7 +45,7 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
 
     {/* mobile/tablet center arrow */}
     <div className="flex justify-center lg:hidden -my-2" aria-hidden="true">
-      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-600 text-white shadow-md">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
         <ArrowDownIcon className="h-4 w-4" />
       </span>
     </div>

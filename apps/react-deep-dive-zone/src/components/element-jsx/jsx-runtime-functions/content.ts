@@ -115,7 +115,6 @@ export type JsxRuntimeFunctionsContent = {
     eyebrow: string;
     title: string;
     question: string;
-    hintLabel: string;
     hint: string;
   };
   nextStep: {
@@ -162,7 +161,7 @@ const ko: JsxRuntimeFunctionsContent = {
     resultBody: 'React 내부에서 사용하는 불변 요소 객체',
   },
   entryMap: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Runtime entry 전체 지도',
     title: 'production runtime과 dev runtime의 입구',
     description:
@@ -181,7 +180,7 @@ const ko: JsxRuntimeFunctionsContent = {
       'JSX → react/jsx-runtime (jsx, jsxs) 또는 react/jsx-dev-runtime (jsxDEV) → React Element 생성 흐름',
   },
   comparison: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'jsx / jsxs / jsxDEV 역할 비교',
     title: '세 함수가 맡는 자리, 한 표로 정리',
     description: '같은 React Element를 만들지만, 호출되는 상황과 가진 정보가 다릅니다.',
@@ -222,7 +221,7 @@ const ko: JsxRuntimeFunctionsContent = {
     ],
   },
   examples: {
-    badge: '04',
+    badge: '03',
     eyebrow: '예제별 어떤 함수가 쓰이는지 보기',
     title: '같은 JSX, 다른 runtime 함수',
     description: '코드 한 줄이 어떤 함수로 들어가는지 직접 매핑합니다.',
@@ -253,7 +252,7 @@ const ko: JsxRuntimeFunctionsContent = {
     ],
   },
   checkpoints: {
-    badge: '05',
+    badge: '04',
     eyebrow: '실제 코드 체크포인트',
     title: 'React 저장소에서 진입 파일을 직접 봅니다',
     description:
@@ -278,7 +277,7 @@ const ko: JsxRuntimeFunctionsContent = {
     ],
   },
   modes: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'dev runtime과 production runtime 비교',
     title: 'jsxDEV가 따로 존재하는 이유',
     description:
@@ -310,11 +309,10 @@ const ko: JsxRuntimeFunctionsContent = {
     ],
   },
   question: {
-    badge: '07',
-    eyebrow: '학습 질문',
-    title: '한 문장으로 생각해 봅니다',
-    question: 'Q. 왜 React는 개발 모드용 runtime을 따로 둘까?',
-    hintLabel: '힌트',
+    badge: '06',
+    eyebrow: '핵심 통찰',
+    title: '한 문장으로 정리해 봅니다',
+    question: '왜 React는 개발 모드용 runtime을 따로 둘까?',
     hint: '실행 성능과 디버깅 품질을 동시에 잡기 위해서.',
   },
   nextStep: {
@@ -363,7 +361,7 @@ const en: JsxRuntimeFunctionsContent = {
     resultBody: 'The immutable description object React uses internally',
   },
   entryMap: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'Runtime entry overview map',
     title: 'Where production and dev runtimes branch',
     description:
@@ -382,7 +380,7 @@ const en: JsxRuntimeFunctionsContent = {
       'JSX → react/jsx-runtime (jsx, jsxs) or react/jsx-dev-runtime (jsxDEV) → React Element creation flow',
   },
   comparison: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'jsx / jsxs / jsxDEV side by side',
     title: 'Three functions, three roles — at a glance',
     description:
@@ -424,7 +422,7 @@ const en: JsxRuntimeFunctionsContent = {
     ],
   },
   examples: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Which function lights up for each example',
     title: 'Map JSX snippets to runtime functions',
     description: 'See exactly which function each piece of JSX flows into.',
@@ -455,7 +453,7 @@ const en: JsxRuntimeFunctionsContent = {
     ],
   },
   checkpoints: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Source code checkpoints',
     title: 'Open the actual entry files',
     description:
@@ -480,7 +478,7 @@ const en: JsxRuntimeFunctionsContent = {
     ],
   },
   modes: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'Dev runtime vs production runtime',
     title: 'Why jsxDEV exists as a separate module',
     description:
@@ -512,11 +510,10 @@ const en: JsxRuntimeFunctionsContent = {
     ],
   },
   question: {
-    badge: '07',
-    eyebrow: 'Learning question',
-    title: 'One question to chew on',
-    question: 'Q. Why does React keep a separate dev-mode runtime?',
-    hintLabel: 'Hint',
+    badge: '06',
+    eyebrow: 'Key insight',
+    title: 'Summed up in one sentence',
+    question: 'Why does React keep a separate dev-mode runtime?',
     hint: 'To balance execution performance and debugging quality at the same time.',
   },
   nextStep: {

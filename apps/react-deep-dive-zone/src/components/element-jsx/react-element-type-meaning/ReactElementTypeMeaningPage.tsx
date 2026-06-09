@@ -8,7 +8,6 @@ import { FiberClassificationPreview } from './sections/FiberClassificationPrevie
 import { JsxToTypeRows } from './sections/JsxToTypeRows';
 import { TypeComparisonTable } from './sections/TypeComparisonTable';
 import { TypeKindCards } from './sections/TypeKindCards';
-import { TypeQuickQuiz } from './sections/TypeQuickQuiz';
 import { TypeSourceConnection } from './sections/TypeSourceConnection';
 import { reactElementTypeMeaningContent } from './content';
 
@@ -25,7 +24,6 @@ export const ReactElementTypeMeaningPage = ({ locale }: Props) => {
       <TypeComparisonTable content={c.compare} />
       <TypeSourceConnection content={c.source} />
       <FiberClassificationPreview content={c.fiber} />
-      <TypeQuickQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

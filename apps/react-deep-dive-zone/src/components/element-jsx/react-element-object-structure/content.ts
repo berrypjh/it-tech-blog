@@ -8,7 +8,6 @@ export type HeroCallout = {
   id: string;
   field: string;
   label: string;
-  description: string;
   tone: ToneKey;
 };
 
@@ -89,9 +88,7 @@ export type ReactElementObjectStructureContent = {
     question: string;
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   isValid: {
     badge: string;
@@ -116,9 +113,7 @@ export type ReactElementObjectStructureContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    questionLabel: string;
     question: string;
-    answerLabel: string;
     answer: string;
     answerNote: string;
   };
@@ -144,35 +139,30 @@ const ko: ReactElementObjectStructureContent = {
         id: 'typeof',
         field: '$$typeof',
         label: '식별 태그',
-        description: '이 값이 React Element임을 식별합니다.',
         tone: 'cyan',
       },
       {
         id: 'type',
         field: 'type',
         label: '무엇을 렌더링할지',
-        description: '문자열 태그나 컴포넌트를 가리킵니다.',
         tone: 'sky',
       },
       {
         id: 'key',
         field: 'key',
         label: '형제 비교용 키',
-        description: '목록 비교와 재사용 판단에 쓰입니다.',
         tone: 'indigo',
       },
       {
         id: 'props',
         field: 'props',
         label: '렌더링 입력값',
-        description: '컴포넌트나 DOM 태그에 전달할 입력입니다.',
         tone: 'teal',
       },
       {
         id: 'owner',
         field: '_owner',
         label: '생성한 주체',
-        description: '개발 모드에서 생성 주체 추적에 사용됩니다.',
         tone: 'violet',
       },
     ],
@@ -282,9 +272,8 @@ const ko: ReactElementObjectStructureContent = {
     question: 'Element 객체는 어떤 필드들을 중심으로 만들어질까?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  if (__DEV__) {\n    element._store = {};\n    Object.defineProperty(element._store, 'validated', {\n      value: false,\n    });\n    element._debugStack = debugStack;\n    element._debugTask = debugTask;\n  }\n\n  return element;\n}",
     primaryCta: 'ReactElement 코드 읽기',
-    secondaryCta: '필드 구조 더 보기',
-    primaryHref: '#fields',
-    secondaryHref: '#overview',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   isValid: {
     badge: '04',
@@ -358,9 +347,7 @@ const ko: ReactElementObjectStructureContent = {
     badge: '06',
     eyebrow: '학습 점검',
     title: '한 줄로 정리하기',
-    questionLabel: 'Q.',
     question: 'React Element가 DOM 노드가 아니라는 말은 무슨 뜻일까?',
-    answerLabel: 'A.',
     answer: '실제 화면 객체가 아니라 렌더링 계산의 입력 객체라는 뜻입니다.',
     answerNote:
       '브라우저 DOM은 renderer가 commit 단계에서 만들어내는 결과이고, Element는 그 이전 단계에서 React가 무엇을, 어떻게 렌더링할지 설명하는 데이터입니다.',
@@ -388,35 +375,30 @@ const en: ReactElementObjectStructureContent = {
         id: 'typeof',
         field: '$$typeof',
         label: 'Identity tag',
-        description: 'Marks the value as a React Element.',
         tone: 'cyan',
       },
       {
         id: 'type',
         field: 'type',
         label: 'What to render',
-        description: 'Points to a string tag or a component.',
         tone: 'sky',
       },
       {
         id: 'key',
         field: 'key',
         label: 'Sibling identity',
-        description: 'Used to compare siblings in a list.',
         tone: 'indigo',
       },
       {
         id: 'props',
         field: 'props',
         label: 'Render input',
-        description: 'The data passed to the component or DOM tag.',
         tone: 'teal',
       },
       {
         id: 'owner',
         field: '_owner',
         label: 'Created by',
-        description: 'Tracks the creating component in dev mode.',
         tone: 'violet',
       },
     ],
@@ -526,9 +508,8 @@ const en: ReactElementObjectStructureContent = {
     question: 'Around which fields is the Element object built?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  if (__DEV__) {\n    element._store = {};\n    Object.defineProperty(element._store, 'validated', {\n      value: false,\n    });\n    element._debugStack = debugStack;\n    element._debugTask = debugTask;\n  }\n\n  return element;\n}",
     primaryCta: 'Read ReactElement source',
-    secondaryCta: 'See the fields again',
-    primaryHref: '#fields',
-    secondaryHref: '#overview',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   isValid: {
     badge: '04',
@@ -603,9 +584,7 @@ const en: ReactElementObjectStructureContent = {
     badge: '06',
     eyebrow: 'Check yourself',
     title: 'Put it in one sentence',
-    questionLabel: 'Q.',
     question: 'What does it mean that a React Element is not a DOM node?',
-    answerLabel: 'A.',
     answer: 'It is not the on-screen object — it is the input object for render computation.',
     answerNote:
       'The browser DOM is what the renderer commits at the end. The Element is the description React reasons over before that.',

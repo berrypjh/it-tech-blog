@@ -50,15 +50,6 @@ export type BenefitCard = {
   tone: ToneKey;
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  questionCode?: string;
-  answer: string;
-  explanation: string;
-  tone: ToneKey;
-};
-
 export type JsxTransformFlowContent = {
   hero: {
     badge: string;
@@ -129,14 +120,6 @@ export type JsxTransformFlowContent = {
     description: string;
     cards: BenefitCard[];
   };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    answerLabel: string;
-    cards: QuizCard[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -162,7 +145,7 @@ const ko: JsxTransformFlowContent = {
     outputNote: 'React가 이해할 수 있는 함수 호출 형태의 코드',
   },
   compileFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'JSX 컴파일 흐름 한눈에 보기',
     title: 'JSX는 실행 전에 4단계를 거칩니다',
     description:
@@ -203,7 +186,7 @@ const ko: JsxTransformFlowContent = {
     ],
   },
   comparison: {
-    badge: '03',
+    badge: '02',
     eyebrow: '과거 Transform vs 현대 Transform',
     title: '같은 JSX, 두 가지 변환 결과',
     description:
@@ -232,7 +215,7 @@ const ko: JsxTransformFlowContent = {
     banner: '표현은 달라졌지만, 둘 다 React Element 생성 흐름으로 이어진다.',
   },
   react19: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'React 19에서는 왜 새 JSX Transform 기준으로 읽어야 할까?',
     title: '저장소를 읽는 기준점을 맞춥니다',
     description:
@@ -263,7 +246,7 @@ const ko: JsxTransformFlowContent = {
     ],
   },
   examples: {
-    badge: '05',
+    badge: '04',
     eyebrow: '예제 코드 변환 직접 비교해 보세요',
     title: 'JSX와 컴파일 결과를 나란히 봅니다',
     description:
@@ -302,7 +285,7 @@ const ko: JsxTransformFlowContent = {
       '개발 모드에서는 동일한 구조라도 jsxDEV가 사용되어 소스 정보, 검증, 경고 메시지에 활용됩니다.',
   },
   benefits: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'JSX가 함수 호출로 바뀌면 무엇이 좋아지는가?',
     title: '함수 호출이 되는 순간, 가능해지는 것들',
     description:
@@ -328,32 +311,6 @@ const ko: JsxTransformFlowContent = {
         body: 'jsxDEV가 포함하는 정보로 더 정확한 에러 메시지와 경고를 제공합니다.',
         iconName: 'shieldCheck',
         tone: 'emerald',
-      },
-    ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: '빠른 퀴즈',
-    title: '여기까지 이해했다면 풀어봅니다',
-    description: '두 문제로 변환 흐름의 핵심을 확인합니다.',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Q1. 아래 JSX는 브라우저가 바로 이해하는 코드일까?',
-        questionCode: '<MyButton />',
-        answer: '아니다. 먼저 컴파일을 거친다.',
-        explanation:
-          'JSX는 브라우저가 이해할 수 있는 코드가 아니라, 컴파일러가 함수 호출 코드로 변환한 뒤 실행됩니다.',
-        tone: 'teal',
-      },
-      {
-        id: 'q2',
-        question: 'Q2. 현대 React에서 기본적으로 더 중심적인 변환 대상은?',
-        answer: 'JSX Runtime',
-        explanation:
-          'React 17 이후로 React는 JSX를 jsx / jsxs / jsxDEV 기반의 JSX Runtime으로 변환하는 방식을 기본으로 사용합니다.',
-        tone: 'violet',
       },
     ],
   },
@@ -383,7 +340,7 @@ const en: JsxTransformFlowContent = {
     outputNote: 'Function-call code that React can understand',
   },
   compileFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'The JSX compile flow at a glance',
     title: 'JSX goes through four steps before it runs',
     description:
@@ -424,7 +381,7 @@ const en: JsxTransformFlowContent = {
     ],
   },
   comparison: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'Old transform vs modern transform',
     title: 'Same JSX, two compile outputs',
     description:
@@ -453,7 +410,7 @@ const en: JsxTransformFlowContent = {
     banner: 'The expression differs — both still lead to React Element creation.',
   },
   react19: {
-    badge: '04',
+    badge: '03',
     eyebrow: 'Why read React 19 against the modern JSX transform?',
     title: 'Pin the baseline before reading the repo',
     description:
@@ -484,7 +441,7 @@ const en: JsxTransformFlowContent = {
     ],
   },
   examples: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'Compare the compiled output yourself',
     title: 'JSX side-by-side with what it becomes',
     description:
@@ -523,7 +480,7 @@ const en: JsxTransformFlowContent = {
       'In development the same shape compiles to jsxDEV, which carries source info for validation and warnings.',
   },
   benefits: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'What becomes possible when JSX is function calls?',
     title: 'Function calls open the door for the rest of React',
     description:
@@ -549,32 +506,6 @@ const en: JsxTransformFlowContent = {
         body: 'jsxDEV carries source info that powers more accurate error messages.',
         iconName: 'shieldCheck',
         tone: 'emerald',
-      },
-    ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: 'Quick quiz',
-    title: 'Two questions to anchor the transform flow',
-    description: 'Use these to confirm you understand where JSX lives.',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Q1. Can a browser run the JSX below as-is?',
-        questionCode: '<MyButton />',
-        answer: 'No — it must be compiled first.',
-        explanation:
-          'JSX is not browser-runnable code. A compiler turns it into function-call code that then runs.',
-        tone: 'teal',
-      },
-      {
-        id: 'q2',
-        question: 'Q2. What is the primary compile target in modern React?',
-        answer: 'JSX Runtime',
-        explanation:
-          'Since React 17, JSX is compiled into jsx / jsxs / jsxDEV runtime calls by default.',
-        tone: 'violet',
       },
     ],
   },
