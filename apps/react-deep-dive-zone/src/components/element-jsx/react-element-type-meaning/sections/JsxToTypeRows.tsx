@@ -105,10 +105,10 @@ const RowView = ({ row }: { row: JsxRow }) => {
 
 const ArrowCell = () => (
   <div className="flex items-center justify-center" aria-hidden="true">
-    <span className="lg:hidden inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
+    <span className="lg:hidden inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
       <ArrowDownIcon className="h-3.5 w-3.5" />
     </span>
-    <span className="hidden lg:inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
+    <span className="hidden lg:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
       <ArrowRightIcon className="h-3.5 w-3.5" />
     </span>
   </div>

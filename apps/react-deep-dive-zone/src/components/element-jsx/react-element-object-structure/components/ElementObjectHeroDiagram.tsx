@@ -1,6 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { DownArrow } from '../../../shared/DownArrow';
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
@@ -28,19 +30,7 @@ export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
     .join(', ')}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col items-stretch gap-sm">
         <CodePreviewPanel
           code={content.code}
@@ -60,7 +50,7 @@ export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -93,12 +83,3 @@ const FieldCard = ({ callout }: { callout: HeroCallout }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

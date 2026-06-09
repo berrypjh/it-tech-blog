@@ -57,7 +57,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
       <CodePreviewPanel code={card.code} language="JSX" />
 
       <div className="flex justify-center" aria-hidden="true">
-        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
+        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
           <ArrowDownIcon className="h-3.5 w-3.5" />
         </span>
       </div>

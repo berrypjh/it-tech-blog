@@ -49,13 +49,13 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
       {/* horizontal arrows on lg */}
       <span
         aria-hidden="true"
-        className="hidden lg:flex absolute left-[33.333%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300"
+        className="hidden lg:flex absolute left-[33.333%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
       >
         <ArrowLeftRightIcon className="h-4 w-4" />
       </span>
       <span
         aria-hidden="true"
-        className="hidden lg:flex absolute left-[66.666%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300"
+        className="hidden lg:flex absolute left-[66.666%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
       >
         <ArrowLeftRightIcon className="h-4 w-4" />
       </span>

@@ -6,7 +6,7 @@ import { CheckCircleIcon, ListChecksIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['isValid'] };
 
-export const IsValidElementPlayground = ({ content }: Props) => (
+export const IsValidElementTable = ({ content }: Props) => (
   <section id="is-valid" aria-labelledby="heading-is-valid" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="is-valid"

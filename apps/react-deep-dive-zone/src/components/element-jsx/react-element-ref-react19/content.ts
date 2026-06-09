@@ -270,11 +270,11 @@ const ko: ReactElementRefReact19Content = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '이제 Fiber 챕터로 넘어갑니다',
+    title: '이제 개발 모드 전용 정보로 넘어갑니다',
     description:
-      'ref가 더 강력해진 배경을 이해했다면, 이번에는 React가 상태를 어떻게 관리하고 연결하는지 공식 객체인 Fiber를 깊이 살펴봅니다.',
+      'ref까지 살펴봤다면, 이번에는 개발 모드에서만 채워지는 _owner와 디버깅용 정보가 Element에서 어떤 역할을 하는지 알아봅니다.',
     cta: '다음 페이지로 이동',
-    href: '/element-vs-fiber',
+    href: '/element-owner',
   },
 };
 
@@ -445,11 +445,11 @@ const en: ReactElementRefReact19Content = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Time to enter the Fiber chapter',
+    title: 'Next: dev-mode-only info',
     description:
-      'Now that you understand why ref became stronger, next look at how React manages and connects state through its core object — Fiber.',
+      'Now that you have seen ref, look at how _owner and dev-mode-only debugging info work on a React Element.',
     cta: 'Go to the next page',
-    href: '/element-vs-fiber',
+    href: '/element-owner',
   },
 };
 

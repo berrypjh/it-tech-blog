@@ -129,7 +129,7 @@ const Connector = ({ vertical, dashed }: { vertical?: boolean; dashed?: boolean 
           : 'bg-gradient-to-b from-transparent via-[var(--term-border)] to-transparent',
       )}
     />
-    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300">
+    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
       <ArrowDownIcon className="h-3.5 w-3.5" />
     </span>
   </div>

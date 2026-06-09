@@ -118,7 +118,6 @@ export type ReactElementKeySeparatedContent = {
     title: string;
     description: string;
     wrongLabel: string;
-    correctLabel: string;
     cards: Misconception[];
   };
   fiber: {
@@ -261,7 +260,6 @@ const ko: ReactElementKeySeparatedContent = {
     title: '두 번 마주치는 함정',
     description: 'key를 처음 다룰 때 가장 흔히 생기는 오해 두 가지를 정확히 정리합니다.',
     wrongLabel: '오해',
-    correctLabel: '정확히',
     cards: [
       {
         id: 'props-key',
@@ -467,7 +465,6 @@ const en: ReactElementKeySeparatedContent = {
     title: 'Two pitfalls you only fall into once',
     description: 'The two most frequent mix-ups when first encountering key.',
     wrongLabel: 'Myth',
-    correctLabel: 'Truth',
     cards: [
       {
         id: 'props-key',

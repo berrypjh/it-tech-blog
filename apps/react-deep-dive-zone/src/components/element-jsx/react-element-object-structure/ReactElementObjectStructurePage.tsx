@@ -8,7 +8,7 @@ import { ElementLearningCheck } from './sections/ElementLearningCheck';
 import { ElementObjectHero } from './sections/ElementObjectHero';
 import { ElementShapeOverview } from './sections/ElementShapeOverview';
 import { ElementSourceCheckpoint } from './sections/ElementSourceCheckpoint';
-import { IsValidElementPlayground } from './sections/IsValidElementPlayground';
+import { IsValidElementTable } from './sections/IsValidElementTable';
 import { PlainObjectComparison } from './sections/PlainObjectComparison';
 import { reactElementObjectStructureContent } from './content';
 
@@ -23,7 +23,7 @@ export const ReactElementObjectStructurePage = ({ locale }: Props) => {
       <ElementShapeOverview content={c.overview} />
       <ElementFieldCards content={c.fields} />
       <ElementSourceCheckpoint content={c.checkpoint} />
-      <IsValidElementPlayground content={c.isValid} />
+      <IsValidElementTable content={c.isValid} />
       <PlainObjectComparison content={c.compare} />
       <ElementLearningCheck content={c.learningCheck} />
       <NextStepBanner content={c.nextStep} />

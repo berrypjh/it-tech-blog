@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { DownArrow } from '../../../shared/DownArrow';
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
@@ -23,19 +25,7 @@ export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.flowTitle}: ${content.flowItems.map((item) => item.title).join(' → ')}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col items-center gap-sm" aria-hidden="true">
         {content.flowItems.map((item, i) => (
           <li key={item.id} className="flex w-full flex-col items-center gap-sm">
@@ -44,7 +34,7 @@ export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
           </li>
         ))}
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -81,12 +71,3 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

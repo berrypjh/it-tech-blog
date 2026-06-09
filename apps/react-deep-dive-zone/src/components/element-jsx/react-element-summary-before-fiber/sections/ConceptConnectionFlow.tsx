@@ -37,11 +37,11 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
                 aria-hidden="true"
                 className={cn(
                   'pointer-events-none absolute hidden lg:flex items-center justify-center',
-                  'top-1/2 -right-2 -translate-y-1/2 w-5 h-5 rounded-full z-10',
+                  'top-1/2 -right-3 -translate-y-1/2 w-6 h-6 rounded-full z-10',
                   'bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]',
                 )}
               >
-                <ArrowRightIcon className="h-3 w-3" />
+                <ArrowRightIcon className="h-3.5 w-3.5" />
               </span>
             )}
           </li>
