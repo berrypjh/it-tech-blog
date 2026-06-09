@@ -134,7 +134,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
 const BranchSvg = () => (
   <svg
     viewBox="0 0 600 32"
-    className="w-full h-6 text-teal-400/70 dark:text-teal-600/70"
+    className="w-full h-6 text-[var(--term-accent)]"
     preserveAspectRatio="none"
     aria-hidden="true"
   >

@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
@@ -12,19 +13,11 @@ type Props = { hero: SharedContent['hero']; className?: string };
  * 중앙 shared 허브 → 점선 → shared를 함께 쓰는 패키지 3종(반응형 그리드) → 공통 항목 체크리스트.
  */
 export const SharedHubDiagram = ({ hero, className }: Props) => (
-  <div
-    className={cn(
-      '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-      className,
-    )}
+  <HeroDiagramShell
+    a11yLabel={hero.a11yDiagram}
+    className={className}
+    gradient="radial-gradient(circle at 50% 0%, rgba(56,189,248,0.14), transparent 55%)"
   >
-    <span
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.14),transparent_55%)]"
-    />
-    <p className="sr-only">{hero.a11yDiagram}</p>
-
     <div className="relative flex flex-col items-center gap-md">
       <HubCenter label={hero.centerLabel} subtitle={hero.centerSubtitle} />
 
@@ -60,7 +53,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
         ))}
       </ul>
     </div>
-  </div>
+  </HeroDiagramShell>
 );
 
 const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => (

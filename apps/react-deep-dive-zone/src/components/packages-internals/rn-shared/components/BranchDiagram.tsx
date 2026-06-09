@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { DownArrow } from '../../../shared/DownArrow';
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { RnContent } from '../content';
 import { rnIcon } from '../icons';
@@ -13,20 +15,12 @@ type Props = { hero: RnContent['hero']; className?: string };
  */
 export const BranchDiagram = ({ hero, className }: Props) => {
   return (
-    <div
-      className={cn(
-        'relative w-full rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'px-md py-lg sm:p-lg overflow-hidden',
-        className,
-      )}
+    <HeroDiagramShell
+      a11yLabel={hero.a11y}
+      className={className}
+      padding="px-md py-lg sm:p-lg"
+      gradient="radial-gradient(circle at 50% 25%, rgba(45,212,191,0.14), transparent 55%)"
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(45,212,191,0.14),transparent_55%)]"
-      />
-      <p className="sr-only">{hero.a11y}</p>
-
       <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
         {/* Top: React Element */}
         <ElementCard label={hero.elementLabel} code={hero.elementCode} />
@@ -55,7 +49,7 @@ export const BranchDiagram = ({ hero, className }: Props) => {
           />
         </div>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -164,15 +158,6 @@ const BranchColumn = ({ title, steps, tone, iconName }: BranchColumnProps) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="text-[var(--term-accent)] text-xl leading-none inline-flex items-center justify-center"
-  >
-    ↓
-  </span>
-);
 
 const BranchArrows = () => (
   <svg

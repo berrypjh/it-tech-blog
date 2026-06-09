@@ -142,7 +142,7 @@ const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
 const BranchSvg = () => (
   <svg
     viewBox="0 0 600 40"
-    className="w-full h-8 text-cyan-400/70 dark:text-cyan-600/70"
+    className="w-full h-8 text-[var(--term-accent)]"
     preserveAspectRatio="none"
     aria-hidden="true"
   >

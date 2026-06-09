@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { SchedulerContent } from '../content';
 import { schedulerIcon } from '../icons';
@@ -12,21 +13,12 @@ type Props = { hero: SchedulerContent['hero']; className?: string };
  */
 export const QueueFlowDiagram = ({ hero, className }: Props) => {
   return (
-    <div
-      className={cn(
-        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'px-md py-lg sm:p-lg overflow-hidden',
-        className,
-      )}
+    <HeroDiagramShell
+      a11yLabel={hero.a11yFlow}
+      className={className}
+      padding="px-md py-lg sm:p-lg"
+      gradient="radial-gradient(circle at 50% 40%, rgba(56,189,248,0.14), transparent 55%)"
     >
-      {/* 글로우 */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(56,189,248,0.14),transparent_55%)]"
-      />
-      <p className="sr-only">{hero.a11yFlow}</p>
-
       <div
         className={cn(
           'relative grid items-stretch gap-md',
@@ -123,7 +115,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       >
         {hero.emphasis}
       </p>
-    </div>
+    </HeroDiagramShell>
   );
 };
 

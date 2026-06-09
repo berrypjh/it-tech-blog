@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DvcContent, HeroSideArea } from '../content';
 import { dvcIcon } from '../icons';
@@ -12,20 +13,12 @@ type Props = { hero: DvcContent['hero']; className?: string };
  */
 export const SplitDiagram = ({ hero, className }: Props) => {
   return (
-    <div
-      className={cn(
-        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'px-md py-lg sm:p-lg overflow-hidden',
-        className,
-      )}
+    <HeroDiagramShell
+      a11yLabel={hero.a11y}
+      className={className}
+      padding="px-md py-lg sm:p-lg"
+      gradient="radial-gradient(circle at 18% 45%, rgba(45,212,191,0.15), transparent 55%), radial-gradient(circle at 82% 45%, rgba(167,139,250,0.16), transparent 55%)"
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_45%,rgba(45,212,191,0.15),transparent_55%),radial-gradient(circle_at_82%_45%,rgba(167,139,250,0.16),transparent_55%)]"
-      />
-      <p className="sr-only">{hero.a11y}</p>
-
       <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
         <SideArea area={hero.common} tone="teal" />
         {/* 중앙 세로 분리선 — 좁은 폭에서는 dashed 가로 separator */}
@@ -38,7 +31,7 @@ export const SplitDiagram = ({ hero, className }: Props) => {
         />
         <SideArea area={hero.domSpecific} tone="violet" />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 

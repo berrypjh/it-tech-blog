@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
@@ -26,21 +27,11 @@ export const PackageOverviewCard = ({
   a11yFlow,
   className,
 }: Props) => (
-  <div
-    className={cn(
-      'relative w-full rounded-2xl border bg-[var(--term-bg)]',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      'p-md sm:p-lg overflow-hidden',
-      className,
-    )}
+  <HeroDiagramShell
+    a11yLabel={a11yFlow}
+    className={className}
+    gradient="radial-gradient(circle at 18% 12%, rgba(56,189,248,0.10), transparent 55%), radial-gradient(circle at 82% 88%, rgba(251,191,36,0.10), transparent 55%)"
   >
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(56,189,248,0.10),transparent_55%),radial-gradient(circle_at_82%_88%,rgba(251,191,36,0.10),transparent_55%)]"
-    />
-
-    <p className="sr-only">{a11yFlow}</p>
-
     <span className="relative block text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
       {flowLabel}
     </span>
@@ -60,7 +51,7 @@ export const PackageOverviewCard = ({
         <PackageRow key={node.label} node={node} dashed />
       ))}
     </ul>
-  </div>
+  </HeroDiagramShell>
 );
 
 type PackageRowProps = { node: ArchitectureNode | SideNode; dashed?: boolean };

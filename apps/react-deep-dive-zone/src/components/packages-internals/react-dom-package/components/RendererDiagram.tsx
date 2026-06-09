@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
@@ -12,19 +13,11 @@ type Props = { content: ReactDomContent['hero']; className?: string };
  * 중앙 react-dom atom 카드 → 점선 → renderer가 만들어내는 출력 3종을 반응형 그리드(1 → 3열)로 보여준다.
  */
 export const RendererDiagram = ({ content, className }: Props) => (
-  <div
-    className={cn(
-      '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-      className,
-    )}
+  <HeroDiagramShell
+    a11yLabel={content.a11yFlow}
+    className={className}
+    gradient="radial-gradient(circle at 50% 0%, rgba(20,184,166,0.16), transparent 55%)"
   >
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(20,184,166,0.16),transparent_55%)]"
-    />
-    <p className="sr-only">{content.a11yFlow}</p>
-
     <div className="relative flex flex-col items-center gap-md">
       <CenterReactDomCard center={content.centerCard} />
 
@@ -41,7 +34,7 @@ export const RendererDiagram = ({ content, className }: Props) => (
         ))}
       </ul>
     </div>
-  </div>
+  </HeroDiagramShell>
 );
 
 const CenterReactDomCard = ({ center }: { center: ReactDomContent['hero']['centerCard'] }) => (

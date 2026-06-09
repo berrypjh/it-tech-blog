@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { ApiToken, ReactPackageContent } from '../content';
@@ -20,22 +21,12 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
   const rightTokens = hero.tokens.filter((t) => t.side === 'right');
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'px-md py-lg sm:p-lg overflow-hidden',
-        className,
-      )}
+    <HeroDiagramShell
+      a11yLabel={hero.apiNetworkAriaLabel}
+      className={className}
+      padding="px-md py-lg sm:p-lg"
+      gradient="radial-gradient(circle at 50% 50%, rgba(56,189,248,0.14), transparent 55%)"
     >
-      {/* 옅은 글로우 */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.14),transparent_55%)]"
-      />
-
-      <p className="sr-only">{hero.apiNetworkAriaLabel}</p>
-
       <div
         className={cn(
           'relative grid items-center gap-sm',
@@ -79,7 +70,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
           ))}
         </ul>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 

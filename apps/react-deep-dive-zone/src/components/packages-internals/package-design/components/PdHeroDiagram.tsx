@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { DownArrow } from '../../../shared/DownArrow';
+import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowNode } from '../content';
@@ -13,19 +15,11 @@ type Props = { main: FlowNode[]; a11y: string; className?: string };
  * 위에서 아래로 잇는 컴팩트 stepper. (보조 축은 본문 다이어그램에서 다룬다)
  */
 export const PdHeroDiagram = ({ main, a11y, className }: Props) => (
-  <div
-    className={cn(
-      '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-      className,
-    )}
+  <HeroDiagramShell
+    a11yLabel={a11y}
+    className={className}
+    gradient="radial-gradient(circle at 50% 0%, rgba(56,189,248,0.12), transparent 55%)"
   >
-    <span
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.12),transparent_55%)]"
-    />
-    <p className="sr-only">{a11y}</p>
-
     <ol className="relative flex flex-col items-center gap-sm" aria-hidden="true">
       {main.map((node, i) => (
         <li key={node.id} className="flex w-full flex-col items-center gap-sm">
@@ -34,7 +28,7 @@ export const PdHeroDiagram = ({ main, a11y, className }: Props) => (
         </li>
       ))}
     </ol>
-  </div>
+  </HeroDiagramShell>
 );
 
 const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean }) => {
@@ -69,12 +63,3 @@ const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean })
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);
