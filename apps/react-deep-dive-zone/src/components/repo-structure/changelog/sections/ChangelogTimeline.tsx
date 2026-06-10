@@ -45,8 +45,9 @@ export const ChangelogTimeline = ({ content }: Props) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-950',
+            'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
+            'border-teal-300 bg-teal-100 text-teal-700',
+            'dark:border-teal-700/60 dark:bg-teal-950/60 dark:text-teal-200',
           )}
         >
           <StarIcon className="h-4 w-4" />

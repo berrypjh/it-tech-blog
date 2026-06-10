@@ -56,7 +56,8 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border-2',
-            'border-slate-700 bg-slate-900 text-emerald-300',
+            'border-emerald-300 bg-emerald-100 text-emerald-700',
+            'dark:border-emerald-700/60 dark:bg-emerald-950/60 dark:text-emerald-300',
           )}
         >
           <BadgeCheckIcon className="h-6 w-6" />
@@ -65,8 +66,11 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
           <h3 className="text-xl sm:text-2xl font-bold font-mono tracking-tight text-[var(--term-fg)]">
             {content.version}
           </h3>
-          <span className="inline-flex items-center gap-1.5 self-start rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-400 text-emerald-950">
-            <span aria-hidden="true" className="inline-block w-1 h-1 rounded-full bg-emerald-900" />
+          <span className="inline-flex items-center gap-1.5 self-start rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">
+            <span
+              aria-hidden="true"
+              className="inline-block w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400"
+            />
             {content.versionBadge}
           </span>
         </div>

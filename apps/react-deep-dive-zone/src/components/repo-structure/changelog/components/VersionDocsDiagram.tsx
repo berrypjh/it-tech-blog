@@ -7,7 +7,7 @@ import { BookOpenIcon, FileTextIcon, TagIcon } from '../icons';
 type Props = { content: ChangelogContent['hero'] };
 
 /**
- * Hero 우측: dark navy version badge + Releases (purple) / CHANGELOG (teal) 카드.
+ * Hero 우측: version badge + Releases (purple) / CHANGELOG (teal) 카드.
  */
 export const VersionDocsDiagram = ({ content }: Props) => {
   return (
@@ -53,20 +53,23 @@ const VersionBadge = ({ version, badge }: VersionProps) => (
   <span
     className={cn(
       'inline-flex items-center gap-2 rounded-full border px-4 py-1.5',
-      'border-slate-700 bg-slate-900 text-slate-100',
+      'border-slate-300 bg-slate-100 text-slate-700',
       'dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100',
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <TagIcon className="h-3.5 w-3.5 text-sky-300" aria-hidden="true" />
+    <TagIcon className="h-3.5 w-3.5 text-sky-500 dark:text-sky-300" aria-hidden="true" />
     <span className="text-sm font-bold font-mono tracking-tight">{version}</span>
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-        'bg-emerald-400 text-emerald-950',
+        'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300',
       )}
     >
-      <span aria-hidden="true" className="inline-block w-1 h-1 rounded-full bg-emerald-900" />
+      <span
+        aria-hidden="true"
+        className="inline-block w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400"
+      />
       {badge}
     </span>
   </span>
