@@ -1,11 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubIcon } from '../../../shared/GithubIcon';
+import { GithubButton } from '../../../shared/GithubButton';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { InternalFileCard, ReactPackageContent } from '../content';
-import { ArrowRightIcon, InfoIcon, MapIcon } from '../icons';
+import { InfoIcon, MapIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['hub']; sectionId: string };
 
@@ -56,23 +56,7 @@ export const PublicApiHubSection = ({ content, sectionId }: Props) => {
         <div className="flex flex-col gap-md min-w-0">
           <CodePreviewPanel header={content.codeCaption} badge="main" code={content.code} />
 
-          <a
-            href={content.codeHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
-              'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-            )}
-          >
-            <GithubIcon className="h-3.5 w-3.5" />
-            {content.codeCta}
-            <ArrowRightIcon
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
+          <GithubButton href={content.codeHref} label={content.codeCta} className="min-w-0" />
         </div>
       </div>
     </section>

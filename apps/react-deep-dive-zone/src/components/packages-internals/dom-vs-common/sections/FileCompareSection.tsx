@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubIcon } from '../../../shared/GithubIcon';
+import { GithubButton } from '../../../shared/GithubButton';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
@@ -105,23 +105,11 @@ const FileCardView = ({ card }: { card: FileCard }) => {
 
       <CodePreviewPanel header={card.fn} code={card.code} />
 
-      <a
+      <GithubButton
         href={card.codeLink.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-          'group mt-auto inline-flex min-w-0 items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
-          'bg-[var(--term-accent)] text-[var(--term-bg)] transition-all hover:opacity-90',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-        )}
-      >
-        <GithubIcon className="h-3.5 w-3.5" />
-        <span className="font-mono">{card.codeLink.label}</span>
-        <dvcIcon.arrowRight
-          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </a>
+        label={<span className="font-mono">{card.codeLink.label}</span>}
+        className="mt-auto min-w-0"
+      />
     </article>
   );
 };
