@@ -87,6 +87,7 @@ export type ChangelogContent = {
     eyebrow: string;
     title: string;
     versionLabel: string;
+    exampleBadge: string;
     version: string;
     versionBadge: string;
     meta: string;
@@ -247,9 +248,10 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       eyebrow: '03 · latest release example',
       title: '최신 릴리즈 확인 예시',
       versionLabel: '현재 버전 확인',
+      exampleBadge: '예시',
       version: 'v19.2.0',
       versionBadge: 'Latest',
-      meta: '2024-05-22 · 2 days ago',
+      meta: '게시일 · 경과 시간 표시',
       descriptionText: '개선, 버그 수정, 보안 수정이 포함된 최신 패치 릴리즈입니다.',
       stats: [
         { label: 'Commits', value: '1,284', icon: 'gitCommit' },
@@ -493,9 +495,10 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       eyebrow: '03 · latest release example',
       title: 'Latest release example',
       versionLabel: 'Current version',
+      exampleBadge: 'Example',
       version: 'v19.2.0',
       versionBadge: 'Latest',
-      meta: '2024-05-22 · 2 days ago',
+      meta: 'Published date · time since release',
       descriptionText: 'A patch release including improvements, bug fixes and security fixes.',
       stats: [
         { label: 'Commits', value: '1,284', icon: 'gitCommit' },

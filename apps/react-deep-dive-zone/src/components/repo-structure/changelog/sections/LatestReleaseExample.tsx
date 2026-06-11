@@ -75,6 +75,10 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
           </span>
         </div>
       </div>
+
+      <span className="self-start inline-flex items-center rounded-full border border-dashed px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border-[var(--term-border)] text-[var(--term-muted)]">
+        {content.exampleBadge}
+      </span>
     </div>
 
     <span className="text-xsm text-[var(--term-muted)] font-mono">{content.meta}</span>

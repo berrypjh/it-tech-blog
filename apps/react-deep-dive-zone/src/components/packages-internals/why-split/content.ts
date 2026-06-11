@@ -42,9 +42,11 @@ export type ArchitectureIconName =
 export type MisconceptionCard = {
   id: string;
   badgeWrong: string;
-  badgeRight: string;
   wrong: string;
   right: string;
+  note: string;
+  iconName: 'boxes' | 'monitor' | 'clock';
+  iconTone: ToneKey;
 };
 
 export type ExplanationCard = {
@@ -96,8 +98,10 @@ export type WhySplitContent = {
     rightCards: ExplanationCard[];
   };
   misconception: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
     cards: MisconceptionCard[];
   };
   fullMap: {
@@ -326,29 +330,38 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
     },
     architecture: koArchitecture,
     misconception: {
-      eyebrow: '01 · misconceptions',
+      badge: '01',
+      eyebrow: '가장 흔한 오해 3가지',
       title: '흔한 오해 바로잡기',
+      description:
+        'React를 하나의 덩어리로 생각하기 쉽지만, 실제로는 여러 패키지가 역할을 나눠 협력합니다.',
       cards: [
         {
           id: 'all-in-react',
           badgeWrong: '오해 1',
-          badgeRight: '정확히',
           wrong: 'React가 모든 걸 직접 처리한다.',
           right: '여러 패키지가 역할을 나누어 협력한다.',
+          note: '하나처럼 보이지만 react / renderer / scheduler가 층을 나눠 동작합니다.',
+          iconName: 'boxes',
+          iconTone: 'violet',
         },
         {
           id: 'react-dom-is-react',
           badgeWrong: '오해 2',
-          badgeRight: '정확히',
           wrong: 'react-dom이 곧 React의 본체다.',
           right: 'react-dom은 DOM 환경에 연결하는 renderer다.',
+          note: '같은 결과를 다른 환경(Native 등)에 그리려면 renderer만 교체하면 됩니다.',
+          iconName: 'monitor',
+          iconTone: 'violet',
         },
         {
           id: 'scheduler-renders',
           badgeWrong: '오해 3',
-          badgeRight: '정확히',
           wrong: 'scheduler가 렌더링을 수행한다.',
           right: 'scheduler는 실행 시점을 조율하는 기반 계층이다.',
+          note: '무엇을 그릴지가 아니라 언제 일할지를 결정합니다.',
+          iconName: 'clock',
+          iconTone: 'violet',
         },
       ],
     },
@@ -528,29 +541,38 @@ function App() {
     },
     architecture: enArchitecture,
     misconception: {
-      eyebrow: '01 · misconceptions',
+      badge: '01',
+      eyebrow: 'Three most common myths',
       title: 'Clear up common misconceptions',
+      description:
+        'It is easy to picture React as one monolith, but several packages split the work and cooperate.',
       cards: [
         {
           id: 'all-in-react',
           badgeWrong: 'Myth 1',
-          badgeRight: 'Truth',
           wrong: 'React handles everything itself.',
           right: 'Multiple packages divide roles and cooperate.',
+          note: 'It looks like one thing, but react / renderer / scheduler act as separate layers.',
+          iconName: 'boxes',
+          iconTone: 'violet',
         },
         {
           id: 'react-dom-is-react',
           badgeWrong: 'Myth 2',
-          badgeRight: 'Truth',
           wrong: 'react-dom is the real body of React.',
           right: 'react-dom is the renderer that wires React to the DOM.',
+          note: 'To render the same result elsewhere (Native, etc.) you only swap the renderer.',
+          iconName: 'monitor',
+          iconTone: 'violet',
         },
         {
           id: 'scheduler-renders',
           badgeWrong: 'Myth 3',
-          badgeRight: 'Truth',
           wrong: 'The scheduler performs rendering.',
-          right: 'The scheduler coordinates *when* work runs — nothing more.',
+          right: 'The scheduler coordinates when work runs — a base layer.',
+          note: 'It decides when to work, not what to draw.',
+          iconName: 'clock',
+          iconTone: 'violet',
         },
       ],
     },

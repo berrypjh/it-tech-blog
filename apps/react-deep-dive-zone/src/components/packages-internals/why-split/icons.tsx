@@ -16,6 +16,7 @@ import type { ComponentType, SVGProps } from 'react';
 import type { ArchitectureIconName } from './content';
 
 export {
+  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   CheckCircle2 as CheckCircleIcon,
   Compass as CompassIcon,

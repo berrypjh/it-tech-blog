@@ -43,7 +43,7 @@ const RoutineRow = ({ step }: RowProps) => {
       className={cn(
         'group grid grid-cols-[auto_auto_minmax(0,1fr)] sm:grid-cols-[auto_auto_minmax(0,_0.4fr)_minmax(0,_0.6fr)]',
         'items-center gap-sm sm:gap-md px-md sm:px-lg py-md',
-        'transition-colors hover:bg-blue-50/40 dark:hover:bg-blue-950/20',
+        'transition-colors hover:bg-violet-50/40 dark:hover:bg-violet-950/20',
       )}
     >
       {/* 번호 원형 */}
@@ -51,7 +51,7 @@ const RoutineRow = ({ step }: RowProps) => {
         aria-hidden="true"
         className={cn(
           'inline-flex items-center justify-center w-10 h-10 rounded-full',
-          'bg-gradient-to-br from-blue-500 to-blue-600 text-white font-bold text-sm tabular-nums',
+          'bg-violet-500 text-white dark:bg-violet-600/70 dark:text-violet-100 font-bold text-sm tabular-nums',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -63,8 +63,8 @@ const RoutineRow = ({ step }: RowProps) => {
         aria-hidden="true"
         className={cn(
           'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-          'border-blue-200 bg-blue-50/80 text-blue-700',
-          'dark:border-blue-700/60 dark:bg-blue-950/40 dark:text-blue-200',
+          'border-violet-200 bg-violet-50/80 text-violet-700',
+          'dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200',
         )}
       >
         <Icon className="h-5 w-5" />
