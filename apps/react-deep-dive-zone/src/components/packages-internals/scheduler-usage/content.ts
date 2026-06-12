@@ -125,8 +125,9 @@ export type SchedulerContent = {
     eyebrow: string;
     title: string;
     description: string;
-    waiting: { title: string; items: string[] };
-    order: { title: string; steps: number[]; reasons: string[] };
+    waitingTitle: string;
+    orderTitle: string;
+    tasks: { label: string; priority: number; reason: string }[];
     result: { title: string; items: string[] };
   };
   nextStep: {
@@ -365,24 +366,18 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     queue: {
       eyebrow: '06 · task queue',
       title: '작업 대기열 체험하기',
-      description: '도착 순서와 실제 처리 순서가 어떻게 달라지는지 카드 세 장으로 살펴봅니다.',
-      waiting: {
-        title: '대기열 (도착 순서)',
-        items: [
-          '사용자 입력한 키보드 이벤트',
-          '검색 결과 목록 200개 렌더링',
-          '배경 영역 transition 업데이트',
-        ],
-      },
-      order: {
-        title: '처리 순서 (scheduler 판단)',
-        steps: [1, 2, 3],
-        reasons: [
-          '1번: 입력 반응이 가장 중요',
-          '2번: 화면에 직접 보이는 결과',
-          '3번: 당장 보이지 않아도 되는 전환 작업',
-        ],
-      },
+      description: '도착한 순서를 스케줄러가 어떻게 처리 순서로 재배치하는지 실행해 봅니다.',
+      waitingTitle: '대기열 (도착 순서)',
+      orderTitle: '처리 순서 (scheduler 판단)',
+      tasks: [
+        { label: '검색 결과 목록 200개 렌더링', priority: 2, reason: '화면에 직접 보이는 결과' },
+        {
+          label: '배경 영역 transition 업데이트',
+          priority: 3,
+          reason: '당장 보이지 않아도 되는 전환 작업',
+        },
+        { label: '사용자 입력한 키보드 이벤트', priority: 1, reason: '입력 반응이 가장 중요' },
+      ],
       result: {
         title: '결과',
         items: [
@@ -598,24 +593,14 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     queue: {
       eyebrow: '06 · task queue',
       title: 'Walk through a task queue',
-      description: 'See how arrival order is reshaped into execution order across three cards.',
-      waiting: {
-        title: 'Queue (arrival order)',
-        items: [
-          'Typed keyboard event',
-          'Render 200 search results',
-          'Background transition update',
-        ],
-      },
-      order: {
-        title: 'Execution order (scheduler)',
-        steps: [1, 2, 3],
-        reasons: [
-          '1: Input reaction matters most',
-          '2: User-visible result',
-          '3: Off-screen transition',
-        ],
-      },
+      description: 'Run it and watch the scheduler reshape arrival order into execution order.',
+      waitingTitle: 'Queue (arrival order)',
+      orderTitle: 'Execution order (scheduler)',
+      tasks: [
+        { label: 'Render 200 search results', priority: 2, reason: 'User-visible result' },
+        { label: 'Background transition update', priority: 3, reason: 'Off-screen transition' },
+        { label: 'Typed keyboard event', priority: 1, reason: 'Input reaction matters most' },
+      ],
       result: {
         title: 'Outcome',
         items: ['Minimal input lag', 'Smooth scroll & typing', 'Large work without UI freezes'],
