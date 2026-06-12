@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { ApiGroupCard, ReactPackageContent } from '../content';
@@ -8,11 +8,12 @@ import { reactPackageIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['groups'] };
 
-export const ApiGroupsSection = ({ content }: Props) => {
+export const ApiGroups = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-groups" className="space-y-md">
-      <SectionHeader
+    <section aria-labelledby="heading-groups" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="groups"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

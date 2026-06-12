@@ -4,6 +4,8 @@ type Props = {
   eyebrow: string;
   title: string;
   description?: string;
+  /** description의 가독성 제한 폭(68ch)을 풀어 컨테이너 전체 폭을 쓰게 한다. */
+  descriptionFullWidth?: boolean;
   icon?: React.ReactNode;
 };
 
@@ -11,7 +13,15 @@ type Props = {
  * 섹션 상단 헤더.
  * 작업한 페이지(repo-structure)와 동일한 `// 0N · eyebrow` 주석 형태.
  */
-export const SectionBadgeHeader = ({ id, number, eyebrow, title, description, icon }: Props) => (
+export const SectionBadgeHeader = ({
+  id,
+  number,
+  eyebrow,
+  title,
+  description,
+  descriptionFullWidth,
+  icon,
+}: Props) => (
   <header className="flex flex-col gap-sm">
     <div className="flex items-center gap-sm w-full">
       <span className="text-[var(--term-accent)] font-bold text-xsm">{'//'}</span>
@@ -39,7 +49,11 @@ export const SectionBadgeHeader = ({ id, number, eyebrow, title, description, ic
     </div>
 
     {description && (
-      <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] max-w-[68ch] break-keep">
+      <p
+        className={`text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep ${
+          descriptionFullWidth ? 'max-w-none' : 'max-w-[68ch]'
+        }`}
+      >
         {description}
       </p>
     )}

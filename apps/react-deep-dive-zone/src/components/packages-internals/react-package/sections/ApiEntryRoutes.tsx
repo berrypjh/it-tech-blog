@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
 import type { EntryRouteCard, ReactPackageContent } from '../content';
@@ -8,11 +8,12 @@ import { ChevronRightIcon, CodeIcon, ExternalLinkIcon, reactPackageIcon } from '
 
 type Props = { content: ReactPackageContent['routes']; sectionId: string };
 
-export const ApiEntryRoutesSection = ({ content, sectionId }: Props) => {
+export const ApiEntryRoutes = ({ content, sectionId }: Props) => {
   return (
     <section id={sectionId} aria-labelledby="heading-routes" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+      <SectionBadgeHeader
         id="routes"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { CapabilityItem, ReactPackageContent } from '../content';
 import { CheckCircleIcon, StarIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['capabilities'] };
 
-export const CapabilitiesSection = ({ content }: Props) => {
+export const CapabilityComparison = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-capabilities" className="space-y-md">
-      <SectionHeader
+    <section aria-labelledby="heading-capabilities" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="capabilities"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<StarIcon className="h-5 w-5" />}

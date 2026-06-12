@@ -87,34 +87,35 @@ export type ReactPackageContent = {
     apiNetworkAriaLabel: string;
   };
   groups: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ApiGroupCard[];
   };
-  hub: {
+  sourceCheckpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    items: CheckpointItem[];
     files: InternalFileCard[];
+    filesLabel: string;
     emphasis: string;
     codeCaption: string;
     code: string;
     codeCta: string;
     codeHref: string;
   };
-  checkpoint: {
-    eyebrow: string;
-    title: string;
-    items: CheckpointItem[];
-  };
   routes: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: EntryRouteCard[];
   };
   capabilities: {
+    badge: string;
     eyebrow: string;
     title: string;
     doesTitle: string;
@@ -309,7 +310,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'useState, useEffect, createElement, memo, lazy, useTransition, useActionState, use API가 중앙 react 카드와 점선으로 연결되는 네트워크',
     },
     groups: {
-      eyebrow: '01 · api groups',
+      badge: '01',
+      eyebrow: 'api groups',
       title: '우리가 실제로 쓰는 API 묶음',
       description: 'react 패키지가 외부로 공개하는 API는 크게 다섯 가지 묶음으로 나눠집니다.',
       cards: [
@@ -360,37 +362,12 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         },
       ],
     },
-    hub: {
-      eyebrow: '02 · public api hub',
+    sourceCheckpoint: {
+      badge: '02',
+      eyebrow: 'public api source checkpoint',
       title: 'public API와 내부 구현 파일의 분리',
       description:
-        'ReactClient.js는 직접 구현하지 않고, 여러 내부 파일에서 import해 public API로 export합니다.',
-      files: [
-        { id: 'hooks', name: 'ReactHooks.js', description: 'Hooks 구현 모음', tone: 'sky' },
-        {
-          id: 'jsx',
-          name: 'ReactJSXElement.js',
-          description: 'Element 생성/검증 로직',
-          tone: 'violet',
-        },
-        { id: 'memo', name: 'ReactMemo.js', description: 'memo 구현', tone: 'amber' },
-        { id: 'lazy', name: 'ReactLazy.js', description: 'lazy 구현', tone: 'cyan' },
-        {
-          id: 'transition',
-          name: 'ReactStartTransition.js',
-          description: 'startTransition 구현',
-          tone: 'teal',
-        },
-      ],
-      emphasis: 'ReactClient.js는 구현의 끝이 아니라 public API가 모이는 입구다.',
-      codeCaption: 'packages/react/src/ReactClient.js',
-      code: REACT_CLIENT_CODE,
-      codeCta: 'GitHub에서 ReactClient.js 보기',
-      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-    },
-    checkpoint: {
-      eyebrow: '03 · code checkpoint',
-      title: '코드 체크포인트',
+        'public API가 실제로 어떤 내부 파일에서 모이는지, ReactClient.js의 import/export 구문에서 직접 확인합니다.',
       items: [
         {
           id: 'file',
@@ -414,9 +391,34 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           tone: 'amber',
         },
       ],
+      files: [
+        { id: 'hooks', name: 'ReactHooks.js', description: 'Hooks 구현 모음', tone: 'sky' },
+        {
+          id: 'jsx',
+          name: 'ReactJSXElement.js',
+          description: 'Element 생성/검증 로직',
+          tone: 'violet',
+        },
+        { id: 'memo', name: 'ReactMemo.js', description: 'memo 구현', tone: 'amber' },
+        { id: 'lazy', name: 'ReactLazy.js', description: 'lazy 구현', tone: 'cyan' },
+        {
+          id: 'transition',
+          name: 'ReactStartTransition.js',
+          description: 'startTransition 구현',
+          tone: 'teal',
+        },
+      ],
+      filesLabel: '내부 구현 파일',
+      emphasis:
+        'ReactClient.js는 직접 구현하는 곳이 아니라, 내부 파일들의 기능을 모아 public API로 내보내는 입구입니다.',
+      codeCaption: 'packages/react/src/ReactClient.js',
+      code: REACT_CLIENT_CODE,
+      codeCta: 'GitHub에서 ReactClient.js 보기',
+      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     routes: {
-      eyebrow: '04 · api entry routes',
+      badge: '03',
+      eyebrow: 'api entry routes',
       title: 'API별 내부 진입 경로',
       description: '대표 API 3개가 ReactClient.js를 거쳐 어떤 내부 파일로 이어지는지 따라갑니다.',
       cards: [
@@ -453,7 +455,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     capabilities: {
-      eyebrow: '05 · does / does not',
+      badge: '04',
+      eyebrow: 'does / does not',
       title: 'react 패키지가 하는 일 / 하지 않는 일',
       doesTitle: '하는 일',
       doesItems: [
@@ -511,7 +514,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         'useState, useEffect, createElement, memo, lazy, useTransition, useActionState, use connect to the central react card with dashed lines.',
     },
     groups: {
-      eyebrow: '01 · api groups',
+      badge: '01',
+      eyebrow: 'api groups',
       title: 'The API bundles you actually use',
       description: 'The public API of react divides into five clear bundles.',
       cards: [
@@ -562,38 +566,12 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
         },
       ],
     },
-    hub: {
-      eyebrow: '02 · public api hub',
+    sourceCheckpoint: {
+      badge: '02',
+      eyebrow: 'public api source checkpoint',
       title: 'Separating public API from internal files',
       description:
-        'ReactClient.js does not implement anything itself — it imports from several internal files and re-exports them as the public API.',
-      files: [
-        { id: 'hooks', name: 'ReactHooks.js', description: 'Hook implementations', tone: 'sky' },
-        {
-          id: 'jsx',
-          name: 'ReactJSXElement.js',
-          description: 'Element creation & validation',
-          tone: 'violet',
-        },
-        { id: 'memo', name: 'ReactMemo.js', description: 'memo implementation', tone: 'amber' },
-        { id: 'lazy', name: 'ReactLazy.js', description: 'lazy implementation', tone: 'cyan' },
-        {
-          id: 'transition',
-          name: 'ReactStartTransition.js',
-          description: 'startTransition implementation',
-          tone: 'teal',
-        },
-      ],
-      emphasis:
-        'ReactClient.js is not the end of the implementation — it is the doorway where the public API meets.',
-      codeCaption: 'packages/react/src/ReactClient.js',
-      code: REACT_CLIENT_CODE,
-      codeCta: 'View ReactClient.js on GitHub',
-      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-    },
-    checkpoint: {
-      eyebrow: '03 · code checkpoint',
-      title: 'Code checkpoint',
+        'See exactly which internal files React’s public API comes together from by reading ReactClient.js’s import/export statements.',
       items: [
         {
           id: 'file',
@@ -617,9 +595,34 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           tone: 'amber',
         },
       ],
+      files: [
+        { id: 'hooks', name: 'ReactHooks.js', description: 'Hook implementations', tone: 'sky' },
+        {
+          id: 'jsx',
+          name: 'ReactJSXElement.js',
+          description: 'Element creation & validation',
+          tone: 'violet',
+        },
+        { id: 'memo', name: 'ReactMemo.js', description: 'memo implementation', tone: 'amber' },
+        { id: 'lazy', name: 'ReactLazy.js', description: 'lazy implementation', tone: 'cyan' },
+        {
+          id: 'transition',
+          name: 'ReactStartTransition.js',
+          description: 'startTransition implementation',
+          tone: 'teal',
+        },
+      ],
+      filesLabel: 'Internal implementation files',
+      emphasis:
+        'ReactClient.js doesn’t implement anything itself — it’s the doorway that gathers the internal files into the public API.',
+      codeCaption: 'packages/react/src/ReactClient.js',
+      code: REACT_CLIENT_CODE,
+      codeCta: 'View ReactClient.js on GitHub',
+      codeHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     routes: {
-      eyebrow: '04 · api entry routes',
+      badge: '03',
+      eyebrow: 'api entry routes',
       title: 'Internal entry paths per API',
       description:
         'Three flagship APIs and the internal file each one routes to from ReactClient.js.',
@@ -657,7 +660,8 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
       ],
     },
     capabilities: {
-      eyebrow: '05 · does / does not',
+      badge: '04',
+      eyebrow: 'does / does not',
       title: 'What the react package does and does not do',
       doesTitle: 'Does',
       doesItems: [

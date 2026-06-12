@@ -3,11 +3,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { ApiEntryRoutesSection } from './sections/ApiEntryRoutesSection';
-import { ApiGroupsSection } from './sections/ApiGroupsSection';
-import { CapabilitiesSection } from './sections/CapabilitiesSection';
-import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
-import { PublicApiHubSection } from './sections/PublicApiHubSection';
+import { ApiEntryRoutes } from './sections/ApiEntryRoutes';
+import { ApiGroups } from './sections/ApiGroups';
+import { CapabilityComparison } from './sections/CapabilityComparison';
+import { PublicApiSourceCheckpoint } from './sections/PublicApiSourceCheckpoint';
 import { ReactPackageHero } from './sections/ReactPackageHero';
 import { reactPackageContent } from './content';
 
@@ -22,11 +21,10 @@ export const ReactPackagePage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <ReactPackageHero content={c.hero} />
-      <ApiGroupsSection content={c.groups} />
-      <PublicApiHubSection content={c.hub} sectionId={HUB_SECTION_ID} />
-      <CodeCheckpointSection content={c.checkpoint} />
-      <ApiEntryRoutesSection content={c.routes} sectionId={ROUTES_SECTION_ID} />
-      <CapabilitiesSection content={c.capabilities} />
+      <ApiGroups content={c.groups} />
+      <PublicApiSourceCheckpoint content={c.sourceCheckpoint} sectionId={HUB_SECTION_ID} />
+      <ApiEntryRoutes content={c.routes} sectionId={ROUTES_SECTION_ID} />
+      <CapabilityComparison content={c.capabilities} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
