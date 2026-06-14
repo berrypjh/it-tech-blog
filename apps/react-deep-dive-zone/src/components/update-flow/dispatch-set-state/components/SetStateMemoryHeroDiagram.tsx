@@ -103,8 +103,8 @@ const SourceCard = ({
         </span>
       </div>
       <ul className="rounded-lg border border-[var(--term-border)] bg-slate-50/60 px-2.5 py-2 font-mono text-[10.5px] leading-[1.7] text-[var(--term-fg)] dark:bg-slate-900/40">
-        {fields.map((f) => (
-          <li key={f} className="truncate">
+        {fields.map((f, i) => (
+          <li key={`${i}-${f}`} className="truncate">
             <span className="text-[var(--term-dim)]">·</span>{' '}
             <span className={f === '…' || f === '...' ? 'text-[var(--term-dim)]' : ''}>{f}</span>
           </li>

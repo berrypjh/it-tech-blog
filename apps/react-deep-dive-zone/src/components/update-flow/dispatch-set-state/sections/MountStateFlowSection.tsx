@@ -53,7 +53,7 @@ export const MountStateFlowSection = ({ content }: Props) => (
         </span>
       </header>
 
-      <ol className="flex flex-col mx-auto max-w-xl">
+      <ol className="flex flex-col mx-auto max-w-[36rem]">
         {content.steps.map((step, idx) => (
           <li key={step.number} className="flex flex-col">
             <FlowStepCard step={step} />

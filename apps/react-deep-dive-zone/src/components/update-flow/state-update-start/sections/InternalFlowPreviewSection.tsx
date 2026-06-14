@@ -66,7 +66,7 @@ export const InternalFlowPreviewSection = ({ content }: Props) => (
         </span>
       </header>
 
-      <ol className="flex flex-col mx-auto max-w-md">
+      <ol className="flex flex-col mx-auto max-w-[28rem]">
         {content.steps.map((step, idx) => (
           <li key={step.number} className="flex flex-col">
             <FlowStep step={step} />
