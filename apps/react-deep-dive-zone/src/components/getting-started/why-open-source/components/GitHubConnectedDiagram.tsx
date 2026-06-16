@@ -93,23 +93,25 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
           strokeWidth="1.4"
           strokeDasharray="3 5"
           strokeLinecap="round"
-          className="text-teal-400 dark:text-teal-500"
+          className="text-[var(--term-accent)]"
         />
       </svg>
 
       {/* 패널 그리드 — 12 col */}
       <div className="relative grid grid-cols-12 grid-rows-[auto_auto_auto] gap-2.5 sm:gap-3">
         {/* 좌상: code panel */}
-        <article className="col-span-6 sm:col-span-5 row-start-1 rounded-md border border-slate-800 bg-slate-950 overflow-hidden shadow-[0_2px_0_var(--term-border)]">
-          <div className="flex items-center justify-between px-2 py-1 border-b border-slate-800">
+        <article className="col-span-6 sm:col-span-5 row-start-1 rounded-md border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950 overflow-hidden shadow-[0_2px_0_var(--term-border)]">
+          <div className="flex items-center justify-between px-2 py-1 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-1">
               <span className="block h-1.5 w-1.5 rounded-full bg-red-400/80" />
               <span className="block h-1.5 w-1.5 rounded-full bg-amber-300/80" />
               <span className="block h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
             </div>
-            <span className="text-[9px] font-mono text-slate-400 uppercase">js</span>
+            <span className="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase">
+              js
+            </span>
           </div>
-          <pre className="px-2 py-1.5 text-[9.5px] sm:text-[10px] leading-[1.45] font-mono text-slate-100 whitespace-pre overflow-hidden">
+          <pre className="px-2 py-1.5 text-[9.5px] sm:text-[10px] leading-[1.45] font-mono text-slate-800 dark:text-slate-100 whitespace-pre overflow-hidden">
             {colorizePseudo(diagram.codeMock)}
           </pre>
         </article>
@@ -187,15 +189,15 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
         {/* 우하: status check card */}
         <article
           aria-label={diagram.statusLabel}
-          className="col-span-5 sm:col-start-9 sm:col-span-4 row-start-3 self-stretch flex flex-col items-center justify-center gap-1 rounded-md border border-teal-300 dark:border-teal-600 bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-950/50 dark:to-emerald-950/50 p-2 shadow-[0_2px_0_var(--term-border)]"
+          className="col-span-5 sm:col-start-9 sm:col-span-4 row-start-3 self-stretch flex flex-col items-center justify-center gap-1 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-2 shadow-[0_2px_0_var(--term-border)]"
         >
           <span
             aria-hidden="true"
-            className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900 shadow-[0_2px_0_var(--term-border)]"
+            className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
           >
             <CheckCircleIcon className="h-4 w-4" />
           </span>
-          <span className="text-[10px] font-bold text-teal-700 dark:text-teal-200 leading-tight text-center">
+          <span className="text-[10px] font-bold text-[var(--term-accent)] leading-tight text-center">
             {diagram.statusLabel}
           </span>
           <span className="text-[9px] text-[var(--term-muted)] font-mono">
@@ -231,20 +233,20 @@ const tokenizePseudo = (line: string): React.ReactNode => {
     if (!tok) return null;
     if (KEYWORDS.has(tok)) {
       return (
-        <span key={i} className="text-sky-300">
+        <span key={i} className="text-sky-700 dark:text-sky-300">
           {tok}
         </span>
       );
     }
     if (/^[a-z_$][\w$]*$/.test(tok)) {
       return (
-        <span key={i} className="text-slate-100">
+        <span key={i} className="text-slate-800 dark:text-slate-100">
           {tok}
         </span>
       );
     }
     return (
-      <span key={i} className="text-slate-400">
+      <span key={i} className="text-slate-600 dark:text-slate-400">
         {tok}
       </span>
     );

@@ -8,40 +8,36 @@ type Props = { content: WhyOpenSourceContent['routine'] };
 
 type RoutineTone = RoutineStep['tone'];
 
-const toneClasses: Record<
-  RoutineTone,
-  { iconBg: string; iconText: string; num: string; border: string }
-> = {
-  blue: {
-    iconBg: 'bg-sky-100 dark:bg-sky-950/60',
-    iconText: 'text-sky-600 dark:text-sky-300',
-    num: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
-    border: 'border-sky-200/80 dark:border-sky-800/60',
-  },
-  teal: {
-    iconBg: 'bg-teal-100 dark:bg-teal-950/60',
-    iconText: 'text-teal-600 dark:text-teal-300',
-    num: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-  },
-  emerald: {
-    iconBg: 'bg-emerald-100 dark:bg-emerald-950/60',
-    iconText: 'text-emerald-600 dark:text-emerald-300',
-    num: 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900',
-    border: 'border-emerald-200/80 dark:border-emerald-800/60',
-  },
-  mint: {
-    iconBg: 'bg-cyan-100 dark:bg-cyan-950/60',
-    iconText: 'text-cyan-600 dark:text-cyan-300',
-    num: 'bg-cyan-500 text-white dark:bg-cyan-400 dark:text-slate-900',
-    border: 'border-cyan-200/80 dark:border-cyan-800/60',
-  },
-  lavender: {
-    iconBg: 'bg-violet-100 dark:bg-violet-950/60',
-    iconText: 'text-violet-600 dark:text-violet-300',
-    num: 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900',
-    border: 'border-violet-200/80 dark:border-violet-800/60',
-  },
+const houseBase = {
+  iconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
+  border: 'border-[var(--term-border)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet
+// num 배지·iconBg는 크롬 중립 고정, 텍스트만 액센트 색
+const A = {
+  ...houseBase,
+  iconText: 'text-[var(--term-accent)]',
+  num: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
+};
+const B = {
+  ...houseBase,
+  iconText: 'text-sky-600 dark:text-sky-300',
+  num: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+};
+const C = {
+  ...houseBase,
+  iconText: 'text-violet-600 dark:text-violet-300',
+  num: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300',
+};
+
+// 키 선언 순서대로 [A, B, C, A, B] 순환
+const toneClasses: Record<RoutineTone, typeof A> = {
+  blue: A,
+  teal: B,
+  emerald: C,
+  mint: A,
+  lavender: B,
 };
 
 export const GitHubLearningRoutine = ({ content }: Props) => {

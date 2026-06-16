@@ -62,7 +62,7 @@ const TreeNode = ({
   const rowClass = cn(
     'flex items-center gap-1.5 w-full py-1 pr-2 rounded text-xsm font-mono text-left transition-colors',
     isSelected
-      ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-100 font-bold'
+      ? 'bg-[var(--term-surface)] text-[var(--term-accent)] font-bold'
       : 'text-[var(--term-fg)] hover:bg-[var(--term-surface)]',
     interactive ? 'cursor-pointer' : 'cursor-default',
   );
@@ -83,14 +83,14 @@ const TreeNode = ({
       <Icon
         className={cn(
           'h-3.5 w-3.5 shrink-0',
-          isSelected ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-muted)]',
+          isSelected ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
         )}
       />
       <span className="truncate">{node.name}</span>
       {isSelected && (
         <span
           aria-hidden="true"
-          className="ml-auto inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900"
+          className="ml-auto inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
         >
           active
         </span>
@@ -211,7 +211,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-sky-100 dark:bg-sky-950/60 text-sky-600 dark:text-sky-300"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
               >
                 <FolderOpenIcon className="h-[1.125rem] w-[1.125rem]" />
               </span>
@@ -238,7 +238,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
               {detail.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border border-sky-200 dark:border-sky-800/70 bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-200"
+                  className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]"
                 >
                   {tag}
                 </li>
@@ -254,7 +254,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className="mt-2 inline-block w-1 h-1 rounded-full bg-sky-500 dark:bg-sky-400 shrink-0"
+                    className="mt-2 inline-block w-1 h-1 rounded-full bg-[var(--term-accent)] shrink-0"
                   />
                   <span className="leading-relaxed break-keep">{b}</span>
                 </li>
@@ -262,14 +262,14 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
             </ul>
 
             {/* info callout */}
-            <aside className="mt-auto flex items-start gap-sm rounded-md border border-sky-200 bg-sky-50 dark:border-sky-800/70 dark:bg-sky-950/40 p-sm sm:p-md">
+            <aside className="mt-auto flex items-start gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-sm sm:p-md">
               <span
                 aria-hidden="true"
-                className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900"
+                className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
               >
                 <InfoIcon className="h-4 w-4" />
               </span>
-              <p className="text-xsm text-sky-900 dark:text-sky-100 leading-relaxed break-keep">
+              <p className="text-xsm text-[var(--term-fg)] leading-relaxed break-keep">
                 {detail.callout}
               </p>
             </aside>

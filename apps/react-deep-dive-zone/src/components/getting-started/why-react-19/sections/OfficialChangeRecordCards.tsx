@@ -6,28 +6,6 @@ import { ArrowRightIcon, BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from 
 
 type Props = { content: WhyReact19Content['resources'] };
 
-type ResourceTone = ResourceCard['tone'];
-
-const toneClasses: Record<
-  ResourceTone,
-  { border: string; eyebrow: string; date: string; cta: string; hoverBorder: string }
-> = {
-  blue: {
-    border: 'border-sky-200/80 dark:border-sky-800/60',
-    eyebrow: 'text-sky-600 dark:text-sky-300',
-    date: 'bg-sky-100 text-sky-700 border-sky-200 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/70',
-    cta: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900 hover:bg-sky-600 dark:hover:bg-sky-300',
-    hoverBorder: 'hover:border-sky-400 dark:hover:border-sky-500',
-  },
-  teal: {
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-    eyebrow: 'text-teal-600 dark:text-teal-300',
-    date: 'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/70',
-    cta: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900 hover:bg-teal-600 dark:hover:bg-teal-300',
-    hoverBorder: 'hover:border-teal-400 dark:hover:border-teal-500',
-  },
-};
-
 /** 파란 블로그 mock — react.dev/blog 느낌 */
 const BlogPreview = () => (
   <div
@@ -56,64 +34,59 @@ const BlogPreview = () => (
   </div>
 );
 
-/** GitHub releases mock — dark 리스트 느낌 */
+/** GitHub releases mock — 라이트/다크 대응 (표준 코드 박스와 동일 슬레이트 스킴) */
 const ReleasesPreview = () => (
   <div
     aria-hidden="true"
-    className="relative h-28 rounded-md border border-slate-700 bg-slate-950 overflow-hidden"
+    className="relative h-28 rounded-md border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950 overflow-hidden"
   >
     {/* 상단 brand bar */}
-    <div className="absolute top-0 left-0 right-0 px-2.5 py-1.5 flex items-center justify-between border-b border-slate-700/70 bg-slate-900/80">
+    <div className="absolute top-0 left-0 right-0 px-2.5 py-1.5 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/80">
       <div className="flex items-center gap-1.5">
-        <GithubIcon className="h-3 w-3 text-slate-200" />
-        <span className="text-[9px] font-bold text-slate-200">facebook/react</span>
+        <GithubIcon className="h-3 w-3 text-slate-700 dark:text-slate-200" />
+        <span className="text-[9px] font-bold text-slate-700 dark:text-slate-200">
+          facebook/react
+        </span>
       </div>
-      <span className="text-[9px] font-mono text-teal-300">/releases</span>
+      <span className="text-[9px] font-mono text-teal-600 dark:text-teal-300">/releases</span>
     </div>
     {/* releases mock list */}
     <ul className="absolute top-7 left-0 right-0 px-2.5 pt-1 flex flex-col gap-1">
       <li className="flex items-center gap-1.5">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-400" />
-        <span className="text-[9px] font-mono text-slate-200">v19.2.0</span>
-        <span className="ml-auto text-[8px] text-slate-500">2025.10</span>
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400" />
+        <span className="text-[9px] font-mono text-slate-800 dark:text-slate-200">v19.2.0</span>
+        <span className="ml-auto text-[8px] text-slate-400 dark:text-slate-500">2025.10</span>
       </li>
       <li className="flex items-center gap-1.5">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-500" />
-        <span className="text-[9px] font-mono text-slate-300">v19.1.0</span>
-        <span className="ml-auto text-[8px] text-slate-500">2025.06</span>
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-500" />
+        <span className="text-[9px] font-mono text-slate-600 dark:text-slate-300">v19.1.0</span>
+        <span className="ml-auto text-[8px] text-slate-400 dark:text-slate-500">2025.06</span>
       </li>
       <li className="flex items-center gap-1.5">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-500" />
-        <span className="text-[9px] font-mono text-slate-300">v19.0.0</span>
-        <span className="ml-auto text-[8px] text-slate-500">2024.12</span>
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-500" />
+        <span className="text-[9px] font-mono text-slate-600 dark:text-slate-300">v19.0.0</span>
+        <span className="ml-auto text-[8px] text-slate-400 dark:text-slate-500">2024.12</span>
       </li>
     </ul>
   </div>
 );
 
 const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
-  const t = toneClasses[card.tone];
   return (
     <article
       className={cn(
         'group flex flex-col gap-md w-full rounded-lg border bg-[var(--term-bg)]',
         'p-md sm:p-lg transition-all',
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
-        t.border,
-        t.hoverBorder,
       )}
     >
       {/* 상단: eyebrow + date pill */}
       <header className="flex items-center justify-between gap-sm">
-        <p className={cn('text-[10px] uppercase tracking-wider font-bold', t.eyebrow)}>
+        <p className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-accent)]">
           {card.eyebrow}
         </p>
-        <span
-          className={cn(
-            'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border',
-            t.date,
-          )}
-        >
+        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
           {card.date}
         </span>
       </header>
@@ -147,15 +120,14 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md',
-          'text-xsm font-bold transition-all',
+          'group mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md text-xsm font-bold',
+          'border border-transparent bg-slate-900 text-slate-50 transition-colors hover:bg-slate-800',
+          'dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-slate-700',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-          'shadow-[0_2px_0_var(--term-border)] hover:shadow-[0_3px_0_var(--term-border)]',
-          t.cta,
         )}
       >
         {card.cta}
-        <ArrowRightIcon className="h-4 w-4" />
+        <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         <ExternalLinkIcon className="h-3 w-3 opacity-80" />
       </a>
     </article>

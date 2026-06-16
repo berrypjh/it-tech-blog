@@ -6,6 +6,13 @@ import { ArrowLongRightIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['timeline'] };
 
+/** 선언 순서대로 A·B·C 순환 — 중립 크롬 위 부드러운 3색 텍스트 액센트. */
+const accents = [
+  { text: 'text-[var(--term-accent)]', marker: 'bg-[var(--term-accent)]' },
+  { text: 'text-sky-600 dark:text-sky-300', marker: 'bg-sky-400 dark:bg-sky-500' },
+  { text: 'text-violet-600 dark:text-violet-300', marker: 'bg-violet-400 dark:bg-violet-500' },
+] as const;
+
 const formatInline = (text: string): React.ReactNode => {
   const parts = text.split(/(`[^`]+`)/g);
   return parts.map((part, i) => {
@@ -37,11 +44,12 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
         {/* 세로 축 */}
         <span
           aria-hidden="true"
-          className="absolute left-2 sm:left-3 top-2 bottom-2 w-px bg-gradient-to-b from-sky-300 via-blue-400 to-teal-400 dark:from-sky-700 dark:via-blue-600 dark:to-teal-500"
+          className="absolute left-2 sm:left-3 top-2 bottom-2 w-px bg-[var(--term-border)]"
         />
 
         {content.rows.map((row, idx) => {
           const isLast = idx === content.rows.length - 1;
+          const accent = accents[idx % accents.length];
           return (
             <li key={row.id} className="relative">
               {/* 노드 */}
@@ -49,7 +57,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                 aria-hidden="true"
                 className={cn(
                   'absolute -left-[1.4rem] sm:-left-[1.6rem] top-md inline-flex items-center justify-center w-4 h-4 rounded-full ring-4 ring-[var(--color-canvas)]',
-                  row.highlight ? 'bg-teal-500 dark:bg-teal-400' : 'bg-sky-500 dark:bg-sky-400',
+                  accent.marker,
                 )}
               />
 
@@ -57,9 +65,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                 className={cn(
                   'group rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
                   'hover:-translate-y-px hover:shadow-[0_3px_0_var(--term-border)]',
-                  row.highlight
-                    ? 'border-teal-300 dark:border-teal-600 bg-gradient-to-r from-teal-50/60 via-transparent to-transparent dark:from-teal-950/40'
-                    : 'border-[var(--term-border)] hover:border-sky-400/70 dark:hover:border-sky-500/60',
+                  'border-[var(--term-border)] hover:border-[var(--term-accent)]',
                 )}
               >
                 <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-sm md:gap-md items-start">
@@ -68,9 +74,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                     <h3
                       className={cn(
                         'text-md sm:text-lg font-bold tracking-tight leading-none',
-                        row.highlight
-                          ? 'text-teal-700 dark:text-teal-200'
-                          : 'text-sky-700 dark:text-sky-200',
+                        accent.text,
                       )}
                     >
                       {row.version}
@@ -87,7 +91,11 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                       {row.highlight && (
                         <span
                           aria-hidden="true"
-                          className="ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900 align-middle"
+                          className={cn(
+                            'ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold align-middle',
+                            'bg-[var(--term-surface)] border border-[var(--term-border)]',
+                            accent.text,
+                          )}
                         >
                           NOW
                         </span>
@@ -105,9 +113,8 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                         key={tag}
                         className={cn(
                           'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono border',
-                          row.highlight
-                            ? 'border-teal-300/70 dark:border-teal-700/70 bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-200'
-                            : 'border-sky-200/70 dark:border-sky-800/60 bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-200',
+                          'bg-[var(--term-surface)] border-[var(--term-border)]',
+                          accent.text,
                         )}
                       >
                         {tag}

@@ -8,38 +8,31 @@ type Props = { content: WhyReact19Content['focusTopics'] };
 
 type TopicTone = FocusTopic['tone'];
 
-const toneClasses: Record<
-  TopicTone,
-  { iconBg: string; iconText: string; chip: string; border: string; hoverBorder: string }
-> = {
-  blue: {
-    iconBg: 'bg-blue-100 dark:bg-blue-950/60',
-    iconText: 'text-blue-600 dark:text-blue-300',
-    chip: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/70',
-    border: 'border-blue-200/70 dark:border-blue-800/60',
-    hoverBorder: 'hover:border-blue-400/70 dark:hover:border-blue-500/60',
-  },
-  violet: {
-    iconBg: 'bg-violet-100 dark:bg-violet-950/60',
-    iconText: 'text-violet-600 dark:text-violet-300',
-    chip: 'bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/70',
-    border: 'border-violet-200/70 dark:border-violet-800/60',
-    hoverBorder: 'hover:border-violet-400/70 dark:hover:border-violet-500/60',
-  },
-  teal: {
-    iconBg: 'bg-teal-100 dark:bg-teal-950/60',
-    iconText: 'text-teal-600 dark:text-teal-300',
-    chip: 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/70',
-    border: 'border-teal-200/70 dark:border-teal-800/60',
-    hoverBorder: 'hover:border-teal-400/70 dark:hover:border-teal-500/60',
-  },
-  sky: {
-    iconBg: 'bg-sky-100 dark:bg-sky-950/60',
-    iconText: 'text-sky-600 dark:text-sky-300',
-    chip: 'bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/70',
-    border: 'border-sky-200/70 dark:border-sky-800/60',
-    hoverBorder: 'hover:border-sky-400/70 dark:hover:border-sky-500/60',
-  },
+type ToneClasses = { iconText: string; chip: string };
+
+/** 중립 크롬 공통값 — 색은 텍스트 액센트에만 입힌다. */
+const surfaceChip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
+
+/** A: amber(테마 액센트) / B: sky / C: violet */
+const accentA: ToneClasses = {
+  iconText: 'text-[var(--term-accent)]',
+  chip: `${surfaceChip} text-[var(--term-accent)]`,
+};
+const accentB: ToneClasses = {
+  iconText: 'text-sky-600 dark:text-sky-300',
+  chip: `${surfaceChip} text-sky-600 dark:text-sky-300`,
+};
+const accentC: ToneClasses = {
+  iconText: 'text-violet-600 dark:text-violet-300',
+  chip: `${surfaceChip} text-violet-600 dark:text-violet-300`,
+};
+
+/** 선언 순서대로 A·B·C·A 순환 — 중립 크롬 위 부드러운 3색 액센트. */
+const toneClasses: Record<TopicTone, ToneClasses> = {
+  blue: accentA,
+  violet: accentB,
+  teal: accentC,
+  sky: accentA,
 };
 
 export const React19FocusTopics = ({ content }: Props) => {
@@ -63,15 +56,14 @@ export const React19FocusTopics = ({ content }: Props) => {
                   'group flex flex-col w-full h-full rounded-lg border bg-[var(--term-bg)]',
                   'p-md sm:p-lg gap-sm transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
-                  t.border,
-                  t.hoverBorder,
+                  'border-[var(--term-border)] hover:border-[var(--term-accent)]',
                 )}
               >
                 <span
                   aria-hidden="true"
                   className={cn(
                     'inline-flex items-center justify-center w-11 h-11 rounded-full',
-                    t.iconBg,
+                    'bg-[var(--term-surface)] border border-[var(--term-border)]',
                     t.iconText,
                     'shadow-[0_1px_0_var(--term-border)]',
                   )}

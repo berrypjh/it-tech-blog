@@ -42,7 +42,7 @@ export const QuestionPathVisual = ({ visual }: Props) => {
 
       {/* 상단 라벨 */}
       <div className="relative flex items-center justify-between mb-md">
-        <TerminalBadge dotClassName="bg-teal-500">guided path</TerminalBadge>
+        <TerminalBadge dotClassName="bg-[var(--term-accent)]">guided path</TerminalBadge>
         <span className="text-[10px] font-mono text-[var(--term-muted)]">
           {'//'} {visual.stackLabel}
         </span>
@@ -101,7 +101,7 @@ export const QuestionPathVisual = ({ visual }: Props) => {
                 className={cn(
                   'flex items-center gap-1 text-[10px] font-mono pl-4 py-0.5 rounded',
                   p.active
-                    ? 'bg-teal-100 dark:bg-teal-950/60 text-teal-800 dark:text-teal-100 font-bold'
+                    ? 'bg-[var(--term-surface)] text-[var(--term-accent)] font-bold'
                     : 'text-[var(--term-muted)]',
                 )}
               >
@@ -110,7 +110,7 @@ export const QuestionPathVisual = ({ visual }: Props) => {
                 {p.active && (
                   <span
                     aria-hidden="true"
-                    className="ml-auto inline-block w-1.5 h-1.5 rounded-full bg-teal-500"
+                    className="ml-auto inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
                   />
                 )}
               </li>
@@ -128,16 +128,8 @@ export const QuestionPathVisual = ({ visual }: Props) => {
       >
         <defs>
           <linearGradient id="path-line" x1="0" y1="1" x2="1" y2="0">
-            <stop
-              offset="0"
-              stopColor="currentColor"
-              className="text-teal-300 dark:text-teal-500"
-            />
-            <stop
-              offset="1"
-              stopColor="currentColor"
-              className="text-emerald-500 dark:text-emerald-400"
-            />
+            <stop offset="0" stopColor="currentColor" className="text-[var(--term-accent)]" />
+            <stop offset="1" stopColor="currentColor" className="text-[var(--term-accent)]" />
           </linearGradient>
         </defs>
         {/* Start(좌하단) → 질문 → 핵심경로 → Answer(우상단) 곡선 */}
@@ -156,35 +148,23 @@ export const QuestionPathVisual = ({ visual }: Props) => {
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-emerald-500"
+          className="text-[var(--term-accent)]"
         />
         {/* path nodes (4개) */}
-        <circle cx="40" cy="340" r="5" className="fill-teal-500" />
-        <circle
-          cx="40"
-          cy="340"
-          r="8"
-          className="fill-teal-200 dark:fill-teal-900/60"
-          opacity="0.6"
-        />
-        <circle cx="140" cy="232" r="5" className="fill-teal-500" />
-        <circle cx="240" cy="160" r="5" className="fill-emerald-500" />
-        <circle cx="360" cy="70" r="6" className="fill-emerald-500" />
-        <circle
-          cx="360"
-          cy="70"
-          r="10"
-          className="fill-emerald-200 dark:fill-emerald-900/60"
-          opacity="0.5"
-        />
+        <circle cx="40" cy="340" r="5" className="fill-[var(--term-accent)]" />
+        <circle cx="40" cy="340" r="8" className="fill-[var(--term-accent)]" opacity="0.6" />
+        <circle cx="140" cy="232" r="5" className="fill-[var(--term-accent)]" />
+        <circle cx="240" cy="160" r="5" className="fill-[var(--term-accent)]" />
+        <circle cx="360" cy="70" r="6" className="fill-[var(--term-accent)]" />
+        <circle cx="360" cy="70" r="10" className="fill-[var(--term-accent)]" opacity="0.5" />
       </svg>
 
       {/* path labels — 절대 위치 카드 */}
       <span
         aria-hidden="true"
-        className="absolute top-[80%] left-[14%] -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white dark:bg-slate-900 border border-teal-300 dark:border-teal-700 text-[10px] font-bold text-teal-700 dark:text-teal-200 shadow-[0_2px_0_var(--term-border)]"
+        className="absolute top-[80%] left-[14%] -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white dark:bg-slate-900 border border-[var(--term-border)] text-[10px] font-bold text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
       >
-        <span className="inline-block w-1 h-1 rounded-full bg-teal-500" />
+        <span className="inline-block w-1 h-1 rounded-full bg-[var(--term-accent)]" />
         {visual.pathLabels.start}
       </span>
       <span
@@ -203,9 +183,9 @@ export const QuestionPathVisual = ({ visual }: Props) => {
       </span>
       <span
         aria-hidden="true"
-        className="absolute top-[18%] left-[88%] -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900 border border-emerald-600 dark:border-emerald-300 text-[10px] font-bold shadow-[0_2px_0_var(--term-border)]"
+        className="absolute top-[18%] left-[88%] -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--term-surface)] text-[var(--term-accent)] border border-[var(--term-border)] text-[10px] font-bold shadow-[0_2px_0_var(--term-border)]"
       >
-        <span className="inline-block w-1 h-1 rounded-full bg-white" />
+        <span className="inline-block w-1 h-1 rounded-full bg-[var(--term-accent)]" />
         {visual.pathLabels.answer}
       </span>
 

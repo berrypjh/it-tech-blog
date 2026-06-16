@@ -115,9 +115,9 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
       onClick={onClick}
       className={cn(
         'w-full inline-flex items-center justify-center gap-2 px-md py-3 rounded-md',
-        'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
-        'text-sm font-bold transition-all hover:bg-sky-600 dark:hover:bg-sky-300',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+        'bg-slate-900 text-slate-50 border border-transparent dark:border-slate-600 dark:bg-slate-800',
+        'text-sm font-bold transition-colors hover:bg-slate-800 dark:hover:bg-slate-700',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
@@ -146,9 +146,9 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
     <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="flex items-center justify-between gap-sm">
         <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)]">{title}</h3>
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200 text-[10px] font-bold">
+        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[10px] font-bold">
           <span
-            className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"
+            className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)] animate-pulse"
             aria-hidden="true"
           />
           {autoPill}
@@ -165,8 +165,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                 aria-current={status === 'active' ? 'step' : undefined}
                 className={cn(
                   'flex items-start gap-sm p-sm rounded-md border transition-colors',
-                  status === 'active' &&
-                    'border-sky-300 bg-sky-50 dark:border-sky-700 dark:bg-sky-950/40',
+                  status === 'active' && 'border-[var(--term-accent)] bg-[var(--term-surface)]',
                   status === 'done' && 'border-[var(--term-border)] bg-[var(--term-surface)]',
                   status === 'idle' && 'border-[var(--term-border)] bg-[var(--term-bg)]',
                 )}
@@ -175,7 +174,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                   className={cn(
                     'inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full text-xxsm font-bold tabular-nums',
                     status === 'active' &&
-                      'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
+                      'bg-[var(--term-surface)] border border-[var(--term-accent)] text-[var(--term-accent)]',
                     status === 'done' && 'bg-emerald-500/90 text-white dark:bg-emerald-500/80',
                     status === 'idle' &&
                       'bg-[var(--term-surface)] text-[var(--term-muted)] border border-[var(--term-border)]',
@@ -190,7 +189,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                       className={cn(
                         'text-xsm sm:text-sm font-bold leading-tight',
                         status === 'active'
-                          ? 'text-sky-700 dark:text-sky-200'
+                          ? 'text-[var(--term-accent)]'
                           : status === 'done'
                             ? 'text-[var(--term-fg)]'
                             : 'text-[var(--term-muted)]',
@@ -199,7 +198,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                       {step.title}
                     </h4>
                     {status === 'active' && (
-                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-200 text-[9px] font-bold uppercase tracking-wider">
+                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-[var(--term-border)] text-[var(--term-accent)] text-[9px] font-bold uppercase tracking-wider">
                         active
                       </span>
                     )}

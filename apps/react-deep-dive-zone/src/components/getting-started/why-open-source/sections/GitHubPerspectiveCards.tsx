@@ -8,49 +8,38 @@ type Props = { content: WhyOpenSourceContent['perspectives'] };
 
 type PerspectiveTone = PerspectiveCard['tone'];
 
-const toneClasses: Record<
-  PerspectiveTone,
-  {
-    iconBg: string;
-    iconText: string;
-    border: string;
-    hoverBorder: string;
-    subtitle: string;
-    ribbon: string;
-  }
-> = {
-  blue: {
-    iconBg: 'bg-sky-100 dark:bg-sky-950/60',
-    iconText: 'text-sky-600 dark:text-sky-300',
-    border: 'border-sky-200/80 dark:border-sky-800/60',
-    hoverBorder: 'hover:border-sky-400 dark:hover:border-sky-500',
-    subtitle: 'text-sky-700 dark:text-sky-300',
-    ribbon: 'bg-sky-500 dark:bg-sky-400',
-  },
-  teal: {
-    iconBg: 'bg-teal-100 dark:bg-teal-950/60',
-    iconText: 'text-teal-600 dark:text-teal-300',
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-    hoverBorder: 'hover:border-teal-400 dark:hover:border-teal-500',
-    subtitle: 'text-teal-700 dark:text-teal-300',
-    ribbon: 'bg-teal-500 dark:bg-teal-400',
-  },
-  lavender: {
-    iconBg: 'bg-violet-100 dark:bg-violet-950/60',
-    iconText: 'text-violet-600 dark:text-violet-300',
-    border: 'border-violet-200/80 dark:border-violet-800/60',
-    hoverBorder: 'hover:border-violet-400 dark:hover:border-violet-500',
-    subtitle: 'text-violet-700 dark:text-violet-300',
-    ribbon: 'bg-violet-500 dark:bg-violet-400',
-  },
-  coral: {
-    iconBg: 'bg-rose-100 dark:bg-rose-950/60',
-    iconText: 'text-rose-600 dark:text-rose-300',
-    border: 'border-rose-200/80 dark:border-rose-800/60',
-    hoverBorder: 'hover:border-rose-400 dark:hover:border-rose-500',
-    subtitle: 'text-rose-700 dark:text-rose-300',
-    ribbon: 'bg-rose-500 dark:bg-rose-400',
-  },
+const houseBase = {
+  iconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
+  border: 'border-[var(--term-border)]',
+  hoverBorder: 'hover:border-[var(--term-accent)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet (텍스트 색 + 작은 ribbon만)
+const A = {
+  ...houseBase,
+  iconText: 'text-[var(--term-accent)]',
+  subtitle: 'text-[var(--term-accent)]',
+  ribbon: 'bg-[var(--term-accent)]',
+};
+const B = {
+  ...houseBase,
+  iconText: 'text-sky-600 dark:text-sky-300',
+  subtitle: 'text-sky-600 dark:text-sky-300',
+  ribbon: 'bg-sky-400 dark:bg-sky-500',
+};
+const C = {
+  ...houseBase,
+  iconText: 'text-violet-600 dark:text-violet-300',
+  subtitle: 'text-violet-600 dark:text-violet-300',
+  ribbon: 'bg-violet-400 dark:bg-violet-500',
+};
+
+// 키 선언 순서대로 [A, B, C, A] 순환
+const toneClasses: Record<PerspectiveTone, typeof A> = {
+  blue: A,
+  teal: B,
+  lavender: C,
+  coral: A,
 };
 
 export const GitHubPerspectiveCards = ({ content }: Props) => {

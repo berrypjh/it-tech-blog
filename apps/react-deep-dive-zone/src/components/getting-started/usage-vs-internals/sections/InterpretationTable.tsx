@@ -22,7 +22,7 @@ export const InterpretationTable = ({ content }: Props) => {
         {/* 데스크톱 테이블 */}
         <table className="hidden md:table w-full text-left">
           <thead>
-            <tr className="bg-sky-50/60 dark:bg-sky-950/30 border-b border-[var(--term-border)]">
+            <tr className="bg-[var(--term-surface)] border-b border-[var(--term-border)]">
               {[content.headers.phenomenon, content.headers.usage, content.headers.internal].map(
                 (h, i) => (
                   <th
@@ -56,7 +56,7 @@ export const InterpretationTable = ({ content }: Props) => {
                   <span className="inline-flex items-center gap-1.5">
                     <span
                       aria-hidden="true"
-                      className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500"
+                      className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
                     />
                     {row.phenomenon}
                   </span>
@@ -79,7 +79,7 @@ export const InterpretationTable = ({ content }: Props) => {
               <header className="flex items-center gap-1.5">
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500"
+                  className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
                 />
                 <span className="text-xxsm uppercase tracking-wider text-[var(--term-dim)]">
                   {content.headers.phenomenon}
@@ -89,7 +89,7 @@ export const InterpretationTable = ({ content }: Props) => {
 
               <dl className="flex flex-col gap-sm">
                 <div className="flex flex-col gap-0.5">
-                  <dt className="text-[10px] uppercase tracking-wider text-teal-600 dark:text-teal-300 font-bold">
+                  <dt className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold">
                     {content.headers.usage}
                   </dt>
                   <dd className="text-xsm leading-relaxed text-[var(--term-muted)]">
@@ -97,7 +97,7 @@ export const InterpretationTable = ({ content }: Props) => {
                   </dd>
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <dt className="text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-300 font-bold">
+                  <dt className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold">
                     {content.headers.internal}
                   </dt>
                   <dd className="text-xsm leading-relaxed text-[var(--term-muted)]">

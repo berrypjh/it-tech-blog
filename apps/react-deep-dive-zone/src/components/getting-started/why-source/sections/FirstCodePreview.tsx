@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { GithubButton } from '../../../shared/GithubButton';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
 import type { WhySourceContent } from '../content';
-import { ArrowRightIcon, CodeIcon, GithubIcon } from '../icons';
+import { CodeIcon } from '../icons';
 
 type Props = { content: WhySourceContent['firstCode'] };
 
@@ -40,16 +41,10 @@ export const FirstCodePreview = ({ content }: Props) => {
 
       {/* 하단 버튼 */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-sm pt-sm">
-        <a
+        <GithubButton
           href="https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md border border-transparent bg-slate-900 dark:border-slate-600 dark:bg-slate-800 text-slate-50 text-xsm font-bold transition-colors hover:bg-slate-800 dark:hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
-        >
-          <GithubIcon className="h-4 w-4" />
-          {content.primaryCta}
-          <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </a>
+          label={content.primaryCta}
+        />
       </div>
     </section>
   );

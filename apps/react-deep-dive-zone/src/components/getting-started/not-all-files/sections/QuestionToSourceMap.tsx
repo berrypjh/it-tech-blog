@@ -8,61 +8,52 @@ type Props = { content: NotAllFilesContent['mapping'] };
 
 type RowTone = MappingRow['tone'];
 
-const toneClasses: Record<
-  RowTone,
-  {
-    rowBg: string;
-    rowBorder: string;
-    questionPill: string;
-    filePill: string;
-    fnPill: string;
-    arrow: string;
-  }
-> = {
-  blue: {
-    rowBg: 'bg-sky-50/50 dark:bg-sky-950/30 hover:bg-sky-50 dark:hover:bg-sky-950/50',
-    rowBorder: 'border-sky-200/70 dark:border-sky-800/60',
-    questionPill:
-      'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900 border-sky-500 dark:border-sky-400',
-    filePill:
-      'bg-white dark:bg-slate-900 border-sky-300 dark:border-sky-700 text-sky-800 dark:text-sky-100',
-    fnPill:
-      'bg-sky-100/80 dark:bg-sky-950/60 border-sky-200 dark:border-sky-800/70 text-sky-800 dark:text-sky-200',
-    arrow: 'text-sky-500 dark:text-sky-400',
-  },
-  lavender: {
-    rowBg: 'bg-violet-50/50 dark:bg-violet-950/30 hover:bg-violet-50 dark:hover:bg-violet-950/50',
-    rowBorder: 'border-violet-200/70 dark:border-violet-800/60',
-    questionPill:
-      'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900 border-violet-500 dark:border-violet-400',
-    filePill:
-      'bg-white dark:bg-slate-900 border-violet-300 dark:border-violet-700 text-violet-800 dark:text-violet-100',
-    fnPill:
-      'bg-violet-100/80 dark:bg-violet-950/60 border-violet-200 dark:border-violet-800/70 text-violet-800 dark:text-violet-200',
-    arrow: 'text-violet-500 dark:text-violet-400',
-  },
-  mint: {
-    rowBg: 'bg-teal-50/50 dark:bg-teal-950/30 hover:bg-teal-50 dark:hover:bg-teal-950/50',
-    rowBorder: 'border-teal-200/70 dark:border-teal-800/60',
-    questionPill:
-      'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900 border-teal-500 dark:border-teal-400',
-    filePill:
-      'bg-white dark:bg-slate-900 border-teal-300 dark:border-teal-700 text-teal-800 dark:text-teal-100',
-    fnPill:
-      'bg-teal-100/80 dark:bg-teal-950/60 border-teal-200 dark:border-teal-800/70 text-teal-800 dark:text-teal-200',
-    arrow: 'text-teal-500 dark:text-teal-400',
-  },
-  coral: {
-    rowBg: 'bg-rose-50/50 dark:bg-rose-950/30 hover:bg-rose-50 dark:hover:bg-rose-950/50',
-    rowBorder: 'border-rose-200/70 dark:border-rose-800/60',
-    questionPill:
-      'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900 border-rose-500 dark:border-rose-400',
-    filePill:
-      'bg-white dark:bg-slate-900 border-rose-300 dark:border-rose-700 text-rose-800 dark:text-rose-100',
-    fnPill:
-      'bg-rose-100/80 dark:bg-rose-950/60 border-rose-200 dark:border-rose-800/70 text-rose-800 dark:text-rose-200',
-    arrow: 'text-rose-500 dark:text-rose-400',
-  },
+type ToneStyle = {
+  rowBg: string;
+  rowBorder: string;
+  questionPill: string;
+  filePill: string;
+  fnPill: string;
+  arrow: string;
+};
+
+// 중립 크롬 고정: 테두리/배경/칩은 surface+border, 색은 텍스트 액센트로만
+const houseChrome = {
+  rowBg: 'bg-[var(--term-bg)] hover:bg-[var(--term-surface)]',
+  rowBorder: 'border-[var(--term-border)]',
+};
+
+const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
+
+// 소프트 액센트 3색: A amber / B sky / C violet (텍스트 색으로만)
+const A: ToneStyle = {
+  ...houseChrome,
+  questionPill: cn(chip, 'text-[var(--term-accent)]'),
+  filePill: cn(chip, 'text-[var(--term-accent)]'),
+  fnPill: cn(chip, 'text-[var(--term-accent)]'),
+  arrow: 'text-[var(--term-accent)]',
+};
+const B: ToneStyle = {
+  ...houseChrome,
+  questionPill: cn(chip, 'text-sky-600 dark:text-sky-300'),
+  filePill: cn(chip, 'text-sky-600 dark:text-sky-300'),
+  fnPill: cn(chip, 'text-sky-600 dark:text-sky-300'),
+  arrow: 'text-sky-600 dark:text-sky-300',
+};
+const C: ToneStyle = {
+  ...houseChrome,
+  questionPill: cn(chip, 'text-violet-600 dark:text-violet-300'),
+  filePill: cn(chip, 'text-violet-600 dark:text-violet-300'),
+  fnPill: cn(chip, 'text-violet-600 dark:text-violet-300'),
+  arrow: 'text-violet-600 dark:text-violet-300',
+};
+
+// 키 선언 순서대로 [A, B, C, A] 순환
+const toneClasses: Record<RowTone, ToneStyle> = {
+  blue: A,
+  lavender: B,
+  mint: C,
+  coral: A,
 };
 
 const FilePill = ({ name, cls }: { name: string; cls: string }) => (
@@ -104,7 +95,10 @@ export const QuestionToSourceMap = ({ content }: Props) => {
       {/* legend */}
       <div className="flex flex-wrap items-center gap-2 text-[10px] text-[var(--term-muted)]">
         <span className="inline-flex items-center gap-1">
-          <span className="inline-block w-2 h-2 rounded-full bg-sky-500" aria-hidden="true" />
+          <span
+            className="inline-block w-2 h-2 rounded-full bg-[var(--term-accent)]"
+            aria-hidden="true"
+          />
           {content.labels.question}
         </span>
         <ArrowRightIcon className="h-3 w-3" />
@@ -143,7 +137,7 @@ export const QuestionToSourceMap = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-white/80 shrink-0"
+                  className="inline-block w-1.5 h-1.5 rounded-full bg-current opacity-70 shrink-0"
                 />
                 {row.question}
               </span>

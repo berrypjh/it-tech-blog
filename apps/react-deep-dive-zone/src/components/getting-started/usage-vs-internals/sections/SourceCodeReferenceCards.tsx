@@ -1,64 +1,69 @@
+import { cn } from '@it-tech-blog/utils';
+
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { GithubButton } from '../../../shared/GithubButton';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ArrowRightIcon, GithubIcon } from '../../why-source/icons';
 import type { UsageVsInternalsContent } from '../content';
 import { BookIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['sourceCode'] };
 
-export const SourceCodeReferenceCards = ({ content }: Props) => {
-  return (
-    <section
-      id="section-source"
-      aria-labelledby="heading-source"
-      className="space-y-lg rounded-lg border border-[var(--term-border)] bg-sky-50/30 dark:bg-sky-950/15 p-md sm:p-lg lg:p-xl"
-    >
-      <SectionHeader
-        id="source"
-        eyebrow={content.eyebrow}
-        title={content.title}
-        icon={<BookIcon className="h-5 w-5" />}
-      />
+export const SourceCodeReferenceCards = ({ content }: Props) => (
+  <section
+    id="section-source"
+    aria-labelledby="heading-source"
+    className={cn(
+      'space-y-lg rounded-lg border border-[var(--term-border)] p-md sm:p-lg lg:p-xl',
+      'bg-[var(--term-surface)]',
+    )}
+  >
+    <SectionHeader
+      id="source"
+      eyebrow={content.eyebrow}
+      title={content.title}
+      icon={<BookIcon className="h-5 w-5" />}
+    />
 
-      <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md">
-        {content.cards.map((card) => (
-          <li key={card.num}>
-            <article className="flex flex-col gap-md h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-              <header className="flex items-start gap-sm">
-                <span
-                  className="inline-flex shrink-0 items-center justify-center w-9 h-9 rounded-md bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900 text-xsm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)]"
-                  aria-hidden="true"
-                >
-                  {card.num}
-                </span>
-                <div className="min-w-0 flex flex-col gap-0.5">
-                  <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] font-mono break-all">
-                    {card.title}
-                  </h3>
-                  <p className="text-xsm text-[var(--term-muted)] leading-relaxed">
-                    {card.description}
-                  </p>
-                </div>
-              </header>
-
-              <CodePreviewPanel code={card.code} language="js" />
-
-              <a
-                href={card.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-auto inline-flex items-center justify-between gap-sm px-md py-2.5 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-xsm font-bold text-[var(--term-fg)] transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
+    <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md">
+      {content.cards.map((card) => (
+        <li key={card.num}>
+          <article
+            className={cn(
+              'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)]',
+              'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
+            )}
+          >
+            <header className="flex items-start gap-sm">
+              <span
+                className={cn(
+                  'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md',
+                  'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
+                  'text-xsm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)]',
+                )}
+                aria-hidden="true"
               >
-                <span className="inline-flex items-center gap-2">
-                  <GithubIcon className="h-4 w-4" />
-                  {card.linkLabel}
-                </span>
-                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </article>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
+                {card.num}
+              </span>
+              <div className="min-w-0 flex flex-col gap-0.5">
+                <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] font-mono break-all">
+                  {card.title}
+                </h3>
+                <p className="text-xsm text-[var(--term-muted)] leading-relaxed">
+                  {card.description}
+                </p>
+              </div>
+            </header>
+
+            <CodePreviewPanel
+              code={card.code}
+              header={card.href.split('/blob/main/')[1]}
+              badge="main"
+            />
+
+            <GithubButton href={card.href} label={card.linkLabel} className="mt-auto w-full" />
+          </article>
+        </li>
+      ))}
+    </ul>
+  </section>
+);

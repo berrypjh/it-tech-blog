@@ -20,25 +20,27 @@ const variantClasses: Record<
     rowHover: string;
   }
 > = {
+  // 의미 대비(좋음/나쁨)는 색 계열 유지(wrong=rose, good=teal), 강도만 소프트로.
+  // 중립 크롬 + 텍스트 액센트만 색으로.
   wrong: {
-    border: 'border-rose-200/80 dark:border-rose-800/60',
-    headerIconBg: 'bg-rose-500 dark:bg-rose-400',
-    headerIconText: 'text-white dark:text-slate-900',
-    headerText: 'text-rose-700 dark:text-rose-200',
+    border: 'border-[var(--term-border)]',
+    headerIconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
+    headerIconText: 'text-rose-600 dark:text-rose-300',
+    headerText: 'text-rose-600 dark:text-rose-300',
     rowAccent: 'text-rose-600 dark:text-rose-300',
     numChip:
-      'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/70',
-    rowHover: 'group-hover:bg-rose-50/60 dark:group-hover:bg-rose-950/30',
+      'bg-[var(--term-surface)] border border-[var(--term-border)] text-rose-600 dark:text-rose-300',
+    rowHover: 'group-hover:bg-[var(--term-surface)]',
   },
   good: {
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-    headerIconBg: 'bg-teal-500 dark:bg-teal-400',
-    headerIconText: 'text-white dark:text-slate-900',
-    headerText: 'text-teal-700 dark:text-teal-200',
+    border: 'border-[var(--term-border)]',
+    headerIconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
+    headerIconText: 'text-teal-600 dark:text-teal-300',
+    headerText: 'text-teal-600 dark:text-teal-300',
     rowAccent: 'text-teal-600 dark:text-teal-300',
     numChip:
-      'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/70',
-    rowHover: 'group-hover:bg-teal-50/60 dark:group-hover:bg-teal-950/30',
+      'bg-[var(--term-surface)] border border-[var(--term-border)] text-teal-600 dark:text-teal-300',
+    rowHover: 'group-hover:bg-[var(--term-surface)]',
   },
 };
 

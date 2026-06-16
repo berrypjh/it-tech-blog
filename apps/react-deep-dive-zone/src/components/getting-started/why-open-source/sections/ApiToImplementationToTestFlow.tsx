@@ -8,31 +8,37 @@ type Props = { content: WhyOpenSourceContent['chain'] };
 
 type ChainTone = ChainCard['tone'];
 
-const toneClasses: Record<
-  ChainTone,
-  { step: string; border: string; hoverBorder: string; cta: string; mono: string }
-> = {
-  blue: {
-    step: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
-    border: 'border-sky-200/80 dark:border-sky-800/60',
-    hoverBorder: 'hover:border-sky-400 dark:hover:border-sky-500',
-    cta: 'text-sky-700 dark:text-sky-200 border-sky-300 dark:border-sky-700 hover:bg-sky-50 dark:hover:bg-sky-950/40',
-    mono: 'text-sky-700 dark:text-sky-200',
-  },
-  teal: {
-    step: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-    hoverBorder: 'hover:border-teal-400 dark:hover:border-teal-500',
-    cta: 'text-teal-700 dark:text-teal-200 border-teal-300 dark:border-teal-700 hover:bg-teal-50 dark:hover:bg-teal-950/40',
-    mono: 'text-teal-700 dark:text-teal-200',
-  },
-  lavender: {
-    step: 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900',
-    border: 'border-violet-200/80 dark:border-violet-800/60',
-    hoverBorder: 'hover:border-violet-400 dark:hover:border-violet-500',
-    cta: 'text-violet-700 dark:text-violet-200 border-violet-300 dark:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-950/40',
-    mono: 'text-violet-700 dark:text-violet-200',
-  },
+const houseBase = {
+  border: 'border-[var(--term-border)]',
+  hoverBorder: 'hover:border-[var(--term-accent)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet
+// step 배지·cta는 크롬(배경/테두리/hover) 중립 고정, 텍스트만 액센트 색
+const A = {
+  ...houseBase,
+  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
+  cta: 'text-[var(--term-accent)] border-[var(--term-border)] hover:bg-[var(--term-surface)]',
+  mono: 'text-[var(--term-accent)]',
+};
+const B = {
+  ...houseBase,
+  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+  cta: 'text-sky-600 dark:text-sky-300 border-[var(--term-border)] hover:bg-[var(--term-surface)]',
+  mono: 'text-sky-600 dark:text-sky-300',
+};
+const C = {
+  ...houseBase,
+  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300',
+  cta: 'text-violet-600 dark:text-violet-300 border-[var(--term-border)] hover:bg-[var(--term-surface)]',
+  mono: 'text-violet-600 dark:text-violet-300',
+};
+
+// 키 선언 순서대로 [A, B, C] 순환
+const toneClasses: Record<ChainTone, typeof A> = {
+  blue: A,
+  teal: B,
+  lavender: C,
 };
 
 export const ApiToImplementationToTestFlow = ({ content }: Props) => {

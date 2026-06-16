@@ -8,46 +8,42 @@ type Props = { content: NotAllFilesContent['followFlow'] };
 
 type FlowTone = FlowStep['tone'];
 
-const toneClasses: Record<
-  FlowTone,
-  { iconBg: string; iconText: string; num: string; border: string }
-> = {
-  sky: {
-    iconBg: 'bg-sky-100 dark:bg-sky-950/60',
-    iconText: 'text-sky-600 dark:text-sky-300',
-    num: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
-    border: 'border-sky-200/80 dark:border-sky-800/60',
-  },
-  blue: {
-    iconBg: 'bg-blue-100 dark:bg-blue-950/60',
-    iconText: 'text-blue-600 dark:text-blue-300',
-    num: 'bg-blue-500 text-white dark:bg-blue-400 dark:text-slate-900',
-    border: 'border-blue-200/80 dark:border-blue-800/60',
-  },
-  indigo: {
-    iconBg: 'bg-indigo-100 dark:bg-indigo-950/60',
-    iconText: 'text-indigo-600 dark:text-indigo-300',
-    num: 'bg-indigo-500 text-white dark:bg-indigo-400 dark:text-slate-900',
-    border: 'border-indigo-200/80 dark:border-indigo-800/60',
-  },
-  violet: {
-    iconBg: 'bg-violet-100 dark:bg-violet-950/60',
-    iconText: 'text-violet-600 dark:text-violet-300',
-    num: 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900',
-    border: 'border-violet-200/80 dark:border-violet-800/60',
-  },
-  mint: {
-    iconBg: 'bg-cyan-100 dark:bg-cyan-950/60',
-    iconText: 'text-cyan-600 dark:text-cyan-300',
-    num: 'bg-cyan-500 text-white dark:bg-cyan-400 dark:text-slate-900',
-    border: 'border-cyan-200/80 dark:border-cyan-800/60',
-  },
-  teal: {
-    iconBg: 'bg-teal-100 dark:bg-teal-950/60',
-    iconText: 'text-teal-600 dark:text-teal-300',
-    num: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
-    border: 'border-teal-200/80 dark:border-teal-800/60',
-  },
+type ToneStyle = { iconBg: string; iconText: string; num: string; border: string };
+
+// 중립 크롬 고정: 아이콘 박스/번호 배지는 surface+border, 색은 텍스트로만
+const houseBadge = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
+const houseChrome = {
+  border: 'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet (텍스트 색으로만)
+const A: ToneStyle = {
+  ...houseChrome,
+  iconBg: houseBadge,
+  iconText: 'text-[var(--term-accent)]',
+  num: cn(houseBadge, 'text-[var(--term-accent)]'),
+};
+const B: ToneStyle = {
+  ...houseChrome,
+  iconBg: houseBadge,
+  iconText: 'text-sky-600 dark:text-sky-300',
+  num: cn(houseBadge, 'text-sky-600 dark:text-sky-300'),
+};
+const C: ToneStyle = {
+  ...houseChrome,
+  iconBg: houseBadge,
+  iconText: 'text-violet-600 dark:text-violet-300',
+  num: cn(houseBadge, 'text-violet-600 dark:text-violet-300'),
+};
+
+// 키 선언 순서대로 [A, B, C, A, B, C] 순환
+const toneClasses: Record<FlowTone, ToneStyle> = {
+  sky: A,
+  blue: B,
+  indigo: C,
+  violet: A,
+  mint: B,
+  teal: C,
 };
 
 export const FollowQuestionFlow = ({ content }: Props) => {
@@ -61,8 +57,8 @@ export const FollowQuestionFlow = ({ content }: Props) => {
       />
 
       {/* 메인 질문 카드 */}
-      <div className="rounded-lg border border-sky-200/80 dark:border-sky-800/60 bg-gradient-to-br from-sky-50 via-white to-teal-50/60 dark:from-sky-950/40 dark:via-transparent dark:to-teal-950/30 p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] text-center">
-        <p className="text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-300 font-bold mb-1">
+      <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] text-center">
+        <p className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold mb-1">
           main question
         </p>
         <h3 className="text-lg sm:text-xl lg:text-xxl font-bold tracking-tight text-[var(--term-fg)] break-keep leading-snug">

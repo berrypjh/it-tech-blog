@@ -11,7 +11,7 @@ const formatInline = (text: string): React.ReactNode => {
       return (
         <code
           key={i}
-          className="px-1 py-0.5 rounded border border-teal-200 dark:border-teal-800/70 bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-200 text-[0.9em] font-mono"
+          className="px-1 py-0.5 rounded border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[0.9em] font-mono"
         >
           {part.slice(1, -1)}
         </code>
@@ -35,7 +35,7 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
         {/* 데스크톱 테이블 */}
         <table className="hidden md:table w-full text-left">
           <thead>
-            <tr className="bg-sky-50/70 dark:bg-sky-950/30 border-b border-[var(--term-border)]">
+            <tr className="bg-[var(--term-surface)] border-b border-[var(--term-border)]">
               <th
                 scope="col"
                 className="px-md py-3 w-[30%] text-xsm font-bold text-[var(--term-fg)]"
@@ -49,10 +49,7 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
               >
                 <ArrowLongRightIcon className="h-3 w-7 mx-auto" />
               </th>
-              <th
-                scope="col"
-                className="px-md py-3 text-xsm font-bold text-teal-700 dark:text-teal-200"
-              >
+              <th scope="col" className="px-md py-3 text-xsm font-bold text-[var(--term-accent)]">
                 {content.headers.modern}
               </th>
             </tr>
@@ -75,14 +72,14 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
                   </span>
                 </th>
                 <td
-                  className="px-2 py-4 align-middle text-center text-teal-500 dark:text-teal-400"
+                  className="px-2 py-4 align-middle text-center text-[var(--term-accent)]"
                   aria-hidden="true"
                 >
                   <ArrowRightIcon className="h-4 w-4 mx-auto" />
                 </td>
                 <td className="px-md py-4 align-top border-l border-[var(--term-border)]/60">
                   <div className="flex flex-col gap-1">
-                    <p className="text-xsm sm:text-sm font-bold text-teal-800 dark:text-teal-100 leading-snug break-keep">
+                    <p className="text-xsm sm:text-sm font-bold text-[var(--term-accent)] leading-snug break-keep">
                       {formatInline(row.modernTitle)}
                     </p>
                     <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
@@ -114,14 +111,14 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
 
               <span
                 aria-hidden="true"
-                className="self-start inline-flex items-center gap-1 text-[10px] font-bold text-teal-600 dark:text-teal-300"
+                className="self-start inline-flex items-center gap-1 text-[10px] font-bold text-[var(--term-accent)]"
               >
                 <ArrowRightIcon className="h-3 w-3" />
                 {content.headers.modern}
               </span>
 
-              <div className="flex flex-col gap-1 pl-3 border-l-2 border-teal-300 dark:border-teal-600">
-                <p className="text-xsm font-bold text-teal-800 dark:text-teal-100 leading-snug break-keep">
+              <div className="flex flex-col gap-1 pl-3 border-l-2 border-[var(--term-border)]">
+                <p className="text-xsm font-bold text-[var(--term-accent)] leading-snug break-keep">
                   {formatInline(row.modernTitle)}
                 </p>
                 <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">

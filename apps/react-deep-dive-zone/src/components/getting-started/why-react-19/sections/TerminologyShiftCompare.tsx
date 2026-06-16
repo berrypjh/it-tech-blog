@@ -59,7 +59,7 @@ export const TerminologyShiftCompare = ({ content }: Props) => {
         <div className="flex flex-col items-center justify-center gap-md text-center lg:px-sm py-md">
           <span
             aria-hidden="true"
-            className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-teal-500 text-white shadow-[0_2px_0_var(--term-border)]"
+            className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
           >
             <RefreshIcon className="h-5 w-5" />
           </span>
@@ -82,18 +82,18 @@ export const TerminologyShiftCompare = ({ content }: Props) => {
         {/* 오른쪽: 최신 용어 (teal/blue 강조) */}
         <article
           aria-labelledby="terminology-modern-header"
-          className="flex flex-col gap-md rounded-lg border border-teal-200/80 dark:border-teal-800/60 bg-gradient-to-br from-teal-50 via-sky-50 to-white dark:from-teal-950/40 dark:via-sky-950/30 dark:to-transparent p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-all hover:border-teal-400 dark:hover:border-teal-500 hover:-translate-y-px"
+          className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-all hover:border-[var(--term-accent)] hover:-translate-y-px"
         >
-          <header className="flex items-center gap-2 pb-sm border-b border-dashed border-teal-200/70 dark:border-teal-800/50">
+          <header className="flex items-center gap-2 pb-sm border-b border-dashed border-[var(--term-border)]">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
+              className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
             >
               <CheckIcon className="h-3.5 w-3.5" />
             </span>
             <h3
               id="terminology-modern-header"
-              className="text-xsm sm:text-sm font-bold text-teal-700 dark:text-teal-200 tracking-tight"
+              className="text-xsm sm:text-sm font-bold text-[var(--term-accent)] tracking-tight"
             >
               {content.right.header}
             </h3>
@@ -104,10 +104,10 @@ export const TerminologyShiftCompare = ({ content }: Props) => {
               <li key={item.name} className="flex items-start gap-sm">
                 <span
                   aria-hidden="true"
-                  className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 shrink-0"
+                  className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)] shrink-0"
                 />
                 <div className="flex flex-col gap-0.5 min-w-0">
-                  <code className="text-xsm font-mono font-bold text-teal-800 dark:text-teal-100 break-all">
+                  <code className="text-xsm font-mono font-bold text-[var(--term-accent)] break-all">
                     {item.name}
                   </code>
                   <span className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">

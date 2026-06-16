@@ -14,18 +14,18 @@ const toneClasses: Record<
   { title: string; subtitle: string; cardBg: string; badge: string; cardBorder: string }
 > = {
   usage: {
-    title: 'text-teal-600 dark:text-teal-300',
-    subtitle: 'text-teal-700/80 dark:text-teal-300/70',
-    cardBg: 'bg-teal-50/40 dark:bg-teal-950/20',
-    cardBorder: 'border-teal-200/70 dark:border-teal-800/60',
-    badge: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
+    title: 'text-[var(--term-accent)]',
+    subtitle: 'text-[var(--term-muted)]',
+    cardBg: 'bg-[var(--term-surface)]',
+    cardBorder: 'border-[var(--term-border)]',
+    badge: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
   },
   internal: {
-    title: 'text-sky-600 dark:text-sky-300',
-    subtitle: 'text-sky-700/80 dark:text-sky-300/70',
-    cardBg: 'bg-sky-50/40 dark:bg-sky-950/20',
-    cardBorder: 'border-sky-200/70 dark:border-sky-800/60',
-    badge: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
+    title: 'text-[var(--term-accent)]',
+    subtitle: 'text-[var(--term-muted)]',
+    cardBg: 'bg-[var(--term-surface)]',
+    cardBorder: 'border-[var(--term-border)]',
+    badge: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
   },
 };
 
@@ -92,7 +92,7 @@ export const PerspectiveComparison = ({ content }: Props) => {
     <section
       id="section-perspectives"
       aria-labelledby="heading-perspectives"
-      className="space-y-lg rounded-lg border border-[var(--term-border)] bg-sky-50/30 dark:bg-sky-950/15 p-md sm:p-lg lg:p-xl"
+      className="space-y-lg rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md sm:p-lg lg:p-xl"
     >
       <SectionHeader
         id="perspectives"

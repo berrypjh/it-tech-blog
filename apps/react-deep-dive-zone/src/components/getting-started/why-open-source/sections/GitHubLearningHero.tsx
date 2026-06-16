@@ -14,38 +14,35 @@ type Props = { content: WhyOpenSourceContent['hero'] };
 
 type PillTone = KeywordPill['tone'];
 
-const pillToneClasses: Record<
-  PillTone,
-  { bg: string; text: string; border: string; iconBg: string; iconText: string }
-> = {
-  blue: {
-    bg: 'bg-sky-50 dark:bg-sky-950/50',
-    text: 'text-sky-700 dark:text-sky-200',
-    border: 'border-sky-200 dark:border-sky-800/70',
-    iconBg: 'bg-sky-500 dark:bg-sky-400',
-    iconText: 'text-white dark:text-slate-900',
-  },
-  green: {
-    bg: 'bg-emerald-50 dark:bg-emerald-950/50',
-    text: 'text-emerald-700 dark:text-emerald-200',
-    border: 'border-emerald-200 dark:border-emerald-800/70',
-    iconBg: 'bg-emerald-500 dark:bg-emerald-400',
-    iconText: 'text-white dark:text-slate-900',
-  },
-  lavender: {
-    bg: 'bg-violet-50 dark:bg-violet-950/50',
-    text: 'text-violet-700 dark:text-violet-200',
-    border: 'border-violet-200 dark:border-violet-800/70',
-    iconBg: 'bg-violet-500 dark:bg-violet-400',
-    iconText: 'text-white dark:text-slate-900',
-  },
-  teal: {
-    bg: 'bg-teal-50 dark:bg-teal-950/50',
-    text: 'text-teal-700 dark:text-teal-200',
-    border: 'border-teal-200 dark:border-teal-800/70',
-    iconBg: 'bg-teal-500 dark:bg-teal-400',
-    iconText: 'text-white dark:text-slate-900',
-  },
+const houseBase = {
+  bg: 'bg-[var(--term-surface)]',
+  border: 'border-[var(--term-border)]',
+  iconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet (텍스트 색만)
+const A = {
+  ...houseBase,
+  text: 'text-[var(--term-accent)]',
+  iconText: 'text-[var(--term-accent)]',
+};
+const B = {
+  ...houseBase,
+  text: 'text-sky-600 dark:text-sky-300',
+  iconText: 'text-sky-600 dark:text-sky-300',
+};
+const C = {
+  ...houseBase,
+  text: 'text-violet-600 dark:text-violet-300',
+  iconText: 'text-violet-600 dark:text-violet-300',
+};
+
+// 키 선언 순서대로 [A, B, C, A] 순환
+const pillToneClasses: Record<PillTone, typeof A> = {
+  blue: A,
+  green: B,
+  lavender: C,
+  teal: A,
 };
 
 const pillIcon = {

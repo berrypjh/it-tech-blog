@@ -8,38 +8,40 @@ type Props = { content: WhyOpenSourceContent['readingPriorities'] };
 
 type RowTone = ReadingPriorityRow['tone'];
 
-const toneClasses: Record<
-  RowTone,
-  { number: string; iconBg: string; iconText: string; title: string; hoverBg: string }
-> = {
-  blue: {
-    number: 'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-900',
-    iconBg: 'bg-sky-50 dark:bg-sky-950/50',
-    iconText: 'text-sky-600 dark:text-sky-300',
-    title: 'text-sky-700 dark:text-sky-200',
-    hoverBg: 'group-hover:bg-sky-50/60 dark:group-hover:bg-sky-950/30',
-  },
-  teal: {
-    number: 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
-    iconBg: 'bg-teal-50 dark:bg-teal-950/50',
-    iconText: 'text-teal-600 dark:text-teal-300',
-    title: 'text-teal-700 dark:text-teal-200',
-    hoverBg: 'group-hover:bg-teal-50/60 dark:group-hover:bg-teal-950/30',
-  },
-  lavender: {
-    number: 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900',
-    iconBg: 'bg-violet-50 dark:bg-violet-950/50',
-    iconText: 'text-violet-600 dark:text-violet-300',
-    title: 'text-violet-700 dark:text-violet-200',
-    hoverBg: 'group-hover:bg-violet-50/60 dark:group-hover:bg-violet-950/30',
-  },
-  coral: {
-    number: 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900',
-    iconBg: 'bg-rose-50 dark:bg-rose-950/50',
-    iconText: 'text-rose-600 dark:text-rose-300',
-    title: 'text-rose-700 dark:text-rose-200',
-    hoverBg: 'group-hover:bg-rose-50/60 dark:group-hover:bg-rose-950/30',
-  },
+const houseBase = {
+  iconBg: 'bg-[var(--term-surface)]',
+  hoverBg: 'group-hover:bg-[var(--term-surface)]',
+};
+
+// 소프트 액센트 3색: A amber / B sky / C violet
+// number 배지·iconBg·hoverBg는 크롬 중립 고정, 텍스트만 액센트 색
+const A = {
+  ...houseBase,
+  number: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
+  iconText: 'text-[var(--term-accent)]',
+  title: 'text-[var(--term-accent)]',
+};
+const B = {
+  ...houseBase,
+  number:
+    'bg-[var(--term-surface)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+  iconText: 'text-sky-600 dark:text-sky-300',
+  title: 'text-sky-600 dark:text-sky-300',
+};
+const C = {
+  ...houseBase,
+  number:
+    'bg-[var(--term-surface)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300',
+  iconText: 'text-violet-600 dark:text-violet-300',
+  title: 'text-violet-600 dark:text-violet-300',
+};
+
+// 키 선언 순서대로 [A, B, C, A] 순환
+const toneClasses: Record<RowTone, typeof A> = {
+  blue: A,
+  teal: B,
+  lavender: C,
+  coral: A,
 };
 
 export const ReactGitHubReadingList = ({ content }: Props) => {

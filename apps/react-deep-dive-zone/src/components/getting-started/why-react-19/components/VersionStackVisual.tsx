@@ -46,12 +46,12 @@ const tones: VersionTone[] = [
     highlightText: 'text-indigo-800 dark:text-indigo-100',
   },
   {
-    // React 19.2 — teal/mint 강조 (현재 기준)
-    cardBg: 'bg-teal-50 dark:bg-teal-950/40',
-    cardBorder: 'border-teal-300 dark:border-teal-600',
-    versionText: 'text-teal-700 dark:text-teal-200',
-    yearText: 'text-teal-500 dark:text-teal-400',
-    highlightText: 'text-teal-800 dark:text-teal-100',
+    // React 19.2 — house accent 강조 (현재 기준)
+    cardBg: 'bg-[var(--term-surface)]',
+    cardBorder: 'border-[var(--term-border)]',
+    versionText: 'text-[var(--term-accent)]',
+    yearText: 'text-[var(--term-accent)]',
+    highlightText: 'text-[var(--term-accent)]',
   },
 ];
 
@@ -80,8 +80,8 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
 
       {/* 상단 라벨 + 화살표 (현재) */}
       <div className="relative flex items-center justify-between mb-md">
-        <TerminalBadge dotClassName="bg-teal-500">version timeline</TerminalBadge>
-        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-teal-600 dark:text-teal-300">
+        <TerminalBadge dotClassName="bg-[var(--term-accent)]">version timeline</TerminalBadge>
+        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[var(--term-accent)]">
           <ArrowUpIcon className="h-3 w-3" />
           {axisTop}
         </span>
@@ -105,7 +105,7 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
                   t.cardBorder,
                   'shadow-[0_2px_0_var(--term-border)] transition-all',
                   'hover:translate-y-[-1px] hover:shadow-[0_3px_0_var(--term-border)]',
-                  isLatest && 'ring-2 ring-teal-300/60 dark:ring-teal-500/40',
+                  isLatest && 'ring-2 ring-[var(--term-accent)]',
                 )}
               >
                 <div className="flex flex-col min-w-0">
@@ -131,7 +131,7 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
                 {isLatest && (
                   <span
                     aria-hidden="true"
-                    className="shrink-0 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
+                    className="shrink-0 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
                   >
                     NOW
                   </span>
