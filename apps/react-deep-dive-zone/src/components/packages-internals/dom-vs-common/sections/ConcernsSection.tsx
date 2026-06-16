@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ConcernCard, DvcContent } from '../content';
 import { dvcIcon, SparklesIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone-house';
 
 type Props = { content: DvcContent['concerns'] };
 
@@ -31,7 +30,7 @@ export const ConcernsSection = ({ content }: Props) => {
 };
 
 const ConcernCardView = ({ card }: { card: ConcernCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = dvcIcon[card.iconName];
 
   return (
@@ -43,9 +42,9 @@ const ConcernCardView = ({ card }: { card: ConcernCard }) => {
         tone.borderHover,
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <LocalToneIconBox tone={card.tone} size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </LocalToneIconBox>
 
       <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
 

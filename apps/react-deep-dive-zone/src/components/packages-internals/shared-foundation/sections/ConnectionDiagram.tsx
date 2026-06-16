@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
 import { sharedIcon, StarIcon } from '../icons';
+import { accentText, neutralChrome, toneAccent } from '../localTone';
 
 type Props = { content: SharedContent['connection'] };
 
@@ -26,11 +25,6 @@ export const ConnectionDiagram = ({ content }: Props) => {
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(56,189,248,0.12),transparent_55%)]"
-        />
-
         {/* 상단 shared hub */}
         <div className="relative flex justify-center mb-md">
           <SharedHub label={content.centerLabel} subtitle={content.centerSubtitle} />
@@ -56,9 +50,9 @@ export const ConnectionDiagram = ({ content }: Props) => {
             <li key={tag.id}>
               <span
                 className={cn(
-                  'inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-mono font-bold tracking-tight',
-                  'border-cyan-300/80 bg-cyan-50 text-cyan-800',
-                  'dark:border-cyan-800/70 dark:bg-cyan-950/40 dark:text-cyan-100',
+                  'inline-flex items-center rounded-full px-3 py-1 text-[10px] font-mono font-bold tracking-tight',
+                  neutralChrome,
+                  'text-[var(--term-accent)]',
                 )}
               >
                 {tag.label}
@@ -72,12 +66,11 @@ export const ConnectionDiagram = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-cyan-300/80 bg-cyan-50 text-cyan-900',
-          'dark:border-cyan-800/70 dark:bg-cyan-950/40 dark:text-cyan-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-cyan-600 dark:text-cyan-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <StarIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
@@ -90,28 +83,23 @@ const SharedHub = ({ label, subtitle }: { label: string; subtitle: string }) => 
   <div
     className={cn(
       'relative inline-flex flex-col items-center justify-center gap-1 px-md py-md min-w-[14rem]',
-      'rounded-2xl border-2 border-cyan-300/80 bg-cyan-50/80 text-cyan-900',
-      'dark:border-cyan-700/60 dark:bg-cyan-950/40 dark:text-cyan-100',
+      'rounded-2xl border-2 border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_4px_0_var(--term-border)] overflow-hidden',
     )}
     aria-hidden="true"
   >
-    <span
-      aria-hidden="true"
-      className="absolute inset-0 -z-0 opacity-70 bg-[radial-gradient(circle_at_50%_42%,rgba(34,211,238,0.25),transparent_60%)]"
-    />
-    <CubeIcon className="relative h-7 w-7 text-cyan-600 dark:text-cyan-300" />
-    <span className="relative text-md font-bold font-mono tracking-tight text-cyan-700 dark:text-cyan-200">
+    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <span className="relative text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
-    <span className="relative text-[10px] uppercase tracking-wider text-cyan-700/80 dark:text-cyan-300/80">
+    <span className="relative text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
       {subtitle}
     </span>
   </div>
 );
 
 const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
-  const tone = toneTokens[pkg.tone];
+  const accent = accentText[toneAccent(pkg.tone)];
   const Icon = sharedIcon[pkg.iconName];
 
   return (
@@ -119,16 +107,22 @@ const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
       className={cn(
         'group flex min-w-0 flex-1 items-center gap-sm rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
-        tone.borderHover,
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
-      <ToneIconBox tone={pkg.tone} size="md">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex items-center justify-center w-11 h-11 rounded-md shrink-0',
+          neutralChrome,
+          accent,
+        )}
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </span>
       <div className="flex flex-col min-w-0">
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', tone.text)}>
+        <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', accent)}>
           {pkg.name}
         </h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">

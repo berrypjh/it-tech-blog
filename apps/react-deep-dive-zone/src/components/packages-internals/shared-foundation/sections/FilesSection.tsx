@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FileCard, SharedContent } from '../content';
 import { sharedIcon, SparklesIcon } from '../icons';
+import { accentText, neutralChrome, toneAccent } from '../localTone';
 
 type Props = { content: SharedContent['files'] };
 
@@ -30,7 +30,7 @@ export const FilesSection = ({ content }: Props) => {
 };
 
 const FileCardView = ({ card }: { card: FileCard }) => {
-  const tone = toneTokens[card.tone];
+  const accent = accentText[toneAccent(card.tone)];
   const Icon = sharedIcon[card.iconName];
 
   return (
@@ -39,23 +39,24 @@ const FileCardView = ({ card }: { card: FileCard }) => {
         'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-10 h-10 rounded-md border font-mono font-bold text-md',
-            tone.chip,
+            'inline-flex items-center justify-center w-10 h-10 rounded-md font-mono font-bold text-md',
+            neutralChrome,
+            accent,
           )}
         >
           {card.badge}
         </span>
-        <Icon className={cn('h-5 w-5', tone.text)} aria-hidden="true" />
+        <Icon className={cn('h-5 w-5', accent)} aria-hidden="true" />
       </header>
 
-      <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', tone.text)}>
+      <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', accent)}>
         {card.fileName}
       </h3>
 

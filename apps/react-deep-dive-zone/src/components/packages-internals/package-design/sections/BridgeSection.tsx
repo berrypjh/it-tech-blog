@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { BridgeCard, PackageDesignContent } from '../content';
 import { ChevronRightIcon, pdIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: PackageDesignContent['bridge'] };
 
@@ -44,23 +43,23 @@ export const BridgeSection = ({ content }: Props) => {
 };
 
 const BridgeCardView = ({ card, index }: { card: BridgeCard; index: number }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = pdIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         card.emphasized
-          ? `${tone.chip} ${tone.border} lg:shadow-[0_3px_0_var(--term-border)]`
-          : `bg-[var(--term-bg)] border-[var(--term-border)] ${tone.borderHover}`,
+          ? 'border-[var(--term-accent)] lg:shadow-[0_3px_0_var(--term-border)]'
+          : `border-[var(--term-border)] ${tone.borderHover}`,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <LocalToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-mono tabular-nums">
           Step {String(index).padStart(2, '0')}
         </span>

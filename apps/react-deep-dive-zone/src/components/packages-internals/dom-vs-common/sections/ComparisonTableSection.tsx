@@ -28,10 +28,7 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
           <table className="min-w-full text-sm">
             <thead>
               <tr
-                className={cn(
-                  'border-b border-[var(--term-border)]',
-                  'bg-sky-50/70 dark:bg-sky-950/30',
-                )}
+                className={cn('border-b border-[var(--term-border)]', 'bg-[var(--term-surface)]')}
               >
                 <th
                   scope="col"
@@ -43,7 +40,7 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
                   scope="col"
                   className={cn(
                     'text-left text-xsm font-bold font-mono px-md py-3 w-[40%]',
-                    'text-teal-700 dark:text-teal-300',
+                    'text-[var(--term-accent)]',
                   )}
                 >
                   {content.headers.common}
@@ -52,7 +49,7 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
                   scope="col"
                   className={cn(
                     'text-left text-xsm font-bold font-mono px-md py-3 w-[40%]',
-                    'text-violet-700 dark:text-violet-300',
+                    'text-sky-600 dark:text-sky-300',
                   )}
                 >
                   {content.headers.domSpecific}
@@ -78,7 +75,7 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
                   <td
                     className={cn(
                       'text-xsm leading-relaxed px-md py-3 align-top break-keep',
-                      'text-teal-800 dark:text-teal-200',
+                      'text-[var(--term-fg)]',
                     )}
                   >
                     {row.common}
@@ -86,7 +83,7 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
                   <td
                     className={cn(
                       'text-xsm leading-relaxed px-md py-3 align-top break-keep',
-                      'text-violet-800 dark:text-violet-200',
+                      'text-[var(--term-fg)]',
                     )}
                   >
                     {row.domSpecific}
@@ -108,26 +105,26 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
                 <div
                   className={cn(
                     'rounded-lg border px-3 py-2',
-                    'border-teal-300/80 bg-teal-50 dark:border-teal-800/70 dark:bg-teal-950/30',
+                    'border-[var(--term-border)] bg-[var(--term-surface)]',
                   )}
                 >
-                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-teal-700 dark:text-teal-300 mb-1">
+                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-accent)] mb-1">
                     {content.headers.common}
                   </span>
-                  <span className="text-xsm leading-snug text-teal-900 dark:text-teal-100 break-keep">
+                  <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
                     {row.common}
                   </span>
                 </div>
                 <div
                   className={cn(
                     'rounded-lg border px-3 py-2',
-                    'border-violet-300/80 bg-violet-50 dark:border-violet-800/70 dark:bg-violet-950/30',
+                    'border-[var(--term-border)] bg-[var(--term-surface)]',
                   )}
                 >
-                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-violet-700 dark:text-violet-300 mb-1">
+                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-sky-600 dark:text-sky-300 mb-1">
                     {content.headers.domSpecific}
                   </span>
-                  <span className="text-xsm leading-snug text-violet-900 dark:text-violet-100 break-keep">
+                  <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
                     {row.domSpecific}
                   </span>
                 </div>

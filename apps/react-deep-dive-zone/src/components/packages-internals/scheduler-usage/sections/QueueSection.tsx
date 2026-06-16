@@ -71,12 +71,13 @@ export const QueueSection = ({ content }: Props) => {
             onClick={() => setCursor(0)}
             disabled={running}
             className={cn(
-              'inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-xsm font-bold transition-all',
-              'border-violet-300 bg-violet-50 text-violet-700',
-              'dark:border-violet-700 dark:bg-violet-950/40 dark:text-violet-200',
+              'inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xsm font-bold transition-all',
+              'border border-transparent bg-slate-900 text-slate-50',
+              'dark:border-slate-600 dark:bg-slate-800',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]',
               running
                 ? 'opacity-60 cursor-not-allowed'
-                : 'hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
+                : 'hover:bg-slate-800 dark:hover:bg-slate-700 hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
             )}
           >
             {completed ? (
@@ -110,10 +111,9 @@ export const QueueSection = ({ content }: Props) => {
                     className={cn(
                       'flex items-center gap-2 rounded-lg border px-3 py-2.5 transition-all duration-300',
                       st === 'active' &&
-                        'border-violet-300 bg-violet-50/70 shadow-[inset_3px_0_0_0_#8b5cf6] dark:border-violet-700 dark:bg-violet-950/30',
+                        'border-[var(--term-accent)] bg-[var(--term-surface)] shadow-[inset_3px_0_0_0_var(--term-accent)]',
                       st === 'done' && 'border-[var(--term-border)] opacity-50',
-                      st === 'idle' &&
-                        'border-sky-200/70 bg-sky-50/40 dark:border-sky-800/50 dark:bg-sky-950/20',
+                      st === 'idle' && 'border-[var(--term-border)] bg-[var(--term-surface)]',
                     )}
                   >
                     <span
@@ -121,8 +121,8 @@ export const QueueSection = ({ content }: Props) => {
                       className={cn(
                         'shrink-0 transition-colors duration-300',
                         st === 'done'
-                          ? 'text-violet-500 dark:text-violet-400'
-                          : 'text-sky-500 dark:text-sky-400',
+                          ? 'text-[var(--term-accent)]'
+                          : 'text-sky-600 dark:text-sky-300',
                       )}
                     >
                       {st === 'done' ? (
@@ -174,11 +174,9 @@ export const QueueSection = ({ content }: Props) => {
                     className={cn(
                       'flex items-start gap-2.5 rounded-lg border px-3 py-2.5 transition-all duration-300',
                       !revealed && 'border-dashed border-[var(--term-border)]',
-                      revealed &&
-                        !active &&
-                        'border-violet-200/70 bg-violet-50/30 dark:border-violet-800/50 dark:bg-violet-950/15',
+                      revealed && !active && 'border-[var(--term-border)] bg-[var(--term-surface)]',
                       active &&
-                        'border-violet-300 bg-violet-50/70 shadow-[inset_3px_0_0_0_#8b5cf6] dark:border-violet-700 dark:bg-violet-950/30',
+                        'border-[var(--term-accent)] bg-[var(--term-surface)] shadow-[inset_3px_0_0_0_var(--term-accent)]',
                     )}
                   >
                     <span
@@ -189,7 +187,11 @@ export const QueueSection = ({ content }: Props) => {
                       className={cn(
                         'inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-mono text-xsm font-bold border-2 transition-all duration-300',
                         revealed
-                          ? cn('border-violet-500 bg-violet-500 text-white', active && 'scale-110')
+                          ? cn(
+                              'border-[var(--term-border)] bg-[var(--term-bg)] text-violet-600 dark:text-violet-300',
+                              active &&
+                                'scale-110 border-[var(--term-accent)] text-[var(--term-accent)]',
+                            )
                           : 'border-[var(--term-border)] text-[var(--term-dim)]',
                       )}
                     >
@@ -219,11 +221,8 @@ export const QueueSection = ({ content }: Props) => {
         {/* 결과 */}
         <div className="border-t border-[var(--term-border)] pt-md space-y-2">
           <header className="flex items-center gap-2">
-            <CheckCircleIcon
-              className="h-4 w-4 text-emerald-600 dark:text-emerald-300"
-              aria-hidden="true"
-            />
-            <h3 className="text-xsm font-bold tracking-tight text-emerald-700 dark:text-emerald-300 break-keep">
+            <CheckCircleIcon className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />
+            <h3 className="text-xsm font-bold tracking-tight text-[var(--term-accent)] break-keep">
               {content.result.title}
             </h3>
           </header>
@@ -234,7 +233,7 @@ export const QueueSection = ({ content }: Props) => {
                 className={cn(
                   'flex items-center gap-2 rounded-lg border px-3 py-2 text-xsm leading-snug break-keep transition-all duration-300 sm:flex-1',
                   completed
-                    ? 'border-emerald-300/70 bg-emerald-50/60 text-[var(--term-fg)] dark:border-emerald-700/60 dark:bg-emerald-950/25'
+                    ? 'border-[var(--term-accent)] bg-[var(--term-surface)] text-[var(--term-fg)]'
                     : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-dim)]',
                 )}
               >
@@ -243,7 +242,7 @@ export const QueueSection = ({ content }: Props) => {
                   className={cn(
                     'h-4 w-4 shrink-0 transition-all duration-300',
                     completed
-                      ? 'text-emerald-600 dark:text-emerald-300 scale-110'
+                      ? 'text-[var(--term-accent)] scale-110'
                       : 'text-[var(--term-dim)] opacity-40',
                   )}
                 />

@@ -3,10 +3,9 @@ import Link from 'next/link';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { AdvancedLink, ReconcilerContent } from '../content';
 import { ArrowRightIcon, BookOpenIcon, reconcilerIcon } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: ReconcilerContent['advanced'] };
 
@@ -33,7 +32,7 @@ export const AdvancedLearningSection = ({ content }: Props) => {
 };
 
 const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: string }) => {
-  const tone = toneTokens[card.tone];
+  const tone = houseTone(card.tone);
   const Icon = reconcilerIcon[card.iconName];
 
   return (
@@ -47,9 +46,12 @@ const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: 
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <span
+        aria-hidden="true"
+        className={cn('inline-flex h-11 w-11 items-center justify-center rounded-md', tone.chip)}
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </span>
 
       <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
 

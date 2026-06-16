@@ -2,10 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
-import type { FlowStep, PackageDesignContent } from '../content';
+import type { FlowStep, PackageDesignContent, ToneKey } from '../content';
 import { pdIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: PackageDesignContent['userFlow'] };
 
@@ -47,7 +46,7 @@ export const UserFlowSection = ({ content }: Props) => {
 };
 
 const FlowStepCard = ({ step, index }: { step: FlowStep; index: number }) => {
-  const tone = toneTokens[step.tone];
+  const tone = localTone(step.tone);
   const Icon = pdIcon[step.iconName];
 
   return (
@@ -60,9 +59,9 @@ const FlowStepCard = ({ step, index }: { step: FlowStep; index: number }) => {
       )}
     >
       <header className="flex items-center justify-between gap-sm">
-        <ToneIconBox tone={step.tone} size="sm">
+        <LocalToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-mono tabular-nums">
           {step.step} · {String(index).padStart(2, '0')}
         </span>
@@ -81,22 +80,13 @@ const FlowStepCard = ({ step, index }: { step: FlowStep; index: number }) => {
   );
 };
 
-const SideAxisCard = ({
-  title,
-  body,
-  tone,
-}: {
-  title: string;
-  body: string;
-  tone: 'cyan' | 'amber';
-}) => {
-  const t = toneTokens[tone];
+const SideAxisCard = ({ title, body, tone }: { title: string; body: string; tone: ToneKey }) => {
+  const t = localTone(tone);
   return (
     <article
       className={cn(
         'flex flex-col gap-1 rounded-xl border-2 border-dashed p-md',
-        t.border,
-        t.chip,
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >

@@ -29,12 +29,11 @@ export const CapabilityComparison = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-teal-300/80 bg-teal-50 text-teal-900',
-          'dark:border-teal-800/70 dark:bg-teal-950/40 dark:text-teal-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-teal-600 dark:text-teal-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <StarIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
@@ -52,15 +51,15 @@ type CapabilityCardProps = {
 const CapabilityCard = ({ variant, title, items }: CapabilityCardProps) => {
   const isPositive = variant === 'does';
   const Icon = isPositive ? CheckCircleIcon : XCircleIcon;
+  const accentText = isPositive ? 'text-[var(--term-accent)]' : 'text-rose-600 dark:text-rose-300';
+  const dot = isPositive ? 'bg-[var(--term-accent)]' : 'bg-rose-400 dark:bg-rose-500';
 
   return (
     <article
       className={cn(
         'flex flex-col gap-md rounded-2xl border p-md sm:p-lg h-full',
         'shadow-[0_2px_0_var(--term-border)]',
-        isPositive
-          ? 'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-800/70 dark:bg-emerald-950/30'
-          : 'border-red-300/80 bg-red-50/60 dark:border-red-800/70 dark:bg-red-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -68,23 +67,13 @@ const CapabilityCard = ({ variant, title, items }: CapabilityCardProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-            isPositive
-              ? 'border-emerald-300/80 bg-emerald-100 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-900/60 dark:text-emerald-200'
-              : 'border-red-300/80 bg-red-100 text-red-700 dark:border-red-700/70 dark:bg-red-900/60 dark:text-red-200',
+            'border-[var(--term-border)] bg-[var(--term-bg)]',
+            accentText,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3
-          className={cn(
-            'text-md font-bold tracking-tight',
-            isPositive
-              ? 'text-emerald-800 dark:text-emerald-200'
-              : 'text-red-800 dark:text-red-200',
-          )}
-        >
-          {title}
-        </h3>
+        <h3 className={cn('text-md font-bold tracking-tight', accentText)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-sm">
@@ -92,20 +81,10 @@ const CapabilityCard = ({ variant, title, items }: CapabilityCardProps) => {
           <li key={item.title} className="flex items-start gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
-                'mt-1 inline-block w-1.5 h-1.5 rounded-full shrink-0',
-                isPositive ? 'bg-emerald-500 dark:bg-emerald-400' : 'bg-red-500 dark:bg-red-400',
-              )}
+              className={cn('mt-1 inline-block w-1.5 h-1.5 rounded-full shrink-0', dot)}
             />
             <div className="flex flex-col gap-1">
-              <span
-                className={cn(
-                  'text-sm font-bold tracking-tight break-keep',
-                  isPositive
-                    ? 'text-emerald-800 dark:text-emerald-200'
-                    : 'text-red-800 dark:text-red-200',
-                )}
-              >
+              <span className={cn('text-sm font-bold tracking-tight break-keep', accentText)}>
                 {item.title}
               </span>
               <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

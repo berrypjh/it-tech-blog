@@ -3,10 +3,9 @@ import Link from 'next/link';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, PathCard } from '../content';
 import { ArrowRightIcon, ChevronRightIcon, dvcIcon, MapIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone-house';
 
 type Props = { content: DvcContent['path'] };
 
@@ -46,7 +45,7 @@ export const PathSection = ({ content }: Props) => {
 };
 
 const PathCardView = ({ card, moreLabel }: { card: PathCard; moreLabel: string }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = dvcIcon[card.iconName];
 
   return (
@@ -60,9 +59,9 @@ const PathCardView = ({ card, moreLabel }: { card: PathCard; moreLabel: string }
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <LocalToneIconBox tone={card.tone} size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </LocalToneIconBox>
 
       <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">

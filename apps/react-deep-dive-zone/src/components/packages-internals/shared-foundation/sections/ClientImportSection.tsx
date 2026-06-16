@@ -4,9 +4,9 @@ import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { GithubButton } from '../../../shared/GithubButton';
 import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { SharedContent } from '../content';
 import { ExternalLinkIcon, MapIcon, sharedIcon } from '../icons';
+import { accentText, neutralChrome } from '../localTone';
 
 type Props = { content: SharedContent['clientImport'] };
 
@@ -47,10 +47,17 @@ export const ClientImportSection = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-sm">
-            <ToneIconBox tone="violet" size="md">
+            <span
+              aria-hidden="true"
+              className={cn(
+                'inline-flex items-center justify-center w-11 h-11 rounded-md shrink-0',
+                neutralChrome,
+                accentText.C,
+              )}
+            >
               <sharedIcon.fileText className="h-5 w-5" aria-hidden="true" />
-            </ToneIconBox>
-            <h3 className="text-md font-bold tracking-tight text-violet-700 dark:text-violet-300">
+            </span>
+            <h3 className={cn('text-md font-bold tracking-tight', accentText.C)}>
               {content.explanation.title}
             </h3>
           </header>

@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ApiToken, ReactPackageContent } from '../content';
 import { reactPackageIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = {
   hero: ReactPackageContent['hero'];
@@ -25,7 +24,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
       a11yLabel={hero.apiNetworkAriaLabel}
       className={className}
       padding="px-md py-lg sm:p-lg"
-      gradient="radial-gradient(circle at 50% 50%, rgba(56,189,248,0.14), transparent 55%)"
+      gradient="radial-gradient(circle at 50% 50%, rgba(251,191,36,0.14), transparent 55%)"
     >
       <div
         className={cn(
@@ -80,8 +79,7 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
   <div
     className={cn(
       'relative flex flex-col items-center justify-center gap-1 rounded-2xl border',
-      'border-sky-300/80 bg-sky-50/80 text-sky-900',
-      'dark:border-sky-700/60 dark:bg-sky-950/40 dark:text-sky-100',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] px-md py-md sm:px-lg sm:py-lg',
       'min-w-[10rem]',
     )}
@@ -90,14 +88,14 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
       aria-hidden="true"
       className={cn(
         'absolute inset-0 -z-0 opacity-70 rounded-2xl',
-        'bg-[radial-gradient(circle_at_50%_45%,rgba(56,189,248,0.22),transparent_60%)]',
+        'bg-[radial-gradient(circle_at_50%_45%,rgba(251,191,36,0.18),transparent_60%)]',
       )}
     />
-    <ReactAtomIcon className="relative h-10 w-10 text-sky-600 dark:text-sky-300" />
-    <span className="relative text-lg font-bold font-mono tracking-tight text-sky-700 dark:text-sky-200">
+    <ReactAtomIcon className="relative h-10 w-10 text-[var(--term-accent)]" />
+    <span className="relative text-lg font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {center.title}
     </span>
-    <span className="relative text-[10px] uppercase tracking-wider text-sky-700/80 dark:text-sky-300/80">
+    <span className="relative text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
       {center.caption}
     </span>
   </div>
@@ -106,7 +104,7 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
 type TokenCardProps = { token: ApiToken; side: 'left' | 'right' };
 
 const TokenCard = ({ token }: TokenCardProps) => {
-  const tone = toneTokens[token.tone];
+  const tone = localTone(token.tone);
   const Icon = reactPackageIcon[token.iconName];
 
   return (
@@ -119,9 +117,9 @@ const TokenCard = ({ token }: TokenCardProps) => {
       )}
     >
       <span className="inline-flex items-center gap-1.5 min-w-0">
-        <ToneIconBox tone={token.tone} size="sm">
+        <LocalToneIconBox tone={token.tone} size="sm">
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span
           className={cn(
             'text-[11px] font-bold font-mono tracking-tight truncate min-w-0',
@@ -146,7 +144,7 @@ const ConnectorLines = ({ direction, count }: ConnectorLinesProps) => {
 
   return (
     <svg
-      className="h-full w-full text-sky-300/70 dark:text-sky-700/70"
+      className="h-full w-full text-[var(--term-border)]"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
     >

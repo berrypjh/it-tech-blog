@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
 import { CheckCircleIcon, sharedIcon } from '../icons';
+import { accentText, neutralChrome, toneAccent } from '../localTone';
 
 type Props = { hero: SharedContent['hero']; className?: string };
 
@@ -16,14 +15,14 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
   <HeroDiagramShell
     a11yLabel={hero.a11yDiagram}
     className={className}
-    gradient="radial-gradient(circle at 50% 0%, rgba(56,189,248,0.14), transparent 55%)"
+    gradient="radial-gradient(circle at 50% 0%, rgba(245,158,11,0.12), transparent 55%)"
   >
     <div className="relative flex flex-col items-center gap-md">
       <HubCenter label={hero.centerLabel} subtitle={hero.centerSubtitle} />
 
       <span
         aria-hidden="true"
-        className="block h-md w-px border-l border-dashed border-cyan-400/70 dark:border-cyan-600/70"
+        className="block h-md w-px border-l border-dashed border-[var(--term-border)]"
       />
 
       {/* shared를 함께 쓰는 패키지 */}
@@ -45,7 +44,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
               'bg-[var(--term-bg)] border-[var(--term-border)] text-[var(--term-fg)] break-keep',
             )}
           >
-            <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5">
+            <span aria-hidden="true" className="text-[var(--term-accent)] shrink-0 mt-0.5">
               <CheckCircleIcon className="h-4 w-4" />
             </span>
             <span className="min-w-0">{item}</span>
@@ -61,28 +60,23 @@ const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => 
     className={cn(
       'relative inline-flex flex-col items-center justify-center gap-1',
       'w-28 h-28 rounded-full overflow-hidden',
-      'border-2 border-cyan-300/80 bg-cyan-50/80 text-cyan-900',
-      'dark:border-cyan-700/60 dark:bg-cyan-950/40 dark:text-cyan-100',
+      'border-2 border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_4px_0_var(--term-border)]',
     )}
     aria-hidden="true"
   >
-    <span
-      aria-hidden="true"
-      className="absolute inset-0 -z-0 rounded-full opacity-70 bg-[radial-gradient(circle_at_50%_42%,rgba(34,211,238,0.25),transparent_60%)]"
-    />
-    <CubeIcon className="relative h-7 w-7 text-cyan-600 dark:text-cyan-300" />
-    <span className="relative text-sm font-bold font-mono tracking-tight text-cyan-700 dark:text-cyan-200">
+    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <span className="relative text-sm font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
-    <span className="relative text-[9px] uppercase tracking-wider text-cyan-700/80 dark:text-cyan-300/80 text-center px-1 break-keep">
+    <span className="relative text-[9px] uppercase tracking-wider text-[var(--term-muted)] text-center px-1 break-keep">
       {subtitle}
     </span>
   </div>
 );
 
 const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
-  const tone = toneTokens[pkg.tone];
+  const accent = accentText[toneAccent(pkg.tone)];
   const Icon = sharedIcon[pkg.iconName];
 
   return (
@@ -90,18 +84,22 @@ const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
       className={cn(
         'group flex w-full min-w-0 flex-1 flex-col gap-1 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
-        tone.borderHover,
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
-        <ToneIconBox tone={pkg.tone} size="sm">
-          <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
         <span
-          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
+            neutralChrome,
+            accent,
+          )}
         >
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <span className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', accent)}>
           {pkg.name}
         </span>
       </span>

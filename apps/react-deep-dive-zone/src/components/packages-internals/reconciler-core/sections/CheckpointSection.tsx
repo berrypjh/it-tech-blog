@@ -4,9 +4,9 @@ import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { GithubButton } from '../../../shared/GithubButton';
 import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { CheckpointItem, ReconcilerContent } from '../content';
 import { ExternalLinkIcon, reconcilerIcon } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: ReconcilerContent['checkpoint']; sectionId: string };
 
@@ -80,15 +80,22 @@ export const CheckpointSection = ({ content, sectionId }: Props) => {
 
 const CheckpointRow = ({ item }: { item: CheckpointItem }) => {
   const Icon = reconcilerIcon[item.iconName];
+  const tone = houseTone(item.tone);
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
         {item.label}
       </span>
       <div className="flex items-start gap-2">
-        <ToneIconBox tone={item.tone} size="sm">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md',
+            tone.chip,
+          )}
+        >
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <span className="min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-all">
           {item.value}
         </span>

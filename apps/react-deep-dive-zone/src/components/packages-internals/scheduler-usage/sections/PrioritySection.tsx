@@ -3,8 +3,12 @@ import { cn } from '@it-tech-blog/utils';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { PriorityLevel, SchedulerContent } from '../content';
 import { CheckCircleIcon, LightbulbIcon, MapIcon, schedulerIcon } from '../icons';
+import { ACCENT_A, ACCENT_B, ACCENT_C } from '../tone-house';
 
 type Props = { content: SchedulerContent['priority']; sectionId: string };
+
+/** 반복 항목 3색 순환: A=accent / B=sky / C=violet */
+const CYCLE = [ACCENT_A, ACCENT_B, ACCENT_C] as const;
 
 export const PrioritySection = ({ content, sectionId }: Props) => {
   return (
@@ -19,9 +23,9 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.45fr)_minmax(0,_0.85fr)] gap-md items-start">
         <ol className="flex flex-col gap-sm">
-          {content.levels.map((level) => (
+          {content.levels.map((level, i) => (
             <li key={level.id}>
-              <PriorityBar level={level} />
+              <PriorityBar level={level} accent={CYCLE[i % CYCLE.length]} />
             </li>
           ))}
         </ol>
@@ -31,17 +35,17 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
             className={cn(
               'flex flex-col gap-sm rounded-2xl border p-md sm:p-lg',
               'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-              'border-sky-200/70 dark:border-sky-800/60',
+              'border-[var(--term-border)]',
             )}
           >
             <header className="flex items-center gap-sm">
               <span
                 aria-hidden="true"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-sky-300/80 bg-sky-100 text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-sky-600 dark:text-sky-300"
               >
                 <LightbulbIcon className="h-5 w-5" />
               </span>
-              <h3 className="text-md font-bold tracking-tight text-sky-700 dark:text-sky-300 break-keep">
+              <h3 className="text-md font-bold tracking-tight text-sky-600 dark:text-sky-300 break-keep">
                 {content.criteriaTitle}
               </h3>
             </header>
@@ -67,12 +71,11 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
           <div
             className={cn(
               'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-              'border-teal-300/80 bg-teal-50 text-teal-900',
-              'dark:border-teal-800/70 dark:bg-teal-950/40 dark:text-teal-100',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
               'shadow-[0_2px_0_var(--term-border)]',
             )}
           >
-            <span aria-hidden="true" className="text-teal-600 dark:text-teal-300">
+            <span aria-hidden="true" className="text-[var(--term-accent)]">
               <StarIcon className="h-4 w-4" />
             </span>
             <p className="text-sm sm:text-md font-bold tracking-tight break-keep">
@@ -85,68 +88,50 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
   );
 };
 
-const variantClass: Record<PriorityLevel['variant'], { container: string; badge: string }> = {
-  navy: {
-    container:
-      'bg-slate-100 text-slate-800 border-slate-300/80 dark:bg-slate-800/50 dark:text-slate-100 dark:border-slate-700/60',
-    badge:
-      'bg-slate-200/70 text-slate-700 border-slate-300 dark:bg-slate-700/60 dark:text-slate-100 dark:border-slate-600/60',
-  },
-  teal: {
-    container:
-      'bg-teal-100 text-teal-900 border-teal-200/80 dark:bg-teal-950/40 dark:text-teal-100 dark:border-teal-800/60',
-    badge:
-      'bg-teal-200/70 text-teal-900 border-teal-300 dark:bg-teal-900/60 dark:text-teal-100 dark:border-teal-700/60',
-  },
-  mint: {
-    container:
-      'bg-cyan-100 text-cyan-900 border-cyan-200/80 dark:bg-cyan-950/40 dark:text-cyan-100 dark:border-cyan-800/60',
-    badge:
-      'bg-cyan-200/70 text-cyan-900 border-cyan-300 dark:bg-cyan-900/60 dark:text-cyan-100 dark:border-cyan-700/60',
-  },
-  violet: {
-    container:
-      'bg-violet-100 text-violet-900 border-violet-200/80 dark:bg-violet-950/40 dark:text-violet-100 dark:border-violet-800/60',
-    badge:
-      'bg-violet-200/70 text-violet-900 border-violet-300 dark:bg-violet-900/60 dark:text-violet-100 dark:border-violet-700/60',
-  },
-};
-
-const PriorityBar = ({ level }: { level: PriorityLevel }) => {
-  const v = variantClass[level.variant];
+const PriorityBar = ({ level, accent }: { level: PriorityLevel; accent: string }) => {
   const Icon = schedulerIcon[level.iconName];
 
   return (
     <article
       className={cn(
         'group flex items-stretch gap-md rounded-xl border p-md sm:p-lg',
-        v.container,
+        'bg-[var(--term-surface)] text-[var(--term-fg)] border-[var(--term-border)]',
+        'hover:border-[var(--term-accent)]',
         'shadow-[0_3px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <span
         aria-hidden="true"
-        className="flex items-center justify-center text-3xl sm:text-4xl font-bold font-mono tabular-nums shrink-0 w-12 leading-none"
+        className={cn(
+          'flex items-center justify-center text-3xl sm:text-4xl font-bold font-mono tabular-nums shrink-0 w-12 leading-none',
+          accent,
+        )}
       >
         {level.number}
       </span>
 
       <span
         aria-hidden="true"
-        className="hidden sm:inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-md border border-current/20 bg-current/10"
+        className={cn(
+          'hidden sm:inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)]',
+          accent,
+        )}
       >
         <Icon className="h-5 w-5" />
       </span>
 
       <div className="flex-1 flex flex-col gap-1 min-w-0">
         <h3 className="text-md sm:text-lg font-bold tracking-tight break-keep">{level.title}</h3>
-        <p className="text-xsm leading-relaxed opacity-90 break-keep">{level.description}</p>
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+          {level.description}
+        </p>
       </div>
 
       <span
         className={cn(
           'inline-flex items-center self-start shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-bold tracking-tight font-mono',
-          v.badge,
+          'border-[var(--term-border)] bg-[var(--term-bg)]',
+          accent,
         )}
       >
         {level.badge}

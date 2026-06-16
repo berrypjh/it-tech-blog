@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { SchedulerContent } from '../content';
+import { HouseIconBox } from '../HouseIconBox';
 import { schedulerIcon } from '../icons';
 
 type Props = { hero: SchedulerContent['hero']; className?: string };
@@ -17,7 +17,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       a11yLabel={hero.a11yFlow}
       className={className}
       padding="px-md py-lg sm:p-lg"
-      gradient="radial-gradient(circle at 50% 40%, rgba(56,189,248,0.14), transparent 55%)"
+      gradient="radial-gradient(circle at 50% 40%, rgba(217,119,6,0.10), transparent 55%)"
     >
       <div
         className={cn(
@@ -90,8 +90,8 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
                   aria-hidden="true"
                   className={cn(
                     'inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-full mt-0.5',
-                    'border-2 border-violet-300/80 bg-violet-50 text-violet-700 font-mono text-[11px] font-bold',
-                    'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',
+                    'border-2 border-[var(--term-border)] bg-[var(--term-surface)] font-mono text-[11px] font-bold',
+                    'text-violet-600 dark:text-violet-300',
                   )}
                 >
                   {index + 1}
@@ -109,8 +109,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       <p
         className={cn(
           'relative mt-md rounded-lg border px-md py-2.5 text-center text-xsm font-bold tracking-tight',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-sky-700 dark:text-sky-300',
         )}
       >
         {hero.emphasis}
@@ -125,26 +124,22 @@ const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
     <div
       className={cn(
         'relative flex flex-col items-center justify-center gap-1 rounded-xl border min-w-[10rem]',
-        'border-violet-300/80 bg-violet-50/80 text-violet-900',
-        'dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-100',
+        'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         'shadow-[0_3px_0_var(--term-border)] px-md py-md',
       )}
     >
-      <ToneIconBox tone="violet" size="md">
+      <HouseIconBox tone="violet" size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="text-lg font-bold font-mono tracking-tight text-violet-700 dark:text-violet-200">
+      </HouseIconBox>
+      <span className="text-lg font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
         {hero.schedulerTitle}
       </span>
-      <span className="text-[10px] uppercase tracking-wider text-violet-700/80 dark:text-violet-300/80">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
         {hero.schedulerSubtitle}
       </span>
       <ul className="flex flex-col gap-0.5 mt-1">
         {hero.schedulerNotes.map((note) => (
-          <li
-            key={note}
-            className="text-[10.5px] leading-snug text-violet-800 dark:text-violet-200 break-keep"
-          >
+          <li key={note} className="text-[10.5px] leading-snug text-[var(--term-fg)] break-keep">
             · {note}
           </li>
         ))}

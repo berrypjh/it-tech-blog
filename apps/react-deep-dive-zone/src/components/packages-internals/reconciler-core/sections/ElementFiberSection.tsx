@@ -47,12 +47,11 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-sky-600 dark:text-sky-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <StarIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>

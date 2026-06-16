@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { MisconceptionCard, WhySplitContent } from '../content';
 import {
   architectureIcon,
@@ -10,6 +9,7 @@ import {
   HelpCircleIcon,
   XCircleIcon,
 } from '../icons';
+import { ToneIconBox } from '../localTone';
 
 type Props = { content: WhySplitContent['misconception'] };
 
@@ -40,26 +40,19 @@ export const WhySplitMisconception = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: MisconceptionCard }) => {
   const SideIcon = architectureIcon[card.iconName];
-  const iconTone = toneTokens[card.iconTone];
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-muted)]',
+        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
       )}
     >
       {/* 헤더: 주제 아이콘 + 오해 라벨 */}
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            iconTone.chip,
-          )}
-        >
+        <ToneIconBox tone={card.iconTone} size="sm">
           <SideIcon className="h-[18px] w-[18px]" />
-        </span>
+        </ToneIconBox>
         <span className="text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)]">
           {card.badgeWrong}
         </span>
@@ -67,8 +60,8 @@ const CardView = ({ card }: { card: MisconceptionCard }) => {
 
       {/* 오해: 취소선 처리한 잘못된 인식 */}
       <p className="flex items-start gap-2 text-sm font-medium leading-snug break-keep">
-        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
-        <span className="text-[var(--term-muted)] line-through decoration-rose-400/60">
+        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300" />
+        <span className="text-[var(--term-muted)] line-through decoration-rose-600/50 dark:decoration-rose-300/50">
           {card.wrong}
         </span>
       </p>
@@ -79,7 +72,7 @@ const CardView = ({ card }: { card: MisconceptionCard }) => {
       {/* 정확한 설명 */}
       <div className="flex flex-1 flex-col gap-2">
         <p className="flex items-start gap-2 text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400" />
+          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
           <span>{card.right}</span>
         </p>
         <p className="pl-6 text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

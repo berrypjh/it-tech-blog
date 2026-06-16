@@ -3,9 +3,9 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { GithubButton } from '../../../shared/GithubButton';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { CheckpointItem, InternalFileCard, ReactPackageContent } from '../content';
 import { InfoIcon, MapIcon, reactPackageIcon } from '../icons';
+import { localTone } from '../tone';
 
 type Props = { content: ReactPackageContent['sourceCheckpoint']; sectionId: string };
 
@@ -59,12 +59,11 @@ export const PublicApiSourceCheckpoint = ({ content, sectionId }: Props) => {
             <div
               className={cn(
                 'mt-auto flex items-start gap-2 rounded-lg border p-3',
-                'border-sky-200/80 bg-sky-50/70 text-sky-900',
-                'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+                'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
               )}
             >
               <InfoIcon
-                className="mt-0.5 h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+                className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
                 aria-hidden="true"
               />
               <div className="flex flex-col gap-0.5">
@@ -91,12 +90,11 @@ export const PublicApiSourceCheckpoint = ({ content, sectionId }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-sky-600 dark:text-sky-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <InfoIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.emphasis}</p>
@@ -107,7 +105,7 @@ export const PublicApiSourceCheckpoint = ({ content, sectionId }: Props) => {
 
 const CheckpointInfoRow = ({ item, mono }: { item: CheckpointItem; mono?: boolean }) => {
   const Icon = reactPackageIcon[item.iconName];
-  const tone = toneTokens[item.tone];
+  const tone = localTone(item.tone);
   return (
     <div className="flex flex-col gap-1">
       <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
@@ -122,7 +120,7 @@ const CheckpointInfoRow = ({ item, mono }: { item: CheckpointItem; mono?: boolea
 };
 
 const FileChip = ({ file }: { file: InternalFileCard }) => {
-  const tone = toneTokens[file.tone];
+  const tone = localTone(file.tone);
   return (
     <article
       className={cn(

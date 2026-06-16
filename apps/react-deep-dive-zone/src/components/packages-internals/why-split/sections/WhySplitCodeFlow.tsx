@@ -2,10 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, WhySplitContent } from '../content';
 import { architectureIcon, ArrowRightIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: WhySplitContent['codeFlow'] };
 
@@ -42,7 +41,6 @@ export const WhySplitCodeFlow = ({ content }: Props) => {
 type FlowStepCardProps = { step: FlowStep; index: number };
 
 const FlowStepCard = ({ step, index }: FlowStepCardProps) => {
-  const tone = toneTokens[step.tone];
   const Icon = architectureIcon[step.iconName];
 
   return (
@@ -51,7 +49,7 @@ const FlowStepCard = ({ step, index }: FlowStepCardProps) => {
         'group flex h-full flex-col gap-1.5 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -59,7 +57,8 @@ const FlowStepCard = ({ step, index }: FlowStepCardProps) => {
           className={cn(
             'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border',
             'text-[11px] font-bold font-mono tabular-nums',
-            tone.chip,
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            toneText(step.tone),
           )}
         >
           {String(index).padStart(2, '0')}
@@ -71,7 +70,12 @@ const FlowStepCard = ({ step, index }: FlowStepCardProps) => {
           {step.title}
         </h3>
       </header>
-      <p className={cn('text-[11px] uppercase tracking-wider font-mono font-bold', tone.text)}>
+      <p
+        className={cn(
+          'text-[11px] uppercase tracking-wider font-mono font-bold',
+          toneText(step.tone),
+        )}
+      >
         → {step.pkg}
       </p>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

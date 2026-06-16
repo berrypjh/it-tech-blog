@@ -1,12 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { RoleCard, RvrContent } from '../content';
 import { rvrIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RvrContent['summary'] };
+
+/** reconciler=A(amber), renderer=B(sky) 소프트 텍스트 액센트. */
+const cardAccent: Record<RoleCard['id'], string> = {
+  reconciler: 'text-[var(--term-accent)]',
+  renderer: 'text-sky-600 dark:text-sky-300',
+};
 
 export const RoleSummarySection = ({ content }: Props) => {
   return (
@@ -28,15 +32,15 @@ export const RoleSummarySection = ({ content }: Props) => {
             className={cn(
               'inline-flex flex-col items-center justify-center gap-0.5 w-20 h-20 rounded-full',
               'border-2 bg-[var(--term-bg)] text-[var(--term-fg)] font-bold font-mono tracking-tight',
-              'border-sky-400/80 dark:border-sky-500/80',
+              'border-[var(--term-border)]',
               'shadow-[0_2px_0_var(--term-border)]',
             )}
           >
-            <span className="text-[10px] uppercase tracking-wider text-teal-600 dark:text-teal-300">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--term-accent)]">
               {content.centerBadge.lead}
             </span>
             <span className="text-2xl leading-none">{content.centerBadge.symbol}</span>
-            <span className="text-[10px] uppercase tracking-wider text-violet-600 dark:text-violet-300">
+            <span className="text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-300">
               {content.centerBadge.tail}
             </span>
           </span>
@@ -49,24 +53,29 @@ export const RoleSummarySection = ({ content }: Props) => {
 };
 
 const RoleCardView = ({ card }: { card: RoleCard }) => {
-  const tone = toneTokens[card.tone];
+  const text = cardAccent[card.id];
   const Icon = rvrIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        tone.chip,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            text,
+          )}
+        >
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>{card.name}</h3>
+        </span>
+        <h3 className={cn('text-lg font-bold font-mono tracking-tight', text)}>{card.name}</h3>
       </header>
 
       <p
@@ -88,9 +97,8 @@ const RoleCardView = ({ card }: { card: RoleCard }) => {
             <span
               className={cn(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
-                'bg-[var(--term-bg)]',
-                tone.border,
-                tone.text,
+                'bg-[var(--term-bg)] border-[var(--term-border)]',
+                text,
               )}
             >
               {tag}

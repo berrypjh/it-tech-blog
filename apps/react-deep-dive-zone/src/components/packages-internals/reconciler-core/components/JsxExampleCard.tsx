@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import { reconcilerIcon } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = {
   title: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const JsxExampleCard = ({ title, code, className }: Props) => {
-  const tone = toneTokens.sky;
+  const tone = houseTone('sky');
   const Icon = reconcilerIcon.code;
 
   return (

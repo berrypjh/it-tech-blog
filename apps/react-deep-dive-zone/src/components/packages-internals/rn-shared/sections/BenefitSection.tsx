@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { BenefitCard, RnContent } from '../content';
 import { CheckCircleIcon, rnIcon, StarIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: RnContent['benefit']; sectionId: string };
 
@@ -23,13 +22,12 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
         <article
           className={cn(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg',
-            'border-cyan-300/80 bg-cyan-50 text-cyan-900',
-            'dark:border-cyan-800/70 dark:bg-cyan-950/40 dark:text-cyan-100',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             'shadow-[0_2px_0_var(--term-border)]',
           )}
         >
           <span
-            className="text-4xl font-bold text-cyan-600 dark:text-cyan-300 leading-none"
+            className="text-4xl font-bold text-sky-600 dark:text-sky-300 leading-none"
             aria-hidden="true"
           >
             “
@@ -37,7 +35,7 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
           <blockquote className="text-md sm:text-lg font-bold leading-snug break-keep">
             {content.quote}
           </blockquote>
-          <p className="text-xsm leading-relaxed text-cyan-900/80 dark:text-cyan-100/80 break-keep">
+          <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
             {content.quoteBody}
           </p>
         </article>
@@ -51,7 +49,7 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(45,212,191,0.14),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(245,158,11,0.12),transparent_55%)]"
           />
 
           {/* center top */}
@@ -59,16 +57,15 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
             <article
               className={cn(
                 'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md min-w-[14rem]',
-                'border-teal-300/80 bg-teal-50 text-teal-900',
-                'dark:border-teal-700/60 dark:bg-teal-950/40 dark:text-teal-100',
+                'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
                 'shadow-[0_3px_0_var(--term-border)]',
               )}
             >
-              <CubeIcon className="h-6 w-6 text-teal-600 dark:text-teal-300" />
-              <span className="text-md font-bold font-mono tracking-tight text-teal-700 dark:text-teal-200">
+              <CubeIcon className="h-6 w-6 text-[var(--term-accent)]" />
+              <span className="text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
                 {content.centerLabel}
               </span>
-              <span className="text-[10px] uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80">
+              <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
                 {content.centerSubtitle}
               </span>
             </article>
@@ -94,15 +91,13 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
 };
 
 const BenefitCardView = ({ card }: { card: BenefitCard }) => {
-  const tone = toneTokens[card.tone];
   const Icon = rnIcon[card.iconName];
   return (
     <article
       className={cn(
         'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
-        tone.borderHover,
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
@@ -110,7 +105,12 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
         <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight break-keep', tone.text)}>
+        <h3
+          className={cn(
+            'text-sm font-bold font-mono tracking-tight break-keep',
+            toneText(card.tone),
+          )}
+        >
           {card.name}
         </h3>
       </header>
@@ -120,7 +120,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', tone.text)}>
+            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneText(card.tone))}>
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>
             <span>{item}</span>

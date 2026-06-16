@@ -4,9 +4,9 @@ import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { GithubButton } from '../../../shared/GithubButton';
 import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { CheckpointItem, ReactDomContent } from '../content';
 import { ExternalLinkIcon, reactDomIcon } from '../icons';
+import { LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactDomContent['checkpoint']; sectionId: string };
 
@@ -86,9 +86,9 @@ const CheckpointRow = ({ item }: { item: CheckpointItem }) => {
         {item.label}
       </span>
       <div className="flex items-start gap-2">
-        <ToneIconBox tone={item.tone} size="sm">
+        <LocalToneIconBox tone={item.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className="min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] font-mono break-all">
           {item.value}
         </span>

@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ApiGroupCard, ReactPackageContent } from '../content';
 import { reactPackageIcon, SparklesIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactPackageContent['groups'] };
 
@@ -32,7 +31,7 @@ export const ApiGroups = ({ content }: Props) => {
 };
 
 const ApiGroupCardView = ({ card }: { card: ApiGroupCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = reactPackageIcon[card.iconName];
 
   return (
@@ -45,9 +44,9 @@ const ApiGroupCardView = ({ card }: { card: ApiGroupCard }) => {
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <LocalToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] tabular-nums font-mono">
           {card.number}
         </span>

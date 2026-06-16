@@ -4,9 +4,9 @@ import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { GithubButton } from '../../../shared/GithubButton';
 import { GithubIcon } from '../../../shared/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import type { SharedContent } from '../content';
+import type { SharedContent, ToneKey } from '../content';
 import { ExternalLinkIcon, sharedIcon } from '../icons';
+import { accentText, neutralChrome, toneAccent } from '../localTone';
 
 type Props = { content: SharedContent['symbolsCheckpoint']; sectionId: string };
 
@@ -116,7 +116,7 @@ type RowProps = {
   label: string;
   value: string;
   iconName: 'fileText' | 'fileCode' | 'help';
-  tone: 'sky' | 'violet' | 'amber';
+  tone: ToneKey;
   isMonoValue?: boolean;
 };
 
@@ -128,9 +128,16 @@ const CheckpointRow = ({ label, value, iconName, tone, isMonoValue = false }: Ro
         {label}
       </span>
       <div className="flex items-start gap-2">
-        <ToneIconBox tone={tone} size="sm">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
+            neutralChrome,
+            accentText[toneAccent(tone)],
+          )}
+        >
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <span
           className={cn(
             'min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-all',

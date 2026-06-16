@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import type { DvcContent, HeroSideArea } from '../content';
 import { dvcIcon } from '../icons';
+import { localTone } from '../tone-house';
 
 type Props = { hero: DvcContent['hero']; className?: string };
 
 /**
  * Hero 우측 다이어그램.
- * 공통 렌더링 구조(teal) | DOM 전용 구현(violet) 두 영역을 중앙 분리선으로 나눈다.
+ * 공통 렌더링 구조(amber) | DOM 전용 구현(sky) 두 영역을 중앙 분리선으로 나눈다.
  */
 export const SplitDiagram = ({ hero, className }: Props) => {
   return (
@@ -17,7 +18,7 @@ export const SplitDiagram = ({ hero, className }: Props) => {
       a11yLabel={hero.a11y}
       className={className}
       padding="px-md py-lg sm:p-lg"
-      gradient="radial-gradient(circle at 18% 45%, rgba(45,212,191,0.15), transparent 55%), radial-gradient(circle at 82% 45%, rgba(167,139,250,0.16), transparent 55%)"
+      gradient="radial-gradient(circle at 18% 45%, rgba(245,158,11,0.14), transparent 55%), radial-gradient(circle at 82% 45%, rgba(56,189,248,0.14), transparent 55%)"
     >
       <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
         <SideArea area={hero.common} tone="teal" />
@@ -36,13 +37,12 @@ export const SplitDiagram = ({ hero, className }: Props) => {
 };
 
 const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-md rounded-xl border p-md',
-        t.chip,
-        t.border,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
@@ -61,8 +61,7 @@ const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
               <span
                 className={cn(
                   'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[11px] font-mono font-bold',
-                  'bg-[var(--term-bg)]',
-                  t.border,
+                  'bg-[var(--term-bg)] border-[var(--term-border)]',
                   t.text,
                 )}
               >

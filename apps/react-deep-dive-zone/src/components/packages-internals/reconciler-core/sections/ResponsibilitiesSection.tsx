@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerContent, ResponsibilityCard } from '../content';
 import { ChevronRightIcon, reconcilerIcon, SparklesIcon } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: ReconcilerContent['responsibilities'] };
 
@@ -44,7 +43,7 @@ export const ResponsibilitiesSection = ({ content }: Props) => {
 };
 
 const ResponsibilityCardView = ({ card }: { card: ResponsibilityCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = houseTone(card.tone);
   const Icon = reconcilerIcon[card.iconName];
 
   return (
@@ -57,9 +56,12 @@ const ResponsibilityCardView = ({ card }: { card: ResponsibilityCard }) => {
       )}
     >
       <header className="flex items-center justify-between gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <span
+          aria-hidden="true"
+          className={cn('inline-flex h-11 w-11 items-center justify-center rounded-md', tone.chip)}
+        >
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <span
           aria-hidden="true"
           className={cn(

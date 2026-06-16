@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { CreateHydrateCard, ReactDomContent } from '../content';
 import { MapIcon } from '../icons';
+import { localTone } from '../tone';
 
 type Props = { content: ReactDomContent['flow']; sectionId: string };
 
@@ -29,14 +29,14 @@ export const CreateHydrateFlowSection = ({ content, sectionId }: Props) => {
 };
 
 const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
+        'border-[var(--term-border)]',
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
       )}
@@ -58,8 +58,7 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
               aria-hidden="true"
               className={cn(
                 'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border',
-                'bg-[var(--term-bg)] font-mono text-[10px] font-bold',
-                tone.border,
+                'bg-[var(--term-bg)] border-[var(--term-border)] font-mono text-[10px] font-bold',
                 tone.text,
               )}
             >

@@ -2,7 +2,6 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { RvrContent } from '../content';
 import { InfoIcon, MapIcon, rvrIcon } from '../icons';
 
@@ -26,15 +25,22 @@ export const HostConfigSection = ({ content, sectionId }: Props) => {
         <article
           className={cn(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg h-full',
-            'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-            'border-violet-200/70 dark:border-violet-800/60',
+            'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
+            'border-[var(--term-border)]',
           )}
         >
-          <ToneIconBox tone="violet" size="md">
+          <span
+            aria-hidden="true"
+            className={cn(
+              'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+              'bg-[var(--term-surface)] border-[var(--term-border)]',
+              'text-sky-600 dark:text-sky-300',
+            )}
+          >
             <rvrIcon.sliders className="h-5 w-5" aria-hidden="true" />
-          </ToneIconBox>
+          </span>
 
-          <h3 className="text-md sm:text-lg font-bold leading-snug text-violet-700 dark:text-violet-300 break-keep">
+          <h3 className="text-md sm:text-lg font-bold leading-snug text-sky-600 dark:text-sky-300 break-keep">
             {content.cardTitle}
           </h3>
 
@@ -45,8 +51,7 @@ export const HostConfigSection = ({ content, sectionId }: Props) => {
           <p
             className={cn(
               'mt-auto rounded-lg border px-3 py-2 text-xsm leading-relaxed break-keep',
-              'border-dashed border-violet-300/80 bg-violet-50 text-violet-900',
-              'dark:border-violet-800/70 dark:bg-violet-950/30 dark:text-violet-100',
+              'border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}
           >
             {content.emphasis}
@@ -59,14 +64,13 @@ export const HostConfigSection = ({ content, sectionId }: Props) => {
       <aside
         className={cn(
           'flex items-start gap-sm rounded-xl border px-md py-md',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
         <span
           aria-hidden="true"
-          className="inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-md bg-sky-100 text-sky-700 border border-sky-300/80 dark:bg-sky-900/60 dark:border-sky-700/70 dark:text-sky-200"
+          className="inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-md bg-[var(--term-surface)] text-sky-600 border border-[var(--term-border)] dark:text-sky-300"
         >
           <InfoIcon className="h-4 w-4" />
         </span>

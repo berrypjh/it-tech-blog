@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ModeCard, RnContent } from '../content';
 import { CheckCircleIcon, rnIcon, SparklesIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: RnContent['modes'] };
 
@@ -34,35 +33,30 @@ export const ModesSection = ({ content }: Props) => {
   );
 };
 
-const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => {
-  const tone = toneTokens[pill.tone];
-  return (
-    <span
-      className={cn(
-        'flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border px-md py-2 text-center text-xsm font-bold font-mono tracking-tight',
-        tone.chip,
-      )}
-    >
-      <span className="break-keep">{pill.left}</span>
-      <span aria-hidden="true" className="text-[var(--term-accent)]">
-        →
-      </span>
-      <span className="break-keep">{pill.right}</span>
+const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => (
+  <span
+    className={cn(
+      'flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border px-md py-2 text-center text-xsm font-bold font-mono tracking-tight',
+      'bg-[var(--term-surface)] border-[var(--term-border)]',
+      toneText(pill.tone),
+    )}
+  >
+    <span className="break-keep">{pill.left}</span>
+    <span aria-hidden="true" className="text-[var(--term-accent)]">
+      →
     </span>
-  );
-};
+    <span className="break-keep">{pill.right}</span>
+  </span>
+);
 
 const ModeCardView = ({ card }: { card: ModeCard }) => {
-  const tone = toneTokens[card.tone];
   const Icon = rnIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        tone.chip,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
@@ -71,7 +65,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', tone.text)}>
+          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', toneText(card.tone))}>
             {card.name}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -86,7 +80,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', tone.text)}>
+            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneText(card.tone))}>
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>
             <span>{item}</span>

@@ -45,7 +45,7 @@ export const ReconcilerHero = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(45,212,191,0.14),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(245,158,11,0.12),transparent_55%)]"
           />
           <p className="sr-only">{content.a11yFlow}</p>
 

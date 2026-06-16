@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { EntryRouteCard, ReactPackageContent } from '../content';
 import { ChevronRightIcon, CodeIcon, ExternalLinkIcon, reactPackageIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactPackageContent['routes']; sectionId: string };
 
@@ -32,7 +31,7 @@ export const ApiEntryRoutes = ({ content, sectionId }: Props) => {
 };
 
 const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = reactPackageIcon[card.iconName];
 
   return (
@@ -45,9 +44,9 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <LocalToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <h3 className={cn('text-md font-bold font-mono tracking-tight truncate', tone.text)}>
           {card.api}
         </h3>

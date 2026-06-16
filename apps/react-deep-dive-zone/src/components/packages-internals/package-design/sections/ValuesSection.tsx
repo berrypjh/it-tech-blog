@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { PackageDesignContent, ValueCard } from '../content';
 import { pdIcon, SparklesIcon, StarIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: PackageDesignContent['values'] };
 
@@ -30,8 +29,7 @@ export const ValuesSection = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -45,7 +43,7 @@ export const ValuesSection = ({ content }: Props) => {
 };
 
 const ValueCardView = ({ card }: { card: ValueCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = pdIcon[card.iconName];
 
   return (
@@ -57,9 +55,9 @@ const ValueCardView = ({ card }: { card: ValueCard }) => {
         tone.borderHover,
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <LocalToneIconBox tone={card.tone} size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </LocalToneIconBox>
 
       <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

@@ -1,9 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FlowNode } from '../content';
+import type { FlowNode, ToneKey } from '../content';
 import { pdIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = {
   main: FlowNode[];
@@ -88,7 +87,7 @@ type FlowBoxProps = {
 };
 
 const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
-  const tone = toneTokens[node.tone];
+  const tone = localTone(node.tone);
   const Icon = pdIcon[node.iconName];
 
   return (
@@ -97,16 +96,16 @@ const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
         'inline-flex flex-col items-center gap-1 rounded-xl border',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        emphasized ? tone.chip : 'border-[var(--term-border)]',
-        emphasized && tone.border,
-        !emphasized && tone.borderHover,
+        emphasized
+          ? 'border-[var(--term-accent)]'
+          : cn('border-[var(--term-border)]', tone.borderHover),
         compact ? 'px-3 py-2 w-[14rem]' : 'px-md py-3 w-[16rem]',
       )}
     >
       <span className="inline-flex items-center gap-2">
-        <ToneIconBox tone={node.tone} size="sm">
+        <LocalToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
           {node.label}
         </span>
@@ -138,21 +137,20 @@ type SideAxisCardProps = {
 };
 
 const SideAxisCard = ({ title, subtitle, description, tone, iconName }: SideAxisCardProps) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   const Icon = pdIcon[iconName];
   return (
     <article
       className={cn(
         'flex flex-col gap-1 rounded-xl border-2 border-dashed p-md',
-        t.border,
-        t.chip,
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span className="flex items-center gap-2">
-        <ToneIconBox tone={tone} size="sm">
+        <LocalToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <span className={cn('text-sm font-bold font-mono tracking-tight', t.text)}>{title}</span>
       </span>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">

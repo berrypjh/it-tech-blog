@@ -42,7 +42,7 @@ export const RvrHero = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(45,212,191,0.14),transparent_55%),radial-gradient(circle_at_75%_75%,rgba(167,139,250,0.14),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,var(--term-accent-soft),transparent_55%)] opacity-50"
           />
           <p className="sr-only">{content.a11yFlow}</p>
 
@@ -68,7 +68,7 @@ export const RvrHero = ({ content }: Props) => {
               steps={content.calculation.steps}
               footerLabel={content.calculation.footerLabel}
               iconName="cube"
-              tone="teal"
+              accent="A"
             />
 
             {/* 가운데 점선 화살표 (lg: 가로, mobile: 세로) */}
@@ -90,7 +90,7 @@ export const RvrHero = ({ content }: Props) => {
               steps={content.reflection.steps}
               footerLabel={content.reflection.footerLabel}
               iconName="monitor"
-              tone="violet"
+              accent="B"
             />
           </div>
         </div>

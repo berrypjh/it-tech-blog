@@ -1,9 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
 import { architectureIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = {
   mainFlow: ArchitectureNode[];
@@ -113,7 +112,6 @@ type FlowBoxProps = {
 };
 
 const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
-  const tone = toneTokens[node.tone];
   const Icon = architectureIcon[node.iconName];
 
   return (
@@ -122,8 +120,8 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
         'group inline-flex min-w-0 flex-col items-center gap-1 rounded-lg border',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
-        emphasized ? tone.border : 'border-[var(--term-border)]',
-        tone.borderHover,
+        emphasized ? 'border-[var(--term-accent)]' : 'border-[var(--term-border)]',
+        'hover:border-[var(--term-accent)]',
         'px-md py-2.5 w-full max-w-[12rem]',
       )}
     >
@@ -132,7 +130,10 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+          className={cn(
+            'min-w-0 truncate text-sm font-bold font-mono tracking-tight',
+            toneText(node.tone),
+          )}
         >
           {node.label}
         </span>
@@ -149,14 +150,13 @@ type SideNodeBoxProps = {
 };
 
 const SideNodeBox = ({ node }: SideNodeBoxProps) => {
-  const tone = toneTokens[node.tone];
   const Icon = architectureIcon[node.iconName];
 
   return (
     <div
       className={cn(
         'group inline-flex flex-col items-start gap-1 rounded-lg border-2 border-dashed',
-        tone.border,
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'px-md py-md flex-1 @xl:flex-none',
       )}
@@ -165,7 +165,7 @@ const SideNodeBox = ({ node }: SideNodeBoxProps) => {
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
+        <span className={cn('text-sm font-bold font-mono tracking-tight', toneText(node.tone))}>
           {node.label}
         </span>
       </span>

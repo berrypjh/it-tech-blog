@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { AxisCard, RnContent } from '../content';
 import { ChevronRightIcon, rnIcon, SparklesIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: RnContent['axis'] };
 
@@ -44,7 +43,6 @@ export const AxisSection = ({ content }: Props) => {
 };
 
 const AxisCardView = ({ card }: { card: AxisCard }) => {
-  const tone = toneTokens[card.tone];
   const Icon = rnIcon[card.iconName];
 
   return (
@@ -53,14 +51,16 @@ const AxisCardView = ({ card }: { card: AxisCard }) => {
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <ToneIconBox tone={card.tone} size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', toneText(card.tone))}>
+        {card.title}
+      </h3>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono break-keep">
         {card.subtitle}
       </span>

@@ -1,9 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DiagramStep, RvrIconName } from '../content';
 import { rvrIcon } from '../icons';
+
+/** A=amber(reconciler), B=sky(renderer) 두 사이드의 소프트 텍스트 액센트. */
+export type SideAccent = 'A' | 'B';
+
+const accentText: Record<SideAccent, string> = {
+  A: 'text-[var(--term-accent)]',
+  B: 'text-sky-600 dark:text-sky-300',
+};
 
 type Props = {
   title: string;
@@ -11,7 +17,7 @@ type Props = {
   steps: DiagramStep[];
   footerLabel: string;
   iconName: RvrIconName;
-  tone: ToneKey;
+  accent: SideAccent;
   className?: string;
 };
 
@@ -25,29 +31,35 @@ export const RoleStepsCard = ({
   steps,
   footerLabel,
   iconName,
-  tone,
+  accent,
   className,
 }: Props) => {
-  const t = toneTokens[tone];
+  const text = accentText[accent];
   const Icon = rvrIcon[iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        t.chip,
-        t.border,
-        t.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
+        'hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         className,
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone} size="md">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            text,
+          )}
+        >
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.text)}>{title}</h3>
+          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', text)}>{title}</h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
             {subtitle}
           </span>
@@ -61,9 +73,8 @@ export const RoleStepsCard = ({
               aria-hidden="true"
               className={cn(
                 'inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-mono text-[11px] font-bold mt-0.5',
-                'bg-[var(--term-bg)] border',
-                t.border,
-                t.text,
+                'bg-[var(--term-bg)] border border-[var(--term-border)]',
+                text,
               )}
             >
               {i + 1}
@@ -84,7 +95,7 @@ export const RoleStepsCard = ({
         className={cn(
           'mt-auto rounded-lg border px-3 py-2 text-[11px] font-bold tracking-tight text-center',
           'border-dashed border-[var(--term-border)] bg-[var(--term-bg)]',
-          t.text,
+          text,
         )}
       >
         {footerLabel}

@@ -1,12 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 import { rvrIcon } from '../icons';
 
 type Props = { content: RvrContent['flow'] };
+
+/** A=amber(reconciler), B=sky(renderer/DOM), C=violet(native). */
+type Accent = 'A' | 'B' | 'C';
+
+const accentText: Record<Accent, string> = {
+  A: 'text-[var(--term-accent)]',
+  B: 'text-sky-600 dark:text-sky-300',
+  C: 'text-violet-600 dark:text-violet-300',
+};
 
 export const SharedFlowSection = ({ content }: Props) => {
   const a11y = `${content.elementLabel} → ${content.reconcilerLabel} (${content.reconcilerSubtitle}) → ${content.domRendererLabel}/${content.nativeRendererLabel} → ${content.domNodeLabel}/${content.nativeViewLabel}.`;
@@ -25,7 +32,7 @@ export const SharedFlowSection = ({ content }: Props) => {
         {/* 좌측 보조 카드 */}
         <HelperCard
           helper={content.leftHelper}
-          tone="teal"
+          accent="A"
           iconName="cube"
           className="order-2 lg:order-1"
         />
@@ -39,17 +46,17 @@ export const SharedFlowSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(56,189,248,0.10),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,var(--term-accent-soft),transparent_55%)] opacity-50"
           />
           <p className="sr-only">{a11y}</p>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
-            <FlowNode label={content.elementLabel} tone="sky" iconName="layers" />
+            <FlowNode label={content.elementLabel} accent="B" iconName="layers" />
             <DownArrow />
             <FlowNode
               label={content.reconcilerLabel}
               subtitle={content.reconcilerSubtitle}
-              tone="teal"
+              accent="A"
               iconName="cube"
               emphasized
             />
@@ -61,14 +68,14 @@ export const SharedFlowSection = ({ content }: Props) => {
               <FlowNode
                 label={content.domRendererLabel}
                 subtitle={content.domRendererSubtitle}
-                tone="violet"
+                accent="B"
                 iconName="monitor"
                 fill
               />
               <FlowNode
                 label={content.nativeRendererLabel}
                 subtitle={content.nativeRendererSubtitle}
-                tone="indigo"
+                accent="C"
                 iconName="smartphone"
                 fill
               />
@@ -80,7 +87,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                 <FlowNode
                   label={content.domNodeLabel}
                   subtitle={content.domNodeSubtitle}
-                  tone="sky"
+                  accent="B"
                   iconName="code"
                   small
                   fill
@@ -91,7 +98,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                 <FlowNode
                   label={content.nativeViewLabel}
                   subtitle={content.nativeViewSubtitle}
-                  tone="indigo"
+                  accent="C"
                   iconName="smartphone"
                   small
                   fill
@@ -104,7 +111,7 @@ export const SharedFlowSection = ({ content }: Props) => {
         {/* 우측 보조 카드 */}
         <HelperCard
           helper={content.rightHelper}
-          tone="violet"
+          accent="B"
           iconName="monitor"
           className="order-3"
         />
@@ -116,7 +123,7 @@ export const SharedFlowSection = ({ content }: Props) => {
 type FlowNodeProps = {
   label: string;
   subtitle?: string;
-  tone: ToneKey;
+  accent: Accent;
   iconName: keyof typeof rvrIcon;
   emphasized?: boolean;
   small?: boolean;
@@ -124,30 +131,47 @@ type FlowNodeProps = {
   fill?: boolean;
 };
 
-const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
-  const t = toneTokens[tone];
+const FlowNode = ({
+  label,
+  subtitle,
+  accent,
+  iconName,
+  emphasized,
+  small,
+  fill,
+}: FlowNodeProps) => {
+  const text = accentText[accent];
   const Icon = rvrIcon[iconName];
 
   return (
     <article
       className={cn(
         'inline-flex min-w-0 flex-col items-center gap-1 rounded-xl border',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        emphasized ? `${t.chip} ${t.border}` : `${t.border}`,
+        'shadow-[0_2px_0_var(--term-border)]',
+        emphasized
+          ? 'bg-[var(--term-surface)] border-[var(--term-accent)]'
+          : 'bg-[var(--term-bg)] border-[var(--term-border)]',
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)]',
         small ? 'px-2 py-1.5' : 'px-md py-2.5',
         fill ? 'w-full' : '',
       )}
     >
       <span className="flex w-full min-w-0 items-center justify-center gap-2">
-        <ToneIconBox tone={tone} size="sm">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-9 h-9 rounded-md border',
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            text,
+          )}
+        >
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <span
           className={cn(
             'min-w-0 font-bold font-mono tracking-tight break-keep',
             small ? 'text-xsm' : 'text-sm',
-            t.text,
+            text,
           )}
         >
           {label}
@@ -205,33 +229,39 @@ const BranchArrows = () => (
 
 const HelperCard = ({
   helper,
-  tone,
+  accent,
   iconName,
   className,
 }: {
   helper: { title: string; body: string };
-  tone: ToneKey;
+  accent: Accent;
   iconName: keyof typeof rvrIcon;
   className?: string;
 }) => {
-  const t = toneTokens[tone];
+  const text = accentText[accent];
   const Icon = rvrIcon[iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)]',
-        t.borderHover,
+        'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'transition-all hover:-translate-y-0.5',
         className,
       )}
     >
-      <ToneIconBox tone={tone} size="md">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+          'bg-[var(--term-surface)] border-[var(--term-border)]',
+          text,
+        )}
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{helper.title}</h3>
+      </span>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', text)}>{helper.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{helper.body}</p>
     </article>
   );

@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, RnContent } from '../content';
 import { CheckCircleIcon, rnIcon, StarIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: RnContent['compare'] };
 
@@ -26,9 +25,8 @@ export const CompareSection = ({ content }: Props) => {
           <span
             className={cn(
               'inline-flex items-center justify-center w-12 h-12 rounded-full font-bold font-mono',
-              'border-2 border-sky-400 bg-[var(--term-bg)] text-[var(--term-fg)]',
+              'border-2 border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
               'shadow-[0_2px_0_var(--term-border)]',
-              'dark:border-sky-500',
             )}
           >
             {content.vsLabel}
@@ -42,16 +40,13 @@ export const CompareSection = ({ content }: Props) => {
 };
 
 const CompareCardView = ({ card }: { card: CompareCard }) => {
-  const tone = toneTokens[card.tone];
   const Icon = rnIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        tone.chip,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
@@ -59,7 +54,9 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>{card.name}</h3>
+        <h3 className={cn('text-lg font-bold font-mono tracking-tight', toneText(card.tone))}>
+          {card.name}
+        </h3>
       </header>
 
       <ul className="flex flex-col gap-2">
@@ -68,7 +65,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', tone.text)}>
+            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneText(card.tone))}>
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>
             <span>{item}</span>

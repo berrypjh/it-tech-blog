@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
 import type { RnContent } from '../content';
 import { rnIcon } from '../icons';
+import { ToneIconBox } from '../localTone';
 
 type Props = { hero: RnContent['hero']; className?: string };
 
@@ -19,7 +19,7 @@ export const BranchDiagram = ({ hero, className }: Props) => {
       a11yLabel={hero.a11y}
       className={className}
       padding="px-md py-lg sm:p-lg"
-      gradient="radial-gradient(circle at 50% 25%, rgba(45,212,191,0.14), transparent 55%)"
+      gradient="radial-gradient(circle at 50% 25%, rgba(245,158,11,0.12), transparent 55%)"
     >
       <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
         {/* Top: React Element */}
@@ -78,21 +78,20 @@ const ReconcilerCenter = ({ label, subtitle }: { label: string; subtitle: string
   <article
     className={cn(
       'relative inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md',
-      'border-teal-300/80 bg-teal-50 text-teal-900',
-      'dark:border-teal-700/60 dark:bg-teal-950/40 dark:text-teal-100',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] overflow-hidden',
       'min-w-[12rem]',
     )}
   >
     <span
       aria-hidden="true"
-      className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_50%_45%,rgba(45,212,191,0.18),transparent_60%)]"
+      className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_50%_45%,rgba(245,158,11,0.16),transparent_60%)]"
     />
-    <CubeIcon className="relative h-7 w-7 text-teal-600 dark:text-teal-300" />
-    <span className="relative text-md font-bold font-mono tracking-tight text-teal-700 dark:text-teal-200">
+    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <span className="relative text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
-    <span className="relative text-[10px] uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80">
+    <span className="relative text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
       {subtitle}
     </span>
   </article>
@@ -108,28 +107,20 @@ type BranchColumnProps = {
 const BranchColumn = ({ title, steps, tone, iconName }: BranchColumnProps) => {
   const Icon = rnIcon[iconName];
   const isSky = tone === 'sky';
+  const accent = isSky ? 'text-sky-600 dark:text-sky-300' : 'text-violet-600 dark:text-violet-300';
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-xl border p-md',
         'shadow-[0_2px_0_var(--term-border)]',
-        isSky
-          ? 'border-sky-300/80 bg-sky-50/60 dark:border-sky-800/70 dark:bg-sky-950/30'
-          : 'border-violet-300/80 bg-violet-50/60 dark:border-violet-800/70 dark:bg-violet-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3
-          className={cn(
-            'text-sm font-bold font-mono tracking-tight',
-            isSky ? 'text-sky-700 dark:text-sky-200' : 'text-violet-700 dark:text-violet-200',
-          )}
-        >
-          {title}
-        </h3>
+        <h3 className={cn('text-sm font-bold font-mono tracking-tight', accent)}>{title}</h3>
       </header>
       <ul className="flex flex-col gap-1.5">
         {steps.map((step, i) => (
@@ -144,9 +135,8 @@ const BranchColumn = ({ title, steps, tone, iconName }: BranchColumnProps) => {
               aria-hidden="true"
               className={cn(
                 'inline-flex items-center justify-center w-5 h-5 rounded-full font-mono text-[10px] font-bold shrink-0',
-                isSky
-                  ? 'bg-sky-100 text-sky-700 dark:bg-sky-900/60 dark:text-sky-200'
-                  : 'bg-violet-100 text-violet-700 dark:bg-violet-900/60 dark:text-violet-200',
+                'bg-[var(--term-surface)] border border-[var(--term-border)]',
+                accent,
               )}
             >
               {i + 1}

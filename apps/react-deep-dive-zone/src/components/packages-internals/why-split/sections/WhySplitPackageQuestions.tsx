@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { WhySplitContent } from '../content';
 import { architectureIcon, HelpCircleIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: WhySplitContent['questions'] };
 
@@ -20,7 +19,6 @@ export const WhySplitPackageQuestions = ({ content }: Props) => {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md items-stretch">
         {content.cards.map((card) => {
-          const tone = toneTokens[card.tone];
           const Icon = architectureIcon[card.iconName];
 
           return (
@@ -30,7 +28,7 @@ export const WhySplitPackageQuestions = ({ content }: Props) => {
                   'group flex flex-1 flex-col items-center gap-sm rounded-2xl border p-md text-center',
                   'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                   'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-                  tone.borderHover,
+                  'hover:border-[var(--term-accent)]',
                 )}
               >
                 <ToneIconBox tone={card.tone} size="md">
@@ -40,7 +38,8 @@ export const WhySplitPackageQuestions = ({ content }: Props) => {
                 <span
                   className={cn(
                     'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono tracking-tight',
-                    tone.chip,
+                    'bg-[var(--term-surface)] border-[var(--term-border)]',
+                    toneText(card.tone),
                   )}
                 >
                   {card.name}

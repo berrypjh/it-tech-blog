@@ -1,10 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { NeedCard, SchedulerContent } from '../content';
+import { HouseIconBox } from '../HouseIconBox';
 import { schedulerIcon, SparklesIcon } from '../icons';
+import { toneText } from '../tone-house';
 
 type Props = { content: SchedulerContent['needs'] };
 
@@ -31,7 +31,6 @@ export const NeedSection = ({ content }: Props) => {
 };
 
 const NeedCardView = ({ card }: { card: NeedCard }) => {
-  const tone = toneTokens[card.tone];
   const Icon = schedulerIcon[card.iconName];
 
   return (
@@ -40,14 +39,16 @@ const NeedCardView = ({ card }: { card: NeedCard }) => {
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <HouseIconBox tone={card.tone} size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </HouseIconBox>
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', toneText(card.tone))}>
+        {card.title}
+      </h3>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
         {card.description}

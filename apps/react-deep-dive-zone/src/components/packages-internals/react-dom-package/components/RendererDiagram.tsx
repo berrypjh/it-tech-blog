@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
 import { reactDomIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactDomContent['hero']; className?: string };
 
@@ -16,14 +15,14 @@ export const RendererDiagram = ({ content, className }: Props) => (
   <HeroDiagramShell
     a11yLabel={content.a11yFlow}
     className={className}
-    gradient="radial-gradient(circle at 50% 0%, rgba(20,184,166,0.16), transparent 55%)"
+    gradient="radial-gradient(circle at 50% 0%, rgba(251,191,36,0.14), transparent 55%)"
   >
     <div className="relative flex flex-col items-center gap-md">
       <CenterReactDomCard center={content.centerCard} />
 
       <span
         aria-hidden="true"
-        className="block w-px h-md border-l border-dashed border-teal-400/70 dark:border-teal-600/70"
+        className="block w-px h-md border-l border-dashed border-[var(--term-border)]"
       />
 
       <ul className="grid w-full grid-cols-1 @sm:grid-cols-3 gap-sm items-stretch">
@@ -41,27 +40,26 @@ const CenterReactDomCard = ({ center }: { center: ReactDomContent['hero']['cente
   <div
     className={cn(
       'relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-2xl border',
-      'border-teal-300/80 bg-teal-50/80 text-teal-900',
-      'dark:border-teal-700/60 dark:bg-teal-950/40 dark:text-teal-100',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] px-lg py-md min-w-[10rem]',
     )}
   >
     <span
       aria-hidden="true"
-      className="absolute inset-0 -z-0 rounded-2xl opacity-70 bg-[radial-gradient(circle_at_50%_40%,rgba(45,212,191,0.22),transparent_60%)]"
+      className="absolute inset-0 -z-0 rounded-2xl opacity-70 bg-[radial-gradient(circle_at_50%_40%,rgba(251,191,36,0.18),transparent_60%)]"
     />
-    <ReactAtomIcon className="relative h-10 w-10 text-teal-600 dark:text-teal-300" />
-    <span className="relative text-lg font-bold font-mono tracking-tight text-teal-700 dark:text-teal-200">
+    <ReactAtomIcon className="relative h-10 w-10 text-[var(--term-accent)]" />
+    <span className="relative text-lg font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {center.title}
     </span>
-    <span className="relative text-[10px] uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80">
+    <span className="relative text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
       {center.caption}
     </span>
   </div>
 );
 
 const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
-  const tone = toneTokens[node.tone];
+  const tone = localTone(node.tone);
   const Icon = reactDomIcon[node.iconName];
 
   return (
@@ -69,15 +67,15 @@ const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
       className={cn(
         'group flex min-w-0 flex-1 flex-col gap-2 rounded-xl border p-3',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
+        'border-[var(--term-border)]',
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex min-w-0 items-center gap-2">
-        <ToneIconBox tone={node.tone} size="sm">
+        <LocalToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <div className="flex min-w-0 flex-col">
           <h3 className={cn('text-sm font-bold font-mono tracking-tight break-keep', tone.text)}>
             {node.title}

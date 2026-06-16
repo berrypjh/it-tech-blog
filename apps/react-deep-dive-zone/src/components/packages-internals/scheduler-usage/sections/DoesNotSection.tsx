@@ -25,12 +25,11 @@ export const DoesNotSection = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-teal-300/80 bg-teal-50 text-teal-900',
-          'dark:border-teal-800/70 dark:bg-teal-950/40 dark:text-teal-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-teal-600 dark:text-teal-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <StarIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
@@ -48,39 +47,27 @@ type DoesColumnProps = {
 const DoesColumn = ({ variant, title, items }: DoesColumnProps) => {
   const isPositive = variant === 'does';
   const Icon = isPositive ? CheckCircleIcon : XCircleIcon;
+  const headText = isPositive ? 'text-[var(--term-accent)]' : 'text-rose-600 dark:text-rose-300';
 
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        isPositive
-          ? 'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-800/70 dark:bg-emerald-950/30'
-          : 'border-red-300/80 bg-red-50/60 dark:border-red-800/70 dark:bg-red-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-            isPositive
-              ? 'border-emerald-300/80 bg-emerald-100 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-900/60 dark:text-emerald-200'
-              : 'border-red-300/80 bg-red-100 text-red-700 dark:border-red-700/70 dark:bg-red-900/60 dark:text-red-200',
+            'inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)]',
+            headText,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3
-          className={cn(
-            'text-md font-bold tracking-tight',
-            isPositive
-              ? 'text-emerald-800 dark:text-emerald-200'
-              : 'text-red-800 dark:text-red-200',
-          )}
-        >
-          {title}
-        </h3>
+        <h3 className={cn('text-md font-bold tracking-tight', headText)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-2">
@@ -96,7 +83,9 @@ const DoesColumn = ({ variant, title, items }: DoesColumnProps) => {
               aria-hidden="true"
               className={cn(
                 'mt-1 inline-block w-1.5 h-1.5 rounded-full shrink-0',
-                isPositive ? 'bg-emerald-500 dark:bg-emerald-400' : 'bg-red-500 dark:bg-red-400',
+                isPositive
+                  ? 'bg-[var(--term-accent)]'
+                  : 'border border-rose-500 dark:border-rose-400',
               )}
             />
             <div className="flex flex-col gap-1 flex-1">
@@ -107,9 +96,10 @@ const DoesColumn = ({ variant, title, items }: DoesColumnProps) => {
                 <span
                   className={cn(
                     'inline-flex items-center self-start rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono tracking-tight',
+                    'border-[var(--term-border)] bg-[var(--term-surface)]',
                     item.assignee.includes('reconciler')
-                      ? 'border-teal-300/80 bg-teal-50 text-teal-800 dark:border-teal-800/70 dark:bg-teal-950/40 dark:text-teal-200'
-                      : 'border-violet-300/80 bg-violet-50 text-violet-800 dark:border-violet-800/70 dark:bg-violet-950/40 dark:text-violet-200',
+                      ? 'text-[var(--term-accent)]'
+                      : 'text-violet-600 dark:text-violet-300',
                   )}
                 >
                   → {item.assignee}

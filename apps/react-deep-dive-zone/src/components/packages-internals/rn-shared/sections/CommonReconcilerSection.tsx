@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { RnContent } from '../content';
+import type { RnContent, ToneKey } from '../content';
 import { MapIcon, rnIcon } from '../icons';
+import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: RnContent['common']; sectionId: string };
 
@@ -28,7 +27,7 @@ export const CommonReconcilerSection = ({ content, sectionId }: Props) => {
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg order-2 lg:order-1',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
-            toneTokens.teal.borderHover,
+            'hover:border-[var(--term-accent)]',
             'transition-all hover:-translate-y-0.5',
           )}
         >
@@ -117,7 +116,7 @@ export const CommonReconcilerSection = ({ content, sectionId }: Props) => {
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg order-3',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
-            toneTokens.violet.borderHover,
+            'hover:border-[var(--term-accent)]',
             'transition-all hover:-translate-y-0.5',
           )}
         >
@@ -125,13 +124,13 @@ export const CommonReconcilerSection = ({ content, sectionId }: Props) => {
             <rnIcon.monitor className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex flex-col">
-            <p className="text-md font-bold tracking-tight break-keep text-violet-700 dark:text-violet-300">
+            <p className="text-md font-bold tracking-tight break-keep text-violet-600 dark:text-violet-300">
               {content.rightEmphasis.line1}
             </p>
-            <p className="text-md font-bold tracking-tight break-keep text-violet-700 dark:text-violet-300">
+            <p className="text-md font-bold tracking-tight break-keep text-violet-600 dark:text-violet-300">
               {content.rightEmphasis.line2}
             </p>
-            <p className="text-md font-bold tracking-tight break-keep text-violet-700 dark:text-violet-300">
+            <p className="text-md font-bold tracking-tight break-keep text-violet-600 dark:text-violet-300">
               {content.rightEmphasis.line3}
             </p>
           </div>
@@ -153,15 +152,16 @@ type FlowNodeProps = {
 };
 
 const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
-  const t = toneTokens[tone];
   const Icon = rnIcon[iconName];
 
   return (
     <article
       className={cn(
         'inline-flex min-w-0 flex-col items-center gap-1 rounded-xl border',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        emphasized ? `${t.chip} ${t.border}` : `${t.border}`,
+        'shadow-[0_2px_0_var(--term-border)]',
+        emphasized
+          ? 'bg-[var(--term-surface)] border-[var(--term-border)]'
+          : 'bg-[var(--term-bg)] border-[var(--term-border)]',
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)]',
         small ? 'px-2 py-1.5' : 'px-md py-2.5',
         fill ? 'w-full' : '',
@@ -175,7 +175,7 @@ const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: 
           className={cn(
             'min-w-0 font-bold font-mono tracking-tight break-keep',
             small ? 'text-xsm' : 'text-sm',
-            t.text,
+            toneText(tone),
           )}
         >
           {label}

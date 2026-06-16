@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ClientServerCard, ReactDomContent } from '../content';
 import { InfoIcon, LightbulbIcon, reactDomIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactDomContent['clientServer'] };
 
@@ -28,12 +27,11 @@ export const ClientServerSection = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-sky-300/80 bg-sky-50 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <span aria-hidden="true" className="text-sky-600 dark:text-sky-300">
+        <span aria-hidden="true" className="text-[var(--term-accent)]">
           <LightbulbIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
@@ -43,7 +41,7 @@ export const ClientServerSection = ({ content }: Props) => {
 };
 
 const ClientServerCardView = ({ card }: { card: ClientServerCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = reactDomIcon[card.iconName];
 
   return (
@@ -51,15 +49,15 @@ const ClientServerCardView = ({ card }: { card: ClientServerCard }) => {
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
+        'border-[var(--term-border)]',
         tone.borderHover,
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <LocalToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>{card.name}</h3>
       </header>
 

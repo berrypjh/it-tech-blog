@@ -9,7 +9,7 @@ type Props = {
 /**
  * 단순한 Fiber tree 그림.
  * root → 2개의 child → 각 child의 sibling 형태로 SVG 노드를 그린다.
- * teal outline 노드와 gray outline 노드가 섞여 있다.
+ * accent outline 노드와 중립 outline 노드가 섞여 있다.
  */
 export const FiberTreeGraphic = ({ title, description, className }: Props) => {
   return (
@@ -17,14 +17,13 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
       className={cn(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-teal-200/70 dark:border-teal-800/60',
-        'hover:border-teal-400/70 dark:hover:border-teal-500/60',
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
         'transition-all hover:-translate-y-0.5',
         className,
       )}
     >
       <header className="flex flex-col gap-1">
-        <h3 className="text-sm font-bold font-mono tracking-tight text-teal-700 dark:text-teal-300">
+        <h3 className="text-sm font-bold font-mono tracking-tight text-[var(--term-accent)]">
           {title}
         </h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -44,7 +43,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
           strokeWidth="1.2"
           strokeDasharray="3 3"
           fill="none"
-          className="text-teal-300/80 dark:text-teal-600/80"
+          className="text-[var(--term-accent)]"
         >
           <path d="M 100 38 L 56 78" />
           <path d="M 100 38 L 144 78" />
@@ -62,7 +61,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="22"
             rx="6"
             fill="currentColor"
-            className="text-teal-100 dark:text-teal-900/40"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="78"
@@ -73,14 +72,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.4"
-            className="text-teal-500 dark:text-teal-400"
+            className="text-[var(--term-accent)]"
           />
           <text
             x="100"
             y="33"
             textAnchor="middle"
             fontSize="9"
-            className="fill-teal-700 dark:fill-teal-200 font-mono"
+            className="fill-[var(--term-accent)] font-mono"
           >
             root
           </text>
@@ -95,7 +94,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="22"
             rx="6"
             fill="currentColor"
-            className="text-teal-100 dark:text-teal-900/40"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="34"
@@ -106,14 +105,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.4"
-            className="text-teal-500 dark:text-teal-400"
+            className="text-[var(--term-accent)]"
           />
           <text
             x="56"
             y="93"
             textAnchor="middle"
             fontSize="8"
-            className="fill-teal-700 dark:fill-teal-200 font-mono"
+            className="fill-[var(--term-accent)] font-mono"
           >
             child
           </text>
@@ -126,7 +125,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="22"
             rx="6"
             fill="currentColor"
-            className="text-slate-100 dark:text-slate-800"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="122"
@@ -137,14 +136,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.4"
-            className="text-slate-400 dark:text-slate-500"
+            className="text-[var(--term-border)]"
           />
           <text
             x="144"
             y="93"
             textAnchor="middle"
             fontSize="8"
-            className="fill-slate-700 dark:fill-slate-200 font-mono"
+            className="fill-[var(--term-muted)] font-mono"
           >
             sibling
           </text>
@@ -159,7 +158,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="20"
             rx="5"
             fill="currentColor"
-            className="text-slate-100 dark:text-slate-800"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="14"
@@ -170,14 +169,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.2"
-            className="text-slate-400 dark:text-slate-500"
+            className="text-[var(--term-border)]"
           />
           <text
             x="34"
             y="142"
             textAnchor="middle"
             fontSize="7.5"
-            className="fill-slate-600 dark:fill-slate-300 font-mono"
+            className="fill-[var(--term-muted)] font-mono"
           >
             leaf
           </text>
@@ -190,7 +189,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="20"
             rx="5"
             fill="currentColor"
-            className="text-teal-100 dark:text-teal-900/40"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="58"
@@ -201,14 +200,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.2"
-            className="text-teal-500 dark:text-teal-400"
+            className="text-[var(--term-accent)]"
           />
           <text
             x="78"
             y="142"
             textAnchor="middle"
             fontSize="7.5"
-            className="fill-teal-700 dark:fill-teal-200 font-mono"
+            className="fill-[var(--term-accent)] font-mono"
           >
             leaf
           </text>
@@ -221,7 +220,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             height="20"
             rx="5"
             fill="currentColor"
-            className="text-slate-100 dark:text-slate-800"
+            className="text-[var(--term-surface)]"
           />
           <rect
             x="146"
@@ -232,14 +231,14 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.2"
-            className="text-slate-400 dark:text-slate-500"
+            className="text-[var(--term-border)]"
           />
           <text
             x="166"
             y="142"
             textAnchor="middle"
             fontSize="7.5"
-            className="fill-slate-600 dark:fill-slate-300 font-mono"
+            className="fill-[var(--term-muted)] font-mono"
           >
             leaf
           </text>

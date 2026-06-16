@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, ReadingCard } from '../content';
 import { CheckCircleIcon, ChevronRightIcon, dvcIcon, SparklesIcon } from '../icons';
+import { localTone, LocalToneIconBox } from '../tone-house';
 
 type Props = { content: DvcContent['reading'] };
 
@@ -31,23 +30,22 @@ export const ReadingMethodSection = ({ content }: Props) => {
 };
 
 const ReadingCardView = ({ card }: { card: ReadingCard }) => {
-  const tone = toneTokens[card.tone];
+  const tone = localTone(card.tone);
   const Icon = dvcIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        tone.chip,
-        tone.border,
+        'bg-[var(--term-bg)] border-[var(--term-border)]',
         tone.borderHover,
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <LocalToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </LocalToneIconBox>
         <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', tone.text)}>
           {card.title}
         </h3>
@@ -56,8 +54,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
       <span
         className={cn(
           'self-start inline-flex items-center rounded-full border px-3 py-1 text-xsm font-mono font-bold',
-          'bg-[var(--term-bg)]',
-          tone.border,
+          'bg-[var(--term-bg)] border-[var(--term-border)]',
           tone.text,
         )}
       >
@@ -84,8 +81,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
             <span
               className={cn(
                 'inline-flex items-center rounded-md border px-2 py-1 text-[11px] font-mono font-bold',
-                'bg-[var(--term-bg)]',
-                tone.border,
+                'bg-[var(--term-bg)] border-[var(--term-border)]',
                 tone.text,
               )}
             >
