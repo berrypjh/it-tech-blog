@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../content';
+import { houseTone } from '../tone-house';
 
 type Props = {
   label: string;
@@ -12,13 +13,13 @@ type Props = {
 };
 
 export const PackagePill = ({ label, tone, emphasis = 'core', icon, className }: Props) => {
-  const t = tone ? toneTokens[tone] : null;
+  const t = tone ? houseTone(tone) : null;
 
   const variantClass =
     emphasis === 'core'
       ? cn(
           'shadow-[0_2px_0_var(--term-border)] font-bold text-[var(--term-fg)]',
-          t ? t.border : 'border-[var(--term-border)]',
+          'border-[var(--term-border)]',
           t ? t.chip : 'bg-[var(--term-surface)]',
         )
       : emphasis === 'secondary'

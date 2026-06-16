@@ -1,6 +1,5 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
 import { CheckCircleIcon, CuboidIcon, FiberCubeIcon, iconByName } from '../icons';
 
@@ -22,7 +21,7 @@ export const ReconcilerHeroDiagram = ({ content }: Props) => {
       {/* 옅은 글로우 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(139,92,246,0.16),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,var(--term-surface),transparent_60%)]"
       />
 
       {/* 메인 3카드 흐름 */}
@@ -47,17 +46,17 @@ const FlowArrow = () => (
 type ElementCardProps = { data: ReconcilerEntryContent['hero']['elementCard'] };
 
 const ElementCard = ({ data }: ElementCardProps) => {
-  const tone = toneTokens[data.tone];
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-lg border p-3',
         'shadow-[0_2px_0_var(--term-border)]',
-        'bg-blue-50/70 dark:bg-blue-950/30',
-        tone.border,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
-      <h3 className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>{data.title}</h3>
+      <h3 className="text-xsm font-bold font-mono tracking-tight text-sky-600 dark:text-sky-300">
+        {data.title}
+      </h3>
       <pre
         className={cn(
           'rounded-md border bg-[var(--term-bg)] p-2 text-[10px] leading-snug font-mono',
@@ -73,28 +72,23 @@ const ElementCard = ({ data }: ElementCardProps) => {
 type ReconcilerCardProps = { data: ReconcilerEntryContent['hero']['reconcilerCard'] };
 
 const ReconcilerCard = ({ data }: ReconcilerCardProps) => {
-  const tone = toneTokens[data.tone];
   return (
     <article
       className={cn(
         'relative flex flex-col gap-sm rounded-xl border p-md',
         'shadow-[0_4px_0_var(--term-border)]',
-        'bg-violet-50/80 dark:bg-violet-950/40',
-        tone.border,
-        'ring-2 ring-violet-200/60 dark:ring-violet-800/50',
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
+        'ring-2 ring-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-md border',
-            tone.chip,
-          )}
+          className="inline-flex items-center justify-center w-8 h-8 rounded-md border bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]"
         >
           <CuboidIcon className="h-4 w-4" />
         </span>
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
+        <h3 className="text-sm font-bold font-mono tracking-tight text-[var(--term-accent)]">
           {data.title}
         </h3>
       </header>
@@ -105,7 +99,7 @@ const ReconcilerCard = ({ data }: ReconcilerCardProps) => {
             className="flex items-start gap-1.5 text-[11px] leading-snug text-[var(--term-fg)] break-keep"
           >
             <CheckCircleIcon
-              className={cn('mt-0.5 h-3 w-3 shrink-0', tone.text)}
+              className="mt-0.5 h-3 w-3 shrink-0 text-[var(--term-accent)]"
               aria-hidden="true"
             />
             <span>{b}</span>
@@ -119,17 +113,17 @@ const ReconcilerCard = ({ data }: ReconcilerCardProps) => {
 type RendererCardProps = { data: ReconcilerEntryContent['hero']['rendererCard'] };
 
 const RendererCard = ({ data }: RendererCardProps) => {
-  const tone = toneTokens[data.tone];
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-lg border p-3',
         'shadow-[0_2px_0_var(--term-border)]',
-        'bg-emerald-50/70 dark:bg-emerald-950/30',
-        tone.border,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
-      <h3 className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>{data.title}</h3>
+      <h3 className="text-xsm font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
+        {data.title}
+      </h3>
       <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
         {data.description}
       </p>
@@ -146,10 +140,7 @@ const RendererCard = ({ data }: RendererCardProps) => {
               key={label}
               aria-label={label}
               title={label}
-              className={cn(
-                'inline-flex items-center justify-center w-6 h-6 rounded border',
-                tone.chip,
-              )}
+              className="inline-flex items-center justify-center w-6 h-6 rounded border bg-[var(--term-surface)] border-[var(--term-border)] text-violet-600 dark:text-violet-300"
             >
               <Icon className="h-3.5 w-3.5" aria-hidden="true" />
             </span>

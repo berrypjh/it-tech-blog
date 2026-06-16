@@ -30,16 +30,12 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <ExplanationPill
-              dotClass="bg-blue-500 dark:bg-blue-400"
-              borderClass="border-blue-200/80 bg-blue-50/70 dark:border-blue-800/60 dark:bg-blue-950/30"
-              textClass="text-blue-800 dark:text-blue-200"
+              accentClass="text-[var(--term-accent)]"
               lead={content.pillReact.lead}
               description={content.pillReact.description}
             />
             <ExplanationPill
-              dotClass="bg-emerald-500 dark:bg-emerald-400"
-              borderClass="border-emerald-200/80 bg-emerald-50/70 dark:border-emerald-800/60 dark:bg-emerald-950/30"
-              textClass="text-emerald-800 dark:text-emerald-200"
+              accentClass="text-sky-600 dark:text-sky-300"
               lead={content.pillReactDom.lead}
               description={content.pillReactDom.description}
             />
@@ -54,24 +50,19 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
 };
 
 type ExplanationPillProps = {
-  dotClass: string;
-  borderClass: string;
-  textClass: string;
+  accentClass: string;
   lead: string;
   description: string;
 };
 
-const ExplanationPill = ({
-  dotClass,
-  borderClass,
-  textClass,
-  lead,
-  description,
-}: ExplanationPillProps) => (
-  <div className={cn('flex items-start gap-2 rounded-lg border p-3', borderClass)}>
-    <span aria-hidden="true" className={cn('mt-1 inline-block w-2 h-2 rounded-full', dotClass)} />
+const ExplanationPill = ({ accentClass, lead, description }: ExplanationPillProps) => (
+  <div className="flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3">
+    <span
+      aria-hidden="true"
+      className={cn('mt-1 inline-block w-2 h-2 rounded-full bg-current', accentClass)}
+    />
     <div className="flex flex-col gap-0.5 min-w-0">
-      <span className={cn('text-xsm font-bold font-mono tracking-tight break-keep', textClass)}>
+      <span className={cn('text-xsm font-bold font-mono tracking-tight break-keep', accentClass)}>
         {lead}
       </span>
       <span className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">

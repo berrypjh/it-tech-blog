@@ -20,7 +20,7 @@ export const HeroCodeComparison = ({ content }: Props) => {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(56,189,248,0.10),transparent_45%,transparent_55%,rgba(45,212,191,0.10))]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(245,158,11,0.10),transparent_60%)]"
       />
 
       <div className="relative grid grid-cols-1 @lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md @lg:gap-sm items-stretch">
@@ -66,15 +66,11 @@ type CardProps = {
 const CodeCard = ({ label, code, badge, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
-  const tintClass = isImpl
-    ? 'bg-blue-50/80 border-blue-300 dark:bg-blue-950/30 dark:border-blue-700/60'
-    : 'bg-emerald-50/80 border-emerald-300 dark:bg-emerald-950/30 dark:border-emerald-700/60';
-  const labelTextClass = isImpl
-    ? 'text-blue-700 dark:text-blue-200'
-    : 'text-emerald-700 dark:text-emerald-200';
-  const iconChipClass = isImpl
-    ? 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-700/60'
-    : 'bg-emerald-100 text-emerald-700 border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-700/60';
+  const accentText = isImpl ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const tintClass =
+    'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
+  const labelTextClass = accentText;
+  const iconChipClass = cn('bg-[var(--term-surface)] border-[var(--term-border)]', accentText);
 
   const lines = code.replace(/\n$/, '').split('\n');
 

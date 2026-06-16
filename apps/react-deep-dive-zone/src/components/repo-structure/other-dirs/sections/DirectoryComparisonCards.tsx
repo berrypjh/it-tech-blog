@@ -1,10 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneCard } from '../../../shared/ToneCard';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ComparisonCard, SurroundingContent } from '../content';
+import { houseToneByIndex } from '../houseTones';
 import { FolderIcon, iconByName, StarIcon } from '../icons';
 
 type Props = { content: SurroundingContent['comparison']; sectionId?: string };
@@ -25,9 +23,9 @@ export const DirectoryComparisonCards = ({ content, sectionId }: Props) => {
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
-        {content.cards.map((card) => (
+        {content.cards.map((card, idx) => (
           <li key={card.id} className="flex">
-            <ComparisonCardItem card={card} />
+            <ComparisonCardItem card={card} index={idx} />
           </li>
         ))}
       </ul>
@@ -35,18 +33,31 @@ export const DirectoryComparisonCards = ({ content, sectionId }: Props) => {
   );
 };
 
-type ItemProps = { card: ComparisonCard };
+type ItemProps = { card: ComparisonCard; index: number };
 
-const ComparisonCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
+const ComparisonCardItem = ({ card, index }: ItemProps) => {
+  const tone = houseToneByIndex(index);
   const Icon = iconByName[card.icon];
 
   return (
-    <ToneCard tone={card.tone} className="w-full">
+    <article
+      className={cn(
+        'group flex w-full flex-col gap-md h-full rounded-lg border p-md',
+        'bg-[var(--term-bg)] border-[var(--term-border)]',
+        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'hover:shadow-[0_2px_0_var(--term-border)]',
+      )}
+    >
       <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+            tone.chip,
+          )}
+        >
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+        </span>
         <div className="flex flex-col min-w-0">
           <h3 className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
             {card.name}
@@ -70,16 +81,15 @@ const ComparisonCardItem = ({ card }: ItemProps) => {
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">
           {card.importanceLabel}
         </span>
-        <Rating value={card.rating} tone={card.tone} />
+        <Rating value={card.rating} toneText={tone.text} />
       </footer>
-    </ToneCard>
+    </article>
   );
 };
 
-type RatingProps = { value: 1 | 2 | 3; tone: ComparisonCard['tone'] };
+type RatingProps = { value: 1 | 2 | 3; toneText: string };
 
-const Rating = ({ value, tone }: RatingProps) => {
-  const t = toneTokens[tone];
+const Rating = ({ value, toneText }: RatingProps) => {
   return (
     <span
       role="img"
@@ -92,7 +102,7 @@ const Rating = ({ value, tone }: RatingProps) => {
           aria-hidden="true"
           className={cn(
             'h-3.5 w-3.5',
-            i < value ? cn(t.text, 'fill-current') : 'text-[var(--term-dim)]',
+            i < value ? cn(toneText, 'fill-current') : 'text-[var(--term-dim)]',
           )}
         />
       ))}

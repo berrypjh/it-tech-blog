@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { DiagramNode, PackagesDirectoryContent } from '../content';
 import { NetworkIcon, packageIconByName } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['diagram'] };
 
@@ -97,7 +96,7 @@ type DiagramNodeCardProps = {
 };
 
 const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
-  const tone = toneTokens[node.tone];
+  const tone = houseTone(node.tone);
   const Icon = packageIconByName[node.icon];
 
   return (
@@ -105,16 +104,19 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
       className={cn(
         'group flex h-full flex-col gap-sm rounded-lg border p-md transition-all',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        emphasized ? tone.border : 'border-[var(--term-border)]',
+        'border-[var(--term-border)]',
         tone.borderHover,
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)] lg:scale-[1.02]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <div className="flex items-center gap-sm min-w-0">
-          <ToneIconBox tone={node.tone} size="sm">
-            <Icon className="h-4 w-4" aria-hidden="true" />
-          </ToneIconBox>
+          <span
+            aria-hidden="true"
+            className={cn('inline-flex items-center justify-center w-9 h-9 rounded-md', tone.chip)}
+          >
+            <Icon className="h-4 w-4" />
+          </span>
           <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
             {node.title}
           </h3>
@@ -157,7 +159,7 @@ const FlowArrow = ({ className }: { className?: string }) => (
 type SharedWideCardProps = { node: DiagramNode };
 
 const SharedWideCard = ({ node }: SharedWideCardProps) => {
-  const tone = toneTokens[node.tone];
+  const tone = houseTone(node.tone);
   const Icon = packageIconByName[node.icon];
 
   return (
@@ -165,8 +167,7 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
       className={cn(
         'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        tone.chip,
-        tone.border,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
       {/* 점선 connector 라벨 */}

@@ -18,11 +18,6 @@ export const VersionDocsDiagram = ({ content }: Props) => {
         'p-md sm:p-lg overflow-hidden',
       )}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(168,85,247,0.10),transparent_45%,transparent_55%,rgba(45,212,191,0.10))]"
-      />
-
       <div className="relative flex flex-col items-center gap-md">
         {/* Version badge */}
         <VersionBadge version={content.version} badge={content.versionBadge} />
@@ -53,22 +48,21 @@ const VersionBadge = ({ version, badge }: VersionProps) => (
   <span
     className={cn(
       'inline-flex items-center gap-2 rounded-full border px-4 py-1.5',
-      'border-slate-300 bg-slate-100 text-slate-700',
-      'dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <TagIcon className="h-3.5 w-3.5 text-sky-500 dark:text-sky-300" aria-hidden="true" />
+    <TagIcon className="h-3.5 w-3.5 text-sky-600 dark:text-sky-300" aria-hidden="true" />
     <span className="text-sm font-bold font-mono tracking-tight">{version}</span>
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-        'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300',
+        'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+        'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-block w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400"
+        className="inline-block w-1 h-1 rounded-full bg-[var(--term-accent)]"
       />
       {badge}
     </span>
@@ -86,15 +80,12 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
   const isReleases = variant === 'releases';
   const Icon = isReleases ? FileTextIcon : BookOpenIcon;
   const labelText = isReleases ? 'Releases' : 'CHANGELOG';
-  const tintClass = isReleases
-    ? 'bg-violet-50/80 border-violet-300 dark:bg-violet-950/30 dark:border-violet-700/60'
-    : 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/30 dark:border-teal-700/60';
+  const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
   const iconClass = isReleases
-    ? 'bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-700/60'
-    : 'bg-teal-100 text-teal-700 border-teal-300 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-700/60';
-  const titleClass = isReleases
-    ? 'text-violet-700 dark:text-violet-200'
-    : 'text-teal-700 dark:text-teal-200';
+    ? 'bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300'
+    : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]';
+  const titleClass = isReleases ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const dotClass = isReleases ? 'bg-sky-400 dark:bg-sky-500' : 'bg-[var(--term-accent)]';
 
   return (
     <article
@@ -136,10 +127,7 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
           >
             <span
               aria-hidden="true"
-              className={cn(
-                'inline-block w-1.5 h-1.5 rounded-full',
-                isReleases ? 'bg-violet-500 dark:bg-violet-400' : 'bg-teal-500 dark:bg-teal-400',
-              )}
+              className={cn('inline-block w-1.5 h-1.5 rounded-full', dotClass)}
             />
             {item}
           </li>

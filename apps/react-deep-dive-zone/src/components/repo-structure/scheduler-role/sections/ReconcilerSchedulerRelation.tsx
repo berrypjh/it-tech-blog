@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { RelationCard, SchedulerContent } from '../content';
 import { CheckCircleIcon, iconByName, RefreshIcon } from '../icons';
 
@@ -27,28 +26,23 @@ export const ReconcilerSchedulerRelation = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-2xl border px-md py-md',
-          'border-teal-200/80 bg-teal-50/70 text-teal-900',
-          'dark:border-teal-800/60 dark:bg-teal-950/30 dark:text-teal-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-950',
+            'border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <RefreshIcon className="h-4 w-4" />
         </span>
         <p className="text-sm sm:text-md leading-relaxed font-medium break-keep">
           <span>{content.banner.lead}</span>
-          <span className="font-bold text-teal-700 dark:text-teal-200">
-            {content.banner.accent1}
-          </span>
+          <span className="font-bold text-[var(--term-accent)]">{content.banner.accent1}</span>
           <span>{content.banner.mid}</span>
-          <span className="font-bold text-teal-700 dark:text-teal-200">
-            {content.banner.accent2}
-          </span>
+          <span className="font-bold text-[var(--term-accent)]">{content.banner.accent2}</span>
           <span>{content.banner.tail}</span>
         </p>
       </div>
@@ -59,21 +53,17 @@ export const ReconcilerSchedulerRelation = ({ content }: Props) => {
 type ItemProps = { card: RelationCard };
 
 const RelationCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
   const Icon = iconByName[card.icon];
-  const tintClass =
-    card.tone === 'indigo'
-      ? 'bg-indigo-50/70 dark:bg-indigo-950/30'
-      : 'bg-teal-50/70 dark:bg-teal-950/30';
+  // reconciler vs scheduler 2-side 대비: reconciler=A(amber), scheduler=B(sky)
+  const accentText =
+    card.id === 'reconciler' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
 
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tintClass,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -81,13 +71,14 @@ const RelationCardItem = ({ card }: ItemProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-            tone.chip,
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
+            accentText,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>
+          <h3 className={cn('text-lg font-bold font-mono tracking-tight', accentText)}>
             {card.title}
           </h3>
           <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -103,7 +94,7 @@ const RelationCardItem = ({ card }: ItemProps) => {
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
             <CheckCircleIcon
-              className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
+              className={cn('mt-0.5 h-4 w-4 shrink-0', accentText)}
               aria-hidden="true"
             />
             <span>{bullet}</span>

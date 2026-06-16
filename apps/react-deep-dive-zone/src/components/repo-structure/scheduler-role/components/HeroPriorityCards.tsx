@@ -7,28 +7,28 @@ import { PriorityRail } from './PriorityRail';
 
 type Props = { content: SchedulerContent['hero'] };
 
-/** priority별 색조 매핑 (rose/blue/violet — toneTokens에 rose가 없어 직접 클래스 사용) */
+/** priority별 색조 매핑 — 중립 크롬 + 3색 소프트 텍스트 순환(amber/sky/violet) */
 const tintByPriority: Record<
   PriorityKey,
   { card: string; chip: string; text: string; dot: string }
 > = {
   immediate: {
-    card: 'bg-rose-50/80 border-rose-300 dark:bg-rose-950/30 dark:border-rose-700/60',
-    chip: 'bg-rose-100 text-rose-800 border-rose-300 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-700/60',
-    text: 'text-rose-700 dark:text-rose-300',
-    dot: 'bg-rose-500 dark:bg-rose-400',
+    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
+    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
+    text: 'text-[var(--term-accent)]',
+    dot: 'bg-[var(--term-accent)]',
   },
   normal: {
-    card: 'bg-blue-50/80 border-blue-300 dark:bg-blue-950/30 dark:border-blue-700/60',
-    chip: 'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-700/60',
-    text: 'text-blue-700 dark:text-blue-300',
-    dot: 'bg-blue-500 dark:bg-blue-400',
+    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
+    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+    text: 'text-sky-600 dark:text-sky-300',
+    dot: 'bg-sky-400 dark:bg-sky-500',
   },
   low: {
-    card: 'bg-violet-50/80 border-violet-300 dark:bg-violet-950/30 dark:border-violet-700/60',
-    chip: 'bg-violet-100 text-violet-800 border-violet-300 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-700/60',
-    text: 'text-violet-700 dark:text-violet-300',
-    dot: 'bg-violet-500 dark:bg-violet-400',
+    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
+    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-violet-600 dark:text-violet-300',
+    text: 'text-violet-600 dark:text-violet-300',
+    dot: 'bg-violet-400 dark:bg-violet-500',
   },
 };
 
@@ -45,24 +45,24 @@ export const HeroPriorityCards = ({ content }: Props) => {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(244,63,94,0.08),transparent_40%,transparent_60%,rgba(139,92,246,0.08))]"
+        className="pointer-events-none absolute inset-0 bg-[var(--term-surface)]/40"
       />
 
       <div className="relative flex flex-col gap-md">
         {/* 상단 라벨 */}
         <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-bold">
-          <span className="inline-flex items-center gap-1.5 text-rose-700 dark:text-rose-300">
+          <span className="inline-flex items-center gap-1.5 text-[var(--term-accent)]">
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
             />
             {content.priorityHighLabel}
           </span>
-          <span className="inline-flex items-center gap-1.5 text-violet-700 dark:text-violet-300">
+          <span className="inline-flex items-center gap-1.5 text-sky-600 dark:text-sky-300">
             {content.priorityLowLabel}
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-violet-500"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-sky-400 dark:bg-sky-500"
             />
           </span>
         </div>

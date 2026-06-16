@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TraceStep } from '../content';
 import { iconByName, SparklesIcon } from '../icons';
+import { accentCycle } from '../tone-accent';
 
 type Props = { content: ChangelogContent['trace'] };
 
@@ -21,15 +21,11 @@ export const ChangeToCodeTrace = ({ content }: Props) => {
       <ol className="relative flex flex-col gap-md">
         <span
           aria-hidden="true"
-          className={cn(
-            'hidden sm:block absolute left-[22px] top-3 bottom-3 w-px',
-            'bg-gradient-to-b from-violet-400 via-indigo-400 via-blue-400 to-teal-400',
-            'dark:from-violet-600/70 dark:via-indigo-600/70 dark:via-blue-600/70 dark:to-teal-600/70',
-          )}
+          className="hidden sm:block absolute left-[22px] top-3 bottom-3 w-px bg-[var(--term-border)]"
         />
-        {content.steps.map((step) => (
+        {content.steps.map((step, idx) => (
           <li key={step.id}>
-            <StepCard step={step} />
+            <StepCard step={step} index={idx} />
           </li>
         ))}
       </ol>
@@ -37,10 +33,10 @@ export const ChangeToCodeTrace = ({ content }: Props) => {
   );
 };
 
-type StepProps = { step: TraceStep };
+type StepProps = { step: TraceStep; index: number };
 
-const StepCard = ({ step }: StepProps) => {
-  const tone = toneTokens[step.tone];
+const StepCard = ({ step, index }: StepProps) => {
+  const tone = accentCycle[index % accentCycle.length];
   const Icon = iconByName[step.icon];
 
   return (

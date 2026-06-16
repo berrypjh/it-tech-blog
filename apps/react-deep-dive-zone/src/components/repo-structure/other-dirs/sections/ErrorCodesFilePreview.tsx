@@ -29,17 +29,17 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
           <InfoRow
             label={content.fileLabel}
             value={<code className="font-mono break-all">{content.filePath}</code>}
-            icon={<FileJsonIcon className="h-4 w-4 text-sky-600 dark:text-sky-300" />}
+            icon={<FileJsonIcon className="h-4 w-4 text-[var(--term-accent)]" />}
           />
           <InfoRow
             label={content.descriptionLabel}
             value={<span>{content.descriptionValue}</span>}
-            icon={<InfoIcon className="h-4 w-4 text-violet-600 dark:text-violet-300" />}
+            icon={<InfoIcon className="h-4 w-4 text-sky-600 dark:text-sky-300" />}
           />
           <InfoRow
             label={content.pointLabel}
             value={<span>{content.pointValue}</span>}
-            icon={<GraduationCapIcon className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />}
+            icon={<GraduationCapIcon className="h-4 w-4 text-violet-600 dark:text-violet-300" />}
           />
         </article>
 

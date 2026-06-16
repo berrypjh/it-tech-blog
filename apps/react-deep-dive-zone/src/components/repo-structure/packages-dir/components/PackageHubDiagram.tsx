@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, PackagesDirectoryContent } from '../content';
 import { FolderIcon, packageIconByName } from '../icons';
+import { houseTone } from '../tone-house';
 
 import { PackagePill } from './PackagePill';
 
@@ -76,18 +76,15 @@ const HubCard = ({ label, caption }: HubCardProps) => (
   <div
     className={cn(
       'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md',
-      'border-sky-300/80 bg-sky-50/80 text-sky-900',
-      'dark:border-sky-700/60 dark:bg-sky-950/40 dark:text-sky-100',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <span className="inline-flex items-center gap-2">
+    <span className="inline-flex items-center gap-2 text-sky-600 dark:text-sky-300">
       <FolderIcon className="h-4 w-4" aria-hidden="true" />
       <span className="text-md font-bold font-mono tracking-tight">{label}</span>
     </span>
-    <span className="text-[10px] uppercase tracking-wider text-sky-700/80 dark:text-sky-300/80">
-      {caption}
-    </span>
+    <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">{caption}</span>
   </div>
 );
 
@@ -95,7 +92,7 @@ type CoreNodeCardProps = { pkg: CorePackage };
 
 const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
   const Icon = packageIconByName[pkg.icon];
-  const tone = toneTokens[pkg.tone];
+  const tone = houseTone(pkg.tone);
 
   return (
     <article

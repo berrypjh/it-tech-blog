@@ -1,9 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { EntrypointCard, ReactVsReactDomContent } from '../content';
 import { CheckCircleIcon, iconByName, SplitIcon } from '../icons';
+
+/** client=A(accent), server=B(sky). 카드 크롬은 중립, 텍스트만 색. */
+const sideText = (id: EntrypointCard['id']) =>
+  id === 'client' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
 
 type Props = { content: ReactVsReactDomContent['entrypoints'] };
 
@@ -29,21 +32,15 @@ export const ReactDomEntrypointsSection = ({ content }: Props) => {
 type ItemProps = { card: EntrypointCard };
 
 const EntrypointCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
   const Icon = iconByName[card.icon];
-  const tintClass =
-    card.tone === 'blue'
-      ? 'bg-blue-50/70 dark:bg-blue-950/30'
-      : 'bg-emerald-50/70 dark:bg-emerald-950/30';
+  const accent = sideText(card.id);
 
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tintClass,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -51,13 +48,14 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-            tone.chip,
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            accent,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', tone.text)}>
+          <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', accent)}>
             {card.title}
           </h3>
           <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -72,10 +70,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
             key={bullet}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon
-              className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
-              aria-hidden="true"
-            />
+            <CheckCircleIcon className={cn('mt-0.5 h-4 w-4 shrink-0', accent)} aria-hidden="true" />
             <span className="min-w-0 break-words">{bullet}</span>
           </li>
         ))}
@@ -85,10 +80,13 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
         <span
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[10px] font-medium',
-            tone.chip,
+            'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', tone.dot)} />
+          <span
+            aria-hidden="true"
+            className={cn('inline-block w-1 h-1 rounded-full bg-current', accent)}
+          />
           {card.tag}
         </span>
       </div>

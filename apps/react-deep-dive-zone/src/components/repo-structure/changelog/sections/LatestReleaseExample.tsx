@@ -49,8 +49,7 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border-2',
-            'border-emerald-300 bg-emerald-100 text-emerald-700',
-            'dark:border-emerald-700/60 dark:bg-emerald-950/60 dark:text-emerald-300',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <BadgeCheckIcon className="h-6 w-6" />
@@ -59,10 +58,10 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
           <h3 className="text-xl sm:text-2xl font-bold font-mono tracking-tight text-[var(--term-fg)]">
             {content.version}
           </h3>
-          <span className="inline-flex items-center gap-1.5 self-start rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <span className="inline-flex items-center gap-1.5 self-start rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
             <span
               aria-hidden="true"
-              className="inline-block w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400"
+              className="inline-block w-1 h-1 rounded-full bg-[var(--term-accent)]"
             />
             {content.versionBadge}
           </span>
@@ -161,7 +160,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
   <article
     className={cn(
       'flex flex-col gap-sm rounded-xl border',
-      'border-violet-200/80 bg-violet-50/60 dark:border-violet-800/60 dark:bg-violet-950/30',
+      'border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
     )}
   >
@@ -171,17 +170,16 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-            'border-violet-300 bg-violet-100 text-violet-700',
-            'dark:border-violet-700/60 dark:bg-violet-950/60 dark:text-violet-200',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-violet-600 dark:text-violet-300',
           )}
         >
           <TagIcon className="h-4 w-4" />
         </span>
         <div className="flex flex-col">
-          <h3 className="text-md font-bold font-mono tracking-tight text-violet-800 dark:text-violet-100">
+          <h3 className="text-md font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
             {content.highlightsTitle}
           </h3>
-          <span className="text-[10px] uppercase tracking-wider text-violet-700/80 dark:text-violet-200/80">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
             {content.highlightsSubtitle}
           </span>
         </div>
@@ -194,8 +192,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
           <span
             className={cn(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
-              'border-violet-300 bg-violet-100 text-violet-800',
-              'dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200',
+              'border-[var(--term-border)] bg-[var(--term-bg)] text-violet-600 dark:text-violet-300',
             )}
           >
             {item.kind}
@@ -205,7 +202,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
       ))}
     </ul>
 
-    <span className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)] inline-flex items-center gap-1 text-xsm font-bold text-violet-700 dark:text-violet-200">
+    <span className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)] inline-flex items-center gap-1 text-xsm font-bold text-violet-600 dark:text-violet-300">
       {content.linkText}
     </span>
   </article>

@@ -42,15 +42,9 @@ export const CreateRootCheckpoint = ({ content }: Props) => (
           value={<span className="leading-relaxed">{content.descriptionValue}</span>}
         />
 
-        <div
-          className={cn(
-            'mt-auto flex items-start gap-2 rounded-lg border p-3',
-            'border-sky-200/80 bg-sky-50/70 text-sky-900',
-            'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
-          )}
-        >
+        <div className="mt-auto flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3 text-[var(--term-fg)]">
           <HelpCircleIcon
-            className="mt-0.5 h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+            className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
             aria-hidden="true"
           />
           <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">

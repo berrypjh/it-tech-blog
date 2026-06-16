@@ -5,20 +5,17 @@ import type { FiberTreeNode, ReconcilerEntryContent } from '../content';
 type Props = { content: ReconcilerEntryContent['process'] };
 
 const stateClass: Record<FiberTreeNode['state'], string> = {
-  none: 'border-emerald-300 bg-emerald-50/80 text-emerald-800 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200',
-  update:
-    'border-violet-300 bg-violet-50/80 text-violet-800 dark:border-violet-700/60 dark:bg-violet-950/30 dark:text-violet-200',
-  placement:
-    'border-orange-300 bg-orange-50/80 text-orange-800 dark:border-orange-700/60 dark:bg-orange-950/30 dark:text-orange-200',
-  deletion:
-    'border-rose-300 bg-rose-50/80 text-rose-800 dark:border-rose-700/60 dark:bg-rose-950/30 dark:text-rose-200',
+  none: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
+  update: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
+  placement: 'border-[var(--term-border)] bg-[var(--term-surface)] text-sky-600 dark:text-sky-300',
+  deletion: 'border-[var(--term-border)] bg-[var(--term-surface)] text-rose-600 dark:text-rose-300',
 };
 
 const stateDotClass: Record<FiberTreeNode['state'], string> = {
-  none: 'bg-emerald-500 dark:bg-emerald-400',
-  update: 'bg-violet-500 dark:bg-violet-400',
-  placement: 'bg-orange-500 dark:bg-orange-400',
-  deletion: 'bg-rose-500 dark:bg-rose-400',
+  none: 'bg-[var(--term-dim)]',
+  update: 'bg-[var(--term-accent)]',
+  placement: 'bg-sky-400 dark:bg-sky-500',
+  deletion: 'bg-rose-400 dark:bg-rose-500',
 };
 
 export const FiberTreeCard = ({ content }: Props) => {

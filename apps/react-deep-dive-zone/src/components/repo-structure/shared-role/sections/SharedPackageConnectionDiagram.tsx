@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ConnectionRow, SharedContent } from '../content';
 import { ArrowRightIcon, iconByName, PackageIcon } from '../icons';
+import { softAccentByTone, softStrokeByTone } from '../tone-accents';
 
 type Props = { content: SharedContent['connection'] };
 
@@ -34,42 +34,40 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
           />
 
           {/* 우측 3개 row */}
-          <ul className="flex flex-col gap-3 relative">
-            {/* SVG dotted curve connector — lg 이상에서만, 컬럼 간격(48px)에 맞춤 */}
-            <svg
+          <ul className="relative flex flex-col gap-3">
+            {/* lg 이상: shared 허브 → 패키지 점선 버스.
+                허브 중앙에서 짧은 stub로 나와 세로 rail을 타고, 행마다 가지가 카드로 이어진다.
+                가지가 각 행의 세로 중앙(top-1/2)에서 그려지므로 행 높이가 달라도 항상 정확히 닿는다. */}
+            <span
               aria-hidden="true"
-              viewBox="0 0 80 240"
-              preserveAspectRatio="none"
-              className="hidden lg:block pointer-events-none absolute -left-12 top-2 bottom-2 w-12"
-            >
-              <path
-                d="M0 120 C 30 60, 60 30, 80 30"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.4"
-                strokeDasharray="3 4"
-                className="text-blue-300 dark:text-blue-700"
-              />
-              <path
-                d="M0 120 C 40 120, 60 120, 80 120"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.4"
-                strokeDasharray="3 4"
-                className="text-indigo-300 dark:text-indigo-700"
-              />
-              <path
-                d="M0 120 C 30 180, 60 210, 80 210"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.4"
-                strokeDasharray="3 4"
-                className="text-violet-300 dark:text-violet-700"
-              />
-            </svg>
+              className="hidden lg:block pointer-events-none absolute -left-12 top-1/2 -translate-y-1/2 w-6 border-t border-dashed border-[var(--term-border)]"
+            />
+            <span
+              aria-hidden="true"
+              className="hidden lg:block pointer-events-none absolute -left-6 inset-y-8 w-px border-l border-dashed border-[var(--term-border)]"
+            />
 
             {content.rows.map((row) => (
-              <li key={row.id}>
+              <li key={row.id} className="relative">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 8"
+                  preserveAspectRatio="none"
+                  className={cn(
+                    'hidden lg:block pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-2',
+                    softStrokeByTone[row.tone],
+                  )}
+                >
+                  <line
+                    x1="0"
+                    y1="4"
+                    x2="24"
+                    y2="4"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeDasharray="3 4"
+                  />
+                </svg>
                 <ConnectionRowItem row={row} />
               </li>
             ))}
@@ -86,9 +84,8 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
   <article
     className={cn(
       'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
-      'border-teal-300 bg-teal-50/80 text-teal-900',
-      'dark:border-teal-700/60 dark:bg-teal-950/40 dark:text-teal-100',
-      'shadow-[0_3px_0_var(--term-border)] self-start',
+      'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
+      'shadow-[0_3px_0_var(--term-border)] lg:self-center',
     )}
   >
     <header className="flex items-center gap-sm">
@@ -96,15 +93,16 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
         aria-hidden="true"
         className={cn(
           'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-          'border-teal-300 bg-teal-100/80 text-teal-700',
-          'dark:border-teal-700/60 dark:bg-teal-950/60 dark:text-teal-200',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
         <PackageIcon className="h-5 w-5" />
       </span>
       <div className="flex flex-col">
-        <h3 className="text-md font-bold font-mono tracking-tight">{title}</h3>
-        <span className="text-[10px] uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80">
+        <h3 className="text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
+          {title}
+        </h3>
+        <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
           {subtitle}
         </span>
       </div>
@@ -115,8 +113,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
           <span
             className={cn(
               'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold',
-              'border-teal-300 bg-teal-100/60 text-teal-800',
-              'dark:border-teal-700/60 dark:bg-teal-950/60 dark:text-teal-200',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
             )}
           >
             {tag}
@@ -130,14 +127,8 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
 type RowProps = { row: ConnectionRow };
 
 const ConnectionRowItem = ({ row }: RowProps) => {
-  const tone = toneTokens[row.tone];
+  const accent = softAccentByTone[row.tone];
   const Icon = iconByName[row.icon];
-  const tintClass =
-    row.tone === 'blue'
-      ? 'bg-blue-50/80 dark:bg-blue-950/30'
-      : row.tone === 'indigo'
-        ? 'bg-indigo-50/80 dark:bg-indigo-950/30'
-        : 'bg-violet-50/80 dark:bg-violet-950/30';
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_0.45fr)_auto_minmax(0,_0.55fr)] gap-2 items-stretch">
@@ -145,22 +136,23 @@ const ConnectionRowItem = ({ row }: RowProps) => {
       <article
         className={cn(
           'flex items-center gap-sm rounded-lg border p-3',
-          tone.border,
-          tintClass,
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
           'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+          'hover:border-[var(--term-accent)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
-            tone.chip,
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
+            accent,
           )}
         >
           <Icon className="h-4 w-4" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h4 className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
+          <h4 className={cn('text-sm font-bold font-mono tracking-tight', accent)}>
             {row.packageName}
           </h4>
           <p className="text-[11px] text-[var(--term-muted)] break-keep">{row.description}</p>
@@ -177,8 +169,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
       <article
         className={cn(
           'flex items-center rounded-lg border border-dashed p-3',
-          'border-teal-300/70 bg-teal-50/40 text-teal-900',
-          'dark:border-teal-700/40 dark:bg-teal-950/20 dark:text-teal-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
         <p className="text-xsm leading-snug font-medium break-keep">{row.usage}</p>

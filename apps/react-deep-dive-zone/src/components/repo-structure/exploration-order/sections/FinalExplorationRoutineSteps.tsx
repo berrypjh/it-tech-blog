@@ -24,9 +24,9 @@ export const FinalExplorationRoutineSteps = ({ content, sectionId }: Props) => {
           'divide-y divide-dashed divide-[var(--term-border)]',
         )}
       >
-        {content.steps.map((step) => (
+        {content.steps.map((step, idx) => (
           <li key={step.number}>
-            <RoutineRow step={step} />
+            <RoutineRow step={step} index={idx} />
           </li>
         ))}
       </ol>
@@ -34,25 +34,34 @@ export const FinalExplorationRoutineSteps = ({ content, sectionId }: Props) => {
   );
 };
 
-type RowProps = { step: RoutineStep };
+type RowProps = { step: RoutineStep; index: number };
 
-const RoutineRow = ({ step }: RowProps) => {
+/** 텍스트만 3색 소프트 순환: A=accent / B=sky / C=violet */
+const stepTextTones = [
+  'text-[var(--term-accent)]',
+  'text-sky-600 dark:text-sky-300',
+  'text-violet-600 dark:text-violet-300',
+];
+
+const RoutineRow = ({ step, index }: RowProps) => {
   const Icon = iconByName[step.icon];
+  const textTone = stepTextTones[index % 3];
   return (
     <article
       className={cn(
         'group grid grid-cols-[auto_auto_minmax(0,1fr)] sm:grid-cols-[auto_auto_minmax(0,_0.4fr)_minmax(0,_0.6fr)]',
         'items-center gap-sm sm:gap-md px-md sm:px-lg py-md',
-        'transition-colors hover:bg-violet-50/40 dark:hover:bg-violet-950/20',
+        'transition-colors hover:bg-[var(--term-surface)]',
       )}
     >
       {/* 번호 원형 */}
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center w-10 h-10 rounded-full',
-          'bg-violet-500 text-white dark:bg-violet-600/70 dark:text-violet-100 font-bold text-sm tabular-nums',
+          'inline-flex items-center justify-center w-10 h-10 rounded-full border',
+          'bg-[var(--term-surface)] border-[var(--term-border)] font-bold text-sm tabular-nums',
           'shadow-[0_2px_0_var(--term-border)]',
+          textTone,
         )}
       >
         {step.number}
@@ -63,8 +72,8 @@ const RoutineRow = ({ step }: RowProps) => {
         aria-hidden="true"
         className={cn(
           'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-          'border-violet-200 bg-violet-50/80 text-violet-700',
-          'dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200',
+          'bg-[var(--term-surface)] border-[var(--term-border)]',
+          textTone,
         )}
       >
         <Icon className="h-5 w-5" />

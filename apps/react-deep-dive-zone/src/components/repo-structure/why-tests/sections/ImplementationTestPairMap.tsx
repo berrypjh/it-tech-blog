@@ -76,15 +76,11 @@ type FileCardProps = {
 const FileCard = ({ label, name, description, variant }: FileCardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
-  const tintClass = isImpl
-    ? 'bg-blue-50/70 border-blue-300 dark:bg-blue-950/30 dark:border-blue-700/60'
-    : 'bg-emerald-50/70 border-emerald-300 dark:bg-emerald-950/30 dark:border-emerald-700/60';
-  const iconClass = isImpl
-    ? 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-700/60'
-    : 'bg-emerald-100 text-emerald-700 border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-700/60';
-  const labelTextClass = isImpl
-    ? 'text-blue-700 dark:text-blue-200'
-    : 'text-emerald-700 dark:text-emerald-200';
+  const accentText = isImpl ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const tintClass =
+    'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
+  const iconClass = cn('bg-[var(--term-surface)] border-[var(--term-border)]', accentText);
+  const labelTextClass = accentText;
 
   return (
     <article

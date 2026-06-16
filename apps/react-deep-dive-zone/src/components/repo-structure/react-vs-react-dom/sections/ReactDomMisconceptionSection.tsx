@@ -22,19 +22,14 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-0 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-0 items-stretch divide-y divide-dashed divide-[var(--term-border)] lg:divide-y-0">
           {/* 왼쪽 - 오해 */}
-          <article
-            className={cn(
-              'flex flex-col gap-sm p-md sm:p-lg lg:p-xl',
-              'bg-rose-50/70 dark:bg-rose-950/30',
-            )}
-          >
+          <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <span
               className={cn(
                 'inline-flex items-center gap-1.5 self-start rounded-full border px-2.5 py-1',
-                'border-rose-300 bg-rose-100/80 text-rose-800',
-                'dark:border-rose-700/60 dark:bg-rose-950/40 dark:text-rose-200',
+                'bg-[var(--term-surface)] border-[var(--term-border)]',
+                'text-rose-600 dark:text-rose-300',
                 'text-[10px] font-bold uppercase tracking-wider',
               )}
             >
@@ -42,7 +37,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
               {content.leftBadge}
             </span>
 
-            <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-rose-900 dark:text-rose-100 break-keep">
+            <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-rose-600 dark:text-rose-300 break-keep">
               {content.leftQuote}
             </p>
             <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -51,7 +46,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
           </article>
 
           {/* 중앙 화살표 */}
-          <div className="flex items-center justify-center px-md py-sm lg:py-md bg-gradient-to-r lg:bg-gradient-to-b from-rose-50/70 to-emerald-50/70 dark:from-rose-950/30 dark:to-emerald-950/30">
+          <div className="flex items-center justify-center px-md py-sm lg:py-md border-y border-dashed border-[var(--term-border)] lg:border-y-0 lg:border-x">
             <span
               aria-hidden="true"
               className={cn(
@@ -65,17 +60,12 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
           </div>
 
           {/* 오른쪽 - 정확히 */}
-          <article
-            className={cn(
-              'flex flex-col gap-sm p-md sm:p-lg lg:p-xl',
-              'bg-emerald-50/70 dark:bg-emerald-950/30',
-            )}
-          >
+          <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <span
               className={cn(
                 'inline-flex items-center gap-1.5 self-start rounded-full border px-2.5 py-1',
-                'border-emerald-300 bg-emerald-100/80 text-emerald-800',
-                'dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200',
+                'bg-[var(--term-surface)] border-[var(--term-border)]',
+                'text-[var(--term-accent)]',
                 'text-[10px] font-bold uppercase tracking-wider',
               )}
             >
@@ -83,7 +73,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
               {content.rightBadge}
             </span>
 
-            <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-emerald-900 dark:text-emerald-100 break-keep">
+            <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-[var(--term-fg)] break-keep">
               {content.rightQuote}
             </p>
             <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">

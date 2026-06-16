@@ -30,11 +30,10 @@ export const WhyTestsMatterComparison = ({ content, sectionId }: Props) => {
       <div
         className={cn(
           'relative flex items-center justify-center gap-sm rounded-2xl border px-md py-lg',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
-        <QuoteIcon className="h-6 w-6 shrink-0 text-sky-500 dark:text-sky-300" aria-hidden="true" />
+        <QuoteIcon className="h-6 w-6 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
         <p className="text-md sm:text-lg font-bold leading-snug tracking-tight break-keep text-center">
           {content.quote}
         </p>
@@ -48,15 +47,11 @@ type CardProps = { title: string; items: ComparePoint[]; variant: 'impl' | 'test
 const CompareCard = ({ title, items, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
-  const tintClass = isImpl
-    ? 'bg-blue-50/70 border-blue-300 dark:bg-blue-950/30 dark:border-blue-700/60'
-    : 'bg-emerald-50/70 border-emerald-300 dark:bg-emerald-950/30 dark:border-emerald-700/60';
-  const titleClass = isImpl
-    ? 'text-blue-800 dark:text-blue-200'
-    : 'text-emerald-800 dark:text-emerald-200';
-  const iconClass = isImpl
-    ? 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-700/60'
-    : 'bg-emerald-100 text-emerald-700 border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-700/60';
+  const accentText = isImpl ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const tintClass =
+    'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
+  const titleClass = accentText;
+  const iconClass = cn('bg-[var(--term-surface)] border-[var(--term-border)]', accentText);
   const labelText = isImpl ? '구현 코드' : '테스트 코드';
 
   return (
@@ -92,12 +87,7 @@ const CompareCard = ({ title, items, variant }: CardProps) => {
             className="flex items-start gap-2 text-sm leading-relaxed text-[var(--term-fg)] break-keep"
           >
             <CheckCircleIcon
-              className={cn(
-                'mt-0.5 h-4 w-4 shrink-0',
-                isImpl
-                  ? 'text-blue-600 dark:text-blue-300'
-                  : 'text-emerald-600 dark:text-emerald-300',
-              )}
+              className={cn('mt-0.5 h-4 w-4 shrink-0', accentText)}
               aria-hidden="true"
             />
             <span>{item.text}</span>

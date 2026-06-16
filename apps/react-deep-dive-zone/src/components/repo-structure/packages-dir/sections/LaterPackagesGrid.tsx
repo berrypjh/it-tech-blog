@@ -1,11 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneCard } from '../../../shared/ToneCard';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { PackagesDirectoryContent } from '../content';
 import { InfoIcon, packageIconByName, SparklesIcon } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['later'] };
 
@@ -21,15 +19,29 @@ export const LaterPackagesGrid = ({ content }: Props) => {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md">
         {content.cards.map((card) => {
-          const tone = toneTokens[card.tone];
+          const tone = houseTone(card.tone);
           const Icon = packageIconByName[card.icon];
 
           return (
             <li key={card.id}>
-              <ToneCard tone={card.tone}>
-                <ToneIconBox tone={card.tone} size="sm">
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </ToneIconBox>
+              <article
+                className={cn(
+                  'group flex flex-col gap-md h-full',
+                  'rounded-lg border bg-[var(--term-bg)] p-md',
+                  'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
+                  'border-[var(--term-border)]',
+                  tone.borderHover,
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'inline-flex items-center justify-center w-9 h-9 rounded-md',
+                    tone.chip,
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                </span>
 
                 <h3
                   className={cn(
@@ -47,7 +59,7 @@ export const LaterPackagesGrid = ({ content }: Props) => {
                 <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
                   {card.description2}
                 </p>
-              </ToneCard>
+              </article>
             </li>
           );
         })}

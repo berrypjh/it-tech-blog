@@ -2,9 +2,12 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { SurroundingContent } from '../content';
+import { houseToneByIndex } from '../houseTones';
 import { CheckCircleIcon, CircleAlertIcon, FolderIcon } from '../icons';
 
 type Props = { content: SurroundingContent['compiler'] };
+
+const tone = houseToneByIndex(0);
 
 export const CompilerIntroSection = ({ content }: Props) => {
   return (
@@ -21,8 +24,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
         <article
           className={cn(
             'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
-            'border-amber-200/80 dark:border-amber-800/60',
-            'shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
+            'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
           )}
         >
           <header className="flex items-center gap-sm">
@@ -30,14 +32,13 @@ export const CompilerIntroSection = ({ content }: Props) => {
               aria-hidden="true"
               className={cn(
                 'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-                'border-amber-300 bg-amber-50 text-amber-700',
-                'dark:border-amber-700/60 dark:bg-amber-950/40 dark:text-amber-200',
+                tone.chip,
               )}
             >
               <FolderIcon className="h-5 w-5" />
             </span>
             <div className="flex flex-col min-w-0">
-              <h3 className="text-md font-bold font-mono tracking-tight text-amber-700 dark:text-amber-200">
+              <h3 className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
                 {content.treeHeader}
               </h3>
               <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -48,8 +49,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
 
           <pre
             className={cn(
-              'rounded-md border bg-amber-50/40 dark:bg-amber-950/20',
-              'border-amber-200/60 dark:border-amber-800/40',
+              'rounded-md border bg-[var(--term-surface)] border-[var(--term-border)]',
               'px-md py-3 text-xsm font-mono leading-relaxed text-[var(--term-fg)]',
               'overflow-x-auto',
             )}
@@ -74,7 +74,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
                 className="flex items-start gap-2 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep"
               >
                 <CheckCircleIcon
-                  className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-300"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[var(--term-accent)]"
                   aria-hidden="true"
                 />
                 <span>{bullet}</span>
@@ -85,12 +85,11 @@ export const CompilerIntroSection = ({ content }: Props) => {
           <div
             className={cn(
               'mt-auto flex items-start gap-sm rounded-md border border-dashed p-md',
-              'border-amber-400 bg-amber-50/70 text-amber-900',
-              'dark:border-amber-600/70 dark:bg-amber-950/30 dark:text-amber-100',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}
           >
             <CircleAlertIcon
-              className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-300"
+              className="mt-0.5 h-5 w-5 shrink-0 text-[var(--term-accent)]"
               aria-hidden="true"
             />
             <p className="text-xsm sm:text-sm leading-snug font-medium break-keep">

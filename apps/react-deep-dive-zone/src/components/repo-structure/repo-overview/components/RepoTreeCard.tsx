@@ -1,8 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import type { RepoTreeRow } from '../content';
 import { FileTextIcon, FolderIcon } from '../icons';
+
+/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
+const houseTextByTone: Record<ToneKey, string> = {
+  amber: 'text-[var(--term-accent)]',
+  emerald: 'text-[var(--term-accent)]',
+  teal: 'text-[var(--term-accent)]',
+  sky: 'text-sky-600 dark:text-sky-300',
+  blue: 'text-sky-600 dark:text-sky-300',
+  cyan: 'text-sky-600 dark:text-sky-300',
+  violet: 'text-violet-600 dark:text-violet-300',
+  indigo: 'text-violet-600 dark:text-violet-300',
+};
 
 type Props = {
   header: string;
@@ -60,7 +72,7 @@ export const RepoTreeCard = ({
           const isSelected = selectedId === row.id;
           const isLast = idx === rows.length - 1;
           const branch = isLast ? '└─' : '├─';
-          const tone = row.tone ? toneTokens[row.tone] : null;
+          const toneText = row.tone ? houseTextByTone[row.tone] : null;
           const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
 
           const baseClass = cn(
@@ -69,10 +81,7 @@ export const RepoTreeCard = ({
             interactive &&
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
             isSelected
-              ? cn(
-                  tone ? tone.chip : 'bg-[var(--term-accent-soft)] text-[var(--term-fg)]',
-                  'font-bold',
-                )
+              ? 'bg-[var(--term-accent-soft)] text-[var(--term-fg)] font-bold'
               : 'text-[var(--term-muted)] hover:bg-[var(--term-surface)] hover:text-[var(--term-fg)]',
           );
 
@@ -82,7 +91,7 @@ export const RepoTreeCard = ({
                 aria-hidden="true"
                 className={cn(
                   'shrink-0 tabular-nums text-[10px] text-[var(--term-dim)] w-5',
-                  isSelected && tone ? tone.text : undefined,
+                  isSelected && toneText ? toneText : undefined,
                 )}
               >
                 {isSelected ? '▸ ' : branch}
@@ -91,7 +100,7 @@ export const RepoTreeCard = ({
                 aria-hidden="true"
                 className={cn(
                   'h-3.5 w-3.5 shrink-0',
-                  isSelected && tone ? tone.text : 'text-[var(--term-dim)]',
+                  isSelected && toneText ? toneText : 'text-[var(--term-dim)]',
                 )}
               />
               <span className="truncate">{row.name}</span>

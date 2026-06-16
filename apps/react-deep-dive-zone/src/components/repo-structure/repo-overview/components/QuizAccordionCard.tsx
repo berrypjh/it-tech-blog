@@ -4,7 +4,7 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import { CheckCircleIcon, ChevronDownIcon, HelpCircleIcon } from '../icons';
 
 /** QuizAccordionCard가 요구하는 최소 구조. id 등 다른 필드는 자유롭게 가능. */
@@ -19,32 +19,30 @@ export type QuizAccordionData = {
 
 type Props = { card: QuizAccordionData };
 
-const surfaceClassByTone: Partial<Record<ToneKey, string>> = {
-  sky: 'bg-sky-50/70 dark:bg-sky-950/30',
-  blue: 'bg-blue-50/70 dark:bg-blue-950/30',
-  cyan: 'bg-cyan-50/70 dark:bg-cyan-950/30',
-  emerald: 'bg-emerald-50/70 dark:bg-emerald-950/30',
-  teal: 'bg-teal-50/70 dark:bg-teal-950/30',
-  violet: 'bg-violet-50/70 dark:bg-violet-950/30',
-  indigo: 'bg-indigo-50/70 dark:bg-indigo-950/30',
-  amber: 'bg-amber-50/70 dark:bg-amber-950/30',
+/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
+const houseTextByTone: Record<ToneKey, string> = {
+  amber: 'text-[var(--term-accent)]',
+  emerald: 'text-[var(--term-accent)]',
+  teal: 'text-[var(--term-accent)]',
+  sky: 'text-sky-600 dark:text-sky-300',
+  blue: 'text-sky-600 dark:text-sky-300',
+  cyan: 'text-sky-600 dark:text-sky-300',
+  violet: 'text-violet-600 dark:text-violet-300',
+  indigo: 'text-violet-600 dark:text-violet-300',
 };
 
 export const QuizAccordionCard = ({ card }: Props) => {
   const [open, setOpen] = useState(false);
   const id = useId();
-  const tone = toneTokens[card.tone];
-  const surfaceClass = surfaceClassByTone[card.tone] ?? 'bg-[var(--term-surface)]';
+  const toneText = houseTextByTone[card.tone];
 
   return (
     <article
       className={cn(
         'flex w-full flex-col gap-sm rounded-lg border shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)]',
-        surfaceClass,
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'p-md sm:p-lg',
-        'transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
       )}
     >
       <h3
@@ -53,7 +51,7 @@ export const QuizAccordionCard = ({ card }: Props) => {
           'text-[var(--term-fg)]',
         )}
       >
-        <HelpCircleIcon className={cn('mt-0.5 h-5 w-5 shrink-0', tone.text)} aria-hidden="true" />
+        <HelpCircleIcon className={cn('mt-0.5 h-5 w-5 shrink-0', toneText)} aria-hidden="true" />
         {card.question}
       </h3>
 
@@ -75,7 +73,7 @@ export const QuizAccordionCard = ({ card }: Props) => {
       >
         <span>{card.accordionLabel}</span>
         <ChevronDownIcon
-          className={cn('h-4 w-4 transition-transform', open && 'rotate-180', tone.text)}
+          className={cn('h-4 w-4 transition-transform', open && 'rotate-180', toneText)}
           aria-hidden="true"
         />
       </button>
@@ -90,13 +88,8 @@ export const QuizAccordionCard = ({ card }: Props) => {
         )}
       >
         <div className="overflow-hidden">
-          <div
-            className={cn(
-              'mt-xs rounded-md border bg-[var(--term-bg)] p-md flex flex-col gap-2',
-              tone.border,
-            )}
-          >
-            <p className={cn('inline-flex items-center gap-2 text-sm font-bold', tone.text)}>
+          <div className="mt-xs rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-md flex flex-col gap-2">
+            <p className={cn('inline-flex items-center gap-2 text-sm font-bold', toneText)}>
               <CheckCircleIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
               {card.answer}
             </p>

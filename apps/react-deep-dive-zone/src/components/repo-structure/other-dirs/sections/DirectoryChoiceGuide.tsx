@@ -1,9 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ChoiceCard, SurroundingContent } from '../content';
+import { houseToneByIndex } from '../houseTones';
 import { ArrowDownIcon, iconByName, MapPinnedIcon, SparklesIcon } from '../icons';
 
 type Props = { content: SurroundingContent['choice'] };
@@ -19,9 +18,9 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
-        {content.cards.map((card) => (
+        {content.cards.map((card, idx) => (
           <li key={card.id} className="flex">
-            <ChoiceCardItem card={card} />
+            <ChoiceCardItem card={card} index={idx} />
           </li>
         ))}
       </ul>
@@ -29,15 +28,14 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-lg border px-md py-md',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-md shrink-0',
-            'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-950',
+            'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <SparklesIcon className="h-4 w-4" />
@@ -48,10 +46,10 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
   );
 };
 
-type ItemProps = { card: ChoiceCard };
+type ItemProps = { card: ChoiceCard; index: number };
 
-const ChoiceCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
+const ChoiceCardItem = ({ card, index }: ItemProps) => {
+  const tone = houseToneByIndex(index);
   const Icon = iconByName[card.icon];
 
   return (
@@ -59,13 +57,18 @@ const ChoiceCardItem = ({ card }: ItemProps) => {
       className={cn(
         'group flex w-full flex-col items-center text-center gap-sm rounded-xl border',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'p-md sm:p-lg transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'p-md sm:p-lg transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+          tone.chip,
+        )}
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </span>
 
       <h3 className="text-md sm:text-lg font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line">
         {card.question}
@@ -80,7 +83,6 @@ const ChoiceCardItem = ({ card }: ItemProps) => {
         className={cn(
           'inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-bold font-mono',
           tone.chip,
-          tone.border,
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >

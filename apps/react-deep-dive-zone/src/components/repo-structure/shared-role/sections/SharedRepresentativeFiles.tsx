@@ -1,11 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneCard } from '../../../shared/ToneCard';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { RepFile, SharedContent } from '../content';
 import { FileCodeIcon, iconByName } from '../icons';
+import { softAccentByTone } from '../tone-accents';
 
 type Props = { content: SharedContent['files'] };
 
@@ -33,17 +31,31 @@ export const SharedRepresentativeFiles = ({ content }: Props) => {
 type ItemProps = { card: RepFile };
 
 const FileCard = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
+  const accent = softAccentByTone[card.tone];
   const Icon = iconByName[card.icon];
 
   return (
-    <ToneCard tone={card.tone} className="w-full">
-      <ToneIconBox tone={card.tone} size="md">
+    <article
+      className={cn(
+        'flex w-full flex-col gap-sm rounded-xl border p-md sm:p-lg',
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'hover:border-[var(--term-accent)]',
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex items-center justify-center w-11 h-11 rounded-md border',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
+          accent,
+        )}
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      </span>
 
       <header className="flex flex-col gap-0.5">
-        <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
+        <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', accent)}>
           {card.title}
         </h3>
         <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -65,6 +77,6 @@ const FileCard = ({ card }: ItemProps) => {
           {card.codeLabel}
         </code>
       </div>
-    </ToneCard>
+    </article>
   );
 };

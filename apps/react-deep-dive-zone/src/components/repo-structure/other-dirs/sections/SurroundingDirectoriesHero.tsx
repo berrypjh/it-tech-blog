@@ -38,8 +38,8 @@ export const SurroundingDirectoriesHero = ({ content }: Props) => {
         <span
           className={cn(
             'mt-xs inline-flex w-fit max-w-full items-center gap-2 rounded-md',
-            'border border-sky-200/80 bg-sky-50/80 px-3 py-1.5 text-[10px] text-sky-800',
-            'dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200',
+            'border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-1.5 text-[10px]',
+            'text-[var(--term-accent)]',
           )}
         >
           <PinIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />

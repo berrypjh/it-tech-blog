@@ -38,15 +38,17 @@ export const RepoOverviewHero = ({ content }: Props) => {
           rel="noopener noreferrer"
           className={cn(
             'mt-xs inline-flex w-fit max-w-full items-center gap-2 rounded-md',
-            'border border-sky-200/80 bg-sky-50/80 px-3 py-1.5 text-[10px] text-sky-800',
-            'dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200',
-            'hover:border-sky-400 transition-colors',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
+            'border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-1.5 text-[10px]',
+            'text-[var(--term-muted)]',
+            'hover:border-[var(--term-accent)] transition-colors',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]',
           )}
         >
-          <GithubIcon className="h-3.5 w-3.5 shrink-0" />
-          <span className="uppercase tracking-wider font-bold">{content.repoUrlLabel}</span>
-          <span aria-hidden="true" className="text-sky-300 dark:text-sky-700">
+          <GithubIcon className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" />
+          <span className="uppercase tracking-wider font-bold text-[var(--term-accent)]">
+            {content.repoUrlLabel}
+          </span>
+          <span aria-hidden="true" className="text-[var(--term-dim)]">
             ·
           </span>
           <span className="truncate font-mono">{content.repoUrl}</span>

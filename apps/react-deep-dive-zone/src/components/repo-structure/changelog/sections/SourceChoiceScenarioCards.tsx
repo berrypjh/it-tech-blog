@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, ScenarioCard } from '../content';
 import { ArrowRightIcon, iconByName, SparklesIcon } from '../icons';
+import { accentByTone } from '../tone-accent';
 
 type Props = { content: ChangelogContent['scenarios'] };
 
@@ -33,8 +32,8 @@ export const SourceChoiceScenarioCards = ({ content }: Props) => {
 type ItemProps = { card: ScenarioCard };
 
 const ScenarioCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
-  const resultTone = toneTokens[card.resultTone];
+  const tone = accentByTone[card.tone];
+  const resultTone = accentByTone[card.resultTone];
   const Icon = iconByName[card.icon];
 
   return (
@@ -46,9 +45,16 @@ const ScenarioCardItem = ({ card }: ItemProps) => {
         tone.borderHover,
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </ToneIconBox>
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex items-center justify-center w-11 h-11 rounded-lg border shrink-0',
+          'bg-[var(--term-surface)] border-[var(--term-border)]',
+          tone.text,
+        )}
+      >
+        <Icon className="h-5 w-5" />
+      </span>
 
       <h3
         className={cn(

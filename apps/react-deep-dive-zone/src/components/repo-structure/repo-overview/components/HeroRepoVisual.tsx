@@ -1,6 +1,5 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
 import { ReactAtomIcon } from '../icons';
 
@@ -19,7 +18,7 @@ export const HeroRepoVisual = ({ content }: Props) => {
       {/* 옅은 가로 격자 배경 — 학습 카드 느낌 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -m-2 rounded-2xl bg-[linear-gradient(180deg,rgba(56,189,248,0.06),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 -m-2 rounded-2xl bg-[var(--term-surface)]/40"
       />
 
       <div className="relative grid grid-cols-1 sm:grid-cols-[minmax(0,1.05fr)_minmax(0,0.85fr)] gap-md sm:gap-lg">
@@ -129,7 +128,7 @@ const highlight = (line: string): React.ReactNode => {
     }
     if (tok === 'Hello') {
       return (
-        <span key={idx} className="text-emerald-700 dark:text-emerald-300">
+        <span key={idx} className="text-[var(--term-accent)]">
           {tok}
         </span>
       );
@@ -148,7 +147,6 @@ const highlight = (line: string): React.ReactNode => {
 type ReactBrandCardProps = { caption: string };
 
 const ReactBrandCard = ({ caption }: ReactBrandCardProps) => {
-  const tone = toneTokens.sky;
   return (
     <div
       className={cn(
@@ -156,18 +154,15 @@ const ReactBrandCard = ({ caption }: ReactBrandCardProps) => {
         'border-[var(--term-border)] bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)] px-md py-md',
         'overflow-hidden',
+        'transition-colors hover:border-[var(--term-accent)]',
       )}
     >
       <div
         aria-hidden="true"
-        className={cn(
-          'absolute inset-0 -z-0 opacity-60',
-          'bg-[radial-gradient(circle_at_50%_45%,rgba(56,189,248,0.18),transparent_60%)]',
-          'dark:bg-[radial-gradient(circle_at_50%_45%,rgba(56,189,248,0.25),transparent_60%)]',
-        )}
+        className="absolute inset-0 -z-0 opacity-60 bg-[var(--term-surface)]"
       />
-      <ReactAtomIcon className={cn('relative h-12 w-12', tone.text)} />
-      <span className={cn('relative text-[10px] uppercase tracking-wider', tone.text)}>
+      <ReactAtomIcon className="relative h-12 w-12 text-[var(--term-accent)]" />
+      <span className="relative text-[10px] uppercase tracking-wider text-[var(--term-accent)]">
         {caption}
       </span>
     </div>

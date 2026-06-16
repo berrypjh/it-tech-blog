@@ -113,8 +113,8 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
   const isDone = row.status === 'done';
   const statusLabel = isDone ? doneLabel : waitingLabel;
   const statusClass = isDone
-    ? 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-200 dark:border-emerald-700/60'
-    : 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800/50 dark:text-slate-200 dark:border-slate-600';
+    ? 'bg-[var(--term-surface)] text-[var(--term-accent)] border-[var(--term-border)]'
+    : 'bg-[var(--term-surface)] text-[var(--term-muted)] border-[var(--term-border)]';
 
   return (
     <div

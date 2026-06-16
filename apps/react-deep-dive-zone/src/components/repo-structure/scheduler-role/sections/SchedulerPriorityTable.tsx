@@ -54,11 +54,11 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
     <div className="flex sm:flex-col items-center gap-2 text-center">
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-rose-500 text-white text-sm font-bold dark:bg-rose-400 dark:text-slate-950"
+        className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-sm font-bold"
       >
         ↑
       </span>
-      <span className="text-[10px] uppercase tracking-wider font-bold text-rose-700 dark:text-rose-300 break-keep">
+      <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-accent)] break-keep">
         {highLabel}
       </span>
     </div>
@@ -67,27 +67,25 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
       aria-hidden="true"
       className={cn(
         'hidden sm:block w-1 flex-1 my-2 rounded-full',
-        'bg-gradient-to-b from-rose-300 via-blue-300 to-violet-300',
-        'dark:from-rose-700/60 dark:via-blue-700/60 dark:to-violet-700/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     />
     <span
       aria-hidden="true"
       className={cn(
         'sm:hidden flex-1 h-1 mx-2 rounded-full',
-        'bg-gradient-to-r from-rose-300 via-blue-300 to-violet-300',
-        'dark:from-rose-700/60 dark:via-blue-700/60 dark:to-violet-700/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     />
 
     <div className="flex sm:flex-col items-center gap-2 text-center">
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-500 text-white text-sm font-bold dark:bg-violet-400 dark:text-slate-950"
+        className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-violet-600 dark:text-violet-300 text-sm font-bold"
       >
         ↓
       </span>
-      <span className="text-[10px] uppercase tracking-wider font-bold text-violet-700 dark:text-violet-300 break-keep">
+      <span className="text-[10px] uppercase tracking-wider font-bold text-violet-600 dark:text-violet-300 break-keep">
         {lowLabel}
       </span>
     </div>

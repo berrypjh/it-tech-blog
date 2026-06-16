@@ -5,11 +5,9 @@ import { useId, useState } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneBadge } from '../../../shared/ToneBadge';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['selector'] };
 
@@ -17,7 +15,7 @@ export const CorePackageSelector = ({ content }: Props) => {
   const [activeId, setActiveId] = useState<CorePackageId>(content.defaultSelected);
   const active = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
   const detail = content.details[active.id];
-  const tone = toneTokens[active.tone];
+  const tone = houseTone(active.tone);
   const tablistId = useId();
 
   return (
@@ -65,12 +63,18 @@ export const CorePackageSelector = ({ content }: Props) => {
         <article className="flex flex-col gap-sm">
           <header className="flex items-center justify-between gap-sm">
             <div className="flex items-center gap-sm min-w-0">
-              <ToneIconBox tone={active.tone} size="md">
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'inline-flex items-center justify-center w-11 h-11 rounded-md',
+                  tone.chip,
+                )}
+              >
                 {(() => {
                   const Icon = packageIconByName[active.icon];
-                  return <Icon className="h-5 w-5" aria-hidden="true" />;
+                  return <Icon className="h-5 w-5" />;
                 })()}
-              </ToneIconBox>
+              </span>
               <h3
                 className={cn(
                   'text-lg sm:text-xl font-bold font-mono tracking-tight truncate',
@@ -80,7 +84,18 @@ export const CorePackageSelector = ({ content }: Props) => {
                 {active.name}
               </h3>
             </div>
-            <ToneBadge tone={active.tone}>{detail.badge}</ToneBadge>
+            <span
+              className={cn(
+                'inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-medium',
+                tone.chip,
+              )}
+            >
+              <span
+                aria-hidden="true"
+                className={cn('inline-block w-1 h-1 rounded-full', tone.dot)}
+              />
+              {detail.badge}
+            </span>
           </header>
 
           <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -114,9 +129,15 @@ export const CorePackageSelector = ({ content }: Props) => {
             <h4 className="text-xsm uppercase tracking-wider font-bold text-[var(--term-muted)]">
               {detail.representativeTitle}
             </h4>
-            <ToneIconBox tone={active.tone} size="sm">
-              <FolderIcon className="h-4 w-4" aria-hidden="true" />
-            </ToneIconBox>
+            <span
+              aria-hidden="true"
+              className={cn(
+                'inline-flex items-center justify-center w-9 h-9 rounded-md',
+                tone.chip,
+              )}
+            >
+              <FolderIcon className="h-4 w-4" />
+            </span>
           </header>
 
           <code
@@ -166,7 +187,7 @@ type TabCardProps = {
 };
 
 const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
-  const tone = toneTokens[tab.tone];
+  const tone = houseTone(tab.tone);
   const Icon = packageIconByName[tab.icon];
 
   return (
@@ -200,7 +221,7 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
               : cn(tone.chip, 'border-[var(--term-border)]'),
           )}
         >
-          <Icon className={cn('h-4 w-4', isActive ? tone.text : tone.text)} />
+          <Icon className={cn('h-4 w-4', tone.text)} />
         </span>
         <span
           className={cn(

@@ -37,8 +37,7 @@ export const SharedUsageCheckpoint = ({ content }: Props) => (
         <div
           className={cn(
             'mt-auto flex items-start gap-2 rounded-lg border p-3',
-            'border-sky-200/80 bg-sky-50/70 text-sky-900',
-            'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           )}
         >
           <CircleHelpIcon

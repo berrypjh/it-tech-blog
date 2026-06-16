@@ -1,8 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import type { FlowNode, ReactVsReactDomContent } from '../content';
 import { iconByName } from '../icons';
+
+/** package 노드만 색 강조: react=A(accent), react-dom=B(sky). 나머지는 중립. */
+const packageAccent = (id: FlowNode['id']) =>
+  id === 'react-dom' ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
 
 type Props = { content: ReactVsReactDomContent['usage'] };
 
@@ -54,9 +57,9 @@ const FlowTimeline = ({ nodes }: FlowTimelineProps) => (
 type FlowStepProps = { node: FlowNode; isLast: boolean };
 
 const FlowStep = ({ node, isLast }: FlowStepProps) => {
-  const tone = toneTokens[node.tone];
   const Icon = iconByName[node.icon];
   const isPackage = node.kind === 'package';
+  const accent = packageAccent(node.id);
 
   return (
     <li className="flex gap-3">
@@ -66,7 +69,8 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-6 h-6 rounded-md border shrink-0',
-            tone.chip,
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            isPackage ? accent : 'text-[var(--term-muted)]',
           )}
         >
           <Icon className="h-3.5 w-3.5" />
@@ -82,7 +86,7 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
           <span
             className={cn(
               'text-xsm font-bold tracking-tight',
-              isPackage ? cn(tone.text, 'font-mono') : 'text-[var(--term-fg)]',
+              isPackage ? cn(accent, 'font-mono') : 'text-[var(--term-fg)]',
             )}
           >
             {node.title}
@@ -91,8 +95,8 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
             <span
               className={cn(
                 'rounded border px-1.5 py-px text-[9px] font-bold uppercase tracking-wider',
-                tone.border,
-                tone.text,
+                'border-[var(--term-border)]',
+                accent,
               )}
             >
               package

@@ -27,20 +27,21 @@ export const WhyReactSymbolsMatter = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-2xl border px-md py-md',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-950',
+            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0 border',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <InfoIcon className="h-4 w-4" />
         </span>
-        <p className="text-sm sm:text-md leading-snug font-bold break-keep">{content.banner}</p>
+        <p className="text-sm sm:text-md leading-snug font-bold break-keep text-[var(--term-fg)]">
+          {content.banner}
+        </p>
       </div>
     </section>
   );
@@ -55,10 +56,9 @@ const SymbolCardItem = ({ card }: ItemProps) => {
     <article
       className={cn(
         'flex w-full flex-col gap-sm rounded-xl border p-md sm:p-lg',
-        'border-blue-200/80 bg-blue-50/60',
-        'dark:border-blue-800/60 dark:bg-blue-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-blue-400/70 dark:hover:border-blue-500/60',
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -66,17 +66,16 @@ const SymbolCardItem = ({ card }: ItemProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-            'border-blue-300 bg-blue-100/80 text-blue-700',
-            'dark:border-blue-700/60 dark:bg-blue-950/40 dark:text-blue-200',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className="text-sm sm:text-md font-bold font-mono tracking-tight text-blue-800 dark:text-blue-200 break-all">
+          <h3 className="text-sm sm:text-md font-bold font-mono tracking-tight text-[var(--term-accent)] break-all">
             {card.title}
           </h3>
-          <p className="text-[11px] text-blue-700/80 dark:text-blue-300/80 font-mono break-keep">
+          <p className="text-[11px] text-[var(--term-muted)] font-mono break-keep">
             {card.subtitle}
           </p>
         </div>

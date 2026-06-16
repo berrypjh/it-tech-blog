@@ -46,12 +46,11 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
           <div
             className={cn(
               'mt-auto flex items-start gap-2 rounded-md border p-3',
-              'border-emerald-200/80 bg-emerald-50/70 text-emerald-900',
-              'dark:border-emerald-800/60 dark:bg-emerald-950/30 dark:text-emerald-100',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}
           >
             <CircleHelpIcon
-              className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300"
+              className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
               aria-hidden="true"
             />
             <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
@@ -72,15 +71,14 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
           <div
             className={cn(
               'flex items-start gap-sm rounded-lg border px-md py-md',
-              'border-emerald-200/80 bg-emerald-50/70 text-emerald-900',
-              'dark:border-emerald-800/60 dark:bg-emerald-950/30 dark:text-emerald-100',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}
           >
             <span
               aria-hidden="true"
               className={cn(
-                'inline-flex items-center justify-center w-8 h-8 rounded-md shrink-0',
-                'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950',
+                'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
+                'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
               )}
             >
               <LightbulbIcon className="h-4 w-4" />

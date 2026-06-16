@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TimelineItem } from '../content';
 import { BookOpenIcon, StarIcon } from '../icons';
+import { accentCycle } from '../tone-accent';
 
 type Props = { content: ChangelogContent['timeline'] };
 
@@ -19,18 +19,14 @@ export const ChangelogTimeline = ({ content }: Props) => {
       />
 
       <ol className="relative flex flex-col gap-md">
-        {/* 좌측 세로 timeline line (blue → purple → teal) */}
+        {/* 좌측 세로 timeline line (중립) */}
         <span
           aria-hidden="true"
-          className={cn(
-            'hidden sm:block absolute left-[18px] top-3 bottom-3 w-px',
-            'bg-gradient-to-b from-blue-400 via-violet-400 to-teal-400',
-            'dark:from-blue-600/70 dark:via-violet-600/70 dark:to-teal-600/70',
-          )}
+          className="hidden sm:block absolute left-[18px] top-3 bottom-3 w-px bg-[var(--term-border)]"
         />
-        {content.items.map((item) => (
+        {content.items.map((item, idx) => (
           <li key={item.id}>
-            <TimelineCard item={item} />
+            <TimelineCard item={item} index={idx} />
           </li>
         ))}
       </ol>
@@ -38,16 +34,14 @@ export const ChangelogTimeline = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-2xl border px-md py-md',
-          'border-teal-200/80 bg-teal-50/70 text-teal-900',
-          'dark:border-teal-800/60 dark:bg-teal-950/30 dark:text-teal-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
-            'border-teal-300 bg-teal-100 text-teal-700',
-            'dark:border-teal-700/60 dark:bg-teal-950/60 dark:text-teal-200',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <StarIcon className="h-4 w-4" />
@@ -58,10 +52,10 @@ export const ChangelogTimeline = ({ content }: Props) => {
   );
 };
 
-type CardProps = { item: TimelineItem };
+type CardProps = { item: TimelineItem; index: number };
 
-const TimelineCard = ({ item }: CardProps) => {
-  const tone = toneTokens[item.tone];
+const TimelineCard = ({ item, index }: CardProps) => {
+  const tone = accentCycle[index % accentCycle.length];
   return (
     <article
       className={cn(

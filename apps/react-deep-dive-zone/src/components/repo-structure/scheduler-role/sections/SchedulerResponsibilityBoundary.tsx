@@ -31,15 +31,14 @@ export const SchedulerResponsibilityBoundary = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-lg border px-md py-md',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
         <span
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-8 h-8 rounded-md shrink-0',
-            'bg-sky-500 text-white dark:bg-sky-400 dark:text-slate-950',
+            'border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <InfoIcon className="h-4 w-4" />
@@ -58,20 +57,23 @@ type ColumnProps = {
 
 const Column = ({ title, items, iconType }: ColumnProps) => {
   const isCheck = iconType === 'check';
-  const headerTint = isCheck
-    ? 'bg-emerald-50/70 text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100 border-b-emerald-200/70 dark:border-b-emerald-800/60'
-    : 'bg-rose-50/70 text-rose-900 dark:bg-rose-950/30 dark:text-rose-100 border-b-rose-200/70 dark:border-b-rose-800/60';
+  // 긍정(does) = A(amber) / 부정(does NOT) = rose
+  const accentText = isCheck ? 'text-[var(--term-accent)]' : 'text-rose-600 dark:text-rose-300';
 
   return (
     <article className="flex flex-col">
-      <header className={cn('flex items-center gap-sm px-md sm:px-lg py-md border-b', headerTint)}>
+      <header
+        className={cn(
+          'flex items-center gap-sm px-md sm:px-lg py-md border-b',
+          'bg-[var(--term-surface)] border-b-[var(--term-border)] text-[var(--term-fg)]',
+        )}
+      >
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-7 h-7 rounded-md',
-            isCheck
-              ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950'
-              : 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-950',
+            'inline-flex items-center justify-center w-7 h-7 rounded-md border',
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
+            accentText,
           )}
         >
           {isCheck ? <CheckCircleIcon className="h-4 w-4" /> : <XCircleIcon className="h-4 w-4" />}
@@ -86,12 +88,12 @@ const Column = ({ title, items, iconType }: ColumnProps) => {
           >
             {isCheck ? (
               <CheckCircleIcon
-                className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300"
+                className={cn('mt-0.5 h-4 w-4 shrink-0', accentText)}
                 aria-hidden="true"
               />
             ) : (
               <XCircleIcon
-                className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300"
+                className={cn('mt-0.5 h-4 w-4 shrink-0', accentText)}
                 aria-hidden="true"
               />
             )}

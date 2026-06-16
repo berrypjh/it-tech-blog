@@ -45,8 +45,8 @@ export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) 
                 scope="col"
                 className={cn(
                   'w-[40%] px-md py-md border-b border-[var(--term-border)]',
-                  'bg-teal-50/70 dark:bg-teal-950/30',
-                  'text-teal-700 dark:text-teal-200 text-sm font-bold font-mono tracking-tight',
+                  'bg-[var(--term-surface)]',
+                  'text-[var(--term-accent)] text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 <span className="inline-flex items-center gap-1.5">
@@ -58,8 +58,8 @@ export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) 
                 scope="col"
                 className={cn(
                   'w-[40%] px-md py-md border-b border-[var(--term-border)]',
-                  'bg-violet-50/70 dark:bg-violet-950/30',
-                  'text-violet-700 dark:text-violet-200 text-sm font-bold font-mono tracking-tight',
+                  'bg-[var(--term-surface)]',
+                  'text-sky-600 dark:text-sky-300 text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 <span className="inline-flex items-center gap-1.5">
@@ -119,13 +119,13 @@ export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) 
                   label={content.changelogLabel}
                   icon={<BookOpenIcon className="h-3.5 w-3.5" aria-hidden="true" />}
                   text={row.changelog}
-                  toneClass="bg-teal-50/70 dark:bg-teal-950/30 border-teal-200/60 dark:border-teal-800/60 text-teal-800 dark:text-teal-200"
+                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]"
                 />
                 <MobileCell
                   label={content.releasesLabel}
                   icon={<TagIcon className="h-3.5 w-3.5" aria-hidden="true" />}
                   text={row.releases}
-                  toneClass="bg-violet-50/70 dark:bg-violet-950/30 border-violet-200/60 dark:border-violet-800/60 text-violet-800 dark:text-violet-200"
+                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300"
                 />
               </div>
             </li>

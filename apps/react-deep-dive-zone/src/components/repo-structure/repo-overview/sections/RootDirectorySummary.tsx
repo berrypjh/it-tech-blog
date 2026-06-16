@@ -1,11 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneBadge } from '../../../shared/ToneBadge';
-import { ToneCard } from '../../../shared/ToneCard';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
+import { houseToneAt } from '../houseTone';
 import { directoryIconByName, FolderIcon } from '../icons';
 
 type Props = { content: RepoOverviewContent['directory']; sectionId?: string };
@@ -21,23 +18,39 @@ export const RootDirectorySummary = ({ content, sectionId }: Props) => {
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
-        {content.cards.map((card) => {
+        {content.cards.map((card, idx) => {
           const Icon = directoryIconByName[card.icon] ?? FolderIcon;
-          const tone = toneTokens[card.tone];
+          const tone = houseToneAt(idx);
 
           return (
             <li key={card.id}>
-              <ToneCard tone={card.tone}>
+              <article
+                className={cn(
+                  'group flex flex-col gap-md h-full rounded-lg border p-md',
+                  'border-[var(--term-border)] bg-[var(--term-bg)]',
+                  'transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+                  'hover:shadow-[0_2px_0_var(--term-border)]',
+                )}
+              >
                 <header className="flex items-center justify-between gap-sm">
                   <div className="flex items-center gap-sm min-w-0">
-                    <ToneIconBox tone={card.tone} size="sm">
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </ToneIconBox>
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex w-9 h-9 items-center justify-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)]"
+                    >
+                      <Icon className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
+                    </span>
                     <span className={cn('text-md font-bold tracking-tight font-mono', tone.text)}>
                       {card.name}
                     </span>
                   </div>
-                  <ToneBadge tone={card.tone}>{card.priority}</ToneBadge>
+                  <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] font-medium text-[var(--term-muted)]">
+                    <span
+                      aria-hidden="true"
+                      className={cn('inline-block w-1 h-1 rounded-full', tone.marker)}
+                    />
+                    {card.priority}
+                  </span>
                 </header>
 
                 <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
@@ -47,7 +60,7 @@ export const RootDirectorySummary = ({ content, sectionId }: Props) => {
                 <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                   {card.description}
                 </p>
-              </ToneCard>
+              </article>
             </li>
           );
         })}

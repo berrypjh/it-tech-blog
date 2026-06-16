@@ -45,8 +45,8 @@ export const ReactDomComparisonTable = ({ content, sectionId }: Props) => {
                 scope="col"
                 className={cn(
                   'w-[41%] px-md py-md border-b border-[var(--term-border)]',
-                  'bg-blue-50/70 dark:bg-blue-950/30',
-                  'text-blue-700 dark:text-blue-200 text-sm font-bold font-mono tracking-tight',
+                  'bg-[var(--term-surface)]',
+                  'text-[var(--term-accent)] text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 {content.columnLabels.react}
@@ -55,8 +55,8 @@ export const ReactDomComparisonTable = ({ content, sectionId }: Props) => {
                 scope="col"
                 className={cn(
                   'w-[41%] px-md py-md border-b border-[var(--term-border)]',
-                  'bg-emerald-50/70 dark:bg-emerald-950/30',
-                  'text-emerald-700 dark:text-emerald-200 text-sm font-bold font-mono tracking-tight',
+                  'bg-[var(--term-surface)]',
+                  'text-sky-600 dark:text-sky-300 text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 {content.columnLabels.reactDom}
@@ -112,12 +112,12 @@ export const ReactDomComparisonTable = ({ content, sectionId }: Props) => {
                 <MobileCell
                   label={content.columnLabels.react}
                   lines={row.reactValue}
-                  toneClass="bg-blue-50/70 dark:bg-blue-950/30 border-blue-200/60 dark:border-blue-800/60 text-blue-800 dark:text-blue-200"
+                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]"
                 />
                 <MobileCell
                   label={content.columnLabels.reactDom}
                   lines={row.reactDomValue}
-                  toneClass="bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-200/60 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-200"
+                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300"
                 />
               </div>
             </li>

@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, ReconcilerEntryContent } from '../content';
 import { CheckCircleIcon, iconByName, SparklesIcon } from '../icons';
 
@@ -19,45 +18,41 @@ export const ReconcilerVsRenderer = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
-        <CompareCardItem card={content.left} />
+        <CompareCardItem card={content.left} side="left" />
         <Center copy={content.centerCopy} />
-        <CompareCardItem card={content.right} />
+        <CompareCardItem card={content.right} side="right" />
       </div>
     </section>
   );
 };
 
-type ItemProps = { card: CompareCard };
+type ItemProps = { card: CompareCard; side: 'left' | 'right' };
 
-const CompareCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
+const CompareCardItem = ({ card, side }: ItemProps) => {
   const Icon = iconByName[card.icon];
-  const tintClass =
-    card.tone === 'violet'
-      ? 'bg-violet-50/70 dark:bg-violet-950/30'
-      : 'bg-emerald-50/70 dark:bg-emerald-950/30';
+  const textColor =
+    side === 'left' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
+  const dotColor = side === 'left' ? 'bg-[var(--term-accent)]' : 'bg-sky-400 dark:bg-sky-500';
 
   return (
     <article
       className={cn(
         'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tintClass,
-        tone.border,
-        tone.borderHover,
+        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-            tone.chip,
+            'inline-flex items-center justify-center w-10 h-10 rounded-md border bg-[var(--term-surface)] border-[var(--term-border)]',
+            textColor,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', tone.text)}>
+        <h3 className={cn('text-lg font-bold font-mono tracking-tight', textColor)}>
           {card.title}
         </h3>
       </header>
@@ -69,7 +64,7 @@ const CompareCardItem = ({ card }: ItemProps) => {
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
             <CheckCircleIcon
-              className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
+              className={cn('mt-0.5 h-4 w-4 shrink-0', textColor)}
               aria-hidden="true"
             />
             <span>{bullet}</span>
@@ -80,11 +75,11 @@ const CompareCardItem = ({ card }: ItemProps) => {
       <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
         <span
           className={cn(
-            'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-wider',
-            tone.chip,
+            'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-[var(--term-surface)] border-[var(--term-border)]',
+            textColor,
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', tone.dot)} />
+          <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', dotColor)} />
           {card.tag}
         </span>
       </div>

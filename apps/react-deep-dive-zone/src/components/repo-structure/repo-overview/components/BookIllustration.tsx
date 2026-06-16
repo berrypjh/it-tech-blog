@@ -13,8 +13,8 @@ export const BookIllustration = ({ className }: Props) => (
   >
     <defs>
       <linearGradient id="bookGlow" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="rgba(56,189,248,0.45)" />
-        <stop offset="100%" stopColor="rgba(56,189,248,0)" />
+        <stop offset="0%" stopColor="rgba(251,191,36,0.45)" />
+        <stop offset="100%" stopColor="rgba(251,191,36,0)" />
       </linearGradient>
     </defs>
 
@@ -42,12 +42,12 @@ export const BookIllustration = ({ className }: Props) => (
         strokeDasharray="2 3"
       />
       {/* 책장 텍스트 라인 */}
-      <g stroke="rgba(56,189,248,0.55)" strokeWidth="1.6" strokeLinecap="round">
+      <g stroke="rgba(251,191,36,0.55)" strokeWidth="1.6" strokeLinecap="round">
         <line x1="28" y1="58" x2="68" y2="50" />
         <line x1="28" y1="66" x2="62" y2="59" />
         <line x1="28" y1="74" x2="60" y2="68" />
       </g>
-      <g stroke="rgba(16,185,129,0.55)" strokeWidth="1.6" strokeLinecap="round">
+      <g stroke="rgba(251,191,36,0.4)" strokeWidth="1.6" strokeLinecap="round">
         <line x1="92" y1="50" x2="132" y2="58" />
         <line x1="92" y1="59" x2="126" y2="66" />
         <line x1="92" y1="68" x2="122" y2="74" />

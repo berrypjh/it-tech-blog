@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { toneTokens } from '../../../shared/tones';
 import type { ExplorationContent, HeroFlowNode } from '../content';
 import { ArrowRightIcon, iconByName } from '../icons';
+import { houseTone } from '../tone-house';
 
 type Props = { content: ExplorationContent['hero'] };
 
@@ -17,7 +17,7 @@ export const HeroExplorationFlow = ({ content }: Props) => {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(59,130,246,0.10),transparent_30%,transparent_70%,rgba(45,212,191,0.10))]"
+        className="pointer-events-none absolute inset-0 bg-[var(--term-surface)]/40"
       />
 
       <div className="relative flex flex-col gap-md">
@@ -71,7 +71,7 @@ const FlowArrow = () => (
 type NodeProps = { node: HeroFlowNode };
 
 const FlowNode = ({ node }: NodeProps) => {
-  const tone = toneTokens[node.tone];
+  const tone = houseTone(node.tone);
   const Icon = iconByName[node.icon];
 
   return (

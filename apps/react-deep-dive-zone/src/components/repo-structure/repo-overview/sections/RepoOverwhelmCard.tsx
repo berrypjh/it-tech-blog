@@ -1,9 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
 import { ArrowRightIcon, FileTextIcon, FolderIcon, HelpCircleIcon } from '../icons';
+
+/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
+const houseTextByTone: Record<ToneKey, string> = {
+  amber: 'text-[var(--term-accent)]',
+  emerald: 'text-[var(--term-accent)]',
+  teal: 'text-[var(--term-accent)]',
+  sky: 'text-sky-600 dark:text-sky-300',
+  blue: 'text-sky-600 dark:text-sky-300',
+  cyan: 'text-sky-600 dark:text-sky-300',
+  violet: 'text-violet-600 dark:text-violet-300',
+  indigo: 'text-violet-600 dark:text-violet-300',
+};
 
 type Props = { content: RepoOverviewContent['overwhelm'] };
 
@@ -51,8 +63,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
         <div
           className={cn(
             'flex items-center gap-2 border-t border-[var(--term-border)] px-md py-sm',
-            'bg-emerald-50 text-emerald-800 text-xsm font-bold',
-            'dark:bg-emerald-950/40 dark:text-emerald-200',
+            'bg-[var(--term-surface)] text-[var(--term-accent)] text-xsm font-bold',
           )}
         >
           <ArrowRightIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -67,18 +78,18 @@ type FilePillProps = { row: RepoTreeRow };
 
 const FilePill = ({ row }: FilePillProps) => {
   const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
-  const tone = row.tone ? toneTokens[row.tone] : null;
+  const toneText = row.tone ? houseTextByTone[row.tone] : null;
 
   return (
     <span
       className={cn(
         'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xsm font-medium',
-        tone ? tone.chip : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
+        'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
       )}
     >
       <Icon
         aria-hidden="true"
-        className={cn('h-3.5 w-3.5 shrink-0', tone ? '' : 'text-[var(--term-muted)]')}
+        className={cn('h-3.5 w-3.5 shrink-0', toneText ?? 'text-[var(--term-muted)]')}
       />
       {row.name}
     </span>

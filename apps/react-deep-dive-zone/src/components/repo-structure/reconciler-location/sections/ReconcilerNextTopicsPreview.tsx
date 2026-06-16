@@ -5,9 +5,14 @@ import { cn } from '@it-tech-blog/utils';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneBadge } from '../../../shared/ToneBadge';
 import { ToneCard } from '../../../shared/ToneCard';
-import { toneTokens } from '../../../shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
+
+const cycleText = [
+  'text-[var(--term-accent)]',
+  'text-sky-600 dark:text-sky-300',
+  'text-violet-600 dark:text-violet-300',
+];
 
 type Props = { content: ReconcilerEntryContent['preview'] };
 
@@ -27,6 +32,7 @@ export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
           <PreviewCardWithArrow
             key={card.id}
             card={card}
+            index={idx}
             isLast={idx === content.cards.length - 1}
           />
         ))}
@@ -35,11 +41,11 @@ export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
   );
 };
 
-type WithArrowProps = { card: PreviewCard; isLast: boolean };
+type WithArrowProps = { card: PreviewCard; index: number; isLast: boolean };
 
-const PreviewCardWithArrow = ({ card, isLast }: WithArrowProps) => (
+const PreviewCardWithArrow = ({ card, index, isLast }: WithArrowProps) => (
   <>
-    <PreviewCardItem card={card} />
+    <PreviewCardItem card={card} index={index} />
     {!isLast && <PreviewArrow />}
   </>
 );
@@ -51,10 +57,10 @@ const PreviewArrow = () => (
   </div>
 );
 
-type ItemProps = { card: PreviewCard };
+type ItemProps = { card: PreviewCard; index: number };
 
-const PreviewCardItem = ({ card }: ItemProps) => {
-  const tone = toneTokens[card.tone];
+const PreviewCardItem = ({ card, index }: ItemProps) => {
+  const textColor = cycleText[index % cycleText.length];
   return (
     <Link
       href={card.href}
@@ -74,7 +80,7 @@ const PreviewCardItem = ({ card }: ItemProps) => {
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
           {card.description}
         </p>
-        <div className={cn('pt-xs text-xsm font-bold inline-flex items-center gap-1', tone.text)}>
+        <div className={cn('pt-xs text-xsm font-bold inline-flex items-center gap-1', textColor)}>
           <span className="uppercase tracking-wider text-[10px]">explore</span>
           <ArrowRightIcon
             className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
