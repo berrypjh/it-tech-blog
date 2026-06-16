@@ -26,24 +26,24 @@ export const JsxHtmlComparisonTable = ({ content }: Props) => (
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
-            <tr className="bg-sky-50/70 dark:bg-sky-950/30">
+            <tr className="bg-[var(--term-surface)]">
               <th className="px-md py-3 text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)] w-[20%]">
                 {content.columns.label}
               </th>
               <th className="px-md py-3 text-xsm font-bold tracking-tight">
-                <span className="inline-flex items-center gap-1.5 text-teal-700 dark:text-teal-300">
+                <span className="inline-flex items-center gap-1.5 text-[var(--term-accent)]">
                   <span
                     aria-hidden="true"
-                    className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500"
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
                   />
                   {content.columns.jsx}
                 </span>
               </th>
               <th className="px-md py-3 text-xsm font-bold tracking-tight">
-                <span className="inline-flex items-center gap-1.5 text-violet-700 dark:text-violet-300">
+                <span className="inline-flex items-center gap-1.5 text-sky-600 dark:text-sky-300">
                   <span
                     aria-hidden="true"
-                    className="inline-block w-1.5 h-1.5 rounded-full bg-violet-500"
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-sky-400 dark:bg-sky-500"
                   />
                   {content.columns.html}
                 </span>
@@ -65,10 +65,10 @@ export const JsxHtmlComparisonTable = ({ content }: Props) => (
                 >
                   {row.label}
                 </th>
-                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] bg-teal-50/40 dark:bg-teal-950/20 break-keep">
+                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] bg-[var(--term-surface)] break-keep">
                   {row.jsx}
                 </td>
-                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] bg-violet-50/40 dark:bg-violet-950/20 break-keep">
+                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                   {row.html}
                 </td>
               </tr>

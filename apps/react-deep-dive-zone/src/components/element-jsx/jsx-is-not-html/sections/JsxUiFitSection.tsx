@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxIsNotHtmlContent, ValueCard } from '../content';
 import { BracesIcon, EyeIcon, LightbulbIcon, PuzzleIcon, TreeIcon } from '../icons';
+import { accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['uiFit'] };
 
@@ -36,7 +36,6 @@ export const JsxUiFitSection = ({ content }: Props) => (
 );
 
 const ValueCardView = ({ card }: { card: ValueCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -44,20 +43,23 @@ const ValueCardView = ({ card }: { card: ValueCard }) => {
         'group flex flex-1 gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        chromeHover,
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-2xl border',
-          t.chip,
+          'inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-2xl',
+          chromeChip,
+          accentText(card.tone),
         )}
       >
         <Icon className="h-5 w-5" />
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+        <h3 className={cn('text-sm font-bold tracking-tight break-keep', accentText(card.tone))}>
+          {card.title}
+        </h3>
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
       </div>
     </article>

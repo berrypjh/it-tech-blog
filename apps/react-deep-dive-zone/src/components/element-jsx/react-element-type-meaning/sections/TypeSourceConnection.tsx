@@ -31,7 +31,7 @@ export const TypeSourceConnection = ({ content }: Props) => (
           value={
             <span className="flex items-center gap-2">
               <FileTextIcon
-                className="h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+                className="h-4 w-4 shrink-0 text-[var(--term-accent)]"
                 aria-hidden="true"
               />
               <code className="font-mono break-all">{content.fileName}</code>
@@ -53,7 +53,7 @@ export const TypeSourceConnection = ({ content }: Props) => (
             <li key={bullet} className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+                className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0 mt-0.5"
               >
                 <CheckCircleIcon className="h-3.5 w-3.5" />
               </span>

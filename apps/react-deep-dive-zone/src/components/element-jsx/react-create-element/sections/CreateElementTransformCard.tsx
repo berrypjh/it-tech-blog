@@ -6,9 +6,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FieldCallout, ReactCreateElementContent } from '../content';
 import { ArrowRightIcon, SparklesIcon, WandIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['transform'] };
 
@@ -49,9 +49,9 @@ export const CreateElementTransformCard = ({ content }: Props) => {
                 onClick={() => setTab(t.id)}
                 className={cn(
                   'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
                   tab === t.id
-                    ? 'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950'
+                    ? 'border border-transparent bg-slate-900 text-slate-50 dark:border-slate-600 dark:bg-slate-800'
                     : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
                 )}
               >
@@ -73,7 +73,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
             code={content.jsxCode}
             footer={content.jsxFooter}
             language="JSX"
-            accent="sky"
+            accent="b"
           />
           <FlowArrow />
           <FlowStep
@@ -82,7 +82,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
             code={content.expressionCode}
             footer={content.expressionFooter}
             language="JS"
-            accent="violet"
+            accent="c"
           />
           <FlowArrow />
           <FlowResult
@@ -105,17 +105,9 @@ export const CreateElementTransformCard = ({ content }: Props) => {
   );
 };
 
-const accentMap = {
-  sky: {
-    border: 'border-sky-300/70 dark:border-sky-800/60',
-    chip: 'border-sky-300/80 bg-sky-50 text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200',
-    text: 'text-sky-700 dark:text-sky-200',
-  },
-  violet: {
-    border: 'border-violet-300/70 dark:border-violet-800/60',
-    chip: 'border-violet-300/80 bg-violet-50 text-violet-700 dark:border-violet-800/70 dark:bg-violet-950/60 dark:text-violet-200',
-    text: 'text-violet-700 dark:text-violet-200',
-  },
+const accentText = {
+  b: 'text-sky-600 dark:text-sky-300',
+  c: 'text-violet-600 dark:text-violet-300',
 } as const;
 
 const FlowStep = ({
@@ -131,31 +123,27 @@ const FlowStep = ({
   code: string;
   footer: string;
   language: string;
-  accent: keyof typeof accentMap;
-}) => {
-  const a = accentMap[accent];
-  return (
-    <article
+  accent: keyof typeof accentText;
+}) => (
+  <article
+    className={cn(
+      'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
+      'bg-[var(--term-bg)] border-[var(--term-border)]',
+      active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-[var(--term-accent)]' : '',
+    )}
+  >
+    <span
       className={cn(
-        'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
-        'bg-[var(--term-bg)]',
-        a.border,
-        active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-sky-400/60' : '',
+        'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+        accentText[accent],
       )}
     >
-      <span
-        className={cn(
-          'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-          a.chip,
-        )}
-      >
-        {label}
-      </span>
-      <CodePreviewPanel code={code} language={language} />
-      <p className={cn('text-xsm leading-relaxed break-keep', a.text)}>{footer}</p>
-    </article>
-  );
-};
+      {label}
+    </span>
+    <CodePreviewPanel code={code} language={language} />
+    <p className={cn('text-xsm leading-relaxed break-keep', accentText[accent])}>{footer}</p>
+  </article>
+);
 
 const FlowArrow = () => (
   <div className="hidden lg:flex items-center justify-center -mx-2" aria-hidden="true">
@@ -169,11 +157,11 @@ const FlowResult = ({ active, label, code }: { active: boolean; label: string; c
   <article
     className={cn(
       'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
-      'bg-[var(--term-bg)] border-teal-300/70 dark:border-teal-800/60',
-      active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-teal-400/60' : '',
+      'bg-[var(--term-bg)] border-[var(--term-border)]',
+      active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-[var(--term-accent)]' : '',
     )}
   >
-    <span className="inline-flex w-fit items-center rounded-full border border-teal-300/80 bg-teal-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/60 dark:text-teal-200">
+    <span className="inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--term-accent)]">
       {label}
     </span>
     <CodePreviewPanel code={code} language="JS" />
@@ -181,13 +169,12 @@ const FlowResult = ({ active, label, code }: { active: boolean; label: string; c
 );
 
 const CalloutCard = ({ callout }: { callout: FieldCallout }) => {
-  const t = toneTokens[callout.tone];
+  const t = localTone(callout.tone);
   return (
     <article
       className={cn(
         'flex flex-1 flex-col gap-1 rounded-xl border p-md',
-        'bg-[var(--term-bg)]',
-        t.border,
+        'bg-[var(--term-bg)] border-[var(--term-border)]',
       )}
     >
       <span className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>

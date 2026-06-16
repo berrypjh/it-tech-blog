@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { CoreChangeCard, ReactElementRefReact19Content } from '../content';
 import { CheckCircleIcon, ListChecksIcon, UserCheckIcon, WorkflowIcon, ZapIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactElementRefReact19Content['core'] };
 
@@ -35,7 +35,7 @@ export const RefChangeCoreCards = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: CoreChangeCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -49,8 +49,9 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
       <header className="flex items-center justify-between gap-sm">
         <span
           className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
+            'inline-flex items-center justify-center w-9 h-9 rounded-full font-mono text-sm font-bold tabular-nums',
             t.chip,
+            t.text,
           )}
         >
           {card.number}
@@ -58,8 +59,9 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+            'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
             t.chip,
+            t.text,
           )}
         >
           <Icon className="h-5 w-5" />
@@ -74,7 +76,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
           <li key={check} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
               <CheckCircleIcon className="h-3 w-3" />
             </span>

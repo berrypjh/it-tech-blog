@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxIsNotHtmlContent, MisconceptionCard } from '../content';
 import {
   ArrowDownIcon,
@@ -12,6 +11,7 @@ import {
   NetworkIcon,
   XCircleIcon,
 } from '../icons';
+import { accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['misconception'] };
 
@@ -48,13 +48,13 @@ export const MisconceptionCards = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: MisconceptionCard }) => {
   const SideIcon = sideIcon[card.iconName];
-  const iconTone = toneTokens[card.iconTone];
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-muted)]',
+        'transition-all hover:-translate-y-0.5',
+        chromeHover,
       )}
     >
       {/* 헤더: 주제 아이콘 + 오해 라벨 */}
@@ -62,8 +62,9 @@ const CardView = ({ card }: { card: MisconceptionCard }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            iconTone.chip,
+            'inline-flex h-9 w-9 items-center justify-center rounded-xl',
+            chromeChip,
+            accentText(card.iconTone),
           )}
         >
           <SideIcon className="h-[18px] w-[18px]" />
@@ -75,7 +76,7 @@ const CardView = ({ card }: { card: MisconceptionCard }) => {
 
       {/* 오해: 취소선 처리한 잘못된 인식 */}
       <p className="flex items-start gap-2 text-sm font-medium leading-snug break-keep">
-        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
+        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300" />
         <span className="text-[var(--term-muted)] line-through decoration-rose-400/60">
           {card.wrong}
         </span>
@@ -87,7 +88,7 @@ const CardView = ({ card }: { card: MisconceptionCard }) => {
       {/* 정확한 설명 */}
       <div className="flex flex-1 flex-col gap-2">
         <p className="flex items-start gap-2 text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400" />
+          <CheckCircleIcon className={cn('mt-0.5 h-4 w-4 shrink-0', accentText(card.iconTone))} />
           <span>{card.right}</span>
         </p>
         <p className="pl-6 text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

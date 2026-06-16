@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { Misconception, ReactElementKeySeparatedContent } from '../content';
 import {
   ArrowDownIcon,
@@ -11,6 +10,7 @@ import {
   ShuffleIcon,
   XCircleIcon,
 } from '../icons';
+import { toneChip, toneDot } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['misconceptions'] };
 
@@ -45,7 +45,6 @@ export const KeyMisconceptions = ({ content }: Props) => (
 );
 
 const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: string }) => {
-  const t = toneTokens[card.tone];
   const SideIcon = iconMap[card.iconName];
   return (
     <article
@@ -61,7 +60,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
           aria-hidden="true"
           className={cn(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            t.chip,
+            toneChip(card.tone),
           )}
         >
           <SideIcon className="h-[18px] w-[18px]" />
@@ -73,7 +72,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
 
       {/* 오해: 취소선 처리한 잘못된 인식 */}
       <p className="flex items-start gap-2 text-sm font-medium leading-snug break-keep">
-        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
+        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300" />
         <span className="text-[var(--term-muted)] line-through decoration-rose-400/60">
           {card.wrong}
         </span>
@@ -85,7 +84,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
       {/* 정확한 설명 */}
       <div className="flex flex-1 flex-col gap-2">
         <p className="flex items-start gap-2 text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400" />
+          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
           <span>{card.correct}</span>
         </p>
         <ul className="flex flex-col gap-1 pl-6">
@@ -93,7 +92,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
             <li key={bullet} className="flex items-start gap-1.5">
               <span
                 aria-hidden="true"
-                className={cn('mt-1.5 h-1 w-1 shrink-0 rounded-full', t.dot)}
+                className={cn('mt-1.5 h-1 w-1 shrink-0 rounded-full', toneDot(card.tone))}
               />
               <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                 {bullet}

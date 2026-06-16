@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, ToneKey } from '../content';
 import {
   ArrowDownIcon,
@@ -13,6 +12,7 @@ import {
   LayersIcon,
   MapIcon,
 } from '../icons';
+import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['entryMap'] };
 
@@ -124,9 +124,7 @@ const Connector = ({ vertical, dashed }: { vertical?: boolean; dashed?: boolean 
     <span
       className={cn(
         'block w-px h-6',
-        dashed
-          ? 'border-l border-dashed border-[var(--term-border)]'
-          : 'bg-gradient-to-b from-transparent via-[var(--term-border)] to-transparent',
+        dashed ? 'border-l border-dashed border-[var(--term-border)]' : 'bg-[var(--term-border)]',
       )}
     />
     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
@@ -142,33 +140,29 @@ type NodeProps = {
   variant?: 'top' | 'entry';
 };
 
-const DiagramNode = ({ label, icon, tone, variant = 'entry' }: NodeProps) => {
-  const t = toneTokens[tone];
-  return (
-    <div
+const DiagramNode = ({ label, icon, tone, variant = 'entry' }: NodeProps) => (
+  <div
+    className={cn(
+      'inline-flex items-center gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2',
+      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+    )}
+  >
+    <span
+      aria-hidden="true"
+      className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg', toneChip(tone))}
+    >
+      {icon}
+    </span>
+    <span
       className={cn(
-        'inline-flex items-center gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2',
-        'shadow-[0_2px_0_var(--term-border)]',
-        t.border,
+        variant === 'top' ? 'font-mono text-md font-bold' : 'font-mono text-sm font-bold',
+        toneText(tone),
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg border', t.chip)}
-      >
-        {icon}
-      </span>
-      <span
-        className={cn(
-          variant === 'top' ? 'font-mono text-md font-bold' : 'font-mono text-sm font-bold',
-          t.text,
-        )}
-      >
-        {label}
-      </span>
-    </div>
-  );
-};
+      {label}
+    </span>
+  </div>
+);
 
 const RuntimeEntryNode = ({
   label,
@@ -178,26 +172,22 @@ const RuntimeEntryNode = ({
   label: string;
   icon: React.ReactNode;
   tone: ToneKey;
-}) => {
-  const t = toneTokens[tone];
-  return (
-    <div
-      className={cn(
-        'inline-flex items-center gap-2 rounded-xl border-2 bg-[var(--term-bg)] px-md py-2',
-        'shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-      )}
+}) => (
+  <div
+    className={cn(
+      'inline-flex items-center gap-2 rounded-xl border-2 bg-[var(--term-bg)] px-md py-2',
+      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+    )}
+  >
+    <span
+      aria-hidden="true"
+      className={cn('inline-flex items-center justify-center w-9 h-9 rounded-lg', toneChip(tone))}
     >
-      <span
-        aria-hidden="true"
-        className={cn('inline-flex items-center justify-center w-9 h-9 rounded-lg border', t.chip)}
-      >
-        {icon}
-      </span>
-      <span className={cn('font-mono text-sm font-bold', t.text)}>{label}</span>
-    </div>
-  );
-};
+      {icon}
+    </span>
+    <span className={cn('font-mono text-sm font-bold', toneText(tone))}>{label}</span>
+  </div>
+);
 
 const FunctionNode = ({
   label,
@@ -209,53 +199,53 @@ const FunctionNode = ({
   note: string;
   tone: ToneKey;
   icon: React.ReactNode;
-}) => {
-  const t = toneTokens[tone];
-  return (
-    <article
-      className={cn(
-        'flex items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-        'shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-      )}
+}) => (
+  <article
+    className={cn(
+      'flex items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
+      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+    )}
+  >
+    <span
+      aria-hidden="true"
+      className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg', toneChip(tone))}
     >
-      <span
-        aria-hidden="true"
-        className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg border', t.chip)}
-      >
-        {icon}
-      </span>
-      <div className="flex flex-col gap-0.5 min-w-0">
-        <span className={cn('font-mono text-sm font-bold', t.text)}>{label}</span>
-        <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
-      </div>
-    </article>
-  );
-};
+      {icon}
+    </span>
+    <div className="flex flex-col gap-0.5 min-w-0">
+      <span className={cn('font-mono text-sm font-bold', toneText(tone))}>{label}</span>
+      <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
+    </div>
+  </article>
+);
 
 const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
   <div
     className={cn(
       'inline-flex items-center gap-md rounded-2xl border-2 px-md py-3',
-      'border-teal-300/80 bg-teal-50/60 dark:border-teal-700/70 dark:bg-teal-950/30',
-      'shadow-[0_2px_0_var(--term-border)]',
+      'border-[var(--term-accent)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     <span
       aria-hidden="true"
-      className="inline-flex items-center justify-center w-11 h-11 rounded-2xl border border-teal-300/80 bg-teal-100 text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/60 dark:text-teal-200"
+      className={cn(
+        'inline-flex items-center justify-center w-11 h-11 rounded-2xl',
+        toneChip('amber'),
+      )}
     >
       <AtomIcon className="h-6 w-6" />
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
-      <span className="font-mono text-sm sm:text-md font-bold tracking-tight text-teal-700 dark:text-teal-200">
+      <span
+        className={cn('font-mono text-sm sm:text-md font-bold tracking-tight', toneText('amber'))}
+      >
         {label}
       </span>
-      <span className="text-[11px] text-teal-800/80 dark:text-teal-200/80 break-keep">{note}</span>
+      <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
     </div>
     <ArrowRightIcon
       aria-hidden="true"
-      className="hidden sm:block h-4 w-4 text-teal-600 dark:text-teal-300"
+      className={cn('hidden sm:block h-4 w-4', toneText('amber'))}
     />
   </div>
 );

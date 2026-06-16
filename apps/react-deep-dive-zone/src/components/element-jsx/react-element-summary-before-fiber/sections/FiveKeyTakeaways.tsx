@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ReactElementSummaryBeforeFiberContent, SummaryCard } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, LayersIcon, ListChecksIcon, NetworkIcon } from '../icons';
+import { neutralBorderHover, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['summary'] };
 
@@ -37,7 +37,6 @@ export const FiveKeyTakeaways = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: SummaryCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -45,14 +44,14 @@ const CardView = ({ card }: { card: SummaryCard }) => {
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        neutralBorderHover,
       )}
     >
       <header className="flex items-center justify-between">
         <span
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-xsm font-bold tabular-nums',
-            t.chip,
+            toneChip(card.tone),
           )}
         >
           {card.number}
@@ -61,13 +60,15 @@ const CardView = ({ card }: { card: SummaryCard }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
-            t.chip,
+            toneChip(card.tone),
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
       </header>
-      <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+      <h3 className={cn('text-sm font-bold tracking-tight break-keep', toneText(card.tone))}>
+        {card.title}
+      </h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
     </article>
   );

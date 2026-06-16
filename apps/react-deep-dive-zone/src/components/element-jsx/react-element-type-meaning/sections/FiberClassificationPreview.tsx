@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FiberFlowStep, ReactElementTypeMeaningContent } from '../content';
 import {
   ArrowDownIcon,
@@ -11,6 +10,7 @@ import {
   SparklesIcon,
   WorkflowIcon,
 } from '../icons';
+import { toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['fiber'] };
 
@@ -40,18 +40,16 @@ export const FiberClassificationPreview = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-sky-50 via-violet-50 to-teal-50',
-        'dark:from-sky-950/40 dark:via-violet-950/40 dark:to-teal-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.summary}
       </p>
     </div>
@@ -77,7 +75,6 @@ const ItemWithArrow = ({ step, last }: { step: FiberFlowStep; last: boolean }) =
 );
 
 const FlowCard = ({ step }: { step: FiberFlowStep }) => {
-  const t = toneTokens[step.tone];
   const Icon = iconMap[step.iconName];
   return (
     <article
@@ -85,14 +82,14 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center justify-between">
         <span
           className={cn(
-            'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            t.chip,
+            'inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneChip(step.tone),
           )}
         >
           <span className="font-mono tabular-nums">step {step.number}</span>
@@ -100,8 +97,8 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
-            t.chip,
+            'inline-flex items-center justify-center w-11 h-11 rounded-2xl',
+            toneChip(step.tone),
           )}
         >
           <Icon className="h-5 w-5" />
@@ -110,7 +107,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
       <h3
         className={cn(
           'font-mono text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
-          t.text,
+          toneText(step.tone),
         )}
       >
         {step.title}
@@ -123,8 +120,8 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
             <li key={chip}>
               <span
                 className={cn(
-                  'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold',
-                  t.chip,
+                  'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-mono font-bold',
+                  toneChip(step.tone),
                 )}
               >
                 {chip}

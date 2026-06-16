@@ -2,10 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, NetworkIcon } from '../icons';
+import { toneChip, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['hero']; className?: string };
 
@@ -39,7 +38,6 @@ export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FlowBox = ({ item }: { item: HeroFlowItem }) => {
-  const tone = toneTokens[item.tone];
   const Icon = iconMap[item.iconName];
 
   return (
@@ -48,8 +46,8 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
         'flex w-full min-w-0 items-start gap-sm rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         item.highlighted
-          ? cn(tone.chip, tone.border, '@sm:shadow-[0_3px_0_var(--term-border)]')
-          : cn('border-[var(--term-border)]', tone.borderHover),
+          ? cn(toneChip(item.tone), '@sm:shadow-[0_3px_0_var(--term-border)]')
+          : cn('border-[var(--term-border)]', 'hover:border-[var(--term-accent)]'),
       )}
     >
       <ToneIconBox tone={item.tone} size="md">
@@ -58,7 +56,10 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
       <div className="flex min-w-0 flex-col gap-1">
         <span className="flex min-w-0 items-center gap-2">
           <span
-            className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', tone.text)}
+            className={cn(
+              'min-w-0 truncate font-mono text-sm font-bold tracking-tight',
+              toneText(item.tone),
+            )}
           >
             {item.title}
           </span>

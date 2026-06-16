@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxTransformFlowContent, ReasonCard } from '../content';
 import { FileTextIcon, GaugeIcon, LinkIcon, ZapIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: JsxTransformFlowContent['react19'] };
 
@@ -28,11 +28,13 @@ export const React19TransformReasons = ({ content }: Props) => (
       <span
         className={cn(
           'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider',
-          'border-sky-300/80 bg-sky-50 text-sky-700',
-          'dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200',
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
-        <span aria-hidden="true" className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" />
+        <span
+          aria-hidden="true"
+          className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
+        />
         {content.smallBadge}
       </span>
     </div>
@@ -48,7 +50,7 @@ export const React19TransformReasons = ({ content }: Props) => (
 );
 
 const ReasonCardView = ({ card }: { card: ReasonCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -62,8 +64,9 @@ const ReasonCardView = ({ card }: { card: ReasonCard }) => {
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+          'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
           t.chip,
+          t.text,
         )}
       >
         <Icon className="h-5 w-5" />

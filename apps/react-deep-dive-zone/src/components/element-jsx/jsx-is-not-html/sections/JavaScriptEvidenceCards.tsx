@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { EvidenceCard, JsxIsNotHtmlContent } from '../content';
 import { Code2Icon } from '../icons';
+import { accentDot, accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['evidence'] };
 
@@ -34,14 +34,13 @@ export const JavaScriptEvidenceCards = ({ content }: Props) => (
 );
 
 const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
-  const t = toneTokens[card.tone];
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        chromeHover,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -50,8 +49,9 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
         </h3>
         <span
           className={cn(
-            'shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            t.chip,
+            'shrink-0 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            chromeChip,
+            accentText(card.tone),
           )}
         >
           JS
@@ -60,16 +60,13 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
 
       <CodePreviewPanel code={card.code} language="JS" />
 
-      <div
-        className={cn(
-          'flex items-start gap-sm rounded-lg border px-md py-2.5 mt-auto',
-          t.chip,
-          'border-opacity-80',
-        )}
-      >
+      <div className={cn('flex items-start gap-sm rounded-lg px-md py-2.5 mt-auto', chromeChip)}>
         <span
           aria-hidden="true"
-          className={cn('inline-block w-1.5 h-1.5 rounded-full mt-2 shrink-0', t.dot)}
+          className={cn(
+            'inline-block w-1.5 h-1.5 rounded-full mt-2 shrink-0',
+            accentDot(card.tone),
+          )}
         />
         <p className="text-xsm leading-relaxed break-keep">{card.description}</p>
       </div>

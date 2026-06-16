@@ -3,10 +3,9 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
 import { BracesIcon, EyeIcon } from '../icons';
+import { accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['hero']; className?: string };
 
@@ -46,7 +45,6 @@ export const JsxHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = card.iconName === 'eye' ? EyeIcon : BracesIcon;
   return (
     <article
@@ -54,17 +52,25 @@ const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        chromeHover,
       )}
     >
-      <ToneIconBox tone={card.tone} size="md">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex h-11 w-11 items-center justify-center rounded-md',
+          chromeChip,
+          accentText(card.tone),
+        )}
+      >
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
-      </ToneIconBox>
+      </span>
       <div className="flex min-w-0 flex-col gap-1">
         <span
           className={cn(
-            'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            t.chip,
+            'inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            chromeChip,
+            accentText(card.tone),
           )}
         >
           {card.label}

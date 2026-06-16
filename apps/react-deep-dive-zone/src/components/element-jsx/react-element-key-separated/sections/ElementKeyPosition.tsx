@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ElementCallout, ReactElementKeySeparatedContent } from '../content';
 import { NetworkIcon, SparklesIcon } from '../icons';
+import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['position'] };
 
@@ -42,18 +42,16 @@ export const ElementKeyPosition = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-sky-50 via-cyan-50 to-violet-50',
-        'dark:from-sky-950/40 dark:via-cyan-950/40 dark:to-violet-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-accent)] break-keep">
         {content.emphasis}
       </p>
     </div>
@@ -61,19 +59,18 @@ export const ElementKeyPosition = ({ content }: Props) => (
 );
 
 const CalloutCard = ({ callout }: { callout: ElementCallout }) => {
-  const t = toneTokens[callout.tone];
   return (
     <article
       className={cn(
         'flex items-start gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        t.border,
+        'border-[var(--term-border)]',
       )}
     >
       <span
         className={cn(
           'inline-flex items-center justify-center rounded-md border px-2 py-1 text-xsm font-mono font-bold tracking-tight shrink-0',
-          t.chip,
+          toneChip(callout.tone),
         )}
       >
         {callout.label}

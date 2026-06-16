@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, SeparationCard } from '../content';
 import { ArrowRightLeftIcon, CheckCircleIcon, FileTextIcon, KeyIcon } from '../icons';
+import { toneBorderHover, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['separation'] };
 
@@ -58,7 +58,6 @@ export const KeyPropsSeparation = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: SeparationCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -66,7 +65,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        toneBorderHover(),
       )}
     >
       <header className="flex items-center gap-sm">
@@ -74,13 +73,13 @@ const CardView = ({ card }: { card: SeparationCard }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
-            t.chip,
+            toneChip(card.tone),
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col gap-0.5 min-w-0">
-          <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>
+          <code className={cn('font-mono text-md font-bold tracking-tight', toneText(card.tone))}>
             {card.title}
           </code>
           <span className="text-[11px] text-[var(--term-muted)] font-mono">{card.short}</span>
@@ -94,7 +93,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
           <li key={check} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+              className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
               <CheckCircleIcon className="h-3 w-3" />
             </span>

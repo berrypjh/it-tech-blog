@@ -1,7 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ReactCreateElementContent, RelationCard } from '../content';
 import {
   ArrowDownIcon,
@@ -11,6 +10,7 @@ import {
   LinkIcon,
   TargetIcon,
 } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['relation'] };
 
@@ -48,30 +48,28 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
     <article
       className={cn(
         'flex items-center justify-center gap-md rounded-2xl border-2 p-md',
-        'border-teal-300/80 bg-teal-50/60 dark:border-teal-700/70 dark:bg-teal-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-teal-300/80 bg-teal-100 text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/60 dark:text-teal-200 shrink-0"
+        className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
         <AtomIcon className="h-6 w-6" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <span className="font-mono text-md sm:text-lg font-bold tracking-tight text-teal-700 dark:text-teal-200">
+        <span className="font-mono text-md sm:text-lg font-bold tracking-tight text-[var(--term-accent)]">
           {content.resultLabel}
         </span>
-        <span className="text-xsm text-teal-800/80 dark:text-teal-200/80 break-keep">
-          {content.resultNote}
-        </span>
+        <span className="text-xsm text-[var(--term-muted)] break-keep">{content.resultNote}</span>
       </div>
     </article>
   </section>
 );
 
 const RelationCardView = ({ card }: { card: RelationCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -85,8 +83,9 @@ const RelationCardView = ({ card }: { card: RelationCard }) => {
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+          'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
           t.chip,
+          t.text,
         )}
       >
         <Icon className="h-5 w-5" />

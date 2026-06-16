@@ -52,8 +52,7 @@ export const KeySourceCheckpoint = ({ content }: Props) => (
         <div
           className={cn(
             'mt-auto flex items-start gap-2 rounded-lg border p-3',
-            'border-sky-200/80 bg-sky-50/70 text-sky-900',
-            'dark:border-sky-800/60 dark:bg-sky-950/30 dark:text-sky-100',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           )}
         >
           <HelpCircleIcon
@@ -61,7 +60,7 @@ export const KeySourceCheckpoint = ({ content }: Props) => (
             aria-hidden="true"
           />
           <div className="flex flex-col gap-0.5">
-            <span className="text-[10px] uppercase tracking-wider font-bold">
+            <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
               {content.questionLabel}
             </span>
             <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">

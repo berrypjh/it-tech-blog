@@ -3,10 +3,9 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { JsxTransformFlowContent } from '../content';
+import type { JsxTransformFlowContent, ToneKey } from '../content';
 import { AtomIcon, CodeIcon, SettingsIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: JsxTransformFlowContent['hero']; className?: string };
 
@@ -78,12 +77,15 @@ const StepHeader = ({
   label: string;
   icon: React.ReactNode;
 }) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   return (
     <div className="flex items-center gap-sm">
-      <ToneIconBox tone={tone} size="sm">
+      <span
+        aria-hidden="true"
+        className={cn('inline-flex h-9 w-9 items-center justify-center rounded-md', t.chip, t.text)}
+      >
         {icon}
-      </ToneIconBox>
+      </span>
       <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"

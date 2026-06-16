@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
 import { BugIcon, CheckCircleIcon, GaugeIcon, SparklesIcon } from '../icons';
+import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['modes'] };
 
@@ -35,15 +35,13 @@ export const RuntimeModeComparison = ({ content }: Props) => (
 );
 
 const ModeCardView = ({ card }: { card: ModeCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
       className={cn(
         'group flex min-w-0 flex-1 flex-col sm:flex-row gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'border-[var(--term-border)] transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
       )}
     >
       <div className="flex flex-col gap-md min-w-0 flex-1">
@@ -51,13 +49,18 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
           <span
             aria-hidden="true"
             className={cn(
-              'inline-flex items-center justify-center w-14 h-14 rounded-full border',
-              t.chip,
+              'inline-flex items-center justify-center w-14 h-14 rounded-full',
+              toneChip(card.tone),
             )}
           >
             <Icon className="h-6 w-6" />
           </span>
-          <h3 className={cn('font-mono text-md font-bold tracking-tight break-keep', t.text)}>
+          <h3
+            className={cn(
+              'font-mono text-md font-bold tracking-tight break-keep',
+              toneText(card.tone),
+            )}
+          >
             {card.title}
           </h3>
         </header>
@@ -66,7 +69,10 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
             <li key={check.id} className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+                className={cn(
+                  'inline-flex items-center justify-center w-5 h-5 rounded-full shrink-0 mt-0.5',
+                  toneChip(card.tone),
+                )}
               >
                 <CheckCircleIcon className="h-3.5 w-3.5" />
               </span>

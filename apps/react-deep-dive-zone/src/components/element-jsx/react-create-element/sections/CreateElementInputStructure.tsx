@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReactCreateElementContent } from '../content';
 import { BoxIcon, Code2Icon, FunctionSquareIcon, SlidersIcon, UsersIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['input'] };
 
@@ -28,18 +28,17 @@ export const CreateElementInputStructure = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-center gap-md rounded-2xl border-2 px-md py-4 sm:py-5',
-        'border-sky-300/80 bg-sky-50/60',
-        'dark:border-sky-700/70 dark:bg-sky-950/30',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-11 h-11 rounded-2xl border border-sky-300/80 bg-sky-100 text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200 shrink-0"
+        className="inline-flex items-center justify-center w-11 h-11 rounded-2xl border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
         <Code2Icon className="h-5 w-5" />
       </span>
-      <code className="font-mono text-md sm:text-lg lg:text-xl font-bold tracking-tight text-sky-900 dark:text-sky-100 break-all">
+      <code className="font-mono text-md sm:text-lg lg:text-xl font-bold tracking-tight text-[var(--term-fg)] break-all">
         {content.signature}
       </code>
     </div>
@@ -55,7 +54,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
 );
 
 const InputPartCard = ({ card }: { card: InputCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -69,8 +68,9 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
       <header className="flex items-center justify-between gap-sm">
         <span
           className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-full border font-mono text-xsm font-bold tabular-nums',
+            'inline-flex items-center justify-center w-8 h-8 rounded-full font-mono text-xsm font-bold tabular-nums',
             t.chip,
+            t.text,
           )}
         >
           {card.number}
@@ -78,8 +78,9 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+            'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
             t.chip,
+            t.text,
           )}
         >
           <Icon className="h-5 w-5" />

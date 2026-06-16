@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FinalFlowStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowDownIcon, MapIcon, StarIcon } from '../icons';
+import { neutralBorder, neutralBorderHover, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['finalFlow'] };
 
@@ -37,22 +37,24 @@ export const FinalFlowDiagram = ({ content }: Props) => (
 );
 
 const StepCard = ({ step }: { step: FinalFlowStep }) => {
-  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
         'group flex flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         step.highlighted
-          ? cn('ring-2 ring-sky-400/60 ring-offset-2 ring-offset-[var(--term-bg)]', t.border)
-          : cn('border-[var(--term-border)]', t.borderHover),
+          ? cn(
+              'ring-2 ring-[var(--term-accent)]/60 ring-offset-2 ring-offset-[var(--term-bg)]',
+              neutralBorder,
+            )
+          : cn(neutralBorder, neutralBorderHover),
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <span
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
-            t.chip,
+            toneChip(step.tone),
           )}
         >
           {step.number}
@@ -67,7 +69,9 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
           </span>
         )}
       </header>
-      <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <h3
+        className={cn('font-mono text-sm font-bold tracking-tight break-keep', toneText(step.tone))}
+      >
         {step.title}
       </h3>
       {step.code && <CodePreviewPanel code={step.code} language="JS" />}

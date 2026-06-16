@@ -54,16 +54,14 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
 
 const variantClass = {
   legacy: {
-    badge:
-      'border-slate-300/80 bg-slate-100 text-slate-700 dark:border-slate-700/70 dark:bg-slate-900/60 dark:text-slate-200',
-    border: 'border-slate-300/70 dark:border-slate-700/70',
-    head: 'text-slate-700 dark:text-slate-200',
+    badge: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
+    border: 'border-[var(--term-border)]',
+    head: 'text-[var(--term-fg)]',
   },
   modern: {
-    badge:
-      'border-teal-300/80 bg-teal-50 text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/60 dark:text-teal-200',
-    border: 'border-teal-300/70 dark:border-teal-700/70',
-    head: 'text-teal-700 dark:text-teal-200',
+    badge: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
+    border: 'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+    head: 'text-[var(--term-accent)]',
   },
 } as const;
 

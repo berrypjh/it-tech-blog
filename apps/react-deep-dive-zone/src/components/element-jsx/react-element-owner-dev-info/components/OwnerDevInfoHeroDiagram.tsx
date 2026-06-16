@@ -2,10 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { ToneKey } from '../../../shared/tones';
 import type { FieldChip, ReactElementOwnerDevInfoContent } from '../content';
 import { BugIcon, CodeIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['hero']; className?: string };
 
@@ -65,12 +65,15 @@ const StepHeader = ({
   label: string;
   icon: React.ReactNode;
 }) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   return (
     <div className="flex items-center gap-sm">
-      <ToneIconBox tone={tone} size="sm">
+      <span
+        aria-hidden="true"
+        className={cn('inline-flex items-center justify-center w-9 h-9 rounded-md border', t.chip)}
+      >
         {icon}
-      </ToneIconBox>
+      </span>
       <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"
@@ -81,7 +84,7 @@ const StepHeader = ({
 };
 
 const FieldChips = ({ fields, tone }: { fields: FieldChip[]; tone: ToneKey }) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   return (
     <ul className="flex flex-wrap gap-1.5">
       {fields.map((field) => (

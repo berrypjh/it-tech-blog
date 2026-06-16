@@ -2,7 +2,6 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FreezeCard, ReactElementOwnerDevInfoContent } from '../content';
 import { LockIcon, ShieldCheckIcon, UnlockIcon } from '../icons';
 
@@ -12,6 +11,18 @@ const iconMap = {
   unlock: UnlockIcon,
   lock: LockIcon,
 } as const;
+
+/** mutable=위험(부정, rose), frozen=안전(긍정, accent). 2-side 의미를 소프트화해 유지한다. */
+const cardTone = (id: FreezeCard['id']) =>
+  id === 'mutable'
+    ? {
+        text: 'text-rose-600 dark:text-rose-300',
+        chip: 'bg-[var(--term-surface)] text-rose-600 dark:text-rose-300 border-[var(--term-border)]',
+      }
+    : {
+        text: 'text-[var(--term-accent)]',
+        chip: 'bg-[var(--term-surface)] text-[var(--term-accent)] border-[var(--term-border)]',
+      };
 
 export const ObjectFreezeSection = ({ content }: Props) => (
   <section aria-labelledby="heading-freeze" className="space-y-md scroll-mt-xl">
@@ -35,18 +46,16 @@ export const ObjectFreezeSection = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-teal-50 via-cyan-50 to-sky-50',
-        'dark:from-teal-950/40 dark:via-cyan-950/40 dark:to-sky-950/40',
-        'border border-teal-200/70 dark:border-teal-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-teal-500/15 text-teal-700 dark:text-teal-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
         <ShieldCheckIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-teal-900 dark:text-teal-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.emphasis}
       </p>
     </div>
@@ -54,7 +63,7 @@ export const ObjectFreezeSection = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: FreezeCard }) => {
-  const t = toneTokens[card.tone];
+  const t = cardTone(card.id);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -62,7 +71,7 @@ const CardView = ({ card }: { card: FreezeCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">

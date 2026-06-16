@@ -27,7 +27,7 @@ export const TransformComparison = ({ content }: Props) => (
       )}
     >
       <div className="flex items-center gap-sm min-w-0">
-        <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:border-sky-800/70 dark:bg-sky-950/60 dark:text-sky-200">
+        <span className="inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-300">
           {content.sampleLabel}
         </span>
         <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.sampleTitle}</h3>
@@ -71,21 +71,21 @@ export const TransformComparison = ({ content }: Props) => (
     <div
       className={cn(
         'flex flex-col sm:flex-row gap-md items-stretch sm:items-center',
-        'rounded-2xl border-2 bg-emerald-50/60 p-md',
-        'border-emerald-200 dark:border-emerald-800/70 dark:bg-emerald-950/30',
+        'rounded-2xl border bg-[var(--term-surface)] p-md',
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0"
+        className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
         <CheckCircleIcon className="h-7 w-7" />
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <span className="inline-flex w-fit items-center rounded-full border border-emerald-300/80 bg-emerald-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:border-emerald-800/70 dark:bg-emerald-950/60 dark:text-emerald-300">
+        <span className="inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--term-accent)]">
           {content.sameResultTitle}
         </span>
-        <p className="text-sm font-bold leading-snug text-emerald-900 dark:text-emerald-100 break-keep">
+        <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
           {content.sameResultBody}
         </p>
       </div>
@@ -95,15 +95,13 @@ export const TransformComparison = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-teal-50 via-sky-50 to-violet-50',
-        'dark:from-teal-950/40 dark:via-sky-950/40 dark:to-violet-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0">
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.banner}
       </p>
     </div>
@@ -112,16 +110,18 @@ export const TransformComparison = ({ content }: Props) => (
 
 type CardVariant = 'old' | 'modern';
 
-const variantClass: Record<CardVariant, { chip: string; border: string; head: string }> = {
+const chrome = 'border border-[var(--term-border)] bg-[var(--term-surface)]';
+
+const variantClass: Record<CardVariant, { chip: string; head: string; check: string }> = {
   old: {
-    chip: 'border-slate-300/80 bg-slate-100 text-slate-700 dark:border-slate-700/70 dark:bg-slate-900/60 dark:text-slate-200',
-    border: 'border-slate-300/70 dark:border-slate-700/70',
-    head: 'text-slate-700 dark:text-slate-200',
+    chip: cn(chrome, 'text-[var(--term-muted)]'),
+    head: 'text-[var(--term-fg)]',
+    check: 'text-[var(--term-accent)]',
   },
   modern: {
-    chip: 'border-violet-300/80 bg-violet-100 text-violet-700 dark:border-violet-800/70 dark:bg-violet-950/60 dark:text-violet-200',
-    border: 'border-violet-300/70 dark:border-violet-700/70',
-    head: 'text-violet-700 dark:text-violet-200',
+    chip: cn(chrome, 'text-violet-600 dark:text-violet-300'),
+    head: 'text-violet-600 dark:text-violet-300',
+    check: 'text-violet-600 dark:text-violet-300',
   },
 };
 
@@ -143,15 +143,14 @@ const TransformCard = ({
     <article
       className={cn(
         'group flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
-        'shadow-[0_2px_0_var(--term-border)]',
-        v.border,
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <h3 className={cn('text-md font-bold tracking-tight', v.head)}>{title}</h3>
         <span
           className={cn(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider tabular-nums',
+            'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider tabular-nums',
             v.chip,
           )}
         >
@@ -166,7 +165,11 @@ const TransformCard = ({
           <li key={check.id} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+              className={cn(
+                'inline-flex items-center justify-center w-5 h-5 rounded-full shrink-0 mt-0.5',
+                'bg-[var(--term-surface)] border border-[var(--term-border)]',
+                v.check,
+              )}
             >
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>

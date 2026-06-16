@@ -3,10 +3,9 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { ReactCreateElementContent } from '../content';
+import type { ReactCreateElementContent, ToneKey } from '../content';
 import { AtomIcon, BracesIcon, FunctionSquareIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['hero']; className?: string };
 
@@ -51,6 +50,31 @@ export const CreateElementHeroDiagram = ({ content, className }: Props) => {
   );
 };
 
+const IconBox = ({
+  tone,
+  size = 'md',
+  children,
+}: {
+  tone: ToneKey;
+  size?: 'sm' | 'md';
+  children: React.ReactNode;
+}) => {
+  const t = localTone(tone);
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'inline-flex items-center justify-center rounded-md',
+        size === 'sm' ? 'w-9 h-9' : 'w-11 h-11',
+        t.chip,
+        t.text,
+      )}
+    >
+      {children}
+    </span>
+  );
+};
+
 const StepHeader = ({
   tone,
   label,
@@ -60,12 +84,12 @@ const StepHeader = ({
   label: string;
   icon: React.ReactNode;
 }) => {
-  const t = toneTokens[tone];
+  const t = localTone(tone);
   return (
     <div className="flex items-center gap-sm">
-      <ToneIconBox tone={tone} size="sm">
+      <IconBox tone={tone} size="sm">
         {icon}
-      </ToneIconBox>
+      </IconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"
@@ -75,23 +99,24 @@ const StepHeader = ({
   );
 };
 
-const ResultCard = ({ title, body }: { title: string; body: string }) => (
-  <article
-    className={cn(
-      'flex items-center gap-md rounded-xl border bg-[var(--term-bg)] p-md',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      'transition-all hover:-translate-y-0.5',
-      toneTokens.teal.borderHover,
-    )}
-  >
-    <ToneIconBox tone="teal" size="md">
-      <AtomIcon className="h-[18px] w-[18px]" aria-hidden="true" />
-    </ToneIconBox>
-    <div className="flex min-w-0 flex-col gap-1">
-      <h3 className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.teal.text)}>
-        {title}
-      </h3>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>
-    </div>
-  </article>
-);
+const ResultCard = ({ title, body }: { title: string; body: string }) => {
+  const t = localTone('teal');
+  return (
+    <article
+      className={cn(
+        'flex items-center gap-md rounded-xl border bg-[var(--term-bg)] p-md',
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+        'transition-all hover:-translate-y-0.5',
+        t.borderHover,
+      )}
+    >
+      <IconBox tone="teal" size="md">
+        <AtomIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      </IconBox>
+      <div className="flex min-w-0 flex-col gap-1">
+        <h3 className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</h3>
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>
+      </div>
+    </article>
+  );
+};

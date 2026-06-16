@@ -2,10 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { DiagramItem, ReactElementKeySeparatedContent } from '../content';
 import { CheckCircleIcon, KeyIcon, NetworkIcon } from '../icons';
+import { toneBorderHover, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['hero']; className?: string };
 
@@ -43,7 +42,7 @@ const StepHeader = ({ label }: { label: string }) => (
     <ToneIconBox tone="sky" size="sm">
       <NetworkIcon className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.sky.text)}>
+    <span className={cn('font-mono text-sm font-bold tracking-tight', toneText('sky'))}>
       {label}
     </span>
     <span
@@ -69,14 +68,13 @@ const ListRow = ({ label, items }: { label: string; items: DiagramItem[] }) => (
 );
 
 const ItemCard = ({ item }: { item: DiagramItem }) => {
-  const t = toneTokens[item.tone];
   return (
     <article
       className={cn(
         'flex flex-1 items-center gap-2 rounded-xl border p-sm',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
-        t.borderHover,
+        toneBorderHover(),
       )}
     >
       <ToneIconBox tone={item.tone} size="sm">
@@ -87,7 +85,12 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
           <KeyIcon className="h-3 w-3" aria-hidden="true" />
           key
         </span>
-        <code className={cn('font-mono text-[11px] font-bold tracking-tight break-all', t.text)}>
+        <code
+          className={cn(
+            'font-mono text-[11px] font-bold tracking-tight break-all',
+            toneText(item.tone),
+          )}
+        >
           {item.keyText}
         </code>
       </div>
@@ -99,14 +102,13 @@ const ResultNote = ({ text }: { text: string }) => (
   <article
     className={cn(
       'flex items-start gap-sm rounded-xl border p-md',
-      'border-teal-200/80 bg-teal-50/60 shadow-[0_2px_0_var(--term-border)]',
-      'dark:border-teal-800/70 dark:bg-teal-950/30',
+      'border-[var(--term-border)] bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
     )}
   >
-    <ToneIconBox tone="teal" size="md">
+    <ToneIconBox tone="amber" size="md">
       <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
     </ToneIconBox>
-    <p className="text-xsm sm:text-sm font-bold leading-snug text-teal-900 dark:text-teal-100 break-keep">
+    <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-accent)] break-keep">
       {text}
     </p>
   </article>

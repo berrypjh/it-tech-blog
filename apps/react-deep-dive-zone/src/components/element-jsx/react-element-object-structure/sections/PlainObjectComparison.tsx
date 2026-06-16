@@ -26,12 +26,12 @@ export const PlainObjectComparison = ({ content }: Props) => (
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
-            <tr className="bg-sky-50/70 dark:bg-sky-950/30">
+            <tr className="bg-[var(--term-surface)]">
               <th className="px-md py-3 text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)] w-[22%]">
                 {content.headers.aspect}
               </th>
               <th className="px-md py-3 text-xsm font-bold tracking-tight">
-                <span className="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-mono">
+                <span className="inline-flex items-center gap-1.5 text-[var(--term-muted)] font-mono">
                   <span
                     aria-hidden="true"
                     className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400"
@@ -40,10 +40,10 @@ export const PlainObjectComparison = ({ content }: Props) => (
                 </span>
               </th>
               <th className="px-md py-3 text-xsm font-bold tracking-tight">
-                <span className="inline-flex items-center gap-1.5 text-sky-700 dark:text-sky-300 font-mono">
+                <span className="inline-flex items-center gap-1.5 text-[var(--term-accent)] font-mono">
                   <span
                     aria-hidden="true"
-                    className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500"
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
                   />
                   {content.headers.element}
                 </span>
@@ -65,10 +65,10 @@ export const PlainObjectComparison = ({ content }: Props) => (
                 >
                   {row.label}
                 </th>
-                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] break-keep bg-slate-50/40 dark:bg-slate-900/30">
+                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                   {row.plain}
                 </td>
-                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] break-keep bg-sky-50/40 dark:bg-sky-950/20">
+                <td className="px-md py-3 text-xsm leading-relaxed text-[var(--term-fg)] break-keep bg-[var(--term-surface)]">
                   {row.element}
                 </td>
               </tr>
@@ -81,18 +81,16 @@ export const PlainObjectComparison = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-sky-50 via-cyan-50 to-violet-50',
-        'dark:from-sky-950/40 dark:via-cyan-950/40 dark:to-violet-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.emphasis}
       </p>
     </div>

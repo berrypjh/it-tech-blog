@@ -26,7 +26,7 @@ export const IsValidElementTable = ({ content }: Props) => (
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
-            <tr className="bg-sky-50/70 dark:bg-sky-950/30">
+            <tr className="bg-[var(--term-surface)]">
               <th className="px-md py-3 text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)] w-[18%]">
                 {content.headers.input}
               </th>
@@ -87,8 +87,7 @@ const Row = ({
         <span
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider',
-            'border-emerald-300/80 bg-emerald-100 text-emerald-700',
-            'dark:border-emerald-800/70 dark:bg-emerald-950/60 dark:text-emerald-300',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
           <CheckCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />
@@ -98,8 +97,7 @@ const Row = ({
         <span
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider',
-            'border-rose-300/80 bg-rose-100 text-rose-700',
-            'dark:border-rose-800/70 dark:bg-rose-950/60 dark:text-rose-300',
+            'border-[var(--term-border)] bg-[var(--term-surface)] text-rose-600 dark:text-rose-300',
           )}
         >
           <XCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />

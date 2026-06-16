@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ExampleCard, JsxRuntimeFunctionsContent } from '../content';
 import { ArrowDownIcon, WorkflowIcon } from '../icons';
+import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['examples'] };
 
@@ -30,14 +30,12 @@ export const RuntimeExampleCards = ({ content }: Props) => (
 );
 
 const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel: string }) => {
-  const t = toneTokens[card.tone];
   return (
     <article
       className={cn(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'border-[var(--term-border)] transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -45,8 +43,8 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
         {card.badge && (
           <span
             className={cn(
-              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              t.chip,
+              'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneChip(card.tone),
             )}
           >
             {card.badge}
@@ -64,12 +62,16 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
 
       <div
         className={cn(
-          'flex items-center justify-between gap-sm rounded-xl border px-md py-2.5 mt-auto',
-          t.chip,
+          'flex items-center justify-between gap-sm rounded-xl px-md py-2.5 mt-auto',
+          toneChip(card.tone),
         )}
       >
-        <span className="text-[10px] uppercase tracking-wider font-bold">{resultLabel}</span>
-        <span className={cn('font-mono text-md font-bold', t.text)}>{card.resultRuntime}</span>
+        <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
+          {resultLabel}
+        </span>
+        <span className={cn('font-mono text-md font-bold', toneText(card.tone))}>
+          {card.resultRuntime}
+        </span>
       </div>
     </article>
   );

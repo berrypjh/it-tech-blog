@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, RenderedItem } from '../content';
 import { ListChecksIcon } from '../icons';
+import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['list'] };
 
@@ -66,13 +66,11 @@ export const ListKeyScene = ({ content }: Props) => (
 );
 
 const ItemRow = ({ item }: { item: RenderedItem }) => {
-  const t = toneTokens[item.tone];
   return (
     <article
       className={cn(
         'flex items-center justify-between gap-md rounded-xl border p-sm',
-        'bg-[var(--term-bg)]',
-        t.border,
+        'bg-[var(--term-bg)] border-[var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm min-w-0">
@@ -80,7 +78,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-8 h-8 rounded-md border font-mono text-[11px] font-bold tabular-nums',
-            t.chip,
+            toneChip(item.tone),
           )}
         >
           {item.id}
@@ -94,7 +92,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
         <span
           className={cn(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
-            t.chip,
+            toneChip(item.tone),
           )}
         >
           {item.keyText}

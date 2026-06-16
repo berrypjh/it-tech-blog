@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { FieldCard, ReactElementObjectStructureContent } from '../content';
 import { BoxIcon, FingerprintIcon, KeyIcon, ListChecksIcon, PanelIcon, UserIcon } from '../icons';
+import { toneBorderHover, ToneChip, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementObjectStructureContent['fields'] };
 
@@ -37,40 +37,33 @@ export const ElementFieldCards = ({ content }: Props) => (
 );
 
 const FieldCardView = ({ card }: { card: FieldCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
+        'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        toneBorderHover,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
-          t.chip,
-        )}
-      >
+      <ToneIconBox tone={card.tone} size="lg" className="rounded-2xl">
         <Icon className="h-5 w-5" />
-      </span>
-      <code className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
+      </ToneIconBox>
+      <code
+        className={cn('font-mono text-md font-bold tracking-tight break-all', toneText(card.tone))}
+      >
         {card.field}
       </code>
       <h3 className="text-xsm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {card.title}
       </h3>
-      <span
-        className={cn(
-          'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
-          t.chip,
-        )}
+      <ToneChip
+        tone={card.tone}
+        className="text-[10px] font-mono font-bold uppercase tracking-wider"
       >
         {card.short}
-      </span>
+      </ToneChip>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
     </article>
   );

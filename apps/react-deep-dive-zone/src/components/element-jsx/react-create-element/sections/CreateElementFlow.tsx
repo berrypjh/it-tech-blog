@@ -35,21 +35,20 @@ export const CreateElementFlow = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'border border-amber-200/80 bg-amber-50/80',
-        'dark:border-amber-800/70 dark:bg-amber-950/30',
+        'border border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-200 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
         <LightbulbIcon className="h-5 w-5" />
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <p className="text-sm font-bold leading-snug text-amber-900 dark:text-amber-100 break-keep">
+        <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
           {content.bottomNoteLine1}
         </p>
-        <p className="text-xsm leading-relaxed text-amber-800/90 dark:text-amber-200/90 break-keep">
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
           {content.bottomNoteLine2}
         </p>
       </div>

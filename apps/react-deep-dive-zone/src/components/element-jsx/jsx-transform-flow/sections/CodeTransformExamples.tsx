@@ -6,9 +6,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ExampleLegend, JsxTransformFlowContent, TransformExample } from '../content';
 import { ArrowDownIcon, InfoIcon, LayersIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: JsxTransformFlowContent['examples'] };
 
@@ -64,13 +64,13 @@ export const CodeTransformExamples = ({ content }: Props) => {
       <div
         className={cn(
           'flex items-start gap-sm rounded-2xl border px-md py-3',
-          'border-sky-200/70 bg-sky-50/70 dark:border-sky-800/60 dark:bg-sky-950/30',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5">
           <InfoIcon className="h-4 w-4" />
         </span>
-        <p className="text-xsm leading-relaxed text-sky-900 dark:text-sky-100 break-keep">
+        <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
           {content.bottomNote}
         </p>
       </div>
@@ -118,9 +118,9 @@ const TabButton = ({
     onClick={onClick}
     className={cn(
       'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
       active
-        ? 'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950'
+        ? 'bg-slate-900 text-slate-50 dark:bg-slate-700 dark:text-slate-50'
         : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
     )}
   >
@@ -129,13 +129,14 @@ const TabButton = ({
 );
 
 const LegendPill = ({ item }: { item: ExampleLegend }) => {
-  const t = toneTokens[item.tone];
+  const t = localTone(item.tone);
   return (
     <li>
       <span
         className={cn(
-          'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
+          'inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
+          t.text,
         )}
       >
         <span aria-hidden="true" className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
@@ -165,14 +166,14 @@ const ExampleCard = ({
   panelId: string;
 }) => {
   const matchedLegend = legend.find((l) => l.id === example.legendId);
-  const tone = matchedLegend ? toneTokens[matchedLegend.tone] : null;
+  const tone = matchedLegend ? localTone(matchedLegend.tone) : null;
   return (
     <article
       id={panelId}
       className={cn(
         'flex flex-1 flex-col overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone ? tone.border : 'border-[var(--term-border)]',
+        'border-[var(--term-border)]',
         tone ? tone.borderHover : '',
       )}
     >
@@ -183,7 +184,7 @@ const ExampleCard = ({
             aria-hidden="true"
             className={cn(
               'inline-block w-1.5 h-1.5 rounded-full',
-              tone ? tone.dot : 'bg-slate-400',
+              tone ? tone.dot : 'bg-[var(--term-accent)]',
             )}
           />
           {example.title}
@@ -191,8 +192,10 @@ const ExampleCard = ({
         {matchedLegend ? (
           <span
             className={cn(
-              'inline-flex shrink-0 items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono',
-              tone ? tone.chip : 'border-[var(--term-border)] text-[var(--term-muted)]',
+              'inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[10px] font-bold font-mono',
+              tone
+                ? cn(tone.chip, tone.text)
+                : 'border border-[var(--term-border)] text-[var(--term-muted)]',
             )}
           >
             {matchedLegend.label}
@@ -212,8 +215,9 @@ const ExampleCard = ({
         <div aria-hidden="true" className="flex items-center justify-center py-0.5">
           <span
             className={cn(
-              'inline-flex items-center justify-center w-7 h-7 rounded-full text-white shadow-md',
-              tone ? tone.dot : 'bg-sky-600',
+              'inline-flex items-center justify-center w-7 h-7 rounded-full',
+              'bg-[var(--term-surface)] border border-[var(--term-border)]',
+              tone ? tone.text : 'text-[var(--term-accent)]',
             )}
           >
             <ArrowDownIcon className="h-4 w-4" />
@@ -234,16 +238,13 @@ const ExampleCard = ({
       <div
         className={cn(
           'mt-auto flex flex-col gap-1.5 border-t px-md py-3',
-          tone ? tone.border : 'border-[var(--term-border)]',
-          'bg-[var(--term-surface)]',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <span
           className={cn(
-            'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            tone
-              ? tone.chip
-              : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)]',
+            'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            tone ? tone.text : 'text-[var(--term-muted)]',
           )}
         >
           {descriptionLabel}
@@ -270,7 +271,10 @@ const PanelLabel = ({ active, children }: { active: boolean; children: React.Rea
     )}
   >
     {active ? (
-      <span aria-hidden="true" className="inline-block w-1.5 h-1.5 rounded-full bg-sky-500" />
+      <span
+        aria-hidden="true"
+        className="inline-block w-1.5 h-1.5 rounded-full bg-sky-400 dark:bg-sky-500"
+      />
     ) : null}
     {children}
   </h4>

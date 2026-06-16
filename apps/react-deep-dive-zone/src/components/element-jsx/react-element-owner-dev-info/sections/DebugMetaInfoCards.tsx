@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { DebugCard, ReactElementOwnerDevInfoContent } from '../content';
 import { LayersIcon, SparklesIcon, WorkflowIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['debug'] };
 
@@ -34,18 +34,16 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-violet-50 via-sky-50 to-teal-50',
-        'dark:from-violet-950/40 dark:via-sky-950/40 dark:to-teal-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.summary}
       </p>
     </div>
@@ -53,7 +51,7 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: DebugCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -61,7 +59,7 @@ const CardView = ({ card }: { card: DebugCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">

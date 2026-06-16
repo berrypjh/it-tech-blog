@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { JsxRow, ReactElementTypeMeaningContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, WorkflowIcon } from '../icons';
+import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['rows'] };
 
@@ -30,14 +30,13 @@ export const JsxToTypeRows = ({ content }: Props) => (
 );
 
 const RowView = ({ row }: { row: JsxRow }) => {
-  const t = toneTokens[row.tone];
   return (
     <article
       className={cn(
         'group grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.2fr)] gap-md items-stretch',
         'rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
-        t.border,
+        'border-[var(--term-border)]',
       )}
     >
       {/* JSX cell */}
@@ -59,8 +58,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
           <span
             className={cn(
-              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              t.chip,
+              'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneChip(row.tone),
             )}
           >
             {row.typeBadge}
@@ -68,8 +67,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
         </div>
         <code
           className={cn(
-            'font-mono text-sm sm:text-md font-bold tracking-tight break-all rounded-xl border px-md py-3',
-            t.chip,
+            'font-mono text-sm sm:text-md font-bold tracking-tight break-all rounded-xl px-md py-3',
+            toneChip(row.tone),
           )}
         >
           {row.typeResult}
@@ -86,8 +85,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
           <span
             className={cn(
-              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              t.chip,
+              'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneChip(row.tone),
             )}
           >
             {row.meaningBadge}

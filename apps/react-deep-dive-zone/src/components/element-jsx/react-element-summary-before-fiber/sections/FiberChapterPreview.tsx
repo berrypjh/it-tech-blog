@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowDownIcon, ScanSearchIcon, SparklesIcon, WorkflowIcon } from '../icons';
+import { neutralBorder, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['fiberPreview'] };
 
@@ -22,25 +22,27 @@ export const FiberChapterPreview = ({ content }: Props) => (
       {/* preview question */}
       <article
         className={cn(
-          'flex flex-col gap-md rounded-2xl border p-md',
-          'border-violet-200/80 bg-violet-50/60',
-          'dark:border-violet-800/70 dark:bg-violet-950/30',
+          'flex flex-col gap-md rounded-2xl border p-md bg-[var(--term-bg)]',
+          'border-[var(--term-border)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
         <span
           aria-hidden="true"
-          className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-violet-300/80 bg-violet-100 text-violet-700 dark:border-violet-800/70 dark:bg-violet-950/60 dark:text-violet-200"
+          className={cn(
+            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+            'bg-[var(--term-surface)] border-[var(--term-border)] text-violet-600 dark:text-violet-300',
+          )}
         >
           <ScanSearchIcon className="h-5 w-5" />
         </span>
-        <span className="text-[10px] uppercase tracking-wider font-mono text-violet-700/80 dark:text-violet-300/80">
+        <span className="text-[10px] uppercase tracking-wider font-mono text-violet-600 dark:text-violet-300">
           next chapter
         </span>
-        <p className="text-md font-bold leading-snug text-violet-900 dark:text-violet-100 break-keep">
+        <p className="text-md font-bold leading-snug text-[var(--term-fg)] break-keep">
           {content.previewQuestion}
         </p>
-        <p className="text-xsm leading-relaxed text-violet-800/90 dark:text-violet-200/80 break-keep">
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
           {content.previewDescription}
         </p>
       </article>
@@ -54,26 +56,30 @@ export const FiberChapterPreview = ({ content }: Props) => (
       >
         <ol className="flex flex-col gap-2">
           {content.flowSteps.map((step, idx) => {
-            const t = toneTokens[step.tone];
             return (
               <li key={step.id} className="flex flex-col">
                 <article
                   className={cn(
                     'flex items-start gap-md rounded-xl border p-sm bg-[var(--term-bg)]',
-                    t.border,
+                    neutralBorder,
                   )}
                 >
                   <span
                     aria-hidden="true"
                     className={cn(
                       'inline-flex items-center justify-center w-10 h-10 rounded-lg border font-mono text-[11px] font-bold tabular-nums',
-                      t.chip,
+                      toneChip(step.tone),
                     )}
                   >
                     {idx + 1}
                   </span>
                   <div className="flex flex-col gap-1 min-w-0 flex-1">
-                    <code className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+                    <code
+                      className={cn(
+                        'font-mono text-xsm font-bold tracking-tight',
+                        toneText(step.tone),
+                      )}
+                    >
                       {step.title}
                     </code>
                     <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -86,7 +92,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
                             <span
                               className={cn(
                                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold tracking-tight',
-                                t.chip,
+                                toneChip(step.tone),
                               )}
                             >
                               {chip}
@@ -112,18 +118,16 @@ export const FiberChapterPreview = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-violet-50 via-sky-50 to-teal-50',
-        'dark:from-violet-950/40 dark:via-sky-950/40 dark:to-teal-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.infoBanner}
       </p>
     </div>

@@ -3,10 +3,9 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramItem, ReactElementTypeMeaningContent } from '../content';
 import { SparklesIcon, TagIcon, UserIcon } from '../icons';
+import { toneChip, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['hero']; className?: string };
 
@@ -67,7 +66,6 @@ export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
 };
 
 const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
-  const t = toneTokens[item.tone];
   const Icon = iconMap[item.iconName];
   return (
     <article
@@ -75,8 +73,7 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
         'group flex flex-1 flex-col gap-2 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        'border-[var(--term-border)]',
-        t.borderHover,
+        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
       )}
     >
       <span className="flex items-center gap-2">
@@ -84,7 +81,10 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <code
-          className={cn('min-w-0 truncate font-mono text-xsm font-bold tracking-tight', t.text)}
+          className={cn(
+            'min-w-0 truncate font-mono text-xsm font-bold tracking-tight',
+            toneText(item.tone),
+          )}
         >
           {item.value}
         </code>
@@ -92,8 +92,8 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
       <p className="text-[11px] font-bold text-[var(--term-fg)] break-keep">{item.title}</p>
       <span
         className={cn(
-          'inline-flex w-fit items-center rounded-full border px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider',
-          t.chip,
+          'inline-flex w-fit items-center rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider',
+          toneChip(item.tone),
         )}
       >
         {item.category}

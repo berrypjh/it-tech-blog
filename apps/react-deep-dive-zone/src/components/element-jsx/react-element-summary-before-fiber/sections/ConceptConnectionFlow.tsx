@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowRightIcon, CheckCircleIcon, WorkflowIcon } from '../icons';
+import { neutralBorder, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['conceptFlow'] };
 
@@ -52,17 +52,16 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
       <div
         className={cn(
           'flex items-center gap-sm rounded-xl border p-md',
-          'border-emerald-300/80 bg-emerald-50',
-          'dark:border-emerald-800/70 dark:bg-emerald-950/40',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <span
           aria-hidden="true"
-          className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0"
+          className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
         >
           <CheckCircleIcon className="h-5 w-5" />
         </span>
-        <p className="text-xsm sm:text-sm font-bold leading-snug text-emerald-900 dark:text-emerald-100 break-keep">
+        <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
           {content.emphasis}
         </p>
       </div>
@@ -71,18 +70,17 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
 );
 
 const StepCard = ({ step }: { step: AnswerStep }) => {
-  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
         'flex min-w-0 flex-1 flex-col gap-2 rounded-xl border p-md bg-[var(--term-bg)]',
-        t.border,
+        neutralBorder,
       )}
     >
       <span
         className={cn(
           'inline-flex w-7 h-7 items-center justify-center rounded-full border font-mono text-[11px] font-bold tabular-nums',
-          t.chip,
+          toneChip(step.tone),
         )}
       >
         {step.number}
@@ -90,7 +88,7 @@ const StepCard = ({ step }: { step: AnswerStep }) => {
       <code
         className={cn(
           'font-mono text-xsm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
-          t.text,
+          toneText(step.tone),
         )}
       >
         {step.title}

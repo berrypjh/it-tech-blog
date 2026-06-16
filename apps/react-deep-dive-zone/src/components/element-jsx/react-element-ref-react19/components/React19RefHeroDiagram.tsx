@@ -2,8 +2,6 @@ import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
-import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowStep, ReactElementRefReact19Content } from '../content';
 import { NetworkIcon } from '../icons';
 
@@ -25,9 +23,9 @@ export const React19RefHeroDiagram = ({ content, className }: Props) => {
     <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
-          <ToneIconBox tone="teal" size="sm">
+          <span className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
             <NetworkIcon className="h-[18px] w-[18px]" />
-          </ToneIconBox>
+          </span>
           <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)]">
             {content.diagramTitle}
           </span>
@@ -53,16 +51,13 @@ const FlowGroup = ({
   variant: 'legacy' | 'modern';
 }) => {
   const modern = variant === 'modern';
-  const t = toneTokens.teal;
 
   return (
     <section className="flex flex-col gap-sm">
       <span
         className={cn(
-          'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-          modern
-            ? t.chip
-            : 'border-slate-300/80 bg-slate-100 text-slate-700 dark:border-slate-700/70 dark:bg-slate-900/60 dark:text-slate-200',
+          'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+          modern ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
         )}
       >
         {title}
@@ -80,34 +75,31 @@ const FlowGroup = ({
   );
 };
 
-const StepChip = ({ label, modern }: { label: string; modern: boolean }) => {
-  const t = toneTokens.teal;
-  return (
-    <article
+const StepChip = ({ label, modern }: { label: string; modern: boolean }) => (
+  <article
+    className={cn(
+      'flex min-w-0 items-center gap-2 rounded-xl border border-[var(--term-border)] px-md py-2 bg-[var(--term-bg)]',
+      'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+      modern && 'hover:border-[var(--term-accent)]',
+    )}
+  >
+    <span
+      aria-hidden="true"
       className={cn(
-        'flex min-w-0 items-center gap-2 rounded-xl border px-md py-2 bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        modern ? cn(t.border, t.borderHover) : 'border-slate-300/70 dark:border-slate-700/70',
+        'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
+        modern ? 'bg-[var(--term-accent)]' : 'bg-[var(--term-muted)]',
+      )}
+    />
+    <span
+      className={cn(
+        'min-w-0 truncate text-[11px] font-bold font-mono tracking-tight',
+        modern ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
-          modern ? t.dot : 'bg-slate-400 dark:bg-slate-500',
-        )}
-      />
-      <span
-        className={cn(
-          'min-w-0 truncate text-[11px] font-bold font-mono tracking-tight',
-          modern ? t.text : 'text-slate-700 dark:text-slate-200',
-        )}
-      >
-        {label}
-      </span>
-    </article>
-  );
-};
+      {label}
+    </span>
+  </article>
+);
 
 const Connector = () => (
   <span

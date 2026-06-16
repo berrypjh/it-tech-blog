@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ComparisonSideCard, ReactCreateElementContent } from '../content';
 import { ArrowLeftRightIcon, GitCompareIcon, QuoteIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['compare'] };
 
@@ -25,21 +25,20 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
       <article
         className={cn(
           'relative flex flex-col gap-sm items-center justify-center rounded-3xl p-md text-center',
-          'bg-gradient-to-br from-sky-50 via-violet-50 to-teal-50',
-          'dark:from-sky-950/40 dark:via-violet-950/40 dark:to-teal-950/40',
-          'border-2 border-dashed border-violet-300/70 dark:border-violet-700/60',
+          'bg-[var(--term-surface)]',
+          'border-2 border-dashed border-[var(--term-border)]',
         )}
       >
         <span
           aria-hidden="true"
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 text-violet-600 shadow-md dark:bg-slate-900/80 dark:text-violet-300"
+          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
         >
           <QuoteIcon className="h-5 w-5" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug text-[var(--term-fg)] break-keep whitespace-pre-line">
           {content.centerQuote}
         </p>
-        <span className="text-xxsm uppercase tracking-wider font-mono text-violet-700 dark:text-violet-300">
+        <span className="text-xxsm uppercase tracking-wider font-mono text-[var(--term-accent)]">
           {content.centerSub}
         </span>
       </article>
@@ -64,7 +63,7 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
 );
 
 const SideCard = ({ card }: { card: ComparisonSideCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   return (
     <article
       className={cn(
@@ -76,8 +75,9 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
     >
       <span
         className={cn(
-          'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
+          'inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
+          t.text,
         )}
       >
         {card.label}

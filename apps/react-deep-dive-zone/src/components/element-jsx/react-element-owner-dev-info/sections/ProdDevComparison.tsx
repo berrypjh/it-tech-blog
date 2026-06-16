@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
-import { toneTokens } from '../../../shared/tones';
 import type { ProdDevCard, ReactElementOwnerDevInfoContent } from '../content';
 import { BugIcon, CheckCircleIcon, GaugeIcon, GitCompareIcon, SparklesIcon } from '../icons';
+import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['prodDev'] };
 
@@ -34,18 +34,16 @@ export const ProdDevComparison = ({ content }: Props) => (
     <div
       className={cn(
         'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-gradient-to-r from-sky-50 via-violet-50 to-teal-50',
-        'dark:from-sky-950/40 dark:via-violet-950/40 dark:to-teal-950/40',
-        'border border-sky-200/70 dark:border-sky-800/60',
+        'bg-[var(--term-surface)] border border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 shrink-0"
+        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
         <SparklesIcon className="h-5 w-5" />
       </span>
-      <p className="text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
+      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.emphasis}
       </p>
     </div>
@@ -53,7 +51,7 @@ export const ProdDevComparison = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: ProdDevCard }) => {
-  const t = toneTokens[card.tone];
+  const t = localTone(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -61,7 +59,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
@@ -93,7 +91,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
           <li key={item} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 shrink-0 mt-0.5"
+              className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
               <CheckCircleIcon className="h-3 w-3" />
             </span>
