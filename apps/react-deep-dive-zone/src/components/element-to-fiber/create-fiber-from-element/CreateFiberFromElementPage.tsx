@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { CodeReadingMission } from './sections/CodeReadingMission';
 import { CreateFiberHero } from './sections/CreateFiberHero';
 import { DevModeDebugInfo } from './sections/DevModeDebugInfo';
 import { ElementFieldMapping } from './sections/ElementFieldMapping';
@@ -25,7 +24,6 @@ export const CreateFiberFromElementPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <FunctionCallFlow content={c.flow} />
       <DevModeDebugInfo content={c.devInfo} />
-      <CodeReadingMission content={c.mission} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -30,44 +28,6 @@ export const TypeDecisionHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>
-
-      <ul className="grid grid-cols-3 gap-2 pt-1">
-        <li
-          className={cn(
-            'flex flex-col gap-0.5 rounded-lg border px-sm py-2 text-center',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-          )}
-        >
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-            string
-          </span>
-          <code className="text-xsm font-mono font-bold text-[var(--term-fg)]">Host</code>
-        </li>
-        <li
-          className={cn(
-            'flex flex-col gap-0.5 rounded-lg border px-sm py-2 text-center',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-          )}
-        >
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-            function
-          </span>
-          <code className="text-xsm font-mono font-bold text-[var(--term-fg)]">Fn / Class</code>
-        </li>
-        <li
-          className={cn(
-            'flex flex-col gap-0.5 rounded-lg border px-sm py-2 text-center',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-          )}
-        >
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-            symbol
-          </span>
-          <code className="text-xsm font-mono font-bold text-[var(--term-fg)]">
-            Fragment / Mode
-          </code>
-        </li>
-      </ul>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-type-decision">

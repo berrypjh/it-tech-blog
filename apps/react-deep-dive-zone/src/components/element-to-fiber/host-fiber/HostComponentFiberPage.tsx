@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/StartPageShell';
 import { ExampleJsxTypeCheck } from './sections/ExampleJsxTypeCheck';
 import { HostComponentConcept } from './sections/HostComponentConcept';
 import { HostComponentHero } from './sections/HostComponentHero';
-import { HostMiniQuiz } from './sections/HostMiniQuiz';
 import { HostVsDomComparison } from './sections/HostVsDomComparison';
 import { ModernHostFamily } from './sections/ModernHostFamily';
 import { QuickChecklist } from './sections/QuickChecklist';
@@ -26,7 +25,6 @@ export const HostComponentFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <HostVsDomComparison content={c.vsDom} />
       <ModernHostFamily content={c.modern} />
-      <HostMiniQuiz content={c.quiz} />
       <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

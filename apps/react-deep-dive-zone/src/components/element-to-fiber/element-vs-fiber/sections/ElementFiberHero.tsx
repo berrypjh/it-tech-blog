@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -29,16 +27,6 @@ export const ElementFiberHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>
-
-      <p
-        className={cn(
-          'text-3xl sm:text-[2.5rem] lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight break-keep',
-          'text-[var(--term-accent)]',
-        )}
-      >
-        <span className="block">{content.emphasis.line1}</span>
-        <span className="block">{content.emphasis.line2}</span>
-      </p>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-element-fiber">

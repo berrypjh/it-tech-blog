@@ -7,7 +7,6 @@ export {
   Boxes as BoxesIcon,
   Box as BoxIcon,
   Braces as BracesIcon,
-  CheckCircle2 as CheckCircleIcon,
   Code2 as Code2Icon,
   Eye as EyeIcon,
   EyeOff as EyeOffIcon,

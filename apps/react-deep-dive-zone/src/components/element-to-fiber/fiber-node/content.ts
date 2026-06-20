@@ -89,15 +89,6 @@ export type FiberStoredInformationContent = {
     description: string;
     cards: ReasonCard[];
   };
-  miniQuestion: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    question: string;
-    answerLabel: string;
-    answer: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -308,16 +299,6 @@ const ko: FiberStoredInformationContent = {
         accent: 'sky',
       },
     ],
-  },
-  miniQuestion: {
-    badge: '06',
-    eyebrow: '한 줄 질문',
-    title: '미니 질문 카드',
-    questionLabel: 'Q',
-    question: '왜 Fiber에는 child / sibling / return 포인터가 필요할까?',
-    answerLabel: 'A',
-    answer:
-      'React가 Fiber 트리를 순회하며 작업을 진행해야 하기 때문이다. 이 포인터들이 있어야 부모-자식-형제 관계를 따라가며 렌더링 단위를 찾을 수 있다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -530,16 +511,6 @@ const en: FiberStoredInformationContent = {
         accent: 'sky',
       },
     ],
-  },
-  miniQuestion: {
-    badge: '06',
-    eyebrow: 'One question',
-    title: 'Mini question card',
-    questionLabel: 'Q',
-    question: 'Why does a Fiber need child / sibling / return pointers?',
-    answerLabel: 'A',
-    answer:
-      'Because React has to walk the Fiber tree while doing work. These pointers let it follow parent / child / sibling relationships and find the next unit of rendering work.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

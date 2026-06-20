@@ -57,7 +57,6 @@ export type ElementVsFiberContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    emphasis: { line1: string; line2: string };
     elementLabel: string;
     elementCode: string;
     fiberLabel: string;
@@ -103,16 +102,6 @@ export type ElementVsFiberContent = {
     description: string;
     cards: ProblemCard[];
   };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    question: string;
-    answerLabel: string;
-    answer: string;
-    hint: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -131,10 +120,6 @@ const ko: ElementVsFiberContent = {
     },
     description:
       'JSX가 만든 Element는 무엇을 렌더링할지만 설명합니다. 하지만 실제 렌더링을 진행하려면 React는 더 많은 정보가 필요합니다.',
-    emphasis: {
-      line1: 'Element와 Fiber는',
-      line2: '무엇이 다른가?',
-    },
     elementLabel: 'React Element 객체',
     elementCode: '{\n  type,\n  key,\n  props,\n}',
     fiberLabel: 'Fiber 객체',
@@ -328,16 +313,6 @@ const ko: ElementVsFiberContent = {
       },
     ],
   },
-  quiz: {
-    badge: '06',
-    eyebrow: '한 줄 정리',
-    title: '미니 개념 퀴즈',
-    questionLabel: '질문',
-    question: 'Element는 왜 렌더링 작업 단위로 바로 쓰기 어렵나?',
-    answerLabel: '핵심 정답',
-    answer: '트리 관계, 업데이트 상태, 작업 진행 정보가 부족하기 때문이다.',
-    hint: 'Element는 무엇을 그릴지만 알고, 어떻게 그릴지의 정보가 빠져 있습니다.',
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'createFiberFromElement',
@@ -357,10 +332,6 @@ const en: ElementVsFiberContent = {
     },
     description:
       'The Element produced by JSX only describes what to render. To actually carry out rendering, React needs much more information.',
-    emphasis: {
-      line1: 'How are Elements and',
-      line2: 'Fibers different?',
-    },
     elementLabel: 'React Element object',
     elementCode: '{\n  type,\n  key,\n  props,\n}',
     fiberLabel: 'Fiber object',
@@ -554,16 +525,6 @@ const en: ElementVsFiberContent = {
         tone: 'blue',
       },
     ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'One-line summary',
-    title: 'Mini concept quiz',
-    questionLabel: 'Question',
-    question: 'Why can an Element not be used as a unit of work directly?',
-    answerLabel: 'Core answer',
-    answer: 'It lacks tree relationships, update state, and work-progress information.',
-    hint: 'An Element knows what to draw, but not how to drive the actual work.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

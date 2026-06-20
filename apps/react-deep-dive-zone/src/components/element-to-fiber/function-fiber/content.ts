@@ -40,15 +40,6 @@ export type ReasonCard = {
   accent: 'green' | 'blue' | 'purple';
 };
 
-export type QuizCard = {
-  id: string;
-  badge: string;
-  question: string;
-  answer: string;
-  description: string;
-  accent: 'purple' | 'green';
-};
-
 export type ChecklistItem = {
   id: string;
   text: string;
@@ -123,13 +114,6 @@ export type FunctionClassComponentFiberContent = {
     title: string;
     description: string;
     cards: ReasonCard[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   checklist: {
     badge: string;
@@ -349,30 +333,6 @@ const ko: FunctionClassComponentFiberContent = {
       },
     ],
   },
-  quiz: {
-    badge: '06',
-    eyebrow: '복습',
-    title: '미니 퀴즈',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: 'class extends React.Component 형태라면 어떤 Fiber가 될까?',
-        answer: 'ClassComponent',
-        description: 'prototype에 isReactComponent가 존재하므로 클래스 컴포넌트로 판단됩니다.',
-        accent: 'purple',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'function MyView() { ... } 형태라면 어떤 Fiber가 될까?',
-        answer: 'FunctionComponent',
-        description: '클래스 컴포넌트가 아니므로 함수 컴포넌트로 판단됩니다.',
-        accent: 'green',
-      },
-    ],
-  },
   checklist: {
     badge: '07',
     eyebrow: '한 줄 요약',
@@ -588,30 +548,6 @@ const en: FunctionClassComponentFiberContent = {
           'Scheduling, reconciliation, and lifecycle handling all differ — update logic must apply differently.',
         iconName: 'zap',
         accent: 'purple',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'Quick check',
-    title: 'Mini quiz',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: 'If it is `class extends React.Component`, which Fiber is built?',
-        answer: 'ClassComponent',
-        description: 'prototype.isReactComponent is present, so it is judged as a class component.',
-        accent: 'purple',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'And `function MyView() { ... }`?',
-        answer: 'FunctionComponent',
-        description: 'Not a class component, so it is judged as a function component.',
-        accent: 'green',
       },
     ],
   },

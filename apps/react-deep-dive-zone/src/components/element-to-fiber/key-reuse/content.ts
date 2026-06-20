@@ -107,16 +107,6 @@ export type KeyFiberReuseContent = {
     cards: SimCard[];
     emphasis: string;
   };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    question: string;
-    answerLabel: string;
-    answer: string;
-    description: string;
-  };
   checklist: {
     badge: string;
     eyebrow: string;
@@ -296,17 +286,6 @@ const ko: KeyFiberReuseContent = {
     ],
     emphasis: 'key는 항목의 ‘정체성’을 React에게 알려주는 역할을 합니다.',
   },
-  quiz: {
-    badge: '06',
-    eyebrow: '복습',
-    title: '미니 퀴즈',
-    questionLabel: 'Q1',
-    question: '컴포넌트 상태를 의도적으로 초기화하고 싶을 때 key를 바꾸는 전략이 가능할까?',
-    answerLabel: '정답',
-    answer: '가능하다.',
-    description:
-      'React는 key가 바뀌면 다른 컴포넌트 인스턴스로 볼 수 있어, 이전 상태를 버리고 새로운 상태로 시작할 수 있다.',
-  },
   checklist: {
     badge: '07',
     eyebrow: '한 줄 요약',
@@ -481,17 +460,6 @@ const en: KeyFiberReuseContent = {
       },
     ],
     emphasis: "key tells React the 'identity' of each item.",
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'Quick check',
-    title: 'Mini quiz',
-    questionLabel: 'Q1',
-    question: 'Can you intentionally reset component state by changing its key?',
-    answerLabel: 'Answer',
-    answer: 'Yes — that is a real strategy.',
-    description:
-      'When the key changes, React can treat the result as a different component instance — discarding old state and starting fresh.',
   },
   checklist: {
     badge: '07',

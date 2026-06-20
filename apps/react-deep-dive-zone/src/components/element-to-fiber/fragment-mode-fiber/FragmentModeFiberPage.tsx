@@ -9,7 +9,6 @@ import { OtherSpecialTypes } from './sections/OtherSpecialTypes';
 import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { StrictModeFlow } from './sections/StrictModeFlow';
-import { UnderstandingCheck } from './sections/UnderstandingCheck';
 import { WorkTagCards } from './sections/WorkTagCards';
 import { fragmentModeFiberContent } from './content';
 
@@ -26,7 +25,6 @@ export const FragmentModeFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <WorkTagCards content={c.workTags} />
       <OtherSpecialTypes content={c.others} />
-      <UnderstandingCheck content={c.understanding} />
       <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

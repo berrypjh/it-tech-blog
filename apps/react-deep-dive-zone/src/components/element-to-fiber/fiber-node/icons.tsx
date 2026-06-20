@@ -5,8 +5,6 @@ export {
   Boxes as BoxesIcon,
   Box as BoxIcon,
   Braces as BracesIcon,
-  CheckCircle2 as CheckCircleIcon,
-  ChevronDown as ChevronDownIcon,
   Clock as ClockIcon,
   Code2 as Code2Icon,
   Database as DatabaseIcon,

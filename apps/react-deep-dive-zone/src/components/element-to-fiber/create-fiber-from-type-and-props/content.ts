@@ -44,15 +44,6 @@ export type SpecialCard = {
   accent: 'blue' | 'cyan' | 'violet' | 'sky';
 };
 
-export type QuizCard = {
-  id: string;
-  badge: string;
-  question: string;
-  answer: string;
-  description: string;
-  accent: 'green' | 'cyan';
-};
-
 export type CreateFiberFromTypeAndPropsContent = {
   hero: {
     badge: string;
@@ -116,13 +107,6 @@ export type CreateFiberFromTypeAndPropsContent = {
     description: string;
     cards: SpecialCard[];
     bottomNote: string;
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -425,30 +409,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
     bottomNote:
       'React는 더 많은 내부 심벌 타입을 정의하고 있으며, 각 타입은 전용 Fiber로 처리됩니다.',
   },
-  quiz: {
-    badge: '06',
-    eyebrow: '복습',
-    title: '분류 퀴즈',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: "type이 문자열 'button'이면 어떤 Fiber 계열일까?",
-        answer: 'Host 계열 Fiber',
-        description: "'button'은 문자열이므로 HostComponent Fiber가 생성됩니다.",
-        accent: 'green',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'type이 class component라면?',
-        answer: 'ClassComponent Fiber',
-        description: '클래스 컴포넌트는 ClassComponent Fiber가 됩니다.',
-        accent: 'cyan',
-      },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Host Component Fiber',
@@ -680,30 +640,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
     ],
     bottomNote:
       'React defines more internal symbol types, and each one is handled by its own kind of Fiber.',
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'Quick check',
-    title: 'Classification quiz',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: "If type is the string 'button', which Fiber family is it?",
-        answer: 'Host fiber family',
-        description: "'button' is a string, so a HostComponent Fiber is built.",
-        accent: 'green',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'And if type is a class component?',
-        answer: 'ClassComponent Fiber',
-        description: 'Class components become ClassComponent fibers.',
-        accent: 'cyan',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

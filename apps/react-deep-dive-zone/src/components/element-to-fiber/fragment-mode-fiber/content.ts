@@ -24,15 +24,6 @@ export type SpecialTypeCard = {
   accent: 'sky' | 'cyan' | 'violet' | 'amber' | 'emerald';
 };
 
-export type QuizCard = {
-  id: string;
-  badge: string;
-  question: string;
-  answer: string;
-  reason: string;
-  accent: 'purple' | 'green';
-};
-
 export type ChecklistItem = {
   id: string;
   text: string;
@@ -107,14 +98,6 @@ export type FragmentModeFiberContent = {
     description: string;
     cards: SpecialTypeCard[];
     footnote: string;
-  };
-  understanding: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    answerLabel: string;
-    reasonLabel: string;
-    cards: QuizCard[];
   };
   checklist: {
     badge: string;
@@ -301,33 +284,6 @@ const ko: FragmentModeFiberContent = {
       },
     ],
     footnote: '버전과 환경에 따라 지원 여부와 내부 이름이 달라질 수 있습니다.',
-  },
-  understanding: {
-    badge: '06',
-    eyebrow: '복습',
-    title: '이해 확인',
-    answerLabel: '정답',
-    reasonLabel: '이유',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: 'Fragment는 일반 FunctionComponent처럼 처리될까?',
-        answer: '아니다. Fragment 전용 Fiber 경로가 있다.',
-        reason:
-          'Fragment는 자식들을 그룹화하기 위한 특수 타입이며, DOM을 직접 만들지 않기 때문에 별도 Fiber가 필요하다.',
-        accent: 'purple',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'StrictMode는 무엇을 나타내는가?',
-        answer: 'Mode Fiber로 이어지는 React 내부 특수 타입.',
-        reason:
-          'StrictMode는 개발 모드에서 추가 검사와 경고를 제공하기 위해 Mode Fiber로 처리되어 내부 flag를 관리한다.',
-        accent: 'green',
-      },
-    ],
   },
   checklist: {
     badge: '07',
@@ -523,33 +479,6 @@ const en: FragmentModeFiberContent = {
       },
     ],
     footnote: 'Support and internal names may change between React versions and environments.',
-  },
-  understanding: {
-    badge: '06',
-    eyebrow: 'Recap',
-    title: 'Check your understanding',
-    answerLabel: 'Answer',
-    reasonLabel: 'Reason',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: 'Does Fragment get handled like a regular FunctionComponent?',
-        answer: 'No — it has its own Fiber path.',
-        reason:
-          'Fragment is a special type for grouping children and does not produce DOM, so it needs a dedicated Fiber.',
-        accent: 'purple',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'What does StrictMode represent?',
-        answer: 'A React-internal special type that becomes a Mode Fiber.',
-        reason:
-          'StrictMode is handled as a Mode Fiber to manage internal flags that enable extra dev-mode checks and warnings.',
-        accent: 'green',
-      },
-    ],
   },
   checklist: {
     badge: '07',

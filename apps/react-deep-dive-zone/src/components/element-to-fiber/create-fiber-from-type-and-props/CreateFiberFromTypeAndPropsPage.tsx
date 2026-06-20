@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { ClassificationQuiz } from './sections/ClassificationQuiz';
 import { JsxToFiberTagCards } from './sections/JsxToFiberTagCards';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { SpecialFiberTypes } from './sections/SpecialFiberTypes';
@@ -25,7 +24,6 @@ export const CreateFiberFromTypeAndPropsPage = ({ locale }: Props) => {
       <JsxToFiberTagCards content={c.jsxCards} />
       <TypeShapeComparisonTable content={c.comparison} />
       <SpecialFiberTypes content={c.special} />
-      <ClassificationQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

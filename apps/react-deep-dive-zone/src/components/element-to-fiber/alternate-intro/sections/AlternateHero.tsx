@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -32,35 +30,6 @@ export const AlternateHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>
-
-      <ul className="grid grid-cols-2 gap-2 pt-1">
-        <li
-          className={cn(
-            'flex flex-col gap-0.5 rounded-lg border px-sm py-2 text-center',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-          )}
-        >
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-            current
-          </span>
-          <code className="text-xsm font-mono font-bold text-[var(--term-fg)]">
-            화면에 반영된 트리
-          </code>
-        </li>
-        <li
-          className={cn(
-            'flex flex-col gap-0.5 rounded-lg border px-sm py-2 text-center',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-          )}
-        >
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-            workInProgress
-          </span>
-          <code className="text-xsm font-mono font-bold text-[var(--term-fg)]">
-            계산 중인 작업 트리
-          </code>
-        </li>
-      </ul>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-alternate-fiber">

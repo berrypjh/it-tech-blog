@@ -30,14 +30,6 @@ export type ModernHostCard = {
   accent: 'green' | 'blue' | 'purple';
 };
 
-export type QuizCard = {
-  id: string;
-  badge: string;
-  question: string;
-  answer: string;
-  description: string;
-};
-
 export type ChecklistItem = {
   id: string;
   text: string;
@@ -110,13 +102,6 @@ export type HostComponentFiberContent = {
     description: string;
     cards: ModernHostCard[];
     footnote: string;
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   checklist: {
     badge: string;
@@ -291,28 +276,6 @@ const ko: HostComponentFiberContent = {
       },
     ],
     footnote: '버전과 환경에 따라 세부 구현과 이름이 달라질 수 있습니다.',
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: '복습',
-    title: '미니 퀴즈',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: '<section />의 type은?',
-        answer: "문자열 'section'",
-        description: 'JSX 태그 이름이 따옴표 없이 보이면 문자열 type입니다.',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: '그래서 어떤 Fiber 계열로 갈까?',
-        answer: 'Host 계열 Fiber',
-        description: '문자열 type은 React에서 Host 계열 분기로 이어집니다.',
-      },
-    ],
   },
   checklist: {
     badge: '07',
@@ -490,28 +453,6 @@ const en: HostComponentFiberContent = {
       },
     ],
     footnote: 'Implementation details and names may shift between React versions.',
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'Quick check',
-    title: 'Mini quiz',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        badge: 'Q1',
-        question: 'What is the type of <section />?',
-        answer: "The string 'section'",
-        description: 'When a JSX tag name is shown without quotes, the type is a string.',
-      },
-      {
-        id: 'q2',
-        badge: 'Q2',
-        question: 'And which Fiber family does it land in?',
-        answer: 'The Host family',
-        description: 'String types lead to the Host-family branch in React.',
-      },
-    ],
   },
   checklist: {
     badge: '07',

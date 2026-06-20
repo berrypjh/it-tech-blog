@@ -4,7 +4,6 @@ import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
 import { KeyFiberReuseHero } from './sections/KeyFiberReuseHero';
-import { KeyMiniQuiz } from './sections/KeyMiniQuiz';
 import { KeyStableComparison } from './sections/KeyStableComparison';
 import { KeyTrackingPrinciple } from './sections/KeyTrackingPrinciple';
 import { QuickChecklist } from './sections/QuickChecklist';
@@ -26,7 +25,6 @@ export const KeyFiberReusePage = ({ locale }: Props) => {
       <StateResetExample content={c.stateExample} />
       <SourceCodeCheckpoint content={c.checkpoint} />
       <VisualSimulation content={c.simulation} />
-      <KeyMiniQuiz content={c.quiz} />
       <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

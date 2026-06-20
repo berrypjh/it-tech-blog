@@ -32,12 +32,6 @@ export type DevTableRow = {
   fiber: string;
 };
 
-export type MissionStep = {
-  id: string;
-  number: string;
-  text: string;
-};
-
 export type CreateFiberFromElementContent = {
   hero: {
     badge: string;
@@ -108,15 +102,6 @@ export type CreateFiberFromElementContent = {
     mappingRightLabel: string;
     mappingRightCode: string;
     footnote: string;
-  };
-  mission: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: MissionStep[];
-    githubCta: string;
-    githubHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -304,29 +289,6 @@ const ko: CreateFiberFromElementContent = {
     mappingRightLabel: 'fiber._debugStack',
     mappingRightCode: '"\\n in MyButton (at App.js:10)\\n"',
     footnote: '내부 필드명은 버전에 따라 변경될 수 있습니다.',
-  },
-  mission: {
-    badge: '06',
-    eyebrow: '직접 코드 읽기',
-    title: '직접 찾아보세요',
-    description: '코드를 직접 열어 흐름을 확인해 봅시다.',
-    steps: [
-      { id: 'm1', number: '1', text: 'ReactFiber.js를 연다.' },
-      { id: 'm2', number: '2', text: 'createFiberFromElement를 찾는다.' },
-      {
-        id: 'm3',
-        number: '3',
-        text: 'element.type, element.key, element.props를 확인한다.',
-      },
-      {
-        id: 'm4',
-        number: '4',
-        text: 'createFiberFromTypeAndProps 호출로 이어지는지 본다.',
-      },
-    ],
-    githubCta: 'GitHub에서 코드 열기',
-    githubHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -516,29 +478,6 @@ const en: CreateFiberFromElementContent = {
     mappingRightLabel: 'fiber._debugStack',
     mappingRightCode: '"\\n in MyButton (at App.js:10)\\n"',
     footnote: 'These internal field names can change between React versions.',
-  },
-  mission: {
-    badge: '06',
-    eyebrow: 'Read the code yourself',
-    title: 'Find it for yourself',
-    description: 'Open the source and trace the flow with your own eyes.',
-    steps: [
-      { id: 'm1', number: '1', text: 'Open ReactFiber.js.' },
-      { id: 'm2', number: '2', text: 'Find createFiberFromElement.' },
-      {
-        id: 'm3',
-        number: '3',
-        text: 'Confirm element.type, element.key, element.props.',
-      },
-      {
-        id: 'm4',
-        number: '4',
-        text: 'Follow it into createFiberFromTypeAndProps.',
-      },
-    ],
-    githubCta: 'Open the code on GitHub',
-    githubHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
   },
   nextStep: {
     eyebrow: 'The journey continues',
