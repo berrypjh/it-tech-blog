@@ -4,5 +4,8 @@ import preset from '@berrypjh/react-ui/tailwind';
 export default {
   presets: [preset],
   darkMode: 'class',
-  content: ['../../packages/ui/src/**/*.{ts,tsx}'],
+  content: [
+    '../../packages/ui/src/**/*.{ts,tsx}',
+    '../../apps/react-deep-dive-zone/src/**/*.{ts,tsx}',
+  ],
 };

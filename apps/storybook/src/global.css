@@ -11,3 +11,31 @@
   --shell-sidebar-w: 280px;
   --shell-header-h: 56px;
 }
+
+/*
+ * react-deep-dive-zone 터미널 팔레트.
+ * 해당 존 컴포넌트(ToneCardGrid·FlowStepsGrid·ComparisonTable 등)를
+ * 스토리북에서 색까지 정확히 렌더하기 위해 토큰을 그대로 복제한다.
+ * 원본: apps/react-deep-dive-zone/src/app/global.css
+ */
+:root {
+  --term-bg: #fafaf7;
+  --term-surface: #f3f3ef;
+  --term-fg: #0a0a0a;
+  --term-muted: #6b6b65;
+  --term-dim: #a8a8a2;
+  --term-border: #d4d4d0;
+  --term-accent: #b45309;
+  --term-accent-soft: #fde68a;
+}
+
+.dark {
+  --term-bg: #0a0a0a;
+  --term-surface: #131313;
+  --term-fg: #e6e6e6;
+  --term-muted: #8a8a85;
+  --term-dim: #4a4a47;
+  --term-border: #2a2a2a;
+  --term-accent: #fbbf24;
+  --term-accent-soft: #3a2a08;
+}

@@ -4,7 +4,10 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../../../packages/ui/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
+  stories: [
+    '../../../packages/ui/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../../../apps/react-deep-dive-zone/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+  ],
   addons: [getAbsolutePath('@storybook/addon-docs'), getAbsolutePath('@storybook/addon-a11y')],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
