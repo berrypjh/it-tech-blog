@@ -858,6 +858,8 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
   ],
 };
 
+export const REACT_VERSION = '19.2.0';
+
 export const sidebarStrings = {
   ko: {
     ...commonSidebarStrings.ko,

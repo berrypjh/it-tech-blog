@@ -7,7 +7,7 @@ import { useLocale } from '@it-tech-blog/preferences';
 import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
 import { cn } from '@it-tech-blog/utils';
 
-import { navData, sidebarStrings } from '@/data';
+import { navData, REACT_VERSION, sidebarStrings } from '@/data';
 
 /**
  * 네비게이션 그룹 제목을 파일시스템 경로처럼 보이는 슬러그로.
@@ -61,7 +61,12 @@ export const Sidebar = ({ className }: { className?: string }) => {
             <span className="term-cursor" aria-hidden="true" />
           </Link>
 
-          <SettingsPopover onLocaleChange={() => router.refresh()} />
+          <div className="flex items-center gap-sm">
+            <span className="text-[10px] text-[var(--term-dim)] tabular-nums">
+              v{REACT_VERSION}
+            </span>
+            <SettingsPopover onLocaleChange={() => router.refresh()} />
+          </div>
         </div>
 
         <p className="mt-sm text-[10px] text-[var(--term-muted)] leading-snug">
