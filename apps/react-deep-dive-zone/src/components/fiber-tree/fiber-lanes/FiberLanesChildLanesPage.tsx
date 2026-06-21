@@ -8,7 +8,6 @@ import { ChildLanesPropagation } from './sections/ChildLanesPropagation';
 import { LanesChildLanesComparison } from './sections/LanesChildLanesComparison';
 import { LanesCodeCheckpoint } from './sections/LanesCodeCheckpoint';
 import { LanesHero } from './sections/LanesHero';
-import { LanesMiniQuiz } from './sections/LanesMiniQuiz';
 import { RepresentativeLaneCards } from './sections/RepresentativeLaneCards';
 import { fiberLanesContent } from './content';
 
@@ -25,7 +24,6 @@ export const FiberLanesChildLanesPage = ({ locale }: Props) => {
       <BitfieldVisualization content={c.bitfield} />
       <LanesCodeCheckpoint content={c.checkpoint} />
       <ChildLanesPropagation content={c.propagation} />
-      <LanesMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

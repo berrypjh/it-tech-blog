@@ -46,13 +46,6 @@ export type PropagationStep = {
   iconName: 'pulse' | 'arrowUp' | 'eye';
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  tone: 'emerald' | 'violet';
-};
-
 export type FiberLanesContent = {
   hero: {
     badge: string;
@@ -117,14 +110,6 @@ export type FiberLanesContent = {
     title: string;
     steps: PropagationStep[];
     emphasis: string;
-  };
-  quiz: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -393,27 +378,6 @@ const ko: FiberLanesContent = {
     ],
     emphasis: '부모 레벨에서도 하위 트리의 미완료 작업을 빠르게 감지할 수 있다.',
   },
-  quiz: {
-    number: '07',
-    eyebrow: '미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    cards: [
-      {
-        id: 'q1',
-        question: '이 Fiber 자신에게 걸린 작업 우선순위는?',
-        answer: 'lanes',
-        tone: 'emerald',
-      },
-      {
-        id: 'q2',
-        question: '자식 트리 어딘가의 작업 우선순위는?',
-        answer: 'childLanes',
-        tone: 'violet',
-      },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'current / workInProgress / alternate',
@@ -648,27 +612,6 @@ const en: FiberLanesContent = {
       },
     ],
     emphasis: 'Parent levels can quickly detect unfinished work somewhere in the subtree.',
-  },
-  quiz: {
-    number: '07',
-    eyebrow: 'Mini quiz',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Which field holds work priority for this Fiber itself?',
-        answer: 'lanes',
-        tone: 'emerald',
-      },
-      {
-        id: 'q2',
-        question: 'Which field holds work priority for somewhere in the subtree?',
-        answer: 'childLanes',
-        tone: 'violet',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

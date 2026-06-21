@@ -33,20 +33,6 @@ export const DispatchSetStateHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
-
-      <div className="flex flex-wrap items-center gap-2 pt-2 text-xxsm font-mono text-[var(--term-muted)]">
-        <span className="rounded-md border border-emerald-300/70 bg-emerald-50/70 px-2 py-0.5 text-emerald-700 dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200">
-          setCount
-        </span>
-        <span className="text-[var(--term-dim)]">→</span>
-        <span className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[var(--term-accent)]">
-          dispatchSetState
-        </span>
-        <span className="text-[var(--term-dim)]">→</span>
-        <span className="rounded-md border border-violet-300/70 bg-violet-50/70 px-2 py-0.5 text-violet-700 dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200">
-          internal
-        </span>
-      </div>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-dispatch-set-state-entry" className="min-w-0">

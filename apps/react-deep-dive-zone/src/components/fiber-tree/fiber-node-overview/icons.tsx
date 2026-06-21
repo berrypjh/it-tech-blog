@@ -2,7 +2,6 @@ export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   Boxes as BoxesIcon,
-  CircuitBoard as CircuitBoardIcon,
   Database as DatabaseIcon,
   ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,

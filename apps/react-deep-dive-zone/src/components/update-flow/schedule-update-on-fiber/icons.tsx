@@ -12,7 +12,6 @@ export {
   FunctionSquare as FunctionSquareIcon,
   GitBranch as GitBranchIcon,
   Layers as LayersIcon,
-  Lightbulb as LightbulbIcon,
   MousePointerClick as MousePointerClickIcon,
   Network as NetworkIcon,
   RefreshCw as RefreshIcon,

@@ -28,7 +28,6 @@ export type FiberToRootContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     stack: FiberStackNode[];
     sideLabel: string;
     sideBody: string;
@@ -162,7 +161,6 @@ const ko: FiberToRootContent = {
     },
     description:
       'React는 이 트리 어딘가에 처리할 작업이 있다는 사실을 부모 경로 전체에 표시합니다.',
-    callout: '이 과정을 통해 Root는 "어디에 일이 있는지" 빠르게 파악할 수 있습니다.',
     stack: [
       {
         id: 'root',
@@ -384,7 +382,6 @@ const en: FiberToRootContent = {
     },
     description:
       'React advertises the fact that "there is work somewhere in this tree" along the entire parent path.',
-    callout: 'That is how Root quickly knows where work lives.',
     stack: [
       {
         id: 'root',

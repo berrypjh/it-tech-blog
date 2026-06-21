@@ -3,7 +3,6 @@ export {
   ArrowRight as ArrowRightIcon,
   Box as BoxIcon,
   Braces as BracesIcon,
-  CheckCircle2 as CheckCircleIcon,
   CircleDotDashed as CircleDotDashedIcon,
   CircleHelp as CircleHelpIcon,
   Code2 as CodeIcon,

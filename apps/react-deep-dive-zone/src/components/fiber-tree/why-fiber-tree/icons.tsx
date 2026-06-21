@@ -5,7 +5,6 @@ export {
   ArrowUp as ArrowUpIcon,
   Award as AwardIcon,
   Boxes as BoxesIcon,
-  ClipboardCheck as ClipboardIcon,
   Compass as CompassIcon,
   Database as DatabaseIcon,
   Fingerprint as FingerprintIcon,
@@ -19,8 +18,6 @@ export {
   Rocket as RocketIcon,
   Send as SendIcon,
   ShieldCheck as ShieldCheckIcon,
-  Sparkles as SparklesIcon,
-  Star as StarIcon,
   Trophy as TrophyIcon,
   Zap as ZapIcon,
 } from 'lucide-react';

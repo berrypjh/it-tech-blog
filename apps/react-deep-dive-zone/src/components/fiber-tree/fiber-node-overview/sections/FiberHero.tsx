@@ -6,7 +6,6 @@ import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { FiberHeroDiagram } from '../components/FiberHeroDiagram';
 import type { FiberNodeOverviewContent } from '../content';
-import { CircuitBoardIcon } from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['hero'] };
 
@@ -29,14 +28,6 @@ export const FiberHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
-
-      <div className="flex items-center gap-sm pt-xs text-xxsm text-[var(--term-muted)]">
-        <CircuitBoardIcon className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />
-        <span className="font-mono">
-          {'// '}
-          <span className="text-[var(--term-accent)] font-bold">{content.emphasis}</span>
-        </span>
-      </div>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-fiber-node">

@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { CodeReadingMissionSection } from './sections/CodeReadingMissionSection';
 import { DispatchCodeCheckpoint } from './sections/DispatchCodeCheckpoint';
 import { DispatchInternalSplitSection } from './sections/DispatchInternalSplitSection';
 import { DispatchResponsibilitiesSection } from './sections/DispatchResponsibilitiesSection';
@@ -25,7 +24,6 @@ export const DispatchSetStateEntryPage = ({ locale }: Props) => {
       <DispatchCodeCheckpoint content={c.checkpoint} />
       <LaneFirstReasonSection content={c.laneReason} />
       <DispatchInternalSplitSection content={c.splitReason} />
-      <CodeReadingMissionSection content={c.mission} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

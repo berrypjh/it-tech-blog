@@ -72,7 +72,6 @@ export type FiberNodeOverviewContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string; line3: string };
-    emphasis: string;
     description: string;
     cardTitle: string;
     cardLabel: string;
@@ -216,7 +215,6 @@ const ko: FiberNodeOverviewContent = {
       line2: 'React 렌더링의',
       line3: '기본 작업 단위입니다.',
     },
-    emphasis: '기본 작업 단위',
     description:
       '각 Fiber는 자신의 종류, 트리 관계, props와 state, 변경 표시, 우선순위, alternate 연결까지 함께 품습니다.',
     cardTitle: 'Fiber 객체 구조',
@@ -529,7 +527,6 @@ const en: FiberNodeOverviewContent = {
       line2: 'fundamental unit of work',
       line3: 'in React rendering.',
     },
-    emphasis: 'fundamental unit of work',
     description:
       'Each Fiber carries its own kind, tree relations, props and state, change flags, priority, and alternate link — all in one object.',
     cardTitle: 'Fiber object structure',

@@ -33,15 +33,6 @@ export type FunctionSplitCard = {
   badge: string;
 };
 
-export type MissionIconName = 'fileText' | 'search' | 'flag' | 'link';
-
-export type MissionStep = {
-  number: string;
-  body: string;
-  tone: ToneKey;
-  iconName: MissionIconName;
-};
-
 export type DispatchSetStateEntryContent = {
   hero: {
     badge: string;
@@ -101,13 +92,6 @@ export type DispatchSetStateEntryContent = {
     leftCard: FunctionSplitCard;
     rightCard: FunctionSplitCard;
     connectorLabel: string;
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: MissionStep[];
   };
   nextStep: {
     eyebrow: string;
@@ -294,39 +278,6 @@ const ko: DispatchSetStateEntryContent = {
     },
     connectorLabel: '역할 분리',
   },
-  mission: {
-    number: '07',
-    eyebrow: '코드 탐험',
-    title: '미니 코드 읽기 미션',
-    description:
-      'React 저장소를 열고 다음 네 단계만 차례로 따라가 보세요. dispatchSetState의 전체 그림이 손에 잡힙니다.',
-    steps: [
-      {
-        number: '1',
-        body: 'ReactFiberHooks.js를 연다.',
-        tone: 'sky',
-        iconName: 'fileText',
-      },
-      {
-        number: '2',
-        body: 'dispatchSetState를 찾는다.',
-        tone: 'cyan',
-        iconName: 'search',
-      },
-      {
-        number: '3',
-        body: 'requestUpdateLane 호출을 확인한다.',
-        tone: 'emerald',
-        iconName: 'flag',
-      },
-      {
-        number: '4',
-        body: 'dispatchSetStateInternal로 넘기는 부분을 확인한다.',
-        tone: 'violet',
-        iconName: 'link',
-      },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'lane 선택과 update 객체 생성',
@@ -488,39 +439,6 @@ const en: DispatchSetStateEntryContent = {
       badge: 'inner',
     },
     connectorLabel: 'separation of roles',
-  },
-  mission: {
-    number: '07',
-    eyebrow: 'Code reading',
-    title: 'Mini code-reading mission',
-    description:
-      'Open the React repo and follow these four steps. The whole shape of dispatchSetState will click into place.',
-    steps: [
-      {
-        number: '1',
-        body: 'Open ReactFiberHooks.js.',
-        tone: 'sky',
-        iconName: 'fileText',
-      },
-      {
-        number: '2',
-        body: 'Find dispatchSetState.',
-        tone: 'cyan',
-        iconName: 'search',
-      },
-      {
-        number: '3',
-        body: 'Spot the requestUpdateLane call.',
-        tone: 'emerald',
-        iconName: 'flag',
-      },
-      {
-        number: '4',
-        body: 'Trace the hand-off to dispatchSetStateInternal.',
-        tone: 'violet',
-        iconName: 'link',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

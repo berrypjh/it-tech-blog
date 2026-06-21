@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/StartPageShell';
 
 import { FiberChapterCompleteHero } from './sections/FiberChapterCompleteHero';
 import { FiberClosingMessage } from './sections/FiberClosingMessage';
-import { FiberFinalChecklist } from './sections/FiberFinalChecklist';
 import { FiberNextChapterPreview } from './sections/FiberNextChapterPreview';
 import { FiberRenderingFlowConnection } from './sections/FiberRenderingFlowConnection';
 import { FiberStructureFinalSummary } from './sections/FiberStructureFinalSummary';
@@ -21,7 +20,6 @@ export const FiberCentralRenderingStructurePage = ({ locale }: Props) => {
       <FiberChapterCompleteHero hero={c.hero} groups={c.summary.cards} />
       <FiberStructureFinalSummary content={c.summary} />
       <FiberRenderingFlowConnection content={c.flow} />
-      <FiberFinalChecklist content={c.checklist} />
       <FiberNextChapterPreview content={c.nextPreview} />
       <FiberClosingMessage content={c.closing} />
       <FinalLaunchBanner content={c.finale} />

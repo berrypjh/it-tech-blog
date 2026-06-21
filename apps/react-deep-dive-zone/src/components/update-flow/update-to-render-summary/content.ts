@@ -72,7 +72,6 @@ export type UpdateToRenderSummaryContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       steps: FlowStep[];
@@ -98,16 +97,6 @@ export type UpdateToRenderSummaryContent = {
     title: string;
     description: string;
     cards: SourcePathCard[];
-  };
-  checklist: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    items: string[];
-    completionTitle: string;
-    completionBody: string;
-    progressStart: string;
-    progressEnd: string;
   };
   misconceptions: {
     number: string;
@@ -335,7 +324,6 @@ const ko: UpdateToRenderSummaryContent = {
     },
     description:
       'React는 업데이트를 객체로 만들고, 우선순위를 고르고, queue에 넣고, Fiber와 Root에 흔적을 남기고, Root를 스케줄에 올린 뒤 Render Phase로 넘어갑니다.',
-    callout: '이 페이지는 지금까지의 흐름을 한눈에 연결하는 종합 정리 페이지입니다.',
     diagram: { title: '전체 흐름 요약', steps: flowStepsKo },
   },
   bigFlow: {
@@ -501,27 +489,6 @@ const ko: UpdateToRenderSummaryContent = {
       },
     ],
   },
-  checklist: {
-    number: '05',
-    eyebrow: '자기 점검',
-    title: '최종 체크리스트 — 나는 설명할 수 있는가?',
-    items: [
-      'setState가 즉시 DOM을 바꾸지 않는 이유',
-      'setState가 Fiber와 queue를 기억한 dispatch 함수인 이유',
-      'dispatchSetState의 역할',
-      'lane이 왜 필요한가',
-      'update 객체가 어떤 정보를 갖는가',
-      'eager bailout이 왜 가능한가',
-      'enqueueConcurrentHookUpdate가 하는 일',
-      'Fiber에서 Root까지 왜 올라가는가',
-      'scheduleUpdateOnFiber의 역할',
-      'ensureRootIsScheduled의 역할',
-    ],
-    completionTitle: '모두 체크했다면!',
-    completionBody: '이제 React의 업데이트 요청 흐름을 전반적으로 이해한 준비가 되었습니다.',
-    progressStart: '0%',
-    progressEnd: '100%',
-  },
   misconceptions: {
     number: '06',
     eyebrow: '오해 정리',
@@ -605,7 +572,6 @@ const en: UpdateToRenderSummaryContent = {
     },
     description:
       'React builds an update object, picks a priority, enqueues it, marks Fiber and Root, puts the Root on the schedule, and only then enters the Render Phase.',
-    callout: 'This page connects every step we have walked through into one picture.',
     diagram: { title: 'Full flow summary', steps: flowStepsEn },
   },
   bigFlow: {
@@ -769,27 +735,6 @@ const en: UpdateToRenderSummaryContent = {
         followBoxBody: 'processRootScheduleInMicrotask → performWorkOnRoot → Render Phase begins',
       },
     ],
-  },
-  checklist: {
-    number: '05',
-    eyebrow: 'Self-check',
-    title: 'Final checklist — can you explain each?',
-    items: [
-      'why setState does not change the DOM right away',
-      'why setState is a dispatch function bound to Fiber + queue',
-      'the role of dispatchSetState',
-      'why lanes are needed',
-      'what an update object carries',
-      'why eager bailout is possible',
-      'what enqueueConcurrentHookUpdate does',
-      'why React walks from Fiber up to Root',
-      'the role of scheduleUpdateOnFiber',
-      'the role of ensureRootIsScheduled',
-    ],
-    completionTitle: 'All checked!',
-    completionBody: 'You are ready to talk about the full React update-request flow end to end.',
-    progressStart: '0%',
-    progressEnd: '100%',
   },
   misconceptions: {
     number: '06',

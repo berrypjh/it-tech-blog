@@ -2,7 +2,6 @@ export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   Box as BoxIcon,
-  CheckCircle2 as CheckCircleIcon,
   CircleHelp as CircleHelpIcon,
   Code2 as CodeIcon,
   Database as DatabaseIcon,

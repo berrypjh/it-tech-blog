@@ -35,7 +35,6 @@ export type FiberCentralContent = {
     title: { line1: string; line2: string; line3: string };
     emphasisInTitle: string;
     description: string;
-    emphasisBox: string;
     visualTitle: string;
     fiberLabel: string;
     fiberGroupFields: { id: FieldGroup['id']; rows: string[] }[];
@@ -51,14 +50,6 @@ export type FiberCentralContent = {
     eyebrow: string;
     title: string;
     steps: FlowStep[];
-  };
-  checklist: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cardTitle: string;
-    items: string[];
-    bottomEmphasis: string;
   };
   nextPreview: {
     number: string;
@@ -90,7 +81,6 @@ const ko: FiberCentralContent = {
     emphasisInTitle: '절반이 보이기 시작합니다',
     description:
       'Fiber는 트리 노드이면서, 상태 저장소이고, 업데이트 기록이며, effect 표시판이고, 우선순위 컨테이너이고, 현재와 다음 화면을 잇는 연결점입니다.',
-    emphasisBox: '지금까지 배운 모든 개념이 하나의 Fiber 객체 안에서 유기적으로 연결됩니다.',
     visualTitle: 'Fiber 객체 전체 구조 요약',
     fiberLabel: 'Fiber',
     fiberGroupFields: [
@@ -212,25 +202,6 @@ const ko: FiberCentralContent = {
       },
     ],
   },
-  checklist: {
-    number: '03',
-    eyebrow: '체크리스트',
-    title: '최종 체크리스트',
-    cardTitle: '나는 설명할 수 있는가?',
-    items: [
-      'Fiber가 단순 트리 노드가 아닌 이유',
-      'tag / key / elementType / type의 차이',
-      'stateNode를 DOM node로 단정하면 안 되는 이유',
-      'child / sibling / return의 연결 방식',
-      'pendingProps와 memoizedProps의 차이',
-      'memoizedState와 updateQueue의 차이',
-      'flags / subtreeFlags / deletions의 역할',
-      'lanes / childLanes의 역할',
-      'current / workInProgress / alternate의 관계',
-    ],
-    bottomEmphasis:
-      '모든 항목을 스스로 설명할 수 있다면, 이제 업데이트 흐름으로 넘어갈 준비가 되었습니다!',
-  },
   nextPreview: {
     number: '04',
     eyebrow: '다음 챕터 예고',
@@ -305,7 +276,6 @@ const en: FiberCentralContent = {
     emphasisInTitle: 'becomes visible',
     description:
       'A Fiber is a tree node and a state store, an update log and an effect board, a priority container and the link between the current and the next screen.',
-    emphasisBox: 'Every concept you have learned ties back into a single Fiber object.',
     visualTitle: 'Fiber object — whole-structure summary',
     fiberLabel: 'Fiber',
     fiberGroupFields: [
@@ -426,24 +396,6 @@ const en: FiberCentralContent = {
         iconName: 'shield',
       },
     ],
-  },
-  checklist: {
-    number: '03',
-    eyebrow: 'Checklist',
-    title: 'Final checklist',
-    cardTitle: 'Can I explain each of these?',
-    items: [
-      'Why a Fiber is more than a tree node',
-      'The difference between tag / key / elementType / type',
-      'Why stateNode should not be treated as a DOM node',
-      'How child / sibling / return connect a Fiber tree',
-      'The difference between pendingProps and memoizedProps',
-      'The difference between memoizedState and updateQueue',
-      'The role of flags / subtreeFlags / deletions',
-      'The role of lanes / childLanes',
-      'The relationship between current / workInProgress / alternate',
-    ],
-    bottomEmphasis: 'If you can explain every item, you are ready to move on to the update flow!',
   },
   nextPreview: {
     number: '04',

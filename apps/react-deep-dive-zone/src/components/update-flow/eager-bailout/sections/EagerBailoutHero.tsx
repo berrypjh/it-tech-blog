@@ -34,21 +34,6 @@ export const EagerBailoutHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
-
-      {/* Inline keyword chips */}
-      <div className="flex flex-wrap items-center gap-2 pt-2 text-xxsm font-mono text-[var(--term-muted)]">
-        <span className="rounded-md border border-emerald-300/70 bg-emerald-50/70 px-2 py-0.5 text-emerald-700 dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200">
-          eagerState
-        </span>
-        <span className="text-[var(--term-dim)]">==</span>
-        <span className="rounded-md border border-sky-300/70 bg-sky-50/70 px-2 py-0.5 text-sky-700 dark:border-sky-700/60 dark:bg-sky-950/40 dark:text-sky-200">
-          currentState
-        </span>
-        <span className="text-[var(--term-dim)]">→</span>
-        <span className="rounded-md border border-violet-300/70 bg-violet-50/70 px-2 py-0.5 text-violet-700 dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200">
-          bailout
-        </span>
-      </div>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-eager-bailout">

@@ -32,7 +32,6 @@ export type ScheduleUpdateOnFiberContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       beforeLabel: string;
@@ -153,8 +152,6 @@ const ko: ScheduleUpdateOnFiberContent = {
     },
     description:
       'scheduleUpdateOnFiber는 Fiber 단위의 업데이트를 Root 단위의 pending work로 바꾸는 관문입니다.',
-    callout:
-      '이 단계부터 React는 "이 Root에 처리할 일이 있다"는 사실을 시스템 전체에 알리기 시작합니다.',
     diagram: {
       title: 'Root 상태 변화',
       beforeLabel: '이전',
@@ -343,7 +340,6 @@ const en: ScheduleUpdateOnFiberContent = {
     },
     description:
       'scheduleUpdateOnFiber is the gate that turns Fiber-level updates into Root-level pending work.',
-    callout: 'From here on, React announces to the whole system that "this Root has work to do".',
     diagram: {
       title: 'Root state transition',
       beforeLabel: 'before',

@@ -122,16 +122,6 @@ export type LaneUpdateObjectContent = {
     connectorLabel: string;
     bottomNote: string;
   };
-  quiz: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
-  };
   summary: {
     number: string;
     eyebrow: string;
@@ -360,17 +350,6 @@ const ko: LaneUpdateObjectContent = {
     connectorLabel: 'action으로 저장',
     bottomNote: 'React는 이후 reducer를 통해 action을 실제 다음 state 계산에 사용한다.',
   },
-  quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: 'setCount(count + 1)은 queue에 숫자만 저장할까?',
-    answerTitle: '아니다.',
-    answerBody:
-      'React는 update 객체를 만들고 그 안에 lane과 action을 함께 저장한다. 즉, queue에는 단순 값이 아니라 처리 기준과 변경 내용을 함께 담은 update 객체가 들어간다.',
-  },
   summary: {
     number: '07',
     eyebrow: '핵심 요약',
@@ -588,17 +567,6 @@ const en: LaneUpdateObjectContent = {
     },
     connectorLabel: 'stored as action',
     bottomNote: 'React later runs the reducer over action to compute the next state.',
-  },
-  quiz: {
-    number: '06',
-    eyebrow: 'Mini quiz',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'Does setCount(count + 1) just store a number in the queue?',
-    answerTitle: 'No.',
-    answerBody:
-      'React builds an update object and stores both the lane and the action inside it. The queue holds full update objects — not raw values.',
   },
   summary: {
     number: '07',

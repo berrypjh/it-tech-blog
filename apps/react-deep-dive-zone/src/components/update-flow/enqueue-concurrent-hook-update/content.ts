@@ -100,16 +100,6 @@ export type EnqueueConcurrentHookUpdateContent = {
     rightNode: { title: string; body: string };
     bottomMessage: string;
   };
-  quiz: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -328,16 +318,6 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     bottomMessage:
       '개별 Hook queue에 update를 넣은 뒤, React는 그 업데이트가 속한 전체 FiberRoot를 찾아야 한다.',
   },
-  quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: 'enqueueConcurrentHookUpdate는 업데이트 등록 이후 무엇을 반환할까?',
-    answerTitle: '이 업데이트가 속한 FiberRoot를 반환합니다.',
-    answerBody: '반환 타입: FiberRoot | null',
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Fiber에서 Root까지 올라가기',
@@ -541,16 +521,6 @@ const en: EnqueueConcurrentHookUpdateContent = {
     },
     bottomMessage:
       'After placing the update on the Hook queue, React still has to find the FiberRoot that owns it.',
-  },
-  quiz: {
-    number: '06',
-    eyebrow: 'Mini quiz',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'After registering the update, what does enqueueConcurrentHookUpdate return?',
-    answerTitle: 'It returns the FiberRoot the update belongs to.',
-    answerBody: 'Return type: FiberRoot | null',
   },
   nextStep: {
     eyebrow: 'The journey continues',

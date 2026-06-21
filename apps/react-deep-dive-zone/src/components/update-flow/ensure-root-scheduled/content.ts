@@ -27,7 +27,6 @@ export type EnsureRootScheduledContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       roots: HeroRootCard[];
@@ -149,8 +148,6 @@ const ko: EnsureRootScheduledContent = {
     },
     description:
       'ensureRootIsScheduled는 업데이트가 들어온 Root를 나중에 처리할 수 있도록 Root schedule과 microtask 예약을 보장합니다.',
-    callout:
-      '이 단계는 실제 렌더를 수행하는 것이 아니라, "나중에 처리할 목록"과 "처리 예약"을 준비합니다.',
     diagram: {
       title: '여러 Root에 업데이트 발생',
       roots: [
@@ -307,8 +304,6 @@ const en: EnsureRootScheduledContent = {
     },
     description:
       'ensureRootIsScheduled guarantees that an updated Root sits on the root schedule and that a microtask is reserved to process it later.',
-    callout:
-      'This step does not actually render — it prepares the "to-process list" and the "processing reservation".',
     diagram: {
       title: 'Updates land on multiple Roots',
       roots: [

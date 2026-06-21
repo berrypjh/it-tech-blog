@@ -7,7 +7,6 @@ import { EagerBailoutCodeCheckpoint } from './sections/EagerBailoutCodeCheckpoin
 import { EagerBailoutFlowSection } from './sections/EagerBailoutFlowSection';
 import { EagerBailoutHero } from './sections/EagerBailoutHero';
 import { EmptyQueueReasonSection } from './sections/EmptyQueueReasonSection';
-import { MiniQuizSection } from './sections/MiniQuizSection';
 import { SameStateExamplesSection } from './sections/SameStateExamplesSection';
 import { UpdateVsRenderScheduleSection } from './sections/UpdateVsRenderScheduleSection';
 import { eagerBailoutContent } from './content';
@@ -25,7 +24,6 @@ export const EagerBailoutPage = ({ locale }: Props) => {
       <EagerBailoutCodeCheckpoint content={c.checkpoint} />
       <EmptyQueueReasonSection content={c.queueReason} />
       <UpdateVsRenderScheduleSection content={c.scheduleTable} />
-      <MiniQuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -110,16 +110,6 @@ export type EagerBailoutContent = {
     rows: ScheduleRow[];
     bottomNote: string;
   };
-  quiz: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -311,16 +301,6 @@ const ko: EagerBailoutContent = {
     ],
     bottomNote: 'update가 만들어졌다고 해서 항상 렌더가 예약되는 것은 아니다.',
   },
-  quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: 'setState를 호출했는데 컴포넌트가 다시 렌더링되지 않을 수 있을까?',
-    answerTitle: '그럴 수 있다.',
-    answerBody: 'React가 같은 상태로 판단해 eager bailout할 수 있다.',
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'enqueueConcurrentHookUpdate',
@@ -498,16 +478,6 @@ const en: EagerBailoutContent = {
       },
     ],
     bottomNote: 'Building an update does not always schedule a render.',
-  },
-  quiz: {
-    number: '06',
-    eyebrow: 'Mini quiz',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'You called setState — could the component still skip the re-render?',
-    answerTitle: 'Yes, it can.',
-    answerBody: 'React may decide the state is unchanged and take the eager bailout.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

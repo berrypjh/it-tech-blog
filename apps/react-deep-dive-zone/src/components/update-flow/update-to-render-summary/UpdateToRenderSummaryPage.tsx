@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { FinalChecklistSection } from './sections/FinalChecklistSection';
 import { FullFlowDiagramSection } from './sections/FullFlowDiagramSection';
 import { MisconceptionsSection } from './sections/MisconceptionsSection';
 import { NextChapterPreviewSection } from './sections/NextChapterPreviewSection';
@@ -23,7 +22,6 @@ export const UpdateToRenderSummaryPage = ({ locale }: Props) => {
       <FullFlowDiagramSection content={c.bigFlow} />
       <StepRoleTableSection content={c.roleTable} />
       <SourcePathSection content={c.sourcePath} />
-      <FinalChecklistSection content={c.checklist} />
       <MisconceptionsSection content={c.misconceptions} />
       <NextChapterPreviewSection content={c.nextChapter} />
       <FinalLaunchBanner content={c.finale} />

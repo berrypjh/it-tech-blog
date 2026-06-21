@@ -40,11 +40,6 @@ export type StateUpdateStartContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    callout: {
-      title: string;
-      lines: string[];
-      emphasis: string;
-    };
     flow: {
       heading: string;
       caption: string;
@@ -158,14 +153,6 @@ const ko: StateUpdateStartContent = {
     },
     description:
       'React는 먼저 이 컴포넌트에 업데이트 요청이 생겼다는 사실을 기록하고, 우선순위를 정하고, 렌더링을 예약한 뒤 실제 화면 반영으로 넘어갑니다.',
-    callout: {
-      title: '화면이 바뀌는 순간',
-      lines: [
-        '화면이 바뀌는 순간은 Commit Phase입니다.',
-        'setState는 그보다 훨씬 이전에서 시작됩니다.',
-      ],
-      emphasis: 'Commit Phase',
-    },
     flow: {
       heading: 'setState 이후 흐름',
       caption: '한 줄 호출 뒤에 일어나는 5단계',
@@ -344,14 +331,6 @@ const en: StateUpdateStartContent = {
     },
     description:
       'React first records that an update was requested on this component, decides its priority, schedules the render, and only then moves on to the actual screen update.',
-    callout: {
-      title: 'When the screen actually changes',
-      lines: [
-        'The screen changes during the Commit Phase.',
-        'setState starts much earlier than that.',
-      ],
-      emphasis: 'Commit Phase',
-    },
     flow: {
       heading: 'What happens after setState',
       caption: 'The five stages behind a single call',

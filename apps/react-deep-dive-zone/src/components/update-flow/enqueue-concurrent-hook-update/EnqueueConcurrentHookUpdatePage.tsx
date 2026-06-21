@@ -8,7 +8,6 @@ import { EnqueueHero } from './sections/EnqueueHero';
 import { EnqueueUpdateMeaningSection } from './sections/EnqueueUpdateMeaningSection';
 import { FourElementsSection } from './sections/FourElementsSection';
 import { FullFunctionFlowSection } from './sections/FullFunctionFlowSection';
-import { MiniQuizSection } from './sections/MiniQuizSection';
 import { RootReasonSection } from './sections/RootReasonSection';
 import { enqueueConcurrentHookUpdateContent } from './content';
 
@@ -25,7 +24,6 @@ export const EnqueueConcurrentHookUpdatePage = ({ locale }: Props) => {
       <CodeCheckpointSection content={c.checkpoint} />
       <EnqueueUpdateMeaningSection content={c.meaning} />
       <RootReasonSection content={c.rootReason} />
-      <MiniQuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
