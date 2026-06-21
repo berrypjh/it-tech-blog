@@ -1,5 +1,5 @@
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneCardGrid, ToneCardItem } from '../../../shared/ToneCardGrid';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import type { WhySourceContent } from '../content';
 import { iconByName, QuestionIcon } from '../icons';
 

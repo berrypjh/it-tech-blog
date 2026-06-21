@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { type FlowStepItem, FlowStepsGrid } from '../../../shared/FlowStepsGrid';
+import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, UsageVsInternalsContent } from '../content';

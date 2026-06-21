@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { ArrowRight } from 'lucide-react';
 
-import { type ToneKey, toneTokens } from './tones';
+import { type ToneKey, toneTokens } from '../tones';
 
 export type FlowStepItem = {
   id: string;

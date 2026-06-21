@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { type FlowStepItem, FlowStepsGrid } from '../../../shared/FlowStepsGrid';
+import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
 import type { FlowStep, ReactCreateElementContent } from '../content';
 import { AtomIcon, CodeIcon, LightbulbIcon, SlidersIcon, WorkflowIcon } from '../icons';

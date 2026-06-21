@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { type ToneKey, toneTokens } from './tones';
+import { type ToneKey, toneTokens } from '../tones';
 
 type Props = {
   tone: ToneKey;

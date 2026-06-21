@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneBadge } from '../../../shared/ToneBadge';
-import { ToneCard } from '../../../shared/ToneCard';
+import { ToneBadge, ToneCard } from '../../../shared/tone';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
 

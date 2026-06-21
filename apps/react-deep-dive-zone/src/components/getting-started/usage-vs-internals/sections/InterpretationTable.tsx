@@ -1,4 +1,4 @@
-import { ComparisonTable } from '../../../shared/ComparisonTable';
+import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
 import { FxIcon } from '../icons';
