@@ -135,7 +135,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       flowLoop: '상태 변화에 따라 다시 시작되는 사이클',
     },
     questions: {
-      eyebrow: '01 · question pool',
+      eyebrow: '01 · 문제 제기',
       title: 'React를 쓰며 자주 생기는 의문',
       cards: [
         {
@@ -173,7 +173,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     benefits: {
-      eyebrow: '02 · what you gain',
+      eyebrow: '02 · 학습 효과',
       title: '소스코드를 읽으면 얻는 것',
       cards: [
         {
@@ -211,7 +211,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '03 · first read',
+      eyebrow: '03 · 첫 코드',
       title: '첫 코드 맛보기',
       file: {
         fileName: 'ReactJSXElement.js',
@@ -274,7 +274,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       flowLoop: 'The cycle restarts on every state change',
     },
     questions: {
-      eyebrow: '01 · question pool',
+      eyebrow: '01 · PROBLEM',
       title: 'Questions React Developers Keep Hitting',
       cards: [
         {
@@ -312,7 +312,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     benefits: {
-      eyebrow: '02 · what you gain',
+      eyebrow: '02 · BENEFITS',
       title: 'What You Gain by Reading the Source',
       cards: [
         {
@@ -350,7 +350,7 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '03 · first read',
+      eyebrow: '03 · FIRST CODE',
       title: 'First Taste of the Source',
       file: {
         fileName: 'ReactJSXElement.js',

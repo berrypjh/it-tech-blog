@@ -2,14 +2,12 @@ import type { WhySourceContent } from '../content';
 
 type Props = { file: WhySourceContent['firstCode']['file'] };
 
-/**
- * 파일 헤더(JS 뱃지 + 파일명/owner) + 설명 블록 리스트로 구성된 카드.
- * FirstCodePreview의 좌측 사이드 카드로 사용.
- */
 export const FileCard = ({ file }: Props) => {
   return (
-    <article className="flex flex-col gap-md h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md">
-      {/* 파일 헤더 */}
+    <article
+      aria-label={`${file.fileName} 파일 안내`}
+      className="flex flex-col gap-md h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md"
+    >
       <div className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
         <span
           className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-800/60 dark:bg-amber-950/40 dark:text-amber-300 text-[10px] font-bold tracking-wider"
@@ -23,7 +21,6 @@ export const FileCard = ({ file }: Props) => {
         </div>
       </div>
 
-      {/* 설명 블록들 */}
       <ul className="flex flex-col gap-sm">
         {file.blocks.map((block, i) => (
           <li

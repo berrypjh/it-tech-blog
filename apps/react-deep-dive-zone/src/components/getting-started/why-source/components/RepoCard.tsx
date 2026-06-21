@@ -3,14 +3,12 @@ import { ArrowRightIcon, GithubIcon } from '../icons';
 
 type Props = { repo: WhySourceContent['firstCode']['repo'] };
 
-/**
- * GitHub 저장소 정보 카드: 저장소명/visibility, 경로·파라미터, 통계.
- * FirstCodePreview의 우측 사이드 카드로 사용.
- */
 export const RepoCard = ({ repo }: Props) => {
   return (
-    <article className="flex flex-col gap-sm h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md">
-      {/* 상단: 저장소명 + visibility */}
+    <article
+      aria-label={`${repo.owner} / ${repo.name} 저장소 정보`}
+      className="flex flex-col gap-sm h-full rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md"
+    >
       <div className="flex items-start gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
         <span
           className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)] shrink-0"
@@ -30,7 +28,6 @@ export const RepoCard = ({ repo }: Props) => {
         </div>
       </div>
 
-      {/* 경로 + 파라미터 */}
       <div className="flex flex-col gap-1">
         <p className="text-[11px] font-mono text-[var(--term-muted)] break-all">{repo.path}</p>
         <p className="text-[11px] text-[var(--term-muted)]">{repo.parameters}</p>
@@ -41,19 +38,19 @@ export const RepoCard = ({ repo }: Props) => {
           className="inline-flex items-center gap-1 text-xxsm font-bold text-[var(--term-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] rounded"
         >
           {repo.link}
-          <ArrowRightIcon className="h-3 w-3" />
+          <span className="sr-only">(새 창에서 열림)</span>
+          <ArrowRightIcon className="h-3 w-3" aria-hidden="true" />
         </a>
       </div>
 
-      {/* 통계 3개 */}
       <ul className="grid grid-cols-3 gap-1 mt-sm">
         {(
           [
-            ['★', repo.stats.stars],
-            ['⑂', repo.stats.forks],
-            ['◉', repo.stats.watchers],
+            ['★', 'Stars', repo.stats.stars],
+            ['⑂', 'Forks', repo.stats.forks],
+            ['◉', 'Watchers', repo.stats.watchers],
           ] as const
-        ).map(([sym, val]) => (
+        ).map(([sym, label, val]) => (
           <li
             key={sym}
             className="flex flex-col items-center gap-0.5 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] py-1"
@@ -61,7 +58,10 @@ export const RepoCard = ({ repo }: Props) => {
             <span className="text-[10px] text-[var(--term-muted)]" aria-hidden="true">
               {sym}
             </span>
-            <span className="text-xsm font-bold text-[var(--term-fg)] tabular-nums">{val}</span>
+            <span className="text-xsm font-bold text-[var(--term-fg)] tabular-nums">
+              <span className="sr-only">{label}: </span>
+              {val}
+            </span>
           </li>
         ))}
       </ul>

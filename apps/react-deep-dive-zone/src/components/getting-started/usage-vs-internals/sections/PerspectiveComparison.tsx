@@ -92,7 +92,7 @@ export const PerspectiveComparison = ({ content }: Props) => {
     <section
       id="section-perspectives"
       aria-labelledby="heading-perspectives"
-      className="space-y-lg rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md sm:p-lg lg:p-xl"
+      className="space-y-lg"
     >
       <SectionHeader
         id="perspectives"
@@ -101,7 +101,6 @@ export const PerspectiveComparison = ({ content }: Props) => {
         icon={<CubeWireframeIcon className="h-5 w-5" />}
       />
 
-      {/* 좌우 카드 + 중앙 VS */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
         <PerspectivePanel tone="usage" panel={content.left} />
 

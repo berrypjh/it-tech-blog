@@ -42,7 +42,7 @@ export const NextStepBanner = ({ content }: Props) => {
 
           <span className="inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md bg-[var(--term-accent)] text-[var(--term-bg)] text-xsm font-bold transition-transform group-hover:translate-x-0.5 self-stretch lg:self-auto">
             {content.cta}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </div>
       </Link>

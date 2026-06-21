@@ -1,14 +1,17 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type UsageStep = { num: string; title: string; body: string };
 export type InternalStep = { num: string; title: string; body: string };
 
 export type FlowStep = {
   id: 'click' | 'dispatch' | 'queue' | 'schedule' | 'render' | 'commit';
-  num: string;
+  number: string;
   title: string;
-  hint: string;
-  icon: 'cursor' | 'fx' | 'database' | 'clockRefresh' | 'cube' | 'checkCircle';
+  body: string;
+  iconName: 'cursor' | 'fx' | 'database' | 'clockRefresh' | 'cube' | 'checkCircle';
+  tone: ToneKey;
 };
 
 export type StackLayer = {
@@ -123,7 +126,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '01 · perspective',
+      eyebrow: '01 · 관점 비교',
       title: '두 관점으로 읽어보기',
       left: {
         title: '사용법 관점 (4단계)',
@@ -166,37 +169,61 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '02 · counter flow',
+      eyebrow: '02 · 내부 흐름',
       title: '버튼을 누르면 내부에서는 무슨 일이 일어날까?',
       steps: [
-        { id: 'click', num: '1', title: 'Click', hint: '사용자 클릭', icon: 'cursor' },
+        {
+          id: 'click',
+          number: '1',
+          title: 'Click',
+          body: '사용자 클릭',
+          iconName: 'cursor',
+          tone: 'sky',
+        },
         {
           id: 'dispatch',
-          num: '2',
+          number: '2',
           title: 'dispatchSetState',
-          hint: '`setCount` 호출',
-          icon: 'fx',
+          body: '`setCount` 호출',
+          iconName: 'fx',
+          tone: 'blue',
         },
-        { id: 'queue', num: '3', title: 'update queue', hint: '업데이트 저장', icon: 'database' },
+        {
+          id: 'queue',
+          number: '3',
+          title: 'update queue',
+          body: '업데이트 저장',
+          iconName: 'database',
+          tone: 'indigo',
+        },
         {
           id: 'schedule',
-          num: '4',
+          number: '4',
           title: 'scheduleUpdateOnFiber',
-          hint: '스케줄링 시작',
-          icon: 'clockRefresh',
+          body: '스케줄링 시작',
+          iconName: 'clockRefresh',
+          tone: 'cyan',
         },
-        { id: 'render', num: '5', title: 'Render Phase', hint: '변경 계산', icon: 'cube' },
+        {
+          id: 'render',
+          number: '5',
+          title: 'Render Phase',
+          body: '변경 계산',
+          iconName: 'cube',
+          tone: 'teal',
+        },
         {
           id: 'commit',
-          num: '6',
+          number: '6',
           title: 'Commit Phase',
-          hint: 'DOM 반영',
-          icon: 'checkCircle',
+          body: 'DOM 반영',
+          iconName: 'checkCircle',
+          tone: 'emerald',
         },
       ],
     },
     demo: {
-      eyebrow: '03 · live demo',
+      eyebrow: '03 · 라이브 데모',
       title: '직접 경험해보기 (상상 데모)',
       counter: {
         title: 'Counter 데모',
@@ -221,7 +248,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '04 · interpretation',
+      eyebrow: '04 · 해석 비교',
       title: '같은 현상, 다른 해석',
       headers: {
         phenomenon: '현상',
@@ -247,7 +274,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '05 · source code',
+      eyebrow: '05 · 소스 코드',
       title: '실제 React 코드에서 확인하기',
       cards: [
         {
@@ -269,7 +296,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '06 · takeaway',
+      eyebrow: '06 · 핵심 정리',
       title: '핵심 takeaway',
       lines: [
         '상태가 바뀌었다고 DOM이 바로 바뀌는 것이 아닙니다.',
@@ -300,7 +327,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '01 · perspective',
+      eyebrow: '01 · PERSPECTIVES',
       title: 'Two Perspectives, Same Code',
       left: {
         title: 'Usage perspective (4 steps)',
@@ -347,43 +374,61 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '02 · counter flow',
+      eyebrow: '02 · INTERNAL FLOW',
       title: 'When you press the button, what happens inside?',
       steps: [
-        { id: 'click', num: '1', title: 'Click', hint: 'User click', icon: 'cursor' },
+        {
+          id: 'click',
+          number: '1',
+          title: 'Click',
+          body: 'User click',
+          iconName: 'cursor',
+          tone: 'sky',
+        },
         {
           id: 'dispatch',
-          num: '2',
+          number: '2',
           title: 'dispatchSetState',
-          hint: '`setCount` call',
-          icon: 'fx',
+          body: '`setCount` call',
+          iconName: 'fx',
+          tone: 'blue',
         },
         {
           id: 'queue',
-          num: '3',
+          number: '3',
           title: 'update queue',
-          hint: 'store the update',
-          icon: 'database',
+          body: 'store the update',
+          iconName: 'database',
+          tone: 'indigo',
         },
         {
           id: 'schedule',
-          num: '4',
+          number: '4',
           title: 'scheduleUpdateOnFiber',
-          hint: 'start scheduling',
-          icon: 'clockRefresh',
+          body: 'start scheduling',
+          iconName: 'clockRefresh',
+          tone: 'cyan',
         },
-        { id: 'render', num: '5', title: 'Render Phase', hint: 'compute changes', icon: 'cube' },
+        {
+          id: 'render',
+          number: '5',
+          title: 'Render Phase',
+          body: 'compute changes',
+          iconName: 'cube',
+          tone: 'teal',
+        },
         {
           id: 'commit',
-          num: '6',
+          number: '6',
           title: 'Commit Phase',
-          hint: 'apply to DOM',
-          icon: 'checkCircle',
+          body: 'apply to DOM',
+          iconName: 'checkCircle',
+          tone: 'emerald',
         },
       ],
     },
     demo: {
-      eyebrow: '03 · live demo',
+      eyebrow: '03 · LIVE DEMO',
       title: 'Try it yourself (imagined demo)',
       counter: {
         title: 'Counter Demo',
@@ -408,7 +453,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '04 · interpretation',
+      eyebrow: '04 · INTERPRETATION',
       title: 'Same phenomenon, different interpretation',
       headers: {
         phenomenon: 'Phenomenon',
@@ -434,7 +479,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '05 · source code',
+      eyebrow: '05 · SOURCE CODE',
       title: 'See it in the real React source',
       cards: [
         {
@@ -456,7 +501,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '06 · takeaway',
+      eyebrow: '06 · KEY TAKEAWAY',
       title: 'Core takeaway',
       lines: [
         "Changing state doesn't change the DOM instantly.",

@@ -23,6 +23,7 @@ export const GithubButton = ({ href, label, className }: Props) => (
   >
     <GithubIcon className="h-3.5 w-3.5" />
     {label}
+    <span className="sr-only">(새 창에서 열림)</span>
     <ArrowRight
       className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
       aria-hidden="true"

@@ -1,7 +1,5 @@
 import { SectionHeader } from '../../../shared/SectionHeader';
-import { ToneBadge } from '../../../shared/ToneBadge';
-import { ToneCard } from '../../../shared/ToneCard';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/ToneCardGrid';
 import type { WhySourceContent } from '../content';
 import { iconByName, QuestionIcon } from '../icons';
 
@@ -17,38 +15,29 @@ export const ReactQuestionCards = ({ content }: Props) => {
         icon={<QuestionIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
+      <ToneCardGrid>
         {content.cards.map((card) => {
           const Icon = iconByName[card.icon];
 
           return (
-            <li key={card.id}>
-              <ToneCard tone={card.tone} className="relative">
-                <div className="flex items-start justify-between">
-                  <ToneIconBox tone={card.tone}>
-                    <Icon className="h-5 w-5" />
-                  </ToneIconBox>
-                  <span className="text-xxsm tabular-nums text-[var(--term-muted)] font-bold">
-                    {card.number}
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" />}
+              topRight={card.number}
+              badge={card.badge}
+            >
+              <p className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
+                {card.question.map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
                   </span>
-                </div>
-
-                <p className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
-                  {card.question.map((line, i) => (
-                    <span key={i} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </p>
-
-                <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
-                  <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
-                </div>
-              </ToneCard>
-            </li>
+                ))}
+              </p>
+            </ToneCardItem>
           );
         })}
-      </ul>
+      </ToneCardGrid>
     </section>
   );
 };

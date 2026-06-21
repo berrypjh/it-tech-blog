@@ -28,7 +28,6 @@ export const FirstCodePreview = ({ content }: Props) => {
         icon={<CodeIcon className="h-5 w-5" />}
       />
 
-      {/* 코드 중심 hero: 코드 패널 풀폭 → File·Repo 2열 */}
       <div className="flex flex-col gap-md sm:gap-lg lg:gap-xl">
         <div className="min-w-0">
           <CodePreviewPanel code={content.code.code} language={content.code.language} />
@@ -39,7 +38,6 @@ export const FirstCodePreview = ({ content }: Props) => {
         </div>
       </div>
 
-      {/* 하단 버튼 */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-sm pt-sm">
         <GithubButton
           href="https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js"
