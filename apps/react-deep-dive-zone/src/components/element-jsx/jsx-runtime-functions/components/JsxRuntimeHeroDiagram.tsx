@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { JsxRuntimeFunctionsContent, RuntimeFunctionCard } from '../content';
 import { AtomIcon, BoxIcon, BracesIcon, LayersIcon } from '../icons';
 import { ToneIconBox, toneText } from '../localTone';

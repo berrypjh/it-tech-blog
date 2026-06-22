@@ -3,7 +3,7 @@ import { cn } from '@it-tech-blog/utils';
 import { ExternalLink } from 'lucide-react';
 import type { ReactNode } from 'react';
 
-import { GithubIcon } from '../GithubIcon';
+import { GithubIcon } from '../icon';
 
 type Props = { href: string; label: ReactNode; className?: string };
 

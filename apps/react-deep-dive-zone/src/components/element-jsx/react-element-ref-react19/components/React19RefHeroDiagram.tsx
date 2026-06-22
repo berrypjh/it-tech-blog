@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { HeroFlowStep, ReactElementRefReact19Content } from '../content';
 import { NetworkIcon } from '../icons';
 

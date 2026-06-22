@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { HeroDiagramItem, ReactElementTypeMeaningContent } from '../content';
 import { SparklesIcon, TagIcon, UserIcon } from '../icons';
 import { toneChip, ToneIconBox, toneText } from '../localTone';

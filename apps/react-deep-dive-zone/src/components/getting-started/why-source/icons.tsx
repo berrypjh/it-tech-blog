@@ -1,6 +1,6 @@
 import { BarChart3, Clock, Eye, Gauge, Key, Puzzle, Search, Zap } from 'lucide-react';
 
-export { GithubIcon } from '../../shared/GithubIcon';
+export { GithubIcon } from '../../shared/icon';
 export {
   RotateCw as ArrowLoopIcon,
   ArrowRight as ArrowRightIcon,

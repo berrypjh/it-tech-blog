@@ -9,7 +9,7 @@ import {
   Tag,
 } from 'lucide-react';
 
-export { GithubIcon } from '../../shared/GithubIcon';
+export { GithubIcon } from '../../shared/icon';
 export {
   ArrowRight as ArrowRightIcon,
   BookOpen as BookIcon,

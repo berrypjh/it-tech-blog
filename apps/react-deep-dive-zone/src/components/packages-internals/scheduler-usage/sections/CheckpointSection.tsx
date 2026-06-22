@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
-import { GithubIcon } from '../../../shared/GithubIcon';
+import { GithubIcon } from '../../../shared/icon';
 import { SectionHeader } from '../../../shared/section';
 import type { CheckpointItem, SchedulerContent } from '../content';
 import { HouseIconBox } from '../HouseIconBox';

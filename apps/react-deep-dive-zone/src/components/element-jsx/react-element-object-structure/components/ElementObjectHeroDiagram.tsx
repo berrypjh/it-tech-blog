@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
 import { BoxIcon, FingerprintIcon, KeyIcon, PanelIcon, UserIcon } from '../icons';
 import { toneBorderHover, ToneChip, ToneIconBox, toneText } from '../localTone';

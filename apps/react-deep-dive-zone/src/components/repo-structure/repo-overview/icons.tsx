@@ -17,7 +17,7 @@ export {
 
 type IconProps = { className?: string };
 
-export { GithubIcon } from '../../shared/GithubIcon';
+export { GithubIcon } from '../../shared/icon';
 
 /** Stylised React atom mark — used in the hero side panel. */
 export const ReactAtomIcon = ({ className }: IconProps) => (

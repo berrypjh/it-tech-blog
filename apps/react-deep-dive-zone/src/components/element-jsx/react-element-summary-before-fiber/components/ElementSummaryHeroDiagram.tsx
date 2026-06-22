@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, NetworkIcon } from '../icons';
 import { toneChip, ToneIconBox, toneText } from '../localTone';

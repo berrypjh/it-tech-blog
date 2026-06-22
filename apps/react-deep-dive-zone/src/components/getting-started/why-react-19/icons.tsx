@@ -1,6 +1,6 @@
 import { Box, Link, Sparkle, Zap } from 'lucide-react';
 
-export { GithubIcon } from '../../shared/GithubIcon';
+export { GithubIcon } from '../../shared/icon';
 export {
   ArrowDown as ArrowDownIcon,
   MoveRight as ArrowLongRightIcon,
