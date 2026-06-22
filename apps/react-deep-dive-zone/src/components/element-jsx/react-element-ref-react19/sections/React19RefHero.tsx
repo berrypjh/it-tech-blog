@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { React19RefHeroDiagram } from '../components/React19RefHeroDiagram';
 import type { ReactElementRefReact19Content } from '../content';
 

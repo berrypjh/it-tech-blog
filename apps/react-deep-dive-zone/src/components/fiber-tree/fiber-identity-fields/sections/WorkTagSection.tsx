@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { WorkTagCardItem } from '../components/WorkTagCard';
 import type { FiberIdentityFieldsContent } from '../content';
 import { LightbulbIcon, TagIcon } from '../icons';

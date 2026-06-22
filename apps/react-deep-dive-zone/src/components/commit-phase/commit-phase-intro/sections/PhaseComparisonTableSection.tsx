@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { CommitPhaseIntroContent, ComparisonRow } from '../content';
 import { CheckCircleIcon, ListChecksIcon, XIcon } from '../icons';
 

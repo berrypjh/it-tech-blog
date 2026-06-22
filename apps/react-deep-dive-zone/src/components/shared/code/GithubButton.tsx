@@ -3,11 +3,10 @@ import { cn } from '@it-tech-blog/utils';
 import { ExternalLink } from 'lucide-react';
 import type { ReactNode } from 'react';
 
-import { GithubIcon } from './GithubIcon';
+import { GithubIcon } from '../GithubIcon';
 
 type Props = { href: string; label: ReactNode; className?: string };
 
-/** 소스 보기용 GitHub CTA 버튼. 라이트=slate-900, 다크=slate-800. */
 export const GithubButton = ({ href, label, className }: Props) => (
   <a
     href={href}

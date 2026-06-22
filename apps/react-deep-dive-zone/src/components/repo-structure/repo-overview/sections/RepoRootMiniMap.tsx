@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import { RepoTreeCard } from '../components/RepoTreeCard';
 import type { RepoOverviewContent } from '../content';

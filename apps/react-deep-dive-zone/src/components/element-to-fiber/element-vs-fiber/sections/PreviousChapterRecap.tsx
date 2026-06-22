@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ElementVsFiberContent, RecapStep } from '../content';
 import { ArrowDownIcon, BoxesIcon, CodeIcon, LightbulbIcon, RotateIcon, WandIcon } from '../icons';
 

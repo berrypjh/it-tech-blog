@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { JsxTransformFlowContent, ReasonCard } from '../content';
 import { FileTextIcon, GaugeIcon, LinkIcon, ZapIcon } from '../icons';
 import { localTone } from '../localTone';

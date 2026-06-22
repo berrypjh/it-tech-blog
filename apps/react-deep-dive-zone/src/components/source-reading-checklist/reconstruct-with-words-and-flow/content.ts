@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
 import type { AspectKey } from './aspectTone';

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent } from '../content';
 import { ArrowRightIcon, DoorOpenIcon, FileCodeIcon, SparkIcon } from '../icons';

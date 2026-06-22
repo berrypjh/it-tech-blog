@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowRightIcon, CheckCircleIcon, WorkflowIcon } from '../icons';
 import { neutralBorder, toneChip, toneText } from '../localTone';

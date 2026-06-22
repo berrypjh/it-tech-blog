@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementObjectStructureContent, SummaryPill } from '../content';
 import { ArrowRightIcon, FileTextIcon, MonitorIcon, ScanSearchIcon, WorkflowIcon } from '../icons';
 import { toneBorderHover, ToneIconBox, toneText } from '../localTone';

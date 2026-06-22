@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { RootSchedulerHeroDiagram } from '../components/RootSchedulerHeroDiagram';
 import type { RootSchedulerContent } from '../content';
 

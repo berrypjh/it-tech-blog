@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { InputCard, ReconcileChildrenContent } from '../content';
 import { BoxIcon, FileTextIcon, ListChecksIcon, NetworkIcon } from '../icons';
 

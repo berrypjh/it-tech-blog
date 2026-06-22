@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { EvidenceCard, JsxIsNotHtmlContent } from '../content';
 import { Code2Icon } from '../icons';
 import { accentDot, accentText, chromeChip, chromeHover } from '../toneLocal';

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
 import { BugIcon, CheckCircleIcon, GaugeIcon, SparklesIcon } from '../icons';
 import { toneChip, toneText } from '../localTone';

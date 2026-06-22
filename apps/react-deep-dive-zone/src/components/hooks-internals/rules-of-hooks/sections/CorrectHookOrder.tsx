@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { CorrectHookCard, RulesOfHooksContent, Tone } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, CheckCircleIcon, ShieldCheckIcon } from '../icons';
 

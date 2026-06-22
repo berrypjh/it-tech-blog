@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FiberPairCard, MiniFiberTree } from '../components/FiberPairCard';
 import type { AlternateFiberContent } from '../content';
 import { GitCompareIcon } from '../icons';

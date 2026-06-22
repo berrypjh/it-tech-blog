@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { UsageVsInternalsContent } from '../content';
 import { LightbulbIcon } from '../icons';
 

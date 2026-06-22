@@ -12,7 +12,6 @@ type NextStepContent = {
 
 type Props = { content: NextStepContent };
 
-/** getting-started 공용 "다음 페이지" CTA 배너. */
 export const NextStepBanner = ({ content }: Props) => {
   return (
     <section aria-labelledby="heading-next" className="space-y-md">

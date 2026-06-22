@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { CommitPhaseHeroDiagram } from '../components/CommitPhaseHeroDiagram';
 import type { CommitPhaseIntroContent } from '../content';
 import { LightbulbIcon } from '../icons';

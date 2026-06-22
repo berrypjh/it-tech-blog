@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { commitToneTokens } from '../../_shared/tones';
 import type { CommitRootContent, PreparationCard, PreparationCardIcon } from '../content';
 import { FlagIcon, InboxIcon, SettingsIcon, WorkflowIcon, ZapIcon } from '../icons';

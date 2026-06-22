@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { RulesOfHooksContent } from '../content';
 import { BrainCircuitIcon, CheckCircleIcon, NetworkIcon, SplitIcon, XCircleIcon } from '../icons';
 

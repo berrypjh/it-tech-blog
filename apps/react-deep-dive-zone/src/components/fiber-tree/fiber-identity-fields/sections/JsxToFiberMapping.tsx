@@ -1,4 +1,4 @@
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { MappingCardItem } from '../components/MappingCard';
 import type { FiberIdentityFieldsContent } from '../content';
 import { BoxesIcon } from '../icons';

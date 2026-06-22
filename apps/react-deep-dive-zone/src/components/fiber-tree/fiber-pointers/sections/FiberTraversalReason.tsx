@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { pointerCardBorder, pointerIconBg, pointerText } from '../components/pointerStyles';
 import type { FiberTreePointersContent, PointerKind, TraversalStep } from '../content';
 import {

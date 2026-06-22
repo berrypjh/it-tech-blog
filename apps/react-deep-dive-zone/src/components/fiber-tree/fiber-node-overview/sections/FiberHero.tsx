@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { FiberHeroDiagram } from '../components/FiberHeroDiagram';
 import type { FiberNodeOverviewContent } from '../content';
 

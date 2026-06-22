@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import type { WhyOpenSourceContent } from '../content';
 import { CheckCircleIcon, GitBranchIcon, GitCommitIcon, GithubIcon } from '../icons';
 

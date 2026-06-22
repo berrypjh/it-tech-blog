@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { FinalFlowStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowDownIcon, MapIcon, StarIcon } from '../icons';
 import { neutralBorder, neutralBorderHover, toneChip, toneText } from '../localTone';

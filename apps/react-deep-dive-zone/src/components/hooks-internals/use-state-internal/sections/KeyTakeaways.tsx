@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseStateInternalsContent } from '../content';
 import { BoxesIcon, LayersIcon, Link2Icon, TrophyIcon } from '../icons';
 

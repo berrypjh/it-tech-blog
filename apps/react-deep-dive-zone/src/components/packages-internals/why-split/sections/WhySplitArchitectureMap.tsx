@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
 import type { WhySplitContent } from '../content';
 import { MapIcon } from '../icons';

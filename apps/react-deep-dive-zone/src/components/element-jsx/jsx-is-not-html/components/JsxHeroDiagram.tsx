@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../shared/code';
 import { DownArrow } from '../../../shared/DownArrow';
 import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';

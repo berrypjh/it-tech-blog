@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { KeyFiberReuseHeroDiagram } from '../components/KeyFiberReuseHeroDiagram';
 import type { KeyFiberReuseContent } from '../content';
 

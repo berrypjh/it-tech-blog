@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { BranchMap } from '../components/BranchMap';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
 import { WaypointsIcon } from '../icons';

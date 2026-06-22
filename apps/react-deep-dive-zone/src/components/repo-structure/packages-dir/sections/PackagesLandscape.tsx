@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import { PackagePill } from '../components/PackagePill';
 import type { PackagesDirectoryContent } from '../content';

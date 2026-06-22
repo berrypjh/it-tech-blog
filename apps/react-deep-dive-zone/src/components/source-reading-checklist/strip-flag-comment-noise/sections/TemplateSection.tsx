@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent, TemplateStep } from '../content';
 import { ArrowRightIcon, ListChecksIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';

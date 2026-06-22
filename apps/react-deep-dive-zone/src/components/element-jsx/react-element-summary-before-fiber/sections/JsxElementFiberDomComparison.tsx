@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
 import { StarIcon, TableIcon } from '../icons';
 import { toneDot, toneText } from '../localTone';

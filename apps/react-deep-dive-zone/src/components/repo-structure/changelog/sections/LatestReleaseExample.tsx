@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { GithubButton } from '../../../shared/GithubButton';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { GithubButton } from '../../../shared/code';
+import { SectionHeader } from '../../../shared/section';
 import type { ChangelogContent } from '../content';
 import { BadgeCheckIcon, CheckCircleIcon, ExternalLinkIcon, iconByName, TagIcon } from '../icons';
 

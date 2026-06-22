@@ -4,7 +4,7 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent, LayerKey } from '../content';
 import { ArrowDownIcon, FileCodeIcon, NetworkIcon, SparkIcon, TargetIcon } from '../icons';

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ValueClassificationContent } from '../content';
 import { CheckCircleIcon, NetworkIcon, SparkIcon } from '../icons';

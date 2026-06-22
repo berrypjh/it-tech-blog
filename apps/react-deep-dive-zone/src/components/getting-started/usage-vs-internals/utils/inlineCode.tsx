@@ -1,4 +1,3 @@
-/** 백틱 `code` 부분을 mono + accent 처리한 노드로 변환 */
 export const formatInline = (text: string): React.ReactNode => {
   const parts = text.split(/(`[^`]+`)/g);
   return parts.map((part, i) => {

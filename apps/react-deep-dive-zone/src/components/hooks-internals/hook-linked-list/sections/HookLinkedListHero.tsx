@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { HookLinkedListHeroDiagram } from '../components/HookLinkedListHeroDiagram';
 import type { HookLinkedListContent, Tone } from '../content';
 import { DatabaseIcon, Link2Icon } from '../icons';

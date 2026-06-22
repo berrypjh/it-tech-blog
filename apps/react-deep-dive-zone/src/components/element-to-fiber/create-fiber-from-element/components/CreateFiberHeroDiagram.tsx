@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent, ExtractionChip } from '../content';

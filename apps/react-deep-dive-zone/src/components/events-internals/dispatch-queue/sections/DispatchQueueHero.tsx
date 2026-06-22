@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { DispatchQueueHeroDiagram } from '../components/DispatchQueueHeroDiagram';
 import type { DispatchQueueOrderContent } from '../content';
 import { ListOrderedIcon } from '../icons';

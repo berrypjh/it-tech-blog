@@ -3,11 +3,8 @@ import { cn } from '@it-tech-blog/utils';
 type Size = 'sm' | 'md';
 
 type Props = {
-  /** sm: px-2 py-1 text-[10px] (default), md: px-2.5 py-1 text-xxsm */
   size?: Size;
-  /** dot 색 클래스. 미지정 시 var(--term-accent) */
   dotClassName?: string;
-  /** dot을 숨기고 아이콘/장식을 children에 직접 넣을 때 사용 */
   showDot?: boolean;
   className?: string;
   children: React.ReactNode;

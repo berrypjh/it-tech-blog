@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { DispatchSetStateHeroDiagram } from '../components/DispatchSetStateHeroDiagram';
 import type { DispatchSetStateEntryContent } from '../content';
 

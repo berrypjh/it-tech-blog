@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlagCard, StripFlagCommentNoiseContent } from '../content';
 import { FlagIcon, HelpCircleIcon, SparkIcon, ToggleLeftIcon } from '../icons';

@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import type { ReactNode } from 'react';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { WhyReact19Content } from '../content';
 import { CheckIcon, RefreshIcon, SwapIcon, XIcon } from '../icons';
 

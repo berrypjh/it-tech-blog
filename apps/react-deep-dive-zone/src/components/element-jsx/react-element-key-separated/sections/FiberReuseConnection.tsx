@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberFlowStep, ReactElementKeySeparatedContent } from '../content';
 import { KeyIcon, RecycleIcon, SparklesIcon, SplitIcon, WorkflowIcon } from '../icons';
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { DvcContent, PathCard } from '../content';
 import { ArrowRightIcon, ChevronRightIcon, dvcIcon, MapIcon } from '../icons';
 import { localTone, LocalToneIconBox } from '../tone-house';

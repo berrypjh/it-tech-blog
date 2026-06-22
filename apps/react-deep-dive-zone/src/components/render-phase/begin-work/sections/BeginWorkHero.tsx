@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { BeginWorkHeroDiagram } from '../components/BeginWorkHeroDiagram';
 import type { BeginWorkContent } from '../content';
 import { LightbulbIcon } from '../icons';

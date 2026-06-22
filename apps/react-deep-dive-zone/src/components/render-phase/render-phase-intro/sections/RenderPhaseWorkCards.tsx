@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RenderPhaseIntroContent, WorkCard, WorkCardIcon } from '../content';
 import { FlagIcon, GitBranchIcon, LayersIcon, RefreshCcwIcon, SparklesIcon } from '../icons';

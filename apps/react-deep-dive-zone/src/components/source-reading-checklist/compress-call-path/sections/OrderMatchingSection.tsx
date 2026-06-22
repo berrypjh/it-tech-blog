@@ -4,7 +4,7 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { CallPathCompressionContent } from '../content';
 import {
   ArrowDownIcon,

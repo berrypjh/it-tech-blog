@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubButton } from '../../../shared/GithubButton';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { GithubButton } from '../../../shared/code';
+import { SectionHeader } from '../../../shared/section';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
 import type { WhySourceContent } from '../content';

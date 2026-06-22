@@ -4,7 +4,7 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
 import { houseTone } from '../tone-house';

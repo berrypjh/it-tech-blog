@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { CommitPhaseIntroContent, FlagRow } from '../content';
 import { FileCodeIcon, FlagIcon, LightbulbIcon, SparklesIcon } from '../icons';
 import { commitToneTokens } from '../palette';

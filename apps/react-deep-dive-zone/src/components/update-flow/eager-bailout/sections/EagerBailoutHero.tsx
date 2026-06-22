@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { EagerBailoutHeroDiagram } from '../components/EagerBailoutHeroDiagram';
 import type { EagerBailoutContent } from '../content';
 

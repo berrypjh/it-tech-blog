@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberWhyNeededContent, FinalFlowRow } from '../content';
 import { ArrowDownIcon, BoxIcon, HexagonIcon, MapIcon, PlayCircleIcon, WandIcon } from '../icons';
 

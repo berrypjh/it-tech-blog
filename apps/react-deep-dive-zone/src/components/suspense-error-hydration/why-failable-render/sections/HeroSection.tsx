@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { FailableRenderHeroDiagram } from '../components/FailableRenderHeroDiagram';
 import type { WhyFailableRenderContent } from '../content';
 

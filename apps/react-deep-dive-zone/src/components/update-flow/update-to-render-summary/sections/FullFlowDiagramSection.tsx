@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, UpdateToRenderSummaryContent } from '../content';
 import { ArrowDownIcon, WorkflowIcon } from '../icons';

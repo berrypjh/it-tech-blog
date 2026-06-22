@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { HooksEntryFlowContent } from '../content';
 import { ChevronRightIcon, ListChecksIcon } from '../icons';
 

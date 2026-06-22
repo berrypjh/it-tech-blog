@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { SurroundingContent } from '../content';
 import { houseToneByIndex } from '../houseTones';
 import { CheckCircleIcon, CircleAlertIcon, FolderIcon } from '../icons';

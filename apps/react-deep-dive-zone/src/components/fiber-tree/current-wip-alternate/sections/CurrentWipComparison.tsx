@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ComparisonTable } from '../components/ComparisonTable';
 import type { CurrentWipAlternateContent } from '../content';
 import { LayersIcon, LightbulbIcon } from '../icons';

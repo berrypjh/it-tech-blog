@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ChangelogContent, TimelineItem } from '../content';
 import { BookOpenIcon, StarIcon } from '../icons';
 import { accentCycle } from '../tone-accent';

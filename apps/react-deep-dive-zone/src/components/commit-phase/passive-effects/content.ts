@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
+import type { FinaleBannerContent } from '../../shared/banner';
 import type { CommitToneKey } from '../_shared/tones';
 
 export type HeroPhaseIcon = 'eye' | 'pencil' | 'zap' | 'clock';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { MatchingRow, RulesOfHooksContent } from '../content';
 import { AlertTriangleIcon, Link2OffIcon, NetworkIcon, UnlinkIcon } from '../icons';
 

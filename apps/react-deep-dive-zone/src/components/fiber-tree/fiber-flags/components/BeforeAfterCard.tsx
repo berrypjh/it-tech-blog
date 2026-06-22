@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
+import { CodePreviewPanel } from '../../../shared/code';
 import type { EffectKind, RepresentativeFlagCard } from '../content';
 import { ArrowDownIcon, MoveIcon, PencilIcon, TrashIcon } from '../icons';
 

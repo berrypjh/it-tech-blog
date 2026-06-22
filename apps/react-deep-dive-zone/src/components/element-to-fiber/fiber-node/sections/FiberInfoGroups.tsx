@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberStoredInformationContent, InfoGroupCard } from '../content';
 import { BoxesIcon, FlagIcon, LinkIcon, NetworkIcon, RefreshIcon } from '../icons';
 

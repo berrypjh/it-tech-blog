@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { FunctionClassComponentFiberContent, ReasonCard } from '../content';
 import { DatabaseIcon, HelpCircleIcon, PhoneIcon, ZapIcon } from '../icons';
 

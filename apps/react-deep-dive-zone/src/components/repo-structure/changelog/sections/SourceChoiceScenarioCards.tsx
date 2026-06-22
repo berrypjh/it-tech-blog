@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ChangelogContent, ScenarioCard } from '../content';
 import { ArrowRightIcon, iconByName, SparklesIcon } from '../icons';
 import { accentByTone } from '../tone-accent';

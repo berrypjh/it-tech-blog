@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { PackageDesignContent, ValueCard } from '../content';
 import { pdIcon, SparklesIcon, StarIcon } from '../icons';
 import { localTone, LocalToneIconBox } from '../tone';

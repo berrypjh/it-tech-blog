@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
 import { ArrowRightIcon, FileTextIcon, FolderIcon, HelpCircleIcon } from '../icons';

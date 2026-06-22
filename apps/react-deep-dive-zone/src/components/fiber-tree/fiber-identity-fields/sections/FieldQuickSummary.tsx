@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent, QuickSummaryCard } from '../content';
 import { BoxesIcon, CodeIcon, KeyIcon, ListTreeIcon, TargetIcon } from '../icons';

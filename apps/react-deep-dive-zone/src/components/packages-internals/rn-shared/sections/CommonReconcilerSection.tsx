@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { RnContent, ToneKey } from '../content';
 import { MapIcon, rnIcon } from '../icons';
 import { ToneIconBox, toneText } from '../localTone';

@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ElementSummaryHeroDiagram } from '../components/ElementSummaryHeroDiagram';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
 import { StarIcon } from '../icons';

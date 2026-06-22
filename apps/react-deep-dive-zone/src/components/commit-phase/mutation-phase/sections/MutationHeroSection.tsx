@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { MutationHeroDiagram } from '../components/MutationHeroDiagram';
 import type { MutationPhaseContent } from '../content';
 import { LightbulbIcon } from '../icons';

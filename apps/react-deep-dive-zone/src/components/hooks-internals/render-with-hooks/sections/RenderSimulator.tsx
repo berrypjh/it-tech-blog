@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { RenderWithHooksContent } from '../content';
 import { ArrowDownIcon, PlayCircleIcon, RefreshCwIcon, SparklesIcon } from '../icons';
 

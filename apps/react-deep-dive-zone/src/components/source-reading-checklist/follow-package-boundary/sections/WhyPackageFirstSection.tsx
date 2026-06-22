@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { FollowPackageBoundaryContent } from '../content';
 import { AlertTriangleIcon, MapPinIcon, TargetIcon } from '../icons';
 import { PackageBadge } from '../PackageBadge';

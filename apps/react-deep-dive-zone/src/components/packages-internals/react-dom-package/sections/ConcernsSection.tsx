@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ConcernCard, ReactDomContent } from '../content';
 import { reactDomIcon, SparklesIcon } from '../icons';
 import { localTone, LocalToneIconBox } from '../tone';

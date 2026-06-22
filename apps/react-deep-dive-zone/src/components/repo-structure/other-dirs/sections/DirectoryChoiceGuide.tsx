@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ChoiceCard, SurroundingContent } from '../content';
 import { houseToneByIndex } from '../houseTones';
 import { ArrowDownIcon, iconByName, MapPinnedIcon, SparklesIcon } from '../icons';

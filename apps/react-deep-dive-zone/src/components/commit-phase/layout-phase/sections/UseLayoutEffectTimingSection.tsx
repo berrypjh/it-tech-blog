@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { commitToneTokens } from '../../_shared/tones';
 import type { LayoutPhaseContent, TimingStep } from '../content';
 import { ArrowDownIcon, CheckCircleIcon, WorkflowIcon, ZapIcon } from '../icons';

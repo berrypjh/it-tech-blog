@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { WhyReact19Content } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, RefreshIcon } from '../icons';
 

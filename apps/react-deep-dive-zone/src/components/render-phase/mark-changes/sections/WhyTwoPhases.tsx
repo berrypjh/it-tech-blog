@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { MarkChangesContent, ReasonCard } from '../content';
 import { ClockIcon, GaugeIcon, ShieldIcon, SparklesIcon, TargetIcon } from '../icons';
 

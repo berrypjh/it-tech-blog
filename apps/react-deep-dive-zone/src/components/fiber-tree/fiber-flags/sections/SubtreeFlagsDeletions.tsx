@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { effectBadge } from '../components/effectStyles';
 import type { FiberFlagsContent } from '../content';
 import { FlagIcon, TrashIcon } from '../icons';

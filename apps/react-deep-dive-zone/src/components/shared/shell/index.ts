@@ -1,0 +1,1 @@
+export { StartPageShell } from './StartPageShell';

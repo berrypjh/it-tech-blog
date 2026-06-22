@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FlowArrow } from '../components/FlowArrow';
 import { FunctionCard } from '../components/FunctionCard';
 import { ObjectPreviewCard } from '../components/ObjectPreviewCard';

@@ -1,6 +1,5 @@
 type Props = { className?: string };
 
-/** Lucide v1.x removed the GitHub brand icon, so we keep a local copy. */
 export const GithubIcon = ({ className }: Props) => (
   <svg
     viewBox="0 0 24 24"

@@ -1,4 +1,4 @@
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { BeforeAfterCard } from '../components/BeforeAfterCard';
 import type { FiberFlagsContent } from '../content';
 import { FlagIcon } from '../icons';

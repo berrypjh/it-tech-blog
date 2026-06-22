@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { BenefitCard, ReactElementRefReact19Content } from '../content';
 import { CodeIcon, LinkIcon, PackageIcon, SparklesIcon } from '../icons';
 import { localTone } from '../localTone';

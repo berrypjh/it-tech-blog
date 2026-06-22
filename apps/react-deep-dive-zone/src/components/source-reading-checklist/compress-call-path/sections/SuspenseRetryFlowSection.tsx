@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { CallPathFlow } from '../CallPathFlow';
 import type { CallPathCompressionContent } from '../content';
 import { RepeatIcon, ScanSearchIcon, ShieldQuestionIcon, SparkIcon } from '../icons';

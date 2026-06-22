@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { PriorityLevel, SchedulerContent } from '../content';
 import { CheckCircleIcon, LightbulbIcon, MapIcon, schedulerIcon } from '../icons';
 import { ACCENT_A, ACCENT_B, ACCENT_C } from '../tone-house';

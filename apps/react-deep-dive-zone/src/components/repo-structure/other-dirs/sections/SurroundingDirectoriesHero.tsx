@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { RepoBranchDiagram } from '../components/RepoBranchDiagram';
 import type { SurroundingContent } from '../content';
 import { PinIcon } from '../icons';

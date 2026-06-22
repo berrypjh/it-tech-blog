@@ -7,7 +7,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ChangeMapHeroDiagram } from '../components/ChangeMapHeroDiagram';
 import type { React19ChangeMapContent } from '../content';
 import { LayersIcon } from '../icons';

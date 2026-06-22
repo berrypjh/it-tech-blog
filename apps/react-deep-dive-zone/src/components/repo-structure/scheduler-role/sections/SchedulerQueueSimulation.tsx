@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { tintByPriority } from '../components/HeroPriorityCards';
 import type { ExecutionRow, QueueTask, SchedulerContent } from '../content';
 import { ArrowRightIcon, CheckCircleIcon, ListOrderedIcon, RefreshIcon } from '../icons';

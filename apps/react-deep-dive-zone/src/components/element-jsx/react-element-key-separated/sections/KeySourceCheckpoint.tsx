@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubButton } from '../../../shared/GithubButton';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementKeySeparatedContent } from '../content';
 import { CodeIcon, FileTextIcon, HelpCircleIcon } from '../icons';
 

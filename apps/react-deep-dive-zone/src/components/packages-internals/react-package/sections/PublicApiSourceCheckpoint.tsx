@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubButton } from '../../../shared/GithubButton';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { CheckpointItem, InternalFileCard, ReactPackageContent } from '../content';
 import { InfoIcon, MapIcon, reactPackageIcon } from '../icons';
 import { localTone } from '../tone';

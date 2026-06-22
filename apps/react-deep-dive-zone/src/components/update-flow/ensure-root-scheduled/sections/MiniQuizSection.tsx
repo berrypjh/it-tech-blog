@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { EnsureRootScheduledContent } from '../content';
 import { CheckCircleIcon, CircleHelpIcon } from '../icons';
 

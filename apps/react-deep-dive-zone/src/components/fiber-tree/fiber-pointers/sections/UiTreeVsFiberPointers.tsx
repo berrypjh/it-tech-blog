@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ConnectionTable } from '../components/ConnectionTable';
 import type { FiberTreePointersContent } from '../content';
 import { ArrowLeftRightIcon, ListTreeIcon } from '../icons';

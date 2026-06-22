@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementTypeMeaningContent, TypeKindCard } from '../content';
 import { CheckCircleIcon, ListChecksIcon, SparklesIcon, TagIcon, UserIcon } from '../icons';
 import { toneChip, toneText } from '../localTone';

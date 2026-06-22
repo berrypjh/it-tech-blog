@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { VerticalAlternateLink } from '../components/AlternateLink';
 import type { AlternateFiberContent } from '../content';
 import { HexagonIcon, LightbulbIcon, LinkIcon, MonitorIcon, WorkflowIcon } from '../icons';

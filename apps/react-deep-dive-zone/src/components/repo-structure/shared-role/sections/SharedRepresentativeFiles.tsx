@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { RepFile, SharedContent } from '../content';
 import { FileCodeIcon, iconByName } from '../icons';
 import { softAccentByTone } from '../tone-accents';

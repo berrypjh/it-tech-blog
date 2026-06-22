@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FlowSteps } from '../components/FlowSteps';
 import type { FragmentModeFiberContent } from '../content';
 import { LightbulbIcon, ShieldCheckIcon } from '../icons';

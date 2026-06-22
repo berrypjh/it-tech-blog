@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { ExplorationContent, RoutineStep } from '../content';
 import { iconByName, MapIcon } from '../icons';
 

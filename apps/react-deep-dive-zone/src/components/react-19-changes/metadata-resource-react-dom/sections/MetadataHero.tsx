@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { MetadataHeroDiagram } from '../components/MetadataHeroDiagram';
 import type { MetadataResourceContent } from '../content';
 

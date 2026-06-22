@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { PackagesDirectoryContent } from '../content';
 import { InfoIcon, packageIconByName, SparklesIcon } from '../icons';
 import { houseTone } from '../tone-house';

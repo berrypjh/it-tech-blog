@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { GithubButton } from '../../../shared/GithubButton';
+import { CodePreviewPanel } from '../../../shared/code';
+import { GithubButton } from '../../../shared/code';
 import { GithubIcon } from '../../../shared/GithubIcon';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { CheckpointItem, ReactDomContent } from '../content';
 import { ExternalLinkIcon, reactDomIcon } from '../icons';
 import { LocalToneIconBox } from '../tone';

@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ScheduleUpdateHeroDiagram } from '../components/ScheduleUpdateHeroDiagram';
 import type { ScheduleUpdateOnFiberContent } from '../content';
 

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { PackageNode, SharedContent } from '../content';
 import { sharedIcon, StarIcon } from '../icons';
 import { accentText, neutralChrome, toneAccent } from '../localTone';

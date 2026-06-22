@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent } from '../content';
 import { AlertTriangleIcon, MessageSquareIcon, QuoteIcon, SparkIcon } from '../icons';
 import { LabelChip } from '../LabelChip';

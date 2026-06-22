@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { DifferenceCard, Tone, UseReducerSharedContent } from '../content';
 import { GaugeIcon, GitBranchIcon, Link2Icon, SplitIcon } from '../icons';
 

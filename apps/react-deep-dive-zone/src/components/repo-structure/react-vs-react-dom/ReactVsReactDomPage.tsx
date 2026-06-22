@@ -1,7 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { NextStepBanner } from '../../shared/NextStepBanner';
-import { StartPageShell } from '../../shared/StartPageShell';
+import { NextStepBanner } from '../../shared/banner';
+import { StartPageShell } from '../../shared/shell';
 
 import { CreateRootCheckpoint } from './sections/CreateRootCheckpoint';
 import { ReactDomComparisonTable } from './sections/ReactDomComparisonTable';

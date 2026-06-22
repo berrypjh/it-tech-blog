@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementSummaryBeforeFiberContent, SummaryCard } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, LayersIcon, ListChecksIcon, NetworkIcon } from '../icons';
 import { neutralBorderHover, toneChip, toneText } from '../localTone';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { FinalArchitectureDiagram } from '../components/FinalArchitectureDiagram';
 import type { PackageDesignContent } from '../content';
 import { MapIcon, StarIcon } from '../icons';

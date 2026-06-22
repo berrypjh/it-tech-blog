@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { FiberTreeCard } from '../components/FiberTreeCard';
 import type { ProcessStep, ReconcilerEntryContent } from '../content';
 import { CuboidIcon, iconByName } from '../icons';

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, NotAllFilesContent } from '../content';
 import { DiagramIcon, flowIconByName } from '../icons';

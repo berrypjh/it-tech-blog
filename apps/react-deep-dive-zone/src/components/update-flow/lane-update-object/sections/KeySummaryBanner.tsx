@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/SectionBadgeHeader';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { LaneUpdateObjectContent, SummaryPill } from '../content';
 import { CrosshairIcon, LayersIcon, Link2Icon, TargetIcon, ZapIcon } from '../icons';
 

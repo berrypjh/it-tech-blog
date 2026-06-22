@@ -1,7 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { FinalLaunchBanner } from '../../shared/FinalLaunchBanner';
-import { StartPageShell } from '../../shared/StartPageShell';
+import { FinalLaunchBanner } from '../../shared/banner';
+import { StartPageShell } from '../../shared/shell';
 
 import { CourseLoopSection } from './sections/CourseLoopSection';
 import { FinalChecklistSection } from './sections/FinalChecklistSection';

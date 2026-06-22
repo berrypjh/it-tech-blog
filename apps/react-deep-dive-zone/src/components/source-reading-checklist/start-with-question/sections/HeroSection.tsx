@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
-import { TerminalBadge } from '../../../shared/TerminalBadge';
+import { TerminalBadge } from '../../../shared/terminal';
 import { StartWithQuestionHeroDiagram } from '../components/StartWithQuestionHeroDiagram';
 import type { StartWithQuestionContent } from '../content';
 

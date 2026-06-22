@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import { StartPageShell } from '../../shared/StartPageShell';
+import { StartPageShell } from '../../shared/shell';
 
 import { DeferredLanePath } from './sections/DeferredLanePath';
 import { DeferredValueUserCode } from './sections/DeferredValueUserCode';

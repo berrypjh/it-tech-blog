@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { CodePreviewPanel } from '../../../shared/code';
+import { SectionHeader } from '../../../shared/section';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';
 import { CodeIcon } from '../icons';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionHeader } from '../../../shared/SectionHeader';
+import { SectionHeader } from '../../../shared/section';
 import type { DoesItem, SchedulerContent } from '../content';
 import { CheckCircleIcon, StarIcon, XCircleIcon } from '../icons';
 
