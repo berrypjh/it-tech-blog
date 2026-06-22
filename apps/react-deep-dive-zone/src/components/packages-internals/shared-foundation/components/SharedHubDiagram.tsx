@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { PackageNode, SharedContent } from '../content';
 import { CheckCircleIcon, sharedIcon } from '../icons';
 import { accentText, neutralChrome, toneAccent } from '../localTone';

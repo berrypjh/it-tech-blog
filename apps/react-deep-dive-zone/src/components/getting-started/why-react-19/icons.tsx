@@ -1,7 +1,8 @@
-import { Book, Box, CircleCheck, Link, Scale, Shield, Sparkle, Zap } from 'lucide-react';
+import { Box, Link, Sparkle, Zap } from 'lucide-react';
 
 export { GithubIcon } from '../../shared/GithubIcon';
 export {
+  ArrowDown as ArrowDownIcon,
   MoveRight as ArrowLongRightIcon,
   ArrowRight as ArrowRightIcon,
   ArrowUp as ArrowUpIcon,
@@ -12,7 +13,6 @@ export {
   Quote as QuoteIcon,
   RefreshCw as RefreshIcon,
   Rss as RssIcon,
-  Shield as ShieldIcon,
   Sparkle as SparkIcon,
   ArrowLeftRight as SwapIcon,
   X as XIcon,
@@ -23,11 +23,4 @@ export const topicIconByName = {
   bolt: Zap,
   link: Link,
   cube: Box,
-} as const;
-
-export const principleIconByName = {
-  check: CircleCheck,
-  book: Book,
-  shield: Shield,
-  scale: Scale,
 } as const;

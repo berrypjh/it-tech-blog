@@ -1,18 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { DiagramItem, ReactElementKeySeparatedContent } from '../content';
 import { CheckCircleIcon, KeyIcon, NetworkIcon } from '../icons';
 import { toneBorderHover, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * 같은 형제 목록이 순서만 바뀌어도 React가 key로 각 요소를 따라가며
- * 식별을 유지하는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const ElementKeyHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.diagramTitle}. ${content.previousLabel}: ${content.previousItems
     .map((i) => i.keyText)

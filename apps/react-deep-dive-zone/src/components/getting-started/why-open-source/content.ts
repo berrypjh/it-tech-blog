@@ -1,11 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type KeywordPill = {
-  id: 'source' | 'tests' | 'commits' | 'issues';
-  label: string;
-  tone: 'blue' | 'green' | 'lavender' | 'teal';
-};
-
 export type PerspectiveCard = {
   id: 'docs' | 'code' | 'tests' | 'pr';
   icon: 'doc' | 'code' | 'flask' | 'chat';
@@ -67,7 +61,6 @@ export type WhyOpenSourceContent = {
     stepBadge: string;
     title: string[];
     description: string;
-    pills: KeywordPill[];
     diagram: {
       centerLabel: string;
       centerSub: string;
@@ -154,12 +147,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       stepBadge: '시작하기 · 4/6단계',
       title: ['공식 문서는 사용법을 알려주고,', 'GitHub는 설계 의도를 보여줍니다.'],
       description: 'React를 깊게 이해하려면 문서, 소스코드, 테스트, 변경 이력을 함께 봐야 합니다.',
-      pills: [
-        { id: 'source', label: 'Source', tone: 'blue' },
-        { id: 'tests', label: 'Tests', tone: 'green' },
-        { id: 'commits', label: 'Commits', tone: 'lavender' },
-        { id: 'issues', label: 'Issues / PRs', tone: 'teal' },
-      ],
       diagram: {
         centerLabel: 'GitHub',
         centerSub: 'facebook/react',
@@ -182,7 +169,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      eyebrow: '01 · perspectives',
+      eyebrow: '01 · 관점',
       title: 'GitHub가 제공하는 4가지 관점',
       cards: [
         {
@@ -220,7 +207,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      eyebrow: '02 · reading list',
+      eyebrow: '02 · 읽기 목록',
       title: 'React GitHub에서 읽어야 할 4가지',
       rows: [
         {
@@ -266,7 +253,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      eyebrow: '03 · repo',
+      eyebrow: '03 · 저장소 구조',
       title: '저장소 구조 훑어보기 (예: facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -340,7 +327,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      eyebrow: '04 · chain',
+      eyebrow: '04 · 연결 읽기',
       title: 'API → 구현 → 테스트로 이어서 읽기 (예: useState)',
       cards: [
         {
@@ -380,7 +367,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      eyebrow: '05 · routine',
+      eyebrow: '05 · 학습 루틴',
       title: 'GitHub 기반 학습 루틴',
       steps: [
         {
@@ -434,12 +421,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       title: ['The docs teach how to use,', 'GitHub shows why it was designed that way.'],
       description:
         'To really understand React, read docs, source code, tests, and change history together.',
-      pills: [
-        { id: 'source', label: 'Source', tone: 'blue' },
-        { id: 'tests', label: 'Tests', tone: 'green' },
-        { id: 'commits', label: 'Commits', tone: 'lavender' },
-        { id: 'issues', label: 'Issues / PRs', tone: 'teal' },
-      ],
       diagram: {
         centerLabel: 'GitHub',
         centerSub: 'facebook/react',
@@ -462,7 +443,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      eyebrow: '01 · perspectives',
+      eyebrow: '01 · PERSPECTIVES',
       title: 'Four perspectives GitHub offers',
       cards: [
         {
@@ -500,7 +481,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      eyebrow: '02 · reading list',
+      eyebrow: '02 · READING LIST',
       title: 'Four things to read in React GitHub',
       rows: [
         {
@@ -545,7 +526,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      eyebrow: '03 · repo',
+      eyebrow: '03 · REPO',
       title: 'Skim the repository structure (e.g. facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -621,7 +602,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      eyebrow: '04 · chain',
+      eyebrow: '04 · CHAIN',
       title: 'Read API → implementation → test in sequence (e.g. useState)',
       cards: [
         {
@@ -663,7 +644,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      eyebrow: '05 · routine',
+      eyebrow: '05 · ROUTINE',
       title: 'A GitHub-based learning routine',
       steps: [
         {

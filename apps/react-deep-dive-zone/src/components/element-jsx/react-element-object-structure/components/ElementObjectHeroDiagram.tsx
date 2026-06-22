@@ -2,14 +2,13 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
 import { BoxIcon, FingerprintIcon, KeyIcon, PanelIcon, UserIcon } from '../icons';
 import { toneBorderHover, ToneChip, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementObjectStructureContent['hero']; className?: string };
 
-/** 필드명으로 아이콘을 고른다. 본문 필드 카드와 동일한 매핑을 따른다. */
 const fieldIcon: Record<string, typeof BoxIcon> = {
   $$typeof: FingerprintIcon,
   type: BoxIcon,
@@ -18,11 +17,6 @@ const fieldIcon: Record<string, typeof BoxIcon> = {
   _owner: UserIcon,
 };
 
-/**
- * Hero 핵심 비주얼.
- * React Element 객체 코드 → ↓ → 필드별 카드로 이어지는 흐름을
- * 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.codeCardLabel} — ${content.callouts
     .map((c) => `${c.field}: ${c.label}`)

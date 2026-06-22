@@ -21,11 +21,6 @@ const branchIcon: Record<BranchKey, typeof TypeIcon> = {
   mode: HexagonIcon,
 };
 
-/**
- * Hero 핵심 비주얼.
- * 가운데 type 값 → 형태(string / function / symbol)에 따라 어떤 Fiber로 갈라지는지
- * 한 컨테이너 안에서 분기 카드로 보여주는 컴팩트 결정 맵.
- */
 export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.centerLabel}: ${content.branches
     .map((b) => `${b.condition} → ${b.result}`)

@@ -1,8 +1,10 @@
-import { HeroDescription } from '../../../shared/HeroDescription';
-import { HeroSection } from '../../../shared/HeroSection';
-import { HeroTextColumn } from '../../../shared/HeroTextColumn';
-import { HeroTitle } from '../../../shared/HeroTitle';
-import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import {
+  HeroDescription,
+  HeroSection,
+  HeroTextColumn,
+  HeroTitle,
+  HeroVisualColumn,
+} from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { After192HeroDiagram } from '../components/After192HeroDiagram';
 import type { After192Content } from '../content';

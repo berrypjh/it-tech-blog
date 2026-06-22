@@ -49,13 +49,6 @@ export type ResourceCard = {
   tone: 'blue' | 'teal';
 };
 
-export type Principle = {
-  id: 'public-api' | 'version-stamp' | 'correction' | 'compare';
-  icon: 'check' | 'book' | 'shield' | 'scale';
-  title: string[];
-  description: string;
-};
-
 export type WhyReact19Content = {
   hero: {
     stepBadge: string;
@@ -95,11 +88,6 @@ export type WhyReact19Content = {
     title: string;
     cards: ResourceCard[];
   };
-  principles: {
-    eyebrow: string;
-    title: string;
-    items: Principle[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -132,7 +120,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     terminology: {
-      eyebrow: '01 · terms',
+      eyebrow: '01 · 용어 변화',
       title: '용어와 개념도 시대에 따라 달라집니다',
       left: {
         header: '과거 자료에서 자주 보는 용어',
@@ -157,7 +145,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '02 · timeline',
+      eyebrow: '02 · 버전 흐름',
       title: 'React 버전별 핵심 변화',
       rows: [
         {
@@ -199,7 +187,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '03 · focus topics',
+      eyebrow: '03 · 집중 주제',
       title: 'React 19에서 특히 읽을 가치가 큰 주제',
       cards: [
         {
@@ -241,7 +229,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '04 · reinterpret',
+      eyebrow: '04 · 재해석',
       title: '오래된 용어를 최신 관점으로 다시 읽기',
       headers: {
         legacy: '과거 자료에서 자주 보던 용어',
@@ -271,7 +259,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '05 · resources',
+      eyebrow: '05 · 공식 자료',
       title: '공식 변경 기록 확인하기',
       cards: [
         {
@@ -299,36 +287,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
           cta: '릴리즈 기록 보기',
           href: 'https://github.com/facebook/react/releases',
           tone: 'teal',
-        },
-      ],
-    },
-    principles: {
-      eyebrow: '06 · principles',
-      title: '이 사이트의 학습 원칙',
-      items: [
-        {
-          id: 'public-api',
-          icon: 'check',
-          title: ['공개 API는', '최신 React 기준'],
-          description: '공식 문서에 반영된 현재 버전을 기준으로 설명합니다.',
-        },
-        {
-          id: 'version-stamp',
-          icon: 'book',
-          title: ['내부 코드는', '설명 시점의 버전을 표시'],
-          description: '코드 예시는 버전과 기준 정보를 함께 제공합니다.',
-        },
-        {
-          id: 'correction',
-          icon: 'shield',
-          title: ['과거 강의와 다른 지점은', '보정 박스 제공'],
-          description: '혼동하기 쉬운 부분은 비교와 함께 명확히 보완합니다.',
-        },
-        {
-          id: 'compare',
-          icon: 'scale',
-          title: ['중요한 버전 차이는', '비교로 설명'],
-          description: '왜 바뀌었고, 무엇이 달라졌는지 표로 정리합니다.',
         },
       ],
     },
@@ -370,7 +328,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     terminology: {
-      eyebrow: '01 · terms',
+      eyebrow: '01 · TERMS',
       title: 'Terms and concepts shift across eras',
       left: {
         header: 'Terms you often see in older material',
@@ -395,7 +353,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '02 · timeline',
+      eyebrow: '02 · TIMELINE',
       title: 'Key shifts across React versions',
       rows: [
         {
@@ -434,7 +392,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '03 · focus topics',
+      eyebrow: '03 · FOCUS TOPICS',
       title: 'Topics most worth reading in React 19',
       cards: [
         {
@@ -475,7 +433,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '04 · reinterpret',
+      eyebrow: '04 · REINTERPRETATION',
       title: 'Re-reading older terms through a modern lens',
       headers: {
         legacy: 'Terms common in older material',
@@ -505,7 +463,7 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '05 · resources',
+      eyebrow: '05 · RESOURCES',
       title: 'Check the official change records',
       cards: [
         {
@@ -533,36 +491,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
           cta: 'Browse the releases',
           href: 'https://github.com/facebook/react/releases',
           tone: 'teal',
-        },
-      ],
-    },
-    principles: {
-      eyebrow: '06 · principles',
-      title: 'Learning principles of this site',
-      items: [
-        {
-          id: 'public-api',
-          icon: 'check',
-          title: ['Public API:', 'modern React baseline'],
-          description: 'Explain the version reflected in the current official docs.',
-        },
-        {
-          id: 'version-stamp',
-          icon: 'book',
-          title: ['Internal code:', 'show the version it describes'],
-          description: 'Code samples come with version and baseline context.',
-        },
-        {
-          id: 'correction',
-          icon: 'shield',
-          title: ['Differs from older lectures?', 'Show a correction box'],
-          description: 'Confusing parts are clarified with explicit comparisons.',
-        },
-        {
-          id: 'compare',
-          icon: 'scale',
-          title: ['Important version diffs', 'explained side by side'],
-          description: 'Why it changed and what changed — laid out in a table.',
         },
       ],
     },

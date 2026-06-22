@@ -2,18 +2,13 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { ReactCreateElementContent, ToneKey } from '../content';
 import { AtomIcon, BracesIcon, FunctionSquareIcon } from '../icons';
 import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * JSX 문법 → 명시적 createElement 호출 → React Element 객체로 이어지는
- * 생성 파이프라인을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const CreateElementHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.leftCardLabel}: ${content.leftCode} → ${content.rightCardLabel}: ${content.rightCode} → ${content.resultTitle}: ${content.resultBody}`;
 

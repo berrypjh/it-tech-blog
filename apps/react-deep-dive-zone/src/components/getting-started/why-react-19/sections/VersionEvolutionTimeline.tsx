@@ -6,7 +6,6 @@ import { ArrowLongRightIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['timeline'] };
 
-/** 선언 순서대로 A·B·C 순환 — 중립 크롬 위 부드러운 3색 텍스트 액센트. */
 const accents = [
   { text: 'text-[var(--term-accent)]', marker: 'bg-[var(--term-accent)]' },
   { text: 'text-sky-600 dark:text-sky-300', marker: 'bg-sky-400 dark:bg-sky-500' },
@@ -48,7 +47,6 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
         />
 
         {content.rows.map((row, idx) => {
-          const isLast = idx === content.rows.length - 1;
           const accent = accents[idx % accents.length];
           return (
             <li key={row.id} className="relative">
@@ -123,16 +121,6 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                   </ul>
                 </div>
               </article>
-
-              {/* 연결 점선 (마지막 제외) */}
-              {!isLast && (
-                <span
-                  aria-hidden="true"
-                  className="block ml-2 my-1 text-[var(--term-accent)] text-[10px] leading-none"
-                >
-                  ↓
-                </span>
-              )}
             </li>
           );
         })}

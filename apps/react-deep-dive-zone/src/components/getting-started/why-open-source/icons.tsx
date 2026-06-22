@@ -13,7 +13,6 @@ export { GithubIcon } from '../../shared/GithubIcon';
 export {
   ArrowRight as ArrowRightIcon,
   BookOpen as BookIcon,
-  MessageCircle as ChatIcon,
   CircleCheck as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
   ChevronRight as ChevronRightIcon,

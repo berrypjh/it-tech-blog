@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { ArchitectureNode, SideNode } from '../content';
 import { architectureIcon } from '../icons';
 import { ToneIconBox, toneText } from '../localTone';

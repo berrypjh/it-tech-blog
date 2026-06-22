@@ -9,10 +9,6 @@ type Props = {
   align?: 'left' | 'center';
 };
 
-/**
- * start/ 그룹 공용 섹션 헤더.
- * 상단: `// <eyebrow>` 점선, 하단: 아이콘 + 제목, 선택적 설명.
- */
 export const SectionHeader = ({ id, eyebrow, title, description, icon, align = 'left' }: Props) => {
   return (
     <header

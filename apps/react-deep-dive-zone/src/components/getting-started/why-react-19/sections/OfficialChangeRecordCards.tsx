@@ -6,7 +6,6 @@ import { ArrowRightIcon, BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from 
 
 type Props = { content: WhyReact19Content['resources'] };
 
-/** 파란 블로그 mock — react.dev/blog 느낌 */
 const BlogPreview = () => (
   <div
     aria-hidden="true"
@@ -34,7 +33,6 @@ const BlogPreview = () => (
   </div>
 );
 
-/** GitHub releases mock — 라이트/다크 대응 (표준 코드 박스와 동일 슬레이트 스킴) */
 const ReleasesPreview = () => (
   <div
     aria-hidden="true"

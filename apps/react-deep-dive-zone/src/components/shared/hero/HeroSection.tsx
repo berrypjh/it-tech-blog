@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { TerminalPrompt } from './TerminalPrompt';
+import { TerminalPrompt } from '../TerminalPrompt';
 
 type Align = 'start' | 'center';
 

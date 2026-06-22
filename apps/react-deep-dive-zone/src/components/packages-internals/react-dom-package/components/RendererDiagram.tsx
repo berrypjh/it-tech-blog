@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
 import { reactDomIcon } from '../icons';
 import { localTone, LocalToneIconBox } from '../tone';

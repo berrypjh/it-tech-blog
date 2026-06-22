@@ -3,7 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/NextStepBanner';
 import { StartPageShell } from '../../shared/StartPageShell';
 
-import { LearningPrinciplesPanel } from './sections/LearningPrinciplesPanel';
 import { ModernReinterpretationTable } from './sections/ModernReinterpretationTable';
 import { OfficialChangeRecordCards } from './sections/OfficialChangeRecordCards';
 import { React19FocusTopics } from './sections/React19FocusTopics';
@@ -25,7 +24,6 @@ export const WhyReact19BaselinePage = ({ locale }: Props) => {
       <React19FocusTopics content={c.focusTopics} />
       <ModernReinterpretationTable content={c.reinterpret} />
       <OfficialChangeRecordCards content={c.resources} />
-      <LearningPrinciplesPanel content={c.principles} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

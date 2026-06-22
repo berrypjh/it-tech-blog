@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, NetworkIcon } from '../icons';
 import { toneChip, ToneIconBox, toneText } from '../localTone';
@@ -15,11 +15,6 @@ const iconMap = {
   tree: NetworkIcon,
 } as const;
 
-/**
- * Hero 핵심 비주얼.
- * JSX → runtime → Element → Fiber로 이어지는 챕터 흐름을 위에서 아래로 잇는
- * 컴팩트 stepper. 이번 챕터의 핵심인 Element 카드를 강조한다.
- */
 export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.flowTitle}: ${content.flowItems.map((item) => item.title).join(' → ')}`;
 

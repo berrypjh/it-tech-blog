@@ -2,18 +2,13 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
 import { BracesIcon, EyeIcon } from '../icons';
 import { accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * 코드 한 줄(button.jsx)이 '겉보기로는 HTML' → '실제로는 JavaScript 표현식'으로
- * 읽히는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const JsxHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.code} — ${content.explanationCards
     .map((c) => `${c.label}: ${c.title}`)

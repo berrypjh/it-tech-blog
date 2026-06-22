@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { VersionCard } from '../content';
 import { ArrowUpIcon } from '../icons';

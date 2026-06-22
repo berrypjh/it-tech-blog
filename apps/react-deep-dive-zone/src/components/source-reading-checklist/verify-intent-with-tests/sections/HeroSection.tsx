@@ -1,8 +1,10 @@
-import { HeroDescription } from '../../../shared/HeroDescription';
-import { HeroSection as SharedHeroSection } from '../../../shared/HeroSection';
-import { HeroTextColumn } from '../../../shared/HeroTextColumn';
-import { HeroTitle } from '../../../shared/HeroTitle';
-import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import {
+  HeroDescription,
+  HeroSection as SharedHeroSection,
+  HeroTextColumn,
+  HeroTitle,
+  HeroVisualColumn,
+} from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { VerifyWithTestsHeroDiagram } from '../components/VerifyWithTestsHeroDiagram';
 import type { TestAsDocContent } from '../content';

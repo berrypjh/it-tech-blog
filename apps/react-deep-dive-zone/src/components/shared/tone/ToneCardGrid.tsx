@@ -22,8 +22,8 @@ type ItemProps = {
   tone: ToneKey;
   /** 상단 아이콘 박스에 담길 아이콘 */
   icon: React.ReactNode;
-  /** 하단 배지 텍스트 */
-  badge: React.ReactNode;
+  /** 하단 배지 텍스트. 없으면 배지 푸터 자체를 생략. */
+  badge?: React.ReactNode;
   /** 아이콘 우측 보조 슬롯(예: 번호). 없으면 생략. */
   topRight?: React.ReactNode;
   /** 카드 본문. 섹션마다 자유롭게 구성. */
@@ -49,9 +49,11 @@ export const ToneCardItem = ({ tone, icon, badge, topRight, children, className 
 
       {children}
 
-      <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
-        <ToneBadge tone={tone}>{badge}</ToneBadge>
-      </div>
+      {badge != null && (
+        <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
+          <ToneBadge tone={tone}>{badge}</ToneBadge>
+        </div>
+      )}
     </ToneCard>
   </li>
 );

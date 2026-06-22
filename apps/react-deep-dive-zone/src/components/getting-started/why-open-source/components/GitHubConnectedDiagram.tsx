@@ -1,19 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import type { WhyOpenSourceContent } from '../content';
 import { CheckCircleIcon, GitBranchIcon, GitCommitIcon, GithubIcon } from '../icons';
 
 type Props = { diagram: WhyOpenSourceContent['hero']['diagram'] };
 
-/**
- * Hero 우측: GitHub 중심에서 4개 자료(코드/커밋/패키지/상태)가
- * pale-blue dotted connector로 연결되는 학습 맵.
- *
- * 12-col CSS grid 위에 panel을 절대 좌표 비슷한 콜럼 span으로 배치하고,
- * 한 장의 SVG에서 connector를 그려 panel center → GitHub center로 잇는다.
- */
 export const GitHubConnectedDiagram = ({ diagram }: Props) => {
   return (
     <HeroDiagramShell

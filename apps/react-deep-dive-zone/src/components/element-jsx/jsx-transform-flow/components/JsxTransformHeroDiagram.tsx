@@ -2,18 +2,13 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { JsxTransformFlowContent, ToneKey } from '../content';
 import { AtomIcon, CodeIcon, SettingsIcon } from '../icons';
 import { localTone } from '../localTone';
 
 type Props = { content: JsxTransformFlowContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * 우리가 쓴 JSX → 컴파일 → React가 실행하는 함수 호출 코드로 이어지는
- * 변환 파이프라인을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const JsxTransformHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.inputNote} → ${content.compileNote} → ${content.outputNote}`;
 

@@ -1,10 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDescription } from '../../../shared/HeroDescription';
-import { HeroSection } from '../../../shared/HeroSection';
-import { HeroTextColumn } from '../../../shared/HeroTextColumn';
-import { HeroTitle } from '../../../shared/HeroTitle';
-import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import {
+  HeroDescription,
+  HeroSection,
+  HeroTextColumn,
+  HeroTitle,
+  HeroVisualColumn,
+} from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { HookLinkedListHeroDiagram } from '../components/HookLinkedListHeroDiagram';
 import type { HookLinkedListContent, Tone } from '../content';

@@ -9,11 +9,6 @@ import { FiberPairCard } from './FiberPairCard';
 
 type Props = { content: AlternateFiberContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * 같은 노드의 current Fiber와 workInProgress Fiber 두 카드를
- * 위에서 아래로 잇고, 그 사이를 alternate 포인터(양방향)로 연결하는 컴팩트 stepper.
- */
 export const AlternateHeroDiagram = ({ content, className }: Props) => {
   const a11y = `React는 같은 노드에 대해 ${content.currentTitle}와 ${content.workTitle} 두 가지를 동시에 가지며, alternate 포인터로 서로 양방향 연결합니다. current는 화면에 반영된 안정적인 트리이고, workInProgress는 다음 화면을 계산 중인 작업 트리입니다.`;
 

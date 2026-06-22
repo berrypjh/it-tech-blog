@@ -1,17 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroFlowStep, ReactElementRefReact19Content } from '../content';
 import { NetworkIcon } from '../icons';
 
 type Props = { content: ReactElementRefReact19Content['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * React 18 이전(legacy)의 제한적인 ref 전달과 React 19(modern)의 ref-as-prop 모델을
- * 위에서 아래로 잇는 컴팩트 stepper. 두 흐름을 ↓로 연결한다.
- */
 export const React19RefHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.leftColumnTitle}: ${content.leftFlow
     .map((s) => s.label)

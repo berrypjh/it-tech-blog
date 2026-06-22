@@ -1,8 +1,10 @@
-import { HeroDescription } from '../../../shared/HeroDescription';
-import { HeroSection } from '../../../shared/HeroSection';
-import { HeroTextColumn } from '../../../shared/HeroTextColumn';
-import { HeroTitle } from '../../../shared/HeroTitle';
-import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import {
+  HeroDescription,
+  HeroSection,
+  HeroTextColumn,
+  HeroTitle,
+  HeroVisualColumn,
+} from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { VersionDocsDiagram } from '../components/VersionDocsDiagram';
 import type { ChangelogContent } from '../content';

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { SchedulerContent } from '../content';
 import { HouseIconBox } from '../HouseIconBox';
 import { schedulerIcon } from '../icons';

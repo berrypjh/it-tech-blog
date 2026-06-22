@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { JsxRuntimeFunctionsContent, RuntimeFunctionCard } from '../content';
 import { AtomIcon, BoxIcon, BracesIcon, LayersIcon } from '../icons';
 import { ToneIconBox, toneText } from '../localTone';
@@ -14,11 +14,6 @@ const iconMap = {
   braces: BracesIcon,
 } as const;
 
-/**
- * Hero 핵심 비주얼.
- * 컴파일된 JSX가 jsx · jsxs · jsxDEV runtime 함수로 들어가고,
- * 그 결과가 React Element로 모이는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const JsxRuntimeHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.runtimeCards.map((c) => c.name).join(', ')} → ${content.resultTitle}`;
 

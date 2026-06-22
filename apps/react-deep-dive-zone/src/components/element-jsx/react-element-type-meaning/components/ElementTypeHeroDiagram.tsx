@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/CodePreviewPanel';
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { HeroDiagramItem, ReactElementTypeMeaningContent } from '../content';
 import { SparklesIcon, TagIcon, UserIcon } from '../icons';
 import { toneChip, ToneIconBox, toneText } from '../localTone';
@@ -22,11 +22,6 @@ const ELEMENT_SHAPE = `const element = {
   props,
 };`;
 
-/**
- * Hero 핵심 비주얼.
- * React Element 객체의 type 필드가 host / custom / special 세 갈래로
- * 나뉘는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.diagramItems
     .map((item) => `${item.value}: ${item.title}`)

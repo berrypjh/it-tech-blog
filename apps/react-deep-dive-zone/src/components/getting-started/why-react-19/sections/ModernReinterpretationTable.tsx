@@ -1,6 +1,6 @@
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { WhyReact19Content } from '../content';
-import { ArrowLongRightIcon, ArrowRightIcon, RefreshIcon } from '../icons';
+import { ArrowDownIcon, ArrowRightIcon, RefreshIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['reinterpret'] };
 
@@ -31,104 +31,47 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
         icon={<RefreshIcon className="h-5 w-5" />}
       />
 
-      <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
-        {/* 데스크톱 테이블 */}
-        <table className="hidden md:table w-full text-left">
-          <thead>
-            <tr className="bg-[var(--term-surface)] border-b border-[var(--term-border)]">
-              <th
-                scope="col"
-                className="px-md py-3 w-[30%] text-xsm font-bold text-[var(--term-fg)]"
-              >
-                {content.headers.legacy}
-              </th>
-              <th
-                scope="col"
-                className="px-2 py-3 w-[40px] text-center text-[var(--term-dim)]"
-                aria-hidden="true"
-              >
-                <ArrowLongRightIcon className="h-3 w-7 mx-auto" />
-              </th>
-              <th scope="col" className="px-md py-3 text-xsm font-bold text-[var(--term-accent)]">
-                {content.headers.modern}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {content.rows.map((row, idx) => (
-              <tr
-                key={idx}
-                className="border-t border-[var(--term-border)] hover:bg-[var(--term-surface)] transition-colors"
-              >
-                <th scope="row" className="px-md py-4 align-top">
-                  <span className="inline-flex items-center gap-2">
-                    <span
-                      aria-hidden="true"
-                      className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-dim)]"
-                    />
-                    <code className="text-xsm font-mono font-bold text-[var(--term-fg)] break-all">
-                      {row.legacy}
-                    </code>
+      <ul className="flex flex-col gap-md">
+        {content.rows.map((row, idx) => (
+          <li key={idx}>
+            <article className="group rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px hover:shadow-[0_2px_0_var(--term-border)] hover:border-[var(--term-accent)]">
+              <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.5fr)] gap-sm md:gap-md items-center">
+                {/* 과거에는 */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)]">
+                    {content.headers.legacy}
                   </span>
-                </th>
-                <td
-                  className="px-2 py-4 align-middle text-center text-[var(--term-accent)]"
-                  aria-hidden="true"
-                >
-                  <ArrowRightIcon className="h-4 w-4 mx-auto" />
-                </td>
-                <td className="px-md py-4 align-top border-l border-[var(--term-border)]/60">
-                  <div className="flex flex-col gap-1">
-                    <p className="text-xsm sm:text-sm font-bold text-[var(--term-accent)] leading-snug break-keep">
-                      {formatInline(row.modernTitle)}
-                    </p>
-                    <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
-                      {row.modernBody}
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  <code className="inline-flex w-fit items-center px-2 py-1 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-xsm sm:text-sm font-mono font-bold text-[var(--term-muted)] break-all">
+                    {row.legacy}
+                  </code>
+                </div>
 
-        {/* 모바일 카드형 */}
-        <ul className="md:hidden divide-y divide-[var(--term-border)]">
-          {content.rows.map((row, idx) => (
-            <li key={idx} className="p-md flex flex-col gap-sm">
-              <header className="flex items-center gap-2">
+                {/* 전환 화살표 (md+ 오른쪽 · 모바일 아래) */}
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-dim)]"
-                />
-                <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)]">
-                  {content.headers.legacy}
+                  className="justify-self-start md:justify-self-center inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_1px_0_var(--term-border)]"
+                >
+                  <ArrowRightIcon className="h-4 w-4 hidden md:block" />
+                  <ArrowDownIcon className="h-4 w-4 md:hidden" />
                 </span>
-              </header>
-              <code className="text-sm font-mono font-bold text-[var(--term-fg)] break-all">
-                {row.legacy}
-              </code>
 
-              <span
-                aria-hidden="true"
-                className="self-start inline-flex items-center gap-1 text-[10px] font-bold text-[var(--term-accent)]"
-              >
-                <ArrowRightIcon className="h-3 w-3" />
-                {content.headers.modern}
-              </span>
-
-              <div className="flex flex-col gap-1 pl-3 border-l-2 border-[var(--term-border)]">
-                <p className="text-xsm font-bold text-[var(--term-accent)] leading-snug break-keep">
-                  {formatInline(row.modernTitle)}
-                </p>
-                <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
-                  {row.modernBody}
-                </p>
+                {/* 지금은 */}
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] uppercase tracking-wider text-[var(--term-accent)]">
+                    {content.headers.modern}
+                  </span>
+                  <p className="text-xsm sm:text-sm font-bold text-[var(--term-accent)] leading-snug break-keep">
+                    {formatInline(row.modernTitle)}
+                  </p>
+                  <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
+                    {row.modernBody}
+                  </p>
+                </div>
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </article>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };

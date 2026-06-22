@@ -1,8 +1,10 @@
-import { HeroDescription } from '../../../shared/HeroDescription';
-import { HeroSection as HeroShell } from '../../../shared/HeroSection';
-import { HeroTextColumn } from '../../../shared/HeroTextColumn';
-import { HeroTitle } from '../../../shared/HeroTitle';
-import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
+import {
+  HeroDescription,
+  HeroSection as HeroShell,
+  HeroTextColumn,
+  HeroTitle,
+  HeroVisualColumn,
+} from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { ErrorBoundaryHeroDiagram } from '../components/ErrorBoundaryHeroDiagram';
 import type { ErrorBoundaryRecoverContent } from '../content';

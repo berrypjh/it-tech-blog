@@ -8,11 +8,6 @@ import { BoxIcon, LayersIcon, WandIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * React Element 객체 → createFiberFromElement 함수 호출(type/key/props 추출) → Fiber 객체로
- * 이어지는 변환 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
 export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.elementLabel} 객체에서 createFiberFromElement 함수가 ${content.extractionChips
     .map((c) => c.label)

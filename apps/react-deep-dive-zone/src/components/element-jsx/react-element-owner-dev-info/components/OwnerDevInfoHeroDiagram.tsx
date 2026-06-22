@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { DownArrow } from '../../../shared/DownArrow';
-import { HeroDiagramShell } from '../../../shared/HeroDiagramShell';
+import { HeroDiagramShell } from '../../../shared/hero';
 import type { ToneKey } from '../../../shared/tones';
 import type { FieldChip, ReactElementOwnerDevInfoContent } from '../content';
 import { BugIcon, CodeIcon } from '../icons';
@@ -9,11 +9,6 @@ import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['hero']; className?: string };
 
-/**
- * Hero 핵심 비주얼.
- * Base Element 위에 개발 모드 전용 Development Info가 얹히는 구조를
- * 위에서 아래로 잇는 컴팩트 stepper. 마지막에 의도(렌더링 변경이 아닌 디버깅)를 강조한다.
- */
 export const OwnerDevInfoHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.baseLabel}: ${content.baseFields
     .map((f) => f.label)
