@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ArrowRight, RefreshCw, Sparkle } from 'lucide-react';
 
 export type FinaleBannerContent = {
-  /** 챕터 진행도 라벨 (예: '2/15 챕터 완료'). */
   progressLabel: string;
   copyLine1: string;
   copyLine2: string;
@@ -16,7 +15,6 @@ export type FinaleBannerContent = {
 
 type Props = { content: FinaleBannerContent };
 
-/** Rocket launching illustration — accent-tinted, transparent background. */
 const RocketDecoration = () => (
   <div className="hidden lg:block relative lg:h-56 overflow-hidden" aria-hidden="true">
     <svg
@@ -24,7 +22,6 @@ const RocketDecoration = () => (
       className="absolute inset-0 w-full h-full"
       preserveAspectRatio="xMidYMid slice"
     >
-      {/* stars / sparks */}
       <g className="text-[var(--term-accent)]" fill="currentColor" opacity="0.5">
         <circle cx="30" cy="32" r="1.5" />
         <circle cx="44" cy="52" r="1" />
@@ -34,7 +31,6 @@ const RocketDecoration = () => (
         <circle cx="176" cy="104" r="1.3" />
       </g>
 
-      {/* flame */}
       <path
         d="M88 130 Q100 170 112 130 Q108 150 100 162 Q92 150 88 130 Z"
         className="text-[var(--term-accent)]"
@@ -43,7 +39,6 @@ const RocketDecoration = () => (
       />
 
       <g transform="translate(0, -4)">
-        {/* body fill (adapts to light/dark via term-bg) */}
         <path d="M100 30 L116 80 L84 80 Z" className="text-[var(--term-bg)]" fill="currentColor" />
         <rect
           x="84"
@@ -55,7 +50,6 @@ const RocketDecoration = () => (
           fill="currentColor"
         />
 
-        {/* body outline */}
         <path
           d="M100 30 L116 80 L84 80 Z"
           className="text-[var(--term-accent)]"
@@ -94,7 +88,6 @@ const RocketDecoration = () => (
           strokeWidth="1.5"
         />
 
-        {/* fins */}
         <path
           d="M84 110 L70 135 L84 130 Z"
           className="text-[var(--term-accent)]"
@@ -106,7 +99,6 @@ const RocketDecoration = () => (
           fill="currentColor"
         />
 
-        {/* body line */}
         <line
           x1="92"
           y1="116"
@@ -119,7 +111,6 @@ const RocketDecoration = () => (
         />
       </g>
 
-      {/* trail */}
       <path
         d="M100 172 Q100 186 95 194 M100 172 Q100 186 105 194"
         className="text-[var(--term-accent)]"
@@ -134,7 +125,6 @@ const RocketDecoration = () => (
   </div>
 );
 
-/** 모바일·태블릿용 가로형 로켓 — 전체 폭 strip을 우상향 비행 구도로 채운다(세로 로켓 크롭 방지). */
 const MobileRocketDecoration = () => (
   <div className="lg:hidden relative h-28 overflow-hidden" aria-hidden="true">
     <svg
@@ -142,7 +132,6 @@ const MobileRocketDecoration = () => (
       className="absolute inset-0 w-full h-full"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* stars / sparks */}
       <g className="text-[var(--term-accent)]" fill="currentColor" opacity="0.5">
         <circle cx="40" cy="20" r="1.6" />
         <circle cx="80" cy="40" r="1.1" />
@@ -152,7 +141,6 @@ const MobileRocketDecoration = () => (
         <circle cx="250" cy="78" r="1.3" />
       </g>
 
-      {/* 좌하단 → 로켓으로 이어지는 점선 궤적 */}
       <path
         d="M30 92 Q90 84 150 64"
         className="text-[var(--term-accent)]"
@@ -164,16 +152,13 @@ const MobileRocketDecoration = () => (
         opacity="0.55"
       />
 
-      {/* 우상향(38deg)으로 비행하는 로켓 */}
       <g transform="translate(196, 52) rotate(38)">
-        {/* flame */}
         <path
           d="M-10 40 Q0 66 10 40 Q6 54 0 60 Q-6 54 -10 40 Z"
           className="text-[var(--term-accent)]"
           fill="currentColor"
           opacity="0.8"
         />
-        {/* body fill (light/dark via term-bg) */}
         <path d="M0 -42 L15 -2 L-15 -2 Z" className="text-[var(--term-bg)]" fill="currentColor" />
         <rect
           x="-15"
@@ -184,7 +169,6 @@ const MobileRocketDecoration = () => (
           className="text-[var(--term-bg)]"
           fill="currentColor"
         />
-        {/* body outline */}
         <path
           d="M0 -42 L15 -2 L-15 -2 Z"
           className="text-[var(--term-accent)]"
@@ -203,7 +187,6 @@ const MobileRocketDecoration = () => (
           stroke="currentColor"
           strokeWidth="1.6"
         />
-        {/* window */}
         <circle
           cx="0"
           cy="14"
@@ -221,7 +204,6 @@ const MobileRocketDecoration = () => (
           stroke="currentColor"
           strokeWidth="1.6"
         />
-        {/* fins */}
         <path
           d="M-15 24 L-28 44 L-15 38 Z"
           className="text-[var(--term-accent)]"
@@ -237,12 +219,10 @@ const MobileRocketDecoration = () => (
   </div>
 );
 
-/** 챕터 마지막 페이지 공용 졸업 배너 (로켓 + 다음 챕터/다시 보기 CTA). */
 export const FinalLaunchBanner = ({ content }: Props) => {
   return (
     <section id="section-finale" aria-labelledby="heading-finale-title" className="space-y-md">
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)] p-md sm:p-lg lg:p-xl shadow-[0_2px_0_var(--term-border)] overflow-hidden relative">
-        {/* 배경 spark 장식 */}
         <span aria-hidden="true" className="absolute right-3 top-3 text-[var(--term-accent)]">
           <Sparkle className="h-5 w-5" />
         </span>
@@ -251,11 +231,9 @@ export const FinalLaunchBanner = ({ content }: Props) => {
         </span>
 
         <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,_0.4fr)_minmax(0,_1fr)_auto] gap-md lg:gap-lg items-center">
-          {/* 좌측: rocket — 모바일·태블릿은 가로형, lg부터 세로형 */}
           <MobileRocketDecoration />
           <RocketDecoration />
 
-          {/* 중앙: copy */}
           <div className="flex flex-col gap-1.5 min-w-0">
             <p className="text-[10px] uppercase tracking-wider text-[var(--term-accent)] font-bold inline-flex items-center gap-1.5">
               <Sparkle className="h-3 w-3" />
@@ -271,7 +249,6 @@ export const FinalLaunchBanner = ({ content }: Props) => {
             </h3>
           </div>
 
-          {/* 우측: 버튼 2개 (vertical stack) */}
           <div className="flex flex-col gap-sm lg:w-[260px]">
             <Link
               href={content.primaryHref}

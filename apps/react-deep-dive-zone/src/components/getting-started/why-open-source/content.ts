@@ -3,7 +3,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 export type PerspectiveCard = {
   id: 'docs' | 'code' | 'tests' | 'pr';
   icon: 'doc' | 'code' | 'flask' | 'chat';
-  tone: 'blue' | 'teal' | 'lavender' | 'coral';
+  tone: 'blue' | 'teal' | 'violet' | 'amber';
   title: string;
   subtitle: string;
   description: string;
@@ -13,7 +13,7 @@ export type ReadingPriorityRow = {
   id: 'packages' | 'tests' | 'issues' | 'releases';
   index: string;
   icon: 'folder' | 'flask' | 'chat' | 'tag';
-  tone: 'blue' | 'teal' | 'lavender' | 'coral';
+  tone: 'blue' | 'teal' | 'violet' | 'amber';
   title: string;
   description: string;
   href: string;
@@ -45,13 +45,13 @@ export type ChainCard = {
   description: string;
   cta: string;
   href: string;
-  tone: 'blue' | 'teal' | 'lavender';
+  tone: 'blue' | 'teal' | 'violet';
 };
 
 export type RoutineStep = {
   num: string;
   icon: 'doc' | 'search' | 'cursor' | 'flask' | 'tag';
-  tone: 'blue' | 'teal' | 'emerald' | 'mint' | 'lavender';
+  tone: 'blue' | 'teal' | 'emerald' | 'cyan' | 'violet';
   title: string;
   description: string;
 };
@@ -191,7 +191,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'tests',
           icon: 'flask',
-          tone: 'lavender',
+          tone: 'violet',
           title: '테스트',
           subtitle: '어떤 동작을 보장하는가',
           description: '테스트 코드를 통해 보장해야 할 동작과 엣지 케이스를 확인합니다.',
@@ -199,7 +199,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'pr',
           icon: 'chat',
-          tone: 'coral',
+          tone: 'amber',
           title: 'PR / Issue',
           subtitle: '왜 바뀌었는가',
           description: '변경의 배경, 논의 과정, 트레이드오프를 이해합니다.',
@@ -234,7 +234,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           id: 'issues',
           index: '3',
           icon: 'chat',
-          tone: 'lavender',
+          tone: 'violet',
           href: 'https://github.com/facebook/react/issues',
           title: 'issues',
           description:
@@ -244,7 +244,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           id: 'releases',
           index: '4',
           icon: 'tag',
-          tone: 'coral',
+          tone: 'amber',
           href: 'https://github.com/facebook/react/releases',
           title: 'releases',
           description:
@@ -362,7 +362,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           description: '상태 업데이트 시 재렌더링과 값 변경이 보장됨을 테스트로 확인합니다.',
           cta: '테스트에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/__tests__/ReactHooks-test.internal.js',
-          tone: 'lavender',
+          tone: 'violet',
         },
       ],
     },
@@ -394,14 +394,14 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           num: '4',
           icon: 'flask',
-          tone: 'mint',
+          tone: 'cyan',
           title: '테스트 확인',
           description: '테스트를 통해 보장 조건을 확인합니다.',
         },
         {
           num: '5',
           icon: 'tag',
-          tone: 'lavender',
+          tone: 'violet',
           title: '릴리즈 / PR로 변경 이유 보기',
           description: '왜 바뀌었는지 맥락을 이해합니다.',
         },
@@ -465,7 +465,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'tests',
           icon: 'flask',
-          tone: 'lavender',
+          tone: 'violet',
           title: 'Tests',
           subtitle: 'What behavior is guaranteed',
           description: 'Test code documents required behavior and edge cases.',
@@ -473,7 +473,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'pr',
           icon: 'chat',
-          tone: 'coral',
+          tone: 'amber',
           title: 'PRs / Issues',
           subtitle: 'Why it changed',
           description: 'Understand the background, discussion, and tradeoffs behind a change.',
@@ -507,7 +507,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           id: 'issues',
           index: '3',
           icon: 'chat',
-          tone: 'lavender',
+          tone: 'violet',
           href: 'https://github.com/facebook/react/issues',
           title: 'issues',
           description:
@@ -517,7 +517,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
           id: 'releases',
           index: '4',
           icon: 'tag',
-          tone: 'coral',
+          tone: 'amber',
           href: 'https://github.com/facebook/react/releases',
           title: 'releases',
           description:
@@ -639,7 +639,7 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
             'Verify in tests that updates trigger re-renders and the state value changes.',
           cta: 'View the test',
           href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/__tests__/ReactHooks-test.internal.js',
-          tone: 'lavender',
+          tone: 'violet',
         },
       ],
     },
@@ -671,14 +671,14 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           num: '4',
           icon: 'flask',
-          tone: 'mint',
+          tone: 'cyan',
           title: 'Check the tests',
           description: 'Confirm the guarantees via the test suite.',
         },
         {
           num: '5',
           icon: 'tag',
-          tone: 'lavender',
+          tone: 'violet',
           title: 'Read releases / PRs',
           description: 'Understand the context behind why things changed.',
         },

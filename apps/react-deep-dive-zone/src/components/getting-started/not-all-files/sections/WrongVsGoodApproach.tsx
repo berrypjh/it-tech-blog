@@ -16,20 +16,15 @@ const variantClasses: Record<
     headerIconText: string;
     headerText: string;
     rowAccent: string;
-    numChip: string;
     rowHover: string;
   }
 > = {
-  // 의미 대비(좋음/나쁨)는 색 계열 유지(wrong=rose, good=teal), 강도만 소프트로.
-  // 중립 크롬 + 텍스트 액센트만 색으로.
   wrong: {
     border: 'border-[var(--term-border)]',
     headerIconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
     headerIconText: 'text-rose-600 dark:text-rose-300',
     headerText: 'text-rose-600 dark:text-rose-300',
     rowAccent: 'text-rose-600 dark:text-rose-300',
-    numChip:
-      'bg-[var(--term-surface)] border border-[var(--term-border)] text-rose-600 dark:text-rose-300',
     rowHover: 'group-hover:bg-[var(--term-surface)]',
   },
   good: {
@@ -38,8 +33,6 @@ const variantClasses: Record<
     headerIconText: 'text-teal-600 dark:text-teal-300',
     headerText: 'text-teal-600 dark:text-teal-300',
     rowAccent: 'text-teal-600 dark:text-teal-300',
-    numChip:
-      'bg-[var(--term-surface)] border border-[var(--term-border)] text-teal-600 dark:text-teal-300',
     rowHover: 'group-hover:bg-[var(--term-surface)]',
   },
 };
@@ -80,22 +73,13 @@ const ApproachPanel = ({
         {items.map((item) => {
           const Icon = approachIconByName[item.icon];
           return (
-            <li key={item.num} className="group">
+            <li key={item.title} className="group">
               <div
                 className={cn(
-                  'grid grid-cols-[auto_auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 transition-colors',
+                  'grid grid-cols-[auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                   t.rowHover,
                 )}
               >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'inline-flex items-center justify-center w-6 h-6 rounded-md border text-[10px] font-bold tabular-nums shrink-0',
-                    t.numChip,
-                  )}
-                >
-                  {item.num}
-                </span>
                 <span
                   aria-hidden="true"
                   className={cn(

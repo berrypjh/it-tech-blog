@@ -24,7 +24,6 @@ const prefersReducedMotion = () => {
 export const InternalFlowDemo = ({ content }: Props) => {
   const totalSteps = content.progress.steps.length;
   const [count, setCount] = useState(0);
-  /** -1: idle, 0..totalSteps-1: active step index, totalSteps: all complete */
   const [activeStep, setActiveStep] = useState<number>(-1);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -121,7 +120,6 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <span aria-hidden="true">+</span>
       {buttonLabel}
     </button>
 

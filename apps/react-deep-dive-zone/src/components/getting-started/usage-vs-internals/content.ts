@@ -297,7 +297,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
     },
     takeaway: {
       eyebrow: '06 · 핵심 정리',
-      title: '핵심 takeaway',
+      title: '기억할 한 가지',
       lines: [
         '상태가 바뀌었다고 DOM이 바로 바뀌는 것이 아닙니다.',
         '먼저 업데이트를 기록하고, 렌더링을 계산하고, 마지막에 반영합니다.',
@@ -502,7 +502,7 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
     },
     takeaway: {
       eyebrow: '06 · KEY TAKEAWAY',
-      title: 'Core takeaway',
+      title: 'One thing to remember',
       lines: [
         "Changing state doesn't change the DOM instantly.",
         'React records an update, computes the render, then applies it last.',

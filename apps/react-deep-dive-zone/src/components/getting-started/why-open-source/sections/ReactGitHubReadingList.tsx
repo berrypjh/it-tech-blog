@@ -1,48 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import type { ReadingPriorityRow, WhyOpenSourceContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { WhyOpenSourceContent } from '../content';
 import { ChevronRightIcon, CodeIcon, priorityIconByName } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['readingPriorities'] };
-
-type RowTone = ReadingPriorityRow['tone'];
-
-const houseBase = {
-  iconBg: 'bg-[var(--term-surface)]',
-  hoverBg: 'group-hover:bg-[var(--term-surface)]',
-};
-
-// 소프트 액센트 3색: A amber / B sky / C violet
-// number 배지·iconBg·hoverBg는 크롬 중립 고정, 텍스트만 액센트 색
-const A = {
-  ...houseBase,
-  number: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
-  iconText: 'text-[var(--term-accent)]',
-  title: 'text-[var(--term-accent)]',
-};
-const B = {
-  ...houseBase,
-  number:
-    'bg-[var(--term-surface)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
-  iconText: 'text-sky-600 dark:text-sky-300',
-  title: 'text-sky-600 dark:text-sky-300',
-};
-const C = {
-  ...houseBase,
-  number:
-    'bg-[var(--term-surface)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300',
-  iconText: 'text-violet-600 dark:text-violet-300',
-  title: 'text-violet-600 dark:text-violet-300',
-};
-
-// 키 선언 순서대로 [A, B, C, A] 순환
-const toneClasses: Record<RowTone, typeof A> = {
-  blue: A,
-  teal: B,
-  lavender: C,
-  coral: A,
-};
 
 export const ReactGitHubReadingList = ({ content }: Props) => {
   return (
@@ -56,7 +19,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
 
       <ol className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] divide-y divide-[var(--term-border)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {content.rows.map((row) => {
-          const t = toneClasses[row.tone];
+          const t = toneTokens[row.tone];
           const Icon = priorityIconByName[row.icon];
           return (
             <li key={row.id} className="group transition-colors">
@@ -68,7 +31,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                   'grid grid-cols-[auto_auto_1fr_auto] sm:grid-cols-[auto_auto_minmax(120px,_180px)_1fr_auto] items-center gap-sm sm:gap-md',
                   'px-md sm:px-lg py-md sm:py-lg',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-inset',
-                  t.hoverBg,
+                  'group-hover:bg-[var(--term-surface)]',
                 )}
               >
                 {/* 번호 원형 */}
@@ -76,8 +39,9 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                   aria-hidden="true"
                   className={cn(
                     'inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full',
+                    'bg-[var(--term-surface)] border border-[var(--term-border)]',
                     'text-xsm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)]',
-                    t.number,
+                    t.text,
                   )}
                 >
                   {row.index}
@@ -87,18 +51,15 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'inline-flex items-center justify-center w-9 h-9 rounded-md',
-                    t.iconBg,
-                    t.iconText,
+                    'inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)]',
+                    t.text,
                   )}
                 >
                   <Icon className="h-[1.125rem] w-[1.125rem]" />
                 </span>
 
                 {/* 항목명 */}
-                <h3
-                  className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.title)}
-                >
+                <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
                   {row.title}
                 </h3>
 

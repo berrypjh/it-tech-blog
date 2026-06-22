@@ -18,7 +18,6 @@ import {
 
 type Props = { content: WhyOpenSourceContent['repoExplorer'] };
 
-/** open: true로 표시된 노드 이름을 초기 펼침 집합으로 수집 */
 const collectOpen = (nodes: RepoTreeNode[], acc: Set<string> = new Set()): Set<string> => {
   for (const node of nodes) {
     if (node.open) acc.add(node.name);
@@ -37,7 +36,6 @@ type TreeNodeProps = {
   onSelect: (name: string) => void;
 };
 
-/** 단일 트리 노드 — children 펼침/접힘, detail 보유 시 선택 가능 */
 const TreeNode = ({
   node,
   depth,
@@ -166,9 +164,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
         icon={<FolderIcon className="h-5 w-5" />}
       />
 
-      {/* 큰 white card 안 2열 */}
       <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
-        {/* 상단 explorer toolbar */}
         <header className="flex items-center justify-between px-md py-2 border-b border-[var(--term-border)] bg-[var(--term-surface)]">
           <div className="flex items-center gap-2">
             <GithubIcon className="h-4 w-4 text-[var(--term-fg)]" />
@@ -184,7 +180,6 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.38fr)_minmax(0,_0.62fr)]">
-          {/* 좌측: 트리 */}
           <aside
             aria-label="repository tree"
             className="border-b lg:border-b-0 lg:border-r border-[var(--term-border)] p-sm sm:p-md bg-[var(--color-canvas)]/30"
@@ -205,9 +200,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
             </ul>
           </aside>
 
-          {/* 우측: 상세 패널 — 선택된 폴더에 따라 갱신 */}
           <article className="p-md sm:p-lg flex flex-col gap-md">
-            {/* 폴더 헤더 */}
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
@@ -225,15 +218,15 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
               </div>
             </header>
 
-            {/* lead */}
-            <p className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-snug break-keep">
-              {detail.lead}
-            </p>
-            <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep -mt-2">
-              {detail.supporting}
-            </p>
+            <div className="flex flex-col gap-1">
+              <p className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-snug break-keep">
+                {detail.lead}
+              </p>
+              <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep">
+                {detail.supporting}
+              </p>
+            </div>
 
-            {/* tag pills */}
             <ul className="flex flex-wrap gap-1.5">
               {detail.tags.map((tag) => (
                 <li
@@ -245,7 +238,6 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
               ))}
             </ul>
 
-            {/* bullet list */}
             <ul className="flex flex-col gap-1.5">
               {detail.bullets.map((b, i) => (
                 <li
@@ -261,11 +253,10 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
               ))}
             </ul>
 
-            {/* info callout */}
             <aside className="mt-auto flex items-start gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-sm sm:p-md">
               <span
                 aria-hidden="true"
-                className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
+                className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
               >
                 <InfoIcon className="h-4 w-4" />
               </span>

@@ -1,7 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 export type ApproachItem = {
-  num: string;
   icon: 'x' | 'open' | 'brain' | 'check' | 'pin' | 'route' | 'pencil';
   title: string;
   description: string;
@@ -9,7 +8,7 @@ export type ApproachItem = {
 
 export type MappingRow = {
   id: 'jsx' | 'element' | 'setstate' | 'dom';
-  tone: 'blue' | 'lavender' | 'mint' | 'coral';
+  tone: 'blue' | 'violet' | 'cyan' | 'amber';
   question: string;
   file1: string;
   fn1: string;
@@ -20,7 +19,7 @@ export type MappingRow = {
 export type FlowStep = {
   num: string;
   icon: 'hook' | 'fx' | 'database' | 'clock' | 'cube' | 'check';
-  tone: 'sky' | 'blue' | 'indigo' | 'violet' | 'mint' | 'teal';
+  tone: 'sky' | 'blue' | 'indigo' | 'violet' | 'cyan' | 'teal';
   title: string;
   description: string;
 };
@@ -107,25 +106,22 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '01 · compare',
+      eyebrow: '01 · 접근 비교',
       title: '잘못된 접근 vs 좋은 접근',
       wrong: {
         title: '잘못된 접근',
         items: [
           {
-            num: '1',
             icon: 'open',
             title: 'packages부터 순서대로 모두 읽기',
             description: '너무 방대해서 금방 지치게 됩니다.',
           },
           {
-            num: '2',
             icon: 'x',
             title: '파일명을 보고 무작정 열기',
             description: '맥락 없이 읽으면 이해가 더 어렵습니다.',
           },
           {
-            num: '3',
             icon: 'brain',
             title: '한 번에 전체를 외우려 하기',
             description: '모두를 기억할 필요는 없습니다.',
@@ -136,25 +132,21 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: '좋은 접근',
         items: [
           {
-            num: '1',
             icon: 'check',
             title: '질문 정하기',
             description: '내가 궁금한 것을 먼저 정의합니다.',
           },
           {
-            num: '2',
             icon: 'pin',
             title: '진입 파일 찾기',
             description: '질문과 관련된 시작점을 찾습니다.',
           },
           {
-            num: '3',
             icon: 'route',
             title: '관련 함수만 따라가기',
             description: '흐름을 파악할 때 필요한 부분만 읽습니다.',
           },
           {
-            num: '4',
             icon: 'pencil',
             title: '흐름도로 재정리하기',
             description: '이해한 내용을 스스로 정리하며 완성합니다.',
@@ -163,7 +155,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     mapping: {
-      eyebrow: '02 · mapping',
+      eyebrow: '02 · 매핑',
       title: '질문 → 파일 → 핵심 함수 매핑',
       labels: { question: '질문', file: '파일', fn: '함수' },
       rows: [
@@ -178,7 +170,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'element',
-          tone: 'lavender',
+          tone: 'violet',
           question: 'Element는 어떻게 Fiber가 되는가?',
           file1: 'ReactChildFiber.js',
           fn1: 'reconcileChildFibers',
@@ -187,7 +179,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'setstate',
-          tone: 'mint',
+          tone: 'cyan',
           question: 'setState는 어떻게 업데이트를 시작하는가?',
           file1: 'ReactFiberHooks.js',
           fn1: 'dispatchSetState',
@@ -196,7 +188,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'dom',
-          tone: 'coral',
+          tone: 'amber',
           question: 'DOM은 언제 실제로 바뀌는가?',
           file1: 'ReactFiberWorkLoop.js',
           fn1: 'commitRoot',
@@ -206,7 +198,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '03 · follow flow',
+      eyebrow: '03 · 흐름 따라가기',
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
@@ -235,7 +227,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         {
           num: '5',
           icon: 'cube',
-          tone: 'mint',
+          tone: 'cyan',
           title: 'render',
           description: 'Fiber 트리 계산 (Reconciliation)',
         },
@@ -291,25 +283,22 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '01 · compare',
+      eyebrow: '01 · COMPARE',
       title: 'Wrong approach vs Good approach',
       wrong: {
         title: 'Wrong approach',
         items: [
           {
-            num: '1',
             icon: 'open',
             title: 'Read every package in order',
             description: 'Too vast — you burn out quickly.',
           },
           {
-            num: '2',
             icon: 'x',
             title: 'Open files by filename alone',
             description: 'Without context it gets harder, not easier.',
           },
           {
-            num: '3',
             icon: 'brain',
             title: 'Try to memorize it all at once',
             description: "You don't have to remember everything.",
@@ -320,25 +309,21 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: 'Good approach',
         items: [
           {
-            num: '1',
             icon: 'check',
             title: 'Pick a question',
             description: 'Define what you actually want to know.',
           },
           {
-            num: '2',
             icon: 'pin',
             title: 'Find the entry file',
             description: 'Locate the starting point for that question.',
           },
           {
-            num: '3',
             icon: 'route',
             title: 'Follow only related functions',
             description: 'Read only what the flow needs.',
           },
           {
-            num: '4',
             icon: 'pencil',
             title: 'Redraw the flow yourself',
             description: 'Consolidate what you learned in your own diagram.',
@@ -347,7 +332,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     mapping: {
-      eyebrow: '02 · mapping',
+      eyebrow: '02 · MAPPING',
       title: 'Question → File → Key function mapping',
       labels: { question: 'Question', file: 'File', fn: 'Function' },
       rows: [
@@ -362,7 +347,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'element',
-          tone: 'lavender',
+          tone: 'violet',
           question: 'How does an Element become a Fiber?',
           file1: 'ReactChildFiber.js',
           fn1: 'reconcileChildFibers',
@@ -371,7 +356,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'setstate',
-          tone: 'mint',
+          tone: 'cyan',
           question: 'How does setState start an update?',
           file1: 'ReactFiberHooks.js',
           fn1: 'dispatchSetState',
@@ -380,7 +365,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         },
         {
           id: 'dom',
-          tone: 'coral',
+          tone: 'amber',
           question: 'When does the DOM actually change?',
           file1: 'ReactFiberWorkLoop.js',
           fn1: 'commitRoot',
@@ -390,7 +375,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '03 · follow flow',
+      eyebrow: '03 · FOLLOW FLOW',
       title: 'Follow one question end-to-end',
       mainQuestion: 'How does setState end up triggering a render?',
       steps: [
@@ -425,7 +410,7 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         {
           num: '5',
           icon: 'cube',
-          tone: 'mint',
+          tone: 'cyan',
           title: 'render',
           description: 'Compute the fiber tree (Reconciliation)',
         },

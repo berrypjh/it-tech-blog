@@ -1,11 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
+import { toneTokens } from '../../../shared/tones';
 import type { RoadmapContent } from '../content';
 import { CheckCircleIcon, deliverableIconByName } from '../icons';
-import { tones } from '../tones';
 
 type Props = { content: RoadmapContent['deliverables'] };
+
+/** 중립 크롬 칩: surface + border. 색은 toneTokens[tone].text로만 입힌다. */
+const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 export const StageDeliverables = ({ content }: Props) => {
   return (
@@ -27,7 +30,7 @@ export const StageDeliverables = ({ content }: Props) => {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-md mt-md">
         {content.cards.map((card) => {
-          const t = tones[card.tone];
+          const tone = toneTokens[card.tone].text;
           const Icon = deliverableIconByName[card.icon];
           const isFinal = card.icon === 'flag';
           return (
@@ -37,29 +40,27 @@ export const StageDeliverables = ({ content }: Props) => {
                   'group relative flex flex-col items-center text-center w-full h-full gap-sm rounded-lg border bg-[var(--term-bg)]',
                   'p-md pt-lg transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
-                  t.border,
-                  t.hoverBorder,
+                  'border-[var(--term-border)] hover:border-[var(--term-accent)]',
                   isFinal && 'ring-2 ring-amber-300/40 dark:ring-amber-500/30',
                 )}
               >
-                {/* num badge */}
                 <span
                   aria-hidden="true"
                   className={cn(
                     'absolute top-2 left-2 inline-flex items-center justify-center w-5 h-5 rounded-md text-[10px] font-bold tabular-nums',
-                    t.num,
+                    chip,
+                    tone,
                   )}
                 >
                   {card.num}
                 </span>
 
-                {/* icon */}
                 <span
                   aria-hidden="true"
                   className={cn(
                     'inline-flex items-center justify-center w-11 h-11 rounded-full mt-2 shadow-[0_1px_0_var(--term-border)]',
-                    t.iconBg,
-                    t.iconText,
+                    chip,
+                    tone,
                   )}
                 >
                   <Icon className="h-[1.125rem] w-[1.125rem]" />
@@ -68,7 +69,7 @@ export const StageDeliverables = ({ content }: Props) => {
                 <h3
                   className={cn(
                     'text-xsm sm:text-sm font-bold tracking-tight break-keep leading-snug',
-                    t.text,
+                    tone,
                   )}
                 >
                   {card.title}

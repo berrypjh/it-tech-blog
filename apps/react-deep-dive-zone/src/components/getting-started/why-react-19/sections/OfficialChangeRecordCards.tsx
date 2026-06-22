@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { ResourceCard, WhyReact19Content } from '../content';
-import { ArrowRightIcon, BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
+import { BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['resources'] };
 
@@ -118,15 +118,14 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'group mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md text-xsm font-bold',
-          'border border-transparent bg-slate-900 text-slate-50 transition-colors hover:bg-slate-800',
-          'dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-slate-700',
+          'mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md border border-[var(--term-border)] text-xsm font-bold',
+          'text-[var(--term-accent)] transition-colors hover:bg-[var(--term-surface)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         )}
       >
         {card.cta}
-        <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        <ExternalLinkIcon className="h-3 w-3 opacity-80" />
+        <span className="sr-only">(새 창에서 열림)</span>
+        <ExternalLinkIcon className="h-3.5 w-3.5 opacity-80" aria-hidden="true" />
       </a>
     </article>
   );

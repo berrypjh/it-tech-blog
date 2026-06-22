@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/FinalLaunchBanner';
 
-export type Tone = 'blue' | 'teal' | 'lavender' | 'cyan' | 'mint' | 'coral' | 'indigo';
+export type Tone = 'blue' | 'teal' | 'violet' | 'cyan' | 'amber' | 'indigo';
 
 export type RoadmapRow = {
   num: string;
@@ -87,7 +87,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     roadmap: {
-      eyebrow: '01 · roadmap',
+      eyebrow: '01 · 로드맵',
       title: '8단계 학습 로드맵',
       coreFilesLabel: '핵심 파일',
       rows: [
@@ -113,7 +113,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'beginWork / completeWork 흐름을 읽습니다.',
           files: ['ReactFiberBeginWork.js', 'ReactFiberCompleteWork.js'],
           icon: 'code',
-          tone: 'lavender',
+          tone: 'violet',
         },
         {
           num: '4',
@@ -121,7 +121,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: '변경 사항이 실제로 반영되는 과정을 이해합니다.',
           files: ['ReactFiberCommitWork.js'],
           icon: 'check',
-          tone: 'coral',
+          tone: 'amber',
         },
         {
           num: '5',
@@ -145,7 +145,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'lanes, priority, 스케줄링 로직을 이해합니다.',
           files: ['scheduler', 'ReactFiberLane.js'],
           icon: 'gauge',
-          tone: 'mint',
+          tone: 'cyan',
         },
         {
           num: '8',
@@ -153,12 +153,12 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'Suspense, Actions, use(), ref as prop 등 최신 변화를 이해합니다.',
           files: ['React 19 관련 변경 코드'],
           icon: 'spark',
-          tone: 'coral',
+          tone: 'amber',
         },
       ],
     },
     deliverables: {
-      eyebrow: '02 · deliverables',
+      eyebrow: '02 · 산출물',
       title: '단계별 산출물',
       supporting: '학습 후, 내가 만들어야 할 결과물',
       cards: [
@@ -181,14 +181,14 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Render 단계',
           description: ['beginWork / completeWork', '흐름도 그리기'],
           icon: 'code',
-          tone: 'lavender',
+          tone: 'violet',
         },
         {
           num: '4',
           title: 'Commit 단계',
           description: ['Placement / Update /', 'Deletion 설명하기'],
           icon: 'check',
-          tone: 'coral',
+          tone: 'amber',
         },
         {
           num: '5',
@@ -202,7 +202,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Scheduler 단계',
           description: ['우선순위 흐름', '정리하기'],
           icon: 'gauge',
-          tone: 'mint',
+          tone: 'cyan',
         },
         {
           num: '7',
@@ -257,7 +257,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     roadmap: {
-      eyebrow: '01 · roadmap',
+      eyebrow: '01 · ROADMAP',
       title: '8-step learning roadmap',
       coreFilesLabel: 'Core files',
       rows: [
@@ -283,7 +283,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'beginWork / completeWork flow.',
           files: ['ReactFiberBeginWork.js', 'ReactFiberCompleteWork.js'],
           icon: 'code',
-          tone: 'lavender',
+          tone: 'violet',
         },
         {
           num: '4',
@@ -291,7 +291,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'How changes actually apply.',
           files: ['ReactFiberCommitWork.js'],
           icon: 'check',
-          tone: 'coral',
+          tone: 'amber',
         },
         {
           num: '5',
@@ -315,7 +315,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'lanes, priority, scheduling logic.',
           files: ['scheduler', 'ReactFiberLane.js'],
           icon: 'gauge',
-          tone: 'mint',
+          tone: 'cyan',
         },
         {
           num: '8',
@@ -323,12 +323,12 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           description: 'Suspense, Actions, use(), ref as prop, etc.',
           files: ['React 19 change set'],
           icon: 'spark',
-          tone: 'coral',
+          tone: 'amber',
         },
       ],
     },
     deliverables: {
-      eyebrow: '02 · deliverables',
+      eyebrow: '02 · DELIVERABLES',
       title: 'Per-stage deliverables',
       supporting: 'What you should be able to produce after learning',
       cards: [
@@ -351,14 +351,14 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Render stage',
           description: ['Diagram the begin/', 'completeWork flow'],
           icon: 'code',
-          tone: 'lavender',
+          tone: 'violet',
         },
         {
           num: '4',
           title: 'Commit stage',
           description: ['Explain Placement /', 'Update / Deletion'],
           icon: 'check',
-          tone: 'coral',
+          tone: 'amber',
         },
         {
           num: '5',
@@ -372,7 +372,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Scheduler stage',
           description: ['Summarize the', 'priority flow'],
           icon: 'gauge',
-          tone: 'mint',
+          tone: 'cyan',
         },
         {
           num: '7',

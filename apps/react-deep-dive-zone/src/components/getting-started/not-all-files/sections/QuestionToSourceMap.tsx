@@ -1,60 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import type { MappingRow, NotAllFilesContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { NotAllFilesContent } from '../content';
 import { ArrowRightIcon, FileIcon, RouteIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['mapping'] };
 
-type RowTone = MappingRow['tone'];
-
-type ToneStyle = {
-  rowBg: string;
-  rowBorder: string;
-  questionPill: string;
-  filePill: string;
-  fnPill: string;
-  arrow: string;
-};
-
-// 중립 크롬 고정: 테두리/배경/칩은 surface+border, 색은 텍스트 액센트로만
-const houseChrome = {
-  rowBg: 'bg-[var(--term-bg)] hover:bg-[var(--term-surface)]',
-  rowBorder: 'border-[var(--term-border)]',
-};
-
 const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
-
-// 소프트 액센트 3색: A amber / B sky / C violet (텍스트 색으로만)
-const A: ToneStyle = {
-  ...houseChrome,
-  questionPill: cn(chip, 'text-[var(--term-accent)]'),
-  filePill: cn(chip, 'text-[var(--term-accent)]'),
-  fnPill: cn(chip, 'text-[var(--term-accent)]'),
-  arrow: 'text-[var(--term-accent)]',
-};
-const B: ToneStyle = {
-  ...houseChrome,
-  questionPill: cn(chip, 'text-sky-600 dark:text-sky-300'),
-  filePill: cn(chip, 'text-sky-600 dark:text-sky-300'),
-  fnPill: cn(chip, 'text-sky-600 dark:text-sky-300'),
-  arrow: 'text-sky-600 dark:text-sky-300',
-};
-const C: ToneStyle = {
-  ...houseChrome,
-  questionPill: cn(chip, 'text-violet-600 dark:text-violet-300'),
-  filePill: cn(chip, 'text-violet-600 dark:text-violet-300'),
-  fnPill: cn(chip, 'text-violet-600 dark:text-violet-300'),
-  arrow: 'text-violet-600 dark:text-violet-300',
-};
-
-// 키 선언 순서대로 [A, B, C, A] 순환
-const toneClasses: Record<RowTone, ToneStyle> = {
-  blue: A,
-  lavender: B,
-  mint: C,
-  coral: A,
-};
 
 const FilePill = ({ name, cls }: { name: string; cls: string }) => (
   <span
@@ -115,24 +68,20 @@ export const QuestionToSourceMap = ({ content }: Props) => {
         </span>
       </div>
 
-      {/* 4개 매핑을 2행 2열 카드로 표기 (모바일은 1열) */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md items-stretch">
         {content.rows.map((row) => {
-          const t = toneClasses[row.tone];
+          const tone = toneTokens[row.tone].text;
           return (
             <li
               key={row.id}
-              className={cn(
-                'flex flex-col gap-sm rounded-lg border p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-colors',
-                t.rowBorder,
-                t.rowBg,
-              )}
+              className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-colors hover:bg-[var(--term-surface)]"
             >
               {/* question pill */}
               <span
                 className={cn(
                   'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xsm font-bold tracking-tight w-fit max-w-full break-keep',
-                  t.questionPill,
+                  chip,
+                  tone,
                 )}
               >
                 <span
@@ -143,20 +92,20 @@ export const QuestionToSourceMap = ({ content }: Props) => {
               </span>
 
               {/* 질문 → 파일 → fn 단계 */}
-              <ol className={cn('flex flex-col gap-1.5 pl-3 border-l-2', t.rowBorder)}>
+              <ol className="flex flex-col gap-1.5 pl-3 border-l-2 border-[var(--term-border)]">
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file1} cls={t.filePill} />
+                  <FilePill name={row.file1} cls={cn(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn1} cls={t.fnPill} />
+                  <FnPill name={row.fn1} cls={cn(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file2} cls={t.filePill} />
+                  <FilePill name={row.file2} cls={cn(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn2} cls={t.fnPill} />
+                  <FnPill name={row.fn2} cls={cn(chip, tone)} />
                 </li>
               </ol>
             </li>

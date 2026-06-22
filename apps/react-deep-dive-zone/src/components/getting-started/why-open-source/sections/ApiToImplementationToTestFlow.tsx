@@ -1,45 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
-import type { ChainCard, WhyOpenSourceContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { WhyOpenSourceContent } from '../content';
 import { ArrowRightIcon, ExternalLinkIcon, FlaskIcon } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['chain'] };
 
-type ChainTone = ChainCard['tone'];
-
-const houseBase = {
-  border: 'border-[var(--term-border)]',
-  hoverBorder: 'hover:border-[var(--term-accent)]',
-};
-
-// 소프트 액센트 3색: A amber / B sky / C violet
-// step 배지·cta는 크롬(배경/테두리/hover) 중립 고정, 텍스트만 액센트 색
-const A = {
-  ...houseBase,
-  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
-  cta: 'text-[var(--term-accent)] border-[var(--term-border)] hover:bg-[var(--term-surface)]',
-  mono: 'text-[var(--term-accent)]',
-};
-const B = {
-  ...houseBase,
-  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-sky-600 dark:text-sky-300',
-  cta: 'text-sky-600 dark:text-sky-300 border-[var(--term-border)] hover:bg-[var(--term-surface)]',
-  mono: 'text-sky-600 dark:text-sky-300',
-};
-const C = {
-  ...houseBase,
-  step: 'bg-[var(--term-surface)] border border-[var(--term-border)] text-violet-600 dark:text-violet-300',
-  cta: 'text-violet-600 dark:text-violet-300 border-[var(--term-border)] hover:bg-[var(--term-surface)]',
-  mono: 'text-violet-600 dark:text-violet-300',
-};
-
-// 키 선언 순서대로 [A, B, C] 순환
-const toneClasses: Record<ChainTone, typeof A> = {
-  blue: A,
-  teal: B,
-  lavender: C,
-};
+const COLUMNS = 3;
 
 export const ApiToImplementationToTestFlow = ({ content }: Props) => {
   return (
@@ -51,54 +19,52 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
         icon={<FlaskIcon className="h-5 w-5" />}
       />
 
-      {/* lg: 3 카드 + 사이 화살표 / 모바일: 세로 흐름 */}
-      <ol className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-sm items-stretch">
+      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md lg:gap-x-xl items-stretch">
         {content.cards.map((card, idx) => {
-          const t = toneClasses[card.tone];
-          const isLast = idx === content.cards.length - 1;
-          return [
-            <li key={card.id} className="flex min-w-0">
+          const t = toneTokens[card.tone];
+          const showConnector = idx < content.cards.length - 1 && (idx + 1) % COLUMNS !== 0;
+          return (
+            <li key={card.id} className="relative flex min-w-0">
               <article
                 className={cn(
-                  'group flex flex-col w-full min-w-0 gap-sm rounded-lg border bg-[var(--term-bg)]',
-                  'p-md sm:p-lg transition-all',
-                  'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
+                  'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
+                  'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
+                  'transition-all hover:-translate-y-0.5',
                   t.border,
-                  t.hoverBorder,
                 )}
               >
-                {/* step label */}
+                {/* step 배지 + 라벨 */}
                 <header className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
                     className={cn(
-                      'inline-flex items-center justify-center w-7 h-7 rounded-full text-xsm font-bold tabular-nums',
-                      t.step,
+                      'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+                      t.chip,
                     )}
                   >
-                    {card.stepNum}
+                    <span className="font-mono tabular-nums">step {card.stepNum}</span>
                   </span>
                   <span className="text-xsm font-bold text-[var(--term-fg)] tracking-tight">
                     {card.stepLabel}
                   </span>
                 </header>
 
-                {/* title */}
+                {/* 파일명 */}
                 <h3
                   className={cn(
                     'text-md sm:text-lg font-bold font-mono tracking-tight break-all',
-                    t.mono,
+                    t.text,
                   )}
                 >
                   {card.title}
                 </h3>
 
-                {/* code preview */}
+                {/* 코드 프리뷰 */}
                 <pre className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-2 text-[10.5px] sm:text-[11px] leading-[1.55] font-mono text-[var(--term-fg)] whitespace-pre overflow-x-auto">
                   <code>{card.code}</code>
                 </pre>
 
-                {/* description */}
+                {/* 설명 */}
                 <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep flex-1">
                   {card.description}
                 </p>
@@ -109,34 +75,31 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    'inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border text-xsm font-bold',
-                    'transition-colors mt-auto',
+                    'inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
+                    'transition-colors mt-auto hover:bg-[var(--term-surface)]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                    t.cta,
+                    t.text,
                   )}
                 >
                   {card.cta}
-                  <ArrowRightIcon className="h-4 w-4" />
-                  <ExternalLinkIcon className="h-3 w-3 opacity-80" />
+                  <ExternalLinkIcon className="h-3.5 w-3.5 opacity-80" />
                 </a>
               </article>
-            </li>,
-            !isLast && (
-              <li
-                key={`arrow-${card.id}`}
-                aria-hidden="true"
-                className="flex items-center justify-center text-[var(--term-dim)] lg:px-1"
-              >
-                {/* lg: 가로 화살표 / 모바일: 세로 chevron */}
-                <span className="hidden lg:inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
+
+              {/* 카드 사이 흐름 화살표 (FlowStepsGrid와 동일) */}
+              {showConnector && (
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'pointer-events-none absolute z-10 hidden lg:flex items-center justify-center',
+                    'top-1/2 left-full ml-1 -translate-y-1/2 text-[var(--term-accent)]',
+                  )}
+                >
                   <ArrowRightIcon className="h-4 w-4" />
                 </span>
-                <span className="lg:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] rotate-90">
-                  <ArrowRightIcon className="h-4 w-4" />
-                </span>
-              </li>
-            ),
-          ];
+              )}
+            </li>
+          );
         })}
       </ol>
     </section>
