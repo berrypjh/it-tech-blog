@@ -20,6 +20,11 @@ const config: StorybookConfig = {
     ]);
     cfg.plugins = cfg.plugins ?? [];
     cfg.plugins.push(react(), tailwindcss());
+    cfg.resolve = cfg.resolve ?? {};
+    cfg.resolve.alias = {
+      ...(cfg.resolve.alias as Record<string, string>),
+      'next/link': fileURLToPath(new URL('./next-link-stub.tsx', import.meta.url)),
+    };
     return cfg;
   },
 };
