@@ -4,7 +4,6 @@ import type { FormActionsEventSystemContent } from '../content';
 import { CircleHelpIcon } from '../icons';
 
 import { iconRegistry } from './_iconRegistry';
-import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: FormActionsEventSystemContent['question'] };
 
@@ -13,13 +12,6 @@ export const TodayQuestionCard = ({ content }: Props) => {
 
   return (
     <section aria-labelledby="today-question-heading" className="flex flex-col">
-      <SectionHeader
-        id="today-question-heading"
-        number={content.number}
-        eyebrow={content.eyebrow}
-        title={visibleLines.join(' ')}
-      />
-
       <div
         className={cn(
           'rounded-2xl border-2 p-md sm:p-lg',
@@ -46,7 +38,10 @@ export const TodayQuestionCard = ({ content }: Props) => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-200">
               Question
             </span>
-            <h3 className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-[var(--term-fg)] break-keep">
+            <h3
+              id="today-question-heading"
+              className="text-md sm:text-lg lg:text-xl font-bold leading-snug text-[var(--term-fg)] break-keep"
+            >
               {visibleLines.map((line) => (
                 <span key={line} className="block">
                   {line}

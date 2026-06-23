@@ -1,7 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
-import { sectionNumberBadge } from '../tone';
-
 type Props = {
   id: string;
   number: string;
@@ -13,11 +9,9 @@ type Props = {
 export const SectionHeader = ({ id, number, eyebrow, title, description }: Props) => (
   <header className="flex flex-col gap-sm mb-md">
     <div className="flex items-center gap-sm w-full">
-      <span aria-hidden="true" className={sectionNumberBadge}>
-        {number}
-      </span>
-      <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-        {eyebrow}
+      <span className="text-[var(--term-accent)] font-bold text-xsm">{'//'}</span>
+      <span className="text-xxsm tabular-nums uppercase tracking-wider text-[var(--term-muted)]">
+        {`${String(number).padStart(2, '0')} · ${eyebrow}`}
       </span>
       <span
         aria-hidden="true"
@@ -26,10 +20,7 @@ export const SectionHeader = ({ id, number, eyebrow, title, description }: Props
     </div>
     <h2
       id={id}
-      className={cn(
-        'text-xl sm:text-xxl font-bold tracking-tight text-[var(--term-fg)]',
-        'leading-tight break-keep',
-      )}
+      className="text-xl sm:text-xxl font-bold tracking-tight text-[var(--term-fg)] leading-tight break-keep"
     >
       {title}
     </h2>

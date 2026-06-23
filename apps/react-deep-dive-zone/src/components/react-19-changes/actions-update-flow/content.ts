@@ -260,8 +260,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   legacySubmit: {
-    number: '03',
-    eyebrow: 'Before',
+    number: '01',
+    eyebrow: '변경 전',
     title: '이전 async submit의 번거로움',
     codeFile: 'before/handle-submit.js',
     code: `async function handleSubmit() {
@@ -286,8 +286,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   quadrant: {
-    number: '04',
-    eyebrow: 'Action as Hub',
+    number: '02',
+    eyebrow: '액션 허브',
     title: 'Actions가 묶는 4가지 상태',
     description: '한 번의 선언으로 pending · error · form submission · optimistic이 함께 흐릅니다.',
     centerTitle: 'Action',
@@ -324,14 +324,14 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   apiCards: {
-    number: '05',
-    eyebrow: 'Three Hooks',
+    number: '03',
+    eyebrow: '세 개의 훅',
     title: '세 개의 hook으로 분리되어 들어온다',
     description:
       'useActionState · useOptimistic · useFormStatus는 같은 모델의 서로 다른 조각을 담당합니다.',
     cards: [
       {
-        number: '05-A',
+        number: '03-A',
         hookName: 'useActionState',
         langBadge: 'TS',
         state: 'form',
@@ -346,7 +346,7 @@ const ko: ActionsUpdateFlowContent = {
         ],
       },
       {
-        number: '05-B',
+        number: '03-B',
         hookName: 'useOptimistic',
         langBadge: 'TS',
         state: 'optimistic',
@@ -363,7 +363,7 @@ const ko: ActionsUpdateFlowContent = {
         ],
       },
       {
-        number: '05-C',
+        number: '03-C',
         hookName: 'useFormStatus',
         langBadge: 'TS',
         state: 'pending',
@@ -377,8 +377,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   comparison: {
-    number: '06',
-    eyebrow: 'Role Table',
+    number: '04',
+    eyebrow: '역할 비교표',
     title: '세 API의 역할 비교',
     description: '같은 단어를 다른 API가 다루는 부분을 표 한 장으로 정리합니다.',
     columns: {
@@ -416,8 +416,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   simulator: {
-    number: '07',
-    eyebrow: 'Action Flow Simulator',
+    number: '05',
+    eyebrow: '액션 흐름 시뮬레이터',
     title: '액션 흐름 시뮬레이터',
     description: '성공과 실패가 같은 흐름의 어느 지점에서 갈리는지 직접 따라가 봅니다.',
     scenarioLabel: '시나리오 선택',
@@ -478,8 +478,8 @@ const ko: ActionsUpdateFlowContent = {
     successNote: '성공 시나리오에서는 5~6단계에서 서버 응답이 그대로 최종 UI로 확정됩니다.',
   },
   officialDocs: {
-    number: '08',
-    eyebrow: 'Docs',
+    number: '06',
+    eyebrow: '문서',
     title: '실제 코드 / 문서 확인',
     description: '관련 hook의 공식 문서로 바로 이동해 더 깊게 읽어볼 수 있습니다.',
     cards: [
@@ -510,8 +510,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   mission: {
-    number: '09',
-    eyebrow: 'Follow Along',
+    number: '07',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '읽기만 하는 단계에서 멈추지 말고 손으로 한 번 더 정리해 봅니다.',
     missions: [
@@ -538,8 +538,8 @@ const ko: ActionsUpdateFlowContent = {
     ],
   },
   takeaways: {
-    number: '10',
-    eyebrow: 'Key Takeaways',
+    number: '08',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -645,8 +645,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   legacySubmit: {
-    number: '03',
-    eyebrow: 'Before',
+    number: '01',
+    eyebrow: 'BEFORE',
     title: 'The friction of pre-Actions async submit',
     codeFile: 'before/handle-submit.js',
     code: `async function handleSubmit() {
@@ -671,8 +671,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   quadrant: {
-    number: '04',
-    eyebrow: 'Action as Hub',
+    number: '02',
+    eyebrow: 'ACTION AS HUB',
     title: 'The four states Actions tie together',
     description: 'One declaration carries pending · error · form submission · optimistic together.',
     centerTitle: 'Action',
@@ -709,14 +709,14 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   apiCards: {
-    number: '05',
-    eyebrow: 'Three Hooks',
+    number: '03',
+    eyebrow: 'THREE HOOKS',
     title: 'Delivered as three different hooks',
     description:
       'useActionState · useOptimistic · useFormStatus each own a different piece of the same model.',
     cards: [
       {
-        number: '05-A',
+        number: '03-A',
         hookName: 'useActionState',
         langBadge: 'TS',
         state: 'form',
@@ -731,7 +731,7 @@ const en: ActionsUpdateFlowContent = {
         ],
       },
       {
-        number: '05-B',
+        number: '03-B',
         hookName: 'useOptimistic',
         langBadge: 'TS',
         state: 'optimistic',
@@ -748,7 +748,7 @@ const en: ActionsUpdateFlowContent = {
         ],
       },
       {
-        number: '05-C',
+        number: '03-C',
         hookName: 'useFormStatus',
         langBadge: 'TS',
         state: 'pending',
@@ -762,8 +762,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   comparison: {
-    number: '06',
-    eyebrow: 'Role Table',
+    number: '04',
+    eyebrow: 'ROLE TABLE',
     title: 'Side-by-side roles of the three APIs',
     description: 'A single table to separate what each hook owns.',
     columns: {
@@ -801,8 +801,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   simulator: {
-    number: '07',
-    eyebrow: 'Action Flow Simulator',
+    number: '05',
+    eyebrow: 'ACTION FLOW SIMULATOR',
     title: 'Action flow simulator',
     description: 'See exactly where success and failure diverge inside the same flow.',
     scenarioLabel: 'Pick a scenario',
@@ -864,8 +864,8 @@ const en: ActionsUpdateFlowContent = {
       'In the success scenario, steps 5~6 confirm the server reply directly as the final UI.',
   },
   officialDocs: {
-    number: '08',
-    eyebrow: 'Docs',
+    number: '06',
+    eyebrow: 'DOCS',
     title: 'Source / official docs',
     description: 'Jump to the React docs to read each hook in more depth.',
     cards: [
@@ -896,8 +896,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   mission: {
-    number: '09',
-    eyebrow: 'Follow Along',
+    number: '07',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description: 'Move past reading — restate it with your own hands.',
     missions: [
@@ -924,8 +924,8 @@ const en: ActionsUpdateFlowContent = {
     ],
   },
   takeaways: {
-    number: '10',
-    eyebrow: 'Key Takeaways',
+    number: '08',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

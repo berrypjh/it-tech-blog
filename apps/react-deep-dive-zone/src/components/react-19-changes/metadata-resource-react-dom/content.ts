@@ -255,8 +255,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   priorProblems: {
-    number: '03',
-    eyebrow: 'Before React 19',
+    number: '01',
+    eyebrow: '변경 전',
     title: '이전에는 왜 head 관리가 까다로웠나?',
     description:
       '이전에는 문서 head를 컴포넌트 모델 바깥에서 따로 관리해야 했고, 그 결과 여러 가지 마찰이 생겼습니다.',
@@ -284,8 +284,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   example: {
-    number: '04',
-    eyebrow: 'Example',
+    number: '02',
+    eyebrow: '코드 예제',
     title: 'React 19의 metadata 예제',
     description:
       '컴포넌트 안에서 선언한 문서 자원이 실제 DOM에서는 head로 옮겨져 들어가는 모습을 한눈에 비교합니다.',
@@ -326,8 +326,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   treeDomSplit: {
-    number: '05',
-    eyebrow: 'Tree vs DOM',
+    number: '03',
+    eyebrow: '트리와 DOM',
     title: 'React Tree와 DOM Head의 분리',
     description:
       '컴포넌트 안에서 선언한 위치(선언 위치)와 실제 DOM 위치(배치 위치)가 react-dom의 hoisting을 거쳐 분리됩니다.',
@@ -358,8 +358,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   resources: {
-    number: '06',
-    eyebrow: 'Resource Components',
+    number: '04',
+    eyebrow: '리소스 컴포넌트',
     title: 'Resource Components의 의미',
     description:
       '같은 "DOM 요소"처럼 보이지만 react-dom 입장에선 각자 다른 책임을 가진 자원입니다.',
@@ -403,8 +403,8 @@ const ko: MetadataResourceContent = {
     info: '일부는 문서 메타데이터이며, 일부는 리소스 로딩과 우선순위 및 deduplication에 영향을 줍니다.',
   },
   hoistingFlow: {
-    number: '07',
-    eyebrow: 'Head Hoisting',
+    number: '05',
+    eyebrow: '헤드 호이스팅',
     title: 'Head Hoisting 구조',
     description:
       'React Tree → react-dom → Hoistable Resource → 문서 위치 반영의 4단계 흐름이 hoisting의 본체입니다.',
@@ -436,8 +436,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   ssrSuspense: {
-    number: '08',
-    eyebrow: 'SSR / Suspense',
+    number: '06',
+    eyebrow: 'SSR · Suspense',
     title: 'SSR / Suspense와의 연결 포인트',
     description:
       'metadata/resource는 단순 head 처리에 그치지 않고 SSR · Suspense 흐름과도 맞물립니다.',
@@ -460,8 +460,8 @@ const ko: MetadataResourceContent = {
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 미리보기 (ReactFiberConfigDOM.js)',
     description:
       '일반 HostComponent와는 다른 Hoistable 자원 처리 경로가 react-dom 내부에서 별도로 관리됩니다.',
@@ -493,8 +493,8 @@ getPublicInstance(...)`,
     },
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Hoisting Simulator',
+    number: '08',
+    eyebrow: '호이스팅 시뮬레이터',
     title: 'Head Hoisting 시뮬레이터',
     description:
       '왼쪽 React Tree를 react-dom이 처리하면 오른쪽 DOM처럼 head/body가 분리됩니다. 버튼을 눌러 실행 전/후를 비교해 보세요.',
@@ -530,8 +530,8 @@ getPublicInstance(...)`,
     note: 'Article 등 일반 UI는 body에 그대로 유지됩니다.',
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '문서·실제 코드·정리 순으로 metadata 처리 흐름을 체화합니다.',
     missions: [
@@ -562,8 +562,8 @@ getPublicInstance(...)`,
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -663,8 +663,8 @@ const en: MetadataResourceContent = {
     ],
   },
   priorProblems: {
-    number: '03',
-    eyebrow: 'Before React 19',
+    number: '01',
+    eyebrow: 'BEFORE',
     title: 'Why managing the head used to be painful',
     description: 'Document head used to live outside the component model, which created friction.',
     cards: [
@@ -691,8 +691,8 @@ const en: MetadataResourceContent = {
     ],
   },
   example: {
-    number: '04',
-    eyebrow: 'Example',
+    number: '02',
+    eyebrow: 'EXAMPLE',
     title: 'React 19 metadata example',
     description:
       'Compare resources declared inside the component vs how the real DOM places them in <head>.',
@@ -733,8 +733,8 @@ const en: MetadataResourceContent = {
     ],
   },
   treeDomSplit: {
-    number: '05',
-    eyebrow: 'Tree vs DOM',
+    number: '03',
+    eyebrow: 'TREE VS DOM',
     title: 'React Tree vs DOM Head, split apart',
     description:
       "Declaration site in the tree and final DOM location split apart through react-dom's hoisting.",
@@ -765,8 +765,8 @@ const en: MetadataResourceContent = {
     ],
   },
   resources: {
-    number: '06',
-    eyebrow: 'Resource Components',
+    number: '04',
+    eyebrow: 'RESOURCE COMPONENTS',
     title: 'What Resource Components mean',
     description:
       "They look like the same kind of DOM tag, but each carries a different responsibility from react-dom's perspective.",
@@ -810,8 +810,8 @@ const en: MetadataResourceContent = {
     info: 'Some are pure document metadata; others affect resource loading priority and deduplication.',
   },
   hoistingFlow: {
-    number: '07',
-    eyebrow: 'Head Hoisting',
+    number: '05',
+    eyebrow: 'HEAD HOISTING',
     title: 'Head Hoisting structure',
     description:
       "React Tree → react-dom → Hoistable Resource → document placement: that's the four-step flow.",
@@ -843,8 +843,8 @@ const en: MetadataResourceContent = {
     ],
   },
   ssrSuspense: {
-    number: '08',
-    eyebrow: 'SSR / Suspense',
+    number: '06',
+    eyebrow: 'SSR / SUSPENSE',
     title: 'Connection points with SSR / Suspense',
     description:
       'metadata / resource also intersects SSR and Suspense flows, not just <head> mechanics.',
@@ -870,8 +870,8 @@ const en: MetadataResourceContent = {
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source preview (ReactFiberConfigDOM.js)',
     description:
       'A separate Hoistable resource path exists inside react-dom — distinct from the regular HostComponent path.',
@@ -903,8 +903,8 @@ getPublicInstance(...)`,
     },
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Hoisting Simulator',
+    number: '08',
+    eyebrow: 'HOISTING SIMULATOR',
     title: 'Head Hoisting simulator',
     description:
       'Once react-dom processes the React Tree on the left, head / body are split as on the right. Toggle to compare before / after.',
@@ -940,8 +940,8 @@ getPublicInstance(...)`,
     note: 'Regular UI like Article stays in body.',
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description: 'Docs → real source → personal summary, in that order.',
     missions: [
@@ -972,8 +972,8 @@ getPublicInstance(...)`,
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

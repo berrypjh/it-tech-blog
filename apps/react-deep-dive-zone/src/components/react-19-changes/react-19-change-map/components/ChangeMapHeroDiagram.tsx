@@ -35,9 +35,6 @@ export const ChangeMapHeroDiagram = ({ content, className }: Props) => {
 
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
-          <ToneIconBox tone="blue" size="sm">
-            <span className="font-mono text-xsm font-bold tabular-nums">{questionCard.number}</span>
-          </ToneIconBox>
           <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-300">
             {questionCard.eyebrow}
           </span>

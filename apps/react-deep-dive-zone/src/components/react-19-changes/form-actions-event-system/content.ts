@@ -261,8 +261,8 @@ const ko: FormActionsEventSystemContent = {
     ],
   },
   userFormCode: {
-    number: '03',
-    eyebrow: 'User-facing form code',
+    number: '01',
+    eyebrow: '코드 체크포인트',
     title: '사용자가 보는 form action 코드',
     code: {
       fileName: 'TodoForm.tsx',
@@ -289,8 +289,8 @@ const ko: FormActionsEventSystemContent = {
     },
   },
   submitPipeline: {
-    number: '04',
-    eyebrow: 'Submit Entry Pipeline',
+    number: '02',
+    eyebrow: 'submit 진입 흐름',
     title: 'submit 이벤트가 들어오는 순간',
     description:
       '브라우저의 submit 이벤트가 React 이벤트 시스템 안의 plugin에 도달하기까지의 4단계.',
@@ -322,8 +322,8 @@ const ko: FormActionsEventSystemContent = {
     ],
   },
   pluginRole: {
-    number: '05',
-    eyebrow: 'Plugin Roles',
+    number: '03',
+    eyebrow: '플러그인 역할',
     title: 'FormActionEventPlugin의 역할',
     description: '하나의 plugin이 submit 흐름을 React action 흐름으로 바꾸는 4가지 작업.',
     cards: [
@@ -354,8 +354,8 @@ const ko: FormActionsEventSystemContent = {
     ],
   },
   actionExtraction: {
-    number: '06',
-    eyebrow: 'Action / formAction',
+    number: '04',
+    eyebrow: 'action / formAction 추출',
     title: 'action / formAction 추출',
     description: '두 가지 선언 방식 중 어느 함수를 실제로 호출하는지 결정하는 흐름.',
     left: {
@@ -385,8 +385,8 @@ const ko: FormActionsEventSystemContent = {
     },
   },
   formData: {
-    number: '07',
-    eyebrow: 'FormData',
+    number: '05',
+    eyebrow: 'FormData 생성',
     title: 'FormData 생성',
     description:
       '폼 안의 name/value 쌍이 표준 FormData 객체로 수집되어 action의 인자로 전달됩니다.',
@@ -398,8 +398,8 @@ const ko: FormActionsEventSystemContent = {
     descriptionBody: '폼의 모든 name/value 쌍이 FormData로 수집되어 action에 전달됩니다.',
   },
   pendingState: {
-    number: '08',
-    eyebrow: 'pendingState',
+    number: '06',
+    eyebrow: 'pendingState 생성',
     title: 'pendingState 생성',
     description:
       'pendingState는 현재 form action의 상태 스냅샷이며, 하위 컴포넌트가 useFormStatus로 읽을 값입니다.',
@@ -414,8 +414,8 @@ const ko: FormActionsEventSystemContent = {
     useFormStatusCode: `const { pending } = useFormStatus();`,
   },
   startHostTransition: {
-    number: '09',
-    eyebrow: 'startHostTransition',
+    number: '07',
+    eyebrow: 'startHostTransition 연결',
     title: 'startHostTransition 연결',
     description: 'pendingState가 준비된 순간 Action은 React의 Transition 스케줄링에 올라탑니다.',
     steps: [
@@ -441,8 +441,8 @@ const ko: FormActionsEventSystemContent = {
     info: '이 지점에서 Actions는 React의 업데이트 모델에 올라선 상태가 됩니다.',
   },
   internalCode: {
-    number: '10',
-    eyebrow: 'React Internals',
+    number: '08',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 미리보기 (React 내부)',
     description: 'FormActionEventPlugin의 실제 코드 흐름을 두 패널로 압축해 보여줍니다.',
     panels: [
@@ -480,8 +480,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     },
   },
   interactor: {
-    number: '11',
-    eyebrow: 'Pipeline Interactor',
+    number: '09',
+    eyebrow: '파이프라인 인터랙터',
     title: 'Form Action 파이프라인 인터랙터',
     description:
       '왼쪽 폼을 submit하면 오른쪽 stepper가 단계별로 활성화됩니다. 버튼 한 번에 5단계가 모두 통과합니다.',
@@ -525,8 +525,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     statusLabels: { idle: '대기 중', current: '현재 단계', done: '완료' },
   },
   mission: {
-    number: '12',
-    eyebrow: 'Follow Along',
+    number: '10',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '코드를 직접 열고, 함수 흐름을 손가락으로 짚어가며 따라가 보세요.',
     checklist: [
@@ -557,8 +557,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     ],
   },
   takeaways: {
-    number: '13',
-    eyebrow: 'Key Takeaways',
+    number: '11',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -647,8 +647,8 @@ const en: FormActionsEventSystemContent = {
     ],
   },
   userFormCode: {
-    number: '03',
-    eyebrow: 'User-facing form code',
+    number: '01',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'The form action code the user actually writes',
     code: {
       fileName: 'TodoForm.tsx',
@@ -675,8 +675,8 @@ const en: FormActionsEventSystemContent = {
     },
   },
   submitPipeline: {
-    number: '04',
-    eyebrow: 'Submit Entry Pipeline',
+    number: '02',
+    eyebrow: 'SUBMIT ENTRY PIPELINE',
     title: 'The moment the submit event enters React',
     description: 'Four steps from native browser submit to a React-internal plugin.',
     steps: [
@@ -707,8 +707,8 @@ const en: FormActionsEventSystemContent = {
     ],
   },
   pluginRole: {
-    number: '05',
-    eyebrow: 'Plugin Roles',
+    number: '03',
+    eyebrow: 'PLUGIN ROLES',
     title: "FormActionEventPlugin's responsibilities",
     description: 'Four jobs the plugin does to turn a submit into a React action flow.',
     cards: [
@@ -739,8 +739,8 @@ const en: FormActionsEventSystemContent = {
     ],
   },
   actionExtraction: {
-    number: '06',
-    eyebrow: 'Action / formAction',
+    number: '04',
+    eyebrow: 'ACTION / FORMACTION',
     title: 'Picking the action / formAction',
     description: 'How the plugin decides which function will actually run.',
     left: {
@@ -770,8 +770,8 @@ const en: FormActionsEventSystemContent = {
     },
   },
   formData: {
-    number: '07',
-    eyebrow: 'FormData',
+    number: '05',
+    eyebrow: 'FORMDATA',
     title: 'Building FormData',
     description:
       'name/value pairs inside the form are collected into a standard FormData object and passed to the action.',
@@ -783,8 +783,8 @@ const en: FormActionsEventSystemContent = {
     descriptionBody: 'All name/value pairs are collected into FormData and passed to the action.',
   },
   pendingState: {
-    number: '08',
-    eyebrow: 'pendingState',
+    number: '06',
+    eyebrow: 'PENDINGSTATE',
     title: 'Constructing pendingState',
     description:
       'pendingState is a snapshot of the current form action — exactly what children read via useFormStatus.',
@@ -799,8 +799,8 @@ const en: FormActionsEventSystemContent = {
     useFormStatusCode: `const { pending } = useFormStatus();`,
   },
   startHostTransition: {
-    number: '09',
-    eyebrow: 'startHostTransition',
+    number: '07',
+    eyebrow: 'STARTHOSTTRANSITION',
     title: 'Connecting startHostTransition',
     description: "Once pendingState is ready, the Action rides on React's transition scheduling.",
     steps: [
@@ -826,8 +826,8 @@ const en: FormActionsEventSystemContent = {
     info: "At this point, Actions are riding on React's update model.",
   },
   internalCode: {
-    number: '10',
-    eyebrow: 'React Internals',
+    number: '08',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-level preview (React internals)',
     description: "FormActionEventPlugin's real flow, compressed into two panels.",
     panels: [
@@ -865,8 +865,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     },
   },
   interactor: {
-    number: '11',
-    eyebrow: 'Pipeline Interactor',
+    number: '09',
+    eyebrow: 'PIPELINE INTERACTOR',
     title: 'Form Action pipeline interactor',
     description: 'Submitting the form on the left activates each step on the right in order.',
     leftTitle: 'Run: form submit stages',
@@ -909,8 +909,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     statusLabels: { idle: 'Idle', current: 'Active step', done: 'Done' },
   },
   mission: {
-    number: '12',
-    eyebrow: 'Follow Along',
+    number: '10',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description: 'Open the real code and walk through the function chain yourself.',
     checklist: [
@@ -941,8 +941,8 @@ startHostTransition(formInst, pendingState, action, formData);`,
     ],
   },
   takeaways: {
-    number: '13',
-    eyebrow: 'Key Takeaways',
+    number: '11',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

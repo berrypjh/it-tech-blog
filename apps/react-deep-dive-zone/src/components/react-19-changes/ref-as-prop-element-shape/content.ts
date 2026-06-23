@@ -216,8 +216,8 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     ],
   },
   forwardRefPattern: {
-    number: '03',
-    eyebrow: 'React 18',
+    number: '01',
+    eyebrow: 'React 18 패턴',
     title: 'React 18의 forwardRef 패턴',
     code: {
       fileName: 'MyInput.tsx · React 18',
@@ -240,8 +240,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   refAsPropPattern: {
-    number: '04',
-    eyebrow: 'React 19',
+    number: '02',
+    eyebrow: 'React 19 패턴',
     title: 'React 19의 ref as prop 패턴',
     code: {
       fileName: 'MyInput.tsx · React 19',
@@ -263,8 +263,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   whatChanged: {
-    number: '05',
-    eyebrow: 'What Changed',
+    number: '03',
+    eyebrow: '변화 정리',
     title: '무엇이 달라졌는가?',
     description: '코드 외형뿐 아니라 ref 전달 경로와 Element 표현의 기준점이 함께 이동했습니다.',
     cards: [
@@ -289,8 +289,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   elementRefDeprecation: {
-    number: '06',
-    eyebrow: 'element.ref shift',
+    number: '04',
+    eyebrow: 'element.ref 변화',
     title: 'element.ref 접근의 변화',
     description: 'Element 위에서 ref를 어디서 읽을지의 기준이 React 19에서 이동합니다.',
     left: {
@@ -310,8 +310,8 @@ const MyInput = forwardRef(function MyInput(
     },
   },
   propsRefFlow: {
-    number: '07',
-    eyebrow: 'Source of Truth',
+    number: '05',
+    eyebrow: '단일 진실 공급원',
     title: 'props.ref가 source of truth가 되는 구조',
     description:
       'JSX에서 시작한 ref가 React.createElement 내부와 컴포넌트 호출까지 모두 props.ref 한 경로로 흐릅니다.',
@@ -343,8 +343,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   useImperative: {
-    number: '08',
-    eyebrow: 'useImperativeHandle',
+    number: '06',
+    eyebrow: 'useImperativeHandle 연결',
     title: 'useImperativeHandle과 연결',
     description:
       'ref를 prop으로 받더라도 useImperativeHandle은 그대로 동작합니다. wrapper가 사라졌을 뿐 흐름은 같습니다.',
@@ -383,8 +383,8 @@ function CustomInput({
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 미리보기 (ReactJSXElement.js)',
     description:
       'React.createElement 내부에서 props.ref가 그대로 ref 표현의 기준이 되는 흐름을 확인할 수 있습니다.',
@@ -409,8 +409,8 @@ function CustomInput({
     },
   },
   pathInteractor: {
-    number: '10',
-    eyebrow: 'Path Comparison',
+    number: '08',
+    eyebrow: '경로 비교',
     title: 'ref 경로 비교 인터랙션',
     description: 'parent ref가 input DOM까지 닿는 경로를 React 18 / React 19로 나눠 비교합니다.',
     buttonsLabel: '버전 선택',
@@ -456,8 +456,8 @@ function CustomInput({
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '문서·코드·실습을 직접 잡아 가며 ref as prop 변화를 손에 익혀 봅니다.',
     missions: [
@@ -488,8 +488,8 @@ function CustomInput({
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -573,8 +573,8 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     ],
   },
   forwardRefPattern: {
-    number: '03',
-    eyebrow: 'React 18',
+    number: '01',
+    eyebrow: 'REACT 18 PATTERN',
     title: 'The React 18 forwardRef pattern',
     code: {
       fileName: 'MyInput.tsx · React 18',
@@ -597,8 +597,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   refAsPropPattern: {
-    number: '04',
-    eyebrow: 'React 19',
+    number: '02',
+    eyebrow: 'REACT 19 PATTERN',
     title: 'The React 19 ref-as-prop pattern',
     code: {
       fileName: 'MyInput.tsx · React 19',
@@ -620,8 +620,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   whatChanged: {
-    number: '05',
-    eyebrow: 'What Changed',
+    number: '03',
+    eyebrow: 'WHAT CHANGED',
     title: 'What actually changed?',
     description:
       "Not just the syntax — the ref-flow path and the Element's source-of-truth move together.",
@@ -647,8 +647,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   elementRefDeprecation: {
-    number: '06',
-    eyebrow: 'element.ref shift',
+    number: '04',
+    eyebrow: 'ELEMENT.REF SHIFT',
     title: 'How element.ref access changed',
     description: "The 'where to read ref from on an Element' baseline moves in React 19.",
     left: {
@@ -668,8 +668,8 @@ const MyInput = forwardRef(function MyInput(
     },
   },
   propsRefFlow: {
-    number: '07',
-    eyebrow: 'Source of Truth',
+    number: '05',
+    eyebrow: 'SOURCE OF TRUTH',
     title: 'props.ref as the source of truth',
     description:
       'ref starts in JSX and flows through React.createElement and component invocation all via a single props.ref path.',
@@ -701,8 +701,8 @@ const MyInput = forwardRef(function MyInput(
     ],
   },
   useImperative: {
-    number: '08',
-    eyebrow: 'useImperativeHandle',
+    number: '06',
+    eyebrow: 'USEIMPERATIVEHANDLE',
     title: 'Hooking into useImperativeHandle',
     description:
       'Even with ref as prop, useImperativeHandle still works the same way — only the wrapper disappears.',
@@ -741,8 +741,8 @@ function CustomInput({
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source preview (ReactJSXElement.js)',
     description:
       'Inside React.createElement, props.ref becomes the baseline for the ref expression on the Element.',
@@ -767,8 +767,8 @@ function CustomInput({
     },
   },
   pathInteractor: {
-    number: '10',
-    eyebrow: 'Path Comparison',
+    number: '08',
+    eyebrow: 'PATH COMPARISON',
     title: 'ref path interactor',
     description: 'Compare the path from parent ref to input DOM in React 18 vs React 19.',
     buttonsLabel: 'Pick a version',
@@ -818,8 +818,8 @@ function CustomInput({
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description:
       'Docs → real source → hands-on rewrite — get the ref-as-prop change into your hands.',
@@ -851,8 +851,8 @@ function CustomInput({
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

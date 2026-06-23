@@ -306,8 +306,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   problem: {
-    number: '03',
-    eyebrow: 'Existing Effect Problem',
+    number: '01',
+    eyebrow: '기존 Effect의 한계',
     title: '기존 Effect의 문제',
     description:
       '같은 dependency 배열에 묶여 있지만, roomId와 theme는 성격이 완전히 다른 값입니다.',
@@ -339,8 +339,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   before: {
-    number: '04',
-    eyebrow: 'Before',
+    number: '02',
+    eyebrow: '기존 접근',
     title: 'Before 코드 (기존 접근)',
     description:
       'theme도 dependency에 포함되어 있으면, 알림 문구만 바꾸고 싶을 때도 연결을 끊고 다시 엽니다.',
@@ -354,8 +354,8 @@ const ko: UseEffectEventContent = {
     summary: 'theme 변경은 알림 문구만 바꾸면 되는데, 연결까지 다시 열고 있습니다.',
   },
   after: {
-    number: '05',
-    eyebrow: 'After',
+    number: '03',
+    eyebrow: '개선 접근',
     title: 'useEffectEvent 도입 (After)',
     description:
       'Effect Event로 알림 로직을 분리하면, Effect 본체는 연결 관리에만 집중하고 알림 로직은 최신 theme를 그대로 읽습니다.',
@@ -369,8 +369,8 @@ const ko: UseEffectEventContent = {
     summary: '연결 로직은 안정적으로 유지되고, 알림 로직은 항상 최신 값을 사용합니다.',
   },
   separation: {
-    number: '06',
-    eyebrow: 'Separation',
+    number: '04',
+    eyebrow: '역할 분리',
     title: 'Effect와 Effect Event 분리',
     description:
       'Effect는 외부 시스템 연결과 정리 같은 구조적 작업을, Effect Event는 그 위에서 일어나는 이벤트성 반응을 담당합니다.',
@@ -391,8 +391,8 @@ const ko: UseEffectEventContent = {
     },
   },
   dependency: {
-    number: '07',
-    eyebrow: 'Dependency',
+    number: '05',
+    eyebrow: '의존성 변화',
     title: '의존성 배열이 줄어드는 이유',
     description:
       'theme는 실행 시점마다 “최신 값”을 그대로 읽기만 하면 되므로, Effect 본체의 재실행 조건에 들어갈 필요가 없습니다.',
@@ -425,8 +425,8 @@ const ko: UseEffectEventContent = {
     afterBody: '연결 대상만 재실행 조건',
   },
   restriction: {
-    number: '08',
-    eyebrow: 'Usage Rule',
+    number: '06',
+    eyebrow: '사용 규칙',
     title: '사용 위치 제약 (규칙 중요)',
     description:
       'useEffectEvent는 강력한 만큼 사용 위치가 제한됩니다. 잘못된 위치에서 부르면 의도가 무너집니다.',
@@ -452,8 +452,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   comparison: {
-    number: '09',
-    eyebrow: 'Behavior Comparison',
+    number: '07',
+    eyebrow: '동작 비교',
     title: 'Before / After 동작 비교',
     description:
       'theme 변경과 roomId 변경 두 시나리오에서, Before와 After가 어떻게 다르게 동작하는지 한 표로 비교합니다.',
@@ -479,8 +479,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Reconnect Simulator',
+    number: '08',
+    eyebrow: '재연결 시뮬레이터',
     title: 'Effect Reconnect 비교기',
     description:
       '시나리오를 선택해 Before / After 흐름을 직접 비교해 보세요. 같은 변경이라도 결과가 어떻게 갈리는지 보입니다.',
@@ -581,8 +581,8 @@ const ko: UseEffectEventContent = {
     afterTitle: 'After (useEffectEvent)',
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description:
       'API 사용법만이 아니라, Effect 설계 관점에서 useEffectEvent를 다루도록 손에 익혀 봅니다.',
@@ -608,8 +608,8 @@ const ko: UseEffectEventContent = {
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -685,8 +685,8 @@ const en: UseEffectEventContent = {
     ],
   },
   problem: {
-    number: '03',
-    eyebrow: 'Existing Effect Problem',
+    number: '01',
+    eyebrow: 'EXISTING LIMITATION',
     title: 'The problem with the existing Effect',
     description:
       'They share a dependency array, but roomId and theme are completely different in nature.',
@@ -718,8 +718,8 @@ const en: UseEffectEventContent = {
     ],
   },
   before: {
-    number: '04',
-    eyebrow: 'Before',
+    number: '02',
+    eyebrow: 'EXISTING APPROACH',
     title: 'Before (existing approach)',
     description:
       'When theme is in the dependency array, even a notification-only update tears the connection down and rebuilds it.',
@@ -734,8 +734,8 @@ const en: UseEffectEventContent = {
       "All you needed was to update the notification text, but you're reopening the connection too.",
   },
   after: {
-    number: '05',
-    eyebrow: 'After',
+    number: '03',
+    eyebrow: 'IMPROVED APPROACH',
     title: 'Adopting useEffectEvent (After)',
     description:
       'With Effect Event, the Effect body focuses on connection management while the notification logic reads the latest theme.',
@@ -749,8 +749,8 @@ const en: UseEffectEventContent = {
     summary: 'Connection logic stays stable; notification logic always uses the latest value.',
   },
   separation: {
-    number: '06',
-    eyebrow: 'Separation',
+    number: '04',
+    eyebrow: 'ROLE SPLIT',
     title: 'Effect vs Effect Event',
     description:
       'Effect handles structural work like external-system lifecycle. Effect Event handles event-like reactions on top.',
@@ -771,8 +771,8 @@ const en: UseEffectEventContent = {
     },
   },
   dependency: {
-    number: '07',
-    eyebrow: 'Dependency',
+    number: '05',
+    eyebrow: 'DEPENDENCY SHIFT',
     title: 'Why the dependency array shrinks',
     description:
       "theme just needs the latest value at run time — it doesn't need to be a re-run trigger for the Effect body.",
@@ -805,8 +805,8 @@ const en: UseEffectEventContent = {
     afterBody: 'Only the connection target triggers a re-run',
   },
   restriction: {
-    number: '08',
-    eyebrow: 'Usage Rule',
+    number: '06',
+    eyebrow: 'USAGE RULE',
     title: 'Usage location rules (important)',
     description:
       'useEffectEvent is powerful, so its call site is restricted. Using it in the wrong place breaks the intent.',
@@ -832,8 +832,8 @@ const en: UseEffectEventContent = {
     ],
   },
   comparison: {
-    number: '09',
-    eyebrow: 'Behavior Comparison',
+    number: '07',
+    eyebrow: 'BEHAVIOR COMPARISON',
     title: 'Before / After behavior comparison',
     description:
       'See in one table how Before / After differ across theme change and roomId change.',
@@ -863,8 +863,8 @@ const en: UseEffectEventContent = {
     ],
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Reconnect Simulator',
+    number: '08',
+    eyebrow: 'RECONNECT SIMULATOR',
     title: 'Effect Reconnect simulator',
     description:
       'Pick a scenario and compare the Before / After flows. See how the same change diverges in outcome.',
@@ -933,8 +933,8 @@ const en: UseEffectEventContent = {
     afterTitle: 'After (useEffectEvent)',
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description:
       'Beyond the API surface — practice useEffectEvent from an Effect-design perspective.',
@@ -960,8 +960,8 @@ const en: UseEffectEventContent = {
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

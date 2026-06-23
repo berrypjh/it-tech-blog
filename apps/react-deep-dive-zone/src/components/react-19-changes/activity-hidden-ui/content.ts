@@ -119,8 +119,6 @@ export type ActivityHiddenUiContent = {
     };
   };
   question: {
-    number: string;
-    eyebrow: string;
     questionLines: [string, string];
     supportQuestions: SupportQuestion[];
   };
@@ -271,8 +269,6 @@ const ko: ActivityHiddenUiContent = {
     },
   },
   question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
     questionLines: ['탭을 숨길 때 왜 그냥 unmount하지 않고', 'Activity로 관리하는가?'],
     supportQuestions: [
       { label: '숨김 ≠ 삭제', body: '상태 보존의 의미', iconKey: 'eye-off' },
@@ -282,8 +278,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   comparison: {
-    number: '03',
-    eyebrow: 'Before vs After',
+    number: '01',
+    eyebrow: '변경 전과 후',
     title: '조건부 렌더링과 Activity 비교',
     description:
       '같은 "보이는지/안 보이는지" 문제를 다루지만, 컴포넌트 수명과 상태 측면에서 결과가 완전히 다릅니다.',
@@ -314,8 +310,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   modeTable: {
-    number: '04',
-    eyebrow: 'Mode Table',
+    number: '02',
+    eyebrow: '모드 비교표',
     title: 'visible / hidden 모드',
     description:
       'Activity의 두 모드가 화면·DOM·상태·Effects·우선순위 측면에서 어떻게 달라지는지 한 표로 비교합니다.',
@@ -336,8 +332,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   hiddenBehavior: {
-    number: '05',
-    eyebrow: 'Hidden Behavior',
+    number: '03',
+    eyebrow: '숨김 동작',
     title: 'hidden 상태에서 무엇이 일어나는가?',
     description:
       'hidden은 단순한 "안 보임"이 아니라 DOM/Effects/우선순위 세 측면이 동시에 움직입니다.',
@@ -366,8 +362,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   statePreservation: {
-    number: '06',
-    eyebrow: 'State Preservation',
+    number: '04',
+    eyebrow: '상태 보존',
     title: '상태 보존과 빠른 복귀',
     description:
       'hidden으로 갔다가 visible로 돌아오면, 컴포넌트가 그대로 살아있고 state도 그대로입니다.',
@@ -415,8 +411,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   priorityFlow: {
-    number: '07',
-    eyebrow: 'Scheduler × Priority',
+    number: '05',
+    eyebrow: '스케줄러와 우선순위',
     title: '낮은 우선순위 업데이트 흐름',
     description:
       '숨겨진 subtree의 업데이트는 React Scheduler가 일반 작업보다 뒤로 미루어 처리합니다.',
@@ -455,8 +451,8 @@ const ko: ActivityHiddenUiContent = {
     footer: 'React Scheduler와 우선순위 시스템과 연결',
   },
   offscreen: {
-    number: '08',
-    eyebrow: 'Offscreen',
+    number: '06',
+    eyebrow: '오프스크린 연결',
     title: 'Offscreen 구조와 연결',
     description:
       'Activity는 단독으로 동작하지 않습니다. 내부의 Offscreen Fiber가 mode를 기준으로 숨겨진 subtree를 관리합니다.',
@@ -479,8 +475,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   sourceCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 미리보기',
     description:
       'Activity의 핵심은 새 Fiber 종류가 아니라, 이미 있던 Offscreen 처리 경로를 mode로 분기시키는 것입니다.',
@@ -516,8 +512,8 @@ const ko: ActivityHiddenUiContent = {
     },
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Activity Mode Simulator',
+    number: '08',
+    eyebrow: '모드 시뮬레이터',
     title: 'Activity Mode Simulator',
     description:
       'visible / hidden을 선택해 각 모드에서 UI/Effects/우선순위/state가 어떻게 달라지는지 직접 비교해 보세요.',
@@ -549,8 +545,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description:
       '단순 비교가 아니라 hidden 상태의 동작과 Scheduler 관점까지 본인의 언어로 정리해 봅니다.',
@@ -576,8 +572,8 @@ const ko: ActivityHiddenUiContent = {
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -663,8 +659,6 @@ const en: ActivityHiddenUiContent = {
     },
   },
   question: {
-    number: '02',
-    eyebrow: "Today's question",
     questionLines: ['When you hide a tab, why use Activity', 'instead of simply unmounting it?'],
     supportQuestions: [
       { label: 'Hide ≠ delete', body: 'What state preservation means', iconKey: 'eye-off' },
@@ -674,8 +668,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   comparison: {
-    number: '03',
-    eyebrow: 'Before vs After',
+    number: '01',
+    eyebrow: 'BEFORE VS AFTER',
     title: 'Conditional rendering vs Activity',
     description:
       'Both handle "show or hide", but they differ completely in component lifetime and state.',
@@ -706,8 +700,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   modeTable: {
-    number: '04',
-    eyebrow: 'Mode Table',
+    number: '02',
+    eyebrow: 'MODE TABLE',
     title: 'visible / hidden modes',
     description: 'Compare the two Activity modes across screen, DOM, state, Effects, and priority.',
     headerTopic: 'Aspect',
@@ -723,8 +717,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   hiddenBehavior: {
-    number: '05',
-    eyebrow: 'Hidden Behavior',
+    number: '03',
+    eyebrow: 'HIDDEN BEHAVIOR',
     title: "What actually happens in 'hidden'?",
     description: 'Hidden is not just "not shown" — DOM, Effects, and priority all shift together.',
     cards: [
@@ -752,8 +746,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   statePreservation: {
-    number: '06',
-    eyebrow: 'State Preservation',
+    number: '04',
+    eyebrow: 'STATE PRESERVATION',
     title: 'State preservation and fast return',
     description:
       'After going hidden and coming back, the component is still alive and so is its state.',
@@ -801,8 +795,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   priorityFlow: {
-    number: '07',
-    eyebrow: 'Scheduler × Priority',
+    number: '05',
+    eyebrow: 'SCHEDULER × PRIORITY',
     title: 'Low-priority update flow',
     description:
       'Updates in a hidden subtree are scheduled after normal work by the React Scheduler.',
@@ -841,8 +835,8 @@ const en: ActivityHiddenUiContent = {
     footer: 'Wired to the React Scheduler and priority system',
   },
   offscreen: {
-    number: '08',
-    eyebrow: 'Offscreen',
+    number: '06',
+    eyebrow: 'OFFSCREEN',
     title: 'Connected to the Offscreen structure',
     description:
       "Activity doesn't operate on its own — under the hood, an Offscreen Fiber manages the hidden subtree by mode.",
@@ -865,8 +859,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   sourceCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source preview',
     description:
       "The trick isn't a brand-new Fiber kind — Activity just delegates to the existing Offscreen path with a mode flag.",
@@ -902,8 +896,8 @@ const en: ActivityHiddenUiContent = {
     },
   },
   simulator: {
-    number: '10',
-    eyebrow: 'Activity Mode Simulator',
+    number: '08',
+    eyebrow: 'MODE SIMULATOR',
     title: 'Activity Mode Simulator',
     description:
       'Pick visible / hidden and compare how UI / Effects / priority / state shift between them.',
@@ -930,8 +924,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description:
       'Go beyond comparison — restate hidden-state behavior and the Scheduler perspective in your own words.',
@@ -957,8 +951,8 @@ const en: ActivityHiddenUiContent = {
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

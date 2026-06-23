@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 type Props = {
   id: string;
   number: number | string;
@@ -14,7 +12,7 @@ export const NumberedSectionHeader = ({ id, number, eyebrow, title, description,
     <div className="flex items-center gap-sm w-full">
       <span className="text-[var(--term-accent)] font-bold text-xsm">{'//'}</span>
       <span className="text-xxsm tabular-nums uppercase tracking-wider text-[var(--term-muted)]">
-        {eyebrow}
+        {`${String(number).padStart(2, '0')} · ${eyebrow}`}
       </span>
       <span
         aria-hidden="true"
@@ -23,16 +21,6 @@ export const NumberedSectionHeader = ({ id, number, eyebrow, title, description,
     </div>
 
     <div className="flex items-center gap-sm">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
-          'text-sm font-mono font-bold tabular-nums',
-          'bg-blue-600 text-white shadow-[0_2px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
-        )}
-      >
-        {number}
-      </span>
       {icon && (
         <span className="text-[var(--term-accent)] shrink-0" aria-hidden="true">
           {icon}

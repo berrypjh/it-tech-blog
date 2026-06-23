@@ -313,8 +313,8 @@ const ko: After192Content = {
     ],
   },
   overview: {
-    number: '03',
-    eyebrow: 'Overview',
+    number: '01',
+    eyebrow: '한눈에 보기',
     title: 'React 19.2 이후 확장 변화 한눈에 보기',
     description: '네 축이 동시에 움직였습니다. 캐시 수명·서버 렌더 모델·reveal 타이밍·성능 관측성.',
     cards: [
@@ -345,7 +345,7 @@ const ko: After192Content = {
     ],
   },
   cacheSignal: {
-    number: '04',
+    number: '02',
     eyebrow: 'cacheSignal',
     title: 'cacheSignal 흐름',
     description:
@@ -372,7 +372,7 @@ const ko: After192Content = {
     summary: 'cacheSignal은 캐시된 작업의 수명이 끝나는 시점과 취소/정리 로직을 연결합니다.',
   },
   ppr: {
-    number: '05',
+    number: '03',
     eyebrow: 'Partial Pre-rendering',
     title: 'Partial Pre-rendering 서버 렌더 흐름',
     description:
@@ -414,8 +414,8 @@ const ko: After192Content = {
     ],
   },
   resume: {
-    number: '06',
-    eyebrow: 'Resume Timeline',
+    number: '04',
+    eyebrow: 'resume 타임라인',
     title: 'resume / resumeAndPrerender 흐름',
     description:
       'prerender → postponed state → resume → 스트리밍 재개. 같은 렌더를 두 번 하지 않고 이어붙이는 흐름입니다.',
@@ -447,7 +447,7 @@ const ko: After192Content = {
     ],
   },
   batching: {
-    number: '07',
+    number: '05',
     eyebrow: 'SSR Suspense Batching',
     title: 'SSR Suspense Boundary batching',
     description:
@@ -470,8 +470,8 @@ const ko: After192Content = {
     expectedItems: ['화면 전환이 더 자연스러움', '깜빡임 감소', '사용자 경험 개선'],
   },
   additional: {
-    number: '08',
-    eyebrow: 'More Expansion Points',
+    number: '06',
+    eyebrow: '추가 확장 포인트',
     title: '추가 확장 포인트',
     description: '이 페이지에서 다 다루지 못한, 별도 추적할 만한 변화들입니다.',
     cards: [
@@ -502,8 +502,8 @@ const ko: After192Content = {
     ],
   },
   versionTable: {
-    number: '09',
-    eyebrow: 'Version Comparison',
+    number: '07',
+    eyebrow: '버전 비교',
     title: '19.0 / 19.2 / 19.2.6 버전 비교',
     description: '같은 React 19이라도 버전마다 다루는 층위가 다릅니다.',
     columns: {
@@ -541,8 +541,8 @@ const ko: After192Content = {
     ],
   },
   releaseDiff: {
-    number: '10',
-    eyebrow: 'Reading Diffs',
+    number: '08',
+    eyebrow: 'diff 읽는 법',
     title: '릴리즈 노트와 소스 diff 읽기법',
     description: '다음 19.x, 20.x 변화를 누가 알려주기 전에 스스로 따라가는 5단계 루틴입니다.',
     steps: [
@@ -592,8 +592,8 @@ const ko: After192Content = {
     ],
   },
   quiz: {
-    number: '11',
-    eyebrow: 'Final Quiz',
+    number: '09',
+    eyebrow: '최종 퀴즈',
     title: '최종 퀴즈',
     description: '앞선 페이지의 핵심을 다시 한 번 떠올려 보세요.',
     questions: [
@@ -699,8 +699,8 @@ const en: After192Content = {
     ],
   },
   overview: {
-    number: '03',
-    eyebrow: 'Overview',
+    number: '01',
+    eyebrow: 'OVERVIEW',
     title: 'At a glance: post-19.2 expansion',
     description:
       'Four axes moved together: cache lifetime, server-render model, reveal timing, and observability.',
@@ -732,8 +732,8 @@ const en: After192Content = {
     ],
   },
   cacheSignal: {
-    number: '04',
-    eyebrow: 'cacheSignal',
+    number: '02',
+    eyebrow: 'CACHESIGNAL',
     title: 'cacheSignal flow',
     description:
       "cacheSignal ties the moment a cached job's lifetime ends to your cancel / cleanup logic directly.",
@@ -764,8 +764,8 @@ const en: After192Content = {
     summary: "cacheSignal connects when a cached job's lifetime ends to your cancel/cleanup logic.",
   },
   ppr: {
-    number: '05',
-    eyebrow: 'Partial Pre-rendering',
+    number: '03',
+    eyebrow: 'PARTIAL PRE-RENDERING',
     title: 'Partial Pre-rendering server flow',
     description:
       'Send the static shell first, then hold the rest as postponed state, and resume on request.',
@@ -806,8 +806,8 @@ const en: After192Content = {
     ],
   },
   resume: {
-    number: '06',
-    eyebrow: 'Resume Timeline',
+    number: '04',
+    eyebrow: 'RESUME TIMELINE',
     title: 'resume / resumeAndPrerender timeline',
     description:
       'prerender → postponed state → resume → streaming continues. Without re-rendering, just continue.',
@@ -839,8 +839,8 @@ const en: After192Content = {
     ],
   },
   batching: {
-    number: '07',
-    eyebrow: 'SSR Suspense Batching',
+    number: '05',
+    eyebrow: 'SSR SUSPENSE BATCHING',
     title: 'SSR Suspense Boundary batching',
     description:
       'Multiple Suspense boundaries are revealed in a short window, making the screen reveal feel more natural.',
@@ -862,8 +862,8 @@ const en: After192Content = {
     expectedItems: ['Smoother screen transitions', 'Less flicker', 'Better user experience'],
   },
   additional: {
-    number: '08',
-    eyebrow: 'More Expansion Points',
+    number: '06',
+    eyebrow: 'MORE EXPANSION POINTS',
     title: 'More expansion points',
     description: 'Other 19.2-era expansions worth following on your own.',
     cards: [
@@ -894,8 +894,8 @@ const en: After192Content = {
     ],
   },
   versionTable: {
-    number: '09',
-    eyebrow: 'Version Comparison',
+    number: '07',
+    eyebrow: 'VERSION COMPARISON',
     title: '19.0 / 19.2 / 19.2.6 version comparison',
     description: 'Same React 19, but each version touches a different layer.',
     columns: {
@@ -933,8 +933,8 @@ const en: After192Content = {
     ],
   },
   releaseDiff: {
-    number: '10',
-    eyebrow: 'Reading Diffs',
+    number: '08',
+    eyebrow: 'READING DIFFS',
     title: 'How to read release notes and source diffs',
     description:
       'A 5-step routine to track the next 19.x / 20.x changes yourself, before anyone tells you.',
@@ -985,8 +985,8 @@ const en: After192Content = {
     ],
   },
   quiz: {
-    number: '11',
-    eyebrow: 'Final Quiz',
+    number: '09',
+    eyebrow: 'FINAL QUIZ',
     title: 'Final quiz',
     description: 'Recall the core idea of each page one more time.',
     questions: [

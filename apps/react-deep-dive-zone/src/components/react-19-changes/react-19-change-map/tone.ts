@@ -102,9 +102,6 @@ export const layerTone: Record<LayerKey, LayerTone> = {
   },
 };
 
-export const sectionNumberBadge =
-  'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white font-mono text-xsm font-bold tabular-nums dark:bg-blue-500';
-
 export const cardSurface =
   'rounded-2xl border-2 border-slate-200 bg-white shadow-[0_2px_0_var(--term-border)] dark:border-slate-700 dark:bg-[var(--term-bg)]';
 

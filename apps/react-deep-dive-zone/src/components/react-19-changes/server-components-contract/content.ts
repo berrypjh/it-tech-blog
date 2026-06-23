@@ -265,8 +265,8 @@ const ko: ServerComponentsContractContent = {
     ],
   },
   definition: {
-    number: '03',
-    eyebrow: 'Definition',
+    number: '01',
+    eyebrow: '서버 컴포넌트 정의',
     title: 'Server Component란 무엇인가?',
     description:
       'Server Component는 단지 "서버에서 실행되는 컴포넌트"가 아니라, 직렬화·전송·번들 측면에서 다른 컴포넌트입니다.',
@@ -292,8 +292,8 @@ const ko: ServerComponentsContractContent = {
     ],
   },
   useClient: {
-    number: '04',
-    eyebrow: "'use client'",
+    number: '02',
+    eyebrow: '클라이언트 경계 선언',
     title: "'use client' 경계: 클라이언트 컴포넌트 진입점",
     description:
       "`'use client'`가 선언된 파일을 기준으로 그 아래는 모두 클라이언트 모듈 경계가 됩니다.",
@@ -318,8 +318,8 @@ const ko: ServerComponentsContractContent = {
     ],
   },
   useServer: {
-    number: '05',
-    eyebrow: "'use server'",
+    number: '03',
+    eyebrow: '서버 함수 선언',
     title: "'use server' 경계: 서버 함수 선언",
     description:
       "`'use server'`로 표시한 함수는 클라이언트에서 호출되어도 본문은 서버에서 실행됩니다. 클라이언트에는 참조만 전달됩니다.",
@@ -375,8 +375,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   callFlow: {
-    number: '06',
-    eyebrow: 'Server Function Call',
+    number: '04',
+    eyebrow: '서버 함수 호출',
     title: 'Server Function 호출',
     description:
       'Server Function의 핵심은 “함수 코드를 보내는 것이 아니라 참조를 보낸다”는 점입니다.',
@@ -408,8 +408,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   reactServerExport: {
-    number: '07',
-    eyebrow: 'Package Contract',
+    number: '05',
+    eyebrow: '패키지 계약',
     title: 'react-server export condition',
     description:
       '라이브러리가 서버/클라이언트별로 다른 빌드를 제공할 수 있도록, package.json의 exports에 새로운 조건을 둡니다.',
@@ -438,8 +438,8 @@ export async function saveComment(formData: FormData) {
     note: 'Node.js 조건부 exports와 유사한 개념',
   },
   frameworkBoundary: {
-    number: '08',
-    eyebrow: 'React × Framework',
+    number: '06',
+    eyebrow: '책임 경계',
     title: '프레임워크 API와 React API의 경계',
     description:
       'React 19는 RSC의 “경계와 계약”을 정의하고, 프레임워크는 그 위에서 번들·전송·라우팅·캐싱을 구현합니다.',
@@ -463,8 +463,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   explorer: {
-    number: '09',
-    eyebrow: 'Module Boundary Explorer',
+    number: '07',
+    eyebrow: '코드 체크포인트',
     title: 'Module Boundary Explorer',
     description:
       '파일을 선택하면 그 파일이 어디서 실행되는 모듈인지, 어느 번들에 들어가는지 한눈에 확인할 수 있습니다.',
@@ -524,8 +524,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   mission: {
-    number: '10',
-    eyebrow: 'Follow Along',
+    number: '08',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '경계 / 함수 / 책임 분리를 직접 짚어보며 RSC의 모델을 손에 익혀 봅니다.',
     missions: [
@@ -556,8 +556,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   takeaways: {
-    number: '11',
-    eyebrow: 'Key Takeaways',
+    number: '09',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -652,8 +652,8 @@ const en: ServerComponentsContractContent = {
     ],
   },
   definition: {
-    number: '03',
-    eyebrow: 'Definition',
+    number: '01',
+    eyebrow: 'DEFINITION',
     title: 'What is a Server Component?',
     description:
       'Not just "a component that runs on the server" — it differs in serialization, transport, and bundle.',
@@ -679,8 +679,8 @@ const en: ServerComponentsContractContent = {
     ],
   },
   useClient: {
-    number: '04',
-    eyebrow: "'use client'",
+    number: '02',
+    eyebrow: 'CLIENT BOUNDARY',
     title: "'use client' boundary: the client-component entry point",
     description:
       "From any file marked `'use client'`, everything below becomes a client module boundary.",
@@ -705,8 +705,8 @@ const en: ServerComponentsContractContent = {
     ],
   },
   useServer: {
-    number: '05',
-    eyebrow: "'use server'",
+    number: '03',
+    eyebrow: 'SERVER FUNCTION',
     title: "'use server' boundary: declaring server functions",
     description:
       "A function marked `'use server'` can be called from the client, but the body executes on the server. The client only receives a reference.",
@@ -762,8 +762,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   callFlow: {
-    number: '06',
-    eyebrow: 'Server Function Call',
+    number: '04',
+    eyebrow: 'CALL FLOW',
     title: 'Calling a Server Function',
     description: "The key idea: it's not function code that's sent, it's a reference.",
     steps: [
@@ -794,8 +794,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   reactServerExport: {
-    number: '07',
-    eyebrow: 'Package Contract',
+    number: '05',
+    eyebrow: 'PACKAGE CONTRACT',
     title: 'react-server export condition',
     description:
       "A new condition in package.json's exports lets a library ship a server-only build alongside the client build.",
@@ -824,8 +824,8 @@ export async function saveComment(formData: FormData) {
     note: "Similar to Node.js's conditional exports.",
   },
   frameworkBoundary: {
-    number: '08',
-    eyebrow: 'React × Framework',
+    number: '06',
+    eyebrow: 'RESPONSIBILITY BOUNDARY',
     title: 'React API vs Framework API boundary',
     description:
       'React 19 defines the RSC "boundary and contract"; frameworks implement bundling, transport, routing, caching on top.',
@@ -849,8 +849,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   explorer: {
-    number: '09',
-    eyebrow: 'Module Boundary Explorer',
+    number: '07',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Module Boundary Explorer',
     description:
       'Pick a file to see where it runs, which boundary applies, and which bundle it ends up in.',
@@ -910,8 +910,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   mission: {
-    number: '10',
-    eyebrow: 'Follow Along',
+    number: '08',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description: 'Trace boundaries, functions, and responsibilities by hand to internalize RSC.',
     missions: [
@@ -942,8 +942,8 @@ export async function saveComment(formData: FormData) {
     ],
   },
   takeaways: {
-    number: '11',
-    eyebrow: 'Key Takeaways',
+    number: '09',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {

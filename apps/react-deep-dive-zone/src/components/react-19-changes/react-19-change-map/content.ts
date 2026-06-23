@@ -97,7 +97,6 @@ export type React19ChangeMapContent = {
       layers: HeroLayer[];
     };
     questionCard: {
-      number: string;
       eyebrow: string;
       questionLines: [string, string, string];
       badges: HeroSideBadge[];
@@ -250,7 +249,6 @@ const ko: React19ChangeMapContent = {
       ],
     },
     questionCard: {
-      number: '02',
       eyebrow: '오늘 해결할 질문',
       questionLines: [
         'Actions, use(), ref as prop,',
@@ -274,8 +272,8 @@ const ko: React19ChangeMapContent = {
     },
   },
   featureListTrap: {
-    number: '03',
-    eyebrow: 'List vs Structure',
+    number: '01',
+    eyebrow: '목록 vs 구조',
     title: 'React 19를 신기능 목록으로만 보면 놓치는 것',
     leftCard: {
       title: "기능을 '목록'으로만 보면…",
@@ -293,8 +291,8 @@ const ko: React19ChangeMapContent = {
     },
   },
   changeAxes: {
-    number: '04',
-    eyebrow: 'Six Axes',
+    number: '02',
+    eyebrow: '6개 축',
     title: 'React 19 변화의 6개 축',
     description:
       '각 신기능은 “새로운 무엇”이 아니라, 이미 존재하던 내부 축이 어디로 확장됐는지를 보여 줍니다.',
@@ -356,8 +354,8 @@ const ko: React19ChangeMapContent = {
     ],
   },
   versionTimeline: {
-    number: '05',
-    eyebrow: 'Version Timeline',
+    number: '03',
+    eyebrow: '버전 타임라인',
     title: '19.0 → 19.2 → 19.2.6, 같은 버전에서도 변화의 무게가 다르다',
     description: '버전을 분리해 두면 같은 단어라도 “언제 들어왔는지”가 같이 읽힙니다.',
     cards: [
@@ -387,8 +385,8 @@ const ko: React19ChangeMapContent = {
     ],
   },
   previousTopicMap: {
-    number: '06',
-    eyebrow: 'Connect to Previous Topics',
+    number: '04',
+    eyebrow: '이전 주제 연결',
     title: '앞선 대주제와 연결되는 변화 지도',
     description: '앞서 읽은 내부 구조 위에 React 19 기능이 어떻게 얹히는지 한 줄로 정리합니다.',
     headings: {
@@ -430,8 +428,8 @@ const ko: React19ChangeMapContent = {
     ],
   },
   tenPageRoadmap: {
-    number: '07',
-    eyebrow: 'Roadmap',
+    number: '05',
+    eyebrow: '로드맵',
     title: '이번 10개 페이지의 전체 로드맵',
     description: '이 페이지 다음 9개의 챕터가 각 변화 축을 차례대로 깊게 파고듭니다.',
     items: [
@@ -458,8 +456,8 @@ const ko: React19ChangeMapContent = {
     },
   },
   changeLayerClassifier: {
-    number: '08',
-    eyebrow: 'Classifier',
+    number: '06',
+    eyebrow: '분류기',
     title: '변화 레이어 분류기',
     description:
       '신기능 이름을 누르면 어느 내부 구조와 연결되는 변화인지 한 줄 흐름으로 보여 줍니다.',
@@ -510,8 +508,8 @@ const ko: React19ChangeMapContent = {
     },
   },
   followAlongMission: {
-    number: '09',
-    eyebrow: 'Follow Along',
+    number: '07',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '읽은 내용을 손으로 다시 정리해 보면 “지도 위 위치”가 더 또렷해집니다.',
     missions: [
@@ -530,8 +528,8 @@ const ko: React19ChangeMapContent = {
     ],
   },
   keyTakeaways: {
-    number: '10',
-    eyebrow: 'Key Takeaways',
+    number: '08',
+    eyebrow: '핵심 정리',
     title: '이번 페이지에서 반드시 기억할 것',
     cards: [
       {
@@ -624,7 +622,6 @@ const en: React19ChangeMapContent = {
       ],
     },
     questionCard: {
-      number: '02',
       eyebrow: "Today's question",
       questionLines: [
         'Where exactly inside React do',
@@ -648,8 +645,8 @@ const en: React19ChangeMapContent = {
     },
   },
   featureListTrap: {
-    number: '03',
-    eyebrow: 'List vs Structure',
+    number: '01',
+    eyebrow: 'LIST VS STRUCTURE',
     title: 'What you miss when you read React 19 only as a feature list',
     leftCard: {
       title: "If you only see the 'list'…",
@@ -667,8 +664,8 @@ const en: React19ChangeMapContent = {
     },
   },
   changeAxes: {
-    number: '04',
-    eyebrow: 'Six Axes',
+    number: '02',
+    eyebrow: 'SIX AXES',
     title: 'The six axes of change in React 19',
     description:
       'Each new feature is not "something brand new" — it shows where an existing internal axis got extended.',
@@ -730,8 +727,8 @@ const en: React19ChangeMapContent = {
     ],
   },
   versionTimeline: {
-    number: '05',
-    eyebrow: 'Version Timeline',
+    number: '03',
+    eyebrow: 'VERSION TIMELINE',
     title: '19.0 → 19.2 → 19.2.6, the weight of change differs',
     description: 'Splitting versions lets the same word carry "when it landed" alongside.',
     cards: [
@@ -762,8 +759,8 @@ const en: React19ChangeMapContent = {
     ],
   },
   previousTopicMap: {
-    number: '06',
-    eyebrow: 'Connect to Previous Topics',
+    number: '04',
+    eyebrow: 'CONNECT TO PREVIOUS TOPICS',
     title: 'A change map that links to previous topics',
     description:
       'On top of the internal structure you already read, see where each React 19 feature lands.',
@@ -806,8 +803,8 @@ const en: React19ChangeMapContent = {
     ],
   },
   tenPageRoadmap: {
-    number: '07',
-    eyebrow: 'Roadmap',
+    number: '05',
+    eyebrow: 'ROADMAP',
     title: 'The full roadmap of these 10 pages',
     description: 'The next nine chapters after this one dive into each axis of change in turn.',
     items: [
@@ -839,8 +836,8 @@ const en: React19ChangeMapContent = {
     },
   },
   changeLayerClassifier: {
-    number: '08',
-    eyebrow: 'Classifier',
+    number: '06',
+    eyebrow: 'CLASSIFIER',
     title: 'Change-layer classifier',
     description:
       'Click a feature name to see which internal structure that change connects to, as a one-line flow.',
@@ -891,8 +888,8 @@ const en: React19ChangeMapContent = {
     },
   },
   followAlongMission: {
-    number: '09',
-    eyebrow: 'Follow Along',
+    number: '07',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description:
       'Restating what you read with your own hands makes the "place on the map" sharper.',
@@ -912,8 +909,8 @@ const en: React19ChangeMapContent = {
     ],
   },
   keyTakeaways: {
-    number: '10',
-    eyebrow: 'Key Takeaways',
+    number: '08',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'What you must remember from this page',
     cards: [
       {

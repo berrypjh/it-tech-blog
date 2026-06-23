@@ -79,6 +79,3 @@ export const pipelineTone: Record<PipelineKey, PipelineTone> = {
     solidBg: 'bg-emerald-600 dark:bg-emerald-500',
   },
 };
-
-export const sectionNumberBadge =
-  'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white font-mono text-xsm font-bold tabular-nums dark:bg-blue-500';

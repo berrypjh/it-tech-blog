@@ -283,8 +283,8 @@ export function UserProfile({
     ],
   },
   readable: {
-    number: '03',
-    eyebrow: 'What use() can read',
+    number: '01',
+    eyebrow: 'use()가 읽는 대상',
     title: 'use()가 읽을 수 있는 것',
     description: 'use()는 단순 Promise 외에 Context도 같은 호출 표면으로 읽어옵니다.',
     cards: [
@@ -305,8 +305,8 @@ export function UserProfile({
     ],
   },
   comparison: {
-    number: '04',
-    eyebrow: 'Hook vs use()',
+    number: '02',
+    eyebrow: '일반 Hook과 비교',
     title: '일반 Hook과 다른 점',
     description: 'use()는 Hooks 규칙의 일부 제약을 풀고, 렌더 흐름에 직접 연결됩니다.',
     columns: {
@@ -349,8 +349,8 @@ export function UserProfile({
     ],
   },
   promiseFlow: {
-    number: '05',
-    eyebrow: 'Promise States',
+    number: '03',
+    eyebrow: 'Promise 상태별 흐름',
     title: 'Promise 상태별 흐름 (use(Promise))',
     description:
       '같은 use(Promise) 호출이라도 Promise 상태에 따라 React 렌더 흐름이 세 갈래로 자동 분기됩니다.',
@@ -384,8 +384,8 @@ export function UserProfile({
     ],
   },
   suspenseConnection: {
-    number: '06',
-    eyebrow: 'use(Promise) × Suspense',
+    number: '04',
+    eyebrow: 'Suspense 연결',
     title: 'use(Promise)와 Suspense',
     description:
       'pending인 Promise를 만나면 React는 현재 렌더를 중단하고 상위 Suspense로 fallback을 위임합니다.',
@@ -407,8 +407,8 @@ export function UserProfile({
     fallback: { title: 'Fallback UI 예시', loadingText: 'Loading user...' },
   },
   rejectedFlow: {
-    number: '07',
-    eyebrow: 'rejected × Error Boundary',
+    number: '05',
+    eyebrow: 'Error Boundary 연결',
     title: 'rejected promise와 Error Boundary',
     description:
       'rejected promise를 만나면 use()는 error를 throw하고, 가장 가까운 Error Boundary가 이를 받습니다.',
@@ -444,8 +444,8 @@ export function UserProfile({
     },
   },
   thenableTracking: {
-    number: '08',
-    eyebrow: 'Thenable Tracking',
+    number: '06',
+    eyebrow: 'thenable 추적 흐름',
     title: 'thenable tracking 내부 연결',
     description:
       'use()는 단순 API가 아니라 ReactFiberThenable.js 내부의 trackUsedThenable 흐름과 연결되어 있습니다.',
@@ -485,8 +485,8 @@ export function UserProfile({
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 미리보기 (ReactFiberThenable.js)',
     description:
       'trackUsedThenable이 thenable을 등록하고, suspendedThenable과 SuspenseException으로 렌더 흐름을 끊습니다.',
@@ -517,8 +517,8 @@ throw SuspenseException;`,
     },
   },
   stateBoard: {
-    number: '10',
-    eyebrow: 'State Board',
+    number: '08',
+    eyebrow: '상태 보드',
     title: 'use() 상태 보드',
     description: 'Promise 상태별로 use()가 React UI에 어떻게 반영되는지 한 화면에서 비교합니다.',
     buttonLabel: 'Promise 상태 선택',
@@ -548,8 +548,8 @@ throw SuspenseException;`,
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: '코드 따라가기',
     title: '직접 따라가기 보기',
     description: '문서 → 실제 코드 → 본인 정리 순으로 use()를 손에 익혀 봅니다.',
     missions: [
@@ -580,8 +580,8 @@ throw SuspenseException;`,
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: '핵심 정리',
     title: '핵심 정리',
     cards: [
       {
@@ -683,8 +683,8 @@ export function UserProfile({
     ],
   },
   readable: {
-    number: '03',
-    eyebrow: 'What use() can read',
+    number: '01',
+    eyebrow: 'WHAT use() READS',
     title: 'What use() can read',
     description: 'use() reads both Promise and Context through the same call surface.',
     cards: [
@@ -705,8 +705,8 @@ export function UserProfile({
     ],
   },
   comparison: {
-    number: '04',
-    eyebrow: 'Hook vs use()',
+    number: '02',
+    eyebrow: 'HOOK vs use()',
     title: 'How use() differs from regular Hooks',
     description: 'use() relaxes parts of the rules of Hooks and plugs straight into render flow.',
     columns: {
@@ -749,8 +749,8 @@ export function UserProfile({
     ],
   },
   promiseFlow: {
-    number: '05',
-    eyebrow: 'Promise States',
+    number: '03',
+    eyebrow: 'PROMISE STATES',
     title: 'Promise-state flow (use(Promise))',
     description:
       'The same use(Promise) call branches into three render paths depending on Promise state.',
@@ -784,8 +784,8 @@ export function UserProfile({
     ],
   },
   suspenseConnection: {
-    number: '06',
-    eyebrow: 'use(Promise) × Suspense',
+    number: '04',
+    eyebrow: 'SUSPENSE LINK',
     title: 'use(Promise) and Suspense',
     description:
       'When the Promise is pending, React halts this render and the nearest Suspense takes over with fallback.',
@@ -807,8 +807,8 @@ export function UserProfile({
     fallback: { title: 'Fallback UI example', loadingText: 'Loading user...' },
   },
   rejectedFlow: {
-    number: '07',
-    eyebrow: 'rejected × Error Boundary',
+    number: '05',
+    eyebrow: 'ERROR BOUNDARY LINK',
     title: 'rejected promise and Error Boundary',
     description:
       'On a rejected promise, use() throws an Error and the nearest Error Boundary catches it.',
@@ -844,8 +844,8 @@ export function UserProfile({
     },
   },
   thenableTracking: {
-    number: '08',
-    eyebrow: 'Thenable Tracking',
+    number: '06',
+    eyebrow: 'THENABLE TRACKING',
     title: 'Internal connection via thenable tracking',
     description:
       'use() is not a standalone API — it ties into the trackUsedThenable flow inside ReactFiberThenable.js.',
@@ -885,8 +885,8 @@ export function UserProfile({
     ],
   },
   internalCode: {
-    number: '09',
-    eyebrow: 'React Internals',
+    number: '07',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source preview (ReactFiberThenable.js)',
     description:
       'trackUsedThenable registers the thenable, then suspendedThenable and SuspenseException break the render flow.',
@@ -917,8 +917,8 @@ throw SuspenseException;`,
     },
   },
   stateBoard: {
-    number: '10',
-    eyebrow: 'State Board',
+    number: '08',
+    eyebrow: 'STATE BOARD',
     title: 'use() state board',
     description: "Compare how each Promise state shows up in React's UI side by side.",
     buttonLabel: 'Pick a Promise state',
@@ -948,8 +948,8 @@ throw SuspenseException;`,
     ],
   },
   mission: {
-    number: '11',
-    eyebrow: 'Follow Along',
+    number: '09',
+    eyebrow: 'FOLLOW ALONG',
     title: 'Follow-along missions',
     description: 'Move from docs → real source → your own one-liner.',
     missions: [
@@ -980,8 +980,8 @@ throw SuspenseException;`,
     ],
   },
   takeaways: {
-    number: '12',
-    eyebrow: 'Key Takeaways',
+    number: '10',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Key takeaways',
     cards: [
       {
