@@ -1,13 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { houseToneByIndex } from '../houseTones';
 import { iconByName, InfoIcon, TerminalIcon } from '../icons';
 
 type Props = { content: SurroundingContent['scripts'] };
 
-const tone = houseToneByIndex(1);
+const tone = toneTokens.sky;
 
 export const ScriptsDeepDive = ({ content }: Props) => {
   return (

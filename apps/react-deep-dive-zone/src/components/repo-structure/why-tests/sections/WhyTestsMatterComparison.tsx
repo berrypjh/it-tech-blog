@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ComparePoint, TestCodeContent } from '../content';
 import { CheckCircleIcon, CodeIcon, FlaskIcon, QuoteIcon } from '../icons';
 
@@ -47,7 +48,7 @@ type CardProps = { title: string; items: ComparePoint[]; variant: 'impl' | 'test
 const CompareCard = ({ title, items, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
-  const accentText = isImpl ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const accentText = isImpl ? toneTokens.sky.text : 'text-[var(--term-accent)]';
   const tintClass =
     'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
   const titleClass = accentText;

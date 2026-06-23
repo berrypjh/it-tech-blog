@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactVsReactDomContent } from '../content';
 import { FileCodeIcon } from '../icons';
 
@@ -56,7 +57,8 @@ export const ReactDomComparisonTable = ({ content, sectionId }: Props) => {
                 className={cn(
                   'w-[41%] px-md py-md border-b border-[var(--term-border)]',
                   'bg-[var(--term-surface)]',
-                  'text-sky-600 dark:text-sky-300 text-sm font-bold font-mono tracking-tight',
+                  toneTokens.sky.text,
+                  'text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 {content.columnLabels.reactDom}
@@ -117,7 +119,10 @@ export const ReactDomComparisonTable = ({ content, sectionId }: Props) => {
                 <MobileCell
                   label={content.columnLabels.reactDom}
                   lines={row.reactDomValue}
-                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300"
+                  toneClass={cn(
+                    'bg-[var(--term-surface)] border-[var(--term-border)]',
+                    toneTokens.sky.text,
+                  )}
                 />
               </div>
             </li>

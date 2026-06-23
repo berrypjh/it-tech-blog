@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { RelationCard, SchedulerContent } from '../content';
 import { CheckCircleIcon, iconByName, RefreshIcon } from '../icons';
 
@@ -55,8 +56,7 @@ type ItemProps = { card: RelationCard };
 const RelationCardItem = ({ card }: ItemProps) => {
   const Icon = iconByName[card.icon];
   // reconciler vs scheduler 2-side 대비: reconciler=A(amber), scheduler=B(sky)
-  const accentText =
-    card.id === 'reconciler' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
+  const accentText = card.id === 'reconciler' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
 
   return (
     <article

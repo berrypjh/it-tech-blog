@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ExplorationContent, RoutineStep } from '../content';
 import { iconByName, MapIcon } from '../icons';
 
@@ -37,11 +38,7 @@ export const FinalExplorationRoutineSteps = ({ content, sectionId }: Props) => {
 type RowProps = { step: RoutineStep; index: number };
 
 /** 텍스트만 3색 소프트 순환: A=accent / B=sky / C=violet */
-const stepTextTones = [
-  'text-[var(--term-accent)]',
-  'text-sky-600 dark:text-sky-300',
-  'text-violet-600 dark:text-violet-300',
-];
+const stepTextTones = ['text-[var(--term-accent)]', toneTokens.sky.text, toneTokens.violet.text];
 
 const RoutineRow = ({ step, index }: RowProps) => {
   const Icon = iconByName[step.icon];

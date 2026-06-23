@@ -18,7 +18,7 @@ export type StackLayer = {
   id: 'event' | 'updateQueue' | 'scheduler' | 'render' | 'commit' | 'dom';
   label: string;
   sub?: string;
-  tone: 'sky' | 'blue' | 'cyan' | 'indigo' | 'teal' | 'emerald';
+  tone: ToneKey;
 };
 
 export type TableRow = {

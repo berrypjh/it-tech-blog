@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type ApproachItem = {
   icon: 'x' | 'open' | 'brain' | 'check' | 'pin' | 'route' | 'pencil';
   title: string;
@@ -8,7 +10,7 @@ export type ApproachItem = {
 
 export type MappingRow = {
   id: 'jsx' | 'element' | 'setstate' | 'dom';
-  tone: 'blue' | 'violet' | 'cyan' | 'amber';
+  tone: ToneKey;
   question: string;
   file1: string;
   fn1: string;
@@ -19,7 +21,7 @@ export type MappingRow = {
 export type FlowStep = {
   num: string;
   icon: 'hook' | 'fx' | 'database' | 'clock' | 'cube' | 'check';
-  tone: 'sky' | 'blue' | 'indigo' | 'violet' | 'cyan' | 'teal';
+  tone: ToneKey;
   title: string;
   description: string;
 };

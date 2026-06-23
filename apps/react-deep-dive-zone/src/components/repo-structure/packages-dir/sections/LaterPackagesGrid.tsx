@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { PackagesDirectoryContent } from '../content';
 import { InfoIcon, packageIconByName, SparklesIcon } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['later'] };
 
@@ -19,7 +19,7 @@ export const LaterPackagesGrid = ({ content }: Props) => {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md">
         {content.cards.map((card) => {
-          const tone = houseTone(card.tone);
+          const tone = toneTokens[card.tone];
           const Icon = packageIconByName[card.icon];
 
           return (

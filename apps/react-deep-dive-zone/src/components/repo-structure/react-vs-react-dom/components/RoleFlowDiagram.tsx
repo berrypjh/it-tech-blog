@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { FlowNode, ReactVsReactDomContent } from '../content';
 import { iconByName } from '../icons';
 
 /** package 노드만 색 강조: react=A(accent), react-dom=B(sky). 나머지는 중립. */
 const packageAccent = (id: FlowNode['id']) =>
-  id === 'react-dom' ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  id === 'react-dom' ? toneTokens.sky.text : 'text-[var(--term-accent)]';
 
 type Props = { content: ReactVsReactDomContent['usage'] };
 

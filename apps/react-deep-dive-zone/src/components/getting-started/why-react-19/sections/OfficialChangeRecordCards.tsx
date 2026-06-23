@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import type { ResourceCard, WhyReact19Content } from '../content';
 import { BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
 
@@ -104,7 +105,7 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
               aria-hidden="true"
               className="mt-2 inline-block w-1 h-1 rounded-full bg-[var(--term-accent)] shrink-0"
             />
-            <span className="leading-relaxed break-keep">{renderBulletInline(b)}</span>
+            <span className="leading-relaxed break-keep">{formatInline(b)}</span>
           </li>
         ))}
       </ul>
@@ -129,23 +130,6 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
       </a>
     </article>
   );
-};
-
-const renderBulletInline = (text: string): React.ReactNode => {
-  const parts = text.split(/(`[^`]+`)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return (
-        <code
-          key={i}
-          className="px-1 py-0.5 rounded border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[0.9em] font-mono"
-        >
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
 };
 
 export const OfficialChangeRecordCards = ({ content }: Props) => {

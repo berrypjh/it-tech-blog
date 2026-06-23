@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { TestCodeContent } from '../content';
 import { ArrowLeftRightIcon, CodeIcon, FlaskIcon } from '../icons';
 
@@ -66,7 +67,7 @@ type CardProps = {
 const CodeCard = ({ label, code, badge, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
-  const accentText = isImpl ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
+  const accentText = isImpl ? toneTokens.sky.text : 'text-[var(--term-accent)]';
   const tintClass =
     'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
   const labelTextClass = accentText;

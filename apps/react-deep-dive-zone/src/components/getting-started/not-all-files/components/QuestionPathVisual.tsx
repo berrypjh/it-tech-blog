@@ -7,20 +7,12 @@ import { FileIcon, FolderOpenIcon } from '../icons';
 
 type Props = { visual: NotAllFilesContent['hero']['visual'] };
 
-/**
- * Hero 우측: 질문 중심 독해 경로 비주얼.
- * 구성:
- *  - 좌하: 겹쳐 쌓인 파일 카드 스택 (noise)
- *  - 그 위로 mint/teal 곡선 path: Start → 질문 → 핵심 경로 → Answer (signal)
- *  - 우상: facebook/react repository tree mini card (react-reconciler 강조)
- */
 export const QuestionPathVisual = ({ visual }: Props) => {
   return (
     <HeroDiagramShell
       a11yLabel="흩어진 파일 더미에서 질문을 따라 핵심 경로로 이어지는 독해 경로 비주얼"
       className="min-h-[480px] sm:min-h-[520px] lg:min-h-[540px]"
     >
-      {/* 미세한 grid */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
@@ -40,7 +32,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         <rect width="100%" height="100%" fill="url(#path-grid)" />
       </svg>
 
-      {/* 상단 라벨 */}
       <div className="relative flex items-center justify-between mb-md">
         <TerminalBadge dotClassName="bg-[var(--term-accent)]">guided path</TerminalBadge>
         <span className="text-[10px] font-mono text-[var(--term-muted)]">
@@ -48,7 +39,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         </span>
       </div>
 
-      {/* 파일 카드 스택 (좌하단) — opacity 단계화 */}
       <div className="absolute inset-x-md bottom-12 sm:inset-x-lg sm:bottom-14 lg:left-lg lg:right-[44%] pointer-events-none">
         <ul className="relative h-[200px] sm:h-[230px]" aria-hidden="true">
           {visual.fileNames.map((name, i) => {
@@ -77,7 +67,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         </ul>
       </div>
 
-      {/* 우상단: repo tree mini card */}
       <aside
         aria-label={visual.repoTitle}
         className="absolute top-12 right-md sm:right-lg w-[200px] sm:w-[220px] rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-sm shadow-[0_2px_0_var(--term-border)]"
@@ -119,7 +108,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         </ul>
       </aside>
 
-      {/* 곡선 path SVG + path labels overlay */}
       <svg
         aria-hidden="true"
         viewBox="0 0 400 400"
@@ -132,7 +120,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
             <stop offset="1" stopColor="currentColor" className="text-[var(--term-accent)]" />
           </linearGradient>
         </defs>
-        {/* Start(좌하단) → 질문 → 핵심경로 → Answer(우상단) 곡선 */}
         <path
           d="M40 340 C 100 280, 140 230, 200 200 S 320 100, 360 70"
           fill="none"
@@ -140,7 +127,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
           strokeWidth="3"
           strokeLinecap="round"
         />
-        {/* 화살촉 (Answer 방향) */}
         <path
           d="m352 76 12-8-4 14"
           fill="none"
@@ -150,7 +136,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
           strokeLinejoin="round"
           className="text-[var(--term-accent)]"
         />
-        {/* path nodes (4개) */}
         <circle cx="40" cy="340" r="5" className="fill-[var(--term-accent)]" />
         <circle cx="40" cy="340" r="8" className="fill-[var(--term-accent)]" opacity="0.6" />
         <circle cx="140" cy="232" r="5" className="fill-[var(--term-accent)]" />
@@ -159,7 +144,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         <circle cx="360" cy="70" r="10" className="fill-[var(--term-accent)]" opacity="0.5" />
       </svg>
 
-      {/* path labels — 절대 위치 카드 */}
       <span
         aria-hidden="true"
         className="absolute top-[80%] left-[14%] -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white dark:bg-slate-900 border border-[var(--term-border)] text-[10px] font-bold text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
@@ -189,7 +173,6 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         {visual.pathLabels.answer}
       </span>
 
-      {/* 하단 보조 라벨 */}
       <p className="absolute bottom-2 left-md right-md text-center text-[10px] text-[var(--term-muted)]">
         {'//'} from noise to a single guided path
       </p>

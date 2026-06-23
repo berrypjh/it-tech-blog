@@ -1,13 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { houseToneByIndex } from '../houseTones';
 import { FolderIcon, iconByName, LightbulbIcon } from '../icons';
 
 type Props = { content: SurroundingContent['fixtures'] };
 
-const tone = houseToneByIndex(0);
+const tone = toneTokens.amber;
 
 export const FixturesDeepDive = ({ content }: Props) => {
   return (

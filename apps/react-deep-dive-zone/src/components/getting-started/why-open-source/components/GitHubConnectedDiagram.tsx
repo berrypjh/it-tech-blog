@@ -208,7 +208,6 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
   );
 };
 
-/** Pseudo code coloring (very small) */
 const colorizePseudo = (code: string): React.ReactNode => {
   const lines = code.split('\n');
   return lines.map((line, i) => (
@@ -246,7 +245,6 @@ const tokenizePseudo = (line: string): React.ReactNode => {
   });
 };
 
-/** Tree coloring: 'react-reconciler' 라인을 강조 */
 const colorizeTree = (mock: string): React.ReactNode => {
   const lines = mock.split('\n');
   return lines.map((line, i) => {

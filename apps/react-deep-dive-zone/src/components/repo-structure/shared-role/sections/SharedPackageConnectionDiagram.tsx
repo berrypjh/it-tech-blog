@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ConnectionRow, SharedContent } from '../content';
 import { ArrowRightIcon, iconByName, PackageIcon } from '../icons';
-import { softAccentByTone, softStrokeByTone } from '../tone-accents';
 
 type Props = { content: SharedContent['connection'] };
 
@@ -55,7 +55,7 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
                   preserveAspectRatio="none"
                   className={cn(
                     'hidden lg:block pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-2',
-                    softStrokeByTone[row.tone],
+                    toneTokens[row.tone].stroke,
                   )}
                 >
                   <line
@@ -127,7 +127,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
 type RowProps = { row: ConnectionRow };
 
 const ConnectionRowItem = ({ row }: RowProps) => {
-  const accent = softAccentByTone[row.tone];
+  const accent = toneTokens[row.tone].text;
   const Icon = iconByName[row.icon];
 
   return (

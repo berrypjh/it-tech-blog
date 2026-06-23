@@ -5,9 +5,9 @@ import { useId, useState } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['selector'] };
 
@@ -15,7 +15,7 @@ export const CorePackageSelector = ({ content }: Props) => {
   const [activeId, setActiveId] = useState<CorePackageId>(content.defaultSelected);
   const active = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
   const detail = content.details[active.id];
-  const tone = houseTone(active.tone);
+  const tone = toneTokens[active.tone];
   const tablistId = useId();
 
   return (
@@ -187,7 +187,7 @@ type TabCardProps = {
 };
 
 const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
-  const tone = houseTone(tab.tone);
+  const tone = toneTokens[tab.tone];
   const Icon = packageIconByName[tab.icon];
 
   return (

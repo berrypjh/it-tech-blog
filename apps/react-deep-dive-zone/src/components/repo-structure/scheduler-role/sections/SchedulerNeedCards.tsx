@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { NeedCard, SchedulerContent } from '../content';
 import { CircleHelpIcon, iconByName } from '../icons';
 
 type Props = { content: SchedulerContent['need']; sectionId?: string };
 
-// 반복 카드 3색 소프트 순환: A=amber, B=sky, C=violet
+// 반복 카드 3색 소프트 순환: A=accent, B=sky, C=violet
 const accentByIndex = [
   { text: 'text-[var(--term-accent)]', dot: 'bg-[var(--term-accent)]' },
-  { text: 'text-sky-600 dark:text-sky-300', dot: 'bg-sky-400 dark:bg-sky-500' },
-  { text: 'text-violet-600 dark:text-violet-300', dot: 'bg-violet-400 dark:bg-violet-500' },
+  { text: toneTokens.sky.text, dot: toneTokens.sky.dot },
+  { text: toneTokens.violet.text, dot: toneTokens.violet.dot },
 ];
 
 export const SchedulerNeedCards = ({ content, sectionId }: Props) => {

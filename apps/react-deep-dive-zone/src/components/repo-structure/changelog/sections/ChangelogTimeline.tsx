@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TimelineItem } from '../content';
 import { BookOpenIcon, StarIcon } from '../icons';
-import { accentCycle } from '../tone-accent';
 
 type Props = { content: ChangelogContent['timeline'] };
 
@@ -52,10 +52,12 @@ export const ChangelogTimeline = ({ content }: Props) => {
   );
 };
 
+const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
+
 type CardProps = { item: TimelineItem; index: number };
 
 const TimelineCard = ({ item, index }: CardProps) => {
-  const tone = accentCycle[index % accentCycle.length];
+  const tone = toneTokens[toneCycle[index % toneCycle.length]];
   return (
     <article
       className={cn(

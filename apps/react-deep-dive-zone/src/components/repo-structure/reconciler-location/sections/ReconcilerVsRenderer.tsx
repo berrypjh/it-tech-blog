@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, ReconcilerEntryContent } from '../content';
 import { CheckCircleIcon, iconByName, SparklesIcon } from '../icons';
 
@@ -30,9 +31,8 @@ type ItemProps = { card: CompareCard; side: 'left' | 'right' };
 
 const CompareCardItem = ({ card, side }: ItemProps) => {
   const Icon = iconByName[card.icon];
-  const textColor =
-    side === 'left' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
-  const dotColor = side === 'left' ? 'bg-[var(--term-accent)]' : 'bg-sky-400 dark:bg-sky-500';
+  const textColor = side === 'left' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
+  const dotColor = side === 'left' ? 'bg-[var(--term-accent)]' : toneTokens.sky.dot;
 
   return (
     <article

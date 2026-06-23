@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
 import { CheckCircleIcon, CuboidIcon, FiberCubeIcon, iconByName } from '../icons';
 
@@ -54,7 +55,7 @@ const ElementCard = ({ data }: ElementCardProps) => {
         'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
-      <h3 className="text-xsm font-bold font-mono tracking-tight text-sky-600 dark:text-sky-300">
+      <h3 className={cn('text-xsm font-bold font-mono tracking-tight', toneTokens.sky.text)}>
         {data.title}
       </h3>
       <pre
@@ -121,7 +122,7 @@ const RendererCard = ({ data }: RendererCardProps) => {
         'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
-      <h3 className="text-xsm font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
+      <h3 className={cn('text-xsm font-bold font-mono tracking-tight', toneTokens.violet.text)}>
         {data.title}
       </h3>
       <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
@@ -140,7 +141,10 @@ const RendererCard = ({ data }: RendererCardProps) => {
               key={label}
               aria-label={label}
               title={label}
-              className="inline-flex items-center justify-center w-6 h-6 rounded border bg-[var(--term-surface)] border-[var(--term-border)] text-violet-600 dark:text-violet-300"
+              className={cn(
+                'inline-flex items-center justify-center w-6 h-6 rounded border bg-[var(--term-surface)] border-[var(--term-border)]',
+                toneTokens.violet.text,
+              )}
             >
               <Icon className="h-3.5 w-3.5" aria-hidden="true" />
             </span>

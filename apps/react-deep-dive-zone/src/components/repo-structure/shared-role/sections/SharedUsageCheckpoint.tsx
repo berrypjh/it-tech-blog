@@ -3,6 +3,7 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SharedContent } from '../content';
 import { CircleHelpIcon, FileCodeIcon } from '../icons';
 
@@ -41,7 +42,7 @@ export const SharedUsageCheckpoint = ({ content }: Props) => (
           )}
         >
           <CircleHelpIcon
-            className="mt-0.5 h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+            className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
             aria-hidden="true"
           />
           <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">

@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
-
-export type Tone = 'blue' | 'teal' | 'violet' | 'cyan' | 'amber' | 'indigo';
+import type { ToneKey } from '../../shared/tones';
 
 export type RoadmapRow = {
   num: string;
@@ -10,7 +9,7 @@ export type RoadmapRow = {
   description: string;
   files: string[];
   icon: 'cube' | 'network' | 'code' | 'check' | 'hook' | 'event' | 'gauge' | 'spark';
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type DeliverableCard = {
@@ -18,7 +17,7 @@ export type DeliverableCard = {
   title: string;
   description: string[];
   icon: 'cube' | 'network' | 'code' | 'check' | 'hook' | 'gauge' | 'flag';
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type RoadmapContent = {

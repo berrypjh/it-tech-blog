@@ -1,9 +1,11 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type PerspectiveCard = {
   id: 'docs' | 'code' | 'tests' | 'pr';
   icon: 'doc' | 'code' | 'flask' | 'chat';
-  tone: 'blue' | 'teal' | 'violet' | 'amber';
+  tone: ToneKey;
   title: string;
   subtitle: string;
   description: string;
@@ -13,7 +15,7 @@ export type ReadingPriorityRow = {
   id: 'packages' | 'tests' | 'issues' | 'releases';
   index: string;
   icon: 'folder' | 'flask' | 'chat' | 'tag';
-  tone: 'blue' | 'teal' | 'violet' | 'amber';
+  tone: ToneKey;
   title: string;
   description: string;
   href: string;
@@ -45,13 +47,13 @@ export type ChainCard = {
   description: string;
   cta: string;
   href: string;
-  tone: 'blue' | 'teal' | 'violet';
+  tone: ToneKey;
 };
 
 export type RoutineStep = {
   num: string;
   icon: 'doc' | 'search' | 'cursor' | 'flask' | 'tag';
-  tone: 'blue' | 'teal' | 'emerald' | 'cyan' | 'violet';
+  tone: ToneKey;
   title: string;
   description: string;
 };

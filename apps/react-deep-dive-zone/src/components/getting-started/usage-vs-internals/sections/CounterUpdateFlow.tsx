@@ -2,10 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, UsageVsInternalsContent } from '../content';
 import { CursorIcon, flowIconByName } from '../icons';
-import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['flow'] };
 

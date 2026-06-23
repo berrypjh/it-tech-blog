@@ -3,6 +3,7 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
 import { ExternalLinkIcon, FileJsonIcon, GraduationCapIcon, InfoIcon } from '../icons';
 
@@ -34,12 +35,12 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
           <InfoRow
             label={content.descriptionLabel}
             value={<span>{content.descriptionValue}</span>}
-            icon={<InfoIcon className="h-4 w-4 text-sky-600 dark:text-sky-300" />}
+            icon={<InfoIcon className={cn('h-4 w-4', toneTokens.sky.text)} />}
           />
           <InfoRow
             label={content.pointLabel}
             value={<span>{content.pointValue}</span>}
-            icon={<GraduationCapIcon className="h-4 w-4 text-violet-600 dark:text-violet-300" />}
+            icon={<GraduationCapIcon className={cn('h-4 w-4', toneTokens.violet.text)} />}
           />
         </article>
 

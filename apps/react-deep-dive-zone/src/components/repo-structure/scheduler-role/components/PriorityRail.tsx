@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import { ListOrderedIcon } from '../icons';
 
 type Props = { highLabel: string; lowLabel: string; className?: string };
@@ -24,9 +25,9 @@ export const PriorityRail = ({ highLabel, lowLabel, className }: Props) => {
         {/* 노드 4개 */}
         {[
           { left: '8%', color: 'bg-[var(--term-accent)]' },
-          { left: '36%', color: 'bg-sky-400 dark:bg-sky-500' },
-          { left: '64%', color: 'bg-violet-400 dark:bg-violet-500' },
-          { left: '92%', color: 'bg-violet-400 dark:bg-violet-500' },
+          { left: '36%', color: toneTokens.sky.dot },
+          { left: '64%', color: toneTokens.violet.dot },
+          { left: '92%', color: toneTokens.violet.dot },
         ].map((node, i) => (
           <span
             key={i}

@@ -5,9 +5,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
 import { AtomIcon, LightbulbIcon } from '../icons';
-import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['demo'] };
 
@@ -60,7 +60,6 @@ export const InternalFlowDemo = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
-        {/* 좌: Counter 데모 */}
         <CounterDemoCard
           title={content.counter.title}
           count={count}
@@ -69,7 +68,6 @@ export const InternalFlowDemo = ({ content }: Props) => {
           onClick={startFlow}
         />
 
-        {/* 우: 단계 진행 패널 */}
         <ProgressCard
           title={content.progress.title}
           autoPill={content.progress.autoPill}
@@ -98,7 +96,6 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
       </span>
     </header>
 
-    {/* 큰 카운트 표시 */}
     <div className="flex items-center justify-center py-md">
       <output
         aria-live="polite"

@@ -1,9 +1,5 @@
 type Props = { className?: string };
 
-/**
- * 어두운 CTA 배너의 좌측에 들어가는 “열린 책 + 책갈피 + sparkle” 일러스트.
- * 실제 이미지를 사용하지 않고 inline SVG로만 그린다.
- */
 export const BookIllustration = ({ className }: Props) => (
   <svg
     viewBox="0 0 160 130"

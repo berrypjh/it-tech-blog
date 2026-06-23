@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { DiagramNode, PackagesDirectoryContent } from '../content';
 import { NetworkIcon, packageIconByName } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: PackagesDirectoryContent['diagram'] };
 
@@ -96,7 +96,7 @@ type DiagramNodeCardProps = {
 };
 
 const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
-  const tone = houseTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = packageIconByName[node.icon];
 
   return (
@@ -159,7 +159,7 @@ const FlowArrow = ({ className }: { className?: string }) => (
 type SharedWideCardProps = { node: DiagramNode };
 
 const SharedWideCard = ({ node }: SharedWideCardProps) => {
-  const tone = houseTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = packageIconByName[node.icon];
 
   return (

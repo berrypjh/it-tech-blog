@@ -4,8 +4,13 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { ToneKey } from '../../../shared/tones';
-import { CheckCircleIcon, ChevronDownIcon, HelpCircleIcon } from '../icons';
+import {
+  CheckCircle2 as CheckCircleIcon,
+  ChevronDown as ChevronDownIcon,
+  HelpCircle as HelpCircleIcon,
+} from 'lucide-react';
+
+import { type ToneKey, toneTokens } from '../../shared/tones';
 
 /** QuizAccordionCard가 요구하는 최소 구조. id 등 다른 필드는 자유롭게 가능. */
 export type QuizAccordionData = {
@@ -19,22 +24,10 @@ export type QuizAccordionData = {
 
 type Props = { card: QuizAccordionData };
 
-/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
-const houseTextByTone: Record<ToneKey, string> = {
-  amber: 'text-[var(--term-accent)]',
-  emerald: 'text-[var(--term-accent)]',
-  teal: 'text-[var(--term-accent)]',
-  sky: 'text-sky-600 dark:text-sky-300',
-  blue: 'text-sky-600 dark:text-sky-300',
-  cyan: 'text-sky-600 dark:text-sky-300',
-  violet: 'text-violet-600 dark:text-violet-300',
-  indigo: 'text-violet-600 dark:text-violet-300',
-};
-
 export const QuizAccordionCard = ({ card }: Props) => {
   const [open, setOpen] = useState(false);
   const id = useId();
-  const toneText = houseTextByTone[card.tone];
+  const toneText = toneTokens[card.tone].text;
 
   return (
     <article

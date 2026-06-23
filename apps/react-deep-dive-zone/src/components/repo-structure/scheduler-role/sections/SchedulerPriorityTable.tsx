@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import { tintByPriority } from '../components/HeroPriorityCards';
 import type { PriorityRow, SchedulerContent } from '../content';
 import { iconByName, ListOrderedIcon } from '../icons';
@@ -81,11 +82,19 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
     <div className="flex sm:flex-col items-center gap-2 text-center">
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-violet-600 dark:text-violet-300 text-sm font-bold"
+        className={cn(
+          'inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-sm font-bold',
+          toneTokens.violet.text,
+        )}
       >
         ↓
       </span>
-      <span className="text-[10px] uppercase tracking-wider font-bold text-violet-600 dark:text-violet-300 break-keep">
+      <span
+        className={cn(
+          'text-[10px] uppercase tracking-wider font-bold break-keep',
+          toneTokens.violet.text,
+        )}
+      >
         {lowLabel}
       </span>
     </div>

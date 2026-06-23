@@ -1,8 +1,8 @@
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
 import { FxIcon } from '../icons';
-import { formatInline } from '../utils/inlineCode';
 
 type Props = { content: UsageVsInternalsContent['table'] };
 

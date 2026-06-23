@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { ToneKey } from '../content';
-import { houseTone } from '../tone-house';
 
 type Props = {
   label: string;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const PackagePill = ({ label, tone, emphasis = 'core', icon, className }: Props) => {
-  const t = tone ? houseTone(tone) : null;
+  const t = tone ? toneTokens[tone] : null;
 
   const variantClass =
     emphasis === 'core'

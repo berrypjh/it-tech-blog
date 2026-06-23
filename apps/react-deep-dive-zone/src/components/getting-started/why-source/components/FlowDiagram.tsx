@@ -15,7 +15,6 @@ type Props = {
 export const FlowDiagram = ({ categories, stages, loop }: Props) => {
   return (
     <HeroDiagramShell a11yLabel="React 소스 코드를 읽는 6단계 흐름과 분류, 반복 학습 루프를 보여주는 다이어그램">
-      {/* 상단 분류 pill 4개 */}
       <ul className="flex flex-wrap gap-1.5 sm:gap-2 mb-md">
         {categories.map((cat) => {
           const t = toneTokens[cat.tone];
@@ -38,7 +37,6 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
         })}
       </ul>
 
-      {/* 메인 플로우 6단계: xl 이상에서 6열 1행, 그 미만은 3열 2행 */}
       <ol className="grid grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-1">
         {stages.map((stage, idx) => {
           const t = toneTokens[stage.tone];
@@ -71,7 +69,6 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
                 </p>
               </div>
 
-              {/* 단계 사이 화살표: sm 이상에서만 표시 */}
               {!isLastInRow && (
                 <span
                   aria-hidden="true"
@@ -85,7 +82,6 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
         })}
       </ol>
 
-      {/* 하단 반복 흐름 표시 */}
       <div className="mt-md flex items-center gap-sm">
         <span
           aria-hidden="true"

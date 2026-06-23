@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { RepFile, SharedContent } from '../content';
 import { FileCodeIcon, iconByName } from '../icons';
-import { softAccentByTone } from '../tone-accents';
 
 type Props = { content: SharedContent['files'] };
 
@@ -31,7 +31,7 @@ export const SharedRepresentativeFiles = ({ content }: Props) => {
 type ItemProps = { card: RepFile };
 
 const FileCard = ({ card }: ItemProps) => {
-  const accent = softAccentByTone[card.tone];
+  const accent = toneTokens[card.tone].text;
   const Icon = iconByName[card.icon];
 
   return (

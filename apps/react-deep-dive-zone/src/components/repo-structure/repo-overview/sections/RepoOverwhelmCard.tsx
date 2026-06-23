@@ -1,20 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
-import type { ToneKey } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
 import { ArrowRightIcon, FileTextIcon, FolderIcon, HelpCircleIcon } from '../icons';
-
-const houseTextByTone: Record<ToneKey, string> = {
-  amber: 'text-[var(--term-accent)]',
-  emerald: 'text-[var(--term-accent)]',
-  teal: 'text-[var(--term-accent)]',
-  sky: 'text-sky-600 dark:text-sky-300',
-  blue: 'text-sky-600 dark:text-sky-300',
-  cyan: 'text-sky-600 dark:text-sky-300',
-  violet: 'text-violet-600 dark:text-violet-300',
-  indigo: 'text-violet-600 dark:text-violet-300',
-};
 
 type Props = { content: RepoOverviewContent['overwhelm'] };
 
@@ -72,7 +61,7 @@ type FilePillProps = { row: RepoTreeRow };
 
 const FilePill = ({ row }: FilePillProps) => {
   const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
-  const toneText = row.tone ? houseTextByTone[row.tone] : null;
+  const toneText = row.tone ? toneTokens[row.tone].text : null;
 
   return (
     <span

@@ -1,25 +1,9 @@
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import type { WhyReact19Content } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, RefreshIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['reinterpret'] };
-
-const formatInline = (text: string): React.ReactNode => {
-  const parts = text.split(/(`[^`]+`)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return (
-        <code
-          key={i}
-          className="px-1 py-0.5 rounded border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[0.9em] font-mono"
-        >
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
-};
 
 export const ModernReinterpretationTable = ({ content }: Props) => {
   return (

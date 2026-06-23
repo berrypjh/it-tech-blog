@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { ReactVsReactDomContent, RoleCard } from '../content';
 import { ArrowRightIcon, CheckCircleIcon, iconByName } from '../icons';
 
 /** react=A(accent), react-dom=B(sky). 카드 크롬은 중립, 텍스트만 색. */
 const sideText = (id: RoleCard['id']) =>
-  id === 'react' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
+  id === 'react' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
 
 type Props = { content: ReactVsReactDomContent['hero'] };
 

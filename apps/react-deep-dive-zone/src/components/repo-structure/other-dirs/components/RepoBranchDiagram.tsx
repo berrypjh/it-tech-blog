@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroBranchNode, SurroundingContent } from '../content';
-import { houseToneByIndex } from '../houseTones';
 import { FolderIcon, iconByName } from '../icons';
 
 type Props = { content: SurroundingContent['hero'] };
@@ -82,11 +82,13 @@ const BranchConnector = () => (
   />
 );
 
+const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
+
 type BranchCardProps = { node: HeroBranchNode; index: number };
 
 const BranchCard = ({ node, index }: BranchCardProps) => {
   const Icon = iconByName[node.icon];
-  const tone = houseToneByIndex(index);
+  const tone = toneTokens[toneCycle[index % toneCycle.length]];
 
   return (
     <article

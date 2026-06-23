@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
 import { BookOpenIcon, TagIcon } from '../icons';
 
@@ -59,7 +60,8 @@ export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) 
                 className={cn(
                   'w-[40%] px-md py-md border-b border-[var(--term-border)]',
                   'bg-[var(--term-surface)]',
-                  'text-sky-600 dark:text-sky-300 text-sm font-bold font-mono tracking-tight',
+                  toneTokens.sky.text,
+                  'text-sm font-bold font-mono tracking-tight',
                 )}
               >
                 <span className="inline-flex items-center gap-1.5">
@@ -125,7 +127,10 @@ export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) 
                   label={content.releasesLabel}
                   icon={<TagIcon className="h-3.5 w-3.5" aria-hidden="true" />}
                   text={row.releases}
-                  toneClass="bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300"
+                  toneClass={cn(
+                    'bg-[var(--term-surface)] border-[var(--term-border)]',
+                    toneTokens.sky.text,
+                  )}
                 />
               </div>
             </li>

@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { ExplorationContent, HeroFlowNode } from '../content';
 import { ArrowRightIcon, iconByName } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: ExplorationContent['hero'] };
 
@@ -71,7 +71,7 @@ const FlowArrow = () => (
 type NodeProps = { node: HeroFlowNode };
 
 const FlowNode = ({ node }: NodeProps) => {
-  const tone = houseTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = iconByName[node.icon];
 
   return (

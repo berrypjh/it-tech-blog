@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
 import { CircleHelpIcon, LightbulbIcon } from '../icons';
 
@@ -42,7 +43,7 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
         <span className="inline-flex items-center gap-1.5 text-xsm text-[var(--term-muted)] break-keep">
           <CircleHelpIcon
             aria-hidden="true"
-            className="h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+            className={cn('h-4 w-4 shrink-0', toneTokens.sky.text)}
           />
           {content.question}
         </span>

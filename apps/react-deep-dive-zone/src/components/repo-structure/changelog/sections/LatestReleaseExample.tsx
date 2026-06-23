@@ -2,6 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
 import { BadgeCheckIcon, CheckCircleIcon, ExternalLinkIcon, iconByName, TagIcon } from '../icons';
 
@@ -144,7 +145,7 @@ const ChecklistCard = ({ title, items }: ChecklistProps) => (
           className="flex items-start gap-2 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep"
         >
           <CheckCircleIcon
-            className="mt-0.5 h-4 w-4 shrink-0 text-violet-600 dark:text-violet-300"
+            className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.violet.text)}
             aria-hidden="true"
           />
           <span>{item}</span>
@@ -170,13 +171,14 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-            'border-[var(--term-border)] bg-[var(--term-surface)] text-violet-600 dark:text-violet-300',
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
+            toneTokens.violet.text,
           )}
         >
           <TagIcon className="h-4 w-4" />
         </span>
         <div className="flex flex-col">
-          <h3 className="text-md font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
+          <h3 className={cn('text-md font-bold font-mono tracking-tight', toneTokens.violet.text)}>
             {content.highlightsTitle}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -192,7 +194,8 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
           <span
             className={cn(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
-              'border-[var(--term-border)] bg-[var(--term-bg)] text-violet-600 dark:text-violet-300',
+              'border-[var(--term-border)] bg-[var(--term-bg)]',
+              toneTokens.violet.text,
             )}
           >
             {item.kind}
@@ -202,7 +205,12 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
       ))}
     </ul>
 
-    <span className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)] inline-flex items-center gap-1 text-xsm font-bold text-violet-600 dark:text-violet-300">
+    <span
+      className={cn(
+        'mt-auto pt-sm border-t border-dashed border-[var(--term-border)] inline-flex items-center gap-1 text-xsm font-bold',
+        toneTokens.violet.text,
+      )}
+    >
       {content.linkText}
     </span>
   </article>

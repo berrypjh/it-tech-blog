@@ -3,6 +3,7 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { PackagesDirectoryContent } from '../content';
 import { CodeIcon, FileCodeIcon, LightbulbIcon } from '../icons';
 
@@ -30,7 +31,7 @@ export const ReactClientCheckpoint = ({ content }: Props) => (
           value={
             <span className="flex items-center gap-2">
               <FileCodeIcon
-                className="h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+                className={cn('h-4 w-4 shrink-0', toneTokens.sky.text)}
                 aria-hidden="true"
               />
               <code className="font-mono break-all">{content.filePath}</code>
@@ -59,7 +60,7 @@ export const ReactClientCheckpoint = ({ content }: Props) => (
           )}
         >
           <LightbulbIcon
-            className="mt-0.5 h-4 w-4 shrink-0 text-sky-600 dark:text-sky-300"
+            className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
             aria-hidden="true"
           />
           <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">

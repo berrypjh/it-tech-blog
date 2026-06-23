@@ -39,14 +39,9 @@ const colorize = (line: string): React.ReactNode => {
   });
 };
 
-/**
- * Hero 우측: React 소스코드 탐험 지도.
- * 반응형 카드 그리드 — 모바일 1열, sm+ 2x2 (code / repo / checkpoint / notes).
- */
 export const ExplorationMapVisual = ({ visual }: Props) => {
   return (
     <HeroDiagramShell a11yLabel="React 소스코드 탐험 지도: 코드, 저장소, 체크포인트, 노트 카드를 격자로 배치">
-      {/* 미세 grid */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
@@ -66,7 +61,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
         <rect width="100%" height="100%" fill="url(#map-grid)" />
       </svg>
 
-      {/* 상단 라벨 */}
       <div className="relative flex items-center justify-between mb-md">
         <TerminalBadge dotClassName="bg-[var(--term-accent)]">exploration map</TerminalBadge>
         <span className="text-[10px] font-mono text-[var(--term-muted)]">
@@ -74,9 +68,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
         </span>
       </div>
 
-      {/* 카드 그리드 — 모바일 1열, sm+ 2x2 */}
       <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 items-stretch">
-        {/* code card */}
         <article
           aria-label={visual.codeFile}
           className="rounded-md border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950 overflow-hidden shadow-[0_2px_0_var(--term-border)] min-w-0"
@@ -103,7 +95,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </pre>
         </article>
 
-        {/* repo tree */}
         <article
           aria-label={visual.repoTitle}
           className="rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)] min-w-0"
@@ -150,7 +141,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </ul>
         </article>
 
-        {/* checkpoint card */}
         <article
           aria-label={`${visual.checkpointLabel}: ${visual.checkpointSub}`}
           className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-2 shadow-[0_2px_0_var(--term-border)] flex items-center gap-2 min-w-0"
@@ -171,7 +161,6 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           </div>
         </article>
 
-        {/* notes card */}
         <article
           aria-label={visual.notesTitle}
           className="rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)] min-w-0"

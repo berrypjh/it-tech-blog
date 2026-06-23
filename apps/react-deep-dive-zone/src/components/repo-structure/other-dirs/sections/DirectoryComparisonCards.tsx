@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ComparisonCard, SurroundingContent } from '../content';
-import { houseToneByIndex } from '../houseTones';
 import { FolderIcon, iconByName, StarIcon } from '../icons';
 
 type Props = { content: SurroundingContent['comparison']; sectionId?: string };
@@ -33,10 +33,12 @@ export const DirectoryComparisonCards = ({ content, sectionId }: Props) => {
   );
 };
 
+const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
+
 type ItemProps = { card: ComparisonCard; index: number };
 
 const ComparisonCardItem = ({ card, index }: ItemProps) => {
-  const tone = houseToneByIndex(index);
+  const tone = toneTokens[toneCycle[index % toneCycle.length]];
   const Icon = iconByName[card.icon];
 
   return (

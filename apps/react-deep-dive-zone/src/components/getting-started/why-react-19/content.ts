@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type VersionId = '16' | '18' | '19' | '19_2';
 
 export type VersionCard = {
@@ -25,7 +27,7 @@ export type TimelineRow = {
 export type FocusTopic = {
   id: 'use-suspense' | 'actions' | 'ref-as-prop' | 'rsc';
   icon: 'spark' | 'bolt' | 'link' | 'cube';
-  tone: 'blue' | 'violet' | 'teal' | 'sky';
+  tone: ToneKey;
   title: string;
   description: string;
   tags: string[];
@@ -46,7 +48,7 @@ export type ResourceCard = {
   bullets: string[];
   cta: string;
   href: string;
-  tone: 'blue' | 'teal';
+  tone: ToneKey;
 };
 
 export type WhyReact19Content = {

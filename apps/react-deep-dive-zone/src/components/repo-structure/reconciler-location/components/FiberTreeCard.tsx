@@ -1,20 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { FiberTreeNode, ReconcilerEntryContent } from '../content';
 
 type Props = { content: ReconcilerEntryContent['process'] };
 
+const NEUTRAL = 'border-[var(--term-border)] bg-[var(--term-surface)]';
+
 const stateClass: Record<FiberTreeNode['state'], string> = {
-  none: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
-  update: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
-  placement: 'border-[var(--term-border)] bg-[var(--term-surface)] text-sky-600 dark:text-sky-300',
-  deletion: 'border-[var(--term-border)] bg-[var(--term-surface)] text-rose-600 dark:text-rose-300',
+  none: cn(NEUTRAL, 'text-[var(--term-muted)]'),
+  update: cn(NEUTRAL, 'text-[var(--term-accent)]'),
+  placement: cn(NEUTRAL, toneTokens.sky.text),
+  deletion: cn(NEUTRAL, 'text-rose-600 dark:text-rose-300'),
 };
 
 const stateDotClass: Record<FiberTreeNode['state'], string> = {
   none: 'bg-[var(--term-dim)]',
   update: 'bg-[var(--term-accent)]',
-  placement: 'bg-sky-400 dark:bg-sky-500',
+  placement: toneTokens.sky.dot,
   deletion: 'bg-rose-400 dark:bg-rose-500',
 };
 

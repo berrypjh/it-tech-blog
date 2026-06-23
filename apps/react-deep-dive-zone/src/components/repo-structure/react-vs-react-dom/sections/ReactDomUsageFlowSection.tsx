@@ -2,6 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';
 import { CodeIcon } from '../icons';
@@ -35,7 +36,7 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
               description={content.pillReact.description}
             />
             <ExplanationPill
-              accentClass="text-sky-600 dark:text-sky-300"
+              accentClass={toneTokens.sky.text}
               lead={content.pillReactDom.lead}
               description={content.pillReactDom.description}
             />

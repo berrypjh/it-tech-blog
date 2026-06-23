@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { EntrypointCard, ReactVsReactDomContent } from '../content';
 import { CheckCircleIcon, iconByName, SplitIcon } from '../icons';
 
 /** client=A(accent), server=B(sky). 카드 크롬은 중립, 텍스트만 색. */
 const sideText = (id: EntrypointCard['id']) =>
-  id === 'client' ? 'text-[var(--term-accent)]' : 'text-sky-600 dark:text-sky-300';
+  id === 'client' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
 
 type Props = { content: ReactVsReactDomContent['entrypoints'] };
 

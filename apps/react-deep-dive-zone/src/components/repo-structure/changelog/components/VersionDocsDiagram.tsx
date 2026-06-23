@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import { GithubIcon } from '../../repo-overview/icons';
 import type { ChangelogContent } from '../content';
 import { BookOpenIcon, FileTextIcon, TagIcon } from '../icons';
@@ -52,7 +53,7 @@ const VersionBadge = ({ version, badge }: VersionProps) => (
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <TagIcon className="h-3.5 w-3.5 text-sky-600 dark:text-sky-300" aria-hidden="true" />
+    <TagIcon className={cn('h-3.5 w-3.5', toneTokens.sky.text)} aria-hidden="true" />
     <span className="text-sm font-bold font-mono tracking-tight">{version}</span>
     <span
       className={cn(
@@ -82,10 +83,10 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
   const labelText = isReleases ? 'Releases' : 'CHANGELOG';
   const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
   const iconClass = isReleases
-    ? 'bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300'
+    ? cn('bg-[var(--term-surface)] border-[var(--term-border)]', toneTokens.sky.text)
     : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]';
-  const titleClass = isReleases ? 'text-sky-600 dark:text-sky-300' : 'text-[var(--term-accent)]';
-  const dotClass = isReleases ? 'bg-sky-400 dark:bg-sky-500' : 'bg-[var(--term-accent)]';
+  const titleClass = isReleases ? toneTokens.sky.text : 'text-[var(--term-accent)]';
+  const dotClass = isReleases ? toneTokens.sky.dot : 'bg-[var(--term-accent)]';
 
   return (
     <article

@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, ScenarioCard } from '../content';
 import { ArrowRightIcon, iconByName, SparklesIcon } from '../icons';
-import { accentByTone } from '../tone-accent';
 
 type Props = { content: ChangelogContent['scenarios'] };
 
@@ -32,8 +32,8 @@ export const SourceChoiceScenarioCards = ({ content }: Props) => {
 type ItemProps = { card: ScenarioCard };
 
 const ScenarioCardItem = ({ card }: ItemProps) => {
-  const tone = accentByTone[card.tone];
-  const resultTone = accentByTone[card.resultTone];
+  const tone = toneTokens[card.tone];
+  const resultTone = toneTokens[card.resultTone];
   const Icon = iconByName[card.icon];
 
   return (

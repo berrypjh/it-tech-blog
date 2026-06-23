@@ -1,5 +1,5 @@
 import { SectionHeader } from '../../../shared/section';
-import { QuizAccordionCard } from '../../repo-overview/components/QuizAccordionCard';
+import { QuizAccordionCard } from '../../shared/QuizAccordionCard';
 import type { TestCodeContent } from '../content';
 import { CircleHelpIcon } from '../icons';
 

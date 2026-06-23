@@ -4,14 +4,11 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneCard } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
 
-const cycleText = [
-  'text-[var(--term-accent)]',
-  'text-sky-600 dark:text-sky-300',
-  'text-violet-600 dark:text-violet-300',
-];
+const cycleText = ['text-[var(--term-accent)]', toneTokens.sky.text, toneTokens.violet.text];
 
 type Props = { content: ReconcilerEntryContent['preview'] };
 

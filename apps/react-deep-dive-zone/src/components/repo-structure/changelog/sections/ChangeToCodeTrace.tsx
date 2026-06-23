@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TraceStep } from '../content';
 import { iconByName, SparklesIcon } from '../icons';
-import { accentCycle } from '../tone-accent';
 
 type Props = { content: ChangelogContent['trace'] };
 
@@ -33,10 +33,12 @@ export const ChangeToCodeTrace = ({ content }: Props) => {
   );
 };
 
+const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
+
 type StepProps = { step: TraceStep; index: number };
 
 const StepCard = ({ step, index }: StepProps) => {
-  const tone = accentCycle[index % accentCycle.length];
+  const tone = toneTokens[toneCycle[index % toneCycle.length]];
   const Icon = iconByName[step.icon];
 
   return (

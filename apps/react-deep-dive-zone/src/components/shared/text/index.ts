@@ -1,0 +1,1 @@
+export { formatInline } from './formatInline';

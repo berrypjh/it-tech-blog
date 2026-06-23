@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { PackageBranch, SharedContent } from '../content';
 import { iconByName, PackageIcon } from '../icons';
-import { softAccentByTone, softStrokeByTone } from '../tone-accents';
 
 type Props = { content: SharedContent['hero'] };
 
@@ -44,7 +44,7 @@ export const SharedHubDiagram = ({ content }: Props) => {
               stroke="currentColor"
               strokeWidth="1.4"
               strokeDasharray="3 4"
-              className={softStrokeByTone[content.branches[0].tone]}
+              className={toneTokens[content.branches[0].tone].stroke}
             />
             <path
               d="M160 0 C 160 18, 160 28, 160 44"
@@ -52,7 +52,7 @@ export const SharedHubDiagram = ({ content }: Props) => {
               stroke="currentColor"
               strokeWidth="1.4"
               strokeDasharray="3 4"
-              className={softStrokeByTone[content.branches[1].tone]}
+              className={toneTokens[content.branches[1].tone].stroke}
             />
             <path
               d="M160 0 C 220 16, 260 28, 264 44"
@@ -60,7 +60,7 @@ export const SharedHubDiagram = ({ content }: Props) => {
               stroke="currentColor"
               strokeWidth="1.4"
               strokeDasharray="3 4"
-              className={softStrokeByTone[content.branches[2].tone]}
+              className={toneTokens[content.branches[2].tone].stroke}
             />
           </svg>
         </div>
@@ -133,7 +133,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
 type BranchProps = { branch: PackageBranch };
 
 const BranchCard = ({ branch }: BranchProps) => {
-  const accent = softAccentByTone[branch.tone];
+  const accent = toneTokens[branch.tone].text;
   const Icon = iconByName[branch.icon];
 
   return (

@@ -7,7 +7,6 @@ import { FileIcon, roadmapIconByName, RouteIcon } from '../icons';
 
 type Props = { content: RoadmapContent['roadmap'] };
 
-/** 중립 크롬 칩: surface + border. 색은 toneTokens[tone].text로만 입힌다. */
 const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 export const EightStepLearningRoadmap = ({ content }: Props) => {

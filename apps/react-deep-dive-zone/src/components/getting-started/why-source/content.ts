@@ -15,7 +15,6 @@ export type FlowCategory = {
   id: 'input' | 'abstraction' | 'process' | 'result';
   label: string;
   tone: ToneKey;
-  /** 이 카테고리에 속하는 stage id 범위 */
   stages: FlowStage['id'][];
 };
 

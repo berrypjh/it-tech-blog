@@ -1,13 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { houseToneByIndex } from '../houseTones';
 import { CheckCircleIcon, CircleAlertIcon, FolderIcon } from '../icons';
 
 type Props = { content: SurroundingContent['compiler'] };
 
-const tone = houseToneByIndex(0);
+const tone = toneTokens.amber;
 
 export const CompilerIntroSection = ({ content }: Props) => {
   return (

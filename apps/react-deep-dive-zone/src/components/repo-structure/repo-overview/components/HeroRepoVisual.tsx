@@ -7,11 +7,6 @@ import { RepoTreeCard } from './RepoTreeCard';
 
 type Props = { content: RepoOverviewContent['hero'] };
 
-/**
- * Hero 우측 비주얼.
- * 큰 저장소 트리 카드 + 작은 코드 카드 + React atom 카드를
- * 점선 연결선과 함께 배치한다.
- */
 export const HeroRepoVisual = ({ content }: Props) => {
   return (
     <div className="relative w-full">

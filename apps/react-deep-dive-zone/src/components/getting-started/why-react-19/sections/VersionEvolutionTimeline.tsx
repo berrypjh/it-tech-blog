@@ -1,33 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
+import { toneTokens } from '../../../shared/tones';
 import type { WhyReact19Content } from '../content';
 import { ArrowLongRightIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['timeline'] };
 
-const accents = [
-  { text: 'text-[var(--term-accent)]', marker: 'bg-[var(--term-accent)]' },
-  { text: 'text-sky-600 dark:text-sky-300', marker: 'bg-sky-400 dark:bg-sky-500' },
-  { text: 'text-violet-600 dark:text-violet-300', marker: 'bg-violet-400 dark:bg-violet-500' },
-] as const;
-
-const formatInline = (text: string): React.ReactNode => {
-  const parts = text.split(/(`[^`]+`)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return (
-        <code
-          key={i}
-          className="px-1 py-0.5 rounded border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-[0.9em] font-mono"
-        >
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
-};
+/** 타임라인 행의 위치별 강조색(3색 순환). 표준 toneTokens 참조. */
+const accents = [toneTokens.amber, toneTokens.sky, toneTokens.violet];
 
 export const VersionEvolutionTimeline = ({ content }: Props) => {
   return (
@@ -55,7 +37,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                 aria-hidden="true"
                 className={cn(
                   'absolute -left-[1.4rem] sm:-left-[1.6rem] top-md inline-flex items-center justify-center w-4 h-4 rounded-full ring-4 ring-[var(--color-canvas)]',
-                  accent.marker,
+                  accent.dot,
                 )}
               />
 

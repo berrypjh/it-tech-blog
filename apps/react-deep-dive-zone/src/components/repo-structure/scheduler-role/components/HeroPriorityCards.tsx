@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroPriorityCard, PriorityKey, SchedulerContent } from '../content';
 import { iconByName } from '../icons';
 
@@ -7,29 +8,22 @@ import { PriorityRail } from './PriorityRail';
 
 type Props = { content: SchedulerContent['hero'] };
 
-/** priority별 색조 매핑 — 중립 크롬 + 3색 소프트 텍스트 순환(amber/sky/violet) */
-const tintByPriority: Record<
-  PriorityKey,
-  { card: string; chip: string; text: string; dot: string }
-> = {
-  immediate: {
-    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
-    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
-    text: 'text-[var(--term-accent)]',
-    dot: 'bg-[var(--term-accent)]',
-  },
-  normal: {
-    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
-    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300',
-    text: 'text-sky-600 dark:text-sky-300',
-    dot: 'bg-sky-400 dark:bg-sky-500',
-  },
-  low: {
-    card: 'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
-    chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-violet-600 dark:text-violet-300',
-    text: 'text-violet-600 dark:text-violet-300',
-    dot: 'bg-violet-400 dark:bg-violet-500',
-  },
+/** priority별 색조 — 표준 toneTokens 참조(amber/sky/violet). 크롬은 중립 term. */
+const NEUTRAL_CARD =
+  'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
+const NEUTRAL_CHIP = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
+
+const byTone = (tone: ToneKey) => ({
+  card: NEUTRAL_CARD,
+  chip: cn(NEUTRAL_CHIP, toneTokens[tone].text),
+  text: toneTokens[tone].text,
+  dot: toneTokens[tone].dot,
+});
+
+const tintByPriority: Record<PriorityKey, ReturnType<typeof byTone>> = {
+  immediate: byTone('amber'),
+  normal: byTone('sky'),
+  low: byTone('violet'),
 };
 
 export { tintByPriority };
@@ -58,11 +52,11 @@ export const HeroPriorityCards = ({ content }: Props) => {
             />
             {content.priorityHighLabel}
           </span>
-          <span className="inline-flex items-center gap-1.5 text-sky-600 dark:text-sky-300">
+          <span className={cn('inline-flex items-center gap-1.5', toneTokens.sky.text)}>
             {content.priorityLowLabel}
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-sky-400 dark:bg-sky-500"
+              className={cn('inline-block w-1.5 h-1.5 rounded-full', toneTokens.sky.dot)}
             />
           </span>
         </div>

@@ -1,20 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { ToneKey } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { RepoTreeRow } from '../content';
 import { FileTextIcon, FolderIcon } from '../icons';
-
-/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
-const houseTextByTone: Record<ToneKey, string> = {
-  amber: 'text-[var(--term-accent)]',
-  emerald: 'text-[var(--term-accent)]',
-  teal: 'text-[var(--term-accent)]',
-  sky: 'text-sky-600 dark:text-sky-300',
-  blue: 'text-sky-600 dark:text-sky-300',
-  cyan: 'text-sky-600 dark:text-sky-300',
-  violet: 'text-violet-600 dark:text-violet-300',
-  indigo: 'text-violet-600 dark:text-violet-300',
-};
 
 type Props = {
   header: string;
@@ -22,13 +10,9 @@ type Props = {
   selectedId?: string;
   onSelect?: (id: string) => void;
   className?: string;
-  /** 헤더 옆에 표시되는 작은 분기 텍스트. 기본값 'main'. */
   branchLabel?: string;
 };
 
-/**
- * 저장소 루트 트리 카드. selection이 없으면 정적 트리, 있으면 인터랙티브 트리.
- */
 export const RepoTreeCard = ({
   header,
   rows,
@@ -72,7 +56,7 @@ export const RepoTreeCard = ({
           const isSelected = selectedId === row.id;
           const isLast = idx === rows.length - 1;
           const branch = isLast ? '└─' : '├─';
-          const toneText = row.tone ? houseTextByTone[row.tone] : null;
+          const toneText = row.tone ? toneTokens[row.tone].text : null;
           const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
 
           const baseClass = cn(

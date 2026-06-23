@@ -1,8 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
-import { houseToneAt } from '../houseTone';
 import { FileTextIcon, StarIcon } from '../icons';
 
 type Props = { content: RepoOverviewContent['rootFiles'] };
@@ -18,8 +18,8 @@ export const RootFilesSummary = ({ content }: Props) => {
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
-        {content.cards.map((card, idx) => {
-          const tone = houseToneAt(idx);
+        {content.cards.map((card) => {
+          const tone = toneTokens[card.tone];
 
           return (
             <li key={card.id}>
@@ -46,7 +46,7 @@ export const RootFilesSummary = ({ content }: Props) => {
                   <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[10px] font-medium text-[var(--term-muted)]">
                     <span
                       aria-hidden="true"
-                      className={cn('inline-block w-1 h-1 rounded-full', tone.marker)}
+                      className={cn('inline-block w-1 h-1 rounded-full', tone.dot)}
                     />
                     {card.badge}
                   </span>

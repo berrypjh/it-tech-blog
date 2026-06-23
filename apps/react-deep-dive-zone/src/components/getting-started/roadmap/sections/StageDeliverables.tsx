@@ -7,7 +7,6 @@ import { CheckCircleIcon, deliverableIconByName } from '../icons';
 
 type Props = { content: RoadmapContent['deliverables'] };
 
-/** 중립 크롬 칩: surface + border. 색은 toneTokens[tone].text로만 입힌다. */
 const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 export const StageDeliverables = ({ content }: Props) => {
