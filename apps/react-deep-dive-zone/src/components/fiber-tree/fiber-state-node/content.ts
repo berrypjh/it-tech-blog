@@ -290,7 +290,7 @@ const ko: FiberStateNodeContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -317,7 +317,7 @@ const ko: FiberStateNodeContent = {
   },
   reasons: {
     number: '05',
-    eyebrow: '넓게 이해해야 하는 이유',
+    eyebrow: '넓은 이해',
     title: 'stateNode를 넓게 이해해야 하는 이유',
     cards: [
       {
@@ -434,7 +434,7 @@ const en: FiberStateNodeContent = {
   },
   misconception: {
     number: '01',
-    eyebrow: 'Bust the myth',
+    eyebrow: 'BUST THE MYTH',
     title: 'The most important misconception',
     misLabel: 'Myth',
     misText: { lines: ['stateNode is always', 'a DOM node.'] },
@@ -446,7 +446,7 @@ const en: FiberStateNodeContent = {
   },
   byTag: {
     number: '02',
-    eyebrow: 'Meaning by tag',
+    eyebrow: 'MEANING BY TAG',
     title: 'stateNode meaning depends on the Fiber tag',
     cards: [
       {
@@ -480,7 +480,7 @@ const en: FiberStateNodeContent = {
   },
   hostRoot: {
     number: '03',
-    eyebrow: 'HostRoot example',
+    eyebrow: 'HOSTROOT EXAMPLE',
     title: 'HostRoot Fiber — a concrete example',
     flowLabel: 'Code flow',
     flowSteps: [
@@ -513,7 +513,7 @@ const en: FiberStateNodeContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -540,7 +540,7 @@ const en: FiberStateNodeContent = {
   },
   reasons: {
     number: '05',
-    eyebrow: 'Why the broader view matters',
+    eyebrow: 'BROADER VIEW',
     title: 'Why stateNode needs the broader view',
     cards: [
       {
@@ -568,7 +568,7 @@ const en: FiberStateNodeContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Answer',
@@ -592,7 +592,7 @@ const en: FiberStateNodeContent = {
   },
   checklist: {
     number: '07',
-    eyebrow: 'Core checklist',
+    eyebrow: 'CORE CHECKLIST',
     title: 'Page recap checklist',
     items: [
       'stateNode is an external connection slot',

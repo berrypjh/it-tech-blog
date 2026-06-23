@@ -200,7 +200,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_KO,
     },
     recap: {
-      eyebrow: '01 · recap',
+      eyebrow: '01 · 회고',
       title: '앞선 페이지 핵심 회고',
       description: '챕터에서 본 다섯 패키지의 역할을 한 문장씩 정리합니다.',
       cards: [
@@ -248,7 +248,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       ],
     },
     values: {
-      eyebrow: '02 · design values',
+      eyebrow: '02 · 설계 가치',
       title: '패키지 분리가 만든 설계 가치',
       description: '폴더가 아니라, React의 미래를 만든 네 가지 설계 결정입니다.',
       cards: [
@@ -284,7 +284,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
     },
     finalDiagram: {
-      eyebrow: '03 · final architecture',
+      eyebrow: '03 · 최종 구조',
       title: '전체 구조 최종 다이어그램',
       description: '챕터를 한 장으로 요약하는 종합 지도입니다.',
       main: MAIN_FLOW_KO,
@@ -301,7 +301,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'API는 분리되고, 계산은 공유되며, 반영은 환경별로 달라진다.',
     },
     userFlow: {
-      eyebrow: '04 · code flow',
+      eyebrow: '04 · 코드 흐름',
       title: '하나의 사용자 코드가 패키지를 거치는 전체 흐름',
       description: '간단한 컴포넌트도 네 패키지를 거쳐 화면이 됩니다.',
       code: APP_CODE,
@@ -354,7 +354,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
     },
     bridge: {
-      eyebrow: '05 · next chapter',
+      eyebrow: '05 · 다음 장',
       title: '다음 대주제 연결',
       intro:
         '이제 React의 패키지 경계를 이해했습니다. 다음은 그 패키지들이 실제로 무엇을 주고받는지, 즉 React Element와 JSX가 어떤 내부 표현으로 바뀌는지 살펴볼 차례입니다.',
@@ -408,7 +408,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_EN,
     },
     recap: {
-      eyebrow: '01 · recap',
+      eyebrow: '01 · RECAP',
       title: 'Recap of the previous pages',
       description: 'One-sentence roles for the five packages covered in this chapter.',
       cards: [
@@ -456,7 +456,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       ],
     },
     values: {
-      eyebrow: '02 · design values',
+      eyebrow: '02 · DESIGN VALUES',
       title: 'Design values produced by package separation',
       description: 'Not folder housekeeping — four decisions that shaped React’s future.',
       cards: [
@@ -492,7 +492,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
     },
     finalDiagram: {
-      eyebrow: '03 · final architecture',
+      eyebrow: '03 · FINAL ARCHITECTURE',
       title: 'Final architecture diagram',
       description: 'The whole chapter on one map.',
       main: MAIN_FLOW_EN,
@@ -509,7 +509,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'APIs are split, compute is shared, application differs per environment.',
     },
     userFlow: {
-      eyebrow: '04 · code flow',
+      eyebrow: '04 · CODE FLOW',
       title: 'A single piece of user code, across the packages',
       description: 'Even a tiny component travels through four packages on its way to the screen.',
       code: APP_CODE,
@@ -562,7 +562,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
     },
     bridge: {
-      eyebrow: '05 · next chapter',
+      eyebrow: '05 · NEXT CHAPTER',
       title: 'Bridge to the next topic',
       intro:
         'Now that the package boundaries are clear, the next topic is what those packages actually exchange — how JSX and React Element turn into internal representations.',

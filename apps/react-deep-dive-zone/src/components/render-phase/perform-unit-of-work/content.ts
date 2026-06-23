@@ -162,7 +162,7 @@ const ko: PerformUnitContent = {
   },
   fullFlow: {
     number: '1',
-    eyebrow: 'full-flow',
+    eyebrow: '전체 흐름',
     title: 'performUnitOfWork 전체 흐름',
     description: '코드 한 줄씩의 의미를 큰 분기 플로우로 펼친 모습입니다.',
     flow: {
@@ -186,7 +186,7 @@ const ko: PerformUnitContent = {
   },
   compare: {
     number: '2',
-    eyebrow: 'current-vs-wip',
+    eyebrow: 'current vs WIP',
     title: 'current와 workInProgress 연결',
     description: '두 Fiber는 alternate로 연결된 같은 노드의 두 버전입니다.',
     relationLabel: 'alternate',
@@ -209,7 +209,7 @@ const ko: PerformUnitContent = {
   },
   returnDirection: {
     number: '3',
-    eyebrow: 'return-decides',
+    eyebrow: 'return이 결정',
     title: 'beginWork 반환값으로 다음 방향 결정',
     description: 'beginWork의 반환값이 곧 다음 work loop의 이동 방향을 정합니다.',
     cards: {
@@ -239,7 +239,7 @@ const ko: PerformUnitContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberWorkLoop.js',
@@ -280,7 +280,7 @@ const ko: PerformUnitContent = {
   },
   descendComplete: {
     number: '5',
-    eyebrow: 'descend-or-complete',
+    eyebrow: '하강 or 완료',
     title: '내려가기 vs 완료로 전환 (핵심 반복 구조)',
     flow: {
       topSteps: ['Fiber 처리 시작 (performUnitOfWork)', 'beginWork 실행'],
@@ -307,7 +307,7 @@ const ko: PerformUnitContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'performUnitOfWork가 completeUnitOfWork를 호출하는 조건은?',
     answer: 'beginWork가 더 내려갈 다음 Fiber를 반환하지 않을 때.',
@@ -351,7 +351,7 @@ const en: PerformUnitContent = {
   },
   fullFlow: {
     number: '1',
-    eyebrow: 'full-flow',
+    eyebrow: 'FULL FLOW',
     title: 'Full performUnitOfWork flow',
     description: 'The function unfolded as a branching flow.',
     flow: {
@@ -375,7 +375,7 @@ const en: PerformUnitContent = {
   },
   compare: {
     number: '2',
-    eyebrow: 'current-vs-wip',
+    eyebrow: 'CURRENT VS WIP',
     title: 'current and workInProgress',
     description: 'These two Fibers are linked via alternate — two versions of the same node.',
     relationLabel: 'alternate',
@@ -398,7 +398,7 @@ const en: PerformUnitContent = {
   },
   returnDirection: {
     number: '3',
-    eyebrow: 'return-decides',
+    eyebrow: 'RETURN DECIDES',
     title: 'beginWork return value picks the next direction',
     description: "beginWork's return value decides which way the work loop moves.",
     cards: {
@@ -428,7 +428,7 @@ const en: PerformUnitContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberWorkLoop.js',
@@ -469,7 +469,7 @@ const en: PerformUnitContent = {
   },
   descendComplete: {
     number: '5',
-    eyebrow: 'descend-or-complete',
+    eyebrow: 'DESCEND OR COMPLETE',
     title: 'Descend vs transition to complete (the core loop)',
     flow: {
       topSteps: ['Start processing (performUnitOfWork)', 'Run beginWork'],
@@ -496,7 +496,7 @@ const en: PerformUnitContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'When does performUnitOfWork call completeUnitOfWork?',
     answer: 'When beginWork returns no next Fiber to descend into.',

@@ -153,14 +153,14 @@ const ko: HostComponentContent = {
   },
   userCode: {
     number: '1',
-    eyebrow: 'user-code',
+    eyebrow: '사용자 코드',
     title: '사용자 코드 예시',
     code: USER_CODE,
     explanation: 'React는 이 요소의 props와 children을 기준으로 다음 자식 구조를 계산합니다.',
   },
   updateFlow: {
     number: '2',
-    eyebrow: 'update-host-flow',
+    eyebrow: 'Host 갱신 흐름',
     title: 'updateHostComponent 흐름',
     description: 'Host Component Fiber 하나가 처리되는 단계입니다.',
     steps: [
@@ -197,7 +197,7 @@ const ko: HostComponentContent = {
   },
   childCompare: {
     number: '3',
-    eyebrow: 'text-vs-nested',
+    eyebrow: '텍스트 vs 중첩',
     title: 'text child와 nested child 감각 차이',
     cards: {
       left: {
@@ -220,7 +220,7 @@ const ko: HostComponentContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
@@ -242,7 +242,7 @@ const ko: HostComponentContent = {
   },
   completeWork: {
     number: '5',
-    eyebrow: 'complete-work-preview',
+    eyebrow: 'completeWork 예고',
     title: 'completeWork 예고',
     description:
       'Host Component의 실제 host 처리, 예를 들어 DOM 관련 준비는 completeWork에서 더 본격적으로 이어집니다.',
@@ -277,7 +277,7 @@ const ko: HostComponentContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Host Component의 beginWork가 즉시 DOM node를 만드는가?',
     answer: '아니다. DOM을 만들지 않고 먼저 children 구조를 계산한다.',
@@ -322,7 +322,7 @@ const en: HostComponentContent = {
   },
   userCode: {
     number: '1',
-    eyebrow: 'user-code',
+    eyebrow: 'USER CODE',
     title: 'User code example',
     code: USER_CODE_EN,
     explanation:
@@ -330,7 +330,7 @@ const en: HostComponentContent = {
   },
   updateFlow: {
     number: '2',
-    eyebrow: 'update-host-flow',
+    eyebrow: 'HOST FLOW',
     title: 'updateHostComponent flow',
     description: 'How a single Host Component Fiber is processed.',
     steps: [
@@ -367,7 +367,7 @@ const en: HostComponentContent = {
   },
   childCompare: {
     number: '3',
-    eyebrow: 'text-vs-nested',
+    eyebrow: 'TEXT VS NESTED',
     title: 'text child vs nested child',
     cards: {
       left: {
@@ -390,7 +390,7 @@ const en: HostComponentContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
@@ -411,7 +411,7 @@ const en: HostComponentContent = {
   },
   completeWork: {
     number: '5',
-    eyebrow: 'complete-work-preview',
+    eyebrow: 'COMPLETEWORK PREVIEW',
     title: 'completeWork preview',
     description:
       "The Host Component's actual host work, like DOM preparation, continues more fully in completeWork.",
@@ -446,7 +446,7 @@ const en: HostComponentContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: "Does a Host Component's beginWork create the DOM node immediately?",
     answer: 'No — it first computes the children structure, without creating any DOM.',

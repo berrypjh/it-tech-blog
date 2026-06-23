@@ -146,7 +146,7 @@ const ko: JsxTransformFlowContent = {
   },
   compileFlow: {
     badge: '01',
-    eyebrow: 'JSX 컴파일 흐름 한눈에 보기',
+    eyebrow: '컴파일 흐름',
     title: 'JSX는 실행 전에 4단계를 거칩니다',
     description:
       '우리가 쓴 JSX는 그대로 실행되지 않습니다. 컴파일 → 함수 호출 코드 → React Element 객체의 순서로 이어집니다.',
@@ -187,7 +187,7 @@ const ko: JsxTransformFlowContent = {
   },
   comparison: {
     badge: '02',
-    eyebrow: '과거 Transform vs 현대 Transform',
+    eyebrow: '과거 vs 현대',
     title: '같은 JSX, 두 가지 변환 결과',
     description:
       'React 17 전후로 JSX가 컴파일되는 결과 형태가 달라졌습니다. 표현은 다르지만 결과는 모두 React Element입니다.',
@@ -216,7 +216,7 @@ const ko: JsxTransformFlowContent = {
   },
   react19: {
     badge: '03',
-    eyebrow: 'React 19에서는 왜 새 JSX Transform 기준으로 읽어야 할까?',
+    eyebrow: '새 Transform 기준',
     title: '저장소를 읽는 기준점을 맞춥니다',
     description:
       'React 19 코드를 읽을 때는 현대 JSX Transform이 기본입니다. 그 이유는 단순히 “더 새것이라서”가 아닙니다.',
@@ -247,7 +247,7 @@ const ko: JsxTransformFlowContent = {
   },
   examples: {
     badge: '04',
-    eyebrow: '예제 코드 변환 직접 비교해 보세요',
+    eyebrow: '변환 비교',
     title: 'JSX와 컴파일 결과를 나란히 봅니다',
     description:
       '두 예제를 통해 jsx와 jsxs가 어떻게 다르게 호출되는지 직접 비교합니다. 탭으로 JSX와 결과를 전환할 수 있습니다.',
@@ -286,7 +286,7 @@ const ko: JsxTransformFlowContent = {
   },
   benefits: {
     badge: '05',
-    eyebrow: 'JSX가 함수 호출로 바뀌면 무엇이 좋아지는가?',
+    eyebrow: '함수 호출의 이점',
     title: '함수 호출이 되는 순간, 가능해지는 것들',
     description:
       '단순한 문법 차원의 변화가 아닙니다. 함수 호출로 바뀌면 React가 트리 구조를 다룰 수 있는 입구가 열립니다.',
@@ -341,7 +341,7 @@ const en: JsxTransformFlowContent = {
   },
   compileFlow: {
     badge: '01',
-    eyebrow: 'The JSX compile flow at a glance',
+    eyebrow: 'COMPILE FLOW',
     title: 'JSX goes through four steps before it runs',
     description:
       'JSX does not execute as-is. The path is compile → function-call code → React Element object.',
@@ -382,7 +382,7 @@ const en: JsxTransformFlowContent = {
   },
   comparison: {
     badge: '02',
-    eyebrow: 'Old transform vs modern transform',
+    eyebrow: 'OLD VS MODERN',
     title: 'Same JSX, two compile outputs',
     description:
       'Around React 17 the compile output shape changed. The expression differs, but both still land on a React Element.',
@@ -411,7 +411,7 @@ const en: JsxTransformFlowContent = {
   },
   react19: {
     badge: '03',
-    eyebrow: 'Why read React 19 against the modern JSX transform?',
+    eyebrow: 'WHY MODERN',
     title: 'Pin the baseline before reading the repo',
     description:
       'When reading React 19 code, the modern JSX transform is the assumption. The reason is not just “newer.”',
@@ -442,7 +442,7 @@ const en: JsxTransformFlowContent = {
   },
   examples: {
     badge: '04',
-    eyebrow: 'Compare the compiled output yourself',
+    eyebrow: 'COMPARE OUTPUT',
     title: 'JSX side-by-side with what it becomes',
     description:
       'Two examples — see how jsx and jsxs differ. Use the tabs to flip between JSX and the compiled output.',
@@ -481,7 +481,7 @@ const en: JsxTransformFlowContent = {
   },
   benefits: {
     badge: '05',
-    eyebrow: 'What becomes possible when JSX is function calls?',
+    eyebrow: 'BENEFITS',
     title: 'Function calls open the door for the rest of React',
     description:
       'This is not only a syntax change. Function calls make the UI tree something React can manipulate.',

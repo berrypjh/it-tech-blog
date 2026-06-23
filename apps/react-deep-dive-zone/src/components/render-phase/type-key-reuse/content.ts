@@ -187,7 +187,7 @@ const ko: TypeKeyReuseContent = {
   },
   sameKeyType: {
     number: '1',
-    eyebrow: 'same-key-same-type',
+    eyebrow: '같은 key·type',
     title: '같은 key / 같은 type 사례',
     previous: {
       label: '이전 (current)',
@@ -207,7 +207,7 @@ const ko: TypeKeyReuseContent = {
   },
   differentKey: {
     number: '2',
-    eyebrow: 'different-key',
+    eyebrow: '다른 key',
     title: 'key가 다를 때',
     previous: {
       label: '이전 (current)',
@@ -232,7 +232,7 @@ const ko: TypeKeyReuseContent = {
   },
   differentType: {
     number: '3',
-    eyebrow: 'different-type',
+    eyebrow: '다른 type',
     title: 'type이 다를 때 (key는 같아도)',
     previous: {
       label: '이전 (current)',
@@ -266,7 +266,7 @@ const ko: TypeKeyReuseContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactChildFiber.js',
@@ -292,7 +292,7 @@ const ko: TypeKeyReuseContent = {
   },
   statePreserve: {
     number: '5',
-    eyebrow: 'state-preservation',
+    eyebrow: '상태 보존',
     title: '상태 보존과 연결',
     description: '기존 Fiber를 재사용한다는 것은 그 위치의 상태를 이어갈 가능성과 연결됩니다.',
     reuse: {
@@ -314,7 +314,7 @@ const ko: TypeKeyReuseContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'key는 같지만 type이 다르면 그대로 재사용될까?',
     answer: '보통은 아니다. React는 key와 type을 함께 비교해 같을 때만 기존 Fiber를 재사용한다.',
@@ -361,7 +361,7 @@ const en: TypeKeyReuseContent = {
   },
   sameKeyType: {
     number: '1',
-    eyebrow: 'same-key-same-type',
+    eyebrow: 'SAME KEY & TYPE',
     title: 'Same key / same type case',
     previous: {
       label: 'previous (current)',
@@ -381,7 +381,7 @@ const en: TypeKeyReuseContent = {
   },
   differentKey: {
     number: '2',
-    eyebrow: 'different-key',
+    eyebrow: 'DIFFERENT KEY',
     title: 'When key differs',
     previous: {
       label: 'previous (current)',
@@ -406,7 +406,7 @@ const en: TypeKeyReuseContent = {
   },
   differentType: {
     number: '3',
-    eyebrow: 'different-type',
+    eyebrow: 'DIFFERENT TYPE',
     title: 'When type differs (even with same key)',
     previous: {
       label: 'previous (current)',
@@ -443,7 +443,7 @@ const en: TypeKeyReuseContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactChildFiber.js',
@@ -474,7 +474,7 @@ const en: TypeKeyReuseContent = {
   },
   statePreserve: {
     number: '5',
-    eyebrow: 'state-preservation',
+    eyebrow: 'STATE PRESERVATION',
     title: 'Connection to state preservation',
     description:
       "Reusing an existing Fiber is connected to the possibility of carrying over that position's state.",
@@ -497,7 +497,7 @@ const en: TypeKeyReuseContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'If key matches but type differs, will the Fiber still be reused?',
     answer:

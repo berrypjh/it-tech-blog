@@ -265,7 +265,7 @@ const ko: FiberPropsContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -379,7 +379,7 @@ const en: FiberPropsContent = {
   },
   comparison: {
     number: '01',
-    eyebrow: 'Compare both',
+    eyebrow: 'COMPARE BOTH',
     title: 'pendingProps vs memoizedProps',
     cards: [
       {
@@ -406,7 +406,7 @@ const en: FiberPropsContent = {
   },
   scenario: {
     number: '02',
-    eyebrow: 'A change scenario',
+    eyebrow: 'SCENARIO',
     title: 'A concrete change scenario',
     previousLabel: 'Previous render (committed)',
     previousCode: '<Button label="Save" />',
@@ -423,7 +423,7 @@ const en: FiberPropsContent = {
   },
   meaning: {
     number: '03',
-    eyebrow: 'What they mean',
+    eyebrow: 'WHAT THEY MEAN',
     title: 'What the two values mean inside a Fiber',
     steps: [
       {
@@ -457,7 +457,7 @@ const en: FiberPropsContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -479,7 +479,7 @@ const en: FiberPropsContent = {
   },
   reasons: {
     number: '05',
-    eyebrow: 'Why compare',
+    eyebrow: 'WHY COMPARE',
     title: 'Why compare the two?',
     cards: [
       {
@@ -510,7 +510,7 @@ const en: FiberPropsContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini judgment quiz',
+    eyebrow: 'JUDGMENT QUIZ',
     title: 'Mini judgment quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

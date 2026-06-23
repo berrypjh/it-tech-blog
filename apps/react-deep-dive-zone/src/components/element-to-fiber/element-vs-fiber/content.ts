@@ -200,7 +200,7 @@ const ko: ElementVsFiberContent = {
   },
   whyFiber: {
     badge: '03',
-    eyebrow: '추가 정보가 필요한 이유',
+    eyebrow: '추가 정보 이유',
     title: '왜 Fiber가 필요한가?',
     description:
       'Element만으로는 렌더링 작업을 진행할 수 없습니다. Fiber는 다음 네 가지 책임을 짊어집니다.',
@@ -237,7 +237,7 @@ const ko: ElementVsFiberContent = {
   },
   flow: {
     badge: '04',
-    eyebrow: '하나의 요소가 거치는 길',
+    eyebrow: '요소의 여정',
     title: '한 요소가 Element에서 Fiber로 확장되는 흐름',
     description:
       'JSX 한 줄이 Element 객체가 되고, 그 Element가 더 많은 정보를 가진 Fiber로 확장됩니다.',
@@ -278,7 +278,7 @@ const ko: ElementVsFiberContent = {
   },
   problems: {
     badge: '05',
-    eyebrow: 'Element만으로는 막히는 지점',
+    eyebrow: 'Element의 한계',
     title: 'Fiber가 없으면 곤란한 것들',
     description:
       '왜 React는 Element에서 멈추지 않고 한 단계를 더 만들까요. Fiber 없이 진행하려면 다음 네 가지 문제에 부딪힙니다.',
@@ -341,7 +341,7 @@ const en: ElementVsFiberContent = {
   },
   recap: {
     badge: '01',
-    eyebrow: 'Previous chapter recap',
+    eyebrow: 'CHAPTER RECAP',
     title: 'Recap: JSX → Element',
     description:
       'JSX becomes runtime function calls, and those calls produce the React Element — the description object.',
@@ -369,7 +369,7 @@ const en: ElementVsFiberContent = {
   },
   comparison: {
     badge: '02',
-    eyebrow: 'Side by side',
+    eyebrow: 'SIDE BY SIDE',
     title: 'Element vs Fiber — at a glance',
     description:
       'The same UI information is handled differently at each stage. One table sums up the differences.',
@@ -413,7 +413,7 @@ const en: ElementVsFiberContent = {
   },
   whyFiber: {
     badge: '03',
-    eyebrow: 'Why more information is needed',
+    eyebrow: 'WHY MORE INFO',
     title: 'Why does Fiber exist?',
     description:
       'Elements alone can not carry rendering forward. Fiber shoulders four extra responsibilities.',
@@ -450,7 +450,7 @@ const en: ElementVsFiberContent = {
   },
   flow: {
     badge: '04',
-    eyebrow: 'One element’s journey',
+    eyebrow: 'ELEMENT JOURNEY',
     title: 'How one element expands from Element to Fiber',
     description:
       'A single JSX line becomes an Element object, and that Element expands into a Fiber with much more information.',
@@ -491,7 +491,7 @@ const en: ElementVsFiberContent = {
   },
   problems: {
     badge: '05',
-    eyebrow: 'Where Elements alone fail',
+    eyebrow: 'ELEMENT LIMITS',
     title: 'What goes wrong without Fiber',
     description:
       'Why does React take an extra step instead of stopping at the Element? Trying to skip Fiber hits four walls.',

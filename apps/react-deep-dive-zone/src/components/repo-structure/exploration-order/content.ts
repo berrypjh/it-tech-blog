@@ -109,7 +109,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       summaryLine: ['질문', '탐색', '이해', '검증', '맥락'],
     },
     routine: {
-      eyebrow: '01 · 7-step final exploration routine',
+      eyebrow: '01 · 탐색 루틴',
       title: '최종 탐색 루틴 7단계',
       description: '앞선 9개 페이지를 실제 저장소 탐색 행동 7단계로 압축했습니다.',
       steps: [
@@ -222,7 +222,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       summaryLine: ['Question', 'Explore', 'Understand', 'Verify', 'Context'],
     },
     routine: {
-      eyebrow: '01 · 7-step final exploration routine',
+      eyebrow: '01 · 7-STEP ROUTINE',
       title: '7-step final exploration routine',
       description:
         'The whole chapter is compressed into seven actions you can apply directly to the repo.',

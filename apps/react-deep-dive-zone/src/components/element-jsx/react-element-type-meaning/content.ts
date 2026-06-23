@@ -163,7 +163,7 @@ const ko: ReactElementTypeMeaningContent = {
   },
   kinds: {
     badge: '01',
-    eyebrow: 'type의 대표적인 형태 3가지',
+    eyebrow: 'type의 형태',
     title: 'Host · Custom · Special — 세 갈래',
     description: 'JSX의 결과로 만들어지는 Element의 type은 거의 모든 경우 이 세 갈래로 정리됩니다.',
     cards: [
@@ -205,7 +205,7 @@ const ko: ReactElementTypeMeaningContent = {
   },
   rows: {
     badge: '02',
-    eyebrow: 'JSX 예제와 type 결과 연결',
+    eyebrow: 'JSX → type',
     title: '같은 모양의 JSX, 다른 type 값',
     description: 'JSX 한 줄이 어떤 type 값을 만들고, 어떤 후속 의미로 이어지는지 직접 매핑합니다.',
     items: [
@@ -240,7 +240,7 @@ const ko: ReactElementTypeMeaningContent = {
   },
   compare: {
     badge: '03',
-    eyebrow: 'Host / Custom / Special type 비교',
+    eyebrow: 'type 비교',
     title: '세 분류, 한 표에서 정리',
     description:
       'JSX 모양과 type 값, 이후 의미까지 같은 자리에서 비교합니다. 이 분류가 곧 Fiber 갈래의 출발점입니다.',
@@ -280,7 +280,7 @@ const ko: ReactElementTypeMeaningContent = {
   },
   source: {
     badge: '04',
-    eyebrow: '실제 코드 연결',
+    eyebrow: '코드 연결',
     title: 'ReactElement가 type을 어떻게 다루는지',
     descriptionTitle: 'ReactElement는 전달받은 type을 객체에 그대로 넣습니다.',
     descriptionBody:
@@ -295,7 +295,7 @@ const ko: ReactElementTypeMeaningContent = {
   },
   fiber: {
     badge: '05',
-    eyebrow: '다음 챕터와의 연결: Fiber 분류의 출발점',
+    eyebrow: '다음 챕터 예고',
     title: 'type에서 Fiber 갈래까지',
     description:
       'Element 안의 type 값이 Fiber 생성 함수에 그대로 전달되어, Fiber의 갈래를 결정합니다.',
@@ -382,7 +382,7 @@ const en: ReactElementTypeMeaningContent = {
   },
   kinds: {
     badge: '01',
-    eyebrow: 'Three representative shapes of type',
+    eyebrow: 'TYPE SHAPES',
     title: 'Host · Custom · Special — the three branches',
     description: 'Almost every Element type produced by JSX lands in one of these three branches.',
     cards: [
@@ -428,7 +428,7 @@ const en: ReactElementTypeMeaningContent = {
   },
   rows: {
     badge: '02',
-    eyebrow: 'JSX example → type result',
+    eyebrow: 'JSX TO TYPE',
     title: 'Same shape, different type value',
     description: 'See what type value each JSX line produces and the meaning that follows.',
     items: [
@@ -463,7 +463,7 @@ const en: ReactElementTypeMeaningContent = {
   },
   compare: {
     badge: '03',
-    eyebrow: 'Host / Custom / Special type compared',
+    eyebrow: 'TYPE COMPARISON',
     title: 'Three categories, one table',
     description:
       'JSX shape, type value, and downstream meaning side by side. This split is the origin of the Fiber split.',
@@ -498,7 +498,7 @@ const en: ReactElementTypeMeaningContent = {
   },
   source: {
     badge: '04',
-    eyebrow: 'Real source code link',
+    eyebrow: 'SOURCE LINK',
     title: 'How ReactElement stores type',
     descriptionTitle: 'ReactElement stores the received type as-is on the object.',
     descriptionBody:
@@ -513,7 +513,7 @@ const en: ReactElementTypeMeaningContent = {
   },
   fiber: {
     badge: '05',
-    eyebrow: 'Next chapter link — origin of the Fiber split',
+    eyebrow: 'NEXT CHAPTER',
     title: 'From type to Fiber branches',
     description:
       'The type inside an Element is passed straight to the Fiber creation function, which decides the Fiber branch.',

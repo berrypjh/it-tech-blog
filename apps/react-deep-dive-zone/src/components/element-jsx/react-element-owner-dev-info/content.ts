@@ -160,7 +160,7 @@ const ko: ReactElementOwnerDevInfoContent = {
   },
   prodDev: {
     badge: '01',
-    eyebrow: 'production vs development 비교',
+    eyebrow: 'prod vs dev',
     title: '두 모드, 다른 의도',
     description:
       'production은 사용자 환경에서 가볍게, development는 더 많은 정보를 함께 들고 다니며 문제 추적을 돕습니다.',
@@ -233,7 +233,7 @@ const ko: ReactElementOwnerDevInfoContent = {
   },
   debug: {
     badge: '03',
-    eyebrow: '_debugStack / _debugTask의 의미',
+    eyebrow: '_debug 필드',
     title: '디버깅 경험을 받쳐주는 두 메타데이터',
     description:
       '_debugStack과 _debugTask는 화면을 바꾸지 않습니다. 대신 오류와 추적을 더 정확하게 만들어 줍니다.',
@@ -260,7 +260,7 @@ const ko: ReactElementOwnerDevInfoContent = {
   },
   freeze: {
     badge: '04',
-    eyebrow: 'Object.freeze와 개발 편의성',
+    eyebrow: 'Object.freeze',
     title: '잘못된 변경을 더 빨리 잡기',
     description:
       '개발 모드에서 Element와 props를 freeze하면 실수로 값을 바꾸는 패턴을 더 빨리 잡을 수 있습니다.',
@@ -286,7 +286,7 @@ const ko: ReactElementOwnerDevInfoContent = {
   },
   checkpoint: {
     badge: '05',
-    eyebrow: '실제 코드 체크포인트',
+    eyebrow: '코드 체크포인트',
     title: '__DEV__ 분기 안의 메타데이터 코드',
     description:
       'ReactJSXElement.js의 `if (__DEV__)` 블록을 보면 개발 모드 전용으로 추가되는 필드와 freeze 호출을 한눈에 볼 수 있습니다.',
@@ -303,7 +303,7 @@ const ko: ReactElementOwnerDevInfoContent = {
   },
   benefits: {
     badge: '06',
-    eyebrow: '디버깅 경험과의 연결',
+    eyebrow: '디버깅 연결',
     title: '이 메타데이터가 만들어내는 세 가지 차이',
     description:
       '결국 이 모든 정보는 “더 잘 설명되는 오류, 더 빠른 추적, 더 풍부한 도구”로 돌아옵니다.',
@@ -372,7 +372,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   prodDev: {
     badge: '01',
-    eyebrow: 'production vs development',
+    eyebrow: 'PROD VS DEV',
     title: 'Two modes, two intents',
     description:
       'production stays lean for the user runtime; development carries more information to help you trace issues.',
@@ -409,7 +409,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   owner: {
     badge: '02',
-    eyebrow: 'What _owner means',
+    eyebrow: '_OWNER',
     title: 'Who created this Element?',
     description: '_owner helps track the component context in which an Element was created.',
     diagramTitle: 'Where _owner points',
@@ -444,7 +444,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   debug: {
     badge: '03',
-    eyebrow: 'What _debugStack and _debugTask do',
+    eyebrow: 'DEBUG FIELDS',
     title: 'Two metadata fields that back debugging',
     description:
       '_debugStack and _debugTask never change UI. They make errors and traces more precise.',
@@ -471,7 +471,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   freeze: {
     badge: '04',
-    eyebrow: 'Object.freeze and dev ergonomics',
+    eyebrow: 'OBJECT.FREEZE',
     title: 'Catch accidental mutations sooner',
     description:
       'Freezing the Element and its props in dev mode helps you catch mistaken mutations early.',
@@ -497,7 +497,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   checkpoint: {
     badge: '05',
-    eyebrow: 'Source code checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'The metadata code inside the __DEV__ branch',
     description:
       'Inside the `if (__DEV__)` block of ReactJSXElement.js you can see all dev-only fields and freeze calls at once.',
@@ -514,7 +514,7 @@ const en: ReactElementOwnerDevInfoContent = {
   },
   benefits: {
     badge: '06',
-    eyebrow: 'Connection to debugging experience',
+    eyebrow: 'DEBUGGING',
     title: 'Three concrete wins this metadata buys',
     description:
       'Ultimately it all comes back to better-explained errors, faster tracing, richer tools.',

@@ -233,7 +233,7 @@ const ko: ScheduleUpdateOnFiberContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -356,7 +356,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   flow: {
     number: '01',
-    eyebrow: 'Where we are',
+    eyebrow: 'WHERE WE ARE',
     title: 'Where this function sits in the flow',
     description:
       'Trace from dispatchSetStateInternal through to the moment pending work is registered on the Root.',
@@ -391,7 +391,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   responsibilities: {
     number: '02',
-    eyebrow: 'Responsibilities',
+    eyebrow: 'RESPONSIBILITIES',
     title: 'What scheduleUpdateOnFiber actually does',
     description: 'Despite the name, this function never renders. Its real job has three parts.',
     cards: [
@@ -420,7 +420,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -443,7 +443,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   contextCompare: {
     number: '04',
-    eyebrow: 'Two contexts',
+    eyebrow: 'TWO CONTEXTS',
     title: 'Render-phase update vs normal update',
     description:
       'Inside the same function, the handling splits based on the execution context that produced the update.',
@@ -473,7 +473,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   markRoot: {
     number: '05',
-    eyebrow: 'markRootUpdated',
+    eyebrow: 'MARKROOTUPDATED',
     title: 'What markRootUpdated means',
     description: {
       title: 'markRootUpdated(root, lane)',
@@ -502,7 +502,7 @@ const en: ScheduleUpdateOnFiberContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

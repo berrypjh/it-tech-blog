@@ -275,7 +275,7 @@ const ko: CurrentWipAlternateContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -355,7 +355,7 @@ const ko: CurrentWipAlternateContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: '미니 개념 퀴즈',
+    eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
     answerLabel: '정답',
@@ -427,7 +427,7 @@ const en: CurrentWipAlternateContent = {
   },
   comparison: {
     number: '01',
-    eyebrow: 'Both trees compared',
+    eyebrow: 'TREES COMPARED',
     title: 'current vs workInProgress',
     columnLabel: 'Aspect',
     currentLabel: 'current tree',
@@ -462,7 +462,7 @@ const en: CurrentWipAlternateContent = {
   },
   rootCurrent: {
     number: '02',
-    eyebrow: 'Where the active tree starts',
+    eyebrow: 'ACTIVE TREE',
     title: 'root.current structure',
     steps: [
       { id: 'fiberRoot', label: 'FiberRoot', subtitle: '(root)', tone: 'slate' },
@@ -475,7 +475,7 @@ const en: CurrentWipAlternateContent = {
   },
   alternate: {
     number: '03',
-    eyebrow: 'Two versions linked',
+    eyebrow: 'VERSIONS LINKED',
     title: 'alternate connection diagram',
     pairTitle: 'Same-position Fiber pair',
     currentCard: {
@@ -501,7 +501,7 @@ const en: CurrentWipAlternateContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -534,7 +534,7 @@ const en: CurrentWipAlternateContent = {
   },
   scenario: {
     number: '05',
-    eyebrow: 'Scenario',
+    eyebrow: 'SCENARIO',
     title: 'Rendering scenario flow',
     steps: [
       {
@@ -581,7 +581,7 @@ const en: CurrentWipAlternateContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini concept quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
     answerLabel: 'Answer',
@@ -607,7 +607,7 @@ const en: CurrentWipAlternateContent = {
   },
   checklist: {
     number: '07',
-    eyebrow: 'Key checklist',
+    eyebrow: 'CORE CHECKLIST',
     title: 'Key checklist',
     items: [
       'React maintains two Fiber trees',

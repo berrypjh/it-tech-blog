@@ -331,7 +331,7 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
     architecture: koArchitecture,
     misconception: {
       badge: '01',
-      eyebrow: '가장 흔한 오해 3가지',
+      eyebrow: '흔한 오해',
       title: '흔한 오해 바로잡기',
       description:
         'React를 하나의 덩어리로 생각하기 쉽지만, 실제로는 여러 패키지가 역할을 나눠 협력합니다.',
@@ -366,7 +366,7 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       ],
     },
     fullMap: {
-      eyebrow: '02 · architecture map',
+      eyebrow: '02 · 아키텍처 지도',
       title: 'React 패키지 아키텍처 전체 지도',
       description:
         '사용자 코드가 react를 거쳐 reconciler에서 계산되고, renderer가 환경별로 반영합니다. scheduler와 shared가 모든 단계를 떠받칩니다.',
@@ -378,7 +378,7 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       packagesLabel: '패키지별 역할',
     },
     reasons: {
-      eyebrow: '03 · why split',
+      eyebrow: '03 · 분리 이유',
       title: '왜 역할을 나누었는가?',
       cards: [
         {
@@ -413,7 +413,7 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
     },
     codeFlow: {
-      eyebrow: '04 · code flow',
+      eyebrow: '04 · 코드 흐름',
       title: '하나의 사용자 코드가 여러 패키지를 거치는 흐름',
       description: '단순한 컴포넌트 한 줄도 여섯 단계에 걸쳐 여러 패키지를 통과합니다.',
       code: `import { useState } from 'react';
@@ -475,7 +475,7 @@ function App() {
       ],
     },
     questions: {
-      eyebrow: '05 · package questions',
+      eyebrow: '05 · 핵심 질문',
       title: '패키지별 핵심 질문',
       cards: [
         {
@@ -542,7 +542,7 @@ function App() {
     architecture: enArchitecture,
     misconception: {
       badge: '01',
-      eyebrow: 'Three most common myths',
+      eyebrow: 'MYTHS',
       title: 'Clear up common misconceptions',
       description:
         'It is easy to picture React as one monolith, but several packages split the work and cooperate.',
@@ -577,7 +577,7 @@ function App() {
       ],
     },
     fullMap: {
-      eyebrow: '02 · architecture map',
+      eyebrow: '02 · ARCHITECTURE MAP',
       title: 'React package architecture — full map',
       description:
         'User code passes through react, is computed by the reconciler, and a renderer applies the result to each environment. scheduler and shared support every step.',
@@ -589,7 +589,7 @@ function App() {
       packagesLabel: 'What each package does',
     },
     reasons: {
-      eyebrow: '03 · why split',
+      eyebrow: '03 · WHY SPLIT',
       title: 'Why split the roles?',
       cards: [
         {
@@ -624,7 +624,7 @@ function App() {
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
     },
     codeFlow: {
-      eyebrow: '04 · code flow',
+      eyebrow: '04 · CODE FLOW',
       title: 'One snippet, many packages',
       description: 'Even a single component travels through six steps and several packages.',
       code: `import { useState } from 'react';
@@ -686,7 +686,7 @@ function App() {
       ],
     },
     questions: {
-      eyebrow: '05 · package questions',
+      eyebrow: '05 · PACKAGE QUESTIONS',
       title: 'A core question per package',
       cards: [
         {

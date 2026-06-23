@@ -172,7 +172,7 @@ const ko: FunctionComponentContent = {
   },
   userCode: {
     number: '1',
-    eyebrow: 'user-code',
+    eyebrow: '사용자 코드',
     title: '사용자 코드 예시',
     fileTab: 'Profile.js',
     code: USER_CODE,
@@ -184,7 +184,7 @@ const ko: FunctionComponentContent = {
   },
   internalFlow: {
     number: '2',
-    eyebrow: 'internal-flow',
+    eyebrow: '내부 흐름',
     title: '내부 처리 흐름',
     description: 'FunctionComponent Fiber 하나가 처리되는 순서입니다.',
     steps: [
@@ -221,7 +221,7 @@ const ko: FunctionComponentContent = {
   },
   renderWithHooks: {
     number: '3',
-    eyebrow: 'render-with-hooks',
+    eyebrow: 'renderWithHooks',
     title: 'renderWithHooks의 역할',
     description:
       'renderWithHooks는 함수 컴포넌트를 실제로 호출하고, 동시에 Hook 호출 순서를 관리하는 입구입니다.',
@@ -236,7 +236,7 @@ const ko: FunctionComponentContent = {
   },
   nextChildren: {
     number: '4',
-    eyebrow: 'what-is-nextchildren',
+    eyebrow: 'nextChildren',
     title: 'nextChildren이 무엇인가?',
     leftTitle: '컴포넌트 실행 결과 (JSX)',
     leftCode: JSX_TREE,
@@ -251,7 +251,7 @@ const ko: FunctionComponentContent = {
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
@@ -271,7 +271,7 @@ const ko: FunctionComponentContent = {
   },
   hooksLink: {
     number: '6',
-    eyebrow: 'hooks-chapter-link',
+    eyebrow: 'Hooks 챕터 연결',
     title: '뒤의 Hooks 내부 구조 챕터와 연결',
     description:
       '여기서 보이는 renderWithHooks는 dispatch, queue, lane과 연결된 Hooks 시스템의 핵심 함수입니다.',
@@ -295,7 +295,7 @@ const ko: FunctionComponentContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'renderWithHooks의 반환값은 무엇이며, 그 다음에는 무엇이 일어날까?',
     answer: '반환값은 nextChildren이며, 그 다음 reconcileChildren으로 자식 Fiber 계산이 시작된다.',
@@ -342,7 +342,7 @@ const en: FunctionComponentContent = {
   },
   userCode: {
     number: '1',
-    eyebrow: 'user-code',
+    eyebrow: 'USER CODE',
     title: 'User code example',
     fileTab: 'Profile.js',
     code: USER_CODE,
@@ -354,7 +354,7 @@ const en: FunctionComponentContent = {
   },
   internalFlow: {
     number: '2',
-    eyebrow: 'internal-flow',
+    eyebrow: 'INTERNAL FLOW',
     title: 'Internal processing flow',
     description: 'How a single FunctionComponent Fiber is processed.',
     steps: [
@@ -391,7 +391,7 @@ const en: FunctionComponentContent = {
   },
   renderWithHooks: {
     number: '3',
-    eyebrow: 'render-with-hooks',
+    eyebrow: 'RENDERWITHHOOKS',
     title: 'The role of renderWithHooks',
     description:
       'renderWithHooks calls the function component and is also the entry that manages the Hook call order.',
@@ -406,7 +406,7 @@ const en: FunctionComponentContent = {
   },
   nextChildren: {
     number: '4',
-    eyebrow: 'what-is-nextchildren',
+    eyebrow: 'NEXTCHILDREN',
     title: 'What is nextChildren?',
     leftTitle: 'Component output (JSX)',
     leftCode: JSX_TREE,
@@ -421,7 +421,7 @@ const en: FunctionComponentContent = {
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
@@ -445,7 +445,7 @@ const en: FunctionComponentContent = {
   },
   hooksLink: {
     number: '6',
-    eyebrow: 'hooks-chapter-link',
+    eyebrow: 'HOOKS CHAPTER',
     title: 'Connection to the upcoming Hooks chapter',
     description:
       'The renderWithHooks shown here is the core function of the Hooks system, wired into dispatch, queue, and lanes.',
@@ -469,7 +469,7 @@ const en: FunctionComponentContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'What does renderWithHooks return, and what happens next?',
     answer: 'It returns nextChildren — then reconcileChildren starts computing the child Fibers.',

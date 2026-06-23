@@ -136,7 +136,7 @@ const ko: FragmentModeFiberContent = {
   },
   fragmentFlow: {
     badge: '01',
-    eyebrow: '보라 흐름',
+    eyebrow: 'Fragment 흐름',
     title: 'Fragment 흐름',
     description: 'JSX Fragment는 createFiberFromFragment로 향하는 전용 경로를 가집니다.',
     jsxLabel: 'JSX',
@@ -150,7 +150,7 @@ const ko: FragmentModeFiberContent = {
   },
   strictFlow: {
     badge: '02',
-    eyebrow: '민트 흐름',
+    eyebrow: 'StrictMode 흐름',
     title: 'StrictMode / Mode 흐름',
     description: 'StrictMode는 Mode Fiber로 처리되어 strict mode 관련 내부 flag를 보유합니다.',
     jsxLabel: 'JSX',
@@ -168,7 +168,7 @@ const ko: FragmentModeFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'switch (type) 안에서 Fragment는 즉시 return, StrictMode는 Mode Fiber tag로 분기됩니다.',
@@ -328,7 +328,7 @@ const en: FragmentModeFiberContent = {
   },
   fragmentFlow: {
     badge: '01',
-    eyebrow: 'Purple flow',
+    eyebrow: 'FRAGMENT FLOW',
     title: 'Fragment flow',
     description: 'JSX Fragments take a dedicated path through createFiberFromFragment.',
     jsxLabel: 'JSX',
@@ -343,7 +343,7 @@ const en: FragmentModeFiberContent = {
   },
   strictFlow: {
     badge: '02',
-    eyebrow: 'Mint flow',
+    eyebrow: 'STRICTMODE FLOW',
     title: 'StrictMode / Mode flow',
     description: 'StrictMode becomes a Mode Fiber that holds strict-mode internal flags.',
     jsxLabel: 'JSX',
@@ -362,7 +362,7 @@ const en: FragmentModeFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description:
       'Inside switch (type), Fragment returns immediately, while StrictMode flips the fiberTag to Mode.',
@@ -398,7 +398,7 @@ const en: FragmentModeFiberContent = {
   },
   workTags: {
     badge: '04',
-    eyebrow: 'Internal tag numbers',
+    eyebrow: 'INTERNAL TAGS',
     title: 'Work Tag cards',
     description:
       'Remember the Work Tag numbers of Fragment and Mode to read React internals more easily.',
@@ -432,7 +432,7 @@ const en: FragmentModeFiberContent = {
   },
   others: {
     badge: '05',
-    eyebrow: 'Advanced',
+    eyebrow: 'ADVANCED',
     title: 'Are there other special types?',
     description:
       'React defines many special types, and each one may have its own dedicated Fiber-creation path.',
@@ -482,7 +482,7 @@ const en: FragmentModeFiberContent = {
   },
   checklist: {
     badge: '07',
-    eyebrow: 'One-line recap',
+    eyebrow: 'ONE-LINE RECAP',
     title: 'Quick checklist',
     items: [
       { id: 'c1', text: 'Fragment is handled as REACT_FRAGMENT_TYPE' },

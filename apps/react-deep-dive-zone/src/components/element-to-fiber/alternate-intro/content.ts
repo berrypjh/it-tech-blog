@@ -125,7 +125,7 @@ const ko: AlternateFiberContent = {
   },
   pair: {
     badge: '01',
-    eyebrow: '두 Fiber 짝',
+    eyebrow: 'current vs WIP',
     title: 'current와 workInProgress',
     description: '같은 노드에 대해 두 Fiber가 동시에 존재하며 서로 다른 역할을 맡습니다.',
     currentBadge: '현재 화면',
@@ -156,7 +156,7 @@ const ko: AlternateFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'createWorkInProgress는 current.alternate를 보고 새 Fiber를 만들거나 기존 Fiber를 재사용합니다.',
@@ -305,7 +305,7 @@ const en: AlternateFiberContent = {
   },
   pair: {
     badge: '01',
-    eyebrow: 'Paired Fibers',
+    eyebrow: 'CURRENT VS WIP',
     title: 'current vs workInProgress',
     description: 'For the same node, two Fibers coexist and play different roles.',
     currentBadge: 'Current screen',
@@ -325,7 +325,7 @@ const en: AlternateFiberContent = {
   },
   connection: {
     badge: '02',
-    eyebrow: 'Connecting pointer',
+    eyebrow: 'CONNECTING POINTER',
     title: 'alternate connection diagram',
     description: 'A single word — alternate — keeps two Fibers paired at all times.',
     currentLabel: 'current Fiber',
@@ -336,7 +336,7 @@ const en: AlternateFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description:
       'createWorkInProgress checks current.alternate, creates a new Fiber if needed, or reuses the existing one.',
@@ -398,7 +398,7 @@ const en: AlternateFiberContent = {
   },
   doubleBuffering: {
     badge: '04',
-    eyebrow: 'Core feel',
+    eyebrow: 'CORE FEEL',
     title: 'Double buffering — the feel',
     description:
       'Keep the current screen as-is, compute the next screen separately, then swap when ready.',
@@ -414,7 +414,7 @@ const en: AlternateFiberContent = {
   },
   why: {
     badge: '05',
-    eyebrow: 'Why this matters',
+    eyebrow: 'WHY IT MATTERS',
     title: 'Why is it needed?',
     description:
       'Pairing two Fibers is what lets React do work without ever ruining the user experience.',
@@ -447,7 +447,7 @@ const en: AlternateFiberContent = {
   },
   preview: {
     badge: '06',
-    eyebrow: 'Next-chapter preview',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next-chapter preview',
     description:
       "In 'Fiber Tree & Rendering Data Structures', current tree, workInProgress tree, and alternate get treated from a whole-tree perspective.",

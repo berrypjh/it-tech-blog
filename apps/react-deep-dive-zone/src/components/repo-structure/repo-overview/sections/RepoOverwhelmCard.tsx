@@ -5,7 +5,6 @@ import type { ToneKey } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
 import { ArrowRightIcon, FileTextIcon, FolderIcon, HelpCircleIcon } from '../icons';
 
-/** content의 tone을 amber 하우스 3색(A/B/C) 텍스트로 매핑한다. */
 const houseTextByTone: Record<ToneKey, string> = {
   amber: 'text-[var(--term-accent)]',
   emerald: 'text-[var(--term-accent)]',
@@ -32,9 +31,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
       />
 
       <div className="overflow-hidden rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)]">
-        {/* 문제 영역: 쏟아지는 파일 | 왜 막막한지 */}
         <div className="grid md:grid-cols-[1.2fr_1fr]">
-          {/* 왼쪽: 한꺼번에 쏟아지는 폴더와 문서 */}
           <div
             className={cn(
               'bg-[var(--term-surface)] px-md py-md',
@@ -50,8 +47,6 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
               ))}
             </ul>
           </div>
-
-          {/* 오른쪽: 왜 막막한지에 대한 답 */}
           <div className="flex items-center px-md py-md">
             <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
               {content.answer}
@@ -59,7 +54,6 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
           </div>
         </div>
 
-        {/* 결론 바: 양쪽을 묶고 다음 순서로 이어주는 한 줄 */}
         <div
           className={cn(
             'flex items-center gap-2 border-t border-[var(--term-border)] px-md py-sm',

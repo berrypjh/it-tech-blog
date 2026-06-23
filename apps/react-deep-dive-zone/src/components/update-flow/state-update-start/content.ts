@@ -379,7 +379,7 @@ const en: StateUpdateStartContent = {
   },
   visibleCode: {
     number: '01',
-    eyebrow: 'The visible code',
+    eyebrow: 'VISIBLE CODE',
     title: 'The code the user actually writes',
     code: {
       fileName: 'Counter.js',
@@ -394,7 +394,7 @@ const en: StateUpdateStartContent = {
   },
   misconception: {
     number: '02',
-    eyebrow: 'Myth vs reality',
+    eyebrow: 'MYTH VS REALITY',
     title: 'Common belief vs the actual React flow',
     headerWrong: 'Common belief (myth)',
     headerCorrect: 'Actual React flow (correct)',
@@ -423,7 +423,7 @@ const en: StateUpdateStartContent = {
   },
   internalFlow: {
     number: '03',
-    eyebrow: 'Internal flow preview',
+    eyebrow: 'INTERNAL FLOW',
     title: 'A preview of the internals after setState',
     description:
       'These are the eight stages that later pages will zoom into one by one with real source code.',
@@ -441,7 +441,7 @@ const en: StateUpdateStartContent = {
   },
   snapshot: {
     number: '04',
-    eyebrow: 'Render snapshot',
+    eyebrow: 'RENDER SNAPSHOT',
     title: 'State looks like a snapshot of the current render',
     topNote: 'The count inside an event handler is the count from that render.',
     leftCard: {
@@ -468,7 +468,7 @@ const en: StateUpdateStartContent = {
   },
   question: {
     number: '05',
-    eyebrow: 'Learning question',
+    eyebrow: 'LEARNING QUESTION',
     title: 'Learning question',
     questionLabel: 'Question',
     answerLabel: 'Answer',
@@ -480,7 +480,7 @@ const en: StateUpdateStartContent = {
   },
   summary: {
     number: '06',
-    eyebrow: 'Key summary',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     main: {
       lead: 'setState is not a "paint the screen" command —',

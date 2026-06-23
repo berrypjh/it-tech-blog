@@ -194,7 +194,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     why: {
-      eyebrow: '01 · why shared',
+      eyebrow: '01 · shared 필요성',
       title: 'shared가 필요한 이유',
       description:
         '공통 개념을 패키지마다 따로 정의하면 무엇이 깨지고, shared는 무엇을 해결할까요?',
@@ -216,7 +216,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       exampleTags: ['Fragment 심벌', 'Suspense 심벌', 'version string', 'feature flags'],
     },
     files: {
-      eyebrow: '02 · representative files',
+      eyebrow: '02 · 대표 파일',
       title: 'shared의 대표 파일',
       cards: [
         {
@@ -258,7 +258,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbols: {
-      eyebrow: '03 · why ReactSymbols matters',
+      eyebrow: '03 · ReactSymbols 중요성',
       title: 'ReactSymbols가 중요한 이유',
       cards: [
         {
@@ -286,7 +286,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       banner: '이 심벌들은 React 내부에서 "어떤 종류의 요소인가?"를 구분하는 기준이 됩니다.',
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · 코드 체크포인트',
       title: '코드로 보기: shared를 어디서 사용할까?',
       fileLabel: '파일',
       filePath: 'packages/react/src/ReactClient.js',
@@ -300,7 +300,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       code: reactClientImportCode,
     },
     connection: {
-      eyebrow: '05 · package connections',
+      eyebrow: '05 · 패키지 연결',
       title: 'shared와 각 패키지의 연결',
       description: 'shared 하나가 여러 패키지의 공통 기반을 동시에 제공합니다.',
       hubTitle: 'shared',
@@ -334,7 +334,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     quiz: {
-      eyebrow: '06 · quick classification',
+      eyebrow: '06 · 빠른 분류',
       title: '빠른 분류 퀴즈',
       cards: [
         {
@@ -415,7 +415,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     why: {
-      eyebrow: '01 · why shared',
+      eyebrow: '01 · WHY SHARED',
       title: 'Why shared exists',
       description:
         'What breaks when each package defines the same concept on its own — and what shared fixes.',
@@ -437,7 +437,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       exampleTags: ['Fragment symbol', 'Suspense symbol', 'version string', 'feature flags'],
     },
     files: {
-      eyebrow: '02 · representative files',
+      eyebrow: '02 · KEY FILES',
       title: 'Representative files in shared',
       cards: [
         {
@@ -479,7 +479,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbols: {
-      eyebrow: '03 · why ReactSymbols matters',
+      eyebrow: '03 · REACTSYMBOLS',
       title: 'Why ReactSymbols matters',
       cards: [
         {
@@ -508,7 +508,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
         'These symbols are how React internals answer the question "what kind of element is this?".',
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · CODE CHECKPOINT',
       title: 'Code checkpoint: where is shared used?',
       fileLabel: 'File',
       filePath: 'packages/react/src/ReactClient.js',
@@ -522,7 +522,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       code: reactClientImportCode,
     },
     connection: {
-      eyebrow: '05 · package connections',
+      eyebrow: '05 · CONNECTIONS',
       title: 'How shared connects to each package',
       description:
         'A single shared layer supplies the foundation that many packages depend on at once.',
@@ -557,7 +557,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     quiz: {
-      eyebrow: '06 · quick classification',
+      eyebrow: '06 · CLASSIFICATION',
       title: 'Quick classification quiz',
       cards: [
         {

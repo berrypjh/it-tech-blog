@@ -339,7 +339,7 @@ const en: FiberWhyNeededContent = {
   },
   finalFlow: {
     badge: '02',
-    eyebrow: 'Overall flow',
+    eyebrow: 'OVERALL FLOW',
     title: 'The full flow, summarized',
     rows: [
       {
@@ -382,7 +382,7 @@ const en: FiberWhyNeededContent = {
   },
   coreFive: {
     badge: '03',
-    eyebrow: 'Chapter recap',
+    eyebrow: 'CHAPTER RECAP',
     title: 'Five takeaways from this chapter',
     items: [
       {
@@ -424,7 +424,7 @@ const en: FiberWhyNeededContent = {
   },
   problems: {
     badge: '04',
-    eyebrow: 'Reason to exist',
+    eyebrow: 'REASON TO EXIST',
     title: 'Four problems Fiber solves',
     description:
       'The extra information a Fiber carries is not decoration — each piece solves one of these four real problems.',
@@ -461,7 +461,7 @@ const en: FiberWhyNeededContent = {
   },
   checklist: {
     badge: '05',
-    eyebrow: 'Self-check',
+    eyebrow: 'SELF-CHECK',
     title: 'Final checklist',
     cardTitle: 'Can I explain these?',
     items: [
@@ -477,7 +477,7 @@ const en: FiberWhyNeededContent = {
   },
   preview: {
     badge: '06',
-    eyebrow: 'Next chapter',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next-chapter preview',
     question: 'You understand one Fiber. So when Fibers form a tree, how does React traverse it?',
     previewLabel: 'Next chapter preview',

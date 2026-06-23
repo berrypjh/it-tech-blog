@@ -286,7 +286,7 @@ const ko: CompleteWorkContent = {
   },
   compare: {
     number: '1',
-    eyebrow: 'beginwork-vs-completework',
+    eyebrow: 'beginWork vs completeWork',
     title: 'beginWork vs completeWork 비교',
     columns: { direction: '방향', fn: '함수', role: '역할', target: '이동 대상' },
     rows: [
@@ -308,7 +308,7 @@ const ko: CompleteWorkContent = {
   },
   direction: {
     number: '2',
-    eyebrow: 'move-direction',
+    eyebrow: '이동 방향',
     title: 'completeUnitOfWork의 이동 방향',
     topTitle: '현재 Fiber 완료',
     topSubtitle: 'completeWork 실행',
@@ -328,14 +328,14 @@ const ko: CompleteWorkContent = {
   },
   treeWalk: {
     number: '3',
-    eyebrow: 'sibling-parent-walk',
+    eyebrow: '형제·부모 순회',
     title: 'sibling → parent 이동 시각화',
     subtitle: '예시 트리',
     panels: panelTreesKo,
   },
   bubble: {
     number: '4',
-    eyebrow: 'bubble-properties',
+    eyebrow: '속성 버블링',
     title: 'bubbleProperties 예고',
     description:
       'completeWork 단계에서는 자식 서브트리의 정보가 부모 방향으로 올라오도록 정리됩니다.',
@@ -352,7 +352,7 @@ const ko: CompleteWorkContent = {
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     files: ['ReactFiberWorkLoop.js', 'ReactFiberCompleteWork.js'],
@@ -380,7 +380,7 @@ const ko: CompleteWorkContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'render-phase-summary',
+    eyebrow: 'render 단계 요약',
     title: '전체 Render Phase 최종 정리',
     items: [
       { number: 1, title: 'Root에서 시작', description: '루트에 work가 있음', tone: 'sky' },
@@ -442,7 +442,7 @@ const ko: CompleteWorkContent = {
   },
   checklist: {
     number: '7',
-    eyebrow: 'final-checklist',
+    eyebrow: '핵심 체크리스트',
     title: '최종 체크리스트',
     subtitle: '나는 설명할 수 있는가?',
     items: [
@@ -516,7 +516,7 @@ const en: CompleteWorkContent = {
   },
   compare: {
     number: '1',
-    eyebrow: 'beginwork-vs-completework',
+    eyebrow: 'BEGIN VS COMPLETE',
     title: 'beginWork vs completeWork',
     columns: { direction: 'direction', fn: 'function', role: 'role', target: 'move target' },
     rows: [
@@ -541,7 +541,7 @@ const en: CompleteWorkContent = {
   },
   direction: {
     number: '2',
-    eyebrow: 'move-direction',
+    eyebrow: 'MOVE DIRECTION',
     title: 'completeUnitOfWork move direction',
     topTitle: 'Current Fiber completed',
     topSubtitle: 'completeWork executed',
@@ -561,14 +561,14 @@ const en: CompleteWorkContent = {
   },
   treeWalk: {
     number: '3',
-    eyebrow: 'sibling-parent-walk',
+    eyebrow: 'SIBLING & PARENT',
     title: 'sibling → parent walk visualization',
     subtitle: 'example tree',
     panels: panelTreesEn,
   },
   bubble: {
     number: '4',
-    eyebrow: 'bubble-properties',
+    eyebrow: 'BUBBLE PROPERTIES',
     title: 'bubbleProperties preview',
     description: 'In completeWork, child subtree information is bubbled up toward the parent.',
     flow: [
@@ -588,7 +588,7 @@ const en: CompleteWorkContent = {
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'files',
     files: ['ReactFiberWorkLoop.js', 'ReactFiberCompleteWork.js'],
@@ -616,7 +616,7 @@ const en: CompleteWorkContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'render-phase-summary',
+    eyebrow: 'RENDER SUMMARY',
     title: 'Full Render Phase summary',
     items: [
       {
@@ -678,7 +678,7 @@ const en: CompleteWorkContent = {
   },
   checklist: {
     number: '7',
-    eyebrow: 'final-checklist',
+    eyebrow: 'CORE CHECKLIST',
     title: 'Final checklist',
     subtitle: 'Can I explain these?',
     items: [

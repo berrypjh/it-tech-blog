@@ -155,7 +155,7 @@ const ko: ReactCreateElementContent = {
   },
   compare: {
     badge: '01',
-    eyebrow: 'JSX와 createElement 비교',
+    eyebrow: 'JSX와 비교',
     title: '같은 결과로 가는 두 표현',
     description:
       '문법은 다르지만, JSX와 createElement는 결국 같은 React Element 생성으로 이어집니다.',
@@ -178,7 +178,7 @@ const ko: ReactCreateElementContent = {
   },
   input: {
     badge: '02',
-    eyebrow: 'createElement가 받는 입력 구조',
+    eyebrow: '입력 구조',
     title: '함수 시그니처를 한눈에',
     description:
       'createElement는 세 가지 입력을 받아 React Element 생성에 필요한 정보를 정리합니다.',
@@ -216,7 +216,7 @@ const ko: ReactCreateElementContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '실제 코드 체크포인트',
+    eyebrow: '코드 체크포인트',
     title: 'React 저장소에서 createElement 본문 보기',
     description:
       'key 추출 → props 정리 → ReactElement 호출. createElement 함수는 단지 입력을 정리하는 얇은 층입니다.',
@@ -244,7 +244,7 @@ const ko: ReactCreateElementContent = {
   },
   flow: {
     badge: '04',
-    eyebrow: 'createElement가 ReactElement로 이어지는 흐름',
+    eyebrow: 'Element 변환 흐름',
     title: '4단계로 정리되는 호출 경로',
     description: 'createElement는 직접 DOM을 만들지 않습니다. 정리한 값을 다음 함수로 넘깁니다.',
     steps: [
@@ -286,7 +286,7 @@ const ko: ReactCreateElementContent = {
   },
   relation: {
     badge: '05',
-    eyebrow: 'JSX Runtime과 createElement의 관계',
+    eyebrow: 'Runtime과 관계',
     title: '두 경로, 같은 목적지',
     description:
       'jsx 런타임은 컴파일 경로, createElement는 공개 API 경로. 결국 둘 다 동일한 React Element를 만듭니다.',
@@ -320,7 +320,7 @@ const ko: ReactCreateElementContent = {
   },
   transform: {
     badge: '06',
-    eyebrow: '체험형 변환 카드',
+    eyebrow: '변환 체험',
     title: 'JSX → createElement → 객체 구조',
     description: '하나의 JSX가 함수 호출 식을 거쳐 어떤 객체로 정착되는지 한 화면에서 따라갑니다.',
     tabs: [
@@ -378,7 +378,7 @@ const en: ReactCreateElementContent = {
   },
   compare: {
     badge: '01',
-    eyebrow: 'JSX vs createElement',
+    eyebrow: 'JSX VS CREATEELEMENT',
     title: 'Two expressions, one destination',
     description:
       'The syntax differs, but JSX and createElement both end in the same React Element creation.',
@@ -401,7 +401,7 @@ const en: ReactCreateElementContent = {
   },
   input: {
     badge: '02',
-    eyebrow: 'Input shape that createElement accepts',
+    eyebrow: 'INPUT SHAPE',
     title: 'The function signature, at a glance',
     description: 'createElement takes three inputs and arranges them for React Element creation.',
     signature: 'createElement(type, props, ...children)',
@@ -438,7 +438,7 @@ const en: ReactCreateElementContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Source code checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Open the createElement body in the repo',
     description:
       'Extract the key, collect the props, hand off to ReactElement. createElement is a thin organizing layer.',
@@ -466,7 +466,7 @@ const en: ReactCreateElementContent = {
   },
   flow: {
     badge: '04',
-    eyebrow: 'How createElement reaches ReactElement',
+    eyebrow: 'TO ELEMENT',
     title: 'Four-step call path',
     description:
       'createElement does not touch the DOM. It cleans up the input and hands it down the line.',
@@ -510,7 +510,7 @@ const en: ReactCreateElementContent = {
   },
   relation: {
     badge: '05',
-    eyebrow: 'JSX runtime vs createElement',
+    eyebrow: 'VS RUNTIME',
     title: 'Two paths, one destination',
     description:
       'The jsx runtime is a compile-time path; createElement is the public API path. Both produce the same React Element.',
@@ -544,7 +544,7 @@ const en: ReactCreateElementContent = {
   },
   transform: {
     badge: '06',
-    eyebrow: 'Interactive transform card',
+    eyebrow: 'INTERACTIVE',
     title: 'JSX → createElement → object shape',
     description: 'Watch a single JSX line travel through the function call into its object form.',
     tabs: [

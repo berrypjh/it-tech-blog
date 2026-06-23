@@ -176,7 +176,7 @@ const ko: HostComponentFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'ReactFiber.js의 type 분기 코드를 직접 봅니다. 문자열 분기가 어떻게 HostComponent로 이어지는지 한눈에 확인할 수 있습니다.',
@@ -327,7 +327,7 @@ const en: HostComponentFiberContent = {
   },
   example: {
     badge: '01',
-    eyebrow: 'By example',
+    eyebrow: 'BY EXAMPLE',
     title: 'Example JSX & type check',
     description:
       'One line of JSX becomes an Element. What does its type field look like? See the middle card.',
@@ -341,7 +341,7 @@ const en: HostComponentFiberContent = {
   },
   concept: {
     badge: '02',
-    eyebrow: 'Concept',
+    eyebrow: 'CONCEPT',
     title: 'What is a Host Component?',
     description1:
       'A Fiber that represents a base element wired to the actual rendering environment outside React.',
@@ -352,7 +352,7 @@ const en: HostComponentFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description: 'Look at ReactFiber.js. The string branch leads directly to HostComponent.',
     fileLabel: 'File',
@@ -383,7 +383,7 @@ const en: HostComponentFiberContent = {
   },
   vsDom: {
     badge: '04',
-    eyebrow: 'Clear the confusion',
+    eyebrow: 'CLEAR CONFUSION',
     title: 'HostComponent Fiber vs Real DOM',
     description:
       'HostComponent Fiber is often confused with the DOM. Compare location, role, and timing to keep them apart.',
@@ -418,7 +418,7 @@ const en: HostComponentFiberContent = {
   },
   modern: {
     badge: '05',
-    eyebrow: 'Advanced',
+    eyebrow: 'ADVANCED',
     title: 'Modern Host-family split',
     pill: 'NEW',
     description:
@@ -456,7 +456,7 @@ const en: HostComponentFiberContent = {
   },
   checklist: {
     badge: '07',
-    eyebrow: 'One-line recap',
+    eyebrow: 'ONE-LINE RECAP',
     title: 'Quick checklist',
     items: [
       {

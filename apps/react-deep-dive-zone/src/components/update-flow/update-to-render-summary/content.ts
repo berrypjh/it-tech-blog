@@ -327,7 +327,7 @@ const ko: UpdateToRenderSummaryContent = {
     diagram: { title: '전체 흐름 요약', steps: flowStepsKo },
   },
   bigFlow: {
-    number: '02',
+    number: '01',
     eyebrow: '대형 다이어그램',
     title: '전체 업데이트 흐름 대형 다이어그램',
     description:
@@ -335,7 +335,7 @@ const ko: UpdateToRenderSummaryContent = {
     steps: flowStepsKo,
   },
   roleTable: {
-    number: '03',
+    number: '02',
     eyebrow: '단계별 역할',
     title: '단계별 역할 표',
     columns: { order: '순서', fn: '함수 / 단계', role: '역할', point: '핵심 포인트' },
@@ -428,7 +428,7 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    number: '04',
+    number: '03',
     eyebrow: '소스코드 경로',
     title: '한 줄씩 되짚는 소스코드 경로',
     description:
@@ -490,7 +490,7 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    number: '06',
+    number: '04',
     eyebrow: '오해 정리',
     title: '흔한 오해 정리',
     cards: [
@@ -517,7 +517,7 @@ const ko: UpdateToRenderSummaryContent = {
     summary: '정확히는 업데이트 요청 등록 → 렌더 필요성 판단 → Root 스케줄링이 먼저다.',
   },
   nextChapter: {
-    number: '07',
+    number: '05',
     eyebrow: '다음 챕터',
     title: '다음 챕터 예고',
     previewQuestion:
@@ -575,16 +575,16 @@ const en: UpdateToRenderSummaryContent = {
     diagram: { title: 'Full flow summary', steps: flowStepsEn },
   },
   bigFlow: {
-    number: '02',
-    eyebrow: 'Big diagram',
+    number: '01',
+    eyebrow: 'BIG DIAGRAM',
     title: 'The full update flow at large',
     description:
       'The same flow as the hero — at body-section scale. Match each step with its short meaning on the right.',
     steps: flowStepsEn,
   },
   roleTable: {
-    number: '03',
-    eyebrow: 'Role table',
+    number: '02',
+    eyebrow: 'ROLE TABLE',
     title: 'Function / step role table',
     columns: { order: '#', fn: 'function / step', role: 'role', point: 'key point' },
     rows: [
@@ -676,8 +676,8 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    number: '04',
-    eyebrow: 'Source path',
+    number: '03',
+    eyebrow: 'SOURCE PATH',
     title: 'Retracing the path through source files',
     description: 'A second pass over which React internal files this whole flow actually visits.',
     cards: [
@@ -737,8 +737,8 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    number: '06',
-    eyebrow: 'Myths debunked',
+    number: '04',
+    eyebrow: 'MYTHS DEBUNKED',
     title: 'Common misconceptions',
     cards: [
       {
@@ -766,8 +766,8 @@ const en: UpdateToRenderSummaryContent = {
       'Strictly speaking: register the request → judge whether to render → schedule the Root — in that order.',
   },
   nextChapter: {
-    number: '07',
-    eyebrow: 'Next chapter',
+    number: '05',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     previewQuestion:
       'The update request climbed up to the Root and landed on the schedule. So how does React actually start computing the new render from that Root?',

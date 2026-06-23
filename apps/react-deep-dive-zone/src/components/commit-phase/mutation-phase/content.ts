@@ -483,7 +483,7 @@ const ko: MutationPhaseContent = {
   },
   connection: {
     number: '1',
-    eyebrow: 'render-to-mutation',
+    eyebrow: 'mutation 진입',
     title: 'Render flags와 Mutation Phase 연결',
     description:
       'Render Phase는 변경 표시(flags)만 남기고, 그 표시가 Mutation Phase에서 실제 host operation으로 실행됩니다.',
@@ -491,7 +491,7 @@ const ko: MutationPhaseContent = {
   },
   effects: {
     number: '2',
-    eyebrow: 'mutation-effects',
+    eyebrow: 'mutation 이펙트',
     title: 'Mutation Phase에서 처리되는 대표 effect',
     description:
       '대표적인 host operation은 Placement(삽입), Update(갱신), Deletion(삭제) 3가지입니다.',
@@ -500,7 +500,7 @@ const ko: MutationPhaseContent = {
   },
   summary: {
     number: '3',
-    eyebrow: 'summary-table',
+    eyebrow: '요약 표',
     title: 'Placement / Update / Deletion 빠른 요약',
     description: '각 flag가 Mutation Phase에서 어떤 의미로 실행되는지 한눈에 정리합니다.',
     columns: { flag: 'flag', meaning: 'Mutation Phase에서의 의미', description: '설명' },
@@ -508,7 +508,7 @@ const ko: MutationPhaseContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -534,7 +534,7 @@ const ko: MutationPhaseContent = {
   },
   beforeAfter: {
     number: '5',
-    eyebrow: 'before-after',
+    eyebrow: 'before·after',
     title: 'Mutation 이전과 이후 차이',
     description: 'Placement flag가 실제 DOM 결과로 바뀌는 순간을 비교합니다.',
     beforeCard: {
@@ -551,7 +551,7 @@ const ko: MutationPhaseContent = {
   },
   rootCurrent: {
     number: '6',
-    eyebrow: 'root-current-preview',
+    eyebrow: 'root.current 예고',
     title: 'root.current 전환 예고',
     description:
       'Mutation Phase가 끝나면, 새로 계산된 finishedWork가 이제 현재 화면을 대표하는 tree가 됩니다.',
@@ -563,7 +563,7 @@ const ko: MutationPhaseContent = {
   },
   extra: {
     number: '7',
-    eyebrow: 'extra-points',
+    eyebrow: '추가 포인트',
     title: '추가 이해 포인트',
     description: '실무에서 Mutation Phase를 생각할 때 짚어두면 좋은 4가지입니다.',
     points: extraKo,
@@ -599,7 +599,7 @@ const en: MutationPhaseContent = {
   },
   connection: {
     number: '1',
-    eyebrow: 'render-to-mutation',
+    eyebrow: 'INTO MUTATION',
     title: 'Render flags ↔ Mutation Phase',
     description:
       'The Render Phase only records change marks (flags). Those marks become real host operations in the Mutation Phase.',
@@ -607,7 +607,7 @@ const en: MutationPhaseContent = {
   },
   effects: {
     number: '2',
-    eyebrow: 'mutation-effects',
+    eyebrow: 'MUTATION EFFECTS',
     title: 'Effects handled by the Mutation Phase',
     description: 'The three main host operations are Placement (insert), Update, and Deletion.',
     examplesLabel: 'example ops',
@@ -615,7 +615,7 @@ const en: MutationPhaseContent = {
   },
   summary: {
     number: '3',
-    eyebrow: 'summary-table',
+    eyebrow: 'SUMMARY TABLE',
     title: 'Placement / Update / Deletion quick summary',
     description: 'What each flag means once the Mutation Phase runs.',
     columns: { flag: 'flag', meaning: 'meaning in the Mutation Phase', description: 'description' },
@@ -623,7 +623,7 @@ const en: MutationPhaseContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -649,7 +649,7 @@ const en: MutationPhaseContent = {
   },
   beforeAfter: {
     number: '5',
-    eyebrow: 'before-after',
+    eyebrow: 'BEFORE & AFTER',
     title: 'Before vs After mutation',
     description: 'Compare the moment a Placement flag becomes a real DOM result.',
     beforeCard: {
@@ -666,7 +666,7 @@ const en: MutationPhaseContent = {
   },
   rootCurrent: {
     number: '6',
-    eyebrow: 'root-current-preview',
+    eyebrow: 'ROOT.CURRENT PREVIEW',
     title: 'Preview: swapping root.current',
     description:
       'Once the Mutation Phase ends, the newly computed finishedWork becomes the tree that represents the current screen.',
@@ -678,7 +678,7 @@ const en: MutationPhaseContent = {
   },
   extra: {
     number: '7',
-    eyebrow: 'extra-points',
+    eyebrow: 'EXTRA POINTS',
     title: 'Extra understanding points',
     description: 'Four points worth keeping in mind when thinking about the Mutation Phase.',
     points: extraEn,

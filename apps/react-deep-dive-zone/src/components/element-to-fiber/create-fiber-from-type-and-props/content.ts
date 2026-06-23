@@ -210,7 +210,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
   },
   checkpoint: {
     badge: '02',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'React 저장소의 createFiberFromTypeAndProps를 그대로 봅니다. 분기 조건이 한눈에 들어옵니다.',
@@ -433,7 +433,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
   },
   branchMap: {
     badge: '01',
-    eyebrow: 'Branches at a glance',
+    eyebrow: 'BRANCHES AT A GLANCE',
     title: 'type branch map',
     description:
       'createFiberFromTypeAndProps looks at the center type value and splits into one of four branches.',
@@ -442,7 +442,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
   },
   checkpoint: {
     badge: '02',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description:
       'Read createFiberFromTypeAndProps in the React repo. The branching conditions stand out.',
@@ -491,7 +491,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
   },
   jsxCards: {
     badge: '03',
-    eyebrow: 'Four representatives',
+    eyebrow: 'FOUR REPRESENTATIVES',
     title: 'Representative JSX → Fiber tag',
     description: 'Four common JSX shapes and the Fiber tag each one ends up with.',
     cards: [
@@ -527,7 +527,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
   },
   comparison: {
     badge: '04',
-    eyebrow: 'Side by side',
+    eyebrow: 'SIDE BY SIDE',
     title: 'string / function / symbol — branch comparison',
     description:
       'The same logic, summarized. The shape of type drives the condition and the resulting Fiber.',
@@ -599,7 +599,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
   },
   special: {
     badge: '05',
-    eyebrow: 'Advanced',
+    eyebrow: 'ADVANCED',
     title: 'Special types have their own Fiber flow',
     pill: 'advanced',
     description:

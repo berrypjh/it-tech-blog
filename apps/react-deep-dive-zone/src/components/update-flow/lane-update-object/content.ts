@@ -310,7 +310,7 @@ const ko: LaneUpdateObjectContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -433,7 +433,7 @@ const en: LaneUpdateObjectContent = {
   },
   requestLane: {
     number: '01',
-    eyebrow: 'Picking the lane',
+    eyebrow: 'PICKING THE LANE',
     title: 'The role of requestUpdateLane',
     flow: [
       { label: 'dispatchSetState', tone: 'sky' },
@@ -461,7 +461,7 @@ const en: LaneUpdateObjectContent = {
   },
   structure: {
     number: '02',
-    eyebrow: 'update object',
+    eyebrow: 'UPDATE OBJECT',
     title: 'The shape of the update object',
     description:
       'This is the skeleton that dispatchSetStateInternal builds first. From here, queue linking and eager bailout decisions follow.',
@@ -477,7 +477,7 @@ const en: LaneUpdateObjectContent = {
   },
   fields: {
     number: '03',
-    eyebrow: 'Field reference',
+    eyebrow: 'FIELD REFERENCE',
     title: 'Field-by-field meaning',
     description:
       'A quick reference for what each field stores. Come back here whenever the source gets dense.',
@@ -528,7 +528,7 @@ const en: LaneUpdateObjectContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -543,7 +543,7 @@ const en: LaneUpdateObjectContent = {
   },
   action: {
     number: '05',
-    eyebrow: 'Two faces of action',
+    eyebrow: 'TWO FACES',
     title: 'Why action matters',
     description:
       'The setter accepts both a value and an updater function. Either way, the input is stored verbatim in update.action.',
@@ -570,7 +570,7 @@ const en: LaneUpdateObjectContent = {
   },
   summary: {
     number: '07',
-    eyebrow: 'Key summary',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     main: {
       lead: "setState doesn't produce a plain value —",

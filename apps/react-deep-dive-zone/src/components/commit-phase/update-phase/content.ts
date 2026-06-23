@@ -258,7 +258,7 @@ const ko: UpdatePhaseContent = {
   },
   propsExample: {
     number: '1',
-    eyebrow: 'props-change-example',
+    eyebrow: 'props 변경 예시',
     title: 'props 변경 예시',
     description:
       'disabled 속성 하나가 바뀌었을 때, 새 버튼 노드가 만들어지지 않고 기존 노드의 속성만 갱신됩니다.',
@@ -270,7 +270,7 @@ const ko: UpdatePhaseContent = {
   },
   textExample: {
     number: '2',
-    eyebrow: 'text-change-example',
+    eyebrow: '텍스트 변경 예시',
     title: 'text 변경 예시',
     description:
       'state가 바뀌면 텍스트 노드 자체를 새로 만드는 게 아니라, 기존 텍스트 노드의 값만 갱신합니다.',
@@ -283,7 +283,7 @@ const ko: UpdatePhaseContent = {
   },
   compare: {
     number: '3',
-    eyebrow: 'placement-update-compare',
+    eyebrow: 'Placement vs Update',
     title: 'Placement와 Update 비교',
     description:
       'Placement는 새 host node를 삽입하는 작업이고, Update는 기존 host node를 수정하는 작업입니다.',
@@ -294,7 +294,7 @@ const ko: UpdatePhaseContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -324,7 +324,7 @@ const ko: UpdatePhaseContent = {
   },
   beforeAfter: {
     number: '5',
-    eyebrow: 'before-after-visual',
+    eyebrow: 'before·after 시각화',
     title: '시각적 before / after 비교',
     description: 'Update flag가 host props 갱신으로 이어지는 순간을 비교합니다.',
     beforeTitle: 'Before',
@@ -344,7 +344,7 @@ const ko: UpdatePhaseContent = {
   },
   propsVsText: {
     number: '6',
-    eyebrow: 'props-vs-text',
+    eyebrow: 'props vs 텍스트',
     title: 'props vs text update 차이',
     description: '같은 Update flag지만 element node와 text node는 다른 API로 갱신됩니다.',
     propsCard: {
@@ -374,7 +374,7 @@ const ko: UpdatePhaseContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: '기존 텍스트 노드의 내용이 바뀌면 Placement일까, Update일까?',
     answer: 'Update. 텍스트 노드는 기존 node를 유지하고 내용만 새 값으로 갱신합니다.',
@@ -419,7 +419,7 @@ const en: UpdatePhaseContent = {
   },
   propsExample: {
     number: '1',
-    eyebrow: 'props-change-example',
+    eyebrow: 'PROPS CHANGE',
     title: 'props change example',
     description:
       'When one disabled prop changes, no new button node is built — only the existing node’s attribute is updated.',
@@ -431,7 +431,7 @@ const en: UpdatePhaseContent = {
   },
   textExample: {
     number: '2',
-    eyebrow: 'text-change-example',
+    eyebrow: 'TEXT CHANGE',
     title: 'text change example',
     description:
       'When state changes, React does not build a new text node — it just updates the value of the existing text node.',
@@ -444,7 +444,7 @@ const en: UpdatePhaseContent = {
   },
   compare: {
     number: '3',
-    eyebrow: 'placement-update-compare',
+    eyebrow: 'PLACEMENT VS UPDATE',
     title: 'Placement vs Update',
     description: 'Placement inserts a new host node; Update mutates the existing one.',
     columns: { label: 'Aspect', placement: 'Placement', update: 'Update' },
@@ -454,7 +454,7 @@ const en: UpdatePhaseContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'File',
@@ -484,7 +484,7 @@ const en: UpdatePhaseContent = {
   },
   beforeAfter: {
     number: '5',
-    eyebrow: 'before-after-visual',
+    eyebrow: 'BEFORE & AFTER',
     title: 'before / after visual',
     description: 'Watch the Update flag turn into a host props mutation.',
     beforeTitle: 'Before',
@@ -504,7 +504,7 @@ const en: UpdatePhaseContent = {
   },
   propsVsText: {
     number: '6',
-    eyebrow: 'props-vs-text',
+    eyebrow: 'PROPS VS TEXT',
     title: 'props vs text update',
     description: 'Both carry the Update flag, but element and text nodes use different APIs.',
     propsCard: {
@@ -534,7 +534,7 @@ const en: UpdatePhaseContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'mini quiz',
     question: 'When an existing text node’s content changes, is that Placement or Update?',
     answer: 'Update. The text node is kept and only its value is updated.',

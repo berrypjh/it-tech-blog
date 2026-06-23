@@ -311,7 +311,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     groups: {
       badge: '01',
-      eyebrow: 'api groups',
+      eyebrow: 'API 묶음',
       title: '우리가 실제로 쓰는 API 묶음',
       description: 'react 패키지가 외부로 공개하는 API는 크게 다섯 가지 묶음으로 나눠집니다.',
       cards: [
@@ -364,7 +364,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     sourceCheckpoint: {
       badge: '02',
-      eyebrow: 'public api source checkpoint',
+      eyebrow: '공개 API',
       title: 'public API와 내부 구현 파일의 분리',
       description:
         'public API가 실제로 어떤 내부 파일에서 모이는지, ReactClient.js의 import/export 구문에서 직접 확인합니다.',
@@ -418,7 +418,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     routes: {
       badge: '03',
-      eyebrow: 'api entry routes',
+      eyebrow: '진입 경로',
       title: 'API별 내부 진입 경로',
       description: '대표 API 3개가 ReactClient.js를 거쳐 어떤 내부 파일로 이어지는지 따라갑니다.',
       cards: [
@@ -456,7 +456,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     capabilities: {
       badge: '04',
-      eyebrow: 'does / does not',
+      eyebrow: '역할 경계',
       title: 'react 패키지가 하는 일 / 하지 않는 일',
       doesTitle: '하는 일',
       doesItems: [
@@ -515,7 +515,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     groups: {
       badge: '01',
-      eyebrow: 'api groups',
+      eyebrow: 'API GROUPS',
       title: 'The API bundles you actually use',
       description: 'The public API of react divides into five clear bundles.',
       cards: [
@@ -568,7 +568,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     sourceCheckpoint: {
       badge: '02',
-      eyebrow: 'public api source checkpoint',
+      eyebrow: 'PUBLIC API',
       title: 'Separating public API from internal files',
       description:
         'See exactly which internal files React’s public API comes together from by reading ReactClient.js’s import/export statements.',
@@ -622,7 +622,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     routes: {
       badge: '03',
-      eyebrow: 'api entry routes',
+      eyebrow: 'ENTRY ROUTES',
       title: 'Internal entry paths per API',
       description:
         'Three flagship APIs and the internal file each one routes to from ReactClient.js.',
@@ -661,7 +661,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
     },
     capabilities: {
       badge: '04',
-      eyebrow: 'does / does not',
+      eyebrow: 'DOES / DOES NOT',
       title: 'What the react package does and does not do',
       doesTitle: 'Does',
       doesItems: [

@@ -273,7 +273,7 @@ const ko: FiberFlagsContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -384,7 +384,7 @@ const ko: FiberFlagsContent = {
   },
   quiz: {
     number: '07',
-    eyebrow: '미니 개념 퀴즈',
+    eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
     answerLabel: '정답',
@@ -449,7 +449,7 @@ const en: FiberFlagsContent = {
   },
   flagsRole: {
     number: '01',
-    eyebrow: 'flags role',
+    eyebrow: 'FLAGS ROLE',
     title: 'What flags do',
     mainTitle: 'flags',
     mainDescription: '→ marks the effects this Fiber itself needs',
@@ -463,7 +463,7 @@ const en: FiberFlagsContent = {
   },
   subtree: {
     number: '02',
-    eyebrow: 'Subtree & deletions',
+    eyebrow: 'SUBTREE & DELETIONS',
     title: 'subtreeFlags and deletions',
     subtreeCard: {
       title: 'subtreeFlags',
@@ -486,7 +486,7 @@ const en: FiberFlagsContent = {
   },
   repFlags: {
     number: '03',
-    eyebrow: 'Representative flags',
+    eyebrow: 'REPRESENTATIVE FLAGS',
     title: 'Representative flag examples',
     beforeLabel: 'Before',
     afterLabel: 'After',
@@ -530,7 +530,7 @@ const en: FiberFlagsContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -568,7 +568,7 @@ const en: FiberFlagsContent = {
   },
   simulation: {
     number: '05',
-    eyebrow: 'Simulation',
+    eyebrow: 'SIMULATION',
     title: 'Change scenario simulation',
     columns: {
       situation: 'Situation',
@@ -623,7 +623,7 @@ const en: FiberFlagsContent = {
   },
   commitPreview: {
     number: '06',
-    eyebrow: 'Next phase preview',
+    eyebrow: 'NEXT PHASE',
     title: 'Commit phase preview',
     renderCard: {
       title: 'Render Phase',
@@ -641,7 +641,7 @@ const en: FiberFlagsContent = {
   },
   quiz: {
     number: '07',
-    eyebrow: 'Mini concept quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
     answerLabel: 'Answer',

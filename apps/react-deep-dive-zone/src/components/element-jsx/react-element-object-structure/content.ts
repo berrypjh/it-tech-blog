@@ -169,7 +169,7 @@ const ko: ReactElementObjectStructureContent = {
   },
   overview: {
     badge: '01',
-    eyebrow: 'React Element 전체 구조',
+    eyebrow: '전체 구조',
     title: '한눈에 보는 Element 객체 모양',
     description:
       'React Element는 화면이 아니라 설명 객체입니다. 다음 4가지 성격이 이 객체의 위치를 알려줍니다.',
@@ -207,7 +207,7 @@ const ko: ReactElementObjectStructureContent = {
   },
   fields: {
     badge: '02',
-    eyebrow: '필드별 세부 해설',
+    eyebrow: '필드 해설',
     title: '5개 필드, 각자의 역할',
     description: '각 필드가 무엇을 가리키는지 따로 익혀두면 이후 소스코드가 훨씬 잘 읽힙니다.',
     cards: [
@@ -260,7 +260,7 @@ const ko: ReactElementObjectStructureContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '실제 코드 체크포인트',
+    eyebrow: '코드 체크포인트',
     title: 'ReactElement 함수에서 객체가 만들어지는 순간',
     description:
       '소스코드는 단순합니다. $$typeof, type, key, props, _owner를 모아 그대로 객체를 반환합니다.',
@@ -277,7 +277,7 @@ const ko: ReactElementObjectStructureContent = {
   },
   isValid: {
     badge: '04',
-    eyebrow: 'isValidElement 체험',
+    eyebrow: 'isValidElement',
     title: '어떤 값이 정말 React Element인가요?',
     description:
       'isValidElement는 어떤 값이 React Element인지 확인합니다. 모든 JavaScript 객체가 React Element인 것은 아닙니다.',
@@ -310,7 +310,7 @@ const ko: ReactElementObjectStructureContent = {
   },
   compare: {
     badge: '05',
-    eyebrow: '일반 객체와 React Element 비교',
+    eyebrow: '일반 객체와 비교',
     title: '비슷해 보여도 다른 객체',
     description:
       '평범한 객체와 React Element는 표현은 비슷해도 의미와 사용 목적이 완전히 다릅니다.',
@@ -405,7 +405,7 @@ const en: ReactElementObjectStructureContent = {
   },
   overview: {
     badge: '01',
-    eyebrow: 'The full React Element shape',
+    eyebrow: 'FULL SHAPE',
     title: 'Element object, at a glance',
     description:
       'A React Element is a description object, not a screen. Four traits locate it precisely.',
@@ -443,7 +443,7 @@ const en: ReactElementObjectStructureContent = {
   },
   fields: {
     badge: '02',
-    eyebrow: 'Field-by-field breakdown',
+    eyebrow: 'FIELD BREAKDOWN',
     title: 'Five fields, five roles',
     description: 'Knowing each field separately makes the source code easier to follow.',
     cards: [
@@ -496,7 +496,7 @@ const en: ReactElementObjectStructureContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Source code checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'See ReactElement build the object',
     description:
       'The source is simple: collect $$typeof, type, key, props, _owner and return the object as-is.',
@@ -513,7 +513,7 @@ const en: ReactElementObjectStructureContent = {
   },
   isValid: {
     badge: '04',
-    eyebrow: 'Try isValidElement',
+    eyebrow: 'ISVALIDELEMENT',
     title: 'Which values are actually React Elements?',
     description:
       'isValidElement checks whether a value is a React Element. Not every JS object is one.',
@@ -546,7 +546,7 @@ const en: ReactElementObjectStructureContent = {
   },
   compare: {
     badge: '05',
-    eyebrow: 'Plain object vs React Element',
+    eyebrow: 'VS PLAIN OBJECT',
     title: 'They look similar — they are not',
     description:
       'A plain object and a React Element may both be objects, but their meaning and purpose differ.',
@@ -582,7 +582,7 @@ const en: ReactElementObjectStructureContent = {
   },
   learningCheck: {
     badge: '06',
-    eyebrow: 'Check yourself',
+    eyebrow: 'SELF CHECK',
     title: 'Put it in one sentence',
     question: 'What does it mean that a React Element is not a DOM node?',
     answer: 'It is not the on-screen object — it is the input object for render computation.',

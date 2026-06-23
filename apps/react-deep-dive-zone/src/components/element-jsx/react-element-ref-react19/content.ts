@@ -131,7 +131,7 @@ const ko: ReactElementRefReact19Content = {
   },
   core: {
     badge: '01',
-    eyebrow: 'React 19의 ref 변화 핵심 3가지',
+    eyebrow: 'ref 변화 핵심',
     title: '세 가지 핵심 변화',
     description: '문법의 작은 차이가 아니라, ref가 흐르는 길 자체가 바뀐 변화입니다.',
     cards: [
@@ -166,7 +166,7 @@ const ko: ReactElementRefReact19Content = {
   },
   compare: {
     badge: '02',
-    eyebrow: 'Before (React 18) vs After (React 19)',
+    eyebrow: 'Before vs After',
     title: '같은 결과, 달라진 작성 방식',
     description: '같은 컴포넌트가 React 18 이전과 19에서 어떻게 다르게 적혀지는지 직접 봅니다.',
     leftTitle: 'React 18 이전',
@@ -182,7 +182,7 @@ const ko: ReactElementRefReact19Content = {
   },
   flow: {
     badge: '03',
-    eyebrow: 'React 19에서의 ref 흐름',
+    eyebrow: 'ref 흐름',
     title: '상위 → 중간 → 하위 → DOM',
     description:
       'React 19의 ref는 일반 prop과 똑같이 위에서 아래로 흐릅니다. 특별한 API 없이 같은 경로로 내려갑니다.',
@@ -224,7 +224,7 @@ const ko: ReactElementRefReact19Content = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: '실제 코드 체크포인트',
+    eyebrow: '코드 체크포인트',
     title: '소스에서 보는 ref 처리 단순화',
     description:
       'React 19에서는 ref가 단순히 props로 들어옵니다. 별도의 ref 필드로 분리되지 않습니다.',
@@ -241,7 +241,7 @@ const ko: ReactElementRefReact19Content = {
   },
   benefits: {
     badge: '05',
-    eyebrow: '이 변화가 주는 이점',
+    eyebrow: '변화의 이점',
     title: '단순함이 만드는 세 가지 변화',
     description: '문법이 단순해진 만큼, 그 위에서 만들 수 있는 추상화도 더 자유로워집니다.',
     cards: [
@@ -302,7 +302,7 @@ const en: ReactElementRefReact19Content = {
   },
   core: {
     badge: '01',
-    eyebrow: 'Three core React 19 ref changes',
+    eyebrow: 'CORE CHANGES',
     title: 'Three core changes',
     description:
       'Not a syntactic tweak — the path that ref takes through components has actually changed.',
@@ -341,7 +341,7 @@ const en: ReactElementRefReact19Content = {
   },
   compare: {
     badge: '02',
-    eyebrow: 'Before (React 18) vs After (React 19)',
+    eyebrow: 'BEFORE VS AFTER',
     title: 'Same outcome, different shape',
     description: 'See the same component written before and after React 19.',
     leftTitle: 'Before React 18',
@@ -357,7 +357,7 @@ const en: ReactElementRefReact19Content = {
   },
   flow: {
     badge: '03',
-    eyebrow: 'The React 19 ref flow',
+    eyebrow: 'REF FLOW',
     title: 'Parent → Middle → Child → DOM',
     description:
       'In React 19 the ref flows top-down like any other prop. No special API in the middle.',
@@ -399,7 +399,7 @@ const en: ReactElementRefReact19Content = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: 'Source code checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Simpler ref handling in the source',
     description:
       'In React 19, ref simply arrives via props. There is no separate ref field anymore.',
@@ -416,7 +416,7 @@ const en: ReactElementRefReact19Content = {
   },
   benefits: {
     badge: '05',
-    eyebrow: 'What this change enables',
+    eyebrow: 'BENEFITS',
     title: 'Three downstream wins',
     description: 'Simpler syntax means more room for abstractions you build on top.',
     cards: [

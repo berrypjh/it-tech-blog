@@ -215,7 +215,7 @@ const ko: EnsureRootScheduledContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -328,7 +328,7 @@ const en: EnsureRootScheduledContent = {
   },
   roles: {
     number: '01',
-    eyebrow: 'Two roles',
+    eyebrow: 'TWO ROLES',
     title: 'What ensureRootIsScheduled guarantees',
     description:
       'It never runs a render. Instead it guarantees two things — registering the Root on the schedule and reserving a microtask.',
@@ -353,7 +353,7 @@ const en: EnsureRootScheduledContent = {
   },
   visualization: {
     number: '02',
-    eyebrow: 'Visualization',
+    eyebrow: 'VISUALIZATION',
     title: 'Root schedule visualization',
     description:
       'Watch the Roots with pending work enter the Root Schedule Queue in the order they were registered.',
@@ -371,7 +371,7 @@ const en: EnsureRootScheduledContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -405,7 +405,7 @@ const en: EnsureRootScheduledContent = {
   },
   microtask: {
     number: '04',
-    eyebrow: 'microtask',
+    eyebrow: 'MICROTASK',
     title: 'How the microtask reservation works',
     description:
       'An incoming update does not immediately process every Root. React reserves a microtask so the root schedule can be processed at the right time.',
@@ -417,7 +417,7 @@ const en: EnsureRootScheduledContent = {
   },
   duplicate: {
     number: '05',
-    eyebrow: 'No duplicates',
+    eyebrow: 'NO DUPLICATES',
     title: 'Why an already-scheduled Root is not registered twice',
     description:
       'Even when the same Root receives many updates, the schedule list does not need duplicate entries. What matters is keeping the fact that the Root has work.',
@@ -432,7 +432,7 @@ const en: EnsureRootScheduledContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

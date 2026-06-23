@@ -229,7 +229,7 @@ const ko: EagerBailoutContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -338,7 +338,7 @@ const en: EagerBailoutContent = {
   },
   sameStateExamples: {
     number: '01',
-    eyebrow: 'Same-state examples',
+    eyebrow: 'SAME-STATE EXAMPLES',
     title: 'Same-state update examples',
     examples: [
       {
@@ -361,7 +361,7 @@ const en: EagerBailoutContent = {
   },
   flow: {
     number: '02',
-    eyebrow: 'Full flow',
+    eyebrow: 'FULL FLOW',
     title: 'eager bailout — the full flow',
     description:
       'All five conditions below must hold in order for an eager bailout. Failing any of them means React falls back to the regular render-scheduling path.',
@@ -407,7 +407,7 @@ const en: EagerBailoutContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -428,7 +428,7 @@ const en: EagerBailoutContent = {
   },
   queueReason: {
     number: '04',
-    eyebrow: 'Pre-condition',
+    eyebrow: 'PRE-CONDITION',
     title: 'Why the queue must be empty',
     description:
       'For the bailout to be safe, the queue must be empty. With pending updates, the next state depends on their results too.',
@@ -451,7 +451,7 @@ const en: EagerBailoutContent = {
   },
   scheduleTable: {
     number: '05',
-    eyebrow: 'Two distinct steps',
+    eyebrow: 'TWO STEPS',
     title: 'Creating an update ≠ scheduling a render',
     headers: { label: 'Topic', update: 'update object created', schedule: 'render scheduled' },
     rows: [

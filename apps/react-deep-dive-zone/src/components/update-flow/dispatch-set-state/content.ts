@@ -312,7 +312,7 @@ const ko: DispatchSetStateContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -508,7 +508,7 @@ const en: DispatchSetStateContent = {
   },
   compare: {
     number: '01',
-    eyebrow: 'Public API vs internals',
+    eyebrow: 'API VS INTERNALS',
     title: 'Public API vs the real internal shape',
     leftCard: {
       title: 'What the user writes',
@@ -531,7 +531,7 @@ const en: DispatchSetStateContent = {
   },
   flow: {
     number: '02',
-    eyebrow: 'mountState flow',
+    eyebrow: 'MOUNTSTATE FLOW',
     title: 'mountState flow at a glance',
     description:
       'Follow how the setter is built on first render, where it gets stored, and how it survives until later calls.',
@@ -584,7 +584,7 @@ const en: DispatchSetStateContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -603,7 +603,7 @@ const en: DispatchSetStateContent = {
   },
   bindReasons: {
     number: '04',
-    eyebrow: 'Why bind',
+    eyebrow: 'WHY BIND',
     title: 'Why bind is needed',
     description:
       'bind is not just syntax — it keeps the information the setter needs alive across later, async calls.',
@@ -636,7 +636,7 @@ const en: DispatchSetStateContent = {
   },
   relationship: {
     number: '05',
-    eyebrow: 'Relationship map',
+    eyebrow: 'RELATIONSHIP MAP',
     title: 'Fiber / Hook / queue / dispatch relationship',
     leftTitle: 'Memory layout',
     leftSubtitle: 'right after render',
@@ -712,7 +712,7 @@ const en: DispatchSetStateContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',
@@ -723,7 +723,7 @@ const en: DispatchSetStateContent = {
   },
   summary: {
     number: '07',
-    eyebrow: 'Key summary',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     main: {
       lead: 'setState (setCount) is not a plain function —',

@@ -187,7 +187,7 @@ const ko: MarkChangesContent = {
   },
   examples: {
     number: '1',
-    eyebrow: 'change-examples',
+    eyebrow: '변경 예시',
     title: '삽입 / 삭제 / 이동 예시',
     cards: [
       {
@@ -222,7 +222,7 @@ const ko: MarkChangesContent = {
   flagsAndReorder: {
     flags: {
       number: '2',
-      eyebrow: 'flags-connection',
+      eyebrow: 'flags 연결',
       title: 'flags와의 연결',
       steps: [
         {
@@ -244,7 +244,7 @@ const ko: MarkChangesContent = {
     },
     reorder: {
       number: '3',
-      eyebrow: 'list-reorder',
+      eyebrow: '리스트 재정렬',
       title: '리스트 재정렬 시각화',
       beforeLabel: '이전 (before)',
       beforeValue: 'A B C',
@@ -261,7 +261,7 @@ const ko: MarkChangesContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     files: ['ReactChildFiber.js', 'ReactFiberFlags.js'],
@@ -302,7 +302,7 @@ const ko: MarkChangesContent = {
   },
   renderCommit: {
     number: '5',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'render vs commit',
     title: 'Render와 Commit의 역할 연결',
     render: {
       title: 'Render Phase',
@@ -331,7 +331,7 @@ const ko: MarkChangesContent = {
   },
   whyTwoPhases: {
     number: '6',
-    eyebrow: 'why-two-phases',
+    eyebrow: '두 단계 이유',
     title: '왜 이렇게 두 단계로 나눌까?',
     reasons: [
       {
@@ -362,7 +362,7 @@ const ko: MarkChangesContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Placement가 표시되었다는 것은 DOM 삽입이 이미 끝났다는 뜻일까?',
     answer: '아니다. 실제 DOM 삽입은 Commit Phase에서 일어난다.',
@@ -429,7 +429,7 @@ const en: MarkChangesContent = {
   },
   examples: {
     number: '1',
-    eyebrow: 'change-examples',
+    eyebrow: 'CHANGE EXAMPLES',
     title: 'Insert / Delete / Move examples',
     cards: [
       {
@@ -464,7 +464,7 @@ const en: MarkChangesContent = {
   flagsAndReorder: {
     flags: {
       number: '2',
-      eyebrow: 'flags-connection',
+      eyebrow: 'FLAGS LINK',
       title: 'Connecting to flags',
       steps: [
         { title: 'Render Phase', description: 'Compute and diff the Fiber tree', tone: 'sky' },
@@ -482,7 +482,7 @@ const en: MarkChangesContent = {
     },
     reorder: {
       number: '3',
-      eyebrow: 'list-reorder',
+      eyebrow: 'LIST REORDER',
       title: 'List reorder visualization',
       beforeLabel: 'before',
       beforeValue: 'A B C',
@@ -500,7 +500,7 @@ const en: MarkChangesContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'files',
     files: ['ReactChildFiber.js', 'ReactFiberFlags.js'],
@@ -541,7 +541,7 @@ const en: MarkChangesContent = {
   },
   renderCommit: {
     number: '5',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Connecting Render and Commit roles',
     render: {
       title: 'Render Phase',
@@ -570,7 +570,7 @@ const en: MarkChangesContent = {
   },
   whyTwoPhases: {
     number: '6',
-    eyebrow: 'why-two-phases',
+    eyebrow: 'WHY TWO PHASES',
     title: 'Why split into two phases?',
     reasons: [
       {
@@ -601,7 +601,7 @@ const en: MarkChangesContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'Does a Placement mark mean the DOM insertion has already happened?',
     answer: 'No — actual DOM insertion happens in the Commit Phase.',

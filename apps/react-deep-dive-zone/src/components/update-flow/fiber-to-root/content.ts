@@ -264,7 +264,7 @@ const ko: FiberToRootContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -318,7 +318,7 @@ const ko: FiberToRootContent = {
   },
   returnPointer: {
     number: '05',
-    eyebrow: '왜 return으로?',
+    eyebrow: 'return 탐색 이유',
     title: 'Root를 return 포인터로 찾는 이유',
     description:
       'update queue는 Root를 직접 가리키는 backpointer를 갖고 있지 않습니다. 그래서 React는 return 경로를 따라 위로 올라가 Root까지 도달합니다.',
@@ -421,7 +421,7 @@ const en: FiberToRootContent = {
   },
   laneRoles: {
     number: '01',
-    eyebrow: 'Two lane fields',
+    eyebrow: 'TWO LANE FIELDS',
     title: 'sourceFiber.lanes vs parent.childLanes',
     description:
       'Both fields hold lanes, but they mean different things. One says "I have work", the other says "my subtree has work".',
@@ -443,7 +443,7 @@ const en: FiberToRootContent = {
   },
   fiberPath: {
     number: '02',
-    eyebrow: 'Path visualization',
+    eyebrow: 'PATH VISUALIZATION',
     title: 'Button → Main → Page → Root',
     description: 'Follow how the lane mark moves up the actual parent path, one card at a time.',
     nodes: [
@@ -485,7 +485,7 @@ const en: FiberToRootContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -527,7 +527,7 @@ const en: FiberToRootContent = {
   },
   alternate: {
     number: '04',
-    eyebrow: 'Both trees',
+    eyebrow: 'BOTH TREES',
     title: 'Why alternate is updated too',
     description:
       'The current tree and the work-in-progress tree are linked via alternate. If the mark only lives on one side, later calculations will be off — so the lane mark is mirrored to the alternate side.',
@@ -539,7 +539,7 @@ const en: FiberToRootContent = {
   },
   returnPointer: {
     number: '05',
-    eyebrow: 'Why return?',
+    eyebrow: 'WHY RETURN',
     title: 'Why React walks up via return',
     description:
       'The update queue does not have a direct backpointer to the Root. React walks up the return chain instead until it reaches the Root.',
@@ -574,7 +574,7 @@ const en: FiberToRootContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

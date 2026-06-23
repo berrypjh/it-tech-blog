@@ -489,7 +489,7 @@ const ko: CommitPhaseIntroContent = {
   },
   previous: {
     number: '1',
-    eyebrow: 'previous-chapter',
+    eyebrow: '앞 챕터',
     title: '앞 챕터에서 남긴 것',
     description:
       'Render Phase가 남긴 변경 표시(flags)와 완성된 Fiber 트리(finishedWork)가 Commit Phase로 넘어옵니다.',
@@ -505,7 +505,7 @@ const ko: CommitPhaseIntroContent = {
   },
   comparison: {
     number: '2',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'render vs commit',
     title: 'Render Phase vs Commit Phase',
     description: '두 단계의 책임을 항목별로 비교합니다. DOM 변경 여부가 가장 큰 분기점입니다.',
     columns: {
@@ -549,7 +549,7 @@ const ko: CommitPhaseIntroContent = {
   },
   work: {
     number: '3',
-    eyebrow: 'commit-work-items',
+    eyebrow: 'commit 작업 항목',
     title: 'Commit Phase에서 실제로 처리되는 항목',
     description:
       'Render Phase가 남긴 flags를 따라 Commit Phase는 다음 6가지 작업을 차례로 수행합니다.',
@@ -557,7 +557,7 @@ const ko: CommitPhaseIntroContent = {
   },
   map: {
     number: '4',
-    eyebrow: 'commit-phase-map',
+    eyebrow: 'commit 단계 지도',
     title: 'Commit Phase 전체 지도',
     description:
       'finishedWork 준비부터 Passive Effects까지, Commit Phase는 7단계 흐름으로 진행됩니다.',
@@ -566,7 +566,7 @@ const ko: CommitPhaseIntroContent = {
   },
   flags: {
     number: '5',
-    eyebrow: 'fiber-flags',
+    eyebrow: 'Fiber flags',
     title: '변경 표시는 flags에 기록됩니다',
     description:
       '각 Fiber에 설정된 flags를 Commit Phase가 읽어, 어떤 작업을 어떻게 수행할지 결정합니다.',
@@ -588,7 +588,7 @@ const ko: CommitPhaseIntroContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'key-summary',
+    eyebrow: '핵심 요약',
     title: '핵심',
     mainSentence: {
       line1: '실제 DOM 변경은 Commit Phase 안의',
@@ -616,7 +616,7 @@ const ko: CommitPhaseIntroContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Render Phase에서 Placement flag가 생겼다면 이미 DOM 삽입이 끝난 것일까?',
     answer: '아니다. 실제 삽입은 Commit Phase에서 실행된다.',
@@ -646,7 +646,7 @@ const en: CommitPhaseIntroContent = {
     insight:
       'React separates Render and Commit so that the UI is applied safely and consistently in one pass.',
     diagram: {
-      eyebrow: 'render → commit',
+      eyebrow: 'RENDER → COMMIT',
       renderCard: {
         title: 'Render Phase',
         items: ['Compute the next screen', 'Record flags'],
@@ -659,7 +659,7 @@ const en: CommitPhaseIntroContent = {
   },
   previous: {
     number: '1',
-    eyebrow: 'previous-chapter',
+    eyebrow: 'CHAPTER RECAP',
     title: 'What the previous chapter left behind',
     description:
       'The change marks (flags) and the completed Fiber tree (finishedWork) from the Render Phase flow into the Commit Phase.',
@@ -675,7 +675,7 @@ const en: CommitPhaseIntroContent = {
   },
   comparison: {
     number: '2',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Render Phase vs Commit Phase',
     description:
       'Compare the responsibilities of the two phases row by row. Whether the DOM changes is the biggest fork.',
@@ -720,7 +720,7 @@ const en: CommitPhaseIntroContent = {
   },
   work: {
     number: '3',
-    eyebrow: 'commit-work-items',
+    eyebrow: 'WORK ITEMS',
     title: 'Work handled in the Commit Phase',
     description:
       'Driven by the flags left by the Render Phase, the Commit Phase carries out the following 6 jobs in order.',
@@ -728,7 +728,7 @@ const en: CommitPhaseIntroContent = {
   },
   map: {
     number: '4',
-    eyebrow: 'commit-phase-map',
+    eyebrow: 'PHASE MAP',
     title: 'Commit Phase whole map',
     description:
       'From preparing finishedWork to passive effects, the Commit Phase moves through 7 steps.',
@@ -737,7 +737,7 @@ const en: CommitPhaseIntroContent = {
   },
   flags: {
     number: '5',
-    eyebrow: 'fiber-flags',
+    eyebrow: 'FIBER FLAGS',
     title: 'Change marks live on flags',
     description:
       'The Commit Phase reads the flags set on each Fiber to decide what work to perform and how.',
@@ -759,7 +759,7 @@ const en: CommitPhaseIntroContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'key-summary',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key',
     mainSentence: {
       line1: 'Real DOM changes happen inside the',
@@ -787,7 +787,7 @@ const en: CommitPhaseIntroContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     question:
       'If a Placement flag was set during the Render Phase, has the DOM insertion already happened?',

@@ -219,7 +219,7 @@ const ko: FunctionClassComponentFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description: 'shouldConstruct와 createFiberFromTypeAndProps 두 함수가 함께 이 분기를 이룹니다.',
     fileLabel: '파일',
@@ -302,7 +302,7 @@ const ko: FunctionClassComponentFiberContent = {
   },
   reasons: {
     badge: '05',
-    eyebrow: '왜 갈라놓을까',
+    eyebrow: '분기 이유',
     title: '왜 Fiber tag를 다르게 쓰는가?',
     description:
       '단순한 이름 분류가 아닙니다. 호출, 상태, 업데이트 처리 자체가 달라서 별도의 tag로 관리해야 합니다.',
@@ -376,7 +376,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   compare: {
     badge: '01',
-    eyebrow: 'Compare by code',
+    eyebrow: 'COMPARE BY CODE',
     title: 'Function / Class — example comparison',
     description:
       'Both render <button>Save</button>, but React processes them with different Fiber tags inside.',
@@ -401,7 +401,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   shouldConstruct: {
     badge: '02',
-    eyebrow: 'Decision basis',
+    eyebrow: 'DECISION BASIS',
     title: 'What does shouldConstruct check?',
     description:
       'React decides whether something is a class component by looking at Component.prototype.isReactComponent.',
@@ -435,7 +435,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description: 'shouldConstruct and createFiberFromTypeAndProps together form this branch.',
     fileLabel: 'File',
@@ -491,7 +491,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   workTags: {
     badge: '04',
-    eyebrow: 'Internal tag numbers',
+    eyebrow: 'INTERNAL TAGS',
     title: 'Work Tag — connection cards',
     description:
       'Fiber kinds are internally represented as Work Tag numbers. Remember these numbers to read source code more easily.',
@@ -521,7 +521,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   reasons: {
     badge: '05',
-    eyebrow: 'Why split them',
+    eyebrow: 'WHY SPLIT',
     title: 'Why use different Fiber tags?',
     description:
       'Not just for naming. Call, state, and update logic differ — so each needs its own tag.',
@@ -553,7 +553,7 @@ const en: FunctionClassComponentFiberContent = {
   },
   checklist: {
     badge: '07',
-    eyebrow: 'One-line recap',
+    eyebrow: 'ONE-LINE RECAP',
     title: 'Quick checklist',
     items: [
       { id: 'c1', text: 'A function type can still be a class' },

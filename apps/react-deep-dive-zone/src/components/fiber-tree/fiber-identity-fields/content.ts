@@ -285,7 +285,7 @@ const ko: FiberIdentityFieldsContent = {
   },
   checkpoint: {
     number: '05',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -364,7 +364,7 @@ const ko: FiberIdentityFieldsContent = {
   },
   quiz: {
     number: '07',
-    eyebrow: '미니 개념 퀴즈',
+    eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
     answerLabel: '핵심 정답',
@@ -418,7 +418,7 @@ const en: FiberIdentityFieldsContent = {
   },
   summary: {
     number: '01',
-    eyebrow: 'Quick summary',
+    eyebrow: 'QUICK SUMMARY',
     title: 'Four identity fields at a glance',
     cards: [
       {
@@ -457,7 +457,7 @@ const en: FiberIdentityFieldsContent = {
   },
   workTags: {
     number: '02',
-    eyebrow: 'WorkTag examples',
+    eyebrow: 'WORKTAG EXAMPLES',
     title: 'tag tells React the Fiber kind (selected WorkTags)',
     cards: [
       { name: 'FunctionComponent', value: 0, tone: 'sky' },
@@ -474,7 +474,7 @@ const en: FiberIdentityFieldsContent = {
   },
   keyField: {
     number: '03',
-    eyebrow: 'Sibling identifier',
+    eyebrow: 'SIBLING IDENTIFIER',
     title: 'key identifies a Fiber among its siblings',
     codeLabel: 'JSX',
     code: 'items.map((item) => <TodoItem key={item.id} item={item} />);',
@@ -484,7 +484,7 @@ const en: FiberIdentityFieldsContent = {
   },
   typeVs: {
     number: '04',
-    eyebrow: 'elementType vs type',
+    eyebrow: 'ELEMENTTYPE VS TYPE',
     title: 'elementType vs type — what is the difference?',
     vs: 'VS',
     elementType: {
@@ -511,7 +511,7 @@ const en: FiberIdentityFieldsContent = {
   },
   checkpoint: {
     number: '05',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -548,7 +548,7 @@ const en: FiberIdentityFieldsContent = {
   },
   mapping: {
     number: '06',
-    eyebrow: 'Real mapping',
+    eyebrow: 'REAL MAPPING',
     title: 'JSX → Fiber identity mapping (examples)',
     cards: [
       {
@@ -591,7 +591,7 @@ const en: FiberIdentityFieldsContent = {
   },
   quiz: {
     number: '07',
-    eyebrow: 'Mini concept quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

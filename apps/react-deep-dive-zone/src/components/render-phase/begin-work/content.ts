@@ -409,13 +409,13 @@ const ko: BeginWorkContent = {
   },
   roles: {
     number: '1',
-    eyebrow: 'three-core-roles',
+    eyebrow: '핵심 3역할',
     title: 'beginWork의 핵심 역할 3가지',
     cards: rolesKo,
   },
   tagBranch: {
     number: '2',
-    eyebrow: 'fiber-tag-branches',
+    eyebrow: 'tag 분기',
     title: 'Fiber tag별 분기 개요',
     description: 'Fiber.tag에 따라 호출되는 update 함수가 다릅니다.',
     rootTitle: 'beginWork',
@@ -424,7 +424,7 @@ const ko: BeginWorkContent = {
   },
   bailout: {
     number: '3',
-    eyebrow: 'not-always-descend',
+    eyebrow: '하강 여부',
     title: '항상 아래로 내려가는 것은 아니다',
     intro: '조건이 맞으면 React는 이 Fiber 아래의 작업을 건너뛰고 bailout할 수도 있습니다.',
     normal: {
@@ -441,13 +441,13 @@ const ko: BeginWorkContent = {
   },
   reconcile: {
     number: '4',
-    eyebrow: 'into-reconcile-children',
+    eyebrow: 'reconcile로 진입',
     title: 'reconcileChildren으로 이어지는 흐름',
     steps: reconcileStepsKo,
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
@@ -462,7 +462,7 @@ const ko: BeginWorkContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'whole-flow',
+    eyebrow: '전체 흐름',
     title: 'beginWork 흐름 한눈에 보기',
     start: '현재 Fiber 처리 시작',
     decision: 'bailout 가능?',
@@ -480,7 +480,7 @@ const ko: BeginWorkContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'beginWork가 자주 반환하는 값은?',
     answer: '다음에 처리할 자식 Fiber.',
@@ -511,13 +511,13 @@ const en: BeginWorkContent = {
   },
   roles: {
     number: '1',
-    eyebrow: 'three-core-roles',
+    eyebrow: 'THREE ROLES',
     title: 'Three core roles of beginWork',
     cards: rolesEn,
   },
   tagBranch: {
     number: '2',
-    eyebrow: 'fiber-tag-branches',
+    eyebrow: 'TAG BRANCHES',
     title: 'Branches by Fiber tag',
     description: 'Fiber.tag picks which update function runs.',
     rootTitle: 'beginWork',
@@ -526,7 +526,7 @@ const en: BeginWorkContent = {
   },
   bailout: {
     number: '3',
-    eyebrow: 'not-always-descend',
+    eyebrow: 'DESCEND OR NOT',
     title: 'Not always descending',
     intro: 'When conditions allow, React can skip the work below this Fiber and bail out.',
     normal: {
@@ -543,13 +543,13 @@ const en: BeginWorkContent = {
   },
   reconcile: {
     number: '4',
-    eyebrow: 'into-reconcile-children',
+    eyebrow: 'INTO RECONCILE',
     title: 'Flow into reconcileChildren',
     steps: reconcileStepsEn,
   },
   code: {
     number: '5',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
@@ -564,7 +564,7 @@ const en: BeginWorkContent = {
   },
   summary: {
     number: '6',
-    eyebrow: 'whole-flow',
+    eyebrow: 'WHOLE FLOW',
     title: 'beginWork at a glance',
     start: 'start processing the Fiber',
     decision: 'can bail out?',
@@ -582,7 +582,7 @@ const en: BeginWorkContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'What does beginWork most often return?',
     answer: 'The next child Fiber to process.',

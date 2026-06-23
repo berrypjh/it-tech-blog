@@ -250,7 +250,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -299,7 +299,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
   },
   rootReason: {
     number: '05',
-    eyebrow: '왜 Root까지?',
+    eyebrow: 'Root 탐색 이유',
     title: 'Root를 왜 함께 찾는가?',
     description:
       'queue에 update를 넣는 것만으로는 부족하다. 이 업데이트가 속한 전체 Root가 나중에 스케줄링되어야 한다.',
@@ -379,7 +379,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
   },
   flow: {
     number: '01',
-    eyebrow: 'Full flow',
+    eyebrow: 'FULL FLOW',
     title: 'Full function flow',
     description:
       'From dispatchSetStateInternal down to finding the FiberRoot — four calls happen in order.',
@@ -412,7 +412,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
   },
   elements: {
     number: '02',
-    eyebrow: 'Four arguments',
+    eyebrow: 'FOUR ARGUMENTS',
     title: 'fiber / queue / update / lane — four arguments',
     description:
       'Why all four are passed to one function — each one carries a distinct responsibility.',
@@ -453,7 +453,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
   },
   checkpoint: {
     number: '03',
-    eyebrow: 'Source checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -487,7 +487,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
   },
   meaning: {
     number: '04',
-    eyebrow: 'enqueueUpdate',
+    eyebrow: 'ENQUEUEUPDATE',
     title: 'What enqueueUpdate means',
     descriptionTitle:
       'A shared chokepoint that pushes the update into the actual queue-linking step.',
@@ -503,7 +503,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
   },
   rootReason: {
     number: '05',
-    eyebrow: 'Why find Root?',
+    eyebrow: 'WHY ROOT',
     title: 'Why look up the Root too?',
     description:
       'Putting the update on the queue is not enough — the entire Root that owns the update has to be scheduled later.',

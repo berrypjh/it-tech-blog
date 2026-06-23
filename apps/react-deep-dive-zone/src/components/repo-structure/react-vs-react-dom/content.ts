@@ -191,7 +191,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       relationBottomLine: '현실로 연결',
     },
     misconception: {
-      eyebrow: '01 · misconception',
+      eyebrow: '01 · 흔한 오해',
       title: '흔한 오해 바로잡기',
       leftBadge: '오해',
       leftQuote: '“React = 브라우저 DOM을 직접 다루는 라이브러리”',
@@ -201,7 +201,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       rightCaption: '관심사의 분리가 React 구조를 이해하는 핵심입니다.',
     },
     comparison: {
-      eyebrow: '02 · role comparison',
+      eyebrow: '02 · 역할 비교',
       title: 'react / react-dom 역할 비교',
       description: '같은 React라도 어느 패키지에서 무엇을 담당하는지 한 표로 정리합니다.',
       columnLabels: { axis: '구분', react: 'react', reactDom: 'react-dom' },
@@ -233,7 +233,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     usage: {
-      eyebrow: '03 · usage split',
+      eyebrow: '03 · 사용 분리',
       title: '실제 사용 코드에서 역할 나누기',
       code: counterCode,
       codeHeader: 'app/Counter.tsx',
@@ -301,7 +301,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · 코드 체크포인트',
       title: '코드 체크포인트: 브라우저 DOM과 React는 어디서 연결될까?',
       fileLabel: '파일',
       filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -319,7 +319,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       code: createRootCode,
     },
     entrypoints: {
-      eyebrow: '05 · entrypoints',
+      eyebrow: '05 · 진입점',
       title: '브라우저 / 서버 진입점 분리',
       client: {
         id: 'client',
@@ -399,7 +399,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       relationBottomLine: 'to reality',
     },
     misconception: {
-      eyebrow: '01 · misconception',
+      eyebrow: '01 · MISCONCEPTION',
       title: 'Correcting a common misconception',
       leftBadge: 'Misconception',
       leftQuote: '“React = a library that directly manipulates the browser DOM.”',
@@ -409,7 +409,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       rightCaption: 'Separation of concerns is the heart of React’s structure.',
     },
     comparison: {
-      eyebrow: '02 · role comparison',
+      eyebrow: '02 · ROLE COMPARISON',
       title: 'react vs react-dom role comparison',
       description: 'A single table summarising who is responsible for what across both packages.',
       columnLabels: { axis: 'Aspect', react: 'react', reactDom: 'react-dom' },
@@ -441,7 +441,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     usage: {
-      eyebrow: '03 · usage split',
+      eyebrow: '03 · USAGE SPLIT',
       title: 'Split roles in actual usage code',
       code: counterCode,
       codeHeader: 'app/Counter.tsx',
@@ -509,7 +509,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · CODE CHECKPOINT',
       title: 'Code checkpoint: where do the browser DOM and React meet?',
       fileLabel: 'File',
       filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -527,7 +527,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       code: createRootCode,
     },
     entrypoints: {
-      eyebrow: '05 · entrypoints',
+      eyebrow: '05 · ENTRYPOINTS',
       title: 'Browser vs server entrypoints',
       client: {
         id: 'client',

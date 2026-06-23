@@ -509,7 +509,7 @@ const ko: DeletionContent = {
   },
   pipeline: {
     number: '1',
-    eyebrow: 'deletion-pipeline',
+    eyebrow: '삭제 파이프라인',
     title: '삭제 흐름 전체 지도 (Cleanup Pipeline)',
     description:
       'Render Phase의 ChildDeletion 표시에서 host remove까지 — 삭제는 6단계 cleanup 파이프라인으로 진행됩니다.',
@@ -517,14 +517,14 @@ const ko: DeletionContent = {
   },
   cleanup: {
     number: '2',
-    eyebrow: 'cleanup-items',
+    eyebrow: '정리 항목',
     title: '삭제 subtree에서 정리되는 것들',
     description: '삭제 대상 subtree를 순회하면서 React가 처리하는 4가지 정리 작업입니다.',
     cards: cleanupCardsKo,
   },
   modal: {
     number: '3',
-    eyebrow: 'modal-deletion-example',
+    eyebrow: '모달 삭제 예시',
     title: '실제 UI 예시: Modal 제거',
     description:
       'Modal이 사라지는 그 순간에도 내부에서는 ref detach부터 host remove까지 진행됩니다.',
@@ -540,7 +540,7 @@ const ko: DeletionContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -567,7 +567,7 @@ const ko: DeletionContent = {
   },
   cleanupVsRemove: {
     number: '5',
-    eyebrow: 'cleanup-vs-remove',
+    eyebrow: '정리 vs 제거',
     title: 'DOM remove와 cleanup 구분',
     description: '같은 "삭제"라도 책임은 둘로 명확히 나뉩니다.',
     columns: { task: '작업', meaning: '의미' },
@@ -577,7 +577,7 @@ const ko: DeletionContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: '삭제 시 React는 DOM node만 제거할까?',
     answer: '아니다. 삭제 subtree의 ref와 effects까지 정리한다.',
@@ -614,7 +614,7 @@ const en: DeletionContent = {
   },
   pipeline: {
     number: '1',
-    eyebrow: 'deletion-pipeline',
+    eyebrow: 'DELETION PIPELINE',
     title: 'Deletion flow map (Cleanup Pipeline)',
     description:
       'From the ChildDeletion mark in the Render Phase to host remove — deletion runs through this 6-step cleanup pipeline.',
@@ -622,14 +622,14 @@ const en: DeletionContent = {
   },
   cleanup: {
     number: '2',
-    eyebrow: 'cleanup-items',
+    eyebrow: 'CLEANUP ITEMS',
     title: 'What gets cleaned up in the deleted subtree',
     description: 'Four cleanup jobs React performs while walking the doomed subtree.',
     cards: cleanupCardsEn,
   },
   modal: {
     number: '3',
-    eyebrow: 'modal-deletion-example',
+    eyebrow: 'MODAL EXAMPLE',
     title: 'Real UI example: removing a Modal',
     description:
       'Even at the moment the Modal disappears, the internals go through ref detach, cleanup and host remove.',
@@ -645,7 +645,7 @@ const en: DeletionContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -672,7 +672,7 @@ const en: DeletionContent = {
   },
   cleanupVsRemove: {
     number: '5',
-    eyebrow: 'cleanup-vs-remove',
+    eyebrow: 'CLEANUP VS REMOVE',
     title: 'Cleanup vs Host Remove',
     description: 'Even for the same "deletion", the responsibility splits clearly into two.',
     columns: { task: 'Task', meaning: 'Meaning' },
@@ -683,7 +683,7 @@ const en: DeletionContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'mini quiz',
     question: 'When deleting, does React only remove the DOM node?',
     answer: 'No. It also cleans up refs and effects in the deleted subtree.',

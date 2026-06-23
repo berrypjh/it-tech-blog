@@ -203,7 +203,7 @@ const ko: WorkLoopContent = {
   },
   comparison: {
     number: '1',
-    eyebrow: 'two-loops',
+    eyebrow: '두 루프',
     title: '두 work loop 비교',
     vsLabel: 'VS',
     cards: {
@@ -223,7 +223,7 @@ const ko: WorkLoopContent = {
   },
   common: {
     number: '2',
-    eyebrow: 'common-loop',
+    eyebrow: '공통 루프',
     title: '공통점: performUnitOfWork 반복',
     description: '두 work loop 모두 같은 반복 구조를 가집니다. 차이는 반복 조건에 있을 뿐입니다.',
     steps: [
@@ -242,7 +242,7 @@ const ko: WorkLoopContent = {
   },
   timelines: {
     number: '3',
-    eyebrow: 'push-vs-yield',
+    eyebrow: 'push vs yield',
     title: '끝까지 밀기 vs 양보 가능',
     description: '같은 A → B → C → D 작업도 두 루프가 처리하는 방식은 다릅니다.',
     cards: {
@@ -275,7 +275,7 @@ const ko: WorkLoopContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberWorkLoop.js',
@@ -305,7 +305,7 @@ const ko: WorkLoopContent = {
   },
   fiberTree: {
     number: '5',
-    eyebrow: 'tree-walk',
+    eyebrow: '트리 순회',
     title: 'Fiber 처리 현황 시각화 (예시 트리)',
     description: 'work loop가 트리를 따라 이동하며 현재 Fiber 하나만 활성화한다는 감각을 잡습니다.',
     nodes: [
@@ -337,7 +337,7 @@ const ko: WorkLoopContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'workLoopSync와 workLoopConcurrent의 가장 큰 차이는?',
     answer: '중간에 작업을 양보할 수 있는지 여부다.',
@@ -392,7 +392,7 @@ const en: WorkLoopContent = {
   },
   comparison: {
     number: '1',
-    eyebrow: 'two-loops',
+    eyebrow: 'TWO LOOPS',
     title: 'Compare the two work loops',
     vsLabel: 'VS',
     cards: {
@@ -415,7 +415,7 @@ const en: WorkLoopContent = {
   },
   common: {
     number: '2',
-    eyebrow: 'common-loop',
+    eyebrow: 'COMMON LOOP',
     title: 'In common: repeat performUnitOfWork',
     description: 'Both work loops share the same shape. Only the loop condition differs.',
     steps: [
@@ -434,7 +434,7 @@ const en: WorkLoopContent = {
   },
   timelines: {
     number: '3',
-    eyebrow: 'push-vs-yield',
+    eyebrow: 'PUSH VS YIELD',
     title: 'Push through vs yield',
     description: 'Same A → B → C → D work, two different loop shapes.',
     cards: {
@@ -467,7 +467,7 @@ const en: WorkLoopContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberWorkLoop.js',
@@ -497,7 +497,7 @@ const en: WorkLoopContent = {
   },
   fiberTree: {
     number: '5',
-    eyebrow: 'tree-walk',
+    eyebrow: 'TREE WALK',
     title: 'Fiber processing state (sample tree)',
     description: 'See how the work loop walks the tree, keeping only one Fiber active at a time.',
     nodes: [
@@ -529,7 +529,7 @@ const en: WorkLoopContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'What is the biggest difference between workLoopSync and workLoopConcurrent?',
     answer: 'Whether the loop can yield mid-work.',

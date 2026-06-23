@@ -199,7 +199,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'DOM 컨테이너와 HTML 문서가 중앙 react-dom renderer 카드와 점선으로 연결되고, 서버 스트림 / HTML 출력 카드가 그 아래로 이어진다.',
     },
     compare: {
-      eyebrow: '01 · react vs react-dom',
+      eyebrow: '01 · 역할 차이',
       title: 'react와 react-dom의 역할 차이',
       description: '같은 React 생태계라도 두 패키지의 역할은 분명히 다릅니다.',
       cards: [
@@ -224,7 +224,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: 'react는 UI를 설명하고, react-dom은 환경에 붙인다.',
     },
     clientServer: {
-      eyebrow: '02 · client / server',
+      eyebrow: '02 · 클라이언트/서버',
       title: 'client renderer와 server renderer',
       description: 'react-dom은 진입점부터 클라이언트와 서버를 분리해 제공합니다.',
       cards: [
@@ -250,7 +250,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: '같은 React 트리라도 브라우저에서 붙이는 방식과 서버에서 만드는 방식은 다르다.',
     },
     flow: {
-      eyebrow: '03 · createRoot / hydrateRoot',
+      eyebrow: '03 · 마운트 API',
       title: 'createRoot와 hydrateRoot 흐름 비교',
       description: '같은 진입점이지만 시작 상태가 다릅니다. 빈 컨테이너인지, 이미 있는 HTML인지.',
       cards: [
@@ -288,7 +288,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · 코드 체크포인트',
       title: '실제 코드 체크포인트',
       items: [
         {
@@ -327,7 +327,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     concerns: {
-      eyebrow: '05 · environment concerns',
+      eyebrow: '05 · 환경 관심사',
       title: 'react-dom이 다루는 환경 특화 관심사',
       cards: [
         {
@@ -416,7 +416,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'The DOM container and HTML document cards connect to the central react-dom renderer card with dashed lines; below them sits the server stream / HTML output card.',
     },
     compare: {
-      eyebrow: '01 · react vs react-dom',
+      eyebrow: '01 · DIFFERENCES',
       title: 'How react and react-dom differ',
       description: 'They belong to the same ecosystem, but their roles are clearly distinct.',
       cards: [
@@ -441,7 +441,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       banner: 'react describes the UI; react-dom mounts it onto an environment.',
     },
     clientServer: {
-      eyebrow: '02 · client / server',
+      eyebrow: '02 · CLIENT / SERVER',
       title: 'client renderer vs server renderer',
       description: 'react-dom splits the entry points by environment from day one.',
       cards: [
@@ -468,7 +468,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
         'Same React tree — but attaching it in the browser and producing it on the server are different jobs.',
     },
     flow: {
-      eyebrow: '03 · createRoot / hydrateRoot',
+      eyebrow: '03 · MOUNT APIS',
       title: 'createRoot vs hydrateRoot flow',
       description:
         'Both are entry points — but one starts empty, the other starts from existing HTML.',
@@ -512,7 +512,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · code checkpoint',
+      eyebrow: '04 · CODE CHECKPOINT',
       title: 'Real-code checkpoint',
       items: [
         {
@@ -551,7 +551,7 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
     },
     concerns: {
-      eyebrow: '05 · environment concerns',
+      eyebrow: '05 · ENVIRONMENT CONCERNS',
       title: 'Environment-specific concerns react-dom owns',
       cards: [
         {

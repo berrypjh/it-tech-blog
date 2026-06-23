@@ -191,7 +191,7 @@ const ko: FiberStoredInformationContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description: 'FiberNode 생성자에서 필드가 어떻게 초기화되는지 그대로 봅니다.',
     fileLabel: '파일',
@@ -339,7 +339,7 @@ const en: FiberStoredInformationContent = {
   },
   mapping: {
     badge: '01',
-    eyebrow: 'Starting points',
+    eyebrow: 'STARTING POINTS',
     title: 'Element → Fiber mapping',
     description: 'See where the three Element fields land on the Fiber.',
     headers: { element: 'Element', description: 'Meaning', fiber: 'Fiber' },
@@ -367,7 +367,7 @@ const en: FiberStoredInformationContent = {
   },
   groups: {
     badge: '02',
-    eyebrow: 'Added information',
+    eyebrow: 'ADDED INFO',
     title: 'Information the Fiber adds on top',
     description: 'On top of the Element, a Fiber carries four bundles of additional information.',
     cards: [
@@ -403,7 +403,7 @@ const en: FiberStoredInformationContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description: 'Look at the FiberNode constructor and how its fields are initialized.',
     fileLabel: 'File',
@@ -455,7 +455,7 @@ const en: FiberStoredInformationContent = {
   },
   expansion: {
     badge: '04',
-    eyebrow: 'Expansion diagram',
+    eyebrow: 'EXPANSION DIAGRAM',
     title: 'Structure expansion',
     description: 'The three small slots in the Element balloon into twelve slots in the Fiber.',
     elementTitle: 'Element',
@@ -478,7 +478,7 @@ const en: FiberStoredInformationContent = {
   },
   reasons: {
     badge: '05',
-    eyebrow: 'Why each field',
+    eyebrow: 'WHY EACH FIELD',
     title: 'Why these fields are needed',
     description: 'Each bundle of fields exists because React has specific work to do.',
     cards: [

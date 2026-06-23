@@ -168,7 +168,7 @@ const ko: KeyFiberReuseContent = {
   },
   stableVsChanged: {
     badge: '02',
-    eyebrow: '같음 vs 다름',
+    eyebrow: 'key 유지 vs 변경',
     title: 'key가 유지될 때 / 바뀔 때 비교',
     description: '같은 자리에서도 key 값에 따라 React가 보는 “정체성”이 달라집니다.',
     stableTitle: 'key 유지',
@@ -204,7 +204,7 @@ const ko: KeyFiberReuseContent = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'ReactChildFiber.js의 updateSlot에서 새 child와 기존 Fiber의 key를 직접 비교합니다.',
@@ -329,7 +329,7 @@ const en: KeyFiberReuseContent = {
   },
   tracking: {
     badge: '01',
-    eyebrow: 'Core principle',
+    eyebrow: 'CORE PRINCIPLE',
     title: 'React tracks list items by key',
     mainMessage:
       'Even with insertions, deletions, or reorders, having keys makes tracking each item stable and easy.',
@@ -342,7 +342,7 @@ const en: KeyFiberReuseContent = {
   },
   stableVsChanged: {
     badge: '02',
-    eyebrow: 'Same vs different',
+    eyebrow: 'STABLE VS CHANGED',
     title: 'When key stays the same vs changes',
     description:
       'Even at the same position, React’s perceived "identity" depends on the key value.',
@@ -356,7 +356,7 @@ const en: KeyFiberReuseContent = {
   },
   stateExample: {
     badge: '03',
-    eyebrow: 'Preserve vs reset',
+    eyebrow: 'PRESERVE VS RESET',
     title: 'State preserve / reset example',
     code: '<Chat key={email} contact={contact} />',
     explanation:
@@ -379,7 +379,7 @@ const en: KeyFiberReuseContent = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description:
       "updateSlot in ReactChildFiber.js compares the new child's key against the existing Fiber's key.",
@@ -418,7 +418,7 @@ const en: KeyFiberReuseContent = {
   },
   simulation: {
     badge: '05',
-    eyebrow: 'Simulation',
+    eyebrow: 'SIMULATION',
     title: 'Visual simulation',
     description: 'Same reorder, different outcome — depending on whether you use key or index.',
     cards: [
@@ -463,7 +463,7 @@ const en: KeyFiberReuseContent = {
   },
   checklist: {
     badge: '07',
-    eyebrow: 'One-line recap',
+    eyebrow: 'ONE-LINE RECAP',
     title: 'Quick checklist',
     items: [
       { id: 'c1', text: 'Keys are essential when rendering lists' },

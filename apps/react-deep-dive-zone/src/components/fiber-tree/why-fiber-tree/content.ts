@@ -289,7 +289,7 @@ const en: FiberCentralContent = {
   },
   summary: {
     number: '01',
-    eyebrow: 'Final summary',
+    eyebrow: 'FINAL SUMMARY',
     title: 'Whole-structure final summary',
     cards: [
       {
@@ -344,7 +344,7 @@ const en: FiberCentralContent = {
   },
   flow: {
     number: '02',
-    eyebrow: 'Rendering flow link',
+    eyebrow: 'RENDERING FLOW',
     title: 'From one Fiber to the whole rendering flow',
     steps: [
       {
@@ -399,7 +399,7 @@ const en: FiberCentralContent = {
   },
   nextPreview: {
     number: '04',
-    eyebrow: 'Next chapter preview',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     question: {
       lines: [
@@ -439,7 +439,7 @@ const en: FiberCentralContent = {
   },
   closing: {
     number: '05',
-    eyebrow: 'Closing',
+    eyebrow: 'CLOSING',
     title: 'Closing message',
     mainMessage: {
       line1: 'A Fiber is the central data structure',

@@ -248,7 +248,7 @@ const ko: FiberTreePointersContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -356,7 +356,7 @@ const en: FiberTreePointersContent = {
   },
   comparison: {
     number: '01',
-    eyebrow: 'Structure compared',
+    eyebrow: 'STRUCTURE COMPARED',
     title: 'A normal UI tree vs the Fiber pointer structure',
     leftTitle: 'Normal UI tree (hierarchy)',
     leftTree: `App
@@ -381,7 +381,7 @@ const en: FiberTreePointersContent = {
   },
   pointers: {
     number: '02',
-    eyebrow: 'Three pointers',
+    eyebrow: 'THREE POINTERS',
     title: 'All three pointers in one view',
     cards: [
       {
@@ -403,7 +403,7 @@ const en: FiberTreePointersContent = {
   },
   conversion: {
     number: '03',
-    eyebrow: 'Real conversion',
+    eyebrow: 'REAL CONVERSION',
     title: 'Convert a real JSX snippet into Fiber connections',
     jsxLabel: 'JSX',
     jsx: `<Card>
@@ -437,7 +437,7 @@ const en: FiberTreePointersContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -459,7 +459,7 @@ const en: FiberTreePointersContent = {
   },
   traversal: {
     number: '05',
-    eyebrow: 'Traversal benefit',
+    eyebrow: 'TRAVERSAL BENEFIT',
     title: 'Why is this structure good for traversal?',
     steps: [
       {
@@ -485,7 +485,7 @@ const en: FiberTreePointersContent = {
   },
   mission: {
     number: '06',
-    eyebrow: 'Try it yourself',
+    eyebrow: 'TRY IT YOURSELF',
     title: 'Drawing mission',
     problemLabel: 'Problem',
     problemJsx: `<Layout>

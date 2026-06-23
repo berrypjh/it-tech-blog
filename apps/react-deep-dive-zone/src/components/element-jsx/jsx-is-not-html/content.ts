@@ -125,7 +125,7 @@ const ko: JsxIsNotHtmlContent = {
   },
   misconception: {
     badge: '01',
-    eyebrow: '가장 흔한 오해 3가지',
+    eyebrow: '흔한 오해',
     title: '먼저 익숙한 착각부터 깨봅니다',
     description: '많은 사람이 JSX를 HTML이나 DOM과 동일시합니다. 셋은 모두 다른 층위입니다.',
     cards: [
@@ -163,7 +163,7 @@ const ko: JsxIsNotHtmlContent = {
   },
   evidence: {
     badge: '02',
-    eyebrow: 'JSX가 JavaScript라는 증거',
+    eyebrow: 'JS라는 증거',
     title: 'JSX는 어떻게 JavaScript처럼 다뤄지는가?',
     description:
       '변수에 저장하고, 조건과 결합하고, 함수의 반환값이 됩니다. JS가 다룰 수 있는 값이면 JSX도 같은 자리에 놓일 수 있습니다.',
@@ -193,7 +193,7 @@ const ko: JsxIsNotHtmlContent = {
   },
   uiFit: {
     badge: '03',
-    eyebrow: '왜 JSX가 UI 표현에 잘 맞을까?',
+    eyebrow: 'UI 적합성',
     title: 'HTML을 닮은 형태는 의도된 설계입니다',
     description:
       'JSX는 “UI를 데이터처럼 다루기 위한 문법”입니다. 그래서 구조, 결합, 컴포넌트, 트리 4가지 측면 모두에서 UI 표현에 강합니다.',
@@ -230,7 +230,7 @@ const ko: JsxIsNotHtmlContent = {
   },
   comparison: {
     badge: '04',
-    eyebrow: 'JSX vs HTML',
+    eyebrow: 'HTML과 비교',
     title: '같아 보이지만 분명히 다른 4가지 지점',
     description: '문법이 비슷하다고 실행 모델까지 같진 않습니다. 같은 모양 다른 의미를 비교합니다.',
     columns: { label: '항목', jsx: 'JSX', html: 'HTML' },
@@ -300,7 +300,7 @@ const en: JsxIsNotHtmlContent = {
   },
   misconception: {
     badge: '01',
-    eyebrow: 'Three common misconceptions',
+    eyebrow: 'MISCONCEPTIONS',
     title: 'Clear the familiar mix-ups first',
     description: 'Many people treat JSX, HTML, and DOM as one thing. They sit on different layers.',
     cards: [
@@ -338,7 +338,7 @@ const en: JsxIsNotHtmlContent = {
   },
   evidence: {
     badge: '02',
-    eyebrow: 'Evidence that JSX is JavaScript',
+    eyebrow: 'EVIDENCE',
     title: 'How JSX behaves like any other JS value',
     description:
       'You can store it in a variable, branch on it, and return it from a function — anywhere a JS value fits, JSX fits.',
@@ -368,7 +368,7 @@ const en: JsxIsNotHtmlContent = {
   },
   uiFit: {
     badge: '03',
-    eyebrow: 'Why JSX fits UI so well',
+    eyebrow: 'UI FIT',
     title: 'Looking like HTML is an intentional design',
     description:
       'JSX exists so UI can be treated as data. That pays off in four dimensions: structure, composition, components, and tree shape.',
@@ -405,7 +405,7 @@ const en: JsxIsNotHtmlContent = {
   },
   comparison: {
     badge: '04',
-    eyebrow: 'JSX vs HTML',
+    eyebrow: 'JSX VS HTML',
     title: 'Four places they look alike but really differ',
     description:
       'Similar syntax does not mean the same execution model. Same shape, different meaning — side by side.',

@@ -427,7 +427,7 @@ const ko: BeforeMutationContent = {
   },
   why: {
     number: '1',
-    eyebrow: 'why-before-mutation',
+    eyebrow: '이 단계의 이유',
     title: '왜 Before Mutation이 필요한가?',
     description:
       'DOM이 바뀌고 나면 더 이상 정확히 알 수 없는 값이 있습니다. 그래서 React는 mutation 전에 미리 읽어둡니다.',
@@ -436,7 +436,7 @@ const ko: BeforeMutationContent = {
   },
   snapshot: {
     number: '2',
-    eyebrow: 'snapshot-concept',
+    eyebrow: 'snapshot 개념',
     title: 'snapshot 개념을 직관화',
     description: 'Before와 After 사이에 snapshot이 끼어들어, 변경 전의 기준값을 확보합니다.',
     beforeCard: {
@@ -459,7 +459,7 @@ const ko: BeforeMutationContent = {
   },
   classSnapshot: {
     number: '3',
-    eyebrow: 'class-snapshot',
+    eyebrow: '클래스 snapshot',
     title: 'class component와 getSnapshotBeforeUpdate',
     steps: classSnapshotStepsKo,
     description:
@@ -467,7 +467,7 @@ const ko: BeforeMutationContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -490,7 +490,7 @@ const ko: BeforeMutationContent = {
   },
   rootPerspective: {
     number: '5',
-    eyebrow: 'root-perspective',
+    eyebrow: 'root 관점',
     title: 'Root 단위 관점에서의 Before Mutation',
     description: {
       line1: 'React는 전체 트리의 각 Fiber를 순회하며 필요한 snapshot을 읽습니다.',
@@ -505,7 +505,7 @@ const ko: BeforeMutationContent = {
   },
   modern: {
     number: '6',
-    eyebrow: 'modern-correction',
+    eyebrow: '현대 정정',
     title: '최신 코드 보정',
     description:
       '현재 React main에서는 before mutation 흐름이 기존 snapshot 처리뿐 아니라 여러 최신 commit 보정 로직과도 연결됩니다.',
@@ -514,7 +514,7 @@ const ko: BeforeMutationContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'getSnapshotBeforeUpdate는 DOM이 변경된 뒤 실행될까?',
     answer: '아니다. 변경 직전에 실행된다.',
@@ -554,7 +554,7 @@ const en: BeforeMutationContent = {
   },
   why: {
     number: '1',
-    eyebrow: 'why-before-mutation',
+    eyebrow: 'WHY THIS PHASE',
     title: 'Why is Before Mutation needed?',
     description:
       'Some values cannot be accurately known once the DOM changes. React reads them up-front.',
@@ -563,7 +563,7 @@ const en: BeforeMutationContent = {
   },
   snapshot: {
     number: '2',
-    eyebrow: 'snapshot-concept',
+    eyebrow: 'SNAPSHOT CONCEPT',
     title: 'Visualizing the snapshot concept',
     description:
       'A snapshot slips in between Before and After to lock in the baseline values from before the change.',
@@ -587,7 +587,7 @@ const en: BeforeMutationContent = {
   },
   classSnapshot: {
     number: '3',
-    eyebrow: 'class-snapshot',
+    eyebrow: 'CLASS SNAPSHOT',
     title: 'Class components and getSnapshotBeforeUpdate',
     steps: classSnapshotStepsEn,
     description:
@@ -595,7 +595,7 @@ const en: BeforeMutationContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -622,7 +622,7 @@ const en: BeforeMutationContent = {
   },
   rootPerspective: {
     number: '5',
-    eyebrow: 'root-perspective',
+    eyebrow: 'ROOT PERSPECTIVE',
     title: 'Before Mutation from a Root-level view',
     description: {
       line1: 'React walks the whole tree and reads the snapshots each Fiber needs.',
@@ -637,7 +637,7 @@ const en: BeforeMutationContent = {
   },
   modern: {
     number: '6',
-    eyebrow: 'modern-correction',
+    eyebrow: 'MODERN UPDATE',
     title: 'Modern code correction',
     description:
       'In current React main, the before-mutation flow connects with broader recent commit fix-up logic, not just snapshot handling.',
@@ -646,7 +646,7 @@ const en: BeforeMutationContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     question: 'Does getSnapshotBeforeUpdate run after the DOM changes?',
     answer: 'No. It runs right before the change.',

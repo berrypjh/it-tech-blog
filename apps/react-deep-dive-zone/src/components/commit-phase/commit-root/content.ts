@@ -558,7 +558,7 @@ const ko: CommitRootContent = {
   },
   renderToCommit: {
     number: '1',
-    eyebrow: 'render-to-commit',
+    eyebrow: 'commit 진입',
     title: 'Render 종료 → Commit 시작',
     description:
       'Render Phase가 끝나는 순간 finishedWork가 확보되고, commitRoot가 그 결과를 Commit Phase로 넘깁니다.',
@@ -566,7 +566,7 @@ const ko: CommitRootContent = {
   },
   position: {
     number: '2',
-    eyebrow: 'commit-root-position',
+    eyebrow: 'commitRoot 위치',
     title: 'commitRoot의 위치 (전체 업데이트 흐름)',
     description:
       '업데이트 스케줄링부터 Commit sub-phases까지, commitRoot는 Render와 Commit 사이의 입구에 위치합니다.',
@@ -574,14 +574,14 @@ const ko: CommitRootContent = {
   },
   preparation: {
     number: '3',
-    eyebrow: 'commit-root-preparation',
+    eyebrow: 'commitRoot 준비',
     title: 'commitRoot가 준비하는 것',
     description: 'commitRoot는 단순한 진입점이 아니라 다음 4가지 준비 작업을 수행합니다.',
     cards: preparationCardsKo,
   },
   timeline: {
     number: '4',
-    eyebrow: 'commit-timeline-overview',
+    eyebrow: 'commit 타임라인',
     title: 'Commit Phase 타임라인 개요',
     description:
       'commitRoot가 여는 파이프라인의 큰 흐름입니다. Before Mutation부터 Passive Effects까지 5단계로 이어집니다.',
@@ -591,7 +591,7 @@ const ko: CommitRootContent = {
   },
   checkpoint: {
     number: '5',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -610,7 +610,7 @@ const ko: CommitRootContent = {
   },
   rootMeaning: {
     number: '6',
-    eyebrow: 'root-commit',
+    eyebrow: 'root commit',
     title: 'Root 단위 Commit의 의미',
     description: {
       line1: 'Render Phase는 Fiber를 하나씩 계산하지만,',
@@ -627,7 +627,7 @@ const ko: CommitRootContent = {
   },
   modern: {
     number: '7',
-    eyebrow: 'modern-correction',
+    eyebrow: '현대 정정',
     title: '최신 코드 보정',
     description: '현재 React main에서는 commit 파이프라인이 더 세분화되어 있습니다.',
     steps: modernStepsKo,
@@ -658,14 +658,14 @@ const en: CommitRootContent = {
     insight:
       'commitRoot is the gateway between Render and Commit — the entry of the real DOM apply pipeline.',
     diagram: {
-      eyebrow: 'render → commit',
+      eyebrow: 'RENDER → COMMIT',
       flowLabel: 'Render Phase → finishedWork → commitRoot → Commit Phase',
       cards: heroCardsEn,
     },
   },
   renderToCommit: {
     number: '1',
-    eyebrow: 'render-to-commit',
+    eyebrow: 'INTO COMMIT',
     title: 'Render done → Commit begins',
     description:
       'The moment the Render Phase ends, finishedWork is ready and commitRoot hands it to the Commit Phase.',
@@ -673,7 +673,7 @@ const en: CommitRootContent = {
   },
   position: {
     number: '2',
-    eyebrow: 'commit-root-position',
+    eyebrow: 'COMMITROOT POSITION',
     title: 'Where commitRoot sits (whole update flow)',
     description:
       'From update scheduling to commit sub-phases, commitRoot lives right at the entry between Render and Commit.',
@@ -681,14 +681,14 @@ const en: CommitRootContent = {
   },
   preparation: {
     number: '3',
-    eyebrow: 'commit-root-preparation',
+    eyebrow: 'PREPARATION',
     title: 'What commitRoot prepares',
     description: 'commitRoot is more than an entry point — it does these 4 preparation jobs.',
     cards: preparationCardsEn,
   },
   timeline: {
     number: '4',
-    eyebrow: 'commit-timeline-overview',
+    eyebrow: 'TIMELINE',
     title: 'Commit Phase timeline overview',
     description:
       'The high-level flow of the pipeline commitRoot opens — from Before Mutation through Passive Effects.',
@@ -698,7 +698,7 @@ const en: CommitRootContent = {
   },
   checkpoint: {
     number: '5',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'File',
@@ -718,7 +718,7 @@ const en: CommitRootContent = {
   },
   rootMeaning: {
     number: '6',
-    eyebrow: 'root-commit',
+    eyebrow: 'ROOT COMMIT',
     title: 'What Root-level commit means',
     description: {
       line1: 'The Render Phase computes Fibers one at a time,',
@@ -735,7 +735,7 @@ const en: CommitRootContent = {
   },
   modern: {
     number: '7',
-    eyebrow: 'modern-correction',
+    eyebrow: 'MODERN UPDATE',
     title: 'Modern code correction',
     description: 'The current React main splits the commit pipeline into more steps.',
     steps: modernStepsEn,

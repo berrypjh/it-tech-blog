@@ -466,7 +466,7 @@ const ko: PassiveEffectsContent = {
   },
   position: {
     number: '1',
-    eyebrow: 'passive-position',
+    eyebrow: 'passive 위치',
     title: 'Passive Effects의 위치',
     description: 'Commit Phase의 마지막 단계로, paint 이후 후속 흐름에서 실행됩니다.',
     steps: positionStepsKo,
@@ -474,7 +474,7 @@ const ko: PassiveEffectsContent = {
   },
   compare: {
     number: '2',
-    eyebrow: 'effect-compare',
+    eyebrow: '이펙트 비교',
     title: 'useLayoutEffect vs useEffect 비교',
     description: '두 Hook은 비슷해 보이지만 실행 시점이 다릅니다.',
     headers: { hook: 'Hook', feel: '실행 감각', timing: '실행 시점' },
@@ -483,7 +483,7 @@ const ko: PassiveEffectsContent = {
   },
   lifecycle: {
     number: '3',
-    eyebrow: 'passive-lifecycle',
+    eyebrow: 'passive 생명주기',
     title: 'passive mount / unmount 흐름',
     description: 'setup과 cleanup이 한 쌍을 이루며, cleanup이 먼저 실행됩니다.',
     mount: {
@@ -505,7 +505,7 @@ const ko: PassiveEffectsContent = {
   },
   example: {
     number: '4',
-    eyebrow: 'passive-example',
+    eyebrow: 'passive 예시',
     title: 'passive effect 실행 예시',
     description: '실제 useEffect 코드에서 setup과 cleanup이 어떻게 나타나는지 봅니다.',
     code: exampleCodeKo,
@@ -517,7 +517,7 @@ const ko: PassiveEffectsContent = {
   },
   fullTimeline: {
     number: '5',
-    eyebrow: 'full-timeline',
+    eyebrow: '전체 타임라인',
     title: 'Commit Phase 전체 타임라인 (한눈에 정리)',
     description: 'Commit Phase 챕터에서 다룬 모든 단계를 7-step으로 정리합니다.',
     steps: fullTimelineStepsKo,
@@ -526,7 +526,7 @@ const ko: PassiveEffectsContent = {
   },
   checklist: {
     number: '6',
-    eyebrow: 'final-checklist',
+    eyebrow: '핵심 체크리스트',
     title: '최종 체크리스트 — 나는 설명할 수 있는가?',
     description: 'Commit Phase 챕터에서 익힌 내용을 스스로 점검해봅니다.',
     items: checklistItemsKo,
@@ -534,7 +534,7 @@ const ko: PassiveEffectsContent = {
   },
   nextChapter: {
     number: '7',
-    eyebrow: 'next-chapter',
+    eyebrow: '다음 챕터',
     title: '다음 챕터 예고',
     intro:
       'Commit Phase까지 이해했다면, 이제 함수 컴포넌트 내부에서 상태와 effect가 어떤 Hook 자료구조로 관리되는지 살펴볼 준비가 되었습니다.',
@@ -574,7 +574,7 @@ const en: PassiveEffectsContent = {
   },
   position: {
     number: '1',
-    eyebrow: 'passive-position',
+    eyebrow: 'PASSIVE POSITION',
     title: 'Where Passive Effects sit',
     description: 'The last step of the Commit Phase — runs as a follow-up after paint.',
     steps: positionStepsEn,
@@ -582,7 +582,7 @@ const en: PassiveEffectsContent = {
   },
   compare: {
     number: '2',
-    eyebrow: 'effect-compare',
+    eyebrow: 'EFFECT COMPARE',
     title: 'useLayoutEffect vs useEffect',
     description: 'They look similar but run at different times.',
     headers: { hook: 'Hook', feel: 'how it feels', timing: 'when it runs' },
@@ -591,7 +591,7 @@ const en: PassiveEffectsContent = {
   },
   lifecycle: {
     number: '3',
-    eyebrow: 'passive-lifecycle',
+    eyebrow: 'PASSIVE LIFECYCLE',
     title: 'passive mount / unmount flow',
     description: 'Setup and cleanup are paired, and cleanup runs first.',
     mount: {
@@ -621,7 +621,7 @@ const en: PassiveEffectsContent = {
   },
   example: {
     number: '4',
-    eyebrow: 'passive-example',
+    eyebrow: 'PASSIVE EXAMPLE',
     title: 'passive effect execution example',
     description: 'See how setup and cleanup appear in actual useEffect code.',
     code: exampleCodeEn,
@@ -633,7 +633,7 @@ const en: PassiveEffectsContent = {
   },
   fullTimeline: {
     number: '5',
-    eyebrow: 'full-timeline',
+    eyebrow: 'FULL TIMELINE',
     title: 'Commit Phase full timeline (one summary)',
     description: 'A 7-step recap of every step covered in this Commit Phase chapter.',
     steps: fullTimelineStepsEn,
@@ -642,7 +642,7 @@ const en: PassiveEffectsContent = {
   },
   checklist: {
     number: '6',
-    eyebrow: 'final-checklist',
+    eyebrow: 'CORE CHECKLIST',
     title: 'Final checklist — Can I explain this?',
     description: 'Quickly self-check everything you learned in this chapter.',
     items: checklistItemsEn,
@@ -650,7 +650,7 @@ const en: PassiveEffectsContent = {
   },
   nextChapter: {
     number: '7',
-    eyebrow: 'next-chapter',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     intro:
       'Now that the Commit Phase is clear, you are ready to see how state and effects are managed inside function components as Hook data structures.',

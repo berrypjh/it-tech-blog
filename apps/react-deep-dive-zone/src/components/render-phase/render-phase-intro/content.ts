@@ -350,7 +350,7 @@ const ko: RenderPhaseIntroContent = {
   },
   previous: {
     number: '1',
-    eyebrow: 'chapter-bridge',
+    eyebrow: '챕터 연결',
     title: '앞 챕터와 연결',
     description:
       '이전 챕터에서 setState 호출이 Root 스케줄링까지 이어졌습니다. 이제 React가 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
@@ -359,7 +359,7 @@ const ko: RenderPhaseIntroContent = {
   },
   comparison: {
     number: '2',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'render vs commit',
     title: 'Render Phase vs Commit Phase 비교',
     description: '두 단계의 책임을 항목별로 비교합니다. DOM 변경 여부가 가장 큰 분기점입니다.',
     columns: {
@@ -404,14 +404,14 @@ const ko: RenderPhaseIntroContent = {
   },
   work: {
     number: '3',
-    eyebrow: 'inside-render-phase',
+    eyebrow: 'render 단계 내부',
     title: 'Render Phase에서 실제로 일어나는 일',
     description: 'Render Phase가 하는 핵심 작업 4가지를 카드로 정리합니다.',
     cards: workCardsKo,
   },
   flowPreview: {
     number: '4',
-    eyebrow: 'flow-map',
+    eyebrow: '흐름 지도',
     title: 'Render Phase 전체 흐름 미리보기',
     description: '이 챕터에서 반복해서 마주칠 Render Phase 흐름 지도입니다.',
     steps: flowPreviewStepsKo,
@@ -424,7 +424,7 @@ const ko: RenderPhaseIntroContent = {
     importantNote: '중요: Commit Phase가 실행되기 전까지 브라우저 화면은 절대 바뀌지 않습니다.',
   },
   warning: {
-    eyebrow: 'dom-not-changed',
+    eyebrow: 'DOM 미변경',
     title: {
       line1: '중요: Render Phase에서는',
       line2: '브라우저 화면이 아직 바뀌지 않습니다.',
@@ -434,7 +434,7 @@ const ko: RenderPhaseIntroContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question:
       'Render Phase에서 새로운 div가 필요하다고 판단되면 즉시 DOM에 appendChild가 실행될까?',
@@ -459,7 +459,7 @@ const en: RenderPhaseIntroContent = {
     callout:
       'This page is a conceptual intro that walks through the role and overall flow of the Render Phase.',
     diagram: {
-      eyebrow: 'render → commit',
+      eyebrow: 'RENDER → COMMIT',
       renderCard: {
         title: 'Render Phase',
         description: 'Compute next screen',
@@ -474,7 +474,7 @@ const en: RenderPhaseIntroContent = {
   },
   previous: {
     number: '1',
-    eyebrow: 'chapter-bridge',
+    eyebrow: 'CHAPTER BRIDGE',
     title: 'Bridge from the previous chapter',
     description:
       'The previous chapter took setState all the way to scheduling the Root. Now React actually starts computing the next Fiber tree.',
@@ -483,7 +483,7 @@ const en: RenderPhaseIntroContent = {
   },
   comparison: {
     number: '2',
-    eyebrow: 'render-vs-commit',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Render Phase vs Commit Phase',
     description:
       'Compare the responsibilities of the two phases row by row. The biggest fork is whether the DOM changes.',
@@ -533,14 +533,14 @@ const en: RenderPhaseIntroContent = {
   },
   work: {
     number: '3',
-    eyebrow: 'inside-render-phase',
+    eyebrow: 'INSIDE RENDER',
     title: 'What actually happens during the Render Phase',
     description: 'Four core jobs done by the Render Phase, summarized as cards.',
     cards: workCardsEn,
   },
   flowPreview: {
     number: '4',
-    eyebrow: 'flow-map',
+    eyebrow: 'FLOW MAP',
     title: 'Render Phase flow preview',
     description: 'The Render Phase flow map you will revisit throughout this chapter.',
     steps: flowPreviewStepsEn,
@@ -553,7 +553,7 @@ const en: RenderPhaseIntroContent = {
     importantNote: 'Important: until the Commit Phase runs, the browser screen never changes.',
   },
   warning: {
-    eyebrow: 'dom-not-changed',
+    eyebrow: 'DOM UNCHANGED',
     title: {
       line1: 'Important: during the Render Phase,',
       line2: 'the browser screen has not changed yet.',
@@ -563,7 +563,7 @@ const en: RenderPhaseIntroContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question:
       'If the Render Phase decides a new div is needed, will appendChild fire on the DOM immediately?',

@@ -213,7 +213,7 @@ const ko: FiberLanesContent = {
     ],
   },
   comparison: {
-    number: '02',
+    number: '01',
     eyebrow: '두 lane 비교',
     title: 'lanes / childLanes 비교',
     vs: 'VS',
@@ -259,7 +259,7 @@ const ko: FiberLanesContent = {
     },
   },
   laneCards: {
-    number: '03',
+    number: '02',
     eyebrow: '대표 lane',
     title: '대표 lane 카드',
     cards: [
@@ -314,7 +314,7 @@ const ko: FiberLanesContent = {
     ],
   },
   bitfield: {
-    number: '04',
+    number: '03',
     eyebrow: '비트필드',
     title: '비트필드 시각화',
     rows: [
@@ -325,8 +325,8 @@ const ko: FiberLanesContent = {
     description: 'Lane은 하나의 이름표가 아니라, 비트 조합으로 작업 우선순위를 표현한다.',
   },
   checkpoint: {
-    number: '05',
-    eyebrow: '실제 코드와 연결',
+    number: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -347,7 +347,7 @@ const ko: FiberLanesContent = {
     },
   },
   propagation: {
-    number: '06',
+    number: '05',
     eyebrow: '부모 전파',
     title: '왜 부모가 childLanes를 가질까?',
     steps: [
@@ -448,8 +448,8 @@ const en: FiberLanesContent = {
     ],
   },
   comparison: {
-    number: '02',
-    eyebrow: 'Compare both',
+    number: '01',
+    eyebrow: 'COMPARE BOTH',
     title: 'lanes vs childLanes',
     vs: 'VS',
     lanesCard: {
@@ -494,8 +494,8 @@ const en: FiberLanesContent = {
     },
   },
   laneCards: {
-    number: '03',
-    eyebrow: 'Representative lanes',
+    number: '02',
+    eyebrow: 'REPRESENTATIVE LANES',
     title: 'Representative lane cards',
     cards: [
       {
@@ -549,8 +549,8 @@ const en: FiberLanesContent = {
     ],
   },
   bitfield: {
-    number: '04',
-    eyebrow: 'Bitfield',
+    number: '03',
+    eyebrow: 'BITFIELD',
     title: 'Bitfield visualisation',
     rows: [
       { bits: '0000000000000010', lane: 'SyncLane', tone: 'emerald' },
@@ -560,8 +560,8 @@ const en: FiberLanesContent = {
     description: 'A lane is not a single label — it is a bit pattern that encodes priority.',
   },
   checkpoint: {
-    number: '05',
-    eyebrow: 'Connect to real source',
+    number: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -582,8 +582,8 @@ const en: FiberLanesContent = {
     },
   },
   propagation: {
-    number: '06',
-    eyebrow: 'Parent propagation',
+    number: '05',
+    eyebrow: 'PARENT PROPAGATION',
     title: 'Why does the parent need childLanes?',
     steps: [
       {

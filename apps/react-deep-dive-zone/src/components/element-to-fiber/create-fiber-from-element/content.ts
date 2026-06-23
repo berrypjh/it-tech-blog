@@ -179,7 +179,7 @@ const ko: CreateFiberFromElementContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: '소스 코드로 들어가기',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     description:
       'React 저장소의 실제 함수를 그대로 봅니다. 줄 수가 적지만, 위임 구조가 명확합니다.',
@@ -325,7 +325,7 @@ const en: CreateFiberFromElementContent = {
   },
   io: {
     badge: '01',
-    eyebrow: 'IO at a glance',
+    eyebrow: 'IO AT A GLANCE',
     title: 'Input and output shape',
     description: 'createFiberFromElement does one thing: take an Element, return a Fiber.',
     inputTitle: 'Input — React Element',
@@ -338,7 +338,7 @@ const en: CreateFiberFromElementContent = {
   },
   mapping: {
     badge: '02',
-    eyebrow: 'Field mapping',
+    eyebrow: 'FIELD MAPPING',
     title: 'Which Element values get passed on?',
     description: 'Three values are pulled from the Element body — each one feeds the next step.',
     rows: [
@@ -367,7 +367,7 @@ const en: CreateFiberFromElementContent = {
   },
   checkpoint: {
     badge: '03',
-    eyebrow: 'Into the source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     description:
       'Read the actual function from the React repo. It is short — and the delegation is obvious.',
@@ -400,7 +400,7 @@ const en: CreateFiberFromElementContent = {
   },
   flow: {
     badge: '04',
-    eyebrow: 'Step by step',
+    eyebrow: 'STEP BY STEP',
     title: 'Function call flow',
     description: 'Five cards covering the steps from one Element to a real Fiber.',
     steps: [
@@ -448,7 +448,7 @@ const en: CreateFiberFromElementContent = {
   },
   devInfo: {
     badge: '05',
-    eyebrow: 'DEV-only bonus',
+    eyebrow: 'DEV-ONLY BONUS',
     title: 'What extra info travels in development mode?',
     devPill: 'DEV only',
     description:

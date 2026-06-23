@@ -347,7 +347,7 @@ const ko: FiberNodeOverviewContent = {
   },
   fieldGroups: {
     number: '03',
-    eyebrow: '5개 영역으로 묶어 보기',
+    eyebrow: '5개 영역',
     title: 'Fiber 필드를 5개 영역으로 묶어 보기',
     description: '복잡한 Fiber 필드는 5개의 큰 영역으로 묶어서 이해할 수 있습니다.',
     cards: [
@@ -444,7 +444,7 @@ const ko: FiberNodeOverviewContent = {
   },
   checkpoint: {
     number: '05',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -485,7 +485,7 @@ const ko: FiberNodeOverviewContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: '미니 개념 퀴즈',
+    eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
     answerLabel: '핵심 정답',
@@ -578,7 +578,7 @@ const en: FiberNodeOverviewContent = {
   },
   review: {
     number: '01',
-    eyebrow: 'Previous chapter recap',
+    eyebrow: 'CHAPTER RECAP',
     title: 'Recap: Element → Fiber',
     steps: [
       {
@@ -607,7 +607,7 @@ const en: FiberNodeOverviewContent = {
   },
   preview: {
     number: '02',
-    eyebrow: 'Whole structure at a glance',
+    eyebrow: 'WHOLE STRUCTURE',
     title: 'The full Fiber structure at a glance',
     description: 'See every field at once, and what each group is responsible for.',
     code: fiberCodeEn,
@@ -659,7 +659,7 @@ const en: FiberNodeOverviewContent = {
   },
   fieldGroups: {
     number: '03',
-    eyebrow: 'Grouped into five areas',
+    eyebrow: 'FIVE AREAS',
     title: 'Group the Fiber fields into five areas',
     description: 'The many Fiber fields fit into five large mental buckets.',
     cards: [
@@ -712,7 +712,7 @@ const en: FiberNodeOverviewContent = {
   },
   notJustNode: {
     number: '04',
-    eyebrow: 'Why it is more than a node',
+    eyebrow: 'MORE THAN A NODE',
     title: 'Why a Fiber is not just a tree node',
     centerMessage: {
       lines: [
@@ -756,7 +756,7 @@ const en: FiberNodeOverviewContent = {
   },
   checkpoint: {
     number: '05',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -798,7 +798,7 @@ const en: FiberNodeOverviewContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini concept quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

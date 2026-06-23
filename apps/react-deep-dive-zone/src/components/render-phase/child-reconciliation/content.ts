@@ -169,7 +169,7 @@ const ko: ReconcileChildrenContent = {
   },
   inputs: {
     number: '1',
-    eyebrow: 'three-inputs',
+    eyebrow: '세 입력',
     title: 'reconcileChildren의 입력 3개',
     cards: [
       {
@@ -197,7 +197,7 @@ const ko: ReconcileChildrenContent = {
   },
   mountVsUpdate: {
     number: '2',
-    eyebrow: 'mount-vs-update',
+    eyebrow: 'mount vs update',
     title: 'mount vs update 분기',
     mount: {
       condition: 'current === null',
@@ -214,7 +214,7 @@ const ko: ReconcileChildrenContent = {
   },
   childShape: {
     number: '3',
-    eyebrow: 'child-shape-preview',
+    eyebrow: 'child 형태',
     title: 'child 형태별 처리 예고',
     subtitle: 'nextChildren의 형태에 따라 다른 로직으로 분기된다.',
     cards: [
@@ -250,7 +250,7 @@ const ko: ReconcileChildrenContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
@@ -267,7 +267,7 @@ const ko: ReconcileChildrenContent = {
   },
   visualization: {
     number: '5',
-    eyebrow: 'cwip-nextchildren-viz',
+    eyebrow: '재조정 시각화',
     title: 'current / workInProgress / nextChildren 시각화',
     nodes: [
       {
@@ -300,7 +300,7 @@ const ko: ReconcileChildrenContent = {
   },
   goal: {
     number: '6',
-    eyebrow: 'reconciliation-goal',
+    eyebrow: '재조정 목표',
     title: 'reconciliation의 목표',
     items: [
       '기존 Fiber를 최대한 재사용한다.',
@@ -311,7 +311,7 @@ const ko: ReconcileChildrenContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'reconcileChildren은 새 DOM을 바로 만드는가?',
     answer:
@@ -364,7 +364,7 @@ const en: ReconcileChildrenContent = {
   },
   inputs: {
     number: '1',
-    eyebrow: 'three-inputs',
+    eyebrow: 'THREE INPUTS',
     title: 'The three inputs of reconcileChildren',
     cards: [
       {
@@ -392,7 +392,7 @@ const en: ReconcileChildrenContent = {
   },
   mountVsUpdate: {
     number: '2',
-    eyebrow: 'mount-vs-update',
+    eyebrow: 'MOUNT VS UPDATE',
     title: 'mount vs update branch',
     mount: {
       condition: 'current === null',
@@ -409,7 +409,7 @@ const en: ReconcileChildrenContent = {
   },
   childShape: {
     number: '3',
-    eyebrow: 'child-shape-preview',
+    eyebrow: 'CHILD SHAPE',
     title: 'Child shape handling — preview',
     subtitle: 'Different logic kicks in based on the shape of nextChildren.',
     cards: [
@@ -445,7 +445,7 @@ const en: ReconcileChildrenContent = {
   },
   code: {
     number: '4',
-    eyebrow: 'source-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
@@ -462,7 +462,7 @@ const en: ReconcileChildrenContent = {
   },
   visualization: {
     number: '5',
-    eyebrow: 'cwip-nextchildren-viz',
+    eyebrow: 'RECONCILE VIZ',
     title: 'Visualize current / workInProgress / nextChildren',
     nodes: [
       {
@@ -495,7 +495,7 @@ const en: ReconcileChildrenContent = {
   },
   goal: {
     number: '6',
-    eyebrow: 'reconciliation-goal',
+    eyebrow: 'RECONCILE GOAL',
     title: 'Goals of reconciliation',
     items: [
       'Reuse existing Fibers as much as possible.',
@@ -506,7 +506,7 @@ const en: ReconcileChildrenContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini Quiz',
     question: 'Does reconcileChildren create new DOM immediately?',
     answer:

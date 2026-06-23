@@ -152,7 +152,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
   },
   finalFlow: {
     badge: '01',
-    eyebrow: '전체 흐름 최종 다이어그램',
+    eyebrow: '최종 다이어그램',
     title: 'JSX 한 줄이 화면이 되기까지',
     description:
       'JSX → runtime → Element → Fiber → Render → Commit. 6단계 흐름에서 현재 챕터의 핵심은 단연 React Element입니다.',
@@ -208,7 +208,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
   },
   compare: {
     badge: '02',
-    eyebrow: 'JSX / Element / Fiber / DOM 비교표',
+    eyebrow: '4단계 비교',
     title: '네 가지 개념, 한 번에 정리',
     description: '각각이 무엇이고 어디에 있으며 언제 만들어지는지 표 하나로 모았습니다.',
     aspectLabel: '구분',
@@ -264,7 +264,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
   },
   summary: {
     badge: '03',
-    eyebrow: '지금까지 배운 5개 핵심 요약',
+    eyebrow: '핵심 5가지',
     title: '챕터의 다섯 가지 결론',
     description: '한 카드 한 문장으로 챕터를 다시 끌어모읍니다.',
     cards: [
@@ -312,7 +312,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
   },
   conceptFlow: {
     badge: '04',
-    eyebrow: '한 줄 JSX가 거치는 전체 흐름',
+    eyebrow: '전체 흐름',
     title: '한 줄 JSX의 여정',
     answerSteps: [
       { id: 'a1', number: '1', title: 'JSX', body: '<MyButton label="저장" />', tone: 'sky' },
@@ -330,7 +330,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
   },
   fiberPreview: {
     badge: '05',
-    eyebrow: '다음 챕터 예고: Fiber로 넘어가기',
+    eyebrow: '다음 챕터 예고',
     title: 'Element가 만나는 다음 단계',
     description: 'React는 Element를 보고 어떤 종류의 Fiber로 다룰지 결정합니다.',
     previewQuestion: 'React는 Element를 보고 어떤 Fiber를 만들지 어떻게 판단할까?',
@@ -421,7 +421,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
   },
   finalFlow: {
     badge: '01',
-    eyebrow: 'The full flow, one final diagram',
+    eyebrow: 'FINAL DIAGRAM',
     title: 'From one JSX line to the screen',
     description:
       'JSX → runtime → Element → Fiber → Render → Commit. In this chapter, the React Element is the highlighted step.',
@@ -477,7 +477,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
   },
   compare: {
     badge: '02',
-    eyebrow: 'JSX / Element / Fiber / DOM compared',
+    eyebrow: 'COMPARED',
     title: 'Four concepts, side by side',
     description: 'What each one is, where it lives, what it means, and when it is created.',
     aspectLabel: 'Aspect',
@@ -533,7 +533,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
   },
   summary: {
     badge: '03',
-    eyebrow: 'Five takeaways from this chapter',
+    eyebrow: 'KEY TAKEAWAYS',
     title: 'Five sentences, the whole chapter',
     description: 'One card per sentence, recapping the chapter.',
     cards: [
@@ -581,7 +581,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
   },
   conceptFlow: {
     badge: '04',
-    eyebrow: 'The full flow one line of JSX goes through',
+    eyebrow: 'FULL FLOW',
     title: 'One JSX line’s journey',
     answerSteps: [
       { id: 'a1', number: '1', title: 'JSX', body: '<MyButton label="Save" />', tone: 'sky' },
@@ -605,7 +605,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
   },
   fiberPreview: {
     badge: '05',
-    eyebrow: 'Next chapter preview: into Fiber',
+    eyebrow: 'NEXT CHAPTER',
     title: 'The step Element meets next',
     description: 'React looks at the Element to decide what kind of Fiber to build.',
     previewQuestion: 'How does React decide which Fiber to make from an Element?',

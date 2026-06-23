@@ -406,14 +406,14 @@ const ko: LayoutPhaseContent = {
   },
   workItems: {
     number: '1',
-    eyebrow: 'layout-work-items',
+    eyebrow: 'layout 작업 항목',
     title: 'Layout Phase에서 처리되는 것들',
     description: 'DOM mutation 직후, paint 전에 일어나는 작업들입니다.',
     items: workItemsKo,
   },
   timing: {
     number: '2',
-    eyebrow: 'use-layout-effect-timing',
+    eyebrow: 'useLayoutEffect 타이밍',
     title: 'useLayoutEffect 시점',
     description:
       'DOM이 갱신된 직후이지만 화면이 그려지기 전, 그 사이에 useLayoutEffect가 들어갑니다.',
@@ -422,7 +422,7 @@ const ko: LayoutPhaseContent = {
   },
   tooltip: {
     number: '3',
-    eyebrow: 'tooltip-measurement',
+    eyebrow: '툴팁 측정',
     title: 'Tooltip 측정 예시',
     description: 'Layout Phase가 가장 필요한 대표 사례 — Tooltip 위치 보정입니다.',
     steps: tooltipStepsKo,
@@ -434,7 +434,7 @@ const ko: LayoutPhaseContent = {
   },
   classLifecycle: {
     number: '4',
-    eyebrow: 'class-lifecycle',
+    eyebrow: '클래스 생명주기',
     title: 'class lifecycle 연결',
     description: 'Class Component에서는 mutation 이후 layout 시점 lifecycle이 실행됩니다.',
     flowSteps: [
@@ -447,14 +447,14 @@ const ko: LayoutPhaseContent = {
   },
   guarantee: {
     number: '5',
-    eyebrow: 'layout-guarantee',
+    eyebrow: 'layout 보장',
     title: 'Layout Phase에서 보장되는 것',
     description: '이 시점에 React가 안전하게 보장하는 4가지입니다.',
     items: guaranteeItemsKo,
   },
   checkpoint: {
     number: '6',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -481,7 +481,7 @@ const ko: LayoutPhaseContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question:
       '화면이 보이기 전에 DOM 크기를 읽고 즉시 위치를 보정해야 한다면 어느 effect가 적절할까?',
@@ -517,14 +517,14 @@ const en: LayoutPhaseContent = {
   },
   workItems: {
     number: '1',
-    eyebrow: 'layout-work-items',
+    eyebrow: 'WORK ITEMS',
     title: 'What gets handled in the Layout Phase',
     description: 'Work that happens right after DOM mutation, before paint.',
     items: workItemsEn,
   },
   timing: {
     number: '2',
-    eyebrow: 'use-layout-effect-timing',
+    eyebrow: 'TIMING',
     title: 'When useLayoutEffect runs',
     description: 'Right after DOM updates but before paint — useLayoutEffect slots in between.',
     steps: timingStepsEn,
@@ -532,7 +532,7 @@ const en: LayoutPhaseContent = {
   },
   tooltip: {
     number: '3',
-    eyebrow: 'tooltip-measurement',
+    eyebrow: 'TOOLTIP MEASURE',
     title: 'Tooltip measurement example',
     description: 'The canonical case for the Layout Phase — Tooltip position correction.',
     steps: tooltipStepsEn,
@@ -544,7 +544,7 @@ const en: LayoutPhaseContent = {
   },
   classLifecycle: {
     number: '4',
-    eyebrow: 'class-lifecycle',
+    eyebrow: 'CLASS LIFECYCLE',
     title: 'class lifecycle linkage',
     description: 'In Class Components, layout-tier lifecycles run after mutation.',
     flowSteps: [
@@ -557,14 +557,14 @@ const en: LayoutPhaseContent = {
   },
   guarantee: {
     number: '5',
-    eyebrow: 'layout-guarantee',
+    eyebrow: 'LAYOUT GUARANTEE',
     title: 'What the Layout Phase guarantees',
     description: 'Four guarantees React makes at this point.',
     items: guaranteeItemsEn,
   },
   checkpoint: {
     number: '6',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -591,7 +591,7 @@ const en: LayoutPhaseContent = {
   },
   quiz: {
     number: '7',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     question:
       'If you must read DOM size and immediately fix position before the screen appears, which effect fits?',

@@ -288,7 +288,7 @@ const ko: PlacementContent = {
   },
   review: {
     number: '1',
-    eyebrow: 'placement-flag-review',
+    eyebrow: 'Placement flag 복습',
     title: 'Placement flag가 생기는 순간 복습',
     description:
       'Render Phase에서 새 child가 생기는 그 순간을 다시 짚어봅니다. 이 단계의 결과물은 flag일 뿐, 실제 DOM 변경은 아직 일어나지 않았습니다.',
@@ -297,7 +297,7 @@ const ko: PlacementContent = {
   },
   commitFlow: {
     number: '2',
-    eyebrow: 'commit-insertion-flow',
+    eyebrow: '삽입 흐름',
     title: 'Commit 단계의 삽입 흐름',
     description:
       'Mutation 단계에서 Placement flag를 만난 React는 부모와 위치를 차례로 찾고, 실제 host operation을 실행합니다.',
@@ -307,7 +307,7 @@ const ko: PlacementContent = {
   },
   hostParent: {
     number: '3',
-    eyebrow: 'host-parent-sibling',
+    eyebrow: 'host 부모·형제',
     title: 'host parent / host sibling 탐색',
     description: 'Fiber tree를 따라 가장 가까운 host parent와 host sibling을 찾습니다.',
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
@@ -322,7 +322,7 @@ const ko: PlacementContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -346,7 +346,7 @@ const ko: PlacementContent = {
   },
   example: {
     number: '5',
-    eyebrow: 'easy-example',
+    eyebrow: '쉬운 예시',
     title: '쉬운 리스트 추가 예시',
     beforeTitle: '이전 렌더 결과 (DOM)',
     beforeCode: beforeDomCode,
@@ -359,7 +359,7 @@ const ko: PlacementContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Placement flag가 표시된 순간 사용자가 이미 화면에서 새 노드를 볼 수 있을까?',
     answer: '아니다. Commit Phase의 host placement가 끝나야 보인다.',
@@ -394,7 +394,7 @@ const en: PlacementContent = {
   },
   review: {
     number: '1',
-    eyebrow: 'placement-flag-review',
+    eyebrow: 'PLACEMENT FLAG',
     title: 'Recap: when the Placement flag is set',
     description:
       'Recap the moment a new child appears in the Render Phase. The output here is only a flag — no DOM change has happened yet.',
@@ -403,7 +403,7 @@ const en: PlacementContent = {
   },
   commitFlow: {
     number: '2',
-    eyebrow: 'commit-insertion-flow',
+    eyebrow: 'INSERTION FLOW',
     title: 'Commit-phase insertion flow',
     description:
       'When the Mutation step finds a Placement flag, React looks up the parent and position, then runs the real host operation.',
@@ -413,7 +413,7 @@ const en: PlacementContent = {
   },
   hostParent: {
     number: '3',
-    eyebrow: 'host-parent-sibling',
+    eyebrow: 'PARENT & SIBLING',
     title: 'Finding host parent / host sibling',
     description: 'React walks the Fiber tree to find the nearest host parent and host sibling.',
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
@@ -428,7 +428,7 @@ const en: PlacementContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'File',
@@ -452,7 +452,7 @@ const en: PlacementContent = {
   },
   example: {
     number: '5',
-    eyebrow: 'easy-example',
+    eyebrow: 'EASY EXAMPLE',
     title: 'Easy list-add example',
     beforeTitle: 'previous render (DOM)',
     beforeCode: beforeDomCode,
@@ -465,7 +465,7 @@ const en: PlacementContent = {
   },
   quiz: {
     number: '6',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini quiz',
     question: 'The moment a Placement flag appears, can the user already see the new node?',
     answer: 'No. It only appears after the Commit Phase host placement finishes.',

@@ -162,7 +162,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   list: {
     badge: '01',
-    eyebrow: '리스트 렌더링에서 key가 필요한 장면',
+    eyebrow: 'key가 필요한 장면',
     title: '형제 목록 안에서 안정적으로 식별',
     description:
       '코드 한 줄로 만들어진 형제 Element들은 결국 key를 기준으로 React가 한 명씩 따라갑니다.',
@@ -180,7 +180,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   position: {
     badge: '02',
-    eyebrow: 'Element 구조 안에서 key의 위치',
+    eyebrow: 'key의 위치',
     title: 'props 안이 아닌, 별도의 필드',
     description: 'Element 객체를 펼쳐보면 key는 props와 같은 층에 따로 존재합니다.',
     elementShape: 'React Element\n├─ type: TodoItem\n├─ key: item.id\n└─ props: { item }',
@@ -208,7 +208,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   separation: {
     badge: '03',
-    eyebrow: 'key와 props의 분리',
+    eyebrow: 'key와 props',
     title: '두 값은 같은 곳에 두지 않습니다',
     description: 'props는 컴포넌트가 읽는 값, key는 React가 관리하는 식별자 — 역할이 다릅니다.',
     cards: [
@@ -239,7 +239,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: '실제 코드 체크포인트',
+    eyebrow: '코드 체크포인트',
     title: 'React가 key를 props에서 떼어내는 순간',
     description:
       'hasValidKey로 확인하고, 문자열로 변환해 별도 필드에 저장합니다. key는 props에서 빠집니다.',
@@ -256,7 +256,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   misconceptions: {
     badge: '05',
-    eyebrow: 'key 전달에서 자주 생기는 오해',
+    eyebrow: '흔한 오해',
     title: '두 번 마주치는 함정',
     description: 'key를 처음 다룰 때 가장 흔히 생기는 오해 두 가지를 정확히 정리합니다.',
     wrongLabel: '오해',
@@ -290,7 +290,7 @@ const ko: ReactElementKeySeparatedContent = {
   },
   fiber: {
     badge: '06',
-    eyebrow: '이후 Fiber 재사용과의 연결',
+    eyebrow: 'Fiber 연결',
     title: 'key가 만들어내는 다음 결정들',
     description:
       'Element.key 값은 Reconciler가 형제를 비교할 때 그대로 입력이 되어, 어떤 Fiber를 재사용하고 어떤 노드를 다시 만들지 결정합니다.',
@@ -363,7 +363,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   list: {
     badge: '01',
-    eyebrow: 'Where key matters in list rendering',
+    eyebrow: 'WHY KEY',
     title: 'Stable identity across siblings',
     description: 'A single line builds a sibling list, and React follows each one by its key.',
     code: 'items.map((item) => <TodoItem key={item.id} item={item} />);',
@@ -380,7 +380,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   position: {
     badge: '02',
-    eyebrow: 'Where key sits in the Element shape',
+    eyebrow: 'KEY POSITION',
     title: 'A separate field, not inside props',
     description: 'When you open the Element object, key lives next to props — not inside it.',
     elementShape: 'React Element\n├─ type: TodoItem\n├─ key: item.id\n└─ props: { item }',
@@ -408,7 +408,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   separation: {
     badge: '03',
-    eyebrow: 'Separating key and props',
+    eyebrow: 'KEY VS PROPS',
     title: 'They are not stored in the same place',
     description:
       'props is data the component reads; key is the identifier React manages. The roles are different.',
@@ -444,7 +444,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   checkpoint: {
     badge: '04',
-    eyebrow: 'Source code checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'See React pull key out of props',
     description:
       'It checks with hasValidKey, coerces to string, and stores it as a separate field. key is removed from props.',
@@ -461,7 +461,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   misconceptions: {
     badge: '05',
-    eyebrow: 'Common misconceptions about key',
+    eyebrow: 'MISCONCEPTIONS',
     title: 'Two pitfalls you only fall into once',
     description: 'The two most frequent mix-ups when first encountering key.',
     wrongLabel: 'Myth',
@@ -495,7 +495,7 @@ const en: ReactElementKeySeparatedContent = {
   },
   fiber: {
     badge: '06',
-    eyebrow: 'Connection to Fiber reuse',
+    eyebrow: 'FIBER REUSE',
     title: 'Decisions that key drives downstream',
     description:
       'The Element.key value feeds directly into reconciliation, deciding which Fibers to reuse and which nodes to rebuild.',

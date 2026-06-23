@@ -430,7 +430,7 @@ const ko: RootCurrentRefContent = {
   },
   transition: {
     number: '1',
-    eyebrow: 'current-tree-transition',
+    eyebrow: 'current 트리 전환',
     title: 'current tree 전환',
     description:
       'finishedWork가 완성되고 Mutation Phase가 끝나면, React는 root.current를 새 tree로 바꿉니다.',
@@ -440,7 +440,7 @@ const ko: RootCurrentRefContent = {
   },
   refTimeline: {
     number: '2',
-    eyebrow: 'ref-detach-attach',
+    eyebrow: 'ref 분리·연결',
     title: 'refs는 언제 detach / attach 되는가?',
     description:
       'ref detach는 mutation 이전에, ref attach는 mutation 이후에 일어납니다. 그 사이에는 ref.current가 잠깐 null이 됩니다.',
@@ -451,7 +451,7 @@ const ko: RootCurrentRefContent = {
   },
   inputRef: {
     number: '3',
-    eyebrow: 'input-ref-example',
+    eyebrow: 'input ref 예시',
     title: 'input ref 예시',
     description:
       'useRef로 만든 ref가 새 host instance와 어떻게 연결되는지를 단순한 input 예시로 봅니다.',
@@ -465,7 +465,7 @@ const ko: RootCurrentRefContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -480,7 +480,7 @@ const ko: RootCurrentRefContent = {
   },
   risk: {
     number: '5',
-    eyebrow: 'render-ref-risk',
+    eyebrow: 'render 중 ref 위험',
     title: 'Render 중 ref 읽기가 위험한 이유',
     description:
       '같은 ref라도 언제 읽느냐에 따라 가리키는 값이 다릅니다. Render Phase와 Commit 이후는 안전성이 다릅니다.',
@@ -499,14 +499,14 @@ const ko: RootCurrentRefContent = {
   },
   lifecycle: {
     number: '6',
-    eyebrow: 'refs-lifecycle',
+    eyebrow: 'ref 생명주기',
     title: 'refs lifecycle 정리',
     description: '단계별로 ref.current 값이 어떻게 바뀌는지 한눈에 정리합니다.',
     steps: lifecycleStepsKo,
   },
   meaning: {
     number: '7',
-    eyebrow: 'root-current-meaning',
+    eyebrow: 'root.current 의미',
     title: 'root.current 전환의 의미',
     description: '단순한 변수 대입처럼 보이지만, 이 한 줄이 "현재 화면의 기준"을 바꿉니다.',
     beforeTitle: '전환 전',
@@ -518,7 +518,7 @@ const ko: RootCurrentRefContent = {
   },
   quiz: {
     number: '8',
-    eyebrow: 'mini-quiz',
+    eyebrow: '미니 퀴즈',
     title: '미니 퀴즈',
     question: 'ref.current는 Render Phase 계산 결과를 즉시 반영할까?',
     answer: '아니다. commit 이후에 detach / attach가 끝난 최신 DOM과 맞춰진다.',
@@ -558,7 +558,7 @@ const en: RootCurrentRefContent = {
   },
   transition: {
     number: '1',
-    eyebrow: 'current-tree-transition',
+    eyebrow: 'CURRENT SWAP',
     title: 'current tree transition',
     description:
       'After finishedWork is built and the Mutation Phase ends, React swaps root.current to the new tree.',
@@ -568,7 +568,7 @@ const en: RootCurrentRefContent = {
   },
   refTimeline: {
     number: '2',
-    eyebrow: 'ref-detach-attach',
+    eyebrow: 'DETACH & ATTACH',
     title: 'When do refs detach / attach?',
     description:
       'Ref detach happens before mutation; ref attach happens after. Between them, ref.current is briefly null.',
@@ -579,7 +579,7 @@ const en: RootCurrentRefContent = {
   },
   inputRef: {
     number: '3',
-    eyebrow: 'input-ref-example',
+    eyebrow: 'INPUT REF',
     title: 'input ref example',
     description: 'A simple input example showing how a useRef ref connects to a new host instance.',
     codeTitle: 'Code',
@@ -593,7 +593,7 @@ const en: RootCurrentRefContent = {
   },
   checkpoint: {
     number: '4',
-    eyebrow: 'code-checkpoint',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -608,7 +608,7 @@ const en: RootCurrentRefContent = {
   },
   risk: {
     number: '5',
-    eyebrow: 'render-ref-risk',
+    eyebrow: 'REF RISK',
     title: 'Why reading refs during Render is risky',
     description:
       'The same ref can point to different values depending on when you read it. Render Phase and post-Commit are different safety zones.',
@@ -627,14 +627,14 @@ const en: RootCurrentRefContent = {
   },
   lifecycle: {
     number: '6',
-    eyebrow: 'refs-lifecycle',
+    eyebrow: 'REF LIFECYCLE',
     title: 'refs lifecycle summary',
     description: 'How ref.current changes through each step, at a glance.',
     steps: lifecycleStepsEn,
   },
   meaning: {
     number: '7',
-    eyebrow: 'root-current-meaning',
+    eyebrow: 'ROOT.CURRENT',
     title: 'What the root.current swap means',
     description:
       'It looks like a simple assignment, but this line changes the "basis of the screen".',
@@ -647,7 +647,7 @@ const en: RootCurrentRefContent = {
   },
   quiz: {
     number: '8',
-    eyebrow: 'mini-quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'mini quiz',
     question: 'Does ref.current immediately reflect the Render Phase result?',
     answer:

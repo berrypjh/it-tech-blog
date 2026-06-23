@@ -151,7 +151,7 @@ const ko: DispatchSetStateEntryContent = {
     bottomCallout: '이 함수가 lane을 고르고, 실제 처리는 내부 함수로 위임합니다.',
   },
   compare: {
-    number: '02',
+    number: '01',
     eyebrow: '진입 흐름',
     title: 'setCount → dispatchSetState',
     leftCard: {
@@ -168,7 +168,7 @@ const ko: DispatchSetStateEntryContent = {
     },
   },
   responsibilities: {
-    number: '03',
+    number: '02',
     eyebrow: '진입점의 책임',
     title: 'dispatchSetState가 하는 3가지',
     description:
@@ -201,8 +201,8 @@ const ko: DispatchSetStateEntryContent = {
     ],
   },
   checkpoint: {
-    number: '04',
-    eyebrow: '실제 코드와 연결',
+    number: '03',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -220,7 +220,7 @@ const ko: DispatchSetStateEntryContent = {
     },
   },
   laneReason: {
-    number: '05',
+    number: '04',
     eyebrow: 'lane이 먼저인 이유',
     title: 'lane 선택이 먼저 등장하는 이유',
     intro:
@@ -257,7 +257,7 @@ const ko: DispatchSetStateEntryContent = {
     ],
   },
   splitReason: {
-    number: '06',
+    number: '05',
     eyebrow: '역할 분리',
     title: 'dispatchSetState와 dispatchSetStateInternal 분리 이유',
     description:
@@ -313,8 +313,8 @@ const en: DispatchSetStateEntryContent = {
     bottomCallout: 'It picks the lane; real work is delegated to the internal function.',
   },
   compare: {
-    number: '02',
-    eyebrow: 'Entry flow',
+    number: '01',
+    eyebrow: 'ENTRY FLOW',
     title: 'setCount → dispatchSetState',
     leftCard: {
       title: 'What the user calls',
@@ -330,8 +330,8 @@ const en: DispatchSetStateEntryContent = {
     },
   },
   responsibilities: {
-    number: '03',
-    eyebrow: 'Three responsibilities',
+    number: '02',
+    eyebrow: 'RESPONSIBILITIES',
     title: 'Three things dispatchSetState does',
     description:
       'The body of dispatchSetState is short but carries three clear responsibilities. Follow how each one feeds into the next stage.',
@@ -363,8 +363,8 @@ const en: DispatchSetStateEntryContent = {
     ],
   },
   checkpoint: {
-    number: '04',
-    eyebrow: 'Source checkpoint',
+    number: '03',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source checkpoint',
     info: {
       fileLabel: 'File',
@@ -382,8 +382,8 @@ const en: DispatchSetStateEntryContent = {
     },
   },
   laneReason: {
-    number: '05',
-    eyebrow: 'Why lane first',
+    number: '04',
+    eyebrow: 'WHY LANE FIRST',
     title: 'Why lane selection comes first',
     intro:
       'Before creating any update, React decides which priority bucket the update belongs to. Every later stage uses that lane as its anchor.',
@@ -419,8 +419,8 @@ const en: DispatchSetStateEntryContent = {
     ],
   },
   splitReason: {
-    number: '06',
-    eyebrow: 'Split of duties',
+    number: '05',
+    eyebrow: 'SPLIT OF DUTIES',
     title: 'Why dispatchSetState and dispatchSetStateInternal are split',
     description:
       'The outer entry stays focused on picking a lane; the inner function focuses on building the update object and connecting the queue.',

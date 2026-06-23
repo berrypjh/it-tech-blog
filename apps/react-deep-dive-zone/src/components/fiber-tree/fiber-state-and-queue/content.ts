@@ -306,7 +306,7 @@ const ko: FiberStateAndQueueContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: '실제 코드와 연결',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       title: 'React 소스코드에서 직접 확인',
@@ -365,7 +365,7 @@ const ko: FiberStateAndQueueContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: '미니 개념 퀴즈',
+    eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
     answerLabel: '정답',
@@ -442,7 +442,7 @@ const en: FiberStateAndQueueContent = {
   },
   comparison: {
     number: '01',
-    eyebrow: 'Compare both fields',
+    eyebrow: 'COMPARE FIELDS',
     title: 'memoizedState vs updateQueue',
     vs: 'VS',
     cards: [
@@ -472,7 +472,7 @@ const en: FiberStateAndQueueContent = {
   },
   setStateFlow: {
     number: '02',
-    eyebrow: 'setState flow',
+    eyebrow: 'SETSTATE FLOW',
     title: 'What happens when setState is called',
     description:
       'State does not change immediately — an update object is enqueued and applied in the next render.',
@@ -521,7 +521,7 @@ const en: FiberStateAndQueueContent = {
   },
   roleFlow: {
     number: '03',
-    eyebrow: 'Field roles',
+    eyebrow: 'FIELD ROLES',
     title: 'State field vs queue field — concrete roles',
     cards: [
       {
@@ -555,7 +555,7 @@ const en: FiberStateAndQueueContent = {
   },
   checkpoint: {
     number: '04',
-    eyebrow: 'Connect to real source',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       title: 'Verify in the React source',
@@ -577,7 +577,7 @@ const en: FiberStateAndQueueContent = {
   },
   connections: {
     number: '05',
-    eyebrow: 'Where it leads',
+    eyebrow: 'NEXT PHASE',
     title: 'Connecting to Hooks and Class Components',
     cards: [
       {
@@ -614,7 +614,7 @@ const en: FiberStateAndQueueContent = {
   },
   quiz: {
     number: '06',
-    eyebrow: 'Mini concept quiz',
+    eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
     answerLabel: 'Answer',
@@ -638,7 +638,7 @@ const en: FiberStateAndQueueContent = {
   },
   checklist: {
     number: '07',
-    eyebrow: 'Core checklist',
+    eyebrow: 'CORE CHECKLIST',
     title: 'Page recap checklist',
     items: [
       'memoizedState = current render result state',
