@@ -51,10 +51,6 @@ export type ChangelogContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
     version: string;
     versionBadge: string;
     releasesCard: {
@@ -151,10 +147,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         line3: '함께 봐야 합니다.',
       },
       description: '변경 기록을 모르면 오래된 강의와 최신 저장소를 섞어 읽게 됩니다.',
-      primaryCta: 'CHANGELOG 보기',
-      secondaryCta: 'GitHub Releases 열기',
-      primaryHref: 'https://github.com/facebook/react/blob/main/CHANGELOG.md',
-      secondaryHref: 'https://github.com/facebook/react/releases',
       version: 'v19.2.0',
       versionBadge: 'Latest',
       releasesCard: {
@@ -398,10 +390,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       },
       description:
         'Without change history, you mix old tutorials with the latest repo as if they were the same.',
-      primaryCta: 'Open CHANGELOG',
-      secondaryCta: 'Open GitHub Releases',
-      primaryHref: 'https://github.com/facebook/react/blob/main/CHANGELOG.md',
-      secondaryHref: 'https://github.com/facebook/react/releases',
       version: 'v19.2.0',
       versionBadge: 'Latest',
       releasesCard: {

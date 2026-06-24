@@ -149,7 +149,6 @@ const ReactBrandCard = ({ caption }: ReactBrandCardProps) => {
         'border-[var(--term-border)] bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)] px-md py-md',
         'overflow-hidden',
-        'transition-colors hover:border-[var(--term-accent)]',
       )}
     >
       <div

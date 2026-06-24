@@ -21,7 +21,6 @@ export type PositionCard = {
   description: string;
   tone: ToneKey;
   icon: IconName;
-  emphasized?: boolean;
 };
 
 export type CompareCard = {
@@ -65,10 +64,6 @@ export type ReconcilerEntryContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     elementCard: {
       title: string;
       code: string;
@@ -98,7 +93,6 @@ export type ReconcilerEntryContent = {
     description: string;
     left: CompareCard;
     right: CompareCard;
-    centerCopy: string;
   };
   process: {
     eyebrow: string;
@@ -183,10 +177,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
       description:
         'Element를 Fiber로 바꾸고, 업데이트를 계산하고, commit을 준비하는 핵심 흐름이 이곳에 모입니다.',
-      primaryCta: 'reconciler 지도 보기',
-      secondaryCta: 'React GitHub 열기',
-      primaryHref: '#section-position',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/react-reconciler',
       elementCard: {
         title: 'React Element',
         code: elementSnippet,
@@ -231,7 +221,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Fiber 생성, 트리 비교, 변경 계산, commit 준비',
           tone: 'violet',
           icon: 'cube',
-          emphasized: true,
         },
         {
           id: 'renderer',
@@ -279,7 +268,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         tone: 'emerald',
         icon: 'monitor',
       },
-      centerCopy: '계산과 반영은\n분리되어 있다.',
     },
     process: {
       eyebrow: '03 · 내부 동작',
@@ -408,10 +396,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
       description:
         'Converting Element to Fiber, computing updates and preparing commit — these core flows all meet here.',
-      primaryCta: 'See the reconciler map',
-      secondaryCta: 'Open React on GitHub',
-      primaryHref: '#section-position',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/react-reconciler',
       elementCard: {
         title: 'React Element',
         code: elementSnippet,
@@ -456,7 +440,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           description: 'Create fibers, diff trees, compute changes, prepare commit',
           tone: 'violet',
           icon: 'cube',
-          emphasized: true,
         },
         {
           id: 'renderer',
@@ -504,7 +487,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         tone: 'emerald',
         icon: 'monitor',
       },
-      centerCopy: 'Calculation and reflection\nare separated.',
     },
     process: {
       eyebrow: '03 · INSIDE',

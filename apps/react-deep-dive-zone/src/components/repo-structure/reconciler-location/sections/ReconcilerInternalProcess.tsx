@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { StepNumberBadge } from '../../../shared/step';
 import { FiberTreeCard } from '../components/FiberTreeCard';
 import type { ProcessStep, ReconcilerEntryContent } from '../content';
 import { CuboidIcon, iconByName } from '../icons';
@@ -19,7 +20,6 @@ export const ReconcilerInternalProcess = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
-        {/* 좌측 timeline */}
         <ol className="relative flex flex-col gap-md">
           <span
             aria-hidden="true"
@@ -32,7 +32,6 @@ export const ReconcilerInternalProcess = ({ content }: Props) => {
           ))}
         </ol>
 
-        {/* 우측 Fiber tree */}
         <FiberTreeCard content={content} />
       </div>
     </section>
@@ -49,20 +48,12 @@ const StepCard = ({ step }: StepCardProps) => {
       className={cn(
         'relative flex items-start gap-md rounded-lg border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'p-md transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'p-md transition-all hover:-translate-y-0.5',
       )}
     >
-      {/* 번호 원형 배지 */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          'relative z-10 inline-flex items-center justify-center w-9 h-9 rounded-full',
-          'border-2 border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] font-bold text-sm tabular-nums',
-          'shrink-0',
-        )}
-      >
+      <StepNumberBadge size="md" className="relative z-10">
         {step.number}
-      </span>
+      </StepNumberBadge>
 
       <div className="flex flex-col gap-1 flex-1 min-w-0">
         <h3 className="text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep">

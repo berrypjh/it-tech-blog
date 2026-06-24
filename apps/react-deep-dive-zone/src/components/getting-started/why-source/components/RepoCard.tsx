@@ -1,5 +1,6 @@
+import { ExternalLink } from '../../../shared/link';
 import type { WhySourceContent } from '../content';
-import { ArrowRightIcon, GithubIcon } from '../icons';
+import { GithubIcon } from '../icons';
 
 type Props = { repo: WhySourceContent['firstCode']['repo'] };
 
@@ -31,16 +32,12 @@ export const RepoCard = ({ repo }: Props) => {
       <div className="flex flex-col gap-1">
         <p className="text-[11px] font-mono text-[var(--term-muted)] break-all">{repo.path}</p>
         <p className="text-[11px] text-[var(--term-muted)]">{repo.parameters}</p>
-        <a
+        <ExternalLink
           href="https://github.com/facebook/react"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xxsm font-bold text-[var(--term-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] rounded"
+          className="self-start text-xxsm font-bold text-[var(--term-accent)]"
         >
           {repo.link}
-          <span className="sr-only">(새 창에서 열림)</span>
-          <ArrowRightIcon className="h-3 w-3" aria-hidden="true" />
-        </a>
+        </ExternalLink>
       </div>
 
       <ul className="grid grid-cols-3 gap-1 mt-sm">

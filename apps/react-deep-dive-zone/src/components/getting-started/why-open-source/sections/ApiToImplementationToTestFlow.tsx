@@ -75,14 +75,15 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    'inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
+                    'group/cta inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
                     'transition-colors mt-auto hover:bg-[var(--term-surface)]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                     t.text,
                   )}
                 >
                   {card.cta}
-                  <ExternalLinkIcon className="h-3.5 w-3.5 opacity-80" />
+                  <span className="sr-only">(새 창에서 열림)</span>
+                  <ExternalLinkIcon className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
                 </a>
               </article>
 

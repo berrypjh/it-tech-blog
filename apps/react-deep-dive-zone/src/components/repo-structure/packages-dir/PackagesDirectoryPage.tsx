@@ -13,15 +13,13 @@ import { packagesDirectoryContent } from './content';
 
 type Props = { locale: Locale };
 
-const LANDSCAPE_SECTION_ID = 'section-landscape';
-
 export const PackagesDirectoryPage = ({ locale }: Props) => {
   const c = packagesDirectoryContent[locale];
 
   return (
     <StartPageShell>
       <PackagesHero content={c.hero} />
-      <PackagesLandscape content={c.landscape} sectionId={LANDSCAPE_SECTION_ID} />
+      <PackagesLandscape content={c.landscape} />
       <CorePackageSelector content={c.selector} />
       <PackageRelationshipDiagram content={c.diagram} />
       <ReactClientCheckpoint content={c.checkpoint} />

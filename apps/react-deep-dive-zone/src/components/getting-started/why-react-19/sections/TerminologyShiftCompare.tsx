@@ -2,6 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import type { ReactNode } from 'react';
 
+import { CompareBridge } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import type { WhyReact19Content } from '../content';
 import { CheckIcon, RefreshIcon, SwapIcon, XIcon } from '../icons';
@@ -17,14 +18,14 @@ const toneClasses: Record<
   { card: string; iconBadge: string; header: string; bullet: string; code: string }
 > = {
   legacy: {
-    card: 'border-[var(--term-border)] hover:border-[var(--term-dim)] hover:shadow-[0_2px_0_var(--term-border)]',
+    card: 'border-[var(--term-border)] hover:shadow-[0_2px_0_var(--term-border)]',
     iconBadge: 'border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-dim)]',
     header: 'text-[var(--term-muted)]',
     bullet: 'bg-[var(--term-dim)]',
     code: 'text-[var(--term-fg)]',
   },
   modern: {
-    card: 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] hover:border-[var(--term-accent)]',
+    card: 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     iconBadge:
       'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
     header: 'text-[var(--term-accent)]',
@@ -107,34 +108,22 @@ export const TerminologyShiftCompare = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(220px,_0.7fr)_1fr] gap-md lg:gap-lg items-stretch">
-        {/* 왼쪽: 과거 자료 (neutral) */}
         <TermPanel tone="legacy" panel={content.left} icon={<XIcon className="h-3.5 w-3.5" />} />
 
-        {/* 중앙: 메시지 (브리지) */}
-        <div className="flex flex-col items-center justify-center gap-md text-center lg:px-sm py-md">
-          <span
-            aria-hidden="true"
-            className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
-          >
-            <RefreshIcon className="h-5 w-5" />
-          </span>
-          <p className="text-md sm:text-lg font-bold tracking-tight text-[var(--term-fg)] break-keep leading-snug">
-            {content.center.headline.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </p>
-          <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
-            {content.center.sub.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </p>
-        </div>
+        <CompareBridge
+          icon={<RefreshIcon className="h-5 w-5" />}
+          headline={content.center.headline.map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
+          sub={content.center.sub.map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
+        />
 
-        {/* 오른쪽: 최신 용어 (teal/blue 강조) */}
         <TermPanel
           tone="modern"
           panel={content.right}

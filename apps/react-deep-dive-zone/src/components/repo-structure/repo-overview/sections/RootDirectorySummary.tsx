@@ -6,11 +6,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
 import { directoryIconByName, FolderIcon } from '../icons';
 
-type Props = { content: RepoOverviewContent['directory']; sectionId?: string };
+type Props = { content: RepoOverviewContent['directory'] };
 
-export const RootDirectorySummary = ({ content, sectionId }: Props) => {
+export const RootDirectorySummary = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-directory" className="space-y-lg scroll-mt-24">
+    <section aria-labelledby="heading-directory" className="space-y-lg">
       <SectionHeader
         id="directory"
         eyebrow={content.eyebrow}

@@ -1,4 +1,6 @@
+import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
+import { StepNumberBadge } from '../../../shared/step';
 import { formatInline } from '../../../shared/text';
 import type { UsageStep, UsageVsInternalsContent } from '../content';
 import { CubeWireframeIcon } from '../icons';
@@ -8,13 +10,8 @@ type Props = { content: UsageVsInternalsContent['perspectives'] };
 const StepRow = ({ step }: { step: UsageStep }) => {
   return (
     <li>
-      <article className="group flex items-start gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-sm transition-colors hover:border-[var(--term-accent)]">
-        <span
-          className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full text-xxsm font-bold tabular-nums bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
-          aria-hidden="true"
-        >
-          {step.num}
-        </span>
+      <article className="group flex items-start gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-sm transition-all hover:-translate-y-0.5">
+        <StepNumberBadge>{step.num}</StepNumberBadge>
         <div className="min-w-0 flex flex-col gap-0.5">
           <h4 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] leading-tight">
             {step.title}
@@ -67,20 +64,7 @@ export const PerspectiveComparison = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
         <PerspectivePanel panel={content.left} />
 
-        {/* VS */}
-        <div className="relative flex lg:flex-col items-center justify-center py-md">
-          <span
-            aria-hidden="true"
-            className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l border-dashed border-[var(--term-border)]"
-          />
-          <span
-            aria-hidden="true"
-            className="lg:hidden absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px border-t border-dashed border-[var(--term-border)]"
-          />
-          <span className="relative inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-[var(--term-border)] bg-[var(--term-bg)] text-xxsm font-bold tracking-wider text-[var(--term-muted)] shadow-[0_2px_0_var(--term-border)]">
-            Vs
-          </span>
-        </div>
+        <CompareVs />
 
         <PerspectivePanel panel={content.right} />
       </div>

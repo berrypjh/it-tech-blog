@@ -5,7 +5,7 @@ import { toneTokens } from '../../../shared/tones';
 import type { NeedCard, SchedulerContent } from '../content';
 import { CircleHelpIcon, iconByName } from '../icons';
 
-type Props = { content: SchedulerContent['need']; sectionId?: string };
+type Props = { content: SchedulerContent['need'] };
 
 // 반복 카드 3색 소프트 순환: A=accent, B=sky, C=violet
 const accentByIndex = [
@@ -14,9 +14,9 @@ const accentByIndex = [
   { text: toneTokens.violet.text, dot: toneTokens.violet.dot },
 ];
 
-export const SchedulerNeedCards = ({ content, sectionId }: Props) => {
+export const SchedulerNeedCards = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-need" className="space-y-md scroll-mt-24">
+    <section aria-labelledby="heading-need" className="space-y-md">
       <SectionHeader
         id="need"
         eyebrow={content.eyebrow}

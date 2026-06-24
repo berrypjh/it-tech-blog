@@ -103,10 +103,9 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
   return (
     <article
       className={cn(
-        'group flex h-full flex-col gap-sm rounded-lg border p-md transition-all',
+        'group flex h-full flex-col gap-sm rounded-lg border p-md transition-all hover:-translate-y-0.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        tone.borderHover,
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)] lg:scale-[1.02]',
       )}
     >
@@ -161,10 +160,9 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
   return (
     <div
       className={cn(
-        'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg transition-all',
+        'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
-        tone.borderHover,
       )}
     >
       {/* 점선 connector 라벨 */}

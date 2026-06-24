@@ -69,14 +69,18 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                'inline-flex items-center justify-center gap-2 rounded-md px-lg py-3 text-xsm font-bold',
+                'group/cta inline-flex items-center justify-center gap-2 rounded-md px-lg py-3 text-xsm font-bold',
                 'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
-                'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+                'transition-colors hover:bg-[var(--term-surface)]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               )}
             >
               {content.secondaryCta}
-              <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="sr-only">(새 창에서 열림)</span>
+              <ExternalLinkIcon
+                className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+                aria-hidden="true"
+              />
             </a>
           </div>
         </div>

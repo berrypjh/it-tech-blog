@@ -14,15 +14,13 @@ import { surroundingContent } from './content';
 
 type Props = { locale: Locale };
 
-const COMPARISON_SECTION_ID = 'section-comparison';
-
 export const SurroundingDirectoriesPage = ({ locale }: Props) => {
   const c = surroundingContent[locale];
 
   return (
     <StartPageShell>
       <SurroundingDirectoriesHero content={c.hero} />
-      <DirectoryComparisonCards content={c.comparison} sectionId={COMPARISON_SECTION_ID} />
+      <DirectoryComparisonCards content={c.comparison} />
       <FixturesDeepDive content={c.fixtures} />
       <ScriptsDeepDive content={c.scripts} />
       <CompilerIntroSection content={c.compiler} />

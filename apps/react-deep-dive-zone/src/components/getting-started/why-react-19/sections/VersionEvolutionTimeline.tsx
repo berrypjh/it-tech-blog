@@ -45,7 +45,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                 className={cn(
                   'group rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
                   'hover:-translate-y-px hover:shadow-[0_3px_0_var(--term-border)]',
-                  'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+                  'border-[var(--term-border)]',
                 )}
               >
                 <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-sm md:gap-md items-start">

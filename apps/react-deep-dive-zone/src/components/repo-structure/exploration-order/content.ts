@@ -38,10 +38,6 @@ export type ExplorationContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     flowNodes: HeroFlowNode[];
     summaryLine: string[];
   };
@@ -65,10 +61,6 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       },
       description:
         '폴더를 외우는 것이 아니라, 질문을 들고 올바른 경로로 이동하는 감각이 중요합니다.',
-      primaryCta: '전체 로드맵 보기',
-      secondaryCta: 'React GitHub 열기',
-      primaryHref: '#section-routine',
-      repoUrl: 'https://github.com/facebook/react',
       flowNodes: [
         {
           id: 'root',
@@ -178,10 +170,6 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       },
       description:
         'It is not about memorising folders — it is about carrying a question and following the right path.',
-      primaryCta: 'See the full roadmap',
-      secondaryCta: 'Open React on GitHub',
-      primaryHref: '#section-routine',
-      repoUrl: 'https://github.com/facebook/react',
       flowNodes: [
         {
           id: 'root',

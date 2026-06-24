@@ -58,10 +58,6 @@ export type TestCodeContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     implLabel: string;
     implCode: string;
     testLabel: string;
@@ -181,10 +177,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         line4: '보여줍니다.',
       },
       description: 'React 내부를 깊게 읽고 싶다면, 테스트 파일도 함께 읽어야 합니다.',
-      primaryCta: '구현과 테스트 함께 보기',
-      secondaryCta: 'GitHub 테스트 열기',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/react/src/__tests__',
       implLabel: '구현 코드 (ReactJSXElement.js)',
       implCode: heroImplCode,
       testLabel: '테스트 코드 (ReactCreateElement-test.js)',
@@ -389,10 +381,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       },
       description:
         'If you want to read React internals deeply, you have to read the test files too.',
-      primaryCta: 'See implementation + tests',
-      secondaryCta: 'Open tests on GitHub',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/react/src/__tests__',
       implLabel: 'Implementation (ReactJSXElement.js)',
       implCode: heroImplCode,
       testLabel: 'Tests (ReactCreateElement-test.js)',

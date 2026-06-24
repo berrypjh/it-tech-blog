@@ -3,7 +3,7 @@ import { cn } from '@it-tech-blog/utils';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { WhyOpenSourceContent } from '../content';
-import { ChevronRightIcon, CodeIcon, priorityIconByName } from '../icons';
+import { CodeIcon, ExternalLinkIcon, priorityIconByName } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['readingPriorities'] };
 
@@ -68,12 +68,13 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                   {row.description}
                 </p>
 
-                {/* chevron */}
+                {/* 외부 링크 ↗ */}
+                <span className="sr-only">(새 창에서 열림)</span>
                 <span
                   aria-hidden="true"
-                  className="text-[var(--term-dim)] group-hover:text-[var(--term-fg)] group-hover:translate-x-0.5 transition-all"
+                  className="text-[var(--term-accent)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 >
-                  <ChevronRightIcon className="h-4 w-4" />
+                  <ExternalLinkIcon className="h-4 w-4" />
                 </span>
 
                 {/* 모바일 전용 설명 (밑줄) */}

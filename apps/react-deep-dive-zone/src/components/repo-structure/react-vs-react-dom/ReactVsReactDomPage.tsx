@@ -13,8 +13,6 @@ import { reactVsReactDomContent } from './content';
 
 type Props = { locale: Locale };
 
-const COMPARISON_SECTION_ID = 'section-comparison';
-
 export const ReactVsReactDomPage = ({ locale }: Props) => {
   const c = reactVsReactDomContent[locale];
 
@@ -22,7 +20,7 @@ export const ReactVsReactDomPage = ({ locale }: Props) => {
     <StartPageShell>
       <ReactVsReactDomHero content={c.hero} />
       <ReactDomMisconceptionSection content={c.misconception} />
-      <ReactDomComparisonTable content={c.comparison} sectionId={COMPARISON_SECTION_ID} />
+      <ReactDomComparisonTable content={c.comparison} />
       <ReactDomUsageFlowSection content={c.usage} />
       <CreateRootCheckpoint content={c.checkpoint} />
       <ReactDomEntrypointsSection content={c.entrypoints} />

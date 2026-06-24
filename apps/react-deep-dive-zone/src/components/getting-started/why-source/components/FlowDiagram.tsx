@@ -50,7 +50,6 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
                   'px-2 py-3 transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   t.border,
-                  t.borderHover,
                 )}
               >
                 <span

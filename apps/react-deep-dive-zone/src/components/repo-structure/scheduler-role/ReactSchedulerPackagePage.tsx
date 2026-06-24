@@ -14,15 +14,13 @@ import { schedulerContent } from './content';
 
 type Props = { locale: Locale };
 
-const NEED_SECTION_ID = 'section-need';
-
 export const ReactSchedulerPackagePage = ({ locale }: Props) => {
   const c = schedulerContent[locale];
 
   return (
     <StartPageShell>
       <SchedulerHero content={c.hero} />
-      <SchedulerNeedCards content={c.need} sectionId={NEED_SECTION_ID} />
+      <SchedulerNeedCards content={c.need} />
       <ReconcilerSchedulerRelation content={c.relation} />
       <SchedulerPriorityTable content={c.priority} />
       <ScheduleCallbackCheckpoint content={c.checkpoint} />

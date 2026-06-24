@@ -13,15 +13,13 @@ import { changelogContent } from './content';
 
 type Props = { locale: Locale };
 
-const COMPARISON_SECTION_ID = 'section-comparison';
-
 export const ChangelogReleasesPage = ({ locale }: Props) => {
   const c = changelogContent[locale];
 
   return (
     <StartPageShell>
       <VersionContextHero content={c.hero} />
-      <ChangelogReleasesComparisonTable content={c.comparison} sectionId={COMPARISON_SECTION_ID} />
+      <ChangelogReleasesComparisonTable content={c.comparison} />
       <SourceChoiceScenarioCards content={c.scenarios} />
       <LatestReleaseExample content={c.latest} />
       <ChangelogTimeline content={c.timeline} />

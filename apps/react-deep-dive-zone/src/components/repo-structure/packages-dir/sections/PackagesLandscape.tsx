@@ -6,13 +6,13 @@ import { PackagePill } from '../components/PackagePill';
 import type { PackagesDirectoryContent } from '../content';
 import { LayersIcon } from '../icons';
 
-type Props = { content: PackagesDirectoryContent['landscape']; sectionId?: string };
+type Props = { content: PackagesDirectoryContent['landscape'] };
 
 const coreTones: ToneKey[] = ['blue', 'emerald', 'violet', 'amber', 'teal'];
 
-export const PackagesLandscape = ({ content, sectionId }: Props) => {
+export const PackagesLandscape = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-landscape" className="space-y-md scroll-mt-24">
+    <section aria-labelledby="heading-landscape" className="space-y-md">
       <SectionHeader
         id="landscape"
         eyebrow={content.eyebrow}

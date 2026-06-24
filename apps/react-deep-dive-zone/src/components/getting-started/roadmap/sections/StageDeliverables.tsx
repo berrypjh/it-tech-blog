@@ -39,7 +39,7 @@ export const StageDeliverables = ({ content }: Props) => {
                   'group relative flex flex-col items-center text-center w-full h-full gap-sm rounded-lg border bg-[var(--term-bg)]',
                   'p-md pt-lg transition-all',
                   'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
-                  'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+                  'border-[var(--term-border)]',
                   isFinal && 'ring-2 ring-amber-300/40 dark:ring-amber-500/30',
                 )}
               >

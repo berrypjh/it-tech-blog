@@ -74,7 +74,7 @@ export const QuestionToSourceMap = ({ content }: Props) => {
           return (
             <li
               key={row.id}
-              className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-colors hover:bg-[var(--term-surface)]"
+              className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5"
             >
               {/* question pill */}
               <span

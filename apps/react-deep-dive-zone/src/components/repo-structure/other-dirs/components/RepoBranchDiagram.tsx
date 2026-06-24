@@ -95,7 +95,7 @@ const BranchCard = ({ node, index }: BranchCardProps) => {
       className={cn(
         'group flex w-full flex-col items-center gap-1 rounded-lg border',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'px-3 py-3 text-center transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'px-3 py-3 text-center transition-all hover:-translate-y-0.5',
       )}
     >
       <span

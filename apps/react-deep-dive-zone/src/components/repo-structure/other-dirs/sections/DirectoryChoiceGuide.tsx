@@ -42,9 +42,9 @@ const ChoiceCardItem = ({ card, index }: ItemProps) => {
   return (
     <article
       className={cn(
-        'group flex w-full flex-col items-center text-center gap-sm rounded-xl border',
-        'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'p-md sm:p-lg transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'group flex w-full flex-col items-center text-center gap-sm rounded-lg border',
+        'border-[var(--term-border)] bg-[var(--term-bg)]',
+        'p-md sm:p-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span

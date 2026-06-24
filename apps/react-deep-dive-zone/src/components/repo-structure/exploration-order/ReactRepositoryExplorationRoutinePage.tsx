@@ -9,15 +9,13 @@ import { explorationContent } from './content';
 
 type Props = { locale: Locale };
 
-const ROUTINE_SECTION_ID = 'section-routine';
-
 export const ReactRepositoryExplorationRoutinePage = ({ locale }: Props) => {
   const c = explorationContent[locale];
 
   return (
     <StartPageShell>
       <ExplorationRoutineHero content={c.hero} />
-      <FinalExplorationRoutineSteps content={c.routine} sectionId={ROUTINE_SECTION_ID} />
+      <FinalExplorationRoutineSteps content={c.routine} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

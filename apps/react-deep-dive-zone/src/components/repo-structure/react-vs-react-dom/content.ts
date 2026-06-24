@@ -57,10 +57,6 @@ export type ReactVsReactDomContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     reactCard: RoleCard;
     reactDomCard: RoleCard;
     relationTopLine: string;
@@ -165,10 +161,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       title: { line1: 'React와 React DOM은', line2: '역할이 다릅니다.' },
       description:
         'react는 컴포넌트와 상태를 설명하는 API를 제공하고, react-dom은 그 결과를 브라우저 DOM에 연결합니다.',
-      primaryCta: '역할 비교 정리 보기',
-      secondaryCta: 'React GitHub 열기',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages',
       reactCard: {
         id: 'react',
         title: 'react',
@@ -246,7 +238,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         lead: 'createRoot → react-dom',
         description: '정의된 UI를 브라우저 DOM에 연결',
       },
-      flowHeading: '호흡 한눈에 보기',
+      flowHeading: '흐름 한눈에 보기',
       topFlow: [
         {
           id: 'component-code',
@@ -365,10 +357,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       title: { line1: 'React and React DOM', line2: 'play different roles.' },
       description:
         'react provides APIs that describe components and state, while react-dom connects those descriptions to the browser DOM.',
-      primaryCta: 'See the role comparison',
-      secondaryCta: 'Open React on GitHub',
-      primaryHref: '#section-comparison',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages',
       reactCard: {
         id: 'react',
         title: 'react',

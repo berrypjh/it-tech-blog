@@ -5,15 +5,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { ComparePoint, TestCodeContent } from '../content';
 import { CheckCircleIcon, CodeIcon, FlaskIcon, QuoteIcon } from '../icons';
 
-type Props = { content: TestCodeContent['comparison']; sectionId?: string };
+type Props = { content: TestCodeContent['comparison'] };
 
-export const WhyTestsMatterComparison = ({ content, sectionId }: Props) => {
+export const WhyTestsMatterComparison = ({ content }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-comparison"
-      className="space-y-md scroll-mt-24"
-    >
+    <section aria-labelledby="heading-comparison" className="space-y-md">
       <SectionHeader
         id="comparison"
         eyebrow={content.eyebrow}

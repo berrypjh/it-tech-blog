@@ -31,9 +31,6 @@ export type ComparisonCard = {
   name: string;
   subtitle: string;
   description: string;
-  importanceLabel: string;
-  /** 1 ~ 3 — 채워진 별 갯수 */
-  rating: 1 | 2 | 3;
   tone: ToneKey;
   icon: IconName;
 };
@@ -59,7 +56,6 @@ export type SurroundingContent = {
     badge: string;
     title: { lead: string; tail: string };
     description: string;
-    locationPill: string;
     rootLabel: string;
     rootCaption: string;
     branches: HeroBranchNode[];
@@ -150,7 +146,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       },
       description:
         '실험을 위한 예제, 빌드와 릴리즈를 위한 스크립트, 컴파일러 프로젝트까지 함께 존재합니다.',
-      locationPill: '위치: facebook/react (main)',
       rootLabel: 'facebook / react',
       rootCaption: '저장소 루트',
       branches: [
@@ -188,8 +183,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'fixtures',
           subtitle: '기능 실험, 재현, 데모',
           description: 'React의 동작을 다양한 환경에서 실험하고 확인하는 공간입니다.',
-          importanceLabel: '학습 초반 중요도',
-          rating: 3,
           tone: 'emerald',
           icon: 'flask',
         },
@@ -198,8 +191,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'scripts',
           subtitle: '빌드, 릴리즈, 오류 코드, 자동화',
           description: 'React 저장소를 빌드하고 배포하며 관리하는 자동화 도구 모음입니다.',
-          importanceLabel: '학습 초반 중요도',
-          rating: 2,
           tone: 'violet',
           icon: 'terminal',
         },
@@ -209,8 +200,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: 'React Compiler 개발 영역',
           description:
             '컴파일 최적화와 자동 메모이제이션 등을 연구·개발하는 별도 프로젝트 영역입니다.',
-          importanceLabel: '학습 초반 중요도',
-          rating: 1,
           tone: 'amber',
           icon: 'cuboid',
         },
@@ -305,7 +294,8 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
         'React Compiler는 런타임 코드와는 다른 축의 프로젝트입니다. 런타임 성능 향상을 위한 컴파일 최적화, 자동 메모이제이션 등을 연구합니다.',
         '컴파일 최적화와 자동 메모이제이션 흐름이 궁금할 때 보면 좋습니다. 아직 실험성이 강해 별도로 변화하는 영역이므로 깊이 있게 다룰 시점이 다를 수 있습니다.',
       ],
-      callout: '이 시리즈 초반에는 우선순위가 낮고, 별도 고급 주제로 분리하는 것이 적절합니다.',
+      callout:
+        '지금은 compiler가 런타임과 분리된 별도 축이라는 것만 기억해 두세요. 깊은 분석은 런타임 흐름에 익숙해진 뒤로 미뤄도 됩니다.',
     },
     errorCodes: {
       eyebrow: '05 · 코드 밖 파일',
@@ -370,7 +360,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       },
       description:
         'Examples for experimentation, scripts for builds and releases, and the compiler project all live here too.',
-      locationPill: 'Location: facebook/react (main)',
       rootLabel: 'facebook / react',
       rootCaption: 'Repository root',
       branches: [
@@ -408,8 +397,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'fixtures',
           subtitle: 'Experiments, repros, demos',
           description: 'A space to experiment with and verify React’s behaviour in many setups.',
-          importanceLabel: 'Early-stage priority',
-          rating: 3,
           tone: 'emerald',
           icon: 'flask',
         },
@@ -419,8 +406,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: 'Build, release, error codes, automation',
           description:
             'A collection of automation tools that build, release and maintain the React repo.',
-          importanceLabel: 'Early-stage priority',
-          rating: 2,
           tone: 'violet',
           icon: 'terminal',
         },
@@ -430,8 +415,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: 'React Compiler project',
           description:
             'A separate project that researches compile-time optimisation and auto memoisation.',
-          importanceLabel: 'Early-stage priority',
-          rating: 1,
           tone: 'amber',
           icon: 'cuboid',
         },
@@ -527,7 +510,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
         'Read it when you want to understand compile-time optimisation and auto memoisation. It is still experimental and evolves separately, so depth-first study may be better later.',
       ],
       callout:
-        'Early in this series it is lower priority, and best handled as a separate advanced topic.',
+        'For now, just remember that the compiler sits on a separate axis from the runtime. Save the deep dive for once you are comfortable with the runtime flow.',
     },
     errorCodes: {
       eyebrow: '05 · BEYOND CODE',

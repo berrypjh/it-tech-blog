@@ -13,15 +13,13 @@ import { reconcilerEntryContent } from './content';
 
 type Props = { locale: Locale };
 
-const POSITION_SECTION_ID = 'section-position';
-
 export const ReactReconcilerEntryPage = ({ locale }: Props) => {
   const c = reconcilerEntryContent[locale];
 
   return (
     <StartPageShell>
       <ReconcilerHero content={c.hero} />
-      <ReconcilerPositionFlow content={c.position} sectionId={POSITION_SECTION_ID} />
+      <ReconcilerPositionFlow content={c.position} />
       <ReconcilerVsRenderer content={c.compare} />
       <ReconcilerInternalProcess content={c.process} />
       <CreateFiberCheckpoint content={c.checkpoint} />

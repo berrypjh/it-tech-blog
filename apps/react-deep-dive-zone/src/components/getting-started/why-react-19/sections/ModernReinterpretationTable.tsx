@@ -18,7 +18,7 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
       <ul className="flex flex-col gap-md">
         {content.rows.map((row, idx) => (
           <li key={idx}>
-            <article className="group rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px hover:shadow-[0_2px_0_var(--term-border)] hover:border-[var(--term-accent)]">
+            <article className="group rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px hover:shadow-[0_2px_0_var(--term-border)]">
               <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.5fr)] gap-sm md:gap-md items-center">
                 {/* 과거에는 */}
                 <div className="flex flex-col gap-1.5">

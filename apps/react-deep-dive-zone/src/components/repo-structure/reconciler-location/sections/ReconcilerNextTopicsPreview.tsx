@@ -8,13 +8,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
 
-const cycleText = ['text-[var(--term-accent)]', toneTokens.sky.text, toneTokens.violet.text];
-
 type Props = { content: ReconcilerEntryContent['preview'] };
 
 export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-preview" className="space-y-md">
+    <section aria-labelledby="heading-preview" className="space-y-lg">
       <SectionHeader
         id="preview"
         eyebrow={content.eyebrow}
@@ -28,7 +26,6 @@ export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
           <PreviewCardWithArrow
             key={card.id}
             card={card}
-            index={idx}
             isLast={idx === content.cards.length - 1}
           />
         ))}
@@ -37,11 +34,11 @@ export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
   );
 };
 
-type WithArrowProps = { card: PreviewCard; index: number; isLast: boolean };
+type WithArrowProps = { card: PreviewCard; isLast: boolean };
 
-const PreviewCardWithArrow = ({ card, index, isLast }: WithArrowProps) => (
+const PreviewCardWithArrow = ({ card, isLast }: WithArrowProps) => (
   <>
-    <PreviewCardItem card={card} index={index} />
+    <PreviewCardItem card={card} />
     {!isLast && <PreviewArrow />}
   </>
 );
@@ -53,37 +50,33 @@ const PreviewArrow = () => (
   </div>
 );
 
-type ItemProps = { card: PreviewCard; index: number };
-
-const PreviewCardItem = ({ card, index }: ItemProps) => {
-  const textColor = cycleText[index % cycleText.length];
-  return (
-    <Link
-      href={card.href}
-      className="group/card h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
-    >
-      <ToneCard tone={card.tone} className="w-full">
-        <header className="flex items-center justify-between gap-sm">
-          <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
-        </header>
-        <h3
-          className={cn(
-            'text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line',
-          )}
-        >
-          {card.title}
-        </h3>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
-          {card.description}
-        </p>
-        <div className={cn('pt-xs text-xsm font-bold inline-flex items-center gap-1', textColor)}>
-          <span className="uppercase tracking-wider text-[10px]">explore</span>
-          <ArrowRightIcon
-            className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </div>
-      </ToneCard>
-    </Link>
-  );
-};
+const PreviewCardItem = ({ card }: { card: PreviewCard }) => (
+  <Link
+    href={card.href}
+    className="group/card h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
+  >
+    <ToneCard tone={card.tone} nav className="w-full">
+      <header className="flex items-center justify-between gap-sm">
+        <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
+      </header>
+      <h3 className="text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line">
+        {card.title}
+      </h3>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
+        {card.description}
+      </p>
+      <div
+        className={cn(
+          'pt-xs text-xsm font-bold inline-flex items-center gap-1',
+          toneTokens[card.tone].text,
+        )}
+      >
+        <span className="uppercase tracking-wider text-[10px]">explore</span>
+        <ArrowRightIcon
+          className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
+          aria-hidden="true"
+        />
+      </div>
+    </ToneCard>
+  </Link>
+);

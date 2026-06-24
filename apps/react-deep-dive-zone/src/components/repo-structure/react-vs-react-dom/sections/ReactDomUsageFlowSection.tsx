@@ -20,7 +20,6 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
-        {/* 좌측 dark code + explanation pills */}
         <div className="flex flex-col gap-md min-w-0">
           <CodePreviewPanel
             header={content.codeHeader}
@@ -43,7 +42,6 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
           </div>
         </div>
 
-        {/* 우측 flow diagram */}
         <RoleFlowDiagram content={content} />
       </div>
     </section>
@@ -57,10 +55,13 @@ type ExplanationPillProps = {
 };
 
 const ExplanationPill = ({ accentClass, lead, description }: ExplanationPillProps) => (
-  <div className="flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3">
+  <div className="flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]">
     <span
       aria-hidden="true"
-      className={cn('mt-1 inline-block w-2 h-2 rounded-full bg-current', accentClass)}
+      className={cn(
+        'mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-current shrink-0',
+        accentClass,
+      )}
     />
     <div className="flex flex-col gap-0.5 min-w-0">
       <span className={cn('text-xsm font-bold font-mono tracking-tight break-keep', accentClass)}>

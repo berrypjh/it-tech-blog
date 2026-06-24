@@ -5,11 +5,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { ExplorationContent, RoutineStep } from '../content';
 import { iconByName, MapIcon } from '../icons';
 
-type Props = { content: ExplorationContent['routine']; sectionId?: string };
+type Props = { content: ExplorationContent['routine'] };
 
-export const FinalExplorationRoutineSteps = ({ content, sectionId }: Props) => {
+export const FinalExplorationRoutineSteps = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-routine" className="space-y-md scroll-mt-24">
+    <section aria-labelledby="heading-routine" className="space-y-md">
       <SectionHeader
         id="routine"
         eyebrow={content.eyebrow}

@@ -31,8 +31,10 @@ export const RoleFlowDiagram = ({ content }: Props) => {
           aria-hidden="true"
           className="flex-1 border-t border-dashed border-[var(--term-border)]"
         />
-        <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
-          react ↔ react-dom
+        <span className="text-[10px] uppercase tracking-wider">
+          <span className="font-bold text-[var(--term-accent)]">react</span>
+          <span className="text-[var(--term-muted)]"> ↔ </span>
+          <span className={cn('font-bold', toneTokens.sky.text)}>react-dom</span>
         </span>
         <span
           aria-hidden="true"
@@ -69,15 +71,19 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-6 h-6 rounded-md border shrink-0',
-            'bg-[var(--term-surface)] border-[var(--term-border)]',
-            isPackage ? accent : 'text-[var(--term-muted)]',
+            'inline-flex items-center justify-center w-7 h-7 rounded-md border shrink-0 bg-[var(--term-surface)]',
+            isPackage
+              ? cn(accent, 'border-current')
+              : 'border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
-          <Icon className="h-3.5 w-3.5" />
+          <Icon className="h-4 w-4" />
         </span>
         {!isLast && (
-          <span aria-hidden="true" className="w-px flex-1 my-1 bg-[var(--term-border)]" />
+          <span
+            aria-hidden="true"
+            className="w-0 flex-1 my-1 border-l border-dashed border-[var(--term-border)]"
+          />
         )}
       </div>
 
@@ -96,7 +102,7 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
             <span
               className={cn(
                 'rounded border px-1.5 py-px text-[9px] font-bold uppercase tracking-wider',
-                'border-[var(--term-border)]',
+                'border-current/40',
                 accent,
               )}
             >

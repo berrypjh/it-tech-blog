@@ -10,11 +10,11 @@ import {
   SparklesIcon,
 } from '../icons';
 
-type Props = { content: SharedContent['why']; sectionId?: string };
+type Props = { content: SharedContent['why'] };
 
-export const WhySharedSection = ({ content, sectionId }: Props) => {
+export const WhySharedSection = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-why" className="space-y-md scroll-mt-24">
+    <section aria-labelledby="heading-why" className="space-y-md">
       <SectionHeader
         id="why"
         eyebrow={content.eyebrow}

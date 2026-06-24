@@ -76,7 +76,7 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
       className={cn(
         'group flex flex-col gap-md w-full rounded-lg border bg-[var(--term-bg)]',
         'p-md sm:p-lg transition-all',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'hover:-translate-y-0.5 hover:shadow-[0_3px_0_var(--term-border)]',
       )}
     >
@@ -119,14 +119,17 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md border border-[var(--term-border)] text-xsm font-bold',
+          'group/cta mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md border border-[var(--term-border)] text-xsm font-bold',
           'text-[var(--term-accent)] transition-colors hover:bg-[var(--term-surface)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         )}
       >
         {card.cta}
         <span className="sr-only">(새 창에서 열림)</span>
-        <ExternalLinkIcon className="h-3.5 w-3.5 opacity-80" aria-hidden="true" />
+        <ExternalLinkIcon
+          className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+          aria-hidden="true"
+        />
       </a>
     </article>
   );

@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
 import type { ReactVsReactDomContent } from '../content';
-import { ArrowRightIcon, SparklesIcon } from '../icons';
+import { ArrowRightIcon, CheckCircleIcon, HelpCircleIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactVsReactDomContent['misconception'] };
 
@@ -13,7 +13,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
         id="misconception"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<HelpCircleIcon className="h-5 w-5" />}
       />
 
       <div
@@ -33,7 +33,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
                 'text-[10px] font-bold uppercase tracking-wider',
               )}
             >
-              <span aria-hidden="true">×</span>
+              <XCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />
               {content.leftBadge}
             </span>
 
@@ -47,16 +47,10 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
 
           {/* 중앙 화살표 */}
           <div className="flex items-center justify-center px-md py-sm lg:py-md border-y border-dashed border-[var(--term-border)] lg:border-y-0 lg:border-x">
-            <span
+            <ArrowRightIcon
               aria-hidden="true"
-              className={cn(
-                'inline-flex items-center justify-center w-10 h-10 rounded-full',
-                'bg-[var(--term-bg)] border border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-                'text-[var(--term-accent)] rotate-90 lg:rotate-0',
-              )}
-            >
-              <ArrowRightIcon className="h-5 w-5" />
-            </span>
+              className="h-4 w-4 rotate-90 text-[var(--term-border)] lg:rotate-0"
+            />
           </div>
 
           {/* 오른쪽 - 정확히 */}
@@ -69,7 +63,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
                 'text-[10px] font-bold uppercase tracking-wider',
               )}
             >
-              <span aria-hidden="true">✓</span>
+              <CheckCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />
               {content.rightBadge}
             </span>
 

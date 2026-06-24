@@ -5,15 +5,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
 import { BookOpenIcon, TagIcon } from '../icons';
 
-type Props = { content: ChangelogContent['comparison']; sectionId?: string };
+type Props = { content: ChangelogContent['comparison'] };
 
-export const ChangelogReleasesComparisonTable = ({ content, sectionId }: Props) => {
+export const ChangelogReleasesComparisonTable = ({ content }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-comparison"
-      className="space-y-md scroll-mt-24"
-    >
+    <section aria-labelledby="heading-comparison" className="space-y-md">
       <SectionHeader
         id="comparison"
         eyebrow={content.eyebrow}

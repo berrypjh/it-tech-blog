@@ -12,8 +12,6 @@ import { repoOverviewContent } from './content';
 
 type Props = { locale: Locale };
 
-const DIRECTORY_SECTION_ID = 'section-directory';
-
 export const RepoOverviewPage = ({ locale }: Props) => {
   const c = repoOverviewContent[locale];
 
@@ -22,7 +20,7 @@ export const RepoOverviewPage = ({ locale }: Props) => {
       <RepoOverviewHero content={c.hero} />
       <RepoOverwhelmCard content={c.overwhelm} />
       <RepoRootMiniMap content={c.miniMap} />
-      <RootDirectorySummary content={c.directory} sectionId={DIRECTORY_SECTION_ID} />
+      <RootDirectorySummary content={c.directory} />
       <RootFilesSummary content={c.rootFiles} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

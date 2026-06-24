@@ -19,18 +19,14 @@ import type { IconName } from './content';
 export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  CheckCircle2 as CheckCircleIcon,
-  CircleAlert as CircleAlertIcon,
   ExternalLink as ExternalLinkIcon,
   FileJson as FileJsonIcon,
   Folder as FolderIcon,
   Info as InfoIcon,
   Lightbulb as LightbulbIcon,
   MapPinned as MapPinnedIcon,
-  Pin as PinIcon,
   RotateCcw as RotateIcon,
   Sparkles as SparklesIcon,
-  Star as StarIcon,
   TerminalSquare as TerminalIcon,
 } from 'lucide-react';
 

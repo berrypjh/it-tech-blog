@@ -13,15 +13,13 @@ import { testCodeContent } from './content';
 
 type Props = { locale: Locale };
 
-const COMPARISON_SECTION_ID = 'section-comparison';
-
 export const ReactTestCodeImportancePage = ({ locale }: Props) => {
   const c = testCodeContent[locale];
 
   return (
     <StartPageShell>
       <TestCodeHero content={c.hero} />
-      <WhyTestsMatterComparison content={c.comparison} sectionId={COMPARISON_SECTION_ID} />
+      <WhyTestsMatterComparison content={c.comparison} />
       <FourThingsTestsReveal content={c.insights} />
       <ImplementationTestPairMap content={c.pairMap} />
       <ReactCreateElementTestSpotlight content={c.spotlight} />

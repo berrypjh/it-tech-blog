@@ -69,10 +69,6 @@ export type SharedContent = {
     badge: string;
     title: { line1: string; line2: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     hubTitle: string;
     hubSubtitle: string;
     hubTags: string[];
@@ -162,10 +158,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       description:
         '여러 패키지가 공통으로 쓰는 타입, 심벌, 버전, 유틸이 shared 패키지에 모여 있기 때문입니다.',
-      primaryCta: 'shared 지도 보기',
-      secondaryCta: 'GitHub에서 열기',
-      primaryHref: '#section-why',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/shared',
       hubTitle: 'shared',
       hubSubtitle: '공통 기반층',
       hubTags: ['타입', '심벌', '버전', '플래그', '유틸'],
@@ -383,10 +375,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       description:
         'shared collects the types, symbols, versions and utilities that every package needs to agree on.',
-      primaryCta: 'See the shared map',
-      secondaryCta: 'Open on GitHub',
-      primaryHref: '#section-why',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/shared',
       hubTitle: 'shared',
       hubSubtitle: 'Common foundation',
       hubTags: ['Types', 'Symbols', 'Version', 'Flags', 'Utils'],

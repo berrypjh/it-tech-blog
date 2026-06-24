@@ -36,8 +36,6 @@ export type RepoOverviewContent = {
     badge: string;
     title: { lead: string; tail: string };
     description: string;
-    repoUrlLabel: string;
-    repoUrl: string;
     treeHeader: string;
     treeRows: RepoTreeRow[];
     codePreview: string;
@@ -101,8 +99,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       },
       description:
         '먼저 구조를 읽으세요. 어디에 무엇이 있는지 알면 이후 소스코드 독해 속도가 훨씬 빨라집니다.',
-      repoUrlLabel: '저장소',
-      repoUrl: 'https://github.com/facebook/react',
       treeHeader: 'facebook / react',
       treeRows: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },
@@ -332,8 +328,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       },
       description:
         'Read the structure first. Knowing where things live makes everything you read afterwards much faster.',
-      repoUrlLabel: 'Repository',
-      repoUrl: 'https://github.com/facebook/react',
       treeHeader: 'facebook / react',
       treeRows: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },

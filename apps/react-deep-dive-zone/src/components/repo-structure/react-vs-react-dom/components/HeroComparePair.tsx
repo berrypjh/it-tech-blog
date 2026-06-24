@@ -39,7 +39,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
         'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
         'shadow-[0_3px_0_var(--term-border)]',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">

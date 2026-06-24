@@ -76,10 +76,6 @@ export type SchedulerContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    repoUrl: string;
     priorityHighLabel: string;
     priorityLowLabel: string;
     priorityCards: HeroPriorityCard[];
@@ -191,10 +187,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
       description:
         '입력 반응은 빠르게, 덜 급한 화면 갱신은 상황에 맞게. scheduler는 작업 실행 타이밍을 조율합니다.',
-      primaryCta: 'scheduler 지도 보기',
-      secondaryCta: 'GitHub에서 보기',
-      primaryHref: '#section-need',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/scheduler',
       priorityHighLabel: '우선순위 높음',
       priorityLowLabel: '우선순위 낮음',
       priorityCards: [
@@ -427,10 +419,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       },
       description:
         'Input must feel instant, less urgent updates can wait. The scheduler arranges when work runs.',
-      primaryCta: 'See the scheduler map',
-      secondaryCta: 'Open on GitHub',
-      primaryHref: '#section-need',
-      repoUrl: 'https://github.com/facebook/react/tree/main/packages/scheduler',
       priorityHighLabel: 'High priority',
       priorityLowLabel: 'Low priority',
       priorityCards: [

@@ -1,13 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { CheckCircleIcon, CircleAlertIcon, FolderIcon } from '../icons';
+import { FolderIcon, InfoIcon } from '../icons';
 
 type Props = { content: SurroundingContent['compiler'] };
-
-const tone = toneTokens.amber;
 
 export const CompilerIntroSection = ({ content }: Props) => {
   return (
@@ -20,7 +18,6 @@ export const CompilerIntroSection = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.36fr)_minmax(0,_0.64fr)] gap-md items-stretch">
-        {/* 좌측 tree card */}
         <article
           className={cn(
             'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
@@ -30,20 +27,17 @@ export const CompilerIntroSection = ({ content }: Props) => {
           <header className="flex items-center gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
-                'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-                tone.chip,
-              )}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
             >
               <FolderIcon className="h-5 w-5" />
             </span>
             <div className="flex flex-col min-w-0">
-              <h3 className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
+              <h3 className="text-md sm:text-lg font-bold font-mono tracking-tight text-[var(--term-fg)]">
                 {content.treeHeader}
               </h3>
-              <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">
+              <span className="text-[11px] text-[var(--term-muted)] break-keep">
                 {content.treeSubtitle}
-              </p>
+              </span>
             </div>
           </header>
 
@@ -67,35 +61,24 @@ export const CompilerIntroSection = ({ content }: Props) => {
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
           )}
         >
-          <ul className="flex flex-col gap-md">
+          <ul className="flex flex-col gap-1.5">
             {content.bullets.map((bullet, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-2 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep"
+                className="flex items-start gap-2 text-xsm sm:text-sm text-[var(--term-fg)]"
               >
-                <CheckCircleIcon
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[var(--term-accent)]"
+                <span
                   aria-hidden="true"
+                  className="mt-2 inline-block w-1 h-1 rounded-full bg-[var(--term-accent)] shrink-0"
                 />
-                <span>{bullet}</span>
+                <span className="leading-relaxed break-keep">{bullet}</span>
               </li>
             ))}
           </ul>
 
-          <div
-            className={cn(
-              'mt-auto flex items-start gap-sm rounded-md border border-dashed p-md',
-              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-            )}
-          >
-            <CircleAlertIcon
-              className="mt-0.5 h-5 w-5 shrink-0 text-[var(--term-accent)]"
-              aria-hidden="true"
-            />
-            <p className="text-xsm sm:text-sm leading-snug font-medium break-keep">
-              {content.callout}
-            </p>
-          </div>
+          <SectionNote className="mt-auto" icon={<InfoIcon className="h-4 w-4" />}>
+            {content.callout}
+          </SectionNote>
         </article>
       </div>
     </section>

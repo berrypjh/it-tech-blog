@@ -57,13 +57,7 @@ export const ComparisonTable = ({ headers, rows, caption, columnWidths, classNam
                 scope="row"
                 className="px-md py-3 align-top text-xsm font-bold text-[var(--term-fg)]"
               >
-                <span className="inline-flex items-center gap-1.5">
-                  <span
-                    aria-hidden="true"
-                    className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
-                  />
-                  {row.label}
-                </span>
+                {row.label}
               </th>
               {row.cells.map((cell, ci) => (
                 <td
@@ -82,11 +76,7 @@ export const ComparisonTable = ({ headers, rows, caption, columnWidths, classNam
         {rows.map((row, idx) => (
           <li key={idx}>
             <div className="flex flex-col gap-0.5 bg-[var(--term-surface)] px-md py-sm">
-              <span className="inline-flex items-center gap-1.5 text-xxsm uppercase tracking-wider text-[var(--term-dim)]">
-                <span
-                  aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-accent)]"
-                />
+              <span className="text-xxsm uppercase tracking-wider text-[var(--term-dim)]">
                 {headers[0]}
               </span>
               <p className="text-sm font-bold text-[var(--term-fg)] break-keep">{row.label}</p>

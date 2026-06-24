@@ -20,11 +20,12 @@ export {
   Code2 as CodeIcon,
   ExternalLink as ExternalLinkIcon,
   FileCode2 as FileCodeIcon,
+  CircleHelp as HelpCircleIcon,
   Info as InfoIcon,
   Map as MapIcon,
   RotateCcw as RotateIcon,
-  Sparkles as SparklesIcon,
   Split as SplitIcon,
+  XCircle as XCircleIcon,
 } from 'lucide-react';
 
 type LucideLike = ComponentType<SVGProps<SVGSVGElement>>;

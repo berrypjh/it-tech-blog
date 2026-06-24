@@ -6,9 +6,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { ChevronDown, ChevronRight, File, Folder, FolderOpen } from 'lucide-react';
 
-/** 저장소 트리 노드. kind는 폴더(dir·folder)와 잎(doc·file)을 모두 받는다. */
 export type RepoBrowserTreeNode = {
-  /** 선택 키. 없으면 name을 키로 쓴다(이름이 곧 식별자인 경우). */
   id?: string;
   name: string;
   kind: 'dir' | 'doc' | 'folder' | 'file';
@@ -32,18 +30,11 @@ const collectOpenKeys = (
 
 type Props = {
   tree: RepoBrowserTreeNode[];
-  /** 현재 선택된 노드 키 */
   selected: string;
   onSelect: (key: string) => void;
-  /** 선택 가능한(=디테일이 있는) 노드 키인지 */
   hasDetail: (key: string) => boolean;
 };
 
-/**
- * 재귀 저장소 트리. 폴더는 펼치기/접기, 디테일이 있는 노드는 선택 가능.
- * 평면 데이터(children 없음)면 자동으로 1단계 목록으로 렌더된다.
- * 선택 상태는 상위가 소유하고, 펼침 상태만 내부에서 관리한다.
- */
 export const RepoBrowserTree = ({ tree, selected, onSelect, hasDetail }: Props) => {
   const [openKeys, setOpenKeys] = useState(() => collectOpenKeys(tree));
 
@@ -109,7 +100,7 @@ const TreeNode = ({
     'flex items-center gap-1.5 w-full py-1 pr-2 rounded text-xsm font-mono text-left transition-colors',
     isSelected
       ? 'bg-[var(--term-surface)] text-[var(--term-accent)] font-bold'
-      : 'text-[var(--term-fg)] hover:bg-[var(--term-surface)]',
+      : cn('text-[var(--term-fg)]', interactive && 'hover:bg-[var(--term-surface)]'),
     interactive ? 'cursor-pointer' : 'cursor-default',
   );
 

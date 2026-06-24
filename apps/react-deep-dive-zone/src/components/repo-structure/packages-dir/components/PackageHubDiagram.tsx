@@ -100,7 +100,6 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
         'group flex w-full flex-col items-center gap-1 rounded-lg border',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'px-2 py-2.5 text-center transition-all hover:-translate-y-0.5',
-        tone.borderHover,
       )}
     >
       <span

@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +8,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { RepoBranchDiagram } from '../components/RepoBranchDiagram';
 import type { SurroundingContent } from '../content';
-import { PinIcon } from '../icons';
 
 type Props = { content: SurroundingContent['hero'] };
 
@@ -36,17 +33,6 @@ export const SurroundingDirectoriesHero = ({ content }: Props) => {
         </HeroTitle>
 
         <HeroDescription>{content.description}</HeroDescription>
-
-        <span
-          className={cn(
-            'mt-xs inline-flex w-fit max-w-full items-center gap-2 rounded-md',
-            'border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-1.5 text-[10px]',
-            'text-[var(--term-accent)]',
-          )}
-        >
-          <PinIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-          <span className="font-mono">{content.locationPill}</span>
-        </span>
       </HeroTextColumn>
 
       <HeroVisualColumn id="hero-branches">
