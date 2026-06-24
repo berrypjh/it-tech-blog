@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DiagramNode, PackagesDirectoryContent } from '../content';
 import { NetworkIcon, packageIconByName } from '../icons';
@@ -109,18 +110,13 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
         emphasized && 'lg:shadow-[0_3px_0_var(--term-border)] lg:scale-[1.02]',
       )}
     >
-      <header className="flex items-center justify-between gap-sm">
-        <div className="flex items-center gap-sm min-w-0">
-          <span
-            aria-hidden="true"
-            className={cn('inline-flex items-center justify-center w-9 h-9 rounded-md', tone.chip)}
-          >
-            <Icon className="h-4 w-4" />
-          </span>
-          <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
-            {node.title}
-          </h3>
-        </div>
+      <header className="flex items-center gap-sm min-w-0">
+        <ToneIconBox tone={node.tone} size="sm">
+          <Icon className="h-4 w-4" />
+        </ToneIconBox>
+        <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
+          {node.title}
+        </h3>
       </header>
       <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">
         {node.subtitle}
@@ -165,9 +161,10 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
   return (
     <div
       className={cn(
-        'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg',
+        'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg transition-all',
         'shadow-[0_2px_0_var(--term-border)]',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
+        tone.borderHover,
       )}
     >
       {/* 점선 connector 라벨 */}
@@ -188,25 +185,17 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
         />
       </div>
 
-      <header className="flex items-center justify-between gap-sm">
-        <div className="flex items-center gap-sm min-w-0">
-          <span
-            aria-hidden="true"
-            className={cn(
-              'inline-flex items-center justify-center w-9 h-9 rounded-md border bg-[var(--term-bg)]',
-              tone.border,
-            )}
-          >
-            <Icon className={cn('h-5 w-5', tone.text)} />
+      <header className="flex items-center gap-sm min-w-0">
+        <ToneIconBox tone={node.tone} size="sm">
+          <Icon className="h-4 w-4" />
+        </ToneIconBox>
+        <div className="flex flex-col min-w-0">
+          <span className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
+            {node.title}
           </span>
-          <div className="flex flex-col min-w-0">
-            <span className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
-              {node.title}
-            </span>
-            <span className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">
-              {node.subtitle}
-            </span>
-          </div>
+          <span className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">
+            {node.subtitle}
+          </span>
         </div>
       </header>
       {node.description && (

@@ -27,7 +27,6 @@ export {
   FileCode2 as FileCodeIcon,
   Hash as HashIcon,
   Info as InfoIcon,
-  Lightbulb as LightbulbIcon,
   Map as MapIcon,
   Package as PackageIcon,
   RotateCcw as RotateIcon,

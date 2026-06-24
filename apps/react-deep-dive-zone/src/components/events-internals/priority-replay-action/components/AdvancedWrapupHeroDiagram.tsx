@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { AdvancedWrapupContent, ExpansionCard, Tone } from '../content';
 import { DropletIcon, MapIcon, RocketIcon, ZapIcon } from '../icons';

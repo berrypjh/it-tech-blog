@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
@@ -75,23 +76,7 @@ export const FixturesDeepDive = ({ content }: Props) => {
         })}
       </ul>
 
-      <div
-        className={cn(
-          'flex items-start gap-sm rounded-lg border px-md py-md',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
-            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
-          )}
-        >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-snug font-medium break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };

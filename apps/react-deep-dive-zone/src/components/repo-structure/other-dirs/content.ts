@@ -98,7 +98,6 @@ export type SurroundingContent = {
     filePath: string;
     descriptionLabel: string;
     descriptionValue: string;
-    pointLabel: string;
     pointValue: string;
     codeHeader: string;
     codeBadge: string;
@@ -315,7 +314,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       filePath: 'scripts/error-codes/codes.json',
       descriptionLabel: '설명',
       descriptionValue: '프로덕션 오류 코드와 원문 메시지를 매핑하는 데이터',
-      pointLabel: '학습 포인트',
       pointValue:
         '오류 코드를 숫자로 노출하고, 메시지는 별도 시스템에서 주입되는 구조를 이해할 수 있습니다.',
       codeHeader: 'scripts/error-codes/codes.json',
@@ -538,7 +536,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
       filePath: 'scripts/error-codes/codes.json',
       descriptionLabel: 'Description',
       descriptionValue: 'Data that maps production error codes to their original messages.',
-      pointLabel: 'Learning point',
       pointValue:
         'See how error codes are exposed as numbers while messages are injected by a separate system.',
       codeHeader: 'scripts/error-codes/codes.json',

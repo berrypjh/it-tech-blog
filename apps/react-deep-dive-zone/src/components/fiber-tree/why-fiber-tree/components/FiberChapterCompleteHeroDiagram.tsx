@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberCentralContent, FieldGroup, GroupTone } from '../content';
 import { DatabaseIcon, FingerprintIcon, FlagIcon, ListIcon, NetworkIcon, ZapIcon } from '../icons';

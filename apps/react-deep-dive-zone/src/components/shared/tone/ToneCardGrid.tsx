@@ -1,10 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../ToneIconBox';
 import type { ToneKey } from '../tones';
 
 import { ToneBadge } from './ToneBadge';
 import { ToneCard } from './ToneCard';
+import { ToneIconBox } from './ToneIconBox';
 
 type GridProps = {
   children: React.ReactNode;

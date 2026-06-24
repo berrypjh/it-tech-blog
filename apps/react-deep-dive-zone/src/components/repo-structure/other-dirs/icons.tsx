@@ -24,7 +24,6 @@ export {
   ExternalLink as ExternalLinkIcon,
   FileJson as FileJsonIcon,
   Folder as FolderIcon,
-  GraduationCap as GraduationCapIcon,
   Info as InfoIcon,
   Lightbulb as LightbulbIcon,
   MapPinned as MapPinnedIcon,

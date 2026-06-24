@@ -23,7 +23,6 @@ export {
   Folder as FolderIcon,
   Info as InfoIcon,
   Layers as LayersIcon,
-  Lightbulb as LightbulbIcon,
   Map as MapIcon,
   Network as NetworkIcon,
   RotateCcw as RotateIcon,

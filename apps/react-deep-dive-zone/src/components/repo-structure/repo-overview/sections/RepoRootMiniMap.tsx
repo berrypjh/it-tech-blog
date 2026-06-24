@@ -4,11 +4,8 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import {
-  RepoBrowserCallout,
-  RepoBrowserShell,
-  RepoBrowserTree,
-} from '../../../shared/repo-browser';
+import { SectionNote } from '../../../shared/note';
+import { RepoBrowserShell, RepoBrowserTree } from '../../../shared/repo-browser';
 import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
 import { CheckCircleIcon, FileTextIcon, FolderIcon, LightbulbIcon, MapIcon } from '../icons';
@@ -89,9 +86,9 @@ export const RepoRootMiniMap = ({ content }: Props) => {
           </ul>
 
           {detail.recommendation && (
-            <RepoBrowserCallout icon={<LightbulbIcon className="h-4 w-4" />}>
+            <SectionNote className="mt-auto" icon={<LightbulbIcon className="h-4 w-4" />}>
               {detail.recommendation}
-            </RepoBrowserCallout>
+            </SectionNote>
           )}
         </>
       }

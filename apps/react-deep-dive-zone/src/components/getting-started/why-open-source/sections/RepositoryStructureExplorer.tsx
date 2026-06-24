@@ -2,11 +2,8 @@
 
 import { useState } from 'react';
 
-import {
-  RepoBrowserCallout,
-  RepoBrowserShell,
-  RepoBrowserTree,
-} from '../../../shared/repo-browser';
+import { SectionNote } from '../../../shared/note';
+import { RepoBrowserShell, RepoBrowserTree } from '../../../shared/repo-browser';
 import type { WhyOpenSourceContent } from '../content';
 import { FolderIcon, FolderOpenIcon, InfoIcon } from '../icons';
 
@@ -86,9 +83,9 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
             ))}
           </ul>
 
-          <RepoBrowserCallout icon={<InfoIcon className="h-4 w-4" />}>
+          <SectionNote className="mt-auto" icon={<InfoIcon className="h-4 w-4" />}>
             {detail.callout}
-          </RepoBrowserCallout>
+          </SectionNote>
         </>
       }
     />

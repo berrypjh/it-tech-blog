@@ -104,7 +104,6 @@ export type PackagesDirectoryContent = {
     primaryHref: string;
     codeHeader: string;
     codeBadge: string;
-    codeCaption: string;
     code: string;
   };
   later: {
@@ -411,7 +410,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
-      codeCaption: '최신 코드 기준 · 교육용 발췌',
       code: codeBody,
     },
     later: {
@@ -689,7 +687,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
       codeBadge: 'main',
-      codeCaption: 'Educational excerpt — latest main',
       code: codeBody,
     },
     later: {

@@ -16,7 +16,6 @@ export type RepoTreeRow = {
 export type DirectoryCard = {
   id: 'packages' | 'fixtures' | 'scripts' | 'compiler';
   name: string;
-  priority: string;
   title: string;
   description: string;
   tone: ToneKey;
@@ -253,7 +252,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'packages',
           name: 'packages',
-          priority: '우선순위 1',
           title: '실제 React 패키지 코드',
           description: 'React 핵심 구현과 관련 패키지들이 모여 있습니다.',
           tone: 'sky',
@@ -262,7 +260,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'fixtures',
           name: 'fixtures',
-          priority: '우선순위 2',
           title: '실험 / 데모 / 재현 공간',
           description: '실험적 기능, 데모, 버그 재현용 프로젝트가 담겨 있습니다.',
           tone: 'emerald',
@@ -271,7 +268,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'scripts',
           name: 'scripts',
-          priority: '우선순위 3',
           title: '빌드 / 릴리즈 / 자동화 도구',
           description: '빌드, 테스트, 릴리즈, 코드 생성 등 자동화 스크립트 모음입니다.',
           tone: 'violet',
@@ -280,7 +276,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'compiler',
           name: 'compiler',
-          priority: '우선순위 4',
           title: 'React Compiler 프로젝트',
           description: 'React Compiler 관련 소스와 도구 체인이 위치합니다.',
           tone: 'amber',
@@ -487,7 +482,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'packages',
           name: 'packages',
-          priority: 'Priority 1',
           title: 'The real React package code',
           description: 'React core implementation and related packages live here.',
           tone: 'sky',
@@ -496,7 +490,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'fixtures',
           name: 'fixtures',
-          priority: 'Priority 2',
           title: 'Experiments, demos and reproductions',
           description: 'Experimental features, demos and bug-repro projects are stored here.',
           tone: 'emerald',
@@ -505,7 +498,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'scripts',
           name: 'scripts',
-          priority: 'Priority 3',
           title: 'Build / release / automation tools',
           description: 'Automation scripts for build, test, release, and code generation.',
           tone: 'violet',
@@ -514,7 +506,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
         {
           id: 'compiler',
           name: 'compiler',
-          priority: 'Priority 4',
           title: 'React Compiler project',
           description: 'Source code and toolchain for the React Compiler project.',
           tone: 'amber',

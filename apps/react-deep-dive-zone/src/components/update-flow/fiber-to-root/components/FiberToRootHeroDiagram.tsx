@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStackIconName, FiberStackNode, FiberToRootContent } from '../content';
 import { FlagIcon, PanelsTopLeftIcon, PinIcon, WorkflowIcon } from '../icons';

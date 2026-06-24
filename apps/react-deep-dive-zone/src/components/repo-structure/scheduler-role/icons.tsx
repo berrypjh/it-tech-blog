@@ -19,6 +19,7 @@ export {
   Boxes as BoxesIcon,
   CheckCircle2 as CheckCircleIcon,
   CircleHelp as CircleHelpIcon,
+  Code2 as CodeIcon,
   ExternalLink as ExternalLinkIcon,
   FileCode2 as FileCodeIcon,
   Info as InfoIcon,

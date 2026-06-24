@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent, HeroLayer } from '../content';
 import { CableIcon, CpuIcon, DoorOpenIcon, FileCodeIcon, PlugIcon, SplitIcon } from '../icons';

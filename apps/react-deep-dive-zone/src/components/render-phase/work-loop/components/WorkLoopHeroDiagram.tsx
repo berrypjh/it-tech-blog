@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { ToneIconBox } from '../../../shared/ToneIconBox';
+import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowNode, WorkLoopContent } from '../content';
 import { ArrowRightIcon, PauseCircleIcon, RotateCwIcon } from '../icons';

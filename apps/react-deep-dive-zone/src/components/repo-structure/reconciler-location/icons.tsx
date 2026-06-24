@@ -19,6 +19,7 @@ export {
   CheckCircle2 as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
   CircleHelp as CircleHelpIcon,
+  Code2 as CodeIcon,
   Cuboid as CuboidIcon,
   ExternalLink as ExternalLinkIcon,
   FileCode2 as FileCodeIcon,

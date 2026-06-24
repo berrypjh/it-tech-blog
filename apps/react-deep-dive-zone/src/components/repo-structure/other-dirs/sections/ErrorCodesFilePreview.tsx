@@ -5,7 +5,7 @@ import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { ExternalLinkIcon, FileJsonIcon, GraduationCapIcon, InfoIcon } from '../icons';
+import { ExternalLinkIcon, FileJsonIcon, InfoIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: SurroundingContent['errorCodes'] };
 
@@ -37,11 +37,21 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
             value={<span>{content.descriptionValue}</span>}
             icon={<InfoIcon className={cn('h-4 w-4', toneTokens.sky.text)} />}
           />
-          <InfoRow
-            label={content.pointLabel}
-            value={<span>{content.pointValue}</span>}
-            icon={<GraduationCapIcon className={cn('h-4 w-4', toneTokens.violet.text)} />}
-          />
+
+          <div
+            className={cn(
+              'mt-auto flex items-start gap-2 rounded-lg border p-3',
+              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
+            )}
+          >
+            <LightbulbIcon
+              className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
+              aria-hidden="true"
+            />
+            <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
+              {content.pointValue}
+            </p>
+          </div>
         </article>
 
         {/* 우측 코드 패널 + 버튼 */}

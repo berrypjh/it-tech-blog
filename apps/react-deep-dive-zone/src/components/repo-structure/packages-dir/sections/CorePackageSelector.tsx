@@ -5,6 +5,7 @@ import { useId, useState } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
@@ -16,6 +17,7 @@ export const CorePackageSelector = ({ content }: Props) => {
   const active = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
   const detail = content.details[active.id];
   const tone = toneTokens[active.tone];
+  const ActiveIcon = packageIconByName[active.icon];
   const tablistId = useId();
 
   return (
@@ -63,18 +65,9 @@ export const CorePackageSelector = ({ content }: Props) => {
         <article className="flex flex-col gap-sm">
           <header className="flex items-center justify-between gap-sm">
             <div className="flex items-center gap-sm min-w-0">
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'inline-flex items-center justify-center w-11 h-11 rounded-md',
-                  tone.chip,
-                )}
-              >
-                {(() => {
-                  const Icon = packageIconByName[active.icon];
-                  return <Icon className="h-5 w-5" />;
-                })()}
-              </span>
+              <ToneIconBox tone={active.tone}>
+                <ActiveIcon className="h-5 w-5" />
+              </ToneIconBox>
               <h3
                 className={cn(
                   'text-lg sm:text-xl font-bold font-mono tracking-tight truncate',
@@ -84,18 +77,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                 {active.name}
               </h3>
             </div>
-            <span
-              className={cn(
-                'inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-medium',
-                tone.chip,
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cn('inline-block w-1 h-1 rounded-full', tone.dot)}
-              />
-              {detail.badge}
-            </span>
+            <ToneBadge tone={active.tone}>{detail.badge}</ToneBadge>
           </header>
 
           <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -129,15 +111,9 @@ export const CorePackageSelector = ({ content }: Props) => {
             <h4 className="text-xsm uppercase tracking-wider font-bold text-[var(--term-muted)]">
               {detail.representativeTitle}
             </h4>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'inline-flex items-center justify-center w-9 h-9 rounded-md',
-                tone.chip,
-              )}
-            >
+            <ToneIconBox tone={active.tone} size="sm">
               <FolderIcon className="h-4 w-4" />
-            </span>
+            </ToneIconBox>
           </header>
 
           <code

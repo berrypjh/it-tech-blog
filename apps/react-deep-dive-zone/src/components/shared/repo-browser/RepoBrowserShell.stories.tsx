@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Folder, Info } from 'lucide-react';
 
-import { RepoBrowserCallout } from './RepoBrowserCallout';
+import { SectionNote } from '../note';
+
 import { RepoBrowserShell } from './RepoBrowserShell';
 import { RepoBrowserTree, type RepoBrowserTreeNode } from './RepoBrowserTree';
 
@@ -56,9 +57,9 @@ const Demo = () => {
           <p className="text-xsm sm:text-sm text-[var(--term-muted)] leading-relaxed break-keep">
             {detail.body}
           </p>
-          <RepoBrowserCallout icon={<Info className="h-4 w-4" />}>
+          <SectionNote className="mt-auto" icon={<Info className="h-4 w-4" />}>
             트리에서 폴더를 눌러 각 패키지 설명을 확인하세요.
-          </RepoBrowserCallout>
+          </SectionNote>
         </>
       }
     />
