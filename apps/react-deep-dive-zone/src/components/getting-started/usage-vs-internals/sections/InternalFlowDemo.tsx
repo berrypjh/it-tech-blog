@@ -91,7 +91,7 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
   <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center justify-between">
       <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)]">{title}</h3>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-mono">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
         useState(0)
       </span>
     </header>

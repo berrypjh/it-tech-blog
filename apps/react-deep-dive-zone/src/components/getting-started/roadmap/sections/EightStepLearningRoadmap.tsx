@@ -32,7 +32,7 @@ export const EightStepLearningRoadmap = ({ content }: Props) => {
             description: row.description,
             extra: (
               <div className="col-span-full md:col-auto flex flex-col gap-1 mt-sm md:mt-0 md:border-l md:border-dashed md:border-[var(--term-border)] md:pl-md">
-                <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-bold inline-flex items-center gap-1">
+                <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold inline-flex items-center gap-1">
                   <FileIcon className="h-3 w-3" />
                   {content.coreFilesLabel}
                 </span>

@@ -62,7 +62,9 @@ export const PackagesLandscape = ({ content }: Props) => {
 
         {/* additional row 2 */}
         <div className="flex flex-col gap-2">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)]">later</span>
+          <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            later
+          </span>
           <ul className="flex flex-wrap gap-2">
             {content.additionalRow2.map((name) => (
               <li key={name}>

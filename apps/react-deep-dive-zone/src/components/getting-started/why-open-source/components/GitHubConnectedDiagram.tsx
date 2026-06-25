@@ -119,7 +119,7 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
               <GitBranchIcon className="h-2.5 w-2.5" />
               {diagram.commitBranch}
             </span>
-            <span className="text-[9px] text-[var(--term-dim)]">history</span>
+            <span className="text-[9px] text-[var(--term-muted)]">history</span>
           </header>
           <ol className="relative pl-3 flex flex-col gap-1.5">
             <span

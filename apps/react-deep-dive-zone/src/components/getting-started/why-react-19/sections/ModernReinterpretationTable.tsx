@@ -29,7 +29,7 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
               }
               left={
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)]">
+                  <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
                     {content.headers.legacy}
                   </span>
                   <code className="inline-flex w-fit items-center px-2 py-1 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-xsm sm:text-sm font-mono font-bold text-[var(--term-muted)] break-all">
