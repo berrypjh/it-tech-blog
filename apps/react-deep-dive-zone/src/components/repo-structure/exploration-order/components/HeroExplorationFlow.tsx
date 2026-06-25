@@ -80,7 +80,6 @@ const FlowNode = ({ node }: NodeProps) => {
         'flex flex-col items-center gap-1.5 rounded-lg border p-3 text-center',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         tone.border,
-        tone.borderHover,
       )}
     >
       <span

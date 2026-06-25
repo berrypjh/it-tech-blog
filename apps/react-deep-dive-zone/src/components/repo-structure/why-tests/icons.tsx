@@ -16,7 +16,6 @@ export {
   ArrowLeftRight as ArrowLeftRightIcon,
   ArrowRight as ArrowRightIcon,
   CheckCircle2 as CheckCircleIcon,
-  CircleHelp as CircleHelpIcon,
   Code2 as CodeIcon,
   ExternalLink as ExternalLinkIcon,
   FileCode2 as FileCodeIcon,
@@ -43,5 +42,4 @@ export const iconByName: Record<IconName, LucideLike> = {
   refresh: RefreshCw,
   list: ListChecks,
   check: ShieldCheck,
-  question: Search,
 };

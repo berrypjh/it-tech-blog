@@ -13,8 +13,7 @@ export type IconName =
   | 'search'
   | 'refresh'
   | 'list'
-  | 'check'
-  | 'question';
+  | 'check';
 
 export type ComparePoint = {
   text: string;
@@ -41,16 +40,6 @@ export type ReadingStep = {
   description: string;
   tone: ToneKey;
   icon: IconName;
-};
-
-export type TestQuiz = {
-  id: 'preserve-key' | 'spread-key';
-  question: string;
-  hint: string;
-  accordionLabel: string;
-  answer: string;
-  answerDescription: string;
-  tone: ToneKey;
 };
 
 export type TestCodeContent = {
@@ -103,7 +92,6 @@ export type TestCodeContent = {
     middleCaption: string;
     rightLabel: string;
     rightFile: string;
-    rightPointLabel: string;
     rightPoint: string;
     codeHeader: string;
     codeBadge: string;
@@ -118,11 +106,6 @@ export type TestCodeContent = {
     title: string;
     description: string;
     steps: ReadingStep[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    cards: TestQuiz[];
   };
   nextStep: {
     eyebrow: string;
@@ -200,7 +183,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       cards: [
         {
           id: 'input',
-          number: '1',
+          number: '01',
           title: '어떤 입력이\n중요한가',
           description: '다양한 입력 중 어떤 값들이 시스템의 핵심 검증 지점인지 알려줍니다.',
           tone: 'blue',
@@ -208,7 +191,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'must',
-          number: '2',
+          number: '02',
           title: '어떤 동작이\n깨지면 안 되는가',
           description: '반드시 지켜야 하는 동작과 그 한계를 명확히 보여줍니다.',
           tone: 'teal',
@@ -216,7 +199,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'edge',
-          number: '3',
+          number: '03',
           title: '어떤 edge case를\n막는가',
           description: '예외 상황, 경계 조건을 통해 설계의 뒷면을 보여줍니다.',
           tone: 'violet',
@@ -224,7 +207,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'compat',
-          number: '4',
+          number: '04',
           title: '이전 동작과의\n호환성을 어디까지\n지키는가',
           description: '과거 버전과의 계약 범위를 테스트를 통해 드러냅니다.',
           tone: 'emerald',
@@ -289,7 +272,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       middleCaption: '테스트가 이 질문의 답을 구체적으로 보여줍니다.',
       rightLabel: '테스트 파일',
       rightFile: 'ReactCreateElement-test.js',
-      rightPointLabel: '포인트',
       rightPoint: 'key 처리, props 전달, 경고 동작',
       codeHeader: 'ReactCreateElement-test.js',
       codeBadge: 'main',
@@ -332,33 +314,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           description: '설계 의도와 구현 이유를 연결합니다.',
           tone: 'emerald',
           icon: 'code',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · 미니 분석 퀴즈',
-      title: '미니 분석 퀴즈',
-      cards: [
-        {
-          id: 'preserve-key',
-          question:
-            '"should preserve key behavior"라는\n테스트 이름을 보면 무엇을 확인하려는 걸까?',
-          hint: '힌트: key, 유지, 동작',
-          accordionLabel: '정답 보기',
-          answer: '정답: key 처리 계약',
-          answerDescription:
-            'key가 입력으로 주어졌을 때, element에 올바르게 보존되는지 검증하려는 의도입니다.',
-          tone: 'blue',
-        },
-        {
-          id: 'spread-key',
-          question: '"warns when key is spread"를 보면\n무엇을 의심해볼까?',
-          hint: '힌트: 경고, spread, props',
-          accordionLabel: '정답 보기',
-          answer: '정답: key 전달 방식과 경고 조건',
-          answerDescription:
-            'key가 props 객체에 섞여 전달될 때, 경고가 발생하는지와 그 조건을 검증하는 의도입니다.',
-          tone: 'teal',
         },
       ],
     },
@@ -407,7 +362,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       cards: [
         {
           id: 'input',
-          number: '1',
+          number: '01',
           title: 'Which inputs\nmatter',
           description: 'Out of many possible inputs, tests highlight the critical ones.',
           tone: 'blue',
@@ -415,7 +370,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'must',
-          number: '2',
+          number: '02',
           title: 'Which behaviour\nmust not break',
           description: 'Tests make the must-hold behaviour and its limits explicit.',
           tone: 'teal',
@@ -423,7 +378,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'edge',
-          number: '3',
+          number: '03',
           title: 'Which edge cases\nare guarded',
           description: 'Exception and boundary tests reveal the back side of the design.',
           tone: 'violet',
@@ -431,7 +386,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         },
         {
           id: 'compat',
-          number: '4',
+          number: '04',
           title: 'How far backwards\ncompatibility\ngoes',
           description: 'Tests expose the contract maintained with past versions.',
           tone: 'emerald',
@@ -496,7 +451,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       middleCaption: 'The tests answer this question concretely.',
       rightLabel: 'Tests',
       rightFile: 'ReactCreateElement-test.js',
-      rightPointLabel: 'Focus',
       rightPoint: 'Key handling, props passing, warning behaviour',
       codeHeader: 'ReactCreateElement-test.js',
       codeBadge: 'main',
@@ -539,32 +493,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           description: 'Link design intent with the implementation reason.',
           tone: 'emerald',
           icon: 'code',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · ANALYSIS QUIZ',
-      title: 'Mini analysis quiz',
-      cards: [
-        {
-          id: 'preserve-key',
-          question: 'What is the test "should preserve key behavior"\nlikely checking?',
-          hint: 'Hint: key, preserved, behaviour',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: the key handling contract',
-          answerDescription:
-            'It verifies that a given key input is correctly preserved on the element.',
-          tone: 'blue',
-        },
-        {
-          id: 'spread-key',
-          question: 'What would you suspect when you see\n"warns when key is spread"?',
-          hint: 'Hint: warning, spread, props',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: how key is passed and the warning condition',
-          answerDescription:
-            'It verifies that when key is mixed into props via spread, a warning is raised — and under what condition.',
-          tone: 'teal',
         },
       ],
     },

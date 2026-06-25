@@ -135,6 +135,7 @@ export type SchedulerContent = {
     incomingTitle: string;
     tasks: QueueTask[];
     centerMessage: string;
+    centerSub: string;
     executionTitle: string;
     rows: ExecutionRow[];
     doneLabel: string;
@@ -338,7 +339,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     responsibility: {
       eyebrow: '05 · 책임 경계',
-      title: 'scheduler가 하는 것 / 직접 하지 않는 것',
+      title: 'scheduler가 하는 일과 안 하는 일',
       leftTitle: 'scheduler가 하는 것',
       leftItems: [
         { text: '작업(콜백)을 예약한다' },
@@ -357,7 +358,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     simulation: {
       eyebrow: '06 · 작업 대기열',
-      title: '생활형 체험 시뮬레이션: 작업 대기열',
+      title: '우선순위가 실행 순서를 바꾼다',
       incomingTitle: '새로 들어온 작업',
       tasks: [
         {
@@ -370,6 +371,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         { id: 'transition', title: '화면 전환 애니메이션', badge: 'Low', priority: 'low' },
       ],
       centerMessage: 'scheduler가\n우선순위에 맞게\n정렬하고 실행',
+      centerSub: '도착 순서 ≠ 실행 순서',
       executionTitle: '실행 순서 (예시)',
       rows: [
         {
@@ -571,7 +573,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     responsibility: {
       eyebrow: '05 · BOUNDARY',
-      title: 'What the scheduler does / does not do',
+      title: 'What scheduler does and does not',
       leftTitle: 'What the scheduler does',
       leftItems: [
         { text: 'Schedules callbacks' },
@@ -590,7 +592,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     },
     simulation: {
       eyebrow: '06 · TASK QUEUE',
-      title: 'Task queue simulation',
+      title: 'Priority decides the run order',
       incomingTitle: 'Incoming tasks',
       tasks: [
         {
@@ -603,6 +605,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         { id: 'transition', title: 'Page transition', badge: 'Low', priority: 'low' },
       ],
       centerMessage: 'Scheduler sorts and\nruns tasks by\npriority',
+      centerSub: 'arrival order ≠ run order',
       executionTitle: 'Execution order (example)',
       rows: [
         {

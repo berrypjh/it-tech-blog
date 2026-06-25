@@ -1,7 +1,5 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { CompareVs } from '../../../shared/compare';
-import { ToneDetailPanel } from '../../../shared/detail';
+import { ToneDetailCard } from '../../../shared/detail';
 import { SectionHeader } from '../../../shared/section';
 import type { CompareCard, ReconcilerEntryContent } from '../content';
 import { iconByName, SparklesIcon } from '../icons';
@@ -29,19 +27,11 @@ export const ReconcilerVsRenderer = ({ content }: Props) => {
 };
 
 const CompareCardItem = ({ card }: { card: CompareCard }) => (
-  <article
-    className={cn(
-      'flex flex-col gap-md rounded-xl border p-md sm:p-lg transition-all hover:-translate-y-0.5',
-      'shadow-[0_2px_0_var(--term-border)]',
-      'bg-[var(--term-surface)] border-[var(--term-border)]',
-    )}
-  >
-    <ToneDetailPanel
-      tone={card.tone}
-      icon={iconByName[card.icon]}
-      title={card.title}
-      badge={card.tag}
-      bullets={card.bullets}
-    />
-  </article>
+  <ToneDetailCard
+    tone={card.tone}
+    icon={iconByName[card.icon]}
+    title={card.title}
+    badge={card.tag}
+    bullets={card.bullets}
+  />
 );

@@ -42,6 +42,7 @@ export type SymbolCard = {
   title: string;
   subtitle: string;
   description: string;
+  tone: ToneKey;
   icon: IconName;
 };
 
@@ -52,16 +53,6 @@ export type ConnectionRow = {
   usage: string;
   tone: ToneKey;
   icon: IconName;
-};
-
-export type SharedQuiz = {
-  id: 'version-quiz' | 'symbol-quiz' | 'flag-quiz';
-  question: string;
-  hint: string;
-  accordionLabel: string;
-  answer: string;
-  answerDescription: string;
-  tone: ToneKey;
 };
 
 export type SharedContent = {
@@ -120,11 +111,6 @@ export type SharedContent = {
     hubSubtitle: string;
     hubTags: string[];
     rows: ConnectionRow[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    cards: SharedQuiz[];
   };
   nextStep: {
     eyebrow: string;
@@ -258,6 +244,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_FRAGMENT_TYPE',
           subtitle: '<></> / Fragment 심벌',
           description: 'Fragment 요소를 내부적으로 식별하기 위한 고유 심벌',
+          tone: 'blue',
           icon: 'fragment',
         },
         {
@@ -265,6 +252,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_SUSPENSE_TYPE',
           subtitle: '<Suspense> 심벌',
           description: 'Suspense 요소를 내부적으로 식별하기 위한 고유 심벌',
+          tone: 'violet',
           icon: 'suspense',
         },
         {
@@ -272,6 +260,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_ACTIVITY_TYPE',
           subtitle: '<Activity> 심벌',
           description: 'Activity(실험적) 요소를 식별하는 고유 심벌',
+          tone: 'emerald',
           icon: 'activity',
         },
       ],
@@ -322,39 +311,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           usage: '공통 타입, 플래그, 내부 개념 사용',
           tone: 'violet',
           icon: 'cuboid',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · 빠른 분류',
-      title: '빠른 분류 퀴즈',
-      cards: [
-        {
-          id: 'version-quiz',
-          question: 'Q. React 버전 문자열은\n어느 파일에 가까울까?',
-          hint: '힌트: 버전 문자열과 관련 정보를 한 곳에 모음',
-          accordionLabel: '정답 보기',
-          answer: '정답: ReactVersion.js',
-          answerDescription: 'React 버전 정보와 문자열을 관리합니다.',
-          tone: 'emerald',
-        },
-        {
-          id: 'symbol-quiz',
-          question: 'Q. Suspense 내부 심벌은\n어느 파일에 가까울까?',
-          hint: '힌트: REACT_*_TYPE 심벌이 모이는 곳',
-          accordionLabel: '정답 보기',
-          answer: '정답: ReactSymbols.js',
-          answerDescription: 'Suspense를 식별하는 심벌이 정의되어 있습니다.',
-          tone: 'blue',
-        },
-        {
-          id: 'flag-quiz',
-          question: 'Q. 기능을 켜고 끄는 조건 플래그는\n어느 파일에 가까울까?',
-          hint: '힌트: enable* 형태의 토글',
-          accordionLabel: '정답 보기',
-          answer: '정답: ReactFeatureFlags.js',
-          answerDescription: '실험적 기능과 조건 플래그가 정의되어 있습니다.',
-          tone: 'violet',
         },
       ],
     },
@@ -475,6 +431,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_FRAGMENT_TYPE',
           subtitle: '<></> / Fragment symbol',
           description: 'Unique symbol used internally to identify Fragment elements',
+          tone: 'blue',
           icon: 'fragment',
         },
         {
@@ -482,6 +439,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_SUSPENSE_TYPE',
           subtitle: '<Suspense> symbol',
           description: 'Unique symbol used internally to identify Suspense elements',
+          tone: 'violet',
           icon: 'suspense',
         },
         {
@@ -489,6 +447,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'REACT_ACTIVITY_TYPE',
           subtitle: '<Activity> symbol',
           description: 'Unique symbol used to identify Activity (experimental) elements',
+          tone: 'emerald',
           icon: 'activity',
         },
       ],
@@ -541,39 +500,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           usage: 'Uses shared types, flags, internal concepts',
           tone: 'violet',
           icon: 'cuboid',
-        },
-      ],
-    },
-    quiz: {
-      eyebrow: '06 · CLASSIFICATION',
-      title: 'Quick classification quiz',
-      cards: [
-        {
-          id: 'version-quiz',
-          question: 'Q. The React version string\nlives closest to which file?',
-          hint: 'Hint: a single place for version string and metadata',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: ReactVersion.js',
-          answerDescription: 'It manages React version information and the version string.',
-          tone: 'emerald',
-        },
-        {
-          id: 'symbol-quiz',
-          question: 'Q. The internal Suspense symbol\nlives closest to which file?',
-          hint: 'Hint: where the REACT_*_TYPE symbols are collected',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: ReactSymbols.js',
-          answerDescription: 'The symbol that identifies Suspense is defined here.',
-          tone: 'blue',
-        },
-        {
-          id: 'flag-quiz',
-          question: 'Q. Conditional feature toggles\nlive closest to which file?',
-          hint: 'Hint: enable* style toggles',
-          accordionLabel: 'Reveal the answer',
-          answer: 'Answer: ReactFeatureFlags.js',
-          answerDescription: 'Experimental and conditional flags live here.',
-          tone: 'violet',
         },
       ],
     },

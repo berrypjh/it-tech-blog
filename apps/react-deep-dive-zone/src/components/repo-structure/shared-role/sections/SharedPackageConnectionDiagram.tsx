@@ -26,18 +26,13 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
         )}
       >
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.68fr)] gap-md lg:gap-12 items-stretch">
-          {/* 좌측 shared hub */}
           <SharedHubCard
             title={content.hubTitle}
             subtitle={content.hubSubtitle}
             tags={content.hubTags}
           />
 
-          {/* 우측 3개 row */}
           <ul className="relative flex flex-col gap-3">
-            {/* lg 이상: shared 허브 → 패키지 점선 버스.
-                허브 중앙에서 짧은 stub로 나와 세로 rail을 타고, 행마다 가지가 카드로 이어진다.
-                가지가 각 행의 세로 중앙(top-1/2)에서 그려지므로 행 높이가 달라도 항상 정확히 닿는다. */}
             <span
               aria-hidden="true"
               className="hidden lg:block pointer-events-none absolute -left-12 top-1/2 -translate-y-1/2 w-6 border-t border-dashed border-[var(--term-border)]"
@@ -138,7 +133,6 @@ const ConnectionRowItem = ({ row }: RowProps) => {
           'flex items-center gap-sm rounded-lg border p-3',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-          'hover:border-[var(--term-accent)]',
         )}
       >
         <span

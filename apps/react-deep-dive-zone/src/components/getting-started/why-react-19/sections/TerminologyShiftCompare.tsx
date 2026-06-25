@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import type { ReactNode } from 'react';
 
-import { CompareBridge } from '../../../shared/compare';
+import { CompareBridge, ComparePanel } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import type { WhyReact19Content } from '../content';
 import { CheckIcon, RefreshIcon, SwapIcon, XIcon } from '../icons';
@@ -63,37 +63,13 @@ const TermPanel = ({
 }) => {
   const t = toneClasses[tone];
   return (
-    <article
-      aria-labelledby={`terminology-${tone}-header`}
-      className={cn(
-        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px',
-        t.card,
-      )}
-    >
-      <header className="flex items-center gap-2 pb-sm border-b border-dashed border-[var(--term-border)]">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-7 h-7 rounded-full',
-            t.iconBadge,
-          )}
-        >
-          {icon}
-        </span>
-        <h3
-          id={`terminology-${tone}-header`}
-          className={cn('text-xsm sm:text-sm font-bold tracking-tight', t.header)}
-        >
-          {panel.header}
-        </h3>
-      </header>
-
+    <ComparePanel tone={t} icon={icon} title={panel.header} headerId={`terminology-${tone}-header`}>
       <ul className="flex flex-col gap-md">
         {panel.items.map((item) => (
           <TermItemRow key={item.name} item={item} tone={tone} />
         ))}
       </ul>
-    </article>
+    </ComparePanel>
   );
 };
 

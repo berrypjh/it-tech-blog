@@ -8,25 +8,15 @@ import { PriorityRail } from './PriorityRail';
 
 type Props = { content: SchedulerContent['hero'] };
 
-/** priority별 색조 — 표준 toneTokens 참조(amber/sky/violet). 크롬은 중립 term. */
-const NEUTRAL_CARD =
-  'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
-const NEUTRAL_CHIP = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
-
-const byTone = (tone: ToneKey) => ({
-  card: NEUTRAL_CARD,
-  chip: cn(NEUTRAL_CHIP, toneTokens[tone].text),
-  text: toneTokens[tone].text,
-  dot: toneTokens[tone].dot,
-});
-
-const tintByPriority: Record<PriorityKey, ReturnType<typeof byTone>> = {
-  immediate: byTone('amber'),
-  normal: byTone('sky'),
-  low: byTone('violet'),
+/** priority → 표준 ToneKey 매핑. 실제 색 클래스는 toneTokens에서만 합성한다. */
+export const priorityTone: Record<PriorityKey, ToneKey> = {
+  immediate: 'amber',
+  normal: 'sky',
+  low: 'violet',
 };
 
-export { tintByPriority };
+/** 중립 칩 크롬(surface bg + border). 색은 toneTokens[t].text로 합성. */
+const chipChrome = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 export const HeroPriorityCards = ({ content }: Props) => {
   return (
@@ -80,43 +70,43 @@ export const HeroPriorityCards = ({ content }: Props) => {
 type CardProps = { card: HeroPriorityCard };
 
 const PriorityCard = ({ card }: CardProps) => {
-  const tint = tintByPriority[card.id];
+  const t = toneTokens[priorityTone[card.id]];
   const Icon = iconByName[card.icon];
 
   return (
     <article
       className={cn(
         'flex flex-col gap-2 rounded-xl border p-3',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tint.card,
       )}
     >
       <header className="flex flex-wrap items-center justify-between gap-2">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex shrink-0 items-center justify-center w-8 h-8 rounded-md border',
-            tint.chip,
+            'inline-flex shrink-0 items-center justify-center w-8 h-8 rounded-md',
+            chipChrome,
+            t.text,
           )}
         >
           <Icon className="h-4 w-4" />
         </span>
         <span
           className={cn(
-            'inline-flex min-w-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            tint.chip,
+            'inline-flex min-w-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            chipChrome,
+            t.text,
           )}
         >
           <span
             aria-hidden="true"
-            className={cn('inline-block shrink-0 w-1 h-1 rounded-full', tint.dot)}
+            className={cn('inline-block shrink-0 w-1 h-1 rounded-full', t.dot)}
           />
           <span className="truncate">{card.badge}</span>
         </span>
       </header>
-      <h3 className={cn('text-xsm font-bold tracking-tight break-keep', tint.text)}>
-        {card.title}
-      </h3>
+      <h3 className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
         {card.description}
       </p>

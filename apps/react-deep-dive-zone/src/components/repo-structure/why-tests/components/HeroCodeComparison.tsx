@@ -68,8 +68,7 @@ const CodeCard = ({ label, code, badge, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? CodeIcon : FlaskIcon;
   const accentText = isImpl ? toneTokens.sky.text : 'text-[var(--term-accent)]';
-  const tintClass =
-    'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]';
+  const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
   const labelTextClass = accentText;
   const iconChipClass = cn('bg-[var(--term-surface)] border-[var(--term-border)]', accentText);
 

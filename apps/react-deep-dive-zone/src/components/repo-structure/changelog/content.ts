@@ -39,7 +39,6 @@ export type TimelineItem = {
 export type TraceStep = {
   id: 'note' | 'pr' | 'package' | 'file';
   number: string;
-  label: string;
   title: string;
   description: string;
   icon: IconName;
@@ -98,7 +97,6 @@ export type ChangelogContent = {
     highlightsTitle: string;
     highlightsSubtitle: string;
     highlightsItems: { kind: string; text: string }[];
-    linkText: string;
   };
   timeline: {
     eyebrow: string;
@@ -112,21 +110,6 @@ export type ChangelogContent = {
     title: string;
     description: string;
     steps: TraceStep[];
-  };
-  memo: {
-    eyebrow: string;
-    title: string;
-    promptTitle: string;
-    promptText: string;
-    selectLabel: string;
-    selectValue: string;
-    selectOptions: string[];
-    textareaLabel: string;
-    textareaPlaceholder: string;
-    textareaDefault: string;
-    maxLength: number;
-    tipTitle: string;
-    tipText: string;
   };
   nextStep: {
     eyebrow: string;
@@ -203,7 +186,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'latest',
           question: 'React 19 최신 패치에\n뭐가 바뀌었지?',
-          resultBadge: '→ Releases',
+          resultBadge: 'Releases',
           resultTone: 'violet',
           flow: [
             { label: 'Releases', sublabel: '(19.2.x)' },
@@ -216,7 +199,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'old',
           question: '오래된 React 16 시절\n변화는?',
-          resultBadge: '→ CHANGELOG',
+          resultBadge: 'CHANGELOG',
           resultTone: 'teal',
           flow: [
             { label: 'CHANGELOG.md', sublabel: '(16.x 섹션)' },
@@ -228,7 +211,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'reason',
           question: '19.2.x 릴리즈가\n왜 나왔지?',
-          resultBadge: '→ Releases + 관련 PR / 이슈',
+          resultBadge: 'Releases + 관련 PR / 이슈',
           resultTone: 'blue',
           flow: [{ label: 'Releases' }, { label: 'PR / Issue' }, { label: '코드 변경 추적' }],
           tone: 'blue',
@@ -271,7 +254,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         { kind: '호환성', text: 'Node.js 최소 버전 18.18 이상 권장' },
         { kind: '기타', text: '다양한 버그 수정' },
       ],
-      linkText: '전체 변경사항 보기 →',
     },
     timeline: {
       eyebrow: '04 · 과거 흐름',
@@ -313,7 +295,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'note',
           number: '1',
-          label: 'Step 1',
           title: '릴리즈에서 변경점 확인',
           description: 'Releases 노트에서 핵심 변경사항 읽기',
           icon: 'fileText',
@@ -322,7 +303,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'pr',
           number: '2',
-          label: 'Step 2',
           title: '관련 PR / Issue 찾기',
           description: 'Release note 링크 또는 키워드로 PR / Issue 이동',
           icon: 'gitPull',
@@ -331,7 +311,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'package',
           number: '3',
-          label: 'Step 3',
           title: '연관 패키지 위치 확인',
           description: '변경된 영역이 어느 패키지에 속하는지 파악',
           icon: 'package',
@@ -340,37 +319,12 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'file',
           number: '4',
-          label: 'Step 4',
           title: '코드 변경 파일 열기',
           description: 'PR diff 또는 GitHub 파일에서 실제 코드 확인',
           icon: 'fileCode',
           tone: 'teal',
         },
       ],
-    },
-    memo: {
-      eyebrow: '06 · 버전 메모',
-      title: '버전 메모 남기기',
-      promptTitle: 'Note',
-      promptText: '이 코드 설명은\n어느 버전을 기준으로\n읽었는가?',
-      selectLabel: '기준 버전 선택',
-      selectValue: 'React 19.2.x',
-      selectOptions: [
-        'React 19.2.x',
-        'React 19.1.x',
-        'React 19.0.x',
-        'React 18.3.x',
-        'React 18.2.x',
-        'React 17.0.x',
-        'React 16.x',
-      ],
-      textareaLabel: '메모',
-      textareaPlaceholder: '여기에 버전 관련 메모를 적어두세요.',
-      textareaDefault:
-        '이 강의는 18.2.0 기준이라 scheduleWork 관련 표현이 현재 코드와 다를 수 있음.',
-      maxLength: 200,
-      tipTitle: 'TIP',
-      tipText: '버전 정보를 함께 남기면 나중에 다시 읽을 때 맥락을 잃지 않습니다.',
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -446,7 +400,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'latest',
           question: 'What changed in the\nlatest React 19 patch?',
-          resultBadge: '→ Releases',
+          resultBadge: 'Releases',
           resultTone: 'violet',
           flow: [
             { label: 'Releases', sublabel: '(19.2.x)' },
@@ -459,7 +413,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'old',
           question: 'What was changing\nback in React 16?',
-          resultBadge: '→ CHANGELOG',
+          resultBadge: 'CHANGELOG',
           resultTone: 'teal',
           flow: [
             { label: 'CHANGELOG.md', sublabel: '(16.x section)' },
@@ -471,7 +425,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'reason',
           question: 'Why did the\n19.2.x release happen?',
-          resultBadge: '→ Releases + PR / Issue',
+          resultBadge: 'Releases + PR / Issue',
           resultTone: 'blue',
           flow: [{ label: 'Releases' }, { label: 'PR / Issue' }, { label: 'Trace code changes' }],
           tone: 'blue',
@@ -514,7 +468,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         { kind: 'Compatibility', text: 'Node.js >= 18.18 recommended' },
         { kind: 'Misc', text: 'Various bug fixes' },
       ],
-      linkText: 'View all changes →',
     },
     timeline: {
       eyebrow: '04 · LONG-TERM FLOW',
@@ -556,7 +509,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'note',
           number: '1',
-          label: 'Step 1',
           title: 'Check changes in the release',
           description: 'Read the core changes in the Releases note.',
           icon: 'fileText',
@@ -565,7 +517,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'pr',
           number: '2',
-          label: 'Step 2',
           title: 'Find related PR / Issue',
           description: 'Use release note links or keywords to reach the PR / Issue.',
           icon: 'gitPull',
@@ -574,7 +525,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'package',
           number: '3',
-          label: 'Step 3',
           title: 'Locate the related package',
           description: 'Find which package the changed area belongs to.',
           icon: 'package',
@@ -583,37 +533,12 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         {
           id: 'file',
           number: '4',
-          label: 'Step 4',
           title: 'Open the changed code',
           description: 'Inspect the actual code in the PR diff or GitHub file.',
           icon: 'fileCode',
           tone: 'teal',
         },
       ],
-    },
-    memo: {
-      eyebrow: '06 · VERSION MEMO',
-      title: 'Leave a version memo',
-      promptTitle: 'Note',
-      promptText: 'Which version is this\ncode explanation based on?',
-      selectLabel: 'Pick a baseline version',
-      selectValue: 'React 19.2.x',
-      selectOptions: [
-        'React 19.2.x',
-        'React 19.1.x',
-        'React 19.0.x',
-        'React 18.3.x',
-        'React 18.2.x',
-        'React 17.0.x',
-        'React 16.x',
-      ],
-      textareaLabel: 'Memo',
-      textareaPlaceholder: 'Write your version-related memo here.',
-      textareaDefault:
-        'This tutorial is based on 18.2.0, so scheduleWork wording may differ from the current code.',
-      maxLength: 200,
-      tipTitle: 'TIP',
-      tipText: 'Recording the baseline version keeps the context intact when you revisit later.',
     },
     nextStep: {
       eyebrow: 'The journey continues',

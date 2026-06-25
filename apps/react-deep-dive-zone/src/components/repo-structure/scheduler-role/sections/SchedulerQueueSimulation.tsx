@@ -1,9 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CompareBridge } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
-import { tintByPriority } from '../components/HeroPriorityCards';
+import { toneTokens } from '../../../shared/tones';
+import { priorityTone } from '../components/HeroPriorityCards';
 import type { ExecutionRow, QueueTask, SchedulerContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, ListOrderedIcon, RefreshIcon } from '../icons';
+import { CheckCircleIcon, ListOrderedIcon, RefreshIcon } from '../icons';
 
 type Props = { content: SchedulerContent['simulation'] };
 
@@ -44,7 +46,11 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
         </article>
 
         {/* 중앙 설명 */}
-        <CenterMessage message={content.centerMessage} />
+        <CompareBridge
+          icon={<RefreshIcon className="h-5 w-5" />}
+          headline={content.centerMessage}
+          sub={content.centerSub}
+        />
 
         {/* 우측 execution */}
         <article
@@ -82,20 +88,24 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
 type TaskProps = { task: QueueTask };
 
 const IncomingTaskCard = ({ task }: TaskProps) => {
-  const tint = tintByPriority[task.priority];
+  const t = toneTokens[priorityTone[task.priority]];
 
   return (
     <div
-      className={cn('flex items-center justify-between gap-sm rounded-lg border p-3', tint.card)}
+      className={cn(
+        'flex items-center justify-between gap-sm rounded-lg border p-3',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
+      )}
     >
       <span className="text-xsm font-medium text-[var(--term-fg)] break-keep">{task.title}</span>
       <span
         className={cn(
           'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
-          tint.chip,
+          'bg-[var(--term-surface)] border-[var(--term-border)]',
+          t.text,
         )}
       >
-        <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', tint.dot)} />
+        <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', t.dot)} />
         {task.badge}
       </span>
     </div>
@@ -109,7 +119,7 @@ type RowItemProps = {
 };
 
 const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
-  const tint = tintByPriority[row.priority];
+  const t = toneTokens[priorityTone[row.priority]];
   const isDone = row.status === 'done';
   const statusLabel = isDone ? doneLabel : waitingLabel;
   const statusClass = isDone
@@ -118,7 +128,10 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
 
   return (
     <div
-      className={cn('flex items-center justify-between gap-sm rounded-lg border p-3', tint.card)}
+      className={cn(
+        'flex items-center justify-between gap-sm rounded-lg border p-3',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
+      )}
     >
       <div className="flex items-center gap-sm min-w-0">
         <span
@@ -126,7 +139,8 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
           className={cn(
             'inline-flex items-center justify-center w-7 h-7 rounded-full border shrink-0',
             'font-bold text-sm tabular-nums',
-            tint.chip,
+            'bg-[var(--term-surface)] border-[var(--term-border)]',
+            t.text,
           )}
         >
           {row.rank}
@@ -148,31 +162,3 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
     </div>
   );
 };
-
-type CenterProps = { message: string };
-
-const CenterMessage = ({ message }: CenterProps) => (
-  <div className="flex flex-col items-center justify-center gap-sm text-center lg:max-w-[200px]">
-    <span
-      aria-hidden="true"
-      className={cn(
-        'inline-flex items-center justify-center w-12 h-12 rounded-full border-2',
-        'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_3px_0_var(--term-border)]',
-        'text-[var(--term-accent)]',
-      )}
-    >
-      <RefreshIcon className="h-5 w-5" />
-    </span>
-    <p className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line">
-      {message}
-    </p>
-    <ArrowRightIcon
-      className="hidden lg:block h-6 w-6 text-[var(--term-accent)]"
-      aria-hidden="true"
-    />
-    <ArrowRightIcon
-      className="lg:hidden h-6 w-6 text-[var(--term-accent)] rotate-90"
-      aria-hidden="true"
-    />
-  </div>
-);

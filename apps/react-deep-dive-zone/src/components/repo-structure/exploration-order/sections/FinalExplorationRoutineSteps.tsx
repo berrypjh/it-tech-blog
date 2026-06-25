@@ -1,15 +1,16 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { NumberedStepList } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
-import type { ExplorationContent, RoutineStep } from '../content';
+import type { ToneKey } from '../../../shared/tones';
+import type { ExplorationContent } from '../content';
 import { iconByName, MapIcon } from '../icons';
 
 type Props = { content: ExplorationContent['routine'] };
 
+const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
+
 export const FinalExplorationRoutineSteps = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-routine" className="space-y-md">
+    <section aria-labelledby="heading-routine" className="space-y-lg">
       <SectionHeader
         id="routine"
         eyebrow={content.eyebrow}
@@ -18,73 +19,19 @@ export const FinalExplorationRoutineSteps = ({ content }: Props) => {
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      <ol
-        className={cn(
-          'flex flex-col rounded-2xl border bg-[var(--term-bg)]',
-          'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          'divide-y divide-dashed divide-[var(--term-border)]',
-        )}
-      >
-        {content.steps.map((step, idx) => (
-          <li key={step.number}>
-            <RoutineRow step={step} index={idx} />
-          </li>
-        ))}
-      </ol>
+      <NumberedStepList
+        rows={content.steps.map((step, idx) => {
+          const Icon = iconByName[step.icon];
+          return {
+            id: step.number,
+            num: step.number,
+            tone: toneCycle[idx % toneCycle.length],
+            icon: <Icon className="h-[1.125rem] w-[1.125rem]" />,
+            title: step.title,
+            description: step.description,
+          };
+        })}
+      />
     </section>
-  );
-};
-
-type RowProps = { step: RoutineStep; index: number };
-
-/** 텍스트만 3색 소프트 순환: A=accent / B=sky / C=violet */
-const stepTextTones = ['text-[var(--term-accent)]', toneTokens.sky.text, toneTokens.violet.text];
-
-const RoutineRow = ({ step, index }: RowProps) => {
-  const Icon = iconByName[step.icon];
-  const textTone = stepTextTones[index % 3];
-  return (
-    <article
-      className={cn(
-        'group grid grid-cols-[auto_auto_minmax(0,1fr)] sm:grid-cols-[auto_auto_minmax(0,_0.4fr)_minmax(0,_0.6fr)]',
-        'items-center gap-sm sm:gap-md px-md sm:px-lg py-md',
-        'transition-colors hover:bg-[var(--term-surface)]',
-      )}
-    >
-      {/* 번호 원형 */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-10 h-10 rounded-full border',
-          'bg-[var(--term-surface)] border-[var(--term-border)] font-bold text-sm tabular-nums',
-          'shadow-[0_2px_0_var(--term-border)]',
-          textTone,
-        )}
-      >
-        {step.number}
-      </span>
-
-      {/* 아이콘 박스 */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-10 h-10 rounded-md border',
-          'bg-[var(--term-surface)] border-[var(--term-border)]',
-          textTone,
-        )}
-      >
-        <Icon className="h-5 w-5" />
-      </span>
-
-      {/* 제목 */}
-      <h3 className="text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep">
-        {step.title}
-      </h3>
-
-      {/* 설명 */}
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep col-span-3 sm:col-span-1">
-        {step.description}
-      </p>
-    </article>
   );
 };

@@ -15,9 +15,12 @@ import type { ComponentType, SVGProps } from 'react';
 import type { IconName } from './content';
 
 export {
+  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
+  ArrowUp as ArrowUpIcon,
   Boxes as BoxesIcon,
   CheckCircle2 as CheckCircleIcon,
+  Check as CheckIcon,
   CircleHelp as CircleHelpIcon,
   Code2 as CodeIcon,
   ExternalLink as ExternalLinkIcon,
@@ -29,6 +32,7 @@ export {
   RotateCcw as RotateIcon,
   Sparkles as SparklesIcon,
   XCircle as XCircleIcon,
+  X as XIcon,
 } from 'lucide-react';
 
 type LucideLike = ComponentType<SVGProps<SVGSVGElement>>;

@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { RepFile, SharedContent } from '../content';
+import type { SharedContent } from '../content';
 import { FileCodeIcon, iconByName } from '../icons';
 
 type Props = { content: SharedContent['files'] };
 
 export const SharedRepresentativeFiles = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-files" className="space-y-md">
+    <section aria-labelledby="heading-files" className="space-y-lg">
       <SectionHeader
         id="files"
         eyebrow={content.eyebrow}
@@ -17,66 +18,38 @@ export const SharedRepresentativeFiles = ({ content }: Props) => {
         icon={<FileCodeIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md items-stretch">
-        {content.cards.map((card) => (
-          <li key={card.id} className="flex">
-            <FileCard card={card} />
-          </li>
-        ))}
-      </ul>
+      <ToneCardGrid>
+        {content.cards.map((card) => {
+          const Icon = iconByName[card.icon];
+
+          return (
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" />}
+              badge={<code className="font-mono break-all">{card.codeLabel}</code>}
+            >
+              <header className="flex flex-col gap-0.5">
+                <h3
+                  className={cn(
+                    'text-sm sm:text-md font-bold font-mono tracking-tight break-all',
+                    toneTokens[card.tone].text,
+                  )}
+                >
+                  {card.title}
+                </h3>
+                <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
+                  {card.subtitle}
+                </p>
+              </header>
+
+              <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
+                {card.description}
+              </p>
+            </ToneCardItem>
+          );
+        })}
+      </ToneCardGrid>
     </section>
-  );
-};
-
-type ItemProps = { card: RepFile };
-
-const FileCard = ({ card }: ItemProps) => {
-  const accent = toneTokens[card.tone].text;
-  const Icon = iconByName[card.icon];
-
-  return (
-    <article
-      className={cn(
-        'flex w-full flex-col gap-sm rounded-xl border p-md sm:p-lg',
-        'bg-[var(--term-surface)] border-[var(--term-border)]',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-11 h-11 rounded-md border',
-          'border-[var(--term-border)] bg-[var(--term-surface)]',
-          accent,
-        )}
-      >
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </span>
-
-      <header className="flex flex-col gap-0.5">
-        <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', accent)}>
-          {card.title}
-        </h3>
-        <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
-          {card.subtitle}
-        </p>
-      </header>
-
-      <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
-        {card.description}
-      </p>
-
-      <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
-        <code
-          className={cn(
-            'inline-flex items-center rounded-md border px-2 py-1 text-[11px] font-mono break-all',
-            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          )}
-        >
-          {card.codeLabel}
-        </code>
-      </div>
-    </article>
   );
 };

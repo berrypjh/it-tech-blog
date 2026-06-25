@@ -1,3 +1,4 @@
+import { MappingRowCard } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { WhyReact19Content } from '../content';
@@ -18,9 +19,15 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
       <ul className="flex flex-col gap-md">
         {content.rows.map((row, idx) => (
           <li key={idx}>
-            <article className="group rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px hover:shadow-[0_2px_0_var(--term-border)]">
-              <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.5fr)] gap-sm md:gap-md items-center">
-                {/* 과거에는 */}
+            <MappingRowCard
+              columns="md:grid-cols-[minmax(0,0.9fr)_auto_minmax(0,1.5fr)]"
+              arrow={
+                <>
+                  <ArrowRightIcon className="h-4 w-4 hidden md:block" />
+                  <ArrowDownIcon className="h-4 w-4 md:hidden" />
+                </>
+              }
+              left={
                 <div className="flex flex-col gap-1.5">
                   <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)]">
                     {content.headers.legacy}
@@ -29,17 +36,8 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
                     {row.legacy}
                   </code>
                 </div>
-
-                {/* 전환 화살표 (md+ 오른쪽 · 모바일 아래) */}
-                <span
-                  aria-hidden="true"
-                  className="justify-self-start md:justify-self-center inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_1px_0_var(--term-border)]"
-                >
-                  <ArrowRightIcon className="h-4 w-4 hidden md:block" />
-                  <ArrowDownIcon className="h-4 w-4 md:hidden" />
-                </span>
-
-                {/* 지금은 */}
+              }
+              right={
                 <div className="flex flex-col gap-1">
                   <span className="text-[10px] uppercase tracking-wider text-[var(--term-accent)]">
                     {content.headers.modern}
@@ -51,8 +49,8 @@ export const ModernReinterpretationTable = ({ content }: Props) => {
                     {row.modernBody}
                   </p>
                 </div>
-              </div>
-            </article>
+              }
+            />
           </li>
         ))}
       </ul>

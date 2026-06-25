@@ -2,6 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import type { TestCodeContent } from '../content';
 import { CodeIcon, ExternalLinkIcon, FileCodeIcon, InfoIcon, LightbulbIcon } from '../icons';
@@ -53,30 +54,9 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
             language="js"
           />
 
-          <div
-            className={cn(
-              'flex items-start gap-sm rounded-lg border px-md py-md',
-              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-            )}
-          >
-            <span
-              aria-hidden="true"
-              className={cn(
-                'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
-                'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
-              )}
-            >
-              <LightbulbIcon className="h-4 w-4" />
-            </span>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[10px] uppercase tracking-wider font-bold">
-                {content.rightPointLabel}
-              </span>
-              <p className="text-xsm sm:text-sm leading-snug font-medium break-keep">
-                {content.rightPoint}
-              </p>
-            </div>
-          </div>
+          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+            {content.rightPoint}
+          </SectionNote>
 
           <div className="flex flex-col sm:flex-row gap-2">
             <GithubButton href={content.primaryHref} label={content.primaryCta} />
@@ -85,14 +65,18 @@ export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                'inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
+                'group/cta inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
                 'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
-                'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+                'transition-colors hover:bg-[var(--term-surface)]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               )}
             >
               {content.secondaryCta}
-              <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="sr-only">(새 창에서 열림)</span>
+              <ExternalLinkIcon
+                className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+                aria-hidden="true"
+              />
             </a>
           </div>
         </div>

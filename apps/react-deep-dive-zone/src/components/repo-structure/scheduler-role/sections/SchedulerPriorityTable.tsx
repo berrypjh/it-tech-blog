@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import { tintByPriority } from '../components/HeroPriorityCards';
+import { priorityTone } from '../components/HeroPriorityCards';
 import type { PriorityRow, SchedulerContent } from '../content';
-import { iconByName, ListOrderedIcon } from '../icons';
+import { ArrowDownIcon, ArrowUpIcon, iconByName, ListOrderedIcon } from '../icons';
 
 type Props = { content: SchedulerContent['priority'] };
 
@@ -55,9 +55,9 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
     <div className="flex sm:flex-col items-center gap-2 text-center">
       <span
         aria-hidden="true"
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] text-sm font-bold"
+        className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]"
       >
-        ↑
+        <ArrowUpIcon className="h-3.5 w-3.5" />
       </span>
       <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-accent)] break-keep">
         {highLabel}
@@ -83,11 +83,11 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-sm font-bold',
+          'inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)]',
           toneTokens.violet.text,
         )}
       >
-        ↓
+        <ArrowDownIcon className="h-3.5 w-3.5" />
       </span>
       <span
         className={cn(
@@ -104,7 +104,8 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
 type RowProps = { row: PriorityRow };
 
 const PriorityRowItem = ({ row }: RowProps) => {
-  const tint = tintByPriority[row.id];
+  const t = toneTokens[priorityTone[row.id]];
+  const chip = cn('bg-[var(--term-surface)] border-[var(--term-border)]', t.text);
   const Icon = iconByName[row.icon];
 
   return (
@@ -112,8 +113,7 @@ const PriorityRowItem = ({ row }: RowProps) => {
       className={cn(
         'grid grid-cols-1 md:grid-cols-[minmax(0,_0.32fr)_minmax(0,_0.4fr)_minmax(0,_0.28fr)] gap-sm items-start',
         'rounded-xl border p-md',
-        'transition-colors',
-        tint.card,
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       {/* 제목 + 우선순위 pill */}
@@ -122,23 +122,20 @@ const PriorityRowItem = ({ row }: RowProps) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
-            tint.chip,
+            chip,
           )}
         >
           <Icon className="h-4 w-4" />
         </span>
         <div className="flex flex-col gap-1 min-w-0">
-          <h3 className={cn('text-sm font-bold tracking-tight', tint.text)}>{row.title}</h3>
+          <h3 className={cn('text-sm font-bold tracking-tight', t.text)}>{row.title}</h3>
           <span
             className={cn(
               'inline-flex items-center gap-1 self-start rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              tint.chip,
+              chip,
             )}
           >
-            <span
-              aria-hidden="true"
-              className={cn('inline-block w-1 h-1 rounded-full', tint.dot)}
-            />
+            <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', t.dot)} />
             {row.priorityLabel}
           </span>
         </div>
@@ -148,7 +145,7 @@ const PriorityRowItem = ({ row }: RowProps) => {
       <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">{row.description}</p>
 
       {/* 예시 */}
-      <p className={cn('text-xsm leading-snug break-keep font-mono', 'text-[var(--term-muted)]')}>
+      <p className="text-xsm leading-snug break-keep font-mono text-[var(--term-muted)]">
         {row.example}
       </p>
     </article>

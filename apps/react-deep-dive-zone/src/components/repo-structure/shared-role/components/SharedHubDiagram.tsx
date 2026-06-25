@@ -141,7 +141,7 @@ const BranchCard = ({ branch }: BranchProps) => {
       className={cn(
         'flex flex-col items-center gap-1 rounded-lg border p-3 text-center',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        'border-[var(--term-border)] bg-[var(--term-surface)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <span
