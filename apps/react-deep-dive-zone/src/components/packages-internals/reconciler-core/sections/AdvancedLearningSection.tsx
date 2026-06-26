@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneCard } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { AdvancedLink, ReconcilerContent } from '../content';
 import { ArrowRightIcon, BookOpenIcon, reconcilerIcon } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: ReconcilerContent['advanced'] };
 
@@ -32,45 +33,47 @@ export const AdvancedLearningSection = ({ content }: Props) => {
 };
 
 const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: string }) => {
-  const tone = houseTone(card.tone);
   const Icon = reconcilerIcon[card.iconName];
 
   return (
     <Link
       href={card.href}
-      className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-      )}
+      className="group/card h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
     >
-      <span
-        aria-hidden="true"
-        className={cn('inline-flex h-11 w-11 items-center justify-center rounded-md', tone.chip)}
-      >
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </span>
-
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
-
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-        {card.description}
-      </p>
-
-      <span
-        className={cn(
-          'mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold font-mono tracking-tight',
-          tone.text,
-        )}
-      >
-        {moreLabel}
-        <ArrowRightIcon
-          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+      <ToneCard tone={card.tone} nav className="w-full">
+        <span
           aria-hidden="true"
-        />
-      </span>
+          className={cn(
+            'inline-flex h-11 w-11 items-center justify-center rounded-md',
+            toneTokens[card.tone].chip,
+          )}
+        >
+          <Icon className="h-5 w-5" aria-hidden="true" />
+        </span>
+
+        <h3
+          className={cn('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}
+        >
+          {card.title}
+        </h3>
+
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+          {card.description}
+        </p>
+
+        <span
+          className={cn(
+            'mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold font-mono tracking-tight',
+            toneTokens[card.tone].text,
+          )}
+        >
+          {moreLabel}
+          <ArrowRightIcon
+            className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </span>
+      </ToneCard>
     </Link>
   );
 };

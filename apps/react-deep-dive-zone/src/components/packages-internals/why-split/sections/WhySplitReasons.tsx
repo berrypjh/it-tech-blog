@@ -1,9 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { WhySplitContent } from '../content';
 import { architectureIcon, SparklesIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: WhySplitContent['reasons']; sectionId: string };
 
@@ -17,49 +19,30 @@ export const WhySplitReasons = ({ content, sectionId }: Props) => {
         icon={<SparklesIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
+      <ToneCardGrid>
         {content.cards.map((card) => {
           const Icon = architectureIcon[card.iconName];
+
           return (
-            <li key={card.id} className="flex">
-              <article
+            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+              <h3
                 className={cn(
-                  'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
-                  'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-                  'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-                  'hover:border-[var(--term-accent)]',
+                  'text-md font-bold tracking-tight break-keep',
+                  toneTokens[card.tone].text,
                 )}
               >
-                <ToneIconBox tone={card.tone} size="md">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </ToneIconBox>
-                <h3
-                  className={cn('text-md font-bold tracking-tight break-keep', toneText(card.tone))}
-                >
-                  {card.title}
-                </h3>
-                <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-                  {card.description}
-                </p>
-              </article>
-            </li>
+                {card.title}
+              </h3>
+
+              <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+                {card.description}
+              </p>
+            </ToneCardItem>
           );
         })}
-      </ul>
+      </ToneCardGrid>
 
-      {/* 강조 배너 */}
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-[var(--term-accent)]">
-          <SparklesIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };

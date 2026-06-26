@@ -1,6 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCard, ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent, InfoGroupCard } from '../content';
 import { BoxesIcon, FlagIcon, LinkIcon, NetworkIcon, RefreshIcon } from '../icons';
 
@@ -11,37 +13,6 @@ const iconMap = {
   refresh: RefreshIcon,
   flag: FlagIcon,
   link: LinkIcon,
-} as const;
-
-const accentTokens = {
-  emerald: {
-    border: 'border-emerald-300/80 dark:border-emerald-700/70',
-    borderHover: 'hover:border-emerald-400 dark:hover:border-emerald-500/70',
-    surface: 'bg-emerald-50/40 dark:bg-emerald-950/20',
-    chip: 'bg-emerald-100 text-emerald-700 border-emerald-300/80 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-700/70',
-    text: 'text-emerald-700 dark:text-emerald-300',
-  },
-  violet: {
-    border: 'border-violet-300/80 dark:border-violet-700/70',
-    borderHover: 'hover:border-violet-400 dark:hover:border-violet-500/70',
-    surface: 'bg-violet-50/40 dark:bg-violet-950/20',
-    chip: 'bg-violet-100 text-violet-700 border-violet-300/80 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-700/70',
-    text: 'text-violet-700 dark:text-violet-300',
-  },
-  sky: {
-    border: 'border-sky-300/80 dark:border-sky-700/70',
-    borderHover: 'hover:border-sky-400 dark:hover:border-sky-500/70',
-    surface: 'bg-sky-50/40 dark:bg-sky-950/20',
-    chip: 'bg-sky-100 text-sky-700 border-sky-300/80 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-700/70',
-    text: 'text-sky-700 dark:text-sky-300',
-  },
-  amber: {
-    border: 'border-amber-300/80 dark:border-amber-700/70',
-    borderHover: 'hover:border-amber-400 dark:hover:border-amber-500/70',
-    surface: 'bg-amber-50/40 dark:bg-amber-950/20',
-    chip: 'bg-amber-100 text-amber-800 border-amber-300/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-700/70',
-    text: 'text-amber-700 dark:text-amber-300',
-  },
 } as const;
 
 export const FiberInfoGroups = ({ content }: Props) => (
@@ -55,9 +26,9 @@ export const FiberInfoGroups = ({ content }: Props) => (
       icon={<BoxesIcon className="h-5 w-5" />}
     />
 
-    <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-md">
       {content.cards.map((card) => (
-        <li key={card.id} className="flex">
+        <li key={card.id}>
           <CardView card={card} />
         </li>
       ))}
@@ -66,39 +37,29 @@ export const FiberInfoGroups = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: InfoGroupCard }) => {
-  const a = accentTokens[card.accent];
   const Icon = iconMap[card.iconName];
   return (
-    <article
-      className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        a.border,
-        a.borderHover,
-        a.surface,
-      )}
-    >
+    <ToneCard tone={card.accent}>
       <header className="flex items-center justify-between gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
-            a.chip,
-          )}
-        >
+        <ToneIconBox tone={card.accent}>
           <Icon className="h-6 w-6" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex items-center rounded-full border px-2 py-0.5',
             'text-[10px] font-bold uppercase tracking-wider font-mono',
-            a.chip,
+            toneTokens[card.accent].chip,
           )}
         >
           {card.fields.length} fields
         </span>
       </header>
-      <h3 className={cn('text-sm sm:text-md font-extrabold tracking-tight break-keep', a.text)}>
+      <h3
+        className={cn(
+          'text-sm sm:text-md font-extrabold tracking-tight break-keep',
+          toneTokens[card.accent].text,
+        )}
+      >
         {card.title}
       </h3>
       <ul className="flex flex-wrap gap-1.5">
@@ -117,6 +78,6 @@ const CardView = ({ card }: { card: InfoGroupCard }) => {
           </li>
         ))}
       </ul>
-    </article>
+    </ToneCard>
   );
 };

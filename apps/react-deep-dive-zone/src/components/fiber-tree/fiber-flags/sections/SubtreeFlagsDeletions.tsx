@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import { effectBadge } from '../components/effectStyles';
 import type { FiberFlagsContent } from '../content';
 import { FlagIcon, TrashIcon } from '../icons';
@@ -40,25 +41,39 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
       {/* Parent Fiber visual */}
       <article
         className={cn(
-          'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
-          'border-violet-200/80 dark:border-violet-800/60 shadow-[0_2px_0_var(--term-border)]',
+          'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
+          toneTokens.violet.border,
         )}
       >
-        <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300">
+        <span
+          className={cn('text-[10px] font-mono uppercase tracking-wider', toneTokens.violet.text)}
+        >
           {`// ${content.parentLabel}`}
         </span>
-        <div className="mt-sm flex flex-col gap-2 rounded-2xl border-2 border-violet-200/80 dark:border-violet-800/60 bg-violet-50/40 dark:bg-violet-950/20 p-md">
-          <span className="text-xsm font-bold text-violet-900 dark:text-violet-100">
+        <div
+          className={cn(
+            'mt-sm flex flex-col gap-2 rounded-2xl border-2 p-md',
+            toneTokens.violet.fill.bg,
+            toneTokens.violet.fill.border,
+          )}
+        >
+          <span className={cn('text-xsm font-bold', toneTokens.violet.fill.text)}>
             Parent Fiber
           </span>
-          <div className="flex items-center gap-2 rounded-md border border-violet-300/80 dark:border-violet-700/70 bg-violet-100/60 dark:bg-violet-900/40 px-2 py-1.5">
-            <code className="font-mono text-xsm font-bold text-violet-800 dark:text-violet-100">
+          <div
+            className={cn(
+              'flex items-center gap-2 rounded-md border px-2 py-1.5',
+              toneTokens.violet.fill.bg,
+              toneTokens.violet.fill.border,
+            )}
+          >
+            <code className={cn('font-mono text-xsm font-bold', toneTokens.violet.fill.text)}>
               {content.parentFieldLabel}
             </code>
             <span
               className={cn(
                 'ml-auto inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold tracking-tight',
-                'bg-violet-50 text-violet-800 border-violet-200/80 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/70',
+                toneTokens.violet.chip,
               )}
             >
               {content.parentBadge}
@@ -99,6 +114,20 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
   </section>
 );
 
+/** violet = subtreeFlags 카테고리(toneTokens), rose = 삭제(의미색, 직접 색 유지). */
+const conceptCls = {
+  violet: {
+    border: toneTokens.violet.border,
+    iconWrap: toneTokens.violet.chip,
+    title: toneTokens.violet.text,
+  },
+  rose: {
+    border: 'border-rose-200/80 dark:border-rose-800/60',
+    iconWrap: 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-200',
+    title: 'text-rose-700 dark:text-rose-300',
+  },
+} as const;
+
 const ConceptCard = ({
   title,
   description,
@@ -112,22 +141,7 @@ const ConceptCard = ({
   tone: 'violet' | 'rose';
   icon: React.ReactNode;
 }) => {
-  const cls = {
-    violet: {
-      border:
-        'border-violet-200/80 dark:border-violet-800/60 hover:border-violet-400/70 dark:hover:border-violet-500/60',
-      iconWrap: 'bg-violet-100 text-violet-700 dark:bg-violet-950/60 dark:text-violet-200',
-      title: 'text-violet-900 dark:text-violet-100',
-      desc: 'text-violet-700/90 dark:text-violet-200',
-    },
-    rose: {
-      border:
-        'border-rose-200/80 dark:border-rose-800/60 hover:border-rose-400/70 dark:hover:border-rose-500/60',
-      iconWrap: 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-200',
-      title: 'text-rose-900 dark:text-rose-100',
-      desc: 'text-rose-700/90 dark:text-rose-200',
-    },
-  }[tone];
+  const cls = conceptCls[tone];
   return (
     <article
       className={cn(
@@ -141,7 +155,7 @@ const ConceptCard = ({
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-xl',
+            'inline-flex items-center justify-center w-12 h-12 rounded-xl border',
             cls.iconWrap,
           )}
         >
@@ -151,7 +165,7 @@ const ConceptCard = ({
           <code className={cn('font-mono text-md font-bold tracking-tight', cls.title)}>
             {title}
           </code>
-          <p className={cn('text-xsm font-bold break-keep', cls.desc)}>{description}</p>
+          <p className="text-xsm font-bold text-[var(--term-muted)] break-keep">{description}</p>
         </div>
       </header>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>

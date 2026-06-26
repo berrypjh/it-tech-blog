@@ -222,8 +222,8 @@ const ko: DispatchSetStateContent = {
       subtitle: 'dispatch 함수',
       bodyTitle: '기억하고 있는 정보',
       items: [
-        { marker: '①', label: 'Fiber', sub: '현재 컴포넌트' },
-        { marker: '②', label: 'Hook Queue', sub: 'update queue' },
+        { marker: '01', label: 'Fiber', sub: '현재 컴포넌트' },
+        { marker: '02', label: 'Hook Queue', sub: 'update queue' },
       ],
     },
     rightCard: {
@@ -337,7 +337,7 @@ const ko: DispatchSetStateContent = {
       'bind는 단순한 문법이 아니라, 나중에 호출될 setCount가 필요한 내부 정보를 잃지 않게 묶어두는 장치다.',
     cards: [
       {
-        marker: '①',
+        marker: '01',
         title: 'Fiber를 기억한다',
         body: '어느 컴포넌트(Fiber)의 상태 업데이트인지 알기 위해 현재 Fiber를 함께 기억한다.',
         sub: '→ 상태를 전파하거나 스케줄링할 때 사용',
@@ -345,7 +345,7 @@ const ko: DispatchSetStateContent = {
         iconName: 'box',
       },
       {
-        marker: '②',
+        marker: '02',
         title: 'queue를 기억한다',
         body: '어느 Hook의 update queue에 업데이트를 넣어야 하는지 알기 위해 queue를 기억한다.',
         sub: '→ update 객체를 정확한 queue에 넣는다',
@@ -353,7 +353,7 @@ const ko: DispatchSetStateContent = {
         iconName: 'link',
       },
       {
-        marker: '③',
+        marker: '03',
         title: '나중 호출에 대비한다',
         body: '이벤트 핸들러 등에서 나중에 호출되어도 Fiber와 queue 정보를 잃지 않고 정확히 연결된 상태로 동작할 수 있다.',
         sub: '→ event handler·async 호출에도 안전',
@@ -493,8 +493,8 @@ const en: DispatchSetStateContent = {
       subtitle: 'dispatch function',
       bodyTitle: 'remembers',
       items: [
-        { marker: '①', label: 'Fiber', sub: 'the current component' },
-        { marker: '②', label: 'Hook Queue', sub: 'the update queue' },
+        { marker: '01', label: 'Fiber', sub: 'the current component' },
+        { marker: '02', label: 'Hook Queue', sub: 'the update queue' },
       ],
     },
     rightCard: {
@@ -609,7 +609,7 @@ const en: DispatchSetStateContent = {
       'bind is not just syntax — it keeps the information the setter needs alive across later, async calls.',
     cards: [
       {
-        marker: '①',
+        marker: '01',
         title: 'Remember the Fiber',
         body: 'Bind the current Fiber so React knows which component this update belongs to.',
         sub: '→ used when propagating or scheduling',
@@ -617,7 +617,7 @@ const en: DispatchSetStateContent = {
         iconName: 'box',
       },
       {
-        marker: '②',
+        marker: '02',
         title: 'Remember the queue',
         body: "Bind the queue so the update goes into the right Hook's queue.",
         sub: '→ puts the update object on the correct queue',
@@ -625,7 +625,7 @@ const en: DispatchSetStateContent = {
         iconName: 'link',
       },
       {
-        marker: '③',
+        marker: '03',
         title: 'Survive later calls',
         body: 'Even from event handlers or async code later, the setter keeps its Fiber and queue context intact.',
         sub: '→ safe across handlers and async paths',

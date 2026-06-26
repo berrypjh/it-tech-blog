@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneCardItem } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { WhySplitContent } from '../content';
 import { architectureIcon, HelpCircleIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: WhySplitContent['questions'] };
 
@@ -17,39 +18,25 @@ export const WhySplitPackageQuestions = ({ content }: Props) => {
         icon={<HelpCircleIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md items-stretch">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
           const Icon = architectureIcon[card.iconName];
 
           return (
-            <li key={card.id} className="flex">
-              <article
+            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+              <h3
                 className={cn(
-                  'group flex flex-1 flex-col items-center gap-sm rounded-2xl border p-md text-center',
-                  'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-                  'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-                  'hover:border-[var(--term-accent)]',
+                  'text-md sm:text-lg font-bold font-mono tracking-tight break-keep [overflow-wrap:anywhere]',
+                  toneTokens[card.tone].text,
                 )}
               >
-                <ToneIconBox tone={card.tone} size="md">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </ToneIconBox>
+                {card.name}
+              </h3>
 
-                <span
-                  className={cn(
-                    'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono tracking-tight',
-                    'bg-[var(--term-surface)] border-[var(--term-border)]',
-                    toneText(card.tone),
-                  )}
-                >
-                  {card.name}
-                </span>
-
-                <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
-                  {card.question}
-                </p>
-              </article>
-            </li>
+              <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+                {card.question}
+              </p>
+            </ToneCardItem>
           );
         })}
       </ul>

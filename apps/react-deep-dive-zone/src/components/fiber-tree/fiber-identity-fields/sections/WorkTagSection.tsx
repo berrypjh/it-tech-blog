@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { WorkTagCardItem } from '../components/WorkTagCard';
 import type { FiberIdentityFieldsContent } from '../content';
@@ -25,22 +24,6 @@ export const WorkTagSection = ({ content }: Props) => (
       ))}
     </ul>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl border-2 p-md',
-        'border-sky-300/80 bg-sky-50/70',
-        'dark:border-sky-800/60 dark:bg-sky-950/30',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950/60 dark:text-sky-200 shrink-0"
-      >
-        <LightbulbIcon className="h-5 w-5" />
-      </span>
-      <p className="text-xsm sm:text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
-        {content.banner}
-      </p>
-    </div>
+    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
   </section>
 );

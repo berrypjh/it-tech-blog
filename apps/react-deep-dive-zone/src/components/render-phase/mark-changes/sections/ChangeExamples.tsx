@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { ExampleCard, MarkChangesContent } from '../content';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { ExampleCard, MarkChangesContent, Tone } from '../content';
 import { ArrowDownIcon, FlagIcon, MoveIcon, SparklesIcon, Trash2Icon } from '../icons';
-
-import { tonePalette } from './tone-palette';
 
 type Props = { content: MarkChangesContent['examples'] };
 
@@ -13,6 +12,17 @@ const iconMap = {
   trash: Trash2Icon,
   move: MoveIcon,
 } as const;
+
+/** rose는 의미색(삭제)이라 toneTokens에 없으니 그대로 유지한다. */
+const roseTokens = {
+  text: 'text-rose-700 dark:text-rose-200',
+  chip: 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/70',
+};
+
+const cardText = (tone: Tone) =>
+  tone === 'rose' ? roseTokens.text : toneTokens[tone as ToneKey].text;
+const cardChip = (tone: Tone) =>
+  tone === 'rose' ? roseTokens.chip : toneTokens[tone as ToneKey].chip;
 
 export const ChangeExamples = ({ content }: Props) => (
   <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
@@ -24,7 +34,7 @@ export const ChangeExamples = ({ content }: Props) => (
       icon={<SparklesIcon className="h-5 w-5" />}
     />
 
-    <ol className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+    <ol className="grid grid-cols-1 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => (
         <li key={card.title} className="flex h-full">
           <Card card={card} />
@@ -35,26 +45,23 @@ export const ChangeExamples = ({ content }: Props) => (
 );
 
 const Card = ({ card }: { card: ExampleCard }) => {
-  const palette = tonePalette[card.tone];
   const Icon = iconMap[card.iconName];
   const beforeTokens = card.before.split(' ').filter(Boolean);
   const afterTokens = card.after.split(' ').filter(Boolean);
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
-        palette.border,
-        palette.bg,
-        'shadow-[0_2px_0_var(--term-border)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'group flex h-full flex-col gap-3 rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       <header className="flex items-center justify-between gap-2">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
-            palette.chip,
+            'inline-flex h-10 w-10 items-center justify-center rounded-md border',
+            cardChip(card.tone),
           )}
         >
           <Icon className="h-5 w-5" />
@@ -62,14 +69,14 @@ const Card = ({ card }: { card: ExampleCard }) => {
         <span
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            palette.chip,
+            cardChip(card.tone),
           )}
         >
           {card.badgeLabel}
         </span>
       </header>
 
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', palette.text)}>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', cardText(card.tone))}>
         {card.title}
       </h3>
 
@@ -95,7 +102,7 @@ const Card = ({ card }: { card: ExampleCard }) => {
         />
       </div>
 
-      <p className="mt-auto text-xsm sm:text-sm leading-snug text-[var(--term-muted)] break-keep">
+      <p className="mt-auto text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
         {card.description}
       </p>
     </article>
@@ -111,7 +118,7 @@ const TokenRow = ({
   label: string;
   tokens: string[];
   mark: 'insert' | 'delete' | 'move' | null;
-  tone?: 'teal' | 'rose' | 'amber' | 'sky' | 'violet' | 'indigo';
+  tone?: Tone;
 }) => (
   <div className="flex flex-col gap-1">
     <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">

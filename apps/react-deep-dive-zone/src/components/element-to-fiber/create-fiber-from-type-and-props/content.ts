@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type BranchKey = 'string' | 'function' | 'fragment' | 'mode';
 
 export type Branch = {
@@ -41,7 +43,7 @@ export type SpecialCard = {
   type: string;
   result: string;
   iconName: 'shield' | 'eyeoff' | 'zap' | 'sparkles';
-  accent: 'blue' | 'cyan' | 'violet' | 'sky';
+  tone: ToneKey;
 };
 
 export type CreateFiberFromTypeAndPropsContent = {
@@ -379,7 +381,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_SUSPENSE_TYPE',
         result: '→ SuspenseComponent Fiber',
         iconName: 'shield',
-        accent: 'blue',
+        tone: 'sky',
       },
       {
         id: 'offscreen',
@@ -387,7 +389,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_OFFSCREEN_TYPE',
         result: '→ OffscreenComponent Fiber',
         iconName: 'eyeoff',
-        accent: 'cyan',
+        tone: 'cyan',
       },
       {
         id: 'activity',
@@ -395,7 +397,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_ACTIVITY_TYPE',
         result: '→ ActivityComponent Fiber',
         iconName: 'zap',
-        accent: 'violet',
+        tone: 'violet',
       },
       {
         id: 'view-transition',
@@ -403,7 +405,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_VIEW_TRANSITION_TYPE',
         result: '→ ViewTransitionComponent Fiber',
         iconName: 'sparkles',
-        accent: 'sky',
+        tone: 'indigo',
       },
     ],
     bottomNote:
@@ -611,7 +613,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_SUSPENSE_TYPE',
         result: '→ SuspenseComponent Fiber',
         iconName: 'shield',
-        accent: 'blue',
+        tone: 'sky',
       },
       {
         id: 'offscreen',
@@ -619,7 +621,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_OFFSCREEN_TYPE',
         result: '→ OffscreenComponent Fiber',
         iconName: 'eyeoff',
-        accent: 'cyan',
+        tone: 'cyan',
       },
       {
         id: 'activity',
@@ -627,7 +629,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_ACTIVITY_TYPE',
         result: '→ ActivityComponent Fiber',
         iconName: 'zap',
-        accent: 'violet',
+        tone: 'violet',
       },
       {
         id: 'view-transition',
@@ -635,7 +637,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         type: 'REACT_VIEW_TRANSITION_TYPE',
         result: '→ ViewTransitionComponent Fiber',
         iconName: 'sparkles',
-        accent: 'sky',
+        tone: 'indigo',
       },
     ],
     bottomNote:

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CleanupCard, CleanupCardIcon, DeletionContent } from '../content';
 import { ClockIcon, MonitorIcon, SparklesIcon, TrashIcon, UnlinkIcon } from '../icons';
 
@@ -41,40 +41,31 @@ export const DeletionCleanupItemsSection = ({ content }: Props) => (
 
 const Card = ({ card, index }: { card: CleanupCard; index: number }) => {
   const Icon = iconMap[card.iconName];
-  const t = commitToneTokens[card.tone];
+  const t = toneTokens[card.tone as ToneKey];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
-        t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
+        'group flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md',
+        'border-[var(--term-border)]',
+        'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)] motion-reduce:transform-none',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
+      <div className="flex items-start justify-between">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-11 w-11 items-center justify-center rounded-2xl border',
-            t.chipSolid,
+            'inline-flex h-11 w-11 items-center justify-center rounded-md border',
+            t.chip,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <span
-          className={cn(
-            'text-[10px] font-mono uppercase tracking-wider tabular-nums rounded-md border px-1.5 py-0.5',
-            t.chipSolid,
-          )}
-        >
+        <span className="text-xxsm font-bold tabular-nums text-[var(--term-muted)]">
           {String(index).padStart(2, '0')}
         </span>
-      </header>
+      </div>
 
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.textStrong)}>
-        {card.title}
-      </h3>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
 
       <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
         {card.description}

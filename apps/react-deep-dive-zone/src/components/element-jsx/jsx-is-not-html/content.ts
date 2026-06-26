@@ -18,7 +18,6 @@ export type HeroExplanationCard = {
 export type MisconceptionCard = {
   id: string;
   badgeWrong: string;
-  badgeRight: string;
   wrong: string;
   right: string;
   note: string;
@@ -132,7 +131,6 @@ const ko: JsxIsNotHtmlContent = {
       {
         id: 'jsx-is-html',
         badgeWrong: '오해 1',
-        badgeRight: '정확히',
         wrong: 'JSX는 HTML이다.',
         right: 'HTML과 닮은 JavaScript 문법이다.',
         note: '유사해 보이지만, 실행되는 환경과 목적이 완전히 다릅니다.',
@@ -142,7 +140,6 @@ const ko: JsxIsNotHtmlContent = {
       {
         id: 'jsx-is-dom',
         badgeWrong: '오해 2',
-        badgeRight: '정확히',
         wrong: 'JSX가 곧 DOM이다.',
         right: 'JSX는 React Element를 만들기 위한 입력이다.',
         note: '바로 DOM이 아니라, 중간 객체를 거쳐 렌더링됩니다.',
@@ -152,7 +149,6 @@ const ko: JsxIsNotHtmlContent = {
       {
         id: 'jsx-renders-directly',
         badgeWrong: '오해 3',
-        badgeRight: '정확히',
         wrong: 'React는 JSX를 바로 브라우저에 그린다.',
         right: '먼저 컴파일과 객체 생성 단계를 거친다.',
         note: '그 후에 렌더러(renderer)가 실제 DOM을 만듭니다.',
@@ -307,7 +303,6 @@ const en: JsxIsNotHtmlContent = {
       {
         id: 'jsx-is-html',
         badgeWrong: 'Myth 1',
-        badgeRight: 'Truth',
         wrong: 'JSX is HTML.',
         right: 'It is JavaScript syntax that resembles HTML.',
         note: 'It looks similar, but the runtime and purpose are entirely different.',
@@ -317,7 +312,6 @@ const en: JsxIsNotHtmlContent = {
       {
         id: 'jsx-is-dom',
         badgeWrong: 'Myth 2',
-        badgeRight: 'Truth',
         wrong: 'JSX is the DOM.',
         right: 'JSX is input for building a React Element.',
         note: 'It is not the DOM directly — it goes through an intermediate object first.',
@@ -327,7 +321,6 @@ const en: JsxIsNotHtmlContent = {
       {
         id: 'jsx-renders-directly',
         badgeWrong: 'Myth 3',
-        badgeRight: 'Truth',
         wrong: 'React paints JSX straight to the browser.',
         right: 'It first compiles JSX and creates objects.',
         note: 'Only then does a renderer actually produce DOM nodes.',

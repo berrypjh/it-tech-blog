@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type FlowNode = {
   id: string;
   label: string;
@@ -37,7 +39,7 @@ export type ReasonCard = {
   title: string;
   description: string;
   iconName: 'phone' | 'database' | 'zap';
-  accent: 'green' | 'blue' | 'purple';
+  accent: ToneKey;
 };
 
 export type ChecklistItem = {
@@ -313,7 +315,7 @@ const ko: FunctionClassComponentFiberContent = {
         description:
           '함수 컴포넌트는 함수 호출, 클래스 컴포넌트는 인스턴스 생성 + render 호출 방식이 필요합니다.',
         iconName: 'phone',
-        accent: 'green',
+        accent: 'emerald',
       },
       {
         id: 'state',
@@ -321,7 +323,7 @@ const ko: FunctionClassComponentFiberContent = {
         description:
           '함수 컴포넌트는 Hooks 기반 상태, 클래스 컴포넌트는 this.state 기반 상태를 사용합니다.',
         iconName: 'database',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'update',
@@ -329,7 +331,7 @@ const ko: FunctionClassComponentFiberContent = {
         description:
           '스케줄링, 재조정, 라이프사이클 처리 방식이 달라서 업데이트 로직이 다르게 적용됩니다.',
         iconName: 'zap',
-        accent: 'purple',
+        accent: 'violet',
       },
     ],
   },
@@ -532,14 +534,14 @@ const en: FunctionClassComponentFiberContent = {
         description:
           'Function components are called as functions; class components need to be instantiated and then have render() called.',
         iconName: 'phone',
-        accent: 'green',
+        accent: 'emerald',
       },
       {
         id: 'state',
         title: 'Different state handling',
         description: 'Function components use Hooks-based state; class components use this.state.',
         iconName: 'database',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'update',
@@ -547,7 +549,7 @@ const en: FunctionClassComponentFiberContent = {
         description:
           'Scheduling, reconciliation, and lifecycle handling all differ — update logic must apply differently.',
         iconName: 'zap',
-        accent: 'purple',
+        accent: 'violet',
       },
     ],
   },

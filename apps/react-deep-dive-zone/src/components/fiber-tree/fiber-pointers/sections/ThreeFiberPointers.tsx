@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import { MiniPointerDiagram } from '../components/MiniPointerDiagram';
-import { pointerCardBorder, pointerIconBg, pointerText } from '../components/pointerStyles';
-import type { FiberTreePointersContent, PointerCard } from '../content';
+import type { FiberTreePointersContent, PointerCard, PointerKind } from '../content';
 import { GitBranchIcon, MoveDownIcon, MoveRightIcon, MoveUpIcon } from '../icons';
 
 type Props = { content: FiberTreePointersContent['pointers'] };
@@ -13,6 +14,12 @@ const iconMap = {
   sibling: MoveRightIcon,
   return: MoveUpIcon,
 } as const;
+
+const pointerTone: Record<PointerKind, ToneKey> = {
+  child: 'emerald',
+  sibling: 'violet',
+  return: 'sky',
+};
 
 export const ThreeFiberPointers = ({ content }: Props) => (
   <section id="pointers" aria-labelledby="heading-pointers" className="space-y-md scroll-mt-xl">
@@ -35,6 +42,7 @@ export const ThreeFiberPointers = ({ content }: Props) => (
 );
 
 const PointerCardItem = ({ card }: { card: PointerCard }) => {
+  const tone = pointerTone[card.id];
   const Icon = iconMap[card.id];
   return (
     <article
@@ -42,20 +50,14 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
         'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-        pointerCardBorder[card.id],
+        toneTokens[tone].border,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-xl',
-            pointerIconBg[card.id],
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <Icon className="h-5 w-5" />
-        </span>
-        <code className={cn('font-mono text-md font-bold tracking-tight', pointerText[card.id])}>
+        </ToneIconBox>
+        <code className={cn('font-mono text-md font-bold tracking-tight', toneTokens[tone].text)}>
           {card.id}
         </code>
       </header>

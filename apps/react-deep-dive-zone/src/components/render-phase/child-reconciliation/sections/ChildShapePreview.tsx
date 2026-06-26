@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChildShapeCard, ReconcileChildrenContent } from '../content';
 import { BoxesIcon, ExternalLinkIcon, LayersIcon, SparklesIcon, SquareIcon } from '../icons';
-
-import { tonePalette } from './tone-palette';
 
 type Props = { content: ReconcileChildrenContent['childShape'] };
 
@@ -14,6 +13,16 @@ const iconMap = {
   portal: ExternalLinkIcon,
   sparkle: SparklesIcon,
 } as const;
+
+/** rose는 의미색(특수/예외)으로 toneTokens 밖이므로 직접 색을 유지한다. */
+const roseFacets = {
+  text: 'text-rose-600 dark:text-rose-300',
+  chip: 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/70',
+  border: 'border-rose-200/70 dark:border-rose-800/60',
+};
+
+const facetsFor = (tone: ChildShapeCard['tone']) =>
+  tone === 'rose' ? roseFacets : toneTokens[tone as ToneKey];
 
 export const ChildShapePreview = ({ content }: Props) => (
   <section
@@ -41,49 +50,39 @@ export const ChildShapePreview = ({ content }: Props) => (
 );
 
 const Card = ({ card }: { card: ChildShapeCard }) => {
-  const palette = tonePalette[card.tone];
+  const facets = facetsFor(card.tone);
   const Icon = iconMap[card.iconName];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
-        palette.border,
-        palette.bg,
-        'shadow-[0_2px_0_var(--term-border)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'group flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md',
+        'border-[var(--term-border)]',
+        'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)] motion-reduce:transform-none',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
+      <div className="flex items-start justify-between">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
-            palette.chip,
+            'inline-flex h-11 w-11 items-center justify-center rounded-md border',
+            facets.chip,
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-5 w-5" />
         </span>
-        <span
-          className={cn(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            palette.chip,
-          )}
-        >
+        <span className="text-xxsm font-bold uppercase tracking-wider text-[var(--term-muted)]">
           shape
         </span>
-      </header>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', palette.text)}>
+      </div>
+
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', facets.text)}>
         {card.title}
       </h3>
-      <code
-        className={cn(
-          'self-start inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
-          'border-slate-800 bg-slate-950 text-amber-300',
-          'break-all',
-        )}
-      >
+
+      <code className="self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-[11px] font-bold text-[var(--term-fg)] break-all">
         {card.example}
       </code>
+
       <p className="mt-auto text-[10px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
         {card.description}
       </p>

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { RenderPhaseIntroContent, WorkCard, WorkCardIcon } from '../content';
+import type { RenderPhaseIntroContent, WorkCardIcon } from '../content';
 import { FlagIcon, GitBranchIcon, LayersIcon, RefreshCcwIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RenderPhaseIntroContent['work'] };
@@ -26,54 +27,29 @@ export const RenderPhaseWorkCards = ({ content }: Props) => (
     />
 
     <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      {content.cards.map((card, idx) => (
-        <li key={card.title} className="flex h-full">
-          <Card card={card} index={idx + 1} />
-        </li>
-      ))}
+      {content.cards.map((card, idx) => {
+        const Icon = workIconMap[card.iconName];
+        return (
+          <ToneCardItem
+            key={card.title}
+            tone={card.tone}
+            icon={<Icon className="h-5 w-5" />}
+            topRight={idx + 1}
+          >
+            <h3
+              className={cn(
+                'text-sm sm:text-md font-bold leading-tight break-keep',
+                toneTokens[card.tone].text,
+              )}
+            >
+              {card.title}
+            </h3>
+            <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
+              {card.description}
+            </p>
+          </ToneCardItem>
+        );
+      })}
     </ol>
   </section>
 );
-
-const Card = ({ card, index }: { card: WorkCard; index: number }) => {
-  const Icon = workIconMap[card.iconName];
-  const t = toneTokens[card.tone];
-  return (
-    <article
-      className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-md',
-        t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-11 w-11 items-center justify-center rounded-2xl border',
-            t.chip,
-          )}
-        >
-          <Icon className="h-5 w-5" />
-        </span>
-        <span
-          className={cn(
-            'text-[10px] font-mono uppercase tracking-wider tabular-nums',
-            'rounded-md border px-1.5 py-0.5',
-            t.chip,
-          )}
-        >
-          {String(index).padStart(2, '0')}
-        </span>
-      </header>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
-        {card.title}
-      </h3>
-      <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
-        {card.description}
-      </p>
-    </article>
-  );
-};

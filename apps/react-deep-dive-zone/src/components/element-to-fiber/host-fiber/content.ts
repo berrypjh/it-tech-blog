@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type DomTagCard = {
   id: string;
   code: string;
@@ -27,7 +29,7 @@ export type ModernHostCard = {
   subtitle: string;
   description: string;
   iconName: 'box' | 'package' | 'target';
-  accent: 'green' | 'blue' | 'purple';
+  tone: ToneKey;
 };
 
 export type ChecklistItem = {
@@ -254,7 +256,7 @@ const ko: HostComponentFiberContent = {
         subtitle: '일반 DOM 요소',
         description: 'div, span, button, input 등 일반적인 DOM 태그를 위한 기본 Host Fiber.',
         iconName: 'box',
-        accent: 'green',
+        tone: 'emerald',
       },
       {
         id: 'host-hoistable',
@@ -263,7 +265,7 @@ const ko: HostComponentFiberContent = {
         description:
           '스타일, 스크립트, 메타 데이터처럼 head 등으로 끌어올릴 수 있는 요소 처리 흐름.',
         iconName: 'package',
-        accent: 'blue',
+        tone: 'sky',
       },
       {
         id: 'host-singleton',
@@ -272,7 +274,7 @@ const ko: HostComponentFiberContent = {
         description:
           '앱에서 하나만 존재해야 하는 특수 리소스나 전역 스타일 등에 사용되는 Host 흐름.',
         iconName: 'target',
-        accent: 'purple',
+        tone: 'violet',
       },
     ],
     footnote: '버전과 환경에 따라 세부 구현과 이름이 달라질 수 있습니다.',
@@ -431,7 +433,7 @@ const en: HostComponentFiberContent = {
         description:
           'The default Host fiber for ordinary DOM tags like div, span, button, input, …',
         iconName: 'box',
-        accent: 'green',
+        tone: 'emerald',
       },
       {
         id: 'host-hoistable',
@@ -440,7 +442,7 @@ const en: HostComponentFiberContent = {
         description:
           'Handles styles, scripts, and meta — elements that can be hoisted into <head>.',
         iconName: 'package',
-        accent: 'blue',
+        tone: 'sky',
       },
       {
         id: 'host-singleton',
@@ -449,7 +451,7 @@ const en: HostComponentFiberContent = {
         description:
           'For elements that must exist only once in the app — special resources or global style.',
         iconName: 'target',
-        accent: 'purple',
+        tone: 'violet',
       },
     ],
     footnote: 'Implementation details and names may shift between React versions.',

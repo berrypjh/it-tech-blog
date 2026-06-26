@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import { groupBorder, groupFieldChip, groupIconBg, groupTitle } from '../components/groupStyles';
-import type { FiberCentralContent, FieldGroup } from '../content';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { FiberCentralContent, FieldGroup, GroupTone } from '../content';
 import {
   DatabaseIcon,
   FingerprintIcon,
@@ -23,6 +24,16 @@ const iconMap = {
   flag: FlagIcon,
   zap: ZapIcon,
 } as const;
+
+/** GroupTone → 공유 ToneKey 매핑. (rose는 tones.ts에 없어 indigo로 표현) */
+const groupToneKey: Record<GroupTone, ToneKey> = {
+  sky: 'sky',
+  emerald: 'emerald',
+  violet: 'violet',
+  amber: 'amber',
+  rose: 'indigo',
+  teal: 'teal',
+};
 
 export const FiberStructureFinalSummary = ({ content }: Props) => (
   <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
@@ -45,6 +56,8 @@ export const FiberStructureFinalSummary = ({ content }: Props) => (
 );
 
 const SummaryCard = ({ card }: { card: FieldGroup }) => {
+  const tone = groupToneKey[card.tone];
+  const t = toneTokens[tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -52,22 +65,14 @@ const SummaryCard = ({ card }: { card: FieldGroup }) => {
         'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-        groupBorder[card.tone],
+        t.border,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-xl',
-            groupIconBg[card.tone],
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <Icon className="h-6 w-6" />
-        </span>
-        <h3 className={cn('text-md font-bold tracking-tight break-keep', groupTitle[card.tone])}>
-          {card.title}
-        </h3>
+        </ToneIconBox>
+        <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       </header>
       <ul className="flex flex-wrap gap-1.5">
         {card.fields.map((f) => (
@@ -75,7 +80,7 @@ const SummaryCard = ({ card }: { card: FieldGroup }) => {
             <code
               className={cn(
                 'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
-                groupFieldChip[card.tone],
+                t.chip,
               )}
             >
               {f}

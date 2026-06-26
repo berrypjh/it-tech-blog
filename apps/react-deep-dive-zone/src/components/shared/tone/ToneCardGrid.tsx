@@ -35,6 +35,13 @@ type ItemProps = {
  * 톤 카드 한 장: 상단 아이콘(+보조) · 본문 슬롯 · 하단 배지.
  * <ToneCardGrid>의 자식으로 사용하며 key는 호출부에서 부여한다.
  */
+/** 순번 표시는 항상 두 자리(01, 02 …). 숫자(또는 숫자 문자열)면 0 패딩, 그 외는 그대로. */
+const padTopRight = (value: React.ReactNode): React.ReactNode => {
+  if (typeof value === 'number') return String(value).padStart(2, '0');
+  if (typeof value === 'string' && /^\d+$/.test(value)) return value.padStart(2, '0');
+  return value;
+};
+
 export const ToneCardItem = ({ tone, icon, badge, topRight, children, className }: ItemProps) => (
   <li>
     <ToneCard tone={tone} className={className}>
@@ -42,7 +49,7 @@ export const ToneCardItem = ({ tone, icon, badge, topRight, children, className 
         <ToneIconBox tone={tone}>{icon}</ToneIconBox>
         {topRight != null && (
           <span className="text-xxsm tabular-nums font-bold text-[var(--term-muted)]">
-            {topRight}
+            {padTopRight(topRight)}
           </span>
         )}
       </div>

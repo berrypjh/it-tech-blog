@@ -28,20 +28,8 @@ const accentText: Record<Accent, string> = {
   C: 'text-violet-600 dark:text-violet-300',
 };
 
-const accentDot: Record<Accent, string> = {
-  A: 'bg-[var(--term-accent)]',
-  B: 'bg-sky-400 dark:bg-sky-500',
-  C: 'bg-violet-400 dark:bg-violet-500',
-};
-
 /** tone → 소프트 텍스트 액센트 클래스 */
 export const toneText = (tone: ToneKey) => accentText[toneToAccent[tone]];
-
-/** tone → solid 점/ribbon 클래스 */
-export const toneDot = (tone: ToneKey) => accentDot[toneToAccent[tone]];
-
-/** 중립 크롬 박스. 텍스트 색은 별도로 얹는다. */
-export const neutralChrome = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 type Size = 'sm' | 'md';
 
@@ -69,27 +57,6 @@ export const ToneIconBox = ({ tone, size = 'md', children, className }: IconBoxP
       className,
     )}
   >
-    {children}
-  </span>
-);
-
-type BadgeProps = {
-  tone: ToneKey;
-  children: React.ReactNode;
-  className?: string;
-};
-
-/** 중립 크롬 배지(텍스트만 액센트 + solid 점) */
-export const ToneBadge = ({ tone, children, className }: BadgeProps) => (
-  <span
-    className={cn(
-      'inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10px] font-bold',
-      'bg-[var(--term-surface)] border-[var(--term-border)]',
-      toneText(tone),
-      className,
-    )}
-  >
-    <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', toneDot(tone))} />
     {children}
   </span>
 );

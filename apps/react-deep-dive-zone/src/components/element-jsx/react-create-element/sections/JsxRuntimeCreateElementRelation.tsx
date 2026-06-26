@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactCreateElementContent, RelationCard } from '../content';
 import {
   ArrowDownIcon,
@@ -10,7 +11,6 @@ import {
   LinkIcon,
   TargetIcon,
 } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['relation'] };
 
@@ -69,7 +69,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
 );
 
 const RelationCardView = ({ card }: { card: RelationCard }) => {
-  const t = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -77,15 +77,13 @@ const RelationCardView = ({ card }: { card: RelationCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
+          'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
           t.chip,
-          t.text,
         )}
       >
         <Icon className="h-5 w-5" />

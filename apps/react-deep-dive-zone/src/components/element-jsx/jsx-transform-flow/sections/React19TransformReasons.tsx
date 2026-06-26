@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { JsxTransformFlowContent, ReasonCard } from '../content';
+import { ToneCardItem } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
+import type { JsxTransformFlowContent } from '../content';
 import { FileTextIcon, GaugeIcon, LinkIcon, ZapIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: JsxTransformFlowContent['react19'] };
 
@@ -39,40 +40,26 @@ export const React19TransformReasons = ({ content }: Props) => (
       </span>
     </div>
 
-    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
-      {content.cards.map((card) => (
-        <li key={card.id} className="flex">
-          <ReasonCardView card={card} />
-        </li>
-      ))}
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+      {content.cards.map((card) => {
+        const Icon = iconMap[card.iconName];
+
+        return (
+          <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <h3
+              className={cn(
+                'text-md font-bold tracking-tight break-keep',
+                toneTokens[card.tone].text,
+              )}
+            >
+              {card.title}
+            </h3>
+            <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+              {card.body}
+            </p>
+          </ToneCardItem>
+        );
+      })}
     </ul>
   </section>
 );
-
-const ReasonCardView = ({ card }: { card: ReasonCard }) => {
-  const t = localTone(card.tone);
-  const Icon = iconMap[card.iconName];
-  return (
-    <article
-      className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
-          t.chip,
-          t.text,
-        )}
-      >
-        <Icon className="h-5 w-5" />
-      </span>
-      <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
-    </article>
-  );
-};

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneBadge, ToneCard } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
 import type { WhySplitContent } from '../content';
 import { MapIcon } from '../icons';
-import { ToneBadge, toneDot, toneText } from '../localTone';
 
 type Props = {
   content: WhySplitContent['fullMap'];
@@ -45,10 +46,10 @@ export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Pr
           <CardGroup label={content.inputsLabel}>
             {architecture.leftCards.map((card) => (
               <li key={card.id}>
-                <CardShell>
+                <ToneCard tone={card.tone}>
                   <ToneBadge tone={card.tone}>{card.title}</ToneBadge>
                   <CardText>{card.description}</CardText>
-                </CardShell>
+                </ToneCard>
               </li>
             ))}
           </CardGroup>
@@ -56,23 +57,26 @@ export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Pr
           <CardGroup label={content.packagesLabel}>
             {architecture.rightCards.map((card) => (
               <li key={card.id}>
-                <CardShell interactive>
+                <ToneCard tone={card.tone}>
                   <span className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn('inline-block w-1.5 h-1.5 rounded-full', toneDot(card.tone))}
+                      className={cn(
+                        'inline-block w-1.5 h-1.5 rounded-full',
+                        toneTokens[card.tone].dot,
+                      )}
                     />
                     <h4
                       className={cn(
                         'text-sm font-bold font-mono tracking-tight',
-                        toneText(card.tone),
+                        toneTokens[card.tone].text,
                       )}
                     >
                       {card.name}
                     </h4>
                   </span>
                   <CardText>{card.description}</CardText>
-                </CardShell>
+                </ToneCard>
               </li>
             ))}
           </CardGroup>
@@ -81,25 +85,6 @@ export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Pr
     </section>
   );
 };
-
-type CardShellProps = {
-  /** hover 시 살짝 떠오르는 인터랙티브 카드 여부. */
-  interactive?: boolean;
-  children: React.ReactNode;
-};
-
-const CardShell = ({ interactive, children }: CardShellProps) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-2 rounded-xl border p-md',
-      'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] border-[var(--term-border)]',
-      'hover:border-[var(--term-accent)]',
-      interactive ? 'group transition-all hover:-translate-y-0.5' : 'transition-colors',
-    )}
-  >
-    {children}
-  </article>
-);
 
 const CardText = ({ children }: { children: React.ReactNode }) => (
   <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{children}</p>

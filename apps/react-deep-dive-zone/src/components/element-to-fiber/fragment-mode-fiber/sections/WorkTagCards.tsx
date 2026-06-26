@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FragmentModeFiberContent, WorkTagCard } from '../content';
 import { GroupIcon, HexagonIcon, InfoIcon, ShieldCheckIcon, TagIcon } from '../icons';
 
 type Props = { content: FragmentModeFiberContent['workTags'] };
+
+const toneByVariant: Record<WorkTagCard['variant'], ToneKey> = {
+  fragment: 'violet',
+  mode: 'emerald',
+  info: 'sky',
+};
 
 export const WorkTagCards = ({ content }: Props) => (
   <section id="work-tags" aria-labelledby="heading-work-tags" className="space-y-md scroll-mt-xl">
@@ -33,119 +41,72 @@ const CardView = ({ card }: { card: WorkTagCard }) => {
 };
 
 const ValueCard = ({ card }: { card: WorkTagCard }) => {
-  const isFragment = card.variant === 'fragment';
-  const Icon = isFragment ? GroupIcon : ShieldCheckIcon;
+  const tone = toneByVariant[card.variant];
+  const t = toneTokens[tone];
+  const Icon = card.variant === 'fragment' ? GroupIcon : ShieldCheckIcon;
   return (
     <article
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        isFragment
-          ? 'border-violet-300/80 dark:border-violet-700/70 hover:border-violet-400'
-          : 'border-emerald-300/80 dark:border-emerald-700/70 hover:border-emerald-400',
+        t.border,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-2xl shrink-0',
-            isFragment
-              ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-950'
-              : 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950',
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <Icon className="h-5 w-5" />
-        </span>
+        </ToneIconBox>
         <div className="flex flex-col">
           <code
-            className={cn(
-              'font-mono text-sm sm:text-md font-extrabold tracking-tight',
-              isFragment
-                ? 'text-violet-700 dark:text-violet-300'
-                : 'text-emerald-700 dark:text-emerald-300',
-            )}
+            className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}
           >
             {card.title}
           </code>
-          <code
-            className={cn(
-              'font-mono text-[11px]',
-              isFragment
-                ? 'text-violet-700/80 dark:text-violet-300/80'
-                : 'text-emerald-700/80 dark:text-emerald-300/80',
-            )}
-          >
-            {card.subtitle}
-          </code>
+          <code className={cn('font-mono text-[11px]', t.text)}>{card.subtitle}</code>
         </div>
       </header>
 
       <div
-        className={cn(
-          'flex items-center justify-between gap-sm rounded-xl border-2 p-md',
-          isFragment
-            ? 'border-violet-300/80 bg-violet-50/70 dark:border-violet-700/70 dark:bg-violet-950/40'
-            : 'border-emerald-300/80 bg-emerald-50/70 dark:border-emerald-700/70 dark:bg-emerald-950/40',
-        )}
+        className={cn('flex items-center justify-between gap-sm rounded-xl border-2 p-md', t.chip)}
       >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-xl shrink-0',
-            isFragment
-              ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-950'
-              : 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950',
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <HexagonIcon className="h-5 w-5" />
-        </span>
-        <code
-          className={cn(
-            'font-mono text-md sm:text-lg font-extrabold tabular-nums',
-            isFragment
-              ? 'text-violet-700 dark:text-violet-200'
-              : 'text-emerald-700 dark:text-emerald-200',
-          )}
-        >
+        </ToneIconBox>
+        <code className={cn('font-mono text-md sm:text-lg font-extrabold tabular-nums', t.text)}>
           {card.value}
         </code>
       </div>
 
-      <p className={cn('text-xsm leading-relaxed break-keep', 'text-[var(--term-muted)]')}>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
         {card.description}
       </p>
     </article>
   );
 };
 
-const InfoCard = ({ card }: { card: WorkTagCard }) => (
-  <article
-    className={cn(
-      'flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-      'bg-gradient-to-br from-sky-50 via-white to-sky-50/30',
-      'dark:from-sky-950/30 dark:via-[var(--term-bg)] dark:to-sky-950/20',
-      'border-sky-300/80 dark:border-sky-700/70',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-sm">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-11 h-11 rounded-2xl shrink-0',
-          'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950',
-        )}
-      >
-        <InfoIcon className="h-5 w-5" />
-      </span>
-      <h3 className="font-mono text-sm sm:text-md font-extrabold tracking-tight text-sky-700 dark:text-sky-300">
-        {card.title}
-      </h3>
-    </header>
-    <p className="text-xsm leading-relaxed text-sky-900 dark:text-sky-100 break-keep">
-      {card.description}
-    </p>
-  </article>
-);
+const InfoCard = ({ card }: { card: WorkTagCard }) => {
+  const tone = toneByVariant.info;
+  const t = toneTokens[tone];
+  return (
+    <article
+      className={cn(
+        'flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
+        t.border,
+      )}
+    >
+      <header className="flex items-center gap-sm">
+        <ToneIconBox tone={tone}>
+          <InfoIcon className="h-5 w-5" />
+        </ToneIconBox>
+        <h3 className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
+          {card.title}
+        </h3>
+      </header>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+        {card.description}
+      </p>
+    </article>
+  );
+};

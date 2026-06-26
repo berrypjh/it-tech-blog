@@ -206,7 +206,7 @@ const ko: HooksEntryFlowContent = {
     },
   },
   realCode: {
-    badge: '실제 코드 ①',
+    badge: '실제 코드',
     title: '공개 useState는 무엇을 하는가?',
     fileName: 'ReactHooks.js',
     code: USE_STATE_SOURCE,
@@ -417,7 +417,7 @@ const en: HooksEntryFlowContent = {
     },
   },
   realCode: {
-    badge: 'Real code ①',
+    badge: 'Real code',
     title: 'What does public useState actually do?',
     fileName: 'ReactHooks.js',
     code: USE_STATE_SOURCE,
