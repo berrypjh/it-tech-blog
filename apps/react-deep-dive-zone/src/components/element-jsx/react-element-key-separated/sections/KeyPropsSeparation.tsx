@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, SeparationCard } from '../content';
 import { ArrowRightLeftIcon, CheckCircleIcon, FileTextIcon, KeyIcon } from '../icons';
-import { toneBorderHover, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['separation'] };
 
@@ -65,7 +65,6 @@ const CardView = ({ card }: { card: SeparationCard }) => {
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        toneBorderHover(),
       )}
     >
       <header className="flex items-center gap-sm">
@@ -73,13 +72,15 @@ const CardView = ({ card }: { card: SeparationCard }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
-            toneChip(card.tone),
+            toneTokens[card.tone].chip,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col gap-0.5 min-w-0">
-          <code className={cn('font-mono text-md font-bold tracking-tight', toneText(card.tone))}>
+          <code
+            className={cn('font-mono text-md font-bold tracking-tight', toneTokens[card.tone].text)}
+          >
             {card.title}
           </code>
           <span className="text-[11px] text-[var(--term-muted)] font-mono">{card.short}</span>

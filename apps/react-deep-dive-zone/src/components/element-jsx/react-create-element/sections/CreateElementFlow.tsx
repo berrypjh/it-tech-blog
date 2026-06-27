@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, ReactCreateElementContent } from '../content';
@@ -33,26 +34,8 @@ export const CreateElementFlow = ({ content }: Props) => (
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} />
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'border border-[var(--term-border)] bg-[var(--term-surface)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
-      >
-        <LightbulbIcon className="h-5 w-5" />
-      </span>
-      <div className="flex flex-col gap-1 min-w-0">
-        <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          {content.bottomNoteLine1}
-        </p>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {content.bottomNoteLine2}
-        </p>
-      </div>
-    </div>
+    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+      {content.bottomNoteLine1} {content.bottomNoteLine2}
+    </SectionNote>
   </section>
 );

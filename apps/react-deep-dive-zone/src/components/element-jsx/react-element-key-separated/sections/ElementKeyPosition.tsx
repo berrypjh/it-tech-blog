@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ElementCallout, ReactElementKeySeparatedContent } from '../content';
@@ -39,22 +40,7 @@ export const ElementKeyPosition = ({ content }: Props) => (
       </ul>
     </div>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
-      >
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-accent)] break-keep">
-        {content.emphasis}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
   </section>
 );
 

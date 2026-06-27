@@ -6,9 +6,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FieldCallout, ReactCreateElementContent } from '../content';
 import { ArrowRightIcon, SparklesIcon, WandIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['transform'] };
 
@@ -73,7 +73,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
             code={content.jsxCode}
             footer={content.jsxFooter}
             language="JSX"
-            accent="b"
+            tone="sky"
           />
           <FlowArrow />
           <FlowStep
@@ -82,7 +82,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
             code={content.expressionCode}
             footer={content.expressionFooter}
             language="JS"
-            accent="c"
+            tone="violet"
           />
           <FlowArrow />
           <FlowResult
@@ -105,25 +105,20 @@ export const CreateElementTransformCard = ({ content }: Props) => {
   );
 };
 
-const accentText = {
-  b: 'text-sky-600 dark:text-sky-300',
-  c: 'text-violet-600 dark:text-violet-300',
-} as const;
-
 const FlowStep = ({
   active,
   label,
   code,
   footer,
   language,
-  accent,
+  tone,
 }: {
   active: boolean;
   label: string;
   code: string;
   footer: string;
   language: string;
-  accent: keyof typeof accentText;
+  tone: ToneKey;
 }) => (
   <article
     className={cn(
@@ -135,13 +130,13 @@ const FlowStep = ({
     <span
       className={cn(
         'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-        accentText[accent],
+        toneTokens[tone].text,
       )}
     >
       {label}
     </span>
     <CodePreviewPanel code={code} language={language} />
-    <p className={cn('text-xsm leading-relaxed break-keep', accentText[accent])}>{footer}</p>
+    <p className={cn('text-xsm leading-relaxed break-keep', toneTokens[tone].text)}>{footer}</p>
   </article>
 );
 
@@ -169,7 +164,7 @@ const FlowResult = ({ active, label, code }: { active: boolean; label: string; c
 );
 
 const CalloutCard = ({ callout }: { callout: FieldCallout }) => {
-  const t = localTone(callout.tone);
+  const t = toneTokens[callout.tone];
   return (
     <article
       className={cn(

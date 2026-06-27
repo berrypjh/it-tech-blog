@@ -6,7 +6,6 @@ export {
   Code as CodeIcon,
   FileText as FileTextIcon,
   Fingerprint as FingerprintIcon,
-  HelpCircle as HelpCircleIcon,
   Key as KeyIcon,
   Lightbulb as LightbulbIcon,
   ListChecks as ListChecksIcon,

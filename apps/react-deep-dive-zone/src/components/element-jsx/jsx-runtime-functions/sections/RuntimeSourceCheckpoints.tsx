@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CheckpointCard, JsxRuntimeFunctionsContent } from '../content';
 import { ArrowRightIcon, CompassIcon, FileTextIcon } from '../icons';
-import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['checkpoints'] };
 
@@ -39,15 +39,15 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
       className={cn(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-7 h-7 rounded-full font-mono text-xsm font-bold tabular-nums',
-            toneChip(card.tone),
+            'inline-flex items-center justify-center w-7 h-7 rounded-full border font-mono text-xsm font-bold tabular-nums',
+            toneTokens[card.tone].chip,
           )}
         >
           {card.number}
@@ -55,7 +55,7 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
         <span className="flex-1 inline-flex items-center gap-2 min-w-0">
           <FileTextIcon
             aria-hidden="true"
-            className={cn('h-4 w-4 shrink-0', toneText(card.tone))}
+            className={cn('h-4 w-4 shrink-0', toneTokens[card.tone].text)}
           />
           <code className="font-mono text-xsm tracking-tight text-[var(--term-fg)] truncate">
             {card.filePath}
@@ -70,8 +70,8 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
           <li key={pill} className="inline-flex items-center gap-1.5">
             <span
               className={cn(
-                'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-mono font-bold',
-                toneChip(card.tone),
+                'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold',
+                toneTokens[card.tone].chip,
               )}
             >
               {pill}
@@ -79,7 +79,7 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
             {idx < card.flowPills.length - 1 && (
               <ArrowRightIcon
                 aria-hidden="true"
-                className={cn('h-3 w-3 shrink-0', toneText(card.tone))}
+                className={cn('h-3 w-3 shrink-0', toneTokens[card.tone].text)}
               />
             )}
           </li>

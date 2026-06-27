@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ComparisonSideCard = {
   id: 'jsx' | 'create-element';
   label: string;

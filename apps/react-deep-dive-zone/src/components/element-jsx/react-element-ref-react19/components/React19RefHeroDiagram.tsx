@@ -75,7 +75,6 @@ const StepChip = ({ label, modern }: { label: string; modern: boolean }) => (
     className={cn(
       'flex min-w-0 items-center gap-2 rounded-xl border border-[var(--term-border)] px-md py-2 bg-[var(--term-bg)]',
       'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-      modern && 'hover:border-[var(--term-accent)]',
     )}
   >
     <span

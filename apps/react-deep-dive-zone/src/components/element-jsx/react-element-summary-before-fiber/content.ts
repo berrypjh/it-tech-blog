@@ -3,8 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type HeroFlowItem = {
   id: string;
   title: string;

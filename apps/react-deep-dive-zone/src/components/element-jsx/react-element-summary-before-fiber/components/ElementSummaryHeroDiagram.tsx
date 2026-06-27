@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
 import { BoxIcon, CodeIcon, FileTextIcon, NetworkIcon } from '../icons';
-import { toneChip, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['hero']; className?: string };
 
@@ -41,8 +42,8 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
         'flex w-full min-w-0 items-start gap-sm rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         item.highlighted
-          ? cn(toneChip(item.tone), '@sm:shadow-[0_3px_0_var(--term-border)]')
-          : cn('border-[var(--term-border)]', 'hover:border-[var(--term-accent)]'),
+          ? cn(toneTokens[item.tone].border, '@sm:shadow-[0_3px_0_var(--term-border)]')
+          : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={item.tone} size="md">
@@ -53,7 +54,7 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
           <span
             className={cn(
               'min-w-0 truncate font-mono text-sm font-bold tracking-tight',
-              toneText(item.tone),
+              toneTokens[item.tone].text,
             )}
           >
             {item.title}

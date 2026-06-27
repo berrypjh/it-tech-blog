@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { JsxRow, ReactElementTypeMeaningContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, WorkflowIcon } from '../icons';
-import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['rows'] };
 
@@ -58,8 +58,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
           <span
             className={cn(
-              'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              toneChip(row.tone),
+              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneTokens[row.tone].chip,
             )}
           >
             {row.typeBadge}
@@ -67,8 +67,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
         </div>
         <code
           className={cn(
-            'font-mono text-sm sm:text-md font-bold tracking-tight break-all rounded-xl px-md py-3',
-            toneChip(row.tone),
+            'font-mono text-sm sm:text-md font-bold tracking-tight break-all rounded-xl border px-md py-3',
+            toneTokens[row.tone].chip,
           )}
         >
           {row.typeResult}
@@ -85,8 +85,8 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
           <span
             className={cn(
-              'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-              toneChip(row.tone),
+              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneTokens[row.tone].chip,
             )}
           >
             {row.meaningBadge}

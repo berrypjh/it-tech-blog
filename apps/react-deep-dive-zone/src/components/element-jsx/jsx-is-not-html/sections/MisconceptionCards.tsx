@@ -1,9 +1,9 @@
 import type { MisconceptionItem } from '../../../shared/misconception';
 import { MisconceptionCardGrid } from '../../../shared/misconception';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { JsxIsNotHtmlContent } from '../content';
 import { BoxesIcon, HelpCircleIcon, MonitorIcon, NetworkIcon } from '../icons';
-import { accentText } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['misconception'] };
 
@@ -17,7 +17,7 @@ export const MisconceptionCards = ({ content }: Props) => {
   const items: MisconceptionItem[] = content.cards.map((card) => ({
     id: card.id,
     icon: sideIcon[card.iconName],
-    accentClassName: accentText(card.iconTone),
+    accentClassName: toneTokens[card.iconTone].text,
     badgeWrong: card.badgeWrong,
     wrong: card.wrong,
     right: card.right,

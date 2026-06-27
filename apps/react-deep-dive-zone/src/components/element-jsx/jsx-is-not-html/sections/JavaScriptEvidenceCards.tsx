@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { EvidenceCard, JsxIsNotHtmlContent } from '../content';
 import { Code2Icon } from '../icons';
-import { accentDot, accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['evidence'] };
 
@@ -40,7 +40,6 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        chromeHover,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -49,9 +48,8 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
         </h3>
         <span
           className={cn(
-            'shrink-0 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            chromeChip,
-            accentText(card.tone),
+            'shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneTokens[card.tone].chip,
           )}
         >
           JS
@@ -60,12 +58,17 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
 
       <CodePreviewPanel code={card.code} language="JS" />
 
-      <div className={cn('flex items-start gap-sm rounded-lg px-md py-2.5 mt-auto', chromeChip)}>
+      <div
+        className={cn(
+          'flex items-start gap-sm rounded-lg px-md py-2.5 mt-auto',
+          'bg-[var(--term-surface)] border border-[var(--term-border)]',
+        )}
+      >
         <span
           aria-hidden="true"
           className={cn(
             'inline-block w-1.5 h-1.5 rounded-full mt-2 shrink-0',
-            accentDot(card.tone),
+            toneTokens[card.tone].dot,
           )}
         />
         <p className="text-xsm leading-relaxed break-keep">{card.description}</p>

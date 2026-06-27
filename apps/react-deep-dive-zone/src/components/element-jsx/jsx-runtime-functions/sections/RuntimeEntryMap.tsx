@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { JsxRuntimeFunctionsContent, ToneKey } from '../content';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { JsxRuntimeFunctionsContent } from '../content';
 import {
   ArrowDownIcon,
   ArrowRightIcon,
@@ -12,7 +13,6 @@ import {
   LayersIcon,
   MapIcon,
 } from '../icons';
-import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['entryMap'] };
 
@@ -149,14 +149,17 @@ const DiagramNode = ({ label, icon, tone, variant = 'entry' }: NodeProps) => (
   >
     <span
       aria-hidden="true"
-      className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg', toneChip(tone))}
+      className={cn(
+        'inline-flex items-center justify-center w-8 h-8 rounded-lg border',
+        toneTokens[tone].chip,
+      )}
     >
       {icon}
     </span>
     <span
       className={cn(
         variant === 'top' ? 'font-mono text-md font-bold' : 'font-mono text-sm font-bold',
-        toneText(tone),
+        toneTokens[tone].text,
       )}
     >
       {label}
@@ -181,11 +184,14 @@ const RuntimeEntryNode = ({
   >
     <span
       aria-hidden="true"
-      className={cn('inline-flex items-center justify-center w-9 h-9 rounded-lg', toneChip(tone))}
+      className={cn(
+        'inline-flex items-center justify-center w-9 h-9 rounded-lg border',
+        toneTokens[tone].chip,
+      )}
     >
       {icon}
     </span>
-    <span className={cn('font-mono text-sm font-bold', toneText(tone))}>{label}</span>
+    <span className={cn('font-mono text-sm font-bold', toneTokens[tone].text)}>{label}</span>
   </div>
 );
 
@@ -208,12 +214,15 @@ const FunctionNode = ({
   >
     <span
       aria-hidden="true"
-      className={cn('inline-flex items-center justify-center w-8 h-8 rounded-lg', toneChip(tone))}
+      className={cn(
+        'inline-flex items-center justify-center w-8 h-8 rounded-lg border',
+        toneTokens[tone].chip,
+      )}
     >
       {icon}
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
-      <span className={cn('font-mono text-sm font-bold', toneText(tone))}>{label}</span>
+      <span className={cn('font-mono text-sm font-bold', toneTokens[tone].text)}>{label}</span>
       <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
     </div>
   </article>
@@ -229,15 +238,18 @@ const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
     <span
       aria-hidden="true"
       className={cn(
-        'inline-flex items-center justify-center w-11 h-11 rounded-2xl',
-        toneChip('amber'),
+        'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
+        toneTokens.amber.chip,
       )}
     >
       <AtomIcon className="h-6 w-6" />
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
       <span
-        className={cn('font-mono text-sm sm:text-md font-bold tracking-tight', toneText('amber'))}
+        className={cn(
+          'font-mono text-sm sm:text-md font-bold tracking-tight',
+          toneTokens.amber.text,
+        )}
       >
         {label}
       </span>
@@ -245,7 +257,7 @@ const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
     </div>
     <ArrowRightIcon
       aria-hidden="true"
-      className={cn('hidden sm:block h-4 w-4', toneText('amber'))}
+      className={cn('hidden sm:block h-4 w-4', toneTokens.amber.text)}
     />
   </div>
 );

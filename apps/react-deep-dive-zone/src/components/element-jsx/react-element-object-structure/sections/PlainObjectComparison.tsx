@@ -1,6 +1,5 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { ComparisonTable } from '../../../shared/grid';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactElementObjectStructureContent } from '../content';
@@ -29,21 +28,6 @@ export const PlainObjectComparison = ({ content }: Props) => (
       }))}
     />
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shrink-0"
-      >
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.emphasis}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
   </section>
 );

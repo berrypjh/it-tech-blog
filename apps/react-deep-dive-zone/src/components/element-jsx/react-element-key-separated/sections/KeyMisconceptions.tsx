@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { Misconception, ReactElementKeySeparatedContent } from '../content';
 import {
   ArrowDownIcon,
@@ -10,7 +11,6 @@ import {
   ShuffleIcon,
   XCircleIcon,
 } from '../icons';
-import { toneChip, toneDot } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['misconceptions'] };
 
@@ -51,7 +51,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
       className={cn(
         'group flex flex-1 flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 hover:border-[var(--term-muted)]',
+        'transition-all hover:-translate-y-0.5',
       )}
     >
       {/* 헤더: 주제 아이콘 + 오해 라벨 */}
@@ -60,7 +60,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
           aria-hidden="true"
           className={cn(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            toneChip(card.tone),
+            toneTokens[card.tone].chip,
           )}
         >
           <SideIcon className="h-[18px] w-[18px]" />
@@ -92,7 +92,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
             <li key={bullet} className="flex items-start gap-1.5">
               <span
                 aria-hidden="true"
-                className={cn('mt-1.5 h-1 w-1 shrink-0 rounded-full', toneDot(card.tone))}
+                className={cn('mt-1.5 h-1 w-1 shrink-0 rounded-full', toneTokens[card.tone].dot)}
               />
               <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                 {bullet}

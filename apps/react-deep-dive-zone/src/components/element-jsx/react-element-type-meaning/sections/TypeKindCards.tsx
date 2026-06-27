@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactElementTypeMeaningContent, TypeKindCard } from '../content';
 import { CheckCircleIcon, ListChecksIcon, SparklesIcon, TagIcon, UserIcon } from '../icons';
-import { toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['kinds'] };
 
@@ -42,23 +42,22 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
-            toneChip(card.tone),
+            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
+            toneTokens[card.tone].chip,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <span
           className={cn(
-            'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            toneChip(card.tone),
+            'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneTokens[card.tone].chip,
           )}
         >
           {card.category}
@@ -66,7 +65,10 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
       </header>
 
       <code
-        className={cn('font-mono text-md font-bold tracking-tight break-all', toneText(card.tone))}
+        className={cn(
+          'font-mono text-md font-bold tracking-tight break-all',
+          toneTokens[card.tone].text,
+        )}
       >
         {card.value}
       </code>
@@ -83,8 +85,8 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
             <span
               aria-hidden="true"
               className={cn(
-                'inline-flex items-center justify-center w-4 h-4 rounded-full shrink-0 mt-0.5',
-                toneChip(card.tone),
+                'inline-flex items-center justify-center w-4 h-4 rounded-full border shrink-0 mt-0.5',
+                toneTokens[card.tone].chip,
               )}
             >
               <CheckCircleIcon className="h-3 w-3" />

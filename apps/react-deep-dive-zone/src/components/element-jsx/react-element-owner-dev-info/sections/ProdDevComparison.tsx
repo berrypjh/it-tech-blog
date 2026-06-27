@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ProdDevCard, ReactElementOwnerDevInfoContent } from '../content';
 import { BugIcon, CheckCircleIcon, GaugeIcon, GitCompareIcon, SparklesIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['prodDev'] };
 
@@ -31,27 +32,12 @@ export const ProdDevComparison = ({ content }: Props) => (
       ))}
     </ul>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
-      >
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.emphasis}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
   </section>
 );
 
 const CardView = ({ card }: { card: ProdDevCard }) => {
-  const t = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -59,7 +45,6 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">

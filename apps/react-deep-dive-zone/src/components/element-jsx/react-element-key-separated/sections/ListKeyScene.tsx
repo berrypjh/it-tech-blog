@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, RenderedItem } from '../content';
 import { ListChecksIcon } from '../icons';
-import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['list'] };
 
@@ -78,7 +78,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-8 h-8 rounded-md border font-mono text-[11px] font-bold tabular-nums',
-            toneChip(item.tone),
+            toneTokens[item.tone].chip,
           )}
         >
           {item.id}
@@ -92,7 +92,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
         <span
           className={cn(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
-            toneChip(item.tone),
+            toneTokens[item.tone].chip,
           )}
         >
           {item.keyText}

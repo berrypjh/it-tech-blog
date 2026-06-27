@@ -3,9 +3,10 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
 import { BracesIcon, EyeIcon } from '../icons';
-import { accentText, chromeChip, chromeHover } from '../toneLocal';
 
 type Props = { content: JsxIsNotHtmlContent['hero']; className?: string };
 
@@ -47,25 +48,16 @@ const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        chromeHover,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-md',
-          chromeChip,
-          accentText(card.tone),
-        )}
-      >
+      <ToneIconBox tone={card.tone} size="md">
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
-      </span>
+      </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <span
           className={cn(
-            'inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            chromeChip,
-            accentText(card.tone),
+            'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneTokens[card.tone].chip,
           )}
         >
           {card.label}

@@ -2,12 +2,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
-export type TypeKindAccent = 'host' | 'custom' | 'special';
+export type TypeKindId = 'host' | 'custom' | 'special';
 
 export type HeroDiagramItem = {
-  id: TypeKindAccent;
+  id: TypeKindId;
   value: string;
   title: string;
   category: string;
@@ -17,7 +15,7 @@ export type HeroDiagramItem = {
 };
 
 export type TypeKindCard = {
-  id: TypeKindAccent;
+  id: TypeKindId;
   value: string;
   category: string;
   title: string;
@@ -28,7 +26,7 @@ export type TypeKindCard = {
 };
 
 export type JsxRow = {
-  id: TypeKindAccent;
+  id: TypeKindId;
   jsx: string;
   typeResult: string;
   typeBadge: string;
@@ -38,7 +36,7 @@ export type JsxRow = {
 };
 
 export type CompareRow = {
-  id: TypeKindAccent;
+  id: TypeKindId;
   category: string;
   jsx: string;
   typeValue: string;

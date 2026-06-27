@@ -60,7 +60,7 @@ const variantClass = {
   },
   modern: {
     badge: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
-    border: 'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+    border: 'border-[var(--term-border)]',
     head: 'text-[var(--term-accent)]',
   },
 } as const;

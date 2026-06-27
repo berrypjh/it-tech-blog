@@ -2,10 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
-export type AccentName = 'cyan' | 'violet' | 'sky' | 'amber' | 'emerald' | 'rose';
-
 export type HeroExplanationCard = {
   id: 'appearance' | 'actual';
   label: string;

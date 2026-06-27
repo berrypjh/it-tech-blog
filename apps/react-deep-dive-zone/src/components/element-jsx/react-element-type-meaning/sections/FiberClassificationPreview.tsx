@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberFlowStep, ReactElementTypeMeaningContent } from '../content';
@@ -37,22 +38,7 @@ export const FiberClassificationPreview = ({ content }: Props) => (
       ))}
     </ol>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
-      >
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.summary}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.summary}</SectionNote>
   </section>
 );
 

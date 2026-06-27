@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FreezeCard, ReactElementOwnerDevInfoContent } from '../content';
 import { LockIcon, ShieldCheckIcon, UnlockIcon } from '../icons';
@@ -43,22 +44,7 @@ export const ObjectFreezeSection = ({ content }: Props) => (
       ))}
     </ul>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
-      >
-        <ShieldCheckIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.emphasis}
-      </p>
-    </div>
+    <SectionNote icon={<ShieldCheckIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
   </section>
 );
 
@@ -71,7 +57,6 @@ const CardView = ({ card }: { card: FreezeCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center gap-sm">

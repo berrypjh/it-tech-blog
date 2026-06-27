@@ -10,7 +10,6 @@ export {
   Compass as CompassIcon,
   FileText as FileTextIcon,
   Gauge as GaugeIcon,
-  HelpCircle as HelpCircleIcon,
   Layers as LayersIcon,
   Lightbulb as LightbulbIcon,
   Map as MapIcon,

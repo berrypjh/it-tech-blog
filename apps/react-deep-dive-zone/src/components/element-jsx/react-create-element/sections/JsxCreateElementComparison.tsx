@@ -4,7 +4,7 @@ import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ComparisonSideCard, ReactCreateElementContent } from '../content';
-import { ArrowLeftRightIcon, GitCompareIcon, QuoteIcon } from '../icons';
+import { GitCompareIcon, QuoteIcon } from '../icons';
 
 type Props = { content: ReactCreateElementContent['compare'] };
 
@@ -19,12 +19,13 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
       icon={<GitCompareIcon className="h-5 w-5" />}
     />
 
-    <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_0.85fr)_minmax(0,_1fr)] gap-md items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_0.85fr)_auto_minmax(0,_1fr)] items-stretch gap-md">
       <SideCard card={content.leftCard} />
+      <FlowArrow />
 
       <article
         className={cn(
-          'relative flex flex-col gap-sm items-center justify-center rounded-3xl p-md text-center',
+          'flex h-full flex-col gap-sm items-center justify-center rounded-3xl p-md text-center',
           'bg-[var(--term-surface)]',
           'border-2 border-dashed border-[var(--term-border)]',
         )}
@@ -43,21 +44,8 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
         </span>
       </article>
 
+      <FlowArrow />
       <SideCard card={content.rightCard} />
-
-      {/* horizontal arrows on lg */}
-      <span
-        aria-hidden="true"
-        className="hidden lg:flex absolute left-[33.333%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
-      >
-        <ArrowLeftRightIcon className="h-4 w-4" />
-      </span>
-      <span
-        aria-hidden="true"
-        className="hidden lg:flex absolute left-[66.666%] top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
-      >
-        <ArrowLeftRightIcon className="h-4 w-4" />
-      </span>
     </div>
   </section>
 );
@@ -67,7 +55,7 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
   return (
     <article
       className={cn(
-        'group flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
+        'group flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
@@ -85,3 +73,10 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
     </article>
   );
 };
+
+const FlowArrow = () => (
+  <div className="flex items-center justify-center text-[var(--term-accent)]" aria-hidden="true">
+    <span className="hidden lg:inline-flex text-xl">↔</span>
+    <span className="inline-flex lg:hidden text-xl">↕</span>
+  </div>
+);

@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DiagramItem, ReactElementKeySeparatedContent } from '../content';
 import { CheckCircleIcon, KeyIcon, NetworkIcon } from '../icons';
-import { toneBorderHover, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['hero']; className?: string };
 
@@ -37,7 +38,7 @@ const StepHeader = ({ label }: { label: string }) => (
     <ToneIconBox tone="sky" size="sm">
       <NetworkIcon className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <span className={cn('font-mono text-sm font-bold tracking-tight', toneText('sky'))}>
+    <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.sky.text)}>
       {label}
     </span>
     <span
@@ -69,7 +70,6 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
         'flex flex-1 items-center gap-2 rounded-xl border p-sm',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
-        toneBorderHover(),
       )}
     >
       <ToneIconBox tone={item.tone} size="sm">
@@ -83,7 +83,7 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
         <code
           className={cn(
             'font-mono text-[11px] font-bold tracking-tight break-all',
-            toneText(item.tone),
+            toneTokens[item.tone].text,
           )}
         >
           {item.keyText}

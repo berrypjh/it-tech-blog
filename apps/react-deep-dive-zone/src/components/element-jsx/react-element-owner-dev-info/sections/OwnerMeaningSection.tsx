@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { OwnerInfoCard, ReactElementOwnerDevInfoContent } from '../content';
 import { ArrowDownIcon, CodeIcon, MessageIcon, TagIcon, UserIcon, WrenchIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['owner'] };
 
@@ -43,7 +43,7 @@ export const OwnerMeaningSection = ({ content }: Props) => (
 
         <ol className="flex flex-col gap-1">
           {content.diagramSteps.map((step, idx) => {
-            const t = localTone(step.tone);
+            const t = toneTokens[step.tone];
             const Icon = stepIconMap[step.iconName];
             return (
               <li key={step.id} className="flex flex-col">
@@ -91,7 +91,7 @@ export const OwnerMeaningSection = ({ content }: Props) => (
 );
 
 const InfoCardView = ({ card }: { card: OwnerInfoCard }) => {
-  const t = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = cardIconMap[card.iconName];
   return (
     <article
@@ -99,7 +99,6 @@ const InfoCardView = ({ card }: { card: OwnerInfoCard }) => {
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <span

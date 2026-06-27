@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type HeroCallout = {
   id: string;
   field: string;
@@ -113,9 +111,7 @@ export type ReactElementObjectStructureContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    question: string;
-    answer: string;
-    answerNote: string;
+    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -345,12 +341,12 @@ const ko: ReactElementObjectStructureContent = {
   },
   learningCheck: {
     badge: '06',
-    eyebrow: '학습 점검',
-    title: '한 줄로 정리하기',
-    question: 'React Element가 DOM 노드가 아니라는 말은 무슨 뜻일까?',
-    answer: '실제 화면 객체가 아니라 렌더링 계산의 입력 객체라는 뜻입니다.',
-    answerNote:
-      '브라우저 DOM은 renderer가 commit 단계에서 만들어내는 결과이고, Element는 그 이전 단계에서 React가 무엇을, 어떻게 렌더링할지 설명하는 데이터입니다.',
+    eyebrow: '핵심 정리',
+    title: '기억할 한 가지',
+    lines: [
+      'React Element는 실제 화면 객체가 아니라 렌더링 계산의 입력 객체입니다.',
+      '브라우저 DOM은 renderer가 commit 단계에서 만드는 결과이고, Element는 그 이전 단계에서 무엇을 어떻게 렌더링할지 설명하는 데이터입니다.',
+    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -582,12 +578,12 @@ const en: ReactElementObjectStructureContent = {
   },
   learningCheck: {
     badge: '06',
-    eyebrow: 'SELF CHECK',
-    title: 'Put it in one sentence',
-    question: 'What does it mean that a React Element is not a DOM node?',
-    answer: 'It is not the on-screen object — it is the input object for render computation.',
-    answerNote:
-      'The browser DOM is what the renderer commits at the end. The Element is the description React reasons over before that.',
+    eyebrow: 'KEY TAKEAWAY',
+    title: 'One thing to remember',
+    lines: [
+      'A React Element is not the on-screen object — it is the input object for render computation.',
+      'The browser DOM is what the renderer commits at the end; the Element is the description React reasons over before that.',
+    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

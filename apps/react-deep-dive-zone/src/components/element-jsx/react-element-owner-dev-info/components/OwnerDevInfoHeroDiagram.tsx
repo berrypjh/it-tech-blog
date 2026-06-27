@@ -2,10 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
-import type { ToneKey } from '../../../shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FieldChip, ReactElementOwnerDevInfoContent } from '../content';
 import { BugIcon, CodeIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactElementOwnerDevInfoContent['hero']; className?: string };
 
@@ -60,7 +59,7 @@ const StepHeader = ({
   label: string;
   icon: React.ReactNode;
 }) => {
-  const t = localTone(tone);
+  const t = toneTokens[tone];
   return (
     <div className="flex items-center gap-sm">
       <span
@@ -79,7 +78,7 @@ const StepHeader = ({
 };
 
 const FieldChips = ({ fields, tone }: { fields: FieldChip[]; tone: ToneKey }) => {
-  const t = localTone(tone);
+  const t = toneTokens[tone];
   return (
     <ul className="flex flex-wrap gap-1.5">
       {fields.map((field) => (

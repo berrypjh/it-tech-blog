@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type RuntimeId = 'jsx' | 'jsxs' | 'jsxDEV';
 
 export type RuntimeFunctionCard = {
@@ -113,8 +111,7 @@ export type JsxRuntimeFunctionsContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    question: string;
-    hint: string;
+    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -309,10 +306,12 @@ const ko: JsxRuntimeFunctionsContent = {
   },
   question: {
     badge: '06',
-    eyebrow: '핵심 통찰',
-    title: '한 문장으로 정리해 봅니다',
-    question: '왜 React는 개발 모드용 runtime을 따로 둘까?',
-    hint: '실행 성능과 디버깅 품질을 동시에 잡기 위해서.',
+    eyebrow: '핵심 정리',
+    title: '기억할 한 가지',
+    lines: [
+      'React는 개발 모드용 runtime(jsxDEV)을 따로 둡니다.',
+      '실행 성능과 디버깅 품질을 동시에 잡기 위해서입니다.',
+    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -510,10 +509,12 @@ const en: JsxRuntimeFunctionsContent = {
   },
   question: {
     badge: '06',
-    eyebrow: 'KEY INSIGHT',
-    title: 'Summed up in one sentence',
-    question: 'Why does React keep a separate dev-mode runtime?',
-    hint: 'To balance execution performance and debugging quality at the same time.',
+    eyebrow: 'KEY TAKEAWAY',
+    title: 'One thing to remember',
+    lines: [
+      'React keeps a separate dev-mode runtime (jsxDEV) on purpose.',
+      'It balances execution performance and debugging quality at the same time.',
+    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

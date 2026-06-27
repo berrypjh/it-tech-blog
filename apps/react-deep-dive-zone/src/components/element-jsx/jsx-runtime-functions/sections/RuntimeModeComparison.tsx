@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
 import { BugIcon, CheckCircleIcon, GaugeIcon, SparklesIcon } from '../icons';
-import { toneChip, toneText } from '../localTone';
 
 type Props = { content: JsxRuntimeFunctionsContent['modes'] };
 
@@ -41,7 +41,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
       className={cn(
         'group flex min-w-0 flex-1 flex-col sm:flex-row gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5 hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <div className="flex flex-col gap-md min-w-0 flex-1">
@@ -49,8 +49,8 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
           <span
             aria-hidden="true"
             className={cn(
-              'inline-flex items-center justify-center w-14 h-14 rounded-full',
-              toneChip(card.tone),
+              'inline-flex items-center justify-center w-14 h-14 rounded-full border',
+              toneTokens[card.tone].chip,
             )}
           >
             <Icon className="h-6 w-6" />
@@ -58,7 +58,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
           <h3
             className={cn(
               'font-mono text-md font-bold tracking-tight break-keep',
-              toneText(card.tone),
+              toneTokens[card.tone].text,
             )}
           >
             {card.title}
@@ -70,8 +70,8 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
               <span
                 aria-hidden="true"
                 className={cn(
-                  'inline-flex items-center justify-center w-5 h-5 rounded-full shrink-0 mt-0.5',
-                  toneChip(card.tone),
+                  'inline-flex items-center justify-center w-5 h-5 rounded-full border shrink-0 mt-0.5',
+                  toneTokens[card.tone].chip,
                 )}
               >
                 <CheckCircleIcon className="h-3.5 w-3.5" />

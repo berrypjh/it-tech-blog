@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactElementTypeMeaningContent } from '../content';
 import { SparklesIcon, TableIcon } from '../icons';
-import { toneChip, toneDot, toneText } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['compare'] };
 
@@ -55,13 +56,16 @@ export const TypeComparisonTable = ({ content }: Props) => (
                   <th scope="row" className="px-md py-3 text-xsm font-bold whitespace-nowrap">
                     <span
                       className={cn(
-                        'inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-                        toneChip(row.tone),
+                        'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+                        toneTokens[row.tone].chip,
                       )}
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('inline-block w-1.5 h-1.5 rounded-full', toneDot(row.tone))}
+                        className={cn(
+                          'inline-block w-1.5 h-1.5 rounded-full',
+                          toneTokens[row.tone].dot,
+                        )}
                       />
                       {row.category}
                     </span>
@@ -73,7 +77,10 @@ export const TypeComparisonTable = ({ content }: Props) => (
                   </td>
                   <td className="px-md py-3">
                     <code
-                      className={cn('font-mono text-xsm font-bold break-all', toneText(row.tone))}
+                      className={cn(
+                        'font-mono text-xsm font-bold break-all',
+                        toneTokens[row.tone].text,
+                      )}
                     >
                       {row.typeValue}
                     </code>
@@ -89,21 +96,6 @@ export const TypeComparisonTable = ({ content }: Props) => (
       </div>
     </div>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
-      >
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.emphasis}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
   </section>
 );
