@@ -61,7 +61,6 @@ export type KeyFiberReuseContent = {
     stableTitle: string;
     stableMain: string;
     stableItems: string[];
-    vsLabel: string;
     changedTitle: string;
     changedMain: string;
     changedItems: string[];
@@ -174,7 +173,6 @@ const ko: KeyFiberReuseContent = {
     stableTitle: 'key 유지',
     stableMain: '기존 Fiber를 이어갈 가능성 증가',
     stableItems: ['항목이 같은 것으로 판단', '상태, DOM, 연결 정보 재사용 가능'],
-    vsLabel: 'VS',
     changedTitle: 'key 변경',
     changedMain: '새로운 대상으로 간주될 수 있음',
     changedItems: ['다른 항목으로 판단', '새로운 Fiber가 생성될 수 있음'],
@@ -349,7 +347,6 @@ const en: KeyFiberReuseContent = {
     stableTitle: 'key stays',
     stableMain: 'Higher chance of continuing with the existing Fiber',
     stableItems: ['Treated as the same item', 'State, DOM, and links can be reused'],
-    vsLabel: 'VS',
     changedTitle: 'key changes',
     changedMain: 'Can be treated as a new target',
     changedItems: ['Treated as a different item', 'A new Fiber may be created'],

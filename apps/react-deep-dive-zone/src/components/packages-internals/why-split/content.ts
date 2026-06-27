@@ -2,11 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type PackageId = 'react' | 'react-reconciler' | 'renderer' | 'scheduler' | 'shared';
-
-export type PackageAccent = 'sky' | 'cyan' | 'violet' | 'teal' | 'emerald' | 'amber';
 
 export type FlowBoxKind = 'user-code' | 'react' | 'reconciler' | 'renderer' | 'dom' | 'native';
 
@@ -88,8 +84,6 @@ export type WhySplitContent = {
     description: string;
     diagramFlowLabel: string;
     diagramSideLabel: string;
-    architectureSectionId: string;
-    relationsSectionId: string;
   };
   architecture: {
     mainFlow: ArchitectureNode[];
@@ -325,8 +319,6 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
         '사용자 API, 렌더링 계산, 실제 출력 환경, 스케줄링, 공통 기반층이 서로 다른 패키지로 협력합니다.',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
-      architectureSectionId: 'section-architecture',
-      relationsSectionId: 'section-reasons',
     },
     architecture: koArchitecture,
     misconception: {
@@ -536,8 +528,6 @@ function App() {
         'The user API, render computation, output environments, scheduling, and a shared foundation each live in their own package and cooperate.',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
-      architectureSectionId: 'section-architecture',
-      relationsSectionId: 'section-reasons',
     },
     architecture: enArchitecture,
     misconception: {

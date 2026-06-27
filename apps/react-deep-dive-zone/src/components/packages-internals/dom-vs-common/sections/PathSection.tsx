@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneBadge, ToneCard } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, PathCard } from '../content';
-import { ArrowRightIcon, ChevronRightIcon, dvcIcon, MapIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone-house';
+import { ArrowRightIcon, MapIcon } from '../icons';
 
 type Props = { content: DvcContent['path'] };
 
@@ -20,70 +21,63 @@ export const PathSection = ({ content }: Props) => {
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      <ol className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
-        {content.cards.map((card, index) => (
-          <li key={card.id} className="relative flex">
-            <PathCardView card={card} moreLabel={content.moreLabel} />
-            {index < content.cards.length - 1 && (
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'hidden md:flex absolute -right-3 top-1/2 z-10 -translate-y-1/2',
-                  'h-6 w-6 items-center justify-center rounded-full',
-                  'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
-                  'shadow-[0_2px_0_var(--term-border)]',
-                )}
-              >
-                <ChevronRightIcon className="h-3.5 w-3.5" />
-              </span>
-            )}
-          </li>
+      <ol className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
+        {content.cards.map((card, idx) => (
+          <PathCardWithArrow
+            key={card.id}
+            card={card}
+            moreLabel={content.moreLabel}
+            isLast={idx === content.cards.length - 1}
+          />
         ))}
       </ol>
     </section>
   );
 };
 
-const PathCardView = ({ card, moreLabel }: { card: PathCard; moreLabel: string }) => {
-  const tone = localTone(card.tone);
-  const Icon = dvcIcon[card.iconName];
+type WithArrowProps = { card: PathCard; moreLabel: string; isLast: boolean };
 
-  return (
-    <Link
-      href={card.href}
-      className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-      )}
-    >
-      <LocalToneIconBox tone={card.tone} size="md">
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </LocalToneIconBox>
+const PathCardWithArrow = ({ card, moreLabel, isLast }: WithArrowProps) => (
+  <>
+    <PathCardItem card={card} moreLabel={moreLabel} />
+    {!isLast && <PathArrow />}
+  </>
+);
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', tone.text)}>{card.title}</h3>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
-        {card.subtitle}
-      </span>
+const PathArrow = () => (
+  <div aria-hidden="true" className="flex items-center justify-center">
+    <ArrowRightIcon className="hidden lg:inline-flex h-5 w-5 text-[var(--term-accent)]" />
+    <ArrowRightIcon className="inline-flex lg:hidden h-5 w-5 rotate-90 text-[var(--term-accent)]" />
+  </div>
+);
 
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+const PathCardItem = ({ card, moreLabel }: { card: PathCard; moreLabel: string }) => (
+  <Link
+    href={card.href}
+    className="group/card h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
+  >
+    <ToneCard tone={card.tone} nav className="w-full">
+      <header className="flex items-center justify-between gap-sm">
+        <ToneBadge tone={card.tone}>{card.subtitle}</ToneBadge>
+      </header>
+      <h3 className="text-sm sm:text-md font-bold tracking-tight text-[var(--term-fg)] break-keep whitespace-pre-line">
+        {card.title}
+      </h3>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-auto">
         {card.description}
       </p>
-
-      <span
+      <div
         className={cn(
-          'mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold font-mono tracking-tight',
-          tone.text,
+          'pt-xs text-xsm font-bold inline-flex items-center gap-1',
+          toneTokens[card.tone].text,
         )}
       >
-        {moreLabel}
+        <span className="uppercase tracking-wider text-[10px]">{moreLabel}</span>
         <ArrowRightIcon
-          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+          className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
           aria-hidden="true"
         />
-      </span>
-    </Link>
-  );
-};
+      </div>
+    </ToneCard>
+  </Link>
+);

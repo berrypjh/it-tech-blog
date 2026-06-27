@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ReconcilerIconName =
   | 'arrowRight'
   | 'atom'
@@ -111,7 +109,8 @@ export type ReconcilerContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeLinks: { label: string; href: string }[];
+    primaryCta: string;
+    primaryHref: string;
   };
   advanced: {
     eyebrow: string;
@@ -123,9 +122,7 @@ export type ReconcilerContent = {
   concept: {
     eyebrow: string;
     title: string;
-    question: string;
-    answer: string;
-    answerDetail: string;
+    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -378,12 +375,9 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
       code: REACT_FIBER_CODE,
-      codeLinks: [
-        {
-          label: 'createFiberFromElement',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
-        },
-      ],
+      primaryCta: 'ReactFiber.js 읽기',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
     advanced: {
       eyebrow: '05 · 심화 연결',
@@ -427,11 +421,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
     },
     concept: {
       eyebrow: '06 · 핵심 정리',
-      title: '핵심 정리',
-      question: 'Element와 Fiber의 가장 큰 차이는?',
-      answer: 'Element는 UI 설명 객체, Fiber는 렌더링을 처리하는 작업 단위입니다.',
-      answerDetail:
+      title: '기억할 한 가지',
+      lines: [
+        'Element는 UI 설명 객체, Fiber는 렌더링을 처리하는 작업 단위입니다.',
         'Element는 불변의 요청서에 가깝고, Fiber는 그 요청을 처리하기 위해 상태를 가지고 진행되는 작업 단위입니다.',
+      ],
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -580,12 +574,9 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
       code: REACT_FIBER_CODE,
-      codeLinks: [
-        {
-          label: 'createFiberFromElement',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
-        },
-      ],
+      primaryCta: 'Read ReactFiber.js',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
     advanced: {
       eyebrow: '05 · ADVANCED LEARNING',
@@ -629,11 +620,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
     },
     concept: {
       eyebrow: '06 · KEY TAKEAWAY',
-      title: 'Key takeaway',
-      question: 'What is the biggest difference between Element and Fiber?',
-      answer: 'Element is a UI description object; Fiber is the work unit that runs the rendering.',
-      answerDetail:
+      title: 'One thing to remember',
+      lines: [
+        'Element is a UI description object; Fiber is the work unit that runs the rendering.',
         'Element is an immutable request slip; Fiber carries state to actually run the work for that request.',
+      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

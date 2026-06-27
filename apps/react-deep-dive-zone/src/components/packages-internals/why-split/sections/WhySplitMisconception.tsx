@@ -1,9 +1,9 @@
 import type { MisconceptionItem } from '../../../shared/misconception';
 import { MisconceptionCardGrid } from '../../../shared/misconception';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { WhySplitContent } from '../content';
 import { architectureIcon, HelpCircleIcon } from '../icons';
-import { toneText } from '../localTone';
 
 type Props = { content: WhySplitContent['misconception'] };
 
@@ -11,7 +11,7 @@ export const WhySplitMisconception = ({ content }: Props) => {
   const items: MisconceptionItem[] = content.cards.map((card) => ({
     id: card.id,
     icon: architectureIcon[card.iconName],
-    accentClassName: toneText(card.iconTone),
+    accentClassName: toneTokens[card.iconTone].text,
     badgeWrong: card.badgeWrong,
     wrong: card.wrong,
     right: card.right,

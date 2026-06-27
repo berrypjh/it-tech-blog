@@ -1,14 +1,14 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import type { DvcContent } from '../content';
 import { ScaleIcon } from '../icons';
 
-type Props = { content: DvcContent['table']; sectionId: string };
+type Props = { content: DvcContent['table'] };
 
-export const ComparisonTableSection = ({ content, sectionId }: Props) => {
+export const ComparisonTableSection = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-table" className="space-y-md scroll-mt-2xl">
+    <section aria-labelledby="heading-table" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="table"
         eyebrow={content.eyebrow}
@@ -17,122 +17,15 @@ export const ComparisonTableSection = ({ content, sectionId }: Props) => {
         icon={<ScaleIcon className="h-5 w-5" />}
       />
 
-      <div
-        className={cn(
-          'rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-          'border-[var(--term-border)] overflow-hidden',
-        )}
-      >
-        {/* Desktop table */}
-        <div className="hidden md:block overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr
-                className={cn('border-b border-[var(--term-border)]', 'bg-[var(--term-surface)]')}
-              >
-                <th
-                  scope="col"
-                  className="text-left text-[10px] uppercase tracking-wider font-bold font-mono px-md py-3 text-[var(--term-muted)] w-[20%]"
-                >
-                  {content.headers.item}
-                </th>
-                <th
-                  scope="col"
-                  className={cn(
-                    'text-left text-xsm font-bold font-mono px-md py-3 w-[40%]',
-                    'text-[var(--term-accent)]',
-                  )}
-                >
-                  {content.headers.common}
-                </th>
-                <th
-                  scope="col"
-                  className={cn(
-                    'text-left text-xsm font-bold font-mono px-md py-3 w-[40%]',
-                    'text-sky-600 dark:text-sky-300',
-                  )}
-                >
-                  {content.headers.domSpecific}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {content.rows.map((row, i) => (
-                <tr
-                  key={row.id}
-                  className={cn(
-                    'border-b last:border-b-0 border-[var(--term-border)]',
-                    'transition-colors hover:bg-[var(--term-surface)]/80',
-                    i % 2 === 1 && 'bg-[var(--term-surface)]/60',
-                  )}
-                >
-                  <th
-                    scope="row"
-                    className="text-left text-xsm font-bold text-[var(--term-fg)] px-md py-3 align-top"
-                  >
-                    {row.label}
-                  </th>
-                  <td
-                    className={cn(
-                      'text-xsm leading-relaxed px-md py-3 align-top break-keep',
-                      'text-[var(--term-fg)]',
-                    )}
-                  >
-                    {row.common}
-                  </td>
-                  <td
-                    className={cn(
-                      'text-xsm leading-relaxed px-md py-3 align-top break-keep',
-                      'text-[var(--term-fg)]',
-                    )}
-                  >
-                    {row.domSpecific}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Mobile card variant */}
-        <ul className="md:hidden flex flex-col divide-y divide-[var(--term-border)]">
-          {content.rows.map((row) => (
-            <li key={row.id} className="p-md flex flex-col gap-2">
-              <span className="text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-muted)]">
-                {row.label}
-              </span>
-              <div className="grid grid-cols-1 gap-2">
-                <div
-                  className={cn(
-                    'rounded-lg border px-3 py-2',
-                    'border-[var(--term-border)] bg-[var(--term-surface)]',
-                  )}
-                >
-                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-accent)] mb-1">
-                    {content.headers.common}
-                  </span>
-                  <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
-                    {row.common}
-                  </span>
-                </div>
-                <div
-                  className={cn(
-                    'rounded-lg border px-3 py-2',
-                    'border-[var(--term-border)] bg-[var(--term-surface)]',
-                  )}
-                >
-                  <span className="block text-[10px] uppercase tracking-wider font-mono font-bold text-sky-600 dark:text-sky-300 mb-1">
-                    {content.headers.domSpecific}
-                  </span>
-                  <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
-                    {row.domSpecific}
-                  </span>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ComparisonTable
+        caption={content.title}
+        headers={[content.headers.item, content.headers.common, content.headers.domSpecific]}
+        columnWidths={['20%', '40%', '40%']}
+        rows={content.rows.map((row) => ({
+          label: row.label,
+          cells: [formatInline(row.common), formatInline(row.domSpecific)],
+        }))}
+      />
     </section>
   );
 };

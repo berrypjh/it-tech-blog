@@ -27,7 +27,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
     >
       {/* JSX panel */}
       <article className="flex flex-col gap-2 min-w-0">
-        <Label tone="navy">{content.jsxLabel}</Label>
+        <Label>{content.jsxLabel}</Label>
         <CodePreviewPanel
           code={content.jsxCode}
           caption="button.jsx"
@@ -40,7 +40,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
 
       {/* Element object panel */}
       <article className="flex flex-col gap-2 min-w-0">
-        <Label tone="navy">{content.elementLabel}</Label>
+        <Label>{content.elementLabel}</Label>
         <CodePreviewPanel
           code={content.elementCode}
           caption="element"
@@ -81,14 +81,12 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
   </section>
 );
 
-const Label = ({ tone, children }: { tone: 'navy' | 'emerald'; children: React.ReactNode }) => (
+const Label = ({ children }: { children: React.ReactNode }) => (
   <span
     className={cn(
       'inline-flex w-fit items-center rounded-full border px-2.5 py-0.5',
       'text-[10px] font-bold uppercase tracking-wider font-mono',
-      tone === 'navy'
-        ? 'border-slate-300/80 bg-slate-100 text-slate-700 dark:border-slate-700/70 dark:bg-slate-900 dark:text-slate-200'
-        : 'border-emerald-300/80 bg-emerald-50 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-950/60 dark:text-emerald-200',
+      'border-slate-300/80 bg-slate-100 text-slate-700 dark:border-slate-700/70 dark:bg-slate-900 dark:text-slate-200',
     )}
   >
     {children}

@@ -12,9 +12,6 @@ import { reactPackageContent } from './content';
 
 type Props = { locale: Locale };
 
-const HUB_SECTION_ID = 'section-hub';
-const ROUTES_SECTION_ID = 'section-routes';
-
 export const ReactPackagePage = ({ locale }: Props) => {
   const c = reactPackageContent[locale];
 
@@ -22,8 +19,8 @@ export const ReactPackagePage = ({ locale }: Props) => {
     <StartPageShell>
       <ReactPackageHero content={c.hero} />
       <ApiGroups content={c.groups} />
-      <PublicApiSourceCheckpoint content={c.sourceCheckpoint} sectionId={HUB_SECTION_ID} />
-      <ApiEntryRoutes content={c.routes} sectionId={ROUTES_SECTION_ID} />
+      <PublicApiSourceCheckpoint content={c.sourceCheckpoint} />
+      <ApiEntryRoutes content={c.routes} />
       <CapabilityComparison content={c.capabilities} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

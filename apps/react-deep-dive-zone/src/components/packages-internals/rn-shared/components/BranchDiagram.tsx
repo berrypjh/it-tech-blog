@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { RnContent } from '../content';
 import { rnIcon } from '../icons';
-import { ToneIconBox } from '../localTone';
 
 type Props = { hero: RnContent['hero']; className?: string };
 
@@ -106,8 +107,7 @@ type BranchColumnProps = {
 
 const BranchColumn = ({ title, steps, tone, iconName }: BranchColumnProps) => {
   const Icon = rnIcon[iconName];
-  const isSky = tone === 'sky';
-  const accent = isSky ? 'text-sky-600 dark:text-sky-300' : 'text-violet-600 dark:text-violet-300';
+  const accent = toneTokens[tone].text;
   return (
     <article
       className={cn(

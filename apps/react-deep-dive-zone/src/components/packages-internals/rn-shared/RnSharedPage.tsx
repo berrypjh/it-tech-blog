@@ -13,9 +13,6 @@ import { rnContent } from './content';
 
 type Props = { locale: Locale };
 
-const COMMON_SECTION_ID = 'section-common';
-const BENEFIT_SECTION_ID = 'section-benefit';
-
 export const RnSharedPage = ({ locale }: Props) => {
   const c = rnContent[locale];
 
@@ -24,9 +21,9 @@ export const RnSharedPage = ({ locale }: Props) => {
       <RnHero content={c.hero} />
       <AxisSection content={c.axis} />
       <CompareSection content={c.compare} />
-      <CommonReconcilerSection content={c.common} sectionId={COMMON_SECTION_ID} />
+      <CommonReconcilerSection content={c.common} />
       <ModesSection content={c.modes} />
-      <BenefitSection content={c.benefit} sectionId={BENEFIT_SECTION_ID} />
+      <BenefitSection content={c.benefit} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

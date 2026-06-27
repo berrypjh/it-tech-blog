@@ -18,7 +18,6 @@ export type RuntimeFunctionCard = {
 export type ComparisonColumn = {
   id: RuntimeId;
   label: string;
-  tone: ToneKey;
 };
 
 export type ComparisonRow = {
@@ -186,9 +185,9 @@ const ko: JsxRuntimeFunctionsContent = {
     description: '같은 React Element를 만들지만, 호출되는 상황과 가진 정보가 다릅니다.',
     aspectLabel: '구분',
     columns: [
-      { id: 'jsx', label: 'jsx', tone: 'sky' },
-      { id: 'jsxs', label: 'jsxs', tone: 'teal' },
-      { id: 'jsxDEV', label: 'jsxDEV', tone: 'violet' },
+      { id: 'jsx', label: 'jsx' },
+      { id: 'jsxs', label: 'jsxs' },
+      { id: 'jsxDEV', label: 'jsxDEV' },
     ],
     rows: [
       {
@@ -387,9 +386,9 @@ const en: JsxRuntimeFunctionsContent = {
       'They all produce a React Element, but the calling context and embedded info differ.',
     aspectLabel: 'Aspect',
     columns: [
-      { id: 'jsx', label: 'jsx', tone: 'sky' },
-      { id: 'jsxs', label: 'jsxs', tone: 'teal' },
-      { id: 'jsxDEV', label: 'jsxDEV', tone: 'violet' },
+      { id: 'jsx', label: 'jsx' },
+      { id: 'jsxs', label: 'jsxs' },
+      { id: 'jsxDEV', label: 'jsxDEV' },
     ],
     rows: [
       {

@@ -13,8 +13,6 @@ import { packageDesignContent } from './content';
 
 type Props = { locale: Locale };
 
-const FINAL_DIAGRAM_SECTION_ID = 'section-final-diagram';
-
 export const PackageDesignPage = ({ locale }: Props) => {
   const c = packageDesignContent[locale];
 
@@ -23,7 +21,7 @@ export const PackageDesignPage = ({ locale }: Props) => {
       <PdHero content={c.hero} />
       <RecapSection content={c.recap} />
       <ValuesSection content={c.values} />
-      <FinalDiagramSection content={c.finalDiagram} sectionId={FINAL_DIAGRAM_SECTION_ID} />
+      <FinalDiagramSection content={c.finalDiagram} />
       <UserFlowSection content={c.userFlow} />
       <BridgeSection content={c.bridge} />
       <FinalLaunchBanner content={c.finale} />

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { FlowNode, ToneKey } from '../content';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { FlowNode } from '../content';
 import { pdIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = {
   main: FlowNode[];
@@ -87,7 +88,7 @@ type FlowBoxProps = {
 };
 
 const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
-  const tone = localTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = pdIcon[node.iconName];
 
   return (
@@ -96,16 +97,14 @@ const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
         'inline-flex flex-col items-center gap-1 rounded-xl border',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        emphasized
-          ? 'border-[var(--term-accent)]'
-          : cn('border-[var(--term-border)]', tone.borderHover),
+        emphasized ? 'border-[var(--term-accent)]' : 'border-[var(--term-border)]',
         compact ? 'px-3 py-2 w-[14rem]' : 'px-md py-3 w-[16rem]',
       )}
     >
       <span className="inline-flex items-center gap-2">
-        <LocalToneIconBox tone={node.tone} size="sm">
+        <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <span className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
           {node.label}
         </span>
@@ -137,7 +136,7 @@ type SideAxisCardProps = {
 };
 
 const SideAxisCard = ({ title, subtitle, description, tone, iconName }: SideAxisCardProps) => {
-  const t = localTone(tone);
+  const t = toneTokens[tone];
   const Icon = pdIcon[iconName];
   return (
     <article
@@ -148,9 +147,9 @@ const SideAxisCard = ({ title, subtitle, description, tone, iconName }: SideAxis
       )}
     >
       <span className="flex items-center gap-2">
-        <LocalToneIconBox tone={tone} size="sm">
+        <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <span className={cn('text-sm font-bold font-mono tracking-tight', t.text)}>{title}</span>
       </span>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">

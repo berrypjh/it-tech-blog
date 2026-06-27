@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { FlowNode } from '../content';
 import { pdIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { main: FlowNode[]; a11y: string; className?: string };
 
@@ -31,7 +32,7 @@ export const PdHeroDiagram = ({ main, a11y, className }: Props) => (
 );
 
 const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean }) => {
-  const tone = localTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = pdIcon[node.iconName];
 
   return (
@@ -41,13 +42,13 @@ const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean })
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         emphasized
           ? 'border-[var(--term-accent)] @sm:shadow-[0_3px_0_var(--term-border)]'
-          : cn('border-[var(--term-border)]', tone.borderHover),
+          : 'border-[var(--term-border)]',
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
-        <LocalToneIconBox tone={node.tone} size="sm">
+        <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <span
           className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
         >

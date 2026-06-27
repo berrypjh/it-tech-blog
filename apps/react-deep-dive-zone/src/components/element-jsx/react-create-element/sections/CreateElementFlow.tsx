@@ -2,6 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, ReactCreateElementContent } from '../content';
 import { AtomIcon, CodeIcon, LightbulbIcon, SlidersIcon, WorkflowIcon } from '../icons';
 
@@ -16,7 +17,7 @@ const iconMap = {
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
   const Icon = iconMap[step.iconName];
-  return { ...step, icon: <Icon className="h-5 w-5" /> };
+  return { ...step, icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} /> };
 };
 
 export const CreateElementFlow = ({ content }: Props) => (

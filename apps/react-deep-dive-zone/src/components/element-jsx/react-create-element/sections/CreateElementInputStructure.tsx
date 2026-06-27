@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReactCreateElementContent } from '../content';
 import { BoxIcon, Code2Icon, FunctionSquareIcon, SlidersIcon, UsersIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['input'] };
 
@@ -54,7 +54,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
 );
 
 const InputPartCard = ({ card }: { card: InputCard }) => {
-  const t = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = iconMap[card.iconName];
   return (
     <article
@@ -62,15 +62,13 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <span
           className={cn(
-            'inline-flex items-center justify-center w-8 h-8 rounded-full font-mono text-xsm font-bold tabular-nums',
+            'inline-flex items-center justify-center w-8 h-8 rounded-full border font-mono text-xsm font-bold tabular-nums',
             t.chip,
-            t.text,
           )}
         >
           {card.number}
@@ -78,9 +76,8 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl',
+            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             t.chip,
-            t.text,
           )}
         >
           <Icon className="h-5 w-5" />

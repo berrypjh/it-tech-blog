@@ -13,9 +13,6 @@ import { rvrContent } from './content';
 
 type Props = { locale: Locale };
 
-const HOST_CONFIG_SECTION_ID = 'section-host-config';
-const DOM_EXAMPLE_SECTION_ID = 'section-dom-example';
-
 export const RvrPage = ({ locale }: Props) => {
   const c = rvrContent[locale];
 
@@ -24,8 +21,8 @@ export const RvrPage = ({ locale }: Props) => {
       <RvrHero content={c.hero} />
       <RoleSummarySection content={c.summary} />
       <ComparisonSection content={c.comparison} />
-      <HostConfigSection content={c.hostConfig} sectionId={HOST_CONFIG_SECTION_ID} />
-      <DomExampleSection content={c.domExample} sectionId={DOM_EXAMPLE_SECTION_ID} />
+      <HostConfigSection content={c.hostConfig} />
+      <DomExampleSection content={c.domExample} />
       <SharedFlowSection content={c.flow} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

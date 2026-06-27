@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
-import { GithubIcon } from '../../../shared/icon';
+import { CheckpointInfoCard } from '../../../shared/checkpoint';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
-import type { SharedContent, ToneKey } from '../content';
-import { ExternalLinkIcon, sharedIcon } from '../icons';
-import { accentText, neutralChrome, toneAccent } from '../localTone';
+import type { SharedContent } from '../content';
+import { sharedIcon } from '../icons';
 
-type Props = { content: SharedContent['symbolsCheckpoint']; sectionId: string };
+type Props = { content: SharedContent['symbolsCheckpoint'] };
 
-export const SymbolsCheckpoint = ({ content, sectionId }: Props) => {
+export const SymbolsCheckpoint = ({ content }: Props) => {
   const cp = content.checkpoint;
 
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-symbols-checkpoint"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-symbols-checkpoint" className="space-y-md">
       <SectionHeader
         id="symbols-checkpoint"
         eyebrow={content.eyebrow}
@@ -26,7 +20,6 @@ export const SymbolsCheckpoint = ({ content, sectionId }: Props) => {
         icon={<CheckHeaderIcon />}
       />
 
-      {/* 부가 메모: 전체 너비 상단 밴드 */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {content.callouts.map((callout) => (
           <li key={callout.id}>
@@ -35,119 +28,34 @@ export const SymbolsCheckpoint = ({ content, sectionId }: Props) => {
         ))}
       </ul>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-start">
-        {/* 좌측 정보 카드 */}
-        <article
-          className={cn(
-            'flex flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-            'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-            'border-[var(--term-border)]',
-          )}
-        >
-          <ul className="flex flex-col divide-y divide-dashed divide-[var(--term-border)]">
-            <li className="py-3 first:pt-0">
-              <CheckpointRow
-                label={cp.file.label}
-                value={cp.file.value}
-                iconName="fileText"
-                tone="sky"
-                isMonoValue
-              />
-            </li>
-            <li className="py-3">
-              <CheckpointRow
-                label={cp.look.label}
-                value={cp.look.values.join(', ')}
-                iconName="fileCode"
-                tone="violet"
-                isMonoValue
-              />
-            </li>
-            <li className="py-3 last:pb-0">
-              <CheckpointRow
-                label={cp.question.label}
-                value={cp.question.value}
-                iconName="help"
-                tone="amber"
-              />
-            </li>
-          </ul>
-        </article>
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
+        <CheckpointInfoCard
+          rows={[
+            {
+              label: cp.file.label,
+              value: <code className="font-mono break-all">{cp.file.value}</code>,
+              icon: sharedIcon.fileText,
+            },
+            {
+              label: cp.look.label,
+              value: (
+                <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                  {cp.look.values.join(', ')}
+                </code>
+              ),
+              icon: sharedIcon.fileCode,
+            },
+          ]}
+          question={cp.question.value}
+        />
 
-        {/* 우측 코드 패널 + GitHub 링크 + 콜아웃 */}
         <div className="flex flex-col gap-md min-w-0">
           <CodePreviewPanel header={content.codeCaption} badge="main" code={content.code} />
 
-          <div className="flex flex-col sm:flex-row gap-2">
-            {content.codeLinks.map((link, i) =>
-              i === 0 ? (
-                <GithubButton
-                  key={link.href}
-                  href={link.href}
-                  label={<span className="font-mono">{link.label}</span>}
-                  className="min-w-0"
-                />
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
-                    'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                  )}
-                >
-                  <GithubIcon className="h-3.5 w-3.5" />
-                  <span className="font-mono">{link.label}</span>
-                  <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              ),
-            )}
-          </div>
+          <GithubButton href={content.primaryHref} label={content.primaryCta} />
         </div>
       </div>
     </section>
-  );
-};
-
-type RowProps = {
-  label: string;
-  value: string;
-  iconName: 'fileText' | 'fileCode' | 'help';
-  tone: ToneKey;
-  isMonoValue?: boolean;
-};
-
-const CheckpointRow = ({ label, value, iconName, tone, isMonoValue = false }: RowProps) => {
-  const Icon = sharedIcon[iconName];
-  return (
-    <div className="flex flex-col gap-1.5">
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
-        {label}
-      </span>
-      <div className="flex items-start gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            neutralChrome,
-            accentText[toneAccent(tone)],
-          )}
-        >
-          <Icon className="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span
-          className={cn(
-            'min-w-0 flex-1 pt-1 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-all',
-            isMonoValue && 'font-mono',
-          )}
-        >
-          {value}
-        </span>
-      </div>
-    </div>
   );
 };
 

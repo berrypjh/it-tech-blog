@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { EntryRouteCard, ReactPackageContent } from '../content';
-import { ChevronRightIcon, CodeIcon, ExternalLinkIcon, reactPackageIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone';
+import { ChevronRightIcon, ExternalLinkIcon, reactPackageIcon } from '../icons';
 
-type Props = { content: ReactPackageContent['routes']; sectionId: string };
+type Props = { content: ReactPackageContent['routes'] };
 
-export const ApiEntryRoutes = ({ content, sectionId }: Props) => {
+export const ApiEntryRoutes = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-routes" className="space-y-md scroll-mt-2xl">
+    <section aria-labelledby="heading-routes" className="space-y-md scroll-mt-2xl">
       <SectionBadgeHeader
         id="routes"
         number={content.badge}
@@ -19,7 +20,7 @@ export const ApiEntryRoutes = ({ content, sectionId }: Props) => {
         icon={<ChevronRightIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
+      <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md items-stretch">
         {content.cards.map((card) => (
           <li key={card.id} className="flex">
             <EntryRouteCardView card={card} />
@@ -31,27 +32,31 @@ export const ApiEntryRoutes = ({ content, sectionId }: Props) => {
 };
 
 const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
-  const tone = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = reactPackageIcon[card.iconName];
 
   return (
     <article
       className={cn(
-        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
+        'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
+        'transition-all hover:-translate-y-0.5',
+        t.border,
       )}
     >
+      {/* 아이콘 + API 이름 */}
       <header className="flex items-center gap-sm">
-        <LocalToneIconBox tone={card.tone} size="md">
+        <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </LocalToneIconBox>
-        <h3 className={cn('text-md font-bold font-mono tracking-tight truncate', tone.text)}>
+        </ToneIconBox>
+        <h3
+          className={cn('text-md sm:text-lg font-bold font-mono tracking-tight truncate', t.text)}
+        >
           {card.api}
         </h3>
       </header>
 
+      {/* 진입 → 내부 파일 경로 */}
       <div
         className={cn(
           'inline-flex flex-wrap items-center gap-1.5 rounded-lg border p-2 font-mono text-[11px]',
@@ -62,27 +67,29 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
         <span aria-hidden="true" className="text-[var(--term-accent)]">
           →
         </span>
-        <span className={cn('font-bold truncate', tone.text)}>{card.route.to}</span>
+        <span className={cn('font-bold truncate', t.text)}>{card.route.to}</span>
       </div>
 
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+      {/* 설명 */}
+      <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep flex-1">
         {card.description}
       </p>
 
+      {/* CTA */}
       <a
         href={card.href}
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'group/btn mt-auto inline-flex items-center justify-center gap-2 rounded-md px-md py-2 text-[11px] font-bold',
-          'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
-          'transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
+          'group/cta inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
+          'transition-colors mt-auto hover:bg-[var(--term-surface)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
+          t.text,
         )}
       >
-        <CodeIcon className="h-3.5 w-3.5" aria-hidden="true" />
         {card.buttonLabel}
-        <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <span className="sr-only">(새 창에서 열림)</span>
+        <ExternalLinkIcon className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
       </a>
     </article>
   );

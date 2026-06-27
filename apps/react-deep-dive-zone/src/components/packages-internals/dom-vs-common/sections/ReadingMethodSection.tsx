@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, ReadingCard } from '../content';
 import { CheckCircleIcon, ChevronRightIcon, dvcIcon, SparklesIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone-house';
 
 type Props = { content: DvcContent['reading'] };
 
@@ -30,7 +31,7 @@ export const ReadingMethodSection = ({ content }: Props) => {
 };
 
 const ReadingCardView = ({ card }: { card: ReadingCard }) => {
-  const tone = localTone(card.tone);
+  const tone = toneTokens[card.tone];
   const Icon = dvcIcon[card.iconName];
 
   return (
@@ -38,14 +39,13 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
       className={cn(
         'group flex h-full flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
-        tone.borderHover,
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <LocalToneIconBox tone={card.tone} size="md">
+        <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', tone.text)}>
           {card.title}
         </h3>

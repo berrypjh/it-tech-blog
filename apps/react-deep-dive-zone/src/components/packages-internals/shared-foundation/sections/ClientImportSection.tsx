@@ -1,12 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
-import { GithubIcon } from '../../../shared/icon';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { SharedContent } from '../content';
-import { ExternalLinkIcon, MapIcon, sharedIcon } from '../icons';
-import { accentText, neutralChrome } from '../localTone';
+import { MapIcon, sharedIcon } from '../icons';
 
 type Props = { content: SharedContent['clientImport'] };
 
@@ -47,17 +46,10 @@ export const ClientImportSection = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-sm">
-            <span
-              aria-hidden="true"
-              className={cn(
-                'inline-flex items-center justify-center w-11 h-11 rounded-md shrink-0',
-                neutralChrome,
-                accentText.C,
-              )}
-            >
+            <ToneIconBox tone="violet" className="shrink-0">
               <sharedIcon.fileText className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <h3 className={cn('text-md font-bold tracking-tight', accentText.C)}>
+            </ToneIconBox>
+            <h3 className={cn('text-md font-bold tracking-tight', toneTokens.violet.text)}>
               {content.explanation.title}
             </h3>
           </header>
@@ -78,34 +70,7 @@ export const ClientImportSection = ({ content }: Props) => {
         <div className="flex flex-col gap-md min-w-0">
           <CodePreviewPanel header={content.codeCaption} badge="main" code={content.code} />
 
-          <div className="flex flex-col sm:flex-row gap-2">
-            {content.codeLinks.map((link, i) =>
-              i === 0 ? (
-                <GithubButton
-                  key={link.href}
-                  href={link.href}
-                  label={<span className="font-mono">{link.label}</span>}
-                  className="min-w-0"
-                />
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold min-w-0',
-                    'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] transition-colors hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
-                  )}
-                >
-                  <GithubIcon className="h-3.5 w-3.5" />
-                  <span className="font-mono">{link.label}</span>
-                  <ExternalLinkIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              ),
-            )}
-          </div>
+          <GithubButton href={content.primaryHref} label={content.primaryCta} />
         </div>
       </div>
     </section>

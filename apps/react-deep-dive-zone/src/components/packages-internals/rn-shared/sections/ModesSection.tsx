@@ -1,9 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CompareVs } from '../../../shared/compare';
+import { ToneDetailCard } from '../../../shared/detail';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ModeCard, RnContent } from '../content';
-import { CheckCircleIcon, rnIcon, SparklesIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
+import { rnIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RnContent['modes'] };
 
@@ -18,27 +20,41 @@ export const ModesSection = ({ content }: Props) => {
         icon={<SparklesIcon className="h-5 w-5" />}
       />
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
-        {content.cards.map((card, i) => {
-          const pill = content.pills[i];
-          return (
-            <li key={card.id} className="flex flex-col gap-sm">
-              <ModeCardView card={card} />
-              {pill && <ModePill pill={pill} />}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
+        <ModeColumn card={content.cards[0]} pill={content.pills[0]} />
+        <CompareVs />
+        <ModeColumn card={content.cards[1]} pill={content.pills[1]} />
+      </div>
     </section>
   );
 };
+
+const ModeColumn = ({
+  card,
+  pill,
+}: {
+  card: ModeCard;
+  pill?: RnContent['modes']['pills'][number];
+}) => (
+  <div className="flex flex-col gap-sm">
+    <ToneDetailCard
+      tone={card.tone}
+      icon={rnIcon[card.iconName]}
+      title={card.name}
+      description={card.subtitle}
+      bullets={card.items}
+      className="h-full"
+    />
+    {pill && <ModePill pill={pill} />}
+  </div>
+);
 
 const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => (
   <span
     className={cn(
       'flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border px-md py-2 text-center text-xsm font-bold font-mono tracking-tight',
       'bg-[var(--term-surface)] border-[var(--term-border)]',
-      toneText(pill.tone),
+      toneTokens[pill.tone].text,
     )}
   >
     <span className="break-keep">{pill.left}</span>
@@ -48,45 +64,3 @@ const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => (
     <span className="break-keep">{pill.right}</span>
   </span>
 );
-
-const ModeCardView = ({ card }: { card: ModeCard }) => {
-  const Icon = rnIcon[card.iconName];
-
-  return (
-    <article
-      className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={card.tone} size="md">
-          <Icon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
-        <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', toneText(card.tone))}>
-            {card.name}
-          </h3>
-          <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
-            {card.subtitle}
-          </span>
-        </div>
-      </header>
-
-      <ul className="flex flex-col gap-2">
-        {card.items.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
-          >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneText(card.tone))}>
-              <CheckCircleIcon className="h-3.5 w-3.5" />
-            </span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-};

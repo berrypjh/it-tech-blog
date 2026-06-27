@@ -1,10 +1,8 @@
-import { cn } from '@it-tech-blog/utils';
-
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
+import { CheckpointInfoCard } from '../../../shared/checkpoint';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementOwnerDevInfoContent } from '../content';
-import { CodeIcon, FileTextIcon, HelpCircleIcon } from '../icons';
+import { CodeIcon, FileTextIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['checkpoint'] };
 
@@ -20,61 +18,31 @@ export const OwnerDevSourceCheckpoint = ({ content }: Props) => (
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
-      {/* 좌측 정보 카드 */}
-      <article
-        className={cn(
-          'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
-          'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        )}
-      >
-        <InfoRow
-          label={content.fileLabel}
-          value={
-            <span className="flex items-center gap-2">
-              <FileTextIcon
-                className="h-4 w-4 shrink-0 text-[var(--term-accent)]"
-                aria-hidden="true"
-              />
-              <code className="font-mono break-all">{content.filePath}</code>
-            </span>
-          }
-        />
-
-        <InfoRow
-          label={content.pointsLabel}
-          value={
-            <ul className="flex flex-wrap gap-1.5">
-              {content.points.map((point) => (
-                <li key={point}>
-                  <code className="inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[11px] font-mono text-[var(--term-fg)]">
-                    {point}
-                  </code>
-                </li>
-              ))}
-            </ul>
-          }
-        />
-
-        <div
-          className={cn(
-            'mt-auto flex items-start gap-2 rounded-lg border p-3',
-            'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          )}
-        >
-          <HelpCircleIcon
-            className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
-            aria-hidden="true"
-          />
-          <div className="flex flex-col gap-0.5">
-            <span className="text-[10px] uppercase tracking-wider font-bold">
-              {content.questionLabel}
-            </span>
-            <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
-              {content.question}
-            </p>
-          </div>
-        </div>
-      </article>
+      <CheckpointInfoCard
+        rows={[
+          {
+            label: content.fileLabel,
+            value: <code className="font-mono break-all">{content.filePath}</code>,
+            icon: FileTextIcon,
+          },
+          {
+            label: content.pointsLabel,
+            value: (
+              <ul className="flex flex-wrap gap-1.5">
+                {content.points.map((point) => (
+                  <li key={point}>
+                    <code className="inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[11px] font-mono text-[var(--term-fg)]">
+                      {point}
+                    </code>
+                  </li>
+                ))}
+              </ul>
+            ),
+            icon: CodeIcon,
+          },
+        ]}
+        question={content.question}
+      />
 
       {/* 우측 코드 패널 + 버튼 */}
       <div className="flex flex-col gap-md min-w-0">
@@ -88,15 +56,4 @@ export const OwnerDevSourceCheckpoint = ({ content }: Props) => (
       </div>
     </div>
   </section>
-);
-
-type InfoRowProps = { label: string; value: React.ReactNode };
-
-const InfoRow = ({ label, value }: InfoRowProps) => (
-  <div className="flex flex-col gap-1">
-    <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
-      {label}
-    </span>
-    <div className="text-xsm text-[var(--term-fg)] break-keep">{value}</div>
-  </div>
 );

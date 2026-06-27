@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
 import { reactDomIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = { content: ReactDomContent['hero']; className?: string };
 
@@ -59,7 +60,7 @@ const CenterReactDomCard = ({ center }: { center: ReactDomContent['hero']['cente
 );
 
 const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
-  const tone = localTone(node.tone);
+  const tone = toneTokens[node.tone];
   const Icon = reactDomIcon[node.iconName];
 
   return (
@@ -68,14 +69,13 @@ const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
         'group flex min-w-0 flex-1 flex-col gap-2 rounded-xl border p-3',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        tone.borderHover,
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex min-w-0 items-center gap-2">
-        <LocalToneIconBox tone={node.tone} size="sm">
+        <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <div className="flex min-w-0 flex-col">
           <h3 className={cn('text-sm font-bold font-mono tracking-tight break-keep', tone.text)}>
             {node.title}

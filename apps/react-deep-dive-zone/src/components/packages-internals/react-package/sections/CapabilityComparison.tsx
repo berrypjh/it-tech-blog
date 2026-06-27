@@ -1,10 +1,27 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { ComparePanel } from '../../../shared/compare';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CapabilityItem, ReactPackageContent } from '../content';
 import { CheckCircleIcon, StarIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['capabilities'] };
+
+type Variant = 'does' | 'not';
+
+const variantClasses: Record<Variant, { card: string; iconBadge: string; header: string }> = {
+  does: {
+    card: 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+    iconBadge: `bg-[var(--term-surface)] border border-[var(--term-border)] ${toneTokens.teal.text}`,
+    header: toneTokens.teal.text,
+  },
+  not: {
+    card: 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+    iconBadge:
+      'border border-[var(--term-border)] bg-[var(--term-surface)] text-rose-600 dark:text-rose-300',
+    header: 'text-rose-600 dark:text-rose-300',
+  },
+};
 
 export const CapabilityComparison = ({ content }: Props) => {
   return (
@@ -17,83 +34,45 @@ export const CapabilityComparison = ({ content }: Props) => {
         icon={<StarIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
-        <CapabilityCard variant="does" title={content.doesTitle} items={content.doesItems} />
-        <CapabilityCard
-          variant="doesNot"
-          title={content.doesNotTitle}
-          items={content.doesNotItems}
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
+        <CapabilityPanel variant="does" title={content.doesTitle} items={content.doesItems} />
+        <CapabilityPanel variant="not" title={content.doesNotTitle} items={content.doesNotItems} />
       </div>
 
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-[var(--term-accent)]">
-          <StarIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };
 
-type CapabilityCardProps = {
-  variant: 'does' | 'doesNot';
+type CapabilityPanelProps = {
+  variant: Variant;
   title: string;
   items: CapabilityItem[];
 };
 
-const CapabilityCard = ({ variant, title, items }: CapabilityCardProps) => {
-  const isPositive = variant === 'does';
-  const Icon = isPositive ? CheckCircleIcon : XCircleIcon;
-  const accentText = isPositive ? 'text-[var(--term-accent)]' : 'text-rose-600 dark:text-rose-300';
-  const dot = isPositive ? 'bg-[var(--term-accent)]' : 'bg-rose-400 dark:bg-rose-500';
+const CapabilityPanel = ({ variant, title, items }: CapabilityPanelProps) => {
+  const t = variantClasses[variant];
+  const Icon = variant === 'does' ? CheckCircleIcon : XCircleIcon;
 
   return (
-    <article
-      className={cn(
-        'flex flex-col gap-md rounded-2xl border p-md sm:p-lg h-full',
-        'shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] bg-[var(--term-surface)]',
-      )}
+    <ComparePanel
+      tone={t}
+      icon={<Icon className="h-3.5 w-3.5" />}
+      title={title}
+      headerId={`capabilities-${variant}-header`}
     >
-      <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md border',
-            'border-[var(--term-border)] bg-[var(--term-bg)]',
-            accentText,
-          )}
-        >
-          <Icon className="h-5 w-5" />
-        </span>
-        <h3 className={cn('text-md font-bold tracking-tight', accentText)}>{title}</h3>
-      </header>
-
-      <ul className="flex flex-col gap-sm">
+      <ul className="flex flex-col gap-md">
         {items.map((item) => (
-          <li key={item.title} className="flex items-start gap-sm">
-            <span
-              aria-hidden="true"
-              className={cn('mt-1 inline-block w-1.5 h-1.5 rounded-full shrink-0', dot)}
-            />
-            <div className="flex flex-col gap-1">
-              <span className={cn('text-sm font-bold tracking-tight break-keep', accentText)}>
-                {item.title}
-              </span>
-              <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-                {item.description}
-              </span>
-            </div>
+          <li key={item.title} className="flex flex-col gap-1">
+            <span className="text-xsm sm:text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+              {item.title}
+            </span>
+            <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+              {item.description}
+            </span>
           </li>
         ))}
       </ul>
-    </article>
+    </ComparePanel>
   );
 };

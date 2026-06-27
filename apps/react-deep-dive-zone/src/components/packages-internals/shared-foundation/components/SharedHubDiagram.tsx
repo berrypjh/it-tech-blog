@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
 import { CheckCircleIcon, sharedIcon } from '../icons';
-import { accentText, neutralChrome, toneAccent } from '../localTone';
 
 type Props = { hero: SharedContent['hero']; className?: string };
 
@@ -76,7 +77,7 @@ const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => 
 );
 
 const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
-  const accent = accentText[toneAccent(pkg.tone)];
+  const tone = toneTokens[pkg.tone];
   const Icon = sharedIcon[pkg.iconName];
 
   return (
@@ -84,22 +85,17 @@ const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
       className={cn(
         'group flex w-full min-w-0 flex-1 flex-col gap-1 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
-            neutralChrome,
-            accent,
-          )}
-        >
+        <ToneIconBox tone={pkg.tone} size="sm" className="shrink-0">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', accent)}>
+        </ToneIconBox>
+        <span
+          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+        >
           {pkg.name}
         </span>
       </span>

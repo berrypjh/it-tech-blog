@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ReactPackageIconName =
   | 'atom'
   | 'box'
@@ -427,7 +425,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           api: 'useState',
           route: { from: 'ReactClient.js', to: 'ReactHooks.js' },
           description: 'dispatcher 기반 호출',
-          buttonLabel: '코드로 보기',
+          buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactHooks.js',
           tone: 'sky',
           iconName: 'database',
@@ -437,7 +435,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           api: 'createElement',
           route: { from: 'ReactClient.js', to: 'ReactJSXElement.js' },
           description: 'React Element 생성 로직',
-          buttonLabel: '코드로 보기',
+          buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
           tone: 'violet',
           iconName: 'code',
@@ -447,7 +445,7 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           api: 'startTransition',
           route: { from: 'ReactClient.js', to: 'ReactStartTransition.js' },
           description: '전환(transition) 시작 처리',
-          buttonLabel: '코드로 보기',
+          buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactStartTransition.js',
           tone: 'teal',
           iconName: 'refresh',

@@ -14,9 +14,6 @@ import { schedulerContent } from './content';
 
 type Props = { locale: Locale };
 
-const PRIORITY_SECTION_ID = 'section-priority';
-const CHECKPOINT_SECTION_ID = 'section-checkpoint';
-
 export const SchedulerPage = ({ locale }: Props) => {
   const c = schedulerContent[locale];
 
@@ -25,8 +22,8 @@ export const SchedulerPage = ({ locale }: Props) => {
       <SchedulerHero content={c.hero} />
       <NeedSection content={c.needs} />
       <CompareSection content={c.compare} />
-      <PrioritySection content={c.priority} sectionId={PRIORITY_SECTION_ID} />
-      <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
+      <PrioritySection content={c.priority} />
+      <CheckpointSection content={c.checkpoint} />
       <DoesNotSection content={c.doesNot} />
       <QueueSection content={c.queue} />
       <NextStepBanner content={c.nextStep} />

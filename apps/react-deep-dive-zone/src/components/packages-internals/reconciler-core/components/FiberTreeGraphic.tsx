@@ -17,7 +17,7 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
       className={cn(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         className,
       )}

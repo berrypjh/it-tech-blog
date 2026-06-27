@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { ApiToken, ReactPackageContent } from '../content';
 import { reactPackageIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone';
 
 type Props = {
   hero: ReactPackageContent['hero'];
@@ -104,7 +105,7 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
 type TokenCardProps = { token: ApiToken; side: 'left' | 'right' };
 
 const TokenCard = ({ token }: TokenCardProps) => {
-  const tone = localTone(token.tone);
+  const tone = toneTokens[token.tone];
   const Icon = reactPackageIcon[token.iconName];
 
   return (
@@ -113,13 +114,12 @@ const TokenCard = ({ token }: TokenCardProps) => {
         'group flex w-full flex-col gap-1 rounded-lg border p-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        tone.borderHover,
       )}
     >
       <span className="inline-flex items-center gap-1.5 min-w-0">
-        <LocalToneIconBox tone={token.tone} size="sm">
+        <ToneIconBox tone={token.tone} size="sm">
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <span
           className={cn(
             'text-[11px] font-bold font-mono tracking-tight truncate min-w-0',

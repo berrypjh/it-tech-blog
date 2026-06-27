@@ -20,12 +20,8 @@ export const WhySplitPage = ({ locale }: Props) => {
     <StartPageShell>
       <WhySplitHero content={c.hero} architecture={c.architecture} />
       <WhySplitMisconception content={c.misconception} />
-      <WhySplitArchitectureMap
-        content={c.fullMap}
-        architecture={c.architecture}
-        sectionId={c.hero.architectureSectionId}
-      />
-      <WhySplitReasons content={c.reasons} sectionId={c.hero.relationsSectionId} />
+      <WhySplitArchitectureMap content={c.fullMap} architecture={c.architecture} />
+      <WhySplitReasons content={c.reasons} />
       <WhySplitCodeFlow content={c.codeFlow} />
       <WhySplitPackageQuestions content={c.questions} />
       <NextStepBanner content={c.nextStep} />

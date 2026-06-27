@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ComparisonSideCard, ReactCreateElementContent } from '../content';
 import { ArrowLeftRightIcon, GitCompareIcon, QuoteIcon } from '../icons';
-import { localTone } from '../localTone';
 
 type Props = { content: ReactCreateElementContent['compare'] };
 
@@ -63,21 +63,19 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
 );
 
 const SideCard = ({ card }: { card: ComparisonSideCard }) => {
-  const t = localTone(card.tone);
+  const t = toneTokens[card.tone];
   return (
     <article
       className={cn(
         'group flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <span
         className={cn(
-          'inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
+          'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
-          t.text,
         )}
       >
         {card.label}

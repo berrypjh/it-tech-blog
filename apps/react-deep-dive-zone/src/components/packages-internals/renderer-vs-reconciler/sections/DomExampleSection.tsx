@@ -1,19 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 import { CheckCircleIcon, rvrIcon, StarIcon } from '../icons';
 
-type Props = { content: RvrContent['domExample']; sectionId: string };
+type Props = { content: RvrContent['domExample'] };
 
-export const DomExampleSection = ({ content, sectionId }: Props) => {
+export const DomExampleSection = ({ content }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-dom-example"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-dom-example" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="dom-example"
         eyebrow={content.eyebrow}
@@ -22,12 +22,12 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
         icon={<rvrIcon.workflow className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
         {/* reconciler card */}
         <article
           className={cn(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-            'border-[var(--term-border)] bg-[var(--term-surface)] hover:border-[var(--term-accent)]',
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
             'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
           )}
         >
@@ -75,14 +75,14 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
           aria-hidden="true"
           className="flex items-center justify-center text-[var(--term-accent)]"
         >
-          <CenterArrow />
+          <ArrowRight className="h-5 w-5 rotate-90 lg:rotate-0" />
         </div>
 
         {/* DOM renderer card */}
         <article
           className={cn(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-            'border-[var(--term-border)] bg-[var(--term-surface)] hover:border-[var(--term-accent)]',
+            'border-[var(--term-border)] bg-[var(--term-surface)]',
             'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
           )}
         >
@@ -91,13 +91,14 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
               aria-hidden="true"
               className={cn(
                 'inline-flex items-center justify-center w-11 h-11 rounded-md border',
-                'bg-[var(--term-surface)] border-[var(--term-border)] text-sky-600 dark:text-sky-300',
+                'bg-[var(--term-surface)] border-[var(--term-border)]',
+                toneTokens.sky.text,
               )}
             >
               <rvrIcon.monitor className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="flex flex-col min-w-0">
-              <h3 className="text-lg font-bold font-mono tracking-tight text-sky-600 dark:text-sky-300">
+              <h3 className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.sky.text)}>
                 {content.renderer.title}
               </h3>
               <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
@@ -114,7 +115,7 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
                 key={item}
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
-                <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5">
+                <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens.sky.text)}>
                   <CheckCircleIcon className="h-3.5 w-3.5" />
                 </span>
                 <span>{item}</span>
@@ -124,34 +125,7 @@ export const DomExampleSection = ({ content, sectionId }: Props) => {
         </article>
       </div>
 
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-sky-600 dark:text-sky-300">
-          <StarIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };
-
-const CenterArrow = () => (
-  <>
-    <svg
-      viewBox="0 0 64 24"
-      className="hidden md:block w-12 h-6"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M 0 10 H 48 V 4 L 64 12 L 48 20 V 14 H 0 Z" />
-    </svg>
-    <svg viewBox="0 0 24 64" className="md:hidden w-6 h-12" fill="currentColor" aria-hidden="true">
-      <path d="M 10 0 V 48 H 4 L 12 64 L 20 48 H 14 V 0 Z" />
-    </svg>
-  </>
-);

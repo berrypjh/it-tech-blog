@@ -1,11 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, WorkflowIcon } from '../icons';
-import { neutralBorder, toneChip, toneText } from '../localTone';
+import { BoxIcon, CheckCircleIcon, CodeIcon, NetworkIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['conceptFlow'] };
+
+const stepIconByIndex = [CodeIcon, WorkflowIcon, BoxIcon, NetworkIcon];
+
+const toFlowStep = (step: AnswerStep, idx: number): FlowStepItem => {
+  const Icon = stepIconByIndex[idx % stepIconByIndex.length];
+  return {
+    id: step.id,
+    number: step.number,
+    title: step.title,
+    body: step.body,
+    tone: step.tone,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+  };
+};
 
 export const ConceptConnectionFlow = ({ content }: Props) => (
   <section
@@ -28,25 +43,7 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
       )}
     >
       {/* 한 줄 JSX가 거치는 변환 흐름 */}
-      <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,_minmax(0,_1fr))] gap-md items-stretch">
-        {content.answerSteps.map((step, idx) => (
-          <li key={step.id} className="relative flex min-w-0">
-            <StepCard step={step} />
-            {idx < content.answerSteps.length - 1 && (
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'pointer-events-none absolute hidden lg:flex items-center justify-center',
-                  'top-1/2 -right-3 -translate-y-1/2 w-6 h-6 rounded-full z-10',
-                  'bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]',
-                )}
-              >
-                <ArrowRightIcon className="h-3.5 w-3.5" />
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
+      <FlowStepsGrid steps={content.answerSteps.map(toFlowStep)} columns={4} />
 
       {/* 결론 */}
       <div
@@ -68,34 +65,3 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
     </div>
   </section>
 );
-
-const StepCard = ({ step }: { step: AnswerStep }) => {
-  return (
-    <article
-      className={cn(
-        'flex min-w-0 flex-1 flex-col gap-2 rounded-xl border p-md bg-[var(--term-bg)]',
-        neutralBorder,
-      )}
-    >
-      <span
-        className={cn(
-          'inline-flex w-7 h-7 items-center justify-center rounded-full border font-mono text-[11px] font-bold tabular-nums',
-          toneChip(step.tone),
-        )}
-      >
-        {step.number}
-      </span>
-      <code
-        className={cn(
-          'font-mono text-xsm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
-          toneText(step.tone),
-        )}
-      >
-        {step.title}
-      </code>
-      <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep [overflow-wrap:anywhere]">
-        {step.body}
-      </p>
-    </article>
-  );
-};

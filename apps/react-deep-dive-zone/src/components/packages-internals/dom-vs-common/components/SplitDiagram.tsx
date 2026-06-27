@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
-import type { ToneKey } from '../../../shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DvcContent, HeroSideArea } from '../content';
 import { dvcIcon } from '../icons';
-import { localTone } from '../tone-house';
 
 type Props = { hero: DvcContent['hero']; className?: string };
 
@@ -37,7 +36,7 @@ export const SplitDiagram = ({ hero, className }: Props) => {
 };
 
 const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
-  const t = localTone(tone);
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(

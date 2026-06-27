@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type SchedulerIconName =
   | 'activity'
   | 'arrowRight'
@@ -29,13 +27,10 @@ export type SchedulerIconName =
 
 export type PriorityLevel = {
   id: string;
-  number: string;
   title: string;
   description: string;
   badge: string;
   iconName: SchedulerIconName;
-  /** 막대 배경/텍스트 색 변형 */
-  variant: 'navy' | 'teal' | 'mint' | 'violet';
 };
 
 export type NeedCard = {
@@ -109,7 +104,8 @@ export type SchedulerContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeLinks: { label: string; href: string }[];
+    primaryCta: string;
+    primaryHref: string;
   };
   doesNot: {
     eyebrow: string;
@@ -264,39 +260,31 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       levels: [
         {
           id: 'sync',
-          number: '1',
           title: 'Immediate / Sync 계열',
           description: '동기/즉시 작업, blocking update, flushSync 등',
           badge: '가장 높음',
           iconName: 'lightning',
-          variant: 'navy',
         },
         {
           id: 'user-blocking',
-          number: '2',
           title: 'User-blocking / 입력 반응',
           description: '사용자 입력과 직접 연결된 업데이트',
           badge: '높음',
           iconName: 'user',
-          variant: 'teal',
         },
         {
           id: 'normal',
-          number: '3',
           title: 'Normal',
           description: '일반적인 렌더링 업데이트',
           badge: '보통',
           iconName: 'monitor',
-          variant: 'mint',
         },
         {
           id: 'low',
-          number: '4',
           title: 'Low / Transition 계열',
           description: '전환/비긴급 업데이트, 뒤로 미룰 수 있는 작업',
           badge: '낮음',
           iconName: 'refresh',
-          variant: 'violet',
         },
       ],
       criteriaTitle: '우선순위 판단 기준',
@@ -336,12 +324,9 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',
       code: SCHEDULER_CODE,
-      codeLinks: [
-        {
-          label: 'unstable_scheduleCallback',
-          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
-        },
-      ],
+      primaryCta: 'Scheduler.js 읽기',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
     },
     doesNot: {
       eyebrow: '05 · 역할 경계',
@@ -491,39 +476,31 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       levels: [
         {
           id: 'sync',
-          number: '1',
           title: 'Immediate / Sync',
           description: 'Sync, blocking updates, flushSync etc.',
           badge: 'Highest',
           iconName: 'lightning',
-          variant: 'navy',
         },
         {
           id: 'user-blocking',
-          number: '2',
           title: 'User-blocking / Input',
           description: 'Updates directly tied to user input',
           badge: 'High',
           iconName: 'user',
-          variant: 'teal',
         },
         {
           id: 'normal',
-          number: '3',
           title: 'Normal',
           description: 'Ordinary rendering updates',
           badge: 'Normal',
           iconName: 'monitor',
-          variant: 'mint',
         },
         {
           id: 'low',
-          number: '4',
           title: 'Low / Transition',
           description: 'Non-urgent and deferrable updates',
           badge: 'Low',
           iconName: 'refresh',
-          variant: 'violet',
         },
       ],
       criteriaTitle: 'How priority is judged',
@@ -563,12 +540,9 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',
       code: SCHEDULER_CODE,
-      codeLinks: [
-        {
-          label: 'unstable_scheduleCallback',
-          href: 'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
-        },
-      ],
+      primaryCta: 'Read Scheduler.js',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
     },
     doesNot: {
       eyebrow: '05 · DOES / DOES NOT',

@@ -13,9 +13,6 @@ import { reactDomContent } from './content';
 
 type Props = { locale: Locale };
 
-const FLOW_SECTION_ID = 'section-flow';
-const CHECKPOINT_SECTION_ID = 'section-checkpoint';
-
 export const ReactDomPackagePage = ({ locale }: Props) => {
   const c = reactDomContent[locale];
 
@@ -24,8 +21,8 @@ export const ReactDomPackagePage = ({ locale }: Props) => {
       <ReactDomHero content={c.hero} />
       <CompareSection content={c.compare} />
       <ClientServerSection content={c.clientServer} />
-      <CreateHydrateFlowSection content={c.flow} sectionId={FLOW_SECTION_ID} />
-      <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
+      <CreateHydrateFlowSection content={c.flow} />
+      <CheckpointSection content={c.checkpoint} />
       <ConcernsSection content={c.concerns} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

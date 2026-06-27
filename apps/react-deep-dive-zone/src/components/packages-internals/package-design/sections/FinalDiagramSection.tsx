@@ -1,21 +1,16 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { FinalArchitectureDiagram } from '../components/FinalArchitectureDiagram';
 import type { PackageDesignContent } from '../content';
 import { MapIcon, StarIcon } from '../icons';
 
-type Props = { content: PackageDesignContent['finalDiagram']; sectionId: string };
+type Props = { content: PackageDesignContent['finalDiagram'] };
 
-export const FinalDiagramSection = ({ content, sectionId }: Props) => {
+export const FinalDiagramSection = ({ content }: Props) => {
   const a11y = `사용자 코드 → react → react-reconciler → renderer → DOM / Native 중앙 흐름과, 우측에 scheduler / shared 두 보조 축이 있는 종합 다이어그램.`;
 
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-final-diagram"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-final-diagram" className="space-y-md">
       <SectionHeader
         id="final-diagram"
         eyebrow={content.eyebrow}
@@ -31,18 +26,7 @@ export const FinalDiagramSection = ({ content, sectionId }: Props) => {
         a11y={a11y}
       />
 
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-[var(--term-accent)]">
-          <StarIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };

@@ -71,7 +71,7 @@ export type ReactElementSummaryBeforeFiberContent = {
     title: string;
     description: string;
     aspectLabel: string;
-    columns: { id: CompareCol; label: string; tone: ToneKey }[];
+    columns: { id: CompareCol; label: string }[];
     rows: CompareRow[];
     emphasis: string;
   };
@@ -213,10 +213,10 @@ const ko: ReactElementSummaryBeforeFiberContent = {
     description: '각각이 무엇이고 어디에 있으며 언제 만들어지는지 표 하나로 모았습니다.',
     aspectLabel: '구분',
     columns: [
-      { id: 'jsx', label: 'JSX', tone: 'sky' },
-      { id: 'element', label: 'Element', tone: 'blue' },
-      { id: 'fiber', label: 'Fiber', tone: 'violet' },
-      { id: 'dom', label: 'DOM', tone: 'teal' },
+      { id: 'jsx', label: 'JSX' },
+      { id: 'element', label: 'Element' },
+      { id: 'fiber', label: 'Fiber' },
+      { id: 'dom', label: 'DOM' },
     ],
     rows: [
       {
@@ -482,10 +482,10 @@ const en: ReactElementSummaryBeforeFiberContent = {
     description: 'What each one is, where it lives, what it means, and when it is created.',
     aspectLabel: 'Aspect',
     columns: [
-      { id: 'jsx', label: 'JSX', tone: 'sky' },
-      { id: 'element', label: 'Element', tone: 'blue' },
-      { id: 'fiber', label: 'Fiber', tone: 'violet' },
-      { id: 'dom', label: 'DOM', tone: 'teal' },
+      { id: 'jsx', label: 'JSX' },
+      { id: 'element', label: 'Element' },
+      { id: 'fiber', label: 'Fiber' },
+      { id: 'dom', label: 'DOM' },
     ],
     rows: [
       {

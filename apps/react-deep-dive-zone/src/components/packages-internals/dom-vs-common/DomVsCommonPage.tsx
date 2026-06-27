@@ -13,18 +13,15 @@ import { dvcContent } from './content';
 
 type Props = { locale: Locale };
 
-const TABLE_SECTION_ID = 'section-table';
-const FILE_COMPARE_SECTION_ID = 'section-file-compare';
-
 export const DomVsCommonPage = ({ locale }: Props) => {
   const c = dvcContent[locale];
 
   return (
     <StartPageShell>
       <DvcHero content={c.hero} />
-      <ComparisonTableSection content={c.table} sectionId={TABLE_SECTION_ID} />
+      <ComparisonTableSection content={c.table} />
       <ReadingMethodSection content={c.reading} />
-      <FileCompareSection content={c.fileCompare} sectionId={FILE_COMPARE_SECTION_ID} />
+      <FileCompareSection content={c.fileCompare} />
       <ConcernsSection content={c.concerns} />
       <PathSection content={c.path} />
       <NextStepBanner content={c.nextStep} />

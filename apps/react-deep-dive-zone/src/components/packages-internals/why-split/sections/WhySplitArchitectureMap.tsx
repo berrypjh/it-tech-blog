@@ -10,16 +10,11 @@ import { MapIcon } from '../icons';
 type Props = {
   content: WhySplitContent['fullMap'];
   architecture: WhySplitContent['architecture'];
-  sectionId: string;
 };
 
-export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Props) => {
+export const WhySplitArchitectureMap = ({ content, architecture }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-architecture"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-architecture" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="architecture"
         eyebrow={content.eyebrow}
@@ -28,9 +23,7 @@ export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Pr
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      {/* lg: 다이어그램 | 카드 2열, 좁아지면 세로로 접힘 */}
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.05fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">
-        {/* 다이어그램 */}
         <div className="min-w-0">
           <ArchitectureDiagram
             mainFlow={architecture.mainFlow}
@@ -41,7 +34,6 @@ export const WhySplitArchitectureMap = ({ content, architecture, sectionId }: Pr
           />
         </div>
 
-        {/* 설명 카드: 출발점 / 패키지별 역할 두 그룹으로 분리 */}
         <div className="space-y-lg">
           <CardGroup label={content.inputsLabel}>
             {architecture.leftCards.map((card) => (

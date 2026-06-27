@@ -1,18 +1,33 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PriorityLevel, SchedulerContent } from '../content';
 import { CheckCircleIcon, LightbulbIcon, MapIcon, schedulerIcon } from '../icons';
-import { ACCENT_A, ACCENT_B, ACCENT_C } from '../tone-house';
 
-type Props = { content: SchedulerContent['priority']; sectionId: string };
+type Props = { content: SchedulerContent['priority'] };
 
-/** 반복 항목 3색 순환: A=accent / B=sky / C=violet */
-const CYCLE = [ACCENT_A, ACCENT_B, ACCENT_C] as const;
+/** 우선순위 단계 4색 순환 */
+const CYCLE: ToneKey[] = ['amber', 'sky', 'violet', 'teal'];
 
-export const PrioritySection = ({ content, sectionId }: Props) => {
+const toFlowStep = (level: PriorityLevel, idx: number): FlowStepItem => {
+  const tone = CYCLE[idx % CYCLE.length];
+  const Icon = schedulerIcon[level.iconName];
+  return {
+    id: level.id,
+    badge: level.badge,
+    title: level.title,
+    body: level.description,
+    tone,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[tone].text)} />,
+  };
+};
+
+export const PrioritySection = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-priority" className="space-y-md scroll-mt-2xl">
+    <section aria-labelledby="heading-priority" className="space-y-lg">
       <SectionHeader
         id="priority"
         eyebrow={content.eyebrow}
@@ -21,122 +36,54 @@ export const PrioritySection = ({ content, sectionId }: Props) => {
         icon={<MapIcon className="h-5 w-5" />}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.45fr)_minmax(0,_0.85fr)] gap-md items-start">
-        <ol className="flex flex-col gap-sm">
-          {content.levels.map((level, i) => (
-            <li key={level.id}>
-              <PriorityBar level={level} accent={CYCLE[i % CYCLE.length]} />
+      <FlowStepsGrid steps={content.levels.map(toFlowStep)} columns={4} />
+
+      <article
+        className={cn(
+          'flex flex-col gap-md rounded-2xl border p-md sm:p-lg',
+          'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
+          'transition-all hover:-translate-y-0.5',
+          toneTokens.sky.border,
+        )}
+      >
+        <header className="flex items-center gap-sm">
+          <span
+            aria-hidden="true"
+            className={cn(
+              'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
+              toneTokens.sky.chip,
+            )}
+          >
+            <LightbulbIcon className="h-5 w-5" />
+          </span>
+          <h3
+            className={cn(
+              'text-md sm:text-lg font-bold tracking-tight break-keep',
+              toneTokens.sky.text,
+            )}
+          >
+            {content.criteriaTitle}
+          </h3>
+        </header>
+
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {content.criteria.map((item) => (
+            <li
+              key={item}
+              className="flex items-center gap-2 text-xsm sm:text-sm text-[var(--term-fg)] break-keep"
+            >
+              <CheckCircleIcon
+                className={cn('h-4 w-4 shrink-0', toneTokens.emerald.text)}
+                aria-hidden="true"
+              />
+              <span>{item}</span>
             </li>
           ))}
-        </ol>
+        </ul>
+      </article>
 
-        <div className="flex flex-col gap-md">
-          <article
-            className={cn(
-              'flex flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-              'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-              'border-[var(--term-border)]',
-            )}
-          >
-            <header className="flex items-center gap-sm">
-              <span
-                aria-hidden="true"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-sky-600 dark:text-sky-300"
-              >
-                <LightbulbIcon className="h-5 w-5" />
-              </span>
-              <h3 className="text-md font-bold tracking-tight text-sky-600 dark:text-sky-300 break-keep">
-                {content.criteriaTitle}
-              </h3>
-            </header>
-
-            <ul className="flex flex-col gap-2">
-              {content.criteria.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="text-sky-600 dark:text-sky-300 shrink-0 mt-0.5"
-                  >
-                    <CheckCircleIcon className="h-3.5 w-3.5" />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <div
-            className={cn(
-              'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-              'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-              'shadow-[0_2px_0_var(--term-border)]',
-            )}
-          >
-            <span aria-hidden="true" className="text-[var(--term-accent)]">
-              <StarIcon className="h-4 w-4" />
-            </span>
-            <p className="text-sm sm:text-md font-bold tracking-tight break-keep">
-              {content.banner}
-            </p>
-          </div>
-        </div>
-      </div>
+      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
-  );
-};
-
-const PriorityBar = ({ level, accent }: { level: PriorityLevel; accent: string }) => {
-  const Icon = schedulerIcon[level.iconName];
-
-  return (
-    <article
-      className={cn(
-        'group flex items-stretch gap-md rounded-xl border p-md sm:p-lg',
-        'bg-[var(--term-surface)] text-[var(--term-fg)] border-[var(--term-border)]',
-        'hover:border-[var(--term-accent)]',
-        'shadow-[0_3px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'flex items-center justify-center text-3xl sm:text-4xl font-bold font-mono tabular-nums shrink-0 w-12 leading-none',
-          accent,
-        )}
-      >
-        {level.number}
-      </span>
-
-      <span
-        aria-hidden="true"
-        className={cn(
-          'hidden sm:inline-flex items-center justify-center shrink-0 w-12 h-12 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)]',
-          accent,
-        )}
-      >
-        <Icon className="h-5 w-5" />
-      </span>
-
-      <div className="flex-1 flex flex-col gap-1 min-w-0">
-        <h3 className="text-md sm:text-lg font-bold tracking-tight break-keep">{level.title}</h3>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {level.description}
-        </p>
-      </div>
-
-      <span
-        className={cn(
-          'inline-flex items-center self-start shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-bold tracking-tight font-mono',
-          'border-[var(--term-border)] bg-[var(--term-bg)]',
-          accent,
-        )}
-      >
-        {level.badge}
-      </span>
-    </article>
   );
 };
 

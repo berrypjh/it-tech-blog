@@ -7,11 +7,11 @@ import { toneTokens } from '../../../shared/tones';
 import type { WhySplitContent } from '../content';
 import { architectureIcon, SparklesIcon } from '../icons';
 
-type Props = { content: WhySplitContent['reasons']; sectionId: string };
+type Props = { content: WhySplitContent['reasons'] };
 
-export const WhySplitReasons = ({ content, sectionId }: Props) => {
+export const WhySplitReasons = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-reasons" className="space-y-md scroll-mt-2xl">
+    <section aria-labelledby="heading-reasons" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="reasons"
         eyebrow={content.eyebrow}

@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { ReactElementObjectStructureContent, SummaryPill } from '../content';
 import { ArrowRightIcon, FileTextIcon, MonitorIcon, ScanSearchIcon, WorkflowIcon } from '../icons';
-import { toneBorderHover, ToneIconBox, toneText } from '../localTone';
 
 type Props = { content: ReactElementObjectStructureContent['overview'] };
 
@@ -56,14 +57,15 @@ const PillCard = ({ pill }: { pill: SummaryPill }) => {
         'group flex flex-1 items-start gap-md rounded-2xl border p-md',
         'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        toneBorderHover,
       )}
     >
       <ToneIconBox tone={pill.tone} className="rounded-xl shrink-0">
         <Icon className="h-5 w-5" />
       </ToneIconBox>
       <div className="flex flex-col gap-1 min-w-0">
-        <h3 className={cn('text-sm font-bold tracking-tight break-keep', toneText(pill.tone))}>
+        <h3
+          className={cn('text-sm font-bold tracking-tight break-keep', toneTokens[pill.tone].text)}
+        >
           {pill.title}
         </h3>
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{pill.body}</p>

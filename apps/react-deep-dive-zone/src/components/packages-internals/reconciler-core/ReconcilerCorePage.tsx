@@ -14,9 +14,6 @@ import { reconcilerContent } from './content';
 
 type Props = { locale: Locale };
 
-const ELEMENT_FIBER_SECTION_ID = 'section-element-fiber';
-const CHECKPOINT_SECTION_ID = 'section-checkpoint';
-
 export const ReconcilerCorePage = ({ locale }: Props) => {
   const c = reconcilerContent[locale];
 
@@ -25,8 +22,8 @@ export const ReconcilerCorePage = ({ locale }: Props) => {
       <ReconcilerHero content={c.hero} />
       <PositionSection content={c.position} />
       <ResponsibilitiesSection content={c.responsibilities} />
-      <ElementFiberSection content={c.elementFiber} sectionId={ELEMENT_FIBER_SECTION_ID} />
-      <CheckpointSection content={c.checkpoint} sectionId={CHECKPOINT_SECTION_ID} />
+      <ElementFiberSection content={c.elementFiber} />
+      <CheckpointSection content={c.checkpoint} />
       <AdvancedLearningSection content={c.advanced} />
       <KeyTakeawaySection content={c.concept} />
       <NextStepBanner content={c.nextStep} />

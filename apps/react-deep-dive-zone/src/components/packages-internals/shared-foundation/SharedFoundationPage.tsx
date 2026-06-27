@@ -13,8 +13,6 @@ import { sharedContent } from './content';
 
 type Props = { locale: Locale };
 
-const SYMBOLS_SECTION_ID = 'section-symbols';
-
 export const SharedFoundationPage = ({ locale }: Props) => {
   const c = sharedContent[locale];
 
@@ -23,7 +21,7 @@ export const SharedFoundationPage = ({ locale }: Props) => {
       <SharedHero content={c.hero} />
       <WhyShared content={c.why} />
       <FilesSection content={c.files} />
-      <SymbolsCheckpoint content={c.symbolsCheckpoint} sectionId={SYMBOLS_SECTION_ID} />
+      <SymbolsCheckpoint content={c.symbolsCheckpoint} />
       <ClientImportSection content={c.clientImport} />
       <ConnectionDiagram content={c.connection} />
       <NextStepBanner content={c.nextStep} />

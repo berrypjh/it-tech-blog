@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { FiberFlowStep, ReactElementTypeMeaningContent } from '../content';
 import {
   ArrowDownIcon,
@@ -10,7 +11,6 @@ import {
   SparklesIcon,
   WorkflowIcon,
 } from '../icons';
-import { toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementTypeMeaningContent['fiber'] };
 
@@ -82,14 +82,13 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <header className="flex items-center justify-between">
         <span
           className={cn(
-            'inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-            toneChip(step.tone),
+            'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneTokens[step.tone].chip,
           )}
         >
           <span className="font-mono tabular-nums">step {step.number}</span>
@@ -97,8 +96,8 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-2xl',
-            toneChip(step.tone),
+            'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
+            toneTokens[step.tone].chip,
           )}
         >
           <Icon className="h-5 w-5" />
@@ -107,7 +106,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
       <h3
         className={cn(
           'font-mono text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
-          toneText(step.tone),
+          toneTokens[step.tone].text,
         )}
       >
         {step.title}
@@ -120,8 +119,8 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
             <li key={chip}>
               <span
                 className={cn(
-                  'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-mono font-bold',
-                  toneChip(step.tone),
+                  'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold',
+                  toneTokens[step.tone].chip,
                 )}
               >
                 {chip}

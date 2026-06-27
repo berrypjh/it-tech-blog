@@ -3,19 +3,16 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, FileCard } from '../content';
 import { dvcIcon, ScaleIcon } from '../icons';
-import { localTone, LocalToneIconBox } from '../tone-house';
 
-type Props = { content: DvcContent['fileCompare']; sectionId: string };
+type Props = { content: DvcContent['fileCompare'] };
 
-export const FileCompareSection = ({ content, sectionId }: Props) => {
+export const FileCompareSection = ({ content }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-file-compare"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-file-compare" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="file-compare"
         eyebrow={content.eyebrow}
@@ -60,7 +57,7 @@ export const FileCompareSection = ({ content, sectionId }: Props) => {
 };
 
 const FileCardView = ({ card }: { card: FileCard }) => {
-  const tone = localTone(card.tone);
+  const t = toneTokens[card.tone];
   const Icon = dvcIcon[card.iconName];
 
   return (
@@ -68,16 +65,15 @@ const FileCardView = ({ card }: { card: FileCard }) => {
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
-        tone.borderHover,
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <LocalToneIconBox tone={card.tone} size="md">
+        <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </LocalToneIconBox>
+        </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', tone.text)}>
+          <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
             {card.fileName}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono break-all">
@@ -90,8 +86,7 @@ const FileCardView = ({ card }: { card: FileCard }) => {
         <span
           className={cn(
             'inline-flex w-fit items-center rounded-full border px-3 py-1 text-xsm font-mono font-bold',
-            'bg-[var(--term-bg)] border-[var(--term-border)]',
-            tone.text,
+            t.chip,
           )}
         >
           {card.fn}

@@ -1,19 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import type { ToneKey } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 import { rvrIcon } from '../icons';
 
 type Props = { content: RvrContent['flow'] };
 
-/** A=amber(reconciler), B=sky(renderer/DOM), C=violet(native). */
-type Accent = 'A' | 'B' | 'C';
-
-const accentText: Record<Accent, string> = {
-  A: 'text-[var(--term-accent)]',
-  B: 'text-sky-600 dark:text-sky-300',
-  C: 'text-violet-600 dark:text-violet-300',
-};
+/** reconciler는 페이지 chrome accent, renderer/native는 sky/violet 톤을 쓴다. */
+const accentText = (tone?: ToneKey) => (tone ? toneTokens[tone].text : 'text-[var(--term-accent)]');
 
 export const SharedFlowSection = ({ content }: Props) => {
   const a11y = `${content.elementLabel} → ${content.reconcilerLabel} (${content.reconcilerSubtitle}) → ${content.domRendererLabel}/${content.nativeRendererLabel} → ${content.domNodeLabel}/${content.nativeViewLabel}.`;
@@ -30,12 +26,7 @@ export const SharedFlowSection = ({ content }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.3fr)_minmax(0,_0.85fr)] gap-md items-stretch">
         {/* 좌측 보조 카드 */}
-        <HelperCard
-          helper={content.leftHelper}
-          accent="A"
-          iconName="cube"
-          className="order-2 lg:order-1"
-        />
+        <HelperCard helper={content.leftHelper} iconName="cube" className="order-2 lg:order-1" />
 
         {/* 중앙 다이어그램 */}
         <div
@@ -51,12 +42,11 @@ export const SharedFlowSection = ({ content }: Props) => {
           <p className="sr-only">{a11y}</p>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
-            <FlowNode label={content.elementLabel} accent="B" iconName="layers" />
+            <FlowNode label={content.elementLabel} tone="sky" iconName="layers" />
             <DownArrow />
             <FlowNode
               label={content.reconcilerLabel}
               subtitle={content.reconcilerSubtitle}
-              accent="A"
               iconName="cube"
               emphasized
             />
@@ -68,14 +58,14 @@ export const SharedFlowSection = ({ content }: Props) => {
               <FlowNode
                 label={content.domRendererLabel}
                 subtitle={content.domRendererSubtitle}
-                accent="B"
+                tone="sky"
                 iconName="monitor"
                 fill
               />
               <FlowNode
                 label={content.nativeRendererLabel}
                 subtitle={content.nativeRendererSubtitle}
-                accent="C"
+                tone="violet"
                 iconName="smartphone"
                 fill
               />
@@ -87,7 +77,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                 <FlowNode
                   label={content.domNodeLabel}
                   subtitle={content.domNodeSubtitle}
-                  accent="B"
+                  tone="sky"
                   iconName="code"
                   small
                   fill
@@ -98,7 +88,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                 <FlowNode
                   label={content.nativeViewLabel}
                   subtitle={content.nativeViewSubtitle}
-                  accent="C"
+                  tone="violet"
                   iconName="smartphone"
                   small
                   fill
@@ -111,7 +101,7 @@ export const SharedFlowSection = ({ content }: Props) => {
         {/* 우측 보조 카드 */}
         <HelperCard
           helper={content.rightHelper}
-          accent="B"
+          tone="sky"
           iconName="monitor"
           className="order-3"
         />
@@ -123,7 +113,7 @@ export const SharedFlowSection = ({ content }: Props) => {
 type FlowNodeProps = {
   label: string;
   subtitle?: string;
-  accent: Accent;
+  tone?: ToneKey;
   iconName: keyof typeof rvrIcon;
   emphasized?: boolean;
   small?: boolean;
@@ -131,16 +121,8 @@ type FlowNodeProps = {
   fill?: boolean;
 };
 
-const FlowNode = ({
-  label,
-  subtitle,
-  accent,
-  iconName,
-  emphasized,
-  small,
-  fill,
-}: FlowNodeProps) => {
-  const text = accentText[accent];
+const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
+  const text = accentText(tone);
   const Icon = rvrIcon[iconName];
 
   return (
@@ -229,16 +211,16 @@ const BranchArrows = () => (
 
 const HelperCard = ({
   helper,
-  accent,
+  tone,
   iconName,
   className,
 }: {
   helper: { title: string; body: string };
-  accent: Accent;
+  tone?: ToneKey;
   iconName: keyof typeof rvrIcon;
   className?: string;
 }) => {
-  const text = accentText[accent];
+  const text = accentText(tone);
   const Icon = rvrIcon[iconName];
 
   return (
@@ -246,7 +228,7 @@ const HelperCard = ({
       className={cn(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         className,
       )}

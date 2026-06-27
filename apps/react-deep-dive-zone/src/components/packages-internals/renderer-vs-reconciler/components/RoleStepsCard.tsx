@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import type { ToneKey } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { DiagramStep, RvrIconName } from '../content';
 import { rvrIcon } from '../icons';
-
-/** A=amber(reconciler), B=sky(renderer) 두 사이드의 소프트 텍스트 액센트. */
-export type SideAccent = 'A' | 'B';
-
-const accentText: Record<SideAccent, string> = {
-  A: 'text-[var(--term-accent)]',
-  B: 'text-sky-600 dark:text-sky-300',
-};
 
 type Props = {
   title: string;
@@ -17,7 +11,8 @@ type Props = {
   steps: DiagramStep[];
   footerLabel: string;
   iconName: RvrIconName;
-  accent: SideAccent;
+  /** reconciler는 페이지 chrome accent, renderer는 sky 톤을 쓴다. */
+  tone?: ToneKey;
   className?: string;
 };
 
@@ -31,10 +26,10 @@ export const RoleStepsCard = ({
   steps,
   footerLabel,
   iconName,
-  accent,
+  tone,
   className,
 }: Props) => {
-  const text = accentText[accent];
+  const text = tone ? toneTokens[tone].text : 'text-[var(--term-accent)]';
   const Icon = rvrIcon[iconName];
 
   return (
@@ -42,7 +37,6 @@ export const RoleStepsCard = ({
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
-        'hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         className,
       )}

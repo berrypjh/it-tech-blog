@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
 import { architectureIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
 
 type Props = {
   mainFlow: ArchitectureNode[];
@@ -14,10 +15,6 @@ type Props = {
   className?: string;
 };
 
-/**
- * Hero 우측 간략 시각. 분기 SVG 없이 핵심 패키지를 세로 목록으로,
- * 보조 패키지(scheduler / shared)를 점선 칩으로 보여준다. 고정폭이 없어 좁은 폭에서도 안전하다.
- */
 export const PackageOverviewCard = ({
   mainFlow,
   side,
@@ -66,7 +63,6 @@ const PackageRow = ({ node, dashed }: PackageRowProps) => {
         dashed
           ? 'border-2 border-dashed border-[var(--term-border)]'
           : 'border-[var(--term-border)]',
-        'hover:border-[var(--term-accent)]',
       )}
     >
       <ToneIconBox tone={node.tone} size="sm">
@@ -74,7 +70,10 @@ const PackageRow = ({ node, dashed }: PackageRowProps) => {
       </ToneIconBox>
       <span className="flex min-w-0 flex-col">
         <span
-          className={cn('truncate text-sm font-bold font-mono tracking-tight', toneText(node.tone))}
+          className={cn(
+            'truncate text-sm font-bold font-mono tracking-tight',
+            toneTokens[node.tone].text,
+          )}
         >
           {node.label}
         </span>

@@ -6,9 +6,13 @@ import { type ToneKey, toneTokens } from '../tones';
 
 export type FlowStepItem = {
   id: string;
-  number: string;
+  /** step 배지 번호. `badge` 를 직접 주면 생략 가능. */
+  number?: string;
+  /** step 배지 내용 직접 지정(예: 우선순위 라벨). 없으면 `step {number}`. */
+  badge?: React.ReactNode;
   title: string;
-  body: React.ReactNode;
+  /** 본문. 없으면 제목만 있는 컴팩트 카드. */
+  body?: React.ReactNode;
   tone: ToneKey;
   icon: React.ReactNode;
 };
@@ -70,7 +74,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
             t.chip,
           )}
         >
-          <span className="font-mono tabular-nums">step {step.number}</span>
+          {step.badge ?? <span className="font-mono tabular-nums">step {step.number}</span>}
         </span>
         <span
           aria-hidden="true"
@@ -90,9 +94,11 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
       >
         {step.title}
       </h3>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep [overflow-wrap:anywhere]">
-        {step.body}
-      </p>
+      {step.body != null && (
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep [overflow-wrap:anywhere]">
+          {step.body}
+        </p>
+      )}
     </article>
   );
 };

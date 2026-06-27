@@ -1,16 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { RoleCard, RvrContent } from '../content';
 import { rvrIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RvrContent['summary'] };
-
-/** reconciler=A(amber), renderer=B(sky) 소프트 텍스트 액센트. */
-const cardAccent: Record<RoleCard['id'], string> = {
-  reconciler: 'text-[var(--term-accent)]',
-  renderer: 'text-sky-600 dark:text-sky-300',
-};
 
 export const RoleSummarySection = ({ content }: Props) => {
   return (
@@ -26,7 +22,6 @@ export const RoleSummarySection = ({ content }: Props) => {
       <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
         <RoleCardView card={content.cards[0]} />
 
-        {/* 중앙 원형 ≠ 배지 */}
         <div className="flex md:flex-col items-center justify-center md:py-md" aria-hidden="true">
           <span
             className={cn(
@@ -40,7 +35,7 @@ export const RoleSummarySection = ({ content }: Props) => {
               {content.centerBadge.lead}
             </span>
             <span className="text-2xl leading-none">{content.centerBadge.symbol}</span>
-            <span className="text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-300">
+            <span className={cn('text-[10px] uppercase tracking-wider', toneTokens.sky.text)}>
               {content.centerBadge.tail}
             </span>
           </span>
@@ -53,29 +48,22 @@ export const RoleSummarySection = ({ content }: Props) => {
 };
 
 const RoleCardView = ({ card }: { card: RoleCard }) => {
-  const text = cardAccent[card.id];
+  const t = toneTokens[card.tone];
   const Icon = rvrIcon[card.iconName];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
-        'bg-[var(--term-surface)] border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-md border',
-            'bg-[var(--term-surface)] border-[var(--term-border)]',
-            text,
-          )}
-        >
+        <ToneIconBox tone={card.tone}>
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </span>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', text)}>{card.name}</h3>
+        </ToneIconBox>
+        <h3 className={cn('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
       </header>
 
       <p
@@ -97,8 +85,7 @@ const RoleCardView = ({ card }: { card: RoleCard }) => {
             <span
               className={cn(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
-                'bg-[var(--term-bg)] border-[var(--term-border)]',
-                text,
+                t.chip,
               )}
             >
               {tag}

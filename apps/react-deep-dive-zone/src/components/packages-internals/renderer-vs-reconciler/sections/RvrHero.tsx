@@ -70,7 +70,6 @@ export const RvrHero = ({ content }: Props) => {
               steps={content.calculation.steps}
               footerLabel={content.calculation.footerLabel}
               iconName="cube"
-              accent="A"
             />
 
             {/* 가운데 점선 화살표 (lg: 가로, mobile: 세로) */}
@@ -92,7 +91,7 @@ export const RvrHero = ({ content }: Props) => {
               steps={content.reflection.steps}
               footerLabel={content.reflection.footerLabel}
               iconName="monitor"
-              accent="B"
+              tone="sky"
             />
           </div>
         </div>

@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type SharedIconName =
   | 'alertCircle'
   | 'arrowRight'
@@ -89,7 +87,8 @@ export type SharedContent = {
     };
     codeCaption: string;
     code: string;
-    codeLinks: { label: string; href: string }[];
+    primaryCta: string;
+    primaryHref: string;
     callouts: { id: string; title: string; code: string }[];
   };
   clientImport: {
@@ -99,7 +98,8 @@ export type SharedContent = {
     explanation: { title: string; lines: string[] };
     codeCaption: string;
     code: string;
-    codeLinks: { label: string; href: string }[];
+    primaryCta: string;
+    primaryHref: string;
     callout: string;
   };
   connection: {
@@ -295,12 +295,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
       code: REACT_SYMBOLS_CODE,
-      codeLinks: [
-        {
-          label: 'ReactSymbols.js',
-          href: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
-        },
-      ],
+      primaryCta: 'ReactSymbols.js 읽기',
+      primaryHref: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
       callouts: [
         { id: 'fragment', title: '프래그먼트 식별 심벌', code: "Symbol.for('react.fragment')" },
         { id: 'suspense', title: '서스펜스 식별 심벌', code: "Symbol.for('react.suspense')" },
@@ -320,12 +316,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_IMPORT_CODE,
-      codeLinks: [
-        {
-          label: 'ReactClient.js',
-          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-        },
-      ],
+      primaryCta: 'ReactClient.js 읽기',
+      primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       callout: 'shared에서 가져온 심벌들을 React public API 구성 및 내부 처리에 사용',
     },
     connection: {
@@ -454,12 +446,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
       code: REACT_SYMBOLS_CODE,
-      codeLinks: [
-        {
-          label: 'ReactSymbols.js',
-          href: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
-        },
-      ],
+      primaryCta: 'Read ReactSymbols.js',
+      primaryHref: 'https://github.com/facebook/react/blob/main/packages/shared/ReactSymbols.js',
       callouts: [
         { id: 'fragment', title: 'Fragment identifier', code: "Symbol.for('react.fragment')" },
         { id: 'suspense', title: 'Suspense identifier', code: "Symbol.for('react.suspense')" },
@@ -478,12 +466,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
       codeCaption: 'packages/react/src/ReactClient.js',
       code: REACT_CLIENT_IMPORT_CODE,
-      codeLinks: [
-        {
-          label: 'ReactClient.js',
-          href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-        },
-      ],
+      primaryCta: 'Read ReactClient.js',
+      primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       callout: 'The symbols imported from shared drive React’s public API and internal processing.',
     },
     connection: {

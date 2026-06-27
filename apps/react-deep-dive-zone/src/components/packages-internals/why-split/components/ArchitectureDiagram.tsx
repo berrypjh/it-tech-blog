@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
 import { architectureIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
 
 type Props = {
   mainFlow: ArchitectureNode[];
@@ -13,13 +14,6 @@ type Props = {
   className?: string;
 };
 
-/**
- * React 패키지 아키텍처 다이어그램.
- * 위에서 아래로 user-code → react → reconciler → renderer 흐름을 보여주고
- * renderer 아래에 출력 대상 DOM / Native를 둔다.
- * scheduler와 shared는 보조 축으로 표시된다.
- * 컨테이너 폭(@xl)에 따라 보조 축이 우측 열 또는 하단 행으로 배치된다.
- */
 export const ArchitectureDiagram = ({
   mainFlow,
   side,
@@ -39,7 +33,6 @@ export const ArchitectureDiagram = ({
         className,
       )}
     >
-      {/* 글로우 */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(56,189,248,0.10),transparent_55%),radial-gradient(circle_at_82%_88%,rgba(251,191,36,0.10),transparent_55%)]"
@@ -47,7 +40,6 @@ export const ArchitectureDiagram = ({
 
       <p className="sr-only">{a11yFlow}</p>
 
-      {/* 라벨 */}
       <div className="relative flex items-center gap-sm">
         <span
           aria-hidden="true"
@@ -63,7 +55,6 @@ export const ArchitectureDiagram = ({
       </div>
 
       <div className="relative mt-md grid grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto] gap-md @xl:gap-lg items-stretch">
-        {/* 중앙 main flow */}
         <div className="flex flex-col items-center gap-sm" aria-hidden="true">
           <FlowBox node={userCode} />
           <Arrow />
@@ -74,7 +65,6 @@ export const ArchitectureDiagram = ({
           <FlowBox node={renderer} emphasized />
           <Arrow />
 
-          {/* renderer 출력 대상: DOM / Native — 화살표 아래 가운데로 모은 한 쌍 */}
           <ul className="flex w-full flex-wrap justify-center gap-sm">
             <li className="flex w-36 max-w-full min-w-0">
               <FlowBox node={dom} />
@@ -85,7 +75,6 @@ export const ArchitectureDiagram = ({
           </ul>
         </div>
 
-        {/* 우측 side axis */}
         <aside
           aria-hidden="true"
           className="flex @xl:flex-col flex-row items-stretch gap-sm @xl:gap-md @xl:w-[160px] justify-center @xl:justify-start"
@@ -121,7 +110,6 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized ? 'border-[var(--term-accent)]' : 'border-[var(--term-border)]',
-        'hover:border-[var(--term-accent)]',
         'px-md py-2.5 w-full max-w-[12rem]',
       )}
     >
@@ -132,7 +120,7 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
         <span
           className={cn(
             'min-w-0 truncate text-sm font-bold font-mono tracking-tight',
-            toneText(node.tone),
+            toneTokens[node.tone].text,
           )}
         >
           {node.label}
@@ -156,7 +144,7 @@ const SideNodeBox = ({ node }: SideNodeBoxProps) => {
     <div
       className={cn(
         'group inline-flex flex-col items-start gap-1 rounded-lg border-2 border-dashed',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'px-md py-md flex-1 @xl:flex-none',
       )}
@@ -165,7 +153,9 @@ const SideNodeBox = ({ node }: SideNodeBoxProps) => {
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight', toneText(node.tone))}>
+        <span
+          className={cn('text-sm font-bold font-mono tracking-tight', toneTokens[node.tone].text)}
+        >
           {node.label}
         </span>
       </span>

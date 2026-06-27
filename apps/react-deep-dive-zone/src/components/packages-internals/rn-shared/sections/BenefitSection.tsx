@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { BenefitCard, RnContent } from '../content';
 import { CheckCircleIcon, rnIcon, StarIcon } from '../icons';
-import { ToneIconBox, toneText } from '../localTone';
 
-type Props = { content: RnContent['benefit']; sectionId: string };
+type Props = { content: RnContent['benefit'] };
 
-export const BenefitSection = ({ content, sectionId }: Props) => {
+export const BenefitSection = ({ content }: Props) => {
   return (
-    <section id={sectionId} aria-labelledby="heading-benefit" className="space-y-md scroll-mt-2xl">
+    <section aria-labelledby="heading-benefit" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="benefit"
         eyebrow={content.eyebrow}
@@ -18,7 +19,6 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.4fr)] gap-md items-stretch">
-        {/* 좌측 인용 카드 */}
         <article
           className={cn(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg',
@@ -27,20 +27,22 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
           )}
         >
           <span
-            className="text-4xl font-bold text-sky-600 dark:text-sky-300 leading-none"
             aria-hidden="true"
+            className={cn(
+              'inline-flex items-center justify-center self-start w-9 h-9 rounded-md border',
+              'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
+            )}
           >
-            “
+            <StarIcon className="h-5 w-5" />
           </span>
-          <blockquote className="text-md sm:text-lg font-bold leading-snug break-keep">
+          <p className="text-md sm:text-lg font-bold leading-snug break-keep text-[var(--term-fg)]">
             {content.quote}
-          </blockquote>
+          </p>
           <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
             {content.quoteBody}
           </p>
         </article>
 
-        {/* 우측 다이어그램 + 3 카드 */}
         <div
           className={cn(
             '@container relative flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg overflow-hidden',
@@ -52,7 +54,6 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(245,158,11,0.12),transparent_55%)]"
           />
 
-          {/* center top */}
           <div className="relative flex justify-center">
             <article
               className={cn(
@@ -71,12 +72,10 @@ export const BenefitSection = ({ content, sectionId }: Props) => {
             </article>
           </div>
 
-          {/* branch arrows */}
           <span aria-hidden="true" className="relative hidden @lg:block">
             <BranchSvg />
           </span>
 
-          {/* 3 cards */}
           <ul className="relative grid grid-cols-1 @lg:grid-cols-3 gap-lg">
             {content.cards.map((card) => (
               <li key={card.id} className="flex min-w-0">
@@ -97,7 +96,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
       className={cn(
         'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'border-[var(--term-border)] hover:border-[var(--term-accent)]',
+        'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
@@ -108,7 +107,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
         <h3
           className={cn(
             'text-sm font-bold font-mono tracking-tight break-keep',
-            toneText(card.tone),
+            toneTokens[card.tone].text,
           )}
         >
           {card.name}
@@ -120,7 +119,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneText(card.tone))}>
+            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens[card.tone].text)}>
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>
             <span>{item}</span>

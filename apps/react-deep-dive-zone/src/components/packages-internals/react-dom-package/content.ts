@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ReactDomIconName =
   | 'atom'
   | 'box'
@@ -121,7 +119,8 @@ export type ReactDomContent = {
     items: CheckpointItem[];
     codeCaption: string;
     code: string;
-    codeLinks: { label: string; href: string }[];
+    primaryCta: string;
+    primaryHref: string;
   };
   concerns: {
     eyebrow: string;
@@ -315,16 +314,9 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
       code: REACT_DOM_ROOT_CODE,
-      codeLinks: [
-        {
-          label: 'createRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-        },
-        {
-          label: 'hydrateRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-        },
-      ],
+      primaryCta: 'ReactDOMRoot.js 읽기',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
     },
     concerns: {
       eyebrow: '05 · 환경 관심사',
@@ -539,16 +531,9 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
       code: REACT_DOM_ROOT_CODE,
-      codeLinks: [
-        {
-          label: 'createRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-        },
-        {
-          label: 'hydrateRoot',
-          href: 'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
-        },
-      ],
+      primaryCta: 'Read ReactDOMRoot.js',
+      primaryHref:
+        'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
     },
     concerns: {
       eyebrow: '05 · ENVIRONMENT CONCERNS',

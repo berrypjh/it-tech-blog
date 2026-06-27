@@ -27,17 +27,8 @@ const accentText: Record<Accent, string> = {
   C: 'text-violet-600 dark:text-violet-300',
 };
 
-const accentDot: Record<Accent, string> = {
-  A: 'bg-[var(--term-accent)]',
-  B: 'bg-sky-400 dark:bg-sky-500',
-  C: 'bg-violet-400 dark:bg-violet-500',
-};
-
 /** tone → 소프트 텍스트 액센트 클래스 */
 export const toneText = (tone: ToneKey) => accentText[toneToAccent[tone]];
-
-/** tone → 작은 점/ribbon 솔리드 클래스(작은 장식 전용) */
-export const toneDot = (tone: ToneKey) => accentDot[toneToAccent[tone]];
 
 /** 중립 크롬 칩(텍스트만 액센트) */
 export const toneChip = (tone: ToneKey) =>

@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import { reconcilerIcon } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = {
   title: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const JsxExampleCard = ({ title, code, className }: Props) => {
-  const tone = houseTone('sky');
+  const tone = toneTokens.sky;
   const Icon = reconcilerIcon.code;
 
   return (
@@ -18,8 +18,7 @@ export const JsxExampleCard = ({ title, code, className }: Props) => {
       className={cn(
         'group flex flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        tone.border,
-        tone.borderHover,
+        'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         className,
       )}

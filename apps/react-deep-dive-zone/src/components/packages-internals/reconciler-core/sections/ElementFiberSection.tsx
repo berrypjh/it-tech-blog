@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { FiberTreeGraphic } from '../components/FiberTreeGraphic';
 import { FieldCard } from '../components/FieldCard';
@@ -7,15 +6,11 @@ import { JsxExampleCard } from '../components/JsxExampleCard';
 import type { ReconcilerContent } from '../content';
 import { MapIcon, StarIcon } from '../icons';
 
-type Props = { content: ReconcilerContent['elementFiber']; sectionId: string };
+type Props = { content: ReconcilerContent['elementFiber'] };
 
-export const ElementFiberSection = ({ content, sectionId }: Props) => {
+export const ElementFiberSection = ({ content }: Props) => {
   return (
-    <section
-      id={sectionId}
-      aria-labelledby="heading-element-fiber"
-      className="space-y-md scroll-mt-2xl"
-    >
+    <section aria-labelledby="heading-element-fiber" className="space-y-md scroll-mt-2xl">
       <SectionHeader
         id="element-fiber"
         eyebrow={content.eyebrow}
@@ -44,18 +39,7 @@ export const ElementFiberSection = ({ content, sectionId }: Props) => {
         <FiberTreeGraphic title={content.treeTitle} description={content.treeDescription} />
       </div>
 
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-[var(--term-accent)]">
-          <StarIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };

@@ -1,10 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, SchedulerContent } from '../content';
-import { HouseIconBox } from '../HouseIconBox';
 import { schedulerIcon, StarIcon } from '../icons';
-import { toneText } from '../tone-house';
 
 type Props = { content: SchedulerContent['compare'] };
 
@@ -50,22 +50,21 @@ export const CompareSection = ({ content }: Props) => {
 
 const CompareCardView = ({ card }: { card: CompareCard }) => {
   const Icon = schedulerIcon[card.iconName];
-  const accent = toneText(card.tone);
+  const t = toneTokens[card.tone];
 
   return (
     <article
       className={cn(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
-        'hover:border-[var(--term-accent)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-sm">
-        <HouseIconBox tone={card.tone} size="md">
+        <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </HouseIconBox>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', accent)}>{card.name}</h3>
+        </ToneIconBox>
+        <h3 className={cn('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
       </header>
 
       <p
@@ -87,8 +86,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
             <span
               className={cn(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
-                'bg-[var(--term-bg)] border-[var(--term-border)]',
-                accent,
+                t.chip,
               )}
             >
               {tag}

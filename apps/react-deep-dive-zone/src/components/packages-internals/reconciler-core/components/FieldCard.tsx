@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { ToneKey } from '../../../shared/tones';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CodeField, ReconcilerIconName } from '../content';
 import { reconcilerIcon } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = {
   title: string;
@@ -29,7 +29,7 @@ export const FieldCard = ({
   emphasized = false,
   className,
 }: Props) => {
-  const t = houseTone(tone);
+  const t = toneTokens[tone];
   const Icon = reconcilerIcon[iconName];
 
   return (
@@ -39,18 +39,14 @@ export const FieldCard = ({
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized ? 'bg-[var(--term-surface)]' : 'bg-[var(--term-bg)]',
         'border-[var(--term-border)]',
-        t.borderHover,
         'transition-all hover:-translate-y-0.5',
         className,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn('inline-flex h-9 w-9 items-center justify-center rounded-md', t.chip)}
-        >
+        <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
-        </span>
+        </ToneIconBox>
         <div className="flex flex-col min-w-0">
           <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', t.text)}>
             {title}

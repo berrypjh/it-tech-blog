@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { ElementCallout, ReactElementKeySeparatedContent } from '../content';
 import { NetworkIcon, SparklesIcon } from '../icons';
-import { toneChip } from '../localTone';
 
 type Props = { content: ReactElementKeySeparatedContent['position'] };
 
@@ -70,7 +70,7 @@ const CalloutCard = ({ callout }: { callout: ElementCallout }) => {
       <span
         className={cn(
           'inline-flex items-center justify-center rounded-md border px-2 py-1 text-xsm font-mono font-bold tracking-tight shrink-0',
-          toneChip(callout.tone),
+          toneTokens[callout.tone].chip,
         )}
       >
         {callout.label}

@@ -1,7 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { CompareVs } from '../../../shared/compare';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CheckPoint, JsxTransformFlowContent } from '../content';
 import { CheckCircleIcon, GitCompareIcon, SparklesIcon } from '../icons';
 
@@ -27,7 +30,12 @@ export const TransformComparison = ({ content }: Props) => (
       )}
     >
       <div className="flex items-center gap-sm min-w-0">
-        <span className="inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-300">
+        <span
+          className={cn(
+            'inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+            toneTokens.sky.text,
+          )}
+        >
           {content.sampleLabel}
         </span>
         <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.sampleTitle}</h3>
@@ -37,8 +45,8 @@ export const TransformComparison = ({ content }: Props) => (
       </div>
     </div>
 
-    {/* two transform cards + VS badge */}
-    <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-md">
+    {/* two transform cards + VS divider */}
+    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
       <TransformCard
         title={content.oldTitle}
         version={content.oldVersion}
@@ -46,6 +54,7 @@ export const TransformComparison = ({ content }: Props) => (
         checks={content.oldChecks}
         variant="old"
       />
+      <CompareVs />
       <TransformCard
         title={content.modernTitle}
         version={content.modernVersion}
@@ -53,18 +62,6 @@ export const TransformComparison = ({ content }: Props) => (
         checks={content.modernChecks}
         variant="modern"
       />
-      {/* center VS badge */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:inline-flex',
-          'items-center justify-center w-12 h-12 rounded-full',
-          'bg-[var(--term-bg)] border-2 border-[var(--term-border)] shadow-md',
-          'text-xsm font-extrabold text-[var(--term-fg)] tracking-tight',
-        )}
-      >
-        VS
-      </span>
     </div>
 
     {/* same-result card */}
@@ -91,20 +88,7 @@ export const TransformComparison = ({ content }: Props) => (
       </div>
     </div>
 
-    {/* emphasis banner */}
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl px-md py-md',
-        'bg-[var(--term-surface)] border border-[var(--term-border)]',
-      )}
-    >
-      <span aria-hidden="true" className="text-sky-600 dark:text-sky-300 shrink-0">
-        <SparklesIcon className="h-5 w-5" />
-      </span>
-      <p className="text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-        {content.banner}
-      </p>
-    </div>
+    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
   </section>
 );
 
@@ -119,9 +103,9 @@ const variantClass: Record<CardVariant, { chip: string; head: string; check: str
     check: 'text-[var(--term-accent)]',
   },
   modern: {
-    chip: cn(chrome, 'text-violet-600 dark:text-violet-300'),
-    head: 'text-violet-600 dark:text-violet-300',
-    check: 'text-violet-600 dark:text-violet-300',
+    chip: cn(chrome, toneTokens.violet.text),
+    head: toneTokens.violet.text,
+    check: toneTokens.violet.text,
   },
 };
 

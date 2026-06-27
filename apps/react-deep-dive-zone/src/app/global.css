@@ -209,3 +209,15 @@ html[data-motion='reduce'] .term-cursor {
   background-color: var(--term-accent);
   color: var(--term-bg);
 }
+
+/* 모션 감소 선호 시 애니메이션/전환/부드러운 스크롤 비활성 (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

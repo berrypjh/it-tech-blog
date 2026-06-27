@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
 import {
   ArrowRightIcon,
@@ -17,16 +18,14 @@ import {
 
 type Props = { content: SchedulerContent['queue'] };
 
-/** 한 유닛(작업 1개 또는 결과 1개)을 처리하는 간격 */
 const STEP_MS = 850;
 
 export const QueueSection = ({ content }: Props) => {
-  const arrival = content.tasks; // 도착 순서 그대로
+  const arrival = content.tasks;
   const processOrder = [...content.tasks].sort((a, b) => a.priority - b.priority);
   const taskCount = arrival.length;
   const results = content.result.items;
 
-  // -1: 실행 전, 0..taskCount-1: 처리 중인 작업, taskCount: 완료(결과 표시)
   const [cursor, setCursor] = useState(-1);
   const running = cursor >= 0 && cursor < taskCount;
   const completed = cursor >= taskCount;
@@ -37,7 +36,6 @@ export const QueueSection = ({ content }: Props) => {
     return () => clearTimeout(id);
   }, [cursor, running]);
 
-  // 작업은 우선순위 순서(priority-1 step)로 처리된다
   const taskState = (priority: number): 'idle' | 'active' | 'done' => {
     const step = priority - 1;
     return cursor === step ? 'active' : cursor > step ? 'done' : 'idle';
@@ -71,13 +69,12 @@ export const QueueSection = ({ content }: Props) => {
             onClick={() => setCursor(0)}
             disabled={running}
             className={cn(
-              'inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xsm font-bold transition-all',
-              'border border-transparent bg-slate-900 text-slate-50',
-              'dark:border-slate-600 dark:bg-slate-800',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]',
+              'inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-xsm font-bold transition-all',
+              toneTokens.violet.chip,
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               running
                 ? 'opacity-60 cursor-not-allowed'
-                : 'hover:bg-slate-800 dark:hover:bg-slate-700 hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
+                : 'hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
             )}
           >
             {completed ? (
@@ -89,17 +86,20 @@ export const QueueSection = ({ content }: Props) => {
           </button>
           <span
             aria-live="polite"
-            className="text-xsm font-medium text-[var(--term-dim)] break-keep"
+            className="text-xsm font-medium text-[var(--term-muted)] break-keep"
           >
             {status}
           </span>
         </div>
 
-        {/* 대기열 → scheduler → 처리 순서 */}
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center">
-          {/* 대기열 (도착 순서) */}
           <div className="space-y-2">
-            <p className="px-1 text-xsm font-bold tracking-tight text-sky-700 dark:text-sky-300 break-keep">
+            <p
+              className={cn(
+                'px-1 text-xsm font-bold tracking-tight break-keep',
+                toneTokens.sky.text,
+              )}
+            >
               {content.waitingTitle}
             </p>
             <ol className="flex flex-col gap-2">
@@ -120,9 +120,7 @@ export const QueueSection = ({ content }: Props) => {
                       aria-hidden="true"
                       className={cn(
                         'shrink-0 transition-colors duration-300',
-                        st === 'done'
-                          ? 'text-[var(--term-accent)]'
-                          : 'text-sky-600 dark:text-sky-300',
+                        st === 'done' ? 'text-[var(--term-accent)]' : toneTokens.sky.text,
                       )}
                     >
                       {st === 'done' ? (
@@ -153,15 +151,22 @@ export const QueueSection = ({ content }: Props) => {
           {/* scheduler 커넥터 */}
           <div
             aria-hidden="true"
-            className="flex items-center justify-center gap-1.5 py-1 text-violet-600 dark:text-violet-300 lg:flex-col"
+            className={cn(
+              'flex items-center justify-center gap-1.5 py-1 lg:flex-col',
+              toneTokens.violet.text,
+            )}
           >
             <SparklesIcon className="h-5 w-5" />
             <ArrowRightIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
           </div>
 
-          {/* 처리 순서 (scheduler 판단) */}
           <div className="space-y-2">
-            <p className="px-1 text-xsm font-bold tracking-tight text-violet-700 dark:text-violet-300 break-keep">
+            <p
+              className={cn(
+                'px-1 text-xsm font-bold tracking-tight break-keep',
+                toneTokens.violet.text,
+              )}
+            >
               {content.orderTitle}
             </p>
             <ol className="flex flex-col gap-2">
@@ -188,7 +193,8 @@ export const QueueSection = ({ content }: Props) => {
                         'inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-mono text-xsm font-bold border-2 transition-all duration-300',
                         revealed
                           ? cn(
-                              'border-[var(--term-border)] bg-[var(--term-bg)] text-violet-600 dark:text-violet-300',
+                              'border-[var(--term-border)] bg-[var(--term-bg)]',
+                              toneTokens.violet.text,
                               active &&
                                 'scale-110 border-[var(--term-accent)] text-[var(--term-accent)]',
                             )
@@ -202,7 +208,7 @@ export const QueueSection = ({ content }: Props) => {
                         <span className="block text-xsm font-medium leading-snug text-[var(--term-fg)] break-keep">
                           {task.label}
                         </span>
-                        <span className="block text-[11px] leading-snug text-[var(--term-dim)] break-keep">
+                        <span className="block text-[11px] leading-snug text-[var(--term-muted)] break-keep">
                           {task.reason}
                         </span>
                       </span>
@@ -218,7 +224,6 @@ export const QueueSection = ({ content }: Props) => {
           </div>
         </div>
 
-        {/* 결과 */}
         <div className="border-t border-[var(--term-border)] pt-md space-y-2">
           <header className="flex items-center gap-2">
             <CheckCircleIcon className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />

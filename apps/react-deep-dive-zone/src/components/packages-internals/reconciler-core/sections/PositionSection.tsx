@@ -1,15 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { PositionCard, ReconcilerContent } from '../content';
 import { LightbulbIcon, MapIcon, reconcilerIcon } from '../icons';
-import { houseTone } from '../tone-house';
 
 type Props = { content: ReconcilerContent['position'] };
 
 export const PositionSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-position" className="space-y-md">
+    <section aria-labelledby="heading-position" className="space-y-lg">
       <SectionHeader
         id="position"
         eyebrow={content.eyebrow}
@@ -26,19 +28,7 @@ export const PositionSection = ({ content }: Props) => {
         <PositionCardView card={content.cards[2]} />
       </div>
 
-      {/* 강조 배너 */}
-      <div
-        className={cn(
-          'flex items-center justify-center gap-sm rounded-xl border px-md py-md text-center',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
-        <span aria-hidden="true" className="text-[var(--term-accent)]">
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm sm:text-md font-bold tracking-tight break-keep">{content.banner}</p>
-      </div>
+      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };
@@ -50,7 +40,7 @@ const PositionCardView = ({
   card: PositionCard;
   emphasized?: boolean;
 }) => {
-  const tone = houseTone(card.tone);
+  const tone = toneTokens[card.tone];
   const Icon = reconcilerIcon[card.iconName];
 
   return (
@@ -59,17 +49,14 @@ const PositionCardView = ({
         'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
-        emphasized ? 'bg-[var(--term-surface)]' : `bg-[var(--term-bg)] ${tone.borderHover}`,
+        emphasized ? 'bg-[var(--term-surface)]' : 'bg-[var(--term-bg)]',
         emphasized && 'lg:scale-[1.03] lg:shadow-[0_3px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn('inline-flex h-11 w-11 items-center justify-center rounded-md', tone.chip)}
-        >
+        <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
-        </span>
+        </ToneIconBox>
         <div className="flex flex-col min-w-0">
           <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', tone.text)}>
             {card.name}

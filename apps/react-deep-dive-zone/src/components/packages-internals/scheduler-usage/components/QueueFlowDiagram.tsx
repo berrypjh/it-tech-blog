@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
-import { HouseIconBox } from '../HouseIconBox';
 import { schedulerIcon } from '../icons';
 
 type Props = { hero: SchedulerContent['hero']; className?: string };
@@ -91,7 +92,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
                   className={cn(
                     'inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-full mt-0.5',
                     'border-2 border-[var(--term-border)] bg-[var(--term-surface)] font-mono text-[11px] font-bold',
-                    'text-violet-600 dark:text-violet-300',
+                    toneTokens.violet.text,
                   )}
                 >
                   {index + 1}
@@ -109,7 +110,8 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       <p
         className={cn(
           'relative mt-md rounded-lg border px-md py-2.5 text-center text-xsm font-bold tracking-tight',
-          'border-[var(--term-border)] bg-[var(--term-surface)] text-sky-700 dark:text-sky-300',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
+          toneTokens.sky.text,
         )}
       >
         {hero.emphasis}
@@ -128,10 +130,10 @@ const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
         'shadow-[0_3px_0_var(--term-border)] px-md py-md',
       )}
     >
-      <HouseIconBox tone="violet" size="md">
+      <ToneIconBox tone="violet" size="md">
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </HouseIconBox>
-      <span className="text-lg font-bold font-mono tracking-tight text-violet-600 dark:text-violet-300">
+      </ToneIconBox>
+      <span className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.violet.text)}>
         {hero.schedulerTitle}
       </span>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -153,7 +155,7 @@ const DashedSide = ({ direction }: { direction: 'left' | 'right' }) => {
   const end = direction === 'left' ? 100 : 0;
   return (
     <svg
-      className="h-full w-full text-violet-300/80 dark:text-violet-700/80"
+      className="h-full w-full text-[var(--term-border)]"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
     >

@@ -2,9 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { FinalFlowStep, ReactElementSummaryBeforeFiberContent } from '../content';
 import { ArrowDownIcon, MapIcon, StarIcon } from '../icons';
-import { neutralBorder, neutralBorderHover, toneChip, toneText } from '../localTone';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['finalFlow'] };
 
@@ -37,31 +37,35 @@ export const FinalFlowDiagram = ({ content }: Props) => (
 );
 
 const StepCard = ({ step }: { step: FinalFlowStep }) => {
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'group flex flex-col gap-md rounded-2xl border p-md',
+        'group flex flex-col gap-md rounded-2xl border p-md transition-all hover:-translate-y-0.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         step.highlighted
           ? cn(
               'ring-2 ring-[var(--term-accent)]/60 ring-offset-2 ring-offset-[var(--term-bg)]',
-              neutralBorder,
+              t.border,
             )
-          : cn(neutralBorder, neutralBorderHover),
+          : t.border,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
         <span
           className={cn(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
-            toneChip(step.tone),
+            t.chip,
           )}
         >
           {step.number}
         </span>
         {step.highlighted && (
           <span
-            className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300"
+            className={cn(
+              'inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider',
+              t.text,
+            )}
             aria-hidden="true"
           >
             <StarIcon className="h-3 w-3" />
@@ -69,9 +73,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
           </span>
         )}
       </header>
-      <h3
-        className={cn('font-mono text-sm font-bold tracking-tight break-keep', toneText(step.tone))}
-      >
+      <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {step.title}
       </h3>
       {step.code && <CodePreviewPanel code={step.code} language="JS" />}
