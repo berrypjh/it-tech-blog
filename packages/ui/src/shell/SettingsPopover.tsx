@@ -36,6 +36,9 @@ const strings = {
     fontSizeMd: '보통',
     fontSizeLg: '크게',
     font: '폰트',
+    fontSystem: '시스템',
+    fontWeb: '웹폰트',
+    fontMyeongjo: '나눔명조',
     motion: '모션',
     motionDefault: '기본',
     motionReduce: '줄이기',
@@ -53,6 +56,9 @@ const strings = {
     fontSizeMd: 'Medium',
     fontSizeLg: 'Large',
     font: 'Font',
+    fontSystem: 'System',
+    fontWeb: 'Web fonts',
+    fontMyeongjo: 'Nanum Myeongjo',
     motion: 'Motion',
     motionDefault: 'Default',
     motionReduce: 'Reduce',
@@ -87,13 +93,13 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
     resolvedTheme === 'light' &&
     locale === 'ko' &&
     fontSize === 'md' &&
-    fontFamily === 'sans' &&
+    fontFamily === 'pretendard' &&
     motion === 'default';
 
   const resetAll = () => {
     setTheme('light');
     setFontSize('md');
-    setFontFamily('sans');
+    setFontFamily('pretendard');
     setMotion('default');
     handleLocaleChange('ko');
   };
@@ -112,12 +118,6 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
     { value: 'sm', label: 'A', ariaLabel: t.fontSizeSm, className: 'text-xxsm' },
     { value: 'md', label: 'A', ariaLabel: t.fontSizeMd, className: 'text-xsm' },
     { value: 'lg', label: 'A', ariaLabel: t.fontSizeLg, className: 'text-sm' },
-  ];
-
-  const fontFamilyOptions: SegmentOption<FontFamily>[] = [
-    { value: 'sans', label: 'Sans' },
-    { value: 'serif', label: 'Serif' },
-    { value: 'mono', label: 'Mono' },
   ];
 
   const motionOptions: SegmentOption<'default' | 'reduce'>[] = [
@@ -173,12 +173,23 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
 
           <div>
             <p className={sectionLabelClass}>{t.font}</p>
-            <SegmentControl
+            <select
               aria-label={t.font}
               value={fontFamily}
-              onChange={setFontFamily}
-              options={fontFamilyOptions}
-            />
+              onChange={(e) => setFontFamily(e.target.value as FontFamily)}
+              className="w-full rounded-xs border border-stroke-default bg-transparent text-text-default text-xxsm px-2 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary"
+            >
+              <optgroup label={t.fontWeb}>
+                <option value="pretendard">Pretendard</option>
+                <option value="d2coding">D2Coding</option>
+                <option value="myeongjo">{t.fontMyeongjo}</option>
+              </optgroup>
+              <optgroup label={t.fontSystem}>
+                <option value="sans">Sans</option>
+                <option value="serif">Serif</option>
+                <option value="mono">Mono</option>
+              </optgroup>
+            </select>
           </div>
 
           <div>
