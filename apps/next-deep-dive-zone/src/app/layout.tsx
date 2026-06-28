@@ -41,7 +41,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       className={theme}
       data-font-size={fontSize}
       data-motion={motion === 'reduce' ? 'reduce' : undefined}
-      data-font={fontFamily !== 'sans' ? fontFamily : undefined}
+      data-font={fontFamily}
     >
       <head>
         <ThemeDetectionScript />
