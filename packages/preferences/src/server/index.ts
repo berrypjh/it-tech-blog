@@ -21,4 +21,4 @@ export const getServerMotion = async () =>
   ((await cookies()).get('motion')?.value ?? 'default') as Motion;
 
 export const getServerFontFamily = async () =>
-  ((await cookies()).get('fontFamily')?.value ?? 'sans') as FontFamily;
+  ((await cookies()).get('fontFamily')?.value ?? 'pretendard') as FontFamily;

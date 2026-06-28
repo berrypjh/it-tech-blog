@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useState } from 'react';
 
-export type FontFamily = 'sans' | 'serif' | 'mono';
+export type FontFamily = 'sans' | 'serif' | 'mono' | 'pretendard' | 'd2coding' | 'myeongjo';
 
 interface FontFamilyContextValue {
   fontFamily: FontFamily;
@@ -19,7 +19,7 @@ export const useFontFamily = () => {
 
 export const FontFamilyProvider = ({
   children,
-  defaultFontFamily = 'sans',
+  defaultFontFamily = 'pretendard',
 }: {
   children: React.ReactNode;
   defaultFontFamily?: FontFamily;
