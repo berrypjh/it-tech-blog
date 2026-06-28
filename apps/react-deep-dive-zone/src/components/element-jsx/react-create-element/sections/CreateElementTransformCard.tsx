@@ -20,6 +20,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
   return (
     <section id="transform" aria-labelledby="heading-transform" className="space-y-md scroll-mt-xl">
       <SectionBadgeHeader
+        descriptionFullWidth
         id="transform"
         number={content.badge}
         eyebrow={content.eyebrow}

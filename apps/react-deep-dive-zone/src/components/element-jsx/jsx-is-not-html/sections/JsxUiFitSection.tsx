@@ -18,6 +18,7 @@ const iconMap = {
 export const JsxUiFitSection = ({ content }: Props) => (
   <section aria-labelledby="heading-uifit" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="uifit"
       number={content.badge}
       eyebrow={content.eyebrow}

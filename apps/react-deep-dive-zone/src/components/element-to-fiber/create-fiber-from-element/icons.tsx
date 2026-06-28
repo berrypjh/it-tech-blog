@@ -1,5 +1,4 @@
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   Boxes as BoxesIcon,
   Box as BoxIcon,
@@ -9,11 +8,9 @@ export {
   FileCode as FileCodeIcon,
   Folder as FolderIcon,
   GitBranch as GitBranchIcon,
-  HelpCircle as HelpCircleIcon,
   Inspect as InspectIcon,
   KeyRound as KeyRoundIcon,
   Layers as LayersIcon,
-  Lightbulb as LightbulbIcon,
   ListTree as ListTreeIcon,
   Map as MapIcon,
   Network as NetworkIcon,

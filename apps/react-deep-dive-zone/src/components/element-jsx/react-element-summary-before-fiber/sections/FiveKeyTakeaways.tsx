@@ -19,6 +19,7 @@ const iconMap = {
 export const FiveKeyTakeaways = ({ content }: Props) => (
   <section aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="summary"
       number={content.badge}
       eyebrow={content.eyebrow}

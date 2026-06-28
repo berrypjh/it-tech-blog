@@ -9,6 +9,7 @@ type Props = { content: ReactElementRefReact19Content['checkpoint'] };
 export const RefSourceCheckpoint = ({ content }: Props) => (
   <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="checkpoint"
       number={content.badge}
       eyebrow={content.eyebrow}

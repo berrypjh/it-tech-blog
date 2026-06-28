@@ -18,6 +18,7 @@ const iconMap = {
 export const WithoutFiberProblems = ({ content }: Props) => (
   <section id="problems" aria-labelledby="heading-problems" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="problems"
       number={content.badge}
       eyebrow={content.eyebrow}

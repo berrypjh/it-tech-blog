@@ -1,17 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CodePreviewPanel } from '../../../shared/code';
+import { CompareBridge } from '../../../shared/compare';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { FlowArrow } from '../components/FlowArrow';
-import { FunctionCard } from '../components/FunctionCard';
-import { ObjectPreviewCard } from '../components/ObjectPreviewCard';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent } from '../content';
-import { GitBranchIcon } from '../icons';
+import { BoxIcon, GitBranchIcon, LayersIcon, WandIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['io'] };
 
 export const InputOutputStructure = ({ content }: Props) => (
   <section id="io" aria-labelledby="heading-io" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="io"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -20,35 +22,74 @@ export const InputOutputStructure = ({ content }: Props) => (
       icon={<GitBranchIcon className="h-5 w-5" />}
     />
 
+    <div
+      className={cn(
+        'grid grid-cols-1 items-stretch gap-md',
+        'lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1fr)]',
+      )}
+    >
+      <IoPanel
+        tone="sky"
+        label={content.inputTitle}
+        badge="input"
+        icon={<BoxIcon className="h-[18px] w-[18px]" />}
+        code={content.inputCode}
+        showWindowDots
+      />
+
+      <CompareBridge
+        icon={<WandIcon className="h-5 w-5" />}
+        headline={content.functionTitle}
+        sub={content.functionSubtitle}
+      />
+
+      <IoPanel
+        tone="teal"
+        label={content.outputTitle}
+        badge="output"
+        icon={<LayersIcon className="h-[18px] w-[18px]" />}
+        code={content.outputCode}
+      />
+    </div>
+  </section>
+);
+
+type IoPanelProps = {
+  tone: ToneKey;
+  label: string;
+  badge: string;
+  icon: React.ReactNode;
+  code: string;
+  showWindowDots?: boolean;
+};
+
+const IoPanel = ({ tone, label, badge, icon, code, showWindowDots = false }: IoPanelProps) => {
+  const t = toneTokens[tone];
+  return (
     <article
       className={cn(
-        'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
+        'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <div
-        className={cn(
-          'grid items-stretch min-w-0',
-          'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)]',
-          'gap-sm lg:gap-md',
-        )}
-      >
-        <ObjectPreviewCard
-          variant="element"
-          label={content.inputTitle}
-          code={content.inputCode}
-          badgeText="input"
-        />
-        <FlowArrow className="self-center" />
-        <FunctionCard label={content.functionTitle} subtitle={content.functionSubtitle} size="sm" />
-        <FlowArrow className="self-center" />
-        <ObjectPreviewCard
-          variant="fiber"
-          label={content.outputTitle}
-          code={content.outputCode}
-          badgeText="output"
-        />
-      </div>
+      <header className="flex items-center gap-sm">
+        <ToneIconBox tone={tone} size="sm">
+          {icon}
+        </ToneIconBox>
+        <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+          {label}
+        </span>
+        <span
+          className={cn(
+            'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
+            t.chip,
+          )}
+        >
+          {badge}
+        </span>
+      </header>
+
+      <CodePreviewPanel code={code} language="JS" showWindowDots={showWindowDots} />
     </article>
-  </section>
-);
+  );
+};

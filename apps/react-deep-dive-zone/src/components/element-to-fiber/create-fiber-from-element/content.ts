@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ExtractionChip = {
   badge: string;
   label: string;
@@ -74,11 +72,9 @@ export type CreateFiberFromElementContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
+    primaryCta: string;
+    primaryHref: string;
     code: string;
   };
   flow: {
@@ -187,11 +183,10 @@ const ko: CreateFiberFromElementContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createFiberFromElement',
-    questionLabel: '학습 질문',
     question: '이 함수가 직접 Fiber 종류를 고르는가, 아니면 다음 함수에 위임하는가?',
-    hintCta: '힌트 보기',
-    hint: '함수 본문에서 분기 없이 createFiberFromTypeAndProps로 그대로 넘기는 패턴을 찾아보세요. 종류 결정은 그 다음 함수가 합니다.',
-    codeTitle: 'ReactFiber.js',
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     code: `export function createFiberFromElement(element, mode, lanes) {
   const type = element.type;
   const key = element.key;
@@ -375,12 +370,11 @@ const en: CreateFiberFromElementContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createFiberFromElement',
-    questionLabel: 'Learning question',
     question:
       'Does this function decide the Fiber kind itself, or does it delegate to the next function?',
-    hintCta: 'Show hint',
-    hint: 'Look for the moment where it hands everything to createFiberFromTypeAndProps without branching. The kind decision happens there.',
-    codeTitle: 'ReactFiber.js',
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     code: `export function createFiberFromElement(element, mode, lanes) {
   const type = element.type;
   const key = element.key;

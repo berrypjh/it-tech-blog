@@ -19,6 +19,7 @@ const iconMap = {
 export const ElementShapeOverview = ({ content }: Props) => (
   <section id="overview" aria-labelledby="heading-overview" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="overview"
       number={content.badge}
       eyebrow={content.eyebrow}

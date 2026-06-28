@@ -11,6 +11,7 @@ type Props = { content: ReactElementKeySeparatedContent['list'] };
 export const ListKeyScene = ({ content }: Props) => (
   <section aria-labelledby="heading-list" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="list"
       number={content.badge}
       eyebrow={content.eyebrow}

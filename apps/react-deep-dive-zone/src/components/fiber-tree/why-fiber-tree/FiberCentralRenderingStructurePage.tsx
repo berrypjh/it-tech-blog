@@ -4,7 +4,6 @@ import { FinalLaunchBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
 import { FiberChapterCompleteHero } from './sections/FiberChapterCompleteHero';
-import { FiberClosingMessage } from './sections/FiberClosingMessage';
 import { FiberNextChapterPreview } from './sections/FiberNextChapterPreview';
 import { FiberRenderingFlowConnection } from './sections/FiberRenderingFlowConnection';
 import { FiberStructureFinalSummary } from './sections/FiberStructureFinalSummary';
@@ -21,7 +20,6 @@ export const FiberCentralRenderingStructurePage = ({ locale }: Props) => {
       <FiberStructureFinalSummary content={c.summary} />
       <FiberRenderingFlowConnection content={c.flow} />
       <FiberNextChapterPreview content={c.nextPreview} />
-      <FiberClosingMessage content={c.closing} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

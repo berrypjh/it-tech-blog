@@ -18,6 +18,7 @@ const iconMap = {
 export const FiberInfoGroups = ({ content }: Props) => (
   <section id="groups" aria-labelledby="heading-groups" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="groups"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -69,7 +70,7 @@ const CardView = ({ card }: { card: InfoGroupCard }) => {
               className={cn(
                 'inline-flex items-center rounded-md border px-2 py-1',
                 'font-mono text-[11px] font-bold',
-                'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
+                'border-[var(--term-border)] bg-[var(--term-bg)]',
                 'text-[var(--term-fg)]',
               )}
             >

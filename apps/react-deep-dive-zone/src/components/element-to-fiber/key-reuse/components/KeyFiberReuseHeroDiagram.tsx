@@ -118,7 +118,6 @@ const ResultBlock = ({ title, items }: { title: string; items: string[] }) => {
       className={cn(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone="sky" size="md">

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent, ModernHostCard } from '../content';
-import { BoxIcon, PackageIcon, SparklesIcon, TargetIcon, WaypointsIcon } from '../icons';
+import { BoxIcon, LightbulbIcon, PackageIcon, TargetIcon, WaypointsIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['modern'] };
 
@@ -15,30 +16,13 @@ const iconMap = {
 
 export const ModernHostFamily = ({ content }: Props) => (
   <section id="modern" aria-labelledby="heading-modern" className="space-y-md scroll-mt-xl">
-    <div className="flex flex-col gap-sm">
-      <SectionBadgeHeader
-        id="modern"
-        number={content.badge}
-        eyebrow={content.eyebrow}
-        title={content.title}
-        icon={<WaypointsIcon className="h-5 w-5" />}
-      />
-      <div className="flex items-center gap-sm flex-wrap pl-1">
-        <span
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5',
-            'text-[10px] font-bold uppercase tracking-wider font-mono',
-            toneTokens.violet.chip,
-          )}
-        >
-          <SparklesIcon className="h-3 w-3" aria-hidden="true" />
-          {content.pill}
-        </span>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep max-w-[72ch]">
-          {content.description}
-        </p>
-      </div>
-    </div>
+    <SectionBadgeHeader
+      id="modern"
+      number={content.badge}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      icon={<WaypointsIcon className="h-5 w-5" />}
+    />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
       {content.cards.map((card) => (
@@ -47,6 +31,8 @@ export const ModernHostFamily = ({ content }: Props) => (
         </li>
       ))}
     </ul>
+
+    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.description}</SectionNote>
 
     <p className="text-[11px] text-[var(--term-muted)] italic break-keep text-right">
       {content.footnote}

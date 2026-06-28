@@ -1,6 +1,5 @@
 export {
   ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
   Atom as AtomIcon,
   Boxes as BoxesIcon,
   Box as BoxIcon,

@@ -26,7 +26,6 @@ export {
   Settings2 as Settings2Icon,
   ShieldCheck as ShieldCheckIcon,
   Sparkles as SparklesIcon,
-  Tag as TagIcon,
   Target as TargetIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';

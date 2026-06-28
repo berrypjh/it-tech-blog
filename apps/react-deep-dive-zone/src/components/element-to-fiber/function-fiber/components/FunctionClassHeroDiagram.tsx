@@ -76,9 +76,9 @@ const StartNode = ({ title, subtitle }: { title: string; subtitle: string }) => 
     <ToneIconBox tone="sky" size="sm">
       <SquareFunctionIcon className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <code className="font-mono text-base font-bold tracking-tight text-sky-600 dark:text-sky-300">
+    <code className={cn('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
       {title}
-      <span className="text-sky-700/70 dark:text-sky-300/70"> {subtitle}</span>
+      <span className="text-[var(--term-muted)]"> {subtitle}</span>
     </code>
   </div>
 );
@@ -117,7 +117,6 @@ const BranchCard = ({ tone, icon, branchLabel, title, line1, line2 }: BranchCard
         'group flex w-full min-w-0 flex-col gap-1.5 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <span className="flex min-w-0 items-center gap-sm">

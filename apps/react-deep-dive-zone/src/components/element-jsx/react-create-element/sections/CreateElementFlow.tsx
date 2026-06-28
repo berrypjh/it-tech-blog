@@ -24,6 +24,7 @@ const toFlowStep = (step: FlowStep): FlowStepItem => {
 export const CreateElementFlow = ({ content }: Props) => (
   <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
       number={content.badge}
       eyebrow={content.eyebrow}

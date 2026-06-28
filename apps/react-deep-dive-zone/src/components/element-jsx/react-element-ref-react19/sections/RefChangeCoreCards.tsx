@@ -16,6 +16,7 @@ const iconMap = {
 export const RefChangeCoreCards = ({ content }: Props) => (
   <section aria-labelledby="heading-core" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="core"
       number={content.badge}
       eyebrow={content.eyebrow}

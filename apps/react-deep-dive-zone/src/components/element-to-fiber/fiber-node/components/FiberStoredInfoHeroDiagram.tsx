@@ -79,7 +79,6 @@ const ObjectCard = ({
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">

@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { KeyFiberReuseHero } from './sections/KeyFiberReuseHero';
 import { KeyStableComparison } from './sections/KeyStableComparison';
 import { KeyTrackingPrinciple } from './sections/KeyTrackingPrinciple';
-import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { StateResetExample } from './sections/StateResetExample';
 import { VisualSimulation } from './sections/VisualSimulation';
@@ -25,7 +24,6 @@ export const KeyFiberReusePage = ({ locale }: Props) => {
       <StateResetExample content={c.stateExample} />
       <SourceCodeCheckpoint content={c.checkpoint} />
       <VisualSimulation content={c.simulation} />
-      <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

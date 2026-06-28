@@ -17,6 +17,7 @@ const iconMap = {
 export const DebugExperienceBenefits = ({ content }: Props) => (
   <section id="benefits" aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="benefits"
       number={content.badge}
       eyebrow={content.eyebrow}

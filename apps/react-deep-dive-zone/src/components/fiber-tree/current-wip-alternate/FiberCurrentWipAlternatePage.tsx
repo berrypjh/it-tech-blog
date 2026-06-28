@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { AlternateCodeCheckpoint } from './sections/AlternateCodeCheckpoint';
 import { AlternateDiagram } from './sections/AlternateDiagram';
 import { AlternateHero } from './sections/AlternateHero';
-import { AlternateKeyChecklist } from './sections/AlternateKeyChecklist';
 import { AlternateMiniQuiz } from './sections/AlternateMiniQuiz';
 import { CurrentWipComparison } from './sections/CurrentWipComparison';
 import { RenderingScenarioFlow } from './sections/RenderingScenarioFlow';
@@ -27,7 +26,6 @@ export const FiberCurrentWipAlternatePage = ({ locale }: Props) => {
       <AlternateCodeCheckpoint content={c.checkpoint} />
       <RenderingScenarioFlow content={c.scenario} />
       <AlternateMiniQuiz content={c.quiz} />
-      <AlternateKeyChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

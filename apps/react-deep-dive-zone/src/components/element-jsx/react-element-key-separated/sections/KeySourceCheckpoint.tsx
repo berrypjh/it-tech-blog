@@ -9,6 +9,7 @@ type Props = { content: ReactElementKeySeparatedContent['checkpoint'] };
 export const KeySourceCheckpoint = ({ content }: Props) => (
   <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="checkpoint"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -18,6 +18,7 @@ const iconMap = {
 export const WhyFieldsNeeded = ({ content }: Props) => (
   <section id="why" aria-labelledby="heading-why" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="why"
       number={content.badge}
       eyebrow={content.eyebrow}

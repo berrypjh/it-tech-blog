@@ -64,13 +64,6 @@ export type FiberWhyNeededContent = {
     description: string;
     cards: ProblemCard[];
   };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    cardTitle: string;
-    items: string[];
-  };
   preview: {
     badge: string;
     eyebrow: string;
@@ -247,22 +240,6 @@ const ko: FiberWhyNeededContent = {
         iconName: 'pause',
         accent: 'amber',
       },
-    ],
-  },
-  checklist: {
-    badge: '05',
-    eyebrow: '스스로 점검',
-    title: '최종 체크리스트',
-    cardTitle: '나는 설명할 수 있는가?',
-    items: [
-      'Element와 Fiber의 차이',
-      'createFiberFromElement가 하는 일',
-      'createFiberFromTypeAndProps의 분기 기준',
-      'Host / Function / Class Fiber의 차이',
-      'Fragment와 Mode Fiber',
-      'key가 재사용 판단과 연결되는 이유',
-      'alternate가 등장하는 이유',
-      'Fiber가 더 많은 필드를 갖는 이유',
     ],
   },
   preview: {
@@ -457,22 +434,6 @@ const en: FiberWhyNeededContent = {
         iconName: 'pause',
         accent: 'amber',
       },
-    ],
-  },
-  checklist: {
-    badge: '05',
-    eyebrow: 'SELF-CHECK',
-    title: 'Final checklist',
-    cardTitle: 'Can I explain these?',
-    items: [
-      'The difference between Element and Fiber',
-      'What createFiberFromElement does',
-      'How createFiberFromTypeAndProps branches',
-      'The difference between Host / Function / Class Fiber',
-      'Fragment and Mode Fiber',
-      'Why key feeds into reuse decisions',
-      'Why alternate appears',
-      'Why a Fiber has more fields',
     ],
   },
   preview: {

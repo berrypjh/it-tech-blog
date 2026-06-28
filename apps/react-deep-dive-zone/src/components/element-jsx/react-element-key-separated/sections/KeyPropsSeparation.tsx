@@ -15,6 +15,7 @@ const iconMap = {
 export const KeyPropsSeparation = ({ content }: Props) => (
   <section aria-labelledby="heading-separation" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="separation"
       number={content.badge}
       eyebrow={content.eyebrow}

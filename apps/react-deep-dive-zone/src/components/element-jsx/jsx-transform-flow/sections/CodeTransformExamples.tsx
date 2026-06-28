@@ -21,6 +21,7 @@ export const CodeTransformExamples = ({ content }: Props) => {
   return (
     <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
       <SectionBadgeHeader
+        descriptionFullWidth
         id="examples"
         number={content.badge}
         eyebrow={content.eyebrow}

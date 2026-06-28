@@ -13,6 +13,7 @@ type Props = { content: JsxTransformFlowContent['comparison'] };
 export const TransformComparison = ({ content }: Props) => (
   <section aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="comparison"
       number={content.badge}
       eyebrow={content.eyebrow}

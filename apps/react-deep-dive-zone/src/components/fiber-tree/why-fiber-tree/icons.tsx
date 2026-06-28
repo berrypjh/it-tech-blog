@@ -3,7 +3,6 @@ export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   ArrowUp as ArrowUpIcon,
-  Award as AwardIcon,
   Boxes as BoxesIcon,
   Compass as CompassIcon,
   Database as DatabaseIcon,

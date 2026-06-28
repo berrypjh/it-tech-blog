@@ -28,6 +28,7 @@ const iconMap = {
 export const OtherSpecialTypes = ({ content }: Props) => (
   <section id="others" aria-labelledby="heading-others" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="others"
       number={content.badge}
       eyebrow={content.eyebrow}

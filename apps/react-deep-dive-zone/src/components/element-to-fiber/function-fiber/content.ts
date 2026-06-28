@@ -42,11 +42,6 @@ export type ReasonCard = {
   accent: ToneKey;
 };
 
-export type ChecklistItem = {
-  id: string;
-  text: string;
-};
-
 export type FunctionClassComponentFiberContent = {
   hero: {
     badge: string;
@@ -88,20 +83,10 @@ export type FunctionClassComponentFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    codeLines: {
-      line: string;
-      emphasis?: 'class' | 'function' | 'string';
-    }[];
-    annotations: {
-      id: string;
-      label: string;
-      tone: 'purple' | 'green' | 'blue';
-    }[];
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   workTags: {
     badge: string;
@@ -116,12 +101,6 @@ export type FunctionClassComponentFiberContent = {
     title: string;
     description: string;
     cards: ReasonCard[];
-  };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
   };
   nextStep: {
     eyebrow: string;
@@ -228,49 +207,30 @@ const ko: FunctionClassComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 함수',
     spot: 'shouldConstruct, createFiberFromTypeAndProps',
-    questionLabel: '학습 질문',
     question: '함수 type이 어떤 Fiber tag로 갈지 React는 어떻게 판단할까?',
-    hintCta: '힌트 보기',
-    hint: 'shouldConstruct(type)이 true면 ClassComponent, false면 FunctionComponent로 fiberTag가 정해집니다. 판단 기준은 prototype.isReactComponent입니다.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'function shouldConstruct(Component) {', emphasis: 'class' },
-      { line: '  const prototype = Component.prototype;', emphasis: 'class' },
-      {
-        line: '  return !!(prototype && prototype.isReactComponent);',
-        emphasis: 'class',
-      },
-      { line: '}' },
-      { line: '' },
-      {
-        line: 'export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes) {',
-      },
-      { line: '  let fiberTag;' },
-      { line: '' },
-      { line: "  if (typeof type === 'function') {" },
-      { line: '    if (shouldConstruct(type)) {', emphasis: 'class' },
-      {
-        line: '      fiberTag = ClassComponent; // 클래스 컴포넌트',
-        emphasis: 'class',
-      },
-      { line: '    } else {', emphasis: 'function' },
-      {
-        line: '      fiberTag = FunctionComponent; // 함수 컴포넌트',
-        emphasis: 'function',
-      },
-      { line: '    }' },
-      { line: "  } else if (typeof type === 'string') {", emphasis: 'string' },
-      { line: '    fiberTag = HostComponent; // DOM 요소', emphasis: 'string' },
-      { line: '  } else {' },
-      { line: '    // Fragment, StrictMode 등' },
-      { line: '  }' },
-      { line: '}' },
-    ],
-    annotations: [
-      { id: 'class', label: '클래스 판단 로직', tone: 'purple' },
-      { id: 'function', label: '함수 컴포넌트', tone: 'green' },
-      { id: 'string', label: '문자열 → Host', tone: 'blue' },
-    ],
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `function shouldConstruct(Component) {
+  const prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes) {
+  let fiberTag;
+
+  if (typeof type === 'function') {
+    if (shouldConstruct(type)) {
+      fiberTag = ClassComponent; // 클래스 컴포넌트
+    } else {
+      fiberTag = FunctionComponent; // 함수 컴포넌트
+    }
+  } else if (typeof type === 'string') {
+    fiberTag = HostComponent; // DOM 요소
+  } else {
+    // Fragment, StrictMode 등
+  }
+}`,
   },
   workTags: {
     badge: '04',
@@ -333,17 +293,6 @@ const ko: FunctionClassComponentFiberContent = {
         iconName: 'zap',
         accent: 'violet',
       },
-    ],
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: '한 줄 요약',
-    title: '빠른 체크리스트',
-    items: [
-      { id: 'c1', text: '함수 type이어도 클래스일 수 있다' },
-      { id: 'c2', text: 'shouldConstruct는 isReactComponent를 본다' },
-      { id: 'c3', text: 'Class → Work Tag 1 / Function → Work Tag 0' },
-      { id: 'c4', text: '서로 다른 상태/업데이트 로직이 필요하다' },
     ],
   },
 };
@@ -444,52 +393,30 @@ const en: FunctionClassComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Functions',
     spot: 'shouldConstruct, createFiberFromTypeAndProps',
-    questionLabel: 'Learning question',
     question: 'How does React decide which Fiber tag a function type ends up with?',
-    hintCta: 'Show hint',
-    hint: 'If shouldConstruct(type) is true, fiberTag becomes ClassComponent; otherwise FunctionComponent. The decision rests on prototype.isReactComponent.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'function shouldConstruct(Component) {', emphasis: 'class' },
-      { line: '  const prototype = Component.prototype;', emphasis: 'class' },
-      {
-        line: '  return !!(prototype && prototype.isReactComponent);',
-        emphasis: 'class',
-      },
-      { line: '}' },
-      { line: '' },
-      {
-        line: 'export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes) {',
-      },
-      { line: '  let fiberTag;' },
-      { line: '' },
-      { line: "  if (typeof type === 'function') {" },
-      { line: '    if (shouldConstruct(type)) {', emphasis: 'class' },
-      {
-        line: '      fiberTag = ClassComponent; // class component',
-        emphasis: 'class',
-      },
-      { line: '    } else {', emphasis: 'function' },
-      {
-        line: '      fiberTag = FunctionComponent; // function component',
-        emphasis: 'function',
-      },
-      { line: '    }' },
-      { line: "  } else if (typeof type === 'string') {", emphasis: 'string' },
-      {
-        line: '    fiberTag = HostComponent; // DOM element',
-        emphasis: 'string',
-      },
-      { line: '  } else {' },
-      { line: '    // Fragment, StrictMode, …' },
-      { line: '  }' },
-      { line: '}' },
-    ],
-    annotations: [
-      { id: 'class', label: 'class decision', tone: 'purple' },
-      { id: 'function', label: 'function component', tone: 'green' },
-      { id: 'string', label: 'string → Host', tone: 'blue' },
-    ],
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `function shouldConstruct(Component) {
+  const prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes) {
+  let fiberTag;
+
+  if (typeof type === 'function') {
+    if (shouldConstruct(type)) {
+      fiberTag = ClassComponent; // class component
+    } else {
+      fiberTag = FunctionComponent; // function component
+    }
+  } else if (typeof type === 'string') {
+    fiberTag = HostComponent; // DOM element
+  } else {
+    // Fragment, StrictMode, …
+  }
+}`,
   },
   workTags: {
     badge: '04',
@@ -551,17 +478,6 @@ const en: FunctionClassComponentFiberContent = {
         iconName: 'zap',
         accent: 'violet',
       },
-    ],
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: 'ONE-LINE RECAP',
-    title: 'Quick checklist',
-    items: [
-      { id: 'c1', text: 'A function type can still be a class' },
-      { id: 'c2', text: 'shouldConstruct checks isReactComponent' },
-      { id: 'c3', text: 'Class → Work Tag 1 / Function → Work Tag 0' },
-      { id: 'c4', text: 'They need different state / update logic' },
     ],
   },
 };

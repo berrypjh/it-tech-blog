@@ -10,6 +10,7 @@ type Props = { content: ReactElementObjectStructureContent['isValid'] };
 export const IsValidElementTable = ({ content }: Props) => (
   <section id="is-valid" aria-labelledby="heading-is-valid" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="is-valid"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -9,6 +9,7 @@ type Props = { content: JsxRuntimeFunctionsContent['comparison'] };
 export const RuntimeRoleComparisonTable = ({ content }: Props) => (
   <section aria-labelledby="heading-roles" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="roles"
       number={content.badge}
       eyebrow={content.eyebrow}

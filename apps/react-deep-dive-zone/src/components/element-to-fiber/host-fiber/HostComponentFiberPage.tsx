@@ -8,7 +8,6 @@ import { HostComponentConcept } from './sections/HostComponentConcept';
 import { HostComponentHero } from './sections/HostComponentHero';
 import { HostVsDomComparison } from './sections/HostVsDomComparison';
 import { ModernHostFamily } from './sections/ModernHostFamily';
-import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { hostComponentFiberContent } from './content';
 
@@ -25,7 +24,6 @@ export const HostComponentFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <HostVsDomComparison content={c.vsDom} />
       <ModernHostFamily content={c.modern} />
-      <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

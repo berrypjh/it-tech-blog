@@ -23,6 +23,7 @@ const iconMap = {
 export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
   <section aria-labelledby="heading-relation" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="relation"
       number={content.badge}
       eyebrow={content.eyebrow}

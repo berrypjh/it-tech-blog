@@ -11,6 +11,7 @@ type Props = { content: ReactElementTypeMeaningContent['compare'] };
 export const TypeComparisonTable = ({ content }: Props) => (
   <section aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="compare"
       number={content.badge}
       eyebrow={content.eyebrow}

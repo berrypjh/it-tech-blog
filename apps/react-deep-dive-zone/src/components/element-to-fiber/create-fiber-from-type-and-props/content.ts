@@ -33,8 +33,8 @@ export type ComparisonRow = {
   condition: string;
   fiber: string;
   note: string;
-  /** 행 강조 색 — string=green, function=blue, symbol=purple */
-  accent: 'green' | 'blue' | 'purple';
+  /** 행 강조 톤 — string=emerald, function=sky, symbol=violet */
+  accent: 'emerald' | 'sky' | 'violet';
 };
 
 export type SpecialCard = {
@@ -71,13 +71,10 @@ export type CreateFiberFromTypeAndPropsContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
+    primaryCta: string;
+    primaryHref: string;
     code: string;
-    annotations: { id: string; label: string; tone: 'blue' | 'green' | 'purple' }[];
   };
   jsxCards: {
     badge: string;
@@ -105,7 +102,6 @@ export type CreateFiberFromTypeAndPropsContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    pill: string;
     description: string;
     cards: SpecialCard[];
     bottomNote: string;
@@ -220,11 +216,10 @@ const ko: CreateFiberFromTypeAndPropsContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createFiberFromTypeAndProps',
-    questionLabel: '학습 질문',
     question: 'Fiber 종류는 어떤 조건문을 기준으로 갈라질까?',
-    hintCta: '힌트 보기',
-    hint: '먼저 typeof로 함수 / 문자열을 가르고, 그 외에는 switch (type)으로 React 내부 심벌을 분기합니다.',
-    codeTitle: 'ReactFiber.js',
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     code: `export function createFiberFromTypeAndProps(
   type,
   key,
@@ -253,11 +248,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
 
   // 최종적으로 fiber 생성 후 반환
 }`,
-    annotations: [
-      { id: 'fn', label: '함수 분기', tone: 'blue' },
-      { id: 'str', label: '문자열 분기', tone: 'green' },
-      { id: 'sym', label: '심벌 분기', tone: 'purple' },
-    ],
   },
   jsxCards: {
     badge: '03',
@@ -319,7 +309,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'string'",
         fiber: 'HostComponent',
         note: 'DOM 노드를 표현하는 Fiber',
-        accent: 'green',
+        accent: 'emerald',
       },
       {
         id: 'fn',
@@ -330,7 +320,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'function'",
         fiber: 'FunctionComponent',
         note: '함수 컴포넌트',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'class',
@@ -341,7 +331,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'function'",
         fiber: 'ClassComponent',
         note: '클래스 컴포넌트',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'fragment',
@@ -352,7 +342,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         condition: 'switch (type)',
         fiber: 'Fragment',
         note: 'Fragment 전용 Fiber',
-        accent: 'purple',
+        accent: 'violet',
       },
       {
         id: 'strict',
@@ -363,7 +353,7 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         condition: 'switch (type)',
         fiber: 'Mode',
         note: 'StrictMode 전용 Fiber',
-        accent: 'purple',
+        accent: 'violet',
       },
     ],
   },
@@ -371,7 +361,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
     badge: '05',
     eyebrow: '확장 주제',
     title: '특수 타입도 전용 Fiber 흐름을 가집니다',
-    pill: '고급',
     description:
       'switch (type) 안에는 더 많은 React 내부 심벌이 있으며, 각각 전용 Fiber로 처리됩니다.',
     cards: [
@@ -452,11 +441,10 @@ const en: CreateFiberFromTypeAndPropsContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createFiberFromTypeAndProps',
-    questionLabel: 'Learning question',
     question: 'Which conditions decide the Fiber kind?',
-    hintCta: 'Show hint',
-    hint: 'typeof first splits function vs string; the rest go through switch (type) for React-internal symbols.',
-    codeTitle: 'ReactFiber.js',
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     code: `export function createFiberFromTypeAndProps(
   type,
   key,
@@ -485,11 +473,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
 
   // finally build the fiber and return it
 }`,
-    annotations: [
-      { id: 'fn', label: 'function branch', tone: 'blue' },
-      { id: 'str', label: 'string branch', tone: 'green' },
-      { id: 'sym', label: 'symbol branch', tone: 'purple' },
-    ],
   },
   jsxCards: {
     badge: '03',
@@ -551,7 +534,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'string'",
         fiber: 'HostComponent',
         note: 'Fiber that represents a DOM node',
-        accent: 'green',
+        accent: 'emerald',
       },
       {
         id: 'fn',
@@ -562,7 +545,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'function'",
         fiber: 'FunctionComponent',
         note: 'Function component',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'class',
@@ -573,7 +556,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         condition: "typeof type === 'function'",
         fiber: 'ClassComponent',
         note: 'Class component',
-        accent: 'blue',
+        accent: 'sky',
       },
       {
         id: 'fragment',
@@ -584,7 +567,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         condition: 'switch (type)',
         fiber: 'Fragment',
         note: 'Dedicated Fragment fiber',
-        accent: 'purple',
+        accent: 'violet',
       },
       {
         id: 'strict',
@@ -595,7 +578,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
         condition: 'switch (type)',
         fiber: 'Mode',
         note: 'StrictMode-only fiber',
-        accent: 'purple',
+        accent: 'violet',
       },
     ],
   },
@@ -603,7 +586,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
     badge: '05',
     eyebrow: 'ADVANCED',
     title: 'Special types have their own Fiber flow',
-    pill: 'advanced',
     description:
       'switch (type) holds more React-internal symbols — each one becomes a dedicated Fiber.',
     cards: [

@@ -11,6 +11,7 @@ type Props = { content: ReactElementSummaryBeforeFiberContent['finalFlow'] };
 export const FinalFlowDiagram = ({ content }: Props) => (
   <section id="final-flow" aria-labelledby="heading-final-flow" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="final-flow"
       number={content.badge}
       eyebrow={content.eyebrow}

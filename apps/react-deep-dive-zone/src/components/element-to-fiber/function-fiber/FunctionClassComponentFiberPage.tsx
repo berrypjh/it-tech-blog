@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/shell';
 
 import { FunctionClassExampleComparison } from './sections/FunctionClassExampleComparison';
 import { FunctionClassHero } from './sections/FunctionClassHero';
-import { QuickChecklist } from './sections/QuickChecklist';
 import { ShouldConstructExplanation } from './sections/ShouldConstructExplanation';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { WhyFiberTagsDiffer } from './sections/WhyFiberTagsDiffer';
@@ -25,7 +24,6 @@ export const FunctionClassComponentFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <WorkTagCards content={c.workTags} />
       <WhyFiberTagsDiffer content={c.reasons} />
-      <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

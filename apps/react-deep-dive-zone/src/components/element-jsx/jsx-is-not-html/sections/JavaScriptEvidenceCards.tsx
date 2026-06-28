@@ -15,6 +15,7 @@ export const JavaScriptEvidenceCards = ({ content }: Props) => (
     className="@container space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="evidence"
       number={content.badge}
       eyebrow={content.eyebrow}

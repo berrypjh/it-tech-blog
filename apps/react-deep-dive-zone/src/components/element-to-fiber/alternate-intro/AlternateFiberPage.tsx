@@ -7,7 +7,6 @@ import { AlternateConnectionDiagram } from './sections/AlternateConnectionDiagra
 import { AlternateHero } from './sections/AlternateHero';
 import { CurrentWorkInProgressSection } from './sections/CurrentWorkInProgressSection';
 import { DoubleBufferingSection } from './sections/DoubleBufferingSection';
-import { NextChapterPreview } from './sections/NextChapterPreview';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { WhyAlternateNeeded } from './sections/WhyAlternateNeeded';
 import { alternateFiberContent } from './content';
@@ -25,7 +24,6 @@ export const AlternateFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <DoubleBufferingSection content={c.doubleBuffering} />
       <WhyAlternateNeeded content={c.why} />
-      <NextChapterPreview content={c.preview} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

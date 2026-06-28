@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { HooksClassConnection } from './sections/HooksClassConnection';
 import { SetStateFlow } from './sections/SetStateFlow';
 import { StateFieldVsQueueField } from './sections/StateFieldVsQueueField';
-import { StateQueueChecklist } from './sections/StateQueueChecklist';
 import { StateQueueCodeCheckpoint } from './sections/StateQueueCodeCheckpoint';
 import { StateQueueComparison } from './sections/StateQueueComparison';
 import { StateQueueHero } from './sections/StateQueueHero';
@@ -27,7 +26,6 @@ export const FiberStateUpdateQueuePage = ({ locale }: Props) => {
       <StateQueueCodeCheckpoint content={c.checkpoint} />
       <HooksClassConnection content={c.connections} />
       <StateQueueMiniQuiz content={c.quiz} />
-      <StateQueueChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

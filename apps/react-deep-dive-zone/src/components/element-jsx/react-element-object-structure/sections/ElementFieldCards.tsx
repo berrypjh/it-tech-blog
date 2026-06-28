@@ -19,6 +19,7 @@ const iconMap = {
 export const ElementFieldCards = ({ content }: Props) => (
   <section id="fields" aria-labelledby="heading-fields" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="fields"
       number={content.badge}
       eyebrow={content.eyebrow}

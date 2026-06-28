@@ -17,6 +17,7 @@ const iconMap = {
 export const WhyAlternateNeeded = ({ content }: Props) => (
   <section id="why" aria-labelledby="heading-why" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="why"
       number={content.badge}
       eyebrow={content.eyebrow}

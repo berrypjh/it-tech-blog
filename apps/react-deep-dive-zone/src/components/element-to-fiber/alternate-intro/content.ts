@@ -30,9 +30,11 @@ export type AlternateFiberContent = {
     currentBadge: string;
     currentTitle: string;
     currentItems: string[];
+    currentTreeLabel: string;
     workBadge: string;
     workTitle: string;
     workItems: string[];
+    workTreeLabel: string;
   };
   connection: {
     badge: string;
@@ -54,21 +56,10 @@ export type AlternateFiberContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    codeLines: {
-      line: string;
-      emphasis?: 'check' | 'wireA' | 'wireB' | 'reuse';
-    }[];
-    annotations: {
-      id: string;
-      label: string;
-      tone: 'sky' | 'emerald' | 'violet' | 'amber';
-    }[];
-    bottomNote: string;
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   doubleBuffering: {
     badge: string;
@@ -88,15 +79,6 @@ export type AlternateFiberContent = {
     title: string;
     description: string;
     cards: WhyCard[];
-  };
-  preview: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    currentTreeLabel: string;
-    alternateLabel: string;
-    workTreeLabel: string;
   };
   nextStep: {
     eyebrow: string;
@@ -135,6 +117,7 @@ const ko: AlternateFiberContent = {
       'DOM에 반영된 상태를 가진 트리',
       '안정적으로 유지되는 트리',
     ],
+    currentTreeLabel: '트리 · DOM에 반영됨',
     workBadge: '다음 화면 계산 중',
     workTitle: 'workInProgress Fiber',
     workItems: [
@@ -142,6 +125,7 @@ const ko: AlternateFiberContent = {
       '아직 DOM에 반영되지 않은 트리',
       '작업 과정에서 자유롭게 변경 가능',
     ],
+    workTreeLabel: '트리 · 계산 중',
   },
   connection: {
     badge: '02',
@@ -164,57 +148,29 @@ const ko: AlternateFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createWorkInProgress',
-    questionLabel: '학습 질문',
     question: 'alternate는 언제 연결될까?',
-    hintCta: '힌트 보기',
-    hint: 'createWorkInProgress는 먼저 current.alternate가 있는지 확인합니다. 없으면 새 Fiber를 만들고 서로를 alternate로 잇고, 있으면 기존 workInProgress를 재사용합니다.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'export function createWorkInProgress(current, pendingProps) {' },
-      {
-        line: '  let workInProgress = current.alternate;',
-        emphasis: 'check',
-      },
-      { line: '' },
-      { line: '  if (workInProgress === null) {' },
-      { line: '    // 기존에 연결된 workInProgress가 없으면 새로 생성' },
-      {
-        line: '    workInProgress = createFiber(current.tag, pendingProps, current.key, current.mode);',
-      },
-      { line: '' },
-      { line: '    // 서로를 alternate로 연결' },
-      {
-        line: '    workInProgress.alternate = current;',
-        emphasis: 'wireA',
-      },
-      {
-        line: '    current.alternate = workInProgress;',
-        emphasis: 'wireB',
-      },
-      { line: '  } else {' },
-      { line: '    // 이미 연결된 workInProgress가 있으면 재사용' },
-      {
-        line: '    workInProgress.pendingProps = pendingProps;',
-        emphasis: 'reuse',
-      },
-      { line: '    workInProgress.flags = NoFlags;', emphasis: 'reuse' },
-      {
-        line: '    workInProgress.subtreeFlags = NoFlags;',
-        emphasis: 'reuse',
-      },
-      { line: '  }' },
-      { line: '' },
-      { line: '  return workInProgress;' },
-      { line: '}' },
-    ],
-    annotations: [
-      { id: 'check', label: '기존 alternate 확인', tone: 'sky' },
-      { id: 'new', label: '새 Fiber 생성', tone: 'emerald' },
-      { id: 'wire', label: '서로를 alternate로 연결', tone: 'violet' },
-      { id: 'reuse', label: '기존 workInProgress 재사용', tone: 'amber' },
-    ],
-    bottomNote:
-      '한 번 연결된 두 Fiber는 번갈아 current / workInProgress 역할을 하며 계속 재사용됩니다.',
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `export function createWorkInProgress(current, pendingProps) {
+  let workInProgress = current.alternate;
+
+  if (workInProgress === null) {
+    // 기존에 연결된 workInProgress가 없으면 새로 생성
+    workInProgress = createFiber(current.tag, pendingProps, current.key, current.mode);
+
+    // 서로를 alternate로 연결
+    workInProgress.alternate = current;
+    current.alternate = workInProgress;
+  } else {
+    // 이미 연결된 workInProgress가 있으면 재사용
+    workInProgress.pendingProps = pendingProps;
+    workInProgress.flags = NoFlags;
+    workInProgress.subtreeFlags = NoFlags;
+  }
+
+  return workInProgress;
+}`,
   },
   doubleBuffering: {
     badge: '04',
@@ -263,16 +219,6 @@ const ko: AlternateFiberContent = {
       },
     ],
   },
-  preview: {
-    badge: '06',
-    eyebrow: '다음 챕터 예고',
-    title: '다음 챕터 예고',
-    description:
-      "다음 'Fiber 트리와 렌더링 자료구조'에서는 current tree, workInProgress tree, alternate를 전체 Fiber 트리 관점에서 다룹니다.",
-    currentTreeLabel: 'current tree',
-    alternateLabel: 'alternate',
-    workTreeLabel: 'workInProgress tree',
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Fiber에 저장되는 정보',
@@ -315,6 +261,7 @@ const en: AlternateFiberContent = {
       'A tree whose state is reflected on the DOM',
       'A tree kept stable',
     ],
+    currentTreeLabel: 'tree · reflected on DOM',
     workBadge: 'Computing next screen',
     workTitle: 'workInProgress Fiber',
     workItems: [
@@ -322,6 +269,7 @@ const en: AlternateFiberContent = {
       'A tree not yet committed to the DOM',
       'A tree free to change while work is in progress',
     ],
+    workTreeLabel: 'tree · being computed',
   },
   connection: {
     badge: '02',
@@ -344,57 +292,29 @@ const en: AlternateFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createWorkInProgress',
-    questionLabel: 'Learning question',
     question: 'When does alternate get wired up?',
-    hintCta: 'Show hint',
-    hint: 'createWorkInProgress checks current.alternate first. If null, it creates a new Fiber and wires both as alternate. Otherwise it reuses the existing workInProgress.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'export function createWorkInProgress(current, pendingProps) {' },
-      {
-        line: '  let workInProgress = current.alternate;',
-        emphasis: 'check',
-      },
-      { line: '' },
-      { line: '  if (workInProgress === null) {' },
-      { line: '    // No existing workInProgress — create a new one' },
-      {
-        line: '    workInProgress = createFiber(current.tag, pendingProps, current.key, current.mode);',
-      },
-      { line: '' },
-      { line: '    // Wire both as alternates of each other' },
-      {
-        line: '    workInProgress.alternate = current;',
-        emphasis: 'wireA',
-      },
-      {
-        line: '    current.alternate = workInProgress;',
-        emphasis: 'wireB',
-      },
-      { line: '  } else {' },
-      { line: '    // An existing workInProgress — reuse it' },
-      {
-        line: '    workInProgress.pendingProps = pendingProps;',
-        emphasis: 'reuse',
-      },
-      { line: '    workInProgress.flags = NoFlags;', emphasis: 'reuse' },
-      {
-        line: '    workInProgress.subtreeFlags = NoFlags;',
-        emphasis: 'reuse',
-      },
-      { line: '  }' },
-      { line: '' },
-      { line: '  return workInProgress;' },
-      { line: '}' },
-    ],
-    annotations: [
-      { id: 'check', label: 'Check existing alternate', tone: 'sky' },
-      { id: 'new', label: 'Create a new Fiber', tone: 'emerald' },
-      { id: 'wire', label: 'Wire both as alternates', tone: 'violet' },
-      { id: 'reuse', label: 'Reuse existing workInProgress', tone: 'amber' },
-    ],
-    bottomNote:
-      'Once linked, the two Fibers alternate the current / workInProgress roles and keep getting reused.',
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `export function createWorkInProgress(current, pendingProps) {
+  let workInProgress = current.alternate;
+
+  if (workInProgress === null) {
+    // No existing workInProgress — create a new one
+    workInProgress = createFiber(current.tag, pendingProps, current.key, current.mode);
+
+    // Wire both as alternates of each other
+    workInProgress.alternate = current;
+    current.alternate = workInProgress;
+  } else {
+    // An existing workInProgress — reuse it
+    workInProgress.pendingProps = pendingProps;
+    workInProgress.flags = NoFlags;
+    workInProgress.subtreeFlags = NoFlags;
+  }
+
+  return workInProgress;
+}`,
   },
   doubleBuffering: {
     badge: '04',
@@ -444,16 +364,6 @@ const en: AlternateFiberContent = {
         accent: 'violet',
       },
     ],
-  },
-  preview: {
-    badge: '06',
-    eyebrow: 'NEXT CHAPTER',
-    title: 'Next-chapter preview',
-    description:
-      "In 'Fiber Tree & Rendering Data Structures', current tree, workInProgress tree, and alternate get treated from a whole-tree perspective.",
-    currentTreeLabel: 'current tree',
-    alternateLabel: 'alternate',
-    workTreeLabel: 'workInProgress tree',
   },
   nextStep: {
     eyebrow: 'The journey continues',

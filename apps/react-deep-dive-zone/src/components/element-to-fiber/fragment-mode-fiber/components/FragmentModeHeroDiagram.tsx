@@ -79,7 +79,6 @@ const TypeStartCard = ({ label }: { label: string }) => {
       className={cn(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone="sky" size="sm">
@@ -105,7 +104,6 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
         className={cn(
           'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          t.borderHover,
         )}
       >
         <ToneIconBox tone={branch.tone} size="sm">
@@ -127,7 +125,6 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
         className={cn(
           'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          t.borderHover,
         )}
       >
         <header className="flex items-center gap-sm">

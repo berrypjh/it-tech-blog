@@ -17,6 +17,7 @@ const iconMap = {
 export const DebugMetaInfoCards = ({ content }: Props) => (
   <section aria-labelledby="heading-debug" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="debug"
       number={content.badge}
       eyebrow={content.eyebrow}

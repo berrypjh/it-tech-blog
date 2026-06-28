@@ -122,12 +122,6 @@ export type FiberStateAndQueueContent = {
     explanationLabel: string;
     cards: QuizCard[];
   };
-  checklist: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    items: string[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -387,18 +381,6 @@ const ko: FiberStateAndQueueContent = {
       },
     ],
   },
-  checklist: {
-    number: '07',
-    eyebrow: '핵심 체크리스트',
-    title: '이번 페이지 핵심 체크리스트',
-    items: [
-      'memoizedState = 현재 렌더 결과 state',
-      'updateQueue = 대기 중인 업데이트',
-      'setState는 update를 만들어 큐에 추가',
-      '다음 렌더에서 큐의 update를 처리하여 새 state 계산',
-      'Hooks는 memoizedState에 Hook chain을 보관한다',
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'flags / subtreeFlags / deletions',
@@ -634,18 +616,6 @@ const en: FiberStateAndQueueContent = {
         explanation:
           'Requests from setState and similar are linked on updateQueue and applied in order during the next render.',
       },
-    ],
-  },
-  checklist: {
-    number: '07',
-    eyebrow: 'CORE CHECKLIST',
-    title: 'Page recap checklist',
-    items: [
-      'memoizedState = current render result state',
-      'updateQueue = pending updates',
-      'setState builds an update and pushes it to the queue',
-      'The next render processes the queue and yields new state',
-      'Hooks keep the Hook chain on memoizedState',
     ],
   },
   nextStep: {

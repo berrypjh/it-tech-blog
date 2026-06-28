@@ -18,30 +18,15 @@ const iconMap = {
 
 export const SpecialFiberTypes = ({ content }: Props) => (
   <section id="special" aria-labelledby="heading-special" className="space-y-md scroll-mt-xl">
-    <div className="flex flex-col gap-sm">
-      <SectionBadgeHeader
-        id="special"
-        number={content.badge}
-        eyebrow={content.eyebrow}
-        title={content.title}
-        icon={<AtomIcon className="h-5 w-5" />}
-      />
-      <div className="flex items-center gap-sm flex-wrap pl-1">
-        <span
-          className={cn(
-            'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5',
-            'text-[10px] font-bold uppercase tracking-wider font-mono',
-            toneTokens.violet.chip,
-          )}
-        >
-          <SparklesIcon className="h-3 w-3" aria-hidden="true" />
-          {content.pill}
-        </span>
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep max-w-[68ch]">
-          {content.description}
-        </p>
-      </div>
-    </div>
+    <SectionBadgeHeader
+      descriptionFullWidth
+      id="special"
+      number={content.badge}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+      icon={<AtomIcon className="h-5 w-5" />}
+    />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.cards.map((card) => {

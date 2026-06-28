@@ -16,6 +16,7 @@ const iconMap = {
 export const CreateElementInputStructure = ({ content }: Props) => (
   <section aria-labelledby="heading-input" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="input"
       number={content.badge}
       eyebrow={content.eyebrow}

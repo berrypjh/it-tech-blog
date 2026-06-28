@@ -9,6 +9,7 @@ type Props = { content: ReactElementOwnerDevInfoContent['checkpoint'] };
 export const OwnerDevSourceCheckpoint = ({ content }: Props) => (
   <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="checkpoint"
       number={content.badge}
       eyebrow={content.eyebrow}

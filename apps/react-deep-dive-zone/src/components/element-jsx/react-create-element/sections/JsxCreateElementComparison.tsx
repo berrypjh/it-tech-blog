@@ -11,6 +11,7 @@ type Props = { content: ReactCreateElementContent['compare'] };
 export const JsxCreateElementComparison = ({ content }: Props) => (
   <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="compare"
       number={content.badge}
       eyebrow={content.eyebrow}

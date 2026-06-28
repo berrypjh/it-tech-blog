@@ -8,31 +8,6 @@ export type ListItem = {
   tone: 'emerald' | 'sky' | 'violet';
 };
 
-export type ChatState = {
-  label: string;
-  value: string;
-  /** dim 처리 (초기화 표시) */
-  dim?: boolean;
-};
-
-export type SimCard = {
-  id: 'key' | 'index';
-  title: string;
-  beforeLabel: string;
-  before: { label: string; trail: string }[];
-  changeLabel: string;
-  afterLabel: string;
-  after: { label: string; trail: string }[];
-  resultLabel: string;
-  results: string[];
-  variant: 'safe' | 'warning';
-};
-
-export type ChecklistItem = {
-  id: string;
-  text: string;
-};
-
 export type KeyFiberReuseContent = {
   hero: {
     badge: string;
@@ -71,15 +46,15 @@ export type KeyFiberReuseContent = {
     title: string;
     code: string;
     explanation: string;
-    beforeLabel: string;
-    beforeKey: string;
-    beforeCardTitle: string;
-    beforeStates: ChatState[];
-    transitionLines: string[];
-    afterLabel: string;
-    afterKey: string;
-    afterCardTitle: string;
-    afterStates: ChatState[];
+    items: { id: string; name: string }[];
+    stateLabel: string;
+    sampleValue: string;
+    emptyText: string;
+    setCta: string;
+    switchCta: string;
+    restartCta: string;
+    resetNotice: string;
+    guide: string;
   };
   checkpoint: {
     badge: string;
@@ -90,27 +65,25 @@ export type KeyFiberReuseContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    codeLines: { line: string; emphasis?: boolean }[];
-    bottomNote: string;
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   simulation: {
     badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: SimCard[];
+    items: { id: string; label: string }[];
+    keyTitle: string;
+    indexTitle: string;
+    keyResult: string;
+    indexResult: string;
+    shuffleCta: string;
+    guide: string;
+    selectedLabel: string;
     emphasis: string;
-  };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
   };
   nextStep: {
     eyebrow: string;
@@ -181,24 +154,23 @@ const ko: KeyFiberReuseContent = {
     badge: '03',
     eyebrow: '상태 보존과 초기화',
     title: '상태 보존과 초기화 예시',
-    code: '<Chat key={email} contact={contact} />',
+    code: '<Product key={product.id} options={options} />',
     explanation:
-      'email이 바뀌면 key가 바뀌고, React는 이를 다른 컴포넌트로 보아 상태를 초기화할 수 있습니다.',
-    beforeLabel: '이전',
-    beforeKey: 'key: a@example.com',
-    beforeCardTitle: '<Chat /> 컴포넌트 상태',
-    beforeStates: [
-      { label: '입력 내용', value: '"안녕하세요!"' },
-      { label: '스크롤 위치', value: '120px' },
+      '보고 있는 상품이 바뀌면 key가 바뀌고, React는 이를 다른 컴포넌트로 보아 골라둔 옵션을 초기화합니다.',
+    items: [
+      { id: 'p-100', name: '면 티셔츠' },
+      { id: 'p-205', name: '청바지' },
     ],
-    transitionLines: ['email 변경', 'key 변경'],
-    afterLabel: '변경 후',
-    afterKey: 'key: b@example.com',
-    afterCardTitle: '<Chat /> 새로운 인스턴스',
-    afterStates: [
-      { label: '입력 내용', value: '-- 초기화 --', dim: true },
-      { label: '스크롤 위치', value: '0px', dim: true },
-    ],
+    stateLabel: '고른 옵션',
+    sampleValue: '블랙 · L',
+    emptyText: '선택 안 함',
+    setCta: '옵션 고르기',
+    switchCta: '다른 상품 보기',
+    restartCta: '처음부터 다시',
+    resetNotice:
+      '골라둔 옵션이 사라졌어요! 같은 <Product>지만 key가 달라 새 인스턴스로 마운트됐기 때문입니다.',
+    guide:
+      '버튼을 차례로 눌러보세요. key(상품)가 바뀌는 순간 React가 컴포넌트를 새로 만들어 골라둔 옵션이 초기화됩니다.',
   },
   checkpoint: {
     badge: '04',
@@ -210,94 +182,44 @@ const ko: KeyFiberReuseContent = {
     filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
     functionLabel: '볼 함수',
     functionName: 'updateSlot',
-    questionLabel: '학습 질문',
     question: 'React는 새 child와 기존 Fiber의 key를 어디서 비교할까?',
-    hintCta: '힌트 보기',
-    hint: 'oldFiber.key와 newChild.key를 비교해 일치하면 updateElement로 기존 Fiber를 이어가고, 일치하지 않으면 null을 반환해 다른 처리로 넘깁니다.',
-    codeTitle: 'ReactChildFiber.js',
-    codeLines: [
-      { line: 'function updateSlot(returnFiber, oldFiber, newChild, lanes) {' },
-      { line: '  // Update the fiber if the keys match,' },
-      { line: '  // otherwise return null.' },
-      {
-        line: '  const key = oldFiber !== null ? oldFiber.key : null;',
-        emphasis: true,
-      },
-      { line: '' },
-      { line: "  if (typeof newChild === 'object' && newChild !== null) {" },
-      { line: '    if (newChild.key === key) {', emphasis: true },
-      {
-        line: '      return updateElement(returnFiber, oldFiber, newChild, lanes);',
-        emphasis: true,
-      },
-      { line: '    }' },
-      { line: '  }' },
-      { line: '' },
-      { line: '  return null;' },
-      { line: '}' },
-    ],
-    bottomNote: 'key가 일치해야 같은 항목으로 판단하고 기존 Fiber를 재사용할 수 있습니다.',
+    primaryCta: 'ReactChildFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',
+    code: `function updateSlot(returnFiber, oldFiber, newChild, lanes) {
+  // Update the fiber if the keys match,
+  // otherwise return null.
+  const key = oldFiber !== null ? oldFiber.key : null;
+
+  if (typeof newChild === 'object' && newChild !== null) {
+    if (newChild.key === key) {
+      return updateElement(returnFiber, oldFiber, newChild, lanes);
+    }
+  }
+
+  return null;
+}`,
   },
   simulation: {
     badge: '05',
     eyebrow: '시뮬레이션',
-    title: '시각 시뮬레이션',
+    title: '직접 재정렬해 보기',
     description:
-      '같은 재정렬 상황이라도 key를 쓰는지 index를 쓰는지에 따라 React의 추적 결과가 달라집니다.',
-    cards: [
-      {
-        id: 'key',
-        title: '경우 A: key 사용 (안정적 추적)',
-        beforeLabel: '초기 목록',
-        before: [
-          { label: 'A', trail: 'key=1' },
-          { label: 'B', trail: 'key=2' },
-        ],
-        changeLabel: '순서 변경',
-        afterLabel: '변경 후',
-        after: [
-          { label: 'B', trail: 'key=2' },
-          { label: 'A', trail: 'key=1' },
-        ],
-        resultLabel: '결과',
-        results: ['각 항목 추적이 쉬움', '상태 보존 가능'],
-        variant: 'safe',
-      },
-      {
-        id: 'index',
-        title: '경우 B: index 사용 (의도와 다른 재사용 가능성)',
-        beforeLabel: '초기 목록',
-        before: [
-          { label: 'A', trail: 'index=0' },
-          { label: 'B', trail: 'index=1' },
-        ],
-        changeLabel: '순서 변경',
-        afterLabel: '변경 후',
-        after: [
-          { label: 'B', trail: 'index=0' },
-          { label: 'A', trail: 'index=1' },
-        ],
-        resultLabel: '결과',
-        results: ['의도와 다른 재사용 가능성', '상태가 엉킬 수 있음'],
-        variant: 'warning',
-      },
-    ],
-    emphasis: 'key는 항목의 ‘정체성’을 React에게 알려주는 역할을 합니다.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: '한 줄 요약',
-    title: '빠른 체크리스트',
+      '같은 리스트를 재정렬할 때 key를 쓰는 경우와 index를 쓰는 경우가 어떻게 달라지는지 직접 확인해 보세요.',
     items: [
-      { id: 'c1', text: '목록 렌더링 시 key는 필수다' },
-      { id: 'c2', text: 'key가 같으면 기존 Fiber 재사용 가능' },
-      { id: 'c3', text: 'key가 다르면 새로운 Fiber 생성 가능' },
-      { id: 'c4', text: '상태 보존과 초기화 모두 key로 제어할 수 있다' },
-      {
-        id: 'c5',
-        text: 'index key는 재정렬 시 의도와 다른 결과를 만들 수 있다',
-      },
+      { id: 'p-100', label: '면 티셔츠' },
+      { id: 'p-205', label: '청바지' },
+      { id: 'p-311', label: '운동화' },
     ],
+    keyTitle: 'key 사용',
+    indexTitle: 'index 사용',
+    keyResult: '체크가 항목을 따라갑니다 — 안정적으로 추적',
+    indexResult: '체크가 자리에 남습니다 — 다른 항목이 선택된 것처럼 엉킴',
+    shuffleCta: '순서 섞기',
+    guide:
+      '면 티셔츠가 선택된 상태입니다. “순서 섞기”를 눌러보세요. key는 선택을 항목에 붙여 옮기고, index는 선택을 자리에 남깁니다.',
+    selectedLabel: '선택됨',
+    emphasis: 'key는 항목의 ‘정체성’을 React에게 알려주는 역할을 합니다.',
   },
 };
 
@@ -355,24 +277,23 @@ const en: KeyFiberReuseContent = {
     badge: '03',
     eyebrow: 'PRESERVE VS RESET',
     title: 'State preserve / reset example',
-    code: '<Chat key={email} contact={contact} />',
+    code: '<Product key={product.id} options={options} />',
     explanation:
-      'When email changes, the key changes — and React can treat this as a different component, resetting its state.',
-    beforeLabel: 'Before',
-    beforeKey: 'key: a@example.com',
-    beforeCardTitle: '<Chat /> component state',
-    beforeStates: [
-      { label: 'Input', value: '"Hello!"' },
-      { label: 'Scroll', value: '120px' },
+      'When the product you are viewing changes, the key changes — and React treats it as a different component, resetting the options you picked.',
+    items: [
+      { id: 'p-100', name: 'Cotton Tee' },
+      { id: 'p-205', name: 'Jeans' },
     ],
-    transitionLines: ['email changes', 'key changes'],
-    afterLabel: 'After',
-    afterKey: 'key: b@example.com',
-    afterCardTitle: '<Chat /> brand-new instance',
-    afterStates: [
-      { label: 'Input', value: '-- reset --', dim: true },
-      { label: 'Scroll', value: '0px', dim: true },
-    ],
+    stateLabel: 'Selected options',
+    sampleValue: 'Black · L',
+    emptyText: 'none selected',
+    setCta: 'Pick options',
+    switchCta: 'View another product',
+    restartCta: 'Start over',
+    resetNotice:
+      'Your selection is gone! It is the same <Product>, but a different key mounts a brand-new instance.',
+    guide:
+      'Press the buttons in order. The moment the key (product) changes, React builds a new component, so the options you picked reset.',
   },
   checkpoint: {
     badge: '04',
@@ -384,97 +305,43 @@ const en: KeyFiberReuseContent = {
     filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
     functionLabel: 'Function',
     functionName: 'updateSlot',
-    questionLabel: 'Learning question',
     question: "Where does React compare the new child's key to the existing Fiber's key?",
-    hintCta: 'Show hint',
-    hint: 'Compare oldFiber.key with newChild.key. On match, updateElement reuses the existing Fiber. Otherwise return null and let later logic handle it.',
-    codeTitle: 'ReactChildFiber.js',
-    codeLines: [
-      { line: 'function updateSlot(returnFiber, oldFiber, newChild, lanes) {' },
-      { line: '  // Update the fiber if the keys match,' },
-      { line: '  // otherwise return null.' },
-      {
-        line: '  const key = oldFiber !== null ? oldFiber.key : null;',
-        emphasis: true,
-      },
-      { line: '' },
-      { line: "  if (typeof newChild === 'object' && newChild !== null) {" },
-      { line: '    if (newChild.key === key) {', emphasis: true },
-      {
-        line: '      return updateElement(returnFiber, oldFiber, newChild, lanes);',
-        emphasis: true,
-      },
-      { line: '    }' },
-      { line: '  }' },
-      { line: '' },
-      { line: '  return null;' },
-      { line: '}' },
-    ],
-    bottomNote:
-      'Keys must match for React to treat the items as the same and reuse the existing Fiber.',
+    primaryCta: 'Read ReactChildFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',
+    code: `function updateSlot(returnFiber, oldFiber, newChild, lanes) {
+  // Update the fiber if the keys match,
+  // otherwise return null.
+  const key = oldFiber !== null ? oldFiber.key : null;
+
+  if (typeof newChild === 'object' && newChild !== null) {
+    if (newChild.key === key) {
+      return updateElement(returnFiber, oldFiber, newChild, lanes);
+    }
+  }
+
+  return null;
+}`,
   },
   simulation: {
     badge: '05',
     eyebrow: 'SIMULATION',
-    title: 'Visual simulation',
-    description: 'Same reorder, different outcome — depending on whether you use key or index.',
-    cards: [
-      {
-        id: 'key',
-        title: 'Case A: using key (stable tracking)',
-        beforeLabel: 'Initial list',
-        before: [
-          { label: 'A', trail: 'key=1' },
-          { label: 'B', trail: 'key=2' },
-        ],
-        changeLabel: 'Reorder',
-        afterLabel: 'After',
-        after: [
-          { label: 'B', trail: 'key=2' },
-          { label: 'A', trail: 'key=1' },
-        ],
-        resultLabel: 'Result',
-        results: ['Easy to track each item', 'State can be preserved'],
-        variant: 'safe',
-      },
-      {
-        id: 'index',
-        title: 'Case B: using index (unintended reuse)',
-        beforeLabel: 'Initial list',
-        before: [
-          { label: 'A', trail: 'index=0' },
-          { label: 'B', trail: 'index=1' },
-        ],
-        changeLabel: 'Reorder',
-        afterLabel: 'After',
-        after: [
-          { label: 'B', trail: 'index=0' },
-          { label: 'A', trail: 'index=1' },
-        ],
-        resultLabel: 'Result',
-        results: ['Unintended reuse', 'State can get tangled'],
-        variant: 'warning',
-      },
-    ],
-    emphasis: "key tells React the 'identity' of each item.",
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: 'ONE-LINE RECAP',
-    title: 'Quick checklist',
+    title: 'Reorder it yourself',
+    description: 'Reorder the same list and see how using key vs index changes what React tracks.',
     items: [
-      { id: 'c1', text: 'Keys are essential when rendering lists' },
-      { id: 'c2', text: 'Same key → existing Fiber may be reused' },
-      { id: 'c3', text: 'Different key → a new Fiber may be created' },
-      {
-        id: 'c4',
-        text: 'Both preserve and reset can be controlled by key',
-      },
-      {
-        id: 'c5',
-        text: 'index keys can lead to unintended reuse on reorder',
-      },
+      { id: 'p-100', label: 'Cotton Tee' },
+      { id: 'p-205', label: 'Jeans' },
+      { id: 'p-311', label: 'Sneakers' },
     ],
+    keyTitle: 'using key',
+    indexTitle: 'using index',
+    keyResult: 'The check follows the item — stable tracking',
+    indexResult: 'The check stays at the slot — a different item looks selected',
+    shuffleCta: 'Shuffle order',
+    guide:
+      'Cotton Tee is selected. Press “Shuffle order”: key carries the selection with the item, while index leaves it at the slot.',
+    selectedLabel: 'selected',
+    emphasis: "key tells React the 'identity' of each item.",
   },
 };
 

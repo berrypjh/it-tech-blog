@@ -1,14 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionClassComponentFiberContent, WorkTagCard } from '../content';
 import { ComponentIcon, InfoIcon, SquareFunctionIcon, TagIcon } from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['workTags'] };
 
+const toneByVariant: Record<WorkTagCard['variant'], ToneKey> = {
+  function: 'emerald',
+  class: 'violet',
+  info: 'sky',
+};
+
 export const WorkTagCards = ({ content }: Props) => (
   <section id="work-tags" aria-labelledby="heading-work-tags" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="work-tags"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -34,6 +43,7 @@ const CardView = ({ card }: { card: WorkTagCard }) => {
 
 const ValueCard = ({ card }: { card: WorkTagCard }) => {
   const isFunction = card.variant === 'function';
+  const t = toneTokens[toneByVariant[card.variant]];
   const Icon = isFunction ? SquareFunctionIcon : ComponentIcon;
   return (
     <article
@@ -41,31 +51,14 @@ const ValueCard = ({ card }: { card: WorkTagCard }) => {
         'group flex flex-1 flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        isFunction
-          ? 'border-emerald-300/80 dark:border-emerald-700/70 hover:border-emerald-400'
-          : 'border-violet-300/80 dark:border-violet-700/70 hover:border-violet-400',
+        t.fill.border,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-11 h-11 rounded-2xl shrink-0',
-            isFunction
-              ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950'
-              : 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-950',
-          )}
-        >
+        <ToneIconBox tone={toneByVariant[card.variant]} size="md">
           <Icon className="h-5 w-5" />
-        </span>
-        <code
-          className={cn(
-            'font-mono text-sm sm:text-md font-extrabold tracking-tight',
-            isFunction
-              ? 'text-emerald-700 dark:text-emerald-300'
-              : 'text-violet-700 dark:text-violet-300',
-          )}
-        >
+        </ToneIconBox>
+        <code className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
           {card.title}
         </code>
       </header>
@@ -73,29 +66,14 @@ const ValueCard = ({ card }: { card: WorkTagCard }) => {
       <div
         className={cn(
           'flex items-center justify-between gap-sm rounded-xl border-2 p-md',
-          isFunction
-            ? 'border-emerald-300/80 bg-emerald-50/70 dark:border-emerald-700/70 dark:bg-emerald-950/40'
-            : 'border-violet-300/80 bg-violet-50/70 dark:border-violet-700/70 dark:bg-violet-950/40',
+          t.fill.bg,
+          t.fill.border,
         )}
       >
-        <span
-          className={cn(
-            'text-[10px] uppercase tracking-wider font-mono font-bold',
-            isFunction
-              ? 'text-emerald-700 dark:text-emerald-300'
-              : 'text-violet-700 dark:text-violet-300',
-          )}
-        >
+        <span className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
           {card.label}
         </span>
-        <code
-          className={cn(
-            'font-mono text-3xl sm:text-4xl font-extrabold tabular-nums',
-            isFunction
-              ? 'text-emerald-700 dark:text-emerald-200'
-              : 'text-violet-700 dark:text-violet-200',
-          )}
-        >
+        <code className={cn('font-mono text-3xl sm:text-4xl font-extrabold tabular-nums', t.text)}>
           {card.value}
         </code>
       </div>
@@ -103,32 +81,28 @@ const ValueCard = ({ card }: { card: WorkTagCard }) => {
   );
 };
 
-const InfoCard = ({ card }: { card: WorkTagCard }) => (
-  <article
-    className={cn(
-      'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-      'bg-gradient-to-br from-sky-50 via-white to-sky-50/30',
-      'dark:from-sky-950/30 dark:via-[var(--term-bg)] dark:to-sky-950/20',
-      'border-sky-300/80 dark:border-sky-700/70',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-sm">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-11 h-11 rounded-2xl shrink-0',
-          'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950',
-        )}
-      >
-        <InfoIcon className="h-5 w-5" />
-      </span>
-      <h3 className="font-mono text-sm sm:text-md font-extrabold tracking-tight text-sky-700 dark:text-sky-300">
-        {card.title}
-      </h3>
-    </header>
-    <p className="text-xsm leading-relaxed text-sky-900 dark:text-sky-100 break-keep">
-      {card.description}
-    </p>
-  </article>
-);
+const InfoCard = ({ card }: { card: WorkTagCard }) => {
+  const t = toneTokens.sky;
+  return (
+    <article
+      className={cn(
+        'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
+        'transition-all hover:-translate-y-0.5',
+        'border-[var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-sm">
+        <ToneIconBox tone="sky" size="md">
+          <InfoIcon className="h-5 w-5" />
+        </ToneIconBox>
+        <h3 className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
+          {card.title}
+        </h3>
+      </header>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+        {card.description}
+      </p>
+    </article>
+  );
+};

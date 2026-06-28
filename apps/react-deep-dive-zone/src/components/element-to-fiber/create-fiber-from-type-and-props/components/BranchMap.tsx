@@ -1,9 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { Branch } from '../content';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { Branch, BranchKey } from '../content';
 import { TypeIcon } from '../icons';
 
-import { branchTokens } from './branchTokens';
+const branchTone: Record<BranchKey, ToneKey> = {
+  string: 'emerald',
+  function: 'sky',
+  fragment: 'violet',
+  mode: 'cyan',
+};
+
+const branchLabel: Record<BranchKey, string> = {
+  string: 'string branch',
+  function: 'function branch',
+  fragment: 'symbol branch',
+  mode: 'symbol branch',
+};
 
 type Props = {
   centerLabel: string;
@@ -88,10 +101,10 @@ const CenterCard = ({
   <div
     className={cn(
       'relative flex flex-col items-center justify-center rounded-2xl border-2',
-      'bg-gradient-to-br from-sky-500 to-sky-600 text-white',
-      'dark:from-sky-500 dark:to-sky-600 dark:text-slate-950',
-      'border-sky-600 dark:border-sky-400/80',
-      'shadow-[0_12px_36px_-12px_rgba(2,132,199,0.55)]',
+      toneTokens.sky.fill.bg,
+      toneTokens.sky.fill.border,
+      toneTokens.sky.fill.text,
+      'shadow-[0_2px_0_var(--term-border)]',
       size === 'lg' ? 'min-h-[120px] p-md' : 'min-h-[96px] p-md',
       className,
     )}
@@ -112,15 +125,14 @@ const CenterCard = ({
 );
 
 const BranchCard = ({ branch }: { branch: Branch }) => {
-  const t = branchTokens[branch.id];
+  const t = toneTokens[branchTone[branch.id]];
   return (
     <article
       className={cn(
         'group flex flex-col gap-1.5 rounded-2xl border-2 p-sm sm:p-md min-w-0',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.border,
-        t.borderHover,
+        t.fill.border,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -131,16 +143,11 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
           )}
         >
           <span aria-hidden="true" className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
-          {t.label}
+          {branchLabel[branch.id]}
         </span>
       </header>
 
-      <code
-        className={cn(
-          'font-mono text-xsm font-bold break-all rounded-md px-2 py-1.5',
-          'bg-slate-950 text-slate-100',
-        )}
-      >
+      <code className={cn('font-mono text-xsm font-bold break-all', t.text)}>
         {branch.condition}
       </code>
 

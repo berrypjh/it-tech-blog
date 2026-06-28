@@ -10,6 +10,7 @@ type Props = { content: ReactElementObjectStructureContent['compare'] };
 export const PlainObjectComparison = ({ content }: Props) => (
   <section aria-labelledby="heading-compare-plain" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="compare-plain"
       number={content.badge}
       eyebrow={content.eyebrow}

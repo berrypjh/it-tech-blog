@@ -10,6 +10,7 @@ type Props = { content: ReactElementSummaryBeforeFiberContent['compare'] };
 export const JsxElementFiberDomComparison = ({ content }: Props) => (
   <section aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="compare"
       number={content.badge}
       eyebrow={content.eyebrow}

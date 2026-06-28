@@ -32,11 +32,6 @@ export type ModernHostCard = {
   tone: ToneKey;
 };
 
-export type ChecklistItem = {
-  id: string;
-  text: string;
-};
-
 export type HostComponentFiberContent = {
   hero: {
     badge: string;
@@ -78,13 +73,10 @@ export type HostComponentFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    codeLines: { line: string; emphasis?: boolean }[];
-    bottomNote: string;
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   vsDom: {
     badge: string;
@@ -100,16 +92,9 @@ export type HostComponentFiberContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    pill: string;
     description: string;
     cards: ModernHostCard[];
     footnote: string;
-  };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
   };
   nextStep: {
     eyebrow: string;
@@ -186,27 +171,22 @@ const ko: HostComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 지점',
     spot: "typeof type === 'string'",
-    questionLabel: '학습 질문',
     question: '문자열 type은 어떤 Fiber 계열로 이어질까?',
-    hintCta: '힌트 보기',
-    hint: 'typeof로 함수와 문자열을 가른 뒤, 문자열이면 fiberTag = HostComponent로 고정됩니다. 그 외 심벌 타입은 switch로 분기됩니다.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: "if (typeof type === 'function') {" },
-      { line: '  // FunctionComponent 또는 ClassComponent 분기' },
-      { line: '  // ...' },
-      { line: "} else if (typeof type === 'string') {", emphasis: true },
-      { line: '  // 문자열 type → Host 계열 분기' },
-      { line: '  fiberTag = HostComponent;', emphasis: true },
-      { line: '} else {' },
-      { line: '  // 심벌 타입 분기 (Fragment, StrictMode 등)' },
-      { line: '  switch (type) {' },
-      { line: '    ...' },
-      { line: '  }' },
-      { line: '}' },
-    ],
-    bottomNote:
-      '참고: 최신 코드에서는 HostHoistable, HostSingleton 같은 세부 Host 분기도 보일 수 있습니다.',
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `if (typeof type === 'function') {
+  // FunctionComponent 또는 ClassComponent 분기
+  // ...
+} else if (typeof type === 'string') {
+  // 문자열 type → Host 계열 분기
+  fiberTag = HostComponent;
+} else {
+  // 심벌 타입 분기 (Fragment, StrictMode 등)
+  switch (type) {
+    ...
+  }
+}`,
   },
   vsDom: {
     badge: '04',
@@ -246,7 +226,6 @@ const ko: HostComponentFiberContent = {
     badge: '05',
     eyebrow: '확장 주제',
     title: 'Host 계열의 최신 세분화 맛보기',
-    pill: 'NEW',
     description:
       '최신 React에서는 Host 계열이 더 잘게 나뉘었습니다. 입문에서는 HostComponent만 알면 충분하지만, 코드를 더 깊이 읽으려면 이름 정도는 익혀 두면 좋습니다.',
     cards: [
@@ -278,23 +257,6 @@ const ko: HostComponentFiberContent = {
       },
     ],
     footnote: '버전과 환경에 따라 세부 구현과 이름이 달라질 수 있습니다.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: '한 줄 요약',
-    title: '빠른 체크리스트',
-    items: [
-      { id: 'c1', text: 'JSX 태그 이름이 따옴표 없이 보이면 문자열 type이다' },
-      { id: 'c2', text: '문자열 type은 Host 계열 분기의 조건이 된다' },
-      {
-        id: 'c3',
-        text: 'HostComponent Fiber는 DOM을 만들기 위한 내부 작업 단위다',
-      },
-      {
-        id: 'c4',
-        text: '실제 DOM은 커밋 단계에서 생성되어 브라우저 트리에 삽입된다',
-      },
-    ],
   },
 };
 
@@ -361,27 +323,22 @@ const en: HostComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Spot',
     spot: "typeof type === 'string'",
-    questionLabel: 'Learning question',
     question: 'Which Fiber family does a string type lead to?',
-    hintCta: 'Show hint',
-    hint: 'typeof splits function vs string. The string branch pins fiberTag to HostComponent. Other symbol types are handled in switch.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: "if (typeof type === 'function') {" },
-      { line: '  // FunctionComponent or ClassComponent branch' },
-      { line: '  // ...' },
-      { line: "} else if (typeof type === 'string') {", emphasis: true },
-      { line: '  // string type → Host-family branch' },
-      { line: '  fiberTag = HostComponent;', emphasis: true },
-      { line: '} else {' },
-      { line: '  // symbol branch (Fragment, StrictMode, …)' },
-      { line: '  switch (type) {' },
-      { line: '    ...' },
-      { line: '  }' },
-      { line: '}' },
-    ],
-    bottomNote:
-      'Note: in newer code you may also see HostHoistable and HostSingleton sub-branches.',
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `if (typeof type === 'function') {
+  // FunctionComponent or ClassComponent branch
+  // ...
+} else if (typeof type === 'string') {
+  // string type → Host-family branch
+  fiberTag = HostComponent;
+} else {
+  // symbol branch (Fragment, StrictMode, …)
+  switch (type) {
+    ...
+  }
+}`,
   },
   vsDom: {
     badge: '04',
@@ -422,7 +379,6 @@ const en: HostComponentFiberContent = {
     badge: '05',
     eyebrow: 'ADVANCED',
     title: 'Modern Host-family split',
-    pill: 'NEW',
     description:
       'Modern React breaks the Host family into more variants. As an intro you only need HostComponent, but spotting the names helps when reading source.',
     cards: [
@@ -455,29 +411,6 @@ const en: HostComponentFiberContent = {
       },
     ],
     footnote: 'Implementation details and names may shift between React versions.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: 'ONE-LINE RECAP',
-    title: 'Quick checklist',
-    items: [
-      {
-        id: 'c1',
-        text: 'A bare JSX tag name (no quotes) means a string type.',
-      },
-      {
-        id: 'c2',
-        text: 'A string type is the condition for the Host-family branch.',
-      },
-      {
-        id: 'c3',
-        text: 'HostComponent Fiber is the unit of work for building DOM.',
-      },
-      {
-        id: 'c4',
-        text: 'Real DOM is created and inserted during the commit phase.',
-      },
-    ],
   },
 };
 

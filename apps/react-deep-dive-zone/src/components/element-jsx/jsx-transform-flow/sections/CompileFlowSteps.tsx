@@ -30,6 +30,7 @@ export const CompileFlowSteps = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="compile-flow"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -17,6 +17,7 @@ const iconMap = {
 export const React19TransformReasons = ({ content }: Props) => (
   <section aria-labelledby="heading-react19" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="react19"
       number={content.badge}
       eyebrow={content.eyebrow}

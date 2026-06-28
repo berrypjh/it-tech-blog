@@ -11,6 +11,7 @@ type Props = { content: ReactElementTypeMeaningContent['rows'] };
 export const JsxToTypeRows = ({ content }: Props) => (
   <section aria-labelledby="heading-rows" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="rows"
       number={content.badge}
       eyebrow={content.eyebrow}

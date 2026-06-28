@@ -16,6 +16,7 @@ const iconMap = {
 export const RuntimeModeComparison = ({ content }: Props) => (
   <section aria-labelledby="heading-modes" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="modes"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -25,6 +25,7 @@ const fnIconMap = {
 export const RuntimeEntryMap = ({ content }: Props) => (
   <section id="entry-map" aria-labelledby="heading-entry-map" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="entry-map"
       number={content.badge}
       eyebrow={content.eyebrow}

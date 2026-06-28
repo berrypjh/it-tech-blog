@@ -10,6 +10,7 @@ type Props = { content: FiberStoredInformationContent['expansion'] };
 export const StructureExpansionVisualization = ({ content }: Props) => (
   <section id="expansion" aria-labelledby="heading-expansion" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="expansion"
       number={content.badge}
       eyebrow={content.eyebrow}

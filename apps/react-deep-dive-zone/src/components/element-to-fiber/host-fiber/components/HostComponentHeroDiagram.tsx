@@ -56,7 +56,6 @@ const DomTagCard = ({ code, type }: { code: string; type: string }) => {
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-sm pl-md min-w-0',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone="emerald" size="sm">
@@ -107,7 +106,11 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
           >
             <span
               aria-hidden="true"
-              className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950"
+              className={cn(
+                'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
+                'text-white dark:text-slate-950',
+                toneTokens.emerald.dot,
+              )}
             >
               <CheckCircleIcon className="h-3.5 w-3.5" />
             </span>

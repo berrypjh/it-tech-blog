@@ -10,6 +10,7 @@ type Props = { content: AlternateFiberContent['pair'] };
 export const CurrentWorkInProgressSection = ({ content }: Props) => (
   <section id="pair" aria-labelledby="heading-pair" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="pair"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -24,12 +25,14 @@ export const CurrentWorkInProgressSection = ({ content }: Props) => (
         badge={content.currentBadge}
         title={content.currentTitle}
         items={content.currentItems}
+        treeLabel={content.currentTreeLabel}
       />
       <PairBlock
         variant="workInProgress"
         badge={content.workBadge}
         title={content.workTitle}
         items={content.workItems}
+        treeLabel={content.workTreeLabel}
       />
     </div>
   </section>
@@ -40,11 +43,13 @@ const PairBlock = ({
   badge,
   title,
   items,
+  treeLabel,
 }: {
   variant: 'current' | 'workInProgress';
   badge: string;
   title: string;
   items: string[];
+  treeLabel: string;
 }) => (
   <div className="flex flex-col gap-md min-w-0">
     <FiberPairCard variant={variant} badge={badge} title={title} items={items} />
@@ -56,7 +61,7 @@ const PairBlock = ({
       )}
     >
       <span className="text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-muted)]">
-        {variant === 'current' ? 'tree · reflected on DOM' : 'tree · being computed'}
+        {treeLabel}
       </span>
       <MiniFiberTree variant={variant} />
     </article>

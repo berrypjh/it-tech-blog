@@ -93,23 +93,6 @@ export type FiberTreePointersContent = {
     steps: TraversalStep[];
     banner: string;
   };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    problemLabel: string;
-    problemJsx: string;
-    question: {
-      prefix: string;
-      child: string;
-      mid1: string;
-      sibling: string;
-      mid2: string;
-      return: string;
-      suffix: string;
-    };
-    drawingPlaceholder: { lines: string[] };
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -294,31 +277,6 @@ const ko: FiberTreePointersContent = {
     ],
     banner: '이 3개의 연결만으로 React는 Fiber 트리 전체를 순회할 수 있다.',
   },
-  mission: {
-    number: '06',
-    eyebrow: '직접 미션',
-    title: '직접 그려보는 미션',
-    problemLabel: '문제',
-    problemJsx: `<Layout>
-  <Sidebar />
-  <Content>
-    <Hero />
-    <Article />
-  </Content>
-</Layout>`,
-    question: {
-      prefix: '이 JSX가 Fiber 구조가 되면 ',
-      child: 'child',
-      mid1: ' / ',
-      sibling: 'sibling',
-      mid2: ' / ',
-      return: 'return',
-      suffix: '은 어떻게 연결될까요?',
-    },
-    drawingPlaceholder: {
-      lines: ['여기에 Fiber 연결도를 직접 그려보세요.', '노드를 추가하고 화살표도 연결해보세요.'],
-    },
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'pendingProps와 memoizedProps',
@@ -482,31 +440,6 @@ const en: FiberTreePointersContent = {
       },
     ],
     banner: 'These three links alone are enough for React to traverse the whole Fiber tree.',
-  },
-  mission: {
-    number: '06',
-    eyebrow: 'TRY IT YOURSELF',
-    title: 'Drawing mission',
-    problemLabel: 'Problem',
-    problemJsx: `<Layout>
-  <Sidebar />
-  <Content>
-    <Hero />
-    <Article />
-  </Content>
-</Layout>`,
-    question: {
-      prefix: 'When this JSX becomes a Fiber structure, how would ',
-      child: 'child',
-      mid1: ', ',
-      sibling: 'sibling',
-      mid2: ', and ',
-      return: 'return',
-      suffix: ' connect?',
-    },
-    drawingPlaceholder: {
-      lines: ['Draw the Fiber connection diagram here.', 'Add nodes and arrows yourself.'],
-    },
   },
   nextStep: {
     eyebrow: 'The journey continues',

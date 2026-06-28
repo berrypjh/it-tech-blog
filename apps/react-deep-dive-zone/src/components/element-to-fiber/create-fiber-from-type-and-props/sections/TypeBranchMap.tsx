@@ -10,6 +10,7 @@ type Props = { content: CreateFiberFromTypeAndPropsContent['branchMap'] };
 export const TypeBranchMap = ({ content }: Props) => (
   <section id="branch-map" aria-labelledby="heading-branch-map" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="branch-map"
       number={content.badge}
       eyebrow={content.eyebrow}

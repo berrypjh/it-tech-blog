@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { FlowSteps } from '../components/FlowSteps';
@@ -16,6 +17,7 @@ export const FragmentFlow = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="fragment-flow"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -24,7 +26,7 @@ export const FragmentFlow = ({ content }: Props) => (
       icon={<GroupIcon className="h-5 w-5" />}
     />
 
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)] gap-md items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* JSX */}
       <article className="flex flex-col gap-2 min-w-0">
         <span
@@ -61,35 +63,8 @@ export const FragmentFlow = ({ content }: Props) => (
         </span>
         <FlowSteps tone="violet" steps={content.steps} />
       </article>
-
-      {/* Info */}
-      <article
-        className={cn(
-          'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg justify-center',
-          toneTokens.sky.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl border shrink-0',
-            toneTokens.sky.fill.bg,
-            toneTokens.sky.fill.border,
-            toneTokens.sky.text,
-          )}
-        >
-          <LightbulbIcon className="h-6 w-6" />
-        </span>
-        <p
-          className={cn(
-            'text-sm sm:text-md font-bold leading-snug break-keep',
-            toneTokens.sky.fill.text,
-          )}
-        >
-          {content.infoBody}
-        </p>
-      </article>
     </div>
+
+    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.infoBody}</SectionNote>
   </section>
 );

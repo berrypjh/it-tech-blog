@@ -24,11 +24,6 @@ export type SpecialTypeCard = {
   accent: 'sky' | 'cyan' | 'violet' | 'amber' | 'emerald';
 };
 
-export type ChecklistItem = {
-  id: string;
-  text: string;
-};
-
 export type FragmentModeFiberContent = {
   hero: {
     badge: string;
@@ -73,16 +68,10 @@ export type FragmentModeFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    codeLines: {
-      line: string;
-      emphasis?: 'fragment' | 'mode';
-    }[];
-    bottomNote: string;
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   workTags: {
     badge: string;
@@ -98,12 +87,6 @@ export type FragmentModeFiberContent = {
     description: string;
     cards: SpecialTypeCard[];
     footnote: string;
-  };
-  checklist: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
   };
   nextStep: {
     eyebrow: string;
@@ -176,30 +159,23 @@ const ko: FragmentModeFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 지점',
     spot: 'REACT_FRAGMENT_TYPE, REACT_STRICT_MODE_TYPE',
-    questionLabel: '학습 질문',
     question: '특수 타입은 왜 일반 분기보다 별도 경로를 가지는가?',
-    hintCta: '힌트 보기',
-    hint: 'Fragment는 자식 그룹화 전용이고, StrictMode는 개발 검사 flag를 보유해야 합니다. 둘 다 일반 DOM/컴포넌트와 다른 처리가 필요하므로 switch (type)에서 별도 case로 분기됩니다.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'switch (type) {' },
-      { line: '  case REACT_FRAGMENT_TYPE:', emphasis: 'fragment' },
-      { line: '    // Fragment 전용 경로', emphasis: 'fragment' },
-      {
-        line: '    return createFiberFromFragment(pendingProps, mode, lanes, key);',
-        emphasis: 'fragment',
-      },
-      { line: '' },
-      { line: '  case REACT_STRICT_MODE_TYPE:', emphasis: 'mode' },
-      { line: '    // StrictMode는 Mode Fiber로 처리', emphasis: 'mode' },
-      { line: '    fiberTag = Mode;', emphasis: 'mode' },
-      { line: '    mode |= StrictLegacyMode;', emphasis: 'mode' },
-      { line: '    break;', emphasis: 'mode' },
-      { line: '' },
-      { line: '  // ... 다른 특수 타입들' },
-      { line: '}' },
-    ],
-    bottomNote: '특수 타입은 type 자체가 고유 심벌이므로 일반 typeof 분기와 다르게 처리됩니다.',
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `switch (type) {
+  case REACT_FRAGMENT_TYPE:
+    // Fragment 전용 경로
+    return createFiberFromFragment(pendingProps, mode, lanes, key);
+
+  case REACT_STRICT_MODE_TYPE:
+    // StrictMode는 Mode Fiber로 처리
+    fiberTag = Mode;
+    mode |= StrictLegacyMode;
+    break;
+
+  // ... 다른 특수 타입들
+}`,
   },
   workTags: {
     badge: '04',
@@ -285,18 +261,6 @@ const ko: FragmentModeFiberContent = {
     ],
     footnote: '버전과 환경에 따라 지원 여부와 내부 이름이 달라질 수 있습니다.',
   },
-  checklist: {
-    badge: '07',
-    eyebrow: '한 줄 요약',
-    title: '빠른 체크리스트',
-    items: [
-      { id: 'c1', text: 'Fragment는 REACT_FRAGMENT_TYPE으로 처리된다' },
-      { id: 'c2', text: 'StrictMode는 REACT_STRICT_MODE_TYPE으로 처리된다' },
-      { id: 'c3', text: 'Fragment → Work Tag 7 / Mode → Work Tag 8' },
-      { id: 'c4', text: '특수 타입은 전용 Fiber 생성 경로를 가진다' },
-      { id: 'c5', text: '일반 타입과 다르게 처리되어야 하는 이유가 있다' },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'key와 Fiber 재사용',
@@ -370,31 +334,23 @@ const en: FragmentModeFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Spot',
     spot: 'REACT_FRAGMENT_TYPE, REACT_STRICT_MODE_TYPE',
-    questionLabel: 'Learning question',
     question: 'Why do special types take a separate path?',
-    hintCta: 'Show hint',
-    hint: 'Fragment groups children; StrictMode must hold dev-check flags. Neither fits the regular DOM / component flow, so switch (type) handles them as dedicated cases.',
-    codeTitle: 'ReactFiber.js',
-    codeLines: [
-      { line: 'switch (type) {' },
-      { line: '  case REACT_FRAGMENT_TYPE:', emphasis: 'fragment' },
-      { line: '    // Fragment-only path', emphasis: 'fragment' },
-      {
-        line: '    return createFiberFromFragment(pendingProps, mode, lanes, key);',
-        emphasis: 'fragment',
-      },
-      { line: '' },
-      { line: '  case REACT_STRICT_MODE_TYPE:', emphasis: 'mode' },
-      { line: '    // StrictMode goes to Mode Fiber', emphasis: 'mode' },
-      { line: '    fiberTag = Mode;', emphasis: 'mode' },
-      { line: '    mode |= StrictLegacyMode;', emphasis: 'mode' },
-      { line: '    break;', emphasis: 'mode' },
-      { line: '' },
-      { line: '  // ... other special types' },
-      { line: '}' },
-    ],
-    bottomNote:
-      'Special types use unique symbols, so they are handled differently from regular typeof branches.',
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `switch (type) {
+  case REACT_FRAGMENT_TYPE:
+    // Fragment-only path
+    return createFiberFromFragment(pendingProps, mode, lanes, key);
+
+  case REACT_STRICT_MODE_TYPE:
+    // StrictMode goes to Mode Fiber
+    fiberTag = Mode;
+    mode |= StrictLegacyMode;
+    break;
+
+  // ... other special types
+}`,
   },
   workTags: {
     badge: '04',
@@ -479,21 +435,6 @@ const en: FragmentModeFiberContent = {
       },
     ],
     footnote: 'Support and internal names may change between React versions and environments.',
-  },
-  checklist: {
-    badge: '07',
-    eyebrow: 'ONE-LINE RECAP',
-    title: 'Quick checklist',
-    items: [
-      { id: 'c1', text: 'Fragment is handled as REACT_FRAGMENT_TYPE' },
-      { id: 'c2', text: 'StrictMode is handled as REACT_STRICT_MODE_TYPE' },
-      { id: 'c3', text: 'Fragment → Work Tag 7 / Mode → Work Tag 8' },
-      { id: 'c4', text: 'Special types have dedicated Fiber-creation paths' },
-      {
-        id: 'c5',
-        text: 'There is a real reason to handle them differently from regular types',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

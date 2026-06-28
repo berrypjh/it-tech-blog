@@ -27,6 +27,7 @@ const toRow = (step: RecapStep, idx: number): StepRow => {
 export const PreviousChapterRecap = ({ content }: Props) => (
   <section id="recap" aria-labelledby="heading-recap" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="recap"
       number={content.badge}
       eyebrow={content.eyebrow}

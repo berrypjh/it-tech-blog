@@ -59,14 +59,6 @@ export type FiberCentralContent = {
     previewTitle: string;
     items: PreviewItem[];
   };
-  closing: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    mainMessage: { line1: string; line2: string };
-    emphasis: string;
-    body: string;
-  };
   finale: FinaleBannerContent;
 };
 
@@ -241,17 +233,6 @@ const ko: FiberCentralContent = {
         iconName: 'arrowUp',
       },
     ],
-  },
-  closing: {
-    number: '05',
-    eyebrow: '마무리',
-    title: '마무리 메시지',
-    mainMessage: {
-      line1: 'Fiber는 React의 렌더링을 가능하게 하는',
-      line2: '중심 자료구조다.',
-    },
-    emphasis: '중심 자료구조',
-    body: '이 객체를 이해하면, 이후 업데이트 흐름과 Render Phase가 실제 코드 구조로 보이기 시작한다.',
   },
   finale: {
     progressLabel: '6/15 챕터 완료',
@@ -436,17 +417,6 @@ const en: FiberCentralContent = {
         iconName: 'arrowUp',
       },
     ],
-  },
-  closing: {
-    number: '05',
-    eyebrow: 'CLOSING',
-    title: 'Closing message',
-    mainMessage: {
-      line1: 'A Fiber is the central data structure',
-      line2: 'that powers React rendering.',
-    },
-    emphasis: 'central data structure',
-    body: 'Once this object makes sense, the update flow and Render Phase become recognisable in the actual code structure.',
   },
   finale: {
     progressLabel: 'Chapter 6 of 15 complete',

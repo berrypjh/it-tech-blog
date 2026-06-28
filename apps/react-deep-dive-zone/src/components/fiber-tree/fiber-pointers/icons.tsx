@@ -13,7 +13,6 @@ export {
   MoveRight as MoveRightIcon,
   MoveUp as MoveUpIcon,
   Network as NetworkIcon,
-  PencilLine as PencilLineIcon,
   Rocket as RocketIcon,
   Sparkles as SparklesIcon,
   Star as StarIcon,

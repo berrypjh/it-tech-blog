@@ -138,12 +138,6 @@ export type FiberStateNodeContent = {
     explanationLabel: string;
     cards: QuizCard[];
   };
-  checklist: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    items: string[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -365,18 +359,6 @@ const ko: FiberStateNodeContent = {
       },
     ],
   },
-  checklist: {
-    number: '07',
-    eyebrow: '핵심 체크리스트',
-    title: '이번 페이지 핵심 체크리스트',
-    items: [
-      'stateNode는 외부 연결 슬롯이다',
-      'Fiber tag에 따라 연결 대상이 달라진다',
-      'HostRoot는 FiberRoot 객체와 연결된다',
-      'HostComponent는 host instance와 연결된다',
-      'ClassComponent는 클래스 인스턴스와 연결된다',
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'return / child / sibling',
@@ -588,18 +570,6 @@ const en: FiberStateNodeContent = {
         explanation:
           'Depending on the tag, it can point to a DOM node, a class instance, or a root object.',
       },
-    ],
-  },
-  checklist: {
-    number: '07',
-    eyebrow: 'CORE CHECKLIST',
-    title: 'Page recap checklist',
-    items: [
-      'stateNode is an external connection slot',
-      'Its target depends on the Fiber tag',
-      'HostRoot links to the FiberRoot object',
-      'HostComponent links to a host instance',
-      'ClassComponent links to a class instance',
     ],
   },
   nextStep: {

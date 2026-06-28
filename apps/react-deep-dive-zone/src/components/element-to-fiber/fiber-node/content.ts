@@ -15,13 +15,6 @@ export type InfoGroupCard = {
   accent: 'emerald' | 'violet' | 'sky' | 'amber';
 };
 
-export type CodeLineGroup = {
-  id: string;
-  label: string;
-  tone: 'sky' | 'emerald' | 'violet' | 'amber';
-  lines: string[];
-};
-
 export type ReasonCard = {
   id: string;
   title: string;
@@ -65,12 +58,10 @@ export type FiberStoredInformationContent = {
     filePath: string;
     focusLabel: string;
     focus: string;
-    questionLabel: string;
     question: string;
-    hintCta: string;
-    hint: string;
-    codeTitle: string;
-    groups: CodeLineGroup[];
+    primaryCta: string;
+    primaryHref: string;
+    code: string;
   };
   expansion: {
     badge: string;
@@ -195,51 +186,37 @@ const ko: FiberStoredInformationContent = {
     title: '실제 코드 체크포인트',
     description: 'FiberNode 생성자에서 필드가 어떻게 초기화되는지 그대로 봅니다.',
     fileLabel: '파일',
-    filePath: 'ReactFiber.js',
+    filePath: 'packages/react-reconciler/src/ReactFiber.js',
     focusLabel: '볼 곳',
     focus: 'FiberNode 필드 초기화',
-    questionLabel: '핵심 질문',
     question: 'Fiber에는 Element에 없던 어떤 종류의 정보가 추가될까?',
-    hintCta: '힌트 보기',
-    hint: 'FiberNode 생성자는 네 묶음으로 필드를 초기화합니다. 기본 식별 정보, 트리 연결, props/state/update, 그리고 작업 상태와 alternate입니다.',
-    codeTitle: 'ReactFiber.js',
-    groups: [
-      {
-        id: 'identity',
-        label: '기본 식별 정보',
-        tone: 'sky',
-        lines: [
-          'this.tag = tag;',
-          'this.key = key;',
-          'this.elementType = null;',
-          'this.type = null;',
-          'this.stateNode = null;',
-        ],
-      },
-      {
-        id: 'tree',
-        label: '트리 연결',
-        tone: 'emerald',
-        lines: ['this.return = null;', 'this.child = null;', 'this.sibling = null;'],
-      },
-      {
-        id: 'update',
-        label: 'props / state / update',
-        tone: 'violet',
-        lines: [
-          'this.pendingProps = pendingProps;',
-          'this.memoizedProps = null;',
-          'this.updateQueue = null;',
-          'this.memoizedState = null;',
-        ],
-      },
-      {
-        id: 'work',
-        label: '작업 상태 / alternate',
-        tone: 'amber',
-        lines: ['this.flags = NoFlags;', 'this.lanes = NoLanes;', 'this.alternate = null;'],
-      },
-    ],
+    primaryCta: 'ReactFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `function FiberNode(tag, pendingProps, key, mode) {
+  // 기본 식별 정보
+  this.tag = tag;
+  this.key = key;
+  this.elementType = null;
+  this.type = null;
+  this.stateNode = null;
+
+  // 트리 연결
+  this.return = null;
+  this.child = null;
+  this.sibling = null;
+
+  // props / state / update
+  this.pendingProps = pendingProps;
+  this.memoizedProps = null;
+  this.updateQueue = null;
+  this.memoizedState = null;
+
+  // 작업 상태 / alternate
+  this.flags = NoFlags;
+  this.lanes = NoLanes;
+  this.alternate = null;
+}`,
   },
   expansion: {
     badge: '04',
@@ -407,51 +384,37 @@ const en: FiberStoredInformationContent = {
     title: 'Source-code checkpoint',
     description: 'Look at the FiberNode constructor and how its fields are initialized.',
     fileLabel: 'File',
-    filePath: 'ReactFiber.js',
+    filePath: 'packages/react-reconciler/src/ReactFiber.js',
     focusLabel: 'Spot',
     focus: 'FiberNode field initialization',
-    questionLabel: 'Key question',
     question: "What kind of information does a Fiber add that an Element doesn't have?",
-    hintCta: 'Show hint',
-    hint: 'The FiberNode constructor initializes fields in four groups: basic identity, tree links, props/state/update, and work state / alternate.',
-    codeTitle: 'ReactFiber.js',
-    groups: [
-      {
-        id: 'identity',
-        label: 'Basic identity',
-        tone: 'sky',
-        lines: [
-          'this.tag = tag;',
-          'this.key = key;',
-          'this.elementType = null;',
-          'this.type = null;',
-          'this.stateNode = null;',
-        ],
-      },
-      {
-        id: 'tree',
-        label: 'Tree links',
-        tone: 'emerald',
-        lines: ['this.return = null;', 'this.child = null;', 'this.sibling = null;'],
-      },
-      {
-        id: 'update',
-        label: 'props / state / update',
-        tone: 'violet',
-        lines: [
-          'this.pendingProps = pendingProps;',
-          'this.memoizedProps = null;',
-          'this.updateQueue = null;',
-          'this.memoizedState = null;',
-        ],
-      },
-      {
-        id: 'work',
-        label: 'Work state / alternate',
-        tone: 'amber',
-        lines: ['this.flags = NoFlags;', 'this.lanes = NoLanes;', 'this.alternate = null;'],
-      },
-    ],
+    primaryCta: 'Read ReactFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
+    code: `function FiberNode(tag, pendingProps, key, mode) {
+  // Basic identity
+  this.tag = tag;
+  this.key = key;
+  this.elementType = null;
+  this.type = null;
+  this.stateNode = null;
+
+  // Tree links
+  this.return = null;
+  this.child = null;
+  this.sibling = null;
+
+  // props / state / update
+  this.pendingProps = pendingProps;
+  this.memoizedProps = null;
+  this.updateQueue = null;
+  this.memoizedState = null;
+
+  // Work state / alternate
+  this.flags = NoFlags;
+  this.lanes = NoLanes;
+  this.alternate = null;
+}`,
   },
   expansion: {
     badge: '04',

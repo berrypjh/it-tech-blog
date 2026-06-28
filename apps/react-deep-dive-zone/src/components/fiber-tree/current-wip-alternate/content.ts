@@ -117,12 +117,6 @@ export type CurrentWipAlternateContent = {
     explanationLabel: string;
     cards: QuizCard[];
   };
-  checklist: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    items: string[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -378,18 +372,6 @@ const ko: CurrentWipAlternateContent = {
       },
     ],
   },
-  checklist: {
-    number: '07',
-    eyebrow: '핵심 체크리스트',
-    title: '핵심 체크리스트',
-    items: [
-      'React는 두 벌의 Fiber 트리를 관리한다',
-      'current는 마지막 commit 결과를 담고 있다',
-      'workInProgress는 다음 결과를 계산하는 트리다',
-      '같은 위치의 Fiber들은 alternate로 연결된다',
-      'Commit 후 트리가 전환된다',
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Fiber는 왜 중심 자료구조인가?',
@@ -603,18 +585,6 @@ const en: CurrentWipAlternateContent = {
           'alternate points to the opposite version, so the two trees can stay in sync and be reused.',
         tone: 'violet',
       },
-    ],
-  },
-  checklist: {
-    number: '07',
-    eyebrow: 'CORE CHECKLIST',
-    title: 'Key checklist',
-    items: [
-      'React maintains two Fiber trees',
-      'current holds the last commit result',
-      'workInProgress computes the next result',
-      'Fibers in the same position are linked by alternate',
-      'After commit, the tree is swapped',
     ],
   },
   nextStep: {

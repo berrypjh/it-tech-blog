@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ElementVsFiberContent, FlowCard, FlowCardKind } from '../content';
@@ -17,6 +18,7 @@ const toneByKind: Record<FlowCardKind, ToneKey> = {
 export const ElementToFiberFlow = ({ content }: Props) => (
   <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -41,30 +43,9 @@ export const ElementToFiberFlow = ({ content }: Props) => (
           </li>
         ))}
       </ol>
-
-      <div
-        className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl px-md py-md',
-          'bg-gradient-to-r from-sky-50 via-violet-50 to-teal-50',
-          'dark:from-sky-950/40 dark:via-violet-950/40 dark:to-teal-950/40',
-          toneTokens.sky.border,
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-10 h-10 rounded-full shrink-0',
-            'bg-[var(--term-surface)] border border-[var(--term-border)]',
-            toneTokens.violet.text,
-          )}
-        >
-          <SproutIcon className="h-5 w-5" />
-        </span>
-        <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          {content.footnote}
-        </p>
-      </div>
     </div>
+
+    <SectionNote icon={<SproutIcon className="h-4 w-4" />}>{content.footnote}</SectionNote>
   </section>
 );
 

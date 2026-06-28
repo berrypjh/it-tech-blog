@@ -17,6 +17,7 @@ const toneByVariant: Record<WorkTagCard['variant'], ToneKey> = {
 export const WorkTagCards = ({ content }: Props) => (
   <section id="work-tags" aria-labelledby="heading-work-tags" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="work-tags"
       number={content.badge}
       eyebrow={content.eyebrow}

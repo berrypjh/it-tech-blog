@@ -17,6 +17,7 @@ const iconMap = {
 export const WhyFiberTagsDiffer = ({ content }: Props) => (
   <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="reasons"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -1,7 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { AlternateFiberContent } from '../content';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
+import type { AlternateFiberContent, FiberRole } from '../content';
 import {
   ArrowLeftRightIcon,
   ArrowUpDownIcon,
@@ -14,6 +17,11 @@ import {
 
 type Props = { content: AlternateFiberContent['doubleBuffering'] };
 
+const roleTone: Record<FiberRole, ToneKey> = {
+  current: 'emerald',
+  workInProgress: 'violet',
+};
+
 export const DoubleBufferingSection = ({ content }: Props) => (
   <section
     id="double-buffering"
@@ -21,6 +29,7 @@ export const DoubleBufferingSection = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="double-buffering"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -38,7 +47,7 @@ export const DoubleBufferingSection = ({ content }: Props) => (
     >
       <Card
         variant="current"
-        icon={<MonitorIcon className="h-6 w-6" />}
+        icon={<MonitorIcon className="h-5 w-5" />}
         title={content.leftTitle}
         body={content.leftBody}
       />
@@ -46,27 +55,20 @@ export const DoubleBufferingSection = ({ content }: Props) => (
       {/* center: 준비 중 */}
       <div className="flex items-center justify-center" aria-hidden="true">
         <div className="flex flex-col items-center gap-2">
-          <span
-            className={cn(
-              'inline-flex items-center justify-center w-14 h-14 rounded-full',
-              'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950',
-              'shadow-[0_10px_28px_-10px_rgba(2,132,199,0.55)]',
-            )}
-          >
-            <RefreshIcon className="h-6 w-6" />
-          </span>
+          <ToneIconBox tone="sky" size="md">
+            <RefreshIcon className="h-5 w-5" />
+          </ToneIconBox>
           <span
             className={cn(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'text-[11px] font-bold uppercase tracking-wider font-mono',
-              'border-sky-300/80 bg-sky-50 text-sky-700',
-              'dark:border-sky-700/70 dark:bg-sky-950/40 dark:text-sky-200',
+              toneTokens.sky.chip,
             )}
           >
             <FlaskIcon className="h-3 w-3" />
             {content.centerLabel}
           </span>
-          <span className="text-sky-600 dark:text-sky-300">
+          <span className="text-[var(--term-accent)]">
             <span className="contents">
               <ArrowUpDownIcon className="h-4 w-4 lg:hidden" />
               <ArrowLeftRightIcon className="h-4 w-4 hidden lg:block" />
@@ -77,33 +79,13 @@ export const DoubleBufferingSection = ({ content }: Props) => (
 
       <Card
         variant="workInProgress"
-        icon={<WorkflowIcon className="h-6 w-6" />}
+        icon={<WorkflowIcon className="h-5 w-5" />}
         title={content.rightTitle}
         body={content.rightBody}
       />
     </div>
 
-    <div
-      className={cn(
-        'flex items-start gap-sm rounded-2xl border-2 p-md sm:p-lg',
-        'border-sky-300/70 bg-sky-50/70',
-        'dark:border-sky-700/70 dark:bg-sky-950/30',
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex items-center justify-center w-12 h-12 rounded-2xl shrink-0',
-          'bg-sky-600 text-white dark:bg-sky-500 dark:text-slate-950',
-          'shadow-[0_8px_22px_-8px_rgba(2,132,199,0.55)]',
-        )}
-      >
-        <LayersIcon className="h-6 w-6" />
-      </span>
-      <p className="text-sm sm:text-md font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep self-center">
-        {content.bottomMessage}
-      </p>
-    </div>
+    <SectionNote icon={<LayersIcon className="h-4 w-4" />}>{content.bottomMessage}</SectionNote>
   </section>
 );
 
@@ -113,42 +95,26 @@ const Card = ({
   title,
   body,
 }: {
-  variant: 'current' | 'workInProgress';
+  variant: FiberRole;
   icon: React.ReactNode;
   title: string;
   body: string;
 }) => {
-  const isCurrent = variant === 'current';
+  const tone = roleTone[variant];
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
         'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg min-w-0',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        isCurrent
-          ? 'border-emerald-300/80 dark:border-emerald-700/70'
-          : 'border-violet-300/80 dark:border-violet-700/70',
+        t.fill.border,
       )}
     >
       <header className="flex items-center gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-2xl shrink-0',
-            isCurrent
-              ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-950'
-              : 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-950',
-          )}
-        >
+        <ToneIconBox tone={tone} size="md">
           {icon}
-        </span>
-        <h3
-          className={cn(
-            'text-sm sm:text-md font-extrabold tracking-tight break-keep',
-            isCurrent
-              ? 'text-emerald-800 dark:text-emerald-100'
-              : 'text-violet-800 dark:text-violet-100',
-          )}
-        >
+        </ToneIconBox>
+        <h3 className={cn('text-sm sm:text-md font-extrabold tracking-tight break-keep', t.text)}>
           {title}
         </h3>
       </header>

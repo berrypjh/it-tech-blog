@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { FragmentFlow } from './sections/FragmentFlow';
 import { FragmentModeHero } from './sections/FragmentModeHero';
 import { OtherSpecialTypes } from './sections/OtherSpecialTypes';
-import { QuickChecklist } from './sections/QuickChecklist';
 import { SourceCodeCheckpoint } from './sections/SourceCodeCheckpoint';
 import { StrictModeFlow } from './sections/StrictModeFlow';
 import { WorkTagCards } from './sections/WorkTagCards';
@@ -25,7 +24,6 @@ export const FragmentModeFiberPage = ({ locale }: Props) => {
       <SourceCodeCheckpoint content={c.checkpoint} />
       <WorkTagCards content={c.workTags} />
       <OtherSpecialTypes content={c.others} />
-      <QuickChecklist content={c.checklist} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

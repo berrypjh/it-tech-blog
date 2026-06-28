@@ -22,6 +22,7 @@ const cardIconMap = {
 export const OwnerMeaningSection = ({ content }: Props) => (
   <section aria-labelledby="heading-owner" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="owner"
       number={content.badge}
       eyebrow={content.eyebrow}

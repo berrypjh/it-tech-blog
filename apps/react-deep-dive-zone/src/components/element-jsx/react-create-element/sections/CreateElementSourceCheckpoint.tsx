@@ -18,6 +18,7 @@ export const CreateElementSourceCheckpoint = ({ content }: Props) => {
       className="space-y-md scroll-mt-xl"
     >
       <SectionBadgeHeader
+        descriptionFullWidth
         id="checkpoint"
         number={content.badge}
         eyebrow={content.eyebrow}

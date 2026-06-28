@@ -13,6 +13,7 @@ export const KeyStableComparison = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="stable-vs-changed"
       number={content.badge}
       eyebrow={content.eyebrow}

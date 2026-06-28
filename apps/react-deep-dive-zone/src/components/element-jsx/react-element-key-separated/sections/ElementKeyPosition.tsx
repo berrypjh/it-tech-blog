@@ -12,6 +12,7 @@ type Props = { content: ReactElementKeySeparatedContent['position'] };
 export const ElementKeyPosition = ({ content }: Props) => (
   <section id="position" aria-labelledby="heading-position" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="position"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -26,6 +26,7 @@ export const KeyMisconceptions = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="misconceptions"
       number={content.badge}
       eyebrow={content.eyebrow}

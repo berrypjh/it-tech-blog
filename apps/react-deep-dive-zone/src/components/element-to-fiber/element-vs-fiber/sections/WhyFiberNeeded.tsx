@@ -17,6 +17,7 @@ const iconMap = {
 export const WhyFiberNeeded = ({ content }: Props) => (
   <section id="why-fiber" aria-labelledby="heading-why-fiber" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="why-fiber"
       number={content.badge}
       eyebrow={content.eyebrow}
@@ -44,7 +45,6 @@ const CardView = ({ card }: { card: WhyFiberCard }) => {
         'group flex flex-1 items-start gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
         'min-h-[120px]',
       )}
     >

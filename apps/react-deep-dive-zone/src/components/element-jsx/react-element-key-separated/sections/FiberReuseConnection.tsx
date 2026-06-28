@@ -21,6 +21,7 @@ const toFlowStep = (step: FiberFlowStep): FlowStepItem => {
 export const FiberReuseConnection = ({ content }: Props) => (
   <section id="fiber" aria-labelledby="heading-fiber" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="fiber"
       number={content.badge}
       eyebrow={content.eyebrow}

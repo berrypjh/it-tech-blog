@@ -16,6 +16,7 @@ const iconMap = {
 export const TypeKindCards = ({ content }: Props) => (
   <section id="kinds" aria-labelledby="heading-kinds" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="kinds"
       number={content.badge}
       eyebrow={content.eyebrow}

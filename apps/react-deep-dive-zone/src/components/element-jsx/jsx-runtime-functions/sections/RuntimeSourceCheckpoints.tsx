@@ -15,6 +15,7 @@ export const RuntimeSourceCheckpoints = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="checkpoints"
       number={content.badge}
       eyebrow={content.eyebrow}

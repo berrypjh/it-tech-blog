@@ -28,6 +28,7 @@ const toRow = (step: FlowStep): StepRow => {
 export const FunctionCallFlow = ({ content }: Props) => (
   <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
       number={content.badge}
       eyebrow={content.eyebrow}

@@ -16,6 +16,7 @@ const iconMap = {
 export const ProdDevComparison = ({ content }: Props) => (
   <section id="prod-dev" aria-labelledby="heading-prod-dev" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="prod-dev"
       number={content.badge}
       eyebrow={content.eyebrow}
