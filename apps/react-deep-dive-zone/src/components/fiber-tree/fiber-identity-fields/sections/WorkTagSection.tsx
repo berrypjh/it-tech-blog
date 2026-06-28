@@ -10,7 +10,7 @@ export const WorkTagSection = ({ content }: Props) => (
   <section id="work-tags" aria-labelledby="heading-work-tags" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="work-tags"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<TagIcon className="h-5 w-5" />}

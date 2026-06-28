@@ -1,9 +1,7 @@
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
   Boxes as BoxesIcon,
   Database as DatabaseIcon,
-  ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,
   FileCode as FileCodeIcon,
   Fingerprint as FingerprintIcon,
@@ -16,7 +14,6 @@ export {
   ListTree as ListTreeIcon,
   Network as NetworkIcon,
   RefreshCw as RefreshIcon,
-  Rocket as RocketIcon,
   Sparkles as SparklesIcon,
   Wand2 as WandIcon,
   Zap as ZapIcon,

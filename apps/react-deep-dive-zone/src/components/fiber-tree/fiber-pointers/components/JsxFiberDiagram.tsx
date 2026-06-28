@@ -1,6 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { FiberTreePointersContent } from '../content';
+
+import { pointerTone } from './pointerStyles';
 
 type Props = {
   nodes: FiberTreePointersContent['conversion']['diagramNodes'];
@@ -19,12 +22,12 @@ export const JsxFiberDiagram = ({ nodes }: Props) => {
         <div className="flex justify-center">
           <NodeCard node={map.Card} />
         </div>
-        <VerticalConnector kind="child" />
+        <VerticalConnector />
 
         {/* Row 2: Header [sibling] Main */}
         <div className="flex items-center justify-center gap-2 sm:gap-3">
           <NodeCard node={map.Header} />
-          <HorizontalArrow kind="sibling" />
+          <HorizontalArrow />
           <NodeCard node={map.Main} />
         </div>
 
@@ -32,17 +35,22 @@ export const JsxFiberDiagram = ({ nodes }: Props) => {
         <div className="grid grid-cols-2 mt-1">
           <div />
           <div className="flex flex-col items-center">
-            <VerticalConnector kind="child" />
+            <VerticalConnector />
             <div className="flex items-center gap-2 sm:gap-3">
               <NodeCard node={map.Button} />
-              <HorizontalArrow kind="sibling" />
+              <HorizontalArrow />
               <NodeCard node={map.List} />
             </div>
           </div>
         </div>
 
         {/* return summary */}
-        <div className="mt-md grid grid-cols-1 sm:grid-cols-2 gap-1 px-2 text-[10.5px] font-mono text-sky-700 dark:text-sky-300">
+        <div
+          className={cn(
+            'mt-md grid grid-cols-1 sm:grid-cols-2 gap-1 px-2 text-[10.5px] font-mono',
+            toneTokens[pointerTone.return].text,
+          )}
+        >
           <ReturnRow from="Header" to="Card" />
           <ReturnRow from="Main" to="Card" />
           <ReturnRow from="Button" to="Main" />
@@ -60,9 +68,8 @@ const NodeCard = ({
 }) => (
   <article
     className={cn(
-      'rounded-xl border bg-white dark:bg-slate-900/60 px-3 py-1.5 min-w-[90px]',
-      'border-slate-200/80 dark:border-slate-700/70 shadow-[0_2px_0_var(--term-border)]',
-      'text-center',
+      'rounded-xl border bg-[var(--term-surface)] px-3 py-1.5 min-w-[90px] text-center',
+      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
   >
     <h4 className="text-xsm font-bold text-[var(--term-fg)] leading-tight">{node.label}</h4>
@@ -70,35 +77,30 @@ const NodeCard = ({
   </article>
 );
 
-const VerticalConnector = ({ kind }: { kind: 'child' }) => (
+const VerticalConnector = () => (
   <div className="flex flex-col items-center my-1">
     <span
       aria-hidden="true"
-      className="block w-px h-3 border-l-2 border-emerald-500/80 dark:border-emerald-400/70"
+      className={cn('block w-px h-3 border-l-2', toneTokens.emerald.border)}
     />
-    <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-300">
-      {kind}
-    </span>
+    <span className={cn('text-[10px] font-mono font-bold', toneTokens.emerald.text)}>child</span>
     <span
       aria-hidden="true"
-      className="block w-px h-3 border-l-2 border-emerald-500/80 dark:border-emerald-400/70"
+      className={cn('block w-px h-3 border-l-2', toneTokens.emerald.border)}
     />
   </div>
 );
 
-const HorizontalArrow = ({ kind }: { kind: 'sibling' }) => (
+const HorizontalArrow = () => (
   <span className="flex items-center gap-1">
     <span
       aria-hidden="true"
-      className="block h-px w-3 sm:w-5 border-t-2 border-violet-500/80 dark:border-violet-400/70"
+      className={cn('block h-px w-3 sm:w-5 border-t-2', toneTokens.violet.border)}
     />
-    <span className="text-[10px] font-mono font-bold text-violet-700 dark:text-violet-300">
-      {kind}
+    <span className={cn('text-[10px] font-mono font-bold', toneTokens.violet.text)}>sibling</span>
+    <span aria-hidden="true" className={cn('text-xsm leading-none', toneTokens.violet.text)}>
+      →
     </span>
-    <span
-      aria-hidden="true"
-      className="block h-0 w-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-violet-500/80 dark:border-l-violet-400/70"
-    />
   </span>
 );
 
@@ -106,7 +108,7 @@ const ReturnRow = ({ from, to }: { from: string; to: string }) => (
   <div className="flex items-center gap-1">
     <span
       aria-hidden="true"
-      className="block h-px w-4 border-t-2 border-dashed border-sky-500/80 dark:border-sky-400/70"
+      className={cn('block h-px w-4 border-t-2 border-dashed', toneTokens.sky.border)}
     />
     <code className="font-mono">
       {from}.<span className="font-bold">return</span> → {to}

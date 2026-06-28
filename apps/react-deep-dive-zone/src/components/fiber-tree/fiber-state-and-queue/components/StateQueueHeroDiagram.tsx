@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateAndQueueContent } from '../content';
@@ -19,19 +21,7 @@ export const StateQueueHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.cardLabel} 노드는 ${content.memoizedCard.title}(${content.memoizedCard.subtitle})와 ${content.updateQueueCard.title}(${content.updateQueueCard.subtitle})를 별도로 관리합니다.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <FiberCard label={content.cardLabel} fields={content.fiberFields} />
 
@@ -50,7 +40,7 @@ export const StateQueueHeroDiagram = ({ content, className }: Props) => {
           />
         </div>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -86,9 +76,7 @@ const FiberCard = ({
             key={`${f.label}-${i}`}
             className={cn(
               'rounded-md px-2 py-1 text-[12px] font-mono',
-              tone
-                ? cn('border-l-4 font-bold', tone.chip, tone.border)
-                : 'text-[var(--term-muted)] opacity-80',
+              tone ? cn('border font-bold', tone.chip) : 'text-[var(--term-muted)] opacity-80',
             )}
           >
             {f.label}
@@ -137,12 +125,3 @@ const FieldCardView = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

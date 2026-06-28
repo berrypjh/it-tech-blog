@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
 
-export type GroupTone = 'sky' | 'emerald' | 'violet' | 'amber' | 'rose' | 'teal';
+export type GroupTone = 'sky' | 'emerald' | 'violet' | 'amber' | 'indigo' | 'teal';
 
 export type FieldGroup = {
   id: 'identity' | 'connection' | 'input' | 'state-queue' | 'flags' | 'scheduling';
@@ -40,19 +40,19 @@ export type FiberCentralContent = {
     fiberGroupFields: { id: FieldGroup['id']; rows: string[] }[];
   };
   summary: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: FieldGroup[];
   };
   flow: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     steps: FlowStep[];
   };
   nextPreview: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     question: { lines: string[]; emphasis: string };
@@ -85,7 +85,7 @@ const ko: FiberCentralContent = {
     ],
   },
   summary: {
-    number: '01',
+    badge: '01',
     eyebrow: '최종 요약',
     title: '전체 구조 최종 요약',
     cards: [
@@ -126,7 +126,7 @@ const ko: FiberCentralContent = {
         title: '변경 표시',
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: '변경 효과와 삭제 정보를 표시합니다.',
-        tone: 'rose',
+        tone: 'indigo',
         iconName: 'flag',
       },
       {
@@ -140,7 +140,7 @@ const ko: FiberCentralContent = {
     ],
   },
   flow: {
-    number: '02',
+    badge: '02',
     eyebrow: '렌더링 흐름 연결',
     title: '한 Fiber에서 전체 렌더링 흐름으로 연결',
     steps: [
@@ -181,7 +181,7 @@ const ko: FiberCentralContent = {
         number: '5',
         title: 'flags 기록',
         body: '변경이 필요한 부분에 flags / subtreeFlags / deletions를 남깁니다.',
-        tone: 'rose',
+        tone: 'indigo',
         iconName: 'flag',
       },
       {
@@ -195,7 +195,7 @@ const ko: FiberCentralContent = {
     ],
   },
   nextPreview: {
-    number: '04',
+    badge: '03',
     eyebrow: '다음 챕터 예고',
     title: '다음 챕터 예고',
     question: {
@@ -269,7 +269,7 @@ const en: FiberCentralContent = {
     ],
   },
   summary: {
-    number: '01',
+    badge: '01',
     eyebrow: 'FINAL SUMMARY',
     title: 'Whole-structure final summary',
     cards: [
@@ -310,7 +310,7 @@ const en: FiberCentralContent = {
         title: 'Change flags',
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: 'Marks change effects and deletion info.',
-        tone: 'rose',
+        tone: 'indigo',
         iconName: 'flag',
       },
       {
@@ -324,7 +324,7 @@ const en: FiberCentralContent = {
     ],
   },
   flow: {
-    number: '02',
+    badge: '02',
     eyebrow: 'RENDERING FLOW',
     title: 'From one Fiber to the whole rendering flow',
     steps: [
@@ -365,7 +365,7 @@ const en: FiberCentralContent = {
         number: '5',
         title: 'Record flags',
         body: 'flags / subtreeFlags / deletions are written where changes are needed.',
-        tone: 'rose',
+        tone: 'indigo',
         iconName: 'flag',
       },
       {
@@ -379,7 +379,7 @@ const en: FiberCentralContent = {
     ],
   },
   nextPreview: {
-    number: '04',
+    badge: '03',
     eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     question: {

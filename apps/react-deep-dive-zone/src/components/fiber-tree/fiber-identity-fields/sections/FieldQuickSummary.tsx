@@ -19,7 +19,7 @@ export const FieldQuickSummary = ({ content }: Props) => (
   <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="summary"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListTreeIcon className="h-5 w-5" />}

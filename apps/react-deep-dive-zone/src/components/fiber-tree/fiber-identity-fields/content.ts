@@ -47,6 +47,8 @@ export type CodeBlock = {
   fileName: string;
   language: string;
   content: string;
+  href: string;
+  cta: string;
   annotationLabel: string;
   annotationTone: ToneKey;
 };
@@ -62,20 +64,20 @@ export type FiberIdentityFieldsContent = {
     extraNote: string;
   };
   summary: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: QuickSummaryCard[];
   };
   workTags: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: WorkTagCard[];
     banner: string;
   };
   keyField: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     codeLabel: string;
@@ -85,7 +87,7 @@ export type FiberIdentityFieldsContent = {
     highlights: string[];
   };
   typeVs: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     vs: string;
@@ -103,7 +105,7 @@ export type FiberIdentityFieldsContent = {
     examples: ExampleMapping[];
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -114,19 +116,17 @@ export type FiberIdentityFieldsContent = {
       lookFor: string;
       questionLabel: string;
       question: string;
-      buttonLabel: string;
-      buttonHref: string;
     };
     blocks: CodeBlock[];
   };
   mapping: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: MappingCard[];
   };
   quiz: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -191,7 +191,7 @@ const ko: FiberIdentityFieldsContent = {
     extraNote: '...',
   },
   summary: {
-    number: '01',
+    badge: '01',
     eyebrow: '빠른 요약',
     title: '4개 필드 빠른 요약',
     cards: [
@@ -230,7 +230,7 @@ const ko: FiberIdentityFieldsContent = {
     ],
   },
   workTags: {
-    number: '02',
+    badge: '02',
     eyebrow: 'WorkTag 예시',
     title: 'tag는 Fiber 종류를 나타낸다 (일부 WorkTag)',
     cards: [
@@ -247,7 +247,7 @@ const ko: FiberIdentityFieldsContent = {
     banner: 'tag는 React가 이 Fiber를 어떤 처리 경로로 다뤄야 하는지 알려준다.',
   },
   keyField: {
-    number: '03',
+    badge: '03',
     eyebrow: '형제 식별자',
     title: 'key는 형제 사이의 식별자다',
     codeLabel: 'JSX',
@@ -257,7 +257,7 @@ const ko: FiberIdentityFieldsContent = {
     highlights: ['child reconciliation', '상태 보존'],
   },
   typeVs: {
-    number: '04',
+    badge: '04',
     eyebrow: '두 type의 차이',
     title: 'elementType과 type의 차이',
     vs: 'VS',
@@ -284,7 +284,7 @@ const ko: FiberIdentityFieldsContent = {
     ],
   },
   checkpoint: {
-    number: '05',
+    badge: '05',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -298,15 +298,14 @@ const ko: FiberIdentityFieldsContent = {
       lookFor: 'tag, key, elementType, type 정의',
       questionLabel: '학습 질문',
       question: '이 정의만 보고도 Fiber가 단순 트리 노드가 아니라는 근거를 몇 가지 찾을 수 있을까?',
-      buttonLabel: 'GitHub 보기',
-      buttonHref:
-        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     blocks: [
       {
         fileName: 'ReactInternalTypes.js',
         language: 'TypeScript',
         content: reactInternalTypesCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
+        cta: 'ReactInternalTypes.js 읽기',
         annotationLabel: 'Fiber의 정체성 관련 필드',
         annotationTone: 'violet',
       },
@@ -314,13 +313,15 @@ const ko: FiberIdentityFieldsContent = {
         fileName: 'ReactWorkTags.js',
         language: 'TypeScript',
         content: reactWorkTagsCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
+        cta: 'ReactWorkTags.js 읽기',
         annotationLabel: 'WorkTag 상수 일부',
         annotationTone: 'sky',
       },
     ],
   },
   mapping: {
-    number: '06',
+    badge: '06',
     eyebrow: '실제 매핑 예시',
     title: 'JSX → Fiber 정체성 매핑 (예시)',
     cards: [
@@ -363,7 +364,7 @@ const ko: FiberIdentityFieldsContent = {
     ],
   },
   quiz: {
-    number: '07',
+    badge: '07',
     eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
@@ -417,7 +418,7 @@ const en: FiberIdentityFieldsContent = {
     extraNote: '...',
   },
   summary: {
-    number: '01',
+    badge: '01',
     eyebrow: 'QUICK SUMMARY',
     title: 'Four identity fields at a glance',
     cards: [
@@ -456,7 +457,7 @@ const en: FiberIdentityFieldsContent = {
     ],
   },
   workTags: {
-    number: '02',
+    badge: '02',
     eyebrow: 'WORKTAG EXAMPLES',
     title: 'tag tells React the Fiber kind (selected WorkTags)',
     cards: [
@@ -473,7 +474,7 @@ const en: FiberIdentityFieldsContent = {
     banner: 'tag tells React which processing path to use for this Fiber.',
   },
   keyField: {
-    number: '03',
+    badge: '03',
     eyebrow: 'SIBLING IDENTIFIER',
     title: 'key identifies a Fiber among its siblings',
     codeLabel: 'JSX',
@@ -483,7 +484,7 @@ const en: FiberIdentityFieldsContent = {
     highlights: ['child reconciliation', 'state preservation'],
   },
   typeVs: {
-    number: '04',
+    badge: '04',
     eyebrow: 'ELEMENTTYPE VS TYPE',
     title: 'elementType vs type — what is the difference?',
     vs: 'VS',
@@ -510,7 +511,7 @@ const en: FiberIdentityFieldsContent = {
     ],
   },
   checkpoint: {
-    number: '05',
+    badge: '05',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -525,15 +526,14 @@ const en: FiberIdentityFieldsContent = {
       questionLabel: 'Learning question',
       question:
         'From this definition alone, how many reasons can you find that a Fiber is more than a tree node?',
-      buttonLabel: 'View on GitHub',
-      buttonHref:
-        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     blocks: [
       {
         fileName: 'ReactInternalTypes.js',
         language: 'TypeScript',
         content: reactInternalTypesCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
+        cta: 'Read ReactInternalTypes.js',
         annotationLabel: 'Fiber identity fields',
         annotationTone: 'violet',
       },
@@ -541,13 +541,15 @@ const en: FiberIdentityFieldsContent = {
         fileName: 'ReactWorkTags.js',
         language: 'TypeScript',
         content: reactWorkTagsCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
+        cta: 'Read ReactWorkTags.js',
         annotationLabel: 'WorkTag constants',
         annotationTone: 'sky',
       },
     ],
   },
   mapping: {
-    number: '06',
+    badge: '06',
     eyebrow: 'REAL MAPPING',
     title: 'JSX → Fiber identity mapping (examples)',
     cards: [
@@ -590,7 +592,7 @@ const en: FiberIdentityFieldsContent = {
     ],
   },
   quiz: {
-    number: '07',
+    badge: '07',
     eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',

@@ -1,8 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FiberCentralContent, FieldGroup, GroupTone } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { FiberCentralContent, FieldGroup } from '../content';
 import { DatabaseIcon, FingerprintIcon, FlagIcon, ListIcon, NetworkIcon, ZapIcon } from '../icons';
 
 type Props = {
@@ -20,16 +22,6 @@ const iconMap = {
   zap: ZapIcon,
 } as const;
 
-/** GroupTone → 공유 ToneKey 매핑. (rose는 tones.ts에 없어 indigo로 표현) */
-const groupToneKey: Record<GroupTone, ToneKey> = {
-  sky: 'sky',
-  emerald: 'emerald',
-  violet: 'violet',
-  amber: 'amber',
-  rose: 'indigo',
-  teal: 'teal',
-};
-
 /**
  * Hero 핵심 비주얼.
  * 챕터에서 다룬 Fiber 필드 그룹(정체성 → 연결 → 입력 → 상태/큐 → 변경표시 → 스케줄링)을
@@ -42,19 +34,7 @@ export const FiberChapterCompleteHeroDiagram = ({ content, groups, className }: 
     .join(', ')} 그룹의 필드를 하나의 노드에 모읍니다.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <h3 className="mb-sm text-xsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
         {`// ${content.visualTitle}`}
       </h3>
@@ -71,15 +51,13 @@ export const FiberChapterCompleteHeroDiagram = ({ content, groups, className }: 
           <FiberCard label={content.fiberLabel} />
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const GroupCard = ({ group, rows }: { group: FieldGroup; rows: string[] }) => {
-  const toneKey = groupToneKey[group.tone];
-  const t = toneTokens[toneKey];
+  const t = toneTokens[group.tone];
   const Icon = iconMap[group.iconName];
-
   return (
     <article
       className={cn(
@@ -90,7 +68,7 @@ const GroupCard = ({ group, rows }: { group: FieldGroup; rows: string[] }) => {
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
-        <ToneIconBox tone={toneKey} size="sm">
+        <ToneIconBox tone={group.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span className={cn('min-w-0 truncate text-sm font-bold tracking-tight', t.text)}>
@@ -122,12 +100,3 @@ const FiberCard = ({ label }: { label: string }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

@@ -1,7 +1,6 @@
 export {
   Activity as ActivityIcon,
   ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
   ArrowUp as ArrowUpIcon,
   Boxes as BoxesIcon,
   Compass as CompassIcon,
@@ -14,9 +13,7 @@ export {
   Network as NetworkIcon,
   Pencil as PencilIcon,
   Repeat as RepeatIcon,
-  Rocket as RocketIcon,
   Send as SendIcon,
   ShieldCheck as ShieldCheckIcon,
-  Trophy as TrophyIcon,
   Zap as ZapIcon,
 } from 'lucide-react';

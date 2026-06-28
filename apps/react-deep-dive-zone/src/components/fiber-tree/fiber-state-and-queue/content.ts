@@ -67,27 +67,27 @@ export type FiberStateAndQueueContent = {
     };
   };
   comparison: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     vs: string;
     cards: ComparisonCard[];
   };
   setStateFlow: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: FlowStep[];
   };
   roleFlow: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: RoleFlowCard[];
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -108,13 +108,13 @@ export type FiberStateAndQueueContent = {
     };
   };
   connections: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ConnectionCard[];
   };
   quiz: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -187,7 +187,7 @@ const ko: FiberStateAndQueueContent = {
     },
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: '두 필드 비교',
     title: 'memoizedState / updateQueue 비교',
     vs: 'VS',
@@ -217,7 +217,7 @@ const ko: FiberStateAndQueueContent = {
     ],
   },
   setStateFlow: {
-    number: '02',
+    badge: '02',
     eyebrow: 'setState 흐름',
     title: 'setState가 들어왔을 때의 직관적 흐름',
     description: '곧바로 state가 바뀌지 않고, update 객체가 큐에 쌓여 다음 렌더에서 처리됩니다.',
@@ -265,7 +265,7 @@ const ko: FiberStateAndQueueContent = {
     ],
   },
   roleFlow: {
-    number: '03',
+    badge: '03',
     eyebrow: '필드 역할',
     title: '상태 필드와 큐 필드의 역할 구분',
     cards: [
@@ -299,7 +299,7 @@ const ko: FiberStateAndQueueContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -310,7 +310,7 @@ const ko: FiberStateAndQueueContent = {
       lookFor: 'updateQueue, memoizedState',
       questionLabel: '학습 질문',
       question: 'React는 현재 state와 대기 중인 update를 어떤 필드로 구분할까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -321,7 +321,7 @@ const ko: FiberStateAndQueueContent = {
     },
   },
   connections: {
-    number: '05',
+    badge: '05',
     eyebrow: '연결 예고',
     title: 'Hooks / Class Component와의 연결 예고',
     cards: [
@@ -358,7 +358,7 @@ const ko: FiberStateAndQueueContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
@@ -423,7 +423,7 @@ const en: FiberStateAndQueueContent = {
     },
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: 'COMPARE FIELDS',
     title: 'memoizedState vs updateQueue',
     vs: 'VS',
@@ -453,7 +453,7 @@ const en: FiberStateAndQueueContent = {
     ],
   },
   setStateFlow: {
-    number: '02',
+    badge: '02',
     eyebrow: 'SETSTATE FLOW',
     title: 'What happens when setState is called',
     description:
@@ -502,7 +502,7 @@ const en: FiberStateAndQueueContent = {
     ],
   },
   roleFlow: {
-    number: '03',
+    badge: '03',
     eyebrow: 'FIELD ROLES',
     title: 'State field vs queue field — concrete roles',
     cards: [
@@ -536,7 +536,7 @@ const en: FiberStateAndQueueContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -547,7 +547,7 @@ const en: FiberStateAndQueueContent = {
       lookFor: 'updateQueue, memoizedState',
       questionLabel: 'Learning question',
       question: 'Which fields separate current state from pending updates?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -558,7 +558,7 @@ const en: FiberStateAndQueueContent = {
     },
   },
   connections: {
-    number: '05',
+    badge: '05',
     eyebrow: 'NEXT PHASE',
     title: 'Connecting to Hooks and Class Components',
     cards: [
@@ -595,7 +595,7 @@ const en: FiberStateAndQueueContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',

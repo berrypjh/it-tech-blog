@@ -1,47 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { ToneKey } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import { HostRootDiagram } from '../components/HostRootDiagram';
 import type { FiberStateNodeContent, FlowStep } from '../content';
 import { ArrowDownIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['hostRoot'] };
-
-const stepStyle: Record<ToneKey, { card: string; code: string }> = {
-  sky: {
-    card: 'border-sky-200/80 bg-sky-50/50 dark:border-sky-800/60 dark:bg-sky-950/20',
-    code: 'text-sky-800 dark:text-sky-100',
-  },
-  cyan: {
-    card: 'border-cyan-200/80 bg-cyan-50/50 dark:border-cyan-800/60 dark:bg-cyan-950/20',
-    code: 'text-cyan-800 dark:text-cyan-100',
-  },
-  violet: {
-    card: 'border-violet-200/80 bg-violet-50/50 dark:border-violet-800/60 dark:bg-violet-950/20',
-    code: 'text-violet-800 dark:text-violet-100',
-  },
-  emerald: {
-    card: 'border-emerald-300/80 bg-emerald-50/70 dark:border-emerald-700/70 dark:bg-emerald-950/30',
-    code: 'text-emerald-900 dark:text-emerald-100',
-  },
-  blue: {
-    card: 'border-blue-200/80 bg-blue-50/50 dark:border-blue-800/60 dark:bg-blue-950/20',
-    code: 'text-blue-800 dark:text-blue-100',
-  },
-  teal: {
-    card: 'border-teal-200/80 bg-teal-50/50 dark:border-teal-800/60 dark:bg-teal-950/20',
-    code: 'text-teal-800 dark:text-teal-100',
-  },
-  indigo: {
-    card: 'border-indigo-200/80 bg-indigo-50/50 dark:border-indigo-800/60 dark:bg-indigo-950/20',
-    code: 'text-indigo-800 dark:text-indigo-100',
-  },
-  amber: {
-    card: 'border-amber-200/80 bg-amber-50/50 dark:border-amber-800/60 dark:bg-amber-950/20',
-    code: 'text-amber-800 dark:text-amber-100',
-  },
-};
 
 export const HostRootExample = ({ content }: Props) => (
   <section id="host-root" aria-labelledby="heading-host-root" className="space-y-md scroll-mt-xl">
@@ -55,7 +20,7 @@ export const HostRootExample = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.42fr)_minmax(0,_0.58fr)] gap-md lg:gap-lg items-start">
       {/* Flow */}
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 min-w-0">
         <h3 className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] mb-1">
           {`// ${content.flowLabel}`}
         </h3>
@@ -65,7 +30,7 @@ export const HostRootExample = ({ content }: Props) => (
               <StepCard step={step} />
               {idx < content.flowSteps.length - 1 && (
                 <span aria-hidden="true" className="flex justify-center py-1">
-                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-50 border border-sky-200/80 text-sky-600 dark:bg-sky-950/40 dark:border-sky-800/60 dark:text-sky-300">
+                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
                     <ArrowDownIcon className="h-3.5 w-3.5" />
                   </span>
                 </span>
@@ -83,19 +48,14 @@ export const HostRootExample = ({ content }: Props) => (
   </section>
 );
 
-const StepCard = ({ step }: { step: FlowStep }) => {
-  const tones = stepStyle[step.tone];
-  return (
-    <article
-      className={cn(
-        'rounded-xl border-2 p-sm sm:p-md',
-        tones.card,
-        step.isEmphasis && 'shadow-[0_4px_16px_-8px_rgba(16,185,129,0.5)]',
-      )}
-    >
-      <code className={cn('font-mono text-[12.5px] sm:text-xsm font-bold break-all', tones.code)}>
-        {step.code}
-      </code>
-    </article>
-  );
-};
+const StepCard = ({ step }: { step: FlowStep }) => (
+  <article
+    className={cn(
+      'rounded-xl border-2 p-sm sm:p-md',
+      toneTokens[step.tone].chip,
+      step.isEmphasis && 'shadow-[0_4px_16px_-8px_rgba(16,185,129,0.5)]',
+    )}
+  >
+    <code className="font-mono text-[12.5px] sm:text-xsm font-bold break-all">{step.code}</code>
+  </article>
+);

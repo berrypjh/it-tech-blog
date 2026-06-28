@@ -19,7 +19,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
   <section id="flags-role" aria-labelledby="heading-flags-role" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="flags-role"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FlagIcon className="h-5 w-5" />}

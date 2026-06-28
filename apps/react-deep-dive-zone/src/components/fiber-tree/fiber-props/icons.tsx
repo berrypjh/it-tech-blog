@@ -1,10 +1,5 @@
 export {
-  ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
-  CheckCircle2 as CheckCircleIcon,
   Clock as ClockIcon,
-  Database as DatabaseIcon,
-  ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,
   FileCode as FileCodeIcon,
   Gauge as GaugeIcon,
@@ -12,7 +7,6 @@ export {
   HelpCircle as HelpCircleIcon,
   Lightbulb as LightbulbIcon,
   MessageCircleQuestion as MessageQuestionIcon,
-  Rocket as RocketIcon,
   Scale as ScaleIcon,
   Sparkles as SparklesIcon,
   TrendingUp as TrendingUpIcon,

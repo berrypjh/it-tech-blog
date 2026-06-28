@@ -2,6 +2,8 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
 import { KeyIcon } from '../icons';
 
@@ -11,7 +13,7 @@ export const KeyIdentitySection = ({ content }: Props) => (
   <section id="key" aria-labelledby="heading-key" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="key"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<KeyIcon className="h-5 w-5" />}
@@ -29,24 +31,23 @@ export const KeyIdentitySection = ({ content }: Props) => (
 
       <article
         className={cn(
-          'rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
-          'border-emerald-200/80 dark:border-emerald-800/60',
+          'rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
-          'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-          'hover:border-emerald-400/70 dark:hover:border-emerald-500/60',
+          'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
+          toneTokens.emerald.border,
+          toneTokens.emerald.borderHover,
         )}
       >
         <header className="flex items-center gap-sm mb-sm">
-          <span
-            aria-hidden="true"
+          <ToneIconBox tone="emerald">
+            <KeyIcon className="h-5 w-5" />
+          </ToneIconBox>
+          <h3
             className={cn(
-              'inline-flex items-center justify-center w-12 h-12 rounded-xl',
-              'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-200',
+              'text-sm sm:text-md font-bold tracking-tight break-keep leading-snug',
+              toneTokens.emerald.text,
             )}
           >
-            <KeyIcon className="h-6 w-6" />
-          </span>
-          <h3 className="text-sm sm:text-md font-bold tracking-tight text-emerald-900 dark:text-emerald-100 break-keep leading-snug">
             {content.cardTitle}
           </h3>
         </header>
@@ -65,7 +66,7 @@ const renderWithHighlights = (text: string, highlights: string[]): React.ReactNo
   return text.split(pattern).map((part, i) => {
     if (highlights.includes(part)) {
       return (
-        <span key={i} className="font-bold text-emerald-700 dark:text-emerald-300">
+        <span key={i} className={cn('font-bold', toneTokens.emerald.text)}>
           {part}
         </span>
       );

@@ -58,7 +58,7 @@ export type FiberLanesContent = {
     items: PriorityItem[];
   };
   comparison: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     vs: string;
@@ -71,20 +71,20 @@ export type FiberLanesContent = {
     legend: { solid: string; dashed: string };
   };
   laneCards: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: LaneCard[];
   };
   bitfield: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     rows: BitfieldRow[];
     description: string;
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -105,7 +105,7 @@ export type FiberLanesContent = {
     };
   };
   propagation: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     steps: PropagationStep[];
@@ -213,7 +213,7 @@ const ko: FiberLanesContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: '두 lane 비교',
     title: 'lanes / childLanes 비교',
     vs: 'VS',
@@ -259,7 +259,7 @@ const ko: FiberLanesContent = {
     },
   },
   laneCards: {
-    number: '02',
+    badge: '02',
     eyebrow: '대표 lane',
     title: '대표 lane 카드',
     cards: [
@@ -314,7 +314,7 @@ const ko: FiberLanesContent = {
     ],
   },
   bitfield: {
-    number: '03',
+    badge: '03',
     eyebrow: '비트필드',
     title: '비트필드 시각화',
     rows: [
@@ -325,7 +325,7 @@ const ko: FiberLanesContent = {
     description: 'Lane은 하나의 이름표가 아니라, 비트 조합으로 작업 우선순위를 표현한다.',
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -336,7 +336,7 @@ const ko: FiberLanesContent = {
       lookFor: 'SyncLane, InputContinuousLane, DefaultLane, TransitionLanes',
       questionLabel: '학습 질문',
       question: 'React는 lane을 어떤 상수와 비트 조합으로 표현할까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactFiberLane.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',
     },
@@ -347,7 +347,7 @@ const ko: FiberLanesContent = {
     },
   },
   propagation: {
-    number: '05',
+    badge: '05',
     eyebrow: '부모 전파',
     title: '왜 부모가 childLanes를 가질까?',
     steps: [
@@ -448,7 +448,7 @@ const en: FiberLanesContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: 'COMPARE BOTH',
     title: 'lanes vs childLanes',
     vs: 'VS',
@@ -494,7 +494,7 @@ const en: FiberLanesContent = {
     },
   },
   laneCards: {
-    number: '02',
+    badge: '02',
     eyebrow: 'REPRESENTATIVE LANES',
     title: 'Representative lane cards',
     cards: [
@@ -549,7 +549,7 @@ const en: FiberLanesContent = {
     ],
   },
   bitfield: {
-    number: '03',
+    badge: '03',
     eyebrow: 'BITFIELD',
     title: 'Bitfield visualisation',
     rows: [
@@ -560,7 +560,7 @@ const en: FiberLanesContent = {
     description: 'A lane is not a single label — it is a bit pattern that encodes priority.',
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -571,7 +571,7 @@ const en: FiberLanesContent = {
       lookFor: 'SyncLane, InputContinuousLane, DefaultLane, TransitionLanes',
       questionLabel: 'Learning question',
       question: 'Which constants and bit patterns does React use to express lanes?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactFiberLane.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',
     },
@@ -582,7 +582,7 @@ const en: FiberLanesContent = {
     },
   },
   propagation: {
-    number: '05',
+    badge: '05',
     eyebrow: 'PARENT PROPAGATION',
     title: 'Why does the parent need childLanes?',
     steps: [

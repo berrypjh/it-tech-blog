@@ -294,7 +294,7 @@ const ko: FiberStateNodeContent = {
       lookForLines: ['root.current = uninitializedFiber', 'uninitializedFiber.stateNode = root'],
       questionLabel: '학습 질문',
       question: '루트 Fiber의 stateNode는 무엇과 연결될까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactFiberRoot.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
     },
@@ -505,7 +505,7 @@ const en: FiberStateNodeContent = {
       lookForLines: ['root.current = uninitializedFiber', 'uninitializedFiber.stateNode = root'],
       questionLabel: 'Learning question',
       question: 'What does the root Fiber’s stateNode connect to?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactFiberRoot.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
     },

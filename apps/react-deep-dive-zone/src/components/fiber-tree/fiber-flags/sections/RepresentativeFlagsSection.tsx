@@ -9,7 +9,7 @@ export const RepresentativeFlagsSection = ({ content }: Props) => (
   <section id="rep-flags" aria-labelledby="heading-rep-flags" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="rep-flags"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FlagIcon className="h-5 w-5" />}

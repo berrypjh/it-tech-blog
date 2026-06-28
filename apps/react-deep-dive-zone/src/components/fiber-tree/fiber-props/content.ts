@@ -50,13 +50,13 @@ export type FiberPropsContent = {
     };
   };
   comparison: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ComparisonCard[];
   };
   scenario: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     previousLabel: string;
@@ -73,7 +73,7 @@ export type FiberPropsContent = {
     bannerSuffix: string;
   };
   meaning: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     steps: MeaningStep[];
@@ -81,7 +81,7 @@ export type FiberPropsContent = {
     descriptionEmphasis: string;
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -102,13 +102,13 @@ export type FiberPropsContent = {
     };
   };
   reasons: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ReasonCard[];
   };
   quiz: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -186,7 +186,7 @@ const ko: FiberPropsContent = {
     },
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: '두 props 비교',
     title: 'pendingProps / memoizedProps 비교',
     cards: [
@@ -213,7 +213,7 @@ const ko: FiberPropsContent = {
     ],
   },
   scenario: {
-    number: '02',
+    badge: '02',
     eyebrow: '시나리오',
     title: '예시 변화 시나리오',
     previousLabel: '이전 렌더 (커밋됨)',
@@ -230,7 +230,7 @@ const ko: FiberPropsContent = {
     bannerSuffix: '이 동시에 존재합니다.',
   },
   meaning: {
-    number: '03',
+    badge: '03',
     eyebrow: '내부 의미',
     title: 'Fiber 내부에서 두 값의 의미',
     steps: [
@@ -264,7 +264,7 @@ const ko: FiberPropsContent = {
     descriptionEmphasis: '변경이 있을 때만',
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -275,7 +275,7 @@ const ko: FiberPropsContent = {
       lookFor: 'pendingProps, memoizedProps 주석',
       questionLabel: '학습 질문',
       question: 'React는 새 입력과 이전 입력을 어떤 필드로 구분할까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -286,7 +286,7 @@ const ko: FiberPropsContent = {
     },
   },
   reasons: {
-    number: '05',
+    badge: '05',
     eyebrow: '비교 이유',
     title: '왜 둘을 비교해야 하는가?',
     cards: [
@@ -317,7 +317,7 @@ const ko: FiberPropsContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: '판단 퀴즈',
     title: '미니 판단 퀴즈',
     questionLabel: '질문',
@@ -378,7 +378,7 @@ const en: FiberPropsContent = {
     },
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: 'COMPARE BOTH',
     title: 'pendingProps vs memoizedProps',
     cards: [
@@ -405,7 +405,7 @@ const en: FiberPropsContent = {
     ],
   },
   scenario: {
-    number: '02',
+    badge: '02',
     eyebrow: 'SCENARIO',
     title: 'A concrete change scenario',
     previousLabel: 'Previous render (committed)',
@@ -422,7 +422,7 @@ const en: FiberPropsContent = {
     bannerSuffix: ' exist at the same time.',
   },
   meaning: {
-    number: '03',
+    badge: '03',
     eyebrow: 'WHAT THEY MEAN',
     title: 'What the two values mean inside a Fiber',
     steps: [
@@ -456,7 +456,7 @@ const en: FiberPropsContent = {
     descriptionEmphasis: 'only then',
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -467,7 +467,7 @@ const en: FiberPropsContent = {
       lookFor: 'pendingProps, memoizedProps comments',
       questionLabel: 'Learning question',
       question: 'Which fields does React use to separate new input from prior input?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -478,7 +478,7 @@ const en: FiberPropsContent = {
     },
   },
   reasons: {
-    number: '05',
+    badge: '05',
     eyebrow: 'WHY COMPARE',
     title: 'Why compare the two?',
     cards: [
@@ -509,7 +509,7 @@ const en: FiberPropsContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: 'JUDGMENT QUIZ',
     title: 'Mini judgment quiz',
     questionLabel: 'Question',

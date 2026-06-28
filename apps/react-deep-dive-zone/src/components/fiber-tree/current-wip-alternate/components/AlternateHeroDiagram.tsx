@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
@@ -18,19 +20,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
     .join(', ')}.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <TreeHeader
@@ -54,7 +44,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
           <NodeList tone="emerald" nodes={content.nodes} />
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -115,9 +105,7 @@ const NodeList = ({
 
 const AlternateArrow = ({ label, subLabel }: { label: string; subLabel: string }) => (
   <div className="flex flex-col items-center gap-1" aria-hidden="true">
-    <span className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none">
-      ↓
-    </span>
+    <DownArrow />
     <span
       className={cn(
         'inline-flex items-center rounded-full border px-2 py-0.5',

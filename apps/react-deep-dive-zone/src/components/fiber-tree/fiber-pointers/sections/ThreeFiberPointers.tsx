@@ -2,9 +2,10 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import { MiniPointerDiagram } from '../components/MiniPointerDiagram';
-import type { FiberTreePointersContent, PointerCard, PointerKind } from '../content';
+import { pointerTone } from '../components/pointerStyles';
+import type { FiberTreePointersContent, PointerCard } from '../content';
 import { GitBranchIcon, MoveDownIcon, MoveRightIcon, MoveUpIcon } from '../icons';
 
 type Props = { content: FiberTreePointersContent['pointers'] };
@@ -15,17 +16,11 @@ const iconMap = {
   return: MoveUpIcon,
 } as const;
 
-const pointerTone: Record<PointerKind, ToneKey> = {
-  child: 'emerald',
-  sibling: 'violet',
-  return: 'sky',
-};
-
 export const ThreeFiberPointers = ({ content }: Props) => (
   <section id="pointers" aria-labelledby="heading-pointers" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="pointers"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<GitBranchIcon className="h-5 w-5" />}
@@ -43,23 +38,23 @@ export const ThreeFiberPointers = ({ content }: Props) => (
 
 const PointerCardItem = ({ card }: { card: PointerCard }) => {
   const tone = pointerTone[card.id];
+  const t = toneTokens[tone];
   const Icon = iconMap[card.id];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
+        'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-        toneTokens[tone].border,
+        'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
+        t.border,
+        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={tone}>
           <Icon className="h-5 w-5" />
         </ToneIconBox>
-        <code className={cn('font-mono text-md font-bold tracking-tight', toneTokens[tone].text)}>
-          {card.id}
-        </code>
+        <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{card.id}</code>
       </header>
 
       <h3 className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
@@ -69,9 +64,8 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
 
       <div
         className={cn(
-          'mt-auto rounded-2xl border border-dashed p-sm',
-          'border-[var(--term-border)] bg-slate-50/60 dark:bg-slate-900/40',
-          'flex items-center justify-center min-h-[88px]',
+          'mt-auto flex min-h-[88px] items-center justify-center rounded-xl border border-dashed p-sm',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <MiniPointerDiagram kind={card.id} />

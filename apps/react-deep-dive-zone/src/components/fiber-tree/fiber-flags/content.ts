@@ -7,6 +7,7 @@ export type TreeNode = {
   id: string;
   label: string;
   tag: string;
+  depth: number;
   effect?: TreeNodeKind;
 };
 
@@ -46,6 +47,8 @@ export type CodeBlock = {
   fileName: string;
   language: string;
   content: string;
+  href: string;
+  cta: string;
   annotations: { label: string; tone: 'emerald' | 'sky' | 'rose' | 'violet' | 'amber' }[];
 };
 
@@ -53,13 +56,12 @@ export type FiberFlagsContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string; line3: string };
-    emphasis: string;
     description: string;
     tree: TreeNode[];
     legend: { kind: EffectKind; label: string }[];
   };
   flagsRole: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     mainTitle: string;
@@ -68,7 +70,7 @@ export type FiberFlagsContent = {
     emphasis: string;
   };
   subtree: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     subtreeCard: { title: string; description: string; body: string };
@@ -80,7 +82,7 @@ export type FiberFlagsContent = {
     childLabels: { kind: EffectKind; text: string }[];
   };
   repFlags: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: RepresentativeFlagCard[];
@@ -88,7 +90,7 @@ export type FiberFlagsContent = {
     afterLabel: string;
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -99,20 +101,18 @@ export type FiberFlagsContent = {
       lookFor: string;
       questionLabel: string;
       question: string;
-      buttonLabel: string;
-      buttonHref: string;
     };
     blocks: CodeBlock[];
   };
   simulation: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     columns: { situation: string; before: string; after: string; change: string; result: string };
     rows: SimulationRow[];
   };
   commitPreview: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     renderCard: { title: string; subtitle: string; body: string };
@@ -121,7 +121,7 @@ export type FiberFlagsContent = {
     emphasis: string;
   };
   quiz: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -172,17 +172,22 @@ const ko: FiberFlagsContent = {
       line2: '바로 반영하지 않고,',
       line3: '먼저 Fiber에 표시합니다.',
     },
-    emphasis: '먼저 Fiber에 표시합니다',
     description:
       '새로 배치해야 하는가, 업데이트가 필요한가, 삭제가 필요한가를 flags와 deletions에 남깁니다.',
     tree: [
-      { id: 'App', label: 'App', tag: 'tag: HostRoot' },
-      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', effect: 'update' },
-      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent' },
-      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent' },
-      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', effect: 'update' },
-      { id: 'List', label: 'List', tag: 'tag: HostComponent', effect: 'placement' },
-      { id: 'OldItem', label: 'OldItem', tag: 'tag: HostComponent', effect: 'childDeletion' },
+      { id: 'App', label: 'App', tag: 'tag: HostRoot', depth: 0 },
+      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', depth: 1, effect: 'update' },
+      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent', depth: 2 },
+      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent', depth: 2 },
+      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', depth: 3, effect: 'update' },
+      { id: 'List', label: 'List', tag: 'tag: HostComponent', depth: 3, effect: 'placement' },
+      {
+        id: 'OldItem',
+        label: 'OldItem',
+        tag: 'tag: HostComponent',
+        depth: 3,
+        effect: 'childDeletion',
+      },
     ],
     legend: [
       { kind: 'placement', label: 'Placement' },
@@ -191,7 +196,7 @@ const ko: FiberFlagsContent = {
     ],
   },
   flagsRole: {
-    number: '01',
+    badge: '01',
     eyebrow: 'flags 역할',
     title: 'flags의 역할',
     mainTitle: 'flags',
@@ -205,7 +210,7 @@ const ko: FiberFlagsContent = {
     emphasis: '이 Fiber 자신에 직접 일어나야 하는 작업을 나타냅니다.',
   },
   subtree: {
-    number: '02',
+    badge: '02',
     eyebrow: '자식 영역과 삭제',
     title: 'subtreeFlags와 deletions',
     subtreeCard: {
@@ -228,7 +233,7 @@ const ko: FiberFlagsContent = {
     ],
   },
   repFlags: {
-    number: '03',
+    badge: '03',
     eyebrow: '대표 flag',
     title: '대표 flag 예시',
     beforeLabel: 'Before',
@@ -272,7 +277,7 @@ const ko: FiberFlagsContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -286,15 +291,14 @@ const ko: FiberFlagsContent = {
       lookFor: 'flags, subtreeFlags, deletions, MutationMask',
       questionLabel: '학습 질문',
       question: 'React는 변경 효과를 어떤 필드에 기록할까?',
-      buttonLabel: 'GitHub 보기',
-      buttonHref:
-        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
     },
     blocks: [
       {
         fileName: 'ReactInternalTypes.js',
         language: 'TypeScript',
         content: internalTypesCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
+        cta: 'ReactInternalTypes.js 읽기',
         annotations: [
           { label: '이 Fiber 자신의 effect', tone: 'emerald' },
           { label: '자식 영역의 effect 요약', tone: 'violet' },
@@ -305,12 +309,14 @@ const ko: FiberFlagsContent = {
         fileName: 'ReactFiberFlags.js',
         language: 'TypeScript',
         content: reactFiberFlagsCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
+        cta: 'ReactFiberFlags.js 읽기',
         annotations: [{ label: 'Mutation 관련 Flag 비트들의 모음', tone: 'sky' }],
       },
     ],
   },
   simulation: {
-    number: '05',
+    badge: '05',
     eyebrow: '시뮬레이션',
     title: '변경 예시 시뮬레이션',
     columns: {
@@ -365,7 +371,7 @@ const ko: FiberFlagsContent = {
     ],
   },
   commitPreview: {
-    number: '06',
+    badge: '06',
     eyebrow: '연결 예고',
     title: 'Commit Phase 연결 예고',
     renderCard: {
@@ -383,7 +389,7 @@ const ko: FiberFlagsContent = {
       'Render Phase는 무엇을 바꿀지 표시합니다. Commit Phase는 이 표시를 실제 환경에 반영합니다.',
   },
   quiz: {
-    number: '07',
+    badge: '07',
     eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
@@ -429,17 +435,22 @@ const en: FiberFlagsContent = {
       line2: 'right away — it marks them',
       line3: 'on the Fiber first.',
     },
-    emphasis: 'on the Fiber first',
     description:
       'Whether to place, update, or delete a node is recorded on flags and deletions ahead of time.',
     tree: [
-      { id: 'App', label: 'App', tag: 'tag: HostRoot' },
-      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', effect: 'update' },
-      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent' },
-      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent' },
-      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', effect: 'update' },
-      { id: 'List', label: 'List', tag: 'tag: HostComponent', effect: 'placement' },
-      { id: 'OldItem', label: 'OldItem', tag: 'tag: HostComponent', effect: 'childDeletion' },
+      { id: 'App', label: 'App', tag: 'tag: HostRoot', depth: 0 },
+      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', depth: 1, effect: 'update' },
+      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent', depth: 2 },
+      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent', depth: 2 },
+      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', depth: 3, effect: 'update' },
+      { id: 'List', label: 'List', tag: 'tag: HostComponent', depth: 3, effect: 'placement' },
+      {
+        id: 'OldItem',
+        label: 'OldItem',
+        tag: 'tag: HostComponent',
+        depth: 3,
+        effect: 'childDeletion',
+      },
     ],
     legend: [
       { kind: 'placement', label: 'Placement' },
@@ -448,7 +459,7 @@ const en: FiberFlagsContent = {
     ],
   },
   flagsRole: {
-    number: '01',
+    badge: '01',
     eyebrow: 'FLAGS ROLE',
     title: 'What flags do',
     mainTitle: 'flags',
@@ -462,7 +473,7 @@ const en: FiberFlagsContent = {
     emphasis: 'Represents the work that must happen on this Fiber itself.',
   },
   subtree: {
-    number: '02',
+    badge: '02',
     eyebrow: 'SUBTREE & DELETIONS',
     title: 'subtreeFlags and deletions',
     subtreeCard: {
@@ -485,7 +496,7 @@ const en: FiberFlagsContent = {
     ],
   },
   repFlags: {
-    number: '03',
+    badge: '03',
     eyebrow: 'REPRESENTATIVE FLAGS',
     title: 'Representative flag examples',
     beforeLabel: 'Before',
@@ -529,7 +540,7 @@ const en: FiberFlagsContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -543,15 +554,14 @@ const en: FiberFlagsContent = {
       lookFor: 'flags, subtreeFlags, deletions, MutationMask',
       questionLabel: 'Learning question',
       question: 'Which fields does React use to record effect changes?',
-      buttonLabel: 'View on GitHub',
-      buttonHref:
-        'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
     },
     blocks: [
       {
         fileName: 'ReactInternalTypes.js',
         language: 'TypeScript',
         content: internalTypesCodeEn,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
+        cta: 'Read ReactInternalTypes.js',
         annotations: [
           { label: 'effect of this Fiber itself', tone: 'emerald' },
           { label: 'summary of effects in the subtree', tone: 'violet' },
@@ -562,12 +572,14 @@ const en: FiberFlagsContent = {
         fileName: 'ReactFiberFlags.js',
         language: 'TypeScript',
         content: reactFiberFlagsCode,
+        href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
+        cta: 'Read ReactFiberFlags.js',
         annotations: [{ label: 'flag bits related to mutation', tone: 'sky' }],
       },
     ],
   },
   simulation: {
-    number: '05',
+    badge: '05',
     eyebrow: 'SIMULATION',
     title: 'Change scenario simulation',
     columns: {
@@ -622,7 +634,7 @@ const en: FiberFlagsContent = {
     ],
   },
   commitPreview: {
-    number: '06',
+    badge: '06',
     eyebrow: 'NEXT PHASE',
     title: 'Commit phase preview',
     renderCard: {
@@ -640,7 +652,7 @@ const en: FiberFlagsContent = {
       'Render Phase marks what will change. Commit Phase reflects those marks into the real environment.',
   },
   quiz: {
-    number: '07',
+    badge: '07',
     eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',

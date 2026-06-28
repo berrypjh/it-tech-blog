@@ -25,19 +25,11 @@ export const FiberTreeHero = ({ content }: Props) => (
 
       <HeroTitle>
         <span className="block">{content.title.line1}</span>
-        <span className="block">
-          {content.title.line2.split(content.emphasis).map((part, i, arr) => (
-            <span key={i}>
-              {part}
-              {i < arr.length - 1 && (
-                <span className="text-[var(--term-accent)]">{content.emphasis}</span>
-              )}
-            </span>
-          ))}
-        </span>
+        <span className="block">{content.title.line2}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-fiber-pointers">

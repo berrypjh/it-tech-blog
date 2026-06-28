@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { toneTokens } from '../../../shared/tones';
 import type { FiberLanesContent } from '../content';
 
 type Props = {
@@ -19,7 +20,7 @@ export const ParentChildFiberTree = ({
 }: Props) => (
   <div
     className={cn(
-      'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
+      'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
   >
@@ -27,29 +28,28 @@ export const ParentChildFiberTree = ({
       {/* Parent Fiber */}
       <article
         className={cn(
-          'w-full max-w-[480px] rounded-2xl border-2 p-md',
-          'border-emerald-200/80 bg-emerald-50/40',
-          'dark:border-emerald-800/60 dark:bg-emerald-950/20',
+          'w-full max-w-[480px] rounded-2xl border-2 bg-[var(--term-bg)] p-md',
+          toneTokens.emerald.border,
         )}
       >
-        <h3 className="text-xsm font-bold text-emerald-900 dark:text-emerald-100 mb-sm break-keep">
+        <h3 className={cn('mb-sm text-xsm font-bold break-keep', toneTokens.emerald.text)}>
           {parentTitle}
         </h3>
         <dl className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 font-mono text-[11.5px]">
-          <dt className="font-bold text-emerald-700 dark:text-emerald-300">lanes:</dt>
+          <dt className={cn('font-bold', toneTokens.emerald.text)}>lanes:</dt>
           <dd className="text-[var(--term-fg)] break-all">{parentLanes}</dd>
-          <dt className="font-bold text-violet-700 dark:text-violet-300">childLanes:</dt>
+          <dt className={cn('font-bold', toneTokens.violet.text)}>childLanes:</dt>
           <dd className="text-[var(--term-fg)] break-all">{parentChildLanes}</dd>
         </dl>
       </article>
 
       {/* Connector */}
       <div aria-hidden="true" className="flex flex-col items-center gap-0.5">
-        <span className="block w-px h-3 border-l-2 border-slate-300/80 dark:border-slate-700/70" />
-        <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 font-bold">
-          childLanes 전파
-        </span>
-        <span className="block w-px h-3 border-l-2 border-dashed border-violet-400/70 dark:border-violet-500/70" />
+        <span className="block h-3 w-px border-l-2 border-[var(--term-border)]" />
+        <code className={cn('text-[10px] font-mono font-bold', toneTokens.violet.text)}>
+          childLanes
+        </code>
+        <span className={cn('block h-3 w-px border-l-2 border-dashed', toneTokens.violet.border)} />
       </div>
 
       {/* Children */}
@@ -68,7 +68,7 @@ export const ParentChildFiberTree = ({
         <li className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className="block h-px w-6 border-t-2 border-slate-400/80 dark:border-slate-500/70"
+            className="block h-px w-6 border-t-2 border-[var(--term-border)]"
           />
           <span className="text-[11px] font-mono text-[var(--term-muted)] break-keep">
             {legend.solid}
@@ -77,7 +77,7 @@ export const ParentChildFiberTree = ({
         <li className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className="block h-px w-6 border-t-2 border-dashed border-violet-400/80 dark:border-violet-500/70"
+            className={cn('block h-px w-6 border-t-2 border-dashed', toneTokens.violet.border)}
           />
           <span className="text-[11px] font-mono text-[var(--term-muted)] break-keep">
             {legend.dashed}
@@ -93,9 +93,9 @@ const ChildCard = ({ child }: { child: FiberLanesContent['comparison']['children
     className={cn(
       'rounded-xl border bg-[var(--term-bg)] p-sm shadow-[0_2px_0_var(--term-border)]',
       child.hasWork
-        ? 'border-emerald-300/80 dark:border-emerald-700/70'
+        ? toneTokens.emerald.border
         : child.hasChildWork
-          ? 'border-violet-300/80 dark:border-violet-700/70 border-dashed'
+          ? cn(toneTokens.violet.border, 'border-dashed')
           : 'border-[var(--term-border)]',
     )}
   >
@@ -104,9 +104,7 @@ const ChildCard = ({ child }: { child: FiberLanesContent['comparison']['children
       <dt
         className={cn(
           'font-bold',
-          child.hasWork
-            ? 'text-emerald-700 dark:text-emerald-300'
-            : 'text-slate-500 dark:text-slate-400',
+          child.hasWork ? toneTokens.emerald.text : 'text-[var(--term-dim)]',
         )}
       >
         lanes:
@@ -115,9 +113,7 @@ const ChildCard = ({ child }: { child: FiberLanesContent['comparison']['children
       <dt
         className={cn(
           'font-bold',
-          child.hasChildWork
-            ? 'text-violet-700 dark:text-violet-300'
-            : 'text-slate-500 dark:text-slate-400',
+          child.hasChildWork ? toneTokens.violet.text : 'text-[var(--term-dim)]',
         )}
       >
         childLanes:

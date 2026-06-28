@@ -1,23 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FiberLanesContent, LaneTone } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { FiberLanesContent } from '../content';
 
 import { LaneIcon } from './LaneIcon';
+import { laneStyle } from './laneTone';
 
 type Hero = FiberLanesContent['hero'];
 type Props = { content: Hero; className?: string };
-
-/** LaneTone(슬레이트 포함)을 공유 ToneKey로 정규화. */
-const toneKey: Record<LaneTone, ToneKey> = {
-  emerald: 'emerald',
-  sky: 'sky',
-  cyan: 'cyan',
-  violet: 'violet',
-  amber: 'amber',
-  slate: 'indigo',
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -30,19 +23,7 @@ export const LanesHeroDiagram = ({ content, className }: Props) => {
     .join(', ')} 순으로 우선순위가 정리됩니다.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <SectionHeader label={content.cardLabel} caption="object" />
@@ -60,7 +41,7 @@ export const LanesHeroDiagram = ({ content, className }: Props) => {
           </ul>
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -83,9 +64,9 @@ const FiberCard = ({ fields }: { fields: Hero['fields'] }) => (
         className={cn(
           'rounded-md px-2 py-1 text-[11px] font-mono',
           row.highlight === 'lanes'
-            ? cn('border-l-4 border-l-emerald-400', toneTokens.emerald.chip)
+            ? cn('border', toneTokens.emerald.chip)
             : row.highlight === 'childLanes'
-              ? cn('border-l-4 border-l-violet-400', toneTokens.violet.chip)
+              ? cn('border', toneTokens.violet.chip)
               : 'text-[var(--term-muted)]',
         )}
       >
@@ -102,8 +83,7 @@ const FiberCard = ({ fields }: { fields: Hero['fields'] }) => (
 );
 
 const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
-  const tone = toneKey[item.tone];
-  const t = toneTokens[tone];
+  const t = laneStyle(item.tone);
   return (
     <li
       className={cn(
@@ -112,9 +92,21 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
         t.borderHover,
       )}
     >
-      <ToneIconBox tone={tone} size="sm">
-        <LaneIcon iconName={item.iconName} className="h-4 w-4" />
-      </ToneIconBox>
+      {item.tone === 'slate' ? (
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex items-center justify-center w-9 h-9 rounded-md border',
+            t.chip,
+          )}
+        >
+          <LaneIcon iconName={item.iconName} className="h-4 w-4" />
+        </span>
+      ) : (
+        <ToneIconBox tone={item.tone} size="sm">
+          <LaneIcon iconName={item.iconName} className="h-4 w-4" />
+        </ToneIconBox>
+      )}
       <span className="flex min-w-0 flex-col">
         <code className={cn('truncate font-mono text-[11.5px] font-bold tracking-tight', t.text)}>
           {item.label}
@@ -124,12 +116,3 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
     </li>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

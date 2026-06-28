@@ -2,7 +2,6 @@ export {
   ArrowRight as ArrowRightIcon,
   Boxes as BoxesIcon,
   Code2 as CodeIcon,
-  ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,
   FileCode as FileCodeIcon,
   HelpCircle as HelpCircleIcon,
@@ -11,7 +10,6 @@ export {
   ListTree as ListTreeIcon,
   Puzzle as PuzzleIcon,
   Rocket as RocketIcon,
-  Sparkles as SparklesIcon,
   Tag as TagIcon,
   Target as TargetIcon,
 } from 'lucide-react';

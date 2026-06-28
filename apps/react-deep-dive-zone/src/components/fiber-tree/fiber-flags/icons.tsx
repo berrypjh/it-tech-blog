@@ -1,9 +1,5 @@
 export {
   Anchor as AnchorIcon,
-  ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
-  CheckCircle2 as CheckCircleIcon,
-  ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,
   FileCode as FileCodeIcon,
   Flag as FlagIcon,
@@ -11,9 +7,7 @@ export {
   Lightbulb as LightbulbIcon,
   Move as MoveIcon,
   Pencil as PencilIcon,
-  Rocket as RocketIcon,
   ShieldCheck as ShieldCheckIcon,
   Sparkles as SparklesIcon,
-  Star as StarIcon,
   Trash2 as TrashIcon,
 } from 'lucide-react';

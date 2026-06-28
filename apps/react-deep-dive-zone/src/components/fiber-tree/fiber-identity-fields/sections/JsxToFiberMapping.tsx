@@ -9,7 +9,7 @@ export const JsxToFiberMapping = ({ content }: Props) => (
   <section id="mapping" aria-labelledby="heading-mapping" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="mapping"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<BoxesIcon className="h-5 w-5" />}

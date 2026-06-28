@@ -2,8 +2,9 @@ import { cn } from '@it-tech-blog/utils';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import { effectBadge } from '../components/effectStyles';
-import type { FiberFlagsContent } from '../content';
+import { EffectBadge } from '../components/EffectBadge';
+import { EFFECT_NEUTRAL, effectBorder, effectText } from '../components/effectStyles';
+import type { EffectKind, FiberFlagsContent } from '../content';
 import { FlagIcon, TrashIcon } from '../icons';
 
 type Props = { content: FiberFlagsContent['subtree'] };
@@ -12,13 +13,13 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
   <section id="subtree" aria-labelledby="heading-subtree" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="subtree"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FlagIcon className="h-5 w-5" />}
     />
 
-    {/* Top: comparison cards */}
+    {/* Top: concept cards */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
       <ConceptCard
         title={content.subtreeCard.title}
@@ -41,7 +42,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
       {/* Parent Fiber visual */}
       <article
         className={cn(
-          'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
+          'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           toneTokens.violet.border,
         )}
       >
@@ -52,7 +53,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
         </span>
         <div
           className={cn(
-            'mt-sm flex flex-col gap-2 rounded-2xl border-2 p-md',
+            'mt-sm flex flex-col gap-2 rounded-xl border-2 p-md',
             toneTokens.violet.fill.bg,
             toneTokens.violet.fill.border,
           )}
@@ -85,7 +86,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
       {/* Child subtree visual */}
       <article
         className={cn(
-          'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
+          'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
@@ -93,19 +94,23 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
           {`// ${content.childTreeLabel}`}
         </span>
         <div className="mt-sm flex flex-col items-center gap-2">
-          <ChildNode label="Parent" tone="muted" />
+          <ChildNode label="Parent" />
           <span
             aria-hidden="true"
-            className="block h-3 w-px border-l-2 border-slate-300/80 dark:border-slate-700/70"
+            className="block h-3 w-px border-l-2 border-[var(--term-border)]"
           />
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col items-center gap-1">
               <ChildNode label="Child A" effect="update" />
-              <Badge effect={content.childLabels[0]} />
+              <EffectBadge effect={content.childLabels[0].kind}>
+                {content.childLabels[0].text}
+              </EffectBadge>
             </div>
             <div className="flex flex-col items-center gap-1">
               <ChildNode label="Child B" effect="childDeletion" />
-              <Badge effect={content.childLabels[1]} />
+              <EffectBadge effect={content.childLabels[1].kind}>
+                {content.childLabels[1].text}
+              </EffectBadge>
             </div>
           </div>
         </div>
@@ -114,7 +119,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
   </section>
 );
 
-/** violet = subtreeFlags 카테고리(toneTokens), rose = 삭제(의미색, 직접 색 유지). */
+/** violet = subtreeFlags 카테고리(toneTokens), rose = 삭제(의미색, 중립 크롬 + rose 텍스트). */
 const conceptCls = {
   violet: {
     border: toneTokens.violet.border,
@@ -122,9 +127,9 @@ const conceptCls = {
     title: toneTokens.violet.text,
   },
   rose: {
-    border: 'border-rose-200/80 dark:border-rose-800/60',
-    iconWrap: 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-200',
-    title: 'text-rose-700 dark:text-rose-300',
+    border: 'border-rose-200/70 dark:border-rose-800/60',
+    iconWrap: cn(EFFECT_NEUTRAL, 'text-rose-600 dark:text-rose-300'),
+    title: 'text-rose-600 dark:text-rose-300',
   },
 } as const;
 
@@ -145,9 +150,9 @@ const ConceptCard = ({
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
+        'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
-        'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
+        'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         cls.border,
       )}
     >
@@ -173,45 +178,15 @@ const ConceptCard = ({
   );
 };
 
-const ChildNode = ({
-  label,
-  effect,
-  tone,
-}: {
-  label: string;
-  effect?: 'update' | 'childDeletion';
-  tone?: 'muted';
-}) => {
-  const cls = effect
-    ? effect === 'update'
-      ? 'border-sky-300/80 bg-sky-50/60 text-sky-900 dark:border-sky-700/70 dark:bg-sky-950/30 dark:text-sky-100'
-      : 'border-rose-300/80 border-dashed bg-rose-50/60 text-rose-900 dark:border-rose-700/70 dark:bg-rose-950/30 dark:text-rose-100'
-    : tone === 'muted'
-      ? 'border-slate-200/80 bg-white dark:border-slate-700/70 dark:bg-slate-900/60 text-[var(--term-fg)]'
-      : '';
-  return (
-    <span
-      className={cn(
-        'inline-flex items-center rounded-lg border-2 px-2.5 py-1 font-mono text-xsm font-bold',
-        cls,
-      )}
-    >
-      {label}
-    </span>
-  );
-};
-
-const Badge = ({
-  effect,
-}: {
-  effect: { kind: 'placement' | 'update' | 'childDeletion'; text: string };
-}) => (
+const ChildNode = ({ label, effect }: { label: string; effect?: EffectKind }) => (
   <span
     className={cn(
-      'inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold whitespace-nowrap',
-      effectBadge[effect.kind],
+      'inline-flex items-center rounded-lg border-2 px-2.5 py-1 font-mono text-xsm font-bold',
+      EFFECT_NEUTRAL,
+      effect ? cn(effectBorder[effect], effectText[effect]) : 'text-[var(--term-fg)]',
+      effect === 'childDeletion' && 'border-dashed',
     )}
   >
-    {effect.text}
+    {label}
   </span>
 );

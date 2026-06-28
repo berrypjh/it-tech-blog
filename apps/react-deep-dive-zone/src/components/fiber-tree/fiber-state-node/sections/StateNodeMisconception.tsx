@@ -21,7 +21,6 @@ export const StateNodeMisconception = ({ content }: Props) => (
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
-      {/* Misconception card */}
       <article
         className={cn(
           'flex flex-col gap-sm rounded-3xl border-2 p-md sm:p-lg',
@@ -56,7 +55,6 @@ export const StateNodeMisconception = ({ content }: Props) => (
         </p>
       </article>
 
-      {/* Center connector */}
       <div className="flex lg:flex-col items-center justify-center gap-sm lg:px-2">
         <span
           aria-hidden="true"
@@ -89,7 +87,6 @@ export const StateNodeMisconception = ({ content }: Props) => (
         />
       </div>
 
-      {/* Correct card */}
       <article
         className={cn(
           'flex flex-col gap-sm rounded-3xl border-2 p-md sm:p-lg',

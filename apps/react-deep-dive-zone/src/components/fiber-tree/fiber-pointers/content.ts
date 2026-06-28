@@ -6,6 +6,8 @@ export type TreeNode = {
   id: string;
   label: string;
   tag: string;
+  /** Hero traversal에서 이 노드에 도달한 포인터(루트는 없음). */
+  enter?: PointerKind;
 };
 
 export type PointerCard = {
@@ -30,15 +32,14 @@ export type TraversalStep = {
 export type FiberTreePointersContent = {
   hero: {
     badge: string;
-    title: { line1: string; line2: string };
-    emphasis: string;
+    title: { line1: string; line2: string; line3: string };
     description: string;
     nodes: TreeNode[];
     legendTitle: string;
     legendItems: { kind: PointerKind; label: string; meaning: string }[];
   };
   comparison: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     leftTitle: string;
@@ -48,13 +49,13 @@ export type FiberTreePointersContent = {
     returnRows: ConnectionRow[];
   };
   pointers: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     cards: PointerCard[];
   };
   conversion: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     jsxLabel: string;
@@ -66,7 +67,7 @@ export type FiberTreePointersContent = {
     returnRows: ConnectionRow[];
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -87,7 +88,7 @@ export type FiberTreePointersContent = {
     };
   };
   traversal: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     steps: TraversalStep[];
@@ -114,32 +115,23 @@ const checkpointCode = `export type Fiber = {
   // ... 생략 ...
 };`;
 
-const heroTree = `              App
-               ↓ child
-              Page
-          ↙ child     ↘ sibling
-      Header             Main
-                         ↓ child
-                       Button → sibling → List`;
-void heroTree;
-
 const ko: FiberTreePointersContent = {
   hero: {
     badge: 'Fiber 트리 · 4/10단계',
     title: {
       line1: 'Fiber 트리는 배열이',
-      line2: '아니라 포인터로 연결됩니다.',
+      line2: '아니라',
+      line3: '포인터로 연결됩니다.',
     },
-    emphasis: '포인터로 연결됩니다',
     description:
       'React는 첫 번째 자식으로 내려가고, 다음 형제로 이동하고, 작업을 마치면 부모 방향으로 돌아갑니다.',
     nodes: [
       { id: 'App', label: 'App', tag: 'tag: HostRoot' },
-      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent' },
-      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent' },
-      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent' },
-      { id: 'Button', label: 'Button', tag: 'tag: HostComponent' },
-      { id: 'List', label: 'List', tag: 'tag: HostComponent' },
+      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', enter: 'child' },
+      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent', enter: 'child' },
+      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent', enter: 'sibling' },
+      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', enter: 'child' },
+      { id: 'List', label: 'List', tag: 'tag: HostComponent', enter: 'sibling' },
     ],
     legendTitle: '범례',
     legendItems: [
@@ -149,7 +141,7 @@ const ko: FiberTreePointersContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: '구조 비교',
     title: '일반 UI 트리와 Fiber 연결 구조 비교',
     leftTitle: '일반 UI 트리 (계층 구조)',
@@ -174,7 +166,7 @@ const ko: FiberTreePointersContent = {
     ],
   },
   pointers: {
-    number: '02',
+    badge: '02',
     eyebrow: '세 포인터',
     title: '3개 포인터를 한 번에 이해하기',
     cards: [
@@ -196,7 +188,7 @@ const ko: FiberTreePointersContent = {
     ],
   },
   conversion: {
-    number: '03',
+    badge: '03',
     eyebrow: '실제 변환',
     title: '실제 JSX 예시를 Fiber 연결로 변환',
     jsxLabel: 'JSX',
@@ -230,7 +222,7 @@ const ko: FiberTreePointersContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -241,7 +233,7 @@ const ko: FiberTreePointersContent = {
       lookFor: 'return, child, sibling 정의',
       questionLabel: '학습 질문',
       question: 'Fiber 트리를 어떻게 포인터 3개로 표현할 수 있을까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -252,7 +244,7 @@ const ko: FiberTreePointersContent = {
     },
   },
   traversal: {
-    number: '05',
+    badge: '05',
     eyebrow: '순회 이점',
     title: '이 구조가 순회에 왜 유리한가?',
     steps: [
@@ -292,18 +284,18 @@ const en: FiberTreePointersContent = {
     badge: 'Fiber Tree · 4/10',
     title: {
       line1: 'A Fiber tree is not an array —',
-      line2: 'it is connected by pointers.',
+      line2: 'it is',
+      line3: 'connected by pointers.',
     },
-    emphasis: 'connected by pointers',
     description:
       'React goes down to the first child, moves to the next sibling, and returns to the parent when work is done.',
     nodes: [
       { id: 'App', label: 'App', tag: 'tag: HostRoot' },
-      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent' },
-      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent' },
-      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent' },
-      { id: 'Button', label: 'Button', tag: 'tag: HostComponent' },
-      { id: 'List', label: 'List', tag: 'tag: HostComponent' },
+      { id: 'Page', label: 'Page', tag: 'tag: FunctionComponent', enter: 'child' },
+      { id: 'Header', label: 'Header', tag: 'tag: FunctionComponent', enter: 'child' },
+      { id: 'Main', label: 'Main', tag: 'tag: FunctionComponent', enter: 'sibling' },
+      { id: 'Button', label: 'Button', tag: 'tag: HostComponent', enter: 'child' },
+      { id: 'List', label: 'List', tag: 'tag: HostComponent', enter: 'sibling' },
     ],
     legendTitle: 'Legend',
     legendItems: [
@@ -313,7 +305,7 @@ const en: FiberTreePointersContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: 'STRUCTURE COMPARED',
     title: 'A normal UI tree vs the Fiber pointer structure',
     leftTitle: 'Normal UI tree (hierarchy)',
@@ -338,7 +330,7 @@ const en: FiberTreePointersContent = {
     ],
   },
   pointers: {
-    number: '02',
+    badge: '02',
     eyebrow: 'THREE POINTERS',
     title: 'All three pointers in one view',
     cards: [
@@ -360,7 +352,7 @@ const en: FiberTreePointersContent = {
     ],
   },
   conversion: {
-    number: '03',
+    badge: '03',
     eyebrow: 'REAL CONVERSION',
     title: 'Convert a real JSX snippet into Fiber connections',
     jsxLabel: 'JSX',
@@ -394,7 +386,7 @@ const en: FiberTreePointersContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -405,7 +397,7 @@ const en: FiberTreePointersContent = {
       lookFor: 'return, child, sibling definitions',
       questionLabel: 'Learning question',
       question: 'How can a Fiber tree be represented with just three pointers?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
@@ -416,7 +408,7 @@ const en: FiberTreePointersContent = {
     },
   },
   traversal: {
-    number: '05',
+    badge: '05',
     eyebrow: 'TRAVERSAL BENEFIT',
     title: 'Why is this structure good for traversal?',
     steps: [

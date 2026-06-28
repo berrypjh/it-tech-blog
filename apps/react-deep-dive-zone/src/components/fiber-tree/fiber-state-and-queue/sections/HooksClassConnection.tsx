@@ -24,7 +24,7 @@ export const HooksClassConnection = ({ content }: Props) => (
   >
     <SectionBadgeHeader
       id="connections"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<HelpCircleIcon className="h-5 w-5" />}

@@ -1,31 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { DownArrow } from '../../../shared/icon';
+import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
-import { ArrowDownIcon, LightbulbIcon, NetworkIcon } from '../icons';
+import { LightbulbIcon, NetworkIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['rootCurrent'] };
-
-const tone = {
-  slate: {
-    border: 'border-slate-200/80 dark:border-slate-700/60',
-    bg: 'bg-slate-50/60 dark:bg-slate-900/40',
-    text: 'text-[var(--term-fg)]',
-    sub: 'text-[var(--term-muted)]',
-  },
-  sky: {
-    border: 'border-sky-300/80 dark:border-sky-700/70',
-    bg: 'bg-sky-50/70 dark:bg-sky-950/40',
-    text: 'text-sky-900 dark:text-sky-100',
-    sub: 'text-sky-700/80 dark:text-sky-300/80',
-  },
-  emerald: {
-    border: 'border-emerald-200/80 dark:border-emerald-800/60',
-    bg: 'bg-emerald-50/60 dark:bg-emerald-950/30',
-    text: 'text-emerald-900 dark:text-emerald-100',
-    sub: 'text-emerald-700/80 dark:text-emerald-300/80',
-  },
-} as const;
+type Step = CurrentWipAlternateContent['rootCurrent']['steps'][number];
 
 export const RootCurrentStructure = ({ content }: Props) => (
   <section
@@ -35,7 +18,7 @@ export const RootCurrentStructure = ({ content }: Props) => (
   >
     <SectionBadgeHeader
       id="root-current"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<NetworkIcon className="h-5 w-5" />}
@@ -43,56 +26,43 @@ export const RootCurrentStructure = ({ content }: Props) => (
 
     <article
       className={cn(
-        'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
+        'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <ol className="flex flex-col items-center gap-1">
-        {content.steps.map((step, idx) => {
-          const t = tone[step.tone];
-          return (
-            <li key={step.id} className="flex flex-col items-center">
-              <article
-                className={cn(
-                  'rounded-xl border-2 px-4 py-2 min-w-[180px] text-center',
-                  t.border,
-                  t.bg,
-                )}
-              >
-                <code className={cn('font-mono text-xsm font-bold', t.text)}>{step.label}</code>
-                {step.subtitle && (
-                  <span className={cn('block text-[10px] font-mono mt-0.5', t.sub)}>
-                    {step.subtitle}
-                  </span>
-                )}
-              </article>
-              {idx < content.steps.length - 1 && (
-                <span aria-hidden="true" className="flex items-center justify-center w-7 h-7 my-1">
-                  <ArrowDownIcon className="h-4 w-4 text-sky-600 dark:text-sky-300" />
-                </span>
-              )}
-            </li>
-          );
-        })}
+        {content.steps.map((step, idx) => (
+          <li key={step.id} className="flex flex-col items-center">
+            <StepBox step={step} />
+            {idx < content.steps.length - 1 && <DownArrow />}
+          </li>
+        ))}
       </ol>
 
-      <div
-        className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-sky-300/80 bg-sky-50/70',
-          'dark:border-sky-800/60 dark:bg-sky-950/30',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950/60 dark:text-sky-200 shrink-0"
-        >
-          <LightbulbIcon className="h-5 w-5" />
-        </span>
-        <p className="text-xsm sm:text-sm font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
-          {content.emphasis}
-        </p>
-      </div>
+      <SectionNote className="mt-md" icon={<LightbulbIcon className="h-4 w-4" />}>
+        {content.emphasis}
+      </SectionNote>
     </article>
   </section>
 );
+
+const StepBox = ({ step }: { step: Step }) => {
+  const t = step.tone ? toneTokens[step.tone] : null;
+  return (
+    <article
+      className={cn(
+        'min-w-[180px] rounded-xl border px-4 py-2 text-center bg-[var(--term-surface)]',
+        t ? t.border : 'border-[var(--term-border)]',
+      )}
+    >
+      <code className={cn('font-mono text-xsm font-bold', t ? t.text : 'text-[var(--term-fg)]')}>
+        {step.label}
+      </code>
+      {step.subtitle && (
+        <span className="mt-0.5 block font-mono text-[10px] text-[var(--term-muted)]">
+          {step.subtitle}
+        </span>
+      )}
+    </article>
+  );
+};

@@ -18,7 +18,7 @@ export const WhyComparePropsSection = ({ content }: Props) => (
   <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="reasons"
-      number={content.number}
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<HelpCircleIcon className="h-5 w-5" />}

@@ -1,11 +1,8 @@
 export {
   Activity as ActivityIcon,
-  ArrowDown as ArrowDownIcon,
   ArrowLeftRight as ArrowLeftRightIcon,
-  ArrowRight as ArrowRightIcon,
   Braces as BracesIcon,
   CheckCircle2 as CheckCircleIcon,
-  ExternalLink as ExternalLinkIcon,
   Eye as EyeIcon,
   FileCode as FileCodeIcon,
   HelpCircle as HelpCircleIcon,
@@ -14,7 +11,5 @@ export {
   Network as NetworkIcon,
   Pause as PauseIcon,
   Pencil as PencilIcon,
-  Rocket as RocketIcon,
-  Sparkles as SparklesIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';

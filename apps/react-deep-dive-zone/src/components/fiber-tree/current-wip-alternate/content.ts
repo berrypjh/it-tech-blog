@@ -1,5 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
+export type { ToneKey };
+
 export type TreeNode = { id: string; label: string };
 
 export type ComparisonRow = {
@@ -41,7 +45,7 @@ export type CurrentWipAlternateContent = {
     nodes: TreeNode[];
   };
   comparison: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     columnLabel: string;
@@ -51,14 +55,14 @@ export type CurrentWipAlternateContent = {
     emphasis: string;
   };
   rootCurrent: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
-    steps: { id: string; label: string; subtitle?: string; tone: 'slate' | 'sky' | 'emerald' }[];
+    steps: { id: string; label: string; subtitle?: string; tone?: ToneKey }[];
     emphasis: string;
   };
   alternate: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     pairTitle: string;
@@ -79,7 +83,7 @@ export type CurrentWipAlternateContent = {
     rightNodes: { current: string; wip: string }[];
   };
   checkpoint: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     info: {
@@ -103,13 +107,13 @@ export type CurrentWipAlternateContent = {
     annotations: { tone: 'sky' | 'violet' | 'amber'; label: string }[];
   };
   scenario: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     steps: ScenarioStep[];
   };
   quiz: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -194,7 +198,7 @@ const ko: CurrentWipAlternateContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: '두 트리 비교',
     title: 'current tree / workInProgress tree 비교',
     columnLabel: '구분',
@@ -229,20 +233,20 @@ const ko: CurrentWipAlternateContent = {
     emphasis: 'Commit 성공 시 workInProgress가 current로 전환된다.',
   },
   rootCurrent: {
-    number: '02',
+    badge: '02',
     eyebrow: '활성 트리 시작점',
     title: 'root.current 구조',
     steps: [
-      { id: 'fiberRoot', label: 'FiberRoot', subtitle: '(root)', tone: 'slate' },
+      { id: 'fiberRoot', label: 'FiberRoot', subtitle: '(root)' },
       { id: 'current', label: 'current', tone: 'sky' },
       { id: 'hostRoot', label: 'HostRoot Fiber', subtitle: '(tag: HostRoot)', tone: 'emerald' },
       { id: 'app', label: 'App Fiber', tone: 'emerald' },
-      { id: 'dots', label: '...', tone: 'slate' },
+      { id: 'dots', label: '...' },
     ],
     emphasis: '현재 활성 트리는 root.current에서 시작한다.',
   },
   alternate: {
-    number: '03',
+    badge: '03',
     eyebrow: '두 버전 연결',
     title: 'alternate 연결 다이어그램',
     pairTitle: '같은 위치 Fiber 쌍',
@@ -268,7 +272,7 @@ const ko: CurrentWipAlternateContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
@@ -285,7 +289,7 @@ const ko: CurrentWipAlternateContent = {
       ],
       questionLabel: '학습 질문',
       question: 'React는 두 Fiber를 어떻게 서로 연결할까?',
-      buttonLabel: 'GitHub 보기',
+      buttonLabel: 'ReactFiber.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
@@ -301,7 +305,7 @@ const ko: CurrentWipAlternateContent = {
     ],
   },
   scenario: {
-    number: '05',
+    badge: '05',
     eyebrow: '시나리오',
     title: '렌더링 시나리오 흐름',
     steps: [
@@ -348,7 +352,7 @@ const ko: CurrentWipAlternateContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: '미니 퀴즈',
     title: '미니 개념 퀴즈',
     questionLabel: '질문',
@@ -408,7 +412,7 @@ const en: CurrentWipAlternateContent = {
     ],
   },
   comparison: {
-    number: '01',
+    badge: '01',
     eyebrow: 'TREES COMPARED',
     title: 'current vs workInProgress',
     columnLabel: 'Aspect',
@@ -443,20 +447,20 @@ const en: CurrentWipAlternateContent = {
     emphasis: 'On a successful commit, workInProgress becomes the new current.',
   },
   rootCurrent: {
-    number: '02',
+    badge: '02',
     eyebrow: 'ACTIVE TREE',
     title: 'root.current structure',
     steps: [
-      { id: 'fiberRoot', label: 'FiberRoot', subtitle: '(root)', tone: 'slate' },
+      { id: 'fiberRoot', label: 'FiberRoot', subtitle: '(root)' },
       { id: 'current', label: 'current', tone: 'sky' },
       { id: 'hostRoot', label: 'HostRoot Fiber', subtitle: '(tag: HostRoot)', tone: 'emerald' },
       { id: 'app', label: 'App Fiber', tone: 'emerald' },
-      { id: 'dots', label: '...', tone: 'slate' },
+      { id: 'dots', label: '...' },
     ],
     emphasis: 'The currently active tree starts at root.current.',
   },
   alternate: {
-    number: '03',
+    badge: '03',
     eyebrow: 'VERSIONS LINKED',
     title: 'alternate connection diagram',
     pairTitle: 'Same-position Fiber pair',
@@ -482,7 +486,7 @@ const en: CurrentWipAlternateContent = {
     ],
   },
   checkpoint: {
-    number: '04',
+    badge: '04',
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
@@ -499,7 +503,7 @@ const en: CurrentWipAlternateContent = {
       ],
       questionLabel: 'Learning question',
       question: 'How does React link the two Fibers to each other?',
-      buttonLabel: 'View on GitHub',
+      buttonLabel: 'Read ReactFiber.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
@@ -515,7 +519,7 @@ const en: CurrentWipAlternateContent = {
     ],
   },
   scenario: {
-    number: '05',
+    badge: '05',
     eyebrow: 'SCENARIO',
     title: 'Rendering scenario flow',
     steps: [
@@ -562,7 +566,7 @@ const en: CurrentWipAlternateContent = {
     ],
   },
   quiz: {
-    number: '06',
+    badge: '06',
     eyebrow: 'MINI QUIZ',
     title: 'Mini concept quiz',
     questionLabel: 'Question',
