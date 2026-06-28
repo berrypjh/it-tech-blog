@@ -1,3 +1,6 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+@import url('https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 @import 'tailwindcss';
 @config '../../tailwind.config.mjs';
 
@@ -100,9 +103,6 @@ html[data-motion='reduce'] *::after {
   border-radius: 0;
 }
 
-/*
- * 폰트는 mono 기본. 사용자가 명시적으로 sans/serif를 고르면 존중.
- */
 :root {
   --font-family:
     ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
@@ -115,6 +115,18 @@ html[data-font='sans'] {
 
 html[data-font='serif'] {
   --font-family: Georgia, 'Batang', serif;
+}
+
+html[data-font='pretendard'] {
+  --font-family: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+}
+
+html[data-font='d2coding'] {
+  --font-family: 'D2Coding', ui-monospace, 'JetBrains Mono', Menlo, Monaco, monospace;
+}
+
+html[data-font='myeongjo'] {
+  --font-family: 'Nanum Myeongjo', Georgia, 'Batang', serif;
 }
 
 body {
