@@ -3,25 +3,10 @@ import { cn } from '@it-tech-blog/utils';
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CommitToneKey } from '../../_shared/tones';
 import type { BeforeMutationContent, PhaseTimelineStep } from '../content';
 import { CameraIcon, EyeIcon } from '../icons';
 
 type Props = { content: BeforeMutationContent['hero']; className?: string };
-
-/** 공유 ToneKey에 없는 commit 전용 tone을 가장 가까운 ToneKey로 매핑한다. */
-const toneKeyMap: Record<CommitToneKey, ToneKey> = {
-  sky: 'sky',
-  blue: 'blue',
-  cyan: 'cyan',
-  teal: 'teal',
-  violet: 'violet',
-  indigo: 'indigo',
-  rose: 'amber',
-  amber: 'amber',
-  orange: 'amber',
-  emerald: 'emerald',
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -104,7 +89,6 @@ const SnapshotStep = ({ label }: { label: string }) => (
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5',
-      toneTokens.teal.borderHover,
     )}
     aria-hidden="true"
   >
@@ -118,14 +102,14 @@ const SnapshotStep = ({ label }: { label: string }) => (
 );
 
 const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
-  const tone = toneKeyMap[step.tone];
+  const tone = step.tone;
   const t = toneTokens[tone];
   return (
     <div
       className={cn(
         'flex items-center gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
         'shadow-[0_2px_0_var(--term-border)]',
-        step.active ? cn(t.chip, t.border) : cn('border-[var(--term-border)]', t.borderHover),
+        step.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">

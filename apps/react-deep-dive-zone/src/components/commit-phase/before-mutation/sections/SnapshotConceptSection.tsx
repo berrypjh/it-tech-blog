@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, SnapshotFlowStep } from '../content';
 import { CameraIcon, EyeIcon } from '../icons';
 
@@ -13,9 +13,8 @@ export const SnapshotConceptSection = ({ content }: Props) => (
     aria-labelledby="heading-snapshot-concept"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="snapshot-concept"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -48,19 +47,17 @@ const DomStateCard = ({
   variant: 'before' | 'after';
 }) => {
   const isBefore = variant === 'before';
-  const t = isBefore ? commitToneTokens.teal : commitToneTokens.orange;
+  const t = isBefore ? toneTokens.teal : toneTokens.amber;
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-md rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
+        'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
-        'transition-colors',
-        t.borderHover,
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.textStrong)}>
+        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
           {title}
         </h3>
         <span
@@ -78,11 +75,7 @@ const DomStateCard = ({
         {items.map((item) => (
           <li
             key={item.label}
-            className={cn(
-              'flex items-center justify-between gap-2 rounded-xl border px-sm py-1.5',
-              t.border,
-              t.bgSoft,
-            )}
+            className="flex items-center justify-between gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1.5"
           >
             <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
               {item.label}
@@ -100,9 +93,8 @@ const DomStateCard = ({
 const MiddleFlow = ({ steps }: { steps: SnapshotFlowStep[] }) => (
   <article
     className={cn(
-      'flex h-full flex-col gap-2 rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-gradient-to-b from-teal-50/40 via-white to-violet-50/30',
-      'dark:from-teal-950/20 dark:via-[var(--term-bg)] dark:to-violet-950/15',
+      'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
+      'border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_1px_0_var(--term-border)]',
     )}
   >
@@ -114,7 +106,7 @@ const MiddleFlow = ({ steps }: { steps: SnapshotFlowStep[] }) => (
         <li key={step.title} className="flex flex-col">
           <FlowStepCard step={step} index={idx + 1} />
           {idx < steps.length - 1 && (
-            <span aria-hidden="true" className="my-1 flex justify-center text-[var(--term-dim)]">
+            <span aria-hidden="true" className="my-1 flex justify-center">
               <span className="block h-3 w-px border-l border-dashed border-[var(--term-dim)]" />
             </span>
           )}
@@ -125,19 +117,21 @@ const MiddleFlow = ({ steps }: { steps: SnapshotFlowStep[] }) => (
 );
 
 const FlowStepCard = ({ step, index }: { step: SnapshotFlowStep; index: number }) => {
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <div
       className={cn(
-        'flex items-start gap-2 rounded-xl border p-sm',
-        step.active ? cn('border-2', t.borderStrong, t.bg) : cn(t.border, 'bg-[var(--term-bg)]'),
+        'flex items-start gap-2 rounded-md border p-sm',
+        step.active
+          ? cn('border-2', t.fill.border, t.fill.bg)
+          : cn(t.border, 'bg-[var(--term-bg)]'),
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-mono font-bold tabular-nums',
-          step.active ? cn(t.chipSolid, 'ring-2 ring-teal-300/40 dark:ring-teal-500/30') : t.chip,
+          step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
         {step.active ? <EyeIcon className="h-3.5 w-3.5" /> : String(index)}
@@ -146,7 +140,7 @@ const FlowStepCard = ({ step, index }: { step: SnapshotFlowStep; index: number }
         <span
           className={cn(
             'text-xsm sm:text-sm font-bold leading-tight break-keep',
-            step.active ? t.textStrong : 'text-[var(--term-fg)]',
+            step.active ? t.fill.text : 'text-[var(--term-fg)]',
           )}
         >
           {step.title}

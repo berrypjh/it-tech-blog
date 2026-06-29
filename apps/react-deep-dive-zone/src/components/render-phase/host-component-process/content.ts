@@ -1,19 +1,18 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'teal' | 'violet' | 'sky' | 'indigo' | 'amber';
+import type { ToneKey } from '../../shared/tones';
 
 export type UpdateHostFlowStep = {
   title: string;
   description: string;
-  tone: Tone;
-  mono?: boolean;
-  highlight?: boolean;
+  tone: ToneKey;
+  icon: 'fiber' | 'props' | 'children' | 'reconcile' | 'child';
 };
 
 export type CodeCallout = {
   number: number;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type ChildExampleCard = {
@@ -28,7 +27,7 @@ export type ChildExampleCard = {
 export type CompleteWorkFlowNode = {
   title: string;
   description: string;
-  tone: 'sky' | 'teal' | 'violet';
+  tone: ToneKey;
   direction: 'down' | 'sideways' | 'up';
 };
 
@@ -37,7 +36,6 @@ export type HostComponentContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       jsxStep: { title: string; code: string };
@@ -47,43 +45,36 @@ export type HostComponentContent = {
     };
   };
   userCode: {
-    number: string;
     eyebrow: string;
     title: string;
     code: string;
     explanation: string;
   };
   updateFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: UpdateHostFlowStep[];
   };
   childCompare: {
-    number: string;
     eyebrow: string;
     title: string;
     cards: { left: ChildExampleCard; right: ChildExampleCard };
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     fileName: string;
     functionLabel: string;
     functions: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
-    highlightLines: number[];
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
     callouts: CodeCallout[];
   };
   completeWork: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -92,7 +83,6 @@ export type HostComponentContent = {
     workItems: string[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -134,7 +124,6 @@ const ko: HostComponentContent = {
     },
     description:
       'button이나 div 같은 요소는 이번 렌더에서 어떤 children을 가져야 하는지 확인하고, 그 children을 바탕으로 다음 자식 Fiber를 계산합니다.',
-    callout: 'Host Component는 실제 DOM node가 아니라, 그 구조를 설명하는 Fiber로 먼저 처리됩니다.',
     diagram: {
       title: 'Host Component 처리 미리보기',
       jsxStep: { title: '사용자 코드 (JSX)', code: USER_CODE },
@@ -152,15 +141,13 @@ const ko: HostComponentContent = {
     },
   },
   userCode: {
-    number: '1',
-    eyebrow: '사용자 코드',
+    eyebrow: '01 · 사용자 코드',
     title: '사용자 코드 예시',
     code: USER_CODE,
     explanation: 'React는 이 요소의 props와 children을 기준으로 다음 자식 구조를 계산합니다.',
   },
   updateFlow: {
-    number: '2',
-    eyebrow: 'Host 갱신 흐름',
+    eyebrow: '02 · Host 갱신 흐름',
     title: 'updateHostComponent 흐름',
     description: 'Host Component Fiber 하나가 처리되는 단계입니다.',
     steps: [
@@ -168,36 +155,36 @@ const ko: HostComponentContent = {
         title: 'HostComponent Fiber',
         description: '예: <button> Fiber',
         tone: 'teal',
+        icon: 'fiber',
       },
       {
         title: 'pendingProps 확인',
         description: '이번 렌더에서 받은 props',
         tone: 'sky',
-        mono: true,
+        icon: 'props',
       },
       {
         title: 'children 추출',
         description: 'nextProps.children',
         tone: 'violet',
-        highlight: true,
+        icon: 'children',
       },
       {
         title: 'reconcileChildren(...)',
         description: 'nextChildren을 바탕으로 자식 Fiber 계산',
         tone: 'sky',
-        mono: true,
-        highlight: true,
+        icon: 'reconcile',
       },
       {
         title: 'child Fiber 반환',
         description: '아래로 내려갈 첫 자식 Fiber',
         tone: 'indigo',
+        icon: 'child',
       },
     ],
   },
   childCompare: {
-    number: '3',
-    eyebrow: '텍스트 vs 중첩',
+    eyebrow: '03 · 텍스트 vs 중첩',
     title: 'text child와 nested child 감각 차이',
     cards: {
       left: {
@@ -219,20 +206,17 @@ const ko: HostComponentContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
     functionLabel: '함수',
-    functions: ['updateHostComponent'],
-    learningLabel: '학습 질문',
+    functions: ['updateHostComponent', 'reconcileChildren'],
     learningQuestion:
       'Host Component는 Render Phase에서 어떤 데이터를 다음 reconciliation으로 넘길까?',
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: UPDATE_HOST_CODE,
-    highlightLines: [1, 2, 4, 6],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: UPDATE_HOST_CODE,
     callouts: [
       { number: 1, body: '이번 렌더의 props 읽기 (pendingProps)', tone: 'teal' },
       { number: 2, body: 'children 추출 (props.children)', tone: 'violet' },
@@ -241,8 +225,7 @@ const ko: HostComponentContent = {
     ],
   },
   completeWork: {
-    number: '5',
-    eyebrow: 'completeWork 예고',
+    eyebrow: '05 · completeWork 예고',
     title: 'completeWork 예고',
     description:
       'Host Component의 실제 host 처리, 예를 들어 DOM 관련 준비는 completeWork에서 더 본격적으로 이어집니다.',
@@ -276,8 +259,7 @@ const ko: HostComponentContent = {
     ],
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Host Component의 beginWork가 즉시 DOM node를 만드는가?',
     answer: '아니다. DOM을 만들지 않고 먼저 children 구조를 계산한다.',
@@ -302,8 +284,6 @@ const en: HostComponentContent = {
     },
     description:
       'Elements like button or div check which children this render needs, then compute the next child Fibers based on that.',
-    callout:
-      'A Host Component is not a real DOM node — it is first processed as a Fiber that describes its structure.',
     diagram: {
       title: 'Host Component processing preview',
       jsxStep: { title: 'User code (JSX)', code: USER_CODE_EN },
@@ -321,16 +301,14 @@ const en: HostComponentContent = {
     },
   },
   userCode: {
-    number: '1',
-    eyebrow: 'USER CODE',
+    eyebrow: '01 · USER CODE',
     title: 'User code example',
     code: USER_CODE_EN,
     explanation:
       "React computes the next child structure based on this element's props and children.",
   },
   updateFlow: {
-    number: '2',
-    eyebrow: 'HOST FLOW',
+    eyebrow: '02 · HOST FLOW',
     title: 'updateHostComponent flow',
     description: 'How a single Host Component Fiber is processed.',
     steps: [
@@ -338,36 +316,36 @@ const en: HostComponentContent = {
         title: 'HostComponent Fiber',
         description: 'e.g. <button> Fiber',
         tone: 'teal',
+        icon: 'fiber',
       },
       {
         title: 'inspect pendingProps',
         description: 'the props received in this render',
         tone: 'sky',
-        mono: true,
+        icon: 'props',
       },
       {
         title: 'extract children',
         description: 'nextProps.children',
         tone: 'violet',
-        highlight: true,
+        icon: 'children',
       },
       {
         title: 'reconcileChildren(...)',
         description: 'Compute child Fibers based on nextChildren',
         tone: 'sky',
-        mono: true,
-        highlight: true,
+        icon: 'reconcile',
       },
       {
         title: 'return the child Fiber',
         description: 'The first child Fiber to descend into',
         tone: 'indigo',
+        icon: 'child',
       },
     ],
   },
   childCompare: {
-    number: '3',
-    eyebrow: 'TEXT VS NESTED',
+    eyebrow: '03 · TEXT VS NESTED',
     title: 'text child vs nested child',
     cards: {
       left: {
@@ -389,19 +367,16 @@ const en: HostComponentContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
-    functionLabel: 'function',
-    functions: ['updateHostComponent'],
-    learningLabel: 'learning question',
+    functionLabel: 'functions',
+    functions: ['updateHostComponent', 'reconcileChildren'],
     learningQuestion: 'What does a Host Component hand off to the next reconciliation?',
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: 'code preview',
-    codeLines: UPDATE_HOST_CODE,
-    highlightLines: [1, 2, 4, 6],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: UPDATE_HOST_CODE,
     callouts: [
       { number: 1, body: "Read this render's props (pendingProps)", tone: 'teal' },
       { number: 2, body: 'Extract children (props.children)', tone: 'violet' },
@@ -410,8 +385,7 @@ const en: HostComponentContent = {
     ],
   },
   completeWork: {
-    number: '5',
-    eyebrow: 'COMPLETEWORK PREVIEW',
+    eyebrow: '05 · COMPLETEWORK PREVIEW',
     title: 'completeWork preview',
     description:
       "The Host Component's actual host work, like DOM preparation, continues more fully in completeWork.",
@@ -445,8 +419,7 @@ const en: HostComponentContent = {
     ],
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini Quiz',
     question: "Does a Host Component's beginWork create the DOM node immediately?",
     answer: 'No — it first computes the children structure, without creating any DOM.',

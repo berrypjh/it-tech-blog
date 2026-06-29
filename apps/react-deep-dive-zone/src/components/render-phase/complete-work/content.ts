@@ -1,14 +1,13 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
-
-export type Tone = 'sky' | 'teal' | 'violet' | 'amber' | 'indigo' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
 export type LegendItem = {
   label: string;
   detail: string;
-  iconName: 'arrowDown' | 'arrowUp' | 'dashed';
-  tone: Tone;
+  icon: 'arrowDown' | 'arrowUp' | 'dashed';
+  tone: ToneKey;
 };
 
 export type StepCardItem = {
@@ -17,11 +16,11 @@ export type StepCardItem = {
 };
 
 export type CompareRow = {
-  direction: { label: string; detail: string; iconName: 'arrowDown' | 'arrowUp' };
+  direction: { label: string; detail: string; icon: 'arrowDown' | 'arrowUp' };
   fn: string[];
   role: string[];
   target: string;
-  tone: 'teal' | 'violet';
+  tone: ToneKey;
 };
 
 export type TreePanelState = 'idle' | 'current' | 'done';
@@ -41,7 +40,7 @@ export type FlowItem = {
   number: number;
   title: string;
   description: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type ChecklistItem = {
@@ -51,7 +50,7 @@ export type ChecklistItem = {
 export type CodeCallout = {
   number: number;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type CompleteWorkContent = {
@@ -59,7 +58,6 @@ export type CompleteWorkContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       legendTitle: string;
       legend: LegendItem[];
@@ -68,14 +66,12 @@ export type CompleteWorkContent = {
     };
   };
   compare: {
-    number: string;
     eyebrow: string;
     title: string;
     columns: { direction: string; fn: string; role: string; target: string };
     rows: CompareRow[];
   };
   direction: {
-    number: string;
     eyebrow: string;
     title: string;
     topTitle: string;
@@ -86,47 +82,37 @@ export type CompleteWorkContent = {
     description: string;
   };
   treeWalk: {
-    number: string;
     eyebrow: string;
     title: string;
     subtitle: string;
     panels: TreePanel[];
   };
   bubble: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    flow: { title: string; subtitle: string; tone: Tone }[];
+    flow: { title: string; subtitle: string; tone: ToneKey }[];
     bottomNote: string;
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     files: string[];
     pointsLabel: string;
     points: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
-    completeHighlightLines: number[];
-    bubbleHighlightLines: number[];
-    siblingHighlightLines: number[];
-    parentHighlightLines: number[];
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
     callouts: CodeCallout[];
   };
   summary: {
-    number: string;
     eyebrow: string;
     title: string;
     items: FlowItem[];
   };
   checklist: {
-    number: string;
     eyebrow: string;
     title: string;
     subtitle: string;
@@ -261,18 +247,17 @@ const ko: CompleteWorkContent = {
     },
     description:
       '더 이상 내려갈 자식이 없으면 React는 완료 단계로 전환하고, 형제가 있으면 형제로 이동하고, 형제도 없으면 부모로 올라갑니다.',
-    callout: 'Render Phase는 깊이를 따라 내려갔다가, 되돌아오며 각 서브트리를 정리하는 과정입니다.',
     diagram: {
       legendTitle: '범례',
       legend: [
-        { label: '하강 (beginWork)', detail: '자식으로 이동', iconName: 'arrowDown', tone: 'teal' },
+        { label: '하강 (beginWork)', detail: '자식으로 이동', icon: 'arrowDown', tone: 'teal' },
         {
           label: '상승 (completeWork)',
           detail: '형제 또는 부모로 이동',
-          iconName: 'arrowUp',
+          icon: 'arrowUp',
           tone: 'violet',
         },
-        { label: '처리 완료', detail: 'subtree 마무리됨', iconName: 'dashed', tone: 'sky' },
+        { label: '처리 완료', detail: 'subtree 마무리됨', icon: 'dashed', tone: 'sky' },
       ],
       stepsTitle: '단계 흐름',
       steps: [
@@ -285,20 +270,19 @@ const ko: CompleteWorkContent = {
     },
   },
   compare: {
-    number: '1',
-    eyebrow: 'beginWork vs completeWork',
+    eyebrow: '01 · 함수 비교',
     title: 'beginWork vs completeWork 비교',
     columns: { direction: '방향', fn: '함수', role: '역할', target: '이동 대상' },
     rows: [
       {
-        direction: { label: '아래로', detail: '(하강)', iconName: 'arrowDown' },
+        direction: { label: '아래로', detail: '(하강)', icon: 'arrowDown' },
         fn: ['beginWork'],
         role: ['다음 child 계산 시작', '컴포넌트 실행, children 추출, reconcileChildren 호출'],
         target: 'child',
         tone: 'teal',
       },
       {
-        direction: { label: '위로', detail: '(상승)', iconName: 'arrowUp' },
+        direction: { label: '위로', detail: '(상승)', icon: 'arrowUp' },
         fn: ['completeUnitOfWork', 'completeWork'],
         role: ['현재 서브트리 완료 처리', '정보 정리, flags 집계, bubbleProperties 호출'],
         target: 'sibling 또는 parent',
@@ -307,8 +291,7 @@ const ko: CompleteWorkContent = {
     ],
   },
   direction: {
-    number: '2',
-    eyebrow: '이동 방향',
+    eyebrow: '02 · 이동 방향',
     title: 'completeUnitOfWork의 이동 방향',
     topTitle: '현재 Fiber 완료',
     topSubtitle: 'completeWork 실행',
@@ -327,15 +310,13 @@ const ko: CompleteWorkContent = {
       'completeUnitOfWork는 현재 Fiber를 마친 뒤, 옆으로 갈 수 있으면 형제로 이동하고, 더 이상 형제가 없으면 부모로 되돌아갑니다.',
   },
   treeWalk: {
-    number: '3',
-    eyebrow: '형제·부모 순회',
+    eyebrow: '03 · 트리 순회',
     title: 'sibling → parent 이동 시각화',
     subtitle: '예시 트리',
     panels: panelTreesKo,
   },
   bubble: {
-    number: '4',
-    eyebrow: '속성 버블링',
+    eyebrow: '04 · 속성 버블링',
     title: 'bubbleProperties 예고',
     description:
       'completeWork 단계에서는 자식 서브트리의 정보가 부모 방향으로 올라오도록 정리됩니다.',
@@ -351,22 +332,16 @@ const ko: CompleteWorkContent = {
     bottomNote: 'Deletion 리스트도 부모 Fiber 쪽으로 연결되어 Commit 단계에서 처리됩니다.',
   },
   code: {
-    number: '5',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '05 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     files: ['ReactFiberWorkLoop.js', 'ReactFiberCompleteWork.js'],
     pointsLabel: '볼 것',
     points: ['completeUnitOfWork', 'completeWork', 'bubbleProperties'],
-    learningLabel: '학습 질문',
     learningQuestion: 'completeWork는 어디서 어떤 정보가 부모로 올라오게 만들까?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: CODE,
-    completeHighlightLines: [6],
-    bubbleHighlightLines: [7],
-    siblingHighlightLines: [9, 10, 11, 12, 13],
-    parentHighlightLines: [15, 16],
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE,
     callouts: [
       { number: 1, body: 'completeWork 실행 — 현재 Fiber 마무리', tone: 'teal' },
       {
@@ -379,8 +354,7 @@ const ko: CompleteWorkContent = {
     ],
   },
   summary: {
-    number: '6',
-    eyebrow: 'render 단계 요약',
+    eyebrow: '06 · 단계 요약',
     title: '전체 Render Phase 최종 정리',
     items: [
       { number: 1, title: 'Root에서 시작', description: '루트에 work가 있음', tone: 'sky' },
@@ -436,13 +410,12 @@ const ko: CompleteWorkContent = {
         number: 10,
         title: 'Commit Phase 대기',
         description: '모든 Fiber 계산과 표시가 끝나면 Commit으로',
-        tone: 'rose',
+        tone: 'cyan',
       },
     ],
   },
   checklist: {
-    number: '7',
-    eyebrow: '핵심 체크리스트',
+    eyebrow: '07 · 핵심 체크리스트',
     title: '최종 체크리스트',
     subtitle: '나는 설명할 수 있는가?',
     items: [
@@ -481,26 +454,25 @@ const en: CompleteWorkContent = {
     },
     description:
       'When there are no more children to descend into, React transitions to the complete step, moves to a sibling if one exists, otherwise climbs up to the parent.',
-    callout: 'The Render Phase walks down by depth, then climbs back up to wrap each subtree.',
     diagram: {
       legendTitle: 'Legend',
       legend: [
         {
           label: 'Descend (beginWork)',
           detail: 'move to child',
-          iconName: 'arrowDown',
+          icon: 'arrowDown',
           tone: 'teal',
         },
         {
           label: 'Ascend (completeWork)',
           detail: 'move to sibling or parent',
-          iconName: 'arrowUp',
+          icon: 'arrowUp',
           tone: 'violet',
         },
         {
           label: 'Completed',
           detail: 'subtree wrapped up',
-          iconName: 'dashed',
+          icon: 'dashed',
           tone: 'sky',
         },
       ],
@@ -515,13 +487,12 @@ const en: CompleteWorkContent = {
     },
   },
   compare: {
-    number: '1',
-    eyebrow: 'BEGIN VS COMPLETE',
+    eyebrow: '01 · BEGIN VS COMPLETE',
     title: 'beginWork vs completeWork',
     columns: { direction: 'direction', fn: 'function', role: 'role', target: 'move target' },
     rows: [
       {
-        direction: { label: 'down', detail: '(descend)', iconName: 'arrowDown' },
+        direction: { label: 'down', detail: '(descend)', icon: 'arrowDown' },
         fn: ['beginWork'],
         role: [
           'Start computing the next child',
@@ -531,7 +502,7 @@ const en: CompleteWorkContent = {
         tone: 'teal',
       },
       {
-        direction: { label: 'up', detail: '(ascend)', iconName: 'arrowUp' },
+        direction: { label: 'up', detail: '(ascend)', icon: 'arrowUp' },
         fn: ['completeUnitOfWork', 'completeWork'],
         role: ['Finish the current subtree', 'Tidy info, aggregate flags, call bubbleProperties'],
         target: 'sibling or parent',
@@ -540,8 +511,7 @@ const en: CompleteWorkContent = {
     ],
   },
   direction: {
-    number: '2',
-    eyebrow: 'MOVE DIRECTION',
+    eyebrow: '02 · MOVE DIRECTION',
     title: 'completeUnitOfWork move direction',
     topTitle: 'Current Fiber completed',
     topSubtitle: 'completeWork executed',
@@ -560,15 +530,13 @@ const en: CompleteWorkContent = {
       'After finishing the current Fiber, completeUnitOfWork moves sideways if possible; otherwise it walks back up.',
   },
   treeWalk: {
-    number: '3',
-    eyebrow: 'SIBLING & PARENT',
+    eyebrow: '03 · SIBLING & PARENT',
     title: 'sibling → parent walk visualization',
     subtitle: 'example tree',
     panels: panelTreesEn,
   },
   bubble: {
-    number: '4',
-    eyebrow: 'BUBBLE PROPERTIES',
+    eyebrow: '04 · BUBBLE PROPERTIES',
     title: 'bubbleProperties preview',
     description: 'In completeWork, child subtree information is bubbled up toward the parent.',
     flow: [
@@ -587,22 +555,16 @@ const en: CompleteWorkContent = {
     bottomNote: 'The deletions list is also linked to the parent Fiber and applied during Commit.',
   },
   code: {
-    number: '5',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '05 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'files',
     files: ['ReactFiberWorkLoop.js', 'ReactFiberCompleteWork.js'],
     pointsLabel: 'look at',
     points: ['completeUnitOfWork', 'completeWork', 'bubbleProperties'],
-    learningLabel: 'learning question',
     learningQuestion: 'Where does completeWork bubble information up to the parent?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: 'code preview',
-    codeLines: CODE,
-    completeHighlightLines: [6],
-    bubbleHighlightLines: [7],
-    siblingHighlightLines: [9, 10, 11, 12, 13],
-    parentHighlightLines: [15, 16],
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE,
     callouts: [
       { number: 1, body: 'completeWork executes — wrap up the current Fiber', tone: 'teal' },
       {
@@ -615,8 +577,7 @@ const en: CompleteWorkContent = {
     ],
   },
   summary: {
-    number: '6',
-    eyebrow: 'RENDER SUMMARY',
+    eyebrow: '06 · RENDER SUMMARY',
     title: 'Full Render Phase summary',
     items: [
       {
@@ -672,13 +633,12 @@ const en: CompleteWorkContent = {
         number: 10,
         title: 'Wait for Commit Phase',
         description: 'when all Fibers are computed and marked',
-        tone: 'rose',
+        tone: 'cyan',
       },
     ],
   },
   checklist: {
-    number: '7',
-    eyebrow: 'CORE CHECKLIST',
+    eyebrow: '07 · CORE CHECKLIST',
     title: 'Final checklist',
     subtitle: 'Can I explain these?',
     items: [

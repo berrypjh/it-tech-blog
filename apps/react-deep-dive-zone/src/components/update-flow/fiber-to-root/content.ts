@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type FiberStackIconName = 'flag' | 'panels' | 'workflow' | 'pin';
+export type FiberStackIcon = 'flag' | 'panels' | 'workflow' | 'pin';
 
 export type FiberStackNode = {
   id: 'root' | 'page' | 'main' | 'button';
@@ -10,7 +10,7 @@ export type FiberStackNode = {
   state: string;
   badge: string;
   tone: ToneKey;
-  iconName: FiberStackIconName;
+  icon: FiberStackIcon;
 };
 
 export type FiberPathNode = {
@@ -19,8 +19,35 @@ export type FiberPathNode = {
   state: string;
   body: string;
   tone: ToneKey;
-  iconName: FiberStackIconName;
+  icon: FiberStackIcon;
   isSource?: boolean;
+};
+
+export type LaneCardIcon = 'database' | 'network';
+
+export type LaneCard = {
+  title: string;
+  body: string;
+  bullet: string;
+  icon: LaneCardIcon;
+  tone: ToneKey;
+};
+
+export type ReturnNodeIcon = 'mousePointer' | 'workflow' | 'panels' | 'flag';
+
+export type ReturnNode = {
+  title: string;
+  sub: string;
+  tone: ToneKey;
+  icon: ReturnNodeIcon;
+};
+
+export type CheckpointCallout = {
+  number: string;
+  title: string;
+  body: string;
+  tone: ToneKey;
+  linkedLine: number;
 };
 
 export type FiberToRootContent = {
@@ -33,28 +60,14 @@ export type FiberToRootContent = {
     sideBody: string;
   };
   laneRoles: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    leftCard: {
-      title: string;
-      body: string;
-      bullet: string;
-      iconName: 'database' | 'network';
-      tone: ToneKey;
-    };
+    leftCard: LaneCard;
     middleLabel: string;
-    rightCard: {
-      title: string;
-      body: string;
-      bullet: string;
-      iconName: 'database' | 'network';
-      tone: ToneKey;
-    };
+    rightCard: LaneCard;
   };
   fiberPath: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -62,33 +75,22 @@ export type FiberToRootContent = {
     bottomLabel: string;
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-    };
-    code: {
-      fileName: string;
-      rightLabel: string;
-      content: string;
-      note: string;
-    };
-    callouts: {
-      number: string;
-      title: string;
-      body: string;
-      tone: 'violet' | 'sky' | 'emerald';
-      linkedLine: number;
-    }[];
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    codeCaption: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
+    callouts: CheckpointCallout[];
   };
   alternate: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -99,21 +101,13 @@ export type FiberToRootContent = {
     wipBody: string;
   };
   returnPointer: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     flowLabel: string;
-    nodes: {
-      title: string;
-      sub: string;
-      tone: ToneKey;
-      iconName: 'mousePointer' | 'workflow' | 'panels' | 'flag';
-      isRoot?: boolean;
-    }[];
+    nodes: ReturnNode[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -151,6 +145,29 @@ const checkpointCodeKo = `export function markUpdateLaneFromFiberToRoot(
     : null;
 }`;
 
+const checkpointCodeEn = `export function markUpdateLaneFromFiberToRoot(
+  sourceFiber,
+  lane,
+): FiberRoot | null {
+  // 1. update sourceFiber's own lanes
+  sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
+
+  // 2. walk return pointers, update parent childLanes
+  let parent = sourceFiber.return;
+  while (parent !== null) {
+    parent.childLanes = mergeLanes(parent.childLanes, lane);
+    parent = parent.return;
+  }
+
+  // 3. finally return the Root
+  return parent.tag === HostRoot
+    ? parent.stateNode
+    : null;
+}`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberConcurrentUpdates.js';
+
 const ko: FiberToRootContent = {
   hero: {
     badge: '업데이트 시작 · 7/10단계',
@@ -168,7 +185,7 @@ const ko: FiberToRootContent = {
         state: 'lanes |= lane',
         badge: 'HostRoot',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
       {
         id: 'page',
@@ -176,7 +193,7 @@ const ko: FiberToRootContent = {
         state: 'childLanes |= lane',
         badge: '중간 부모',
         tone: 'teal',
-        iconName: 'panels',
+        icon: 'panels',
       },
       {
         id: 'main',
@@ -184,7 +201,7 @@ const ko: FiberToRootContent = {
         state: 'childLanes |= lane',
         badge: '중간 부모',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         id: 'button',
@@ -192,15 +209,14 @@ const ko: FiberToRootContent = {
         state: 'lanes |= lane',
         badge: 'source',
         tone: 'violet',
-        iconName: 'pin',
+        icon: 'pin',
       },
     ],
     sideLabel: 'lane 전파 방향',
     sideBody: 'Root까지 도달할 때까지 업데이트 흔적이 위로 전파됩니다.',
   },
   laneRoles: {
-    number: '01',
-    eyebrow: '두 lane 필드',
+    eyebrow: '01 · 두 lane 필드',
     title: 'sourceFiber.lanes / parent.childLanes 역할 구분',
     description:
       '두 필드 모두 lane을 담지만 의미가 다릅니다. 한쪽은 "내 작업", 다른 쪽은 "하위 트리에 작업"을 표현합니다.',
@@ -208,7 +224,7 @@ const ko: FiberToRootContent = {
       title: 'sourceFiber.lanes',
       body: '업데이트가 직접 발생한 Fiber의 lane',
       bullet: '이 Fiber 자신에 "내 작업"이 있음을 표시',
-      iconName: 'database',
+      icon: 'database',
       tone: 'violet',
     },
     middleLabel: '위로 전파',
@@ -216,13 +232,12 @@ const ko: FiberToRootContent = {
       title: 'parent.childLanes',
       body: '자식 트리 어딘가에 같은 lane의 작업이 있음을 표시',
       bullet: '"내 아래 트리에 작업이 있다"를 알림',
-      iconName: 'network',
+      icon: 'network',
       tone: 'teal',
     },
   },
   fiberPath: {
-    number: '02',
-    eyebrow: '경로 시각화',
+    eyebrow: '02 · 경로 시각화',
     title: 'Button → Main → Page → Root 시각화',
     description: '실제 부모 경로를 따라 lane 흔적이 어떻게 위로 올라가는지 카드별로 따라갑니다.',
     nodes: [
@@ -232,7 +247,7 @@ const ko: FiberToRootContent = {
         state: 'lanes |= lane',
         body: '업데이트 발생 지점',
         tone: 'violet',
-        iconName: 'pin',
+        icon: 'pin',
         isSource: true,
       },
       {
@@ -241,7 +256,7 @@ const ko: FiberToRootContent = {
         state: 'childLanes |= lane',
         body: '자식 어딘가에 작업이 있음',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         id: 'page',
@@ -249,7 +264,7 @@ const ko: FiberToRootContent = {
         state: 'childLanes |= lane',
         body: '자식 어딘가에 작업이 있음',
         tone: 'teal',
-        iconName: 'panels',
+        icon: 'panels',
       },
       {
         id: 'root',
@@ -257,29 +272,25 @@ const ko: FiberToRootContent = {
         state: 'lanes |= lane',
         body: '트리 전체에 작업이 있음',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
     bottomLabel: 'lane이 위로 전파되는 흐름',
   },
   checkpoint: {
-    number: '03',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '03 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberConcurrentUpdates.js',
-      functionLabel: '함수',
-      functionName: 'markUpdateLaneFromFiberToRoot',
-      questionLabel: '학습 질문',
-      question: '업데이트 lane을 부모 경로에 어떻게 퍼뜨릴까?',
-    },
-    code: {
-      fileName: 'ReactFiberConcurrentUpdates.js',
-      rightLabel: '코드 미리보기',
-      content: checkpointCodeKo,
-      note: '학습용 축약 코드',
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
+    functionLabel: '함수',
+    functionName: 'markUpdateLaneFromFiberToRoot',
+    learningQuestion: '업데이트 lane을 부모 경로에 어떻게 퍼뜨릴까?',
+    codeHeader: 'ReactFiberConcurrentUpdates.js',
+    codeBadge: 'main',
+    codeCaption: '학습용 축약 코드',
+    code: checkpointCodeKo,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 markUpdateLaneFromFiberToRoot 보기',
     callouts: [
       {
         number: '1',
@@ -305,8 +316,7 @@ const ko: FiberToRootContent = {
     ],
   },
   alternate: {
-    number: '04',
-    eyebrow: '양쪽 트리 갱신',
+    eyebrow: '04 · 양쪽 트리 갱신',
     title: 'alternate도 함께 갱신되는 이유',
     description:
       '현재 트리와 work-in-progress 트리는 alternate로 연결되어 있습니다. 업데이트 흔적이 한쪽 구조에만 남으면 이후 계산 기준이 어긋날 수 있으므로, alternate 쪽 lane 정보도 함께 반영합니다.',
@@ -317,43 +327,20 @@ const ko: FiberToRootContent = {
     wipBody: 'lanes / childLanes 갱신',
   },
   returnPointer: {
-    number: '05',
-    eyebrow: 'return 탐색 이유',
+    eyebrow: '05 · return 탐색 이유',
     title: 'Root를 return 포인터로 찾는 이유',
     description:
       'update queue는 Root를 직접 가리키는 backpointer를 갖고 있지 않습니다. 그래서 React는 return 경로를 따라 위로 올라가 Root까지 도달합니다.',
     flowLabel: 'return 포인터를 따라 위로 올라감',
     nodes: [
-      {
-        title: 'Child Fiber',
-        sub: '(return)',
-        tone: 'violet',
-        iconName: 'mousePointer',
-      },
-      {
-        title: 'Parent Fiber',
-        sub: '(return)',
-        tone: 'sky',
-        iconName: 'workflow',
-      },
-      {
-        title: '... (중간 부모들)',
-        sub: '(return)',
-        tone: 'teal',
-        iconName: 'panels',
-      },
-      {
-        title: 'Root Fiber',
-        sub: '(HostRoot)',
-        tone: 'emerald',
-        iconName: 'flag',
-        isRoot: true,
-      },
+      { title: 'Child Fiber', sub: '(return)', tone: 'violet', icon: 'mousePointer' },
+      { title: 'Parent Fiber', sub: '(return)', tone: 'sky', icon: 'workflow' },
+      { title: '... (중간 부모들)', sub: '(return)', tone: 'teal', icon: 'panels' },
+      { title: 'Root Fiber', sub: '(HostRoot)', tone: 'emerald', icon: 'flag' },
     ],
   },
   quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     questionLabel: '질문',
     answerLabel: '핵심 정답',
@@ -389,7 +376,7 @@ const en: FiberToRootContent = {
         state: 'lanes |= lane',
         badge: 'HostRoot',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
       {
         id: 'page',
@@ -397,7 +384,7 @@ const en: FiberToRootContent = {
         state: 'childLanes |= lane',
         badge: 'mid parent',
         tone: 'teal',
-        iconName: 'panels',
+        icon: 'panels',
       },
       {
         id: 'main',
@@ -405,7 +392,7 @@ const en: FiberToRootContent = {
         state: 'childLanes |= lane',
         badge: 'mid parent',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         id: 'button',
@@ -413,15 +400,14 @@ const en: FiberToRootContent = {
         state: 'lanes |= lane',
         badge: 'source',
         tone: 'violet',
-        iconName: 'pin',
+        icon: 'pin',
       },
     ],
     sideLabel: 'lane propagation',
     sideBody: 'The trace travels upward until it reaches the Root.',
   },
   laneRoles: {
-    number: '01',
-    eyebrow: 'TWO LANE FIELDS',
+    eyebrow: '01 · TWO LANE FIELDS',
     title: 'sourceFiber.lanes vs parent.childLanes',
     description:
       'Both fields hold lanes, but they mean different things. One says "I have work", the other says "my subtree has work".',
@@ -429,7 +415,7 @@ const en: FiberToRootContent = {
       title: 'sourceFiber.lanes',
       body: 'The lane on the Fiber where the update was issued',
       bullet: 'Marks "I have work" on this Fiber',
-      iconName: 'database',
+      icon: 'database',
       tone: 'violet',
     },
     middleLabel: 'propagated up',
@@ -437,13 +423,12 @@ const en: FiberToRootContent = {
       title: 'parent.childLanes',
       body: 'Marks that the same lane has work somewhere in the child subtree',
       bullet: 'Tells the parent "there is work below me"',
-      iconName: 'network',
+      icon: 'network',
       tone: 'teal',
     },
   },
   fiberPath: {
-    number: '02',
-    eyebrow: 'PATH VISUALIZATION',
+    eyebrow: '02 · PATH VISUALIZATION',
     title: 'Button → Main → Page → Root',
     description: 'Follow how the lane mark moves up the actual parent path, one card at a time.',
     nodes: [
@@ -453,7 +438,7 @@ const en: FiberToRootContent = {
         state: 'lanes |= lane',
         body: 'where the update originates',
         tone: 'violet',
-        iconName: 'pin',
+        icon: 'pin',
         isSource: true,
       },
       {
@@ -462,7 +447,7 @@ const en: FiberToRootContent = {
         state: 'childLanes |= lane',
         body: 'a child below me has work',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         id: 'page',
@@ -470,7 +455,7 @@ const en: FiberToRootContent = {
         state: 'childLanes |= lane',
         body: 'a child below me has work',
         tone: 'teal',
-        iconName: 'panels',
+        icon: 'panels',
       },
       {
         id: 'root',
@@ -478,29 +463,25 @@ const en: FiberToRootContent = {
         state: 'lanes |= lane',
         body: 'work exists somewhere in the tree',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
     bottomLabel: 'the lane mark flows upward',
   },
   checkpoint: {
-    number: '03',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '03 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberConcurrentUpdates.js',
-      functionLabel: 'Function',
-      functionName: 'markUpdateLaneFromFiberToRoot',
-      questionLabel: 'Learning question',
-      question: 'How is the update lane spread up the parent path?',
-    },
-    code: {
-      fileName: 'ReactFiberConcurrentUpdates.js',
-      rightLabel: 'preview',
-      content: checkpointCodeKo,
-      note: 'simplified for learning',
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
+    functionLabel: 'Function',
+    functionName: 'markUpdateLaneFromFiberToRoot',
+    learningQuestion: 'How is the update lane spread up the parent path?',
+    codeHeader: 'ReactFiberConcurrentUpdates.js',
+    codeBadge: 'main',
+    codeCaption: 'simplified for learning',
+    code: checkpointCodeEn,
+    primaryHref: githubHref,
+    primaryCta: 'View markUpdateLaneFromFiberToRoot on GitHub',
     callouts: [
       {
         number: '1',
@@ -526,8 +507,7 @@ const en: FiberToRootContent = {
     ],
   },
   alternate: {
-    number: '04',
-    eyebrow: 'BOTH TREES',
+    eyebrow: '04 · BOTH TREES',
     title: 'Why alternate is updated too',
     description:
       'The current tree and the work-in-progress tree are linked via alternate. If the mark only lives on one side, later calculations will be off — so the lane mark is mirrored to the alternate side.',
@@ -538,43 +518,20 @@ const en: FiberToRootContent = {
     wipBody: 'lanes / childLanes updated',
   },
   returnPointer: {
-    number: '05',
-    eyebrow: 'WHY RETURN',
+    eyebrow: '05 · WHY RETURN',
     title: 'Why React walks up via return',
     description:
       'The update queue does not have a direct backpointer to the Root. React walks up the return chain instead until it reaches the Root.',
     flowLabel: 'walking up the return chain',
     nodes: [
-      {
-        title: 'Child Fiber',
-        sub: '(return)',
-        tone: 'violet',
-        iconName: 'mousePointer',
-      },
-      {
-        title: 'Parent Fiber',
-        sub: '(return)',
-        tone: 'sky',
-        iconName: 'workflow',
-      },
-      {
-        title: '... (mid parents)',
-        sub: '(return)',
-        tone: 'teal',
-        iconName: 'panels',
-      },
-      {
-        title: 'Root Fiber',
-        sub: '(HostRoot)',
-        tone: 'emerald',
-        iconName: 'flag',
-        isRoot: true,
-      },
+      { title: 'Child Fiber', sub: '(return)', tone: 'violet', icon: 'mousePointer' },
+      { title: 'Parent Fiber', sub: '(return)', tone: 'sky', icon: 'workflow' },
+      { title: '... (mid parents)', sub: '(return)', tone: 'teal', icon: 'panels' },
+      { title: 'Root Fiber', sub: '(HostRoot)', tone: 'emerald', icon: 'flag' },
     ],
   },
   quiz: {
-    number: '06',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

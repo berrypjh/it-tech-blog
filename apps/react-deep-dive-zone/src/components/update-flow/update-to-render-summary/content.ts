@@ -3,7 +3,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
-export type FlowStepIconName =
+export type FlowStepIcon =
   | 'mousePointer'
   | 'code'
   | 'workflow'
@@ -23,7 +23,7 @@ export type FlowStep = {
   number: string;
   title: string;
   description: string;
-  iconName: FlowStepIconName;
+  icon: FlowStepIcon;
   tone: ToneKey;
   final?: boolean;
 };
@@ -51,20 +51,23 @@ export type SourcePathCard = {
   tone: ToneKey;
 };
 
-export type MisconceptionIconName = 'panels' | 'database' | 'zap';
+export type MisconceptionIcon = 'panels' | 'database' | 'zap';
 
 export type MisconceptionCard = {
+  id: string;
   badge: string;
-  title: string;
-  correction: string;
-  iconName: MisconceptionIconName;
+  wrong: string;
+  right: string;
+  note: string;
+  tone: ToneKey;
+  icon: MisconceptionIcon;
 };
 
 export type NextChapterItem = {
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'workflow' | 'penTool' | 'layers' | 'checkCircle';
+  icon: 'workflow' | 'penTool' | 'layers' | 'checkCircle';
 };
 
 export type UpdateToRenderSummaryContent = {
@@ -78,38 +81,35 @@ export type UpdateToRenderSummaryContent = {
     };
   };
   bigFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
+    finalBadge: string;
     steps: FlowStep[];
   };
   roleTable: {
-    number: string;
     eyebrow: string;
     title: string;
     columns: { order: string; fn: string; role: string; point: string };
     rows: RoleTableRow[];
   };
   sourcePath: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: SourcePathCard[];
   };
   misconceptions: {
-    number: string;
     eyebrow: string;
     title: string;
     cards: MisconceptionCard[];
     summary: string;
   };
   nextChapter: {
-    number: string;
     eyebrow: string;
     title: string;
     previewQuestion: string;
+    tags: { label: string; tone: ToneKey }[];
     rightTitle: string;
     rightItems: NextChapterItem[];
   };
@@ -121,92 +121,92 @@ const flowStepsKo: FlowStep[] = [
     number: '1',
     title: '사용자 클릭',
     description: '이벤트 발생',
-    iconName: 'mousePointer',
+    icon: 'mousePointer',
     tone: 'sky',
   },
-  { number: '2', title: 'setState', description: '상태 변경 요청', iconName: 'code', tone: 'sky' },
+  { number: '2', title: 'setState', description: '상태 변경 요청', icon: 'code', tone: 'sky' },
   {
     number: '3',
     title: 'dispatchSetState',
     description: '업데이트 호출 진입점',
-    iconName: 'workflow',
+    icon: 'workflow',
     tone: 'cyan',
   },
   {
     number: '4',
     title: 'requestUpdateLane',
     description: '우선순위(lane) 선택',
-    iconName: 'search',
+    icon: 'search',
     tone: 'cyan',
   },
   {
     number: '5',
     title: 'dispatchSetStateInternal',
     description: '내부 처리 위임',
-    iconName: 'panels',
+    icon: 'panels',
     tone: 'emerald',
   },
   {
     number: '6',
     title: 'update 객체 생성',
     description: '업데이트 객체 구성',
-    iconName: 'server',
+    icon: 'server',
     tone: 'emerald',
   },
   {
     number: '7',
     title: 'eager bailout 검사',
     description: '같은 상태면 렌더 예약 생략',
-    iconName: 'circleHelp',
+    icon: 'circleHelp',
     tone: 'amber',
   },
   {
     number: '8',
     title: 'enqueueConcurrentHookUpdate',
     description: 'queue 처리 경로 진입',
-    iconName: 'database',
+    icon: 'database',
     tone: 'teal',
   },
   {
     number: '9',
     title: 'Fiber / parent childLanes 표시',
     description: '상위 경로에 lane 전파',
-    iconName: 'gitBranch',
+    icon: 'gitBranch',
     tone: 'teal',
   },
   {
     number: '10',
     title: 'Root 찾기',
     description: 'return 경로로 Root 탐색',
-    iconName: 'flag',
+    icon: 'flag',
     tone: 'sky',
   },
   {
     number: '11',
     title: 'scheduleUpdateOnFiber',
     description: 'Root에 pending work 등록',
-    iconName: 'zap',
+    icon: 'zap',
     tone: 'sky',
   },
   {
     number: '12',
     title: 'markRootUpdated',
     description: 'Root.pendingLanes 갱신',
-    iconName: 'checkCircle',
+    icon: 'checkCircle',
     tone: 'emerald',
   },
   {
     number: '13',
     title: 'ensureRootIsScheduled',
     description: 'Root schedule 등록 및 microtask 예약',
-    iconName: 'clock',
+    icon: 'clock',
     tone: 'emerald',
   },
   {
     number: '14',
     title: 'Render Phase 대기',
     description: '다음 단계: Render Phase 시작',
-    iconName: 'hourglass',
+    icon: 'hourglass',
     tone: 'violet',
     final: true,
   },
@@ -217,98 +217,98 @@ const flowStepsEn: FlowStep[] = [
     number: '1',
     title: 'User click',
     description: 'event fires',
-    iconName: 'mousePointer',
+    icon: 'mousePointer',
     tone: 'sky',
   },
   {
     number: '2',
     title: 'setState',
     description: 'state change requested',
-    iconName: 'code',
+    icon: 'code',
     tone: 'sky',
   },
   {
     number: '3',
     title: 'dispatchSetState',
     description: 'entry point of the update',
-    iconName: 'workflow',
+    icon: 'workflow',
     tone: 'cyan',
   },
   {
     number: '4',
     title: 'requestUpdateLane',
     description: 'pick the priority lane',
-    iconName: 'search',
+    icon: 'search',
     tone: 'cyan',
   },
   {
     number: '5',
     title: 'dispatchSetStateInternal',
     description: 'delegate to the internal flow',
-    iconName: 'panels',
+    icon: 'panels',
     tone: 'emerald',
   },
   {
     number: '6',
     title: 'build update object',
     description: 'construct the update record',
-    iconName: 'server',
+    icon: 'server',
     tone: 'emerald',
   },
   {
     number: '7',
     title: 'eager bailout check',
     description: 'skip render if state is unchanged',
-    iconName: 'circleHelp',
+    icon: 'circleHelp',
     tone: 'amber',
   },
   {
     number: '8',
     title: 'enqueueConcurrentHookUpdate',
     description: 'enter the queue-processing path',
-    iconName: 'database',
+    icon: 'database',
     tone: 'teal',
   },
   {
     number: '9',
     title: 'mark Fiber / parent childLanes',
     description: 'propagate the lane up the path',
-    iconName: 'gitBranch',
+    icon: 'gitBranch',
     tone: 'teal',
   },
   {
     number: '10',
     title: 'find the Root',
     description: 'walk return pointers to the Root',
-    iconName: 'flag',
+    icon: 'flag',
     tone: 'sky',
   },
   {
     number: '11',
     title: 'scheduleUpdateOnFiber',
     description: 'register pending work on the Root',
-    iconName: 'zap',
+    icon: 'zap',
     tone: 'sky',
   },
   {
     number: '12',
     title: 'markRootUpdated',
     description: 'update Root.pendingLanes',
-    iconName: 'checkCircle',
+    icon: 'checkCircle',
     tone: 'emerald',
   },
   {
     number: '13',
     title: 'ensureRootIsScheduled',
     description: 'put the Root on the schedule + microtask',
-    iconName: 'clock',
+    icon: 'clock',
     tone: 'emerald',
   },
   {
     number: '14',
     title: 'wait for Render Phase',
     description: 'next: the Render Phase begins',
-    iconName: 'hourglass',
+    icon: 'hourglass',
     tone: 'violet',
     final: true,
   },
@@ -327,16 +327,15 @@ const ko: UpdateToRenderSummaryContent = {
     diagram: { title: '전체 흐름 요약', steps: flowStepsKo },
   },
   bigFlow: {
-    number: '01',
-    eyebrow: '대형 다이어그램',
+    eyebrow: '01 · 대형 다이어그램',
     title: '전체 업데이트 흐름 대형 다이어그램',
     description:
-      'Hero에서 본 흐름을 본문에서 한 번 더 큰 카드로 정리합니다. 각 단계의 의미를 오른쪽 설명에서 같이 확인하세요.',
+      'Hero에서 본 흐름을 본문에서 한 번 더 큰 카드로 정리합니다. 각 단계의 의미를 설명에서 같이 확인하세요.',
+    finalBadge: 'next',
     steps: flowStepsKo,
   },
   roleTable: {
-    number: '02',
-    eyebrow: '단계별 역할',
+    eyebrow: '02 · 단계별 역할',
     title: '단계별 역할 표',
     columns: { order: '순서', fn: '함수 / 단계', role: '역할', point: '핵심 포인트' },
     rows: [
@@ -428,8 +427,7 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    number: '03',
-    eyebrow: '소스코드 경로',
+    eyebrow: '03 · 소스코드 경로',
     title: '한 줄씩 되짚는 소스코드 경로',
     description:
       '지금까지의 흐름이 실제로는 어떤 React 내부 파일들을 거쳐 갔는지 한 번 더 짚어봅니다.',
@@ -490,63 +488,68 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    number: '04',
-    eyebrow: '오해 정리',
+    eyebrow: '04 · 오해 정리',
     title: '흔한 오해 정리',
     cards: [
       {
+        id: 'screen',
         badge: '오해',
-        title: 'setState = 즉시 화면 변경',
-        correction: 'setState는 업데이트 요청을 등록할 뿐, DOM은 Render Phase 이후에 변경됩니다.',
-        iconName: 'panels',
+        wrong: 'setState = 즉시 화면 변경',
+        right: 'setState는 업데이트 요청만 등록한다',
+        note: 'DOM은 Render Phase 이후에 변경된다.',
+        tone: 'sky',
+        icon: 'panels',
       },
       {
+        id: 'rerender',
         badge: '오해',
-        title: 'queue에 update가 들어가면 무조건 재렌더',
-        correction: 'eager bailout 등으로 인해 같은 상태라면 렌더 예약이 생략될 수 있습니다.',
-        iconName: 'database',
+        wrong: 'queue에 update가 들어가면 무조건 재렌더',
+        right: '같은 상태라면 렌더 예약이 생략될 수 있다',
+        note: 'eager bailout이 같은 상태를 감지하면 렌더를 건너뛴다.',
+        tone: 'emerald',
+        icon: 'database',
       },
       {
+        id: 'schedule',
         badge: '오해',
-        title: 'scheduleUpdateOnFiber가 곧 Render Phase 실행',
-        correction:
-          '이 함수는 Root에 일이 생겼음을 표시하고, 실제 렌더는 이후 스케줄링 단계에서 실행됩니다.',
-        iconName: 'zap',
+        wrong: 'scheduleUpdateOnFiber가 곧 Render Phase 실행',
+        right: 'Root에 일이 생겼음을 표시할 뿐이다',
+        note: '실제 렌더는 이후 스케줄링 단계에서 실행된다.',
+        tone: 'amber',
+        icon: 'zap',
       },
     ],
     summary: '정확히는 업데이트 요청 등록 → 렌더 필요성 판단 → Root 스케줄링이 먼저다.',
   },
   nextChapter: {
-    number: '05',
-    eyebrow: '다음 챕터',
+    eyebrow: '05 · 다음 챕터',
     title: '다음 챕터 예고',
     previewQuestion:
       '업데이트 요청이 Root까지 올라가고 스케줄에 등록되었다. 그렇다면 React는 이제 그 Root에서 어떤 방식으로 실제 렌더링 계산을 시작할까?',
+    tags: [
+      { label: 'reconciler', tone: 'violet' },
+      { label: 'render phase', tone: 'sky' },
+    ],
     rightTitle: '다음: Reconciler와 Render Phase',
     rightItems: [
       {
         title: 'work loop',
         body: '작업을 작은 단위로 나눠 진행하는 루프',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         title: 'performUnitOfWork',
         body: '각 Fiber 노드를 처리하는 핵심 함수',
         tone: 'cyan',
-        iconName: 'layers',
+        icon: 'layers',
       },
-      {
-        title: 'beginWork',
-        body: '무엇을 새로 만들지 계산',
-        tone: 'violet',
-        iconName: 'penTool',
-      },
+      { title: 'beginWork', body: '무엇을 새로 만들지 계산', tone: 'violet', icon: 'penTool' },
       {
         title: 'completeWork',
         body: '작업을 완료 단계로 마무리',
         tone: 'emerald',
-        iconName: 'checkCircle',
+        icon: 'checkCircle',
       },
     ],
   },
@@ -575,16 +578,15 @@ const en: UpdateToRenderSummaryContent = {
     diagram: { title: 'Full flow summary', steps: flowStepsEn },
   },
   bigFlow: {
-    number: '01',
-    eyebrow: 'BIG DIAGRAM',
+    eyebrow: '01 · BIG DIAGRAM',
     title: 'The full update flow at large',
     description:
-      'The same flow as the hero — at body-section scale. Match each step with its short meaning on the right.',
+      'The same flow as the hero — at body-section scale. Match each step with its short meaning.',
+    finalBadge: 'next',
     steps: flowStepsEn,
   },
   roleTable: {
-    number: '02',
-    eyebrow: 'ROLE TABLE',
+    eyebrow: '02 · ROLE TABLE',
     title: 'Function / step role table',
     columns: { order: '#', fn: 'function / step', role: 'role', point: 'key point' },
     rows: [
@@ -676,8 +678,7 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    number: '03',
-    eyebrow: 'SOURCE PATH',
+    eyebrow: '03 · SOURCE PATH',
     title: 'Retracing the path through source files',
     description: 'A second pass over which React internal files this whole flow actually visits.',
     cards: [
@@ -737,65 +738,69 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    number: '04',
-    eyebrow: 'MYTHS DEBUNKED',
+    eyebrow: '04 · MYTHS DEBUNKED',
     title: 'Common misconceptions',
     cards: [
       {
+        id: 'screen',
         badge: 'MYTH',
-        title: 'setState = immediate screen change',
-        correction:
-          'setState only registers the update request — the DOM changes after the Render Phase.',
-        iconName: 'panels',
+        wrong: 'setState = immediate screen change',
+        right: 'setState only registers the update request',
+        note: 'The DOM changes after the Render Phase.',
+        tone: 'sky',
+        icon: 'panels',
       },
       {
+        id: 'rerender',
         badge: 'MYTH',
-        title: 'a queued update always triggers a re-render',
-        correction: 'eager bailout can skip the render schedule when state is unchanged.',
-        iconName: 'database',
+        wrong: 'a queued update always triggers a re-render',
+        right: 'eager bailout can skip the render when state is unchanged',
+        note: 'If the next state equals the current one, the render schedule is skipped.',
+        tone: 'emerald',
+        icon: 'database',
       },
       {
+        id: 'schedule',
         badge: 'MYTH',
-        title: 'scheduleUpdateOnFiber == running the Render Phase',
-        correction:
-          'it only marks that the Root has work. The real render runs in a later scheduling step.',
-        iconName: 'zap',
+        wrong: 'scheduleUpdateOnFiber == running the Render Phase',
+        right: 'it only marks that the Root has work',
+        note: 'The real render runs in a later scheduling step.',
+        tone: 'amber',
+        icon: 'zap',
       },
     ],
     summary:
       'Strictly speaking: register the request → judge whether to render → schedule the Root — in that order.',
   },
   nextChapter: {
-    number: '05',
-    eyebrow: 'NEXT CHAPTER',
+    eyebrow: '05 · NEXT CHAPTER',
     title: 'Next chapter preview',
     previewQuestion:
       'The update request climbed up to the Root and landed on the schedule. So how does React actually start computing the new render from that Root?',
+    tags: [
+      { label: 'reconciler', tone: 'violet' },
+      { label: 'render phase', tone: 'sky' },
+    ],
     rightTitle: 'Next: Reconciler and the Render Phase',
     rightItems: [
       {
         title: 'work loop',
         body: 'splits work into small units and iterates over them',
         tone: 'sky',
-        iconName: 'workflow',
+        icon: 'workflow',
       },
       {
         title: 'performUnitOfWork',
         body: 'the core that processes each Fiber node',
         tone: 'cyan',
-        iconName: 'layers',
+        icon: 'layers',
       },
-      {
-        title: 'beginWork',
-        body: 'computes what to build next',
-        tone: 'violet',
-        iconName: 'penTool',
-      },
+      { title: 'beginWork', body: 'computes what to build next', tone: 'violet', icon: 'penTool' },
       {
         title: 'completeWork',
         body: 'finalizes the work for that unit',
         tone: 'emerald',
-        iconName: 'checkCircle',
+        icon: 'checkCircle',
       },
     ],
   },

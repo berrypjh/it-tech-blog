@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
 import {
   ArrowRightIcon,
@@ -13,64 +14,53 @@ import {
 type Props = { content: CompleteWorkContent['direction'] };
 
 export const CompleteWorkMoveDirection = ({ content }: Props) => (
-  <section id="direction" aria-labelledby="heading-direction" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="direction" aria-labelledby="heading-direction" className="space-y-md">
+    <SectionHeader
       id="direction"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<WorkflowIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-gradient-to-br from-white via-sky-50/25 to-violet-50/25',
-        'dark:from-[var(--term-bg)] dark:via-sky-950/15 dark:to-violet-950/15',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <div className="flex flex-col items-center gap-2">
         {/* Top node */}
         <article
           className={cn(
-            'inline-flex w-full max-w-[460px] items-center justify-center gap-3 rounded-2xl border-2 p-md',
-            'border-sky-300/80 bg-sky-50/60 text-sky-900',
-            'dark:border-sky-700/70 dark:bg-sky-950/30 dark:text-sky-100',
+            'inline-flex w-full max-w-[460px] flex-col items-center rounded-lg border px-md py-3 text-center',
             'shadow-[0_1px_0_var(--term-border)]',
+            toneTokens.sky.fill.bg,
+            toneTokens.sky.fill.border,
           )}
         >
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-sm sm:text-md font-bold leading-tight">{content.topTitle}</h3>
-            <code className="font-mono text-xsm sm:text-sm text-sky-700 dark:text-sky-300">
-              {content.topSubtitle}
-            </code>
-          </div>
+          <h3
+            className={cn('text-sm sm:text-md font-bold leading-tight', toneTokens.sky.fill.text)}
+          >
+            {content.topTitle}
+          </h3>
+          <code className={cn('font-mono text-xsm sm:text-sm', toneTokens.sky.text)}>
+            {content.topSubtitle}
+          </code>
         </article>
 
-        <ChevronDownIcon
-          aria-hidden="true"
-          className="h-5 w-5 text-violet-500/80 dark:text-violet-300/80"
-        />
+        <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-[var(--term-accent)]" />
 
         {/* Decision diamond */}
         <div className="relative flex h-28 w-[min(360px,100%)] items-center justify-center">
           <span
             aria-hidden="true"
             className={cn(
-              'absolute inset-0 m-auto rotate-45',
-              'h-[78%] w-[78%] rounded-xl border-2',
-              'border-violet-400/80 bg-gradient-to-br from-sky-100 to-violet-100',
-              'dark:border-violet-600/70 dark:from-sky-950/40 dark:to-violet-950/40',
+              'absolute inset-0 m-auto rotate-45 h-[78%] w-[78%] rounded-lg border',
               'shadow-[0_1px_0_var(--term-border)]',
+              toneTokens.violet.fill.bg,
+              toneTokens.violet.fill.border,
             )}
           />
           <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-            <HelpCircleIcon
-              aria-hidden="true"
-              className="h-5 w-5 text-violet-700 dark:text-violet-200"
-            />
-            <span className="text-sm sm:text-md font-bold text-violet-900 dark:text-violet-100 break-keep">
+            <HelpCircleIcon aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
+            <span
+              className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}
+            >
               {content.decision}
             </span>
           </div>
@@ -79,16 +69,18 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
         {/* Branches */}
         <div className="mt-3 grid w-full grid-cols-1 md:grid-cols-2 gap-md">
           <BranchCard
-            kind="yes"
+            tone="teal"
             label={content.yes.label}
             title={content.yes.title}
             code={content.yes.code}
+            kind="sibling"
           />
           <BranchCard
-            kind="no"
+            tone="amber"
             label={content.no.label}
             title={content.no.title}
             code={content.no.code}
+            kind="parent"
           />
         </div>
 
@@ -100,36 +92,30 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
   </section>
 );
 
-const BranchCard = ({
-  kind,
-  label,
-  title,
-  code,
-}: {
-  kind: 'yes' | 'no';
+type BranchProps = {
+  tone: ToneKey;
   label: string;
   title: string;
   code: string;
-}) => {
-  const isYes = kind === 'yes';
+  kind: 'sibling' | 'parent';
+};
+
+const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
+  const t = toneTokens[tone];
+  const Arrow = kind === 'sibling' ? ArrowRightIcon : ArrowUpIcon;
   return (
     <article
       className={cn(
-        'flex flex-col gap-2 rounded-2xl border-2 p-md',
-        isYes
-          ? 'border-teal-300/80 bg-teal-50/60 dark:border-teal-700/70 dark:bg-teal-950/25'
-          : 'border-amber-300/80 bg-amber-50/60 dark:border-amber-700/70 dark:bg-amber-950/25',
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'flex flex-col gap-2 rounded-lg border p-md',
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        t.border,
       )}
     >
       <header className="flex items-center justify-between gap-2">
         <span
           className={cn(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            isYes
-              ? 'border-teal-300/70 bg-white/70 text-teal-700 dark:bg-slate-950/60 dark:text-teal-200 dark:border-teal-700/60 font-bold'
-              : 'border-amber-300/70 bg-white/70 text-amber-700 dark:bg-slate-950/60 dark:text-amber-200 dark:border-amber-700/60 font-bold',
+            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider font-bold',
+            t.chip,
           )}
         >
           {label}
@@ -137,30 +123,17 @@ const BranchCard = ({
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            isYes
-              ? 'bg-teal-100 text-teal-700 border-teal-200/80 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60'
-              : 'bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
+            'inline-flex h-9 w-9 items-center justify-center rounded-md border',
+            t.chip,
           )}
         >
-          {isYes ? <ArrowRightIcon className="h-4 w-4" /> : <ArrowUpIcon className="h-4 w-4" />}
+          <Arrow className="h-4 w-4" />
         </span>
       </header>
-      <h4
-        className={cn(
-          'text-sm sm:text-md font-bold leading-tight break-keep',
-          isYes ? 'text-teal-800 dark:text-teal-100' : 'text-amber-800 dark:text-amber-100',
-        )}
-      >
+      <h4 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
         {title}
       </h4>
-      <code
-        className={cn(
-          'self-start inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-xsm font-bold',
-          'border-slate-800 bg-slate-950',
-          isYes ? 'text-teal-300' : 'text-amber-300',
-        )}
-      >
+      <code className="self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold text-[var(--term-fg)] break-all">
         {code}
       </code>
     </article>

@@ -26,10 +26,8 @@ export const CompleteWorkPage = ({ locale }: Props) => {
       <SiblingParentTreeWalk content={c.treeWalk} />
       <BubblePropertiesPreview content={c.bubble} />
       <CompleteWorkCodeCheckpoint content={c.code} />
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.05fr)_minmax(0,_0.95fr)] gap-md lg:gap-lg">
-        <RenderPhaseSummary content={c.summary} />
-        <FinalChecklist content={c.checklist} />
-      </div>
+      <RenderPhaseSummary content={c.summary} />
+      <FinalChecklist content={c.checklist} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

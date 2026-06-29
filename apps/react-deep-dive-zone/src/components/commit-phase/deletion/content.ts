@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type PipelineIcon = 'flag' | 'search' | 'unlink' | 'droplet' | 'logOut' | 'trash';
 
@@ -9,14 +9,14 @@ export type PipelineStep = {
   title: string;
   description: string;
   iconName: PipelineIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type HeroStepItem = {
   title: string;
   body: string;
   iconName: 'unlink' | 'droplet' | 'logOut' | 'trash';
-  tone: CommitToneKey;
+  tone: ToneKey;
   examples: string[];
 };
 
@@ -27,7 +27,7 @@ export type CleanupCard = {
   description: string;
   codePill: string;
   iconName: CleanupCardIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type ModalFlowStep = {
@@ -35,14 +35,14 @@ export type ModalFlowStep = {
   description?: string;
   treeItems?: string[];
   iconName: 'tree' | 'flag' | 'broom' | 'trash';
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type CleanupVsRemoveRow = {
   task: string;
   meaning: string[];
   iconName: 'broom' | 'trash';
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type DeletionContent = {
@@ -50,8 +50,6 @@ export type DeletionContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    insightLabel: string;
-    insight: string;
     diagram: {
       title: string;
       subtreeTitle: string;
@@ -61,21 +59,18 @@ export type DeletionContent = {
     };
   };
   pipeline: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: PipelineStep[];
   };
   cleanup: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: CleanupCard[];
   };
   modal: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -90,7 +85,6 @@ export type DeletionContent = {
     afterContent: string;
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
     info: {
@@ -98,7 +92,6 @@ export type DeletionContent = {
       filePaths: string[];
       watchLabel: string;
       watchItems: string[];
-      questionLabel: string;
       question: string;
     };
     code: {
@@ -106,10 +99,9 @@ export type DeletionContent = {
       code: string;
     };
     fileLabelsTitle: string;
-    fileLabels: { name: string; tone: CommitToneKey }[];
+    fileLabels: { name: string; tone: ToneKey }[];
   };
   cleanupVsRemove: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -119,7 +111,6 @@ export type DeletionContent = {
     pointText: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -497,8 +488,6 @@ const ko: DeletionContent = {
     },
     description:
       'React는 삭제될 subtree를 순회하며 refs를 분리하고, effect cleanup을 실행하고, 필요한 unmount 처리를 마친 뒤 host node를 제거합니다.',
-    insightLabel: '핵심 한 줄 요약',
-    insight: '삭제는 cleanup 파이프라인, 단일 DOM 명령이 아닙니다.',
     diagram: {
       title: '삭제 파이프라인 한눈에 보기',
       subtreeTitle: '삭제 대상 subtree',
@@ -508,23 +497,20 @@ const ko: DeletionContent = {
     },
   },
   pipeline: {
-    number: '1',
-    eyebrow: '삭제 파이프라인',
+    eyebrow: '01 · 삭제 파이프라인',
     title: '삭제 흐름 전체 지도 (Cleanup Pipeline)',
     description:
       'Render Phase의 ChildDeletion 표시에서 host remove까지 — 삭제는 6단계 cleanup 파이프라인으로 진행됩니다.',
     steps: pipelineStepsKo,
   },
   cleanup: {
-    number: '2',
-    eyebrow: '정리 항목',
+    eyebrow: '02 · 정리 항목',
     title: '삭제 subtree에서 정리되는 것들',
     description: '삭제 대상 subtree를 순회하면서 React가 처리하는 4가지 정리 작업입니다.',
     cards: cleanupCardsKo,
   },
   modal: {
-    number: '3',
-    eyebrow: '모달 삭제 예시',
+    eyebrow: '03 · 모달 삭제 예시',
     title: '실제 UI 예시: Modal 제거',
     description:
       'Modal이 사라지는 그 순간에도 내부에서는 ref detach부터 host remove까지 진행됩니다.',
@@ -539,8 +525,7 @@ const ko: DeletionContent = {
     afterContent: 'Modal이 사라진 빈 화면',
   },
   checkpoint: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
@@ -551,7 +536,6 @@ const ko: DeletionContent = {
       ],
       watchLabel: '볼 것',
       watchItems: ['deletion 관련 commit 흐름', 'ref detach', 'host remove'],
-      questionLabel: '학습 질문',
       question: '삭제 작업은 왜 여러 파일과 책임으로 분리되어 있을까?',
     },
     code: {
@@ -566,8 +550,7 @@ const ko: DeletionContent = {
     ],
   },
   cleanupVsRemove: {
-    number: '5',
-    eyebrow: '정리 vs 제거',
+    eyebrow: '05 · 정리 vs 제거',
     title: 'DOM remove와 cleanup 구분',
     description: '같은 "삭제"라도 책임은 둘로 명확히 나뉩니다.',
     columns: { task: '작업', meaning: '의미' },
@@ -576,8 +559,7 @@ const ko: DeletionContent = {
     pointText: '삭제는 화면에서 지우는 것만 아니라, 연결된 리소스를 정리하는 과정입니다.',
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: '삭제 시 React는 DOM node만 제거할까?',
     answer: '아니다. 삭제 subtree의 ref와 effects까지 정리한다.',
@@ -602,8 +584,6 @@ const en: DeletionContent = {
     },
     description:
       'React walks the doomed subtree, detaches refs, runs effect cleanups, finishes any unmount work, then removes the host node.',
-    insightLabel: 'one-line summary',
-    insight: 'Deletion is a cleanup pipeline, not a single DOM command.',
     diagram: {
       title: 'Deletion pipeline at a glance',
       subtreeTitle: 'Doomed subtree',
@@ -613,23 +593,20 @@ const en: DeletionContent = {
     },
   },
   pipeline: {
-    number: '1',
-    eyebrow: 'DELETION PIPELINE',
+    eyebrow: '01 · DELETION PIPELINE',
     title: 'Deletion flow map (Cleanup Pipeline)',
     description:
       'From the ChildDeletion mark in the Render Phase to host remove — deletion runs through this 6-step cleanup pipeline.',
     steps: pipelineStepsEn,
   },
   cleanup: {
-    number: '2',
-    eyebrow: 'CLEANUP ITEMS',
+    eyebrow: '02 · CLEANUP ITEMS',
     title: 'What gets cleaned up in the deleted subtree',
     description: 'Four cleanup jobs React performs while walking the doomed subtree.',
     cards: cleanupCardsEn,
   },
   modal: {
-    number: '3',
-    eyebrow: 'MODAL EXAMPLE',
+    eyebrow: '03 · MODAL EXAMPLE',
     title: 'Real UI example: removing a Modal',
     description:
       'Even at the moment the Modal disappears, the internals go through ref detach, cleanup and host remove.',
@@ -644,8 +621,7 @@ const en: DeletionContent = {
     afterContent: 'Empty screen — the Modal is gone',
   },
   checkpoint: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
@@ -656,7 +632,6 @@ const en: DeletionContent = {
       ],
       watchLabel: 'Watch',
       watchItems: ['deletion commit flow', 'ref detach', 'host remove'],
-      questionLabel: 'Learning question',
       question: 'Why is deletion split across multiple files and responsibilities?',
     },
     code: {
@@ -671,8 +646,7 @@ const en: DeletionContent = {
     ],
   },
   cleanupVsRemove: {
-    number: '5',
-    eyebrow: 'CLEANUP VS REMOVE',
+    eyebrow: '05 · CLEANUP VS REMOVE',
     title: 'Cleanup vs Host Remove',
     description: 'Even for the same "deletion", the responsibility splits clearly into two.',
     columns: { task: 'Task', meaning: 'Meaning' },
@@ -682,8 +656,7 @@ const en: DeletionContent = {
       'Deletion is not only erasing from the screen — it is also tearing down related resources.',
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'mini quiz',
     question: 'When deleting, does React only remove the DOM node?',
     answer: 'No. It also cleans up refs and effects in the deleted subtree.',

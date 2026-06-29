@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type HeroFlowIconName = 'hand' | 'route' | 'crosshair' | 'braces';
+export type HeroFlowIcon = 'hand' | 'route' | 'crosshair' | 'braces';
 
 export type HeroFlowStep = {
   id: string;
@@ -12,33 +12,33 @@ export type HeroFlowStep = {
   code?: string;
   fields?: string[];
   tone: ToneKey;
-  iconName: HeroFlowIconName;
+  icon: HeroFlowIcon;
   connectorLabel?: string;
 };
 
 export type HeroSummaryPill = {
-  iconName: 'crosshair' | 'database' | 'link';
+  icon: 'crosshair' | 'database' | 'link';
   label: string;
 };
 
-export type LaneDecisionStepIconName = 'hand' | 'workflow' | 'split' | 'crosshair';
+export type LaneDecisionIcon = 'hand' | 'workflow' | 'split' | 'crosshair';
 
 export type LaneDecisionStep = {
   number: string;
   title: string;
   tone: ToneKey;
-  iconName: LaneDecisionStepIconName;
+  icon: LaneDecisionIcon;
   emphasized?: boolean;
 };
 
-export type UpdateFieldIconName = 'crosshair' | 'zap' | 'undo' | 'gauge' | 'sparkles' | 'link';
+export type UpdateFieldIcon = 'crosshair' | 'zap' | 'undo' | 'gauge' | 'sparkles' | 'link';
 
 export type UpdateField = {
   name: string;
   body: string;
   badge: string;
   tone: ToneKey;
-  iconName: UpdateFieldIconName;
+  icon: UpdateFieldIcon;
 };
 
 export type ActionCompareCard = {
@@ -47,13 +47,8 @@ export type ActionCompareCard = {
   result: string;
   resultDetail: string;
   tone: ToneKey;
-  iconName: 'crosshair' | 'functionSquare';
+  icon: 'crosshair' | 'functionSquare';
   badge: string;
-};
-
-export type SummaryPill = {
-  iconName: 'crosshair' | 'zap' | 'link';
-  text: string;
 };
 
 export type LaneUpdateObjectContent = {
@@ -69,7 +64,6 @@ export type LaneUpdateObjectContent = {
     summary: HeroSummaryPill[];
   };
   requestLane: {
-    number: string;
     eyebrow: string;
     title: string;
     flow: { label: string; tone: ToneKey }[];
@@ -81,39 +75,36 @@ export type LaneUpdateObjectContent = {
     decisionSteps: LaneDecisionStep[];
   };
   structure: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    code: { fileName: string; language: string; content: string };
+    codeHeader: string;
+    code: string;
     summaryTitle: string;
     summaryBody: string;
     summaryItems: { key: string; body: string; tone: ToneKey }[];
   };
   fields: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: UpdateField[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-      buttonLabel: string;
-    };
-    code: { fileName: string; language: string; content: string };
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
   };
   action: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -123,11 +114,9 @@ export type LaneUpdateObjectContent = {
     bottomNote: string;
   };
   summary: {
-    number: string;
     eyebrow: string;
     title: string;
-    main: { lead: string; emphasis: string; tail: string };
-    pills: SummaryPill[];
+    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -152,7 +141,21 @@ const checkpointCodeKo = `function dispatchSetStateInternal(fiber, queue, action
   // 이후 eager state 계산과 queue 연결로 이어진다.
 }`;
 
-const structureCodeKo = `const update = {
+const checkpointCodeEn = `function dispatchSetStateInternal(fiber, queue, action, lane) {
+  const update = {
+    lane,
+    revertLane: NoLane,
+    gesture: null,
+    action,
+    hasEagerState: false,
+    eagerState: null,
+    next: null,
+  };
+
+  // eager state computation and queue linking follow.
+}`;
+
+const structureCode = `const update = {
   lane,
   revertLane: NoLane,
   gesture: null,
@@ -161,6 +164,9 @@ const structureCodeKo = `const update = {
   eagerState: null,
   next: null,
 };`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: LaneUpdateObjectContent = {
   hero: {
@@ -181,7 +187,7 @@ const ko: LaneUpdateObjectContent = {
           label: '사용자 코드',
           code: 'setCount(count + 1);',
           tone: 'emerald',
-          iconName: 'hand',
+          icon: 'hand',
           connectorLabel: 'requestUpdateLane(fiber)',
         },
         {
@@ -190,7 +196,7 @@ const ko: LaneUpdateObjectContent = {
           label: 'lane 선택',
           description: '우선순위 lane 결정',
           tone: 'sky',
-          iconName: 'crosshair',
+          icon: 'crosshair',
           connectorLabel: 'dispatchSetStateInternal',
         },
         {
@@ -199,7 +205,7 @@ const ko: LaneUpdateObjectContent = {
           label: 'dispatchSetStateInternal',
           description: 'update 객체 생성',
           tone: 'violet',
-          iconName: 'route',
+          icon: 'route',
           connectorLabel: 'const update = {…}',
         },
         {
@@ -207,20 +213,19 @@ const ko: LaneUpdateObjectContent = {
           kind: 'object',
           label: 'update',
           tone: 'amber',
-          iconName: 'braces',
+          icon: 'braces',
           fields: ['lane', 'action', 'hasEagerState', 'eagerState', 'next'],
         },
       ],
     },
     summary: [
-      { iconName: 'crosshair', label: 'lane 선택' },
-      { iconName: 'database', label: 'action 저장' },
-      { iconName: 'link', label: 'queue 연결 준비' },
+      { icon: 'crosshair', label: 'lane 선택' },
+      { icon: 'database', label: 'action 저장' },
+      { icon: 'link', label: 'queue 연결 준비' },
     ],
   },
   requestLane: {
-    number: '01',
-    eyebrow: 'lane 결정',
+    eyebrow: '01 · lane 결정',
     title: 'requestUpdateLane의 역할',
     flow: [
       { label: 'dispatchSetState', tone: 'sky' },
@@ -234,19 +239,19 @@ const ko: LaneUpdateObjectContent = {
     decisionTitle: 'lane 결정 조건',
     decisionSubtitle: 'requestUpdateLane 내부에서 보는 4가지 신호',
     decisionSteps: [
-      { number: '1', title: '이벤트 발생', tone: 'sky', iconName: 'hand' },
-      { number: '2', title: '현재 실행 맥락 확인', tone: 'cyan', iconName: 'workflow' },
-      { number: '3', title: 'transition 여부 확인', tone: 'violet', iconName: 'split' },
-      { number: '4', title: 'lane 결정', tone: 'amber', iconName: 'crosshair', emphasized: true },
+      { number: '1', title: '이벤트 발생', tone: 'sky', icon: 'hand' },
+      { number: '2', title: '현재 실행 맥락 확인', tone: 'cyan', icon: 'workflow' },
+      { number: '3', title: 'transition 여부 확인', tone: 'violet', icon: 'split' },
+      { number: '4', title: 'lane 결정', tone: 'amber', icon: 'crosshair', emphasized: true },
     ],
   },
   structure: {
-    number: '02',
-    eyebrow: 'update 객체',
+    eyebrow: '02 · update 객체',
     title: 'update 객체 전체 구조',
     description:
       'dispatchSetStateInternal이 처음 만드는 update 객체의 골격입니다. 이 형태는 이후 queue 연결과 eager bailout 판단의 출발점이 됩니다.',
-    code: { fileName: 'update-object.js', language: 'JS', content: structureCodeKo },
+    codeHeader: 'update-object.js',
+    code: structureCode,
     summaryTitle: 'update 객체는 무엇을 담을까?',
     summaryBody:
       '이 객체는 "상태를 어떻게 바꿀지"뿐 아니라 "언제, 어떤 우선순위로 처리할지"까지 담고 있다.',
@@ -258,8 +263,7 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   fields: {
-    number: '03',
-    eyebrow: '필드 해설',
+    eyebrow: '03 · 필드 해설',
     title: '필드별 의미 해설',
     description:
       '각 필드가 무엇을 표현하는지 한 번에 정리합니다. 코드를 읽다가 막힐 때 이 카드들로 빠르게 돌아올 수 있습니다.',
@@ -269,63 +273,61 @@ const ko: LaneUpdateObjectContent = {
         body: '이 업데이트의 우선순위입니다. React가 어떤 작업부터 처리할지 판단하는 기준입니다.',
         badge: 'priority',
         tone: 'sky',
-        iconName: 'crosshair',
+        icon: 'crosshair',
       },
       {
         name: 'action',
         body: 'setState에 전달한 값 또는 updater 함수입니다. 실제 다음 state 계산에 사용됩니다.',
         badge: 'payload',
         tone: 'emerald',
-        iconName: 'zap',
+        icon: 'zap',
       },
       {
         name: 'revertLane',
         body: '특정 optimistic update나 되돌림 흐름과 연결될 수 있는 lane 정보입니다. 기본값은 NoLane입니다.',
         badge: 'optimistic',
         tone: 'amber',
-        iconName: 'undo',
+        icon: 'undo',
       },
       {
         name: 'hasEagerState',
         body: 'render 전에 다음 상태를 미리 계산했는지 나타냅니다.',
         badge: 'boolean',
         tone: 'violet',
-        iconName: 'gauge',
+        icon: 'gauge',
       },
       {
         name: 'eagerState',
         body: '미리 계산된 다음 상태입니다. 현재 state와 같다면 bailout 판단에 쓰일 수 있습니다.',
         badge: 'bailout',
         tone: 'cyan',
-        iconName: 'sparkles',
+        icon: 'sparkles',
       },
       {
         name: 'next',
         body: '다음 update와 연결하는 포인터입니다. 여러 update가 queue 안에서 연결될 때 사용됩니다.',
         badge: 'pointer',
         tone: 'indigo',
-        iconName: 'link',
+        icon: 'link',
       },
     ],
   },
   checkpoint: {
-    number: '04',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberHooks.js',
-      functionLabel: '함수',
-      functionName: 'dispatchSetStateInternal',
-      questionLabel: '학습 질문',
-      question: 'React는 setter에 전달한 값을 어디에 저장할까?',
-      buttonLabel: '힌트 보기',
-    },
-    code: { fileName: 'ReactFiberHooks.js', language: 'JS', content: checkpointCodeKo },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    functionLabel: '함수',
+    functionName: 'dispatchSetStateInternal',
+    learningQuestion: 'React는 setter에 전달한 값을 어디에 저장할까?',
+    codeHeader: 'ReactFiberHooks.js',
+    codeBadge: 'main',
+    code: checkpointCodeKo,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 dispatchSetStateInternal 보기',
   },
   action: {
-    number: '05',
-    eyebrow: 'action의 두 모습',
+    eyebrow: '05 · action의 두 모습',
     title: 'action 값이 왜 중요할까?',
     description:
       'setter에는 값과 updater 함수 모두 전달할 수 있습니다. 두 경우 모두 update.action에 그대로 보관됩니다.',
@@ -335,7 +337,7 @@ const ko: LaneUpdateObjectContent = {
       result: 'action',
       resultDetail: 'count + 1 결과값',
       tone: 'sky',
-      iconName: 'crosshair',
+      icon: 'crosshair',
       badge: 'value',
     },
     rightCard: {
@@ -344,25 +346,19 @@ const ko: LaneUpdateObjectContent = {
       result: 'action',
       resultDetail: 'updater function',
       tone: 'violet',
-      iconName: 'functionSquare',
+      icon: 'functionSquare',
       badge: 'function',
     },
     connectorLabel: 'action으로 저장',
     bottomNote: 'React는 이후 reducer를 통해 action을 실제 다음 state 계산에 사용한다.',
   },
   summary: {
-    number: '07',
-    eyebrow: '핵심 요약',
+    eyebrow: '06 · 핵심 요약',
     title: '핵심 요약',
-    main: {
-      lead: 'setState의 결과는 단순 값이 아니라,',
-      emphasis: 'lane과 action을 가진 update 객체',
-      tail: '입니다.',
-    },
-    pills: [
-      { iconName: 'crosshair', text: 'lane은 우선순위를 기록한다' },
-      { iconName: 'zap', text: 'action은 변경 요청을 담는다' },
-      { iconName: 'link', text: 'next는 update들을 queue로 연결한다' },
+    lines: [
+      'setState의 결과는 단순 값이 아니라, lane과 action을 가진 update 객체입니다.',
+      'lane은 우선순위를 기록하고, action은 변경 요청을 담습니다.',
+      'next는 여러 update를 queue로 연결합니다.',
     ],
   },
   nextStep: {
@@ -394,7 +390,7 @@ const en: LaneUpdateObjectContent = {
           label: 'User code',
           code: 'setCount(count + 1);',
           tone: 'emerald',
-          iconName: 'hand',
+          icon: 'hand',
           connectorLabel: 'requestUpdateLane(fiber)',
         },
         {
@@ -403,7 +399,7 @@ const en: LaneUpdateObjectContent = {
           label: 'Lane selection',
           description: 'pick the priority lane',
           tone: 'sky',
-          iconName: 'crosshair',
+          icon: 'crosshair',
           connectorLabel: 'dispatchSetStateInternal',
         },
         {
@@ -412,7 +408,7 @@ const en: LaneUpdateObjectContent = {
           label: 'dispatchSetStateInternal',
           description: 'build the update object',
           tone: 'violet',
-          iconName: 'route',
+          icon: 'route',
           connectorLabel: 'const update = {…}',
         },
         {
@@ -420,20 +416,19 @@ const en: LaneUpdateObjectContent = {
           kind: 'object',
           label: 'update',
           tone: 'amber',
-          iconName: 'braces',
+          icon: 'braces',
           fields: ['lane', 'action', 'hasEagerState', 'eagerState', 'next'],
         },
       ],
     },
     summary: [
-      { iconName: 'crosshair', label: 'Pick lane' },
-      { iconName: 'database', label: 'Save action' },
-      { iconName: 'link', label: 'Prep queue link' },
+      { icon: 'crosshair', label: 'Pick lane' },
+      { icon: 'database', label: 'Save action' },
+      { icon: 'link', label: 'Prep queue link' },
     ],
   },
   requestLane: {
-    number: '01',
-    eyebrow: 'PICKING THE LANE',
+    eyebrow: '01 · PICKING THE LANE',
     title: 'The role of requestUpdateLane',
     flow: [
       { label: 'dispatchSetState', tone: 'sky' },
@@ -447,25 +442,19 @@ const en: LaneUpdateObjectContent = {
     decisionTitle: 'How the lane is chosen',
     decisionSubtitle: 'Four signals requestUpdateLane checks',
     decisionSteps: [
-      { number: '1', title: 'Event fires', tone: 'sky', iconName: 'hand' },
-      { number: '2', title: 'Check execution context', tone: 'cyan', iconName: 'workflow' },
-      { number: '3', title: 'Check transition flag', tone: 'violet', iconName: 'split' },
-      {
-        number: '4',
-        title: 'Decide the lane',
-        tone: 'amber',
-        iconName: 'crosshair',
-        emphasized: true,
-      },
+      { number: '1', title: 'Event fires', tone: 'sky', icon: 'hand' },
+      { number: '2', title: 'Check execution context', tone: 'cyan', icon: 'workflow' },
+      { number: '3', title: 'Check transition flag', tone: 'violet', icon: 'split' },
+      { number: '4', title: 'Decide the lane', tone: 'amber', icon: 'crosshair', emphasized: true },
     ],
   },
   structure: {
-    number: '02',
-    eyebrow: 'UPDATE OBJECT',
+    eyebrow: '02 · UPDATE OBJECT',
     title: 'The shape of the update object',
     description:
       'This is the skeleton that dispatchSetStateInternal builds first. From here, queue linking and eager bailout decisions follow.',
-    code: { fileName: 'update-object.js', language: 'JS', content: structureCodeKo },
+    codeHeader: 'update-object.js',
+    code: structureCode,
     summaryTitle: 'What does the update object carry?',
     summaryBody: 'It captures "how to change state" *and* "when, at what priority, to process it".',
     summaryItems: [
@@ -476,8 +465,7 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   fields: {
-    number: '03',
-    eyebrow: 'FIELD REFERENCE',
+    eyebrow: '03 · FIELD REFERENCE',
     title: 'Field-by-field meaning',
     description:
       'A quick reference for what each field stores. Come back here whenever the source gets dense.',
@@ -487,63 +475,61 @@ const en: LaneUpdateObjectContent = {
         body: 'The priority of this update. React uses it to decide what work to do first.',
         badge: 'priority',
         tone: 'sky',
-        iconName: 'crosshair',
+        icon: 'crosshair',
       },
       {
         name: 'action',
         body: 'The value or updater function passed to setState. Used when computing the next state.',
         badge: 'payload',
         tone: 'emerald',
-        iconName: 'zap',
+        icon: 'zap',
       },
       {
         name: 'revertLane',
         body: 'Lane info used by optimistic-update or revert flows. Defaults to NoLane.',
         badge: 'optimistic',
         tone: 'amber',
-        iconName: 'undo',
+        icon: 'undo',
       },
       {
         name: 'hasEagerState',
         body: 'Whether the next state was pre-computed before render.',
         badge: 'boolean',
         tone: 'violet',
-        iconName: 'gauge',
+        icon: 'gauge',
       },
       {
         name: 'eagerState',
         body: 'The pre-computed next state. If it equals the current state, React may bail out of rendering.',
         badge: 'bailout',
         tone: 'cyan',
-        iconName: 'sparkles',
+        icon: 'sparkles',
       },
       {
         name: 'next',
         body: 'Pointer to the next update. Used to chain multiple updates inside the queue.',
         badge: 'pointer',
         tone: 'indigo',
-        iconName: 'link',
+        icon: 'link',
       },
     ],
   },
   checkpoint: {
-    number: '04',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberHooks.js',
-      functionLabel: 'Function',
-      functionName: 'dispatchSetStateInternal',
-      questionLabel: 'Learning question',
-      question: 'Where does React store the value passed to the setter?',
-      buttonLabel: 'Show hint',
-    },
-    code: { fileName: 'ReactFiberHooks.js', language: 'JS', content: checkpointCodeKo },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    functionLabel: 'Function',
+    functionName: 'dispatchSetStateInternal',
+    learningQuestion: 'Where does React store the value passed to the setter?',
+    codeHeader: 'ReactFiberHooks.js',
+    codeBadge: 'main',
+    code: checkpointCodeEn,
+    primaryHref: githubHref,
+    primaryCta: 'View dispatchSetStateInternal on GitHub',
   },
   action: {
-    number: '05',
-    eyebrow: 'TWO FACES',
+    eyebrow: '05 · TWO FACES',
     title: 'Why action matters',
     description:
       'The setter accepts both a value and an updater function. Either way, the input is stored verbatim in update.action.',
@@ -553,7 +539,7 @@ const en: LaneUpdateObjectContent = {
       result: 'action',
       resultDetail: 'the value of count + 1',
       tone: 'sky',
-      iconName: 'crosshair',
+      icon: 'crosshair',
       badge: 'value',
     },
     rightCard: {
@@ -562,25 +548,19 @@ const en: LaneUpdateObjectContent = {
       result: 'action',
       resultDetail: 'the updater function',
       tone: 'violet',
-      iconName: 'functionSquare',
+      icon: 'functionSquare',
       badge: 'function',
     },
     connectorLabel: 'stored as action',
     bottomNote: 'React later runs the reducer over action to compute the next state.',
   },
   summary: {
-    number: '07',
-    eyebrow: 'KEY SUMMARY',
+    eyebrow: '06 · KEY SUMMARY',
     title: 'Key summary',
-    main: {
-      lead: "setState doesn't produce a plain value —",
-      emphasis: 'it produces an update object with a lane and an action',
-      tail: '.',
-    },
-    pills: [
-      { iconName: 'crosshair', text: 'lane records the priority' },
-      { iconName: 'zap', text: 'action carries the change request' },
-      { iconName: 'link', text: 'next links updates into the queue' },
+    lines: [
+      "setState doesn't produce a plain value — it produces an update object with a lane and an action.",
+      'lane records the priority; action carries the change request.',
+      'next links the updates together inside the queue.',
     ],
   },
   nextStep: {

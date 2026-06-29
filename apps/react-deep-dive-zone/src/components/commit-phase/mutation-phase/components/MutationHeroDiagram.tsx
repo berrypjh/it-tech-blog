@@ -1,8 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CommitToneKey } from '../../_shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroFlagCard, HeroFlagIcon, HeroOpCard, MutationPhaseContent } from '../content';
 import { PencilIcon, PlusIcon, TrashIcon } from '../icons';
 
@@ -12,20 +11,6 @@ const iconMap: Record<HeroFlagIcon, typeof PencilIcon> = {
   plus: PlusIcon,
   pencil: PencilIcon,
   trash: TrashIcon,
-};
-
-/** content의 CommitToneKey를 shared ToneKey로 매핑 (rose는 가장 가까운 amber로). */
-const toneMap: Record<CommitToneKey, ToneKey> = {
-  sky: 'sky',
-  blue: 'blue',
-  cyan: 'cyan',
-  teal: 'teal',
-  violet: 'violet',
-  indigo: 'indigo',
-  rose: 'amber',
-  amber: 'amber',
-  orange: 'amber',
-  emerald: 'emerald',
 };
 
 /**
@@ -97,7 +82,7 @@ const FlowCard = ({
   card: HeroFlagCard | HeroOpCard;
   variant: 'flag' | 'op';
 }) => {
-  const tone = toneMap[card.tone];
+  const tone = card.tone;
   const t = toneTokens[tone];
   const Icon = iconMap[card.iconName];
   return (
@@ -106,7 +91,6 @@ const FlowCard = ({
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={tone} size="sm">

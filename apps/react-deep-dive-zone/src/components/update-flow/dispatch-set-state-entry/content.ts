@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type DispatchResponsibilityIconName = 'target' | 'box' | 'zap';
+export type DispatchResponsibilityIcon = 'target' | 'box' | 'zap';
 
 export type DispatchResponsibility = {
   number: string;
@@ -10,26 +10,26 @@ export type DispatchResponsibility = {
   code: string;
   body: string;
   tone: ToneKey;
-  iconName: DispatchResponsibilityIconName;
+  icon: DispatchResponsibilityIcon;
 };
 
-export type LaneFlowIconName = 'crosshair' | 'database' | 'server' | 'penTool';
+export type LaneFlowIcon = 'crosshair' | 'database' | 'server' | 'penTool';
 
 export type LaneFlowStep = {
   number: string;
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: LaneFlowIconName;
+  icon: LaneFlowIcon;
 };
 
-export type FunctionSplitIconName = 'workflow' | 'box';
+export type FunctionSplitIcon = 'workflow' | 'box';
 
 export type FunctionSplitCard = {
   title: string;
   items: string[];
   tone: ToneKey;
-  iconName: FunctionSplitIconName;
+  icon: FunctionSplitIcon;
   badge: string;
 };
 
@@ -44,54 +44,44 @@ export type DispatchSetStateEntryContent = {
     bottomCallout: string;
   };
   compare: {
-    number: string;
     eyebrow: string;
     title: string;
     leftCard: { title: string; code: string };
     rightCard: { title: string; code: string };
-    sideNote: { title: string; body: string };
+    sideNote: { title: string; body: string; tags: string[] };
   };
   responsibilities: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: DispatchResponsibility[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-      buttonLabel: string;
-    };
-    code: {
-      fileName: string;
-      language: string;
-      content: string;
-    };
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
   };
   laneReason: {
-    number: string;
     eyebrow: string;
     title: string;
     intro: string;
     steps: LaneFlowStep[];
   };
   splitReason: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     leftCard: FunctionSplitCard;
     rightCard: FunctionSplitCard;
-    connectorLabel: string;
   };
   nextStep: {
     eyebrow: string;
@@ -102,7 +92,7 @@ export type DispatchSetStateEntryContent = {
   };
 };
 
-const checkpointCodeKo = `function dispatchSetState(
+const checkpointCode = `function dispatchSetState(
   fiber,
   queue,
   action,
@@ -125,6 +115,9 @@ const checkpointCodeKo = `function dispatchSetState(
     );
   }
 }`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: DispatchSetStateEntryContent = {
   hero: {
@@ -151,8 +144,7 @@ const ko: DispatchSetStateEntryContent = {
     bottomCallout: '이 함수가 lane을 고르고, 실제 처리는 내부 함수로 위임합니다.',
   },
   compare: {
-    number: '01',
-    eyebrow: '진입 흐름',
+    eyebrow: '01 · 진입 흐름',
     title: 'setCount → dispatchSetState',
     leftCard: {
       title: '사용자가 호출하는 코드',
@@ -165,11 +157,11 @@ const ko: DispatchSetStateEntryContent = {
     sideNote: {
       title: 'action의 의미',
       body: 'action은 setter에 전달한 값 또는 updater 함수다.',
+      tags: ['value', 'updater fn'],
     },
   },
   responsibilities: {
-    number: '02',
-    eyebrow: '진입점의 책임',
+    eyebrow: '02 · 진입점의 책임',
     title: 'dispatchSetState가 하는 3가지',
     description:
       'dispatchSetState 본체는 짧지만, 세 가지 책임을 분명히 가지고 있다. 각 책임이 다음 단계로 어떻게 이어지는지 확인합니다.',
@@ -180,7 +172,7 @@ const ko: DispatchSetStateEntryContent = {
         code: 'requestUpdateLane(fiber);',
         body: '이 업데이트가 어떤 우선순위(lane)에 속하는지 결정합니다.',
         tone: 'emerald',
-        iconName: 'target',
+        icon: 'target',
       },
       {
         number: '2',
@@ -188,7 +180,7 @@ const ko: DispatchSetStateEntryContent = {
         code: 'dispatchSetStateInternal(...);',
         body: '실제 update 생성, queue 연결, bailout 판단 등을 내부 함수로 위임합니다.',
         tone: 'sky',
-        iconName: 'box',
+        icon: 'box',
       },
       {
         number: '3',
@@ -196,32 +188,26 @@ const ko: DispatchSetStateEntryContent = {
         code: 'didScheduleUpdate 체크',
         body: '내부 처리 결과에 따라 스케줄링을 시작할지 결정합니다.',
         tone: 'violet',
-        iconName: 'zap',
+        icon: 'zap',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '03 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberHooks.js',
-      functionLabel: '함수',
-      functionName: 'dispatchSetState',
-      questionLabel: '학습 질문',
-      question: 'dispatchSetState는 직접 update queue까지 처리할까?',
-      buttonLabel: '힌트 보기',
-    },
-    code: {
-      fileName: 'ReactFiberHooks.js',
-      language: 'JS',
-      content: checkpointCodeKo,
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    functionLabel: '함수',
+    functionName: 'dispatchSetState',
+    learningQuestion: 'dispatchSetState는 직접 update queue까지 처리할까?',
+    codeHeader: 'ReactFiberHooks.js',
+    codeBadge: 'main',
+    code: checkpointCode,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 dispatchSetState 보기',
   },
   laneReason: {
-    number: '04',
-    eyebrow: 'lane이 먼저인 이유',
+    eyebrow: '04 · lane 우선 이유',
     title: 'lane 선택이 먼저 등장하는 이유',
     intro:
       'React는 update를 만들기 전에 이 업데이트가 어떤 우선순위에 속하는지 먼저 정합니다. 모든 이후 단계는 이 lane을 기준으로 진행됩니다.',
@@ -231,34 +217,33 @@ const ko: DispatchSetStateEntryContent = {
         title: 'lane',
         body: '우선순위 결정',
         tone: 'sky',
-        iconName: 'crosshair',
+        icon: 'crosshair',
       },
       {
         number: '2',
         title: 'queue',
         body: '업데이트 흐름 준비',
         tone: 'cyan',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         number: '3',
         title: 'Root scheduling',
         body: '루트 단위 스케줄링',
         tone: 'teal',
-        iconName: 'server',
+        icon: 'server',
       },
       {
         number: '4',
         title: 'render work 선택',
         body: '실제 렌더 작업 선택',
         tone: 'violet',
-        iconName: 'penTool',
+        icon: 'penTool',
       },
     ],
   },
   splitReason: {
-    number: '05',
-    eyebrow: '역할 분리',
+    eyebrow: '05 · 역할 분리',
     title: 'dispatchSetState와 dispatchSetStateInternal 분리 이유',
     description:
       '외부 진입점은 lane을 고르는 일에만 집중하고, 내부 함수는 실제 update 객체 생성과 queue 처리에 집중합니다.',
@@ -266,17 +251,16 @@ const ko: DispatchSetStateEntryContent = {
       title: 'dispatchSetState',
       items: ['외부 진입점', 'lane 선택', '업데이트 흐름 시작'],
       tone: 'sky',
-      iconName: 'workflow',
+      icon: 'workflow',
       badge: '외부',
     },
     rightCard: {
       title: 'dispatchSetStateInternal',
       items: ['update 객체 생성', 'bailout 판단', 'queue 연결'],
       tone: 'violet',
-      iconName: 'box',
+      icon: 'box',
       badge: '내부',
     },
-    connectorLabel: '역할 분리',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -313,8 +297,7 @@ const en: DispatchSetStateEntryContent = {
     bottomCallout: 'It picks the lane; real work is delegated to the internal function.',
   },
   compare: {
-    number: '01',
-    eyebrow: 'ENTRY FLOW',
+    eyebrow: '01 · ENTRY FLOW',
     title: 'setCount → dispatchSetState',
     leftCard: {
       title: 'What the user calls',
@@ -327,11 +310,11 @@ const en: DispatchSetStateEntryContent = {
     sideNote: {
       title: 'About action',
       body: 'action is the value or updater function passed to the setter.',
+      tags: ['value', 'updater fn'],
     },
   },
   responsibilities: {
-    number: '02',
-    eyebrow: 'RESPONSIBILITIES',
+    eyebrow: '02 · RESPONSIBILITIES',
     title: 'Three things dispatchSetState does',
     description:
       'The body of dispatchSetState is short but carries three clear responsibilities. Follow how each one feeds into the next stage.',
@@ -342,7 +325,7 @@ const en: DispatchSetStateEntryContent = {
         code: 'requestUpdateLane(fiber);',
         body: 'Decide which priority (lane) this update belongs to.',
         tone: 'emerald',
-        iconName: 'target',
+        icon: 'target',
       },
       {
         number: '2',
@@ -350,7 +333,7 @@ const en: DispatchSetStateEntryContent = {
         code: 'dispatchSetStateInternal(...);',
         body: 'Forward update creation, queue connection, and bailout decisions to the internal function.',
         tone: 'sky',
-        iconName: 'box',
+        icon: 'box',
       },
       {
         number: '3',
@@ -358,32 +341,26 @@ const en: DispatchSetStateEntryContent = {
         code: 'check didScheduleUpdate',
         body: 'Decide whether to kick off scheduling based on the internal result.',
         tone: 'violet',
-        iconName: 'zap',
+        icon: 'zap',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '03 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberHooks.js',
-      functionLabel: 'Function',
-      functionName: 'dispatchSetState',
-      questionLabel: 'Learning question',
-      question: 'Does dispatchSetState itself touch the update queue?',
-      buttonLabel: 'Show hint',
-    },
-    code: {
-      fileName: 'ReactFiberHooks.js',
-      language: 'JS',
-      content: checkpointCodeKo,
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    functionLabel: 'Function',
+    functionName: 'dispatchSetState',
+    learningQuestion: 'Does dispatchSetState itself touch the update queue?',
+    codeHeader: 'ReactFiberHooks.js',
+    codeBadge: 'main',
+    code: checkpointCode,
+    primaryHref: githubHref,
+    primaryCta: 'View dispatchSetState on GitHub',
   },
   laneReason: {
-    number: '04',
-    eyebrow: 'WHY LANE FIRST',
+    eyebrow: '04 · WHY LANE FIRST',
     title: 'Why lane selection comes first',
     intro:
       'Before creating any update, React decides which priority bucket the update belongs to. Every later stage uses that lane as its anchor.',
@@ -393,34 +370,33 @@ const en: DispatchSetStateEntryContent = {
         title: 'lane',
         body: 'decide priority',
         tone: 'sky',
-        iconName: 'crosshair',
+        icon: 'crosshair',
       },
       {
         number: '2',
         title: 'queue',
         body: 'prepare update flow',
         tone: 'cyan',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         number: '3',
         title: 'Root scheduling',
         body: 'schedule on the root',
         tone: 'teal',
-        iconName: 'server',
+        icon: 'server',
       },
       {
         number: '4',
         title: 'render work',
         body: 'pick render work',
         tone: 'violet',
-        iconName: 'penTool',
+        icon: 'penTool',
       },
     ],
   },
   splitReason: {
-    number: '05',
-    eyebrow: 'SPLIT OF DUTIES',
+    eyebrow: '05 · SPLIT OF DUTIES',
     title: 'Why dispatchSetState and dispatchSetStateInternal are split',
     description:
       'The outer entry stays focused on picking a lane; the inner function focuses on building the update object and connecting the queue.',
@@ -428,17 +404,16 @@ const en: DispatchSetStateEntryContent = {
       title: 'dispatchSetState',
       items: ['Outer entry', 'Picks the lane', 'Starts the update flow'],
       tone: 'sky',
-      iconName: 'workflow',
+      icon: 'workflow',
       badge: 'outer',
     },
     rightCard: {
       title: 'dispatchSetStateInternal',
       items: ['Builds the update object', 'Decides bailout', 'Connects to the queue'],
       tone: 'violet',
-      iconName: 'box',
+      icon: 'box',
       badge: 'inner',
     },
-    connectorLabel: 'separation of roles',
   },
   nextStep: {
     eyebrow: 'The journey continues',

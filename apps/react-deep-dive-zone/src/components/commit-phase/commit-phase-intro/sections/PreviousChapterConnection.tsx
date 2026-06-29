@@ -1,6 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, PreviousLeftover, PreviousLeftoverIcon } from '../content';
 import {
   ArrowDownIcon,
@@ -12,7 +14,6 @@ import {
   RefreshIcon,
   WorkflowIcon,
 } from '../icons';
-import { commitToneTokens } from '../palette';
 
 type Props = { content: CommitPhaseIntroContent['previous'] };
 
@@ -29,9 +30,8 @@ export const PreviousChapterConnection = ({ content }: Props) => (
     aria-labelledby="heading-previous-chapter"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="previous-chapter"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -41,23 +41,17 @@ export const PreviousChapterConnection = ({ content }: Props) => (
     <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1.2fr)_auto_minmax(0,_0.9fr)] items-stretch gap-3 md:gap-2">
       <LeftCard card={content.leftCard} />
 
-      {/* Arrow connector */}
-      <div className="flex items-center justify-center py-2 md:py-0">
+      <div className="flex items-center justify-center py-2 md:py-0" aria-hidden="true">
         <span
-          aria-hidden="true"
           className={cn(
             'inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-dashed',
-            'border-sky-300/80 bg-white text-sky-600',
-            'dark:border-sky-700/60 dark:bg-slate-950/40 dark:text-sky-300',
-            'shadow-[0_1px_0_var(--term-border)]',
+            toneTokens.sky.fill.border,
+            toneTokens.sky.text,
+            'bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
           )}
         >
-          <span className="hidden md:inline-block">
-            <ArrowRightIcon className="h-4 w-4" />
-          </span>
-          <span className="md:hidden">
-            <ArrowDownIcon className="h-4 w-4" />
-          </span>
+          <ArrowRightIcon className="hidden md:inline-block h-4 w-4" />
+          <ArrowDownIcon className="md:hidden h-4 w-4" />
         </span>
       </div>
 
@@ -67,13 +61,7 @@ export const PreviousChapterConnection = ({ content }: Props) => (
 );
 
 const LeftCard = ({ card }: { card: CommitPhaseIntroContent['previous']['leftCard'] }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-[var(--term-bg)]',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
+  <article className="flex h-full flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center justify-between gap-2">
       <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
         {card.title}
@@ -99,26 +87,19 @@ const LeftCard = ({ card }: { card: CommitPhaseIntroContent['previous']['leftCar
 
 const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
   const Icon = iconMap[item.iconName];
-  const t = commitToneTokens[item.tone];
+  const t = toneTokens[item.tone];
   return (
     <div
       className={cn(
-        'flex items-center gap-sm rounded-2xl border p-sm',
+        'flex items-center gap-sm rounded-lg border p-sm',
         t.border,
-        t.bgSoft,
+        'bg-[var(--term-surface)]',
         'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
-          t.chipSolid,
-        )}
-      >
+      <ToneIconBox tone={item.tone} size="sm">
         <Icon className="h-4 w-4" />
-      </span>
+      </ToneIconBox>
       <div className="flex flex-col min-w-0">
         <span className={cn('text-xsm font-bold leading-tight font-mono break-keep', t.text)}>
           {item.label}
@@ -131,30 +112,32 @@ const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
   );
 };
 
-const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightCard'] }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col items-center justify-center gap-sm rounded-3xl border-2 border-dashed p-md sm:p-lg text-center',
-      'border-sky-300/80 bg-sky-50/50',
-      'dark:border-sky-700/60 dark:bg-sky-950/25',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <span
-      aria-hidden="true"
+const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightCard'] }) => {
+  const t = toneTokens.sky;
+  return (
+    <article
       className={cn(
-        'inline-flex h-12 w-12 items-center justify-center rounded-2xl border-2',
-        'bg-sky-100 text-sky-700 border-sky-200/80',
-        'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
+        'flex h-full flex-col items-center justify-center gap-sm rounded-lg border-2 border-dashed p-md sm:p-lg text-center',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <HelpCircleIcon className="h-6 w-6" />
-    </span>
-    <p className="text-sm sm:text-md font-bold leading-snug text-sky-900 dark:text-sky-100 break-keep">
-      {card.question}
-    </p>
-    <p className="text-xsm sm:text-sm leading-relaxed text-sky-800 dark:text-sky-200 break-keep">
-      {card.answer}
-    </p>
-  </article>
-);
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex h-12 w-12 items-center justify-center rounded-lg border-2',
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
+        )}
+      >
+        <HelpCircleIcon className="h-6 w-6" />
+      </span>
+      <p className={cn('text-sm sm:text-md font-bold leading-snug break-keep', t.fill.text)}>
+        {card.question}
+      </p>
+      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.text)}>{card.answer}</p>
+    </article>
+  );
+};

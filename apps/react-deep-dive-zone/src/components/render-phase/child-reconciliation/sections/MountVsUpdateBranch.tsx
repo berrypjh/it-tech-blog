@@ -1,186 +1,107 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { ComparePanel } from '../../../shared/compare';
+import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
 import { GitForkIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['mountVsUpdate'] };
 
+type Branch = ReconcileChildrenContent['mountVsUpdate']['mount'];
+
+const panelTone = (tone: ToneKey) => {
+  const t = toneTokens[tone];
+  return {
+    card: cn(t.border, 'shadow-[0_2px_0_var(--term-border)]'),
+    iconBadge: cn('border border-[var(--term-border)] bg-[var(--term-surface)]', t.text),
+    header: t.text,
+  };
+};
+
 export const MountVsUpdateBranch = ({ content }: Props) => (
-  <section
-    id="mount-vs-update"
-    aria-labelledby="heading-mount-vs-update"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="mount-vs-update" aria-labelledby="heading-mount-vs-update" className="space-y-md">
+    <SectionHeader
       id="mount-vs-update"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<GitForkIcon className="h-5 w-5" />}
     />
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
-      <BranchCard
-        kind="mount"
-        condition={content.mount.condition}
-        fn={content.mount.fn}
-        title={content.mount.title}
-        description={content.mount.description}
-      />
-      <BranchCard
-        kind="update"
-        condition={content.update.condition}
-        fn={content.update.fn}
-        title={content.update.title}
-        description={content.update.description}
-      />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg items-stretch">
+      <BranchPanel branch={content.mount} tone="teal" headerId="branch-mount-header" />
+      <BranchPanel branch={content.update} tone="violet" headerId="branch-update-header" />
     </div>
   </section>
 );
 
-type BranchProps = {
-  kind: 'mount' | 'update';
-  condition: string;
-  fn: string;
-  title: string;
-  description: string;
-};
+type PanelProps = { branch: Branch; tone: ToneKey; headerId: string };
 
-const BranchCard = ({ kind, condition, fn, title, description }: BranchProps) => {
-  const isMount = kind === 'mount';
+const BranchPanel = ({ branch, tone, headerId }: PanelProps) => {
+  const t = toneTokens[tone];
   return (
-    <article
-      className={cn(
-        'flex h-full flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
-        isMount
-          ? 'border-teal-300/80 bg-teal-50/40 dark:border-teal-700/70 dark:bg-teal-950/20'
-          : 'border-violet-300/80 bg-violet-50/40 dark:border-violet-700/70 dark:bg-violet-950/20',
-        'shadow-[0_2px_0_var(--term-border)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
-      )}
+    <ComparePanel
+      tone={panelTone(tone)}
+      icon={<GitForkIcon className="h-3.5 w-3.5" />}
+      title={branch.title}
+      headerId={headerId}
     >
-      <header className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <code
           className={cn(
-            'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-xsm font-bold',
-            'border-slate-800 bg-slate-950',
-            isMount ? 'text-teal-300' : 'text-violet-300',
+            'inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold',
+            t.text,
           )}
         >
-          {condition}
+          {branch.condition}
         </code>
-        <code
-          className={cn(
-            'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-xsm font-bold',
-            isMount
-              ? 'border-teal-300/70 bg-white/70 text-teal-700 dark:bg-slate-950/60 dark:text-teal-200 dark:border-teal-700/60'
-              : 'border-violet-300/70 bg-white/70 text-violet-700 dark:bg-slate-950/60 dark:text-violet-200 dark:border-violet-700/60',
-          )}
-        >
-          {fn}
+        <code className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold text-[var(--term-fg)]">
+          {branch.fn}
         </code>
-      </header>
-
-      <h3
-        className={cn(
-          'text-md sm:text-lg font-bold leading-tight break-keep',
-          isMount ? 'text-teal-800 dark:text-teal-100' : 'text-violet-800 dark:text-violet-100',
-        )}
-      >
-        {title}
-      </h3>
-
-      {/* Mini visual */}
-      <div
-        className={cn(
-          'rounded-2xl border-2 p-md',
-          isMount
-            ? 'border-teal-200/70 bg-white/70 dark:border-teal-800/60 dark:bg-slate-950/40'
-            : 'border-violet-200/70 bg-white/70 dark:border-violet-800/60 dark:bg-slate-950/40',
-        )}
-      >
-        <MiniBrowser kind={kind} />
       </div>
 
-      <p
-        className={cn(
-          'text-xsm sm:text-sm leading-relaxed break-keep',
-          isMount ? 'text-teal-900 dark:text-teal-100' : 'text-violet-900 dark:text-violet-100',
-        )}
-      >
-        {description}
+      <ul className="flex flex-wrap gap-2" aria-hidden="true">
+        {branch.outcomes.map((outcome, idx) => (
+          <li key={`${outcome}-${idx}`}>
+            <OutcomeChip outcome={outcome} fallbackTone={tone} />
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-auto text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
+        {branch.description}
       </p>
-    </article>
+    </ComparePanel>
   );
 };
 
-const MiniBrowser = ({ kind }: { kind: 'mount' | 'update' }) => {
-  const isMount = kind === 'mount';
-  return (
-    <div
-      className={cn(
-        'overflow-hidden rounded-lg border bg-white dark:bg-slate-950',
-        'border-slate-200/80 dark:border-slate-800/70',
-      )}
-    >
-      <div className="flex items-center gap-1.5 border-b border-slate-200/80 dark:border-slate-800/70 px-2 py-1.5">
-        <span aria-hidden="true" className="h-2 w-2 rounded-full bg-red-400/80" />
-        <span aria-hidden="true" className="h-2 w-2 rounded-full bg-amber-300/80" />
-        <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400/80" />
-      </div>
-      <div className="grid grid-cols-3 gap-1.5 p-2">
-        {isMount ? (
-          <>
-            {[1, 2, 3].map((i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                className={cn(
-                  'flex h-8 items-center justify-center rounded-md border-2 border-dashed text-[10px] font-mono font-bold',
-                  'border-teal-300/80 bg-teal-50 text-teal-700',
-                  'dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200',
-                )}
-              >
-                new
-              </span>
-            ))}
-          </>
-        ) : (
-          <>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'flex h-8 items-center justify-center rounded-md border text-[10px] font-mono font-bold',
-                'border-slate-300/80 bg-slate-100 text-slate-600',
-                'dark:border-slate-700/70 dark:bg-slate-900/40 dark:text-slate-300',
-              )}
-            >
-              reuse
-            </span>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'flex h-8 items-center justify-center rounded-md border-2 text-[10px] font-mono font-bold',
-                'border-violet-300/80 bg-violet-50 text-violet-700',
-                'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',
-              )}
-            >
-              update
-            </span>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'flex h-8 items-center justify-center rounded-md border-2 border-dashed text-[10px] font-mono font-bold line-through opacity-70',
-                'border-rose-300/80 bg-rose-50 text-rose-700',
-                'dark:border-rose-700/70 dark:bg-rose-950/40 dark:text-rose-200',
-              )}
-            >
-              delete
-            </span>
-          </>
+/** outcome 라벨 → 칩 스타일. delete는 의미색(rose), reuse는 중립, 그 외는 패널 톤. */
+const OutcomeChip = ({ outcome, fallbackTone }: { outcome: string; fallbackTone: ToneKey }) => {
+  const base =
+    'inline-flex items-center rounded-full border px-2.5 py-1 text-xxsm font-mono font-bold uppercase tracking-wider';
+  if (outcome === 'delete') {
+    return (
+      <span
+        className={cn(
+          base,
+          'line-through border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800/70 dark:bg-rose-950/40 dark:text-rose-200',
         )}
-      </div>
-    </div>
-  );
+      >
+        {outcome}
+      </span>
+    );
+  }
+  if (outcome === 'reuse') {
+    return (
+      <span
+        className={cn(
+          base,
+          'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
+        )}
+      >
+        {outcome}
+      </span>
+    );
+  }
+  return <span className={cn(base, toneTokens[fallbackTone].chip)}>{outcome}</span>;
 };

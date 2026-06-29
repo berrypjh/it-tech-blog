@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SourcePathCard, UpdateToRenderSummaryContent } from '../content';
@@ -9,14 +9,9 @@ import { FileCodeIcon, FileTextIcon, GitBranchIcon, SparklesIcon } from '../icon
 type Props = { content: UpdateToRenderSummaryContent['sourcePath'] };
 
 export const SourcePathSection = ({ content }: Props) => (
-  <section
-    id="source-path"
-    aria-labelledby="heading-source-path"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="section-source-path" aria-labelledby="heading-source-path" className="space-y-md">
+    <SectionHeader
       id="source-path"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -47,7 +42,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
         {card.functions.map((fn) => (
           <li
             key={fn.name}
-            className={cn('flex flex-col gap-1 rounded-xl border px-3 py-2', t.chip)}
+            className={cn('flex flex-col gap-1 rounded-md border px-3 py-2', t.chip)}
           >
             <span
               className={cn(
@@ -67,7 +62,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
 
       {card.followBoxTitle && (
         <div
-          className={cn('mt-auto rounded-2xl border-2 border-dashed p-3', t.fill.bg, t.fill.border)}
+          className={cn('mt-auto rounded-md border border-dashed p-3', t.fill.bg, t.fill.border)}
         >
           <span
             className={cn(

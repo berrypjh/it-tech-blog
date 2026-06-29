@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, ClassSnapshotStep } from '../content';
 import {
   ArchiveIcon,
@@ -26,21 +27,14 @@ export const ClassSnapshotSection = ({ content }: Props) => (
     aria-labelledby="heading-class-snapshot"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="class-snapshot"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<GitBranchIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <ol className="flex flex-col">
         {content.steps.map((step, idx) => (
           <li key={step.title} className="flex flex-col">
@@ -56,22 +50,20 @@ export const ClassSnapshotSection = ({ content }: Props) => (
 
       <aside
         className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl border p-md',
-          'border-violet-200/80 bg-violet-50/60',
-          'dark:border-violet-800/70 dark:bg-violet-950/25',
+          'mt-md flex items-start gap-sm rounded-lg border p-md',
+          toneTokens.violet.fill.border,
+          toneTokens.violet.fill.bg,
         )}
       >
-        <span
-          aria-hidden="true"
+        <ToneIconBox tone="violet" size="sm">
+          <LightbulbIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <p
           className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
-            'bg-violet-100 text-violet-700 border-violet-200/80',
-            'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
+            'text-xsm sm:text-sm leading-relaxed break-keep',
+            toneTokens.violet.fill.text,
           )}
         >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-violet-900 dark:text-violet-100 break-keep">
           {content.description}
         </p>
       </aside>
@@ -81,30 +73,22 @@ export const ClassSnapshotSection = ({ content }: Props) => (
 
 const StepCard = ({ step, index }: { step: ClassSnapshotStep; index: number }) => {
   const Icon = iconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+        'group grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-2xl border',
-          t.chipSolid,
-        )}
-      >
+      <ToneIconBox tone={step.tone}>
         <Icon className="h-5 w-5" />
-      </span>
+      </ToneIconBox>
       <h3
         className={cn(
           'text-sm sm:text-md font-bold leading-tight break-all font-mono',
-          t.textStrong,
+          t.fill.text,
         )}
       >
         {step.title}

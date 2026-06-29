@@ -1,27 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { HeroFlowStep, HeroStepIconName, StateUpdateStartContent } from '../content';
-import {
-  HandIcon,
-  HourglassIcon,
-  MonitorCheckIcon,
-  PanelsTopLeftIcon,
-  ShieldCheckIcon,
-  TimerIcon,
-} from '../icons';
+import type { HeroFlowStep, StateUpdateStartContent } from '../content';
+import { heroStepIconByName, HourglassIcon } from '../icons';
 
 type Props = { content: StateUpdateStartContent['hero']; className?: string };
-
-const stepIconMap: Record<HeroStepIconName, typeof HandIcon> = {
-  hand: HandIcon,
-  shield: ShieldCheckIcon,
-  timer: TimerIcon,
-  panels: PanelsTopLeftIcon,
-  monitor: MonitorCheckIcon,
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -34,28 +20,16 @@ export const SetStateHeroDiagram = ({ content, className }: Props) => {
     .join(' → ')}. ${content.reason.title} — ${content.reason.body}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm">
         <header className="flex items-center gap-sm" aria-hidden="true">
           <div className="flex min-w-0 flex-col">
             <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
               {content.flow.caption}
             </span>
-            <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+            <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
               {content.flow.heading}
-            </h2>
+            </span>
           </div>
           <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
             setState ▸ commit
@@ -77,20 +51,19 @@ export const SetStateHeroDiagram = ({ content, className }: Props) => {
 
         <ReasonNote title={content.reason.title} body={content.reason.body} />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const FlowStepRow = ({ step }: { step: HeroFlowStep }) => {
   const t = toneTokens[step.tone];
-  const Icon = stepIconMap[step.iconName];
+  const Icon = heroStepIconByName[step.icon];
   return (
     <article
       className={cn(
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={step.tone} size="sm">

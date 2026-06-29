@@ -1,7 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent, PositionStep } from '../content';
 import { ArrowDownIcon, ClockIcon, TargetIcon } from '../icons';
 
@@ -13,9 +13,8 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
     aria-labelledby="heading-passive-position"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="passive-position"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -24,13 +23,7 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.3fr)_minmax(0,_0.7fr)] gap-3">
       {/* Left: vertical flow */}
-      <article
-        className={cn(
-          'rounded-3xl border p-md sm:p-lg',
-          'border-[var(--term-border)] bg-[var(--term-bg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
+      <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <ol className="flex flex-col">
           {content.steps.map((step, idx) => (
             <li key={step.title} className="flex flex-col">
@@ -49,63 +42,68 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
       </article>
 
       {/* Right: callout */}
-      <article
-        className={cn(
-          'flex h-full flex-col items-center justify-center gap-2 rounded-3xl border-2 p-md sm:p-lg text-center',
-          'border-teal-300/80 bg-teal-50/60',
-          'dark:border-teal-700/70 dark:bg-teal-950/30',
-          'shadow-[0_2px_0_var(--term-border)]',
-          'ring-2 ring-teal-300/30 dark:ring-teal-500/20',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-14 w-14 items-center justify-center rounded-2xl border-2',
-            'bg-teal-100 text-teal-700 border-teal-200/80',
-            'dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
-          )}
-        >
-          <ClockIcon className="h-7 w-7" />
-        </span>
-        <p className="text-md sm:text-lg font-bold leading-tight text-teal-900 dark:text-teal-100 break-keep">
-          <span className="block">{content.callout.line1}</span>
-          <span className="block">{content.callout.line2}</span>
-        </p>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300">
-          after paint
-        </span>
-      </article>
+      <Callout callout={content.callout} />
     </div>
   </section>
 );
 
-const StepCard = ({ step, index }: { step: PositionStep; index: number }) => {
-  const t = commitToneTokens[step.tone];
+const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['callout'] }) => {
+  const t = toneTokens.teal;
   return (
     <article
       className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-2xl border p-md',
-        step.active
-          ? cn('border-2', t.borderStrong, t.bg, 'ring-2 ring-teal-300/40 dark:ring-teal-500/30')
-          : cn(t.border, 'bg-[var(--term-bg)]'),
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
+        'flex h-full flex-col items-center justify-center gap-2 rounded-lg border-2 p-md sm:p-lg text-center',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-2xl border text-xsm font-mono font-bold',
-          t.chipSolid,
+          'inline-flex h-14 w-14 items-center justify-center rounded-lg border-2',
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
+        )}
+      >
+        <ClockIcon className="h-7 w-7" />
+      </span>
+      <p className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
+        <span className="block">{callout.line1}</span>
+        <span className="block">{callout.line2}</span>
+      </p>
+      <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+        after paint
+      </span>
+    </article>
+  );
+};
+
+const StepCard = ({ step, index }: { step: PositionStep; index: number }) => {
+  const t = toneTokens[step.tone];
+  return (
+    <article
+      className={cn(
+        'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border p-md',
+        step.active
+          ? cn('border-2', t.fill.border, t.fill.bg)
+          : cn(t.border, 'bg-[var(--term-bg)]'),
+        'shadow-[0_1px_0_var(--term-border)]',
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex h-11 w-11 items-center justify-center rounded-lg border text-xsm font-mono font-bold',
+          step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
         {index}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.textStrong)}>
+          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.active && (

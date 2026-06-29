@@ -94,7 +94,6 @@ const TreeCard = ({
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={tone} size="sm">
@@ -127,8 +126,7 @@ const Timeline = ({ items }: { items: CommitTimelineItem[] }) => (
     aria-hidden="true"
   >
     {items.map((item) => {
-      const tone = timelineTone(item.tone);
-      const t = toneTokens[tone];
+      const t = toneTokens[item.tone];
       return (
         <li
           key={item.key}
@@ -163,10 +161,6 @@ const Timeline = ({ items }: { items: CommitTimelineItem[] }) => (
     })}
   </ol>
 );
-
-/** 타임라인 tone을 공유 ToneKey로 매핑한다. orange는 가장 가까운 amber로 치환. */
-const timelineTone = (tone: CommitTimelineItem['tone']): ToneKey =>
-  tone === 'orange' ? 'amber' : (tone as ToneKey);
 
 const DownArrow = () => (
   <span

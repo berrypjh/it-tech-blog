@@ -1,29 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, FlowItem } from '../content';
 import { ListChecksIcon } from '../icons';
-
-import { tonePalette } from './tone-palette';
 
 type Props = { content: CompleteWorkContent['summary'] };
 
 export const RenderPhaseSummary = ({ content }: Props) => (
-  <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="summary" aria-labelledby="heading-summary" className="space-y-md">
+    <SectionHeader
       id="summary"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecksIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <ol className="flex flex-col gap-1.5">
         {content.items.map((item) => (
           <li key={item.number}>
@@ -36,32 +29,29 @@ export const RenderPhaseSummary = ({ content }: Props) => (
 );
 
 const ItemRow = ({ item }: { item: FlowItem }) => {
-  const palette = tonePalette[item.tone];
+  const t = toneTokens[item.tone];
   return (
     <article
       className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2 rounded-xl border p-sm sm:p-md',
-        palette.border,
-        palette.bg,
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
+        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        t.border,
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex h-9 w-9 items-center justify-center rounded-xl border font-mono font-bold text-xsm tabular-nums',
-          palette.chip,
+          'inline-flex h-9 w-9 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
+          t.chip,
         )}
       >
         {item.number}
       </span>
       <div className="flex flex-col gap-0 min-w-0">
-        <span
-          className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', palette.text)}
-        >
+        <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
           {item.title}
         </span>
-        <span className="text-[10px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
+        <span className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
           {item.description}
         </span>
       </div>

@@ -1,9 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, TimelineStep } from '../content';
 import { MapIcon, TargetIcon } from '../icons';
-import { commitToneTokens } from '../palette';
 
 type Props = { content: CommitPhaseIntroContent['map'] };
 
@@ -13,28 +13,25 @@ export const CommitPhaseMapSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-phase-map"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="commit-phase-map"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<MapIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-gradient-to-br from-white via-sky-50/25 to-teal-50/30',
-        'dark:from-[var(--term-bg)] dark:via-sky-950/15 dark:to-teal-950/15',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="mb-md flex flex-wrap items-center justify-between gap-2">
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {'// commit phase: 7 steps map'}
         </span>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-sky-700/80 dark:text-sky-300/80 rounded-md border border-sky-200/70 dark:border-sky-800/60 px-2 py-0.5">
+        <span
+          className={cn(
+            'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+            toneTokens.sky.chip,
+          )}
+        >
           chapter map
         </span>
       </header>
@@ -63,7 +60,7 @@ const StepRow = ({
   isLast: boolean;
   mutationBadge: string;
 }) => {
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <div className="flex w-full items-stretch gap-3">
       {/* Number rail */}
@@ -72,7 +69,9 @@ const StepRow = ({
           aria-hidden="true"
           className={cn(
             'inline-flex h-9 w-9 items-center justify-center rounded-full border-2 text-xsm font-mono font-bold tabular-nums',
-            t.chipSolid,
+            t.fill.bg,
+            t.fill.border,
+            t.fill.text,
           )}
         >
           {step.number}
@@ -85,25 +84,22 @@ const StepRow = ({
       {/* Card */}
       <article
         className={cn(
-          'mb-2 flex-1 min-w-0 flex flex-col gap-1 rounded-2xl border p-sm sm:p-md',
+          'mb-2 flex-1 min-w-0 flex flex-col gap-1 rounded-lg border p-sm sm:p-md',
           step.isMutation
-            ? cn(t.borderStrong, 'border-2', t.bg)
+            ? cn('border-2', t.fill.border, t.fill.bg)
             : cn(t.border, 'bg-[var(--term-bg)]'),
           'shadow-[0_1px_0_var(--term-border)]',
-          'transition-colors',
-          t.borderHover,
         )}
       >
         <header className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.textStrong)}>
+          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.isMutation && (
             <span
               className={cn(
-                'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
+                'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
                 t.chip,
-                'font-bold',
               )}
             >
               <TargetIcon aria-hidden="true" className="h-3 w-3" />

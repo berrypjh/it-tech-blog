@@ -1,8 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CommitToneKey } from '../../_shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, HeroStepItem } from '../content';
 import { DropletIcon, LogOutIcon, RepeatIcon, TrashIcon, UnlinkIcon } from '../icons';
 
@@ -101,7 +100,7 @@ const SubtreePanel = ({ title, nodes }: { title: string; nodes: string[] }) => (
 );
 
 const StepRow = ({ step }: { step: HeroStepItem }) => {
-  const tone = stepTone(step.tone);
+  const tone = step.tone;
   const t = toneTokens[tone];
   const Icon = stepIconMap[step.iconName];
   return (
@@ -110,7 +109,6 @@ const StepRow = ({ step }: { step: HeroStepItem }) => {
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={tone} size="sm">
@@ -156,15 +154,6 @@ const BottomLabel = ({ label }: { label: string }) => (
     <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
   </div>
 );
-
-/** CommitToneKey를 공유 ToneKey로 매핑한다. 공유 팔레트에 없는 톤은 가까운 톤으로 대체. */
-const stepTone = (tone: CommitToneKey): ToneKey => {
-  const fallback: Partial<Record<CommitToneKey, ToneKey>> = {
-    rose: 'amber',
-    orange: 'amber',
-  };
-  return fallback[tone] ?? (tone as ToneKey);
-};
 
 const DownArrow = () => (
   <span

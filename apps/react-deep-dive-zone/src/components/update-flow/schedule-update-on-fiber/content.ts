@@ -2,23 +2,34 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type FunctionFlowVariant = 'outline' | 'soft' | 'mint' | 'dark';
+export type FunctionFlowIcon = 'function' | 'workflow' | 'network' | 'target';
 
 export type FunctionFlowStep = {
   id: 'dispatch' | 'enqueue' | 'rootReturn' | 'schedule';
   title: string;
   body: string;
-  variant: FunctionFlowVariant;
+  tone: ToneKey;
+  icon: FunctionFlowIcon;
 };
 
-export type ResponsibilityIconName = 'flag' | 'user' | 'repeat';
+export type ResponsibilityIcon = 'flag' | 'user' | 'repeat';
 
 export type ResponsibilityCard = {
   number: string;
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: ResponsibilityIconName;
+  icon: ResponsibilityIcon;
+};
+
+export type ContextCardIcon = 'refresh' | 'mousePointer';
+
+export type ContextCard = {
+  title: string;
+  badge: string;
+  bullets: string[];
+  tone: ToneKey;
+  icon: ContextCardIcon;
 };
 
 export type RootStateField = {
@@ -47,7 +58,6 @@ export type ScheduleUpdateOnFiberContent = {
     };
   };
   flow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -56,54 +66,34 @@ export type ScheduleUpdateOnFiberContent = {
     keyPointBody: string;
   };
   responsibilities: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ResponsibilityCard[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-    };
-    code: {
-      fileName: string;
-      rightLabel: string;
-      content: string;
-    };
-    callout: { title: string; body: string; linkedLine: number };
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
+    callout: { title: string; body: string; tone: ToneKey; linkedLine: number };
   };
   contextCompare: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    leftCard: {
-      title: string;
-      badge: string;
-      bullets: string[];
-      tone: 'teal' | 'sky';
-      iconName: 'refresh' | 'mousePointer';
-    };
-    vsLabel: string;
-    rightCard: {
-      title: string;
-      badge: string;
-      bullets: string[];
-      tone: 'teal' | 'sky';
-      iconName: 'refresh' | 'mousePointer';
-    };
+    leftCard: ContextCard;
+    rightCard: ContextCard;
   };
   markRoot: {
-    number: string;
     eyebrow: string;
     title: string;
     description: { title: string; body: string; bullets: string[] };
@@ -115,7 +105,6 @@ export type ScheduleUpdateOnFiberContent = {
     afterFields: RootStateField[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -140,6 +129,17 @@ const checkpointCodeKo = `export function scheduleUpdateOnFiber(root, fiber, lan
 
   // ... 이후 root scheduling으로 연결 ...
 }`;
+
+const checkpointCodeEn = `export function scheduleUpdateOnFiber(root, fiber, lane) {
+  // ... omitted logic ...
+
+  markRootUpdated(root, lane);
+
+  // ... continues into root scheduling ...
+}`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js';
 
 const ko: ScheduleUpdateOnFiberContent = {
   hero: {
@@ -167,8 +167,7 @@ const ko: ScheduleUpdateOnFiberContent = {
     },
   },
   flow: {
-    number: '01',
-    eyebrow: '함수 위치',
+    eyebrow: '01 · 함수 위치',
     title: '함수 위치 전체 흐름',
     description:
       'dispatchSetStateInternal에서 시작해 Root에 pending work를 등록하는 단계까지, 이 페이지가 그림 어느 지점인지 따라갑니다.',
@@ -177,33 +176,36 @@ const ko: ScheduleUpdateOnFiberContent = {
         id: 'dispatch',
         title: 'dispatchSetStateInternal',
         body: 'update 객체 생성 및 eager bailout 처리 후',
-        variant: 'outline',
+        tone: 'sky',
+        icon: 'function',
       },
       {
         id: 'enqueue',
         title: 'enqueueConcurrentHookUpdate',
         body: 'update를 queue 처리 경로로 등록',
-        variant: 'soft',
+        tone: 'violet',
+        icon: 'workflow',
       },
       {
         id: 'rootReturn',
         title: 'Root 반환',
         body: 'getRootForUpdatedFiber를 통해 FiberRoot 획득',
-        variant: 'mint',
+        tone: 'emerald',
+        icon: 'network',
       },
       {
         id: 'schedule',
         title: 'scheduleUpdateOnFiber(root, fiber, lane)',
         body: 'Root를 스케줄링 흐름에 등록',
-        variant: 'dark',
+        tone: 'amber',
+        icon: 'target',
       },
     ],
     keyPointTitle: '핵심 포인트',
     keyPointBody: 'Fiber 단위 업데이트 → Root 단위 pending work 등록으로 전환되는 지점입니다.',
   },
   responsibilities: {
-    number: '02',
-    eyebrow: '함수의 책임',
+    eyebrow: '02 · 함수의 책임',
     title: 'scheduleUpdateOnFiber가 하는 핵심 일',
     description:
       '이름과 달리 이 함수는 렌더링을 실행하지 않습니다. 다음 세 가지가 핵심 역할입니다.',
@@ -213,50 +215,46 @@ const ko: ScheduleUpdateOnFiberContent = {
         title: 'Root에 pending work 표시',
         body: '해당 Root에 이 lane의 작업이 생겼음을 기록합니다.',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
       {
         number: '2',
         title: '업데이트가 발생한 실행 맥락 구분',
         body: '어떤 상황(Context)에서 업데이트가 발생했는지에 따라 처리 분기가 달라집니다.',
         tone: 'violet',
-        iconName: 'user',
+        icon: 'user',
       },
       {
         number: '3',
         title: '이후 root scheduling으로 연결',
         body: 'Root가 실제 스케줄 목록에 오를 수 있도록 다음 단계로 이어집니다.',
         tone: 'sky',
-        iconName: 'repeat',
+        icon: 'repeat',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '03 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberWorkLoop.js',
-      functionLabel: '함수',
-      functionName: 'scheduleUpdateOnFiber',
-      questionLabel: '학습 질문',
-      question: '이 함수는 DOM을 바꾸는가, Root에 일이 생겼다고 표시하는가?',
-    },
-    code: {
-      fileName: 'ReactFiberWorkLoop.js',
-      rightLabel: '코드 미리보기',
-      content: checkpointCodeKo,
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    functionLabel: '함수',
+    functionName: 'scheduleUpdateOnFiber',
+    learningQuestion: '이 함수는 DOM을 바꾸는가, Root에 일이 생겼다고 표시하는가?',
+    codeHeader: 'ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: checkpointCodeKo,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 scheduleUpdateOnFiber 보기',
     callout: {
       title: 'markRootUpdated 호출',
       body: '이 Root에 lane의 pending work가 생겼음을 기록',
+      tone: 'emerald',
       linkedLine: 4,
     },
   },
   contextCompare: {
-    number: '04',
-    eyebrow: '실행 맥락 구분',
+    eyebrow: '04 · 실행 맥락 구분',
     title: 'render phase update와 normal update 비교',
     description:
       '같은 함수 안에서도 업데이트가 발생한 실행 맥락에 따라 처리가 갈립니다. 두 경로를 나란히 두고 차이를 봅니다.',
@@ -269,20 +267,18 @@ const ko: ScheduleUpdateOnFiberContent = {
         'infinite loop 방지 로직 등이 적용',
       ],
       tone: 'teal',
-      iconName: 'refresh',
+      icon: 'refresh',
     },
-    vsLabel: 'VS',
     rightCard: {
       title: '이벤트 핸들러 등 바깥에서 발생한 update',
       badge: '일반적인 scheduling 경로',
       bullets: ['클릭/입력/네트워크 응답 등', 'Root pending work 등록', '이후 스케줄링 큐에 등록'],
       tone: 'sky',
-      iconName: 'mousePointer',
+      icon: 'mousePointer',
     },
   },
   markRoot: {
-    number: '05',
-    eyebrow: 'markRootUpdated',
+    eyebrow: '05 · markRootUpdated',
     title: 'markRootUpdated의 의미',
     description: {
       title: 'markRootUpdated(root, lane)',
@@ -310,8 +306,7 @@ const ko: ScheduleUpdateOnFiberContent = {
     ],
   },
   quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     questionLabel: '질문',
     answerLabel: '핵심 정답',
@@ -355,8 +350,7 @@ const en: ScheduleUpdateOnFiberContent = {
     },
   },
   flow: {
-    number: '01',
-    eyebrow: 'WHERE WE ARE',
+    eyebrow: '01 · WHERE WE ARE',
     title: 'Where this function sits in the flow',
     description:
       'Trace from dispatchSetStateInternal through to the moment pending work is registered on the Root.',
@@ -365,33 +359,36 @@ const en: ScheduleUpdateOnFiberContent = {
         id: 'dispatch',
         title: 'dispatchSetStateInternal',
         body: 'after building the update and the eager-bailout check',
-        variant: 'outline',
+        tone: 'sky',
+        icon: 'function',
       },
       {
         id: 'enqueue',
         title: 'enqueueConcurrentHookUpdate',
         body: 'registers the update onto the queue-processing path',
-        variant: 'soft',
+        tone: 'violet',
+        icon: 'workflow',
       },
       {
         id: 'rootReturn',
         title: 'Return the Root',
         body: 'gets the FiberRoot via getRootForUpdatedFiber',
-        variant: 'mint',
+        tone: 'emerald',
+        icon: 'network',
       },
       {
         id: 'schedule',
         title: 'scheduleUpdateOnFiber(root, fiber, lane)',
         body: 'registers the Root into the scheduling pipeline',
-        variant: 'dark',
+        tone: 'amber',
+        icon: 'target',
       },
     ],
     keyPointTitle: 'Key point',
     keyPointBody: 'This is the exact pivot from Fiber-level updates to Root-level pending work.',
   },
   responsibilities: {
-    number: '02',
-    eyebrow: 'RESPONSIBILITIES',
+    eyebrow: '02 · RESPONSIBILITIES',
     title: 'What scheduleUpdateOnFiber actually does',
     description: 'Despite the name, this function never renders. Its real job has three parts.',
     cards: [
@@ -400,50 +397,46 @@ const en: ScheduleUpdateOnFiberContent = {
         title: 'Mark pending work on the Root',
         body: 'Records that work exists on this Root for the given lane.',
         tone: 'emerald',
-        iconName: 'flag',
+        icon: 'flag',
       },
       {
         number: '2',
         title: 'Distinguish the calling context',
         body: 'The handling branches by which context (e.g. render phase vs not) the update came from.',
         tone: 'violet',
-        iconName: 'user',
+        icon: 'user',
       },
       {
         number: '3',
         title: 'Hand off to root scheduling',
         body: 'Continues into the next step so the Root actually lands on the scheduler.',
         tone: 'sky',
-        iconName: 'repeat',
+        icon: 'repeat',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '03 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberWorkLoop.js',
-      functionLabel: 'Function',
-      functionName: 'scheduleUpdateOnFiber',
-      questionLabel: 'Learning question',
-      question: 'Does this function change the DOM, or just mark the Root as having work?',
-    },
-    code: {
-      fileName: 'ReactFiberWorkLoop.js',
-      rightLabel: 'preview',
-      content: checkpointCodeKo,
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    functionLabel: 'Function',
+    functionName: 'scheduleUpdateOnFiber',
+    learningQuestion: 'Does this function change the DOM, or just mark the Root as having work?',
+    codeHeader: 'ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: checkpointCodeEn,
+    primaryHref: githubHref,
+    primaryCta: 'View scheduleUpdateOnFiber on GitHub',
     callout: {
       title: 'markRootUpdated call',
       body: 'Marks that the Root has pending work for this lane',
+      tone: 'emerald',
       linkedLine: 4,
     },
   },
   contextCompare: {
-    number: '04',
-    eyebrow: 'TWO CONTEXTS',
+    eyebrow: '04 · TWO CONTEXTS',
     title: 'Render-phase update vs normal update',
     description:
       'Inside the same function, the handling splits based on the execution context that produced the update.',
@@ -456,9 +449,8 @@ const en: ScheduleUpdateOnFiberContent = {
         'infinite-loop guards apply',
       ],
       tone: 'teal',
-      iconName: 'refresh',
+      icon: 'refresh',
     },
-    vsLabel: 'VS',
     rightCard: {
       title: 'Update from outside (event handlers, etc.)',
       badge: 'normal scheduling path',
@@ -468,12 +460,11 @@ const en: ScheduleUpdateOnFiberContent = {
         'land on the scheduling queue',
       ],
       tone: 'sky',
-      iconName: 'mousePointer',
+      icon: 'mousePointer',
     },
   },
   markRoot: {
-    number: '05',
-    eyebrow: 'MARKROOTUPDATED',
+    eyebrow: '05 · MARKROOTUPDATED',
     title: 'What markRootUpdated means',
     description: {
       title: 'markRootUpdated(root, lane)',
@@ -501,8 +492,7 @@ const en: ScheduleUpdateOnFiberContent = {
     ],
   },
   quiz: {
-    number: '06',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

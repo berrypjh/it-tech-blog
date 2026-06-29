@@ -65,7 +65,6 @@ export type WorkLoopContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       sync: {
@@ -83,43 +82,37 @@ export type WorkLoopContent = {
     };
   };
   comparison: {
-    number: string;
     eyebrow: string;
     title: string;
     vsLabel: string;
     cards: { left: ComparisonCard; right: ComparisonCard };
   };
   common: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: CommonFlowStep[];
   };
   timelines: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: { left: TimelineCard; right: TimelineCard };
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     fileName: string;
     functionsLabel: string;
     functions: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
     callouts: { primary: CodeCallout; secondary: CodeCallout };
   };
   fiberTree: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -129,7 +122,6 @@ export type WorkLoopContent = {
     infoBox: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -173,7 +165,6 @@ const ko: WorkLoopContent = {
     },
     description:
       '동기 렌더링에서는 끝까지 밀고 나가고, 동시성 렌더링에서는 필요할 때 잠시 양보할 수 있습니다.',
-    callout: 'Render Phase는 Fiber를 반복 처리하는 work loop 구조로 진행됩니다.',
     diagram: {
       title: 'Fiber를 하나씩 처리하는 흐름 예시',
       sync: {
@@ -202,8 +193,7 @@ const ko: WorkLoopContent = {
     },
   },
   comparison: {
-    number: '1',
-    eyebrow: '두 루프',
+    eyebrow: '01 · 두 루프',
     title: '두 work loop 비교',
     vsLabel: 'VS',
     cards: {
@@ -222,8 +212,7 @@ const ko: WorkLoopContent = {
     },
   },
   common: {
-    number: '2',
-    eyebrow: '공통 루프',
+    eyebrow: '02 · 공통 루프',
     title: '공통점: performUnitOfWork 반복',
     description: '두 work loop 모두 같은 반복 구조를 가집니다. 차이는 반복 조건에 있을 뿐입니다.',
     steps: [
@@ -241,8 +230,7 @@ const ko: WorkLoopContent = {
     ],
   },
   timelines: {
-    number: '3',
-    eyebrow: 'push vs yield',
+    eyebrow: '03 · 진행 방식',
     title: '끝까지 밀기 vs 양보 가능',
     description: '같은 A → B → C → D 작업도 두 루프가 처리하는 방식은 다릅니다.',
     cards: {
@@ -274,18 +262,16 @@ const ko: WorkLoopContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberWorkLoop.js',
     functionsLabel: '볼 함수',
     functions: ['workLoopSync', 'workLoopConcurrent'],
-    learningLabel: '학습 질문',
     learningQuestion: '두 함수의 반복 조건이 어떻게 다른가요?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: CODE_LINES,
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE_LINES,
     callouts: {
       primary: {
         kind: 'sync',
@@ -304,8 +290,7 @@ const ko: WorkLoopContent = {
     },
   },
   fiberTree: {
-    number: '5',
-    eyebrow: '트리 순회',
+    eyebrow: '05 · 트리 순회',
     title: 'Fiber 처리 현황 시각화 (예시 트리)',
     description: 'work loop가 트리를 따라 이동하며 현재 Fiber 하나만 활성화한다는 감각을 잡습니다.',
     nodes: [
@@ -336,8 +321,7 @@ const ko: WorkLoopContent = {
     infoBox: 'work loop는 현재 Fiber 하나를 처리하고, 다음 Fiber를 결정하는 과정을 반복합니다.',
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'workLoopSync와 workLoopConcurrent의 가장 큰 차이는?',
     answer: '중간에 작업을 양보할 수 있는지 여부다.',
@@ -362,7 +346,6 @@ const en: WorkLoopContent = {
     },
     description:
       'Sync rendering pushes through to the end. Concurrent rendering can yield briefly when needed.',
-    callout: 'The Render Phase runs as a work loop that repeatedly processes Fibers.',
     diagram: {
       title: 'How a work loop processes Fibers',
       sync: {
@@ -391,8 +374,7 @@ const en: WorkLoopContent = {
     },
   },
   comparison: {
-    number: '1',
-    eyebrow: 'TWO LOOPS',
+    eyebrow: '01 · TWO LOOPS',
     title: 'Compare the two work loops',
     vsLabel: 'VS',
     cards: {
@@ -414,8 +396,7 @@ const en: WorkLoopContent = {
     },
   },
   common: {
-    number: '2',
-    eyebrow: 'COMMON LOOP',
+    eyebrow: '02 · COMMON LOOP',
     title: 'In common: repeat performUnitOfWork',
     description: 'Both work loops share the same shape. Only the loop condition differs.',
     steps: [
@@ -433,8 +414,7 @@ const en: WorkLoopContent = {
     ],
   },
   timelines: {
-    number: '3',
-    eyebrow: 'PUSH VS YIELD',
+    eyebrow: '03 · PUSH VS YIELD',
     title: 'Push through vs yield',
     description: 'Same A → B → C → D work, two different loop shapes.',
     cards: {
@@ -466,18 +446,16 @@ const en: WorkLoopContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberWorkLoop.js',
     functionsLabel: 'functions to read',
     functions: ['workLoopSync', 'workLoopConcurrent'],
-    learningLabel: 'learning question',
     learningQuestion: 'How do their loop conditions differ?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: 'code preview',
-    codeLines: CODE_LINES,
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE_LINES,
     callouts: {
       primary: {
         kind: 'sync',
@@ -496,8 +474,7 @@ const en: WorkLoopContent = {
     },
   },
   fiberTree: {
-    number: '5',
-    eyebrow: 'TREE WALK',
+    eyebrow: '05 · TREE WALK',
     title: 'Fiber processing state (sample tree)',
     description: 'See how the work loop walks the tree, keeping only one Fiber active at a time.',
     nodes: [
@@ -528,8 +505,7 @@ const en: WorkLoopContent = {
     infoBox: 'The work loop processes one Fiber, picks the next, and repeats the cycle.',
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini Quiz',
     question: 'What is the biggest difference between workLoopSync and workLoopConcurrent?',
     answer: 'Whether the loop can yield mid-work.',

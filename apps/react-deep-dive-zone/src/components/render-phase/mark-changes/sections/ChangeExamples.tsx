@@ -1,34 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { ExampleCard, MarkChangesContent, Tone } from '../content';
-import { ArrowDownIcon, FlagIcon, MoveIcon, SparklesIcon, Trash2Icon } from '../icons';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type { ExampleCard, MarkChangesContent } from '../content';
+import { ArrowDownIcon, markIconByName, SparklesIcon } from '../icons';
+import { facetFor } from '../markFacet';
 
 type Props = { content: MarkChangesContent['examples'] };
 
-const iconMap = {
-  flag: FlagIcon,
-  trash: Trash2Icon,
-  move: MoveIcon,
-} as const;
-
-/** rose는 의미색(삭제)이라 toneTokens에 없으니 그대로 유지한다. */
-const roseTokens = {
-  text: 'text-rose-700 dark:text-rose-200',
-  chip: 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/70',
-};
-
-const cardText = (tone: Tone) =>
-  tone === 'rose' ? roseTokens.text : toneTokens[tone as ToneKey].text;
-const cardChip = (tone: Tone) =>
-  tone === 'rose' ? roseTokens.chip : toneTokens[tone as ToneKey].chip;
-
 export const ChangeExamples = ({ content }: Props) => (
-  <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="examples" aria-labelledby="heading-examples" className="space-y-md">
+    <SectionHeader
       id="examples"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<SparklesIcon className="h-5 w-5" />}
@@ -45,15 +28,17 @@ export const ChangeExamples = ({ content }: Props) => (
 );
 
 const Card = ({ card }: { card: ExampleCard }) => {
-  const Icon = iconMap[card.iconName];
+  const t = facetFor(card.tone);
+  const Icon = markIconByName[card.icon];
   const beforeTokens = card.before.split(' ').filter(Boolean);
   const afterTokens = card.after.split(' ').filter(Boolean);
+  const mark = card.icon === 'flag' ? 'insert' : card.icon === 'trash' ? 'delete' : 'move';
   return (
     <article
       className={cn(
-        'group flex h-full flex-col gap-3 rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        'flex h-full flex-col gap-3 rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        t.border,
       )}
     >
       <header className="flex items-center justify-between gap-2">
@@ -61,45 +46,27 @@ const Card = ({ card }: { card: ExampleCard }) => {
           aria-hidden="true"
           className={cn(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
-            cardChip(card.tone),
+            t.chip,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
         <span
           className={cn(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            cardChip(card.tone),
+            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
+            t.chip,
           )}
         >
           {card.badgeLabel}
         </span>
       </header>
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', cardText(card.tone))}>
-        {card.title}
-      </h3>
+      <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
 
-      {/* before / after mini diagram */}
       <div className="flex flex-col gap-2">
-        <TokenRow label="before" tokens={beforeTokens} mark={null} />
-        <ArrowDownIcon
-          aria-hidden="true"
-          className={cn(
-            'mx-auto h-5 w-5',
-            card.tone === 'teal'
-              ? 'text-teal-500/80 dark:text-teal-300/80'
-              : card.tone === 'rose'
-                ? 'text-rose-500/80 dark:text-rose-300/80'
-                : 'text-amber-500/80 dark:text-amber-300/80',
-          )}
-        />
-        <TokenRow
-          label="after"
-          tokens={afterTokens}
-          mark={card.iconName === 'flag' ? 'insert' : card.iconName === 'trash' ? 'delete' : 'move'}
-          tone={card.tone}
-        />
+        <TokenRow label="before" tokens={beforeTokens} mark={null} tone={card.tone} />
+        <ArrowDownIcon aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
+        <TokenRow label="after" tokens={afterTokens} mark={mark} tone={card.tone} />
       </div>
 
       <p className="mt-auto text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -118,43 +85,37 @@ const TokenRow = ({
   label: string;
   tokens: string[];
   mark: 'insert' | 'delete' | 'move' | null;
-  tone?: Tone;
-}) => (
-  <div className="flex flex-col gap-1">
-    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-      {label}
-    </span>
-    <div className="flex flex-wrap items-center gap-1">
-      {tokens.map((tok, idx) => {
-        const isLast = idx === tokens.length - 1;
-        // For "after" rows, highlight last token for insert; the moving tokens for move; nothing else for delete
-        let highlight = false;
-        let isMoved = false;
-        if (mark === 'insert') {
-          highlight = isLast;
-        } else if (mark === 'move') {
-          // For A B C → B A C: tokens 0 and 1 moved
-          isMoved = idx === 0 || idx === 1;
-        }
-        const t = tone ?? 'sky';
-        return (
-          <span
-            key={`${tok}-${idx}`}
-            className={cn(
-              'inline-flex h-8 min-w-[2rem] items-center justify-center rounded-md border font-mono text-xsm font-bold',
-              highlight
-                ? t === 'teal'
-                  ? 'border-teal-400/80 bg-teal-100 text-teal-800 dark:border-teal-600/70 dark:bg-teal-900/60 dark:text-teal-100'
-                  : 'border-sky-400/80 bg-sky-100 text-sky-800 dark:border-sky-600/70 dark:bg-sky-900/60 dark:text-sky-100'
-                : isMoved
-                  ? 'border-amber-400/80 bg-amber-100 text-amber-800 dark:border-amber-600/70 dark:bg-amber-900/60 dark:text-amber-100'
-                  : 'border-slate-300/80 bg-white text-slate-700 dark:border-slate-700/70 dark:bg-slate-950/40 dark:text-slate-200',
-            )}
-          >
-            {tok}
-          </span>
-        );
-      })}
+  tone: ExampleCard['tone'];
+}) => {
+  const t = facetFor(tone);
+  const moved = toneTokens.amber;
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
+        {label}
+      </span>
+      <div className="flex flex-wrap items-center gap-1">
+        {tokens.map((tok, idx) => {
+          const isLast = idx === tokens.length - 1;
+          const highlight = mark === 'insert' && isLast;
+          const isMoved = mark === 'move' && (idx === 0 || idx === 1);
+          return (
+            <span
+              key={`${tok}-${idx}`}
+              className={cn(
+                'inline-flex h-8 min-w-[2rem] items-center justify-center rounded-md border font-mono text-xsm font-bold',
+                highlight
+                  ? cn(t.fill.bg, t.fill.border, t.fill.text)
+                  : isMoved
+                    ? cn(moved.fill.bg, moved.fill.border, moved.fill.text)
+                    : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-fg)]',
+              )}
+            >
+              {tok}
+            </span>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};

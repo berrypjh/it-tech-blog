@@ -7,7 +7,7 @@ export type PreviousChapterStepIcon = 'mousePointer' | 'fileText' | 'network' | 
 export type PreviousChapterStep = {
   title: string;
   description: string;
-  iconName: PreviousChapterStepIcon;
+  icon: PreviousChapterStepIcon;
   tone: ToneKey;
 };
 
@@ -24,7 +24,7 @@ export type WorkCardIcon = 'refresh' | 'layers' | 'gitBranch' | 'flag';
 export type WorkCard = {
   title: string;
   description: string;
-  iconName: WorkCardIcon;
+  icon: WorkCardIcon;
   tone: ToneKey;
 };
 
@@ -41,7 +41,7 @@ export type WarningStep = {
   title: string;
   subtitle: string;
   tone: ToneKey;
-  iconName: WarningStepIcon;
+  icon: WarningStepIcon;
 };
 
 export type RenderPhaseIntroContent = {
@@ -69,7 +69,6 @@ export type RenderPhaseIntroContent = {
     };
   };
   previous: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -77,7 +76,6 @@ export type RenderPhaseIntroContent = {
     emphasis: string;
   };
   comparison: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -85,14 +83,12 @@ export type RenderPhaseIntroContent = {
     rows: ComparisonRow[];
   };
   work: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: WorkCard[];
   };
   flowPreview: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -108,7 +104,6 @@ export type RenderPhaseIntroContent = {
     steps: WarningStep[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -124,52 +119,52 @@ export type RenderPhaseIntroContent = {
 };
 
 const previousStepsKo: PreviousChapterStep[] = [
-  { title: 'setState', description: '사용자 요청', iconName: 'mousePointer', tone: 'sky' },
-  { title: 'update 객체 생성', description: 'update, lane 등', iconName: 'fileText', tone: 'cyan' },
+  { title: 'setState', description: '사용자 요청', icon: 'mousePointer', tone: 'sky' },
+  { title: 'update 객체 생성', description: 'update, lane 등', icon: 'fileText', tone: 'cyan' },
   {
     title: 'Fiber / Root에 작업 표시',
     description: 'Fiber와 Root에 pending work 기록',
-    iconName: 'network',
+    icon: 'network',
     tone: 'teal',
   },
   {
     title: 'Root 스케줄링 예약',
     description: 'ensureRootIsScheduled',
-    iconName: 'clock',
+    icon: 'clock',
     tone: 'emerald',
   },
   {
     title: '이제 Render Phase 시작',
     description: '계산 단계로 진입',
-    iconName: 'play',
+    icon: 'play',
     tone: 'violet',
   },
 ];
 
 const previousStepsEn: PreviousChapterStep[] = [
-  { title: 'setState', description: 'User request', iconName: 'mousePointer', tone: 'sky' },
+  { title: 'setState', description: 'User request', icon: 'mousePointer', tone: 'sky' },
   {
     title: 'Build update object',
     description: 'update, lane, ...',
-    iconName: 'fileText',
+    icon: 'fileText',
     tone: 'cyan',
   },
   {
     title: 'Mark work on Fiber / Root',
     description: 'pending work recorded on Fiber & Root',
-    iconName: 'network',
+    icon: 'network',
     tone: 'teal',
   },
   {
     title: 'Schedule the Root',
     description: 'ensureRootIsScheduled',
-    iconName: 'clock',
+    icon: 'clock',
     tone: 'emerald',
   },
   {
     title: 'Now the Render Phase begins',
     description: 'Entering the compute step',
-    iconName: 'play',
+    icon: 'play',
     tone: 'violet',
   },
 ];
@@ -178,25 +173,25 @@ const workCardsKo: WorkCard[] = [
   {
     title: '컴포넌트를 다시 실행한다',
     description: '함수 컴포넌트를 다시 호출해 최신 props / state 기준의 UI를 계산합니다.',
-    iconName: 'refresh',
+    icon: 'refresh',
     tone: 'sky',
   },
   {
     title: '새로운 children을 얻는다',
     description: 'JSX가 React Element를 만들고, 이들이 다음 자식 목록으로 연결됩니다.',
-    iconName: 'layers',
+    icon: 'layers',
     tone: 'teal',
   },
   {
     title: '기존 Fiber와 비교한다',
     description: '이전 Fiber 트리와 비교하며 재사용할지, 새로 만들지 결정합니다.',
-    iconName: 'gitBranch',
+    icon: 'gitBranch',
     tone: 'violet',
   },
   {
     title: '변경 흔적을 flags로 남긴다',
     description: '나중에 Commit Phase에서 무엇을 적용할지 Fiber에 flags로 기록합니다.',
-    iconName: 'flag',
+    icon: 'flag',
     tone: 'amber',
   },
 ];
@@ -206,25 +201,25 @@ const workCardsEn: WorkCard[] = [
     title: 'Re-run the component',
     description:
       'Function components are called again to compute the UI based on the latest props / state.',
-    iconName: 'refresh',
+    icon: 'refresh',
     tone: 'sky',
   },
   {
     title: 'Get the next children',
     description: 'JSX builds React Elements that become the next list of children.',
-    iconName: 'layers',
+    icon: 'layers',
     tone: 'teal',
   },
   {
     title: 'Diff against the previous Fiber',
     description: 'Compare with the prior Fiber tree to decide what to reuse or rebuild.',
-    iconName: 'gitBranch',
+    icon: 'gitBranch',
     tone: 'violet',
   },
   {
     title: 'Record changes as flags',
     description: 'Mark Fibers with flags so the Commit Phase knows what to apply later.',
-    iconName: 'flag',
+    icon: 'flag',
     tone: 'amber',
   },
 ];
@@ -315,15 +310,15 @@ const flowPreviewStepsEn: FlowPreviewStep[] = [
 ];
 
 const warningStepsKo: WarningStep[] = [
-  { title: '계산 중', subtitle: 'Render Phase', tone: 'sky', iconName: 'cpu' },
-  { title: '변경 없음', subtitle: '화면 유지', tone: 'indigo', iconName: 'monitor' },
-  { title: '실제 반영은', subtitle: 'Commit Phase에서', tone: 'teal', iconName: 'checkCircle' },
+  { title: '계산 중', subtitle: 'Render Phase', tone: 'sky', icon: 'cpu' },
+  { title: '변경 없음', subtitle: '화면 유지', tone: 'indigo', icon: 'monitor' },
+  { title: '실제 반영은', subtitle: 'Commit Phase에서', tone: 'teal', icon: 'checkCircle' },
 ];
 
 const warningStepsEn: WarningStep[] = [
-  { title: 'Computing', subtitle: 'Render Phase', tone: 'sky', iconName: 'cpu' },
-  { title: 'No change', subtitle: 'Screen unchanged', tone: 'indigo', iconName: 'monitor' },
-  { title: 'Applied in', subtitle: 'the Commit Phase', tone: 'teal', iconName: 'checkCircle' },
+  { title: 'Computing', subtitle: 'Render Phase', tone: 'sky', icon: 'cpu' },
+  { title: 'No change', subtitle: 'Screen unchanged', tone: 'indigo', icon: 'monitor' },
+  { title: 'Applied in', subtitle: 'the Commit Phase', tone: 'teal', icon: 'checkCircle' },
 ];
 
 const ko: RenderPhaseIntroContent = {
@@ -349,8 +344,7 @@ const ko: RenderPhaseIntroContent = {
     },
   },
   previous: {
-    number: '1',
-    eyebrow: '챕터 연결',
+    eyebrow: '01 · 챕터 연결',
     title: '앞 챕터와 연결',
     description:
       '이전 챕터에서 setState 호출이 Root 스케줄링까지 이어졌습니다. 이제 React가 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
@@ -358,8 +352,7 @@ const ko: RenderPhaseIntroContent = {
     emphasis: '이제 React는 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
   },
   comparison: {
-    number: '2',
-    eyebrow: 'render vs commit',
+    eyebrow: '02 · 단계 비교',
     title: 'Render Phase vs Commit Phase 비교',
     description: '두 단계의 책임을 항목별로 비교합니다. DOM 변경 여부가 가장 큰 분기점입니다.',
     columns: {
@@ -403,15 +396,13 @@ const ko: RenderPhaseIntroContent = {
     ],
   },
   work: {
-    number: '3',
-    eyebrow: 'render 단계 내부',
+    eyebrow: '03 · 내부 작업',
     title: 'Render Phase에서 실제로 일어나는 일',
     description: 'Render Phase가 하는 핵심 작업 4가지를 카드로 정리합니다.',
     cards: workCardsKo,
   },
   flowPreview: {
-    number: '4',
-    eyebrow: '흐름 지도',
+    eyebrow: '04 · 흐름 지도',
     title: 'Render Phase 전체 흐름 미리보기',
     description: '이 챕터에서 반복해서 마주칠 Render Phase 흐름 지도입니다.',
     steps: flowPreviewStepsKo,
@@ -424,7 +415,7 @@ const ko: RenderPhaseIntroContent = {
     importantNote: '중요: Commit Phase가 실행되기 전까지 브라우저 화면은 절대 바뀌지 않습니다.',
   },
   warning: {
-    eyebrow: 'DOM 미변경',
+    eyebrow: '05 · DOM 미변경',
     title: {
       line1: '중요: Render Phase에서는',
       line2: '브라우저 화면이 아직 바뀌지 않습니다.',
@@ -433,8 +424,7 @@ const ko: RenderPhaseIntroContent = {
     steps: warningStepsKo,
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question:
       'Render Phase에서 새로운 div가 필요하다고 판단되면 즉시 DOM에 appendChild가 실행될까?',
@@ -473,8 +463,7 @@ const en: RenderPhaseIntroContent = {
     },
   },
   previous: {
-    number: '1',
-    eyebrow: 'CHAPTER BRIDGE',
+    eyebrow: '01 · CHAPTER BRIDGE',
     title: 'Bridge from the previous chapter',
     description:
       'The previous chapter took setState all the way to scheduling the Root. Now React actually starts computing the next Fiber tree.',
@@ -482,8 +471,7 @@ const en: RenderPhaseIntroContent = {
     emphasis: 'Now React actually starts computing the next Fiber tree.',
   },
   comparison: {
-    number: '2',
-    eyebrow: 'RENDER VS COMMIT',
+    eyebrow: '02 · RENDER VS COMMIT',
     title: 'Render Phase vs Commit Phase',
     description:
       'Compare the responsibilities of the two phases row by row. The biggest fork is whether the DOM changes.',
@@ -532,15 +520,13 @@ const en: RenderPhaseIntroContent = {
     ],
   },
   work: {
-    number: '3',
-    eyebrow: 'INSIDE RENDER',
+    eyebrow: '03 · INSIDE RENDER',
     title: 'What actually happens during the Render Phase',
     description: 'Four core jobs done by the Render Phase, summarized as cards.',
     cards: workCardsEn,
   },
   flowPreview: {
-    number: '4',
-    eyebrow: 'FLOW MAP',
+    eyebrow: '04 · FLOW MAP',
     title: 'Render Phase flow preview',
     description: 'The Render Phase flow map you will revisit throughout this chapter.',
     steps: flowPreviewStepsEn,
@@ -553,7 +539,7 @@ const en: RenderPhaseIntroContent = {
     importantNote: 'Important: until the Commit Phase runs, the browser screen never changes.',
   },
   warning: {
-    eyebrow: 'DOM UNCHANGED',
+    eyebrow: '05 · DOM UNCHANGED',
     title: {
       line1: 'Important: during the Render Phase,',
       line2: 'the browser screen has not changed yet.',
@@ -562,8 +548,7 @@ const en: RenderPhaseIntroContent = {
     steps: warningStepsEn,
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini Quiz',
     question:
       'If the Render Phase decides a new div is needed, will appendChild fire on the DOM immediately?',

@@ -1,27 +1,57 @@
+import {
+  Box,
+  Code2,
+  CornerDownRight,
+  FunctionSquare,
+  GitFork,
+  Home,
+  ListChecks,
+  MoreHorizontal,
+  Network,
+  Settings,
+  SquareDashed,
+  TimerReset,
+  Workflow,
+} from 'lucide-react';
+
+import type { FiberTagItem, ReconcileStep, RoleCard } from './content';
+
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  Box as BoxIcon,
   CheckCircle2 as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
-  CircleAlert as CircleAlertIcon,
   Code2 as CodeIcon,
   FastForward as FastForwardIcon,
   FileCode as FileCodeIcon,
-  FunctionSquare as FunctionSquareIcon,
-  GitBranch as GitBranchIcon,
   GitFork as GitForkIcon,
   HelpCircle as HelpCircleIcon,
-  Home as HomeIcon,
-  LayoutGrid as LayoutGridIcon,
+  Info as InfoIcon,
   Lightbulb as LightbulbIcon,
-  ListChecks as ListChecksIcon,
-  MoreHorizontal as MoreHorizontalIcon,
-  Network as NetworkIcon,
-  Rocket as RocketIcon,
   Settings as SettingsIcon,
   Sparkles as SparklesIcon,
-  SquareDashed as SquareDashedIcon,
   Workflow as WorkflowIcon,
-  Zap as ZapIcon,
 } from 'lucide-react';
+
+export const fiberTagIconByName: Record<FiberTagItem['icon'], typeof Box> = {
+  function: FunctionSquare,
+  cube: Box,
+  home: Home,
+  code: Code2,
+  fragment: SquareDashed,
+  suspense: TimerReset,
+  other: MoreHorizontal,
+} as const;
+
+export const roleIconByName: Record<RoleCard['icon'], typeof Box> = {
+  checklist: ListChecks,
+  branch: GitFork,
+  tree: Network,
+} as const;
+
+export const reconcileIconByName: Record<ReconcileStep['icon'], typeof Box> = {
+  start: Settings,
+  branch: GitFork,
+  compute: Code2,
+  reconcile: Workflow,
+  return: CornerDownRight,
+} as const;

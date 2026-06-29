@@ -1,21 +1,18 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'teal' | 'violet' | 'sky' | 'indigo' | 'amber';
+import type { ToneKey } from '../../shared/tones';
 
 export type InternalFlowStep = {
   title: string;
   description: string;
-  tone: Tone;
-  /** 코드처럼 보이게 할지 (괄호 있는 함수명 등) */
-  mono?: boolean;
-  /** 강조 단계 */
-  highlight?: boolean;
+  tone: ToneKey;
+  icon: 'fiber' | 'hooks' | 'jsx' | 'reconcile' | 'child';
 };
 
 export type CodeCallout = {
   number: number;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type HooksSidePoint = {
@@ -27,7 +24,6 @@ export type FunctionComponentContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       codeStep: { title: string; code: string };
@@ -37,22 +33,19 @@ export type FunctionComponentContent = {
     };
   };
   userCode: {
-    number: string;
     eyebrow: string;
     title: string;
     fileTab: string;
     code: string;
-    callouts: { title: string; tone: Tone }[];
+    callouts: { title: string; tone: ToneKey }[];
   };
   internalFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: InternalFlowStep[];
   };
   renderWithHooks: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -66,7 +59,6 @@ export type FunctionComponentContent = {
     };
   };
   nextChildren: {
-    number: string;
     eyebrow: string;
     title: string;
     leftTitle: string;
@@ -77,23 +69,19 @@ export type FunctionComponentContent = {
     rightChecklist: string[];
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     fileName: string;
     flowLabel: string;
     flowItems: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
-    highlightLines: number[];
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
     callouts: CodeCallout[];
   };
   hooksLink: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -103,7 +91,6 @@ export type FunctionComponentContent = {
     sidePoints: HooksSidePoint[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -150,8 +137,6 @@ const ko: FunctionComponentContent = {
     },
     description:
       'React는 컴포넌트를 호출해 새로운 JSX 결과를 얻고, 그 결과를 바탕으로 다음 자식 Fiber를 계산합니다.',
-    callout:
-      '함수 컴포넌트는 렌더 단계에서 다시 실행되며, 그 반환값이 다음 작업의 출발점이 됩니다.',
     diagram: {
       title: '함수 컴포넌트 처리 미리보기',
       codeStep: { title: 'Function Component 코드', code: USER_CODE },
@@ -171,8 +156,7 @@ const ko: FunctionComponentContent = {
     },
   },
   userCode: {
-    number: '1',
-    eyebrow: '사용자 코드',
+    eyebrow: '01 · 사용자 코드',
     title: '사용자 코드 예시',
     fileTab: 'Profile.js',
     code: USER_CODE,
@@ -183,8 +167,7 @@ const ko: FunctionComponentContent = {
     ],
   },
   internalFlow: {
-    number: '2',
-    eyebrow: '내부 흐름',
+    eyebrow: '02 · 내부 흐름',
     title: '내부 처리 흐름',
     description: 'FunctionComponent Fiber 하나가 처리되는 순서입니다.',
     steps: [
@@ -192,36 +175,36 @@ const ko: FunctionComponentContent = {
         title: 'FunctionComponent Fiber',
         description: '예: Profile 컴포넌트 Fiber',
         tone: 'sky',
+        icon: 'fiber',
       },
       {
         title: 'renderWithHooks(...)',
         description: '함수 컴포넌트를 호출하고 Hooks 처리',
         tone: 'teal',
-        mono: true,
-        highlight: true,
+        icon: 'hooks',
       },
       {
         title: 'nextChildren 생성',
         description: '컴포넌트 실행 결과 · JSX 트리',
         tone: 'violet',
+        icon: 'jsx',
       },
       {
         title: 'reconcileChildren(...)',
         description: 'nextChildren을 바탕으로 자식 Fiber 계산',
         tone: 'indigo',
-        mono: true,
-        highlight: true,
+        icon: 'reconcile',
       },
       {
         title: 'child Fiber 반환',
         description: '다음으로 내려갈 첫 자식 Fiber',
         tone: 'sky',
+        icon: 'child',
       },
     ],
   },
   renderWithHooks: {
-    number: '3',
-    eyebrow: 'renderWithHooks',
+    eyebrow: '03 · renderWithHooks',
     title: 'renderWithHooks의 역할',
     description:
       'renderWithHooks는 함수 컴포넌트를 실제로 호출하고, 동시에 Hook 호출 순서를 관리하는 입구입니다.',
@@ -235,8 +218,7 @@ const ko: FunctionComponentContent = {
     },
   },
   nextChildren: {
-    number: '4',
-    eyebrow: 'nextChildren',
+    eyebrow: '04 · nextChildren',
     title: 'nextChildren이 무엇인가?',
     leftTitle: '컴포넌트 실행 결과 (JSX)',
     leftCode: JSX_TREE,
@@ -250,19 +232,16 @@ const ko: FunctionComponentContent = {
     ],
   },
   code: {
-    number: '5',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '05 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
     flowLabel: '핵심 흐름',
-    flowItems: ['updateFunctionComponent'],
-    learningLabel: '학습 질문',
+    flowItems: ['updateFunctionComponent', 'renderWithHooks', 'reconcileChildren'],
     learningQuestion: '함수 컴포넌트의 반환 JSX는 내부에서 어디로 넘어갈까?',
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: UPDATE_FUNCTION_CODE,
-    highlightLines: [1, 3, 5],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: UPDATE_FUNCTION_CODE,
     callouts: [
       { number: 1, body: '컴포넌트를 실제 호출하고 JSX 결과를 nextChildren에 획득', tone: 'teal' },
       { number: 2, body: '결과를 기반으로 자식 Fiber 계산 시작', tone: 'sky' },
@@ -270,8 +249,7 @@ const ko: FunctionComponentContent = {
     ],
   },
   hooksLink: {
-    number: '6',
-    eyebrow: 'Hooks 챕터 연결',
+    eyebrow: '06 · Hooks 연결',
     title: '뒤의 Hooks 내부 구조 챕터와 연결',
     description:
       '여기서 보이는 renderWithHooks는 dispatch, queue, lane과 연결된 Hooks 시스템의 핵심 함수입니다.',
@@ -285,7 +263,7 @@ const ko: FunctionComponentContent = {
       title: 'Hooks 내부 구조',
       description: 'Dispatcher, Queue, Lane 등',
     },
-    sidePointTitle: '핸드 포인트',
+    sidePointTitle: '핸드오프 포인트',
     sidePoints: [
       { text: 'Hook 호출 순서 관리' },
       { text: 'Hook state 저장 위치' },
@@ -294,8 +272,7 @@ const ko: FunctionComponentContent = {
     ],
   },
   quiz: {
-    number: '7',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '07 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'renderWithHooks의 반환값은 무엇이며, 그 다음에는 무엇이 일어날까?',
     answer: '반환값은 nextChildren이며, 그 다음 reconcileChildren으로 자식 Fiber 계산이 시작된다.',
@@ -320,8 +297,6 @@ const en: FunctionComponentContent = {
     },
     description:
       'React calls the component to obtain new JSX, then uses that result to compute the next child Fiber.',
-    callout:
-      'Function components re-run during render, and their return value is the starting point for the next work.',
     diagram: {
       title: 'Function component processing preview',
       codeStep: { title: 'Function Component code', code: USER_CODE },
@@ -341,8 +316,7 @@ const en: FunctionComponentContent = {
     },
   },
   userCode: {
-    number: '1',
-    eyebrow: 'USER CODE',
+    eyebrow: '01 · USER CODE',
     title: 'User code example',
     fileTab: 'Profile.js',
     code: USER_CODE,
@@ -353,8 +327,7 @@ const en: FunctionComponentContent = {
     ],
   },
   internalFlow: {
-    number: '2',
-    eyebrow: 'INTERNAL FLOW',
+    eyebrow: '02 · INTERNAL FLOW',
     title: 'Internal processing flow',
     description: 'How a single FunctionComponent Fiber is processed.',
     steps: [
@@ -362,36 +335,36 @@ const en: FunctionComponentContent = {
         title: 'FunctionComponent Fiber',
         description: 'e.g. the Profile component Fiber',
         tone: 'sky',
+        icon: 'fiber',
       },
       {
         title: 'renderWithHooks(...)',
         description: 'Call the function component and handle Hooks',
         tone: 'teal',
-        mono: true,
-        highlight: true,
+        icon: 'hooks',
       },
       {
         title: 'build nextChildren',
         description: 'Component output · JSX tree',
         tone: 'violet',
+        icon: 'jsx',
       },
       {
         title: 'reconcileChildren(...)',
         description: 'Compute child Fibers from nextChildren',
         tone: 'indigo',
-        mono: true,
-        highlight: true,
+        icon: 'reconcile',
       },
       {
         title: 'return the child Fiber',
         description: 'The next child Fiber to descend into',
         tone: 'sky',
+        icon: 'child',
       },
     ],
   },
   renderWithHooks: {
-    number: '3',
-    eyebrow: 'RENDERWITHHOOKS',
+    eyebrow: '03 · RENDERWITHHOOKS',
     title: 'The role of renderWithHooks',
     description:
       'renderWithHooks calls the function component and is also the entry that manages the Hook call order.',
@@ -405,8 +378,7 @@ const en: FunctionComponentContent = {
     },
   },
   nextChildren: {
-    number: '4',
-    eyebrow: 'NEXTCHILDREN',
+    eyebrow: '04 · NEXTCHILDREN',
     title: 'What is nextChildren?',
     leftTitle: 'Component output (JSX)',
     leftCode: JSX_TREE,
@@ -420,19 +392,16 @@ const en: FunctionComponentContent = {
     ],
   },
   code: {
-    number: '5',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '05 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
     flowLabel: 'core flow',
-    flowItems: ['updateFunctionComponent'],
-    learningLabel: 'learning question',
+    flowItems: ['updateFunctionComponent', 'renderWithHooks', 'reconcileChildren'],
     learningQuestion: "Where does the function component's returned JSX go inside React?",
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: 'code preview',
-    codeLines: UPDATE_FUNCTION_CODE,
-    highlightLines: [1, 3, 5],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: UPDATE_FUNCTION_CODE,
     callouts: [
       {
         number: 1,
@@ -444,8 +413,7 @@ const en: FunctionComponentContent = {
     ],
   },
   hooksLink: {
-    number: '6',
-    eyebrow: 'HOOKS CHAPTER',
+    eyebrow: '06 · HOOKS CHAPTER',
     title: 'Connection to the upcoming Hooks chapter',
     description:
       'The renderWithHooks shown here is the core function of the Hooks system, wired into dispatch, queue, and lanes.',
@@ -468,8 +436,7 @@ const en: FunctionComponentContent = {
     ],
   },
   quiz: {
-    number: '7',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '07 · MINI QUIZ',
     title: 'Mini Quiz',
     question: 'What does renderWithHooks return, and what happens next?',
     answer: 'It returns nextChildren — then reconcileChildren starts computing the child Fibers.',

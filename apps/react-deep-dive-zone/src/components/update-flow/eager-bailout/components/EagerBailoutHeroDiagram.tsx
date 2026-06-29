@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EagerBailoutContent } from '../content';
@@ -17,19 +18,7 @@ export const EagerBailoutHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${d.currentTitle} ${d.currentValue} ${d.compareSymbol} ${d.eagerTitle} ${d.eagerValue} — ${d.question} ${d.leftBranch}: ${d.leftResultTitle}, ${d.rightBranch}: ${d.rightResultTitle}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <div className="grid grid-cols-1 @sm:grid-cols-2 gap-sm">
           <CompareCard tone="cyan" title={d.currentTitle} value={d.currentValue} />
@@ -64,7 +53,7 @@ export const EagerBailoutHeroDiagram = ({ content, className }: Props) => {
           />
         </div>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -86,7 +75,6 @@ const CompareCard = ({
         'flex flex-col gap-1.5 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <div className="flex flex-col">
@@ -97,8 +85,14 @@ const CompareCard = ({
           <span className="text-[10px] text-[var(--term-muted)] leading-snug">{subtitle}</span>
         )}
       </div>
-      <code className="inline-flex w-fit items-center rounded-md border border-slate-800 bg-slate-950 px-2 py-1 font-mono text-xsm font-bold">
-        <span className="text-cyan-300">{value}</span>
+      <code
+        className={cn(
+          'inline-flex w-fit items-center rounded-md border px-2 py-1 font-mono text-xsm font-bold',
+          'border-[var(--term-border)] bg-[var(--term-surface)]',
+          t.text,
+        )}
+      >
+        {value}
       </code>
     </article>
   );
@@ -137,7 +131,6 @@ const ResultCard = ({
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <header className="flex items-center justify-between gap-2">

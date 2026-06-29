@@ -7,7 +7,7 @@ import { ChangeExamples } from './sections/ChangeExamples';
 import { FlagsAndReorder } from './sections/FlagsAndReorder';
 import { MarkChangesCodeCheckpoint } from './sections/MarkChangesCodeCheckpoint';
 import { MarkChangesHero } from './sections/MarkChangesHero';
-import { MarkChangesQuizAndCTA } from './sections/MarkChangesQuizAndCTA';
+import { MarkChangesQuiz } from './sections/MarkChangesQuiz';
 import { RenderVsCommit } from './sections/RenderVsCommit';
 import { WhyTwoPhases } from './sections/WhyTwoPhases';
 import { markChangesContent } from './content';
@@ -25,7 +25,7 @@ export const MarkChangesPage = ({ locale }: Props) => {
       <MarkChangesCodeCheckpoint content={c.code} />
       <RenderVsCommit content={c.renderCommit} />
       <WhyTwoPhases content={c.whyTwoPhases} />
-      <MarkChangesQuizAndCTA quiz={c.quiz} />
+      <MarkChangesQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

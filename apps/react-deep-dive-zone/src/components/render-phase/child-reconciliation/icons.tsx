@@ -1,25 +1,34 @@
+import { Box, Boxes, ExternalLink, FileText, Network, Sparkles, Square } from 'lucide-react';
+
+import type { ChildShapeCard, InputCard } from './content';
+
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  Boxes as BoxesIcon,
-  Box as BoxIcon,
   CheckCircle2 as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
   Code2 as CodeIcon,
-  ExternalLink as ExternalLinkIcon,
   FileCode as FileCodeIcon,
   FileText as FileTextIcon,
   GitFork as GitForkIcon,
-  HelpCircle as HelpCircleIcon,
   Hexagon as HexagonIcon,
   Layers as LayersIcon,
-  Lightbulb as LightbulbIcon,
   ListChecks as ListChecksIcon,
   Network as NetworkIcon,
   Plus as PlusIcon,
-  Rocket as RocketIcon,
   Sparkles as SparklesIcon,
-  Square as SquareIcon,
   Star as StarIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';
+
+export const inputIconByName: Record<InputCard['icon'], typeof Box> = {
+  tree: Network,
+  cube: Box,
+  fileText: FileText,
+} as const;
+
+export const childShapeIconByName: Record<ChildShapeCard['icon'], typeof Box> = {
+  element: Square,
+  array: Boxes,
+  portal: ExternalLink,
+  sparkle: Sparkles,
+} as const;

@@ -1,20 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent, ReturnDirectionCard } from '../content';
 import { ArrowDownIcon, ArrowUpIcon, GitBranchIcon } from '../icons';
 
 type Props = { content: PerformUnitContent['returnDirection'] };
 
 export const BeginWorkReturnDecision = ({ content }: Props) => (
-  <section
-    id="return-direction"
-    aria-labelledby="heading-return-direction"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="return-direction" aria-labelledby="heading-return-direction" className="space-y-md">
+    <SectionHeader
       id="return-direction"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -30,45 +26,35 @@ export const BeginWorkReturnDecision = ({ content }: Props) => (
 
 const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
   const isDown = card.direction === 'down';
+  const tone: ToneKey = isDown ? 'teal' : 'violet';
+  const t = toneTokens[tone];
   const Icon = isDown ? ArrowDownIcon : ArrowUpIcon;
   return (
     <article
       className={cn(
-        'grid h-full grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-3xl border-2 p-md sm:p-lg',
-        isDown
-          ? 'border-teal-300/80 bg-teal-50/40 dark:border-teal-700/70 dark:bg-teal-950/20'
-          : 'border-violet-300/80 bg-violet-50/40 dark:border-violet-700/70 dark:bg-violet-950/20',
-        'shadow-[0_2px_0_var(--term-border)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'grid h-full grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-lg border p-md sm:p-lg',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        t.border,
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex h-14 w-14 items-center justify-center rounded-2xl border-2',
-          isDown
-            ? 'bg-teal-100 text-teal-700 border-teal-200/80 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60'
-            : 'bg-violet-100 text-violet-700 border-violet-200/80 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
+          'inline-flex h-14 w-14 items-center justify-center rounded-lg border',
+          t.chip,
         )}
       >
         <Icon className="h-6 w-6" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">
-        <h3
-          className={cn(
-            'text-sm sm:text-md font-bold leading-tight break-keep',
-            isDown ? 'text-teal-800 dark:text-teal-100' : 'text-violet-800 dark:text-violet-100',
-          )}
-        >
+        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
           {card.title}
         </h3>
         <span
           className={cn(
-            'inline-flex w-fit items-center rounded-md border-2 px-2 py-0.5 text-xsm font-bold tracking-tight',
-            isDown
-              ? 'border-teal-300/80 bg-teal-100/70 text-teal-800 dark:bg-teal-950/60 dark:text-teal-100 dark:border-teal-700/70'
-              : 'border-violet-300/80 bg-violet-100/70 text-violet-800 dark:bg-violet-950/60 dark:text-violet-100 dark:border-violet-700/70',
+            'inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-xsm font-bold tracking-tight',
+            t.chip,
           )}
         >
           {card.subtitle}
@@ -83,10 +69,7 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
-                    'mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full',
-                    isDown ? 'bg-teal-500 dark:bg-teal-400' : 'bg-violet-500 dark:bg-violet-400',
-                  )}
+                  className={cn('mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
                 />
                 {isMono ? <code className="font-mono">{item}</code> : <span>{item}</span>}
               </li>

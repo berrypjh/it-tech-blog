@@ -1,31 +1,29 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'teal' | 'violet' | 'indigo' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
 export type InputCard = {
   title: string;
   description: string;
   detail: string;
-  tone: Tone;
-  iconName: 'tree' | 'cube' | 'fileText';
+  tone: ToneKey;
+  icon: 'tree' | 'cube' | 'fileText';
 };
 
 export type ChildShapeCard = {
   title: string;
   example: string;
   description: string;
-  tone: Tone;
-  iconName: 'element' | 'array' | 'portal' | 'sparkle';
+  tone: ToneKey;
+  icon: 'element' | 'array' | 'portal' | 'sparkle';
 };
-
-export type ChecklistItem = string;
 
 export type VisualNode = {
   title: string;
   subtitle?: string;
   signature?: string;
   description: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type ReconcileChildrenContent = {
@@ -33,7 +31,6 @@ export type ReconcileChildrenContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: {
       title: string;
       currentCard: { title: string; subtitle: string; description: string };
@@ -43,13 +40,11 @@ export type ReconcileChildrenContent = {
     };
   };
   inputs: {
-    number: string;
     eyebrow: string;
     title: string;
     cards: InputCard[];
   };
   mountVsUpdate: {
-    number: string;
     eyebrow: string;
     title: string;
     mount: {
@@ -57,54 +52,46 @@ export type ReconcileChildrenContent = {
       fn: string;
       title: string;
       description: string;
+      outcomes: string[];
     };
     update: {
       condition: string;
       fn: string;
       title: string;
       description: string;
+      outcomes: string[];
     };
   };
   childShape: {
-    number: string;
     eyebrow: string;
     title: string;
     subtitle: string;
     cards: ChildShapeCard[];
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     fileName: string;
     functionLabel: string;
     functions: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
-    /** mount / update 분기 라인 강조 */
-    mountHighlightLines: number[];
-    updateHighlightLines: number[];
-    branchLine: number;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
   };
   visualization: {
-    number: string;
     eyebrow: string;
     title: string;
     nodes: VisualNode[];
     bottomEmphasis: string;
   };
   goal: {
-    number: string;
     eyebrow: string;
     title: string;
-    items: ChecklistItem[];
+    items: string[];
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -142,8 +129,6 @@ const ko: ReconcileChildrenContent = {
     },
     description:
       'React는 현재 Fiber의 기존 자식과 이번 렌더에서 새로 나온 children을 비교해 다음 자식 Fiber 구조를 계산합니다.',
-    callout:
-      '이 함수는 Reconciler의 핵심 입구이며, 새 Fiber를 재사용할지, 새로 만들지를 결정합니다.',
     diagram: {
       title: 'reconcileChildren 처리 미리보기',
       currentCard: {
@@ -168,8 +153,7 @@ const ko: ReconcileChildrenContent = {
     },
   },
   inputs: {
-    number: '1',
-    eyebrow: '세 입력',
+    eyebrow: '01 · 세 입력',
     title: 'reconcileChildren의 입력 3개',
     cards: [
       {
@@ -177,44 +161,44 @@ const ko: ReconcileChildrenContent = {
         description: '이전 렌더의 기존 자식 구조 · 현재 Fiber의 child',
         detail: '없을 수도 있음 · 최초 렌더에서는 null',
         tone: 'sky',
-        iconName: 'tree',
+        icon: 'tree',
       },
       {
         title: 'workInProgress',
         description: '지금 계산 중인 부모 Fiber · 이번 렌더의 부모 Fiber',
         detail: '여기에 새 child Fiber 구조를 연결한다.',
         tone: 'teal',
-        iconName: 'cube',
+        icon: 'cube',
       },
       {
         title: 'nextChildren',
         description: '이번 렌더에서 새로 만든 자식 설명 ReactNode',
         detail: 'JSX, 배열, 텍스트, Portal 등 다양한 형태일 수 있다.',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
     ],
   },
   mountVsUpdate: {
-    number: '2',
-    eyebrow: 'mount vs update',
+    eyebrow: '02 · mount vs update',
     title: 'mount vs update 분기',
     mount: {
       condition: 'current === null',
       fn: '→ mountChildFibers',
       title: '최초 렌더 (mount)',
       description: '기존 자식이 없으므로 모든 자식을 새로 생성한다.',
+      outcomes: ['new', 'new', 'new'],
     },
     update: {
       condition: 'current !== null',
       fn: '→ reconcileChildFibers',
       title: '업데이트 렌더 (update)',
       description: '이전 자식과 비교하여 재사용 / 이동 / 삭제 / 추가를 결정한다.',
+      outcomes: ['reuse', 'update', 'delete'],
     },
   },
   childShape: {
-    number: '3',
-    eyebrow: 'child 형태',
+    eyebrow: '03 · child 형태',
     title: 'child 형태별 처리 예고',
     subtitle: 'nextChildren의 형태에 따라 다른 로직으로 분기된다.',
     cards: [
@@ -223,51 +207,45 @@ const ko: ReconcileChildrenContent = {
         example: '<div />',
         description: '단일 Element · Fiber 생성 또는 재사용',
         tone: 'sky',
-        iconName: 'element',
+        icon: 'element',
       },
       {
         title: 'Array',
         example: '[<A />, <B />]',
         description: '각 항목을 순회하며 Fiber 리스트를 구축',
         tone: 'teal',
-        iconName: 'array',
+        icon: 'array',
       },
       {
         title: 'Portal',
         example: 'createPortal()',
         description: 'Portal Fiber 생성 및 자식 처리',
         tone: 'amber',
-        iconName: 'portal',
+        icon: 'portal',
       },
       {
         title: 'Lazy / 기타 특수 child',
         example: 'React.lazy, Offscreen 등',
         description: '특수 타입에 맞는 Fiber 처리 로직 사용',
-        tone: 'rose',
-        iconName: 'sparkle',
+        tone: 'cyan',
+        icon: 'sparkle',
       },
     ],
   },
   code: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberBeginWork.js',
     functionLabel: '함수',
-    functions: ['reconcileChildren'],
-    learningLabel: '학습 질문',
+    functions: ['reconcileChildren', 'mountChildFibers', 'reconcileChildFibers'],
     learningQuestion: 'reconcileChildren은 mount와 update를 무엇으로 구분할까?',
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: CODE,
-    branchLine: 1,
-    mountHighlightLines: [2],
-    updateHighlightLines: [4, 5, 6, 7, 8, 9],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: CODE,
   },
   visualization: {
-    number: '5',
-    eyebrow: '재조정 시각화',
+    eyebrow: '05 · 재조정 시각화',
     title: 'current / workInProgress / nextChildren 시각화',
     nodes: [
       {
@@ -299,8 +277,7 @@ const ko: ReconcileChildrenContent = {
       '비교 결과에 따라 재사용 / 이동 / 삭제 / 추가가 결정되고, 다음 자식 Fiber 구조가 만들어집니다.',
   },
   goal: {
-    number: '6',
-    eyebrow: '재조정 목표',
+    eyebrow: '06 · 재조정 목표',
     title: 'reconciliation의 목표',
     items: [
       '기존 Fiber를 최대한 재사용한다.',
@@ -310,8 +287,7 @@ const ko: ReconcileChildrenContent = {
     ],
   },
   quiz: {
-    number: '7',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '07 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'reconcileChildren은 새 DOM을 바로 만드는가?',
     answer:
@@ -337,8 +313,6 @@ const en: ReconcileChildrenContent = {
     },
     description:
       "React compares the current Fiber's prior children against new children from this render to compute the next child Fiber structure.",
-    callout:
-      'This is the entry point of the Reconciler — it decides what to reuse and what to create new.',
     diagram: {
       title: 'reconcileChildren processing preview',
       currentCard: {
@@ -363,8 +337,7 @@ const en: ReconcileChildrenContent = {
     },
   },
   inputs: {
-    number: '1',
-    eyebrow: 'THREE INPUTS',
+    eyebrow: '01 · THREE INPUTS',
     title: 'The three inputs of reconcileChildren',
     cards: [
       {
@@ -372,44 +345,44 @@ const en: ReconcileChildrenContent = {
         description: "the existing child structure · the current Fiber's child",
         detail: 'may be null · null on the initial render',
         tone: 'sky',
-        iconName: 'tree',
+        icon: 'tree',
       },
       {
         title: 'workInProgress',
         description: "the parent Fiber being computed · this render's parent",
         detail: 'the new child Fiber structure attaches here',
         tone: 'teal',
-        iconName: 'cube',
+        icon: 'cube',
       },
       {
         title: 'nextChildren',
         description: 'the new child description (ReactNode) from this render',
         detail: 'can be JSX, an array, text, a Portal, ...',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
     ],
   },
   mountVsUpdate: {
-    number: '2',
-    eyebrow: 'MOUNT VS UPDATE',
+    eyebrow: '02 · MOUNT VS UPDATE',
     title: 'mount vs update branch',
     mount: {
       condition: 'current === null',
       fn: '→ mountChildFibers',
       title: 'initial render (mount)',
       description: 'No prior children exist, so all children are created fresh.',
+      outcomes: ['new', 'new', 'new'],
     },
     update: {
       condition: 'current !== null',
       fn: '→ reconcileChildFibers',
       title: 'update render',
       description: 'Compare against the prior children — reuse / move / delete / add.',
+      outcomes: ['reuse', 'update', 'delete'],
     },
   },
   childShape: {
-    number: '3',
-    eyebrow: 'CHILD SHAPE',
+    eyebrow: '03 · CHILD SHAPE',
     title: 'Child shape handling — preview',
     subtitle: 'Different logic kicks in based on the shape of nextChildren.',
     cards: [
@@ -418,51 +391,45 @@ const en: ReconcileChildrenContent = {
         example: '<div />',
         description: 'Single element · create or reuse a Fiber',
         tone: 'sky',
-        iconName: 'element',
+        icon: 'element',
       },
       {
         title: 'Array',
         example: '[<A />, <B />]',
         description: 'Walk each item, build a Fiber list',
         tone: 'teal',
-        iconName: 'array',
+        icon: 'array',
       },
       {
         title: 'Portal',
         example: 'createPortal()',
         description: 'Create a Portal Fiber, handle its children',
         tone: 'amber',
-        iconName: 'portal',
+        icon: 'portal',
       },
       {
         title: 'Lazy / other special children',
         example: 'React.lazy, Offscreen, ...',
         description: 'Use the per-type Fiber handling',
-        tone: 'rose',
-        iconName: 'sparkle',
+        tone: 'cyan',
+        icon: 'sparkle',
       },
     ],
   },
   code: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberBeginWork.js',
-    functionLabel: 'function',
-    functions: ['reconcileChildren'],
-    learningLabel: 'learning question',
+    functionLabel: 'functions',
+    functions: ['reconcileChildren', 'mountChildFibers', 'reconcileChildFibers'],
     learningQuestion: 'How does reconcileChildren tell mount and update apart?',
-    panelTitle: 'ReactFiberBeginWork.js',
-    panelSubtitle: 'code preview',
-    codeLines: CODE,
-    branchLine: 1,
-    mountHighlightLines: [2],
-    updateHighlightLines: [4, 5, 6, 7, 8, 9],
+    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
+    codeBadge: 'main',
+    code: CODE,
   },
   visualization: {
-    number: '5',
-    eyebrow: 'RECONCILE VIZ',
+    eyebrow: '05 · RECONCILE VIZ',
     title: 'Visualize current / workInProgress / nextChildren',
     nodes: [
       {
@@ -494,8 +461,7 @@ const en: ReconcileChildrenContent = {
       'The comparison decides reuse / move / delete / add — and the next child Fiber structure is built.',
   },
   goal: {
-    number: '6',
-    eyebrow: 'RECONCILE GOAL',
+    eyebrow: '06 · RECONCILE GOAL',
     title: 'Goals of reconciliation',
     items: [
       'Reuse existing Fibers as much as possible.',
@@ -505,8 +471,7 @@ const en: ReconcileChildrenContent = {
     ],
   },
   quiz: {
-    number: '7',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '07 · MINI QUIZ',
     title: 'Mini Quiz',
     question: 'Does reconcileChildren create new DOM immediately?',
     answer:

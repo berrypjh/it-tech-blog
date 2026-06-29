@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +8,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { RootCurrentHeroDiagram } from '../components/RootCurrentHeroDiagram';
 import type { RootCurrentRefContent } from '../content';
-import { LightbulbIcon } from '../icons';
 
 type Props = { content: RootCurrentRefContent['hero'] };
 
@@ -36,28 +33,6 @@ export const RootCurrentHeroSection = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>
-
-      <aside
-        className={cn(
-          'mt-sm flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-sky-200/80 bg-sky-50/60',
-          'dark:border-sky-800/70 dark:bg-sky-950/30',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-amber-100 text-amber-700 border border-amber-200/80',
-            'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
-          )}
-        >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
-          {content.insight}
-        </p>
-      </aside>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-current-swap-ref">

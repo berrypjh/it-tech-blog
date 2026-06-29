@@ -79,7 +79,7 @@ export const ComparisonTable = ({ headers, rows, caption, columnWidths, classNam
               <span className="text-xxsm uppercase tracking-wider text-[var(--term-dim)]">
                 {headers[0]}
               </span>
-              <p className="text-sm font-bold text-[var(--term-fg)] break-keep">{row.label}</p>
+              <div className="text-sm font-bold text-[var(--term-fg)] break-keep">{row.label}</div>
             </div>
 
             <dl className="flex flex-col gap-sm p-md">

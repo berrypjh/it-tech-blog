@@ -1,23 +1,30 @@
+import { ArrowDown, ArrowUp, Box, RotateCw } from 'lucide-react';
+
+import type { DescendCompleteExplanation } from './content';
+
 export {
   ArrowDown as ArrowDownIcon,
-  ArrowRight as ArrowRightIcon,
   ArrowUp as ArrowUpIcon,
   Box as BoxIcon,
   CheckCircle2 as CheckCircleIcon,
   ChevronDown as ChevronDownIcon,
-  ChevronUp as ChevronUpIcon,
-  CircleDot as CircleDotIcon,
   Code2 as CodeIcon,
   Database as DatabaseIcon,
   FileCode as FileCodeIcon,
   GitBranch as GitBranchIcon,
   HelpCircle as HelpCircleIcon,
-  Lightbulb as LightbulbIcon,
-  ListChecks as ListChecksIcon,
   Monitor as MonitorIcon,
-  Rocket as RocketIcon,
   RotateCw as RotateCwIcon,
   Settings as SettingsIcon,
   Sparkles as SparklesIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';
+
+export const descendIconByName: Record<
+  DescendCompleteExplanation['items'][number]['icon'],
+  typeof Box
+> = {
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
+  rotate: RotateCw,
+} as const;

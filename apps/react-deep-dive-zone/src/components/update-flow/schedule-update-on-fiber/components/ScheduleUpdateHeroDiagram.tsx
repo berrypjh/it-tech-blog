@@ -1,6 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ScheduleUpdateOnFiberContent } from '../content';
@@ -18,19 +19,7 @@ export const ScheduleUpdateHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${diagram.title}: ${diagram.beforeTitle}는 ${diagram.beforeState} 상태에서 ${diagram.functionLabel} 호출 이후 ${diagram.afterState} 상태로 바뀝니다.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StateCard
@@ -62,7 +51,7 @@ export const ScheduleUpdateHeroDiagram = ({ content, className }: Props) => {
           />
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -82,8 +71,8 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
     <article
       className={cn(
         'flex flex-col gap-sm rounded-xl border px-md py-2.5',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        emphasized ? cn(t.chip, t.border) : cn('border-[var(--term-border)]', t.borderHover),
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        emphasized ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm">

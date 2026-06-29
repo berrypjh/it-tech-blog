@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type ComparisonRow = {
   label: string;
@@ -12,12 +12,12 @@ export type ComparisonRow = {
 export type SummaryItem = {
   text: string;
   emphasis: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type WhatChangedItem = {
   text: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type DiffRow = {
@@ -30,7 +30,6 @@ export type UpdatePhaseContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    insight: string;
     diagram: {
       leftTitle: string;
       leftCode: string;
@@ -47,7 +46,6 @@ export type UpdatePhaseContent = {
     };
   };
   propsExample: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -58,7 +56,6 @@ export type UpdatePhaseContent = {
     bottomNote: string;
   };
   textExample: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -70,7 +67,6 @@ export type UpdatePhaseContent = {
     bottomNote: string;
   };
   compare: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -80,7 +76,6 @@ export type UpdatePhaseContent = {
     quickSummary: SummaryItem[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
     info: {
@@ -88,18 +83,16 @@ export type UpdatePhaseContent = {
       filePath: string;
       watchLabel: string;
       watchItems: string[];
-      questionLabel: string;
       question: string;
     };
     functionsTitle: string;
-    functions: { name: string; description: string; tone: CommitToneKey }[];
+    functions: { name: string; description: string; tone: ToneKey }[];
     code: {
       title: string;
       code: string;
     };
   };
   beforeAfter: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -114,7 +107,6 @@ export type UpdatePhaseContent = {
     whatChangedItems: WhatChangedItem[];
   };
   propsVsText: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -132,7 +124,6 @@ export type UpdatePhaseContent = {
     pointText: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -240,7 +231,6 @@ const ko: UpdatePhaseContent = {
     },
     description:
       '새로 만들 필요는 없지만 props나 텍스트가 달라졌다면, React는 기존 host instance를 새 결과에 맞게 수정합니다.',
-    insight: 'Update flag는 "수정이 필요하다"는 표시이고, 실제 수정은 Commit Phase에서 실행됩니다.',
     diagram: {
       leftTitle: '기존 DOM node (재사용)',
       leftCode: '<button>저장</button>',
@@ -257,8 +247,7 @@ const ko: UpdatePhaseContent = {
     },
   },
   propsExample: {
-    number: '1',
-    eyebrow: 'props 변경 예시',
+    eyebrow: '01 · props 변경 예시',
     title: 'props 변경 예시',
     description:
       'disabled 속성 하나가 바뀌었을 때, 새 버튼 노드가 만들어지지 않고 기존 노드의 속성만 갱신됩니다.',
@@ -269,8 +258,7 @@ const ko: UpdatePhaseContent = {
     bottomNote: '같은 버튼 노드를 유지하면서 disabled 속성만 갱신합니다.',
   },
   textExample: {
-    number: '2',
-    eyebrow: '텍스트 변경 예시',
+    eyebrow: '02 · 텍스트 변경 예시',
     title: 'text 변경 예시',
     description:
       'state가 바뀌면 텍스트 노드 자체를 새로 만드는 게 아니라, 기존 텍스트 노드의 값만 갱신합니다.',
@@ -282,8 +270,7 @@ const ko: UpdatePhaseContent = {
     bottomNote: '텍스트 노드는 기존 host text를 새 값으로 갱신합니다.',
   },
   compare: {
-    number: '3',
-    eyebrow: 'Placement vs Update',
+    eyebrow: '03 · Placement vs Update',
     title: 'Placement와 Update 비교',
     description:
       'Placement는 새 host node를 삽입하는 작업이고, Update는 기존 host node를 수정하는 작업입니다.',
@@ -293,15 +280,13 @@ const ko: UpdatePhaseContent = {
     quickSummary: quickSummaryKo,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
       filePath: 'ReactFiberCommitHostEffects.js',
       watchLabel: '볼 것',
       watchItems: ['host update', 'text update'],
-      questionLabel: '학습 질문',
       question: 'props update와 text update는 같은 방식으로 처리될까, 분리될까?',
     },
     functionsTitle: '핵심 함수',
@@ -323,8 +308,7 @@ const ko: UpdatePhaseContent = {
     },
   },
   beforeAfter: {
-    number: '5',
-    eyebrow: 'before·after 시각화',
+    eyebrow: '05 · before와 after 시각화',
     title: '시각적 before / after 비교',
     description: 'Update flag가 host props 갱신으로 이어지는 순간을 비교합니다.',
     beforeTitle: 'Before',
@@ -343,8 +327,7 @@ const ko: UpdatePhaseContent = {
     whatChangedItems: whatChangedKo,
   },
   propsVsText: {
-    number: '6',
-    eyebrow: 'props vs 텍스트',
+    eyebrow: '06 · props vs 텍스트',
     title: 'props vs text update 차이',
     description: '같은 Update flag지만 element node와 text node는 다른 API로 갱신됩니다.',
     propsCard: {
@@ -373,8 +356,7 @@ const ko: UpdatePhaseContent = {
     pointText: '실제 DOM을 교체하지 않고, 필요한 부분만 최소 비용으로 갱신합니다.',
   },
   quiz: {
-    number: '7',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '07 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: '기존 텍스트 노드의 내용이 바뀌면 Placement일까, Update일까?',
     answer: 'Update. 텍스트 노드는 기존 node를 유지하고 내용만 새 값으로 갱신합니다.',
@@ -400,8 +382,6 @@ const en: UpdatePhaseContent = {
     },
     description:
       'No need to make a new one — when props or text changed, React mutates the existing host instance to match the new result.',
-    insight:
-      'The Update flag is just a mark saying "needs update". The actual mutation runs in the Commit Phase.',
     diagram: {
       leftTitle: 'existing DOM node (reused)',
       leftCode: '<button>Save</button>',
@@ -418,8 +398,7 @@ const en: UpdatePhaseContent = {
     },
   },
   propsExample: {
-    number: '1',
-    eyebrow: 'PROPS CHANGE',
+    eyebrow: '01 · PROPS CHANGE',
     title: 'props change example',
     description:
       'When one disabled prop changes, no new button node is built — only the existing node’s attribute is updated.',
@@ -430,8 +409,7 @@ const en: UpdatePhaseContent = {
     bottomNote: 'Keep the same button node, only update its disabled attribute.',
   },
   textExample: {
-    number: '2',
-    eyebrow: 'TEXT CHANGE',
+    eyebrow: '02 · TEXT CHANGE',
     title: 'text change example',
     description:
       'When state changes, React does not build a new text node — it just updates the value of the existing text node.',
@@ -443,8 +421,7 @@ const en: UpdatePhaseContent = {
     bottomNote: 'Text nodes are updated by writing the new value into the existing host text.',
   },
   compare: {
-    number: '3',
-    eyebrow: 'PLACEMENT VS UPDATE',
+    eyebrow: '03 · PLACEMENT VS UPDATE',
     title: 'Placement vs Update',
     description: 'Placement inserts a new host node; Update mutates the existing one.',
     columns: { label: 'Aspect', placement: 'Placement', update: 'Update' },
@@ -453,15 +430,13 @@ const en: UpdatePhaseContent = {
     quickSummary: quickSummaryEn,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'File',
       filePath: 'ReactFiberCommitHostEffects.js',
       watchLabel: 'Watch',
       watchItems: ['host update', 'text update'],
-      questionLabel: 'Learning question',
       question: 'Are props update and text update handled the same way, or split?',
     },
     functionsTitle: 'Core functions',
@@ -483,8 +458,7 @@ const en: UpdatePhaseContent = {
     },
   },
   beforeAfter: {
-    number: '5',
-    eyebrow: 'BEFORE & AFTER',
+    eyebrow: '05 · BEFORE & AFTER',
     title: 'before / after visual',
     description: 'Watch the Update flag turn into a host props mutation.',
     beforeTitle: 'Before',
@@ -503,8 +477,7 @@ const en: UpdatePhaseContent = {
     whatChangedItems: whatChangedEn,
   },
   propsVsText: {
-    number: '6',
-    eyebrow: 'PROPS VS TEXT',
+    eyebrow: '06 · PROPS VS TEXT',
     title: 'props vs text update',
     description: 'Both carry the Update flag, but element and text nodes use different APIs.',
     propsCard: {
@@ -533,8 +506,7 @@ const en: UpdatePhaseContent = {
     pointText: 'No DOM replacement — only the necessary part is updated, at minimal cost.',
   },
   quiz: {
-    number: '7',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '07 · MINI QUIZ',
     title: 'mini quiz',
     question: 'When an existing text node’s content changes, is that Placement or Update?',
     answer: 'Update. The text node is kept and only its value is updated.',

@@ -85,7 +85,6 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={step.tone} size="sm">

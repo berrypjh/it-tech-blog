@@ -1,23 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EnsureRootScheduledContent, RoleIconName } from '../content';
-import { CalendarCheckIcon, ClockIcon, LayersIcon } from '../icons';
+import type { EnsureRootScheduledContent } from '../content';
+import { LayersIcon, roleIconByName } from '../icons';
 
 type Props = { content: EnsureRootScheduledContent['roles'] };
 
-const iconMap: Record<RoleIconName, typeof ClockIcon> = {
-  calendarCheck: CalendarCheckIcon,
-  clock: ClockIcon,
-};
-
 export const TwoRolesSection = ({ content }: Props) => (
-  <section id="roles" aria-labelledby="heading-roles" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="section-roles" aria-labelledby="heading-roles" className="space-y-md">
+    <SectionHeader
       id="roles"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -26,7 +20,7 @@ export const TwoRolesSection = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = roleIconByName[card.icon];
 
         return (
           <ToneCardItem

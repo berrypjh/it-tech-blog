@@ -1,28 +1,36 @@
+import { Box, Crosshair, Database, PenTool, Server, Target, Workflow, Zap } from 'lucide-react';
+
+// 직접 import해서 쓰는 아이콘은 XxxIcon 별칭으로 re-export.
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowLeftRight as ArrowLeftRightIcon,
-  ArrowRight as ArrowRightIcon,
-  Box as BoxIcon,
-  CalendarClock as CalendarClockIcon,
   CheckCircle2 as CheckCircleIcon,
-  CircleHelp as CircleHelpIcon,
   Code2 as CodeIcon,
   Crosshair as CrosshairIcon,
-  Database as DatabaseIcon,
   FileCode as FileCodeIcon,
-  FileText as FileTextIcon,
   FunctionSquare as FunctionSquareIcon,
   GitBranch as GitBranchIcon,
   Info as InfoIcon,
   Lightbulb as LightbulbIcon,
-  Network as NetworkIcon,
-  PenTool as PenToolIcon,
-  Rocket as RocketIcon,
-  Server as ServerIcon,
   Sparkles as SparklesIcon,
   Split as SplitIcon,
-  Target as TargetIcon,
   User as UserIcon,
-  Workflow as WorkflowIcon,
-  Zap as ZapIcon,
 } from 'lucide-react';
+
+// content의 icon 리터럴 → 컴포넌트 맵. 키는 각 타입의 리터럴 유니온과 1:1.
+export const responsibilityIconByName = {
+  target: Target,
+  box: Box,
+  zap: Zap,
+} as const;
+
+export const laneFlowIconByName = {
+  crosshair: Crosshair,
+  database: Database,
+  server: Server,
+  penTool: PenTool,
+} as const;
+
+export const splitIconByName = {
+  workflow: Workflow,
+  box: Box,
+} as const;

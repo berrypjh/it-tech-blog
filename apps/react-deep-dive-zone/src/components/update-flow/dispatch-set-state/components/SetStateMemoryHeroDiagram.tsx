@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent } from '../content';
@@ -18,19 +19,7 @@ export const SetStateMemoryHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.leftCard.title}와 ${content.rightCard.title}를 ${content.arrowLeftLabel}하여 ${content.centerCard.title} ${content.centerCard.subtitle}가 ${content.bottomCallout}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         {/* 두 출처: Fiber + Hook Queue */}
         <div className="grid grid-cols-1 gap-sm @md:grid-cols-2">
@@ -58,12 +47,12 @@ export const SetStateMemoryHeroDiagram = ({ content, className }: Props) => {
         <DownArrow />
 
         {/* 결론 */}
-        <p className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 text-xsm font-bold leading-relaxed text-[var(--term-fg)] shadow-[0_2px_0_var(--term-border)] break-keep">
+        <p className="flex items-center gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 text-xsm font-bold leading-relaxed text-[var(--term-fg)] shadow-[0_2px_0_var(--term-border)] break-keep">
           <SparklesIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-accent)]" />
           {content.bottomCallout}
         </p>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -84,9 +73,9 @@ const SourceCard = ({
   return (
     <article
       className={cn(
-        'flex min-w-0 flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
+        'flex min-w-0 flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        t.borderHover,
+        'transition-all hover:-translate-y-0.5',
       )}
     >
       <div className="flex items-center gap-sm">
@@ -102,7 +91,7 @@ const SourceCard = ({
           </span>
         </span>
       </div>
-      <ul className="rounded-lg border border-[var(--term-border)] bg-slate-50/60 px-2.5 py-2 font-mono text-[10.5px] leading-[1.7] text-[var(--term-fg)] dark:bg-slate-900/40">
+      <ul className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2.5 py-2 font-mono text-[10.5px] leading-[1.7] text-[var(--term-fg)]">
         {fields.map((f, i) => (
           <li key={`${i}-${f}`} className="truncate">
             <span className="text-[var(--term-dim)]">·</span>{' '}
@@ -119,10 +108,10 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
   return (
     <article
       className={cn(
-        'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
+        'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
         t.chip,
         t.border,
-        '@sm:shadow-[0_3px_0_var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm">
@@ -147,7 +136,7 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
         {content.items.map((item) => (
           <li
             key={item.marker}
-            className="flex items-center gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2"
+            className="flex items-center gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2"
           >
             <span
               className={cn(

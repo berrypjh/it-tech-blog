@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
 import { CheckSquareIcon, TrophyIcon } from '../icons';
 
 type Props = { content: CompleteWorkContent['checklist'] };
 
 export const FinalChecklist = ({ content }: Props) => (
-  <section id="checklist" aria-labelledby="heading-checklist" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="checklist" aria-labelledby="heading-checklist" className="space-y-md">
+    <SectionHeader
       id="checklist"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
@@ -19,9 +20,8 @@ export const FinalChecklist = ({ content }: Props) => (
 
     <article
       className={cn(
-        'flex h-full flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
-        'border-sky-200/80 bg-sky-50/40',
-        'dark:border-sky-800/70 dark:bg-sky-950/20',
+        'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg bg-[var(--term-bg)]',
+        toneTokens.sky.border,
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
@@ -30,23 +30,24 @@ export const FinalChecklist = ({ content }: Props) => (
           <li
             key={item.text}
             className={cn(
-              'flex items-start gap-3 rounded-xl border bg-[var(--term-bg)] p-sm sm:p-md',
-              'border-sky-200/70 dark:border-sky-800/60',
-              'transition-colors hover:bg-sky-50 dark:hover:bg-sky-950/40',
+              'flex items-start gap-3 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
+              toneTokens.sky.border,
+              'transition-colors hover:bg-[var(--term-surface)]',
             )}
           >
             <span
               aria-hidden="true"
               className={cn(
-                'mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border-2',
-                'border-sky-300/80 bg-white text-sky-700',
-                'dark:border-sky-700/70 dark:bg-slate-950/40 dark:text-sky-300',
+                'mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
+                toneTokens.sky.chip,
               )}
             >
               <CheckSquareIcon className="h-4 w-4" />
             </span>
             <div className="flex flex-col gap-0 min-w-0">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-sky-700 dark:text-sky-300">
+              <span
+                className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
+              >
                 Q{String(idx + 1).padStart(2, '0')}
               </span>
               <p className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] font-bold break-keep">
@@ -57,27 +58,9 @@ export const FinalChecklist = ({ content }: Props) => (
         ))}
       </ul>
 
-      <aside
-        className={cn(
-          'flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-violet-200/80 bg-violet-50/70',
-          'dark:border-violet-800/70 dark:bg-violet-950/40',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-violet-100 text-violet-700 border border-violet-200/80',
-            'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-          )}
-        >
-          <TrophyIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-violet-900 dark:text-violet-100 font-bold break-keep">
-          {content.completionNote}
-        </p>
-      </aside>
+      <SectionNote icon={<TrophyIcon className="h-4 w-4" />} className="mt-auto">
+        {content.completionNote}
+      </SectionNote>
     </article>
   </section>
 );

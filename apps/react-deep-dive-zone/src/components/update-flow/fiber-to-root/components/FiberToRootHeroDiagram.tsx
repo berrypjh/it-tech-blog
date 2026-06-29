@@ -1,18 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberStackIconName, FiberStackNode, FiberToRootContent } from '../content';
-import { FlagIcon, PanelsTopLeftIcon, PinIcon, WorkflowIcon } from '../icons';
+import type { FiberStackNode, FiberToRootContent } from '../content';
+import { fiberStackIconByName } from '../icons';
 
 type Props = { content: FiberToRootContent['hero']; className?: string };
-
-const iconMap: Record<FiberStackIconName, typeof FlagIcon> = {
-  flag: FlagIcon,
-  panels: PanelsTopLeftIcon,
-  workflow: WorkflowIcon,
-  pin: PinIcon,
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -25,19 +19,7 @@ export const FiberToRootHeroDiagram = ({ content, className }: Props) => {
     .join(' → ')}. ${content.sideBody}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         {content.stack.map((node, i) => (
           <li key={node.id} className="flex flex-col gap-sm">
@@ -47,12 +29,7 @@ export const FiberToRootHeroDiagram = ({ content, className }: Props) => {
         ))}
       </ol>
 
-      <div
-        className={cn(
-          'mt-md flex flex-col gap-1 rounded-xl border px-md py-2.5 text-center',
-          'border-[var(--term-border)] bg-[var(--term-bg)]',
-        )}
-      >
+      <div className="mt-md flex flex-col gap-1 rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 text-center">
         <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--term-accent)]">
           {content.sideLabel}
         </span>
@@ -60,20 +37,19 @@ export const FiberToRootHeroDiagram = ({ content, className }: Props) => {
           {content.sideBody}
         </p>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const StackBox = ({ node }: { node: FiberStackNode }) => {
   const t = toneTokens[node.tone];
-  const Icon = iconMap[node.iconName];
+  const Icon = fiberStackIconByName[node.icon];
   return (
     <article
       className={cn(
         'flex min-w-0 items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={node.tone} size="sm">

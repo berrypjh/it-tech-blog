@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HostBullet, PlacementContent } from '../content';
 import { ListTreeIcon, TargetIcon } from '../icons';
 
@@ -13,9 +14,8 @@ export const HostParentSiblingSection = ({ content }: Props) => (
     aria-labelledby="heading-host-parent-sibling"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="host-parent-sibling"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -36,18 +36,17 @@ const FiberTreeCard = ({
   parentLabel: PlacementContent['hostParent']['parentLabel'];
   siblingLabel: PlacementContent['hostParent']['siblingLabel'];
 }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-[var(--term-bg)]',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
+  <article className="flex h-full flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center justify-between gap-2">
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
         {'// fiber tree'}
       </span>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 rounded-md border border-violet-200/70 dark:border-violet-800/60 px-2 py-0.5">
+      <span
+        className={cn(
+          'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+          toneTokens.violet.chip,
+        )}
+      >
         diagram
       </span>
     </header>
@@ -61,6 +60,7 @@ const FiberTreeCard = ({
   </article>
 );
 
+// 실제 Fiber 트리를 흉내 낸 일러스트 다이어그램 (tones 토큰 예외).
 const FiberTree = () => (
   <div className="relative">
     <svg
@@ -69,7 +69,6 @@ const FiberTree = () => (
       viewBox="0 0 420 220"
       className="w-full h-auto"
     >
-      {/* Links */}
       <g stroke="#94a3b8" strokeWidth={1.4} fill="none">
         <line x1={210} y1={36} x2={210} y2={84} />
         <line x1={210} y1={108} x2={90} y2={156} />
@@ -79,7 +78,6 @@ const FiberTree = () => (
         <line x1={210} y1={108} x2={330} y2={156} />
       </g>
 
-      {/* Main Fiber */}
       <g>
         <rect
           x={150}
@@ -97,7 +95,6 @@ const FiberTree = () => (
         </text>
       </g>
 
-      {/* List Fiber */}
       <g>
         <rect
           x={150}
@@ -115,7 +112,6 @@ const FiberTree = () => (
         </text>
       </g>
 
-      {/* Item A / B / C */}
       <g>
         <rect
           x={40}
@@ -169,7 +165,6 @@ const FiberTree = () => (
         </text>
       </g>
 
-      {/* host parent connector */}
       <g stroke="#0d9488" strokeWidth={1.2} strokeDasharray="3 3" fill="none">
         <line x1={270} y1={100} x2={355} y2={100} />
       </g>
@@ -193,7 +188,6 @@ const FiberTree = () => (
         host parent
       </text>
 
-      {/* host sibling connector */}
       <g stroke="#0d9488" strokeWidth={1.2} strokeDasharray="3 3" fill="none">
         <line x1={260} y1={171} x2={310} y2={210} />
       </g>
@@ -224,14 +218,14 @@ const FiberTree = () => (
   </div>
 );
 
-const LabelCard = ({ tag, value, tone }: { tag: string; value: string; tone: 'sky' | 'teal' }) => {
-  const t = commitToneTokens[tone];
+const LabelCard = ({ tag, value, tone }: { tag: string; value: string; tone: ToneKey }) => {
+  const t = toneTokens[tone];
   return (
-    <div className={cn('flex flex-col gap-0.5 rounded-xl border-2 p-sm', t.borderStrong, t.bg)}>
+    <div className={cn('flex flex-col gap-0.5 rounded-md border-2 p-sm', t.fill.border, t.fill.bg)}>
       <span className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
         {tag}
       </span>
-      <code className={cn('text-xsm font-mono font-bold break-all', t.textStrong)}>{value}</code>
+      <code className={cn('text-xsm font-mono font-bold break-all', t.fill.text)}>{value}</code>
     </div>
   );
 };
@@ -242,50 +236,46 @@ const ExplanationCard = ({
 }: {
   explanation: PlacementContent['hostParent']['explanation'];
   bullets: HostBullet[];
-}) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-      'border-violet-200/80 bg-violet-50/50',
-      'dark:border-violet-800/70 dark:bg-violet-950/25',
-      'shadow-[0_1px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-2xl border-2',
-          'bg-violet-100 text-violet-700 border-violet-200/80',
-          'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-        )}
-      >
-        <TargetIcon className="h-5 w-5" />
-      </span>
-      <h3 className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 font-bold">
-        decision
-      </h3>
-    </header>
+}) => {
+  const t = toneTokens.violet;
+  return (
+    <article
+      className={cn(
+        'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_1px_0_var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="violet">
+          <TargetIcon className="h-5 w-5" />
+        </ToneIconBox>
+        <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
+          decision
+        </h3>
+      </header>
 
-    <p className="text-sm sm:text-md font-bold leading-relaxed text-violet-900 dark:text-violet-100 break-keep">
-      <span className="block">{explanation.line1}</span>
-      <span className="block">{explanation.line2}</span>
-      <span className="block">{explanation.line3}</span>
-      <span className="block">{explanation.line4}</span>
-    </p>
+      <p className={cn('text-sm sm:text-md font-bold leading-relaxed break-keep', t.fill.text)}>
+        <span className="block">{explanation.line1}</span>
+        <span className="block">{explanation.line2}</span>
+        <span className="block">{explanation.line3}</span>
+        <span className="block">{explanation.line4}</span>
+      </p>
 
-    <ul className="flex flex-col gap-1.5 border-t border-dashed border-violet-300/60 dark:border-violet-700/50 pt-sm">
-      {bullets.map((b) => (
-        <li key={b.label}>
-          <BulletRow bullet={b} />
-        </li>
-      ))}
-    </ul>
-  </article>
-);
+      <ul className={cn('flex flex-col gap-1.5 border-t border-dashed pt-sm', t.fill.border)}>
+        {bullets.map((b) => (
+          <li key={b.label}>
+            <BulletRow bullet={b} />
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+};
 
 const BulletRow = ({ bullet }: { bullet: HostBullet }) => {
-  const t = commitToneTokens[bullet.tone];
+  const t = toneTokens[bullet.tone];
   return (
     <div className="flex items-center gap-2 text-xsm sm:text-sm">
       <span
@@ -296,7 +286,7 @@ const BulletRow = ({ bullet }: { bullet: HostBullet }) => {
       >
         {bullet.label}
       </span>
-      <code className={cn('font-mono font-bold break-all', t.textStrong)}>{bullet.value}</code>
+      <code className={cn('font-mono font-bold break-all', t.fill.text)}>{bullet.value}</code>
     </div>
   );
 };

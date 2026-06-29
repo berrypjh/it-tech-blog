@@ -11,7 +11,7 @@ export type HeroRootCard = {
   inactive?: boolean;
 };
 
-export type RoleIconName = 'calendarCheck' | 'clock';
+export type RoleIcon = 'calendarCheck' | 'clock';
 
 export type RoleCard = {
   number: string;
@@ -19,7 +19,15 @@ export type RoleCard = {
   body: string;
   badge: string;
   tone: ToneKey;
-  iconName: RoleIconName;
+  icon: RoleIcon;
+};
+
+export type CheckpointCallout = {
+  number: string;
+  heading: string;
+  title: string;
+  tone: ToneKey;
+  linkedLine: number;
 };
 
 export type EnsureRootScheduledContent = {
@@ -38,14 +46,12 @@ export type EnsureRootScheduledContent = {
     };
   };
   roles: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: RoleCard[];
   };
   visualization: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -58,32 +64,21 @@ export type EnsureRootScheduledContent = {
     rightBody: string;
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-    };
-    code: {
-      fileName: string;
-      rightLabel: string;
-      content: string;
-    };
-    callouts: {
-      number: string;
-      heading: string;
-      title: string;
-      tone: 'mint' | 'violet';
-      linkedLine: number;
-    }[];
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
+    callouts: CheckpointCallout[];
   };
   microtask: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -94,7 +89,6 @@ export type EnsureRootScheduledContent = {
     diagramSide: string;
   };
   duplicate: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -108,7 +102,6 @@ export type EnsureRootScheduledContent = {
     resultBody: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -137,6 +130,21 @@ const checkpointCodeKo = `export function ensureRootIsScheduled(
 
   // ... 내부 구현은 이후 코드에서 확인
 }`;
+
+const checkpointCodeEn = `export function ensureRootIsScheduled(
+  root: FiberRoot,
+): void {
+  // This function is called whenever a root receives an update.
+  // It does two things:
+  // 1) it ensures the root is in the root schedule,
+  // 2) it ensures there's a pending microtask
+  //    to process the root schedule.
+
+  // ... see the implementation in later code
+}`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRootScheduler.js';
 
 const ko: EnsureRootScheduledContent = {
   hero: {
@@ -171,8 +179,7 @@ const ko: EnsureRootScheduledContent = {
     },
   },
   roles: {
-    number: '01',
-    eyebrow: '두 역할',
+    eyebrow: '01 · 두 역할',
     title: 'ensureRootIsScheduled의 두 역할',
     description:
       '이 함수는 렌더를 실행하지 않습니다. 대신 두 가지를 보장합니다 — Root schedule 등록과 microtask 예약.',
@@ -183,7 +190,7 @@ const ko: EnsureRootScheduledContent = {
         body: '업데이트가 있는 Root를 Root schedule 목록(큐)에 등록합니다.',
         badge: '중복 등록 없이 한 번만 등록',
         tone: 'emerald',
-        iconName: 'calendarCheck',
+        icon: 'calendarCheck',
       },
       {
         number: '2',
@@ -191,13 +198,12 @@ const ko: EnsureRootScheduledContent = {
         body: 'Root schedule을 나중에 처리할 수 있도록 마이크로태스크를 예약합니다.',
         badge: '예약이 없으면 스케줄이 시작되지 않음',
         tone: 'violet',
-        iconName: 'clock',
+        icon: 'clock',
       },
     ],
   },
   visualization: {
-    number: '02',
-    eyebrow: '시각화',
+    eyebrow: '02 · 시각화',
     title: 'Root schedule 시각화',
     description:
       '업데이트가 있는 Root들이 Root Schedule Queue에 등록 순서대로 들어가는 모습을 한눈에 봅니다.',
@@ -214,28 +220,24 @@ const ko: EnsureRootScheduledContent = {
     rightBody: '등록 순서대로 대기하며, 마이크로태스크에서 처리됨',
   },
   checkpoint: {
-    number: '03',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '03 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberRootScheduler.js',
-      functionLabel: '함수',
-      functionName: 'ensureRootIsScheduled',
-      questionLabel: '학습 질문',
-      question: '이 함수는 실제 렌더를 즉시 실행할까, 스케줄 등록을 보장할까?',
-    },
-    code: {
-      fileName: 'ReactFiberRootScheduler.js',
-      rightLabel: '코드 미리보기',
-      content: checkpointCodeKo,
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberRootScheduler.js',
+    functionLabel: '함수',
+    functionName: 'ensureRootIsScheduled',
+    learningQuestion: '이 함수는 실제 렌더를 즉시 실행할까, 스케줄 등록을 보장할까?',
+    codeHeader: 'ReactFiberRootScheduler.js',
+    codeBadge: 'main',
+    code: checkpointCodeKo,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 ensureRootIsScheduled 보기',
     callouts: [
       {
         number: '1',
         heading: '역할 1',
         title: 'Root schedule에 등록 보장',
-        tone: 'mint',
+        tone: 'emerald',
         linkedLine: 6,
       },
       {
@@ -248,8 +250,7 @@ const ko: EnsureRootScheduledContent = {
     ],
   },
   microtask: {
-    number: '04',
-    eyebrow: 'microtask',
+    eyebrow: '04 · microtask 예약',
     title: 'microtask 예약 개념',
     description:
       '업데이트가 들어왔다고 즉시 모든 Root를 처리하는 것은 아닙니다. React는 적절한 시점에 Root schedule을 처리할 수 있도록 microtask를 예약합니다.',
@@ -260,8 +261,7 @@ const ko: EnsureRootScheduledContent = {
     diagramSide: '현재 작업 스택이 비면 실행됨 (마이크로태스크 시점)',
   },
   duplicate: {
-    number: '05',
-    eyebrow: '중복 등록 방지',
+    eyebrow: '05 · 중복 등록 방지',
     title: '이미 스케줄된 Root를 중복 등록하지 않는 이유',
     description:
       '같은 Root가 여러 번 업데이트되어도, 스케줄 목록에 중복 등록할 필요는 없습니다. 핵심은 이 Root에 처리할 일이 있다는 사실을 유지하는 것입니다.',
@@ -275,8 +275,7 @@ const ko: EnsureRootScheduledContent = {
     resultBody: '한 번만 등록됨',
   },
   quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     questionLabel: '질문',
     answerLabel: '핵심 정답',
@@ -327,8 +326,7 @@ const en: EnsureRootScheduledContent = {
     },
   },
   roles: {
-    number: '01',
-    eyebrow: 'TWO ROLES',
+    eyebrow: '01 · TWO ROLES',
     title: 'What ensureRootIsScheduled guarantees',
     description:
       'It never runs a render. Instead it guarantees two things — registering the Root on the schedule and reserving a microtask.',
@@ -339,7 +337,7 @@ const en: EnsureRootScheduledContent = {
         body: 'Adds the updated Root to the root schedule list (queue).',
         badge: 'registered exactly once — no duplicates',
         tone: 'emerald',
-        iconName: 'calendarCheck',
+        icon: 'calendarCheck',
       },
       {
         number: '2',
@@ -347,13 +345,12 @@ const en: EnsureRootScheduledContent = {
         body: 'Reserves a microtask so the root schedule can be processed later.',
         badge: 'without a reservation, nothing kicks off',
         tone: 'violet',
-        iconName: 'clock',
+        icon: 'clock',
       },
     ],
   },
   visualization: {
-    number: '02',
-    eyebrow: 'VISUALIZATION',
+    eyebrow: '02 · VISUALIZATION',
     title: 'Root schedule visualization',
     description:
       'Watch the Roots with pending work enter the Root Schedule Queue in the order they were registered.',
@@ -370,28 +367,24 @@ const en: EnsureRootScheduledContent = {
     rightBody: 'queued in order; processed in the microtask',
   },
   checkpoint: {
-    number: '03',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '03 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberRootScheduler.js',
-      functionLabel: 'Function',
-      functionName: 'ensureRootIsScheduled',
-      questionLabel: 'Learning question',
-      question: 'Does this function actually render — or just guarantee scheduling?',
-    },
-    code: {
-      fileName: 'ReactFiberRootScheduler.js',
-      rightLabel: 'preview',
-      content: checkpointCodeKo,
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberRootScheduler.js',
+    functionLabel: 'Function',
+    functionName: 'ensureRootIsScheduled',
+    learningQuestion: 'Does this function actually render — or just guarantee scheduling?',
+    codeHeader: 'ReactFiberRootScheduler.js',
+    codeBadge: 'main',
+    code: checkpointCodeEn,
+    primaryHref: githubHref,
+    primaryCta: 'View ensureRootIsScheduled on GitHub',
     callouts: [
       {
         number: '1',
         heading: 'role 1',
         title: 'Ensures the Root is on the root schedule',
-        tone: 'mint',
+        tone: 'emerald',
         linkedLine: 6,
       },
       {
@@ -404,8 +397,7 @@ const en: EnsureRootScheduledContent = {
     ],
   },
   microtask: {
-    number: '04',
-    eyebrow: 'MICROTASK',
+    eyebrow: '04 · MICROTASK',
     title: 'How the microtask reservation works',
     description:
       'An incoming update does not immediately process every Root. React reserves a microtask so the root schedule can be processed at the right time.',
@@ -416,8 +408,7 @@ const en: EnsureRootScheduledContent = {
     diagramSide: 'runs once the current call stack is empty (the microtask moment)',
   },
   duplicate: {
-    number: '05',
-    eyebrow: 'NO DUPLICATES',
+    eyebrow: '05 · NO DUPLICATES',
     title: 'Why an already-scheduled Root is not registered twice',
     description:
       'Even when the same Root receives many updates, the schedule list does not need duplicate entries. What matters is keeping the fact that the Root has work.',
@@ -431,8 +422,7 @@ const en: EnsureRootScheduledContent = {
     resultBody: 'registered exactly once',
   },
   quiz: {
-    number: '06',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini quiz',
     questionLabel: 'Question',
     answerLabel: 'Core answer',

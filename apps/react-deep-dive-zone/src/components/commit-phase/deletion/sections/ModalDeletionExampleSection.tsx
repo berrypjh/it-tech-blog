@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, ModalFlowStep } from '../content';
 import {
   ArrowDownIcon,
@@ -29,26 +30,19 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-modal-deletion-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="modal-deletion-example"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<ListTreeIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       {/* Top: code + state */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <TopCard title={content.codeTitle} variant="code" value={content.codeContent} />
-        <TopCard title={content.stateTitle} variant="state" value={content.stateContent} />
+        <CodeTopCard title={content.codeTitle} value={content.codeContent} />
+        <StateTopCard title={content.stateTitle} value={content.stateContent} />
       </div>
 
       {/* Middle: 4-step flow */}
@@ -84,23 +78,29 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
   </section>
 );
 
-const TopCard = ({
-  title,
-  variant,
-  value,
-}: {
-  title: string;
-  variant: 'code' | 'state';
-  value: string;
-}) => {
-  const isCode = variant === 'code';
+const CodeTopCard = ({ title, value }: { title: string; value: string }) => (
+  <article className="flex h-full flex-col gap-2 rounded-lg border-2 border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_1px_0_var(--term-border)]">
+    <header className="flex items-center justify-between gap-2">
+      <h3 className="text-xsm sm:text-sm font-bold uppercase tracking-wider text-[var(--term-fg)] break-keep">
+        {title}
+      </h3>
+      <span className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
+        jsx
+      </span>
+    </header>
+    <pre className="overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-sm text-xsm leading-snug font-mono text-[var(--term-fg)]">
+      <code>{value}</code>
+    </pre>
+  </article>
+);
+
+const StateTopCard = ({ title, value }: { title: string; value: string }) => {
+  const t = toneTokens.sky;
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
-        isCode
-          ? 'border-slate-300/70 dark:border-slate-700/60'
-          : 'border-sky-300/80 dark:border-sky-700/70',
+        'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
+        t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -108,7 +108,7 @@ const TopCard = ({
         <h3
           className={cn(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isCode ? 'text-slate-700 dark:text-slate-200' : 'text-sky-700 dark:text-sky-300',
+            t.text,
           )}
         >
           {title}
@@ -116,21 +116,13 @@ const TopCard = ({
         <span
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            isCode
-              ? 'border-slate-200/80 bg-slate-50 text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200'
-              : 'border-sky-200/80 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200',
+            t.chip,
           )}
         >
-          {isCode ? 'jsx' : 'state'}
+          state
         </span>
       </header>
-      {isCode ? (
-        <pre className="overflow-x-auto rounded-lg border border-slate-200/60 bg-slate-50/50 p-sm text-xsm leading-snug font-mono text-slate-900 dark:border-slate-700/50 dark:bg-slate-900/30 dark:text-slate-100">
-          <code>{value}</code>
-        </pre>
-      ) : (
-        <StateChange value={value} />
-      )}
+      <StateChange value={value} />
     </article>
   );
 };
@@ -138,54 +130,54 @@ const TopCard = ({
 const StateChange = ({ value }: { value: string }) => {
   const [left, right] = value.includes('→') ? value.split('→').map((s) => s.trim()) : [value, ''];
   return (
-    <div className="flex items-center justify-center gap-3 rounded-lg border border-sky-200/60 bg-sky-50/40 p-sm dark:border-sky-800/50 dark:bg-sky-950/25">
+    <div
+      className={cn(
+        'flex items-center justify-center gap-3 rounded-md border p-sm',
+        toneTokens.sky.fill.border,
+        toneTokens.sky.fill.bg,
+      )}
+    >
       <StateBadge label={left} tone="teal" />
-      <ArrowRightIcon aria-hidden="true" className="h-5 w-5 text-sky-500 dark:text-sky-300" />
-      <StateBadge label={right} tone="rose" />
+      <ArrowRightIcon aria-hidden="true" className={cn('h-5 w-5', toneTokens.sky.text)} />
+      <StateBadge label={right} muted />
     </div>
   );
 };
 
-const StateBadge = ({ label, tone }: { label: string; tone: 'teal' | 'rose' }) => {
-  const t = commitToneTokens[tone];
-  return (
+const StateBadge = ({ label, tone, muted }: { label: string; tone?: 'teal'; muted?: boolean }) =>
+  muted || !tone ? (
+    <span className="inline-flex items-center gap-1 rounded-md border-2 border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-1 text-xsm font-mono font-bold text-[var(--term-muted)]">
+      {label}
+    </span>
+  ) : (
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-md border-2 px-3 py-1 text-xsm font-mono font-bold',
-        t.borderStrong,
-        t.bg,
-        t.textStrong,
+        toneTokens[tone].fill.border,
+        toneTokens[tone].fill.bg,
+        toneTokens[tone].fill.text,
       )}
     >
       {label}
     </span>
   );
-};
 
 const FlowCard = ({ step }: { step: ModalFlowStep }) => {
   const Icon = flowIconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
+        'flex h-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            t.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" />
-        </span>
-        <h3 className={cn('text-xsm font-bold leading-tight break-keep', t.textStrong)}>
+        </ToneIconBox>
+        <h3 className={cn('text-xsm font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h3>
       </header>
@@ -205,19 +197,10 @@ const FlowCard = ({ step }: { step: ModalFlowStep }) => {
               {idx > 0 && (
                 <span
                   aria-hidden="true"
-                  className={cn(
-                    'inline-block h-2 w-2 border-l border-b shrink-0',
-                    'border-violet-300/70 dark:border-violet-700/60',
-                  )}
+                  className={cn('inline-block h-2 w-2 border-l border-b shrink-0', t.border)}
                 />
               )}
-              <span
-                className={cn(
-                  'inline-block rounded border px-1.5 py-0.5',
-                  'border-violet-200/80 bg-violet-50 text-violet-800',
-                  'dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-100',
-                )}
-              >
+              <span className={cn('inline-block rounded border px-1.5 py-0.5', t.chip)}>
                 {item}
               </span>
             </li>
@@ -238,13 +221,12 @@ const BrowserMock = ({
   variant: 'before' | 'after';
 }) => {
   const isBefore = variant === 'before';
+  const t = toneTokens.teal;
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
-        isBefore
-          ? 'border-slate-300/70 dark:border-slate-700/60'
-          : 'border-teal-300/80 dark:border-teal-700/70',
+        'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
+        isBefore ? 'border-[var(--term-border)]' : t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -252,7 +234,7 @@ const BrowserMock = ({
         <h3
           className={cn(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isBefore ? 'text-slate-700 dark:text-slate-200' : 'text-teal-700 dark:text-teal-300',
+            isBefore ? 'text-[var(--term-fg)]' : t.text,
           )}
         >
           {title}
@@ -261,14 +243,15 @@ const BrowserMock = ({
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             isBefore
-              ? 'border-slate-200/80 bg-slate-50 text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200'
-              : 'border-teal-200/80 bg-teal-50 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200',
+              ? 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]'
+              : t.chip,
           )}
         >
           {isBefore ? 'mock' : 'cleaned'}
         </span>
       </header>
 
+      {/* Browser UI mockup (intentional UI mimicry) */}
       <div
         className={cn(
           'rounded-lg border bg-white dark:bg-slate-950 overflow-hidden',
@@ -277,7 +260,6 @@ const BrowserMock = ({
             : 'border-teal-300/80 dark:border-teal-700/70',
         )}
       >
-        {/* Chrome bar */}
         <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-900/40 px-2 py-1.5">
           <span aria-hidden="true" className="block h-2 w-2 rounded-full bg-red-400/80" />
           <span aria-hidden="true" className="block h-2 w-2 rounded-full bg-amber-300/80" />
@@ -286,8 +268,6 @@ const BrowserMock = ({
             app://example
           </span>
         </div>
-
-        {/* Body */}
         {isBefore ? <ModalMockBody /> : <EmptyMockBody />}
       </div>
 
@@ -298,11 +278,10 @@ const BrowserMock = ({
   );
 };
 
+// 실제 브라우저/모달 화면을 흉내 낸 UI 목업 (tones 토큰 예외).
 const ModalMockBody = () => (
   <div className="relative h-32 sm:h-36 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-950">
-    {/* Backdrop */}
     <div className="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60" />
-    {/* Modal box */}
     <div className="absolute inset-x-3 sm:inset-x-6 top-3 sm:top-4 bottom-3 sm:bottom-4 flex flex-col gap-1.5 rounded-lg border-2 border-violet-300/80 bg-white dark:bg-slate-950 dark:border-violet-700/70 p-2">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-bold text-slate-800 dark:text-slate-100">Modal</span>

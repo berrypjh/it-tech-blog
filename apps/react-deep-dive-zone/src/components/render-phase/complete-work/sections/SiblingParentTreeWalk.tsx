@@ -2,14 +2,14 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, TreePanel, TreePanelState } from '../content';
 import {
   ArrowRightIcon,
   BoxIcon,
   CheckCircleIcon,
   ChevronDownIcon,
-  CircleDashedIcon,
   RefreshCwIcon,
   WorkflowIcon,
 } from '../icons';
@@ -17,10 +17,9 @@ import {
 type Props = { content: CompleteWorkContent['treeWalk'] };
 
 export const SiblingParentTreeWalk = ({ content }: Props) => (
-  <section id="tree-walk" aria-labelledby="heading-tree-walk" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="tree-walk" aria-labelledby="heading-tree-walk" className="space-y-md">
+    <SectionHeader
       id="tree-walk"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
@@ -37,7 +36,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
           {idx < content.panels.length - 1 && (
             <span
               aria-hidden="true"
-              className="flex shrink-0 items-center justify-center text-[var(--term-dim)] px-0.5"
+              className="flex shrink-0 items-center justify-center text-[var(--term-accent)] px-0.5"
             >
               <ArrowRightIcon className="h-5 w-5" />
             </span>
@@ -47,7 +46,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
     </div>
 
     {/* Tablet: 2-3 column wrap */}
-    <ol className="hidden md:grid xl:hidden grid-cols-2 lg:grid-cols-3 gap-3">
+    <ol className="hidden md:grid xl:hidden grid-cols-2 lg:grid-cols-3 gap-md">
       {content.panels.map((panel, idx) => (
         <li key={idx} className="flex h-full">
           <Panel panel={panel} index={idx} />
@@ -61,7 +60,10 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
         <li key={idx} className="flex flex-col">
           <Panel panel={panel} index={idx} />
           {idx < content.panels.length - 1 && (
-            <span aria-hidden="true" className="my-1.5 flex justify-center text-[var(--term-dim)]">
+            <span
+              aria-hidden="true"
+              className="my-1.5 flex justify-center text-[var(--term-accent)]"
+            >
               <ChevronDownIcon className="h-5 w-5" />
             </span>
           )}
@@ -74,9 +76,9 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
 const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
   <article
     className={cn(
-      'flex h-full w-full flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-md',
+      'flex h-full w-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
-      'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+      'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
     )}
   >
     <header className="flex items-center justify-between gap-2">
@@ -87,8 +89,8 @@ const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
         <span
           aria-hidden="true"
           className={cn(
-            'inline-flex h-6 w-6 items-center justify-center rounded-md border font-mono font-bold text-[10px] tabular-nums',
-            'border-sky-300/70 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200',
+            'inline-flex h-6 w-6 items-center justify-center rounded-md border font-mono font-bold text-xxsm tabular-nums',
+            toneTokens.sky.chip,
           )}
         >
           {index}
@@ -99,7 +101,7 @@ const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
     <MiniTree nodes={panel.nodes} />
 
     {panel.description && (
-      <p className="mt-auto text-[10px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
+      <p className="mt-auto text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
         {panel.description}
       </p>
     )}
@@ -107,7 +109,6 @@ const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
 );
 
 const MiniTree = ({ nodes }: { nodes: TreePanel['nodes'] }) => {
-  // First node is root (depth 0), rest are depth 1
   const root = nodes.find((n) => n.depth === 0);
   const children = nodes.filter((n) => n.depth > 0);
   if (!root) return null;
@@ -127,26 +128,18 @@ const MiniTree = ({ nodes }: { nodes: TreePanel['nodes'] }) => {
 };
 
 const TreeNode = ({ name, state }: { name: string; state: TreePanelState }) => {
-  const palette =
+  const cls =
     state === 'current'
-      ? 'border-violet-400/80 bg-violet-50 text-violet-800 dark:border-violet-600/70 dark:bg-violet-950/40 dark:text-violet-100'
+      ? cn(toneTokens.violet.fill.bg, toneTokens.violet.fill.border, toneTokens.violet.fill.text)
       : state === 'done'
-        ? 'border-teal-400/80 bg-teal-50 text-teal-800 dark:border-teal-600/70 dark:bg-teal-950/40 dark:text-teal-100'
-        : 'border-slate-300/80 bg-white text-slate-600 dark:border-slate-700/70 dark:bg-slate-950/40 dark:text-slate-300';
-  const Icon =
-    state === 'current'
-      ? RefreshCwIcon
-      : state === 'done'
-        ? CheckCircleIcon
-        : state === 'idle'
-          ? BoxIcon
-          : CircleDashedIcon;
+        ? cn(toneTokens.teal.fill.bg, toneTokens.teal.fill.border, toneTokens.teal.fill.text)
+        : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]';
+  const Icon = state === 'current' ? RefreshCwIcon : state === 'done' ? CheckCircleIcon : BoxIcon;
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-md border-2 px-2 py-1 font-mono text-xsm font-bold',
-        palette,
-        state === 'current' && 'shadow-[0_0_0_3px_rgba(167,139,250,0.18)]',
+        'inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-xsm font-bold',
+        cls,
       )}
     >
       <Icon

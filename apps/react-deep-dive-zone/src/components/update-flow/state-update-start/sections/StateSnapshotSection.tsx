@@ -1,6 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { StateUpdateStartContent } from '../content';
 import {
   ArrowRightIcon,
@@ -12,36 +14,34 @@ import {
 
 type Props = { content: StateUpdateStartContent['snapshot'] };
 
+const sky = toneTokens.sky;
+
 export const StateSnapshotSection = ({ content }: Props) => (
-  <section id="snapshot" aria-labelledby="heading-snapshot" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="section-snapshot" aria-labelledby="heading-snapshot" className="space-y-md">
+    <SectionHeader
       id="snapshot"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<DatabaseIcon className="h-5 w-5" />}
     />
 
-    {/* Top note */}
+    {/* 상단 노트 */}
     <div
       className={cn(
-        'flex items-center justify-center gap-sm rounded-2xl border px-md py-3',
-        'border-sky-200/80 bg-sky-50/70 text-sky-800',
-        'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
+        'flex items-center justify-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-3 shadow-[0_2px_0_var(--term-border)]',
+        sky.border,
       )}
     >
-      <span
-        aria-hidden="true"
-        className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100 text-amber-700 border border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
-      >
+      <ToneIconBox tone="amber" size="sm">
         <LightbulbIcon className="h-3.5 w-3.5" />
-      </span>
-      <p className="text-xsm sm:text-sm font-bold text-center break-keep">{content.topNote}</p>
+      </ToneIconBox>
+      <p className="text-xsm sm:text-sm font-semibold text-center text-[var(--term-fg)] break-keep">
+        {content.topNote}
+      </p>
     </div>
 
-    {/* Diagram */}
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-sm items-stretch">
-      {/* Left card - Current render */}
+    {/* 다이어그램 */}
+    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
       <SnapshotCard
         tone="sky"
         title={content.leftCard.title}
@@ -54,35 +54,8 @@ export const StateSnapshotSection = ({ content }: Props) => (
         icon={<MousePointerIcon className="h-5 w-5" />}
       />
 
-      {/* Middle arrow */}
-      <div className="flex lg:flex-col items-center justify-center gap-1">
-        <div
-          className={cn(
-            'flex flex-col items-center justify-center gap-1.5 rounded-2xl border-2 border-dashed px-md py-3',
-            'border-cyan-300/80 bg-white/70',
-            'dark:border-cyan-700/70 dark:bg-cyan-950/30',
-          )}
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              'inline-flex h-8 w-8 items-center justify-center rounded-full',
-              'bg-cyan-100 text-cyan-700 border border-cyan-200/80',
-              'dark:bg-cyan-950/60 dark:text-cyan-200 dark:border-cyan-800/60',
-            )}
-          >
-            <ArrowRightIcon className="h-4 w-4 rotate-90 lg:rotate-0" />
-          </span>
-          <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-cyan-800 dark:text-cyan-100 text-center leading-snug">
-            {content.middle.label}
-          </span>
-          <span className="text-[10px] text-cyan-700/80 dark:text-cyan-300/80 text-center">
-            {content.middle.sub}
-          </span>
-        </div>
-      </div>
+      <Connector label={content.middle.label} sub={content.middle.sub} />
 
-      {/* Right card - Next render */}
       <SnapshotCard
         tone="emerald"
         title={content.rightCard.title}
@@ -98,7 +71,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
 );
 
 type CardProps = {
-  tone: 'sky' | 'emerald';
+  tone: ToneKey;
   title: string;
   subtitle: string;
   pill: string;
@@ -108,29 +81,6 @@ type CardProps = {
   footnote: string;
   icon: React.ReactNode;
 };
-
-const toneClass = {
-  sky: {
-    border: 'border-sky-200/80 dark:border-sky-800/70',
-    bg: 'bg-gradient-to-br from-sky-50/70 via-white to-white dark:from-sky-950/30 dark:via-[var(--term-bg)] dark:to-[var(--term-bg)]',
-    iconBox:
-      'bg-sky-100 text-sky-700 border border-sky-200/80 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-    pill: 'bg-sky-100 text-sky-800 border-sky-200/80 dark:bg-sky-950/60 dark:text-sky-100 dark:border-sky-800/60',
-    title: 'text-sky-800 dark:text-sky-100',
-    callout:
-      'border-sky-300/70 bg-white text-sky-900 dark:border-sky-700/70 dark:bg-slate-950/50 dark:text-sky-100',
-  },
-  emerald: {
-    border: 'border-emerald-200/80 dark:border-emerald-800/70',
-    bg: 'bg-gradient-to-br from-emerald-50/70 via-white to-white dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-[var(--term-bg)]',
-    iconBox:
-      'bg-emerald-100 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60',
-    pill: 'bg-emerald-100 text-emerald-800 border-emerald-200/80 dark:bg-emerald-950/60 dark:text-emerald-100 dark:border-emerald-800/60',
-    title: 'text-emerald-800 dark:text-emerald-100',
-    callout:
-      'border-emerald-300/70 bg-white text-emerald-900 dark:border-emerald-700/70 dark:bg-slate-950/50 dark:text-emerald-100',
-  },
-} as const;
 
 const SnapshotCard = ({
   tone,
@@ -143,28 +93,20 @@ const SnapshotCard = ({
   footnote,
   icon,
 }: CardProps) => {
-  const t = toneClass[tone];
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
-        'flex flex-col gap-sm rounded-3xl border-2 p-md sm:p-lg',
+        'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
-        t.bg,
-        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-start gap-sm">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-2xl shrink-0',
-            t.iconBox,
-          )}
-        >
+        <ToneIconBox tone={tone} size="md">
           {icon}
-        </span>
+        </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.title)}>
+          <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
             {title}
           </h3>
           <span className="text-xxsm text-[var(--term-muted)] mt-0.5">{subtitle}</span>
@@ -173,12 +115,12 @@ const SnapshotCard = ({
 
       <span
         className={cn(
-          'inline-flex w-fit items-center gap-2 rounded-lg border px-3 py-1.5',
-          'text-xxsm font-mono font-bold',
-          t.pill,
+          'inline-flex w-fit items-center gap-2 rounded-md border bg-[var(--term-surface)] px-3 py-1.5 text-xxsm font-mono font-bold',
+          t.border,
+          t.text,
         )}
       >
-        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
+        <span aria-hidden="true" className={cn('h-1.5 w-1.5 rounded-full', t.dot)} />
         {pill}
       </span>
 
@@ -187,20 +129,39 @@ const SnapshotCard = ({
       </p>
 
       {codeLine && (
-        <pre
-          className={cn(
-            'overflow-x-auto rounded-lg border px-3 py-2 font-mono text-xxsm',
-            'border-slate-800 bg-slate-950 text-slate-100',
-          )}
-        >
+        <pre className="overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2 font-mono text-xxsm text-[var(--term-fg)]">
           <code>{codeLine}</code>
         </pre>
       )}
 
-      <div className={cn('mt-auto flex flex-col gap-1 rounded-xl border-2 px-md py-2', t.callout)}>
-        <span className="text-xsm sm:text-sm font-bold leading-snug break-keep">{callout}</span>
+      <div
+        className={cn(
+          'mt-auto flex flex-col gap-1 rounded-md border bg-[var(--term-surface)] px-md py-2',
+          t.border,
+        )}
+      >
+        <span className={cn('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
+          {callout}
+        </span>
         <span className="text-xxsm text-[var(--term-muted)] break-keep">{footnote}</span>
       </div>
     </article>
   );
 };
+
+const Connector = ({ label, sub }: { label: string; sub: string }) => (
+  <div className="flex lg:flex-col items-center justify-center gap-2 px-1">
+    <div className="flex flex-col items-center justify-center gap-1.5 rounded-lg border-2 border-dashed border-[var(--term-border)] bg-[var(--term-bg)] px-md py-3 shadow-[0_2px_0_var(--term-border)]">
+      <span
+        aria-hidden="true"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]"
+      >
+        <ArrowRightIcon className="h-4 w-4 rotate-90 lg:rotate-0" />
+      </span>
+      <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[var(--term-fg)] text-center leading-snug">
+        {label}
+      </span>
+      <span className="text-[10px] text-[var(--term-muted)] text-center">{sub}</span>
+    </div>
+  </div>
+);

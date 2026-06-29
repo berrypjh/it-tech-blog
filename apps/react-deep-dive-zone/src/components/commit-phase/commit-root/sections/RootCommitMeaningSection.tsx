@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitRootContent } from '../content';
 import {
   ArrowDownIcon,
@@ -20,33 +21,20 @@ export const RootCommitMeaningSection = ({ content }: Props) => (
     aria-labelledby="heading-root-commit"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="root-commit"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<TargetIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
-      {/* Top description */}
-      <p
-        className={cn(
-          'mb-md text-sm sm:text-md leading-relaxed text-[var(--term-fg)] font-bold break-keep',
-        )}
-      >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
+      <p className="mb-md text-sm sm:text-md leading-relaxed text-[var(--term-fg)] font-bold break-keep">
         <span className="block">{content.description.line1}</span>
         <span className="block">{content.description.line2}</span>
-        <span className="block text-teal-700 dark:text-teal-300">{content.description.line3}</span>
+        <span className={cn('block', toneTokens.teal.text)}>{content.description.line3}</span>
       </p>
 
-      {/* 3-column flow */}
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.1fr)_auto_minmax(0,_1fr)] gap-2 md:gap-3 items-stretch">
         <SideCard
           title={content.leftCardTitle}
@@ -75,14 +63,10 @@ export const RootCommitMeaningSection = ({ content }: Props) => (
 const Arrow = () => (
   <div
     aria-hidden="true"
-    className="flex items-center justify-center text-teal-500 dark:text-teal-300 py-1 md:py-0"
+    className={cn('flex items-center justify-center py-1 md:py-0', toneTokens.teal.text)}
   >
-    <span className="hidden md:inline-block">
-      <ArrowRightIcon className="h-5 w-5" />
-    </span>
-    <span className="md:hidden">
-      <ArrowDownIcon className="h-5 w-5" />
-    </span>
+    <ArrowRightIcon className="hidden md:inline-block h-5 w-5" />
+    <ArrowDownIcon className="md:hidden h-5 w-5" />
   </div>
 );
 
@@ -97,37 +81,32 @@ const SideCard = ({
   flowLabel: string;
   variant: 'left' | 'right';
 }) => {
-  const tone = variant === 'left' ? commitToneTokens.sky : commitToneTokens.violet;
+  const tone: ToneKey = variant === 'left' ? 'sky' : 'violet';
+  const t = toneTokens[tone];
   const Icon = variant === 'left' ? GitBranchIcon : LayersIcon;
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
-        tone.border,
+        'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
+        t.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
-            tone.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <Icon className="h-5 w-5" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            tone.chip,
+            t.chip,
           )}
         >
           {label}
         </span>
       </header>
 
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', tone.textStrong)}>
+      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
 
@@ -149,37 +128,35 @@ const CenterCard = ({
   body: string;
   flowLabel: string;
 }) => {
-  const tone = commitToneTokens.teal;
+  const t = toneTokens.teal;
   return (
     <article
       className={cn(
-        'flex h-full flex-col items-center gap-sm rounded-2xl border-2 p-md text-center',
-        tone.borderStrong,
-        tone.bg,
+        'flex h-full flex-col items-center gap-sm rounded-lg border-2 p-md text-center',
+        t.fill.border,
+        t.fill.bg,
         'shadow-[0_1px_0_var(--term-border)]',
-        'ring-2 ring-teal-300/40 dark:ring-teal-500/30',
       )}
     >
       <span
         aria-hidden="true"
         className={cn(
-          'inline-flex h-12 w-12 items-center justify-center rounded-2xl border-2',
-          'bg-teal-100 text-teal-700 border-teal-300/80',
-          'dark:bg-teal-950/60 dark:text-teal-100 dark:border-teal-700/70',
+          'inline-flex h-12 w-12 items-center justify-center rounded-lg border-2',
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
         )}
       >
         <PackageOpenIcon className="h-6 w-6" />
       </span>
-      <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', tone.textStrong)}>
+      <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
-      <p className="text-xsm sm:text-sm leading-relaxed text-teal-800 dark:text-teal-100 break-keep">
-        {body}
-      </p>
+      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{body}</p>
       <span
         className={cn(
           'mt-auto inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-          tone.chip,
+          t.chip,
         )}
       >
         {flowLabel}
@@ -189,11 +166,11 @@ const CenterCard = ({
 };
 
 /**
- * 매우 간단한 fiber tree 시각화. 왼쪽은 부분 점선(계산 진행 중 인상),
+ * 매우 간단한 fiber tree 시각화. 왼쪽은 점선(계산 진행 중 인상),
  * 오른쪽은 실선(완성된 트리)으로 시각 차이를 둔다.
  */
 const FiberTreeDiagram = ({ variant }: { variant: 'left' | 'right' }) => {
-  const stroke = variant === 'left' ? '#0284c7' : '#7c3aed';
+  const treeTone = variant === 'left' ? toneTokens.sky : toneTokens.violet;
   const isDashed = variant === 'left';
   return (
     <svg
@@ -203,7 +180,8 @@ const FiberTreeDiagram = ({ variant }: { variant: 'left' | 'right' }) => {
       className="w-full h-16"
     >
       <g
-        stroke={stroke}
+        className={treeTone.stroke}
+        stroke="currentColor"
         strokeWidth={1.5}
         strokeDasharray={isDashed ? '4 3' : undefined}
         fill="none"
@@ -215,7 +193,7 @@ const FiberTreeDiagram = ({ variant }: { variant: 'left' | 'right' }) => {
         <line x1={120} y1={48} x2={100} y2={68} />
         <line x1={120} y1={48} x2={140} y2={68} />
       </g>
-      <g fill={stroke}>
+      <g className={treeTone.stroke} fill="currentColor">
         <circle cx={80} cy={16} r={5} />
         <circle cx={40} cy={48} r={4} />
         <circle cx={120} cy={48} r={4} />

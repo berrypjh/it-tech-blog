@@ -2,9 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, PipelineFunction } from '../content';
 import {
   ArrowDownIcon,
@@ -13,7 +15,6 @@ import {
   EyeIcon,
   FileCodeIcon,
   FlagIcon,
-  HelpCircleIcon,
   PackageOpenIcon,
 } from '../icons';
 
@@ -25,9 +26,8 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
     aria-labelledby="heading-code-checkpoint"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="code-checkpoint"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<CodeIcon className="h-5 w-5" />}
@@ -35,7 +35,21 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
 
     {/* Top: info card + code panel + callout */}
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.6fr)] gap-3">
-      <InfoCard info={content.info} />
+      <CheckpointInfoCard
+        rows={[
+          {
+            label: content.info.fileLabel,
+            icon: FileCodeIcon,
+            value: <PathList items={content.info.filePaths} />,
+          },
+          {
+            label: content.info.watchLabel,
+            icon: PackageOpenIcon,
+            value: <PathList items={content.info.watchItems} />,
+          },
+        ]}
+        question={content.info.question}
+      />
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,_1.4fr)_minmax(0,_0.6fr)] gap-3 min-w-0">
         <CodeCard code={content.code} />
         <SnapshotCallout callout={content.snapshotCallout} />
@@ -43,19 +57,17 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
     </div>
 
     {/* Bottom: pipeline */}
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-gradient-to-br from-white via-sky-50/20 to-teal-50/20',
-        'dark:from-[var(--term-bg)] dark:via-sky-950/15 dark:to-teal-950/15',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="mb-md flex items-center justify-between gap-2">
         <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">
           {content.pipelineTitle}
         </h3>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+        <span
+          className={cn(
+            'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+            toneTokens.teal.chip,
+          )}
+        >
           current step
         </span>
       </header>
@@ -64,87 +76,16 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
   </section>
 );
 
-const InfoCard = ({ info }: { info: BeforeMutationContent['checkpoint']['info'] }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <InfoRow
-      label={info.fileLabel}
-      icon={<FileCodeIcon className="h-4 w-4" />}
-      mono
-      values={info.filePaths}
-    />
-    <InfoRow
-      label={info.watchLabel}
-      icon={<PackageOpenIcon className="h-4 w-4" />}
-      mono
-      values={info.watchItems}
-    />
-    <InfoRow
-      label={info.questionLabel}
-      icon={<HelpCircleIcon className="h-4 w-4" />}
-      callout
-      values={[info.question]}
-    />
-  </article>
-);
-
-type InfoRowProps = {
-  label: string;
-  values: string[];
-  icon: React.ReactNode;
-  mono?: boolean;
-  callout?: boolean;
-};
-
-const InfoRow = ({ label, values, icon, mono, callout }: InfoRowProps) => (
-  <div className="flex flex-col gap-1.5">
-    <div className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-7 w-7 items-center justify-center rounded-md border',
-          'bg-sky-50 text-sky-700 border-sky-200/80',
-          'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-        )}
-      >
-        {icon}
-      </span>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-        {label}
-      </span>
-    </div>
-    {callout ? (
-      <p
-        className={cn(
-          'rounded-xl border-2 p-sm text-xsm sm:text-sm leading-relaxed break-keep',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
-        )}
-      >
-        {values[0]}
-      </p>
-    ) : (
-      <ul className="flex flex-col gap-1">
-        {values.map((v) => (
-          <li key={v}>
-            <code
-              className={cn(
-                'block rounded-md border bg-slate-50/60 px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
-                'border-[var(--term-border)] dark:bg-slate-900/40',
-                mono && 'font-mono font-bold',
-              )}
-            >
-              {v}
-            </code>
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
+const PathList = ({ items }: { items: string[] }) => (
+  <ul className="flex flex-col gap-1">
+    {items.map((v) => (
+      <li key={v}>
+        <code className="block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1 text-xsm font-mono font-bold text-[var(--term-fg)] break-all">
+          {v}
+        </code>
+      </li>
+    ))}
+  </ul>
 );
 
 const CodeCard = ({ code }: { code: BeforeMutationContent['checkpoint']['code'] }) => (
@@ -167,43 +108,42 @@ const SnapshotCallout = ({
   callout,
 }: {
   callout: BeforeMutationContent['checkpoint']['snapshotCallout'];
-}) => (
-  <article
-    className={cn(
-      'flex flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-      'border-slate-700 bg-slate-900 text-slate-100',
-      'dark:border-slate-700 dark:bg-slate-950',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
-          'bg-teal-500/15 text-teal-300 border-teal-500/30',
-        )}
-      >
-        <FlagIcon className="h-4 w-4" />
-      </span>
-      <h3 className="text-xsm sm:text-sm font-bold text-slate-100 break-keep">{callout.title}</h3>
-    </header>
-    <ul className="flex flex-col gap-1.5">
-      {callout.items.map((item) => (
-        <li
-          key={item}
-          className="flex items-start gap-2 text-[11px] sm:text-xsm leading-snug text-slate-200 break-keep"
-        >
-          <span
-            aria-hidden="true"
-            className="mt-1.5 inline-block h-1 w-1 rounded-full bg-teal-300 shrink-0"
-          />
-          <code className="font-mono">{item}</code>
-        </li>
-      ))}
-    </ul>
-  </article>
-);
+}) => {
+  const t = toneTokens.teal;
+  return (
+    <article
+      className={cn(
+        'flex flex-col gap-sm rounded-lg border p-md sm:p-lg',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_2px_0_var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="teal" size="sm">
+          <FlagIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', t.fill.text)}>
+          {callout.title}
+        </h3>
+      </header>
+      <ul className="flex flex-col gap-1.5">
+        {callout.items.map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-2 text-[11px] sm:text-xsm leading-snug text-[var(--term-fg)] break-keep"
+          >
+            <span
+              aria-hidden="true"
+              className={cn('mt-1.5 inline-block h-1 w-1 rounded-full shrink-0', t.dot)}
+            />
+            <code className="font-mono">{item}</code>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+};
 
 const PipelineRail = ({ items }: { items: PipelineFunction[] }) => (
   <ol className="flex flex-col md:flex-row md:flex-wrap md:items-stretch gap-2">
@@ -227,17 +167,13 @@ const PipelineRail = ({ items }: { items: PipelineFunction[] }) => (
 );
 
 const PipelinePill = ({ item }: { item: PipelineFunction }) => {
-  const t = commitToneTokens[item.tone];
+  const t = toneTokens[item.tone];
   return (
     <article
       className={cn(
-        'relative flex h-full flex-col gap-1 rounded-xl border bg-[var(--term-bg)] p-sm',
-        item.active
-          ? cn('border-2', t.borderStrong, t.bg, 'ring-2 ring-teal-300/40 dark:ring-teal-500/30')
-          : t.border,
-        'shadow-[0_1px_0_var(--term-border)]',
-        'transition-colors hover:bg-[var(--term-surface)]',
-        t.borderHover,
+        'relative flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
+        item.active ? cn('border-2', t.fill.border, t.fill.bg) : t.border,
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       {item.active && (
@@ -246,8 +182,9 @@ const PipelinePill = ({ item }: { item: PipelineFunction }) => {
           className={cn(
             'absolute -top-2 left-2 inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
             'text-[9px] font-mono uppercase tracking-wider font-bold',
-            'bg-teal-500 text-white border-teal-600',
-            'dark:bg-teal-400 dark:text-slate-950 dark:border-teal-300',
+            t.fill.bg,
+            t.fill.border,
+            t.fill.text,
           )}
         >
           <EyeIcon className="h-2.5 w-2.5" />
@@ -257,7 +194,7 @@ const PipelinePill = ({ item }: { item: PipelineFunction }) => {
       <code
         className={cn(
           'text-[11px] sm:text-xsm font-bold font-mono break-all',
-          item.active ? t.textStrong : t.text,
+          item.active ? t.fill.text : t.text,
         )}
       >
         {item.name}

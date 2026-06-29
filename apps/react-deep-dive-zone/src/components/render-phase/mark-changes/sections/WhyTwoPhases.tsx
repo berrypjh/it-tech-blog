@@ -1,47 +1,37 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { ToneCardItem } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent } from '../content';
-import { ClockIcon, GaugeIcon, ShieldIcon, SparklesIcon, TargetIcon } from '../icons';
+import { reasonIconByName, SparklesIcon } from '../icons';
 
 type Props = { content: MarkChangesContent['whyTwoPhases'] };
 
-const reasonIconMap = {
-  shield: ShieldIcon,
-  target: TargetIcon,
-  clock: ClockIcon,
-  gauge: GaugeIcon,
-} as const;
-
 export const WhyTwoPhases = ({ content }: Props) => (
-  <section
-    id="why-two-phases"
-    aria-labelledby="heading-why-two-phases"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="why-two-phases" aria-labelledby="heading-why-two-phases" className="space-y-md">
+    <SectionHeader
       id="why-two-phases"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<SparklesIcon className="h-5 w-5" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+    <ToneCardGrid>
       {content.reasons.map((reason, idx) => {
-        const tone = reason.tone as ToneKey;
-        const Icon = reasonIconMap[reason.iconName];
+        const Icon = reasonIconByName[reason.icon];
         return (
           <ToneCardItem
             key={reason.title}
-            tone={tone}
-            icon={<Icon className="h-5 w-5" />}
+            tone={reason.tone}
+            icon={<Icon className={cn('h-5 w-5', toneTokens[reason.tone].text)} />}
             topRight={idx + 1}
           >
             <h3
-              className={cn('text-md font-bold tracking-tight break-keep', toneTokens[tone].text)}
+              className={cn(
+                'text-md font-bold tracking-tight break-keep',
+                toneTokens[reason.tone].text,
+              )}
             >
               {reason.title}
             </h3>
@@ -51,6 +41,6 @@ export const WhyTwoPhases = ({ content }: Props) => (
           </ToneCardItem>
         );
       })}
-    </ul>
+    </ToneCardGrid>
   </section>
 );

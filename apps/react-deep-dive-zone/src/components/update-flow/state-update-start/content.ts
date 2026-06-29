@@ -2,14 +2,14 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type HeroStepIconName = 'hand' | 'shield' | 'timer' | 'panels' | 'monitor';
+export type HeroStepIcon = 'hand' | 'shield' | 'timer' | 'panels' | 'monitor';
 
 export type HeroFlowStep = {
   id: string;
   title: string;
   description: string;
   tone: ToneKey;
-  iconName: HeroStepIconName;
+  icon: HeroStepIcon;
 };
 
 export type MisconceptionRow = {
@@ -18,7 +18,7 @@ export type MisconceptionRow = {
   correct: string;
 };
 
-export type InternalFlowStepIconName =
+export type InternalFlowIcon =
   | 'mouse'
   | 'play'
   | 'code'
@@ -32,7 +32,7 @@ export type InternalFlowStep = {
   number: string;
   label: string;
   tone: ToneKey;
-  iconName: InternalFlowStepIconName;
+  icon: InternalFlowIcon;
 };
 
 export type StateUpdateStartContent = {
@@ -51,7 +51,6 @@ export type StateUpdateStartContent = {
     };
   };
   visibleCode: {
-    number: string;
     eyebrow: string;
     title: string;
     code: {
@@ -66,7 +65,6 @@ export type StateUpdateStartContent = {
     };
   };
   misconception: {
-    number: string;
     eyebrow: string;
     title: string;
     headerWrong: string;
@@ -74,7 +72,6 @@ export type StateUpdateStartContent = {
     rows: MisconceptionRow[];
   };
   internalFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -82,7 +79,6 @@ export type StateUpdateStartContent = {
     bottomNote: string;
   };
   snapshot: {
-    number: string;
     eyebrow: string;
     title: string;
     topNote: string;
@@ -109,7 +105,6 @@ export type StateUpdateStartContent = {
     };
   };
   question: {
-    number: string;
     eyebrow: string;
     title: string;
     questionLabel: string;
@@ -117,15 +112,11 @@ export type StateUpdateStartContent = {
     question: string;
     answerTitle: string;
     answerBody: string;
-    buttonText: string;
   };
   summary: {
-    number: string;
     eyebrow: string;
     title: string;
-    main: { lead: string; emphasis: string; tail: string };
-    sub: string;
-    flowLine: string[];
+    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -162,35 +153,35 @@ const ko: StateUpdateStartContent = {
           title: 'setState',
           description: '또는 setCount 등',
           tone: 'sky',
-          iconName: 'hand',
+          icon: 'hand',
         },
         {
           id: 'request',
           title: '업데이트 요청',
           description: '이 컴포넌트에 업데이트가 생김',
           tone: 'cyan',
-          iconName: 'shield',
+          icon: 'shield',
         },
         {
           id: 'schedule',
           title: '스케줄링',
           description: '우선순위 결정 및 작업 예약',
           tone: 'emerald',
-          iconName: 'timer',
+          icon: 'timer',
         },
         {
           id: 'render',
           title: 'Render Phase',
           description: '변경 내용을 계산하고 비교',
           tone: 'violet',
-          iconName: 'panels',
+          icon: 'panels',
         },
         {
           id: 'commit',
           title: 'Commit Phase',
           description: '실제 DOM에 반영',
           tone: 'blue',
-          iconName: 'monitor',
+          icon: 'monitor',
         },
       ],
     },
@@ -200,8 +191,7 @@ const ko: StateUpdateStartContent = {
     },
   },
   visibleCode: {
-    number: '01',
-    eyebrow: '겉으로 보이는 코드',
+    eyebrow: '01 · 겉으로 보이는 코드',
     title: '사용자에게 보이는 코드',
     code: {
       fileName: 'Counter.js',
@@ -215,8 +205,7 @@ const ko: StateUpdateStartContent = {
     },
   },
   misconception: {
-    number: '02',
-    eyebrow: '오해와 실제',
+    eyebrow: '02 · 오해와 실제',
     title: '흔한 생각 vs 실제 React 흐름',
     headerWrong: '흔한 생각 (오해)',
     headerCorrect: '실제 React 흐름 (정확한 이해)',
@@ -244,26 +233,24 @@ const ko: StateUpdateStartContent = {
     ],
   },
   internalFlow: {
-    number: '03',
-    eyebrow: '내부 흐름 미리보기',
+    eyebrow: '03 · 내부 흐름 미리보기',
     title: 'setState 이후 내부 흐름 미리보기',
     description:
       '이후 페이지에서 확대해서 볼 8단계를 한 번에 미리 봅니다. 각 단계는 별도의 페이지에서 코드로 다시 확인합니다.',
     steps: [
-      { number: '1', label: '사용자 클릭', tone: 'sky', iconName: 'mouse' },
-      { number: '2', label: 'setState 호출', tone: 'sky', iconName: 'play' },
-      { number: '3', label: 'dispatchSetState 실행', tone: 'cyan', iconName: 'code' },
-      { number: '4', label: 'lane(우선순위) 선택', tone: 'emerald', iconName: 'flag' },
-      { number: '5', label: 'update 객체 생성', tone: 'teal', iconName: 'filePlus' },
-      { number: '6', label: 'queue에 등록', tone: 'violet', iconName: 'database' },
-      { number: '7', label: 'Root 스케줄링', tone: 'indigo', iconName: 'calendar' },
-      { number: '8', label: 'Render Phase 준비', tone: 'blue', iconName: 'loader' },
+      { number: '1', label: '사용자 클릭', tone: 'sky', icon: 'mouse' },
+      { number: '2', label: 'setState 호출', tone: 'sky', icon: 'play' },
+      { number: '3', label: 'dispatchSetState 실행', tone: 'cyan', icon: 'code' },
+      { number: '4', label: 'lane(우선순위) 선택', tone: 'emerald', icon: 'flag' },
+      { number: '5', label: 'update 객체 생성', tone: 'teal', icon: 'filePlus' },
+      { number: '6', label: 'queue에 등록', tone: 'violet', icon: 'database' },
+      { number: '7', label: 'Root 스케줄링', tone: 'indigo', icon: 'calendar' },
+      { number: '8', label: 'Render Phase 준비', tone: 'blue', icon: 'loader' },
     ],
     bottomNote: '이 챕터 이후 페이지에서 각 단계를 하나씩 코드로 확인합니다.',
   },
   snapshot: {
-    number: '04',
-    eyebrow: '렌더 스냅샷',
+    eyebrow: '04 · 렌더 스냅샷',
     title: 'State는 현재 렌더의 스냅샷처럼 보인다',
     topNote: '이벤트 핸들러 안의 count 값은 그 렌더 시점의 count를 본다.',
     leftCard: {
@@ -289,8 +276,7 @@ const ko: StateUpdateStartContent = {
     },
   },
   question: {
-    number: '05',
-    eyebrow: '학습 질문',
+    eyebrow: '05 · 학습 질문',
     title: '학습 질문',
     questionLabel: '질문',
     answerLabel: '정답',
@@ -298,19 +284,14 @@ const ko: StateUpdateStartContent = {
     answerTitle: '어떤 Fiber에 업데이트가 생겼는지 기록할 준비를 하는 것이다.',
     answerBody:
       '업데이트 요청을 해당 Fiber와 연결하고, 우선순위(lane)를 정하고, queue에 등록하는 것이 가장 먼저 일어난다.',
-    buttonText: '정답 접기',
   },
   summary: {
-    number: '06',
-    eyebrow: '핵심 요약',
+    eyebrow: '06 · 핵심 요약',
     title: '핵심 요약',
-    main: {
-      lead: 'setState는 화면 반영 명령이 아니라,',
-      emphasis: '업데이트 처리 흐름의 출발점',
-      tail: '이다.',
-    },
-    sub: '요청 기록 → 우선순위 결정 → 스케줄링 → 계산(Render) → 반영(Commit) — 이 긴 여정의 첫 걸음이 바로 setState다.',
-    flowLine: ['요청 기록', '우선순위 결정', '스케줄링', '계산(Render)', '반영(Commit)'],
+    lines: [
+      'setState는 화면 반영 명령이 아니라, 업데이트 처리 흐름의 출발점이다.',
+      '요청 기록 → 우선순위 결정 → 스케줄링 → 계산(Render) → 반영(Commit) — 이 긴 여정의 첫 걸음이 setState다.',
+    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -340,35 +321,35 @@ const en: StateUpdateStartContent = {
           title: 'setState',
           description: 'or setCount, etc.',
           tone: 'sky',
-          iconName: 'hand',
+          icon: 'hand',
         },
         {
           id: 'request',
           title: 'Update request',
           description: 'An update is queued for this component',
           tone: 'cyan',
-          iconName: 'shield',
+          icon: 'shield',
         },
         {
           id: 'schedule',
           title: 'Scheduling',
           description: 'Pick a priority and schedule the work',
           tone: 'emerald',
-          iconName: 'timer',
+          icon: 'timer',
         },
         {
           id: 'render',
           title: 'Render Phase',
           description: 'Compute and compare the changes',
           tone: 'violet',
-          iconName: 'panels',
+          icon: 'panels',
         },
         {
           id: 'commit',
           title: 'Commit Phase',
           description: 'Apply the result to the real DOM',
           tone: 'blue',
-          iconName: 'monitor',
+          icon: 'monitor',
         },
       ],
     },
@@ -378,8 +359,7 @@ const en: StateUpdateStartContent = {
     },
   },
   visibleCode: {
-    number: '01',
-    eyebrow: 'VISIBLE CODE',
+    eyebrow: '01 · VISIBLE CODE',
     title: 'The code the user actually writes',
     code: {
       fileName: 'Counter.js',
@@ -393,8 +373,7 @@ const en: StateUpdateStartContent = {
     },
   },
   misconception: {
-    number: '02',
-    eyebrow: 'MYTH VS REALITY',
+    eyebrow: '02 · MYTH VS REALITY',
     title: 'Common belief vs the actual React flow',
     headerWrong: 'Common belief (myth)',
     headerCorrect: 'Actual React flow (correct)',
@@ -422,26 +401,24 @@ const en: StateUpdateStartContent = {
     ],
   },
   internalFlow: {
-    number: '03',
-    eyebrow: 'INTERNAL FLOW',
+    eyebrow: '03 · INTERNAL FLOW',
     title: 'A preview of the internals after setState',
     description:
       'These are the eight stages that later pages will zoom into one by one with real source code.',
     steps: [
-      { number: '1', label: 'User click', tone: 'sky', iconName: 'mouse' },
-      { number: '2', label: 'setState called', tone: 'sky', iconName: 'play' },
-      { number: '3', label: 'dispatchSetState runs', tone: 'cyan', iconName: 'code' },
-      { number: '4', label: 'Pick a lane (priority)', tone: 'emerald', iconName: 'flag' },
-      { number: '5', label: 'Create the update object', tone: 'teal', iconName: 'filePlus' },
-      { number: '6', label: 'Enqueue on the queue', tone: 'violet', iconName: 'database' },
-      { number: '7', label: 'Schedule on the root', tone: 'indigo', iconName: 'calendar' },
-      { number: '8', label: 'Prepare the render phase', tone: 'blue', iconName: 'loader' },
+      { number: '1', label: 'User click', tone: 'sky', icon: 'mouse' },
+      { number: '2', label: 'setState called', tone: 'sky', icon: 'play' },
+      { number: '3', label: 'dispatchSetState runs', tone: 'cyan', icon: 'code' },
+      { number: '4', label: 'Pick a lane (priority)', tone: 'emerald', icon: 'flag' },
+      { number: '5', label: 'Create the update object', tone: 'teal', icon: 'filePlus' },
+      { number: '6', label: 'Enqueue on the queue', tone: 'violet', icon: 'database' },
+      { number: '7', label: 'Schedule on the root', tone: 'indigo', icon: 'calendar' },
+      { number: '8', label: 'Prepare the render phase', tone: 'blue', icon: 'loader' },
     ],
     bottomNote: 'Each stage gets its own page later in this chapter, with the matching code.',
   },
   snapshot: {
-    number: '04',
-    eyebrow: 'RENDER SNAPSHOT',
+    eyebrow: '04 · RENDER SNAPSHOT',
     title: 'State looks like a snapshot of the current render',
     topNote: 'The count inside an event handler is the count from that render.',
     leftCard: {
@@ -467,8 +444,7 @@ const en: StateUpdateStartContent = {
     },
   },
   question: {
-    number: '05',
-    eyebrow: 'LEARNING QUESTION',
+    eyebrow: '05 · LEARNING QUESTION',
     title: 'Learning question',
     questionLabel: 'Question',
     answerLabel: 'Answer',
@@ -476,19 +452,14 @@ const en: StateUpdateStartContent = {
     answerTitle: 'Get ready to record which Fiber the update belongs to.',
     answerBody:
       'Link the update request to that Fiber, choose its priority (lane), and enqueue it — that all happens first.',
-    buttonText: 'Hide answer',
   },
   summary: {
-    number: '06',
-    eyebrow: 'KEY SUMMARY',
+    eyebrow: '06 · KEY SUMMARY',
     title: 'Key summary',
-    main: {
-      lead: 'setState is not a "paint the screen" command —',
-      emphasis: "it's where the update pipeline begins",
-      tail: '.',
-    },
-    sub: 'Record → choose priority → schedule → compute (Render) → apply (Commit). setState is the first step of that long journey.',
-    flowLine: ['Record', 'Pick priority', 'Schedule', 'Compute (Render)', 'Apply (Commit)'],
+    lines: [
+      'setState is not a "paint the screen" command — it\'s where the update pipeline begins.',
+      'Record → pick priority → schedule → compute (Render) → apply (Commit). setState is the first step of that long journey.',
+    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

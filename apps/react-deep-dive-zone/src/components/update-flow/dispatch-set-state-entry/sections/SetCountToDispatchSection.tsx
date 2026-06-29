@@ -1,150 +1,104 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { CompareVs } from '../../../shared/compare';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent } from '../content';
-import { ArrowRightIcon, CodeIcon, FunctionSquareIcon, InfoIcon } from '../icons';
+import { ArrowLeftRightIcon, CodeIcon, FunctionSquareIcon, InfoIcon } from '../icons';
 
 type Props = { content: DispatchSetStateEntryContent['compare'] };
 
+const amber = toneTokens.amber;
+
 export const SetCountToDispatchSection = ({ content }: Props) => (
-  <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="section-compare" aria-labelledby="heading-compare" className="space-y-md">
+    <SectionHeader
       id="compare"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ArrowRightIcon className="h-5 w-5" />}
+      icon={<ArrowLeftRightIcon className="h-5 w-5" />}
     />
 
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_minmax(0,_0.7fr)] gap-md lg:gap-md items-stretch">
-      {/* Left card */}
-      <CompareCard
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
+      <CodeComparePanel
         tone="emerald"
         title={content.leftCard.title}
         code={content.leftCard.code}
-        icon={<CodeIcon className="h-4 w-4" />}
+        icon={<CodeIcon className="h-3.5 w-3.5" />}
       />
 
-      {/* Center arrow */}
-      <div className="flex lg:flex-col items-center justify-center gap-1">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex items-center justify-center rounded-full border-2',
-            'h-10 w-10 sm:h-12 sm:w-12',
-            'border-sky-300/80 bg-white text-sky-600',
-            'dark:border-sky-700/70 dark:bg-slate-950/60 dark:text-sky-300',
-            'shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <ArrowRightIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
-        </span>
-      </div>
+      <CompareVs />
 
-      {/* Right card */}
-      <CompareCard
+      <CodeComparePanel
         tone="sky"
         title={content.rightCard.title}
         code={content.rightCard.code}
-        icon={<FunctionSquareIcon className="h-4 w-4" />}
+        icon={<FunctionSquareIcon className="h-3.5 w-3.5" />}
       />
+    </div>
 
-      {/* Action side note */}
-      <aside
-        className={cn(
-          'flex flex-col gap-sm rounded-3xl border-2 border-dashed p-md',
-          'border-amber-300/70 bg-amber-50/40',
-          'dark:border-amber-700/60 dark:bg-amber-950/20',
-        )}
-      >
-        <header className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
+    <aside
+      className={cn(
+        'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
+        amber.border,
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="amber" size="sm">
+          <InfoIcon className="h-3.5 w-3.5" />
+        </ToneIconBox>
+        <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', amber.text)}>
+          {content.sideNote.title}
+        </h3>
+      </header>
+      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+        {content.sideNote.body}
+      </p>
+      <ul className="flex flex-wrap gap-1.5">
+        {content.sideNote.tags.map((tag) => (
+          <li
+            key={tag}
             className={cn(
-              'inline-flex h-8 w-8 items-center justify-center rounded-xl',
-              'bg-amber-100 text-amber-700 border border-amber-200/80',
-              'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
+              'rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
+              amber.chip,
             )}
           >
-            <InfoIcon className="h-4 w-4" />
-          </span>
-          <span className="text-xsm font-bold text-amber-800 dark:text-amber-100 break-keep">
-            {content.sideNote.title}
-          </span>
-        </header>
-        <p className="text-xxsm sm:text-xsm leading-relaxed text-amber-900/90 dark:text-amber-100/90 break-keep">
-          {content.sideNote.body}
-        </p>
-        <ul className="flex flex-wrap gap-1.5 pt-1">
-          <li className="rounded-md border border-amber-300/70 bg-white/70 px-2 py-0.5 text-[10px] font-mono text-amber-800 dark:border-amber-700/60 dark:bg-amber-950/40 dark:text-amber-100">
-            value
+            {tag}
           </li>
-          <li className="rounded-md border border-amber-300/70 bg-white/70 px-2 py-0.5 text-[10px] font-mono text-amber-800 dark:border-amber-700/60 dark:bg-amber-950/40 dark:text-amber-100">
-            updater fn
-          </li>
-        </ul>
-      </aside>
-    </div>
+        ))}
+      </ul>
+    </aside>
   </section>
 );
 
-type CompareCardProps = {
-  tone: 'emerald' | 'sky';
+type PanelProps = {
+  tone: ToneKey;
   title: string;
   code: string;
   icon: React.ReactNode;
 };
 
-const toneClass = {
-  emerald: {
-    border: 'border-emerald-200/80 dark:border-emerald-800/70',
-    iconBox:
-      'bg-emerald-100 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60',
-    title: 'text-emerald-800 dark:text-emerald-100',
-    bg: 'bg-gradient-to-br from-white via-emerald-50/30 to-white dark:from-[var(--term-bg)] dark:via-emerald-950/20 dark:to-[var(--term-bg)]',
-  },
-  sky: {
-    border: 'border-sky-200/80 dark:border-sky-800/70',
-    iconBox:
-      'bg-sky-100 text-sky-700 border-sky-200/80 dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-    title: 'text-sky-800 dark:text-sky-100',
-    bg: 'bg-gradient-to-br from-white via-sky-50/30 to-white dark:from-[var(--term-bg)] dark:via-sky-950/20 dark:to-[var(--term-bg)]',
-  },
-} as const;
-
-const CompareCard = ({ tone, title, code, icon }: CompareCardProps) => {
-  const t = toneClass[tone];
+const CodeComparePanel = ({ tone, title, code, icon }: PanelProps) => {
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
-        'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-        t.border,
-        t.bg,
+        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
+        t.border,
       )}
     >
-      <header className="flex items-center gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            t.iconBox,
-          )}
-        >
+      <header className="flex items-center gap-2 pb-sm border-b border-dashed border-[var(--term-border)]">
+        <ToneIconBox tone={tone} size="sm">
           {icon}
-        </span>
-        <h3 className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.title)}>
+        </ToneIconBox>
+        <h3 className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
           {title}
         </h3>
       </header>
 
-      <pre
-        className={cn(
-          'mt-auto overflow-x-auto rounded-2xl border px-md py-3 font-mono text-xsm sm:text-sm leading-[1.7]',
-          'border-slate-800 bg-slate-950 text-slate-100',
-          'shadow-[0_8px_24px_-12px_rgba(2,6,23,0.55)]',
-        )}
-      >
+      <pre className="mt-auto overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-3 font-mono text-xsm leading-[1.7] text-[var(--term-fg)]">
         <code>{code}</code>
       </pre>
     </article>

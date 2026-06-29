@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Branch = 'yes' | 'no';
+import type { ToneKey } from '../../shared/tones';
 
 export type HeroFlow = {
   step1: { title: string };
@@ -36,7 +36,7 @@ export type CodeCallout = {
   number: number;
   title: string;
   description: string;
-  tone: 'teal' | 'sky' | 'violet' | 'indigo';
+  tone: ToneKey;
 };
 
 export type DescendCompleteFlow = {
@@ -48,7 +48,7 @@ export type DescendCompleteFlow = {
 
 export type DescendCompleteExplanation = {
   title: string;
-  items: { iconName: 'arrowDown' | 'arrowUp' | 'rotate'; text: string }[];
+  items: { icon: 'arrowDown' | 'arrowUp' | 'rotate'; text: string }[];
 };
 
 export type PerformUnitContent = {
@@ -56,18 +56,15 @@ export type PerformUnitContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    callout: string;
     diagram: HeroFlow;
   };
   fullFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     flow: FullFlow;
   };
   compare: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -75,36 +72,31 @@ export type PerformUnitContent = {
     relationLabel: string;
   };
   returnDirection: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: { left: ReturnDirectionCard; right: ReturnDirectionCard };
   };
   code: {
-    number: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     fileName: string;
     functionsLabel: string;
     functions: string[];
-    learningLabel: string;
     learningQuestion: string;
-    panelTitle: string;
-    panelSubtitle: string;
-    codeLines: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
     callouts: CodeCallout[];
   };
   descendComplete: {
-    number: string;
     eyebrow: string;
     title: string;
     flow: DescendCompleteFlow;
     explanation: DescendCompleteExplanation;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -143,7 +135,6 @@ const ko: PerformUnitContent = {
     },
     description:
       'React는 현재 Fiber 하나를 집어 들고 beginWork를 실행한 뒤, 더 내려갈 자식이 있으면 아래로 이동하고, 없으면 complete 단계로 전환합니다.',
-    callout: 'performUnitOfWork는 Render Phase에서 Fiber를 하나씩 처리하는 핵심 함수입니다.',
     diagram: {
       step1: { title: 'Fiber 처리' },
       step2: { title: 'beginWork' },
@@ -161,8 +152,7 @@ const ko: PerformUnitContent = {
     },
   },
   fullFlow: {
-    number: '1',
-    eyebrow: '전체 흐름',
+    eyebrow: '01 · 전체 흐름',
     title: 'performUnitOfWork 전체 흐름',
     description: '코드 한 줄씩의 의미를 큰 분기 플로우로 펼친 모습입니다.',
     flow: {
@@ -185,8 +175,7 @@ const ko: PerformUnitContent = {
     },
   },
   compare: {
-    number: '2',
-    eyebrow: 'current vs WIP',
+    eyebrow: '02 · 두 Fiber',
     title: 'current와 workInProgress 연결',
     description: '두 Fiber는 alternate로 연결된 같은 노드의 두 버전입니다.',
     relationLabel: 'alternate',
@@ -208,8 +197,7 @@ const ko: PerformUnitContent = {
     },
   },
   returnDirection: {
-    number: '3',
-    eyebrow: 'return이 결정',
+    eyebrow: '03 · 반환 방향',
     title: 'beginWork 반환값으로 다음 방향 결정',
     description: 'beginWork의 반환값이 곧 다음 work loop의 이동 방향을 정합니다.',
     cards: {
@@ -238,19 +226,17 @@ const ko: PerformUnitContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     fileName: 'ReactFiberWorkLoop.js',
     functionsLabel: '함수',
-    functions: ['performUnitOfWork'],
-    learningLabel: '학습 질문',
+    functions: ['performUnitOfWork', 'beginWork', 'completeUnitOfWork'],
     learningQuestion:
       'React는 Fiber 하나를 처리한 뒤 언제 아래로 내려가고 언제 위로 올라가기 시작할까?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: '코드 미리보기',
-    codeLines: CODE_LINES,
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE_LINES,
     callouts: [
       {
         number: 1,
@@ -279,8 +265,7 @@ const ko: PerformUnitContent = {
     ],
   },
   descendComplete: {
-    number: '5',
-    eyebrow: '하강 or 완료',
+    eyebrow: '05 · 하강 vs 완료',
     title: '내려가기 vs 완료로 전환 (핵심 반복 구조)',
     flow: {
       topSteps: ['Fiber 처리 시작 (performUnitOfWork)', 'beginWork 실행'],
@@ -299,15 +284,14 @@ const ko: PerformUnitContent = {
     explanation: {
       title: '이 과정을 work loop가 반복합니다.',
       items: [
-        { iconName: 'arrowDown', text: '아래로 내려가며 최대한 탐색' },
-        { iconName: 'arrowUp', text: '더 이상 내려갈 곳이 없으면 완료하며 위로 올라감' },
-        { iconName: 'rotate', text: '모든 Fiber를 처리할 때까지 반복' },
+        { icon: 'arrowDown', text: '아래로 내려가며 최대한 탐색' },
+        { icon: 'arrowUp', text: '더 이상 내려갈 곳이 없으면 완료하며 위로 올라감' },
+        { icon: 'rotate', text: '모든 Fiber를 처리할 때까지 반복' },
       ],
     },
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'performUnitOfWork가 completeUnitOfWork를 호출하는 조건은?',
     answer: 'beginWork가 더 내려갈 다음 Fiber를 반환하지 않을 때.',
@@ -332,7 +316,6 @@ const en: PerformUnitContent = {
     },
     description:
       'React picks up the current Fiber, runs beginWork, then either descends into a child if one exists, or transitions into the complete step.',
-    callout: 'performUnitOfWork is the core function that processes Fibers one at a time.',
     diagram: {
       step1: { title: 'process a Fiber' },
       step2: { title: 'beginWork' },
@@ -350,8 +333,7 @@ const en: PerformUnitContent = {
     },
   },
   fullFlow: {
-    number: '1',
-    eyebrow: 'FULL FLOW',
+    eyebrow: '01 · FULL FLOW',
     title: 'Full performUnitOfWork flow',
     description: 'The function unfolded as a branching flow.',
     flow: {
@@ -374,8 +356,7 @@ const en: PerformUnitContent = {
     },
   },
   compare: {
-    number: '2',
-    eyebrow: 'CURRENT VS WIP',
+    eyebrow: '02 · CURRENT VS WIP',
     title: 'current and workInProgress',
     description: 'These two Fibers are linked via alternate — two versions of the same node.',
     relationLabel: 'alternate',
@@ -397,8 +378,7 @@ const en: PerformUnitContent = {
     },
   },
   returnDirection: {
-    number: '3',
-    eyebrow: 'RETURN DECIDES',
+    eyebrow: '03 · RETURN DECIDES',
     title: 'beginWork return value picks the next direction',
     description: "beginWork's return value decides which way the work loop moves.",
     cards: {
@@ -427,19 +407,17 @@ const en: PerformUnitContent = {
     },
   },
   code: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source-code checkpoint',
     fileLabel: 'file',
     fileName: 'ReactFiberWorkLoop.js',
-    functionsLabel: 'function',
-    functions: ['performUnitOfWork'],
-    learningLabel: 'learning question',
+    functionsLabel: 'functions',
+    functions: ['performUnitOfWork', 'beginWork', 'completeUnitOfWork'],
     learningQuestion:
       'After processing one Fiber, when does React descend, and when does it start ascending?',
-    panelTitle: 'ReactFiberWorkLoop.js',
-    panelSubtitle: 'code preview',
-    codeLines: CODE_LINES,
+    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
+    codeBadge: 'main',
+    code: CODE_LINES,
     callouts: [
       {
         number: 1,
@@ -468,8 +446,7 @@ const en: PerformUnitContent = {
     ],
   },
   descendComplete: {
-    number: '5',
-    eyebrow: 'DESCEND OR COMPLETE',
+    eyebrow: '05 · DESCEND OR COMPLETE',
     title: 'Descend vs transition to complete (the core loop)',
     flow: {
       topSteps: ['Start processing (performUnitOfWork)', 'Run beginWork'],
@@ -488,15 +465,14 @@ const en: PerformUnitContent = {
     explanation: {
       title: 'The work loop repeats this process.',
       items: [
-        { iconName: 'arrowDown', text: 'descend as far as possible' },
-        { iconName: 'arrowUp', text: 'when nothing deeper remains, complete and ascend' },
-        { iconName: 'rotate', text: 'repeat until every Fiber is processed' },
+        { icon: 'arrowDown', text: 'descend as far as possible' },
+        { icon: 'arrowUp', text: 'when nothing deeper remains, complete and ascend' },
+        { icon: 'rotate', text: 'repeat until every Fiber is processed' },
       ],
     },
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini Quiz',
     question: 'When does performUnitOfWork call completeUnitOfWork?',
     answer: 'When beginWork returns no next Fiber to descend into.',

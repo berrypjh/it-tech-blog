@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type {
   RefTimelineIcon,
   RefTimelineStep,
@@ -38,22 +39,15 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
     aria-labelledby="heading-ref-detach-attach"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="ref-detach-attach"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<WorkflowIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       {/* Top: 5-step timeline */}
       <ol className="hidden md:grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-2 items-stretch">
         {content.steps.map((step, idx) => (
@@ -93,22 +87,20 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
       {/* Insight */}
       <aside
         className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-sky-200/80 bg-sky-50/60',
-          'dark:border-sky-800/70 dark:bg-sky-950/30',
+          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
+          toneTokens.sky.fill.border,
+          toneTokens.sky.fill.bg,
         )}
       >
-        <span
-          aria-hidden="true"
+        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
+          <LightbulbIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <p
           className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-sky-100 text-sky-700 border border-sky-200/80',
-            'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
+            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
+            toneTokens.sky.fill.text,
           )}
         >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-sky-900 dark:text-sky-100 break-keep font-bold">
           {content.insight}
         </p>
       </aside>
@@ -118,27 +110,19 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
 
 const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => {
   const Icon = iconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-1.5 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
+        'flex h-full flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-full border-2',
-            t.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex h-6 w-6 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
@@ -148,7 +132,7 @@ const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => 
           {index}
         </span>
       </header>
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.textStrong)}>
+      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
       <p className="text-[10.5px] sm:text-[11px] leading-snug text-[var(--term-muted)] break-keep">
@@ -169,7 +153,14 @@ const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
       {steps.map((step, idx) => (
         <Fragment key={step.label}>
           <li>
-            <RefValuePill step={step} />
+            <code
+              className={cn(
+                'inline-block rounded-md border px-2 py-1 text-[11px] font-mono break-all',
+                toneTokens[step.tone].chip,
+              )}
+            >
+              {step.label}
+            </code>
           </li>
           {idx < steps.length - 1 && (
             <li
@@ -185,17 +176,3 @@ const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
     </ol>
   </div>
 );
-
-const RefValuePill = ({ step }: { step: RefValueStep }) => {
-  const t = commitToneTokens[step.tone];
-  return (
-    <code
-      className={cn(
-        'inline-block rounded-md border px-2 py-1 text-[11px] font-mono break-all',
-        t.chip,
-      )}
-    >
-      {step.label}
-    </code>
-  );
-};

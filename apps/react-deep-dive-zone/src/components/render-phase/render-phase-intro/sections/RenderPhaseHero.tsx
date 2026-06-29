@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import {
   HeroDescription,
   HeroSection,
@@ -7,6 +5,7 @@ import {
   HeroTitle,
   HeroVisualColumn,
 } from '../../../shared/hero';
+import { SectionNote } from '../../../shared/note';
 import { TerminalBadge } from '../../../shared/terminal';
 import { RenderPhaseHeroDiagram } from '../components/RenderPhaseHeroDiagram';
 import type { RenderPhaseIntroContent } from '../content';
@@ -35,26 +34,9 @@ export const RenderPhaseHero = ({ content }: Props) => (
 
       <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
 
-      <aside
-        className={cn(
-          'mt-sm flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-[var(--term-border)] bg-[var(--term-surface)]',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-amber-100 text-amber-700 border border-amber-200/80',
-            'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
-          )}
-        >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
-          {content.callout}
-        </p>
-      </aside>
+      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />} className="mt-sm">
+        {content.callout}
+      </SectionNote>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-render-phase-intro" className="min-w-0">

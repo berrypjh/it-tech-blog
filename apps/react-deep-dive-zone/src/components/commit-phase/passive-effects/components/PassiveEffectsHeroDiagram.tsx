@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroPhase, HeroPhaseIcon, PassiveEffectsContent } from '../content';
 import { ClockIcon, EyeIcon, PencilIcon, ZapIcon } from '../icons';
 
@@ -78,7 +78,7 @@ export const PassiveEffectsHeroDiagram = ({ content, className }: Props) => {
 };
 
 const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
-  const tone: ToneKey = phase.tone === 'rose' || phase.tone === 'orange' ? 'amber' : phase.tone;
+  const tone = phase.tone;
   const t = toneTokens[tone];
   const Icon = iconMap[phase.iconName];
   return (
@@ -86,7 +86,7 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
       className={cn(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        phase.active ? cn(t.chip, t.border) : cn('border-[var(--term-border)]', t.borderHover),
+        phase.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
@@ -119,26 +119,25 @@ const ZoneTag = ({
   variant: 'sync' | 'async';
 }) => {
   const isAsync = variant === 'async';
+  const t = toneTokens.teal;
   return (
     <div
       className={cn(
         'flex items-center gap-sm rounded-lg border border-dashed px-md py-1.5',
-        isAsync
-          ? 'border-teal-300/80 bg-teal-50/40 dark:border-teal-700/70 dark:bg-teal-950/20'
-          : 'border-[var(--term-border)]',
+        isAsync ? cn(t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
       )}
       aria-hidden="true"
     >
       <span
         className={cn(
           'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
-          isAsync ? 'bg-teal-500 dark:bg-teal-400' : 'bg-[var(--term-dim)]',
+          isAsync ? t.dot : 'bg-[var(--term-dim)]',
         )}
       />
       <span
         className={cn(
           'text-xsm font-bold tracking-tight break-keep',
-          isAsync ? 'text-teal-800 dark:text-teal-100' : 'text-[var(--term-fg)]',
+          isAsync ? t.fill.text : 'text-[var(--term-fg)]',
         )}
       >
         {label.title}

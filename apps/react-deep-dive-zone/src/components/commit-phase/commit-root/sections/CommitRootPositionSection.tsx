@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, PositionStep, PositionStepIcon } from '../content';
 import {
   ArrowDownIcon,
@@ -29,28 +30,25 @@ export const CommitRootPositionSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-root-position"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="commit-root-position"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<MapIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-gradient-to-br from-white via-sky-50/25 to-teal-50/25',
-        'dark:from-[var(--term-bg)] dark:via-sky-950/15 dark:to-teal-950/15',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="mb-md flex flex-wrap items-center justify-between gap-2">
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {'// update → render → commit-root → commit sub-phases'}
         </span>
-        <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700/80 dark:text-teal-300/80 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+        <span
+          className={cn(
+            'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+            toneTokens.teal.chip,
+          )}
+        >
           5 steps
         </span>
       </header>
@@ -73,28 +71,24 @@ export const CommitRootPositionSection = ({ content }: Props) => (
 
 const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => {
   const Icon = iconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)_auto] gap-md items-start rounded-2xl border p-md',
-        step.emphasis ? cn('border-2', t.borderStrong, t.bg) : cn(t.border, 'bg-[var(--term-bg)]'),
+        'grid grid-cols-[auto_minmax(0,_1fr)_auto] gap-md items-start rounded-lg border p-md',
+        step.emphasis
+          ? cn('border-2', t.fill.border, t.fill.bg)
+          : cn(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
-          t.chipSolid,
-        )}
-      >
+      <ToneIconBox tone={step.tone}>
         <Icon className="h-5 w-5" />
-      </span>
+      </ToneIconBox>
 
       <div className="flex flex-col gap-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.textStrong)}>
+          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.emphasis && (
@@ -118,12 +112,12 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
                 key={sub}
                 className={cn(
                   'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono',
-                  commitToneTokens.violet.chip,
+                  t.chip,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block h-1 w-1 rounded-full', commitToneTokens.violet.dot)}
+                  className={cn('inline-block h-1 w-1 rounded-full', t.dot)}
                 />
                 {sub}
               </li>

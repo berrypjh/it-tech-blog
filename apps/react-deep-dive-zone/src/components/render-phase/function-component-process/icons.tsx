@@ -1,20 +1,26 @@
+import { Box, Braces, CornerDownRight, FunctionSquare, Settings, Workflow } from 'lucide-react';
+
+import type { InternalFlowStep } from './content';
+
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  Boxes as BoxesIcon,
   Braces as BracesIcon,
   CheckCircle2 as CheckCircleIcon,
-  ChevronDown as ChevronDownIcon,
   Code2 as CodeIcon,
   FileCode as FileCodeIcon,
   FunctionSquare as FunctionSquareIcon,
-  HelpCircle as HelpCircleIcon,
   Lightbulb as LightbulbIcon,
   Link as LinkIcon,
-  ListChecks as ListChecksIcon,
   PlayCircle as PlayCircleIcon,
-  Rocket as RocketIcon,
   Settings as SettingsIcon,
   Sparkles as SparklesIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';
+
+export const internalFlowIconByName: Record<InternalFlowStep['icon'], typeof Box> = {
+  fiber: FunctionSquare,
+  hooks: Settings,
+  jsx: Braces,
+  reconcile: Workflow,
+  child: CornerDownRight,
+} as const;

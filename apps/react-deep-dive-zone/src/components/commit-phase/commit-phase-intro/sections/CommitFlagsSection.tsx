@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, FlagRow } from '../content';
 import { FileCodeIcon, FlagIcon, LightbulbIcon, SparklesIcon } from '../icons';
-import { commitToneTokens } from '../palette';
 
 type Props = { content: CommitPhaseIntroContent['flags'] };
 
@@ -13,9 +14,8 @@ export const CommitFlagsSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-flags"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="commit-flags"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -46,24 +46,11 @@ const RelatedFilesCard = ({
   title: string;
   files: CommitPhaseIntroContent['flags']['relatedFiles'];
 }) => (
-  <article
-    className={cn(
-      'flex flex-col gap-md rounded-3xl border p-md sm:p-lg',
-      'border-[var(--term-border)] bg-[var(--term-bg)]',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
+  <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-          'bg-violet-100 text-violet-700 border-violet-200/80',
-          'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-        )}
-      >
+      <ToneIconBox tone="violet" size="sm">
         <FileCodeIcon className="h-4 w-4" />
-      </span>
+      </ToneIconBox>
       <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">{title}</h3>
     </header>
 
@@ -71,14 +58,11 @@ const RelatedFilesCard = ({
       {files.map((file) => (
         <li
           key={file.name}
-          className={cn(
-            'flex items-start gap-sm rounded-xl border p-sm',
-            'border-[var(--term-border)] bg-slate-50/40 dark:bg-slate-900/30',
-          )}
+          className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-sm"
         >
           <span
             aria-hidden="true"
-            className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[var(--term-border)] bg-white text-[var(--term-muted)] dark:bg-slate-950/40"
+            className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)]"
           >
             <FileCodeIcon className="h-3.5 w-3.5" />
           </span>
@@ -96,45 +80,44 @@ const RelatedFilesCard = ({
   </article>
 );
 
-const LearningPointCard = ({ title, items }: { title: string; items: string[] }) => (
-  <article
-    className={cn(
-      'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-      'border-sky-200/80 bg-sky-50/60',
-      'dark:border-sky-800/70 dark:bg-sky-950/30',
-      'shadow-[0_1px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-          'bg-sky-100 text-sky-700 border-sky-200/80',
-          'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-        )}
-      >
-        <LightbulbIcon className="h-4 w-4" />
-      </span>
-      <h3 className="text-sm sm:text-md font-bold text-sky-900 dark:text-sky-100">{title}</h3>
-    </header>
+const LearningPointCard = ({ title, items }: { title: string; items: string[] }) => {
+  const t = toneTokens.sky;
+  return (
+    <article
+      className={cn(
+        'flex flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_1px_0_var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="sky" size="sm">
+          <LightbulbIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
+      </header>
 
-    <ul className="flex flex-col gap-2">
-      {items.map((item) => (
-        <li
-          key={item}
-          className="flex items-start gap-2 text-xsm sm:text-sm leading-snug text-sky-900 dark:text-sky-100 break-keep"
-        >
-          <span
-            aria-hidden="true"
-            className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-sky-500 shrink-0"
-          />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  </article>
-);
+      <ul className="flex flex-col gap-2">
+        {items.map((item) => (
+          <li
+            key={item}
+            className={cn(
+              'flex items-start gap-2 text-xsm sm:text-sm leading-snug break-keep',
+              t.fill.text,
+            )}
+          >
+            <span
+              aria-hidden="true"
+              className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+            />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+};
 
 const FlagTableCard = ({
   title,
@@ -145,14 +128,8 @@ const FlagTableCard = ({
   rows: FlagRow[];
   bottomNote: string;
 }) => (
-  <article
-    className={cn(
-      'flex flex-col rounded-3xl border bg-[var(--term-bg)] overflow-hidden',
-      'border-[var(--term-border)]',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center justify-between gap-2 border-b border-[var(--term-border)] px-md py-sm bg-slate-50/60 dark:bg-slate-900/30">
+  <article className="flex flex-col rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
+    <header className="flex items-center justify-between gap-2 border-b border-[var(--term-border)] px-md py-sm bg-[var(--term-surface)]">
       <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono">{title}</h3>
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
         flags
@@ -165,12 +142,23 @@ const FlagTableCard = ({
       ))}
     </ul>
 
-    <footer className="flex items-start gap-2 border-t border-[var(--term-border)] px-md py-sm bg-amber-50/40 dark:bg-amber-950/20">
+    <footer
+      className={cn(
+        'flex items-start gap-2 border-t px-md py-sm',
+        toneTokens.amber.fill.border,
+        toneTokens.amber.fill.bg,
+      )}
+    >
       <SparklesIcon
         aria-hidden="true"
-        className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-700 dark:text-amber-300"
+        className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', toneTokens.amber.text)}
       />
-      <p className="text-[11px] sm:text-xsm leading-snug text-amber-800 dark:text-amber-200 break-keep">
+      <p
+        className={cn(
+          'text-[11px] sm:text-xsm leading-snug break-keep',
+          toneTokens.amber.fill.text,
+        )}
+      >
         {bottomNote}
       </p>
     </footer>
@@ -178,21 +166,15 @@ const FlagTableCard = ({
 );
 
 const FlagRowItem = ({ row }: { row: FlagRow }) => {
-  const t = commitToneTokens[row.tone];
+  const t = toneTokens[row.tone];
   return (
-    <li
-      className={cn(
-        'grid grid-cols-1 sm:grid-cols-[auto_minmax(0,_1fr)_minmax(0,_1.4fr)] items-center gap-2 px-md py-2.5',
-        'transition-colors',
-        'hover:bg-[var(--term-surface)]',
-      )}
-    >
+    <li className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,_1fr)_minmax(0,_1.4fr)] items-center gap-2 px-md py-2.5 transition-colors hover:bg-[var(--term-surface)]">
       <div className="flex items-center gap-2 min-w-0">
         <span
           aria-hidden="true"
           className={cn(
             'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
-            t.chipSolid,
+            t.chip,
           )}
         >
           <FlagIcon className="h-3.5 w-3.5" />

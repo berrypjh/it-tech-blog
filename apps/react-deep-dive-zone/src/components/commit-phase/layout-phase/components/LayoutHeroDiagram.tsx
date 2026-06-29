@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroPhase, HeroPhaseIcon, LayoutPhaseContent } from '../content';
 import { ClockIcon, DatabaseIcon, MonitorIcon, ZapIcon } from '../icons';
 
@@ -72,14 +72,14 @@ export const LayoutHeroDiagram = ({ content, className }: Props) => {
 };
 
 const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
-  const tone = phase.tone as ToneKey;
+  const tone = phase.tone;
   const t = toneTokens[tone];
   const Icon = iconMap[phase.iconName];
   return (
     <article
       className={cn(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        phase.active ? cn(t.chip, t.border) : cn('border-[var(--term-border)]', t.borderHover),
+        phase.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >

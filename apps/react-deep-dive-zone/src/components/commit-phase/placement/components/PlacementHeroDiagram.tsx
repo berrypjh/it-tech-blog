@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { HeroStep, PlacementContent } from '../content';
 import { BoxIcon, PackageOpenIcon, PlusIcon } from '../icons';
 
@@ -78,7 +78,7 @@ export const PlacementHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FlowStepRow = ({ step }: { step: HeroStep }) => {
-  const tone = step.tone as ToneKey;
+  const tone = step.tone;
   const t = toneTokens[tone];
   const Icon = stepIcon[step.kind];
   return (
@@ -87,7 +87,6 @@ const FlowStepRow = ({ step }: { step: HeroStep }) => {
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={tone} size="sm">

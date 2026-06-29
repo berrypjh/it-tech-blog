@@ -1,26 +1,46 @@
+import {
+  Flag,
+  FunctionSquare,
+  MousePointerClick,
+  Network,
+  RefreshCw,
+  Repeat2,
+  Target,
+  User,
+  Workflow,
+} from 'lucide-react';
+
+// 직접 import해서 쓰는 아이콘은 XxxIcon 별칭으로 re-export.
 export {
   ArrowDown as ArrowDownIcon,
-  ArrowLeftRight as ArrowLeftRightIcon,
-  ArrowRight as ArrowRightIcon,
-  BadgeAlert as BadgeAlertIcon,
   CheckCircle2 as CheckCircleIcon,
-  CircleDot as CircleDotIcon,
   CircleHelp as CircleHelpIcon,
   FileCode as FileCodeIcon,
-  FileText as FileTextIcon,
   Flag as FlagIcon,
   FunctionSquare as FunctionSquareIcon,
-  GitBranch as GitBranchIcon,
   Layers as LayersIcon,
-  MousePointerClick as MousePointerClickIcon,
   Network as NetworkIcon,
-  RefreshCw as RefreshIcon,
-  Repeat2 as RepeatIcon,
-  Rocket as RocketIcon,
-  Sparkles as SparklesIcon,
   Split as SplitIcon,
   Target as TargetIcon,
-  User as UserIcon,
   Workflow as WorkflowIcon,
   Zap as ZapIcon,
 } from 'lucide-react';
+
+// content의 icon 리터럴 → 컴포넌트 맵. 키는 각 타입의 리터럴 유니온과 1:1.
+export const flowIconByName = {
+  function: FunctionSquare,
+  workflow: Workflow,
+  network: Network,
+  target: Target,
+} as const;
+
+export const responsibilityIconByName = {
+  flag: Flag,
+  user: User,
+  repeat: Repeat2,
+} as const;
+
+export const contextIconByName = {
+  refresh: RefreshCw,
+  mousePointer: MousePointerClick,
+} as const;

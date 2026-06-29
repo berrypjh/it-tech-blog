@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type HeroPhaseIcon = 'database' | 'zap' | 'monitor' | 'clock';
 
@@ -10,7 +10,7 @@ export type HeroPhase = {
   subtitle: string;
   details: string[];
   iconName: HeroPhaseIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
   active?: boolean;
 };
 
@@ -21,27 +21,27 @@ export type WorkItem = {
   description: string;
   pill: string;
   iconName: WorkItemIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type TimingStep = {
   title: string;
   description: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
   active?: boolean;
 };
 
 export type TooltipStep = {
   title: string;
   description: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type GuaranteeItem = { text: string };
 
 export type PhaseStripItem = {
   label: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
   active?: boolean;
 };
 
@@ -56,21 +56,18 @@ export type LayoutPhaseContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string; line4: string };
     description: string;
-    insight: string;
     diagram: {
       title: string;
       phases: HeroPhase[];
     };
   };
   workItems: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     items: WorkItem[];
   };
   timing: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -78,7 +75,6 @@ export type LayoutPhaseContent = {
     bottomMessage: string;
   };
   tooltip: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -90,23 +86,20 @@ export type LayoutPhaseContent = {
     bottomMessage: string;
   };
   classLifecycle: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    flowSteps: { label: string; tone: CommitToneKey }[];
+    flowSteps: { label: string; tone: ToneKey }[];
     lifecycleNames: string[];
     note: string;
   };
   guarantee: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     items: GuaranteeItem[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
     info: {
@@ -114,7 +107,6 @@ export type LayoutPhaseContent = {
       filePaths: string[];
       watchLabel: string;
       watchItems: string[];
-      questionLabel: string;
       question: string;
     };
     phaseStrip: PhaseStripItem[];
@@ -122,7 +114,6 @@ export type LayoutPhaseContent = {
     insight: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -398,22 +389,19 @@ const ko: LayoutPhaseContent = {
     },
     description:
       '이 시점에는 변경된 DOM을 읽어야 하는 작업이 들어갑니다. 대표적으로 useLayoutEffect와 일부 class lifecycle이 여기에 연결됩니다.',
-    insight: 'Layout Phase는 DOM mutation 이후, 브라우저 paint 전에 실행됩니다.',
     diagram: {
       title: 'Commit Phase의 시간 흐름 (핵심 구간)',
       phases: heroPhasesKo,
     },
   },
   workItems: {
-    number: '1',
-    eyebrow: 'layout 작업 항목',
+    eyebrow: '01 · layout 작업 항목',
     title: 'Layout Phase에서 처리되는 것들',
     description: 'DOM mutation 직후, paint 전에 일어나는 작업들입니다.',
     items: workItemsKo,
   },
   timing: {
-    number: '2',
-    eyebrow: 'useLayoutEffect 타이밍',
+    eyebrow: '02 · useLayoutEffect 타이밍',
     title: 'useLayoutEffect 시점',
     description:
       'DOM이 갱신된 직후이지만 화면이 그려지기 전, 그 사이에 useLayoutEffect가 들어갑니다.',
@@ -421,8 +409,7 @@ const ko: LayoutPhaseContent = {
     bottomMessage: 'paint 전에 DOM을 읽고 보정할 수 있습니다.',
   },
   tooltip: {
-    number: '3',
-    eyebrow: '툴팁 측정',
+    eyebrow: '03 · 툴팁 측정',
     title: 'Tooltip 측정 예시',
     description: 'Layout Phase가 가장 필요한 대표 사례 — Tooltip 위치 보정입니다.',
     steps: tooltipStepsKo,
@@ -433,8 +420,7 @@ const ko: LayoutPhaseContent = {
     bottomMessage: '브라우저가 그리기 전에 올바른 위치로 보정되어 깜빡임이 없습니다.',
   },
   classLifecycle: {
-    number: '4',
-    eyebrow: '클래스 생명주기',
+    eyebrow: '04 · 클래스 생명주기',
     title: 'class lifecycle 연결',
     description: 'Class Component에서는 mutation 이후 layout 시점 lifecycle이 실행됩니다.',
     flowSteps: [
@@ -446,22 +432,19 @@ const ko: LayoutPhaseContent = {
     note: 'componentDidMount / componentDidUpdate는 commit layout 시점에 동기적으로 호출됩니다.',
   },
   guarantee: {
-    number: '5',
-    eyebrow: 'layout 보장',
+    eyebrow: '05 · layout 보장',
     title: 'Layout Phase에서 보장되는 것',
     description: '이 시점에 React가 안전하게 보장하는 4가지입니다.',
     items: guaranteeItemsKo,
   },
   checkpoint: {
-    number: '6',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '06 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
       filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
       watchLabel: '볼 것',
       watchItems: ['layout effects 진입 흐름', 'function / class 분기'],
-      questionLabel: '학습 질문',
       question: 'DOM mutation 후, paint 전 실행되는 작업은 어디에 위치할까?',
     },
     phaseStrip: phaseStripKo,
@@ -480,8 +463,7 @@ const ko: LayoutPhaseContent = {
     insight: 'layout effects는 Mutation 이후, Browser Paint 이전에 동기적으로 실행됩니다.',
   },
   quiz: {
-    number: '7',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '07 · 미니 퀴즈',
     title: '미니 퀴즈',
     question:
       '화면이 보이기 전에 DOM 크기를 읽고 즉시 위치를 보정해야 한다면 어느 effect가 적절할까?',
@@ -509,30 +491,26 @@ const en: LayoutPhaseContent = {
     },
     description:
       'This is where DOM-reading work happens. Most notably useLayoutEffect and a subset of class lifecycles plug in here.',
-    insight: 'Layout Phase runs after DOM mutation and before the browser paints.',
     diagram: {
       title: 'Time flow of the Commit Phase (key span)',
       phases: heroPhasesEn,
     },
   },
   workItems: {
-    number: '1',
-    eyebrow: 'WORK ITEMS',
+    eyebrow: '01 · WORK ITEMS',
     title: 'What gets handled in the Layout Phase',
     description: 'Work that happens right after DOM mutation, before paint.',
     items: workItemsEn,
   },
   timing: {
-    number: '2',
-    eyebrow: 'TIMING',
+    eyebrow: '02 · TIMING',
     title: 'When useLayoutEffect runs',
     description: 'Right after DOM updates but before paint — useLayoutEffect slots in between.',
     steps: timingStepsEn,
     bottomMessage: 'You can read and adjust the DOM before paint.',
   },
   tooltip: {
-    number: '3',
-    eyebrow: 'TOOLTIP MEASURE',
+    eyebrow: '03 · TOOLTIP MEASURE',
     title: 'Tooltip measurement example',
     description: 'The canonical case for the Layout Phase — Tooltip position correction.',
     steps: tooltipStepsEn,
@@ -543,8 +521,7 @@ const en: LayoutPhaseContent = {
     bottomMessage: 'Adjusted before the browser paints — no flicker.',
   },
   classLifecycle: {
-    number: '4',
-    eyebrow: 'CLASS LIFECYCLE',
+    eyebrow: '04 · CLASS LIFECYCLE',
     title: 'class lifecycle linkage',
     description: 'In Class Components, layout-tier lifecycles run after mutation.',
     flowSteps: [
@@ -556,22 +533,19 @@ const en: LayoutPhaseContent = {
     note: 'componentDidMount / componentDidUpdate are called synchronously at the commit-layout moment.',
   },
   guarantee: {
-    number: '5',
-    eyebrow: 'LAYOUT GUARANTEE',
+    eyebrow: '05 · LAYOUT GUARANTEE',
     title: 'What the Layout Phase guarantees',
     description: 'Four guarantees React makes at this point.',
     items: guaranteeItemsEn,
   },
   checkpoint: {
-    number: '6',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '06 · CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
       filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
       watchLabel: 'Watch',
       watchItems: ['Layout effects entry flow', 'function / class branching'],
-      questionLabel: 'Learning question',
       question: 'Where does the work after DOM mutation but before paint sit?',
     },
     phaseStrip: phaseStripEn,
@@ -590,8 +564,7 @@ const en: LayoutPhaseContent = {
     insight: 'Layout effects run synchronously after Mutation and before Browser Paint.',
   },
   quiz: {
-    number: '7',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '07 · MINI QUIZ',
     title: 'Mini quiz',
     question:
       'If you must read DOM size and immediately fix position before the screen appears, which effect fits?',

@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
 import { CheckCircleIcon, ListChecksIcon } from '../icons';
@@ -8,10 +8,9 @@ import { CheckCircleIcon, ListChecksIcon } from '../icons';
 type Props = { content: ReconcileChildrenContent['goal'] };
 
 export const ReconciliationGoal = ({ content }: Props) => (
-  <section id="goal" aria-labelledby="heading-goal" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="goal" aria-labelledby="heading-goal" className="space-y-md">
+    <SectionHeader
       id="goal"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecksIcon className="h-5 w-5" />}
@@ -19,25 +18,25 @@ export const ReconciliationGoal = ({ content }: Props) => (
 
     <article
       className={cn(
-        'rounded-3xl border p-md sm:p-lg bg-[var(--term-bg)]',
+        'rounded-lg border p-md sm:p-lg bg-[var(--term-bg)]',
         toneTokens.sky.border,
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
         {content.items.map((item, idx) => (
           <li
             key={item}
             className={cn(
-              'flex items-start gap-3 rounded-xl border bg-[var(--term-bg)] p-md',
+              'flex items-start gap-3 rounded-lg border bg-[var(--term-bg)] p-md',
               toneTokens.sky.border,
-              'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+              'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
             )}
           >
             <span
               aria-hidden="true"
               className={cn(
-                'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
+                'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border',
                 toneTokens.teal.chip,
               )}
             >
@@ -45,10 +44,7 @@ export const ReconciliationGoal = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0.5 min-w-0">
               <span
-                className={cn(
-                  'text-[10px] font-mono uppercase tracking-wider',
-                  toneTokens.sky.text,
-                )}
+                className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
               >
                 goal {idx + 1}
               </span>

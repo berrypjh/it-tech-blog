@@ -5,7 +5,7 @@ import { StartPageShell } from '../../shared/shell';
 
 import { FunctionComponentCodeCheckpoint } from './sections/FunctionComponentCodeCheckpoint';
 import { FunctionComponentHero } from './sections/FunctionComponentHero';
-import { FunctionComponentQuizAndCTA } from './sections/FunctionComponentQuizAndCTA';
+import { FunctionComponentQuiz } from './sections/FunctionComponentQuiz';
 import { HooksChapterConnection } from './sections/HooksChapterConnection';
 import { InternalProcessingFlow } from './sections/InternalProcessingFlow';
 import { NextChildrenExplanation } from './sections/NextChildrenExplanation';
@@ -27,7 +27,7 @@ export const FunctionComponentRenderPhasePage = ({ locale }: Props) => {
       <NextChildrenExplanation content={c.nextChildren} />
       <FunctionComponentCodeCheckpoint content={c.code} />
       <HooksChapterConnection content={c.hooksLink} />
-      <FunctionComponentQuizAndCTA quiz={c.quiz} />
+      <FunctionComponentQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

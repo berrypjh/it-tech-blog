@@ -1,113 +1,82 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { NextChapterItem, UpdateToRenderSummaryContent } from '../content';
-import {
-  BoxesIcon,
-  CheckCircleIcon,
-  CircleHelpIcon,
-  LayersIcon,
-  PenToolIcon,
-  WorkflowIcon,
-} from '../icons';
+import type { UpdateToRenderSummaryContent } from '../content';
+import { BoxesIcon, CircleHelpIcon, nextChapterIconByName } from '../icons';
 
 type Props = { content: UpdateToRenderSummaryContent['nextChapter'] };
 
-const iconMap: Record<NextChapterItem['iconName'], typeof WorkflowIcon> = {
-  workflow: WorkflowIcon,
-  penTool: PenToolIcon,
-  layers: LayersIcon,
-  checkCircle: CheckCircleIcon,
-};
+const violet = toneTokens.violet;
+const sky = toneTokens.sky;
 
 export const NextChapterPreviewSection = ({ content }: Props) => (
-  <section
-    id="next-chapter"
-    aria-labelledby="heading-next-chapter"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="section-next-chapter" aria-labelledby="heading-next-chapter" className="space-y-md">
+    <SectionHeader
       id="next-chapter"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<CircleHelpIcon className="h-5 w-5" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
-      {/* Left: question */}
+      {/* 좌: 예고 질문 */}
       <article
         className={cn(
-          'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-          'border-violet-200/80 dark:border-violet-700/70',
-          'bg-gradient-to-br from-violet-50/60 via-white to-fuchsia-50/30',
-          'dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-fuchsia-950/20',
-          'shadow-[0_2px_0_var(--term-border)]',
+          'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
+          violet.border,
         )}
       >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-14 w-14 items-center justify-center rounded-3xl',
-            'bg-violet-100 text-violet-700 border border-violet-200/80',
-            'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-          )}
-        >
-          <CircleHelpIcon className="h-7 w-7" />
-        </span>
+        <ToneIconBox tone="violet" size="md">
+          <CircleHelpIcon className="h-5 w-5" />
+        </ToneIconBox>
 
-        <p className="text-md sm:text-lg leading-relaxed text-violet-900 dark:text-violet-100 break-keep font-bold whitespace-pre-line">
+        <p className="text-md sm:text-lg leading-relaxed text-[var(--term-fg)] break-keep font-bold whitespace-pre-line">
           {content.previewQuestion}
         </p>
 
         <ul className="mt-auto flex flex-wrap gap-1.5">
-          <li className="rounded-md border border-violet-300/70 bg-white/70 px-2 py-0.5 text-[10px] font-mono text-violet-700 dark:border-violet-700/60 dark:bg-slate-950/40 dark:text-violet-200">
-            reconciler
-          </li>
-          <li className="rounded-md border border-sky-300/70 bg-white/70 px-2 py-0.5 text-[10px] font-mono text-sky-700 dark:border-sky-700/60 dark:bg-slate-950/40 dark:text-sky-200">
-            render phase
-          </li>
+          {content.tags.map((tag) => (
+            <li
+              key={tag.label}
+              className={cn(
+                'rounded-md border px-2 py-0.5 text-[10px] font-mono',
+                toneTokens[tag.tone].chip,
+              )}
+            >
+              {tag.label}
+            </li>
+          ))}
         </ul>
       </article>
 
-      {/* Right: next concepts */}
+      {/* 우: 다음 개념 */}
       <article
         className={cn(
-          'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-          'border-sky-200/80 dark:border-sky-800/70',
-          'bg-gradient-to-br from-white via-sky-50/40 to-emerald-50/25',
-          'dark:from-[var(--term-bg)] dark:via-sky-950/25 dark:to-emerald-950/20',
-          'shadow-[0_2px_0_var(--term-border)]',
+          'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
+          sky.border,
         )}
       >
         <header className="flex items-center justify-between gap-2">
-          <h3 className="text-md sm:text-lg font-bold leading-tight text-sky-900 dark:text-sky-100 break-keep">
+          <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', sky.text)}>
             {content.rightTitle}
           </h3>
-          <span
-            aria-hidden="true"
-            className={cn(
-              'inline-flex h-10 w-10 items-center justify-center rounded-2xl',
-              'bg-sky-100 text-sky-700 border border-sky-200/80',
-              'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-            )}
-          >
+          <ToneIconBox tone="sky" size="md">
             <BoxesIcon className="h-5 w-5" />
-          </span>
+          </ToneIconBox>
         </header>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {content.rightItems.map((item) => {
-            const Icon = iconMap[item.iconName];
+            const Icon = nextChapterIconByName[item.icon];
             const t = toneTokens[item.tone];
             return (
               <li
                 key={item.title}
                 className={cn(
-                  'flex flex-col gap-1 rounded-xl border-2 bg-[var(--term-bg)] p-3',
+                  'flex flex-col gap-1 rounded-md border bg-[var(--term-bg)] p-3 shadow-[0_2px_0_var(--term-border)]',
                   t.border,
-                  'shadow-[0_1px_0_var(--term-border)]',
                 )}
               >
                 <header className="flex items-center gap-2">

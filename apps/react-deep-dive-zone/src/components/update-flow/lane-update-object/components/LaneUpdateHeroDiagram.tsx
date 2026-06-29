@@ -1,30 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type {
-  HeroFlowIconName,
-  HeroFlowStep,
-  HeroSummaryPill,
-  LaneUpdateObjectContent,
-} from '../content';
-import { BracesIcon, CrosshairIcon, DatabaseIcon, HandIcon, Link2Icon, RouteIcon } from '../icons';
+import type { HeroFlowStep, LaneUpdateObjectContent } from '../content';
+import { heroFlowIconByName, heroSummaryIconByName } from '../icons';
 
 type Props = { content: LaneUpdateObjectContent['hero']; className?: string };
-
-const stepIconMap: Record<HeroFlowIconName, typeof HandIcon> = {
-  hand: HandIcon,
-  route: RouteIcon,
-  crosshair: CrosshairIcon,
-  braces: BracesIcon,
-};
-
-const summaryIconMap: Record<HeroSummaryPill['iconName'], typeof CrosshairIcon> = {
-  crosshair: CrosshairIcon,
-  database: DatabaseIcon,
-  link: Link2Icon,
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -36,19 +19,7 @@ export const LaneUpdateHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${content.flow.heading}: ${content.flow.steps.map((s) => s.label).join(' → ')}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         {content.flow.steps.map((step, idx) => (
           <li key={step.id} className="flex flex-col gap-sm">
@@ -62,14 +33,11 @@ export const LaneUpdateHeroDiagram = ({ content, className }: Props) => {
 
       <ul className="relative mt-md grid grid-cols-1 gap-2 @sm:grid-cols-3" aria-hidden="true">
         {content.summary.map((pill) => {
-          const Icon = summaryIconMap[pill.iconName];
+          const Icon = heroSummaryIconByName[pill.icon];
           return (
             <li
               key={pill.label}
-              className={cn(
-                'flex items-center gap-2 rounded-lg border px-sm py-2 min-w-0',
-                'border-[var(--term-border)] bg-[var(--term-bg)]',
-              )}
+              className="flex items-center gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2 min-w-0"
             >
               <ToneIconBox tone="teal" size="sm" className="h-7 w-7">
                 <Icon className="h-3.5 w-3.5" aria-hidden="true" />
@@ -81,20 +49,19 @@ export const LaneUpdateHeroDiagram = ({ content, className }: Props) => {
           );
         })}
       </ul>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const FlowStep = ({ step }: { step: HeroFlowStep }) => {
   const t = toneTokens[step.tone];
-  const Icon = stepIconMap[step.iconName];
+  const Icon = heroFlowIconByName[step.icon];
   return (
     <article
       className={cn(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={step.tone} size="md">
@@ -105,7 +72,7 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
           {step.label}
         </h3>
         {step.code && (
-          <code className="inline-flex w-fit items-center rounded-md border border-slate-800 bg-slate-950 px-2 py-0.5 font-mono text-[11px] text-slate-100">
+          <code className="inline-flex w-fit items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-[11px] text-[var(--term-fg)]">
             {step.code}
           </code>
         )}
@@ -121,7 +88,7 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
 
 const UpdateObjectCard = ({ step }: { step: HeroFlowStep }) => {
   const t = toneTokens[step.tone];
-  const Icon = stepIconMap[step.iconName];
+  const Icon = heroFlowIconByName[step.icon];
   const code = `const ${step.label} = {\n${(step.fields ?? [])
     .map((field) => `  ${field},`)
     .join('\n')}\n};`;

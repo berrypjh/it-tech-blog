@@ -1,10 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { CodePanel, LayoutPhaseContent, PhaseStripItem } from '../content';
-import { CodeIcon, FileCodeIcon, HelpCircleIcon, LightbulbIcon, PackageOpenIcon } from '../icons';
+import { CodeIcon, FileCodeIcon, LightbulbIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: LayoutPhaseContent['checkpoint'] };
 
@@ -14,16 +16,29 @@ export const LayoutCodeCheckpointSection = ({ content }: Props) => (
     aria-labelledby="heading-code-checkpoint"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="code-checkpoint"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<CodeIcon className="h-5 w-5" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.6fr)] gap-3">
-      <InfoCard info={content.info} />
+      <CheckpointInfoCard
+        rows={[
+          {
+            label: content.info.fileLabel,
+            icon: FileCodeIcon,
+            value: <PathList items={content.info.filePaths} mono />,
+          },
+          {
+            label: content.info.watchLabel,
+            icon: PackageOpenIcon,
+            value: <PathList items={content.info.watchItems} />,
+          },
+        ]}
+        question={content.info.question}
+      />
 
       <div className="flex flex-col gap-3 min-w-0">
         <PhaseStrip items={content.phaseStrip} />
@@ -38,116 +53,38 @@ export const LayoutCodeCheckpointSection = ({ content }: Props) => (
   </section>
 );
 
-const InfoCard = ({ info }: { info: LayoutPhaseContent['checkpoint']['info'] }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <InfoRow
-      label={info.fileLabel}
-      icon={<FileCodeIcon className="h-4 w-4" />}
-      mono
-      values={info.filePaths}
-    />
-    <InfoRow
-      label={info.watchLabel}
-      icon={<PackageOpenIcon className="h-4 w-4" />}
-      values={info.watchItems}
-    />
-    <InfoRow
-      label={info.questionLabel}
-      icon={<HelpCircleIcon className="h-4 w-4" />}
-      callout
-      values={[info.question]}
-    />
-  </article>
-);
-
-type InfoRowProps = {
-  label: string;
-  values: string[];
-  icon: React.ReactNode;
-  mono?: boolean;
-  callout?: boolean;
-};
-
-const InfoRow = ({ label, values, icon, mono, callout }: InfoRowProps) => (
-  <div className="flex flex-col gap-1.5">
-    <div className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-7 w-7 items-center justify-center rounded-md border',
-          'bg-sky-50 text-sky-700 border-sky-200/80',
-          'dark:bg-sky-950/60 dark:text-sky-200 dark:border-sky-800/60',
-        )}
-      >
-        {icon}
-      </span>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-        {label}
-      </span>
-    </div>
-    {callout ? (
-      <p
-        className={cn(
-          'rounded-xl border-2 p-sm text-xsm sm:text-sm leading-relaxed break-keep',
-          'border-sky-200/80 bg-sky-50/70 text-sky-900',
-          'dark:border-sky-800/70 dark:bg-sky-950/40 dark:text-sky-100',
-        )}
-      >
-        {values[0]}
-      </p>
-    ) : (
-      <ul className="flex flex-col gap-1">
-        {values.map((v) => (
-          <li key={v}>
-            <code
-              className={cn(
-                'block rounded-md border bg-slate-50/60 px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
-                'border-[var(--term-border)] dark:bg-slate-900/40',
-                mono && 'font-mono font-bold',
-              )}
-            >
-              {v}
-            </code>
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
+const PathList = ({ items, mono }: { items: string[]; mono?: boolean }) => (
+  <ul className="flex flex-col gap-1">
+    {items.map((v) => (
+      <li key={v}>
+        <code
+          className={cn(
+            'block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
+            mono && 'font-mono font-bold',
+          )}
+        >
+          {v}
+        </code>
+      </li>
+    ))}
+  </ul>
 );
 
 const PhaseStrip = ({ items }: { items: PhaseStripItem[] }) => (
-  <article
-    className={cn(
-      'flex flex-wrap items-center gap-1.5 rounded-2xl border bg-[var(--term-bg)] p-sm',
-      'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
-    )}
-  >
+  <article className="flex flex-wrap items-center gap-1.5 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-sm shadow-[0_1px_0_var(--term-border)]">
     <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold mr-1">
       commit phase strip
     </span>
     {items.map((item, idx) => {
-      const t = commitToneTokens[item.tone];
+      const t = toneTokens[item.tone];
       return (
         <div key={item.label} className="flex items-center gap-1.5">
           <span
             className={cn(
-              'inline-flex items-center gap-1 rounded-md border px-2 py-0.5',
-              'text-[10px] font-mono uppercase tracking-wider',
+              'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
               item.active
-                ? cn(
-                    'border-2',
-                    t.borderStrong,
-                    t.bg,
-                    t.textStrong,
-                    'font-bold',
-                    'ring-2 ring-teal-300/40 dark:ring-teal-500/30',
-                  )
-                : 'border-[var(--term-border)] bg-slate-50/40 text-[var(--term-muted)] dark:bg-slate-900/30',
+                ? cn('border-2', t.fill.border, t.fill.bg, t.fill.text, 'font-bold')
+                : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
             )}
           >
             <span
@@ -176,7 +113,12 @@ const CodeCard = ({ panel }: { panel: CodePanel }) => (
       <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono break-keep">
         {panel.title}
       </h3>
-      <span className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+      <span
+        className={cn(
+          'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+          toneTokens.teal.chip,
+        )}
+      >
         <FileCodeIcon aria-hidden="true" className="h-3 w-3" />
         {panel.fileLabel}
       </span>
@@ -190,22 +132,20 @@ const CodeCard = ({ panel }: { panel: CodePanel }) => (
 const InsightBar = ({ text }: { text: string }) => (
   <aside
     className={cn(
-      'flex items-start gap-sm rounded-2xl border-2 p-md',
-      'border-teal-200/80 bg-teal-50/70',
-      'dark:border-teal-800/70 dark:bg-teal-950/30',
+      'flex items-start gap-sm rounded-lg border-2 p-md',
+      toneTokens.teal.fill.border,
+      toneTokens.teal.fill.bg,
     )}
   >
-    <span
-      aria-hidden="true"
+    <ToneIconBox tone="teal" size="sm" className="mt-0.5 shrink-0">
+      <LightbulbIcon className="h-4 w-4" />
+    </ToneIconBox>
+    <p
       className={cn(
-        'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-        'bg-teal-100 text-teal-700 border border-teal-200/80',
-        'dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
+        'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
+        toneTokens.teal.fill.text,
       )}
     >
-      <LightbulbIcon className="h-4 w-4" />
-    </span>
-    <p className="text-xsm sm:text-sm leading-relaxed text-teal-900 dark:text-teal-100 break-keep font-bold">
       {text}
     </p>
   </aside>

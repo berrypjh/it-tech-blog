@@ -1,6 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { NextChapterCard, PassiveEffectsContent } from '../content';
 import { LayersIcon, SparklesIcon, SquareCheckIcon, TrophyIcon } from '../icons';
 
@@ -11,6 +13,9 @@ type Props = {
 
 export const FinalChecklistSection = ({ checklist, nextChapter }: Props) => (
   <section id="final" className="space-y-md scroll-mt-xl">
+    <h2 id="heading-final" className="sr-only">
+      final checklist and next chapter preview
+    </h2>
     <ChecklistBlock checklist={checklist} />
     <NextChapterBlock nextChapter={nextChapter} />
   </section>
@@ -18,9 +23,8 @@ export const FinalChecklistSection = ({ checklist, nextChapter }: Props) => (
 
 const ChecklistBlock = ({ checklist }: { checklist: PassiveEffectsContent['checklist'] }) => (
   <div className="space-y-md">
-    <SectionBadgeHeader
+    <SectionHeader
       id="final-checklist"
-      number={checklist.number}
       eyebrow={checklist.eyebrow}
       title={checklist.title}
       description={checklist.description}
@@ -28,13 +32,7 @@ const ChecklistBlock = ({ checklist }: { checklist: PassiveEffectsContent['check
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.4fr)_minmax(0,_0.6fr)] gap-3">
-      <article
-        className={cn(
-          'rounded-3xl border p-md sm:p-lg',
-          'border-[var(--term-border)] bg-[var(--term-bg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
+      <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {checklist.items.map((item, idx) => (
             <li key={item}>
@@ -50,19 +48,14 @@ const ChecklistBlock = ({ checklist }: { checklist: PassiveEffectsContent['check
 );
 
 const ChecklistItem = ({ text, index }: { text: string; index: number }) => (
-  <div
-    className={cn(
-      'flex items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
-      'border-[var(--term-border)]',
-      'transition-colors hover:bg-[var(--term-surface)]',
-    )}
-  >
+  <div className="flex items-start gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-sm transition-colors hover:bg-[var(--term-surface)]">
     <span
       aria-hidden="true"
       className={cn(
         'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2',
-        'border-teal-300/80 bg-white text-teal-700',
-        'dark:border-teal-700/70 dark:bg-slate-950 dark:text-teal-200',
+        toneTokens.teal.fill.bg,
+        toneTokens.teal.fill.border,
+        toneTokens.teal.fill.text,
       )}
     >
       <SquareCheckIcon className="h-3.5 w-3.5" />
@@ -76,30 +69,34 @@ const ChecklistItem = ({ text, index }: { text: string; index: number }) => (
   </div>
 );
 
-const TrophyCard = ({ text }: { text: string }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col items-center justify-center gap-md rounded-3xl border-2 p-md sm:p-lg text-center',
-      'border-amber-300/80 bg-amber-50/70',
-      'dark:border-amber-700/70 dark:bg-amber-950/30',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <span
-      aria-hidden="true"
+const TrophyCard = ({ text }: { text: string }) => {
+  const t = toneTokens.amber;
+  return (
+    <article
       className={cn(
-        'inline-flex h-14 w-14 items-center justify-center rounded-2xl border-2',
-        'bg-amber-100 text-amber-700 border-amber-200/80',
-        'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
+        'flex h-full flex-col items-center justify-center gap-md rounded-lg border-2 p-md sm:p-lg text-center',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <TrophyIcon className="h-7 w-7" />
-    </span>
-    <p className="text-sm sm:text-md leading-relaxed text-amber-900 dark:text-amber-100 font-bold break-keep">
-      {text}
-    </p>
-  </article>
-);
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex h-14 w-14 items-center justify-center rounded-lg border-2',
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
+        )}
+      >
+        <TrophyIcon className="h-7 w-7" />
+      </span>
+      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+        {text}
+      </p>
+    </article>
+  );
+};
 
 const NextChapterBlock = ({
   nextChapter,
@@ -107,9 +104,8 @@ const NextChapterBlock = ({
   nextChapter: PassiveEffectsContent['nextChapter'];
 }) => (
   <div className="space-y-md">
-    <SectionBadgeHeader
+    <SectionHeader
       id="next-chapter"
-      number={nextChapter.number}
       eyebrow={nextChapter.eyebrow}
       title={nextChapter.title}
       icon={<SparklesIcon className="h-5 w-5" />}
@@ -122,35 +118,29 @@ const NextChapterBlock = ({
   </div>
 );
 
-const IntroCard = ({ intro, chapterTitle }: { intro: string; chapterTitle: string }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
-      'border-violet-200/80 bg-violet-50/60',
-      'dark:border-violet-800/70 dark:bg-violet-950/30',
-      'shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-11 w-11 items-center justify-center rounded-2xl border',
-          'bg-violet-100 text-violet-700 border-violet-200/80',
-          'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-        )}
-      >
-        <LayersIcon className="h-5 w-5" />
-      </span>
-      <h3 className="text-sm sm:text-md font-bold text-violet-900 dark:text-violet-100 break-keep">
-        {chapterTitle}
-      </h3>
-    </header>
-    <p className="text-xsm sm:text-sm leading-relaxed text-violet-900 dark:text-violet-100 break-keep">
-      {intro}
-    </p>
-  </article>
-);
+const IntroCard = ({ intro, chapterTitle }: { intro: string; chapterTitle: string }) => {
+  const t = toneTokens.violet;
+  return (
+    <article
+      className={cn(
+        'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
+        t.fill.border,
+        t.fill.bg,
+        'shadow-[0_2px_0_var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="violet">
+          <LayersIcon className="h-5 w-5" />
+        </ToneIconBox>
+        <h3 className={cn('text-sm sm:text-md font-bold break-keep', t.fill.text)}>
+          {chapterTitle}
+        </h3>
+      </header>
+      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{intro}</p>
+    </article>
+  );
+};
 
 const NextChapterCards = ({ cards }: { cards: NextChapterCard[] }) => (
   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -162,33 +152,33 @@ const NextChapterCards = ({ cards }: { cards: NextChapterCard[] }) => (
   </ul>
 );
 
-const NextChapterCardView = ({ card, index }: { card: NextChapterCard; index: number }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-1 rounded-2xl border bg-[var(--term-bg)] p-md',
-      'border-violet-200/70 dark:border-violet-800/60',
-      'shadow-[0_1px_0_var(--term-border)]',
-      'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-      'hover:border-violet-400/70 dark:hover:border-violet-500/60',
-    )}
-  >
-    <header className="flex items-center justify-between gap-2">
-      <code className="text-xsm sm:text-sm font-bold font-mono text-violet-800 dark:text-violet-100 break-all">
-        {card.title}
-      </code>
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-6 w-6 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
-          'bg-violet-50 text-violet-700 border-violet-200/80',
-          'dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-        )}
-      >
-        {String(index).padStart(2, '0')}
-      </span>
-    </header>
-    <p className="text-[11px] sm:text-xsm leading-snug text-violet-700 dark:text-violet-300 break-keep">
-      {card.subtitle}
-    </p>
-  </article>
-);
+const NextChapterCardView = ({ card, index }: { card: NextChapterCard; index: number }) => {
+  const t = toneTokens.violet;
+  return (
+    <article
+      className={cn(
+        'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-md',
+        t.border,
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+      )}
+    >
+      <header className="flex items-center justify-between gap-2">
+        <code className={cn('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}>
+          {card.title}
+        </code>
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex h-6 w-6 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
+            t.chip,
+          )}
+        >
+          {String(index).padStart(2, '0')}
+        </span>
+      </header>
+      <p className={cn('text-[11px] sm:text-xsm leading-snug break-keep', t.text)}>
+        {card.subtitle}
+      </p>
+    </article>
+  );
+};

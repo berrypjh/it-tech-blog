@@ -1,46 +1,42 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReconcileChildrenContent } from '../content';
-import { BoxIcon, FileTextIcon, ListChecksIcon, NetworkIcon } from '../icons';
+import { inputIconByName, ListChecksIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['inputs'] };
 
-const iconMap = {
-  tree: NetworkIcon,
-  cube: BoxIcon,
-  fileText: FileTextIcon,
-} as const;
-
 export const ReconcileChildrenInputs = ({ content }: Props) => (
-  <section id="inputs" aria-labelledby="heading-inputs" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="inputs" aria-labelledby="heading-inputs" className="space-y-md">
+    <SectionHeader
       id="inputs"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecksIcon className="h-5 w-5" />}
     />
 
-    <ol className="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, idx) => (
         <Card key={card.title} card={card} index={idx + 1} />
       ))}
-    </ol>
+    </ul>
   </section>
 );
 
 const Card = ({ card, index }: { card: InputCard; index: number }) => {
-  const Icon = iconMap[card.iconName];
-  const tone = card.tone as ToneKey;
+  const Icon = inputIconByName[card.icon];
   return (
-    <ToneCardItem tone={tone} icon={<Icon className="h-5 w-5" />} topRight={index}>
+    <ToneCardItem
+      tone={card.tone}
+      icon={<Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />}
+      topRight={index}
+    >
       <h3
         className={cn(
           'font-mono text-md font-bold tracking-tight break-keep',
-          toneTokens[tone].text,
+          toneTokens[card.tone].text,
         )}
       >
         {card.title}
@@ -48,7 +44,7 @@ const Card = ({ card, index }: { card: InputCard; index: number }) => {
       <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
         {card.description}
       </p>
-      <p className="mt-auto text-[10px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
+      <p className="mt-auto text-xsm leading-snug text-[var(--term-muted)] break-keep">
         {card.detail}
       </p>
     </ToneCardItem>

@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DispatchResponsibilityIconName, DispatchSetStateEntryContent } from '../content';
-import { BoxIcon, FunctionSquareIcon, TargetIcon, ZapIcon } from '../icons';
+import type { DispatchSetStateEntryContent } from '../content';
+import { FunctionSquareIcon, responsibilityIconByName } from '../icons';
 
 type Props = { content: DispatchSetStateEntryContent['responsibilities'] };
 
-const iconMap: Record<DispatchResponsibilityIconName, typeof BoxIcon> = {
-  target: TargetIcon,
-  box: BoxIcon,
-  zap: ZapIcon,
-};
-
 export const DispatchResponsibilitiesSection = ({ content }: Props) => (
   <section
-    id="responsibilities"
+    id="section-responsibilities"
     aria-labelledby="heading-responsibilities"
-    className="space-y-md scroll-mt-xl"
+    className="space-y-md"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="responsibilities"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -31,7 +24,7 @@ export const DispatchResponsibilitiesSection = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = responsibilityIconByName[card.icon];
 
         return (
           <ToneCardItem
@@ -49,14 +42,9 @@ export const DispatchResponsibilitiesSection = ({ content }: Props) => (
               {card.title}
             </h3>
 
-            <pre className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 font-mono text-xxsm sm:text-xsm leading-snug text-slate-100">
+            <pre className="overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2 font-mono text-xxsm sm:text-xsm leading-snug text-[var(--term-fg)]">
               <code>{card.code}</code>
             </pre>
-
-            <span
-              aria-hidden="true"
-              className="block h-px w-full bg-gradient-to-r from-transparent via-[var(--term-border)] to-transparent"
-            />
 
             <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
               {card.body}

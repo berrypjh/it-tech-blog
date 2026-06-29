@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, UpdateToRenderSummaryContent } from '../content';
-import { flowIconMap } from '../sections/SummaryHero';
+import { flowIconByName } from '../icons';
 
 type Props = { content: UpdateToRenderSummaryContent['hero']; className?: string };
 
@@ -17,21 +18,9 @@ export const SummaryHeroDiagram = ({ content, className }: Props) => {
   const a11y = `${title}: ${steps.map((s) => `${s.number}. ${s.title}`).join(' → ')}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <header className="relative mb-md flex items-center justify-between gap-2" aria-hidden="true">
-        <h2 className="text-sm font-bold leading-tight text-[var(--term-fg)]">{title}</h2>
+        <span className="text-sm font-bold leading-tight text-[var(--term-fg)]">{title}</span>
         <span className="shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
           {steps.length} steps
         </span>
@@ -45,22 +34,20 @@ export const SummaryHeroDiagram = ({ content, className }: Props) => {
           </li>
         ))}
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const StepRow = ({ step }: { step: FlowStep }) => {
   const tone = toneTokens[step.tone];
-  const Icon = flowIconMap[step.iconName];
+  const Icon = flowIconByName[step.icon];
 
   return (
     <article
       className={cn(
         'flex min-w-0 items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        step.final
-          ? cn(tone.chip, tone.border)
-          : cn('border-[var(--term-border)]', tone.borderHover),
+        step.final ? cn(tone.chip, tone.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={step.tone} size="sm">

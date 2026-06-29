@@ -3,8 +3,8 @@ import { Fragment } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, CodeIcon } from '../icons';
 
@@ -16,19 +16,18 @@ export const PassiveEffectExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-passive-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="passive-example"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<CodeIcon className="h-5 w-5" />}
     />
 
-    <article className="flex flex-col gap-3 min-w-0">
+    <div className="flex flex-col gap-3 min-w-0">
       <CodeArea code={content.code} />
       <ExecutionFlow steps={content.flowSteps} />
-    </article>
+    </div>
   </section>
 );
 
@@ -38,7 +37,12 @@ const CodeArea = ({ code }: { code: string }) => (
       <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono break-keep">
         useEffect example
       </h3>
-      <span className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+      <span
+        className={cn(
+          'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+          toneTokens.teal.chip,
+        )}
+      >
         tsx
       </span>
     </header>
@@ -49,18 +53,17 @@ const CodeArea = ({ code }: { code: string }) => (
 );
 
 const ExecutionFlow = ({ steps }: { steps: PassiveEffectsContent['example']['flowSteps'] }) => (
-  <article
-    className={cn(
-      'rounded-2xl border p-md',
-      'border-[var(--term-border)] bg-gradient-to-r from-sky-50/40 via-white to-teal-50/40',
-      'dark:from-sky-950/15 dark:via-[var(--term-bg)] dark:to-teal-950/15',
-    )}
-  >
-    <header className="mb-sm flex items-center justify-between">
+  <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md shadow-[0_1px_0_var(--term-border)]">
+    <header className="mb-sm flex flex-wrap items-center justify-between gap-2">
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
         execution flow
       </span>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+      <span
+        className={cn(
+          'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+          toneTokens.teal.chip,
+        )}
+      >
         commit → paint → flush
       </span>
     </header>
@@ -92,16 +95,16 @@ const FlowPill = ({
   label: string;
   tone: PassiveEffectsContent['example']['flowSteps'][number]['tone'];
 }) => {
-  const t = commitToneTokens[tone];
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col items-center justify-center gap-1 rounded-2xl border-2 p-sm sm:p-md text-center',
-        t.borderStrong,
-        t.bg,
+        'flex h-full flex-col items-center justify-center gap-1 rounded-lg border-2 p-sm sm:p-md text-center',
+        t.fill.border,
+        t.fill.bg,
       )}
     >
-      <code className={cn('text-xsm sm:text-sm font-mono font-bold break-keep', t.textStrong)}>
+      <code className={cn('text-xsm sm:text-sm font-mono font-bold break-keep', t.fill.text)}>
         {label}
       </code>
     </article>

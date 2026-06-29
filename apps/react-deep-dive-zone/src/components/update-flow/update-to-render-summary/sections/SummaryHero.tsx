@@ -7,42 +7,9 @@ import {
 } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import { SummaryHeroDiagram } from '../components/SummaryHeroDiagram';
-import type { FlowStepIconName, UpdateToRenderSummaryContent } from '../content';
-import {
-  CheckCircleIcon,
-  CircleHelpIcon,
-  ClockIcon,
-  CodeIcon,
-  DatabaseIcon,
-  FlagIcon,
-  GitBranchIcon,
-  HourglassIcon,
-  MousePointerClickIcon,
-  PanelsTopLeftIcon,
-  SearchIcon,
-  ServerIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
+import type { UpdateToRenderSummaryContent } from '../content';
 
 type Props = { content: UpdateToRenderSummaryContent['hero'] };
-
-export const flowIconMap: Record<FlowStepIconName, typeof MousePointerClickIcon> = {
-  mousePointer: MousePointerClickIcon,
-  code: CodeIcon,
-  workflow: WorkflowIcon,
-  search: SearchIcon,
-  panels: PanelsTopLeftIcon,
-  server: ServerIcon,
-  circleHelp: CircleHelpIcon,
-  database: DatabaseIcon,
-  gitBranch: GitBranchIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
-  checkCircle: CheckCircleIcon,
-  clock: ClockIcon,
-  hourglass: HourglassIcon,
-};
 
 export const SummaryHero = ({ content }: Props) => (
   <HeroSection

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent, WhatChangedItem } from '../content';
 import { ArrowDownIcon, CheckCircleIcon, LockIcon, PencilIcon, ReplaceIcon } from '../icons';
 
@@ -13,9 +14,8 @@ export const UpdateBeforeAfterSection = ({ content }: Props) => (
     aria-labelledby="heading-before-after"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="before-after"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -53,13 +53,12 @@ const BeforeAfterCard = ({
   variant: 'before' | 'after';
 }) => {
   const isAfter = variant === 'after';
+  const t = toneTokens.sky;
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
-        isAfter
-          ? 'border-sky-300/80 dark:border-sky-700/70'
-          : 'border-slate-300/70 dark:border-slate-700/60',
+        'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
+        isAfter ? t.fill.border : 'border-[var(--term-border)]',
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -67,7 +66,7 @@ const BeforeAfterCard = ({
         <h3
           className={cn(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isAfter ? 'text-sky-700 dark:text-sky-300' : 'text-slate-700 dark:text-slate-200',
+            isAfter ? t.text : 'text-[var(--term-fg)]',
           )}
         >
           {title}
@@ -76,8 +75,8 @@ const BeforeAfterCard = ({
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             isAfter
-              ? 'border-sky-200/80 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200'
-              : 'border-slate-200/80 bg-slate-50 text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200',
+              ? t.chip
+              : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
           )}
         >
           {isAfter ? 'after' : 'before'}
@@ -90,10 +89,10 @@ const BeforeAfterCard = ({
         </span>
         <pre
           className={cn(
-            'overflow-x-auto rounded-lg border p-sm text-[11px] sm:text-xsm leading-snug font-mono',
+            'overflow-x-auto rounded-md border p-sm text-[11px] sm:text-xsm leading-snug font-mono',
             isAfter
-              ? 'border-sky-200/60 bg-sky-50/50 text-sky-900 dark:border-sky-800/50 dark:bg-sky-950/25 dark:text-sky-100'
-              : 'border-slate-200/60 bg-slate-50/50 text-slate-900 dark:border-slate-700/50 dark:bg-slate-900/30 dark:text-slate-100',
+              ? cn(t.fill.border, t.fill.bg, t.fill.text)
+              : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           )}
         >
           <code>{dom}</code>
@@ -106,18 +105,18 @@ const BeforeAfterCard = ({
         </span>
         <div
           className={cn(
-            'flex items-center justify-center rounded-lg border px-3 py-3',
+            'flex items-center justify-center rounded-md border px-3 py-3',
             isAfter
-              ? 'border-sky-200/80 bg-sky-100/60 dark:border-sky-800/60 dark:bg-sky-950/40'
-              : 'border-slate-200/80 bg-white dark:border-slate-700/60 dark:bg-slate-950/40',
+              ? cn(t.fill.border, t.fill.bg)
+              : 'border-[var(--term-border)] bg-[var(--term-surface)]',
           )}
         >
           <span
             className={cn(
               'inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-bold',
               isAfter
-                ? 'border-sky-400/80 bg-sky-500 text-white opacity-90 dark:border-sky-500/70 dark:bg-sky-600 dark:text-white'
-                : 'border-slate-300 bg-white text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100',
+                ? cn(t.fill.bg, t.fill.border, t.fill.text)
+                : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}
           >
             {isAfter && <LockIcon aria-hidden="true" className="h-3.5 w-3.5" />}
@@ -156,27 +155,21 @@ const MiniStep = ({
   title: string;
   note: string;
   icon: React.ReactNode;
-  tone: 'sky' | 'blue';
+  tone: ToneKey;
 }) => {
-  const t = commitToneTokens[tone];
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
-        'flex flex-col items-center gap-0.5 rounded-xl border-2 px-sm py-1.5 text-center',
-        t.borderStrong,
-        t.bg,
+        'flex flex-col items-center gap-0.5 rounded-lg border-2 px-sm py-1.5 text-center',
+        t.fill.border,
+        t.fill.bg,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-7 w-7 items-center justify-center rounded-md border',
-          t.chipSolid,
-        )}
-      >
+      <ToneIconBox tone={tone} size="sm">
         {icon}
-      </span>
-      <span className={cn('text-xsm font-bold break-keep', t.textStrong)}>{title}</span>
+      </ToneIconBox>
+      <span className={cn('text-xsm font-bold break-keep', t.fill.text)}>{title}</span>
       <span className="text-[10px] font-mono leading-snug text-[var(--term-muted)] break-keep">
         {note}
       </span>
@@ -184,49 +177,45 @@ const MiniStep = ({
   );
 };
 
-const WhatChangedCard = ({ title, items }: { title: string; items: WhatChangedItem[] }) => (
-  <article
-    className={cn(
-      'flex h-full flex-col gap-md rounded-3xl border-2 p-md',
-      'border-teal-200/80 bg-teal-50/50',
-      'dark:border-teal-800/70 dark:bg-teal-950/25',
-      'shadow-[0_1px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-          'bg-teal-100 text-teal-700 border-teal-200/80',
-          'dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
-        )}
-      >
-        <CheckCircleIcon className="h-4 w-4" />
-      </span>
-      <h3 className="text-sm font-bold text-teal-900 dark:text-teal-100 break-keep">{title}</h3>
-    </header>
+const WhatChangedCard = ({ title, items }: { title: string; items: WhatChangedItem[] }) => {
+  const card = toneTokens.teal;
+  return (
+    <article
+      className={cn(
+        'flex h-full flex-col gap-md rounded-lg border-2 p-md',
+        card.fill.border,
+        card.fill.bg,
+        'shadow-[0_1px_0_var(--term-border)]',
+      )}
+    >
+      <header className="flex items-center gap-2">
+        <ToneIconBox tone="teal" size="sm">
+          <CheckCircleIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <h3 className={cn('text-sm font-bold break-keep', card.fill.text)}>{title}</h3>
+      </header>
 
-    <ul className="flex flex-col gap-2">
-      {items.map((item) => {
-        const t = commitToneTokens[item.tone];
-        return (
-          <li key={item.text} className="flex items-start gap-2">
-            <span
-              aria-hidden="true"
-              className={cn(
-                'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border',
-                t.chipSolid,
-              )}
-            >
-              <CheckCircleIcon className="h-3 w-3" />
-            </span>
-            <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
-              {item.text}
-            </span>
-          </li>
-        );
-      })}
-    </ul>
-  </article>
-);
+      <ul className="flex flex-col gap-2">
+        {items.map((item) => {
+          const t = toneTokens[item.tone];
+          return (
+            <li key={item.text} className="flex items-start gap-2">
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border',
+                  t.chip,
+                )}
+              >
+                <CheckCircleIcon className="h-3 w-3" />
+              </span>
+              <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
+                {item.text}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </article>
+  );
+};

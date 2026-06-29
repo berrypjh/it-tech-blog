@@ -1,22 +1,40 @@
+import {
+  Database,
+  FileText,
+  Flag,
+  FunctionSquare,
+  Network,
+  Settings,
+  SquareDashed,
+  Workflow,
+} from 'lucide-react';
+
+// 직접 import해서 쓰는 아이콘은 XxxIcon 별칭으로 re-export.
 export {
-  ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  Box as BoxIcon,
-  CircleHelp as CircleHelpIcon,
-  Code2 as CodeIcon,
   Database as DatabaseIcon,
   FileCode as FileCodeIcon,
-  FileText as FileTextIcon,
-  Flag as FlagIcon,
   FunctionSquare as FunctionSquareIcon,
-  GitBranch as GitBranchIcon,
   Layers as LayersIcon,
   Lightbulb as LightbulbIcon,
-  Link2 as Link2Icon,
   Network as NetworkIcon,
-  Rocket as RocketIcon,
   Settings as SettingsIcon,
   Sparkles as SparklesIcon,
-  SquareDashed as SquareDashedIcon,
   Workflow as WorkflowIcon,
 } from 'lucide-react';
+
+// content의 icon 리터럴 → 컴포넌트 맵. 키는 각 타입의 리터럴 유니온과 1:1.
+export const elementIconByName = {
+  squareDashed: SquareDashed,
+  database: Database,
+  fileText: FileText,
+  flag: Flag,
+  settings: Settings,
+} as const;
+
+export const flowIconByName = {
+  function: FunctionSquare,
+  workflow: Workflow,
+  database: Database,
+  network: Network,
+} as const;

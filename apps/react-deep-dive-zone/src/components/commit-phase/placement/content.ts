@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type HeroStepKind = 'fiber' | 'parent' | 'insert';
 
@@ -8,7 +8,7 @@ export type HeroStep = {
   kind: HeroStepKind;
   title: string;
   caption: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type ReviewStepIcon = 'eye' | 'flag';
@@ -16,7 +16,7 @@ export type ReviewStepIcon = 'eye' | 'flag';
 export type ReviewStep = {
   title: string;
   iconName: ReviewStepIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type FlowStepIcon = 'flag' | 'target' | 'crosshair' | 'plus';
@@ -25,7 +25,7 @@ export type FlowStep = {
   title: string;
   description?: string;
   iconName: FlowStepIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type DomStage = {
@@ -38,7 +38,7 @@ export type DomStage = {
 export type HostBullet = {
   label: string;
   value: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type PlacementContent = {
@@ -46,8 +46,6 @@ export type PlacementContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    insightLabel: string;
-    insight: string;
     diagram: {
       title: string;
       bottomLabel: string;
@@ -55,7 +53,6 @@ export type PlacementContent = {
     };
   };
   review: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -63,7 +60,6 @@ export type PlacementContent = {
     bottomNote: string;
   };
   commitFlow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -72,7 +68,6 @@ export type PlacementContent = {
     domStages: DomStage[];
   };
   hostParent: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -82,7 +77,6 @@ export type PlacementContent = {
     bullets: HostBullet[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
     info: {
@@ -90,7 +84,6 @@ export type PlacementContent = {
       filePath: string;
       watchLabel: string;
       watchValue: string;
-      questionLabel: string;
       question: string;
     };
     code: {
@@ -101,7 +94,6 @@ export type PlacementContent = {
     rightComments: string[];
   };
   example: {
-    number: string;
     eyebrow: string;
     title: string;
     beforeTitle: string;
@@ -114,7 +106,6 @@ export type PlacementContent = {
     newBadge: string;
   };
   quiz: {
-    number: string;
     eyebrow: string;
     title: string;
     question: string;
@@ -278,8 +269,6 @@ const ko: PlacementContent = {
     },
     description:
       '새 Fiber가 생겼다고 곧바로 DOM에 나타나는 것은 아닙니다. Commit Phase가 와야 적절한 부모와 위치를 찾아 실제 host node가 삽입됩니다.',
-    insightLabel: '핵심 한 줄 요약',
-    insight: '표시는 Render에서, 실제 삽입은 Commit에서.',
     diagram: {
       title: '새 Fiber가 실제 DOM에 삽입되는 과정',
       bottomLabel: '정확한 위치에 삽입',
@@ -287,8 +276,7 @@ const ko: PlacementContent = {
     },
   },
   review: {
-    number: '1',
-    eyebrow: 'Placement flag 복습',
+    eyebrow: '01 · Placement flag 복습',
     title: 'Placement flag가 생기는 순간 복습',
     description:
       'Render Phase에서 새 child가 생기는 그 순간을 다시 짚어봅니다. 이 단계의 결과물은 flag일 뿐, 실제 DOM 변경은 아직 일어나지 않았습니다.',
@@ -296,8 +284,7 @@ const ko: PlacementContent = {
     bottomNote: '표시는 Render에서, 실제 삽입은 Commit에서.',
   },
   commitFlow: {
-    number: '2',
-    eyebrow: '삽입 흐름',
+    eyebrow: '02 · 삽입 흐름',
     title: 'Commit 단계의 삽입 흐름',
     description:
       'Mutation 단계에서 Placement flag를 만난 React는 부모와 위치를 차례로 찾고, 실제 host operation을 실행합니다.',
@@ -306,8 +293,7 @@ const ko: PlacementContent = {
     domStages: domStagesKo,
   },
   hostParent: {
-    number: '3',
-    eyebrow: 'host 부모·형제',
+    eyebrow: '03 · host 부모와 형제',
     title: 'host parent / host sibling 탐색',
     description: 'Fiber tree를 따라 가장 가까운 host parent와 host sibling을 찾습니다.',
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
@@ -321,15 +307,13 @@ const ko: PlacementContent = {
     bullets: hostBulletsKo,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
       filePath: 'ReactFiberCommitHostEffects.js',
       watchLabel: '볼 것',
       watchValue: 'placement 관련 host mutation 로직',
-      questionLabel: '학습 질문',
       question: '새 host node는 어느 부모 아래 어느 위치에 들어갈까?',
     },
     code: {
@@ -345,8 +329,7 @@ const ko: PlacementContent = {
     ],
   },
   example: {
-    number: '5',
-    eyebrow: '쉬운 예시',
+    eyebrow: '05 · 쉬운 예시',
     title: '쉬운 리스트 추가 예시',
     beforeTitle: '이전 렌더 결과 (DOM)',
     beforeCode: beforeDomCode,
@@ -358,8 +341,7 @@ const ko: PlacementContent = {
     newBadge: 'NEW',
   },
   quiz: {
-    number: '6',
-    eyebrow: '미니 퀴즈',
+    eyebrow: '06 · 미니 퀴즈',
     title: '미니 퀴즈',
     question: 'Placement flag가 표시된 순간 사용자가 이미 화면에서 새 노드를 볼 수 있을까?',
     answer: '아니다. Commit Phase의 host placement가 끝나야 보인다.',
@@ -384,8 +366,6 @@ const en: PlacementContent = {
     },
     description:
       'A new Fiber does not immediately appear in the DOM. The Commit Phase needs to find the right parent and position before the host node is actually inserted.',
-    insightLabel: 'one-line summary',
-    insight: 'Marks come from Render. The real insert happens in Commit.',
     diagram: {
       title: 'How a new Fiber becomes a real DOM node',
       bottomLabel: 'inserted at the exact spot',
@@ -393,8 +373,7 @@ const en: PlacementContent = {
     },
   },
   review: {
-    number: '1',
-    eyebrow: 'PLACEMENT FLAG',
+    eyebrow: '01 · PLACEMENT FLAG',
     title: 'Recap: when the Placement flag is set',
     description:
       'Recap the moment a new child appears in the Render Phase. The output here is only a flag — no DOM change has happened yet.',
@@ -402,8 +381,7 @@ const en: PlacementContent = {
     bottomNote: 'Marks come from Render. The real insert happens in Commit.',
   },
   commitFlow: {
-    number: '2',
-    eyebrow: 'INSERTION FLOW',
+    eyebrow: '02 · INSERTION FLOW',
     title: 'Commit-phase insertion flow',
     description:
       'When the Mutation step finds a Placement flag, React looks up the parent and position, then runs the real host operation.',
@@ -412,8 +390,7 @@ const en: PlacementContent = {
     domStages: domStagesEn,
   },
   hostParent: {
-    number: '3',
-    eyebrow: 'PARENT & SIBLING',
+    eyebrow: '03 · PARENT & SIBLING',
     title: 'Finding host parent / host sibling',
     description: 'React walks the Fiber tree to find the nearest host parent and host sibling.',
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
@@ -427,15 +404,13 @@ const en: PlacementContent = {
     bullets: hostBulletsEn,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'File',
       filePath: 'ReactFiberCommitHostEffects.js',
       watchLabel: 'Watch',
       watchValue: 'host mutation logic for placement',
-      questionLabel: 'Learning question',
       question: 'Under which parent and at which position does the new host node go?',
     },
     code: {
@@ -451,8 +426,7 @@ const en: PlacementContent = {
     ],
   },
   example: {
-    number: '5',
-    eyebrow: 'EASY EXAMPLE',
+    eyebrow: '05 · EASY EXAMPLE',
     title: 'Easy list-add example',
     beforeTitle: 'previous render (DOM)',
     beforeCode: beforeDomCode,
@@ -464,8 +438,7 @@ const en: PlacementContent = {
     newBadge: 'NEW',
   },
   quiz: {
-    number: '6',
-    eyebrow: 'MINI QUIZ',
+    eyebrow: '06 · MINI QUIZ',
     title: 'Mini quiz',
     question: 'The moment a Placement flag appears, can the user already see the new node?',
     answer: 'No. It only appears after the Commit Phase host placement finishes.',

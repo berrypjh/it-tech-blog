@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, HeroFlowCard, HeroFlowCardIcon } from '../content';
 import { CpuIcon, GateIcon, GitMergeIcon, LayersIcon } from '../icons';
 
@@ -70,13 +70,8 @@ export const CommitRootHeroDiagram = ({ content, className }: Props) => {
   );
 };
 
-const toneFor = (tone: HeroFlowCard['tone']): ToneKey => {
-  const valid: ToneKey[] = ['sky', 'cyan', 'violet', 'emerald', 'blue', 'teal', 'indigo', 'amber'];
-  return (valid as string[]).includes(tone) ? (tone as ToneKey) : 'sky';
-};
-
 const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
-  const tone = toneFor(card.tone);
+  const tone = card.tone;
   const t = toneTokens[tone];
   const Icon = iconMap[card.iconName];
   return (
@@ -84,9 +79,7 @@ const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
       className={cn(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        card.isGate
-          ? cn(t.chip, t.border, 'ring-2 ring-teal-300/40 dark:ring-teal-500/30')
-          : cn('border-[var(--term-border)]', t.borderHover),
+        card.isGate ? cn('border-2', t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">

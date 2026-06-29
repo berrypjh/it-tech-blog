@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import type { StateUpdateStartContent } from '../content';
 import { CheckCircleIcon, ListChecksIcon, XCircleIcon } from '../icons';
 
@@ -8,65 +8,38 @@ type Props = { content: StateUpdateStartContent['misconception'] };
 
 export const MisconceptionCompareSection = ({ content }: Props) => (
   <section
-    id="misconception"
+    id="section-misconception"
     aria-labelledby="heading-misconception"
-    className="space-y-md scroll-mt-xl"
+    className="space-y-md"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="misconception"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecksIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'overflow-hidden rounded-3xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
-      {/* Header */}
-      <div
-        className={cn(
-          'grid grid-cols-1 md:grid-cols-2 border-b',
-          'border-[var(--term-border)]',
-          'bg-slate-50/70 dark:bg-slate-900/40',
-        )}
-      >
+    <article className="overflow-hidden rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]">
+      {/* 헤더: 오해(rose) / 실제(emerald) — 의미색 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[var(--term-border)] bg-[var(--term-surface)]">
         <div className="flex items-center gap-2 px-md py-2 sm:px-lg sm:py-3 border-b md:border-b-0 md:border-r border-[var(--term-border)]">
-          <span
-            aria-hidden="true"
-            className={cn(
-              'inline-flex h-6 w-6 items-center justify-center rounded-full',
-              'bg-rose-100 text-rose-700 border border-rose-200/80',
-              'dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
-            )}
-          >
-            <XCircleIcon className="h-3.5 w-3.5" />
-          </span>
-          <span className="text-xxsm sm:text-xsm font-bold uppercase tracking-wider text-rose-700 dark:text-rose-200">
+          <XCircleIcon aria-hidden="true" className="h-4 w-4 text-rose-600 dark:text-rose-300" />
+          <span className="text-xxsm sm:text-xsm font-bold uppercase tracking-wider text-rose-600 dark:text-rose-300">
             {content.headerWrong}
           </span>
         </div>
         <div className="flex items-center gap-2 px-md py-2 sm:px-lg sm:py-3">
-          <span
+          <CheckCircleIcon
             aria-hidden="true"
-            className={cn(
-              'inline-flex h-6 w-6 items-center justify-center rounded-full',
-              'bg-emerald-100 text-emerald-700 border border-emerald-200/80',
-              'dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60',
-            )}
-          >
-            <CheckCircleIcon className="h-3.5 w-3.5" />
-          </span>
-          <span className="text-xxsm sm:text-xsm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-200">
+            className="h-4 w-4 text-emerald-600 dark:text-emerald-300"
+          />
+          <span className="text-xxsm sm:text-xsm font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-300">
             {content.headerCorrect}
           </span>
         </div>
       </div>
 
-      {/* Rows */}
+      {/* 행 */}
       <ul>
         {content.rows.map((row, idx) => (
           <li
@@ -77,24 +50,20 @@ export const MisconceptionCompareSection = ({ content }: Props) => (
             )}
           >
             <div className="flex items-start gap-sm px-md py-3 sm:px-lg sm:py-4 border-b md:border-b-0 md:border-r border-dashed border-[var(--term-border)]">
-              <span
+              <XCircleIcon
                 aria-hidden="true"
-                className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600 border border-rose-200/80 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-800/60"
-              >
-                <XCircleIcon className="h-3.5 w-3.5" />
-              </span>
-              <p className="text-xsm sm:text-sm font-bold text-[var(--term-fg)]/90 break-keep leading-snug">
+                className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300"
+              />
+              <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-muted)] break-keep">
                 {row.wrong}
               </p>
             </div>
-            <div className="flex items-start gap-sm px-md py-3 sm:px-lg sm:py-4 bg-emerald-50/30 dark:bg-emerald-950/15">
-              <span
+            <div className="flex items-start gap-sm px-md py-3 sm:px-lg sm:py-4 bg-[var(--term-surface)]">
+              <CheckCircleIcon
                 aria-hidden="true"
-                className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/60"
-              >
-                <CheckCircleIcon className="h-3.5 w-3.5" />
-              </span>
-              <p className="text-xsm sm:text-sm font-bold text-emerald-900/90 dark:text-emerald-100/90 break-keep leading-snug">
+                className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300"
+              />
+              <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
                 {row.correct}
               </p>
             </div>

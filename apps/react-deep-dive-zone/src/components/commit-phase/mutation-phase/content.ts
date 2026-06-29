@@ -1,6 +1,6 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type HeroFlagIcon = 'plus' | 'pencil' | 'trash';
 
@@ -8,14 +8,14 @@ export type HeroFlagCard = {
   title: string;
   subtitle: string;
   iconName: HeroFlagIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type HeroOpCard = {
   title: string;
   subtitle: string;
   iconName: HeroFlagIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type ConnectionCardSide = 'render' | 'mutation';
@@ -25,14 +25,14 @@ export type ConnectionCard = {
   title: string;
   subtitle: string;
   lines: string[];
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type EffectCard = {
   title: string;
   subtitle: string;
   iconName: HeroFlagIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
   examples: string[];
 };
 
@@ -41,14 +41,14 @@ export type SummaryRow = {
   meaning: string;
   description: string;
   iconName: HeroFlagIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type ExtraPoint = {
   title: string;
   description: string;
   iconName: 'sync' | 'crosshair' | 'split' | 'eraser';
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type MutationPhaseContent = {
@@ -56,7 +56,6 @@ export type MutationPhaseContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    insight: string;
     diagram: {
       leftTitle: string;
       leftCards: HeroFlagCard[];
@@ -66,14 +65,12 @@ export type MutationPhaseContent = {
     };
   };
   connection: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ConnectionCard[];
   };
   effects: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -81,7 +78,6 @@ export type MutationPhaseContent = {
     cards: EffectCard[];
   };
   summary: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -89,7 +85,6 @@ export type MutationPhaseContent = {
     rows: SummaryRow[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
     info: {
@@ -97,7 +92,6 @@ export type MutationPhaseContent = {
       filePaths: string[];
       watchLabel: string;
       watchItems: string[];
-      questionLabel: string;
       question: string;
     };
     code: {
@@ -112,7 +106,6 @@ export type MutationPhaseContent = {
     corePoints: string[];
   };
   beforeAfter: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -132,7 +125,6 @@ export type MutationPhaseContent = {
     };
   };
   rootCurrent: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -143,7 +135,6 @@ export type MutationPhaseContent = {
     bottomNote: string;
   };
   extra: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -161,7 +152,7 @@ export type MutationPhaseContent = {
 const heroLeftKo: HeroFlagCard[] = [
   { title: 'Placement', subtitle: '새 노드 삽입이 필요함', iconName: 'plus', tone: 'teal' },
   { title: 'Update', subtitle: '기존 노드 갱신이 필요함', iconName: 'pencil', tone: 'sky' },
-  { title: 'ChildDeletion', subtitle: '노드 삭제가 필요함', iconName: 'trash', tone: 'rose' },
+  { title: 'ChildDeletion', subtitle: '노드 삭제가 필요함', iconName: 'trash', tone: 'indigo' },
 ];
 
 const heroLeftEn: HeroFlagCard[] = [
@@ -172,7 +163,7 @@ const heroLeftEn: HeroFlagCard[] = [
     iconName: 'pencil',
     tone: 'sky',
   },
-  { title: 'ChildDeletion', subtitle: 'a node must be removed', iconName: 'trash', tone: 'rose' },
+  { title: 'ChildDeletion', subtitle: 'a node must be removed', iconName: 'trash', tone: 'indigo' },
 ];
 
 const heroRightKo: HeroOpCard[] = [
@@ -187,7 +178,7 @@ const heroRightKo: HeroOpCard[] = [
     title: '삭제 Delete',
     subtitle: 'DOM node 제거 및 관련 정리(cleanup) 시작',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -203,7 +194,7 @@ const heroRightEn: HeroOpCard[] = [
     title: 'Delete',
     subtitle: 'remove DOM nodes and start related cleanup',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -260,7 +251,7 @@ const effectsKo: EffectCard[] = [
     title: 'Deletion',
     subtitle: 'node 제거와 cleanup 시작',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
     examples: ['removeChild', 'detach refs', 'unmount effects'],
   },
 ];
@@ -284,7 +275,7 @@ const effectsEn: EffectCard[] = [
     title: 'Deletion',
     subtitle: 'remove nodes, start cleanup',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
     examples: ['removeChild', 'detach refs', 'unmount effects'],
   },
 ];
@@ -309,7 +300,7 @@ const summaryKo: SummaryRow[] = [
     meaning: '삭제 및 subtree 정리',
     description: 'host node를 제거하고, 자식 subtree의 cleanup을 시작합니다.',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -333,7 +324,7 @@ const summaryEn: SummaryRow[] = [
     meaning: 'delete and cleanup subtree',
     description: 'Remove the host node and start cleanup of the child subtree.',
     iconName: 'trash',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -431,7 +422,7 @@ const extraKo: ExtraPoint[] = [
     title: 'Deletion은 즉시 제거 + cleanup',
     description: 'ref 해제, effect cleanup 예약 등 초기 정리를 시작합니다.',
     iconName: 'eraser',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -458,7 +449,7 @@ const extraEn: ExtraPoint[] = [
     title: 'Deletion is immediate + cleanup',
     description: 'Starts initial cleanup such as ref release and effect cleanup scheduling.',
     iconName: 'eraser',
-    tone: 'rose',
+    tone: 'indigo',
   },
 ];
 
@@ -472,7 +463,6 @@ const ko: MutationPhaseContent = {
     },
     description:
       'Render Phase는 변경이 필요하다는 표시만 남겼고, Mutation Phase는 그 표시를 읽어 실제 host tree 조작으로 바꿉니다.',
-    insight: 'Render Phase는 계획을 세우고, Mutation Phase는 실행합니다.',
     diagram: {
       leftTitle: 'Render Phase가 남긴 flags',
       leftCards: heroLeftKo,
@@ -482,16 +472,14 @@ const ko: MutationPhaseContent = {
     },
   },
   connection: {
-    number: '1',
-    eyebrow: 'mutation 진입',
+    eyebrow: '01 · mutation 진입',
     title: 'Render flags와 Mutation Phase 연결',
     description:
       'Render Phase는 변경 표시(flags)만 남기고, 그 표시가 Mutation Phase에서 실제 host operation으로 실행됩니다.',
     cards: connectionCardsKo,
   },
   effects: {
-    number: '2',
-    eyebrow: 'mutation 이펙트',
+    eyebrow: '02 · mutation 이펙트',
     title: 'Mutation Phase에서 처리되는 대표 effect',
     description:
       '대표적인 host operation은 Placement(삽입), Update(갱신), Deletion(삭제) 3가지입니다.',
@@ -499,23 +487,20 @@ const ko: MutationPhaseContent = {
     cards: effectsKo,
   },
   summary: {
-    number: '3',
-    eyebrow: '요약 표',
+    eyebrow: '03 · 요약 표',
     title: 'Placement / Update / Deletion 빠른 요약',
     description: '각 flag가 Mutation Phase에서 어떤 의미로 실행되는지 한눈에 정리합니다.',
     columns: { flag: 'flag', meaning: 'Mutation Phase에서의 의미', description: '설명' },
     rows: summaryKo,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '04 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
       fileLabel: '파일',
       filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
       watchLabel: '볼 것',
       watchItems: ['commitMutationEffects(...)', 'MutationMask 기반 effect 처리'],
-      questionLabel: '학습 질문',
       question: 'Render Phase에서 남긴 flags는 어디서 실제 실행으로 바뀔까?',
     },
     code: {
@@ -533,8 +518,7 @@ const ko: MutationPhaseContent = {
     ],
   },
   beforeAfter: {
-    number: '5',
-    eyebrow: 'before·after',
+    eyebrow: '05 · before와 after',
     title: 'Mutation 이전과 이후 차이',
     description: 'Placement flag가 실제 DOM 결과로 바뀌는 순간을 비교합니다.',
     beforeCard: {
@@ -550,8 +534,7 @@ const ko: MutationPhaseContent = {
     },
   },
   rootCurrent: {
-    number: '6',
-    eyebrow: 'root.current 예고',
+    eyebrow: '06 · root.current 예고',
     title: 'root.current 전환 예고',
     description:
       'Mutation Phase가 끝나면, 새로 계산된 finishedWork가 이제 현재 화면을 대표하는 tree가 됩니다.',
@@ -562,8 +545,7 @@ const ko: MutationPhaseContent = {
     bottomNote: '이 전환은 다음 단계인 After Mutation 단계의 핵심 소재입니다.',
   },
   extra: {
-    number: '7',
-    eyebrow: '추가 포인트',
+    eyebrow: '07 · 추가 포인트',
     title: '추가 이해 포인트',
     description: '실무에서 Mutation Phase를 생각할 때 짚어두면 좋은 4가지입니다.',
     points: extraKo,
@@ -588,7 +570,6 @@ const en: MutationPhaseContent = {
     },
     description:
       'The Render Phase only leaves marks for what should change. The Mutation Phase reads those marks and turns them into real host tree operations.',
-    insight: 'Render Phase plans. Mutation Phase executes.',
     diagram: {
       leftTitle: 'Flags left by the Render Phase',
       leftCards: heroLeftEn,
@@ -598,39 +579,34 @@ const en: MutationPhaseContent = {
     },
   },
   connection: {
-    number: '1',
-    eyebrow: 'INTO MUTATION',
+    eyebrow: '01 · INTO MUTATION',
     title: 'Render flags ↔ Mutation Phase',
     description:
       'The Render Phase only records change marks (flags). Those marks become real host operations in the Mutation Phase.',
     cards: connectionCardsEn,
   },
   effects: {
-    number: '2',
-    eyebrow: 'MUTATION EFFECTS',
+    eyebrow: '02 · MUTATION EFFECTS',
     title: 'Effects handled by the Mutation Phase',
     description: 'The three main host operations are Placement (insert), Update, and Deletion.',
     examplesLabel: 'example ops',
     cards: effectsEn,
   },
   summary: {
-    number: '3',
-    eyebrow: 'SUMMARY TABLE',
+    eyebrow: '03 · SUMMARY TABLE',
     title: 'Placement / Update / Deletion quick summary',
     description: 'What each flag means once the Mutation Phase runs.',
     columns: { flag: 'flag', meaning: 'meaning in the Mutation Phase', description: 'description' },
     rows: summaryEn,
   },
   checkpoint: {
-    number: '4',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '04 · CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
       fileLabel: 'Files',
       filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
       watchLabel: 'Watch',
       watchItems: ['commitMutationEffects(...)', 'MutationMask-driven effect handling'],
-      questionLabel: 'Learning question',
       question: 'Where do the flags left by the Render Phase become real executions?',
     },
     code: {
@@ -648,8 +624,7 @@ const en: MutationPhaseContent = {
     ],
   },
   beforeAfter: {
-    number: '5',
-    eyebrow: 'BEFORE & AFTER',
+    eyebrow: '05 · BEFORE & AFTER',
     title: 'Before vs After mutation',
     description: 'Compare the moment a Placement flag becomes a real DOM result.',
     beforeCard: {
@@ -665,8 +640,7 @@ const en: MutationPhaseContent = {
     },
   },
   rootCurrent: {
-    number: '6',
-    eyebrow: 'ROOT.CURRENT PREVIEW',
+    eyebrow: '06 · ROOT.CURRENT PREVIEW',
     title: 'Preview: swapping root.current',
     description:
       'Once the Mutation Phase ends, the newly computed finishedWork becomes the tree that represents the current screen.',
@@ -677,8 +651,7 @@ const en: MutationPhaseContent = {
     bottomNote: 'This swap is the main material of the next step — After Mutation.',
   },
   extra: {
-    number: '7',
-    eyebrow: 'EXTRA POINTS',
+    eyebrow: '07 · EXTRA POINTS',
     title: 'Extra understanding points',
     description: 'Four points worth keeping in mind when thinking about the Mutation Phase.',
     points: extraEn,

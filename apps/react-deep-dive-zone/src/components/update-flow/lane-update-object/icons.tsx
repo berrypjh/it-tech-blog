@@ -1,31 +1,65 @@
+import {
+  Braces,
+  Crosshair,
+  Database,
+  FunctionSquare,
+  Gauge,
+  Hand,
+  Link2,
+  Route,
+  Sparkles,
+  Split,
+  Undo2,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
+// 직접 import해서 쓰는 아이콘은 XxxIcon 별칭으로 re-export.
 export {
   ArrowDown as ArrowDownIcon,
   ArrowRight as ArrowRightIcon,
-  Box as BoxIcon,
   Braces as BracesIcon,
-  CircleDotDashed as CircleDotDashedIcon,
-  CircleHelp as CircleHelpIcon,
-  Code2 as CodeIcon,
-  Crosshair as CrosshairIcon,
-  Database as DatabaseIcon,
   FileCode as FileCodeIcon,
-  FileText as FileTextIcon,
   FunctionSquare as FunctionSquareIcon,
-  Gauge as GaugeIcon,
-  GitBranch as GitBranchIcon,
-  Hand as HandIcon,
-  Layers as LayersIcon,
   Lightbulb as LightbulbIcon,
-  Link2 as Link2Icon,
   ListChecks as ListChecksIcon,
-  Network as NetworkIcon,
   Package as PackageIcon,
-  Rocket as RocketIcon,
   Route as RouteIcon,
-  Sparkles as SparklesIcon,
-  Split as SplitIcon,
   Target as TargetIcon,
-  Undo2 as UndoIcon,
-  Workflow as WorkflowIcon,
   Zap as ZapIcon,
 } from 'lucide-react';
+
+// content의 icon 리터럴 → 컴포넌트 맵. 키는 각 타입의 리터럴 유니온과 1:1.
+export const heroFlowIconByName = {
+  hand: Hand,
+  route: Route,
+  crosshair: Crosshair,
+  braces: Braces,
+} as const;
+
+export const heroSummaryIconByName = {
+  crosshair: Crosshair,
+  database: Database,
+  link: Link2,
+} as const;
+
+export const laneDecisionIconByName = {
+  hand: Hand,
+  workflow: Workflow,
+  split: Split,
+  crosshair: Crosshair,
+} as const;
+
+export const updateFieldIconByName = {
+  crosshair: Crosshair,
+  zap: Zap,
+  undo: Undo2,
+  gauge: Gauge,
+  sparkles: Sparkles,
+  link: Link2,
+} as const;
+
+export const actionIconByName = {
+  crosshair: Crosshair,
+  functionSquare: FunctionSquare,
+} as const;

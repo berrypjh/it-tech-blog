@@ -1,36 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { LaneUpdateObjectContent, UpdateFieldIconName } from '../content';
-import {
-  BracesIcon,
-  CrosshairIcon,
-  GaugeIcon,
-  Link2Icon,
-  PackageIcon,
-  SparklesIcon,
-  UndoIcon,
-  ZapIcon,
-} from '../icons';
+import type { LaneUpdateObjectContent } from '../content';
+import { PackageIcon, updateFieldIconByName } from '../icons';
 
 type Props = { content: LaneUpdateObjectContent['fields'] };
 
-const iconMap: Record<UpdateFieldIconName, typeof BracesIcon> = {
-  crosshair: CrosshairIcon,
-  zap: ZapIcon,
-  undo: UndoIcon,
-  gauge: GaugeIcon,
-  sparkles: SparklesIcon,
-  link: Link2Icon,
-};
-
 export const UpdateFieldsSection = ({ content }: Props) => (
-  <section id="fields" aria-labelledby="heading-fields" className="space-y-md scroll-mt-xl">
-    <SectionBadgeHeader
+  <section id="section-fields" aria-labelledby="heading-fields" className="space-y-md">
+    <SectionHeader
       id="fields"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -39,7 +20,7 @@ export const UpdateFieldsSection = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = updateFieldIconByName[card.icon];
 
         return (
           <ToneCardItem

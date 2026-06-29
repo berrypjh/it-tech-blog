@@ -3,19 +3,20 @@ import { Fragment } from 'react';
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowNode, WorkLoopContent } from '../content';
 import { ArrowRightIcon, PauseCircleIcon, RotateCwIcon } from '../icons';
 
-type Props = { content: WorkLoopContent['hero']; className?: string };
+type Props = { content: WorkLoopContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * while(workInProgress) 루프가 performUnitOfWork로 Fiber를 하나씩 처리하는 흐름을,
  * 동기(sync) / 동시성(concurrent) 두 가지 work loop로 나란히 보여주는 컴팩트 stepper.
  */
-export const WorkLoopHeroDiagram = ({ content, className }: Props) => {
+export const WorkLoopHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}. ${diagram.sync.label}: ${diagram.sync.nodes
     .map((n) => n.caption)
@@ -24,26 +25,11 @@ export const WorkLoopHeroDiagram = ({ content, className }: Props) => {
     .join(' → ')}`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <div className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <RotateCwIcon
-              className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none"
-              aria-hidden="true"
-            />
+            <RotateCwIcon className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none" />
           </ToneIconBox>
           <h2 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
@@ -77,7 +63,7 @@ export const WorkLoopHeroDiagram = ({ content, className }: Props) => {
           resumeNote={diagram.concurrent.resumeNote}
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -95,15 +81,14 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
   return (
     <article
       className={cn(
-        'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        t.border,
       )}
     >
       <div className="flex flex-wrap items-center gap-x-sm gap-y-1">
         <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
-        <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
+        <span className="text-xxsm uppercase tracking-wider text-[var(--term-muted)] break-keep">
           {sideText}
         </span>
       </div>
@@ -119,8 +104,8 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
                 <LoopNode node={node} tone={tone} />
                 <span
                   className={cn(
-                    'text-center text-[10px] leading-snug break-keep',
-                    isYield ? cn(t.text, 'font-bold') : 'text-[var(--term-muted)]',
+                    'text-center text-xxsm leading-snug break-keep',
+                    isYield ? cn(toneTokens.amber.text, 'font-bold') : 'text-[var(--term-muted)]',
                   )}
                 >
                   {node.caption}
@@ -154,11 +139,14 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
 
 const LoopNode = ({ node, tone }: { node: FlowNode; tone: ToneKey }) => {
   const isYield = !!node.yield;
-  const nodeTone = isYield ? 'amber' : tone;
   return (
-    <ToneIconBox tone={nodeTone} size="sm" className={isYield ? 'border-dashed' : undefined}>
+    <ToneIconBox
+      tone={isYield ? 'amber' : tone}
+      size="sm"
+      className={isYield ? 'border-dashed' : undefined}
+    >
       {isYield ? (
-        <PauseCircleIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <PauseCircleIcon className="h-[18px] w-[18px]" />
       ) : (
         <span className="text-sm font-bold leading-none">{node.label}</span>
       )}

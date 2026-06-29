@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, PipelineIcon, PipelineStep } from '../content';
 import {
   ArrowDownIcon,
@@ -34,23 +35,16 @@ export const DeletionPipelineSection = ({ content }: Props) => (
     aria-labelledby="heading-deletion-pipeline"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="deletion-pipeline"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<WorkflowIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
-      {/* Desktop: horizontal timeline (3+3 wrap on lg) */}
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
+      {/* Desktop: horizontal timeline */}
       <ol className="hidden md:grid grid-cols-3 lg:grid-cols-6 gap-2 items-stretch">
         {content.steps.map((step, idx) => (
           <Fragment key={step.number}>
@@ -68,8 +62,6 @@ export const DeletionPipelineSection = ({ content }: Props) => (
           </Fragment>
         ))}
       </ol>
-
-      {/* Tablet: 3 columns shown above. Add arrow row note */}
 
       {/* Mobile: vertical */}
       <ol className="md:hidden flex flex-col">
@@ -90,27 +82,19 @@ export const DeletionPipelineSection = ({ content }: Props) => (
 
 const PipelineCard = ({ step }: { step: PipelineStep }) => {
   const Icon = iconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-1.5 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
+        'flex h-full flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-full border-2',
-            t.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
@@ -120,7 +104,7 @@ const PipelineCard = ({ step }: { step: PipelineStep }) => {
           {step.number}
         </span>
       </header>
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.textStrong)}>
+      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
       <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

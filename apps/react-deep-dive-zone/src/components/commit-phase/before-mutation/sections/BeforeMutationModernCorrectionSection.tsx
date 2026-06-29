@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, ModernStep } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, SparklesIcon, TargetIcon } from '../icons';
 
@@ -15,42 +16,33 @@ export const BeforeMutationModernCorrectionSection = ({ content }: Props) => (
     aria-labelledby="heading-modern-correction"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="modern-correction"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<SparklesIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <StepRail steps={content.steps} />
 
       <aside
         className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-teal-200/80 bg-teal-50/70',
-          'dark:border-teal-800/70 dark:bg-teal-950/30',
+          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
+          toneTokens.teal.fill.border,
+          toneTokens.teal.fill.bg,
         )}
       >
-        <span
-          aria-hidden="true"
+        <ToneIconBox tone="teal" size="sm">
+          <TargetIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <p
           className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-teal-100 text-teal-700 border border-teal-200/80',
-            'dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
+            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
+            toneTokens.teal.fill.text,
           )}
         >
-          <TargetIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-teal-900 dark:text-teal-100 break-keep font-bold">
           {content.coreCallout}
         </p>
       </aside>
@@ -80,13 +72,13 @@ const StepRail = ({ steps }: { steps: ModernStep[] }) => (
 );
 
 const StepPill = ({ step, index }: { step: ModernStep; index: number }) => {
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-1 rounded-2xl border-2 p-sm sm:p-md text-center',
-        t.borderStrong,
-        t.bg,
+        'flex h-full flex-col gap-1 rounded-lg border-2 p-sm sm:p-md text-center',
+        t.fill.border,
+        t.fill.bg,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -94,12 +86,14 @@ const StepPill = ({ step, index }: { step: ModernStep; index: number }) => {
         aria-hidden="true"
         className={cn(
           'self-center inline-flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-mono font-bold tabular-nums',
-          t.chipSolid,
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
         )}
       >
         {String(index).padStart(2, '0')}
       </span>
-      <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.textStrong)}>
+      <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.label}
       </span>
       {step.subLabel && (

@@ -1,23 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type {
-  EnqueueConcurrentHookUpdateContent,
-  FourElement,
-  FourElementIconName,
-} from '../content';
-import { DatabaseIcon, FileTextIcon, FlagIcon, SquareDashedIcon } from '../icons';
+import type { EnqueueConcurrentHookUpdateContent, FourElement } from '../content';
+import { elementIconByName } from '../icons';
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['hero']; className?: string };
-
-const iconMap: Record<FourElementIconName, typeof SquareDashedIcon> = {
-  squareDashed: SquareDashedIcon,
-  database: DatabaseIcon,
-  fileText: FileTextIcon,
-  flag: FlagIcon,
-};
 
 /**
  * Hero 핵심 비주얼.
@@ -31,19 +21,7 @@ export const EnqueueHeroDiagram = ({ content, className }: Props) => {
     .join(', ')} 네 요소가 enqueueConcurrentHookUpdate 호출로 묶여 queue 처리 경로로 등록됩니다.`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y} className={className}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <ul className="grid grid-cols-2 gap-2">
           {content.elements.map((el) => (
@@ -61,19 +39,18 @@ export const EnqueueHeroDiagram = ({ content, className }: Props) => {
           size="md"
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const ElementCard = ({ element }: { element: FourElement }) => {
   const t = toneTokens[element.tone];
-  const Icon = iconMap[element.iconName];
+  const Icon = elementIconByName[element.icon];
   return (
     <article
       className={cn(
         'flex w-full min-w-0 items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={element.tone} size="sm">

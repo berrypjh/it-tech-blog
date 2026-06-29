@@ -1,7 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
-import type { CommitToneKey } from '../_shared/tones';
+import type { ToneKey } from '../../shared/tones';
 
 export type HeroPhaseIcon = 'eye' | 'pencil' | 'zap' | 'clock';
 
@@ -11,7 +11,7 @@ export type HeroPhase = {
   subtitle?: string;
   body: string[];
   iconName: HeroPhaseIcon;
-  tone: CommitToneKey;
+  tone: ToneKey;
   active?: boolean;
   zone: 'sync' | 'async';
 };
@@ -19,14 +19,14 @@ export type HeroPhase = {
 export type PositionStep = {
   title: string;
   body: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
   active?: boolean;
 };
 
 export type CompareRow = {
   hook: string;
   feel: string[];
-  timing: { phase: string; sync: string; tone: CommitToneKey };
+  timing: { phase: string; sync: string; tone: ToneKey };
 };
 
 export type LifecycleListItem = string;
@@ -37,7 +37,7 @@ export type LifecycleCard = {
   pill: string;
   items: LifecycleListItem[];
   iconName: 'leaf' | 'trash';
-  tone: CommitToneKey;
+  tone: ToneKey;
 };
 
 export type TimelineBadge =
@@ -55,7 +55,7 @@ export type TimelineStep = {
   title: string;
   body: string;
   badge: string;
-  tone: CommitToneKey;
+  tone: ToneKey;
   isAsync?: boolean;
 };
 
@@ -76,7 +76,6 @@ export type PassiveEffectsContent = {
     badge: string;
     title: { line1: string; line2: string; line3: string };
     description: string;
-    insight: string;
     diagram: {
       title: string;
       phases: HeroPhase[];
@@ -85,7 +84,6 @@ export type PassiveEffectsContent = {
     };
   };
   position: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -93,7 +91,6 @@ export type PassiveEffectsContent = {
     callout: { line1: string; line2: string };
   };
   compare: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -102,7 +99,6 @@ export type PassiveEffectsContent = {
     note: string;
   };
   lifecycle: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -111,15 +107,13 @@ export type PassiveEffectsContent = {
     insight: string;
   };
   example: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     code: string;
-    flowSteps: { label: string; tone: CommitToneKey }[];
+    flowSteps: { label: string; tone: ToneKey }[];
   };
   fullTimeline: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -128,7 +122,6 @@ export type PassiveEffectsContent = {
     summaryItems: SummaryItem[];
   };
   checklist: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -136,7 +129,6 @@ export type PassiveEffectsContent = {
     trophy: string;
   };
   nextChapter: {
-    number: string;
     eyebrow: string;
     title: string;
     intro: string;
@@ -455,8 +447,6 @@ const ko: PassiveEffectsContent = {
     },
     description:
       'DOM mutation과 layout effect가 지나간 뒤, React는 passive effects를 별도의 후속 흐름으로 처리합니다. 이 흐름이 useEffect 실행과 cleanup으로 이어집니다.',
-    insight:
-      'passive 효과는 사용자에게 보이는 화면에는 영향을 주지 않도록, paint 이후에 비동기적으로 실행됩니다.',
     diagram: {
       title: 'Commit Phase 이후의 후속 처리 흐름',
       phases: heroPhasesKo,
@@ -465,16 +455,14 @@ const ko: PassiveEffectsContent = {
     },
   },
   position: {
-    number: '1',
-    eyebrow: 'passive 위치',
+    eyebrow: '01 · passive 위치',
     title: 'Passive Effects의 위치',
     description: 'Commit Phase의 마지막 단계로, paint 이후 후속 흐름에서 실행됩니다.',
     steps: positionStepsKo,
     callout: { line1: 'paint 이후,', line2: '비동기 처리' },
   },
   compare: {
-    number: '2',
-    eyebrow: '이펙트 비교',
+    eyebrow: '02 · 이펙트 비교',
     title: 'useLayoutEffect vs useEffect 비교',
     description: '두 Hook은 비슷해 보이지만 실행 시점이 다릅니다.',
     headers: { hook: 'Hook', feel: '실행 감각', timing: '실행 시점' },
@@ -482,8 +470,7 @@ const ko: PassiveEffectsContent = {
     note: '화면에 영향을 주는 측정/보정은 useLayoutEffect, 데이터 구독/네트워크 요청 등은 useEffect가 일반적입니다.',
   },
   lifecycle: {
-    number: '3',
-    eyebrow: 'passive 생명주기',
+    eyebrow: '03 · passive 생명주기',
     title: 'passive mount / unmount 흐름',
     description: 'setup과 cleanup이 한 쌍을 이루며, cleanup이 먼저 실행됩니다.',
     mount: {
@@ -499,13 +486,12 @@ const ko: PassiveEffectsContent = {
       pill: 'passive cleanup',
       items: ['이전 effect의 cleanup 실행', '구독 해제 / 요청 취소', '메모리 / 리소스 정리'],
       iconName: 'trash',
-      tone: 'rose',
+      tone: 'indigo',
     },
     insight: 'React는 cleanup → setup 순서를 보장합니다.',
   },
   example: {
-    number: '4',
-    eyebrow: 'passive 예시',
+    eyebrow: '04 · passive 예시',
     title: 'passive effect 실행 예시',
     description: '실제 useEffect 코드에서 setup과 cleanup이 어떻게 나타나는지 봅니다.',
     code: exampleCodeKo,
@@ -516,8 +502,7 @@ const ko: PassiveEffectsContent = {
     ],
   },
   fullTimeline: {
-    number: '5',
-    eyebrow: '전체 타임라인',
+    eyebrow: '05 · 전체 타임라인',
     title: 'Commit Phase 전체 타임라인 (한눈에 정리)',
     description: 'Commit Phase 챕터에서 다룬 모든 단계를 7-step으로 정리합니다.',
     steps: fullTimelineStepsKo,
@@ -525,16 +510,14 @@ const ko: PassiveEffectsContent = {
     summaryItems: summaryItemsKo,
   },
   checklist: {
-    number: '6',
-    eyebrow: '핵심 체크리스트',
+    eyebrow: '06 · 핵심 체크리스트',
     title: '최종 체크리스트 — 나는 설명할 수 있는가?',
     description: 'Commit Phase 챕터에서 익힌 내용을 스스로 점검해봅니다.',
     items: checklistItemsKo,
     trophy: '모든 항목을 체크했다면 Commit Phase 마스터에 가까워지고 있습니다.',
   },
   nextChapter: {
-    number: '7',
-    eyebrow: '다음 챕터',
+    eyebrow: '07 · 다음 챕터',
     title: '다음 챕터 예고',
     intro:
       'Commit Phase까지 이해했다면, 이제 함수 컴포넌트 내부에서 상태와 effect가 어떤 Hook 자료구조로 관리되는지 살펴볼 준비가 되었습니다.',
@@ -563,8 +546,6 @@ const en: PassiveEffectsContent = {
     },
     description:
       'After DOM mutation and layout effects, React handles passive effects as a separate follow-up flow. This flow drives useEffect setup and cleanup.',
-    insight:
-      'Passive effects run asynchronously after paint so they do not affect what the user sees.',
     diagram: {
       title: 'Follow-up flow after the Commit Phase',
       phases: heroPhasesEn,
@@ -573,16 +554,14 @@ const en: PassiveEffectsContent = {
     },
   },
   position: {
-    number: '1',
-    eyebrow: 'PASSIVE POSITION',
+    eyebrow: '01 · PASSIVE POSITION',
     title: 'Where Passive Effects sit',
     description: 'The last step of the Commit Phase — runs as a follow-up after paint.',
     steps: positionStepsEn,
     callout: { line1: 'after paint,', line2: 'async work' },
   },
   compare: {
-    number: '2',
-    eyebrow: 'EFFECT COMPARE',
+    eyebrow: '02 · EFFECT COMPARE',
     title: 'useLayoutEffect vs useEffect',
     description: 'They look similar but run at different times.',
     headers: { hook: 'Hook', feel: 'how it feels', timing: 'when it runs' },
@@ -590,8 +569,7 @@ const en: PassiveEffectsContent = {
     note: 'Measurement / fix-ups that affect the screen → useLayoutEffect; data subscriptions / network requests → useEffect.',
   },
   lifecycle: {
-    number: '3',
-    eyebrow: 'PASSIVE LIFECYCLE',
+    eyebrow: '03 · PASSIVE LIFECYCLE',
     title: 'passive mount / unmount flow',
     description: 'Setup and cleanup are paired, and cleanup runs first.',
     mount: {
@@ -615,13 +593,12 @@ const en: PassiveEffectsContent = {
         'Release memory / resources',
       ],
       iconName: 'trash',
-      tone: 'rose',
+      tone: 'indigo',
     },
     insight: 'React guarantees cleanup → setup order.',
   },
   example: {
-    number: '4',
-    eyebrow: 'PASSIVE EXAMPLE',
+    eyebrow: '04 · PASSIVE EXAMPLE',
     title: 'passive effect execution example',
     description: 'See how setup and cleanup appear in actual useEffect code.',
     code: exampleCodeEn,
@@ -632,8 +609,7 @@ const en: PassiveEffectsContent = {
     ],
   },
   fullTimeline: {
-    number: '5',
-    eyebrow: 'FULL TIMELINE',
+    eyebrow: '05 · FULL TIMELINE',
     title: 'Commit Phase full timeline (one summary)',
     description: 'A 7-step recap of every step covered in this Commit Phase chapter.',
     steps: fullTimelineStepsEn,
@@ -641,16 +617,14 @@ const en: PassiveEffectsContent = {
     summaryItems: summaryItemsEn,
   },
   checklist: {
-    number: '6',
-    eyebrow: 'CORE CHECKLIST',
+    eyebrow: '06 · CORE CHECKLIST',
     title: 'Final checklist — Can I explain this?',
     description: 'Quickly self-check everything you learned in this chapter.',
     items: checklistItemsEn,
     trophy: "If you've checked all items, you're closing in on Commit Phase mastery.",
   },
   nextChapter: {
-    number: '7',
-    eyebrow: 'NEXT CHAPTER',
+    eyebrow: '07 · NEXT CHAPTER',
     title: 'Next chapter preview',
     intro:
       'Now that the Commit Phase is clear, you are ready to see how state and effects are managed inside function components as Hook data structures.',

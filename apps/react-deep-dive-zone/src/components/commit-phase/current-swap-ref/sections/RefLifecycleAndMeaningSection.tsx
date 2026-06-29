@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { LifecycleStep, RootCurrentRefContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, ListChecksIcon, SwapIcon, TreeIcon } from '../icons';
 
@@ -25,22 +26,15 @@ export const RefLifecycleAndMeaningSection = ({ lifecycle, meaning }: Props) => 
 
 const LifecycleCard = ({ content }: { content: RootCurrentRefContent['lifecycle'] }) => (
   <div className="space-y-md">
-    <SectionBadgeHeader
+    <SectionHeader
       id="refs-lifecycle"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<ListChecksIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       {/* Desktop: horizontal flow */}
       <ol className="hidden md:grid grid-cols-5 gap-2 items-stretch">
         {content.steps.map((step) => (
@@ -68,11 +62,11 @@ const LifecycleCard = ({ content }: { content: RootCurrentRefContent['lifecycle'
 );
 
 const LifecycleStepCard = ({ step }: { step: LifecycleStep }) => {
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
+        'flex h-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
@@ -99,22 +93,15 @@ const LifecycleStepCard = ({ step }: { step: LifecycleStep }) => {
 
 const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] }) => (
   <div className="space-y-md">
-    <SectionBadgeHeader
+    <SectionHeader
       id="root-current-meaning"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<SwapIcon className="h-5 w-5" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border p-md sm:p-lg',
-        'border-[var(--term-border)] bg-[var(--term-bg)]',
-        'shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
+    <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-3 items-stretch">
         <TreeSideCard
           title={content.beforeTitle}
@@ -127,22 +114,20 @@ const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] })
 
       <aside
         className={cn(
-          'mt-md flex items-start gap-sm rounded-2xl border p-md',
-          'border-blue-200/80 bg-blue-50/60',
-          'dark:border-blue-800/70 dark:bg-blue-950/30',
+          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
+          toneTokens.blue.fill.border,
+          toneTokens.blue.fill.bg,
         )}
       >
-        <span
-          aria-hidden="true"
+        <ToneIconBox tone="blue" size="sm" className="mt-0.5 shrink-0">
+          <SwapIcon className="h-4 w-4" />
+        </ToneIconBox>
+        <p
           className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-blue-100 text-blue-700 border border-blue-200/80',
-            'dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60',
+            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
+            toneTokens.blue.fill.text,
           )}
         >
-          <SwapIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-blue-900 dark:text-blue-100 break-keep font-bold">
           {content.note}
         </p>
       </aside>
@@ -159,68 +144,61 @@ const TreeSideCard = ({
   subtitle: string;
   variant: 'before' | 'after';
 }) => {
-  const tone = variant === 'before' ? commitToneTokens.violet : commitToneTokens.teal;
+  const tone: ToneKey = variant === 'before' ? 'violet' : 'teal';
+  const t = toneTokens[tone];
   return (
     <article
       className={cn(
-        'flex h-full flex-col items-center gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md text-center',
-        tone.borderStrong,
+        'flex h-full flex-col items-center gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md text-center',
+        t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-10 w-10 items-center justify-center rounded-2xl border',
-            tone.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={tone}>
           <TreeIcon className="h-5 w-5" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            tone.chip,
+            t.chip,
           )}
         >
           {variant === 'before' ? 'before swap' : 'after swap'}
         </span>
       </header>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', tone.textStrong)}>
+      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
-      <p className={cn('text-xsm leading-snug break-keep', tone.text)}>{subtitle}</p>
+      <p className={cn('text-xsm leading-snug break-keep', t.text)}>{subtitle}</p>
     </article>
   );
 };
 
-const FormulaArrow = ({ formula }: { formula: string }) => (
-  <div className="flex flex-col items-center justify-center gap-2 py-2 md:py-0">
-    <span
-      aria-hidden="true"
-      className={cn(
-        'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
-        'border-blue-300/80 bg-gradient-to-br from-blue-100 to-teal-100',
-        'dark:border-blue-700/70 dark:from-blue-950/70 dark:to-teal-950/60',
-        'text-blue-700 dark:text-blue-200',
-      )}
-    >
-      <span className="hidden md:inline-block">
-        <ArrowRightIcon className="h-6 w-6" />
+const FormulaArrow = ({ formula }: { formula: string }) => {
+  const t = toneTokens.blue;
+  return (
+    <div className="flex flex-col items-center justify-center gap-2 py-2 md:py-0">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
+          t.fill.bg,
+          t.fill.border,
+          t.fill.text,
+        )}
+      >
+        <ArrowRightIcon className="hidden md:inline-block h-6 w-6" />
+        <ArrowDownIcon className="md:hidden h-6 w-6" />
       </span>
-      <span className="md:hidden">
-        <ArrowDownIcon className="h-6 w-6" />
-      </span>
-    </span>
-    <code
-      className={cn(
-        'inline-block rounded-md border px-2 py-1 text-[11px] font-mono font-bold whitespace-nowrap',
-        'border-blue-300/80 bg-blue-50 text-blue-800',
-        'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
-      )}
-    >
-      {formula}
-    </code>
-  </div>
-);
+      <code
+        className={cn(
+          'inline-block rounded-md border px-2 py-1 text-[11px] font-mono font-bold whitespace-nowrap',
+          t.chip,
+        )}
+      >
+        {formula}
+      </code>
+    </div>
+  );
+};

@@ -1,5 +1,3 @@
-import { cn } from '@it-tech-blog/utils';
-
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +8,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { HostComponentHeroDiagram } from '../components/HostComponentHeroDiagram';
 import type { HostComponentContent } from '../content';
-import { LightbulbIcon } from '../icons';
 
 type Props = { content: HostComponentContent['hero'] };
 
@@ -34,30 +31,9 @@ export const HostComponentHero = ({ content }: Props) => (
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
-
-      <aside
-        className={cn(
-          'mt-sm flex items-start gap-sm rounded-2xl border-2 p-md',
-          'border-[var(--term-border)] bg-[var(--term-surface)]',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
-            'bg-amber-100 text-amber-700 border border-amber-200/80',
-            'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
-          )}
-        >
-          <LightbulbIcon className="h-4 w-4" />
-        </span>
-        <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
-          {content.callout}
-        </p>
-      </aside>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-host-component-process">
+    <HeroVisualColumn id="hero-host-component-process" className="min-w-0">
       <HostComponentHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

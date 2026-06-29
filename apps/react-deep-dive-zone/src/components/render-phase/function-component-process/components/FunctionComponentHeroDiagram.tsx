@@ -1,36 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
 import { CodeIcon, FunctionSquareIcon, SettingsIcon, WorkflowIcon } from '../icons';
 
-type Props = { content: FunctionComponentContent['hero']; className?: string };
+type Props = { content: FunctionComponentContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * 함수 컴포넌트 코드 → renderWithHooks 호출 → nextChildren(JSX 트리) →
  * reconcileChildren으로 이어지는 Fiber 처리 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const FunctionComponentHeroDiagram = ({ content, className }: Props) => {
+export const FunctionComponentHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}: ${diagram.codeStep.title} → ${diagram.hooksStep.title} (${diagram.hooksStep.description}) → ${diagram.nextChildrenStep.title} (${diagram.nextChildrenStep.description}) → ${diagram.reconcileStep.title} (${diagram.reconcileStep.description})`;
 
   return (
-    <div
-      className={cn(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <StepHeader
           tone="sky"
@@ -72,7 +61,7 @@ export const FunctionComponentHeroDiagram = ({ content, className }: Props) => {
           mono
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -92,10 +81,7 @@ const StepHeader = ({
         {icon}
       </ToneIconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
-      <span
-        aria-hidden="true"
-        className="flex-1 border-t border-dashed border-[var(--term-border)]"
-      />
+      <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
     </div>
   );
 };
@@ -117,10 +103,9 @@ const StepRow = ({
   return (
     <article
       className={cn(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
+        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        t.border,
       )}
     >
       <ToneIconBox tone={tone} size="sm">

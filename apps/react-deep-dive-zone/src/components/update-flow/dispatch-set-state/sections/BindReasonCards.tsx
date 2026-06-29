@@ -1,28 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
+import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { BindReasonIconName, DispatchSetStateContent } from '../content';
-import { BoxIcon, Link2Icon, ShieldCheckIcon } from '../icons';
+import type { DispatchSetStateContent } from '../content';
+import { bindReasonIconByName, Link2Icon } from '../icons';
 
 type Props = { content: DispatchSetStateContent['bindReasons'] };
 
-const iconMap: Record<BindReasonIconName, typeof BoxIcon> = {
-  box: BoxIcon,
-  link: Link2Icon,
-  shield: ShieldCheckIcon,
-};
-
 export const BindReasonCards = ({ content }: Props) => (
-  <section
-    id="bind-reasons"
-    aria-labelledby="heading-bind-reasons"
-    className="space-y-md scroll-mt-xl"
-  >
-    <SectionBadgeHeader
+  <section id="section-bind-reasons" aria-labelledby="heading-bind-reasons" className="space-y-md">
+    <SectionHeader
       id="bind-reasons"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -31,7 +20,7 @@ export const BindReasonCards = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = bindReasonIconByName[card.icon];
 
         return (
           <ToneCardItem

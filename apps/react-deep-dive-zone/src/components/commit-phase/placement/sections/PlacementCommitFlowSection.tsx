@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SectionBadgeHeader } from '../../../shared/section';
-import { commitToneTokens } from '../../_shared/tones';
+import { SectionHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
 import type { DomStage, FlowStep, FlowStepIcon, PlacementContent } from '../content';
 import { ArrowDownIcon, CrosshairIcon, FlagIcon, LayersIcon, PlusIcon, TargetIcon } from '../icons';
 
@@ -20,9 +21,8 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-insertion-flow"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionBadgeHeader
+    <SectionHeader
       id="commit-insertion-flow"
-      number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -31,16 +31,15 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-3">
       {/* Left: 4 step flow */}
-      <article
-        className={cn(
-          'rounded-3xl border p-md sm:p-lg',
-          'border-[var(--term-border)] bg-[var(--term-bg)]',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
+      <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="mb-md flex items-center justify-between gap-2">
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">commit insert flow</h3>
-          <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 rounded-md border border-violet-200/70 dark:border-violet-800/60 px-2 py-0.5">
+          <span
+            className={cn(
+              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+              toneTokens.violet.chip,
+            )}
+          >
             4 steps
           </span>
         </header>
@@ -62,19 +61,17 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
       </article>
 
       {/* Right: DOM stage flow */}
-      <article
-        className={cn(
-          'rounded-3xl border p-md sm:p-lg',
-          'border-[var(--term-border)] bg-gradient-to-br from-sky-50/40 via-white to-teal-50/40',
-          'dark:from-sky-950/15 dark:via-[var(--term-bg)] dark:to-teal-950/15',
-          'shadow-[0_2px_0_var(--term-border)]',
-        )}
-      >
+      <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="mb-md flex items-center justify-between gap-2">
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">
             {content.domStagesTitle}
           </h3>
-          <span className="text-[10px] font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 rounded-md border border-teal-200/70 dark:border-teal-800/60 px-2 py-0.5">
+          <span
+            className={cn(
+              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
+              toneTokens.teal.chip,
+            )}
+          >
             dom stages
           </span>
         </header>
@@ -100,27 +97,19 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
 
 const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
   const Icon = iconMap[step.iconName];
-  const t = commitToneTokens[step.tone];
+  const t = toneTokens[step.tone];
   return (
     <article
       className={cn(
-        'grid grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
+        'grid grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.borderHover,
       )}
     >
       <div className="flex flex-col items-center gap-1 pt-0.5">
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-            t.chipSolid,
-          )}
-        >
+        <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" />
-        </span>
+        </ToneIconBox>
         <span
           className={cn(
             'inline-flex h-5 w-5 items-center justify-center rounded-full border text-[10px] font-mono font-bold tabular-nums',
@@ -131,7 +120,7 @@ const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
         </span>
       </div>
       <div className="flex flex-col gap-1 min-w-0">
-        <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.textStrong)}>
+        <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h4>
         {step.description && (
@@ -144,58 +133,58 @@ const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
   );
 };
 
-const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => (
-  <article
-    className={cn(
-      'flex flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
-      stage.highlightNew
-        ? 'border-teal-300/80 dark:border-teal-700/70'
-        : 'border-[var(--term-border)]',
-      'shadow-[0_1px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center justify-between gap-2">
-      <span
-        className={cn(
-          'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5',
-          'text-[10px] font-mono uppercase tracking-wider',
-          stage.highlightNew
-            ? 'border-teal-200/80 bg-teal-50 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200'
-            : 'border-[var(--term-border)] bg-slate-50/60 text-[var(--term-muted)] dark:bg-slate-900/40',
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-block h-1.5 w-1.5 rounded-full',
-            stage.highlightNew ? 'bg-teal-500 dark:bg-teal-400' : 'bg-[var(--term-dim)]',
-          )}
-        />
-        {stage.label}
-      </span>
-      <span className="text-[10px] font-mono tabular-nums text-[var(--term-muted)]">0{index}</span>
-    </header>
-    <pre
+const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
+  const t = toneTokens.teal;
+  return (
+    <article
       className={cn(
-        'overflow-x-auto rounded-lg border p-sm text-[10.5px] sm:text-[11px] leading-snug font-mono',
-        stage.highlightNew
-          ? 'border-teal-200/60 bg-teal-50/50 text-teal-900 dark:border-teal-800/50 dark:bg-teal-950/25 dark:text-teal-100'
-          : 'border-[var(--term-border)] bg-slate-50/40 text-[var(--term-fg)] dark:bg-slate-900/30',
+        'flex flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
+        stage.highlightNew ? t.fill.border : 'border-[var(--term-border)]',
+        'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <code>{stage.code}</code>
-    </pre>
-    {stage.note && (
-      <p
+      <header className="flex items-center justify-between gap-2">
+        <span
+          className={cn(
+            'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
+            stage.highlightNew
+              ? t.chip
+              : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
+          )}
+        >
+          <span
+            aria-hidden="true"
+            className={cn(
+              'inline-block h-1.5 w-1.5 rounded-full',
+              stage.highlightNew ? t.dot : 'bg-[var(--term-dim)]',
+            )}
+          />
+          {stage.label}
+        </span>
+        <span className="text-[10px] font-mono tabular-nums text-[var(--term-muted)]">
+          0{index}
+        </span>
+      </header>
+      <pre
         className={cn(
-          'text-[10px] sm:text-xsm break-keep',
+          'overflow-x-auto rounded-md border p-sm text-[10.5px] sm:text-[11px] leading-snug font-mono',
           stage.highlightNew
-            ? 'text-teal-700 dark:text-teal-300 font-bold'
-            : 'text-violet-700 dark:text-violet-300 font-bold',
+            ? cn(t.fill.border, t.fill.bg, t.fill.text)
+            : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
-        {stage.note}
-      </p>
-    )}
-  </article>
-);
+        <code>{stage.code}</code>
+      </pre>
+      {stage.note && (
+        <p
+          className={cn(
+            'text-[10px] sm:text-xsm break-keep font-bold',
+            stage.highlightNew ? t.text : toneTokens.violet.text,
+          )}
+        >
+          {stage.note}
+        </p>
+      )}
+    </article>
+  );
+};

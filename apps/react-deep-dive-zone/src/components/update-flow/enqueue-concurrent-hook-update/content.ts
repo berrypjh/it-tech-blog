@@ -2,7 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type FourElementIconName = 'squareDashed' | 'database' | 'fileText' | 'flag';
+export type FourElementIcon = 'squareDashed' | 'database' | 'fileText' | 'flag';
 
 export type FourElement = {
   id: 'fiber' | 'queue' | 'update' | 'lane';
@@ -10,27 +10,33 @@ export type FourElement = {
   question: string;
   body: string;
   tone: ToneKey;
-  iconName: FourElementIconName;
+  icon: FourElementIcon;
 };
+
+export type FunctionFlowIcon = 'function' | 'workflow' | 'database' | 'network';
 
 export type FunctionFlowStep = {
   id: 'dispatch' | 'enqueue' | 'enqueueUpdate' | 'getRoot';
   title: string;
   body: string;
-  variant: 'outline' | 'dark' | 'mint' | 'mintBlue';
+  tone: ToneKey;
+  icon: FunctionFlowIcon;
 };
 
-export type EnqueueMeaningStepIconName =
-  | 'squareDashed'
-  | 'database'
-  | 'fileText'
-  | 'flag'
-  | 'settings';
+export type EnqueueMeaningIcon = 'squareDashed' | 'database' | 'fileText' | 'flag' | 'settings';
 
 export type EnqueueMeaningStep = {
   label: string;
   tone: ToneKey;
-  iconName: EnqueueMeaningStepIconName;
+  icon: EnqueueMeaningIcon;
+};
+
+export type CheckpointCallout = {
+  number: string;
+  title: string;
+  body: string;
+  tone: ToneKey;
+  linkedLine: number;
 };
 
 export type EnqueueConcurrentHookUpdateContent = {
@@ -42,62 +48,49 @@ export type EnqueueConcurrentHookUpdateContent = {
     functionCard: { code: string; caption: string };
   };
   flow: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: FunctionFlowStep[];
   };
   elements: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: FourElement[];
   };
   checkpoint: {
-    number: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      functionLabel: string;
-      functionName: string;
-      questionLabel: string;
-      question: string;
-    };
-    code: {
-      fileName: string;
-      rightLabel: string;
-      content: string;
-    };
-    callouts: {
-      number: string;
-      title: string;
-      body: string;
-      tone: 'mint' | 'sky';
-      linkedLine: number;
-    }[];
+    fileLabel: string;
+    filePath: string;
+    functionLabel: string;
+    functionName: string;
+    learningQuestion: string;
+    codeHeader: string;
+    codeBadge: string;
+    code: string;
+    primaryHref: string;
+    primaryCta: string;
+    callouts: CheckpointCallout[];
   };
   meaning: {
-    number: string;
     eyebrow: string;
     title: string;
     descriptionTitle: string;
     descriptionBody: string;
+    tags: { label: string; tone: ToneKey }[];
     flow: EnqueueMeaningStep[];
     finalLabel: string;
     finalBody: string;
   };
   rootReason: {
-    number: string;
     eyebrow: string;
     title: string;
     description: string;
-    leftNode: { title: string; body: string };
+    leftNode: { title: string; body: string; badge: string };
     middleLabel: { line1: string; line2: string };
-    rightNode: { title: string; body: string };
+    rightNode: { title: string; body: string; badge: string };
     bottomMessage: string;
   };
   nextStep: {
@@ -109,7 +102,7 @@ export type EnqueueConcurrentHookUpdateContent = {
   };
 };
 
-const checkpointCodeKo = `export function enqueueConcurrentHookUpdate(
+const checkpointCode = `export function enqueueConcurrentHookUpdate(
   fiber,
   queue,
   update,
@@ -124,6 +117,9 @@ const checkpointCodeKo = `export function enqueueConcurrentHookUpdate(
 
   return getRootForUpdatedFiber(fiber);
 }`;
+
+const githubHref =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberConcurrentUpdates.js';
 
 const ko: EnqueueConcurrentHookUpdateContent = {
   hero: {
@@ -142,7 +138,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어느 컴포넌트의 업데이트인가?',
         body: '업데이트가 발생한 Fiber',
         tone: 'sky',
-        iconName: 'squareDashed',
+        icon: 'squareDashed',
       },
       {
         id: 'queue',
@@ -150,7 +146,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어느 Hook queue에 들어가야 하는가?',
         body: 'Hook의 UpdateQueue',
         tone: 'emerald',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         id: 'update',
@@ -158,7 +154,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '실제 변경 요청 데이터',
         body: 'action, eagerState 등',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
       {
         id: 'lane',
@@ -166,7 +162,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어떤 우선순위의 작업인가?',
         body: '업데이트의 우선순위 Lane',
         tone: 'amber',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
     functionCard: {
@@ -175,8 +171,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     },
   },
   flow: {
-    number: '01',
-    eyebrow: '전체 흐름',
+    eyebrow: '01 · 전체 흐름',
     title: '전체 함수 흐름',
     description:
       'dispatchSetStateInternal에서 시작해 FiberRoot를 찾는 단계까지, 네 개의 호출이 차례로 일어납니다.',
@@ -185,31 +180,34 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         id: 'dispatch',
         title: 'dispatchSetStateInternal',
         body: 'update 객체 생성 및 eager bailout 처리 후',
-        variant: 'outline',
+        tone: 'sky',
+        icon: 'function',
       },
       {
         id: 'enqueue',
-        title: 'enqueueConcurrentHookUpdate(fiber, queue, update, lane)',
+        title: 'enqueueConcurrentHookUpdate(...)',
         body: '업데이트를 queue 경로에 등록하고 Root 탐색 시작',
-        variant: 'dark',
+        tone: 'violet',
+        icon: 'workflow',
       },
       {
         id: 'enqueueUpdate',
         title: 'enqueueUpdate(...)',
         body: '업데이트를 실제 큐 연결 단계로 밀어 넣기',
-        variant: 'mint',
+        tone: 'emerald',
+        icon: 'database',
       },
       {
         id: 'getRoot',
         title: 'getRootForUpdatedFiber(...)',
         body: '업데이트가 속한 FiberRoot 찾기',
-        variant: 'mintBlue',
+        tone: 'cyan',
+        icon: 'network',
       },
     ],
   },
   elements: {
-    number: '02',
-    eyebrow: '4요소 해설',
+    eyebrow: '02 · 4요소 해설',
     title: 'fiber / queue / update / lane 4요소',
     description:
       '하나의 함수에 네 인자가 함께 전달되는 이유 — 각각이 무엇을 책임지는지 카드 단위로 정리합니다.',
@@ -220,7 +218,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어느 컴포넌트의 업데이트인가?',
         body: '업데이트가 발생한 Fiber (Hook이 있는 Fiber)',
         tone: 'sky',
-        iconName: 'squareDashed',
+        icon: 'squareDashed',
       },
       {
         id: 'queue',
@@ -228,7 +226,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어느 Hook queue에 들어가야 하는가?',
         body: 'Hook의 UpdateQueue (circular linked list)',
         tone: 'emerald',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         id: 'update',
@@ -236,7 +234,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '실제 변경 요청 데이터',
         body: 'action, eagerState 등 변경에 필요한 정보',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
       {
         id: 'lane',
@@ -244,33 +242,29 @@ const ko: EnqueueConcurrentHookUpdateContent = {
         question: '어떤 우선순위의 작업인가?',
         body: '업데이트의 우선순위를 나타내는 Lane',
         tone: 'amber',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: '코드 체크포인트',
+    eyebrow: '03 · 코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberConcurrentUpdates.js',
-      functionLabel: '함수',
-      functionName: 'enqueueConcurrentHookUpdate',
-      questionLabel: '학습 질문',
-      question: '업데이트 등록 이후 React는 무엇을 반환할까?',
-    },
-    code: {
-      fileName: 'ReactFiberConcurrentUpdates.js',
-      rightLabel: '코드 미리보기',
-      content: checkpointCodeKo,
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
+    functionLabel: '함수',
+    functionName: 'enqueueConcurrentHookUpdate',
+    learningQuestion: '업데이트 등록 이후 React는 무엇을 반환할까?',
+    codeHeader: 'ReactFiberConcurrentUpdates.js',
+    codeBadge: 'main',
+    code: checkpointCode,
+    primaryHref: githubHref,
+    primaryCta: 'GitHub에서 enqueueConcurrentHookUpdate 보기',
     callouts: [
       {
         number: '1',
         title: 'enqueueUpdate 호출',
         body: '업데이트를 큐 연결 경로로 등록',
-        tone: 'mint',
+        tone: 'emerald',
         linkedLine: 7,
       },
       {
@@ -283,29 +277,33 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     ],
   },
   meaning: {
-    number: '04',
-    eyebrow: 'enqueueUpdate 의미',
+    eyebrow: '04 · enqueueUpdate 의미',
     title: 'enqueueUpdate의 의미',
     descriptionTitle: '업데이트를 실제 큐 연결 단계로 밀어 넣는 공통 처리 지점이다.',
     descriptionBody: '여러 종류의 업데이트(Hook, Class)가 동일한 경로를 통해 처리됩니다.',
+    tags: [
+      { label: 'Hook', tone: 'sky' },
+      { label: 'Class', tone: 'violet' },
+      { label: 'shared path', tone: 'emerald' },
+    ],
     flow: [
-      { label: 'fiber', tone: 'sky', iconName: 'squareDashed' },
-      { label: 'queue', tone: 'emerald', iconName: 'database' },
-      { label: 'update', tone: 'violet', iconName: 'fileText' },
-      { label: 'lane', tone: 'amber', iconName: 'flag' },
+      { label: 'fiber', tone: 'sky', icon: 'squareDashed' },
+      { label: 'queue', tone: 'emerald', icon: 'database' },
+      { label: 'update', tone: 'violet', icon: 'fileText' },
+      { label: 'lane', tone: 'amber', icon: 'flag' },
     ],
     finalLabel: 'concurrent update handling',
     finalBody: '공통 큐 처리 경로로 등록',
   },
   rootReason: {
-    number: '05',
-    eyebrow: 'Root 탐색 이유',
+    eyebrow: '05 · Root 탐색 이유',
     title: 'Root를 왜 함께 찾는가?',
     description:
       'queue에 update를 넣는 것만으로는 부족하다. 이 업데이트가 속한 전체 Root가 나중에 스케줄링되어야 한다.',
     leftNode: {
       title: 'Hook queue',
       body: 'update가 연결된 개별 Hook queue',
+      badge: 'hook scope',
     },
     middleLabel: {
       line1: '등록 완료',
@@ -314,6 +312,7 @@ const ko: EnqueueConcurrentHookUpdateContent = {
     rightNode: {
       title: 'FiberRoot',
       body: '전체 트리를 스케줄링하고 렌더링할 단위',
+      badge: 'tree scope',
     },
     bottomMessage:
       '개별 Hook queue에 update를 넣은 뒤, React는 그 업데이트가 속한 전체 FiberRoot를 찾아야 한다.',
@@ -345,7 +344,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'Which component is updating?',
         body: 'The Fiber where the update was issued',
         tone: 'sky',
-        iconName: 'squareDashed',
+        icon: 'squareDashed',
       },
       {
         id: 'queue',
@@ -353,7 +352,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'Which Hook queue does it belong to?',
         body: "The Hook's UpdateQueue",
         tone: 'emerald',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         id: 'update',
@@ -361,7 +360,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'What is the change payload?',
         body: 'action, eagerState, and more',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
       {
         id: 'lane',
@@ -369,7 +368,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'What priority is the work?',
         body: "The update's priority Lane",
         tone: 'amber',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
     functionCard: {
@@ -378,8 +377,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
     },
   },
   flow: {
-    number: '01',
-    eyebrow: 'FULL FLOW',
+    eyebrow: '01 · FULL FLOW',
     title: 'Full function flow',
     description:
       'From dispatchSetStateInternal down to finding the FiberRoot — four calls happen in order.',
@@ -388,31 +386,34 @@ const en: EnqueueConcurrentHookUpdateContent = {
         id: 'dispatch',
         title: 'dispatchSetStateInternal',
         body: 'After building the update and the eager-bailout check',
-        variant: 'outline',
+        tone: 'sky',
+        icon: 'function',
       },
       {
         id: 'enqueue',
-        title: 'enqueueConcurrentHookUpdate(fiber, queue, update, lane)',
+        title: 'enqueueConcurrentHookUpdate(...)',
         body: 'Registers the update on the queue path and starts Root lookup',
-        variant: 'dark',
+        tone: 'violet',
+        icon: 'workflow',
       },
       {
         id: 'enqueueUpdate',
         title: 'enqueueUpdate(...)',
         body: 'Pushes the update into the actual queue-linking step',
-        variant: 'mint',
+        tone: 'emerald',
+        icon: 'database',
       },
       {
         id: 'getRoot',
         title: 'getRootForUpdatedFiber(...)',
         body: 'Finds the FiberRoot the update belongs to',
-        variant: 'mintBlue',
+        tone: 'cyan',
+        icon: 'network',
       },
     ],
   },
   elements: {
-    number: '02',
-    eyebrow: 'FOUR ARGUMENTS',
+    eyebrow: '02 · FOUR ARGUMENTS',
     title: 'fiber / queue / update / lane — four arguments',
     description:
       'Why all four are passed to one function — each one carries a distinct responsibility.',
@@ -423,7 +424,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'Which component is updating?',
         body: 'The Fiber that issued the update (the Hook owner)',
         tone: 'sky',
-        iconName: 'squareDashed',
+        icon: 'squareDashed',
       },
       {
         id: 'queue',
@@ -431,7 +432,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'Which Hook queue?',
         body: "The Hook's UpdateQueue (a circular linked list)",
         tone: 'emerald',
-        iconName: 'database',
+        icon: 'database',
       },
       {
         id: 'update',
@@ -439,7 +440,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'What is the change payload?',
         body: 'action, eagerState, and other change data',
         tone: 'violet',
-        iconName: 'fileText',
+        icon: 'fileText',
       },
       {
         id: 'lane',
@@ -447,33 +448,29 @@ const en: EnqueueConcurrentHookUpdateContent = {
         question: 'What priority?',
         body: 'The Lane that represents the priority',
         tone: 'amber',
-        iconName: 'flag',
+        icon: 'flag',
       },
     ],
   },
   checkpoint: {
-    number: '03',
-    eyebrow: 'CODE CHECKPOINT',
+    eyebrow: '03 · CODE CHECKPOINT',
     title: 'Source checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberConcurrentUpdates.js',
-      functionLabel: 'Function',
-      functionName: 'enqueueConcurrentHookUpdate',
-      questionLabel: 'Learning question',
-      question: 'What does React return after registering the update?',
-    },
-    code: {
-      fileName: 'ReactFiberConcurrentUpdates.js',
-      rightLabel: 'preview',
-      content: checkpointCodeKo,
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
+    functionLabel: 'Function',
+    functionName: 'enqueueConcurrentHookUpdate',
+    learningQuestion: 'What does React return after registering the update?',
+    codeHeader: 'ReactFiberConcurrentUpdates.js',
+    codeBadge: 'main',
+    code: checkpointCode,
+    primaryHref: githubHref,
+    primaryCta: 'View enqueueConcurrentHookUpdate on GitHub',
     callouts: [
       {
         number: '1',
         title: 'enqueueUpdate call',
         body: 'Registers the update onto the queue-linking path',
-        tone: 'mint',
+        tone: 'emerald',
         linkedLine: 7,
       },
       {
@@ -486,30 +483,34 @@ const en: EnqueueConcurrentHookUpdateContent = {
     ],
   },
   meaning: {
-    number: '04',
-    eyebrow: 'ENQUEUEUPDATE',
+    eyebrow: '04 · ENQUEUEUPDATE',
     title: 'What enqueueUpdate means',
     descriptionTitle:
       'A shared chokepoint that pushes the update into the actual queue-linking step.',
     descriptionBody: 'Different update kinds (Hook, Class) all flow through this same path.',
+    tags: [
+      { label: 'Hook', tone: 'sky' },
+      { label: 'Class', tone: 'violet' },
+      { label: 'shared path', tone: 'emerald' },
+    ],
     flow: [
-      { label: 'fiber', tone: 'sky', iconName: 'squareDashed' },
-      { label: 'queue', tone: 'emerald', iconName: 'database' },
-      { label: 'update', tone: 'violet', iconName: 'fileText' },
-      { label: 'lane', tone: 'amber', iconName: 'flag' },
+      { label: 'fiber', tone: 'sky', icon: 'squareDashed' },
+      { label: 'queue', tone: 'emerald', icon: 'database' },
+      { label: 'update', tone: 'violet', icon: 'fileText' },
+      { label: 'lane', tone: 'amber', icon: 'flag' },
     ],
     finalLabel: 'concurrent update handling',
     finalBody: 'Registered onto the shared queue path',
   },
   rootReason: {
-    number: '05',
-    eyebrow: 'WHY ROOT',
+    eyebrow: '05 · WHY ROOT',
     title: 'Why look up the Root too?',
     description:
       'Putting the update on the queue is not enough — the entire Root that owns the update has to be scheduled later.',
     leftNode: {
       title: 'Hook queue',
       body: 'The individual Hook queue holding the update',
+      badge: 'hook scope',
     },
     middleLabel: {
       line1: 'registered',
@@ -518,6 +519,7 @@ const en: EnqueueConcurrentHookUpdateContent = {
     rightNode: {
       title: 'FiberRoot',
       body: 'The unit that schedules and renders the whole tree',
+      badge: 'tree scope',
     },
     bottomMessage:
       'After placing the update on the Hook queue, React still has to find the FiberRoot that owns it.',
