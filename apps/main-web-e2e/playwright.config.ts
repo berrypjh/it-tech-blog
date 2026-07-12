@@ -22,13 +22,37 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'pnpm exec nx run @it-tech-blog/main-web:dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: true,
-    cwd: workspaceRoot,
-  },
+  /* Run the host and every proxied zone before starting the tests */
+  webServer: [
+    {
+      command: 'pnpm exec nx run @it-tech-blog/main-web:dev',
+      url: 'http://localhost:3000',
+      reuseExistingServer: true,
+      cwd: workspaceRoot,
+      timeout: 120_000,
+    },
+    {
+      command: 'pnpm exec nx run @it-tech-blog/accessibility-zone:dev',
+      url: 'http://localhost:4001/accessibility',
+      reuseExistingServer: true,
+      cwd: workspaceRoot,
+      timeout: 120_000,
+    },
+    {
+      command: 'pnpm exec nx run @it-tech-blog/react-deep-dive-zone:dev',
+      url: 'http://localhost:4002/react',
+      reuseExistingServer: true,
+      cwd: workspaceRoot,
+      timeout: 120_000,
+    },
+    {
+      command: 'pnpm exec nx run @it-tech-blog/next-deep-dive-zone:dev',
+      url: 'http://localhost:4003/next',
+      reuseExistingServer: true,
+      cwd: workspaceRoot,
+      timeout: 120_000,
+    },
+  ],
   projects: [
     {
       name: 'chromium',
