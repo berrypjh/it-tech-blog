@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 
 import {
   AccessibilityIcon,
@@ -293,5 +294,69 @@ export const ScrollContained: Story = {
           '본문이 viewport보다 길 때, 스크롤바는 main 영역에만 나타나고 사이드바·헤더는 고정됩니다.',
       },
     },
+  },
+};
+
+/* 인터랙션 스토리 — 동일 DOM의 axe 검사는 Default가 담당하므로 중복 보고는 끈다. */
+
+export const TogglesNavGroups: Story = {
+  name: '네비 그룹 토글',
+  args: { ...Default.args },
+  parameters: { a11y: { disable: true } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const activeGroup = canvas.getByRole('button', { name: '시작하기' });
+    const otherGroup = canvas.getByRole('button', { name: 'HTML/시맨틱' });
+
+    await expect(activeGroup).toHaveAttribute('aria-expanded', 'true');
+    await expect(otherGroup).toHaveAttribute('aria-expanded', 'false');
+    await expect(canvas.getByRole('button', { name: '접근성이란?' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+
+    await userEvent.click(otherGroup);
+    await expect(otherGroup).toHaveAttribute('aria-expanded', 'true');
+
+    await userEvent.click(otherGroup);
+    await expect(otherGroup).toHaveAttribute('aria-expanded', 'false');
+  },
+};
+
+export const CollapsesAndExpandsAll: Story = {
+  name: '모두 닫기/펼치기',
+  args: { ...Default.args },
+  parameters: { a11y: { disable: true } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const groupTitles = ['시작하기', 'HTML/시맨틱', '키보드 접근성', '스크린 리더'];
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Collapse all' }));
+    for (const title of groupTitles) {
+      await expect(canvas.getByRole('button', { name: title })).toHaveAttribute(
+        'aria-expanded',
+        'false',
+      );
+    }
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Expand all' }));
+    for (const title of groupTitles) {
+      await expect(canvas.getByRole('button', { name: title })).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      );
+    }
+  },
+};
+
+export const SkipLinkFocusFirst: Story = {
+  name: '스킵 링크 우선 포커스',
+  args: { ...Default.args },
+  parameters: { a11y: { disable: true } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.tab();
+    await expect(canvas.getByRole('link', { name: '본문으로 건너뛰기' })).toHaveFocus();
   },
 };
