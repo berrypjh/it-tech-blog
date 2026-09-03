@@ -2,84 +2,23 @@
 
 import { useMemo, useState } from 'react';
 
+import { Bell, Eye, Keyboard, Palette, VolumeX, ZoomIn } from 'lucide-react';
+
 import { PreviewControlBar } from '../components/PreviewControlBar';
 import { PreviewWebsitePanel } from '../components/PreviewWebsitePanel';
 import { SimulationExplanationPanel } from '../components/SimulationExplanationPanel';
 import { SimulationModeList } from '../components/SimulationModeList';
 import type { DisabilitiesContent, SimulationModeId } from '../content';
 
-const EyeIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" />
-    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const ZoomIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-    <path d="M20 20l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    <path d="M9 11h4M11 9v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const PaletteIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M12 3a9 9 0 100 18c1 0 1.5-1 1.5-2s-1-1.5-1-2.5S13 14 14 14h3a4 4 0 004-4 7 7 0 00-9-7z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-    <circle cx="8" cy="9" r="1" fill="currentColor" />
-    <circle cx="7" cy="13" r="1" fill="currentColor" />
-    <circle cx="11" cy="7" r="1" fill="currentColor" />
-    <circle cx="15" cy="7" r="1" fill="currentColor" />
-  </svg>
-);
-
-const MuteIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M11 5L6 9H2v6h4l5 4V5zM22 9l-6 6M16 9l6 6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const BellIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M6 9a6 6 0 0112 0v4l2 3H4l2-3V9zM10 19a2 2 0 004 0"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+const iconClass = 'h-3.5 w-3.5';
 
 const iconMap: Record<SimulationModeId, React.ReactNode> = {
-  'low-vision': <EyeIcon />,
-  'magnify-blur': <ZoomIcon />,
-  'color-blind': <PaletteIcon />,
-  'no-sound': <MuteIcon />,
-  'keyboard-only': <KeyboardIcon />,
-  distraction: <BellIcon />,
+  'low-vision': <Eye className={iconClass} />,
+  'magnify-blur': <ZoomIn className={iconClass} />,
+  'color-blind': <Palette className={iconClass} />,
+  'no-sound': <VolumeX className={iconClass} />,
+  'keyboard-only': <Keyboard className={iconClass} />,
+  distraction: <Bell className={iconClass} />,
 };
 
 const DEFAULT_CONTRAST = 35; // baseline tuned for low-vision mode

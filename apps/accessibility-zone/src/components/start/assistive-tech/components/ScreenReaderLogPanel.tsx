@@ -1,33 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AudioLines } from 'lucide-react';
+
 import type { AssistiveTechContent } from '../content';
 
 type Props = {
   content: AssistiveTechContent['screenReader'];
   activeIndex: number;
 };
-
-const WaveformIcon = () => (
-  <svg viewBox="0 0 60 16" width="60" height="14" fill="none" aria-hidden="true">
-    <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-      <line x1="2" y1="8" x2="2" y2="8" />
-      <line x1="6" y1="6" x2="6" y2="10" />
-      <line x1="10" y1="3" x2="10" y2="13" />
-      <line x1="14" y1="5" x2="14" y2="11" />
-      <line x1="18" y1="2" x2="18" y2="14" />
-      <line x1="22" y1="4" x2="22" y2="12" />
-      <line x1="26" y1="6" x2="26" y2="10" />
-      <line x1="30" y1="3" x2="30" y2="13" />
-      <line x1="34" y1="5" x2="34" y2="11" />
-      <line x1="38" y1="2" x2="38" y2="14" />
-      <line x1="42" y1="5" x2="42" y2="11" />
-      <line x1="46" y1="7" x2="46" y2="9" />
-      <line x1="50" y1="4" x2="50" y2="12" />
-      <line x1="54" y1="6" x2="54" y2="10" />
-      <line x1="58" y1="8" x2="58" y2="8" />
-    </g>
-  </svg>
-);
 
 export const ScreenReaderLogPanel = ({ content, activeIndex }: Props) => {
   const total = content.items.length;
@@ -43,7 +23,7 @@ export const ScreenReaderLogPanel = ({ content, activeIndex }: Props) => {
           {content.logTitle}
         </h3>
         <span className="text-neutral-ne300 dark:text-neutral-ne700" aria-hidden="true">
-          <WaveformIcon />
+          <AudioLines className="h-5 w-5" />
         </span>
       </header>
 

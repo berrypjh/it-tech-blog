@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Check, X } from 'lucide-react';
+
 type Props = {
   index: number;
   title: string;
@@ -10,37 +12,6 @@ type Props = {
   beforeNote: string;
   afterNote: string;
 };
-
-const CrossIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="12"
-    height="12"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    aria-hidden="true"
-  >
-    <path d="M6 6l12 12M6 18l12-12" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="12"
-    height="12"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M5 12l4 4L19 7" />
-  </svg>
-);
 
 export const ComparisonCard = ({
   index,
@@ -68,7 +39,7 @@ export const ComparisonCard = ({
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-error-er100 text-text-error"
               aria-hidden="true"
             >
-              <CrossIcon />
+              <X className="h-3 w-3" strokeWidth={3} />
             </span>
             {beforeLabel}
           </div>
@@ -88,7 +59,7 @@ export const ComparisonCard = ({
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-success-su100 text-text-success"
               aria-hidden="true"
             >
-              <CheckIcon />
+              <Check className="h-3 w-3" strokeWidth={3} />
             </span>
             {afterLabel}
           </div>

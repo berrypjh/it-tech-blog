@@ -1,79 +1,15 @@
+import { Eye, Keyboard, Lightbulb, ShieldCheck } from 'lucide-react';
+
 import { PrincipleCard } from '../components/PrincipleCard';
 import type { IntroContent } from '../content';
 
-const EyeIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <rect x="2" y="5" width="20" height="14" rx="2" />
-    <path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M10 13h.01M14 13h.01M18 13h.01M7 17h10" />
-  </svg>
-);
-
-const BulbIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M9 18h6M10 22h4" />
-    <path d="M12 2a7 7 0 014 12.66V17h-8v-2.34A7 7 0 0112 2z" />
-  </svg>
-);
-
-const ShieldIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="M9 12l2 2 4-4" />
-  </svg>
-);
+const iconClass = 'h-5 w-5';
 
 const icons = [
-  <EyeIcon key="i1" />,
-  <KeyboardIcon key="i2" />,
-  <BulbIcon key="i3" />,
-  <ShieldIcon key="i4" />,
+  <Eye key="i1" className={iconClass} aria-hidden="true" />,
+  <Keyboard key="i2" className={iconClass} aria-hidden="true" />,
+  <Lightbulb key="i3" className={iconClass} aria-hidden="true" />,
+  <ShieldCheck key="i4" className={iconClass} aria-hidden="true" />,
 ];
 const tones = ['primary', 'success', 'secondary', 'warning'] as const;
 

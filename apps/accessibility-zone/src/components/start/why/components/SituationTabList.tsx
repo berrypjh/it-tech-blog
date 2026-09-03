@@ -4,6 +4,8 @@ import { useRef } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Check } from 'lucide-react';
+
 import type { Situation, SituationId } from '../content';
 
 type Props = {
@@ -85,15 +87,7 @@ export const SituationTabList = ({
                 className="ml-auto inline-flex h-5 w-5 items-center justify-center rounded-rounded bg-background-primary text-text-contrastText"
                 aria-label={activeBadge}
               >
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12l4 4L19 7"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
               </span>
             )}
           </button>

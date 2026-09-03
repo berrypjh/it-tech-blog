@@ -1,33 +1,6 @@
+import { Check, Heart, X } from 'lucide-react';
+
 import type { AssistiveTechContent } from '../content';
-
-const CrossIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path d="M6 6l12 12M6 18l12-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const HeartIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M12 20s-7-4.35-9.5-9C1 8.5 3 5 6.5 5c2 0 3 1 4 2.5C11.5 6 12.5 5 14.5 5 18 5 20 8.5 18.5 11c-2.5 4.65-6.5 9-6.5 9z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const PairLabel = ({ label, tone }: { label: string; tone: 'error' | 'success' }) => (
   <div
@@ -45,7 +18,11 @@ const PairLabel = ({ label, tone }: { label: string; tone: 'error' | 'success' }
           : 'bg-success-su100 text-text-success dark:bg-success-su900/40')
       }
     >
-      {tone === 'error' ? <CrossIcon /> : <CheckIcon />}
+      {tone === 'error' ? (
+        <X className="h-2.5 w-2.5" strokeWidth={3} />
+      ) : (
+        <Check className="h-2.5 w-2.5" strokeWidth={3} />
+      )}
     </span>
     {label}
   </div>
@@ -133,7 +110,7 @@ const IconButtonCard = ({
               aria-hidden="true"
               className="pointer-events-none flex h-10 w-10 items-center justify-center rounded-rounded border border-stroke-default bg-background-surface text-text-error"
             >
-              <HeartIcon />
+              <Heart className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
           </div>
           <p className="text-[0.625rem] leading-snug text-text-error">{content.beforeNote}</p>
@@ -149,7 +126,7 @@ const IconButtonCard = ({
               aria-hidden="true"
               className="pointer-events-none inline-flex items-center gap-1.5 rounded-md border border-stroke-success/50 bg-background-surface px-3 py-1.5 text-xsm font-semiBold text-text-default"
             >
-              <HeartIcon />
+              <Heart className="h-3.5 w-3.5" aria-hidden="true" />
               {content.afterLabel}
             </button>
           </div>

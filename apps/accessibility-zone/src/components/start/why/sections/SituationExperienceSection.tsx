@@ -2,82 +2,21 @@
 
 import { useState } from 'react';
 
+import { Brain, Hand, Keyboard, Pause, Play, Smartphone, Sun, VolumeX } from 'lucide-react';
+
 import { ComparisonDemoCard } from '../components/ComparisonDemoCard';
 import { SituationTabList } from '../components/SituationTabList';
 import type { ImportanceContent, SituationId } from '../content';
 
-const HandIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M9 11V6.5a1.5 1.5 0 113 0V11M12 11V5a1.5 1.5 0 013 0v6M15 11V7a1.5 1.5 0 013 0v8a6 6 0 01-6 6h-1a6 6 0 01-5-3l-3-6a1.5 1.5 0 012-2l3 3V8a1.5 1.5 0 013 0v3"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const MuteIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M11 5L6 9H2v6h4l5 4V5zM22 9l-6 6M16 9l6 6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const SunIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const PhoneIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="6" y="3" width="12" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path d="M11 18h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const BrainIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M9 4a3 3 0 00-3 3v1a3 3 0 00-2 3v1a3 3 0 002 3v1a3 3 0 003 3M15 4a3 3 0 013 3v1a3 3 0 012 3v1a3 3 0 01-2 3v1a3 3 0 01-3 3M9 4v18M15 4v18"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+const situationIconClass = 'h-3.5 w-3.5';
 
 const iconMap: Record<SituationId, React.ReactNode> = {
-  'one-hand': <HandIcon />,
-  silent: <MuteIcon />,
-  sunlight: <SunIcon />,
-  'no-mouse': <KeyboardIcon />,
-  'small-screen': <PhoneIcon />,
-  'low-focus': <BrainIcon />,
+  'one-hand': <Hand className={situationIconClass} aria-hidden="true" />,
+  silent: <VolumeX className={situationIconClass} aria-hidden="true" />,
+  sunlight: <Sun className={situationIconClass} aria-hidden="true" />,
+  'no-mouse': <Keyboard className={situationIconClass} aria-hidden="true" />,
+  'small-screen': <Smartphone className={situationIconClass} aria-hidden="true" />,
+  'low-focus': <Brain className={situationIconClass} aria-hidden="true" />,
 };
 
 const SilentVideo = ({ playing }: { playing: boolean }) => (
@@ -96,15 +35,7 @@ const SilentVideo = ({ playing }: { playing: boolean }) => (
       className="absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-rounded bg-background-surface/90 text-text-default shadow-md"
       aria-hidden="true"
     >
-      {playing ? (
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-          <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      )}
+      {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
     </span>
     <div className="absolute inset-x-2 bottom-2 h-1 rounded-full bg-background-surface/30">
       <div className="h-full w-1/3 rounded-full bg-background-surface/90" />
@@ -128,9 +59,7 @@ const CaptionedVideo = ({ caption, time }: { caption: string; time: string }) =>
       className="absolute left-1/2 top-[40%] flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-rounded bg-background-surface/90 text-text-default shadow-md"
       aria-hidden="true"
     >
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-        <path d="M8 5v14l11-7z" />
-      </svg>
+      <Play className="h-3.5 w-3.5" />
     </span>
     <span className="absolute left-1.5 top-1.5 rounded-rounded bg-background-primary px-1.5 py-0.5 text-[0.5625rem] font-bold text-text-contrastText">
       CC

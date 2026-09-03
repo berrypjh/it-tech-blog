@@ -1,5 +1,7 @@
 'use client';
 
+import { Minus, Plus, RotateCcw } from 'lucide-react';
+
 import type { DisabilitiesContent } from '../content';
 
 type Props = {
@@ -10,30 +12,6 @@ type Props = {
   onFontScaleChange: (v: number) => void;
   onReset: () => void;
 };
-
-const MinusIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M5 12h14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-  </svg>
-);
-
-const PlusIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-  </svg>
-);
-
-const ResetIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M3 12a9 9 0 109-9v4l4-4-4-4"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 export const PreviewControlBar = ({
   controls,
@@ -59,7 +37,7 @@ export const PreviewControlBar = ({
           onClick={() => onContrastChange(Math.max(0, contrastLevel - 10))}
           className="flex h-7 w-7 items-center justify-center rounded-md border border-stroke-default text-text-default transition-colors hover:bg-primary-pr100/40 dark:hover:bg-primary-pr900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
         >
-          <MinusIcon />
+          <Minus className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
         </button>
         <input
           id={contrastSliderId}
@@ -76,7 +54,7 @@ export const PreviewControlBar = ({
           onClick={() => onContrastChange(Math.min(100, contrastLevel + 10))}
           className="flex h-7 w-7 items-center justify-center rounded-md border border-stroke-default text-text-default transition-colors hover:bg-primary-pr100/40 dark:hover:bg-primary-pr900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
         >
-          <PlusIcon />
+          <Plus className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
         </button>
       </div>
 
@@ -107,7 +85,7 @@ export const PreviewControlBar = ({
         onClick={onReset}
         className="inline-flex items-center gap-1.5 rounded-md border border-stroke-default bg-background-surface px-sm py-1.5 text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 dark:hover:bg-primary-pr900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
       >
-        <ResetIcon />
+        <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
         {controls.reset}
       </button>
     </div>

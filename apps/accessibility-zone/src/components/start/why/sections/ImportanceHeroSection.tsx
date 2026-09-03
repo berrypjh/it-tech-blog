@@ -1,24 +1,7 @@
+import { Play, Timer } from 'lucide-react';
+
 import { ImportanceHeroIllustration } from '../components/ImportanceHeroIllustration';
 import type { ImportanceContent } from '../content';
-
-const TimerIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M12 9v4l2.5 2M9 2h6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const PlayIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
 
 export const ImportanceHeroSection = ({ content }: { content: ImportanceContent['hero'] }) => {
   return (
@@ -56,7 +39,7 @@ export const ImportanceHeroSection = ({ content }: { content: ImportanceContent[
                 className="flex h-5 w-5 items-center justify-center rounded-rounded bg-background-surface/20"
                 aria-hidden="true"
               >
-                <TimerIcon />
+                <Timer className="h-3.5 w-3.5" />
               </span>
               {content.primaryCta}
             </button>
@@ -65,7 +48,7 @@ export const ImportanceHeroSection = ({ content }: { content: ImportanceContent[
               type="button"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-stroke-default bg-background-surface px-lg py-md text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2 dark:hover:bg-primary-pr900/30"
             >
-              <PlayIcon />
+              <Play className="h-3.5 w-3.5" aria-hidden="true" />
               {content.secondaryCta}
             </button>
           </div>

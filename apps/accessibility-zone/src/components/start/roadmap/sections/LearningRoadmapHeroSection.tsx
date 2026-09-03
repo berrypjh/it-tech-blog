@@ -1,11 +1,7 @@
+import { Play } from 'lucide-react';
+
 import { LearningRoadmapHeroIllustration } from '../components/LearningRoadmapHeroIllustration';
 import type { RoadmapContent } from '../content';
-
-const PlayIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
 
 export const LearningRoadmapHeroSection = ({ content }: { content: RoadmapContent['hero'] }) => {
   return (
@@ -43,7 +39,7 @@ export const LearningRoadmapHeroSection = ({ content }: { content: RoadmapConten
               type="button"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-stroke-default bg-background-surface px-lg py-md text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
             >
-              <PlayIcon />
+              <Play className="h-3.5 w-3.5" aria-hidden="true" />
               {content.secondaryCta}
             </button>
           </div>

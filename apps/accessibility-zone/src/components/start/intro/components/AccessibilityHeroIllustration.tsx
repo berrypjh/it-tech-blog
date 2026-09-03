@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ALargeSmall, Captions, Check, Contrast, Keyboard, Volume2 } from 'lucide-react';
+
 import type { IntroContent } from '../content';
 
 type Props = {
@@ -7,68 +9,6 @@ type Props = {
   browser: IntroContent['hero']['browser'];
   illustrationLabel: string;
 };
-
-const ScreenReaderIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    <path
-      d="M15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const KeyboardChipIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const CaptionsIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M10 11.5a2 2 0 10-1 3.5M16.5 11.5a2 2 0 10-1 3.5"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const ContrastIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-    <path d="M12 3v18a9 9 0 000-18z" fill="currentColor" />
-  </svg>
-);
-
-const FontSizeIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M4 18l4-11 4 11M5.5 14h5"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14 18l3-7 3 7M15 16h4"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const FloatingChip = ({
   icon,
@@ -198,15 +138,7 @@ export const AccessibilityHeroIllustration = ({ badges, browser, illustrationLab
         {/* footer check badge */}
         <div className="flex justify-end px-3 pb-3 sm:px-4 sm:pb-4">
           <span className="inline-flex items-center gap-1 rounded-rounded bg-success-su100 px-1.5 py-1 text-[0.625rem] font-semiBold text-text-success">
-            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-              <path
-                d="M5 12l4 4L19 7"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Check className="h-2.5 w-2.5" strokeWidth={3} aria-hidden="true" />
             {browser.checkLabel}
           </span>
         </div>
@@ -214,31 +146,31 @@ export const AccessibilityHeroIllustration = ({ badges, browser, illustrationLab
 
       {/* floating chips */}
       <FloatingChip
-        icon={<ScreenReaderIcon />}
+        icon={<Volume2 className="h-3.5 w-3.5" aria-hidden="true" />}
         label={badges.screenReader}
         tone="primary"
         className="left-0 top-2 sm:left-2"
       />
       <FloatingChip
-        icon={<KeyboardChipIcon />}
+        icon={<Keyboard className="h-3.5 w-3.5" aria-hidden="true" />}
         label={badges.keyboard}
         tone="secondary"
         className="left-1/2 top-0 -translate-x-1/2"
       />
       <FloatingChip
-        icon={<CaptionsIcon />}
+        icon={<Captions className="h-3.5 w-3.5" aria-hidden="true" />}
         label={badges.captions}
         tone="warning"
         className="right-0 top-4 sm:right-2"
       />
       <FloatingChip
-        icon={<ContrastIcon />}
+        icon={<Contrast className="h-3.5 w-3.5" aria-hidden="true" />}
         label={badges.contrast}
         tone="success"
         className="bottom-2 left-0 sm:left-2"
       />
       <FloatingChip
-        icon={<FontSizeIcon />}
+        icon={<ALargeSmall className="h-3.5 w-3.5" aria-hidden="true" />}
         label={badges.fontSize}
         tone="error"
         className="bottom-4 right-0 sm:right-2"

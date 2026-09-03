@@ -4,26 +4,10 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Check, X } from 'lucide-react';
+
 import { QuizOptionButton } from '../components/QuizOptionButton';
 import type { AssistiveTechContent } from '../content';
-
-const CrossSmall = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path d="M6 6l12 12M6 18l12-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-  </svg>
-);
-
-const CheckSmall = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 type AccessibleNameAnswer = string | null;
 
@@ -166,7 +150,7 @@ const AccessibleInputQuizCard = ({
               aria-hidden="true"
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-error-er100 text-text-error dark:bg-error-er900/40"
             >
-              <CrossSmall />
+              <X className="h-2.5 w-2.5" strokeWidth={3} />
             </span>
             잘못된 예
           </span>
@@ -195,7 +179,7 @@ const AccessibleInputQuizCard = ({
               aria-hidden="true"
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40"
             >
-              <CheckSmall />
+              <Check className="h-2.5 w-2.5" strokeWidth={3} />
             </span>
             올바른 예
           </span>

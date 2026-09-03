@@ -1,84 +1,15 @@
+import { ChartColumnIncreasing, ShieldCheck, Smile, Users } from 'lucide-react';
+
 import { ImportanceReasonCard } from '../components/ImportanceReasonCard';
 import type { ImportanceContent } from '../content';
 
-const SmileIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="9" />
-    <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
-  </svg>
-);
-
-const PeopleIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="9" cy="8" r="3" />
-    <circle cx="17" cy="9" r="2.5" />
-    <path d="M3 19c.5-3.5 3-5 6-5s5.5 1.5 6 5" />
-    <path d="M14 19c.4-2.5 2-4 4-4s3.5 1.2 4 4" />
-  </svg>
-);
-
-const ShieldCheckIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="M9 12l2 2 4-4" />
-  </svg>
-);
-
-const ChartIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M3 21h18" />
-    <rect x="5" y="12" width="3" height="7" />
-    <rect x="10.5" y="8" width="3" height="11" />
-    <rect x="16" y="5" width="3" height="14" />
-    <circle cx="20" cy="4" r="2" />
-  </svg>
-);
+const iconClass = 'h-5 w-5';
 
 const icons: Record<string, React.ReactNode> = {
-  ux: <SmileIcon />,
-  inclusion: <PeopleIcon />,
-  quality: <ShieldCheckIcon />,
-  business: <ChartIcon />,
+  ux: <Smile className={iconClass} aria-hidden="true" />,
+  inclusion: <Users className={iconClass} aria-hidden="true" />,
+  quality: <ShieldCheck className={iconClass} aria-hidden="true" />,
+  business: <ChartColumnIncreasing className={iconClass} aria-hidden="true" />,
 };
 
 export const ImportanceReasonsSection = ({

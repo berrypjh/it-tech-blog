@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight } from 'lucide-react';
+
 import type { ReasonCard } from '../content';
 
 type Props = {
@@ -27,22 +29,6 @@ const toneMap = {
   },
 };
 
-const ChevronRightIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="14"
-    height="14"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M9 6l6 6-6 6" />
-  </svg>
-);
-
 export const ImportanceReasonCard = ({ card, icon, detailCta }: Props) => {
   const t = toneMap[card.tone];
   return (
@@ -69,7 +55,7 @@ export const ImportanceReasonCard = ({ card, icon, detailCta }: Props) => {
         className="inline-flex w-full items-center justify-between gap-1 rounded-md border border-stroke-default bg-background-surface px-sm py-2 text-xsm font-semiBold text-text-default transition-colors hover:border-stroke-primary hover:bg-primary-pr100/40 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2 dark:hover:bg-primary-pr900/30"
       >
         {detailCta}
-        <ChevronRightIcon />
+        <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
       </button>
     </article>
   );

@@ -1,57 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleDot, Keyboard, Mic, Volume2, ZoomIn } from 'lucide-react';
+
 import type { AssistiveTechContent } from '../content';
-
-const SpeakerIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    <path
-      d="M15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const MagnifierPlusIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-    <path d="M20 20l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    <path d="M9 11h4M11 9v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const MicIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const SwitchIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-    <circle cx="12" cy="12" r="3" fill="currentColor" />
-  </svg>
-);
 
 const FloatingChip = ({
   icon,
@@ -196,31 +147,31 @@ export const AssistiveTechnologyHeroIllustration = ({
       </svg>
 
       <FloatingChip
-        icon={<SpeakerIcon />}
+        icon={<Volume2 className="h-3.5 w-3.5" />}
         label={hero.floatingChips.screenReader}
         tone="primary"
         className="left-[8%] top-[2%]"
       />
       <FloatingChip
-        icon={<KeyboardIcon />}
+        icon={<Keyboard className="h-3.5 w-3.5" />}
         label={hero.floatingChips.keyboard}
         tone="secondary"
         className="left-1/2 top-0 -translate-x-1/2"
       />
       <FloatingChip
-        icon={<MagnifierPlusIcon />}
+        icon={<ZoomIn className="h-3.5 w-3.5" />}
         label={hero.floatingChips.magnification}
         tone="warning"
         className="right-[6%] top-[4%]"
       />
       <FloatingChip
-        icon={<MicIcon />}
+        icon={<Mic className="h-3.5 w-3.5" />}
         label={hero.floatingChips.voice}
         tone="success"
         className="left-[2%] top-[42%]"
       />
       <FloatingChip
-        icon={<SwitchIcon />}
+        icon={<CircleDot className="h-3.5 w-3.5" />}
         label={hero.floatingChips.switchInput}
         tone="info"
         className="right-[2%] top-[42%]"

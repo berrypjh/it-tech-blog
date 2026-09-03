@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown } from 'lucide-react';
+
 import type { AssistiveTechContent, KeyboardCard } from '../content';
 
 const NumberBadge = ({ value }: { value: string }) => (
@@ -9,18 +11,6 @@ const NumberBadge = ({ value }: { value: string }) => (
   >
     {value}
   </span>
-);
-
-const ArrowDownIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M12 5v14M6 13l6 6 6-6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
 );
 
 const CardShell = ({
@@ -64,7 +54,7 @@ export const TabOrderCard = ({ card, items }: { card: KeyboardCard; items: strin
           <span className="flex-1">{item}</span>
           {i < items.length - 1 && (
             <span aria-hidden="true" className="text-text-light">
-              <ArrowDownIcon />
+              <ArrowDown className="h-3.5 w-3.5" />
             </span>
           )}
         </li>

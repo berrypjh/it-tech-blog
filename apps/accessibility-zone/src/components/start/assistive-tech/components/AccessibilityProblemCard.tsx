@@ -1,3 +1,5 @@
+import { Check, TriangleAlert } from 'lucide-react';
+
 import type { ProblemCard } from '../content';
 
 type Props = {
@@ -6,25 +8,6 @@ type Props = {
   problemLabel: string;
   solutionLabel: string;
 };
-
-const WarningIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path d="M12 4l9 16H3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    <path d="M12 11v4M12 18v.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 export const AccessibilityProblemCard = ({ card, icon, problemLabel, solutionLabel }: Props) => {
   return (
@@ -48,7 +31,7 @@ export const AccessibilityProblemCard = ({ card, icon, problemLabel, solutionLab
               aria-hidden="true"
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-error-er100 text-text-error"
             >
-              <WarningIcon />
+              <TriangleAlert className="h-2.5 w-2.5" />
             </span>
             {problemLabel}
           </p>
@@ -60,7 +43,7 @@ export const AccessibilityProblemCard = ({ card, icon, problemLabel, solutionLab
               aria-hidden="true"
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-success-su100 text-text-success"
             >
-              <CheckIcon />
+              <Check className="h-2.5 w-2.5" strokeWidth={3} />
             </span>
             {solutionLabel}
           </p>

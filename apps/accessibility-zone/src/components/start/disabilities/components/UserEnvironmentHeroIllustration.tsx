@@ -1,45 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ALargeSmall, Ear, Keyboard, Sun } from 'lucide-react';
+
 import type { DisabilitiesContent } from '../content';
 
 type Props = {
   hero: DisabilitiesContent['hero'];
 };
-
-const SunIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const EarIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M7 11a5 5 0 0110 0c0 2-1 3-3 4s-2 2-2 4a2 2 0 01-4 0c0-4-1-4-1-8z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
 
 const FloatingChip = ({
   icon,
@@ -207,29 +174,25 @@ export const UserEnvironmentHeroIllustration = ({ hero }: Props) => {
       <CityBackground />
 
       <FloatingChip
-        icon={<SunIcon />}
+        icon={<Sun className="h-3.5 w-3.5" />}
         label={hero.floatingChips.brightness}
         tone="warning"
         className="left-[6%] top-[4%]"
       />
       <FloatingChip
-        icon={<EarIcon />}
+        icon={<Ear className="h-3.5 w-3.5" />}
         label={hero.floatingChips.hearing}
         tone="primary"
         className="left-[38%] top-0"
       />
       <FloatingChip
-        icon={
-          <span className="text-[0.75rem] font-extraBold leading-none text-text-secondary sm:text-sm">
-            Aa
-          </span>
-        }
+        icon={<ALargeSmall className="h-3.5 w-3.5" />}
         label={hero.floatingChips.fontSize}
         tone="secondary"
         className="right-[30%] top-[12%]"
       />
       <FloatingChip
-        icon={<KeyboardIcon />}
+        icon={<Keyboard className="h-3.5 w-3.5" />}
         label={hero.floatingChips.keyboard}
         tone="success"
         className="right-[4%] top-[2%]"

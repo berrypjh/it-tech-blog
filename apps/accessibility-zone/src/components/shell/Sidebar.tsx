@@ -5,36 +5,37 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useLocale } from '@it-tech-blog/preferences';
 import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
-import {
-  AccessibilityIcon,
-  BackArrowIcon,
-  BriefcaseIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  ClipboardListIcon,
-  CollapseAllIcon,
-  DesignPatternIcon,
-  ExpandAllIcon,
-  HtmlIcon,
-  KeyboardIcon,
-  PaletteIcon,
-  RocketIcon,
-  VolumeIcon,
-} from '@it-tech-blog/ui';
 import { cn } from '@it-tech-blog/utils';
+
+import {
+  Accessibility,
+  ArrowLeft,
+  Briefcase,
+  ChevronDown,
+  ChevronsDownUp,
+  ChevronsUpDown,
+  CircleCheck,
+  ClipboardList,
+  CodeXml,
+  Keyboard,
+  Layers,
+  Palette,
+  Rocket,
+  Volume2,
+} from 'lucide-react';
 
 import { navData, sidebarStrings } from '@/data';
 
 const sectionIcons = [
-  RocketIcon,
-  HtmlIcon,
-  KeyboardIcon,
-  VolumeIcon,
-  ClipboardListIcon,
-  DesignPatternIcon,
-  PaletteIcon,
-  CheckCircleIcon,
-  BriefcaseIcon,
+  Rocket,
+  CodeXml,
+  Keyboard,
+  Volume2,
+  ClipboardList,
+  Layers,
+  Palette,
+  CircleCheck,
+  Briefcase,
 ];
 
 export const Sidebar = ({ className }: { className?: string }) => {
@@ -57,7 +58,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
         <div className="flex items-center justify-between">
           <Link href="/intro" className="flex items-center gap-sm group">
             <div className="w-7 h-7 rounded bg-background-primary group-hover:bg-primary-pr700 transition-colors flex items-center justify-center">
-              <AccessibilityIcon color="white" />
+              <Accessibility className="h-5 w-5 text-white" aria-hidden="true" />
             </div>
 
             <span className="font-bold text-sm tracking-tight text-text-default">{t.title}</span>
@@ -77,7 +78,11 @@ export const Sidebar = ({ className }: { className?: string }) => {
           onClick={toggleAll}
           className="flex items-center gap-xs px-sm py-xs rounded text-text-light/40 hover:text-text-light hover:bg-background-grey/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
         >
-          {anyExpanded ? <CollapseAllIcon /> : <ExpandAllIcon />}
+          {anyExpanded ? (
+            <ChevronsDownUp className="h-3.5 w-3.5" aria-hidden="true" />
+          ) : (
+            <ChevronsUpDown className="h-3.5 w-3.5" aria-hidden="true" />
+          )}
 
           <span className="text-[10px]">{anyExpanded ? t.collapseAll : t.expandAll}</span>
         </button>
@@ -89,7 +94,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
           const isExpanded = expanded.has(groupIndex);
           const panelId = `nav-panel-${groupIndex}`;
           const hasActiveItem = group.items.some((item) => pathname === `/${item.id}`);
-          const SectionIcon = sectionIcons[groupIndex] ?? RocketIcon;
+          const SectionIcon = sectionIcons[groupIndex] ?? Rocket;
 
           return (
             <div key={groupIndex}>
@@ -108,16 +113,17 @@ export const Sidebar = ({ className }: { className?: string }) => {
                     hasActiveItem ? 'text-text-primary' : 'text-text-light/40',
                   )}
                 >
-                  <SectionIcon />
+                  <SectionIcon className="h-4 w-4" aria-hidden="true" />
                 </span>
 
                 <span className="flex-1 text-xsm font-semiBold uppercase tracking-[0.07em]">
                   {group.title}
                 </span>
 
-                <ChevronDownIcon
+                <ChevronDown
+                  aria-hidden="true"
                   className={cn(
-                    'transition-all duration-200',
+                    'h-3 w-3 transition-all duration-200',
                     hasActiveItem ? 'text-text-primary' : 'text-text-light/30',
                     isExpanded && 'rotate-180',
                   )}
@@ -188,7 +194,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
           href="/"
           className="flex items-center gap-sm text-xxsm text-text-light/50 hover:text-text-light transition-colors group"
         >
-          <BackArrowIcon />
+          <ArrowLeft className="h-3 w-3" aria-hidden="true" />
           {t.backToMain}
         </a>
       </div>

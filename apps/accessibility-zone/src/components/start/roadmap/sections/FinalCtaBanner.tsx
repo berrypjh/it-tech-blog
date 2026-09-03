@@ -1,23 +1,8 @@
 import Link from 'next/link';
 
+import { Bookmark, Sparkles } from 'lucide-react';
+
 import type { RoadmapContent } from '../content';
-
-const SparkleIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M12 3l1.5 5 5 1.5-5 1.5L12 16l-1.5-5L5.5 9.5 10.5 8z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const BookmarkIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M6 4h12v17l-6-4-6 4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-  </svg>
-);
 
 const MonitorScene = () => (
   <svg viewBox="0 0 160 140" className="h-full w-full" aria-hidden="true">
@@ -67,7 +52,7 @@ export const FinalCtaBanner = ({ content }: { content: RoadmapContent['finalCta'
           </div>
           <div className="min-w-0">
             <span className="inline-flex items-center gap-1 rounded-rounded bg-background-surface/15 px-2 py-0.5 text-xxsm font-semiBold backdrop-blur-sm">
-              <SparkleIcon />
+              <Sparkles className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />
               {content.eyebrow}
             </span>
             <h2
@@ -94,7 +79,7 @@ export const FinalCtaBanner = ({ content }: { content: RoadmapContent['finalCta'
             type="button"
             className="inline-flex items-center justify-center gap-2 rounded-md border border-background-surface/40 bg-background-surface/10 px-lg py-md text-xsm font-semiBold text-text-contrastText backdrop-blur-sm transition-colors hover:bg-background-surface/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-surface focus-visible:ring-offset-2 focus-visible:ring-offset-primary-pr500 sm:text-sm"
           >
-            <BookmarkIcon />
+            <Bookmark className="h-3.5 w-3.5" aria-hidden="true" />
             {content.secondary}
           </button>
         </div>

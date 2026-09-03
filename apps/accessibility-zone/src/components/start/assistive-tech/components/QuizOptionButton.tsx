@@ -2,6 +2,8 @@
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Check, X } from 'lucide-react';
+
 type Props = {
   id: string;
   isSelected: boolean;
@@ -10,31 +12,6 @@ type Props = {
   onSelect: (id: string) => void;
   children: React.ReactNode;
 };
-
-const CheckCircle = () => (
-  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="10" fill="currentColor" />
-    <path
-      d="M7 12l3 3 7-7"
-      stroke="rgb(var(--ds-background-surface-rgb))"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const CrossCircle = () => (
-  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="10" fill="currentColor" />
-    <path
-      d="M8 8l8 8M16 8l-8 8"
-      stroke="rgb(var(--ds-background-surface-rgb))"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
 
 export const QuizOptionButton = ({
   id,
@@ -86,9 +63,9 @@ export const QuizOptionButton = ({
         )}
       >
         {state === 'correct' || state === 'reveal' ? (
-          <CheckCircle />
+          <Check className="h-3 w-3" strokeWidth={3} />
         ) : state === 'incorrect' ? (
-          <CrossCircle />
+          <X className="h-3 w-3" strokeWidth={3} />
         ) : (
           id
         )}

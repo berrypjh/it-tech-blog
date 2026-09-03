@@ -1,53 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Captions, Check, Contrast, Keyboard, Pointer } from 'lucide-react';
+
 import type { ImportanceContent } from '../content';
 
 type Props = {
   hero: ImportanceContent['hero'];
 };
-
-const CaptionsIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M10 11.5a2 2 0 10-1 3.5M16.5 11.5a2 2 0 10-1 3.5"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const KeyboardIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const ContrastIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-    <path d="M12 3v18a9 9 0 000-18z" fill="currentColor" />
-  </svg>
-);
-
-const TouchIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M9 11V7a3 3 0 116 0v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    <path
-      d="M6 13a3 3 0 016 0v1l3 1a4 4 0 013 4v3H9l-3-4-1-2a2 2 0 012-3z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const BigCheckBadge = ({ label }: { label: string }) => (
   <div
@@ -55,15 +14,7 @@ const BigCheckBadge = ({ label }: { label: string }) => (
     aria-hidden="true"
   >
     <span className="flex h-6 w-6 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40 sm:h-7 sm:w-7">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
-        <path
-          d="M5 12l4 4L19 7"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Check className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
     </span>
     <span className="whitespace-nowrap">{label}</span>
   </div>
@@ -178,25 +129,25 @@ export const ImportanceHeroIllustration = ({ hero }: Props) => {
       </div>
 
       <FloatingChip
-        icon={<CaptionsIcon />}
+        icon={<Captions className="h-3.5 w-3.5" aria-hidden="true" />}
         label={hero.floatingChips.captions}
         tone="primary"
         className="left-0 top-4 sm:left-2 sm:top-6"
       />
       <FloatingChip
-        icon={<ContrastIcon />}
+        icon={<Contrast className="h-3.5 w-3.5" aria-hidden="true" />}
         label={hero.floatingChips.contrast}
         tone="warning"
         className="right-0 top-4 sm:right-2 sm:top-6"
       />
       <FloatingChip
-        icon={<KeyboardIcon />}
+        icon={<Keyboard className="h-3.5 w-3.5" aria-hidden="true" />}
         label={hero.floatingChips.keyboard}
         tone="secondary"
         className="bottom-4 left-0 sm:bottom-6 sm:left-2"
       />
       <FloatingChip
-        icon={<TouchIcon />}
+        icon={<Pointer className="h-3.5 w-3.5" aria-hidden="true" />}
         label={hero.floatingChips.touch}
         tone="success"
         className="bottom-4 right-0 sm:bottom-6 sm:right-2"

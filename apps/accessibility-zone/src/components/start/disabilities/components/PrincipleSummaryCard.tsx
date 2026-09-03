@@ -1,16 +1,6 @@
-import type { PrincipleCard } from '../content';
+import { Check } from 'lucide-react';
 
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+import type { PrincipleCard } from '../content';
 
 export const PrincipleSummaryCard = ({ card }: { card: PrincipleCard }) => {
   return (
@@ -19,7 +9,7 @@ export const PrincipleSummaryCard = ({ card }: { card: PrincipleCard }) => {
         aria-hidden="true"
         className="flex h-10 w-10 items-center justify-center rounded-rounded bg-background-success text-text-contrastText shadow-sm"
       >
-        <CheckIcon />
+        <Check className="h-4.5 w-4.5" strokeWidth={3} />
       </span>
 
       <h3 className="whitespace-pre-line text-sm font-bold leading-snug text-text-default sm:text-md">

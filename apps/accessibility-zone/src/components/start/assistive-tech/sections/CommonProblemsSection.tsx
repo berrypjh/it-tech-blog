@@ -1,58 +1,16 @@
+import { AppWindow, BellRing, Heading, MousePointerClick, TextCursorInput } from 'lucide-react';
+
 import { AccessibilityProblemCard } from '../components/AccessibilityProblemCard';
 import type { AssistiveTechContent, ProblemCard } from '../content';
 
-const IconButtonIssue = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
-    <circle cx="12" cy="12" r="2" fill="currentColor" />
-  </svg>
-);
-
-const LabelIssue = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <rect x="3" y="8" width="18" height="8" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path d="M7 12h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const HeadingIssue = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <path
-      d="M5 4v16M11 4v16M5 12h6M16 18l3-3-3-3M16 12l3-3-3-3"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ToastIssue = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <rect x="4" y="8" width="16" height="8" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M9 12h6M3 18l3-2M21 18l-3-2"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const ModalFocusIssue = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path d="M8 9h8M8 13h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    <circle cx="20" cy="20" r="2.5" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
+const iconClass = 'h-4.5 w-4.5';
 
 const icons: Record<ProblemCard['id'], React.ReactNode> = {
-  'icon-button': <IconButtonIssue />,
-  'no-label': <LabelIssue />,
-  heading: <HeadingIssue />,
-  toast: <ToastIssue />,
-  'modal-focus': <ModalFocusIssue />,
+  'icon-button': <MousePointerClick className={iconClass} aria-hidden="true" />,
+  'no-label': <TextCursorInput className={iconClass} aria-hidden="true" />,
+  heading: <Heading className={iconClass} aria-hidden="true" />,
+  toast: <BellRing className={iconClass} aria-hidden="true" />,
+  'modal-focus': <AppWindow className={iconClass} aria-hidden="true" />,
 };
 
 export const CommonProblemsSection = ({

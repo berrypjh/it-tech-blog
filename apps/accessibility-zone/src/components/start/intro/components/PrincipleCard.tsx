@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight } from 'lucide-react';
+
 type Props = {
   index: number;
   title: string;
@@ -79,19 +81,7 @@ export const PrincipleCard = ({
         className="inline-flex items-center justify-between gap-1 self-start rounded-md text-xsm font-semiBold text-text-primary transition-colors hover:text-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
       >
         {exampleAction}
-        <svg
-          viewBox="0 0 24 24"
-          width="12"
-          height="12"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
+        <ArrowRight className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
       </button>
     </article>
   );

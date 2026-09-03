@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Heart, Star } from 'lucide-react';
+
 import type { AssistiveTechContent, ReadingItem } from '../content';
 
 type Props = {
@@ -43,17 +45,6 @@ const Row = ({
   </li>
 );
 
-const HeartIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path
-      d="M12 20s-7-4.35-9.5-9C1 8.5 3 5 6.5 5c2 0 3 1 4 2.5C11.5 6 12.5 5 14.5 5 18 5 20 8.5 18.5 11c-2.5 4.65-6.5 9-6.5 9z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 const ImageScene = () => (
   <div
     className="flex h-20 w-full items-end justify-center overflow-hidden rounded-md bg-gradient-to-b from-primary-pr200/60 to-success-su100"
@@ -75,17 +66,6 @@ const ImageScene = () => (
   </div>
 );
 
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-    <path
-      d="M12 3l3 6 7 1-5 4 1 7-6-3-6 3 1-7-5-4 7-1z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
   const items = content.items;
   const inputId = 'sr-demo-email';
@@ -101,7 +81,7 @@ export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
           {content.browserUrl}
         </span>
         <span className="text-text-light" aria-hidden="true">
-          <StarIcon />
+          <Star className="h-3 w-3" />
         </span>
       </div>
 
@@ -169,7 +149,7 @@ export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
                     aria-label={content.iconButtonLabel}
                     className="flex h-9 w-9 items-center justify-center rounded-rounded border border-stroke-default bg-background-surface text-text-error transition-colors hover:border-stroke-error focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
                   >
-                    <HeartIcon />
+                    <Heart aria-hidden="true" className="h-3.5 w-3.5" />
                   </button>
                   <span className="text-[0.625rem] text-text-light">
                     (데모: 화면상 아이콘만 보이지만 실제로는 aria-label로 이름 제공)

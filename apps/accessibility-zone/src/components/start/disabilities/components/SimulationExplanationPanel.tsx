@@ -1,35 +1,6 @@
+import { Check, Lightbulb, TriangleAlert } from 'lucide-react';
+
 import type { DisabilitiesContent, SimulationMode } from '../content';
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const WarningIcon = () => (
-  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
-    <path d="M12 4l9 16H3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    <path d="M12 11v4M12 18v.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-const TipIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <path d="M9 18h6M10 22h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    <path
-      d="M12 2a7 7 0 014 12.66V17h-8v-2.34A7 7 0 0112 2z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 type Props = {
   mode: SimulationMode;
@@ -45,7 +16,7 @@ export const SimulationExplanationPanel = ({ mode, labels }: Props) => {
             aria-hidden="true"
             className="flex h-5 w-5 items-center justify-center rounded-rounded bg-warning-wa100 text-text-warning dark:bg-warning-wa900/40"
           >
-            <WarningIcon />
+            <TriangleAlert className="h-3 w-3" />
           </span>
           {labels.difficultyTitle}
         </h3>
@@ -71,7 +42,7 @@ export const SimulationExplanationPanel = ({ mode, labels }: Props) => {
             aria-hidden="true"
             className="flex h-5 w-5 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40"
           >
-            <CheckIcon />
+            <Check className="h-3 w-3" strokeWidth={3} />
           </span>
           {labels.improvementTitle}
         </h3>
@@ -85,7 +56,7 @@ export const SimulationExplanationPanel = ({ mode, labels }: Props) => {
                 aria-hidden="true"
                 className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-rounded bg-background-success text-text-contrastText"
               >
-                <CheckIcon />
+                <Check className="h-3 w-3" strokeWidth={3} />
               </span>
               {line}
             </li>
@@ -101,7 +72,7 @@ export const SimulationExplanationPanel = ({ mode, labels }: Props) => {
           aria-hidden="true"
           className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-rounded bg-background-primary text-text-contrastText"
         >
-          <TipIcon />
+          <Lightbulb className="h-3.5 w-3.5" />
         </span>
         <div>
           <p className="text-xxsm font-extraBold uppercase tracking-wide text-text-primary">

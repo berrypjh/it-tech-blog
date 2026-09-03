@@ -4,6 +4,8 @@ import { useRef } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Check } from 'lucide-react';
+
 import type { SimulationMode, SimulationModeId } from '../content';
 
 type Props = {
@@ -84,17 +86,7 @@ export const SimulationModeList = ({
                     : 'border border-stroke-default bg-background-surface',
                 )}
               >
-                {isActive ? (
-                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none">
-                    <path
-                      d="M5 12l4 4L19 7"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ) : null}
+                {isActive ? <Check className="h-2.5 w-2.5" strokeWidth={3} /> : null}
               </span>
               {isActive && <span className="sr-only">{activeBadge}</span>}
             </button>

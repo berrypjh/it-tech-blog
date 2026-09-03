@@ -4,43 +4,11 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Check, ShoppingCart } from 'lucide-react';
+
 import type { IntroContent } from '../content';
 
 type Props = { content: IntroContent['handsOn']['mission2'] };
-
-const CartIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="14"
-    height="14"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="9" cy="21" r="1" />
-    <circle cx="20" cy="21" r="1" />
-    <path d="M1 1h4l2.68 13.39A2 2 0 009.65 16h8.7a2 2 0 002-1.61L23 6H6" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="12"
-    height="12"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M5 12l4 4L19 7" />
-  </svg>
-);
 
 export const AccessibleNameMission = ({ content }: Props) => {
   const groupId = useId();
@@ -64,7 +32,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
           aria-label={content.buttonLabel}
           className="inline-flex items-center gap-1.5 rounded-md bg-background-primary px-lg py-md text-xsm font-semiBold text-text-contrastText shadow-sm hover:bg-primary-pr700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2"
         >
-          <CartIcon />
+          <ShoppingCart className="h-3.5 w-3.5" aria-hidden="true" />
           {content.buttonLabel}
         </button>
       </div>
@@ -103,7 +71,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
                   className="flex h-4 w-4 items-center justify-center rounded-rounded bg-background-success text-text-contrastText"
                   aria-hidden="true"
                 >
-                  <CheckIcon />
+                  <Check className="h-3 w-3" strokeWidth={3} />
                 </span>
               )}
             </label>

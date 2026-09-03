@@ -1,3 +1,5 @@
+import { Check, X } from 'lucide-react';
+
 type Props = {
   title: string;
   beforeLabel: string;
@@ -6,24 +8,6 @@ type Props = {
   afterVisual: React.ReactNode;
   helper: string;
 };
-
-const CrossIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path d="M6 6l12 12M6 18l12-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" aria-hidden="true">
-    <path
-      d="M5 12l4 4L19 7"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 export const ComparisonDemoCard = ({
   title,
@@ -44,7 +28,7 @@ export const ComparisonDemoCard = ({
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-error-er100 text-text-error dark:bg-error-er900/40"
               aria-hidden="true"
             >
-              <CrossIcon />
+              <X className="h-2.5 w-2.5" strokeWidth={3} />
             </span>
             {beforeLabel}
           </div>
@@ -59,7 +43,7 @@ export const ComparisonDemoCard = ({
               className="flex h-4 w-4 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40"
               aria-hidden="true"
             >
-              <CheckIcon />
+              <Check className="h-2.5 w-2.5" strokeWidth={3} />
             </span>
             {afterLabel}
           </div>

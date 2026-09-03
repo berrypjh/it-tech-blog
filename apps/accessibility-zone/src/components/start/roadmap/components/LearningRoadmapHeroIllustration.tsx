@@ -1,36 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ALargeSmall, ClipboardCheck, Image, LayoutGrid } from 'lucide-react';
+
 import type { RoadmapContent } from '../content';
-
-const ChecklistChipIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M8 9l2 2 4-4M8 16h8"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ImageChipIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-    <circle cx="9" cy="11" r="2" stroke="currentColor" strokeWidth="2" />
-    <path d="M3 17l5-4 6 4 4-3 3 2" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-  </svg>
-);
-
-const GridChipIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
-    <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-    <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-    <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-    <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
 
 const FloatingChip = ({
   icon,
@@ -197,27 +169,25 @@ export const LearningRoadmapHeroIllustration = ({ hero }: { hero: RoadmapContent
       <RoadmapPath />
 
       <FloatingChip
-        icon={<ChecklistChipIcon />}
+        icon={<ClipboardCheck className="h-3.5 w-3.5" />}
         label={hero.floatingChips.checklist}
         tone="primary"
         className="left-[6%] top-[18%]"
       />
       <FloatingChip
-        icon={<ImageChipIcon />}
+        icon={<Image className="h-3.5 w-3.5" />}
         label={hero.floatingChips.thumb}
         tone="secondary"
         className="left-[44%] top-[8%]"
       />
       <FloatingChip
-        icon={
-          <span className="text-[0.75rem] font-extraBold leading-none text-text-warning">Aa</span>
-        }
+        icon={<ALargeSmall className="h-3.5 w-3.5" />}
         label={hero.floatingChips.typography}
         tone="warning"
         className="right-[6%] top-[20%]"
       />
       <FloatingChip
-        icon={<GridChipIcon />}
+        icon={<LayoutGrid className="h-3.5 w-3.5" />}
         label={hero.floatingChips.grid}
         tone="success"
         className="right-[24%] top-[44%]"

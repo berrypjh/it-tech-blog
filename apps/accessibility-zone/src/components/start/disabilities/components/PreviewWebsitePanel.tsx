@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Check, Leaf, ShoppingCart, VolumeX } from 'lucide-react';
+
 import type { DisabilitiesContent, SimulationModeId } from '../content';
 
 type Props = {
@@ -21,20 +23,6 @@ const modeFilter = (mode: SimulationModeId): string => {
       return 'none';
   }
 };
-
-const CartIcon = ({ ariaLabel }: { ariaLabel: string }) => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" role="img" aria-label={ariaLabel}>
-    <path
-      d="M3 3h2l3 13h12l2-9H6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle cx="10" cy="20" r="1.5" fill="currentColor" />
-    <circle cx="18" cy="20" r="1.5" fill="currentColor" />
-  </svg>
-);
 
 const EcoBagSvg = () => (
   <svg viewBox="0 0 60 60" className="h-full w-full" aria-hidden="true">
@@ -128,14 +116,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
                 aria-hidden="true"
                 className="flex h-5 w-5 shrink-0 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40"
               >
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none">
-                  <path
-                    d="M12 3v18M5 12l7-9 7 9-7 9z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <Leaf className="h-3 w-3" />
               </span>
               <span className="truncate">{preview.brand}</span>
             </span>
@@ -155,7 +136,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
                 showFocusRings && 'ring-2 ring-stroke-primary ring-offset-1',
               )}
             >
-              <CartIcon ariaLabel={preview.cartAria} />
+              <ShoppingCart className="h-3.5 w-3.5" role="img" aria-label={preview.cartAria} />
             </span>
           </div>
 
@@ -216,15 +197,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
                   aria-hidden="true"
                   className="flex h-5 w-5 shrink-0 items-center justify-center rounded-rounded bg-success-su100 text-text-success dark:bg-success-su900/40"
                 >
-                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none">
-                    <path
-                      d="M5 12l4 4L19 7"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <Check className="h-2.5 w-2.5" strokeWidth={3} />
                 </span>
                 <span className="truncate text-[0.625rem] font-semiBold text-text-default">
                   {label}
@@ -239,14 +212,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
               className="absolute right-2 top-2 z-10 flex items-center gap-1 rounded-rounded border border-stroke-default bg-background-surface/95 px-1.5 py-0.5 text-[0.625rem] font-semiBold text-text-error shadow-sm"
               aria-hidden="true"
             >
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none">
-                <path
-                  d="M11 5L6 9H2v6h4l5 4V5zM22 9l-6 6M16 9l6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <VolumeX className="h-3 w-3" />
               MUTE
             </div>
           )}
