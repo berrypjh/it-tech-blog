@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Route, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TestAsDocContent, ToneKey } from '../content';
-import { ArrowDownIcon, RouteIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: TestAsDocContent['trace'] };
 
@@ -19,7 +20,7 @@ export const TraceSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<WorkflowIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ol
@@ -46,7 +47,7 @@ export const TraceSection = ({ content }: Props) => {
                 'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
               )}
             >
-              <RouteIcon className="h-4 w-4" />
+              <Route className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="flex flex-col">
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-800 dark:text-violet-200">
@@ -64,7 +65,7 @@ export const TraceSection = ({ content }: Props) => {
               <li>
                 <span aria-hidden="true" className="flex items-center justify-center py-2">
                   <span className="inline-flex items-center justify-center h-6 w-6 rounded-full border border-violet-300 bg-white text-violet-600 dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-300">
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </span>
               </li>

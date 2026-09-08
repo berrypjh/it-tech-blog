@@ -1,12 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Boxes, CheckCircle2, Code, type LucideIcon, Package } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
-import { CheckCircleIcon, sharedIcon } from '../icons';
 
 type Props = { hero: SharedContent['hero']; className?: string };
+
+const packageIcon: Record<PackageNode['id'], LucideIcon> = {
+  react: Atom,
+  'react-dom': Boxes,
+  'react-reconciler': Code,
+};
 
 /**
  * Hero 우측 허브 다이어그램.
@@ -46,7 +53,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
             )}
           >
             <span aria-hidden="true" className="text-[var(--term-accent)] shrink-0 mt-0.5">
-              <CheckCircleIcon className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="min-w-0">{item}</span>
           </li>
@@ -66,7 +73,11 @@ const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => 
     )}
     aria-hidden="true"
   >
-    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <Package
+      strokeWidth={1.6}
+      aria-hidden="true"
+      className="relative h-7 w-7 text-[var(--term-accent)]"
+    />
     <span className="relative text-sm font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
@@ -78,7 +89,7 @@ const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => 
 
 const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
   const tone = toneTokens[pkg.tone];
-  const Icon = sharedIcon[pkg.iconName];
+  const Icon = packageIcon[pkg.id];
 
   return (
     <article
@@ -105,20 +116,3 @@ const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
     </article>
   );
 };
-
-const CubeIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-    <line x1="12" y1="22.08" x2="12" y2="12" />
-  </svg>
-);

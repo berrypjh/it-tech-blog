@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, GitCompareArrows } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { SummaryItem, UpdatePhaseContent } from '../content';
-import { CheckCircleIcon, CompareIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['compare'] };
 
@@ -16,7 +17,7 @@ export const PlacementUpdateCompareSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CompareIcon className="h-5 w-5" />}
+      icon={<GitCompareArrows className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.3fr)_minmax(0,_0.7fr)] gap-3">
@@ -71,7 +72,7 @@ const QuickSummary = ({ title, items }: { title: string; items: SummaryItem[] })
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="sky" size="sm">
-          <CheckCircleIcon className="h-4 w-4" />
+          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold', card.fill.text)}>{title}</h3>
       </header>
@@ -98,7 +99,7 @@ const SummaryRow = ({ item }: { item: SummaryItem }) => {
           t.chip,
         )}
       >
-        <CheckCircleIcon className="h-3.5 w-3.5" />
+        <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">

@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Hexagon, Lightbulb, Link, Monitor, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import { VerticalAlternateLink } from '../components/AlternateLink';
 import type { AlternateFiberContent, FiberRole } from '../content';
-import { HexagonIcon, LightbulbIcon, LinkIcon, MonitorIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: AlternateFiberContent['connection'] };
 
@@ -24,7 +25,7 @@ export const AlternateConnectionDiagram = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Central vertical diagram */}
@@ -39,7 +40,7 @@ export const AlternateConnectionDiagram = ({ content }: Props) => (
       <DiagramNode variant="workInProgress" label={content.workLabel} />
     </article>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
       <span className="font-bold">{content.infoTitle}</span> {content.infoDescription}
     </SectionNote>
   </section>
@@ -49,7 +50,7 @@ const DiagramNode = ({ variant, label }: { variant: FiberRole; label: string }) 
   const tone = roleTone[variant];
   const t = toneTokens[tone];
   const isCurrent = variant === 'current';
-  const Icon = isCurrent ? MonitorIcon : WorkflowIcon;
+  const Icon = isCurrent ? Monitor : Workflow;
   return (
     <article
       className={cn(
@@ -77,7 +78,7 @@ const DiagramNode = ({ variant, label }: { variant: FiberRole; label: string }) 
           t.chip,
         )}
       >
-        <HexagonIcon className="h-4 w-4" />
+        <Hexagon className="h-4 w-4" aria-hidden="true" />
       </span>
     </article>
   );

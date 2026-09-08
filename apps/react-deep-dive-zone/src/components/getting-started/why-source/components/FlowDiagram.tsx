@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { RotateCw } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import { toneTokens } from '../../../shared/tones';
 import type { WhySourceContent } from '../content';
-import { ArrowLoopIcon } from '../icons';
 
 type Props = {
   categories: WhySourceContent['hero']['flowCategories'];
@@ -87,7 +88,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
           className="flex-1 border-t border-dashed border-[var(--term-border)]"
         />
         <TerminalBadge showDot={false}>
-          <ArrowLoopIcon className="h-3 w-3 text-[var(--term-accent)]" />
+          <RotateCw className="h-3 w-3 text-[var(--term-accent)]" aria-hidden="true" />
           {loop}
         </TerminalBadge>
         <span

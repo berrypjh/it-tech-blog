@@ -1,22 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { SuspenseHydrationLinkContent } from '../content';
 import {
-  ArrowRightIcon,
-  BellRingIcon,
-  PackageIcon,
-  RefreshCcwIcon,
-  ShieldCheckIcon,
-  TriangleAlertIcon,
-  ZapIcon,
-} from '../icons';
+  ArrowRight,
+  BellRing,
+  Package,
+  RefreshCcw,
+  ShieldCheck,
+  TriangleAlert,
+  Zap,
+} from 'lucide-react';
+
+import type { SuspenseHydrationLinkContent } from '../content';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: SuspenseHydrationLinkContent['forceClientRender'] };
 
-const stepIcons = [TriangleAlertIcon, PackageIcon, ZapIcon, ShieldCheckIcon, RefreshCcwIcon];
+const stepIcons = [TriangleAlert, Package, Zap, ShieldCheck, RefreshCcw];
 
 export const ForceClientRenderFlowSection = ({ content }: Props) => (
   <section aria-labelledby="force-render-heading" className="flex flex-col gap-md">
@@ -25,7 +26,7 @@ export const ForceClientRenderFlowSection = ({ content }: Props) => (
     <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:flex-row items-stretch">
       {content.steps.map((step, i) => {
         const accent = phaseAccent[step.phase];
-        const Icon = stepIcons[i] ?? TriangleAlertIcon;
+        const Icon = stepIcons[i] ?? TriangleAlert;
         const isLast = i === content.steps.length - 1;
         return (
           <li key={step.title} className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1">
@@ -66,8 +67,8 @@ export const ForceClientRenderFlowSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
               >
-                <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90" />
+                <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="lg:hidden h-4 w-4 rotate-90" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -82,7 +83,7 @@ export const ForceClientRenderFlowSection = ({ content }: Props) => (
       )}
     >
       <span className="inline-flex items-center gap-1.5 text-blue-700 dark:text-blue-300 font-bold mr-1">
-        <BellRingIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
         note ·
       </span>
       {content.note}

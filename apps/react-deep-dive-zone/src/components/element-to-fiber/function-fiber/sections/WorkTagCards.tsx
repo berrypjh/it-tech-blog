@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Component, Info, SquareFunction, Tag } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionClassComponentFiberContent, WorkTagCard } from '../content';
-import { ComponentIcon, InfoIcon, SquareFunctionIcon, TagIcon } from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['workTags'] };
 
@@ -23,7 +24,7 @@ export const WorkTagCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<TagIcon className="h-5 w-5" />}
+      icon={<Tag className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
@@ -44,7 +45,7 @@ const CardView = ({ card }: { card: WorkTagCard }) => {
 const ValueCard = ({ card }: { card: WorkTagCard }) => {
   const isFunction = card.variant === 'function';
   const t = toneTokens[toneByVariant[card.variant]];
-  const Icon = isFunction ? SquareFunctionIcon : ComponentIcon;
+  const Icon = isFunction ? SquareFunction : Component;
   return (
     <article
       className={cn(
@@ -94,7 +95,7 @@ const InfoCard = ({ card }: { card: WorkTagCard }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone="sky" size="md">
-          <InfoIcon className="h-5 w-5" />
+          <Info className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
           {card.title}

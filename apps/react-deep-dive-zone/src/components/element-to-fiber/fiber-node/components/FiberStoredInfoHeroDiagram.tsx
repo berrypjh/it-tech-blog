@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Hexagon } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent } from '../content';
-import { BoxIcon, HexagonIcon } from '../icons';
 
 type Props = { content: FiberStoredInformationContent['hero']; className?: string };
 
@@ -39,7 +40,7 @@ export const FiberStoredInfoHeroDiagram = ({ content, className }: Props) => {
           eyebrow="source"
           title={content.elementTitle}
           fields={content.elementFields}
-          icon={<BoxIcon className="h-[18px] w-[18px]" />}
+          icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
 
         <DownArrow />
@@ -49,7 +50,7 @@ export const FiberStoredInfoHeroDiagram = ({ content, className }: Props) => {
           eyebrow="expanded"
           title={content.fiberTitle}
           fields={content.fiberFields}
-          icon={<HexagonIcon className="h-[18px] w-[18px]" />}
+          icon={<Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />}
           columns
         />
       </div>

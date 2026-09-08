@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lock, ShieldCheck, Unlock } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FreezeCard, ReactElementOwnerDevInfoContent } from '../content';
-import { LockIcon, ShieldCheckIcon, UnlockIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['freeze'] };
 
 const iconMap = {
-  unlock: UnlockIcon,
-  lock: LockIcon,
+  unlock: Unlock,
+  lock: Lock,
 } as const;
 
 /** mutable=위험(부정, rose), frozen=안전(긍정, accent). 2-side 의미를 소프트화해 유지한다. */
@@ -34,7 +35,7 @@ export const ObjectFreezeSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LockIcon className="h-5 w-5" />}
+      icon={<Lock className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -45,7 +46,9 @@ export const ObjectFreezeSection = ({ content }: Props) => (
       ))}
     </ul>
 
-    <SectionNote icon={<ShieldCheckIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<ShieldCheck className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );
 

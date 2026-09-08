@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Save, Timer, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { SetStateFlowContent, Tone } from '../content';
-import { LayersIcon, SaveIcon, TimerIcon, ZapIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['renderVsCommit'] };
 
@@ -32,7 +33,7 @@ const keywordChip: Record<Tone, string> = {
   indigo: 'bg-indigo-500 text-white dark:bg-indigo-400 dark:text-slate-900',
 };
 
-const columnIcons = [TimerIcon, LayersIcon, SaveIcon];
+const columnIcons = [Timer, Layers, Save];
 
 export const RenderVsCommitComparison = ({ content }: Props) => (
   <section
@@ -46,7 +47,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
       id="render-vs-commit"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ZapIcon className="h-5 w-5" />}
+      icon={<Zap className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}
@@ -61,7 +62,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
               구분
             </th>
             {content.columns.map((col, i) => {
-              const Icon = columnIcons[i] ?? TimerIcon;
+              const Icon = columnIcons[i] ?? Timer;
               return (
                 <th
                   key={col.index}
@@ -195,7 +196,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
     {/* Mobile card layout */}
     <ol className="md:hidden flex flex-col gap-md">
       {content.columns.map((col, i) => {
-        const Icon = columnIcons[i] ?? TimerIcon;
+        const Icon = columnIcons[i] ?? Timer;
         return (
           <li key={col.index}>
             <article

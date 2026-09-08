@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Fingerprint, Flag, List, Network, Zap } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberCentralContent, FieldGroup } from '../content';
-import { DatabaseIcon, FingerprintIcon, FlagIcon, ListIcon, NetworkIcon, ZapIcon } from '../icons';
 
 type Props = {
   content: FiberCentralContent['hero'];
@@ -14,12 +15,12 @@ type Props = {
 };
 
 const iconMap = {
-  fingerprint: FingerprintIcon,
-  network: NetworkIcon,
-  database: DatabaseIcon,
-  list: ListIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
+  fingerprint: Fingerprint,
+  network: Network,
+  database: Database,
+  list: List,
+  flag: Flag,
+  zap: Zap,
 } as const;
 
 /**

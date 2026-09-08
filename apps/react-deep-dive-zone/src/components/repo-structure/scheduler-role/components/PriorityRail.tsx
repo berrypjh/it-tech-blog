@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListOrdered } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import { ListOrderedIcon } from '../icons';
 
 type Props = { highLabel: string; lowLabel: string; className?: string };
 
@@ -47,7 +48,7 @@ export const PriorityRail = ({ highLabel, lowLabel, className }: Props) => {
       {/* 라벨 */}
       <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">
         <span className="inline-flex items-center gap-1">
-          <ListOrderedIcon className="h-3 w-3" aria-hidden="true" />
+          <ListOrdered className="h-3 w-3" aria-hidden="true" />
           {highLabel}
         </span>
         <span>{lowLabel}</span>

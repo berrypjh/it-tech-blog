@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { LaneIcon } from '../components/LaneIcon';
 import { laneStyle } from '../components/laneTone';
 import type { FiberLanesContent, LaneCard } from '../content';
-import { LayersIcon } from '../icons';
 
 type Props = { content: FiberLanesContent['laneCards'] };
 
@@ -16,7 +17,7 @@ export const RepresentativeLaneCards = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

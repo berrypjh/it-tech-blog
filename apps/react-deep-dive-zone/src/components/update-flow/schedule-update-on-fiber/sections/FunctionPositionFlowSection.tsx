@@ -1,11 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FunctionSquare, Network, Target, Workflow } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionFlowStep, ScheduleUpdateOnFiberContent } from '../content';
-import { flowIconByName, TargetIcon, WorkflowIcon } from '../icons';
+
+const flowIconByName = {
+  function: FunctionSquare,
+  workflow: Workflow,
+  network: Network,
+  target: Target,
+} as const;
 
 type Props = { content: ScheduleUpdateOnFiberContent['flow'] };
 
@@ -32,7 +40,7 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />
@@ -45,7 +53,7 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone="amber" size="sm">
-          <TargetIcon className="h-[18px] w-[18px]" />
+          <Target className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span
           className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', amber.text)}

@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, HelpCircle, Layers, Pause, Target } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ElementVsFiberContent } from '../content';
-import { AlertTriangleIcon, HelpCircleIcon, LayersIcon, PauseIcon, TargetIcon } from '../icons';
 
 type Props = { content: ElementVsFiberContent['problems'] };
 
 const iconMap = {
-  help: HelpCircleIcon,
-  pause: PauseIcon,
-  target: TargetIcon,
-  layers: LayersIcon,
+  help: HelpCircle,
+  pause: Pause,
+  target: Target,
+  layers: Layers,
 } as const;
 
 export const WithoutFiberProblems = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const WithoutFiberProblems = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<AlertTriangleIcon className="h-5 w-5" />}
+      icon={<AlertTriangle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

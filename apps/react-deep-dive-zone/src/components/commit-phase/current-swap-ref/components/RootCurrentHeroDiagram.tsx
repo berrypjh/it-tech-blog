@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { History, Rocket, TreePine } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitTimelineItem, RootCurrentRefContent } from '../content';
-import { HistoryIcon, RocketIcon, TreeIcon } from '../icons';
 
 type Props = { content: RootCurrentRefContent['hero']; className?: string };
 
@@ -46,7 +47,7 @@ export const RootCurrentHeroDiagram = ({ content, className }: Props) => {
           badge="previous"
           title={diagram.leftTitle}
           subtitle={diagram.leftSubtitle}
-          icon={<HistoryIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<History className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
 
         <DownArrow />
@@ -65,7 +66,7 @@ export const RootCurrentHeroDiagram = ({ content, className }: Props) => {
           badge="next"
           title={diagram.rightTitle}
           subtitle={diagram.rightSubtitle}
-          icon={<RocketIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Rocket className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
 
         <Timeline items={diagram.timeline} />
@@ -112,7 +113,7 @@ const TreeCard = ({
           </span>
         </span>
         <span className="flex items-center gap-1.5 text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          <TreeIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+          <TreePine aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
           {subtitle}
         </span>
       </div>

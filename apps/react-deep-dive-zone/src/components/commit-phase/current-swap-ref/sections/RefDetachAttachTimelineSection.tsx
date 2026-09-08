@@ -2,6 +2,18 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  CheckCircle2,
+  Eye,
+  Lightbulb,
+  Link,
+  Replace,
+  Unlink,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
@@ -11,26 +23,15 @@ import type {
   RefValueStep,
   RootCurrentRefContent,
 } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  EyeIcon,
-  LightbulbIcon,
-  LinkIcon,
-  ReplaceIcon,
-  UnlinkIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: RootCurrentRefContent['refTimeline'] };
 
-const iconMap: Record<RefTimelineIcon, typeof EyeIcon> = {
-  eye: EyeIcon,
-  unlink: UnlinkIcon,
-  replace: ReplaceIcon,
-  link: LinkIcon,
-  check: CheckCircleIcon,
+const iconMap: Record<RefTimelineIcon, typeof Eye> = {
+  eye: Eye,
+  unlink: Unlink,
+  replace: Replace,
+  link: Link,
+  check: CheckCircle2,
 };
 
 export const RefDetachAttachTimelineSection = ({ content }: Props) => (
@@ -44,7 +45,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -60,7 +61,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="flex items-center justify-center text-[var(--term-dim)]"
               >
-                <ArrowRightIcon className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </li>
             )}
           </Fragment>
@@ -74,7 +75,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
             <StepCard step={step} index={idx + 1} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -93,7 +94,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <LightbulbIcon className="h-4 w-4" />
+          <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -167,8 +168,8 @@ const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
               aria-hidden="true"
               className="flex md:items-center justify-center text-[var(--term-dim)]"
             >
-              <ArrowRightIcon className="h-3 w-3 hidden md:inline-block" />
-              <ArrowDownIcon className="h-3 w-3 md:hidden" />
+              <ArrowRight className="h-3 w-3 hidden md:inline-block" aria-hidden="true" />
+              <ArrowDown className="h-3 w-3 md:hidden" aria-hidden="true" />
             </li>
           )}
         </Fragment>

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cuboid, FunctionSquare, Layers, Sparkles } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent } from '../content';
-import { CuboidIcon, FunctionSquareIcon, LayersIcon, SparklesIcon } from '../icons';
 
 type HeroContent = DispatchSetStateContent['hero'];
 
@@ -28,14 +29,14 @@ export const SetStateMemoryHeroDiagram = ({ content, className }: Props) => {
             title={content.leftCard.title}
             subtitle={content.leftCard.subtitle}
             fields={content.leftCard.fields}
-            icon={<CuboidIcon className="h-[18px] w-[18px]" />}
+            icon={<Cuboid className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <SourceCard
             tone="violet"
             title={content.rightCard.title}
             subtitle={content.rightCard.subtitle}
             fields={content.rightCard.fields}
-            icon={<LayersIcon className="h-[18px] w-[18px]" />}
+            icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
         </div>
 
@@ -48,7 +49,7 @@ export const SetStateMemoryHeroDiagram = ({ content, className }: Props) => {
 
         {/* 결론 */}
         <p className="flex items-center gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 text-xsm font-bold leading-relaxed text-[var(--term-fg)] shadow-[0_2px_0_var(--term-border)] break-keep">
-          <SparklesIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-accent)]" />
+          <Sparkles aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-accent)]" />
           {content.bottomCallout}
         </p>
       </div>
@@ -116,7 +117,7 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
     >
       <div className="flex items-center gap-sm">
         <ToneIconBox tone="sky" size="sm">
-          <FunctionSquareIcon className="h-[18px] w-[18px]" />
+          <FunctionSquare className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span className="flex min-w-0 flex-col">
           <span className={cn('truncate font-mono text-sm font-bold tracking-tight', t.text)}>

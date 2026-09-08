@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitCompare, Quote } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ComparisonSideCard, ReactCreateElementContent } from '../content';
-import { GitCompareIcon, QuoteIcon } from '../icons';
 
 type Props = { content: ReactCreateElementContent['compare'] };
 
@@ -17,7 +18,7 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_0.85fr)_auto_minmax(0,_1fr)] items-stretch gap-md">
@@ -35,7 +36,7 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
         >
-          <QuoteIcon className="h-5 w-5" />
+          <Quote className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug text-[var(--term-fg)] break-keep whitespace-pre-line">
           {content.centerQuote}

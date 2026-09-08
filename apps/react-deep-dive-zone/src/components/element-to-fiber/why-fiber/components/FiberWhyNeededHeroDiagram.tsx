@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Braces, Hexagon, PlayCircle } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberWhyNeededContent, HeroFlowStep } from '../content';
-import { BoxIcon, BracesIcon, HexagonIcon, PlayCircleIcon } from '../icons';
 
 const iconMap = {
-  braces: BracesIcon,
-  box: BoxIcon,
-  hexagon: HexagonIcon,
-  play: PlayCircleIcon,
+  braces: Braces,
+  box: Box,
+  hexagon: Hexagon,
+  play: PlayCircle,
 } as const;
 
 type Props = { content: FiberWhyNeededContent['hero']; className?: string };

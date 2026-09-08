@@ -1,32 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, GitBranch, PlayCircle, Target, Workflow } from 'lucide-react';
+
 import type { PluginEventSystemContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  GitBranchIcon,
-  PlayCircleIcon,
-  TargetIcon,
-  WorkflowIcon,
-} from '../icons';
 import { SectionFrame } from '../SectionFrame';
 import { toneAccent, toneCard, toneIconBox } from '../styles';
 
 type Props = { content: PluginEventSystemContent['dispatchRoute'] };
 
-const stepIcons = [PlayCircleIcon, TargetIcon, GitBranchIcon];
+const stepIcons = [PlayCircle, Target, GitBranch];
 
 export const DispatchEventForPluginFlow = ({ content }: Props) => (
   <SectionFrame
     id="dispatch-route"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<WorkflowIcon className="h-5 w-5" />}
+    icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
   >
     <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? TargetIcon;
+        const Icon = stepIcons[i] ?? Target;
         return (
           <li
             key={step.title}
@@ -67,13 +61,13 @@ export const DispatchEventForPluginFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden absolute left-1/2 -bottom-2.5 -translate-x-1/2 text-[var(--term-muted)]"
                 >
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </>
             )}

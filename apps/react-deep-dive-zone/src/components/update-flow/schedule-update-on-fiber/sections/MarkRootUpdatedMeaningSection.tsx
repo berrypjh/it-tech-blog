@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, Flag, Network, Zap } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RootStateField, ScheduleUpdateOnFiberContent } from '../content';
-import { ArrowDownIcon, CheckCircleIcon, FlagIcon, NetworkIcon, ZapIcon } from '../icons';
 
 type Props = { content: ScheduleUpdateOnFiberContent['markRoot'] };
 
@@ -18,7 +19,7 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
       id="markRoot"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FlagIcon className="h-5 w-5" />}
+      icon={<Flag className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.35fr)] gap-md lg:gap-lg items-stretch">
@@ -35,7 +36,7 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
         </code>
 
         <span aria-hidden="true" className="self-start text-[var(--term-accent)]">
-          <ArrowDownIcon className="h-3.5 w-3.5" />
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
 
         <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
@@ -53,7 +54,7 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
                 sky.border,
               )}
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className={cn('mt-0.5 h-4 w-4 shrink-0', sky.text)}
               />
@@ -116,14 +117,14 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
         <div className="flex items-center gap-2 min-w-0">
           {isAfter ? (
             <ToneIconBox tone="sky" size="sm">
-              <NetworkIcon className="h-4 w-4" />
+              <Network className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
           ) : (
             <span
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]"
             >
-              <NetworkIcon className="h-4 w-4" />
+              <Network className="h-4 w-4" aria-hidden="true" />
             </span>
           )}
           <span
@@ -142,7 +143,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
               emerald.chip,
             )}
           >
-            <ZapIcon aria-hidden="true" className="h-3 w-3" />
+            <Zap aria-hidden="true" className="h-3 w-3" />
             {badge}
           </span>
         )}

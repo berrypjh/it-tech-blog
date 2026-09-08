@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Workflow } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TargetFiberContent, Tone } from '../content';
-import { ArrowDownIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['flow'] };
 
@@ -38,7 +39,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-start">
@@ -71,7 +72,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
               </div>
               {!isLast && (
                 <span aria-hidden="true" className="self-center my-1 text-[var(--term-muted)]">
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>

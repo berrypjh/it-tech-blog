@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks, Target, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, TimelineStep } from '../content';
-import { ListChecksIcon, TargetIcon, ZapIcon } from '../icons';
 
 type Props = { content: CommitRootContent['timeline'] };
 
@@ -18,7 +19,7 @@ export const CommitTimelineOverviewSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -106,7 +107,7 @@ const StepRow = ({
                 t.chip,
               )}
             >
-              <TargetIcon aria-hidden="true" className="h-3 w-3" />
+              <Target aria-hidden="true" className="h-3 w-3" />
               {mutationBadge}
             </span>
           )}
@@ -117,7 +118,7 @@ const StepRow = ({
                 t.chip,
               )}
             >
-              <ZapIcon aria-hidden="true" className="h-3 w-3" />
+              <Zap aria-hidden="true" className="h-3 w-3" />
               {asyncBadge}
             </span>
           )}

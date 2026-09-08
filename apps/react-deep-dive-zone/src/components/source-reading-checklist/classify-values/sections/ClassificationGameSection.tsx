@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Gauge, Sparkles, Tags } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ValueClassificationContent } from '../content';
-import { CheckCircleIcon, GaugeIcon, SparkIcon, TagsIcon } from '../icons';
 import { flagsSlate } from '../valueTone';
 
 type Props = { content: ValueClassificationContent['game'] };
@@ -26,7 +27,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<TagsIcon className="h-5 w-5" />}
+        icon={<Tags className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -123,7 +124,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <GaugeIcon className="h-4 w-4" aria-hidden="true" />
+                <Gauge className="h-4 w-4" aria-hidden="true" />
                 {active.field}
               </code>
             </div>
@@ -140,10 +141,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                   activeT.border,
                 )}
               >
-                <CheckCircleIcon
-                  className={cn('h-5 w-5 shrink-0', activeT.text)}
-                  aria-hidden="true"
-                />
+                <CheckCircle2 className={cn('h-5 w-5 shrink-0', activeT.text)} aria-hidden="true" />
                 <span className={cn('text-md font-bold', activeT.text)}>
                   {activeCategory.label}
                 </span>
@@ -162,7 +160,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                   activeT.border,
                 )}
               >
-                <SparkIcon
+                <Sparkles
                   className={cn('mt-0.5 h-4 w-4 shrink-0', activeT.text)}
                   aria-hidden="true"
                 />
@@ -199,7 +197,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                         />
                         {cat.label}
                         {isAnswer && (
-                          <CheckCircleIcon className={cn('h-3 w-3', t.text)} aria-hidden="true" />
+                          <CheckCircle2 className={cn('h-3 w-3', t.text)} aria-hidden="true" />
                         )}
                       </span>
                     </li>

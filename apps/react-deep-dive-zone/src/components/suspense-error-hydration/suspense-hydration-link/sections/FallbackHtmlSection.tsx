@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Server, Waypoints } from 'lucide-react';
+
 import type { SuspenseHydrationLinkContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, ServerIcon, WaypointsIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -51,7 +52,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
               key={b}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-teal-500 dark:text-teal-400"
               />
@@ -74,7 +75,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <WaypointsIcon className="h-4 w-4" />
+            <Waypoints className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-blue-700 dark:text-blue-200 break-keep">
             {content.streamingTitle}
@@ -98,7 +99,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
                     {i + 1}
                   </span>
                   {i === 0 && (
-                    <ServerIcon
+                    <Server
                       aria-hidden="true"
                       className="h-3.5 w-3.5 text-blue-600 dark:text-blue-300"
                     />
@@ -108,7 +109,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
                   </span>
                 </div>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3.5 w-3.5 ml-3 rotate-90 text-blue-400 dark:text-blue-500"
                   />

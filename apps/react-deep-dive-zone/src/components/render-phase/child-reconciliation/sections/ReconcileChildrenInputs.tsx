@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, FileText, ListChecks, type LucideIcon, Network } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReconcileChildrenContent } from '../content';
-import { inputIconByName, ListChecksIcon } from '../icons';
+
+const inputIconByName: Record<InputCard['icon'], LucideIcon> = {
+  tree: Network,
+  cube: Box,
+  fileText: FileText,
+} as const;
 
 type Props = { content: ReconcileChildrenContent['inputs'] };
 
@@ -14,7 +21,7 @@ export const ReconcileChildrenInputs = ({ content }: Props) => (
       id="inputs"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

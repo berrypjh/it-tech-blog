@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, HelpCircle, Scale, TrendingUp } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent, ReasonCard } from '../content';
-import { GaugeIcon, HelpCircleIcon, ScaleIcon, TrendingUpIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['reasons'] };
 
 const iconMap = {
-  scales: ScaleIcon,
-  gauge: GaugeIcon,
-  trending: TrendingUpIcon,
+  scales: Scale,
+  gauge: Gauge,
+  trending: TrendingUp,
 } as const;
 
 export const WhyComparePropsSection = ({ content }: Props) => (
@@ -21,7 +22,7 @@ export const WhyComparePropsSection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

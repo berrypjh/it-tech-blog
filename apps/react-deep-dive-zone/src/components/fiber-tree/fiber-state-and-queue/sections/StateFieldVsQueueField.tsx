@@ -2,25 +2,19 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, CheckCircle2, Component, Database, List } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateAndQueueContent, FieldKind, RoleFlowCard } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ComponentIcon,
-  DatabaseIcon,
-  ListIcon,
-} from '../icons';
 
 type Props = { content: FiberStateAndQueueContent['roleFlow'] };
 
 const iconMap = {
-  database: DatabaseIcon,
-  list: ListIcon,
-  check: CheckCircleIcon,
+  database: Database,
+  list: List,
+  check: CheckCircle2,
 } as const;
 
 /** field 칩 색은 항상 필드 정체성을 따른다: memoizedState=emerald, updateQueue=violet. */
@@ -36,7 +30,7 @@ export const StateFieldVsQueueField = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ComponentIcon className="h-5 w-5" />}
+      icon={<Component className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid items-stretch gap-sm grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
@@ -68,7 +62,7 @@ const ConnectorArrow = ({ dotted }: { dotted: boolean }) => (
         )}
       />
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]">
-        <ArrowRightIcon className="h-3.5 w-3.5" />
+        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       {dotted && (
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-accent)] whitespace-nowrap">
@@ -78,7 +72,7 @@ const ConnectorArrow = ({ dotted }: { dotted: boolean }) => (
     </span>
     <span className="lg:hidden inline-flex flex-col items-center gap-1 py-1">
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]">
-        <ArrowDownIcon className="h-3.5 w-3.5" />
+        <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       {dotted && (
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-accent)]">

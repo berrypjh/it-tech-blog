@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ShieldAlert, TriangleAlert, User } from 'lucide-react';
+
 import type { ErrorBoundaryRecoverContent } from '../content';
-import { ArrowRightIcon, ShieldAlertIcon, TriangleAlertIcon, UserIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -25,7 +26,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-slate-300 bg-white text-slate-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200"
           >
-            <UserIcon className="h-3.5 w-3.5" />
+            <User className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
             {content.before.title}
@@ -59,8 +60,8 @@ export const FallbackRerenderSection = ({ content }: Props) => (
         aria-hidden="true"
         className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
       >
-        <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-        <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+        <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+        <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
       </span>
 
       {/* State transition */}
@@ -90,8 +91,8 @@ export const FallbackRerenderSection = ({ content }: Props) => (
         aria-hidden="true"
         className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
       >
-        <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-        <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+        <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+        <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
       </span>
 
       {/* After */}
@@ -107,7 +108,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-rose-200 bg-rose-100 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/60 dark:text-rose-200"
           >
-            <ShieldAlertIcon className="h-3.5 w-3.5" />
+            <ShieldAlert className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-200">
             {content.after.title}
@@ -125,7 +126,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
             'border-rose-300 bg-white dark:border-rose-700 dark:bg-slate-900',
           )}
         >
-          <TriangleAlertIcon
+          <TriangleAlert
             aria-hidden="true"
             className="h-5 w-5 shrink-0 text-rose-600 dark:text-rose-300"
           />

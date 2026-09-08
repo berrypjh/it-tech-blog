@@ -1,25 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Flag, Package, Workflow, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { PkgAccent, SchedulerPackageContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  FlagIcon,
-  PackageIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 import { pkgCardBorder, pkgIconBox, pkgNumberBadge, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['callbackMoment'] };
 
-const stepIcon: Record<PkgAccent, typeof ZapIcon> = {
-  blue: FlagIcon,
-  teal: ZapIcon,
-  violet: PackageIcon,
-  slate: WorkflowIcon,
-  amber: WorkflowIcon,
+const stepIcon: Record<PkgAccent, typeof Zap> = {
+  blue: Flag,
+  teal: Zap,
+  violet: Package,
+  slate: Workflow,
+  amber: Workflow,
 };
 
 export const ScheduleCallbackMoment = ({ content }: Props) => (
@@ -29,7 +23,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -96,13 +90,13 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
                     aria-hidden="true"
                     className="hidden md:inline-flex absolute -right-3 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
                   >
-                    <ArrowRightIcon className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                   <span
                     aria-hidden="true"
                     className="md:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                   >
-                    <ArrowDownIcon className="h-4 w-4" />
+                    <ArrowDown className="h-4 w-4" aria-hidden="true" />
                   </span>
                 </>
               )}
@@ -123,7 +117,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
         >
-          <PackageIcon className="h-4 w-4" />
+          <Package className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-xsm sm:text-sm font-bold text-teal-700 dark:text-teal-300 break-keep">
           {content.bottomNote}

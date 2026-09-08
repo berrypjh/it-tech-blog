@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Network } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import type { HeroFlowStep, ReactElementRefReact19Content } from '../content';
-import { NetworkIcon } from '../icons';
 
 type Props = { content: ReactElementRefReact19Content['hero']; className?: string };
 
@@ -19,7 +20,7 @@ export const React19RefHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
-            <NetworkIcon className="h-[18px] w-[18px]" />
+            <Network className="h-[18px] w-[18px]" aria-hidden="true" />
           </span>
           <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)]">
             {content.diagramTitle}

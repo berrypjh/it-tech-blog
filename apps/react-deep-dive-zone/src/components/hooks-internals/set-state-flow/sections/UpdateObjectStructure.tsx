@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { SetStateFlowContent, Tone } from '../content';
-import { BracesIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['updateObject'] };
 
@@ -82,7 +83,7 @@ export const UpdateObjectStructure = ({ content }: Props) => {
         id="update-object"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<BracesIcon className="h-5 w-5" />}
+        icon={<Braces className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">

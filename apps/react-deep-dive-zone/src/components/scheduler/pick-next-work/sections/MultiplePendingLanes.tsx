@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Layers, Repeat, Zap } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent } from '../../lane-shape/content';
 import type { RootSchedulerContent, SchedulerAccent } from '../content';
-import { DatabaseIcon, LayersIcon, RepeatIcon, ZapIcon } from '../icons';
 import { schedIconBox, schedPill, schedTextStrong } from '../schedulerAccent';
 
 type Props = { content: RootSchedulerContent['multiple'] };
 
-const rowIcon: Record<SchedulerAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: LayersIcon,
-  violet: RepeatIcon,
-  slate: LayersIcon,
+const rowIcon: Record<SchedulerAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Layers,
+  violet: Repeat,
+  slate: Layers,
 };
 
 const URGENCY_STYLE: Record<SchedulerAccent, string> = {
@@ -49,7 +50,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<DatabaseIcon className="h-5 w-5" />}
+        icon={<Database className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -68,7 +69,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
               schedIconBox.blue,
             )}
           >
-            <DatabaseIcon className="h-5 w-5" />
+            <Database className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)] break-keep font-mono">
             {content.cardTitle}

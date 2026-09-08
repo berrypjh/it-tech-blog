@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, List, Search, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { TransitionDeferredContent } from '../content';
-import { ClockIcon, ListIcon, SearchIcon, ZapIcon } from '../icons';
 
 type Props = { content: TransitionDeferredContent['hero']; className?: string };
 
@@ -36,9 +37,9 @@ export const TransitionDeferredHeroDiagram = ({ content, className }: Props) => 
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <LaneCard
           tone="emerald"
-          icon={<SearchIcon className="h-[18px] w-[18px]" />}
+          icon={<Search className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={searchInput.title}
-          laneIcon={<ZapIcon className="h-3 w-3" />}
+          laneIcon={<Zap className="h-3 w-3" aria-hidden="true" />}
           laneLabel={searchInput.immediateLabel}
           body={searchInput.immediateBody}
           value={searchInput.value}
@@ -48,10 +49,10 @@ export const TransitionDeferredHeroDiagram = ({ content, className }: Props) => 
 
         <LaneCard
           tone="blue"
-          icon={<ListIcon className="h-[18px] w-[18px]" />}
+          icon={<List className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={resultList.title}
           subtitle={resultList.subtitle}
-          laneIcon={<ClockIcon className="h-3 w-3" />}
+          laneIcon={<Clock3 className="h-3 w-3" aria-hidden="true" />}
           laneLabel={resultList.deferredLabel}
           body={resultList.deferredBody}
         />

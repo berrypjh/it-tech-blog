@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, CornerDownRight, Database, Route } from 'lucide-react';
+
 import {
   axisCardBorder,
   axisIconBox,
@@ -8,13 +10,6 @@ import {
 } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootPendingWorkContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CornerDownRightIcon,
-  DatabaseIcon,
-  RouteIcon,
-} from '../icons';
 
 type Props = { content: RootPendingWorkContent['destination'] };
 
@@ -79,7 +74,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<RouteIcon className="h-5 w-5" />}
+      icon={<Route className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
@@ -99,7 +94,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
               axisIconBox.blue,
             )}
           >
-            <DatabaseIcon className="h-4 w-4" />
+            <Database className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className={cn('text-sm sm:text-md font-bold break-keep', axisTextStrong.blue)}>
             {content.fiberTreeTitle}
@@ -152,7 +147,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
             Update가 root로 흐르는 4단계
@@ -219,7 +214,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
               axisIconBox.teal,
             )}
           >
-            <DatabaseIcon className="h-4 w-4" />
+            <Database className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className={cn('text-sm sm:text-md font-bold break-keep', axisTextStrong.teal)}>
             {content.rootObjectTitle}
@@ -237,7 +232,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
         </pre>
 
         <p className="mt-auto flex items-start gap-2 text-[11px] sm:text-xsm text-teal-800 dark:text-teal-200">
-          <CornerDownRightIcon aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+          <CornerDownRight aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span className="break-keep">
             <code className="font-mono font-bold">pendingLanes</code> 필드에 lane bit가 OR
             누적됩니다.
@@ -248,7 +243,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
 
     {/* mobile arrow between */}
     <div aria-hidden="true" className="lg:hidden flex justify-center mt-3 text-[var(--term-muted)]">
-      <ArrowDownIcon className="h-4 w-4" />
+      <ArrowDown className="h-4 w-4" aria-hidden="true" />
     </div>
   </section>
 );

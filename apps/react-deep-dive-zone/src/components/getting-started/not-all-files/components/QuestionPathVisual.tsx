@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { File, FolderOpen } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import type { NotAllFilesContent } from '../content';
-import { FileIcon, FolderOpenIcon } from '../icons';
 
 type Props = { visual: NotAllFilesContent['hero']['visual'] };
 
@@ -57,7 +58,7 @@ export const QuestionPathVisual = ({ visual }: Props) => {
                   zIndex: i,
                 }}
               >
-                <FileIcon className="h-3 w-3 text-[var(--term-dim)]" />
+                <File className="h-3 w-3 text-[var(--term-dim)]" aria-hidden="true" />
                 <code className="text-[10px] sm:text-[11px] font-mono text-[var(--term-fg)] truncate">
                   {name}
                 </code>
@@ -72,7 +73,7 @@ export const QuestionPathVisual = ({ visual }: Props) => {
         className="absolute top-12 right-md sm:right-lg w-[200px] sm:w-[220px] rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-sm shadow-[0_2px_0_var(--term-border)]"
       >
         <header className="flex items-center gap-1.5 pb-1 mb-1 border-b border-dashed border-[var(--term-border)]">
-          <FolderOpenIcon className="h-3.5 w-3.5 text-sky-600 dark:text-sky-300" />
+          <FolderOpen className="h-3.5 w-3.5 text-sky-600 dark:text-sky-300" aria-hidden="true" />
           <span className="text-[10px] font-mono font-bold text-[var(--term-fg)] truncate">
             {visual.repoTitle}
           </span>

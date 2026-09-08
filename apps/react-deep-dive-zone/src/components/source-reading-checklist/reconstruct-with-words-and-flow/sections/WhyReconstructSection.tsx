@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { RefreshCw, Sparkles, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ReconstructContent } from '../content';
-import { RefreshIcon, SparkIcon, TargetIcon } from '../icons';
 
 type Props = { content: ReconstructContent['whyReconstruct'] };
 
@@ -18,7 +19,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<RefreshIcon className="h-5 w-5" />}
+        icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -55,7 +56,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
                     'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
                   )}
                 >
-                  <SparkIcon className="h-3.5 w-3.5" />
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
 
@@ -93,7 +94,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
             'border border-violet-400/60 bg-violet-500/15 text-violet-200',
           )}
         >
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
           <span className="block text-slate-300">{content.bannerLines[0]}</span>

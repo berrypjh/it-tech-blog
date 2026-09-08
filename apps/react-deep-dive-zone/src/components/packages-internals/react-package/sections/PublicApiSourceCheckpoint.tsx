@@ -1,19 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, FileText, Info, Map } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { InternalFileCard, ReactPackageContent } from '../content';
-import { InfoIcon, MapIcon, reactPackageIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['sourceCheckpoint'] };
 
 export const PublicApiSourceCheckpoint = ({ content }: Props) => {
   const fileItem = content.items.find((item) => item.id === 'file');
   const viewItem = content.items.find((item) => item.id === 'view');
-  const questionItem = content.items.find((item) => item.id === 'question');
 
   return (
     <section aria-labelledby="heading-source-checkpoint" className="space-y-md scroll-mt-2xl">
@@ -24,7 +24,7 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
         title={content.title}
         description={content.description}
         descriptionFullWidth
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -33,7 +33,7 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
             {
               label: fileItem?.label ?? '',
               value: <code className="font-mono break-all">{fileItem?.value}</code>,
-              icon: reactPackageIcon['fileText'],
+              icon: FileText,
             },
             {
               label: viewItem?.label ?? '',
@@ -42,7 +42,7 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
                   {viewItem?.value}
                 </code>
               ),
-              icon: reactPackageIcon['fileCode'],
+              icon: FileCode,
             },
             {
               label: content.filesLabel,
@@ -55,10 +55,9 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
                   ))}
                 </ul>
               ),
-              icon: InfoIcon,
+              icon: Info,
             },
           ]}
-          question={questionItem?.value ?? ''}
         />
 
         <div className="flex flex-col gap-md min-w-0">
@@ -68,7 +67,9 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
         </div>
       </div>
 
-      <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+      <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+        {content.emphasis}
+      </SectionNote>
     </section>
   );
 };

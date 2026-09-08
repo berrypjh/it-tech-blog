@@ -2,17 +2,35 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Clock,
+  FileText,
+  type LucideIcon,
+  MousePointerClick,
+  Network,
+  PlayCircle,
+  Sparkles,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { PreviousChapterStep, RenderPhaseIntroContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  previousIconByName,
-  SparklesIcon,
-  WorkflowIcon,
-} from '../icons';
+import type {
+  PreviousChapterStep,
+  PreviousChapterStepIcon,
+  RenderPhaseIntroContent,
+} from '../content';
+
+const previousIconByName: Record<PreviousChapterStepIcon, LucideIcon> = {
+  mousePointer: MousePointerClick,
+  fileText: FileText,
+  network: Network,
+  clock: Clock,
+  play: PlayCircle,
+} as const;
 
 type Props = { content: RenderPhaseIntroContent['previous'] };
 
@@ -23,7 +41,7 @@ export const PreviousChapterFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -48,7 +66,7 @@ export const PreviousChapterFlow = ({ content }: Props) => (
                 aria-hidden="true"
                 className="flex shrink-0 items-center justify-center text-[var(--term-accent)] px-0.5"
               >
-                <ArrowRightIcon className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </Fragment>
@@ -65,14 +83,14 @@ export const PreviousChapterFlow = ({ content }: Props) => (
                 aria-hidden="true"
                 className="my-1 flex justify-center text-[var(--term-accent)]"
               >
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>
         ))}
       </ol>
 
-      <SectionNote icon={<SparklesIcon className="h-4 w-4" />} className="mt-md">
+      <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />} className="mt-md">
         {content.emphasis}
       </SectionNote>
     </article>

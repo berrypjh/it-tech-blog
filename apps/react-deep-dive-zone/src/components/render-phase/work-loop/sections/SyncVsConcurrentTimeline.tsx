@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { TimelineCard, TimelineNode, WorkLoopContent } from '../content';
-import { ArrowRightIcon, SparklesIcon } from '../icons';
 
 type Props = { content: WorkLoopContent['timelines'] };
 
@@ -16,7 +17,7 @@ export const SyncVsConcurrentTimeline = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -69,7 +70,7 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
                 aria-hidden="true"
                 className="flex shrink-0 items-center justify-center pt-4 sm:pt-5 text-[var(--term-accent)]"
               >
-                <ArrowRightIcon className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </Fragment>
@@ -86,7 +87,7 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
             t.chip,
           )}
         >
-          <SparklesIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className={cn('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
           {card.footer}

@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Layers, Repeat, TimerReset, Zap } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { laneIconBox, laneTextStrong } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent, LaneBitmaskContent, RepresentativeLaneRow } from '../content';
-import { ArrowRightIcon, LayersIcon, RepeatIcon, TimerResetIcon, ZapIcon } from '../icons';
 
 type Props = { content: LaneBitmaskContent['representative'] };
 
-const laneIcon: Record<LaneAccent, typeof ZapIcon> = {
-  sync: ZapIcon,
-  inputContinuous: TimerResetIcon,
-  default: LayersIcon,
-  transition: RepeatIcon,
-  retry: RepeatIcon,
-  offscreen: LayersIcon,
+const laneIcon: Record<LaneAccent, typeof Zap> = {
+  sync: Zap,
+  inputContinuous: TimerReset,
+  default: Layers,
+  transition: Repeat,
+  retry: Repeat,
+  offscreen: Layers,
 };
 
 const NameCell = ({ row }: { row: RepresentativeLaneRow }) => {
@@ -59,7 +60,7 @@ export const RepresentativeLaneTable = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* DESKTOP table */}
@@ -117,12 +118,12 @@ export const RepresentativeLaneTable = ({ content }: Props) => (
       {/* direction */}
       <div className="flex items-center justify-between border-t border-[var(--term-border)] px-md py-2 bg-[var(--term-surface)]">
         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
-          <ArrowRightIcon aria-hidden="true" className="h-3.5 w-3.5 rotate-180" />
+          <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 rotate-180" />
           {content.directionLeft}
         </span>
         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
           {content.directionRight}
-          <ArrowRightIcon aria-hidden="true" className="h-3.5 w-3.5" />
+          <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
         </span>
       </div>
     </div>
@@ -156,12 +157,12 @@ export const RepresentativeLaneTable = ({ content }: Props) => (
       ))}
       <li className="flex items-center justify-between rounded-xl border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2">
         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
-          <ArrowRightIcon aria-hidden="true" className="h-3 w-3 rotate-180" />
+          <ArrowRight aria-hidden="true" className="h-3 w-3 rotate-180" />
           {content.directionLeft}
         </span>
         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
           {content.directionRight}
-          <ArrowRightIcon aria-hidden="true" className="h-3 w-3" />
+          <ArrowRight aria-hidden="true" className="h-3 w-3" />
         </span>
       </li>
     </ul>

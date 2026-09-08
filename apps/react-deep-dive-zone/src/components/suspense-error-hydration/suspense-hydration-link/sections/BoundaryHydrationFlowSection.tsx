@@ -1,22 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { SuspenseHydrationLinkContent } from '../content';
 import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ContainerIcon,
-  DropletsIcon,
-  RefreshCcwIcon,
-  SearchIcon,
-  XCircleIcon,
-} from '../icons';
+  ArrowRight,
+  CheckCircle2,
+  Container,
+  Droplets,
+  RefreshCcw,
+  Search,
+  XCircle,
+} from 'lucide-react';
+
+import type { SuspenseHydrationLinkContent } from '../content';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: SuspenseHydrationLinkContent['boundaryHydrationFlow'] };
 
-const stepIcons = [DropletsIcon, RefreshCcwIcon, SearchIcon, ContainerIcon, XCircleIcon];
+const stepIcons = [Droplets, RefreshCcw, Search, Container, XCircle];
 
 export const BoundaryHydrationFlowSection = ({ content }: Props) => (
   <section aria-labelledby="boundary-hydration-heading" className="flex flex-col gap-md">
@@ -34,7 +35,7 @@ export const BoundaryHydrationFlowSection = ({ content }: Props) => (
         <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:flex-row items-stretch">
           {content.steps.map((step, i) => {
             const accent = phaseAccent[step.phase];
-            const Icon = stepIcons[i] ?? DropletsIcon;
+            const Icon = stepIcons[i] ?? Droplets;
             const isLast = i === content.steps.length - 1;
             return (
               <li
@@ -85,8 +86,8 @@ export const BoundaryHydrationFlowSection = ({ content }: Props) => (
                     aria-hidden="true"
                     className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
                   >
-                    <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                    <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90" />
+                    <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                    <ArrowRight className="lg:hidden h-4 w-4 rotate-90" aria-hidden="true" />
                   </span>
                 )}
               </li>
@@ -112,7 +113,7 @@ export const BoundaryHydrationFlowSection = ({ content }: Props) => (
               key={b}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-teal-500 dark:text-teal-400"
               />

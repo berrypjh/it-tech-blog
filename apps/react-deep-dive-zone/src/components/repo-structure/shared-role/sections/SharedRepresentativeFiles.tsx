@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, Brackets, FileCode2, Flag, type LucideIcon, ShieldCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { SharedContent } from '../content';
-import { FileCodeIcon, iconByName } from '../icons';
+import type { RepFile, SharedContent } from '../content';
+
+const fileIcon: Record<RepFile['id'], LucideIcon> = {
+  symbols: Brackets,
+  types: Braces,
+  version: ShieldCheck,
+  flags: Flag,
+};
 
 type Props = { content: SharedContent['files'] };
 
@@ -15,18 +23,18 @@ export const SharedRepresentativeFiles = ({ content }: Props) => {
         id="files"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = fileIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               badge={<code className="font-mono break-all">{card.codeLabel}</code>}
             >
               <header className="flex flex-col gap-0.5">

@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Lightbulb, Package, Target, Waypoints } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent, ModernHostCard } from '../content';
-import { BoxIcon, LightbulbIcon, PackageIcon, TargetIcon, WaypointsIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['modern'] };
 
 const iconMap = {
-  box: BoxIcon,
-  package: PackageIcon,
-  target: TargetIcon,
+  box: Box,
+  package: Package,
+  target: Target,
 } as const;
 
 export const ModernHostFamily = ({ content }: Props) => (
@@ -21,7 +22,7 @@ export const ModernHostFamily = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WaypointsIcon className="h-5 w-5" />}
+      icon={<Waypoints className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
@@ -32,7 +33,9 @@ export const ModernHostFamily = ({ content }: Props) => (
       ))}
     </ul>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.description}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.description}
+    </SectionNote>
 
     <p className="text-[11px] text-[var(--term-muted)] italic break-keep text-right">
       {content.footnote}

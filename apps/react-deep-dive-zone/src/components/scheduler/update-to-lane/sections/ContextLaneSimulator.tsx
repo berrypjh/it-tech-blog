@@ -4,24 +4,18 @@ import { useCallback, useRef, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock3, Compass, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ContextAccent, RequestUpdateLaneContent, SimulatorScenario } from '../content';
-import {
-  ArrowRightIcon,
-  ClockIcon,
-  CompassIcon,
-  MousePointerClickIcon,
-  RefreshIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['simulator'] };
 
-const tabIcon: Record<SimulatorScenario['key'], typeof ZapIcon> = {
-  click: MousePointerClickIcon,
-  transition: ClockIcon,
-  render: RefreshIcon,
+const tabIcon: Record<SimulatorScenario['key'], typeof Zap> = {
+  click: MousePointerClick,
+  transition: Clock3,
+  render: RefreshCw,
 };
 
 const summaryDot: Record<'blue' | 'cyan' | 'teal' | 'violet' | 'amber', string> = {
@@ -32,10 +26,10 @@ const summaryDot: Record<'blue' | 'cyan' | 'teal' | 'violet' | 'amber', string> 
   amber: 'bg-amber-500 dark:bg-amber-400',
 };
 
-const StageIcon: Record<ContextAccent, typeof ZapIcon> = {
-  blue: MousePointerClickIcon,
-  teal: ClockIcon,
-  violet: RefreshIcon,
+const StageIcon: Record<ContextAccent, typeof Zap> = {
+  blue: MousePointerClick,
+  teal: Clock3,
+  violet: RefreshCw,
 };
 
 const BitCells = ({
@@ -123,7 +117,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<CompassIcon className="h-5 w-5" />}
+        icon={<Compass className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -335,7 +329,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.laneSummaryTitle}
             </h3>
-            <ArrowRightIcon aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-muted)]" />
+            <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-muted)]" />
           </header>
           <ul className="flex flex-col gap-1.5">
             {content.laneSummary.map((item) => (

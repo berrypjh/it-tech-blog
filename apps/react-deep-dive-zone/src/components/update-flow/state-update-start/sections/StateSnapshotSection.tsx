@@ -1,16 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Database, Lightbulb, MonitorCheck, MousePointer } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { StateUpdateStartContent } from '../content';
-import {
-  ArrowRightIcon,
-  DatabaseIcon,
-  LightbulbIcon,
-  MonitorCheckIcon,
-  MousePointerIcon,
-} from '../icons';
 
 type Props = { content: StateUpdateStartContent['snapshot'] };
 
@@ -22,7 +17,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
       id="snapshot"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<DatabaseIcon className="h-5 w-5" />}
+      icon={<Database className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* 상단 노트 */}
@@ -33,7 +28,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="amber" size="sm">
-        <LightbulbIcon className="h-3.5 w-3.5" />
+        <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
       </ToneIconBox>
       <p className="text-xsm sm:text-sm font-semibold text-center text-[var(--term-fg)] break-keep">
         {content.topNote}
@@ -51,7 +46,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
         codeLine={content.leftCard.callLine}
         callout={content.leftCard.callout}
         footnote={content.leftCard.footnote}
-        icon={<MousePointerIcon className="h-5 w-5" />}
+        icon={<MousePointer className="h-5 w-5" aria-hidden="true" />}
       />
 
       <Connector label={content.middle.label} sub={content.middle.sub} />
@@ -64,7 +59,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
         action={content.rightCard.action}
         callout={content.rightCard.callout}
         footnote={content.rightCard.footnote}
-        icon={<MonitorCheckIcon className="h-5 w-5" />}
+        icon={<MonitorCheck className="h-5 w-5" aria-hidden="true" />}
       />
     </div>
   </section>
@@ -156,7 +151,7 @@ const Connector = ({ label, sub }: { label: string; sub: string }) => (
         aria-hidden="true"
         className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]"
       >
-        <ArrowRightIcon className="h-4 w-4 rotate-90 lg:rotate-0" />
+        <ArrowRight className="h-4 w-4 rotate-90 lg:rotate-0" aria-hidden="true" />
       </span>
       <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[var(--term-fg)] text-center leading-snug">
         {label}

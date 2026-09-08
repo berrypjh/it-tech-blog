@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Atom, BellRing, Globe, TriangleAlert } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, AtomIcon, BellRingIcon, GlobeIcon, TriangleAlertIcon } from '../icons';
 import { domainAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -32,7 +33,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
             >
-              <GlobeIcon className="h-3.5 w-3.5" />
+              <Globe className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               {content.serverLabel}
@@ -51,7 +52,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
               'dark:border-rose-700 dark:bg-rose-950/40 dark:text-rose-200',
             )}
           >
-            <TriangleAlertIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            <TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" />
             {content.mismatchLabel}
           </span>
         </div>
@@ -67,7 +68,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
             >
-              <AtomIcon className="h-3.5 w-3.5" />
+              <Atom className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
               {content.clientLabel}
@@ -117,7 +118,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
                   </span>
                 </div>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3 w-3 ml-3 rotate-90 text-teal-400 dark:text-teal-500"
                   />
@@ -133,7 +134,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
           )}
         >
           <span className="inline-flex items-center gap-1.5 text-teal-700 dark:text-teal-300 font-bold mr-1">
-            <BellRingIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
             note ·
           </span>
           {content.note}

@@ -1,10 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Box,
+  Code2,
+  FunctionSquare,
+  GitFork,
+  Home,
+  type LucideIcon,
+  MoreHorizontal,
+  Settings,
+  SquareDashed,
+  TimerReset,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { BeginWorkContent } from '../content';
-import { fiberTagIconByName, GitForkIcon, SettingsIcon } from '../icons';
+import type { BeginWorkContent, FiberTagItem } from '../content';
+
+const fiberTagIconByName: Record<FiberTagItem['icon'], LucideIcon> = {
+  function: FunctionSquare,
+  cube: Box,
+  home: Home,
+  code: Code2,
+  fragment: SquareDashed,
+  suspense: TimerReset,
+  other: MoreHorizontal,
+} as const;
 
 type Props = { content: BeginWorkContent['tagBranch'] };
 
@@ -15,7 +37,7 @@ export const FiberTagBranchMap = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Root: beginWork → dispatch */}
@@ -28,7 +50,7 @@ export const FiberTagBranchMap = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="sky" size="md">
-        <SettingsIcon className="h-[18px] w-[18px]" />
+        <Settings className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <code

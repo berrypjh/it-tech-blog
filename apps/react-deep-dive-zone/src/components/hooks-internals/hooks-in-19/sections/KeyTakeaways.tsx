@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Eye, Layers, Link2, Rocket, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { React19HooksContent, Tone } from '../content';
-import { EyeIcon, LayersIcon, Link2Icon, RocketIcon, TrophyIcon } from '../icons';
 
 type Props = { content: React19HooksContent['summary'] };
 
 const visualMap = {
-  layers: LayersIcon,
-  link: Link2Icon,
-  eye: EyeIcon,
-  rocket: RocketIcon,
+  layers: Layers,
+  link: Link2,
+  eye: Eye,
+  rocket: Rocket,
 };
 
 const cardTone: Record<Tone, string> = {
@@ -71,12 +72,12 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.items.map((item) => {
-        const Icon = visualMap[item.visual] ?? LayersIcon;
+        const Icon = visualMap[item.visual] ?? Layers;
         return (
           <li key={item.number}>
             <article

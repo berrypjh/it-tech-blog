@@ -1,26 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Flag, HelpCircle, Lightbulb, Link2, RefreshCw, Zap } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent, QuizNode } from '../content';
-import {
-  ArrowRightIcon,
-  FlagIcon,
-  HelpCircleIcon,
-  LightbulbIcon,
-  LinkIcon,
-  RefreshIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['quiz'] };
 
 const nodeIconMap = {
-  refresh: RefreshIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
-  link: LinkIcon,
+  refresh: RefreshCw,
+  flag: Flag,
+  zap: Zap,
+  link: Link2,
 } as const;
 
 export const FiberMiniQuiz = ({ content }: Props) => (
@@ -30,7 +23,7 @@ export const FiberMiniQuiz = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -80,7 +73,7 @@ export const FiberMiniQuiz = ({ content }: Props) => (
             </div>
           </div>
 
-          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
             <span className="font-normal">{content.explanation}</span>
           </SectionNote>
         </div>
@@ -134,7 +127,7 @@ const BeforeAfter = ({ content }: { content: FiberNodeOverviewContent['quiz'] })
         aria-hidden="true"
         className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_1px_0_var(--term-border)]"
       >
-        <ArrowRightIcon className="h-4 w-4" />
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </span>
 
       <div className="flex flex-col items-center gap-2">

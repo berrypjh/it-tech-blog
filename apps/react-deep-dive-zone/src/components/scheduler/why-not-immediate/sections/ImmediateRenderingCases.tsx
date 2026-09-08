@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle } from 'lucide-react';
+
 import type { Tone, WhyNotImmediateContent } from '../content';
-import { HelpCircleIcon } from '../icons';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 import { ScenarioMockup } from './_ScenarioMockups';
@@ -54,7 +55,7 @@ export const ImmediateRenderingCases = ({ content }: Props) => (
       number={3}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

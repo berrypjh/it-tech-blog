@@ -7,7 +7,6 @@ import { ComparisonTableSection } from './sections/ComparisonTableSection';
 import { ConcernsSection } from './sections/ConcernsSection';
 import { DvcHero } from './sections/DvcHero';
 import { FileCompareSection } from './sections/FileCompareSection';
-import { PathSection } from './sections/PathSection';
 import { ReadingMethodSection } from './sections/ReadingMethodSection';
 import { dvcContent } from './content';
 
@@ -23,7 +22,6 @@ export const DomVsCommonPage = ({ locale }: Props) => {
       <ReadingMethodSection content={c.reading} />
       <FileCompareSection content={c.fileCompare} />
       <ConcernsSection content={c.concerns} />
-      <PathSection content={c.path} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, ChevronDown, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent, RenderCommitCard } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, ChevronDownIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: MarkChangesContent['renderCommit'] };
 
@@ -13,15 +14,15 @@ export const RenderVsCommit = ({ content }: Props) => (
       id="render-vs-commit"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] items-stretch gap-md">
       <Card card={content.render} tone="teal" />
       <span aria-hidden="true" className="flex items-center justify-center py-2 lg:py-0">
         <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]">
-          <ArrowRightIcon className="hidden lg:block h-5 w-5" />
-          <ChevronDownIcon className="lg:hidden h-5 w-5" />
+          <ArrowRight className="hidden lg:block h-5 w-5" aria-hidden="true" />
+          <ChevronDown className="lg:hidden h-5 w-5" aria-hidden="true" />
         </span>
       </span>
       <Card card={content.commit} tone="violet" />
@@ -59,7 +60,7 @@ const Card = ({ card, tone }: { card: RenderCommitCard; tone: ToneKey }) => {
               card.kind === 'render' && idx === card.items.length - 1 && 'font-bold',
             )}
           >
-            <CheckCircleIcon aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span>{item}</span>
           </li>
         ))}

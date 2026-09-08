@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Brackets, CheckCircle2, Clock, Terminal } from 'lucide-react';
+
 import type { ExperimentKey, MismatchDetectRecoverContent } from '../content';
-import { ArrowRightIcon, BracketsIcon, CheckCircleIcon, ClockIcon, TerminalIcon } from '../icons';
 import { roleAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -13,8 +14,8 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: MismatchDetectRecoverContent['experiment'] };
 
 const optionIcon: Record<ExperimentKey, React.ComponentType<{ className?: string }>> = {
-  text: ClockIcon,
-  element: BracketsIcon,
+  text: Clock,
+  element: Brackets,
 };
 
 const optionTone: Record<ExperimentKey, { selected: string; text: string; iconChip: string }> = {
@@ -94,7 +95,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                       </span>
                     </span>
                     {isActive && (
-                      <CheckCircleIcon
+                      <CheckCircle2
                         aria-hidden="true"
                         className={cn('h-4 w-4 shrink-0', tone.text)}
                       />
@@ -141,7 +142,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                     </span>
                   </div>
                   {!isLast && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="h-3.5 w-3.5 ml-3.5 rotate-90 text-blue-400 dark:text-blue-500"
                     />
@@ -159,7 +160,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-teal-200 bg-teal-100 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/60 dark:text-teal-200"
             >
-              <TerminalIcon className="h-3.5 w-3.5" />
+              <Terminal className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.logTitle}</h3>
           </header>

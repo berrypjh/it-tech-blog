@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Loader,
+  Puzzle,
+  Rocket,
+  Send,
+  Sparkles,
+  Target,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  LoaderIcon,
-  PuzzleIcon,
-  RocketIcon,
-  SendIcon,
-  SparklesIcon,
-  TargetIcon,
-} from '../icons';
 
 type Props = { content: AdvancedWrapupContent['formAction'] };
 
@@ -50,7 +51,7 @@ const renderToken = (tok: string, i: number) => {
   );
 };
 
-const flowIcons = [SendIcon, PuzzleIcon, TargetIcon, LoaderIcon, SparklesIcon];
+const flowIcons = [Send, Puzzle, Target, Loader, Sparkles];
 
 export const FormActionSubmitFlow = ({ content }: Props) => {
   const lines = content.code.split('\n');
@@ -62,7 +63,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RocketIcon className="h-5 w-5" />}
+        icon={<Rocket className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -81,7 +82,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-[0_2px_0_rgba(16,185,129,0.3)] dark:bg-emerald-400 dark:text-slate-900"
               >
-                <RocketIcon className="h-4 w-4" />
+                <Rocket className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
                 {content.label}
@@ -124,7 +125,10 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900"
               >
-                <LoaderIcon className="h-4 w-4 animate-pulse motion-reduce:animate-none" />
+                <Loader
+                  className="h-4 w-4 animate-pulse motion-reduce:animate-none"
+                  aria-hidden="true"
+                />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
                 {content.pendingLabel}
@@ -139,7 +143,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
           <ol className="flex flex-col gap-1">
             {content.flow.map((step, i) => {
               const isLast = i === content.flow.length - 1;
-              const Icon = flowIcons[i] ?? SendIcon;
+              const Icon = flowIcons[i] ?? Send;
               return (
                 <li key={step.title} className="flex flex-col">
                   <div
@@ -169,7 +173,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
                         {step.body}
                       </span>
                     </div>
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="hidden sm:block h-3.5 w-3.5 text-emerald-400 dark:text-emerald-500"
                     />
@@ -179,7 +183,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
                       aria-hidden="true"
                       className="self-center my-0.5 text-emerald-400 dark:text-emerald-500"
                     >
-                      <ArrowDownIcon className="h-3.5 w-3.5" />
+                      <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                   )}
                 </li>

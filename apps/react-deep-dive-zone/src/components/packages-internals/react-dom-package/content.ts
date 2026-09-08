@@ -2,29 +2,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type ReactDomIconName =
-  | 'atom'
-  | 'box'
-  | 'container'
-  | 'cube'
-  | 'fileCode'
-  | 'fileText'
-  | 'flow'
-  | 'globe'
-  | 'help'
-  | 'hydration'
-  | 'layers'
-  | 'monitor'
-  | 'network'
-  | 'refresh'
-  | 'server'
-  | 'sparkles';
-
 export type HeroDiagramNode = {
   id: 'container' | 'html' | 'serverStream';
   title: string;
   caption: string;
-  iconName: ReactDomIconName;
   tone: ToneKey;
   code?: string;
   description: string;
@@ -35,7 +16,6 @@ export type CompareCardEntry = {
   name: string;
   apis: string[];
   description: string;
-  iconName: ReactDomIconName;
   tone: ToneKey;
 };
 
@@ -45,7 +25,6 @@ export type ClientServerCard = {
   items: string[];
   description: string;
   info: string;
-  iconName: ReactDomIconName;
   tone: ToneKey;
 };
 
@@ -67,19 +46,16 @@ export type CreateHydrateCard = {
 };
 
 export type CheckpointItem = {
-  id: 'file' | 'functions' | 'question';
+  id: 'file' | 'functions';
   label: string;
   value: string;
-  iconName: ReactDomIconName;
-  tone: ToneKey;
 };
 
 export type ConcernCard = {
-  id: string;
+  id: 'dom-container' | 'hydration' | 'browser' | 'resource';
   title: string;
   description: string;
   tags: string[];
-  iconName: ReactDomIconName;
   tone: ToneKey;
 };
 
@@ -171,7 +147,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'container',
           title: 'DOM 컨테이너',
           caption: '브라우저',
-          iconName: 'container',
           tone: 'teal',
           code: '<div id="root"></div>',
           description: 'createRoot / hydrateRoot가 붙는 진입점',
@@ -180,7 +155,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'html',
           title: 'HTML 문서',
           caption: '브라우저',
-          iconName: 'monitor',
           tone: 'violet',
           description: '최종 HTML 구조 — 브라우저에 표시',
         },
@@ -188,7 +162,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'serverStream',
           title: '서버 스트림 / HTML 출력',
           caption: '서버',
-          iconName: 'server',
           tone: 'emerald',
           code: '<html>\n  ...\n</html>',
           description: 'renderTo* 계열로 생성',
@@ -207,7 +180,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           name: 'react',
           apis: ['useState', 'useEffect', 'createElement', 'Component API'],
           description: 'UI를 설명하기 위한 사용자 직면 API를 제공합니다.',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -215,7 +187,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           name: 'react-dom',
           apis: ['createRoot', 'hydrateRoot', '서버 렌더링 entry', 'DOM 연결'],
           description: 'React 트리를 실제 브라우저와 서버 환경에 연결하는 역할을 합니다.',
-          iconName: 'cube',
           tone: 'teal',
         },
       ],
@@ -233,7 +204,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           items: ['createRoot', 'hydrateRoot'],
           description: '브라우저에서 React 트리를 DOM에 붙이는 진입점입니다.',
           info: '동적 상호작용, 이벤트, 상태 업데이트 등을 브라우저 환경에서 실행합니다.',
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -242,7 +212,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           items: ['renderToString', 'renderToPipeableStream', 'renderToReadableStream'],
           description: '서버에서 HTML을 만들거나 스트리밍하는 진입점입니다.',
           info: 'SEO, 초기 로딩, 스트리밍 등의 목적을 위해 서버 환경에서 HTML을 생성합니다.',
-          iconName: 'server',
           tone: 'emerald',
         },
       ],
@@ -294,22 +263,11 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'file',
           label: '파일',
           value: 'packages/react-dom/src/client/ReactDOMRoot.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'functions',
           label: '볼 함수',
           value: 'createRoot, hydrateRoot',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: '학습 질문',
-          value: '왜 createRoot는 container를 가장 먼저 검증할까?',
-          iconName: 'flow',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -327,7 +285,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'DOM container',
           description: '어디에 붙일지 결정하고, 루트 컨테이너를 생성/관리합니다.',
           tags: ['컨테이너 검증', '루트 생성주기'],
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -335,7 +292,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Hydration',
           description: '서버에서 만들어진 HTML에 React를 연결합니다.',
           tags: ['마크업 재사용', '이벤트 바인딩'],
-          iconName: 'hydration',
           tone: 'teal',
         },
         {
@@ -343,7 +299,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Browser-specific behavior',
           description: '브라우저 전용 동작과 DOM 상호작용을 처리합니다.',
           tags: ['이벤트 시스템', '포커스 관리'],
-          iconName: 'globe',
           tone: 'violet',
         },
         {
@@ -351,7 +306,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Resource APIs',
           description: '서버 렌더링, 스트리밍 등 리소스 관련 API를 제공합니다.',
           tags: ['스트리밍', '리소스 관리'],
-          iconName: 'layers',
           tone: 'amber',
         },
       ],
@@ -381,7 +335,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'container',
           title: 'DOM container',
           caption: 'Browser',
-          iconName: 'container',
           tone: 'teal',
           code: '<div id="root"></div>',
           description: 'Where createRoot / hydrateRoot attach',
@@ -390,7 +343,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'html',
           title: 'HTML document',
           caption: 'Browser',
-          iconName: 'monitor',
           tone: 'violet',
           description: 'The final HTML rendered for the browser',
         },
@@ -398,7 +350,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'serverStream',
           title: 'Server stream / HTML output',
           caption: 'Server',
-          iconName: 'server',
           tone: 'emerald',
           code: '<html>\n  ...\n</html>',
           description: 'Produced by renderTo* APIs',
@@ -417,7 +368,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           name: 'react',
           apis: ['useState', 'useEffect', 'createElement', 'Component API'],
           description: 'Provides the user-facing API for describing UI.',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -425,7 +375,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           name: 'react-dom',
           apis: ['createRoot', 'hydrateRoot', 'Server renderer entry', 'DOM connection'],
           description: 'Wires the React tree into the real browser and server environments.',
-          iconName: 'cube',
           tone: 'teal',
         },
       ],
@@ -443,7 +392,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           items: ['createRoot', 'hydrateRoot'],
           description: 'Browser entry point that attaches the React tree to the DOM.',
           info: 'Runs dynamic interactions, events and state updates in the browser.',
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -452,7 +400,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           items: ['renderToString', 'renderToPipeableStream', 'renderToReadableStream'],
           description: 'Server entry point that creates or streams HTML.',
           info: 'Generates HTML on the server for SEO, initial load and streaming.',
-          iconName: 'server',
           tone: 'emerald',
         },
       ],
@@ -511,22 +458,11 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           id: 'file',
           label: 'File',
           value: 'packages/react-dom/src/client/ReactDOMRoot.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'functions',
           label: 'Functions',
           value: 'createRoot, hydrateRoot',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: 'Question',
-          value: 'Why does createRoot validate the container first?',
-          iconName: 'flow',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/react-dom/src/client/ReactDOMRoot.js',
@@ -544,7 +480,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'DOM container',
           description: 'Decides where to attach and manages the root container lifecycle.',
           tags: ['Container validation', 'Root lifecycle'],
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -552,7 +487,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Hydration',
           description: 'Wires React onto HTML produced by the server.',
           tags: ['Markup reuse', 'Event binding'],
-          iconName: 'hydration',
           tone: 'teal',
         },
         {
@@ -560,7 +494,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Browser-specific behavior',
           description: 'Handles browser-only behavior and DOM interaction.',
           tags: ['Event system', 'Focus management'],
-          iconName: 'globe',
           tone: 'violet',
         },
         {
@@ -568,7 +501,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           title: 'Resource APIs',
           description: 'Exposes server rendering and streaming resource APIs.',
           tags: ['Streaming', 'Resource management'],
-          iconName: 'layers',
           tone: 'amber',
         },
       ],

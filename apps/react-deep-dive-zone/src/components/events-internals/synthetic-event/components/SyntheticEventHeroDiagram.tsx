@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Link } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PropertyRow, SyntheticEventContent } from '../content';
-import { AtomIcon, LinkIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['hero']['diagram']; className?: string };
 
@@ -34,7 +35,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="amber" size="sm">
-            <LinkIcon className="h-[18px] w-[18px]" />
+            <Link className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
             nativeEvent
@@ -54,7 +55,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
         >
           <header className="flex items-center gap-sm">
             <ToneIconBox tone="violet" size="sm">
-              <AtomIcon className="h-[18px] w-[18px]" />
+              <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <h2
               className={cn('text-xsm font-bold tracking-tight break-keep', toneTokens.violet.text)}
@@ -80,7 +81,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
           )}
         >
           <ToneIconBox tone="teal" size="sm">
-            <LinkIcon className="h-[18px] w-[18px]" />
+            <Link className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex min-w-0 flex-col gap-1">
             <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">

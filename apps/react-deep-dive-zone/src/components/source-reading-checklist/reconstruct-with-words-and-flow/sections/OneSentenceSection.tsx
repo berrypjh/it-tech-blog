@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Quote } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ReconstructContent } from '../content';
-import { FileTextIcon, QuoteIcon } from '../icons';
 
 type Props = { content: ReconstructContent['oneSentence'] };
 
@@ -18,7 +19,7 @@ export const OneSentenceSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<QuoteIcon className="h-5 w-5" />}
+        icon={<Quote className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -41,7 +42,7 @@ export const OneSentenceSection = ({ content }: Props) => {
               <span className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
               <span className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
             </span>
-            <FileTextIcon
+            <FileText
               className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400"
               aria-hidden="true"
             />
@@ -83,7 +84,7 @@ export const OneSentenceSection = ({ content }: Props) => {
                 'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
               )}
             >
-              <QuoteIcon className="mt-1 h-5 w-5 shrink-0 text-blue-500" aria-hidden="true" />
+              <Quote className="mt-1 h-5 w-5 shrink-0 text-blue-500" aria-hidden="true" />
               <p className="text-md sm:text-lg font-bold leading-snug break-keep">
                 {content.summaryLines.map((line) => (
                   <span key={line} className="block">

@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import type { LucideIcon } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CodeField, ReconcilerIconName } from '../content';
-import { reconcilerIcon } from '../icons';
+import type { CodeField } from '../content';
 
 type Props = {
   title: string;
   subtitle: string;
   fields: CodeField[];
-  iconName: ReconcilerIconName;
+  icon: LucideIcon;
   tone: ToneKey;
   /** 더 큰 강조용 */
   emphasized?: boolean;
@@ -24,13 +25,12 @@ export const FieldCard = ({
   title,
   subtitle,
   fields,
-  iconName,
+  icon: Icon,
   tone,
   emphasized = false,
   className,
 }: Props) => {
   const t = toneTokens[tone];
-  const Icon = reconcilerIcon[iconName];
 
   return (
     <article

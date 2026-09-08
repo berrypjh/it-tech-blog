@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, HelpCircle, Lightbulb, Split } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, FunctionClassComponentFiberContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, HelpCircleIcon, LightbulbIcon, SplitIcon } from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['shouldConstruct'] };
 
@@ -27,7 +28,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.15fr)] gap-md items-stretch">
@@ -56,7 +57,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
           )}
         >
           <ToneIconBox tone="amber" size="md">
-            <LightbulbIcon className="h-5 w-5" />
+            <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <p
             className={cn('text-sm sm:text-md font-bold leading-snug break-keep', amber.fill.text)}
@@ -91,7 +92,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
                       sky.chip,
                     )}
                   >
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </div>
               )}
@@ -112,7 +113,7 @@ const FlowQuestion = ({ prompt }: { prompt: string }) => (
     )}
   >
     <ToneIconBox tone="sky" size="sm">
-      <HelpCircleIcon className="h-4 w-4" />
+      <HelpCircle className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <code className={cn('font-mono text-xsm sm:text-sm font-bold break-keep', sky.fill.text)}>
       {prompt}
@@ -153,10 +154,7 @@ const BranchRow = ({
       >
         {label}
       </span>
-      <ArrowRightIcon
-        className="h-3.5 w-3.5 text-[var(--term-muted)] shrink-0"
-        aria-hidden="true"
-      />
+      <ArrowRight className="h-3.5 w-3.5 text-[var(--term-muted)] shrink-0" aria-hidden="true" />
       <code className={cn('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
         {result}
       </code>

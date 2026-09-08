@@ -1,13 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Loader, RefreshCcw, ShieldCheck, TriangleAlert } from 'lucide-react';
+
 import type { PromiseVsErrorSplitContent } from '../content';
-import {
-  ArrowRightIcon,
-  LoaderIcon,
-  RefreshCcwIcon,
-  ShieldCheckIcon,
-  TriangleAlertIcon,
-} from '../icons';
 import { pathAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -66,7 +61,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             </div>
           </div>
 
-          <ArrowRightIcon
+          <ArrowRight
             aria-hidden="true"
             className="hidden sm:block h-5 w-5 mx-auto text-emerald-500 dark:text-emerald-400"
           />
@@ -80,7 +75,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
               {suspense.rightLabel}
             </span>
             <div className="mt-2 flex items-center gap-2">
-              <LoaderIcon
+              <Loader
                 aria-hidden="true"
                 className="h-4 w-4 motion-safe:animate-spin text-emerald-600 dark:text-emerald-300"
               />
@@ -96,7 +91,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
 
         <ul className="mt-auto flex flex-wrap gap-2">
           {suspense.pills.map((p, i) => {
-            const Icon = i === 0 ? RefreshCcwIcon : i === 1 ? LoaderIcon : ArrowRightIcon;
+            const Icon = i === 0 ? RefreshCcw : i === 1 ? Loader : ArrowRight;
             return (
               <li
                 key={p}
@@ -138,7 +133,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             )}
           >
             <div className="flex items-center gap-2">
-              <TriangleAlertIcon
+              <TriangleAlert
                 aria-hidden="true"
                 className="h-4 w-4 text-rose-600 dark:text-rose-300"
               />
@@ -160,7 +155,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             </div>
           </div>
 
-          <ArrowRightIcon
+          <ArrowRight
             aria-hidden="true"
             className="hidden sm:block h-5 w-5 mx-auto text-rose-500 dark:text-rose-400"
           />
@@ -171,7 +166,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             className={cn('rounded-xl border-2 bg-white p-3', 'dark:bg-[var(--term-bg)]', e.border)}
           >
             <div className="flex items-center gap-2">
-              <ShieldCheckIcon
+              <ShieldCheck
                 aria-hidden="true"
                 className="h-4 w-4 text-rose-600 dark:text-rose-300"
               />
@@ -188,7 +183,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
               aria-hidden="true"
               className="mt-2 inline-flex items-center gap-1 rounded-md border border-rose-300 bg-rose-50 px-2 py-0.5 text-[10px] font-mono font-bold text-rose-700 dark:border-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
             >
-              <RefreshCcwIcon className="h-3 w-3" />
+              <RefreshCcw className="h-3 w-3" aria-hidden="true" />
               retry
             </button>
           </div>
@@ -196,7 +191,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
 
         <ul className="mt-auto flex flex-wrap gap-2">
           {error.pills.map((p, i) => {
-            const Icon = i === 0 ? TriangleAlertIcon : i === 1 ? ShieldCheckIcon : RefreshCcwIcon;
+            const Icon = i === 0 ? TriangleAlert : i === 1 ? ShieldCheck : RefreshCcw;
             return (
               <li
                 key={p}

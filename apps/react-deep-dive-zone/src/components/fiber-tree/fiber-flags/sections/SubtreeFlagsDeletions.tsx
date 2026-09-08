@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, Trash2 } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { EffectBadge } from '../components/EffectBadge';
 import { EFFECT_NEUTRAL, effectBorder, effectText } from '../components/effectStyles';
 import type { EffectKind, FiberFlagsContent } from '../content';
-import { FlagIcon, TrashIcon } from '../icons';
 
 type Props = { content: FiberFlagsContent['subtree'] };
 
@@ -16,7 +17,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FlagIcon className="h-5 w-5" />}
+      icon={<Flag className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Top: concept cards */}
@@ -26,14 +27,14 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
         description={content.subtreeCard.description}
         body={content.subtreeCard.body}
         tone="violet"
-        icon={<FlagIcon className="h-6 w-6" />}
+        icon={<Flag className="h-6 w-6" aria-hidden="true" />}
       />
       <ConceptCard
         title={content.deletionsCard.title}
         description={content.deletionsCard.description}
         body={content.deletionsCard.body}
         tone="rose"
-        icon={<TrashIcon className="h-6 w-6" />}
+        icon={<Trash2 className="h-6 w-6" aria-hidden="true" />}
       />
     </div>
 

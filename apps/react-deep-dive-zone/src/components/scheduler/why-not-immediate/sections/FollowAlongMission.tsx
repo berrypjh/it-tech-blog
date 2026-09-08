@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Compass, FileCode, FileSearch, ListChecks, Target } from 'lucide-react';
+
 import type { Tone, WhyNotImmediateContent } from '../content';
-import { CompassIcon, FileCodeIcon, FileSearchIcon, ListChecksIcon, TargetIcon } from '../icons';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 
@@ -33,7 +34,7 @@ const toneIconBox: Record<Tone, string> = {
   rose: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
 };
 
-const missionIcons = [FileCodeIcon, FileSearchIcon, CompassIcon, TargetIcon];
+const missionIcons = [FileCode, FileSearch, Compass, Target];
 
 export const FollowAlongMission = ({ content }: Props) => (
   <section aria-labelledby="heading-mission">
@@ -43,12 +44,12 @@ export const FollowAlongMission = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.items.map((m, i) => {
-        const Icon = missionIcons[i] ?? FileCodeIcon;
+        const Icon = missionIcons[i] ?? FileCode;
         return (
           <li key={m.title} className="h-full">
             <article

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, FolderTree, ScanSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { DirectoryCard, TestAsDocContent } from '../content';
-import { FileCodeIcon, FolderTreeIcon, ScanSearchIcon } from '../icons';
 
 type Props = { content: TestAsDocContent['testDirectoryMap'] };
 
@@ -28,7 +29,7 @@ export const TestDirectoryMapSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<FolderTreeIcon className="h-5 w-5" />}
+        icon={<FolderTree className="h-5 w-5" aria-hidden="true" />}
       />
 
       {spotlight && <DirCard dir={spotlight} labels={content} variant="spotlight" />}
@@ -95,7 +96,7 @@ const DirCard = ({
             'shadow-[0_2px_0_var(--term-border)]',
           )}
         >
-          <FolderTreeIcon className="h-4 w-4" />
+          <FolderTree className="h-4 w-4" aria-hidden="true" />
         </span>
         <code
           className={cn(
@@ -129,10 +130,7 @@ const DirCard = ({
         {/* Reading point + keywords */}
         <div className="flex flex-col gap-md">
           <div className="flex items-start gap-2 rounded-md border border-dashed p-3 border-[var(--term-border)] bg-[var(--term-surface)]">
-            <ScanSearchIcon
-              className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
-              aria-hidden="true"
-            />
+            <ScanSearch className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
             <div className="flex flex-col">
               <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                 {labels.readingPointLabel}
@@ -159,7 +157,7 @@ const DirCard = ({
                       'font-mono text-[10.5px] font-bold',
                     )}
                   >
-                    <FileCodeIcon className="h-2.5 w-2.5" aria-hidden="true" />
+                    <FileCode2 className="h-2.5 w-2.5" aria-hidden="true" />
                     {kw}
                   </code>
                 </li>

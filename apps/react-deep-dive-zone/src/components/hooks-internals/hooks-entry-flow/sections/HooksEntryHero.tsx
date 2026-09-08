@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2 } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +12,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { HooksEntryHeroDiagram } from '../components/HooksEntryHeroDiagram';
 import type { HooksEntryFlowContent } from '../content';
-import { CodeIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['hero'] };
 
@@ -72,7 +73,7 @@ export const HooksEntryHero = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-[var(--term-border)] bg-white text-[var(--term-muted)] dark:bg-slate-950/50"
           >
-            <CodeIcon className="h-3.5 w-3.5" />
+            <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
         </header>
         <div className={cn('rounded-xl border bg-slate-950 px-md py-md', 'border-slate-800')}>

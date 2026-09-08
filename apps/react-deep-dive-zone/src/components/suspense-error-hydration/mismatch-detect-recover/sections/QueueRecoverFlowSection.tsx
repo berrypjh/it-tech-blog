@@ -1,14 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, BellRing, Logs, RefreshCcw, SignalHigh } from 'lucide-react';
+
 import type { MismatchDetectRecoverContent } from '../content';
-import { ArrowRightIcon, BellRingIcon, LogsIcon, RefreshCcwIcon, SignalHighIcon } from '../icons';
 import { roleAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: MismatchDetectRecoverContent['queueRecover'] };
 
-const stepIcons = [LogsIcon, BellRingIcon, RefreshCcwIcon, SignalHighIcon];
+const stepIcons = [Logs, BellRing, RefreshCcw, SignalHigh];
 
 export const QueueRecoverFlowSection = ({ content }: Props) => (
   <section aria-labelledby="queue-heading" className="flex flex-col gap-md">
@@ -17,7 +18,7 @@ export const QueueRecoverFlowSection = ({ content }: Props) => (
     <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:flex-row items-stretch">
       {content.steps.map((step, i) => {
         const accent = roleAccent[step.role];
-        const Icon = stepIcons[i] ?? LogsIcon;
+        const Icon = stepIcons[i] ?? Logs;
         const isLast = i === content.steps.length - 1;
         return (
           <li key={step.title} className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1">
@@ -58,8 +59,8 @@ export const QueueRecoverFlowSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
               >
-                <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90" />
+                <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="lg:hidden h-4 w-4 rotate-90" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -74,7 +75,7 @@ export const QueueRecoverFlowSection = ({ content }: Props) => (
       )}
     >
       <span className="inline-flex items-center gap-1.5 text-teal-700 dark:text-teal-300 font-bold mr-1">
-        <BellRingIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
         note ·
       </span>
       {content.note}

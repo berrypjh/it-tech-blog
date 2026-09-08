@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BookOpen } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { UsageVsInternalsContent } from '../content';
-import { BookIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['sourceCode'] };
 
@@ -21,7 +22,7 @@ export const SourceCodeReferenceCards = ({ content }: Props) => (
       id="source"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BookIcon className="h-5 w-5" />}
+      icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md">

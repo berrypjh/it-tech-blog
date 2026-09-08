@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, PanelsTopLeft, Pin, Workflow } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStackNode, FiberToRootContent } from '../content';
-import { fiberStackIconByName } from '../icons';
+
+const fiberStackIconByName = {
+  flag: Flag,
+  panels: PanelsTopLeft,
+  workflow: Workflow,
+  pin: Pin,
+} as const;
 
 type Props = { content: FiberToRootContent['hero']; className?: string };
 

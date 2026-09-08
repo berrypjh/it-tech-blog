@@ -1,10 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileCode, Flag, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { SectionHeader } from '../../../shared/section';
 import type { FlagCard, MarkChangesContent } from '../content';
-import { CodeIcon, FileCodeIcon, markIconByName } from '../icons';
 import { facetFor } from '../markFacet';
+
+const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
+  flag: Flag,
+  trash: Trash2,
+  pencil: Pencil,
+  zap: Zap,
+  move: Move,
+} as const;
 
 type Props = { content: MarkChangesContent['code'] };
 
@@ -18,7 +27,7 @@ export const MarkChangesCodeCheckpoint = ({ content }: Props) => (
       id="source-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -35,7 +44,7 @@ export const MarkChangesCodeCheckpoint = ({ content }: Props) => (
                 ))}
               </ul>
             ),
-            icon: FileCodeIcon,
+            icon: FileCode,
           },
         ]}
         question={content.learningQuestion}
@@ -47,7 +56,7 @@ export const MarkChangesCodeCheckpoint = ({ content }: Props) => (
             {content.panelHeader}
           </code>
           <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            <CodeIcon className="inline h-3.5 w-3.5" aria-hidden="true" /> flags
+            <Code2 className="inline h-3.5 w-3.5" aria-hidden="true" /> flags
           </span>
         </header>
 

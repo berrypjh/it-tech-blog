@@ -1,12 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code, GitBranch, Layers, type LucideIcon, Network, Sparkles, User } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactPackageContent } from '../content';
-import { reactPackageIcon, SparklesIcon } from '../icons';
+import type { ApiGroupCard, ReactPackageContent } from '../content';
 
 type Props = { content: ReactPackageContent['groups'] };
+
+const groupIcon: Record<ApiGroupCard['id'], LucideIcon> = {
+  element: Code,
+  component: User,
+  context: Network,
+  hooks: GitBranch,
+  composition: Layers,
+};
 
 export const ApiGroups = ({ content }: Props) => {
   return (
@@ -17,18 +26,18 @@ export const ApiGroups = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
-          const Icon = reactPackageIcon[card.iconName];
+          const Icon = groupIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               topRight={card.number}
             >
               <h3

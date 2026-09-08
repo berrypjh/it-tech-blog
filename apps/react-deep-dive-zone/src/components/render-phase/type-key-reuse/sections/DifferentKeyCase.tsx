@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ChevronDown, Key, Link2Off, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TypeKeyReuseContent } from '../content';
 import { facetFor } from '../facets';
-import { ArrowRightIcon, ChevronDownIcon, KeyIcon, Link2OffIcon, ZapIcon } from '../icons';
 
 import { NextCard, PreviousCard, ResultCardView } from './case-cards';
 
@@ -26,7 +27,7 @@ export const DifferentKeyCase = ({ content }: Props) => {
         id="different-key"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<KeyIcon className="h-5 w-5" />}
+        icon={<Key className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.1fr)] items-stretch gap-3">
@@ -38,8 +39,8 @@ export const DifferentKeyCase = ({ content }: Props) => {
                 aria-hidden="true"
                 className="flex shrink-0 items-center justify-center xl:px-0.5 py-1 xl:py-0 text-[var(--term-accent)]"
               >
-                <ArrowRightIcon className="hidden xl:block h-5 w-5" />
-                <ChevronDownIcon className="xl:hidden h-5 w-5" />
+                <ArrowRight className="hidden xl:block h-5 w-5" aria-hidden="true" />
+                <ChevronDown className="xl:hidden h-5 w-5" aria-hidden="true" />
               </span>
             )}
           </Fragment>
@@ -67,7 +68,7 @@ const StateBreakCard = ({ data }: { data: TypeKeyReuseContent['differentKey']['s
             rose.chip,
           )}
         >
-          <Link2OffIcon className="h-4 w-4" />
+          <Link2Off className="h-4 w-4" aria-hidden="true" />
         </span>
         <h3 className={cn('text-sm sm:text-md font-bold break-keep', rose.text)}>{data.title}</h3>
       </header>
@@ -89,7 +90,7 @@ const StateBreakCard = ({ data }: { data: TypeKeyReuseContent['differentKey']['s
             rose.chip,
           )}
         >
-          <ZapIcon className="h-4 w-4" />
+          <Zap className="h-4 w-4" aria-hidden="true" />
         </span>
         <article
           className={cn(

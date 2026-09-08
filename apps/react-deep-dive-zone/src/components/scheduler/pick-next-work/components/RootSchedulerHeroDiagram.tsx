@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Database, Target, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RootSchedulerContent, SchedulerAccent } from '../content';
-import { ClockIcon, DatabaseIcon, TargetIcon, ZapIcon } from '../icons';
 
 type Props = { content: RootSchedulerContent['hero']; className?: string };
 
@@ -51,7 +52,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
         >
           <header className="flex items-center gap-sm">
             <ToneIconBox tone="teal" size="sm">
-              <DatabaseIcon className="h-[18px] w-[18px]" />
+              <Database className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.teal.text)}
@@ -94,7 +95,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
         >
           <header className="flex items-center gap-sm">
             <ToneIconBox tone="blue" size="sm">
-              <TargetIcon className="h-[18px] w-[18px]" />
+              <Target className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
@@ -133,7 +134,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
         >
           <header className="flex items-center gap-sm">
             <ToneIconBox tone="teal" size="sm">
-              <ClockIcon className="h-[18px] w-[18px]" />
+              <Clock3 className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}
@@ -147,7 +148,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
           <ul className="flex flex-col gap-1.5">
             {content.step3.paths.map((p) => {
               const t = toneTokens[p.accent];
-              const Icon = p.accent === 'blue' ? ZapIcon : ClockIcon;
+              const Icon = p.accent === 'blue' ? Zap : Clock3;
               return (
                 <li
                   key={p.label}

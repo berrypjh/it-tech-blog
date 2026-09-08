@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, ShieldCheck } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, ShieldCheckIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -54,7 +55,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
                 {label}
               </div>
               {i < content.tree.length - 1 && (
-                <ArrowDownIcon
+                <ArrowDown
                   aria-hidden="true"
                   className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 rotate-180"
                 />
@@ -80,7 +81,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
           >
-            <ShieldCheckIcon className="h-4 w-4" />
+            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-violet-700 dark:text-violet-200 break-keep">
             {content.updateTitle}
@@ -108,7 +109,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
                   </span>
                 </div>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3 w-3 ml-3 rotate-90 text-violet-400 dark:text-violet-500"
                   />

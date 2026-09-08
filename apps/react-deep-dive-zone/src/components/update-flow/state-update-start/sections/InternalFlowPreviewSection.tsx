@@ -1,11 +1,34 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CalendarClock,
+  Code2,
+  Database,
+  FilePlus,
+  Flag,
+  Layers,
+  Loader,
+  MousePointer,
+  Play,
+  Sparkles,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { InternalFlowStep, StateUpdateStartContent } from '../content';
-import { flowIconByName, LayersIcon, SparklesIcon } from '../icons';
+
+const flowIconByName = {
+  mouse: MousePointer,
+  play: Play,
+  code: Code2,
+  flag: Flag,
+  filePlus: FilePlus,
+  database: Database,
+  calendar: CalendarClock,
+  loader: Loader,
+} as const;
 
 type Props = { content: StateUpdateStartContent['internalFlow'] };
 
@@ -33,7 +56,7 @@ export const InternalFlowPreviewSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />
@@ -45,7 +68,7 @@ export const InternalFlowPreviewSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="amber" size="sm">
-        <SparklesIcon className="h-3.5 w-3.5" />
+        <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
       </ToneIconBox>
       <p className="text-xsm sm:text-sm font-semibold leading-snug text-[var(--term-fg)] break-keep">
         {content.bottomNote}

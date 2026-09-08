@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cable, Cpu, DoorOpen, FileCode2, Plug, Split } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent, HeroLayer } from '../content';
-import { CableIcon, CpuIcon, DoorOpenIcon, FileCodeIcon, PlugIcon, SplitIcon } from '../icons';
 
 type Props = { content: FindPublicApiEntryContent['hero']; className?: string };
 
 const layerIcon = {
-  user: DoorOpenIcon,
-  public: PlugIcon,
-  dispatcher: SplitIcon,
-  internal: CpuIcon,
+  user: DoorOpen,
+  public: Plug,
+  dispatcher: Split,
+  internal: Cpu,
 } as const;
 
 /**
@@ -42,7 +43,7 @@ export const ApiEntryHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="blue" size="sm">
-            <CableIcon className="h-[18px] w-[18px]" />
+            <Cable className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.visualTitle}
@@ -107,7 +108,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
 
       {layer.file && !layer.code && (
         <code className="flex items-center gap-1.5 overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1 font-mono text-[10.5px] text-[var(--term-fg)]">
-          <FileCodeIcon className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
+          <FileCode2 className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
           <span className="whitespace-nowrap">{layer.file}</span>
         </code>
       )}

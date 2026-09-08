@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import { PackagePill } from '../components/PackagePill';
 import type { PackagesDirectoryContent } from '../content';
-import { LayersIcon } from '../icons';
 
 type Props = { content: PackagesDirectoryContent['landscape'] };
 
@@ -18,7 +19,7 @@ export const PackagesLandscape = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div

@@ -1,8 +1,41 @@
+import {
+  CheckCircle2,
+  CircleHelp,
+  Clock,
+  Code2,
+  Database,
+  Flag,
+  GitBranch,
+  Hourglass,
+  MousePointerClick,
+  PanelsTopLeft,
+  Search,
+  Server,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge } from '../../../shared/tone';
 import type { UpdateToRenderSummaryContent } from '../content';
-import { flowIconByName, WorkflowIcon } from '../icons';
+
+const flowIconByName = {
+  mousePointer: MousePointerClick,
+  code: Code2,
+  workflow: Workflow,
+  search: Search,
+  panels: PanelsTopLeft,
+  server: Server,
+  circleHelp: CircleHelp,
+  database: Database,
+  gitBranch: GitBranch,
+  flag: Flag,
+  zap: Zap,
+  checkCircle: CheckCircle2,
+  clock: Clock,
+  hourglass: Hourglass,
+} as const;
 
 type Props = { content: UpdateToRenderSummaryContent['bigFlow'] };
 
@@ -31,7 +64,7 @@ export const FullFlowDiagramSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<WorkflowIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <NumberedStepList rows={rows} rowClassName="md:grid-cols-[auto_auto_1fr_auto]" />

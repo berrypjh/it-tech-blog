@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Code2, FunctionSquare, Sliders, Users } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReactCreateElementContent } from '../content';
-import { BoxIcon, Code2Icon, FunctionSquareIcon, SlidersIcon, UsersIcon } from '../icons';
 
 type Props = { content: ReactCreateElementContent['input'] };
 
 const iconMap = {
-  box: BoxIcon,
-  sliders: SlidersIcon,
-  users: UsersIcon,
+  box: Box,
+  sliders: Sliders,
+  users: Users,
 } as const;
 
 export const CreateElementInputStructure = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<FunctionSquareIcon className="h-5 w-5" />}
+      icon={<FunctionSquare className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Signature card */}
@@ -37,7 +38,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
         aria-hidden="true"
         className="inline-flex items-center justify-center w-11 h-11 rounded-2xl border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
-        <Code2Icon className="h-5 w-5" />
+        <Code2 className="h-5 w-5" aria-hidden="true" />
       </span>
       <code className="font-mono text-md sm:text-lg lg:text-xl font-bold tracking-tight text-[var(--term-fg)] break-all">
         {content.signature}

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Globe, Loader } from 'lucide-react';
+
 import type { HydrationStartContent } from '../content';
-import { CheckCircleIcon, GlobeIcon, LoaderIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -28,7 +29,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <GlobeIcon className="h-3.5 w-3.5" />
+            <Globe className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <h3 className="text-xsm font-bold text-blue-700 dark:text-blue-200 break-keep">
             {serverHtml.codeLabel}
@@ -41,7 +42,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
               key={b}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-blue-500 dark:text-blue-400"
               />
@@ -82,7 +83,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-teal-200 bg-teal-100 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/60 dark:text-teal-200"
             >
-              <LoaderIcon className="h-3.5 w-3.5 motion-safe:animate-spin" />
+              <Loader className="h-3.5 w-3.5 motion-safe:animate-spin" aria-hidden="true" />
             </span>
             <h3 className="text-sm font-bold text-teal-700 dark:text-teal-200 break-keep">
               {hydrateCall.statusTitle}

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Gauge, List, Search, Target, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TransitionDeferredContent } from '../content';
-import { CheckCircleIcon, GaugeIcon, ListIcon, SearchIcon, TargetIcon, ZapIcon } from '../icons';
 import {
   responseCardBorder,
   responseIconBox,
@@ -12,7 +13,7 @@ import {
 
 type Props = { content: TransitionDeferredContent['problem'] };
 
-const Gauge = ({ high, low, title }: { high: string; low: string; title: string }) => (
+const GaugeCard = ({ high, low, title }: { high: string; low: string; title: string }) => (
   <article
     className={cn(
       'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
@@ -25,7 +26,7 @@ const Gauge = ({ high, low, title }: { high: string; low: string; title: string 
         aria-hidden="true"
         className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
       >
-        <GaugeIcon className="h-5 w-5" />
+        <Gauge className="h-5 w-5" aria-hidden="true" />
       </span>
       <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">{title}</h3>
     </header>
@@ -68,7 +69,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
@@ -88,7 +89,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
               responseIconBox.emerald,
             )}
           >
-            <SearchIcon className="h-4 w-4" />
+            <Search className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
             className={cn(
@@ -114,11 +115,14 @@ export const TransitionProblemSection = ({ content }: Props) => (
           aria-hidden="true"
           className="flex items-center gap-2 rounded-xl border border-emerald-200/80 bg-white px-3 py-2 dark:border-emerald-800/60 dark:bg-slate-950/40"
         >
-          <SearchIcon className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300" />
+          <Search
+            className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300"
+            aria-hidden="true"
+          />
           <span className="flex-1 font-mono text-xsm text-[var(--term-fg)]">
             <span className="inline-block h-3 w-px align-middle bg-emerald-500 animate-pulse motion-reduce:animate-none" />
           </span>
-          <ZapIcon className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300" />
+          <Zap className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300" aria-hidden="true" />
         </div>
 
         <ul className="mt-auto flex flex-col gap-1.5">
@@ -127,7 +131,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
               key={p}
               className="flex items-start gap-2 text-[11px] sm:text-xsm leading-snug text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-300"
               />
@@ -137,7 +141,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
         </ul>
       </article>
 
-      <Gauge title={content.gauge.title} high={content.gauge.high} low={content.gauge.low} />
+      <GaugeCard title={content.gauge.title} high={content.gauge.high} low={content.gauge.low} />
 
       {/* result list */}
       <article
@@ -155,7 +159,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
               responseIconBox.blue,
             )}
           >
-            <ListIcon className="h-4 w-4" />
+            <List className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
             className={cn(
@@ -204,7 +208,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
               key={p}
               className="flex items-start gap-2 text-[11px] sm:text-xsm leading-snug text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-blue-600 dark:text-blue-300"
               />

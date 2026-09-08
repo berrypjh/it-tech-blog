@@ -2,34 +2,19 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type DvcIconName =
-  | 'arrowRight'
-  | 'atom'
-  | 'box'
-  | 'check'
-  | 'clipboardCheck'
-  | 'clock'
-  | 'code'
-  | 'cube'
-  | 'cursor'
-  | 'database'
-  | 'droplet'
-  | 'externalLink'
-  | 'fileCode'
-  | 'fileText'
-  | 'gitBranch'
-  | 'help'
-  | 'layers'
-  | 'monitor'
-  | 'network'
-  | 'scale'
-  | 'search'
-  | 'star';
+export type HeroAreaItemId =
+  | 'element'
+  | 'fiber'
+  | 'reconciler'
+  | 'scheduler'
+  | 'dom-renderer'
+  | 'dom-node'
+  | 'browser-env';
 
 export type HeroSideArea = {
   title: string;
   subtitle: string;
-  items: { id: string; label: string; iconName: DvcIconName }[];
+  items: { id: HeroAreaItemId; label: string }[];
   bottomLabel: string;
 };
 
@@ -47,7 +32,6 @@ export type ReadingCard = {
   items: string[];
   flow: string[];
   tone: ToneKey;
-  iconName: DvcIconName;
 };
 
 export type FileCard = {
@@ -59,24 +43,12 @@ export type FileCard = {
   code: string;
   codeLink: { label: string; href: string };
   tone: ToneKey;
-  iconName: DvcIconName;
 };
 
 export type ConcernCard = {
-  id: string;
+  id: 'node' | 'container' | 'hydration' | 'env';
   title: string;
   description: string;
-  iconName: DvcIconName;
-  tone: ToneKey;
-};
-
-export type PathCard = {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  href: string;
-  iconName: DvcIconName;
   tone: ToneKey;
 };
 
@@ -114,13 +86,6 @@ export type DvcContent = {
     title: string;
     description: string;
     cards: ConcernCard[];
-  };
-  path: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    moreLabel: string;
-    cards: PathCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -171,10 +136,10 @@ export const dvcContent: Record<Locale, DvcContent> = {
         title: '공통 렌더링 구조',
         subtitle: '환경 독립',
         items: [
-          { id: 'element', label: 'Element', iconName: 'code' },
-          { id: 'fiber', label: 'Fiber', iconName: 'cube' },
-          { id: 'reconciler', label: 'Reconciler', iconName: 'network' },
-          { id: 'scheduler', label: 'Scheduler', iconName: 'clock' },
+          { id: 'element', label: 'Element' },
+          { id: 'fiber', label: 'Fiber' },
+          { id: 'reconciler', label: 'Reconciler' },
+          { id: 'scheduler', label: 'Scheduler' },
         ],
         bottomLabel: '계산 / 결정 (공통)',
       },
@@ -182,9 +147,9 @@ export const dvcContent: Record<Locale, DvcContent> = {
         title: 'DOM 전용 구현',
         subtitle: '브라우저 특화',
         items: [
-          { id: 'dom-renderer', label: 'DOM Renderer', iconName: 'monitor' },
-          { id: 'dom-node', label: 'DOM Node', iconName: 'box' },
-          { id: 'browser-env', label: 'Browser Env', iconName: 'database' },
+          { id: 'dom-renderer', label: 'DOM Renderer' },
+          { id: 'dom-node', label: 'DOM Node' },
+          { id: 'browser-env', label: 'Browser Env' },
         ],
         bottomLabel: '반영 / 환경 대응 (전용)',
       },
@@ -247,7 +212,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           ],
           flow: ['Element', 'Fiber', 'react-reconciler'],
           tone: 'teal',
-          iconName: 'cube',
         },
         {
           id: 'dom',
@@ -260,7 +224,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           ],
           flow: ['DOM root 생성', 'react-dom', 'DOM 반영'],
           tone: 'violet',
-          iconName: 'monitor',
         },
       ],
     },
@@ -281,7 +244,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
         code: REACT_FIBER_CODE,
         codeLink: FIBER_LINK,
         tone: 'teal',
-        iconName: 'fileCode',
       },
       rightFile: {
         id: 'dom-root',
@@ -292,7 +254,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
         code: REACT_DOM_ROOT_CODE,
         codeLink: DOM_ROOT_LINK,
         tone: 'violet',
-        iconName: 'fileCode',
       },
     },
     concerns: {
@@ -305,14 +266,12 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'DOM node 생성',
           description:
             'createElement, setInitialProperties 등으로 실제 DOM node를 생성하고 속성을 설정합니다.',
-          iconName: 'code',
           tone: 'violet',
         },
         {
           id: 'container',
           title: '브라우저 container 관리',
           description: 'createRoot, hydrateRoot, unmount 등 컨테이너 생명주기와 연결을 관리합니다.',
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -320,7 +279,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'Hydration',
           description:
             '서버에서 내려온 HTML에 이벤트와 상태를 연결하고 불일치를 보정하는 로직을 담당합니다.',
-          iconName: 'droplet',
           tone: 'cyan',
         },
         {
@@ -328,44 +286,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: '선택 영역 / focus / event 환경 처리',
           description:
             'selection 복원, focus 유지, 이벤트 위임과 브라우저의 특수 요구사항을 처리합니다.',
-          iconName: 'cursor',
           tone: 'indigo',
-        },
-      ],
-    },
-    path: {
-      eyebrow: '05 · 다음 여정',
-      title: '이후 학습으로 이어지는 여정',
-      description: '이 페이지에서 잡은 경계가 다음 챕터들과 어떻게 연결되는지 살펴보세요.',
-      moreLabel: '자세히 보기',
-      cards: [
-        {
-          id: 'element',
-          title: 'React Element와 JSX의 정체',
-          subtitle: '공통 설명 객체',
-          description: 'Element는 UI를 설명하는 객체이며, 모든 플랫폼에서 공통으로 사용됩니다.',
-          href: '/element-vs-fiber',
-          iconName: 'code',
-          tone: 'sky',
-        },
-        {
-          id: 'fiber-trans',
-          title: '컴포넌트는 어떻게 Fiber가 되는가?',
-          subtitle: '공통 계산 로직',
-          description:
-            'reconciler가 Element를 Fiber로 바꾸고 렌더링 계산을 수행하는 과정을 배웁니다.',
-          href: '/create-fiber-from-element',
-          iconName: 'cube',
-          tone: 'teal',
-        },
-        {
-          id: 'commit',
-          title: 'Commit Phase와 실제 DOM 반영',
-          subtitle: 'renderer와 환경별 반영 연결',
-          description: '계산된 변경이 renderer를 통해 실제 DOM 또는 Native에 반영됩니다.',
-          href: '/commit-phase',
-          iconName: 'monitor',
-          tone: 'violet',
         },
       ],
     },
@@ -392,10 +313,10 @@ export const dvcContent: Record<Locale, DvcContent> = {
         title: 'Shared rendering structure',
         subtitle: 'Environment-independent',
         items: [
-          { id: 'element', label: 'Element', iconName: 'code' },
-          { id: 'fiber', label: 'Fiber', iconName: 'cube' },
-          { id: 'reconciler', label: 'Reconciler', iconName: 'network' },
-          { id: 'scheduler', label: 'Scheduler', iconName: 'clock' },
+          { id: 'element', label: 'Element' },
+          { id: 'fiber', label: 'Fiber' },
+          { id: 'reconciler', label: 'Reconciler' },
+          { id: 'scheduler', label: 'Scheduler' },
         ],
         bottomLabel: 'Compute / decide (shared)',
       },
@@ -403,9 +324,9 @@ export const dvcContent: Record<Locale, DvcContent> = {
         title: 'DOM-only implementation',
         subtitle: 'Browser-specific',
         items: [
-          { id: 'dom-renderer', label: 'DOM Renderer', iconName: 'monitor' },
-          { id: 'dom-node', label: 'DOM Node', iconName: 'box' },
-          { id: 'browser-env', label: 'Browser Env', iconName: 'database' },
+          { id: 'dom-renderer', label: 'DOM Renderer' },
+          { id: 'dom-node', label: 'DOM Node' },
+          { id: 'browser-env', label: 'Browser Env' },
         ],
         bottomLabel: 'Apply / per-env (specific)',
       },
@@ -468,7 +389,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           ],
           flow: ['Element', 'Fiber', 'react-reconciler'],
           tone: 'teal',
-          iconName: 'cube',
         },
         {
           id: 'dom',
@@ -481,7 +401,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           ],
           flow: ['DOM root creation', 'react-dom', 'DOM commit'],
           tone: 'violet',
-          iconName: 'monitor',
         },
       ],
     },
@@ -502,7 +421,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
         code: REACT_FIBER_CODE,
         codeLink: FIBER_LINK,
         tone: 'teal',
-        iconName: 'fileCode',
       },
       rightFile: {
         id: 'dom-root',
@@ -513,7 +431,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
         code: REACT_DOM_ROOT_CODE,
         codeLink: DOM_ROOT_LINK,
         tone: 'violet',
-        iconName: 'fileCode',
       },
     },
     concerns: {
@@ -526,14 +443,12 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'DOM node creation',
           description:
             'createElement, setInitialProperties and friends create DOM nodes and set their attributes.',
-          iconName: 'code',
           tone: 'violet',
         },
         {
           id: 'container',
           title: 'Browser container lifecycle',
           description: 'createRoot, hydrateRoot, unmount manage container lifecycle and wiring.',
-          iconName: 'monitor',
           tone: 'sky',
         },
         {
@@ -541,7 +456,6 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'Hydration',
           description:
             'Wires events and state onto server-rendered HTML and reconciles mismatches.',
-          iconName: 'droplet',
           tone: 'cyan',
         },
         {
@@ -549,43 +463,7 @@ export const dvcContent: Record<Locale, DvcContent> = {
           title: 'Selection / focus / event handling',
           description:
             'Restores selection, keeps focus, delegates events, and handles browser quirks.',
-          iconName: 'cursor',
           tone: 'indigo',
-        },
-      ],
-    },
-    path: {
-      eyebrow: "05 · WHAT'S NEXT",
-      title: 'Where this leads next',
-      description: 'How the boundary you just learned connects to upcoming chapters.',
-      moreLabel: 'Read more',
-      cards: [
-        {
-          id: 'element',
-          title: 'React Elements and JSX',
-          subtitle: 'Shared description object',
-          description: 'Elements describe UI and are used the same way across every platform.',
-          href: '/element-vs-fiber',
-          iconName: 'code',
-          tone: 'sky',
-        },
-        {
-          id: 'fiber-trans',
-          title: 'How components become Fibers',
-          subtitle: 'Shared compute logic',
-          description: 'Learn how the reconciler turns Elements into Fibers and runs the render.',
-          href: '/create-fiber-from-element',
-          iconName: 'cube',
-          tone: 'teal',
-        },
-        {
-          id: 'commit',
-          title: 'Commit phase & real DOM updates',
-          subtitle: 'Renderer & per-env application',
-          description: 'Computed changes flow through the renderer to the real DOM or Native.',
-          href: '/commit-phase',
-          iconName: 'monitor',
-          tone: 'violet',
         },
       ],
     },

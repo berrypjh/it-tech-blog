@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ChevronDown, Component, Key } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TypeKeyReuseContent } from '../content';
-import { ArrowRightIcon, ChevronDownIcon, ComponentIcon, KeyIcon } from '../icons';
 
 import { NextCard, PreviousCard, ResultCardView } from './case-cards';
 
@@ -25,7 +26,7 @@ export const DifferentTypeCase = ({ content }: Props) => {
         id="different-type"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ComponentIcon className="h-5 w-5" />}
+        icon={<Component className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.1fr)] items-stretch gap-3">
@@ -37,8 +38,8 @@ export const DifferentTypeCase = ({ content }: Props) => {
                 aria-hidden="true"
                 className="flex shrink-0 items-center justify-center xl:px-0.5 py-1 xl:py-0 text-[var(--term-accent)]"
               >
-                <ArrowRightIcon className="hidden xl:block h-5 w-5" />
-                <ChevronDownIcon className="xl:hidden h-5 w-5" />
+                <ArrowRight className="hidden xl:block h-5 w-5" aria-hidden="true" />
+                <ChevronDown className="xl:hidden h-5 w-5" aria-hidden="true" />
               </span>
             )}
           </Fragment>
@@ -61,13 +62,13 @@ const KeyTypeRoleCard = ({ role }: { role: TypeKeyReuseContent['differentType'][
     </h3>
     <RoleRow
       tone="teal"
-      icon={<KeyIcon className="h-4 w-4" />}
+      icon={<Key className="h-4 w-4" aria-hidden="true" />}
       label={role.key.label}
       description={role.key.description}
     />
     <RoleRow
       tone="violet"
-      icon={<ComponentIcon className="h-4 w-4" />}
+      icon={<Component className="h-4 w-4" aria-hidden="true" />}
       label={role.type.label}
       description={role.type.description}
       detail={role.type.detail}

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Type } from 'lucide-react';
+
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { Branch, BranchKey } from '../content';
-import { TypeIcon } from '../icons';
 
 const branchTone: Record<BranchKey, ToneKey> = {
   string: 'emerald',
@@ -109,7 +110,7 @@ const CenterCard = ({
       className,
     )}
   >
-    <TypeIcon
+    <Type
       className={cn(size === 'lg' ? 'h-7 w-7' : 'h-6 w-6', 'opacity-90 mb-1')}
       aria-hidden="true"
     />

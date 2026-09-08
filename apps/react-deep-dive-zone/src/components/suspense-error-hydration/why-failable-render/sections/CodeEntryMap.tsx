@@ -1,7 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ExternalLink, FileCode } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import type { FileCard, WhyFailableRenderContent } from '../content';
-import { ExternalLinkIcon, FileCodeIcon, GithubIcon } from '../icons';
 import { branchAccent } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['codeEntry'] };
@@ -57,7 +59,7 @@ export const CodeEntryMap = ({ content }: Props) => (
                     accent.chip,
                   )}
                 >
-                  <FileCodeIcon className="h-4 w-4" />
+                  <FileCode className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <div className="flex flex-col min-w-0">
                   <span className={cn('text-xsm font-mono font-bold break-all', accent.text)}>
@@ -93,7 +95,7 @@ export const CodeEntryMap = ({ content }: Props) => (
               >
                 <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>{content.buttonLabel}</span>
-                <ExternalLinkIcon
+                <ExternalLink
                   aria-hidden="true"
                   className="h-3 w-3 opacity-70 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
                 />

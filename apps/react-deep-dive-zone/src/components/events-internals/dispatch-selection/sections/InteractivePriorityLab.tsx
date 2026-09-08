@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, PlayCircle } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchSelectionContent } from '../content';
-import { ArrowDownIcon, PlayCircleIcon } from '../icons';
 import { priorityBadge, priorityBorder, priorityIconBox, priorityText } from '../priorityStyle';
 
 type Props = { content: DispatchSelectionContent['lab'] };
@@ -23,7 +24,7 @@ export const InteractivePriorityLab = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.hint}
-        icon={<PlayCircleIcon className="h-5 w-5" />}
+        icon={<PlayCircle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -163,7 +164,7 @@ export const InteractivePriorityLab = ({ content }: Props) => {
                   priorityIconBox[state.priority],
                 )}
               >
-                <PlayCircleIcon className="h-3.5 w-3.5" />
+                <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </header>
 
@@ -207,7 +208,7 @@ export const InteractivePriorityLab = ({ content }: Props) => {
                         aria-hidden="true"
                         className="self-center my-0.5 text-[var(--term-muted)]"
                       >
-                        <ArrowDownIcon className="h-3.5 w-3.5" />
+                        <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                     )}
                   </li>

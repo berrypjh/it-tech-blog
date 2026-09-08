@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitCompare, Lightbulb } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { DownArrow } from '../../../shared/icon';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent, PropsKind } from '../content';
-import { GitCompareIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['scenario'] };
 
@@ -22,7 +23,7 @@ export const PropsChangeScenario = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.2fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -50,7 +51,7 @@ export const PropsChangeScenario = ({ content }: Props) => (
       </article>
     </div>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
       {content.bannerPrefix}
       <ValueBadge tone="emerald">{content.bannerOldValue}</ValueBadge>
       {content.bannerMid}

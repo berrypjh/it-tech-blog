@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Flag, Link, Network, RefreshCw } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCard, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent, InfoGroupCard } from '../content';
-import { BoxesIcon, FlagIcon, LinkIcon, NetworkIcon, RefreshIcon } from '../icons';
 
 type Props = { content: FiberStoredInformationContent['groups'] };
 
 const iconMap = {
-  network: NetworkIcon,
-  refresh: RefreshIcon,
-  flag: FlagIcon,
-  link: LinkIcon,
+  network: Network,
+  refresh: RefreshCw,
+  flag: Flag,
+  link: Link,
 } as const;
 
 export const FiberInfoGroups = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const FiberInfoGroups = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BoxesIcon className="h-5 w-5" />}
+      icon={<Boxes className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-md">

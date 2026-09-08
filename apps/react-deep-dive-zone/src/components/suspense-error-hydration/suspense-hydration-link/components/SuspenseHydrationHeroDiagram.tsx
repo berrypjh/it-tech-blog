@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cloud, Droplets, Package, ShieldCheck } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroTopCard, SuspenseHydrationLinkContent } from '../content';
-import { CloudIcon, DropletsIcon, PackageIcon, ShieldCheckIcon } from '../icons';
 
 type Props = { content: SuspenseHydrationLinkContent['hero']; className?: string };
 
@@ -12,9 +13,9 @@ const cardMeta: Record<
   HeroTopCard['kind'],
   { tone: ToneKey; Icon: React.ComponentType<{ className?: string }> }
 > = {
-  server: { tone: 'blue', Icon: CloudIcon },
-  hydration: { tone: 'teal', Icon: DropletsIcon },
-  recovery: { tone: 'emerald', Icon: ShieldCheckIcon },
+  server: { tone: 'blue', Icon: Cloud },
+  hydration: { tone: 'teal', Icon: Droplets },
+  recovery: { tone: 'emerald', Icon: ShieldCheck },
 };
 
 /**
@@ -87,7 +88,7 @@ const BoundaryPanel = ({ code, caption }: { code: string; caption: string }) => 
   <div className="flex flex-col gap-sm">
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="violet" size="sm">
-        <PackageIcon className="h-[18px] w-[18px]" />
+        <Package className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         Suspense Boundary

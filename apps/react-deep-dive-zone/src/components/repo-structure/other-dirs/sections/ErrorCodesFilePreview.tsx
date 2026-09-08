@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ExternalLink, FileJson, Info, Lightbulb } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { ExternalLinkIcon, FileJsonIcon, InfoIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: SurroundingContent['errorCodes'] };
 
@@ -16,7 +17,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
         id="error-codes"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileJsonIcon className="h-5 w-5" />}
+        icon={<FileJson className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -30,12 +31,12 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
           <InfoRow
             label={content.fileLabel}
             value={<code className="font-mono break-all">{content.filePath}</code>}
-            icon={<FileJsonIcon className="h-4 w-4 text-[var(--term-accent)]" />}
+            icon={<FileJson className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />}
           />
           <InfoRow
             label={content.descriptionLabel}
             value={<span>{content.descriptionValue}</span>}
-            icon={<InfoIcon className={cn('h-4 w-4', toneTokens.sky.text)} />}
+            icon={<Info className={cn('h-4 w-4', toneTokens.sky.text)} aria-hidden="true" />}
           />
 
           <div
@@ -44,7 +45,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
               'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}
           >
-            <LightbulbIcon
+            <Lightbulb
               className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
               aria-hidden="true"
             />
@@ -77,7 +78,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
             >
               {content.secondaryCta}
               <span className="sr-only">(새 창에서 열림)</span>
-              <ExternalLinkIcon
+              <ExternalLink
                 className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
                 aria-hidden="true"
               />

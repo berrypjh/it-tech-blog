@@ -1,21 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Droplets, Package, Rocket, ServerCrash, Sparkles } from 'lucide-react';
+
 import type { SuspenseHydrationLinkContent } from '../content';
-import {
-  CheckCircleIcon,
-  DropletsIcon,
-  PackageIcon,
-  RocketIcon,
-  ServerCrashIcon,
-  SparklesIcon,
-} from '../icons';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: SuspenseHydrationLinkContent['timeline'] };
 
-const stepIcons = [ServerCrashIcon, PackageIcon, DropletsIcon, RocketIcon, CheckCircleIcon];
+const stepIcons = [ServerCrash, Package, Droplets, Rocket, CheckCircle2];
 
 export const TimelineSection = ({ content }: Props) => (
   <section aria-labelledby="timeline-heading" className="flex flex-col gap-md">
@@ -24,7 +18,7 @@ export const TimelineSection = ({ content }: Props) => (
     <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
       {content.steps.map((step, i) => {
         const accent = phaseAccent[step.phase];
-        const Icon = stepIcons[i] ?? SparklesIcon;
+        const Icon = stepIcons[i] ?? Sparkles;
         const isFinal = i === content.steps.length - 1;
         return (
           <li key={step.title}>

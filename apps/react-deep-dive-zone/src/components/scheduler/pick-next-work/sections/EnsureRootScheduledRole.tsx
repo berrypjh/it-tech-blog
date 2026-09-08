@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Clock3, Cog, Database, Link2, Timer } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent } from '../content';
-import { ArrowDownIcon, ClockIcon, CogIcon, DatabaseIcon, LinkIcon, TimerIcon } from '../icons';
 
 type Props = { content: RootSchedulerContent['ensure'] };
 
@@ -13,7 +14,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -29,7 +30,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <CogIcon className="h-4 w-4" />
+            <Cog className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
             {content.flowTitle}
@@ -64,7 +65,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
                 </div>
                 {!isLast && (
                   <span aria-hidden="true" className="self-center my-0.5 text-[var(--term-muted)]">
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 )}
               </li>
@@ -87,7 +88,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
           >
-            <TimerIcon className="h-4 w-4" />
+            <Timer className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-teal-700 dark:text-teal-300 break-keep">
             {content.microTitle}
@@ -133,7 +134,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
                     </span>
                   )}
                   {isLast && (
-                    <ClockIcon
+                    <Clock3
                       aria-hidden="true"
                       className="ml-auto h-4 w-4 text-blue-600 dark:text-blue-300"
                     />
@@ -156,7 +157,7 @@ export const EnsureRootScheduledRole = ({ content }: Props) => (
             'border-teal-300/80 bg-teal-50/60 text-teal-800 dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',
           )}
         >
-          <DatabaseIcon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+          <Database aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
           <p className="text-[11px] sm:text-xsm leading-relaxed break-keep">
             현재 이벤트 처리가 끝난 직후 microtask로 root scheduling을 일괄 처리합니다.
           </p>

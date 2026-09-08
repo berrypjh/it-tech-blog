@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileText, Monitor, ScanSearch, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementObjectStructureContent, SummaryPill } from '../content';
-import { ArrowRightIcon, FileTextIcon, MonitorIcon, ScanSearchIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['overview'] };
 
 const iconMap = {
-  fileText: FileTextIcon,
-  monitor: MonitorIcon,
-  workflow: WorkflowIcon,
-  arrowRight: ArrowRightIcon,
+  fileText: FileText,
+  monitor: Monitor,
+  workflow: Workflow,
+  arrowRight: ArrowRight,
 } as const;
 
 export const ElementShapeOverview = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const ElementShapeOverview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ScanSearchIcon className="h-5 w-5" />}
+      icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-md items-stretch">

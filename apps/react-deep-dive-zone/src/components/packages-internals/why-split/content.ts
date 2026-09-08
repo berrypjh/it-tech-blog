@@ -10,7 +10,6 @@ export type ArchitectureNode = {
   id: FlowBoxKind;
   label: string;
   caption: string;
-  iconName: ArchitectureIconName;
   tone: ToneKey;
 };
 
@@ -18,30 +17,15 @@ export type SideNode = {
   id: 'scheduler' | 'shared';
   label: string;
   caption: string;
-  iconName: ArchitectureIconName;
   tone: ToneKey;
 };
 
-export type ArchitectureIconName =
-  | 'code'
-  | 'atom'
-  | 'boxes'
-  | 'monitor'
-  | 'smartphone'
-  | 'clock'
-  | 'layers'
-  | 'shield'
-  | 'globe'
-  | 'network'
-  | 'book';
-
 export type MisconceptionCard = {
-  id: string;
+  id: 'all-in-react' | 'react-dom-is-react' | 'scheduler-renders';
   badgeWrong: string;
   wrong: string;
   right: string;
   note: string;
-  iconName: 'boxes' | 'monitor' | 'clock';
   iconTone: ToneKey;
 };
 
@@ -57,16 +41,14 @@ export type ReasonCard = {
   title: string;
   description: string;
   tone: ToneKey;
-  iconName: ArchitectureIconName;
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'useState' | 'element' | 'render' | 'dom-connect' | 'scheduler' | 'shared';
   title: string;
   pkg: string;
   description: string;
   tone: ToneKey;
-  iconName: ArchitectureIconName;
 };
 
 export type QuestionCard = {
@@ -74,7 +56,6 @@ export type QuestionCard = {
   name: string;
   question: string;
   tone: ToneKey;
-  iconName: ArchitectureIconName;
 };
 
 export type WhySplitContent = {
@@ -142,36 +123,32 @@ const koArchitecture: WhySplitContent['architecture'] = {
       id: 'user-code',
       label: '사용자 코드',
       caption: '컴포넌트 / Hooks / 이벤트',
-      iconName: 'code',
       tone: 'indigo',
     },
-    { id: 'react', label: 'react', caption: '사용자 API', iconName: 'atom', tone: 'sky' },
+    { id: 'react', label: 'react', caption: '사용자 API', tone: 'sky' },
     {
       id: 'reconciler',
       label: 'react-reconciler',
       caption: '렌더링 계산',
-      iconName: 'boxes',
       tone: 'cyan',
     },
     {
       id: 'renderer',
       label: 'renderer',
       caption: '환경별 출력',
-      iconName: 'monitor',
       tone: 'violet',
     },
-    { id: 'dom', label: 'DOM', caption: '브라우저', iconName: 'monitor', tone: 'blue' },
-    { id: 'native', label: 'Native', caption: '네이티브', iconName: 'smartphone', tone: 'indigo' },
+    { id: 'dom', label: 'DOM', caption: '브라우저', tone: 'blue' },
+    { id: 'native', label: 'Native', caption: '네이티브', tone: 'indigo' },
   ],
   side: [
     {
       id: 'scheduler',
       label: 'scheduler',
       caption: '실행 시점 조율',
-      iconName: 'clock',
       tone: 'teal',
     },
-    { id: 'shared', label: 'shared', caption: '공통 기반', iconName: 'layers', tone: 'amber' },
+    { id: 'shared', label: 'shared', caption: '공통 기반', tone: 'amber' },
   ],
   leftCards: [
     {
@@ -221,30 +198,26 @@ const enArchitecture: WhySplitContent['architecture'] = {
       id: 'user-code',
       label: 'User Code',
       caption: 'Components / Hooks / Events',
-      iconName: 'code',
       tone: 'indigo',
     },
-    { id: 'react', label: 'react', caption: 'User-facing API', iconName: 'atom', tone: 'sky' },
+    { id: 'react', label: 'react', caption: 'User-facing API', tone: 'sky' },
     {
       id: 'reconciler',
       label: 'react-reconciler',
       caption: 'Rendering computation',
-      iconName: 'boxes',
       tone: 'cyan',
     },
     {
       id: 'renderer',
       label: 'renderer',
       caption: 'Per-environment output',
-      iconName: 'monitor',
       tone: 'violet',
     },
-    { id: 'dom', label: 'DOM', caption: 'Browser', iconName: 'monitor', tone: 'blue' },
+    { id: 'dom', label: 'DOM', caption: 'Browser', tone: 'blue' },
     {
       id: 'native',
       label: 'Native',
       caption: 'Native platforms',
-      iconName: 'smartphone',
       tone: 'indigo',
     },
   ],
@@ -253,14 +226,12 @@ const enArchitecture: WhySplitContent['architecture'] = {
       id: 'scheduler',
       label: 'scheduler',
       caption: 'Execution timing',
-      iconName: 'clock',
       tone: 'teal',
     },
     {
       id: 'shared',
       label: 'shared',
       caption: 'Common foundation',
-      iconName: 'layers',
       tone: 'amber',
     },
   ],
@@ -334,7 +305,6 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
           wrong: 'React가 모든 걸 직접 처리한다.',
           right: '여러 패키지가 역할을 나누어 협력한다.',
           note: '하나처럼 보이지만 react / renderer / scheduler가 층을 나눠 동작합니다.',
-          iconName: 'boxes',
           iconTone: 'violet',
         },
         {
@@ -343,7 +313,6 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
           wrong: 'react-dom이 곧 React의 본체다.',
           right: 'react-dom은 DOM 환경에 연결하는 renderer다.',
           note: '같은 결과를 다른 환경(Native 등)에 그리려면 renderer만 교체하면 됩니다.',
-          iconName: 'monitor',
           iconTone: 'violet',
         },
         {
@@ -352,7 +321,6 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
           wrong: 'scheduler가 렌더링을 수행한다.',
           right: 'scheduler는 실행 시점을 조율하는 기반 계층이다.',
           note: '무엇을 그릴지가 아니라 언제 일할지를 결정합니다.',
-          iconName: 'clock',
           iconTone: 'violet',
         },
       ],
@@ -378,28 +346,24 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
           title: '환경 독립성',
           description: 'DOM뿐 아니라 Native, Web, 기타 환경으로 확장할 수 있다.',
           tone: 'sky',
-          iconName: 'globe',
         },
         {
           id: 'responsibility',
           title: '책임 분리',
           description: '각 패키지가 한 가지 역할에 집중하여 복잡성이 섞여들지 않는다.',
           tone: 'cyan',
-          iconName: 'shield',
         },
         {
           id: 'extensibility',
           title: '확장성',
           description: '새로운 renderer나 도구를 추가하기 쉬운 구조를 만들어준다.',
           tone: 'violet',
-          iconName: 'network',
         },
         {
           id: 'learnability',
           title: '학습 가능성',
           description: '관심사를 나누어 학습하면 내부 구조를 단계적으로 이해할 수 있다.',
           tone: 'amber',
-          iconName: 'book',
         },
       ],
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
@@ -422,7 +386,6 @@ function App() {
           pkg: 'react',
           description: '상태 훅은 react가 제공하는 API',
           tone: 'sky',
-          iconName: 'atom',
         },
         {
           id: 'element',
@@ -430,7 +393,6 @@ function App() {
           pkg: 'react',
           description: 'JSX가 Element 객체로 생성',
           tone: 'sky',
-          iconName: 'code',
         },
         {
           id: 'render',
@@ -438,7 +400,6 @@ function App() {
           pkg: 'react-reconciler',
           description: 'Element를 Fiber로 변환하고 변경 계산',
           tone: 'cyan',
-          iconName: 'boxes',
         },
         {
           id: 'dom-connect',
@@ -446,7 +407,6 @@ function App() {
           pkg: 'react-dom',
           description: 'Fiber 결과를 DOM에 적용',
           tone: 'violet',
-          iconName: 'monitor',
         },
         {
           id: 'scheduler',
@@ -454,7 +414,6 @@ function App() {
           pkg: 'scheduler',
           description: '언제, 얼마나, 어떤 작업을 실행할지 조율',
           tone: 'teal',
-          iconName: 'clock',
         },
         {
           id: 'shared',
@@ -462,7 +421,6 @@ function App() {
           pkg: 'shared',
           description: '모든 패키지가 공유하는 기반 제공',
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },
@@ -475,35 +433,30 @@ function App() {
           name: 'react',
           question: '개발자가 직접 쓰는 API는 어디서 시작될까?',
           tone: 'sky',
-          iconName: 'atom',
         },
         {
           id: 'react-dom',
           name: 'react-dom',
           question: '실제 브라우저 DOM 연결은 어디서 일어날까?',
           tone: 'violet',
-          iconName: 'monitor',
         },
         {
           id: 'react-reconciler',
           name: 'react-reconciler',
           question: '무엇을 렌더링할지 계산하는 핵심은 어디일까?',
           tone: 'cyan',
-          iconName: 'boxes',
         },
         {
           id: 'scheduler',
           name: 'scheduler',
           question: '작업 실행 시점은 어떻게 조율될까?',
           tone: 'teal',
-          iconName: 'clock',
         },
         {
           id: 'shared',
           name: 'shared',
           question: '왜 여러 패키지에서 같은 내부 상수를 공유할까?',
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },
@@ -543,7 +496,6 @@ function App() {
           wrong: 'React handles everything itself.',
           right: 'Multiple packages divide roles and cooperate.',
           note: 'It looks like one thing, but react / renderer / scheduler act as separate layers.',
-          iconName: 'boxes',
           iconTone: 'violet',
         },
         {
@@ -552,7 +504,6 @@ function App() {
           wrong: 'react-dom is the real body of React.',
           right: 'react-dom is the renderer that wires React to the DOM.',
           note: 'To render the same result elsewhere (Native, etc.) you only swap the renderer.',
-          iconName: 'monitor',
           iconTone: 'violet',
         },
         {
@@ -561,7 +512,6 @@ function App() {
           wrong: 'The scheduler performs rendering.',
           right: 'The scheduler coordinates when work runs — a base layer.',
           note: 'It decides when to work, not what to draw.',
-          iconName: 'clock',
           iconTone: 'violet',
         },
       ],
@@ -587,28 +537,24 @@ function App() {
           title: 'Environment independence',
           description: 'React can target DOM, Native, Web, and future environments.',
           tone: 'sky',
-          iconName: 'globe',
         },
         {
           id: 'responsibility',
           title: 'Separation of responsibility',
           description: 'Each package owns one job, keeping complexity from leaking across layers.',
           tone: 'cyan',
-          iconName: 'shield',
         },
         {
           id: 'extensibility',
           title: 'Extensibility',
           description: 'New renderers and tools can be added without rewiring the core.',
           tone: 'violet',
-          iconName: 'network',
         },
         {
           id: 'learnability',
           title: 'Learnability',
           description: 'Splitting concerns lets you learn the internals one layer at a time.',
           tone: 'amber',
-          iconName: 'book',
         },
       ],
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
@@ -631,7 +577,6 @@ function App() {
           pkg: 'react',
           description: 'State hooks are part of the react package',
           tone: 'sky',
-          iconName: 'atom',
         },
         {
           id: 'element',
@@ -639,7 +584,6 @@ function App() {
           pkg: 'react',
           description: 'JSX becomes a React Element object',
           tone: 'sky',
-          iconName: 'code',
         },
         {
           id: 'render',
@@ -647,7 +591,6 @@ function App() {
           pkg: 'react-reconciler',
           description: 'Elements turn into Fibers, diffs are computed',
           tone: 'cyan',
-          iconName: 'boxes',
         },
         {
           id: 'dom-connect',
@@ -655,7 +598,6 @@ function App() {
           pkg: 'react-dom',
           description: 'Fiber results are applied to the DOM',
           tone: 'violet',
-          iconName: 'monitor',
         },
         {
           id: 'scheduler',
@@ -663,7 +605,6 @@ function App() {
           pkg: 'scheduler',
           description: 'Decides when, how long, and which work to run',
           tone: 'teal',
-          iconName: 'clock',
         },
         {
           id: 'shared',
@@ -671,7 +612,6 @@ function App() {
           pkg: 'shared',
           description: 'Provides the foundation every package depends on',
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },
@@ -684,35 +624,30 @@ function App() {
           name: 'react',
           question: 'Where does the developer-facing API begin?',
           tone: 'sky',
-          iconName: 'atom',
         },
         {
           id: 'react-dom',
           name: 'react-dom',
           question: 'Where does the actual browser DOM connection happen?',
           tone: 'violet',
-          iconName: 'monitor',
         },
         {
           id: 'react-reconciler',
           name: 'react-reconciler',
           question: 'Where is *what to render* actually computed?',
           tone: 'cyan',
-          iconName: 'boxes',
         },
         {
           id: 'scheduler',
           name: 'scheduler',
           question: 'How is execution timing coordinated?',
           tone: 'teal',
-          iconName: 'clock',
         },
         {
           id: 'shared',
           name: 'shared',
           question: 'Why do packages share the same internal constants?',
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },

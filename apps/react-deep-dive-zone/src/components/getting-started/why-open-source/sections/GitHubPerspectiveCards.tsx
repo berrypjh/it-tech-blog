@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code, FileText, FlaskConical, type LucideIcon, MessageCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { WhyOpenSourceContent } from '../content';
-import { DocIcon, perspectiveIconByName } from '../icons';
+import type { PerspectiveCard, WhyOpenSourceContent } from '../content';
+
+const cardIcon: Record<PerspectiveCard['id'], LucideIcon> = {
+  docs: FileText,
+  code: Code,
+  tests: FlaskConical,
+  pr: MessageCircle,
+};
 
 type Props = { content: WhyOpenSourceContent['perspectives'] };
 
@@ -19,15 +27,19 @@ export const GitHubPerspectiveCards = ({ content }: Props) => {
         id="perspectives"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<DocIcon className="h-5 w-5" />}
+        icon={<FileText className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = perspectiveIconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
-            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+            >
               <h3 className="text-md sm:text-lg font-bold tracking-tight text-[var(--term-fg)] break-keep leading-snug">
                 {card.title}
               </h3>

@@ -1,14 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ExternalLink, FileCode, GitBranch, Sparkles } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TransitionDeferredContent } from '../content';
-import {
-  ArrowRightIcon,
-  ExternalLinkIcon,
-  FileCodeIcon,
-  GitBranchIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = { content: TransitionDeferredContent['codePreview'] };
 
@@ -140,7 +135,7 @@ export const TransitionDeferredCodePreview = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
@@ -161,7 +156,7 @@ export const TransitionDeferredCodePreview = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.3)] dark:bg-blue-500"
           >
-            <GitBranchIcon className="h-6 w-6" strokeWidth={2.2} />
+            <GitBranch className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
             {content.githubCard.title}
@@ -199,13 +194,13 @@ export const TransitionDeferredCodePreview = ({ content }: Props) => (
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
           )}
         >
-          <SparklesIcon aria-hidden="true" className="h-4 w-4" />
+          <Sparkles aria-hidden="true" className="h-4 w-4" />
           <span className="break-keep">{content.githubCard.button}</span>
-          <ExternalLinkIcon
+          <ExternalLink
             aria-hidden="true"
             className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
           />
-          <ArrowRightIcon aria-hidden="true" className="hidden h-4 w-4" />
+          <ArrowRight aria-hidden="true" className="hidden h-4 w-4" />
         </a>
       </article>
     </div>

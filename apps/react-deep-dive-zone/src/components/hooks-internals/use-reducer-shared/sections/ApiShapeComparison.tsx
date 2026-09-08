@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { UseReducerSharedContent } from '../content';
-import { CodeIcon, SplitIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['apiCompare'] };
 
@@ -109,7 +110,7 @@ const SideCard = ({ title, code, examples, accent }: SideProps) => (
             : 'border-teal-200/80 bg-teal-50 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200',
         )}
       >
-        <CodeIcon className="h-4 w-4" />
+        <Code2 className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3 className={cn('text-sm sm:text-md font-bold break-keep', sideAccent[accent].text)}>
         {title}
@@ -149,7 +150,7 @@ export const ApiShapeComparison = ({ content }: Props) => (
       id="api-compare"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-lg items-stretch">

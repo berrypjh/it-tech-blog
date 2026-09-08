@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Puzzle, Rocket } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { IdentityFieldKey, MappingCard as MappingCardData } from '../content';
-import { BoxesIcon, PuzzleIcon, RocketIcon } from '../icons';
 
 type Props = { card: MappingCardData };
 
 const iconMap = {
-  cube: BoxesIcon,
-  rocket: RocketIcon,
-  puzzle: PuzzleIcon,
+  cube: Boxes,
+  rocket: Rocket,
+  puzzle: Puzzle,
 } as const;
 
 /** 정체성 필드별 고정 톤(hero·summary와 동일): tag=sky, key=emerald, elementType=violet, type=amber. */

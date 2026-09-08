@@ -3,73 +3,29 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
-export type PdIconName =
-  | 'arrowRight'
-  | 'atom'
-  | 'box'
-  | 'check'
-  | 'checkList'
-  | 'clock'
-  | 'code'
-  | 'compass'
-  | 'cube'
-  | 'database'
-  | 'fileCode'
-  | 'gitBranch'
-  | 'help'
-  | 'layers'
-  | 'map'
-  | 'monitor'
-  | 'network'
-  | 'share'
-  | 'shield'
-  | 'sparkles'
-  | 'star'
-  | 'workflow';
-
 export type FlowNode = {
-  id: string;
+  id: 'user-code' | 'react' | 'reconciler' | 'renderer' | 'dom-native';
   label: string;
   subtitle?: string;
+  /** 종합 다이어그램에서만 노출되는 한 문장 역할 설명. */
+  description?: string;
   tone: ToneKey;
-  iconName: PdIconName;
-};
-
-export type RecapCard = {
-  id: string;
-  name: string;
-  role: string;
-  description: string;
-  tone: ToneKey;
-  iconName: PdIconName;
-  emphasized?: boolean;
 };
 
 export type ValueCard = {
-  id: string;
+  id: 'responsibility' | 'env' | 'extensibility' | 'learnability';
   title: string;
   description: string;
   tone: ToneKey;
-  iconName: PdIconName;
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'jsx' | 'react' | 'reconciler' | 'react-dom';
   step: string;
   pkg: string;
   title: string;
   description: string;
-  iconName: PdIconName;
   tone: ToneKey;
-};
-
-export type BridgeCard = {
-  id: string;
-  title: string;
-  description: string;
-  iconName: PdIconName;
-  tone: ToneKey;
-  emphasized?: boolean;
 };
 
 export type PackageDesignContent = {
@@ -84,22 +40,16 @@ export type PackageDesignContent = {
     eyebrow: string;
     title: string;
     description: string;
-    cards: RecapCard[];
+    main: FlowNode[];
+    scheduler: { title: string; subtitle: string; description: string };
+    shared: { title: string; subtitle: string; description: string };
+    banner: string;
   };
   values: {
     eyebrow: string;
     title: string;
     description: string;
     cards: ValueCard[];
-    banner: string;
-  };
-  finalDiagram: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    main: FlowNode[];
-    scheduler: { title: string; subtitle: string; description: string };
-    shared: { title: string; subtitle: string; description: string };
     banner: string;
   };
   userFlow: {
@@ -111,12 +61,6 @@ export type PackageDesignContent = {
     steps: FlowStep[];
     sideScheduler: { title: string; description: string };
     sideShared: { title: string; description: string };
-  };
-  bridge: {
-    eyebrow: string;
-    title: string;
-    intro: string;
-    cards: BridgeCard[];
   };
   finale: FinaleBannerContent;
 };
@@ -131,24 +75,29 @@ const MAIN_FLOW_KO: FlowNode[] = [
     label: '사용자 코드',
     subtitle: '컴포넌트 / Hooks',
     tone: 'indigo',
-    iconName: 'code',
   },
-  { id: 'react', label: 'react', subtitle: '사용자 API', tone: 'sky', iconName: 'atom' },
+  {
+    id: 'react',
+    label: 'react',
+    subtitle: '사용자 API',
+    description: '개발자가 직접 호출하는 public API의 입구입니다.',
+    tone: 'sky',
+  },
   {
     id: 'reconciler',
     label: 'react-reconciler',
     subtitle: '렌더링 계산',
+    description: 'Element를 Fiber로 바꾸고 변경을 계산합니다.',
     tone: 'teal',
-    iconName: 'cube',
   },
   {
     id: 'renderer',
     label: 'renderer',
     subtitle: '환경별 출력',
+    description: 'react-dom이 React 트리를 브라우저와 서버 출력으로 연결합니다.',
     tone: 'violet',
-    iconName: 'monitor',
   },
-  { id: 'dom-native', label: 'DOM / Native', subtitle: '실제 환경', tone: 'blue', iconName: 'box' },
+  { id: 'dom-native', label: 'DOM / Native', subtitle: '실제 환경', tone: 'blue' },
 ];
 
 const MAIN_FLOW_EN: FlowNode[] = [
@@ -157,29 +106,33 @@ const MAIN_FLOW_EN: FlowNode[] = [
     label: 'User code',
     subtitle: 'Components / Hooks',
     tone: 'indigo',
-    iconName: 'code',
   },
-  { id: 'react', label: 'react', subtitle: 'User-facing API', tone: 'sky', iconName: 'atom' },
+  {
+    id: 'react',
+    label: 'react',
+    subtitle: 'User-facing API',
+    description: 'Entry point for the public API developers call directly.',
+    tone: 'sky',
+  },
   {
     id: 'reconciler',
     label: 'react-reconciler',
     subtitle: 'Rendering compute',
+    description: 'Turns Elements into Fibers and computes diffs.',
     tone: 'teal',
-    iconName: 'cube',
   },
   {
     id: 'renderer',
     label: 'renderer',
     subtitle: 'Per-env output',
+    description: 'react-dom wires the React tree to browser and server output.',
     tone: 'violet',
-    iconName: 'monitor',
   },
   {
     id: 'dom-native',
     label: 'DOM / Native',
     subtitle: 'Real environment',
     tone: 'blue',
-    iconName: 'box',
   },
 ];
 
@@ -198,52 +151,21 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_KO,
     },
     recap: {
-      eyebrow: '01 · 회고',
-      title: '앞선 페이지 핵심 회고',
-      description: '챕터에서 본 다섯 패키지의 역할을 한 문장씩 정리합니다.',
-      cards: [
-        {
-          id: 'react',
-          name: 'react',
-          role: '사용자 API',
-          description: '개발자가 직접 호출하는 public API의 입구입니다.',
-          tone: 'sky',
-          iconName: 'atom',
-        },
-        {
-          id: 'react-dom',
-          name: 'react-dom',
-          role: 'DOM / 서버 renderer',
-          description: 'React 트리를 브라우저와 서버 출력으로 연결합니다.',
-          tone: 'emerald',
-          iconName: 'monitor',
-        },
-        {
-          id: 'react-reconciler',
-          name: 'react-reconciler',
-          role: '렌더링 계산',
-          description: 'Element를 Fiber로 바꾸고 변경을 계산합니다.',
-          tone: 'teal',
-          iconName: 'cube',
-          emphasized: true,
-        },
-        {
-          id: 'scheduler',
-          name: 'scheduler',
-          role: '실행 시점 조율',
-          description: '작업 우선순위와 실행 타이밍을 관리합니다.',
-          tone: 'cyan',
-          iconName: 'clock',
-        },
-        {
-          id: 'shared',
-          name: 'shared',
-          role: '공통 기반',
-          description: '심벌, 타입, 버전, 기능 플래그를 공유합니다.',
-          tone: 'amber',
-          iconName: 'layers',
-        },
-      ],
+      eyebrow: '01 · 회고와 최종 구조',
+      title: '다섯 패키지 회고와 전체 구조',
+      description: '챕터에서 본 다섯 패키지를 한 장의 구조도와 한 문장 요약으로 정리합니다.',
+      main: MAIN_FLOW_KO,
+      scheduler: {
+        title: 'scheduler',
+        subtitle: '실행 시점 조율',
+        description: '작업 우선순위와 실행 타이밍을 관리합니다.',
+      },
+      shared: {
+        title: 'shared',
+        subtitle: '공통 기반',
+        description: '심벌, 타입, 버전, 기능 플래그를 공유합니다.',
+      },
+      banner: 'API는 분리되고, 계산은 공유되며, 반영은 환경별로 달라진다.',
     },
     values: {
       eyebrow: '02 · 설계 가치',
@@ -255,51 +177,30 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           title: '책임 분리',
           description: 'API와 환경 반영이 섞이지 않는다.',
           tone: 'sky',
-          iconName: 'shield',
         },
         {
           id: 'env',
           title: '환경 독립성',
           description: '웹과 Native를 모두 수용할 수 있다.',
           tone: 'teal',
-          iconName: 'compass',
         },
         {
           id: 'extensibility',
           title: '확장성',
           description: '새 기능과 renderer를 받아들이기 쉽다.',
           tone: 'violet',
-          iconName: 'network',
         },
         {
           id: 'learnability',
           title: '학습 가능성',
           description: '패키지 경계가 보이면 코드 탐색이 빨라진다.',
           tone: 'amber',
-          iconName: 'map',
         },
       ],
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
     },
-    finalDiagram: {
-      eyebrow: '03 · 최종 구조',
-      title: '전체 구조 최종 다이어그램',
-      description: '챕터를 한 장으로 요약하는 종합 지도입니다.',
-      main: MAIN_FLOW_KO,
-      scheduler: {
-        title: 'scheduler',
-        subtitle: '실행 타이밍 조율',
-        description: 'reconciler 작업의 우선순위와 실행 시점을 결정합니다.',
-      },
-      shared: {
-        title: 'shared',
-        subtitle: '공통 기반',
-        description: '모든 패키지가 의존하는 공통 타입 / 상수 / 심벌을 제공합니다.',
-      },
-      banner: 'API는 분리되고, 계산은 공유되며, 반영은 환경별로 달라진다.',
-    },
     userFlow: {
-      eyebrow: '04 · 코드 흐름',
+      eyebrow: '03 · 코드 흐름',
       title: '하나의 사용자 코드가 패키지를 거치는 전체 흐름',
       description: '간단한 컴포넌트도 네 패키지를 거쳐 화면이 됩니다.',
       code: APP_CODE,
@@ -311,7 +212,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'JSX',
           title: 'JSX 작성',
           description: '개발자가 작성한 컴포넌트 정의',
-          iconName: 'code',
           tone: 'indigo',
         },
         {
@@ -320,7 +220,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react',
           title: 'React Element 생성',
           description: 'JSX가 Element 객체로 변환',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -329,7 +228,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react-reconciler',
           title: 'Fiber 생성 및 렌더링 계산',
           description: 'Element를 Fiber로 변환하고 변경 계산',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -338,7 +236,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react-dom',
           title: 'DOM 반영',
           description: 'Host Config로 실제 DOM을 업데이트',
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],
@@ -350,36 +247,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         title: 'shared',
         description: '공통 심벌 / 타입 제공 — 모든 단계 기반',
       },
-    },
-    bridge: {
-      eyebrow: '05 · 다음 장',
-      title: '다음 대주제 연결',
-      intro:
-        '이제 React의 패키지 경계를 이해했습니다. 다음은 그 패키지들이 실제로 무엇을 주고받는지, 즉 React Element와 JSX가 어떤 내부 표현으로 바뀌는지 살펴볼 차례입니다.',
-      cards: [
-        {
-          id: 'boundary',
-          title: '패키지 경계 이해',
-          description: 'react, reconciler, renderer의 책임을 구분했다.',
-          iconName: 'map',
-          tone: 'teal',
-        },
-        {
-          id: 'exchange',
-          title: '오가는 데이터 보기',
-          description: '패키지들이 주고받는 핵심 객체를 살펴본다.',
-          iconName: 'share',
-          tone: 'cyan',
-        },
-        {
-          id: 'element',
-          title: 'React Element와 JSX',
-          description: 'JSX가 어떤 내부 표현으로 바뀌는지 읽는다.',
-          iconName: 'fileCode',
-          tone: 'violet',
-          emphasized: true,
-        },
-      ],
     },
     finale: {
       progressLabel: '3/15 챕터 완료',
@@ -406,52 +273,21 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_EN,
     },
     recap: {
-      eyebrow: '01 · RECAP',
-      title: 'Recap of the previous pages',
-      description: 'One-sentence roles for the five packages covered in this chapter.',
-      cards: [
-        {
-          id: 'react',
-          name: 'react',
-          role: 'User-facing API',
-          description: 'Entry point for the public API developers call directly.',
-          tone: 'sky',
-          iconName: 'atom',
-        },
-        {
-          id: 'react-dom',
-          name: 'react-dom',
-          role: 'DOM / Server renderer',
-          description: 'Wires the React tree to browser and server output.',
-          tone: 'emerald',
-          iconName: 'monitor',
-        },
-        {
-          id: 'react-reconciler',
-          name: 'react-reconciler',
-          role: 'Rendering compute',
-          description: 'Turns Elements into Fibers and computes diffs.',
-          tone: 'teal',
-          iconName: 'cube',
-          emphasized: true,
-        },
-        {
-          id: 'scheduler',
-          name: 'scheduler',
-          role: 'Timing coordination',
-          description: 'Manages work priority and execution timing.',
-          tone: 'cyan',
-          iconName: 'clock',
-        },
-        {
-          id: 'shared',
-          name: 'shared',
-          role: 'Common foundation',
-          description: 'Shares symbols, types, version and feature flags.',
-          tone: 'amber',
-          iconName: 'layers',
-        },
-      ],
+      eyebrow: '01 · RECAP & ARCHITECTURE',
+      title: 'The five packages and the whole architecture',
+      description: 'One map and one sentence per package for everything this chapter covered.',
+      main: MAIN_FLOW_EN,
+      scheduler: {
+        title: 'scheduler',
+        subtitle: 'Timing coordination',
+        description: 'Manages work priority and execution timing.',
+      },
+      shared: {
+        title: 'shared',
+        subtitle: 'Common foundation',
+        description: 'Shares symbols, types, version and feature flags.',
+      },
+      banner: 'APIs are split, compute is shared, application differs per environment.',
     },
     values: {
       eyebrow: '02 · DESIGN VALUES',
@@ -463,51 +299,30 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           title: 'Separation of responsibility',
           description: 'API and environment application do not mix.',
           tone: 'sky',
-          iconName: 'shield',
         },
         {
           id: 'env',
           title: 'Environment independence',
           description: 'Both web and Native can be absorbed.',
           tone: 'teal',
-          iconName: 'compass',
         },
         {
           id: 'extensibility',
           title: 'Extensibility',
           description: 'New features and renderers slot in easily.',
           tone: 'violet',
-          iconName: 'network',
         },
         {
           id: 'learnability',
           title: 'Learnability',
           description: 'Clear package boundaries make code navigation faster.',
           tone: 'amber',
-          iconName: 'map',
         },
       ],
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
     },
-    finalDiagram: {
-      eyebrow: '03 · FINAL ARCHITECTURE',
-      title: 'Final architecture diagram',
-      description: 'The whole chapter on one map.',
-      main: MAIN_FLOW_EN,
-      scheduler: {
-        title: 'scheduler',
-        subtitle: 'Timing coordination',
-        description: 'Decides priority and timing for reconciler work.',
-      },
-      shared: {
-        title: 'shared',
-        subtitle: 'Common foundation',
-        description: 'Provides shared types / constants / symbols for every package.',
-      },
-      banner: 'APIs are split, compute is shared, application differs per environment.',
-    },
     userFlow: {
-      eyebrow: '04 · CODE FLOW',
+      eyebrow: '03 · CODE FLOW',
       title: 'A single piece of user code, across the packages',
       description: 'Even a tiny component travels through four packages on its way to the screen.',
       code: APP_CODE,
@@ -519,7 +334,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'JSX',
           title: 'Write JSX',
           description: 'A component definition written by the developer',
-          iconName: 'code',
           tone: 'indigo',
         },
         {
@@ -528,7 +342,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react',
           title: 'React Element creation',
           description: 'JSX becomes a React Element object',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -537,7 +350,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react-reconciler',
           title: 'Fiber creation & render computation',
           description: 'Element → Fiber and diff calculation',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -546,7 +358,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
           pkg: 'react-dom',
           title: 'DOM application',
           description: 'Host Config updates the real DOM',
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],
@@ -558,36 +369,6 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         title: 'shared',
         description: 'Common symbols / types — the base for every step',
       },
-    },
-    bridge: {
-      eyebrow: '05 · NEXT CHAPTER',
-      title: 'Bridge to the next topic',
-      intro:
-        'Now that the package boundaries are clear, the next topic is what those packages actually exchange — how JSX and React Element turn into internal representations.',
-      cards: [
-        {
-          id: 'boundary',
-          title: 'Understand boundaries',
-          description: 'You drew the line between react, reconciler, renderer.',
-          iconName: 'map',
-          tone: 'teal',
-        },
-        {
-          id: 'exchange',
-          title: 'See what crosses them',
-          description: 'Look at the core objects packages exchange.',
-          iconName: 'share',
-          tone: 'cyan',
-        },
-        {
-          id: 'element',
-          title: 'React Element & JSX',
-          description: 'Read how JSX turns into internal representations.',
-          iconName: 'fileCode',
-          tone: 'violet',
-          emphasized: true,
-        },
-      ],
     },
     finale: {
       progressLabel: 'Chapter 3 of 15 complete',

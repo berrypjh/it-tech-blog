@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Archive, ArrowDown, Box, FunctionSquare, GitBranch, Lightbulb } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, ClassSnapshotStep } from '../content';
-import {
-  ArchiveIcon,
-  ArrowDownIcon,
-  BoxIcon,
-  FunctionIcon,
-  GitBranchIcon,
-  LightbulbIcon,
-} from '../icons';
 
 type Props = { content: BeforeMutationContent['classSnapshot'] };
 
-const iconMap: Record<ClassSnapshotStep['iconName'], typeof BoxIcon> = {
-  box: BoxIcon,
-  function: FunctionIcon,
-  archive: ArchiveIcon,
+const iconMap: Record<ClassSnapshotStep['iconName'], typeof Box> = {
+  box: Box,
+  function: FunctionSquare,
+  archive: Archive,
 };
 
 export const ClassSnapshotSection = ({ content }: Props) => (
@@ -31,7 +25,7 @@ export const ClassSnapshotSection = ({ content }: Props) => (
       id="class-snapshot"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -41,7 +35,7 @@ export const ClassSnapshotSection = ({ content }: Props) => (
             <StepCard step={step} index={idx + 1} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -56,7 +50,7 @@ export const ClassSnapshotSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="violet" size="sm">
-          <LightbulbIcon className="h-4 w-4" />
+          <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(

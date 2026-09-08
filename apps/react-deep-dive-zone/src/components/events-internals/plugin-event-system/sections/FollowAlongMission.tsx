@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks, Square } from 'lucide-react';
+
 import type { PluginEventSystemContent } from '../content';
-import { ListChecksIcon, SquareIcon } from '../icons';
 import { SectionFrame } from '../SectionFrame';
 
 type Props = { content: PluginEventSystemContent['mission'] };
@@ -11,7 +12,7 @@ export const FollowAlongMission = ({ content }: Props) => (
     id="mission"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<ListChecksIcon className="h-5 w-5" />}
+    icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
   >
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
       {content.items.map((item, i) => (
@@ -32,7 +33,10 @@ export const FollowAlongMission = ({ content }: Props) => (
                 'dark:bg-slate-950/40 dark:group-hover:bg-blue-950/40',
               )}
             >
-              <SquareIcon className="h-2 w-2 opacity-0 group-hover:opacity-60 text-blue-500" />
+              <Square
+                className="h-2 w-2 opacity-0 group-hover:opacity-60 text-blue-500"
+                aria-hidden="true"
+              />
             </span>
 
             <span

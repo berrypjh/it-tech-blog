@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cuboid, FlaskConical, Folder, type LucideIcon, TerminalSquare } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { FolderIcon, iconByName } from '../icons';
+
+const dirIcon: Record<'fixtures' | 'scripts' | 'compiler', LucideIcon> = {
+  fixtures: FlaskConical,
+  scripts: TerminalSquare,
+  compiler: Cuboid,
+};
 
 type Props = { content: SurroundingContent['comparison'] };
 
@@ -16,15 +23,19 @@ export const DirectoryComparisonCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<FolderIcon className="h-5 w-5" />}
+        icon={<Folder className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = dirIcon[card.id];
 
           return (
-            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+            >
               <h3 className="text-md sm:text-lg font-bold font-mono tracking-tight text-[var(--term-fg)] break-keep leading-snug">
                 {card.name}
               </h3>

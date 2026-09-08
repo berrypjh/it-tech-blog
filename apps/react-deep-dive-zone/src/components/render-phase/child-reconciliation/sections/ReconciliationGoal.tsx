@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
-import { CheckCircleIcon, ListChecksIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['goal'] };
 
@@ -13,7 +14,7 @@ export const ReconciliationGoal = ({ content }: Props) => (
       id="goal"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -40,7 +41,7 @@ export const ReconciliationGoal = ({ content }: Props) => (
                 toneTokens.teal.chip,
               )}
             >
-              <CheckCircleIcon className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="flex flex-col gap-0.5 min-w-0">
               <span

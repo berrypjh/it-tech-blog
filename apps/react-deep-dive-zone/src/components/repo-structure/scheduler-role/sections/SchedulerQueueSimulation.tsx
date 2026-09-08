@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListOrdered, RefreshCw } from 'lucide-react';
+
 import { CompareBridge } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { priorityTone } from '../components/HeroPriorityCards';
 import type { ExecutionRow, QueueTask, SchedulerContent } from '../content';
-import { CheckCircleIcon, ListOrderedIcon, RefreshIcon } from '../icons';
 
 type Props = { content: SchedulerContent['simulation'] };
 
@@ -16,7 +17,7 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
         id="simulation"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ListOrderedIcon className="h-5 w-5" />}
+        icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -47,7 +48,7 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
 
         {/* 중앙 설명 */}
         <CompareBridge
-          icon={<RefreshIcon className="h-5 w-5" />}
+          icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
           headline={content.centerMessage}
           sub={content.centerSub}
         />
@@ -156,7 +157,7 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
           statusClass,
         )}
       >
-        {isDone && <CheckCircleIcon className="h-3 w-3" aria-hidden="true" />}
+        {isDone && <CheckCircle2 className="h-3 w-3" aria-hidden="true" />}
         {statusLabel}
       </span>
     </div>

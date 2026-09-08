@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks, UserCheck, Workflow, Zap } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CoreChangeCard, ReactElementRefReact19Content } from '../content';
-import { CheckCircleIcon, ListChecksIcon, UserCheckIcon, WorkflowIcon, ZapIcon } from '../icons';
 
 type Props = { content: ReactElementRefReact19Content['core'] };
 
 const iconMap = {
-  user: UserCheckIcon,
-  flow: WorkflowIcon,
-  zap: ZapIcon,
+  user: UserCheck,
+  flow: Workflow,
+  zap: Zap,
 } as const;
 
 export const RefChangeCoreCards = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const RefChangeCoreCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
@@ -76,7 +77,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
               aria-hidden="true"
               className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
-              <CheckCircleIcon className="h-3 w-3" />
+              <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">{check}</p>
           </li>

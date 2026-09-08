@@ -1,19 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Clock, PlayCircle, Target, Terminal } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ClockIcon,
-  PlayCircleIcon,
-  TargetIcon,
-  TerminalIcon,
-} from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['currentTarget'] };
 
-const stepIcons = [ClockIcon, PlayCircleIcon, TargetIcon];
+const stepIcons = [Clock, PlayCircle, Target];
 
 export const CurrentTargetInjection = ({ content }: Props) => (
   <section aria-labelledby="heading-current-target">
@@ -22,13 +16,13 @@ export const CurrentTargetInjection = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? ClockIcon;
+        const Icon = stepIcons[i] ?? Clock;
         return (
           <li
             key={step.title}
@@ -63,7 +57,7 @@ export const CurrentTargetInjection = ({ content }: Props) => (
             {step.inspector && (
               <div className={cn('rounded-xl border-2 bg-slate-950 p-md', 'border-slate-800')}>
                 <div className="flex items-center gap-2 mb-1">
-                  <TerminalIcon aria-hidden="true" className="h-3.5 w-3.5 text-slate-400" />
+                  <Terminal aria-hidden="true" className="h-3.5 w-3.5 text-slate-400" />
                   <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
                     {step.inspectorTitle}
                   </span>
@@ -102,13 +96,13 @@ export const CurrentTargetInjection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-700/60 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

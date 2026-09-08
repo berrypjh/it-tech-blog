@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, MousePointerClick, Route } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FlowBlock, PhaseDetectionContent } from '../content';
-import { ArrowDownIcon, MousePointerClickIcon, RouteIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 
 type Props = { content: PhaseDetectionContent['updateFlow'] };
@@ -17,7 +18,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<RouteIcon className="h-5 w-5" />}
+        icon={<Route className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -45,7 +46,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
                 )}
               >
-                <MousePointerClickIcon className="h-4 w-4" />
+                <MousePointerClick className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="flex flex-col">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-200">
@@ -63,7 +64,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
               <li>
                 <span aria-hidden="true" className="flex items-center justify-center py-2">
                   <span className="inline-flex items-center justify-center h-6 w-6 rounded-full border border-blue-300 bg-white text-blue-600 dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-300">
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </span>
               </li>

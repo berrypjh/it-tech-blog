@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { RefreshCcw, ShieldAlert, ShieldCheck, User } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ErrorBoundaryRecoverContent, HeroFlowStep } from '../content';
-import { RefreshCcwIcon, ShieldAlertIcon, ShieldCheckIcon, UserIcon } from '../icons';
 import type { Phase } from '../tone';
 
 type Props = { content: ErrorBoundaryRecoverContent['hero']; className?: string };
 
 const stepIcon: Record<HeroFlowStep['icon'], React.ComponentType<{ className?: string }>> = {
-  profile: UserIcon,
-  shield: ShieldCheckIcon,
-  update: RefreshCcwIcon,
-  alert: ShieldAlertIcon,
+  profile: User,
+  shield: ShieldCheck,
+  update: RefreshCcw,
+  alert: ShieldAlert,
 };
 
 /**
@@ -44,7 +45,7 @@ export const ErrorBoundaryHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm">
         <header className="flex items-center gap-sm" aria-hidden="true">
           <ToneIconBox tone="violet" size="sm">
-            <ShieldCheckIcon className="h-[18px] w-[18px]" />
+            <ShieldCheck className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.code.label}

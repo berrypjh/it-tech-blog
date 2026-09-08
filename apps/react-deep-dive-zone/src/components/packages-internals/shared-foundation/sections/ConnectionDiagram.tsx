@@ -1,13 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Boxes, Code, type LucideIcon, Package, Share2, Star } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
-import { sharedIcon, StarIcon } from '../icons';
 
 type Props = { content: SharedContent['connection'] };
+
+const packageIcon: Record<PackageNode['id'], LucideIcon> = {
+  react: Atom,
+  'react-dom': Boxes,
+  'react-reconciler': Code,
+};
 
 export const ConnectionDiagram = ({ content }: Props) => {
   return (
@@ -17,7 +24,7 @@ export const ConnectionDiagram = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<sharedIcon.share className="h-5 w-5" />}
+        icon={<Share2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -59,7 +66,9 @@ export const ConnectionDiagram = ({ content }: Props) => {
         </ul>
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };
@@ -73,7 +82,11 @@ const SharedHub = ({ label, subtitle }: { label: string; subtitle: string }) => 
     )}
     aria-hidden="true"
   >
-    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <Package
+      strokeWidth={1.6}
+      aria-hidden="true"
+      className="relative h-7 w-7 text-[var(--term-accent)]"
+    />
     <span className="relative text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
@@ -85,7 +98,7 @@ const SharedHub = ({ label, subtitle }: { label: string; subtitle: string }) => 
 
 const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
   const tone = toneTokens[pkg.tone];
-  const Icon = sharedIcon[pkg.iconName];
+  const Icon = packageIcon[pkg.id];
 
   return (
     <article
@@ -139,22 +152,5 @@ const BranchSvg = () => (
       strokeDasharray="4 4"
       fill="none"
     />
-  </svg>
-);
-
-const CubeIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-    <line x1="12" y1="22.08" x2="12" y2="12" />
   </svg>
 );

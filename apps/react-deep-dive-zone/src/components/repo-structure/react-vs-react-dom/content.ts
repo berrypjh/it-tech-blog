@@ -4,17 +4,6 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'atom'
-  | 'monitor'
-  | 'braces'
-  | 'layers'
-  | 'container'
-  | 'browser'
-  | 'fileCode'
-  | 'server'
-  | 'shieldCheck';
-
 export type RoleCard = {
   id: 'react' | 'react-dom';
   title: string;
@@ -22,7 +11,6 @@ export type RoleCard = {
   bullets: string[];
   tags: string[];
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type ComparisonRow = {
@@ -33,13 +21,18 @@ export type ComparisonRow = {
 };
 
 export type FlowNode = {
-  id: string;
+  id:
+    | 'component-code'
+    | 'react'
+    | 'ui-description'
+    | 'container-mount'
+    | 'react-dom'
+    | 'browser-dom';
   title: string;
   subtitle: string;
   /** 노드 유형. 'package'는 강조 카드, 'state'는 양 끝 일반 카드. */
   kind: 'state' | 'package';
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type EntrypointCard = {
@@ -49,7 +42,6 @@ export type EntrypointCard = {
   bullets: string[];
   tag: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type ReactVsReactDomContent = {
@@ -100,7 +92,6 @@ export type ReactVsReactDomContent = {
     functionName: string;
     descriptionLabel: string;
     descriptionValue: string;
-    learningQuestion: string;
     primaryCta: string;
     primaryHref: string;
     codeHeader: string;
@@ -168,7 +159,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         bullets: ['컴포넌트, 상태, 훅 제공', 'UI를 "어떻게" 표현할지 정의', '플랫폼에 독립적'],
         tags: ['코어 API', '플랫폼 독립'],
         tone: 'blue',
-        icon: 'atom',
       },
       reactDomCard: {
         id: 'react-dom',
@@ -177,7 +167,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         bullets: ['DOM 노드 생성 및 업데이트', '브라우저 환경과 상호작용', '실제 화면에 반영'],
         tags: ['DOM Renderer', '브라우저 전용'],
         tone: 'emerald',
-        icon: 'monitor',
       },
       relationTopLine: '설명을',
       relationBottomLine: '현실로 연결',
@@ -246,7 +235,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: '상태, 훅, JSX',
           kind: 'state',
           tone: 'sky',
-          icon: 'braces',
         },
         {
           id: 'react',
@@ -254,7 +242,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'UI를 설명하는 API',
           kind: 'package',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'ui-description',
@@ -262,7 +249,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'React Element Tree',
           kind: 'state',
           tone: 'indigo',
-          icon: 'layers',
         },
       ],
       bottomFlow: [
@@ -272,7 +258,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'DOM 컨테이너 선택',
           kind: 'state',
           tone: 'teal',
-          icon: 'container',
         },
         {
           id: 'react-dom',
@@ -280,7 +265,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'DOM에 연결하는 렌더러',
           kind: 'package',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'browser-dom',
@@ -288,7 +272,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: '실제 화면',
           kind: 'state',
           tone: 'cyan',
-          icon: 'browser',
         },
       ],
     },
@@ -302,7 +285,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       descriptionLabel: '설명',
       descriptionValue:
         'React 애플리케이션의 진입점을 만들고, DOM 컨테이너와 Fiber 루트를 연결합니다.',
-      learningQuestion: '왜 createRoot는\nDOM container를 먼저 검증할까?',
       primaryCta: 'ReactDOMRoot.js 읽기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
@@ -324,7 +306,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tag: '브라우저 환경',
         tone: 'blue',
-        icon: 'browser',
       },
       server: {
         id: 'server',
@@ -337,7 +318,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tag: '서버 환경',
         tone: 'emerald',
-        icon: 'server',
       },
       centerHeading: '환경이 다르면\n진입점도 달라진다',
       centerCaption: '같은 React라도 실행 환경에 따라 사용하는 엔트리가 다릅니다.',
@@ -368,7 +348,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tags: ['Core API', 'Platform-independent'],
         tone: 'blue',
-        icon: 'atom',
       },
       reactDomCard: {
         id: 'react-dom',
@@ -381,7 +360,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tags: ['DOM Renderer', 'Browser-only'],
         tone: 'emerald',
-        icon: 'monitor',
       },
       relationTopLine: 'Connecting the description',
       relationBottomLine: 'to reality',
@@ -450,7 +428,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'State, hooks, JSX',
           kind: 'state',
           tone: 'sky',
-          icon: 'braces',
         },
         {
           id: 'react',
@@ -458,7 +435,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'API that describes UI',
           kind: 'package',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'ui-description',
@@ -466,7 +442,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'React Element Tree',
           kind: 'state',
           tone: 'indigo',
-          icon: 'layers',
         },
       ],
       bottomFlow: [
@@ -476,7 +451,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'Pick a DOM container',
           kind: 'state',
           tone: 'teal',
-          icon: 'container',
         },
         {
           id: 'react-dom',
@@ -484,7 +458,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'Renderer that wires to the DOM',
           kind: 'package',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'browser-dom',
@@ -492,7 +465,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
           subtitle: 'Real screen',
           kind: 'state',
           tone: 'cyan',
-          icon: 'browser',
         },
       ],
     },
@@ -506,7 +478,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       descriptionLabel: 'Description',
       descriptionValue:
         'Creates the entry point of a React app and links a DOM container with a Fiber root.',
-      learningQuestion: 'Why does createRoot validate\nthe DOM container first?',
       primaryCta: 'Read ReactDOMRoot.js',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js',
@@ -528,7 +499,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tag: 'Browser env',
         tone: 'blue',
-        icon: 'browser',
       },
       server: {
         id: 'server',
@@ -541,7 +511,6 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
         ],
         tag: 'Server env',
         tone: 'emerald',
-        icon: 'server',
       },
       centerHeading: 'Different environments\nmean different entrypoints',
       centerCaption: 'Same React — but the entry you use depends on where it runs.',

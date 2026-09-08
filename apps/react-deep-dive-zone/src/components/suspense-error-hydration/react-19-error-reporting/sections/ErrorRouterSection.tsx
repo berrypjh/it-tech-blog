@@ -4,16 +4,17 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { React19ErrorReportingContent, RouterOption } from '../content';
 import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  LineChartIcon,
-  RefreshCcwIcon,
-  ShieldAlertIcon,
-  ShieldCheckIcon,
-  ZapIcon,
-} from '../icons';
+  ArrowRight,
+  CheckCircle2,
+  LineChart,
+  RefreshCcw,
+  ShieldAlert,
+  ShieldCheck,
+  Zap,
+} from 'lucide-react';
+
+import type { React19ErrorReportingContent, RouterOption } from '../content';
 import type { CallbackKind, LogLevel } from '../tone';
 import { callbackAccent, logLevelBadge } from '../tone';
 
@@ -22,10 +23,10 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: React19ErrorReportingContent['router'] };
 
 const optionIcon: Record<RouterOption['key'], React.ComponentType<{ className?: string }>> = {
-  boundary: ShieldCheckIcon,
-  fatal: ShieldAlertIcon,
-  hydration: RefreshCcwIcon,
-  monitoring: LineChartIcon,
+  boundary: ShieldCheck,
+  fatal: ShieldAlert,
+  hydration: RefreshCcw,
+  monitoring: LineChart,
 };
 
 const optionTone: Record<RouterOption['key'], { selected: string; text: string; icon: string }> = {
@@ -151,7 +152,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                     </span>
                   </div>
                   {isActive && (
-                    <CheckCircleIcon
+                    <CheckCircle2
                       aria-hidden="true"
                       className={cn('h-4 w-4 shrink-0', tone.text)}
                     />
@@ -171,7 +172,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-2">
-            <ZapIcon aria-hidden="true" className={cn('h-4 w-4', accent.text)} />
+            <Zap aria-hidden="true" className={cn('h-4 w-4', accent.text)} />
             <span
               className={cn(
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
@@ -196,7 +197,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                 {content.labels.uiResult}
               </dt>
               <dd className="mt-0.5 inline-flex items-center gap-1.5 text-xsm font-bold text-[var(--term-fg)] break-keep">
-                <ArrowRightIcon className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
+                <ArrowRight className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
                 {result.uiResult}
               </dd>
             </div>

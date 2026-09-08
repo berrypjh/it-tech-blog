@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, ExternalLink, FileCode, FileSearch } from 'lucide-react';
+
 import type { HooksEntryFlowContent } from '../content';
-import { ChevronRightIcon, ExternalLinkIcon, FileSearchIcon, GithubIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['realCode'] };
 
@@ -113,7 +114,7 @@ export const PublicUseStateCodePreview = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200/80 bg-violet-50 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200"
             >
-              <FileSearchIcon className="h-4 w-4" />
+              <FileSearch className="h-4 w-4" aria-hidden="true" />
             </span>
             <code className="font-mono text-xsm sm:text-sm font-bold text-[var(--term-fg)]">
               {content.fileName}
@@ -148,7 +149,7 @@ export const PublicUseStateCodePreview = ({ content }: Props) => {
       {/* Link cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
         {content.links.map((link, i) => {
-          const Icon = i === 0 ? GithubIcon : ExternalLinkIcon;
+          const Icon = i === 0 ? FileCode : ExternalLink;
           return (
             <a
               key={link.title}
@@ -176,7 +177,7 @@ export const PublicUseStateCodePreview = ({ content }: Props) => {
                   {link.description}
                 </span>
               </div>
-              <ChevronRightIcon
+              <ChevronRight
                 aria-hidden="true"
                 className="h-4 w-4 shrink-0 text-[var(--term-muted)] transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
               />

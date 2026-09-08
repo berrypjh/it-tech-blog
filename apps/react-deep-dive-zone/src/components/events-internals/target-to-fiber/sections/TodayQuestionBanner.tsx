@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle } from 'lucide-react';
+
 import type { TargetFiberContent } from '../content';
-import { HelpCircleIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['question'] };
 
@@ -23,7 +24,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0 flex-1">

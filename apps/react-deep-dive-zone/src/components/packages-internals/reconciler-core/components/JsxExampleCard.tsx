@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import { reconcilerIcon } from '../icons';
 
 type Props = {
   title: string;
@@ -11,7 +12,6 @@ type Props = {
 
 export const JsxExampleCard = ({ title, code, className }: Props) => {
   const tone = toneTokens.sky;
-  const Icon = reconcilerIcon.code;
 
   return (
     <article
@@ -24,7 +24,7 @@ export const JsxExampleCard = ({ title, code, className }: Props) => {
       )}
     >
       <header className="flex items-center gap-2">
-        <Icon className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
+        <Code className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
         <h3 className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>{title}</h3>
       </header>
       <pre

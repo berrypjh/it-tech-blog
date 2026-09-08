@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Code2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, CodeIcon } from '../icons';
 
 type Props = { content: PassiveEffectsContent['example'] };
 
@@ -21,7 +22,7 @@ export const PassiveEffectExampleSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-3 min-w-0">
@@ -78,8 +79,8 @@ const ExecutionFlow = ({ steps }: { steps: PassiveEffectsContent['example']['flo
               aria-hidden="true"
               className="flex md:items-center justify-center text-[var(--term-dim)]"
             >
-              <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-              <ArrowDownIcon className="h-4 w-4 md:hidden my-1" />
+              <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+              <ArrowDown className="h-4 w-4 md:hidden my-1" aria-hidden="true" />
             </li>
           )}
         </Fragment>

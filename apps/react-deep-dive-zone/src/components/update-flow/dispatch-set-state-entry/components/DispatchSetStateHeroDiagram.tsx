@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, GitBranch, Sparkles, User } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent } from '../content';
-import { FileCodeIcon, GitBranchIcon, SparklesIcon, UserIcon } from '../icons';
 
 type Props = { content: DispatchSetStateEntryContent['hero']; className?: string };
 
@@ -24,7 +25,7 @@ export const DispatchSetStateHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="emerald"
             label={content.leftCard.title}
-            icon={<UserIcon className="h-[18px] w-[18px]" />}
+            icon={<User className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="call"
           />
           <CodePreviewPanel code={content.leftCard.code} showWindowDots size="md" />
@@ -36,7 +37,7 @@ export const DispatchSetStateHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={content.centerCard.title}
-            icon={<GitBranchIcon className="h-[18px] w-[18px]" />}
+            icon={<GitBranch className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="entry"
           />
           <EntryRow main={content.centerCard.main} sub={content.centerCard.sub} />
@@ -48,7 +49,7 @@ export const DispatchSetStateHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="violet"
             label={content.rightCard.title}
-            icon={<FileCodeIcon className="h-[18px] w-[18px]" />}
+            icon={<FileCode className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="delegate"
           />
           <CodePreviewPanel
@@ -113,7 +114,7 @@ const EntryRow = ({ main, sub }: { main: string; sub: string }) => (
 
 const Callout = ({ text }: { text: string }) => (
   <p className="relative mt-sm flex items-center gap-2 text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-    <SparklesIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" />
+    <Sparkles aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" />
     {text}
   </p>
 );

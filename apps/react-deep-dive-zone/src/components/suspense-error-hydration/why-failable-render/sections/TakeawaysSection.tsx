@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ShieldCheck, TriangleAlert } from 'lucide-react';
+
 import type { WhyFailableRenderContent } from '../content';
-import { CheckCircleIcon, ShieldCheckIcon, TriangleAlertIcon } from '../icons';
 import { toneCardSoft, toneNumberBadge } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['takeaways'] };
 
-const cardIcon = [TriangleAlertIcon, ShieldCheckIcon, CheckCircleIcon];
+const cardIcon = [TriangleAlert, ShieldCheck, CheckCircle2];
 
 export const TakeawaysSection = ({ content }: Props) => (
   <section aria-labelledby="takeaways-heading" className="flex flex-col gap-md">
@@ -24,7 +25,7 @@ export const TakeawaysSection = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 gap-md md:grid-cols-3">
       {content.cards.map((card, i) => {
-        const Icon = cardIcon[i] ?? CheckCircleIcon;
+        const Icon = cardIcon[i] ?? CheckCircle2;
         return (
           <li key={card.number}>
             <article

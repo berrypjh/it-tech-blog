@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cpu, HelpCircle, PauseCircle, PlayCircle, Zap } from 'lucide-react';
+
 import type { RenderYieldingContent, YieldAccent } from '../content';
-import { CpuIcon, HelpCircleIcon, PauseCircleIcon, PlayCircleIcon, ZapIcon } from '../icons';
 import { yldIconBox, yldPill, yldTextStrong } from '../yieldAccent';
 
 type Props = { content: RenderYieldingContent['question'] };
 
-const cardIcon: Record<YieldAccent, typeof HelpCircleIcon> = {
-  blue: PauseCircleIcon,
-  teal: PauseCircleIcon,
-  violet: PauseCircleIcon,
-  emerald: PlayCircleIcon,
-  rose: CpuIcon,
+const cardIcon: Record<YieldAccent, typeof HelpCircle> = {
+  blue: PauseCircle,
+  teal: PauseCircle,
+  violet: PauseCircle,
+  emerald: PlayCircle,
+  rose: Cpu,
 };
 
 export const RenderYieldingQuestionPanel = ({ content }: Props) => (
@@ -33,7 +34,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span className="inline-flex items-center rounded-full border border-blue-300/80 bg-white px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200">
           {content.eyebrow}
@@ -51,7 +52,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-2 lg:min-w-[260px]">
         {content.cards.map((card) => {
-          const Icon = cardIcon[card.accent] ?? ZapIcon;
+          const Icon = cardIcon[card.accent] ?? Zap;
           return (
             <li
               key={card.title}

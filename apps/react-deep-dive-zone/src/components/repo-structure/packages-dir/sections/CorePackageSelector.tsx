@@ -4,11 +4,30 @@ import { useId, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Atom,
+  CheckCircle2,
+  FileCode,
+  Folder,
+  Layers,
+  type LucideIcon,
+  MonitorSmartphone,
+  Network,
+  Timer,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
-import { CheckCircleIcon, FileCodeIcon, FolderIcon, packageIconByName } from '../icons';
+
+const corePackageIcon: Record<CorePackageId, LucideIcon> = {
+  react: Atom,
+  'react-dom': MonitorSmartphone,
+  'react-reconciler': Layers,
+  scheduler: Timer,
+  shared: Network,
+};
 
 type Props = { content: PackagesDirectoryContent['selector'] };
 
@@ -17,7 +36,7 @@ export const CorePackageSelector = ({ content }: Props) => {
   const active = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
   const detail = content.details[active.id];
   const tone = toneTokens[active.tone];
-  const ActiveIcon = packageIconByName[active.icon];
+  const ActiveIcon = corePackageIcon[active.id];
   const tablistId = useId();
 
   return (
@@ -27,7 +46,7 @@ export const CorePackageSelector = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<FolderIcon className="h-5 w-5" />}
+        icon={<Folder className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -66,7 +85,7 @@ export const CorePackageSelector = ({ content }: Props) => {
           <header className="flex items-center justify-between gap-sm">
             <div className="flex items-center gap-sm min-w-0">
               <ToneIconBox tone={active.tone}>
-                <ActiveIcon className="h-5 w-5" />
+                <ActiveIcon className="h-5 w-5" aria-hidden="true" />
               </ToneIconBox>
               <h3
                 className={cn(
@@ -90,7 +109,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                 key={bullet}
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
                   aria-hidden="true"
                 />
@@ -112,7 +131,7 @@ export const CorePackageSelector = ({ content }: Props) => {
               {detail.representativeTitle}
             </h4>
             <ToneIconBox tone={active.tone} size="sm">
-              <FolderIcon className="h-4 w-4" />
+              <Folder className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
           </header>
 
@@ -140,10 +159,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                   >
                     {branch}
                   </span>
-                  <FileCodeIcon
-                    className={cn('h-3.5 w-3.5 shrink-0', tone.text)}
-                    aria-hidden="true"
-                  />
+                  <FileCode className={cn('h-3.5 w-3.5 shrink-0', tone.text)} aria-hidden="true" />
                   <span className="truncate">{file}</span>
                 </li>
               );
@@ -164,7 +180,7 @@ type TabCardProps = {
 
 const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
   const tone = toneTokens[tab.tone];
-  const Icon = packageIconByName[tab.icon];
+  const Icon = corePackageIcon[tab.id];
 
   return (
     <button
@@ -197,7 +213,7 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
               : cn(tone.chip, 'border-[var(--term-border)]'),
           )}
         >
-          <Icon className={cn('h-4 w-4', tone.text)} />
+          <Icon className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
         </span>
         <span
           className={cn(

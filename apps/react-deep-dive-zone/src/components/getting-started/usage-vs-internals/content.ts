@@ -10,7 +10,6 @@ export type FlowStep = {
   number: string;
   title: string;
   body: string;
-  iconName: 'cursor' | 'fx' | 'database' | 'clockRefresh' | 'cube' | 'checkCircle';
   tone: ToneKey;
 };
 
@@ -177,7 +176,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '1',
           title: 'Click',
           body: '사용자 클릭',
-          iconName: 'cursor',
           tone: 'sky',
         },
         {
@@ -185,7 +183,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '2',
           title: 'dispatchSetState',
           body: '`setCount` 호출',
-          iconName: 'fx',
           tone: 'blue',
         },
         {
@@ -193,7 +190,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '3',
           title: 'update queue',
           body: '업데이트 저장',
-          iconName: 'database',
           tone: 'indigo',
         },
         {
@@ -201,7 +197,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '4',
           title: 'scheduleUpdateOnFiber',
           body: '스케줄링 시작',
-          iconName: 'clockRefresh',
           tone: 'cyan',
         },
         {
@@ -209,7 +204,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '5',
           title: 'Render Phase',
           body: '변경 계산',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -217,7 +211,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '6',
           title: 'Commit Phase',
           body: 'DOM 반영',
-          iconName: 'checkCircle',
           tone: 'emerald',
         },
       ],
@@ -382,7 +375,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '1',
           title: 'Click',
           body: 'User click',
-          iconName: 'cursor',
           tone: 'sky',
         },
         {
@@ -390,7 +382,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '2',
           title: 'dispatchSetState',
           body: '`setCount` call',
-          iconName: 'fx',
           tone: 'blue',
         },
         {
@@ -398,7 +389,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '3',
           title: 'update queue',
           body: 'store the update',
-          iconName: 'database',
           tone: 'indigo',
         },
         {
@@ -406,7 +396,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '4',
           title: 'scheduleUpdateOnFiber',
           body: 'start scheduling',
-          iconName: 'clockRefresh',
           tone: 'cyan',
         },
         {
@@ -414,7 +403,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '5',
           title: 'Render Phase',
           body: 'compute changes',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -422,7 +410,6 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
           number: '6',
           title: 'Commit Phase',
           body: 'apply to DOM',
-          iconName: 'checkCircle',
           tone: 'emerald',
         },
       ],

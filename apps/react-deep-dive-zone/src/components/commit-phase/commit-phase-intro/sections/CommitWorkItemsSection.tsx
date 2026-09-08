@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Link, Monitor, Pencil, PlusSquare, Sparkles, Trash2, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, WorkItemIcon } from '../content';
-import {
-  LinkIcon,
-  MonitorIcon,
-  PencilIcon,
-  PlusSquareIcon,
-  SparklesIcon,
-  TrashIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['work'] };
 
-const iconMap: Record<WorkItemIcon, typeof PencilIcon> = {
-  plusSquare: PlusSquareIcon,
-  pencil: PencilIcon,
-  trash: TrashIcon,
-  link: LinkIcon,
-  monitor: MonitorIcon,
-  zap: ZapIcon,
+const iconMap: Record<WorkItemIcon, typeof Pencil> = {
+  plusSquare: PlusSquare,
+  pencil: Pencil,
+  trash: Trash2,
+  link: Link,
+  monitor: Monitor,
+  zap: Zap,
 };
 
 export const CommitWorkItemsSection = ({ content }: Props) => (
@@ -36,7 +29,7 @@ export const CommitWorkItemsSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

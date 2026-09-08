@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitFork } from 'lucide-react';
+
 import { ComparePanel } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
-import { GitForkIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['mountVsUpdate'] };
 
@@ -25,7 +26,7 @@ export const MountVsUpdateBranch = ({ content }: Props) => (
       id="mount-vs-update"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg items-stretch">
@@ -42,7 +43,7 @@ const BranchPanel = ({ branch, tone, headerId }: PanelProps) => {
   return (
     <ComparePanel
       tone={panelTone(tone)}
-      icon={<GitForkIcon className="h-3.5 w-3.5" />}
+      icon={<GitFork className="h-3.5 w-3.5" aria-hidden="true" />}
       title={branch.title}
       headerId={headerId}
     >

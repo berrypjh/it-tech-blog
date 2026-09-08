@@ -1,14 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowUp, Atom, Box, CheckCircle2, ShieldCheck, User } from 'lucide-react';
+
 import type { ErrorBoundaryRecoverContent, TreeNode } from '../content';
-import {
-  ArrowUpIcon,
-  AtomIcon,
-  BoxIcon,
-  CheckCircleIcon,
-  ShieldCheckIcon,
-  UserIcon,
-} from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -19,25 +13,25 @@ const nodeStyle = {
     border: 'border-slate-300 dark:border-slate-600',
     bg: 'bg-slate-50 dark:bg-slate-900',
     text: 'text-slate-700 dark:text-slate-200',
-    Icon: AtomIcon,
+    Icon: Atom,
   },
   boundary: {
     border: 'border-teal-400 dark:border-teal-500',
     bg: 'bg-teal-50 dark:bg-teal-950/40',
     text: 'text-teal-700 dark:text-teal-200',
-    Icon: ShieldCheckIcon,
+    Icon: ShieldCheck,
   },
   card: {
     border: 'border-slate-300 dark:border-slate-600',
     bg: 'bg-slate-50 dark:bg-slate-900',
     text: 'text-slate-700 dark:text-slate-200',
-    Icon: BoxIcon,
+    Icon: Box,
   },
   profile: {
     border: 'border-rose-400 dark:border-rose-500',
     bg: 'bg-rose-50 dark:bg-rose-950/40',
     text: 'text-rose-700 dark:text-rose-200',
-    Icon: UserIcon,
+    Icon: User,
   },
 } as const;
 
@@ -98,7 +92,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
                   'text-teal-600 dark:text-teal-300',
                 )}
               >
-                <ArrowUpIcon className="h-4 w-4 mr-1" />
+                <ArrowUp className="h-4 w-4 mr-1" aria-hidden="true" />
                 위로 이동
               </span>
             )}
@@ -123,7 +117,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
               key={rule}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-teal-500 dark:text-teal-400"
               />

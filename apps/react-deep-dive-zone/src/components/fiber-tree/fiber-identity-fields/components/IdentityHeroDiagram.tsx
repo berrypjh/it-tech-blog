@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, Key, Tag, Target } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent, IdentityField, IdentityFieldKey } from '../content';
-import { CodeIcon, KeyIcon, TagIcon, TargetIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['hero']; className?: string };
 
-const fieldIcon: Record<IdentityFieldKey, typeof TagIcon> = {
-  tag: TagIcon,
-  key: KeyIcon,
-  elementType: CodeIcon,
-  type: TargetIcon,
+const fieldIcon: Record<IdentityFieldKey, typeof Tag> = {
+  tag: Tag,
+  key: Key,
+  elementType: Code2,
+  type: Target,
 };
 
 /**

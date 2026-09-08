@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Brain, GitBranch, Target } from 'lucide-react';
+
 import type { PromiseVsErrorSplitContent } from '../content';
-import { BrainIcon, GitBranchIcon, TargetIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -28,7 +29,7 @@ const toneClass = {
   },
 } as const;
 
-const cardIcons = [BrainIcon, GitBranchIcon, TargetIcon];
+const cardIcons = [Brain, GitBranch, Target];
 
 export const TakeawaysSection = ({ content }: Props) => (
   <section aria-labelledby="takeaways-heading" className="flex flex-col gap-md">
@@ -37,7 +38,7 @@ export const TakeawaysSection = ({ content }: Props) => (
     <ul className="grid grid-cols-1 gap-md md:grid-cols-3">
       {content.cards.map((card, i) => {
         const t = toneClass[card.tone];
-        const Icon = cardIcons[i] ?? BrainIcon;
+        const Icon = cardIcons[i] ?? Brain;
         return (
           <li key={card.number}>
             <article

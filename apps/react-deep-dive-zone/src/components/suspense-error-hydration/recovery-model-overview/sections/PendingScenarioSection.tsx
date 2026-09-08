@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileCode } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, FileCodeIcon } from '../icons';
 import { domainAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -67,7 +68,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
                     {step.label}
                   </span>
                   {i < content.flow.length - 1 && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="h-3 w-3 shrink-0 text-slate-400 dark:text-slate-500"
                     />
@@ -85,10 +86,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
           )}
         >
           <header className="flex items-center gap-2">
-            <FileCodeIcon
-              aria-hidden="true"
-              className="h-4 w-4 text-slate-600 dark:text-slate-300"
-            />
+            <FileCode aria-hidden="true" className="h-4 w-4 text-slate-600 dark:text-slate-300" />
             <span className="text-xsm font-bold text-[var(--term-fg)]">
               {content.codeHintsLabel}
             </span>

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Globe, PlayCircle } from 'lucide-react';
+
 import type { HydrationStartContent } from '../content';
-import { AtomIcon, GlobeIcon, PlayCircleIcon } from '../icons';
 import type { Domain } from '../tone';
 import { domainAccent } from '../tone';
 
@@ -10,9 +11,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: HydrationStartContent['states'] };
 
 const domainIcon: Record<Domain, React.ComponentType<{ className?: string }>> = {
-  dom: GlobeIcon,
-  fiber: AtomIcon,
-  hydrating: PlayCircleIcon,
+  dom: Globe,
+  fiber: Atom,
+  hydrating: PlayCircle,
 };
 
 export const HydrationStatesSection = ({ content }: Props) => (

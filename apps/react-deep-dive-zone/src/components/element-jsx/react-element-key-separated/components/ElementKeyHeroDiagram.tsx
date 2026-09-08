@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Key, Network } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DiagramItem, ReactElementKeySeparatedContent } from '../content';
-import { CheckCircleIcon, KeyIcon, NetworkIcon } from '../icons';
 
 type Props = { content: ReactElementKeySeparatedContent['hero']; className?: string };
 
@@ -36,7 +37,7 @@ export const ElementKeyHeroDiagram = ({ content, className }: Props) => {
 const StepHeader = ({ label }: { label: string }) => (
   <div className="flex items-center gap-sm">
     <ToneIconBox tone="sky" size="sm">
-      <NetworkIcon className="h-4 w-4" aria-hidden="true" />
+      <Network className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.sky.text)}>
       {label}
@@ -77,7 +78,7 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-          <KeyIcon className="h-3 w-3" aria-hidden="true" />
+          <Key className="h-3 w-3" aria-hidden="true" />
           key
         </span>
         <code
@@ -101,7 +102,7 @@ const ResultNote = ({ text }: { text: string }) => (
     )}
   >
     <ToneIconBox tone="amber" size="md">
-      <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
+      <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
     </ToneIconBox>
     <p className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-accent)] break-keep">
       {text}

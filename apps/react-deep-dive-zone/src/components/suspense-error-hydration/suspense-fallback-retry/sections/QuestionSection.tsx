@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, CircleHelp, ListOrdered, RefreshCcw, Target } from 'lucide-react';
+
 import type { ConceptCard, SuspenseFallbackRetryContent } from '../content';
-import { BoxIcon, CircleHelpIcon, ListOrderedIcon, RefreshCcwIcon, TargetIcon } from '../icons';
 import { sectionNumberBadge } from '../tone';
 
 type Props = { content: SuspenseFallbackRetryContent['question'] };
 
 const conceptIcon: Record<ConceptCard['icon'], React.ComponentType<{ className?: string }>> = {
-  target: TargetIcon,
-  panel: BoxIcon,
-  refresh: RefreshCcwIcon,
-  queue: ListOrderedIcon,
+  target: Target,
+  panel: Box,
+  refresh: RefreshCcw,
+  queue: ListOrdered,
 };
 
 const conceptTone: Record<ConceptCard['icon'], string> = {
@@ -54,7 +55,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <p className="text-md sm:text-lg leading-snug font-bold text-[var(--term-fg)] break-keep">

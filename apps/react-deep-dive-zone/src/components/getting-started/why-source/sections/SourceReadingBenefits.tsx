@@ -1,12 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BarChart3, Eye, type LucideIcon, Puzzle, Search, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { WhySourceContent } from '../content';
-import { iconByName, SparkIcon } from '../icons';
+import type { BenefitCard, WhySourceContent } from '../content';
 
 type Props = { content: WhySourceContent['benefits'] };
+
+const cardIcon: Record<BenefitCard['id'], LucideIcon> = {
+  render: Eye,
+  debug: Search,
+  performance: BarChart3,
+  design: Puzzle,
+};
 
 export const SourceReadingBenefits = ({ content }: Props) => {
   return (
@@ -15,18 +23,18 @@ export const SourceReadingBenefits = ({ content }: Props) => {
         id="benefits"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparkIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               badge={card.badge}
             >
               <h3

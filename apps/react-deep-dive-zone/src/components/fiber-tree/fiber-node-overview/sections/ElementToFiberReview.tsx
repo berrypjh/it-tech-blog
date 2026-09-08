@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Hexagon, Lightbulb, RefreshCw, Wand2 } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent, ReviewStep } from '../content';
-import { BoxesIcon, HexagonIcon, LightbulbIcon, RefreshIcon, WandIcon } from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['review'] };
 
 const iconMap = {
-  cube: BoxesIcon,
-  wand: WandIcon,
-  hex: HexagonIcon,
+  cube: Boxes,
+  wand: Wand2,
+  hex: Hexagon,
 } as const;
 
 const toFlowStep = (step: ReviewStep, idx: number): FlowStepItem => {
@@ -35,11 +36,13 @@ export const ElementToFiberReview = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RefreshIcon className="h-5 w-5" />}
+      icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.note}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.note}
+    </SectionNote>
   </section>
 );

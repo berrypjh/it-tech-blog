@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Globe } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { TargetFiberContent } from '../content';
-import { BoxIcon, GlobeIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['hero']; className?: string };
 
@@ -36,7 +37,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
           tone="blue"
           eyebrow="browser"
           label={domCard.title}
-          icon={<GlobeIcon className="h-[18px] w-[18px]" />}
+          icon={<Globe className="h-[18px] w-[18px]" aria-hidden="true" />}
           tag={domCard.tag}
         />
         <CodePreviewPanel code={domCard.code} showWindowDots language="HTML" size="md" />
@@ -48,7 +49,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
           tone="teal"
           eyebrow="react"
           label={fiberCard.title}
-          icon={<BoxIcon className="h-[18px] w-[18px]" />}
+          icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
           tag={fiberCard.tag}
         />
         <dl

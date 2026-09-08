@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, Eye } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
-import { BracesIcon, EyeIcon } from '../icons';
 
 type Props = { content: JsxIsNotHtmlContent['hero']; className?: string };
 
@@ -41,7 +42,7 @@ export const JsxHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
-  const Icon = card.iconName === 'eye' ? EyeIcon : BracesIcon;
+  const Icon = card.iconName === 'eye' ? Eye : Braces;
   return (
     <article
       className={cn(

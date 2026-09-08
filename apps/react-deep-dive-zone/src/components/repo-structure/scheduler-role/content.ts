@@ -6,24 +6,11 @@ export type { ToneKey };
 
 export type PriorityKey = 'immediate' | 'normal' | 'low';
 
-export type IconName =
-  | 'cursor'
-  | 'search'
-  | 'sparkles'
-  | 'zap'
-  | 'puzzle'
-  | 'clock'
-  | 'layers'
-  | 'timer'
-  | 'monitor'
-  | 'refresh';
-
 export type HeroPriorityCard = {
   id: PriorityKey;
   title: string;
   description: string;
   badge: string;
-  icon: IconName;
 };
 
 export type NeedCard = {
@@ -32,7 +19,6 @@ export type NeedCard = {
   description: string;
   example: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type RelationCard = {
@@ -41,7 +27,6 @@ export type RelationCard = {
   subtitle: string;
   bullets: string[];
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type PriorityRow = {
@@ -50,10 +35,7 @@ export type PriorityRow = {
   priorityLabel: string;
   description: string;
   example: string;
-  icon: IconName;
 };
-
-export type ResponsibilityItem = { text: string };
 
 export type QueueTask = {
   id: 'input' | 'filter' | 'transition';
@@ -113,21 +95,11 @@ export type SchedulerContent = {
     functionName: string;
     descriptionLabel: string;
     descriptionValue: string;
-    learningQuestion: string;
     primaryCta: string;
     primaryHref: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
-  };
-  responsibility: {
-    eyebrow: string;
-    title: string;
-    leftTitle: string;
-    leftItems: ResponsibilityItem[];
-    rightTitle: string;
-    rightItems: ResponsibilityItem[];
-    banner: string;
   };
   simulation: {
     eyebrow: string;
@@ -150,30 +122,42 @@ export type SchedulerContent = {
   };
 };
 
-const scheduleCallbackCode = `export function unstable_scheduleCallback(priorityLevel, callback, options) {
-  if (typeof callback !== 'function') {
-    throw new Error('Callback must be a function.');
-  }
+const scheduleCallbackCode = `function unstable_scheduleCallback(priorityLevel, callback, options) {
+  var currentTime = getCurrentTime();
 
-  const currentTime = getCurrentTime();
-
-  let startTime;
-  if (typeof options === 'object' && options !== null) {
-    const delay = options.delay;
-    if (typeof delay === 'number' && delay > 0) {
-      startTime = currentTime + delay;
-    } else {
-      startTime = currentTime;
-    }
-  } else {
-    startTime = currentTime;
-  }
-
-  const timeout = calculateTimeoutForPriorityLevel(priorityLevel);
-
-  const expirationTime = startTime + timeout;
-
+  var startTime;
+  // options.delay > 0 ? currentTime + delay : currentTime
   // ...
+
+  var timeout;
+  switch (priorityLevel) {
+    case ImmediatePriority:
+      // Times out immediately
+      timeout = -1;
+      break;
+    case IdlePriority:
+      // Never times out
+      timeout = maxSigned31BitInt;
+      break;
+    // UserBlocking 250ms / Normal 5000ms / Low 10000ms
+    // ...
+  }
+
+  var expirationTime = startTime + timeout;
+
+  var newTask = {
+    id: taskIdCounter++,
+    callback,
+    priorityLevel,
+    startTime,
+    expirationTime,
+    sortIndex: -1,
+  };
+
+  // Delayed task -> timerQueue, otherwise -> taskQueue + requestHostCallback()
+  // ...
+
+  return newTask;
 }
 `;
 
@@ -196,21 +180,18 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: '사용자 입력',
           description: '즉시 처리',
           badge: 'Immediate',
-          icon: 'cursor',
         },
         {
           id: 'normal',
           title: '검색 결과 필터링',
           description: '일반 처리',
           badge: 'Normal',
-          icon: 'search',
         },
         {
           id: 'low',
           title: '화면 전환 애니메이션',
           description: '뒤로 미룸',
           badge: 'Low',
-          icon: 'sparkles',
         },
       ],
       railHighLabel: '빠른 실행',
@@ -227,7 +208,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           description: '클릭, 키 입력 같은 상호작용은 즉시 반응해야 합니다.',
           example: '예: 버튼 클릭, 텍스트 입력',
           tone: 'emerald',
-          icon: 'zap',
         },
         {
           id: 'split',
@@ -235,7 +215,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           description: '큰 렌더링 작업을 작은 단위로 쪼개어 브라우저가 멈추지 않게 합니다.',
           example: '예: 긴 리스트 렌더링, 복잡한 트리 계산',
           tone: 'blue',
-          icon: 'puzzle',
         },
         {
           id: 'defer',
@@ -244,7 +223,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
             '화면 전환 애니메이션, 데이터 프리패치 등은 사용자 경험에 맞게 조절할 수 있습니다.',
           example: '예: 백그라운드 데이터 갱신, 프리패치',
           tone: 'violet',
-          icon: 'clock',
         },
       ],
     },
@@ -263,7 +241,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           '변경 내용을 commit에 넘길 준비',
         ],
         tone: 'indigo',
-        icon: 'layers',
       },
       right: {
         id: 'scheduler',
@@ -276,7 +253,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           '긴 작업을 나누고, 중단/재개 지원',
         ],
         tone: 'teal',
-        icon: 'timer',
       },
       banner: {
         lead: 'Scheduler는 렌더링 알고리즘이 아니라, ',
@@ -299,7 +275,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: '매우 급함',
           description: '사용자 입력에 대한 즉각적인 반응이 필요 (키 입력, 클릭, 드래그 등)',
           example: '예시: onClick, onChange, keydown',
-          icon: 'zap',
         },
         {
           id: 'normal',
@@ -307,7 +282,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: '보통',
           description: '일반적인 렌더링 업데이트 (상태 변경, 데이터 표시 등)',
           example: '예시: setState, data fetch 결과 반영',
-          icon: 'monitor',
         },
         {
           id: 'low',
@@ -315,7 +289,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: '덜 급함',
           description: '사용자 경험을 해치지 않는 범위에서 뒤로 미룰 수 있는 업데이트',
           example: '예시: useTransition, startTransition, 화면 전환 애니메이션',
-          icon: 'sparkles',
         },
       ],
     },
@@ -329,7 +302,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       descriptionLabel: '설명',
       descriptionValue:
         '주어진 우선순위에 따라 특정 작업을 예약하고, 언제 실행할지 결정하는 핵심 함수입니다.',
-      learningQuestion: '왜 작업 예약 함수는\npriorityLevel을 함께 받을까?',
       primaryCta: 'Scheduler.js 읽기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
@@ -337,27 +309,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeBadge: 'main',
       code: scheduleCallbackCode,
     },
-    responsibility: {
-      eyebrow: '05 · 책임 경계',
-      title: 'scheduler가 하는 일과 안 하는 일',
-      leftTitle: 'scheduler가 하는 것',
-      leftItems: [
-        { text: '작업(콜백)을 예약한다' },
-        { text: '우선순위에 따라 실행 순서를 결정한다' },
-        { text: '브라우저의 여유 시간에 맞춰 작업을 실행한다' },
-        { text: '긴 작업을 나누고, 중단/재개를 지원한다' },
-      ],
-      rightTitle: 'scheduler가 직접 하지 않는 것',
-      rightItems: [
-        { text: 'Fiber 트리 생성' },
-        { text: 'Reconciliation 알고리즘 수행' },
-        { text: 'DOM 노드 생성/수정/삭제' },
-        { text: 'Commit 단계에서 실제 반영' },
-      ],
-      banner: '조율과 계산은 다른 역할이다.',
-    },
     simulation: {
-      eyebrow: '06 · 작업 대기열',
+      eyebrow: '05 · 작업 대기열',
       title: '우선순위가 실행 순서를 바꾼다',
       incomingTitle: '새로 들어온 작업',
       tasks: [
@@ -429,21 +382,18 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: 'User input',
           description: 'Handle immediately',
           badge: 'Immediate',
-          icon: 'cursor',
         },
         {
           id: 'normal',
           title: 'Search filtering',
           description: 'Normal',
           badge: 'Normal',
-          icon: 'search',
         },
         {
           id: 'low',
           title: 'Page transition',
           description: 'Defer',
           badge: 'Low',
-          icon: 'sparkles',
         },
       ],
       railHighLabel: 'Earlier',
@@ -460,7 +410,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           description: 'Clicks and key presses must respond immediately.',
           example: 'e.g., button clicks, text input',
           tone: 'emerald',
-          icon: 'zap',
         },
         {
           id: 'split',
@@ -468,7 +417,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           description: 'Heavy rendering work is broken down so the browser does not freeze.',
           example: 'e.g., long lists, complex tree calculations',
           tone: 'blue',
-          icon: 'puzzle',
         },
         {
           id: 'defer',
@@ -477,7 +425,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
             'Transitions, prefetching and similar work can be paced to match the experience.',
           example: 'e.g., background data refresh, prefetch',
           tone: 'violet',
-          icon: 'clock',
         },
       ],
     },
@@ -496,7 +443,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           'Prepares changes for commit',
         ],
         tone: 'indigo',
-        icon: 'layers',
       },
       right: {
         id: 'scheduler',
@@ -509,7 +455,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           'Splits long work, supports pause/resume',
         ],
         tone: 'teal',
-        icon: 'timer',
       },
       banner: {
         lead: 'The scheduler is not a rendering algorithm — it is a ',
@@ -533,7 +478,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: 'Very urgent',
           description: 'Needs an immediate reaction to user input (keys, clicks, drags).',
           example: 'e.g., onClick, onChange, keydown',
-          icon: 'zap',
         },
         {
           id: 'normal',
@@ -541,7 +485,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: 'Normal',
           description: 'Standard rendering updates (state changes, data display).',
           example: 'e.g., setState, applying fetch results',
-          icon: 'monitor',
         },
         {
           id: 'low',
@@ -549,7 +492,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           priorityLabel: 'Lower',
           description: 'Updates that can wait without hurting the experience.',
           example: 'e.g., useTransition, startTransition, page transitions',
-          icon: 'sparkles',
         },
       ],
     },
@@ -563,7 +505,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       descriptionLabel: 'Description',
       descriptionValue:
         'The core function that schedules a callback at a given priority and decides when it should run.',
-      learningQuestion: 'Why does the schedule\nfunction take a priorityLevel?',
       primaryCta: 'Read Scheduler.js',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
@@ -571,27 +512,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       codeBadge: 'main',
       code: scheduleCallbackCode,
     },
-    responsibility: {
-      eyebrow: '05 · BOUNDARY',
-      title: 'What scheduler does and does not',
-      leftTitle: 'What the scheduler does',
-      leftItems: [
-        { text: 'Schedules callbacks' },
-        { text: 'Orders execution by priority' },
-        { text: 'Runs work when the browser has idle time' },
-        { text: 'Splits long work, supports pause/resume' },
-      ],
-      rightTitle: 'What the scheduler does NOT do',
-      rightItems: [
-        { text: 'Build the Fiber tree' },
-        { text: 'Run the reconciliation algorithm' },
-        { text: 'Create / update / delete DOM nodes' },
-        { text: 'Apply changes in the commit phase' },
-      ],
-      banner: 'Coordination and calculation are different jobs.',
-    },
     simulation: {
-      eyebrow: '06 · TASK QUEUE',
+      eyebrow: '05 · TASK QUEUE',
       title: 'Priority decides the run order',
       incomingTitle: 'Incoming tasks',
       tasks: [

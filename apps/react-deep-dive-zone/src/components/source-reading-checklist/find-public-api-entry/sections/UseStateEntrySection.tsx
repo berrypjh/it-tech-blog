@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, Route, Sparkles, Target } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { FindPublicApiEntryContent } from '../content';
-import { FileCodeIcon, RouteIcon, SparkIcon, TargetIcon } from '../icons';
 
 type Props = { content: FindPublicApiEntryContent['useStateEntry'] };
 
@@ -19,7 +20,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<RouteIcon className="h-5 w-5" />}
+        icon={<Route className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_5fr)_minmax(0,_7fr)] gap-md lg:gap-lg items-start">
@@ -43,7 +44,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
                   'dark:border-sky-700/70 dark:bg-sky-900/60 dark:text-sky-200',
                 )}
               >
-                <TargetIcon className="h-3.5 w-3.5" />
+                <Target className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
                 {content.userCodeLabel}
@@ -81,7 +82,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
                   'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
                 )}
               >
-                <FileCodeIcon className="h-3.5 w-3.5" />
+                <FileCode2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 {content.sourceLabel}
@@ -96,7 +97,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
                 'shadow-[0_2px_0_var(--term-border)]',
               )}
             >
-              <SparkIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span className="whitespace-nowrap">{content.sourceFile}</span>
             </code>
             <p className="mt-sm text-xsm leading-relaxed text-blue-900/80 dark:text-blue-100/80 break-keep">
@@ -128,7 +129,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
                 )}
               >
-                <SparkIcon className="h-4 w-4" />
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="flex flex-col gap-1.5">
                 <h3 className="text-sm sm:text-md font-bold leading-snug text-amber-900 dark:text-amber-100 break-keep">

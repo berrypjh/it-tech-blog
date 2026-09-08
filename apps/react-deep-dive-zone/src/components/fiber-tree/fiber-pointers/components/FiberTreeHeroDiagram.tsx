@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { MoveDown, MoveRight, MoveUp } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { TerminalBadge } from '../../../shared/terminal';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberTreePointersContent, PointerKind, TreeNode } from '../content';
-import { MoveDownIcon, MoveRightIcon, MoveUpIcon } from '../icons';
 
 import { pointerTone } from './pointerStyles';
 
 type Props = { content: FiberTreePointersContent['hero']; className?: string };
 
 const pointerIcon = {
-  child: MoveDownIcon,
-  sibling: MoveRightIcon,
-  return: MoveUpIcon,
+  child: MoveDown,
+  sibling: MoveRight,
+  return: MoveUp,
 } as const;
 
 /**

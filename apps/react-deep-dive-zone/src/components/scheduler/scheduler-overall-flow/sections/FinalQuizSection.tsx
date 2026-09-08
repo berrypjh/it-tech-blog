@@ -4,16 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, Eye, EyeOff, HelpCircle, Lightbulb, Trophy } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent } from '../content';
-import {
-  ChevronRightIcon,
-  EyeIcon,
-  EyeOffIcon,
-  HelpCircleIcon,
-  LightbulbIcon,
-  TrophyIcon,
-} from '../icons';
 
 type Props = { content: FullFlowContent['quiz'] };
 
@@ -29,14 +23,14 @@ export const FinalQuizSection = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.helper}
         title={content.title}
-        icon={<TrophyIcon className="h-5 w-5" />}
+        icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
         {content.items.map((item) => {
           const isOpen = !!revealed[item.number];
           const labelText = isOpen ? content.hideLabel : content.showLabel;
-          const ToggleIcon = isOpen ? EyeOffIcon : EyeIcon;
+          const ToggleIcon = isOpen ? EyeOff : Eye;
           return (
             <li key={item.number} className="h-full">
               <article
@@ -56,7 +50,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                   >
                     {item.number}
                   </span>
-                  <HelpCircleIcon
+                  <HelpCircle
                     aria-hidden="true"
                     className="h-5 w-5 text-blue-500 dark:text-blue-400"
                   />
@@ -82,7 +76,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                 >
                   <ToggleIcon aria-hidden="true" className="h-4 w-4" />
                   {labelText}
-                  <ChevronRightIcon
+                  <ChevronRight
                     aria-hidden="true"
                     className={cn('h-3.5 w-3.5 transition-transform', isOpen ? 'rotate-90' : '')}
                   />
@@ -101,7 +95,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                     )}
                   >
                     <header className="flex items-center gap-1.5">
-                      <LightbulbIcon
+                      <Lightbulb
                         aria-hidden="true"
                         className="h-4 w-4 text-emerald-700 dark:text-emerald-300"
                       />

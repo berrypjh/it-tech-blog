@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, CheckCircle2, Loader, PauseCircle, RefreshCcw } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroFlowStep, SuspenseFallbackRetryContent } from '../content';
-import { BoxIcon, CheckCircleIcon, LoaderIcon, PauseCircleIcon, RefreshCcwIcon } from '../icons';
 import type { Phase } from '../tone';
 
 type Props = { content: SuspenseFallbackRetryContent['hero']; className?: string };
 
 const stepIcon: Record<HeroFlowStep['icon'], React.ComponentType<{ className?: string }>> = {
-  suspend: PauseCircleIcon,
-  fallback: LoaderIcon,
-  resolve: CheckCircleIcon,
-  retry: RefreshCcwIcon,
-  content: BoxIcon,
+  suspend: PauseCircle,
+  fallback: Loader,
+  resolve: CheckCircle2,
+  retry: RefreshCcw,
+  content: Box,
 };
 
 /** pending/retry phase를 가장 가까운 공유 ToneKey로 매핑한다. */

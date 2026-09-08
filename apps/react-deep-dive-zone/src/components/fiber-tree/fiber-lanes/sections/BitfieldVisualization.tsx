@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Binary, Lightbulb } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { laneStyle } from '../components/laneTone';
 import type { BitfieldRow, FiberLanesContent } from '../content';
-import { ArrowRightIcon, BinaryIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberLanesContent['bitfield'] };
 
@@ -15,7 +16,7 @@ export const BitfieldVisualization = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BinaryIcon className="h-5 w-5" />}
+      icon={<Binary className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -33,7 +34,9 @@ export const BitfieldVisualization = ({ content }: Props) => (
       </ul>
     </div>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.description}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.description}
+    </SectionNote>
   </section>
 );
 
@@ -46,7 +49,7 @@ const BitfieldRowItem = ({ row }: { row: BitfieldRow }) => {
       >
         {row.bits}
       </code>
-      <ArrowRightIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
+      <ArrowRight aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
       <span
         className={cn(
           'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-xsm font-bold',

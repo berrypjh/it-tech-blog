@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Folder } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { RepoTreeRow } from '../content';
-import { FileTextIcon, FolderIcon } from '../icons';
 
 type Props = {
   header: string;
@@ -57,7 +58,7 @@ export const RepoTreeCard = ({
           const isLast = idx === rows.length - 1;
           const branch = isLast ? '└─' : '├─';
           const toneText = row.tone ? toneTokens[row.tone].text : null;
-          const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
+          const Icon = row.kind === 'dir' ? Folder : FileText;
 
           const baseClass = cn(
             'group w-full flex items-center gap-2 px-md py-1.5 text-xsm leading-none transition-colors',

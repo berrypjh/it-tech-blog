@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ListTree } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CallPathCompressionContent } from '../content';
-import { ArrowRightIcon, ListTreeIcon } from '../icons';
 import { getStepClasses, StepBadge } from '../StepBadge';
 
 type Props = { content: CallPathCompressionContent['rules'] };
@@ -17,7 +18,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ListTreeIcon className="h-5 w-5" />}
+        icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Stepper: desktop 4-col, mobile vertical */}
@@ -87,7 +88,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
               </li>
               {!isLast && (
                 <li aria-hidden="true" className="hidden xl:flex items-center justify-center">
-                  <ArrowRightIcon className="h-5 w-5 text-cyan-500" />
+                  <ArrowRight className="h-5 w-5 text-cyan-500" aria-hidden="true" />
                 </li>
               )}
             </Fragment>

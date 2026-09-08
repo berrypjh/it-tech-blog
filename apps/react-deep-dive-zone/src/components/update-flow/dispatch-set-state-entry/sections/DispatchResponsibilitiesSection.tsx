@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, FunctionSquare, Target, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent } from '../content';
-import { FunctionSquareIcon, responsibilityIconByName } from '../icons';
+
+const responsibilityIconByName = {
+  target: Target,
+  box: Box,
+  zap: Zap,
+} as const;
 
 type Props = { content: DispatchSetStateEntryContent['responsibilities'] };
 
@@ -19,7 +26,7 @@ export const DispatchResponsibilitiesSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<FunctionSquareIcon className="h-5 w-5" />}
+      icon={<FunctionSquare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

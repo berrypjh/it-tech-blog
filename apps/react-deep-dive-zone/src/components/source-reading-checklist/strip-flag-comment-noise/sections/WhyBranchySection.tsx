@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Bug, Flag, GitBranch, Monitor, Split, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { BranchyCard, StripFlagCommentNoiseContent } from '../content';
-import { BugIcon, FlagIcon, GitBranchIcon, MonitorIcon, SplitIcon, TargetIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['whyBranchy'] };
 
 const cardIcon = {
-  bug: BugIcon,
-  flag: FlagIcon,
-  monitor: MonitorIcon,
-  gitBranch: GitBranchIcon,
+  bug: Bug,
+  flag: Flag,
+  monitor: Monitor,
+  gitBranch: GitBranch,
 } as const;
 
 export const WhyBranchySection = ({ content }: Props) => {
@@ -22,7 +23,7 @@ export const WhyBranchySection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
@@ -49,7 +50,7 @@ export const WhyBranchySection = ({ content }: Props) => {
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}
         >
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
           <span className="block text-slate-300">{content.bannerLines[0]}</span>

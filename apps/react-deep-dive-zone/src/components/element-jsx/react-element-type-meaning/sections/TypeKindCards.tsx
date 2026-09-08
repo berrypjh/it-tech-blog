@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks, Sparkles, Tag, User } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementTypeMeaningContent, TypeKindCard } from '../content';
-import { CheckCircleIcon, ListChecksIcon, SparklesIcon, TagIcon, UserIcon } from '../icons';
 
 type Props = { content: ReactElementTypeMeaningContent['kinds'] };
 
 const iconMap = {
-  tag: TagIcon,
-  user: UserIcon,
-  sparkles: SparklesIcon,
+  tag: Tag,
+  user: User,
+  sparkles: Sparkles,
 } as const;
 
 export const TypeKindCards = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const TypeKindCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
@@ -90,7 +91,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
                 toneTokens[card.tone].chip,
               )}
             >
-              <CheckCircleIcon className="h-3 w-3" />
+              <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
             </span>
             <p className="text-[11px] sm:text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
               {check}

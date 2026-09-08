@@ -1,13 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, Pencil, TimerReset } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, WhyNotImmediateContent } from '../content';
-import { GaugeIcon, PencilIcon, TimerResetIcon } from '../icons';
 
 type Props = { content: WhyNotImmediateContent['hero']; className?: string };
 
-const stepIcons = [PencilIcon, GaugeIcon, TimerResetIcon];
+const stepIcons = [Pencil, Gauge, TimerReset];
 
 /**
  * Hero 핵심 비주얼.
@@ -40,7 +41,7 @@ export const SchedulerIntroHeroDiagram = ({ content, className }: Props) => {
         <ol className="flex flex-col gap-sm">
           {diagram.steps.map((step, i) => (
             <li key={step.title} className="flex flex-col gap-sm">
-              <StepCard step={step} icon={stepIcons[i] ?? PencilIcon} index={i + 1} />
+              <StepCard step={step} icon={stepIcons[i] ?? Pencil} index={i + 1} />
               {i < diagram.steps.length - 1 && <DownArrow />}
             </li>
           ))}
@@ -56,7 +57,7 @@ const StepCard = ({
   index,
 }: {
   step: FlowStep;
-  icon: typeof PencilIcon;
+  icon: typeof Pencil;
   index: number;
 }) => {
   const t = toneTokens[step.tone as ToneKey];

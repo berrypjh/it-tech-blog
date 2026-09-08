@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, CheckCircle2, Sparkles } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { ValueClassificationContent } from '../content';
-import { AtomIcon, CheckCircleIcon, SparkIcon } from '../icons';
 import { ValueBadge } from '../ValueBadge';
 
 type Props = { content: ValueClassificationContent['elementStructure'] };
@@ -20,7 +21,7 @@ export const ElementStructureSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<AtomIcon className="h-5 w-5" />}
+        icon={<Atom className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg items-start">
@@ -53,7 +54,7 @@ export const ElementStructureSection = ({ content }: Props) => {
                   'dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
                 )}
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   className="mt-0.5 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400"
                   aria-hidden="true"
                 />
@@ -81,7 +82,7 @@ export const ElementStructureSection = ({ content }: Props) => {
             'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
           )}
         >
-          <SparkIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug text-blue-900 dark:text-blue-100 break-keep">
           {content.keySentence}

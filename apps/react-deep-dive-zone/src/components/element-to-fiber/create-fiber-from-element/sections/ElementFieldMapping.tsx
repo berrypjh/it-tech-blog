@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Inspect, KeyRound, ListTree, Package } from 'lucide-react';
+
 import { MappingRowCard } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent, MappingRow } from '../content';
-import { ArrowRightIcon, InspectIcon, KeyRoundIcon, ListTreeIcon, PackageIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['mapping'] };
 
 const iconMap = {
-  inspect: InspectIcon,
-  key: KeyRoundIcon,
-  package: PackageIcon,
+  inspect: Inspect,
+  key: KeyRound,
+  package: Package,
 } as const;
 
 export const ElementFieldMapping = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const ElementFieldMapping = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListTreeIcon className="h-5 w-5" />}
+      icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="flex flex-col gap-md">
@@ -44,8 +45,8 @@ const Row = ({ row }: { row: MappingRow }) => {
       columns="md:grid-cols-[minmax(0,220px)_auto_minmax(0,1fr)]"
       arrow={
         <>
-          <ArrowRightIcon className="h-4 w-4 hidden md:block" />
-          <ArrowRightIcon className="h-4 w-4 md:hidden rotate-90" />
+          <ArrowRight className="h-4 w-4 hidden md:block" aria-hidden="true" />
+          <ArrowRight className="h-4 w-4 md:hidden rotate-90" aria-hidden="true" />
         </>
       }
       left={

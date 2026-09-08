@@ -1,31 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowLeftRight,
+  ArrowRight,
+  Crosshair,
+  Eraser,
+  Repeat,
+  Rocket,
+  Sparkles,
+  Target,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ExtraPoint, MutationPhaseContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CrosshairIcon,
-  EraserIcon,
-  RepeatIcon,
-  RocketIcon,
-  SparklesIcon,
-  SplitIcon,
-  TargetIcon,
-} from '../icons';
 
 type Props = {
   rootCurrent: MutationPhaseContent['rootCurrent'];
   extra: MutationPhaseContent['extra'];
 };
 
-const extraIconMap: Record<ExtraPoint['iconName'], typeof RepeatIcon> = {
-  sync: RepeatIcon,
-  crosshair: CrosshairIcon,
-  split: SplitIcon,
-  eraser: EraserIcon,
+const extraIconMap: Record<ExtraPoint['iconName'], typeof Repeat> = {
+  sync: Repeat,
+  crosshair: Crosshair,
+  split: ArrowLeftRight,
+  eraser: Eraser,
 };
 
 export const MutationNextConceptSection = ({ rootCurrent, extra }: Props) => (
@@ -51,7 +52,7 @@ const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['ro
       id="root-current-preview"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RocketIcon className="h-5 w-5" />}
+      icon={<Rocket className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -73,7 +74,7 @@ const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['ro
         )}
       >
         <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <SparklesIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
@@ -90,8 +91,8 @@ const Arrow = () => (
     aria-hidden="true"
     className="flex items-center justify-center text-[var(--term-dim)] py-1 sm:py-0"
   >
-    <ArrowRightIcon className="hidden sm:inline-block h-5 w-5" />
-    <ArrowDownIcon className="sm:hidden h-5 w-5" />
+    <ArrowRight className="hidden sm:inline-block h-5 w-5" aria-hidden="true" />
+    <ArrowDown className="sm:hidden h-5 w-5" aria-hidden="true" />
   </div>
 );
 
@@ -128,7 +129,7 @@ const ExtraPointsCard = ({ content }: { content: MutationPhaseContent['extra'] }
       id="extra-points"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">

@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, RefreshCcw, ShieldAlert, Target, Zap } from 'lucide-react';
+
 import type { ConceptCard, MismatchDetectRecoverContent } from '../content';
-import { CircleHelpIcon, RefreshCcwIcon, ShieldAlertIcon, TargetIcon, ZapIcon } from '../icons';
 import { sectionNumberBadge } from '../tone';
 
 type Props = { content: MismatchDetectRecoverContent['question'] };
 
 const conceptIcon: Record<ConceptCard['icon'], React.ComponentType<{ className?: string }>> = {
-  target: TargetIcon,
-  shield: ShieldAlertIcon,
-  refresh: RefreshCcwIcon,
-  callback: ZapIcon,
+  target: Target,
+  shield: ShieldAlert,
+  refresh: RefreshCcw,
+  callback: Zap,
 };
 
 const conceptTone: Record<ConceptCard['icon'], string> = {
@@ -54,7 +55,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <p className="text-md sm:text-lg leading-snug font-bold text-[var(--term-fg)] break-keep">

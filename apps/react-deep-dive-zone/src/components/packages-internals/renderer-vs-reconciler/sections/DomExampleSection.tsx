@@ -1,5 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, CheckCircle2, Monitor, Star, Workflow } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -7,7 +8,6 @@ import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
-import { CheckCircleIcon, rvrIcon, StarIcon } from '../icons';
 
 type Props = { content: RvrContent['domExample'] };
 
@@ -19,7 +19,7 @@ export const DomExampleSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<rvrIcon.workflow className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -39,7 +39,7 @@ export const DomExampleSection = ({ content }: Props) => {
                 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
               )}
             >
-              <rvrIcon.cube className="h-5 w-5" aria-hidden="true" />
+              <Boxes className="h-5 w-5" aria-hidden="true" />
             </span>
             <h3 className="text-lg font-bold font-mono tracking-tight text-[var(--term-accent)]">
               {content.reconciler.title}
@@ -62,7 +62,7 @@ export const DomExampleSection = ({ content }: Props) => {
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
                 <span aria-hidden="true" className="text-[var(--term-accent)] shrink-0 mt-0.5">
-                  <CheckCircleIcon className="h-3.5 w-3.5" />
+                  <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span>{item}</span>
               </li>
@@ -95,7 +95,7 @@ export const DomExampleSection = ({ content }: Props) => {
                 toneTokens.sky.text,
               )}
             >
-              <rvrIcon.monitor className="h-5 w-5" aria-hidden="true" />
+              <Monitor className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="flex flex-col min-w-0">
               <h3 className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.sky.text)}>
@@ -116,7 +116,7 @@ export const DomExampleSection = ({ content }: Props) => {
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
                 <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens.sky.text)}>
-                  <CheckCircleIcon className="h-3.5 w-3.5" />
+                  <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span>{item}</span>
               </li>
@@ -125,7 +125,9 @@ export const DomExampleSection = ({ content }: Props) => {
         </article>
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

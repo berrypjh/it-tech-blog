@@ -1,23 +1,31 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, CircleCheck, Cuboid, type LucideIcon, Map, MonitorSmartphone } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { toneTokens } from '../../../shared/tones';
 import type { PositionCard, ReconcilerEntryContent } from '../content';
-import { iconByName, MapIcon } from '../icons';
+
+const cardIcon: Record<PositionCard['id'], LucideIcon> = {
+  element: Atom,
+  reconciler: Cuboid,
+  renderer: MonitorSmartphone,
+  host: CircleCheck,
+};
 
 type Props = { content: ReconcilerEntryContent['position'] };
 
 const toFlowStep = (card: PositionCard, idx: number): FlowStepItem => {
-  const Icon = iconByName[card.icon];
+  const Icon = cardIcon[card.id];
   return {
     id: card.id,
     number: String(idx + 1),
     title: card.title,
     body: formatInline(card.description),
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -28,7 +36,7 @@ export const ReconcilerPositionFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.cards.map(toFlowStep)} columns={4} />

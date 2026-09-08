@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, ArrowDown, ArrowRight, PlayCircle } from 'lucide-react';
+
 import type { SetStateFlowContent, Tone } from '../content';
-import { AlertTriangleIcon, ArrowDownIcon, ArrowRightIcon, PlayCircleIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['beforeAfter'] };
 
@@ -82,10 +83,10 @@ export const BeforeAfterUpdateState = ({ content }: Props) => (
       {/* Center */}
       <div aria-hidden="true" className="flex flex-col items-center justify-center gap-3 px-2">
         <span className="hidden lg:flex items-center text-[var(--term-muted)]">
-          <ArrowRightIcon className="h-5 w-5" />
+          <ArrowRight className="h-5 w-5" aria-hidden="true" />
         </span>
         <span className="lg:hidden flex items-center text-[var(--term-muted)]">
-          <ArrowDownIcon className="h-5 w-5" />
+          <ArrowDown className="h-5 w-5" aria-hidden="true" />
         </span>
 
         <span
@@ -96,7 +97,7 @@ export const BeforeAfterUpdateState = ({ content }: Props) => (
             'shadow-[0_2px_0_var(--term-border)] break-all text-center',
           )}
         >
-          <PlayCircleIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+          <PlayCircle aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
           {content.centerCall}
         </span>
 
@@ -108,15 +109,15 @@ export const BeforeAfterUpdateState = ({ content }: Props) => (
             'break-keep text-center',
           )}
         >
-          <AlertTriangleIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+          <AlertTriangle aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
           {content.warning}
         </span>
 
         <span className="hidden lg:flex items-center text-[var(--term-muted)]">
-          <ArrowRightIcon className="h-5 w-5" />
+          <ArrowRight className="h-5 w-5" aria-hidden="true" />
         </span>
         <span className="lg:hidden flex items-center text-[var(--term-muted)]">
-          <ArrowDownIcon className="h-5 w-5" />
+          <ArrowDown className="h-5 w-5" aria-hidden="true" />
         </span>
       </div>
 

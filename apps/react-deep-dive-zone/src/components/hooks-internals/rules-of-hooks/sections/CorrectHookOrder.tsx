@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectHookCard, RulesOfHooksContent, Tone } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, CheckCircleIcon, ShieldCheckIcon } from '../icons';
 
 type Props = { content: RulesOfHooksContent['correctOrder'] };
 
@@ -172,7 +173,7 @@ export const CorrectHookOrder = ({ content }: Props) => {
         id="correct-order"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ShieldCheckIcon className="h-5 w-5" />}
+        icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -205,8 +206,8 @@ export const CorrectHookOrder = ({ content }: Props) => {
                       aria-hidden="true"
                       className="flex justify-center text-[var(--term-muted)]"
                     >
-                      <ArrowDownIcon className="h-4 w-4" />
-                      <ArrowRightIcon className="hidden h-4 w-4" />
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
+                      <ArrowRight className="hidden h-4 w-4" aria-hidden="true" />
                     </span>
                   )}
                 </li>
@@ -224,7 +225,7 @@ export const CorrectHookOrder = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900"
             >
-              <CheckCircleIcon className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
             </span>
             <p className="text-xsm leading-relaxed text-emerald-900 dark:text-emerald-100 break-keep">
               {content.successMessage}

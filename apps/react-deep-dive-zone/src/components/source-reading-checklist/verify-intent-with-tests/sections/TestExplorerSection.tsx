@@ -4,15 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, FileCheck2, FileCode2, ScanSearch, TestTube } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { TestAsDocContent } from '../content';
-import {
-  CheckCircleIcon,
-  FileCheckIcon,
-  FileCodeIcon,
-  ScanSearchIcon,
-  TestTubeIcon,
-} from '../icons';
 
 type Props = { content: TestAsDocContent['explorer'] };
 
@@ -31,7 +26,7 @@ export const TestExplorerSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<TestTubeIcon className="h-5 w-5" />}
+        icon={<TestTube className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -83,7 +78,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                           : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
                       )}
                     >
-                      <FileCheckIcon className="h-3.5 w-3.5" />
+                      <FileCheck2 className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                     <code
                       className={cn(
@@ -130,7 +125,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <FileCheckIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <FileCheck2 className="h-4 w-4 shrink-0" aria-hidden="true" />
                 <span className="whitespace-nowrap">{active.file}</span>
               </code>
             </div>
@@ -150,7 +145,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                         'dark:border-emerald-700/70 dark:bg-emerald-950/30 dark:text-emerald-100',
                       )}
                     >
-                      <CheckCircleIcon
+                      <CheckCircle2
                         className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400"
                         aria-hidden="true"
                       />
@@ -177,7 +172,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                         'font-mono text-[11px] font-bold',
                       )}
                     >
-                      <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                      <FileCode2 className="h-3 w-3" aria-hidden="true" />
                       {impl}
                     </code>
                   </li>
@@ -197,7 +192,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
                 )}
               >
-                <ScanSearchIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <ScanSearch className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p className="text-xsm font-bold leading-snug break-keep">{active.readingPoint}</p>
               </div>
             </div>

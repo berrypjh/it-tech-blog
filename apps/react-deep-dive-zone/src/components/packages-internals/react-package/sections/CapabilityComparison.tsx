@@ -1,9 +1,10 @@
+import { CheckCircle2, Star, XCircle } from 'lucide-react';
+
 import { ComparePanel } from '../../../shared/compare';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CapabilityItem, ReactPackageContent } from '../content';
-import { CheckCircleIcon, StarIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['capabilities'] };
 
@@ -31,7 +32,7 @@ export const CapabilityComparison = ({ content }: Props) => {
         number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<StarIcon className="h-5 w-5" />}
+        icon={<Star className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
@@ -39,7 +40,9 @@ export const CapabilityComparison = ({ content }: Props) => {
         <CapabilityPanel variant="not" title={content.doesNotTitle} items={content.doesNotItems} />
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };
@@ -52,12 +55,12 @@ type CapabilityPanelProps = {
 
 const CapabilityPanel = ({ variant, title, items }: CapabilityPanelProps) => {
   const t = variantClasses[variant];
-  const Icon = variant === 'does' ? CheckCircleIcon : XCircleIcon;
+  const Icon = variant === 'does' ? CheckCircle2 : XCircle;
 
   return (
     <ComparePanel
       tone={t}
-      icon={<Icon className="h-3.5 w-3.5" />}
+      icon={<Icon className="h-3.5 w-3.5" aria-hidden="true" />}
       title={title}
       headerId={`capabilities-${variant}-header`}
     >

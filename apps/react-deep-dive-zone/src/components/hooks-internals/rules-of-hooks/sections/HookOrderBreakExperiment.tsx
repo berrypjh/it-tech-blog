@@ -4,17 +4,18 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ShieldCheck,
+  Sparkles,
+  ToggleLeft,
+  ToggleRight,
+  XCircle,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookSlot, RulesOfHooksContent, ToggleSide } from '../content';
-import {
-  AlertTriangleIcon,
-  CheckCircleIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  ToggleLeftIcon,
-  ToggleRightIcon,
-  XCircleIcon,
-} from '../icons';
 
 type Props = { content: RulesOfHooksContent['breakExperiment'] };
 
@@ -136,7 +137,11 @@ const StatePanel = ({
                 : 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900',
             )}
           >
-            {isOk ? <CheckCircleIcon className="h-4 w-4" /> : <XCircleIcon className="h-4 w-4" />}
+            {isOk ? (
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <XCircle className="h-4 w-4" aria-hidden="true" />
+            )}
           </span>
           <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--term-fg)]">
             현재: visible = {state.visibleValue}
@@ -169,9 +174,9 @@ const StatePanel = ({
             )}
           >
             {isOk ? (
-              <ShieldCheckIcon aria-hidden="true" className="h-4 w-4" />
+              <ShieldCheck aria-hidden="true" className="h-4 w-4" />
             ) : (
-              <AlertTriangleIcon aria-hidden="true" className="h-4 w-4" />
+              <AlertTriangle aria-hidden="true" className="h-4 w-4" />
             )}
             {state.matchLabel}
           </span>
@@ -196,9 +201,9 @@ const StatePanel = ({
             )}
           >
             {isNoWarning ? (
-              <CheckCircleIcon aria-hidden="true" className="h-4 w-4" />
+              <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
             ) : (
-              <AlertTriangleIcon aria-hidden="true" className="h-4 w-4" />
+              <AlertTriangle aria-hidden="true" className="h-4 w-4" />
             )}
             {state.warningLabel}
           </span>
@@ -224,7 +229,7 @@ export const HookOrderBreakExperiment = ({ content }: Props) => {
         id="break-experiment"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -311,8 +316,8 @@ const ToggleButton = ({
         : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
     )}
   >
-    {active && tone === 'emerald' && <ToggleRightIcon aria-hidden="true" className="h-3.5 w-3.5" />}
-    {active && tone === 'rose' && <ToggleLeftIcon aria-hidden="true" className="h-3.5 w-3.5" />}
+    {active && tone === 'emerald' && <ToggleRight aria-hidden="true" className="h-3.5 w-3.5" />}
+    {active && tone === 'rose' && <ToggleLeft aria-hidden="true" className="h-3.5 w-3.5" />}
     {label}
   </button>
 );

@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Code, Settings } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { JsxTransformFlowContent } from '../content';
-import { AtomIcon, CodeIcon, SettingsIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['hero']; className?: string };
 
@@ -17,7 +18,11 @@ export const JsxTransformHeroDiagram = ({ content, className }: Props) => {
     <HeroDiagramShell a11yLabel={a11y} className={className}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
-          <StepHeader tone="teal" label="JSX" icon={<CodeIcon className="h-[18px] w-[18px]" />} />
+          <StepHeader
+            tone="teal"
+            label="JSX"
+            icon={<Code className="h-[18px] w-[18px]" aria-hidden="true" />}
+          />
           <CodePreviewPanel
             code={content.inputCode}
             showWindowDots
@@ -34,7 +39,7 @@ export const JsxTransformHeroDiagram = ({ content, className }: Props) => {
             tone="sky"
             label={content.compileLabel}
             icon={
-              <SettingsIcon
+              <Settings
                 className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none"
                 aria-hidden="true"
               />
@@ -49,7 +54,7 @@ export const JsxTransformHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="violet"
             label="jsx() call"
-            icon={<AtomIcon className="h-[18px] w-[18px]" />}
+            icon={<Atom className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <CodePreviewPanel
             code={content.outputCode}

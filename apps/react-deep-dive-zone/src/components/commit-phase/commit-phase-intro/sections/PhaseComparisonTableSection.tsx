@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks, X } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent } from '../content';
-import { CheckCircleIcon, ListChecksIcon, XIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['comparison'] };
 
@@ -19,7 +20,7 @@ export const PhaseComparisonTableSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -34,14 +35,14 @@ export const PhaseComparisonTableSection = ({ content }: Props) => (
             value={row.render}
             tone="sky"
             emphasis={row.emphasis}
-            icon={<XIcon className="h-3.5 w-3.5" />}
+            icon={<X className="h-3.5 w-3.5" aria-hidden="true" />}
           />,
           <ToneCell
             key="commit"
             value={row.commit}
             tone="teal"
             emphasis={row.emphasis}
-            icon={<CheckCircleIcon className="h-3.5 w-3.5" />}
+            icon={<CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
           />,
         ],
       }))}

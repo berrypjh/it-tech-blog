@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Hourglass, ListOrdered } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CollectedListener, DispatchQueueOrderContent, TimelineEntry } from '../content';
-import { DatabaseIcon, HourglassIcon, ListOrderedIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['hero']; className?: string };
 
@@ -38,7 +39,7 @@ export const DispatchQueueHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <HourglassIcon className="h-[18px] w-[18px]" />
+            <Hourglass className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
@@ -81,7 +82,7 @@ const QueueCard = ({
   >
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="violet" size="sm">
-        <DatabaseIcon className="h-4 w-4" />
+        <Database className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {title}
@@ -133,7 +134,7 @@ const TimelineCard = ({ title, timeline }: { title: string; timeline: TimelineEn
   >
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="teal" size="sm">
-        <ListOrderedIcon className="h-4 w-4" />
+        <ListOrdered className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)] break-keep">
         {title}

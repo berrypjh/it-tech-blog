@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
-import { LayersIcon } from '../icons';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['comparison'] };
 
@@ -17,7 +18,7 @@ export const TypeShapeComparisonTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

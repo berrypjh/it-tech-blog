@@ -4,15 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Globe, MousePointerClick, Repeat } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { OnClickClickContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  GlobeIcon,
-  MousePointerClickIcon,
-  RepeatIcon,
-} from '../icons';
 
 type Props = { content: OnClickClickContent['converter'] };
 
@@ -30,7 +25,7 @@ export const EventNameConverter = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.hint}
-        icon={<RepeatIcon className="h-5 w-5" />}
+        icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -71,7 +66,7 @@ export const EventNameConverter = ({ content }: Props) => {
                         : 'border-blue-200/80 bg-white text-blue-700 hover:border-blue-400 hover:bg-blue-50 dark:border-blue-800/60 dark:bg-slate-950/40 dark:text-blue-200 dark:hover:bg-blue-950/40',
                     )}
                   >
-                    <GlobeIcon
+                    <Globe
                       aria-hidden="true"
                       className={cn(
                         'h-3.5 w-3.5 shrink-0',
@@ -93,9 +88,10 @@ export const EventNameConverter = ({ content }: Props) => {
                 'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.35)] dark:bg-blue-500',
               )}
             >
-              <ArrowRightIcon
+              <ArrowRight
                 className="h-6 w-6 sm:h-7 sm:w-7 lg:rotate-0 rotate-90"
                 strokeWidth={2.4}
+                aria-hidden="true"
               />
             </span>
           </div>
@@ -116,7 +112,7 @@ export const EventNameConverter = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-teal-100 text-teal-700 dark:bg-teal-950/60 dark:text-teal-200"
               >
-                <MousePointerClickIcon className="h-3.5 w-3.5" />
+                <MousePointerClick className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </header>
 
@@ -132,7 +128,7 @@ export const EventNameConverter = ({ content }: Props) => {
                   {selectedPair.native}
                 </code>
               </div>
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className="self-center h-4 w-4 text-blue-500 dark:text-blue-300"
               />
@@ -157,7 +153,7 @@ export const EventNameConverter = ({ content }: Props) => {
                   : 'border-emerald-300/80 bg-emerald-50/60 text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-100',
               )}
             >
-              <CheckCircleIcon aria-hidden="true" className="h-4 w-4 shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="h-4 w-4 shrink-0" />
               <span className="break-keep">
                 {isSpecial ? content.resultLabels.note : content.resultLabels.simpleNote}
               </span>

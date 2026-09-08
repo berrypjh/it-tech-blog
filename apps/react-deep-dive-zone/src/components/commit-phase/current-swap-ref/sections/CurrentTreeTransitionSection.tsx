@@ -1,26 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowLeftRight,
+  CheckCircle2,
+  History,
+  Rocket,
+  Wand2,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RootCurrentRefContent, TransitionStep } from '../content';
-import {
-  ArrowDownIcon,
-  CheckCircleIcon,
-  HistoryIcon,
-  RocketIcon,
-  SwapIcon,
-  WandIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: RootCurrentRefContent['transition'] };
 
-const iconMap: Record<TransitionStep['iconName'], typeof HistoryIcon> = {
-  history: HistoryIcon,
-  check: CheckCircleIcon,
-  wand: WandIcon,
-  rocket: RocketIcon,
+const iconMap: Record<TransitionStep['iconName'], typeof History> = {
+  history: History,
+  check: CheckCircle2,
+  wand: Wand2,
+  rocket: Rocket,
 };
 
 export const CurrentTreeTransitionSection = ({ content }: Props) => (
@@ -34,7 +35,7 @@ export const CurrentTreeTransitionSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.3fr)_minmax(0,_0.7fr)] gap-3">
@@ -49,7 +50,7 @@ export const CurrentTreeTransitionSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-2 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -113,7 +114,7 @@ const FormulaCallout = ({ formula, note }: { formula: string; note: string }) =>
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="blue">
-          <SwapIcon className="h-5 w-5" />
+          <ArrowLeftRight className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.fill.text)}>
           the swap

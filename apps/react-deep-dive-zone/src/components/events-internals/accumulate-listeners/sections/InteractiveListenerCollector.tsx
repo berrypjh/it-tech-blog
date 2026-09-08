@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { MousePointerClick, PlayCircle, Target } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { CollectorTarget, ListenerCollectionContent, ListenerEntry } from '../content';
-import { MousePointerClickIcon, PlayCircleIcon, TargetIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['collector'] };
 
@@ -40,7 +41,7 @@ const ListenerList = ({
             : 'bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900',
         )}
       >
-        <PlayCircleIcon className="h-3.5 w-3.5" />
+        <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <span
         className={cn(
@@ -151,7 +152,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<TargetIcon className="h-5 w-5" />}
+        icon={<Target className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -202,7 +203,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                   aria-hidden="true"
                   className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-white dark:bg-blue-500"
                 >
-                  <TargetIcon className="h-3.5 w-3.5" />
+                  <Target className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                   {content.targetSelectorLabel}
@@ -291,7 +292,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                           : 'border-teal-200/80 bg-white text-teal-700 hover:border-teal-400 dark:border-teal-800/60 dark:bg-slate-950/40 dark:text-teal-200',
                     )}
                   >
-                    <MousePointerClickIcon
+                    <MousePointerClick
                       aria-hidden="true"
                       className={cn(
                         'h-3.5 w-3.5 shrink-0',

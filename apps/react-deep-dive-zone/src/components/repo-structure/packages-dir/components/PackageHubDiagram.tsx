@@ -1,10 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Atom,
+  Folder,
+  Layers,
+  type LucideIcon,
+  MonitorSmartphone,
+  Network,
+  Timer,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import type { CorePackage, PackagesDirectoryContent } from '../content';
-import { FolderIcon, packageIconByName } from '../icons';
+import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
 
 import { PackagePill } from './PackagePill';
+
+const corePackageIcon: Record<CorePackageId, LucideIcon> = {
+  react: Atom,
+  'react-dom': MonitorSmartphone,
+  'react-reconciler': Layers,
+  scheduler: Timer,
+  shared: Network,
+};
 
 type Props = { content: PackagesDirectoryContent['hero'] };
 
@@ -81,7 +98,7 @@ const HubCard = ({ label, caption }: HubCardProps) => (
     )}
   >
     <span className={cn('inline-flex items-center gap-2', toneTokens.sky.text)}>
-      <FolderIcon className="h-4 w-4" aria-hidden="true" />
+      <Folder className="h-4 w-4" aria-hidden="true" />
       <span className="text-md font-bold font-mono tracking-tight">{label}</span>
     </span>
     <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">{caption}</span>
@@ -91,7 +108,7 @@ const HubCard = ({ label, caption }: HubCardProps) => (
 type CoreNodeCardProps = { pkg: CorePackage };
 
 const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
-  const Icon = packageIconByName[pkg.icon];
+  const Icon = corePackageIcon[pkg.id];
   const tone = toneTokens[pkg.tone];
 
   return (
@@ -109,7 +126,7 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
           tone.chip,
         )}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span
         className={cn(

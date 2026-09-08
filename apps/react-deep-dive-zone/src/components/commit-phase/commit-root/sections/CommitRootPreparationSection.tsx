@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, Inbox, Settings2, Workflow, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, PreparationCardIcon } from '../content';
-import { FlagIcon, InboxIcon, SettingsIcon, WorkflowIcon, ZapIcon } from '../icons';
 
 type Props = { content: CommitRootContent['preparation'] };
 
-const iconMap: Record<PreparationCardIcon, typeof InboxIcon> = {
-  inbox: InboxIcon,
-  flag: FlagIcon,
-  workflow: WorkflowIcon,
-  zap: ZapIcon,
+const iconMap: Record<PreparationCardIcon, typeof Inbox> = {
+  inbox: Inbox,
+  flag: Flag,
+  workflow: Workflow,
+  zap: Zap,
 };
 
 export const CommitRootPreparationSection = ({ content }: Props) => (
@@ -26,7 +27,7 @@ export const CommitRootPreparationSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SettingsIcon className="h-5 w-5" />}
+      icon={<Settings2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">

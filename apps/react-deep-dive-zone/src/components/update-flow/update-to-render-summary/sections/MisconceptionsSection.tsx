@@ -1,8 +1,15 @@
+import { AlertCircle, Database, PanelsTopLeft, Sparkles, Zap } from 'lucide-react';
+
 import { MisconceptionCardGrid, type MisconceptionItem } from '../../../shared/misconception';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { UpdateToRenderSummaryContent } from '../content';
-import { AlertCircleIcon, misconceptionIconByName, SparklesIcon } from '../icons';
+
+const misconceptionIconByName = {
+  panels: PanelsTopLeft,
+  database: Database,
+  zap: Zap,
+} as const;
 
 type Props = { content: UpdateToRenderSummaryContent['misconceptions'] };
 
@@ -27,13 +34,13 @@ export const MisconceptionsSection = ({ content }: Props) => {
         id="misconceptions"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<AlertCircleIcon className="h-5 w-5" />}
+        icon={<AlertCircle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <MisconceptionCardGrid items={items} />
 
       <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-        <SparklesIcon
+        <Sparkles
           aria-hidden="true"
           className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
         />

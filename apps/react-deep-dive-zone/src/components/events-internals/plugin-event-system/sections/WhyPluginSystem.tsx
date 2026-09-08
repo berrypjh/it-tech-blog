@@ -1,24 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { MousePointer, Pencil, Puzzle, Zap } from 'lucide-react';
+
 import type { PluginEventSystemContent } from '../content';
-import { MousePointerIcon, PencilIcon, PuzzleIcon, ZapIcon } from '../icons';
 import { SectionFrame } from '../SectionFrame';
 import { toneAccent, toneCard, toneIconBox, toneNumber } from '../styles';
 
 type Props = { content: PluginEventSystemContent['why'] };
 
-const cardIcons = [MousePointerIcon, PencilIcon, ZapIcon];
+const cardIcons = [MousePointer, Pencil, Zap];
 
 export const WhyPluginSystem = ({ content }: Props) => (
   <SectionFrame
     id="why"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<PuzzleIcon className="h-5 w-5" />}
+    icon={<Puzzle className="h-5 w-5" aria-hidden="true" />}
   >
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? PuzzleIcon;
+        const Icon = cardIcons[i] ?? Puzzle;
         return (
           <article
             key={card.title}

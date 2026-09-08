@@ -4,17 +4,11 @@ import { useCallback, useRef, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Clock3, Compass, Layers, Zap } from 'lucide-react';
+
 import { axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { PriorityTabKey, ThreePriorityAxesContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ClockIcon,
-  CompassIcon,
-  LayersIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['interactive'] };
 
@@ -65,7 +59,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<CompassIcon className="h-5 w-5" />}
+        icon={<Compass className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -142,7 +136,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                     axisIconBox.blue,
                   )}
                 >
-                  <ZapIcon className="h-4 w-4" />
+                  <Zap className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-blue-700 dark:text-blue-300">
                   {content.stageLabels.eventPriority}
@@ -158,13 +152,13 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                 aria-hidden="true"
                 className="hidden md:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
               >
-                <ArrowRightIcon className="h-3.5 w-3.5" />
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span
                 aria-hidden="true"
                 className="md:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
               >
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             </li>
 
@@ -184,7 +178,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                     axisIconBox.teal,
                   )}
                 >
-                  <LayersIcon className="h-4 w-4" />
+                  <Layers className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-teal-700 dark:text-teal-300">
                   {content.stageLabels.lane}
@@ -200,13 +194,13 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                 aria-hidden="true"
                 className="hidden md:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-teal-200/80 bg-[var(--term-bg)] text-teal-600 shadow-[0_1px_0_var(--term-border)] dark:border-teal-800/60 dark:text-teal-300"
               >
-                <ArrowRightIcon className="h-3.5 w-3.5" />
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span
                 aria-hidden="true"
                 className="md:hidden flex justify-center text-teal-500 dark:text-teal-300 mt-1"
               >
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             </li>
 
@@ -226,7 +220,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                     axisIconBox.violet,
                   )}
                 >
-                  <ClockIcon className="h-4 w-4" />
+                  <Clock3 className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-violet-700 dark:text-violet-300">
                   {content.stageLabels.scheduling}

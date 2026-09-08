@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Map, MapPin } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksRecapContent, PageMapItem } from '../content';
-import { MapIcon, MapPinIcon } from '../icons';
 
 import { toneCardBg, toneNumber, toneText } from './_shared/tones';
 
@@ -27,7 +28,7 @@ const PageCard = ({ item }: { item: PageMapItem }) => (
       >
         {item.number}
       </span>
-      <MapPinIcon aria-hidden="true" className={cn('h-4 w-4', toneText[item.tone])} />
+      <MapPin aria-hidden="true" className={cn('h-4 w-4', toneText[item.tone])} />
     </header>
     <h3
       className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', toneText[item.tone])}
@@ -52,7 +53,7 @@ export const PageConnectionMap = ({ content }: Props) => (
       id="page-map"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

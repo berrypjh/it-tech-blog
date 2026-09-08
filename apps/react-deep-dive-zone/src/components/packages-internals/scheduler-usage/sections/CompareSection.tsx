@@ -1,12 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Clock, type LucideIcon, Star } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, SchedulerContent } from '../content';
-import { schedulerIcon, StarIcon } from '../icons';
 
 type Props = { content: SchedulerContent['compare'] };
+
+const cardIcon: Record<CompareCard['id'], LucideIcon> = {
+  reconciler: Boxes,
+  scheduler: Clock,
+};
 
 export const CompareSection = ({ content }: Props) => {
   return (
@@ -16,7 +22,7 @@ export const CompareSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<StarIcon className="h-5 w-5" />}
+        icon={<Star className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
@@ -49,7 +55,7 @@ export const CompareSection = ({ content }: Props) => {
 };
 
 const CompareCardView = ({ card }: { card: CompareCard }) => {
-  const Icon = schedulerIcon[card.iconName];
+  const Icon = cardIcon[card.id];
   const t = toneTokens[card.tone];
 
   return (

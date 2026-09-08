@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { WhyEventSystemContent } from '../content';
-import { ListChecksIcon } from '../icons';
 
 type Props = { content: WhyEventSystemContent['mission'] };
 
@@ -19,7 +20,7 @@ export const FollowAlongMission = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="flex flex-col gap-1.5">

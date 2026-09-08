@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Fingerprint } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { KeyFiberReuseContent } from '../content';
-import { FingerprintIcon } from '../icons';
 
 type Props = { content: KeyFiberReuseContent['tracking'] };
 
@@ -16,7 +17,7 @@ export const KeyTrackingPrinciple = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FingerprintIcon className="h-5 w-5" />}
+      icon={<Fingerprint className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article

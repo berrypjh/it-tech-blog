@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Droplets, Rocket, Server, ServerCrash } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { CheckCircleIcon, DropletsIcon, RocketIcon, ServerCrashIcon, ServerIcon } from '../icons';
 import type { Domain } from '../tone';
 import { domainAccent } from '../tone';
 
@@ -10,15 +11,15 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: RecoveryModelOverviewContent['serverFallback'] };
 
 const stepIcons: Record<Domain, React.ComponentType<{ className?: string }>> = {
-  error: ServerCrashIcon,
-  rejected: ServerCrashIcon,
-  pending: ServerIcon,
-  hydration: DropletsIcon,
-  recovery: RocketIcon,
-  boundary: ServerIcon,
-  server: ServerIcon,
-  navy: ServerIcon,
-  completion: CheckCircleIcon,
+  error: ServerCrash,
+  rejected: ServerCrash,
+  pending: Server,
+  hydration: Droplets,
+  recovery: Rocket,
+  boundary: Server,
+  server: Server,
+  navy: Server,
+  completion: CheckCircle2,
 };
 
 export const ServerFallbackTimelineSection = ({ content }: Props) => (
@@ -28,7 +29,7 @@ export const ServerFallbackTimelineSection = ({ content }: Props) => (
     <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
       {content.steps.map((step, i) => {
         const accent = domainAccent[step.domain];
-        const Icon = stepIcons[step.domain] ?? ServerIcon;
+        const Icon = stepIcons[step.domain] ?? Server;
         const isFinal = i === content.steps.length - 1;
         return (
           <li key={step.title}>

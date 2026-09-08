@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileCode, ListChecks, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PlacementContent } from '../content';
-import { CodeIcon, FileCodeIcon, ListChecksIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: PlacementContent['checkpoint'] };
 
@@ -23,7 +24,7 @@ export const PlacementCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.6fr)] gap-3">
@@ -31,12 +32,12 @@ export const PlacementCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <code className="font-mono break-all">{content.info.filePath}</code>,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <code className={chipCode}>{content.info.watchValue}</code>,
           },
         ]}
@@ -79,7 +80,7 @@ const CommentsCard = ({ title, comments }: { title: string; comments: string[] }
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="violet" size="sm">
-          <ListChecksIcon className="h-4 w-4" />
+          <ListChecks className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
           {title}

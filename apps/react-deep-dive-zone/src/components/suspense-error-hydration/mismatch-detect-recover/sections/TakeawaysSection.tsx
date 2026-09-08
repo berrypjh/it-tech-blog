@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { EyeOff, LifeBuoy, ShieldAlert } from 'lucide-react';
+
 import type { MismatchDetectRecoverContent } from '../content';
-import { EyeOffIcon, LifeBuoyIcon, ShieldAlertIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -28,7 +29,7 @@ const toneClass = {
   },
 } as const;
 
-const cardIcons = [ShieldAlertIcon, LifeBuoyIcon, EyeOffIcon];
+const cardIcons = [ShieldAlert, LifeBuoy, EyeOff];
 
 export const TakeawaysSection = ({ content }: Props) => (
   <section aria-labelledby="takeaways-heading" className="flex flex-col gap-md">
@@ -37,7 +38,7 @@ export const TakeawaysSection = ({ content }: Props) => (
     <ul className="grid grid-cols-1 gap-md md:grid-cols-3">
       {content.cards.map((card, i) => {
         const t = toneClass[card.tone];
-        const Icon = cardIcons[i] ?? ShieldAlertIcon;
+        const Icon = cardIcons[i] ?? ShieldAlert;
         return (
           <li key={card.number}>
             <article

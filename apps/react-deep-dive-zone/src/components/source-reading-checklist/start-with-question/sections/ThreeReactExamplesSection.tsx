@@ -2,10 +2,11 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileCode2, Route } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { ArrowRightIcon, FileCodeIcon, RouteIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['reactExamples'] };
 
@@ -21,7 +22,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -69,7 +70,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                       'font-mono text-xsm font-bold',
                     )}
                   >
-                    <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                    <FileCode2 className="h-3 w-3" aria-hidden="true" />
                     {card.entry}
                   </code>
                 </div>
@@ -116,9 +117,9 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                     )}
                   >
-                    <RouteIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                    <Route className="h-3.5 w-3.5" aria-hidden="true" />
                     {card.cta}
-                    <ArrowRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </Link>
                 </div>
               </article>

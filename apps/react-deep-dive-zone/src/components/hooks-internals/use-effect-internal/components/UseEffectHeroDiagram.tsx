@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ClipboardList, PlayCircle } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroPhase, UseEffectInternalsContent } from '../content';
-import { ClipboardIcon, PlayCircleIcon } from '../icons';
 
 type Props = { content: UseEffectInternalsContent['hero']; className?: string };
 
 const visualMap = {
-  clipboard: ClipboardIcon,
-  play: PlayCircleIcon,
+  clipboard: ClipboardList,
+  play: PlayCircle,
 } as const;
 
 /**

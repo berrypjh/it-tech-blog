@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, FileCode, FileSearch, Map } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, WhyEventSystemContent } from '../content';
-import { ArrowDownIcon, FileCodeIcon, FileSearchIcon, MapIcon } from '../icons';
 
 type Props = { content: WhyEventSystemContent['sourceMap'] };
 
@@ -48,7 +49,7 @@ export const SourceEntryMap = ({ content }: Props) => (
       id="sourcemap"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="flex flex-col gap-2">
@@ -80,7 +81,7 @@ export const SourceEntryMap = ({ content }: Props) => (
                       toneIcon[entry.tone],
                     )}
                   >
-                    <FileCodeIcon className="h-3.5 w-3.5" />
+                    <FileCode className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                   <span
                     className={cn(
@@ -110,7 +111,7 @@ export const SourceEntryMap = ({ content }: Props) => (
                   aria-hidden="true"
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] mt-0.5"
                 >
-                  <FileSearchIcon className="h-4 w-4" />
+                  <FileSearch className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
                   {entry.description}
@@ -120,7 +121,7 @@ export const SourceEntryMap = ({ content }: Props) => (
 
             {!isLast && (
               <span aria-hidden="true" className="self-center my-1 text-[var(--term-muted)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>

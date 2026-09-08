@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Circle, Filter, Waves, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSelectionContent, PriorityKey } from '../content';
-import { CircleIcon, FilterIcon, WavesIcon, ZapIcon } from '../icons';
 
 type Props = { content: DispatchSelectionContent['hero']; className?: string };
 
@@ -16,10 +17,10 @@ const priorityTone: Record<PriorityKey, ToneKey> = {
   default: 'amber',
 };
 
-const rowIcon: Record<PriorityKey, typeof ZapIcon> = {
-  discrete: ZapIcon,
-  continuous: WavesIcon,
-  default: CircleIcon,
+const rowIcon: Record<PriorityKey, typeof Zap> = {
+  discrete: Zap,
+  continuous: Waves,
+  default: Circle,
 };
 
 /**
@@ -50,7 +51,7 @@ export const DispatchPriorityHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <FilterIcon className="h-[18px] w-[18px]" />
+            <Filter className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}

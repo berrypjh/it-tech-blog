@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Award, Compass, Crown, Target, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { React19HooksContent, Tone } from '../content';
-import { AwardIcon, CompassIcon, CrownIcon, TargetIcon, TrophyIcon } from '../icons';
 
 type Props = { content: React19HooksContent['priority'] };
 
-const rankIcons = [CrownIcon, TrophyIcon, AwardIcon, TargetIcon];
+const rankIcons = [Crown, Trophy, Award, Target];
 
 const cardTone: Record<Tone, string> = {
   sky: 'border-sky-300/80 dark:border-sky-700/70 hover:border-sky-400 dark:hover:border-sky-600',
@@ -78,12 +79,12 @@ export const LearningPriority = ({ content }: Props) => (
       id="priority"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CompassIcon className="h-5 w-5" />}
+      icon={<Compass className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.items.map((item, i) => {
-        const Icon = rankIcons[i] ?? TargetIcon;
+        const Icon = rankIcons[i] ?? Target;
         return (
           <li key={item.rank}>
             <article

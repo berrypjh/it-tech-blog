@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, Code2, ExternalLink, FileText, GitBranch, Sparkles } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchSelectionContent } from '../content';
-import {
-  ChevronRightIcon,
-  CodeIcon,
-  ExternalLinkIcon,
-  FileTextIcon,
-  GitBranchIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = { content: DispatchSelectionContent['realCode'] };
 
@@ -90,7 +84,7 @@ export const RealCodePreview = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-md items-stretch">
@@ -156,7 +150,7 @@ export const RealCodePreview = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-200 dark:border-blue-800/60"
               >
-                <FileTextIcon className="h-4 w-4" />
+                <FileText className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 {content.explanation.label}
@@ -178,7 +172,7 @@ export const RealCodePreview = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-violet-200 bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-200 dark:border-violet-800/60"
               >
-                <SparklesIcon className="h-4 w-4" />
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
                 {content.relatedLabel}
@@ -215,17 +209,17 @@ export const RealCodePreview = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--term-border)] bg-white text-[var(--term-fg)] dark:bg-slate-950/50"
             >
-              <GitBranchIcon className="h-4 w-4" />
+              <GitBranch className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="flex flex-col min-w-0 flex-1">
               <span className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
                 {content.button.label}
               </span>
               <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-                GitHub <ExternalLinkIcon className="h-3 w-3" aria-hidden="true" />
+                GitHub <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </span>
             </span>
-            <ChevronRightIcon
+            <ChevronRight
               aria-hidden="true"
               className="h-4 w-4 shrink-0 text-[var(--term-muted)] transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
             />

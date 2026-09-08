@@ -6,23 +6,11 @@ export type { ToneKey };
 
 export type CorePackageId = 'react' | 'react-dom' | 'react-reconciler' | 'scheduler' | 'shared';
 
-export type CorePackageIconName =
-  | 'atom'
-  | 'monitor'
-  | 'layers'
-  | 'timer'
-  | 'network'
-  | 'folder'
-  | 'tool'
-  | 'flask'
-  | 'paint';
-
 export type CorePackage = {
   id: CorePackageId;
   name: string;
   shortDescription: string;
   tone: ToneKey;
-  icon: CorePackageIconName;
 };
 
 export type CorePackageDetail = {
@@ -41,16 +29,14 @@ export type DiagramNode = {
   items?: string[];
   description?: string;
   tone: ToneKey;
-  icon: CorePackageIconName;
 };
 
 export type LaterPackage = {
-  id: string;
+  id: 'devtools' | 'native' | 'rsc' | 'test' | 'art';
   name: string;
   description1: string;
   description2: string;
   tone: ToneKey;
-  icon: CorePackageIconName;
 };
 
 export type PackagesDirectoryContent = {
@@ -99,7 +85,6 @@ export type PackagesDirectoryContent = {
     filePath: string;
     seeLabel: string;
     seeItems: string[];
-    learningQuestion: string;
     primaryCta: string;
     primaryHref: string;
     codeHeader: string;
@@ -133,66 +118,58 @@ export { createElement, useState, useEffect, useTransition, use, useActionState 
 `;
 
 const coreKo: CorePackage[] = [
-  { id: 'react', name: 'react', shortDescription: '사용자-facing API', tone: 'blue', icon: 'atom' },
+  { id: 'react', name: 'react', shortDescription: '사용자-facing API', tone: 'blue' },
   {
     id: 'react-dom',
     name: 'react-dom',
     shortDescription: '브라우저 DOM 연결',
     tone: 'emerald',
-    icon: 'monitor',
   },
   {
     id: 'react-reconciler',
     name: 'react-reconciler',
     shortDescription: 'Fiber / Render / Commit',
     tone: 'violet',
-    icon: 'layers',
   },
   {
     id: 'scheduler',
     name: 'scheduler',
     shortDescription: '작업 타이밍 조율',
     tone: 'amber',
-    icon: 'timer',
   },
   {
     id: 'shared',
     name: 'shared',
     shortDescription: '공통 타입 / 상수',
     tone: 'teal',
-    icon: 'network',
   },
 ];
 
 const coreEn: CorePackage[] = [
-  { id: 'react', name: 'react', shortDescription: 'User-facing API', tone: 'blue', icon: 'atom' },
+  { id: 'react', name: 'react', shortDescription: 'User-facing API', tone: 'blue' },
   {
     id: 'react-dom',
     name: 'react-dom',
     shortDescription: 'Browser DOM bridge',
     tone: 'emerald',
-    icon: 'monitor',
   },
   {
     id: 'react-reconciler',
     name: 'react-reconciler',
     shortDescription: 'Fiber / Render / Commit',
     tone: 'violet',
-    icon: 'layers',
   },
   {
     id: 'scheduler',
     name: 'scheduler',
     shortDescription: 'Work timing & priority',
     tone: 'amber',
-    icon: 'timer',
   },
   {
     id: 'shared',
     name: 'shared',
     shortDescription: 'Common types / constants',
     tone: 'teal',
-    icon: 'network',
   },
 ];
 
@@ -355,7 +332,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: '사용자 API 제공',
           items: ['createElement', 'useState', 'useEffect', 'useTransition', '...'],
           tone: 'blue',
-          icon: 'atom',
         },
         reconciler: {
           id: 'reconciler',
@@ -363,7 +339,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: '핵심 엔진 (Fiber)',
           items: ['Fiber 트리 구성', 'Render / Commit 수행', '변경 계산'],
           tone: 'violet',
-          icon: 'layers',
         },
         reactDom: {
           id: 'react-dom',
@@ -371,7 +346,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'DOM 렌더러',
           items: ['실제 DOM 조작', '브라우저 환경 연결'],
           tone: 'emerald',
-          icon: 'monitor',
         },
         scheduler: {
           id: 'scheduler',
@@ -379,7 +353,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: '작업 스케줄링',
           items: ['우선순위 계산', '작업 실행 시점 조율'],
           tone: 'amber',
-          icon: 'timer',
         },
         shared: {
           id: 'shared',
@@ -387,7 +360,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: '공통 타입 / 상수 / 심벌',
           description: '여러 패키지가 함께 사용하는 공통 정보를 제공합니다.',
           tone: 'teal',
-          icon: 'network',
         },
       },
     },
@@ -405,7 +377,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         'use',
         'useActionState',
       ],
-      learningQuestion: 'React 패키지의 public API는\n어디서 최종적으로 모이는가?',
       primaryCta: 'ReactClient.js 읽기',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
@@ -422,7 +393,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: '개발자 도구 확장',
           description2: 'React DevTools의 구현 코드',
           tone: 'violet',
-          icon: 'tool',
         },
         {
           id: 'native',
@@ -430,7 +400,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'React Native 전용 렌더러',
           description2: '네이티브 환경과 연결하는 구현',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'rsc',
@@ -438,7 +407,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'RSC 관련 패키지',
           description2: 'RSC 렌더 프로토콜을 다루는 패키지',
           tone: 'cyan',
-          icon: 'network',
         },
         {
           id: 'test',
@@ -446,7 +414,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: '테스트 전용 렌더러',
           description2: '테스트 환경에서 사용하는 가상 렌더러',
           tone: 'amber',
-          icon: 'flask',
         },
         {
           id: 'art',
@@ -454,7 +421,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: '실험적 렌더러',
           description2: 'Canvas 기반 실험적 렌더러',
           tone: 'indigo',
-          icon: 'paint',
         },
       ],
       banner:
@@ -632,7 +598,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'User API surface',
           items: ['createElement', 'useState', 'useEffect', 'useTransition', '...'],
           tone: 'blue',
-          icon: 'atom',
         },
         reconciler: {
           id: 'reconciler',
@@ -640,7 +605,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'Core engine (Fiber)',
           items: ['Builds the Fiber tree', 'Runs Render / Commit', 'Calculates changes'],
           tone: 'violet',
-          icon: 'layers',
         },
         reactDom: {
           id: 'react-dom',
@@ -648,7 +612,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'DOM renderer',
           items: ['Mutates the real DOM', 'Bridges the browser environment'],
           tone: 'emerald',
-          icon: 'monitor',
         },
         scheduler: {
           id: 'scheduler',
@@ -656,7 +619,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'Work scheduling',
           items: ['Priority calculation', 'Decides when to run work'],
           tone: 'amber',
-          icon: 'timer',
         },
         shared: {
           id: 'shared',
@@ -664,7 +626,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           subtitle: 'Shared types / constants / symbols',
           description: 'Provides common information used across multiple packages.',
           tone: 'teal',
-          icon: 'network',
         },
       },
     },
@@ -682,7 +643,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
         'use',
         'useActionState',
       ],
-      learningQuestion: 'Where do React’s public APIs\nfinally come together?',
       primaryCta: 'Read ReactClient.js',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
@@ -699,7 +659,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'Developer tools extension',
           description2: 'Implementation of React DevTools',
           tone: 'violet',
-          icon: 'tool',
         },
         {
           id: 'native',
@@ -707,7 +666,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'React Native renderer',
           description2: 'Bridges React with the native environment',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'rsc',
@@ -715,7 +673,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'RSC-related packages',
           description2: 'Implements the React Server Components render protocol',
           tone: 'cyan',
-          icon: 'network',
         },
         {
           id: 'test',
@@ -723,7 +680,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'Test-only renderer',
           description2: 'Virtual renderer used in test environments',
           tone: 'amber',
-          icon: 'flask',
         },
         {
           id: 'art',
@@ -731,7 +687,6 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
           description1: 'Experimental renderer',
           description2: 'Canvas-based experimental renderer',
           tone: 'indigo',
-          icon: 'paint',
         },
       ],
       banner:

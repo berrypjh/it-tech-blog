@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowLeftRight, ArrowRight, ListChecks, TreePine } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { LifecycleStep, RootCurrentRefContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, ListChecksIcon, SwapIcon, TreeIcon } from '../icons';
 
 type Props = {
   lifecycle: RootCurrentRefContent['lifecycle'];
@@ -31,7 +32,7 @@ const LifecycleCard = ({ content }: { content: RootCurrentRefContent['lifecycle'
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -51,7 +52,7 @@ const LifecycleCard = ({ content }: { content: RootCurrentRefContent['lifecycle'
             <LifecycleStepCard step={step} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -98,7 +99,7 @@ const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] })
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SwapIcon className="h-5 w-5" />}
+      icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -120,7 +121,7 @@ const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] })
         )}
       >
         <ToneIconBox tone="blue" size="sm" className="mt-0.5 shrink-0">
-          <SwapIcon className="h-4 w-4" />
+          <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -156,7 +157,7 @@ const TreeSideCard = ({
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone={tone}>
-          <TreeIcon className="h-5 w-5" />
+          <TreePine className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <span
           className={cn(
@@ -188,8 +189,8 @@ const FormulaArrow = ({ formula }: { formula: string }) => {
           t.fill.text,
         )}
       >
-        <ArrowRightIcon className="hidden md:inline-block h-6 w-6" />
-        <ArrowDownIcon className="md:hidden h-6 w-6" />
+        <ArrowRight className="hidden md:inline-block h-6 w-6" aria-hidden="true" />
+        <ArrowDown className="md:hidden h-6 w-6" aria-hidden="true" />
       </span>
       <code
         className={cn(

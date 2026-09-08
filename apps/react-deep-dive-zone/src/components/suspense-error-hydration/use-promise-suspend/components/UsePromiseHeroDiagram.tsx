@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UsePromiseSuspendContent } from '../content';
-import { CheckCircleIcon, HourglassIcon, TriangleAlertIcon } from '../icons';
 import type { PromiseState } from '../tone';
 
 type Props = { content: UsePromiseSuspendContent['hero']; className?: string };
 
 /** Promise 상태별 아이콘. */
 const stateIcon: Record<PromiseState, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  fulfilled: CheckCircleIcon,
-  rejected: TriangleAlertIcon,
+  pending: Hourglass,
+  fulfilled: CheckCircle2,
+  rejected: TriangleAlert,
 };
 
 /** shared ToneKey에 rose가 없어 rejected는 가장 가까운 amber로 매핑. */
@@ -51,7 +52,7 @@ export const UsePromiseHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="violet"
           label={content.code.label}
-          icon={<HourglassIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Hourglass className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel
           code={content.code.content}

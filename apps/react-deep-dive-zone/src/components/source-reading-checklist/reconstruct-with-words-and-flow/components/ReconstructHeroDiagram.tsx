@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, MessageSquareText, Repeat, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconstructContent } from '../content';
-import { Code2Icon, MessageSquareTextIcon, RepeatIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReconstructContent['hero']; className?: string };
 
@@ -37,7 +38,7 @@ export const ReconstructHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="blue" size="sm">
-            <WorkflowIcon className="h-[18px] w-[18px]" />
+            <Workflow className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.visualTitle}
@@ -60,7 +61,7 @@ export const ReconstructHeroDiagram = ({ content, className }: Props) => {
                   toneTokens.blue.chip,
                 )}
               >
-                <RepeatIcon className="h-3 w-3" />
+                <Repeat className="h-3 w-3" aria-hidden="true" />
                 {i + 1}. {label}
               </span>
             </li>
@@ -123,7 +124,12 @@ const ReadPanel = ({
   caption: string;
   children: React.ReactNode;
 }) => (
-  <Panel tone="amber" icon={<Code2Icon className="h-4 w-4" />} title={title} caption={caption}>
+  <Panel
+    tone="amber"
+    icon={<Code2 className="h-4 w-4" aria-hidden="true" />}
+    title={title}
+    caption={caption}
+  >
     {children}
   </Panel>
 );
@@ -139,7 +145,7 @@ const WordsPanel = ({
 }) => (
   <Panel
     tone="emerald"
-    icon={<MessageSquareTextIcon className="h-4 w-4" />}
+    icon={<MessageSquareText className="h-4 w-4" aria-hidden="true" />}
     title={title}
     caption={caption}
   >

@@ -1,22 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Cog, FileText, PlayCircle, Rocket } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseEffectInternalsContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CogIcon,
-  FileTextIcon,
-  PlayCircleIcon,
-  RocketIcon,
-} from '../icons';
 
 type Props = { content: UseEffectInternalsContent['commitPath'] };
 
 const visualMap = {
-  file: FileTextIcon,
-  process: CogIcon,
-  play: PlayCircleIcon,
+  file: FileText,
+  process: Cog,
+  play: PlayCircle,
 };
 
 const toneCard: Record<Tone, string> = {
@@ -85,7 +79,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
       id="commit-path"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RocketIcon className="h-5 w-5" />}
+      icon={<Rocket className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 lg:grid-cols-3 items-stretch gap-2 sm:gap-3 relative">
@@ -141,13 +135,13 @@ export const CommitExecutionPath = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-[7px] top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}
@@ -167,7 +161,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
         aria-hidden="true"
         className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-white dark:bg-orange-400 dark:text-slate-900"
       >
-        <CogIcon className="h-4 w-4" />
+        <Cog className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-[11px] sm:text-xsm leading-relaxed text-orange-900 dark:text-orange-100 break-keep">
         {content.cleanupNote}

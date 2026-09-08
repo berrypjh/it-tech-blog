@@ -1,10 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Crosshair, FunctionSquare, Lightbulb, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ActionCompareCard, LaneUpdateObjectContent } from '../content';
-import { actionIconByName, ArrowRightIcon, LightbulbIcon, ZapIcon } from '../icons';
+
+const actionIconByName = {
+  crosshair: Crosshair,
+  functionSquare: FunctionSquare,
+} as const;
 
 type Props = { content: LaneUpdateObjectContent['action'] };
 
@@ -17,7 +23,7 @@ export const ActionMeaningSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ZapIcon className="h-5 w-5" />}
+      icon={<Zap className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -33,7 +39,7 @@ export const ActionMeaningSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="amber" size="sm">
-        <LightbulbIcon className="h-3.5 w-3.5" />
+        <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
       </ToneIconBox>
       <p className="text-xsm sm:text-sm font-semibold leading-snug text-[var(--term-fg)] break-keep">
         {content.bottomNote}
@@ -84,7 +90,7 @@ const Connector = ({ label }: { label: string }) => (
       aria-hidden="true"
       className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
     >
-      <ArrowRightIcon className="h-4 w-4 rotate-90 lg:rotate-0" />
+      <ArrowRight className="h-4 w-4 rotate-90 lg:rotate-0" aria-hidden="true" />
     </span>
     <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] text-center break-keep">
       {label}

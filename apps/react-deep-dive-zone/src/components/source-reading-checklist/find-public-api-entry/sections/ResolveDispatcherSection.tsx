@@ -2,10 +2,25 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  AlertTriangle,
+  ArrowDown,
+  Cable,
+  CirclePlay,
+  GitBranch,
+  RefreshCw,
+  Split,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent } from '../content';
-import { ArrowDownIcon, CableIcon, dispatcherCardIcon, GitBranchIcon, SplitIcon } from '../icons';
+
+const dispatcherCardIcon = {
+  circlePlay: CirclePlay,
+  refresh: RefreshCw,
+  alert: AlertTriangle,
+} as const;
 
 type Props = { content: FindPublicApiEntryContent['resolveDispatcher'] };
 
@@ -21,7 +36,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_7fr)_minmax(0,_5fr)] gap-md lg:gap-lg items-start">
@@ -46,7 +61,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <GitBranchIcon className="h-5 w-5" />
+                <GitBranch className="h-5 w-5" aria-hidden="true" />
               </span>
               <h3 className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
                 {content.conceptHeadline}
@@ -101,7 +116,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
                     </li>
                     {!isLast && (
                       <span aria-hidden="true" className="flex items-center justify-center py-1">
-                        <ArrowDownIcon className={cn('h-4 w-4', 'text-cyan-500')} />
+                        <ArrowDown className={cn('h-4 w-4', 'text-cyan-500')} aria-hidden="true" />
                       </span>
                     )}
                   </Fragment>
@@ -169,7 +184,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
             'border border-cyan-400/60 bg-cyan-500/15 text-cyan-200',
           )}
         >
-          <CableIcon className="h-5 w-5" />
+          <Cable className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug break-keep">
           <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">

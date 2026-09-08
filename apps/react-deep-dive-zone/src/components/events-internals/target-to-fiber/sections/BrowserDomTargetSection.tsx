@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Globe, Target } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TargetFiberContent } from '../content';
-import { ArrowDownIcon, GlobeIcon, TargetIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['domTarget'] };
 
@@ -44,7 +45,7 @@ export const BrowserDomTargetSection = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<GlobeIcon className="h-5 w-5" />}
+        icon={<Globe className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -92,7 +93,7 @@ export const BrowserDomTargetSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-[0_2px_0_rgba(29,78,216,0.3)] dark:bg-blue-500"
             >
-              <TargetIcon className="h-4 w-4" />
+              <Target className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               {content.valueCard.title}
@@ -107,7 +108,7 @@ export const BrowserDomTargetSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-200"
             >
-              <ArrowDownIcon className="h-4 w-4" />
+              <ArrowDown className="h-4 w-4" aria-hidden="true" />
             </span>
             <code className="font-mono text-xsm sm:text-sm font-bold text-blue-700 dark:text-blue-200 break-all">
               {content.valueCard.output}

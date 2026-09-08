@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Bug, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent } from '../content';
-import { AlertTriangleIcon, BugIcon, SparkIcon } from '../icons';
 import { LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['devBranch'] };
@@ -15,7 +16,7 @@ export const DevBranchSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BugIcon className="h-5 w-5" />}
+        icon={<Bug className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg items-start">
@@ -61,7 +62,7 @@ export const DevBranchSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <SparkIcon className="h-5 w-5" />
+                <Sparkles className="h-5 w-5" aria-hidden="true" />
               </span>
               <h3 className="text-md sm:text-lg font-bold leading-snug text-amber-900 dark:text-amber-100 break-keep">
                 {content.mainPoint}
@@ -79,7 +80,7 @@ export const DevBranchSection = ({ content }: Props) => {
             aria-label="caution"
           >
             <div className="flex items-start gap-2">
-              <AlertTriangleIcon
+              <AlertTriangle
                 className="mt-0.5 h-4 w-4 shrink-0 text-slate-500 dark:text-slate-400"
                 aria-hidden="true"
               />

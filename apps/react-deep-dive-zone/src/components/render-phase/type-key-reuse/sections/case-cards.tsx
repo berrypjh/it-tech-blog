@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Box, CheckCircle2 } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { CompareSide, ResultCard } from '../content';
 import { facetFor } from '../facets';
-import { AlertTriangleIcon, BoxIcon, CheckCircleIcon } from '../icons';
 
 export const PreviousCard = ({ side }: { side: CompareSide }) => {
   const t = toneTokens.sky;
@@ -31,7 +32,7 @@ export const PreviousCard = ({ side }: { side: CompareSide }) => {
             t.chip,
           )}
         >
-          <BoxIcon className="h-4 w-4" />
+          <Box className="h-4 w-4" aria-hidden="true" />
         </span>
       </header>
       <CodeChip t={t}>{side.code}</CodeChip>
@@ -70,7 +71,7 @@ export const NextCard = ({ side, kind }: { side: CompareSide; kind: 'reuse' | 'r
             t.chip,
           )}
         >
-          <BoxIcon className="h-4 w-4" />
+          <Box className="h-4 w-4" aria-hidden="true" />
         </span>
       </header>
       <CodeChip t={t}>{side.code}</CodeChip>
@@ -111,9 +112,9 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
           )}
         >
           {isReuse ? (
-            <CheckCircleIcon className="h-5 w-5" />
+            <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           ) : (
-            <AlertTriangleIcon className="h-5 w-5" />
+            <AlertTriangle className="h-5 w-5" aria-hidden="true" />
           )}
         </span>
       </header>

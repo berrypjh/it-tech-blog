@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Hourglass, Sparkles } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import { CheckCircleIcon, HourglassIcon, SparklesIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -41,10 +42,10 @@ const accentClass = (accent: 'pending' | 'fulfilled' | 'rejected' | 'mixed') => 
 };
 
 const iconForAccent = (accent: 'pending' | 'fulfilled' | 'rejected' | 'mixed') => {
-  if (accent === 'fulfilled') return CheckCircleIcon;
-  if (accent === 'rejected') return CheckCircleIcon;
-  if (accent === 'mixed') return CheckCircleIcon;
-  return HourglassIcon;
+  if (accent === 'fulfilled') return CheckCircle2;
+  if (accent === 'rejected') return CheckCircle2;
+  if (accent === 'mixed') return CheckCircle2;
+  return Hourglass;
 };
 
 export const KeyTakeaways = ({ content }: Props) => (
@@ -86,7 +87,7 @@ export const KeyTakeaways = ({ content }: Props) => (
                   {card.accent === 'pending' ? (
                     <Icon className="h-4 w-4" />
                   ) : (
-                    <SparklesIcon className="h-4 w-4" />
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
                   )}
                 </span>
               </div>

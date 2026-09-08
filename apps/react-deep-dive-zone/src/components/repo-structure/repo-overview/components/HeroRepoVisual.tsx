@@ -1,11 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
 import type { RepoOverviewContent } from '../content';
-import { ReactAtomIcon } from '../icons';
 
 import { RepoTreeCard } from './RepoTreeCard';
 
 type Props = { content: RepoOverviewContent['hero'] };
+
+/** Stylised React atom mark - used in the hero side panel. */
+const ReactAtomIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+    <ellipse cx="12" cy="12" rx="10" ry="4" />
+    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+  </svg>
+);
 
 export const HeroRepoVisual = ({ content }: Props) => {
   return (

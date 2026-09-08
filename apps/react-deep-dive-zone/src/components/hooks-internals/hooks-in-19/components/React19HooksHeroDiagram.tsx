@@ -1,35 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Box, Gauge, Layers, Link2, MessageCircle, Send, Settings, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ApiHero, FoundationItem, React19HooksContent, Tone } from '../content';
-import {
-  AtomIcon,
-  BoxIcon,
-  GaugeIcon,
-  LayersIcon,
-  Link2Icon,
-  MessageCircleIcon,
-  SendIcon,
-  SettingsIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: React19HooksContent['hero']; className?: string };
 
 const foundationIcon = {
-  dispatcher: SettingsIcon,
-  'linked-list': Link2Icon,
-  'update-queue': BoxIcon,
-  suspense: AtomIcon,
-  effect: ZapIcon,
+  dispatcher: Settings,
+  'linked-list': Link2,
+  'update-queue': Box,
+  suspense: Atom,
+  effect: Zap,
 } as const;
 
 const apiIcon = {
-  use: AtomIcon,
-  useActionState: SendIcon,
-  useOptimistic: GaugeIcon,
-  useEffectEvent: MessageCircleIcon,
+  use: Atom,
+  useActionState: Send,
+  useOptimistic: Gauge,
+  useEffectEvent: MessageCircle,
 } as const;
 
 /** content의 Tone을 공유 ToneKey로 매핑. ToneKey에 없는 톤은 가장 가까운 톤으로 대체한다. */
@@ -72,7 +63,7 @@ export const React19HooksHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <LayersIcon className="h-[18px] w-[18px]" />
+            <Layers className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagramTitle}
@@ -114,7 +105,7 @@ export const React19HooksHeroDiagram = ({ content, className }: Props) => {
 const FoundationCard = ({ item }: { item: FoundationItem }) => {
   const tone = toneKeyMap[item.tone];
   const t = toneTokens[tone];
-  const Icon = foundationIcon[item.key as keyof typeof foundationIcon] ?? SettingsIcon;
+  const Icon = foundationIcon[item.key as keyof typeof foundationIcon] ?? Settings;
   return (
     <article className="flex h-full items-start gap-sm">
       <ToneIconBox tone={tone} size="sm">

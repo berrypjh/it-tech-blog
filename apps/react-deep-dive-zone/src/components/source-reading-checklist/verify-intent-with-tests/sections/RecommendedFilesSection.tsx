@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Beaker, FileCheck2, FileCode2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { TestAsDocContent } from '../content';
-import { BeakerIcon, FileCheckIcon, FileCodeIcon } from '../icons';
 
 type Props = { content: TestAsDocContent['recommendedFiles'] };
 
@@ -18,7 +19,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BeakerIcon className="h-5 w-5" />}
+        icon={<Beaker className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-md">
@@ -47,7 +48,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
                     'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
                   )}
                 >
-                  <FileCheckIcon className="h-3.5 w-3.5" />
+                  <FileCheck2 className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </header>
 
@@ -68,7 +69,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
                     'shadow-[0_2px_0_var(--term-border)]',
                   )}
                 >
-                  <FileCodeIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  <FileCode2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span className="whitespace-nowrap">{row.testFile}</span>
                 </code>
               </div>

@@ -1,13 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, type LucideIcon, Pencil, Sparkles } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ModeCard, RnContent } from '../content';
-import { rnIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RnContent['modes'] };
+
+const modeIcon: Record<ModeCard['id'], LucideIcon> = {
+  mutation: Pencil,
+  persistence: Layers,
+};
 
 export const ModesSection = ({ content }: Props) => {
   return (
@@ -17,7 +23,7 @@ export const ModesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -39,7 +45,7 @@ const ModeColumn = ({
   <div className="flex flex-col gap-sm">
     <ToneDetailCard
       tone={card.tone}
-      icon={rnIcon[card.iconName]}
+      icon={modeIcon[card.id]}
       title={card.name}
       description={card.subtitle}
       bullets={card.items}

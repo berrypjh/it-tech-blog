@@ -1,16 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, ChevronRight, HelpCircle, Layers, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { PlacementContent } from '../content';
-import {
-  ArrowDownIcon,
-  CheckCircleIcon,
-  ChevronRightIcon,
-  HelpCircleIcon,
-  LayersIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = {
   example: PlacementContent['example'];
@@ -40,7 +34,7 @@ const EasyExample = ({ example }: { example: PlacementContent['example'] }) => (
       id="easy-example"
       eyebrow={example.eyebrow}
       title={example.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -78,8 +72,8 @@ const CenterArrow = ({ lines }: { lines: string[] }) => {
           'shadow-[0_1px_0_var(--term-border)]',
         )}
       >
-        <ChevronRightIcon className="hidden md:inline-block h-6 w-6" />
-        <ArrowDownIcon className="md:hidden h-6 w-6" />
+        <ChevronRight className="hidden md:inline-block h-6 w-6" aria-hidden="true" />
+        <ArrowDown className="md:hidden h-6 w-6" aria-hidden="true" />
       </span>
       <ul
         className={cn(
@@ -206,7 +200,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
         id="mini-quiz"
         eyebrow={quiz.eyebrow}
         title={quiz.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="flex flex-col gap-3">
@@ -233,14 +227,14 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
             <span className={cn('text-[10px] font-mono uppercase tracking-wider', q.text)}>
               question
             </span>
-            <HelpCircleIcon aria-hidden="true" className={cn('ml-auto h-4 w-4', q.text)} />
+            <HelpCircle aria-hidden="true" className={cn('ml-auto h-4 w-4', q.text)} />
           </header>
           <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', q.fill.text)}>
             {quiz.question}
           </p>
         </article>
 
-        <ArrowDownIcon aria-hidden="true" className="h-4 w-4 mx-auto text-[var(--term-dim)]" />
+        <ArrowDown aria-hidden="true" className="h-4 w-4 mx-auto text-[var(--term-dim)]" />
 
         <article
           className={cn(
@@ -274,7 +268,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
                 a.chip,
               )}
             >
-              <CheckCircleIcon className="h-5 w-5" />
+              <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
             </span>
           </header>
           <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', a.fill.text)}>

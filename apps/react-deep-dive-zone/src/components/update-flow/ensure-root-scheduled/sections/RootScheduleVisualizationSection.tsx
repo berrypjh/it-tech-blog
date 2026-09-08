@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ListChecks, Network, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
-import { ArrowRightIcon, ListChecksIcon, NetworkIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: EnsureRootScheduledContent['visualization'] };
 
@@ -20,7 +21,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -47,7 +48,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
                     t.chip,
                   )}
                 >
-                  <NetworkIcon className="h-4 w-4" />
+                  <Network className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className={cn('text-xsm sm:text-sm font-bold font-mono', t.text)}>
                   {root.title}
@@ -71,7 +72,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
         >
-          <ArrowRightIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
+          <ArrowRight className="h-5 w-5 rotate-90 lg:rotate-0" aria-hidden="true" />
         </span>
         <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--term-fg)]">
           {content.middleLabel}
@@ -94,7 +95,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
                 sky.chip,
               )}
             >
-              <ListChecksIcon className="h-4 w-4" />
+              <ListChecks className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className={cn('text-xsm sm:text-sm font-bold', sky.text)}>
               {content.rightTitle}

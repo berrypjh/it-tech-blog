@@ -1,24 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Boxes,
+  FunctionSquare,
+  Link2,
+  PlayCircle,
+  Settings,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseStateInternalsContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  BoxesIcon,
-  FunctionSquareIcon,
-  Link2Icon,
-  PlayCircleIcon,
-  SettingsIcon,
-} from '../icons';
 
 type Props = { content: UseStateInternalsContent['dispatch'] };
 
 const visualMap = {
-  fn: FunctionSquareIcon,
-  bind: Link2Icon,
-  cube: BoxesIcon,
-  play: PlayCircleIcon,
+  fn: FunctionSquare,
+  bind: Link2,
+  cube: Boxes,
+  play: PlayCircle,
 } as const;
 
 const toneCard: Record<Tone, string> = {
@@ -98,7 +99,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
         id="dispatch"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SettingsIcon className="h-5 w-5" />}
+        icon={<Settings className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-md lg:gap-lg items-stretch">
@@ -145,13 +146,13 @@ export const DispatchCreationFlow = ({ content }: Props) => {
                       aria-hidden="true"
                       className="hidden lg:inline-flex absolute -right-[7px] top-1/2 z-10 -translate-y-1/2 h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                     >
-                      <ArrowRightIcon className="h-3 w-3" />
+                      <ArrowRight className="h-3 w-3" aria-hidden="true" />
                     </span>
                     <span
                       aria-hidden="true"
                       className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                     >
-                      <ArrowDownIcon className="h-4 w-4" />
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </>
                 )}

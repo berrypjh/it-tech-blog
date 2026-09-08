@@ -1,9 +1,10 @@
+import { Layers, Lightbulb } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { CurrentWipAlternateContent } from '../content';
-import { LayersIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['comparison'] };
 
@@ -14,7 +15,7 @@ export const CurrentWipComparison = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -27,6 +28,8 @@ export const CurrentWipComparison = ({ content }: Props) => (
       }))}
     />
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );

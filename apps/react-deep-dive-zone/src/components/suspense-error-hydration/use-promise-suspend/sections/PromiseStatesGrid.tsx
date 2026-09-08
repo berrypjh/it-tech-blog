@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, HourglassIcon, TriangleAlertIcon } from '../icons';
 import type { PromiseState } from '../tone';
 import { stateAccent } from '../tone';
 
@@ -10,9 +11,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: UsePromiseSuspendContent['promiseStates'] };
 
 const stateIcon: Record<PromiseState, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  fulfilled: CheckCircleIcon,
-  rejected: TriangleAlertIcon,
+  pending: Hourglass,
+  fulfilled: CheckCircle2,
+  rejected: TriangleAlert,
 };
 
 export const PromiseStatesGrid = ({ content }: Props) => (
@@ -69,7 +70,7 @@ export const PromiseStatesGrid = ({ content }: Props) => (
                     accent.text,
                   )}
                 >
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className={cn('h-3.5 w-3.5 shrink-0', accent.text)}
                   />

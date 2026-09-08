@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Plus, Replace } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { MutationPhaseContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, PlusIcon, ReplaceIcon } from '../icons';
 
 type Props = { content: MutationPhaseContent['beforeAfter'] };
 
@@ -18,7 +19,7 @@ export const MutationBeforeAfterSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ReplaceIcon className="h-5 w-5" />}
+      icon={<Replace className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-3 items-stretch">
@@ -47,8 +48,8 @@ const CenterArrow = ({
           'shadow-[0_1px_0_var(--term-border)]',
         )}
       >
-        <ArrowRightIcon className="hidden md:inline-block h-5 w-5" />
-        <ArrowDownIcon className="md:hidden h-5 w-5" />
+        <ArrowRight className="hidden md:inline-block h-5 w-5" aria-hidden="true" />
+        <ArrowDown className="md:hidden h-5 w-5" aria-hidden="true" />
       </span>
       <article
         className={cn(
@@ -63,7 +64,7 @@ const CenterArrow = ({
             t.fill.text,
           )}
         >
-          <PlusIcon aria-hidden="true" className="h-3.5 w-3.5" />
+          <Plus aria-hidden="true" className="h-3.5 w-3.5" />
           {centerLabel.title}
         </span>
         <span className={cn('text-[10px] font-mono break-keep', t.text)}>

@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Link2, ListOrdered, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookLinkedListContent, Tone } from '../content';
-import { BoxesIcon, Link2Icon, ListOrderedIcon, TrophyIcon } from '../icons';
 
 type Props = { content: HookLinkedListContent['summary'] };
 
-const cardIcons = [Link2Icon, ListOrderedIcon, BoxesIcon];
+const cardIcons = [Link2, ListOrdered, Boxes];
 
 const cardTone: Record<Tone, string> = {
   sky: 'border-sky-300/80 dark:border-sky-700/70 hover:border-sky-400 dark:hover:border-sky-600',
@@ -56,12 +57,12 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.items.map((item, i) => {
-        const Icon = cardIcons[i] ?? Link2Icon;
+        const Icon = cardIcons[i] ?? Link2;
         return (
           <li key={item.number}>
             <article

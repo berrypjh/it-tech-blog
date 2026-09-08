@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, Layers, ScanSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { PhaseDetectionContent } from '../content';
-import { FileCodeIcon, LayersIcon, ScanSearchIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 
 type Props = { content: PhaseDetectionContent['representativeFiles'] };
@@ -19,7 +20,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -57,7 +58,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
                             'font-mono text-[11px] font-bold',
                           )}
                         >
-                          <FileCodeIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                          <FileCode2 className="h-3 w-3 shrink-0" aria-hidden="true" />
                           <span className="whitespace-nowrap">{file}</span>
                         </code>
                       </li>
@@ -89,7 +90,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
 
                 {/* Reading point */}
                 <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
-                  <ScanSearchIcon
+                  <ScanSearch
                     className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
                     aria-hidden="true"
                   />

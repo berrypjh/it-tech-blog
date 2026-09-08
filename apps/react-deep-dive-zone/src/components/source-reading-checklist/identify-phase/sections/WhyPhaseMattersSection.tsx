@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CalendarClock, HelpCircle, Monitor, ScanSearch, Target, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { PhaseDetectionContent } from '../content';
-import {
-  CalendarClockIcon,
-  HelpCircleIcon,
-  MonitorIcon,
-  ScanSearchIcon,
-  TargetIcon,
-  WorkflowIcon,
-} from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 import type { PhaseKey } from '../phaseTone';
 
 type Props = { content: PhaseDetectionContent['whyPhase'] };
 
 const cardIcon: Record<PhaseKey, React.ComponentType<{ className?: string }>> = {
-  scheduling: CalendarClockIcon,
-  render: WorkflowIcon,
-  commit: MonitorIcon,
+  scheduling: CalendarClock,
+  render: Workflow,
+  commit: Monitor,
 };
 
 export const WhyPhaseMattersSection = ({ content }: Props) => {
@@ -29,7 +23,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ScanSearchIcon className="h-5 w-5" />}
+        icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -76,7 +70,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
                     t.chip,
                   )}
                 >
-                  <HelpCircleIcon
+                  <HelpCircle
                     className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
@@ -111,7 +105,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}
         >
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
           <span className="block text-slate-300">{content.bannerLines[0]}</span>

@@ -1,12 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, type LucideIcon, Monitor, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RoleCard, RvrContent } from '../content';
-import { rvrIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RvrContent['summary'] };
+
+const roleIcon: Record<RoleCard['id'], LucideIcon> = {
+  reconciler: Boxes,
+  renderer: Monitor,
+};
 
 export const RoleSummarySection = ({ content }: Props) => {
   return (
@@ -16,7 +22,7 @@ export const RoleSummarySection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
@@ -49,7 +55,7 @@ export const RoleSummarySection = ({ content }: Props) => {
 
 const RoleCardView = ({ card }: { card: RoleCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = rvrIcon[card.iconName];
+  const Icon = roleIcon[card.id];
 
   return (
     <article

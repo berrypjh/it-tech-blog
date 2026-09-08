@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Network } from 'lucide-react';
+
 import { DownArrow } from '../../../shared/icon';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
-import { LightbulbIcon, NetworkIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['rootCurrent'] };
 type Step = CurrentWipAlternateContent['rootCurrent']['steps'][number];
@@ -21,7 +22,7 @@ export const RootCurrentStructure = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -39,7 +40,7 @@ export const RootCurrentStructure = ({ content }: Props) => (
         ))}
       </ol>
 
-      <SectionNote className="mt-md" icon={<LightbulbIcon className="h-4 w-4" />}>
+      <SectionNote className="mt-md" icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
         {content.emphasis}
       </SectionNote>
     </article>

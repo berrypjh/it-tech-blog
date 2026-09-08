@@ -2,9 +2,16 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, BellRing, CheckCircle2, Cpu, type LucideIcon, Monitor } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import type { RenderPhaseIntroContent, WarningStep } from '../content';
-import { ArrowRightIcon, BellRingIcon, warningIconByName } from '../icons';
+import type { RenderPhaseIntroContent, WarningStep, WarningStepIcon } from '../content';
+
+const warningIconByName: Record<WarningStepIcon, LucideIcon> = {
+  cpu: Cpu,
+  monitor: Monitor,
+  checkCircle: CheckCircle2,
+} as const;
 
 type Props = { content: RenderPhaseIntroContent['warning'] };
 
@@ -27,7 +34,7 @@ export const DomNotChangedWarning = ({ content }: Props) => (
               toneTokens.amber.chip,
             )}
           >
-            <BellRingIcon className="h-7 w-7" />
+            <BellRing className="h-7 w-7" aria-hidden="true" />
           </span>
           <div className="flex flex-col gap-2 min-w-0">
             <span
@@ -70,7 +77,7 @@ export const DomNotChangedWarning = ({ content }: Props) => (
                     aria-hidden="true"
                     className="flex shrink-0 items-center justify-center text-[var(--term-accent)] px-0.5"
                   >
-                    <ArrowRightIcon className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </span>
                 )}
               </Fragment>

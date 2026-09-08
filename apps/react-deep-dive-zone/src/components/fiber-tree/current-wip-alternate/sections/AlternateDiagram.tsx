@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight, Layers, Network } from 'lucide-react';
+
 import { CompareBridge } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
-import { ArrowLeftRightIcon, LayersIcon, NetworkIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['alternate'] };
 
@@ -17,25 +18,25 @@ export const AlternateDiagram = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ArrowLeftRightIcon className="h-5 w-5" />}
+      icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
       <ToneDetailCard
         tone="sky"
-        icon={LayersIcon}
+        icon={Layers}
         title={content.currentCard.title}
         description={content.currentCard.subtitle}
         bullets={content.currentCard.fields}
       />
       <CompareBridge
-        icon={<ArrowLeftRightIcon className="h-5 w-5" />}
+        icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
         headline={content.arrowLabel}
         sub={content.arrowSubLabel}
       />
       <ToneDetailCard
         tone="emerald"
-        icon={NetworkIcon}
+        icon={Network}
         title={content.wipCard.title}
         description={content.wipCard.subtitle}
         bullets={content.wipCard.fields}
@@ -55,7 +56,7 @@ const WholeTreeLinks = ({ content }: { content: CurrentWipAlternateContent['alte
   >
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="violet" size="sm">
-        <LayersIcon className="h-4 w-4" />
+        <Layers className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <h3 className={cn('text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {content.rightTitle}

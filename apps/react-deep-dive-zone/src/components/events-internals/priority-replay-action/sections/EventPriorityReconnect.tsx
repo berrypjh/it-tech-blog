@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Filter, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import { ArrowDownIcon, FilterIcon, ZapIcon } from '../icons';
 import { toneAccent } from '../styles';
 
 type Props = { content: AdvancedWrapupContent['priority'] };
@@ -14,7 +15,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FilterIcon className="h-5 w-5" />}
+      icon={<Filter className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-md lg:gap-lg items-stretch">
@@ -91,7 +92,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
           >
-            <ZapIcon className="h-4 w-4" />
+            <Zap className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
             priority flow
@@ -124,7 +125,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
                     aria-hidden="true"
                     className="self-center my-0.5 text-violet-400 dark:text-violet-300"
                   >
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 )}
               </li>

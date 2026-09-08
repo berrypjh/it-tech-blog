@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 
+import { ArrowRight, ChevronDown, Recycle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { TypeKeyReuseContent } from '../content';
-import { ArrowRightIcon, ChevronDownIcon, RecycleIcon } from '../icons';
 
 import { NextCard, PreviousCard, ResultCardView } from './case-cards';
 
@@ -20,7 +21,7 @@ export const SameKeySameTypeCase = ({ content }: Props) => {
         id="same-key-type"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RecycleIcon className="h-5 w-5" />}
+        icon={<Recycle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.1fr)] items-stretch gap-3">
@@ -32,8 +33,8 @@ export const SameKeySameTypeCase = ({ content }: Props) => {
                 aria-hidden="true"
                 className="flex shrink-0 items-center justify-center lg:px-0.5 py-1 lg:py-0 text-[var(--term-accent)]"
               >
-                <ArrowRightIcon className="hidden lg:block h-5 w-5" />
-                <ChevronDownIcon className="lg:hidden h-5 w-5" />
+                <ArrowRight className="hidden lg:block h-5 w-5" aria-hidden="true" />
+                <ChevronDown className="lg:hidden h-5 w-5" aria-hidden="true" />
               </span>
             )}
           </Fragment>

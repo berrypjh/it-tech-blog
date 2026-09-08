@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, MessageSquareText, Notebook } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { AspectBadge } from '../AspectBadge';
 import type { NoteField, ReconstructContent } from '../content';
-import { FileTextIcon, MessageSquareTextIcon, NotebookIcon } from '../icons';
 
 type Props = { content: ReconstructContent['readingNote'] };
 
@@ -21,7 +22,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NotebookIcon className="h-5 w-5" />}
+        icon={<Notebook className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -43,7 +44,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
               <span className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
               <span className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
             </span>
-            <FileTextIcon
+            <FileText
               className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400"
               aria-hidden="true"
             />
@@ -98,7 +99,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
                 'dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-100',
               )}
             >
-              <MessageSquareTextIcon
+              <MessageSquareText
                 className="mt-1 h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400"
                 aria-hidden="true"
               />

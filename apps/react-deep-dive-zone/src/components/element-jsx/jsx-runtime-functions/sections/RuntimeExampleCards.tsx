@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ExampleCard, JsxRuntimeFunctionsContent } from '../content';
-import { ArrowDownIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: JsxRuntimeFunctionsContent['examples'] };
 
@@ -17,7 +18,7 @@ export const RuntimeExampleCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
@@ -57,7 +58,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
 
       <div className="flex justify-center" aria-hidden="true">
         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-          <ArrowDownIcon className="h-3.5 w-3.5" />
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
       </div>
 

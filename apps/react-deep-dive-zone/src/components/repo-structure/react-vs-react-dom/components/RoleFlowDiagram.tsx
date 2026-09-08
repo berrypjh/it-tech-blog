@@ -1,12 +1,30 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  AppWindow,
+  Atom,
+  Braces,
+  Container,
+  Layers,
+  type LucideIcon,
+  MonitorSmartphone,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { FlowNode, ReactVsReactDomContent } from '../content';
-import { iconByName } from '../icons';
 
 /** package 노드만 색 강조: react=A(accent), react-dom=B(sky). 나머지는 중립. */
 const packageAccent = (id: FlowNode['id']) =>
   id === 'react-dom' ? toneTokens.sky.text : 'text-[var(--term-accent)]';
+
+const nodeIcon: Record<FlowNode['id'], LucideIcon> = {
+  'component-code': Braces,
+  react: Atom,
+  'ui-description': Layers,
+  'container-mount': Container,
+  'react-dom': MonitorSmartphone,
+  'browser-dom': AppWindow,
+};
 
 type Props = { content: ReactVsReactDomContent['usage'] };
 
@@ -60,7 +78,7 @@ const FlowTimeline = ({ nodes }: FlowTimelineProps) => (
 type FlowStepProps = { node: FlowNode; isLast: boolean };
 
 const FlowStep = ({ node, isLast }: FlowStepProps) => {
-  const Icon = iconByName[node.icon];
+  const Icon = nodeIcon[node.id];
   const isPackage = node.kind === 'package';
   const accent = packageAccent(node.id);
 
@@ -77,7 +95,7 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
               : 'border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         {!isLast && (
           <span

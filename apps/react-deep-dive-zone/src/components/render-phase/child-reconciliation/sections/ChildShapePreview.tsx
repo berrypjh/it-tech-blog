@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, ExternalLink, Layers, type LucideIcon, Sparkles, Square } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ChildShapeCard, ReconcileChildrenContent } from '../content';
-import { childShapeIconByName, LayersIcon } from '../icons';
+
+const childShapeIconByName: Record<ChildShapeCard['icon'], LucideIcon> = {
+  element: Square,
+  array: Boxes,
+  portal: ExternalLink,
+  sparkle: Sparkles,
+} as const;
 
 type Props = { content: ReconcileChildrenContent['childShape'] };
 
@@ -15,7 +23,7 @@ export const ChildShapePreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ToneCardGrid>

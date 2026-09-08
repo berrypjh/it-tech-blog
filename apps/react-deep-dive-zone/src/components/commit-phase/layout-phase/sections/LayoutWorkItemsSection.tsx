@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Component, Layers, Link, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LayoutPhaseContent, WorkItemIcon } from '../content';
-import { ComponentIcon, LayersIcon, LinkIcon, ZapIcon } from '../icons';
 
 type Props = { content: LayoutPhaseContent['workItems'] };
 
-const iconMap: Record<WorkItemIcon, typeof ZapIcon> = {
-  zap: ZapIcon,
-  component: ComponentIcon,
-  link: LinkIcon,
+const iconMap: Record<WorkItemIcon, typeof Zap> = {
+  zap: Zap,
+  component: Component,
+  link: Link,
 };
 
 export const LayoutWorkItemsSection = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const LayoutWorkItemsSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

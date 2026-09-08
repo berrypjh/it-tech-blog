@@ -1,18 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  ChevronDown,
+  Flag,
+  ListChecks,
+  type LucideIcon,
+  Move,
+  Pencil,
+  Star,
+  Trash2,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { FlagsAndReorderContent, ReorderResultItem } from '../content';
-import {
-  ArrowRightIcon,
-  ChevronDownIcon,
-  ListChecksIcon,
-  markIconByName,
-  StarIcon,
-  WorkflowIcon,
-} from '../icons';
+import type { FlagCard, FlagsAndReorderContent, ReorderResultItem } from '../content';
 import { facetFor } from '../markFacet';
+
+const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
+  flag: Flag,
+  trash: Trash2,
+  pencil: Pencil,
+  zap: Zap,
+  move: Move,
+} as const;
 
 type Props = { content: FlagsAndReorderContent };
 
@@ -29,7 +43,7 @@ const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['
       id="flags-connection"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -65,7 +79,7 @@ const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['
                 </div>
               </article>
               {idx < content.steps.length - 1 && (
-                <ChevronDownIcon
+                <ChevronDown
                   aria-hidden="true"
                   className="my-1 mx-auto h-5 w-5 text-[var(--term-accent)]"
                 />
@@ -84,7 +98,7 @@ const ListReorderSection = ({ content }: { content: FlagsAndReorderContent['reor
       id="list-reorder"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -96,7 +110,7 @@ const ListReorderSection = ({ content }: { content: FlagsAndReorderContent['reor
         <ResultColumn title={content.resultTitle} items={content.resultItems} />
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />} className="mt-md">
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />} className="mt-md">
         {content.bottomNote}
       </SectionNote>
     </article>
@@ -146,8 +160,8 @@ const ArrowConnector = () => (
     aria-hidden="true"
     className="flex items-center justify-center text-[var(--term-accent)] py-1 sm:py-0"
   >
-    <ArrowRightIcon className="hidden sm:block h-5 w-5" />
-    <ChevronDownIcon className="sm:hidden h-5 w-5" />
+    <ArrowRight className="hidden sm:block h-5 w-5" aria-hidden="true" />
+    <ChevronDown className="sm:hidden h-5 w-5" aria-hidden="true" />
   </span>
 );
 

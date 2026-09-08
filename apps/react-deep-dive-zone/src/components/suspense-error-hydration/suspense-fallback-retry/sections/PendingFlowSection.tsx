@@ -1,14 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Box, Hourglass, PauseCircle, Zap } from 'lucide-react';
+
 import type { SuspenseFallbackRetryContent } from '../content';
-import { ArrowRightIcon, BoxIcon, HourglassIcon, PauseCircleIcon, ZapIcon } from '../icons';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: SuspenseFallbackRetryContent['pending'] };
 
-const stepIcons = [BoxIcon, ZapIcon, HourglassIcon, PauseCircleIcon];
+const stepIcons = [Box, Zap, Hourglass, PauseCircle];
 
 export const PendingFlowSection = ({ content }: Props) => (
   <section aria-labelledby="pending-heading" className="flex flex-col gap-md">
@@ -17,7 +18,7 @@ export const PendingFlowSection = ({ content }: Props) => (
     <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_minmax(0,0)] lg:gap-0 lg:flex lg:flex-row items-stretch">
       {content.steps.map((step, i) => {
         const accent = phaseAccent[step.phase];
-        const Icon = stepIcons[i] ?? BoxIcon;
+        const Icon = stepIcons[i] ?? Box;
         const isLast = i === content.steps.length - 1;
         return (
           <li key={step.title} className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1">
@@ -68,8 +69,8 @@ export const PendingFlowSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
               >
-                <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90" />
+                <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="lg:hidden h-4 w-4 rotate-90" aria-hidden="true" />
               </span>
             )}
           </li>

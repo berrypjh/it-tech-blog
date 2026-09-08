@@ -1,36 +1,37 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  Atom,
+  Box,
+  Gauge,
+  Layers,
+  Link2,
+  Map,
+  MessageCircle,
+  Send,
+  Settings,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ApiHero, FoundationItem, React19HooksContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  AtomIcon,
-  BoxIcon,
-  GaugeIcon,
-  LayersIcon,
-  Link2Icon,
-  MapIcon,
-  MessageCircleIcon,
-  SendIcon,
-  SettingsIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: React19HooksContent['extensionMap'] };
 
 const foundationIconMap = {
-  dispatcher: SettingsIcon,
-  'linked-list': Link2Icon,
-  'update-queue': BoxIcon,
-  suspense: AtomIcon,
-  effect: ZapIcon,
+  dispatcher: Settings,
+  'linked-list': Link2,
+  'update-queue': Box,
+  suspense: Atom,
+  effect: Zap,
 } as const;
 
 const apiIconMap = {
-  use: AtomIcon,
-  useActionState: SendIcon,
-  useOptimistic: GaugeIcon,
-  useEffectEvent: MessageCircleIcon,
+  use: Atom,
+  useActionState: Send,
+  useOptimistic: Gauge,
+  useEffectEvent: MessageCircle,
 } as const;
 
 const toneCardBg: Record<Tone, string> = {
@@ -76,7 +77,7 @@ const toneText: Record<Tone, string> = {
 };
 
 const FoundationRow = ({ item }: { item: FoundationItem }) => {
-  const Icon = foundationIconMap[item.key as keyof typeof foundationIconMap] ?? SettingsIcon;
+  const Icon = foundationIconMap[item.key as keyof typeof foundationIconMap] ?? Settings;
   return (
     <li
       className={cn(
@@ -153,7 +154,7 @@ export const ExtensionMap = ({ content }: Props) => (
       id="extension-map"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -171,11 +172,11 @@ export const ExtensionMap = ({ content }: Props) => (
         aria-hidden="true"
         className="flex items-center justify-center gap-2 text-[var(--term-muted)]"
       >
-        <ArrowDownIcon className="h-4 w-4" />
+        <ArrowDown className="h-4 w-4" aria-hidden="true" />
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
           connects to
         </span>
-        <ArrowDownIcon className="h-4 w-4" />
+        <ArrowDown className="h-4 w-4" aria-hidden="true" />
       </div>
 
       {/* Center foundation card */}
@@ -191,7 +192,7 @@ export const ExtensionMap = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500 text-white dark:bg-blue-400 dark:text-slate-900"
           >
-            <LayersIcon className="h-5 w-5" />
+            <Layers className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-blue-800 dark:text-blue-100 break-keep">
             {content.centerTitle}
@@ -209,11 +210,11 @@ export const ExtensionMap = ({ content }: Props) => (
         aria-hidden="true"
         className="flex items-center justify-center gap-2 text-[var(--term-muted)]"
       >
-        <ArrowDownIcon className="h-4 w-4 rotate-180" />
+        <ArrowDown className="h-4 w-4 rotate-180" aria-hidden="true" />
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
           connects to
         </span>
-        <ArrowDownIcon className="h-4 w-4 rotate-180" />
+        <ArrowDown className="h-4 w-4 rotate-180" aria-hidden="true" />
       </div>
 
       {/* Bottom API cards (useOptimistic, useEffectEvent) */}

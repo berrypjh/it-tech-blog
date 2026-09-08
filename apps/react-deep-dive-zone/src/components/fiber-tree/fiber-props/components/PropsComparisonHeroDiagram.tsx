@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent } from '../content';
-import { ClockIcon, ZapIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['hero']; className?: string };
 
@@ -26,7 +27,7 @@ export const PropsComparisonHeroDiagram = ({ content, className }: Props) => {
         <li className="flex flex-col gap-sm">
           <PropsCard
             tone="sky"
-            icon={<ZapIcon className="h-[18px] w-[18px]" />}
+            icon={<Zap className="h-[18px] w-[18px]" aria-hidden="true" />}
             card={content.pendingCard}
           />
         </li>
@@ -36,7 +37,7 @@ export const PropsComparisonHeroDiagram = ({ content, className }: Props) => {
         <li className="flex flex-col gap-sm">
           <PropsCard
             tone="emerald"
-            icon={<ClockIcon className="h-[18px] w-[18px]" />}
+            icon={<Clock className="h-[18px] w-[18px]" aria-hidden="true" />}
             card={content.memoizedCard}
           />
         </li>

@@ -1,24 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CheckCircle2,
+  Clock3,
+  GitMerge,
+  MousePointerClick,
+  Repeat,
+  Route,
+  Workflow,
+} from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FullFlowContent, ScenarioId } from '../content';
-import {
-  CheckCircleIcon,
-  ClockIcon,
-  GitMergeIcon,
-  MousePointerClickIcon,
-  RepeatIcon,
-  RouteIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: FullFlowContent['hero']; className?: string };
 
-const sourceTone: Record<ScenarioId, { tone: ToneKey; icon: typeof MousePointerClickIcon }> = {
-  click: { tone: 'blue', icon: MousePointerClickIcon },
-  transition: { tone: 'teal', icon: RepeatIcon },
-  deferred: { tone: 'violet', icon: ClockIcon },
+const sourceTone: Record<ScenarioId, { tone: ToneKey; icon: typeof MousePointerClick }> = {
+  click: { tone: 'blue', icon: MousePointerClick },
+  transition: { tone: 'teal', icon: Repeat },
+  deferred: { tone: 'violet', icon: Clock3 },
 };
 
 const pipelineTones: ToneKey[] = ['sky', 'cyan', 'indigo', 'teal', 'amber'];
@@ -53,7 +54,7 @@ export const SchedulerFullFlowHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <RouteIcon className="h-[18px] w-[18px]" />
+            <Route className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagramTitle}
@@ -125,7 +126,7 @@ const MergeNote = ({ label }: { label: string }) => (
     )}
   >
     <ToneIconBox tone="emerald" size="sm">
-      <GitMergeIcon className="h-[18px] w-[18px]" />
+      <GitMerge className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
       {label}
@@ -150,7 +151,10 @@ const PipelineStep = ({ index, label, tone }: { index: number; label: string; to
       <span className={cn('min-w-0 text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
-      <WorkflowIcon className="ml-auto h-3.5 w-3.5 shrink-0 text-[var(--term-muted)]" />
+      <Workflow
+        className="ml-auto h-3.5 w-3.5 shrink-0 text-[var(--term-muted)]"
+        aria-hidden="true"
+      />
     </article>
   );
 };
@@ -167,7 +171,7 @@ const CommitStep = ({ label }: { label: string }) => {
       )}
     >
       <ToneIconBox tone="emerald" size="sm">
-        <CheckCircleIcon className="h-[18px] w-[18px]" />
+        <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('text-sm font-bold uppercase tracking-wider font-mono', t.text)}>
         {label}

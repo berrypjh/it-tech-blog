@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Layers, Map, Target, Zap } from 'lucide-react';
+
 import {
   axisCardBorder,
   axisCoreBox,
@@ -10,14 +12,13 @@ import {
 } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AxisAccent, AxisCard, ThreePriorityAxesContent } from '../content';
-import { ClockIcon, LayersIcon, MapIcon, TargetIcon, ZapIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['overview']; axes: AxisCard[] };
 
-const axisIcon: Record<AxisAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: LayersIcon,
-  violet: ClockIcon,
+const axisIcon: Record<AxisAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Layers,
+  violet: Clock3,
 };
 
 export const PriorityAxesOverview = ({ content, axes }: Props) => (
@@ -27,7 +28,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
       number={2}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
@@ -98,7 +99,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
                   axisCoreBox[axis.accent],
                 )}
               >
-                <TargetIcon
+                <Target
                   aria-hidden="true"
                   className={cn('mt-0.5 h-4 w-4 shrink-0', axisTextStrong[axis.accent])}
                 />

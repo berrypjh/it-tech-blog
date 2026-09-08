@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Hexagon, Tag } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent } from '../content';
-import { CheckCircleIcon, HexagonIcon, TagIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['hero']; className?: string };
 
@@ -59,7 +60,7 @@ const DomTagCard = ({ code, type }: { code: string; type: string }) => {
       )}
     >
       <ToneIconBox tone="emerald" size="sm">
-        <TagIcon className="h-4 w-4" aria-hidden="true" />
+        <Tag className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <code className={cn('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
@@ -83,7 +84,7 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone="sky" size="md">
-          <HexagonIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
@@ -112,7 +113,7 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
                 toneTokens.emerald.dot,
               )}
             >
-              <CheckCircleIcon className="h-3.5 w-3.5" />
+              <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span className="text-xsm font-bold leading-snug text-[var(--term-fg)] break-keep">
               {item}

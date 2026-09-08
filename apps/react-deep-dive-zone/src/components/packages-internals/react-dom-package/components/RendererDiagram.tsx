@@ -1,12 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AppWindow, type LucideIcon, Monitor, Server } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
-import { reactDomIcon } from '../icons';
 
 type Props = { content: ReactDomContent['hero']; className?: string };
+
+const nodeIcon: Record<HeroDiagramNode['id'], LucideIcon> = {
+  container: AppWindow,
+  html: Monitor,
+  serverStream: Server,
+};
 
 /**
  * Hero 우측 다이어그램 (react-package ApiNetworkDiagram과 같은 결).
@@ -61,7 +68,7 @@ const CenterReactDomCard = ({ center }: { center: ReactDomContent['hero']['cente
 
 const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
   const tone = toneTokens[node.tone];
-  const Icon = reactDomIcon[node.iconName];
+  const Icon = nodeIcon[node.id];
 
   return (
     <article

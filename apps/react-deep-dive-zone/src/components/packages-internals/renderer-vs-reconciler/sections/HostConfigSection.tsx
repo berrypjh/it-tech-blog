@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Info, Map, SlidersHorizontal } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
-import { InfoIcon, MapIcon, rvrIcon } from '../icons';
 
 type Props = { content: RvrContent['hostConfig'] };
 
@@ -16,7 +17,7 @@ export const HostConfigSection = ({ content }: Props) => {
         id="host-config"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -35,7 +36,7 @@ export const HostConfigSection = ({ content }: Props) => {
               toneTokens.sky.text,
             )}
           >
-            <rvrIcon.sliders className="h-5 w-5" aria-hidden="true" />
+            <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
           </span>
 
           <h3
@@ -64,7 +65,9 @@ export const HostConfigSection = ({ content }: Props) => {
         <CodePreviewPanel code={content.code} language="ts" />
       </div>
 
-      <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.infoBanner}</SectionNote>
+      <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+        {content.infoBanner}
+      </SectionNote>
     </section>
   );
 };

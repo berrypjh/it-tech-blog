@@ -1,12 +1,13 @@
-import { cn } from '@it-tech-blog/utils';
+import { Map, Star } from 'lucide-react';
 
+import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
-import { ToneCardItem } from '../../../shared/tone';
-import { toneTokens } from '../../../shared/tones';
+import { FinalArchitectureDiagram } from '../components/FinalArchitectureDiagram';
 import type { PackageDesignContent } from '../content';
-import { pdIcon, SparklesIcon } from '../icons';
 
 type Props = { content: PackageDesignContent['recap'] };
+
+const DIAGRAM_A11Y = `사용자 코드 → react → react-reconciler → renderer → DOM / Native 중앙 흐름과, 우측에 scheduler / shared 두 보조 축이 있는 종합 다이어그램. 각 단계에는 패키지 역할을 한 문장으로 설명하는 문구가 붙어 있다.`;
 
 export const RecapSection = ({ content }: Props) => {
   return (
@@ -16,42 +17,19 @@ export const RecapSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
-        {content.cards.map((card) => {
-          const Icon = pdIcon[card.iconName];
+      <FinalArchitectureDiagram
+        main={content.main}
+        scheduler={content.scheduler}
+        shared={content.shared}
+        a11y={DIAGRAM_A11Y}
+      />
 
-          return (
-            <ToneCardItem
-              key={card.id}
-              tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
-              className={
-                card.emphasized
-                  ? 'border-[var(--term-accent)] lg:shadow-[0_3px_0_var(--term-border)]'
-                  : undefined
-              }
-            >
-              <h3
-                className={cn(
-                  'text-sm font-bold font-mono tracking-tight',
-                  toneTokens[card.tone].text,
-                )}
-              >
-                {card.name}
-              </h3>
-              <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
-                {card.role}
-              </span>
-              <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-                {card.description}
-              </p>
-            </ToneCardItem>
-          );
-        })}
-      </ul>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

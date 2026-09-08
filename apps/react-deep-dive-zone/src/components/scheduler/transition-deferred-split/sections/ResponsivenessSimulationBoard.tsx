@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  CheckCircle2,
+  Compass,
+  Gauge,
+  Hourglass,
+  Loader2,
+  Search,
+  X,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TransitionDeferredContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  CompassIcon,
-  GaugeIcon,
-  HourglassIcon,
-  LoaderIcon,
-  SearchIcon,
-  XIcon,
-  ZapIcon,
-} from '../icons';
 import {
   responseCardBorder,
   responseIconBox,
@@ -51,7 +52,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GaugeIcon className="h-5 w-5" />}
+      icon={<Gauge className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_minmax(0,1fr)] gap-md items-stretch">
@@ -71,7 +72,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
               responseIconBox.rose,
             )}
           >
-            <XIcon className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </span>
           <span
             className={cn(
@@ -100,11 +101,14 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           aria-hidden="true"
           className="flex items-center gap-2 rounded-xl border border-rose-200/80 bg-white px-3 py-2 dark:border-rose-800/60 dark:bg-slate-950/40"
         >
-          <SearchIcon className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300" />
+          <Search className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300" aria-hidden="true" />
           <span className="flex-1 font-mono text-xsm text-[var(--term-fg)]">
             {content.bad.inputValue}
           </span>
-          <LoaderIcon className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300 motion-safe:animate-spin motion-reduce:animate-none" />
+          <Loader2
+            className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300 motion-safe:animate-spin motion-reduce:animate-none"
+            aria-hidden="true"
+          />
         </div>
 
         {/* skeleton list with loading text */}
@@ -115,7 +119,10 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           <SkeletonRow width={70} accent="rose" />
           <SkeletonRow width={62} accent="rose" />
           <li className="flex items-center justify-center gap-1.5 pt-1 text-rose-700 dark:text-rose-300">
-            <LoaderIcon className="h-3.5 w-3.5 motion-safe:animate-spin motion-reduce:animate-none" />
+            <Loader2
+              className="h-3.5 w-3.5 motion-safe:animate-spin motion-reduce:animate-none"
+              aria-hidden="true"
+            />
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider">
               {content.bad.loadingText}
             </span>
@@ -153,7 +160,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
               responseIconBox.emerald,
             )}
           >
-            <CheckCircleIcon className="h-5 w-5" />
+            <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           </span>
           <span
             className={cn(
@@ -182,12 +189,15 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           aria-hidden="true"
           className="flex items-center gap-2 rounded-xl border border-emerald-200/80 bg-white px-3 py-2 dark:border-emerald-800/60 dark:bg-slate-950/40"
         >
-          <SearchIcon className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300" />
+          <Search
+            className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-300"
+            aria-hidden="true"
+          />
           <span className="flex-1 font-mono text-xsm text-[var(--term-fg)] truncate">
             {content.good.inputValue}
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/80 bg-emerald-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200">
-            <ZapIcon className="h-2.5 w-2.5" />
+            <Zap className="h-2.5 w-2.5" aria-hidden="true" />
             {content.good.immediateBadge}
           </span>
         </div>
@@ -200,7 +210,10 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           <SkeletonRow width={84} accent="blue" />
           <SkeletonRow width={70} accent="blue" />
           <li className="flex items-center gap-1.5 pt-1">
-            <HourglassIcon className="h-3.5 w-3.5 text-blue-700 dark:text-blue-300" />
+            <Hourglass
+              className="h-3.5 w-3.5 text-blue-700 dark:text-blue-300"
+              aria-hidden="true"
+            />
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               {content.good.pendingText}
             </span>
@@ -225,7 +238,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <CompassIcon className="h-5 w-5" />
+            <Compass className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
             {content.howTo.title}
@@ -268,7 +281,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           {content.vsLabel}
         </span>
         <span className="h-px flex-1 bg-[var(--term-border)]" />
-        <ArrowRightIcon className="hidden h-4 w-4" />
+        <ArrowRight className="hidden h-4 w-4" aria-hidden="true" />
       </div>
     </div>
   </section>

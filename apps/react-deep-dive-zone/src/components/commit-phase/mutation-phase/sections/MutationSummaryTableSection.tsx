@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks, Pencil, Plus, Trash2 } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlagIcon, MutationPhaseContent, SummaryRow } from '../content';
-import { ListChecksIcon, PencilIcon, PlusIcon, TrashIcon } from '../icons';
 
 type Props = { content: MutationPhaseContent['summary'] };
 
-const iconMap: Record<HeroFlagIcon, typeof PencilIcon> = {
-  plus: PlusIcon,
-  pencil: PencilIcon,
-  trash: TrashIcon,
+const iconMap: Record<HeroFlagIcon, typeof Pencil> = {
+  plus: Plus,
+  pencil: Pencil,
+  trash: Trash2,
 };
 
 export const MutationSummaryTableSection = ({ content }: Props) => (
@@ -26,7 +27,7 @@ export const MutationSummaryTableSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

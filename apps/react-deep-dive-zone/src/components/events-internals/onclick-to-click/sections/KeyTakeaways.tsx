@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Trophy } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { OnClickClickContent, Tone } from '../content';
-import { TrophyIcon } from '../icons';
 
 type Props = { content: OnClickClickContent['takeaways'] };
 
@@ -49,7 +50,7 @@ export const KeyTakeaways = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">

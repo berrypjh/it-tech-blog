@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Database, Repeat } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, DatabaseIcon, RepeatIcon } from '../icons';
 import { toneAccent, toneCard, toneNumber } from '../styles';
 
 type Props = { content: AdvancedWrapupContent['replay'] };
@@ -15,7 +16,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<RepeatIcon className="h-5 w-5" />}
+      icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* 4-step flow */}
@@ -65,13 +66,13 @@ export const ReplayQueueConcept = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}
@@ -94,7 +95,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
         >
-          <DatabaseIcon className="h-4 w-4" />
+          <Database className="h-4 w-4" aria-hidden="true" />
         </span>
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
           {content.bufferLabel}

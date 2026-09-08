@@ -1,13 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Box, Boxes, Code, type LucideIcon, Monitor } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowNode } from '../content';
-import { pdIcon } from '../icons';
 
 type Props = { main: FlowNode[]; a11y: string; className?: string };
+
+const nodeIcon: Record<FlowNode['id'], LucideIcon> = {
+  'user-code': Code,
+  react: Atom,
+  reconciler: Boxes,
+  renderer: Monitor,
+  'dom-native': Box,
+};
 
 /**
  * Hero 핵심 비주얼.
@@ -33,7 +42,7 @@ export const PdHeroDiagram = ({ main, a11y, className }: Props) => (
 
 const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean }) => {
   const tone = toneTokens[node.tone];
-  const Icon = pdIcon[node.iconName];
+  const Icon = nodeIcon[node.id];
 
   return (
     <article

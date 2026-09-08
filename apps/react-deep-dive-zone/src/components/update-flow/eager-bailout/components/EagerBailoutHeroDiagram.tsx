@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Ban, CheckCircle2, Equal, GitCompare } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EagerBailoutContent } from '../content';
-import { BanIcon, CheckCircleIcon, EqualIcon, GitCompareIcon } from '../icons';
 
 type Props = { content: EagerBailoutContent['hero']; className?: string };
 
@@ -42,14 +43,14 @@ export const EagerBailoutHeroDiagram = ({ content, className }: Props) => {
             branch={d.leftBranch}
             title={d.leftResultTitle}
             body={d.leftResultBody}
-            icon={<CheckCircleIcon className="h-[18px] w-[18px]" />}
+            icon={<CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <ResultCard
             tone="violet"
             branch={d.rightBranch}
             title={d.rightResultTitle}
             body={d.rightResultBody}
-            icon={<BanIcon className="h-[18px] w-[18px] rotate-12" />}
+            icon={<Ban className="h-[18px] w-[18px] rotate-12" aria-hidden="true" />}
           />
         </div>
       </div>
@@ -101,10 +102,10 @@ const CompareCard = ({
 const DecisionChip = ({ symbol, question }: { symbol: string; question: string }) => (
   <div className="flex items-center justify-center gap-sm">
     <ToneIconBox tone="sky" size="sm">
-      <EqualIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <Equal className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className="inline-flex items-center gap-2 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-3 py-1 font-mono text-xsm font-bold text-[var(--term-fg)]">
-      <GitCompareIcon aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-accent)]" />
+      <GitCompare aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-accent)]" />
       <span className="text-[var(--term-muted)]">{symbol}</span>
       {question}
     </span>

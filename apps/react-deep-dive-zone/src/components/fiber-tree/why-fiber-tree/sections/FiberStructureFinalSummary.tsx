@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Fingerprint, Flag, Layers, List, Network, Zap } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberCentralContent } from '../content';
-import {
-  DatabaseIcon,
-  FingerprintIcon,
-  FlagIcon,
-  LayersIcon,
-  ListIcon,
-  NetworkIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FiberCentralContent['summary'] };
 
 const iconMap = {
-  fingerprint: FingerprintIcon,
-  network: NetworkIcon,
-  database: DatabaseIcon,
-  list: ListIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
+  fingerprint: Fingerprint,
+  network: Network,
+  database: Database,
+  list: List,
+  flag: Flag,
+  zap: Zap,
 } as const;
 
 export const FiberStructureFinalSummary = ({ content }: Props) => (
@@ -32,7 +25,7 @@ export const FiberStructureFinalSummary = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

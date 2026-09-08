@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Layers, Lightbulb, Zap } from 'lucide-react';
+
 import {
   axisCardBorder,
   axisIconBox,
@@ -8,7 +10,6 @@ import {
   axisTextStrong,
 } from '../../_shared/axisAccent';
 import type { ThreePriorityAxesContent } from '../content';
-import { ClockIcon, LayersIcon, LightbulbIcon, ZapIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['detail'] };
 
@@ -58,7 +59,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
               axisIconBox.blue,
             )}
           >
-            <ZapIcon className="h-4 w-4" />
+            <Zap className="h-4 w-4" aria-hidden="true" />
           </span>
           <h2
             id="heading-event-priority"
@@ -128,7 +129,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
               axisIconBox.teal,
             )}
           >
-            <LayersIcon className="h-4 w-4" />
+            <Layers className="h-4 w-4" aria-hidden="true" />
           </span>
           <h2
             id="heading-lane"
@@ -195,7 +196,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
             'dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',
           )}
         >
-          <LightbulbIcon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+          <Lightbulb aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
           <p className="text-[11px] sm:text-xsm leading-relaxed break-keep">{content.lane.note}</p>
         </aside>
       </article>
@@ -227,7 +228,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
               axisIconBox.violet,
             )}
           >
-            <ClockIcon className="h-4 w-4" />
+            <Clock3 className="h-4 w-4" aria-hidden="true" />
           </span>
           <h2
             id="heading-scheduler-priority"
@@ -275,7 +276,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
             'dark:border-violet-700/60 dark:bg-violet-950/30 dark:text-violet-100',
           )}
         >
-          <LightbulbIcon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+          <Lightbulb aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
           <p className="text-[11px] sm:text-xsm leading-relaxed break-keep">
             {content.scheduler.note}
           </p>

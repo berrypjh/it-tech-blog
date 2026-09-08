@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, File, Route } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { NotAllFilesContent } from '../content';
-import { ArrowRightIcon, FileIcon, RouteIcon } from '../icons';
 
 type Props = { content: NotAllFilesContent['mapping'] };
 
@@ -16,7 +17,7 @@ const FilePill = ({ name, cls }: { name: string; cls: string }) => (
       cls,
     )}
   >
-    <FileIcon className="h-3 w-3 shrink-0" />
+    <File className="h-3 w-3 shrink-0" aria-hidden="true" />
     <span className="[overflow-wrap:anywhere]">{name}</span>
   </span>
 );
@@ -42,7 +43,7 @@ export const QuestionToSourceMap = ({ content }: Props) => {
         id="mapping"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RouteIcon className="h-5 w-5" />}
+        icon={<Route className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* legend */}
@@ -54,12 +55,12 @@ export const QuestionToSourceMap = ({ content }: Props) => {
           />
           {content.labels.question}
         </span>
-        <ArrowRightIcon className="h-3 w-3" />
+        <ArrowRight className="h-3 w-3" aria-hidden="true" />
         <span className="inline-flex items-center gap-1">
-          <FileIcon className="h-3 w-3" />
+          <File className="h-3 w-3" aria-hidden="true" />
           {content.labels.file}
         </span>
-        <ArrowRightIcon className="h-3 w-3" />
+        <ArrowRight className="h-3 w-3" aria-hidden="true" />
         <span className="inline-flex items-center gap-1">
           <span aria-hidden="true" className="text-[8px] opacity-60">
             fn

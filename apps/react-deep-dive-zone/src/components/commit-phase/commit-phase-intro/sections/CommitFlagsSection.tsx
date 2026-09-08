@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, Flag, Lightbulb, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, FlagRow } from '../content';
-import { FileCodeIcon, FlagIcon, LightbulbIcon, SparklesIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['flags'] };
 
@@ -19,7 +20,7 @@ export const CommitFlagsSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<FlagIcon className="h-5 w-5" />}
+      icon={<Flag className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)] gap-3">
@@ -49,7 +50,7 @@ const RelatedFilesCard = ({
   <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center gap-2">
       <ToneIconBox tone="violet" size="sm">
-        <FileCodeIcon className="h-4 w-4" />
+        <FileCode className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">{title}</h3>
     </header>
@@ -64,7 +65,7 @@ const RelatedFilesCard = ({
             aria-hidden="true"
             className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)]"
           >
-            <FileCodeIcon className="h-3.5 w-3.5" />
+            <FileCode className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <div className="flex flex-col min-w-0">
             <code className="text-xsm font-bold font-mono text-[var(--term-fg)] break-all">
@@ -93,7 +94,7 @@ const LearningPointCard = ({ title, items }: { title: string; items: string[] })
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="sky" size="sm">
-          <LightbulbIcon className="h-4 w-4" />
+          <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
       </header>
@@ -149,7 +150,7 @@ const FlagTableCard = ({
         toneTokens.amber.fill.bg,
       )}
     >
-      <SparklesIcon
+      <Sparkles
         aria-hidden="true"
         className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', toneTokens.amber.text)}
       />
@@ -177,7 +178,7 @@ const FlagRowItem = ({ row }: { row: FlagRow }) => {
             t.chip,
           )}
         >
-          <FlagIcon className="h-3.5 w-3.5" />
+          <Flag className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
         <code className={cn('text-xsm font-bold font-mono break-all', t.text)}>{row.name}</code>
       </div>

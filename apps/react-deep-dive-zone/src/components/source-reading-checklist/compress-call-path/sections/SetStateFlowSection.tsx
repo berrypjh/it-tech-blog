@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, RefreshCw, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CallPathCompressionContent } from '../content';
-import { ArrowDownIcon, RefreshIcon, SparkIcon } from '../icons';
 import { getStepClasses, StepBadge } from '../StepBadge';
 
 type Props = { content: CallPathCompressionContent['setStateFlow'] };
@@ -21,7 +22,7 @@ export const SetStateFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<RefreshIcon className="h-5 w-5" />}
+        icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_7fr)_minmax(0,_5fr)] gap-md lg:gap-lg items-start">
@@ -75,7 +76,7 @@ export const SetStateFlowSection = ({ content }: Props) => {
                 </li>
                 {!isLast && (
                   <span aria-hidden="true" className="flex items-center justify-center py-1">
-                    <ArrowDownIcon className="h-3.5 w-3.5 text-cyan-500" />
+                    <ArrowDown className="h-3.5 w-3.5 text-cyan-500" aria-hidden="true" />
                   </span>
                 )}
               </Fragment>
@@ -101,7 +102,7 @@ export const SetStateFlowSection = ({ content }: Props) => {
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
               )}
             >
-              <SparkIcon className="h-4 w-4" />
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-blue-800 dark:text-blue-100 uppercase tracking-wider">
               {content.summaryLabel}

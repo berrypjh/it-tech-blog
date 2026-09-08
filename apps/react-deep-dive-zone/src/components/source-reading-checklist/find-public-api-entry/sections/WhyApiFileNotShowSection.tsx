@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, DoorOpen, FileCode2, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent } from '../content';
-import { ArrowRightIcon, DoorOpenIcon, FileCodeIcon, SparkIcon } from '../icons';
 
 type Props = { content: FindPublicApiEntryContent['whyApiFile'] };
 
@@ -21,7 +22,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<DoorOpenIcon className="h-5 w-5" />}
+        icon={<DoorOpen className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Main statement card */}
@@ -44,7 +45,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
               'shadow-[0_2px_0_var(--term-border)]',
             )}
           >
-            <DoorOpenIcon className="h-6 w-6" />
+            <DoorOpen className="h-6 w-6" aria-hidden="true" />
           </span>
           <div className="flex flex-col gap-1.5">
             <h3
@@ -99,7 +100,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
                         t.chip,
                       )}
                     >
-                      <FileCodeIcon className="h-3.5 w-3.5" />
+                      <FileCode2 className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                   </div>
 
@@ -125,7 +126,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
 
               {!isLast && (
                 <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
-                  <ArrowRightIcon className="h-5 w-5 text-cyan-500" />
+                  <ArrowRight className="h-5 w-5 text-cyan-500" aria-hidden="true" />
                 </li>
               )}
             </Fragment>
@@ -151,7 +152,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
             'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
           )}
         >
-          <SparkIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug break-keep">{content.emphasis}</p>
       </aside>

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CoreFiveItem, FiberWhyNeededContent } from '../content';
-import { ListChecksIcon } from '../icons';
 
 type Props = { content: FiberWhyNeededContent['coreFive'] };
 
@@ -18,7 +19,7 @@ export const ChapterCoreFive = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="flex flex-col gap-sm">

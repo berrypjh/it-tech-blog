@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { LayoutPanelTop, MessageSquareWarning, Search, Sparkles } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementOwnerDevInfoContent } from '../content';
-import { MessageIcon, PanelIcon, SearchIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['benefits'] };
 
 const iconMap = {
-  message: MessageIcon,
-  search: SearchIcon,
-  panel: PanelIcon,
+  message: MessageSquareWarning,
+  search: Search,
+  panel: LayoutPanelTop,
 } as const;
 
 export const DebugExperienceBenefits = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const DebugExperienceBenefits = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Cable, Cpu, FileCode2, Plug, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FindPublicApiEntryContent } from '../content';
-import { ArrowRightIcon, CableIcon, CpuIcon, FileCodeIcon, PlugIcon, SparkIcon } from '../icons';
 
 type Props = { content: FindPublicApiEntryContent['bridge'] };
 
@@ -14,7 +15,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<CableIcon className="h-5 w-5" />}
+        icon={<Cable className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -45,7 +46,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                     'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
                   )}
                 >
-                  <PlugIcon className="h-4 w-4" />
+                  <Plug className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <h3
                   id="bridge-left-title"
@@ -73,7 +74,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                 'font-mono text-[11px] text-[var(--term-fg)]',
               )}
             >
-              <FileCodeIcon className="h-3 w-3 shrink-0 text-blue-500" aria-hidden="true" />
+              <FileCode2 className="h-3 w-3 shrink-0 text-blue-500" aria-hidden="true" />
               <span className="whitespace-nowrap">{content.leftFile}</span>
             </code>
 
@@ -104,7 +105,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                 {content.bridgeSub}
               </span>
               <code className="font-mono text-xsm font-bold inline-flex items-center gap-1">
-                <ArrowRightIcon className="h-3 w-3" aria-hidden="true" />
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
                 {content.bridgeLabel}
               </code>
             </div>
@@ -130,7 +131,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                     'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
                   )}
                 >
-                  <CpuIcon className="h-4 w-4" />
+                  <Cpu className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <h3
                   id="bridge-right-title"
@@ -158,7 +159,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                 'font-mono text-[11px] text-[var(--term-fg)]',
               )}
             >
-              <FileCodeIcon className="h-3 w-3 shrink-0 text-violet-500" aria-hidden="true" />
+              <FileCode2 className="h-3 w-3 shrink-0 text-violet-500" aria-hidden="true" />
               <span className="whitespace-nowrap">{content.rightFile}</span>
             </code>
 
@@ -184,7 +185,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
               'border border-cyan-400/60 bg-cyan-500/15 text-cyan-200',
             )}
           >
-            <SparkIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
           </span>
           <p className="text-sm sm:text-md font-bold leading-snug break-keep">
             <span className="bg-gradient-to-r from-blue-300 to-violet-300 bg-clip-text text-transparent">

@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code, Link2, Package, Sparkles } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementRefReact19Content } from '../content';
-import { CodeIcon, LinkIcon, PackageIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ReactElementRefReact19Content['benefits'] };
 
 const iconMap = {
-  code: CodeIcon,
-  link: LinkIcon,
-  package: PackageIcon,
+  code: Code,
+  link: Link2,
+  package: Package,
 } as const;
 
 export const RefBenefits = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const RefBenefits = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

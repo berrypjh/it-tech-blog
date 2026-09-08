@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Camera, Eye } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, SnapshotFlowStep } from '../content';
-import { CameraIcon, EyeIcon } from '../icons';
 
 type Props = { content: BeforeMutationContent['snapshot'] };
 
@@ -18,7 +19,7 @@ export const SnapshotConceptSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CameraIcon className="h-5 w-5" />}
+      icon={<Camera className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)_minmax(0,_1.1fr)] gap-3 items-stretch">
@@ -134,7 +135,7 @@ const FlowStepCard = ({ step, index }: { step: SnapshotFlowStep; index: number }
           step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
-        {step.active ? <EyeIcon className="h-3.5 w-3.5" /> : String(index)}
+        {step.active ? <Eye className="h-3.5 w-3.5" aria-hidden="true" /> : String(index)}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <span

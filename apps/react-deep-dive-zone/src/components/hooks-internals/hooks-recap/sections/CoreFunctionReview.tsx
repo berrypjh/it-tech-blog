@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksRecapContent } from '../content';
-import { FileSearchIcon } from '../icons';
 
 import { toneDot, toneText } from './_shared/tones';
 
@@ -20,7 +21,7 @@ export const CoreFunctionReview = ({ content }: Props) => (
       id="functions"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FileSearchIcon className="h-5 w-5" />}
+      icon={<FileSearch className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}

@@ -1,27 +1,28 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Atom,
+  Boxes,
+  FileCode2,
+  GitBranch,
+  Monitor,
+  Puzzle,
+  ScanSearch,
+  Timer,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorePackage, FollowPackageBoundaryContent, PackageIconKey } from '../content';
-import {
-  AtomIcon,
-  BoxesIcon,
-  FileCodeIcon,
-  GitBranchIcon,
-  MonitorIcon,
-  PuzzleIcon,
-  ScanSearchIcon,
-  TimerIcon,
-} from '../icons';
 import { getPackageClasses, PackageBadge } from '../PackageBadge';
 
 type Props = { content: FollowPackageBoundaryContent['coreMap'] };
 
 const iconMap: Record<PackageIconKey, React.ComponentType<{ className?: string }>> = {
-  atom: AtomIcon,
-  monitor: MonitorIcon,
-  gitBranch: GitBranchIcon,
-  timer: TimerIcon,
-  puzzle: PuzzleIcon,
+  atom: Atom,
+  monitor: Monitor,
+  gitBranch: GitBranch,
+  timer: Timer,
+  puzzle: Puzzle,
 };
 
 export const CorePackageMapSection = ({ content }: Props) => {
@@ -39,7 +40,7 @@ export const CorePackageMapSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BoxesIcon className="h-5 w-5" />}
+        icon={<Boxes className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Spotlight: react-reconciler full width */}
@@ -133,10 +134,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
             </p>
 
             <div className="mt-auto flex items-start gap-2 rounded-md border border-dashed p-3 border-[var(--term-border)] bg-[var(--term-surface)]">
-              <ScanSearchIcon
-                className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)}
-                aria-hidden="true"
-              />
+              <ScanSearch className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] block mb-1">
                   {readingPointLabel}
@@ -163,7 +161,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
                       'font-mono text-[11px] text-[var(--term-fg)]',
                     )}
                   >
-                    <FileCodeIcon className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
+                    <FileCode2 className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
                     <span className="whitespace-nowrap">{file}</span>
                   </code>
                 </li>
@@ -222,7 +220,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
                   'font-mono text-[10.5px] text-[var(--term-fg)]',
                 )}
               >
-                <FileCodeIcon className={cn('h-2.5 w-2.5 shrink-0', t.text)} aria-hidden="true" />
+                <FileCode2 className={cn('h-2.5 w-2.5 shrink-0', t.text)} aria-hidden="true" />
                 <span className="whitespace-nowrap">{file}</span>
               </code>
             </li>
@@ -231,7 +229,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
       </div>
 
       <div className="mt-auto pt-sm flex items-start gap-1.5 border-t border-dashed border-[var(--term-border)]">
-        <ScanSearchIcon className={cn('h-3 w-3 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+        <ScanSearch className={cn('h-3 w-3 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
         <p className="text-[10.5px] leading-relaxed text-[var(--term-muted)] break-keep">
           {pkg.readingPoint}
         </p>

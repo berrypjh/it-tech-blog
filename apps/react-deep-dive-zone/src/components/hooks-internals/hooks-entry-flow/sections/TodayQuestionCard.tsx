@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Search, Sparkles, Target } from 'lucide-react';
+
 import type { HooksEntryFlowContent } from '../content';
-import { HelpCircleIcon, SearchIcon, SparklesIcon, TargetIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['question'] };
 
@@ -12,7 +13,7 @@ const toneStyle: Record<string, string> = {
     'border-emerald-200/80 bg-white text-emerald-700 dark:border-emerald-800/60 dark:bg-slate-950/40 dark:text-emerald-200',
 };
 
-const goalIcons = [SearchIcon, TargetIcon, SparklesIcon];
+const goalIcons = [Search, Target, Sparkles];
 
 export const TodayQuestionCard = ({ content }: Props) => (
   <section
@@ -33,7 +34,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
           'dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.5} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.5} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">
@@ -51,7 +52,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
 
     <ul className="mt-md sm:mt-lg flex flex-wrap items-center gap-2 sm:gap-3">
       {content.goals.map((goal, i) => {
-        const Icon = goalIcons[i] ?? SparklesIcon;
+        const Icon = goalIcons[i] ?? Sparkles;
         return (
           <li
             key={goal.label}

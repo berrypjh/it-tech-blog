@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, GitBranch, Monitor } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompareCard, PerformUnitContent } from '../content';
-import { DatabaseIcon, GitBranchIcon, MonitorIcon } from '../icons';
 
 type Props = { content: PerformUnitContent['compare'] };
 
@@ -15,7 +16,7 @@ export const CurrentWorkInProgressCompare = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
@@ -31,7 +32,7 @@ export const CurrentWorkInProgressCompare = ({ content }: Props) => (
           'md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2',
         )}
       >
-        <GitBranchIcon aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-muted)]" />
+        <GitBranch aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-muted)]" />
         <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {content.relationLabel}
         </span>
@@ -44,7 +45,7 @@ const Card = ({ card }: { card: CompareCard }) => {
   const isCurrent = card.kind === 'current';
   const tone: ToneKey = isCurrent ? 'teal' : 'violet';
   const t = toneTokens[tone];
-  const Icon = isCurrent ? DatabaseIcon : MonitorIcon;
+  const Icon = isCurrent ? Database : Monitor;
   return (
     <article
       className={cn(

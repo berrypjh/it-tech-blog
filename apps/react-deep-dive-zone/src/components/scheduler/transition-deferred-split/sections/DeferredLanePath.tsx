@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Network } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TransitionDeferredContent } from '../content';
-import { ClockIcon, NetworkIcon } from '../icons';
 
 type Props = { content: TransitionDeferredContent['deferredTimeline'] };
 
@@ -28,7 +29,7 @@ export const DeferredLanePath = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -40,7 +41,7 @@ export const DeferredLanePath = ({ content }: Props) => (
       {/* legend */}
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <ClockIcon aria-hidden="true" className="h-5 w-5 text-[var(--term-muted)]" />
+          <Clock3 aria-hidden="true" className="h-5 w-5 text-[var(--term-muted)]" />
           <span className="font-mono text-xsm font-bold text-[var(--term-fg)]">timeline</span>
         </div>
         <ul className="flex flex-wrap gap-2">

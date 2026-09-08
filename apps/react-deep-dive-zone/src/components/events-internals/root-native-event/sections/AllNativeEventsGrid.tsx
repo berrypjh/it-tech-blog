@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Container, Network } from 'lucide-react';
+
 import type { RootNativeEventContent } from '../content';
-import { CheckCircleIcon, ContainerIcon, NetworkIcon } from '../icons';
 import { ListenerPill } from '../ListenerPill';
 import { NumberedSectionHeader } from '../NumberedSectionHeader';
 
@@ -14,7 +15,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -30,7 +31,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-white shadow-[0_3px_0_rgba(13,148,136,0.3)] dark:bg-teal-400 dark:text-slate-900"
         >
-          <ContainerIcon className="h-5 w-5" />
+          <Container className="h-5 w-5" aria-hidden="true" />
         </span>
         <code className="rounded-full border border-teal-300/80 bg-white px-3 py-1 font-mono text-xsm sm:text-sm font-bold text-teal-700 shadow-sm dark:bg-slate-950/40 dark:border-teal-700/60 dark:text-teal-200">
           {content.rootLabel}
@@ -58,7 +59,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
           aria-hidden="true"
           className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-500 text-white shadow-[0_2px_0_rgba(13,148,136,0.3)] dark:bg-teal-400 dark:text-slate-900"
         >
-          <CheckCircleIcon className="h-5 w-5" strokeWidth={2.4} />
+          <CheckCircle2 className="h-5 w-5" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <p className="text-xsm sm:text-sm font-bold leading-relaxed text-teal-900 dark:text-teal-100 break-keep">
           {content.emphasis}

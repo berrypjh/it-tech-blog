@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, HelpCircle, Workflow } from 'lucide-react';
+
 import type { WhyFailableRenderContent } from '../content';
-import { ArrowRightIcon, HelpCircleIcon, WorkflowIcon } from '../icons';
 import { toneChip } from '../tone';
 
 type Props = {
@@ -27,7 +28,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
           aria-hidden="true"
           className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
         >
-          <HelpCircleIcon className="h-5 w-5" />
+          <HelpCircle className="h-5 w-5" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
@@ -85,7 +86,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
           aria-hidden="true"
           className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-100 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/60 dark:text-emerald-200"
         >
-          <WorkflowIcon className="h-5 w-5" />
+          <Workflow className="h-5 w-5" aria-hidden="true" />
         </span>
         <h2 className="text-md sm:text-lg font-bold text-[var(--term-fg)] break-keep">
           {normalRender.title}
@@ -105,7 +106,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
               {step.label}
             </span>
             {i < normalRender.steps.length - 1 && (
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className="h-4 w-4 text-slate-400 dark:text-slate-500"
               />

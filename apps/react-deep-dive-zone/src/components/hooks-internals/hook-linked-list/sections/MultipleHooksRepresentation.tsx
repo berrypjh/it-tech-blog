@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HookLinkedListContent } from '../content';
-import { BoxesIcon } from '../icons';
 
 type Props = { content: HookLinkedListContent['multipleHooks'] };
 
@@ -19,7 +20,7 @@ export const MultipleHooksRepresentation = ({ content }: Props) => (
       id="multiple"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BoxesIcon className="h-5 w-5" />}
+      icon={<Boxes className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

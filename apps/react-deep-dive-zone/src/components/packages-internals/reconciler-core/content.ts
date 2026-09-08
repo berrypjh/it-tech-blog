@@ -2,28 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type ReconcilerIconName =
-  | 'arrowRight'
-  | 'atom'
-  | 'box'
-  | 'cube'
-  | 'check'
-  | 'clock'
-  | 'code'
-  | 'commit'
-  | 'fileCode'
-  | 'fileText'
-  | 'gitBranch'
-  | 'helpCircle'
-  | 'layers'
-  | 'lightbulb'
-  | 'monitor'
-  | 'network'
-  | 'question'
-  | 'search'
-  | 'sliders'
-  | 'workflow';
-
 export type CodeField = { name: string; value: string; comment?: string };
 
 export type PositionCard = {
@@ -31,34 +9,29 @@ export type PositionCard = {
   name: string;
   subtitle: string;
   description: string;
-  iconName: ReconcilerIconName;
   tone: ToneKey;
 };
 
 export type ResponsibilityCard = {
-  id: string;
+  id: 'convert' | 'traverse' | 'compute' | 'commit';
   number: string;
   title: string;
   description: string;
-  iconName: ReconcilerIconName;
   tone: ToneKey;
 };
 
 export type AdvancedLink = {
-  id: string;
+  id: 'component-fiber' | 'fiber-tree' | 'render-phase' | 'commit-phase';
   title: string;
   description: string;
-  iconName: ReconcilerIconName;
   tone: ToneKey;
   href: string;
 };
 
 export type CheckpointItem = {
-  id: 'file' | 'function' | 'question';
+  id: 'file' | 'function';
   label: string;
   value: string;
-  iconName: ReconcilerIconName;
-  tone: ToneKey;
 };
 
 export type ReconcilerContent = {
@@ -118,11 +91,6 @@ export type ReconcilerContent = {
     description: string;
     cards: AdvancedLink[];
     moreLabel: string;
-  };
-  concept: {
-    eyebrow: string;
-    title: string;
-    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -271,7 +239,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'react',
           subtitle: '사용자 API',
           description: 'useState, useEffect, createElement 등 사용자가 직접 쓰는 API',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -279,7 +246,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'react-reconciler',
           subtitle: '렌더링 알고리즘',
           description: 'Element → Fiber 변환, 트리 순회, 변경 계산, 작업 계획 수립',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -287,7 +253,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'renderer',
           subtitle: '환경별 출력',
           description: 'DOM, Native 등 실제 환경에 반영',
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],
@@ -303,7 +268,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '1',
           title: 'Element를 Fiber로 바꾼다.',
           description: 'JSX/Element를 렌더링 작업 단위인 Fiber로 변환한다.',
-          iconName: 'cube',
           tone: 'cyan',
         },
         {
@@ -311,7 +275,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '2',
           title: 'Fiber 트리를 순회한다.',
           description: '현재 트리와 다음 트리를 비교하고 필요한 위치를 탐색한다.',
-          iconName: 'network',
           tone: 'teal',
         },
         {
@@ -319,7 +282,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '3',
           title: '필요한 변경을 계산한다.',
           description: '추가, 삭제, 업데이트 등 변경 목록을 계산한다.',
-          iconName: 'sliders',
           tone: 'violet',
         },
         {
@@ -327,7 +289,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '4',
           title: 'commit 단계가 사용할 정보를 준비한다.',
           description: '변경 목록과 effect 정보를 commit 단계로 전달한다.',
-          iconName: 'commit',
           tone: 'amber',
         },
       ],
@@ -355,22 +316,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'file',
           label: '파일',
           value: 'packages/react-reconciler/src/ReactFiber.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'function',
           label: '볼 함수',
           value: 'createFiberFromElement',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: '학습 질문',
-          value: 'React는 Element에서 어떤 정보를 꺼내 Fiber를 만들까?',
-          iconName: 'workflow',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
@@ -388,7 +338,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'component-fiber',
           title: '컴포넌트는 어떻게 Fiber가 되는가?',
           description: 'Function / Class / Host 컴포넌트를 Fiber 생성 로직으로 이해',
-          iconName: 'atom',
           tone: 'sky',
           href: '/element-vs-fiber',
         },
@@ -396,7 +345,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'fiber-tree',
           title: 'Fiber 트리와 렌더링 자료구조',
           description: 'return / child / sibling / alternate 등 핵심 구조 파악',
-          iconName: 'gitBranch',
           tone: 'cyan',
           href: '/fiber-node',
         },
@@ -404,7 +352,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'render-phase',
           title: 'Reconciler와 Render Phase',
           description: 'beginWork, completeWork 흐름과 업데이트 처리 이해',
-          iconName: 'sliders',
           tone: 'violet',
           href: '/render-phase',
         },
@@ -412,20 +359,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'commit-phase',
           title: 'Commit Phase와 실제 DOM 반영',
           description: 'Effect 목록, Mutation, Layout, Passive 효과 흐름 이해',
-          iconName: 'clock',
           tone: 'amber',
           href: '/commit-phase',
         },
       ],
       moreLabel: '자세히 보기',
-    },
-    concept: {
-      eyebrow: '06 · 핵심 정리',
-      title: '기억할 한 가지',
-      lines: [
-        'Element는 UI 설명 객체, Fiber는 렌더링을 처리하는 작업 단위입니다.',
-        'Element는 불변의 요청서에 가깝고, Fiber는 그 요청을 처리하기 위해 상태를 가지고 진행되는 작업 단위입니다.',
-      ],
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -468,7 +406,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'react',
           subtitle: 'User API',
           description: 'useState, useEffect, createElement — the surface developers use directly',
-          iconName: 'atom',
           tone: 'sky',
         },
         {
@@ -476,7 +413,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'react-reconciler',
           subtitle: 'Rendering algorithm',
           description: 'Element → Fiber conversion, tree traversal, diffing, work planning',
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -484,7 +420,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           name: 'renderer',
           subtitle: 'Per-environment output',
           description: 'Applies results to DOM, Native, and other targets',
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],
@@ -501,7 +436,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '1',
           title: 'Convert Elements into Fibers.',
           description: 'JSX/Elements become Fibers — the unit of rendering work.',
-          iconName: 'cube',
           tone: 'cyan',
         },
         {
@@ -509,7 +443,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '2',
           title: 'Traverse the Fiber tree.',
           description: 'Walk the current and next tree, locate the spots that need work.',
-          iconName: 'network',
           tone: 'teal',
         },
         {
@@ -517,7 +450,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '3',
           title: 'Compute the required changes.',
           description: 'Compile additions, removals and updates into a change list.',
-          iconName: 'sliders',
           tone: 'violet',
         },
         {
@@ -525,7 +457,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           number: '4',
           title: 'Prepare information for commit.',
           description: 'Hand the change list and effect info to the commit phase.',
-          iconName: 'commit',
           tone: 'amber',
         },
       ],
@@ -554,22 +485,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'file',
           label: 'File',
           value: 'packages/react-reconciler/src/ReactFiber.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'function',
           label: 'Function',
           value: 'createFiberFromElement',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: 'Question',
-          value: 'Which fields does React pull off the Element to build a Fiber?',
-          iconName: 'workflow',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/react-reconciler/src/ReactFiber.js',
@@ -587,7 +507,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'component-fiber',
           title: 'How components become Fibers',
           description: 'Function / Class / Host components through the Fiber creation lens',
-          iconName: 'atom',
           tone: 'sky',
           href: '/element-vs-fiber',
         },
@@ -595,7 +514,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'fiber-tree',
           title: 'Fiber tree & rendering data structures',
           description: 'return / child / sibling / alternate and friends',
-          iconName: 'gitBranch',
           tone: 'cyan',
           href: '/fiber-node',
         },
@@ -603,7 +521,6 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'render-phase',
           title: 'Reconciler & render phase',
           description: 'beginWork, completeWork and update flow',
-          iconName: 'sliders',
           tone: 'violet',
           href: '/render-phase',
         },
@@ -611,20 +528,11 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
           id: 'commit-phase',
           title: 'Commit phase & real DOM updates',
           description: 'Effect list, mutation, layout and passive effects',
-          iconName: 'clock',
           tone: 'amber',
           href: '/commit-phase',
         },
       ],
       moreLabel: 'Read more',
-    },
-    concept: {
-      eyebrow: '06 · KEY TAKEAWAY',
-      title: 'One thing to remember',
-      lines: [
-        'Element is a UI description object; Fiber is the work unit that runs the rendering.',
-        'Element is an immutable request slip; Fiber carries state to actually run the work for that request.',
-      ],
     },
     nextStep: {
       eyebrow: 'The journey continues',

@@ -4,21 +4,15 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Code2, Sparkles, Split, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksEntryFlowContent, TabKey } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CodeIcon,
-  SparklesIcon,
-  SplitIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: HooksEntryFlowContent['tabs'] };
 
 const stepAccents = ['violet', 'cyan', 'emerald'] as const;
-const stepIcons = [CodeIcon, SplitIcon, WorkflowIcon];
+const stepIcons = [Code2, Split, Workflow];
 
 const accentMap: Record<(typeof stepAccents)[number], { card: string; icon: string }> = {
   violet: {
@@ -52,7 +46,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Tab strip */}
@@ -105,7 +99,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
         <ol className="grid grid-cols-1 lg:grid-cols-3 gap-3 relative">
           {flow.steps.map((step, i) => {
             const accent = accentMap[stepAccents[i] ?? 'violet'];
-            const Icon = stepIcons[i] ?? CodeIcon;
+            const Icon = stepIcons[i] ?? Code2;
             const isLast = i === flow.steps.length - 1;
             return (
               <li
@@ -142,13 +136,13 @@ export const HookConnectionTabs = ({ content }: Props) => {
                       aria-hidden="true"
                       className="hidden lg:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                     >
-                      <ArrowRightIcon className="h-3.5 w-3.5" />
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                     <span
                       aria-hidden="true"
                       className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                     >
-                      <ArrowDownIcon className="h-4 w-4" />
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </>
                 )}
@@ -170,7 +164,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
               aria-hidden="true"
               className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-500 text-white dark:bg-blue-400 dark:text-slate-900"
             >
-              <WorkflowIcon className="h-4 w-4" />
+              <Workflow className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="flex flex-col gap-1 min-w-0">
               <h4 className="text-xsm sm:text-sm font-bold text-blue-800 dark:text-blue-100">

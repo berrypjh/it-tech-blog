@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Braces, CheckCircle2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, BracesIcon, CheckCircleIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['example'] };
 
@@ -20,7 +21,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BracesIcon className="h-5 w-5" />}
+      icon={<Braces className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -66,7 +67,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="emerald" size="md">
-          <CheckCircleIcon className="h-5 w-5" />
+          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <code className={cn('font-mono text-sm sm:text-md font-bold break-all', emerald.fill.text)}>
           {content.keyPointTitle}
@@ -100,8 +101,8 @@ const Connector = () => (
   <div className="flex items-center justify-center py-1 lg:py-0" aria-hidden="true">
     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]">
       <span className="contents">
-        <ArrowDownIcon className="h-4 w-4 lg:hidden" />
-        <ArrowRightIcon className="h-4 w-4 hidden lg:block" />
+        <ArrowDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
+        <ArrowRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
       </span>
     </span>
   </div>

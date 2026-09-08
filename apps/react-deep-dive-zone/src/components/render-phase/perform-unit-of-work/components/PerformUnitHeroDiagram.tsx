@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, Box, HelpCircle, Settings } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent } from '../content';
-import { ArrowDownIcon, ArrowUpIcon, BoxIcon, HelpCircleIcon, SettingsIcon } from '../icons';
 
 type Props = { content: PerformUnitContent['hero'] };
 
@@ -32,7 +33,7 @@ export const PerformUnitHeroDiagram = ({ content }: Props) => {
 
         <StepRow
           tone="sky"
-          icon={<BoxIcon className="h-[18px] w-[18px]" />}
+          icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={diagram.step1.title}
         />
 
@@ -40,7 +41,7 @@ export const PerformUnitHeroDiagram = ({ content }: Props) => {
 
         <StepRow
           tone="sky"
-          icon={<SettingsIcon className="h-[18px] w-[18px]" />}
+          icon={<Settings className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={diagram.step2.title}
         />
 
@@ -53,14 +54,14 @@ export const PerformUnitHeroDiagram = ({ content }: Props) => {
         <div className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
           <BranchCard
             tone="teal"
-            icon={<ArrowDownIcon className="h-[18px] w-[18px]" />}
+            icon={<ArrowDown className="h-[18px] w-[18px]" aria-hidden="true" />}
             label={diagram.yes.label}
             title={diagram.yes.title}
             description={diagram.yes.description}
           />
           <BranchCard
             tone="violet"
-            icon={<ArrowUpIcon className="h-[18px] w-[18px]" />}
+            icon={<ArrowUp className="h-[18px] w-[18px]" aria-hidden="true" />}
             label={diagram.no.label}
             title={diagram.no.title}
             description={diagram.no.description}
@@ -108,7 +109,7 @@ const DecisionRow = ({ title }: { title: string }) => (
     )}
   >
     <ToneIconBox tone="indigo" size="sm">
-      <HelpCircleIcon className="h-[18px] w-[18px]" />
+      <HelpCircle className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.indigo.text)}>
       {title}

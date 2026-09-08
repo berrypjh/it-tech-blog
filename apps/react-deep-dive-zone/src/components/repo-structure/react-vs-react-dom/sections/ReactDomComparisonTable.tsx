@@ -1,8 +1,9 @@
+import { FileCode2 } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactVsReactDomContent } from '../content';
-import { FileCodeIcon } from '../icons';
 
 type Props = { content: ReactVsReactDomContent['comparison'] };
 
@@ -21,7 +22,7 @@ export const ReactDomComparisonTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

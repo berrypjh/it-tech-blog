@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Cable, Database, HelpCircle, Inbox } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ValueClassificationContent } from '../content';
-import { AlertTriangleIcon, CableIcon, DatabaseIcon, HelpCircleIcon, InboxIcon } from '../icons';
 import { getValueClasses, ValueBadge } from '../ValueBadge';
 
 type Props = { content: ValueClassificationContent['confusedValues'] };
 
 const cardIcon = {
-  stateNode: CableIcon,
-  updateQueue: InboxIcon,
-  memoizedState: DatabaseIcon,
+  stateNode: Cable,
+  updateQueue: Inbox,
+  memoizedState: Database,
 } as const;
 
 export const ConfusedValuesSection = ({ content }: Props) => {
@@ -21,7 +22,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<AlertTriangleIcon className="h-5 w-5" />}
+        icon={<AlertTriangle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -75,7 +76,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
                       'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
                     )}
                   >
-                    <AlertTriangleIcon className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                    <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                     <p className="text-[11px] leading-relaxed break-keep">
                       {card.misunderstanding}
                     </p>
@@ -90,7 +91,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
                     t.chip,
                   )}
                 >
-                  <HelpCircleIcon
+                  <HelpCircle
                     className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />

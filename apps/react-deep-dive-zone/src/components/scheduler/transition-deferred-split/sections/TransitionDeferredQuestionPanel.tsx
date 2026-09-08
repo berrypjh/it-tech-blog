@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle } from 'lucide-react';
+
 import type { TransitionDeferredContent } from '../content';
-import { HelpCircleIcon } from '../icons';
 
 type Props = { content: TransitionDeferredContent['question'] };
 
@@ -24,7 +25,7 @@ export const TransitionDeferredQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span
           aria-hidden="true"

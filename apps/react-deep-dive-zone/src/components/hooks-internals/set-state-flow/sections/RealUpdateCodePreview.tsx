@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, FileCode, FileSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { SetStateFlowContent } from '../content';
-import { ChevronRightIcon, FileCodeIcon, FileSearchIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['realCode'] };
 
@@ -68,7 +69,7 @@ export const RealUpdateCodePreview = ({ content }: Props) => {
         id="real-code"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileSearchIcon className="h-5 w-5" />}
+        icon={<FileSearch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-md lg:gap-lg">
@@ -143,9 +144,9 @@ export const RealUpdateCodePreview = ({ content }: Props) => {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
             )}
           >
-            <FileCodeIcon aria-hidden="true" className="h-4 w-4" />
+            <FileCode aria-hidden="true" className="h-4 w-4" />
             <span className="break-keep">{content.buttonLabel}</span>
-            <ChevronRightIcon
+            <ChevronRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
             />

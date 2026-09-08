@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight, Code2, FlaskConical } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { TestCodeContent } from '../content';
-import { ArrowLeftRightIcon, CodeIcon, FlaskIcon } from '../icons';
 
 type Props = { content: TestCodeContent['hero'] };
 
@@ -52,7 +53,7 @@ const ArrowConnector = () => (
         'shadow-[0_2px_0_var(--term-border)] text-[var(--term-accent)]',
       )}
     >
-      <ArrowLeftRightIcon className="h-5 w-5 @lg:rotate-0 rotate-90" />
+      <ArrowLeftRight className="h-5 w-5 @lg:rotate-0 rotate-90" aria-hidden="true" />
     </span>
   </div>
 );
@@ -66,7 +67,7 @@ type CardProps = {
 
 const CodeCard = ({ label, code, badge, variant }: CardProps) => {
   const isImpl = variant === 'impl';
-  const Icon = isImpl ? CodeIcon : FlaskIcon;
+  const Icon = isImpl ? Code2 : FlaskConical;
   const accentText = isImpl ? toneTokens.sky.text : 'text-[var(--term-accent)]';
   const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
   const labelTextClass = accentText;
@@ -91,7 +92,7 @@ const CodeCard = ({ label, code, badge, variant }: CardProps) => {
               iconChipClass,
             )}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className={cn('text-[11px] font-bold tracking-tight truncate', labelTextClass)}>
             {label}

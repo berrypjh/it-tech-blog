@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
-import { FileCodeIcon } from '../icons';
 
 type Props = { content: FunctionComponentContent['userCode'] };
 
@@ -14,7 +15,7 @@ export const UserCodeExample = ({ content }: Props) => (
       id="user-code"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.45fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">

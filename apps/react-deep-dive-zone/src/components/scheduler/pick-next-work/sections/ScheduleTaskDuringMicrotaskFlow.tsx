@@ -1,17 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Cog, Database, GitFork, Target, Workflow, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent, SchedulerAccent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CogIcon,
-  DatabaseIcon,
-  GitForkIcon,
-  TargetIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 import {
   schedCardBorder,
   schedIconBox,
@@ -21,11 +13,11 @@ import {
 
 type Props = { content: RootSchedulerContent['scheduleTask'] };
 
-const stepIcon: Record<SchedulerAccent, typeof ZapIcon> = {
-  blue: DatabaseIcon,
-  teal: TargetIcon,
-  violet: GitForkIcon,
-  slate: CogIcon,
+const stepIcon: Record<SchedulerAccent, typeof Zap> = {
+  blue: Database,
+  teal: Target,
+  violet: GitFork,
+  slate: Cog,
 };
 
 export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
@@ -35,7 +27,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 items-stretch gap-3 sm:gap-4 relative">
@@ -101,13 +93,13 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden xl:inline-flex absolute -right-3 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="xl:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

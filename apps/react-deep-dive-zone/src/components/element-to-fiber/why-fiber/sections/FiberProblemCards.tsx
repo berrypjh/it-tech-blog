@@ -1,24 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ClipboardList, Gauge, Network, PauseCircle, ShieldCheck } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberWhyNeededContent } from '../content';
-import {
-  ClipboardListIcon,
-  GaugeIcon,
-  NetworkIcon,
-  PauseCircleIcon,
-  ShieldCheckIcon,
-} from '../icons';
 
 type Props = { content: FiberWhyNeededContent['problems'] };
 
 const iconMap = {
-  network: NetworkIcon,
-  clipboard: ClipboardListIcon,
-  gauge: GaugeIcon,
-  pause: PauseCircleIcon,
+  network: Network,
+  clipboard: ClipboardList,
+  gauge: Gauge,
+  pause: PauseCircle,
 } as const;
 
 export const FiberProblemCards = ({ content }: Props) => (
@@ -30,7 +25,7 @@ export const FiberProblemCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ShieldCheckIcon className="h-5 w-5" />}
+      icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

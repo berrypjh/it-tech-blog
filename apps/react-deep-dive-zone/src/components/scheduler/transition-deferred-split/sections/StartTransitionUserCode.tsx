@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, Split, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TransitionDeferredContent } from '../content';
-import { CodeIcon, SplitIcon, ZapIcon } from '../icons';
 import {
   responseCardBorder,
   responseIconBox,
@@ -65,7 +66,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -119,7 +120,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <SplitIcon className="h-5 w-5" />
+              <Split className="h-5 w-5" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.stateSeparationTitle}
@@ -142,7 +143,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                     responseIconBox.emerald,
                   )}
                 >
-                  <ZapIcon className="h-4 w-4" />
+                  <Zap className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span
                   className={cn(
@@ -208,7 +209,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                     responseIconBox.blue,
                   )}
                 >
-                  <SplitIcon className="h-4 w-4" />
+                  <Split className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span
                   className={cn(

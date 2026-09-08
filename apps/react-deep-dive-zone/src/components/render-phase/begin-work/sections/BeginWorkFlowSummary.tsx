@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronDown, FastForward, HelpCircle, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent } from '../content';
-import { ChevronDownIcon, FastForwardIcon, HelpCircleIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: BeginWorkContent['summary'] };
 
@@ -15,7 +16,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
       id="flow-summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -48,7 +49,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
           </span>
         </article>
 
-        <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-[var(--term-accent)]" />
+        <ChevronDown aria-hidden="true" className="h-5 w-5 text-[var(--term-accent)]" />
 
         {/* Decision diamond */}
         <div className="relative flex h-24 w-[min(280px,100%)] items-center justify-center">
@@ -62,7 +63,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
             )}
           />
           <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-            <HelpCircleIcon aria-hidden="true" className={cn('h-4 w-4', toneTokens.violet.text)} />
+            <HelpCircle aria-hidden="true" className={cn('h-4 w-4', toneTokens.violet.text)} />
             <span
               className={cn(
                 'text-xsm sm:text-sm font-bold break-keep',
@@ -90,7 +91,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                   toneTokens.violet.chip,
                 )}
               >
-                <FastForwardIcon className="h-3 w-3" />
+                <FastForward className="h-3 w-3" aria-hidden="true" />
                 yes
               </span>
               <span
@@ -108,7 +109,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
             <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] text-center break-keep">
               {content.bailout.description}
             </p>
-            <ChevronDownIcon
+            <ChevronDown
               aria-hidden="true"
               className={cn('mx-auto h-4 w-4', toneTokens.violet.text)}
             />
@@ -159,7 +160,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                       </span>
                     )}
                     {!isLast && (
-                      <ChevronDownIcon
+                      <ChevronDown
                         aria-hidden="true"
                         className={cn('mx-auto my-1 h-4 w-4', toneTokens.sky.text)}
                       />

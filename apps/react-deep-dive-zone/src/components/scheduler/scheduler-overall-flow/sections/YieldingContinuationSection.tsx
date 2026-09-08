@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  CheckCircle2,
+  ChevronRight,
+  PauseCircle,
+  PlayCircle,
+  Repeat2,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent } from '../content';
-import {
-  ArrowDownIcon,
-  CheckCircleIcon,
-  ChevronRightIcon,
-  PauseCircleIcon,
-  PlayCircleIcon,
-  Repeat2Icon,
-} from '../icons';
 
 type Props = { content: FullFlowContent['yielding'] };
 
@@ -20,7 +21,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<Repeat2Icon className="h-5 w-5" />}
+      icon={<Repeat2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md items-stretch">
@@ -96,7 +97,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg border bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60"
             >
-              <PauseCircleIcon className="h-4 w-4" />
+              <PauseCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-violet-700 dark:text-violet-300">
               {content.frame1.title}
@@ -128,7 +129,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
             })}
           </ul>
           <span className="mt-auto inline-flex items-center self-start gap-1.5 rounded-full border-2 border-violet-300/80 bg-violet-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-violet-800 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200">
-            <PauseCircleIcon aria-hidden="true" className="h-3 w-3" />
+            <PauseCircle aria-hidden="true" className="h-3 w-3" />
             {content.frame1.tag}
           </span>
         </article>
@@ -139,7 +140,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
             aria-hidden="true"
             className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-blue-300 bg-white text-blue-700 shadow-[0_2px_0_var(--term-border)] dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200"
           >
-            <Repeat2Icon className="h-4 w-4" />
+            <Repeat2 className="h-4 w-4" aria-hidden="true" />
           </span>
           <p className="text-center font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--term-muted)] break-keep">
             {content.bridge.top}
@@ -147,10 +148,10 @@ export const YieldingContinuationSection = ({ content }: Props) => (
             {content.bridge.bottom}
           </p>
           <span className="md:hidden flex text-[var(--term-muted)]">
-            <ArrowDownIcon className="h-4 w-4" />
+            <ArrowDown className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="hidden md:inline-flex text-blue-500 dark:text-blue-400">
-            <ChevronRightIcon className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </div>
 
@@ -167,7 +168,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg border bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60"
             >
-              <PlayCircleIcon className="h-4 w-4" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
               {content.frame2.title}
@@ -199,7 +200,7 @@ export const YieldingContinuationSection = ({ content }: Props) => (
             })}
           </ul>
           <span className="mt-auto inline-flex items-center self-start gap-1.5 rounded-full border-2 border-emerald-300/80 bg-emerald-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200">
-            <CheckCircleIcon aria-hidden="true" className="h-3 w-3" />
+            <CheckCircle2 aria-hidden="true" className="h-3 w-3" />
             {content.frame2.tag}
           </span>
         </article>

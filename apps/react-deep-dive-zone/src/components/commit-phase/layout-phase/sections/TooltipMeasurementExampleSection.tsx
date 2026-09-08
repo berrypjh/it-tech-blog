@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, Ruler, Sparkles, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LayoutPhaseContent, TooltipStep } from '../content';
-import { ArrowDownIcon, CheckCircleIcon, RulerIcon, SparklesIcon, TargetIcon } from '../icons';
 
 type Props = { content: LayoutPhaseContent['tooltip'] };
 
@@ -19,7 +20,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<RulerIcon className="h-5 w-5" />}
+      icon={<Ruler className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -34,7 +35,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-2 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -49,7 +50,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
             variant="before"
           />
           <span aria-hidden="true" className="flex justify-center text-[var(--term-dim)]">
-            <ArrowDownIcon className="h-4 w-4" />
+            <ArrowDown className="h-4 w-4" aria-hidden="true" />
           </span>
           <TooltipMock title={content.afterTitle} content={content.afterContent} variant="after" />
         </div>
@@ -63,7 +64,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="teal" size="sm" className="mt-0.5 shrink-0">
-          <CheckCircleIcon className="h-4 w-4" />
+          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -173,7 +174,7 @@ const BeforeMock = () => (
   <div className="relative h-full bg-gradient-to-br from-slate-50 to-violet-50/40 dark:from-slate-950 dark:to-violet-950/20 p-2">
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <span className="inline-flex items-center gap-1 rounded-md border-2 border-slate-300 bg-white px-3 py-1.5 text-[10px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
-        <TargetIcon aria-hidden="true" className="h-3 w-3" />
+        <Target aria-hidden="true" className="h-3 w-3" />
         target
       </span>
     </div>
@@ -188,7 +189,7 @@ const AfterMock = () => (
   <div className="relative h-full bg-gradient-to-br from-slate-50 to-teal-50/40 dark:from-slate-950 dark:to-teal-950/20 p-2">
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <span className="inline-flex items-center gap-1 rounded-md border-2 border-slate-300 bg-white px-3 py-1.5 text-[10px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
-        <TargetIcon aria-hidden="true" className="h-3 w-3" />
+        <Target aria-hidden="true" className="h-3 w-3" />
         target
       </span>
     </div>
@@ -199,7 +200,7 @@ const AfterMock = () => (
       <p className="text-[9px] font-bold text-teal-900 dark:text-teal-100">도움말 텍스트</p>
       <p className="text-[8px] text-teal-700 dark:text-teal-300">측정 후 보정된 위치</p>
     </div>
-    <SparklesIcon
+    <Sparkles
       aria-hidden="true"
       className="absolute top-1 right-1 h-3 w-3 text-teal-500 dark:text-teal-300"
     />

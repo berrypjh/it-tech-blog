@@ -1,7 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ExternalLink } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import type { PromiseVsErrorSplitContent } from '../content';
-import { ExternalLinkIcon, GithubIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -65,7 +67,7 @@ export const CodePreviewSection = ({ content }: Props) => (
         >
           <GithubIcon className="h-4 w-4" />
           <span>{content.button.label}</span>
-          <ExternalLinkIcon
+          <ExternalLink
             aria-hidden="true"
             className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
           />

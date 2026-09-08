@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, RotateCw } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ListenerCollectionContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, RotateCwIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['capture'] };
 
@@ -14,7 +15,7 @@ export const CaptureListenerCollection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
-      icon={<RotateCwIcon className="h-5 w-5" />}
+      icon={<RotateCw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -47,7 +48,7 @@ export const CaptureListenerCollection = ({ content }: Props) => (
                   <code className="font-mono text-xsm sm:text-sm font-bold text-violet-700 dark:text-violet-200 break-keep">
                     {step}
                   </code>
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="ml-auto h-3.5 w-3.5 text-violet-400 dark:text-violet-500 hidden sm:block"
                   />
@@ -57,7 +58,7 @@ export const CaptureListenerCollection = ({ content }: Props) => (
                     aria-hidden="true"
                     className="self-center my-0.5 text-violet-400 dark:text-violet-500"
                   >
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 )}
               </li>

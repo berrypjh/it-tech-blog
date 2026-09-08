@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Layers } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ReconstructContent } from '../content';
-import { ArrowRightIcon, LayersIcon } from '../icons';
 
 type Props = { content: ReconstructContent['fiveStep'] };
 
@@ -16,7 +17,7 @@ export const FiveStepSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* 5-column stepper on xl, 2-col on sm, 1-col on mobile */}
@@ -103,7 +104,7 @@ export const FiveStepSection = ({ content }: Props) => {
               </li>
               {i < content.flowLine.length - 1 && (
                 <li aria-hidden="true">
-                  <ArrowRightIcon className="h-3.5 w-3.5 text-blue-500" />
+                  <ArrowRight className="h-3.5 w-3.5 text-blue-500" aria-hidden="true" />
                 </li>
               )}
             </Fragment>

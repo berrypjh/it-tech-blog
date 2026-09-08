@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cuboid, FileBox, Flag, type LucideIcon, Network, Package } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { StepNumberBadge } from '../../../shared/step';
 import { FiberTreeCard } from '../components/FiberTreeCard';
 import type { ProcessStep, ReconcilerEntryContent } from '../content';
-import { CuboidIcon, iconByName } from '../icons';
+
+const stepIcon: Record<ProcessStep['number'], LucideIcon> = {
+  '1': FileBox,
+  '2': Network,
+  '3': Flag,
+  '4': Package,
+};
 
 type Props = { content: ReconcilerEntryContent['process'] };
 
@@ -16,7 +24,7 @@ export const ReconcilerInternalProcess = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CuboidIcon className="h-5 w-5" />}
+        icon={<Cuboid className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -41,7 +49,7 @@ export const ReconcilerInternalProcess = ({ content }: Props) => {
 type StepCardProps = { step: ProcessStep };
 
 const StepCard = ({ step }: StepCardProps) => {
-  const Icon = iconByName[step.icon];
+  const Icon = stepIcon[step.number];
 
   return (
     <article
@@ -71,7 +79,7 @@ const StepCard = ({ step }: StepCardProps) => {
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
     </article>
   );

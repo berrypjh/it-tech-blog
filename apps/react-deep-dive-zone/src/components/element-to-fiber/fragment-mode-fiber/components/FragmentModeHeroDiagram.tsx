@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Group, Hexagon, ShieldCheck, Type } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FragmentModeFiberContent } from '../content';
-import { CheckCircleIcon, GroupIcon, HexagonIcon, ShieldCheckIcon, TypeIcon } from '../icons';
 
 type Props = { content: FragmentModeFiberContent['hero']; className?: string };
 
@@ -13,7 +14,7 @@ type Branch = {
   branchSubtitle: string;
   resultTitle: string;
   resultItems: string[];
-  BranchIcon: typeof GroupIcon;
+  BranchIcon: typeof Group;
 };
 
 /**
@@ -31,7 +32,7 @@ export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
       branchSubtitle: content.fragmentSubtitle,
       resultTitle: content.fragmentResultTitle,
       resultItems: content.fragmentResultItems,
-      BranchIcon: GroupIcon,
+      BranchIcon: Group,
     },
     {
       tone: 'emerald',
@@ -39,7 +40,7 @@ export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
       branchSubtitle: content.strictSubtitle,
       resultTitle: content.modeResultTitle,
       resultItems: content.modeResultItems,
-      BranchIcon: ShieldCheckIcon,
+      BranchIcon: ShieldCheck,
     },
   ];
 
@@ -82,7 +83,7 @@ const TypeStartCard = ({ label }: { label: string }) => {
       )}
     >
       <ToneIconBox tone="sky" size="sm">
-        <TypeIcon className="h-4 w-4" aria-hidden="true" />
+        <Type className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className="flex min-w-0 flex-col">
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
@@ -129,7 +130,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
       >
         <header className="flex items-center gap-sm">
           <ToneIconBox tone={branch.tone} size="sm">
-            <HexagonIcon className="h-4 w-4" aria-hidden="true" />
+            <Hexagon className="h-4 w-4" aria-hidden="true" />
           </ToneIconBox>
           <span className="flex min-w-0 flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
@@ -143,7 +144,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
         <ul className="flex flex-col gap-1.5">
           {branch.resultItems.map((item) => (
             <li key={item} className="flex items-start gap-2">
-              <CheckCircleIcon
+              <CheckCircle2
                 className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
                 aria-hidden="true"
               />

@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent, TemplateStep } from '../content';
-import { ArrowRightIcon, ListChecksIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['template'] };
@@ -17,7 +18,7 @@ export const TemplateSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ListChecksIcon className="h-5 w-5" />}
+        icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Horizontal stepper on xl, vertical timeline below */}
@@ -37,7 +38,7 @@ export const TemplateSection = ({ content }: Props) => {
               </li>
               {!isLast && (
                 <li aria-hidden="true" className="hidden xl:flex items-center justify-center">
-                  <ArrowRightIcon className="h-5 w-5 text-cyan-500" />
+                  <ArrowRight className="h-5 w-5 text-cyan-500" aria-hidden="true" />
                 </li>
               )}
             </Fragment>

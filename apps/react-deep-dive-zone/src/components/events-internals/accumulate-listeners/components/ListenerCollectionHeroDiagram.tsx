@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, GitBranch } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberNode, ListenerCollectionContent } from '../content';
-import { BoxIcon, GitBranchIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['hero']; className?: string };
 
@@ -44,7 +45,7 @@ export const ListenerCollectionHeroDiagram = ({ content, className }: Props) => 
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <GitBranchIcon className="h-[18px] w-[18px]" />
+            <GitBranch className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagram.title}
@@ -77,7 +78,7 @@ const FiberRow = ({ node, isTarget }: { node: FiberNode; isTarget: boolean }) =>
       )}
     >
       <ToneIconBox tone={tone} size="sm">
-        <BoxIcon className="h-4 w-4" />
+        <Box className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cn('font-mono text-sm font-bold tracking-tight break-all', t.text)}>

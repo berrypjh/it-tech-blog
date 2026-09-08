@@ -1,16 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, List, Package, PlayCircle, Repeat, Workflow } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ListIcon,
-  PackageIcon,
-  PlayCircleIcon,
-  RepeatIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['flow'] };
 
@@ -48,7 +41,7 @@ const toneAccent: Record<Tone, string> = {
   rose: 'text-rose-700 dark:text-rose-300',
 };
 
-const stepIcons = [RepeatIcon, PackageIcon, ListIcon, PlayCircleIcon];
+const stepIcons = [Repeat, Package, List, PlayCircle];
 
 export const ProcessDispatchQueueFlow = ({ content }: Props) => (
   <section aria-labelledby="heading-flow">
@@ -57,7 +50,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol
@@ -68,7 +61,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
     >
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? RepeatIcon;
+        const Icon = stepIcons[i] ?? Repeat;
         return (
           <li
             key={step.title}
@@ -120,13 +113,13 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lock, Pencil, Repeat, Type } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent } from '../content';
-import { LockIcon, PencilIcon, RepeatIcon, TypeIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['hero']; className?: string };
 
@@ -35,7 +36,7 @@ export const UpdateHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="indigo"
           label={diagram.leftTitle}
-          icon={<RepeatIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Repeat className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel
           code={diagram.leftCode}
@@ -57,7 +58,7 @@ export const UpdateHeroDiagram = ({ content, className }: Props) => {
               tone="sky"
               label={diagram.branch1Title}
               detail={diagram.branch1Detail}
-              icon={<LockIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+              icon={<Lock className="h-[18px] w-[18px]" aria-hidden="true" />}
             />
             <CodePreviewPanel code={diagram.branch1Code} showWindowDots={false} language="JSX" />
           </li>
@@ -67,7 +68,7 @@ export const UpdateHeroDiagram = ({ content, className }: Props) => {
               tone="teal"
               label={diagram.branch2Title}
               detail={diagram.branch2Detail}
-              icon={<TypeIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+              icon={<Type className="h-[18px] w-[18px]" aria-hidden="true" />}
             />
             <DiffRow before={diagram.branch2BeforeCode} after={diagram.branch2AfterCode} />
           </li>
@@ -124,7 +125,7 @@ const FlagRow = ({ title, subtitle }: { title: string; subtitle: string }) => {
       aria-hidden="true"
     >
       <ToneIconBox tone="sky" size="sm">
-        <PencilIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Pencil className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>

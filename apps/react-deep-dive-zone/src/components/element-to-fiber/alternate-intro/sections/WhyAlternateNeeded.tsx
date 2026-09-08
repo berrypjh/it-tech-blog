@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Monitor, Pause, ShieldCheck } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { AlternateFiberContent } from '../content';
-import { HelpCircleIcon, MonitorIcon, PauseIcon, ShieldCheckIcon } from '../icons';
 
 type Props = { content: AlternateFiberContent['why'] };
 
 const iconMap = {
-  monitor: MonitorIcon,
-  pause: PauseIcon,
-  shield: ShieldCheckIcon,
+  monitor: Monitor,
+  pause: Pause,
+  shield: ShieldCheck,
 } as const;
 
 export const WhyAlternateNeeded = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const WhyAlternateNeeded = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

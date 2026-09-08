@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Box, Lightbulb, Link } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RootCurrentRefContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, BoxIcon, LightbulbIcon, LinkIcon } from '../icons';
 
 type Props = { content: RootCurrentRefContent['inputRef'] };
 
@@ -19,7 +20,7 @@ export const InputRefExampleSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BoxIcon className="h-5 w-5" />}
+      icon={<Box className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-stretch">
@@ -66,7 +67,7 @@ const ExplanationCard = ({ title, text }: { title: string; text: string }) => {
           t.fill.text,
         )}
       >
-        <LightbulbIcon className="h-6 w-6" />
+        <Lightbulb className="h-6 w-6" aria-hidden="true" />
       </span>
       <span className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
         {title}
@@ -112,8 +113,8 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
       </pre>
       <div className="flex flex-col items-center gap-1 mt-auto pt-2">
         <span aria-hidden="true" className={t.text}>
-          <ArrowDownIcon className="hidden md:inline-block h-5 w-5" />
-          <ArrowRightIcon className="md:hidden h-5 w-5" />
+          <ArrowDown className="hidden md:inline-block h-5 w-5" aria-hidden="true" />
+          <ArrowRight className="md:hidden h-5 w-5" aria-hidden="true" />
         </span>
         <code
           className={cn(
@@ -123,7 +124,7 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
             t.fill.text,
           )}
         >
-          <LinkIcon aria-hidden="true" className="h-3.5 w-3.5" />
+          <Link aria-hidden="true" className="h-3.5 w-3.5" />
           {label}
         </code>
       </div>

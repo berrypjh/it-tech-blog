@@ -1,25 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Atom, Box, Braces, Code, Layers, Map } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  AtomIcon,
-  BoxIcon,
-  BracesIcon,
-  CodeIcon,
-  LayersIcon,
-  MapIcon,
-} from '../icons';
 
 type Props = { content: JsxRuntimeFunctionsContent['entryMap'] };
 
 const fnIconMap = {
-  jsx: BoxIcon,
-  jsxs: LayersIcon,
-  jsxDEV: BracesIcon,
+  jsx: Box,
+  jsxs: Layers,
+  jsxDEV: Braces,
 } as const;
 
 export const RuntimeEntryMap = ({ content }: Props) => (
@@ -31,7 +23,7 @@ export const RuntimeEntryMap = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <p className="sr-only">{content.a11ySummary}</p>
@@ -47,7 +39,7 @@ export const RuntimeEntryMap = ({ content }: Props) => (
         <div className="flex justify-center">
           <DiagramNode
             label={content.topLabel}
-            icon={<CodeIcon className="h-5 w-5" />}
+            icon={<Code className="h-5 w-5" aria-hidden="true" />}
             tone="sky"
             variant="top"
           />
@@ -60,7 +52,7 @@ export const RuntimeEntryMap = ({ content }: Props) => (
           <div className="flex flex-col gap-md items-center">
             <RuntimeEntryNode
               label={content.productionLabel}
-              icon={<BoxIcon className="h-5 w-5" />}
+              icon={<Box className="h-5 w-5" aria-hidden="true" />}
               tone="sky"
             />
             <Connector vertical />
@@ -80,7 +72,7 @@ export const RuntimeEntryMap = ({ content }: Props) => (
           <div className="flex flex-col gap-md items-center">
             <RuntimeEntryNode
               label={content.devLabel}
-              icon={<BracesIcon className="h-5 w-5" />}
+              icon={<Braces className="h-5 w-5" aria-hidden="true" />}
               tone="violet"
             />
             <Connector vertical />
@@ -129,7 +121,7 @@ const Connector = ({ vertical, dashed }: { vertical?: boolean; dashed?: boolean 
       )}
     />
     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-      <ArrowDownIcon className="h-3.5 w-3.5" />
+      <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
   </div>
 );
@@ -243,7 +235,7 @@ const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
         toneTokens.amber.chip,
       )}
     >
-      <AtomIcon className="h-6 w-6" />
+      <Atom className="h-6 w-6" aria-hidden="true" />
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
       <span
@@ -256,7 +248,7 @@ const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
       </span>
       <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
     </div>
-    <ArrowRightIcon
+    <ArrowRight
       aria-hidden="true"
       className={cn('hidden sm:block h-4 w-4', toneTokens.amber.text)}
     />

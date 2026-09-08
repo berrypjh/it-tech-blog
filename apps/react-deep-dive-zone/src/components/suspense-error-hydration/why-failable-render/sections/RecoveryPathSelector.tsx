@@ -4,22 +4,17 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, FileCode, Hourglass, PlugZap, TriangleAlert } from 'lucide-react';
+
 import type { BranchKind, RecoveryOptionKey, WhyFailableRenderContent } from '../content';
-import {
-  CheckCircleIcon,
-  FileCodeIcon,
-  HourglassIcon,
-  PlugZapIcon,
-  TriangleAlertIcon,
-} from '../icons';
 import { branchAccent } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['selector'] };
 
 const optionIcon: Record<RecoveryOptionKey, React.ComponentType<{ className?: string }>> = {
-  promise: HourglassIcon,
-  error: TriangleAlertIcon,
-  mismatch: PlugZapIcon,
+  promise: Hourglass,
+  error: TriangleAlert,
+  mismatch: PlugZap,
 };
 
 const optionToBranch: Record<RecoveryOptionKey, BranchKind> = {
@@ -103,7 +98,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                     </span>
                   </span>
                   {isActive && (
-                    <CheckCircleIcon
+                    <CheckCircle2
                       aria-hidden="true"
                       className={cn('h-5 w-5 shrink-0 ml-auto', optAccent.text)}
                     />
@@ -202,7 +197,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                       accent.text,
                     )}
                   >
-                    <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                    <FileCode className="h-3 w-3" aria-hidden="true" />
                     {file}
                   </li>
                 ))}

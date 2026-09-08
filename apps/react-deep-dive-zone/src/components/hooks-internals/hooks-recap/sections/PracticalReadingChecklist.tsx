@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ChecklistItem, HooksRecapContent } from '../content';
-import { CheckCircleIcon, ListChecksIcon } from '../icons';
 
 import { toneCardBg, toneIconBox, toneText } from './_shared/tones';
 
@@ -25,7 +26,7 @@ const Item = ({ item }: { item: ChecklistItem }) => (
           toneIconBox[item.tone],
         )}
       >
-        <CheckCircleIcon className="h-4 w-4" />
+        <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
         className={cn(
@@ -54,7 +55,7 @@ export const PracticalReadingChecklist = ({ content }: Props) => (
       id="checklist"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

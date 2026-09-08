@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Clock3, PauseCircle, TimerReset, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DeadlineMarker, RenderYieldingContent } from '../content';
-import { ArrowDownIcon, ClockIcon, PauseCircleIcon, TimerResetIcon, ZapIcon } from '../icons';
 
 type Props = { content: RenderYieldingContent['deadline'] };
 
@@ -35,7 +36,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
       eyebrow={content.title}
       title={content.title}
       description={content.description}
-      icon={<TimerResetIcon className="h-5 w-5" />}
+      icon={<TimerReset className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -85,7 +86,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
       <div aria-hidden="true" className="relative h-3">
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px border-t border-dashed border-[var(--term-border)]" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 rounded-full border border-amber-300 bg-white px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:border-amber-700/70 dark:bg-slate-950/40 dark:text-amber-200">
-          <PauseCircleIcon className="h-3 w-3" />
+          <PauseCircle className="h-3 w-3" aria-hidden="true" />
           deadline · frame interval
         </div>
       </div>
@@ -156,16 +157,13 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
       {/* icon hints */}
       <div className="mt-2 flex items-center justify-between font-mono text-[10px] text-[var(--term-muted)]">
         <span className="inline-flex items-center gap-1.5">
-          <ZapIcon aria-hidden="true" className="h-3.5 w-3.5 text-blue-600" />
+          <Zap aria-hidden="true" className="h-3.5 w-3.5 text-blue-600" />
           start
         </span>
-        <ArrowDownIcon
-          aria-hidden="true"
-          className="hidden md:inline h-3.5 w-3.5 rotate-[-90deg]"
-        />
+        <ArrowDown aria-hidden="true" className="hidden md:inline h-3.5 w-3.5 rotate-[-90deg]" />
         <span className="inline-flex items-center gap-1.5">
           yield consider
-          <ClockIcon aria-hidden="true" className="h-3.5 w-3.5 text-violet-600" />
+          <Clock3 aria-hidden="true" className="h-3.5 w-3.5 text-violet-600" />
         </span>
       </div>
     </article>

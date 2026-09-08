@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Compass, FileCode2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FollowPackageBoundaryContent } from '../content';
-import { CompassIcon, FileCodeIcon } from '../icons';
 import { PackageBadge } from '../PackageBadge';
 
 type Props = { content: FollowPackageBoundaryContent['pickFirst'] };
@@ -19,7 +20,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<CompassIcon className="h-5 w-5" />}
+        icon={<Compass className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Desktop table card */}
@@ -92,7 +93,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
                       'font-mono text-[11px] text-[var(--term-fg)]',
                     )}
                   >
-                    <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                    <FileCode2 className="h-3 w-3" aria-hidden="true" />
                     {row.file}
                   </code>
                 </td>
@@ -144,7 +145,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
                       'font-mono text-[11px] text-[var(--term-fg)]',
                     )}
                   >
-                    <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                    <FileCode2 className="h-3 w-3" aria-hidden="true" />
                     {row.file}
                   </code>
                 </dd>

@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, FileCode2, ScanLine, Sparkles, Tags } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { LabelingOption, StripFlagCommentNoiseContent } from '../content';
-import { CheckCircleIcon, FileCodeIcon, ScanLineIcon, SparkIcon, TagsIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['labelingInteraction'] };
@@ -43,7 +44,7 @@ export const LabelingInteractionSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ScanLineIcon className="h-5 w-5" />}
+        icon={<ScanLine className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -171,7 +172,7 @@ export const LabelingInteractionSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <CheckCircleIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
                 <span className="text-md font-bold uppercase tracking-wider">
                   {content.buckets[active.priority]}
                 </span>
@@ -190,7 +191,7 @@ export const LabelingInteractionSection = ({ content }: Props) => {
                   t.border,
                 )}
               >
-                <SparkIcon className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                <Sparkles className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                 <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                   {active.reason}
                 </p>
@@ -211,7 +212,7 @@ export const LabelingInteractionSection = ({ content }: Props) => {
                 )}
               >
                 <code className="flex items-start gap-2">
-                  <FileCodeIcon
+                  <FileCode2
                     className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
                     aria-hidden="true"
                   />
@@ -229,7 +230,7 @@ export const LabelingInteractionSection = ({ content }: Props) => {
             'border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
-          <TagsIcon className="h-3 w-3" aria-hidden="true" />
+          <Tags className="h-3 w-3" aria-hidden="true" />
           <span className="text-[10px] font-mono uppercase tracking-wider">
             label first → group by priority → read core path
           </span>

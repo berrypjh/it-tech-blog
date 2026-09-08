@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Lightbulb, Timer } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent } from '../content';
-import { ArrowRightIcon, LightbulbIcon, TimerIcon } from '../icons';
 
 type Props = { content: RootSchedulerContent['microReason'] };
 
@@ -13,7 +14,7 @@ export const MicrotaskReasonSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TimerIcon className="h-5 w-5" />}
+      icon={<Timer className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] gap-md items-stretch">
@@ -31,7 +32,7 @@ export const MicrotaskReasonSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
           >
-            <LightbulbIcon className="h-5 w-5" />
+            <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-amber-700 dark:text-amber-300 break-keep">
             왜 microtask인가
@@ -134,7 +135,7 @@ export const MicrotaskReasonSection = ({ content }: Props) => (
                   </span>
                   {step.phase === 'next' &&
                     i === content.timeline.findIndex((s) => s.phase === 'next') && (
-                      <ArrowRightIcon
+                      <ArrowRight
                         aria-hidden="true"
                         className="ml-auto h-3.5 w-3.5 text-[var(--term-muted)]"
                       />

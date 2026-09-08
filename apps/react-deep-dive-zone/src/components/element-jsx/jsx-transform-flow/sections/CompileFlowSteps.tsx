@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Box, Code, Settings, Workflow } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, JsxTransformFlowContent } from '../content';
-import { AtomIcon, BoxIcon, CodeIcon, SettingsIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['compileFlow'] };
 
 const iconMap = {
-  code: CodeIcon,
-  gear: SettingsIcon,
-  box: BoxIcon,
-  atom: AtomIcon,
+  code: Code,
+  gear: Settings,
+  box: Box,
+  atom: Atom,
 } as const;
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
@@ -36,7 +37,7 @@ export const CompileFlowSteps = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />

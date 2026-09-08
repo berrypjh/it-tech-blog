@@ -1,21 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Fingerprint, Key, LayoutPanelTop, User } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
-import { BoxIcon, FingerprintIcon, KeyIcon, PanelIcon, UserIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['hero']; className?: string };
 
-const fieldIcon: Record<string, typeof BoxIcon> = {
-  $$typeof: FingerprintIcon,
-  type: BoxIcon,
-  key: KeyIcon,
-  props: PanelIcon,
-  _owner: UserIcon,
+const fieldIcon: Record<string, typeof Box> = {
+  $$typeof: Fingerprint,
+  type: Box,
+  key: Key,
+  props: LayoutPanelTop,
+  _owner: User,
 };
 
 export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
@@ -49,7 +50,7 @@ export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FieldCard = ({ callout }: { callout: HeroCallout }) => {
-  const Icon = fieldIcon[callout.field] ?? BoxIcon;
+  const Icon = fieldIcon[callout.field] ?? Box;
   return (
     <article
       className={cn(

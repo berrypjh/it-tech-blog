@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Ban, GitBranch, Link2, Rocket, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseEffectInternalsContent } from '../content';
-import { BanIcon, GitBranchIcon, Link2Icon, RocketIcon, TrophyIcon } from '../icons';
 
 type Props = { content: UseEffectInternalsContent['summary'] };
 
 const visualMap = {
-  block: BanIcon,
-  commit: RocketIcon,
-  branch: GitBranchIcon,
-  list: Link2Icon,
+  block: Ban,
+  commit: Rocket,
+  branch: GitBranch,
+  list: Link2,
 };
 
 const cardTone: Record<Tone, string> = {
@@ -71,7 +72,7 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

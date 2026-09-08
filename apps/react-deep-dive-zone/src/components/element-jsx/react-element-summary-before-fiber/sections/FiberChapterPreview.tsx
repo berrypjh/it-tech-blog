@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ScanSearch, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
-import { ArrowDownIcon, ScanSearchIcon, SparklesIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['fiberPreview'] };
 
@@ -17,7 +18,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-stretch">
@@ -37,7 +38,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
             toneTokens.violet.text,
           )}
         >
-          <ScanSearchIcon className="h-5 w-5" />
+          <ScanSearch className="h-5 w-5" aria-hidden="true" />
         </span>
         <span
           className={cn('text-[10px] uppercase tracking-wider font-mono', toneTokens.violet.text)}
@@ -107,7 +108,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
                 {idx < content.flowSteps.length - 1 && (
                   <span className="flex justify-center py-1" aria-hidden="true">
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-                      <ArrowDownIcon className="h-3.5 w-3.5" />
+                      <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                   </span>
                 )}
@@ -118,6 +119,8 @@ export const FiberChapterPreview = ({ content }: Props) => (
       </article>
     </div>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.infoBanner}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.infoBanner}
+    </SectionNote>
   </section>
 );

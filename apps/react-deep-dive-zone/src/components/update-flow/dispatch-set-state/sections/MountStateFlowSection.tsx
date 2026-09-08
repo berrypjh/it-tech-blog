@@ -1,7 +1,17 @@
+import { Box, CornerDownRight, Database, FileCode, Flame, GitBranch, Save } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { DispatchSetStateContent, MountStateStep } from '../content';
-import { flowIconByName, GitBranchIcon } from '../icons';
+
+const flowIconByName = {
+  fileCode: FileCode,
+  flame: Flame,
+  database: Database,
+  box: Box,
+  save: Save,
+  cornerDownRight: CornerDownRight,
+} as const;
 
 type Props = { content: DispatchSetStateContent['flow'] };
 
@@ -24,7 +34,7 @@ export const MountStateFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />

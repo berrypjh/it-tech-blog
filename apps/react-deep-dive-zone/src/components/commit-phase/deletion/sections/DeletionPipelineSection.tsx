@@ -2,31 +2,32 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Droplet,
+  Flag,
+  LogOut,
+  Search,
+  Trash2,
+  Unlink,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, PipelineIcon, PipelineStep } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  DropletIcon,
-  FlagIcon,
-  LogOutIcon,
-  SearchIcon,
-  TrashIcon,
-  UnlinkIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: DeletionContent['pipeline'] };
 
-const iconMap: Record<PipelineIcon, typeof FlagIcon> = {
-  flag: FlagIcon,
-  search: SearchIcon,
-  unlink: UnlinkIcon,
-  droplet: DropletIcon,
-  logOut: LogOutIcon,
-  trash: TrashIcon,
+const iconMap: Record<PipelineIcon, typeof Flag> = {
+  flag: Flag,
+  search: Search,
+  unlink: Unlink,
+  droplet: Droplet,
+  logOut: LogOut,
+  trash: Trash2,
 };
 
 export const DeletionPipelineSection = ({ content }: Props) => (
@@ -40,7 +41,7 @@ export const DeletionPipelineSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -56,7 +57,7 @@ export const DeletionPipelineSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="hidden lg:flex items-center justify-center text-[var(--term-dim)] -mx-2"
               >
-                <ArrowRightIcon className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </li>
             )}
           </Fragment>
@@ -70,7 +71,7 @@ export const DeletionPipelineSection = ({ content }: Props) => (
             <PipelineCard step={step} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>

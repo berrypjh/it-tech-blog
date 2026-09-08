@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Sprout, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ElementVsFiberContent, FlowCard, FlowCardKind } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, SproutIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ElementVsFiberContent['flow'] };
 
@@ -24,7 +25,7 @@ export const ElementToFiberFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -45,7 +46,9 @@ export const ElementToFiberFlow = ({ content }: Props) => (
       </ol>
     </div>
 
-    <SectionNote icon={<SproutIcon className="h-4 w-4" />}>{content.footnote}</SectionNote>
+    <SectionNote icon={<Sprout className="h-4 w-4" aria-hidden="true" />}>
+      {content.footnote}
+    </SectionNote>
   </section>
 );
 
@@ -53,8 +56,8 @@ const FlowConnector = () => (
   <div className="flex justify-center items-center py-1 lg:py-0" aria-hidden="true">
     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]">
       <span className="contents">
-        <ArrowDownIcon className="h-4 w-4 lg:hidden" />
-        <ArrowRightIcon className="h-4 w-4 hidden lg:block" />
+        <ArrowDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
+        <ArrowRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
       </span>
     </span>
   </div>

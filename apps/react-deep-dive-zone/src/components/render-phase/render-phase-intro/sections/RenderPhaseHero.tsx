@@ -1,3 +1,5 @@
+import { Lightbulb } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -9,7 +11,6 @@ import { SectionNote } from '../../../shared/note';
 import { TerminalBadge } from '../../../shared/terminal';
 import { RenderPhaseHeroDiagram } from '../components/RenderPhaseHeroDiagram';
 import type { RenderPhaseIntroContent } from '../content';
-import { LightbulbIcon } from '../icons';
 
 type Props = { content: RenderPhaseIntroContent['hero'] };
 
@@ -34,7 +35,7 @@ export const RenderPhaseHero = ({ content }: Props) => (
 
       <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
 
-      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />} className="mt-sm">
+      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />} className="mt-sm">
         {content.callout}
       </SectionNote>
     </HeroTextColumn>

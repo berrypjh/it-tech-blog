@@ -4,17 +4,18 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRightLeft,
+  CheckCircle2,
+  Circle,
+  RefreshCw,
+  Sparkles,
+  X,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CallPathCompressionContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightLeftIcon,
-  CheckCircleIcon,
-  CircleIcon,
-  RefreshIcon,
-  SparkIcon,
-  XIcon,
-} from '../icons';
 
 type Props = { content: CallPathCompressionContent['orderMatching'] };
 
@@ -51,7 +52,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ArrowRightLeftIcon className="h-5 w-5" />}
+        icon={<ArrowRightLeft className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -140,18 +141,18 @@ export const OrderMatchingSection = ({ content }: Props) => {
                     </span>
                     {isPicked ? (
                       isCorrectSlot ? (
-                        <CheckCircleIcon
+                        <CheckCircle2
                           className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
                           aria-hidden="true"
                         />
                       ) : (
-                        <XIcon
+                        <X
                           className="h-4 w-4 text-amber-600 dark:text-amber-400"
                           aria-hidden="true"
                         />
                       )
                     ) : (
-                      <CircleIcon className="h-4 w-4 text-[var(--term-dim)]" aria-hidden="true" />
+                      <Circle className="h-4 w-4 text-[var(--term-dim)]" aria-hidden="true" />
                     )}
                   </button>
                 );
@@ -173,7 +174,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                   'disabled:cursor-not-allowed disabled:opacity-50',
                 )}
               >
-                <RefreshIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <RefreshCw className="h-3.5 w-3.5" aria-hidden="true" />
                 {content.resetLabel}
               </button>
               <button
@@ -189,7 +190,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                 )}
               >
-                <SparkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 {content.revealLabel}
               </button>
             </div>
@@ -275,7 +276,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                         )}
                         {isFilled && !isCorrect && (
                           <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-mono font-bold text-amber-700 dark:text-amber-300">
-                            <XIcon className="h-3 w-3" aria-hidden="true" />≠{' '}
+                            <X className="h-3 w-3" aria-hidden="true" />≠{' '}
                             {findFn(correctId as CardId)}
                           </span>
                         )}
@@ -283,7 +284,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                     </li>
                     {!isLast && (
                       <span aria-hidden="true" className="flex items-center justify-center py-0.5">
-                        <ArrowDownIcon className="h-3 w-3 text-cyan-500" />
+                        <ArrowDown className="h-3 w-3 text-cyan-500" aria-hidden="true" />
                       </span>
                     )}
                   </Fragment>
@@ -305,7 +306,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                     : 'border-blue-200 dark:border-blue-700/70',
                 )}
               >
-                <SparkIcon
+                <Sparkles
                   className={cn(
                     'mt-0.5 h-4 w-4 shrink-0',
                     isAllCorrect

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, ArrowUpFromLine } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ListenerCollectionContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, ArrowUpFromLineIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['bubble'] };
 
@@ -14,7 +15,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
-      icon={<ArrowUpFromLineIcon className="h-5 w-5" />}
+      icon={<ArrowUpFromLine className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -47,7 +48,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
                   <code className="font-mono text-xsm sm:text-sm font-bold text-teal-700 dark:text-teal-200 break-keep">
                     {step}
                   </code>
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="ml-auto h-3.5 w-3.5 text-teal-400 dark:text-teal-500 hidden sm:block"
                   />
@@ -57,7 +58,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
                     aria-hidden="true"
                     className="self-center my-0.5 text-teal-400 dark:text-teal-500"
                   >
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 )}
               </li>

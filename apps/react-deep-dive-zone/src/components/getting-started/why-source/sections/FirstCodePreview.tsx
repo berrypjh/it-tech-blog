@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
 import type { WhySourceContent } from '../content';
-import { CodeIcon } from '../icons';
 
 type Props = { content: WhySourceContent['firstCode'] };
 
@@ -25,7 +26,7 @@ export const FirstCodePreview = ({ content }: Props) => {
         id="first-code"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="flex flex-col gap-md sm:gap-lg lg:gap-xl">

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Lightbulb, Sparkles, TimerReset } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
-import { ClockIcon, LightbulbIcon, SparklesIcon, TimerResetIcon } from '../icons';
 
 type Props = { content: EnsureRootScheduledContent['microtask'] };
 
@@ -16,7 +17,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
       id="microtask"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ClockIcon className="h-5 w-5" />}
+      icon={<Clock className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
@@ -24,7 +25,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="amber" size="sm">
-            <TimerResetIcon className="h-[18px] w-[18px]" />
+            <TimerReset className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             schedule later, not now
@@ -42,10 +43,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
             emerald.fill.bg,
           )}
         >
-          <LightbulbIcon
-            aria-hidden="true"
-            className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)}
-          />
+          <Lightbulb aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
           <p
             className={cn(
               'text-xsm sm:text-sm font-bold leading-snug break-keep',
@@ -94,7 +92,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
               )}
             >
               <ToneIconBox tone="emerald" size="sm">
-                <ClockIcon className="h-4 w-4" />
+                <Clock className="h-4 w-4" aria-hidden="true" />
               </ToneIconBox>
               <code
                 className={cn(
@@ -119,7 +117,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
         </div>
 
         <div className="mt-auto flex items-start gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2">
-          <SparklesIcon
+          <Sparkles
             aria-hidden="true"
             className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]"
           />

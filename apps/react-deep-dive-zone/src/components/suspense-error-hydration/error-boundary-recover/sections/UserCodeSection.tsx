@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, RotateCcw, TriangleAlert } from 'lucide-react';
+
 import type { ErrorBoundaryRecoverContent } from '../content';
-import { CheckCircleIcon, RotateCcwIcon, TriangleAlertIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -40,7 +41,7 @@ export const UserCodeSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-rose-200 bg-rose-100 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/60 dark:text-rose-200"
             >
-              <TriangleAlertIcon className="h-3.5 w-3.5" />
+              <TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <h3 className="text-xsm font-bold uppercase tracking-wider text-rose-700 dark:text-rose-200">
               {content.fallback.title}
@@ -62,7 +63,7 @@ export const UserCodeSection = ({ content }: Props) => (
               'dark:border-rose-700 dark:bg-slate-900 dark:text-rose-200',
             )}
           >
-            <RotateCcwIcon className="h-3.5 w-3.5" />
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
             {content.fallback.button}
           </button>
         </article>
@@ -84,7 +85,7 @@ export const UserCodeSection = ({ content }: Props) => (
                 key={item}
                 className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   aria-hidden="true"
                   className="mt-0.5 h-4 w-4 shrink-0 text-teal-500 dark:text-teal-400"
                 />

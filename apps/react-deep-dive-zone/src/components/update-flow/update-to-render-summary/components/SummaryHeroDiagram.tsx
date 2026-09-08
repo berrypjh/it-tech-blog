@@ -1,10 +1,43 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CheckCircle2,
+  CircleHelp,
+  Clock,
+  Code2,
+  Database,
+  Flag,
+  GitBranch,
+  Hourglass,
+  MousePointerClick,
+  PanelsTopLeft,
+  Search,
+  Server,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, UpdateToRenderSummaryContent } from '../content';
-import { flowIconByName } from '../icons';
+
+const flowIconByName = {
+  mousePointer: MousePointerClick,
+  code: Code2,
+  workflow: Workflow,
+  search: Search,
+  panels: PanelsTopLeft,
+  server: Server,
+  circleHelp: CircleHelp,
+  database: Database,
+  gitBranch: GitBranch,
+  flag: Flag,
+  zap: Zap,
+  checkCircle: CheckCircle2,
+  clock: Clock,
+  hourglass: Hourglass,
+} as const;
 
 type Props = { content: UpdateToRenderSummaryContent['hero']; className?: string };
 

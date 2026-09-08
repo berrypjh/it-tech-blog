@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Compass, FileText } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CheckpointCard, JsxRuntimeFunctionsContent } from '../content';
-import { ArrowRightIcon, CompassIcon, FileTextIcon } from '../icons';
 
 type Props = { content: JsxRuntimeFunctionsContent['checkpoints'] };
 
@@ -21,7 +22,7 @@ export const RuntimeSourceCheckpoints = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CompassIcon className="h-5 w-5" />}
+      icon={<Compass className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md items-stretch">
@@ -54,7 +55,7 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
           {card.number}
         </span>
         <span className="flex-1 inline-flex items-center gap-2 min-w-0">
-          <FileTextIcon
+          <FileText
             aria-hidden="true"
             className={cn('h-4 w-4 shrink-0', toneTokens[card.tone].text)}
           />
@@ -78,7 +79,7 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
               {pill}
             </span>
             {idx < card.flowPills.length - 1 && (
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className={cn('h-3 w-3 shrink-0', toneTokens[card.tone].text)}
               />

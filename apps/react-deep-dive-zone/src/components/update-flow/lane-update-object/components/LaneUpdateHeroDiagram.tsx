@@ -1,11 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, Crosshair, Database, Hand, Link2, Route } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowStep, LaneUpdateObjectContent } from '../content';
-import { heroFlowIconByName, heroSummaryIconByName } from '../icons';
+
+const heroFlowIconByName = {
+  hand: Hand,
+  route: Route,
+  crosshair: Crosshair,
+  braces: Braces,
+} as const;
+
+const heroSummaryIconByName = {
+  crosshair: Crosshair,
+  database: Database,
+  link: Link2,
+} as const;
 
 type Props = { content: LaneUpdateObjectContent['hero']; className?: string };
 

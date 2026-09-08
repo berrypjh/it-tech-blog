@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, HelpCircle, Lightbulb } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
-import { ArrowRightIcon, HelpCircleIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['quiz'] };
 
@@ -15,7 +16,7 @@ export const IdentityMiniQuiz = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -65,7 +66,7 @@ export const IdentityMiniQuiz = ({ content }: Props) => (
             </div>
           </div>
 
-          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
             <span className="font-normal">
               <span className="font-bold">{content.explanationLabel}</span> — {content.explanation}
             </span>
@@ -122,7 +123,7 @@ const ElementVsFiberDiagram = ({
       aria-hidden="true"
       className="self-center inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_1px_0_var(--term-border)]"
     >
-      <ArrowRightIcon className="h-4 w-4" />
+      <ArrowRight className="h-4 w-4" aria-hidden="true" />
     </span>
 
     <article

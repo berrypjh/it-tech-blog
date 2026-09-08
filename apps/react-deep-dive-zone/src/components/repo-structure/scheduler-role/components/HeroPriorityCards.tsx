@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type LucideIcon, MousePointerClick, Search, Sparkles } from 'lucide-react';
+
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroPriorityCard, PriorityKey, SchedulerContent } from '../content';
-import { iconByName } from '../icons';
 
 import { PriorityRail } from './PriorityRail';
+
+const cardIcon: Record<PriorityKey, LucideIcon> = {
+  immediate: MousePointerClick,
+  normal: Search,
+  low: Sparkles,
+};
 
 type Props = { content: SchedulerContent['hero'] };
 
@@ -71,7 +78,7 @@ type CardProps = { card: HeroPriorityCard };
 
 const PriorityCard = ({ card }: CardProps) => {
   const t = toneTokens[priorityTone[card.id]];
-  const Icon = iconByName[card.icon];
+  const Icon = cardIcon[card.id];
 
   return (
     <article
@@ -90,7 +97,7 @@ const PriorityCard = ({ card }: CardProps) => {
             t.text,
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <span
           className={cn(

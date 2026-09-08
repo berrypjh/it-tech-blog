@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, CircleHelp } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ScheduleUpdateOnFiberContent } from '../content';
-import { CheckCircleIcon, CircleHelpIcon } from '../icons';
 
 type Props = { content: ScheduleUpdateOnFiberContent['quiz'] };
 
@@ -16,7 +17,7 @@ export const MiniQuizSection = ({ content }: Props) => (
       id="quiz"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CircleHelpIcon className="h-5 w-5" />}
+      icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -66,7 +67,7 @@ export const MiniQuizSection = ({ content }: Props) => (
               emerald.fill.bg,
             )}
           >
-            <CheckCircleIcon
+            <CheckCircle2
               aria-hidden="true"
               className={cn('mt-0.5 h-5 w-5 shrink-0', emerald.text)}
             />

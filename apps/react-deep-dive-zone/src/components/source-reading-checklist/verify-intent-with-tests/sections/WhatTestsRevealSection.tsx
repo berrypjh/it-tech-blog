@@ -1,32 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Lightbulb, RotateCcw, ScanSearch, ShieldCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TestAsDocContent } from '../content';
-import {
-  HelpCircleIcon,
-  LightbulbIcon,
-  RotateCcwIcon,
-  ScanSearchIcon,
-  ShieldCheckIcon,
-} from '../icons';
 
 type Props = { content: TestAsDocContent['whatTestsReveal'] };
 
 const revealMeta = {
   guarantee: {
     tone: 'emerald' as const,
-    Icon: ShieldCheckIcon,
+    Icon: ShieldCheck,
     label: 'Guarantee',
   },
   edge: {
     tone: 'amber' as const,
-    Icon: LightbulbIcon,
+    Icon: Lightbulb,
     label: 'Edge Case',
   },
   regression: {
     tone: 'violet' as const,
-    Icon: RotateCcwIcon,
+    Icon: RotateCcw,
     label: 'Regression',
   },
 } as const;
@@ -43,7 +38,7 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ScanSearchIcon className="h-5 w-5" />}
+        icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -101,7 +96,7 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
                     t.chip,
                   )}
                 >
-                  <HelpCircleIcon
+                  <HelpCircle
                     className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />

@@ -1,25 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, DoorOpen, GitMerge, Rocket, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, RenderToCommitStep, RenderToCommitStepIcon } from '../content';
-import {
-  ArrowDownIcon,
-  CheckCircleIcon,
-  GateIcon,
-  GitMergeIcon,
-  RocketIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: CommitRootContent['renderToCommit'] };
 
-const iconMap: Record<RenderToCommitStepIcon, typeof CheckCircleIcon> = {
-  checkCircle: CheckCircleIcon,
-  gitMerge: GitMergeIcon,
-  gate: GateIcon,
-  rocket: RocketIcon,
+const iconMap: Record<RenderToCommitStepIcon, typeof CheckCircle2> = {
+  checkCircle: CheckCircle2,
+  gitMerge: GitMerge,
+  gate: DoorOpen,
+  rocket: Rocket,
 };
 
 export const RenderToCommitFlowSection = ({ content }: Props) => (
@@ -33,7 +27,7 @@ export const RenderToCommitFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -43,7 +37,7 @@ export const RenderToCommitFlowSection = ({ content }: Props) => (
             <StepCard step={step} index={idx + 1} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>

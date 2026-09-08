@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Replace, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent, TermCase } from '../content';
-import { ArrowRightIcon, ReplaceIcon, SparkIcon } from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['termCompare'] };
 
@@ -18,7 +19,7 @@ export const TermCompareSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ReplaceIcon className="h-5 w-5" />}
+        icon={<Replace className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="flex flex-col gap-md">
@@ -91,7 +92,7 @@ const TermCompareCard = ({ data, judgmentLabel }: { data: TermCase; judgmentLabe
               'text-[10px] font-mono font-bold uppercase tracking-wider',
             )}
           >
-            <ArrowRightIcon className="h-3 w-3" aria-hidden="true" />
+            <ArrowRight className="h-3 w-3" aria-hidden="true" />
             shift
           </span>
         </div>
@@ -136,7 +137,7 @@ const TermCompareCard = ({ data, judgmentLabel }: { data: TermCase; judgmentLabe
           'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-100',
         )}
       >
-        <SparkIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <Sparkles className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
         <div className="flex flex-col">
           <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300">
             {judgmentLabel}

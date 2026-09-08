@@ -4,16 +4,10 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Blocks, Code2, PanelsTopLeft, RefreshCw, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { BuilderStep, ReconstructContent } from '../content';
-import {
-  ArrowDownIcon,
-  BlocksIcon,
-  Code2Icon,
-  PanelsTopLeftIcon,
-  RefreshIcon,
-  SparkIcon,
-} from '../icons';
 
 type Props = { content: ReconstructContent['builder'] };
 
@@ -57,7 +51,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BlocksIcon className="h-5 w-5" />}
+        icon={<Blocks className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -116,7 +110,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                             : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
                         )}
                       >
-                        <Code2Icon className="h-3.5 w-3.5" />
+                        <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                       <code
                         className={cn(
@@ -153,7 +147,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                   'disabled:cursor-not-allowed disabled:opacity-50',
                 )}
               >
-                <RefreshIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <RefreshCw className="h-3.5 w-3.5" aria-hidden="true" />
                 {content.resetLabel}
               </button>
               <button
@@ -169,7 +163,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                 )}
               >
-                <SparkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 {content.fillLabel}
               </button>
             </div>
@@ -188,7 +182,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
               )}
             >
               <div className="flex items-center gap-2">
-                <PanelsTopLeftIcon
+                <PanelsTopLeft
                   className="h-4 w-4 text-blue-700 dark:text-blue-300"
                   aria-hidden="true"
                 />
@@ -284,7 +278,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                             aria-hidden="true"
                             className="flex items-center justify-center py-0.5"
                           >
-                            <ArrowDownIcon className="h-3 w-3 text-cyan-500" />
+                            <ArrowDown className="h-3 w-3 text-cyan-500" aria-hidden="true" />
                           </span>
                         )}
                       </Fragment>
@@ -305,7 +299,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
               )}
             >
               <div className="flex items-center gap-2 mb-sm">
-                <SparkIcon
+                <Sparkles
                   className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
                   aria-hidden="true"
                 />

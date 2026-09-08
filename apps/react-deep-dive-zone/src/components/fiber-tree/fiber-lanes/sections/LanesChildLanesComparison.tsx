@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cylinder, Layers, ListTree } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import { ParentChildFiberTree } from '../components/ParentChildFiberTree';
 import type { FiberLanesContent } from '../content';
-import { CylinderIcon, LayersIcon, ListTreeIcon } from '../icons';
 
 type Props = { content: FiberLanesContent['comparison'] };
 
@@ -17,20 +18,20 @@ export const LanesChildLanesComparison = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
       <ConceptCard
         tone="emerald"
-        icon={<CylinderIcon className="h-5 w-5" />}
+        icon={<Cylinder className="h-5 w-5" aria-hidden="true" />}
         title={content.lanesCard.title}
         description={content.lanesCard.description}
       />
       <CompareVs />
       <ConceptCard
         tone="violet"
-        icon={<ListTreeIcon className="h-5 w-5" />}
+        icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
         title={content.childLanesCard.title}
         description={content.childLanesCard.description}
       />

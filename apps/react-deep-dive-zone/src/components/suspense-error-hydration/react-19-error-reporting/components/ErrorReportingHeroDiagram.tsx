@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, RefreshCcw, ShieldAlert, ShieldCheck } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { React19ErrorReportingContent, RootCallbackCard } from '../content';
-import { AlertTriangleIcon, RefreshCcwIcon, ShieldAlertIcon, ShieldCheckIcon } from '../icons';
 import type { CallbackKind } from '../tone';
 
 type Props = { content: React19ErrorReportingContent['hero']; className?: string };
 
 const callbackIcon: Record<CallbackKind, React.ComponentType<{ className?: string }>> = {
-  caught: ShieldCheckIcon,
-  uncaught: ShieldAlertIcon,
-  recoverable: RefreshCcwIcon,
+  caught: ShieldCheck,
+  uncaught: ShieldAlert,
+  recoverable: RefreshCcw,
 };
 
 /** ToneKey에는 rose가 없어 가장 가까운 톤으로 매핑한다. */
@@ -68,7 +69,7 @@ const SourceRow = () => (
     )}
   >
     <ToneIconBox tone="violet" size="sm">
-      <AlertTriangleIcon className="h-[18px] w-[18px]" />
+      <AlertTriangle className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
       render error

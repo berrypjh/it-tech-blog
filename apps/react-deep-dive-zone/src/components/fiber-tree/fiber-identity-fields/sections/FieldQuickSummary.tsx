@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Code2, Key, ListTree, Target } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent, QuickSummaryCard } from '../content';
-import { BoxesIcon, CodeIcon, KeyIcon, ListTreeIcon, TargetIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['summary'] };
 
 const iconMap = {
-  cube: BoxesIcon,
-  key: KeyIcon,
-  code: CodeIcon,
-  target: TargetIcon,
+  cube: Boxes,
+  key: Key,
+  code: Code2,
+  target: Target,
 } as const;
 
 export const FieldQuickSummary = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const FieldQuickSummary = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListTreeIcon className="h-5 w-5" />}
+      icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm lg:gap-md">

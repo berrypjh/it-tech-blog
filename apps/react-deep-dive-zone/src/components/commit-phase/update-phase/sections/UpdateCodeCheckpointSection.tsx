@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileCode, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent } from '../content';
-import { CodeIcon, FileCodeIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['checkpoint'] };
 
@@ -20,7 +21,7 @@ export const UpdateCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_0.7fr)_minmax(0,_1.2fr)] gap-3">
@@ -28,12 +29,12 @@ export const UpdateCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <code className="font-mono break-all">{content.info.filePath}</code>,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <PathList items={content.info.watchItems} />,
           },
         ]}
@@ -67,7 +68,7 @@ const FunctionsCard = ({
   <article className="flex h-full flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center gap-2">
       <ToneIconBox tone="violet" size="sm">
-        <CodeIcon className="h-4 w-4" />
+        <Code2 className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <h3 className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
         {title}

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, PlayCircle, RefreshCw, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { RenderWithHooksContent } from '../content';
-import { ArrowDownIcon, PlayCircleIcon, RefreshCwIcon, SparklesIcon } from '../icons';
 
 type Props = { content: RenderWithHooksContent['simulator'] };
 
@@ -74,7 +75,7 @@ export const RenderSimulator = ({ content }: Props) => {
         id="simulator"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -82,7 +83,7 @@ export const RenderSimulator = ({ content }: Props) => {
         <article className="flex flex-col gap-md">
           <header className="flex items-center justify-between gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200/70 text-blue-700 dark:bg-blue-950/40 dark:border-blue-800/60 dark:text-blue-200 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider">
-              <SparklesIcon aria-hidden="true" className="h-3 w-3" />
+              <Sparkles aria-hidden="true" className="h-3 w-3" />
               {content.guide}
             </span>
           </header>
@@ -135,7 +136,7 @@ export const RenderSimulator = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200/80 bg-violet-50 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200"
             >
-              <PlayCircleIcon className="h-4 w-4" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)]">
               {content.rightTitle}
@@ -146,7 +147,7 @@ export const RenderSimulator = ({ content }: Props) => {
             {content.cards.map((card, i) => {
               const isLast = i === content.cards.length - 1;
               const accent = card.tone === 'sky' ? accentStyles.sky : accentStyles.emerald;
-              const Icon = i === 0 ? PlayCircleIcon : RefreshCwIcon;
+              const Icon = i === 0 ? PlayCircle : RefreshCw;
               return (
                 <li key={card.title} className="flex flex-col gap-2">
                   <article
@@ -214,7 +215,7 @@ export const RenderSimulator = ({ content }: Props) => {
                       aria-hidden="true"
                       className="flex justify-center text-[var(--term-muted)]"
                     >
-                      <ArrowDownIcon className="h-5 w-5" />
+                      <ArrowDown className="h-5 w-5" aria-hidden="true" />
                     </span>
                   )}
                 </li>

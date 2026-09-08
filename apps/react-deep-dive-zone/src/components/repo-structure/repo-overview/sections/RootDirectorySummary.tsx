@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FlaskConical, Folder, type LucideIcon, Sparkles, TerminalSquare } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { RepoOverviewContent } from '../content';
-import { directoryIconByName, FolderIcon } from '../icons';
+import type { DirectoryCard, RepoOverviewContent } from '../content';
+
+const cardIcon: Record<DirectoryCard['id'], LucideIcon> = {
+  packages: Folder,
+  fixtures: FlaskConical,
+  scripts: TerminalSquare,
+  compiler: Sparkles,
+};
 
 type Props = { content: RepoOverviewContent['directory'] };
 
@@ -15,15 +23,19 @@ export const RootDirectorySummary = ({ content }: Props) => {
         id="directory"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FolderIcon className="h-5 w-5" />}
+        icon={<Folder className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = directoryIconByName[card.icon] ?? FolderIcon;
+          const Icon = cardIcon[card.id];
 
           return (
-            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+            >
               <h3
                 className={cn(
                   'text-md sm:text-lg font-bold tracking-tight font-mono',

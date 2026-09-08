@@ -4,20 +4,13 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Cog, Database, PlayCircle, Plus, RefreshCw, RotateCcw, Zap } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent } from '../../lane-shape/content';
 import type { RootPendingWorkContent, SimulatorLane } from '../content';
-import {
-  CogIcon,
-  DatabaseIcon,
-  PlayCircleIcon,
-  PlusIcon,
-  RefreshIcon,
-  RotateCcwIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RootPendingWorkContent['simulator'] };
 
@@ -29,10 +22,10 @@ const ACCENT_TO_LANE: Record<SimulatorLane['accent'], LaneAccent> = {
   violet: 'transition',
 };
 
-const buttonIcon: Record<SimulatorLane['key'], typeof ZapIcon> = {
-  sync: ZapIcon,
-  transition: RefreshIcon,
-  retry: PlayCircleIcon,
+const buttonIcon: Record<SimulatorLane['key'], typeof Zap> = {
+  sync: Zap,
+  transition: RefreshCw,
+  retry: PlayCircle,
 };
 
 export const PendingLanesSimulator = ({ content }: Props) => {
@@ -76,7 +69,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<CogIcon className="h-5 w-5" />}
+        icon={<Cog className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,3fr)] gap-md items-stretch">
@@ -92,7 +85,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <CogIcon className="h-4 w-4" />
+              <Cog className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.actionTitle}
@@ -152,7 +145,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                         {lane.label} · bit {lane.bitIndex}
                       </span>
                     </div>
-                    <PlusIcon
+                    <Plus
                       aria-hidden="true"
                       className={cn(
                         'h-4 w-4 shrink-0',
@@ -180,7 +173,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
               'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0',
             )}
           >
-            <RotateCcwIcon aria-hidden="true" className="h-4 w-4" />
+            <RotateCcw aria-hidden="true" className="h-4 w-4" />
             <span>{content.resetLabel}</span>
           </button>
         </article>
@@ -201,7 +194,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
               >
-                <DatabaseIcon className="h-4 w-4" />
+                <Database className="h-4 w-4" aria-hidden="true" />
               </span>
               <h3 className="text-sm sm:text-md font-bold text-teal-700 dark:text-teal-300 break-keep">
                 {content.bitmaskTitle}
@@ -274,7 +267,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                   : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
               )}
             >
-              <CogIcon className="h-4 w-4" />
+              <Cog className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.statusTitle}

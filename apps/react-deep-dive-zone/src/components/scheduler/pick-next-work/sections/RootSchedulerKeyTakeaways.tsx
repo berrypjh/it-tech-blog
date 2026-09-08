@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Compass, Database, Trophy, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent, SchedulerAccent } from '../content';
-import { ClockIcon, CompassIcon, DatabaseIcon, TrophyIcon, ZapIcon } from '../icons';
 import {
   schedCardBorder,
   schedIconBox,
@@ -12,11 +13,11 @@ import {
 
 type Props = { content: RootSchedulerContent['takeaways'] };
 
-const cardIcon: Record<SchedulerAccent, typeof ZapIcon> = {
-  blue: DatabaseIcon,
-  teal: CompassIcon,
-  violet: ClockIcon,
-  slate: ZapIcon,
+const cardIcon: Record<SchedulerAccent, typeof Zap> = {
+  blue: Database,
+  teal: Compass,
+  violet: Clock3,
+  slate: Zap,
 };
 
 const iconWash: Record<SchedulerAccent, string> = {
@@ -33,7 +34,7 @@ export const RootSchedulerKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">

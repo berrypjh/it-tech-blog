@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ContextAccent, ContextCard, RequestUpdateLaneContent } from '../content';
-import { ClockIcon, MousePointerClickIcon, RefreshIcon, ZapIcon } from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['hero']; className?: string };
 
@@ -15,10 +16,10 @@ const accentTone: Record<ContextAccent, ToneKey> = {
   violet: 'violet',
 };
 
-const cardIcon: Record<ContextAccent, typeof ZapIcon> = {
-  blue: MousePointerClickIcon,
-  teal: ClockIcon,
-  violet: RefreshIcon,
+const cardIcon: Record<ContextAccent, typeof Zap> = {
+  blue: MousePointerClick,
+  teal: Clock3,
+  violet: RefreshCw,
 };
 
 /**

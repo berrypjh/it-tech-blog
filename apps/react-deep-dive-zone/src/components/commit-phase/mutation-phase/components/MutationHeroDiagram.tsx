@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Pencil, Plus, Trash2 } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlagCard, HeroFlagIcon, HeroOpCard, MutationPhaseContent } from '../content';
-import { PencilIcon, PlusIcon, TrashIcon } from '../icons';
 
 type Props = { content: MutationPhaseContent['hero']; className?: string };
 
-const iconMap: Record<HeroFlagIcon, typeof PencilIcon> = {
-  plus: PlusIcon,
-  pencil: PencilIcon,
-  trash: TrashIcon,
+const iconMap: Record<HeroFlagIcon, typeof Pencil> = {
+  plus: Plus,
+  pencil: Pencil,
+  trash: Trash2,
 };
 
 /**

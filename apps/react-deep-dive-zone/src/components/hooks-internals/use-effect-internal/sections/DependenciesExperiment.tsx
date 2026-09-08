@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, PauseCircle, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ExperimentResult, UseEffectInternalsContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, PauseCircleIcon, SparklesIcon } from '../icons';
 
 type Props = { content: UseEffectInternalsContent['depsExperiment'] };
 
@@ -95,9 +96,9 @@ const ResultCard = ({
           )}
         >
           {isRun ? (
-            <CheckCircleIcon aria-hidden="true" className="h-3 w-3" />
+            <CheckCircle2 aria-hidden="true" className="h-3 w-3" />
           ) : (
-            <PauseCircleIcon aria-hidden="true" className="h-3 w-3" />
+            <PauseCircle aria-hidden="true" className="h-3 w-3" />
           )}
           {isRun ? runLabel : skipLabel}
         </span>
@@ -139,7 +140,7 @@ export const DependenciesExperiment = ({ content }: Props) => {
         id="deps-experiment"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -178,7 +179,7 @@ export const DependenciesExperiment = ({ content }: Props) => {
                       {node}
                     </code>
                     {!isLast && (
-                      <ArrowRightIcon
+                      <ArrowRight
                         aria-hidden="true"
                         className="h-3.5 w-3.5 text-[var(--term-muted)]"
                       />

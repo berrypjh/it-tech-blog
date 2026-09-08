@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, Target } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ExampleMapping, FiberIdentityFieldsContent } from '../content';
-import { CodeIcon, TargetIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['typeVs'] };
 
@@ -16,13 +17,13 @@ export const ElementTypeVsType = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-stretch gap-md lg:gap-lg">
       <CompareCard
         tone="violet"
-        icon={<CodeIcon className="h-5 w-5" aria-hidden="true" />}
+        icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
         title={content.elementType.title}
         subtitle={content.elementType.subtitle}
         body={content.elementType.body}
@@ -32,7 +33,7 @@ export const ElementTypeVsType = ({ content }: Props) => (
 
       <CompareCard
         tone="amber"
-        icon={<TargetIcon className="h-5 w-5" aria-hidden="true" />}
+        icon={<Target className="h-5 w-5" aria-hidden="true" />}
         title={content.type.title}
         subtitle={content.type.subtitle}
         body={content.type.body}

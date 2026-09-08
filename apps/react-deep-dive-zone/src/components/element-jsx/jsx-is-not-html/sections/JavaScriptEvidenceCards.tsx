@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { EvidenceCard, JsxIsNotHtmlContent } from '../content';
-import { Code2Icon } from '../icons';
 
 type Props = { content: JsxIsNotHtmlContent['evidence'] };
 
@@ -21,7 +22,7 @@ export const JavaScriptEvidenceCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<Code2Icon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 @2xl:grid-cols-2 @4xl:grid-cols-3 gap-md items-stretch">

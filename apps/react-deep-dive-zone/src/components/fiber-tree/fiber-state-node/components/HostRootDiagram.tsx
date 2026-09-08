@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown } from 'lucide-react';
+
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent } from '../content';
-import { ArrowDownIcon } from '../icons';
 
 type Diagram = FiberStateNodeContent['hostRoot']['diagram'];
 type Props = { diagram: Diagram };
@@ -89,11 +90,11 @@ const Connector = ({
       >
         {currentLabel}
       </span>
-      <ArrowDownIcon className={cn('h-4 w-4', toneTokens.sky.text)} />
+      <ArrowDown className={cn('h-4 w-4', toneTokens.sky.text)} aria-hidden="true" />
     </div>
 
     <div className="flex flex-col items-center gap-1">
-      <ArrowDownIcon className={cn('h-4 w-4 rotate-180', toneTokens.emerald.text)} />
+      <ArrowDown className={cn('h-4 w-4 rotate-180', toneTokens.emerald.text)} aria-hidden="true" />
       <span
         className={cn(
           'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono',

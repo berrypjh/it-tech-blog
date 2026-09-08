@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileCode, Flag, PackageOpen, Sparkles } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { MutationPhaseContent } from '../content';
-import { CodeIcon, FileCodeIcon, FlagIcon, PackageOpenIcon, SparklesIcon } from '../icons';
 
 type Props = { content: MutationPhaseContent['checkpoint'] };
 
@@ -20,7 +21,7 @@ export const MutationCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.65fr)_minmax(0,_1.7fr)] gap-3">
@@ -28,12 +29,12 @@ export const MutationCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <PathList items={content.info.filePaths} mono />,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <PathList items={content.info.watchItems} mono />,
           },
         ]}
@@ -99,7 +100,7 @@ const MaskCallout = ({
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="teal" size="sm">
-          <FlagIcon className="h-4 w-4" />
+          <Flag className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', t.fill.text)}>
           {callout.title}
@@ -139,7 +140,7 @@ const CorePointsCard = ({ title, points }: { title: string; points: string[] }) 
     >
       <header className="mb-sm flex items-center gap-2">
         <ToneIconBox tone="sky" size="sm">
-          <SparklesIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
       </header>

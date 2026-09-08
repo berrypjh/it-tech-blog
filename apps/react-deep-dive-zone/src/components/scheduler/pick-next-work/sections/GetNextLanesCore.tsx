@@ -1,33 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Compass, Database, Hourglass, Layers, PauseCircle, RefreshCw, Target } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent, SchedulerAccent } from '../content';
-import {
-  CompassIcon,
-  DatabaseIcon,
-  HourglassIcon,
-  LayersIcon,
-  PauseCircleIcon,
-  RefreshIcon,
-  TargetIcon,
-} from '../icons';
 import { schedCardBorder, schedIconBox, schedTextStrong } from '../schedulerAccent';
 
 type Props = { content: RootSchedulerContent['getNext'] };
 
-const cardIcon: Record<SchedulerAccent, typeof DatabaseIcon> = {
-  blue: DatabaseIcon,
-  teal: RefreshIcon,
-  violet: PauseCircleIcon,
-  slate: LayersIcon,
+const cardIcon: Record<SchedulerAccent, typeof Database> = {
+  blue: Database,
+  teal: RefreshCw,
+  violet: PauseCircle,
+  slate: Layers,
 };
 
 // pick icon per card name override
-const specificIcon: Record<string, typeof DatabaseIcon> = {
-  pendingLanes: DatabaseIcon,
-  suspendedLanes: PauseCircleIcon,
-  pingedLanes: RefreshIcon,
-  workInProgressRootRenderLanes: HourglassIcon,
+const specificIcon: Record<string, typeof Database> = {
+  pendingLanes: Database,
+  suspendedLanes: PauseCircle,
+  pingedLanes: RefreshCw,
+  workInProgressRootRenderLanes: Hourglass,
 };
 
 export const GetNextLanesCore = ({ content }: Props) => (
@@ -38,7 +31,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
       eyebrow={content.title}
       title={content.title}
       description={content.description}
-      icon={<CompassIcon className="h-5 w-5" />}
+      icon={<Compass className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
@@ -103,7 +96,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
         aria-hidden="true"
         className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.3)] dark:bg-blue-500"
       >
-        <TargetIcon className="h-5 w-5" strokeWidth={2.2} />
+        <Target className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
         {content.coreNote}

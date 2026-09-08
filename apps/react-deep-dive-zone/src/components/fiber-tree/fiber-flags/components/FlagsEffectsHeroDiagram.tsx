@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import type { EffectKind, FiberFlagsContent, TreeNode } from '../content';
-import { FlagIcon } from '../icons';
 
 import { EffectBadge } from './EffectBadge';
 
@@ -39,7 +40,7 @@ export const FlagsEffectsHeroDiagram = ({ content, className }: Props) => {
 
         <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
           <header className="mb-2 flex items-center gap-1.5 border-b border-dashed border-[var(--term-border)] pb-2">
-            <FlagIcon className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" />
+            <Flag className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
             <span className="font-mono text-[11px] font-bold text-[var(--term-fg)]">
               workInProgress tree
             </span>

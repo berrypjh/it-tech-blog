@@ -4,15 +4,16 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { SuspenseHydrationLinkContent, TimelineKey } from '../content';
 import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  LoaderIcon,
-  PauseCircleIcon,
-  RefreshCcwIcon,
-  TriangleAlertIcon,
-} from '../icons';
+  ArrowRight,
+  CheckCircle2,
+  Loader,
+  PauseCircle,
+  RefreshCcw,
+  TriangleAlert,
+} from 'lucide-react';
+
+import type { SuspenseHydrationLinkContent, TimelineKey } from '../content';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -20,9 +21,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: SuspenseHydrationLinkContent['interactive'] };
 
 const optionIcon: Record<TimelineKey, React.ComponentType<{ className?: string }>> = {
-  serverSuspend: PauseCircleIcon,
-  serverError: TriangleAlertIcon,
-  hydrationError: RefreshCcwIcon,
+  serverSuspend: PauseCircle,
+  serverError: TriangleAlert,
+  hydrationError: RefreshCcw,
 };
 
 const optionTone: Record<TimelineKey, { selected: string; text: string; iconChip: string }> = {
@@ -108,7 +109,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                       </span>
                     </span>
                     {isActive && (
-                      <CheckCircleIcon
+                      <CheckCircle2
                         aria-hidden="true"
                         className={cn('h-4 w-4 shrink-0', tone.text)}
                       />
@@ -123,7 +124,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
         {/* timeline + note + badges */}
         <article aria-live="polite" className="flex flex-col gap-md">
           <header className="flex items-center gap-2">
-            <LoaderIcon aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+            <Loader aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
             <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.timelineTitle}</h3>
           </header>
 
@@ -155,7 +156,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                     </span>
                   </div>
                   {!isLast && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="h-3.5 w-3.5 ml-3.5 rotate-90 text-blue-400 dark:text-blue-500"
                     />

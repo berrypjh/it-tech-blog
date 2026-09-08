@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cpu, DoorOpen, GitMerge, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, HeroFlowCard, HeroFlowCardIcon } from '../content';
-import { CpuIcon, GateIcon, GitMergeIcon, LayersIcon } from '../icons';
 
 type Props = { content: CommitRootContent['hero']; className?: string };
 
-const iconMap: Record<HeroFlowCardIcon, typeof CpuIcon> = {
-  cpu: CpuIcon,
-  gitMerge: GitMergeIcon,
-  gate: GateIcon,
-  layers: LayersIcon,
+const iconMap: Record<HeroFlowCardIcon, typeof Cpu> = {
+  cpu: Cpu,
+  gitMerge: GitMerge,
+  gate: DoorOpen,
+  layers: Layers,
 };
 
 /**

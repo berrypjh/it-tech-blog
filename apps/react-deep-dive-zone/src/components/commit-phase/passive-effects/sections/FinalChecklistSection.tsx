@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Sparkles, SquareCheck, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { NextChapterCard, PassiveEffectsContent } from '../content';
-import { LayersIcon, SparklesIcon, SquareCheckIcon, TrophyIcon } from '../icons';
 
 type Props = {
   checklist: PassiveEffectsContent['checklist'];
@@ -28,7 +29,7 @@ const ChecklistBlock = ({ checklist }: { checklist: PassiveEffectsContent['check
       eyebrow={checklist.eyebrow}
       title={checklist.title}
       description={checklist.description}
-      icon={<SquareCheckIcon className="h-5 w-5" />}
+      icon={<SquareCheck className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.4fr)_minmax(0,_0.6fr)] gap-3">
@@ -58,7 +59,7 @@ const ChecklistItem = ({ text, index }: { text: string; index: number }) => (
         toneTokens.teal.fill.text,
       )}
     >
-      <SquareCheckIcon className="h-3.5 w-3.5" />
+      <SquareCheck className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -89,7 +90,7 @@ const TrophyCard = ({ text }: { text: string }) => {
           t.fill.text,
         )}
       >
-        <TrophyIcon className="h-7 w-7" />
+        <Trophy className="h-7 w-7" aria-hidden="true" />
       </span>
       <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {text}
@@ -108,7 +109,7 @@ const NextChapterBlock = ({
       id="next-chapter"
       eyebrow={nextChapter.eyebrow}
       title={nextChapter.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)] gap-3">
@@ -131,7 +132,7 @@ const IntroCard = ({ intro, chapterTitle }: { intro: string; chapterTitle: strin
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="violet">
-          <LayersIcon className="h-5 w-5" />
+          <Layers className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold break-keep', t.fill.text)}>
           {chapterTitle}

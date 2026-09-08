@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { RenderWithHooksContent } from '../content';
-import { AtomIcon, SplitIcon } from '../icons';
 
 type Props = { content: RenderWithHooksContent['dispatcher'] };
 
@@ -28,7 +29,7 @@ export const DispatcherSelection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" aria-hidden="true" />}
         align="center"
       />
 
@@ -79,7 +80,7 @@ export const DispatcherSelection = ({ content }: Props) => {
                 'text-white shadow-[0_3px_0_var(--term-border)]',
               )}
             >
-              <AtomIcon className="h-6 w-6" />
+              <Atom className="h-6 w-6" aria-hidden="true" />
             </span>
             <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep text-center">
               {content.switch.hint}

@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { BadgeCheck, CheckCircle2, ClipboardCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ReconstructContent } from '../content';
-import { BadgeCheckIcon, CheckCircleIcon, ClipboardCheckIcon } from '../icons';
 
 type Props = { content: ReconstructContent['checklist'] };
 
@@ -38,7 +39,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ClipboardCheckIcon className="h-5 w-5" />}
+        icon={<ClipboardCheck className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -54,7 +55,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
         <div className="flex items-center justify-between gap-md mb-md">
           <div className="flex items-center gap-2">
             {isComplete ? (
-              <BadgeCheckIcon
+              <BadgeCheck
                 className="h-5 w-5 text-emerald-600 dark:text-emerald-400"
                 aria-hidden="true"
               />
@@ -141,7 +142,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
                       'peer-focus-visible:ring-2 peer-focus-visible:ring-blue-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[var(--term-bg)]',
                     )}
                   >
-                    {isChecked && <CheckCircleIcon className="h-3.5 w-3.5" />}
+                    {isChecked && <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] tabular-nums">

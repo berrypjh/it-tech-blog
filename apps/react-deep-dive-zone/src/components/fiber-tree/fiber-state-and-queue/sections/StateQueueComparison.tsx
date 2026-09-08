@@ -1,9 +1,10 @@
+import { Database, List } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey } from '../../../shared/tones';
 import type { ComparisonCard, FiberStateAndQueueContent, FieldKind } from '../content';
-import { DatabaseIcon, ListIcon } from '../icons';
 
 type Props = { content: FiberStateAndQueueContent['comparison'] };
 
@@ -13,8 +14,8 @@ const fieldTone: Record<FieldKind, ToneKey> = {
 };
 
 const fieldIcon = {
-  memoizedState: DatabaseIcon,
-  updateQueue: ListIcon,
+  memoizedState: Database,
+  updateQueue: List,
 } as const;
 
 export const StateQueueComparison = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const StateQueueComparison = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<DatabaseIcon className="h-5 w-5" />}
+      icon={<Database className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">

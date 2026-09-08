@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cable, Compass, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { CallPathFlow } from '../CallPathFlow';
 import type { CallPathCompressionContent } from '../content';
-import { CableIcon, CompassIcon, SparkIcon } from '../icons';
 
 type Props = { content: CallPathCompressionContent['useStateFlow'] };
 
@@ -19,7 +20,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<CableIcon className="h-5 w-5" />}
+        icon={<Cable className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_7fr)_minmax(0,_5fr)] gap-md lg:gap-lg items-start">
@@ -44,7 +45,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
                   'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
                 )}
               >
-                <SparkIcon className="h-4 w-4" />
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
               </span>
               <p className="text-sm sm:text-md font-bold leading-snug text-blue-900 dark:text-blue-100 break-keep">
                 {content.oneLineSummary}
@@ -69,7 +70,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
                   'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',
                 )}
               >
-                <CompassIcon className="h-3.5 w-3.5" />
+                <Compass className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <p className="text-xsm leading-relaxed text-emerald-900 dark:text-emerald-100 break-keep">
                 {content.relatedNote}

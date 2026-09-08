@@ -19,7 +19,6 @@ export type DirectoryCard = {
   title: string;
   description: string;
   tone: ToneKey;
-  icon: 'folder' | 'flask' | 'terminal' | 'sparkles';
 };
 
 export type RootFileCard = {
@@ -168,7 +167,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'fixtures',
           description: '실험적 기능, 데모, 버그 재현용 프로젝트가 담겨 있는 폴더입니다.',
           bullets: [
-            '내부 RFC를 빠르게 검증할 수 있는 데모 코드 모음',
+            '아직 제안 단계인 변경을 빠르게 시험해 보는 데모 코드 모음',
             'CI가 회귀 테스트를 돌리는 실제 사용 시나리오 보관소',
             '내부 동작을 이해하려면 우선순위는 다소 낮습니다.',
           ],
@@ -251,7 +250,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: '실제 React 패키지 코드',
           description: 'React 핵심 구현과 관련 패키지들이 모여 있습니다.',
           tone: 'sky',
-          icon: 'folder',
         },
         {
           id: 'fixtures',
@@ -259,7 +257,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: '실험 / 데모 / 재현 공간',
           description: '실험적 기능, 데모, 버그 재현용 프로젝트가 담겨 있습니다.',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
@@ -267,7 +264,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: '빌드 / 릴리즈 / 자동화 도구',
           description: '빌드, 테스트, 릴리즈, 코드 생성 등 자동화 스크립트 모음입니다.',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
@@ -275,7 +271,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'React Compiler 프로젝트',
           description: 'React Compiler 관련 소스와 도구 체인이 위치합니다.',
           tone: 'amber',
-          icon: 'sparkles',
         },
       ],
     },
@@ -396,7 +391,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'fixtures',
           description: 'Experimental projects, demos and bug reproduction setups live here.',
           bullets: [
-            'A playground for quickly validating internal RFCs',
+            'A playground for quickly trying out proposed changes',
             'Real-world usage scenarios that CI uses for regression checks',
             'Lower priority when you only want to understand the internals',
           ],
@@ -479,7 +474,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'The real React package code',
           description: 'React core implementation and related packages live here.',
           tone: 'sky',
-          icon: 'folder',
         },
         {
           id: 'fixtures',
@@ -487,7 +481,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'Experiments, demos and reproductions',
           description: 'Experimental features, demos and bug-repro projects are stored here.',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
@@ -495,7 +488,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'Build / release / automation tools',
           description: 'Automation scripts for build, test, release, and code generation.',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
@@ -503,7 +495,6 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
           title: 'React Compiler project',
           description: 'Source code and toolchain for the React Compiler project.',
           tone: 'amber',
-          icon: 'sparkles',
         },
       ],
     },

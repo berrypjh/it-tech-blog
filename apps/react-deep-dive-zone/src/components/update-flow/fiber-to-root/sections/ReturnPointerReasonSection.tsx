@@ -1,7 +1,15 @@
+import { Flag, MousePointerClick, MoveUp, PanelsTopLeft, Workflow } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { FiberToRootContent, ReturnNode } from '../content';
-import { MoveUpIcon, returnIconByName } from '../icons';
+
+const returnIconByName = {
+  mousePointer: MousePointerClick,
+  workflow: Workflow,
+  panels: PanelsTopLeft,
+  flag: Flag,
+} as const;
 
 type Props = { content: FiberToRootContent['returnPointer'] };
 
@@ -28,7 +36,7 @@ export const ReturnPointerReasonSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MoveUpIcon className="h-5 w-5" />}
+      icon={<MoveUp className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.nodes.map(toFlowStep)} columns={4} />

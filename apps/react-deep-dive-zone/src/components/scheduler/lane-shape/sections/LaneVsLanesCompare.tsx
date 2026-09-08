@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleDot, Layers, Split } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { laneCardBorder, laneIconBox, lanePill, laneTextStrong } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneBitmaskContent, LaneVsLanesCard } from '../content';
-import { CircleDotIcon, LayersIcon, SplitIcon } from '../icons';
 
 type Props = { content: LaneBitmaskContent['laneVsLanes'] };
 
 const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' }) => {
-  const Icon = kind === 'single' ? CircleDotIcon : LayersIcon;
+  const Icon = kind === 'single' ? CircleDot : Layers;
   return (
     <article
       className={cn(
@@ -89,7 +90,7 @@ export const LaneVsLanesCompare = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">

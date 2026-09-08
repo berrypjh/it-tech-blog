@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, Clock, type LucideIcon, Puzzle, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { SchedulerContent } from '../content';
-import { CircleHelpIcon, iconByName } from '../icons';
+import type { NeedCard, SchedulerContent } from '../content';
+
+const cardIcon: Record<NeedCard['id'], LucideIcon> = {
+  input: Zap,
+  split: Puzzle,
+  defer: Clock,
+};
 
 type Props = { content: SchedulerContent['need'] };
 
@@ -16,18 +23,18 @@ export const SchedulerNeedCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CircleHelpIcon className="h-5 w-5" />}
+        icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               badge={card.example}
             >
               <h3

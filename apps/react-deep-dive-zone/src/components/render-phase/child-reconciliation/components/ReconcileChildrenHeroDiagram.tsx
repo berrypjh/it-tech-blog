@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Hexagon, Layers, Network } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
-import { FileTextIcon, HexagonIcon, LayersIcon, NetworkIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['hero'] };
 
@@ -30,7 +31,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
 
         <FlowCard
           tone="sky"
-          icon={<NetworkIcon className="h-[18px] w-[18px]" />}
+          icon={<Network className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={diagram.currentCard.title}
           mono={diagram.currentCard.subtitle}
           body={diagram.currentCard.description}
@@ -38,7 +39,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
 
         <FlowCard
           tone="violet"
-          icon={<FileTextIcon className="h-[18px] w-[18px]" />}
+          icon={<FileText className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={diagram.inputCard.title}
           body={diagram.inputCard.description}
         />
@@ -55,7 +56,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
         >
           <div className="flex items-center gap-sm">
             <ToneIconBox tone="teal" size="sm">
-              <HexagonIcon className="h-[18px] w-[18px]" />
+              <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn(
@@ -81,7 +82,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
 
         <FlowCard
           tone="indigo"
-          icon={<LayersIcon className="h-[18px] w-[18px]" />}
+          icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={diagram.newCard.title}
           mono={diagram.newCard.subtitle}
           body={diagram.newCard.description}

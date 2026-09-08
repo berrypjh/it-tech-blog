@@ -1,29 +1,30 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { BranchKind, WhyFailableRenderContent } from '../content';
 import {
-  ArrowDownIcon,
-  HourglassIcon,
-  LoaderIcon,
-  PlugZapIcon,
-  ServerCrashIcon,
-  ShieldCheckIcon,
-  TriangleAlertIcon,
-} from '../icons';
+  ArrowDown,
+  Hourglass,
+  Loader,
+  PlugZap,
+  ServerCrash,
+  ShieldCheck,
+  TriangleAlert,
+} from 'lucide-react';
+
+import type { BranchKind, WhyFailableRenderContent } from '../content';
 import { branchAccent } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['threeBranches'] };
 
 const branchIcon: Record<BranchKind, React.ComponentType<{ className?: string }>> = {
-  suspense: HourglassIcon,
-  error: TriangleAlertIcon,
-  hydration: PlugZapIcon,
+  suspense: Hourglass,
+  error: TriangleAlert,
+  hydration: PlugZap,
 };
 
 const branchFooterIcon: Record<BranchKind, React.ComponentType<{ className?: string }>> = {
-  suspense: LoaderIcon,
-  error: ServerCrashIcon,
-  hydration: ShieldCheckIcon,
+  suspense: Loader,
+  error: ServerCrash,
+  hydration: ShieldCheck,
 };
 
 export const ThreeBranchSection = ({ content }: Props) => (
@@ -99,7 +100,7 @@ export const ThreeBranchSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="md:hidden absolute -top-4 left-1/2 -translate-x-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full border border-blue-200 bg-white text-blue-500 dark:border-blue-800/60 dark:bg-slate-900 dark:text-blue-300"
               >
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
 

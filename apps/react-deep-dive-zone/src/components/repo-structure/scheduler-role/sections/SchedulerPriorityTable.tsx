@@ -1,10 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowUp,
+  ListOrdered,
+  type LucideIcon,
+  MonitorSmartphone,
+  Sparkles,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { priorityTone } from '../components/HeroPriorityCards';
-import type { PriorityRow, SchedulerContent } from '../content';
-import { ArrowDownIcon, ArrowUpIcon, iconByName, ListOrderedIcon } from '../icons';
+import type { PriorityKey, PriorityRow, SchedulerContent } from '../content';
+
+const rowIcon: Record<PriorityKey, LucideIcon> = {
+  immediate: Zap,
+  normal: MonitorSmartphone,
+  low: Sparkles,
+};
 
 type Props = { content: SchedulerContent['priority'] };
 
@@ -16,7 +31,7 @@ export const SchedulerPriorityTable = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ListOrderedIcon className="h-5 w-5" />}
+        icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -57,7 +72,7 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
         aria-hidden="true"
         className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]"
       >
-        <ArrowUpIcon className="h-3.5 w-3.5" />
+        <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-accent)] break-keep">
         {highLabel}
@@ -87,7 +102,7 @@ const UrgencyScale = ({ highLabel, lowLabel }: ScaleProps) => (
           toneTokens.violet.text,
         )}
       >
-        <ArrowDownIcon className="h-3.5 w-3.5" />
+        <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <span
         className={cn(
@@ -106,7 +121,7 @@ type RowProps = { row: PriorityRow };
 const PriorityRowItem = ({ row }: RowProps) => {
   const t = toneTokens[priorityTone[row.id]];
   const chip = cn('bg-[var(--term-surface)] border-[var(--term-border)]', t.text);
-  const Icon = iconByName[row.icon];
+  const Icon = rowIcon[row.id];
 
   return (
     <article
@@ -125,7 +140,7 @@ const PriorityRowItem = ({ row }: RowProps) => {
             chip,
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <div className="flex flex-col gap-1 min-w-0">
           <h3 className={cn('text-sm font-bold tracking-tight', t.text)}>{row.title}</h3>

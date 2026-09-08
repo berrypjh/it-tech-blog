@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Braces, Tag } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromTypeAndPropsContent, JsxToFiberCard } from '../content';
-import { ArrowDownIcon, BracesIcon, TagIcon } from '../icons';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['jsxCards'] };
 
@@ -31,7 +32,7 @@ export const JsxToFiberTagCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BracesIcon className="h-5 w-5" />}
+      icon={<Braces className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
@@ -80,7 +81,7 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
             t.chip,
           )}
         >
-          <ArrowDownIcon className="h-3.5 w-3.5" />
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
       </div>
 
@@ -91,7 +92,7 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
           t.chip,
         )}
       >
-        <TagIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <Tag className="h-3.5 w-3.5" aria-hidden="true" />
         {card.result}
       </div>
 

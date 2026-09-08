@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, ChevronDown, Lightbulb, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkFlowNode, HostComponentContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  ChevronDownIcon,
-  LightbulbIcon,
-  SparklesIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: HostComponentContent['completeWork'] };
 
 const directionIcon = {
-  down: ArrowDownIcon,
-  sideways: ChevronDownIcon,
-  up: ArrowUpIcon,
+  down: ArrowDown,
+  sideways: ChevronDown,
+  up: ArrowUp,
 } as const;
 
 export const CompleteWorkPreview = ({ content }: Props) => (
@@ -31,7 +25,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
       id="complete-work-preview"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg items-stretch">
@@ -44,7 +38,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="amber" size="md">
-          <LightbulbIcon className="h-5 w-5" />
+          <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -71,7 +65,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
             <li key={node.title} className="flex flex-col items-stretch">
               <FlowNode node={node} />
               {idx < content.flow.length - 1 && (
-                <ChevronDownIcon
+                <ChevronDown
                   aria-hidden="true"
                   className="mx-auto my-1 h-4 w-4 text-[var(--term-accent)]"
                 />
@@ -91,7 +85,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
       >
         <header className="flex items-center gap-2">
           <ToneIconBox tone="violet" size="md">
-            <SparklesIcon className="h-5 w-5" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <h3
             id="completework-card-title"

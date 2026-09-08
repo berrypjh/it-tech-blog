@@ -4,23 +4,11 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'atom'
-  | 'cube'
-  | 'monitor'
-  | 'check'
-  | 'fileCode'
-  | 'network'
-  | 'flag'
-  | 'package'
-  | 'workflow';
-
 export type PositionCard = {
   id: 'element' | 'reconciler' | 'renderer' | 'host';
   title: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type CompareCard = {
@@ -29,14 +17,12 @@ export type CompareCard = {
   bullets: string[];
   tag: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type ProcessStep = {
-  number: string;
+  number: '1' | '2' | '3' | '4';
   title: string;
   description: string;
-  icon: IconName;
 };
 
 export type FiberTreeNode = {
@@ -77,7 +63,7 @@ export type ReconcilerEntryContent = {
     rendererCard: {
       title: string;
       description: string;
-      envIcons: { label: string; icon: IconName }[];
+      envIcons: ('Browser' | 'Native' | 'Custom')[];
       tone: ToneKey;
     };
   };
@@ -113,7 +99,6 @@ export type ReconcilerEntryContent = {
     functionName: string;
     descriptionLabel: string;
     descriptionValue: string;
-    learningQuestion: string;
     primaryCta: string;
     primaryHref: string;
     codeHeader: string;
@@ -195,11 +180,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       rendererCard: {
         title: 'Renderer',
         description: 'DOM / Native / 기타 환경',
-        envIcons: [
-          { label: 'Browser', icon: 'monitor' },
-          { label: 'Native', icon: 'cube' },
-          { label: 'Custom', icon: 'package' },
-        ],
+        envIcons: ['Browser', 'Native', 'Custom'],
         tone: 'emerald',
       },
     },
@@ -213,28 +194,24 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           title: 'React Element',
           description: '컴포넌트가 반환하는 UI 설명 객체',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'reconciler',
           title: 'react-reconciler',
           description: 'Fiber 생성, 트리 비교, 변경 계산, commit 준비',
           tone: 'violet',
-          icon: 'cube',
         },
         {
           id: 'renderer',
           title: 'Renderer',
           description: 'DOM / Native / 기타 환경',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'host',
           title: '실제 환경 반영',
           description: '브라우저 DOM / 네이티브 UI / 커스텀 환경에 반영',
           tone: 'teal',
-          icon: 'check',
         },
       ],
     },
@@ -253,7 +230,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         ],
         tag: '계산 담당',
         tone: 'violet',
-        icon: 'cube',
       },
       right: {
         id: 'renderer',
@@ -266,7 +242,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         ],
         tag: '반영 담당',
         tone: 'emerald',
-        icon: 'monitor',
       },
     },
     process: {
@@ -278,25 +253,21 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           number: '1',
           title: 'Element를 Fiber로 만든다.',
           description: '컴포넌트가 반환한 Element를 Fiber 노드로 변환합니다.',
-          icon: 'fileCode',
         },
         {
           number: '2',
           title: '현재 트리와 새 트리를 비교한다.',
           description: '기존 Fiber 트리와 새 Element 트리를 비교하여 변경을 찾습니다.',
-          icon: 'network',
         },
         {
           number: '3',
           title: '필요한 변경을 flags로 표시한다.',
           description: 'Placement, Update, Deletion 등의 변경 타입을 Fiber에 기록합니다.',
-          icon: 'flag',
         },
         {
           number: '4',
           title: 'commit 단계가 사용할 결과를 준비한다.',
           description: '변경 목록을 완성하고, 실제 반영 단계가 사용할 정보를 정리합니다.',
-          icon: 'package',
         },
       ],
       treeTitle: 'Fiber 트리 예시',
@@ -324,7 +295,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       functionName: 'createFiberFromElement',
       descriptionLabel: '설명',
       descriptionValue: 'Element의 type, key, props 등을 읽어 Fiber 노드를 생성합니다.',
-      learningQuestion: 'Element의 어떤 값들이\nFiber 생성에 사용되는가?',
       primaryCta: 'ReactFiber.js 읽기',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -414,11 +384,7 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       rendererCard: {
         title: 'Renderer',
         description: 'DOM / Native / Other host',
-        envIcons: [
-          { label: 'Browser', icon: 'monitor' },
-          { label: 'Native', icon: 'cube' },
-          { label: 'Custom', icon: 'package' },
-        ],
+        envIcons: ['Browser', 'Native', 'Custom'],
         tone: 'emerald',
       },
     },
@@ -432,28 +398,24 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           title: 'React Element',
           description: 'UI description object returned by components',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'reconciler',
           title: 'react-reconciler',
           description: 'Create fibers, diff trees, compute changes, prepare commit',
           tone: 'violet',
-          icon: 'cube',
         },
         {
           id: 'renderer',
           title: 'Renderer',
           description: 'DOM / Native / other hosts',
           tone: 'emerald',
-          icon: 'monitor',
         },
         {
           id: 'host',
           title: 'Real environment',
           description: 'Apply to browser DOM / native UI / custom host',
           tone: 'teal',
-          icon: 'check',
         },
       ],
     },
@@ -472,7 +434,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         ],
         tag: 'Calculation',
         tone: 'violet',
-        icon: 'cube',
       },
       right: {
         id: 'renderer',
@@ -485,7 +446,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         ],
         tag: 'Reflection',
         tone: 'emerald',
-        icon: 'monitor',
       },
     },
     process: {
@@ -497,25 +457,21 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
           number: '1',
           title: 'Turn Element into a Fiber.',
           description: 'Convert the Element a component returned into a Fiber node.',
-          icon: 'fileCode',
         },
         {
           number: '2',
           title: 'Diff the current and new trees.',
           description: 'Compare the existing Fiber tree with the new Element tree.',
-          icon: 'network',
         },
         {
           number: '3',
           title: 'Mark required changes with flags.',
           description: 'Record Placement, Update, Deletion and other types on each Fiber.',
-          icon: 'flag',
         },
         {
           number: '4',
           title: 'Prepare results for the commit phase.',
           description: 'Finalise the change list and the data the commit phase will use.',
-          icon: 'package',
         },
       ],
       treeTitle: 'Fiber tree example',
@@ -543,7 +499,6 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       functionName: 'createFiberFromElement',
       descriptionLabel: 'Description',
       descriptionValue: 'Reads type, key, props from an Element and creates a Fiber node.',
-      learningQuestion: 'Which Element values\nflow into Fiber creation?',
       primaryCta: 'Read ReactFiber.js',
       primaryHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',

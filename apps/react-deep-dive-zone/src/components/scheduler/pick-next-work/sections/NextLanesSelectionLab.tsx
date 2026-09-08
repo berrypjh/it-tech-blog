@@ -4,19 +4,12 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Compass, Eye, Layers, RotateCcw, Target, Zap } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent } from '../../lane-shape/content';
 import type { LabLane, RootSchedulerContent } from '../content';
-import {
-  CheckCircleIcon,
-  CompassIcon,
-  EyeIcon,
-  LayersIcon,
-  RotateCcwIcon,
-  TargetIcon,
-  ZapIcon,
-} from '../icons';
 import { schedCardBorder, schedIconBox, schedPill, schedTextStrong } from '../schedulerAccent';
 
 type Props = { content: RootSchedulerContent['lab'] };
@@ -30,11 +23,11 @@ const ACCENT_TO_LANE: Record<LabLane['accent'], LaneAccent> = {
   slate: 'offscreen',
 };
 
-const laneIcon: Record<LabLane['key'], typeof ZapIcon> = {
-  sync: ZapIcon,
-  transition: LayersIcon,
-  retry: TargetIcon,
-  idle: EyeIcon,
+const laneIcon: Record<LabLane['key'], typeof Zap> = {
+  sync: Zap,
+  transition: Layers,
+  retry: Target,
+  idle: Eye,
 };
 
 export const NextLanesSelectionLab = ({ content }: Props) => {
@@ -101,7 +94,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.title}
         title={content.title}
-        icon={<CompassIcon className="h-5 w-5" />}
+        icon={<Compass className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -117,7 +110,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <CompassIcon className="h-4 w-4" />
+              <Compass className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep font-mono">
               {content.leftTitle}
@@ -225,7 +218,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
             )}
           >
-            <RotateCcwIcon aria-hidden="true" className="h-4 w-4" />
+            <RotateCcw aria-hidden="true" className="h-4 w-4" />
             <span>{content.resetLabel}</span>
           </button>
         </article>
@@ -245,7 +238,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
             >
-              <LayersIcon className="h-4 w-4" />
+              <Layers className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-teal-700 dark:text-teal-300 break-keep font-mono">
               {content.centerTitle}
@@ -319,7 +312,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
                   : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
               )}
             >
-              <TargetIcon className="h-4 w-4" />
+              <Target className="h-4 w-4" aria-hidden="true" />
             </span>
             <span
               className={cn(
@@ -342,7 +335,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
                 schedPill[selectedLane.accent],
               )}
             >
-              <CheckCircleIcon aria-hidden="true" className="h-4 w-4" />
+              <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
               {selectedLane.label}
             </span>
           ) : (

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileCode } from 'lucide-react';
+
 import type { CodePathCard, RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, FileCodeIcon } from '../icons';
 import { domainAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -28,7 +29,7 @@ const Card = ({ card }: { card: CodePathCard }) => {
             accent.iconChip,
           )}
         >
-          <FileCodeIcon className="h-4 w-4" />
+          <FileCode className="h-4 w-4" aria-hidden="true" />
         </span>
         <code className={cn('text-xsm font-mono font-bold break-all', accent.text)}>
           {card.fileName}
@@ -76,8 +77,8 @@ export const CodePathMapSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
               >
-                <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+                <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
               </span>
             )}
           </li>

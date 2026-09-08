@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Network } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
-import { LayersIcon, NetworkIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['hero']; className?: string };
 
@@ -27,7 +28,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
             tone="sky"
             label={content.currentTitle}
             caption={content.currentSubtitle}
-            icon={<LayersIcon className="h-[18px] w-[18px]" />}
+            icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <NodeList tone="sky" nodes={content.nodes} />
         </li>
@@ -39,7 +40,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
             tone="emerald"
             label={content.wipTitle}
             caption={content.wipSubtitle}
-            icon={<NetworkIcon className="h-[18px] w-[18px]" />}
+            icon={<Network className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <NodeList tone="emerald" nodes={content.nodes} />
         </li>

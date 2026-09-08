@@ -1,3 +1,5 @@
+import { Star } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -8,7 +10,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { ElementSummaryHeroDiagram } from '../components/ElementSummaryHeroDiagram';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
-import { StarIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['hero'] };
 
@@ -21,7 +22,7 @@ export const ElementSummaryHero = ({ content }: Props) => (
   >
     <HeroTextColumn>
       <TerminalBadge size="md" showDot={false} className="w-fit">
-        <StarIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <Star className="h-3.5 w-3.5" aria-hidden="true" />
         {content.badge}
       </TerminalBadge>
 

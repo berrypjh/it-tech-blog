@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Code2 } from 'lucide-react';
+
 import type { RenderWithHooksContent } from '../content';
-import { ArrowDownIcon, CodeIcon } from '../icons';
 
 type Props = { content: RenderWithHooksContent['compare'] };
 
@@ -21,7 +22,7 @@ export const ComponentExecutionCompare = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-sky-200/80 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200"
           >
-            <CodeIcon className="h-4 w-4" />
+            <Code2 className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
             {content.leftTitle}
@@ -64,7 +65,7 @@ export const ComponentExecutionCompare = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200/80 bg-violet-50 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200"
           >
-            <CodeIcon className="h-4 w-4" />
+            <Code2 className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
             {content.rightTitle}
@@ -93,7 +94,7 @@ export const ComponentExecutionCompare = ({ content }: Props) => (
                 </div>
                 {!isLast && (
                   <span aria-hidden="true" className="flex justify-center text-[var(--term-muted)]">
-                    <ArrowDownIcon className="h-4 w-4" />
+                    <ArrowDown className="h-4 w-4" aria-hidden="true" />
                   </span>
                 )}
               </li>

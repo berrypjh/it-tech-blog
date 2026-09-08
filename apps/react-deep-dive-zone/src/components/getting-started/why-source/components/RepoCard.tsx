@@ -1,6 +1,6 @@
+import { GithubIcon } from '../../../shared/icon';
 import { ExternalLink } from '../../../shared/link';
 import type { WhySourceContent } from '../content';
-import { GithubIcon } from '../icons';
 
 type Props = { repo: WhySourceContent['firstCode']['repo'] };
 

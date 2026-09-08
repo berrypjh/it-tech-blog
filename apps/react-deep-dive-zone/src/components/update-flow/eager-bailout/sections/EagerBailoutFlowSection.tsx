@@ -1,7 +1,16 @@
+import { Ban, CheckCircle2, CircleDotDashed, Scale, Settings, Zap } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { BailoutStep, EagerBailoutContent } from '../content';
-import { bailoutStepIconByName, ZapIcon } from '../icons';
+
+const bailoutStepIconByName = {
+  circleDotDashed: CircleDotDashed,
+  settings: Settings,
+  scale: Scale,
+  checkCircle: CheckCircle2,
+  ban: Ban,
+} as const;
 
 type Props = { content: EagerBailoutContent['flow'] };
 
@@ -24,7 +33,7 @@ export const EagerBailoutFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ZapIcon className="h-5 w-5" />}
+      icon={<Zap className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />

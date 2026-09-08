@@ -1,11 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, MousePointerClick, RefreshCw, Split } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ContextCard, ScheduleUpdateOnFiberContent } from '../content';
-import { CheckCircleIcon, contextIconByName, SplitIcon } from '../icons';
+
+const contextIconByName = {
+  refresh: RefreshCw,
+  mousePointer: MousePointerClick,
+} as const;
 
 type Props = { content: ScheduleUpdateOnFiberContent['contextCompare'] };
 
@@ -20,7 +26,7 @@ export const RenderPhaseVsNormalUpdateSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -61,7 +67,7 @@ const CompareCard = ({ card }: { card: ContextCard }) => {
               t.border,
             )}
           >
-            <CheckCircleIcon aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">
               {b}
             </span>

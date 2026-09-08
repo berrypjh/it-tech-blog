@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Cpu, Package } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { SchedulerPackageContent } from '../content';
-import { CheckCircleIcon, CpuIcon, PackageIcon } from '../icons';
 
 type HeroContent = SchedulerPackageContent['hero'];
 
@@ -37,7 +38,7 @@ export const SchedulerPackageHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <RoleCard
           tone="blue"
-          icon={<CpuIcon className="h-[18px] w-[18px]" />}
+          icon={<Cpu className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={leftCard.title}
           subtitle={leftCard.subtitle}
           items={leftCard.items}
@@ -51,7 +52,7 @@ export const SchedulerPackageHeroDiagram = ({ content, className }: Props) => {
 
         <RoleCard
           tone="teal"
-          icon={<PackageIcon className="h-[18px] w-[18px]" />}
+          icon={<Package className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={rightCard.title}
           subtitle={rightCard.subtitle}
           items={rightCard.items}
@@ -101,7 +102,10 @@ const RoleCard = ({
             key={item}
             className="flex items-start gap-2 text-xsm leading-snug text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)} />
+            <CheckCircle2
+              className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
+              aria-hidden="true"
+            />
             <span>{item}</span>
           </li>
         ))}

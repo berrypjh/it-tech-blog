@@ -2,26 +2,20 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Flag, ListTree, SprayCan, Trash2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, ModalFlowStep } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  FlagIcon,
-  ListTreeIcon,
-  SprayCanIcon,
-  TrashIcon,
-} from '../icons';
 
 type Props = { content: DeletionContent['modal'] };
 
-const flowIconMap: Record<ModalFlowStep['iconName'], typeof FlagIcon> = {
-  tree: ListTreeIcon,
-  flag: FlagIcon,
-  broom: SprayCanIcon,
-  trash: TrashIcon,
+const flowIconMap: Record<ModalFlowStep['iconName'], typeof Flag> = {
+  tree: ListTree,
+  flag: Flag,
+  broom: SprayCan,
+  trash: Trash2,
 };
 
 export const ModalDeletionExampleSection = ({ content }: Props) => (
@@ -35,7 +29,7 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListTreeIcon className="h-5 w-5" />}
+      icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -57,8 +51,8 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="flex items-center justify-center text-[var(--term-dim)] py-1 md:py-0"
               >
-                <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-                <ArrowDownIcon className="h-4 w-4 md:hidden" />
+                <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+                <ArrowDown className="h-4 w-4 md:hidden" aria-hidden="true" />
               </li>
             )}
           </Fragment>
@@ -69,8 +63,8 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
       <div className="mt-md grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-3 items-stretch">
         <BrowserMock title={content.beforeTitle} content={content.beforeContent} variant="before" />
         <div className="flex items-center justify-center text-[var(--term-dim)] py-1 md:py-0">
-          <ArrowRightIcon className="h-6 w-6 hidden md:inline-block" />
-          <ArrowDownIcon className="h-6 w-6 md:hidden" />
+          <ArrowRight className="h-6 w-6 hidden md:inline-block" aria-hidden="true" />
+          <ArrowDown className="h-6 w-6 md:hidden" aria-hidden="true" />
         </div>
         <BrowserMock title={content.afterTitle} content={content.afterContent} variant="after" />
       </div>
@@ -138,7 +132,7 @@ const StateChange = ({ value }: { value: string }) => {
       )}
     >
       <StateBadge label={left} tone="teal" />
-      <ArrowRightIcon aria-hidden="true" className={cn('h-5 w-5', toneTokens.sky.text)} />
+      <ArrowRight aria-hidden="true" className={cn('h-5 w-5', toneTokens.sky.text)} />
       <StateBadge label={right} muted />
     </div>
   );

@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { PlayCircle, RefreshCw, Repeat, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksEntryFlowContent, Tone } from '../content';
-import { PlayCircleIcon, RefreshCwIcon, RepeatIcon, SplitIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['dispatcher'] };
 
@@ -39,7 +40,7 @@ const subtitleTone: Record<Tone, string> = {
   amber: 'text-amber-800 dark:text-amber-200',
 };
 
-const cardIcons = [PlayCircleIcon, RefreshCwIcon, RepeatIcon];
+const cardIcons = [PlayCircle, RefreshCw, Repeat];
 
 export const DispatcherExplanation = ({ content }: Props) => (
   <section
@@ -54,12 +55,12 @@ export const DispatcherExplanation = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? PlayCircleIcon;
+        const Icon = cardIcons[i] ?? PlayCircle;
         return (
           <li key={card.title}>
             <article

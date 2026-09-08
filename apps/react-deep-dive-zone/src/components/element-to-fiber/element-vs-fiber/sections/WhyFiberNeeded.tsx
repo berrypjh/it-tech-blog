@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, Loader, Network, RefreshCw, Sparkles } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ElementVsFiberContent, WhyFiberCard } from '../content';
-import { FlagIcon, LoaderIcon, NetworkIcon, RefreshIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ElementVsFiberContent['whyFiber'] };
 
 const iconMap = {
-  tree: NetworkIcon,
-  refresh: RefreshIcon,
-  loader: LoaderIcon,
-  flag: FlagIcon,
+  tree: Network,
+  refresh: RefreshCw,
+  loader: Loader,
+  flag: Flag,
 } as const;
 
 export const WhyFiberNeeded = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const WhyFiberNeeded = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">

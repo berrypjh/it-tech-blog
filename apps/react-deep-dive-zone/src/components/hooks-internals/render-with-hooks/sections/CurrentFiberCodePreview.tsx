@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, FileCode, FileSearch } from 'lucide-react';
+
 import type { RenderWithHooksContent } from '../content';
-import { ChevronRightIcon, FileCodeIcon, FileSearchIcon } from '../icons';
 
 type Props = { content: RenderWithHooksContent['codePreview'] };
 
@@ -74,7 +75,7 @@ export const CurrentFiberCodePreview = ({ content }: Props) => {
           aria-hidden="true"
           className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-violet-200/80 bg-violet-50 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200"
         >
-          <FileSearchIcon className="h-4 w-4" />
+          <FileSearch className="h-4 w-4" aria-hidden="true" />
         </span>
         <h2
           id="heading-code-preview"
@@ -176,9 +177,9 @@ export const CurrentFiberCodePreview = ({ content }: Props) => {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
             )}
           >
-            <FileCodeIcon aria-hidden="true" className="h-4 w-4" />
+            <FileCode aria-hidden="true" className="h-4 w-4" />
             <span className="break-keep">{content.buttonLabel}</span>
-            <ChevronRightIcon
+            <ChevronRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
             />

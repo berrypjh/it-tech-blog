@@ -1,27 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Calendar, CheckCircle2, Cpu, DoorOpen, List, Map } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, PositionStep, PositionStepIcon } from '../content';
-import {
-  ArrowDownIcon,
-  CalendarIcon,
-  CheckCircleIcon,
-  CpuIcon,
-  GateIcon,
-  ListIcon,
-  MapIcon,
-} from '../icons';
 
 type Props = { content: CommitRootContent['position'] };
 
-const iconMap: Record<PositionStepIcon, typeof CheckCircleIcon> = {
-  calendar: CalendarIcon,
-  cpu: CpuIcon,
-  check: CheckCircleIcon,
-  gate: GateIcon,
-  list: ListIcon,
+const iconMap: Record<PositionStepIcon, typeof CheckCircle2> = {
+  calendar: Calendar,
+  cpu: Cpu,
+  check: CheckCircle2,
+  gate: DoorOpen,
+  list: List,
 };
 
 export const CommitRootPositionSection = ({ content }: Props) => (
@@ -35,7 +28,7 @@ export const CommitRootPositionSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -59,7 +52,7 @@ export const CommitRootPositionSection = ({ content }: Props) => (
             <PositionRow step={step} index={idx + 1} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>

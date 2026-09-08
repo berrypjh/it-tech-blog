@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, Eye, Lightbulb, Puzzle, TreePine } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxIsNotHtmlContent } from '../content';
-import { BracesIcon, EyeIcon, LightbulbIcon, PuzzleIcon, TreeIcon } from '../icons';
 
 type Props = { content: JsxIsNotHtmlContent['uiFit'] };
 
 const iconMap = {
-  eye: EyeIcon,
-  braces: BracesIcon,
-  puzzle: PuzzleIcon,
-  tree: TreeIcon,
+  eye: Eye,
+  braces: Braces,
+  puzzle: Puzzle,
+  tree: TreePine,
 } as const;
 
 export const JsxUiFitSection = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const JsxUiFitSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LightbulbIcon className="h-5 w-5" />}
+      icon={<Lightbulb className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">

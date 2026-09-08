@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Database, PauseCircle, Workflow, Zap } from 'lucide-react';
+
 import {
   axisCardBorder,
   axisIconBox,
@@ -8,14 +10,13 @@ import {
 } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootAccent, RootPendingWorkContent } from '../content';
-import { ArrowDownIcon, DatabaseIcon, PauseCircleIcon, WorkflowIcon, ZapIcon } from '../icons';
 
 type Props = { content: RootPendingWorkContent['scheduleFlow'] };
 
-const flowIcon: Record<RootAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: PauseCircleIcon,
-  violet: DatabaseIcon,
+const flowIcon: Record<RootAccent, typeof Zap> = {
+  blue: Zap,
+  teal: PauseCircle,
+  violet: Database,
 };
 
 export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -93,7 +94,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
               </div>
               {!isLast && (
                 <span aria-hidden="true" className="self-center my-1 text-[var(--term-muted)]">
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>

@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitFork, ListChecks, type LucideIcon, Network, Sparkles } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent, RoleCard } from '../content';
-import { roleIconByName, SparklesIcon } from '../icons';
+
+const roleIconByName: Record<RoleCard['icon'], LucideIcon> = {
+  checklist: ListChecks,
+  branch: GitFork,
+  tree: Network,
+} as const;
 
 type Props = { content: BeginWorkContent['roles'] };
 
@@ -26,7 +33,7 @@ export const BeginWorkCoreRoles = ({ content }: Props) => (
       id="core-roles"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.cards.map(toFlowStep)} columns={3} />

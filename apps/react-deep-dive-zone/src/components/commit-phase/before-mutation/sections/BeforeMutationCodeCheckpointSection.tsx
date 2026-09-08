@@ -2,21 +2,14 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Code2, Eye, FileCode, Flag, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, PipelineFunction } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CodeIcon,
-  EyeIcon,
-  FileCodeIcon,
-  FlagIcon,
-  PackageOpenIcon,
-} from '../icons';
 
 type Props = { content: BeforeMutationContent['checkpoint'] };
 
@@ -30,7 +23,7 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Top: info card + code panel + callout */}
@@ -39,12 +32,12 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <PathList items={content.info.filePaths} />,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <PathList items={content.info.watchItems} />,
           },
         ]}
@@ -121,7 +114,7 @@ const SnapshotCallout = ({
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="teal" size="sm">
-          <FlagIcon className="h-4 w-4" />
+          <Flag className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', t.fill.text)}>
           {callout.title}
@@ -157,8 +150,8 @@ const PipelineRail = ({ items }: { items: PipelineFunction[] }) => (
             aria-hidden="true"
             className="flex items-center justify-center text-[var(--term-dim)]"
           >
-            <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-            <ArrowDownIcon className="h-4 w-4 md:hidden" />
+            <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+            <ArrowDown className="h-4 w-4 md:hidden" aria-hidden="true" />
           </li>
         )}
       </Fragment>
@@ -187,7 +180,7 @@ const PipelinePill = ({ item }: { item: PipelineFunction }) => {
             t.fill.text,
           )}
         >
-          <EyeIcon className="h-2.5 w-2.5" />
+          <Eye className="h-2.5 w-2.5" aria-hidden="true" />
           active
         </span>
       )}

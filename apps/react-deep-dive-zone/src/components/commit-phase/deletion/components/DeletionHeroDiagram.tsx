@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Droplet, LogOut, Repeat, Trash2, Unlink } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, HeroStepItem } from '../content';
-import { DropletIcon, LogOutIcon, RepeatIcon, TrashIcon, UnlinkIcon } from '../icons';
 
 type Props = { content: DeletionContent['hero']; className?: string };
 
-const stepIconMap: Record<HeroStepItem['iconName'], typeof UnlinkIcon> = {
-  unlink: UnlinkIcon,
-  droplet: DropletIcon,
-  logOut: LogOutIcon,
-  trash: TrashIcon,
+const stepIconMap: Record<HeroStepItem['iconName'], typeof Unlink> = {
+  unlink: Unlink,
+  droplet: Droplet,
+  logOut: LogOut,
+  trash: Trash2,
 };
 
 /**
@@ -148,7 +149,7 @@ const BottomLabel = ({ label }: { label: string }) => (
         toneTokens.teal.chip,
       )}
     >
-      <RepeatIcon className="h-3 w-3" aria-hidden="true" />
+      <Repeat className="h-3 w-3" aria-hidden="true" />
       {label}
     </span>
     <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />

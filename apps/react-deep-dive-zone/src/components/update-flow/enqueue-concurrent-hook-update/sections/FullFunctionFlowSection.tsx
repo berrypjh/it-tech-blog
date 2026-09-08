@@ -1,7 +1,15 @@
+import { Database, FunctionSquare, Network, Workflow } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { EnqueueConcurrentHookUpdateContent, FunctionFlowStep } from '../content';
-import { flowIconByName, WorkflowIcon } from '../icons';
+
+const flowIconByName = {
+  function: FunctionSquare,
+  workflow: Workflow,
+  database: Database,
+  network: Network,
+} as const;
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['flow'] };
 
@@ -24,7 +32,7 @@ export const FullFunctionFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />

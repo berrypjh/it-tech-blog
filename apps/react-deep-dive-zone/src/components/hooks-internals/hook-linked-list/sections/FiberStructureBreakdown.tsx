@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Braces, Network } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookLinkedListContent, Tone } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, BracesIcon, NetworkIcon } from '../icons';
 
 type Props = { content: HookLinkedListContent['breakdown'] };
 
@@ -83,7 +84,7 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
         id="breakdown"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<BracesIcon className="h-5 w-5" />}
+        icon={<Braces className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -128,7 +129,7 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-200/80 bg-cyan-50 text-cyan-700 dark:border-cyan-800/60 dark:bg-cyan-950/40 dark:text-cyan-200"
             >
-              <NetworkIcon className="h-4 w-4" />
+              <Network className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
               {content.rightTitle}
@@ -158,8 +159,11 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
                       aria-hidden="true"
                       className="flex justify-center text-[var(--term-muted)]"
                     >
-                      <ArrowDownIcon className="h-4 w-4 sm:hidden" />
-                      <ArrowRightIcon className="hidden sm:block h-4 w-4 rotate-90" />
+                      <ArrowDown className="h-4 w-4 sm:hidden" aria-hidden="true" />
+                      <ArrowRight
+                        className="hidden sm:block h-4 w-4 rotate-90"
+                        aria-hidden="true"
+                      />
                     </span>
                   )}
                 </li>

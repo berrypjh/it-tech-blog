@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Link2Off, Network, Unlink } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { MatchingRow, RulesOfHooksContent } from '../content';
-import { AlertTriangleIcon, Link2OffIcon, NetworkIcon, UnlinkIcon } from '../icons';
 
 type Props = { content: RulesOfHooksContent['matchingTable'] };
 
@@ -19,7 +20,7 @@ const resultKindStyles = {
 
 const ResultBadge = ({ kind, label }: { kind: MatchingRow['resultKind']; label: string }) => {
   const s = resultKindStyles[kind];
-  const Icon = kind === 'broken' ? UnlinkIcon : Link2OffIcon;
+  const Icon = kind === 'broken' ? Unlink : Link2Off;
   return (
     <span
       className={cn(
@@ -45,7 +46,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
       id="matching-table"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}
@@ -169,7 +170,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
         aria-hidden="true"
         className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900"
       >
-        <AlertTriangleIcon className="h-4 w-4" />
+        <AlertTriangle className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-rose-900 dark:text-rose-100 break-keep">
         {content.bannerWarning}

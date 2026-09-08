@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, ScanLine } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { StripFlagCommentNoiseContent } from '../content';
-import { FileCodeIcon, ScanLineIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['hero']; className?: string };
@@ -35,7 +36,7 @@ export const StripNoiseHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="indigo"
           label={content.visualTitle}
-          icon={<ScanLineIcon className="h-[18px] w-[18px]" />}
+          icon={<ScanLine className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
 
         <CodePreviewPanel
@@ -55,7 +56,7 @@ export const StripNoiseHeroDiagram = ({ content, className }: Props) => {
         >
           <div className="flex items-center gap-sm">
             <ToneIconBox tone="indigo" size="sm">
-              <FileCodeIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+              <FileCode2 className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
               {content.rightPanelTitle}

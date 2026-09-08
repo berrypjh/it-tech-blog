@@ -4,20 +4,21 @@ import { type ComponentType, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  AlertTriangle,
+  Check,
+  CheckCircle2,
+  Fingerprint,
+  KeyRound,
+  ListOrdered,
+  Shuffle,
+} from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { KeyFiberReuseContent } from '../content';
-import {
-  AlertTriangleIcon,
-  CheckCircleIcon,
-  CheckIcon,
-  FingerprintIcon,
-  KeyRoundIcon,
-  ListOrderedIcon,
-  ShuffleIcon,
-} from '../icons';
 
 type Props = { content: KeyFiberReuseContent['simulation'] };
 type Item = { id: string; label: string };
@@ -43,7 +44,7 @@ export const VisualSimulation = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ShuffleIcon className="h-5 w-5" />}
+        icon={<Shuffle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-md items-stretch">
@@ -51,24 +52,24 @@ export const VisualSimulation = ({ content }: Props) => {
           tone="emerald"
           title={content.keyTitle}
           code="key={item.id}"
-          Icon={KeyRoundIcon}
+          Icon={KeyRound}
           items={items}
           selectedId={selectedId}
           useIndexKey={false}
           result={content.keyResult}
-          ResultIcon={CheckCircleIcon}
+          ResultIcon={CheckCircle2}
           selectedLabel={content.selectedLabel}
         />
         <Column
           tone="violet"
           title={content.indexTitle}
           code="key={index}"
-          Icon={ListOrderedIcon}
+          Icon={ListOrdered}
           items={items}
           selectedId={selectedId}
           useIndexKey
           result={content.indexResult}
-          ResultIcon={AlertTriangleIcon}
+          ResultIcon={AlertTriangle}
           selectedLabel={content.selectedLabel}
         />
       </div>
@@ -85,7 +86,7 @@ export const VisualSimulation = ({ content }: Props) => {
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
           )}
         >
-          <ShuffleIcon className="h-4 w-4" aria-hidden="true" />
+          <Shuffle className="h-4 w-4" aria-hidden="true" />
           {content.shuffleCta}
         </button>
         <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
@@ -93,7 +94,9 @@ export const VisualSimulation = ({ content }: Props) => {
         </p>
       </div>
 
-      <SectionNote icon={<FingerprintIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+      <SectionNote icon={<Fingerprint className="h-4 w-4" aria-hidden="true" />}>
+        {content.emphasis}
+      </SectionNote>
     </section>
   );
 };
@@ -182,7 +185,7 @@ const Row = ({ tone, label, defaultChecked, selectedLabel }: RowProps) => {
       )}
     >
       {checked ? (
-        <CheckIcon className={cn('h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+        <Check className={cn('h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
       ) : (
         <span
           aria-hidden="true"

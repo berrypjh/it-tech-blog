@@ -4,26 +4,11 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'folder'
-  | 'flask'
-  | 'terminal'
-  | 'package'
-  | 'zap'
-  | 'bug'
-  | 'server'
-  | 'sparkles'
-  | 'gitBranch'
-  | 'fileCode'
-  | 'shieldCheck'
-  | 'cuboid';
-
 export type HeroBranchNode = {
   id: 'fixtures' | 'scripts' | 'compiler';
   name: string;
   subtitle: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type ComparisonCard = {
@@ -32,15 +17,20 @@ export type ComparisonCard = {
   subtitle: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
-export type DeepDiveCard = {
-  id: string;
+export type FixtureCard = {
+  id: 'concurrent' | 'fiber-debugger' | 'ssr' | 'view-transition';
   name: string;
   description: string;
   badge: string;
-  icon: IconName;
+};
+
+export type ScriptCard = {
+  id: 'release' | 'rollup' | 'error-codes' | 'eslint';
+  name: string;
+  description: string;
+  badge: string;
 };
 
 export type ChoiceCard = {
@@ -48,7 +38,6 @@ export type ChoiceCard = {
   question: string;
   destination: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type SurroundingContent = {
@@ -69,13 +58,13 @@ export type SurroundingContent = {
   fixtures: {
     eyebrow: string;
     title: string;
-    cards: DeepDiveCard[];
+    cards: FixtureCard[];
     banner: string;
   };
   scripts: {
     eyebrow: string;
     title: string;
-    cards: DeepDiveCard[];
+    cards: ScriptCard[];
     banner: string;
   };
   compiler: {
@@ -154,21 +143,18 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'fixtures',
           subtitle: '예제 · 실험 · 데모',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
           name: 'scripts',
           subtitle: '빌드 · 릴리즈 · 자동화',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
           name: 'compiler',
           subtitle: 'React Compiler 프로젝트',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
     },
@@ -184,7 +170,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: '기능 실험, 재현, 데모',
           description: 'React의 동작을 다양한 환경에서 실험하고 확인하는 공간입니다.',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
@@ -192,7 +177,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: '빌드, 릴리즈, 오류 코드, 자동화',
           description: 'React 저장소를 빌드하고 배포하며 관리하는 자동화 도구 모음입니다.',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
@@ -201,7 +185,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           description:
             '컴파일 최적화와 자동 메모이제이션 등을 연구·개발하는 별도 프로젝트 영역입니다.',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
     },
@@ -214,28 +197,24 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'concurrent / time-slicing',
           description: '동시성 렌더링과 시간 분할 렌더링을 실험하는 예제',
           badge: '동시성 렌더링',
-          icon: 'zap',
         },
         {
           id: 'fiber-debugger',
           name: 'fiber-debugger',
           description: 'Fiber 트리 구조를 시각적으로 확인하는 디버깅 예제',
           badge: 'Fiber 구조',
-          icon: 'bug',
         },
         {
           id: 'ssr',
           name: 'ssr',
           description: '서버 렌더링, 스트리밍, 하이드레이션 등을 실험하는 예제',
           badge: '서버 렌더링',
-          icon: 'server',
         },
         {
           id: 'view-transition',
           name: 'view-transition',
           description: '브라우저 View Transitions API 활용을 실험하는 예제',
           badge: '최신 기능 실험',
-          icon: 'sparkles',
         },
       ],
       banner:
@@ -251,28 +230,24 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           description:
             '버전 관리, 변경 로그 작성, 릴리즈 노트 생성, 배포 태그 등 릴리즈 전반을 자동화합니다.',
           badge: '릴리즈 관리',
-          icon: 'gitBranch',
         },
         {
           id: 'rollup',
           name: 'scripts/rollup',
           description: '번들링 빌드 설정과 Rollup 기반 패키지 빌드를 수행하는 도구 모음입니다.',
           badge: '빌드/번들링',
-          icon: 'package',
         },
         {
           id: 'error-codes',
           name: 'scripts/error-codes',
           description: '프로덕션 오류 코드 목록과 메시지 매핑을 생성하고 관리합니다.',
           badge: '에러 코드 관리',
-          icon: 'fileCode',
         },
         {
           id: 'eslint',
           name: 'scripts/eslint',
           description: '코드 품질을 유지하기 위한 ESLint 설정과 커스텀 룰을 포함합니다.',
           badge: '코드 품질',
-          icon: 'shieldCheck',
         },
       ],
       banner: '소스코드만으로는 React가 어떻게 빌드되고 관리되는지 보이지 않습니다.',
@@ -323,21 +298,18 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           question: '기능 동작을\n실험 앱으로 보고 싶다',
           destination: 'fixtures',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
           question: '빌드 / 릴리즈\n자동화를 보고 싶다',
           destination: 'scripts',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
           question: '컴파일 최적화 구조가\n궁금하다',
           destination: 'compiler',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
       banner: '궁금한 목표에 따라 적절한 디렉터리를 선택하면 학습 효율이 크게 올라갑니다.',
@@ -368,21 +340,18 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'fixtures',
           subtitle: 'Examples · experiments · demos',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
           name: 'scripts',
           subtitle: 'Build · release · automation',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
           name: 'compiler',
           subtitle: 'React Compiler project',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
     },
@@ -398,7 +367,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           subtitle: 'Experiments, repros, demos',
           description: 'A space to experiment with and verify React’s behaviour in many setups.',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
@@ -407,7 +375,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           description:
             'A collection of automation tools that build, release and maintain the React repo.',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
@@ -416,7 +383,6 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           description:
             'A separate project that researches compile-time optimisation and auto memoisation.',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
     },
@@ -429,28 +395,24 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           name: 'concurrent / time-slicing',
           description: 'Examples that explore concurrent rendering and time slicing',
           badge: 'Concurrent rendering',
-          icon: 'zap',
         },
         {
           id: 'fiber-debugger',
           name: 'fiber-debugger',
           description: 'A debugging example for visualising the Fiber tree',
           badge: 'Fiber structure',
-          icon: 'bug',
         },
         {
           id: 'ssr',
           name: 'ssr',
           description: 'Examples for server rendering, streaming and hydration',
           badge: 'Server rendering',
-          icon: 'server',
         },
         {
           id: 'view-transition',
           name: 'view-transition',
           description: 'Examples that explore the browser View Transitions API',
           badge: 'Latest feature lab',
-          icon: 'sparkles',
         },
       ],
       banner:
@@ -466,28 +428,24 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           description:
             'Automates the full release flow — version bumps, changelogs, release notes and deploy tags.',
           badge: 'Release management',
-          icon: 'gitBranch',
         },
         {
           id: 'rollup',
           name: 'scripts/rollup',
           description: 'Bundling configuration and Rollup-based package builds.',
           badge: 'Build / bundling',
-          icon: 'package',
         },
         {
           id: 'error-codes',
           name: 'scripts/error-codes',
           description: 'Generates and manages production error code lists and message mappings.',
           badge: 'Error code mgmt',
-          icon: 'fileCode',
         },
         {
           id: 'eslint',
           name: 'scripts/eslint',
           description: 'ESLint configuration and custom rules to keep code quality high.',
           badge: 'Code quality',
-          icon: 'shieldCheck',
         },
       ],
       banner: 'Source code alone does not show you how React is built and managed.',
@@ -538,21 +496,18 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
           question: 'I want to see\nfeatures in a real app',
           destination: 'fixtures',
           tone: 'emerald',
-          icon: 'flask',
         },
         {
           id: 'scripts',
           question: 'I want to see the\nbuild / release flow',
           destination: 'scripts',
           tone: 'violet',
-          icon: 'terminal',
         },
         {
           id: 'compiler',
           question: 'I want to learn the\ncompiler architecture',
           destination: 'compiler',
           tone: 'amber',
-          icon: 'cuboid',
         },
       ],
       banner: 'Picking the right directory for your question makes learning far more efficient.',

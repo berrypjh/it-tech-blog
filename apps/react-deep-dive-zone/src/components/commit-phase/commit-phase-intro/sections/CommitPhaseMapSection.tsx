@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Map, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, TimelineStep } from '../content';
-import { MapIcon, TargetIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['map'] };
 
@@ -18,7 +19,7 @@ export const CommitPhaseMapSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -102,7 +103,7 @@ const StepRow = ({
                 t.chip,
               )}
             >
-              <TargetIcon aria-hidden="true" className="h-3 w-3" />
+              <Target aria-hidden="true" className="h-3 w-3" />
               {mutationBadge}
             </span>
           )}

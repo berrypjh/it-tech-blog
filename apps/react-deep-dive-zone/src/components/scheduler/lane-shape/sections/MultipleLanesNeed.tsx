@@ -1,5 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  EyeOff,
+  Layers,
+  MousePointerClick,
+  RefreshCw,
+  Repeat,
+  Sparkles,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import {
   laneCardBorder,
@@ -10,27 +22,16 @@ import {
 } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent, LaneBitmaskContent } from '../content';
-import {
-  ArrowDownIcon,
-  EyeOffIcon,
-  LayersIcon,
-  MousePointerClickIcon,
-  RefreshIcon,
-  RepeatIcon,
-  SparklesIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: LaneBitmaskContent['multi'] };
 
-const cardIcon: Record<LaneAccent, typeof ZapIcon> = {
-  sync: MousePointerClickIcon,
-  inputContinuous: ZapIcon,
-  default: LayersIcon,
-  transition: RepeatIcon,
-  retry: RefreshIcon,
-  offscreen: EyeOffIcon,
+const cardIcon: Record<LaneAccent, typeof Zap> = {
+  sync: MousePointerClick,
+  inputContinuous: Zap,
+  default: Layers,
+  transition: Repeat,
+  retry: RefreshCw,
+  offscreen: EyeOff,
 };
 
 export const MultipleLanesNeed = ({ content }: Props) => (
@@ -40,7 +41,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -91,7 +92,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
 
       {/* connector */}
       <div aria-hidden="true" className="hidden lg:flex justify-center text-[var(--term-muted)]">
-        <ArrowDownIcon className="h-5 w-5" />
+        <ArrowDown className="h-5 w-5" aria-hidden="true" />
       </div>
 
       {/* root.pendingLanes box */}
@@ -113,7 +114,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <SparklesIcon className="h-5 w-5" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)] break-keep font-mono">
             {content.root.title}

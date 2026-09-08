@@ -1,21 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Compass, Gauge, Network, Rocket, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksRecapContent, LearningPathItem } from '../content';
-import { CompassIcon, GaugeIcon, NetworkIcon, RocketIcon, ZapIcon } from '../icons';
 
 import { toneCardBg, toneIconBox, toneText } from './_shared/tones';
 
 type Props = { content: HooksRecapContent['nextPath'] };
 
 const visualMap = {
-  event: ZapIcon,
-  scheduler: GaugeIcon,
-  suspense: RocketIcon,
+  event: Zap,
+  scheduler: Gauge,
+  suspense: Rocket,
 };
 
 const Card = ({ item }: { item: LearningPathItem }) => {
-  const Icon = visualMap[item.visual] ?? NetworkIcon;
+  const Icon = visualMap[item.visual] ?? Network;
   return (
     <article
       className={cn(
@@ -58,7 +59,7 @@ export const NextLearningPath = ({ content }: Props) => (
       id="next-path"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CompassIcon className="h-5 w-5" />}
+      icon={<Compass className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

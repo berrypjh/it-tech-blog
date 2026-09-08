@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileSearch, ListChecks } from 'lucide-react';
+
 import type { WhyFailableRenderContent } from '../content';
-import { CodeIcon, FileSearchIcon, ListChecksIcon } from '../icons';
 
 type Props = { content: WhyFailableRenderContent['followAlong'] };
 
@@ -43,7 +44,7 @@ export const FollowAlongSection = ({ content }: Props) => (
             'dark:border-blue-700 dark:bg-slate-900 dark:text-blue-300',
           )}
         >
-          <CodeIcon className="h-8 w-8" />
+          <Code2 className="h-8 w-8" aria-hidden="true" />
         </span>
         {/* magnifier */}
         <span
@@ -53,7 +54,7 @@ export const FollowAlongSection = ({ content }: Props) => (
             'dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300',
           )}
         >
-          <FileSearchIcon className="h-10 w-10" />
+          <FileSearch className="h-10 w-10" aria-hidden="true" />
         </span>
       </div>
     </div>
@@ -65,7 +66,7 @@ export const FollowAlongSection = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
         >
-          <ListChecksIcon className="h-5 w-5" />
+          <ListChecks className="h-5 w-5" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">

@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleDot, Route } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CallPathCompressionContent, CallStep } from '../content';
-import { CircleDotIcon, RouteIcon } from '../icons';
 import { stepToneKey } from '../stepTone';
 
 type Props = { content: CallPathCompressionContent['hero']; className?: string };
@@ -40,7 +41,7 @@ export const CompressCallPathHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="cyan" size="sm">
-            <RouteIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+            <Route className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.visualTitle}
@@ -82,7 +83,7 @@ const ScatteredPanel = ({
   >
     <span className="flex min-w-0 items-center gap-2">
       <ToneIconBox tone="amber" size="sm">
-        <CircleDotIcon className="h-4 w-4" aria-hidden="true" />
+        <CircleDot className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('min-w-0 text-sm font-bold tracking-tight', toneTokens.amber.text)}>
         {title}
@@ -123,7 +124,7 @@ const CompressedPanel = ({
   >
     <span className="flex min-w-0 items-center gap-2">
       <ToneIconBox tone="cyan" size="sm">
-        <RouteIcon className="h-4 w-4" aria-hidden="true" />
+        <Route className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('min-w-0 text-sm font-bold tracking-tight', toneTokens.cyan.text)}>
         {title}

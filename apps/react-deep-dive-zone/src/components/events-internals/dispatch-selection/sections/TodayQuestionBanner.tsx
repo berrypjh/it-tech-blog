@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Split, Target, Timer } from 'lucide-react';
+
 import type { DispatchSelectionContent, Tone } from '../content';
-import { HelpCircleIcon, SplitIcon, TargetIcon, TimerIcon } from '../icons';
 
 type Props = { content: DispatchSelectionContent['question'] };
 
@@ -30,7 +31,7 @@ const toneDot: Record<Tone, string> = {
   rose: 'bg-rose-500 dark:bg-rose-400',
 };
 
-const badgeIcons = [TimerIcon, SplitIcon, TargetIcon];
+const badgeIcons = [Timer, Split, Target];
 
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
@@ -50,7 +51,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0 flex-1">
@@ -67,7 +68,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:min-w-[260px]">
         {content.badges.map((badge, i) => {
-          const Icon = badgeIcons[i] ?? TargetIcon;
+          const Icon = badgeIcons[i] ?? Target;
           return (
             <li
               key={badge.title}

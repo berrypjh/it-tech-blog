@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Clock3, GitFork, HelpCircle, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootSchedulerContent } from '../content';
-import { ArrowDownIcon, ClockIcon, GitForkIcon, HelpCircleIcon, ZapIcon } from '../icons';
 
 type Props = { content: RootSchedulerContent['syncAsync'] };
 
@@ -69,7 +70,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Branch question card */}
@@ -85,7 +86,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white dark:bg-blue-500"
         >
-          <HelpCircleIcon className="h-4 w-4" />
+          <HelpCircle className="h-4 w-4" aria-hidden="true" />
         </span>
         <code className="font-mono text-xsm sm:text-sm font-bold">{content.branchQuestion}</code>
       </div>
@@ -106,7 +107,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <ZapIcon className="h-5 w-5" />
+            <Zap className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-blue-300/80 bg-blue-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-blue-800 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200">
             Yes
@@ -140,7 +141,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
         </span>
       </div>
       <div className="lg:hidden flex items-center justify-center -my-2">
-        <ArrowDownIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
+        <ArrowDown aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
       </div>
 
       {/* ASYNC */}
@@ -157,7 +158,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
           >
-            <ClockIcon className="h-5 w-5" />
+            <Clock3 className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-teal-300/80 bg-teal-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-teal-800 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200">
             No

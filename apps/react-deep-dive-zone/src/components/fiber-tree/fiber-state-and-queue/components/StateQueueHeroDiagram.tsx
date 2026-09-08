@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, List } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateAndQueueContent } from '../content';
-import { DatabaseIcon, ListIcon } from '../icons';
 
 type Props = { content: FiberStateAndQueueContent['hero']; className?: string };
 
@@ -31,12 +32,12 @@ export const StateQueueHeroDiagram = ({ content, className }: Props) => {
           <FieldCardView
             tone="emerald"
             card={content.memoizedCard}
-            icon={<DatabaseIcon className="h-[18px] w-[18px]" />}
+            icon={<Database className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <FieldCardView
             tone="violet"
             card={content.updateQueueCard}
-            icon={<ListIcon className="h-[18px] w-[18px]" />}
+            icon={<List className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
         </div>
       </div>

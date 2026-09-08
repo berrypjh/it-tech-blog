@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, RotateCw, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommonFlowStep, WorkLoopContent } from '../content';
-import { ArrowDownIcon, RotateCwIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: WorkLoopContent['common'] };
 
@@ -14,7 +15,7 @@ export const PerformUnitRepeatFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -36,7 +37,7 @@ export const PerformUnitRepeatFlow = ({ content }: Props) => (
                 aria-hidden="true"
                 className="my-2 flex justify-center text-[var(--term-accent)]"
               >
-                <ArrowDownIcon className="h-5 w-5" />
+                <ArrowDown className="h-5 w-5" aria-hidden="true" />
               </span>
             )}
           </li>
@@ -63,7 +64,7 @@ const StepCard = ({ step, highlight }: { step: CommonFlowStep; highlight: boolea
           t.chip,
         )}
       >
-        <RotateCwIcon className="h-5 w-5" />
+        <RotateCw className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>

@@ -4,27 +4,11 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'package'
-  | 'atom'
-  | 'monitor'
-  | 'cuboid'
-  | 'triangleAlert'
-  | 'folderCheck'
-  | 'brackets'
-  | 'braces'
-  | 'shield'
-  | 'flag'
-  | 'fragment'
-  | 'suspense'
-  | 'activity';
-
 export type PackageBranch = {
   id: 'react' | 'react-dom' | 'react-reconciler';
   title: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type RepFile = {
@@ -34,7 +18,6 @@ export type RepFile = {
   description: string;
   codeLabel: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type SymbolCard = {
@@ -43,7 +26,6 @@ export type SymbolCard = {
   subtitle: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type ConnectionRow = {
@@ -52,7 +34,6 @@ export type ConnectionRow = {
   description: string;
   usage: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type SharedContent = {
@@ -96,7 +77,6 @@ export type SharedContent = {
     filePath: string;
     whyLabel: string;
     whyValue: string;
-    learningQuestion: string;
     primaryCta: string;
     primaryHref: string;
     codeHeader: string;
@@ -153,21 +133,18 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'react',
           description: '사용자 API',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'react-dom',
           title: 'react-dom',
           description: 'DOM Renderer',
           tone: 'indigo',
-          icon: 'monitor',
         },
         {
           id: 'react-reconciler',
           title: 'react-reconciler',
           description: 'Fiber / Render / Commit',
           tone: 'violet',
-          icon: 'cuboid',
         },
       ],
     },
@@ -204,7 +181,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'React 내부에서 사용하는 특별한 타입의 심벌을 모아둡니다.',
           codeLabel: 'export const REACT_*_TYPE',
           tone: 'blue',
-          icon: 'brackets',
         },
         {
           id: 'types',
@@ -213,7 +189,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: '여러 패키지가 공유하는 타입 (Tags, FiberType 등)을 정의합니다.',
           codeLabel: 'export type ReactType = ...',
           tone: 'indigo',
-          icon: 'braces',
         },
         {
           id: 'version',
@@ -222,7 +197,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'React 버전 문자열과 관련된 정보를 한 곳에서 관리합니다.',
           codeLabel: 'export const ReactVersion = ...',
           tone: 'emerald',
-          icon: 'shield',
         },
         {
           id: 'flags',
@@ -231,7 +205,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: '실험적 기능, 조건부 동작을 제어하는 플래그들을 모아둡니다.',
           codeLabel: 'export const enableNewAPI = ...',
           tone: 'violet',
-          icon: 'flag',
         },
       ],
     },
@@ -245,7 +218,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<></> / Fragment 심벌',
           description: 'Fragment 요소를 내부적으로 식별하기 위한 고유 심벌',
           tone: 'blue',
-          icon: 'fragment',
         },
         {
           id: 'suspense',
@@ -253,7 +225,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<Suspense> 심벌',
           description: 'Suspense 요소를 내부적으로 식별하기 위한 고유 심벌',
           tone: 'violet',
-          icon: 'suspense',
         },
         {
           id: 'activity',
@@ -261,7 +232,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<Activity> 심벌',
           description: 'Activity(실험적) 요소를 식별하는 고유 심벌',
           tone: 'emerald',
-          icon: 'activity',
         },
       ],
       banner: '이 심벌들은 React 내부에서 "어떤 종류의 요소인가?"를 구분하는 기준이 됩니다.',
@@ -273,7 +243,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       filePath: 'packages/react/src/ReactClient.js',
       whyLabel: '왜 여기서 shared를 보나?',
       whyValue: 'ReactClient.js는 여러 타입 심벌을 shared/ReactSymbols에서 가져오기 때문입니다.',
-      learningQuestion: '왜 여러 패키지가\n동일한 심벌을 사용해야 할까?',
       primaryCta: 'ReactClient.js 읽기',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
@@ -294,7 +263,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: '사용자 API 및 코어 로직',
           usage: '공통 타입, 심벌, 플래그, 유틸 사용',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'react-dom',
@@ -302,7 +270,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'DOM Renderer',
           usage: '공통 심벌, 타입, 버전 사용',
           tone: 'indigo',
-          icon: 'monitor',
         },
         {
           id: 'react-reconciler',
@@ -310,7 +277,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'Fiber / Render / Commit',
           usage: '공통 타입, 플래그, 내부 개념 사용',
           tone: 'violet',
-          icon: 'cuboid',
         },
       ],
     },
@@ -340,21 +306,18 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'react',
           description: 'User API',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'react-dom',
           title: 'react-dom',
           description: 'DOM Renderer',
           tone: 'indigo',
-          icon: 'monitor',
         },
         {
           id: 'react-reconciler',
           title: 'react-reconciler',
           description: 'Fiber / Render / Commit',
           tone: 'violet',
-          icon: 'cuboid',
         },
       ],
     },
@@ -391,7 +354,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'Holds the special-type symbols used across React internals.',
           codeLabel: 'export const REACT_*_TYPE',
           tone: 'blue',
-          icon: 'brackets',
         },
         {
           id: 'types',
@@ -400,7 +362,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'Defines types many packages share (Tags, FiberType, …).',
           codeLabel: 'export type ReactType = ...',
           tone: 'indigo',
-          icon: 'braces',
         },
         {
           id: 'version',
@@ -409,7 +370,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'A single place that owns the React version string and metadata.',
           codeLabel: 'export const ReactVersion = ...',
           tone: 'emerald',
-          icon: 'shield',
         },
         {
           id: 'flags',
@@ -418,7 +378,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'Flags that control experimental features and conditional behaviour.',
           codeLabel: 'export const enableNewAPI = ...',
           tone: 'violet',
-          icon: 'flag',
         },
       ],
     },
@@ -432,7 +391,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<></> / Fragment symbol',
           description: 'Unique symbol used internally to identify Fragment elements',
           tone: 'blue',
-          icon: 'fragment',
         },
         {
           id: 'suspense',
@@ -440,7 +398,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<Suspense> symbol',
           description: 'Unique symbol used internally to identify Suspense elements',
           tone: 'violet',
-          icon: 'suspense',
         },
         {
           id: 'activity',
@@ -448,7 +405,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           subtitle: '<Activity> symbol',
           description: 'Unique symbol used to identify Activity (experimental) elements',
           tone: 'emerald',
-          icon: 'activity',
         },
       ],
       banner:
@@ -461,7 +417,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       filePath: 'packages/react/src/ReactClient.js',
       whyLabel: 'Why look here?',
       whyValue: 'ReactClient.js imports a number of type symbols from shared/ReactSymbols.',
-      learningQuestion: 'Why must many packages\nuse the same symbol?',
       primaryCta: 'Read ReactClient.js',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
       codeHeader: 'packages/react/src/ReactClient.js',
@@ -483,7 +438,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'User API and core logic',
           usage: 'Uses shared types, symbols, flags, utils',
           tone: 'blue',
-          icon: 'atom',
         },
         {
           id: 'react-dom',
@@ -491,7 +445,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'DOM Renderer',
           usage: 'Uses shared symbols, types, version',
           tone: 'indigo',
-          icon: 'monitor',
         },
         {
           id: 'react-reconciler',
@@ -499,7 +452,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description: 'Fiber / Render / Commit',
           usage: 'Uses shared types, flags, internal concepts',
           tone: 'violet',
-          icon: 'cuboid',
         },
       ],
     },

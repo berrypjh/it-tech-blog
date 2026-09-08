@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Lightbulb, Sparkles, Split } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { OnClickClickContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, LightbulbIcon, SparklesIcon, SplitIcon } from '../icons';
 
 type Props = { content: OnClickClickContent['mapping'] };
 
@@ -13,7 +14,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -31,7 +32,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-500 text-white shadow-[0_3px_0_rgba(13,148,136,0.3)] dark:bg-teal-500/90"
           >
-            <CheckCircleIcon className="h-6 w-6" strokeWidth={2.2} />
+            <CheckCircle2 className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
@@ -51,7 +52,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-teal-100 text-teal-700 dark:bg-teal-950/60 dark:text-teal-200"
           >
-            <ArrowRightIcon className="h-4 w-4 rotate-90" />
+            <ArrowRight className="h-4 w-4 rotate-90" aria-hidden="true" />
           </span>
           <code className="font-mono text-lg sm:text-xl font-bold text-teal-700 dark:text-teal-300">
             {content.simple.pair.prop}
@@ -73,7 +74,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-rose-500 text-white shadow-[0_3px_0_rgba(225,29,72,0.3)] dark:bg-rose-500/90"
           >
-            <SparklesIcon className="h-6 w-6" strokeWidth={2.2} />
+            <Sparkles className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">
@@ -94,7 +95,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
               <code className="font-mono text-xsm sm:text-sm font-bold text-sky-700 dark:text-sky-300 break-all">
                 {pair.native}
               </code>
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className="h-3.5 w-3.5 text-rose-500 dark:text-rose-300"
               />
@@ -119,7 +120,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
         aria-hidden="true"
         className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
       >
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
         {content.insight}

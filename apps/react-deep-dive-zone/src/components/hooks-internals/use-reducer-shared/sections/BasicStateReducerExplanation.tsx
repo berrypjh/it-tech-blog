@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Lightbulb, Repeat } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { UseReducerSharedContent } from '../content';
-import { CheckCircleIcon, LightbulbIcon, RepeatIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['basicReducer'] };
 
@@ -55,7 +56,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
         id="basic-reducer"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RepeatIcon className="h-5 w-5" />}
+        icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -108,7 +109,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
             >
-              <LightbulbIcon className="h-4 w-4" />
+              <Lightbulb className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-teal-800 dark:text-teal-100 leading-snug break-keep">
               {content.explanationTitle}
@@ -139,7 +140,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
               'dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200',
             )}
           >
-            <CheckCircleIcon aria-hidden="true" className="h-3.5 w-3.5" />
+            <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5" />
             <span className="break-keep">{content.bottomEmphasis}</span>
           </span>
         </article>

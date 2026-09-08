@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, GitBranch, HelpCircle, X } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { PhaseDetectionContent } from '../content';
-import { CheckCircleIcon, GitBranchIcon, HelpCircleIcon, XIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 
 type Props = { content: PhaseDetectionContent['roleComparison'] };
@@ -19,7 +20,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<GitBranchIcon className="h-5 w-5" />}
+        icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -45,7 +46,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                 <div
                   className={cn('flex items-start gap-2 rounded-md border-2 p-3', t.border, t.chip)}
                 >
-                  <HelpCircleIcon
+                  <HelpCircle
                     className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
@@ -67,7 +68,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                       'text-emerald-700 dark:text-emerald-300',
                     )}
                   >
-                    <CheckCircleIcon className="h-3 w-3" aria-hidden="true" />
+                    <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
                     {content.doesLabel}
                   </span>
                   <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
@@ -83,7 +84,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                       'text-amber-700 dark:text-amber-300',
                     )}
                   >
-                    <XIcon className="h-3 w-3" aria-hidden="true" />
+                    <X className="h-3 w-3" aria-hidden="true" />
                     {content.doesNotLabel}
                   </span>
                   <p

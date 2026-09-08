@@ -1,9 +1,17 @@
+import { Clock, Gauge, HelpCircle, Key, type LucideIcon, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
-import type { WhySourceContent } from '../content';
-import { iconByName, QuestionIcon } from '../icons';
+import type { QuestionCard, WhySourceContent } from '../content';
 
 type Props = { content: WhySourceContent['questions'] };
+
+const cardIcon: Record<QuestionCard['id'], LucideIcon> = {
+  'set-state': Clock,
+  'use-effect': Zap,
+  key: Key,
+  transition: Gauge,
+};
 
 export const ReactQuestionCards = ({ content }: Props) => {
   return (
@@ -12,18 +20,18 @@ export const ReactQuestionCards = ({ content }: Props) => {
         id="questions"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<QuestionIcon className="h-5 w-5" />}
+        icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               topRight={card.number}
               badge={card.badge}
             >

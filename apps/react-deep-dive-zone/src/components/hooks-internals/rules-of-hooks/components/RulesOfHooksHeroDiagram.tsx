@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, CheckCircle2, ListOrdered, XCircle } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroRenderSide, HookSlot, RulesOfHooksContent } from '../content';
-import { AlertTriangleIcon, CheckCircleIcon, ListOrderedIcon, XCircleIcon } from '../icons';
 
 type Props = { content: RulesOfHooksContent['hero']; className?: string };
 
@@ -39,7 +40,7 @@ export const RulesOfHooksHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="violet" size="sm">
-            <ListOrderedIcon className="h-[18px] w-[18px]" />
+            <ListOrdered className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagramTitle}
@@ -78,9 +79,9 @@ const RenderCard = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' | '
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={tone} size="sm">
           {isBroken ? (
-            <XCircleIcon className="h-[18px] w-[18px]" />
+            <XCircle className="h-[18px] w-[18px]" aria-hidden="true" />
           ) : (
-            <CheckCircleIcon className="h-[18px] w-[18px]" />
+            <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
           )}
         </ToneIconBox>
         <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
@@ -149,7 +150,7 @@ const WarningNote = ({ text }: { text: string }) => (
     )}
   >
     <ToneIconBox tone="amber" size="sm">
-      <AlertTriangleIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <AlertTriangle className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <p className="text-xsm font-bold leading-relaxed text-[var(--term-fg)] break-keep">{text}</p>
   </div>

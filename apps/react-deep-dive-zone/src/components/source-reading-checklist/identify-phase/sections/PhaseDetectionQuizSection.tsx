@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, HelpCircle, MousePointerClick, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { PhaseDetectionContent } from '../content';
-import { CheckCircleIcon, HelpCircleIcon, MousePointerClickIcon, SparkIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 import type { PhaseKey } from '../phaseTone';
 import { phaseLabel } from '../phaseTone';
@@ -27,7 +28,7 @@ export const PhaseDetectionQuizSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<HelpCircleIcon className="h-5 w-5" />}
+        icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -120,7 +121,7 @@ export const PhaseDetectionQuizSection = ({ content }: Props) => {
                 )}
               >
                 <code>
-                  <MousePointerClickIcon
+                  <MousePointerClick
                     className="inline h-3.5 w-3.5 mr-1 align-text-bottom"
                     aria-hidden="true"
                   />
@@ -141,7 +142,7 @@ export const PhaseDetectionQuizSection = ({ content }: Props) => {
                   t.border,
                 )}
               >
-                <CheckCircleIcon className={cn('h-5 w-5 shrink-0', t.text)} aria-hidden="true" />
+                <CheckCircle2 className={cn('h-5 w-5 shrink-0', t.text)} aria-hidden="true" />
                 <PhaseBadge phase={active.answer} size="lg" strong />
               </div>
             </div>
@@ -158,7 +159,7 @@ export const PhaseDetectionQuizSection = ({ content }: Props) => {
                   t.border,
                 )}
               >
-                <SparkIcon className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                <Sparkles className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                 <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                   {active.explanation}
                 </p>
@@ -178,7 +179,7 @@ export const PhaseDetectionQuizSection = ({ content }: Props) => {
                       <PhaseBadge phase={p} size="md" strong={isAnswer}>
                         <span className="flex items-center gap-1">
                           {phaseLabel[p]}
-                          {isAnswer && <CheckCircleIcon className="h-3 w-3" aria-hidden="true" />}
+                          {isAnswer && <CheckCircle2 className="h-3 w-3" aria-hidden="true" />}
                         </span>
                       </PhaseBadge>
                     </li>

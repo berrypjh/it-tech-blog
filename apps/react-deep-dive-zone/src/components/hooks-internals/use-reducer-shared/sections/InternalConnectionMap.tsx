@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Merge, Route } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseReducerSharedContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, MergeIcon, RouteIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['connectionMap'] };
 
@@ -56,7 +57,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
       id="connection-map"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RouteIcon className="h-5 w-5" />}
+      icon={<Route className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -95,7 +96,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
                         {node}
                       </code>
                       {!isLast && (
-                        <ArrowRightIcon aria-hidden="true" className={cn('h-4 w-4', t.arrow)} />
+                        <ArrowRight aria-hidden="true" className={cn('h-4 w-4', t.arrow)} />
                       )}
                     </span>
                   );
@@ -111,7 +112,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
         aria-hidden="true"
         className="flex items-center justify-center text-violet-600 dark:text-violet-300"
       >
-        <ArrowDownIcon className="h-6 w-6" />
+        <ArrowDown className="h-6 w-6" aria-hidden="true" />
       </div>
 
       {/* Common pipeline box */}
@@ -127,7 +128,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
           >
-            <MergeIcon className="h-5 w-5" />
+            <Merge className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-violet-800 dark:text-violet-100 break-keep">
             {content.pipelineTitle}

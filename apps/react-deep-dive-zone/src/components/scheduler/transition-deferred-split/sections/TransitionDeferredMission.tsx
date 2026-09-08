@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, BookOpen, ExternalLink, Hash, Link2, ListChecks } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { MissionCard, TransitionDeferredContent } from '../content';
-import {
-  ArrowRightIcon,
-  BookOpenIcon,
-  ExternalLinkIcon,
-  HashIcon,
-  LinkIcon,
-  ListChecksIcon,
-} from '../icons';
 import {
   responseCardBorder,
   responseIconBox,
@@ -42,7 +36,11 @@ const LinkCard = ({
           responseIconBox[card.accent],
         )}
       >
-        {index === 2 ? <LinkIcon className="h-5 w-5" /> : <BookOpenIcon className="h-5 w-5" />}
+        {index === 2 ? (
+          <Link2 className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <BookOpen className="h-5 w-5" aria-hidden="true" />
+        )}
       </span>
       <span
         aria-hidden="true"
@@ -70,11 +68,11 @@ const LinkCard = ({
       )}
     >
       <span className="break-keep">{card.button}</span>
-      <ExternalLinkIcon
+      <ExternalLink
         aria-hidden="true"
         className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
       />
-      <ArrowRightIcon aria-hidden="true" className="hidden h-3.5 w-3.5" />
+      <ArrowRight aria-hidden="true" className="hidden h-3.5 w-3.5" />
     </a>
   </article>
 );
@@ -102,7 +100,7 @@ const KeywordsCard = ({
           responseIconBox[card.accent],
         )}
       >
-        <HashIcon className="h-5 w-5" />
+        <Hash className="h-5 w-5" aria-hidden="true" />
       </span>
       <span
         aria-hidden="true"
@@ -140,7 +138,7 @@ export const TransitionDeferredMission = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">

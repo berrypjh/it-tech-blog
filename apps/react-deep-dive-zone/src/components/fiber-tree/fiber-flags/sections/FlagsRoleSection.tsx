@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Anchor, Eye, Flag, Lightbulb, Move, Pencil } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberFlagsContent, FlagMiniCard } from '../content';
-import { AnchorIcon, EyeIcon, FlagIcon, LightbulbIcon, MoveIcon, PencilIcon } from '../icons';
 
 type Props = { content: FiberFlagsContent['flagsRole'] };
 
 const iconMap: Record<FlagMiniCard['id'], React.ComponentType<{ className?: string }>> = {
-  placement: MoveIcon,
-  update: PencilIcon,
-  ref: AnchorIcon,
-  visibility: EyeIcon,
+  placement: Move,
+  update: Pencil,
+  ref: Anchor,
+  visibility: Eye,
 };
 
 export const FlagsRoleSection = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FlagIcon className="h-5 w-5" />}
+      icon={<Flag className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -40,7 +41,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
             toneTokens.emerald.chip,
           )}
         >
-          <FlagIcon className="h-6 w-6" />
+          <Flag className="h-6 w-6" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
           <code
@@ -63,7 +64,9 @@ export const FlagsRoleSection = ({ content }: Props) => (
       </ul>
     </article>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );
 

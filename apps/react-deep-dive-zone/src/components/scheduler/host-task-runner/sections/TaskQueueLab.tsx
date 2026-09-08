@@ -4,18 +4,10 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Cog, Compass, PlayCircle, Plus, RotateCcw, XCircle, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LabAction, LabPriority, SchedulerPackageContent } from '../content';
-import {
-  ClockIcon,
-  CogIcon,
-  CompassIcon,
-  PlayCircleIcon,
-  PlusIcon,
-  RotateCcwIcon,
-  XCircleIcon,
-  ZapIcon,
-} from '../icons';
 import { pkgCardBorder, pkgIconBox, pkgPill, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['lab'] };
@@ -25,10 +17,10 @@ type Task = {
   action: LabAction;
 };
 
-const buttonIcon: Record<LabPriority, typeof ZapIcon> = {
-  immediate: ZapIcon,
-  normal: CompassIcon,
-  low: ClockIcon,
+const buttonIcon: Record<LabPriority, typeof Zap> = {
+  immediate: Zap,
+  normal: Compass,
+  low: Clock3,
 };
 
 export const TaskQueueLab = ({ content }: Props) => {
@@ -69,7 +61,7 @@ export const TaskQueueLab = ({ content }: Props) => {
         eyebrow={content.title}
         title={content.title}
         description={content.helper}
-        icon={<CogIcon className="h-5 w-5" />}
+        icon={<Cog className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -85,7 +77,7 @@ export const TaskQueueLab = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <CogIcon className="h-4 w-4" />
+              <Cog className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.actionTitle}
@@ -137,7 +129,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                         sortKey {action.sortKey}
                       </span>
                     </div>
-                    <PlusIcon
+                    <Plus
                       aria-hidden="true"
                       className={cn('h-4 w-4 shrink-0', pkgTextStrong[action.accent])}
                     />
@@ -162,7 +154,7 @@ export const TaskQueueLab = ({ content }: Props) => {
               'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0',
             )}
           >
-            <RotateCcwIcon aria-hidden="true" className="h-4 w-4" />
+            <RotateCcw aria-hidden="true" className="h-4 w-4" />
             <span>{content.resetLabel}</span>
           </button>
         </article>
@@ -183,7 +175,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
               >
-                <CogIcon className="h-4 w-4" />
+                <Cog className="h-4 w-4" aria-hidden="true" />
               </span>
               <h3 className="text-sm sm:text-md font-bold text-teal-700 dark:text-teal-300 break-keep font-mono">
                 {content.queueTitle}
@@ -201,7 +193,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
               )}
             >
-              <XCircleIcon aria-hidden="true" className="h-4 w-4" />
+              <XCircle aria-hidden="true" className="h-4 w-4" />
               <span className="font-mono text-xsm">{content.emptyQueueLabel}</span>
             </div>
           ) : (
@@ -261,7 +253,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                   : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
               )}
             >
-              <PlayCircleIcon className="h-4 w-4" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.statusTitle}

@@ -2,12 +2,13 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, PauseCircle, RotateCw } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowNode, WorkLoopContent } from '../content';
-import { ArrowRightIcon, PauseCircleIcon, RotateCwIcon } from '../icons';
 
 type Props = { content: WorkLoopContent['hero'] };
 
@@ -29,7 +30,10 @@ export const WorkLoopHeroDiagram = ({ content }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <div className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <RotateCwIcon className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none" />
+            <RotateCw
+              className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none"
+              aria-hidden="true"
+            />
           </ToneIconBox>
           <h2 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
@@ -126,7 +130,7 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
                   aria-hidden="true"
                   className="flex shrink-0 items-center pt-2.5 text-[var(--term-accent)]"
                 >
-                  <ArrowRightIcon className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </Fragment>
@@ -146,7 +150,7 @@ const LoopNode = ({ node, tone }: { node: FlowNode; tone: ToneKey }) => {
       className={isYield ? 'border-dashed' : undefined}
     >
       {isYield ? (
-        <PauseCircleIcon className="h-[18px] w-[18px]" />
+        <PauseCircle className="h-[18px] w-[18px]" aria-hidden="true" />
       ) : (
         <span className="text-sm font-bold leading-none">{node.label}</span>
       )}

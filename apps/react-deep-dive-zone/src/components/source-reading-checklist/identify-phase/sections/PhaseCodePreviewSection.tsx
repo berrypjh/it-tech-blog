@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { PhaseDetectionContent } from '../content';
-import { FileCodeIcon, SparkIcon } from '../icons';
 import { getPhaseClasses, PhaseBadge } from '../PhaseBadge';
 
 type Props = { content: PhaseDetectionContent['codePreview'] };
@@ -19,7 +20,7 @@ export const PhaseCodePreviewSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -66,7 +67,7 @@ export const PhaseCodePreviewSection = ({ content }: Props) => {
                     t.chip,
                   )}
                 >
-                  <SparkIcon className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                  <Sparkles className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                   <div className="flex flex-col">
                     <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.whyLabel}

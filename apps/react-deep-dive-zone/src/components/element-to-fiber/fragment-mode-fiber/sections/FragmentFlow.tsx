@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Group, Lightbulb } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { FlowSteps } from '../components/FlowSteps';
 import type { FragmentModeFiberContent } from '../content';
-import { GroupIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FragmentModeFiberContent['fragmentFlow'] };
 
@@ -23,7 +24,7 @@ export const FragmentFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GroupIcon className="h-5 w-5" />}
+      icon={<Group className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -65,6 +66,8 @@ export const FragmentFlow = ({ content }: Props) => (
       </article>
     </div>
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.infoBody}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.infoBody}
+    </SectionNote>
   </section>
 );

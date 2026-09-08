@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Waypoints } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { BranchMap } from '../components/BranchMap';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
-import { WaypointsIcon } from '../icons';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['branchMap'] };
 
@@ -16,7 +17,7 @@ export const TypeBranchMap = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WaypointsIcon className="h-5 w-5" />}
+      icon={<Waypoints className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article

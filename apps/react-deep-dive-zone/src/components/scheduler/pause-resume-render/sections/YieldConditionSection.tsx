@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, GitBranch, PauseCircle, PlayCircle } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent } from '../content';
-import { ArrowRightIcon, GitBranchIcon, PauseCircleIcon, PlayCircleIcon } from '../icons';
 
 type Props = { content: RenderYieldingContent['yieldMoment'] };
 
@@ -13,7 +14,7 @@ export const YieldConditionSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -32,7 +33,7 @@ export const YieldConditionSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60"
             >
-              <PlayCircleIcon className="h-5 w-5" />
+              <PlayCircle className="h-5 w-5" aria-hidden="true" />
             </span>
             <h3 className="text-md sm:text-lg font-bold text-emerald-700 dark:text-emerald-300 break-keep">
               {content.continueCard.title}
@@ -57,7 +58,7 @@ export const YieldConditionSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60"
             >
-              <PauseCircleIcon className="h-5 w-5" />
+              <PauseCircle className="h-5 w-5" aria-hidden="true" />
             </span>
             <h3 className="text-md sm:text-lg font-bold text-violet-700 dark:text-violet-300 break-keep">
               {content.yieldCard.title}
@@ -96,7 +97,7 @@ export const YieldConditionSection = ({ content }: Props) => (
                   {step}
                 </code>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-4 w-4 text-[var(--term-muted)] shrink-0"
                   />

@@ -2,18 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, CheckCircle2, Component, ListChecks, Star } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { LayoutPhaseContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ComponentIcon,
-  ListChecksIcon,
-  StarIcon,
-} from '../icons';
 
 type Props = {
   classLifecycle: LayoutPhaseContent['classLifecycle'];
@@ -40,7 +34,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ComponentIcon className="h-5 w-5" />}
+      icon={<Component className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="flex flex-1 flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -56,8 +50,8 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
                 aria-hidden="true"
                 className="flex sm:items-center justify-center text-[var(--term-dim)]"
               >
-                <ArrowRightIcon className="h-4 w-4 hidden sm:inline-block" />
-                <ArrowDownIcon className="h-4 w-4 sm:hidden my-1" />
+                <ArrowRight className="h-4 w-4 hidden sm:inline-block" aria-hidden="true" />
+                <ArrowDown className="h-4 w-4 sm:hidden my-1" aria-hidden="true" />
               </li>
             )}
           </Fragment>
@@ -102,7 +96,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
         )}
       >
         <ToneIconBox tone="amber" size="sm" className="mt-0.5 shrink-0">
-          <StarIcon className="h-4 w-4" />
+          <Star className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -143,7 +137,7 @@ const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ListChecksIcon className="h-5 w-5" />}
+        icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -170,7 +164,7 @@ const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }
                   t.chip,
                 )}
               >
-                <CheckCircleIcon className="h-3.5 w-3.5" />
+                <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span className={cn('text-xsm sm:text-sm leading-snug break-keep', t.fill.text)}>
                 {item.text}

@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Link2, Network, ShieldQuestion } from 'lucide-react';
+
 import { axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import type { AxisAccent, ThreePriorityAxesContent } from '../content';
-import { LightbulbIcon, LinkIcon, NetworkIcon, ShieldQuestionIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['question'] };
 
-const cardIcon: Record<AxisAccent, typeof NetworkIcon> = {
-  blue: NetworkIcon,
-  teal: LinkIcon,
-  violet: LightbulbIcon,
+const cardIcon: Record<AxisAccent, typeof Network> = {
+  blue: Network,
+  teal: Link2,
+  violet: Lightbulb,
 };
 
 export const PriorityQuestionPanel = ({ content }: Props) => (
@@ -32,7 +33,11 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <ShieldQuestionIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <ShieldQuestion
+            className="h-8 w-8 sm:h-10 sm:w-10"
+            strokeWidth={2.4}
+            aria-hidden="true"
+          />
         </span>
         <span
           aria-hidden="true"

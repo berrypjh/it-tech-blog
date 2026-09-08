@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, RenderedItem } from '../content';
-import { ListChecksIcon } from '../icons';
 
 type Props = { content: ReactElementKeySeparatedContent['list'] };
 
@@ -17,7 +18,7 @@ export const ListKeyScene = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">

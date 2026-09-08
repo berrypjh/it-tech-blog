@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, GitBranch, Link2, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { DifferenceCard, Tone, UseReducerSharedContent } from '../content';
-import { GaugeIcon, GitBranchIcon, Link2Icon, SplitIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['whenDifference'] };
 
 const visualMap = {
-  gauge: GaugeIcon,
-  branch: GitBranchIcon,
-  link: Link2Icon,
+  gauge: Gauge,
+  branch: GitBranch,
+  link: Link2,
 };
 
 const cardTone: Record<Tone, string> = {
@@ -141,7 +142,7 @@ export const WhenDifferenceAppears = ({ content }: Props) => (
       id="when-difference"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

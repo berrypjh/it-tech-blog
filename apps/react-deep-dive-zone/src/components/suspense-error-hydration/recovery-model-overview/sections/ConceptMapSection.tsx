@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Hourglass, PlugZap, TriangleAlert } from 'lucide-react';
+
 import type { ConceptCard, RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, HourglassIcon, PlugZapIcon, TriangleAlertIcon } from '../icons';
 import type { Domain } from '../tone';
 import { domainAccent } from '../tone';
 
@@ -10,15 +11,15 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: RecoveryModelOverviewContent['conceptMap'] };
 
 const conceptIcon: Record<Domain, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  rejected: TriangleAlertIcon,
-  error: TriangleAlertIcon,
-  hydration: PlugZapIcon,
-  boundary: PlugZapIcon,
-  server: PlugZapIcon,
-  recovery: PlugZapIcon,
-  navy: PlugZapIcon,
-  completion: PlugZapIcon,
+  pending: Hourglass,
+  rejected: TriangleAlert,
+  error: TriangleAlert,
+  hydration: PlugZap,
+  boundary: PlugZap,
+  server: PlugZap,
+  recovery: PlugZap,
+  navy: PlugZap,
+  completion: PlugZap,
 };
 
 const Card = ({ card }: { card: ConceptCard }) => {
@@ -69,7 +70,7 @@ const Card = ({ card }: { card: ConceptCard }) => {
               {step}
             </span>
             {i < card.flow.length - 1 && (
-              <ArrowRightIcon aria-hidden="true" className={cn('h-3 w-3 shrink-0', accent.text)} />
+              <ArrowRight aria-hidden="true" className={cn('h-3 w-3 shrink-0', accent.text)} />
             )}
           </li>
         ))}

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Network } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ConnectionTable } from '../components/ConnectionTable';
 import { JsxFiberDiagram } from '../components/JsxFiberDiagram';
 import type { FiberTreePointersContent } from '../content';
-import { NetworkIcon } from '../icons';
 
 type Props = { content: FiberTreePointersContent['conversion'] };
 
@@ -21,7 +22,7 @@ export const JsxToFiberConnection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">

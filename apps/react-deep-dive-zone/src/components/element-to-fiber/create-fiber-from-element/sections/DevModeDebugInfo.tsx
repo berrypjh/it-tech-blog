@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Bug, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ArrowDivider } from '../../../shared/compare';
 import { ComparisonTable } from '../../../shared/grid';
@@ -7,7 +9,6 @@ import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent } from '../content';
-import { BoxIcon, BugIcon, LayersIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['devInfo'] };
 
@@ -20,7 +21,7 @@ export const DevModeDebugInfo = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BugIcon className="h-5 w-5" />}
+      icon={<Bug className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ToneBadge tone="amber" className="font-mono uppercase tracking-wider">
@@ -56,14 +57,14 @@ export const DevModeDebugInfo = ({ content }: Props) => (
         <DebugPanel
           tone="sky"
           label={content.mappingLeftLabel}
-          icon={<BoxIcon className="h-[18px] w-[18px]" />}
+          icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
           code={content.mappingLeftCode}
         />
         <ArrowDivider />
         <DebugPanel
           tone="teal"
           label={content.mappingRightLabel}
-          icon={<LayersIcon className="h-[18px] w-[18px]" />}
+          icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
           code={content.mappingRightCode}
         />
       </div>

@@ -1,10 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  BadgeCheck,
+  Box,
+  CheckCircle2,
+  ExternalLink,
+  GitCommit,
+  type LucideIcon,
+  Package,
+  Tag,
+} from 'lucide-react';
+
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
-import { BadgeCheckIcon, CheckCircleIcon, ExternalLinkIcon, iconByName, TagIcon } from '../icons';
+
+const statIcon: Record<'Commits' | 'Packages' | 'Assets', LucideIcon> = {
+  Commits: GitCommit,
+  Packages: Package,
+  Assets: Box,
+};
 
 type Props = { content: ChangelogContent['latest'] };
 
@@ -15,7 +31,7 @@ export const LatestReleaseExample = ({ content }: Props) => {
         id="latest"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<TagIcon className="h-5 w-5" />}
+        icon={<Tag className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -53,7 +69,7 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
             'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
         >
-          <BadgeCheckIcon className="h-6 w-6" />
+          <BadgeCheck className="h-6 w-6" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
           <h3 className="text-xl sm:text-2xl font-bold font-mono tracking-tight text-[var(--term-fg)]">
@@ -82,7 +98,7 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
 
     <ul className="grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-2 mt-auto">
       {content.stats.map((stat) => {
-        const Icon = iconByName[stat.icon];
+        const Icon = statIcon[stat.label];
         return (
           <li
             key={stat.label}
@@ -123,7 +139,7 @@ const CtaButtons = ({ content }: CtaProps) => (
     >
       {content.secondaryCta}
       <span className="sr-only">(새 창에서 열림)</span>
-      <ExternalLinkIcon
+      <ExternalLink
         className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
         aria-hidden="true"
       />
@@ -148,7 +164,7 @@ const ChecklistCard = ({ title, items }: ChecklistProps) => (
           key={item}
           className="flex items-start gap-2 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep"
         >
-          <CheckCircleIcon
+          <CheckCircle2
             className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.violet.text)}
             aria-hidden="true"
           />
@@ -179,7 +195,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
             toneTokens.violet.text,
           )}
         >
-          <TagIcon className="h-4 w-4" />
+          <Tag className="h-4 w-4" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
           <h3 className={cn('text-md font-bold font-mono tracking-tight', toneTokens.violet.text)}>

@@ -11,9 +11,6 @@ export type VersionCard = {
   highlight: string;
 };
 
-export type LegacyTerm = { name: string; description: string };
-export type ModernTerm = { name: string; description: string };
-
 export type TimelineRow = {
   id: VersionId;
   version: string;
@@ -26,7 +23,6 @@ export type TimelineRow = {
 
 export type FocusTopic = {
   id: 'use-suspense' | 'actions' | 'ref-as-prop' | 'rsc';
-  icon: 'spark' | 'bolt' | 'link' | 'cube';
   tone: ToneKey;
   title: string;
   description: string;
@@ -35,6 +31,7 @@ export type FocusTopic = {
 
 export type ReinterpretRow = {
   legacy: string;
+  legacyBody: string;
   modernTitle: string;
   modernBody: string;
 };
@@ -62,13 +59,6 @@ export type WhyReact19Content = {
       axisTop: string;
     };
   };
-  terminology: {
-    eyebrow: string;
-    title: string;
-    left: { header: string; items: LegacyTerm[] };
-    center: { headline: string[]; sub: string[] };
-    right: { header: string; items: ModernTerm[] };
-  };
   timeline: {
     eyebrow: string;
     title: string;
@@ -82,6 +72,7 @@ export type WhyReact19Content = {
   reinterpret: {
     eyebrow: string;
     title: string;
+    description: string;
     headers: { legacy: string; modern: string };
     rows: ReinterpretRow[];
   };
@@ -121,33 +112,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         axisTop: '현재',
       },
     },
-    terminology: {
-      eyebrow: '01 · 용어 변화',
-      title: '용어와 개념도 시대에 따라 달라집니다',
-      left: {
-        header: '과거 자료에서 자주 보는 용어',
-        items: [
-          { name: 'scheduleWork', description: '업데이트 작업을 스케줄링' },
-          { name: 'expirationTime', description: '업데이트 만료 시간을 기반으로 우선순위 판단' },
-          { name: 'legacy render', description: '동기적으로 렌더링을 수행하던 방식' },
-        ],
-      },
-      center: {
-        headline: ['버전이 달라지면', '내부 표현도', '달라집니다'],
-        sub: ['같은 목적이라도', '구현 방식과 용어가', '바뀌었습니다.'],
-      },
-      right: {
-        header: 'React 19 코드에서 더 자주 만나는 용어',
-        items: [
-          { name: 'scheduleUpdateOnFiber', description: 'Fiber 트리에 업데이트를 스케줄링' },
-          { name: 'lanes', description: '여러 업데이트의 우선순위를 비트 단위로 표현' },
-          { name: 'concurrent rendering', description: '동시 렌더링으로 상호작용성과 반응성 개선' },
-          { name: 'transitions', description: '낮은 우선순위 업데이트를 표현하는 도구' },
-        ],
-      },
-    },
     timeline: {
-      eyebrow: '02 · 버전 흐름',
+      eyebrow: '01 · 버전 흐름',
       title: 'React 버전별 핵심 변화',
       rows: [
         {
@@ -189,12 +155,11 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '03 · 집중 주제',
+      eyebrow: '02 · 집중 주제',
       title: 'React 19에서 특히 읽을 가치가 큰 주제',
       cards: [
         {
           id: 'use-suspense',
-          icon: 'spark',
           tone: 'blue',
           title: 'use()와 Suspense',
           description:
@@ -203,7 +168,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'actions',
-          icon: 'bolt',
           tone: 'violet',
           title: 'Actions와 Form Actions',
           description:
@@ -212,7 +176,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'ref-as-prop',
-          icon: 'link',
           tone: 'teal',
           title: 'ref as prop',
           description:
@@ -221,7 +184,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'rsc',
-          icon: 'cube',
           tone: 'sky',
           title: 'Server Components 경계',
           description:
@@ -231,8 +193,10 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '04 · 재해석',
+      eyebrow: '03 · 재해석',
       title: '오래된 용어를 최신 관점으로 다시 읽기',
+      description:
+        '버전이 달라지면 내부 표현도 달라집니다. 같은 목적이라도 구현 방식과 용어가 바뀌었습니다.',
       headers: {
         legacy: '과거 자료에서 자주 보던 용어',
         modern: 'React 19 코드 읽기 관점',
@@ -240,28 +204,33 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       rows: [
         {
           legacy: 'scheduleWork',
+          legacyBody: '업데이트 작업을 스케줄링하던 진입점.',
           modernTitle: '`scheduleUpdateOnFiber` 흐름으로 읽기',
           modernBody: '어떤 Fiber에, 어떤 lane으로 스케줄링되는지 추적합니다.',
         },
         {
           legacy: 'expirationTime',
+          legacyBody: '업데이트 만료 시간을 기반으로 우선순위를 판단하던 방식.',
           modernTitle: '`lanes`와 priority로 읽기',
           modernBody: 'lane 비트, priority, entanglement 관계를 함께 이해합니다.',
         },
         {
           legacy: 'legacy render',
+          legacyBody: '동기적으로 렌더링을 수행하던 방식.',
           modernTitle: 'concurrent rendering 흐름으로 이해',
-          modernBody: 'interruptible, 재개 가능, 우선순위 기반 렌더링으로 읽습니다.',
+          modernBody:
+            'interruptible, 재개 가능, 우선순위 기반 렌더링으로 읽고 낮은 우선순위 업데이트는 transitions로 표현합니다.',
         },
         {
           legacy: 'batchedUpdates',
+          legacyBody: '이벤트 핸들러 안에서만 업데이트를 모아 처리하던 방식.',
           modernTitle: '자동 배치와 이벤트/전이 경계로 이해',
           modernBody: '기본적으로 자동 배치되며, 필요 시 `flushSync` 등을 함께 봅니다.',
         },
       ],
     },
     resources: {
-      eyebrow: '05 · 공식 자료',
+      eyebrow: '04 · 공식 자료',
       title: '공식 변경 기록 확인하기',
       cards: [
         {
@@ -329,33 +298,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         axisTop: 'today',
       },
     },
-    terminology: {
-      eyebrow: '01 · TERMS',
-      title: 'Terms and concepts shift across eras',
-      left: {
-        header: 'Terms you often see in older material',
-        items: [
-          { name: 'scheduleWork', description: 'Scheduling update work' },
-          { name: 'expirationTime', description: 'Priority via expiration deadlines' },
-          { name: 'legacy render', description: 'The synchronous rendering path' },
-        ],
-      },
-      center: {
-        headline: ['When versions change,', 'the internal vocabulary', 'changes too.'],
-        sub: ['Same intent,', 'different implementation', 'and terminology.'],
-      },
-      right: {
-        header: 'Terms you meet more often in React 19 code',
-        items: [
-          { name: 'scheduleUpdateOnFiber', description: 'Scheduling updates on the fiber tree' },
-          { name: 'lanes', description: 'Priorities expressed as bitmask lanes' },
-          { name: 'concurrent rendering', description: 'Interruptible, responsive rendering' },
-          { name: 'transitions', description: 'A tool for lower-priority updates' },
-        ],
-      },
-    },
     timeline: {
-      eyebrow: '02 · TIMELINE',
+      eyebrow: '01 · TIMELINE',
       title: 'Key shifts across React versions',
       rows: [
         {
@@ -394,12 +338,11 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '03 · FOCUS TOPICS',
+      eyebrow: '02 · FOCUS TOPICS',
       title: 'Topics most worth reading in React 19',
       cards: [
         {
           id: 'use-suspense',
-          icon: 'spark',
           tone: 'blue',
           title: 'use() & Suspense',
           description:
@@ -408,7 +351,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'actions',
-          icon: 'bolt',
           tone: 'violet',
           title: 'Actions & Form Actions',
           description:
@@ -417,7 +359,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'ref-as-prop',
-          icon: 'link',
           tone: 'teal',
           title: 'ref as prop',
           description: '`ref` passing is simpler now — see which abstraction is gone.',
@@ -425,7 +366,6 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
         },
         {
           id: 'rsc',
-          icon: 'cube',
           tone: 'sky',
           title: 'Server Components boundaries',
           description:
@@ -435,8 +375,10 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '04 · REINTERPRETATION',
+      eyebrow: '03 · REINTERPRETATION',
       title: 'Re-reading older terms through a modern lens',
+      description:
+        'When versions change, the internal vocabulary changes too — same intent, different implementation and terminology.',
       headers: {
         legacy: 'Terms common in older material',
         modern: 'How to read it in React 19 code',
@@ -444,28 +386,33 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       rows: [
         {
           legacy: 'scheduleWork',
+          legacyBody: 'The entry point that scheduled update work.',
           modernTitle: 'Read it as the `scheduleUpdateOnFiber` flow',
           modernBody: 'Trace which fiber and which lane the update is scheduled on.',
         },
         {
           legacy: 'expirationTime',
+          legacyBody: 'Priority derived from expiration deadlines.',
           modernTitle: 'Read it via `lanes` and priority',
           modernBody: 'Understand lane bits, priority, and entanglement together.',
         },
         {
           legacy: 'legacy render',
+          legacyBody: 'The synchronous rendering path.',
           modernTitle: 'Understand it via concurrent rendering',
-          modernBody: 'Interruptible, resumable, priority-driven rendering.',
+          modernBody:
+            'Interruptible, resumable, priority-driven rendering, with lower-priority updates expressed as transitions.',
         },
         {
           legacy: 'batchedUpdates',
+          legacyBody: 'Batching that only applied inside event handlers.',
           modernTitle: 'Understand it via automatic batching and event boundaries',
           modernBody: 'Batched by default; use `flushSync` etc. when needed.',
         },
       ],
     },
     resources: {
-      eyebrow: '05 · RESOURCES',
+      eyebrow: '04 · RESOURCES',
       title: 'Check the official change records',
       cards: [
         {

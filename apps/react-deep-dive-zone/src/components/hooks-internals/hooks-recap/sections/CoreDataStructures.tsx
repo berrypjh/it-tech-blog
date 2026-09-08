@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Box, Braces } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { DataStructure, HooksRecapContent } from '../content';
-import { ArrowDownIcon, BoxIcon, BracesIcon } from '../icons';
 
 import { toneCardBg, toneChip, toneText } from './_shared/tones';
 
@@ -26,7 +27,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
           toneText[item.tone],
         )}
       >
-        <BoxIcon className="h-4 w-4" />
+        <Box className="h-4 w-4" aria-hidden="true" />
       </span>
       <code
         className={cn('font-mono text-xsm sm:text-sm font-bold break-all', toneText[item.tone])}
@@ -60,10 +61,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
                   {line}
                 </code>
                 {!isLast && (
-                  <ArrowDownIcon
-                    aria-hidden="true"
-                    className={cn('h-3 w-3', toneText[item.tone])}
-                  />
+                  <ArrowDown aria-hidden="true" className={cn('h-3 w-3', toneText[item.tone])} />
                 )}
               </li>
             );
@@ -103,7 +101,7 @@ export const CoreDataStructures = ({ content }: Props) => (
       id="data-structures"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BracesIcon className="h-5 w-5" />}
+      icon={<Braces className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

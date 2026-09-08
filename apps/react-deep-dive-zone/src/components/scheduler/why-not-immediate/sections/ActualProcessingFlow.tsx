@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { Tone, WhyNotImmediateContent } from '../content';
 import {
-  ArrowDownIcon,
-  CodeIcon,
-  MousePointerClickIcon,
-  PlayCircleIcon,
-  RouteIcon,
-  TargetIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
+  ArrowDown,
+  Code2,
+  MousePointerClick,
+  PlayCircle,
+  Route,
+  Target,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
+import type { Tone, WhyNotImmediateContent } from '../content';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 
@@ -53,7 +54,7 @@ const toneIconBox: Record<Tone, string> = {
   rose: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
 };
 
-const stepIcons = [MousePointerClickIcon, CodeIcon, ZapIcon, TargetIcon, RouteIcon, PlayCircleIcon];
+const stepIcons = [MousePointerClick, Code2, Zap, Target, Route, PlayCircle];
 
 export const ActualProcessingFlow = ({ content }: Props) => (
   <section
@@ -69,13 +70,13 @@ export const ActualProcessingFlow = ({ content }: Props) => (
       number={4}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="flex flex-col gap-2">
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? RouteIcon;
+        const Icon = stepIcons[i] ?? Route;
         return (
           <li key={step.title} className="flex flex-col">
             <article
@@ -121,7 +122,7 @@ export const ActualProcessingFlow = ({ content }: Props) => (
             </article>
             {!isLast && (
               <span aria-hidden="true" className="self-center my-1 text-[var(--term-muted)]">
-                <ArrowDownIcon className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
           </li>

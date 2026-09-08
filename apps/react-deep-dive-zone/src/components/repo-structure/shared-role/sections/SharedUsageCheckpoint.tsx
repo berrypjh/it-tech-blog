@@ -1,8 +1,9 @@
+import { FileCode2, Info } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { SharedContent } from '../content';
-import { FileCodeIcon, InfoIcon } from '../icons';
 
 type Props = { content: SharedContent['checkpoint'] };
 
@@ -12,7 +13,7 @@ export const SharedUsageCheckpoint = ({ content }: Props) => (
       id="checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -21,15 +22,14 @@ export const SharedUsageCheckpoint = ({ content }: Props) => (
           {
             label: content.fileLabel,
             value: <code className="font-mono break-all">{content.filePath}</code>,
-            icon: FileCodeIcon,
+            icon: FileCode2,
           },
           {
             label: content.whyLabel,
             value: <span>{content.whyValue}</span>,
-            icon: InfoIcon,
+            icon: Info,
           },
         ]}
-        question={content.learningQuestion}
       />
 
       {/* 우측 코드 패널 + 버튼 */}

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, RotateCcw, XCircle } from 'lucide-react';
+
 import type { WhyNotImmediateContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, RotateCcwIcon, XCircleIcon } from '../icons';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 
@@ -14,7 +15,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
       number={2}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RotateCcwIcon className="h-5 w-5" />}
+      icon={<RotateCcw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -35,7 +36,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
               'bg-rose-500 text-white shadow-[0_3px_0_rgba(225,29,72,0.3)] dark:bg-rose-500/90',
             )}
           >
-            <XCircleIcon className="h-6 w-6" strokeWidth={2.2} />
+            <XCircle className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">
@@ -76,7 +77,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
                   <span className="text-xsm sm:text-sm font-bold leading-tight break-keep">
                     {step}
                   </span>
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="ml-auto h-3.5 w-3.5 opacity-50 hidden sm:block"
                   />
@@ -125,7 +126,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
               'bg-teal-500 text-white shadow-[0_3px_0_rgba(13,148,136,0.3)] dark:bg-teal-500/90',
             )}
           >
-            <CheckCircleIcon className="h-6 w-6" strokeWidth={2.2} />
+            <CheckCircle2 className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
@@ -166,7 +167,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
                   <span className="text-xsm sm:text-sm font-bold leading-tight break-keep">
                     {step}
                   </span>
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="ml-auto h-3.5 w-3.5 opacity-50 hidden sm:block"
                   />
@@ -189,7 +190,7 @@ export const IntuitionVsActualFlow = ({ content }: Props) => (
             'dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',
           )}
         >
-          <CheckCircleIcon
+          <CheckCircle2
             aria-hidden="true"
             className="mt-0.5 h-4 w-4 shrink-0 text-teal-600 dark:text-teal-300"
           />

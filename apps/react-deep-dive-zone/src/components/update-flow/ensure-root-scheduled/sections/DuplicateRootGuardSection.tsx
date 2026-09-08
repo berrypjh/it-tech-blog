@@ -1,17 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, BadgeCheck, CopyX, ListChecks, Network, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
-import {
-  ArrowDownIcon,
-  BadgeCheckIcon,
-  CopyXIcon,
-  ListChecksIcon,
-  NetworkIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = { content: EnsureRootScheduledContent['duplicate'] };
 
@@ -25,7 +19,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
       id="duplicate"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CopyXIcon className="h-5 w-5" />}
+      icon={<CopyX className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.35fr)] gap-md lg:gap-lg items-stretch">
@@ -33,7 +27,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="amber" size="sm">
-            <BadgeCheckIcon className="h-[18px] w-[18px]" />
+            <BadgeCheck className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             de-dupe guarantee
@@ -51,10 +45,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
             emerald.fill.bg,
           )}
         >
-          <SparklesIcon
-            aria-hidden="true"
-            className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)}
-          />
+          <Sparkles aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
           <p
             className={cn(
               'text-xsm sm:text-sm font-bold leading-snug break-keep',
@@ -98,7 +89,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
                   emerald.chip,
                 )}
               >
-                <NetworkIcon className="h-4 w-4" />
+                <Network className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className={cn('text-xsm sm:text-sm font-mono font-bold', emerald.text)}>
                 {upd}
@@ -118,7 +109,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
           )}
         >
           <ToneIconBox tone="amber" size="md">
-            <CopyXIcon className="h-5 w-5" />
+            <CopyX className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex flex-col min-w-0">
             <code
@@ -143,7 +134,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
           className={cn('flex items-center gap-sm rounded-lg border p-md', sky.border, sky.fill.bg)}
         >
           <ToneIconBox tone="sky" size="md">
-            <ListChecksIcon className="h-5 w-5" />
+            <ListChecks className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex flex-col min-w-0 flex-1">
             <span className={cn('text-[10px] uppercase tracking-wider font-mono', sky.text)}>
@@ -175,6 +166,6 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
 
 const DownArrow = () => (
   <span aria-hidden="true" className="flex justify-center text-[var(--term-dim)]">
-    <ArrowDownIcon className="h-4 w-4" />
+    <ArrowDown className="h-4 w-4" aria-hidden="true" />
   </span>
 );

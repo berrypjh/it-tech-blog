@@ -1,36 +1,37 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  Cog,
+  Database,
+  FlagTriangleRight,
+  FunctionSquare,
+  Lightbulb,
+  Link2,
+  PlayCircle,
+  Rocket,
+  Split,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FlowStep, HooksRecapContent } from '../content';
-import {
-  ArrowDownIcon,
-  CogIcon,
-  DatabaseIcon,
-  FlagIcon,
-  FunctionSquareIcon,
-  LightbulbIcon,
-  Link2Icon,
-  PlayCircleIcon,
-  RocketIcon,
-  SplitIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 import { toneCardBg, toneNumber, toneText } from './_shared/tones';
 
 type Props = { content: HooksRecapContent['fullFlow'] };
 
 const visualMap = {
-  play: PlayCircleIcon,
-  fn: FunctionSquareIcon,
-  split: SplitIcon,
-  cog: CogIcon,
-  list: Link2Icon,
-  state: DatabaseIcon,
-  effect: ZapIcon,
-  commit: RocketIcon,
-  zap: FlagIcon,
+  play: PlayCircle,
+  fn: FunctionSquare,
+  split: Split,
+  cog: Cog,
+  list: Link2,
+  state: Database,
+  effect: Zap,
+  commit: Rocket,
+  zap: FlagTriangleRight,
 };
 
 const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) => {
@@ -77,7 +78,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
       </article>
       {hasArrow && (
         <span aria-hidden="true" className="flex justify-center text-[var(--term-muted)]">
-          <ArrowDownIcon className="h-4 w-4" />
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
         </span>
       )}
     </li>
@@ -96,7 +97,7 @@ export const FullFlowSummary = ({ content }: Props) => (
       id="full-flow"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-md lg:gap-lg">
@@ -120,7 +121,7 @@ export const FullFlowSummary = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-500 text-white dark:bg-blue-400 dark:text-slate-900"
             >
-              <LightbulbIcon className="h-4 w-4" />
+              <Lightbulb className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
               {content.explanationTitle}
@@ -153,7 +154,7 @@ export const FullFlowSummary = ({ content }: Props) => (
             aria-hidden="true"
             className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900"
           >
-            <LightbulbIcon className="h-4 w-4" />
+            <Lightbulb className="h-4 w-4" aria-hidden="true" />
           </span>
           <p className="text-xsm sm:text-sm font-bold leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
             {content.memoryPoint}

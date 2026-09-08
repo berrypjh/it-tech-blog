@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { SearchIcon } from '../icons';
+import { Search } from 'lucide-react';
 
 type MockupKind = 'search-input' | 'skeleton-list' | 'offscreen-placeholder';
 
@@ -15,7 +15,7 @@ const SearchInputMockup = ({ placeholder = 'real' }: { placeholder?: string }) =
     )}
   >
     <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-200">
-      <SearchIcon className="h-3.5 w-3.5" />
+      <Search className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
     <span className="flex-1 font-mono text-xsm font-medium text-[var(--term-fg)] truncate">
       {placeholder}

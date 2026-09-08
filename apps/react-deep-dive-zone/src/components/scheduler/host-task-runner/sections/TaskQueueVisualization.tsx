@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ListOrdered, Package } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SchedulerPackageContent } from '../content';
-import { ArrowDownIcon, ListOrderedIcon, PackageIcon } from '../icons';
 import { pkgIconBox, pkgPill, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['taskQueue'] };
@@ -14,7 +15,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ListOrderedIcon className="h-5 w-5" />}
+      icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -35,7 +36,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
               pkgIconBox.teal,
             )}
           >
-            <PackageIcon className="h-5 w-5" />
+            <Package className="h-5 w-5" aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <h3 className="text-md sm:text-lg font-bold text-teal-700 dark:text-teal-300 break-keep font-mono">
@@ -70,7 +71,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
                 </div>
                 {!isLast && (
                   <span aria-hidden="true" className="self-center my-0.5 text-[var(--term-muted)]">
-                    <ArrowDownIcon className="h-3 w-3" />
+                    <ArrowDown className="h-3 w-3" aria-hidden="true" />
                   </span>
                 )}
               </li>
@@ -94,7 +95,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
               pkgIconBox.blue,
             )}
           >
-            <ListOrderedIcon className="h-5 w-5" />
+            <ListOrdered className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
             {content.currentQueueTitle}
@@ -132,7 +133,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
                 </div>
                 {!isLast && (
                   <span aria-hidden="true" className="self-center my-0.5 text-[var(--term-dim)]">
-                    <ArrowDownIcon className="h-3 w-3" />
+                    <ArrowDown className="h-3 w-3" aria-hidden="true" />
                   </span>
                 )}
               </li>

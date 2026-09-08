@@ -1,8 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cuboid, FlaskConical, Folder, type LucideIcon, TerminalSquare } from 'lucide-react';
+
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroBranchNode, SurroundingContent } from '../content';
-import { FolderIcon, iconByName } from '../icons';
+
+const dirIcon: Record<'fixtures' | 'scripts' | 'compiler', LucideIcon> = {
+  fixtures: FlaskConical,
+  scripts: TerminalSquare,
+  compiler: Cuboid,
+};
 
 type Props = { content: SurroundingContent['hero'] };
 
@@ -68,7 +75,7 @@ const RepoRootCard = ({ label, caption }: RepoRootCardProps) => (
     )}
   >
     <span className="inline-flex items-center gap-2">
-      <FolderIcon className="h-4 w-4" aria-hidden="true" />
+      <Folder className="h-4 w-4" aria-hidden="true" />
       <span className="text-md font-bold font-mono tracking-tight">{label}</span>
     </span>
     <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">{caption}</span>
@@ -87,7 +94,7 @@ const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
 type BranchCardProps = { node: HeroBranchNode; index: number };
 
 const BranchCard = ({ node, index }: BranchCardProps) => {
-  const Icon = iconByName[node.icon];
+  const Icon = dirIcon[node.id];
   const tone = toneTokens[toneCycle[index % toneCycle.length]];
 
   return (
@@ -105,7 +112,7 @@ const BranchCard = ({ node, index }: BranchCardProps) => {
           tone.chip,
         )}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>
         {node.name}

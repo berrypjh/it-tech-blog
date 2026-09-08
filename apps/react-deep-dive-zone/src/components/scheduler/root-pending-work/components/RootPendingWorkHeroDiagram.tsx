@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Database, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroStep, RootAccent, RootPendingWorkContent } from '../content';
-import { ClockIcon, DatabaseIcon, ZapIcon } from '../icons';
 
 type Props = { content: RootPendingWorkContent['hero']; className?: string };
 
@@ -15,10 +16,10 @@ const accentTone: Record<RootAccent, ToneKey> = {
   violet: 'violet',
 };
 
-const stepIcon: Record<RootAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: DatabaseIcon,
-  violet: ClockIcon,
+const stepIcon: Record<RootAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Database,
+  violet: Clock3,
 };
 
 const ROOT_LANES_CODE = `FiberRoot {

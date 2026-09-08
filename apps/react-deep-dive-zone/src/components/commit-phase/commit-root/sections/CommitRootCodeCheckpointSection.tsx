@@ -2,12 +2,13 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Code2, FileCode, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, PipelineFunction } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, CodeIcon, FileCodeIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: CommitRootContent['checkpoint'] };
 
@@ -24,7 +25,7 @@ export const CommitRootCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Top: info + code panel */}
@@ -33,12 +34,12 @@ export const CommitRootCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <code className="font-mono break-all">{content.info.filePath}</code>,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <code className={chipCode}>{content.info.watchValue}</code>,
           },
         ]}
@@ -91,8 +92,8 @@ const PipelineRail = ({ items }: { items: PipelineFunction[] }) => (
             aria-hidden="true"
             className="flex items-center justify-center text-[var(--term-dim)]"
           >
-            <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-            <ArrowDownIcon className="h-4 w-4 md:hidden" />
+            <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+            <ArrowDown className="h-4 w-4 md:hidden" aria-hidden="true" />
           </li>
         )}
       </Fragment>

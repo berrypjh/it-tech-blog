@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, ListChecks } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LaneUpdateObjectContent } from '../content';
-import { BracesIcon, ListChecksIcon } from '../icons';
 
 type Props = { content: LaneUpdateObjectContent['structure'] };
 
@@ -16,7 +17,7 @@ export const UpdateObjectStructureSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BracesIcon className="h-5 w-5" />}
+      icon={<Braces className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.2fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -27,7 +28,7 @@ export const UpdateObjectStructureSection = ({ content }: Props) => (
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="flex items-center gap-2">
           <ToneIconBox tone="sky" size="md">
-            <ListChecksIcon className="h-5 w-5" />
+            <ListChecks className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <h3 className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
             {content.summaryTitle}

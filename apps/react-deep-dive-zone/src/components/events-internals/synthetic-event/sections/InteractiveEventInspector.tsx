@@ -4,16 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Eye, Info, MousePointerClick, RefreshCw, ShieldOff, Terminal } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import {
-  EyeIcon,
-  InfoIcon,
-  MousePointerClickIcon,
-  RefreshCwIcon,
-  ShieldOffIcon,
-  TerminalIcon,
-} from '../icons';
 
 type Props = { content: SyntheticEventContent['inspector'] };
 
@@ -40,7 +34,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<EyeIcon className="h-5 w-5" />}
+        icon={<Eye className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -65,7 +59,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
               >
-                <MousePointerClickIcon className="h-4 w-4" />
+                <MousePointerClick className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 {content.testUiTitle}
@@ -111,7 +105,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-violet-200 bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-200 dark:border-violet-800/60"
               >
-                <InfoIcon className="h-4 w-4" />
+                <Info className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
                 {content.usageTitle}
@@ -137,7 +131,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                     : 'border-rose-500 bg-rose-500 text-white shadow-[0_3px_0_rgba(225,29,72,0.3)] dark:bg-rose-500/90',
                 )}
               >
-                <ShieldOffIcon aria-hidden="true" className="h-4 w-4" />
+                <ShieldOff aria-hidden="true" className="h-4 w-4" />
                 <span>{content.controls.stopPropagation}</span>
               </button>
               <button
@@ -152,7 +146,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                   'motion-safe:hover:-translate-y-0.5',
                 )}
               >
-                <RefreshCwIcon aria-hidden="true" className="h-4 w-4" />
+                <RefreshCw aria-hidden="true" className="h-4 w-4" />
                 <span>{content.controls.reset}</span>
               </button>
             </div>
@@ -173,7 +167,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                   aria-hidden="true"
                   className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
                 >
-                  <TerminalIcon className="h-4 w-4" />
+                  <Terminal className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
                   {content.inspectorLabel}

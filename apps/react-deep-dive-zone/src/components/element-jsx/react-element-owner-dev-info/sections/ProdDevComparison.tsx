@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Bug, CheckCircle2, Gauge, GitCompare, Sparkles } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ProdDevCard, ReactElementOwnerDevInfoContent } from '../content';
-import { BugIcon, CheckCircleIcon, GaugeIcon, GitCompareIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['prodDev'] };
 
 const iconMap = {
-  gauge: GaugeIcon,
-  bug: BugIcon,
+  gauge: Gauge,
+  bug: Bug,
 } as const;
 
 export const ProdDevComparison = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const ProdDevComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -33,7 +34,9 @@ export const ProdDevComparison = ({ content }: Props) => (
       ))}
     </ul>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );
 
@@ -79,7 +82,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
               aria-hidden="true"
               className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
-              <CheckCircleIcon className="h-3 w-3" />
+              <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">{item}</p>
           </li>

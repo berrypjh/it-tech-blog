@@ -4,15 +4,16 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { ErrorBoundaryRecoverContent, SimulatorScenario } from '../content';
 import {
-  AtomIcon,
-  CheckCircleIcon,
-  ChevronRightIcon,
-  ServerCrashIcon,
-  ShieldAlertIcon,
-  TriangleAlertIcon,
-} from '../icons';
+  Atom,
+  CheckCircle2,
+  ChevronRight,
+  ServerCrash,
+  ShieldAlert,
+  TriangleAlert,
+} from 'lucide-react';
+
+import type { ErrorBoundaryRecoverContent, SimulatorScenario } from '../content';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -20,8 +21,8 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: ErrorBoundaryRecoverContent['simulator'] };
 
 const optionIcon: Record<SimulatorScenario, React.ComponentType<{ className?: string }>> = {
-  normal: CheckCircleIcon,
-  error: TriangleAlertIcon,
+  normal: CheckCircle2,
+  error: TriangleAlert,
 };
 
 const scenarioColor: Record<SimulatorScenario, { selected: string; text: string }> = {
@@ -100,7 +101,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                       </span>
                     </div>
                     {isActive && (
-                      <CheckCircleIcon
+                      <CheckCircle2
                         aria-hidden="true"
                         className={cn('h-4 w-4 shrink-0 ml-auto', optColor.text)}
                       />
@@ -160,7 +161,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                   <span className={cn('text-xsm font-bold break-keep', accent.text)}>
                     {step.title}
                   </span>
-                  <ChevronRightIcon
+                  <ChevronRight
                     aria-hidden="true"
                     className={cn('ml-auto h-3.5 w-3.5 shrink-0 opacity-60', accent.text)}
                   />
@@ -190,12 +191,12 @@ export const RecoverySimulator = ({ content }: Props) => {
               >
                 {selected === 'error' ? (
                   result.previewKind === 'fallback' ? (
-                    <ShieldAlertIcon className="h-6 w-6" />
+                    <ShieldAlert className="h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <ServerCrashIcon className="h-6 w-6" />
+                    <ServerCrash className="h-6 w-6" aria-hidden="true" />
                   )
                 ) : (
-                  <AtomIcon className="h-6 w-6" />
+                  <Atom className="h-6 w-6" aria-hidden="true" />
                 )}
               </span>
               <div className="flex flex-col gap-0.5 min-w-0">

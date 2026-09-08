@@ -1,13 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Boxes, Lightbulb, type LucideIcon, Map, Monitor } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PositionCard, ReconcilerContent } from '../content';
-import { LightbulbIcon, MapIcon, reconcilerIcon } from '../icons';
 
 type Props = { content: ReconcilerContent['position'] };
+
+const positionIcon: Record<PositionCard['id'], LucideIcon> = {
+  react: Atom,
+  reconciler: Boxes,
+  renderer: Monitor,
+};
 
 export const PositionSection = ({ content }: Props) => {
   return (
@@ -17,7 +24,7 @@ export const PositionSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1.15fr)_auto_minmax(0,1fr)] items-stretch gap-md">
@@ -28,7 +35,9 @@ export const PositionSection = ({ content }: Props) => {
         <PositionCardView card={content.cards[2]} />
       </div>
 
-      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };
@@ -41,7 +50,7 @@ const PositionCardView = ({
   emphasized?: boolean;
 }) => {
   const tone = toneTokens[card.tone];
-  const Icon = reconcilerIcon[card.iconName];
+  const Icon = positionIcon[card.id];
 
   return (
     <article

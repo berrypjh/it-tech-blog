@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, Lightbulb } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
-import { CircleHelpIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: ReconcilerEntryContent['question'] };
 
@@ -13,7 +14,7 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
       id="question"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LightbulbIcon className="h-5 w-5" />}
+      icon={<Lightbulb className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -35,16 +36,13 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
-        <LightbulbIcon className="h-6 w-6" />
+        <Lightbulb className="h-6 w-6" aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">
         {/* 맥락: 질문을 작은 줄로 */}
         <span className="inline-flex items-center gap-1.5 text-xsm text-[var(--term-muted)] break-keep">
-          <CircleHelpIcon
-            aria-hidden="true"
-            className={cn('h-4 w-4 shrink-0', toneTokens.sky.text)}
-          />
+          <CircleHelp aria-hidden="true" className={cn('h-4 w-4 shrink-0', toneTokens.sky.text)} />
           {content.question}
         </span>
 

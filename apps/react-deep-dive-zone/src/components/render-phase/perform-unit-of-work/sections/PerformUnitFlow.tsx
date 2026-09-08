@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronDown, HelpCircle, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent } from '../content';
-import { ChevronDownIcon, HelpCircleIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: PerformUnitContent['fullFlow'] };
 
@@ -14,7 +15,7 @@ export const PerformUnitFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -32,15 +33,12 @@ export const PerformUnitFlow = ({ content }: Props) => (
           <div key={step.title} className="flex w-full flex-col items-center">
             <CodeStep title={step.title} mono={step.mono} />
             {idx < content.flow.steps.length - 1 && (
-              <ChevronDownIcon
-                aria-hidden="true"
-                className="my-1 h-5 w-5 text-[var(--term-accent)]"
-              />
+              <ChevronDown aria-hidden="true" className="my-1 h-5 w-5 text-[var(--term-accent)]" />
             )}
           </div>
         ))}
 
-        <ChevronDownIcon aria-hidden="true" className="my-1 h-5 w-5 text-[var(--term-accent)]" />
+        <ChevronDown aria-hidden="true" className="my-1 h-5 w-5 text-[var(--term-accent)]" />
         <Diamond title={content.flow.decision} />
 
         <div className="mt-3 grid w-full grid-cols-1 md:grid-cols-2 gap-md">
@@ -98,7 +96,7 @@ const Diamond = ({ title }: { title: string }) => (
       )}
     />
     <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-      <HelpCircleIcon aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
+      <HelpCircle aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
       <span className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}>
         {title}
       </span>

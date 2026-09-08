@@ -2,41 +2,17 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type RnIconName =
-  | 'arrowRight'
-  | 'box'
-  | 'check'
-  | 'clock'
-  | 'code'
-  | 'cube'
-  | 'fileText'
-  | 'gitBranch'
-  | 'help'
-  | 'layers'
-  | 'monitor'
-  | 'network'
-  | 'pencil'
-  | 'puzzle'
-  | 'search'
-  | 'smartphone'
-  | 'sparkles'
-  | 'stack'
-  | 'star'
-  | 'terminal';
-
 export type AxisCard = {
-  id: string;
+  id: 'element' | 'fiber' | 'reconciler' | 'scheduler';
   title: string;
   subtitle: string;
   description: string;
-  iconName: RnIconName;
   tone: ToneKey;
 };
 
 export type CompareCard = {
   id: 'dom' | 'native';
   name: string;
-  iconName: RnIconName;
   items: string[];
   tone: ToneKey;
 };
@@ -46,14 +22,12 @@ export type ModeCard = {
   name: string;
   subtitle: string;
   items: string[];
-  iconName: RnIconName;
   tone: ToneKey;
 };
 
 export type BenefitCard = {
   id: 'web' | 'native' | 'custom';
   name: string;
-  iconName: RnIconName;
   items: string[];
   tone: ToneKey;
 };
@@ -170,7 +144,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'Element',
           subtitle: 'UI 설명 객체',
           description: '컴포넌트와 UI 상태를 설명하는 불변 객체 트리',
-          iconName: 'code',
           tone: 'teal',
         },
         {
@@ -178,7 +151,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'Fiber',
           subtitle: '렌더링 작업 단위',
           description: '작업을 분할하고 추적하는 연결 리스트 형태의 노드',
-          iconName: 'cube',
           tone: 'cyan',
         },
         {
@@ -186,7 +158,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'reconciler',
           subtitle: '변경 계산',
           description: '이전 상태와 다음 상태를 비교해 무엇이 바뀌어야 하는지 계산',
-          iconName: 'network',
           tone: 'indigo',
         },
         {
@@ -194,7 +165,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'scheduler 개념',
           subtitle: '작업 우선순위와 시점 조율',
           description: '작업의 긴급도에 따라 언제 실행할지 결정',
-          iconName: 'clock',
           tone: 'violet',
         },
       ],
@@ -208,7 +178,6 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'dom',
           name: 'React DOM',
-          iconName: 'monitor',
           items: [
             'DOM node 생성 및 조작',
             'Browser event 시스템과 통합',
@@ -221,7 +190,6 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'native',
           name: 'React Native',
-          iconName: 'smartphone',
           items: [
             'Native view 생성 및 조작',
             'Platform bridge / Fabric 구현에 의존',
@@ -273,7 +241,6 @@ export const rnContent: Record<Locale, RnContent> = {
             '대표: React DOM',
             'DOM 조작 비용이 들어가지만 익숙한 방식',
           ],
-          iconName: 'pencil',
           tone: 'teal',
         },
         {
@@ -285,7 +252,6 @@ export const rnContent: Record<Locale, RnContent> = {
             '대표: Fabric (React Native 신규 아키텍처)',
             '멀티 스레드/병렬 처리에 유리한 구조',
           ],
-          iconName: 'stack',
           tone: 'violet',
         },
       ],
@@ -311,21 +277,18 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'web',
           name: '웹 (React DOM)',
-          iconName: 'monitor',
           items: ['브라우저 DOM에 반영', '기존 웹 생태계와 통합', 'Mutation Mode 사용'],
           tone: 'sky',
         },
         {
           id: 'native',
           name: 'Native (React Native)',
-          iconName: 'smartphone',
           items: ['네이티브 뷰에 반영', '플랫폼 브리지 / Fabric', 'Persistence Mode 사용'],
           tone: 'violet',
         },
         {
           id: 'custom',
           name: 'Custom Renderer',
-          iconName: 'terminal',
           items: ['게임, 터미널, CLI, PDF 등', '도메인 특화 출력 대상', '나만의 Host Config 구현'],
           tone: 'emerald',
         },
@@ -374,7 +337,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'Element',
           subtitle: 'UI description',
           description: 'Immutable object tree describing components and UI state.',
-          iconName: 'code',
           tone: 'teal',
         },
         {
@@ -382,7 +344,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'Fiber',
           subtitle: 'Unit of work',
           description: 'Linked-list nodes that split and track render work.',
-          iconName: 'cube',
           tone: 'cyan',
         },
         {
@@ -390,7 +351,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'reconciler',
           subtitle: 'Diff computation',
           description: 'Compares current and next state to decide what must change.',
-          iconName: 'network',
           tone: 'indigo',
         },
         {
@@ -398,7 +358,6 @@ export const rnContent: Record<Locale, RnContent> = {
           title: 'scheduler concept',
           subtitle: 'Priority & timing',
           description: 'Decides when work runs by urgency.',
-          iconName: 'clock',
           tone: 'violet',
         },
       ],
@@ -412,7 +371,6 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'dom',
           name: 'React DOM',
-          iconName: 'monitor',
           items: [
             'Creates and updates DOM nodes',
             'Integrates with the browser event system',
@@ -425,7 +383,6 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'native',
           name: 'React Native',
-          iconName: 'smartphone',
           items: [
             'Creates and updates Native views',
             'Relies on Platform bridge / Fabric',
@@ -477,7 +434,6 @@ export const rnContent: Record<Locale, RnContent> = {
             'Used by: React DOM',
             'DOM ops have cost but feel familiar',
           ],
-          iconName: 'pencil',
           tone: 'teal',
         },
         {
@@ -489,7 +445,6 @@ export const rnContent: Record<Locale, RnContent> = {
             'Used by: Fabric (new React Native arch)',
             'Friendlier to multi-thread / parallel work',
           ],
-          iconName: 'stack',
           tone: 'violet',
         },
       ],
@@ -515,7 +470,6 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'web',
           name: 'Web (React DOM)',
-          iconName: 'monitor',
           items: [
             'Applies to browser DOM',
             'Integrates with the web ecosystem',
@@ -526,14 +480,12 @@ export const rnContent: Record<Locale, RnContent> = {
         {
           id: 'native',
           name: 'Native (React Native)',
-          iconName: 'smartphone',
           items: ['Applies to native views', 'Platform bridge / Fabric', 'Uses Persistence Mode'],
           tone: 'violet',
         },
         {
           id: 'custom',
           name: 'Custom Renderer',
-          iconName: 'terminal',
           items: [
             'Games, terminal, CLI, PDF…',
             'Domain-specific output',

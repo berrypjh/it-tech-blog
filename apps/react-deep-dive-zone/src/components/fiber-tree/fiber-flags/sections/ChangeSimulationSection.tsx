@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Sparkles } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { EffectBadge } from '../components/EffectBadge';
 import { effectText } from '../components/effectStyles';
 import type { EffectKind, FiberFlagsContent } from '../content';
-import { SparklesIcon } from '../icons';
 
 type Props = { content: FiberFlagsContent['simulation'] };
 
@@ -28,7 +29,7 @@ export const ChangeSimulationSection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

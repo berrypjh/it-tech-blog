@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Lightbulb } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent } from '../content';
-import { ArrowRightIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberStoredInformationContent['mapping'] };
 
@@ -18,7 +19,7 @@ export const ElementFiberMappingTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ArrowRightIcon className="h-5 w-5" />}
+      icon={<ArrowRight className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -34,7 +35,7 @@ export const ElementFiberMappingTable = ({ content }: Props) => (
         cells: [
           row.description,
           <span key="fiber" className="flex items-center gap-2">
-            <ArrowRightIcon
+            <ArrowRight
               className="h-3.5 w-3.5 shrink-0 text-[var(--term-muted)]"
               aria-hidden="true"
             />
@@ -46,6 +47,8 @@ export const ElementFiberMappingTable = ({ content }: Props) => (
       }))}
     />
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.note}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.note}
+    </SectionNote>
   </section>
 );

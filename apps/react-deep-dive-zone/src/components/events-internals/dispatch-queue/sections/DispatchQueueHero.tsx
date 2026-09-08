@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListOrdered } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +12,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { DispatchQueueHeroDiagram } from '../components/DispatchQueueHeroDiagram';
 import type { DispatchQueueOrderContent } from '../content';
-import { ListOrderedIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['hero'] };
 
@@ -64,7 +65,7 @@ export const DispatchQueueHero = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
           >
-            <ListOrderedIcon className="h-4 w-4" />
+            <ListOrdered className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
             {content.listenerTitle}

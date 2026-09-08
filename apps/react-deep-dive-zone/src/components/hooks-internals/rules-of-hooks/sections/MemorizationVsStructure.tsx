@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BrainCircuit, CheckCircle2, Network, Split, XCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { RulesOfHooksContent } from '../content';
-import { BrainCircuitIcon, CheckCircleIcon, NetworkIcon, SplitIcon, XCircleIcon } from '../icons';
 
 type Props = { content: RulesOfHooksContent['memorization'] };
 
@@ -39,9 +40,9 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
           )}
         >
           {isMisconception ? (
-            <XCircleIcon className="h-5 w-5" />
+            <XCircle className="h-5 w-5" aria-hidden="true" />
           ) : (
-            <CheckCircleIcon className="h-5 w-5" />
+            <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           )}
         </span>
         <p
@@ -67,9 +68,9 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
           )}
         >
           {isMisconception ? (
-            <BrainCircuitIcon className="h-4 w-4" />
+            <BrainCircuit className="h-4 w-4" aria-hidden="true" />
           ) : (
-            <NetworkIcon className="h-4 w-4" />
+            <Network className="h-4 w-4" aria-hidden="true" />
           )}
         </span>
         <h3
@@ -121,7 +122,7 @@ export const MemorizationVsStructure = ({ content }: Props) => (
       id="memorization"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md lg:gap-lg items-stretch">

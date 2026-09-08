@@ -1,9 +1,10 @@
+import { Sparkles, Table } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactElementObjectStructureContent } from '../content';
-import { SparklesIcon, TableIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['compare'] };
 
@@ -16,7 +17,7 @@ export const PlainObjectComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<TableIcon className="h-5 w-5" />}
+      icon={<Table className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -29,6 +30,8 @@ export const PlainObjectComparison = ({ content }: Props) => (
       }))}
     />
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );

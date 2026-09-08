@@ -1,8 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Cuboid, type LucideIcon, MonitorSmartphone, Package } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { PackageBranch, SharedContent } from '../content';
-import { iconByName, PackageIcon } from '../icons';
+
+const packageIcon: Record<'react' | 'react-dom' | 'react-reconciler', LucideIcon> = {
+  react: Atom,
+  'react-dom': MonitorSmartphone,
+  'react-reconciler': Cuboid,
+};
 
 type Props = { content: SharedContent['hero'] };
 
@@ -102,7 +109,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
-        <PackageIcon className="h-5 w-5" />
+        <Package className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="flex flex-col">
         <h3 className="text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
@@ -134,7 +141,7 @@ type BranchProps = { branch: PackageBranch };
 
 const BranchCard = ({ branch }: BranchProps) => {
   const accent = toneTokens[branch.tone].text;
-  const Icon = iconByName[branch.icon];
+  const Icon = packageIcon[branch.id];
 
   return (
     <article
@@ -152,7 +159,7 @@ const BranchCard = ({ branch }: BranchProps) => {
           accent,
         )}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <h4 className={cn('text-xsm font-bold font-mono tracking-tight min-w-0 break-words', accent)}>
         {branch.title}

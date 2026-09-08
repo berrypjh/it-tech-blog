@@ -1,7 +1,8 @@
+import { ListChecks } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { UpdateToRenderSummaryContent } from '../content';
-import { ListChecksIcon } from '../icons';
 
 type Props = { content: UpdateToRenderSummaryContent['roleTable'] };
 
@@ -11,7 +12,7 @@ export const StepRoleTableSection = ({ content }: Props) => (
       id="role-table"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileCode2, Sparkles, Wand2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { ArrowRightIcon, FileCodeIcon, SparkIcon, WandIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['converter'] };
 
@@ -23,7 +24,7 @@ export const QuestionConverterSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<WandIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -125,7 +126,7 @@ export const QuestionConverterSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <SparkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 {active.entry}
               </code>
             </div>
@@ -150,11 +151,11 @@ export const QuestionConverterSection = ({ content }: Props) => {
                         'font-mono text-[11px] text-[var(--term-fg)]',
                       )}
                     >
-                      <FileCodeIcon className={cn('h-3 w-3', t.text)} aria-hidden="true" />
+                      <FileCode2 className={cn('h-3 w-3', t.text)} aria-hidden="true" />
                       {step}
                     </code>
                     {i < active.path.length - 1 && (
-                      <ArrowRightIcon className={cn('h-3 w-3', t.text)} aria-hidden="true" />
+                      <ArrowRight className={cn('h-3 w-3', t.text)} aria-hidden="true" />
                     )}
                   </li>
                 ))}

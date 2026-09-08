@@ -4,16 +4,17 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { SimulatorStep, SuspenseFallbackRetryContent } from '../content';
 import {
-  AtomIcon,
-  CheckCircleIcon,
-  EyeIcon,
-  LoaderIcon,
-  PauseCircleIcon,
-  RefreshCcwIcon,
-  ShieldCheckIcon,
-} from '../icons';
+  Atom,
+  CheckCircle2,
+  Eye,
+  Loader,
+  PauseCircle,
+  RefreshCcw,
+  ShieldCheck,
+} from 'lucide-react';
+
+import type { SimulatorStep, SuspenseFallbackRetryContent } from '../content';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -26,7 +27,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
         className:
           'border-violet-200 bg-violet-50/70 dark:border-violet-800/60 dark:bg-violet-950/30',
         labelClass: 'text-violet-700 dark:text-violet-200',
-        icon: <LoaderIcon className="h-6 w-6 motion-safe:animate-spin" />,
+        icon: <Loader className="h-6 w-6 motion-safe:animate-spin" aria-hidden="true" />,
         title: '<Spinner />',
         body: 'Fallback tree 표시 중',
       };
@@ -35,7 +36,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
         className:
           'border-emerald-200 bg-emerald-50/70 dark:border-emerald-800/60 dark:bg-emerald-950/30',
         labelClass: 'text-emerald-700 dark:text-emerald-200',
-        icon: <AtomIcon className="h-6 w-6" />,
+        icon: <Atom className="h-6 w-6" aria-hidden="true" />,
         title: '<Profile />',
         body: 'Primary tree 정상 렌더',
       };
@@ -44,7 +45,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
         className:
           'border-violet-200 bg-violet-50/70 dark:border-violet-800/60 dark:bg-violet-950/30',
         labelClass: 'text-violet-700 dark:text-violet-200',
-        icon: <LoaderIcon className="h-6 w-6 motion-safe:animate-spin" />,
+        icon: <Loader className="h-6 w-6 motion-safe:animate-spin" aria-hidden="true" />,
         title: 'fallback 유지',
         body: 'retry 큐 동작 중',
       };
@@ -52,7 +53,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
       return {
         className: 'border-teal-200 bg-teal-50/70 dark:border-teal-800/60 dark:bg-teal-950/30',
         labelClass: 'text-teal-700 dark:text-teal-200',
-        icon: <ShieldCheckIcon className="h-6 w-6" />,
+        icon: <ShieldCheck className="h-6 w-6" aria-hidden="true" />,
         title: 'capture 표시됨',
         body: 'ShouldCapture: true',
       };
@@ -60,7 +61,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
       return {
         className: 'border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900/40',
         labelClass: 'text-slate-700 dark:text-slate-200',
-        icon: <PauseCircleIcon className="h-6 w-6" />,
+        icon: <PauseCircle className="h-6 w-6" aria-hidden="true" />,
         title: 'mid-render',
         body: 'use(Promise) throw',
       };
@@ -69,7 +70,7 @@ const previewByKind = (kind: SimulatorStep['uiPreview']) => {
         className:
           'border-emerald-200 bg-emerald-50/70 dark:border-emerald-800/60 dark:bg-emerald-950/30',
         labelClass: 'text-emerald-700 dark:text-emerald-200',
-        icon: <RefreshCcwIcon className="h-6 w-6" />,
+        icon: <RefreshCcw className="h-6 w-6" aria-hidden="true" />,
         title: 'retry 실행',
         body: 'render scheduled',
       };
@@ -103,7 +104,7 @@ export const RetrySimulator = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-2">
-            <AtomIcon aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+            <Atom aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
             <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.leftTitle}</h3>
           </header>
 
@@ -168,7 +169,7 @@ export const RetrySimulator = ({ content }: Props) => {
         <article className="flex flex-col gap-md">
           <header className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <EyeIcon aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+              <Eye aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
               <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.timelineTitle}</h3>
             </div>
             <span className="text-[11px] text-[var(--term-muted)] break-keep">
@@ -208,7 +209,7 @@ export const RetrySimulator = ({ content }: Props) => {
                         {step.number}
                       </span>
                       {isActive && (
-                        <CheckCircleIcon
+                        <CheckCircle2
                           aria-hidden="true"
                           className="h-3.5 w-3.5 text-blue-600 dark:text-blue-300"
                         />

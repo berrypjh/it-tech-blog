@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ClipboardCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StartWithQuestionContent } from '../content';
-import { ClipboardCheckIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['mission'] };
 
@@ -14,7 +15,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ClipboardCheckIcon className="h-5 w-5" />}
+        icon={<ClipboardCheck className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article

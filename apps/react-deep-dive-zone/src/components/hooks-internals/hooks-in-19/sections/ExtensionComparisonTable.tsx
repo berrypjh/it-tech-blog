@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Network } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { React19HooksContent, Tone } from '../content';
-import { NetworkIcon } from '../icons';
 
 type Props = { content: React19HooksContent['compareTable'] };
 
@@ -54,7 +55,7 @@ export const ExtensionComparisonTable = ({ content }: Props) => (
       id="compare"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}

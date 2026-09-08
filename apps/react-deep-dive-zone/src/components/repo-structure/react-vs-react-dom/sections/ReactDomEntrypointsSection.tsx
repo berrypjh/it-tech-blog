@@ -1,14 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AppWindow, type LucideIcon, Server, Split } from 'lucide-react';
+
 import { CompareBridge } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { EntrypointCard, ReactVsReactDomContent } from '../content';
-import { iconByName, SplitIcon } from '../icons';
 
 /** client=A(accent), server=B(sky). 카드 크롬은 중립, 텍스트만 색. */
 const sideText = (id: EntrypointCard['id']) =>
   id === 'client' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
+
+const cardIcon: Record<EntrypointCard['id'], LucideIcon> = {
+  client: AppWindow,
+  server: Server,
+};
 
 type Props = { content: ReactVsReactDomContent['entrypoints'] };
 
@@ -19,14 +25,14 @@ export const ReactDomEntrypointsSection = ({ content }: Props) => {
         id="entrypoints"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(200px,_0.7fr)_1fr] gap-md lg:gap-lg items-stretch">
         <EntrypointCardItem card={content.client} />
 
         <CompareBridge
-          icon={<SplitIcon className="h-5 w-5" />}
+          icon={<Split className="h-5 w-5" aria-hidden="true" />}
           headline={content.centerHeading}
           sub={content.centerCaption}
         />
@@ -40,7 +46,7 @@ export const ReactDomEntrypointsSection = ({ content }: Props) => {
 type ItemProps = { card: EntrypointCard };
 
 const EntrypointCardItem = ({ card }: ItemProps) => {
-  const Icon = iconByName[card.icon];
+  const Icon = cardIcon[card.id];
   const accent = sideText(card.id);
 
   return (
@@ -60,7 +66,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
             accent,
           )}
         >
-          <Icon className="h-[18px] w-[18px]" />
+          <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
           <h3

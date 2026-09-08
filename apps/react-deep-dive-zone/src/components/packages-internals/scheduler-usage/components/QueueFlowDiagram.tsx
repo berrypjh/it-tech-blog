@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
-import { schedulerIcon } from '../icons';
 
 type Props = { hero: SchedulerContent['hero']; className?: string };
 
@@ -121,7 +122,6 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
 };
 
 const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
-  const Icon = schedulerIcon.clock;
   return (
     <div
       className={cn(
@@ -131,7 +131,7 @@ const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
       )}
     >
       <ToneIconBox tone="violet" size="md">
-        <Icon className="h-5 w-5" aria-hidden="true" />
+        <Clock className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.violet.text)}>
         {hero.schedulerTitle}

@@ -1,18 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Database, Lightbulb, Plus, Zap } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent } from '../../lane-shape/content';
 import type { PendingLanesChangeCard, RootPendingWorkContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  DatabaseIcon,
-  LightbulbIcon,
-  PlusIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RootPendingWorkContent['pendingLanesChange'] };
 
@@ -24,10 +18,10 @@ const ACCENT_BY_STATE: Record<PendingLanesChangeCard['state'], 'blue' | 'teal' |
   'sync-transition': 'violet',
 };
 
-const SECTION_ICON: Record<PendingLanesChangeCard['state'], typeof DatabaseIcon> = {
-  before: DatabaseIcon,
-  transition: PlusIcon,
-  'sync-transition': ZapIcon,
+const SECTION_ICON: Record<PendingLanesChangeCard['state'], typeof Database> = {
+  before: Database,
+  transition: Plus,
+  'sync-transition': Zap,
 };
 
 // For multi-lane card, map active bit indexes to teal vs blue.
@@ -63,7 +57,7 @@ export const PendingLanesChange = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<DatabaseIcon className="h-5 w-5" />}
+      icon={<Database className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-3 sm:gap-4 relative">
@@ -144,13 +138,13 @@ export const PendingLanesChange = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden md:inline-flex absolute -right-3 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="md:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}
@@ -167,7 +161,7 @@ export const PendingLanesChange = ({ content }: Props) => (
         'dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-100',
       )}
     >
-      <LightbulbIcon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+      <Lightbulb aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
       <p className="text-[11px] sm:text-xsm leading-relaxed break-keep">{content.note}</p>
     </aside>
   </section>

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ElementVsFiberContent } from '../content';
-import { BoxesIcon, LayersIcon } from '../icons';
 
 type Props = { content: ElementVsFiberContent['hero']; className?: string };
 
@@ -36,7 +37,7 @@ export const ElementFiberHeroDiagram = ({ content, className }: Props) => {
             tone="sky"
             label={content.elementLabel}
             caption="simple"
-            icon={<BoxesIcon className="h-[18px] w-[18px]" />}
+            icon={<Boxes className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <CodePreviewPanel code={content.elementCode} showWindowDots={false} size="md" />
         </li>
@@ -48,7 +49,7 @@ export const ElementFiberHeroDiagram = ({ content, className }: Props) => {
             tone="teal"
             label={content.fiberLabel}
             caption="richer"
-            icon={<LayersIcon className="h-[18px] w-[18px]" />}
+            icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <CodePreviewPanel code={content.fiberCode} showWindowDots={false} size="md" />
         </li>

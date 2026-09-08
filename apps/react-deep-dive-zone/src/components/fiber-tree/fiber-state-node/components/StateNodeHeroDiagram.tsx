@@ -1,13 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Home, User } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent, TargetCard } from '../content';
-import { BoxesIcon, HomeIcon, UserIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['hero']; className?: string };
 
-const iconMap = { home: HomeIcon, cube: BoxesIcon, user: UserIcon } as const;
+const iconMap = { home: Home, cube: Boxes, user: User } as const;
 
 /**
  * Hero 핵심 비주얼.

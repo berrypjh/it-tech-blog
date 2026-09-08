@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Lightbulb, Link2, Zap } from 'lucide-react';
+
 import { axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import type { ContextAccent, RequestUpdateLaneContent } from '../content';
-import { HelpCircleIcon, LightbulbIcon, LinkIcon, ZapIcon } from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['question'] };
 
-const cardIcon: Record<ContextAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: LinkIcon,
-  violet: LightbulbIcon,
+const cardIcon: Record<ContextAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Link2,
+  violet: Lightbulb,
 };
 
 export const RequestUpdateLaneQuestionPanel = ({ content }: Props) => (
@@ -31,7 +32,7 @@ export const RequestUpdateLaneQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span className="inline-flex items-center rounded-full border border-blue-300/80 bg-white px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200">
           {content.eyebrow}

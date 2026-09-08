@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks, Square } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import { ListChecksIcon, SquareIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['mission'] };
 
@@ -19,7 +20,7 @@ export const FollowAlongMission = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -41,7 +42,10 @@ export const FollowAlongMission = ({ content }: Props) => (
                 'dark:bg-slate-950/40 dark:group-hover:bg-blue-950/40',
               )}
             >
-              <SquareIcon className="h-2 w-2 opacity-0 group-hover:opacity-60 text-blue-500" />
+              <Square
+                className="h-2 w-2 opacity-0 group-hover:opacity-60 text-blue-500"
+                aria-hidden="true"
+              />
             </span>
 
             <span

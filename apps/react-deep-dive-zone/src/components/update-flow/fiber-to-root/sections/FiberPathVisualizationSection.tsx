@@ -1,8 +1,16 @@
+import { Flag, Network, PanelsTopLeft, Pin, Workflow } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { FiberPathNode, FiberToRootContent } from '../content';
-import { fiberStackIconByName, NetworkIcon } from '../icons';
+
+const fiberStackIconByName = {
+  flag: Flag,
+  panels: PanelsTopLeft,
+  workflow: Workflow,
+  pin: Pin,
+} as const;
 
 type Props = { content: FiberToRootContent['fiberPath'] };
 
@@ -26,7 +34,7 @@ export const FiberPathVisualizationSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.nodes.map(toFlowStep)} columns={4} />

@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { LineChart, Search, ShieldCheck } from 'lucide-react';
+
 import type { React19ErrorReportingContent, WhyCard } from '../content';
-import { LineChartIcon, SearchIcon, ShieldCheckIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: React19ErrorReportingContent['why'] };
 
 const cardIcon: Record<WhyCard['icon'], React.ComponentType<{ className?: string }>> = {
-  shield: ShieldCheckIcon,
-  search: SearchIcon,
-  chart: LineChartIcon,
+  shield: ShieldCheck,
+  search: Search,
+  chart: LineChart,
 };
 
 const cardTone: Record<WhyCard['tone'], { border: string; iconChip: string; arrow: string }> = {

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight, Braces, Code2, Sparkles } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent } from '../content';
-import { ArrowLeftRightIcon, BracesIcon, CodeIcon, SparklesIcon } from '../icons';
 
 type Props = { content: DispatchSetStateContent['compare'] };
 
@@ -15,7 +16,7 @@ export const PublicApiInternalCompare = ({ content }: Props) => (
       id="compare"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ArrowLeftRightIcon className="h-5 w-5" />}
+      icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
@@ -24,7 +25,7 @@ export const PublicApiInternalCompare = ({ content }: Props) => (
         title={content.left.title}
         code={content.left.code}
         description={content.left.description}
-        icon={<CodeIcon className="h-3.5 w-3.5" />}
+        icon={<Code2 className="h-3.5 w-3.5" aria-hidden="true" />}
       />
 
       <CompareVs />
@@ -34,15 +35,12 @@ export const PublicApiInternalCompare = ({ content }: Props) => (
         title={content.right.title}
         code={content.right.code}
         description={content.right.description}
-        icon={<BracesIcon className="h-3.5 w-3.5" />}
+        icon={<Braces className="h-3.5 w-3.5" aria-hidden="true" />}
       />
     </div>
 
     <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-      <SparklesIcon
-        aria-hidden="true"
-        className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
-      />
+      <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
       <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
         {content.note}
       </p>

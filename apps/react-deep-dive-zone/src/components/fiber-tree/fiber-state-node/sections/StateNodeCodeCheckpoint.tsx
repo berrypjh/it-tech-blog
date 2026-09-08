@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Eye, FileCode, Lightbulb } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent } from '../content';
-import { EyeIcon, FileCodeIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['checkpoint'] };
 
@@ -23,7 +24,7 @@ export const StateNodeCodeCheckpoint = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -32,7 +33,7 @@ export const StateNodeCodeCheckpoint = ({ content }: Props) => {
             {
               label: info.filesLabel,
               value: <code className="font-mono break-all">{info.file}</code>,
-              icon: FileCodeIcon,
+              icon: FileCode,
             },
             {
               label: info.lookForLabel,
@@ -47,7 +48,7 @@ export const StateNodeCodeCheckpoint = ({ content }: Props) => {
                   ))}
                 </ul>
               ),
-              icon: EyeIcon,
+              icon: Eye,
             },
           ]}
           question={info.question}
@@ -87,7 +88,9 @@ export const StateNodeCodeCheckpoint = ({ content }: Props) => {
         </div>
       </div>
 
-      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

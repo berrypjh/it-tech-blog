@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, GitBranch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent, ReturnDirectionCard } from '../content';
-import { ArrowDownIcon, ArrowUpIcon, GitBranchIcon } from '../icons';
 
 type Props = { content: PerformUnitContent['returnDirection'] };
 
@@ -14,7 +15,7 @@ export const BeginWorkReturnDecision = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
@@ -28,7 +29,7 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
   const isDown = card.direction === 'down';
   const tone: ToneKey = isDown ? 'teal' : 'violet';
   const t = toneTokens[tone];
-  const Icon = isDown ? ArrowDownIcon : ArrowUpIcon;
+  const Icon = isDown ? ArrowDown : ArrowUp;
   return (
     <article
       className={cn(

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Key } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
-import { KeyIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['keyField'] };
 
@@ -16,7 +17,7 @@ export const KeyIdentitySection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<KeyIcon className="h-5 w-5" />}
+      icon={<Key className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.95fr)_minmax(0,_1.05fr)] gap-md lg:gap-lg items-start">
@@ -40,7 +41,7 @@ export const KeyIdentitySection = ({ content }: Props) => (
       >
         <header className="flex items-center gap-sm mb-sm">
           <ToneIconBox tone="emerald">
-            <KeyIcon className="h-5 w-5" />
+            <Key className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <h3
             className={cn(

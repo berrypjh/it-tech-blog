@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileText } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ListenerCollectionContent } from '../content';
-import { CodeIcon, FileTextIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['nested'] };
 
@@ -56,7 +57,7 @@ export const NestedJsxExample = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -70,7 +71,7 @@ export const NestedJsxExample = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-blue-200/80 bg-white text-blue-700 dark:border-blue-800/60 dark:bg-slate-950/40 dark:text-blue-200"
           >
-            <FileTextIcon className="h-3.5 w-3.5" />
+            <FileText className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <code className="font-mono text-[11px] sm:text-xsm font-bold text-[var(--term-fg)]">
             {content.fileLabel}

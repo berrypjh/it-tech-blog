@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Braces, CheckCircle2, Code2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
-import { ArrowRightIcon, BracesIcon, CheckCircleIcon, CodeIcon } from '../icons';
 
 type Props = { content: FunctionComponentContent['nextChildren'] };
 
@@ -17,7 +18,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
         id="next-children"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<BracesIcon className="h-5 w-5" />}
+        icon={<Braces className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] items-stretch gap-md lg:gap-3">
@@ -38,7 +39,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]"
           >
-            <ArrowRightIcon className="h-5 w-5" />
+            <ArrowRight className="h-5 w-5" aria-hidden="true" />
           </span>
         </div>
 
@@ -52,7 +53,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
         >
           <header className="flex items-center gap-2">
             <ToneIconBox tone="violet" size="sm">
-              <CodeIcon className="h-4 w-4" />
+              <Code2 className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
             <code className={cn('font-mono text-sm sm:text-md font-bold leading-tight', t.text)}>
               {content.rightTitle}
@@ -67,7 +68,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
                 key={item}
                 className="flex items-start gap-2 text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep"
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   aria-hidden="true"
                   className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
                 />

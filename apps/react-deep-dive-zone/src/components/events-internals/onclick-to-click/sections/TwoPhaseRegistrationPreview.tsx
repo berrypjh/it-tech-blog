@@ -2,16 +2,17 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ChevronRight,
+  CornerDownRight,
+  GitBranch,
+  Layers,
+  Sparkles,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { OnClickClickContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  ChevronRightIcon,
-  CornerDownRightIcon,
-  GitBranchIcon,
-  LayersIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = { content: OnClickClickContent['twoPhase'] };
 
@@ -36,7 +37,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -53,7 +54,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-teal-200 bg-white text-teal-700 dark:border-teal-800/60 dark:bg-slate-950/40 dark:text-teal-200"
           >
-            <LayersIcon className="h-4 w-4" />
+            <Layers className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
             bubble
@@ -92,9 +93,9 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
           aria-hidden="true"
           className="flex flex-col items-center text-violet-500 dark:text-violet-300"
         >
-          <ArrowDownIcon className="h-4 w-4" />
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
           <span className="block h-3 w-px bg-violet-300/70 dark:bg-violet-700/60" />
-          <CornerDownRightIcon className="h-4 w-4 -rotate-12" />
+          <CornerDownRight className="h-4 w-4 -rotate-12" aria-hidden="true" />
         </div>
 
         {/* Two branches */}
@@ -134,7 +135,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-white text-blue-700 dark:border-blue-800/60 dark:bg-slate-950/40 dark:text-blue-200"
           >
-            <SparklesIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
             {content.nextPreview.label}
@@ -161,7 +162,10 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15"
           >
-            <ChevronRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none" />
+            <ChevronRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
+              aria-hidden="true"
+            />
           </span>
         </Link>
       </article>

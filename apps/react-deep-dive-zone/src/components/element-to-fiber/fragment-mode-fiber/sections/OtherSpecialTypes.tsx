@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, CircleDashed, Eye, Info, List, ScanLine, Zap } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FragmentModeFiberContent } from '../content';
-import {
-  AtomIcon,
-  CircleDashedIcon,
-  EyeIcon,
-  InfoIcon,
-  ListIcon,
-  ScanLineIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FragmentModeFiberContent['others'] };
 
 const iconMap = {
-  loader: CircleDashedIcon,
-  list: ListIcon,
-  eye: EyeIcon,
-  zap: ZapIcon,
-  scan: ScanLineIcon,
+  loader: CircleDashed,
+  list: List,
+  eye: Eye,
+  zap: Zap,
+  scan: ScanLine,
 } as const;
 
 export const OtherSpecialTypes = ({ content }: Props) => (
@@ -34,7 +27,7 @@ export const OtherSpecialTypes = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<AtomIcon className="h-5 w-5" />}
+      icon={<Atom className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-md">
@@ -62,6 +55,8 @@ export const OtherSpecialTypes = ({ content }: Props) => (
       })}
     </ul>
 
-    <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.footnote}</SectionNote>
+    <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+      {content.footnote}
+    </SectionNote>
   </section>
 );

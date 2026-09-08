@@ -1,12 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CheckCircle2,
+  type LucideIcon,
+  Monitor,
+  Package,
+  Smartphone,
+  Star,
+  Terminal,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BenefitCard, RnContent } from '../content';
-import { CheckCircleIcon, rnIcon, StarIcon } from '../icons';
 
 type Props = { content: RnContent['benefit'] };
+
+const benefitIcon: Record<BenefitCard['id'], LucideIcon> = {
+  web: Monitor,
+  native: Smartphone,
+  custom: Terminal,
+};
 
 export const BenefitSection = ({ content }: Props) => {
   return (
@@ -15,7 +30,7 @@ export const BenefitSection = ({ content }: Props) => {
         id="benefit"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<StarIcon className="h-5 w-5" />}
+        icon={<Star className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.4fr)] gap-md items-stretch">
@@ -33,7 +48,7 @@ export const BenefitSection = ({ content }: Props) => {
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
             )}
           >
-            <StarIcon className="h-5 w-5" />
+            <Star className="h-5 w-5" aria-hidden="true" />
           </span>
           <p className="text-md sm:text-lg font-bold leading-snug break-keep text-[var(--term-fg)]">
             {content.quote}
@@ -62,7 +77,11 @@ export const BenefitSection = ({ content }: Props) => {
                 'shadow-[0_3px_0_var(--term-border)]',
               )}
             >
-              <CubeIcon className="h-6 w-6 text-[var(--term-accent)]" />
+              <Package
+                strokeWidth={1.6}
+                aria-hidden="true"
+                className="h-6 w-6 text-[var(--term-accent)]"
+              />
               <span className="text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
                 {content.centerLabel}
               </span>
@@ -90,7 +109,7 @@ export const BenefitSection = ({ content }: Props) => {
 };
 
 const BenefitCardView = ({ card }: { card: BenefitCard }) => {
-  const Icon = rnIcon[card.iconName];
+  const Icon = benefitIcon[card.id];
   return (
     <article
       className={cn(
@@ -120,7 +139,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
             <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens[card.tone].text)}>
-              <CheckCircleIcon className="h-3.5 w-3.5" />
+              <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span>{item}</span>
           </li>
@@ -158,22 +177,5 @@ const BranchSvg = () => (
       strokeDasharray="3 3"
       fill="none"
     />
-  </svg>
-);
-
-const CubeIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-    <line x1="12" y1="22.08" x2="12" y2="12" />
   </svg>
 );

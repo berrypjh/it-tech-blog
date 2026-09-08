@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Code2, PlayCircle } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { WhyEventSystemContent } from '../content';
-import { AtomIcon, CodeIcon, PlayCircleIcon } from '../icons';
 
 type DiagramColumn = WhyEventSystemContent['hero']['diagram']['columns'][number];
 
 type Props = { content: WhyEventSystemContent['hero']; className?: string };
 
-const columnIcon = [CodeIcon, AtomIcon, PlayCircleIcon] as const;
+const columnIcon = [Code2, Atom, PlayCircle] as const;
 
 /**
  * Hero 핵심 비주얼.
@@ -37,7 +38,7 @@ export const EventSystemHeroDiagram = ({ content, className }: Props) => {
 
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         {diagram.columns.map((col, i) => {
-          const Icon = columnIcon[i] ?? CodeIcon;
+          const Icon = columnIcon[i] ?? Code2;
           return (
             <li key={col.title} className="flex flex-col gap-sm">
               <StepCard col={col} icon={<Icon className="h-[18px] w-[18px]" />} step={i + 1} />

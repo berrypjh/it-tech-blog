@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, ListTree } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ValueClassificationContent } from '../content';
-import { BoxesIcon, ListTreeIcon } from '../icons';
 import { ValueBadge } from '../ValueBadge';
 
 type Props = { content: ValueClassificationContent['hero']; className?: string };
@@ -35,7 +36,7 @@ export const ClassifyValuesHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="amber"
             label={content.leftPanelTitle}
-            icon={<ListTreeIcon className="h-[18px] w-[18px]" />}
+            icon={<ListTree className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <ul className="flex flex-col gap-1.5">
             {content.leftFields.map((field, i) => (
@@ -66,7 +67,7 @@ export const ClassifyValuesHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="blue"
             label={content.rightPanelTitle}
-            icon={<BoxesIcon className="h-[18px] w-[18px]" />}
+            icon={<Boxes className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <ul className="flex flex-col gap-1.5">
             {content.rightMap.map((row) => (

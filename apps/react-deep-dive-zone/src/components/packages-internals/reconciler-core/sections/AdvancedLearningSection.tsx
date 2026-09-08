@@ -2,13 +2,29 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Atom,
+  BookOpen,
+  Clock,
+  GitBranch,
+  type LucideIcon,
+  SlidersHorizontal,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { AdvancedLink, ReconcilerContent } from '../content';
-import { ArrowRightIcon, BookOpenIcon, reconcilerIcon } from '../icons';
 
 type Props = { content: ReconcilerContent['advanced'] };
+
+const linkIcon: Record<AdvancedLink['id'], LucideIcon> = {
+  'component-fiber': Atom,
+  'fiber-tree': GitBranch,
+  'render-phase': SlidersHorizontal,
+  'commit-phase': Clock,
+};
 
 export const AdvancedLearningSection = ({ content }: Props) => {
   return (
@@ -18,7 +34,7 @@ export const AdvancedLearningSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<BookOpenIcon className="h-5 w-5" />}
+        icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
@@ -33,7 +49,7 @@ export const AdvancedLearningSection = ({ content }: Props) => {
 };
 
 const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: string }) => {
-  const Icon = reconcilerIcon[card.iconName];
+  const Icon = linkIcon[card.id];
 
   return (
     <Link
@@ -68,7 +84,7 @@ const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: 
           )}
         >
           {moreLabel}
-          <ArrowRightIcon
+          <ArrowRight
             className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5"
             aria-hidden="true"
           />

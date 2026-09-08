@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle } from 'lucide-react';
+
 import type { SetStateFlowContent } from '../content';
-import { HelpCircleIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['question'] };
 
@@ -24,7 +25,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
           'dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.5} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.5} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">

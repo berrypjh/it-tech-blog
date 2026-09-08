@@ -3,8 +3,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { FinalLaunchBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { BridgeSection } from './sections/BridgeSection';
-import { FinalDiagramSection } from './sections/FinalDiagramSection';
 import { PdHero } from './sections/PdHero';
 import { RecapSection } from './sections/RecapSection';
 import { UserFlowSection } from './sections/UserFlowSection';
@@ -21,9 +19,7 @@ export const PackageDesignPage = ({ locale }: Props) => {
       <PdHero content={c.hero} />
       <RecapSection content={c.recap} />
       <ValuesSection content={c.values} />
-      <FinalDiagramSection content={c.finalDiagram} />
       <UserFlowSection content={c.userFlow} />
-      <BridgeSection content={c.bridge} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

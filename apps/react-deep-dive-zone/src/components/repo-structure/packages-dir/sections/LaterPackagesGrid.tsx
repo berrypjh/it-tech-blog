@@ -1,11 +1,29 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  FlaskConical,
+  Info,
+  type LucideIcon,
+  MonitorSmartphone,
+  Network,
+  Palette,
+  Sparkles,
+  Wrench,
+} from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { PackagesDirectoryContent } from '../content';
-import { InfoIcon, packageIconByName, SparklesIcon } from '../icons';
+import type { LaterPackage, PackagesDirectoryContent } from '../content';
+
+const cardIcon: Record<LaterPackage['id'], LucideIcon> = {
+  devtools: Wrench,
+  native: MonitorSmartphone,
+  rsc: Network,
+  test: FlaskConical,
+  art: Palette,
+};
 
 type Props = { content: PackagesDirectoryContent['later'] };
 
@@ -16,15 +34,19 @@ export const LaterPackagesGrid = ({ content }: Props) => {
         id="later"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
-          const Icon = packageIconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
-            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+            >
               <h3 className="text-md sm:text-lg font-bold font-mono tracking-tight text-[var(--term-fg)] break-keep leading-snug">
                 {card.name}
               </h3>
@@ -41,7 +63,9 @@ export const LaterPackagesGrid = ({ content }: Props) => {
         })}
       </ul>
 
-      <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

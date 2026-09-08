@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Sparkles } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, SparklesIcon } from '../icons';
 import { domainAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -67,7 +68,7 @@ export const RejectedScenarioSection = ({ content }: Props) => (
                     {step.label}
                   </span>
                   {i < content.flow.length - 1 && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="h-3 w-3 shrink-0 text-slate-400 dark:text-slate-500"
                     />
@@ -84,7 +85,7 @@ export const RejectedScenarioSection = ({ content }: Props) => (
             'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
           )}
         >
-          <SparklesIcon
+          <Sparkles
             aria-hidden="true"
             className="mt-0.5 h-4 w-4 shrink-0 text-teal-600 dark:text-teal-300"
           />

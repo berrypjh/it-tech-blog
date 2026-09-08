@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Code2, Lightbulb, Tag, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../../shared/section';
 import type { ApiDetail, React19HooksContent, Tone } from '../../content';
-import { ArrowRightIcon, CodeIcon, LightbulbIcon, TagIcon, WorkflowIcon } from '../../icons';
 
 const KEYWORDS = new Set(['import', 'from', 'function', 'const', 'return']);
 const HOOK_NAMES = new Set([
@@ -231,7 +232,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                 toneText[detail.tone],
               )}
             >
-              <LightbulbIcon className="h-4 w-4" />
+              <Lightbulb className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
               {labels.whatItDoes}
@@ -254,7 +255,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                       toneChip[detail.tone],
                     )}
                   >
-                    <TagIcon aria-hidden="true" className="h-3 w-3" />
+                    <Tag aria-hidden="true" className="h-3 w-3" />
                     {concept}
                   </span>
                 </li>
@@ -266,7 +267,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
         {/* Center: Code panel */}
         <div className="flex flex-col gap-2">
           <p className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
-            <CodeIcon aria-hidden="true" className="h-3 w-3" />
+            <Code2 aria-hidden="true" className="h-3 w-3" />
             {labels.code}
           </p>
           <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)] flex-1">
@@ -310,7 +311,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                 toneText[detail.tone],
               )}
             >
-              <WorkflowIcon className="h-4 w-4" />
+              <Workflow className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
               {detail.flowTitle}
@@ -348,7 +349,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                       aria-hidden="true"
                       className={cn('mt-0.5 flex justify-center', toneText[detail.tone])}
                     >
-                      <ArrowRightIcon className="h-3 w-3 rotate-90" />
+                      <ArrowRight className="h-3 w-3 rotate-90" aria-hidden="true" />
                     </span>
                   )}
                 </li>

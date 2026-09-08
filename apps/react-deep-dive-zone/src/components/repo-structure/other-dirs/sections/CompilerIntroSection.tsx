@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Folder, Info } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import type { SurroundingContent } from '../content';
-import { FolderIcon, InfoIcon } from '../icons';
 
 type Props = { content: SurroundingContent['compiler'] };
 
@@ -14,7 +15,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
         id="compiler"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FolderIcon className="h-5 w-5" />}
+        icon={<Folder className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.36fr)_minmax(0,_0.64fr)] gap-md items-stretch">
@@ -29,7 +30,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
             >
-              <FolderIcon className="h-5 w-5" />
+              <Folder className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="flex flex-col min-w-0">
               <h3 className="text-md sm:text-lg font-bold font-mono tracking-tight text-[var(--term-fg)]">
@@ -76,7 +77,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
             ))}
           </ul>
 
-          <SectionNote className="mt-auto" icon={<InfoIcon className="h-4 w-4" />}>
+          <SectionNote className="mt-auto" icon={<Info className="h-4 w-4" aria-hidden="true" />}>
             {content.callout}
           </SectionNote>
         </article>

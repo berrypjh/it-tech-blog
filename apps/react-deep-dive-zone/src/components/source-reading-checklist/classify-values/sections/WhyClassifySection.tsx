@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, ScanSearch, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ValueClassificationContent } from '../content';
-import { AlertTriangleIcon, ScanSearchIcon, TargetIcon } from '../icons';
 
 type Props = { content: ValueClassificationContent['whyClassify'] };
 
@@ -18,7 +19,7 @@ export const WhyClassifySection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ScanSearchIcon className="h-5 w-5" />}
+        icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
@@ -55,7 +56,7 @@ export const WhyClassifySection = ({ content }: Props) => {
                     'dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200',
                   )}
                 >
-                  <AlertTriangleIcon className="h-3.5 w-3.5" />
+                  <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
 
@@ -106,7 +107,7 @@ export const WhyClassifySection = ({ content }: Props) => {
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}
         >
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
           <span className="block text-slate-300">{content.bannerLines[0]}</span>

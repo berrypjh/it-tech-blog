@@ -1,25 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Clock, Link, ListChecks, Sparkles, Star } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent, SummaryItem, TimelineStep } from '../content';
-import {
-  CheckCircleIcon,
-  ClockIcon,
-  LinkIcon,
-  ListChecksIcon,
-  SparklesIcon,
-  StarIcon,
-} from '../icons';
 
 type Props = { content: PassiveEffectsContent['fullTimeline'] };
 
-const summaryIconMap: Record<SummaryItem['iconName'], typeof CheckCircleIcon> = {
-  check: CheckCircleIcon,
-  clock: ClockIcon,
-  link: LinkIcon,
-  star: StarIcon,
+const summaryIconMap: Record<SummaryItem['iconName'], typeof CheckCircle2> = {
+  check: CheckCircle2,
+  clock: Clock,
+  link: Link,
+  star: Star,
 };
 
 export const CommitPhaseFullTimelineSection = ({ content }: Props) => (
@@ -33,7 +27,7 @@ export const CommitPhaseFullTimelineSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.45fr)_minmax(0,_0.55fr)] gap-3 items-start">
@@ -128,7 +122,7 @@ const SummaryCard = ({ title, items }: { title: string; items: SummaryItem[] }) 
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="teal">
-          <SparklesIcon className="h-5 w-5" />
+          <Sparkles className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
       </header>

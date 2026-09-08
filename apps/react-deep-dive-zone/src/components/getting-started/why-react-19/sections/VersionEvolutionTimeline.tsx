@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { MoveRight } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { Timeline } from '../../../shared/timeline';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { WhyReact19Content } from '../content';
-import { ArrowLongRightIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['timeline'] };
 
@@ -18,7 +19,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
         id="timeline"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ArrowLongRightIcon className="h-5 w-5" />}
+        icon={<MoveRight className="h-5 w-5" aria-hidden="true" />}
       />
 
       <Timeline

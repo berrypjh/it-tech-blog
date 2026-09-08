@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Lightbulb,
+  PauseCircle,
+  PlayCircle,
+  RefreshCw,
+  RotateCcw,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootPendingWorkContent } from '../content';
-import {
-  ArrowRightIcon,
-  LightbulbIcon,
-  PauseCircleIcon,
-  PlayCircleIcon,
-  RefreshIcon,
-  RotateCcwIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RootPendingWorkContent['suspended'] };
 
@@ -21,7 +22,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<RefreshIcon className="h-5 w-5" />}
+      icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] gap-md items-stretch">
@@ -39,7 +40,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
           >
-            <PauseCircleIcon className="h-5 w-5" />
+            <PauseCircle className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-teal-700 dark:text-teal-300 break-keep">
             Suspended → Fresh start
@@ -87,7 +88,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60"
               >
-                <PauseCircleIcon className="h-4 w-4" />
+                <PauseCircle className="h-4 w-4" aria-hidden="true" />
               </span>
               <h4 className="text-xsm font-bold text-rose-700 dark:text-rose-300 break-keep">
                 {content.leftTitle}
@@ -104,7 +105,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
               aria-hidden="true"
               className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-blue-300 bg-white text-blue-700 shadow-[0_2px_0_var(--term-border)] dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200"
             >
-              <ZapIcon className="h-4 w-4" />
+              <Zap className="h-4 w-4" aria-hidden="true" />
             </span>
             <p className="text-center font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 break-keep">
               {content.middleTitle}
@@ -113,7 +114,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
               aria-hidden="true"
               className="hidden md:inline-flex text-blue-500 dark:text-blue-400"
             >
-              <ArrowRightIcon className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </div>
 
@@ -130,7 +131,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60"
               >
-                <PlayCircleIcon className="h-4 w-4" />
+                <PlayCircle className="h-4 w-4" aria-hidden="true" />
               </span>
               <h4 className="text-xsm font-bold text-teal-700 dark:text-teal-300 break-keep">
                 {content.rightTitle}
@@ -150,7 +151,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
             'dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-100',
           )}
         >
-          <LightbulbIcon
+          <Lightbulb
             aria-hidden="true"
             className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-300"
           />
@@ -160,7 +161,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
             </p>
             <p className="text-xsm leading-relaxed break-keep">{content.corePointBody}</p>
           </div>
-          <RotateCcwIcon
+          <RotateCcw
             aria-hidden="true"
             className="hidden sm:block ml-auto h-5 w-5 text-amber-500 dark:text-amber-300"
           />

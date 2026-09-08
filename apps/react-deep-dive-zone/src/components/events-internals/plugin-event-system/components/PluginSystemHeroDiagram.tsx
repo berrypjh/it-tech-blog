@@ -1,13 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Layers, MousePointerClick, Puzzle } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, PluginEventSystemContent, Tone } from '../content';
-import { BoxesIcon, LayersIcon, MousePointerClickIcon, PuzzleIcon } from '../icons';
 
 type Props = { content: PluginEventSystemContent['hero']; className?: string };
 
-const stepIcons = [MousePointerClickIcon, PuzzleIcon, LayersIcon, BoxesIcon];
+const stepIcons = [MousePointerClick, Puzzle, Layers, Boxes];
 
 /** content.ts의 Tone 중 공유 ToneKey에 없는 값을 가장 가까운 톤으로 매핑한다. */
 const toneKeyMap: Record<Tone, ToneKey> = {
@@ -59,7 +60,7 @@ export const PluginSystemHeroDiagram = ({ content, className }: Props) => {
 const StepCard = ({ step, index }: { step: FlowStep; index: number }) => {
   const tone = toneKeyMap[step.tone];
   const t = toneTokens[tone];
-  const Icon = stepIcons[index] ?? MousePointerClickIcon;
+  const Icon = stepIcons[index] ?? MousePointerClick;
 
   return (
     <article

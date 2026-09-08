@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckSquare, Trophy } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
-import { CheckSquareIcon, TrophyIcon } from '../icons';
 
 type Props = { content: CompleteWorkContent['checklist'] };
 
@@ -15,7 +16,7 @@ export const FinalChecklist = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
-      icon={<CheckSquareIcon className="h-5 w-5" />}
+      icon={<CheckSquare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -42,7 +43,7 @@ export const FinalChecklist = ({ content }: Props) => (
                 toneTokens.sky.chip,
               )}
             >
-              <CheckSquareIcon className="h-4 w-4" />
+              <CheckSquare className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="flex flex-col gap-0 min-w-0">
               <span
@@ -58,7 +59,7 @@ export const FinalChecklist = ({ content }: Props) => (
         ))}
       </ul>
 
-      <SectionNote icon={<TrophyIcon className="h-4 w-4" />} className="mt-auto">
+      <SectionNote icon={<Trophy className="h-4 w-4" aria-hidden="true" />} className="mt-auto">
         {content.completionNote}
       </SectionNote>
     </article>

@@ -1,7 +1,8 @@
+import { Lightbulb } from 'lucide-react';
+
 import { TakeawayBanner } from '../../../shared/banner';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { JsxRuntimeFunctionsContent } from '../content';
-import { LightbulbIcon } from '../icons';
 
 type Props = { content: JsxRuntimeFunctionsContent['question'] };
 
@@ -12,7 +13,7 @@ export const RuntimeLearningQuestion = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LightbulbIcon className="h-5 w-5" />}
+      icon={<Lightbulb className="h-5 w-5" aria-hidden="true" />}
     />
 
     <TakeawayBanner lines={content.lines} />

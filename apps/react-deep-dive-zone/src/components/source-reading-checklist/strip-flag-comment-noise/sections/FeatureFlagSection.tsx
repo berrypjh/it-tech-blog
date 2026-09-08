@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, HelpCircle, Sparkles, ToggleLeft } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlagCard, StripFlagCommentNoiseContent } from '../content';
-import { FlagIcon, HelpCircleIcon, SparkIcon, ToggleLeftIcon } from '../icons';
 import { LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['featureFlag'] };
@@ -26,7 +27,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<FlagIcon className="h-5 w-5" />}
+        icon={<Flag className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Main point */}
@@ -48,7 +49,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
               'shadow-[0_2px_0_var(--term-border)]',
             )}
           >
-            <SparkIcon className="h-5 w-5" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold leading-snug text-violet-900 dark:text-violet-100 break-keep">
             {content.mainPoint}
@@ -95,7 +96,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
                         t.chip,
                       )}
                     >
-                      <ToggleLeftIcon className="h-3.5 w-3.5" />
+                      <ToggleLeft className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                   </header>
 
@@ -110,7 +111,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
                   </code>
 
                   <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
-                    <HelpCircleIcon
+                    <HelpCircle
                       className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
                       aria-hidden="true"
                     />

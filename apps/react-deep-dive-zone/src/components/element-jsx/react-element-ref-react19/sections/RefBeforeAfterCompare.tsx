@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, GitCompare } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactElementRefReact19Content } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, GitCompareIcon } from '../icons';
 
 type Props = { content: ReactElementRefReact19Content['compare'] };
 
@@ -16,7 +17,7 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -40,14 +41,14 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
         aria-hidden="true"
         className="hidden lg:inline-flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]"
       >
-        <ArrowRightIcon className="h-5 w-5" />
+        <ArrowRight className="h-5 w-5" aria-hidden="true" />
       </span>
     </div>
 
     {/* mobile/tablet center arrow */}
     <div className="flex justify-center lg:hidden -my-2" aria-hidden="true">
       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-        <ArrowDownIcon className="h-4 w-4" />
+        <ArrowDown className="h-4 w-4" aria-hidden="true" />
       </span>
     </div>
   </section>

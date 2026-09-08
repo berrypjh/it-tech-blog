@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Globe, Link2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HydrationStartContent } from '../content';
-import { AtomIcon, GlobeIcon, LinkIcon } from '../icons';
 
 type Props = { content: HydrationStartContent['hero']; className?: string };
 
@@ -34,7 +35,7 @@ export const HydrationStartHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="blue"
           label={content.serverHtml.title}
-          icon={<GlobeIcon className="h-[18px] w-[18px]" />}
+          icon={<Globe className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel
           code={content.serverHtml.content}
@@ -48,7 +49,7 @@ export const HydrationStartHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="sky"
           label={content.matchLabel}
-          icon={<LinkIcon className="h-[18px] w-[18px]" />}
+          icon={<Link2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
 
         <DownArrow />
@@ -56,7 +57,7 @@ export const HydrationStartHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="teal"
           label={content.fiberTree.title}
-          icon={<AtomIcon className="h-[18px] w-[18px]" />}
+          icon={<Atom className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <ol className="flex flex-col gap-1.5">
           {content.fiberTree.lines.map((line, i) => (

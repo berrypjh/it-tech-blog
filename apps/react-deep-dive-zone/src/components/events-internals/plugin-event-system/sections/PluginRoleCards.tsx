@@ -1,35 +1,36 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { PluginEventSystemContent } from '../content';
 import {
-  FormInputIcon,
-  LayoutGridIcon,
-  MousePointerIcon,
-  RocketIcon,
-  ScrollIcon,
-  SparklesIcon,
-  TargetIcon,
-  TypeIcon,
-} from '../icons';
+  FormInput,
+  LayoutGrid,
+  MousePointer,
+  Rocket,
+  Scroll,
+  Sparkles,
+  Target,
+  Type,
+} from 'lucide-react';
+
+import type { PluginEventSystemContent } from '../content';
 import { SectionFrame } from '../SectionFrame';
 import { toneAccent, toneCard, toneIconBox } from '../styles';
 
 type Props = { content: PluginEventSystemContent['pluginRoles'] };
 
-const largeIcons = [MousePointerIcon, FormInputIcon, RocketIcon];
-const smallIcons = [TypeIcon, TargetIcon, ScrollIcon];
+const largeIcons = [MousePointer, FormInput, Rocket];
+const smallIcons = [Type, Target, Scroll];
 
 export const PluginRoleCards = ({ content }: Props) => (
   <SectionFrame
     id="plugin-roles"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<LayoutGridIcon className="h-5 w-5" />}
+    icon={<LayoutGrid className="h-5 w-5" aria-hidden="true" />}
   >
     {/* Large cards */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.large.map((card, i) => {
-        const Icon = largeIcons[i] ?? MousePointerIcon;
+        const Icon = largeIcons[i] ?? MousePointer;
         return (
           <article
             key={card.name}
@@ -102,7 +103,7 @@ export const PluginRoleCards = ({ content }: Props) => (
     {/* Small cards */}
     <div className="mt-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-md">
       {content.small.map((card, i) => {
-        const Icon = smallIcons[i] ?? SparklesIcon;
+        const Icon = smallIcons[i] ?? Sparkles;
         return (
           <article
             key={card.name}
@@ -154,7 +155,7 @@ export const PluginRoleCards = ({ content }: Props) => (
           toneIconBox[content.more.tone],
         )}
       >
-        <SparklesIcon className="h-4 w-4" />
+        <Sparkles className="h-4 w-4" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0 flex-1">
         <code

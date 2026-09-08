@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  CornerDownRight,
+  GitFork,
+  Layers,
+  RefreshCw,
+  Terminal,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { BranchExplanationCard, ContextAccent, RequestUpdateLaneContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CornerDownRightIcon,
-  GitForkIcon,
-  LayersIcon,
-  RefreshIcon,
-  TerminalIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['branchFlow'] };
 
@@ -24,11 +25,11 @@ const branchAccent: Record<string, ContextAccent> = {
   '4': 'blue',
 };
 
-const branchIcon: Record<string, typeof ZapIcon> = {
-  '1': ZapIcon,
-  '2': RefreshIcon,
-  '3': WorkflowIcon,
-  '4': LayersIcon,
+const branchIcon: Record<string, typeof Zap> = {
+  '1': Zap,
+  '2': RefreshCw,
+  '3': Workflow,
+  '4': Layers,
 };
 
 const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'badge' }> }) => (
@@ -47,7 +48,7 @@ const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'bad
           axisIconBox[card.accent],
         )}
       >
-        <ZapIcon className="h-4 w-4" />
+        <Zap className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
         className={cn(
@@ -90,7 +91,7 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
           axisIconBox[card.accent],
         )}
       >
-        <RefreshIcon className="h-4 w-4" />
+        <RefreshCw className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
         className={cn(
@@ -128,7 +129,7 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
     </div>
 
     <div className="flex items-center gap-2 text-xsm">
-      <ArrowRightIcon
+      <ArrowRight
         aria-hidden="true"
         className={cn('h-4 w-4 shrink-0', axisTextStrong[card.accent])}
       />
@@ -153,7 +154,7 @@ const FlowCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'flow
           axisIconBox[card.accent],
         )}
       >
-        <WorkflowIcon className="h-4 w-4" />
+        <Workflow className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
         className={cn(
@@ -221,7 +222,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md items-start">
@@ -242,7 +243,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
               'shadow-[0_2px_0_var(--term-border)] border border-slate-800',
             )}
           >
-            <TerminalIcon aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+            <Terminal aria-hidden="true" className="h-4 w-4 text-cyan-400" />
             {content.flowStart}
           </span>
         </div>
@@ -255,7 +256,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
             return (
               <li key={node.number} className="flex flex-col">
                 <span aria-hidden="true" className="self-center text-[var(--term-muted)] -my-1">
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <div
                   className={cn(
@@ -296,7 +297,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                     </h3>
                   </header>
                   <div className="ml-9 flex items-center gap-2">
-                    <CornerDownRightIcon
+                    <CornerDownRight
                       aria-hidden="true"
                       className={cn('h-3.5 w-3.5', axisTextStrong[accent])}
                     />

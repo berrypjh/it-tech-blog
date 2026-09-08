@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, GitCompare, Zap } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent, MeaningStep } from '../content';
-import { ClockIcon, GitCompareIcon, ZapIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['meaning'] };
 
 const iconMap = {
-  clock: ClockIcon,
-  zap: ZapIcon,
-  gitCompare: GitCompareIcon,
+  clock: Clock,
+  zap: Zap,
+  gitCompare: GitCompare,
 } as const;
 
 const toFlowStep = (step: MeaningStep): FlowStepItem => {
@@ -33,7 +34,7 @@ export const FiberPropsMeaningFlow = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />

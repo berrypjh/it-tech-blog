@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { EyeOff, Info, LifeBuoy, ShieldCheck, TriangleAlert } from 'lucide-react';
+
 import type { MismatchDetectRecoverContent, SuppressCard } from '../content';
-import { EyeOffIcon, InfoIcon, LifeBuoyIcon, ShieldCheckIcon, TriangleAlertIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -22,35 +23,35 @@ const cardStyle: Record<
     iconChip:
       'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
     text: 'text-teal-700 dark:text-teal-200',
-    Icon: LifeBuoyIcon,
+    Icon: LifeBuoy,
   },
   server: {
     border: 'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
     iconChip:
       'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60',
     text: 'text-blue-700 dark:text-blue-200',
-    Icon: ShieldCheckIcon,
+    Icon: ShieldCheck,
   },
   client: {
     border: 'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
     iconChip:
       'bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
     text: 'text-violet-700 dark:text-violet-200',
-    Icon: EyeOffIcon,
+    Icon: EyeOff,
   },
   mismatch: {
     border: 'border-rose-200/80 bg-rose-50/40 dark:border-rose-800/60 dark:bg-rose-950/20',
     iconChip:
       'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
     text: 'text-rose-700 dark:text-rose-200',
-    Icon: TriangleAlertIcon,
+    Icon: TriangleAlert,
   },
   suppress: {
     border: 'border-amber-200/80 bg-amber-50/40 dark:border-amber-800/60 dark:bg-amber-950/20',
     iconChip:
       'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60',
     text: 'text-amber-700 dark:text-amber-200',
-    Icon: TriangleAlertIcon,
+    Icon: TriangleAlert,
   },
 };
 
@@ -72,7 +73,7 @@ export const SuppressSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-amber-200 bg-amber-100 text-amber-700 dark:border-amber-800/60 dark:bg-amber-950/60 dark:text-amber-200"
           >
-            <EyeOffIcon className="h-3.5 w-3.5" />
+            <EyeOff className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
           <span className="text-xsm font-bold text-amber-700 dark:text-amber-200 break-keep">
             suppressHydrationWarning
@@ -130,7 +131,7 @@ export const SuppressSection = ({ content }: Props) => (
       )}
     >
       <span className="inline-flex items-center gap-1.5 text-amber-700 dark:text-amber-300 font-bold mr-1">
-        <InfoIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <Info className="h-3.5 w-3.5" aria-hidden="true" />
         note ·
       </span>
       {content.note}

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Zap } from 'lucide-react';
+
 import type { HydrationStartContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, ZapIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -52,7 +53,7 @@ export const EnterFlowSection = ({ content }: Props) => (
                       aria-hidden="true"
                       className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
                     >
-                      <ZapIcon className="h-3.5 w-3.5" />
+                      <Zap className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                   )}
                 </div>
@@ -70,8 +71,8 @@ export const EnterFlowSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-                  <ArrowDownIcon className="lg:hidden h-4 w-4" />
+                  <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+                  <ArrowDown className="lg:hidden h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>

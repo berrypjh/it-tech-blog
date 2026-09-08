@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, PackageOpen, Plus } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroStep, PlacementContent } from '../content';
-import { BoxIcon, PackageOpenIcon, PlusIcon } from '../icons';
 
 type Props = { content: PlacementContent['hero']; className?: string };
 
-const stepIcon: Record<HeroStep['kind'], typeof BoxIcon> = {
-  fiber: BoxIcon,
-  parent: PackageOpenIcon,
-  insert: PlusIcon,
+const stepIcon: Record<HeroStep['kind'], typeof Box> = {
+  fiber: Box,
+  parent: PackageOpen,
+  insert: Plus,
 };
 
 /**

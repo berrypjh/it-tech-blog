@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Code, GitBranch, Layers, type LucideIcon, Monitor, Smartphone } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
-import { rvrIcon } from '../icons';
 
 type Props = { content: RvrContent['flow'] };
 
@@ -21,12 +22,12 @@ export const SharedFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<rvrIcon.gitBranch className="h-5 w-5" />}
+        icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.3fr)_minmax(0,_0.85fr)] gap-md items-stretch">
         {/* 좌측 보조 카드 */}
-        <HelperCard helper={content.leftHelper} iconName="cube" className="order-2 lg:order-1" />
+        <HelperCard helper={content.leftHelper} icon={Boxes} className="order-2 lg:order-1" />
 
         {/* 중앙 다이어그램 */}
         <div
@@ -42,12 +43,12 @@ export const SharedFlowSection = ({ content }: Props) => {
           <p className="sr-only">{a11y}</p>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
-            <FlowNode label={content.elementLabel} tone="sky" iconName="layers" />
+            <FlowNode label={content.elementLabel} tone="sky" icon={Layers} />
             <DownArrow />
             <FlowNode
               label={content.reconcilerLabel}
               subtitle={content.reconcilerSubtitle}
-              iconName="cube"
+              icon={Boxes}
               emphasized
             />
 
@@ -59,14 +60,14 @@ export const SharedFlowSection = ({ content }: Props) => {
                 label={content.domRendererLabel}
                 subtitle={content.domRendererSubtitle}
                 tone="sky"
-                iconName="monitor"
+                icon={Monitor}
                 fill
               />
               <FlowNode
                 label={content.nativeRendererLabel}
                 subtitle={content.nativeRendererSubtitle}
                 tone="violet"
-                iconName="smartphone"
+                icon={Smartphone}
                 fill
               />
             </div>
@@ -78,7 +79,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                   label={content.domNodeLabel}
                   subtitle={content.domNodeSubtitle}
                   tone="sky"
-                  iconName="code"
+                  icon={Code}
                   small
                   fill
                 />
@@ -89,7 +90,7 @@ export const SharedFlowSection = ({ content }: Props) => {
                   label={content.nativeViewLabel}
                   subtitle={content.nativeViewSubtitle}
                   tone="violet"
-                  iconName="smartphone"
+                  icon={Smartphone}
                   small
                   fill
                 />
@@ -99,12 +100,7 @@ export const SharedFlowSection = ({ content }: Props) => {
         </div>
 
         {/* 우측 보조 카드 */}
-        <HelperCard
-          helper={content.rightHelper}
-          tone="sky"
-          iconName="monitor"
-          className="order-3"
-        />
+        <HelperCard helper={content.rightHelper} tone="sky" icon={Monitor} className="order-3" />
       </div>
     </section>
   );
@@ -114,16 +110,23 @@ type FlowNodeProps = {
   label: string;
   subtitle?: string;
   tone?: ToneKey;
-  iconName: keyof typeof rvrIcon;
+  icon: LucideIcon;
   emphasized?: boolean;
   small?: boolean;
   /** 그리드 칸을 가득 채워 라벨이 칸 안에서 줄바꿈되게 한다. */
   fill?: boolean;
 };
 
-const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
+const FlowNode = ({
+  label,
+  subtitle,
+  tone,
+  icon: Icon,
+  emphasized,
+  small,
+  fill,
+}: FlowNodeProps) => {
   const text = accentText(tone);
-  const Icon = rvrIcon[iconName];
 
   return (
     <article
@@ -212,16 +215,15 @@ const BranchArrows = () => (
 const HelperCard = ({
   helper,
   tone,
-  iconName,
+  icon: Icon,
   className,
 }: {
   helper: { title: string; body: string };
   tone?: ToneKey;
-  iconName: keyof typeof rvrIcon;
+  icon: LucideIcon;
   className?: string;
 }) => {
   const text = accentText(tone);
-  const Icon = rvrIcon[iconName];
 
   return (
     <article

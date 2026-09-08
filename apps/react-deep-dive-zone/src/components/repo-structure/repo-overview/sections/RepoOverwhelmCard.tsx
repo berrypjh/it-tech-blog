@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CircleHelp, FileText, Folder } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
-import { ArrowRightIcon, FileTextIcon, FolderIcon, HelpCircleIcon } from '../icons';
 
 type Props = { content: RepoOverviewContent['overwhelm'] };
 
@@ -16,7 +17,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
         id="overwhelm"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<HelpCircleIcon className="h-5 w-5" />}
+        icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="overflow-hidden rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)]">
@@ -49,7 +50,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
             'bg-[var(--term-surface)] text-[var(--term-accent)] text-xsm font-bold',
           )}
         >
-          <ArrowRightIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
+          <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           {content.highlightPill}
         </div>
       </div>
@@ -60,7 +61,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
 type FilePillProps = { row: RepoTreeRow };
 
 const FilePill = ({ row }: FilePillProps) => {
-  const Icon = row.kind === 'dir' ? FolderIcon : FileTextIcon;
+  const Icon = row.kind === 'dir' ? Folder : FileText;
   const toneText = row.tone ? toneTokens[row.tone].text : null;
 
   return (

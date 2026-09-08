@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Clock, Layers, Lightbulb, Loader2 } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberTreeNode, FiberTreeNodeStatus, LegendItem, WorkLoopContent } from '../content';
-import { CheckCircleIcon, ClockIcon, LayersIcon, LightbulbIcon, Loader2Icon } from '../icons';
 
 type Props = { content: WorkLoopContent['fiberTree'] };
 
-type StatusStyle = { Icon: typeof CheckCircleIcon; text: string; chip: string; border: string };
+type StatusStyle = { Icon: typeof CheckCircle2; text: string; chip: string; border: string };
 
 const statusStyle = (status: FiberTreeNodeStatus): StatusStyle => {
   if (status === 'done') {
     return {
-      Icon: CheckCircleIcon,
+      Icon: CheckCircle2,
       text: toneTokens.teal.text,
       chip: toneTokens.teal.chip,
       border: toneTokens.teal.border,
@@ -21,14 +22,14 @@ const statusStyle = (status: FiberTreeNodeStatus): StatusStyle => {
   }
   if (status === 'current') {
     return {
-      Icon: Loader2Icon,
+      Icon: Loader2,
       text: toneTokens.sky.text,
       chip: toneTokens.sky.chip,
       border: toneTokens.sky.border,
     };
   }
   return {
-    Icon: ClockIcon,
+    Icon: Clock,
     text: 'text-[var(--term-muted)]',
     chip: 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]',
     border: 'border-[var(--term-border)]',
@@ -48,7 +49,7 @@ export const FiberProcessingTree = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_1fr)] gap-md lg:gap-lg">
@@ -92,7 +93,9 @@ export const FiberProcessingTree = ({ content }: Props) => {
             </ul>
           </article>
 
-          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.infoBox}</SectionNote>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+            {content.infoBox}
+          </SectionNote>
         </div>
       </div>
     </section>

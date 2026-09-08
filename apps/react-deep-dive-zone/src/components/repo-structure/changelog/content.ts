@@ -4,21 +4,6 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'fileText'
-  | 'bookOpen'
-  | 'fileClock'
-  | 'tag'
-  | 'history'
-  | 'rotate'
-  | 'gitPull'
-  | 'package'
-  | 'fileCode'
-  | 'gitCommit'
-  | 'box'
-  | 'pencil'
-  | 'shieldCheck';
-
 export type ScenarioCard = {
   id: 'latest' | 'old' | 'reason';
   question: string;
@@ -26,7 +11,6 @@ export type ScenarioCard = {
   resultTone: ToneKey;
   flow: { label: string; sublabel?: string }[];
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type TimelineItem = {
@@ -41,7 +25,6 @@ export type TraceStep = {
   number: string;
   title: string;
   description: string;
-  icon: IconName;
   tone: ToneKey;
 };
 
@@ -87,7 +70,7 @@ export type ChangelogContent = {
     versionBadge: string;
     meta: string;
     descriptionText: string;
-    stats: { label: string; value: string; icon: IconName }[];
+    stats: { label: 'Commits' | 'Packages' | 'Assets'; value: string }[];
     primaryCta: string;
     secondaryCta: string;
     primaryHref: string;
@@ -129,7 +112,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         line2: '그 코드가 어느 시점의 코드인지도',
         line3: '함께 봐야 합니다.',
       },
-      description: '변경 기록을 모르면 오래된 강의와 최신 저장소를 섞어 읽게 됩니다.',
+      description: '변경 기록을 모르면 오래된 자료와 최신 저장소를 섞어 읽게 됩니다.',
       version: 'v19.2.0',
       versionBadge: 'Latest',
       releasesCard: {
@@ -194,7 +177,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
             { label: '관련 PR / Issue' },
           ],
           tone: 'emerald',
-          icon: 'tag',
         },
         {
           id: 'old',
@@ -206,7 +188,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
             { label: '흐름 파악', sublabel: '핵심 변화 이해' },
           ],
           tone: 'violet',
-          icon: 'history',
         },
         {
           id: 'reason',
@@ -215,7 +196,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           resultTone: 'blue',
           flow: [{ label: 'Releases' }, { label: 'PR / Issue' }, { label: '코드 변경 추적' }],
           tone: 'blue',
-          icon: 'gitPull',
         },
       ],
     },
@@ -229,9 +209,9 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       meta: '게시일 · 경과 시간 표시',
       descriptionText: '개선, 버그 수정, 보안 수정이 포함된 최신 패치 릴리즈입니다.',
       stats: [
-        { label: 'Commits', value: '1,284', icon: 'gitCommit' },
-        { label: 'Packages', value: '5', icon: 'package' },
-        { label: 'Assets', value: '12', icon: 'box' },
+        { label: 'Commits', value: '1,284' },
+        { label: 'Packages', value: '5' },
+        { label: 'Assets', value: '12' },
       ],
       primaryCta: 'Releases 페이지 열기',
       secondaryCta: 'v19.2.0 릴리즈 노트 열기',
@@ -297,7 +277,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '1',
           title: '릴리즈에서 변경점 확인',
           description: 'Releases 노트에서 핵심 변경사항 읽기',
-          icon: 'fileText',
           tone: 'violet',
         },
         {
@@ -305,7 +284,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '2',
           title: '관련 PR / Issue 찾기',
           description: 'Release note 링크 또는 키워드로 PR / Issue 이동',
-          icon: 'gitPull',
           tone: 'indigo',
         },
         {
@@ -313,7 +291,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '3',
           title: '연관 패키지 위치 확인',
           description: '변경된 영역이 어느 패키지에 속하는지 파악',
-          icon: 'package',
           tone: 'blue',
         },
         {
@@ -321,7 +298,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '4',
           title: '코드 변경 파일 열기',
           description: 'PR diff 또는 GitHub 파일에서 실제 코드 확인',
-          icon: 'fileCode',
           tone: 'teal',
         },
       ],
@@ -343,7 +319,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
         line3: 'the code belongs to.',
       },
       description:
-        'Without change history, you mix old tutorials with the latest repo as if they were the same.',
+        'Without change history, you mix older material with the latest repo as if they were the same.',
       version: 'v19.2.0',
       versionBadge: 'Latest',
       releasesCard: {
@@ -408,7 +384,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
             { label: 'Related PR / Issue' },
           ],
           tone: 'emerald',
-          icon: 'tag',
         },
         {
           id: 'old',
@@ -420,7 +395,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
             { label: 'Trace the flow', sublabel: 'understand key changes' },
           ],
           tone: 'violet',
-          icon: 'history',
         },
         {
           id: 'reason',
@@ -429,7 +403,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           resultTone: 'blue',
           flow: [{ label: 'Releases' }, { label: 'PR / Issue' }, { label: 'Trace code changes' }],
           tone: 'blue',
-          icon: 'gitPull',
         },
       ],
     },
@@ -443,9 +416,9 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       meta: 'Published date · time since release',
       descriptionText: 'A patch release including improvements, bug fixes and security fixes.',
       stats: [
-        { label: 'Commits', value: '1,284', icon: 'gitCommit' },
-        { label: 'Packages', value: '5', icon: 'package' },
-        { label: 'Assets', value: '12', icon: 'box' },
+        { label: 'Commits', value: '1,284' },
+        { label: 'Packages', value: '5' },
+        { label: 'Assets', value: '12' },
       ],
       primaryCta: 'Open Releases page',
       secondaryCta: 'Open v19.2.0 release notes',
@@ -511,7 +484,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '1',
           title: 'Check changes in the release',
           description: 'Read the core changes in the Releases note.',
-          icon: 'fileText',
           tone: 'violet',
         },
         {
@@ -519,7 +491,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '2',
           title: 'Find related PR / Issue',
           description: 'Use release note links or keywords to reach the PR / Issue.',
-          icon: 'gitPull',
           tone: 'indigo',
         },
         {
@@ -527,7 +498,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '3',
           title: 'Locate the related package',
           description: 'Find which package the changed area belongs to.',
-          icon: 'package',
           tone: 'blue',
         },
         {
@@ -535,7 +505,6 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
           number: '4',
           title: 'Open the changed code',
           description: 'Inspect the actual code in the PR diff or GitHub file.',
-          icon: 'fileCode',
           tone: 'teal',
         },
       ],

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Star } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
-import { FileTextIcon, StarIcon } from '../icons';
 
 type Props = { content: RepoOverviewContent['rootFiles'] };
 
@@ -16,7 +17,7 @@ export const RootFilesSummary = ({ content }: Props) => {
         id="root-files"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileTextIcon className="h-5 w-5" />}
+        icon={<FileText className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
@@ -24,7 +25,7 @@ export const RootFilesSummary = ({ content }: Props) => {
           <ToneCardItem
             key={card.id}
             tone={card.tone}
-            icon={<FileTextIcon className="h-5 w-5" />}
+            icon={<FileText className="h-5 w-5" aria-hidden="true" />}
             badge={card.badge}
           >
             <h3
@@ -47,7 +48,9 @@ export const RootFilesSummary = ({ content }: Props) => {
         ))}
       </ul>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

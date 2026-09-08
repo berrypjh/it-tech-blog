@@ -1,23 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Crosshair, ListOrdered, Target, TriangleAlert, Trophy, Unlink } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { RulesOfHooksContent, Tone } from '../content';
-import {
-  CrosshairIcon,
-  ListOrderedIcon,
-  TargetIcon,
-  TriangleAlertIcon,
-  TrophyIcon,
-  UnlinkIcon,
-} from '../icons';
 
 type Props = { content: RulesOfHooksContent['summary'] };
 
 const visualMap = {
-  order: ListOrderedIcon,
-  broken: TriangleAlertIcon,
-  'wrong-slot': CrosshairIcon,
-  'top-level': TargetIcon,
+  order: ListOrdered,
+  broken: TriangleAlert,
+  'wrong-slot': Crosshair,
+  'top-level': Target,
 };
 
 const cardTone: Record<Tone, string> = {
@@ -78,12 +72,12 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.items.map((item) => {
-        const Icon = visualMap[item.visual] ?? UnlinkIcon;
+        const Icon = visualMap[item.visual] ?? Unlink;
         return (
           <li key={item.number}>
             <article

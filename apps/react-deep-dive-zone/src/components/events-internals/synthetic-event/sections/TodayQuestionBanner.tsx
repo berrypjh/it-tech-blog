@@ -1,17 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, HelpCircle, Layers, PauseCircle, Target } from 'lucide-react';
+
 import type { SyntheticEventContent } from '../content';
-import {
-  ChevronRightIcon,
-  HelpCircleIcon,
-  LayersIcon,
-  PauseCircleIcon,
-  TargetIcon,
-} from '../icons';
 
 type Props = { content: SyntheticEventContent['question'] };
 
-const badgeIcons = [LayersIcon, PauseCircleIcon, TargetIcon];
+const badgeIcons = [Layers, PauseCircle, Target];
 
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
@@ -31,7 +26,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0 flex-1">
@@ -48,7 +43,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:min-w-[250px]">
         {content.badges.map((label, i) => {
-          const Icon = badgeIcons[i] ?? TargetIcon;
+          const Icon = badgeIcons[i] ?? Target;
           return (
             <li
               key={label}
@@ -65,7 +60,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
                 <Icon className="h-3.5 w-3.5" />
               </span>
               <span className="text-[11px] sm:text-xsm font-bold break-keep flex-1">{label}</span>
-              <ChevronRightIcon aria-hidden="true" className="h-3.5 w-3.5 opacity-50 shrink-0" />
+              <ChevronRight aria-hidden="true" className="h-3.5 w-3.5 opacity-50 shrink-0" />
             </li>
           );
         })}

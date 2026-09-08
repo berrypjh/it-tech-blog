@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Network } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseReducerSharedContent } from '../content';
-import { LightbulbIcon, NetworkIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['sharedTable'] };
 
@@ -38,7 +39,7 @@ export const SharedStructureTable = ({ content }: Props) => (
       id="shared-table"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}
@@ -148,7 +149,7 @@ export const SharedStructureTable = ({ content }: Props) => (
         aria-hidden="true"
         className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-200/80 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
       >
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-violet-900 dark:text-violet-100 break-keep">
         {content.highlight}

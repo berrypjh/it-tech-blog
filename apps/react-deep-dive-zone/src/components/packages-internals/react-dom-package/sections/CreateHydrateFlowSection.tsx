@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Map } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateHydrateCard, ReactDomContent } from '../content';
-import { MapIcon } from '../icons';
 
 type Props = { content: ReactDomContent['flow'] };
 
@@ -16,7 +17,7 @@ export const CreateHydrateFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">

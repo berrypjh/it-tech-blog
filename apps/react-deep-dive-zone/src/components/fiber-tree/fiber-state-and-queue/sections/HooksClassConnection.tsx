@@ -2,18 +2,19 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Anchor, ArrowRight, Component, HelpCircle, Send } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionCard, FiberStateAndQueueContent } from '../content';
-import { AnchorIcon, ArrowRightIcon, ComponentIcon, HelpCircleIcon, SendIcon } from '../icons';
 
 type Props = { content: FiberStateAndQueueContent['connections'] };
 
 const iconMap = {
-  box: ComponentIcon,
-  hook: AnchorIcon,
-  send: SendIcon,
+  box: Component,
+  hook: Anchor,
+  send: Send,
 } as const;
 
 export const HooksClassConnection = ({ content }: Props) => (
@@ -27,7 +28,7 @@ export const HooksClassConnection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
@@ -69,7 +70,7 @@ const ConnectionCardItem = ({ card }: { card: ConnectionCard }) => {
         )}
       >
         {card.buttonLabel}
-        <ArrowRightIcon
+        <ArrowRight
           className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
           aria-hidden="true"
         />

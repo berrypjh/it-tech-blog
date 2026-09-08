@@ -1,10 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, GitBranch, type LucideIcon } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareRow, CompleteWorkContent } from '../content';
-import { directionIconByName, GitBranchIcon } from '../icons';
+
+const directionIconByName: Record<CompareRow['direction']['icon'], LucideIcon> = {
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
+} as const;
 
 type Props = { content: CompleteWorkContent['compare'] };
 
@@ -16,7 +22,7 @@ export const BeginVsCompleteCompare = ({ content }: Props) => {
         id="compare"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<GitBranchIcon className="h-5 w-5" />}
+        icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ComparisonTable

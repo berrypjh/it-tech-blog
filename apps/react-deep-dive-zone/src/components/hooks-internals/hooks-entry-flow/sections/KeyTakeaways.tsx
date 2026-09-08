@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Trophy } from 'lucide-react';
+
 import type { HooksEntryFlowContent } from '../content';
-import { TrophyIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['summary'] };
 
@@ -24,7 +25,7 @@ export const KeyTakeaways = ({ content }: Props) => (
           'dark:bg-emerald-400 dark:text-slate-900',
         )}
       >
-        <TrophyIcon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} />
+        <Trophy className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-md min-w-0 flex-1">

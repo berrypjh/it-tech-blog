@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Boxes, Globe, MousePointerClick, Target } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LabTarget, TargetFiberContent } from '../content';
-import { ArrowRightIcon, BoxesIcon, GlobeIcon, MousePointerClickIcon, TargetIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['lab'] };
 
@@ -27,7 +28,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<MousePointerClickIcon className="h-5 w-5" />}
+        icon={<MousePointerClick className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -52,7 +53,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
               >
-                <GlobeIcon className="h-4 w-4" />
+                <Globe className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 DOM Tree
@@ -76,7 +77,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
               >
-                <BoxesIcon className="h-4 w-4" />
+                <Boxes className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
                 Fiber Tree
@@ -114,7 +115,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
               >
-                <TargetIcon className="h-4 w-4" />
+                <Target className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
                 {content.selector.label}
@@ -156,7 +157,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                     </span>
                     {isSelected && (
                       <span aria-hidden="true" className="text-blue-500 dark:text-blue-300">
-                        <MousePointerClickIcon className="h-3.5 w-3.5" />
+                        <MousePointerClick className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                     )}
                   </button>
@@ -188,7 +189,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
             aria-hidden="true"
             className="self-center inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-teal-500 text-white shadow-[0_2px_0_rgba(13,148,136,0.35)] sm:rotate-0 rotate-90"
           >
-            <ArrowRightIcon className="h-4 w-4" strokeWidth={2.4} />
+            <ArrowRight className="h-4 w-4" strokeWidth={2.4} aria-hidden="true" />
           </span>
           <div className="flex flex-col gap-1 rounded-xl border border-teal-200/70 bg-teal-50/60 px-md py-2 dark:border-teal-800/60 dark:bg-teal-950/30">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">

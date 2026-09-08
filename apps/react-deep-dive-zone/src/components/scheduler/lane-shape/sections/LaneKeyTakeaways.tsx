@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleDot, Layers, Repeat, Trophy } from 'lucide-react';
+
 import {
   laneCardBorder,
   laneIconBox,
@@ -8,17 +10,16 @@ import {
 } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { LaneAccent, LaneBitmaskContent } from '../content';
-import { CircleDotIcon, LayersIcon, RepeatIcon, TrophyIcon } from '../icons';
 
 type Props = { content: LaneBitmaskContent['takeaways'] };
 
-const cardIcon: Record<LaneAccent, typeof CircleDotIcon> = {
-  sync: CircleDotIcon,
-  inputContinuous: LayersIcon,
-  default: LayersIcon,
-  transition: RepeatIcon,
-  retry: RepeatIcon,
-  offscreen: LayersIcon,
+const cardIcon: Record<LaneAccent, typeof CircleDot> = {
+  sync: CircleDot,
+  inputContinuous: Layers,
+  default: Layers,
+  transition: Repeat,
+  retry: Repeat,
+  offscreen: Layers,
 };
 
 const toneIconWash: Record<LaneAccent, string> = {
@@ -37,7 +38,7 @@ export const LaneKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

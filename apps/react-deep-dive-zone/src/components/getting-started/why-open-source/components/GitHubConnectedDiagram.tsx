@@ -1,9 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleCheck, GitBranch, GitCommit } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
+import { GithubIcon } from '../../../shared/icon';
 import { TerminalBadge } from '../../../shared/terminal';
 import type { WhyOpenSourceContent } from '../content';
-import { CheckCircleIcon, GitBranchIcon, GitCommitIcon, GithubIcon } from '../icons';
 
 type Props = { diagram: WhyOpenSourceContent['hero']['diagram'] };
 
@@ -116,7 +118,7 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
         >
           <header className="flex items-center justify-between mb-1">
             <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-violet-700 dark:text-violet-200">
-              <GitBranchIcon className="h-2.5 w-2.5" />
+              <GitBranch className="h-2.5 w-2.5" aria-hidden="true" />
               {diagram.commitBranch}
             </span>
             <span className="text-[9px] text-[var(--term-muted)]">history</span>
@@ -188,13 +190,16 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
             aria-hidden="true"
             className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
           >
-            <CheckCircleIcon className="h-4 w-4" />
+            <CircleCheck className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-bold text-[var(--term-accent)] leading-tight text-center">
             {diagram.statusLabel}
           </span>
           <span className="text-[9px] text-[var(--term-muted)] font-mono">
-            <GitCommitIcon className="inline-block h-2.5 w-2.5 align-middle mr-0.5" />
+            <GitCommit
+              className="inline-block h-2.5 w-2.5 align-middle mr-0.5"
+              aria-hidden="true"
+            />
             ci ok
           </span>
         </article>

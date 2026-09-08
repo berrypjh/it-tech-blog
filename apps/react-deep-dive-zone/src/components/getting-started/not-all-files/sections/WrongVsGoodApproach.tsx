@@ -1,8 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Brain, Check, FolderOpen, type LucideIcon, Pencil, Pin, Route, X } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ApproachItem, NotAllFilesContent } from '../content';
-import { approachIconByName, CheckIcon, XIcon } from '../icons';
+
+const itemIcon: Record<ApproachItem['id'], LucideIcon> = {
+  'read-all': FolderOpen,
+  'open-blindly': X,
+  memorize: Brain,
+  'define-question': Check,
+  'find-entry': Pin,
+  'follow-functions': Route,
+  'redraw-flow': Pencil,
+};
 
 type Props = { content: NotAllFilesContent['approaches'] };
 
@@ -47,7 +58,7 @@ const ApproachPanel = ({
   items: ApproachItem[];
 }) => {
   const t = variantClasses[variant];
-  const HeaderIcon = variant === 'wrong' ? XIcon : CheckIcon;
+  const HeaderIcon = variant === 'wrong' ? X : Check;
   return (
     <article
       className={cn(
@@ -64,16 +75,16 @@ const ApproachPanel = ({
             t.headerIconText,
           )}
         >
-          <HeaderIcon className="h-[1.125rem] w-[1.125rem]" />
+          <HeaderIcon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
         </span>
         <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.headerText)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-sm">
         {items.map((item) => {
-          const Icon = approachIconByName[item.icon];
+          const Icon = itemIcon[item.id];
           return (
-            <li key={item.title} className="group">
+            <li key={item.id} className="group">
               <div
                 className={cn(
                   'grid grid-cols-[auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
@@ -87,7 +98,7 @@ const ApproachPanel = ({
                     t.rowAccent,
                   )}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <div className="flex flex-col gap-0.5 min-w-0">
                   <p className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep leading-snug">
@@ -113,7 +124,7 @@ export const WrongVsGoodApproach = ({ content }: Props) => {
         id="approaches"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<XIcon className="h-5 w-5" />}
+        icon={<X className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">

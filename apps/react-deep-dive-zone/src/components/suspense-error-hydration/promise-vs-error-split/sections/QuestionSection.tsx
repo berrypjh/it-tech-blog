@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, CircleHelp, Filter, GitBranch, Loader, ShieldCheck } from 'lucide-react';
+
 import type { ConceptCard, PromiseVsErrorSplitContent } from '../content';
-import {
-  ChevronRightIcon,
-  CircleHelpIcon,
-  FilterIcon,
-  GitBranchIcon,
-  LoaderIcon,
-  ShieldCheckIcon,
-} from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: PromiseVsErrorSplitContent['question'] };
 
 const conceptIcon: Record<ConceptCard['icon'], React.ComponentType<{ className?: string }>> = {
-  filter: FilterIcon,
-  spinner: LoaderIcon,
-  shield: ShieldCheckIcon,
-  branch: GitBranchIcon,
+  filter: Filter,
+  spinner: Loader,
+  shield: ShieldCheck,
+  branch: GitBranch,
 };
 
 const conceptTone: Record<ConceptCard['icon'], string> = {
@@ -53,7 +47,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-8 w-8" strokeWidth={2.2} />
+        <CircleHelp className="h-8 w-8" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <p className="text-md sm:text-lg leading-snug font-bold text-[var(--term-fg)] break-keep">
@@ -62,7 +56,7 @@ export const QuestionSection = ({ content }: Props) => (
 
       {/* chevron separator (desktop) */}
       <span aria-hidden="true" className="hidden lg:inline-flex items-center justify-center">
-        <ChevronRightIcon className="h-5 w-5 text-blue-400 dark:text-blue-500" />
+        <ChevronRight className="h-5 w-5 text-blue-400 dark:text-blue-500" aria-hidden="true" />
       </span>
 
       <ul className="grid grid-cols-2 gap-2 lg:grid-cols-4">

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Link2 } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HookLinkedListContent, HookNode, Tone } from '../content';
-import { DatabaseIcon, Link2Icon } from '../icons';
 
 type Props = { content: HookLinkedListContent['hero']; className?: string };
 
@@ -85,7 +86,7 @@ const FiberCard = ({
   >
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="teal" size="sm">
-        <DatabaseIcon className="h-[18px] w-[18px]" />
+        <Database className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <span className="min-w-0 truncate font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
         {title}
@@ -125,7 +126,7 @@ const HookCard = ({ node }: { node: HookNode }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={toToneKey[node.tone]} size="sm">
-          <Link2Icon className="h-[18px] w-[18px]" />
+          <Link2 className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span className={cn('text-sm font-bold tracking-tight', t.text)}>Hook #{node.index}</span>
         <code className="ml-auto shrink-0 font-mono text-[11px] font-bold text-[var(--term-muted)]">

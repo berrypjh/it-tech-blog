@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Trophy } from 'lucide-react';
+
 import type { PluginEventSystemContent, Tone } from '../content';
-import { TrophyIcon } from '../icons';
 import { SectionFrame } from '../SectionFrame';
 
 type Props = { content: PluginEventSystemContent['takeaways'] };
@@ -50,7 +51,7 @@ export const KeyTakeaways = ({ content }: Props) => (
     id="takeaways"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<TrophyIcon className="h-5 w-5" />}
+    icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
   >
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => (

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Container, Globe, MousePointer, Radio } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RootNativeEventContent } from '../content';
-import { ContainerIcon, GlobeIcon, MousePointerIcon, RadioIcon } from '../icons';
 import { ListenerPill } from '../ListenerPill';
 
 type Props = { content: RootNativeEventContent['hero']; className?: string };
@@ -65,7 +66,7 @@ const BrowserCard = ({ title, bullets }: { title: string; bullets: string[] }) =
       )}
     >
       <ToneIconBox tone="sky" size="sm">
-        <GlobeIcon className="h-[18px] w-[18px]" />
+        <Globe className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
@@ -74,7 +75,7 @@ const BrowserCard = ({ title, bullets }: { title: string; bullets: string[] }) =
         </span>
       </div>
       <span className="ml-auto shrink-0 text-[var(--term-muted)]">
-        <MousePointerIcon className="h-4 w-4" />
+        <MousePointer className="h-4 w-4" aria-hidden="true" />
       </span>
     </article>
   );
@@ -93,7 +94,7 @@ const RootCard = ({ title, dom }: { title: string; dom: string }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone="violet" size="sm">
-          <ContainerIcon className="h-[18px] w-[18px]" />
+          <Container className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</span>
         <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -121,7 +122,7 @@ const ListenerCard = ({
       )}
     >
       <ToneIconBox tone="teal" size="sm">
-        <RadioIcon className="h-[18px] w-[18px]" />
+        <Radio className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <ul className="flex flex-wrap items-center gap-2">
         {listeners.map((l) => (

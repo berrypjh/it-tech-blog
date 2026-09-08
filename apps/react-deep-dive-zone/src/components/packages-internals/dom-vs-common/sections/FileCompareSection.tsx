@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, Scale } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, FileCard } from '../content';
-import { dvcIcon, ScaleIcon } from '../icons';
 
 type Props = { content: DvcContent['fileCompare'] };
 
@@ -17,7 +18,7 @@ export const FileCompareSection = ({ content }: Props) => {
         id="file-compare"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ScaleIcon className="h-5 w-5" />}
+        icon={<Scale className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-md">
@@ -37,7 +38,7 @@ export const FileCompareSection = ({ content }: Props) => {
               'px-3',
             )}
           >
-            <ScaleIcon className="h-5 w-5 text-[var(--term-accent)]" />
+            <Scale className="h-5 w-5 text-[var(--term-accent)]" aria-hidden="true" />
             <span className="text-[10.5px] font-bold leading-snug text-[var(--term-fg)] break-keep">
               {content.centerMessage.line1}
             </span>
@@ -58,7 +59,6 @@ export const FileCompareSection = ({ content }: Props) => {
 
 const FileCardView = ({ card }: { card: FileCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = dvcIcon[card.iconName];
 
   return (
     <article
@@ -70,7 +70,7 @@ const FileCardView = ({ card }: { card: FileCard }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={card.tone} size="md">
-          <Icon className="h-5 w-5" aria-hidden="true" />
+          <FileCode className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
           <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>

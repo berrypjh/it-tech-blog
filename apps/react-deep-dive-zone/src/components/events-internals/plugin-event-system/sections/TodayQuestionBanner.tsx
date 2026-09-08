@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle } from 'lucide-react';
+
 import type { PluginEventSystemContent } from '../content';
-import { HelpCircleIcon } from '../icons';
 
 type Props = { content: PluginEventSystemContent['question'] };
 
@@ -63,7 +64,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.4} />
+        <HelpCircle className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.4} aria-hidden="true" />
       </span>
     </div>
   </section>

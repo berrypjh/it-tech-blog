@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';
-import { CodeIcon } from '../icons';
 
 type Props = { content: ReactVsReactDomContent['usage'] };
 
@@ -16,7 +17,7 @@ export const ReactDomUsageFlowSection = ({ content }: Props) => {
         id="usage"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">

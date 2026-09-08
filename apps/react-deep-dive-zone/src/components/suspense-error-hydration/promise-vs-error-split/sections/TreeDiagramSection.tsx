@@ -1,24 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { PromiseVsErrorSplitContent } from '../content';
 import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  HourglassIcon,
-  RefreshCcwIcon,
-  RouteIcon,
-  ShieldCheckIcon,
-  TriangleAlertIcon,
-  XCircleIcon,
-} from '../icons';
+  ArrowDown,
+  ArrowRight,
+  Hourglass,
+  RefreshCcw,
+  Route,
+  ShieldCheck,
+  TriangleAlert,
+  XCircle,
+} from 'lucide-react';
+
+import type { PromiseVsErrorSplitContent } from '../content';
 import { pathAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
 
 type Props = { content: PromiseVsErrorSplitContent['tree'] };
 
-const thenableStepIcons = [HourglassIcon, RouteIcon, RefreshCcwIcon];
-const errorStepIcons = [XCircleIcon, TriangleAlertIcon, ShieldCheckIcon];
+const thenableStepIcons = [Hourglass, Route, RefreshCcw];
+const errorStepIcons = [XCircle, TriangleAlert, ShieldCheck];
 
 export const TreeDiagramSection = ({ content }: Props) => {
   const t = pathAccent.thenable;
@@ -67,7 +68,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
                 'md:hidden inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-300 font-mono text-[10px] font-bold uppercase tracking-wider',
               )}
             >
-              <ArrowDownIcon className="h-3.5 w-3.5" />
+              <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
               thenable
             </span>
             {/* desktop connector */}
@@ -89,7 +90,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
 
             <ol className="w-full max-w-md flex flex-col items-center gap-2">
               {content.thenableSteps.map((step, i) => {
-                const Icon = thenableStepIcons[i] ?? HourglassIcon;
+                const Icon = thenableStepIcons[i] ?? Hourglass;
                 return (
                   <li
                     key={step.title}
@@ -131,7 +132,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
                 'md:hidden inline-flex items-center gap-1 text-rose-600 dark:text-rose-300 font-mono text-[10px] font-bold uppercase tracking-wider',
               )}
             >
-              <ArrowDownIcon className="h-3.5 w-3.5" />
+              <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
               error
             </span>
             <div aria-hidden="true" className={cn('hidden md:block h-4 w-px', e.connector)} />
@@ -152,7 +153,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
 
             <ol className="w-full max-w-md flex flex-col items-center gap-2">
               {content.errorSteps.map((step, i) => {
-                const Icon = errorStepIcons[i] ?? TriangleAlertIcon;
+                const Icon = errorStepIcons[i] ?? TriangleAlert;
                 return (
                   <li
                     key={step.title}
@@ -201,7 +202,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
               t.text,
             )}
           >
-            <ArrowRightIcon className="h-3.5 w-3.5 rotate-90" />
+            <ArrowRight className="h-3.5 w-3.5 rotate-90" aria-hidden="true" />
             thenable path
           </span>
           <span
@@ -210,7 +211,7 @@ export const TreeDiagramSection = ({ content }: Props) => {
               e.text,
             )}
           >
-            <ArrowRightIcon className="h-3.5 w-3.5 rotate-90" />
+            <ArrowRight className="h-3.5 w-3.5 rotate-90" aria-hidden="true" />
             error path
           </span>
         </div>

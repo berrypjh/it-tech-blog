@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Loader, ShieldCheck } from 'lucide-react';
+
 import type { SuspenseFallbackRetryContent } from '../content';
-import { ArrowRightIcon, LoaderIcon, ShieldCheckIcon } from '../icons';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -58,8 +59,8 @@ export const CaptureFallbackSection = ({ content }: Props) => {
           aria-hidden="true"
           className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
         >
-          <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-          <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+          <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
         </span>
 
         {/* 2. Boundary state */}
@@ -71,10 +72,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-2">
-            <ShieldCheckIcon
-              aria-hidden="true"
-              className="h-4 w-4 text-teal-600 dark:text-teal-300"
-            />
+            <ShieldCheck aria-hidden="true" className="h-4 w-4 text-teal-600 dark:text-teal-300" />
             <h3 className="text-sm font-bold text-[var(--term-fg)] break-keep">
               {content.stateTitle}
             </h3>
@@ -102,8 +100,8 @@ export const CaptureFallbackSection = ({ content }: Props) => {
           aria-hidden="true"
           className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
         >
-          <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-          <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+          <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
         </span>
 
         {/* 3. Fallback pass */}
@@ -126,8 +124,8 @@ export const CaptureFallbackSection = ({ content }: Props) => {
           aria-hidden="true"
           className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-300"
         >
-          <ArrowRightIcon className="hidden lg:block h-4 w-4" />
-          <ArrowRightIcon className="lg:hidden h-4 w-4 rotate-90 mx-auto" />
+          <ArrowRight className="hidden lg:block h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="lg:hidden h-4 w-4 rotate-90 mx-auto" aria-hidden="true" />
         </span>
 
         {/* 4. UI result */}
@@ -147,7 +145,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
               'border-violet-200 bg-white dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
             )}
           >
-            <LoaderIcon
+            <Loader
               aria-hidden="true"
               className="h-6 w-6 motion-safe:animate-spin text-violet-600 dark:text-violet-300"
             />

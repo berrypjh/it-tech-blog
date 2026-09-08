@@ -1,10 +1,31 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Box,
+  Code2,
+  FunctionSquare,
+  Home,
+  type LucideIcon,
+  MoreHorizontal,
+  Settings,
+  SquareDashed,
+  TimerReset,
+} from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent, FiberTagItem } from '../content';
-import { fiberTagIconByName, SettingsIcon } from '../icons';
+
+const fiberTagIconByName: Record<FiberTagItem['icon'], LucideIcon> = {
+  function: FunctionSquare,
+  cube: Box,
+  home: Home,
+  code: Code2,
+  fragment: SquareDashed,
+  suspense: TimerReset,
+  other: MoreHorizontal,
+} as const;
 
 type Props = { content: BeginWorkContent['hero'] };
 
@@ -57,7 +78,7 @@ const CenterNode = ({ title, subtitle }: { title: string; subtitle: string }) =>
       )}
     >
       <ToneIconBox tone="sky" size="md">
-        <SettingsIcon className="h-[18px] w-[18px]" />
+        <Settings className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cn('text-sm font-bold font-mono tracking-tight break-keep', t.fill.text)}>

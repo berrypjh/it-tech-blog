@@ -1,32 +1,33 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Box,
+  Cpu,
+  Equal,
+  FastForward,
+  MousePointerClick,
+  PlayCircle,
+  Repeat,
+  Rocket,
+  Sparkles,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksRecapContent, SimulatorStep } from '../content';
-import {
-  BoxIcon,
-  CpuIcon,
-  EqualIcon,
-  FastForwardIcon,
-  MousePointerClickIcon,
-  PlayCircleIcon,
-  RepeatIcon,
-  RocketIcon,
-  SparklesIcon,
-} from '../icons';
 
 import { toneCardBg, toneNumber, toneText } from './_shared/tones';
 
 type Props = { content: HooksRecapContent['simulator'] };
 
 const visualMap = {
-  click: MousePointerClickIcon,
-  box: BoxIcon,
-  queue: RepeatIcon,
-  replay: FastForwardIcon,
-  compute: CpuIcon,
-  compare: EqualIcon,
-  commit: RocketIcon,
-  play: PlayCircleIcon,
+  click: MousePointerClick,
+  box: Box,
+  queue: Repeat,
+  replay: FastForward,
+  compute: Cpu,
+  compare: Equal,
+  commit: Rocket,
+  play: PlayCircle,
 };
 
 const KEYWORDS = new Set(['function', 'const', 'return']);
@@ -153,7 +154,7 @@ export const IntegratedCounterSimulator = ({ content }: Props) => {
         id="simulator"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -202,7 +203,7 @@ export const IntegratedCounterSimulator = ({ content }: Props) => {
                 )}
                 aria-disabled="true"
               >
-                <MousePointerClickIcon aria-hidden="true" className="h-3.5 w-3.5" />
+                <MousePointerClick aria-hidden="true" className="h-3.5 w-3.5" />
                 {content.mockButton}
               </button>
             </div>

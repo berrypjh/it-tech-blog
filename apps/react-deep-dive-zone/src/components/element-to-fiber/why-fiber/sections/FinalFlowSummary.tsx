@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Box, Hexagon, Map, PlayCircle, Wand2 } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberWhyNeededContent, FinalFlowRow } from '../content';
-import { ArrowDownIcon, BoxIcon, HexagonIcon, MapIcon, PlayCircleIcon, WandIcon } from '../icons';
 
 type Props = { content: FiberWhyNeededContent['finalFlow'] };
 
 const iconByRow: Record<string, React.ComponentType<{ className?: string }>> = {
-  jsx: BoxIcon,
-  element: BoxIcon,
-  'create-from-element': WandIcon,
-  'create-from-type-and-props': WandIcon,
-  'fiber-created': HexagonIcon,
-  'render-phase': PlayCircleIcon,
+  jsx: Box,
+  element: Box,
+  'create-from-element': Wand2,
+  'create-from-type-and-props': Wand2,
+  'fiber-created': Hexagon,
+  'render-phase': PlayCircle,
 };
 
 export const FinalFlowSummary = ({ content }: Props) => (
@@ -28,7 +29,7 @@ export const FinalFlowSummary = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -44,7 +45,7 @@ export const FinalFlowSummary = ({ content }: Props) => (
             {idx < content.rows.length - 1 && (
               <span className="flex justify-center py-1" aria-hidden="true">
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </span>
             )}
@@ -57,7 +58,7 @@ export const FinalFlowSummary = ({ content }: Props) => (
 
 const Row = ({ row }: { row: FinalFlowRow }) => {
   const t = toneTokens[row.accent];
-  const Icon = iconByRow[row.id] ?? BoxIcon;
+  const Icon = iconByRow[row.id] ?? Box;
   return (
     <article
       className={cn(

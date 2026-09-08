@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ChevronRight, Compass, GitMerge, Workflow } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent } from '../content';
-import { ArrowDownIcon, ChevronRightIcon, CompassIcon, GitMergeIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: FullFlowContent['commonRoot'] };
 
@@ -13,7 +14,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -32,7 +33,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
             'border-blue-300 bg-white text-blue-800 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
           )}
         >
-          <GitMergeIcon aria-hidden="true" className="h-3.5 w-3.5" />
+          <GitMerge aria-hidden="true" className="h-3.5 w-3.5" />
           {content.mergeLabel}
         </span>
       </header>
@@ -71,10 +72,10 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
                     className="self-center inline-flex items-center justify-center text-blue-500 dark:text-blue-400"
                   >
                     <span className="md:hidden">
-                      <ArrowDownIcon className="h-4 w-4" />
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span className="hidden md:inline-flex">
-                      <ChevronRightIcon className="h-4 w-4" />
+                      <ChevronRight className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </span>
                 )}
@@ -94,7 +95,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-blue-600 text-white dark:bg-blue-500"
         >
-          <CompassIcon className="h-4 w-4" />
+          <Compass className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-xsm sm:text-sm leading-relaxed text-blue-900 dark:text-blue-100 break-keep">
           {content.explanation}

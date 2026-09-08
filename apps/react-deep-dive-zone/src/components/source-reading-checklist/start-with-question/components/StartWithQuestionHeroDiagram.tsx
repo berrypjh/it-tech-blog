@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, MessageCircleQuestion } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { FileCodeIcon, MessageCircleQuestionIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['hero']; className?: string };
 
@@ -37,7 +38,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="amber"
           label={content.leftPanel.title}
-          icon={<FileCodeIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<FileCode2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <ul className="flex flex-col gap-1.5">
           {content.leftPanel.files.map((f) => (
@@ -65,7 +66,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
         <StepHeader
           tone="cyan"
           label={content.rightPanel.title}
-          icon={<MessageCircleQuestionIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<MessageCircleQuestion className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel
           code={content.rightPanel.mainQuestion}

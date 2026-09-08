@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, HelpCircle, Lightbulb } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberStateNodeContent, QuizCard } from '../content';
-import { CheckCircleIcon, HelpCircleIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['quiz'] };
 
@@ -13,7 +14,7 @@ export const StateNodeMiniQuiz = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
@@ -77,7 +78,7 @@ const QuizCardItem = ({
           'dark:bg-emerald-950/60 dark:text-emerald-200',
         )}
       >
-        <CheckCircleIcon className="h-5 w-5" />
+        <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
       </span>
     </div>
 
@@ -121,7 +122,7 @@ const QuizCardItem = ({
         aria-hidden="true"
         className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-200 shrink-0"
       >
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5">
         <span className="text-[10px] uppercase tracking-wider font-mono text-amber-700/80 dark:text-amber-300/80">

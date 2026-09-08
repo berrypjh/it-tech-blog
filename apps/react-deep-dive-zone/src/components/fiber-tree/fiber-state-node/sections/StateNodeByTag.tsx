@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Home, Network, User } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ByTagCard, FiberStateNodeContent } from '../content';
-import { BoxesIcon, HomeIcon, NetworkIcon, UserIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['byTag'] };
 
 const iconMap = {
-  home: HomeIcon,
-  cube: BoxesIcon,
-  user: UserIcon,
+  home: Home,
+  cube: Boxes,
+  user: User,
 } as const;
 
 export const StateNodeByTag = ({ content }: Props) => (
@@ -21,7 +22,7 @@ export const StateNodeByTag = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

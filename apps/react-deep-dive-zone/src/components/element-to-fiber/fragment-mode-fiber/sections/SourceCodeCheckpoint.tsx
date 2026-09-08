@@ -1,8 +1,9 @@
+import { Code2, FileCode, Target } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FragmentModeFiberContent } from '../content';
-import { Code2Icon, FileCodeIcon, TargetIcon } from '../icons';
 
 type Props = { content: FragmentModeFiberContent['checkpoint'] };
 
@@ -15,7 +16,7 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<Code2Icon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.4fr)] gap-md items-stretch">
@@ -24,7 +25,7 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
           {
             label: content.fileLabel,
             value: <code className="font-mono break-all">{content.filePath}</code>,
-            icon: FileCodeIcon,
+            icon: FileCode,
           },
           {
             label: content.spotLabel,
@@ -33,7 +34,7 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
                 {content.spot}
               </code>
             ),
-            icon: TargetIcon,
+            icon: Target,
           },
         ]}
         question={content.question}

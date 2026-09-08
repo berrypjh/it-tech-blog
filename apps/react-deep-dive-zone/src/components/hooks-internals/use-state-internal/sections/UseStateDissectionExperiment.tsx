@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ExperimentTab, TabKey, UseStateInternalsContent } from '../content';
-import { LightbulbIcon, SparklesIcon } from '../icons';
 
 type Props = { content: UseStateInternalsContent['experiment'] };
 
@@ -76,7 +77,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
         id="experiment"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Tabs */}
@@ -212,7 +213,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
           >
-            <LightbulbIcon className="h-5 w-5" />
+            <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-xsm sm:text-sm font-bold text-teal-800 dark:text-teal-100 break-keep">
             {content.tipTitle}

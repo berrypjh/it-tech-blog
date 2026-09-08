@@ -1,7 +1,8 @@
+import { CheckCircle2, CircleHelp, XCircle } from 'lucide-react';
+
 import { ContrastCard, StatusPill } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import type { ReactVsReactDomContent } from '../content';
-import { CheckCircleIcon, HelpCircleIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactVsReactDomContent['misconception'] };
 
@@ -12,14 +13,14 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
         id="misconception"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<HelpCircleIcon className="h-5 w-5" />}
+        icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ContrastCard
         left={
           <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <StatusPill
-              icon={<XCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<XCircle className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-rose-600 dark:text-rose-300"
             >
               {content.leftBadge}
@@ -36,7 +37,7 @@ export const ReactDomMisconceptionSection = ({ content }: Props) => {
         right={
           <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <StatusPill
-              icon={<CheckCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-[var(--term-accent)]"
             >
               {content.rightBadge}

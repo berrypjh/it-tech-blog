@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Puzzle, Target, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TargetFiberContent, Tone } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, PuzzleIcon, TargetIcon, ZapIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['handoff'] };
 
@@ -43,7 +44,7 @@ const toneAccent: Record<Tone, string> = {
   rose: 'text-rose-700 dark:text-rose-300',
 };
 
-const stepIcons = [TargetIcon, ZapIcon, PuzzleIcon];
+const stepIcons = [Target, Zap, Puzzle];
 
 const renderEmphasis = (line: string) => {
   const parts = line.split(/(Fiber|DOM)/);
@@ -71,13 +72,13 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<PuzzleIcon className="h-5 w-5" />}
+      icon={<Puzzle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? TargetIcon;
+        const Icon = stepIcons[i] ?? Target;
         return (
           <li
             key={step.title}
@@ -127,13 +128,13 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden sm:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="sm:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

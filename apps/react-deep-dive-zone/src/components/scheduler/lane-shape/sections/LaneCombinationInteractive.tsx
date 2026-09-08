@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Layers, RefreshCw, Repeat, TimerReset, Workflow, Zap } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import {
   laneCardBorder,
@@ -14,24 +16,15 @@ import {
 } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { InteractiveLane, LaneBitmaskContent } from '../content';
-import {
-  CheckCircleIcon,
-  LayersIcon,
-  RefreshIcon,
-  RepeatIcon,
-  TimerResetIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: LaneBitmaskContent['interactive'] };
 
-const buttonIcon: Record<InteractiveLane['key'], typeof ZapIcon> = {
-  sync: ZapIcon,
-  inputContinuous: TimerResetIcon,
-  default: LayersIcon,
-  transition: RepeatIcon,
-  retry: RefreshIcon,
+const buttonIcon: Record<InteractiveLane['key'], typeof Zap> = {
+  sync: Zap,
+  inputContinuous: TimerReset,
+  default: Layers,
+  transition: Repeat,
+  retry: RefreshCw,
 };
 
 const DEFAULT_SELECTED: InteractiveLane['key'][] = ['sync', 'default'];
@@ -85,7 +78,7 @@ export const LaneCombinationInteractive = ({ content }: Props) => {
         eyebrow={content.title}
         title={content.title}
         description={content.helper}
-        icon={<WorkflowIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -144,9 +137,10 @@ export const LaneCombinationInteractive = ({ content }: Props) => {
                           className="ml-auto inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)]"
                         >
                           {isOn && (
-                            <CheckCircleIcon
+                            <CheckCircle2
                               className={cn('h-4 w-4', laneTextStrong[lane.accent])}
                               strokeWidth={2.4}
+                              aria-hidden="true"
                             />
                           )}
                         </span>

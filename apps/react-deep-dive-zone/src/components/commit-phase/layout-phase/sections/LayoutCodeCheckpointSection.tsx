@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FileCode, Lightbulb, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CodePanel, LayoutPhaseContent, PhaseStripItem } from '../content';
-import { CodeIcon, FileCodeIcon, LightbulbIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: LayoutPhaseContent['checkpoint'] };
 
@@ -20,7 +21,7 @@ export const LayoutCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.6fr)] gap-3">
@@ -28,12 +29,12 @@ export const LayoutCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <PathList items={content.info.filePaths} mono />,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <PathList items={content.info.watchItems} />,
           },
         ]}
@@ -119,7 +120,7 @@ const CodeCard = ({ panel }: { panel: CodePanel }) => (
           toneTokens.teal.chip,
         )}
       >
-        <FileCodeIcon aria-hidden="true" className="h-3 w-3" />
+        <FileCode aria-hidden="true" className="h-3 w-3" />
         {panel.fileLabel}
       </span>
     </header>
@@ -138,7 +139,7 @@ const InsightBar = ({ text }: { text: string }) => (
     )}
   >
     <ToneIconBox tone="teal" size="sm" className="mt-0.5 shrink-0">
-      <LightbulbIcon className="h-4 w-4" />
+      <Lightbulb className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <p
       className={cn(

@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown } from 'lucide-react';
+
 import type { CallStep } from './content';
-import { ArrowDownIcon } from './icons';
 import { getStepClasses, StepBadge } from './StepBadge';
 
 type Props = {
@@ -68,7 +69,7 @@ export const CallPathFlow = ({ flow, className }: Props) => {
             </li>
             {!isLast && (
               <span aria-hidden="true" className="flex items-center justify-center py-1">
-                <ArrowDownIcon className="h-3.5 w-3.5 text-cyan-500" />
+                <ArrowDown className="h-3.5 w-3.5 text-cyan-500" aria-hidden="true" />
               </span>
             )}
           </Fragment>

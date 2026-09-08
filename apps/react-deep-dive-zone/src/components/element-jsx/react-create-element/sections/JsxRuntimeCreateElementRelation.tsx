@@ -1,23 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Atom, Braces, FunctionSquare, Link2, Target } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactCreateElementContent, RelationCard } from '../content';
-import {
-  ArrowDownIcon,
-  AtomIcon,
-  BracesIcon,
-  FunctionSquareIcon,
-  LinkIcon,
-  TargetIcon,
-} from '../icons';
 
 type Props = { content: ReactCreateElementContent['relation'] };
 
 const iconMap = {
-  braces: BracesIcon,
-  functionSquare: FunctionSquareIcon,
-  target: TargetIcon,
+  braces: Braces,
+  functionSquare: FunctionSquare,
+  target: Target,
 } as const;
 
 export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
@@ -29,7 +23,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">
@@ -42,7 +36,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
 
     <div className="flex justify-center" aria-hidden="true">
       <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-        <ArrowDownIcon className="h-3.5 w-3.5" />
+        <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
     </div>
 
@@ -57,7 +51,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
         aria-hidden="true"
         className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0"
       >
-        <AtomIcon className="h-6 w-6" />
+        <Atom className="h-6 w-6" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <span className="font-mono text-md sm:text-lg font-bold tracking-tight text-[var(--term-accent)]">

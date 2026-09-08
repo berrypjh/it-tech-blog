@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CornerDownRight, Network, Plug, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent } from '../content';
-import { CornerDownRightIcon, NetworkIcon, PlugIcon, SplitIcon } from '../icons';
 
 type Props = { content: FindPublicApiEntryContent['apiPatterns'] };
 
@@ -19,7 +20,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NetworkIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
@@ -61,7 +62,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                       t.chip,
                     )}
                   >
-                    <PlugIcon className="h-3.5 w-3.5" />
+                    <Plug className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </header>
 
@@ -97,7 +98,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                       'transition-all motion-safe:group-hover:-translate-y-0.5',
                     )}
                   >
-                    <SplitIcon className="h-3 w-3" aria-hidden="true" />
+                    <Split className="h-3 w-3" aria-hidden="true" />
                     {card.dispatcher}
                   </code>
                 </div>
@@ -115,7 +116,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                       'font-mono text-[11px]',
                     )}
                   >
-                    <CornerDownRightIcon className="h-3 w-3" aria-hidden="true" />
+                    <CornerDownRight className="h-3 w-3" aria-hidden="true" />
                     {card.hint}
                   </code>
                 </div>

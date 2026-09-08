@@ -1,13 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Droplet, Map, Rocket, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { AdvancedWrapupContent, ExpansionCard, Tone } from '../content';
-import { DropletIcon, MapIcon, RocketIcon, ZapIcon } from '../icons';
 
 type Props = { content: AdvancedWrapupContent['hero']; className?: string };
 
-const cardIcons = [ZapIcon, DropletIcon, RocketIcon] as const;
+const cardIcons = [Zap, Droplet, Rocket] as const;
 
 /** 콘텐츠 Tone을 공유 ToneKey로 매핑한다. (mint 등 미지원 톤은 근사값으로) */
 const toToneKey = (tone: Tone): ToneKey => {
@@ -48,7 +49,7 @@ export const AdvancedWrapupHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <MapIcon className="h-[18px] w-[18px]" />
+            <Map className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagramTitle}
@@ -60,7 +61,7 @@ export const AdvancedWrapupHeroDiagram = ({ content, className }: Props) => {
         <ol className="flex flex-col gap-sm">
           {content.expansionCards.map((card, i) => (
             <li key={card.title} className="flex flex-col gap-sm">
-              <ExpansionRow card={card} Icon={cardIcons[i] ?? ZapIcon} />
+              <ExpansionRow card={card} Icon={cardIcons[i] ?? Zap} />
               {i < content.expansionCards.length - 1 && <DownArrow />}
             </li>
           ))}

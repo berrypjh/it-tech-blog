@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, ArrowRight, TerminalSquare } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookSlot, RulesOfHooksContent } from '../content';
-import { AlertTriangleIcon, ArrowRightIcon, TerminalSquareIcon } from '../icons';
 
 type Props = { content: RulesOfHooksContent['devWarning'] };
 
@@ -38,7 +39,7 @@ export const DevWarningConnection = ({ content }: Props) => (
       id="dev-warning"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TerminalSquareIcon className="h-5 w-5" />}
+      icon={<TerminalSquare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -46,7 +47,7 @@ export const DevWarningConnection = ({ content }: Props) => (
       <div className="overflow-hidden rounded-2xl border border-rose-700/50 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
         <div className="flex items-center justify-between gap-2 border-b border-rose-700/40 bg-rose-950/30 px-md py-2">
           <div className="flex items-center gap-1.5">
-            <AlertTriangleIcon aria-hidden="true" className="h-3.5 w-3.5 text-rose-400" />
+            <AlertTriangle aria-hidden="true" className="h-3.5 w-3.5 text-rose-400" />
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-300">
               DEV warning
             </span>
@@ -111,11 +112,11 @@ export const DevWarningConnection = ({ content }: Props) => (
           {/* Mismatch arrow */}
           <div aria-hidden="true" className="flex items-center justify-center">
             <span className="inline-flex flex-col items-center gap-1 px-2 text-rose-600 dark:text-rose-300">
-              <ArrowRightIcon className="hidden sm:block h-5 w-5" />
+              <ArrowRight className="hidden sm:block h-5 w-5" aria-hidden="true" />
               <span className="text-[9px] font-mono font-bold uppercase tracking-wider">
                 {content.mismatchLabel}
               </span>
-              <ArrowRightIcon className="sm:hidden h-5 w-5 rotate-90" />
+              <ArrowRight className="sm:hidden h-5 w-5 rotate-90" aria-hidden="true" />
             </span>
           </div>
 

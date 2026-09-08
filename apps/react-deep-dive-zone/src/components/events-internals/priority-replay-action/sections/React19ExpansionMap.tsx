@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, CornerDownRight, Map, Rocket } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import { AtomIcon, CornerDownRightIcon, MapIcon, RocketIcon } from '../icons';
 
 type Props = { content: AdvancedWrapupContent['expansionMap'] };
 
@@ -13,7 +14,7 @@ export const React19ExpansionMap = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -37,7 +38,7 @@ export const React19ExpansionMap = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15"
           >
-            <AtomIcon className="h-4 w-4" />
+            <Atom className="h-4 w-4" aria-hidden="true" />
           </span>
           <code className="font-mono text-sm sm:text-md font-bold whitespace-nowrap">
             {content.centerLabel}
@@ -47,7 +48,10 @@ export const React19ExpansionMap = ({ content }: Props) => (
 
       {/* Connector */}
       <div aria-hidden="true" className="flex justify-center mb-md">
-        <CornerDownRightIcon className="h-5 w-5 text-blue-500 dark:text-blue-300 -rotate-12" />
+        <CornerDownRight
+          className="h-5 w-5 text-blue-500 dark:text-blue-300 -rotate-12"
+          aria-hidden="true"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-start">
@@ -64,7 +68,7 @@ export const React19ExpansionMap = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-blue-500 text-white dark:bg-blue-400 dark:text-slate-900"
             >
-              <AtomIcon className="h-4 w-4" />
+              <Atom className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               {content.leftTitle}
@@ -109,7 +113,7 @@ export const React19ExpansionMap = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900"
             >
-              <RocketIcon className="h-4 w-4" />
+              <Rocket className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
               {content.rightTitle}

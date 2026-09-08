@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, MessageSquare, Quote, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent } from '../content';
-import { AlertTriangleIcon, MessageSquareIcon, QuoteIcon, SparkIcon } from '../icons';
 import { LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['comment'] };
@@ -15,7 +16,7 @@ export const CommentSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<MessageSquareIcon className="h-5 w-5" />}
+        icon={<MessageSquare className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg items-start">
@@ -60,7 +61,7 @@ export const CommentSection = ({ content }: Props) => {
                   'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',
                 )}
               >
-                <QuoteIcon className="h-4 w-4" />
+                <Quote className="h-4 w-4" aria-hidden="true" />
               </span>
               <p className="text-xsm sm:text-sm leading-relaxed text-emerald-900 dark:text-emerald-100 break-keep">
                 {content.interpretation}
@@ -77,7 +78,7 @@ export const CommentSection = ({ content }: Props) => {
             )}
           >
             <div className="flex items-start gap-2">
-              <SparkIcon
+              <Sparkles
                 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400"
                 aria-hidden="true"
               />
@@ -97,7 +98,7 @@ export const CommentSection = ({ content }: Props) => {
             aria-label="caution"
           >
             <div className="flex items-start gap-2">
-              <AlertTriangleIcon
+              <AlertTriangle
                 className="mt-0.5 h-4 w-4 shrink-0 text-slate-500 dark:text-slate-400"
                 aria-hidden="true"
               />

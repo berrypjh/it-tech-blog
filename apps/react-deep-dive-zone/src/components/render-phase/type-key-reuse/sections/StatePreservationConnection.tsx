@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronDown,
+  Link,
+  Link2Off,
+  ShieldCheck,
+  Trash2,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { StatePreserveSide, TypeKeyReuseContent } from '../content';
 import { facetFor, type SemanticFacet } from '../facets';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  Link2OffIcon,
-  LinkIcon,
-  ShieldCheckIcon,
-  Trash2Icon,
-} from '../icons';
 
 type Props = { content: TypeKeyReuseContent['statePreserve'] };
 
@@ -27,13 +28,13 @@ export const StatePreservationConnection = ({ content }: Props) => (
       id="state-preservation"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.4fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
       <article className="flex items-start gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <ToneIconBox tone="teal" size="md">
-          <LinkIcon className="h-5 w-5" />
+          <Link className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] font-bold break-keep">
           {content.description}
@@ -75,7 +76,11 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
             t.chip,
           )}
         >
-          {isReuse ? <ShieldCheckIcon className="h-5 w-5" /> : <Trash2Icon className="h-5 w-5" />}
+          {isReuse ? (
+            <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Trash2 className="h-5 w-5" aria-hidden="true" />
+          )}
         </span>
       </header>
 
@@ -94,10 +99,14 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
             t.text,
           )}
         >
-          {isReuse ? <CheckCircleIcon className="h-4 w-4" /> : <Link2OffIcon className="h-4 w-4" />}
+          {isReuse ? (
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+          ) : (
+            <Link2Off className="h-4 w-4" aria-hidden="true" />
+          )}
           {isReuse ? '재사용' : '교체'}
-          <ChevronDownIcon className="md:hidden h-4 w-4" />
-          <ArrowRightIcon className="hidden md:block h-4 w-4 rotate-90" />
+          <ChevronDown className="md:hidden h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="hidden md:block h-4 w-4 rotate-90" aria-hidden="true" />
         </span>
       </div>
 

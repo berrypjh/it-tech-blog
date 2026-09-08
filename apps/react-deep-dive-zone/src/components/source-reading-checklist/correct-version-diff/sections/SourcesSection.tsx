@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BookOpen, ListTree, Megaphone, Newspaper, Tag } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent } from '../content';
-import { BookOpenIcon, ListTreeIcon, MegaphoneIcon, NewspaperIcon, TagIcon } from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['sources'] };
 
 const sourceIcon = {
-  megaphone: MegaphoneIcon,
-  newspaper: NewspaperIcon,
-  listTree: ListTreeIcon,
-  tag: TagIcon,
+  megaphone: Megaphone,
+  newspaper: Newspaper,
+  listTree: ListTree,
+  tag: Tag,
 } as const;
 
 export const SourcesSection = ({ content }: Props) => {
@@ -21,7 +22,7 @@ export const SourcesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BookOpenIcon className="h-5 w-5" />}
+        icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">

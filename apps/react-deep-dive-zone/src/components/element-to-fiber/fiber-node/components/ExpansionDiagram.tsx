@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Box, Hexagon } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
-import { ArrowDownIcon, ArrowRightIcon, BoxIcon, HexagonIcon } from '../icons';
 
 type Props = {
   elementTitle: string;
@@ -40,7 +41,7 @@ export const ExpansionDiagram = ({
         eyebrow="source"
         title={elementTitle}
         fields={elementFields}
-        icon={<BoxIcon className="h-5 w-5" />}
+        icon={<Box className="h-5 w-5" aria-hidden="true" />}
         size={size}
       />
       <ExpansionArrow />
@@ -49,7 +50,7 @@ export const ExpansionDiagram = ({
         eyebrow="expanded"
         title={fiberTitle}
         fields={fiberFields}
-        icon={<HexagonIcon className="h-5 w-5" />}
+        icon={<Hexagon className="h-5 w-5" aria-hidden="true" />}
         size={size}
         showCount
       />
@@ -133,8 +134,8 @@ const ExpansionArrow = () => (
   <div className="flex items-center justify-center" aria-hidden="true">
     <div className="flex flex-col items-center gap-1">
       <ToneIconBox tone="sky" size="md">
-        <ArrowDownIcon className="h-5 w-5 lg:hidden" />
-        <ArrowRightIcon className="h-5 w-5 hidden lg:block" />
+        <ArrowDown className="h-5 w-5 lg:hidden" aria-hidden="true" />
+        <ArrowRight className="h-5 w-5 hidden lg:block" aria-hidden="true" />
       </ToneIconBox>
       <span
         className={cn(

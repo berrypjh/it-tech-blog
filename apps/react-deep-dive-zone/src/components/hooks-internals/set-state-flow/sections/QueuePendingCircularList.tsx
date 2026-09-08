@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Network, RotateCw } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CircularStage, SetStateFlowContent } from '../content';
-import { ArrowRightIcon, NetworkIcon, RotateCwIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['queueCircular'] };
 
@@ -37,7 +38,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
           <code className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--term-muted)]">
             queue.pending
           </code>
-          <ArrowRightIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
+          <ArrowRight aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
           <code className="inline-flex items-center rounded-lg border-2 border-amber-300/80 bg-amber-50 px-3 py-1.5 font-mono text-xsm font-bold text-amber-700 dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-200">
             null
           </code>
@@ -55,7 +56,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
               aria-hidden="true"
               className="absolute -right-9 -top-2 inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cyan-400/70 bg-white dark:bg-slate-950/60"
             >
-              <RotateCwIcon className="h-4 w-4 text-cyan-500 dark:text-cyan-300" />
+              <RotateCw className="h-4 w-4 text-cyan-500 dark:text-cyan-300" aria-hidden="true" />
             </span>
           </div>
           <span className="text-[10px] font-mono text-cyan-700 dark:text-cyan-300 mt-2">
@@ -84,7 +85,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
                     {isLast && <span className="ml-1 text-[9px] font-mono opacity-80">(last)</span>}
                   </code>
                   {!isLast && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className="h-3.5 w-3.5 text-[var(--term-muted)]"
                     />
@@ -95,7 +96,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
           </div>
           {/* circular indicator */}
           <div className="flex items-center gap-1.5 text-cyan-700 dark:text-cyan-300">
-            <RotateCwIcon aria-hidden="true" className="h-3.5 w-3.5" />
+            <RotateCw aria-hidden="true" className="h-3.5 w-3.5" />
             <span className="text-[10px] font-mono">
               {stage.nodes[stage.nodes.length - 1]} → {stage.nodes[0]}
             </span>
@@ -118,7 +119,7 @@ export const QueuePendingCircularList = ({ content }: Props) => (
       id="queue-circular"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">

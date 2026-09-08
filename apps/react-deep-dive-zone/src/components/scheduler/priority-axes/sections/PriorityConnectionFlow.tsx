@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Network, Sparkles } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ThreePriorityAxesContent } from '../content';
-import { NetworkIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['connection'] };
 
@@ -69,7 +70,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,4fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -143,7 +144,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.3)] dark:bg-blue-500"
           >
-            <SparklesIcon className="h-5 w-5" strokeWidth={2.2} />
+            <Sparkles className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <p className="text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
             {content.explanation.title}
@@ -184,7 +185,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-teal-200/80 bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:border-teal-800/60 dark:text-teal-200"
           >
-            <SparklesIcon className="h-3.5 w-3.5" />
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
         </header>
 

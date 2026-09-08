@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Lightbulb, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent } from '../content';
-import { CheckCircleIcon, LightbulbIcon, SparklesIcon } from '../icons';
 
 type Props = {
   quiz: BeforeMutationContent['quiz'];
@@ -15,7 +16,7 @@ export const BeforeMutationQuizSection = ({ quiz }: Props) => (
       id="mini-quiz"
       eyebrow={quiz.eyebrow}
       title={quiz.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -26,12 +27,16 @@ export const BeforeMutationQuizSection = ({ quiz }: Props) => (
         tone="emerald"
         eyebrow="answer"
         badge="A"
-        icon={<CheckCircleIcon className="h-5 w-5" />}
+        icon={<CheckCircle2 className="h-5 w-5" aria-hidden="true" />}
         emphasis
       >
         {quiz.answer}
       </QuizCard>
-      <QuizCard tone="amber" eyebrow="tip" badge={<LightbulbIcon className="h-5 w-5" />}>
+      <QuizCard
+        tone="amber"
+        eyebrow="tip"
+        badge={<Lightbulb className="h-5 w-5" aria-hidden="true" />}
+      >
         {quiz.tip}
       </QuizCard>
     </div>

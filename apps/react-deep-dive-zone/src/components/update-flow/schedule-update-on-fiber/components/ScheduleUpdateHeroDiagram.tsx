@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Network, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ScheduleUpdateOnFiberContent } from '../content';
-import { NetworkIcon, ZapIcon } from '../icons';
 
 type Props = { content: ScheduleUpdateOnFiberContent['hero']; className?: string };
 
@@ -77,7 +78,7 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
     >
       <div className="flex items-center gap-sm">
         <ToneIconBox tone={tone} size="sm">
-          <NetworkIcon className="h-4 w-4" />
+          <Network className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {title}
@@ -89,7 +90,7 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
               t.chip,
             )}
           >
-            <ZapIcon aria-hidden="true" className="h-3 w-3" />
+            <Zap aria-hidden="true" className="h-3 w-3" />
             {badge}
           </span>
         ) : (

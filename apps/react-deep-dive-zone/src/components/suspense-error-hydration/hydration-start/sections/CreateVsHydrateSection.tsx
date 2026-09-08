@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, PlugZap } from 'lucide-react';
+
 import type { HydrationStartContent } from '../content';
-import { BoxIcon, PlugZapIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -26,7 +27,7 @@ export const CreateVsHydrateSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <BoxIcon className="h-4 w-4" />
+            <Box className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-mono font-bold text-blue-700 dark:text-blue-200">
             {content.createRoot.name}
@@ -68,7 +69,7 @@ export const CreateVsHydrateSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-teal-200 bg-teal-100 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/60 dark:text-teal-200"
           >
-            <PlugZapIcon className="h-4 w-4" />
+            <PlugZap className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-mono font-bold text-teal-700 dark:text-teal-200">
             {content.hydrateRoot.name}

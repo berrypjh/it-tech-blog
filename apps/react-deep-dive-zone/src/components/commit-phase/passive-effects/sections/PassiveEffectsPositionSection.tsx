@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Clock, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent, PositionStep } from '../content';
-import { ArrowDownIcon, ClockIcon, TargetIcon } from '../icons';
 
 type Props = { content: PassiveEffectsContent['position'] };
 
@@ -18,7 +19,7 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.3fr)_minmax(0,_0.7fr)] gap-3">
@@ -33,7 +34,7 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-2 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -67,7 +68,7 @@ const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['call
           t.fill.text,
         )}
       >
-        <ClockIcon className="h-7 w-7" />
+        <Clock className="h-7 w-7" aria-hidden="true" />
       </span>
       <p className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         <span className="block">{callout.line1}</span>

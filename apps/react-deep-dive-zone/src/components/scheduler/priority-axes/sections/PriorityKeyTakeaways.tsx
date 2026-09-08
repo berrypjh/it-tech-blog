@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Layers, Trophy, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ThreePriorityAxesContent, Tone } from '../content';
-import { ClockIcon, LayersIcon, TrophyIcon, ZapIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['takeaways'] };
 
@@ -53,7 +54,7 @@ const toneIconWash: Record<Tone, string> = {
   rose: 'text-rose-300/70 dark:text-rose-700/60',
 };
 
-const cardIcons = [ZapIcon, LayersIcon, ClockIcon];
+const cardIcons = [Zap, Layers, Clock3];
 
 export const PriorityKeyTakeaways = ({ content }: Props) => (
   <section aria-labelledby="heading-takeaways">
@@ -62,12 +63,12 @@ export const PriorityKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? TrophyIcon;
+        const Icon = cardIcons[i] ?? Trophy;
         return (
           <li key={card.title} className="h-full">
             <article

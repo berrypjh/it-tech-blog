@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberStateNodeContent } from '../content';
-import { AlertTriangleIcon, CheckCircleIcon, XCircleIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['misconception'] };
 
@@ -17,7 +18,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<AlertTriangleIcon className="h-5 w-5" />}
+      icon={<AlertTriangle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
@@ -37,7 +38,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
               'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-200',
             )}
           >
-            <XCircleIcon className="h-5 w-5" />
+            <XCircle className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="inline-flex items-center rounded-full border border-rose-300/80 bg-rose-100/80 dark:bg-rose-950/60 dark:border-rose-800/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-200">
             {content.misLabel}
@@ -72,7 +73,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
               'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-700/70',
             )}
           >
-            <AlertTriangleIcon className="h-6 w-6" />
+            <AlertTriangle className="h-6 w-6" aria-hidden="true" />
           </span>
           <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 break-keep text-center">
             {content.centerText}
@@ -103,7 +104,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
               'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-200',
             )}
           >
-            <CheckCircleIcon className="h-5 w-5" />
+            <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="inline-flex items-center rounded-full border border-emerald-300/80 bg-emerald-100/80 dark:bg-emerald-950/60 dark:border-emerald-800/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-200">
             {content.correctLabel}

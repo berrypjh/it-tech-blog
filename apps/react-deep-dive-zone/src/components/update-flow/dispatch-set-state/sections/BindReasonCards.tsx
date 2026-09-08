@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Link2, ShieldCheck } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent } from '../content';
-import { bindReasonIconByName, Link2Icon } from '../icons';
+
+const bindReasonIconByName = {
+  box: Box,
+  link: Link2,
+  shield: ShieldCheck,
+} as const;
 
 type Props = { content: DispatchSetStateContent['bindReasons'] };
 
@@ -15,7 +22,7 @@ export const BindReasonCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<Link2Icon className="h-5 w-5" />}
+      icon={<Link2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

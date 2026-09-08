@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Globe, Table2 } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchSelectionContent } from '../content';
-import { GlobeIcon, TableIcon } from '../icons';
 import { priorityBadge, priorityText } from '../priorityStyle';
 
 type Props = { content: DispatchSelectionContent['table'] };
@@ -14,7 +15,7 @@ export const EventPriorityTable = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TableIcon className="h-5 w-5" />}
+      icon={<Table2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -32,7 +33,7 @@ export const EventPriorityTable = ({ content }: Props) => (
                 className="px-md py-3 text-left font-mono font-bold uppercase tracking-wider text-[10px] sm:text-xsm text-blue-800 dark:text-blue-200 border-b border-blue-200/80 dark:border-blue-800/50"
               >
                 <span className="inline-flex items-center gap-2">
-                  <GlobeIcon aria-hidden="true" className="h-3.5 w-3.5" />
+                  <Globe aria-hidden="true" className="h-3.5 w-3.5" />
                   {content.columns.native}
                 </span>
               </th>

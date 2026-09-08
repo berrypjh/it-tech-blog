@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Move, Pencil, Trash2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import type { EffectKind, RepresentativeFlagCard } from '../content';
-import { MoveIcon, PencilIcon, TrashIcon } from '../icons';
 
 import { EFFECT_NEUTRAL, effectBorder, effectText } from './effectStyles';
 
@@ -13,9 +14,9 @@ type Props = {
 };
 
 const iconMap: Record<EffectKind, React.ComponentType<{ className?: string }>> = {
-  placement: MoveIcon,
-  update: PencilIcon,
-  childDeletion: TrashIcon,
+  placement: Move,
+  update: Pencil,
+  childDeletion: Trash2,
 };
 
 export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {

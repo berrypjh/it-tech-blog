@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementOwnerDevInfoContent } from '../content';
-import { LayersIcon, SparklesIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['debug'] };
 
 const iconMap = {
-  stack: LayersIcon,
-  task: WorkflowIcon,
+  stack: Layers,
+  task: Workflow,
 } as const;
 
 export const DebugMetaInfoCards = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
@@ -53,6 +54,8 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
       })}
     </ul>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.summary}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.summary}
+    </SectionNote>
   </section>
 );

@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Network, ScanSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CrossPackageStep, FollowPackageBoundaryContent } from '../content';
-import { ArrowDownIcon, NetworkIcon, ScanSearchIcon } from '../icons';
 import { getPackageClasses, PackageBadge } from '../PackageBadge';
 
 type Props = { content: FollowPackageBoundaryContent['crossPackage'] };
@@ -22,7 +23,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NetworkIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
@@ -83,7 +84,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
                             aria-hidden="true"
                             className="flex items-center justify-center py-0.5"
                           >
-                            <ArrowDownIcon className="h-3.5 w-3.5 text-cyan-500" />
+                            <ArrowDown className="h-3.5 w-3.5 text-cyan-500" aria-hidden="true" />
                           </span>
                         )}
                       </Fragment>
@@ -104,7 +105,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
                     'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
                   )}
                 >
-                  <ScanSearchIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                  <ScanSearch className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                   <div className="flex flex-col">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 dark:text-amber-300">
                       {content.readingPointLabel}

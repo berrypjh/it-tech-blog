@@ -1,14 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, Split, Target } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HooksEntryFlowContent, Tone } from '../content';
-import { CodeIcon, SplitIcon, TargetIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['hero']; className?: string };
 
-const stepIcons = [CodeIcon, SplitIcon, TargetIcon] as const;
+const stepIcons = [Code2, Split, Target] as const;
 
 /**
  * Hero 핵심 비주얼.
@@ -37,7 +38,7 @@ export const HooksEntryHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm">
         <header className="flex items-center gap-sm" aria-hidden="true">
           <ToneIconBox tone="cyan" size="sm">
-            <CodeIcon className="h-[18px] w-[18px]" />
+            <Code2 className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.rightCard.title}
@@ -51,7 +52,7 @@ export const HooksEntryHeroDiagram = ({ content, className }: Props) => {
         <ol className="flex flex-col gap-sm" aria-hidden="true">
           {content.rightCard.steps.map((step, i) => (
             <li key={step.label} className="flex flex-col gap-sm">
-              <StepRow label={step.label} tone={step.tone} icon={stepIcons[i] ?? CodeIcon} />
+              <StepRow label={step.label} tone={step.tone} icon={stepIcons[i] ?? Code2} />
               {i < content.rightCard.steps.length - 1 && <DownArrow />}
             </li>
           ))}
@@ -68,7 +69,7 @@ const StepRow = ({
 }: {
   label: string;
   tone: Tone;
-  icon: typeof CodeIcon;
+  icon: typeof Code2;
 }) => {
   const t = toneTokens[tone];
   return (

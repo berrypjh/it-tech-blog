@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cpu, Gauge, Keyboard, Loader2, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent, YieldAccent } from '../content';
-import { CpuIcon, GaugeIcon, KeyboardIcon, LoaderIcon, ZapIcon } from '../icons';
 import { yldCardBorder, yldIconBox, yldTextStrong } from '../yieldAccent';
 
 type Props = { content: RenderYieldingContent['problem'] };
 
-const cardIcon: Record<YieldAccent, typeof CpuIcon> = {
-  blue: CpuIcon,
-  teal: GaugeIcon,
-  violet: LoaderIcon,
-  emerald: ZapIcon,
-  rose: KeyboardIcon,
+const cardIcon: Record<YieldAccent, typeof Cpu> = {
+  blue: Cpu,
+  teal: Gauge,
+  violet: Loader2,
+  emerald: Zap,
+  rose: Keyboard,
 };
 
 export const LongRenderProblem = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const LongRenderProblem = ({ content }: Props) => (
       eyebrow={content.title}
       title={content.title}
       description={content.mainCopy}
-      icon={<LoaderIcon className="h-5 w-5" />}
+      icon={<Loader2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -41,7 +42,10 @@ export const LongRenderProblem = ({ content }: Props) => (
             {content.timelineTitle}
           </h3>
           <span className="inline-flex items-center gap-1 rounded-full border border-rose-300/80 bg-rose-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-800 dark:border-rose-700/70 dark:bg-rose-950/40 dark:text-rose-200">
-            <LoaderIcon className="h-3 w-3 motion-safe:animate-spin motion-reduce:animate-none" />
+            <Loader2
+              className="h-3 w-3 motion-safe:animate-spin motion-reduce:animate-none"
+              aria-hidden="true"
+            />
             {content.busyLabel}
           </span>
         </header>
@@ -66,7 +70,7 @@ export const LongRenderProblem = ({ content }: Props) => (
           {/* input marker */}
           <div className="flex items-center gap-2">
             <span className="font-mono text-[10px] uppercase tracking-wider text-rose-700 dark:text-rose-300 inline-flex items-center gap-1">
-              <KeyboardIcon className="h-3 w-3" />
+              <Keyboard className="h-3 w-3" aria-hidden="true" />
               {content.badInputLabel}
             </span>
             <span className="flex-1 h-px border-t border-dashed border-rose-300 dark:border-rose-700/60" />

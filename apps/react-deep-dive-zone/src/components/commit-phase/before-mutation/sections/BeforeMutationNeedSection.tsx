@@ -2,18 +2,19 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, HelpCircle, MapPin, Save, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, MiniTimelineStep, WhyCardIcon } from '../content';
-import { ArrowRightIcon, HelpCircleIcon, MapPinIcon, SaveIcon, TargetIcon } from '../icons';
 
 type Props = { content: BeforeMutationContent['why'] };
 
-const iconMap: Record<WhyCardIcon, typeof MapPinIcon> = {
-  mapPin: MapPinIcon,
-  save: SaveIcon,
-  target: TargetIcon,
+const iconMap: Record<WhyCardIcon, typeof MapPin> = {
+  mapPin: MapPin,
+  save: Save,
+  target: Target,
 };
 
 export const BeforeMutationNeedSection = ({ content }: Props) => (
@@ -27,7 +28,7 @@ export const BeforeMutationNeedSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
@@ -74,8 +75,8 @@ const MiniTimeline = ({ steps }: { steps: MiniTimelineStep[] }) => (
               aria-hidden="true"
               className="flex md:items-center justify-center text-[var(--term-dim)]"
             >
-              <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-              <ArrowRightIcon className="h-4 w-4 rotate-90 md:hidden my-1" />
+              <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+              <ArrowRight className="h-4 w-4 rotate-90 md:hidden my-1" aria-hidden="true" />
             </li>
           )}
         </Fragment>

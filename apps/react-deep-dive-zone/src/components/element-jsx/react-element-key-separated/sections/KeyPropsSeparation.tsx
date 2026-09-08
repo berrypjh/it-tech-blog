@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRightLeft, CheckCircle2, FileText, Key } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementKeySeparatedContent, SeparationCard } from '../content';
-import { ArrowRightLeftIcon, CheckCircleIcon, FileTextIcon, KeyIcon } from '../icons';
 
 type Props = { content: ReactElementKeySeparatedContent['separation'] };
 
 const iconMap = {
-  document: FileTextIcon,
-  key: KeyIcon,
+  document: FileText,
+  key: Key,
 } as const;
 
 export const KeyPropsSeparation = ({ content }: Props) => (
@@ -21,7 +22,7 @@ export const KeyPropsSeparation = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ArrowRightLeftIcon className="h-5 w-5" />}
+      icon={<ArrowRightLeft className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -97,7 +98,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
               aria-hidden="true"
               className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)] shrink-0 mt-0.5"
             >
-              <CheckCircleIcon className="h-3 w-3" />
+              <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">{check}</p>
           </li>

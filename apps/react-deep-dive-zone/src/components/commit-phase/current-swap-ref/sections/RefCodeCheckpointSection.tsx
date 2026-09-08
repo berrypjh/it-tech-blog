@@ -2,12 +2,13 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Code2, FileCode, PackageOpen } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CodeBlock, RootCurrentRefContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, CodeIcon, FileCodeIcon, PackageOpenIcon } from '../icons';
 
 type Props = { content: RootCurrentRefContent['checkpoint'] };
 
@@ -21,7 +22,7 @@ export const RefCodeCheckpointSection = ({ content }: Props) => (
       id="code-checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.65fr)_minmax(0,_1.75fr)] gap-3">
@@ -29,12 +30,12 @@ export const RefCodeCheckpointSection = ({ content }: Props) => (
         rows={[
           {
             label: content.info.fileLabel,
-            icon: FileCodeIcon,
+            icon: FileCode,
             value: <PathList items={content.info.filePaths} mono />,
           },
           {
             label: content.info.watchLabel,
-            icon: PackageOpenIcon,
+            icon: PackageOpen,
             value: <PathList items={content.info.watchItems} />,
           },
         ]}
@@ -83,7 +84,7 @@ const PanelArea = ({ title, blocks }: { title: string; blocks: CodeBlock[] }) =>
               aria-hidden="true"
               className="flex items-center justify-center text-[var(--term-dim)]"
             >
-              <ArrowRightIcon className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </div>
           )}
         </Fragment>
@@ -97,7 +98,7 @@ const PanelArea = ({ title, blocks }: { title: string; blocks: CodeBlock[] }) =>
           <CodeBlockCard block={block} />
           {idx < blocks.length - 1 && (
             <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
-              <ArrowDownIcon className="h-4 w-4" />
+              <ArrowDown className="h-4 w-4" aria-hidden="true" />
             </span>
           )}
         </li>

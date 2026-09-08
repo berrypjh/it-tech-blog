@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, HelpCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StateUpdateStartContent } from '../content';
-import { CheckCircleIcon, HelpCircleIcon } from '../icons';
 
 type Props = { content: StateUpdateStartContent['question'] };
 
@@ -16,7 +17,7 @@ export const LearningQuestionSection = ({ content }: Props) => (
       id="question"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -66,7 +67,7 @@ export const LearningQuestionSection = ({ content }: Props) => (
               emerald.fill.bg,
             )}
           >
-            <CheckCircleIcon
+            <CheckCircle2
               aria-hidden="true"
               className={cn('mt-0.5 h-5 w-5 shrink-0', emerald.text)}
             />

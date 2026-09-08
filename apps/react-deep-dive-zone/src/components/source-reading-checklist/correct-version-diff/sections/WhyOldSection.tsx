@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock, Replace, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent } from '../content';
-import { ArrowRightIcon, ClockIcon, ReplaceIcon, TargetIcon } from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['whyOld'] };
 
@@ -14,7 +15,7 @@ export const WhyOldSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ClockIcon className="h-5 w-5" />}
+        icon={<Clock className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -51,7 +52,7 @@ export const WhyOldSection = ({ content }: Props) => {
                     'dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200',
                   )}
                 >
-                  <ReplaceIcon className="h-3.5 w-3.5" />
+                  <Replace className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
 
@@ -75,7 +76,7 @@ export const WhyOldSection = ({ content }: Props) => {
                   >
                     {card.before}
                   </code>
-                  <ArrowRightIcon className="h-3 w-3 text-blue-500 shrink-0" aria-hidden="true" />
+                  <ArrowRight className="h-3 w-3 text-blue-500 shrink-0" aria-hidden="true" />
                   <code
                     className={cn(
                       'inline-flex items-center rounded-md border-2 px-1.5 py-0.5',
@@ -109,7 +110,7 @@ export const WhyOldSection = ({ content }: Props) => {
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}
         >
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </span>
         <p className="text-md sm:text-lg lg:text-xl font-bold leading-snug break-keep">
           <span className="block text-slate-300">{content.bannerLines[0]}</span>

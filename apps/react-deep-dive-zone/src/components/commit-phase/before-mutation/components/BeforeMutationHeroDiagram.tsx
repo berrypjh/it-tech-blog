@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Camera, Eye } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, PhaseTimelineStep } from '../content';
-import { CameraIcon, EyeIcon } from '../icons';
 
 type Props = { content: BeforeMutationContent['hero']; className?: string };
 
@@ -93,7 +94,7 @@ const SnapshotStep = ({ label }: { label: string }) => (
     aria-hidden="true"
   >
     <ToneIconBox tone="teal" size="sm">
-      <CameraIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <Camera className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}>
       {label}
@@ -114,7 +115,7 @@ const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
     >
       <ToneIconBox tone={tone} size="sm">
         {step.active ? (
-          <EyeIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Eye className="h-[18px] w-[18px]" aria-hidden="true" />
         ) : (
           <span className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} aria-hidden="true" />
         )}

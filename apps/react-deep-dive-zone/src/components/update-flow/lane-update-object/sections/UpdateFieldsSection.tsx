@@ -1,10 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Crosshair, Gauge, Link2, Package, Sparkles, Undo2, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LaneUpdateObjectContent } from '../content';
-import { PackageIcon, updateFieldIconByName } from '../icons';
+
+const updateFieldIconByName = {
+  crosshair: Crosshair,
+  zap: Zap,
+  undo: Undo2,
+  gauge: Gauge,
+  sparkles: Sparkles,
+  link: Link2,
+} as const;
 
 type Props = { content: LaneUpdateObjectContent['fields'] };
 
@@ -15,7 +25,7 @@ export const UpdateFieldsSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<PackageIcon className="h-5 w-5" />}
+      icon={<Package className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

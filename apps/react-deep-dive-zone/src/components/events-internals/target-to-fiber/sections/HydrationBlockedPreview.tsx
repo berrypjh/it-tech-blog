@@ -2,9 +2,10 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Droplet, Shield } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TargetFiberContent } from '../content';
-import { ArrowRightIcon, DropletIcon, ShieldIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['hydration'] };
 
@@ -15,7 +16,7 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<DropletIcon className="h-5 w-5" />}
+      icon={<Droplet className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -47,7 +48,7 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
               'bg-violet-500 text-white shadow-[0_3px_0_rgba(124,58,237,0.35)] dark:bg-violet-400 dark:text-slate-900',
             )}
           >
-            <ShieldIcon className="h-5 w-5" />
+            <Shield className="h-5 w-5" aria-hidden="true" />
           </span>
           <code className="font-mono text-xsm sm:text-sm font-bold text-violet-700 dark:text-violet-200">
             {content.centerLabel}
@@ -70,7 +71,7 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
           )}
         >
           <span className="break-keep">{content.button.label}</span>
-          <ArrowRightIcon
+          <ArrowRight
             aria-hidden="true"
             className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
           />

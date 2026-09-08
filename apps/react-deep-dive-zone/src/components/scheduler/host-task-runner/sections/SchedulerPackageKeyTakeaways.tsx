@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Cpu, Package, Trophy, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { PkgAccent, SchedulerPackageContent } from '../content';
-import { ClockIcon, CpuIcon, PackageIcon, TrophyIcon, ZapIcon } from '../icons';
 import { pkgCardBorder, pkgIconBox, pkgNumberBadge, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['takeaways'] };
 
-const cardIcon: Record<PkgAccent, typeof ZapIcon> = {
-  blue: CpuIcon,
-  teal: PackageIcon,
-  violet: ClockIcon,
-  slate: ZapIcon,
-  amber: ZapIcon,
+const cardIcon: Record<PkgAccent, typeof Zap> = {
+  blue: Cpu,
+  teal: Package,
+  violet: Clock3,
+  slate: Zap,
+  amber: Zap,
 };
 
 const iconWash: Record<PkgAccent, string> = {
@@ -30,7 +31,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">

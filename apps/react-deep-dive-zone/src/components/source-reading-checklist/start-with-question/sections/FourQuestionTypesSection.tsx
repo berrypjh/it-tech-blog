@@ -1,9 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, GitBranch, History, ListChecks, Plug } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { ListChecksIcon, readingTypeIcon } from '../icons';
+
+const readingTypeIcon = {
+  plug: Plug,
+  boxes: Boxes,
+  gitBranch: GitBranch,
+  history: History,
+} as const;
 
 type Props = { content: StartWithQuestionContent['readingTypes'] };
 
@@ -19,7 +27,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<ListChecksIcon className="h-5 w-5" />}
+        icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">

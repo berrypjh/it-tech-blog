@@ -1,20 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, FileSearch, GitFork, ListChecks, RefreshCw, ScanSearch } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RequestUpdateLaneContent } from '../content';
-import {
-  ClockIcon,
-  FileSearchIcon,
-  GitForkIcon,
-  ListChecksIcon,
-  RefreshIcon,
-  ScanSearchIcon,
-} from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['mission'] };
 
-const missionIcons = [FileSearchIcon, ClockIcon, ScanSearchIcon, RefreshIcon];
+const missionIcons = [FileSearch, Clock3, ScanSearch, RefreshCw];
 
 export const RequestUpdateLaneMission = ({ content }: Props) => (
   <section aria-labelledby="heading-mission">
@@ -23,12 +17,12 @@ export const RequestUpdateLaneMission = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.cards.map((m, i) => {
-        const Icon = missionIcons[i] ?? GitForkIcon;
+        const Icon = missionIcons[i] ?? GitFork;
         return (
           <li key={m.title} className="h-full">
             <article

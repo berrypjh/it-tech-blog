@@ -1,22 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Code2,
+  Lightbulb,
+  PlayCircle,
+  Search,
+  Split,
+  User,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksEntryFlowContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CodeIcon,
-  LightbulbIcon,
-  PlayCircleIcon,
-  SearchIcon,
-  SplitIcon,
-  UserIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: HooksEntryFlowContent['overview'] };
 
-const stepIcons = [UserIcon, CodeIcon, SearchIcon, SplitIcon, WorkflowIcon];
+const stepIcons = [User, Code2, Search, Split, Workflow];
 
 const toneCard: Record<Tone, string> = {
   sky: 'border-sky-300/80 bg-sky-50/70 text-sky-800 dark:border-sky-700/70 dark:bg-sky-950/40 dark:text-sky-100',
@@ -54,13 +55,13 @@ export const HookFlowOverview = ({ content }: Props) => (
       id="overview"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Flow cards: 5 horizontal on desktop, stacked vertical on mobile */}
     <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-stretch gap-2 sm:gap-3 relative">
       {content.steps.map((step, i) => {
-        const Icon = stepIcons[i] ?? PlayCircleIcon;
+        const Icon = stepIcons[i] ?? PlayCircle;
         const isLast = i === content.steps.length - 1;
         return (
           <li
@@ -100,13 +101,13 @@ export const HookFlowOverview = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}
@@ -133,7 +134,7 @@ export const HookFlowOverview = ({ content }: Props) => (
         aria-hidden="true"
         className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
       >
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
         <span className="font-bold">{content.highlight.label}: </span>

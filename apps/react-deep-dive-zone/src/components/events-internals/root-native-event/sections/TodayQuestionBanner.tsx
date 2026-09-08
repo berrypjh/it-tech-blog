@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Lightbulb } from 'lucide-react';
+
 import type { RootNativeEventContent } from '../content';
-import { HelpCircleIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: RootNativeEventContent['question'] };
 
@@ -23,7 +24,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">
@@ -51,7 +52,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-teal-200 bg-white text-teal-700 dark:border-teal-800/60 dark:bg-slate-950/40 dark:text-teal-200"
           >
-            <LightbulbIcon className="h-4 w-4" />
+            <Lightbulb className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
             {content.insight.label}

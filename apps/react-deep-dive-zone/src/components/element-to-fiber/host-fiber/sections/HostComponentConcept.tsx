@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Layers, Monitor } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent, TreeNode } from '../content';
-import { ArrowRightIcon, LayersIcon, MonitorIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['concept'] };
 
@@ -20,7 +21,7 @@ export const HostComponentConcept = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description1}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -49,7 +50,7 @@ export const HostComponentConcept = ({ content }: Props) => (
             )}
           >
             <ToneIconBox tone="sky" size="sm">
-              <ArrowRightIcon className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
             <code
               className={cn('font-mono text-xsm sm:text-sm font-bold break-keep', sky.fill.text)}
@@ -87,7 +88,7 @@ export const HostComponentConcept = ({ content }: Props) => (
             )}
           >
             <ToneIconBox tone="sky" size="md">
-              <MonitorIcon className="h-6 w-6" />
+              <Monitor className="h-6 w-6" aria-hidden="true" />
             </ToneIconBox>
             <div className="flex flex-col gap-0.5 min-w-0">
               <span

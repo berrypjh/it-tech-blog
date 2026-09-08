@@ -1,22 +1,41 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Anchor,
+  Box,
+  CircleCheck,
+  Clock,
+  Database,
+  FunctionSquare,
+  type LucideIcon,
+  Network,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, NotAllFilesContent } from '../content';
-import { DiagramIcon, flowIconByName } from '../icons';
+
+const stepIcon: Record<FlowStep['num'], LucideIcon> = {
+  '1': Anchor,
+  '2': FunctionSquare,
+  '3': Database,
+  '4': Clock,
+  '5': Box,
+  '6': CircleCheck,
+};
 
 type Props = { content: NotAllFilesContent['followFlow'] };
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
-  const Icon = flowIconByName[step.icon];
+  const Icon = stepIcon[step.num];
   return {
     id: step.num,
     number: step.num,
     title: step.title,
     body: step.description,
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -26,7 +45,7 @@ export const FollowQuestionFlow = ({ content }: Props) => (
       id="follow-flow"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<DiagramIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* 메인 질문 카드 */}

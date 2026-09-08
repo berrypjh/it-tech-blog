@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitBranch, HelpCircle, PlayCircle, Repeat } from 'lucide-react';
+
 import type { ListenerCollectionContent } from '../content';
-import { GitBranchIcon, HelpCircleIcon, PlayCircleIcon, RepeatIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['question'] };
 
-const badgeIcons = [GitBranchIcon, RepeatIcon, PlayCircleIcon];
+const badgeIcons = [GitBranch, Repeat, PlayCircle];
 
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
@@ -25,7 +26,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2 min-w-0 flex-1">
@@ -42,7 +43,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:min-w-[280px]">
         {content.badges.map((label, i) => {
-          const Icon = badgeIcons[i] ?? GitBranchIcon;
+          const Icon = badgeIcons[i] ?? GitBranch;
           return (
             <li
               key={label}

@@ -1,10 +1,28 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  Flag,
+  type LucideIcon,
+  Move,
+  Pencil,
+  Sparkles,
+  Trash2,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { ExampleCard, MarkChangesContent } from '../content';
-import { ArrowDownIcon, markIconByName, SparklesIcon } from '../icons';
+import type { ExampleCard, FlagCard, MarkChangesContent } from '../content';
 import { facetFor } from '../markFacet';
+
+const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
+  flag: Flag,
+  trash: Trash2,
+  pencil: Pencil,
+  zap: Zap,
+  move: Move,
+} as const;
 
 type Props = { content: MarkChangesContent['examples'] };
 
@@ -14,7 +32,7 @@ export const ChangeExamples = ({ content }: Props) => (
       id="examples"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -65,7 +83,7 @@ const Card = ({ card }: { card: ExampleCard }) => {
 
       <div className="flex flex-col gap-2">
         <TokenRow label="before" tokens={beforeTokens} mark={null} tone={card.tone} />
-        <ArrowDownIcon aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
+        <ArrowDown aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
         <TokenRow label="after" tokens={afterTokens} mark={mark} tone={card.tone} />
       </div>
 

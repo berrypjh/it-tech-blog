@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitBranch, MoveDown, MoveRight, MoveUp } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import { MiniPointerDiagram } from '../components/MiniPointerDiagram';
 import { pointerTone } from '../components/pointerStyles';
 import type { FiberTreePointersContent, PointerCard } from '../content';
-import { GitBranchIcon, MoveDownIcon, MoveRightIcon, MoveUpIcon } from '../icons';
 
 type Props = { content: FiberTreePointersContent['pointers'] };
 
 const iconMap = {
-  child: MoveDownIcon,
-  sibling: MoveRightIcon,
-  return: MoveUpIcon,
+  child: MoveDown,
+  sibling: MoveRight,
+  return: MoveUp,
 } as const;
 
 export const ThreeFiberPointers = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const ThreeFiberPointers = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

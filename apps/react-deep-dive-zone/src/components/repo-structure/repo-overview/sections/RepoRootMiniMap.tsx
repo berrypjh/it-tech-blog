@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 
+import { FileText, Folder, Map } from 'lucide-react';
+
 import { ToneDetailPanel } from '../../../shared/detail';
 import { RepoBrowserShell, RepoBrowserTree } from '../../../shared/repo-browser';
 import type { RepoOverviewContent } from '../content';
-import { FileTextIcon, FolderIcon, MapIcon } from '../icons';
 
 type Props = { content: RepoOverviewContent['miniMap'] };
 
@@ -20,7 +21,7 @@ export const RepoRootMiniMap = ({ content }: Props) => {
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
       repoLabel={content.treeHeader}
       statusLabel="public"
       tree={
@@ -34,7 +35,7 @@ export const RepoRootMiniMap = ({ content }: Props) => {
       detail={
         <ToneDetailPanel
           tone={detail.tone}
-          icon={isDir ? FolderIcon : FileTextIcon}
+          icon={isDir ? Folder : FileText}
           title={detail.title}
           badge={detail.badge}
           description={detail.description}

@@ -2,9 +2,10 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock3, Flag, Route, Trophy, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ResponseAccent, TransitionDeferredContent } from '../content';
-import { ArrowRightIcon, ClockIcon, FlagIcon, RouteIcon, TrophyIcon, ZapIcon } from '../icons';
 import {
   responseCardBorder,
   responseIconBox,
@@ -14,12 +15,12 @@ import {
 
 type Props = { content: TransitionDeferredContent['takeaways'] };
 
-const cardIcon: Record<ResponseAccent, typeof ZapIcon> = {
-  emerald: ZapIcon,
-  blue: ClockIcon,
-  violet: FlagIcon,
-  rose: ZapIcon,
-  teal: FlagIcon,
+const cardIcon: Record<ResponseAccent, typeof Zap> = {
+  emerald: Zap,
+  blue: Clock3,
+  violet: Flag,
+  rose: Zap,
+  teal: Flag,
 };
 
 const iconWash: Record<ResponseAccent, string> = {
@@ -37,7 +38,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-md items-stretch">
@@ -134,7 +135,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-white border border-white/30"
             >
-              <RouteIcon className="h-5 w-5" strokeWidth={2.2} />
+              <Route className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wider text-blue-100/80">
               {content.cta.eyebrow}
@@ -157,7 +158,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
             )}
           >
             <span className="break-keep">{content.cta.button}</span>
-            <ArrowRightIcon
+            <ArrowRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-1 motion-reduce:transform-none"
             />

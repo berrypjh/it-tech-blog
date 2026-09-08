@@ -1,9 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Code,
+  ExternalLink,
+  FlaskConical,
+  Folder,
+  type LucideIcon,
+  MessageCircle,
+  Tag,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { WhyOpenSourceContent } from '../content';
-import { CodeIcon, ExternalLinkIcon, priorityIconByName } from '../icons';
+import type { ReadingPriorityRow, WhyOpenSourceContent } from '../content';
+
+const rowIcon: Record<ReadingPriorityRow['id'], LucideIcon> = {
+  packages: Folder,
+  tests: FlaskConical,
+  issues: MessageCircle,
+  releases: Tag,
+};
 
 type Props = { content: WhyOpenSourceContent['readingPriorities'] };
 
@@ -14,13 +30,13 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
         id="priorities"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ol className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] divide-y divide-[var(--term-border)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
         {content.rows.map((row) => {
           const t = toneTokens[row.tone];
-          const Icon = priorityIconByName[row.icon];
+          const Icon = rowIcon[row.id];
           return (
             <li key={row.id} className="group transition-colors">
               <a
@@ -55,7 +71,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                     t.text,
                   )}
                 >
-                  <Icon className="h-[1.125rem] w-[1.125rem]" />
+                  <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
                 </span>
 
                 {/* 항목명 */}
@@ -74,7 +90,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                   aria-hidden="true"
                   className="text-[var(--term-accent)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 >
-                  <ExternalLinkIcon className="h-4 w-4" />
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </span>
 
                 {/* 모바일 전용 설명 (밑줄) */}

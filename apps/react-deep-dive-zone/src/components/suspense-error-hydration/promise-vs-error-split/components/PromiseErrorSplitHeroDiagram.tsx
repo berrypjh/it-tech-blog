@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Filter, Hourglass, Loader, TriangleAlert } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PromiseVsErrorSplitContent } from '../content';
-import { FilterIcon, HourglassIcon, LoaderIcon, TriangleAlertIcon } from '../icons';
 
 type Props = { content: PromiseVsErrorSplitContent['hero']; className?: string };
 
@@ -51,11 +52,11 @@ export const PromiseErrorSplitHeroDiagram = ({ content, className }: Props) => {
               badge={diagram.yesLabel}
               title={diagram.yesTitle}
               subtitle={diagram.yesSubtitle}
-              icon={<LoaderIcon className="h-4 w-4" />}
+              icon={<Loader className="h-4 w-4" aria-hidden="true" />}
               code={promiseCode.code}
               caption={promiseCode.label}
               pill={promiseCode.pill}
-              pillIcon={<HourglassIcon className="h-3 w-3" aria-hidden="true" />}
+              pillIcon={<Hourglass className="h-3 w-3" aria-hidden="true" />}
             />
           </li>
           <li>
@@ -64,11 +65,11 @@ export const PromiseErrorSplitHeroDiagram = ({ content, className }: Props) => {
               badge={diagram.noLabel}
               title={diagram.noTitle}
               subtitle={diagram.noSubtitle}
-              icon={<TriangleAlertIcon className="h-4 w-4" />}
+              icon={<TriangleAlert className="h-4 w-4" aria-hidden="true" />}
               code={errorCode.code}
               caption={errorCode.label}
               pill={errorCode.pill}
-              pillIcon={<TriangleAlertIcon className="h-3 w-3" aria-hidden="true" />}
+              pillIcon={<TriangleAlert className="h-3 w-3" aria-hidden="true" />}
             />
           </li>
         </ol>
@@ -88,7 +89,7 @@ const ClassifierHeader = ({
 }) => (
   <header className="flex items-center gap-sm">
     <ToneIconBox tone="blue" size="sm">
-      <FilterIcon className="h-[18px] w-[18px]" />
+      <Filter className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col">
       <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">

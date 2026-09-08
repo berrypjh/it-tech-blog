@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Info, XCircle } from 'lucide-react';
+
 import type { QuizCard, RecoveryModelOverviewContent } from '../content';
-import { CheckCircleIcon, InfoIcon, XCircleIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -56,12 +57,12 @@ const QuizCardView = ({
         {isAnswered &&
           (isCorrect ? (
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-200">
-              <CheckCircleIcon className="h-3 w-3" aria-hidden="true" />
+              <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
               {labels.correctLabel}
             </span>
           ) : (
             <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/40 dark:text-rose-200">
-              <XCircleIcon className="h-3 w-3" aria-hidden="true" />
+              <XCircle className="h-3 w-3" aria-hidden="true" />
               {labels.incorrectLabel}
             </span>
           ))}
@@ -115,13 +116,13 @@ const QuizCardView = ({
                     {opt.label}
                   </span>
                   {isAnswered && isAnswerHere && (
-                    <CheckCircleIcon
+                    <CheckCircle2
                       aria-hidden="true"
                       className="h-4 w-4 text-emerald-600 dark:text-emerald-300 shrink-0"
                     />
                   )}
                   {isAnswered && isPicked && !isAnswerHere && (
-                    <XCircleIcon
+                    <XCircle
                       aria-hidden="true"
                       className="h-4 w-4 text-rose-600 dark:text-rose-300 shrink-0"
                     />
@@ -143,7 +144,7 @@ const QuizCardView = ({
           )}
         >
           <span className="inline-flex items-center gap-1.5 font-bold mr-1">
-            <InfoIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            <Info className="h-3.5 w-3.5" aria-hidden="true" />
             {labels.explanationLabel} ·
           </span>
           {card.explanation}

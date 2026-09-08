@@ -1,12 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Boxes,
+  CheckCircle2,
+  ChevronRight,
+  type LucideIcon,
+  Monitor,
+  Sparkles,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, ReadingCard } from '../content';
-import { CheckCircleIcon, ChevronRightIcon, dvcIcon, SparklesIcon } from '../icons';
 
 type Props = { content: DvcContent['reading'] };
+
+const cardIcon: Record<ReadingCard['id'], LucideIcon> = {
+  common: Boxes,
+  dom: Monitor,
+};
 
 export const ReadingMethodSection = ({ content }: Props) => {
   return (
@@ -16,7 +29,7 @@ export const ReadingMethodSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
@@ -32,7 +45,7 @@ export const ReadingMethodSection = ({ content }: Props) => {
 
 const ReadingCardView = ({ card }: { card: ReadingCard }) => {
   const tone = toneTokens[card.tone];
-  const Icon = dvcIcon[card.iconName];
+  const Icon = cardIcon[card.id];
 
   return (
     <article
@@ -68,7 +81,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
             <span aria-hidden="true" className={cn('shrink-0 mt-0.5', tone.text)}>
-              <CheckCircleIcon className="h-3.5 w-3.5" />
+              <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span>{item}</span>
           </li>
@@ -88,10 +101,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
               {step}
             </span>
             {i < card.flow.length - 1 && (
-              <ChevronRightIcon
-                className="h-3.5 w-3.5 text-[var(--term-accent)]"
-                aria-hidden="true"
-              />
+              <ChevronRight className="h-3.5 w-3.5 text-[var(--term-accent)]" aria-hidden="true" />
             )}
           </li>
         ))}

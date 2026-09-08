@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, PauseCircle, PlayCircle, Repeat2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RenderYieldingContent } from '../content';
-import { CheckCircleIcon, PauseCircleIcon, PlayCircleIcon, Repeat2Icon } from '../icons';
 
 type Props = { content: RenderYieldingContent['hero']; className?: string };
 
@@ -38,10 +39,10 @@ export const RenderYieldingHeroDiagram = ({ content, className }: Props) => {
 
         <FrameCard
           tone="violet"
-          icon={<PauseCircleIcon className="h-[18px] w-[18px]" />}
+          icon={<PauseCircle className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={content.frame1.title}
           items={content.frame1.items}
-          badgeIcon={<PauseCircleIcon className="h-3 w-3" aria-hidden="true" />}
+          badgeIcon={<PauseCircle className="h-3 w-3" aria-hidden="true" />}
           badge={content.frame1.yieldBadge}
         />
 
@@ -49,10 +50,10 @@ export const RenderYieldingHeroDiagram = ({ content, className }: Props) => {
 
         <FrameCard
           tone="emerald"
-          icon={<PlayCircleIcon className="h-[18px] w-[18px]" />}
+          icon={<PlayCircle className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={content.frame2.title}
           items={content.frame2.items}
-          badgeIcon={<CheckCircleIcon className="h-3 w-3" aria-hidden="true" />}
+          badgeIcon={<CheckCircle2 className="h-3 w-3" aria-hidden="true" />}
           badge={content.frame2.continuationBadge}
         />
       </div>
@@ -125,7 +126,7 @@ const BridgeNote = ({ top, bottom }: { top: string; bottom: string }) => (
   <div className="flex flex-col items-center gap-1">
     <DownArrow />
     <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)] break-keep">
-      <Repeat2Icon className="h-3.5 w-3.5 text-[var(--term-accent)]" aria-hidden="true" />
+      <Repeat2 className="h-3.5 w-3.5 text-[var(--term-accent)]" aria-hidden="true" />
       {top} · {bottom}
     </span>
     <DownArrow />

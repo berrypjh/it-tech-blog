@@ -1,22 +1,37 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  FileCode2,
+  FileText,
+  GitPullRequest,
+  type LucideIcon,
+  Package,
+  Sparkles,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TraceStep } from '../content';
-import { iconByName, SparklesIcon } from '../icons';
+
+const stepIcon: Record<TraceStep['id'], LucideIcon> = {
+  note: FileText,
+  pr: GitPullRequest,
+  package: Package,
+  file: FileCode2,
+};
 
 type Props = { content: ChangelogContent['trace'] };
 
 const toFlowStep = (step: TraceStep): FlowStepItem => {
-  const Icon = iconByName[step.icon];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: step.number,
     title: step.title,
     body: step.description,
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -27,7 +42,7 @@ export const ChangeToCodeTrace = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />

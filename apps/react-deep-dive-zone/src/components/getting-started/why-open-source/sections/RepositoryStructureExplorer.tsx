@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 
+import { Folder, FolderOpen, Info } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { RepoBrowserShell, RepoBrowserTree } from '../../../shared/repo-browser';
 import type { WhyOpenSourceContent } from '../content';
-import { FolderIcon, FolderOpenIcon, InfoIcon } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['repoExplorer'] };
 
@@ -18,7 +19,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
       id="explorer"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FolderIcon className="h-5 w-5" />}
+      icon={<Folder className="h-5 w-5" aria-hidden="true" />}
       repoLabel={content.repoLabel}
       statusLabel="public"
       tree={
@@ -36,7 +37,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
             >
-              <FolderOpenIcon className="h-[1.125rem] w-[1.125rem]" />
+              <FolderOpen className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
             </span>
             <div className="flex flex-col">
               <h3 className="text-md sm:text-lg font-bold font-mono tracking-tight text-[var(--term-fg)]">
@@ -83,7 +84,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
             ))}
           </ul>
 
-          <SectionNote className="mt-auto" icon={<InfoIcon className="h-4 w-4" />}>
+          <SectionNote className="mt-auto" icon={<Info className="h-4 w-4" aria-hidden="true" />}>
             {detail.callout}
           </SectionNote>
         </>

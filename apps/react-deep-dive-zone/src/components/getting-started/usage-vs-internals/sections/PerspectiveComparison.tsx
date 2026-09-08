@@ -1,9 +1,10 @@
+import { Box } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { StepNumberBadge } from '../../../shared/step';
 import { formatInline } from '../../../shared/text';
 import type { UsageStep, UsageVsInternalsContent } from '../content';
-import { CubeWireframeIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['perspectives'] };
 
@@ -58,7 +59,7 @@ export const PerspectiveComparison = ({ content }: Props) => {
         id="perspectives"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CubeWireframeIcon className="h-5 w-5" />}
+        icon={<Box className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">

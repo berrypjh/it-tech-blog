@@ -1,29 +1,30 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  CheckCircle2,
+  Cog,
+  Gauge,
+  PauseCircle,
+  PlayCircle,
+  Target,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent, YieldAccent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  CogIcon,
-  GaugeIcon,
-  PauseCircleIcon,
-  PlayCircleIcon,
-  TargetIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 import { yldCardBorder, yldIconBox, yldNumberBadge, yldTextStrong } from '../yieldAccent';
 
 type Props = { content: RenderYieldingContent['workLoop'] };
 
-const stepIcon: Record<YieldAccent, typeof ZapIcon> = {
-  blue: TargetIcon,
-  teal: GaugeIcon,
-  violet: PauseCircleIcon,
-  emerald: PlayCircleIcon,
-  rose: CogIcon,
+const stepIcon: Record<YieldAccent, typeof Zap> = {
+  blue: Target,
+  teal: Gauge,
+  violet: PauseCircle,
+  emerald: PlayCircle,
+  rose: Cog,
 };
 
 export const SchedulerWorkLoopFlow = ({ content }: Props) => (
@@ -34,7 +35,7 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
       eyebrow={content.title}
       title={content.title}
       description={content.supportingCopy}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 items-stretch gap-3 sm:gap-4 relative">
@@ -86,19 +87,19 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
 
             {step.emphasis === 'check' && (
               <span className="inline-flex items-center self-start gap-1 rounded-full border border-teal-300/80 bg-teal-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-teal-800 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200">
-                <CheckCircleIcon className="h-3 w-3" />
+                <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
                 check
               </span>
             )}
             {step.emphasis === 'continue' && (
               <span className="inline-flex items-center self-start gap-1 rounded-full border border-emerald-300/80 bg-emerald-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200">
-                <PlayCircleIcon className="h-3 w-3" />
+                <PlayCircle className="h-3 w-3" aria-hidden="true" />
                 continue
               </span>
             )}
             {step.emphasis === 'yield' && (
               <span className="inline-flex items-center self-start gap-1 rounded-full border border-violet-300/80 bg-violet-50 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-violet-800 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200">
-                <PauseCircleIcon className="h-3 w-3" />
+                <PauseCircle className="h-3 w-3" aria-hidden="true" />
                 break
               </span>
             )}
@@ -109,13 +110,13 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden xl:inline-flex absolute -right-3 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-blue-200/80 bg-[var(--term-bg)] text-blue-600 shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="xl:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

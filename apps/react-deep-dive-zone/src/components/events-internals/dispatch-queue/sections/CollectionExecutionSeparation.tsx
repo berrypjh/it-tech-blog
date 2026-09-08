@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, PlayCircle, Search, Sparkles } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent } from '../content';
-import { LightbulbIcon, PlayCircleIcon, SearchIcon, SparklesIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['separation'] };
 
-const cardIcons = [SearchIcon, PlayCircleIcon];
+const cardIcons = [Search, PlayCircle];
 
 const cardTone = (tone: 'violet' | 'teal') =>
   tone === 'violet'
@@ -28,12 +29,12 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? SearchIcon;
+        const Icon = cardIcons[i] ?? Search;
         return (
           <article
             key={card.title}
@@ -87,7 +88,7 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
         aria-hidden="true"
         className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
       >
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm sm:text-sm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
         {content.note}

@@ -1,7 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ExternalLink, FileCode } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import type { MismatchDetectRecoverContent } from '../content';
-import { ExternalLinkIcon, FileCodeIcon, GithubIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -70,7 +72,7 @@ export const CodePreviewSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <FileCodeIcon className="h-4 w-4" />
+            <FileCode className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-blue-700 dark:text-blue-200 break-keep">
             {content.relatedTitle}
@@ -102,7 +104,7 @@ export const CodePreviewSection = ({ content }: Props) => (
         >
           <GithubIcon className="h-4 w-4" />
           <span>{content.button.label}</span>
-          <ExternalLinkIcon
+          <ExternalLink
             aria-hidden="true"
             className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
           />

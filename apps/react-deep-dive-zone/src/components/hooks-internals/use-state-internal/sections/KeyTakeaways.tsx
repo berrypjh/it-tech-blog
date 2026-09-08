@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Layers, Link2, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseStateInternalsContent } from '../content';
-import { BoxesIcon, LayersIcon, Link2Icon, TrophyIcon } from '../icons';
 
 type Props = { content: UseStateInternalsContent['summary'] };
 
-const cardIcons = [LayersIcon, BoxesIcon, Link2Icon];
+const cardIcons = [Layers, Boxes, Link2];
 
 const cardTone: Record<Tone, string> = {
   sky: 'border-sky-300/80 dark:border-sky-700/70 hover:border-sky-400 dark:hover:border-sky-600',
@@ -58,12 +59,12 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.items.map((item, i) => {
-        const Icon = cardIcons[i] ?? LayersIcon;
+        const Icon = cardIcons[i] ?? Layers;
         return (
           <li key={item.number}>
             <article

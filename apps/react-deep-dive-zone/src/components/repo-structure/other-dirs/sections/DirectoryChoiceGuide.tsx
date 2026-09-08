@@ -1,11 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  Cuboid,
+  FlaskConical,
+  type LucideIcon,
+  MapPinned,
+  Sparkles,
+  TerminalSquare,
+} from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneChoiceCard } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
-import { ArrowDownIcon, iconByName, MapPinnedIcon, SparklesIcon } from '../icons';
+
+const dirIcon: Record<'fixtures' | 'scripts' | 'compiler', LucideIcon> = {
+  fixtures: FlaskConical,
+  scripts: TerminalSquare,
+  compiler: Cuboid,
+};
 
 type Props = { content: SurroundingContent['choice'] };
 
@@ -18,13 +33,13 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
         id="choice"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<MapPinnedIcon className="h-5 w-5" />}
+        icon={<MapPinned className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
         {content.cards.map((card, idx) => {
           const toneKey = toneCycle[idx % toneCycle.length];
-          const Icon = iconByName[card.icon];
+          const Icon = dirIcon[card.id];
           return (
             <li key={card.id} className="flex">
               <ToneChoiceCard
@@ -34,7 +49,7 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
                 resultTone={toneKey}
                 result={card.destination}
                 lead={
-                  <ArrowDownIcon
+                  <ArrowDown
                     className={cn(
                       'h-5 w-5 my-2 transition-transform group-hover:translate-y-0.5',
                       toneTokens[toneKey].text,
@@ -48,7 +63,9 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
         })}
       </ul>
 
-      <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

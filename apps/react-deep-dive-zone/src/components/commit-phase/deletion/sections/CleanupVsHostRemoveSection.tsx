@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, ListChecks, SprayCan, Trash2 } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CleanupVsRemoveRow, DeletionContent } from '../content';
-import { LightbulbIcon, ListChecksIcon, SprayCanIcon, TrashIcon } from '../icons';
 
 type Props = { content: DeletionContent['cleanupVsRemove'] };
 
-const iconMap: Record<CleanupVsRemoveRow['iconName'], typeof SprayCanIcon> = {
-  broom: SprayCanIcon,
-  trash: TrashIcon,
+const iconMap: Record<CleanupVsRemoveRow['iconName'], typeof SprayCan> = {
+  broom: SprayCan,
+  trash: Trash2,
 };
 
 export const CleanupVsHostRemoveSection = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const CleanupVsHostRemoveSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.3fr)_minmax(0,_0.7fr)] gap-3">
@@ -89,7 +90,7 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="teal">
-          <LightbulbIcon className="h-5 w-5" />
+          <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
           {title}

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Hourglass, RefreshCcw, ShieldCheck } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { WhyFailableRenderContent } from '../content';
-import { AtomIcon, HourglassIcon, RefreshCcwIcon, ShieldCheckIcon } from '../icons';
 
 type Props = { content: WhyFailableRenderContent['hero']; className?: string };
 
@@ -34,7 +35,7 @@ export const FailableRenderHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="blue" size="sm">
-            <AtomIcon className="h-[18px] w-[18px]" />
+            <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
             {illustration.frontCardLabel}
@@ -73,7 +74,7 @@ type Step = {
   label: string;
   caption: string;
   tone: ToneKey;
-  Icon: typeof HourglassIcon;
+  Icon: typeof Hourglass;
 };
 
 const STEPS: Step[] = [
@@ -82,21 +83,21 @@ const STEPS: Step[] = [
     label: 'Suspend',
     caption: 'throw Promise — 데이터를 기다린다',
     tone: 'amber',
-    Icon: HourglassIcon,
+    Icon: Hourglass,
   },
   {
     key: 'retry',
     label: 'Retry',
     caption: 'resolve 후 렌더를 다시 시도한다',
     tone: 'cyan',
-    Icon: RefreshCcwIcon,
+    Icon: RefreshCcw,
   },
   {
     key: 'recover',
     label: 'Recover',
     caption: '제어된 복구로 화면을 완성한다',
     tone: 'emerald',
-    Icon: ShieldCheckIcon,
+    Icon: ShieldCheck,
   },
 ];
 

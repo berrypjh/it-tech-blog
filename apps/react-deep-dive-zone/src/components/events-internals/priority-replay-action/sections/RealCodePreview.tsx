@@ -1,16 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, Code2, ExternalLink, GitBranch, Info, Repeat, Rocket } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import {
-  ChevronRightIcon,
-  CodeIcon,
-  ExternalLinkIcon,
-  GitBranchIcon,
-  InfoIcon,
-  RepeatIcon,
-  RocketIcon,
-} from '../icons';
 
 type Props = { content: AdvancedWrapupContent['realCode'] };
 
@@ -100,7 +93,11 @@ const CodeCard = ({
               isReplay ? 'bg-sky-500/20 text-sky-300' : 'bg-emerald-500/20 text-emerald-300',
             )}
           >
-            {isReplay ? <RepeatIcon className="h-3 w-3" /> : <RocketIcon className="h-3 w-3" />}
+            {isReplay ? (
+              <Repeat className="h-3 w-3" aria-hidden="true" />
+            ) : (
+              <Rocket className="h-3 w-3" aria-hidden="true" />
+            )}
             {caption}
           </span>
         </div>
@@ -145,7 +142,7 @@ const CodeCard = ({
                 : 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-200',
             )}
           >
-            <InfoIcon className="h-4 w-4" />
+            <Info className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
             className={cn(
@@ -178,17 +175,17 @@ const CodeCard = ({
           aria-hidden="true"
           className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--term-border)] bg-white text-[var(--term-fg)] dark:bg-slate-950/50"
         >
-          <GitBranchIcon className="h-4 w-4" />
+          <GitBranch className="h-4 w-4" aria-hidden="true" />
         </span>
         <span className="flex flex-col min-w-0 flex-1">
           <span className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
             {buttonLabel}
           </span>
           <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            GitHub <ExternalLinkIcon className="h-3 w-3" aria-hidden="true" />
+            GitHub <ExternalLink className="h-3 w-3" aria-hidden="true" />
           </span>
         </span>
-        <ChevronRightIcon
+        <ChevronRight
           aria-hidden="true"
           className="h-4 w-4 shrink-0 text-[var(--term-muted)] transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
         />
@@ -204,7 +201,7 @@ export const RealCodePreview = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CodeIcon className="h-5 w-5" />}
+      icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-start">

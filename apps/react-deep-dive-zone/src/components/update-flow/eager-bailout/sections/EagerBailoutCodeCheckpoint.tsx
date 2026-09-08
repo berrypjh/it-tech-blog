@@ -1,8 +1,9 @@
+import { FileCode, Search } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { EagerBailoutContent } from '../content';
-import { FileCodeIcon, SearchIcon } from '../icons';
 
 type Props = { content: EagerBailoutContent['checkpoint'] };
 
@@ -12,7 +13,7 @@ export const EagerBailoutCodeCheckpoint = ({ content }: Props) => (
       id="checkpoint"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -21,12 +22,12 @@ export const EagerBailoutCodeCheckpoint = ({ content }: Props) => (
           {
             label: content.fileLabel,
             value: <code className="font-mono break-all">{content.filePath}</code>,
-            icon: FileCodeIcon,
+            icon: FileCode,
           },
           {
             label: content.focusLabel,
             value: <span className="font-medium">{content.focusText}</span>,
-            icon: SearchIcon,
+            icon: Search,
           },
         ]}
         question={content.learningQuestion}

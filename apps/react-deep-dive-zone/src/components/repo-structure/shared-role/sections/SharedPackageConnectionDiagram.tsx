@@ -1,9 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Atom,
+  Cuboid,
+  type LucideIcon,
+  MonitorSmartphone,
+  Package,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionRow, SharedContent } from '../content';
-import { ArrowRightIcon, iconByName, PackageIcon } from '../icons';
+
+const packageIcon: Record<'react' | 'react-dom' | 'react-reconciler', LucideIcon> = {
+  react: Atom,
+  'react-dom': MonitorSmartphone,
+  'react-reconciler': Cuboid,
+};
 
 type Props = { content: SharedContent['connection'] };
 
@@ -15,7 +29,7 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<PackageIcon className="h-5 w-5" />}
+        icon={<Package className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -91,7 +105,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
       >
-        <PackageIcon className="h-5 w-5" />
+        <Package className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="flex flex-col">
         <h3 className="text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
@@ -123,7 +137,7 @@ type RowProps = { row: ConnectionRow };
 
 const ConnectionRowItem = ({ row }: RowProps) => {
   const accent = toneTokens[row.tone].text;
-  const Icon = iconByName[row.icon];
+  const Icon = packageIcon[row.id];
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_0.45fr)_auto_minmax(0,_0.55fr)] gap-2 items-stretch">
@@ -143,7 +157,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
             accent,
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
           <h4 className={cn('text-sm font-bold font-mono tracking-tight', accent)}>
@@ -155,8 +169,14 @@ const ConnectionRowItem = ({ row }: RowProps) => {
 
       {/* 화살표 */}
       <div className="flex items-center justify-center" aria-hidden="true">
-        <ArrowRightIcon className="hidden sm:inline-flex h-5 w-5 text-[var(--term-accent)]" />
-        <ArrowRightIcon className="sm:hidden h-5 w-5 rotate-90 text-[var(--term-accent)]" />
+        <ArrowRight
+          className="hidden sm:inline-flex h-5 w-5 text-[var(--term-accent)]"
+          aria-hidden="true"
+        />
+        <ArrowRight
+          className="sm:hidden h-5 w-5 rotate-90 text-[var(--term-accent)]"
+          aria-hidden="true"
+        />
       </div>
 
       {/* 사용 설명 카드 */}

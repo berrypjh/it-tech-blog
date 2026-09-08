@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, CheckCircle2, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { AnswerStep, ReactElementSummaryBeforeFiberContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, CheckCircleIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['conceptFlow'] };
 
@@ -19,7 +20,7 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -34,7 +35,9 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
         ))}
       </ol>
 
-      <SectionNote icon={<CheckCircleIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+      <SectionNote icon={<CheckCircle2 className="h-4 w-4" aria-hidden="true" />}>
+        {content.emphasis}
+      </SectionNote>
     </div>
   </section>
 );
@@ -47,10 +50,10 @@ const StepWithArrow = ({ step, last }: { step: AnswerStep; last: boolean }) => (
     {!last && (
       <li className="flex items-center justify-center lg:-mx-2" aria-hidden="true">
         <span className="lg:hidden inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-          <ArrowDownIcon className="h-3.5 w-3.5" />
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
         <span className="hidden lg:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-          <ArrowRightIcon className="h-3.5 w-3.5" />
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
       </li>
     )}

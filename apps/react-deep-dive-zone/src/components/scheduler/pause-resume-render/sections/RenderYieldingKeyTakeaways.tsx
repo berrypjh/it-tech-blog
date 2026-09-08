@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, PauseCircle, Repeat2, Trophy, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent, YieldAccent } from '../content';
-import { GaugeIcon, PauseCircleIcon, Repeat2Icon, TrophyIcon, ZapIcon } from '../icons';
 import { yldCardBorder, yldIconBox, yldNumberBadge, yldTextStrong } from '../yieldAccent';
 
 type Props = { content: RenderYieldingContent['takeaways'] };
 
-const cardIcon: Record<YieldAccent, typeof ZapIcon> = {
-  blue: PauseCircleIcon,
-  teal: GaugeIcon,
-  violet: PauseCircleIcon,
-  emerald: Repeat2Icon,
-  rose: ZapIcon,
+const cardIcon: Record<YieldAccent, typeof Zap> = {
+  blue: PauseCircle,
+  teal: Gauge,
+  violet: PauseCircle,
+  emerald: Repeat2,
+  rose: Zap,
 };
 
 const iconWash: Record<YieldAccent, string> = {
@@ -30,7 +31,7 @@ export const RenderYieldingKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">

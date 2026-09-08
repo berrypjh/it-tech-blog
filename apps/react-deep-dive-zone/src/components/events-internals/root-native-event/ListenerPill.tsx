@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { ListenerKind } from './content';
 import {
-  KeyboardIcon,
-  MousePointerClickIcon,
-  PointerIcon,
-  SendIcon,
-  SparklesIcon,
-  TargetIcon,
-  TextCursorInputIcon,
-} from './icons';
+  Keyboard,
+  MousePointerClick,
+  Pointer,
+  Send,
+  Sparkles,
+  Target,
+  TextCursorInput,
+} from 'lucide-react';
+
+import type { ListenerKind } from './content';
 
 type Props = {
   label: string;
@@ -34,13 +35,13 @@ const kindStyle: Record<ListenerKind, string> = {
 };
 
 const kindIcon: Record<ListenerKind, React.ComponentType<{ className?: string }>> = {
-  mouse: MousePointerClickIcon,
-  pointer: PointerIcon,
-  keyboard: KeyboardIcon,
-  input: TextCursorInputIcon,
-  focus: TargetIcon,
-  form: SendIcon,
-  misc: SparklesIcon,
+  mouse: MousePointerClick,
+  pointer: Pointer,
+  keyboard: Keyboard,
+  input: TextCursorInput,
+  focus: Target,
+  form: Send,
+  misc: Sparkles,
 };
 
 export const ListenerPill = ({ label, kind, size = 'md', showIcon = true }: Props) => {

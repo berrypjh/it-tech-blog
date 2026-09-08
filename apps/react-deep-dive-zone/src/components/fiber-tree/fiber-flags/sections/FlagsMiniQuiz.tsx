@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Lightbulb } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberFlagsContent, QuizCard } from '../content';
-import { HelpCircleIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: FiberFlagsContent['quiz'] };
 
@@ -15,7 +16,7 @@ export const FlagsMiniQuiz = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -83,7 +84,7 @@ const QuizCardItem = ({ card, questionLabel, answerLabel, explanationLabel }: It
       </div>
     </div>
 
-    <SectionNote className="mt-auto" icon={<LightbulbIcon className="h-4 w-4" />}>
+    <SectionNote className="mt-auto" icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
       <span className="font-normal">
         <span className="font-bold">{explanationLabel}</span> — {card.explanation}
       </span>

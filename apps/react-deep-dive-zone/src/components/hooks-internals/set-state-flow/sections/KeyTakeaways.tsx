@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Link2, Save, Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { SetStateFlowContent, Tone } from '../content';
-import { FileTextIcon, Link2Icon, SaveIcon, TrophyIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['summary'] };
 
-const cardIcons = [FileTextIcon, SaveIcon, Link2Icon];
+const cardIcons = [FileText, Save, Link2];
 
 const cardTone: Record<Tone, string> = {
   sky: 'border-sky-300/80 dark:border-sky-700/70 hover:border-sky-400 dark:hover:border-sky-600',
@@ -61,12 +62,12 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.items.map((item, i) => {
-        const Icon = cardIcons[i] ?? FileTextIcon;
+        const Icon = cardIcons[i] ?? FileText;
         return (
           <li key={item.number}>
             <article

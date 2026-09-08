@@ -4,19 +4,17 @@ import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
 export type RoadmapRow = {
-  num: string;
+  num: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
   title: string;
   description: string;
   files: string[];
-  icon: 'cube' | 'network' | 'code' | 'check' | 'hook' | 'event' | 'gauge' | 'spark';
   tone: ToneKey;
 };
 
 export type DeliverableCard = {
-  num: string;
+  num: '1' | '2' | '3' | '4' | '5' | '6' | '7';
   title: string;
   description: string[];
-  icon: 'cube' | 'network' | 'code' | 'check' | 'hook' | 'gauge' | 'flag';
   tone: ToneKey;
 };
 
@@ -95,7 +93,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'React Element 이해',
           description: 'JSX가 어떤 객체로 변환되는지 이해합니다.',
           files: ['ReactJSXElement.js'],
-          icon: 'cube',
           tone: 'blue',
         },
         {
@@ -103,7 +100,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Fiber 구조 이해',
           description: 'FiberNode와 트리 구조를 이해합니다.',
           files: ['ReactFiber.js'],
-          icon: 'network',
           tone: 'teal',
         },
         {
@@ -111,7 +107,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Render Phase 읽기',
           description: 'beginWork / completeWork 흐름을 읽습니다.',
           files: ['ReactFiberBeginWork.js', 'ReactFiberCompleteWork.js'],
-          icon: 'code',
           tone: 'violet',
         },
         {
@@ -119,7 +114,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Commit Phase 읽기',
           description: '변경 사항이 실제로 반영되는 과정을 이해합니다.',
           files: ['ReactFiberCommitWork.js'],
-          icon: 'check',
           tone: 'amber',
         },
         {
@@ -127,7 +121,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Hooks 내부 읽기',
           description: 'Hook linked list와 업데이트 흐름을 읽습니다.',
           files: ['ReactFiberHooks.js'],
-          icon: 'hook',
           tone: 'cyan',
         },
         {
@@ -135,7 +128,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: '이벤트와 업데이트 연결',
           description: '이벤트 → setState → 업데이트 예약 흐름을 이해합니다.',
           files: ['ReactDOM', 'ReactFiberWorkLoop.js'],
-          icon: 'event',
           tone: 'blue',
         },
         {
@@ -143,7 +135,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Scheduler와 우선순위',
           description: 'lanes, priority, 스케줄링 로직을 이해합니다.',
           files: ['scheduler', 'ReactFiberLane.js'],
-          icon: 'gauge',
           tone: 'cyan',
         },
         {
@@ -151,7 +142,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Suspense / React 19 변화',
           description: 'Suspense, Actions, use(), ref as prop 등 최신 변화를 이해합니다.',
           files: ['React 19 관련 변경 코드'],
-          icon: 'spark',
           tone: 'amber',
         },
       ],
@@ -165,49 +155,42 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           num: '1',
           title: 'Element 단계',
           description: ['JSX가 어떤 객체가', '되는지 설명하기'],
-          icon: 'cube',
           tone: 'blue',
         },
         {
           num: '2',
           title: 'Fiber 단계',
           description: ['FiberNode 주요 필드', '요약하기'],
-          icon: 'network',
           tone: 'teal',
         },
         {
           num: '3',
           title: 'Render 단계',
           description: ['beginWork / completeWork', '흐름도 그리기'],
-          icon: 'code',
           tone: 'violet',
         },
         {
           num: '4',
           title: 'Commit 단계',
           description: ['Placement / Update /', 'Deletion 설명하기'],
-          icon: 'check',
           tone: 'amber',
         },
         {
           num: '5',
           title: 'Hooks 단계',
           description: ['Hook linked list', '그림 그리기'],
-          icon: 'hook',
           tone: 'cyan',
         },
         {
           num: '6',
           title: 'Scheduler 단계',
           description: ['우선순위 흐름', '정리하기'],
-          icon: 'gauge',
           tone: 'cyan',
         },
         {
           num: '7',
           title: '최종 정리',
           description: ['전체 흐름을', '하나의 그림으로!'],
-          icon: 'flag',
           tone: 'indigo',
         },
       ],
@@ -265,7 +248,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Understand React Element',
           description: 'What object JSX becomes.',
           files: ['ReactJSXElement.js'],
-          icon: 'cube',
           tone: 'blue',
         },
         {
@@ -273,7 +255,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Understand Fiber',
           description: 'FiberNode and the tree structure.',
           files: ['ReactFiber.js'],
-          icon: 'network',
           tone: 'teal',
         },
         {
@@ -281,7 +262,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Read the Render Phase',
           description: 'beginWork / completeWork flow.',
           files: ['ReactFiberBeginWork.js', 'ReactFiberCompleteWork.js'],
-          icon: 'code',
           tone: 'violet',
         },
         {
@@ -289,7 +269,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Read the Commit Phase',
           description: 'How changes actually apply.',
           files: ['ReactFiberCommitWork.js'],
-          icon: 'check',
           tone: 'amber',
         },
         {
@@ -297,7 +276,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Read Hooks internals',
           description: 'Hook linked list and update flow.',
           files: ['ReactFiberHooks.js'],
-          icon: 'hook',
           tone: 'cyan',
         },
         {
@@ -305,7 +283,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Events meet updates',
           description: 'event → setState → schedule flow.',
           files: ['ReactDOM', 'ReactFiberWorkLoop.js'],
-          icon: 'event',
           tone: 'blue',
         },
         {
@@ -313,7 +290,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Scheduler & priority',
           description: 'lanes, priority, scheduling logic.',
           files: ['scheduler', 'ReactFiberLane.js'],
-          icon: 'gauge',
           tone: 'cyan',
         },
         {
@@ -321,7 +297,6 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           title: 'Suspense / React 19',
           description: 'Suspense, Actions, use(), ref as prop, etc.',
           files: ['React 19 change set'],
-          icon: 'spark',
           tone: 'amber',
         },
       ],
@@ -335,49 +310,42 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
           num: '1',
           title: 'Element stage',
           description: ['Explain what object', 'JSX becomes'],
-          icon: 'cube',
           tone: 'blue',
         },
         {
           num: '2',
           title: 'Fiber stage',
           description: ['Summarize the key', 'FiberNode fields'],
-          icon: 'network',
           tone: 'teal',
         },
         {
           num: '3',
           title: 'Render stage',
           description: ['Diagram the begin/', 'completeWork flow'],
-          icon: 'code',
           tone: 'violet',
         },
         {
           num: '4',
           title: 'Commit stage',
           description: ['Explain Placement /', 'Update / Deletion'],
-          icon: 'check',
           tone: 'amber',
         },
         {
           num: '5',
           title: 'Hooks stage',
           description: ['Sketch the hook', 'linked list'],
-          icon: 'hook',
           tone: 'cyan',
         },
         {
           num: '6',
           title: 'Scheduler stage',
           description: ['Summarize the', 'priority flow'],
-          icon: 'gauge',
           tone: 'cyan',
         },
         {
           num: '7',
           title: 'Final wrap-up',
           description: ['The whole flow', 'in one diagram!'],
-          icon: 'flag',
           tone: 'indigo',
         },
       ],

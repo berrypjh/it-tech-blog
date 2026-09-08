@@ -1,12 +1,26 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ChevronRight,
+  Code,
+  Database,
+  ExternalLink,
+  type LucideIcon,
+  RotateCw,
+} from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EntryRouteCard, ReactPackageContent } from '../content';
-import { ChevronRightIcon, ExternalLinkIcon, reactPackageIcon } from '../icons';
 
 type Props = { content: ReactPackageContent['routes'] };
+
+const routeIcon: Record<EntryRouteCard['id'], LucideIcon> = {
+  useState: Database,
+  createElement: Code,
+  startTransition: RotateCw,
+};
 
 export const ApiEntryRoutes = ({ content }: Props) => {
   return (
@@ -17,7 +31,7 @@ export const ApiEntryRoutes = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ChevronRightIcon className="h-5 w-5" />}
+        icon={<ChevronRight className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md items-stretch">
@@ -33,7 +47,7 @@ export const ApiEntryRoutes = ({ content }: Props) => {
 
 const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = reactPackageIcon[card.iconName];
+  const Icon = routeIcon[card.id];
 
   return (
     <article
@@ -89,7 +103,10 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
       >
         {card.buttonLabel}
         <span className="sr-only">(새 창에서 열림)</span>
-        <ExternalLinkIcon className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
+        <ExternalLink
+          className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+          aria-hidden="true"
+        />
       </a>
     </article>
   );

@@ -4,17 +4,18 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ListOrdered,
+  PlayCircle,
+  RotateCcw,
+  Sparkles,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ListOrderedIcon,
-  PlayCircleIcon,
-  RotateIcon,
-  SparklesIcon,
-} from '../icons';
 
 type Props = { content: SchedulerContent['queue'] };
 
@@ -53,7 +54,7 @@ export const QueueSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ListOrderedIcon className="h-5 w-5" />}
+        icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -78,9 +79,9 @@ export const QueueSection = ({ content }: Props) => {
             )}
           >
             {completed ? (
-              <RotateIcon className="h-4 w-4" aria-hidden="true" />
+              <RotateCcw className="h-4 w-4" aria-hidden="true" />
             ) : (
-              <PlayCircleIcon className="h-4 w-4" aria-hidden="true" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             )}
             {completed ? '다시 실행' : running ? '처리 중…' : '스케줄러 실행'}
           </button>
@@ -124,13 +125,14 @@ export const QueueSection = ({ content }: Props) => {
                       )}
                     >
                       {st === 'done' ? (
-                        <CheckCircleIcon className="h-4 w-4" />
+                        <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                       ) : (
-                        <ArrowRightIcon
+                        <ArrowRight
                           className={cn(
                             'h-4 w-4 transition-transform duration-300',
                             st === 'active' && 'translate-x-0.5',
                           )}
+                          aria-hidden="true"
                         />
                       )}
                     </span>
@@ -156,8 +158,8 @@ export const QueueSection = ({ content }: Props) => {
               toneTokens.violet.text,
             )}
           >
-            <SparklesIcon className="h-5 w-5" />
-            <ArrowRightIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
+            <ArrowRight className="h-5 w-5 rotate-90 lg:rotate-0" aria-hidden="true" />
           </div>
 
           <div className="space-y-2">
@@ -226,7 +228,7 @@ export const QueueSection = ({ content }: Props) => {
 
         <div className="border-t border-[var(--term-border)] pt-md space-y-2">
           <header className="flex items-center gap-2">
-            <CheckCircleIcon className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />
+            <CheckCircle2 className="h-4 w-4 text-[var(--term-accent)]" aria-hidden="true" />
             <h3 className="text-xsm font-bold tracking-tight text-[var(--term-accent)] break-keep">
               {content.result.title}
             </h3>
@@ -242,7 +244,7 @@ export const QueueSection = ({ content }: Props) => {
                     : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-dim)]',
                 )}
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   aria-hidden="true"
                   className={cn(
                     'h-4 w-4 shrink-0 transition-all duration-300',

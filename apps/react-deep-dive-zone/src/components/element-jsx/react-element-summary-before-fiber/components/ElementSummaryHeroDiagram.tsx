@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Code, FileText, Network } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
-import { BoxIcon, CodeIcon, FileTextIcon, NetworkIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['hero']; className?: string };
 
 const iconMap = {
-  code: CodeIcon,
-  cube: BoxIcon,
-  document: FileTextIcon,
-  tree: NetworkIcon,
+  code: Code,
+  cube: Box,
+  document: FileText,
+  tree: Network,
 } as const;
 
 export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {

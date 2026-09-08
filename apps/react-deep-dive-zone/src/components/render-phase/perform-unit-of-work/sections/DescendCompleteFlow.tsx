@@ -1,16 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronDown,
+  HelpCircle,
+  type LucideIcon,
+  RotateCw,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DescendCompleteExplanation, PerformUnitContent } from '../content';
-import {
-  ChevronDownIcon,
-  descendIconByName,
-  HelpCircleIcon,
-  RotateCwIcon,
-  WorkflowIcon,
-} from '../icons';
+
+const descendIconByName: Record<DescendCompleteExplanation['items'][number]['icon'], LucideIcon> = {
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
+  rotate: RotateCw,
+} as const;
 
 type Props = { content: PerformUnitContent['descendComplete'] };
 
@@ -26,7 +35,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
       id="descend-complete"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_1fr)] gap-md lg:gap-lg">
@@ -52,7 +61,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
                 </span>
               </article>
               {idx < content.flow.topSteps.length - 1 && (
-                <ChevronDownIcon
+                <ChevronDown
                   aria-hidden="true"
                   className="my-1 h-5 w-5 text-[var(--term-accent)]"
                 />
@@ -60,7 +69,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
             </div>
           ))}
 
-          <ChevronDownIcon aria-hidden="true" className="my-1 h-5 w-5 text-[var(--term-accent)]" />
+          <ChevronDown aria-hidden="true" className="my-1 h-5 w-5 text-[var(--term-accent)]" />
 
           <div className="relative flex h-24 w-[min(280px,100%)] items-center justify-center">
             <span
@@ -72,10 +81,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
               )}
             />
             <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-              <HelpCircleIcon
-                aria-hidden="true"
-                className={cn('h-4 w-4', toneTokens.violet.text)}
-              />
+              <HelpCircle aria-hidden="true" className={cn('h-4 w-4', toneTokens.violet.text)} />
               <span
                 className={cn(
                   'text-xsm sm:text-sm font-bold break-keep',
@@ -111,7 +117,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
       >
         <header className="flex items-center gap-2">
           <ToneIconBox tone="sky" size="md">
-            <RotateCwIcon className="h-5 w-5" />
+            <RotateCw className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <h3
             id="heading-descend-explanation"

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Atom, Box, ShieldCheck } from 'lucide-react';
+
 import type { SuspenseFallbackRetryContent } from '../content';
-import { ArrowDownIcon, AtomIcon, BoxIcon, ShieldCheckIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -17,9 +18,9 @@ const treeAccent = {
 } as const;
 
 const treeIcon = {
-  app: AtomIcon,
-  suspense: ShieldCheckIcon,
-  profile: BoxIcon,
+  app: Atom,
+  suspense: ShieldCheck,
+  profile: Box,
 } as const;
 
 export const UserCodeSection = ({ content }: Props) => (
@@ -78,7 +79,7 @@ export const UserCodeSection = ({ content }: Props) => (
                   <span>{node.label}</span>
                 </div>
                 {i < content.tree.length - 1 && (
-                  <ArrowDownIcon
+                  <ArrowDown
                     aria-hidden="true"
                     className="h-4 w-4 text-slate-400 dark:text-slate-500"
                   />

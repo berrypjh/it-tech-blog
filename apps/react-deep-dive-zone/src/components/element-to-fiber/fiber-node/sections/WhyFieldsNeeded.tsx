@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Flag, GitCompare, HelpCircle, Network } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent } from '../content';
-import { ClockIcon, FlagIcon, GitCompareIcon, HelpCircleIcon, NetworkIcon } from '../icons';
 
 type Props = { content: FiberStoredInformationContent['reasons'] };
 
 const iconMap = {
-  network: NetworkIcon,
-  compare: GitCompareIcon,
-  flag: FlagIcon,
-  clock: ClockIcon,
+  network: Network,
+  compare: GitCompare,
+  flag: Flag,
+  clock: Clock,
 } as const;
 
 export const WhyFieldsNeeded = ({ content }: Props) => (
@@ -24,7 +25,7 @@ export const WhyFieldsNeeded = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

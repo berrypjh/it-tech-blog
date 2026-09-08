@@ -1,11 +1,17 @@
+import { Lightbulb, type LucideIcon, Monitor, Network, Server } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import type { ClientServerCard, ReactDomContent } from '../content';
-import { LightbulbIcon, reactDomIcon } from '../icons';
 
 type Props = { content: ReactDomContent['clientServer'] };
+
+const cardIcon: Record<ClientServerCard['id'], LucideIcon> = {
+  client: Monitor,
+  server: Server,
+};
 
 export const ClientServerSection = ({ content }: Props) => {
   return (
@@ -15,7 +21,7 @@ export const ClientServerSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<reactDomIcon.network className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -24,7 +30,9 @@ export const ClientServerSection = ({ content }: Props) => {
         <ClientServerCardItem card={content.cards[1]} />
       </div>
 
-      <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };
@@ -32,7 +40,7 @@ export const ClientServerSection = ({ content }: Props) => {
 const ClientServerCardItem = ({ card }: { card: ClientServerCard }) => (
   <ToneDetailCard
     tone={card.tone}
-    icon={reactDomIcon[card.iconName]}
+    icon={cardIcon[card.id]}
     title={card.name}
     description={card.description}
     bullets={card.items}

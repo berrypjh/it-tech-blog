@@ -4,21 +4,14 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Box, Info, RefreshCw, Repeat, Shuffle, Tag } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { KeyFiberReuseContent } from '../content';
-import {
-  AlertTriangleIcon,
-  BoxIcon,
-  InfoIcon,
-  RefreshIcon,
-  RepeatIcon,
-  ShuffleIcon,
-  TagIcon,
-} from '../icons';
 
 type Props = { content: KeyFiberReuseContent['stateExample'] };
 
@@ -35,14 +28,14 @@ export const StateResetExample = ({ content }: Props) => {
 
   const action =
     step === 0
-      ? { label: content.setCta, Icon: TagIcon, onClick: () => setStep(1) }
+      ? { label: content.setCta, Icon: Tag, onClick: () => setStep(1) }
       : step === 1
         ? {
             label: `${content.switchCta} → ${content.items[1].name}`,
-            Icon: ShuffleIcon,
+            Icon: Shuffle,
             onClick: () => setStep(2),
           }
-        : { label: content.restartCta, Icon: RefreshIcon, onClick: () => setStep(0) };
+        : { label: content.restartCta, Icon: RefreshCw, onClick: () => setStep(0) };
 
   return (
     <section
@@ -55,7 +48,7 @@ export const StateResetExample = ({ content }: Props) => {
         number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RepeatIcon className="h-5 w-5" />}
+        icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* 1) 예제 코드 — product.id를 key로 사용한다 */}
@@ -100,7 +93,7 @@ export const StateResetExample = ({ content }: Props) => {
               toneTokens.amber.chip,
             )}
           >
-            <AlertTriangleIcon className="h-4 w-4 shrink-0 mt-0.5" aria-hidden="true" />
+            <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" aria-hidden="true" />
             {content.resetNotice}
           </p>
         )}
@@ -127,7 +120,9 @@ export const StateResetExample = ({ content }: Props) => {
       </div>
 
       {/* 3) 핵심 정리 */}
-      <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.explanation}</SectionNote>
+      <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+        {content.explanation}
+      </SectionNote>
     </section>
   );
 };
@@ -183,7 +178,7 @@ const ItemCard = ({
       <div className="flex items-center justify-between gap-sm">
         <div className="flex items-center gap-sm min-w-0">
           <ToneIconBox tone={tone} size="sm">
-            <BoxIcon className="h-4 w-4" />
+            <Box className="h-4 w-4" aria-hidden="true" />
           </ToneIconBox>
           <code
             className={cn('font-mono text-sm font-extrabold tracking-tight break-keep', t.text)}

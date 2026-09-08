@@ -1,14 +1,36 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Box,
+  Code,
+  Database,
+  Layers,
+  Link as LinkIcon,
+  type LucideIcon,
+  RotateCw,
+  User,
+  Zap,
+} from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ApiToken, ReactPackageContent } from '../content';
-import { reactPackageIcon } from '../icons';
 
 type Props = {
   hero: ReactPackageContent['hero'];
   className?: string;
+};
+
+const tokenIcon: Record<ApiToken['id'], LucideIcon> = {
+  useState: Database,
+  useEffect: Zap,
+  createElement: Code,
+  memo: Layers,
+  lazy: Box,
+  useTransition: RotateCw,
+  useActionState: User,
+  use: LinkIcon,
 };
 
 /**
@@ -106,7 +128,7 @@ type TokenCardProps = { token: ApiToken; side: 'left' | 'right' };
 
 const TokenCard = ({ token }: TokenCardProps) => {
   const tone = toneTokens[token.tone];
-  const Icon = reactPackageIcon[token.iconName];
+  const Icon = tokenIcon[token.id];
 
   return (
     <article

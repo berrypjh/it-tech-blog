@@ -1,15 +1,35 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Anchor,
+  Box,
+  CircleCheck,
+  Code,
+  Flag,
+  Gauge,
+  type LucideIcon,
+  Network,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { DeliverableCard, RoadmapContent } from '../content';
-import { CheckCircleIcon, deliverableIconByName } from '../icons';
+
+const cardIcon: Record<DeliverableCard['num'], LucideIcon> = {
+  '1': Box,
+  '2': Network,
+  '3': Code,
+  '4': CircleCheck,
+  '5': Anchor,
+  '6': Gauge,
+  '7': Flag,
+};
 
 type Props = { content: RoadmapContent['deliverables'] };
 
 const toFlowStep = (card: DeliverableCard): FlowStepItem => {
-  const Icon = deliverableIconByName[card.icon];
+  const Icon = cardIcon[card.num];
   return {
     id: card.num,
     number: card.num,
@@ -20,7 +40,7 @@ const toFlowStep = (card: DeliverableCard): FlowStepItem => {
       </span>
     )),
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -31,7 +51,7 @@ export const StageDeliverables = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.supporting}
-      icon={<CheckCircleIcon className="h-5 w-5" />}
+      icon={<CircleCheck className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.cards.map(toFlowStep)} columns={4} />

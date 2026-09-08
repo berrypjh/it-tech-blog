@@ -1,8 +1,9 @@
+import { CheckCircle2, GitBranch, X } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { KeyFiberReuseContent } from '../content';
-import { CheckCircleIcon, GitBranchIcon, XIcon } from '../icons';
 
 type Props = { content: KeyFiberReuseContent['stableVsChanged'] };
 
@@ -19,13 +20,13 @@ export const KeyStableComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
       <ToneDetailCard
         tone="emerald"
-        icon={CheckCircleIcon}
+        icon={CheckCircle2}
         title={content.stableTitle}
         description={content.stableMain}
         bullets={content.stableItems}
@@ -36,7 +37,7 @@ export const KeyStableComparison = ({ content }: Props) => (
 
       <ToneDetailCard
         tone="violet"
-        icon={XIcon}
+        icon={X}
         title={content.changedTitle}
         description={content.changedMain}
         bullets={content.changedItems}

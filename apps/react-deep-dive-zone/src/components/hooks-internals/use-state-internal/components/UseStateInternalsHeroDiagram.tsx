@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cpu, Database, FunctionSquare, Settings } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { Piece, UseStateInternalsContent } from '../content';
-import { CpuIcon, DatabaseIcon, FunctionSquareIcon, SettingsIcon } from '../icons';
 
 type Props = { content: UseStateInternalsContent['hero']; className?: string };
 
 const pieceIconMap = {
-  number: DatabaseIcon,
-  fn: FunctionSquareIcon,
-  queue: CpuIcon,
-  init: SettingsIcon,
+  number: Database,
+  fn: FunctionSquare,
+  queue: Cpu,
+  init: Settings,
 } as const;
 
 /**

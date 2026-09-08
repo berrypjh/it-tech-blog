@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Compass, FileCode2, ScanSearch } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FollowPackageBoundaryContent } from '../content';
-import { ArrowRightIcon, CompassIcon, FileCodeIcon, ScanSearchIcon } from '../icons';
 import { getPackageClasses, PackageBadge } from '../PackageBadge';
 
 type Props = { content: FollowPackageBoundaryContent['navigator'] };
@@ -24,7 +25,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<CompassIcon className="h-5 w-5" />}
+        icon={<Compass className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -145,7 +146,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                         'font-mono text-[11px] text-[var(--term-fg)]',
                       )}
                     >
-                      <FileCodeIcon
+                      <FileCode2
                         className={cn('h-3 w-3 shrink-0', pickedT.text)}
                         aria-hidden="true"
                       />
@@ -165,7 +166,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 <PackageBadge packageKey={active.pickedPackage} size="md">
                   {active.pickedPackage}
                 </PackageBadge>
-                <ArrowRightIcon className={cn('h-4 w-4', nextT.text)} aria-hidden="true" />
+                <ArrowRight className={cn('h-4 w-4', nextT.text)} aria-hidden="true" />
                 <PackageBadge packageKey={active.nextPackage} size="md" strong>
                   {active.nextPackage}
                 </PackageBadge>
@@ -184,7 +185,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
                 )}
               >
-                <ScanSearchIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <ScanSearch className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p className="text-xsm font-bold leading-snug break-keep">{active.readingPoint}</p>
               </div>
             </div>

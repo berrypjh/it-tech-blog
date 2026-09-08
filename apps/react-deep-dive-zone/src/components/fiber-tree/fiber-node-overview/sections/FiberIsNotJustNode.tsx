@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, ListTree, RefreshCw, Sparkles, Zap } from 'lucide-react';
+
 import { TakeawayBanner } from '../../../shared/banner';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent } from '../content';
-import { FlagIcon, ListTreeIcon, RefreshIcon, SparklesIcon, ZapIcon } from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['notJustNode'] };
 
 const iconMap = {
-  tree: ListTreeIcon,
-  refresh: RefreshIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
+  tree: ListTree,
+  refresh: RefreshCw,
+  flag: Flag,
+  zap: Zap,
 } as const;
 
 export const FiberIsNotJustNode = ({ content }: Props) => (
@@ -28,7 +29,7 @@ export const FiberIsNotJustNode = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <TakeawayBanner lines={content.takeaway} />

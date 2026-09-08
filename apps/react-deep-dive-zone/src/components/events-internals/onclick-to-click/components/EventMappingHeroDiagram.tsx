@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, Globe, Link2 } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { MappingPair, OnClickClickContent } from '../content';
-import { BracesIcon, GlobeIcon, LinkIcon } from '../icons';
 
 type Props = { content: OnClickClickContent['hero']; className?: string };
 
@@ -35,7 +36,7 @@ export const EventMappingHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <BracesIcon className="h-[18px] w-[18px]" />
+            <Braces className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
@@ -79,7 +80,7 @@ const MappingRow = ({ row }: { row: MappingPair }) => (
   >
     <span className="flex min-w-0 items-center gap-2">
       <ToneIconBox tone="sky" size="sm">
-        <GlobeIcon className="h-4 w-4" />
+        <Globe className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <code className={cn('min-w-0 truncate font-mono text-sm font-bold', toneTokens.sky.text)}>
         {row.native}
@@ -102,7 +103,7 @@ const HelperNote = ({ title, body }: { title: string; body: string }) => (
     )}
   >
     <ToneIconBox tone="violet" size="sm">
-      <LinkIcon className="h-[18px] w-[18px]" />
+      <Link2 className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col gap-1">
       <h3 className={cn('text-xsm font-bold tracking-tight', toneTokens.violet.text)}>{title}</h3>

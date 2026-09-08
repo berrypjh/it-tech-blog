@@ -1,7 +1,16 @@
+import { Code2, CornerDownRight, GitFork, type LucideIcon, Settings, Workflow } from 'lucide-react';
+
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { BeginWorkContent, ReconcileStep } from '../content';
-import { reconcileIconByName, WorkflowIcon } from '../icons';
+
+const reconcileIconByName: Record<ReconcileStep['icon'], LucideIcon> = {
+  start: Settings,
+  branch: GitFork,
+  compute: Code2,
+  reconcile: Workflow,
+  return: CornerDownRight,
+} as const;
 
 type Props = { content: BeginWorkContent['reconcile'] };
 
@@ -30,7 +39,7 @@ export const ReconcileChildrenFlow = ({ content }: Props) => (
       id="reconcile-flow"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList

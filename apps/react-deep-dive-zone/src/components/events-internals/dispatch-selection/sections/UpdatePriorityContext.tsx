@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Shield } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchSelectionContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, ShieldIcon } from '../icons';
 
 type Props = { content: DispatchSelectionContent['updatePriority'] };
 
@@ -13,7 +14,7 @@ export const UpdatePriorityContext = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ShieldIcon className="h-5 w-5" />}
+      icon={<Shield className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -35,7 +36,7 @@ export const UpdatePriorityContext = ({ content }: Props) => (
                 'bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
               )}
             >
-              <ShieldIcon className="h-6 w-6" />
+              <Shield className="h-6 w-6" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               update-priority context
@@ -78,13 +79,13 @@ export const UpdatePriorityContext = ({ content }: Props) => (
                       aria-hidden="true"
                       className="hidden sm:inline-flex absolute -right-2.5 top-1/2 z-10 -translate-y-1/2 h-6 w-6 items-center justify-center rounded-full border border-violet-200 bg-[var(--term-bg)] text-violet-600 shadow-[0_1px_0_var(--term-border)] dark:border-violet-700/60 dark:text-violet-300"
                     >
-                      <ArrowRightIcon className="h-3 w-3" />
+                      <ArrowRight className="h-3 w-3" aria-hidden="true" />
                     </span>
                     <span
                       aria-hidden="true"
                       className="sm:hidden absolute left-1/2 -bottom-1.5 -translate-x-1/2 text-violet-500 dark:text-violet-300"
                     >
-                      <ArrowDownIcon className="h-3 w-3" />
+                      <ArrowDown className="h-3 w-3" aria-hidden="true" />
                     </span>
                   </>
                 )}

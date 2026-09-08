@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Layers, RefreshCcw } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ComparisonCard, WorkLoopContent } from '../content';
-import { CheckCircleIcon, LayersIcon, RefreshCcwIcon } from '../icons';
 
 type Props = { content: WorkLoopContent['comparison'] };
 
@@ -17,7 +18,7 @@ export const WorkLoopComparison = ({ content }: Props) => (
       id="work-loop-comparison"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
@@ -60,7 +61,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
             t.chip,
           )}
         >
-          <RefreshCcwIcon className="h-5 w-5" />
+          <RefreshCcw className="h-5 w-5" aria-hidden="true" />
         </span>
         <span
           className={cn(
@@ -82,7 +83,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span>{item}</span>
           </li>
         ))}

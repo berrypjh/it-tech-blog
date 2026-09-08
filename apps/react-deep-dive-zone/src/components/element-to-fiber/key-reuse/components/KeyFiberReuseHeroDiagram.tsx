@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Fingerprint, KeyRound } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { KeyFiberReuseContent, ListItem } from '../content';
-import { CheckCircleIcon, FingerprintIcon, KeyRoundIcon } from '../icons';
 
 type Props = { content: KeyFiberReuseContent['hero']; className?: string };
 
@@ -84,7 +85,7 @@ const KeyChipRow = ({ item }: { item: ListItem }) => {
           t.chip,
         )}
       >
-        <KeyRoundIcon className="h-3 w-3" aria-hidden="true" />
+        <KeyRound className="h-3 w-3" aria-hidden="true" />
         {item.keyValue}
       </span>
     </div>
@@ -103,7 +104,7 @@ const TrackingStep = ({ label }: { label: string }) => {
           t.chip,
         )}
       >
-        <FingerprintIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <Fingerprint className="h-3.5 w-3.5" aria-hidden="true" />
         {label}
       </span>
       <DownArrow />
@@ -121,7 +122,7 @@ const ResultBlock = ({ title, items }: { title: string; items: string[] }) => {
       )}
     >
       <ToneIconBox tone="sky" size="md">
-        <CheckCircleIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-sm">
         <h3 className="text-sm font-bold leading-snug tracking-tight text-[var(--term-fg)] break-keep">

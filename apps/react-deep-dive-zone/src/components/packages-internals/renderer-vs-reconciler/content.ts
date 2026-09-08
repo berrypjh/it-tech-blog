@@ -2,31 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type RvrIconName =
-  | 'arrowRight'
-  | 'box'
-  | 'calendar'
-  | 'check'
-  | 'clock'
-  | 'code'
-  | 'cube'
-  | 'fileCode'
-  | 'fileText'
-  | 'gitBranch'
-  | 'help'
-  | 'info'
-  | 'layers'
-  | 'monitor'
-  | 'network'
-  | 'queue'
-  | 'server'
-  | 'settings'
-  | 'sliders'
-  | 'smartphone'
-  | 'star'
-  | 'table'
-  | 'workflow';
-
 export type DiagramStep = { id: string; label: string };
 
 export type RoleCard = {
@@ -35,7 +10,6 @@ export type RoleCard = {
   headline: string;
   description: string;
   tags: string[];
-  iconName: RvrIconName;
   tone: ToneKey;
 };
 
@@ -206,7 +180,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
           headline: '무엇을 바꿀지 계산한다.',
           description: '현재와 다음 상태를 비교하고, 변경 목록을 만든다.',
           tags: ['계산', '트리 순회', '비교', '작업 목록'],
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -215,7 +188,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
           headline: '어떻게 반영할지 실행한다.',
           description: '변경 목록을 받아 실제 환경(DOM, Native)에 적용한다.',
           tags: ['실행', '환경 연결', 'Host Config', '커밋'],
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],
@@ -364,7 +336,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
           headline: 'Computes what should change.',
           description: 'Compares current and next state, then builds a change list.',
           tags: ['Compute', 'Tree walk', 'Diff', 'Work list'],
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -373,7 +344,6 @@ export const rvrContent: Record<Locale, RvrContent> = {
           headline: 'Executes how to apply the change.',
           description: 'Takes the change list and applies it to DOM / Native.',
           tags: ['Execute', 'Environment', 'Host Config', 'Commit'],
-          iconName: 'monitor',
           tone: 'violet',
         },
       ],

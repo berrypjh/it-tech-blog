@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, GitBranch, ListChecks } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, GitBranchIcon, ListChecksIcon } from '../icons';
 import { domainAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -33,7 +34,7 @@ export const ChecklistSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
             >
-              <ListChecksIcon className="h-4 w-4" />
+              <ListChecks className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm font-bold text-[var(--term-fg)]">Checklist</h3>
           </header>
@@ -64,7 +65,7 @@ export const ChecklistSection = ({ content }: Props) => {
                           : 'border-blue-400 bg-white text-blue-600 dark:border-blue-600 dark:bg-slate-900 dark:text-blue-300',
                       )}
                     >
-                      {isChecked && <CheckCircleIcon className="h-3.5 w-3.5" />}
+                      {isChecked && <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
                     </span>
                     <span
                       className={cn(
@@ -96,7 +97,7 @@ export const ChecklistSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
             >
-              <GitBranchIcon className="h-4 w-4" />
+              <GitBranch className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-md font-bold text-blue-700 dark:text-blue-200 break-keep">
               {content.decisionTitle}
@@ -121,7 +122,7 @@ export const ChecklistSection = ({ content }: Props) => {
                           accent.bg,
                         )}
                       >
-                        <ArrowRightIcon
+                        <ArrowRight
                           aria-hidden="true"
                           className={cn('h-3 w-3 shrink-0', accent.text)}
                         />

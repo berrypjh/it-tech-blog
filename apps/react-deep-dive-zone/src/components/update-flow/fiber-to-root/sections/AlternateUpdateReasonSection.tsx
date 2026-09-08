@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight, Network, RefreshCw } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberToRootContent } from '../content';
-import { ArrowLeftRightIcon, NetworkIcon, RefreshIcon } from '../icons';
 
 type Props = { content: FiberToRootContent['alternate'] };
 
@@ -20,7 +21,7 @@ export const AlternateUpdateReasonSection = ({ content }: Props) => (
       id="alternate"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RefreshIcon className="h-5 w-5" />}
+      icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
@@ -28,7 +29,7 @@ export const AlternateUpdateReasonSection = ({ content }: Props) => (
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="sky" size="sm">
-            <RefreshIcon className="h-[18px] w-[18px]" />
+            <RefreshCw className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             mirror across alternate
@@ -92,7 +93,7 @@ const TreeCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <ToneIconBox tone={tone} size="md">
-          <NetworkIcon className="h-5 w-5" />
+          <Network className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <ToneBadge tone={tone}>{badge}</ToneBadge>
       </header>
@@ -118,7 +119,7 @@ const MiddleConnector = ({ label }: { label: string }) => (
       aria-hidden="true"
       className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
     >
-      <ArrowLeftRightIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
+      <ArrowLeftRight className="h-5 w-5 rotate-90 lg:rotate-0" aria-hidden="true" />
     </span>
     <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-fg)] text-center break-keep">
       {label}

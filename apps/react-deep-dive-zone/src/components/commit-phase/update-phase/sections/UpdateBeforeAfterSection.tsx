@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, Lock, Pencil, Replace } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent, WhatChangedItem } from '../content';
-import { ArrowDownIcon, CheckCircleIcon, LockIcon, PencilIcon, ReplaceIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['beforeAfter'] };
 
@@ -19,7 +20,7 @@ export const UpdateBeforeAfterSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ReplaceIcon className="h-5 w-5" />}
+      icon={<Replace className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_minmax(0,_0.85fr)] gap-3 items-stretch">
@@ -119,7 +120,7 @@ const BeforeAfterCard = ({
                 : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}
           >
-            {isAfter && <LockIcon aria-hidden="true" className="h-3.5 w-3.5" />}
+            {isAfter && <Lock aria-hidden="true" className="h-3.5 w-3.5" />}
             <span>{screen}</span>
           </span>
         </div>
@@ -133,14 +134,14 @@ const MiddleFlow = ({ middle }: { middle: UpdatePhaseContent['beforeAfter']['mid
     <MiniStep
       title={middle.step1Title}
       note={middle.step1Note}
-      icon={<PencilIcon className="h-3.5 w-3.5" />}
+      icon={<Pencil className="h-3.5 w-3.5" aria-hidden="true" />}
       tone="sky"
     />
-    <ArrowDownIcon aria-hidden="true" className="h-4 w-4 mx-auto text-[var(--term-dim)]" />
+    <ArrowDown aria-hidden="true" className="h-4 w-4 mx-auto text-[var(--term-dim)]" />
     <MiniStep
       title={middle.step2Title}
       note={middle.step2Note}
-      icon={<ReplaceIcon className="h-3.5 w-3.5" />}
+      icon={<Replace className="h-3.5 w-3.5" aria-hidden="true" />}
       tone="blue"
     />
   </div>
@@ -190,7 +191,7 @@ const WhatChangedCard = ({ title, items }: { title: string; items: WhatChangedIt
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="teal" size="sm">
-          <CheckCircleIcon className="h-4 w-4" />
+          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm font-bold break-keep', card.fill.text)}>{title}</h3>
       </header>
@@ -207,7 +208,7 @@ const WhatChangedCard = ({ title, items }: { title: string; items: WhatChangedIt
                   t.chip,
                 )}
               >
-                <CheckCircleIcon className="h-3 w-3" />
+                <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
               </span>
               <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
                 {item.text}

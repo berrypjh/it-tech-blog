@@ -1,15 +1,16 @@
+import { Boxes, Clock, Leaf, MousePointer2, RefreshCw, Zap } from 'lucide-react';
+
 import type { PriorityItem } from '../content';
-import { BoxesIcon, ClockIcon, LeafIcon, MouseIcon, RefreshIcon, ZapIcon } from '../icons';
 
 type Props = { iconName: PriorityItem['iconName']; className?: string };
 
 const map = {
-  zap: ZapIcon,
-  mouse: MouseIcon,
-  cube: BoxesIcon,
-  clock: ClockIcon,
-  refresh: RefreshIcon,
-  leaf: LeafIcon,
+  zap: Zap,
+  mouse: MousePointer2,
+  cube: Boxes,
+  clock: Clock,
+  refresh: RefreshCw,
+  leaf: Leaf,
 } as const;
 
 export const LaneIcon = ({ iconName, className }: Props) => {

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight, Code2, FunctionSquare, Info } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent } from '../content';
-import { ArrowLeftRightIcon, CodeIcon, FunctionSquareIcon, InfoIcon } from '../icons';
 
 type Props = { content: DispatchSetStateEntryContent['compare'] };
 
@@ -17,7 +18,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
       id="compare"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ArrowLeftRightIcon className="h-5 w-5" />}
+      icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
@@ -25,7 +26,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
         tone="emerald"
         title={content.leftCard.title}
         code={content.leftCard.code}
-        icon={<CodeIcon className="h-3.5 w-3.5" />}
+        icon={<Code2 className="h-3.5 w-3.5" aria-hidden="true" />}
       />
 
       <CompareVs />
@@ -34,7 +35,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
         tone="sky"
         title={content.rightCard.title}
         code={content.rightCard.code}
-        icon={<FunctionSquareIcon className="h-3.5 w-3.5" />}
+        icon={<FunctionSquare className="h-3.5 w-3.5" aria-hidden="true" />}
       />
     </div>
 
@@ -46,7 +47,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="amber" size="sm">
-          <InfoIcon className="h-3.5 w-3.5" />
+          <Info className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', amber.text)}>
           {content.sideNote.title}

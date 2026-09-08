@@ -1,15 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ArrowUp, ChevronDown, HelpCircle, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
-import {
-  ArrowRightIcon,
-  ArrowUpIcon,
-  ChevronDownIcon,
-  HelpCircleIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: CompleteWorkContent['direction'] };
 
@@ -19,7 +14,7 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
       id="direction"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -43,7 +38,7 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
           </code>
         </article>
 
-        <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-[var(--term-accent)]" />
+        <ChevronDown aria-hidden="true" className="h-5 w-5 text-[var(--term-accent)]" />
 
         {/* Decision diamond */}
         <div className="relative flex h-28 w-[min(360px,100%)] items-center justify-center">
@@ -57,7 +52,7 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
             )}
           />
           <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-            <HelpCircleIcon aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
+            <HelpCircle aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
             <span
               className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}
             >
@@ -102,7 +97,7 @@ type BranchProps = {
 
 const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
   const t = toneTokens[tone];
-  const Arrow = kind === 'sibling' ? ArrowRightIcon : ArrowUpIcon;
+  const Arrow = kind === 'sibling' ? ArrowRight : ArrowUp;
   return (
     <article
       className={cn(

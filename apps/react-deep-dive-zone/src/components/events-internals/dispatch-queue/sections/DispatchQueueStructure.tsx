@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Database, Layers } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent } from '../content';
-import { BoxIcon, DatabaseIcon, LayersIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['structure'] };
 
@@ -13,7 +14,7 @@ export const DispatchQueueStructure = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -31,7 +32,7 @@ export const DispatchQueueStructure = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
           >
-            <DatabaseIcon className="h-5 w-5" />
+            <Database className="h-5 w-5" aria-hidden="true" />
           </span>
           <code className="font-mono text-sm sm:text-md font-bold text-violet-700 dark:text-violet-200">
             {content.queue.title}
@@ -57,7 +58,7 @@ export const DispatchQueueStructure = ({ content }: Props) => (
                 key={entry}
                 className="flex items-center gap-2 rounded-md border border-violet-200/70 bg-violet-50/40 px-2 py-1.5 font-mono text-[11px] sm:text-xsm text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/30 dark:text-violet-200 break-all"
               >
-                <BoxIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                <Box aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
                 <span>{entry}</span>
               </li>
             ))}
@@ -79,7 +80,7 @@ export const DispatchQueueStructure = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-500 text-white dark:bg-teal-400 dark:text-slate-900"
           >
-            <BoxIcon className="h-5 w-5" />
+            <Box className="h-5 w-5" aria-hidden="true" />
           </span>
           <code className="font-mono text-sm sm:text-md font-bold text-teal-700 dark:text-teal-200">
             {content.listener.title}

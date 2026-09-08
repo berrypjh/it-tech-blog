@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Fingerprint, Key, LayoutPanelTop, ListChecks, User } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementObjectStructureContent } from '../content';
-import { BoxIcon, FingerprintIcon, KeyIcon, ListChecksIcon, PanelIcon, UserIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['fields'] };
 
 const iconMap = {
-  fingerprint: FingerprintIcon,
-  box: BoxIcon,
-  key: KeyIcon,
-  panel: PanelIcon,
-  user: UserIcon,
+  fingerprint: Fingerprint,
+  box: Box,
+  key: Key,
+  panel: LayoutPanelTop,
+  user: User,
 } as const;
 
 export const ElementFieldCards = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const ElementFieldCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">

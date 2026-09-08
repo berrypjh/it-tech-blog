@@ -1,30 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Braces, Cog, Layers, PlayCircle, Rocket, Split, Workflow, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { RenderWithHooksContent, Tone } from '../content';
-import {
-  BoxesIcon,
-  BracesIcon,
-  CogIcon,
-  LayersIcon,
-  PlayCircleIcon,
-  RocketIcon,
-  SplitIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RenderWithHooksContent['timeline'] };
 
-const stepIcons = [
-  ZapIcon,
-  BracesIcon,
-  LayersIcon,
-  SplitIcon,
-  PlayCircleIcon,
-  BoxesIcon,
-  RocketIcon,
-];
+const stepIcons = [Zap, Braces, Layers, Split, PlayCircle, Boxes, Rocket];
 
 const toneBorder: Record<Tone, string> = {
   sky: 'border-l-sky-500 dark:border-l-sky-400',
@@ -63,7 +46,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Timeline body: vertical blue line on the left, step cards on the right */}
@@ -81,7 +64,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
 
       <ol className="flex flex-col gap-2.5 sm:gap-3">
         {content.steps.map((step, i) => {
-          const Icon = stepIcons[i] ?? CogIcon;
+          const Icon = stepIcons[i] ?? Cog;
           return (
             <li key={step.number} className="relative">
               {/* Number badge over the line */}

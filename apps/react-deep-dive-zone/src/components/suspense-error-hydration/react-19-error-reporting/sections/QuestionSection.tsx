@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, LineChart, MapPin, RefreshCcw, Zap } from 'lucide-react';
+
 import type { ConceptCard, React19ErrorReportingContent } from '../content';
-import { CircleHelpIcon, LineChartIcon, MapPinIcon, RefreshCcwIcon, ZapIcon } from '../icons';
 
 type Props = { content: React19ErrorReportingContent['question'] };
 
 const conceptIcon: Record<ConceptCard['icon'], React.ComponentType<{ className?: string }>> = {
-  map: MapPinIcon,
-  refresh: RefreshCcwIcon,
-  callback: ZapIcon,
-  chart: LineChartIcon,
+  map: MapPin,
+  refresh: RefreshCcw,
+  callback: Zap,
+  chart: LineChart,
 };
 
 const conceptTone: Record<ConceptCard['icon'], string> = {
@@ -44,7 +45,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <div className="flex flex-col gap-1">

@@ -1,8 +1,29 @@
+import {
+  ClipboardCheck,
+  Code2,
+  FileCode2,
+  FolderOpen,
+  type LucideIcon,
+  Map,
+  PackageSearch,
+  Tag,
+  Workflow,
+} from 'lucide-react';
+
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
-import type { ExplorationContent } from '../content';
-import { iconByName, MapIcon } from '../icons';
+import type { ExplorationContent, RoutineStep } from '../content';
+
+const stepIcon: Record<RoutineStep['number'], LucideIcon> = {
+  '1': FolderOpen,
+  '2': PackageSearch,
+  '3': Code2,
+  '4': FileCode2,
+  '5': ClipboardCheck,
+  '6': Tag,
+  '7': Workflow,
+};
 
 type Props = { content: ExplorationContent['routine'] };
 
@@ -16,17 +37,17 @@ export const FinalExplorationRoutineSteps = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <NumberedStepList
         rows={content.steps.map((step, idx) => {
-          const Icon = iconByName[step.icon];
+          const Icon = stepIcon[step.number];
           return {
             id: step.number,
             num: step.number,
             tone: toneCycle[idx % toneCycle.length],
-            icon: <Icon className="h-[1.125rem] w-[1.125rem]" />,
+            icon: <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />,
             title: step.title,
             description: step.description,
           };

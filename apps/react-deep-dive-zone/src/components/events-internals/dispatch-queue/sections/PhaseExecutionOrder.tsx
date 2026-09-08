@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUpFromLine, PlayCircle, RotateCw } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent } from '../content';
-import { ArrowDownIcon, ArrowUpFromLineIcon, PlayCircleIcon, RotateCwIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['phases'] };
 
@@ -117,7 +118,7 @@ const PhaseCard = ({
                       : 'text-teal-400 dark:text-teal-500',
                   )}
                 >
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -155,7 +156,7 @@ const PhaseCard = ({
                 : 'border-teal-200/70 text-teal-700 dark:border-teal-800/60 dark:bg-slate-950/40 dark:text-teal-200',
             )}
           >
-            <PlayCircleIcon aria-hidden="true" className="h-3.5 w-3.5" />
+            <PlayCircle aria-hidden="true" className="h-3.5 w-3.5" />
             <span>{ex}</span>
           </li>
         ))}
@@ -171,7 +172,7 @@ export const PhaseExecutionOrder = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RotateCwIcon className="h-5 w-5" />}
+      icon={<RotateCw className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -183,7 +184,7 @@ export const PhaseExecutionOrder = ({ content }: Props) => (
         path={content.capture.path}
         exampleTitle={content.capture.exampleTitle}
         example={content.capture.example}
-        icon={<RotateCwIcon className="h-5 w-5" />}
+        icon={<RotateCw className="h-5 w-5" aria-hidden="true" />}
       />
       <PhaseCard
         tone="teal"
@@ -193,7 +194,7 @@ export const PhaseExecutionOrder = ({ content }: Props) => (
         path={content.bubble.path}
         exampleTitle={content.bubble.exampleTitle}
         example={content.bubble.example}
-        icon={<ArrowUpFromLineIcon className="h-5 w-5" />}
+        icon={<ArrowUpFromLine className="h-5 w-5" aria-hidden="true" />}
       />
     </div>
   </section>

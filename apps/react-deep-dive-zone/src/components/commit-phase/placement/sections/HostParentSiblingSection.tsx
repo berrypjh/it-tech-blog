@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListTree, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HostBullet, PlacementContent } from '../content';
-import { ListTreeIcon, TargetIcon } from '../icons';
 
 type Props = { content: PlacementContent['hostParent'] };
 
@@ -19,7 +20,7 @@ export const HostParentSiblingSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListTreeIcon className="h-5 w-5" />}
+      icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-3 items-stretch">
@@ -249,7 +250,7 @@ const ExplanationCard = ({
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="violet">
-          <TargetIcon className="h-5 w-5" />
+          <Target className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
           decision

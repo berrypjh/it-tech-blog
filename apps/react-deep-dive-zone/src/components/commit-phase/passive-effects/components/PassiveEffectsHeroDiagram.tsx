@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Eye, Pencil, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroPhase, HeroPhaseIcon, PassiveEffectsContent } from '../content';
-import { ClockIcon, EyeIcon, PencilIcon, ZapIcon } from '../icons';
 
 type Props = { content: PassiveEffectsContent['hero']; className?: string };
 
-const iconMap: Record<HeroPhaseIcon, typeof ZapIcon> = {
-  eye: EyeIcon,
-  pencil: PencilIcon,
-  zap: ZapIcon,
-  clock: ClockIcon,
+const iconMap: Record<HeroPhaseIcon, typeof Zap> = {
+  eye: Eye,
+  pencil: Pencil,
+  zap: Zap,
+  clock: Clock,
 };
 
 /**

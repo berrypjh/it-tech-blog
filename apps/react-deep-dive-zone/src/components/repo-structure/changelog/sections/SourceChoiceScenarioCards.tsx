@@ -1,10 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, GitPullRequest, History, type LucideIcon, Sparkles, Tag } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneChoiceCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, ScenarioCard } from '../content';
-import { ArrowRightIcon, iconByName, SparklesIcon } from '../icons';
+
+const cardIcon: Record<ScenarioCard['id'], LucideIcon> = {
+  latest: Tag,
+  old: History,
+  reason: GitPullRequest,
+};
 
 type Props = { content: ChangelogContent['scenarios'] };
 
@@ -16,22 +23,22 @@ export const SourceChoiceScenarioCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.id];
           return (
             <li key={card.id} className="flex">
               <ToneChoiceCard
                 tone={card.tone}
-                icon={<Icon className="h-5 w-5" />}
+                icon={<Icon className="h-5 w-5" aria-hidden="true" />}
                 question={card.question}
                 resultTone={card.resultTone}
                 result={card.resultBadge}
                 lead={
-                  <ArrowRightIcon
+                  <ArrowRight
                     className={cn(
                       'h-5 w-5 my-2 rotate-90 transition-transform group-hover:translate-y-0.5',
                       toneTokens[card.resultTone].text,
@@ -76,7 +83,7 @@ const ScenarioFlow = ({ flow, resultTone }: FlowProps) => (
         </div>
         {i < flow.length - 1 && (
           <span aria-hidden="true" className="flex justify-center text-[var(--term-dim)]">
-            <ArrowRightIcon className="h-3 w-3 rotate-90" />
+            <ArrowRight className="h-3 w-3 rotate-90" aria-hidden="true" />
           </span>
         )}
       </li>

@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, CheckCircle2, CircleHelp, Layers, PenTool, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { UpdateToRenderSummaryContent } from '../content';
-import { BoxesIcon, CircleHelpIcon, nextChapterIconByName } from '../icons';
+
+const nextChapterIconByName = {
+  workflow: Workflow,
+  penTool: PenTool,
+  layers: Layers,
+  checkCircle: CheckCircle2,
+} as const;
 
 type Props = { content: UpdateToRenderSummaryContent['nextChapter'] };
 
@@ -17,7 +25,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
       id="next-chapter"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CircleHelpIcon className="h-5 w-5" />}
+      icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
@@ -29,7 +37,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="violet" size="md">
-          <CircleHelpIcon className="h-5 w-5" />
+          <CircleHelp className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
 
         <p className="text-md sm:text-lg leading-relaxed text-[var(--term-fg)] break-keep font-bold whitespace-pre-line">
@@ -63,7 +71,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
             {content.rightTitle}
           </h3>
           <ToneIconBox tone="sky" size="md">
-            <BoxesIcon className="h-5 w-5" />
+            <Boxes className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
         </header>
 

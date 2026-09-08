@@ -1,8 +1,9 @@
+import { BookOpen } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ChangelogContent } from '../content';
-import { BookOpenIcon } from '../icons';
 
 type Props = { content: ChangelogContent['comparison'] };
 
@@ -13,7 +14,7 @@ export const ChangelogReleasesComparisonTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<BookOpenIcon className="h-5 w-5" />}
+      icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

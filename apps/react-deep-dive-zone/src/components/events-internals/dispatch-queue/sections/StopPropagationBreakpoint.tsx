@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Ban, Octagon, PlayCircle, ShieldOff } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  BanIcon,
-  OctagonIcon,
-  PlayCircleIcon,
-  ShieldOffIcon,
-} from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['stop'] };
 
@@ -47,7 +41,7 @@ const toneAccent: Record<Tone, string> = {
   rose: 'text-rose-700 dark:text-rose-300',
 };
 
-const stepIcons = [PlayCircleIcon, ShieldOffIcon, BanIcon, OctagonIcon];
+const stepIcons = [PlayCircle, ShieldOff, Ban, Octagon];
 
 export const StopPropagationBreakpoint = ({ content }: Props) => (
   <section aria-labelledby="heading-stop">
@@ -56,7 +50,7 @@ export const StopPropagationBreakpoint = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<OctagonIcon className="h-5 w-5" />}
+      icon={<Octagon className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol
@@ -67,7 +61,7 @@ export const StopPropagationBreakpoint = ({ content }: Props) => (
     >
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? OctagonIcon;
+        const Icon = stepIcons[i] ?? Octagon;
         return (
           <li
             key={step.title}
@@ -122,13 +116,13 @@ export const StopPropagationBreakpoint = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-rose-300/80 bg-[var(--term-bg)] text-rose-500 shadow-[0_1px_0_var(--term-border)] dark:border-rose-700/60 dark:text-rose-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-rose-500 dark:text-rose-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

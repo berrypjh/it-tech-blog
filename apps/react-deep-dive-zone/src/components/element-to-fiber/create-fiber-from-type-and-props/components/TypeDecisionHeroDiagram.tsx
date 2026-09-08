@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Binary, Braces, Hexagon, SquareFunction, Type } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { Branch, BranchKey, CreateFiberFromTypeAndPropsContent } from '../content';
-import { BinaryIcon, BracesIcon, HexagonIcon, SquareFunctionIcon, TypeIcon } from '../icons';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['hero']; className?: string };
 
@@ -14,11 +15,11 @@ const branchTone: Record<BranchKey, ToneKey> = {
   mode: 'cyan',
 };
 
-const branchIcon: Record<BranchKey, typeof TypeIcon> = {
-  string: BinaryIcon,
-  function: SquareFunctionIcon,
-  fragment: BracesIcon,
-  mode: HexagonIcon,
+const branchIcon: Record<BranchKey, typeof Type> = {
+  string: Binary,
+  function: SquareFunction,
+  fragment: Braces,
+  mode: Hexagon,
 };
 
 export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
@@ -65,7 +66,7 @@ const CenterNode = ({ label }: { label: string }) => (
     )}
   >
     <ToneIconBox tone="sky" size="sm">
-      <TypeIcon className="h-4 w-4" aria-hidden="true" />
+      <Type className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <code className={cn('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
       {label}

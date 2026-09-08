@@ -2,17 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Box, CheckCircle2, ChevronDown, RefreshCw, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, TreePanel, TreePanelState } from '../content';
-import {
-  ArrowRightIcon,
-  BoxIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  RefreshCwIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: CompleteWorkContent['treeWalk'] };
 
@@ -23,7 +17,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop: 5-panel horizontal */}
@@ -38,7 +32,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
               aria-hidden="true"
               className="flex shrink-0 items-center justify-center text-[var(--term-accent)] px-0.5"
             >
-              <ArrowRightIcon className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </span>
           )}
         </Fragment>
@@ -64,7 +58,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
               aria-hidden="true"
               className="my-1.5 flex justify-center text-[var(--term-accent)]"
             >
-              <ChevronDownIcon className="h-5 w-5" />
+              <ChevronDown className="h-5 w-5" aria-hidden="true" />
             </span>
           )}
         </li>
@@ -116,7 +110,7 @@ const MiniTree = ({ nodes }: { nodes: TreePanel['nodes'] }) => {
     <div className="flex flex-col items-center gap-1.5">
       <TreeNode name={root.name} state={root.state} />
       <span aria-hidden="true" className="text-[var(--term-dim)]">
-        <ChevronDownIcon className="h-3 w-3" />
+        <ChevronDown className="h-3 w-3" aria-hidden="true" />
       </span>
       <div className="flex items-center gap-1.5">
         {children.map((c) => (
@@ -134,7 +128,7 @@ const TreeNode = ({ name, state }: { name: string; state: TreePanelState }) => {
       : state === 'done'
         ? cn(toneTokens.teal.fill.bg, toneTokens.teal.fill.border, toneTokens.teal.fill.text)
         : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]';
-  const Icon = state === 'current' ? RefreshCwIcon : state === 'done' ? CheckCircleIcon : BoxIcon;
+  const Icon = state === 'current' ? RefreshCw : state === 'done' ? CheckCircle2 : Box;
   return (
     <span
       className={cn(

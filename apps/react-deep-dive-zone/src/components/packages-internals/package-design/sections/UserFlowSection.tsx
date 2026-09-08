@@ -1,16 +1,24 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Boxes, Code, type LucideIcon, Monitor, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, PackageDesignContent } from '../content';
-import { pdIcon } from '../icons';
 
 type Props = { content: PackageDesignContent['userFlow'] };
 
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  jsx: Code,
+  react: Atom,
+  reconciler: Boxes,
+  'react-dom': Monitor,
+};
+
 const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
-  const Icon = pdIcon[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: String(index + 1),
@@ -23,7 +31,7 @@ const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
       </>
     ),
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -35,7 +43,7 @@ export const UserFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<pdIcon.workflow className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <CodePreviewPanel header={content.codeCaption} code={content.code} />

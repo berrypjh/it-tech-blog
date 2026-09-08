@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Monitor, Sparkles, Trash2, Unlink } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CleanupCardIcon, DeletionContent } from '../content';
-import { ClockIcon, MonitorIcon, SparklesIcon, TrashIcon, UnlinkIcon } from '../icons';
 
 type Props = { content: DeletionContent['cleanup'] };
 
-const iconMap: Record<CleanupCardIcon, typeof UnlinkIcon> = {
-  brokenLink: UnlinkIcon,
-  monitor: MonitorIcon,
-  clock: ClockIcon,
-  trash: TrashIcon,
+const iconMap: Record<CleanupCardIcon, typeof Unlink> = {
+  brokenLink: Unlink,
+  monitor: Monitor,
+  clock: Clock,
+  trash: Trash2,
 };
 
 export const DeletionCleanupItemsSection = ({ content }: Props) => (
@@ -26,7 +27,7 @@ export const DeletionCleanupItemsSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">

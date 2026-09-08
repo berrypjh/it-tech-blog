@@ -1,7 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ExternalLink } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import type { SuspenseHydrationLinkContent } from '../content';
-import { ExternalLinkIcon, GithubIcon } from '../icons';
 
 import { CodeBlock } from './_CodeBlock';
 import { SectionHeader } from './_SectionHeader';
@@ -48,7 +50,7 @@ export const CodePreviewSection = ({ content }: Props) => (
         >
           <GithubIcon className="h-3.5 w-3.5" />
           <span>{content.button.label}</span>
-          <ExternalLinkIcon className="h-3 w-3 opacity-70" aria-hidden="true" />
+          <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
         </a>
       </article>
 
@@ -87,7 +89,7 @@ export const CodePreviewSection = ({ content }: Props) => (
         >
           <GithubIcon className="h-3.5 w-3.5" />
           <span>{content.button.label}</span>
-          <ExternalLinkIcon className="h-3 w-3 opacity-70" aria-hidden="true" />
+          <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
         </a>
       </article>
 

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Lightbulb, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent } from '../content';
-import { CheckCircleIcon, LightbulbIcon, SparklesIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['quiz'] };
 
@@ -14,7 +15,7 @@ export const CommitMiniQuizSection = ({ content }: Props) => (
       id="mini-quiz"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -25,7 +26,7 @@ export const CommitMiniQuizSection = ({ content }: Props) => (
         tone="emerald"
         eyebrow="answer"
         badge="A"
-        icon={<CheckCircleIcon className="h-5 w-5" />}
+        icon={<CheckCircle2 className="h-5 w-5" aria-hidden="true" />}
       >
         {content.answer}
       </QuizCard>
@@ -39,7 +40,7 @@ export const CommitMiniQuizSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="amber" size="sm" className="mt-0.5 shrink-0">
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <p
         className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.amber.fill.text)}

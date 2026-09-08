@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Trophy } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import { TrophyIcon } from '../icons';
 import { toneAccent, toneCard, toneNumber } from '../styles';
 
 type Props = { content: AdvancedWrapupContent['takeaways'] };
@@ -14,7 +15,7 @@ export const WholeChapterTakeaways = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md">

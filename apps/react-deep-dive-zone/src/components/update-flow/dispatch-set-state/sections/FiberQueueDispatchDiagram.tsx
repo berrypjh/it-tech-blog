@@ -1,9 +1,34 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  Cuboid,
+  Database,
+  FunctionSquare,
+  Hand,
+  Layers,
+  Loader,
+  Network,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent, MemoryNode, RuntimeStep } from '../content';
-import { ArrowDownIcon, memoryIconByName, NetworkIcon, runtimeIconByName } from '../icons';
+
+const memoryIconByName = {
+  cuboid: Cuboid,
+  layers: Layers,
+  database: Database,
+  functionSquare: FunctionSquare,
+} as const;
+
+const runtimeIconByName = {
+  hand: Hand,
+  zap: Zap,
+  database: Database,
+  loader: Loader,
+} as const;
 
 type Props = { content: DispatchSetStateContent['relationship'] };
 
@@ -13,7 +38,7 @@ export const FiberQueueDispatchDiagram = ({ content }: Props) => (
       id="relationship"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.25fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -50,7 +75,7 @@ export const FiberQueueDispatchDiagram = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-1 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               )}
             </li>

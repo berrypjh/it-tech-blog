@@ -1,11 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Boxes, Clock, Code, Database, type LucideIcon, Monitor, Network } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { DvcContent, HeroSideArea } from '../content';
-import { dvcIcon } from '../icons';
+import type { DvcContent, HeroAreaItemId, HeroSideArea } from '../content';
 
 type Props = { hero: DvcContent['hero']; className?: string };
+
+const itemIcon: Record<HeroAreaItemId, LucideIcon> = {
+  element: Code,
+  fiber: Boxes,
+  reconciler: Network,
+  scheduler: Clock,
+  'dom-renderer': Monitor,
+  'dom-node': Box,
+  'browser-env': Database,
+};
 
 /**
  * Hero 우측 다이어그램.
@@ -54,7 +65,7 @@ const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
 
       <ul className="flex flex-wrap gap-1.5">
         {area.items.map((item) => {
-          const Icon = dvcIcon[item.iconName];
+          const Icon = itemIcon[item.id];
           return (
             <li key={item.id}>
               <span

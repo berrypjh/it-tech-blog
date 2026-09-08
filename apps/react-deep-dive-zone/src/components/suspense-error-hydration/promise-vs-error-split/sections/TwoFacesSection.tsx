@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
+
 import type { PromiseVsErrorSplitContent } from '../content';
-import { CheckCircleIcon, HourglassIcon, TriangleAlertIcon } from '../icons';
 import { pathAccent } from '../tone';
 
 import { CodeBlock } from './_CodeBlock';
@@ -36,7 +37,7 @@ export const TwoFacesSection = ({ content }: Props) => {
                 a.iconChip,
               )}
             >
-              <HourglassIcon className="h-4 w-4" />
+              <Hourglass className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className={cn('text-md font-bold break-keep', a.text)}>{content.promise.label}</h3>
           </header>
@@ -46,7 +47,7 @@ export const TwoFacesSection = ({ content }: Props) => {
                 key={item}
                 className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   aria-hidden="true"
                   className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400"
                 />
@@ -90,7 +91,7 @@ export const TwoFacesSection = ({ content }: Props) => {
                 b.iconChip,
               )}
             >
-              <TriangleAlertIcon className="h-4 w-4" />
+              <TriangleAlert className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className={cn('text-md font-bold break-keep', b.text)}>{content.error.label}</h3>
           </header>
@@ -100,7 +101,7 @@ export const TwoFacesSection = ({ content }: Props) => {
                 key={item}
                 className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   aria-hidden="true"
                   className="mt-0.5 h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400"
                 />

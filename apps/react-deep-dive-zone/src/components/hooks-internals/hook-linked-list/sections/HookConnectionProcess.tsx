@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookLinkedListContent, Tone } from '../content';
-import { ArrowRightIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: HookLinkedListContent['connection'] };
 
@@ -120,7 +121,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
         id="connection"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<WorkflowIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -215,7 +216,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
                           {node}
                         </code>
                         {!isLast && (
-                          <ArrowRightIcon
+                          <ArrowRight
                             aria-hidden="true"
                             className="h-3 w-3 text-[var(--term-muted)]"
                           />

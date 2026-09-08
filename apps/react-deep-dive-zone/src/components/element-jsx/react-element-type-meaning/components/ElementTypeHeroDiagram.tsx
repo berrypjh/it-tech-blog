@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Sparkles, Tag, User } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramItem, ReactElementTypeMeaningContent } from '../content';
-import { SparklesIcon, TagIcon, UserIcon } from '../icons';
 
 type Props = { content: ReactElementTypeMeaningContent['hero']; className?: string };
 
 const iconMap = {
-  tag: TagIcon,
-  user: UserIcon,
-  sparkles: SparklesIcon,
+  tag: Tag,
+  user: User,
+  sparkles: Sparkles,
 } as const;
 
 const ELEMENT_SHAPE = `const element = {

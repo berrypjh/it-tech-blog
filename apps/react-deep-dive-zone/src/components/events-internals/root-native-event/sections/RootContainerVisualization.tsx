@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Container, Eye, Layers, Network } from 'lucide-react';
+
 import type { RootNativeEventContent } from '../content';
-import { ContainerIcon, EyeIcon, LayersIcon, NetworkIcon } from '../icons';
 import { ListenerPill } from '../ListenerPill';
 import { NumberedSectionHeader } from '../NumberedSectionHeader';
 
@@ -14,7 +15,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -41,7 +42,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
                   aria-hidden="true"
                   className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-violet-200 bg-white text-violet-700 dark:border-violet-800/60 dark:bg-slate-950/40 dark:text-violet-200"
                 >
-                  <ContainerIcon className="h-3.5 w-3.5" />
+                  <Container className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-violet-700 dark:text-violet-300">
                   DOM
@@ -62,7 +63,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
                   aria-hidden="true"
                   className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal-500 text-white shadow-sm dark:bg-teal-400 dark:text-slate-900"
                 >
-                  <NetworkIcon className="h-3.5 w-3.5" />
+                  <Network className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <div className="flex flex-col">
                   <code className="font-mono text-xsm sm:text-sm font-bold text-teal-700 dark:text-teal-200">
@@ -113,7 +114,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
                 aria-hidden="true"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-200 dark:border-blue-800/60"
               >
-                <EyeIcon className="h-4 w-4" />
+                <Eye className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
                 {content.explanation.label}
@@ -134,7 +135,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
               aria-hidden="true"
               className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
             >
-              <NetworkIcon className="h-4 w-4" />
+              <Network className="h-4 w-4" aria-hidden="true" />
             </span>
             <p className="text-xsm sm:text-sm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
               {content.note}

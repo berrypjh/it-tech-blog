@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Atom, Component, Globe, Layers, Lightbulb } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, WhyEventSystemContent } from '../content';
-import {
-  ArrowDownIcon,
-  AtomIcon,
-  ComponentIcon,
-  GlobeIcon,
-  LayersIcon,
-  LightbulbIcon,
-} from '../icons';
 
 type Props = { content: WhyEventSystemContent['middle'] };
 
@@ -39,7 +33,7 @@ const toneIcon: Record<Tone, string> = {
   rose: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
 };
 
-const layerIcons = [GlobeIcon, AtomIcon, ComponentIcon];
+const layerIcons = [Globe, Atom, Component];
 
 export const EventMiddleLayer = ({ content }: Props) => (
   <section aria-labelledby="heading-middle">
@@ -47,7 +41,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
       id="middle"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -58,7 +52,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
     >
       <ol className="flex flex-col gap-2">
         {content.layers.map((layer, i) => {
-          const Icon = layerIcons[i] ?? AtomIcon;
+          const Icon = layerIcons[i] ?? Atom;
           const isLast = i === content.layers.length - 1;
           const isMiddle = i === 1;
           return (
@@ -111,7 +105,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
 
               {!isLast && (
                 <span aria-hidden="true" className="self-center my-1 text-[var(--term-muted)]">
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -131,7 +125,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
           aria-hidden="true"
           className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-amber-100 text-amber-700 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
         >
-          <LightbulbIcon className="h-4 w-4" />
+          <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-xsm sm:text-sm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
           {content.closingNote}

@@ -1,9 +1,10 @@
+import { Star, Table } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
-import { StarIcon, TableIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['compare'] };
 
@@ -16,7 +17,7 @@ export const JsxElementFiberDomComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<TableIcon className="h-5 w-5" />}
+      icon={<Table className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -28,6 +29,8 @@ export const JsxElementFiberDomComparison = ({ content }: Props) => (
       }))}
     />
 
-    <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );

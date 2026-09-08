@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Flag, Workflow, Zap } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionCard, MutationPhaseContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, FlagIcon, WorkflowIcon, ZapIcon } from '../icons';
 
 type Props = { content: MutationPhaseContent['connection'] };
 
@@ -19,7 +20,7 @@ export const RenderFlagsToMutationSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -44,8 +45,8 @@ const Arrow = () => {
           t.fill.text,
         )}
       >
-        <ArrowRightIcon className="hidden md:inline-block h-5 w-5" />
-        <ArrowDownIcon className="md:hidden h-5 w-5" />
+        <ArrowRight className="hidden md:inline-block h-5 w-5" aria-hidden="true" />
+        <ArrowDown className="md:hidden h-5 w-5" aria-hidden="true" />
       </span>
     </div>
   );
@@ -54,7 +55,7 @@ const Arrow = () => {
 const ConnCard = ({ card }: { card: ConnectionCard }) => {
   const t = toneTokens[card.tone];
   const isRender = card.side === 'render';
-  const Icon = isRender ? FlagIcon : ZapIcon;
+  const Icon = isRender ? Flag : Zap;
   return (
     <article
       className={cn(

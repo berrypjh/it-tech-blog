@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type LucideIcon, Monitor, Package, Smartphone } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RnContent } from '../content';
-import { rnIcon } from '../icons';
 
 type Props = { hero: RnContent['hero']; className?: string };
 
@@ -40,13 +41,13 @@ export const BranchDiagram = ({ hero, className }: Props) => {
             title={hero.webBranch.title}
             steps={hero.webBranch.steps}
             tone="sky"
-            iconName="monitor"
+            icon={Monitor}
           />
           <BranchColumn
             title={hero.nativeBranch.title}
             steps={hero.nativeBranch.steps}
             tone="violet"
-            iconName="smartphone"
+            icon={Smartphone}
           />
         </div>
       </div>
@@ -88,7 +89,11 @@ const ReconcilerCenter = ({ label, subtitle }: { label: string; subtitle: string
       aria-hidden="true"
       className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_50%_45%,rgba(245,158,11,0.16),transparent_60%)]"
     />
-    <CubeIcon className="relative h-7 w-7 text-[var(--term-accent)]" />
+    <Package
+      strokeWidth={1.6}
+      aria-hidden="true"
+      className="relative h-7 w-7 text-[var(--term-accent)]"
+    />
     <span className="relative text-md font-bold font-mono tracking-tight text-[var(--term-accent)]">
       {label}
     </span>
@@ -102,11 +107,10 @@ type BranchColumnProps = {
   title: string;
   steps: string[];
   tone: 'sky' | 'violet';
-  iconName: 'monitor' | 'smartphone';
+  icon: LucideIcon;
 };
 
-const BranchColumn = ({ title, steps, tone, iconName }: BranchColumnProps) => {
-  const Icon = rnIcon[iconName];
+const BranchColumn = ({ title, steps, tone, icon: Icon }: BranchColumnProps) => {
   const accent = toneTokens[tone].text;
   return (
     <article
@@ -172,22 +176,5 @@ const BranchArrows = () => (
     />
     <path d="M 46 32 L 50 36 L 54 32 Z" fill="currentColor" />
     <path d="M 146 32 L 150 36 L 154 32 Z" fill="currentColor" />
-  </svg>
-);
-
-const CubeIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-    <line x1="12" y1="22.08" x2="12" y2="12" />
   </svg>
 );

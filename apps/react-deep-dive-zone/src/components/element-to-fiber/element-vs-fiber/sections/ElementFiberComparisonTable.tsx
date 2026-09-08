@@ -1,7 +1,8 @@
+import { Layers } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { ElementVsFiberContent } from '../content';
-import { LayersIcon } from '../icons';
 
 type Props = { content: ElementVsFiberContent['comparison'] };
 
@@ -14,7 +15,7 @@ export const ElementFiberComparisonTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

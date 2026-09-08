@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, XCircle } from 'lucide-react';
+
 import type { React19ErrorReportingContent } from '../content';
-import { CheckCircleIcon, XCircleIcon } from '../icons';
 import { callbackAccent, severityBadge } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -43,7 +44,7 @@ export const CallbackTableSection = ({ content }: Props) => (
           {content.rows.map((row, i) => {
             const accent = callbackAccent[row.kind];
             const sev = severityBadge[row.severity];
-            const UICheck = row.uiRecover.kind === 'check' ? CheckCircleIcon : XCircleIcon;
+            const UICheck = row.uiRecover.kind === 'check' ? CheckCircle2 : XCircle;
             return (
               <tr
                 key={row.callback}
@@ -108,7 +109,7 @@ export const CallbackTableSection = ({ content }: Props) => (
       {content.rows.map((row) => {
         const accent = callbackAccent[row.kind];
         const sev = severityBadge[row.severity];
-        const UICheck = row.uiRecover.kind === 'check' ? CheckCircleIcon : XCircleIcon;
+        const UICheck = row.uiRecover.kind === 'check' ? CheckCircle2 : XCircle;
         return (
           <li key={row.callback}>
             <article className={cn('rounded-2xl border-2 p-md', accent.border, accent.bg)}>

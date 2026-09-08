@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import { toneTokens } from '../../../shared/tones';
 import type { StackLayer } from '../content';
-import { AtomIcon } from '../icons';
 
 type Props = { layers: StackLayer[] };
 
@@ -17,7 +18,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
           className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-cyan-200 bg-cyan-50 text-cyan-600 dark:border-cyan-800/60 dark:bg-cyan-950/40 dark:text-cyan-300"
           aria-hidden="true"
         >
-          <AtomIcon className="h-4 w-4" />
+          <Atom className="h-4 w-4" aria-hidden="true" />
         </span>
       </div>
 

@@ -1,20 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Repeat, Sparkles, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import { BitCellRow } from '../../_shared/BitCellRow';
 import type { HeroLaneCard, LaneAccent, LaneBitmaskContent } from '../content';
-import { LayersIcon, RepeatIcon, SparklesIcon, ZapIcon } from '../icons';
 
 type Props = { content: LaneBitmaskContent['hero']; className?: string };
 
-const laneIcon: Record<LaneAccent, typeof ZapIcon> = {
-  sync: ZapIcon,
-  inputContinuous: ZapIcon,
-  default: LayersIcon,
-  transition: RepeatIcon,
-  retry: RepeatIcon,
-  offscreen: LayersIcon,
+const laneIcon: Record<LaneAccent, typeof Zap> = {
+  sync: Zap,
+  inputContinuous: Zap,
+  default: Layers,
+  transition: Repeat,
+  retry: Repeat,
+  offscreen: Layers,
 };
 
 /** Map a LaneAccent to the closest shared ToneKey. */
@@ -124,7 +125,7 @@ const ResultCard = ({ title, bits }: { title: string; bits: string }) => (
   >
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="blue" size="sm">
-        <SparklesIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">{title}</h2>
       <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">

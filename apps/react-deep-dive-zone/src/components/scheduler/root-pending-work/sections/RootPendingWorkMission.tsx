@@ -1,20 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cog, Database, FileCode, FileSearch, Link2, ListChecks } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootPendingWorkContent } from '../content';
-import {
-  CogIcon,
-  DatabaseIcon,
-  FileCodeIcon,
-  FileSearchIcon,
-  LinkIcon,
-  ListChecksIcon,
-} from '../icons';
 
 type Props = { content: RootPendingWorkContent['mission'] };
 
-const missionIcons = [FileSearchIcon, FileCodeIcon, LinkIcon, DatabaseIcon];
+const missionIcons = [FileSearch, FileCode, Link2, Database];
 
 export const RootPendingWorkMission = ({ content }: Props) => (
   <section aria-labelledby="heading-mission">
@@ -23,12 +17,12 @@ export const RootPendingWorkMission = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
       {content.cards.map((m, i) => {
-        const Icon = missionIcons[i] ?? CogIcon;
+        const Icon = missionIcons[i] ?? Cog;
         return (
           <li key={m.title} className="h-full">
             <article

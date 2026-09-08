@@ -1,11 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Hand, Hourglass, MonitorCheck, PanelsTopLeft, ShieldCheck, Timer } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowStep, StateUpdateStartContent } from '../content';
-import { heroStepIconByName, HourglassIcon } from '../icons';
+
+const heroStepIconByName = {
+  hand: Hand,
+  shield: ShieldCheck,
+  timer: Timer,
+  panels: PanelsTopLeft,
+  monitor: MonitorCheck,
+} as const;
 
 type Props = { content: StateUpdateStartContent['hero']; className?: string };
 
@@ -90,7 +99,7 @@ const ReasonNote = ({ title, body }: { title: string; body: string }) => (
     aria-hidden="true"
   >
     <ToneIconBox tone="amber" size="sm">
-      <HourglassIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <Hourglass className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col gap-1">
       <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">{title}</h3>

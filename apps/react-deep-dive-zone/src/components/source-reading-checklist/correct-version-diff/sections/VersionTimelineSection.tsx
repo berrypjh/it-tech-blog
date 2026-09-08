@@ -4,16 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CalendarDays, Compass, FileCode2, History, Milestone, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent, VersionKey } from '../content';
-import {
-  CalendarDaysIcon,
-  CompassIcon,
-  FileCodeIcon,
-  HistoryIcon,
-  MilestoneIcon,
-  SparkIcon,
-} from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['timeline'] };
 
@@ -66,7 +60,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<MilestoneIcon className="h-5 w-5" />}
+        icon={<Milestone className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -125,7 +119,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                           isActive ? tt.text : 'text-[var(--term-fg)]',
                         )}
                       >
-                        <CalendarDaysIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                        <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
                         {tab.label}
                       </span>
                     </span>
@@ -188,7 +182,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                         'font-mono text-[11px] font-bold',
                       )}
                     >
-                      <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                      <FileCode2 className="h-3 w-3" aria-hidden="true" />
                       {kw}
                     </code>
                   </li>
@@ -208,7 +202,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                   t.border,
                 )}
               >
-                <HistoryIcon className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                <History className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                 <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                   {active.readingPoint}
                 </p>
@@ -227,7 +221,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                   'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
                 )}
               >
-                <CompassIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <Compass className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p className="text-xsm font-bold leading-snug break-keep">{active.modernView}</p>
               </div>
             </div>
@@ -239,7 +233,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                 'border-[var(--term-border)] text-[var(--term-muted)]',
               )}
             >
-              <SparkIcon className="h-3 w-3" aria-hidden="true" />
+              <Sparkles className="h-3 w-3" aria-hidden="true" />
               <span className="text-[10px] font-mono uppercase tracking-wider">
                 react 16 → 18 → 19
               </span>

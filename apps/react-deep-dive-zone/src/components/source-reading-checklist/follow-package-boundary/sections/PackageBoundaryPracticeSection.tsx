@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileCode2, ScanSearch, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { FollowPackageBoundaryContent } from '../content';
-import { ArrowRightIcon, FileCodeIcon, ScanSearchIcon, TargetIcon } from '../icons';
 import { PackageBadge } from '../PackageBadge';
 
 type Props = { content: FollowPackageBoundaryContent['practice'] };
@@ -15,7 +16,7 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<TargetIcon className="h-5 w-5" />}
+        icon={<Target className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">
@@ -40,7 +41,7 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
                     'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
                   )}
                 >
-                  <TargetIcon className="h-3.5 w-3.5" />
+                  <Target className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <h3 className="text-md font-bold tracking-tight text-[var(--term-fg)] break-keep">
                   {card.topic}
@@ -61,13 +62,10 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
                         'inline-flex items-center gap-1 font-mono text-[11px] text-[var(--term-fg)]',
                       )}
                     >
-                      <FileCodeIcon
-                        className="h-3 w-3 text-[var(--term-muted)]"
-                        aria-hidden="true"
-                      />
+                      <FileCode2 className="h-3 w-3 text-[var(--term-muted)]" aria-hidden="true" />
                       {pair.file}
                     </code>
-                    <ArrowRightIcon
+                    <ArrowRight
                       className="h-3 w-3 text-[var(--term-dim)] shrink-0"
                       aria-hidden="true"
                     />
@@ -79,7 +77,7 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
               </ul>
 
               <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
-                <ScanSearchIcon
+                <ScanSearch
                   className="h-3.5 w-3.5 shrink-0 mt-0.5 text-blue-500"
                   aria-hidden="true"
                 />

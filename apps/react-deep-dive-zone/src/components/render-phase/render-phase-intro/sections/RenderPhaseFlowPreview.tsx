@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Clock, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowPreviewStep, RenderPhaseIntroContent } from '../content';
-import { CheckCircleIcon, ClockIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: RenderPhaseIntroContent['flowPreview'] };
 
@@ -16,7 +17,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -45,7 +46,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
           >
             <header className="mb-2 flex items-center gap-2">
               <ToneIconBox tone="emerald" size="sm">
-                <CheckCircleIcon className="h-4 w-4" />
+                <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
               </ToneIconBox>
               <h3
                 id="flow-result-title"
@@ -73,7 +74,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
             </ul>
           </article>
 
-          <SectionNote icon={<ClockIcon className="h-4 w-4" />}>
+          <SectionNote icon={<Clock className="h-4 w-4" aria-hidden="true" />}>
             {content.importantNote}
           </SectionNote>
         </div>

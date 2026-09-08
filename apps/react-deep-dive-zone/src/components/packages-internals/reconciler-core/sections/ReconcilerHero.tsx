@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Layers } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -72,14 +74,14 @@ export const ReconcilerHero = ({ content }: Props) => {
               title="React Element"
               subtitle={content.elementCaption}
               fields={content.elementFields}
-              iconName="layers"
+              icon={Layers}
               tone="violet"
             />
             <FieldCard
               title="Fiber 노드"
               subtitle={content.fiberCaption}
               fields={content.fiberFields}
-              iconName="cube"
+              icon={Boxes}
               tone="teal"
               emphasized
             />

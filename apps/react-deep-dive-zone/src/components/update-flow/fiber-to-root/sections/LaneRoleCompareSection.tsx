@@ -1,10 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowUp, Database, GitBranch, Network } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberToRootContent, LaneCard } from '../content';
-import { ArrowUpIcon, GitBranchIcon, laneCardIconByName } from '../icons';
+
+const laneCardIconByName = {
+  database: Database,
+  network: Network,
+} as const;
 
 type Props = { content: FiberToRootContent['laneRoles'] };
 
@@ -15,7 +21,7 @@ export const LaneRoleCompareSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -75,7 +81,7 @@ const MiddleConnector = ({ label }: { label: string }) => (
       aria-hidden="true"
       className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] shadow-[0_2px_0_var(--term-border)]"
     >
-      <ArrowUpIcon className="h-5 w-5 rotate-90 lg:rotate-0" />
+      <ArrowUp className="h-5 w-5 rotate-90 lg:rotate-0" aria-hidden="true" />
     </span>
     <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--term-fg)] text-center break-keep max-w-[12ch]">
       {label}

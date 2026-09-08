@@ -1,10 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Layers, type LucideIcon, MonitorSmartphone, Network, Timer } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DiagramNode, PackagesDirectoryContent } from '../content';
-import { NetworkIcon, packageIconByName } from '../icons';
+
+const nodeIcon: Record<DiagramNode['id'], LucideIcon> = {
+  react: Atom,
+  reconciler: Layers,
+  'react-dom': MonitorSmartphone,
+  scheduler: Timer,
+  shared: Network,
+};
 
 type Props = { content: PackagesDirectoryContent['diagram'] };
 
@@ -18,7 +27,7 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<NetworkIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -98,7 +107,7 @@ type DiagramNodeCardProps = {
 
 const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
   const tone = toneTokens[node.tone];
-  const Icon = packageIconByName[node.icon];
+  const Icon = nodeIcon[node.id];
 
   return (
     <article
@@ -111,7 +120,7 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
     >
       <header className="flex items-center gap-sm min-w-0">
         <ToneIconBox tone={node.tone} size="sm">
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
           {node.title}
@@ -155,7 +164,7 @@ type SharedWideCardProps = { node: DiagramNode };
 
 const SharedWideCard = ({ node }: SharedWideCardProps) => {
   const tone = toneTokens[node.tone];
-  const Icon = packageIconByName[node.icon];
+  const Icon = nodeIcon[node.id];
 
   return (
     <div
@@ -185,7 +194,7 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
 
       <header className="flex items-center gap-sm min-w-0">
         <ToneIconBox tone={node.tone} size="sm">
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
           <span className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>

@@ -1,28 +1,29 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Box,
+  Equal,
+  Flag,
+  PlayCircle,
+  Rocket,
+  Search,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, UseEffectInternalsContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  BoxIcon,
-  EqualIcon,
-  FlagIcon,
-  PlayCircleIcon,
-  RocketIcon,
-  SearchIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: UseEffectInternalsContent['effectFlow'] };
 
 const visualMap = {
-  play: PlayCircleIcon,
-  search: SearchIcon,
-  compare: EqualIcon,
-  box: BoxIcon,
-  flag: FlagIcon,
-  commit: RocketIcon,
+  play: PlayCircle,
+  search: Search,
+  compare: Equal,
+  box: Box,
+  flag: Flag,
+  commit: Rocket,
 };
 
 const toneCard: Record<Tone, string> = {
@@ -91,7 +92,7 @@ export const EffectFullFlow = ({ content }: Props) => (
       id="effect-flow"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 items-stretch gap-2 sm:gap-3 relative">
@@ -147,13 +148,13 @@ export const EffectFullFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-[7px] top-1/2 z-10 -translate-y-1/2 h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3 w-3" />
+                  <ArrowRight className="h-3 w-3" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

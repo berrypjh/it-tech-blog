@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ExternalLink, FlaskConical } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { WhyOpenSourceContent } from '../content';
-import { ArrowRightIcon, ExternalLinkIcon, FlaskIcon } from '../icons';
 
 type Props = { content: WhyOpenSourceContent['chain'] };
 
@@ -16,7 +17,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
         id="chain"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FlaskIcon className="h-5 w-5" />}
+        icon={<FlaskConical className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md lg:gap-x-xl items-stretch">
@@ -83,7 +84,10 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                 >
                   {card.cta}
                   <span className="sr-only">(새 창에서 열림)</span>
-                  <ExternalLinkIcon className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
+                  <ExternalLink
+                    className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </a>
               </article>
 
@@ -96,7 +100,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                     'top-1/2 left-full ml-1 -translate-y-1/2 text-[var(--term-accent)]',
                   )}
                 >
-                  <ArrowRightIcon className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>

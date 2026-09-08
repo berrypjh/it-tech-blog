@@ -1,33 +1,34 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Cog,
+  Database,
+  FlagTriangleRight,
+  FunctionSquare,
+  Link2,
+  PlayCircle,
+  Rocket,
+  Split,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, HooksRecapContent, Tone } from '../content';
-import {
-  CogIcon,
-  DatabaseIcon,
-  FlagIcon,
-  FunctionSquareIcon,
-  Link2Icon,
-  PlayCircleIcon,
-  RocketIcon,
-  SplitIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: HooksRecapContent['hero']; className?: string };
 
 const visualMap = {
-  play: PlayCircleIcon,
-  fn: FunctionSquareIcon,
-  split: SplitIcon,
-  cog: CogIcon,
-  list: Link2Icon,
-  state: DatabaseIcon,
-  effect: ZapIcon,
-  commit: RocketIcon,
-  zap: FlagIcon,
+  play: PlayCircle,
+  fn: FunctionSquare,
+  split: Split,
+  cog: Cog,
+  list: Link2,
+  state: Database,
+  effect: Zap,
+  commit: Rocket,
+  zap: FlagTriangleRight,
 };
 
 /** content.Tone(로컬) → 공유 ToneKey. 미지원 톤은 가장 가까운 값으로 매핑한다. */
@@ -74,7 +75,7 @@ export const HooksSummaryHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <WorkflowIcon className="h-[18px] w-[18px]" />
+            <Workflow className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.diagramTitle}

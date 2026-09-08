@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FunctionSquare, Lightbulb, Settings } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
-import { FunctionSquareIcon, LightbulbIcon, SettingsIcon } from '../icons';
 
 type Props = { content: FunctionComponentContent['renderWithHooks'] };
 
@@ -21,7 +22,7 @@ export const RenderWithHooksRole = ({ content }: Props) => {
         id="render-with-hooks"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SettingsIcon className="h-5 w-5" />}
+        icon={<Settings className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
@@ -30,7 +31,10 @@ export const RenderWithHooksRole = ({ content }: Props) => {
           <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
             {content.description}
           </p>
-          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />} className="mt-auto">
+          <SectionNote
+            icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}
+            className="mt-auto"
+          >
             {content.noteCard}
           </SectionNote>
         </article>
@@ -46,7 +50,7 @@ export const RenderWithHooksRole = ({ content }: Props) => {
         >
           <header className="flex items-center justify-between gap-2">
             <ToneIconBox tone="teal" size="md">
-              <FunctionSquareIcon className="h-5 w-5" />
+              <FunctionSquare className="h-5 w-5" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn(

@@ -1,20 +1,14 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cog, FileCode, FileSearch, Gauge, ListChecks, Repeat2 } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent } from '../content';
-import {
-  CogIcon,
-  FileCodeIcon,
-  FileSearchIcon,
-  GaugeIcon,
-  ListChecksIcon,
-  Repeat2Icon,
-} from '../icons';
 import { yldCardBorder, yldIconBox } from '../yieldAccent';
 
 type Props = { content: RenderYieldingContent['mission'] };
 
-const missionIcons = [FileSearchIcon, FileCodeIcon, GaugeIcon, Repeat2Icon];
+const missionIcons = [FileSearch, FileCode, Gauge, Repeat2];
 
 export const RenderYieldingMission = ({ content }: Props) => (
   <section aria-labelledby="heading-mission">
@@ -23,12 +17,12 @@ export const RenderYieldingMission = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
       {content.cards.map((m, i) => {
-        const Icon = missionIcons[i] ?? CogIcon;
+        const Icon = missionIcons[i] ?? Cog;
         return (
           <li key={m.title} className="h-full">
             <article

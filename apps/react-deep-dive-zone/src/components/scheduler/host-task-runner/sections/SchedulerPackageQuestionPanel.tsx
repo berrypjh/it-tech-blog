@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, HelpCircle, Link2, SplitSquareHorizontal, Zap } from 'lucide-react';
+
 import type { PkgAccent, SchedulerPackageContent } from '../content';
-import { ClockIcon, HelpCircleIcon, LinkIcon, SplitIcon, ZapIcon } from '../icons';
 import { pkgIconBox, pkgPill, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['question'] };
 
-const cardIcon: Record<PkgAccent, typeof HelpCircleIcon> = {
-  blue: SplitIcon,
-  teal: LinkIcon,
-  violet: ClockIcon,
-  slate: ZapIcon,
-  amber: ZapIcon,
+const cardIcon: Record<PkgAccent, typeof HelpCircle> = {
+  blue: SplitSquareHorizontal,
+  teal: Link2,
+  violet: Clock3,
+  slate: Zap,
+  amber: Zap,
 };
 
 export const SchedulerPackageQuestionPanel = ({ content }: Props) => (
@@ -33,7 +34,7 @@ export const SchedulerPackageQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span className="inline-flex items-center rounded-full border border-blue-300/80 bg-white px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200">
           {content.eyebrow}

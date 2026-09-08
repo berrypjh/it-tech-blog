@@ -1,27 +1,43 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CheckCircle2,
+  Lightbulb,
+  type LucideIcon,
+  Map,
+  Monitor,
+  RefreshCw,
+  User,
+  Zap,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PriorityLevel, SchedulerContent } from '../content';
-import { CheckCircleIcon, LightbulbIcon, MapIcon, schedulerIcon } from '../icons';
 
 type Props = { content: SchedulerContent['priority'] };
+
+const levelIcon: Record<PriorityLevel['id'], LucideIcon> = {
+  sync: Zap,
+  'user-blocking': User,
+  normal: Monitor,
+  low: RefreshCw,
+};
 
 /** 우선순위 단계 4색 순환 */
 const CYCLE: ToneKey[] = ['amber', 'sky', 'violet', 'teal'];
 
 const toFlowStep = (level: PriorityLevel, idx: number): FlowStepItem => {
   const tone = CYCLE[idx % CYCLE.length];
-  const Icon = schedulerIcon[level.iconName];
+  const Icon = levelIcon[level.id];
   return {
     id: level.id,
     badge: level.badge,
     title: level.title,
     body: level.description,
     tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -33,7 +49,7 @@ export const PrioritySection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <FlowStepsGrid steps={content.levels.map(toFlowStep)} columns={4} />
@@ -54,7 +70,7 @@ export const PrioritySection = ({ content }: Props) => {
               toneTokens.sky.chip,
             )}
           >
-            <LightbulbIcon className="h-5 w-5" />
+            <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3
             className={cn(
@@ -72,7 +88,7 @@ export const PrioritySection = ({ content }: Props) => {
               key={item}
               className="flex items-center gap-2 text-xsm sm:text-sm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 className={cn('h-4 w-4 shrink-0', toneTokens.emerald.text)}
                 aria-hidden="true"
               />
@@ -81,14 +97,6 @@ export const PrioritySection = ({ content }: Props) => {
           ))}
         </ul>
       </article>
-
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
     </section>
   );
 };
-
-const StarIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
-    <path d="M12 2 L14.6 8.4 L21.5 9 L16.3 13.6 L17.9 20.4 L12 16.8 L6.1 20.4 L7.7 13.6 L2.5 9 L9.4 8.4 Z" />
-  </svg>
-);

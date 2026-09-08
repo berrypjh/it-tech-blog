@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCheck2, FileCode2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { TestAsDocContent } from '../content';
-import { FileCheckIcon, FileCodeIcon } from '../icons';
 
 type Props = { content: TestAsDocContent['hero']; className?: string };
 
@@ -35,7 +36,11 @@ export const VerifyWithTestsHeroDiagram = ({ content, className }: Props) => {
       <p className="sr-only">{a11y}</p>
 
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <StepHeader tone="blue" label={content.leftPanelTitle} icon={<FileCodeIcon />} />
+        <StepHeader
+          tone="blue"
+          label={content.leftPanelTitle}
+          icon={<FileCode2 aria-hidden="true" />}
+        />
         <CodePreviewPanel
           code={content.leftFiles.join('\n')}
           showWindowDots
@@ -45,7 +50,11 @@ export const VerifyWithTestsHeroDiagram = ({ content, className }: Props) => {
 
         <DownArrow label={content.connectorLabel} sub={content.connectorSub} />
 
-        <StepHeader tone="violet" label={content.rightPanelTitle} icon={<FileCheckIcon />} />
+        <StepHeader
+          tone="violet"
+          label={content.rightPanelTitle}
+          icon={<FileCheck2 aria-hidden="true" />}
+        />
         <ul className="flex flex-col gap-1.5">
           {content.rightMap.map((row) => (
             <MapRow key={row.from} from={row.from} to={row.to} />

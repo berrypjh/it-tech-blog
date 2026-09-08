@@ -1,18 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Droplet, MousePointerClick, PauseCircle } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  DropletIcon,
-  MousePointerClickIcon,
-  PauseCircleIcon,
-} from '../icons';
 
 type Props = { content: AdvancedWrapupContent['hydration'] };
 
-const stepIcons = [DropletIcon, PauseCircleIcon, MousePointerClickIcon];
+const stepIcons = [Droplet, PauseCircle, MousePointerClick];
 
 const stepTone = (tone: 'sky' | 'violet' | 'rose') => {
   if (tone === 'sky')
@@ -41,13 +36,13 @@ export const HydrationBlockedEvent = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<DropletIcon className="h-5 w-5" />}
+      icon={<Droplet className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? DropletIcon;
+        const Icon = stepIcons[i] ?? Droplet;
         return (
           <li
             key={step.title}
@@ -97,13 +92,13 @@ export const HydrationBlockedEvent = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

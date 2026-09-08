@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock3, Gauge, Moon, User, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { PriorityKey, SchedulerPackageContent } from '../content';
-import { ArrowRightIcon, ClockIcon, GaugeIcon, MoonIcon, UserIcon, ZapIcon } from '../icons';
 import { pkgCardBorder, pkgIconBox, pkgPill, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['priorities'] };
 
-const cardIcon: Record<PriorityKey, typeof ZapIcon> = {
-  immediate: ZapIcon,
-  userBlocking: UserIcon,
-  normal: GaugeIcon,
-  low: ClockIcon,
-  idle: MoonIcon,
+const cardIcon: Record<PriorityKey, typeof Zap> = {
+  immediate: Zap,
+  userBlocking: User,
+  normal: Gauge,
+  low: Clock3,
+  idle: Moon,
 };
 
 export const PriorityLevelCards = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GaugeIcon className="h-5 w-5" />}
+      icon={<Gauge className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md items-stretch">
@@ -105,13 +106,13 @@ export const PriorityLevelCards = ({ content }: Props) => (
       )}
     >
       <span className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-xsm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-        <ZapIcon aria-hidden="true" className="h-4 w-4" />
+        <Zap aria-hidden="true" className="h-4 w-4" />
         {content.directionStart}
       </span>
-      <ArrowRightIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-muted)]" />
+      <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-muted)]" />
       <span className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-xsm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
         {content.directionEnd}
-        <MoonIcon aria-hidden="true" className="h-4 w-4" />
+        <Moon aria-hidden="true" className="h-4 w-4" />
       </span>
     </div>
   </section>

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Sliders, Target, Trophy, Zap } from 'lucide-react';
+
 import type { Tone, WhyNotImmediateContent } from '../content';
-import { SlidersIcon, TargetIcon, TrophyIcon, ZapIcon } from '../icons';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 
@@ -54,7 +55,7 @@ const toneIconWash: Record<Tone, string> = {
   rose: 'text-rose-300/70 dark:text-rose-700/60',
 };
 
-const cardIcons = [ZapIcon, TargetIcon, SlidersIcon];
+const cardIcons = [Zap, Target, Sliders];
 
 export const SchedulerKeyTakeaways = ({ content }: Props) => (
   <section aria-labelledby="heading-takeaways">
@@ -63,12 +64,12 @@ export const SchedulerKeyTakeaways = ({ content }: Props) => (
       number={8}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? TrophyIcon;
+        const Icon = cardIcons[i] ?? Trophy;
         return (
           <li key={card.title} className="h-full">
             <article

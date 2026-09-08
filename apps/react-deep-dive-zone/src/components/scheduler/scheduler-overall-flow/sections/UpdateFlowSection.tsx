@@ -1,22 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ChevronRight,
+  Clock3,
+  type LucideIcon,
+  MousePointerClick,
+  Repeat,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FlowStep } from '../content';
-import {
-  ArrowDownIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  MousePointerClickIcon,
-  RepeatIcon,
-  type ZapIcon,
-} from '../icons';
 
 export type FlowVariant = 'click' | 'transition' | 'deferred';
 
 const variantStyle: Record<
   FlowVariant,
   {
-    icon: typeof MousePointerClickIcon;
+    icon: LucideIcon;
     card: string;
     headerIcon: string;
     stepBadge: string;
@@ -26,7 +27,7 @@ const variantStyle: Record<
   }
 > = {
   click: {
-    icon: MousePointerClickIcon,
+    icon: MousePointerClick,
     card: 'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-blue-50/30 dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
     headerIcon: 'bg-blue-600 text-white dark:bg-blue-500 shadow-[0_2px_0_rgba(29,78,216,0.3)]',
     stepBadge: 'bg-blue-600 text-white dark:bg-blue-500',
@@ -35,7 +36,7 @@ const variantStyle: Record<
     note: 'border-blue-200/80 bg-blue-50/80 text-blue-900 dark:border-blue-700/60 dark:bg-blue-950/30 dark:text-blue-100',
   },
   transition: {
-    icon: RepeatIcon,
+    icon: Repeat,
     card: 'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-emerald-50/30 dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/10',
     headerIcon: 'bg-teal-600 text-white dark:bg-teal-500 shadow-[0_2px_0_rgba(13,148,136,0.3)]',
     stepBadge: 'bg-teal-600 text-white dark:bg-teal-500',
@@ -44,7 +45,7 @@ const variantStyle: Record<
     note: 'border-teal-200/80 bg-teal-50/80 text-teal-900 dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',
   },
   deferred: {
-    icon: ClockIcon,
+    icon: Clock3,
     card: 'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-indigo-50/30 dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-indigo-950/10',
     headerIcon: 'bg-violet-600 text-white dark:bg-violet-500 shadow-[0_2px_0_rgba(124,58,237,0.3)]',
     stepBadge: 'bg-violet-600 text-white dark:bg-violet-500',
@@ -66,7 +67,7 @@ type Props = {
 
 export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, note }: Props) => {
   const v = variantStyle[variant];
-  const HeaderIcon: typeof ZapIcon = v.icon;
+  const HeaderIcon = v.icon;
 
   return (
     <section aria-labelledby={`heading-${id}`}>
@@ -128,10 +129,10 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
                       className={cn('self-center inline-flex items-center justify-center', v.arrow)}
                     >
                       <span className="md:hidden">
-                        <ArrowDownIcon className="h-4 w-4" />
+                        <ArrowDown className="h-4 w-4" aria-hidden="true" />
                       </span>
                       <span className="hidden md:inline-flex">
-                        <ChevronRightIcon className="h-4 w-4" />
+                        <ChevronRight className="h-4 w-4" aria-hidden="true" />
                       </span>
                     </span>
                   )}

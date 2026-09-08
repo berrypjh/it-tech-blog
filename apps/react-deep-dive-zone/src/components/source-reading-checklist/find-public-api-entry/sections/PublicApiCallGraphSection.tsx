@@ -4,10 +4,11 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, FileCode2, Network, Sparkles, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FindPublicApiEntryContent, LayerKey } from '../content';
-import { ArrowDownIcon, FileCodeIcon, NetworkIcon, SparkIcon, TargetIcon } from '../icons';
 import { layerToneKey } from '../layerTone';
 
 type Props = { content: FindPublicApiEntryContent['callGraph'] };
@@ -30,7 +31,7 @@ export const PublicApiCallGraphSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NetworkIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -103,7 +104,7 @@ export const PublicApiCallGraphSection = ({ content }: Props) => {
                             : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
                         )}
                       >
-                        <TargetIcon className="h-3.5 w-3.5" />
+                        <Target className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                       <code
                         className={cn(
@@ -220,7 +221,7 @@ export const PublicApiCallGraphSection = ({ content }: Props) => {
                           aria-hidden="true"
                           className="flex items-center justify-center py-0.5"
                         >
-                          <ArrowDownIcon className="h-3.5 w-3.5 text-cyan-500" />
+                          <ArrowDown className="h-3.5 w-3.5 text-cyan-500" aria-hidden="true" />
                         </span>
                       )}
                     </Fragment>
@@ -241,7 +242,7 @@ export const PublicApiCallGraphSection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
                 )}
               >
-                <SparkIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <Sparkles className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p className="text-xsm sm:text-sm font-bold leading-snug break-keep">
                   {active.readingPoint}
                 </p>
@@ -264,7 +265,7 @@ export const PublicApiCallGraphSection = ({ content }: Props) => {
                         'font-mono text-[10px] font-bold',
                       )}
                     >
-                      <FileCodeIcon className="h-3 w-3" aria-hidden="true" />
+                      <FileCode2 className="h-3 w-3" aria-hidden="true" />
                       {kw}
                     </span>
                   </li>

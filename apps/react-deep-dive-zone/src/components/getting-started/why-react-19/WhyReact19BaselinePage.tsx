@@ -7,7 +7,6 @@ import { ModernReinterpretationTable } from './sections/ModernReinterpretationTa
 import { OfficialChangeRecordCards } from './sections/OfficialChangeRecordCards';
 import { React19FocusTopics } from './sections/React19FocusTopics';
 import { React19Hero } from './sections/React19Hero';
-import { TerminologyShiftCompare } from './sections/TerminologyShiftCompare';
 import { VersionEvolutionTimeline } from './sections/VersionEvolutionTimeline';
 import { whyReact19Content } from './content';
 
@@ -19,7 +18,6 @@ export const WhyReact19BaselinePage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <React19Hero content={c.hero} />
-      <TerminologyShiftCompare content={c.terminology} />
       <VersionEvolutionTimeline content={c.timeline} />
       <React19FocusTopics content={c.focusTopics} />
       <ModernReinterpretationTable content={c.reinterpret} />

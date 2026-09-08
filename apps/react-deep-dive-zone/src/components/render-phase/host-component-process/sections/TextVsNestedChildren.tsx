@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChildExampleCard, HostComponentContent } from '../content';
-import { ArrowDownIcon, LayersIcon } from '../icons';
 
 type Props = { content: HostComponentContent['childCompare'] };
 
@@ -19,7 +20,7 @@ export const TextVsNestedChildren = ({ content }: Props) => (
       id="text-vs-nested"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg items-stretch">
@@ -55,7 +56,7 @@ const Card = ({ card }: { card: ChildExampleCard }) => {
 
       <CodePreviewPanel code={card.code} language="jsx" showWindowDots={false} />
 
-      <ArrowDownIcon aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
+      <ArrowDown aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
 
       <div
         className={cn(

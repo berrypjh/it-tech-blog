@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Crosshair, Flag, Layers, Plus, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DomStage, FlowStep, FlowStepIcon, PlacementContent } from '../content';
-import { ArrowDownIcon, CrosshairIcon, FlagIcon, LayersIcon, PlusIcon, TargetIcon } from '../icons';
 
 type Props = { content: PlacementContent['commitFlow'] };
 
-const iconMap: Record<FlowStepIcon, typeof FlagIcon> = {
-  flag: FlagIcon,
-  target: TargetIcon,
-  crosshair: CrosshairIcon,
-  plus: PlusIcon,
+const iconMap: Record<FlowStepIcon, typeof Flag> = {
+  flag: Flag,
+  target: Target,
+  crosshair: Crosshair,
+  plus: Plus,
 };
 
 export const PlacementCommitFlowSection = ({ content }: Props) => (
@@ -26,7 +27,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-3">
@@ -52,7 +53,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-2 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>
@@ -84,7 +85,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-2 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
             </li>

@@ -1,15 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Hourglass, PlugZap, TriangleAlert } from 'lucide-react';
+
 import type { BranchKind, WhyFailableRenderContent } from '../content';
-import { HourglassIcon, PlugZapIcon, TriangleAlertIcon } from '../icons';
 import { branchAccent } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['comparison'] };
 
 const branchIcon: Record<BranchKind, React.ComponentType<{ className?: string }>> = {
-  suspense: HourglassIcon,
-  error: TriangleAlertIcon,
-  hydration: PlugZapIcon,
+  suspense: Hourglass,
+  error: TriangleAlert,
+  hydration: PlugZap,
 };
 
 export const RoleComparisonTable = ({ content }: Props) => (

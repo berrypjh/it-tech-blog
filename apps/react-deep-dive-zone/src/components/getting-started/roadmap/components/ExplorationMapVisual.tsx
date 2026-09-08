@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleCheck, Flag, FolderOpen, Pencil } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import type { RoadmapContent } from '../content';
-import { CheckCircleIcon, FlagIcon, FolderOpenIcon, PencilIcon } from '../icons';
 
 type Props = { visual: RoadmapContent['hero']['visual'] };
 
@@ -100,7 +101,10 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
           className="rounded-md border border-[var(--term-border)] bg-white dark:bg-slate-900 p-2 shadow-[0_2px_0_var(--term-border)] min-w-0"
         >
           <header className="flex items-center gap-1.5 pb-1 mb-1 border-b border-dashed border-[var(--term-border)]">
-            <FolderOpenIcon className="h-3 w-3 shrink-0 text-sky-600 dark:text-sky-300" />
+            <FolderOpen
+              className="h-3 w-3 shrink-0 text-sky-600 dark:text-sky-300"
+              aria-hidden="true"
+            />
             <span className="text-[10px] font-mono font-bold text-[var(--term-fg)] truncate">
               {visual.repoTitle}
             </span>
@@ -108,7 +112,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
               aria-hidden="true"
               className="ml-auto inline-flex shrink-0 items-center justify-center w-4 h-4 rounded bg-amber-400 text-amber-950 dark:bg-amber-300"
             >
-              <FlagIcon className="h-2.5 w-2.5" />
+              <Flag className="h-2.5 w-2.5" aria-hidden="true" />
             </span>
           </header>
           <ul className="flex flex-col gap-0.5">
@@ -149,7 +153,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
             aria-hidden="true"
             className="inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]"
           >
-            <CheckCircleIcon className="h-4 w-4" />
+            <CircleCheck className="h-4 w-4" aria-hidden="true" />
           </span>
           <div className="flex flex-col min-w-0">
             <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-accent)]">
@@ -170,7 +174,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
               aria-hidden="true"
               className="inline-flex shrink-0 items-center justify-center w-5 h-5 rounded bg-violet-100 text-violet-600 dark:bg-violet-950/60 dark:text-violet-300"
             >
-              <PencilIcon className="h-2.5 w-2.5" />
+              <Pencil className="h-2.5 w-2.5" aria-hidden="true" />
             </span>
             <div className="flex flex-col leading-tight min-w-0">
               <span className="text-[10px] font-bold text-[var(--term-fg)] truncate">

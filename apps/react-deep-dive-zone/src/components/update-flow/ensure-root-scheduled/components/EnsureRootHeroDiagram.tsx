@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, ListChecks, Network } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent, HeroRootCard } from '../content';
-import { ClockIcon, ListChecksIcon, NetworkIcon } from '../icons';
 
 type Props = { content: EnsureRootScheduledContent['hero']; className?: string };
 
@@ -27,7 +28,7 @@ export const EnsureRootHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={diagram.title}
-            icon={<NetworkIcon className="h-[18px] w-[18px]" />}
+            icon={<Network className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <ul className="grid grid-cols-2 gap-2 @sm:grid-cols-4">
             {diagram.roots.map((root) => (
@@ -44,7 +45,7 @@ export const EnsureRootHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="emerald"
             label={diagram.scheduleQueueTitle}
-            icon={<ListChecksIcon className="h-[18px] w-[18px]" />}
+            icon={<ListChecks className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="FIFO"
           />
           <ol className="flex flex-wrap items-center gap-2">
@@ -72,7 +73,7 @@ export const EnsureRootHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="violet"
             label={diagram.microtaskQueueTitle}
-            icon={<ClockIcon className="h-[18px] w-[18px]" />}
+            icon={<Clock className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="reserved"
           />
           <CodePreviewPanel

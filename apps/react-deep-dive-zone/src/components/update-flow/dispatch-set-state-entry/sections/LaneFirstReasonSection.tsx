@@ -1,11 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Crosshair, Database, Lightbulb, PenTool, Server } from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent, LaneFlowStep } from '../content';
-import { CrosshairIcon, laneFlowIconByName, LightbulbIcon } from '../icons';
+
+const laneFlowIconByName = {
+  crosshair: Crosshair,
+  database: Database,
+  server: Server,
+  penTool: PenTool,
+} as const;
 
 type Props = { content: DispatchSetStateEntryContent['laneReason'] };
 
@@ -29,7 +37,7 @@ export const LaneFirstReasonSection = ({ content }: Props) => (
       id="lane-reason"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<CrosshairIcon className="h-5 w-5" />}
+      icon={<Crosshair className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -39,7 +47,7 @@ export const LaneFirstReasonSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="amber" size="sm">
-        <LightbulbIcon className="h-3.5 w-3.5" />
+        <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
       </ToneIconBox>
       <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
         {content.intro}

@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Map } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
 import type { WhySplitContent } from '../content';
-import { MapIcon } from '../icons';
 
 type Props = {
   content: WhySplitContent['fullMap'];
@@ -20,7 +21,7 @@ export const WhySplitArchitectureMap = ({ content, architecture }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.05fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">

@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Gauge, Link2, Zap } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxTransformFlowContent } from '../content';
-import { FileTextIcon, GaugeIcon, LinkIcon, ZapIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['react19'] };
 
 const iconMap = {
-  link: LinkIcon,
-  gauge: GaugeIcon,
-  fileText: FileTextIcon,
+  link: Link2,
+  gauge: Gauge,
+  fileText: FileText,
 } as const;
 
 export const React19TransformReasons = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const React19TransformReasons = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ZapIcon className="h-5 w-5" />}
+      icon={<Zap className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex items-center gap-sm">

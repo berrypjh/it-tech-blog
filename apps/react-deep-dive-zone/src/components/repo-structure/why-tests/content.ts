@@ -4,17 +4,6 @@ import type { ToneKey } from '../../shared/tones';
 
 export type { ToneKey };
 
-export type IconName =
-  | 'fileCode'
-  | 'flask'
-  | 'code'
-  | 'shield'
-  | 'target'
-  | 'search'
-  | 'refresh'
-  | 'list'
-  | 'check';
-
 export type ComparePoint = {
   text: string;
 };
@@ -25,7 +14,6 @@ export type InsightCard = {
   title: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type FilePair = {
@@ -35,11 +23,10 @@ export type FilePair = {
 };
 
 export type ReadingStep = {
-  number: string;
+  number: '1' | '2' | '3' | '4';
   title: string;
   description: string;
   tone: ToneKey;
-  icon: IconName;
 };
 
 export type TestCodeContent = {
@@ -81,25 +68,18 @@ export type TestCodeContent = {
   spotlight: {
     eyebrow: string;
     title: string;
-    leftLabel: string;
     leftFileTitle: string;
     leftFile: string;
     leftCoreLabel: string;
     leftCore: string;
     leftPointLabel: string;
     leftPoint: string;
-    middleQuestion: string;
-    middleCaption: string;
-    rightLabel: string;
-    rightFile: string;
-    rightPoint: string;
+    pointValue: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
     primaryCta: string;
-    secondaryCta: string;
     primaryHref: string;
-    secondaryHref: string;
   };
   steps: {
     eyebrow: string;
@@ -140,12 +120,16 @@ it('warns when key is spread', () => {
 });
 `;
 
-const spotlightCode = `it('should warn when key is spread', () => {
-  const props = { key: 'a' };
-
-  expect(() => createElement('div', props)).toErrorDev(
-    'A props object containing a key ...'
-  );
+const spotlightCode = `it('extracts key from the rest of the props', () => {
+  const element = React.createElement(ComponentClass, {
+    key: '12',
+    foo: '56',
+  });
+  expect(element.type).toBe(ComponentClass);
+  expect(element.key).toBe('12');
+  const expectation = {foo: '56'};
+  Object.freeze(expectation);
+  expect(element.props).toEqual(expectation);
 });
 `;
 
@@ -187,7 +171,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: '어떤 입력이\n중요한가',
           description: '다양한 입력 중 어떤 값들이 시스템의 핵심 검증 지점인지 알려줍니다.',
           tone: 'blue',
-          icon: 'target',
         },
         {
           id: 'must',
@@ -195,7 +178,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: '어떤 동작이\n깨지면 안 되는가',
           description: '반드시 지켜야 하는 동작과 그 한계를 명확히 보여줍니다.',
           tone: 'teal',
-          icon: 'shield',
         },
         {
           id: 'edge',
@@ -203,7 +185,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: '어떤 edge case를\n막는가',
           description: '예외 상황, 경계 조건을 통해 설계의 뒷면을 보여줍니다.',
           tone: 'violet',
-          icon: 'search',
         },
         {
           id: 'compat',
@@ -211,7 +192,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: '이전 동작과의\n호환성을 어디까지\n지키는가',
           description: '과거 버전과의 계약 범위를 테스트를 통해 드러냅니다.',
           tone: 'emerald',
-          icon: 'refresh',
         },
       ],
     },
@@ -261,26 +241,19 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     spotlight: {
       eyebrow: '04 · 테스트 읽기',
       title: '실제로 읽어보기: ReactCreateElement-test.js',
-      leftLabel: '구현 파일',
       leftFileTitle: '파일',
-      leftFile: 'ReactJSXElement.js',
+      leftFile: 'packages/react/src/jsx/ReactJSXElement.js',
       leftCoreLabel: '핵심 대상',
       leftCore: 'createElement',
       leftPointLabel: '포인트',
       leftPoint: 'key / props / element shape',
-      middleQuestion: 'createElement는\nkey와 props를 어떤\n방식으로 보장할까?',
-      middleCaption: '테스트가 이 질문의 답을 구체적으로 보여줍니다.',
-      rightLabel: '테스트 파일',
-      rightFile: 'ReactCreateElement-test.js',
-      rightPoint: 'key 처리, props 전달, 경고 동작',
-      codeHeader: 'ReactCreateElement-test.js',
+      pointValue: 'key는 props에서 분리되고, 나머지만 element.props로 남습니다.',
+      codeHeader: 'packages/react/src/__tests__/ReactCreateElement-test.js',
       codeBadge: 'main',
       code: spotlightCode,
-      primaryCta: '구현 코드 열기',
-      secondaryCta: '테스트 코드 열기',
+      primaryCta: '테스트 코드 열기',
       primaryHref:
-        'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react/src/__tests__',
+        'https://github.com/facebook/react/blob/main/packages/react/src/__tests__/ReactCreateElement-test.js',
     },
     steps: {
       eyebrow: '05 · 읽는 순서',
@@ -292,28 +265,24 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: '테스트 이름을\n먼저 훑는다.',
           description: '어떤 동작을 검증하는지 힌트를 얻습니다.',
           tone: 'blue',
-          icon: 'list',
         },
         {
           number: '2',
           title: '어떤 상황을\n보장하는지 추측한다.',
           description: '입력과 조건을 상상하며 맥락을 이해합니다.',
           tone: 'teal',
-          icon: 'search',
         },
         {
           number: '3',
           title: '기대값을 읽는다.',
           description: '어떤 결과가 나와야 하는지, 정확한 계약을 확인합니다.',
           tone: 'violet',
-          icon: 'check',
         },
         {
           number: '4',
           title: '구현 코드로 돌아가\n왜 그렇게 되는지\n확인한다.',
           description: '설계 의도와 구현 이유를 연결합니다.',
           tone: 'emerald',
-          icon: 'code',
         },
       ],
     },
@@ -366,7 +335,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: 'Which inputs\nmatter',
           description: 'Out of many possible inputs, tests highlight the critical ones.',
           tone: 'blue',
-          icon: 'target',
         },
         {
           id: 'must',
@@ -374,7 +342,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: 'Which behaviour\nmust not break',
           description: 'Tests make the must-hold behaviour and its limits explicit.',
           tone: 'teal',
-          icon: 'shield',
         },
         {
           id: 'edge',
@@ -382,7 +349,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: 'Which edge cases\nare guarded',
           description: 'Exception and boundary tests reveal the back side of the design.',
           tone: 'violet',
-          icon: 'search',
         },
         {
           id: 'compat',
@@ -390,7 +356,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: 'How far backwards\ncompatibility\ngoes',
           description: 'Tests expose the contract maintained with past versions.',
           tone: 'emerald',
-          icon: 'refresh',
         },
       ],
     },
@@ -440,26 +405,19 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     spotlight: {
       eyebrow: '04 · READ A TEST',
       title: 'Read one test file: ReactCreateElement-test.js',
-      leftLabel: 'Implementation',
       leftFileTitle: 'File',
-      leftFile: 'ReactJSXElement.js',
+      leftFile: 'packages/react/src/jsx/ReactJSXElement.js',
       leftCoreLabel: 'Core target',
       leftCore: 'createElement',
       leftPointLabel: 'Focus',
       leftPoint: 'key / props / element shape',
-      middleQuestion: 'How does createElement\nguarantee key and props?',
-      middleCaption: 'The tests answer this question concretely.',
-      rightLabel: 'Tests',
-      rightFile: 'ReactCreateElement-test.js',
-      rightPoint: 'Key handling, props passing, warning behaviour',
-      codeHeader: 'ReactCreateElement-test.js',
+      pointValue: 'key is pulled out of the config, and only the rest stays in element.props.',
+      codeHeader: 'packages/react/src/__tests__/ReactCreateElement-test.js',
       codeBadge: 'main',
       code: spotlightCode,
-      primaryCta: 'Open the implementation',
-      secondaryCta: 'Open the tests',
+      primaryCta: 'Open the test file',
       primaryHref:
-        'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
-      secondaryHref: 'https://github.com/facebook/react/tree/main/packages/react/src/__tests__',
+        'https://github.com/facebook/react/blob/main/packages/react/src/__tests__/ReactCreateElement-test.js',
     },
     steps: {
       eyebrow: '05 · HOW TO READ',
@@ -471,28 +429,24 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           title: 'Scan test names\nfirst.',
           description: 'Pick up hints about what behaviour the file validates.',
           tone: 'blue',
-          icon: 'list',
         },
         {
           number: '2',
           title: 'Guess the\nsituation it guards.',
           description: 'Imagine inputs and conditions to build context.',
           tone: 'teal',
-          icon: 'search',
         },
         {
           number: '3',
           title: 'Read the\nexpected value.',
           description: 'Confirm the exact contract — what result must hold.',
           tone: 'violet',
-          icon: 'check',
         },
         {
           number: '4',
           title: 'Return to the\nimplementation to\nsee why.',
           description: 'Link design intent with the implementation reason.',
           tone: 'emerald',
-          icon: 'code',
         },
       ],
     },

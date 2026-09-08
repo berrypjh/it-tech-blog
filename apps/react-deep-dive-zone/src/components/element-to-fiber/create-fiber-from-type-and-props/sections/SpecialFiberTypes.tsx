@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, EyeOff, Info, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromTypeAndPropsContent } from '../content';
-import { AtomIcon, EyeOffIcon, InfoIcon, ShieldCheckIcon, SparklesIcon, ZapIcon } from '../icons';
 
 type Props = { content: CreateFiberFromTypeAndPropsContent['special'] };
 
 const iconMap = {
-  shield: ShieldCheckIcon,
-  eyeoff: EyeOffIcon,
-  zap: ZapIcon,
-  sparkles: SparklesIcon,
+  shield: ShieldCheck,
+  eyeoff: EyeOff,
+  zap: Zap,
+  sparkles: Sparkles,
 } as const;
 
 export const SpecialFiberTypes = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const SpecialFiberTypes = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<AtomIcon className="h-5 w-5" />}
+      icon={<Atom className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
@@ -60,6 +61,8 @@ export const SpecialFiberTypes = ({ content }: Props) => (
       })}
     </ul>
 
-    <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.bottomNote}</SectionNote>
+    <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+      {content.bottomNote}
+    </SectionNote>
   </section>
 );

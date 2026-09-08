@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, CheckCircle2, XCircle } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import type { Tone, TypeKeyReuseContent } from '../content';
 import { facetFor, type SemanticFacet } from '../facets';
-import { BoxIcon, CheckCircleIcon, XCircleIcon } from '../icons';
 
 type Props = { content: TypeKeyReuseContent['hero'] };
 
@@ -55,7 +56,7 @@ const BranchPanel = ({
   kind: 'reuse' | 'replace';
 }) => {
   const t = facetFor(tone);
-  const Icon = kind === 'reuse' ? CheckCircleIcon : XCircleIcon;
+  const Icon = kind === 'reuse' ? CheckCircle2 : XCircle;
   return (
     <article
       className={cn(
@@ -97,7 +98,7 @@ const FiberBox = ({
 }) => (
   <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2.5 py-2">
     <ChipBox t={t}>
-      <BoxIcon className="h-4 w-4" />
+      <Box className="h-4 w-4" aria-hidden="true" />
     </ChipBox>
     <div className="flex min-w-0 flex-col gap-0.5">
       <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)] break-keep">

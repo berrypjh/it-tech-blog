@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Cpu, Layers } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent } from '../content';
-import { CheckCircleIcon, CpuIcon, LayersIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['hero']; className?: string };
 
@@ -24,13 +25,13 @@ export const CommitPhaseHeroDiagram = ({ content, className }: Props) => {
   const steps: PhaseStep[] = [
     {
       tone: 'sky',
-      icon: <CpuIcon className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <Cpu className="h-[18px] w-[18px]" aria-hidden="true" />,
       title: diagram.renderCard.title,
       items: diagram.renderCard.items,
     },
     {
       tone: 'teal',
-      icon: <LayersIcon className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <Layers className="h-[18px] w-[18px]" aria-hidden="true" />,
       title: diagram.commitCard.title,
       items: diagram.commitCard.items,
     },
@@ -100,7 +101,7 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
               key={item}
               className="flex items-center gap-1.5 text-xsm leading-snug text-[var(--term-muted)] break-keep"
             >
-              <CheckCircleIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
               <span>{item}</span>
             </li>
           ))}

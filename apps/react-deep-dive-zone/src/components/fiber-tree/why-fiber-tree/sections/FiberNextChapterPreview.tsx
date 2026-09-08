@@ -1,25 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, Compass, HelpCircle, List, Send } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberCentralContent, PreviewItem } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CompassIcon,
-  HelpCircleIcon,
-  ListIcon,
-  SendIcon,
-} from '../icons';
 
 type Props = { content: FiberCentralContent['nextPreview'] };
 
 const iconMap = {
-  send: SendIcon,
-  list: ListIcon,
-  compass: CompassIcon,
-  arrowUp: ArrowUpIcon,
+  send: Send,
+  list: List,
+  compass: Compass,
+  arrowUp: ArrowUp,
 } as const;
 
 export const FiberNextChapterPreview = ({ content }: Props) => (
@@ -33,7 +27,7 @@ export const FiberNextChapterPreview = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-stretch">
@@ -45,7 +39,7 @@ export const FiberNextChapterPreview = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="violet">
-          <HelpCircleIcon className="h-5 w-5" />
+          <HelpCircle className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <span
           className={cn('text-[10px] uppercase tracking-wider font-mono', toneTokens.violet.text)}
@@ -93,7 +87,7 @@ export const FiberNextChapterPreview = ({ content }: Props) => (
               {idx < content.items.length - 1 && (
                 <span className="flex justify-center py-1" aria-hidden="true">
                   <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </span>
               )}

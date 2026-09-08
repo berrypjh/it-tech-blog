@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Server, TriangleAlert } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { MismatchDetectRecoverContent } from '../content';
-import { AtomIcon, ServerIcon, TriangleAlertIcon } from '../icons';
 
 type Props = { content: MismatchDetectRecoverContent['hero']; className?: string };
 
@@ -33,7 +34,7 @@ export const MismatchRecoverHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <RenderCard
           tone="blue"
-          icon={<ServerIcon className="h-[18px] w-[18px]" />}
+          icon={<Server className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={content.serverCard.title}
           code={content.serverCard.code}
           value={content.serverCard.value}
@@ -48,7 +49,7 @@ export const MismatchRecoverHeroDiagram = ({ content, className }: Props) => {
 
         <RenderCard
           tone="violet"
-          icon={<AtomIcon className="h-[18px] w-[18px]" />}
+          icon={<Atom className="h-[18px] w-[18px]" aria-hidden="true" />}
           title={content.clientCard.title}
           code={content.clientCard.code}
           value={content.clientCard.value}
@@ -116,7 +117,7 @@ const MismatchCard = ({ title, body }: { title: string; body: string }) => {
       )}
     >
       <ToneIconBox tone="amber" size="sm">
-        <TriangleAlertIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <TriangleAlert className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h3>

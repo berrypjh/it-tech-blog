@@ -1,9 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Box, Boxes, Clock, Code, Layers, type LucideIcon, Monitor } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowNode } from '../content';
-import { pdIcon } from '../icons';
+
+const nodeIcon: Record<FlowNode['id'], LucideIcon> = {
+  'user-code': Code,
+  react: Atom,
+  reconciler: Boxes,
+  renderer: Monitor,
+  'dom-native': Box,
+};
 
 type Props = {
   main: FlowNode[];
@@ -66,20 +75,26 @@ export const FinalArchitectureDiagram = ({
             subtitle={scheduler.subtitle}
             description={scheduler.description}
             tone="cyan"
-            iconName="clock"
+            icon={Clock}
           />
           <SideAxisCard
             title={shared.title}
             subtitle={shared.subtitle}
             description={shared.description}
             tone="amber"
-            iconName="layers"
+            icon={Layers}
           />
         </aside>
       </div>
     </div>
   );
 };
+
+/** 중앙 노드와 보조 축 카드가 공유하는 텍스트 스케일. 모두 가운데 정렬. */
+const CARD_CLASS = 'flex flex-col items-center gap-1 text-center';
+const TITLE_CLASS = 'text-sm font-bold font-mono tracking-tight';
+const SUBTITLE_CLASS = 'text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep';
+const DESCRIPTION_CLASS = 'text-xsm leading-relaxed text-[var(--term-muted)] break-keep';
 
 type FlowBoxProps = {
   node: FlowNode;
@@ -89,30 +104,28 @@ type FlowBoxProps = {
 
 const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
   const tone = toneTokens[node.tone];
-  const Icon = pdIcon[node.iconName];
+  const Icon = nodeIcon[node.id];
 
   return (
     <article
       className={cn(
-        'inline-flex flex-col items-center gap-1 rounded-xl border',
+        CARD_CLASS,
+        'rounded-xl border',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
         emphasized ? 'border-[var(--term-accent)]' : 'border-[var(--term-border)]',
-        compact ? 'px-3 py-2 w-[14rem]' : 'px-md py-3 w-[16rem]',
+        compact ? 'px-3 py-2 w-[14rem]' : 'p-md w-full max-w-[22rem]',
       )}
     >
-      <span className="inline-flex items-center gap-2">
+      <span className="flex items-center gap-2">
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>
-          {node.label}
-        </span>
+        <span className={cn(TITLE_CLASS, tone.text)}>{node.label}</span>
       </span>
-      {node.subtitle && (
-        <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep text-center">
-          {node.subtitle}
-        </span>
+      {node.subtitle && <span className={SUBTITLE_CLASS}>{node.subtitle}</span>}
+      {!compact && node.description && (
+        <p className={cn(DESCRIPTION_CLASS, 'mt-1')}>{node.description}</p>
       )}
     </article>
   );
@@ -132,16 +145,16 @@ type SideAxisCardProps = {
   subtitle: string;
   description?: string;
   tone: ToneKey;
-  iconName: keyof typeof pdIcon;
+  icon: LucideIcon;
 };
 
-const SideAxisCard = ({ title, subtitle, description, tone, iconName }: SideAxisCardProps) => {
+const SideAxisCard = ({ title, subtitle, description, tone, icon: Icon }: SideAxisCardProps) => {
   const t = toneTokens[tone];
-  const Icon = pdIcon[iconName];
   return (
     <article
       className={cn(
-        'flex flex-col gap-1 rounded-xl border-2 border-dashed p-md',
+        CARD_CLASS,
+        'rounded-xl border-2 border-dashed p-md',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -150,16 +163,10 @@ const SideAxisCard = ({ title, subtitle, description, tone, iconName }: SideAxis
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold font-mono tracking-tight', t.text)}>{title}</span>
+        <span className={cn(TITLE_CLASS, t.text)}>{title}</span>
       </span>
-      <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
-        {subtitle}
-      </span>
-      {description && (
-        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep mt-1">
-          {description}
-        </p>
-      )}
+      <span className={SUBTITLE_CLASS}>{subtitle}</span>
+      {description && <p className={cn(DESCRIPTION_CLASS, 'mt-1')}>{description}</p>}
     </article>
   );
 };

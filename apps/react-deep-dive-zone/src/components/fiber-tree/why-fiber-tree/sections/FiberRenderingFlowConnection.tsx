@@ -1,25 +1,18 @@
+import { Activity, Boxes, Flag, Pencil, Repeat, ShieldCheck, Zap } from 'lucide-react';
+
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberCentralContent } from '../content';
-import {
-  ActivityIcon,
-  BoxesIcon,
-  FlagIcon,
-  PencilIcon,
-  RepeatIcon,
-  ShieldCheckIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FiberCentralContent['flow'] };
 
 const iconMap = {
-  cube: BoxesIcon,
-  pulse: ActivityIcon,
-  zap: ZapIcon,
-  pencil: PencilIcon,
-  flag: FlagIcon,
-  shield: ShieldCheckIcon,
+  cube: Boxes,
+  pulse: Activity,
+  zap: Zap,
+  pencil: Pencil,
+  flag: Flag,
+  shield: ShieldCheck,
 } as const;
 
 export const FiberRenderingFlowConnection = ({ content }: Props) => (
@@ -29,7 +22,7 @@ export const FiberRenderingFlowConnection = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RepeatIcon className="h-5 w-5" />}
+      icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList

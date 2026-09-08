@@ -24,7 +24,6 @@ export type QuestionCard = {
   question: string[];
   badge: string;
   tone: ToneKey;
-  icon: 'clock' | 'zap' | 'key' | 'gauge';
 };
 
 export type BenefitCard = {
@@ -33,7 +32,6 @@ export type BenefitCard = {
   body: string;
   badge: string;
   tone: ToneKey;
-  icon: 'eye' | 'search' | 'bar-chart' | 'puzzle';
 };
 
 export type WhySourceContent = {
@@ -143,7 +141,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['왜 setState 직후', '화면이 바로', '바뀌지 않을까?'],
           badge: 'Update Queue',
           tone: 'sky',
-          icon: 'clock',
         },
         {
           id: 'use-effect',
@@ -151,7 +148,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['왜 useEffect는', '렌더 뒤에', '실행될까?'],
           badge: 'Scheduling',
           tone: 'sky',
-          icon: 'zap',
         },
         {
           id: 'key',
@@ -159,7 +155,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['왜 key를', '잘못 쓰면', '상태가 꼬일까?'],
           badge: 'Fiber',
           tone: 'sky',
-          icon: 'key',
         },
         {
           id: 'transition',
@@ -167,7 +162,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['왜 transition은', '입력 반응을', '덜 막을까?'],
           badge: 'Priority',
           tone: 'sky',
-          icon: 'gauge',
         },
       ],
     },
@@ -181,7 +175,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: '렌더링 과정 전체를 그림처럼 그릴 수 있어, 동작 원리를 정확히 이해합니다.',
           badge: '흐름을 읽는 힘',
           tone: 'sky',
-          icon: 'eye',
         },
         {
           id: 'debug',
@@ -189,7 +182,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: '문제의 근본 원인을 빠르게 찾고, 올바른 위치에서 해결할 수 있습니다.',
           badge: '원인을 찾는 힘',
           tone: 'sky',
-          icon: 'search',
         },
         {
           id: 'performance',
@@ -197,7 +189,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: '어떤 업데이트가 비용이 큰지 판단하고, 최적화 포인트를 스스로 찾습니다.',
           badge: '성능을 보는 힘',
           tone: 'sky',
-          icon: 'bar-chart',
         },
         {
           id: 'design',
@@ -205,7 +196,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: '좋은 추상화와 구조를 스스로 설계하고, 재사용 가능한 코드를 만들 수 있습니다.',
           badge: '구조를 만드는 힘',
           tone: 'sky',
-          icon: 'puzzle',
         },
       ],
     },
@@ -282,7 +272,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['Why does the screen', 'not update right', 'after setState?'],
           badge: 'Update Queue',
           tone: 'sky',
-          icon: 'clock',
         },
         {
           id: 'use-effect',
@@ -290,7 +279,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['Why does useEffect', 'run after the', 'render is done?'],
           badge: 'Scheduling',
           tone: 'sky',
-          icon: 'zap',
         },
         {
           id: 'key',
@@ -298,7 +286,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['Why does a wrong', 'key tangle the', 'component state?'],
           badge: 'Fiber',
           tone: 'sky',
-          icon: 'key',
         },
         {
           id: 'transition',
@@ -306,7 +293,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           question: ['Why does transition', 'block input', 'less than setState?'],
           badge: 'Priority',
           tone: 'sky',
-          icon: 'gauge',
         },
       ],
     },
@@ -320,7 +306,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: 'You can sketch the entire render pipeline, so you know exactly what runs and when.',
           badge: 'See the flow',
           tone: 'sky',
-          icon: 'eye',
         },
         {
           id: 'debug',
@@ -328,7 +313,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: 'You find the root cause fast and fix it where it actually lives.',
           badge: 'Find the cause',
           tone: 'sky',
-          icon: 'search',
         },
         {
           id: 'performance',
@@ -336,7 +320,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: 'You can tell which updates are expensive and locate optimization points yourself.',
           badge: 'See performance',
           tone: 'sky',
-          icon: 'bar-chart',
         },
         {
           id: 'design',
@@ -344,7 +327,6 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
           body: 'You design good abstractions on your own and ship reusable, durable code.',
           badge: 'Shape structure',
           tone: 'sky',
-          icon: 'puzzle',
         },
       ],
     },

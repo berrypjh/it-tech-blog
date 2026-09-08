@@ -1,11 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, FileText, Flag, Settings, SquareDashed } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnqueueConcurrentHookUpdateContent, FourElement } from '../content';
-import { elementIconByName } from '../icons';
+
+const elementIconByName = {
+  squareDashed: SquareDashed,
+  database: Database,
+  fileText: FileText,
+  flag: Flag,
+  settings: Settings,
+} as const;
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['hero']; className?: string };
 

@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CalendarClock, Monitor, Route, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroPhaseCard, PhaseDetectionContent } from '../content';
-import { CalendarClockIcon, MonitorIcon, RouteIcon, WorkflowIcon } from '../icons';
 import { PhaseBadge } from '../PhaseBadge';
 import { phaseToneKey } from '../phaseTone';
 
 type Props = { content: PhaseDetectionContent['hero']; className?: string };
 
 const heroPhaseIcon = {
-  calendarClock: CalendarClockIcon,
-  workflow: WorkflowIcon,
-  monitor: MonitorIcon,
+  calendarClock: CalendarClock,
+  workflow: Workflow,
+  monitor: Monitor,
 } as const;
 
 /**
@@ -43,7 +44,7 @@ export const IdentifyPhaseHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="blue" size="sm">
-            <RouteIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+            <Route className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.visualTitle}

@@ -1,27 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, RefreshCcw, RotateCcw, ShieldCheck } from 'lucide-react';
+
 import type { BranchKind, WhyFailableRenderContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  RefreshCcwIcon,
-  RotateCcwIcon,
-  ShieldCheckIcon,
-} from '../icons';
 import { branchAccent } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['flowMap'] };
 
 const endStateIcon: Record<BranchKind, React.ComponentType<{ className?: string }>> = {
-  suspense: RefreshCcwIcon,
-  error: RotateCcwIcon,
-  hydration: CheckCircleIcon,
+  suspense: RefreshCcw,
+  error: RotateCcw,
+  hydration: CheckCircle2,
 };
 
 const endStateLargeIcon: Record<BranchKind, React.ComponentType<{ className?: string }>> = {
-  suspense: RefreshCcwIcon,
-  error: RotateCcwIcon,
-  hydration: ShieldCheckIcon,
+  suspense: RefreshCcw,
+  error: RotateCcw,
+  hydration: ShieldCheck,
 };
 
 export const PartFlowMap = ({ content }: Props) => (
@@ -94,7 +89,7 @@ export const PartFlowMap = ({ content }: Props) => (
                         {step.label}
                       </span>
                       {i < row.steps.length - 1 && (
-                        <ArrowRightIcon
+                        <ArrowRight
                           aria-hidden="true"
                           className={cn('h-3.5 w-3.5 shrink-0', accent.text)}
                         />

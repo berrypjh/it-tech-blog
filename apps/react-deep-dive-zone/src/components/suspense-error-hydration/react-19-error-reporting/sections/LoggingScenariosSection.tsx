@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, RefreshCcw, ShieldCheck } from 'lucide-react';
+
 import type { React19ErrorReportingContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, RefreshCcwIcon, ShieldCheckIcon } from '../icons';
 import { callbackAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -15,7 +16,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-2">
       {content.cards.map((card) => {
         const accent = callbackAccent[card.kind];
-        const Icon = card.kind === 'caught' ? ShieldCheckIcon : RefreshCcwIcon;
+        const Icon = card.kind === 'caught' ? ShieldCheck : RefreshCcw;
         return (
           <article
             key={card.title}
@@ -66,7 +67,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                       </span>
                     </div>
                     {!isLast && (
-                      <ArrowRightIcon
+                      <ArrowRight
                         aria-hidden="true"
                         className={cn('h-3.5 w-3.5 ml-2 rotate-90', accent.text)}
                       />
@@ -82,7 +83,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                   key={check}
                   className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
                 >
-                  <CheckCircleIcon
+                  <CheckCircle2
                     aria-hidden="true"
                     className={cn('mt-0.5 h-4 w-4 shrink-0', accent.text)}
                   />

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { SparkIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['summary'] };
 
@@ -14,7 +15,7 @@ export const KeySummarySection = ({ content }: Props) => {
         id="summary"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparkIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-md">

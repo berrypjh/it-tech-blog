@@ -1,8 +1,9 @@
+import { Scale } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { DvcContent } from '../content';
-import { ScaleIcon } from '../icons';
 
 type Props = { content: DvcContent['table'] };
 
@@ -14,7 +15,7 @@ export const ComparisonTableSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ScaleIcon className="h-5 w-5" />}
+        icon={<Scale className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ComparisonTable

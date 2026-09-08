@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Braces, HelpCircle, Sparkles, Type } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StripFlagCommentNoiseContent } from '../content';
-import { BracesIcon, HelpCircleIcon, SparkIcon, TypeIcon } from '../icons';
 import { getLabelClasses, LabelChip } from '../LabelChip';
 
 type Props = { content: StripFlagCommentNoiseContent['flowType'] };
@@ -16,7 +17,7 @@ export const FlowTypeSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<BracesIcon className="h-5 w-5" />}
+        icon={<Braces className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Main point */}
@@ -38,7 +39,7 @@ export const FlowTypeSection = ({ content }: Props) => {
               'shadow-[0_2px_0_var(--term-border)]',
             )}
           >
-            <SparkIcon className="h-5 w-5" />
+            <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold leading-snug text-blue-900 dark:text-blue-100 break-keep">
             {content.mainPoint}
@@ -68,7 +69,7 @@ export const FlowTypeSection = ({ content }: Props) => {
                     'font-mono text-xsm font-bold',
                   )}
                 >
-                  <TypeIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                  <Type className="h-3.5 w-3.5" aria-hidden="true" />
                   {type.name}
                 </code>
               </header>
@@ -81,7 +82,7 @@ export const FlowTypeSection = ({ content }: Props) => {
               </div>
 
               <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
-                <HelpCircleIcon
+                <HelpCircle
                   className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
                   aria-hidden="true"
                 />

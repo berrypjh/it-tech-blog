@@ -1,8 +1,25 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  CircleCheck,
+  Code2,
+  Folder,
+  type LucideIcon,
+  Package,
+  Tag,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { ExplorationContent, HeroFlowNode } from '../content';
-import { ArrowRightIcon, iconByName } from '../icons';
+
+const nodeIcon: Record<HeroFlowNode['id'], LucideIcon> = {
+  root: Folder,
+  packages: Package,
+  code: Code2,
+  tests: CircleCheck,
+  releases: Tag,
+};
 
 type Props = { content: ExplorationContent['hero'] };
 
@@ -39,10 +56,7 @@ export const HeroExplorationFlow = ({ content }: Props) => {
                 {word}
               </span>
               {idx < content.summaryLine.length - 1 && (
-                <ArrowRightIcon
-                  className="h-3.5 w-3.5 text-[var(--term-accent)]"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-3.5 w-3.5 text-[var(--term-accent)]" aria-hidden="true" />
               )}
             </span>
           ))}
@@ -63,8 +77,14 @@ const FlowNodeWithArrow = ({ node, isLast }: WithArrowProps) => (
 
 const FlowArrow = () => (
   <div aria-hidden="true" className="flex items-center justify-center">
-    <ArrowRightIcon className="hidden @2xl:inline-flex h-4 w-4 text-[var(--term-accent)]" />
-    <ArrowRightIcon className="inline-flex @2xl:hidden h-4 w-4 rotate-90 text-[var(--term-accent)]" />
+    <ArrowRight
+      className="hidden @2xl:inline-flex h-4 w-4 text-[var(--term-accent)]"
+      aria-hidden="true"
+    />
+    <ArrowRight
+      className="inline-flex @2xl:hidden h-4 w-4 rotate-90 text-[var(--term-accent)]"
+      aria-hidden="true"
+    />
   </div>
 );
 
@@ -72,7 +92,7 @@ type NodeProps = { node: HeroFlowNode };
 
 const FlowNode = ({ node }: NodeProps) => {
   const tone = toneTokens[node.tone];
-  const Icon = iconByName[node.icon];
+  const Icon = nodeIcon[node.id];
 
   return (
     <article
@@ -89,7 +109,7 @@ const FlowNode = ({ node }: NodeProps) => {
           tone.chip,
         )}
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3 className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>{node.title}</h3>
       <p className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

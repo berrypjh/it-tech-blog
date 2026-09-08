@@ -2,46 +2,30 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type ReactPackageIconName =
-  | 'atom'
-  | 'box'
-  | 'code'
-  | 'database'
-  | 'door'
-  | 'externalLink'
-  | 'fileCode'
-  | 'fileText'
-  | 'flow'
-  | 'hook'
-  | 'layers'
-  | 'lightning'
-  | 'link'
-  | 'monitor'
-  | 'network'
-  | 'play'
-  | 'refresh'
-  | 'star'
-  | 'user'
-  | 'zap';
-
 export type ApiToken = {
-  id: string;
+  id:
+    | 'useState'
+    | 'useEffect'
+    | 'createElement'
+    | 'memo'
+    | 'lazy'
+    | 'useTransition'
+    | 'useActionState'
+    | 'use';
   label: string;
   caption: string;
   tone: ToneKey;
-  iconName: ReactPackageIconName;
   /** Hero 네트워크의 좌/우 배치를 위한 힌트 */
   side: 'left' | 'right';
 };
 
 export type ApiGroupCard = {
-  id: string;
+  id: 'element' | 'component' | 'context' | 'hooks' | 'composition';
   number: string;
   title: string;
   description: string;
   apis: string[];
   tone: ToneKey;
-  iconName: ReactPackageIconName;
 };
 
 export type InternalFileCard = {
@@ -52,14 +36,13 @@ export type InternalFileCard = {
 };
 
 export type EntryRouteCard = {
-  id: string;
+  id: 'useState' | 'createElement' | 'startTransition';
   api: string;
   route: { from: string; to: string };
   description: string;
   buttonLabel: string;
   href: string;
   tone: ToneKey;
-  iconName: ReactPackageIconName;
 };
 
 export type CapabilityItem = {
@@ -68,11 +51,9 @@ export type CapabilityItem = {
 };
 
 export type CheckpointItem = {
-  id: 'file' | 'view' | 'question';
+  id: 'file' | 'view';
   label: string;
   value: string;
-  iconName: ReactPackageIconName;
-  tone: ToneKey;
 };
 
 export type ReactPackageContent = {
@@ -137,7 +118,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'useState',
     caption: '상태 API',
     tone: 'sky',
-    iconName: 'database',
     side: 'left',
   },
   {
@@ -145,7 +125,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'useEffect',
     caption: 'Effect API',
     tone: 'sky',
-    iconName: 'zap',
     side: 'left',
   },
   {
@@ -153,7 +132,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'createElement',
     caption: 'Element 생성',
     tone: 'violet',
-    iconName: 'code',
     side: 'left',
   },
   {
@@ -161,7 +139,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'memo',
     caption: '컴포넌트 메모화',
     tone: 'amber',
-    iconName: 'layers',
     side: 'left',
   },
   {
@@ -169,7 +146,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'lazy',
     caption: '지연 로딩',
     tone: 'amber',
-    iconName: 'box',
     side: 'right',
   },
   {
@@ -177,7 +153,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'useTransition',
     caption: '전환 업데이트',
     tone: 'cyan',
-    iconName: 'refresh',
     side: 'right',
   },
   {
@@ -185,7 +160,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'useActionState',
     caption: 'Action 상태',
     tone: 'teal',
-    iconName: 'user',
     side: 'right',
   },
   {
@@ -193,7 +167,6 @@ const HERO_TOKENS_KO: ApiToken[] = [
     label: 'use',
     caption: '리소스 읽기',
     tone: 'indigo',
-    iconName: 'link',
     side: 'right',
   },
 ];
@@ -204,7 +177,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'useState',
     caption: 'State API',
     tone: 'sky',
-    iconName: 'database',
     side: 'left',
   },
   {
@@ -212,7 +184,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'useEffect',
     caption: 'Effect API',
     tone: 'sky',
-    iconName: 'zap',
     side: 'left',
   },
   {
@@ -220,7 +191,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'createElement',
     caption: 'Element creation',
     tone: 'violet',
-    iconName: 'code',
     side: 'left',
   },
   {
@@ -228,7 +198,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'memo',
     caption: 'Memoize components',
     tone: 'amber',
-    iconName: 'layers',
     side: 'left',
   },
   {
@@ -236,7 +205,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'lazy',
     caption: 'Lazy loading',
     tone: 'amber',
-    iconName: 'box',
     side: 'right',
   },
   {
@@ -244,7 +212,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'useTransition',
     caption: 'Transition updates',
     tone: 'cyan',
-    iconName: 'refresh',
     side: 'right',
   },
   {
@@ -252,7 +219,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'useActionState',
     caption: 'Action state',
     tone: 'teal',
-    iconName: 'user',
     side: 'right',
   },
   {
@@ -260,7 +226,6 @@ const HERO_TOKENS_EN: ApiToken[] = [
     label: 'use',
     caption: 'Read resources',
     tone: 'indigo',
-    iconName: 'link',
     side: 'right',
   },
 ];
@@ -320,7 +285,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'React Element를 생성하고 조작하는 기능입니다.',
           apis: ['createElement', 'cloneElement', 'isValidElement'],
           tone: 'violet',
-          iconName: 'code',
         },
         {
           id: 'component',
@@ -329,7 +293,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: '클래스 컴포넌트의 기본 기능을 제공합니다.',
           apis: ['Component', 'PureComponent'],
           tone: 'emerald',
-          iconName: 'user',
         },
         {
           id: 'context',
@@ -338,7 +301,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: '전역 상태처럼 제공하고 구독하는 기능입니다.',
           apis: ['createContext', 'useContext'],
           tone: 'teal',
-          iconName: 'network',
         },
         {
           id: 'hooks',
@@ -347,7 +309,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: '함수 컴포넌트에서 상태, 생명주기, 전환 기능 등을 제공합니다.',
           apis: ['useState', 'useEffect', 'useReducer', 'useTransition', 'use', '...'],
           tone: 'sky',
-          iconName: 'hook',
         },
         {
           id: 'composition',
@@ -356,7 +317,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: '컴포넌트 합성/지연 로딩 유틸리티를 제공합니다.',
           apis: ['memo', 'lazy', 'forwardRef'],
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },
@@ -371,22 +331,11 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           id: 'file',
           label: '파일',
           value: 'packages/react/src/ReactClient.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'view',
           label: '볼 것',
           value: 'import 구문, 최종 export 블록',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: '학습 질문',
-          value: 'React public API는 어떤 내부 파일들에서 가져와지는가?',
-          iconName: 'flow',
-          tone: 'amber',
         },
       ],
       files: [
@@ -428,7 +377,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactHooks.js',
           tone: 'sky',
-          iconName: 'database',
         },
         {
           id: 'createElement',
@@ -438,7 +386,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
           tone: 'violet',
-          iconName: 'code',
         },
         {
           id: 'startTransition',
@@ -448,7 +395,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: '코드에서 보기',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactStartTransition.js',
           tone: 'teal',
-          iconName: 'refresh',
         },
       ],
     },
@@ -524,7 +470,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'Creates and manipulates React Elements.',
           apis: ['createElement', 'cloneElement', 'isValidElement'],
           tone: 'violet',
-          iconName: 'code',
         },
         {
           id: 'component',
@@ -533,7 +478,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'Base classes for class components.',
           apis: ['Component', 'PureComponent'],
           tone: 'emerald',
-          iconName: 'user',
         },
         {
           id: 'context',
@@ -542,7 +486,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'Provides and consumes global-like state.',
           apis: ['createContext', 'useContext'],
           tone: 'teal',
-          iconName: 'network',
         },
         {
           id: 'hooks',
@@ -551,7 +494,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'State, lifecycle and transitions for function components.',
           apis: ['useState', 'useEffect', 'useReducer', 'useTransition', 'use', '...'],
           tone: 'sky',
-          iconName: 'hook',
         },
         {
           id: 'composition',
@@ -560,7 +502,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           description: 'Composition and lazy-loading utilities.',
           apis: ['memo', 'lazy', 'forwardRef'],
           tone: 'amber',
-          iconName: 'layers',
         },
       ],
     },
@@ -575,22 +516,11 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           id: 'file',
           label: 'File',
           value: 'packages/react/src/ReactClient.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'view',
           label: 'Look at',
           value: 'import statements & the final export block',
-          iconName: 'fileCode',
-          tone: 'teal',
-        },
-        {
-          id: 'question',
-          label: 'Question',
-          value: 'Which internal files does React’s public API actually come from?',
-          iconName: 'flow',
-          tone: 'amber',
         },
       ],
       files: [
@@ -633,7 +563,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: 'View the code',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactHooks.js',
           tone: 'sky',
-          iconName: 'database',
         },
         {
           id: 'createElement',
@@ -643,7 +572,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: 'View the code',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
           tone: 'violet',
-          iconName: 'code',
         },
         {
           id: 'startTransition',
@@ -653,7 +581,6 @@ export const reactPackageContent: Record<Locale, ReactPackageContent> = {
           buttonLabel: 'View the code',
           href: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactStartTransition.js',
           tone: 'teal',
-          iconName: 'refresh',
         },
       ],
     },

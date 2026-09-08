@@ -1,16 +1,17 @@
+import { List, MousePointerClick, Package, Sparkles, Zap } from 'lucide-react';
+
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberStateAndQueueContent } from '../content';
-import { ListIcon, MouseClickIcon, PackageIcon, SparklesIcon, ZapIcon } from '../icons';
 
 type Props = { content: FiberStateAndQueueContent['setStateFlow'] };
 
 const iconMap = {
-  cursor: MouseClickIcon,
-  zap: ZapIcon,
-  package: PackageIcon,
-  list: ListIcon,
-  sparkles: SparklesIcon,
+  cursor: MousePointerClick,
+  zap: Zap,
+  package: Package,
+  list: List,
+  sparkles: Sparkles,
 } as const;
 
 export const SetStateFlow = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const SetStateFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ZapIcon className="h-5 w-5" />}
+      icon={<Zap className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList

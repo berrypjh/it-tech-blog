@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BookOpen, FileText, Tag } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import { toneTokens } from '../../../shared/tones';
-import { GithubIcon } from '../../repo-overview/icons';
 import type { ChangelogContent } from '../content';
-import { BookOpenIcon, FileTextIcon, TagIcon } from '../icons';
 
 type Props = { content: ChangelogContent['hero'] };
 
@@ -53,7 +54,7 @@ const VersionBadge = ({ version, badge }: VersionProps) => (
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <TagIcon className={cn('h-3.5 w-3.5', toneTokens.sky.text)} aria-hidden="true" />
+    <Tag className={cn('h-3.5 w-3.5', toneTokens.sky.text)} aria-hidden="true" />
     <span className="text-sm font-bold font-mono tracking-tight">{version}</span>
     <span
       className={cn(
@@ -79,7 +80,7 @@ type DocCardProps = {
 
 const DocCard = ({ title, description, items, variant }: DocCardProps) => {
   const isReleases = variant === 'releases';
-  const Icon = isReleases ? FileTextIcon : BookOpenIcon;
+  const Icon = isReleases ? FileText : BookOpen;
   const labelText = isReleases ? 'Releases' : 'CHANGELOG';
   const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
   const iconClass = isReleases
@@ -105,7 +106,7 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
               iconClass,
             )}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-4 w-4" aria-hidden="true" />
           </span>
           <div className="flex flex-col min-w-0">
             <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
@@ -141,7 +142,7 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
           titleClass,
         )}
       >
-        <GithubIcon className="h-4 w-4" />
+        <GithubIcon className="h-4 w-4" aria-hidden="true" />
       </div>
     </article>
   );

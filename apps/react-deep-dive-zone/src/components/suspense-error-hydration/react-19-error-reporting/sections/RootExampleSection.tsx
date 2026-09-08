@@ -1,16 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Atom, BellRing, Globe, Layers, Server, SignalHigh, Zap } from 'lucide-react';
+
 import type { FlowStep, React19ErrorReportingContent } from '../content';
-import {
-  ArrowRightIcon,
-  AtomIcon,
-  BellRingIcon,
-  GlobeIcon,
-  LayersIcon,
-  ServerIcon,
-  SignalHighIcon,
-  ZapIcon,
-} from '../icons';
 import { callbackAccent } from '../tone';
 
 import { CodeBlock } from './_CodeBlock';
@@ -29,37 +21,37 @@ const stepStyle: Record<
     border: 'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
     iconChip:
       'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60',
-    Icon: AtomIcon,
+    Icon: Atom,
   },
   callbacks: {
     border: 'border-slate-200 bg-slate-50/40 dark:border-slate-700 dark:bg-slate-900/30',
     iconChip:
       'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700',
-    Icon: ZapIcon,
+    Icon: Zap,
   },
   monitoring: {
     border: 'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
     iconChip:
       'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
-    Icon: SignalHighIcon,
+    Icon: SignalHigh,
   },
   server: {
     border: 'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
     iconChip:
       'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60',
-    Icon: ServerIcon,
+    Icon: Server,
   },
   hydrate: {
     border: 'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
     iconChip:
       'bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
-    Icon: GlobeIcon,
+    Icon: Globe,
   },
   internal: {
     border: 'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
     iconChip:
       'bg-teal-100 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-200 dark:border-teal-800/60',
-    Icon: LayersIcon,
+    Icon: Layers,
   },
 };
 
@@ -104,7 +96,7 @@ const renderStepContent = (step: FlowStep) => {
             key={line}
             className="flex items-start gap-1.5 text-[11px] text-[var(--term-fg)] break-keep"
           >
-            <BellRingIcon
+            <BellRing
               aria-hidden="true"
               className="mt-0.5 h-3 w-3 shrink-0 text-teal-600 dark:text-teal-300"
             />
@@ -173,7 +165,7 @@ export const RootExampleSection = ({ content, note }: Props) => (
                   </div>
                 </div>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3.5 w-3.5 mx-auto rotate-90 text-blue-400 dark:text-blue-500"
                   />

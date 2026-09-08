@@ -1,10 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, CheckCircle2, CircleDotDashed } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EagerBailoutContent, QueueCompareCard } from '../content';
-import { CircleDotDashedIcon, queueIconByName } from '../icons';
+
+const queueIconByName = {
+  checkCircle: CheckCircle2,
+  alertTriangle: AlertTriangle,
+} as const;
 
 type Props = { content: EagerBailoutContent['queueReason'] };
 
@@ -15,7 +21,7 @@ export const EmptyQueueReasonSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CircleDotDashedIcon className="h-5 w-5" />}
+      icon={<CircleDotDashed className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">

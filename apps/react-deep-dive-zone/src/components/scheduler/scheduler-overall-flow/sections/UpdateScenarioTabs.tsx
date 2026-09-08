@@ -4,16 +4,17 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock3, MousePointerClick, Repeat, Split } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent, ScenarioId } from '../content';
-import { ArrowRightIcon, ClockIcon, MousePointerClickIcon, RepeatIcon, SplitIcon } from '../icons';
 
 type Props = { content: FullFlowContent['scenarios'] };
 
-const tabIcon: Record<ScenarioId, typeof MousePointerClickIcon> = {
-  click: MousePointerClickIcon,
-  transition: RepeatIcon,
-  deferred: ClockIcon,
+const tabIcon: Record<ScenarioId, typeof MousePointerClick> = {
+  click: MousePointerClick,
+  transition: Repeat,
+  deferred: Clock3,
 };
 
 const tabAccent: Record<
@@ -68,7 +69,7 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
         number={content.number}
         eyebrow={content.helper}
         title={content.title}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Tabs */}
@@ -206,7 +207,7 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
                   </div>
                   {!isLast && (
                     <span aria-hidden="true" className="ml-1 inline-flex text-[var(--term-muted)]">
-                      <ArrowRightIcon className="h-3 w-3" />
+                      <ArrowRight className="h-3 w-3" aria-hidden="true" />
                     </span>
                   )}
                 </li>

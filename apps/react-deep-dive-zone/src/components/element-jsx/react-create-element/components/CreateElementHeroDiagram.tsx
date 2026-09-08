@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Braces, FunctionSquare } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReactCreateElementContent } from '../content';
-import { AtomIcon, BracesIcon, FunctionSquareIcon } from '../icons';
 
 type Props = { content: ReactCreateElementContent['hero']; className?: string };
 
@@ -20,7 +21,7 @@ export const CreateElementHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={content.leftCardLabel}
-            icon={<BracesIcon className="h-[18px] w-[18px]" />}
+            icon={<Braces className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <CodePreviewPanel code={content.leftCode} showWindowDots language="JSX" size="md" />
         </li>
@@ -31,7 +32,7 @@ export const CreateElementHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="violet"
             label={content.rightCardLabel}
-            icon={<FunctionSquareIcon className="h-[18px] w-[18px]" />}
+            icon={<FunctionSquare className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <CodePreviewPanel code={content.rightCode} language="JS" size="md" />
         </li>
@@ -81,7 +82,7 @@ const ResultCard = ({ title, body }: { title: string; body: string }) => {
       )}
     >
       <ToneIconBox tone="teal" size="md">
-        <AtomIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <h3 className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</h3>

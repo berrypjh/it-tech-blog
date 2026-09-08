@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ChevronRight, Clock3, Cpu, HelpCircle, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent } from '../content';
-import {
-  ArrowDownIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  CpuIcon,
-  HelpCircleIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FullFlowContent['schedulerExec'] };
 
@@ -20,7 +14,7 @@ export const SchedulerExecutionSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<CpuIcon className="h-5 w-5" />}
+      icon={<Cpu className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -58,10 +52,10 @@ export const SchedulerExecutionSection = ({ content }: Props) => (
                     className="self-center inline-flex text-blue-500 dark:text-blue-400"
                   >
                     <span className="md:hidden">
-                      <ArrowDownIcon className="h-4 w-4" />
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span className="hidden md:inline-flex">
-                      <ChevronRightIcon className="h-4 w-4" />
+                      <ChevronRight className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </span>
                 )}
@@ -80,7 +74,7 @@ export const SchedulerExecutionSection = ({ content }: Props) => (
             'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-200',
           )}
         >
-          <HelpCircleIcon aria-hidden="true" className="h-3.5 w-3.5" />
+          <HelpCircle aria-hidden="true" className="h-3.5 w-3.5" />
           {content.decisionLabel}
         </span>
       </div>
@@ -101,7 +95,7 @@ export const SchedulerExecutionSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
             >
-              <ZapIcon className="h-4 w-4" />
+              <Zap className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-blue-800 dark:text-blue-200 break-keep">
               {content.sync.title}
@@ -137,7 +131,7 @@ export const SchedulerExecutionSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600 text-white dark:bg-violet-500"
             >
-              <ClockIcon className="h-4 w-4" />
+              <Clock3 className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-violet-800 dark:text-violet-200 break-keep">
               {content.async.title}

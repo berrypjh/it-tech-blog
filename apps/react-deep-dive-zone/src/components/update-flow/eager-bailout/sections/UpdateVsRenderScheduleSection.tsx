@@ -1,7 +1,8 @@
+import { Sparkles, Table } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { EagerBailoutContent } from '../content';
-import { SparklesIcon, TableIcon } from '../icons';
 
 type Props = { content: EagerBailoutContent['scheduleTable'] };
 
@@ -18,7 +19,7 @@ export const UpdateVsRenderScheduleSection = ({ content }: Props) => (
       id="schedule"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TableIcon className="h-5 w-5" />}
+      icon={<Table className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -32,10 +33,7 @@ export const UpdateVsRenderScheduleSection = ({ content }: Props) => (
     />
 
     <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-      <SparklesIcon
-        aria-hidden="true"
-        className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
-      />
+      <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
       <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
         {content.bottomNote}
       </p>

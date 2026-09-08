@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import type { LucideIcon } from 'lucide-react';
+
 import type { ToneKey } from '../../../shared/tones';
 import { toneTokens } from '../../../shared/tones';
-import type { DiagramStep, RvrIconName } from '../content';
-import { rvrIcon } from '../icons';
+import type { DiagramStep } from '../content';
 
 type Props = {
   title: string;
   subtitle: string;
   steps: DiagramStep[];
   footerLabel: string;
-  iconName: RvrIconName;
+  icon: LucideIcon;
   /** reconciler는 페이지 chrome accent, renderer는 sky 톤을 쓴다. */
   tone?: ToneKey;
   className?: string;
@@ -25,12 +26,11 @@ export const RoleStepsCard = ({
   subtitle,
   steps,
   footerLabel,
-  iconName,
+  icon: Icon,
   tone,
   className,
 }: Props) => {
   const text = tone ? toneTokens[tone].text : 'text-[var(--term-accent)]';
-  const Icon = rvrIcon[iconName];
 
   return (
     <article

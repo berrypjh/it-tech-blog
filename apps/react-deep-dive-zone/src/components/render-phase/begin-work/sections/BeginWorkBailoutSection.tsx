@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronDown, FastForward, GitFork, Sparkles } from 'lucide-react';
+
 import { ComparePanel } from '../../../shared/compare';
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent } from '../content';
-import { ChevronDownIcon, FastForwardIcon, GitForkIcon, SparklesIcon } from '../icons';
 
 type Props = { content: BeginWorkContent['bailout'] };
 
@@ -25,13 +26,13 @@ export const BeginWorkBailoutSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.intro}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
       <ComparePanel
         tone={panelTone('teal')}
-        icon={<ChevronDownIcon className="h-3.5 w-3.5" />}
+        icon={<ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
         title={content.normal.title}
         headerId="bailout-normal-header"
       >
@@ -43,7 +44,7 @@ export const BeginWorkBailoutSection = ({ content }: Props) => (
 
       <ComparePanel
         tone={panelTone('violet')}
-        icon={<FastForwardIcon className="h-3.5 w-3.5" />}
+        icon={<FastForward className="h-3.5 w-3.5" aria-hidden="true" />}
         title={content.bailout.title}
         headerId="bailout-skip-header"
       >
@@ -54,7 +55,9 @@ export const BeginWorkBailoutSection = ({ content }: Props) => (
       </ComparePanel>
     </div>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.emphasis}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.emphasis}
+    </SectionNote>
   </section>
 );
 
@@ -92,7 +95,7 @@ const FlowChain = ({ items, tone, skipMiddle }: ChainProps) => {
               </span>
             </span>
             {idx < items.length - 1 && (
-              <ChevronDownIcon aria-hidden="true" className="ml-3 h-4 w-4 text-[var(--term-dim)]" />
+              <ChevronDown aria-hidden="true" className="ml-3 h-4 w-4 text-[var(--term-dim)]" />
             )}
           </li>
         );

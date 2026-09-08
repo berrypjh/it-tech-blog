@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { RefreshCcw, ShieldCheck, TriangleAlert } from 'lucide-react';
+
 import type { React19ErrorReportingContent, RoutingRow } from '../content';
-import { RefreshCcwIcon, ShieldCheckIcon, TriangleAlertIcon } from '../icons';
 import { callbackAccent, logLevelBadge } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -9,9 +10,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: React19ErrorReportingContent['routing'] };
 
 const rowIcon: Record<RoutingRow['icon'], React.ComponentType<{ className?: string }>> = {
-  shield: ShieldCheckIcon,
-  alert: TriangleAlertIcon,
-  refresh: RefreshCcwIcon,
+  shield: ShieldCheck,
+  alert: TriangleAlert,
+  refresh: RefreshCcw,
 };
 
 export const RoutingTableSection = ({ content }: Props) => (

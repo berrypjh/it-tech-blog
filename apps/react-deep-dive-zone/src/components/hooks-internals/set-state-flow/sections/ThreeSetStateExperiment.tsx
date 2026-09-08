@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, RotateCw, Sparkles, XCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ExperimentSide, SetStateFlowContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, RotateCwIcon, SparklesIcon, XCircleIcon } from '../icons';
 
 type Props = { content: SetStateFlowContent['experiment'] };
 
@@ -67,9 +68,9 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
             )}
           >
             {isSuccess ? (
-              <CheckCircleIcon className="h-5 w-5" />
+              <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
             ) : (
-              <XCircleIcon className="h-5 w-5" />
+              <XCircle className="h-5 w-5" aria-hidden="true" />
             )}
           </span>
           <h3
@@ -167,7 +168,7 @@ export const ThreeSetStateExperiment = ({ content }: Props) => (
       id="experiment"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -195,7 +196,7 @@ export const ThreeSetStateExperiment = ({ content }: Props) => (
                   {node}
                 </code>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3.5 w-3.5 text-cyan-700 dark:text-cyan-300"
                   />
@@ -207,7 +208,7 @@ export const ThreeSetStateExperiment = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex items-center gap-1 text-cyan-700 dark:text-cyan-300 ml-1"
           >
-            <RotateCwIcon className="h-3.5 w-3.5" />
+            <RotateCw className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
         </div>
         <p className="text-xsm leading-relaxed text-cyan-900 dark:text-cyan-100 break-keep">

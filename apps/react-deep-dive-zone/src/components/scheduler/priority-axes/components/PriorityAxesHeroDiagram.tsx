@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Layers, Zap } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { AxisAccent, AxisCard, ThreePriorityAxesContent } from '../content';
-import { ClockIcon, LayersIcon, ZapIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['hero']; className?: string };
 
@@ -14,10 +15,10 @@ const accentTone: Record<AxisAccent, ToneKey> = {
   violet: 'violet',
 };
 
-const axisIcon: Record<AxisAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: LayersIcon,
-  violet: ClockIcon,
+const axisIcon: Record<AxisAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Layers,
+  violet: Clock3,
 };
 
 /**

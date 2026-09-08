@@ -4,18 +4,19 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CheckCircle2,
+  Cog,
+  Keyboard,
+  PauseCircle,
+  PlayCircle,
+  Repeat2,
+  RotateCcw,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent, SimulatorStatus } from '../content';
-import {
-  CheckCircleIcon,
-  CogIcon,
-  KeyboardIcon,
-  PauseCircleIcon,
-  PlayCircleIcon,
-  Repeat2Icon,
-  RotateCcwIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: RenderYieldingContent['simulator'] };
 
@@ -71,13 +72,13 @@ const STATUS_TONE: Record<
   },
 };
 
-const STATUS_ICON: Record<SimulatorStatus, typeof ZapIcon> = {
-  idle: CogIcon,
-  running: PlayCircleIcon,
-  yielded: PauseCircleIcon,
-  'input-handled': KeyboardIcon,
-  continued: Repeat2Icon,
-  completed: CheckCircleIcon,
+const STATUS_ICON: Record<SimulatorStatus, typeof Zap> = {
+  idle: Cog,
+  running: PlayCircle,
+  yielded: PauseCircle,
+  'input-handled': Keyboard,
+  continued: Repeat2,
+  completed: CheckCircle2,
 };
 
 export const YieldContinuationSimulator = ({ content }: Props) => {
@@ -127,7 +128,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
         eyebrow={content.title}
         title={content.title}
         description={content.helper}
-        icon={<CogIcon className="h-5 w-5" />}
+        icon={<Cog className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
@@ -143,7 +144,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <CogIcon className="h-4 w-4" />
+              <Cog className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               Controls
@@ -170,7 +171,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                   aria-hidden="true"
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
                 >
-                  <PlayCircleIcon className="h-4 w-4" />
+                  <PlayCircle className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-xsm sm:text-sm font-bold text-blue-700 dark:text-blue-300 break-keep">
                   {content.buttons.start}
@@ -196,7 +197,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                   aria-hidden="true"
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60"
                 >
-                  <KeyboardIcon className="h-4 w-4" />
+                  <Keyboard className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-xsm sm:text-sm font-bold text-rose-700 dark:text-rose-300 break-keep">
                   {content.buttons.input}
@@ -222,7 +223,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                   aria-hidden="true"
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60"
                 >
-                  <Repeat2Icon className="h-4 w-4" />
+                  <Repeat2 className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="font-mono text-xsm sm:text-sm font-bold text-emerald-700 dark:text-emerald-300 break-keep">
                   {content.buttons.resume}
@@ -246,7 +247,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
               'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0',
             )}
           >
-            <RotateCcwIcon aria-hidden="true" className="h-4 w-4" />
+            <RotateCcw aria-hidden="true" className="h-4 w-4" />
             <span>{content.buttons.reset}</span>
           </button>
         </article>
@@ -264,7 +265,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
             >
-              <CogIcon className="h-4 w-4" />
+              <Cog className="h-4 w-4" aria-hidden="true" />
             </span>
             <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
               {content.timelineTitle}
@@ -288,7 +289,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                 'border-rose-300/80 bg-rose-50/60 text-rose-800 dark:border-rose-700/60 dark:bg-rose-950/30 dark:text-rose-100',
               )}
             >
-              <KeyboardIcon aria-hidden="true" className="h-4 w-4 shrink-0" />
+              <Keyboard aria-hidden="true" className="h-4 w-4 shrink-0" />
               <span className="font-mono text-xsm font-bold break-keep">
                 {content.inputTaskLabel} · {content.statusLabels['input-handled']}
               </span>
@@ -430,7 +431,7 @@ const FrameCard = ({
                   : 'border-[var(--term-border)] bg-white dark:bg-slate-950/40',
               )}
             >
-              {isDone && <CheckCircleIcon className="h-3 w-3" />}
+              {isDone && <CheckCircle2 className="h-3 w-3" aria-hidden="true" />}
             </span>
             <code
               className={cn(
@@ -456,7 +457,7 @@ const FrameCard = ({
             aria-hidden="true"
             className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-violet-500 bg-violet-500 text-white"
           >
-            <PauseCircleIcon className="h-3 w-3" />
+            <PauseCircle className="h-3 w-3" aria-hidden="true" />
           </span>
           <span className="font-mono font-bold text-violet-700 dark:text-violet-300">
             {yieldMarker}
@@ -469,7 +470,7 @@ const FrameCard = ({
             aria-hidden="true"
             className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-emerald-500 bg-emerald-500 text-white"
           >
-            <CheckCircleIcon className="h-3 w-3" />
+            <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
           </span>
           <span className="font-mono font-bold text-emerald-700 dark:text-emerald-300">
             {completeMarker}

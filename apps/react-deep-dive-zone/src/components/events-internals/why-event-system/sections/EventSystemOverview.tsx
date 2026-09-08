@@ -1,21 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Atom,
+  Code2,
+  ListOrdered,
+  MousePointerClick,
+  Puzzle,
+  Radio,
+  Route,
+  Target,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, WhyEventSystemContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  AtomIcon,
-  CodeIcon,
-  ListOrderedIcon,
-  MousePointerClickIcon,
-  PuzzleIcon,
-  RadioIcon,
-  RouteIcon,
-  TargetIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: WhyEventSystemContent['overview'] };
 
@@ -56,16 +57,7 @@ const toneIconBox: Record<Tone, string> = {
   rose: 'bg-rose-100 text-rose-700 border-rose-200/80 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
 };
 
-const stepIcons = [
-  CodeIcon,
-  RadioIcon,
-  ZapIcon,
-  TargetIcon,
-  PuzzleIcon,
-  AtomIcon,
-  RouteIcon,
-  MousePointerClickIcon,
-];
+const stepIcons = [Code2, Radio, Zap, Target, Puzzle, Atom, Route, MousePointerClick];
 
 export const EventSystemOverview = ({ content }: Props) => (
   <section
@@ -79,7 +71,7 @@ export const EventSystemOverview = ({ content }: Props) => (
       id="overview"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol
@@ -90,7 +82,7 @@ export const EventSystemOverview = ({ content }: Props) => (
     >
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? ListOrderedIcon;
+        const Icon = stepIcons[i] ?? ListOrdered;
         return (
           <li
             key={step.title}
@@ -141,14 +133,14 @@ export const EventSystemOverview = ({ content }: Props) => (
                     'bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]',
                   )}
                 >
-                  <ArrowRightIcon className="h-3 w-3" />
+                  <ArrowRight className="h-3 w-3" aria-hidden="true" />
                 </span>
                 {/* Down arrow for narrow viewports — inline below card */}
                 <span
                   aria-hidden="true"
                   className="xl:hidden mt-1 text-[var(--term-muted)] flex justify-center"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

@@ -1,13 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Book, Globe, type LucideIcon, Network, Shield, Sparkles } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { WhySplitContent } from '../content';
-import { architectureIcon, SparklesIcon } from '../icons';
+import type { ReasonCard, WhySplitContent } from '../content';
 
 type Props = { content: WhySplitContent['reasons'] };
+
+const reasonIcon: Record<ReasonCard['id'], LucideIcon> = {
+  env: Globe,
+  responsibility: Shield,
+  extensibility: Network,
+  learnability: Book,
+};
 
 export const WhySplitReasons = ({ content }: Props) => {
   return (
@@ -16,15 +24,19 @@ export const WhySplitReasons = ({ content }: Props) => {
         id="reasons"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = architectureIcon[card.iconName];
+          const Icon = reasonIcon[card.id];
 
           return (
-            <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
+            <ToneCardItem
+              key={card.id}
+              tone={card.tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+            >
               <h3
                 className={cn(
                   'text-md font-bold tracking-tight break-keep',
@@ -42,7 +54,9 @@ export const WhySplitReasons = ({ content }: Props) => {
         })}
       </ToneCardGrid>
 
-      <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

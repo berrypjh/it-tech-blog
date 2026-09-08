@@ -1,9 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Book, ExternalLink, Rss } from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ResourceCard, WhyReact19Content } from '../content';
-import { BookIcon, ExternalLinkIcon, GithubIcon, RssIcon } from '../icons';
 
 type Props = { content: WhyReact19Content['resources'] };
 
@@ -18,7 +20,7 @@ const BlogPreview = () => (
         <span className="inline-block w-2 h-2 rounded-full bg-sky-500" />
         <span className="text-[9px] font-bold text-sky-700 dark:text-sky-200">react.dev</span>
       </div>
-      <RssIcon className="h-3 w-3 text-sky-500 dark:text-sky-400" />
+      <Rss className="h-3 w-3 text-sky-500 dark:text-sky-400" aria-hidden="true" />
     </div>
     {/* 본문 mock */}
     <div className="absolute top-7 left-0 right-0 px-2.5 pt-1.5 flex flex-col gap-1">
@@ -126,7 +128,7 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
       >
         {card.cta}
         <span className="sr-only">(새 창에서 열림)</span>
-        <ExternalLinkIcon
+        <ExternalLink
           className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
           aria-hidden="true"
         />
@@ -142,7 +144,7 @@ export const OfficialChangeRecordCards = ({ content }: Props) => {
         id="resources"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<BookIcon className="h-5 w-5" />}
+        icon={<Book className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md lg:gap-lg">

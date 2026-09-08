@@ -1,10 +1,16 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CalendarCheck, Clock, Layers } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
-import { LayersIcon, roleIconByName } from '../icons';
+
+const roleIconByName = {
+  calendarCheck: CalendarCheck,
+  clock: Clock,
+} as const;
 
 type Props = { content: EnsureRootScheduledContent['roles'] };
 
@@ -15,7 +21,7 @@ export const TwoRolesSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-md">

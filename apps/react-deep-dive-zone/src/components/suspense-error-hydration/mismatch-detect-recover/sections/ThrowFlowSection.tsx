@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, FileCode, ShieldAlert, Zap } from 'lucide-react';
+
 import type { MismatchDetectRecoverContent } from '../content';
-import { ArrowDownIcon, CheckCircleIcon, FileCodeIcon, ShieldAlertIcon, ZapIcon } from '../icons';
 import { roleAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -40,7 +41,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
                 >
                   <div className="flex items-center gap-1.5">
                     {isMiddle && (
-                      <ZapIcon
+                      <Zap
                         aria-hidden="true"
                         className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300"
                       />
@@ -54,7 +55,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
                   </span>
                 </div>
                 {!isLast && (
-                  <ArrowDownIcon
+                  <ArrowDown
                     aria-hidden="true"
                     className="h-4 w-4 text-slate-400 dark:text-slate-500"
                   />
@@ -78,7 +79,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-teal-200 bg-teal-100 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/60 dark:text-teal-200"
           >
-            <ShieldAlertIcon className="h-4 w-4" />
+            <ShieldAlert className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-teal-700 dark:text-teal-200 break-keep">
             {content.keypointTitle}
@@ -90,7 +91,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
               key={item}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-teal-500 dark:text-teal-400"
               />
@@ -113,7 +114,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <FileCodeIcon className="h-4 w-4" />
+            <FileCode className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-blue-700 dark:text-blue-200 break-keep">
             {content.locationTitle}

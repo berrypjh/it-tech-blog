@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks, XCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StateUpdateStartContent } from '../content';
-import { CheckCircleIcon, ListChecksIcon, XCircleIcon } from '../icons';
 
 type Props = { content: StateUpdateStartContent['misconception'] };
 
@@ -16,20 +17,20 @@ export const MisconceptionCompareSection = ({ content }: Props) => (
       id="misconception"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="overflow-hidden rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]">
       {/* 헤더: 오해(rose) / 실제(emerald) — 의미색 */}
       <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[var(--term-border)] bg-[var(--term-surface)]">
         <div className="flex items-center gap-2 px-md py-2 sm:px-lg sm:py-3 border-b md:border-b-0 md:border-r border-[var(--term-border)]">
-          <XCircleIcon aria-hidden="true" className="h-4 w-4 text-rose-600 dark:text-rose-300" />
+          <XCircle aria-hidden="true" className="h-4 w-4 text-rose-600 dark:text-rose-300" />
           <span className="text-xxsm sm:text-xsm font-bold uppercase tracking-wider text-rose-600 dark:text-rose-300">
             {content.headerWrong}
           </span>
         </div>
         <div className="flex items-center gap-2 px-md py-2 sm:px-lg sm:py-3">
-          <CheckCircleIcon
+          <CheckCircle2
             aria-hidden="true"
             className="h-4 w-4 text-emerald-600 dark:text-emerald-300"
           />
@@ -50,7 +51,7 @@ export const MisconceptionCompareSection = ({ content }: Props) => (
             )}
           >
             <div className="flex items-start gap-sm px-md py-3 sm:px-lg sm:py-4 border-b md:border-b-0 md:border-r border-dashed border-[var(--term-border)]">
-              <XCircleIcon
+              <XCircle
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300"
               />
@@ -59,7 +60,7 @@ export const MisconceptionCompareSection = ({ content }: Props) => (
               </p>
             </div>
             <div className="flex items-start gap-sm px-md py-3 sm:px-lg sm:py-4 bg-[var(--term-surface)]">
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300"
               />

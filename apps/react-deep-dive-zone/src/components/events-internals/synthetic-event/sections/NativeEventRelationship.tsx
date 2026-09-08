@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Link } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import { LinkIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['relationship'] };
 
@@ -13,7 +14,7 @@ export const NativeEventRelationship = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div

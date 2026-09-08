@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Monitor, Workflow } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberRole } from '../content';
-import { CheckCircleIcon, MonitorIcon, WorkflowIcon } from '../icons';
 
 const roleTone: Record<FiberRole, ToneKey> = {
   current: 'emerald',
@@ -27,7 +28,7 @@ type Props = {
 export const FiberPairCard = ({ variant, badge, title, items, compact = false }: Props) => {
   const tone = roleTone[variant];
   const t = toneTokens[tone];
-  const Icon = variant === 'current' ? MonitorIcon : WorkflowIcon;
+  const Icon = variant === 'current' ? Monitor : Workflow;
   return (
     <article
       className={cn(
@@ -74,7 +75,7 @@ export const FiberPairCard = ({ variant, badge, title, items, compact = false }:
               'bg-[var(--term-bg)]',
             )}
           >
-            <CheckCircleIcon className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+            <CheckCircle2 className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
             <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep font-bold">
               {item}
             </span>

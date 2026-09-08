@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitCompare } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { FiberPairCard, MiniFiberTree } from '../components/FiberPairCard';
 import type { AlternateFiberContent } from '../content';
-import { GitCompareIcon } from '../icons';
 
 type Props = { content: AlternateFiberContent['pair'] };
 
@@ -16,7 +17,7 @@ export const CurrentWorkInProgressSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">

@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, GitFork, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ContextAccent, RequestUpdateLaneContent, SameSetStateCard } from '../content';
-import { ClockIcon, GitForkIcon, MousePointerClickIcon, RefreshIcon, ZapIcon } from '../icons';
 
 type Props = { content: RequestUpdateLaneContent['sameSetState'] };
 
-const cardIcon: Record<ContextAccent, typeof ZapIcon> = {
-  blue: MousePointerClickIcon,
-  teal: ClockIcon,
-  violet: RefreshIcon,
+const cardIcon: Record<ContextAccent, typeof Zap> = {
+  blue: MousePointerClick,
+  teal: Clock3,
+  violet: RefreshCw,
 };
 
 const KEYWORDS = new Set(['function', 'import', 'from', 'if', 'return', 'const']);
@@ -173,7 +174,7 @@ export const SameSetStateDifferentLane = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-stretch">

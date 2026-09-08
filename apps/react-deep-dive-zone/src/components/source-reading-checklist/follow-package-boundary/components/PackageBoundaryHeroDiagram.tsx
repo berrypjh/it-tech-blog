@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, Map, Package, Repeat } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FollowPackageBoundaryContent, PackageKey } from '../content';
-import { FileCodeIcon, MapIcon, PackageIcon, RepeatIcon } from '../icons';
 import { packageToneKey } from '../packageTone';
 
 type Props = { content: FollowPackageBoundaryContent['hero']; className?: string };
@@ -39,7 +40,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm">
         <header className="flex items-center gap-sm" aria-hidden="true">
           <ToneIconBox tone="blue" size="sm">
-            <MapIcon className="h-[18px] w-[18px]" />
+            <Map className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <h2 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {content.visualTitle}
@@ -50,7 +51,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
         <article className="flex flex-col gap-2 rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
           <div className="flex items-center gap-2" aria-hidden="true">
             <ToneIconBox tone="amber" size="sm">
-              <FileCodeIcon className="h-[18px] w-[18px]" />
+              <FileCode2 className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.amber.text)}
@@ -74,7 +75,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
         <article className="flex flex-col gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
           <div className="flex items-center gap-2" aria-hidden="true">
             <ToneIconBox tone="blue" size="sm">
-              <PackageIcon className="h-[18px] w-[18px]" />
+              <Package className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
               className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
@@ -109,7 +110,7 @@ const PackageRow = ({ name, role }: { name: PackageKey; role: string }) => {
       )}
     >
       <ToneIconBox tone={tone(name)} size="sm">
-        <PackageIcon className="h-4 w-4" />
+        <Package className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('shrink-0 font-mono text-xsm font-bold tracking-tight', t.text)}>
         {name}
@@ -134,7 +135,7 @@ const DownArrow = ({ label, sub }: { label: string; sub: string }) => (
         toneTokens.blue.chip,
       )}
     >
-      <RepeatIcon className="h-3 w-3" />
+      <Repeat className="h-3 w-3" aria-hidden="true" />
       {label}
     </span>
     <span className="text-[10px] font-mono text-[var(--term-muted)] break-keep text-center">

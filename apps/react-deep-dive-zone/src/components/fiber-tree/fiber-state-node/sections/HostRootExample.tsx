@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Workflow } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { HostRootDiagram } from '../components/HostRootDiagram';
 import type { FiberStateNodeContent, FlowStep } from '../content';
-import { ArrowDownIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['hostRoot'] };
 
@@ -15,7 +16,7 @@ export const HostRootExample = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.42fr)_minmax(0,_0.58fr)] gap-md lg:gap-lg items-start">
@@ -31,7 +32,7 @@ export const HostRootExample = ({ content }: Props) => (
               {idx < content.flowSteps.length - 1 && (
                 <span aria-hidden="true" className="flex justify-center py-1">
                   <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 </span>
               )}

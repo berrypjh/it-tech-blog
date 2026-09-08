@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Lightbulb } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
-import { AtomIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['demo'] };
 
@@ -56,7 +57,7 @@ export const InternalFlowDemo = ({ content }: Props) => {
         id="demo"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<AtomIcon className="h-5 w-5" />}
+        icon={<Atom className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">
@@ -122,7 +123,7 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
 
     <div className="flex items-start gap-sm pt-sm border-t border-dashed border-[var(--term-border)]">
       <span className="text-amber-500 dark:text-amber-300 shrink-0 mt-0.5" aria-hidden="true">
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{hint}</p>
     </div>

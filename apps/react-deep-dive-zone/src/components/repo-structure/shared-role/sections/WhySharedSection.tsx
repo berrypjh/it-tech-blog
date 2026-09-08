@@ -1,18 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, FolderCheck, Sparkles, TriangleAlert } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { ContrastCard, StatusPill } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import type { SharedContent } from '../content';
-import { CircleHelpIcon, iconByName, SparklesIcon } from '../icons';
 
 type Props = { content: SharedContent['why'] };
 
 export const WhySharedSection = ({ content }: Props) => {
-  const AlertIcon = iconByName.triangleAlert;
-  const FlagIcon = iconByName.folderCheck;
-
   return (
     <section aria-labelledby="heading-why" className="space-y-md">
       <SectionHeader
@@ -20,13 +17,13 @@ export const WhySharedSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CircleHelpIcon className="h-5 w-5" />}
+        icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ContrastCard
         left={
           <ListPanel
-            icon={<AlertIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+            icon={<TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" />}
             tone="text-rose-600 dark:text-rose-300"
             dotClass="bg-rose-400 dark:bg-rose-500"
             badge={content.problemBadge}
@@ -36,7 +33,7 @@ export const WhySharedSection = ({ content }: Props) => {
         }
         right={
           <ListPanel
-            icon={<FlagIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+            icon={<FolderCheck className="h-3.5 w-3.5" aria-hidden="true" />}
             tone="text-[var(--term-accent)]"
             dotClass="bg-[var(--term-accent)]"
             badge={content.solutionBadge}
@@ -93,7 +90,7 @@ type ExampleProps = { title: string; tags: string[] };
 const ExamplePanel = ({ title, tags }: ExampleProps) => (
   <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl border-t border-dashed border-[var(--term-border)]">
     <StatusPill
-      icon={<SparklesIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+      icon={<Sparkles className="h-3.5 w-3.5" aria-hidden="true" />}
       tone="text-[var(--term-accent)]"
     >
       {title}

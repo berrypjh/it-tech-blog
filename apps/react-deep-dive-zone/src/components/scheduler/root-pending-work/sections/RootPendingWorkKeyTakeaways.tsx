@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Database, Flag, Trophy, Zap } from 'lucide-react';
+
 import {
   axisCardBorder,
   axisIconBox,
@@ -8,14 +10,13 @@ import {
 } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RootAccent, RootPendingWorkContent } from '../content';
-import { ClockIcon, DatabaseIcon, FlagIcon, TrophyIcon, ZapIcon } from '../icons';
 
 type Props = { content: RootPendingWorkContent['takeaways'] };
 
-const cardIcon: Record<RootAccent, typeof ZapIcon> = {
-  blue: DatabaseIcon,
-  teal: FlagIcon,
-  violet: ClockIcon,
+const cardIcon: Record<RootAccent, typeof Zap> = {
+  blue: Database,
+  teal: Flag,
+  violet: Clock3,
 };
 
 const iconWash: Record<RootAccent, string> = {
@@ -31,7 +32,7 @@ export const RootPendingWorkKeyTakeaways = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">

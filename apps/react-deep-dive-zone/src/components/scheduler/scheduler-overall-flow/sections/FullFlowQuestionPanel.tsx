@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitBranch, GitMerge, HelpCircle, Zap } from 'lucide-react';
+
 import type { FullFlowContent } from '../content';
-import { GitBranchIcon, GitMergeIcon, HelpCircleIcon, ZapIcon } from '../icons';
 
 type Props = { content: FullFlowContent['question'] };
 
-const cardIcons = [GitBranchIcon, GitMergeIcon, ZapIcon];
+const cardIcons = [GitBranch, GitMerge, Zap];
 
 export const FullFlowQuestionPanel = ({ content }: Props) => (
   <section aria-labelledby="question-heading">
@@ -25,7 +26,7 @@ export const FullFlowQuestionPanel = ({ content }: Props) => (
           'bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.4)] dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8" strokeWidth={2.2} />
+        <HelpCircle className="h-8 w-8" strokeWidth={2.2} aria-hidden="true" />
       </span>
 
       <div className="flex flex-col gap-2">
@@ -45,7 +46,7 @@ export const FullFlowQuestionPanel = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         {content.cards.map((card, i) => {
-          const Icon = cardIcons[i] ?? HelpCircleIcon;
+          const Icon = cardIcons[i] ?? HelpCircle;
           return (
             <li key={card.title}>
               <article

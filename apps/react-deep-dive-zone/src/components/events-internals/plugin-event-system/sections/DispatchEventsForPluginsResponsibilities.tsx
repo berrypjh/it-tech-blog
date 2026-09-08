@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Boxes, List, PlayCircle, Puzzle, Target } from 'lucide-react';
+
 import type { PluginEventSystemContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  BoxesIcon,
-  ListIcon,
-  PlayCircleIcon,
-  PuzzleIcon,
-  TargetIcon,
-} from '../icons';
 import { SectionFrame } from '../SectionFrame';
 import { toneCard, toneIconBox, toneNumber } from '../styles';
 
 type Props = { content: PluginEventSystemContent['responsibilities'] };
 
-const stepIcons = [TargetIcon, BoxesIcon, PuzzleIcon, PlayCircleIcon];
+const stepIcons = [Target, Boxes, Puzzle, PlayCircle];
 
 export const DispatchEventsForPluginsResponsibilities = ({ content }: Props) => (
   <SectionFrame
     id="responsibilities"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<ListIcon className="h-5 w-5" />}
+    icon={<List className="h-5 w-5" aria-hidden="true" />}
   >
     <ol
       className={cn(
@@ -32,7 +25,7 @@ export const DispatchEventsForPluginsResponsibilities = ({ content }: Props) => 
     >
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? TargetIcon;
+        const Icon = stepIcons[i] ?? Target;
         return (
           <li
             key={step.title}
@@ -78,13 +71,13 @@ export const DispatchEventsForPluginsResponsibilities = ({ content }: Props) => 
                   aria-hidden="true"
                   className="hidden lg:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-blue-300/70 bg-[var(--term-bg)] text-blue-500 dark:border-blue-700/60 dark:text-blue-300"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="lg:hidden flex justify-center text-blue-500 dark:text-blue-300 mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

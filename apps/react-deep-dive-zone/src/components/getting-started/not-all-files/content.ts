@@ -3,7 +3,14 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { ToneKey } from '../../shared/tones';
 
 export type ApproachItem = {
-  icon: 'x' | 'open' | 'brain' | 'check' | 'pin' | 'route' | 'pencil';
+  id:
+    | 'read-all'
+    | 'open-blindly'
+    | 'memorize'
+    | 'define-question'
+    | 'find-entry'
+    | 'follow-functions'
+    | 'redraw-flow';
   title: string;
   description: string;
 };
@@ -19,8 +26,7 @@ export type MappingRow = {
 };
 
 export type FlowStep = {
-  num: string;
-  icon: 'hook' | 'fx' | 'database' | 'clock' | 'cube' | 'check';
+  num: '1' | '2' | '3' | '4' | '5' | '6';
   tone: ToneKey;
   title: string;
   description: string;
@@ -114,17 +120,17 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: '잘못된 접근',
         items: [
           {
-            icon: 'open',
+            id: 'read-all',
             title: 'packages부터 순서대로 모두 읽기',
             description: '너무 방대해서 금방 지치게 됩니다.',
           },
           {
-            icon: 'x',
+            id: 'open-blindly',
             title: '파일명을 보고 무작정 열기',
             description: '맥락 없이 읽으면 이해가 더 어렵습니다.',
           },
           {
-            icon: 'brain',
+            id: 'memorize',
             title: '한 번에 전체를 외우려 하기',
             description: '모두를 기억할 필요는 없습니다.',
           },
@@ -134,22 +140,22 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: '좋은 접근',
         items: [
           {
-            icon: 'check',
+            id: 'define-question',
             title: '질문 정하기',
             description: '내가 궁금한 것을 먼저 정의합니다.',
           },
           {
-            icon: 'pin',
+            id: 'find-entry',
             title: '진입 파일 찾기',
             description: '질문과 관련된 시작점을 찾습니다.',
           },
           {
-            icon: 'route',
+            id: 'follow-functions',
             title: '관련 함수만 따라가기',
             description: '흐름을 파악할 때 필요한 부분만 읽습니다.',
           },
           {
-            icon: 'pencil',
+            id: 'redraw-flow',
             title: '흐름도로 재정리하기',
             description: '이해한 내용을 스스로 정리하며 완성합니다.',
           },
@@ -204,38 +210,33 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
-        { num: '1', icon: 'hook', tone: 'sky', title: 'useState', description: '상태 훅 생성' },
+        { num: '1', tone: 'sky', title: 'useState', description: '상태 훅 생성' },
         {
           num: '2',
-          icon: 'fx',
           tone: 'blue',
           title: 'dispatchSetState',
           description: '업데이트 요청',
         },
         {
           num: '3',
-          icon: 'database',
           tone: 'indigo',
           title: 'update 생성',
           description: 'Update 객체 생성 및 Queue에 저장',
         },
         {
           num: '4',
-          icon: 'clock',
           tone: 'violet',
           title: 'scheduleUpdateOnFiber',
           description: '스케줄링 시작',
         },
         {
           num: '5',
-          icon: 'cube',
           tone: 'cyan',
           title: 'render',
           description: 'Fiber 트리 계산 (Reconciliation)',
         },
         {
           num: '6',
-          icon: 'check',
           tone: 'teal',
           title: 'commit',
           description: 'DOM에 실제 반영',
@@ -291,17 +292,17 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: 'Wrong approach',
         items: [
           {
-            icon: 'open',
+            id: 'read-all',
             title: 'Read every package in order',
             description: 'Too vast — you burn out quickly.',
           },
           {
-            icon: 'x',
+            id: 'open-blindly',
             title: 'Open files by filename alone',
             description: 'Without context it gets harder, not easier.',
           },
           {
-            icon: 'brain',
+            id: 'memorize',
             title: 'Try to memorize it all at once',
             description: "You don't have to remember everything.",
           },
@@ -311,22 +312,22 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
         title: 'Good approach',
         items: [
           {
-            icon: 'check',
+            id: 'define-question',
             title: 'Pick a question',
             description: 'Define what you actually want to know.',
           },
           {
-            icon: 'pin',
+            id: 'find-entry',
             title: 'Find the entry file',
             description: 'Locate the starting point for that question.',
           },
           {
-            icon: 'route',
+            id: 'follow-functions',
             title: 'Follow only related functions',
             description: 'Read only what the flow needs.',
           },
           {
-            icon: 'pencil',
+            id: 'redraw-flow',
             title: 'Redraw the flow yourself',
             description: 'Consolidate what you learned in your own diagram.',
           },
@@ -383,40 +384,35 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       steps: [
         {
           num: '1',
-          icon: 'hook',
           tone: 'sky',
           title: 'useState',
           description: 'Create the state hook',
         },
         {
           num: '2',
-          icon: 'fx',
           tone: 'blue',
           title: 'dispatchSetState',
           description: 'Request an update',
         },
         {
           num: '3',
-          icon: 'database',
           tone: 'indigo',
           title: 'Create update',
           description: 'Build the Update object and enqueue',
         },
         {
           num: '4',
-          icon: 'clock',
           tone: 'violet',
           title: 'scheduleUpdateOnFiber',
           description: 'Begin scheduling',
         },
         {
           num: '5',
-          icon: 'cube',
           tone: 'cyan',
           title: 'render',
           description: 'Compute the fiber tree (Reconciliation)',
         },
-        { num: '6', icon: 'check', tone: 'teal', title: 'commit', description: 'Apply to the DOM' },
+        { num: '6', tone: 'teal', title: 'commit', description: 'Apply to the DOM' },
       ],
     },
     nextStep: {

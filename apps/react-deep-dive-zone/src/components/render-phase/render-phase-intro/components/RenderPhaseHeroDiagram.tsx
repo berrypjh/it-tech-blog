@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Cpu } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RenderPhaseIntroContent } from '../content';
-import { CheckCircleIcon, CpuIcon } from '../icons';
 
 type Props = { content: RenderPhaseIntroContent['hero'] };
 
@@ -26,14 +27,14 @@ export const RenderPhaseHeroDiagram = ({ content }: Props) => {
   const steps: PhaseStep[] = [
     {
       tone: 'sky',
-      icon: <CpuIcon className="h-[18px] w-[18px]" />,
+      icon: <Cpu className="h-[18px] w-[18px]" aria-hidden="true" />,
       title: diagram.renderCard.title,
       description: diagram.renderCard.description,
       subDescription: diagram.renderCard.subDescription,
     },
     {
       tone: 'teal',
-      icon: <CheckCircleIcon className="h-[18px] w-[18px]" />,
+      icon: <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />,
       title: diagram.commitCard.title,
       description: diagram.commitCard.description,
       subDescription: diagram.commitCard.subDescription,

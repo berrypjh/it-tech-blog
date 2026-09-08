@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, CornerDownRight } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import { AtomIcon, CornerDownRightIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['structure'] };
 
@@ -13,7 +14,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<AtomIcon className="h-5 w-5" />}
+      icon={<Atom className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -38,7 +39,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900"
             >
-              <AtomIcon className="h-4 w-4" />
+              <Atom className="h-4 w-4" aria-hidden="true" />
             </span>
             <code className="font-mono text-sm sm:text-md font-bold text-violet-700 dark:text-violet-200">
               SyntheticEvent
@@ -80,7 +81,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/40 dark:text-blue-200"
             >
-              <CornerDownRightIcon className="h-4 w-4" />
+              <CornerDownRight className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
               descriptions

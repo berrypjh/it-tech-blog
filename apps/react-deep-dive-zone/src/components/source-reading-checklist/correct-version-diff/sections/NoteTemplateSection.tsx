@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, NotebookTabs, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent, NoteField } from '../content';
-import { FileTextIcon, NotebookTabsIcon, SparkIcon } from '../icons';
 import { RoleBadge } from '../RoleBadge';
 
 type Props = { content: CorrectVersionDiffContent['noteTemplate'] };
@@ -21,7 +22,7 @@ export const NoteTemplateSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NotebookTabsIcon className="h-5 w-5" />}
+        icon={<NotebookTabs className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -44,7 +45,7 @@ export const NoteTemplateSection = ({ content }: Props) => {
               <span className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
               <span className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
             </span>
-            <FileTextIcon
+            <FileText
               className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400"
               aria-hidden="true"
             />
@@ -148,7 +149,7 @@ const NoteValue = ({ field, highlight }: { field: NoteField; highlight: boolean 
           'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
         )}
       >
-        <SparkIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <Sparkles className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
         <p className="text-xsm leading-relaxed font-bold break-keep">{field.value}</p>
       </div>
     );

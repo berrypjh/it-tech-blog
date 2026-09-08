@@ -1,10 +1,16 @@
+import { type LucideIcon, Monitor, Smartphone, Star } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionHeader } from '../../../shared/section';
 import type { CompareCard, RnContent } from '../content';
-import { rnIcon, StarIcon } from '../icons';
 
 type Props = { content: RnContent['compare'] };
+
+const cardIcon: Record<CompareCard['id'], LucideIcon> = {
+  dom: Monitor,
+  native: Smartphone,
+};
 
 export const CompareSection = ({ content }: Props) => {
   return (
@@ -14,7 +20,7 @@ export const CompareSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<StarIcon className="h-5 w-5" />}
+        icon={<Star className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
@@ -29,7 +35,7 @@ export const CompareSection = ({ content }: Props) => {
 const CompareCardItem = ({ card }: { card: CompareCard }) => (
   <ToneDetailCard
     tone={card.tone}
-    icon={rnIcon[card.iconName]}
+    icon={cardIcon[card.id]}
     title={card.name}
     bullets={card.items}
   />

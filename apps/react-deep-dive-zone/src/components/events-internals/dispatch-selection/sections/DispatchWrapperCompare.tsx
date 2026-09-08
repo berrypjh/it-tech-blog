@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Circle, GitBranch, Waves, Zap } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchSelectionContent, PriorityKey } from '../content';
-import { CircleIcon, GitBranchIcon, WavesIcon, ZapIcon } from '../icons';
 import { priorityBadge, priorityCard, priorityIconBox, priorityText } from '../priorityStyle';
 
 type Props = { content: DispatchSelectionContent['wrappers'] };
 
 const wrapperIcon: Record<PriorityKey, React.ComponentType<{ className?: string }>> = {
-  discrete: ZapIcon,
-  continuous: WavesIcon,
-  default: CircleIcon,
+  discrete: Zap,
+  continuous: Waves,
+  default: Circle,
 };
 
 export const DispatchWrapperCompare = ({ content }: Props) => (
@@ -20,7 +21,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">

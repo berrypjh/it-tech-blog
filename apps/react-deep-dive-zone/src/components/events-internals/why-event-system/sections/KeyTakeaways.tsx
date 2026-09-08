@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Trophy } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { Tone, WhyEventSystemContent } from '../content';
-import { TrophyIcon } from '../icons';
 
 type Props = { content: WhyEventSystemContent['takeaways'] };
 
@@ -48,7 +49,7 @@ export const KeyTakeaways = ({ content }: Props) => (
       id="takeaways"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TrophyIcon className="h-5 w-5" />}
+      icon={<Trophy className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">

@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { BookOpen, Star } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { Timeline } from '../../../shared/timeline';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
-import { BookOpenIcon, StarIcon } from '../icons';
 
 type Props = { content: ChangelogContent['timeline'] };
 
@@ -20,7 +21,7 @@ export const ChangelogTimeline = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<BookOpenIcon className="h-5 w-5" />}
+        icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
       />
 
       <Timeline
@@ -48,7 +49,9 @@ export const ChangelogTimeline = ({ content }: Props) => {
         })}
       />
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

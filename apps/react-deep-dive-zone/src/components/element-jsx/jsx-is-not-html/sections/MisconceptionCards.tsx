@@ -1,16 +1,17 @@
+import { Boxes, HelpCircle, Monitor, Network } from 'lucide-react';
+
 import type { MisconceptionItem } from '../../../shared/misconception';
 import { MisconceptionCardGrid } from '../../../shared/misconception';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxIsNotHtmlContent } from '../content';
-import { BoxesIcon, HelpCircleIcon, MonitorIcon, NetworkIcon } from '../icons';
 
 type Props = { content: JsxIsNotHtmlContent['misconception'] };
 
 const sideIcon = {
-  box: BoxesIcon,
-  network: NetworkIcon,
-  browser: MonitorIcon,
+  box: Boxes,
+  network: Network,
+  browser: Monitor,
 } as const;
 
 export const MisconceptionCards = ({ content }: Props) => {
@@ -37,7 +38,7 @@ export const MisconceptionCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<HelpCircleIcon className="h-5 w-5" />}
+        icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
       />
 
       <MisconceptionCardGrid items={items} />

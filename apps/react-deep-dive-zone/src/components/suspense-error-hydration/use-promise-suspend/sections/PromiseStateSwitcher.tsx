@@ -4,14 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Hourglass, Play, TriangleAlert } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  HourglassIcon,
-  PlayIcon,
-  TriangleAlertIcon,
-} from '../icons';
 import type { PromiseState } from '../tone';
 import { stateAccent } from '../tone';
 
@@ -21,9 +16,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: UsePromiseSuspendContent['switcher'] };
 
 const stateIcon: Record<PromiseState, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  fulfilled: CheckCircleIcon,
-  rejected: TriangleAlertIcon,
+  pending: Hourglass,
+  fulfilled: CheckCircle2,
+  rejected: TriangleAlert,
 };
 
 export const PromiseStateSwitcher = ({ content }: Props) => {
@@ -96,7 +91,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                       </span>
                     </span>
                     {isActive && (
-                      <CheckCircleIcon
+                      <CheckCircle2
                         aria-hidden="true"
                         className={cn('h-4 w-4 shrink-0 ml-auto', optAccent.text)}
                       />
@@ -153,7 +148,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
           )}
         >
           <header className="flex items-center gap-2">
-            <PlayIcon aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+            <Play aria-hidden="true" className="h-4 w-4 text-blue-600 dark:text-blue-300" />
             <h3 className="text-xsm font-bold text-[var(--term-fg)]">{content.timelineTitle}</h3>
           </header>
 
@@ -224,7 +219,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
               const sAccent = step.state ? stateAccent[step.state] : stateAccent.rejected;
               return (
                 <li key={i} className="flex items-center gap-2">
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className={cn(
                       'h-3.5 w-3.5 shrink-0',

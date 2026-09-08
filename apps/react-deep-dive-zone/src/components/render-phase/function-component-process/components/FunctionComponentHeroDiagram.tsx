@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Code2, FunctionSquare, Settings, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
-import { CodeIcon, FunctionSquareIcon, SettingsIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: FunctionComponentContent['hero'] };
 
@@ -24,7 +25,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
         <StepHeader
           tone="sky"
           label={diagram.codeStep.title}
-          icon={<FunctionSquareIcon className="h-[18px] w-[18px]" />}
+          icon={<FunctionSquare className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel code={diagram.codeStep.code} showWindowDots size="md" />
 
@@ -34,7 +35,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
           tone="teal"
           title={diagram.hooksStep.title}
           description={diagram.hooksStep.description}
-          icon={<SettingsIcon className="h-[18px] w-[18px]" />}
+          icon={<Settings className="h-[18px] w-[18px]" aria-hidden="true" />}
           mono
         />
 
@@ -43,7 +44,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
         <StepHeader
           tone="violet"
           label={diagram.nextChildrenStep.title}
-          icon={<CodeIcon className="h-[18px] w-[18px]" />}
+          icon={<Code2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         />
         <CodePreviewPanel
           code={diagram.nextChildrenStep.code}
@@ -57,7 +58,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
           tone="indigo"
           title={diagram.reconcileStep.title}
           description={diagram.reconcileStep.description}
-          icon={<WorkflowIcon className="h-[18px] w-[18px]" />}
+          icon={<Workflow className="h-[18px] w-[18px]" aria-hidden="true" />}
           mono
         />
       </div>

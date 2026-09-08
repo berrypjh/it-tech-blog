@@ -1,8 +1,9 @@
+import { GitBranch, Lightbulb } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { HostComponentFiberContent } from '../content';
-import { GitBranchIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: HostComponentFiberContent['vsDom'] };
 
@@ -15,7 +16,7 @@ export const HostVsDomComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -28,7 +29,7 @@ export const HostVsDomComparison = ({ content }: Props) => (
       }))}
     />
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
       <span className="font-bold">{content.emphasisTitle}</span> — {content.emphasisBody}
     </SectionNote>
   </section>

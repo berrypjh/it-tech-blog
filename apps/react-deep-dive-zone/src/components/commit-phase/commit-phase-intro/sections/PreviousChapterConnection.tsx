@@ -1,27 +1,28 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  Box,
+  GitMerge,
+  HelpCircle,
+  Minus,
+  RefreshCcw,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, PreviousLeftover, PreviousLeftoverIcon } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  BoxIcon,
-  GitMergeIcon,
-  HelpCircleIcon,
-  MinusIcon,
-  RefreshIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['previous'] };
 
-const iconMap: Record<PreviousLeftoverIcon, typeof BoxIcon> = {
-  cube: BoxIcon,
-  refresh: RefreshIcon,
-  minus: MinusIcon,
-  gitMerge: GitMergeIcon,
+const iconMap: Record<PreviousLeftoverIcon, typeof Box> = {
+  cube: Box,
+  refresh: RefreshCcw,
+  minus: Minus,
+  gitMerge: GitMerge,
 };
 
 export const PreviousChapterConnection = ({ content }: Props) => (
@@ -35,7 +36,7 @@ export const PreviousChapterConnection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1.2fr)_auto_minmax(0,_0.9fr)] items-stretch gap-3 md:gap-2">
@@ -50,8 +51,8 @@ export const PreviousChapterConnection = ({ content }: Props) => (
             'bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
           )}
         >
-          <ArrowRightIcon className="hidden md:inline-block h-4 w-4" />
-          <ArrowDownIcon className="md:hidden h-4 w-4" />
+          <ArrowRight className="hidden md:inline-block h-4 w-4" aria-hidden="true" />
+          <ArrowDown className="md:hidden h-4 w-4" aria-hidden="true" />
         </span>
       </div>
 
@@ -132,7 +133,7 @@ const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightC
           t.fill.text,
         )}
       >
-        <HelpCircleIcon className="h-6 w-6" />
+        <HelpCircle className="h-6 w-6" aria-hidden="true" />
       </span>
       <p className={cn('text-sm sm:text-md font-bold leading-snug break-keep', t.fill.text)}>
         {card.question}

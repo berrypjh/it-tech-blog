@@ -1,29 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Fingerprint, Flag, Layers, ListTree, Network, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent, RolePill } from '../content';
-import {
-  DatabaseIcon,
-  FingerprintIcon,
-  FlagIcon,
-  LayersIcon,
-  ListTreeIcon,
-  NetworkIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['preview'] };
 
 const iconMap = {
-  fingerprint: FingerprintIcon,
-  network: NetworkIcon,
-  database: DatabaseIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
-  layers: LayersIcon,
+  fingerprint: Fingerprint,
+  network: Network,
+  database: Database,
+  flag: Flag,
+  zap: Zap,
+  layers: Layers,
 } as const;
 
 export const FiberStructurePreview = ({ content }: Props) => (
@@ -35,7 +28,7 @@ export const FiberStructurePreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListTreeIcon className="h-5 w-5" />}
+      icon={<ListTree className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.95fr)_minmax(0,_1.05fr)] gap-md items-stretch">

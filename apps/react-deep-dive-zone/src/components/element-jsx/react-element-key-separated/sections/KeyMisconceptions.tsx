@@ -1,22 +1,23 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  CheckCircle2,
+  HelpCircle,
+  MessageSquareWarning,
+  Shuffle,
+  XCircle,
+} from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { Misconception, ReactElementKeySeparatedContent } from '../content';
-import {
-  ArrowDownIcon,
-  CheckCircleIcon,
-  HelpCircleIcon,
-  MessageIcon,
-  ShuffleIcon,
-  XCircleIcon,
-} from '../icons';
 
 type Props = { content: ReactElementKeySeparatedContent['misconceptions'] };
 
 const iconMap = {
-  message: MessageIcon,
-  shuffle: ShuffleIcon,
+  message: MessageSquareWarning,
+  shuffle: Shuffle,
 } as const;
 
 export const KeyMisconceptions = ({ content }: Props) => (
@@ -32,7 +33,7 @@ export const KeyMisconceptions = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
@@ -73,19 +74,25 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
 
       {/* 오해: 취소선 처리한 잘못된 인식 */}
       <p className="flex items-start gap-2 text-sm font-medium leading-snug break-keep">
-        <XCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300" />
+        <XCircle
+          className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-300"
+          aria-hidden="true"
+        />
         <span className="text-[var(--term-muted)] line-through decoration-rose-400/60">
           {card.wrong}
         </span>
       </p>
 
       {/* 연결 화살표 */}
-      <ArrowDownIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-border)]" />
+      <ArrowDown aria-hidden="true" className="h-4 w-4 text-[var(--term-border)]" />
 
       {/* 정확한 설명 */}
       <div className="flex flex-1 flex-col gap-2">
         <p className="flex items-start gap-2 text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
-          <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
+          <CheckCircle2
+            className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
+            aria-hidden="true"
+          />
           <span>{card.correct}</span>
         </p>
         <ul className="flex flex-col gap-1 pl-6">

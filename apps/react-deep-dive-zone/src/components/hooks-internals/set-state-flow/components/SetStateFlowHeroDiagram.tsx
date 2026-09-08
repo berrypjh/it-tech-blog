@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Calendar, FileText, Link2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroStep, SetStateFlowContent, Tone } from '../content';
-import { CalendarIcon, FileTextIcon, Link2Icon } from '../icons';
 
 type Props = { content: SetStateFlowContent['hero']; className?: string };
 
 const stepIconMap = {
-  file: FileTextIcon,
-  queue: Link2Icon,
-  calendar: CalendarIcon,
+  file: FileText,
+  queue: Link2,
+  calendar: Calendar,
 } as const;
 
 /** content의 Tone을 공유 ToneKey로 매핑. 누락 톤은 가장 가까운 값으로 대체. */

@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, HelpCircle, Phone, Zap } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionClassComponentFiberContent } from '../content';
-import { DatabaseIcon, HelpCircleIcon, PhoneIcon, ZapIcon } from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['reasons'] };
 
 const iconMap = {
-  phone: PhoneIcon,
-  database: DatabaseIcon,
-  zap: ZapIcon,
+  phone: Phone,
+  database: Database,
+  zap: Zap,
 } as const;
 
 export const WhyFiberTagsDiffer = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const WhyFiberTagsDiffer = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">

@@ -1,24 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Atom, Box, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberFlowStep, ReactElementTypeMeaningContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  AtomIcon,
-  BoxIcon,
-  SparklesIcon,
-  WorkflowIcon,
-} from '../icons';
 
 type Props = { content: ReactElementTypeMeaningContent['fiber'] };
 
 const iconMap = {
-  box: BoxIcon,
-  workflow: WorkflowIcon,
-  atom: AtomIcon,
+  box: Box,
+  workflow: Workflow,
+  atom: Atom,
 } as const;
 
 export const FiberClassificationPreview = ({ content }: Props) => (
@@ -30,7 +24,7 @@ export const FiberClassificationPreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.9fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.4fr)] gap-md items-stretch">
@@ -39,7 +33,9 @@ export const FiberClassificationPreview = ({ content }: Props) => (
       ))}
     </ol>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.summary}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.summary}
+    </SectionNote>
   </section>
 );
 
@@ -51,10 +47,10 @@ const ItemWithArrow = ({ step, last }: { step: FiberFlowStep; last: boolean }) =
     {!last && (
       <li className="flex items-center justify-center lg:-mx-2" aria-hidden="true">
         <span className="lg:hidden inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-          <ArrowDownIcon className="h-3.5 w-3.5" />
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
         <span className="hidden lg:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-          <ArrowRightIcon className="h-3.5 w-3.5" />
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
       </li>
     )}

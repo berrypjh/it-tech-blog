@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers } from 'lucide-react';
+
 import type { ComparisonRow, Tone, WhyNotImmediateContent } from '../content';
-import { LayersIcon } from '../icons';
 
 import { NumberedSectionHeader } from './_NumberedSectionHeader';
 import { ScenarioMockup } from './_ScenarioMockups';
@@ -158,7 +159,7 @@ export const SchedulerComparisonTable = ({ content }: Props) => (
       number={5}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* DESKTOP table */}

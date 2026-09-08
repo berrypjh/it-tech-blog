@@ -1,9 +1,10 @@
+import { CheckCircle2, ListChecks, XCircle } from 'lucide-react';
+
 import { StatusPill } from '../../../shared/compare';
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactElementObjectStructureContent } from '../content';
-import { CheckCircleIcon, ListChecksIcon, XCircleIcon } from '../icons';
 
 type Props = { content: ReactElementObjectStructureContent['isValid'] };
 
@@ -16,7 +17,7 @@ export const IsValidElementTable = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -44,7 +45,7 @@ export const IsValidElementTable = ({ content }: Props) => (
           row.result ? (
             <StatusPill
               key="result"
-              icon={<CheckCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-[var(--term-accent)]"
             >
               {content.trueLabel}
@@ -52,7 +53,7 @@ export const IsValidElementTable = ({ content }: Props) => (
           ) : (
             <StatusPill
               key="result"
-              icon={<XCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<XCircle className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-rose-600 dark:text-rose-300"
             >
               {content.falseLabel}

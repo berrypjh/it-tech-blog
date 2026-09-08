@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Globe, Table2 } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { OnClickClickContent } from '../content';
-import { ArrowRightIcon, GlobeIcon, TableIcon } from '../icons';
 
 type Props = { content: OnClickClickContent['compare'] };
 
@@ -13,7 +14,7 @@ export const PropNativeEventCompare = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TableIcon className="h-5 w-5" />}
+      icon={<Table2 className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -31,7 +32,7 @@ export const PropNativeEventCompare = ({ content }: Props) => (
                 className="px-md py-3 text-left font-mono font-bold uppercase tracking-wider text-[10px] sm:text-xsm text-blue-800 dark:text-blue-200 border-b border-blue-200/80 dark:border-blue-800/50"
               >
                 <span className="inline-flex items-center gap-2">
-                  <GlobeIcon aria-hidden="true" className="h-3.5 w-3.5" />
+                  <Globe aria-hidden="true" className="h-3.5 w-3.5" />
                   {content.columnLabels.native}
                 </span>
               </th>
@@ -66,7 +67,7 @@ export const PropNativeEventCompare = ({ content }: Props) => (
                   aria-hidden="true"
                   className="text-center text-blue-500 dark:text-blue-300 border-t border-[var(--term-border)]"
                 >
-                  <ArrowRightIcon className="inline-block h-3.5 w-3.5" />
+                  <ArrowRight className="inline-block h-3.5 w-3.5" aria-hidden="true" />
                 </td>
                 <td className="px-md py-2.5 border-t border-[var(--term-border)]">
                   <code className="font-mono font-bold text-teal-700 dark:text-teal-300 break-all">

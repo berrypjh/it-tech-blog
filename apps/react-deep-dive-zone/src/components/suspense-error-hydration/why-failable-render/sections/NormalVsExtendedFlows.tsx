@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, TriangleAlert } from 'lucide-react';
+
 import type { Tone, WhyFailableRenderContent } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, TriangleAlertIcon } from '../icons';
 import { toneChip } from '../tone';
 
 type Props = { content: WhyFailableRenderContent['flows'] };
@@ -40,7 +41,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-100 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/60 dark:text-emerald-200"
         >
-          <CheckCircleIcon className="h-4.5 w-4.5" />
+          <CheckCircle2 className="h-4.5 w-4.5" aria-hidden="true" />
         </span>
         <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)]">
           {content.normal.title}
@@ -60,7 +61,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
               {step.label}
             </span>
             {i < content.normal.steps.length - 1 && (
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className="h-4 w-4 text-emerald-600 dark:text-emerald-300"
               />
@@ -100,7 +101,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
         >
-          <TriangleAlertIcon className="h-4.5 w-4.5" />
+          <TriangleAlert className="h-4.5 w-4.5" aria-hidden="true" />
         </span>
         <h3 className="text-md sm:text-lg font-bold text-[var(--term-fg)]">
           {content.extended.title}
@@ -120,7 +121,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
               {step.label}
             </span>
             {i < content.extended.steps.length - 1 && (
-              <ArrowRightIcon
+              <ArrowRight
                 aria-hidden="true"
                 className="h-4 w-4 text-violet-500 dark:text-violet-300"
               />

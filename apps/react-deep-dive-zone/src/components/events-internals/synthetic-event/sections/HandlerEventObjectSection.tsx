@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, FileText, MousePointerClick } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import { CheckCircleIcon, FileTextIcon, MousePointerClickIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['handlerE'] };
 
@@ -57,7 +58,7 @@ export const HandlerEventObjectSection = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<MousePointerClickIcon className="h-5 w-5" />}
+        icon={<MousePointerClick className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-md items-stretch">
@@ -73,7 +74,7 @@ export const HandlerEventObjectSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-blue-200/80 bg-white text-blue-700 dark:border-blue-800/60 dark:bg-slate-950/40 dark:text-blue-200"
             >
-              <FileTextIcon className="h-3.5 w-3.5" />
+              <FileText className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <code className="font-mono text-[11px] sm:text-xsm font-bold text-[var(--term-fg)]">
               {content.fileLabel}
@@ -115,7 +116,7 @@ export const HandlerEventObjectSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-[0_3px_0_rgba(5,150,105,0.25)] dark:bg-emerald-400 dark:text-slate-900"
             >
-              <CheckCircleIcon className="h-5 w-5" strokeWidth={2.4} />
+              <CheckCircle2 className="h-5 w-5" strokeWidth={2.4} aria-hidden="true" />
             </span>
             <p className="text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
               {content.explanation.label}

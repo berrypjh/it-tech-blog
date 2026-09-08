@@ -1,31 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { PluginEventSystemContent } from '../content';
 import {
-  CornerDownRightIcon,
-  FormInputIcon,
-  MousePointerIcon,
-  PuzzleIcon,
-  RocketIcon,
-  ScrollIcon,
-  SparklesIcon,
-  TargetIcon,
-  TypeIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
+  CornerDownRight,
+  FormInput,
+  MousePointer,
+  Puzzle,
+  Rocket,
+  Scroll,
+  Sparkles,
+  Target,
+  Type,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
+import type { PluginEventSystemContent } from '../content';
 import { SectionFrame } from '../SectionFrame';
 import { toneAccent, toneCard, toneIconBox } from '../styles';
 
 type Props = { content: PluginEventSystemContent['extract'] };
 
 const pluginIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  SimpleEventPlugin: MousePointerIcon,
-  ChangeEventPlugin: FormInputIcon,
-  SelectEventPlugin: TargetIcon,
-  BeforeInputEventPlugin: TypeIcon,
-  ScrollEndEventPlugin: ScrollIcon,
-  FormActionEventPlugin: RocketIcon,
+  SimpleEventPlugin: MousePointer,
+  ChangeEventPlugin: FormInput,
+  SelectEventPlugin: Target,
+  BeforeInputEventPlugin: Type,
+  ScrollEndEventPlugin: Scroll,
+  FormActionEventPlugin: Rocket,
 };
 
 export const ExtractEventsFlow = ({ content }: Props) => (
@@ -33,7 +34,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
     id="extract"
     sectionNumber={content.sectionNumber}
     title={content.title}
-    icon={<WorkflowIcon className="h-5 w-5" />}
+    icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
   >
     {/* Center extractEvents card */}
     <div className="flex flex-col items-center gap-2">
@@ -50,7 +51,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-violet-500 text-white shadow-[0_3px_0_rgba(124,58,237,0.3)] dark:bg-violet-400 dark:text-slate-900"
           >
-            <PuzzleIcon className="h-5 w-5" />
+            <Puzzle className="h-5 w-5" aria-hidden="true" />
           </span>
           <code className="font-mono text-md sm:text-lg font-bold text-violet-700 dark:text-violet-200">
             {content.centerCard.title}
@@ -66,14 +67,14 @@ export const ExtractEventsFlow = ({ content }: Props) => (
         aria-hidden="true"
         className="flex items-center justify-center text-violet-500 dark:text-violet-300"
       >
-        <CornerDownRightIcon className="h-5 w-5 -rotate-12" />
+        <CornerDownRight className="h-5 w-5 -rotate-12" aria-hidden="true" />
       </div>
     </div>
 
     {/* Plugin grid */}
     <ul className={cn('mt-2 grid gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3')}>
       {content.plugins.map((plugin) => {
-        const Icon = pluginIcons[plugin.name] ?? SparklesIcon;
+        const Icon = pluginIcons[plugin.name] ?? Sparkles;
         return (
           <li
             key={plugin.name}
@@ -106,7 +107,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
                 {plugin.summary}
               </p>
             </div>
-            <ZapIcon
+            <Zap
               aria-hidden="true"
               className={cn('h-3.5 w-3.5 shrink-0 mt-1 opacity-50', toneAccent[plugin.tone])}
             />

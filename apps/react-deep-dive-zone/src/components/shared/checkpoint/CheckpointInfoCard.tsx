@@ -16,8 +16,8 @@ export type CheckpointRow = {
 
 type Props = {
   rows: CheckpointRow[];
-  /** 하단 학습 질문(인사이트) 콜아웃 본문 */
-  question: string;
+  /** 하단 학습 질문(인사이트) 콜아웃 본문. 없으면 콜아웃을 렌더링하지 않는다. */
+  question?: string;
   className?: string;
 };
 
@@ -26,7 +26,7 @@ const rowToneClass = ['text-[var(--term-accent)]', toneTokens.sky.text, toneToke
 
 /**
  * 체크포인트 섹션의 좌측 정보 카드.
- * 라벨 옆 아이콘이 달린 InfoRow들 + 하단 학습 질문 콜아웃(전구 아이콘).
+ * 라벨 옆 아이콘이 달린 InfoRow들 + 하단 학습 질문 콜아웃(전구 아이콘, question이 있을 때만).
  */
 export const CheckpointInfoCard = ({ rows, question, className }: Props) => (
   <article
@@ -48,14 +48,16 @@ export const CheckpointInfoCard = ({ rows, question, className }: Props) => (
       </div>
     ))}
 
-    <div className="mt-auto flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3 text-[var(--term-fg)]">
-      <Lightbulb
-        className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
-        aria-hidden="true"
-      />
-      <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
-        {question}
-      </p>
-    </div>
+    {question && (
+      <div className="mt-auto flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3 text-[var(--term-fg)]">
+        <Lightbulb
+          className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
+          aria-hidden="true"
+        />
+        <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
+          {question}
+        </p>
+      </div>
+    )}
   </article>
 );

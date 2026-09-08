@@ -1,7 +1,16 @@
+import { Box, Braces, CornerDownRight, FileText, type LucideIcon, Workflow } from 'lucide-react';
+
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { HostComponentContent, UpdateHostFlowStep } from '../content';
-import { updateFlowIconByName, WorkflowIcon } from '../icons';
+
+const updateFlowIconByName: Record<UpdateHostFlowStep['icon'], LucideIcon> = {
+  fiber: Box,
+  props: Braces,
+  children: FileText,
+  reconcile: Workflow,
+  child: CornerDownRight,
+} as const;
 
 type Props = { content: HostComponentContent['updateFlow'] };
 
@@ -24,7 +33,7 @@ export const UpdateHostComponentFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList rows={content.steps.map(toRow)} />

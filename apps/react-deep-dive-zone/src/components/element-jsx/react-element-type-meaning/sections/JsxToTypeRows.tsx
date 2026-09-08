@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Workflow } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxRow, ReactElementTypeMeaningContent } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReactElementTypeMeaningContent['rows'] };
 
@@ -17,7 +18,7 @@ export const JsxToTypeRows = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="flex flex-col gap-md">
@@ -106,10 +107,10 @@ const RowView = ({ row }: { row: JsxRow }) => {
 const ArrowCell = () => (
   <div className="flex items-center justify-center" aria-hidden="true">
     <span className="lg:hidden inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-      <ArrowDownIcon className="h-3.5 w-3.5" />
+      <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
     <span className="hidden lg:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-      <ArrowRightIcon className="h-3.5 w-3.5" />
+      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
   </div>
 );

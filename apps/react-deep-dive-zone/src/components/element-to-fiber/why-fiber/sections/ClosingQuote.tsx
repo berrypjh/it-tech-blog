@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Hexagon, Quote } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { FiberWhyNeededContent } from '../content';
-import { HexagonIcon, QuoteIcon } from '../icons';
 
 type Props = { content: FiberWhyNeededContent['quote'] };
 
@@ -20,7 +21,7 @@ export const ClosingQuote = ({ content }: Props) => (
       <div className="grid grid-cols-1 lg:grid-cols-[auto_minmax(0,_1fr)_auto] gap-md lg:gap-lg items-center">
         {/* Left big quote mark */}
         <span aria-hidden="true" className={cn(symbolBox, toneTokens.sky.chip)}>
-          <QuoteIcon className="h-8 w-8 sm:h-10 sm:w-10" />
+          <Quote className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden="true" />
         </span>
 
         {/* Center text */}
@@ -41,7 +42,7 @@ export const ClosingQuote = ({ content }: Props) => (
           aria-hidden="true"
           className={cn(symbolBox, 'rotate-[-8deg]', toneTokens.violet.chip)}
         >
-          <HexagonIcon className="h-8 w-8 sm:h-10 sm:w-10" />
+          <Hexagon className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden="true" />
         </span>
       </div>
     </div>

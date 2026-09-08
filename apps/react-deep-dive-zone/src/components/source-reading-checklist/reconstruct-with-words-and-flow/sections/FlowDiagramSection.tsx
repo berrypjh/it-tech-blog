@@ -4,9 +4,10 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, GitBranch, Network, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { ReconstructContent } from '../content';
-import { ArrowRightIcon, GitBranchIcon, NetworkIcon, SparkIcon } from '../icons';
 
 type Props = { content: ReconstructContent['flowDiagram'] };
 
@@ -25,7 +26,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<GitBranchIcon className="h-5 w-5" />}
+        icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -79,7 +80,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
                       ),
                 )}
               >
-                <NetworkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                <Network className="h-3.5 w-3.5" aria-hidden="true" />
                 <span className="text-xsm font-bold">{ex.title}</span>
               </button>
             );
@@ -131,7 +132,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
                 </li>
                 {i < active.flow.length - 1 && (
                   <li aria-hidden="true">
-                    <ArrowRightIcon className="h-3.5 w-3.5 text-blue-500" />
+                    <ArrowRight className="h-3.5 w-3.5 text-blue-500" aria-hidden="true" />
                   </li>
                 )}
               </Fragment>
@@ -166,7 +167,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
               'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
             )}
           >
-            <SparkIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
           </span>
           <p className="text-sm sm:text-md font-bold leading-snug break-keep">{content.emphasis}</p>
         </aside>

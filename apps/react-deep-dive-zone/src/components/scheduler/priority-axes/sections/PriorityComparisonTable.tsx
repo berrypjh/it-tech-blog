@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock3, Layers, ScanSearch, Zap } from 'lucide-react';
+
 import {
   axisIconBox,
   axisNumberBadge,
@@ -8,14 +10,13 @@ import {
 } from '../../_shared/axisAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AxisAccent, ComparisonRow, ThreePriorityAxesContent } from '../content';
-import { ClockIcon, LayersIcon, ScanSearchIcon, ZapIcon } from '../icons';
 
 type Props = { content: ThreePriorityAxesContent['comparison'] };
 
-const accentIcon: Record<AxisAccent, typeof ZapIcon> = {
-  blue: ZapIcon,
-  teal: LayersIcon,
-  violet: ClockIcon,
+const accentIcon: Record<AxisAccent, typeof Zap> = {
+  blue: Zap,
+  teal: Layers,
+  violet: Clock3,
 };
 
 const CellList = ({ items, mono = false }: { items: string[]; mono?: boolean }) => (
@@ -72,7 +73,7 @@ export const PriorityComparisonTable = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ScanSearchIcon className="h-5 w-5" />}
+      icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* Desktop table */}

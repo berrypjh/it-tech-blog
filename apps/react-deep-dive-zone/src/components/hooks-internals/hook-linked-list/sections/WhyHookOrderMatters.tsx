@@ -2,15 +2,10 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, ArrowRight, CheckCircle2, ListOrdered, XCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HookLinkedListContent } from '../content';
-import {
-  AlertTriangleIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ListOrderedIcon,
-  XCircleIcon,
-} from '../icons';
 
 type Props = { content: HookLinkedListContent['whyOrder'] };
 
@@ -26,7 +21,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
       id="why-order"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListOrderedIcon className="h-5 w-5" />}
+      icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
@@ -43,7 +38,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900 shadow-[0_2px_0_rgba(5,150,105,0.25)]"
           >
-            <CheckCircleIcon className="h-5 w-5" />
+            <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-emerald-800 dark:text-emerald-100 break-keep">
             {content.leftCard.title}
@@ -78,7 +73,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
                   {node}
                 </code>
                 {!isLast && (
-                  <ArrowRightIcon
+                  <ArrowRight
                     aria-hidden="true"
                     className="h-3 w-3 text-emerald-700 dark:text-emerald-300"
                   />
@@ -102,7 +97,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900 shadow-[0_2px_0_rgba(225,29,72,0.25)]"
           >
-            <XCircleIcon className="h-5 w-5" />
+            <XCircle className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-sm sm:text-md font-bold text-rose-800 dark:text-rose-100 break-keep">
             {content.rightCard.title}
@@ -134,7 +129,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
             'dark:border-rose-600/60 dark:bg-rose-950/50',
           )}
         >
-          <AlertTriangleIcon
+          <AlertTriangle
             aria-hidden="true"
             className="h-4 w-4 shrink-0 mt-0.5 text-rose-700 dark:text-rose-300"
           />
@@ -158,7 +153,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900"
         >
-          <AlertTriangleIcon className="h-4 w-4" />
+          <AlertTriangle className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-xsm sm:text-sm leading-relaxed text-rose-900 dark:text-rose-100 break-keep">
           {content.banner.text}
@@ -176,7 +171,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
         )}
       >
         <span className="break-keep">{content.banner.ctaLabel}</span>
-        <ArrowRightIcon
+        <ArrowRight
           aria-hidden="true"
           className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
         />

@@ -2,26 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type SharedIconName =
-  | 'alertCircle'
-  | 'arrowRight'
-  | 'atom'
-  | 'box'
-  | 'check'
-  | 'code'
-  | 'cube'
-  | 'fileCode'
-  | 'fileText'
-  | 'flag'
-  | 'gitBranch'
-  | 'help'
-  | 'info'
-  | 'layers'
-  | 'network'
-  | 'package'
-  | 'share'
-  | 'star';
-
 export type FileCard = {
   id: 'symbols' | 'types' | 'version' | 'feature-flags';
   fileName: string;
@@ -29,18 +9,9 @@ export type FileCard = {
   title: string;
   description: string;
   tone: ToneKey;
-  iconName: SharedIconName;
 };
 
 export type ExampleTag = { id: string; label: string; tone: ToneKey };
-
-export type CheckpointItem = {
-  id: string;
-  label: string;
-  value: string;
-  iconName: SharedIconName;
-  tone: ToneKey;
-};
 
 export type ConceptTag = { id: string; label: string };
 
@@ -48,7 +19,6 @@ export type PackageNode = {
   id: 'react' | 'react-dom' | 'react-reconciler';
   name: string;
   subtitle: string;
-  iconName: SharedIconName;
   tone: ToneKey;
 };
 
@@ -83,7 +53,6 @@ export type SharedContent = {
     checkpoint: {
       file: { label: string; value: string };
       look: { label: string; values: string[] };
-      question: { label: string; value: string };
     };
     codeCaption: string;
     code: string;
@@ -100,7 +69,6 @@ export type SharedContent = {
     code: string;
     primaryCta: string;
     primaryHref: string;
-    callout: string;
   };
   connection: {
     eyebrow: string;
@@ -152,21 +120,18 @@ const PACKAGES_KO: PackageNode[] = [
     id: 'react',
     name: 'react',
     subtitle: '코어 라이브러리',
-    iconName: 'atom',
     tone: 'sky',
   },
   {
     id: 'react-dom',
     name: 'react-dom',
     subtitle: 'DOM 렌더링',
-    iconName: 'cube',
     tone: 'violet',
   },
   {
     id: 'react-reconciler',
     name: 'react-reconciler',
     subtitle: '렌더링 코어',
-    iconName: 'code',
     tone: 'teal',
   },
 ];
@@ -176,21 +141,18 @@ const PACKAGES_EN: PackageNode[] = [
     id: 'react',
     name: 'react',
     subtitle: 'Core library',
-    iconName: 'atom',
     tone: 'sky',
   },
   {
     id: 'react-dom',
     name: 'react-dom',
     subtitle: 'DOM renderer',
-    iconName: 'cube',
     tone: 'violet',
   },
   {
     id: 'react-reconciler',
     name: 'react-reconciler',
     subtitle: 'Rendering core',
-    iconName: 'code',
     tone: 'teal',
   },
 ];
@@ -247,7 +209,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: '특수 타입 식별자',
           description: 'Fragment, Suspense 등 특수한 React 요소의 식별 심벌을 정의합니다.',
           tone: 'violet',
-          iconName: 'star',
         },
         {
           id: 'types',
@@ -256,7 +217,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: '공통 타입 정의',
           description: '여러 패키지가 공통으로 사용하는 Flow 타입 또는 TS 타입들을 정의합니다.',
           tone: 'sky',
-          iconName: 'fileText',
         },
         {
           id: 'version',
@@ -266,7 +226,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description:
             'React의 버전 정보를 한 곳에서 관리하고 모든 패키지가 동일한 값을 사용합니다.',
           tone: 'emerald',
-          iconName: 'gitBranch',
         },
         {
           id: 'feature-flags',
@@ -275,7 +234,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: '기능 플래그',
           description: '실험적 기능, 성능 옵션 등을 켜고 끌 수 있는 플래그를 중앙에서 관리합니다.',
           tone: 'amber',
-          iconName: 'flag',
         },
       ],
     },
@@ -287,10 +245,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
         look: {
           label: '볼 것',
           values: ['REACT_FRAGMENT_TYPE', 'REACT_SUSPENSE_TYPE'],
-        },
-        question: {
-          label: '학습 질문',
-          value: 'React는 특별한 요소 종류를 어떤 심벌로 식별할까?',
         },
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
@@ -318,7 +272,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       code: REACT_CLIENT_IMPORT_CODE,
       primaryCta: 'ReactClient.js 읽기',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      callout: 'shared에서 가져온 심벌들을 React public API 구성 및 내부 처리에 사용',
     },
     connection: {
       eyebrow: '05 · 패키지 연결',
@@ -402,7 +355,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           description:
             'Defines identifier symbols for special React elements (Fragment, Suspense, …).',
           tone: 'violet',
-          iconName: 'star',
         },
         {
           id: 'types',
@@ -411,7 +363,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'Common type definitions',
           description: 'Flow/TS types that several packages share live here.',
           tone: 'sky',
-          iconName: 'fileText',
         },
         {
           id: 'version',
@@ -420,7 +371,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'Version string',
           description: 'The React version string is managed here so every package matches.',
           tone: 'emerald',
-          iconName: 'gitBranch',
         },
         {
           id: 'feature-flags',
@@ -429,7 +379,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
           title: 'Feature flags',
           description: 'Centrally controls experimental features and performance toggles.',
           tone: 'amber',
-          iconName: 'flag',
         },
       ],
     },
@@ -439,10 +388,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       checkpoint: {
         file: { label: 'File', value: 'packages/shared/ReactSymbols.js' },
         look: { label: 'Look at', values: ['REACT_FRAGMENT_TYPE', 'REACT_SUSPENSE_TYPE'] },
-        question: {
-          label: 'Question',
-          value: 'How does React identify special element types?',
-        },
       },
       codeCaption: 'packages/shared/ReactSymbols.js',
       code: REACT_SYMBOLS_CODE,
@@ -468,7 +413,6 @@ export const sharedContent: Record<Locale, SharedContent> = {
       code: REACT_CLIENT_IMPORT_CODE,
       primaryCta: 'Read ReactClient.js',
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
-      callout: 'The symbols imported from shared drive React’s public API and internal processing.',
     },
     connection: {
       eyebrow: '05 · CONNECTIONS',

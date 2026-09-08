@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Link, PlayCircle } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
-import { ArrowRightIcon, LinkIcon, PlayCircleIcon } from '../icons';
 
 type Props = { content: FunctionComponentContent['hooksLink'] };
 
@@ -15,7 +16,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<LinkIcon className="h-5 w-5" />}
+      icon={<Link className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -32,7 +33,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
             aria-hidden="true"
             className="flex items-center justify-center text-[var(--term-accent)] py-2"
           >
-            <ArrowRightIcon className="h-5 w-5 sm:rotate-0 rotate-90" />
+            <ArrowRight className="h-5 w-5 sm:rotate-0 rotate-90" aria-hidden="true" />
           </span>
           <ChapterCard
             tone="sky"
@@ -51,7 +52,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
         >
           <header className="flex items-center gap-2">
             <ToneIconBox tone="violet" size="sm">
-              <PlayCircleIcon className="h-4 w-4" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
             <h3 className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.text)}>
               {content.sidePointTitle}

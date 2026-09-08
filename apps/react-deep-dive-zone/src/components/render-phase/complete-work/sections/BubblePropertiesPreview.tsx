@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ArrowUp, CheckCircle2, ChevronDown } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
-import { ArrowRightIcon, ArrowUpIcon, CheckCircleIcon, ChevronDownIcon } from '../icons';
 
 type Props = { content: CompleteWorkContent['bubble'] };
 
@@ -17,7 +18,7 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ArrowUpIcon className="h-5 w-5" />}
+      icon={<ArrowUp className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -51,8 +52,8 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
                   aria-hidden="true"
                   className="flex items-center justify-center text-[var(--term-accent)] py-1 lg:py-0"
                 >
-                  <ArrowRightIcon className="hidden lg:block h-5 w-5" />
-                  <ChevronDownIcon className="lg:hidden h-5 w-5" />
+                  <ArrowRight className="hidden lg:block h-5 w-5" aria-hidden="true" />
+                  <ChevronDown className="lg:hidden h-5 w-5" aria-hidden="true" />
                 </span>
               )}
             </Fragment>
@@ -60,7 +61,7 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
         })}
       </div>
 
-      <SectionNote icon={<CheckCircleIcon className="h-4 w-4" />} className="mt-md">
+      <SectionNote icon={<CheckCircle2 className="h-4 w-4" aria-hidden="true" />} className="mt-md">
         {content.bottomNote}
       </SectionNote>
     </article>

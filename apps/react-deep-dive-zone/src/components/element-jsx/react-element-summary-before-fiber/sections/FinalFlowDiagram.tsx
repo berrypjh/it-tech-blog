@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Map, Star } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FinalFlowStep, ReactElementSummaryBeforeFiberContent } from '../content';
-import { ArrowDownIcon, MapIcon, StarIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['finalFlow'] };
 
@@ -17,7 +18,7 @@ export const FinalFlowDiagram = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -27,7 +28,7 @@ export const FinalFlowDiagram = ({ content }: Props) => (
           {idx < content.steps.length - 1 && (
             <span className="flex justify-center py-1 lg:hidden" aria-hidden="true">
               <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-                <ArrowDownIcon className="h-3.5 w-3.5" />
+                <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </span>
           )}
@@ -69,7 +70,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
             )}
             aria-hidden="true"
           >
-            <StarIcon className="h-3 w-3" />
+            <Star className="h-3 w-3" aria-hidden="true" />
             chapter focus
           </span>
         )}

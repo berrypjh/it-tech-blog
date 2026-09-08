@@ -1,7 +1,23 @@
+import {
+  Braces,
+  CornerDownRight,
+  FunctionSquare,
+  type LucideIcon,
+  Settings,
+  Workflow,
+} from 'lucide-react';
+
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import type { FunctionComponentContent, InternalFlowStep } from '../content';
-import { internalFlowIconByName, WorkflowIcon } from '../icons';
+
+const internalFlowIconByName: Record<InternalFlowStep['icon'], LucideIcon> = {
+  fiber: FunctionSquare,
+  hooks: Settings,
+  jsx: Braces,
+  reconcile: Workflow,
+  child: CornerDownRight,
+} as const;
 
 type Props = { content: FunctionComponentContent['internalFlow'] };
 
@@ -24,7 +40,7 @@ export const InternalProcessingFlow = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList rows={content.steps.map(toRow)} />

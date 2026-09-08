@@ -2,42 +2,17 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type SchedulerIconName =
-  | 'activity'
-  | 'arrowRight'
-  | 'check'
-  | 'clock'
-  | 'code'
-  | 'cube'
-  | 'fileCode'
-  | 'fileText'
-  | 'gauge'
-  | 'gitBranch'
-  | 'help'
-  | 'keyboard'
-  | 'layers'
-  | 'lightning'
-  | 'list'
-  | 'monitor'
-  | 'puzzle'
-  | 'refresh'
-  | 'star'
-  | 'timer'
-  | 'user';
-
 export type PriorityLevel = {
-  id: string;
+  id: 'sync' | 'user-blocking' | 'normal' | 'low';
   title: string;
   description: string;
   badge: string;
-  iconName: SchedulerIconName;
 };
 
 export type NeedCard = {
-  id: string;
+  id: 'input' | 'split' | 'defer';
   title: string;
   description: string;
-  iconName: SchedulerIconName;
   tone: ToneKey;
 };
 
@@ -47,16 +22,13 @@ export type CompareCard = {
   question: string;
   description: string;
   tags: string[];
-  iconName: SchedulerIconName;
   tone: ToneKey;
 };
 
 export type CheckpointItem = {
-  id: 'file' | 'function' | 'question';
+  id: 'file' | 'function';
   label: string;
   value: string;
-  iconName: SchedulerIconName;
-  tone: ToneKey;
 };
 
 export type DoesItem = { text: string; assignee?: string };
@@ -96,7 +68,6 @@ export type SchedulerContent = {
     levels: PriorityLevel[];
     criteriaTitle: string;
     criteria: string[];
-    banner: string;
   };
   checkpoint: {
     eyebrow: string;
@@ -206,7 +177,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: '사용자 입력 지연 방지',
           description:
             '타이핑, 클릭, 스크롤 등 입력 반응을 빠르게 처리하여 UI가 끊기지 않게 합니다.',
-          iconName: 'keyboard',
           tone: 'teal',
         },
         {
@@ -214,7 +184,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: '긴 렌더링 작업 분할',
           description:
             '큰 렌더링 작업을 잘게 나누어 중간에 우선순위 높은 작업이 끼어들 수 있게 합니다.',
-          iconName: 'puzzle',
           tone: 'violet',
         },
         {
@@ -222,7 +191,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: '덜 급한 업데이트 뒤로 미루기',
           description:
             '화면에 당장 보이지 않아도 되는 작업은 뒤로 보내어 전체 경험을 부드럽게 만듭니다.',
-          iconName: 'clock',
           tone: 'amber',
         },
       ],
@@ -239,7 +207,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           question: '무슨 일을 해야 하는가?',
           description: '현재와 다음 상태를 비교하고, 변경 목록을 계산한다.',
           tags: ['계산', 'Fiber', 'Render Work', '변경 목록'],
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -248,7 +215,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           question: '그 일을 언제 실행할 것인가?',
           description: '작업의 중요도를 판단하고, 언제 실행할지 조율한다.',
           tags: ['시간 조율', '우선순위', '콜백 예약', '지연 실행'],
-          iconName: 'clock',
           tone: 'violet',
         },
       ],
@@ -263,28 +229,24 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: 'Immediate / Sync 계열',
           description: '동기/즉시 작업, blocking update, flushSync 등',
           badge: '가장 높음',
-          iconName: 'lightning',
         },
         {
           id: 'user-blocking',
           title: 'User-blocking / 입력 반응',
           description: '사용자 입력과 직접 연결된 업데이트',
           badge: '높음',
-          iconName: 'user',
         },
         {
           id: 'normal',
           title: 'Normal',
           description: '일반적인 렌더링 업데이트',
           badge: '보통',
-          iconName: 'monitor',
         },
         {
           id: 'low',
           title: 'Low / Transition 계열',
           description: '전환/비긴급 업데이트, 뒤로 미룰 수 있는 작업',
           badge: '낮음',
-          iconName: 'refresh',
         },
       ],
       criteriaTitle: '우선순위 판단 기준',
@@ -294,7 +256,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         '작업의 크기와 비용',
         '현재 브라우저 여유 시간',
       ],
-      banner: '높은 우선순위일수록 먼저 실행됩니다.',
     },
     checkpoint: {
       eyebrow: '04 · 코드 체크포인트',
@@ -304,22 +265,11 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           id: 'file',
           label: '파일',
           value: 'packages/scheduler/src/forks/Scheduler.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'function',
           label: '볼 함수',
           value: 'unstable_scheduleCallback',
-          iconName: 'fileCode',
-          tone: 'violet',
-        },
-        {
-          id: 'question',
-          label: '학습 질문',
-          value: '왜 작업 예약 함수에는 priorityLevel이 필요할까?',
-          iconName: 'help',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',
@@ -423,7 +373,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           id: 'input',
           title: 'Prevent input lag',
           description: 'Typing, clicking, scrolling — input reactions must stay smooth.',
-          iconName: 'keyboard',
           tone: 'teal',
         },
         {
@@ -431,14 +380,12 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: 'Split long render work',
           description:
             'Break big render passes into chunks so higher-priority work can slip in between.',
-          iconName: 'puzzle',
           tone: 'violet',
         },
         {
           id: 'defer',
           title: 'Defer less urgent updates',
           description: 'Push offscreen updates to the back to keep the overall experience fluid.',
-          iconName: 'clock',
           tone: 'amber',
         },
       ],
@@ -455,7 +402,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           question: 'What needs to be done?',
           description: 'Compares current vs next state and builds a change list.',
           tags: ['Compute', 'Fiber', 'Render Work', 'Change list'],
-          iconName: 'cube',
           tone: 'teal',
         },
         {
@@ -464,7 +410,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           question: 'When should it run?',
           description: 'Judges importance and decides when to execute it.',
           tags: ['Timing', 'Priority', 'Callback queue', 'Deferred execution'],
-          iconName: 'clock',
           tone: 'violet',
         },
       ],
@@ -479,28 +424,24 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           title: 'Immediate / Sync',
           description: 'Sync, blocking updates, flushSync etc.',
           badge: 'Highest',
-          iconName: 'lightning',
         },
         {
           id: 'user-blocking',
           title: 'User-blocking / Input',
           description: 'Updates directly tied to user input',
           badge: 'High',
-          iconName: 'user',
         },
         {
           id: 'normal',
           title: 'Normal',
           description: 'Ordinary rendering updates',
           badge: 'Normal',
-          iconName: 'monitor',
         },
         {
           id: 'low',
           title: 'Low / Transition',
           description: 'Non-urgent and deferrable updates',
           badge: 'Low',
-          iconName: 'refresh',
         },
       ],
       criteriaTitle: 'How priority is judged',
@@ -510,7 +451,6 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         'Work size and cost',
         'Current browser budget',
       ],
-      banner: 'Higher priority runs first.',
     },
     checkpoint: {
       eyebrow: '04 · CODE CHECKPOINT',
@@ -520,22 +460,11 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           id: 'file',
           label: 'File',
           value: 'packages/scheduler/src/forks/Scheduler.js',
-          iconName: 'fileText',
-          tone: 'sky',
         },
         {
           id: 'function',
           label: 'Function',
           value: 'unstable_scheduleCallback',
-          iconName: 'fileCode',
-          tone: 'violet',
-        },
-        {
-          id: 'question',
-          label: 'Question',
-          value: 'Why does the scheduling function need a priorityLevel?',
-          iconName: 'help',
-          tone: 'amber',
         },
       ],
       codeCaption: 'packages/scheduler/src/forks/Scheduler.js',

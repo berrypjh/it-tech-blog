@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Layers, Wand2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent, ExtractionChip } from '../content';
-import { BoxIcon, LayersIcon, WandIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['hero']; className?: string };
 
@@ -32,7 +33,7 @@ export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={content.elementLabel}
-            icon={<BoxIcon className="h-[18px] w-[18px]" />}
+            icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="input"
           />
           <CodePreviewPanel code={content.elementCode} showWindowDots size="md" />
@@ -44,7 +45,7 @@ export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={content.functionLabel}
-            icon={<WandIcon className="h-[18px] w-[18px]" />}
+            icon={<Wand2 className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <StepNote text={content.functionSubtitle} />
           <ul className="flex flex-col gap-1.5">
@@ -62,7 +63,7 @@ export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="teal"
             label={content.fiberLabel}
-            icon={<LayersIcon className="h-[18px] w-[18px]" />}
+            icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
             badge="output"
           />
           <CodePreviewPanel

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Network, Target, TimerReset } from 'lucide-react';
+
 import type { Tone, WhyEventSystemContent } from '../content';
-import { HelpCircleIcon, NetworkIcon, TargetIcon, TimerResetIcon } from '../icons';
 
 type Props = { content: WhyEventSystemContent['question'] };
 
@@ -30,7 +31,7 @@ const toneDot: Record<Tone, string> = {
   rose: 'bg-rose-500 dark:bg-rose-400',
 };
 
-const badgeIcons = [NetworkIcon, TargetIcon, TimerResetIcon];
+const badgeIcons = [Network, Target, TimerReset];
 
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
@@ -52,7 +53,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           'dark:bg-blue-500',
         )}
       >
-        <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+        <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
       </span>
 
       {/* Center: label + question */}
@@ -71,7 +72,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
       {/* Right: learning badges */}
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-2 lg:min-w-[220px]">
         {content.badges.map((badge, i) => {
-          const Icon = badgeIcons[i] ?? TargetIcon;
+          const Icon = badgeIcons[i] ?? Target;
           return (
             <li
               key={badge.label}

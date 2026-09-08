@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Route, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { StartWithQuestionContent } from '../content';
-import { RouteIcon, SparkIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['questionToEntry'] };
 
@@ -19,7 +20,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<WorkflowIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_11fr)_minmax(0,_9fr)] gap-md lg:gap-lg items-start">
@@ -106,7 +107,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
               )}
             >
-              <RouteIcon className="h-4 w-4" />
+              <Route className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="flex flex-col">
               <span className="text-[10px] font-mono uppercase tracking-wider text-blue-700/70 dark:text-blue-300/70">
@@ -176,7 +177,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                     'shadow-[0_2px_0_var(--term-border)]',
                   )}
                 >
-                  <SparkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                   {content.exampleEntry}
                 </code>
               </dd>

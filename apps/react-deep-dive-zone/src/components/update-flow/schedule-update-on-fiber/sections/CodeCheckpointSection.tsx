@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, FunctionSquare } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ScheduleUpdateOnFiberContent } from '../content';
-import { FileCodeIcon, FunctionSquareIcon } from '../icons';
 
 type Props = { content: ScheduleUpdateOnFiberContent['checkpoint'] };
 
@@ -17,7 +18,7 @@ export const CodeCheckpointSection = ({ content }: Props) => {
         id="checkpoint"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -26,7 +27,7 @@ export const CodeCheckpointSection = ({ content }: Props) => {
             {
               label: content.fileLabel,
               value: <code className="font-mono break-all">{content.filePath}</code>,
-              icon: FileCodeIcon,
+              icon: FileCode,
             },
             {
               label: content.functionLabel,
@@ -35,7 +36,7 @@ export const CodeCheckpointSection = ({ content }: Props) => {
                   {content.functionName}
                 </code>
               ),
-              icon: FunctionSquareIcon,
+              icon: FunctionSquare,
             },
           ]}
           question={content.learningQuestion}

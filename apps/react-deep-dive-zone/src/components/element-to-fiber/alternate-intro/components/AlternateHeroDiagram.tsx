@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Link } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { AlternateFiberContent } from '../content';
-import { LinkIcon } from '../icons';
 
 import { FiberPairCard } from './FiberPairCard';
 
@@ -71,7 +72,7 @@ const AlternateLinkChip = ({
   return (
     <div className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
       <ToneIconBox tone="sky" size="sm">
-        <LinkIcon className="h-4 w-4" aria-hidden="true" />
+        <Link className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', tone.text)}>
         {forwardLabel}

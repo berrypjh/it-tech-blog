@@ -1,16 +1,17 @@
+import { Activity, CheckCircle2, Pause, Pencil, Workflow } from 'lucide-react';
+
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { CurrentWipAlternateContent } from '../content';
-import { ActivityIcon, CheckCircleIcon, PauseIcon, PencilIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: CurrentWipAlternateContent['scenario'] };
 
 const iconMap = {
-  pulse: ActivityIcon,
-  workflow: WorkflowIcon,
-  pencil: PencilIcon,
-  pause: PauseIcon,
-  check: CheckCircleIcon,
+  pulse: Activity,
+  workflow: Workflow,
+  pencil: Pencil,
+  pause: Pause,
+  check: CheckCircle2,
 } as const;
 
 export const RenderingScenarioFlow = ({ content }: Props) => (
@@ -20,7 +21,7 @@ export const RenderingScenarioFlow = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <NumberedStepList

@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Flag, GitBranch, Layers, type LucideIcon, RefreshCcw, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { RenderPhaseIntroContent } from '../content';
-import { SparklesIcon, workIconByName } from '../icons';
+import type { RenderPhaseIntroContent, WorkCardIcon } from '../content';
+
+const workIconByName: Record<WorkCardIcon, LucideIcon> = {
+  refresh: RefreshCcw,
+  layers: Layers,
+  gitBranch: GitBranch,
+  flag: Flag,
+} as const;
 
 type Props = { content: RenderPhaseIntroContent['work'] };
 
@@ -15,7 +23,7 @@ export const RenderPhaseWorkCards = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ToneCardGrid>

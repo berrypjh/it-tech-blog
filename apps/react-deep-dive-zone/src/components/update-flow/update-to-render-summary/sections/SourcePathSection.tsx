@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, FileText, GitBranch, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SourcePathCard, UpdateToRenderSummaryContent } from '../content';
-import { FileCodeIcon, FileTextIcon, GitBranchIcon, SparklesIcon } from '../icons';
 
 type Props = { content: UpdateToRenderSummaryContent['sourcePath'] };
 
@@ -15,7 +16,7 @@ export const SourcePathSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
@@ -31,7 +32,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
   return (
     <ToneCardItem
       tone={card.tone}
-      icon={<FileCodeIcon className="h-5 w-5" />}
+      icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
       topRight={card.number}
     >
       <h3 className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
@@ -50,7 +51,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
                 t.text,
               )}
             >
-              <FileTextIcon aria-hidden="true" className="h-3.5 w-3.5" />
+              <FileText aria-hidden="true" className="h-3.5 w-3.5" />
               {fn.name}
             </span>
             <span className="text-[10px] sm:text-xxsm text-[var(--term-muted)] leading-snug break-keep">
@@ -70,7 +71,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
               t.fill.text,
             )}
           >
-            <SparklesIcon aria-hidden="true" className="h-3 w-3" />
+            <Sparkles aria-hidden="true" className="h-3 w-3" />
             {card.followBoxTitle}
           </span>
           <p className={cn('mt-1 text-xxsm font-mono leading-snug break-keep', t.fill.text)}>

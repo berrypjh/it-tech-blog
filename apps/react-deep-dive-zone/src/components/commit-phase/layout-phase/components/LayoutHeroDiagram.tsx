@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Clock, Database, Monitor, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroPhase, HeroPhaseIcon, LayoutPhaseContent } from '../content';
-import { ClockIcon, DatabaseIcon, MonitorIcon, ZapIcon } from '../icons';
 
 type Props = { content: LayoutPhaseContent['hero']; className?: string };
 
-const iconMap: Record<HeroPhaseIcon, typeof ZapIcon> = {
-  database: DatabaseIcon,
-  zap: ZapIcon,
-  monitor: MonitorIcon,
-  clock: ClockIcon,
+const iconMap: Record<HeroPhaseIcon, typeof Zap> = {
+  database: Database,
+  zap: Zap,
+  monitor: Monitor,
+  clock: Clock,
 };
 
 /**

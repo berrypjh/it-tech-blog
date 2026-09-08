@@ -1,22 +1,39 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  BookOpen,
+  FileText,
+  FlaskConical,
+  type LucideIcon,
+  MousePointer2,
+  Search,
+  Tag,
+} from 'lucide-react';
+
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RoutineStep, WhyOpenSourceContent } from '../content';
-import { BookIcon, routineIconByName } from '../icons';
+
+const stepIcon: Record<RoutineStep['num'], LucideIcon> = {
+  '1': FileText,
+  '2': Search,
+  '3': MousePointer2,
+  '4': FlaskConical,
+  '5': Tag,
+};
 
 type Props = { content: WhyOpenSourceContent['routine'] };
 
 const toFlowStep = (step: RoutineStep): FlowStepItem => {
-  const Icon = routineIconByName[step.icon];
+  const Icon = stepIcon[step.num];
   return {
     id: step.num,
     number: step.num,
     title: step.title,
     body: step.description,
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -26,7 +43,7 @@ export const GitHubLearningRoutine = ({ content }: Props) => (
       id="routine"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BookIcon className="h-5 w-5" />}
+      icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
     />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />

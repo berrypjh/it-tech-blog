@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitCompareArrows, Lightbulb } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareRow, PassiveEffectsContent } from '../content';
-import { CompareIcon, LightbulbIcon } from '../icons';
 
 type Props = { content: PassiveEffectsContent['compare'] };
 
@@ -20,7 +21,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<CompareIcon className="h-5 w-5" />}
+      icon={<GitCompareArrows className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable
@@ -41,7 +42,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
       )}
     >
       <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-        <LightbulbIcon className="h-4 w-4" />
+        <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}>
         {content.note}

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Workflow } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ExpansionDiagram } from '../components/ExpansionDiagram';
 import type { FiberStoredInformationContent } from '../content';
-import { WorkflowIcon } from '../icons';
 
 type Props = { content: FiberStoredInformationContent['expansion'] };
 
@@ -16,7 +17,7 @@ export const StructureExpansionVisualization = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article

@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, FlowItem } from '../content';
-import { ListChecksIcon } from '../icons';
 
 type Props = { content: CompleteWorkContent['summary'] };
 
@@ -13,7 +14,7 @@ export const RenderPhaseSummary = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">

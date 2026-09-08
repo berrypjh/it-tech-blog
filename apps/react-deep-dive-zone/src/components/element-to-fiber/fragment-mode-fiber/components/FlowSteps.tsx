@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown } from 'lucide-react';
+
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep } from '../content';
-import { ArrowDownIcon } from '../icons';
 
 type Props = {
   tone: ToneKey;
@@ -49,7 +50,7 @@ export const FlowSteps = ({ tone, steps }: Props) => {
                   t.chip,
                 )}
               >
-                <ArrowDownIcon className="h-3.5 w-3.5" />
+                <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </div>
           )}

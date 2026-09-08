@@ -1,11 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowUp, CircleDashed, type LucideIcon } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, LegendItem } from '../content';
-import { legendIconByName } from '../icons';
+
+const legendIconByName: Record<LegendItem['icon'], LucideIcon> = {
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
+  dashed: CircleDashed,
+} as const;
 
 type Props = { content: CompleteWorkContent['hero'] };
 

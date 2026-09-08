@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ChevronRight, ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksEntryFlowContent } from '../content';
-import { ChevronRightIcon, ListChecksIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['mission'] };
 
@@ -19,7 +20,7 @@ export const FollowCodeMission = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="flex flex-col gap-1.5">
@@ -57,7 +58,7 @@ export const FollowCodeMission = ({ content }: Props) => (
               )}
             </div>
 
-            <ChevronRightIcon
+            <ChevronRight
               aria-hidden="true"
               className="h-4 w-4 shrink-0 text-[var(--term-muted)] transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
             />

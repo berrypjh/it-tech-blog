@@ -4,14 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Hourglass, Sparkles, TriangleAlert } from 'lucide-react';
+
 import type { PromiseVsErrorSplitContent } from '../content';
-import {
-  ArrowRightIcon,
-  CheckCircleIcon,
-  HourglassIcon,
-  SparklesIcon,
-  TriangleAlertIcon,
-} from '../icons';
 import type { Path } from '../tone';
 import { pathAccent } from '../tone';
 
@@ -20,8 +15,8 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: PromiseVsErrorSplitContent['classifier'] };
 
 const pathIcon: Record<Path, React.ComponentType<{ className?: string }>> = {
-  thenable: HourglassIcon,
-  error: TriangleAlertIcon,
+  thenable: Hourglass,
+  error: TriangleAlert,
 };
 
 export const ClassifierSection = ({ content }: Props) => {
@@ -88,7 +83,7 @@ export const ClassifierSection = ({ content }: Props) => {
                         {opt.code}
                       </code>
                       {isActive && (
-                        <CheckCircleIcon
+                        <CheckCircle2
                           aria-hidden="true"
                           className={cn('h-4 w-4 shrink-0', optAccent.text)}
                         />
@@ -110,7 +105,7 @@ export const ClassifierSection = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-200 bg-white text-blue-600 dark:border-blue-700 dark:bg-slate-900 dark:text-blue-300"
           >
-            <ArrowRightIcon className="h-4 w-4 lg:rotate-0 rotate-90" />
+            <ArrowRight className="h-4 w-4 lg:rotate-0 rotate-90" aria-hidden="true" />
           </span>
         </div>
 
@@ -155,7 +150,7 @@ export const ClassifierSection = ({ content }: Props) => {
                   accent.border,
                 )}
               >
-                <ArrowRightIcon className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
+                <ArrowRight className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
                 <span className={cn('text-xsm font-bold', accent.text)}>{result.nextRoute}</span>
               </dd>
             </div>
@@ -182,7 +177,7 @@ export const ClassifierSection = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
             >
-              <SparklesIcon className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <h3 className="text-sm font-bold text-blue-700 dark:text-blue-200">
               {content.help.title}

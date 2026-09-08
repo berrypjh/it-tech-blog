@@ -1,12 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Atom, CheckCircle2, type LucideIcon, MonitorSmartphone } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { ReactVsReactDomContent, RoleCard } from '../content';
-import { ArrowRightIcon, CheckCircleIcon, iconByName } from '../icons';
 
 /** react=A(accent), react-dom=B(sky). 카드 크롬은 중립, 텍스트만 색. */
 const sideText = (id: RoleCard['id']) =>
   id === 'react' ? 'text-[var(--term-accent)]' : toneTokens.sky.text;
+
+const cardIcon: Record<RoleCard['id'], LucideIcon> = {
+  react: Atom,
+  'react-dom': MonitorSmartphone,
+};
 
 type Props = { content: ReactVsReactDomContent['hero'] };
 
@@ -30,7 +36,7 @@ export const HeroComparePair = ({ content }: Props) => {
 type RoleCardItemProps = { card: RoleCard };
 
 const RoleCardItem = ({ card }: RoleCardItemProps) => {
-  const Icon = iconByName[card.icon];
+  const Icon = cardIcon[card.id];
   const accent = sideText(card.id);
 
   return (
@@ -51,7 +57,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
             accent,
           )}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
           <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', accent)}>
@@ -69,7 +75,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
             key={bullet}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon className={cn('mt-0.5 h-4 w-4 shrink-0', accent)} aria-hidden="true" />
+            <CheckCircle2 className={cn('mt-0.5 h-4 w-4 shrink-0', accent)} aria-hidden="true" />
             <span className="min-w-0 break-words">{bullet}</span>
           </li>
         ))}
@@ -112,7 +118,7 @@ const Connector = ({ top, bottom }: ConnectorProps) => (
       aria-hidden="true"
       className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)] rotate-90 @lg:rotate-0"
     >
-      <ArrowRightIcon className="h-4 w-4" />
+      <ArrowRight className="h-4 w-4" aria-hidden="true" />
     </span>
     <span
       aria-hidden="true"

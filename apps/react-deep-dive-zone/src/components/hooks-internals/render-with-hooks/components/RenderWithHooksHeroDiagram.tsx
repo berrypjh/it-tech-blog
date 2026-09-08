@@ -1,14 +1,15 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Code2, Settings } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroStep, RenderWithHooksContent } from '../content';
-import { CheckCircleIcon, CodeIcon, SettingsIcon } from '../icons';
 
 type Props = { content: RenderWithHooksContent['hero']; className?: string };
 
-const stepIcons = [CodeIcon, SettingsIcon, CheckCircleIcon];
+const stepIcons = [Code2, Settings, CheckCircle2];
 
 /** renderWithHooks 핵심 동작: dispatcher 설정 → 컴포넌트 호출 → reset. */
 const RENDER_WITH_HOOKS_CODE = `ReactCurrentDispatcher.current = HooksDispatcher;
@@ -40,7 +41,7 @@ export const RenderWithHooksHeroDiagram = ({ content, className }: Props) => {
 
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         {content.steps.map((step, i) => {
-          const Icon = stepIcons[i] ?? CodeIcon;
+          const Icon = stepIcons[i] ?? Code2;
           const isMiddle = i === 1;
           return (
             <li key={step.title} className="flex flex-col gap-sm">

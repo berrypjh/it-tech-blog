@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { AdvancedWrapupContent, Tone } from '../content';
-import { LayersIcon } from '../icons';
 import { toneAccent } from '../styles';
 
 type Props = { content: AdvancedWrapupContent['comparison'] };
@@ -29,7 +30,7 @@ export const ComprehensiveComparisonTable = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<LayersIcon className="h-5 w-5" />}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div

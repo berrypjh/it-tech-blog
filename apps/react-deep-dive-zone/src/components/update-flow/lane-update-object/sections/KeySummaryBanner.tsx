@@ -1,7 +1,8 @@
+import { Target } from 'lucide-react';
+
 import { TakeawayBanner } from '../../../shared/banner';
 import { SectionHeader } from '../../../shared/section';
 import type { LaneUpdateObjectContent } from '../content';
-import { TargetIcon } from '../icons';
 
 type Props = { content: LaneUpdateObjectContent['summary'] };
 
@@ -11,7 +12,7 @@ export const KeySummaryBanner = ({ content }: Props) => (
       id="summary"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <TakeawayBanner lines={content.lines} />

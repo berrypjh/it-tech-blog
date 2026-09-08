@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Code2, HelpCircle } from 'lucide-react';
+
 import type { HooksEntryFlowContent } from '../content';
-import { CheckCircleIcon, CodeIcon, HelpCircleIcon } from '../icons';
 
 type Props = { content: HooksEntryFlowContent['quiz'] };
 
@@ -81,7 +82,7 @@ export const CounterQuizSection = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-[var(--term-border)] bg-white text-[var(--term-muted)] dark:bg-slate-950/50"
           >
-            <CodeIcon className="h-3.5 w-3.5" />
+            <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
         </header>
 
@@ -132,7 +133,7 @@ export const CounterQuizSection = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-800/60"
           >
-            <HelpCircleIcon className="h-4 w-4" />
+            <HelpCircle className="h-4 w-4" aria-hidden="true" />
           </span>
         </header>
 
@@ -194,7 +195,7 @@ export const CounterQuizSection = ({ content }: Props) => {
             aria-hidden="true"
             className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900"
           >
-            <CheckCircleIcon className="h-4 w-4" />
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
           </span>
           <div className="flex flex-col gap-1 min-w-0">
             <p className="text-xsm sm:text-sm font-bold text-emerald-800 dark:text-emerald-100">

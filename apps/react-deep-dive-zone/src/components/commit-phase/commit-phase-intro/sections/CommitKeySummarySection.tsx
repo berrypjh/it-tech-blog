@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, FlowStep } from '../content';
-import { ArrowRightIcon, TargetIcon } from '../icons';
 
 type Props = { content: CommitPhaseIntroContent['summary'] };
 
@@ -21,7 +22,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
         id="key-summary"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<TargetIcon className="h-5 w-5" />}
+        icon={<Target className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -45,7 +46,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
                 'shadow-[0_1px_0_var(--term-border)]',
               )}
             >
-              <TargetIcon className="h-8 w-8 sm:h-10 sm:w-10" />
+              <Target className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden="true" />
             </span>
           </div>
 
@@ -89,8 +90,8 @@ const FlowRail = ({ steps }: { steps: FlowStep[] }) => (
             aria-hidden="true"
             className="flex md:items-center justify-center text-[var(--term-dim)]"
           >
-            <ArrowRightIcon className="hidden md:inline-block h-4 w-4" />
-            <ArrowRightIcon className="md:hidden h-4 w-4 rotate-90 my-1" />
+            <ArrowRight className="hidden md:inline-block h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="md:hidden h-4 w-4 rotate-90 my-1" aria-hidden="true" />
           </li>
         )}
       </Fragment>

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import { CheckCircleIcon, HourglassIcon, TriangleAlertIcon } from '../icons';
 import type { PromiseState } from '../tone';
 import { sectionNumberBadge, stateAccent } from '../tone';
 
@@ -12,9 +13,9 @@ type Props = {
 };
 
 const stateIcon: Record<PromiseState, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  fulfilled: CheckCircleIcon,
-  rejected: TriangleAlertIcon,
+  pending: Hourglass,
+  fulfilled: CheckCircle2,
+  rejected: TriangleAlert,
 };
 
 export const ExplainCards = ({ content }: Props) => (

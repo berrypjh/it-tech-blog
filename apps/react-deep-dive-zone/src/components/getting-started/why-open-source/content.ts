@@ -4,7 +4,6 @@ import type { ToneKey } from '../../shared/tones';
 
 export type PerspectiveCard = {
   id: 'docs' | 'code' | 'tests' | 'pr';
-  icon: 'doc' | 'code' | 'flask' | 'chat';
   tone: ToneKey;
   title: string;
   subtitle: string;
@@ -14,7 +13,6 @@ export type PerspectiveCard = {
 export type ReadingPriorityRow = {
   id: 'packages' | 'tests' | 'issues' | 'releases';
   index: string;
-  icon: 'folder' | 'flask' | 'chat' | 'tag';
   tone: ToneKey;
   title: string;
   description: string;
@@ -51,8 +49,7 @@ export type ChainCard = {
 };
 
 export type RoutineStep = {
-  num: string;
-  icon: 'doc' | 'search' | 'cursor' | 'flask' | 'tag';
+  num: '1' | '2' | '3' | '4' | '5';
   tone: ToneKey;
   title: string;
   description: string;
@@ -176,7 +173,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       cards: [
         {
           id: 'docs',
-          icon: 'doc',
           tone: 'blue',
           title: '공식 문서',
           subtitle: '무엇을 어떻게 쓰는가',
@@ -184,7 +180,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'code',
-          icon: 'code',
           tone: 'teal',
           title: '소스코드',
           subtitle: '실제로 어떻게 동작하는가',
@@ -192,7 +187,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'tests',
-          icon: 'flask',
           tone: 'violet',
           title: '테스트',
           subtitle: '어떤 동작을 보장하는가',
@@ -200,7 +194,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'pr',
-          icon: 'chat',
           tone: 'amber',
           title: 'PR / Issue',
           subtitle: '왜 바뀌었는가',
@@ -215,7 +208,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'packages',
           index: '1',
-          icon: 'folder',
           tone: 'blue',
           href: 'https://github.com/facebook/react/tree/main/packages',
           title: 'packages',
@@ -225,7 +217,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'tests',
           index: '2',
-          icon: 'flask',
           tone: 'teal',
           href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src/__tests__',
           title: 'tests',
@@ -235,7 +226,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'issues',
           index: '3',
-          icon: 'chat',
           tone: 'violet',
           href: 'https://github.com/facebook/react/issues',
           title: 'issues',
@@ -245,7 +235,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'releases',
           index: '4',
-          icon: 'tag',
           tone: 'amber',
           href: 'https://github.com/facebook/react/releases',
           title: 'releases',
@@ -374,35 +363,30 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       steps: [
         {
           num: '1',
-          icon: 'doc',
           tone: 'blue',
           title: '공식 문서 읽기',
           description: 'API와 사용법을 먼저 이해합니다.',
         },
         {
           num: '2',
-          icon: 'search',
           tone: 'teal',
           title: '구현 파일 찾기',
           description: '문서의 API가 구현된 위치를 찾습니다.',
         },
         {
           num: '3',
-          icon: 'cursor',
           tone: 'emerald',
           title: '진입 함수 보기',
           description: '진입점 함수부터 내부 흐름을 따라갑니다.',
         },
         {
           num: '4',
-          icon: 'flask',
           tone: 'cyan',
           title: '테스트 확인',
           description: '테스트를 통해 보장 조건을 확인합니다.',
         },
         {
           num: '5',
-          icon: 'tag',
           tone: 'violet',
           title: '릴리즈 / PR로 변경 이유 보기',
           description: '왜 바뀌었는지 맥락을 이해합니다.',
@@ -450,7 +434,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       cards: [
         {
           id: 'docs',
-          icon: 'doc',
           tone: 'blue',
           title: 'Official docs',
           subtitle: 'What and how to use it',
@@ -458,7 +441,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'code',
-          icon: 'code',
           tone: 'teal',
           title: 'Source code',
           subtitle: 'How it really works',
@@ -466,7 +448,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'tests',
-          icon: 'flask',
           tone: 'violet',
           title: 'Tests',
           subtitle: 'What behavior is guaranteed',
@@ -474,7 +455,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         },
         {
           id: 'pr',
-          icon: 'chat',
           tone: 'amber',
           title: 'PRs / Issues',
           subtitle: 'Why it changed',
@@ -489,7 +469,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'packages',
           index: '1',
-          icon: 'folder',
           tone: 'blue',
           href: 'https://github.com/facebook/react/tree/main/packages',
           title: 'packages',
@@ -499,7 +478,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'tests',
           index: '2',
-          icon: 'flask',
           tone: 'teal',
           href: 'https://github.com/facebook/react/tree/main/packages/react-reconciler/src/__tests__',
           title: 'tests',
@@ -508,7 +486,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'issues',
           index: '3',
-          icon: 'chat',
           tone: 'violet',
           href: 'https://github.com/facebook/react/issues',
           title: 'issues',
@@ -518,7 +495,6 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
         {
           id: 'releases',
           index: '4',
-          icon: 'tag',
           tone: 'amber',
           href: 'https://github.com/facebook/react/releases',
           title: 'releases',
@@ -651,35 +627,30 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       steps: [
         {
           num: '1',
-          icon: 'doc',
           tone: 'blue',
           title: 'Read the docs',
           description: 'Understand the API and usage first.',
         },
         {
           num: '2',
-          icon: 'search',
           tone: 'teal',
           title: 'Find the implementation',
           description: 'Locate where the documented API is implemented.',
         },
         {
           num: '3',
-          icon: 'cursor',
           tone: 'emerald',
           title: 'Follow the entry function',
           description: 'Start from the entry point and trace internal flow.',
         },
         {
           num: '4',
-          icon: 'flask',
           tone: 'cyan',
           title: 'Check the tests',
           description: 'Confirm the guarantees via the test suite.',
         },
         {
           num: '5',
-          icon: 'tag',
           tone: 'violet',
           title: 'Read releases / PRs',
           description: 'Understand the context behind why things changed.',

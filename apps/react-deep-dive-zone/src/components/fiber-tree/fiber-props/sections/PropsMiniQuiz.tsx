@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Lightbulb, MessageCircleQuestion, Sparkles } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent } from '../content';
-import { HelpCircleIcon, LightbulbIcon, MessageQuestionIcon, SparklesIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['quiz'] };
 
@@ -15,7 +16,7 @@ export const PropsMiniQuiz = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<HelpCircleIcon className="h-5 w-5" />}
+      icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -65,7 +66,7 @@ export const PropsMiniQuiz = ({ content }: Props) => (
             </div>
           </div>
 
-          <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
             <span className="font-normal">
               <span className="font-bold">{content.explanationLabel}</span>
               {' — '}
@@ -120,7 +121,7 @@ const QuizIllustration = () => (
         toneTokens.sky.chip,
       )}
     >
-      <MessageQuestionIcon className="h-7 w-7" />
+      <MessageCircleQuestion className="h-7 w-7" aria-hidden="true" />
     </span>
     <span
       aria-hidden="true"
@@ -129,7 +130,7 @@ const QuizIllustration = () => (
         toneTokens.emerald.chip,
       )}
     >
-      <SparklesIcon className="h-7 w-7" />
+      <Sparkles className="h-7 w-7" aria-hidden="true" />
     </span>
     <p className="text-[11px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
       {'// question → answer'}

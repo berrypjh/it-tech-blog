@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, HelpCircle, Sliders, Zap } from 'lucide-react';
+
 import type { Tone, WhyNotImmediateContent } from '../content';
-import { GaugeIcon, HelpCircleIcon, SlidersIcon, ZapIcon } from '../icons';
 
 type Props = { content: WhyNotImmediateContent['question'] };
 
@@ -30,7 +31,7 @@ const toneDot: Record<Tone, string> = {
   rose: 'bg-rose-500 dark:bg-rose-400',
 };
 
-const badgeIcons = [ZapIcon, GaugeIcon, SlidersIcon];
+const badgeIcons = [Zap, Gauge, Sliders];
 
 export const TodayQuestionPanel = ({ content }: Props) => (
   <section
@@ -51,7 +52,7 @@ export const TodayQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span
           aria-hidden="true"
@@ -79,7 +80,7 @@ export const TodayQuestionPanel = ({ content }: Props) => (
 
       <ul className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:gap-2 lg:min-w-[240px]">
         {content.badges.map((badge, i) => {
-          const Icon = badgeIcons[i] ?? ZapIcon;
+          const Icon = badgeIcons[i] ?? Zap;
           return (
             <li
               key={badge.title}

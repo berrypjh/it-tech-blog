@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Loader, TriangleAlert } from 'lucide-react';
+
 import type { SuspendErrorCard, SuspenseHydrationLinkContent } from '../content';
-import { ArrowRightIcon, LoaderIcon, TriangleAlertIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -23,7 +24,7 @@ const cardStyle: Record<
     iconChip:
       'bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60',
     text: 'text-violet-700 dark:text-violet-200',
-    Icon: LoaderIcon,
+    Icon: Loader,
   },
   error: {
     border: 'border-rose-300/80 dark:border-rose-700/70',
@@ -31,7 +32,7 @@ const cardStyle: Record<
     iconChip:
       'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
     text: 'text-rose-700 dark:text-rose-200',
-    Icon: TriangleAlertIcon,
+    Icon: TriangleAlert,
   },
 };
 
@@ -84,7 +85,7 @@ export const ServerSuspendErrorSection = ({ content }: Props) => (
                     {step}
                   </span>
                   {i < card.flow.length - 1 && (
-                    <ArrowRightIcon
+                    <ArrowRight
                       aria-hidden="true"
                       className={cn('h-3.5 w-3.5 shrink-0', style.text)}
                     />

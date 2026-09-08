@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Repeat, Wand2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { StartWithQuestionContent } from '../content';
-import { CheckCircleIcon, RepeatIcon, WandIcon } from '../icons';
 
 type Props = { content: StartWithQuestionContent['badGoodCompare'] };
 
@@ -14,7 +15,7 @@ export const BadGoodCompareSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<WandIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -95,7 +96,7 @@ export const BadGoodCompareSection = ({ content }: Props) => {
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
               )}
             >
-              <RepeatIcon className="h-3 w-3" aria-hidden="true" />
+              <Repeat className="h-3 w-3" aria-hidden="true" />
               {content.connector}
             </span>
           </div>
@@ -139,7 +140,7 @@ export const BadGoodCompareSection = ({ content }: Props) => {
                     'transition-all motion-safe:group-hover/good:translate-x-0.5',
                   )}
                 >
-                  <CheckCircleIcon
+                  <CheckCircle2
                     className="mt-0.5 h-4 w-4 text-cyan-600 dark:text-cyan-400 shrink-0"
                     aria-hidden="true"
                   />

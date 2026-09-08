@@ -1,8 +1,9 @@
+import { FunctionSquare } from 'lucide-react';
+
 import { ComparisonTable } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
-import { FxIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['table'] };
 
@@ -12,7 +13,7 @@ export const InterpretationTable = ({ content }: Props) => (
       id="table"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<FxIcon className="h-5 w-5" />}
+      icon={<FunctionSquare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ComparisonTable

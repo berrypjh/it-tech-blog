@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Box, Link, Workflow } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { ListenerCollectionContent, Tone } from '../content';
-import { ArrowRightIcon, BoxIcon, LinkIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ListenerCollectionContent['accumulate'] };
 
@@ -47,7 +48,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-start">
@@ -104,7 +105,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white dark:bg-blue-500"
           >
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
             {content.diagramTitle}
@@ -127,7 +128,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-teal-100 text-teal-700 dark:bg-teal-950/60 dark:text-teal-200"
                 >
-                  <BoxIcon className="h-3.5 w-3.5" />
+                  <Box className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <code className="font-mono text-[11px] font-bold text-teal-700 dark:text-teal-200 break-all">
                   {node.name}
@@ -141,7 +142,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
             aria-hidden="true"
             className="self-center inline-flex h-9 w-9 items-center justify-center rounded-full bg-violet-500 text-white shadow-[0_2px_0_rgba(124,58,237,0.3)] dark:bg-violet-400 dark:text-slate-900"
           >
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
 
           {/* listeners[] */}
@@ -160,7 +161,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
                   key={idx}
                   className="flex items-center gap-1.5 rounded-md border border-violet-200/70 bg-violet-50/30 px-2 py-1 font-mono text-[10px] text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/20 dark:text-violet-200"
                 >
-                  <LinkIcon aria-hidden="true" className="h-3 w-3" />
+                  <Link aria-hidden="true" className="h-3 w-3" />
                   <span>dispatchListener</span>
                 </li>
               ))}

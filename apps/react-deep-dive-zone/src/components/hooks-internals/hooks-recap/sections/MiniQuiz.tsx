@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, HelpCircle, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { HooksRecapContent, QuizItem } from '../content';
-import { CheckCircleIcon, HelpCircleIcon, TargetIcon } from '../icons';
 
 type Props = { content: HooksRecapContent['quiz'] };
 
@@ -19,7 +20,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
         aria-hidden="true"
         className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 border border-blue-200/80 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
       >
-        <HelpCircleIcon className="h-4 w-4" />
+        <HelpCircle className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep leading-snug flex-1">
         {quiz.question}
@@ -59,7 +60,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
             {opt.text}
           </span>
           {opt.isAnswer && (
-            <CheckCircleIcon
+            <CheckCircle2
               aria-hidden="true"
               className="ml-auto h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400"
             />
@@ -79,7 +80,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
         aria-hidden="true"
         className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900"
       >
-        <CheckCircleIcon className="h-3.5 w-3.5" />
+        <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <p className="text-xsm font-bold text-emerald-800 dark:text-emerald-100">
@@ -105,7 +106,7 @@ export const MiniQuiz = ({ content }: Props) => (
       id="quiz"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

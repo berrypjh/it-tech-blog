@@ -1,10 +1,11 @@
+import { Boxes, Layers, Map, Star } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { FiberTreeGraphic } from '../components/FiberTreeGraphic';
 import { FieldCard } from '../components/FieldCard';
 import { JsxExampleCard } from '../components/JsxExampleCard';
 import type { ReconcilerContent } from '../content';
-import { MapIcon, StarIcon } from '../icons';
 
 type Props = { content: ReconcilerContent['elementFiber'] };
 
@@ -16,7 +17,7 @@ export const ElementFiberSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
@@ -25,21 +26,23 @@ export const ElementFiberSection = ({ content }: Props) => {
           title={content.elementTitle}
           subtitle={content.elementSubtitle}
           fields={content.elementFields}
-          iconName="layers"
+          icon={Layers}
           tone="violet"
         />
         <FieldCard
           title={content.fiberTitle}
           subtitle={content.fiberSubtitle}
           fields={content.fiberFields}
-          iconName="cube"
+          icon={Boxes}
           tone="teal"
           emphasized
         />
         <FiberTreeGraphic title={content.treeTitle} description={content.treeDescription} />
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>
+        {content.banner}
+      </SectionNote>
     </section>
   );
 };

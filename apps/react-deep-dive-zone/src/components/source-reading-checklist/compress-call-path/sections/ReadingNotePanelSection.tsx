@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, FileText, Notebook } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CallPathCompressionContent, NoteField } from '../content';
-import { ArrowRightIcon, FileTextIcon, NotebookIcon } from '../icons';
 
 type Props = { content: CallPathCompressionContent['readingNote'] };
 
@@ -20,7 +21,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NotebookIcon className="h-5 w-5" />}
+        icon={<Notebook className="h-5 w-5" aria-hidden="true" />}
       />
 
       {/* Notebook-style card */}
@@ -44,7 +45,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
               <span className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
               <span className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
             </span>
-            <FileTextIcon
+            <FileText
               className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400"
               aria-hidden="true"
             />
@@ -147,7 +148,7 @@ const NoteValue = ({ field }: { field: NoteField }) => {
               {v}
             </code>
             {i < field.value.length - 1 && (
-              <ArrowRightIcon
+              <ArrowRight
                 className="h-3 w-3 text-violet-500 dark:text-violet-400"
                 aria-hidden="true"
               />

@@ -1,19 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Code, FileText, Layers, ListChecks, Network } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactElementSummaryBeforeFiberContent } from '../content';
-import { BoxIcon, CodeIcon, FileTextIcon, LayersIcon, ListChecksIcon, NetworkIcon } from '../icons';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['summary'] };
 
 const iconMap = {
-  code: CodeIcon,
-  cube: BoxIcon,
-  document: FileTextIcon,
-  layers: LayersIcon,
-  tree: NetworkIcon,
+  code: Code,
+  cube: Box,
+  document: FileText,
+  layers: Layers,
+  tree: Network,
 } as const;
 
 export const FiveKeyTakeaways = ({ content }: Props) => (
@@ -25,7 +26,7 @@ export const FiveKeyTakeaways = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ListChecksIcon className="h-5 w-5" />}
+      icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">

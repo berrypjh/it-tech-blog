@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, CheckCircle2, GitBranch, Sparkles, Tag } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { CorrectVersionDiffContent, VersionCompareSide } from '../content';
-import { AlertTriangleIcon, CheckCircleIcon, GitBranchIcon, SparkIcon, TagIcon } from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['versionTags'] };
 
@@ -18,7 +19,7 @@ export const VersionTagsSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<TagIcon className="h-5 w-5" />}
+        icon={<Tag className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -49,7 +50,7 @@ export const VersionTagsSection = ({ content }: Props) => {
               'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',
             )}
           >
-            <SparkIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
           </span>
           <p className="text-sm sm:text-md font-bold leading-snug break-keep">
             {content.conclusion}
@@ -68,7 +69,7 @@ const CompareCard = ({
   variant: 'warning' | 'stable';
 }) => {
   const isWarning = variant === 'warning';
-  const Icon = isWarning ? GitBranchIcon : TagIcon;
+  const Icon = isWarning ? GitBranch : Tag;
   return (
     <article
       className={cn(
@@ -131,12 +132,12 @@ const CompareCard = ({
             )}
           >
             {isWarning ? (
-              <AlertTriangleIcon
+              <AlertTriangle
                 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400"
                 aria-hidden="true"
               />
             ) : (
-              <CheckCircleIcon
+              <CheckCircle2
                 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400"
                 aria-hidden="true"
               />

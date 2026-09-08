@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Link2 } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -10,7 +12,6 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { HookLinkedListHeroDiagram } from '../components/HookLinkedListHeroDiagram';
 import type { HookLinkedListContent, Tone } from '../content';
-import { DatabaseIcon, Link2Icon } from '../icons';
 
 type Props = { content: HookLinkedListContent['hero'] };
 
@@ -45,7 +46,7 @@ const toneTextStrong: Record<Tone, string> = {
   rose: 'text-rose-700 dark:text-rose-200',
 };
 
-const conceptIcons = [Link2Icon, DatabaseIcon];
+const conceptIcons = [Link2, Database];
 
 export const HookLinkedListHero = ({ content }: Props) => (
   <HeroSection
@@ -81,7 +82,7 @@ export const HookLinkedListHero = ({ content }: Props) => (
       {/* Concept cards */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-sm">
         {content.conceptCards.map((card, i) => {
-          const Icon = conceptIcons[i] ?? Link2Icon;
+          const Icon = conceptIcons[i] ?? Link2;
           return (
             <li key={card.label}>
               <article

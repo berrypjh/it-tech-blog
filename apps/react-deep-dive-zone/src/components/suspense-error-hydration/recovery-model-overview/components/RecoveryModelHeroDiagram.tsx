@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Compass,
+  Hourglass,
+  PauseCircle,
+  Server,
+  ServerCrash,
+  ShieldAlert,
+  ShieldCheck,
+  TriangleAlert,
+} from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HeroInputCard, HeroOutputCard, RecoveryModelOverviewContent } from '../content';
-import {
-  CompassIcon,
-  HourglassIcon,
-  PauseCircleIcon,
-  ServerCrashIcon,
-  ServerIcon,
-  ShieldAlertIcon,
-  ShieldCheckIcon,
-  TriangleAlertIcon,
-} from '../icons';
 import type { Domain } from '../tone';
 
 type Props = { content: RecoveryModelOverviewContent['hero']; className?: string };
@@ -31,27 +32,27 @@ const domainTone: Record<Domain, ToneKey> = {
 };
 
 const inputIcon: Record<Domain, React.ComponentType<{ className?: string }>> = {
-  pending: HourglassIcon,
-  rejected: TriangleAlertIcon,
-  error: ServerCrashIcon,
-  hydration: ServerIcon,
-  server: ServerIcon,
-  boundary: ShieldCheckIcon,
-  recovery: ShieldCheckIcon,
-  navy: PauseCircleIcon,
-  completion: ShieldCheckIcon,
+  pending: Hourglass,
+  rejected: TriangleAlert,
+  error: ServerCrash,
+  hydration: Server,
+  server: Server,
+  boundary: ShieldCheck,
+  recovery: ShieldCheck,
+  navy: PauseCircle,
+  completion: ShieldCheck,
 };
 
 const outputIcon: Record<Domain, React.ComponentType<{ className?: string }>> = {
-  pending: PauseCircleIcon,
-  boundary: ShieldAlertIcon,
-  hydration: ShieldCheckIcon,
-  recovery: ShieldCheckIcon,
-  rejected: TriangleAlertIcon,
-  error: ShieldAlertIcon,
-  server: ServerIcon,
-  navy: ServerIcon,
-  completion: ShieldCheckIcon,
+  pending: PauseCircle,
+  boundary: ShieldAlert,
+  hydration: ShieldCheck,
+  recovery: ShieldCheck,
+  rejected: TriangleAlert,
+  error: ShieldAlert,
+  server: Server,
+  navy: Server,
+  completion: ShieldCheck,
 };
 
 /**
@@ -156,7 +157,7 @@ const CentralCard = ({ central }: { central: RecoveryModelOverviewContent['hero'
     )}
   >
     <ToneIconBox tone="blue" size="md">
-      <CompassIcon className="h-5 w-5" />
+      <Compass className="h-5 w-5" aria-hidden="true" />
     </ToneIconBox>
     <h3 className="text-md font-bold tracking-tight text-[var(--term-fg)] break-keep">
       {central.title}

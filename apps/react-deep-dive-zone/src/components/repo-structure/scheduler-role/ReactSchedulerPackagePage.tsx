@@ -9,7 +9,6 @@ import { SchedulerHero } from './sections/SchedulerHero';
 import { SchedulerNeedCards } from './sections/SchedulerNeedCards';
 import { SchedulerPriorityTable } from './sections/SchedulerPriorityTable';
 import { SchedulerQueueSimulation } from './sections/SchedulerQueueSimulation';
-import { SchedulerResponsibilityBoundary } from './sections/SchedulerResponsibilityBoundary';
 import { schedulerContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,7 +23,6 @@ export const ReactSchedulerPackagePage = ({ locale }: Props) => {
       <ReconcilerSchedulerRelation content={c.relation} />
       <SchedulerPriorityTable content={c.priority} />
       <ScheduleCallbackCheckpoint content={c.checkpoint} />
-      <SchedulerResponsibilityBoundary content={c.responsibility} />
       <SchedulerQueueSimulation content={c.simulation} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

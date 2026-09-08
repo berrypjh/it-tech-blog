@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Atom, Globe, Package, Radar } from 'lucide-react';
+
 import type { SuspenseHydrationLinkContent } from '../content';
-import { ArrowDownIcon, AtomIcon, GlobeIcon, PackageIcon, RadarIcon } from '../icons';
 import { phaseAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -34,7 +35,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <GlobeIcon className="h-4 w-4" />
+            <Globe className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-blue-700 dark:text-blue-200 break-keep">
             {content.domTitle}
@@ -86,7 +87,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/60 dark:text-blue-200"
           >
-            <RadarIcon className="h-4 w-4" />
+            <Radar className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-[var(--term-fg)] break-keep">
             {content.matchTitle}
@@ -119,7 +120,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
                   </span>
                 </div>
                 {!isLast && (
-                  <ArrowDownIcon
+                  <ArrowDown
                     aria-hidden="true"
                     className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500"
                   />
@@ -143,7 +144,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
           >
-            <AtomIcon className="h-4 w-4" />
+            <Atom className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-violet-700 dark:text-violet-200 break-keep">
             {content.fiberTitle}
@@ -172,7 +173,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
                 )}
               >
                 {line.kind === 'boundary' && (
-                  <PackageIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                  <Package className="h-3 w-3 shrink-0" aria-hidden="true" />
                 )}
                 <span>{line.label}</span>
               </span>

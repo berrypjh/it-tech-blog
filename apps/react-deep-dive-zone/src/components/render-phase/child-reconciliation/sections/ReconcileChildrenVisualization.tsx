@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, ChevronDown, Plus, Star, Workflow } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent, VisualNode } from '../content';
-import { ArrowRightIcon, ChevronDownIcon, PlusIcon, StarIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: ReconcileChildrenContent['visualization'] };
 
@@ -16,7 +17,7 @@ export const ReconcileChildrenVisualization = ({ content }: Props) => (
       id="visualization"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -35,11 +36,11 @@ export const ReconcileChildrenVisualization = ({ content }: Props) => (
                   className="flex shrink-0 items-center justify-center py-1 xl:py-0 xl:px-0.5 text-[var(--term-accent)]"
                 >
                   {isPlus ? (
-                    <PlusIcon className="h-5 w-5" />
+                    <Plus className="h-5 w-5" aria-hidden="true" />
                   ) : (
                     <>
-                      <ArrowRightIcon className="hidden xl:block h-5 w-5" />
-                      <ChevronDownIcon className="xl:hidden h-5 w-5" />
+                      <ArrowRight className="hidden xl:block h-5 w-5" aria-hidden="true" />
+                      <ChevronDown className="xl:hidden h-5 w-5" aria-hidden="true" />
                     </>
                   )}
                 </span>
@@ -49,7 +50,7 @@ export const ReconcileChildrenVisualization = ({ content }: Props) => (
         })}
       </div>
 
-      <SectionNote icon={<StarIcon className="h-4 w-4" />} className="mt-md">
+      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />} className="mt-md">
         {content.bottomEmphasis}
       </SectionNote>
     </article>

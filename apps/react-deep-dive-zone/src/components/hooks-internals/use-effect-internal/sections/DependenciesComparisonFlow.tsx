@@ -1,15 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, Equal, PlayCircle, SkipForward, Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { DepsResult, UseEffectInternalsContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  EqualIcon,
-  PlayCircleIcon,
-  SkipForwardIcon,
-  SplitIcon,
-} from '../icons';
 
 type Props = { content: UseEffectInternalsContent['depsCompare'] };
 
@@ -34,7 +28,7 @@ const accent = {
 
 const ResultCard = ({ data }: { data: DepsResult }) => {
   const a = accent[data.tone];
-  const Icon = data.visual === 'skip' ? SkipForwardIcon : PlayCircleIcon;
+  const Icon = data.visual === 'skip' ? SkipForward : PlayCircle;
   return (
     <article
       className={cn(
@@ -87,7 +81,7 @@ export const DependenciesComparisonFlow = ({ content }: Props) => (
       id="deps-compare"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="flex flex-col gap-md">
@@ -103,7 +97,7 @@ export const DependenciesComparisonFlow = ({ content }: Props) => (
           aria-hidden="true"
           className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500 text-white dark:bg-indigo-400 dark:text-slate-900"
         >
-          <EqualIcon className="h-5 w-5" />
+          <Equal className="h-5 w-5" aria-hidden="true" />
         </span>
         <code className="font-mono text-xsm sm:text-sm font-bold text-indigo-800 dark:text-indigo-100 break-all">
           {content.decision}
@@ -119,18 +113,18 @@ export const DependenciesComparisonFlow = ({ content }: Props) => (
         className="flex items-center justify-center gap-3 text-[var(--term-muted)]"
       >
         <span className="hidden lg:inline-flex items-center gap-1 text-teal-600 dark:text-teal-300">
-          <ArrowRightIcon className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider">same</span>
         </span>
-        <ArrowDownIcon className="lg:hidden h-5 w-5" />
+        <ArrowDown className="lg:hidden h-5 w-5" aria-hidden="true" />
         <span className="hidden lg:inline-flex h-1 w-32 border-t-2 border-dashed border-[var(--term-border)]" />
-        <ArrowDownIcon className="hidden lg:block h-5 w-5" />
+        <ArrowDown className="hidden lg:block h-5 w-5" aria-hidden="true" />
         <span className="hidden lg:inline-flex h-1 w-32 border-t-2 border-dashed border-[var(--term-border)]" />
         <span className="hidden lg:inline-flex items-center gap-1 text-violet-600 dark:text-violet-300">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
             different
           </span>
-          <ArrowRightIcon className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </span>
       </div>
 

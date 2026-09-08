@@ -1,8 +1,9 @@
+import { Clock, GitCompare, Zap } from 'lucide-react';
+
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey } from '../../../shared/tones';
 import type { FiberPropsContent, PropsKind } from '../content';
-import { ClockIcon, GitCompareIcon, ZapIcon } from '../icons';
 
 type Props = { content: FiberPropsContent['comparison'] };
 
@@ -12,8 +13,8 @@ const kindTone: Record<PropsKind, ToneKey> = {
 };
 
 const kindIcon = {
-  pendingProps: ZapIcon,
-  memoizedProps: ClockIcon,
+  pendingProps: Zap,
+  memoizedProps: Clock,
 } as const;
 
 export const PendingMemoizedCompare = ({ content }: Props) => (
@@ -23,7 +24,7 @@ export const PendingMemoizedCompare = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg items-stretch">

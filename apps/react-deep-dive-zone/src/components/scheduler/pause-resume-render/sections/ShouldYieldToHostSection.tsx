@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Gauge, Lightbulb, PauseCircle, PlayCircle, Timer } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { RenderYieldingContent } from '../content';
-import { GaugeIcon, LightbulbIcon, PauseCircleIcon, PlayCircleIcon, TimerIcon } from '../icons';
 
 type Props = { content: RenderYieldingContent['shouldYield'] };
 
@@ -13,7 +14,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GaugeIcon className="h-5 w-5" />}
+      icon={<Gauge className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -31,7 +32,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60"
           >
-            <TimerIcon className="h-5 w-5" />
+            <Timer className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold text-blue-700 dark:text-blue-300 break-keep">
             {content.mainConcept}
@@ -60,7 +61,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
             'border-blue-300/80 bg-blue-50/60 text-blue-800 dark:border-blue-700/60 dark:bg-blue-950/30 dark:text-blue-100',
           )}
         >
-          <LightbulbIcon
+          <Lightbulb
             aria-hidden="true"
             className="mt-0.5 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-300"
           />
@@ -84,7 +85,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-200 dark:border-emerald-800/60"
             >
-              <PlayCircleIcon className="h-4 w-4" />
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <h4 className="text-xsm sm:text-sm font-bold text-emerald-700 dark:text-emerald-300 break-keep">
               {content.continueCase.title}
@@ -123,7 +124,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-950/60 dark:text-violet-200 dark:border-violet-800/60"
             >
-              <PauseCircleIcon className="h-4 w-4" />
+              <PauseCircle className="h-4 w-4" aria-hidden="true" />
             </span>
             <h4 className="text-xsm sm:text-sm font-bold text-violet-700 dark:text-violet-300 break-keep">
               {content.yieldCase.title}

@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  CheckCircle2,
+  ShieldAlert,
+  ShieldCheck,
+  XCircle,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RiskItem, RootCurrentRefContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  CheckCircleIcon,
-  ShieldAlertIcon,
-  ShieldCheckIcon,
-  XCircleIcon,
-} from '../icons';
 
 type Props = { content: RootCurrentRefContent['risk'] };
 
@@ -26,7 +27,7 @@ export const RenderRefRiskSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<ShieldAlertIcon className="h-5 w-5" />}
+      icon={<ShieldAlert className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-3 items-stretch">
@@ -59,8 +60,8 @@ const Arrow = () => {
           t.fill.text,
         )}
       >
-        <ArrowRightIcon className="hidden lg:inline-block h-6 w-6" />
-        <ArrowDownIcon className="lg:hidden h-6 w-6" />
+        <ArrowRight className="hidden lg:inline-block h-6 w-6" aria-hidden="true" />
+        <ArrowDown className="lg:hidden h-6 w-6" aria-hidden="true" />
       </span>
     </div>
   );
@@ -153,13 +154,13 @@ const RiskCard = ({
 }) => (
   <ZoneCard
     tone="violet"
-    icon={<ShieldAlertIcon className="h-5 w-5" />}
+    icon={<ShieldAlert className="h-5 w-5" aria-hidden="true" />}
     title={title}
     subtitle={subtitle}
     items={items}
-    itemIcon={<XCircleIcon className="h-4 w-4" />}
+    itemIcon={<XCircle className="h-4 w-4" aria-hidden="true" />}
     noteTone="amber"
-    noteIcon={<ShieldAlertIcon className="h-4 w-4" />}
+    noteIcon={<ShieldAlert className="h-4 w-4" aria-hidden="true" />}
     note={warning}
   />
 );
@@ -177,13 +178,13 @@ const SafeCard = ({
 }) => (
   <ZoneCard
     tone="teal"
-    icon={<ShieldCheckIcon className="h-5 w-5" />}
+    icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
     title={title}
     subtitle={subtitle}
     items={items}
-    itemIcon={<CheckCircleIcon className="h-4 w-4" />}
+    itemIcon={<CheckCircle2 className="h-4 w-4" aria-hidden="true" />}
     noteTone="emerald"
-    noteIcon={<ShieldCheckIcon className="h-4 w-4" />}
+    noteIcon={<ShieldCheck className="h-4 w-4" aria-hidden="true" />}
     note={safeMessage}
   />
 );

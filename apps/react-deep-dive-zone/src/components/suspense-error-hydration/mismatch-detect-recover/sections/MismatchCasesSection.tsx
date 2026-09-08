@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Brackets, Clock, Dices } from 'lucide-react';
+
 import type { CaseCard, MismatchDetectRecoverContent } from '../content';
-import { BracketsIcon, ClockIcon, DicesIcon } from '../icons';
 import { roleAccent } from '../tone';
 
 import { SectionHeader } from './_SectionHeader';
@@ -9,9 +10,9 @@ import { SectionHeader } from './_SectionHeader';
 type Props = { content: MismatchDetectRecoverContent['cases'] };
 
 const caseIcon: Record<CaseCard['icon'], React.ComponentType<{ className?: string }>> = {
-  clock: ClockIcon,
-  dice: DicesIcon,
-  brackets: BracketsIcon,
+  clock: Clock,
+  dice: Dices,
+  brackets: Brackets,
 };
 
 export const MismatchCasesSection = ({ content }: Props) => (

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Bug, Code } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FieldChip, ReactElementOwnerDevInfoContent } from '../content';
-import { BugIcon, CodeIcon } from '../icons';
 
 type Props = { content: ReactElementOwnerDevInfoContent['hero']; className?: string };
 
@@ -22,7 +23,7 @@ export const OwnerDevInfoHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="sky"
             label={content.baseLabel}
-            icon={<CodeIcon className="h-[18px] w-[18px]" />}
+            icon={<Code className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <FieldChips fields={content.baseFields} tone="sky" />
         </li>
@@ -33,7 +34,7 @@ export const OwnerDevInfoHeroDiagram = ({ content, className }: Props) => {
           <StepHeader
             tone="violet"
             label={content.devLabel}
-            icon={<BugIcon className="h-[18px] w-[18px]" />}
+            icon={<Bug className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <FieldChips fields={content.devFields} tone="violet" />
         </li>

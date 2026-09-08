@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, GitCompare, Sparkles } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { CompareVs } from '../../../shared/compare';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CheckPoint, JsxTransformFlowContent } from '../content';
-import { CheckCircleIcon, GitCompareIcon, SparklesIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['comparison'] };
 
@@ -19,7 +20,7 @@ export const TransformComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitCompareIcon className="h-5 w-5" />}
+      icon={<GitCompare className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* sample JSX strip */}
@@ -77,7 +78,7 @@ export const TransformComparison = ({ content }: Props) => (
         aria-hidden="true"
         className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)] shrink-0"
       >
-        <CheckCircleIcon className="h-7 w-7" />
+        <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-1 min-w-0">
         <span className="inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--term-accent)]">
@@ -89,7 +90,9 @@ export const TransformComparison = ({ content }: Props) => (
       </div>
     </div>
 
-    <SectionNote icon={<SparklesIcon className="h-4 w-4" />}>{content.banner}</SectionNote>
+    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
+      {content.banner}
+    </SectionNote>
   </section>
 );
 
@@ -156,7 +159,7 @@ const TransformCard = ({
                 v.check,
               )}
             >
-              <CheckCircleIcon className="h-3.5 w-3.5" />
+              <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
               {check.text}

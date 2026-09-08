@@ -1,22 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp, PauseCircle, RefreshCcw, ShieldCheck, Zap } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import {
-  CircleHelpIcon,
-  PauseCircleIcon,
-  RefreshCcwIcon,
-  ShieldCheckIcon,
-  ZapIcon,
-} from '../icons';
 import { sectionNumberBadge } from '../tone';
 
 type Props = { content: UsePromiseSuspendContent['question'] };
 
 const conceptIcon = {
-  pause: PauseCircleIcon,
-  lightning: ZapIcon,
-  refresh: RefreshCcwIcon,
-  shield: ShieldCheckIcon,
+  pause: PauseCircle,
+  lightning: Zap,
+  refresh: RefreshCcw,
+  shield: ShieldCheck,
 } as const;
 
 const conceptTone = {
@@ -61,7 +56,7 @@ export const TodayQuestion = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       {/* CENTER: question */}

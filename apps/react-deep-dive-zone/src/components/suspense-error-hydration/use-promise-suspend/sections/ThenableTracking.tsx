@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, CheckCircle2, Sparkles } from 'lucide-react';
+
 import type { UsePromiseSuspendContent } from '../content';
-import { ArrowDownIcon, CheckCircleIcon, SparklesIcon } from '../icons';
 
 import { SectionHeader } from './_SectionHeader';
 
@@ -30,7 +31,7 @@ export const ThenableTracking = ({ content }: Props) => (
               key={b}
               className="flex items-start gap-2 text-xsm text-[var(--term-fg)] break-keep"
             >
-              <CheckCircleIcon
+              <CheckCircle2
                 aria-hidden="true"
                 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400"
               />
@@ -90,13 +91,14 @@ export const ThenableTracking = ({ content }: Props) => (
             <div aria-hidden="true" className="grid grid-cols-5 gap-1">
               {content.indexes.map((_, i) => (
                 <div key={i} className="flex justify-center">
-                  <ArrowDownIcon
+                  <ArrowDown
                     className={cn(
                       'h-4 w-4',
                       i === 0
                         ? 'text-slate-300 dark:text-slate-600'
                         : 'text-violet-400 dark:text-violet-500',
                     )}
+                    aria-hidden="true"
                   />
                 </div>
               ))}
@@ -140,7 +142,7 @@ export const ThenableTracking = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-800/60 dark:bg-violet-950/60 dark:text-violet-200"
           >
-            <SparklesIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
           </span>
           <h3 className="text-md font-bold text-violet-700 dark:text-violet-200 break-keep">
             {content.rightTitle}

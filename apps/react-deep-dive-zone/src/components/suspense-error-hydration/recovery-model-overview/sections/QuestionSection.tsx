@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleHelp } from 'lucide-react';
+
 import type { RecoveryModelOverviewContent } from '../content';
-import { CircleHelpIcon } from '../icons';
 
 type Props = { content: RecoveryModelOverviewContent['question'] };
 
@@ -27,7 +28,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <div className="flex flex-col gap-1">

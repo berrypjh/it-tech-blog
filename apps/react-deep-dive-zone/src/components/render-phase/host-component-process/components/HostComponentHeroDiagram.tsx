@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, FileText, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HostComponentContent } from '../content';
-import { BoxIcon, FileTextIcon, LayersIcon } from '../icons';
 
 type Props = { content: HostComponentContent['hero'] };
 
@@ -34,7 +35,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <DownArrow />
 
-        <FlowRow tone="teal" icon={<BoxIcon className="h-[18px] w-[18px]" />}>
+        <FlowRow tone="teal" icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <span
             className={cn(
               'font-mono text-sm font-bold tracking-tight break-keep',
@@ -50,7 +51,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <DownArrow />
 
-        <FlowRow tone="violet" icon={<FileTextIcon className="h-[18px] w-[18px]" />}>
+        <FlowRow tone="violet" icon={<FileText className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <span
             className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.violet.text)}
           >
@@ -76,7 +77,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <DownArrow />
 
-        <FlowRow tone="sky" icon={<LayersIcon className="h-[18px] w-[18px]" />}>
+        <FlowRow tone="sky" icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <code
             className={cn(
               'font-mono text-sm font-bold tracking-tight break-all',

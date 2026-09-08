@@ -1,12 +1,13 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, GitBranch, Layers, Wand2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { CompareBridge } from '../../../shared/compare';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent } from '../content';
-import { BoxIcon, GitBranchIcon, LayersIcon, WandIcon } from '../icons';
 
 type Props = { content: CreateFiberFromElementContent['io'] };
 
@@ -19,7 +20,7 @@ export const InputOutputStructure = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitBranchIcon className="h-5 w-5" />}
+      icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div
@@ -32,13 +33,13 @@ export const InputOutputStructure = ({ content }: Props) => (
         tone="sky"
         label={content.inputTitle}
         badge="input"
-        icon={<BoxIcon className="h-[18px] w-[18px]" />}
+        icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
         code={content.inputCode}
         showWindowDots
       />
 
       <CompareBridge
-        icon={<WandIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" aria-hidden="true" />}
         headline={content.functionTitle}
         sub={content.functionSubtitle}
       />
@@ -47,7 +48,7 @@ export const InputOutputStructure = ({ content }: Props) => (
         tone="teal"
         label={content.outputTitle}
         badge="output"
-        icon={<LayersIcon className="h-[18px] w-[18px]" />}
+        icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
         code={content.outputCode}
       />
     </div>

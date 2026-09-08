@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Type } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent } from '../content';
-import { ArrowRightIcon, TypeIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['textExample'] };
 
@@ -19,7 +20,7 @@ export const TextChangeExampleSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<TypeIcon className="h-5 w-5" />}
+      icon={<Type className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -36,7 +37,7 @@ export const TextChangeExampleSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="teal" size="sm" className="mt-0.5 shrink-0">
-          <TypeIcon className="h-4 w-4" />
+          <Type className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn(
@@ -92,7 +93,7 @@ const StateCard = ({ title, from, to }: { title: string; from: string; to: strin
       </header>
       <div className="flex items-center justify-center gap-3 py-3">
         <StateCircle value={from} variant="from" />
-        <ArrowRightIcon aria-hidden="true" className={cn('h-6 w-6', t.text)} />
+        <ArrowRight aria-hidden="true" className={cn('h-6 w-6', t.text)} />
         <StateCircle value={to} variant="to" />
       </div>
       <p className="text-center text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">

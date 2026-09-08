@@ -1,18 +1,19 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, GitMerge, HelpCircle, Split } from 'lucide-react';
+
 import { laneIconBox, laneTextStrong } from '../../_shared/laneAccent';
 import type { LaneAccent, LaneBitmaskContent } from '../content';
-import { BoxesIcon, GitMergeIcon, HelpCircleIcon, SplitIcon } from '../icons';
 
 type Props = { content: LaneBitmaskContent['question'] };
 
-const cardIcon: Record<LaneAccent, typeof BoxesIcon> = {
-  sync: BoxesIcon,
-  inputContinuous: SplitIcon,
-  default: SplitIcon,
-  transition: GitMergeIcon,
-  retry: GitMergeIcon,
-  offscreen: GitMergeIcon,
+const cardIcon: Record<LaneAccent, typeof Boxes> = {
+  sync: Boxes,
+  inputContinuous: Split,
+  default: Split,
+  transition: GitMerge,
+  retry: GitMerge,
+  offscreen: GitMerge,
 };
 
 export const LaneBitmaskQuestionPanel = ({ content }: Props) => (
@@ -34,7 +35,7 @@ export const LaneBitmaskQuestionPanel = ({ content }: Props) => (
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
         >
-          <HelpCircleIcon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} />
+          <HelpCircle className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={2.4} aria-hidden="true" />
         </span>
         <span className="inline-flex items-center rounded-full border border-blue-300/80 bg-white px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200">
           {content.eyebrow}

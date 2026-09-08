@@ -1,8 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Boxes,
+  CheckCircle2,
+  Cuboid,
+  type LucideIcon,
+  MonitorSmartphone,
+  Package,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerEntryContent } from '../content';
-import { CheckCircleIcon, CuboidIcon, FiberCubeIcon, iconByName } from '../icons';
+
+const envIcon: Record<'Browser' | 'Native' | 'Custom', LucideIcon> = {
+  Browser: MonitorSmartphone,
+  Native: Boxes,
+  Custom: Package,
+};
 
 type Props = { content: ReconcilerEntryContent['hero'] };
 
@@ -87,7 +101,7 @@ const ReconcilerCard = ({ data }: ReconcilerCardProps) => {
           aria-hidden="true"
           className="inline-flex items-center justify-center w-8 h-8 rounded-md border bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]"
         >
-          <CuboidIcon className="h-4 w-4" />
+          <Cuboid className="h-4 w-4" aria-hidden="true" />
         </span>
         <h3 className="text-sm font-bold font-mono tracking-tight text-[var(--term-accent)]">
           {data.title}
@@ -99,7 +113,7 @@ const ReconcilerCard = ({ data }: ReconcilerCardProps) => {
             key={b}
             className="flex items-start gap-1.5 text-[11px] leading-snug text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon
+            <CheckCircle2
               className="mt-0.5 h-3 w-3 shrink-0 text-[var(--term-accent)]"
               aria-hidden="true"
             />
@@ -129,13 +143,8 @@ const RendererCard = ({ data }: RendererCardProps) => {
         {data.description}
       </p>
       <div className="flex items-center gap-1.5 pt-1">
-        {data.envIcons.map(({ label, icon }) => {
-          const Icon =
-            icon === 'monitor'
-              ? iconByName.monitor
-              : icon === 'cube'
-                ? FiberCubeIcon
-                : iconByName.package;
+        {data.envIcons.map((label) => {
+          const Icon = envIcon[label];
           return (
             <span
               key={label}

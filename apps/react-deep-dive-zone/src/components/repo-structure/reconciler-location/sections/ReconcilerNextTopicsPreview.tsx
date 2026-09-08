@@ -2,11 +2,12 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
-import { ArrowRightIcon, SparklesIcon } from '../icons';
 
 type Props = { content: ReconcilerEntryContent['preview'] };
 
@@ -18,7 +19,7 @@ export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ol className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-2 items-stretch">
@@ -45,8 +46,14 @@ const PreviewCardWithArrow = ({ card, isLast }: WithArrowProps) => (
 
 const PreviewArrow = () => (
   <div aria-hidden="true" className="flex items-center justify-center">
-    <ArrowRightIcon className="hidden lg:inline-flex h-5 w-5 text-[var(--term-accent)]" />
-    <ArrowRightIcon className="inline-flex lg:hidden h-5 w-5 rotate-90 text-[var(--term-accent)]" />
+    <ArrowRight
+      className="hidden lg:inline-flex h-5 w-5 text-[var(--term-accent)]"
+      aria-hidden="true"
+    />
+    <ArrowRight
+      className="inline-flex lg:hidden h-5 w-5 rotate-90 text-[var(--term-accent)]"
+      aria-hidden="true"
+    />
   </div>
 );
 
@@ -72,7 +79,7 @@ const PreviewCardItem = ({ card }: { card: PreviewCard }) => (
         )}
       >
         <span className="uppercase tracking-wider text-[10px]">explore</span>
-        <ArrowRightIcon
+        <ArrowRight
           className="h-3 w-3 transition-transform group-hover/card:translate-x-0.5"
           aria-hidden="true"
         />

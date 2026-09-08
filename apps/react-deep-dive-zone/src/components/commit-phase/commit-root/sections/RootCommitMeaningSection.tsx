@@ -1,17 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, GitBranch, Layers, PackageOpen, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitRootContent } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  GitBranchIcon,
-  LayersIcon,
-  PackageOpenIcon,
-  TargetIcon,
-} from '../icons';
 
 type Props = { content: CommitRootContent['rootMeaning'] };
 
@@ -25,7 +19,7 @@ export const RootCommitMeaningSection = ({ content }: Props) => (
       id="root-commit"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<TargetIcon className="h-5 w-5" />}
+      icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -65,8 +59,8 @@ const Arrow = () => (
     aria-hidden="true"
     className={cn('flex items-center justify-center py-1 md:py-0', toneTokens.teal.text)}
   >
-    <ArrowRightIcon className="hidden md:inline-block h-5 w-5" />
-    <ArrowDownIcon className="md:hidden h-5 w-5" />
+    <ArrowRight className="hidden md:inline-block h-5 w-5" aria-hidden="true" />
+    <ArrowDown className="md:hidden h-5 w-5" aria-hidden="true" />
   </div>
 );
 
@@ -83,7 +77,7 @@ const SideCard = ({
 }) => {
   const tone: ToneKey = variant === 'left' ? 'sky' : 'violet';
   const t = toneTokens[tone];
-  const Icon = variant === 'left' ? GitBranchIcon : LayersIcon;
+  const Icon = variant === 'left' ? GitBranch : Layers;
   return (
     <article
       className={cn(
@@ -147,7 +141,7 @@ const CenterCard = ({
           t.fill.text,
         )}
       >
-        <PackageOpenIcon className="h-6 w-6" />
+        <PackageOpen className="h-6 w-6" aria-hidden="true" />
       </span>
       <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         {title}

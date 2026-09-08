@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CheckCircleIcon, LoaderIcon, TriangleAlertIcon } from '../icons';
+import { CheckCircle2, Loader, TriangleAlert } from 'lucide-react';
 
 type FulfilledProps = { code: string; label?: string };
 
@@ -13,7 +13,7 @@ export const FulfilledPreview = ({ code, label }: FulfilledProps) => (
   >
     {label && (
       <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-        <CheckCircleIcon className="h-3 w-3" aria-hidden="true" />
+        <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
         {label}
       </span>
     )}
@@ -31,7 +31,7 @@ export const PendingPreview = ({ label }: { label: string }) => (
     )}
   >
     <span className="inline-flex items-center gap-1.5 text-xsm font-bold text-violet-700 dark:text-violet-300">
-      <LoaderIcon className="h-3.5 w-3.5 motion-safe:animate-spin" aria-hidden="true" />
+      <Loader className="h-3.5 w-3.5 motion-safe:animate-spin" aria-hidden="true" />
       {label}
     </span>
     <div className="flex flex-col gap-1.5">
@@ -66,7 +66,7 @@ export const RejectedPreview = ({ title, body }: RejectedProps) => (
       aria-hidden="true"
       className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-rose-200 bg-rose-100 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/60 dark:text-rose-200"
     >
-      <TriangleAlertIcon className="h-3.5 w-3.5" />
+      <TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
     <div className="flex flex-col gap-0.5 min-w-0">
       <span className="text-xsm font-bold text-rose-700 dark:text-rose-200 break-keep">

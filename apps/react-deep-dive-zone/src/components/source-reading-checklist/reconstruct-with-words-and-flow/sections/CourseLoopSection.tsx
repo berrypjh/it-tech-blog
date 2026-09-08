@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Repeat, Route, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import type { LoopStep, ReconstructContent } from '../content';
-import { ArrowRightIcon, RepeatIcon, RouteIcon, SparkIcon } from '../icons';
 
 type Props = { content: ReconstructContent['courseLoop'] };
 
@@ -15,7 +16,7 @@ export const CourseLoopSection = ({ content }: Props) => {
         id="course-loop"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<RouteIcon className="h-5 w-5" />}
+        icon={<Route className="h-5 w-5" aria-hidden="true" />}
       />
 
       <article
@@ -35,7 +36,7 @@ export const CourseLoopSection = ({ content }: Props) => {
               'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
             )}
           >
-            <RepeatIcon className="h-5 w-5" />
+            <Repeat className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="text-md sm:text-lg font-bold text-violet-900 dark:text-violet-100 break-keep">
             {content.cardTitle}
@@ -53,7 +54,7 @@ export const CourseLoopSection = ({ content }: Props) => {
                 </li>
                 {!isLast && (
                   <li aria-hidden="true">
-                    <ArrowRightIcon className="h-3.5 w-3.5 text-violet-500" />
+                    <ArrowRight className="h-3.5 w-3.5 text-violet-500" aria-hidden="true" />
                   </li>
                 )}
               </Fragment>
@@ -81,7 +82,7 @@ const LoopStepBadge = ({ step, index }: { step: LoopStep; index: number }) => {
           'shadow-[0_3px_0_var(--term-border)]',
         )}
       >
-        <SparkIcon className="h-3.5 w-3.5" aria-hidden="true" />
+        <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
         {step.label}
       </span>
     );

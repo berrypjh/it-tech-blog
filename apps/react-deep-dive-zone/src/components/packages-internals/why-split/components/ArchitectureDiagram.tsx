@@ -1,9 +1,30 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Atom,
+  Boxes,
+  Clock,
+  Code,
+  Layers,
+  type LucideIcon,
+  Monitor,
+  Smartphone,
+} from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ArchitectureNode, SideNode } from '../content';
-import { architectureIcon } from '../icons';
+
+const nodeIcon: Record<ArchitectureNode['id'] | SideNode['id'], LucideIcon> = {
+  'user-code': Code,
+  react: Atom,
+  reconciler: Boxes,
+  renderer: Monitor,
+  dom: Monitor,
+  native: Smartphone,
+  scheduler: Clock,
+  shared: Layers,
+};
 
 type Props = {
   mainFlow: ArchitectureNode[];
@@ -101,7 +122,7 @@ type FlowBoxProps = {
 };
 
 const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
-  const Icon = architectureIcon[node.iconName];
+  const Icon = nodeIcon[node.id];
 
   return (
     <div
@@ -138,7 +159,7 @@ type SideNodeBoxProps = {
 };
 
 const SideNodeBox = ({ node }: SideNodeBoxProps) => {
-  const Icon = architectureIcon[node.iconName];
+  const Icon = nodeIcon[node.id];
 
   return (
     <div

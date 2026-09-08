@@ -1,10 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { type LucideIcon, RefreshCw, Search, ShieldCheck, Sparkles, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { TestCodeContent } from '../content';
-import { iconByName, SparklesIcon } from '../icons';
+import type { InsightCard, TestCodeContent } from '../content';
+
+const cardIcon: Record<InsightCard['id'], LucideIcon> = {
+  input: Target,
+  must: ShieldCheck,
+  edge: Search,
+  compat: RefreshCw,
+};
 
 type Props = { content: TestCodeContent['insights'] };
 
@@ -15,18 +23,18 @@ export const FourThingsTestsReveal = ({ content }: Props) => {
         id="insights"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ToneCardGrid>
         {content.cards.map((card) => {
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               topRight={card.number}
             >
               <h3

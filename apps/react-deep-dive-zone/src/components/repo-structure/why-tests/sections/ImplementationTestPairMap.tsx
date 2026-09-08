@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowLeftRight } from 'lucide-react';
+
 import { MappingRowCard } from '../../../shared/grid';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TestCodeContent } from '../content';
-import { ArrowLeftRightIcon } from '../icons';
 
 type Props = { content: TestCodeContent['pairMap'] };
 
@@ -16,7 +17,7 @@ export const ImplementationTestPairMap = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ArrowLeftRightIcon className="h-5 w-5" />}
+        icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="flex flex-col gap-md">
@@ -25,8 +26,8 @@ export const ImplementationTestPairMap = ({ content }: Props) => {
             <MappingRowCard
               arrow={
                 <>
-                  <ArrowLeftRightIcon className="h-4 w-4 hidden md:block" />
-                  <ArrowLeftRightIcon className="h-4 w-4 md:hidden rotate-90" />
+                  <ArrowLeftRight className="h-4 w-4 hidden md:block" aria-hidden="true" />
+                  <ArrowLeftRight className="h-4 w-4 md:hidden rotate-90" aria-hidden="true" />
                 </>
               }
               left={

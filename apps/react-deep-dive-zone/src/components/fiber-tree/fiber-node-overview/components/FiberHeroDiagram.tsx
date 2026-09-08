@@ -1,28 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, Fingerprint, Flag, Layers, Network, Zap } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent, HeroFieldGroup } from '../content';
-import {
-  DatabaseIcon,
-  FingerprintIcon,
-  FlagIcon,
-  LayersIcon,
-  NetworkIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: FiberNodeOverviewContent['hero']; className?: string };
 
 const iconMap = {
-  fingerprint: FingerprintIcon,
-  network: NetworkIcon,
-  database: DatabaseIcon,
-  flag: FlagIcon,
-  zap: ZapIcon,
-  layers: LayersIcon,
+  fingerprint: Fingerprint,
+  network: Network,
+  database: Database,
+  flag: Flag,
+  zap: Zap,
+  layers: Layers,
 } as const;
 
 /**
@@ -40,7 +34,7 @@ export const FiberHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <LayersIcon className="h-[18px] w-[18px]" />
+            <Layers className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
             {content.cardTitle}

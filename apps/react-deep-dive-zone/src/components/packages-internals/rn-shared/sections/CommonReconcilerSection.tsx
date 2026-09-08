@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Code, Layers, type LucideIcon, Map, Monitor, Smartphone } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RnContent } from '../content';
-import { MapIcon, rnIcon } from '../icons';
 
 type Props = { content: RnContent['common'] };
 
@@ -18,7 +19,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
         id="common"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<MapIcon className="h-5 w-5" />}
+        icon={<Map className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.3fr)_minmax(0,_0.85fr)] gap-md items-stretch">
@@ -32,7 +33,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
           )}
         >
           <ToneIconBox tone="teal" size="md">
-            <rnIcon.cube className="h-5 w-5" aria-hidden="true" />
+            <Boxes className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
             {content.leftNote}
@@ -53,13 +54,13 @@ export const CommonReconcilerSection = ({ content }: Props) => {
           <p className="sr-only">{a11y}</p>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
-            <FlowNode label={d.elementTitle} tone="sky" iconName="layers" />
+            <FlowNode label={d.elementTitle} tone="sky" icon={Layers} />
             <DownArrow />
             <FlowNode
               label={d.reconcilerTitle}
               subtitle={d.reconcilerSubtitle}
               tone="teal"
-              iconName="cube"
+              icon={Boxes}
               emphasized
             />
 
@@ -67,18 +68,12 @@ export const CommonReconcilerSection = ({ content }: Props) => {
             <BranchArrows />
 
             <div className="grid grid-cols-2 gap-sm w-full">
-              <FlowNode
-                label={d.domTitle}
-                subtitle={d.domHost}
-                tone="violet"
-                iconName="monitor"
-                fill
-              />
+              <FlowNode label={d.domTitle} subtitle={d.domHost} tone="violet" icon={Monitor} fill />
               <FlowNode
                 label={d.nativeTitle}
                 subtitle={d.nativeHost}
                 tone="indigo"
-                iconName="smartphone"
+                icon={Smartphone}
                 fill
               />
             </div>
@@ -90,7 +85,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
                   label={d.domOutputTitle}
                   subtitle={d.domOutputSubtitle}
                   tone="sky"
-                  iconName="code"
+                  icon={Code}
                   small
                   fill
                 />
@@ -101,7 +96,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
                   label={d.nativeOutputTitle}
                   subtitle={d.nativeOutputSubtitle}
                   tone="indigo"
-                  iconName="smartphone"
+                  icon={Smartphone}
                   small
                   fill
                 />
@@ -120,7 +115,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
           )}
         >
           <ToneIconBox tone="violet" size="md">
-            <rnIcon.monitor className="h-5 w-5" aria-hidden="true" />
+            <Monitor className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex flex-col">
             <p
@@ -149,16 +144,22 @@ type FlowNodeProps = {
   label: string;
   subtitle?: string;
   tone: ToneKey;
-  iconName: keyof typeof rnIcon;
+  icon: LucideIcon;
   emphasized?: boolean;
   small?: boolean;
   /** 그리드 칸을 가득 채워 라벨이 칸 안에서 줄바꿈되게 한다. */
   fill?: boolean;
 };
 
-const FlowNode = ({ label, subtitle, tone, iconName, emphasized, small, fill }: FlowNodeProps) => {
-  const Icon = rnIcon[iconName];
-
+const FlowNode = ({
+  label,
+  subtitle,
+  tone,
+  icon: Icon,
+  emphasized,
+  small,
+  fill,
+}: FlowNodeProps) => {
   return (
     <article
       className={cn(

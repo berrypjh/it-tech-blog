@@ -1,17 +1,18 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, Link2, Sparkles, Workflow } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent, ReasonCard } from '../content';
-import { AlertTriangleIcon, LinkIcon, SparklesIcon, WorkflowIcon } from '../icons';
 
 type Props = { content: FiberStateNodeContent['reasons'] };
 
 const iconMap = {
-  alert: AlertTriangleIcon,
-  workflow: WorkflowIcon,
-  link: LinkIcon,
+  alert: AlertTriangle,
+  workflow: Workflow,
+  link: Link2,
 } as const;
 
 export const WhyStateNodeMatters = ({ content }: Props) => (
@@ -21,7 +22,7 @@ export const WhyStateNodeMatters = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

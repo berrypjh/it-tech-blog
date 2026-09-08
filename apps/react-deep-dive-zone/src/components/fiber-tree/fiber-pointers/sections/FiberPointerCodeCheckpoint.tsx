@@ -1,8 +1,9 @@
+import { Eye, FileCode } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import type { FiberTreePointersContent } from '../content';
-import { EyeIcon, FileCodeIcon } from '../icons';
 
 type Props = { content: FiberTreePointersContent['checkpoint'] };
 
@@ -19,7 +20,7 @@ export const FiberPointerCodeCheckpoint = ({ content }: Props) => {
         number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<FileCodeIcon className="h-5 w-5" />}
+        icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
@@ -28,7 +29,7 @@ export const FiberPointerCodeCheckpoint = ({ content }: Props) => {
             {
               label: info.filesLabel,
               value: <code className="font-mono break-all">{info.file}</code>,
-              icon: FileCodeIcon,
+              icon: FileCode,
             },
             {
               label: info.lookForLabel,
@@ -37,7 +38,7 @@ export const FiberPointerCodeCheckpoint = ({ content }: Props) => {
                   {info.lookFor}
                 </code>
               ),
-              icon: EyeIcon,
+              icon: Eye,
             },
           ]}
           question={info.question}

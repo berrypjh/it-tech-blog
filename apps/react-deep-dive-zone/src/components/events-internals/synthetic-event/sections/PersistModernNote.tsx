@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Clock, History, Sparkles } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent } from '../content';
-import { ArrowRightIcon, ClockIcon, HistoryIcon, SparklesIcon } from '../icons';
 
 type Props = { content: SyntheticEventContent['persist'] };
 
@@ -13,7 +14,7 @@ export const PersistModernNote = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<ClockIcon className="h-5 w-5" />}
+      icon={<Clock className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article
@@ -32,7 +33,7 @@ export const PersistModernNote = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500 text-white shadow-[0_2px_0_rgba(217,119,6,0.3)] dark:bg-amber-400 dark:text-slate-900"
             >
-              <HistoryIcon className="h-4 w-4" />
+              <History className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
               {content.label}
@@ -56,7 +57,7 @@ export const PersistModernNote = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-200"
             >
-              <HistoryIcon className="h-4 w-4" />
+              <History className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">
               {content.oldLabel}
@@ -70,7 +71,7 @@ export const PersistModernNote = ({ content }: Props) => (
             aria-hidden="true"
             className="self-center inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-white shadow-[0_2px_0_rgba(217,119,6,0.3)] sm:rotate-0 rotate-90 dark:bg-amber-400 dark:text-slate-900"
           >
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
 
           <article
@@ -84,7 +85,7 @@ export const PersistModernNote = ({ content }: Props) => (
               aria-hidden="true"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-200"
             >
-              <SparklesIcon className="h-4 w-4" />
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
               {content.modernLabel}

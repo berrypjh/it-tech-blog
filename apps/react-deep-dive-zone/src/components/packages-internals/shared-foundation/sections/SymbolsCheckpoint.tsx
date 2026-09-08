@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, FileText, SquareCheckBig } from 'lucide-react';
+
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import type { SharedContent } from '../content';
-import { sharedIcon } from '../icons';
 
 type Props = { content: SharedContent['symbolsCheckpoint'] };
 
@@ -17,7 +18,7 @@ export const SymbolsCheckpoint = ({ content }: Props) => {
         id="symbols-checkpoint"
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<CheckHeaderIcon />}
+        icon={<SquareCheckBig className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -34,7 +35,7 @@ export const SymbolsCheckpoint = ({ content }: Props) => {
             {
               label: cp.file.label,
               value: <code className="font-mono break-all">{cp.file.value}</code>,
-              icon: sharedIcon.fileText,
+              icon: FileText,
             },
             {
               label: cp.look.label,
@@ -43,10 +44,9 @@ export const SymbolsCheckpoint = ({ content }: Props) => {
                   {cp.look.values.join(', ')}
                 </code>
               ),
-              icon: sharedIcon.fileCode,
+              icon: FileCode,
             },
           ]}
-          question={cp.question.value}
         />
 
         <div className="flex flex-col gap-md min-w-0">
@@ -72,20 +72,4 @@ const CalloutCard = ({ title, code }: { title: string; code: string }) => (
     </span>
     <code className="text-xsm font-mono leading-snug break-all text-[var(--term-fg)]">{code}</code>
   </article>
-);
-
-const CheckHeaderIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    className="h-5 w-5"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M9 11l3 3L22 4" />
-    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-  </svg>
 );

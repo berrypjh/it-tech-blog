@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Network, Sparkles } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ValueClassificationContent } from '../content';
-import { CheckCircleIcon, NetworkIcon, SparkIcon } from '../icons';
 import { ValueBadge } from '../ValueBadge';
 
 type Props = { content: ValueClassificationContent['fiberStructure'] };
@@ -21,7 +22,7 @@ export const FiberStructureSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<NetworkIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg items-start">
@@ -105,7 +106,7 @@ export const FiberStructureSection = ({ content }: Props) => {
                   'dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
                 )}
               >
-                <CheckCircleIcon
+                <CheckCircle2
                   className="mt-0.5 h-4 w-4 shrink-0 text-violet-600 dark:text-violet-400"
                   aria-hidden="true"
                 />
@@ -133,7 +134,7 @@ export const FiberStructureSection = ({ content }: Props) => {
             'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
           )}
         >
-          <SparkIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
         <p className="text-sm sm:text-md font-bold leading-snug text-violet-900 dark:text-violet-100 break-keep">
           {content.keySentence}

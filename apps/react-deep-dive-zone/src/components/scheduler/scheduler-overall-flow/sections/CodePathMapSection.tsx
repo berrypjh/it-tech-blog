@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode, Map } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { FullFlowContent } from '../content';
-import { FileCodeIcon, MapIcon } from '../icons';
 
 type Props = { content: FullFlowContent['codePath'] };
 
@@ -13,7 +14,7 @@ export const CodePathMapSection = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.helper}
       title={content.title}
-      icon={<MapIcon className="h-5 w-5" />}
+      icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md items-stretch">
@@ -33,7 +34,7 @@ export const CodePathMapSection = ({ content }: Props) => (
                 aria-hidden="true"
                 className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-700 text-white dark:bg-blue-500"
               >
-                <FileCodeIcon className="h-4 w-4" />
+                <FileCode className="h-4 w-4" aria-hidden="true" />
               </span>
               <h3 className="font-mono text-xsm sm:text-sm font-bold text-blue-900 dark:text-blue-100 break-words leading-snug">
                 {card.fileName}

@@ -1,9 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Crosshair, Hand, Lightbulb, Route, Split, Workflow } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { LaneDecisionStep, LaneUpdateObjectContent } from '../content';
-import { ArrowDownIcon, laneDecisionIconByName, LightbulbIcon, RouteIcon } from '../icons';
+
+const laneDecisionIconByName = {
+  hand: Hand,
+  workflow: Workflow,
+  split: Split,
+  crosshair: Crosshair,
+} as const;
 
 type Props = { content: LaneUpdateObjectContent['requestLane'] };
 
@@ -16,7 +24,7 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
       id="requestlane"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<RouteIcon className="h-5 w-5" />}
+      icon={<Route className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
@@ -35,7 +43,7 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
                     aria-hidden="true"
                     className="my-1 flex justify-center text-[var(--term-dim)]"
                   >
-                    <ArrowDownIcon className="h-3.5 w-3.5" />
+                    <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                 )}
               </li>
@@ -55,10 +63,7 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
               amber.fill.bg,
             )}
           >
-            <LightbulbIcon
-              aria-hidden="true"
-              className={cn('mt-0.5 h-4 w-4 shrink-0', amber.text)}
-            />
+            <Lightbulb aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', amber.text)} />
             <p className="text-xxsm sm:text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
               {content.subBody}
             </p>
@@ -96,7 +101,7 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
                   aria-hidden="true"
                   className="my-1 flex justify-center text-[var(--term-dim)]"
                 >
-                  <ArrowDownIcon className="h-3.5 w-3.5" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               )}
             </li>

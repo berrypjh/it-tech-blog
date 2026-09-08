@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Boxes, Monitor } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -69,7 +71,7 @@ export const RvrHero = ({ content }: Props) => {
               subtitle={content.calculation.subtitle}
               steps={content.calculation.steps}
               footerLabel={content.calculation.footerLabel}
-              iconName="cube"
+              icon={Boxes}
             />
 
             {/* 가운데 점선 화살표 (lg: 가로, mobile: 세로) */}
@@ -90,7 +92,7 @@ export const RvrHero = ({ content }: Props) => {
               subtitle={content.reflection.subtitle}
               steps={content.reflection.steps}
               footerLabel={content.reflection.footerLabel}
-              iconName="monitor"
+              icon={Monitor}
               tone="sky"
             />
           </div>

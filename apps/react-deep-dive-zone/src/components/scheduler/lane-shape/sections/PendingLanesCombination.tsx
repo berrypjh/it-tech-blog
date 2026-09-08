@@ -1,28 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Flag, GitMerge, Layers, Lightbulb, Plus, Zap } from 'lucide-react';
+
 import { BitCellRow } from '../../_shared/BitCellRow';
 import { laneCardBorder, laneIconBox, laneTextStrong } from '../../_shared/laneAccent';
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { CombinationCard, LaneAccent, LaneBitmaskContent } from '../content';
-import {
-  ArrowDownIcon,
-  FlagIcon,
-  GitMergeIcon,
-  LayersIcon,
-  LightbulbIcon,
-  PlusIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: LaneBitmaskContent['combination'] };
 
-const iconFor: Record<LaneAccent, typeof ZapIcon> = {
-  sync: ZapIcon,
-  inputContinuous: ZapIcon,
-  default: LayersIcon,
-  transition: FlagIcon,
-  retry: FlagIcon,
-  offscreen: LayersIcon,
+const iconFor: Record<LaneAccent, typeof Zap> = {
+  sync: Zap,
+  inputContinuous: Zap,
+  default: Layers,
+  transition: Flag,
+  retry: Flag,
+  offscreen: Layers,
 };
 
 const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResult?: boolean }) => {
@@ -89,7 +82,7 @@ const Symbol = ({ kind }: { kind: 'plus' | 'equal' }) => (
     )}
   >
     {kind === 'plus' ? (
-      <PlusIcon className="h-5 w-5" strokeWidth={2.6} />
+      <Plus className="h-5 w-5" strokeWidth={2.6} aria-hidden="true" />
     ) : (
       <span className="font-mono text-md font-bold">=</span>
     )}
@@ -103,7 +96,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<GitMergeIcon className="h-5 w-5" />}
+      icon={<GitMerge className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,9fr)_minmax(0,3fr)] gap-md items-stretch">
@@ -121,7 +114,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
           </div>
           <div className="flex items-center justify-center lg:py-0 py-1">
             <span className="lg:hidden">
-              <ArrowDownIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
+              <ArrowDown aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
             </span>
             <span className="hidden lg:inline-flex">
               <Symbol kind="plus" />
@@ -132,7 +125,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
           </div>
           <div className="flex items-center justify-center lg:py-0 py-1">
             <span className="lg:hidden">
-              <ArrowDownIcon aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
+              <ArrowDown aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
             </span>
             <span className="hidden lg:inline-flex">
               <Symbol kind="equal" />
@@ -158,7 +151,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-800/60"
           >
-            <LightbulbIcon className="h-5 w-5" />
+            <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </span>
           <div className="flex flex-col">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">

@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, GraduationCap, Puzzle, Sparkles } from 'lucide-react';
+
 import type { RootNativeEventContent, Tone } from '../content';
-import { FileTextIcon, GraduationCapIcon, PuzzleIcon, SparklesIcon } from '../icons';
 import { NumberedSectionHeader } from '../NumberedSectionHeader';
 
 type Props = { content: RootNativeEventContent['exceptions'] };
@@ -32,7 +33,7 @@ const toneIcon: Record<Tone, string> = {
   rose: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-200 dark:border-rose-800/60',
 };
 
-const cardIcons = [FileTextIcon, PuzzleIcon, GraduationCapIcon];
+const cardIcons = [FileText, Puzzle, GraduationCap];
 
 export const ExceptionEventHints = ({ content }: Props) => (
   <section aria-labelledby="heading-exceptions">
@@ -41,12 +42,12 @@ export const ExceptionEventHints = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card, i) => {
-        const Icon = cardIcons[i] ?? FileTextIcon;
+        const Icon = cardIcons[i] ?? FileText;
         return (
           <article
             key={card.title}

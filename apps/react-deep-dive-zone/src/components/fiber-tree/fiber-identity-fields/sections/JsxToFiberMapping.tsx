@@ -1,7 +1,8 @@
+import { Boxes } from 'lucide-react';
+
 import { SectionBadgeHeader } from '../../../shared/section';
 import { MappingCardItem } from '../components/MappingCard';
 import type { FiberIdentityFieldsContent } from '../content';
-import { BoxesIcon } from '../icons';
 
 type Props = { content: FiberIdentityFieldsContent['mapping'] };
 
@@ -12,7 +13,7 @@ export const JsxToFiberMapping = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BoxesIcon className="h-5 w-5" />}
+      icon={<Boxes className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">

@@ -2,11 +2,12 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, ArrowRight, FileCode, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, ModernStep } from '../content';
-import { ArrowDownIcon, ArrowRightIcon, FileCodeIcon, SparklesIcon } from '../icons';
 
 type Props = { content: CommitRootContent['modern'] };
 
@@ -21,7 +22,7 @@ export const CommitRootModernCorrectionSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
@@ -35,7 +36,7 @@ export const CommitRootModernCorrectionSection = ({ content }: Props) => (
         )}
       >
         <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <SparklesIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
           className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
@@ -45,7 +46,7 @@ export const CommitRootModernCorrectionSection = ({ content }: Props) => (
       </aside>
 
       <footer className="mt-3 flex items-center gap-2 rounded-lg border border-dashed border-[var(--term-border)] bg-[var(--term-surface)] px-md py-sm">
-        <FileCodeIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-muted)]" />
+        <FileCode aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-muted)]" />
         <code className="text-[11px] sm:text-xsm font-mono text-[var(--term-muted)] break-all">
           {content.relatedFileNote}
         </code>
@@ -66,8 +67,8 @@ const StepRail = ({ steps }: { steps: ModernStep[] }) => (
             aria-hidden="true"
             className="flex md:items-center justify-center text-[var(--term-dim)]"
           >
-            <ArrowRightIcon className="h-4 w-4 hidden md:inline-block" />
-            <ArrowDownIcon className="h-4 w-4 md:hidden my-1" />
+            <ArrowRight className="h-4 w-4 hidden md:inline-block" aria-hidden="true" />
+            <ArrowDown className="h-4 w-4 md:hidden my-1" aria-hidden="true" />
           </li>
         )}
       </Fragment>

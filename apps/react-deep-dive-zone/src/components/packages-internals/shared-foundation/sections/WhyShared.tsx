@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Sparkles, XCircle } from 'lucide-react';
+
 import { ContrastCard, StatusPill } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SharedContent } from '../content';
-import { CheckCircleIcon, SparklesIcon, XCircleIcon } from '../icons';
 
 type Props = { content: SharedContent['why'] };
 
@@ -16,14 +17,14 @@ export const WhyShared = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ContrastCard
         left={
           <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <StatusPill
-              icon={<XCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<XCircle className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-rose-600 dark:text-rose-300"
             >
               {content.problem.title}
@@ -37,7 +38,7 @@ export const WhyShared = ({ content }: Props) => {
         right={
           <article className="flex flex-col gap-sm p-md sm:p-lg lg:p-xl">
             <StatusPill
-              icon={<CheckCircleIcon className="h-3.5 w-3.5" aria-hidden="true" />}
+              icon={<CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />}
               tone="text-[var(--term-accent)]"
             >
               {content.solution.title}

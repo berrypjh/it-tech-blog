@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HostComponentContent } from '../content';
-import { CheckCircleIcon, SparklesIcon } from '../icons';
 
 type Props = { content: HostComponentContent['quiz'] };
 
@@ -13,7 +14,7 @@ export const HostComponentQuiz = ({ content }: Props) => (
       id="quiz"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
@@ -21,7 +22,7 @@ export const HostComponentQuiz = ({ content }: Props) => (
       <QaCard
         tone="emerald"
         label="answer"
-        mark={<CheckCircleIcon className="h-5 w-5" />}
+        mark={<CheckCircle2 className="h-5 w-5" aria-hidden="true" />}
         text={content.answer}
       />
     </div>

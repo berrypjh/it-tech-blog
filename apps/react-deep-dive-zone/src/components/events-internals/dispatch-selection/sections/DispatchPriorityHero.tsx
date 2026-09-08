@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Circle, MousePointerClick, Waves } from 'lucide-react';
+
 import {
   HeroDescription,
   HeroSection,
@@ -10,12 +12,11 @@ import {
 import { TerminalBadge } from '../../../shared/terminal';
 import { DispatchPriorityHeroDiagram } from '../components/DispatchPriorityHeroDiagram';
 import type { DispatchSelectionContent } from '../content';
-import { CircleIcon, MousePointerClickIcon, WavesIcon } from '../icons';
 import { priorityCard, priorityIconBox, priorityText } from '../priorityStyle';
 
 type Props = { content: DispatchSelectionContent['hero'] };
 
-const exampleIcons = [MousePointerClickIcon, WavesIcon, CircleIcon];
+const exampleIcons = [MousePointerClick, Waves, Circle];
 
 export const DispatchPriorityHero = ({ content }: Props) => (
   <HeroSection
@@ -44,7 +45,7 @@ export const DispatchPriorityHero = ({ content }: Props) => (
       {/* Event mini cards */}
       <ul className="flex flex-col gap-2">
         {content.examples.map((ex, i) => {
-          const Icon = exampleIcons[i] ?? MousePointerClickIcon;
+          const Icon = exampleIcons[i] ?? MousePointerClick;
           return (
             <li
               key={ex.name}

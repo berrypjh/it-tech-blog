@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Repeat, ScanSearch, ShieldQuestion, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { CallPathFlow } from '../CallPathFlow';
 import type { CallPathCompressionContent } from '../content';
-import { RepeatIcon, ScanSearchIcon, ShieldQuestionIcon, SparkIcon } from '../icons';
 
 type Props = { content: CallPathCompressionContent['suspenseFlow'] };
 
@@ -19,7 +20,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.intro}
-        icon={<RepeatIcon className="h-5 w-5" />}
+        icon={<Repeat className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_7fr)_minmax(0,_5fr)] gap-md lg:gap-lg items-start">
@@ -44,7 +45,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
                   'dark:border-cyan-700/70 dark:bg-[var(--term-bg)] dark:text-cyan-200',
                 )}
               >
-                <SparkIcon className="h-4 w-4" />
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
               </span>
               <p className="text-sm sm:text-md font-bold leading-snug text-cyan-900 dark:text-cyan-100 break-keep">
                 {content.oneLineSummary}
@@ -69,7 +70,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
                 )}
               >
-                <ScanSearchIcon className="h-3.5 w-3.5" />
+                <ScanSearch className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <p className="text-xsm leading-relaxed text-amber-900 dark:text-amber-100 break-keep">
                 {content.readingPoint}
@@ -82,7 +83,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
             className="hidden lg:flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[var(--term-border)] p-md text-[var(--term-muted)]"
             aria-hidden="true"
           >
-            <ShieldQuestionIcon className="h-4 w-4" />
+            <ShieldQuestion className="h-4 w-4" aria-hidden="true" />
             <span className="text-[10px] font-mono uppercase tracking-wider">
               pending → suspend → capture → retry
             </span>

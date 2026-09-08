@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Lock, Sparkles, Type } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DiffRow, UpdatePhaseContent } from '../content';
-import { LightbulbIcon, LockIcon, SparklesIcon, TypeIcon } from '../icons';
 
 type Props = { content: UpdatePhaseContent['propsVsText'] };
 
@@ -19,7 +20,7 @@ export const PropsVsTextUpdateSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-stretch">
@@ -28,14 +29,14 @@ export const PropsVsTextUpdateSection = ({ content }: Props) => (
         description={content.propsCard.description}
         rows={content.propsCard.rows}
         tone="sky"
-        icon={<LockIcon className="h-5 w-5" />}
+        icon={<Lock className="h-5 w-5" aria-hidden="true" />}
       />
       <DiffCard
         title={content.textCard.title}
         description={content.textCard.description}
         rows={content.textCard.rows}
         tone="teal"
-        icon={<TypeIcon className="h-5 w-5" />}
+        icon={<Type className="h-5 w-5" aria-hidden="true" />}
       />
       <PointCard title={content.pointTitle} text={content.pointText} />
     </div>
@@ -107,7 +108,7 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone="amber">
-          <LightbulbIcon className="h-5 w-5" />
+          <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
           {title}

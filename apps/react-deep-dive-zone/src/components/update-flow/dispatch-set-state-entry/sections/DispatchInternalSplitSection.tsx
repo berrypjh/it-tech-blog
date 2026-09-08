@@ -1,11 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, CheckCircle2, Split, Workflow } from 'lucide-react';
+
 import { CompareVs } from '../../../shared/compare';
 import { SectionHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent, FunctionSplitCard } from '../content';
-import { CheckCircleIcon, SplitIcon, splitIconByName } from '../icons';
+
+const splitIconByName = {
+  workflow: Workflow,
+  box: Box,
+} as const;
 
 type Props = { content: DispatchSetStateEntryContent['splitReason'] };
 
@@ -16,7 +22,7 @@ export const DispatchInternalSplitSection = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SplitIcon className="h-5 w-5" />}
+      icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
@@ -55,7 +61,7 @@ const SplitCard = ({ card }: { card: FunctionSplitCard }) => {
             key={item}
             className="flex items-start gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2"
           >
-            <CheckCircleIcon aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span className="text-xsm sm:text-sm text-[var(--term-fg)] leading-snug break-keep">
               {item}
             </span>

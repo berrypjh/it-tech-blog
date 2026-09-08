@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Component, HelpCircle, SquareFunction } from 'lucide-react';
+
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionClassComponentFiberContent } from '../content';
-import { ComponentIcon, HelpCircleIcon, SquareFunctionIcon } from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['hero']; className?: string };
 
@@ -43,7 +44,7 @@ export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
           <li className="flex min-w-0">
             <BranchCard
               tone="emerald"
-              icon={<SquareFunctionIcon className="h-4 w-4" aria-hidden="true" />}
+              icon={<SquareFunction className="h-4 w-4" aria-hidden="true" />}
               branchLabel={content.noLabel}
               title={content.functionTitle}
               line1={content.functionLine1}
@@ -53,7 +54,7 @@ export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
           <li className="flex min-w-0">
             <BranchCard
               tone="violet"
-              icon={<ComponentIcon className="h-4 w-4" aria-hidden="true" />}
+              icon={<Component className="h-4 w-4" aria-hidden="true" />}
               branchLabel={content.yesLabel}
               title={content.classTitle}
               line1={content.classLine1}
@@ -74,7 +75,7 @@ const StartNode = ({ title, subtitle }: { title: string; subtitle: string }) => 
     )}
   >
     <ToneIconBox tone="sky" size="sm">
-      <SquareFunctionIcon className="h-4 w-4" aria-hidden="true" />
+      <SquareFunction className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <code className={cn('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
       {title}
@@ -91,7 +92,7 @@ const QuestionNode = ({ title }: { title: string }) => (
     )}
   >
     <ToneIconBox tone="cyan" size="sm">
-      <HelpCircleIcon className="h-4 w-4" aria-hidden="true" />
+      <HelpCircle className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <p className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
       {title}

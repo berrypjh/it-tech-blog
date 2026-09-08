@@ -1,10 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Database,
+  FileText,
+  Flag,
+  Lightbulb,
+  Settings,
+  SquareDashed,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnqueueConcurrentHookUpdateContent, EnqueueMeaningStep } from '../content';
-import { ArrowRightIcon, elementIconByName, LightbulbIcon, SettingsIcon } from '../icons';
+
+const elementIconByName = {
+  squareDashed: SquareDashed,
+  database: Database,
+  fileText: FileText,
+  flag: Flag,
+  settings: Settings,
+} as const;
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['meaning'] };
 
@@ -16,7 +33,7 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
       id="meaning"
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<SettingsIcon className="h-5 w-5" />}
+      icon={<Settings className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.35fr)] gap-md lg:gap-lg items-stretch">
@@ -24,7 +41,7 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="amber" size="sm">
-            <LightbulbIcon className="h-[18px] w-[18px]" />
+            <Lightbulb className="h-[18px] w-[18px]" aria-hidden="true" />
           </ToneIconBox>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             common chokepoint
@@ -72,12 +89,12 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
             <li key={step.label} className="flex items-center gap-2 sm:gap-1.5">
               <SmallChip step={step} />
               {idx < content.flow.length - 1 && (
-                <ArrowRightIcon aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-dim)]" />
+                <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-dim)]" />
               )}
             </li>
           ))}
           <li className="flex items-center gap-2 sm:gap-1.5">
-            <ArrowRightIcon aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-dim)]" />
+            <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-dim)]" />
             <FinalCard label={content.finalLabel} body={content.finalBody} />
           </li>
         </ol>

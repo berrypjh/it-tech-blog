@@ -1,12 +1,20 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { FileText, Flag, GitBranch, type LucideIcon, Sparkles, Star } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { SharedContent } from '../content';
-import { sharedIcon, SparklesIcon } from '../icons';
+import type { FileCard, SharedContent } from '../content';
 
 type Props = { content: SharedContent['files'] };
+
+const fileIcon: Record<FileCard['id'], LucideIcon> = {
+  symbols: Star,
+  types: FileText,
+  version: GitBranch,
+  'feature-flags': Flag,
+};
 
 export const FilesSection = ({ content }: Props) => {
   return (
@@ -16,18 +24,18 @@ export const FilesSection = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SparklesIcon className="h-5 w-5" />}
+        icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
         {content.cards.map((card) => {
-          const Icon = sharedIcon[card.iconName];
+          const Icon = fileIcon[card.id];
 
           return (
             <ToneCardItem
               key={card.id}
               tone={card.tone}
-              icon={<Icon className="h-5 w-5" />}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               topRight={
                 <span
                   className={cn(

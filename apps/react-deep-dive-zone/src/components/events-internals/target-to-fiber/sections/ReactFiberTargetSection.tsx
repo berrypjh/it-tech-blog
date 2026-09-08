@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, CheckCircle2, Component } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { TargetFiberContent } from '../content';
-import { BoxIcon, CheckCircleIcon, ComponentIcon } from '../icons';
 
 type Props = { content: TargetFiberContent['fiberTarget'] };
 
@@ -13,7 +14,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<BoxIcon className="h-5 w-5" />}
+      icon={<Box className="h-5 w-5" aria-hidden="true" />}
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -31,7 +32,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal-500 text-white shadow-[0_2px_0_rgba(13,148,136,0.3)] dark:bg-teal-400 dark:text-slate-900"
           >
-            <CheckCircleIcon className="h-4 w-4" strokeWidth={2.4} />
+            <CheckCircle2 className="h-4 w-4" strokeWidth={2.4} aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
             react needs
@@ -60,7 +61,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
             aria-hidden="true"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200"
           >
-            <ComponentIcon className="h-4 w-4" />
+            <Component className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">
             {content.fiberCardTitle}

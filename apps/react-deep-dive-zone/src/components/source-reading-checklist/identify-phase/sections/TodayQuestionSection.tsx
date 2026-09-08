@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { HelpCircle, Quote } from 'lucide-react';
+
 import type { PhaseDetectionContent } from '../content';
-import { HelpCircleIcon, QuoteIcon } from '../icons';
 import { PhaseBadge } from '../PhaseBadge';
 
 type Props = { content: PhaseDetectionContent['todayQuestion'] };
@@ -88,7 +89,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           aria-hidden="true"
           className="absolute -top-2 -right-2 text-blue-100 dark:text-blue-900/40"
         >
-          <QuoteIcon className="h-24 w-24" />
+          <Quote className="h-24 w-24" aria-hidden="true" />
         </span>
 
         <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,_auto)_minmax(0,_1fr)] gap-md lg:gap-lg items-center">
@@ -101,7 +102,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
               )}
             >
-              <HelpCircleIcon className="h-5 w-5" />
+              <HelpCircle className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="flex flex-col">
               <span className="text-[10px] font-mono uppercase tracking-wider text-blue-700/80 dark:text-blue-300/80">

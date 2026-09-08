@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Ban, Clock, PlayCircle, ShieldOff } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { DispatchQueueOrderContent } from '../content';
-import { BanIcon, ClockIcon, PlayCircleIcon, ShieldOffIcon } from '../icons';
 
 type Props = { content: DispatchQueueOrderContent['timeline'] };
 
@@ -76,7 +77,7 @@ export const PropagationTimeline = ({ content }: Props) => {
         step={content.step}
         eyebrow={content.eyebrow}
         title={content.title}
-        icon={<ClockIcon className="h-5 w-5" />}
+        icon={<Clock className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -112,9 +113,9 @@ export const PropagationTimeline = ({ content }: Props) => {
                 )}
               >
                 {isStop ? (
-                  <ShieldOffIcon aria-hidden="true" className="h-3.5 w-3.5" />
+                  <ShieldOff aria-hidden="true" className="h-3.5 w-3.5" />
                 ) : (
-                  <PlayCircleIcon aria-hidden="true" className="h-3.5 w-3.5" />
+                  <PlayCircle aria-hidden="true" className="h-3.5 w-3.5" />
                 )}
                 <span>{toggle.label}</span>
               </button>
@@ -182,9 +183,9 @@ export const PropagationTimeline = ({ content }: Props) => {
                 )}
               >
                 {active === 'stopped' ? (
-                  <ShieldOffIcon className="h-4 w-4" />
+                  <ShieldOff className="h-4 w-4" aria-hidden="true" />
                 ) : (
-                  <ClockIcon className="h-4 w-4" />
+                  <Clock className="h-4 w-4" aria-hidden="true" />
                 )}
               </span>
             </header>
@@ -206,7 +207,7 @@ export const PropagationTimeline = ({ content }: Props) => {
                       entryNumberTone(entry.tone),
                     )}
                   >
-                    {entry.blocked ? <BanIcon className="h-3 w-3" /> : entry.step}
+                    {entry.blocked ? <Ban className="h-3 w-3" aria-hidden="true" /> : entry.step}
                   </span>
                   <code className="font-mono text-[11px] sm:text-xsm font-bold break-all flex-1">
                     {entry.label}

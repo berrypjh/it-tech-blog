@@ -1,11 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Lightbulb, Network, Sparkles } from 'lucide-react';
+
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { MiniFiberTree } from '../components/MiniFiberTree';
 import type { FiberWhyNeededContent } from '../content';
-import { LightbulbIcon, NetworkIcon, SparklesIcon } from '../icons';
 
 type Props = { content: FiberWhyNeededContent['preview'] };
 
@@ -20,10 +21,12 @@ export const NextChapterPreview = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<NetworkIcon className="h-5 w-5" />}
+      icon={<Network className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <SectionNote icon={<LightbulbIcon className="h-4 w-4" />}>{content.question}</SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
+      {content.question}
+    </SectionNote>
 
     <article
       className={cn(
@@ -40,7 +43,7 @@ export const NextChapterPreview = ({ content }: Props) => (
               toneTokens.violet.chip,
             )}
           >
-            <SparklesIcon className="h-3 w-3" aria-hidden="true" />
+            <Sparkles className="h-3 w-3" aria-hidden="true" />
             {content.previewLabel}
           </span>
           <h3 className="text-md sm:text-lg font-extrabold tracking-tight text-[var(--term-fg)] break-keep">

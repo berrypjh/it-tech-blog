@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Bug, CheckCircle2, Gauge, Sparkles } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
-import { BugIcon, CheckCircleIcon, GaugeIcon, SparklesIcon } from '../icons';
 
 type Props = { content: JsxRuntimeFunctionsContent['modes'] };
 
 const iconMap = {
-  gauge: GaugeIcon,
-  bug: BugIcon,
+  gauge: Gauge,
+  bug: Bug,
 } as const;
 
 export const RuntimeModeComparison = ({ content }: Props) => (
@@ -22,7 +23,7 @@ export const RuntimeModeComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<SparklesIcon className="h-5 w-5" />}
+      icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 xl:grid-cols-2 gap-md items-stretch">
@@ -75,7 +76,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
                   toneTokens[card.tone].chip,
                 )}
               >
-                <CheckCircleIcon className="h-3.5 w-3.5" />
+                <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                 {check.text}

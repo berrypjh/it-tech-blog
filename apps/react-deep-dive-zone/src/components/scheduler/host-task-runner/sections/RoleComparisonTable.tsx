@@ -1,8 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Cpu, Package, ScanSearch } from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SchedulerPackageContent } from '../content';
-import { CpuIcon, PackageIcon, ScanSearchIcon } from '../icons';
 import { pkgIconBox, pkgTextStrong } from '../packageAccent';
 
 type Props = { content: SchedulerPackageContent['comparison'] };
@@ -41,7 +42,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
       number={content.number}
       eyebrow={content.title}
       title={content.title}
-      icon={<ScanSearchIcon className="h-5 w-5" />}
+      icon={<ScanSearch className="h-5 w-5" aria-hidden="true" />}
     />
 
     {/* DESKTOP table */}
@@ -59,14 +60,14 @@ export const RoleComparisonTable = ({ content }: Props) => (
             </th>
             <th className="px-md py-3 w-[41%]">
               <ColumnHeader
-                icon={<CpuIcon className="h-4 w-4" />}
+                icon={<Cpu className="h-4 w-4" aria-hidden="true" />}
                 title={content.columns.root}
                 accent="blue"
               />
             </th>
             <th className="px-md py-3 w-[41%]">
               <ColumnHeader
-                icon={<PackageIcon className="h-4 w-4" />}
+                icon={<Package className="h-4 w-4" aria-hidden="true" />}
                 title={content.columns.scheduler}
                 accent="teal"
               />
@@ -104,7 +105,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
             <div className="flex flex-col gap-2">
               <div className="flex flex-col gap-1 rounded-xl border border-blue-200/80 bg-blue-50/40 p-3 dark:border-blue-700/70 dark:bg-blue-950/20">
                 <ColumnHeader
-                  icon={<CpuIcon className="h-3.5 w-3.5" />}
+                  icon={<Cpu className="h-3.5 w-3.5" aria-hidden="true" />}
                   title={content.columns.root}
                   accent="blue"
                 />
@@ -114,7 +115,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
               </div>
               <div className="flex flex-col gap-1 rounded-xl border border-teal-200/80 bg-teal-50/40 p-3 dark:border-teal-700/70 dark:bg-teal-950/20">
                 <ColumnHeader
-                  icon={<PackageIcon className="h-3.5 w-3.5" />}
+                  icon={<Package className="h-3.5 w-3.5" aria-hidden="true" />}
                   title={content.columns.scheduler}
                   accent="teal"
                 />

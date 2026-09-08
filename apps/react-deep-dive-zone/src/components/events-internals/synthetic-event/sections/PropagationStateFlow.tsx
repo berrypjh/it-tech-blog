@@ -1,16 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowDown,
+  ArrowRight,
+  PlayCircle,
+  ShieldOff,
+  Terminal,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
 import type { SyntheticEventContent, Tone } from '../content';
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  PlayCircleIcon,
-  ShieldOffIcon,
-  TerminalIcon,
-  WorkflowIcon,
-  ZapIcon,
-} from '../icons';
 
 type Props = { content: SyntheticEventContent['propagation'] };
 
@@ -49,7 +50,7 @@ const toneIconBox: Record<Tone, string> = {
   rose: 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900',
 };
 
-const stepIcons = [PlayCircleIcon, ZapIcon, ShieldOffIcon];
+const stepIcons = [PlayCircle, Zap, ShieldOff];
 
 export const PropagationStateFlow = ({ content }: Props) => (
   <section aria-labelledby="heading-propagation">
@@ -58,13 +59,13 @@ export const PropagationStateFlow = ({ content }: Props) => (
       step={content.step}
       eyebrow={content.eyebrow}
       title={content.title}
-      icon={<WorkflowIcon className="h-5 w-5" />}
+      icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
-        const Icon = stepIcons[i] ?? TerminalIcon;
+        const Icon = stepIcons[i] ?? Terminal;
         return (
           <li
             key={step.label}
@@ -112,13 +113,13 @@ export const PropagationStateFlow = ({ content }: Props) => (
                   aria-hidden="true"
                   className="hidden sm:inline-flex absolute -right-3.5 top-1/2 z-10 -translate-y-1/2 h-7 w-7 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]"
                 >
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span
                   aria-hidden="true"
                   className="sm:hidden flex justify-center text-[var(--term-muted)] mt-1"
                 >
-                  <ArrowDownIcon className="h-4 w-4" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </>
             )}

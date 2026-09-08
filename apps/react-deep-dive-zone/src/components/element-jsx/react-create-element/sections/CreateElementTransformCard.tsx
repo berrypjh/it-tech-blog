@@ -4,11 +4,12 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, Sparkles, Wand2 } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FieldCallout, ReactCreateElementContent } from '../content';
-import { ArrowRightIcon, SparklesIcon, WandIcon } from '../icons';
 
 type Props = { content: ReactCreateElementContent['transform'] };
 
@@ -26,7 +27,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<WandIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div
@@ -61,7 +62,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
             ))}
           </div>
           <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
-            <SparklesIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             transform preview
           </span>
         </div>
@@ -144,7 +145,7 @@ const FlowStep = ({
 const FlowArrow = () => (
   <div className="hidden lg:flex items-center justify-center -mx-2" aria-hidden="true">
     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--term-bg)] border border-[var(--term-border)] text-[var(--term-accent)]">
-      <ArrowRightIcon className="h-3.5 w-3.5" />
+      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
     </span>
   </div>
 );

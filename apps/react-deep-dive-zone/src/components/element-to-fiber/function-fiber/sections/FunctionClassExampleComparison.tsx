@@ -1,17 +1,12 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Component, GitFork, Hexagon, SquareFunction } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompareCard, FunctionClassComponentFiberContent } from '../content';
-import {
-  ArrowDownIcon,
-  ComponentIcon,
-  GitForkIcon,
-  HexagonIcon,
-  SquareFunctionIcon,
-} from '../icons';
 
 type Props = { content: FunctionClassComponentFiberContent['compare'] };
 
@@ -29,7 +24,7 @@ export const FunctionClassExampleComparison = ({ content }: Props) => (
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<GitForkIcon className="h-5 w-5" />}
+      icon={<GitFork className="h-5 w-5" aria-hidden="true" />}
     />
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
@@ -45,7 +40,7 @@ export const FunctionClassExampleComparison = ({ content }: Props) => (
 const CompareCardView = ({ card }: { card: CompareCard }) => {
   const tone = toneByKey[card.id];
   const t = toneTokens[tone];
-  const Icon = card.id === 'function' ? SquareFunctionIcon : ComponentIcon;
+  const Icon = card.id === 'function' ? SquareFunction : Component;
   return (
     <article
       className={cn(
@@ -88,7 +83,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
             t.chip,
           )}
         >
-          <ArrowDownIcon className="h-4 w-4" />
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
         </span>
       </div>
 
@@ -100,7 +95,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         )}
       >
         <ToneIconBox tone={tone} size="sm">
-          <HexagonIcon className="h-[18px] w-[18px]" />
+          <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col gap-0.5 min-w-0">
           <code className={cn('font-mono text-sm font-extrabold', t.text)}>{card.resultTitle}</code>

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Archive, FileCheck2, History } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CorrectVersionDiffContent } from '../content';
-import { ArchiveIcon, FileCheckIcon, HistoryIcon } from '../icons';
 
 type Props = { content: CorrectVersionDiffContent['hero']; className?: string };
 
@@ -37,7 +38,7 @@ export const VersionDiffHeroDiagram = ({ content, className }: Props) => {
           <NotePanel
             tone="amber"
             title={content.leftPanelTitle}
-            icon={<ArchiveIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+            icon={<Archive className="h-[18px] w-[18px]" aria-hidden="true" />}
             items={content.leftItems}
             caption={content.leftCaption}
           />
@@ -62,7 +63,7 @@ export const VersionDiffHeroDiagram = ({ content, className }: Props) => {
           <NotePanel
             tone="blue"
             title={content.rightPanelTitle}
-            icon={<FileCheckIcon className="h-[18px] w-[18px]" aria-hidden="true" />}
+            icon={<FileCheck2 className="h-[18px] w-[18px]" aria-hidden="true" />}
             items={content.rightItems}
             caption={content.rightCaption}
           />
@@ -110,7 +111,7 @@ const NotePanel = ({
 const CheckHeader = ({ label }: { label: string }) => (
   <div className="flex items-center gap-sm">
     <ToneIconBox tone="violet" size="sm">
-      <HistoryIcon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <History className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
       {label}

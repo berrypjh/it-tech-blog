@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Merge, Sprout } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HookSideCard, UseReducerSharedContent } from '../content';
-import { MergeIcon, SproutIcon } from '../icons';
 
 type Props = { content: UseReducerSharedContent['hero']; className?: string };
 
@@ -80,7 +81,7 @@ const SharedCard = ({ title, items }: { title: string; items: string[] }) => {
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone="violet" size="sm">
-          <MergeIcon className="h-[18px] w-[18px]" />
+          <Merge className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <h2 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h2>
       </header>
@@ -105,7 +106,7 @@ const BottomLabel = ({ label }: { label: string }) => (
       className="flex-1 border-t border-dashed border-[var(--term-border)]"
     />
     <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)] break-keep">
-      <SproutIcon className="h-3.5 w-3.5" />
+      <Sprout className="h-3.5 w-3.5" aria-hidden="true" />
       {label}
     </span>
     <span

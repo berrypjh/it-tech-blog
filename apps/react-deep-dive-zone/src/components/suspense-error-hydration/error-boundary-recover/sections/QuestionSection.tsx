@@ -1,22 +1,17 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { AlertTriangle, CircleHelp, RefreshCcw, ShieldCheck, Target } from 'lucide-react';
+
 import type { ConceptCard, ErrorBoundaryRecoverContent } from '../content';
-import {
-  AlertTriangleIcon,
-  CircleHelpIcon,
-  RefreshCcwIcon,
-  ShieldCheckIcon,
-  TargetIcon,
-} from '../icons';
 import { sectionNumberBadge } from '../tone';
 
 type Props = { content: ErrorBoundaryRecoverContent['question'] };
 
 const conceptIcon: Record<ConceptCard['icon'], React.ComponentType<{ className?: string }>> = {
-  shield: ShieldCheckIcon,
-  target: TargetIcon,
-  update: RefreshCcwIcon,
-  alert: AlertTriangleIcon,
+  shield: ShieldCheck,
+  target: Target,
+  update: RefreshCcw,
+  alert: AlertTriangle,
 };
 
 const conceptTone: Record<ConceptCard['icon'], string> = {
@@ -60,7 +55,7 @@ export const QuestionSection = ({ content }: Props) => (
           'dark:bg-blue-950/60 dark:text-blue-300',
         )}
       >
-        <CircleHelpIcon className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} />
+        <CircleHelp className="h-9 w-9 sm:h-11 sm:w-11" strokeWidth={2.2} aria-hidden="true" />
       </div>
 
       <p className="text-md sm:text-lg leading-snug font-bold text-[var(--term-fg)] break-keep">

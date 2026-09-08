@@ -4,12 +4,13 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowDown, Info, Layers } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ExampleLegend, JsxTransformFlowContent, TransformExample } from '../content';
-import { ArrowDownIcon, InfoIcon, LayersIcon } from '../icons';
 
 type Props = { content: JsxTransformFlowContent['examples'] };
 
@@ -27,7 +28,7 @@ export const CodeTransformExamples = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" aria-hidden="true" />}
       />
 
       <div className="flex flex-col gap-md md:flex-row md:items-center md:justify-between">
@@ -60,7 +61,9 @@ export const CodeTransformExamples = ({ content }: Props) => {
         ))}
       </ul>
 
-      <SectionNote icon={<InfoIcon className="h-4 w-4" />}>{content.bottomNote}</SectionNote>
+      <SectionNote icon={<Info className="h-4 w-4" aria-hidden="true" />}>
+        {content.bottomNote}
+      </SectionNote>
     </section>
   );
 };
@@ -201,7 +204,7 @@ const ExampleCard = ({
               tone ? tone.text : 'text-[var(--term-accent)]',
             )}
           >
-            <ArrowDownIcon className="h-4 w-4" />
+            <ArrowDown className="h-4 w-4" aria-hidden="true" />
           </span>
         </div>
 

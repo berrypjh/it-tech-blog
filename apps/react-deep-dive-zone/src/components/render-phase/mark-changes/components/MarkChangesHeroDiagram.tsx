@@ -1,12 +1,21 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Box, Flag, ListChecks, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
+
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent } from '../content';
-import { BoxIcon, ListChecksIcon, markIconByName } from '../icons';
 import { facetFor } from '../markFacet';
+
+const markIconByName: Record<'flag' | 'trash' | 'pencil' | 'zap' | 'move', LucideIcon> = {
+  flag: Flag,
+  trash: Trash2,
+  pencil: Pencil,
+  zap: Zap,
+  move: Move,
+} as const;
 
 type HeroContent = MarkChangesContent['hero'];
 type FlagCard = HeroContent['diagram']['flagCards'][number];
@@ -52,7 +61,7 @@ const FiberCard = ({ card }: { card: HeroContent['diagram']['fiberCard'] }) => (
   <article className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="violet" size="sm">
-        <BoxIcon className="h-[18px] w-[18px]" />
+        <Box className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {card.title}
@@ -102,7 +111,7 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
 const DeletionsCard = ({ card }: { card: HeroContent['diagram']['deletionsCard'] }) => (
   <article className="flex items-center gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
     <ToneIconBox tone="amber" size="sm">
-      <ListChecksIcon className="h-[18px] w-[18px]" />
+      <ListChecks className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col">
       <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">

@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowUp } from 'lucide-react';
+
 import { HeroDiagramShell } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { VersionCard } from '../content';
-import { ArrowUpIcon } from '../icons';
 
 type Props = {
   versions: VersionCard[];
@@ -40,7 +41,7 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
       <div className="relative flex items-center justify-between mb-md">
         <TerminalBadge dotClassName="bg-[var(--term-accent)]">version timeline</TerminalBadge>
         <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[var(--term-accent)]">
-          <ArrowUpIcon className="h-3 w-3" />
+          <ArrowUp className="h-3 w-3" aria-hidden="true" />
           {axisTop}
         </span>
       </div>
