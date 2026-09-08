@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { QuizAnswer, QuizItem, WhyReadNextSourceContent } from '../content';
-import { SplitIcon } from '../icons';
 
 type Props = { content: WhyReadNextSourceContent['quiz'] };
 
@@ -135,7 +136,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
         eyebrow="02 · classify"
         title={content.title}
         description={content.description}
-        icon={<SplitIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">

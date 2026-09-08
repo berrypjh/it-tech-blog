@@ -1,11 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Database,
+  Hammer,
+  Layers,
+  type LucideIcon,
+  Network,
+  Route,
+  TriangleAlert,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { AxisCard, Next16Content } from '../content';
-import { axisIconByName, LayersIcon, WarnIcon } from '../icons';
+import type { AxisCard, AxisId, Next16Content } from '../content';
 
 type Props = { content: Next16Content['axes'] };
+
+const axisIcon: Record<AxisId, LucideIcon> = {
+  'app-router': Route,
+  rsc: Network,
+  cache: Database,
+  build: Hammer,
+};
 
 const ChipRow = ({
   label,
@@ -42,7 +58,7 @@ const ChipRow = ({
 
 const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes']['labels'] }) => {
   const t = toneTokens[card.tone];
-  const Icon = axisIconByName[card.id];
+  const Icon = axisIcon[card.id];
 
   return (
     <article
@@ -50,7 +66,6 @@ const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes'][
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -90,7 +105,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes'][
       {/* 주의할 오래된 자료 */}
       <div className="mt-auto flex items-start gap-sm rounded-md border border-amber-200 bg-amber-50 p-sm dark:border-amber-800/60 dark:bg-amber-950/30">
         <span aria-hidden="true" className="mt-0.5 text-amber-600 dark:text-amber-300 shrink-0">
-          <WarnIcon className="h-4 w-4" />
+          <TriangleAlert className="h-4 w-4" />
         </span>
         <div className="flex flex-col">
           <span className="text-[10px] uppercase tracking-wider font-bold text-amber-700 dark:text-amber-300">
@@ -113,7 +128,7 @@ export const ReadingAxisCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">

@@ -4,12 +4,37 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Boxes,
+  Columns3,
+  Database,
+  FolderTree,
+  LayoutTemplate,
+  LoaderCircle,
+  type LucideIcon,
+  PictureInPicture2,
+  RefreshCw,
+  Send,
+  TriangleAlert,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { AppRouterComplexityContent, ComplexityFactor } from '../content';
-import { FactorIcon, factorIconByName } from '../icons';
+import type { AppRouterComplexityContent, ComplexityFactor, ComplexityFactorId } from '../content';
 
 type Props = { content: AppRouterComplexityContent['factors'] };
+
+const factorIcon: Record<ComplexityFactorId, LucideIcon> = {
+  'nested-layout': LayoutTemplate,
+  'route-segment': FolderTree,
+  'loading-boundary': LoaderCircle,
+  'error-boundary': TriangleAlert,
+  'parallel-route': Columns3,
+  'intercepting-route': PictureInPicture2,
+  'rsc-payload': Send,
+  'router-reducer': RefreshCw,
+  'router-cache': Database,
+};
 
 export const ComplexityFactorGrid = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<ComplexityFactor['id']>(content.cards[0].id);
@@ -23,14 +48,14 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<FactorIcon className="h-5 w-5" />}
+        icon={<Boxes className="h-5 w-5" />}
       />
 
       {/* 9개 카드 3x3 */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
           const t = toneTokens[card.tone];
-          const Icon = factorIconByName[card.id];
+          const Icon = factorIcon[card.id];
           const isSelected = card.id === selected.id;
           return (
             <li key={card.id} className="flex">

@@ -2,12 +2,14 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { AxisIconName, KeywordIconName, TimelineIconName } from './icons';
-
 export type { ToneKey };
 
+export type KeywordId = 'app-router' | 'cache' | 'action' | 'turbopack';
+export type TimelineStepId = 'pages' | 'app-router' | 'rsc' | 'actions' | 'cache' | 'turbopack';
+export type AxisId = 'app-router' | 'rsc' | 'cache' | 'build';
+
 export type KeywordCard = {
-  id: KeywordIconName;
+  id: KeywordId;
   title: string;
   description: string;
   keyword: string;
@@ -15,7 +17,7 @@ export type KeywordCard = {
 };
 
 export type TimelineStep = {
-  id: TimelineIconName;
+  id: TimelineStepId;
   title: string;
   era: string;
   doc: string;
@@ -26,7 +28,7 @@ export type TimelineStep = {
 };
 
 export type AxisCard = {
-  id: AxisIconName;
+  id: AxisId;
   title: string;
   summary: string;
   surfaceApi: string[];

@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight } from 'lucide-react';
+
 import { HeroDescription } from '../../../shared/HeroDescription';
 import { HeroSection } from '../../../shared/HeroSection';
 import { HeroTextColumn } from '../../../shared/HeroTextColumn';
@@ -8,7 +10,6 @@ import { HeroVisualColumn } from '../../../shared/HeroVisualColumn';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { RuntimeFlowDiagram } from '../components/RuntimeFlowDiagram';
 import type { AppRouterComplexityContent } from '../content';
-import { ArrowRightIcon } from '../icons';
 
 type Props = { content: AppRouterComplexityContent['hero'] };
 
@@ -52,7 +53,7 @@ export const AppRouterComplexityHero = ({ content }: Props) => {
             )}
           >
             {content.primaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
           <a
             href="#section-segment-tree"
@@ -62,7 +63,7 @@ export const AppRouterComplexityHero = ({ content }: Props) => {
             )}
           >
             {content.secondaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
         </div>
       </HeroTextColumn>

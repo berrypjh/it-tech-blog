@@ -4,11 +4,29 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Database,
+  Hammer,
+  Inbox,
+  type LucideIcon,
+  MonitorSmartphone,
+  ServerCog,
+  Workflow,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import type { FlowStep, RoadmapContent } from '../content';
-import { axisIconByName } from '../icons';
+import type { AxisId, FlowStep, RoadmapContent } from '../content';
 
 type Props = { content: RoadmapContent['hero']['flow'] };
+
+const axisIcon: Record<AxisId, LucideIcon> = {
+  request: Inbox,
+  'app-render': ServerCog,
+  'client-router': MonitorSmartphone,
+  build: Hammer,
+  cache: Database,
+  actions: Workflow,
+};
 
 export const AxisFlowDiagram = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<FlowStep['id']>(content.initialStepId);
@@ -27,7 +45,7 @@ export const AxisFlowDiagram = ({ content }: Props) => {
       <ol className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {content.steps.map((step) => {
           const t = toneTokens[step.tone];
-          const Icon = axisIconByName[step.id];
+          const Icon = axisIcon[step.id];
           const isSelected = step.id === selected.id;
           return (
             <li key={step.id} className="flex min-w-0">

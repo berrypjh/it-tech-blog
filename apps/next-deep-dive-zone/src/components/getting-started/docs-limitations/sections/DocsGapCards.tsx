@@ -1,11 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Bug,
+  FlaskConical,
+  GitBranch,
+  GitCompareArrows,
+  GitPullRequest,
+  ListOrdered,
+  type LucideIcon,
+  TriangleAlert,
+  ZapOff,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { DocsLimitsContent, GapCard } from '../content';
-import { GapIcon, gapIconByName } from '../icons';
+import type { DocsLimitsContent, GapCard, GapCardId } from '../content';
 
 type Props = { content: DocsLimitsContent['gaps'] };
+
+const gapIcon: Record<GapCardId, LucideIcon> = {
+  'call-order': ListOrdered,
+  'dev-prod': GitCompareArrows,
+  'edge-case': ZapOff,
+  tested: FlaskConical,
+  pr: GitPullRequest,
+  canary: GitBranch,
+  'impl-exception': Bug,
+};
 
 const Card = ({
   card,
@@ -17,14 +38,13 @@ const Card = ({
   sourcesLabel: string;
 }) => {
   const t = toneTokens[card.tone];
-  const Icon = gapIconByName[card.id];
+  const Icon = gapIcon[card.id];
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center justify-between">
@@ -73,7 +93,7 @@ export const DocsGapCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<GapIcon className="h-5 w-5" />}
+        icon={<TriangleAlert className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

@@ -5,10 +5,11 @@ import Link from 'next/link';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, CheckCircle2, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { MapDecoration } from '../components/MapDecoration';
 import type { GithubReadingContent } from '../content';
-import { ArrowRightIcon, CheckIcon, MissionIcon } from '../icons';
 
 type Props = {
   content: GithubReadingContent['mission'];
@@ -26,7 +27,7 @@ export const PracticeMissionAndCTA = ({ content, nextStep }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MissionIcon className="h-5 w-5" />}
+        icon={<Target className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
@@ -57,7 +58,7 @@ export const PracticeMissionAndCTA = ({ content, nextStep }: Props) => {
                         : 'border-[var(--term-border)] bg-[var(--term-bg)]',
                     )}
                   >
-                    {isDone && <CheckIcon className="h-3.5 w-3.5" />}
+                    {isDone && <CheckCircle2 className="h-3.5 w-3.5" />}
                   </span>
                   <div className="min-w-0 flex flex-col gap-0.5">
                     <span
@@ -120,7 +121,7 @@ export const PracticeMissionAndCTA = ({ content, nextStep }: Props) => {
 
           <span className="inline-flex items-center justify-center gap-2 self-stretch rounded-md bg-[var(--term-accent)] px-lg py-3 text-xsm font-bold text-[var(--term-bg)] transition-transform motion-safe:group-hover:translate-x-0.5 lg:self-auto">
             {nextStep.cta}
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" />
           </span>
         </div>
       </Link>

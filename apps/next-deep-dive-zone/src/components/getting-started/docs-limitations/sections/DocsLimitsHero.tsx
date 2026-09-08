@@ -1,10 +1,11 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { ArrowRight, BookOpen, Code2, type LucideIcon } from 'lucide-react';
+
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import type { CompareCard, DocsLimitsContent, ToneKey } from '../content';
-import { ArrowRightIcon, CodeIcon, DocsIcon } from '../icons';
 
 type Props = { content: DocsLimitsContent['hero'] };
 
@@ -20,7 +21,7 @@ const Card = ({
 }: {
   card: CompareCard;
   tone: ToneKey;
-  icon: typeof DocsIcon;
+  icon: LucideIcon;
 }) => {
   const cls =
     tone === 'blue' ? 'text-blue-600 dark:text-blue-300' : 'text-cyan-600 dark:text-cyan-300';
@@ -124,7 +125,7 @@ export const DocsLimitsHero = ({ content }: Props) => {
             )}
           >
             {content.primaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
           <a
             href="#section-transformer"
@@ -134,14 +135,14 @@ export const DocsLimitsHero = ({ content }: Props) => {
             )}
           >
             {content.secondaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>
 
       {/* 비교 카드: 공식 문서 | → | 소스코드 */}
       <div className="mt-xl grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
-        <Card card={content.docs} tone="blue" icon={DocsIcon} />
+        <Card card={content.docs} tone="blue" icon={BookOpen} />
 
         <div className="relative flex lg:flex-col items-center justify-center gap-1">
           <span
@@ -160,7 +161,7 @@ export const DocsLimitsHero = ({ content }: Props) => {
           </span>
         </div>
 
-        <Card card={content.code} tone="cyan" icon={CodeIcon} />
+        <Card card={content.code} tone="cyan" icon={Code2} />
       </div>
     </section>
   );

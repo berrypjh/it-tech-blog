@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, TriangleAlert } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { Next16Content } from '../content';
-import { CheckIcon, WarnIcon } from '../icons';
 
 type Props = { content: Next16Content['checklist'] };
 
@@ -21,7 +22,7 @@ export const OutdatedMaterialChecklist = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<WarnIcon className="h-5 w-5" />}
+        icon={<TriangleAlert className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
@@ -52,7 +53,7 @@ export const OutdatedMaterialChecklist = ({ content }: Props) => {
                         : 'border-[var(--term-border)] bg-[var(--term-bg)]',
                     )}
                   >
-                    {isChecked && <CheckIcon className="h-3.5 w-3.5" />}
+                    {isChecked && <CheckCircle2 className="h-3.5 w-3.5" />}
                   </span>
                   <span className="text-xsm font-bold text-[var(--term-fg)] break-keep leading-snug">
                     {item.question}

@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, ListChecks } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { UsageVsInternalsContent } from '../content';
-import { CheckIcon, ChecklistIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['checklist'] };
 
@@ -22,7 +23,7 @@ export const LearningModeChecklist = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.hint}
-        icon={<ChecklistIcon className="h-5 w-5" />}
+        icon={<ListChecks className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-sm">
@@ -52,7 +53,7 @@ export const LearningModeChecklist = ({ content }: Props) => {
                       : 'border-[var(--term-border)] bg-[var(--term-bg)]',
                   )}
                 >
-                  {isChecked && <CheckIcon className="h-3.5 w-3.5" />}
+                  {isChecked && <CheckCircle2 className="h-3.5 w-3.5" />}
                 </span>
                 <span
                   className={cn(

@@ -1,25 +1,27 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Code2,
+  Hammer,
+  Inbox,
+  type LucideIcon,
+  MonitorSmartphone,
+  ServerCog,
+} from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { CodeEntry, WhyReadNextSourceContent } from '../content';
-import {
-  ArrowRightIcon,
-  BuildIcon,
-  ClientIcon,
-  CodeIcon,
-  GithubIcon,
-  RequestIcon,
-  ServerRenderIcon,
-} from '../icons';
 
 type Props = { content: WhyReadNextSourceContent['codeEntry'] };
 
-const flowIcons: Record<CodeEntry['flowIcon'], typeof RequestIcon> = {
-  request: RequestIcon,
-  'server-render': ServerRenderIcon,
-  client: ClientIcon,
-  build: BuildIcon,
+const flowIcons: Record<CodeEntry['flowIcon'], LucideIcon> = {
+  request: Inbox,
+  'server-render': ServerCog,
+  client: MonitorSmartphone,
+  build: Hammer,
 };
 
 const EntryCard = ({
@@ -40,7 +42,6 @@ const EntryCard = ({
         'group flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       {/* 영역 + 경로 */}
@@ -91,7 +92,7 @@ const EntryCard = ({
       >
         <GithubIcon className="h-4 w-4" />
         {entry.cta}
-        <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+        <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
       </a>
     </article>
   );
@@ -109,7 +110,7 @@ export const NextCodeEntryMap = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md">

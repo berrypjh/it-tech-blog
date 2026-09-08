@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Wand2 } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { DocsLimitsContent, TransformerExample } from '../content';
-import { TransformIcon } from '../icons';
 
 type Props = { content: DocsLimitsContent['transformer'] };
 
@@ -27,7 +28,7 @@ export const DocsSentenceTransformer = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<TransformIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" />}
       />
 
       <div className="flex flex-col gap-sm">
@@ -35,10 +36,7 @@ export const DocsSentenceTransformer = ({ content }: Props) => {
           {content.inputLabel}
         </span>
         <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-3">
-          <TransformIcon
-            className="h-4 w-4 shrink-0 text-[var(--term-accent)]"
-            aria-hidden="true"
-          />
+          <Wand2 className="h-4 w-4 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
           <p className="text-xsm sm:text-sm font-medium text-[var(--term-fg)] break-keep">
             {ex.sentence}
           </p>

@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { FileCode2, FolderTree, LayoutTemplate } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { AppRouterComplexityContent, RouteOption, SegmentNode } from '../content';
-import { LayoutIcon, PageIcon, TreeIcon } from '../icons';
 
 type Props = { content: AppRouterComplexityContent['segmentTree'] };
 
@@ -46,7 +47,7 @@ const TreeNodeRow = ({
         )}
       >
         <span aria-hidden="true" className="shrink-0">
-          {isLayout ? <LayoutIcon className="h-4 w-4" /> : <PageIcon className="h-4 w-4" />}
+          {isLayout ? <LayoutTemplate className="h-4 w-4" /> : <FileCode2 className="h-4 w-4" />}
         </span>
         <code className="min-w-0 flex-1 font-mono text-xsm font-bold [overflow-wrap:anywhere]">
           {node.label}
@@ -113,7 +114,7 @@ export const SegmentTreeExplorer = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<TreeIcon className="h-5 w-5" />}
+        icon={<FolderTree className="h-5 w-5" />}
       />
 
       {/* 경로 선택 */}
@@ -208,7 +209,7 @@ export const SegmentTreeExplorer = ({ content }: Props) => {
           aria-hidden="true"
           className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded bg-cyan-500 text-white dark:bg-cyan-400 dark:text-slate-900"
         >
-          <TreeIcon className="h-4 w-4" />
+          <FolderTree className="h-4 w-4" />
         </span>
         <p className="text-xsm sm:text-sm font-medium leading-snug text-cyan-900 dark:text-cyan-100 break-keep">
           {content.banner}

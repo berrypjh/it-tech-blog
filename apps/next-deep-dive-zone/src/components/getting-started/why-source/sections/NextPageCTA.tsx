@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
+import { ArrowRight } from 'lucide-react';
+
 import { MapDecoration } from '../components/MapDecoration';
 import type { WhyReadNextSourceContent } from '../content';
-import { ArrowRightIcon } from '../icons';
 
 type Props = { content: WhyReadNextSourceContent['nextStep'] };
 
@@ -37,7 +38,7 @@ export const NextPageCTA = ({ content }: Props) => {
 
           <span className="inline-flex items-center justify-center gap-2 self-stretch rounded-md bg-[var(--term-accent)] px-lg py-3 text-xsm font-bold text-[var(--term-bg)] transition-transform motion-safe:group-hover:translate-x-0.5 lg:self-auto">
             {content.cta}
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" />
           </span>
         </div>
       </Link>

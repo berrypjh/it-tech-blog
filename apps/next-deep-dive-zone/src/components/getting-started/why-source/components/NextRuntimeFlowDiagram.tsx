@@ -4,27 +4,29 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  FileCode2,
+  FolderTree,
+  GitMerge,
+  Layers,
+  type LucideIcon,
+  Send,
+  ServerCog,
+} from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { WhyReadNextSourceContent } from '../content';
-import {
-  FileIcon,
-  LayersIcon,
-  MergeIcon,
-  RouteTreeIcon,
-  ServerRenderIcon,
-  TransportIcon,
-} from '../icons';
 
 type Diagram = WhyReadNextSourceContent['hero']['diagram'];
 type Step = Diagram['steps'][number];
 
-const flowIcons: Record<Step['flowIcon'], typeof FileIcon> = {
-  file: FileIcon,
-  'route-tree': RouteTreeIcon,
-  'loader-tree': LayersIcon,
-  'server-render': ServerRenderIcon,
-  transport: TransportIcon,
-  merge: MergeIcon,
+const flowIcons: Record<Step['flowIcon'], LucideIcon> = {
+  file: FileCode2,
+  'route-tree': FolderTree,
+  'loader-tree': Layers,
+  'server-render': ServerCog,
+  transport: Send,
+  merge: GitMerge,
 };
 
 type Props = { content: Diagram };

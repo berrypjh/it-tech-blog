@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Layers, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ToneKey, WhyReadNextSourceContent } from '../content';
-import { LayersIcon, SparkIcon } from '../icons';
 
 type Props = { content: WhyReadNextSourceContent['compare'] };
 
@@ -31,12 +32,7 @@ const Column = ({
       <ul className="flex flex-col gap-1.5">
         {items.map((item) => (
           <li key={item}>
-            <div
-              className={cn(
-                'flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-2 transition-colors',
-                t.borderHover,
-              )}
-            >
+            <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-2">
               <span
                 aria-hidden="true"
                 className={cn('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
@@ -60,7 +56,7 @@ export const ReactNextResponsibilityCompare = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<LayersIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" />}
       />
 
       <div className="relative rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl overflow-hidden">
@@ -101,7 +97,7 @@ export const ReactNextResponsibilityCompare = ({ content }: Props) => {
             aria-hidden="true"
             className="inline-flex h-8 w-8 items-center justify-center rounded bg-cyan-500 text-white dark:bg-cyan-400 dark:text-slate-900 shrink-0"
           >
-            <SparkIcon className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" />
           </span>
           <p className="text-xsm sm:text-sm font-medium leading-snug break-keep">
             {content.banner}

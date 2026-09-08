@@ -2,9 +2,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { FileIconName, TransformerIconName, UsageIconName } from './icons';
-
 export type { ToneKey };
+
+export type UsageStepIcon = 'file-plus' | 'layout' | 'loading' | 'cache' | 'action' | 'deploy';
+export type FileConventionId = 'page' | 'layout' | 'loading' | 'error' | 'route';
+export type TransformerIcon = 'loading' | 'router' | 'action' | 'cache';
 
 export type InternalFlowStepId =
   | 'file-convention'
@@ -26,12 +28,12 @@ export type UsageStep = {
   title: string;
   learn: string;
   result: string;
-  icon: UsageIconName;
+  icon: UsageStepIcon;
   tone: ToneKey;
 };
 
 export type FileConventionCard = {
-  id: 'page' | 'layout' | 'loading' | 'error' | 'route';
+  id: FileConventionId;
   name: string;
   role: string;
   internal: string;
@@ -40,7 +42,7 @@ export type FileConventionCard = {
   /** 선택 패널에 화살표로 보여줄 개념 체인 */
   chain: string[];
   entries: string[];
-  icon: FileIconName;
+  icon: FileConventionId;
   tone: ToneKey;
 };
 
@@ -50,7 +52,7 @@ export type TransformerExample = {
   usageQuestion: string;
   internalQuestion: string;
   entries: string[];
-  icon: TransformerIconName;
+  icon: TransformerIcon;
   tone: ToneKey;
 };
 

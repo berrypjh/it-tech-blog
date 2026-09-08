@@ -4,12 +4,50 @@ import { Fragment, useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Boxes,
+  FileCode2,
+  FolderTree,
+  GitMerge,
+  Layers,
+  LayoutTemplate,
+  LoaderCircle,
+  type LucideIcon,
+  Network,
+  Route,
+  Send,
+  ServerCog,
+  TriangleAlert,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { FileConventionCard, UsageVsInternalsContent } from '../content';
-import { fileIconByName, flowIconByName, InternalsIcon } from '../icons';
+import type {
+  FileConventionCard,
+  FileConventionId,
+  InternalFlowStepId,
+  UsageVsInternalsContent,
+} from '../content';
 
 type Props = { content: UsageVsInternalsContent['internalFlow'] };
+
+const fileIcon: Record<FileConventionId, LucideIcon> = {
+  page: FileCode2,
+  layout: LayoutTemplate,
+  loading: LoaderCircle,
+  error: TriangleAlert,
+  route: Route,
+};
+
+const flowIcon: Record<InternalFlowStepId, LucideIcon> = {
+  'file-convention': FileCode2,
+  'route-segment': FolderTree,
+  'loader-tree': Layers,
+  'component-tree': Boxes,
+  'app-render': ServerCog,
+  'rsc-payload': Send,
+  'router-state-patch': GitMerge,
+};
 
 export const InternalStructureFlow = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<FileConventionCard['id']>(content.files[0].id);
@@ -28,7 +66,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<InternalsIcon className="h-5 w-5" />}
+        icon={<Network className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.36fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">
@@ -40,7 +78,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
           <ul className="grid grid-cols-2 lg:grid-cols-1 gap-sm">
             {content.files.map((file) => {
               const t = toneTokens[file.tone];
-              const Icon = fileIconByName[file.icon];
+              const Icon = fileIcon[file.icon];
               const isSelected = file.id === selected.id;
               return (
                 <li key={file.id} className="flex">
@@ -99,7 +137,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
             <ol className="mt-sm flex flex-col sm:flex-row sm:flex-wrap sm:items-stretch gap-1.5">
               {content.flow.map((step, idx) => {
                 const t = toneTokens[step.tone];
-                const Icon = flowIconByName[step.id];
+                const Icon = flowIcon[step.id];
                 const on = highlightSet.has(step.id);
                 const isLast = idx === content.flow.length - 1;
                 return (

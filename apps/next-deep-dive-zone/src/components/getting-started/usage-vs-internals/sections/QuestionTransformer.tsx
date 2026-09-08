@@ -4,12 +4,28 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Database,
+  LoaderCircle,
+  type LucideIcon,
+  Repeat2,
+  Wand2,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { TransformerExample, UsageVsInternalsContent } from '../content';
-import { ArrowRightIcon, transformerIconByName, TransformIcon } from '../icons';
+import type { TransformerExample, TransformerIcon, UsageVsInternalsContent } from '../content';
 
 type Props = { content: UsageVsInternalsContent['transformer'] };
+
+const transformerIcon: Record<TransformerIcon, LucideIcon> = {
+  loading: LoaderCircle,
+  router: Repeat2,
+  action: Workflow,
+  cache: Database,
+};
 
 export const QuestionTransformer = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<TransformerExample['id']>(content.examples[0].id);
@@ -27,7 +43,7 @@ export const QuestionTransformer = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<TransformIcon className="h-5 w-5" />}
+        icon={<Wand2 className="h-5 w-5" />}
       />
 
       {/* 입력창처럼 보이는 UI */}
@@ -36,10 +52,7 @@ export const QuestionTransformer = ({ content }: Props) => {
           {content.inputLabel}
         </span>
         <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-3">
-          <TransformIcon
-            className="h-4 w-4 shrink-0 text-[var(--term-accent)]"
-            aria-hidden="true"
-          />
+          <Wand2 className="h-4 w-4 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
           <p className="text-xsm sm:text-sm font-medium text-[var(--term-fg)] break-keep">
             {selected.usageQuestion}
           </p>
@@ -49,7 +62,7 @@ export const QuestionTransformer = ({ content }: Props) => {
         <ul className="flex flex-wrap gap-2" aria-label="example questions">
           {content.examples.map((ex) => {
             const t = toneTokens[ex.tone];
-            const Icon = transformerIconByName[ex.icon];
+            const Icon = transformerIcon[ex.icon];
             const isSelected = ex.id === selected.id;
             return (
               <li key={ex.id}>
@@ -97,7 +110,7 @@ export const QuestionTransformer = ({ content }: Props) => {
             aria-hidden="true"
             className="hidden lg:flex absolute -left-3 top-1/2 -translate-y-1/2 h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]"
           >
-            <ArrowRightIcon className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </span>
           <span
             className={cn(

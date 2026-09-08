@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CheckCircle2, Target } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { Mission, RoadmapContent } from '../content';
-import { CheckIcon, MissionIcon } from '../icons';
 
 type Props = { content: RoadmapContent['missions'] };
 
@@ -50,7 +51,7 @@ const Card = ({
               : cn('bg-[var(--term-bg)]', t.chip),
           )}
         >
-          {done && <CheckIcon className="h-3.5 w-3.5" />}
+          {done && <CheckCircle2 className="h-3.5 w-3.5" />}
         </span>
         <h3 className="text-md font-bold tracking-tight text-[var(--term-fg)] break-keep">
           {mission.title}
@@ -109,7 +110,7 @@ export const PracticeMissions = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<MissionIcon className="h-5 w-5" />}
+        icon={<Target className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

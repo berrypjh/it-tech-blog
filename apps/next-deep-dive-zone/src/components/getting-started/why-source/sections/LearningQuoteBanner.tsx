@@ -1,5 +1,6 @@
+import { Quote } from 'lucide-react';
+
 import type { WhyReadNextSourceContent } from '../content';
-import { QuoteIcon } from '../icons';
 
 type Props = { content: WhyReadNextSourceContent['quote'] };
 
@@ -7,7 +8,7 @@ export const LearningQuoteBanner = ({ content }: Props) => {
   return (
     <section aria-label="learning attitude" className="relative">
       <figure className="relative overflow-hidden rounded-lg border border-cyan-200/70 bg-gradient-to-br from-sky-50 via-cyan-50 to-emerald-50 p-lg sm:p-xl text-center dark:border-cyan-800/50 dark:from-sky-950/40 dark:via-cyan-950/30 dark:to-slate-950/40">
-        <QuoteIcon
+        <Quote
           className="mx-auto mb-sm h-7 w-7 text-cyan-500 dark:text-cyan-300"
           aria-hidden="true"
         />

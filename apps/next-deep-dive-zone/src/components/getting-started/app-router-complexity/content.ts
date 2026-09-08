@@ -2,9 +2,25 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { CodeEntryIconName, FactorIconName } from './icons';
-
 export type { ToneKey };
+
+export type ComplexityFactorId =
+  | 'nested-layout'
+  | 'route-segment'
+  | 'loading-boundary'
+  | 'error-boundary'
+  | 'parallel-route'
+  | 'intercepting-route'
+  | 'rsc-payload'
+  | 'router-reducer'
+  | 'router-cache';
+export type CodeEntryId =
+  | 'create-component-tree'
+  | 'flight-router-state'
+  | 'app-render'
+  | 'layout-router'
+  | 'app-router'
+  | 'router-reducer';
 
 export type FlowStep = {
   id: 'url' | 'segment-tree' | 'loader-tree' | 'rsc-payload' | 'router-state' | 'cache-node';
@@ -23,7 +39,7 @@ export type CompareCard = {
 };
 
 export type ComplexityFactor = {
-  id: FactorIconName;
+  id: ComplexityFactorId;
   number: string;
   title: string;
   surfaceApi: string;
@@ -49,7 +65,7 @@ export type RouteOption = {
 };
 
 export type CodeEntry = {
-  id: CodeEntryIconName;
+  id: CodeEntryId;
   area: string;
   path: string;
   reads: string;

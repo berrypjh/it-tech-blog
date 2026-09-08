@@ -2,9 +2,17 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { GapIconName, StrengthIconName } from './icons';
-
 export type { ToneKey };
+
+export type StrengthCardId = 'api' | 'pattern' | 'example' | 'migration' | 'concept' | 'caution';
+export type GapCardId =
+  | 'call-order'
+  | 'dev-prod'
+  | 'edge-case'
+  | 'tested'
+  | 'pr'
+  | 'canary'
+  | 'impl-exception';
 
 export type CompareCard = {
   title: string;
@@ -14,7 +22,7 @@ export type CompareCard = {
 };
 
 export type StrengthCard = {
-  id: StrengthIconName;
+  id: StrengthCardId;
   title: string;
   description: string;
   gain: string;
@@ -22,7 +30,7 @@ export type StrengthCard = {
 };
 
 export type GapCard = {
-  id: GapIconName;
+  id: GapCardId;
   number: string;
   title: string;
   miss: string;

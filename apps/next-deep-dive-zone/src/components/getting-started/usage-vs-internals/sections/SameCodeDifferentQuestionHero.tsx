@@ -1,10 +1,11 @@
+import { Network, PenLine } from 'lucide-react';
+
 import { CodePanel } from '../../../shared/CodePanel';
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { PerspectiveCard } from '../components/PerspectiveCard';
 import type { UsageVsInternalsContent } from '../content';
-import { InternalsIcon, UsageIcon } from '../icons';
 
 type Props = { content: UsageVsInternalsContent['hero'] };
 
@@ -59,7 +60,7 @@ export const SameCodeDifferentQuestionHero = ({ content }: Props) => {
         <div className="order-2 lg:order-1 flex">
           <PerspectiveCard
             tone="indigo"
-            icon={UsageIcon}
+            icon={PenLine}
             title={content.usage.title}
             description={content.usage.description}
             questions={content.usage.questions}
@@ -72,7 +73,7 @@ export const SameCodeDifferentQuestionHero = ({ content }: Props) => {
         <div className="order-3 flex">
           <PerspectiveCard
             tone="cyan"
-            icon={InternalsIcon}
+            icon={Network}
             title={content.internals.title}
             description={content.internals.description}
             questions={content.internals.questions}

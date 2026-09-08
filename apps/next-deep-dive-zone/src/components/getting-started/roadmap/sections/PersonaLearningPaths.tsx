@@ -2,12 +2,20 @@ import { Fragment } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, type LucideIcon, Package, Sprout, Users, Wrench } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { PersonaCard, RoadmapContent } from '../content';
-import { PersonaIcon, personaIconByName } from '../icons';
+import type { PersonaCard, PersonaId, RoadmapContent } from '../content';
 
 type Props = { content: RoadmapContent['personas'] };
+
+const personaIcon: Record<PersonaId, LucideIcon> = {
+  beginner: Sprout,
+  react: Atom,
+  practical: Wrench,
+  framework: Package,
+};
 
 const Card = ({
   card,
@@ -17,14 +25,13 @@ const Card = ({
   labels: { reason: string; path: string };
 }) => {
   const t = toneTokens[card.tone];
-  const Icon = personaIconByName[card.id];
+  const Icon = personaIcon[card.id];
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -90,7 +97,7 @@ export const PersonaLearningPaths = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<PersonaIcon className="h-5 w-5" />}
+        icon={<Users className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">

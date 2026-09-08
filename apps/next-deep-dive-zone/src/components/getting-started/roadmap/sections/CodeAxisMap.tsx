@@ -1,22 +1,40 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Database,
+  FolderTree,
+  Hammer,
+  Inbox,
+  type LucideIcon,
+  MonitorSmartphone,
+  ServerCog,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { AxisCard, RoadmapContent } from '../content';
-import { AxisIcon, axisIconByName } from '../icons';
+import type { AxisCard, AxisId, RoadmapContent } from '../content';
 
 type Props = { content: RoadmapContent['axes'] };
 
+const axisIcon: Record<AxisId, LucideIcon> = {
+  request: Inbox,
+  'app-render': ServerCog,
+  'client-router': MonitorSmartphone,
+  build: Hammer,
+  cache: Database,
+  actions: Workflow,
+};
+
 const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']['labels'] }) => {
   const t = toneTokens[card.tone];
-  const Icon = axisIconByName[card.id];
+  const Icon = axisIcon[card.id];
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -99,7 +117,7 @@ export const CodeAxisMap = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<AxisIcon className="h-5 w-5" />}
+        icon={<FolderTree className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

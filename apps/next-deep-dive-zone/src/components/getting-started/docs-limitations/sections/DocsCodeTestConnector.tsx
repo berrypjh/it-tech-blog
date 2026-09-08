@@ -4,26 +4,26 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
-import type { LucideIcon } from 'lucide-react';
+import {
+  BookOpen,
+  Code2,
+  Database,
+  FlaskConical,
+  GitMerge,
+  HelpCircle,
+  type LucideIcon,
+  Workflow,
+} from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectorTopic, DocsLimitsContent } from '../content';
-import {
-  ActionTabIcon,
-  CacheTabIcon,
-  CodeIcon,
-  ConnectorIcon,
-  DocsIcon,
-  QuestionIcon,
-  TestIcon,
-} from '../icons';
 
 type Props = { content: DocsLimitsContent['connector'] };
 
 const tabIcons: Record<ConnectorTopic['id'], LucideIcon> = {
-  'server-actions': ActionTabIcon,
-  cache: CacheTabIcon,
+  'server-actions': Workflow,
+  cache: Database,
 };
 
 const StepCard = ({
@@ -92,7 +92,7 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<ConnectorIcon className="h-5 w-5" />}
+        icon={<GitMerge className="h-5 w-5" />}
       />
 
       {/* 주제 탭 */}
@@ -128,7 +128,7 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
         aria-live="polite"
         className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr] gap-2 items-stretch"
       >
-        <StepCard label={content.labels.doc} icon={DocsIcon} tone={topic.tone}>
+        <StepCard label={content.labels.doc} icon={BookOpen} tone={topic.tone}>
           <ul className="flex flex-wrap gap-1.5">
             {topic.docItems.map((d) => (
               <li key={d}>
@@ -147,13 +147,13 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
 
         <Arrow />
 
-        <StepCard label={content.labels.code} icon={CodeIcon} tone={topic.tone}>
+        <StepCard label={content.labels.code} icon={Code2} tone={topic.tone}>
           <PathChips paths={topic.codePaths} />
         </StepCard>
 
         <Arrow />
 
-        <StepCard label={content.labels.test} icon={TestIcon} tone={topic.tone}>
+        <StepCard label={content.labels.test} icon={FlaskConical} tone={topic.tone}>
           {topic.testPaths.length > 0 && <PathChips paths={topic.testPaths} />}
           {topic.testNote && (
             <p className="text-[11px] italic text-[var(--term-muted)] break-keep">
@@ -167,7 +167,7 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
             <ul className="flex flex-col gap-1">
               {topic.questions.map((q) => (
                 <li key={q} className="flex items-start gap-1.5">
-                  <QuestionIcon
+                  <HelpCircle
                     className={cn('mt-0.5 h-3 w-3 shrink-0', tt.text)}
                     aria-hidden="true"
                   />

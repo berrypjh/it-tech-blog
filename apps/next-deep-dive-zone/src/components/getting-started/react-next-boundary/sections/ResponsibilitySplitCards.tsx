@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Atom, Layers, type LucideIcon, Sparkles } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { ReactNextBoundaryContent, ResponsibilityCard, ToneKey } from '../content';
-import { NextIcon, ReactIcon, SparkIcon } from '../icons';
 
 type Props = { content: ReactNextBoundaryContent['split'] };
 
@@ -14,7 +15,7 @@ const Card = ({
 }: {
   card: ResponsibilityCard;
   tone: ToneKey;
-  icon: typeof ReactIcon;
+  icon: LucideIcon;
 }) => {
   const t = toneTokens[tone];
   return (
@@ -23,7 +24,6 @@ const Card = ({
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -80,12 +80,12 @@ export const ResponsibilitySplitCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<NextIcon className="h-5 w-5" />}
+        icon={<Layers className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
-        <Card card={content.react} tone="indigo" icon={ReactIcon} />
-        <Card card={content.next} tone="cyan" icon={NextIcon} />
+        <Card card={content.react} tone="indigo" icon={Atom} />
+        <Card card={content.next} tone="cyan" icon={Layers} />
       </div>
 
       {/* 하단 강조 배너 */}
@@ -94,7 +94,7 @@ export const ResponsibilitySplitCards = ({ content }: Props) => {
           aria-hidden="true"
           className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded bg-cyan-400 text-slate-900"
         >
-          <SparkIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" />
         </span>
         <p className="text-xsm sm:text-sm font-medium leading-relaxed text-slate-100 break-keep">
           {content.banner}

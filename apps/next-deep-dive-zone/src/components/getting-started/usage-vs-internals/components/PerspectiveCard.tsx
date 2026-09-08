@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import type { LucideIcon } from 'lucide-react';
+import { CheckCircle2, type LucideIcon } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
 import type { ToneKey } from '../content';
-import { CheckIcon } from '../icons';
 
 type Props = {
   tone: ToneKey;
@@ -32,7 +31,6 @@ export const PerspectiveCard = ({
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -61,7 +59,7 @@ export const PerspectiveCard = ({
                   t.chip,
                 )}
               >
-                <CheckIcon className="h-3 w-3" />
+                <CheckCircle2 className="h-3 w-3" />
               </span>
             ) : (
               <code

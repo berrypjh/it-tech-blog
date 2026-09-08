@@ -2,12 +2,20 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { RoutineIconName, SourceIconName } from './icons';
-
 export type { ToneKey };
 
+export type SourceId = 'code' | 'test' | 'pr' | 'issue' | 'release';
+export type TraceStepId =
+  | 'docs'
+  | 'search'
+  | 'test'
+  | 'csrf'
+  | 'encryption'
+  | 'pr-issue'
+  | 'stable-canary';
+
 export type FlowStep = {
-  id: SourceIconName;
+  id: SourceId;
   label: string;
   category: string;
   description: string;
@@ -15,7 +23,7 @@ export type FlowStep = {
 };
 
 export type SourceCard = {
-  id: SourceIconName;
+  id: SourceId;
   title: string;
   subtitle: string;
   shows: string;
@@ -25,7 +33,7 @@ export type SourceCard = {
 };
 
 export type TraceStep = {
-  id: RoutineIconName;
+  id: TraceStepId;
   number: string;
   title: string;
   what: string;

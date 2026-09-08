@@ -1,9 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitBranch, GitCompareArrows, type LucideIcon, Sparkles, Tag } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, GithubReadingContent, ToneKey } from '../content';
-import { CanaryIcon, CompareIcon, SparkIcon, StableIcon } from '../icons';
 
 type Props = { content: GithubReadingContent['compare'] };
 
@@ -15,7 +16,7 @@ const Card = ({
 }: {
   card: CompareCard;
   tone: ToneKey;
-  icon: typeof StableIcon;
+  icon: LucideIcon;
   cautionLabel: string;
 }) => {
   const t = toneTokens[tone];
@@ -25,7 +26,6 @@ const Card = ({
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center justify-between gap-sm">
@@ -83,20 +83,15 @@ export const StableCanaryCompare = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CompareIcon className="h-5 w-5" />}
+        icon={<GitCompareArrows className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
-        <Card
-          card={content.stable}
-          tone="blue"
-          icon={StableIcon}
-          cautionLabel={content.cautionLabel}
-        />
+        <Card card={content.stable} tone="blue" icon={Tag} cautionLabel={content.cautionLabel} />
         <Card
           card={content.canary}
           tone="cyan"
-          icon={CanaryIcon}
+          icon={GitBranch}
           cautionLabel={content.cautionLabel}
         />
       </div>
@@ -106,7 +101,7 @@ export const StableCanaryCompare = ({ content }: Props) => {
           aria-hidden="true"
           className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded bg-cyan-500 text-white dark:bg-cyan-400 dark:text-slate-900"
         >
-          <SparkIcon className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" />
         </span>
         <p className="text-xsm sm:text-sm font-medium leading-relaxed text-cyan-900 dark:text-cyan-100 break-keep">
           {content.banner}

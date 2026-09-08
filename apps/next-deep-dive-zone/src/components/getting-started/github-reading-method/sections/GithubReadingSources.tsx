@@ -1,11 +1,28 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  CircleDot,
+  Code2,
+  FlaskConical,
+  FolderGit2,
+  GitPullRequest,
+  type LucideIcon,
+  Tag,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { GithubReadingContent, SourceCard } from '../content';
-import { sourceIconByName, SourcesIcon } from '../icons';
+import type { GithubReadingContent, SourceCard, SourceId } from '../content';
 
 type Props = { content: GithubReadingContent['sources'] };
+
+const sourceIcon: Record<SourceId, LucideIcon> = {
+  code: Code2,
+  test: FlaskConical,
+  pr: GitPullRequest,
+  issue: CircleDot,
+  release: Tag,
+};
 
 const Card = ({
   card,
@@ -15,14 +32,13 @@ const Card = ({
   labels: GithubReadingContent['sources']['labels'];
 }) => {
   const t = toneTokens[card.tone];
-  const Icon = sourceIconByName[card.id];
+  const Icon = sourceIcon[card.id];
   return (
     <article
       className={cn(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">
@@ -92,7 +108,7 @@ export const GithubReadingSources = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SourcesIcon className="h-5 w-5" />}
+        icon={<FolderGit2 className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

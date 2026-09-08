@@ -1,11 +1,30 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Database,
+  FilePlus2,
+  LayoutTemplate,
+  LoaderCircle,
+  type LucideIcon,
+  PenLine,
+  Rocket,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { UsageVsInternalsContent } from '../content';
-import { UsageIcon, usageIconByName } from '../icons';
+import type { UsageStepIcon, UsageVsInternalsContent } from '../content';
 
 type Props = { content: UsageVsInternalsContent['usageFlow'] };
+
+const usageIcon: Record<UsageStepIcon, LucideIcon> = {
+  'file-plus': FilePlus2,
+  layout: LayoutTemplate,
+  loading: LoaderCircle,
+  cache: Database,
+  action: Workflow,
+  deploy: Rocket,
+};
 
 export const UsageLearningFlow = ({ content }: Props) => {
   return (
@@ -19,13 +38,13 @@ export const UsageLearningFlow = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<UsageIcon className="h-5 w-5" />}
+        icon={<PenLine className="h-5 w-5" />}
       />
 
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.steps.map((step) => {
           const t = toneTokens[step.tone];
-          const Icon = usageIconByName[step.icon];
+          const Icon = usageIcon[step.icon];
 
           return (
             <li key={step.number} className="flex">
@@ -34,7 +53,6 @@ export const UsageLearningFlow = ({ content }: Props) => {
                   'flex h-full w-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
                   'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   'border-[var(--term-border)]',
-                  t.borderHover,
                 )}
               >
                 <div className="flex items-center justify-between">

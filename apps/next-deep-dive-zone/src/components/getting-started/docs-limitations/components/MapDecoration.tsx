@@ -1,4 +1,4 @@
-import { MapPinIcon } from '../icons';
+import { MapPin } from 'lucide-react';
 
 /**
  * NextPageCTA 좌측의 docs → code → test 연결선 느낌 SVG 장식. aria-hidden 데코레이션 전용.
@@ -52,7 +52,7 @@ export const MapDecoration = () => (
       code
     </span>
     <span className="absolute right-2 top-1 inline-flex items-center gap-1 text-[9px] font-bold text-[var(--term-accent)]">
-      <MapPinIcon className="h-3 w-3" />
+      <MapPin className="h-3 w-3" />
       test
     </span>
   </div>

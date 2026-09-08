@@ -1,5 +1,7 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { GitCompareArrows } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type {
@@ -7,7 +9,6 @@ import type {
   CompareCard as CompareCardType,
   ToneKey,
 } from '../content';
-import { CompareIcon } from '../icons';
 
 type Props = { content: AppRouterComplexityContent['compare'] };
 
@@ -27,7 +28,7 @@ const Card = ({
         'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         variant === 'app'
-          ? cn('border-cyan-300 dark:border-cyan-700/70', t.borderHover)
+          ? 'border-cyan-300 dark:border-cyan-700/70'
           : 'border-[var(--term-border)]',
       )}
     >
@@ -70,7 +71,7 @@ export const PagesVsAppRouterCompare = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CompareIcon className="h-5 w-5" />}
+        icon={<GitCompareArrows className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">

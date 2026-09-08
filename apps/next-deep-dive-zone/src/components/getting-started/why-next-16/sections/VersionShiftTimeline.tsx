@@ -4,12 +4,32 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Database,
+  FileText,
+  FolderTree,
+  GitBranch,
+  type LucideIcon,
+  Server,
+  TriangleAlert,
+  Workflow,
+  Zap,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { Next16Content, TimelineStep } from '../content';
-import { TimelineIcon, timelineIconByName, WarnIcon } from '../icons';
+import type { Next16Content, TimelineStep, TimelineStepId } from '../content';
 
 type Props = { content: Next16Content['timeline'] };
+
+const timelineIcon: Record<TimelineStepId, LucideIcon> = {
+  pages: FileText,
+  'app-router': FolderTree,
+  rsc: Server,
+  actions: Workflow,
+  cache: Database,
+  turbopack: Zap,
+};
 
 const ChipList = ({ items, tone }: { items: string[]; tone: TimelineStep['tone'] }) => {
   const t = toneTokens[tone];
@@ -48,7 +68,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<TimelineIcon className="h-5 w-5" />}
+        icon={<GitBranch className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.46fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">
@@ -60,7 +80,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
           <ol className="flex flex-col gap-2">
             {content.steps.map((step, idx) => {
               const t = toneTokens[step.tone];
-              const Icon = timelineIconByName[step.id];
+              const Icon = timelineIcon[step.id];
               const isSelected = step.id === selected.id;
               return (
                 <li key={step.id}>
@@ -172,7 +192,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
               aria-hidden="true"
               className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900"
             >
-              <WarnIcon className="h-3.5 w-3.5" />
+              <TriangleAlert className="h-3.5 w-3.5" />
             </span>
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-wider font-bold text-amber-700 dark:text-amber-300">

@@ -2,12 +2,13 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { AxisIconName, PersonaIconName } from './icons';
-
 export type { ToneKey };
 
+export type AxisId = 'request' | 'app-render' | 'client-router' | 'build' | 'cache' | 'actions';
+export type PersonaId = 'beginner' | 'react' | 'practical' | 'framework';
+
 export type FlowStep = {
-  id: AxisIconName;
+  id: AxisId;
   label: string;
   category: string;
   description: string;
@@ -25,7 +26,7 @@ export type RoadmapStep = {
 };
 
 export type AxisCard = {
-  id: AxisIconName;
+  id: AxisId;
   title: string;
   path?: string;
   keywords?: string[];
@@ -36,7 +37,7 @@ export type AxisCard = {
 };
 
 export type PersonaCard = {
-  id: PersonaIconName;
+  id: PersonaId;
   title: string;
   path: string[];
   reason: string;

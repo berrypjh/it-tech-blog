@@ -1,11 +1,32 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Boxes,
+  Code2,
+  LayoutTemplate,
+  type LucideIcon,
+  Network,
+  RefreshCw,
+  Route,
+  ServerCog,
+} from 'lucide-react';
+
+import { GithubIcon } from '../../../shared/icon/GithubIcon';
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { AppRouterComplexityContent, CodeEntry } from '../content';
-import { ArrowRightIcon, codeEntryIconByName, CodeIcon, GithubIcon } from '../icons';
+import type { AppRouterComplexityContent, CodeEntry, CodeEntryId } from '../content';
 
 type Props = { content: AppRouterComplexityContent['codeEntry'] };
+
+const codeEntryIcon: Record<CodeEntryId, LucideIcon> = {
+  'create-component-tree': Boxes,
+  'flight-router-state': Network,
+  'app-render': ServerCog,
+  'layout-router': LayoutTemplate,
+  'app-router': Route,
+  'router-reducer': RefreshCw,
+};
 
 const EntryCard = ({
   entry,
@@ -17,7 +38,7 @@ const EntryCard = ({
   conceptLabel: string;
 }) => {
   const t = toneTokens[entry.tone];
-  const Icon = codeEntryIconByName[entry.id];
+  const Icon = codeEntryIcon[entry.id];
 
   return (
     <article
@@ -25,7 +46,6 @@ const EntryCard = ({
         'group flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-start gap-sm">
@@ -72,7 +92,7 @@ const EntryCard = ({
       >
         <GithubIcon className="h-4 w-4" />
         <span className="[overflow-wrap:anywhere]">{entry.cta}</span>
-        <ArrowRightIcon className="h-4 w-4 shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5" />
+        <ArrowRight className="h-4 w-4 shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5" />
       </a>
     </article>
   );
@@ -86,7 +106,7 @@ export const AppRouterCodeEntryMap = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CodeIcon className="h-5 w-5" />}
+        icon={<Code2 className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

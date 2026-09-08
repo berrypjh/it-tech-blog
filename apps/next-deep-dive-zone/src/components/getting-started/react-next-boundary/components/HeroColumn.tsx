@@ -29,7 +29,7 @@ export const HeroColumn = ({ title, tone, nodes, note, pill, variant }: Props) =
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         isBridge
           ? 'border-dashed border-[var(--term-accent)] bg-[var(--term-surface)]'
-          : cn('border-[var(--term-border)] bg-[var(--term-bg)]', t.borderHover),
+          : 'border-[var(--term-border)] bg-[var(--term-bg)]',
       )}
     >
       <div className="flex items-center gap-sm">

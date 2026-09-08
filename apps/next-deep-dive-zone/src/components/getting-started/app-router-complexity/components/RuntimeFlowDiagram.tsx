@@ -4,9 +4,19 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, FolderTree, Globe, Layers, type LucideIcon, Network, Send } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
 import type { AppRouterComplexityContent, FlowStep } from '../content';
-import { flowIconByName } from '../icons';
+
+const flowIcon: Record<FlowStep['id'], LucideIcon> = {
+  url: Globe,
+  'segment-tree': FolderTree,
+  'loader-tree': Layers,
+  'rsc-payload': Send,
+  'router-state': Network,
+  'cache-node': Database,
+};
 
 type Diagram = AppRouterComplexityContent['hero']['diagram'];
 
@@ -35,7 +45,7 @@ export const RuntimeFlowDiagram = ({ content }: Props) => {
       <ol className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
         {content.steps.map((step, idx) => {
           const t = toneTokens[step.tone];
-          const Icon = flowIconByName[step.id];
+          const Icon = flowIcon[step.id];
           const isSelected = step.id === selected.id;
           const isLast = idx === content.steps.length - 1;
           return (

@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { BoundaryIconName, CodeEntryIconName } from './icons';
-
 export type { ToneKey };
 
 export type ReactFlowNodeId = 'component' | 'element' | 'render' | 'commit';
@@ -14,9 +12,23 @@ export type NextFlowNodeId =
   | 'html-flight'
   | 'client-nav';
 
+export type BoundaryPointId =
+  | 'server-components'
+  | 'suspense'
+  | 'server-actions'
+  | 'hydration'
+  | 'client-boundary';
+export type CodeEntryId =
+  | 'app-render'
+  | 'use-flight-response'
+  | 'app-router'
+  | 'layout-router'
+  | 'action-handler'
+  | 'next-flight-loader';
+
 export type ReactFlowNode = { id: ReactFlowNodeId; label: string };
 export type NextFlowNode = { id: NextFlowNodeId; label: string };
-export type BridgeNode = { id: BoundaryIconName; label: string };
+export type BridgeNode = { id: BoundaryPointId; label: string };
 
 export type ResponsibilityCard = {
   title: string;
@@ -34,7 +46,7 @@ export type QuizItem = {
 };
 
 export type BoundaryPoint = {
-  id: BoundaryIconName;
+  id: BoundaryPointId;
   number: string;
   title: string;
   summary: string;
@@ -46,7 +58,7 @@ export type BoundaryPoint = {
 };
 
 export type CodeEntry = {
-  id: CodeEntryIconName;
+  id: CodeEntryId;
   area: string;
   path: string;
   reactMeet: string;

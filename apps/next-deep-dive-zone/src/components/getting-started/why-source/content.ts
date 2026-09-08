@@ -2,9 +2,18 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-import type { IconName } from './icons';
-
 export type { ToneKey };
+
+export type CardIconName =
+  | 'loading'
+  | 'cpu'
+  | 'link'
+  | 'database'
+  | 'redirect'
+  | 'route'
+  | 'bug'
+  | 'workflow'
+  | 'compass';
 
 export type FlowStep = {
   id: 'page' | 'route-tree' | 'loader-tree' | 'app-render' | 'rsc-payload' | 'client-merge';
@@ -23,7 +32,7 @@ export type QuestionCard = {
   number: string;
   concept: string;
   tone: ToneKey;
-  icon: IconName;
+  icon: CardIconName;
   question: string[];
   surface: string;
   internal: string;
@@ -44,7 +53,7 @@ export type BenefitCard = {
   title: string;
   body: string;
   tone: ToneKey;
-  icon: IconName;
+  icon: CardIconName;
   entries: string[];
 };
 

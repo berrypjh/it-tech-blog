@@ -1,4 +1,4 @@
-import { MapPinIcon } from '../icons';
+import { MapPin } from 'lucide-react';
 
 /**
  * NextPageCTA 좌측의 React ↔ Next.js boundary bridge 느낌 SVG 장식. aria-hidden 데코레이션 전용.
@@ -53,7 +53,7 @@ export const MapDecoration = () => (
       Next.js
     </span>
     <span className="absolute left-2 bottom-1 inline-flex items-center gap-1 text-[10px] font-bold text-[var(--term-accent)]">
-      <MapPinIcon className="h-3 w-3" />
+      <MapPin className="h-3 w-3" />
       boundary
     </span>
   </div>

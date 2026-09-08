@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Split } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import type { QuizAnswer, ReactNextBoundaryContent } from '../content';
-import { QuizIcon } from '../icons';
 
 type Props = { content: ReactNextBoundaryContent['quiz'] };
 
@@ -35,7 +36,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<QuizIcon className="h-5 w-5" />}
+        icon={<Split className="h-5 w-5" />}
       />
 
       {/* 문제 카드 칩 */}

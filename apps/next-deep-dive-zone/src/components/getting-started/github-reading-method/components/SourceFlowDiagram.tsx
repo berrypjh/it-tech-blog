@@ -4,11 +4,20 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { CircleDot, Code2, FlaskConical, GitPullRequest, type LucideIcon, Tag } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import type { FlowStep, GithubReadingContent } from '../content';
-import { sourceIconByName } from '../icons';
+import type { FlowStep, GithubReadingContent, SourceId } from '../content';
 
 type Props = { content: GithubReadingContent['hero']['flow'] };
+
+const sourceIcon: Record<SourceId, LucideIcon> = {
+  code: Code2,
+  test: FlaskConical,
+  pr: GitPullRequest,
+  issue: CircleDot,
+  release: Tag,
+};
 
 export const SourceFlowDiagram = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<FlowStep['id']>(content.initialStepId);
@@ -27,7 +36,7 @@ export const SourceFlowDiagram = ({ content }: Props) => {
       <ol className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2">
         {content.steps.map((step, idx) => {
           const t = toneTokens[step.tone];
-          const Icon = sourceIconByName[step.id];
+          const Icon = sourceIcon[step.id];
           const isSelected = step.id === selected.id;
           const isLast = idx === content.steps.length - 1;
           return (

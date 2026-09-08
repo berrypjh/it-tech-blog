@@ -4,12 +4,31 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Atom,
+  Droplets,
+  GitMerge,
+  Hourglass,
+  Layers,
+  type LucideIcon,
+  Server,
+  SquareDashedBottomCode,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { BoundaryPoint, ReactNextBoundaryContent } from '../content';
-import { BoundaryIcon, boundaryIconByName, NextIcon, ReactIcon } from '../icons';
+import type { BoundaryPoint, BoundaryPointId, ReactNextBoundaryContent } from '../content';
 
 type Props = { content: ReactNextBoundaryContent['boundary'] };
+
+const boundaryIcon: Record<BoundaryPointId, LucideIcon> = {
+  'server-components': Server,
+  suspense: Hourglass,
+  'server-actions': Workflow,
+  hydration: Droplets,
+  'client-boundary': SquareDashedBottomCode,
+};
 
 export const BoundaryMeetingPoints = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<BoundaryPoint['id']>(content.points[0].id);
@@ -23,14 +42,14 @@ export const BoundaryMeetingPoints = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<BoundaryIcon className="h-5 w-5" />}
+        icon={<GitMerge className="h-5 w-5" />}
       />
 
       {/* 5개 카드 (3+2) */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.points.map((point) => {
           const t = toneTokens[point.tone];
-          const Icon = boundaryIconByName[point.id];
+          const Icon = boundaryIcon[point.id];
           const isSelected = point.id === selected.id;
           return (
             <li key={point.id} className="flex">
@@ -96,7 +115,7 @@ export const BoundaryMeetingPoints = ({ content }: Props) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
           <div className="flex flex-col gap-1.5 rounded-md border border-indigo-200 bg-indigo-50/50 p-md dark:border-indigo-800/60 dark:bg-indigo-950/20">
             <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-indigo-700 dark:text-indigo-300">
-              <ReactIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              <Atom className="h-3.5 w-3.5" aria-hidden="true" />
               {content.labels.react}
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
@@ -105,7 +124,7 @@ export const BoundaryMeetingPoints = ({ content }: Props) => {
           </div>
           <div className="flex flex-col gap-1.5 rounded-md border border-cyan-200 bg-cyan-50/50 p-md dark:border-cyan-800/60 dark:bg-cyan-950/20">
             <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-cyan-700 dark:text-cyan-300">
-              <NextIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              <Layers className="h-3.5 w-3.5" aria-hidden="true" />
               {content.labels.next}
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">

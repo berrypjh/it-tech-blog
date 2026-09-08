@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Map } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { RoadmapContent, RoadmapStep } from '../content';
-import { RoadmapIcon } from '../icons';
 
 type Props = { content: RoadmapContent['roadmap'] };
 
@@ -28,7 +29,7 @@ export const FullLearningRoadmap = ({ content }: Props) => {
           eyebrow={content.eyebrow}
           title={content.title}
           description={content.description}
-          icon={<RoadmapIcon className="h-5 w-5" />}
+          icon={<Map className="h-5 w-5" />}
         />
         <div className="shrink-0 inline-flex items-center gap-sm rounded-full border border-[var(--term-accent)] bg-[var(--term-accent-soft)] px-3 py-1.5">
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">

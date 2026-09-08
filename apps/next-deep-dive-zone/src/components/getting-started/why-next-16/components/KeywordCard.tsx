@@ -1,14 +1,22 @@
 import { cn } from '@it-tech-blog/utils';
 
+import { Database, type LucideIcon, Route, Workflow, Zap } from 'lucide-react';
+
 import { toneTokens } from '../../../shared/tones';
-import type { KeywordCard as KeywordCardType } from '../content';
-import { keywordIconByName } from '../icons';
+import type { KeywordCard as KeywordCardType, KeywordId } from '../content';
 
 type Props = { card: KeywordCardType };
 
+const keywordIcon: Record<KeywordId, LucideIcon> = {
+  'app-router': Route,
+  cache: Database,
+  action: Workflow,
+  turbopack: Zap,
+};
+
 export const KeywordCard = ({ card }: Props) => {
   const t = toneTokens[card.tone];
-  const Icon = keywordIconByName[card.id];
+  const Icon = keywordIcon[card.id];
 
   return (
     <article
@@ -16,7 +24,6 @@ export const KeywordCard = ({ card }: Props) => {
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <div className="flex items-center gap-sm">

@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Database } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { CacheToggle, Next16Content } from '../content';
-import { CacheIcon } from '../icons';
 
 type Props = { content: Next16Content['cache'] };
 
@@ -72,7 +73,7 @@ export const CacheComponentsCompare = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<CacheIcon className="h-5 w-5" />}
+        icon={<Database className="h-5 w-5" />}
       />
 
       {/* 좌우 비교 */}

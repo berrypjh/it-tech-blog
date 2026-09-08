@@ -1,18 +1,59 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  ArrowRight,
+  Braces,
+  Compass,
+  Component,
+  Cpu,
+  Droplets,
+  FileCode2,
+  GitCommitHorizontal,
+  Hourglass,
+  type LucideIcon,
+  Route,
+  Send,
+  Server,
+  ServerCog,
+  SquareDashedBottomCode,
+  Workflow,
+} from 'lucide-react';
+
 import { HeroTitle } from '../../../shared/HeroTitle';
 import { TerminalBadge } from '../../../shared/TerminalBadge';
 import { TerminalPrompt } from '../../../shared/TerminalPrompt';
 import { type FlowNodeView, HeroColumn } from '../components/HeroColumn';
-import type { ReactNextBoundaryContent } from '../content';
-import {
-  ArrowRightIcon,
-  boundaryIconByName,
-  nextFlowIconByName,
-  reactFlowIconByName,
-} from '../icons';
+import type {
+  BoundaryPointId,
+  NextFlowNodeId,
+  ReactFlowNodeId,
+  ReactNextBoundaryContent,
+} from '../content';
 
 type Props = { content: ReactNextBoundaryContent['hero'] };
+
+const reactFlowIcon: Record<ReactFlowNodeId, LucideIcon> = {
+  component: Component,
+  element: Braces,
+  render: Cpu,
+  commit: GitCommitHorizontal,
+};
+
+const bridgeIcon: Record<BoundaryPointId, LucideIcon> = {
+  'server-components': Server,
+  suspense: Hourglass,
+  'server-actions': Workflow,
+  hydration: Droplets,
+  'client-boundary': SquareDashedBottomCode,
+};
+
+const nextFlowIcon: Record<NextFlowNodeId, LucideIcon> = {
+  route: Route,
+  'server-render': ServerCog,
+  'rsc-payload': Send,
+  'html-flight': FileCode2,
+  'client-nav': Compass,
+};
 
 const ctaBase =
   'group inline-flex items-center justify-center gap-2 px-lg py-3 rounded-md text-xsm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)] w-full sm:w-auto';
@@ -23,17 +64,17 @@ export const ReactNextBoundaryHero = ({ content }: Props) => {
   const reactNodes: FlowNodeView[] = content.react.nodes.map((n) => ({
     key: n.id,
     label: n.label,
-    Icon: reactFlowIconByName[n.id],
+    Icon: reactFlowIcon[n.id],
   }));
   const bridgeNodes: FlowNodeView[] = content.bridge.nodes.map((n) => ({
     key: n.id,
     label: n.label,
-    Icon: boundaryIconByName[n.id],
+    Icon: bridgeIcon[n.id],
   }));
   const nextNodes: FlowNodeView[] = content.next.nodes.map((n) => ({
     key: n.id,
     label: n.label,
-    Icon: nextFlowIconByName[n.id],
+    Icon: nextFlowIcon[n.id],
   }));
 
   return (
@@ -77,7 +118,7 @@ export const ReactNextBoundaryHero = ({ content }: Props) => {
             )}
           >
             {content.primaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
           <a
             href="#section-boundary"
@@ -87,7 +128,7 @@ export const ReactNextBoundaryHero = ({ content }: Props) => {
             )}
           >
             {content.secondaryCta}
-            <ArrowRightIcon className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

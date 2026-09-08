@@ -4,18 +4,39 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  BookOpen,
+  FlaskConical,
+  GitBranch,
+  GitPullRequest,
+  KeyRound,
+  type LucideIcon,
+  Search,
+  ShieldCheck,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { GithubReadingContent, TraceStep } from '../content';
-import { RoutineIcon, routineIconByName } from '../icons';
+import type { GithubReadingContent, TraceStep, TraceStepId } from '../content';
 
 type Props = { content: GithubReadingContent['routine'] };
+
+const routineIcon: Record<TraceStepId, LucideIcon> = {
+  docs: BookOpen,
+  search: Search,
+  test: FlaskConical,
+  csrf: ShieldCheck,
+  encryption: KeyRound,
+  'pr-issue': GitPullRequest,
+  'stable-canary': GitBranch,
+};
 
 export const FeatureTraceRoutine = ({ content }: Props) => {
   const [selectedId, setSelectedId] = useState<TraceStep['id']>(content.steps[0].id);
   const selected = content.steps.find((s) => s.id === selectedId) ?? content.steps[0];
   const st = toneTokens[selected.tone];
-  const SelectedIcon = routineIconByName[selected.id];
+  const SelectedIcon = routineIcon[selected.id];
 
   return (
     <section
@@ -28,7 +49,7 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<RoutineIcon className="h-5 w-5" />}
+        icon={<Workflow className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.32fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">
@@ -64,7 +85,7 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
             <ol className="flex flex-col gap-1.5">
               {content.steps.map((step) => {
                 const t = toneTokens[step.tone];
-                const Icon = routineIconByName[step.id];
+                const Icon = routineIcon[step.id];
                 const isSelected = step.id === selected.id;
                 return (
                   <li key={step.id}>

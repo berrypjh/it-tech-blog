@@ -1,13 +1,31 @@
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  BookOpen,
+  FileCode2,
+  GitMerge,
+  Info,
+  Lightbulb,
+  type LucideIcon,
+  Sparkles,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { ToneCard } from '../../../shared/ToneCard';
 import { ToneIconBox } from '../../../shared/ToneIconBox';
 import { toneTokens } from '../../../shared/tones';
-import type { DocsLimitsContent } from '../content';
-import { DocsIcon, strengthIconByName } from '../icons';
+import type { DocsLimitsContent, StrengthCardId } from '../content';
 
 type Props = { content: DocsLimitsContent['strengths'] };
+
+const strengthIcon: Record<StrengthCardId, LucideIcon> = {
+  api: BookOpen,
+  pattern: Sparkles,
+  example: FileCode2,
+  migration: GitMerge,
+  concept: Lightbulb,
+  caution: Info,
+};
 
 export const DocsStrengthCards = ({ content }: Props) => {
   return (
@@ -17,12 +35,12 @@ export const DocsStrengthCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<DocsIcon className="h-5 w-5" />}
+        icon={<BookOpen className="h-5 w-5" />}
       />
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
         {content.cards.map((card) => {
-          const Icon = strengthIconByName[card.id];
+          const Icon = strengthIcon[card.id];
           const t = toneTokens[card.tone];
           return (
             <li key={card.id} className="flex">

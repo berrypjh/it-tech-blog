@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import { Search } from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
 import type { GithubReadingContent, SearchResult } from '../content';
-import { SearchIcon } from '../icons';
 
 type Props = { content: GithubReadingContent['search'] };
 
@@ -27,14 +28,14 @@ export const GithubSearchPractice = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<SearchIcon className="h-5 w-5" />}
+        icon={<Search className="h-5 w-5" />}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-start">
         {/* 검색창 + 키워드 */}
         <div className="flex flex-col gap-sm">
           <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-3">
-            <SearchIcon className="h-4 w-4 shrink-0 text-[var(--term-muted)]" aria-hidden="true" />
+            <Search className="h-4 w-4 shrink-0 text-[var(--term-muted)]" aria-hidden="true" />
             <span className="font-mono text-xsm sm:text-sm font-bold text-[var(--term-fg)] [overflow-wrap:anywhere]">
               {result.keyword}
             </span>
@@ -75,7 +76,7 @@ export const GithubSearchPractice = ({ content }: Props) => {
           className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg"
         >
           <div className="flex items-center gap-sm">
-            <SearchIcon className={cn('h-4 w-4 shrink-0', rt.text)} aria-hidden="true" />
+            <Search className={cn('h-4 w-4 shrink-0', rt.text)} aria-hidden="true" />
             <code
               className={cn(
                 'rounded border px-2 py-0.5 font-mono text-sm font-bold [overflow-wrap:anywhere]',

@@ -4,12 +4,37 @@ import { useState } from 'react';
 
 import { cn } from '@it-tech-blog/utils';
 
+import {
+  Bug,
+  Compass,
+  CornerUpRight,
+  Cpu,
+  Database,
+  HelpCircle,
+  LoaderCircle,
+  type LucideIcon,
+  MousePointerClick,
+  Route,
+  Workflow,
+} from 'lucide-react';
+
 import { SectionHeader } from '../../../shared/SectionHeader';
 import { toneTokens } from '../../../shared/tones';
-import type { QuestionCard, WhyReadNextSourceContent } from '../content';
-import { iconByName, QuestionIcon } from '../icons';
+import type { CardIconName, QuestionCard, WhyReadNextSourceContent } from '../content';
 
 type Props = { content: WhyReadNextSourceContent['questions'] };
+
+const cardIcon: Record<CardIconName, LucideIcon> = {
+  loading: LoaderCircle,
+  cpu: Cpu,
+  link: MousePointerClick,
+  database: Database,
+  redirect: CornerUpRight,
+  route: Route,
+  bug: Bug,
+  workflow: Workflow,
+  compass: Compass,
+};
 
 const PanelStep = ({
   index,
@@ -54,14 +79,14 @@ export const NextQuestionCards = ({ content }: Props) => {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        icon={<QuestionIcon className="h-5 w-5" />}
+        icon={<HelpCircle className="h-5 w-5" />}
       />
 
       {/* 질문 카드 — mobile 1열, sm 2열, lg 3열, xl 5열 */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">
         {content.cards.map((card) => {
           const t = toneTokens[card.tone];
-          const Icon = iconByName[card.icon];
+          const Icon = cardIcon[card.icon];
           const isSelected = card.id === selected.id;
 
           return (
