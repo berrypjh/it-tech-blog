@@ -144,3 +144,5 @@ apps/storybook/storybook-static
 
 # local-llm 스캔 중간 산출물
 .local-llm/
+
+.pnpm-store
