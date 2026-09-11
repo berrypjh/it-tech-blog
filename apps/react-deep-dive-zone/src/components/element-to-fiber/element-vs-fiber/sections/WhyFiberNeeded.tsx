@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { Flag, Loader, Network, RefreshCw, Sparkles } from 'lucide-react';
+import { Flag, Layers, Network, RefreshCw, Sparkles } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -10,9 +10,9 @@ type Props = { content: ElementVsFiberContent['whyFiber'] };
 
 const iconMap = {
   tree: Network,
-  refresh: RefreshCw,
-  loader: Loader,
   flag: Flag,
+  refresh: RefreshCw,
+  layers: Layers,
 } as const;
 
 export const WhyFiberNeeded = ({ content }: Props) => (

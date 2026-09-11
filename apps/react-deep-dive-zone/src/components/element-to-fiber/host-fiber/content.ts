@@ -58,11 +58,9 @@ export type HostComponentFiberContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    description1: string;
-    description2: string;
+    description: string;
     treeNodes: TreeNode[];
     domLabel: string;
-    bridgeLabel: string;
   };
   checkpoint: {
     badge: string;
@@ -73,7 +71,6 @@ export type HostComponentFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -155,11 +152,10 @@ const ko: HostComponentFiberContent = {
     badge: '02',
     eyebrow: '개념 정리',
     title: 'Host Component란?',
-    description1: 'React 외부의 실제 렌더링 환경과 연결되는 기본 요소를 표현하는 Fiber입니다.',
-    description2: '브라우저에서는 div, button, input 같은 DOM 요소와 이어집니다.',
+    description:
+      'React 외부의 실제 렌더링 환경과 연결되는 기본 요소를 표현하는 Fiber입니다. 브라우저에서는 div, button, input 같은 DOM 요소와 이어집니다.',
     treeNodes,
     domLabel: '브라우저 DOM',
-    bridgeLabel: 'HostComponent → 브라우저 DOM',
   },
   checkpoint: {
     badge: '03',
@@ -171,7 +167,6 @@ const ko: HostComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 지점',
     spot: "typeof type === 'string'",
-    question: '문자열 type은 어떤 Fiber 계열로 이어질까?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -307,12 +302,10 @@ const en: HostComponentFiberContent = {
     badge: '02',
     eyebrow: 'CONCEPT',
     title: 'What is a Host Component?',
-    description1:
-      'A Fiber that represents a base element wired to the actual rendering environment outside React.',
-    description2: 'In the browser, that means real DOM elements like div, button, and input.',
+    description:
+      'A Fiber that represents a base element wired to the actual rendering environment outside React. In the browser, that means real DOM elements like div, button, and input.',
     treeNodes,
     domLabel: 'Browser DOM',
-    bridgeLabel: 'HostComponent → Browser DOM',
   },
   checkpoint: {
     badge: '03',
@@ -323,7 +316,6 @@ const en: HostComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Spot',
     spot: "typeof type === 'string'",
-    question: 'Which Fiber family does a string type lead to?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',

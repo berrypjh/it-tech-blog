@@ -8,7 +8,6 @@ import { ElementFiberHero } from './sections/ElementFiberHero';
 import { ElementToFiberFlow } from './sections/ElementToFiberFlow';
 import { PreviousChapterRecap } from './sections/PreviousChapterRecap';
 import { WhyFiberNeeded } from './sections/WhyFiberNeeded';
-import { WithoutFiberProblems } from './sections/WithoutFiberProblems';
 import { elementVsFiberContent } from './content';
 
 type Props = { locale: Locale };
@@ -20,10 +19,9 @@ export const ElementVsFiberPage = ({ locale }: Props) => {
     <StartPageShell>
       <ElementFiberHero content={c.hero} />
       <PreviousChapterRecap content={c.recap} />
-      <ElementFiberComparisonTable content={c.comparison} />
       <WhyFiberNeeded content={c.whyFiber} />
+      <ElementFiberComparisonTable content={c.comparison} />
       <ElementToFiberFlow content={c.flow} />
-      <WithoutFiberProblems content={c.problems} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -44,17 +44,15 @@ export type KeyFiberReuseContent = {
     badge: string;
     eyebrow: string;
     title: string;
+    description: string;
     code: string;
-    explanation: string;
-    items: { id: string; name: string }[];
-    stateLabel: string;
-    sampleValue: string;
-    emptyText: string;
-    setCta: string;
-    switchCta: string;
-    restartCta: string;
-    resetNotice: string;
+    toLabel: string;
+    contacts: { id: string; name: string }[];
+    placeholder: string;
     guide: string;
+    withoutKey: { title: string; result: string };
+    withKey: { title: string; result: string };
+    explanation: string;
   };
   checkpoint: {
     badge: string;
@@ -65,7 +63,6 @@ export type KeyFiberReuseContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -153,24 +150,31 @@ const ko: KeyFiberReuseContent = {
   stateExample: {
     badge: '03',
     eyebrow: '상태 보존과 초기화',
-    title: '상태 보존과 초기화 예시',
-    code: '<Product key={product.id} options={options} />',
-    explanation:
-      '보고 있는 상품이 바뀌면 key가 바뀌고, React는 이를 다른 컴포넌트로 보아 골라둔 옵션을 초기화합니다.',
-    items: [
-      { id: 'p-100', name: '면 티셔츠' },
-      { id: 'p-205', name: '청바지' },
+    title: '받는 사람이 바뀌면 입력 중인 메시지는?',
+    description:
+      '같은 자리에 같은 <Chat>이 그려져도, key가 있느냐에 따라 입력 중이던 메시지가 남기도 하고 사라지기도 합니다.',
+    code: `// key 없음 — 같은 컴포넌트로 보고 상태를 이어감
+<Chat contact={contact} />
+
+// key 있음 — 받는 사람이 바뀌면 새 컴포넌트로 시작
+<Chat key={contact.id} contact={contact} />`,
+    toLabel: '받는 사람',
+    contacts: [
+      { id: 'minsu', name: '민수' },
+      { id: 'jiyoung', name: '지영' },
     ],
-    stateLabel: '고른 옵션',
-    sampleValue: '블랙 · L',
-    emptyText: '선택 안 함',
-    setCta: '옵션 고르기',
-    switchCta: '다른 상품 보기',
-    restartCta: '처음부터 다시',
-    resetNotice:
-      '골라둔 옵션이 사라졌어요! 같은 <Product>지만 key가 달라 새 인스턴스로 마운트됐기 때문입니다.',
-    guide:
-      '버튼을 차례로 눌러보세요. key(상품)가 바뀌는 순간 React가 컴포넌트를 새로 만들어 골라둔 옵션이 초기화됩니다.',
+    placeholder: '메시지를 입력하세요',
+    guide: '두 입력창에 메시지를 적은 뒤, 받는 사람을 바꿔 보세요.',
+    withoutKey: {
+      title: 'key 없음',
+      result: '입력이 그대로 남음 — 민수에게 쓰던 메시지가 지영에게 갈 수 있어요.',
+    },
+    withKey: {
+      title: 'key 있음',
+      result: '입력이 비워짐 — 받는 사람마다 새 대화로 시작해요.',
+    },
+    explanation:
+      'key가 바뀌면 React는 같은 자리여도 다른 컴포넌트로 보고 새 Fiber를 만들어 상태를 초기화합니다. key가 같으면 기존 Fiber와 상태를 그대로 이어갑니다.',
   },
   checkpoint: {
     badge: '04',
@@ -182,7 +186,6 @@ const ko: KeyFiberReuseContent = {
     filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
     functionLabel: '볼 함수',
     functionName: 'updateSlot',
-    question: 'React는 새 child와 기존 Fiber의 key를 어디서 비교할까?',
     primaryCta: 'ReactChildFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',
@@ -276,24 +279,31 @@ const en: KeyFiberReuseContent = {
   stateExample: {
     badge: '03',
     eyebrow: 'PRESERVE VS RESET',
-    title: 'State preserve / reset example',
-    code: '<Product key={product.id} options={options} />',
-    explanation:
-      'When the product you are viewing changes, the key changes — and React treats it as a different component, resetting the options you picked.',
-    items: [
-      { id: 'p-100', name: 'Cotton Tee' },
-      { id: 'p-205', name: 'Jeans' },
+    title: 'What happens to a draft when the recipient changes?',
+    description:
+      'The same <Chat> renders in the same spot, yet whether it has a key decides if the draft survives or resets.',
+    code: `// No key — treated as the same component, state carries over
+<Chat contact={contact} />
+
+// With key — a new recipient starts a new component
+<Chat key={contact.id} contact={contact} />`,
+    toLabel: 'To',
+    contacts: [
+      { id: 'alex', name: 'Alex' },
+      { id: 'sam', name: 'Sam' },
     ],
-    stateLabel: 'Selected options',
-    sampleValue: 'Black · L',
-    emptyText: 'none selected',
-    setCta: 'Pick options',
-    switchCta: 'View another product',
-    restartCta: 'Start over',
-    resetNotice:
-      'Your selection is gone! It is the same <Product>, but a different key mounts a brand-new instance.',
-    guide:
-      'Press the buttons in order. The moment the key (product) changes, React builds a new component, so the options you picked reset.',
+    placeholder: 'Type a message',
+    guide: 'Type a message in both boxes, then switch the recipient.',
+    withoutKey: {
+      title: 'without key',
+      result: 'The draft stays — a message meant for Alex could go to Sam.',
+    },
+    withKey: {
+      title: 'with key',
+      result: 'The draft clears — each recipient starts a fresh conversation.',
+    },
+    explanation:
+      'When the key changes, React treats it as a different component even in the same spot, creating a new Fiber and resetting its state. With the same key, it keeps the existing Fiber and its state.',
   },
   checkpoint: {
     badge: '04',
@@ -305,7 +315,6 @@ const en: KeyFiberReuseContent = {
     filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
     functionLabel: 'Function',
     functionName: 'updateSlot',
-    question: "Where does React compare the new child's key to the existing Fiber's key?",
     primaryCta: 'Read ReactChildFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',

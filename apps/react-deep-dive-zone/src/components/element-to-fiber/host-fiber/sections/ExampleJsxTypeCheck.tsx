@@ -26,8 +26,8 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
 
     <div
       className={cn(
-        'grid items-stretch min-w-0',
-        'grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)]',
+        'grid items-center min-w-0',
+        'grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)]',
         'gap-sm lg:gap-md',
       )}
     >
@@ -54,34 +54,29 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
           showWindowDots
         />
       </article>
+    </div>
 
-      <Connector />
-
-      {/* Key point card */}
-      <article
-        className={cn(
-          'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg justify-center',
-          'shadow-[0_2px_0_var(--term-border)]',
-          emerald.fill.bg,
-          emerald.fill.border,
-        )}
-      >
-        <ToneIconBox tone="emerald" size="md">
-          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
+    {/* Key point callout */}
+    <article
+      className={cn(
+        'flex items-center gap-md rounded-2xl border-2 px-md py-sm sm:px-lg',
+        'shadow-[0_2px_0_var(--term-border)]',
+        emerald.fill.bg,
+        emerald.fill.border,
+      )}
+    >
+      <ToneIconBox tone="emerald" size="md">
+        <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+      </ToneIconBox>
+      <div className="flex flex-col sm:flex-row sm:items-baseline gap-x-sm gap-y-0.5 min-w-0">
         <code className={cn('font-mono text-sm sm:text-md font-bold break-all', emerald.fill.text)}>
           {content.keyPointTitle}
         </code>
-        <p
-          className={cn(
-            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
-            emerald.fill.text,
-          )}
-        >
+        <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', emerald.fill.text)}>
           {content.keyPointDescription}
         </p>
-      </article>
-    </div>
+      </div>
+    </article>
   </section>
 );
 

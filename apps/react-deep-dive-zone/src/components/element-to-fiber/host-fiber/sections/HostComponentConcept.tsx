@@ -1,7 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ArrowRight, Layers, Monitor } from 'lucide-react';
+import { Layers, Monitor } from 'lucide-react';
 
+import { ContrastCard } from '../../../shared/compare';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
@@ -20,58 +21,14 @@ export const HostComponentConcept = ({ content }: Props) => (
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
-      description={content.description1}
+      description={content.description}
       icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <article
-      className={cn(
-        'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      )}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.1fr)] gap-md items-stretch">
-        {/* Left: description */}
-        <div className="flex flex-col gap-md">
-          <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep max-w-[58ch]">
-            {content.description1}
-          </p>
-          <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep max-w-[58ch]">
-            브라우저에서는 <code className={cn('font-mono font-bold', emerald.text)}>div</code>,{' '}
-            <code className={cn('font-mono font-bold', emerald.text)}>button</code>,{' '}
-            <code className={cn('font-mono font-bold', emerald.text)}>input</code> 같은 DOM 요소와
-            이어집니다.
-          </p>
-          <div
-            className={cn(
-              'mt-auto inline-flex items-center gap-sm rounded-xl border-2 px-md py-3',
-              sky.fill.bg,
-              sky.fill.border,
-            )}
-          >
-            <ToneIconBox tone="sky" size="sm">
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </ToneIconBox>
-            <code
-              className={cn('font-mono text-xsm sm:text-sm font-bold break-keep', sky.fill.text)}
-            >
-              {content.bridgeLabel}
-            </code>
-          </div>
-        </div>
-
-        {/* Right: tree + browser */}
-        <div
-          className={cn(
-            'rounded-2xl border p-md',
-            'border-[var(--term-border)] bg-[var(--term-surface)]',
-            'flex flex-col gap-md',
-          )}
-        >
-          <span className="text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-muted)]">
-            host tree → DOM
-          </span>
-
+    <ContrastCard
+      left={
+        <div className="flex flex-col gap-sm p-md sm:p-lg">
+          <PanelLabel>host tree</PanelLabel>
           <ul className="flex flex-col gap-1.5" aria-label="Host fiber tree example">
             {content.treeNodes.map((node) => (
               <li key={node.id}>
@@ -79,10 +36,14 @@ export const HostComponentConcept = ({ content }: Props) => (
               </li>
             ))}
           </ul>
-
+        </div>
+      }
+      right={
+        <div className="flex flex-col gap-sm p-md sm:p-lg lg:justify-center">
+          <PanelLabel>output</PanelLabel>
           <div
             className={cn(
-              'mt-2 flex items-center gap-sm rounded-xl border-2 p-md',
+              'flex items-center gap-sm rounded-xl border-2 p-md',
               sky.fill.bg,
               sky.fill.border,
             )}
@@ -90,21 +51,20 @@ export const HostComponentConcept = ({ content }: Props) => (
             <ToneIconBox tone="sky" size="md">
               <Monitor className="h-6 w-6" aria-hidden="true" />
             </ToneIconBox>
-            <div className="flex flex-col gap-0.5 min-w-0">
-              <span
-                className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', sky.text)}
-              >
-                output
-              </span>
-              <code className={cn('font-mono text-sm font-bold', sky.fill.text)}>
-                {content.domLabel}
-              </code>
-            </div>
+            <code className={cn('font-mono text-sm font-bold', sky.fill.text)}>
+              {content.domLabel}
+            </code>
           </div>
         </div>
-      </div>
-    </article>
+      }
+    />
   </section>
+);
+
+const PanelLabel = ({ children }: { children: React.ReactNode }) => (
+  <span className="text-[10px] uppercase tracking-wider font-mono font-bold text-[var(--term-muted)]">
+    {children}
+  </span>
 );
 
 const TreeRow = ({ node }: { node: TreeNode }) => {

@@ -37,7 +37,6 @@ export const SourceCodeCheckpoint = ({ content }: Props) => (
             icon: Settings2,
           },
         ]}
-        question={content.question}
       />
 
       {/* 우측 코드 패널 + 버튼 */}

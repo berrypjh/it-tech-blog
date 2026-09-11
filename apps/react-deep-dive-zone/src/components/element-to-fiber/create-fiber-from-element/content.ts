@@ -72,7 +72,6 @@ export type CreateFiberFromElementContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -183,7 +182,6 @@ const ko: CreateFiberFromElementContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createFiberFromElement',
-    question: '이 함수가 직접 Fiber 종류를 고르는가, 아니면 다음 함수에 위임하는가?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -207,7 +205,7 @@ const ko: CreateFiberFromElementContent = {
   flow: {
     badge: '04',
     eyebrow: '단계별 흐름',
-    title: '함수 호출 흐름 시각화',
+    title: '함수 호출 흐름',
     description: '한 Element가 Fiber가 되기까지 거치는 5단계를 카드로 정리했습니다.',
     steps: [
       {
@@ -262,11 +260,6 @@ const ko: CreateFiberFromElementContent = {
     tableHeader: { element: 'Element (DEV)', fiber: 'Fiber (DEV)' },
     rows: [
       { id: 'owner', element: 'element._owner', fiber: 'fiber._debugOwner' },
-      {
-        id: 'validated',
-        element: 'element._store.validated',
-        fiber: 'fiber._debugIsCurrentlyValidating',
-      },
       {
         id: 'stack',
         element: 'element._debugStack',
@@ -370,8 +363,6 @@ const en: CreateFiberFromElementContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createFiberFromElement',
-    question:
-      'Does this function decide the Fiber kind itself, or does it delegate to the next function?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -450,11 +441,6 @@ const en: CreateFiberFromElementContent = {
     tableHeader: { element: 'Element (DEV)', fiber: 'Fiber (DEV)' },
     rows: [
       { id: 'owner', element: 'element._owner', fiber: 'fiber._debugOwner' },
-      {
-        id: 'validated',
-        element: 'element._store.validated',
-        fiber: 'fiber._debugIsCurrentlyValidating',
-      },
       {
         id: 'stack',
         element: 'element._debugStack',

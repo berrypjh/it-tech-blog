@@ -58,7 +58,6 @@ export type FiberStoredInformationContent = {
     filePath: string;
     focusLabel: string;
     focus: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -189,7 +188,6 @@ const ko: FiberStoredInformationContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     focusLabel: '볼 곳',
     focus: 'FiberNode 필드 초기화',
-    question: 'Fiber에는 Element에 없던 어떤 종류의 정보가 추가될까?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -279,9 +277,9 @@ const ko: FiberStoredInformationContent = {
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Fiber는 왜 필요한가?',
+    title: '컴포넌트→Fiber 전체 정리',
     description:
-      'Fiber가 얼마나 많은 작업 정보를 갖고 있는지 알았다. 마지막으로 왜 React가 이 구조를 선택했는지 알아보자.',
+      'Fiber가 얼마나 많은 작업 정보를 갖고 있는지 알았다. 마지막으로 이 챕터의 흐름과 핵심을 한 번에 정리하자.',
     cta: '다음 페이지로 이동',
     href: '/why-fiber',
   },
@@ -387,7 +385,6 @@ const en: FiberStoredInformationContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     focusLabel: 'Spot',
     focus: 'FiberNode field initialization',
-    question: "What kind of information does a Fiber add that an Element doesn't have?",
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -477,9 +474,9 @@ const en: FiberStoredInformationContent = {
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'why is Fiber needed?',
+    title: 'Component → Fiber Full Recap',
     description:
-      'Now you know how much work-related info a Fiber holds. Finally, find out why React chose this structure in the first place.',
+      'Now you know how much work-related info a Fiber holds. Finally, wrap up the flow and key ideas of this chapter in one place.',
     cta: 'Go to the next page',
     href: '/why-fiber',
   },

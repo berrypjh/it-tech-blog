@@ -87,7 +87,7 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'key-reuse', label: 'key가 Fiber 재사용에 미치는 영향', type: 'link' },
         { id: 'alternate-intro', label: 'alternate 개념의 시작', type: 'link' },
         { id: 'fiber-node', label: 'Fiber에 저장되는 정보', type: 'link' },
-        { id: 'why-fiber', label: 'Fiber는 왜 필요한가?', type: 'link' },
+        { id: 'why-fiber', label: '컴포넌트→Fiber 전체 정리', type: 'link' },
       ],
     },
     {
@@ -502,7 +502,7 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'key-reuse', label: 'How key Affects Fiber Reuse', type: 'link' },
         { id: 'alternate-intro', label: 'Where alternate Begins', type: 'link' },
         { id: 'fiber-node', label: 'What a Fiber Stores', type: 'link' },
-        { id: 'why-fiber', label: 'Why Fiber Is Necessary', type: 'link' },
+        { id: 'why-fiber', label: 'Component → Fiber Full Recap', type: 'link' },
       ],
     },
     {

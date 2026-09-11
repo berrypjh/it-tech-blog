@@ -56,7 +56,6 @@ export type AlternateFiberContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -148,7 +147,6 @@ const ko: AlternateFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createWorkInProgress',
-    question: 'alternate는 언제 연결될까?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -292,7 +290,6 @@ const en: AlternateFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createWorkInProgress',
-    question: 'When does alternate get wired up?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',

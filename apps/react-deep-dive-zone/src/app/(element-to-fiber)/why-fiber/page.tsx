@@ -8,7 +8,9 @@ export const generateMetadata = async () => {
 
   return {
     title:
-      locale === 'en' ? 'Why is Fiber needed? — React Lab' : 'Fiber는 왜 필요한가? — React Lab',
+      locale === 'en'
+        ? 'Component → Fiber Full Recap — React Lab'
+        : '컴포넌트→Fiber 전체 정리 — React Lab',
     description: c.hero.description,
   };
 };

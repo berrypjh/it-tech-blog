@@ -71,7 +71,6 @@ export type CreateFiberFromTypeAndPropsContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -216,7 +215,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: '함수',
     functionName: 'createFiberFromTypeAndProps',
-    question: 'Fiber 종류는 어떤 조건문을 기준으로 갈라질까?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -441,7 +439,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     functionLabel: 'Function',
     functionName: 'createFiberFromTypeAndProps',
-    question: 'Which conditions decide the Fiber kind?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',

@@ -1,19 +1,16 @@
-import { cn } from '@it-tech-blog/utils';
+import { Group, ShieldCheck, Tag } from 'lucide-react';
 
-import { Group, Hexagon, Info, ShieldCheck, Tag } from 'lucide-react';
-
+import { GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FragmentModeFiberContent, WorkTagCard } from '../content';
+import { WorkTagValueCard } from '../../../shared/worktag';
+import type { FragmentModeFiberContent } from '../content';
 
 type Props = { content: FragmentModeFiberContent['workTags'] };
 
-const toneByVariant: Record<WorkTagCard['variant'], ToneKey> = {
-  fragment: 'violet',
-  mode: 'emerald',
-  info: 'sky',
-};
+const cardStyle = {
+  fragment: { tone: 'violet', Icon: Group },
+  mode: { tone: 'emerald', Icon: ShieldCheck },
+} as const;
 
 export const WorkTagCards = ({ content }: Props) => (
   <section id="work-tags" aria-labelledby="heading-work-tags" className="space-y-md scroll-mt-xl">
@@ -27,88 +24,26 @@ export const WorkTagCards = ({ content }: Props) => (
       icon={<Tag className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 md:grid-cols-3 gap-md items-stretch">
-      {content.cards.map((card) => (
-        <li key={card.id} className="flex">
-          <CardView card={card} />
-        </li>
-      ))}
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
+      {content.cards.map((card) => {
+        const { tone, Icon } = cardStyle[card.variant];
+        return (
+          <li key={card.id} className="flex">
+            <WorkTagValueCard
+              tone={tone}
+              icon={<Icon className="h-5 w-5" aria-hidden="true" />}
+              title={card.title}
+              subtitle={card.subtitle}
+              value={card.value}
+              description={card.description}
+            />
+          </li>
+        );
+      })}
     </ul>
+
+    <div className="flex justify-end">
+      <GithubButton href={content.githubHref} label={content.githubCta} />
+    </div>
   </section>
 );
-
-const CardView = ({ card }: { card: WorkTagCard }) => {
-  if (card.variant === 'info') return <InfoCard card={card} />;
-  return <ValueCard card={card} />;
-};
-
-const ValueCard = ({ card }: { card: WorkTagCard }) => {
-  const tone = toneByVariant[card.variant];
-  const t = toneTokens[tone];
-  const Icon = card.variant === 'fragment' ? Group : ShieldCheck;
-  return (
-    <article
-      className={cn(
-        'group flex flex-1 flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.border,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone}>
-          <Icon className="h-5 w-5" />
-        </ToneIconBox>
-        <div className="flex flex-col">
-          <code
-            className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}
-          >
-            {card.title}
-          </code>
-          <code className={cn('font-mono text-[11px]', t.text)}>{card.subtitle}</code>
-        </div>
-      </header>
-
-      <div
-        className={cn('flex items-center justify-between gap-sm rounded-xl border-2 p-md', t.chip)}
-      >
-        <ToneIconBox tone={tone}>
-          <Hexagon className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
-        <code className={cn('font-mono text-md sm:text-lg font-extrabold tabular-nums', t.text)}>
-          {card.value}
-        </code>
-      </div>
-
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-        {card.description}
-      </p>
-    </article>
-  );
-};
-
-const InfoCard = ({ card }: { card: WorkTagCard }) => {
-  const tone = toneByVariant.info;
-  const t = toneTokens[tone];
-  return (
-    <article
-      className={cn(
-        'flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone}>
-          <Info className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
-        <h3 className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
-          {card.title}
-        </h3>
-      </header>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-        {card.description}
-      </p>
-    </article>
-  );
-};

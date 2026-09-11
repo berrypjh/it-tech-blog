@@ -28,10 +28,8 @@ export type FlowStep = {
 export type WorkTagCard = {
   id: string;
   title: string;
-  label?: string;
-  value?: string;
-  description?: string;
-  variant: 'function' | 'class' | 'info';
+  value: string;
+  variant: 'function' | 'class';
 };
 
 export type ReasonCard = {
@@ -83,7 +81,6 @@ export type FunctionClassComponentFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -94,6 +91,9 @@ export type FunctionClassComponentFiberContent = {
     title: string;
     description: string;
     cards: WorkTagCard[];
+    info: { title: string; description: string };
+    githubCta: string;
+    githubHref: string;
   };
   reasons: {
     badge: string;
@@ -207,7 +207,6 @@ const ko: FunctionClassComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 함수',
     spot: 'shouldConstruct, createFiberFromTypeAndProps',
-    question: '함수 type이 어떤 Fiber tag로 갈지 React는 어떻게 판단할까?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -242,25 +241,24 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
       {
         id: 'function',
         title: 'FunctionComponent',
-        label: 'Work Tag',
         value: '0',
         variant: 'function',
       },
       {
         id: 'class',
         title: 'ClassComponent',
-        label: 'Work Tag',
         value: '1',
         variant: 'class',
       },
-      {
-        id: 'info',
-        title: 'Work Tag란?',
-        description:
-          'Fiber가 어떤 종류의 노드인지 나타내는 내부 분류 값입니다. 이 값을 기준으로 React는 각 노드에 다른 처리 로직을 적용합니다.',
-        variant: 'info',
-      },
     ],
+    info: {
+      title: 'Work Tag란?',
+      description:
+        'Fiber가 어떤 종류의 노드인지 나타내는 내부 분류 값입니다. 이 값을 기준으로 React는 각 노드에 다른 처리 로직을 적용합니다.',
+    },
+    githubCta: 'ReactWorkTags.js 읽기',
+    githubHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
   },
   reasons: {
     badge: '05',
@@ -393,7 +391,6 @@ const en: FunctionClassComponentFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Functions',
     spot: 'shouldConstruct, createFiberFromTypeAndProps',
-    question: 'How does React decide which Fiber tag a function type ends up with?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -428,25 +425,24 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
       {
         id: 'function',
         title: 'FunctionComponent',
-        label: 'Work Tag',
         value: '0',
         variant: 'function',
       },
       {
         id: 'class',
         title: 'ClassComponent',
-        label: 'Work Tag',
         value: '1',
         variant: 'class',
       },
-      {
-        id: 'info',
-        title: 'What is a Work Tag?',
-        description:
-          'An internal classification value showing what kind of node a Fiber is. React picks different processing logic based on this value.',
-        variant: 'info',
-      },
     ],
+    info: {
+      title: 'What is a Work Tag?',
+      description:
+        'An internal classification value showing what kind of node a Fiber is. React picks different processing logic based on this value.',
+    },
+    githubCta: 'Read ReactWorkTags.js',
+    githubHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
   },
   reasons: {
     badge: '05',

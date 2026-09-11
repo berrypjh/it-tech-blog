@@ -25,14 +25,6 @@ export type CoreFiveItem = {
   accent: 'sky' | 'emerald' | 'violet' | 'amber';
 };
 
-export type ProblemCard = {
-  id: string;
-  title: string;
-  description: string;
-  iconName: 'network' | 'clipboard' | 'gauge' | 'pause';
-  accent: 'emerald' | 'sky' | 'violet' | 'amber';
-};
-
 export type PreviewItem = {
   id: string;
   label: string;
@@ -57,13 +49,6 @@ export type FiberWhyNeededContent = {
     title: string;
     items: CoreFiveItem[];
   };
-  problems: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: ProblemCard[];
-  };
   preview: {
     badge: string;
     eyebrow: string;
@@ -73,10 +58,6 @@ export type FiberWhyNeededContent = {
     previewTitle: string;
     previewItems: PreviewItem[];
   };
-  quote: {
-    quote: string;
-    supporting: string;
-  };
   finale: FinaleBannerContent;
 };
 
@@ -84,11 +65,11 @@ const ko: FiberWhyNeededContent = {
   hero: {
     badge: 'Fiber 생성 · 10/10단계',
     title: {
-      line1: '왜 React는 Element에서',
-      line2: '멈추지 않고 Fiber를 만들까?',
+      line1: '컴포넌트가 Fiber가 되기까지,',
+      line2: '한 번에 정리합니다.',
     },
     description:
-      '렌더링을 실제 작업으로 처리하려면 트리 구조, 업데이트 상태, 우선순위, 현재 화면과 다음 화면의 연결을 함께 관리할 내부 단위가 필요합니다.',
+      'JSX가 Element가 되고, Element가 type에 맞는 Fiber로 바뀌어 Render Phase로 넘어가기까지. 이 챕터에서 본 흐름과 핵심을 모아 정리합니다.',
     flowSteps: [
       {
         id: 'jsx',
@@ -121,7 +102,7 @@ const ko: FiberWhyNeededContent = {
     ],
   },
   finalFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: '전체 흐름',
     title: '전체 흐름 최종 정리',
     rows: [
@@ -164,7 +145,7 @@ const ko: FiberWhyNeededContent = {
     ],
   },
   coreFive: {
-    badge: '03',
+    badge: '02',
     eyebrow: '한 챕터 요약',
     title: '이 챕터 핵심 5가지',
     items: [
@@ -205,45 +186,8 @@ const ko: FiberWhyNeededContent = {
       },
     ],
   },
-  problems: {
-    badge: '04',
-    eyebrow: '존재 이유',
-    title: 'Fiber가 해결하는 문제 4가지',
-    description:
-      'Fiber가 추가로 가진 정보들은 막연한 장식이 아니다. 다음 네 가지 실제 문제를 풀기 위한 것이다.',
-    cards: [
-      {
-        id: 'traverse',
-        title: '트리 순회',
-        description: 'parent-child-sibling 구조를 따라 작업을 이동한다.',
-        iconName: 'network',
-        accent: 'emerald',
-      },
-      {
-        id: 'track',
-        title: '업데이트 추적',
-        description: '무엇이 바뀌었는지 저장하고 비교한다.',
-        iconName: 'clipboard',
-        accent: 'sky',
-      },
-      {
-        id: 'priority',
-        title: '우선순위 관리',
-        description: '먼저 처리할 작업을 구분한다.',
-        iconName: 'gauge',
-        accent: 'violet',
-      },
-      {
-        id: 'resume',
-        title: '중단과 재개를 위한\n작업 단위화',
-        description: '작업을 멈추고 다시 이어가기 쉬워진다.',
-        iconName: 'pause',
-        accent: 'amber',
-      },
-    ],
-  },
   preview: {
-    badge: '06',
+    badge: '03',
     eyebrow: '다음 챕터',
     title: '다음 챕터 예고',
     question:
@@ -257,10 +201,6 @@ const ko: FiberWhyNeededContent = {
       { id: 'lanes', label: 'lanes' },
       { id: 'flags', label: 'flags' },
     ],
-  },
-  quote: {
-    quote: 'Element는 설명이다. Fiber는 실행 단위다.',
-    supporting: '이 차이를 이해하는 순간, React 내부 렌더링이 실제 구조로 보이기 시작한다.',
   },
   finale: {
     progressLabel: '5/15 챕터 완료',
@@ -278,11 +218,11 @@ const en: FiberWhyNeededContent = {
   hero: {
     badge: 'Element → Fiber · 10/10',
     title: {
-      line1: "Why doesn't React stop at the Element",
-      line2: 'and instead build a Fiber?',
+      line1: 'From component to Fiber,',
+      line2: 'all in one place.',
     },
     description:
-      'To carry rendering out as real work, React needs an internal unit that manages tree structure, update state, priority, and the link between current and next screens together.',
+      'JSX becomes an Element, the Element turns into the right kind of Fiber for its type, and that Fiber moves on to the Render Phase. This page gathers the flow and key ideas from the chapter.',
     flowSteps: [
       {
         id: 'jsx',
@@ -315,7 +255,7 @@ const en: FiberWhyNeededContent = {
     ],
   },
   finalFlow: {
-    badge: '02',
+    badge: '01',
     eyebrow: 'OVERALL FLOW',
     title: 'The full flow, summarized',
     rows: [
@@ -358,7 +298,7 @@ const en: FiberWhyNeededContent = {
     ],
   },
   coreFive: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'CHAPTER RECAP',
     title: 'Five takeaways from this chapter',
     items: [
@@ -399,45 +339,8 @@ const en: FiberWhyNeededContent = {
       },
     ],
   },
-  problems: {
-    badge: '04',
-    eyebrow: 'REASON TO EXIST',
-    title: 'Four problems Fiber solves',
-    description:
-      'The extra information a Fiber carries is not decoration — each piece solves one of these four real problems.',
-    cards: [
-      {
-        id: 'traverse',
-        title: 'Tree traversal',
-        description: 'Move along parent-child-sibling structures to advance work.',
-        iconName: 'network',
-        accent: 'emerald',
-      },
-      {
-        id: 'track',
-        title: 'Update tracking',
-        description: 'Store and compare what has changed.',
-        iconName: 'clipboard',
-        accent: 'sky',
-      },
-      {
-        id: 'priority',
-        title: 'Priority management',
-        description: 'Distinguish work that must be handled first.',
-        iconName: 'gauge',
-        accent: 'violet',
-      },
-      {
-        id: 'resume',
-        title: 'Pausable, resumable\nunits of work',
-        description: 'Stopping and resuming work becomes easy.',
-        iconName: 'pause',
-        accent: 'amber',
-      },
-    ],
-  },
   preview: {
-    badge: '06',
+    badge: '03',
     eyebrow: 'NEXT CHAPTER',
     title: 'Next-chapter preview',
     question: 'You understand one Fiber. So when Fibers form a tree, how does React traverse it?',
@@ -450,11 +353,6 @@ const en: FiberWhyNeededContent = {
       { id: 'lanes', label: 'lanes' },
       { id: 'flags', label: 'flags' },
     ],
-  },
-  quote: {
-    quote: 'Element is description. Fiber is execution.',
-    supporting:
-      "The moment you grasp that difference, React's internal rendering starts to look like a real structure.",
   },
   finale: {
     progressLabel: 'Chapter 5 of 15 complete',

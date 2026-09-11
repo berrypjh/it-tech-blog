@@ -22,15 +22,7 @@ export type WhyFiberCard = {
   id: string;
   title: string;
   body: string;
-  iconName: 'tree' | 'refresh' | 'loader' | 'flag';
-  tone: ToneKey;
-};
-
-export type ProblemCard = {
-  id: string;
-  title: string;
-  body: string;
-  iconName: 'help' | 'pause' | 'target' | 'layers';
+  iconName: 'tree' | 'flag' | 'refresh' | 'layers';
   tone: ToneKey;
 };
 
@@ -93,13 +85,6 @@ export type ElementVsFiberContent = {
     cards: FlowCard[];
     footnote: string;
   };
-  problems: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: ProblemCard[];
-  };
   nextStep: {
     eyebrow: string;
     title: string;
@@ -154,7 +139,7 @@ const ko: ElementVsFiberContent = {
     notice: '이번 챕터에서는 그 Element가 Fiber가 되는 과정을 본다.',
   },
   comparison: {
-    badge: '02',
+    badge: '03',
     eyebrow: '한눈에 정리',
     title: 'Element vs Fiber 비교표',
     description: '같은 UI 정보를 두 단계가 어떻게 다르게 다루는지, 표 하나로 모았습니다.',
@@ -197,7 +182,7 @@ const ko: ElementVsFiberContent = {
     ],
   },
   whyFiber: {
-    badge: '03',
+    badge: '02',
     eyebrow: '추가 정보 이유',
     title: '왜 Fiber가 필요한가?',
     description:
@@ -205,10 +190,17 @@ const ko: ElementVsFiberContent = {
     cards: [
       {
         id: 'tree',
-        title: '트리 연결',
-        body: '부모 / 자식 / 형제 관계를 return, child, sibling 포인터로 관리합니다.',
+        title: '트리 연결과 진행 위치',
+        body: 'return, child, sibling 포인터로 트리를 잇고, 렌더링이 어디까지 진행됐는지 기록합니다.',
         iconName: 'tree',
         tone: 'blue',
+      },
+      {
+        id: 'priority',
+        title: '우선순위와 중단·재개',
+        body: 'lanes로 먼저 처리할 작업을 고르고, 급한 사용자 입력이 오면 멈췄다가 이어갑니다.',
+        iconName: 'flag',
+        tone: 'amber',
       },
       {
         id: 'update-state',
@@ -218,18 +210,11 @@ const ko: ElementVsFiberContent = {
         tone: 'teal',
       },
       {
-        id: 'progress',
-        title: '작업 진행',
-        body: '렌더링을 어디까지 했는지 추적해 중단과 재개를 가능하게 합니다.',
-        iconName: 'loader',
+        id: 'alternate',
+        title: '현재 / 다음 화면 분리',
+        body: 'alternate로 화면에 보이는 트리와 작업 중인 트리를 짝지어 둡니다.',
+        iconName: 'layers',
         tone: 'violet',
-      },
-      {
-        id: 'priority',
-        title: '우선순위',
-        body: 'lanes로 어떤 작업을 먼저 처리할지 판단해 사용자 입력을 우선합니다.',
-        iconName: 'flag',
-        tone: 'amber',
       },
     ],
   },
@@ -273,43 +258,6 @@ const ko: ElementVsFiberContent = {
     ],
     footnote:
       '같은 UI 정보를 그대로 가져오면서도, Fiber는 트리 연결과 작업 진행 정보를 위해 더 많은 필드를 가집니다.',
-  },
-  problems: {
-    badge: '05',
-    eyebrow: 'Element의 한계',
-    title: 'Fiber가 없으면 곤란한 것들',
-    description:
-      '왜 React는 Element에서 멈추지 않고 한 단계를 더 만들까요. Fiber 없이 진행하려면 다음 네 가지 문제에 부딪힙니다.',
-    cards: [
-      {
-        id: 'progress-lost',
-        title: '어디까지 계산했는지 모른다',
-        body: '렌더링 진행 상태를 중간에 기록하기 어렵다.',
-        iconName: 'help',
-        tone: 'amber',
-      },
-      {
-        id: 'pause-resume',
-        title: '작업을 멈추고 다시 이어가기 어렵다',
-        body: '협력적 스케줄링과 분할 처리가 힘들어진다.',
-        iconName: 'pause',
-        tone: 'sky',
-      },
-      {
-        id: 'target',
-        title: '업데이트 대상을 추적하기 어렵다',
-        body: '어떤 부분이 바뀌었는지 세밀하게 관리하기 어렵다.',
-        iconName: 'target',
-        tone: 'violet',
-      },
-      {
-        id: 'alternate',
-        title: '현재 화면과 다음 화면을 분리하기 어렵다',
-        body: 'alternate 같은 구조 없이 이전/다음 상태 비교가 불편해진다.',
-        iconName: 'layers',
-        tone: 'blue',
-      },
-    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -366,7 +314,7 @@ const en: ElementVsFiberContent = {
     notice: 'This chapter follows that Element as it becomes a Fiber.',
   },
   comparison: {
-    badge: '02',
+    badge: '03',
     eyebrow: 'SIDE BY SIDE',
     title: 'Element vs Fiber — at a glance',
     description:
@@ -410,7 +358,7 @@ const en: ElementVsFiberContent = {
     ],
   },
   whyFiber: {
-    badge: '03',
+    badge: '02',
     eyebrow: 'WHY MORE INFO',
     title: 'Why does Fiber exist?',
     description:
@@ -418,10 +366,17 @@ const en: ElementVsFiberContent = {
     cards: [
       {
         id: 'tree',
-        title: 'Tree links',
-        body: 'Manages parent / child / sibling relations through return, child, and sibling pointers.',
+        title: 'Tree links and progress',
+        body: 'Links the tree through return, child, and sibling pointers and records how far rendering has gone.',
         iconName: 'tree',
         tone: 'blue',
+      },
+      {
+        id: 'priority',
+        title: 'Priority and pause / resume',
+        body: 'Uses lanes to pick which work runs first, pausing and resuming when urgent user input arrives.',
+        iconName: 'flag',
+        tone: 'amber',
       },
       {
         id: 'update-state',
@@ -431,18 +386,11 @@ const en: ElementVsFiberContent = {
         tone: 'teal',
       },
       {
-        id: 'progress',
-        title: 'Work progress',
-        body: 'Tracks how far rendering has gone — enabling pause and resume.',
-        iconName: 'loader',
+        id: 'alternate',
+        title: 'Current vs next screen',
+        body: 'Uses alternate to pair the tree on screen with the tree being worked on.',
+        iconName: 'layers',
         tone: 'violet',
-      },
-      {
-        id: 'priority',
-        title: 'Priority',
-        body: 'Uses lanes to decide which work runs first, so user input wins.',
-        iconName: 'flag',
-        tone: 'amber',
       },
     ],
   },
@@ -486,43 +434,6 @@ const en: ElementVsFiberContent = {
     ],
     footnote:
       'Fiber keeps the same UI information but adds more fields for tree links and work tracking.',
-  },
-  problems: {
-    badge: '05',
-    eyebrow: 'ELEMENT LIMITS',
-    title: 'What goes wrong without Fiber',
-    description:
-      'Why does React take an extra step instead of stopping at the Element? Trying to skip Fiber hits four walls.',
-    cards: [
-      {
-        id: 'progress-lost',
-        title: 'Cannot tell how far we got',
-        body: 'There is no good place to record mid-render progress.',
-        iconName: 'help',
-        tone: 'amber',
-      },
-      {
-        id: 'pause-resume',
-        title: 'Cannot pause and resume work',
-        body: 'Cooperative scheduling and splitting work become very hard.',
-        iconName: 'pause',
-        tone: 'sky',
-      },
-      {
-        id: 'target',
-        title: 'Cannot track update targets',
-        body: 'No fine-grained way to manage which parts changed.',
-        iconName: 'target',
-        tone: 'violet',
-      },
-      {
-        id: 'alternate',
-        title: 'Cannot separate current vs next screen',
-        body: 'Without something like alternate, comparing old and new state is awkward.',
-        iconName: 'layers',
-        tone: 'blue',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

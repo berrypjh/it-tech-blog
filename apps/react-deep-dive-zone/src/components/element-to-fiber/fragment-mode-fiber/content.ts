@@ -9,10 +9,10 @@ export type FlowStep = {
 export type WorkTagCard = {
   id: string;
   title: string;
-  subtitle?: string;
-  value?: string;
+  subtitle: string;
+  value: string;
   description: string;
-  variant: 'fragment' | 'mode' | 'info';
+  variant: 'fragment' | 'mode';
 };
 
 export type SpecialTypeCard = {
@@ -68,7 +68,6 @@ export type FragmentModeFiberContent = {
     filePath: string;
     spotLabel: string;
     spot: string;
-    question: string;
     primaryCta: string;
     primaryHref: string;
     code: string;
@@ -79,6 +78,8 @@ export type FragmentModeFiberContent = {
     title: string;
     description: string;
     cards: WorkTagCard[];
+    githubCta: string;
+    githubHref: string;
   };
   others: {
     badge: string;
@@ -159,7 +160,6 @@ const ko: FragmentModeFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: '볼 지점',
     spot: 'REACT_FRAGMENT_TYPE, REACT_STRICT_MODE_TYPE',
-    question: '특수 타입은 왜 일반 분기보다 별도 경로를 가지는가?',
     primaryCta: 'ReactFiber.js 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -180,15 +180,15 @@ const ko: FragmentModeFiberContent = {
   workTags: {
     badge: '04',
     eyebrow: '내부 분류 값',
-    title: 'Work Tag 카드',
+    title: 'Fragment와 Mode의 Work Tag',
     description:
-      'Fragment와 Mode의 Work Tag 숫자를 함께 기억하면 React 내부 코드를 읽기 쉬워집니다.',
+      '앞 페이지에서 본 Work Tag처럼, Fragment와 Mode도 각자의 번호로 구분됩니다. 두 숫자를 기억해 두면 React 내부 코드를 읽기 쉬워집니다.',
     cards: [
       {
         id: 'fragment',
         title: 'Fragment',
         subtitle: '(REACT_FRAGMENT_TYPE)',
-        value: 'Work Tag 7',
+        value: '7',
         description:
           '자식들을 묶는 논리적 컨테이너로, DOM을 직접 생성하지 않는 보이지 않는 Fiber 노드입니다.',
         variant: 'fragment',
@@ -197,19 +197,15 @@ const ko: FragmentModeFiberContent = {
         id: 'mode',
         title: 'Mode',
         subtitle: '(REACT_STRICT_MODE_TYPE)',
-        value: 'Work Tag 8',
+        value: '8',
         description:
           'StrictMode 관련 설정과 플래그를 보유하며, 개발 모드에서 추가 검사를 수행합니다.',
         variant: 'mode',
       },
-      {
-        id: 'info',
-        title: 'Work Tag란?',
-        description:
-          'Fiber가 어떤 종류의 노드인지를 나타내는 내부 분류 값입니다. React는 이 값으로 각 노드의 동작 방식을 결정합니다.',
-        variant: 'info',
-      },
     ],
+    githubCta: 'ReactWorkTags.js 읽기',
+    githubHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
   },
   others: {
     badge: '05',
@@ -334,7 +330,6 @@ const en: FragmentModeFiberContent = {
     filePath: 'packages/react-reconciler/src/ReactFiber.js',
     spotLabel: 'Spot',
     spot: 'REACT_FRAGMENT_TYPE, REACT_STRICT_MODE_TYPE',
-    question: 'Why do special types take a separate path?',
     primaryCta: 'Read ReactFiber.js',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -355,15 +350,15 @@ const en: FragmentModeFiberContent = {
   workTags: {
     badge: '04',
     eyebrow: 'INTERNAL TAGS',
-    title: 'Work Tag cards',
+    title: 'Work Tags for Fragment and Mode',
     description:
-      'Remember the Work Tag numbers of Fragment and Mode to read React internals more easily.',
+      'Like the Work Tags on the previous page, Fragment and Mode each get their own number. Remembering both makes React internals easier to read.',
     cards: [
       {
         id: 'fragment',
         title: 'Fragment',
         subtitle: '(REACT_FRAGMENT_TYPE)',
-        value: 'Work Tag 7',
+        value: '7',
         description:
           'An invisible Fiber node that groups children together without producing a DOM element.',
         variant: 'fragment',
@@ -372,19 +367,15 @@ const en: FragmentModeFiberContent = {
         id: 'mode',
         title: 'Mode',
         subtitle: '(REACT_STRICT_MODE_TYPE)',
-        value: 'Work Tag 8',
+        value: '8',
         description:
           'Holds StrictMode settings and flags, and runs extra checks in development mode.',
         variant: 'mode',
       },
-      {
-        id: 'info',
-        title: 'What is a Work Tag?',
-        description:
-          'An internal classification value showing what kind of node a Fiber is. React uses it to decide how each node behaves.',
-        variant: 'info',
-      },
     ],
+    githubCta: 'Read ReactWorkTags.js',
+    githubHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
   },
   others: {
     badge: '05',
