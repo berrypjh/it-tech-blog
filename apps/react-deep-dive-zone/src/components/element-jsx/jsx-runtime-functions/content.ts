@@ -40,6 +40,8 @@ export type CheckpointCard = {
   code: string;
   flowPills: string[];
   tone: ToneKey;
+  href: string;
+  cta: string;
 };
 
 export type ChecklistItem = { id: string; text: string };
@@ -106,12 +108,6 @@ export type JsxRuntimeFunctionsContent = {
     title: string;
     description: string;
     cards: ModeCard[];
-  };
-  question: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -261,6 +257,8 @@ const ko: JsxRuntimeFunctionsContent = {
         code: "export { Fragment, jsx, jsxs } from './src/jsx/ReactJSX';",
         flowPills: ['jsx-runtime.js', 'ReactJSX', 'ReactJSXElement.js'],
         tone: 'sky',
+        href: 'https://github.com/facebook/react/blob/main/packages/react/jsx-runtime.js',
+        cta: 'jsx-runtime.js 읽기',
       },
       {
         id: 'dev',
@@ -269,6 +267,8 @@ const ko: JsxRuntimeFunctionsContent = {
         code: "export { Fragment, jsxDEV } from './src/jsx/ReactJSX';",
         flowPills: ['jsx-dev-runtime.js', 'ReactJSX', 'ReactJSXElement.js'],
         tone: 'violet',
+        href: 'https://github.com/facebook/react/blob/main/packages/react/jsx-dev-runtime.js',
+        cta: 'jsx-dev-runtime.js 읽기',
       },
     ],
   },
@@ -302,15 +302,6 @@ const ko: JsxRuntimeFunctionsContent = {
         ],
         miniCode: 'jsxDEV()\n→ React Element\n(+ 소스/디버그 정보)',
       },
-    ],
-  },
-  question: {
-    badge: '06',
-    eyebrow: '핵심 정리',
-    title: '기억할 한 가지',
-    lines: [
-      'React는 개발 모드용 runtime(jsxDEV)을 따로 둡니다.',
-      '실행 성능과 디버깅 품질을 동시에 잡기 위해서입니다.',
     ],
   },
   nextStep: {
@@ -464,6 +455,8 @@ const en: JsxRuntimeFunctionsContent = {
         code: "export { Fragment, jsx, jsxs } from './src/jsx/ReactJSX';",
         flowPills: ['jsx-runtime.js', 'ReactJSX', 'ReactJSXElement.js'],
         tone: 'sky',
+        href: 'https://github.com/facebook/react/blob/main/packages/react/jsx-runtime.js',
+        cta: 'Read jsx-runtime.js',
       },
       {
         id: 'dev',
@@ -472,6 +465,8 @@ const en: JsxRuntimeFunctionsContent = {
         code: "export { Fragment, jsxDEV } from './src/jsx/ReactJSX';",
         flowPills: ['jsx-dev-runtime.js', 'ReactJSX', 'ReactJSXElement.js'],
         tone: 'violet',
+        href: 'https://github.com/facebook/react/blob/main/packages/react/jsx-dev-runtime.js',
+        cta: 'Read jsx-dev-runtime.js',
       },
     ],
   },
@@ -505,15 +500,6 @@ const en: JsxRuntimeFunctionsContent = {
         ],
         miniCode: 'jsxDEV()\n→ React Element\n(+ source / debug info)',
       },
-    ],
-  },
-  question: {
-    badge: '06',
-    eyebrow: 'KEY TAKEAWAY',
-    title: 'One thing to remember',
-    lines: [
-      'React keeps a separate dev-mode runtime (jsxDEV) on purpose.',
-      'It balances execution performance and debugging quality at the same time.',
     ],
   },
   nextStep: {

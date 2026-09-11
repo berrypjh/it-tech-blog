@@ -7,7 +7,6 @@ import { CodeTransformExamples } from './sections/CodeTransformExamples';
 import { CompileFlowSteps } from './sections/CompileFlowSteps';
 import { FunctionCallBenefits } from './sections/FunctionCallBenefits';
 import { JsxTransformHero } from './sections/JsxTransformHero';
-import { React19TransformReasons } from './sections/React19TransformReasons';
 import { TransformComparison } from './sections/TransformComparison';
 import { jsxTransformFlowContent } from './content';
 
@@ -21,9 +20,8 @@ export const JsxTransformFlowPage = ({ locale }: Props) => {
       <JsxTransformHero content={c.hero} />
       <CompileFlowSteps content={c.compileFlow} />
       <TransformComparison content={c.comparison} />
-      <React19TransformReasons content={c.react19} />
-      <CodeTransformExamples content={c.examples} />
       <FunctionCallBenefits content={c.benefits} />
+      <CodeTransformExamples content={c.examples} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

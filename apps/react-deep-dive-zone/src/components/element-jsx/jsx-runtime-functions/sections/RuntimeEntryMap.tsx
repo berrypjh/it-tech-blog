@@ -1,6 +1,6 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { ArrowDown, ArrowRight, Atom, Box, Braces, Code, Layers, Map } from 'lucide-react';
+import { ArrowDown, Atom, Box, Braces, Code, Layers, Map } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -248,9 +248,5 @@ const ResultBigNode = ({ label, note }: { label: string; note: string }) => (
       </span>
       <span className="text-[11px] text-[var(--term-muted)] break-keep">{note}</span>
     </div>
-    <ArrowRight
-      aria-hidden="true"
-      className={cn('hidden sm:block h-4 w-4', toneTokens.amber.text)}
-    />
   </div>
 );

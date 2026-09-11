@@ -2,7 +2,7 @@ import { cn } from '@it-tech-blog/utils';
 
 import { ArrowRight, Compass, FileText } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CheckpointCard, JsxRuntimeFunctionsContent } from '../content';
@@ -87,6 +87,8 @@ const CheckpointCardView = ({ card }: { card: CheckpointCard }) => {
           </li>
         ))}
       </ol>
+
+      <GithubButton href={card.href} label={card.cta} className="mt-auto" />
     </article>
   );
 };

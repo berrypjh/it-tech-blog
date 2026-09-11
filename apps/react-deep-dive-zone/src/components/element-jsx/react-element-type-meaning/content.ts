@@ -35,15 +35,6 @@ export type JsxRow = {
   tone: ToneKey;
 };
 
-export type CompareRow = {
-  id: TypeKindId;
-  category: string;
-  jsx: string;
-  typeValue: string;
-  next: string;
-  tone: ToneKey;
-};
-
 export type FiberFlowStep = {
   id: string;
   number: string;
@@ -78,24 +69,15 @@ export type ReactElementTypeMeaningContent = {
     description: string;
     items: JsxRow[];
   };
-  compare: {
+  checkpoint: {
     badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    headers: { category: string; jsx: string; type: string; next: string };
-    rows: CompareRow[];
-    emphasis: string;
-  };
-  source: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    descriptionTitle: string;
-    descriptionBody: string;
-    bullets: string[];
     fileLabel: string;
-    fileName: string;
+    filePath: string;
+    pointLabel: string;
+    pointValue: string;
     code: string;
     primaryCta: string;
     primaryHref: string;
@@ -236,63 +218,23 @@ const ko: ReactElementTypeMeaningContent = {
       },
     ],
   },
-  compare: {
+  checkpoint: {
     badge: '03',
-    eyebrow: 'type 비교',
-    title: '세 분류, 한 표에서 정리',
+    eyebrow: '코드 체크포인트',
+    title: 'ReactElement가 type을 그대로 담는 순간',
     description:
-      'JSX 모양과 type 값, 이후 의미까지 같은 자리에서 비교합니다. 이 분류가 곧 Fiber 갈래의 출발점입니다.',
-    headers: {
-      category: '구분',
-      jsx: 'JSX',
-      type: 'type',
-      next: '이후 의미',
-    },
-    rows: [
-      {
-        id: 'host',
-        category: 'Host Component',
-        jsx: '<div />',
-        typeValue: "'div' 문자열",
-        next: 'createFiberFromTypeAndProps에서 Host로 분류되어 DOM Element Fiber가 생성됩니다.',
-        tone: 'cyan',
-      },
-      {
-        id: 'custom',
-        category: 'Custom Component',
-        jsx: '<MyButton />',
-        typeValue: 'MyButton 함수/클래스',
-        next: '함수/클래스 Fiber로 분류되어 컴포넌트 로직이 실행됩니다.',
-        tone: 'violet',
-      },
-      {
-        id: 'special',
-        category: 'Special Type',
-        jsx: '<Suspense />',
-        typeValue: 'REACT_SUSPENSE_TYPE 심벌',
-        next: '특별 타입으로 분류되어 Suspense 전용 로직이 적용됩니다.',
-        tone: 'amber',
-      },
-    ],
-    emphasis: 'type은 다음 Fiber 생성 단계에서 분류의 기준이 된다.',
-  },
-  source: {
-    badge: '04',
-    eyebrow: '코드 연결',
-    title: 'ReactElement가 type을 어떻게 다루는지',
-    descriptionTitle: 'ReactElement는 전달받은 type을 객체에 그대로 넣습니다.',
-    descriptionBody:
-      '이 값은 이후 Fiber 생성 단계에서 무엇을 만들지 판단하는 입력이 됩니다. ReactElement 단계에서는 type을 바꾸지 않고 저장합니다.',
-    bullets: ['type은 변경되지 않은 채 저장됩니다.', '렌더링 방식의 분기 기준이 됩니다.'],
+      'ReactElement는 전달받은 type을 바꾸지 않고 객체에 그대로 넣습니다. 이 값은 이후 Fiber를 만들 때 무엇을 만들지 판단하는 기준이 됩니다.',
     fileLabel: '파일',
-    fileName: 'ReactJSXElement.js',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
+    pointLabel: '볼 포인트',
+    pointValue: 'type 필드 저장',
     code: 'function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  // 개발 모드 필드 생략...\n\n  return element;\n}',
     primaryCta: 'ReactElement 코드 읽기',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   fiber: {
-    badge: '05',
+    badge: '04',
     eyebrow: '다음 챕터 예고',
     title: 'type에서 Fiber 갈래까지',
     description:
@@ -459,58 +401,23 @@ const en: ReactElementTypeMeaningContent = {
       },
     ],
   },
-  compare: {
+  checkpoint: {
     badge: '03',
-    eyebrow: 'TYPE COMPARISON',
-    title: 'Three categories, one table',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'See ReactElement store type as-is',
     description:
-      'JSX shape, type value, and downstream meaning side by side. This split is the origin of the Fiber split.',
-    headers: { category: 'Aspect', jsx: 'JSX', type: 'type', next: 'What follows' },
-    rows: [
-      {
-        id: 'host',
-        category: 'Host Component',
-        jsx: '<div />',
-        typeValue: "'div' (string)",
-        next: 'createFiberFromTypeAndProps classifies it as Host and creates a DOM Element Fiber.',
-        tone: 'cyan',
-      },
-      {
-        id: 'custom',
-        category: 'Custom Component',
-        jsx: '<MyButton />',
-        typeValue: 'MyButton (function/class)',
-        next: 'Classified as a function/class Fiber; component logic runs.',
-        tone: 'violet',
-      },
-      {
-        id: 'special',
-        category: 'Special Type',
-        jsx: '<Suspense />',
-        typeValue: 'REACT_SUSPENSE_TYPE (Symbol)',
-        next: 'Classified as a special type; Suspense-specific logic applies.',
-        tone: 'amber',
-      },
-    ],
-    emphasis: 'type is the criterion used to split Fibers in the next stage.',
-  },
-  source: {
-    badge: '04',
-    eyebrow: 'SOURCE LINK',
-    title: 'How ReactElement stores type',
-    descriptionTitle: 'ReactElement stores the received type as-is on the object.',
-    descriptionBody:
-      'That value is later used as input when deciding what kind of Fiber to create. ReactElement itself does not transform type.',
-    bullets: ['type is stored unchanged.', 'It is the branching point for rendering.'],
+      'ReactElement puts the received type on the object unchanged. Later, when Fibers are created, that value decides what kind of Fiber to build.',
     fileLabel: 'File',
-    fileName: 'ReactJSXElement.js',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
+    pointLabel: 'Watch for',
+    pointValue: 'where type is stored',
     code: 'function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  // dev-mode fields omitted...\n\n  return element;\n}',
     primaryCta: 'Open ReactElement source',
     primaryHref:
       'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
   },
   fiber: {
-    badge: '05',
+    badge: '04',
     eyebrow: 'NEXT CHAPTER',
     title: 'From type to Fiber branches',
     description:

@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { JsxRuntimeHero } from './sections/JsxRuntimeHero';
 import { RuntimeEntryMap } from './sections/RuntimeEntryMap';
 import { RuntimeExampleCards } from './sections/RuntimeExampleCards';
-import { RuntimeLearningQuestion } from './sections/RuntimeLearningQuestion';
 import { RuntimeModeComparison } from './sections/RuntimeModeComparison';
 import { RuntimeRoleComparisonTable } from './sections/RuntimeRoleComparisonTable';
 import { RuntimeSourceCheckpoints } from './sections/RuntimeSourceCheckpoints';
@@ -25,7 +24,6 @@ export const JsxRuntimeFunctionsPage = ({ locale }: Props) => {
       <RuntimeExampleCards content={c.examples} />
       <RuntimeSourceCheckpoints content={c.checkpoints} />
       <RuntimeModeComparison content={c.modes} />
-      <RuntimeLearningQuestion content={c.question} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -10,7 +10,6 @@ type Props = { content: ReactCreateElementContent['checkpoint'] };
 export const CreateElementSourceCheckpoint = ({ content }: Props) => {
   const fileInfo = content.infos.find((info) => info.id === 'file');
   const functionInfo = content.infos.find((info) => info.id === 'function');
-  const questionInfo = content.infos.find((info) => info.id === 'question');
 
   return (
     <section
@@ -54,16 +53,11 @@ export const CreateElementSourceCheckpoint = ({ content }: Props) => {
                 ]
               : []),
           ]}
-          question={questionInfo?.value ?? ''}
         />
 
         {/* 우측 코드 패널 + 버튼 */}
         <div className="flex flex-col gap-md min-w-0">
-          <CodePreviewPanel
-            header={fileInfo?.value}
-            caption="ReactJSXElement.js"
-            code={content.code}
-          />
+          <CodePreviewPanel header={fileInfo?.value} code={content.code} />
 
           <GithubButton href={content.primaryHref} label={content.primaryCta} />
         </div>

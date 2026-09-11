@@ -37,15 +37,10 @@ export const ElementSourceCheckpoint = ({ content }: Props) => (
             icon: Code,
           },
         ]}
-        question={content.question}
       />
 
       <div className="flex flex-col gap-md min-w-0">
-        <CodePreviewPanel
-          header={content.filePath}
-          caption="ReactJSXElement.js"
-          code={content.code}
-        />
+        <CodePreviewPanel header={content.filePath} code={content.code} />
 
         <GithubButton href={content.primaryHref} label={content.primaryCta} />
       </div>

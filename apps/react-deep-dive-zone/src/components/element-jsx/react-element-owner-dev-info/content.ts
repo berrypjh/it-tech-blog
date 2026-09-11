@@ -109,8 +109,6 @@ export type ReactElementOwnerDevInfoContent = {
     filePath: string;
     pointsLabel: string;
     points: string[];
-    questionLabel: string;
-    question: string;
     code: string;
     primaryCta: string;
     primaryHref: string;
@@ -292,8 +290,6 @@ const ko: ReactElementOwnerDevInfoContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     pointsLabel: '볼 것',
     points: ['_owner', '_debugInfo', '_debugStack', '_debugTask', 'Object.freeze'],
-    questionLabel: '학습 질문',
-    question: 'React는 개발 모드에서 왜 Element에 추가 정보를 붙일까?',
     code: "if (__DEV__) {\n  element._store = {};\n\n  Object.defineProperty(element._store, 'validated', {\n    configurable: false,\n    enumerable: false,\n    writable: true,\n    value: 0,\n  });\n\n  element._debugInfo = null;\n  element._debugStack = debugStack;\n  element._debugTask = debugTask;\n\n  if (Object.freeze) {\n    Object.freeze(element.props);\n    Object.freeze(element);\n  }\n}",
     primaryCta: '개발 모드 코드 읽기',
     primaryHref:
@@ -503,8 +499,6 @@ const en: ReactElementOwnerDevInfoContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     pointsLabel: 'Watch for',
     points: ['_owner', '_debugInfo', '_debugStack', '_debugTask', 'Object.freeze'],
-    questionLabel: 'Learning question',
-    question: 'Why does React attach extra info to Elements in dev mode?',
     code: "if (__DEV__) {\n  element._store = {};\n\n  Object.defineProperty(element._store, 'validated', {\n    configurable: false,\n    enumerable: false,\n    writable: true,\n    value: 0,\n  });\n\n  element._debugInfo = null;\n  element._debugStack = debugStack;\n  element._debugTask = debugTask;\n\n  if (Object.freeze) {\n    Object.freeze(element.props);\n    Object.freeze(element);\n  }\n}",
     primaryCta: 'Open dev-mode source',
     primaryHref:

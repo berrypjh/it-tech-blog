@@ -104,8 +104,6 @@ export type ReactElementKeySeparatedContent = {
     filePath: string;
     pointLabel: string;
     pointValue: string;
-    questionLabel: string;
-    question: string;
     code: string;
     primaryCta: string;
     primaryHref: string;
@@ -245,8 +243,6 @@ const ko: ReactElementKeySeparatedContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     pointLabel: '볼 포인트',
     pointValue: 'key 추출 로직',
-    questionLabel: '학습 질문',
-    question: '왜 React는 key를 props와 별도로 뽑아낼까?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  // ...\n}\n\nlet keyValue = null;\n\nif (hasValidKey(config)) {\n  keyValue = '' + config.key;\n}\n\n// key는 props에서 제거되며\n// ReactElement 객체의 별도 필드로 저장된다.\n// ...",
     primaryCta: 'key 처리 코드 열기',
     primaryHref:
@@ -450,8 +446,6 @@ const en: ReactElementKeySeparatedContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     pointLabel: 'Watch for',
     pointValue: 'key extraction logic',
-    questionLabel: 'Learning question',
-    question: 'Why does React pull key out, separate from props?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  // ...\n}\n\nlet keyValue = null;\n\nif (hasValidKey(config)) {\n  keyValue = '' + config.key;\n}\n\n// key is removed from props and stored as a\n// separate field on the ReactElement object.\n// ...",
     primaryCta: 'Open key handling source',
     primaryHref:

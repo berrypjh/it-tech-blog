@@ -42,11 +42,7 @@ export const RefSourceCheckpoint = ({ content }: Props) => (
 
       {/* 우측 코드 패널 + 버튼 */}
       <div className="flex flex-col gap-md min-w-0">
-        <CodePreviewPanel
-          header={content.filePath}
-          caption="ReactJSXElement.js"
-          code={content.code}
-        />
+        <CodePreviewPanel header={content.filePath} code={content.code} />
 
         <GithubButton href={content.primaryHref} label={content.primaryCta} />
       </div>

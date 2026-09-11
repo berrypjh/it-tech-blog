@@ -16,14 +16,6 @@ export type CheckPoint = {
   text: string;
 };
 
-export type ReasonCard = {
-  id: string;
-  title: string;
-  body: string;
-  iconName: 'link' | 'gauge' | 'fileText';
-  tone: ToneKey;
-};
-
 export type ExampleLegend = {
   id: 'jsx' | 'jsxs' | 'jsxDEV';
   label: string;
@@ -87,15 +79,6 @@ export type JsxTransformFlowContent = {
     modernChecks: CheckPoint[];
     sameResultTitle: string;
     sameResultBody: string;
-    banner: string;
-  };
-  react19: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    smallBadge: string;
-    cards: ReasonCard[];
   };
   examples: {
     badge: string;
@@ -210,38 +193,6 @@ const ko: JsxTransformFlowContent = {
     ],
     sameResultTitle: '같은 결과',
     sameResultBody: 'React Element 생성 흐름으로 이어짐',
-    banner: '표현은 달라졌지만, 둘 다 React Element 생성 흐름으로 이어진다.',
-  },
-  react19: {
-    badge: '03',
-    eyebrow: '새 Transform 기준',
-    title: '저장소를 읽는 기준점을 맞춥니다',
-    description:
-      'React 19 코드를 읽을 때는 현대 JSX Transform이 기본입니다. 그 이유는 단순히 “더 새것이라서”가 아닙니다.',
-    smallBadge: 'React 19 최신 기준',
-    cards: [
-      {
-        id: 'ref-as-prop',
-        title: 'ref as prop과 연결된다',
-        body: 'React 19의 ref as prop 모델은 새 JSX Transform 기준의 런타임과 함께 설계되었습니다.',
-        iconName: 'link',
-        tone: 'teal',
-      },
-      {
-        id: 'perf',
-        title: 'JSX 처리 성능 개선과 맞물린다',
-        body: '불필요한 createElement 호출을 줄이고 필요한 함수만 가져와 사용하여 더 나은 성능을 제공합니다.',
-        iconName: 'gauge',
-        tone: 'sky',
-      },
-      {
-        id: 'repo-flow',
-        title: '현대 React 저장소 흐름을 읽기에 더 적합하다',
-        body: 'react-reconciler와 renderer가 기대하는 입력 형태를 최신 JSX Transform을 기준으로 설명합니다.',
-        iconName: 'fileText',
-        tone: 'violet',
-      },
-    ],
   },
   examples: {
     badge: '04',
@@ -283,30 +234,30 @@ const ko: JsxTransformFlowContent = {
       '개발 모드에서는 동일한 구조라도 jsxDEV가 사용되어 소스 정보, 검증, 경고 메시지에 활용됩니다.',
   },
   benefits: {
-    badge: '05',
+    badge: '03',
     eyebrow: '함수 호출의 이점',
-    title: '함수 호출이 되는 순간, 가능해지는 것들',
+    title: 'JSX가 함수 호출이 되면 달라지는 것들',
     description:
-      '단순한 문법 차원의 변화가 아닙니다. 함수 호출로 바뀌면 React가 트리 구조를 다룰 수 있는 입구가 열립니다.',
+      '문법만 바뀌는 게 아닙니다. JSX가 함수 호출로 바뀌면 UI는 평범한 JavaScript 객체가 되고, React는 그 객체를 받아 다음 단계를 진행합니다.',
     cards: [
       {
         id: 'data',
-        title: '트리 구조를 데이터처럼 다룰 수 있다',
-        body: 'UI 구조가 객체 형태의 데이터로 표현되어 저장, 비교, 순회, 분석이 쉬워집니다.',
+        title: 'UI를 데이터로 다룰 수 있다',
+        body: 'UI 구조가 평범한 객체로 표현되므로 저장하고, 비교하고, 순회할 수 있습니다.',
         iconName: 'tree',
         tone: 'teal',
       },
       {
         id: 'render-input',
-        title: 'React가 렌더링 계산에 사용할 입력이 생긴다',
-        body: 'Element → Fiber → Render 계산으로 이어지는 파이프라인의 첫 입력이 됩니다.',
+        title: 'React가 렌더링을 시작할 입력이 된다',
+        body: '이렇게 만들어진 Element는 Element → Fiber → 렌더링으로 이어지는 흐름의 첫 입력이 됩니다.',
         iconName: 'calculator',
         tone: 'sky',
       },
       {
         id: 'devmode',
-        title: '개발 모드에서 검증과 경고를 추가하기 쉽다',
-        body: 'jsxDEV가 포함하는 정보로 더 정확한 에러 메시지와 경고를 제공합니다.',
+        title: '개발 모드에서 더 친절한 경고를 줄 수 있다',
+        body: 'jsxDEV는 소스 위치 같은 개발용 정보를 함께 넘겨, 에러와 경고가 문제 지점을 더 정확히 가리키게 합니다.',
         iconName: 'shieldCheck',
         tone: 'emerald',
       },
@@ -405,38 +356,6 @@ const en: JsxTransformFlowContent = {
     ],
     sameResultTitle: 'Same result',
     sameResultBody: 'Both lead into React Element creation',
-    banner: 'The expression differs — both still lead to React Element creation.',
-  },
-  react19: {
-    badge: '03',
-    eyebrow: 'WHY MODERN',
-    title: 'Pin the baseline before reading the repo',
-    description:
-      'When reading React 19 code, the modern JSX transform is the assumption. The reason is not just “newer.”',
-    smallBadge: 'React 19 baseline',
-    cards: [
-      {
-        id: 'ref-as-prop',
-        title: 'It is tied to ref as prop',
-        body: "React 19's ref-as-prop model was designed alongside the modern JSX transform runtime.",
-        iconName: 'link',
-        tone: 'teal',
-      },
-      {
-        id: 'perf',
-        title: 'It pairs with JSX performance improvements',
-        body: 'Fewer createElement calls and on-demand imports yield a better runtime story.',
-        iconName: 'gauge',
-        tone: 'sky',
-      },
-      {
-        id: 'repo-flow',
-        title: 'It matches the repo flow you read today',
-        body: 'react-reconciler and renderers describe their expected input in terms of the modern transform.',
-        iconName: 'fileText',
-        tone: 'violet',
-      },
-    ],
   },
   examples: {
     badge: '04',
@@ -478,7 +397,7 @@ const en: JsxTransformFlowContent = {
       'In development the same shape compiles to jsxDEV, which carries source info for validation and warnings.',
   },
   benefits: {
-    badge: '05',
+    badge: '03',
     eyebrow: 'BENEFITS',
     title: 'Function calls open the door for the rest of React',
     description:

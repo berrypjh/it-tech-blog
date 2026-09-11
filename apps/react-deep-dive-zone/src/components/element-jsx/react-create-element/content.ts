@@ -229,11 +229,6 @@ const ko: ReactCreateElementContent = {
         label: '볼 함수',
         value: 'createElement',
       },
-      {
-        id: 'question',
-        label: '학습 질문',
-        value: 'createElement는 어떤 값들을 정리한 뒤 ReactElement를 호출할까?',
-      },
     ],
     code: "function createElement(type, config, children) {\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) {\n      key = '' + config.key;\n    }\n  }\n\n  const props = {};\n  // ...attributes 정리 (props에 복사)\n\n  return ReactElement(type, key, props, children);\n}",
     primaryCta: 'createElement 코드 열기',
@@ -450,11 +445,6 @@ const en: ReactCreateElementContent = {
         id: 'function',
         label: 'Function',
         value: 'createElement',
-      },
-      {
-        id: 'question',
-        label: 'Learning question',
-        value: 'What values does createElement organize before calling ReactElement?',
       },
     ],
     code: "function createElement(type, config, children) {\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) {\n      key = '' + config.key;\n    }\n  }\n\n  const props = {};\n  // ...copy attributes into props\n\n  return ReactElement(type, key, props, children);\n}",

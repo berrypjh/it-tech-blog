@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { CheckCircle2, GitCompare, Sparkles } from 'lucide-react';
+import { CheckCircle2, GitCompare } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { CompareVs } from '../../../shared/compare';
-import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CheckPoint, JsxTransformFlowContent } from '../content';
@@ -89,10 +88,6 @@ export const TransformComparison = ({ content }: Props) => (
         </p>
       </div>
     </div>
-
-    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
-      {content.banner}
-    </SectionNote>
   </section>
 );
 

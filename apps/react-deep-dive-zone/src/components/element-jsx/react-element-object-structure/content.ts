@@ -82,8 +82,6 @@ export type ReactElementObjectStructureContent = {
     filePath: string;
     functionLabel: string;
     functionName: string;
-    questionLabel: string;
-    question: string;
     code: string;
     primaryCta: string;
     primaryHref: string;
@@ -106,12 +104,6 @@ export type ReactElementObjectStructureContent = {
     headers: { aspect: string; plain: string; element: string };
     rows: CompareRow[];
     emphasis: string;
-  };
-  learningCheck: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    lines: string[];
   };
   nextStep: {
     eyebrow: string;
@@ -264,8 +256,6 @@ const ko: ReactElementObjectStructureContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     functionLabel: '볼 함수',
     functionName: 'ReactElement',
-    questionLabel: '학습 질문',
-    question: 'Element 객체는 어떤 필드들을 중심으로 만들어질까?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  if (__DEV__) {\n    element._store = {};\n    Object.defineProperty(element._store, 'validated', {\n      value: false,\n    });\n    element._debugStack = debugStack;\n    element._debugTask = debugTask;\n  }\n\n  return element;\n}",
     primaryCta: 'ReactElement 코드 읽기',
     primaryHref:
@@ -338,15 +328,6 @@ const ko: ReactElementObjectStructureContent = {
       },
     ],
     emphasis: 'React Element는 단순한 object처럼 보이지만, React가 해석하는 특별한 객체다.',
-  },
-  learningCheck: {
-    badge: '06',
-    eyebrow: '핵심 정리',
-    title: '기억할 한 가지',
-    lines: [
-      'React Element는 실제 화면 객체가 아니라 렌더링 계산의 입력 객체입니다.',
-      '브라우저 DOM은 renderer가 commit 단계에서 만드는 결과이고, Element는 그 이전 단계에서 무엇을 어떻게 렌더링할지 설명하는 데이터입니다.',
-    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -500,8 +481,6 @@ const en: ReactElementObjectStructureContent = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     functionLabel: 'Function',
     functionName: 'ReactElement',
-    questionLabel: 'Learning question',
-    question: 'Around which fields is the Element object built?',
     code: "function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {\n  const element = {\n    $$typeof: REACT_ELEMENT_TYPE,\n    type,\n    key,\n    props,\n    _owner: owner,\n  };\n\n  if (__DEV__) {\n    element._store = {};\n    Object.defineProperty(element._store, 'validated', {\n      value: false,\n    });\n    element._debugStack = debugStack;\n    element._debugTask = debugTask;\n  }\n\n  return element;\n}",
     primaryCta: 'Read ReactElement source',
     primaryHref:
@@ -575,15 +554,6 @@ const en: ReactElementObjectStructureContent = {
     ],
     emphasis:
       'A React Element looks like a plain object — but it is a special object that React interprets.',
-  },
-  learningCheck: {
-    badge: '06',
-    eyebrow: 'KEY TAKEAWAY',
-    title: 'One thing to remember',
-    lines: [
-      'A React Element is not the on-screen object — it is the input object for render computation.',
-      'The browser DOM is what the renderer commits at the end; the Element is the description React reasons over before that.',
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

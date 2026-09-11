@@ -3,11 +3,11 @@ import { Code, FileText } from 'lucide-react';
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { ReactElementKeySeparatedContent } from '../content';
+import type { ReactElementTypeMeaningContent } from '../content';
 
-type Props = { content: ReactElementKeySeparatedContent['checkpoint'] };
+type Props = { content: ReactElementTypeMeaningContent['checkpoint'] };
 
-export const KeySourceCheckpoint = ({ content }: Props) => (
+export const TypeSourceCheckpoint = ({ content }: Props) => (
   <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
