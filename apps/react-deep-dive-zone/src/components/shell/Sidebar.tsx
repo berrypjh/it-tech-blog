@@ -83,7 +83,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
         <button
           onClick={toggleAll}
-          className="text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--term-accent)]"
+          className="-mr-2 px-2 py-1.5 text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--term-accent)]"
         >
           [{anyExpanded ? '−' : '+'}] {anyExpanded ? t.collapseAll : t.expandAll}
         </button>
@@ -111,7 +111,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 aria-expanded={isExpanded}
                 aria-controls={panelId}
                 className={cn(
-                  'w-full flex flex-col px-lg py-1 text-left text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
+                  'w-full flex flex-col px-lg py-1.5 text-left text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                   hasActiveItem
                     ? 'text-[var(--term-accent)]'
                     : 'text-[var(--term-fg)] hover:text-[var(--term-accent)]',
@@ -155,7 +155,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
                             className={cn(
-                              'group flex items-start gap-sm pl-lg pr-lg py-0.5 text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
+                              'group flex items-start gap-sm pl-lg pr-lg py-1.5 text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                               isActive
                                 ? 'bg-[var(--term-accent-soft)] text-[var(--term-accent)]'
                                 : 'text-[var(--term-muted)] hover:text-[var(--term-fg)]',
@@ -203,7 +203,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
       <div className="px-lg py-md border-t border-dashed border-[var(--term-border)]">
         <a
           href="/"
-          className="flex items-center gap-sm text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors"
+          className="flex items-center gap-sm py-1.5 text-[10px] text-[var(--term-muted)] hover:text-[var(--term-accent)] transition-colors"
         >
           <span>↩</span>
           <span>cd ~/ &mdash; {t.backToMain}</span>

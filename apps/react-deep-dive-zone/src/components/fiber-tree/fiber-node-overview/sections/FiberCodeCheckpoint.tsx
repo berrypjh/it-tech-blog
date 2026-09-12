@@ -37,7 +37,6 @@ export const FiberCodeCheckpoint = ({ content }: Props) => (
             icon: Eye,
           },
         ]}
-        question={content.question}
       />
 
       <div className="flex flex-col gap-md min-w-0">

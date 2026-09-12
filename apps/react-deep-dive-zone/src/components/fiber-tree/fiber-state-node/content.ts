@@ -39,14 +39,6 @@ export type ReasonCard = {
   iconName: 'alert' | 'workflow' | 'link';
 };
 
-export type CodeAnnotation = {
-  /** 1-based line range (inclusive) */
-  from: number;
-  to: number;
-  label: string;
-  tone: ToneKey;
-};
-
 export type FiberStateNodeContent = {
   hero: {
     badge: string;
@@ -103,8 +95,6 @@ export type FiberStateNodeContent = {
       file: string;
       lookForLabel: string;
       lookForLines: string[];
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -112,7 +102,6 @@ export type FiberStateNodeContent = {
       fileName: string;
       language: string;
       content: string;
-      annotations: CodeAnnotation[];
     };
   };
   reasons: {
@@ -275,8 +264,6 @@ const ko: FiberStateNodeContent = {
       file: 'packages/react-reconciler/src/ReactFiberRoot.js',
       lookForLabel: '볼 것',
       lookForLines: ['root.current = uninitializedFiber', 'uninitializedFiber.stateNode = root'],
-      questionLabel: '학습 질문',
-      question: '루트 Fiber의 stateNode는 무엇과 연결될까?',
       buttonLabel: 'ReactFiberRoot.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
@@ -285,10 +272,6 @@ const ko: FiberStateNodeContent = {
       fileName: 'ReactFiberRoot.js',
       language: 'JavaScript',
       content: checkpointCode,
-      annotations: [
-        { from: 6, to: 6, label: 'current 연결', tone: 'sky' },
-        { from: 7, to: 7, label: 'stateNode 연결', tone: 'emerald' },
-      ],
     },
   },
   reasons: {
@@ -463,8 +446,6 @@ const en: FiberStateNodeContent = {
       file: 'packages/react-reconciler/src/ReactFiberRoot.js',
       lookForLabel: 'Look for',
       lookForLines: ['root.current = uninitializedFiber', 'uninitializedFiber.stateNode = root'],
-      questionLabel: 'Learning question',
-      question: 'What does the root Fiber’s stateNode connect to?',
       buttonLabel: 'Read ReactFiberRoot.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
@@ -473,10 +454,6 @@ const en: FiberStateNodeContent = {
       fileName: 'ReactFiberRoot.js',
       language: 'JavaScript',
       content: checkpointCode,
-      annotations: [
-        { from: 6, to: 6, label: 'current link', tone: 'sky' },
-        { from: 7, to: 7, label: 'stateNode link', tone: 'emerald' },
-      ],
     },
   },
   reasons: {

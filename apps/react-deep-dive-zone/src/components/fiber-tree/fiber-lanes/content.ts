@@ -93,8 +93,6 @@ export type FiberLanesContent = {
       file: string;
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -334,8 +332,6 @@ const ko: FiberLanesContent = {
       file: 'packages/react-reconciler/src/ReactFiberLane.js',
       lookForLabel: '볼 것',
       lookFor: 'SyncLane, InputContinuousLane, DefaultLane, TransitionLanes',
-      questionLabel: '학습 질문',
-      question: 'React는 lane을 어떤 상수와 비트 조합으로 표현할까?',
       buttonLabel: 'ReactFiberLane.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',
@@ -569,8 +565,6 @@ const en: FiberLanesContent = {
       file: 'packages/react-reconciler/src/ReactFiberLane.js',
       lookForLabel: 'Look for',
       lookFor: 'SyncLane, InputContinuousLane, DefaultLane, TransitionLanes',
-      questionLabel: 'Learning question',
-      question: 'Which constants and bit patterns does React use to express lanes?',
       buttonLabel: 'Read ReactFiberLane.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',

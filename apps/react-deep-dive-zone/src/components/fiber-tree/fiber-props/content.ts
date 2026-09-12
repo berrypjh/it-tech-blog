@@ -102,8 +102,6 @@ export type FiberPropsContent = {
       file: string;
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -298,8 +296,6 @@ const ko: FiberPropsContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
       lookFor: 'pendingProps, memoizedProps 주석',
-      questionLabel: '학습 질문',
-      question: 'React는 새 입력과 이전 입력을 어떤 필드로 구분할까?',
       buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
@@ -489,8 +485,6 @@ const en: FiberPropsContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
       lookFor: 'pendingProps, memoizedProps comments',
-      questionLabel: 'Learning question',
-      question: 'Which fields does React use to separate new input from prior input?',
       buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',

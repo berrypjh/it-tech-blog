@@ -85,8 +85,6 @@ export type CurrentWipAlternateContent = {
       functionName: string;
       lookForLabel: string;
       lookForLines: string[];
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -95,7 +93,6 @@ export type CurrentWipAlternateContent = {
       language: string;
       content: string;
     };
-    annotations: { tone: 'sky' | 'violet' | 'amber'; label: string }[];
   };
   scenario: {
     badge: string;
@@ -268,8 +265,6 @@ const ko: CurrentWipAlternateContent = {
         'workInProgress.alternate = current',
         'current.alternate = workInProgress',
       ],
-      questionLabel: '학습 질문',
-      question: 'React는 두 Fiber를 어떻게 서로 연결할까?',
       buttonLabel: 'ReactFiber.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -279,11 +274,6 @@ const ko: CurrentWipAlternateContent = {
       language: 'JavaScript',
       content: checkpointCode,
     },
-    annotations: [
-      { tone: 'sky', label: '현재 Fiber의 이전/다음 버전 확인' },
-      { tone: 'violet', label: '서로를 alternate로 연결' },
-      { tone: 'amber', label: '이미 있는 경우 작업을 위해 초기화' },
-    ],
   },
   scenario: {
     badge: '05',
@@ -456,8 +446,6 @@ const en: CurrentWipAlternateContent = {
         'workInProgress.alternate = current',
         'current.alternate = workInProgress',
       ],
-      questionLabel: 'Learning question',
-      question: 'How does React link the two Fibers to each other?',
       buttonLabel: 'Read ReactFiber.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
@@ -467,11 +455,6 @@ const en: CurrentWipAlternateContent = {
       language: 'JavaScript',
       content: checkpointCodeEn,
     },
-    annotations: [
-      { tone: 'sky', label: 'Check the previous/next version' },
-      { tone: 'violet', label: 'Link the two as each other’s alternate' },
-      { tone: 'amber', label: 'Reset the existing one for the next work' },
-    ],
   },
   scenario: {
     badge: '05',

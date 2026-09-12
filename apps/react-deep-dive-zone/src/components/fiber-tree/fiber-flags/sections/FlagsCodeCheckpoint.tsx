@@ -1,25 +1,11 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
-import type { CodeBlock, FiberFlagsContent } from '../content';
+import type { FiberFlagsContent } from '../content';
 
 type Props = { content: FiberFlagsContent['checkpoint'] };
-
-type AnnotationTone = CodeBlock['annotations'][number]['tone'];
-
-/** rose는 의미색(중립 크롬 + rose 텍스트/점), 나머지는 toneTokens 칩. */
-const annotationClass = (tone: AnnotationTone) =>
-  tone === 'rose'
-    ? 'bg-[var(--term-surface)] border-[var(--term-border)] text-rose-600 dark:text-rose-300'
-    : toneTokens[tone].chip;
-
-const annotationDot = (tone: AnnotationTone) =>
-  tone === 'rose' ? 'bg-rose-400 dark:bg-rose-500' : toneTokens[tone].dot;
 
 export const FlagsCodeCheckpoint = ({ content }: Props) => {
   const { info } = content;
@@ -63,7 +49,6 @@ export const FlagsCodeCheckpoint = ({ content }: Props) => {
               icon: Eye,
             },
           ]}
-          question={info.question}
         />
 
         <div className="flex flex-col gap-md min-w-0">
@@ -75,27 +60,6 @@ export const FlagsCodeCheckpoint = ({ content }: Props) => {
                 code={block.content}
                 language={block.language}
               />
-              <ul className="flex flex-wrap gap-2">
-                {block.annotations.map((annotation) => (
-                  <li key={annotation.label}>
-                    <span
-                      className={cn(
-                        'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold tracking-tight',
-                        annotationClass(annotation.tone),
-                      )}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'inline-block h-1 w-1 rounded-full',
-                          annotationDot(annotation.tone),
-                        )}
-                      />
-                      {annotation.label}
-                    </span>
-                  </li>
-                ))}
-              </ul>
               <GithubButton href={block.href} label={block.cta} />
             </div>
           ))}

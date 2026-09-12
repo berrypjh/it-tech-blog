@@ -1,11 +1,8 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { Braces, Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
 
 type Props = { content: CurrentWipAlternateContent['checkpoint'] };
@@ -57,7 +54,6 @@ export const AlternateCodeCheckpoint = ({ content }: Props) => {
               icon: Eye,
             },
           ]}
-          question={info.question}
         />
 
         <div className="flex flex-col gap-md min-w-0">
@@ -67,28 +63,6 @@ export const AlternateCodeCheckpoint = ({ content }: Props) => {
             code={content.code.content}
             language="js"
           />
-
-          <ul className="flex flex-wrap gap-2">
-            {content.annotations.map((annotation) => (
-              <li key={annotation.label}>
-                <span
-                  className={cn(
-                    'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold tracking-tight',
-                    toneTokens[annotation.tone].chip,
-                  )}
-                >
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      'inline-block h-1 w-1 rounded-full',
-                      toneTokens[annotation.tone].dot,
-                    )}
-                  />
-                  {annotation.label}
-                </span>
-              </li>
-            ))}
-          </ul>
 
           <GithubButton href={info.buttonHref} label={info.buttonLabel} />
         </div>

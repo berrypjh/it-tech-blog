@@ -55,8 +55,6 @@ export type CodeBlock = {
   content: string;
   href: string;
   cta: string;
-  annotationLabel: string;
-  annotationTone: ToneKey;
 };
 
 export type FiberIdentityFieldsContent = {
@@ -129,8 +127,6 @@ export type FiberIdentityFieldsContent = {
       files: string[];
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
     };
     blocks: CodeBlock[];
   };
@@ -312,8 +308,6 @@ const ko: FiberIdentityFieldsContent = {
       ],
       lookForLabel: '볼 것',
       lookFor: 'tag, key, elementType, type 정의',
-      questionLabel: '학습 질문',
-      question: '이 정의만 보고도 Fiber가 단순 트리 노드가 아니라는 근거를 몇 가지 찾을 수 있을까?',
     },
     blocks: [
       {
@@ -322,8 +316,6 @@ const ko: FiberIdentityFieldsContent = {
         content: reactInternalTypesCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
         cta: 'ReactInternalTypes.js 읽기',
-        annotationLabel: 'Fiber의 정체성 관련 필드',
-        annotationTone: 'violet',
       },
       {
         fileName: 'ReactWorkTags.js',
@@ -331,8 +323,6 @@ const ko: FiberIdentityFieldsContent = {
         content: reactWorkTagsCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
         cta: 'ReactWorkTags.js 읽기',
-        annotationLabel: 'WorkTag 상수 일부',
-        annotationTone: 'sky',
       },
     ],
   },
@@ -539,9 +529,6 @@ const en: FiberIdentityFieldsContent = {
       ],
       lookForLabel: 'Look for',
       lookFor: 'tag, key, elementType, type definitions',
-      questionLabel: 'Learning question',
-      question:
-        'From this definition alone, how many reasons can you find that a Fiber is more than a tree node?',
     },
     blocks: [
       {
@@ -550,8 +537,6 @@ const en: FiberIdentityFieldsContent = {
         content: reactInternalTypesCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
         cta: 'Read ReactInternalTypes.js',
-        annotationLabel: 'Fiber identity fields',
-        annotationTone: 'violet',
       },
       {
         fileName: 'ReactWorkTags.js',
@@ -559,8 +544,6 @@ const en: FiberIdentityFieldsContent = {
         content: reactWorkTagsCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js',
         cta: 'Read ReactWorkTags.js',
-        annotationLabel: 'WorkTag constants',
-        annotationTone: 'sky',
       },
     ],
   },

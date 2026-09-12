@@ -79,7 +79,6 @@ export type FiberNodeOverviewContent = {
     filePath: string;
     lookForLabel: string;
     lookForValue: string;
-    question: string;
     codeHeader: string;
     codeBadge: string;
     code: string;
@@ -332,7 +331,6 @@ const ko: FiberNodeOverviewContent = {
     filePath: 'packages/react-reconciler/src/ReactInternalTypes.js',
     lookForLabel: '볼 것',
     lookForValue: 'export type Fiber',
-    question: '이 정의만 보고도 Fiber가 단순 트리 노드가 아니라는 근거를 몇 개나 찾을 수 있을까요?',
     codeHeader: 'packages/react-reconciler/src/ReactInternalTypes.js',
     codeBadge: 'main',
     code: checkpointCode,
@@ -533,8 +531,6 @@ const en: FiberNodeOverviewContent = {
     filePath: 'packages/react-reconciler/src/ReactInternalTypes.js',
     lookForLabel: 'Look for',
     lookForValue: 'export type Fiber',
-    question:
-      'From this definition alone, how many reasons can you find that a Fiber is more than a tree node?',
     codeHeader: 'packages/react-reconciler/src/ReactInternalTypes.js',
     codeBadge: 'main',
     code: checkpointCode,

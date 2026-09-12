@@ -76,8 +76,6 @@ export type FiberTreePointersContent = {
       file: string;
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -231,8 +229,6 @@ const ko: FiberTreePointersContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
       lookFor: 'return, child, sibling 정의',
-      questionLabel: '학습 질문',
-      question: 'Fiber 트리를 어떻게 포인터 3개로 표현할 수 있을까?',
       buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
@@ -395,8 +391,6 @@ const en: FiberTreePointersContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
       lookFor: 'return, child, sibling definitions',
-      questionLabel: 'Learning question',
-      question: 'How can a Fiber tree be represented with just three pointers?',
       buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',

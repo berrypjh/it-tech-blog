@@ -1,11 +1,8 @@
-import { cn } from '@it-tech-blog/utils';
-
 import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent } from '../content';
 
 type Props = { content: FiberIdentityFieldsContent['checkpoint'] };
@@ -52,7 +49,6 @@ export const IdentityCodeCheckpoint = ({ content }: Props) => {
               icon: Eye,
             },
           ]}
-          question={info.question}
         />
 
         <div className="flex flex-col gap-md min-w-0">
@@ -64,21 +60,6 @@ export const IdentityCodeCheckpoint = ({ content }: Props) => {
                 code={block.content}
                 language={block.language}
               />
-              <span
-                className={cn(
-                  'inline-flex w-fit items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold tracking-tight',
-                  toneTokens[block.annotationTone].chip,
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'inline-block h-1 w-1 rounded-full',
-                    toneTokens[block.annotationTone].dot,
-                  )}
-                />
-                {block.annotationLabel}
-              </span>
               <GithubButton href={block.href} label={block.cta} />
             </div>
           ))}

@@ -41,7 +41,6 @@ export const PropsCodeCheckpoint = ({ content }: Props) => {
               icon: Eye,
             },
           ]}
-          question={info.question}
         />
 
         <div className="flex flex-col gap-md min-w-0">

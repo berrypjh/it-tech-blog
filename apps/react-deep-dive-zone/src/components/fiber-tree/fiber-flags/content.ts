@@ -34,7 +34,6 @@ export type CodeBlock = {
   content: string;
   href: string;
   cta: string;
-  annotations: { label: string; tone: 'emerald' | 'sky' | 'rose' | 'violet' | 'amber' }[];
 };
 
 export type FiberFlagsContent = {
@@ -86,8 +85,6 @@ export type FiberFlagsContent = {
       files: string[];
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
     };
     blocks: CodeBlock[];
   };
@@ -271,8 +268,6 @@ const ko: FiberFlagsContent = {
       ],
       lookForLabel: '볼 것',
       lookFor: 'flags, subtreeFlags, deletions, MutationMask',
-      questionLabel: '학습 질문',
-      question: 'React는 변경 효과를 어떤 필드에 기록할까?',
     },
     blocks: [
       {
@@ -281,11 +276,6 @@ const ko: FiberFlagsContent = {
         content: internalTypesCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
         cta: 'ReactInternalTypes.js 읽기',
-        annotations: [
-          { label: '이 Fiber 자신의 effect', tone: 'emerald' },
-          { label: '자식 영역의 effect 요약', tone: 'violet' },
-          { label: '삭제 대상 목록', tone: 'rose' },
-        ],
       },
       {
         fileName: 'ReactFiberFlags.js',
@@ -293,7 +283,6 @@ const ko: FiberFlagsContent = {
         content: reactFiberFlagsCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
         cta: 'ReactFiberFlags.js 읽기',
-        annotations: [{ label: 'Mutation 관련 Flag 비트들의 모음', tone: 'sky' }],
       },
     ],
   },
@@ -460,8 +449,6 @@ const en: FiberFlagsContent = {
       ],
       lookForLabel: 'Look for',
       lookFor: 'flags, subtreeFlags, deletions, MutationMask',
-      questionLabel: 'Learning question',
-      question: 'Which fields does React use to record effect changes?',
     },
     blocks: [
       {
@@ -470,11 +457,6 @@ const en: FiberFlagsContent = {
         content: internalTypesCodeEn,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
         cta: 'Read ReactInternalTypes.js',
-        annotations: [
-          { label: 'effect of this Fiber itself', tone: 'emerald' },
-          { label: 'summary of effects in the subtree', tone: 'violet' },
-          { label: 'deletion target list', tone: 'rose' },
-        ],
       },
       {
         fileName: 'ReactFiberFlags.js',
@@ -482,7 +464,6 @@ const en: FiberFlagsContent = {
         content: reactFiberFlagsCode,
         href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
         cta: 'Read ReactFiberFlags.js',
-        annotations: [{ label: 'flag bits related to mutation', tone: 'sky' }],
       },
     ],
   },

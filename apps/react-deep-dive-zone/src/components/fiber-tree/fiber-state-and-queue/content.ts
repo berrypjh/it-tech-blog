@@ -89,8 +89,6 @@ export type FiberStateAndQueueContent = {
       file: string;
       lookForLabel: string;
       lookFor: string;
-      questionLabel: string;
-      question: string;
       buttonLabel: string;
       buttonHref: string;
     };
@@ -292,8 +290,6 @@ const ko: FiberStateAndQueueContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
       lookFor: 'updateQueue, memoizedState',
-      questionLabel: '학습 질문',
-      question: 'React는 현재 state와 대기 중인 update를 어떤 필드로 구분할까?',
       buttonLabel: 'ReactInternalTypes.js 읽기',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
@@ -505,8 +501,6 @@ const en: FiberStateAndQueueContent = {
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
       lookFor: 'updateQueue, memoizedState',
-      questionLabel: 'Learning question',
-      question: 'Which fields separate current state from pending updates?',
       buttonLabel: 'Read ReactInternalTypes.js',
       buttonHref:
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
