@@ -1,5 +1,5 @@
 import { toneTokens } from '../../../shared/tones';
-import type { EffectKind } from '../content';
+import type { EffectKind, FlagMiniCard } from '../content';
 
 /**
  * effect 톤은 fiber 트리 노드 색 규약(repo-structure FiberTreeCard)을 따른다.
@@ -24,4 +24,22 @@ export const effectBorder: Record<EffectKind, string> = {
   placement: toneTokens.emerald.border,
   update: toneTokens.sky.border,
   childDeletion: 'border-rose-200/70 dark:border-rose-800/60',
+};
+
+/**
+ * flags 미니 카드 색. placement·update는 위 effect 색을 그대로 재사용하고,
+ * flags에만 있는 ref·visibility를 더한다. 크롬은 effect와 똑같이 중립으로 둔다.
+ */
+export const flagText: Record<FlagMiniCard['id'], string> = {
+  placement: effectText.placement,
+  update: effectText.update,
+  ref: toneTokens.violet.text,
+  visibility: toneTokens.amber.text,
+};
+
+export const flagBorder: Record<FlagMiniCard['id'], string> = {
+  placement: effectBorder.placement,
+  update: effectBorder.update,
+  ref: toneTokens.violet.border,
+  visibility: toneTokens.amber.border,
 };

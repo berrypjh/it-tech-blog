@@ -1,6 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
+import type { ToneKey } from '../../shared/tones';
 
 export type GroupTone = 'sky' | 'emerald' | 'violet' | 'amber' | 'indigo' | 'teal';
 
@@ -24,8 +25,10 @@ export type FlowStep = {
 
 export type PreviewItem = {
   id: string;
+  number: string;
   title: string;
   body: string;
+  tone: ToneKey;
   iconName: 'send' | 'list' | 'compass' | 'arrowUp';
 };
 
@@ -55,7 +58,7 @@ export type FiberCentralContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    question: { lines: string[]; emphasis: string };
+    question: string;
     previewTitle: string;
     items: PreviewItem[];
   };
@@ -198,38 +201,40 @@ const ko: FiberCentralContent = {
     badge: '03',
     eyebrow: '다음 챕터 예고',
     title: '다음 챕터 예고',
-    question: {
-      lines: [
-        'Fiber 구조를 이해했다.',
-        '그렇다면 사용자가 setState를 호출했을 때,',
-        'React는 이 Fiber 트리 어디에 어떤 흔적을 남길까?',
-      ],
-      emphasis: 'setState',
-    },
+    question:
+      'Fiber 구조를 이해했다. 그렇다면 사용자가 `setState`를 호출했을 때, React는 이 Fiber 트리 어디에 어떤 흔적을 남길까?',
     previewTitle: '업데이트는 어떻게 시작되는가?',
     items: [
       {
         id: 'dispatchSetState',
+        number: '01',
         title: 'dispatchSetState',
         body: '사용자의 setState 호출 지점',
+        tone: 'violet',
         iconName: 'send',
       },
       {
         id: 'enqueueUpdate',
+        number: '02',
         title: 'enqueueUpdate',
         body: 'update 객체를 updateQueue에 연결',
+        tone: 'sky',
         iconName: 'list',
       },
       {
         id: 'scheduleUpdateOnFiber',
+        number: '03',
         title: 'scheduleUpdateOnFiber',
         body: '해당 Fiber와 루트에 우선순위(lanes)를 표시',
+        tone: 'emerald',
         iconName: 'compass',
       },
       {
         id: 'rootBubble',
+        number: '04',
         title: 'root까지 올라가기',
         body: '상위 Fiber와 root까지 우선순위 전파',
+        tone: 'amber',
         iconName: 'arrowUp',
       },
     ],
@@ -382,38 +387,40 @@ const en: FiberCentralContent = {
     badge: '03',
     eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
-    question: {
-      lines: [
-        'You have understood the Fiber structure.',
-        'When a user calls setState,',
-        'where on the Fiber tree does React leave its mark?',
-      ],
-      emphasis: 'setState',
-    },
+    question:
+      'You have understood the Fiber structure. When a user calls `setState`, where on the Fiber tree does React leave its mark?',
     previewTitle: 'How does an update begin?',
     items: [
       {
         id: 'dispatchSetState',
+        number: '01',
         title: 'dispatchSetState',
         body: 'The entry point where setState is called.',
+        tone: 'violet',
         iconName: 'send',
       },
       {
         id: 'enqueueUpdate',
+        number: '02',
         title: 'enqueueUpdate',
         body: 'Attaches the update object to updateQueue.',
+        tone: 'sky',
         iconName: 'list',
       },
       {
         id: 'scheduleUpdateOnFiber',
+        number: '03',
         title: 'scheduleUpdateOnFiber',
         body: 'Marks priority (lanes) on the Fiber and the root.',
+        tone: 'emerald',
         iconName: 'compass',
       },
       {
         id: 'rootBubble',
+        number: '04',
         title: 'Bubble up to the root',
         body: 'Propagates priority up to ancestor Fibers and the root.',
+        tone: 'amber',
         iconName: 'arrowUp',
       },
     ],

@@ -1,7 +1,6 @@
-import { Layers, Lightbulb } from 'lucide-react';
+import { Layers } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { CurrentWipAlternateContent } from '../content';
@@ -27,9 +26,5 @@ export const CurrentWipComparison = ({ content }: Props) => (
         cells: [formatInline(row.current), formatInline(row.workInProgress)],
       }))}
     />
-
-    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
-      {content.emphasis}
-    </SectionNote>
   </section>
 );

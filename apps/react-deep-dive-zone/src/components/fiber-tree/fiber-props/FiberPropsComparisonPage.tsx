@@ -8,7 +8,6 @@ import { PendingMemoizedCompare } from './sections/PendingMemoizedCompare';
 import { PropsChangeScenario } from './sections/PropsChangeScenario';
 import { PropsCodeCheckpoint } from './sections/PropsCodeCheckpoint';
 import { PropsComparisonHero } from './sections/PropsComparisonHero';
-import { PropsMiniQuiz } from './sections/PropsMiniQuiz';
 import { WhyComparePropsSection } from './sections/WhyComparePropsSection';
 import { fiberPropsContent } from './content';
 
@@ -25,7 +24,6 @@ export const FiberPropsComparisonPage = ({ locale }: Props) => {
       <FiberPropsMeaningFlow content={c.meaning} />
       <PropsCodeCheckpoint content={c.checkpoint} />
       <WhyComparePropsSection content={c.reasons} />
-      <PropsMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

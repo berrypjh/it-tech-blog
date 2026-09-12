@@ -22,14 +22,6 @@ export type ScenarioStep = {
   iconName: 'pulse' | 'workflow' | 'pencil' | 'pause' | 'check';
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-  tone: 'emerald' | 'violet';
-};
-
 export type CurrentWipAlternateContent = {
   hero: {
     badge: string;
@@ -52,7 +44,6 @@ export type CurrentWipAlternateContent = {
     currentLabel: string;
     wipLabel: string;
     rows: ComparisonRow[];
-    emphasis: string;
   };
   rootCurrent: {
     badge: string;
@@ -111,15 +102,6 @@ export type CurrentWipAlternateContent = {
     eyebrow: string;
     title: string;
     steps: ScenarioStep[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -230,7 +212,6 @@ const ko: CurrentWipAlternateContent = {
         workInProgress: 'Commit 성공 시 workInProgress가 current로 전환된다.',
       },
     ],
-    emphasis: 'Commit 성공 시 workInProgress가 current로 전환된다.',
   },
   rootCurrent: {
     badge: '02',
@@ -351,31 +332,6 @@ const ko: CurrentWipAlternateContent = {
       },
     ],
   },
-  quiz: {
-    badge: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 개념 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    explanationLabel: '해설',
-    cards: [
-      {
-        id: 'q1',
-        question: '현재 화면을 대표하는 트리의 시작점은?',
-        answer: 'root.current',
-        explanation: 'FiberRoot의 current 필드가 가리키는 트리가 현재 화면을 대표하는 트리입니다.',
-        tone: 'emerald',
-      },
-      {
-        id: 'q2',
-        question: '같은 논리 노드의 이전 버전과 다음 버전을 연결하는 포인터는?',
-        answer: 'alternate',
-        explanation:
-          'alternate는 서로 반대 버전을 가리키며, 두 트리를 동기화하고 재사용할 수 있게 합니다.',
-        tone: 'violet',
-      },
-    ],
-  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
     title: 'Fiber는 왜 중심 자료구조인가?',
@@ -444,7 +400,6 @@ const en: CurrentWipAlternateContent = {
         workInProgress: 'On successful commit, workInProgress becomes current.',
       },
     ],
-    emphasis: 'On a successful commit, workInProgress becomes the new current.',
   },
   rootCurrent: {
     badge: '02',
@@ -562,32 +517,6 @@ const en: CurrentWipAlternateContent = {
         body: 'Once commit succeeds, workInProgress becomes the new current tree.',
         tone: 'teal',
         iconName: 'check',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'MINI QUIZ',
-    title: 'Mini concept quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    explanationLabel: 'Explanation',
-    cards: [
-      {
-        id: 'q1',
-        question: 'What is the starting point of the tree currently shown on screen?',
-        answer: 'root.current',
-        explanation:
-          'The tree that the FiberRoot.current field points to is the current tree on screen.',
-        tone: 'emerald',
-      },
-      {
-        id: 'q2',
-        question: 'Which pointer links the previous and next versions of the same logical node?',
-        answer: 'alternate',
-        explanation:
-          'alternate points to the opposite version, so the two trees can stay in sync and be reused.',
-        tone: 'violet',
       },
     ],
   },

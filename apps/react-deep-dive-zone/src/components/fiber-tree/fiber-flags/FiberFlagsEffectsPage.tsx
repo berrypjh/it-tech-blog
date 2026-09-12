@@ -3,11 +3,9 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { ChangeSimulationSection } from './sections/ChangeSimulationSection';
 import { CommitPhasePreview } from './sections/CommitPhasePreview';
 import { FlagsCodeCheckpoint } from './sections/FlagsCodeCheckpoint';
 import { FlagsEffectsHero } from './sections/FlagsEffectsHero';
-import { FlagsMiniQuiz } from './sections/FlagsMiniQuiz';
 import { FlagsRoleSection } from './sections/FlagsRoleSection';
 import { RepresentativeFlagsSection } from './sections/RepresentativeFlagsSection';
 import { SubtreeFlagsDeletions } from './sections/SubtreeFlagsDeletions';
@@ -25,9 +23,7 @@ export const FiberFlagsEffectsPage = ({ locale }: Props) => {
       <SubtreeFlagsDeletions content={c.subtree} />
       <RepresentativeFlagsSection content={c.repFlags} />
       <FlagsCodeCheckpoint content={c.checkpoint} />
-      <ChangeSimulationSection content={c.simulation} />
       <CommitPhasePreview content={c.commitPreview} />
-      <FlagsMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -1,5 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
+import type { ToneKey } from '../../shared/tones';
+
 export type PropsKind = 'pendingProps' | 'memoizedProps';
 
 export type ComparisonCard = {
@@ -20,11 +22,19 @@ export type ReasonCard = {
 
 export type MeaningStep = {
   id: 'memo' | 'pending' | 'compare';
+  number: string;
   title: string;
-  subtitle: string;
-  main: string;
+  body: string;
   iconName: 'clock' | 'zap' | 'gitCompare';
-  tone: 'emerald' | 'sky' | 'violet';
+  tone: ToneKey;
+};
+
+export type ContinueCase = {
+  id: 'state' | 'context' | 'force-update';
+  title: string;
+  body: string;
+  iconName: 'refresh' | 'share' | 'hammer';
+  tone: ToneKey;
 };
 
 export type FiberPropsContent = {
@@ -76,9 +86,11 @@ export type FiberPropsContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    steps: MeaningStep[];
     description: string;
-    descriptionEmphasis: string;
+    steps: MeaningStep[];
+    casesLabel: string;
+    cases: ContinueCase[];
+    note: string;
   };
   checkpoint: {
     badge: string;
@@ -106,17 +118,6 @@ export type FiberPropsContent = {
     eyebrow: string;
     title: string;
     cards: ReasonCard[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    question: string;
-    answer: string;
-    explanationParts: { text: string; bold?: boolean }[];
   };
   nextStep: {
     eyebrow: string;
@@ -233,35 +234,59 @@ const ko: FiberPropsContent = {
     badge: '03',
     eyebrow: '내부 의미',
     title: 'Fiber 내부에서 두 값의 의미',
+    description:
+      '지난 커밋의 입력과 이번 입력을 비교해, 이 Fiber의 작업을 건너뛸 수 있는지 판단하는 출발점으로 삼습니다.',
     steps: [
       {
         id: 'memo',
-        title: '이전 결과',
-        subtitle: '마지막 커밋',
-        main: 'memoizedProps',
+        number: '01',
+        title: 'memoizedProps',
+        body: '마지막으로 커밋된 렌더에서 사용한 입력입니다.',
         iconName: 'clock',
         tone: 'emerald',
       },
       {
         id: 'pending',
-        title: '새 작업 입력',
-        subtitle: '이번 렌더',
-        main: 'pendingProps',
+        number: '02',
+        title: 'pendingProps',
+        body: '이번 렌더 작업에 새로 들어온 입력입니다.',
         iconName: 'zap',
         tone: 'sky',
       },
       {
         id: 'compare',
+        number: '03',
         title: '둘을 비교',
-        subtitle: '변경 필요성 판단',
-        main: '비교 결과',
+        body: '두 props가 같은 참조(`===`)인지 확인해 다시 렌더링할지 판단합니다.',
         iconName: 'gitCompare',
         tone: 'violet',
       },
     ],
-    description:
-      '두 값을 비교하여 변경이 있는지 판단하고, 변경이 있을 때만 렌더링/커밋으로 이어집니다.',
-    descriptionEmphasis: '변경이 있을 때만',
+    casesLabel: 'props가 같아도 작업이 이어지는 경우',
+    cases: [
+      {
+        id: 'state',
+        title: 'state 업데이트',
+        body: '이 Fiber에 `setState` 같은 업데이트가 예약돼 있으면 다시 렌더링합니다.',
+        iconName: 'refresh',
+        tone: 'amber',
+      },
+      {
+        id: 'context',
+        title: 'context 변경',
+        body: '읽고 있는 context 값이 바뀌면 props가 같아도 다시 렌더링합니다.',
+        iconName: 'share',
+        tone: 'teal',
+      },
+      {
+        id: 'force-update',
+        title: 'forceUpdate',
+        body: '클래스 컴포넌트의 `forceUpdate()`는 props 비교와 상관없이 다시 렌더링하게 합니다.',
+        iconName: 'hammer',
+        tone: 'indigo',
+      },
+    ],
+    note: 'props가 같고 예약된 업데이트나 context 변경도 없을 때에만, React는 이 Fiber의 작업을 건너뜁니다(bailout).',
   },
   checkpoint: {
     badge: '04',
@@ -313,31 +338,6 @@ const ko: FiberPropsContent = {
         example: '이전: 저장 → 현재: 전송',
         iconName: 'trending',
         tone: 'violet',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: '판단 퀴즈',
-    title: '미니 판단 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    explanationLabel: '해설',
-    question: 'pendingProps와 memoizedProps가 같다면 무조건 아무 일도 하지 않는가?',
-    answer: '항상 그런 것은 아니지만, 이전 입력과 새 입력을 비교하는 중요한 단서가 된다.',
-    explanationParts: [
-      { text: 'props가 같아도 ' },
-      { text: 'state', bold: true },
-      { text: '나 ' },
-      { text: 'context', bold: true },
-      { text: '의 변경, ' },
-      { text: '강제 업데이트', bold: true },
-      { text: ', 부모의 ' },
-      { text: 'key 변경', bold: true },
-      { text: ', ' },
-      { text: 'Suspense/우선순위 변화', bold: true },
-      {
-        text: ' 등 다른 요인으로 작업이 계속될 수 있습니다. 하지만 props 비교는 변경 판단의 핵심 출발점이 됩니다.',
       },
     ],
   },
@@ -425,35 +425,59 @@ const en: FiberPropsContent = {
     badge: '03',
     eyebrow: 'WHAT THEY MEAN',
     title: 'What the two values mean inside a Fiber',
+    description:
+      'Comparing the last committed input with this input is the starting point for deciding whether this Fiber’s work can be skipped.',
     steps: [
       {
         id: 'memo',
-        title: 'Previous result',
-        subtitle: 'last commit',
-        main: 'memoizedProps',
+        number: '01',
+        title: 'memoizedProps',
+        body: 'The input used by the last committed render.',
         iconName: 'clock',
         tone: 'emerald',
       },
       {
         id: 'pending',
-        title: 'New work input',
-        subtitle: 'this render',
-        main: 'pendingProps',
+        number: '02',
+        title: 'pendingProps',
+        body: 'The new input that arrived for this render.',
         iconName: 'zap',
         tone: 'sky',
       },
       {
         id: 'compare',
+        number: '03',
         title: 'Compare both',
-        subtitle: 'decide if change is needed',
-        main: 'comparison result',
+        body: 'Checks whether the two props are the same reference (`===`) to decide whether to render again.',
         iconName: 'gitCompare',
         tone: 'violet',
       },
     ],
-    description:
-      'Comparing the two values decides whether anything changed — only then does render/commit follow.',
-    descriptionEmphasis: 'only then',
+    casesLabel: 'Work that continues even when props are equal',
+    cases: [
+      {
+        id: 'state',
+        title: 'state update',
+        body: 'If an update such as `setState` is scheduled on this Fiber, it renders again.',
+        iconName: 'refresh',
+        tone: 'amber',
+      },
+      {
+        id: 'context',
+        title: 'context change',
+        body: 'If a context value it reads changes, it renders again even with equal props.',
+        iconName: 'share',
+        tone: 'teal',
+      },
+      {
+        id: 'force-update',
+        title: 'forceUpdate',
+        body: 'A class component’s `forceUpdate()` renders again regardless of the props comparison.',
+        iconName: 'hammer',
+        tone: 'indigo',
+      },
+    ],
+    note: 'Only when props are equal and no update or context change is scheduled does React skip this Fiber’s work (bailout).',
   },
   checkpoint: {
     badge: '04',
@@ -505,31 +529,6 @@ const en: FiberPropsContent = {
         example: 'before: Save → after: Send',
         iconName: 'trending',
         tone: 'violet',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'JUDGMENT QUIZ',
-    title: 'Mini judgment quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    explanationLabel: 'Explanation',
-    question: 'If pendingProps and memoizedProps are equal, does nothing ever happen?',
-    answer: 'Not always — but the comparison is still a key signal for deciding what changed.',
-    explanationParts: [
-      { text: 'Even if props are equal, ' },
-      { text: 'state', bold: true },
-      { text: ' or ' },
-      { text: 'context', bold: true },
-      { text: ' changes, ' },
-      { text: 'forced updates', bold: true },
-      { text: ', a parent ' },
-      { text: 'key change', bold: true },
-      { text: ', or ' },
-      { text: 'Suspense / priority changes', bold: true },
-      {
-        text: ' can keep work going. Still, the props comparison is the key starting point for deciding change.',
       },
     ],
   },

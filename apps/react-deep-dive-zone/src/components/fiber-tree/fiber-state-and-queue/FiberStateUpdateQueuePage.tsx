@@ -9,7 +9,6 @@ import { StateFieldVsQueueField } from './sections/StateFieldVsQueueField';
 import { StateQueueCodeCheckpoint } from './sections/StateQueueCodeCheckpoint';
 import { StateQueueComparison } from './sections/StateQueueComparison';
 import { StateQueueHero } from './sections/StateQueueHero';
-import { StateQueueMiniQuiz } from './sections/StateQueueMiniQuiz';
 import { fiberStateAndQueueContent } from './content';
 
 type Props = { locale: Locale };
@@ -25,7 +24,6 @@ export const FiberStateUpdateQueuePage = ({ locale }: Props) => {
       <StateFieldVsQueueField content={c.roleFlow} />
       <StateQueueCodeCheckpoint content={c.checkpoint} />
       <HooksClassConnection content={c.connections} />
-      <StateQueueMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

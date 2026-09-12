@@ -40,13 +40,6 @@ export type ConnectionCard = {
   tone: 'emerald' | 'violet' | 'sky';
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-};
-
 export type FiberStateAndQueueContent = {
   hero: {
     badge: string;
@@ -112,15 +105,6 @@ export type FiberStateAndQueueContent = {
     eyebrow: string;
     title: string;
     cards: ConnectionCard[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -330,8 +314,8 @@ const ko: FiberStateAndQueueContent = {
         title: 'Class Component',
         subtitle: 'updateQueue로 상태 업데이트 처리',
         body: 'setState 호출 시 updateQueue에 update가 쌓이고, 렌더 중 처리됩니다.',
-        buttonLabel: '다음: Class Component 흐름',
-        buttonHref: '/class-component-process',
+        buttonLabel: '다음: Class Component Fiber와 Work Tag',
+        buttonHref: '/function-fiber',
         iconName: 'box',
         tone: 'emerald',
       },
@@ -340,8 +324,8 @@ const ko: FiberStateAndQueueContent = {
         title: 'Hooks',
         subtitle: 'memoizedState에 Hook chain 연결',
         body: 'useState 등 Hook의 상태 값은 memoizedState에 연결 리스트처럼 저장됩니다.',
-        buttonLabel: '다음: Hooks와 memoizedState',
-        buttonHref: '/hooks-overview',
+        buttonLabel: '다음: Hook linked list',
+        buttonHref: '/hook-linked-list',
         iconName: 'hook',
         tone: 'violet',
       },
@@ -354,30 +338,6 @@ const ko: FiberStateAndQueueContent = {
         buttonHref: '/dispatch-set-state',
         iconName: 'send',
         tone: 'sky',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 개념 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    explanationLabel: '해설',
-    cards: [
-      {
-        id: 'q1',
-        question: '현재 렌더 결과에 사용된 state는 어디에 저장될까?',
-        answer: 'memoizedState',
-        explanation:
-          '지난 렌더링이 끝난 뒤 확정된 값이 memoizedState에 저장되어 다음 렌더 전까지 유지됩니다.',
-      },
-      {
-        id: 'q2',
-        question: '아직 처리되지 않은 update는?',
-        answer: 'updateQueue',
-        explanation:
-          'setState 등으로 들어온 요청들은 updateQueue에 연결되어 다음 렌더에서 순차적으로 처리됩니다.',
       },
     ],
   },
@@ -567,8 +527,8 @@ const en: FiberStateAndQueueContent = {
         title: 'Class Component',
         subtitle: 'state updates flow through updateQueue',
         body: 'setState calls enqueue updates into updateQueue and they are applied during render.',
-        buttonLabel: 'Next: Class Component flow',
-        buttonHref: '/class-component-process',
+        buttonLabel: 'Next: Class Component Fiber & Work Tag',
+        buttonHref: '/function-fiber',
         iconName: 'box',
         tone: 'emerald',
       },
@@ -577,8 +537,8 @@ const en: FiberStateAndQueueContent = {
         title: 'Hooks',
         subtitle: 'Hook chain hangs off memoizedState',
         body: 'Hook state values like useState are stored as a linked list on memoizedState.',
-        buttonLabel: 'Next: Hooks & memoizedState',
-        buttonHref: '/hooks-overview',
+        buttonLabel: 'Next: Hook Linked List',
+        buttonHref: '/hook-linked-list',
         iconName: 'hook',
         tone: 'violet',
       },
@@ -591,30 +551,6 @@ const en: FiberStateAndQueueContent = {
         buttonHref: '/dispatch-set-state',
         iconName: 'send',
         tone: 'sky',
-      },
-    ],
-  },
-  quiz: {
-    badge: '06',
-    eyebrow: 'MINI QUIZ',
-    title: 'Mini concept quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    explanationLabel: 'Explanation',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Where is the state used by the current render stored?',
-        answer: 'memoizedState',
-        explanation:
-          'The value committed after the last render lives in memoizedState until the next render.',
-      },
-      {
-        id: 'q2',
-        question: 'Where do not-yet-processed updates live?',
-        answer: 'updateQueue',
-        explanation:
-          'Requests from setState and similar are linked on updateQueue and applied in order during the next render.',
       },
     ],
   },

@@ -2,7 +2,6 @@ import { cn } from '@it-tech-blog/utils';
 
 import { Flag, ListTree, RefreshCw, Sparkles, Zap } from 'lucide-react';
 
-import { TakeawayBanner } from '../../../shared/banner';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { ToneCardItem } from '../../../shared/tone';
@@ -25,14 +24,14 @@ export const FiberIsNotJustNode = ({ content }: Props) => (
     className="space-y-md scroll-mt-xl"
   >
     <SectionBadgeHeader
+      descriptionFullWidth
       id="not-just-node"
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
+      description={content.description}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
-
-    <TakeawayBanner lines={content.takeaway} />
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
       {content.reasons.map((reason) => {

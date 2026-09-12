@@ -1,10 +1,10 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { Anchor, Eye, Flag, Lightbulb, Move, Pencil } from 'lucide-react';
+import { Anchor, Eye, Flag, Move, Pencil } from 'lucide-react';
 
-import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
+import { EFFECT_NEUTRAL, flagBorder, flagText } from '../components/effectStyles';
 import type { FiberFlagsContent, FlagMiniCard } from '../content';
 
 type Props = { content: FiberFlagsContent['flagsRole'] };
@@ -38,7 +38,8 @@ export const FlagsRoleSection = ({ content }: Props) => (
           aria-hidden="true"
           className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border',
-            toneTokens.emerald.chip,
+            EFFECT_NEUTRAL,
+            toneTokens.emerald.text,
           )}
         >
           <Flag className="h-6 w-6" aria-hidden="true" />
@@ -55,7 +56,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
         </div>
       </header>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
         {content.examples.map((ex) => (
           <li key={ex.id}>
             <MiniCard card={ex} />
@@ -63,32 +64,31 @@ export const FlagsRoleSection = ({ content }: Props) => (
         ))}
       </ul>
     </article>
-
-    <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
-      {content.emphasis}
-    </SectionNote>
   </section>
 );
 
 const MiniCard = ({ card }: { card: FlagMiniCard }) => {
-  const t = toneTokens[card.tone];
   const Icon = iconMap[card.id];
   return (
     <article
       className={cn(
-        'flex flex-col gap-1 rounded-xl border bg-[var(--term-bg)] p-sm',
+        'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-        t.border,
+        flagBorder[card.id],
       )}
     >
       <span
         aria-hidden="true"
-        className={cn('inline-flex items-center justify-center w-9 h-9 rounded-lg border', t.chip)}
+        className={cn(
+          'inline-flex items-center justify-center w-10 h-10 rounded-lg border',
+          EFFECT_NEUTRAL,
+          flagText[card.id],
+        )}
       >
         <Icon className="h-4 w-4" />
       </span>
-      <code className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+      <code className={cn('font-mono text-xsm font-bold tracking-tight', flagText[card.id])}>
         {card.label}
       </code>
       <span className="text-[11.5px] font-medium text-[var(--term-muted)] break-keep">

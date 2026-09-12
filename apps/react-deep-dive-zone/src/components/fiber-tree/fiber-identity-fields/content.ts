@@ -28,6 +28,12 @@ export type WorkTagCard = {
   tone: ToneKey;
 };
 
+export type SiblingItem = {
+  keyValue: string;
+  label: string;
+  tone: ToneKey;
+};
+
 export type ExampleMapping = {
   id: string;
   code: string;
@@ -80,17 +86,23 @@ export type FiberIdentityFieldsContent = {
     badge: string;
     eyebrow: string;
     title: string;
+    description: string;
     codeLabel: string;
     code: string;
-    cardTitle: string;
-    cardBody: string;
+    beforeLabel: string;
+    afterLabel: string;
+    moveLabel: string;
+    before: SiblingItem[];
+    after: SiblingItem[];
+    matchNote: string;
+    note: string;
     highlights: string[];
   };
   typeVs: {
     badge: string;
     eyebrow: string;
     title: string;
-    vs: string;
+    description: string;
     elementType: {
       title: string;
       subtitle: string;
@@ -102,7 +114,10 @@ export type FiberIdentityFieldsContent = {
       body: string;
     };
     examplesLabel: string;
+    sameLabel: string;
+    diffLabel: string;
     examples: ExampleMapping[];
+    note: string;
   };
   checkpoint: {
     badge: string;
@@ -124,24 +139,6 @@ export type FiberIdentityFieldsContent = {
     eyebrow: string;
     title: string;
     cards: MappingCard[];
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    question: string;
-    answer: string;
-    explanation: string;
-    diagram: {
-      elementLabel: string;
-      elementType: string;
-      fiberLabel: string;
-      fiberElementType: string;
-      fiberType: string;
-    };
   };
   nextStep: {
     eyebrow: string;
@@ -250,17 +247,32 @@ const ko: FiberIdentityFieldsContent = {
     badge: '03',
     eyebrow: '형제 식별자',
     title: 'key는 형제 사이의 식별자다',
+    description: 'key는 Fiber가 형제 목록 안에서 자신의 정체성을 유지하는 데 도움을 준다.',
     codeLabel: 'JSX',
     code: 'items.map((item) => <TodoItem key={item.id} item={item} />);',
-    cardTitle: 'key는 Fiber가 형제 목록 안에서 자신의 정체성을 유지하는 데 도움을 준다.',
-    cardBody: '이 key는 이후 child reconciliation과 상태 보존 판단에 연결됩니다.',
+    beforeLabel: '이전 렌더',
+    afterLabel: '다음 렌더',
+    moveLabel: '순서 변경',
+    before: [
+      { keyValue: 'a', label: '장보기', tone: 'sky' },
+      { keyValue: 'b', label: '운동', tone: 'violet' },
+      { keyValue: 'c', label: '독서', tone: 'amber' },
+    ],
+    after: [
+      { keyValue: 'c', label: '독서', tone: 'amber' },
+      { keyValue: 'a', label: '장보기', tone: 'sky' },
+      { keyValue: 'b', label: '운동', tone: 'violet' },
+    ],
+    matchNote: 'key가 같은 항목끼리 같은 Fiber로 매칭되어 상태가 그대로 유지됩니다.',
+    note: '이 key는 이후 child reconciliation과 상태 보존 판단에 연결됩니다.',
     highlights: ['child reconciliation', '상태 보존'],
   },
   typeVs: {
     badge: '04',
     eyebrow: '두 type의 차이',
     title: 'elementType과 type의 차이',
-    vs: 'VS',
+    description:
+      'Element가 처음 들고 온 type과 실제로 렌더링할 대상은 다를 수 있어서, Fiber는 둘을 따로 저장합니다.',
     elementType: {
       title: 'elementType',
       subtitle: 'Element가 처음 들고 온 type',
@@ -269,19 +281,23 @@ const ko: FiberIdentityFieldsContent = {
     type: {
       title: 'type',
       subtitle: '실제 렌더링 대상으로 연결된 값',
-      body: 'React가 실제로 렌더링할 대상이 되는 값입니다. 문자열, 함수, 클래스, 실행 등이 올 수 있습니다.',
+      body: 'React가 실제로 렌더링할 대상입니다. 문자열, 함수, 클래스가 올 수 있고, 래퍼라면 그 안의 실제 컴포넌트가 됩니다.',
     },
     examplesLabel: '예시',
+    sameLabel: '같음',
+    diffLabel: '다름',
     examples: [
       { id: 'div', code: '<div />', elementType: "'div'", type: "'div'" },
       { id: 'my-button', code: '<MyButton />', elementType: 'MyButton', type: 'MyButton' },
+      { id: 'memo', code: '<MemoApp />', elementType: 'memo(App)', type: 'App' },
       {
-        id: 'fragment',
-        code: '<>...</>',
-        elementType: 'REACT_FRAGMENT_TYPE',
-        type: 'REACT_FRAGMENT_TYPE',
+        id: 'lazy',
+        code: '<LazyPage />',
+        elementType: "lazy(() => import('./Page'))",
+        type: 'Page',
       },
     ],
+    note: '단순 함수 컴포넌트를 감싼 memo와 lazy는 elementType에 래퍼 객체를 그대로 두고, type에는 실제로 렌더링할 컴포넌트를 연결합니다.',
   },
   checkpoint: {
     badge: '05',
@@ -362,26 +378,6 @@ const ko: FiberIdentityFieldsContent = {
         ],
       },
     ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: '미니 퀴즈',
-    title: '미니 개념 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    explanationLabel: '해설',
-    question: 'Fiber의 elementType과 type이 둘로 나누어져 있는 이유는 무엇일까?',
-    answer:
-      'Element가 처음 전달한 원본 type과 실제 렌더링 대상으로 사용되는 값이 다를 수 있기 때문이다.',
-    explanation:
-      '예를 들어 React.lazy, React.memo, forwardRef 등 래퍼 컴포넌트는 elementType은 래퍼를 가리키지만, type은 실제 렌더링 대상 함수를 가리킬 수 있습니다.',
-    diagram: {
-      elementLabel: 'Element',
-      elementType: 'type: React.memo(App)',
-      fiberLabel: 'Fiber',
-      fiberElementType: 'elementType: React.memo(App)',
-      fiberType: 'type: App',
-    },
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -477,17 +473,33 @@ const en: FiberIdentityFieldsContent = {
     badge: '03',
     eyebrow: 'SIBLING IDENTIFIER',
     title: 'key identifies a Fiber among its siblings',
+    description: 'key helps a Fiber keep its identity within a sibling list.',
     codeLabel: 'JSX',
     code: 'items.map((item) => <TodoItem key={item.id} item={item} />);',
-    cardTitle: 'key helps a Fiber keep its identity within a sibling list.',
-    cardBody: 'That key drives later decisions during child reconciliation and state preservation.',
+    beforeLabel: 'Previous render',
+    afterLabel: 'Next render',
+    moveLabel: 'Reordered',
+    before: [
+      { keyValue: 'a', label: 'Groceries', tone: 'sky' },
+      { keyValue: 'b', label: 'Workout', tone: 'violet' },
+      { keyValue: 'c', label: 'Reading', tone: 'amber' },
+    ],
+    after: [
+      { keyValue: 'c', label: 'Reading', tone: 'amber' },
+      { keyValue: 'a', label: 'Groceries', tone: 'sky' },
+      { keyValue: 'b', label: 'Workout', tone: 'violet' },
+    ],
+    matchNote:
+      'Items with the same key are matched to the same Fiber, so their state is preserved.',
+    note: 'That key drives later decisions during child reconciliation and state preservation.',
     highlights: ['child reconciliation', 'state preservation'],
   },
   typeVs: {
     badge: '04',
     eyebrow: 'ELEMENTTYPE VS TYPE',
     title: 'elementType vs type — what is the difference?',
-    vs: 'VS',
+    description:
+      'The type an Element carries and the value React actually renders can differ, so a Fiber stores both.',
     elementType: {
       title: 'elementType',
       subtitle: 'the type the Element originally carried',
@@ -496,19 +508,23 @@ const en: FiberIdentityFieldsContent = {
     type: {
       title: 'type',
       subtitle: 'the actual render target',
-      body: 'The value React really renders — a string, function, class, and so on.',
+      body: 'The value React really renders — a string, function, or class; for a wrapper, the real component inside it.',
     },
     examplesLabel: 'examples',
+    sameLabel: 'same',
+    diffLabel: 'differs',
     examples: [
       { id: 'div', code: '<div />', elementType: "'div'", type: "'div'" },
       { id: 'my-button', code: '<MyButton />', elementType: 'MyButton', type: 'MyButton' },
+      { id: 'memo', code: '<MemoApp />', elementType: 'memo(App)', type: 'App' },
       {
-        id: 'fragment',
-        code: '<>...</>',
-        elementType: 'REACT_FRAGMENT_TYPE',
-        type: 'REACT_FRAGMENT_TYPE',
+        id: 'lazy',
+        code: '<LazyPage />',
+        elementType: "lazy(() => import('./Page'))",
+        type: 'Page',
       },
     ],
+    note: 'For memo around a plain function component, and for lazy, elementType keeps the wrapper object while type points to the component React actually renders.',
   },
   checkpoint: {
     badge: '05',
@@ -590,26 +606,6 @@ const en: FiberIdentityFieldsContent = {
         ],
       },
     ],
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: 'MINI QUIZ',
-    title: 'Mini concept quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    explanationLabel: 'Explanation',
-    question: 'Why are elementType and type kept as two separate fields on a Fiber?',
-    answer:
-      'Because the original type carried by the Element can differ from the value React actually renders.',
-    explanation:
-      'For wrapper components like React.lazy, React.memo, or forwardRef, elementType may point to the wrapper while type points to the real render target function.',
-    diagram: {
-      elementLabel: 'Element',
-      elementType: 'type: React.memo(App)',
-      fiberLabel: 'Fiber',
-      fiberElementType: 'elementType: React.memo(App)',
-      fiberType: 'type: App',
-    },
   },
   nextStep: {
     eyebrow: 'The journey continues',

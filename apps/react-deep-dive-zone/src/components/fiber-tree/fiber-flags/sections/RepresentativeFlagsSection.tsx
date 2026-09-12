@@ -9,10 +9,12 @@ type Props = { content: FiberFlagsContent['repFlags'] };
 export const RepresentativeFlagsSection = ({ content }: Props) => (
   <section id="rep-flags" aria-labelledby="heading-rep-flags" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
+      descriptionFullWidth
       id="rep-flags"
       number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
+      description={content.description}
       icon={<Flag className="h-5 w-5" aria-hidden="true" />}
     />
 
@@ -21,8 +23,10 @@ export const RepresentativeFlagsSection = ({ content }: Props) => (
         <li key={card.id}>
           <BeforeAfterCard
             card={card}
+            situationLabel={content.situationLabel}
             beforeLabel={content.beforeLabel}
             afterLabel={content.afterLabel}
+            resultLabel={content.resultLabel}
           />
         </li>
       ))}

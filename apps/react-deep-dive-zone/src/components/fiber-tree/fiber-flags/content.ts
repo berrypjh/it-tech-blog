@@ -15,32 +15,17 @@ export type FlagMiniCard = {
   id: 'placement' | 'update' | 'ref' | 'visibility';
   label: string;
   meaning: string;
-  tone: 'emerald' | 'sky' | 'violet' | 'amber';
 };
 
 export type RepresentativeFlagCard = {
   id: EffectKind;
   title: string;
   description: string;
-  before: string;
-  after: string;
-};
-
-export type SimulationRow = {
-  id: string;
   situation: string;
   before: string;
   after: string;
   change: string;
-  resultFlag: EffectKind;
   resultDescription: string;
-};
-
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
 };
 
 export type CodeBlock = {
@@ -67,7 +52,6 @@ export type FiberFlagsContent = {
     mainTitle: string;
     mainDescription: string;
     examples: FlagMiniCard[];
-    emphasis: string;
   };
   subtree: {
     badge: string;
@@ -85,9 +69,12 @@ export type FiberFlagsContent = {
     badge: string;
     eyebrow: string;
     title: string;
+    description: string;
     cards: RepresentativeFlagCard[];
+    situationLabel: string;
     beforeLabel: string;
     afterLabel: string;
+    resultLabel: string;
   };
   checkpoint: {
     badge: string;
@@ -104,13 +91,6 @@ export type FiberFlagsContent = {
     };
     blocks: CodeBlock[];
   };
-  simulation: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    columns: { situation: string; before: string; after: string; change: string; result: string };
-    rows: SimulationRow[];
-  };
   commitPreview: {
     badge: string;
     eyebrow: string;
@@ -118,16 +98,6 @@ export type FiberFlagsContent = {
     renderCard: { title: string; subtitle: string; body: string };
     arrowLabel: string;
     commitCard: { title: string; subtitle: string; body: string };
-    emphasis: string;
-  };
-  quiz: {
-    badge: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -202,12 +172,11 @@ const ko: FiberFlagsContent = {
     mainTitle: 'flags',
     mainDescription: '→ 이 Fiber 자신에게 필요한 effect 표시',
     examples: [
-      { id: 'placement', label: 'Placement', meaning: '배치', tone: 'emerald' },
-      { id: 'update', label: 'Update', meaning: '업데이트', tone: 'sky' },
-      { id: 'ref', label: 'Ref', meaning: '참조 변경', tone: 'violet' },
-      { id: 'visibility', label: 'Visibility', meaning: '가시성 변경', tone: 'amber' },
+      { id: 'placement', label: 'Placement', meaning: '배치' },
+      { id: 'update', label: 'Update', meaning: '업데이트' },
+      { id: 'ref', label: 'Ref', meaning: '참조 변경' },
+      { id: 'visibility', label: 'Visibility', meaning: '가시성 변경' },
     ],
-    emphasis: '이 Fiber 자신에 직접 일어나야 하는 작업을 나타냅니다.',
   },
   subtree: {
     badge: '02',
@@ -235,14 +204,19 @@ const ko: FiberFlagsContent = {
   repFlags: {
     badge: '03',
     eyebrow: '대표 flag',
-    title: '대표 flag 예시',
+    title: '대표 flag 예시와 변경 시뮬레이션',
+    description:
+      '같은 변경을 상황 → before/after → 기록되는 flag 순서로 따라가며 대표 flag 세 가지를 확인합니다.',
+    situationLabel: '상황',
     beforeLabel: 'Before',
     afterLabel: 'After',
+    resultLabel: 'Fiber flag 결과',
     cards: [
       {
         id: 'placement',
         title: 'Placement',
         description: '→ 새로운 노드를 배치해야 함',
+        situation: '새 <li> 추가',
         before: `<ul>
   <li>A</li>
   <li>B</li>
@@ -252,18 +226,24 @@ const ko: FiberFlagsContent = {
   <li>B</li>
   <li>C</li>
 </ul>`,
+        change: '새로운 노드가 추가됨',
+        resultDescription: '새 노드를 DOM에 배치해야 함',
       },
       {
         id: 'update',
         title: 'Update',
         description: '→ 기존 노드를 갱신해야 함',
+        situation: '버튼 텍스트 변경',
         before: `<button>저장</button>`,
         after: `<button>전송</button>`,
+        change: '기존 노드의 내용 변경',
+        resultDescription: '기존 노드를 갱신해야 함',
       },
       {
         id: 'childDeletion',
         title: 'ChildDeletion',
         description: '→ 자식을 삭제해야 함',
+        situation: '목록 항목 제거',
         before: `<ul>
   <li>A</li>
   <li>B</li>
@@ -273,6 +253,8 @@ const ko: FiberFlagsContent = {
   <li>A</li>
   <li>B</li>
 </ul>`,
+        change: '기존 노드가 제거됨',
+        resultDescription: '삭제 대상 Fiber를 deletions에 저장',
       },
     ],
   },
@@ -315,63 +297,8 @@ const ko: FiberFlagsContent = {
       },
     ],
   },
-  simulation: {
-    badge: '05',
-    eyebrow: '시뮬레이션',
-    title: '변경 예시 시뮬레이션',
-    columns: {
-      situation: '상황',
-      before: 'Before',
-      after: 'After',
-      change: '발생하는 변경',
-      result: 'Fiber flag 결과',
-    },
-    rows: [
-      {
-        id: 'add-li',
-        situation: '새 <li> 추가',
-        before: `<ul>
-  <li>A</li>
-  <li>B</li>
-</ul>`,
-        after: `<ul>
-  <li>A</li>
-  <li>B</li>
-  <li>C</li>
-</ul>`,
-        change: '새로운 노드가 추가됨',
-        resultFlag: 'placement',
-        resultDescription: '새 노드를 DOM에 배치해야 함',
-      },
-      {
-        id: 'change-text',
-        situation: '버튼 텍스트 변경',
-        before: `<button>저장</button>`,
-        after: `<button>전송</button>`,
-        change: '기존 노드의 내용 변경',
-        resultFlag: 'update',
-        resultDescription: '기존 노드를 갱신해야 함',
-      },
-      {
-        id: 'remove-li',
-        situation: '목록 항목 제거',
-        before: `<ul>
-  <li>A</li>
-  <li>B</li>
-  <li>C</li>
-</ul>`,
-        after: `<ul>
-  <li>A</li>
-  <li>B</li>
-</ul>`,
-        change: '기존 노드가 제거됨',
-        resultFlag: 'childDeletion',
-        resultDescription: '삭제 대상 Fiber를 deletions에 저장',
-      },
-    ],
-  },
   commitPreview: {
-    badge: '06',
+    badge: '05',
     eyebrow: '연결 예고',
     title: 'Commit Phase 연결 예고',
     renderCard: {
@@ -385,37 +312,6 @@ const ko: FiberFlagsContent = {
       subtitle: '반영 단계',
       body: '기록된 정보를 따라 실제 DOM/Host 환경에 변경을 적용합니다.',
     },
-    emphasis:
-      'Render Phase는 무엇을 바꿀지 표시합니다. Commit Phase는 이 표시를 실제 환경에 반영합니다.',
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: '미니 퀴즈',
-    title: '미니 개념 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    explanationLabel: '해설',
-    cards: [
-      {
-        id: 'q1',
-        question: '새로운 DOM 노드를 추가해야 한다면 어떤 flag가 설정될까?',
-        answer: 'Placement',
-        explanation: '새로운 노드를 배치해야 하므로 Placement flag가 필요합니다.',
-      },
-      {
-        id: 'q2',
-        question: '자식 중 어딘가에 변경이 있을 때 부모가 확인하는 필드는?',
-        answer: 'subtreeFlags',
-        explanation:
-          '부모 Fiber는 subtreeFlags를 통해 자식 영역의 변경 존재 여부를 요약해 확인합니다.',
-      },
-      {
-        id: 'q3',
-        question: '삭제 대상 Fiber들은 어디에 저장될까?',
-        answer: 'deletions',
-        explanation: '삭제할 자식 Fiber 목록이 해당 Fiber의 deletions에 저장됩니다.',
-      },
-    ],
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -465,12 +361,11 @@ const en: FiberFlagsContent = {
     mainTitle: 'flags',
     mainDescription: '→ marks the effects this Fiber itself needs',
     examples: [
-      { id: 'placement', label: 'Placement', meaning: 'place', tone: 'emerald' },
-      { id: 'update', label: 'Update', meaning: 'update', tone: 'sky' },
-      { id: 'ref', label: 'Ref', meaning: 'ref change', tone: 'violet' },
-      { id: 'visibility', label: 'Visibility', meaning: 'visibility', tone: 'amber' },
+      { id: 'placement', label: 'Placement', meaning: 'place' },
+      { id: 'update', label: 'Update', meaning: 'update' },
+      { id: 'ref', label: 'Ref', meaning: 'ref change' },
+      { id: 'visibility', label: 'Visibility', meaning: 'visibility' },
     ],
-    emphasis: 'Represents the work that must happen on this Fiber itself.',
   },
   subtree: {
     badge: '02',
@@ -498,14 +393,19 @@ const en: FiberFlagsContent = {
   repFlags: {
     badge: '03',
     eyebrow: 'REPRESENTATIVE FLAGS',
-    title: 'Representative flag examples',
+    title: 'Representative flags and change simulation',
+    description:
+      'Follow the same change from situation to before/after to the flag React records, across the three representative flags.',
+    situationLabel: 'Situation',
     beforeLabel: 'Before',
     afterLabel: 'After',
+    resultLabel: 'Resulting Fiber flag',
     cards: [
       {
         id: 'placement',
         title: 'Placement',
         description: '→ a new node must be placed',
+        situation: 'Add a new <li>',
         before: `<ul>
   <li>A</li>
   <li>B</li>
@@ -515,18 +415,24 @@ const en: FiberFlagsContent = {
   <li>B</li>
   <li>C</li>
 </ul>`,
+        change: 'A new node is added',
+        resultDescription: 'The new node must be placed in the DOM',
       },
       {
         id: 'update',
         title: 'Update',
         description: '→ an existing node must be updated',
+        situation: 'Change button text',
         before: `<button>Save</button>`,
         after: `<button>Send</button>`,
+        change: 'An existing node’s content changes',
+        resultDescription: 'The existing node must be updated',
       },
       {
         id: 'childDeletion',
         title: 'ChildDeletion',
         description: '→ a child must be deleted',
+        situation: 'Remove a list item',
         before: `<ul>
   <li>A</li>
   <li>B</li>
@@ -536,6 +442,8 @@ const en: FiberFlagsContent = {
   <li>A</li>
   <li>B</li>
 </ul>`,
+        change: 'An existing node is removed',
+        resultDescription: 'The Fiber for deletion goes into deletions',
       },
     ],
   },
@@ -578,63 +486,8 @@ const en: FiberFlagsContent = {
       },
     ],
   },
-  simulation: {
-    badge: '05',
-    eyebrow: 'SIMULATION',
-    title: 'Change scenario simulation',
-    columns: {
-      situation: 'Situation',
-      before: 'Before',
-      after: 'After',
-      change: 'What changes',
-      result: 'Resulting Fiber flag',
-    },
-    rows: [
-      {
-        id: 'add-li',
-        situation: 'Add a new <li>',
-        before: `<ul>
-  <li>A</li>
-  <li>B</li>
-</ul>`,
-        after: `<ul>
-  <li>A</li>
-  <li>B</li>
-  <li>C</li>
-</ul>`,
-        change: 'A new node is added',
-        resultFlag: 'placement',
-        resultDescription: 'The new node must be placed in the DOM',
-      },
-      {
-        id: 'change-text',
-        situation: 'Change button text',
-        before: `<button>Save</button>`,
-        after: `<button>Send</button>`,
-        change: 'An existing node’s content changes',
-        resultFlag: 'update',
-        resultDescription: 'The existing node must be updated',
-      },
-      {
-        id: 'remove-li',
-        situation: 'Remove a list item',
-        before: `<ul>
-  <li>A</li>
-  <li>B</li>
-  <li>C</li>
-</ul>`,
-        after: `<ul>
-  <li>A</li>
-  <li>B</li>
-</ul>`,
-        change: 'An existing node is removed',
-        resultFlag: 'childDeletion',
-        resultDescription: 'The Fiber for deletion goes into deletions',
-      },
-    ],
-  },
   commitPreview: {
-    badge: '06',
+    badge: '05',
     eyebrow: 'NEXT PHASE',
     title: 'Commit phase preview',
     renderCard: {
@@ -648,37 +501,6 @@ const en: FiberFlagsContent = {
       subtitle: 'apply stage',
       body: 'Reads the recorded info and applies the changes to the actual DOM/host environment.',
     },
-    emphasis:
-      'Render Phase marks what will change. Commit Phase reflects those marks into the real environment.',
-  },
-  quiz: {
-    badge: '07',
-    eyebrow: 'MINI QUIZ',
-    title: 'Mini concept quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    explanationLabel: 'Explanation',
-    cards: [
-      {
-        id: 'q1',
-        question: 'Which flag is set when a new DOM node must be added?',
-        answer: 'Placement',
-        explanation: 'A new node must be placed — that needs the Placement flag.',
-      },
-      {
-        id: 'q2',
-        question: 'Which field tells a parent that a change exists somewhere among its children?',
-        answer: 'subtreeFlags',
-        explanation:
-          'A parent Fiber checks subtreeFlags to see whether any descendant carries a change.',
-      },
-      {
-        id: 'q3',
-        question: 'Where are Fibers slated for deletion stored?',
-        answer: 'deletions',
-        explanation: 'A Fiber keeps its list of children to delete in deletions.',
-      },
-    ],
   },
   nextStep: {
     eyebrow: 'The journey continues',

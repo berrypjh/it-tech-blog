@@ -1,9 +1,8 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { Lightbulb, Pencil, ShieldCheck } from 'lucide-react';
+import { Pencil, ShieldCheck } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberFlagsContent } from '../content';
@@ -41,10 +40,6 @@ export const CommitPhasePreview = ({ content }: Props) => {
       />
 
       <FlowStepsGrid steps={steps} columns={2} />
-
-      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
-        {content.emphasis}
-      </SectionNote>
     </section>
   );
 };

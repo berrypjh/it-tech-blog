@@ -39,13 +39,6 @@ export type ReasonCard = {
   iconName: 'alert' | 'workflow' | 'link';
 };
 
-export type QuizCard = {
-  id: string;
-  question: string;
-  answer: string;
-  explanation: string;
-};
-
 export type CodeAnnotation = {
   /** 1-based line range (inclusive) */
   from: number;
@@ -121,22 +114,12 @@ export type FiberStateNodeContent = {
       content: string;
       annotations: CodeAnnotation[];
     };
-    banner: string;
   };
   reasons: {
     number: string;
     eyebrow: string;
     title: string;
     cards: ReasonCard[];
-  };
-  quiz: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    explanationLabel: string;
-    cards: QuizCard[];
   };
   nextStep: {
     eyebrow: string;
@@ -307,7 +290,6 @@ const ko: FiberStateNodeContent = {
         { from: 7, to: 7, label: 'stateNode 연결', tone: 'emerald' },
       ],
     },
-    banner: 'HostRoot Fiber의 stateNode는 FiberRoot 객체(root)를 가리킵니다.',
   },
   reasons: {
     number: '05',
@@ -334,28 +316,6 @@ const ko: FiberStateNodeContent = {
         body: 'stateNode가 실제 렌더링 대상과 언제 연결되는지 흐름을 놓치게 된다.',
         tone: 'violet',
         iconName: 'link',
-      },
-    ],
-  },
-  quiz: {
-    number: '06',
-    eyebrow: '미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    explanationLabel: '해설',
-    cards: [
-      {
-        id: 'q1',
-        question: 'HostRoot Fiber의 stateNode는 무엇을 가리킬까?',
-        answer: 'FiberRoot 객체.',
-        explanation: '루트 Fiber는 전체 Fiber 트리를 관리하는 FiberRoot 객체(root)와 연결된다.',
-      },
-      {
-        id: 'q2',
-        question: 'stateNode는 항상 DOM node일까?',
-        answer: '아니다.',
-        explanation: 'tag에 따라 DOM, 클래스 인스턴스, 루트 객체 등 다양한 대상을 가리킨다.',
       },
     ],
   },
@@ -518,7 +478,6 @@ const en: FiberStateNodeContent = {
         { from: 7, to: 7, label: 'stateNode link', tone: 'emerald' },
       ],
     },
-    banner: 'The HostRoot Fiber’s stateNode points to the FiberRoot object (root).',
   },
   reasons: {
     number: '05',
@@ -545,30 +504,6 @@ const en: FiberStateNodeContent = {
         body: 'You can no longer track when stateNode connects to the real render target.',
         tone: 'violet',
         iconName: 'link',
-      },
-    ],
-  },
-  quiz: {
-    number: '06',
-    eyebrow: 'MINI QUIZ',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    explanationLabel: 'Explanation',
-    cards: [
-      {
-        id: 'q1',
-        question: 'What does the HostRoot Fiber’s stateNode point to?',
-        answer: 'The FiberRoot object.',
-        explanation:
-          'The root Fiber connects to the FiberRoot object (root) that manages the whole Fiber tree.',
-      },
-      {
-        id: 'q2',
-        question: 'Is stateNode always a DOM node?',
-        answer: 'No.',
-        explanation:
-          'Depending on the tag, it can point to a DOM node, a class instance, or a root object.',
       },
     ],
   },

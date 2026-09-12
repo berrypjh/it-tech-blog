@@ -1,10 +1,9 @@
 import { cn } from '@it-tech-blog/utils';
 
-import { Eye, FileCode, Lightbulb } from 'lucide-react';
+import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent } from '../content';
@@ -87,10 +86,6 @@ export const StateNodeCodeCheckpoint = ({ content }: Props) => {
           <GithubButton href={info.buttonHref} label={info.buttonLabel} />
         </div>
       </div>
-
-      <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
-        {content.banner}
-      </SectionNote>
     </section>
   );
 };

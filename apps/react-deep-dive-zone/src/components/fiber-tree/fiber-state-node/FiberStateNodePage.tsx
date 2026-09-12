@@ -7,7 +7,6 @@ import { HostRootExample } from './sections/HostRootExample';
 import { StateNodeByTag } from './sections/StateNodeByTag';
 import { StateNodeCodeCheckpoint } from './sections/StateNodeCodeCheckpoint';
 import { StateNodeHero } from './sections/StateNodeHero';
-import { StateNodeMiniQuiz } from './sections/StateNodeMiniQuiz';
 import { StateNodeMisconception } from './sections/StateNodeMisconception';
 import { WhyStateNodeMatters } from './sections/WhyStateNodeMatters';
 import { fiberStateNodeContent } from './content';
@@ -25,7 +24,6 @@ export const FiberStateNodePage = ({ locale }: Props) => {
       <HostRootExample content={c.hostRoot} />
       <StateNodeCodeCheckpoint content={c.checkpoint} />
       <WhyStateNodeMatters content={c.reasons} />
-      <StateNodeMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

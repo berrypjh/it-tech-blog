@@ -7,7 +7,6 @@ import { ElementTypeVsType } from './sections/ElementTypeVsType';
 import { FieldQuickSummary } from './sections/FieldQuickSummary';
 import { IdentityCodeCheckpoint } from './sections/IdentityCodeCheckpoint';
 import { IdentityHero } from './sections/IdentityHero';
-import { IdentityMiniQuiz } from './sections/IdentityMiniQuiz';
 import { JsxToFiberMapping } from './sections/JsxToFiberMapping';
 import { KeyIdentitySection } from './sections/KeyIdentitySection';
 import { WorkTagSection } from './sections/WorkTagSection';
@@ -27,7 +26,6 @@ export const FiberIdentityFieldsPage = ({ locale }: Props) => {
       <ElementTypeVsType content={c.typeVs} />
       <IdentityCodeCheckpoint content={c.checkpoint} />
       <JsxToFiberMapping content={c.mapping} />
-      <IdentityMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

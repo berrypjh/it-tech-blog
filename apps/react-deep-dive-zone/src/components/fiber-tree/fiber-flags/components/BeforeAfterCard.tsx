@@ -9,8 +9,10 @@ import { EFFECT_NEUTRAL, effectBorder, effectText } from './effectStyles';
 
 type Props = {
   card: RepresentativeFlagCard;
+  situationLabel: string;
   beforeLabel: string;
   afterLabel: string;
+  resultLabel: string;
 };
 
 const iconMap: Record<EffectKind, React.ComponentType<{ className?: string }>> = {
@@ -19,7 +21,20 @@ const iconMap: Record<EffectKind, React.ComponentType<{ className?: string }>> =
   childDeletion: Trash2,
 };
 
-export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {
+const SubLabel = ({ children }: { children: React.ReactNode }) => (
+  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
+    {`// ${children}`}
+  </span>
+);
+
+/** 대표 flag 한 장: 상황 → before / after 코드 → 기록되는 flag 결과. */
+export const BeforeAfterCard = ({
+  card,
+  situationLabel,
+  beforeLabel,
+  afterLabel,
+  resultLabel,
+}: Props) => {
   const Icon = iconMap[card.id];
   return (
     <article
@@ -51,11 +66,14 @@ export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {
         </div>
       </header>
 
+      <div className="flex flex-col gap-1 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-sm">
+        <SubLabel>{situationLabel}</SubLabel>
+        <p className="text-xsm font-bold text-[var(--term-fg)] break-keep">{card.situation}</p>
+      </div>
+
       <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {`// ${beforeLabel}`}
-        </span>
-        <CodePreviewPanel code={card.before} caption="before.html" language="HTML" size="sm" />
+        <SubLabel>{beforeLabel}</SubLabel>
+        <CodePreviewPanel code={card.before} language="HTML" size="sm" />
       </div>
 
       <div aria-hidden="true" className="flex justify-center">
@@ -65,10 +83,19 @@ export const BeforeAfterCard = ({ card, beforeLabel, afterLabel }: Props) => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {`// ${afterLabel}`}
-        </span>
-        <CodePreviewPanel code={card.after} caption="after.html" language="HTML" size="sm" />
+        <SubLabel>{afterLabel}</SubLabel>
+        <CodePreviewPanel code={card.after} language="HTML" size="sm" />
+      </div>
+
+      <div className="mt-auto flex flex-col gap-1 border-t border-dashed border-[var(--term-border)] pt-sm">
+        <SubLabel>{resultLabel}</SubLabel>
+        <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
+          {card.change}
+          <span aria-hidden="true" className="mx-1">
+            →
+          </span>
+          <span className={cn('font-bold', effectText[card.id])}>{card.resultDescription}</span>
+        </p>
       </div>
     </article>
   );

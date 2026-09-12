@@ -5,10 +5,8 @@ import { StartPageShell } from '../../shared/shell';
 
 import { ElementToFiberReview } from './sections/ElementToFiberReview';
 import { FiberCodeCheckpoint } from './sections/FiberCodeCheckpoint';
-import { FiberFieldGroups } from './sections/FiberFieldGroups';
 import { FiberHero } from './sections/FiberHero';
 import { FiberIsNotJustNode } from './sections/FiberIsNotJustNode';
-import { FiberMiniQuiz } from './sections/FiberMiniQuiz';
 import { FiberStructurePreview } from './sections/FiberStructurePreview';
 import { fiberNodeOverviewContent } from './content';
 
@@ -22,10 +20,8 @@ export const FiberNodeOverviewPage = ({ locale }: Props) => {
       <FiberHero content={c.hero} />
       <ElementToFiberReview content={c.review} />
       <FiberStructurePreview content={c.preview} />
-      <FiberFieldGroups content={c.fieldGroups} />
       <FiberIsNotJustNode content={c.notJustNode} />
       <FiberCodeCheckpoint content={c.checkpoint} />
-      <FiberMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
