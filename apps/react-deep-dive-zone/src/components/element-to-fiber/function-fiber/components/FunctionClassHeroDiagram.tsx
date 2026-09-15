@@ -1,11 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
 import { Component, HelpCircle, SquareFunction } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionClassComponentFiberContent } from '../content';
 
-type Props = { content: FunctionClassComponentFiberContent['hero']; className?: string };
+type Props = { content: FunctionClassComponentFiberContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
@@ -13,23 +15,11 @@ type Props = { content: FunctionClassComponentFiberContent['hero']; className?: 
  * 예이면 Class Component Fiber tag로 갈라지는 흐름을 한 컨테이너 안에서
  * 위에서 아래로 잇는 컴팩트 결정 맵.
  */
-export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
+export const FunctionClassHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.startTitle}${content.startSubtitle}: ${content.questionTitle} ${content.noLabel} → ${content.functionTitle} (${content.functionLine2}), ${content.yesLabel} → ${content.classTitle} (${content.classLine2})`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm" aria-hidden="true">
         <StartNode title={content.startTitle} subtitle={content.startSubtitle} />
 
@@ -62,7 +52,7 @@ export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
           </li>
         </ul>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -138,12 +128,3 @@ const BranchCard = ({ tone, icon, branchLabel, title, line1, line2 }: BranchCard
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

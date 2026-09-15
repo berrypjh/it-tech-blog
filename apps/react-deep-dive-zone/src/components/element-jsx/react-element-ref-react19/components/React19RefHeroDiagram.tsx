@@ -5,9 +5,9 @@ import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import type { HeroFlowStep, ReactElementRefReact19Content } from '../content';
 
-type Props = { content: ReactElementRefReact19Content['hero']; className?: string };
+type Props = { content: ReactElementRefReact19Content['hero'] };
 
-export const React19RefHeroDiagram = ({ content, className }: Props) => {
+export const React19RefHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.leftColumnTitle}: ${content.leftFlow
     .map((s) => s.label)
     .join(' → ')} / ${content.rightColumnTitle}: ${content.rightFlow
@@ -15,7 +15,7 @@ export const React19RefHeroDiagram = ({ content, className }: Props) => {
     .join(' → ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]">

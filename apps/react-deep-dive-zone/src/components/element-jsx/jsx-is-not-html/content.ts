@@ -7,17 +7,15 @@ export type HeroExplanationCard = {
   label: string;
   title: string;
   body: string;
-  iconName: 'eye' | 'braces';
   tone: ToneKey;
 };
 
 export type MisconceptionCard = {
-  id: string;
+  id: 'jsx-is-html' | 'jsx-is-dom' | 'jsx-renders-directly';
   badgeWrong: string;
   wrong: string;
   right: string;
   note: string;
-  iconName: 'box' | 'network' | 'browser';
   iconTone: ToneKey;
 };
 
@@ -30,10 +28,9 @@ export type EvidenceCard = {
 };
 
 export type ValueCard = {
-  id: string;
+  id: 'structure' | 'js-combine' | 'component-model' | 'tree-shape';
   title: string;
   body: string;
-  iconName: 'eye' | 'braces' | 'puzzle' | 'tree';
   tone: ToneKey;
 };
 
@@ -105,7 +102,6 @@ const ko: JsxIsNotHtmlContent = {
         label: '겉보기',
         title: 'HTML처럼 보임',
         body: '태그, 속성, 중첩 구조가 HTML과 유사합니다.',
-        iconName: 'eye',
         tone: 'teal',
       },
       {
@@ -113,7 +109,6 @@ const ko: JsxIsNotHtmlContent = {
         label: '실제',
         title: 'JavaScript 표현식',
         body: 'JavaScript 안에서 평가되는 식(expression)입니다.',
-        iconName: 'braces',
         tone: 'violet',
       },
     ],
@@ -130,7 +125,6 @@ const ko: JsxIsNotHtmlContent = {
         wrong: 'JSX는 HTML이다.',
         right: 'HTML과 닮은 JavaScript 문법이다.',
         note: '유사해 보이지만, 실행되는 환경과 목적이 완전히 다릅니다.',
-        iconName: 'box',
         iconTone: 'violet',
       },
       {
@@ -139,7 +133,6 @@ const ko: JsxIsNotHtmlContent = {
         wrong: 'JSX가 곧 DOM이다.',
         right: 'JSX는 React Element를 만들기 위한 입력이다.',
         note: '바로 DOM이 아니라, 중간 객체를 거쳐 렌더링됩니다.',
-        iconName: 'network',
         iconTone: 'violet',
       },
       {
@@ -148,7 +141,6 @@ const ko: JsxIsNotHtmlContent = {
         wrong: 'React는 JSX를 바로 브라우저에 그린다.',
         right: '먼저 컴파일과 객체 생성 단계를 거친다.',
         note: '그 후에 렌더러(renderer)가 실제 DOM을 만듭니다.',
-        iconName: 'browser',
         iconTone: 'violet',
       },
     ],
@@ -194,28 +186,24 @@ const ko: JsxIsNotHtmlContent = {
         id: 'structure',
         title: '구조가 한눈에 보인다',
         body: '계층적 UI를 들여쓰기 구조로 시각적으로 파악할 수 있습니다.',
-        iconName: 'eye',
         tone: 'teal',
       },
       {
         id: 'js-combine',
         title: 'JavaScript와 자연스럽게 결합된다',
         body: '변수, 연산, 조건문, 함수 호출 등 모든 JS 기능을 그대로 사용할 수 있습니다.',
-        iconName: 'braces',
         tone: 'violet',
       },
       {
         id: 'component-model',
         title: '컴포넌트 모델과 잘 맞는다',
         body: '컴포넌트를 태그처럼 사용하여 재사용 가능한 UI 조합이 가능합니다.',
-        iconName: 'puzzle',
         tone: 'sky',
       },
       {
         id: 'tree-shape',
         title: '트리 구조를 직관적으로 드러낸다',
         body: '부모-자식 관계가 명확하게 표현되어 복잡한 UI도 이해하기 쉽습니다.',
-        iconName: 'tree',
         tone: 'amber',
       },
     ],
@@ -277,7 +265,6 @@ const en: JsxIsNotHtmlContent = {
         label: 'Appearance',
         title: 'Looks like HTML',
         body: 'Tags, attributes, and nesting feel just like HTML.',
-        iconName: 'eye',
         tone: 'teal',
       },
       {
@@ -285,7 +272,6 @@ const en: JsxIsNotHtmlContent = {
         label: 'Reality',
         title: 'A JavaScript expression',
         body: 'It is an expression evaluated inside JavaScript.',
-        iconName: 'braces',
         tone: 'violet',
       },
     ],
@@ -302,7 +288,6 @@ const en: JsxIsNotHtmlContent = {
         wrong: 'JSX is HTML.',
         right: 'It is JavaScript syntax that resembles HTML.',
         note: 'It looks similar, but the runtime and purpose are entirely different.',
-        iconName: 'box',
         iconTone: 'violet',
       },
       {
@@ -311,7 +296,6 @@ const en: JsxIsNotHtmlContent = {
         wrong: 'JSX is the DOM.',
         right: 'JSX is input for building a React Element.',
         note: 'It is not the DOM directly — it goes through an intermediate object first.',
-        iconName: 'network',
         iconTone: 'violet',
       },
       {
@@ -320,7 +304,6 @@ const en: JsxIsNotHtmlContent = {
         wrong: 'React paints JSX straight to the browser.',
         right: 'It first compiles JSX and creates objects.',
         note: 'Only then does a renderer actually produce DOM nodes.',
-        iconName: 'browser',
         iconTone: 'violet',
       },
     ],
@@ -366,28 +349,24 @@ const en: JsxIsNotHtmlContent = {
         id: 'structure',
         title: 'Structure is visible at a glance',
         body: 'Hierarchical UI shows up directly as indentation.',
-        iconName: 'eye',
         tone: 'teal',
       },
       {
         id: 'js-combine',
         title: 'It combines naturally with JavaScript',
         body: 'Variables, math, conditions, function calls — all of JS is available.',
-        iconName: 'braces',
         tone: 'violet',
       },
       {
         id: 'component-model',
         title: 'It matches the component model',
         body: 'Use components as tags to compose reusable UI pieces.',
-        iconName: 'puzzle',
         tone: 'sky',
       },
       {
         id: 'tree-shape',
         title: 'Tree shape is obvious',
         body: 'Parent–child relationships are explicit, even in complex UI.',
-        iconName: 'tree',
         tone: 'amber',
       },
     ],

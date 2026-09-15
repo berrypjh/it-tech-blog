@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Flag, Layers, Network, RefreshCw, Sparkles } from 'lucide-react';
+import { Flag, Layers, type LucideIcon, Network, RefreshCw, Sparkles } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,12 +7,12 @@ import type { ElementVsFiberContent, WhyFiberCard } from '../content';
 
 type Props = { content: ElementVsFiberContent['whyFiber'] };
 
-const iconMap = {
+const cardIcon: Record<WhyFiberCard['id'], LucideIcon> = {
   tree: Network,
-  flag: Flag,
-  refresh: RefreshCw,
-  layers: Layers,
-} as const;
+  priority: Flag,
+  'update-state': RefreshCw,
+  alternate: Layers,
+};
 
 export const WhyFiberNeeded = ({ content }: Props) => (
   <section id="why-fiber" aria-labelledby="heading-why-fiber" className="space-y-md scroll-mt-xl">
@@ -38,7 +38,7 @@ export const WhyFiberNeeded = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: WhyFiberCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

@@ -1,20 +1,28 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Fingerprint, Key, LayoutPanelTop, ListChecks, User } from 'lucide-react';
+import {
+  Box,
+  Fingerprint,
+  Key,
+  LayoutPanelTop,
+  ListChecks,
+  type LucideIcon,
+  User,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactElementObjectStructureContent } from '../content';
+import type { FieldCard, ReactElementObjectStructureContent } from '../content';
 
 type Props = { content: ReactElementObjectStructureContent['fields'] };
 
-const iconMap = {
-  fingerprint: Fingerprint,
-  box: Box,
+const fieldIcon: Record<FieldCard['id'], LucideIcon> = {
+  $$typeof: Fingerprint,
+  type: Box,
   key: Key,
-  panel: LayoutPanelTop,
-  user: User,
-} as const;
+  props: LayoutPanelTop,
+  _owner: User,
+};
 
 export const ElementFieldCards = ({ content }: Props) => (
   <section id="fields" aria-labelledby="heading-fields" className="space-y-md scroll-mt-xl">
@@ -30,7 +38,7 @@ export const ElementFieldCards = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = fieldIcon[card.id];
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <code

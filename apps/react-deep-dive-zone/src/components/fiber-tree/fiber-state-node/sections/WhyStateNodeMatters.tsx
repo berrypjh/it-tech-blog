@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { AlertTriangle, Link2, Sparkles, Workflow } from 'lucide-react';
+import { AlertTriangle, Link2, type LucideIcon, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
@@ -8,11 +8,11 @@ import type { FiberStateNodeContent, ReasonCard } from '../content';
 
 type Props = { content: FiberStateNodeContent['reasons'] };
 
-const iconMap = {
-  alert: AlertTriangle,
-  workflow: Workflow,
-  link: Link2,
-} as const;
+const reasonIcon: Record<ReasonCard['id'], LucideIcon> = {
+  'host-root': AlertTriangle,
+  'by-tag': Workflow,
+  'commit-phase': Link2,
+};
 
 export const WhyStateNodeMatters = ({ content }: Props) => (
   <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
@@ -35,7 +35,7 @@ export const WhyStateNodeMatters = ({ content }: Props) => (
 );
 
 const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = reasonIcon[card.id];
   return (
     <article
       className={cx(

@@ -1,19 +1,28 @@
-import { Activity, Boxes, Flag, Pencil, Repeat, ShieldCheck, Zap } from 'lucide-react';
+import {
+  Activity,
+  Boxes,
+  Flag,
+  type LucideIcon,
+  Pencil,
+  Repeat,
+  ShieldCheck,
+  Zap,
+} from 'lucide-react';
 
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { FiberCentralContent } from '../content';
+import type { FiberCentralContent, FlowStep } from '../content';
 
 type Props = { content: FiberCentralContent['flow'] };
 
-const iconMap = {
-  cube: Boxes,
-  pulse: Activity,
-  zap: Zap,
-  pencil: Pencil,
-  flag: Flag,
-  shield: ShieldCheck,
-} as const;
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  fiber: Boxes,
+  update: Activity,
+  lanes: Zap,
+  render: Pencil,
+  flags: Flag,
+  commit: ShieldCheck,
+};
 
 export const FiberRenderingFlowConnection = ({ content }: Props) => (
   <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
@@ -27,7 +36,7 @@ export const FiberRenderingFlowConnection = ({ content }: Props) => (
 
     <NumberedStepList
       rows={content.steps.map((step) => {
-        const Icon = iconMap[step.iconName];
+        const Icon = stepIcon[step.id];
         return {
           id: step.id,
           num: step.number,

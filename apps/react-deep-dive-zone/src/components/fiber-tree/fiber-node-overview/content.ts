@@ -2,41 +2,33 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
-type GroupIconName = 'fingerprint' | 'network' | 'database' | 'flag' | 'zap' | 'layers';
-
 export type HeroFieldGroup = {
-  id: string;
+  id: 'identity' | 'tree' | 'props-state' | 'flags' | 'scheduling' | 'alternate';
   title: string;
   fields: string[];
   tone: ToneKey;
-  iconName: GroupIconName;
 };
 
 export type ReviewStep = {
-  id: string;
+  id: 'element' | 'create' | 'fiber';
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'cube' | 'wand' | 'hex';
 };
 
 export type FieldArea = {
-  id: string;
+  id: 'identity' | 'tree' | 'props-state' | 'flags' | 'sched-alt';
   title: string;
   fields: string[];
   description: string;
   tone: ToneKey;
-  iconName: 'fingerprint' | 'network' | 'database' | 'flag' | 'layers';
 };
 
 export type ReasonCard = {
-  id: string;
+  id: 'tree' | 'compare' | 'record' | 'priority';
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'tree' | 'refresh' | 'flag' | 'zap';
 };
 
 export type FiberNodeOverviewContent = {
@@ -167,42 +159,36 @@ const ko: FiberNodeOverviewContent = {
         title: '정체성',
         fields: ['tag', 'key', 'elementType', 'type', 'stateNode'],
         tone: 'teal',
-        iconName: 'fingerprint',
       },
       {
         id: 'tree',
         title: '트리 연결',
         fields: ['return', 'child', 'sibling'],
         tone: 'cyan',
-        iconName: 'network',
       },
       {
         id: 'props-state',
         title: '입력과 상태',
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
         tone: 'emerald',
-        iconName: 'database',
       },
       {
         id: 'flags',
         title: '변경 표시',
         fields: ['flags', 'subtreeFlags', 'deletions'],
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'scheduling',
         title: '스케줄링',
         fields: ['lanes', 'childLanes'],
         tone: 'sky',
-        iconName: 'zap',
       },
       {
         id: 'alternate',
         title: '이중 트리 연결',
         fields: ['alternate'],
         tone: 'violet',
-        iconName: 'layers',
       },
     ],
   },
@@ -216,21 +202,18 @@ const ko: FiberNodeOverviewContent = {
         title: 'React Element',
         body: 'JSX가 만들어내는 불변의 설명 객체',
         tone: 'emerald',
-        iconName: 'cube',
       },
       {
         id: 'create',
         title: 'createFiberFromElement',
         body: 'Element의 `type`·`key`·`props`를 읽어 Fiber 생성 흐름을 시작',
         tone: 'sky',
-        iconName: 'wand',
       },
       {
         id: 'fiber',
         title: 'Fiber 생성',
         body: '정체성과 Fiber tag로 분기되어 실제 Fiber 객체가 만들어짐',
         tone: 'violet',
-        iconName: 'hex',
       },
     ],
     note: '이번 챕터에서는 그렇게 만들어진 Fiber 내부를 필드 단위로 해부합니다.',
@@ -249,7 +232,6 @@ const ko: FiberNodeOverviewContent = {
         fields: ['tag', 'key', 'elementType', 'type', 'stateNode'],
         description: '이 Fiber가 어떤 종류이고 어떤 대상을 가리키는지 식별합니다.',
         tone: 'sky',
-        iconName: 'fingerprint',
       },
       {
         id: 'tree',
@@ -257,7 +239,6 @@ const ko: FiberNodeOverviewContent = {
         fields: ['return', 'child', 'sibling'],
         description: '부모 · 첫 자식 · 형제 포인터로 트리에서 어디에 연결되는지 표현합니다.',
         tone: 'cyan',
-        iconName: 'network',
       },
       {
         id: 'props-state',
@@ -265,7 +246,6 @@ const ko: FiberNodeOverviewContent = {
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
         description: '컴포넌트의 입력과 현재 상태, 업데이트 큐를 보관합니다.',
         tone: 'emerald',
-        iconName: 'database',
       },
       {
         id: 'flags',
@@ -273,7 +253,6 @@ const ko: FiberNodeOverviewContent = {
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: '어떤 변경이 발생했는지, 하위 트리에 어떤 영향이 있는지 기록합니다.',
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'sched-alt',
@@ -282,7 +261,6 @@ const ko: FiberNodeOverviewContent = {
         description:
           '작업의 우선순위를 저장하고, 현재 화면의 Fiber와 다음 화면을 계산 중인 Fiber를 연결합니다.',
         tone: 'violet',
-        iconName: 'layers',
       },
     ],
   },
@@ -297,28 +275,24 @@ const ko: FiberNodeOverviewContent = {
         title: '트리를 연결한다',
         body: '`return` · `child` · `sibling` 포인터로 React 요소 트리를 메모리에서 효율적으로 연결합니다.',
         tone: 'sky',
-        iconName: 'tree',
       },
       {
         id: 'compare',
         title: '이전 렌더와 다음 렌더를 비교한다',
         body: '`memoizedProps` · `memoizedState`와 `alternate`로 이전 상태와 비교하며 변경 여부를 판단합니다.',
         tone: 'violet',
-        iconName: 'refresh',
       },
       {
         id: 'record',
         title: '변경 효과를 기록한다',
         body: '`flags` · `subtreeFlags` · `deletions`로 무엇이 바뀌었는지 기록해 최소한의 작업만 수행합니다.',
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'priority',
         title: '작업 우선순위를 관리한다',
         body: '`lanes` · `childLanes`로 작업의 우선순위를 표현하고 중요한 작업을 먼저 처리합니다.',
         tone: 'teal',
-        iconName: 'zap',
       },
     ],
   },
@@ -365,42 +339,36 @@ const en: FiberNodeOverviewContent = {
         title: 'Identity',
         fields: ['tag', 'key', 'elementType', 'type', 'stateNode'],
         tone: 'teal',
-        iconName: 'fingerprint',
       },
       {
         id: 'tree',
         title: 'Tree links',
         fields: ['return', 'child', 'sibling'],
         tone: 'cyan',
-        iconName: 'network',
       },
       {
         id: 'props-state',
         title: 'Inputs & state',
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
         tone: 'emerald',
-        iconName: 'database',
       },
       {
         id: 'flags',
         title: 'Change flags',
         fields: ['flags', 'subtreeFlags', 'deletions'],
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'scheduling',
         title: 'Scheduling',
         fields: ['lanes', 'childLanes'],
         tone: 'sky',
-        iconName: 'zap',
       },
       {
         id: 'alternate',
         title: 'Double-tree link',
         fields: ['alternate'],
         tone: 'violet',
-        iconName: 'layers',
       },
     ],
   },
@@ -414,21 +382,18 @@ const en: FiberNodeOverviewContent = {
         title: 'React Element',
         body: 'The immutable description object produced by JSX',
         tone: 'emerald',
-        iconName: 'cube',
       },
       {
         id: 'create',
         title: 'createFiberFromElement',
         body: 'Reads the Element’s `type`·`key`·`props` and starts the Fiber creation flow',
         tone: 'sky',
-        iconName: 'wand',
       },
       {
         id: 'fiber',
         title: 'Fiber creation',
         body: 'Identity and the Fiber tag branch out, and the real Fiber object is built',
         tone: 'violet',
-        iconName: 'hex',
       },
     ],
     note: 'In this chapter we dissect that Fiber field by field.',
@@ -447,7 +412,6 @@ const en: FiberNodeOverviewContent = {
         fields: ['tag', 'key', 'elementType', 'type', 'stateNode'],
         description: 'Identifies what kind of Fiber this is and what it represents.',
         tone: 'sky',
-        iconName: 'fingerprint',
       },
       {
         id: 'tree',
@@ -456,7 +420,6 @@ const en: FiberNodeOverviewContent = {
         description:
           'Expresses where the Fiber sits in the tree via parent, first-child, and sibling pointers.',
         tone: 'cyan',
-        iconName: 'network',
       },
       {
         id: 'props-state',
@@ -464,7 +427,6 @@ const en: FiberNodeOverviewContent = {
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
         description: 'Holds this component’s inputs, current state, and update queue.',
         tone: 'emerald',
-        iconName: 'database',
       },
       {
         id: 'flags',
@@ -472,7 +434,6 @@ const en: FiberNodeOverviewContent = {
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: 'Records what changed and the effect on the subtree.',
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'sched-alt',
@@ -481,7 +442,6 @@ const en: FiberNodeOverviewContent = {
         description:
           'Stores work priority, and links the current-screen Fiber with the work-in-progress Fiber.',
         tone: 'violet',
-        iconName: 'layers',
       },
     ],
   },
@@ -496,28 +456,24 @@ const en: FiberNodeOverviewContent = {
         title: 'Links the tree together',
         body: '`return` · `child` · `sibling` pointers connect the React element tree efficiently in memory.',
         tone: 'sky',
-        iconName: 'tree',
       },
       {
         id: 'compare',
         title: 'Compares previous vs next render',
         body: '`memoizedProps` · `memoizedState` and `alternate` let React diff the previous state against the next.',
         tone: 'violet',
-        iconName: 'refresh',
       },
       {
         id: 'record',
         title: 'Records change effects',
         body: '`flags` · `subtreeFlags` · `deletions` track what changed so React does the minimum work.',
         tone: 'amber',
-        iconName: 'flag',
       },
       {
         id: 'priority',
         title: 'Manages work priority',
         body: '`lanes` · `childLanes` encode work priority so important work runs first.',
         tone: 'teal',
-        iconName: 'zap',
       },
     ],
   },

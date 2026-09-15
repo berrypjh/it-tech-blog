@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Box, Code, Settings, Workflow } from 'lucide-react';
+import { Atom, Box, Code, type LucideIcon, Settings, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -8,15 +8,15 @@ import type { FlowStep, JsxTransformFlowContent } from '../content';
 
 type Props = { content: JsxTransformFlowContent['compileFlow'] };
 
-const iconMap = {
-  code: Code,
-  gear: Settings,
-  box: Box,
-  atom: Atom,
-} as const;
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  write: Code,
+  compile: Settings,
+  'function-call': Box,
+  element: Atom,
+};
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     ...step,
     icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} />,

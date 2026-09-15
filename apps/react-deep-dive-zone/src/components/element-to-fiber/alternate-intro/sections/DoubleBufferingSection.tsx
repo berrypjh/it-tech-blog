@@ -12,15 +12,11 @@ import {
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
+import { roleTone } from '../components/FiberPairCard';
 import type { AlternateFiberContent, FiberRole } from '../content';
 
 type Props = { content: AlternateFiberContent['doubleBuffering'] };
-
-const roleTone: Record<FiberRole, ToneKey> = {
-  current: 'emerald',
-  workInProgress: 'violet',
-};
 
 export const DoubleBufferingSection = ({ content }: Props) => (
   <section
@@ -69,10 +65,8 @@ export const DoubleBufferingSection = ({ content }: Props) => (
             {content.centerLabel}
           </span>
           <span className="text-[var(--term-accent)]">
-            <span className="contents">
-              <ArrowUpDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
-              <ArrowLeftRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
-            </span>
+            <ArrowUpDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
+            <ArrowLeftRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
           </span>
         </div>
       </div>

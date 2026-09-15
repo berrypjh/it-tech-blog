@@ -7,9 +7,9 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DiagramItem, ReactElementKeySeparatedContent } from '../content';
 
-type Props = { content: ReactElementKeySeparatedContent['hero']; className?: string };
+type Props = { content: ReactElementKeySeparatedContent['hero'] };
 
-export const ElementKeyHeroDiagram = ({ content, className }: Props) => {
+export const ElementKeyHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.diagramTitle}. ${content.previousLabel}: ${content.previousItems
     .map((i) => i.keyText)
     .join(', ')} → ${content.nextLabel}: ${content.nextItems
@@ -17,7 +17,7 @@ export const ElementKeyHeroDiagram = ({ content, className }: Props) => {
     .join(', ')}. ${content.resultNote}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <StepHeader label={content.diagramTitle} />
 

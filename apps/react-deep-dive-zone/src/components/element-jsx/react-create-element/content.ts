@@ -16,7 +16,6 @@ export type InputCard = {
   title: string;
   body: string;
   description: string;
-  iconName: 'box' | 'sliders' | 'users';
   tone: ToneKey;
 };
 
@@ -27,11 +26,10 @@ export type CheckpointInfo = {
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'call' | 'prepare' | 'react-element' | 'object';
   number: string;
   title: string;
   body: string;
-  iconName: 'code' | 'sliders' | 'workflow' | 'atom';
   tone: ToneKey;
 };
 
@@ -40,7 +38,6 @@ export type RelationCard = {
   title: string;
   subtitle?: string;
   body: string;
-  iconName: 'braces' | 'functionSquare' | 'target';
   tone: ToneKey;
 };
 
@@ -189,7 +186,6 @@ const ko: ReactCreateElementContent = {
         body: '무엇을 렌더링할지',
         description:
           "문자열('div' 등) 또는 컴포넌트 함수/클래스, React가 어떤 것을 만들지 결정합니다.",
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -198,7 +194,6 @@ const ko: ReactCreateElementContent = {
         title: 'props',
         body: '어떤 입력을 전달할지',
         description: '속성, 이벤트 핸들러, key, ref 등 컴포넌트에 전달할 설정 값들의 모음입니다.',
-        iconName: 'sliders',
         tone: 'teal',
       },
       {
@@ -207,7 +202,6 @@ const ko: ReactCreateElementContent = {
         title: 'children',
         body: '어떤 하위 구조를 가질지',
         description: '문자, 숫자, React Element, 배열 등 자식으로 들어갈 내용을 의미합니다.',
-        iconName: 'users',
         tone: 'emerald',
       },
     ],
@@ -246,7 +240,6 @@ const ko: ReactCreateElementContent = {
         number: '01',
         title: 'createElement',
         body: '요청을 시작하는 공개 API 함수',
-        iconName: 'code',
         tone: 'sky',
       },
       {
@@ -254,7 +247,6 @@ const ko: ReactCreateElementContent = {
         number: '02',
         title: 'type / key / props 정리',
         body: 'key 추출 및 props 정제 작업 수행',
-        iconName: 'sliders',
         tone: 'violet',
       },
       {
@@ -262,7 +254,6 @@ const ko: ReactCreateElementContent = {
         number: '03',
         title: 'ReactElement 호출',
         body: 'ReactElement(type, key, props, children) 호출',
-        iconName: 'workflow',
         tone: 'teal',
       },
       {
@@ -270,7 +261,6 @@ const ko: ReactCreateElementContent = {
         number: '04',
         title: 'Element 객체 생성',
         body: '불변 React Element 객체가 반환됨',
-        iconName: 'atom',
         tone: 'emerald',
       },
     ],
@@ -289,7 +279,6 @@ const ko: ReactCreateElementContent = {
         title: 'jsx / jsxs / jsxDEV',
         subtitle: '현대 JSX Transform 경로',
         body: '컴파일러가 삽입하는 전용 함수를 더 작은 코드, 더 나은 최적화 목적으로 사용합니다.',
-        iconName: 'braces',
         tone: 'sky',
       },
       {
@@ -297,14 +286,12 @@ const ko: ReactCreateElementContent = {
         title: 'createElement',
         subtitle: '공개 API 경로',
         body: '명시적으로 호출하는 공개 API이며 언제든 사용할 수 있는 안정적 인터페이스입니다.',
-        iconName: 'functionSquare',
         tone: 'violet',
       },
       {
         id: 'goal',
         title: '경로는 다르지만\n목적지는 같다.',
         body: 'React는 두 경로 모두에서 동일한 React Element를 생성합니다.',
-        iconName: 'target',
         tone: 'teal',
       },
     ],
@@ -406,7 +393,6 @@ const en: ReactCreateElementContent = {
         body: 'What to render',
         description:
           "A string ('div') or a component function/class — what React should actually create.",
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -415,7 +401,6 @@ const en: ReactCreateElementContent = {
         title: 'props',
         body: 'What to pass in',
         description: 'Attributes, handlers, key, ref — all configuration handed to the component.',
-        iconName: 'sliders',
         tone: 'teal',
       },
       {
@@ -424,7 +409,6 @@ const en: ReactCreateElementContent = {
         title: 'children',
         body: 'What goes inside',
         description: 'Strings, numbers, React Elements, arrays — whatever sits as children.',
-        iconName: 'users',
         tone: 'emerald',
       },
     ],
@@ -464,7 +448,6 @@ const en: ReactCreateElementContent = {
         number: '01',
         title: 'createElement',
         body: 'The public API that opens the request',
-        iconName: 'code',
         tone: 'sky',
       },
       {
@@ -472,7 +455,6 @@ const en: ReactCreateElementContent = {
         number: '02',
         title: 'Organize type / key / props',
         body: 'Extract key and clean up props',
-        iconName: 'sliders',
         tone: 'violet',
       },
       {
@@ -480,7 +462,6 @@ const en: ReactCreateElementContent = {
         number: '03',
         title: 'Call ReactElement',
         body: 'ReactElement(type, key, props, children)',
-        iconName: 'workflow',
         tone: 'teal',
       },
       {
@@ -488,7 +469,6 @@ const en: ReactCreateElementContent = {
         number: '04',
         title: 'Element object is born',
         body: 'An immutable React Element is returned',
-        iconName: 'atom',
         tone: 'emerald',
       },
     ],
@@ -508,7 +488,6 @@ const en: ReactCreateElementContent = {
         title: 'jsx / jsxs / jsxDEV',
         subtitle: 'Modern JSX transform path',
         body: 'Compiler-inserted runtime helpers — smaller code, better optimization.',
-        iconName: 'braces',
         tone: 'sky',
       },
       {
@@ -516,14 +495,12 @@ const en: ReactCreateElementContent = {
         title: 'createElement',
         subtitle: 'Public API path',
         body: 'An explicit public API — a stable interface you can call any time.',
-        iconName: 'functionSquare',
         tone: 'violet',
       },
       {
         id: 'goal',
         title: 'Different paths,\nsame destination.',
         body: 'React lands on the very same React Element either way.',
-        iconName: 'target',
         tone: 'teal',
       },
     ],

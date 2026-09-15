@@ -1,5 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Fingerprint, Flag, Layers, ListTree, Network } from 'lucide-react';
+import {
+  Database,
+  Fingerprint,
+  Flag,
+  Layers,
+  ListTree,
+  type LucideIcon,
+  Network,
+} from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -9,13 +17,13 @@ import type { FiberNodeOverviewContent, FieldArea } from '../content';
 
 type Props = { content: FiberNodeOverviewContent['preview'] };
 
-const iconMap = {
-  fingerprint: Fingerprint,
-  network: Network,
-  database: Database,
-  flag: Flag,
-  layers: Layers,
-} as const;
+const areaIcon: Record<FieldArea['id'], LucideIcon> = {
+  identity: Fingerprint,
+  tree: Network,
+  'props-state': Database,
+  flags: Flag,
+  'sched-alt': Layers,
+};
 
 export const FiberStructurePreview = ({ content }: Props) => (
   <section id="preview" aria-labelledby="heading-preview" className="space-y-md scroll-mt-xl">
@@ -46,7 +54,7 @@ export const FiberStructurePreview = ({ content }: Props) => (
 );
 
 const AreaCard = ({ area, number }: { area: FieldArea; number: string }) => {
-  const Icon = iconMap[area.iconName];
+  const Icon = areaIcon[area.id];
   return (
     <article
       className={cx(

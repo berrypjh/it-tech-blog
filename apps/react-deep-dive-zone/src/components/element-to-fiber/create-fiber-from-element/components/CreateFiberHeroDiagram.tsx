@@ -2,31 +2,19 @@ import { cx } from '@berrypjh/react-ui';
 import { Box, Layers, Wand2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CreateFiberFromElementContent, ExtractionChip } from '../content';
 
-type Props = { content: CreateFiberFromElementContent['hero']; className?: string };
+type Props = { content: CreateFiberFromElementContent['hero'] };
 
-export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.elementLabel} 객체에서 createFiberFromElement 함수가 ${content.extractionChips
-    .map((c) => c.label)
-    .join(', ')}하여 ${content.fiberLabel} 객체로 확장합니다.`;
+export const CreateFiberHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.elementLabel} → ${content.functionLabel}: ${content.extractionChips.map((c) => c.label).join(', ')} → ${content.fiberLabel}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StepHeader
@@ -73,7 +61,7 @@ export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
           />
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -137,13 +125,4 @@ const ExtractionRow = ({ chip }: { chip: ExtractionChip }) => (
 
 const StepNote = ({ text }: { text: string }) => (
   <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{text}</p>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
 );

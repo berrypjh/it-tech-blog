@@ -32,26 +32,23 @@ export type SeparationCard = {
   short: string;
   body: string;
   checks: string[];
-  iconName: 'document' | 'key';
   tone: ToneKey;
 };
 
 export type Misconception = {
-  id: string;
+  id: 'props-key' | 'index-key';
   index: string;
   wrong: string;
   correct: string;
   bullets: string[];
-  iconName: 'message' | 'shuffle';
   tone: ToneKey;
 };
 
 export type FiberFlowStep = {
-  id: string;
+  id: 'element-key' | 'reconciliation' | 'reuse' | 'decision';
   number: string;
   title: string;
   body: string;
-  iconName: 'key' | 'workflow' | 'recycle' | 'split';
   tone: ToneKey;
 };
 
@@ -218,7 +215,6 @@ const ko: ReactElementKeySeparatedContent = {
           '여러 값을 객체형태로 저장',
           '개발자가 의도적으로 전달',
         ],
-        iconName: 'document',
         tone: 'sky',
       },
       {
@@ -227,7 +223,6 @@ const ko: ReactElementKeySeparatedContent = {
         short: 'React가 형제 Element를 구분하기 위한 식별자',
         body: 'React 내부에서 비교와 추적을 위해 사용하는 값입니다.',
         checks: ['컴포넌트에서는 접근 불가', '재사용/이동/삭제 판단에 사용', 'React 내부에서 관리'],
-        iconName: 'key',
         tone: 'violet',
       },
     ],
@@ -265,7 +260,6 @@ const ko: ReactElementKeySeparatedContent = {
           '컴포넌트 props에는 포함되지 않습니다.',
           'this.props.key, props.key는 undefined가 됩니다.',
         ],
-        iconName: 'message',
         tone: 'violet',
       },
       {
@@ -277,7 +271,6 @@ const ko: ReactElementKeySeparatedContent = {
           '항목의 추가/삭제/순서 변경 시 잘못된 재사용과 상태 꼬임이 발생할 수 있습니다.',
           '가능한 경우 고유 id를 key로 사용해야 합니다.',
         ],
-        iconName: 'shuffle',
         tone: 'amber',
       },
     ],
@@ -294,7 +287,6 @@ const ko: ReactElementKeySeparatedContent = {
         number: '01',
         title: 'Element.key',
         body: '각 Element의 식별자',
-        iconName: 'key',
         tone: 'violet',
       },
       {
@@ -302,7 +294,6 @@ const ko: ReactElementKeySeparatedContent = {
         number: '02',
         title: 'Child Reconciliation',
         body: '형제 목록 비교 알고리즘',
-        iconName: 'workflow',
         tone: 'sky',
       },
       {
@@ -310,7 +301,6 @@ const ko: ReactElementKeySeparatedContent = {
         number: '03',
         title: 'Fiber 재사용 판단',
         body: '같은 key면 재사용/이동',
-        iconName: 'recycle',
         tone: 'teal',
       },
       {
@@ -318,7 +308,6 @@ const ko: ReactElementKeySeparatedContent = {
         number: '04',
         title: '삽입 / 이동 / 삭제 결정',
         body: '최종 DOM 변경 계획 수립',
-        iconName: 'split',
         tone: 'amber',
       },
     ],
@@ -417,7 +406,6 @@ const en: ReactElementKeySeparatedContent = {
           'Holds multiple values as an object',
           'Passed deliberately by the developer',
         ],
-        iconName: 'document',
         tone: 'sky',
       },
       {
@@ -430,7 +418,6 @@ const en: ReactElementKeySeparatedContent = {
           'Drives reuse / move / delete decisions',
           'Managed inside React',
         ],
-        iconName: 'key',
         tone: 'violet',
       },
     ],
@@ -468,7 +455,6 @@ const en: ReactElementKeySeparatedContent = {
           'It is not included in component props.',
           'this.props.key and props.key are undefined.',
         ],
-        iconName: 'message',
         tone: 'violet',
       },
       {
@@ -480,7 +466,6 @@ const en: ReactElementKeySeparatedContent = {
           'Adding/removing/reordering items can cause wrong reuse and tangled state.',
           'When possible, use a stable unique id as the key.',
         ],
-        iconName: 'shuffle',
         tone: 'amber',
       },
     ],
@@ -497,7 +482,6 @@ const en: ReactElementKeySeparatedContent = {
         number: '01',
         title: 'Element.key',
         body: "Each Element's identifier",
-        iconName: 'key',
         tone: 'violet',
       },
       {
@@ -505,7 +489,6 @@ const en: ReactElementKeySeparatedContent = {
         number: '02',
         title: 'Child Reconciliation',
         body: 'The sibling-list diffing algorithm',
-        iconName: 'workflow',
         tone: 'sky',
       },
       {
@@ -513,7 +496,6 @@ const en: ReactElementKeySeparatedContent = {
         number: '03',
         title: 'Fiber reuse decision',
         body: 'Same key → reuse or move',
-        iconName: 'recycle',
         tone: 'teal',
       },
       {
@@ -521,7 +503,6 @@ const en: ReactElementKeySeparatedContent = {
         number: '04',
         title: 'Insert / move / delete',
         body: 'The final DOM mutation plan',
-        iconName: 'split',
         tone: 'amber',
       },
     ],

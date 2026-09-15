@@ -16,11 +16,10 @@ export type WorkTagCard = {
 };
 
 export type SpecialTypeCard = {
-  id: string;
+  id: 'suspense' | 'suspense-list' | 'offscreen' | 'activity' | 'view-transition';
   title: string;
   subtitle: string;
   description: string;
-  iconName: 'loader' | 'list' | 'eye' | 'zap' | 'scan';
   accent: 'sky' | 'cyan' | 'violet' | 'amber' | 'emerald';
 };
 
@@ -219,7 +218,6 @@ const ko: FragmentModeFiberContent = {
         title: 'Suspense',
         subtitle: '로딩 상태 처리',
         description: '전용 Fiber 경로',
-        iconName: 'loader',
         accent: 'sky',
       },
       {
@@ -227,7 +225,6 @@ const ko: FragmentModeFiberContent = {
         title: 'SuspenseList',
         subtitle: '여러 Suspense 순서 관리',
         description: '전용 Fiber 경로',
-        iconName: 'list',
         accent: 'cyan',
       },
       {
@@ -235,7 +232,6 @@ const ko: FragmentModeFiberContent = {
         title: 'Offscreen',
         subtitle: '보이기 / 숨기기 상태 관리',
         description: '전용 Fiber 경로',
-        iconName: 'eye',
         accent: 'violet',
       },
       {
@@ -243,7 +239,6 @@ const ko: FragmentModeFiberContent = {
         title: 'Activity',
         subtitle: '비동기 활동 상태 관리',
         description: '전용 Fiber 경로',
-        iconName: 'zap',
         accent: 'amber',
       },
       {
@@ -251,7 +246,6 @@ const ko: FragmentModeFiberContent = {
         title: 'ViewTransition',
         subtitle: '뷰 전환 애니메이션 연계',
         description: '전용 Fiber 경로',
-        iconName: 'scan',
         accent: 'emerald',
       },
     ],
@@ -389,7 +383,6 @@ const en: FragmentModeFiberContent = {
         title: 'Suspense',
         subtitle: 'Loading state',
         description: 'Dedicated Fiber path',
-        iconName: 'loader',
         accent: 'sky',
       },
       {
@@ -397,7 +390,6 @@ const en: FragmentModeFiberContent = {
         title: 'SuspenseList',
         subtitle: 'Orders multiple Suspense',
         description: 'Dedicated Fiber path',
-        iconName: 'list',
         accent: 'cyan',
       },
       {
@@ -405,7 +397,6 @@ const en: FragmentModeFiberContent = {
         title: 'Offscreen',
         subtitle: 'Show / hide state',
         description: 'Dedicated Fiber path',
-        iconName: 'eye',
         accent: 'violet',
       },
       {
@@ -413,7 +404,6 @@ const en: FragmentModeFiberContent = {
         title: 'Activity',
         subtitle: 'Async activity state',
         description: 'Dedicated Fiber path',
-        iconName: 'zap',
         accent: 'amber',
       },
       {
@@ -421,7 +411,6 @@ const en: FragmentModeFiberContent = {
         title: 'ViewTransition',
         subtitle: 'View-transition animation hook',
         description: 'Dedicated Fiber path',
-        iconName: 'scan',
         accent: 'emerald',
       },
     ],

@@ -1,13 +1,19 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Home, User } from 'lucide-react';
+import { Boxes, Home, type LucideIcon, User } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberStateNodeContent, TargetCard } from '../content';
+import type { FiberKind, FiberStateNodeContent, TargetCard } from '../content';
 
-type Props = { content: FiberStateNodeContent['hero']; className?: string };
+type Props = { content: FiberStateNodeContent['hero'] };
 
-const iconMap = { home: Home, cube: Boxes, user: User } as const;
+const targetIcon: Record<FiberKind, LucideIcon> = {
+  hostRoot: Home,
+  hostComponent: Boxes,
+  classComponent: User,
+};
 
 /**
  * Hero 핵심 비주얼.
@@ -15,25 +21,11 @@ const iconMap = { home: Home, cube: Boxes, user: User } as const;
  * (Root 객체 / Host Instance / Class Instance)을 가리키는지
  * fiber tag → accent ↓ → stateNode target 흐름으로 잇는 컴팩트 다이어그램.
  */
-export const StateNodeHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.cardLabel}의 ${content.pillLabel} 필드는 fiber tag에 따라 ${content.targets
-    .map((t) => `${t.subtitle} → ${t.title}`)
-    .join(', ')}로 연결됩니다.`;
+export const StateNodeHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.cardLabel}.${content.pillLabel}: ${content.targets.map((t) => `${t.subtitle} → ${t.title}`).join(', ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <FiberCard
           label={content.cardLabel}
@@ -52,7 +44,7 @@ export const StateNodeHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -95,14 +87,13 @@ const FiberCard = ({
 
 const TargetRow = ({ target }: { target: TargetCard }) => {
   const t = toneTokens[target.tone];
-  const Icon = iconMap[target.iconName];
+  const Icon = targetIcon[target.id];
   return (
     <article
       className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-sm',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={target.tone} size="sm">
@@ -117,12 +108,3 @@ const TargetRow = ({ target }: { target: TargetCard }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

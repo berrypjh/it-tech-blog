@@ -54,10 +54,8 @@ export const ElementToFiberFlow = ({ content }: Props) => (
 const FlowConnector = () => (
   <div className="flex justify-center items-center py-1 lg:py-0" aria-hidden="true">
     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]">
-      <span className="contents">
-        <ArrowDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
-        <ArrowRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
-      </span>
+      <ArrowDown className="h-4 w-4 lg:hidden" aria-hidden="true" />
+      <ArrowRight className="h-4 w-4 hidden lg:block" aria-hidden="true" />
     </span>
   </div>
 );

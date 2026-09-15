@@ -7,7 +7,9 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateAndQueueContent } from '../content';
 
-type Props = { content: FiberStateAndQueueContent['hero']; className?: string };
+import { fieldTone } from './fieldTone';
+
+type Props = { content: FiberStateAndQueueContent['hero'] };
 
 type FieldCard = FiberStateAndQueueContent['hero']['memoizedCard'];
 
@@ -17,11 +19,11 @@ type FieldCard = FiberStateAndQueueContent['hero']['memoizedCard'];
  * updateQueue(대기 중인 업데이트)가 각각 별도 카드로 갈라지는 흐름을
  * 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const StateQueueHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.cardLabel} 노드는 ${content.memoizedCard.title}(${content.memoizedCard.subtitle})와 ${content.updateQueueCard.title}(${content.updateQueueCard.subtitle})를 별도로 관리합니다.`;
+export const StateQueueHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.cardLabel} → ${content.memoizedCard.title} (${content.memoizedCard.subtitle}), ${content.updateQueueCard.title} (${content.updateQueueCard.subtitle})`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <FiberCard label={content.cardLabel} fields={content.fiberFields} />
 
@@ -29,12 +31,12 @@ export const StateQueueHeroDiagram = ({ content, className }: Props) => {
 
         <div className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
           <FieldCardView
-            tone="emerald"
+            tone={fieldTone.memoizedState}
             card={content.memoizedCard}
             icon={<Database className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
           <FieldCardView
-            tone="violet"
+            tone={fieldTone.updateQueue}
             card={content.updateQueueCard}
             icon={<List className="h-[18px] w-[18px]" aria-hidden="true" />}
           />
@@ -42,14 +44,6 @@ export const StateQueueHeroDiagram = ({ content, className }: Props) => {
       </div>
     </HeroDiagramShell>
   );
-};
-
-const fieldTone: Record<
-  NonNullable<FiberStateAndQueueContent['hero']['fiberFields'][number]['field']>,
-  ToneKey
-> = {
-  memoizedState: 'emerald',
-  updateQueue: 'violet',
 };
 
 const FiberCard = ({
@@ -103,7 +97,6 @@ const FieldCardView = ({
         'flex flex-col gap-1 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">

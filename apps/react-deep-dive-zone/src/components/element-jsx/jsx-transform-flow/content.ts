@@ -3,11 +3,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { ToneKey } from '../../shared/tones';
 
 export type FlowStep = {
-  id: string;
+  id: 'write' | 'compile' | 'function-call' | 'element';
   number: string;
   title: string;
   body: string;
-  iconName: 'code' | 'gear' | 'box' | 'atom';
   tone: ToneKey;
 };
 
@@ -33,10 +32,9 @@ export type TransformExample = {
 };
 
 export type BenefitCard = {
-  id: string;
+  id: 'data' | 'render-input' | 'devmode';
   title: string;
   body: string;
-  iconName: 'tree' | 'calculator' | 'shieldCheck';
   tone: ToneKey;
 };
 
@@ -137,7 +135,6 @@ const ko: JsxTransformFlowContent = {
         number: '01',
         title: 'JSX 작성',
         body: '우리가 JSX 문법으로 UI 구조를 작성합니다.',
-        iconName: 'code',
         tone: 'teal',
       },
       {
@@ -145,7 +142,6 @@ const ko: JsxTransformFlowContent = {
         number: '02',
         title: '컴파일러 처리',
         body: 'Babel 등 컴파일러가 JSX를 변환합니다.',
-        iconName: 'gear',
         tone: 'sky',
       },
       {
@@ -153,7 +149,6 @@ const ko: JsxTransformFlowContent = {
         number: '03',
         title: '함수 호출 코드 생성',
         body: 'jsx / jsxs / jsxDEV 또는 createElement 호출 코드로 변환됩니다.',
-        iconName: 'box',
         tone: 'violet',
       },
       {
@@ -161,7 +156,6 @@ const ko: JsxTransformFlowContent = {
         number: '04',
         title: 'React Element 생성',
         body: '함수 호출이 실행되어 React Element 객체가 생성됩니다.',
-        iconName: 'atom',
         tone: 'emerald',
       },
     ],
@@ -244,21 +238,18 @@ const ko: JsxTransformFlowContent = {
         id: 'data',
         title: 'UI를 데이터로 다룰 수 있다',
         body: 'UI 구조가 평범한 객체로 표현되므로 저장하고, 비교하고, 순회할 수 있습니다.',
-        iconName: 'tree',
         tone: 'teal',
       },
       {
         id: 'render-input',
         title: 'React가 렌더링을 시작할 입력이 된다',
         body: '이렇게 만들어진 Element는 Element → Fiber → 렌더링으로 이어지는 흐름의 첫 입력이 됩니다.',
-        iconName: 'calculator',
         tone: 'sky',
       },
       {
         id: 'devmode',
         title: '개발 모드에서 더 친절한 경고를 줄 수 있다',
         body: 'jsxDEV는 소스 위치 같은 개발용 정보를 함께 넘겨, 에러와 경고가 문제 지점을 더 정확히 가리키게 합니다.',
-        iconName: 'shieldCheck',
         tone: 'emerald',
       },
     ],
@@ -300,7 +291,6 @@ const en: JsxTransformFlowContent = {
         number: '01',
         title: 'Write JSX',
         body: 'We describe UI structure with JSX syntax.',
-        iconName: 'code',
         tone: 'teal',
       },
       {
@@ -308,7 +298,6 @@ const en: JsxTransformFlowContent = {
         number: '02',
         title: 'Compiler processes it',
         body: 'A compiler such as Babel transforms the JSX.',
-        iconName: 'gear',
         tone: 'sky',
       },
       {
@@ -316,7 +305,6 @@ const en: JsxTransformFlowContent = {
         number: '03',
         title: 'Function-call code emitted',
         body: 'Converted to jsx / jsxs / jsxDEV — or createElement — calls.',
-        iconName: 'box',
         tone: 'violet',
       },
       {
@@ -324,7 +312,6 @@ const en: JsxTransformFlowContent = {
         number: '04',
         title: 'React Element created',
         body: 'The function call runs and produces a React Element object.',
-        iconName: 'atom',
         tone: 'emerald',
       },
     ],
@@ -407,21 +394,18 @@ const en: JsxTransformFlowContent = {
         id: 'data',
         title: 'You can treat the tree as data',
         body: 'UI is now an object you can store, compare, traverse, and analyze.',
-        iconName: 'tree',
         tone: 'teal',
       },
       {
         id: 'render-input',
         title: "It becomes React's render input",
         body: 'It is the first input to the Element → Fiber → Render pipeline.',
-        iconName: 'calculator',
         tone: 'sky',
       },
       {
         id: 'devmode',
         title: 'Easier dev-mode validation and warnings',
         body: 'jsxDEV carries source info that powers more accurate error messages.',
-        iconName: 'shieldCheck',
         tone: 'emerald',
       },
     ],

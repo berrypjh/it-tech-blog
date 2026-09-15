@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, FileText, Monitor, ScanSearch, Workflow } from 'lucide-react';
+import { ArrowRight, FileText, type LucideIcon, Monitor, ScanSearch, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -9,12 +9,12 @@ import type { ReactElementObjectStructureContent, SummaryPill } from '../content
 
 type Props = { content: ReactElementObjectStructureContent['overview'] };
 
-const iconMap = {
-  fileText: FileText,
-  monitor: Monitor,
-  workflow: Workflow,
-  arrowRight: ArrowRight,
-} as const;
+const pillIcon: Record<SummaryPill['id'], LucideIcon> = {
+  description: FileText,
+  'not-dom': Monitor,
+  'not-fiber': Workflow,
+  'render-input': ArrowRight,
+};
 
 export const ElementShapeOverview = ({ content }: Props) => (
   <section id="overview" aria-labelledby="heading-overview" className="space-y-md scroll-mt-xl">
@@ -51,7 +51,7 @@ export const ElementShapeOverview = ({ content }: Props) => (
 );
 
 const PillCard = ({ pill }: { pill: SummaryPill }) => {
-  const Icon = iconMap[pill.iconName];
+  const Icon = pillIcon[pill.id];
   return (
     <article
       className={cx(

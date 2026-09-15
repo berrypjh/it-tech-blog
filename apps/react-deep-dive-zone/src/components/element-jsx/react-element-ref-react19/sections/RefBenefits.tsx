@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Code, Link2, Package, Sparkles } from 'lucide-react';
+import { Code, Link2, type LucideIcon, Package, Sparkles } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactElementRefReact19Content } from '../content';
+import type { BenefitCard, ReactElementRefReact19Content } from '../content';
 
 type Props = { content: ReactElementRefReact19Content['benefits'] };
 
-const iconMap = {
-  code: Code,
-  link: Link2,
-  package: Package,
-} as const;
+const cardIcon: Record<BenefitCard['id'], LucideIcon> = {
+  simpler: Code,
+  predictable: Link2,
+  ecosystem: Package,
+};
 
 export const RefBenefits = ({ content }: Props) => (
   <section aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const RefBenefits = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>

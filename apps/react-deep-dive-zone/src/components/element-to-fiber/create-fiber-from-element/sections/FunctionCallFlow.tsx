@@ -1,4 +1,4 @@
-import { Box, Puzzle, Sparkles, Split, Wand2, Workflow } from 'lucide-react';
+import { Box, type LucideIcon, Puzzle, Sparkles, Split, Wand2, Workflow } from 'lucide-react';
 
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -6,16 +6,16 @@ import type { CreateFiberFromElementContent, FlowStep } from '../content';
 
 type Props = { content: CreateFiberFromElementContent['flow'] };
 
-const iconMap = {
-  box: Box,
-  wand: Wand2,
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  element: Box,
+  'create-fiber': Wand2,
   split: Split,
-  puzzle: Puzzle,
-  sparkles: Sparkles,
-} as const;
+  delegate: Puzzle,
+  fiber: Sparkles,
+};
 
 const toRow = (step: FlowStep): StepRow => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     num: step.number,

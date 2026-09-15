@@ -6,6 +6,7 @@ import {
   HeroVisualColumn,
 } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
+import { accentPhrase } from '../../../shared/text';
 import { AlternateHeroDiagram } from '../components/AlternateHeroDiagram';
 import type { CurrentWipAlternateContent } from '../content';
 
@@ -25,16 +26,7 @@ export const AlternateHero = ({ content }: Props) => (
 
       <HeroTitle>
         <span className="block">{content.title.line1}</span>
-        <span className="block">
-          {content.title.line2.split(content.emphasis).map((part, i, arr) => (
-            <span key={i}>
-              {part}
-              {i < arr.length - 1 && (
-                <span className="text-[var(--term-accent)]">{content.emphasis}</span>
-              )}
-            </span>
-          ))}
-        </span>
+        <span className="block">{accentPhrase(content.title.line2, content.emphasis)}</span>
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[62ch]">{content.description}</HeroDescription>

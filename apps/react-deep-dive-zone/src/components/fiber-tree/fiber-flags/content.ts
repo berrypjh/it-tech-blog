@@ -1,14 +1,13 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 export type EffectKind = 'placement' | 'update' | 'childDeletion';
-export type TreeNodeKind = 'normal' | 'placement' | 'update' | 'childDeletion';
 
 export type TreeNode = {
   id: string;
   label: string;
   tag: string;
   depth: number;
-  effect?: TreeNodeKind;
+  effect?: EffectKind;
 };
 
 export type FlagMiniCard = {
@@ -80,7 +79,6 @@ export type FiberFlagsContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       files: string[];
       lookForLabel: string;
@@ -93,7 +91,6 @@ export type FiberFlagsContent = {
     eyebrow: string;
     title: string;
     renderCard: { title: string; subtitle: string; body: string };
-    arrowLabel: string;
     commitCard: { title: string; subtitle: string; body: string };
   };
   nextStep: {
@@ -260,7 +257,6 @@ const ko: FiberFlagsContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       files: [
         'packages/react-reconciler/src/ReactInternalTypes.js',
@@ -295,7 +291,6 @@ const ko: FiberFlagsContent = {
       subtitle: '표시 단계',
       body: '변경이 필요한 Fiber에 flags / subtreeFlags / deletions를 기록하여 "무엇을 바꿀지" 표시합니다.',
     },
-    arrowLabel: 'effect 정보 전달',
     commitCard: {
       title: 'Commit Phase',
       subtitle: '반영 단계',
@@ -441,7 +436,6 @@ const en: FiberFlagsContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'Files',
       files: [
         'packages/react-reconciler/src/ReactInternalTypes.js',
@@ -476,7 +470,6 @@ const en: FiberFlagsContent = {
       subtitle: 'marking stage',
       body: 'Records flags / subtreeFlags / deletions on Fibers that need changes — "what will change."',
     },
-    arrowLabel: 'pass effect info',
     commitCard: {
       title: 'Commit Phase',
       subtitle: 'apply stage',

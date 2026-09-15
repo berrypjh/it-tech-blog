@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRightLeft, CheckCircle2, FileText, Key } from 'lucide-react';
+import { ArrowRightLeft, CheckCircle2, FileText, Key, type LucideIcon } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,10 +7,10 @@ import type { ReactElementKeySeparatedContent, SeparationCard } from '../content
 
 type Props = { content: ReactElementKeySeparatedContent['separation'] };
 
-const iconMap = {
-  document: FileText,
+const cardIcon: Record<SeparationCard['id'], LucideIcon> = {
+  props: FileText,
   key: Key,
-} as const;
+};
 
 export const KeyPropsSeparation = ({ content }: Props) => (
   <section aria-labelledby="heading-separation" className="space-y-md scroll-mt-xl">
@@ -59,7 +59,7 @@ export const KeyPropsSeparation = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: SeparationCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

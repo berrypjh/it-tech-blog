@@ -6,14 +6,10 @@ import { DownArrow } from '../../../shared/icon';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { propsTone } from '../components/propsTone';
 import type { FiberPropsContent, PropsKind } from '../content';
 
 type Props = { content: FiberPropsContent['scenario'] };
-
-const stateTone: Record<PropsKind, ToneKey> = {
-  pendingProps: 'sky',
-  memoizedProps: 'emerald',
-};
 
 export const PropsChangeScenario = ({ content }: Props) => (
   <section id="scenario" aria-labelledby="heading-scenario" className="space-y-md scroll-mt-xl">
@@ -28,9 +24,17 @@ export const PropsChangeScenario = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.2fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
       {/* Left: previous → next flow */}
       <div className="flex flex-col gap-sm">
-        <RenderCard label={content.previousLabel} code={content.previousCode} tone="emerald" />
+        <RenderCard
+          label={content.previousLabel}
+          code={content.previousCode}
+          tone={propsTone.memoizedProps}
+        />
         <DownArrow />
-        <RenderCard label={content.nextLabel} code={content.nextCode} tone="sky" />
+        <RenderCard
+          label={content.nextLabel}
+          code={content.nextCode}
+          tone={propsTone.pendingProps}
+        />
       </div>
 
       {/* Right: current fiber internal state */}
@@ -52,9 +56,9 @@ export const PropsChangeScenario = ({ content }: Props) => (
 
     <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
       {content.bannerPrefix}
-      <ValueBadge tone="emerald">{content.bannerOldValue}</ValueBadge>
+      <ValueBadge tone={propsTone.memoizedProps}>{content.bannerOldValue}</ValueBadge>
       {content.bannerMid}
-      <ValueBadge tone="sky">{content.bannerNewValue}</ValueBadge>
+      <ValueBadge tone={propsTone.pendingProps}>{content.bannerNewValue}</ValueBadge>
       {content.bannerSuffix}
     </SectionNote>
   </section>
@@ -71,7 +75,7 @@ const RenderCard = ({ label, code, tone }: { label: string; code: string; tone: 
 };
 
 const StateRow = ({ line, kind }: { line: string; kind: PropsKind }) => {
-  const t = toneTokens[stateTone[kind]];
+  const t = toneTokens[propsTone[kind]];
   return (
     <code
       className={cx(

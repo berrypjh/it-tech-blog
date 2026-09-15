@@ -5,7 +5,7 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberRole } from '../content';
 
-const roleTone: Record<FiberRole, ToneKey> = {
+export const roleTone: Record<FiberRole, ToneKey> = {
   current: 'emerald',
   workInProgress: 'violet',
 };

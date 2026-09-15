@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Fingerprint, Flag, List, Network, Zap } from 'lucide-react';
+import { Database, Fingerprint, Flag, List, type LucideIcon, Network, Zap } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -10,31 +10,28 @@ import type { FiberCentralContent, FieldGroup } from '../content';
 type Props = {
   content: FiberCentralContent['hero'];
   groups: FieldGroup[];
-  className?: string;
 };
 
-const iconMap = {
-  fingerprint: Fingerprint,
-  network: Network,
-  database: Database,
-  list: List,
-  flag: Flag,
-  zap: Zap,
-} as const;
+const groupIcon: Record<FieldGroup['id'], LucideIcon> = {
+  identity: Fingerprint,
+  connection: Network,
+  input: Database,
+  'state-queue': List,
+  flags: Flag,
+  scheduling: Zap,
+};
 
 /**
  * Hero 핵심 비주얼.
  * 챕터에서 다룬 Fiber 필드 그룹(정체성 → 연결 → 입력 → 상태/큐 → 변경표시 → 스케줄링)을
  * 위에서 아래로 잇는 컴팩트 stepper. 모든 그룹이 하나의 Fiber 객체로 모인다.
  */
-export const FiberChapterCompleteHeroDiagram = ({ content, groups, className }: Props) => {
+export const FiberChapterCompleteHeroDiagram = ({ content, groups }: Props) => {
   const byId = Object.fromEntries(groups.map((g) => [g.id, g]));
-  const a11y = `${content.fiberLabel} 객체는 ${groups
-    .map((g) => g.title)
-    .join(', ')} 그룹의 필드를 하나의 노드에 모읍니다.`;
+  const a11y = `${groups.map((g) => g.title).join(', ')} → ${content.fiberLabel}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <h3 className="mb-sm text-xsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
         {`// ${content.visualTitle}`}
       </h3>
@@ -57,14 +54,13 @@ export const FiberChapterCompleteHeroDiagram = ({ content, groups, className }: 
 
 const GroupCard = ({ group, rows }: { group: FieldGroup; rows: string[] }) => {
   const t = toneTokens[group.tone];
-  const Icon = iconMap[group.iconName];
+  const Icon = groupIcon[group.id];
   return (
     <article
       className={cx(
         'flex w-full min-w-0 flex-col gap-1.5 rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       <span className="flex min-w-0 items-center gap-2">

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { cx } from '@berrypjh/react-ui';
-import { Anchor, ArrowRight, Component, HelpCircle, Send } from 'lucide-react';
+import { Anchor, ArrowRight, Component, HelpCircle, type LucideIcon, Send } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
@@ -10,11 +10,11 @@ import type { ConnectionCard, FiberStateAndQueueContent } from '../content';
 
 type Props = { content: FiberStateAndQueueContent['connections'] };
 
-const iconMap = {
-  box: Component,
-  hook: Anchor,
-  send: Send,
-} as const;
+const cardIcon: Record<ConnectionCard['id'], LucideIcon> = {
+  class: Component,
+  hooks: Anchor,
+  dispatch: Send,
+};
 
 export const HooksClassConnection = ({ content }: Props) => (
   <section
@@ -42,7 +42,7 @@ export const HooksClassConnection = ({ content }: Props) => (
 
 const ConnectionCardItem = ({ card }: { card: ConnectionCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(
@@ -63,7 +63,8 @@ const ConnectionCardItem = ({ card }: { card: ConnectionCard }) => {
         className={cx(
           'mt-auto group inline-flex w-fit items-center gap-2 rounded-md border px-3 py-2',
           'text-xsm font-bold tracking-tight',
-          'transition-colors hover:bg-[var(--term-surface)]',
+          'transition-all hover:-translate-y-0.5',
+          t.borderHover,
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]',
           t.chip,
         )}

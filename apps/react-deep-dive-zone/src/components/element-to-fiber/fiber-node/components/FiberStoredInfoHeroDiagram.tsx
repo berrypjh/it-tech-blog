@@ -1,38 +1,24 @@
 import { cx } from '@berrypjh/react-ui';
 import { Box, Hexagon } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStoredInformationContent } from '../content';
 
-type Props = { content: FiberStoredInformationContent['hero']; className?: string };
+type Props = { content: FiberStoredInformationContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * Element 객체(type/key/props)가 Fiber 객체로 확장되며 훨씬 많은 작업 정보를
  * 추가로 들고 다니는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const FiberStoredInfoHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.elementTitle}는 ${content.elementFields.join(
-    ', ',
-  )} 필드만 가지지만, ${content.fiberTitle}는 ${content.fiberFields.join(
-    ', ',
-  )} 등 훨씬 많은 필드를 추가로 가집니다.`;
+export const FiberStoredInfoHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.elementTitle} (${content.elementFields.join(', ')}) → ${content.fiberTitle} (${content.fiberFields.join(', ')})`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <ObjectCard
           tone="emerald"
@@ -53,7 +39,7 @@ export const FiberStoredInfoHeroDiagram = ({ content, className }: Props) => {
           columns
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -136,12 +122,3 @@ const FieldList = ({
     </ul>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

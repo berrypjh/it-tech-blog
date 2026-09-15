@@ -1,24 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Lightbulb, MoveDown, MoveRight, MoveUp, Workflow } from 'lucide-react';
+import { Lightbulb, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import { pointerTone } from '../components/pointerStyles';
-import type { FiberTreePointersContent, PointerKind, TraversalStep } from '../content';
+import { pointerIcon, pointerTone } from '../components/pointerStyles';
+import type { FiberTreePointersContent, TraversalStep } from '../content';
 
 type Props = { content: FiberTreePointersContent['traversal'] };
 
-const iconMap: Record<PointerKind, React.ComponentType<{ className?: string }>> = {
-  child: MoveDown,
-  sibling: MoveRight,
-  return: MoveUp,
-};
-
 const toFlowStep = (step: TraversalStep): FlowStepItem => {
   const tone = pointerTone[step.id];
-  const Icon = iconMap[step.id];
+  const Icon = pointerIcon[step.id];
   return {
     id: step.id,
     number: step.number,

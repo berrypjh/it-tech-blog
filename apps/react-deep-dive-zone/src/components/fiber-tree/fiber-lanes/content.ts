@@ -9,7 +9,6 @@ export type PriorityItem = {
   label: string;
   subtitle: string;
   tone: LaneTone;
-  iconName: 'zap' | 'mouse' | 'cube' | 'clock' | 'refresh' | 'leaf';
 };
 
 export type LaneCard = PriorityItem & {
@@ -38,12 +37,11 @@ export type BitfieldRow = {
 };
 
 export type PropagationStep = {
-  id: string;
+  id: 'pending' | 'reflect' | 'detect';
   number: string;
   title: string;
   body: string;
   tone: 'sky' | 'violet' | 'emerald';
-  iconName: 'pulse' | 'arrowUp' | 'eye';
 };
 
 export type FiberLanesContent = {
@@ -61,7 +59,6 @@ export type FiberLanesContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    vs: string;
     lanesCard: { title: string; description: string };
     childLanesCard: { title: string; description: string };
     parentTitle: string;
@@ -88,7 +85,6 @@ export type FiberLanesContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       file: string;
       lookForLabel: string;
@@ -97,7 +93,6 @@ export type FiberLanesContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -171,42 +166,36 @@ const ko: FiberLanesContent = {
         label: 'SyncLane',
         subtitle: '가장 높은 긴급도',
         tone: 'emerald',
-        iconName: 'zap',
       },
       {
         id: 'inputContinuous',
         label: 'InputContinuousLane',
         subtitle: '연속 입력 관련 작업',
         tone: 'sky',
-        iconName: 'mouse',
       },
       {
         id: 'default',
         label: 'DefaultLane',
         subtitle: '일반적인 업데이트',
         tone: 'cyan',
-        iconName: 'cube',
       },
       {
         id: 'transition',
         label: 'TransitionLanes',
         subtitle: '지연 가능한 전환 작업',
         tone: 'violet',
-        iconName: 'clock',
       },
       {
         id: 'retry',
         label: 'RetryLanes',
         subtitle: '재시도 작업',
         tone: 'amber',
-        iconName: 'refresh',
       },
       {
         id: 'idle',
         label: 'IdleLane',
         subtitle: '낮은 긴급도 작업',
         tone: 'slate',
-        iconName: 'leaf',
       },
     ],
   },
@@ -214,7 +203,6 @@ const ko: FiberLanesContent = {
     badge: '01',
     eyebrow: '두 lane 비교',
     title: 'lanes / childLanes 비교',
-    vs: 'VS',
     lanesCard: {
       title: 'lanes',
       description: '이 Fiber 자신에게 남아 있는 작업 우선순위',
@@ -267,7 +255,6 @@ const ko: FiberLanesContent = {
         subtitle: '동기성이 높은 작업',
         body: '사용자 입력, flushSync 등 즉시 처리되어야 하는 작업.',
         tone: 'emerald',
-        iconName: 'zap',
       },
       {
         id: 'inputContinuous',
@@ -275,7 +262,6 @@ const ko: FiberLanesContent = {
         subtitle: '연속 입력 관련 작업',
         body: '스크롤, 드래그, 마우스 이동 등 연속적인 입력에 대한 작업.',
         tone: 'sky',
-        iconName: 'mouse',
       },
       {
         id: 'default',
@@ -283,7 +269,6 @@ const ko: FiberLanesContent = {
         subtitle: '일반적인 업데이트',
         body: '상태 업데이트, 렌더링 등 일반적인 우선순위 작업.',
         tone: 'cyan',
-        iconName: 'cube',
       },
       {
         id: 'transition',
@@ -291,7 +276,6 @@ const ko: FiberLanesContent = {
         subtitle: '지연 가능한 전환 작업',
         body: 'UI 전환, Suspense 전환 등 사용자 경험을 해치지 않는 작업.',
         tone: 'violet',
-        iconName: 'clock',
       },
       {
         id: 'retry',
@@ -299,7 +283,6 @@ const ko: FiberLanesContent = {
         subtitle: '재시도 작업',
         body: '일시적으로 실패한 작업을 다시 시도할 때 사용하는 작업.',
         tone: 'amber',
-        iconName: 'refresh',
       },
       {
         id: 'idle',
@@ -307,7 +290,6 @@ const ko: FiberLanesContent = {
         subtitle: '낮은 긴급도 작업',
         body: '백그라운드 작업, 프리패치 등 낮은 우선순위의 작업.',
         tone: 'slate',
-        iconName: 'leaf',
       },
     ],
   },
@@ -327,7 +309,6 @@ const ko: FiberLanesContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       file: 'packages/react-reconciler/src/ReactFiberLane.js',
       lookForLabel: '볼 것',
@@ -337,7 +318,6 @@ const ko: FiberLanesContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',
     },
     code: {
-      fileName: 'ReactFiberLane.js',
       language: 'JavaScript',
       content: checkpointCode,
     },
@@ -353,7 +333,6 @@ const ko: FiberLanesContent = {
         title: 'Button Fiber에 pending work',
         body: '자식 Fiber에서 처리되지 못한 우선순위 작업이 발생합니다.',
         tone: 'sky',
-        iconName: 'pulse',
       },
       {
         id: 'reflect',
@@ -361,7 +340,6 @@ const ko: FiberLanesContent = {
         title: '부모 Main Fiber의 childLanes에 반영',
         body: '부모 Fiber가 자식 트리에 남은 작업을 자신의 childLanes에 요약합니다.',
         tone: 'violet',
-        iconName: 'arrowUp',
       },
       {
         id: 'detect',
@@ -369,7 +347,6 @@ const ko: FiberLanesContent = {
         title: '더 위의 Page Fiber도 해당 subtree에 일이 있음을 인지',
         body: '위 단계로 계속 전파되어 루트까지 일관된 우선순위 정보가 유지됩니다.',
         tone: 'emerald',
-        iconName: 'eye',
       },
     ],
     emphasis: '부모 레벨에서도 하위 트리의 미완료 작업을 빠르게 감지할 수 있다.',
@@ -410,44 +387,38 @@ const en: FiberLanesContent = {
         label: 'SyncLane',
         subtitle: 'highest urgency',
         tone: 'emerald',
-        iconName: 'zap',
       },
       {
         id: 'inputContinuous',
         label: 'InputContinuousLane',
         subtitle: 'continuous input work',
         tone: 'sky',
-        iconName: 'mouse',
       },
       {
         id: 'default',
         label: 'DefaultLane',
         subtitle: 'normal updates',
         tone: 'cyan',
-        iconName: 'cube',
       },
       {
         id: 'transition',
         label: 'TransitionLanes',
         subtitle: 'deferrable transitions',
         tone: 'violet',
-        iconName: 'clock',
       },
       {
         id: 'retry',
         label: 'RetryLanes',
         subtitle: 'retry work',
         tone: 'amber',
-        iconName: 'refresh',
       },
-      { id: 'idle', label: 'IdleLane', subtitle: 'low priority', tone: 'slate', iconName: 'leaf' },
+      { id: 'idle', label: 'IdleLane', subtitle: 'low priority', tone: 'slate' },
     ],
   },
   comparison: {
     badge: '01',
     eyebrow: 'COMPARE BOTH',
     title: 'lanes vs childLanes',
-    vs: 'VS',
     lanesCard: {
       title: 'lanes',
       description: 'work priority remaining on this Fiber itself',
@@ -500,7 +471,6 @@ const en: FiberLanesContent = {
         subtitle: 'highly synchronous work',
         body: 'User input, flushSync, anything that must be processed immediately.',
         tone: 'emerald',
-        iconName: 'zap',
       },
       {
         id: 'inputContinuous',
@@ -508,7 +478,6 @@ const en: FiberLanesContent = {
         subtitle: 'continuous input work',
         body: 'Scroll, drag, mouse moves — work tied to continuous inputs.',
         tone: 'sky',
-        iconName: 'mouse',
       },
       {
         id: 'default',
@@ -516,7 +485,6 @@ const en: FiberLanesContent = {
         subtitle: 'normal updates',
         body: 'State updates, renders — the everyday priority level.',
         tone: 'cyan',
-        iconName: 'cube',
       },
       {
         id: 'transition',
@@ -524,7 +492,6 @@ const en: FiberLanesContent = {
         subtitle: 'deferrable transitions',
         body: 'UI transitions, Suspense transitions — work that should not hurt UX.',
         tone: 'violet',
-        iconName: 'clock',
       },
       {
         id: 'retry',
@@ -532,7 +499,6 @@ const en: FiberLanesContent = {
         subtitle: 'retry work',
         body: 'Used when re-attempting work that temporarily failed.',
         tone: 'amber',
-        iconName: 'refresh',
       },
       {
         id: 'idle',
@@ -540,7 +506,6 @@ const en: FiberLanesContent = {
         subtitle: 'low urgency work',
         body: 'Background work, prefetching, anything with low priority.',
         tone: 'slate',
-        iconName: 'leaf',
       },
     ],
   },
@@ -560,7 +525,6 @@ const en: FiberLanesContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'File',
       file: 'packages/react-reconciler/src/ReactFiberLane.js',
       lookForLabel: 'Look for',
@@ -570,7 +534,6 @@ const en: FiberLanesContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js',
     },
     code: {
-      fileName: 'ReactFiberLane.js',
       language: 'JavaScript',
       content: checkpointCodeEn,
     },
@@ -586,7 +549,6 @@ const en: FiberLanesContent = {
         title: 'Pending work on Button Fiber',
         body: 'Priority work that was not yet processed appears on a child Fiber.',
         tone: 'sky',
-        iconName: 'pulse',
       },
       {
         id: 'reflect',
@@ -594,7 +556,6 @@ const en: FiberLanesContent = {
         title: 'Reflected in Main Fiber’s childLanes',
         body: 'The parent Fiber summarises the remaining subtree work into its own childLanes.',
         tone: 'violet',
-        iconName: 'arrowUp',
       },
       {
         id: 'detect',
@@ -602,7 +563,6 @@ const en: FiberLanesContent = {
         title: 'Page Fiber also detects subtree work',
         body: 'The summary keeps propagating up, so even the root knows about pending work in the subtree.',
         tone: 'emerald',
-        iconName: 'eye',
       },
     ],
     emphasis: 'Parent levels can quickly detect unfinished work somewhere in the subtree.',

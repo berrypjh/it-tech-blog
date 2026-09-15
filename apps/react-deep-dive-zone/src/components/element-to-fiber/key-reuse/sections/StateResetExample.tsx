@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentType, type ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
 import {
@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Info,
   KeyRound,
+  type LucideIcon,
   MessageSquare,
   Repeat,
   Send,
@@ -23,7 +24,6 @@ import type { KeyFiberReuseContent } from '../content';
 type Content = KeyFiberReuseContent['stateExample'];
 type Contact = Content['contacts'][number];
 type Props = { content: Content };
-type IconType = ComponentType<{ className?: string }>;
 
 export const StateResetExample = ({ content }: Props) => {
   const [contact, setContact] = useState<Contact>(content.contacts[0]);
@@ -133,9 +133,9 @@ type ColumnProps = {
   tone: ToneKey;
   title: string;
   code: string;
-  Icon: IconType;
+  Icon: LucideIcon;
   result: string;
-  ResultIcon: IconType;
+  ResultIcon: LucideIcon;
   children: ReactNode;
 };
 
@@ -168,7 +168,7 @@ const Column = ({ tone, title, code, Icon, result, ResultIcon, children }: Colum
           t.chip,
         )}
       >
-        <ResultIcon className="h-4 w-4 shrink-0 mt-0.5" />
+        <ResultIcon className="h-4 w-4 shrink-0 mt-0.5" aria-hidden="true" />
         {result}
       </p>
     </article>

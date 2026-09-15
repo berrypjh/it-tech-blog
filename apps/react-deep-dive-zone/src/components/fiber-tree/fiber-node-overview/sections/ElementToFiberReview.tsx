@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Hexagon, Lightbulb, RefreshCw, Wand2 } from 'lucide-react';
+import { Boxes, Hexagon, Lightbulb, type LucideIcon, RefreshCw, Wand2 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -10,14 +10,14 @@ import type { FiberNodeOverviewContent, ReviewStep } from '../content';
 
 type Props = { content: FiberNodeOverviewContent['review'] };
 
-const iconMap = {
-  cube: Boxes,
-  wand: Wand2,
-  hex: Hexagon,
-} as const;
+const stepIcon: Record<ReviewStep['id'], LucideIcon> = {
+  element: Boxes,
+  create: Wand2,
+  fiber: Hexagon,
+};
 
 const toFlowStep = (step: ReviewStep, idx: number): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: String(idx + 1),

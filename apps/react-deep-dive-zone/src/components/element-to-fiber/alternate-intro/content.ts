@@ -3,10 +3,9 @@ import type { Locale } from '@it-tech-blog/preferences';
 export type FiberRole = 'current' | 'workInProgress';
 
 export type WhyCard = {
-  id: string;
+  id: 'keep-screen' | 'mid-work' | 'commit-hold';
   title: string;
   description: string;
-  iconName: 'monitor' | 'pause' | 'shield';
   accent: 'emerald' | 'sky' | 'violet';
 };
 
@@ -196,7 +195,6 @@ const ko: AlternateFiberContent = {
         id: 'keep-screen',
         title: '현재 화면을 유지한 채 다음 화면 계산',
         description: '사용자는 끊김 없이 현재 화면을 보고, 새 화면은 백그라운드에서 계산됩니다.',
-        iconName: 'monitor',
         accent: 'emerald',
       },
       {
@@ -204,7 +202,6 @@ const ko: AlternateFiberContent = {
         title: '작업 중간 상태 관리',
         description:
           '계산 도중 중단되거나 재시작해도 기존 화면은 안정적이고, 작업 트리는 계속 이어갈 수 있습니다.',
-        iconName: 'pause',
         accent: 'sky',
       },
       {
@@ -212,7 +209,6 @@ const ko: AlternateFiberContent = {
         title: 'Commit 직전까지 실제 화면 변경 보류',
         description:
           '모든 작업이 끝나고 Commit 단계에서야 workInProgress 트리를 화면에 반영합니다.',
-        iconName: 'shield',
         accent: 'violet',
       },
     ],
@@ -341,7 +337,6 @@ const en: AlternateFiberContent = {
         title: 'Compute the next screen while keeping the current one',
         description:
           'Users see the current screen without interruption while the new one is computed in the background.',
-        iconName: 'monitor',
         accent: 'emerald',
       },
       {
@@ -349,7 +344,6 @@ const en: AlternateFiberContent = {
         title: 'Manage mid-work state',
         description:
           'Even if work pauses or restarts, the current screen stays stable and the work tree picks up where it left off.',
-        iconName: 'pause',
         accent: 'sky',
       },
       {
@@ -357,7 +351,6 @@ const en: AlternateFiberContent = {
         title: 'Hold the screen change until commit',
         description:
           'Only after all work finishes — at commit — the workInProgress tree is reflected on screen.',
-        iconName: 'shield',
         accent: 'violet',
       },
     ],

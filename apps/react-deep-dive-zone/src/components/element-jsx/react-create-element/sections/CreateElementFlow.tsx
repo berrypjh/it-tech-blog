@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Code, Lightbulb, Sliders, Workflow } from 'lucide-react';
+import { Atom, Code, Lightbulb, type LucideIcon, Sliders, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -9,15 +9,15 @@ import type { FlowStep, ReactCreateElementContent } from '../content';
 
 type Props = { content: ReactCreateElementContent['flow'] };
 
-const iconMap = {
-  code: Code,
-  sliders: Sliders,
-  workflow: Workflow,
-  atom: Atom,
-} as const;
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  call: Code,
+  prepare: Sliders,
+  'react-element': Workflow,
+  object: Atom,
+};
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return { ...step, icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} /> };
 };
 

@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Gauge, HelpCircle, Scale, TrendingUp } from 'lucide-react';
+import { Gauge, HelpCircle, type LucideIcon, Scale, TrendingUp } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
@@ -8,11 +8,11 @@ import type { FiberPropsContent, ReasonCard } from '../content';
 
 type Props = { content: FiberPropsContent['reasons'] };
 
-const iconMap = {
-  scales: Scale,
-  gauge: Gauge,
-  trending: TrendingUp,
-} as const;
+const cardIcon: Record<ReasonCard['id'], LucideIcon> = {
+  'detect-change': Scale,
+  'skip-work': Gauge,
+  'track-diff': TrendingUp,
+};
 
 export const WhyComparePropsSection = ({ content }: Props) => (
   <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
@@ -36,7 +36,7 @@ export const WhyComparePropsSection = ({ content }: Props) => (
 
 const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

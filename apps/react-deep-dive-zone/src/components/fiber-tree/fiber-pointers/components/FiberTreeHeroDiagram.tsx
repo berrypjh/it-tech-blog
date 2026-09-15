@@ -1,5 +1,4 @@
 import { cx } from '@berrypjh/react-ui';
-import { MoveDown, MoveRight, MoveUp } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -7,28 +6,22 @@ import { TerminalBadge } from '../../../shared/terminal';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberTreePointersContent, PointerKind, TreeNode } from '../content';
 
-import { pointerTone } from './pointerStyles';
+import { pointerIcon, pointerTone } from './pointerStyles';
 
-type Props = { content: FiberTreePointersContent['hero']; className?: string };
-
-const pointerIcon = {
-  child: MoveDown,
-  sibling: MoveRight,
-  return: MoveUp,
-} as const;
+type Props = { content: FiberTreePointersContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * App→Page→Header→Main→Button→List를 DFS 순서로 따라가며,
  * 각 노드에 도달한 포인터(child/sibling/return)를 연결 칩으로 잇는 traversal 경로.
  */
-export const FiberTreeHeroDiagram = ({ content, className }: Props) => {
+export const FiberTreeHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.description} ${content.legendItems
     .map((item) => `${item.label}: ${item.meaning}`)
     .join(', ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-md" aria-hidden="true">
         <div className="flex items-center justify-between">
           <TerminalBadge dotClassName="bg-[var(--term-accent)]">fiber pointers</TerminalBadge>

@@ -2,6 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent } from '../content';
 
 type Props = { content: FiberStateNodeContent['misconception'] };
@@ -60,7 +61,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
           aria-hidden="true"
           className={cx(
             'flex-1 lg:flex-none lg:h-12 h-px lg:w-px w-12 border-t-2 lg:border-t-0 lg:border-l-2 border-dashed',
-            'border-amber-400/70 dark:border-amber-500/70',
+            toneTokens.amber.fill.border,
           )}
         />
         <div className="flex flex-col items-center gap-1">
@@ -68,13 +69,18 @@ export const StateNodeMisconception = ({ content }: Props) => (
             aria-hidden="true"
             className={cx(
               'inline-flex items-center justify-center w-12 h-12 rounded-full',
-              'bg-amber-100 text-amber-700 border-2 border-amber-300/80',
-              'dark:bg-amber-950/60 dark:text-amber-200 dark:border-amber-700/70',
+              'border-2',
+              toneTokens.amber.chip,
             )}
           >
             <AlertTriangle className="h-6 w-6" aria-hidden="true" />
           </span>
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 break-keep text-center">
+          <span
+            className={cx(
+              'text-[11px] font-mono font-bold uppercase tracking-wider break-keep text-center',
+              toneTokens.amber.text,
+            )}
+          >
             {content.centerText}
           </span>
         </div>
@@ -82,7 +88,7 @@ export const StateNodeMisconception = ({ content }: Props) => (
           aria-hidden="true"
           className={cx(
             'flex-1 lg:flex-none lg:h-12 h-px lg:w-px w-12 border-t-2 lg:border-t-0 lg:border-l-2 border-dashed',
-            'border-emerald-400/70 dark:border-emerald-500/70',
+            toneTokens.emerald.fill.border,
           )}
         />
       </div>
@@ -90,8 +96,8 @@ export const StateNodeMisconception = ({ content }: Props) => (
       <article
         className={cx(
           'flex flex-col gap-sm rounded-3xl border-2 p-md sm:p-lg',
-          'border-emerald-300/80 bg-emerald-50/60',
-          'dark:border-emerald-800/60 dark:bg-emerald-950/30',
+          toneTokens.emerald.fill.border,
+          toneTokens.emerald.fill.bg,
           'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
         )}
       >
@@ -100,23 +106,33 @@ export const StateNodeMisconception = ({ content }: Props) => (
             aria-hidden="true"
             className={cx(
               'inline-flex items-center justify-center w-10 h-10 rounded-xl',
-              'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-200',
+              toneTokens.emerald.chip,
             )}
           >
             <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="inline-flex items-center rounded-full border border-emerald-300/80 bg-emerald-100/80 dark:bg-emerald-950/60 dark:border-emerald-800/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-200">
+          <span
+            className={cx(
+              'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+              toneTokens.emerald.chip,
+            )}
+          >
             {content.correctLabel}
           </span>
         </header>
-        <h3 className="text-md sm:text-lg font-bold leading-snug text-emerald-900 dark:text-emerald-100 break-keep">
+        <h3
+          className={cx(
+            'text-md sm:text-lg font-bold leading-snug break-keep',
+            toneTokens.emerald.fill.text,
+          )}
+        >
           {content.correctText.lines.map((line, i) => (
             <span key={i} className="block">
               {line}
             </span>
           ))}
         </h3>
-        <p className="mt-auto text-xsm leading-relaxed text-emerald-800/90 dark:text-emerald-200/90 break-keep">
+        <p className={cx('mt-auto text-xsm leading-relaxed break-keep', toneTokens.emerald.text)}>
           {content.correctDescription}
         </p>
       </article>

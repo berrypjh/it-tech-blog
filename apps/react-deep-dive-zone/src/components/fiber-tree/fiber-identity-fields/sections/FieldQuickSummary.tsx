@@ -1,19 +1,19 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Code2, Key, ListTree, Target } from 'lucide-react';
+import { Boxes, Code2, Key, ListTree, type LucideIcon, Target } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberIdentityFieldsContent, QuickSummaryCard } from '../content';
+import type { FiberIdentityFieldsContent, IdentityFieldKey, QuickSummaryCard } from '../content';
 
 type Props = { content: FiberIdentityFieldsContent['summary'] };
 
-const iconMap = {
-  cube: Boxes,
+const fieldIcon: Record<IdentityFieldKey, LucideIcon> = {
+  tag: Boxes,
   key: Key,
-  code: Code2,
-  target: Target,
-} as const;
+  elementType: Code2,
+  type: Target,
+};
 
 export const FieldQuickSummary = ({ content }: Props) => (
   <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
@@ -36,7 +36,7 @@ export const FieldQuickSummary = ({ content }: Props) => (
 );
 
 const QuickCard = ({ card }: { card: QuickSummaryCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = fieldIcon[card.id];
   return (
     <article
       className={cx(

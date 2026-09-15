@@ -38,7 +38,6 @@ const LaneCardItem = ({ card }: { card: LaneCard }) => {
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         t.border,
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">
@@ -50,11 +49,11 @@ const LaneCardItem = ({ card }: { card: LaneCard }) => {
               t.chip,
             )}
           >
-            <LaneIcon iconName={card.iconName} className="h-5 w-5" />
+            <LaneIcon id={card.id} className="h-5 w-5" />
           </span>
         ) : (
           <ToneIconBox tone={card.tone}>
-            <LaneIcon iconName={card.iconName} className="h-5 w-5" />
+            <LaneIcon id={card.id} className="h-5 w-5" />
           </ToneIconBox>
         )}
         <div className="flex flex-col min-w-0">

@@ -11,11 +11,10 @@ export type ComparisonCard = {
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'click' | 'setstate' | 'update' | 'enqueue' | 'process';
   number: string;
   title: string;
   body: string;
-  iconName: 'cursor' | 'zap' | 'package' | 'list' | 'sparkles';
   tone: 'emerald' | 'sky' | 'violet' | 'amber' | 'teal';
 };
 
@@ -25,7 +24,6 @@ export type RoleFlowCard = {
   valuePill: string;
   field: FieldKind;
   descriptionLines: string[];
-  iconName: 'database' | 'list' | 'check';
   tone: 'emerald' | 'violet' | 'amber';
 };
 
@@ -36,7 +34,6 @@ export type ConnectionCard = {
   body: string;
   buttonLabel: string;
   buttonHref: string;
-  iconName: 'box' | 'hook' | 'send';
   tone: 'emerald' | 'violet' | 'sky';
 };
 
@@ -63,7 +60,6 @@ export type FiberStateAndQueueContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    vs: string;
     cards: ComparisonCard[];
   };
   setStateFlow: {
@@ -84,7 +80,6 @@ export type FiberStateAndQueueContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       file: string;
       lookForLabel: string;
@@ -93,7 +88,6 @@ export type FiberStateAndQueueContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -172,7 +166,6 @@ const ko: FiberStateAndQueueContent = {
     badge: '01',
     eyebrow: '두 필드 비교',
     title: 'memoizedState / updateQueue 비교',
-    vs: 'VS',
     cards: [
       {
         kind: 'memoizedState',
@@ -209,7 +202,6 @@ const ko: FiberStateAndQueueContent = {
         number: '1',
         title: '사용자 클릭',
         body: 'UI 이벤트가 발생합니다.',
-        iconName: 'cursor',
         tone: 'emerald',
       },
       {
@@ -217,7 +209,6 @@ const ko: FiberStateAndQueueContent = {
         number: '2',
         title: 'setState 호출',
         body: '컴포넌트의 setState가 호출됩니다.',
-        iconName: 'zap',
         tone: 'sky',
       },
       {
@@ -225,7 +216,6 @@ const ko: FiberStateAndQueueContent = {
         number: '3',
         title: 'update 객체 생성',
         body: 'payload, lane, callback 등을 가진 update가 생성됩니다.',
-        iconName: 'package',
         tone: 'violet',
       },
       {
@@ -233,7 +223,6 @@ const ko: FiberStateAndQueueContent = {
         number: '4',
         title: 'updateQueue에 연결',
         body: '생성된 update가 Fiber의 updateQueue에 연결됩니다.',
-        iconName: 'list',
         tone: 'amber',
       },
       {
@@ -241,7 +230,6 @@ const ko: FiberStateAndQueueContent = {
         number: '5',
         title: '다음 렌더에서 처리',
         body: 'React가 다음 렌더링을 수행할 때 새 상태로 계산됩니다.',
-        iconName: 'sparkles',
         tone: 'teal',
       },
     ],
@@ -257,7 +245,6 @@ const ko: FiberStateAndQueueContent = {
         valuePill: 'count = 1',
         field: 'memoizedState',
         descriptionLines: ['현재 출력에 사용된 상태', '화면에 1이 보임'],
-        iconName: 'database',
         tone: 'emerald',
       },
       {
@@ -266,7 +253,6 @@ const ko: FiberStateAndQueueContent = {
         valuePill: 'setCount(2)',
         field: 'updateQueue',
         descriptionLines: ['아직 처리되지 않은 요청', '큐에 2로 변경 요청이 쌓임'],
-        iconName: 'list',
         tone: 'violet',
       },
       {
@@ -275,7 +261,6 @@ const ko: FiberStateAndQueueContent = {
         valuePill: 'count = 2',
         field: 'memoizedState',
         descriptionLines: ['새 렌더 결과로 확정', '화면에 2가 보임'],
-        iconName: 'check',
         tone: 'amber',
       },
     ],
@@ -285,7 +270,6 @@ const ko: FiberStateAndQueueContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
@@ -295,7 +279,6 @@ const ko: FiberStateAndQueueContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCode,
     },
@@ -312,7 +295,6 @@ const ko: FiberStateAndQueueContent = {
         body: 'setState 호출 시 updateQueue에 update가 쌓이고, 렌더 중 처리됩니다.',
         buttonLabel: '다음: Class Component Fiber와 Work Tag',
         buttonHref: '/function-fiber',
-        iconName: 'box',
         tone: 'emerald',
       },
       {
@@ -322,7 +304,6 @@ const ko: FiberStateAndQueueContent = {
         body: 'useState 등 Hook의 상태 값은 memoizedState에 연결 리스트처럼 저장됩니다.',
         buttonLabel: '다음: Hook linked list',
         buttonHref: '/hook-linked-list',
-        iconName: 'hook',
         tone: 'violet',
       },
       {
@@ -332,7 +313,6 @@ const ko: FiberStateAndQueueContent = {
         body: 'dispatchSetState가 update 객체를 생성하고 updateQueue에 enqueue합니다.',
         buttonLabel: '다음: dispatchSetState와 update',
         buttonHref: '/dispatch-set-state',
-        iconName: 'send',
         tone: 'sky',
       },
     ],
@@ -382,7 +362,6 @@ const en: FiberStateAndQueueContent = {
     badge: '01',
     eyebrow: 'COMPARE FIELDS',
     title: 'memoizedState vs updateQueue',
-    vs: 'VS',
     cards: [
       {
         kind: 'memoizedState',
@@ -420,7 +399,6 @@ const en: FiberStateAndQueueContent = {
         number: '1',
         title: 'User click',
         body: 'A UI event fires.',
-        iconName: 'cursor',
         tone: 'emerald',
       },
       {
@@ -428,7 +406,6 @@ const en: FiberStateAndQueueContent = {
         number: '2',
         title: 'setState called',
         body: 'The component’s setState is invoked.',
-        iconName: 'zap',
         tone: 'sky',
       },
       {
@@ -436,7 +413,6 @@ const en: FiberStateAndQueueContent = {
         number: '3',
         title: 'Build update object',
         body: 'An update with payload, lane, callback, etc. is created.',
-        iconName: 'package',
         tone: 'violet',
       },
       {
@@ -444,7 +420,6 @@ const en: FiberStateAndQueueContent = {
         number: '4',
         title: 'Enqueue to updateQueue',
         body: 'The update is linked onto the Fiber’s updateQueue.',
-        iconName: 'list',
         tone: 'amber',
       },
       {
@@ -452,7 +427,6 @@ const en: FiberStateAndQueueContent = {
         number: '5',
         title: 'Process in next render',
         body: 'React applies the queued updates during the next render.',
-        iconName: 'sparkles',
         tone: 'teal',
       },
     ],
@@ -468,7 +442,6 @@ const en: FiberStateAndQueueContent = {
         valuePill: 'count = 1',
         field: 'memoizedState',
         descriptionLines: ['State used by the current output', 'Screen shows 1'],
-        iconName: 'database',
         tone: 'emerald',
       },
       {
@@ -477,7 +450,6 @@ const en: FiberStateAndQueueContent = {
         valuePill: 'setCount(2)',
         field: 'updateQueue',
         descriptionLines: ['Request not yet processed', 'The "change to 2" request piles up'],
-        iconName: 'list',
         tone: 'violet',
       },
       {
@@ -486,7 +458,6 @@ const en: FiberStateAndQueueContent = {
         valuePill: 'count = 2',
         field: 'memoizedState',
         descriptionLines: ['Committed as the new render result', 'Screen shows 2'],
-        iconName: 'check',
         tone: 'amber',
       },
     ],
@@ -496,7 +467,6 @@ const en: FiberStateAndQueueContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'File',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
@@ -506,7 +476,6 @@ const en: FiberStateAndQueueContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCodeEn,
     },
@@ -523,7 +492,6 @@ const en: FiberStateAndQueueContent = {
         body: 'setState calls enqueue updates into updateQueue and they are applied during render.',
         buttonLabel: 'Next: Class Component Fiber & Work Tag',
         buttonHref: '/function-fiber',
-        iconName: 'box',
         tone: 'emerald',
       },
       {
@@ -533,7 +501,6 @@ const en: FiberStateAndQueueContent = {
         body: 'Hook state values like useState are stored as a linked list on memoizedState.',
         buttonLabel: 'Next: Hook Linked List',
         buttonHref: '/hook-linked-list',
-        iconName: 'hook',
         tone: 'violet',
       },
       {
@@ -543,7 +510,6 @@ const en: FiberStateAndQueueContent = {
         body: 'dispatchSetState creates an update object and enqueues it on updateQueue.',
         buttonLabel: 'Next: dispatchSetState & update',
         buttonHref: '/dispatch-set-state',
-        iconName: 'send',
         tone: 'sky',
       },
     ],

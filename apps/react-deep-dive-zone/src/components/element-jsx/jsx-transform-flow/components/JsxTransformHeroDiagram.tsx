@@ -8,13 +8,13 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { JsxTransformFlowContent } from '../content';
 
-type Props = { content: JsxTransformFlowContent['hero']; className?: string };
+type Props = { content: JsxTransformFlowContent['hero'] };
 
-export const JsxTransformHeroDiagram = ({ content, className }: Props) => {
+export const JsxTransformHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.inputNote} → ${content.compileNote} → ${content.outputNote}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StepHeader

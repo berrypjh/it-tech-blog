@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Lock, ShieldCheck, Unlock } from 'lucide-react';
+import { Lock, type LucideIcon, ShieldCheck, Unlock } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
@@ -8,10 +8,10 @@ import type { FreezeCard, ReactElementOwnerDevInfoContent } from '../content';
 
 type Props = { content: ReactElementOwnerDevInfoContent['freeze'] };
 
-const iconMap = {
-  unlock: Unlock,
-  lock: Lock,
-} as const;
+const cardIcon: Record<FreezeCard['id'], LucideIcon> = {
+  mutable: Unlock,
+  frozen: Lock,
+};
 
 /** mutable=위험(부정, rose), frozen=안전(긍정, accent). 2-side 의미를 소프트화해 유지한다. */
 const cardTone = (id: FreezeCard['id']) =>
@@ -53,7 +53,7 @@ export const ObjectFreezeSection = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: FreezeCard }) => {
   const t = cardTone(card.id);
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

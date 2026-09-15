@@ -1,4 +1,4 @@
-import { Boxes, Code, Lightbulb, RotateCcw, Wand2 } from 'lucide-react';
+import { Boxes, Code, Lightbulb, type LucideIcon, RotateCcw, Wand2 } from 'lucide-react';
 
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -7,14 +7,14 @@ import type { ElementVsFiberContent, RecapStep } from '../content';
 
 type Props = { content: ElementVsFiberContent['recap'] };
 
-const iconMap = {
-  code: Code,
-  wand: Wand2,
-  box: Boxes,
-} as const;
+const stepIcon: Record<RecapStep['id'], LucideIcon> = {
+  jsx: Code,
+  runtime: Wand2,
+  element: Boxes,
+};
 
 const toRow = (step: RecapStep, idx: number): StepRow => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     num: String(idx + 1),

@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type TreeNode = { id: string; label: string };
 
 export type ComparisonRow = {
@@ -14,12 +12,11 @@ export type ComparisonRow = {
 };
 
 export type ScenarioStep = {
-  id: string;
+  id: 'update' | 'prepare' | 'render' | 'keepCurrent' | 'switch';
   number: string;
   title: string;
   body: string;
   tone: 'sky' | 'emerald' | 'violet' | 'amber' | 'teal';
-  iconName: 'pulse' | 'workflow' | 'pencil' | 'pause' | 'check';
 };
 
 export type CurrentWipAlternateContent = {
@@ -56,7 +53,6 @@ export type CurrentWipAlternateContent = {
     badge: string;
     eyebrow: string;
     title: string;
-    pairTitle: string;
     currentCard: {
       title: string;
       subtitle: string;
@@ -78,7 +74,6 @@ export type CurrentWipAlternateContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       fileLabel: string;
       file: string;
       functionLabel: string;
@@ -89,7 +84,6 @@ export type CurrentWipAlternateContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -227,7 +221,6 @@ const ko: CurrentWipAlternateContent = {
     badge: '03',
     eyebrow: '두 버전 연결',
     title: 'alternate 연결 다이어그램',
-    pairTitle: '같은 위치 Fiber 쌍',
     currentCard: {
       title: 'current Button Fiber',
       subtitle: '이전 commit 결과',
@@ -254,7 +247,6 @@ const ko: CurrentWipAlternateContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       fileLabel: '파일',
       file: 'packages/react-reconciler/src/ReactFiber.js',
       functionLabel: '함수',
@@ -270,7 +262,6 @@ const ko: CurrentWipAlternateContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
     code: {
-      fileName: 'ReactFiber.js',
       language: 'JavaScript',
       content: checkpointCode,
     },
@@ -286,7 +277,6 @@ const ko: CurrentWipAlternateContent = {
         title: '업데이트 발생',
         body: 'setState, props 변경, 이벤트 등으로 update가 발생합니다.',
         tone: 'sky',
-        iconName: 'pulse',
       },
       {
         id: 'prepare',
@@ -294,7 +284,6 @@ const ko: CurrentWipAlternateContent = {
         title: 'current 기준으로 workInProgress 준비',
         body: 'current 트리를 기준으로 workInProgress 트리를 생성하거나 재사용합니다.',
         tone: 'emerald',
-        iconName: 'workflow',
       },
       {
         id: 'render',
@@ -302,7 +291,6 @@ const ko: CurrentWipAlternateContent = {
         title: '새 결과 계산 Render Phase',
         body: 'workInProgress 트리에서 변경 계산, 우선순위, effect 표시 등을 진행합니다.',
         tone: 'violet',
-        iconName: 'pencil',
       },
       {
         id: 'keepCurrent',
@@ -310,7 +298,6 @@ const ko: CurrentWipAlternateContent = {
         title: 'Commit 전까지 화면은 current 유지',
         body: '계산 중에는 화면에 영향을 주지 않고, current 트리를 그대로 유지합니다.',
         tone: 'amber',
-        iconName: 'pause',
       },
       {
         id: 'switch',
@@ -318,7 +305,6 @@ const ko: CurrentWipAlternateContent = {
         title: 'Commit 후 current 전환',
         body: '커밋이 성공하면 workInProgress가 새 current가 됩니다.',
         tone: 'teal',
-        iconName: 'check',
       },
     ],
   },
@@ -408,7 +394,6 @@ const en: CurrentWipAlternateContent = {
     badge: '03',
     eyebrow: 'VERSIONS LINKED',
     title: 'alternate connection diagram',
-    pairTitle: 'Same-position Fiber pair',
     currentCard: {
       title: 'current Button Fiber',
       subtitle: 'last commit result',
@@ -435,7 +420,6 @@ const en: CurrentWipAlternateContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       fileLabel: 'File',
       file: 'packages/react-reconciler/src/ReactFiber.js',
       functionLabel: 'Function',
@@ -451,7 +435,6 @@ const en: CurrentWipAlternateContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js',
     },
     code: {
-      fileName: 'ReactFiber.js',
       language: 'JavaScript',
       content: checkpointCodeEn,
     },
@@ -467,7 +450,6 @@ const en: CurrentWipAlternateContent = {
         title: 'Update arrives',
         body: 'setState, prop changes, events, etc. produce an update.',
         tone: 'sky',
-        iconName: 'pulse',
       },
       {
         id: 'prepare',
@@ -475,7 +457,6 @@ const en: CurrentWipAlternateContent = {
         title: 'Prepare workInProgress from current',
         body: 'A workInProgress tree is created or reused based on the current tree.',
         tone: 'emerald',
-        iconName: 'workflow',
       },
       {
         id: 'render',
@@ -483,7 +464,6 @@ const en: CurrentWipAlternateContent = {
         title: 'Render Phase — compute the new result',
         body: 'Change calculation, priority, effect marking happen on the workInProgress tree.',
         tone: 'violet',
-        iconName: 'pencil',
       },
       {
         id: 'keepCurrent',
@@ -491,7 +471,6 @@ const en: CurrentWipAlternateContent = {
         title: 'Screen keeps current until commit',
         body: 'During the computation the screen is untouched — the current tree stays.',
         tone: 'amber',
-        iconName: 'pause',
       },
       {
         id: 'switch',
@@ -499,7 +478,6 @@ const en: CurrentWipAlternateContent = {
         title: 'After commit, current is swapped',
         body: 'Once commit succeeds, workInProgress becomes the new current tree.',
         tone: 'teal',
-        iconName: 'check',
       },
     ],
   },

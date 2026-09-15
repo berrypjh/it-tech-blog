@@ -1,18 +1,18 @@
-import { Activity, CheckCircle2, Pause, Pencil, Workflow } from 'lucide-react';
+import { Activity, CheckCircle2, type LucideIcon, Pause, Pencil, Workflow } from 'lucide-react';
 
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { CurrentWipAlternateContent } from '../content';
+import type { CurrentWipAlternateContent, ScenarioStep } from '../content';
 
 type Props = { content: CurrentWipAlternateContent['scenario'] };
 
-const iconMap = {
-  pulse: Activity,
-  workflow: Workflow,
-  pencil: Pencil,
-  pause: Pause,
-  check: CheckCircle2,
-} as const;
+const stepIcon: Record<ScenarioStep['id'], LucideIcon> = {
+  update: Activity,
+  prepare: Workflow,
+  render: Pencil,
+  keepCurrent: Pause,
+  switch: CheckCircle2,
+};
 
 export const RenderingScenarioFlow = ({ content }: Props) => (
   <section id="scenario" aria-labelledby="heading-scenario" className="space-y-md scroll-mt-xl">
@@ -26,7 +26,7 @@ export const RenderingScenarioFlow = ({ content }: Props) => (
 
     <NumberedStepList
       rows={content.steps.map((step) => {
-        const Icon = iconMap[step.iconName];
+        const Icon = stepIcon[step.id];
         return {
           id: step.id,
           num: step.number,

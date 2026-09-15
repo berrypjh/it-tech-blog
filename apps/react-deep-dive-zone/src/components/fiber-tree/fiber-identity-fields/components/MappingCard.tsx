@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Puzzle, Rocket } from 'lucide-react';
+import { Boxes, type LucideIcon, Puzzle, Rocket } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -7,11 +7,11 @@ import type { IdentityFieldKey, MappingCard as MappingCardData } from '../conten
 
 type Props = { card: MappingCardData };
 
-const iconMap = {
-  cube: Boxes,
-  rocket: Rocket,
-  puzzle: Puzzle,
-} as const;
+const cardIcon: Record<MappingCardData['id'], LucideIcon> = {
+  div: Boxes,
+  'my-button': Rocket,
+  fragment: Puzzle,
+};
 
 /** 정체성 필드별 고정 톤(hero·summary와 동일): tag=sky, key=emerald, elementType=violet, type=amber. */
 const fieldTone: Record<IdentityFieldKey, ToneKey> = {
@@ -22,7 +22,7 @@ const fieldTone: Record<IdentityFieldKey, ToneKey> = {
 };
 
 export const MappingCardItem = ({ card }: Props) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(
@@ -30,7 +30,6 @@ export const MappingCardItem = ({ card }: Props) => {
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         toneTokens[card.tone].border,
-        toneTokens[card.tone].borderHover,
       )}
     >
       <header className="flex items-center justify-between">

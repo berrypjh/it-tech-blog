@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Sparkles, Tag, User } from 'lucide-react';
+import { type LucideIcon, Sparkles, Tag, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -8,30 +8,23 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramItem, ReactElementTypeMeaningContent } from '../content';
 
-type Props = { content: ReactElementTypeMeaningContent['hero']; className?: string };
+type Props = { content: ReactElementTypeMeaningContent['hero'] };
 
-const iconMap = {
-  tag: Tag,
-  user: User,
-  sparkles: Sparkles,
-} as const;
+const itemIcon: Record<HeroDiagramItem['id'], LucideIcon> = {
+  host: Tag,
+  custom: User,
+  special: Sparkles,
+};
 
-const ELEMENT_SHAPE = `const element = {
-  $$typeof: REACT_ELEMENT_TYPE,
-  type, // ← 무엇을 렌더할지
-  key,
-  props,
-};`;
-
-export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
+export const ElementTypeHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.diagramItems
     .map((item) => `${item.value}: ${item.title}`)
     .join(', ')}. ${content.bottomNoteTitle}: ${content.bottomNoteBody}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm">
-        <CodePreviewPanel code={ELEMENT_SHAPE} caption={content.diagramTitle} size="md" />
+        <CodePreviewPanel code={content.shapeCode} caption={content.diagramTitle} size="md" />
 
         <DownArrow />
 
@@ -62,7 +55,7 @@ export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
 };
 
 const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
-  const Icon = iconMap[item.iconName];
+  const Icon = itemIcon[item.id];
   return (
     <article
       className={cx(

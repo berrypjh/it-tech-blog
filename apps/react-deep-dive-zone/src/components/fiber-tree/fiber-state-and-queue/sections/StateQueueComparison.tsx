@@ -1,22 +1,17 @@
-import { Database, List } from 'lucide-react';
+import { Database, List, type LucideIcon } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { type ToneKey } from '../../../shared/tones';
+import { fieldTone } from '../components/fieldTone';
 import type { ComparisonCard, FiberStateAndQueueContent, FieldKind } from '../content';
 
 type Props = { content: FiberStateAndQueueContent['comparison'] };
 
-const fieldTone: Record<FieldKind, ToneKey> = {
-  memoizedState: 'emerald',
-  updateQueue: 'violet',
-};
-
-const fieldIcon = {
+const fieldIcon: Record<FieldKind, LucideIcon> = {
   memoizedState: Database,
   updateQueue: List,
-} as const;
+};
 
 export const StateQueueComparison = ({ content }: Props) => (
   <section id="comparison" aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">

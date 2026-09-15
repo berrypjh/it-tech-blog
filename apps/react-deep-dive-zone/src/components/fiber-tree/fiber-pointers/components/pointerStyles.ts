@@ -1,3 +1,5 @@
+import { type LucideIcon, MoveDown, MoveRight, MoveUp } from 'lucide-react';
+
 import type { ToneKey } from '../../../shared/tones';
 import type { PointerKind } from '../content';
 
@@ -13,4 +15,11 @@ export const pointerDashed: Record<PointerKind, boolean> = {
   child: false,
   sibling: false,
   return: true,
+};
+
+/** 포인터 방향 아이콘: child ↓, sibling →, return ↑. */
+export const pointerIcon: Record<PointerKind, LucideIcon> = {
+  child: MoveDown,
+  sibling: MoveRight,
+  return: MoveUp,
 };

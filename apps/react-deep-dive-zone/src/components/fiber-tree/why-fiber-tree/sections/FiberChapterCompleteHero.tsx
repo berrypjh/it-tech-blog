@@ -6,6 +6,7 @@ import {
   HeroVisualColumn,
 } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
+import { accentPhrase } from '../../../shared/text';
 import { FiberChapterCompleteHeroDiagram } from '../components/FiberChapterCompleteHeroDiagram';
 import type { FiberCentralContent } from '../content';
 
@@ -29,16 +30,7 @@ export const FiberChapterCompleteHero = ({ hero, groups }: Props) => (
       <HeroTitle>
         <span className="block">{hero.title.line1}</span>
         <span className="block">{hero.title.line2}</span>
-        <span className="block">
-          {hero.title.line3.split(hero.emphasisInTitle).map((part, i, arr) => (
-            <span key={i}>
-              {part}
-              {i < arr.length - 1 && (
-                <span className="text-[var(--term-accent)]">{hero.emphasisInTitle}</span>
-              )}
-            </span>
-          ))}
-        </span>
+        <span className="block">{accentPhrase(hero.title.line3, hero.emphasisInTitle)}</span>
       </HeroTitle>
 
       <HeroDescription maxWidth="max-w-[62ch]">{hero.description}</HeroDescription>

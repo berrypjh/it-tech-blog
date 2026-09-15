@@ -7,7 +7,7 @@ import type { EffectKind, FiberFlagsContent, TreeNode } from '../content';
 
 import { EffectBadge } from './EffectBadge';
 
-type Props = { content: FiberFlagsContent['hero']; className?: string };
+type Props = { content: FiberFlagsContent['hero'] };
 
 const effectLabel: Record<EffectKind, string> = {
   placement: 'Placement',
@@ -23,12 +23,12 @@ const indentByDepth = ['pl-0', 'pl-4', 'pl-8', 'pl-12'] as const;
  * workInProgress 트리를 위→아래 파일 트리처럼 펼치고, 각 Fiber 행에
  * 기록된 effect flag(또는 NoFlags)를 우측에 표시하는 effect 워크리스트.
  */
-export const FlagsEffectsHeroDiagram = ({ content, className }: Props) => {
+export const FlagsEffectsHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.title.line1} ${content.title.line2} ${content.title.line3} ${content.description}`;
-  const markedCount = content.tree.filter((node) => node.effect && node.effect !== 'normal').length;
+  const markedCount = content.tree.filter((node) => node.effect).length;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-md" aria-hidden="true">
         <div className="flex items-center justify-between">
           <TerminalBadge dotClassName="bg-[var(--term-accent)]">fiber effects</TerminalBadge>
@@ -72,12 +72,12 @@ export const FlagsEffectsHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FiberRow = ({ node }: { node: TreeNode }) => {
-  const effect = node.effect && node.effect !== 'normal' ? (node.effect as EffectKind) : undefined;
+  const { effect } = node;
   return (
     <li
       className={cx(
         'flex items-center gap-2 rounded-md py-1 pr-1.5',
-        indentByDepth[node.depth] ?? 'pl-12',
+        indentByDepth[node.depth],
         effect && 'bg-[var(--term-surface)]',
       )}
     >

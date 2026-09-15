@@ -1,5 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Code, MessageSquareWarning, Tag, User, Wrench } from 'lucide-react';
+import {
+  ArrowDown,
+  Code,
+  type LucideIcon,
+  MessageSquareWarning,
+  Tag,
+  User,
+  Wrench,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,17 +15,19 @@ import type { OwnerInfoCard, ReactElementOwnerDevInfoContent } from '../content'
 
 type Props = { content: ReactElementOwnerDevInfoContent['owner'] };
 
-const stepIconMap = {
+type DiagramStepId = ReactElementOwnerDevInfoContent['owner']['diagramSteps'][number]['id'];
+
+const stepIcon: Record<DiagramStepId, LucideIcon> = {
   parent: User,
   jsx: Code,
-  tag: Tag,
-} as const;
+  owner: Tag,
+};
 
-const cardIconMap = {
-  user: User,
-  message: MessageSquareWarning,
-  wrench: Wrench,
-} as const;
+const cardIcon: Record<OwnerInfoCard['id'], LucideIcon> = {
+  creator: User,
+  warning: MessageSquareWarning,
+  context: Wrench,
+};
 
 export const OwnerMeaningSection = ({ content }: Props) => (
   <section aria-labelledby="heading-owner" className="space-y-md scroll-mt-xl">
@@ -45,7 +55,7 @@ export const OwnerMeaningSection = ({ content }: Props) => (
         <ol className="flex flex-col gap-1">
           {content.diagramSteps.map((step, idx) => {
             const t = toneTokens[step.tone];
-            const Icon = stepIconMap[step.iconName];
+            const Icon = stepIcon[step.id];
             return (
               <li key={step.id} className="flex flex-col">
                 <article
@@ -93,7 +103,7 @@ export const OwnerMeaningSection = ({ content }: Props) => (
 
 const InfoCardView = ({ card }: { card: OwnerInfoCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = cardIconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

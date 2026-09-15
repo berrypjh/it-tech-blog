@@ -65,7 +65,6 @@ const ConceptCard = ({
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         t.border,
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">

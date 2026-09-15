@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Box, Hexagon } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -10,8 +10,6 @@ type Props = {
   elementFields: string[];
   fiberTitle: string;
   fiberFields: string[];
-  /** sm: Hero용 컴팩트, md: 본문 시각화용 */
-  size?: 'sm' | 'md';
 };
 
 const toObjectCode = (fields: string[]) => `{\n${fields.map((f) => `  ${f},`).join('\n')}\n}`;
@@ -25,7 +23,6 @@ export const ExpansionDiagram = ({
   elementFields,
   fiberTitle,
   fiberFields,
-  size = 'sm',
 }: Props) => (
   <>
     <div
@@ -34,6 +31,7 @@ export const ExpansionDiagram = ({
         'grid-cols-1 lg:grid-cols-[minmax(0,_0.78fr)_auto_minmax(0,_1.4fr)]',
         'gap-sm lg:gap-md',
       )}
+      aria-hidden="true"
     >
       <ObjectCard
         tone="emerald"
@@ -41,7 +39,6 @@ export const ExpansionDiagram = ({
         title={elementTitle}
         fields={elementFields}
         icon={<Box className="h-5 w-5" aria-hidden="true" />}
-        size={size}
       />
       <ExpansionArrow />
       <ObjectCard
@@ -50,15 +47,12 @@ export const ExpansionDiagram = ({
         title={fiberTitle}
         fields={fiberFields}
         icon={<Hexagon className="h-5 w-5" aria-hidden="true" />}
-        size={size}
         showCount
       />
     </div>
-    <p className="sr-only">
-      Element는 type, key, props 세 가지 필드만 가지지만, Fiber는 그 위에 트리 구조(child / sibling
-      / return), 업데이트 상태(memoizedState, updateQueue 등), 작업 상태(flags, lanes 등), alternate
-      등 훨씬 많은 필드를 추가로 가집니다.
-    </p>
+    <VisuallyHidden>
+      {`${elementTitle} (${elementFields.join(', ')}) → ${fiberTitle} (${fiberFields.join(', ')})`}
+    </VisuallyHidden>
   </>
 );
 
@@ -68,7 +62,6 @@ const ObjectCard = ({
   title,
   fields,
   icon,
-  size,
   showCount = false,
 }: {
   tone: ToneKey;
@@ -76,7 +69,6 @@ const ObjectCard = ({
   title: string;
   fields: string[];
   icon: React.ReactNode;
-  size: 'sm' | 'md';
   showCount?: boolean;
 }) => {
   const t = toneTokens[tone];
@@ -86,7 +78,7 @@ const ObjectCard = ({
         'flex flex-col gap-sm rounded-2xl border-2 min-w-0 h-full',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.fill.border,
-        size === 'sm' ? 'p-md' : 'p-md sm:p-lg',
+        'p-md sm:p-lg',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -100,13 +92,7 @@ const ObjectCard = ({
             >
               {eyebrow}
             </span>
-            <code
-              className={cx(
-                'font-mono font-extrabold tracking-tight',
-                size === 'sm' ? 'text-md' : 'text-lg',
-                t.text,
-              )}
-            >
+            <code className={cx('font-mono font-extrabold tracking-tight', 'text-lg', t.text)}>
               {title}
             </code>
           </div>

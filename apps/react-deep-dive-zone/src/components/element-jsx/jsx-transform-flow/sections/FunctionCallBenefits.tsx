@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Calculator, ShieldCheck, Sparkles, TreePine } from 'lucide-react';
+import { Calculator, type LucideIcon, ShieldCheck, Sparkles, TreePine } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { JsxTransformFlowContent } from '../content';
+import type { BenefitCard, JsxTransformFlowContent } from '../content';
 
 type Props = { content: JsxTransformFlowContent['benefits'] };
 
-const iconMap = {
-  tree: TreePine,
-  calculator: Calculator,
-  shieldCheck: ShieldCheck,
-} as const;
+const cardIcon: Record<BenefitCard['id'], LucideIcon> = {
+  data: TreePine,
+  'render-input': Calculator,
+  devmode: ShieldCheck,
+};
 
 export const FunctionCallBenefits = ({ content }: Props) => (
   <section aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const FunctionCallBenefits = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>

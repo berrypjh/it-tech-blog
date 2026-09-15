@@ -28,7 +28,7 @@ export const HostComponentConcept = ({ content }: Props) => (
       left={
         <div className="flex flex-col gap-sm p-md sm:p-lg">
           <PanelLabel>host tree</PanelLabel>
-          <ul className="flex flex-col gap-1.5" aria-label="Host fiber tree example">
+          <ul className="flex flex-col gap-1.5">
             {content.treeNodes.map((node) => (
               <li key={node.id}>
                 <TreeRow node={node} />

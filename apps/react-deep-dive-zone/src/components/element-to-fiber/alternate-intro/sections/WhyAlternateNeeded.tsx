@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { HelpCircle, Monitor, Pause, ShieldCheck } from 'lucide-react';
+import { HelpCircle, type LucideIcon, Monitor, Pause, ShieldCheck } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { AlternateFiberContent } from '../content';
+import type { AlternateFiberContent, WhyCard } from '../content';
 
 type Props = { content: AlternateFiberContent['why'] };
 
-const iconMap = {
-  monitor: Monitor,
-  pause: Pause,
-  shield: ShieldCheck,
-} as const;
+const cardIcon: Record<WhyCard['id'], LucideIcon> = {
+  'keep-screen': Monitor,
+  'mid-work': Pause,
+  'commit-hold': ShieldCheck,
+};
 
 export const WhyAlternateNeeded = ({ content }: Props) => (
   <section id="why" aria-labelledby="heading-why" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const WhyAlternateNeeded = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.accent} icon={<Icon className="h-5 w-5" />}>

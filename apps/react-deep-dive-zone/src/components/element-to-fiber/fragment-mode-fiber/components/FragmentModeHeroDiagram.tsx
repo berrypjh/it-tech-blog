@@ -1,11 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, Group, Hexagon, ShieldCheck, Type } from 'lucide-react';
+import { CheckCircle2, Group, Hexagon, type LucideIcon, ShieldCheck, Type } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FragmentModeFiberContent } from '../content';
 
-type Props = { content: FragmentModeFiberContent['hero']; className?: string };
+type Props = { content: FragmentModeFiberContent['hero'] };
 
 type Branch = {
   tone: ToneKey;
@@ -13,7 +15,7 @@ type Branch = {
   branchSubtitle: string;
   resultTitle: string;
   resultItems: string[];
-  BranchIcon: typeof Group;
+  BranchIcon: LucideIcon;
 };
 
 /**
@@ -21,7 +23,7 @@ type Branch = {
  * type 한 갈래가 Fragment / StrictMode 특수 타입으로 갈라지고,
  * 각자 Fragment Fiber / Mode Fiber 전용 경로로 이어지는 fork를 컴팩트하게 보여준다.
  */
-export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
+export const FragmentModeHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.typeLabel} → ${content.fragmentTitle} ${content.fragmentSubtitle} → ${content.fragmentResultTitle}, ${content.strictTitle} ${content.strictSubtitle} → ${content.modeResultTitle}`;
 
   const branches: Branch[] = [
@@ -44,19 +46,7 @@ export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
   ];
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm" aria-hidden="true">
         <TypeStartCard label={content.typeLabel} />
 
@@ -68,7 +58,7 @@ export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
           ))}
         </div>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -155,12 +145,3 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
     </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

@@ -25,13 +25,8 @@ export const FunctionClassHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">
-          <code className="font-mono text-[var(--term-accent)]">type</code>이 함수라고 해서
-        </span>
-        <span className="block">
-          항상 <code className="font-mono text-[var(--term-accent)]">Function Component</code>는
-          아닙니다.
-        </span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>

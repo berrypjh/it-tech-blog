@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type IdentityFieldKey = 'tag' | 'key' | 'elementType' | 'type';
 
 export type IdentityField = {
@@ -19,7 +17,6 @@ export type QuickSummaryCard = {
   question: string;
   description: string;
   tone: ToneKey;
-  iconName: 'cube' | 'key' | 'code' | 'target';
 };
 
 export type WorkTagCard = {
@@ -42,10 +39,9 @@ export type ExampleMapping = {
 };
 
 export type MappingCard = {
-  id: string;
+  id: 'div' | 'my-button' | 'fragment';
   code: string;
   tone: ToneKey;
-  iconName: 'cube' | 'rocket' | 'puzzle';
   rows: { field: IdentityFieldKey; value: string }[];
 };
 
@@ -122,7 +118,6 @@ export type FiberIdentityFieldsContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       files: string[];
       lookForLabel: string;
@@ -194,7 +189,6 @@ const ko: FiberIdentityFieldsContent = {
         question: '이 Fiber는 어떤 종류인가?',
         description: 'Fiber의 WorkTag 값을 가지며, 렌더링 처리 경로를 결정합니다.',
         tone: 'sky',
-        iconName: 'cube',
       },
       {
         id: 'key',
@@ -202,7 +196,6 @@ const ko: FiberIdentityFieldsContent = {
         question: '형제 목록에서 누구인가?',
         description: '같은 부모를 가진 형제들 사이의 고유 식별자로 사용됩니다.',
         tone: 'emerald',
-        iconName: 'key',
       },
       {
         id: 'elementType',
@@ -210,7 +203,6 @@ const ko: FiberIdentityFieldsContent = {
         question: '원래 Element의 type은 무엇이었나?',
         description: 'Element가 처음 전달한 type을 그대로 보관합니다.',
         tone: 'violet',
-        iconName: 'code',
       },
       {
         id: 'type',
@@ -218,7 +210,6 @@ const ko: FiberIdentityFieldsContent = {
         question: '실제 렌더링 대상은 무엇인가?',
         description: 'React가 실제로 렌더링할 대상 — 문자열, 함수, 클래스 등이 됩니다.',
         tone: 'amber',
-        iconName: 'target',
       },
     ],
   },
@@ -300,7 +291,6 @@ const ko: FiberIdentityFieldsContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       files: [
         'packages/react-reconciler/src/ReactInternalTypes.js',
@@ -335,7 +325,6 @@ const ko: FiberIdentityFieldsContent = {
         id: 'div',
         code: '<div />',
         tone: 'emerald',
-        iconName: 'cube',
         rows: [
           { field: 'tag', value: 'HostComponent (5)' },
           { field: 'key', value: 'null' },
@@ -347,7 +336,6 @@ const ko: FiberIdentityFieldsContent = {
         id: 'my-button',
         code: '<MyButton />',
         tone: 'violet',
-        iconName: 'rocket',
         rows: [
           { field: 'tag', value: 'FunctionComponent (0)' },
           { field: 'key', value: 'null' },
@@ -359,7 +347,6 @@ const ko: FiberIdentityFieldsContent = {
         id: 'fragment',
         code: '<>...</>',
         tone: 'amber',
-        iconName: 'puzzle',
         rows: [
           { field: 'tag', value: 'Fragment (7)' },
           { field: 'key', value: 'null' },
@@ -414,7 +401,6 @@ const en: FiberIdentityFieldsContent = {
         question: 'What kind of Fiber is this?',
         description: 'Holds a WorkTag value that decides which render path React uses.',
         tone: 'sky',
-        iconName: 'cube',
       },
       {
         id: 'key',
@@ -422,7 +408,6 @@ const en: FiberIdentityFieldsContent = {
         question: 'Which sibling is this?',
         description: 'Unique identifier among siblings that share the same parent.',
         tone: 'emerald',
-        iconName: 'key',
       },
       {
         id: 'elementType',
@@ -430,7 +415,6 @@ const en: FiberIdentityFieldsContent = {
         question: 'What was the Element’s original type?',
         description: 'Preserves the type the Element was created with.',
         tone: 'violet',
-        iconName: 'code',
       },
       {
         id: 'type',
@@ -438,7 +422,6 @@ const en: FiberIdentityFieldsContent = {
         question: 'What does React actually render?',
         description: 'The real render target — a string, function, class, or other value.',
         tone: 'amber',
-        iconName: 'target',
       },
     ],
   },
@@ -521,7 +504,6 @@ const en: FiberIdentityFieldsContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'Files',
       files: [
         'packages/react-reconciler/src/ReactInternalTypes.js',
@@ -556,7 +538,6 @@ const en: FiberIdentityFieldsContent = {
         id: 'div',
         code: '<div />',
         tone: 'emerald',
-        iconName: 'cube',
         rows: [
           { field: 'tag', value: 'HostComponent (5)' },
           { field: 'key', value: 'null' },
@@ -568,7 +549,6 @@ const en: FiberIdentityFieldsContent = {
         id: 'my-button',
         code: '<MyButton />',
         tone: 'violet',
-        iconName: 'rocket',
         rows: [
           { field: 'tag', value: 'FunctionComponent (0)' },
           { field: 'key', value: 'null' },
@@ -580,7 +560,6 @@ const en: FiberIdentityFieldsContent = {
         id: 'fragment',
         code: '<>...</>',
         tone: 'amber',
-        iconName: 'puzzle',
         rows: [
           { field: 'tag', value: 'Fragment (7)' },
           { field: 'key', value: 'null' },

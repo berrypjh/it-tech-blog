@@ -2,15 +2,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type FiberKind = 'hostRoot' | 'hostComponent' | 'classComponent';
 
 export type TargetCard = {
   id: FiberKind;
   title: string;
   subtitle: string;
-  iconName: 'home' | 'cube' | 'user';
   tone: ToneKey;
 };
 
@@ -21,7 +18,6 @@ export type ByTagCard = {
   body: string;
   badge: string;
   tone: ToneKey;
-  iconName: 'home' | 'cube' | 'user';
 };
 
 export type FlowStep = {
@@ -32,18 +28,16 @@ export type FlowStep = {
 };
 
 export type ReasonCard = {
-  id: string;
+  id: 'host-root' | 'by-tag' | 'commit-phase';
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'alert' | 'workflow' | 'link';
 };
 
 export type FiberStateNodeContent = {
   hero: {
     badge: string;
     title: { line1: string; line2: string; line3: string };
-    emphasis: string;
     description: string;
     cardLabel: string;
     fiberFields: { label: string; isStateNode?: boolean }[];
@@ -90,7 +84,6 @@ export type FiberStateNodeContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       file: string;
       lookForLabel: string;
@@ -99,7 +92,6 @@ export type FiberStateNodeContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -138,7 +130,6 @@ const ko: FiberStateNodeContent = {
       line2: '외부 대상과 연결되는',
       line3: '자리입니다.',
     },
-    emphasis: '외부 대상과 연결되는',
     description:
       '어떤 Fiber는 루트 객체와, 어떤 Fiber는 렌더러의 host instance와, 어떤 Fiber는 내부 인스턴스와 연결됩니다.',
     cardLabel: 'Fiber',
@@ -156,21 +147,18 @@ const ko: FiberStateNodeContent = {
         id: 'hostRoot',
         title: 'Root 객체',
         subtitle: 'HostRoot Fiber',
-        iconName: 'home',
         tone: 'sky',
       },
       {
         id: 'hostComponent',
         title: 'Host Instance',
         subtitle: 'HostComponent Fiber',
-        iconName: 'cube',
         tone: 'emerald',
       },
       {
         id: 'classComponent',
         title: 'Class Instance',
         subtitle: 'ClassComponent Fiber',
-        iconName: 'user',
         tone: 'violet',
       },
     ],
@@ -199,7 +187,6 @@ const ko: FiberStateNodeContent = {
         body: '루트 Fiber는 전체 트리를 관리하는 FiberRoot 객체와 연결됩니다.',
         badge: 'tag: HostRoot',
         tone: 'sky',
-        iconName: 'home',
       },
       {
         id: 'hostComponent',
@@ -208,7 +195,6 @@ const ko: FiberStateNodeContent = {
         body: 'DOM 노드 또는 네이티브 노드 등 실제 렌더링 대상과 연결됩니다.',
         badge: 'tag: HostComponent',
         tone: 'emerald',
-        iconName: 'cube',
       },
       {
         id: 'classComponent',
@@ -217,7 +203,6 @@ const ko: FiberStateNodeContent = {
         body: '클래스 컴포넌트의 실제 인스턴스와 연결됩니다.',
         badge: 'tag: ClassComponent',
         tone: 'violet',
-        iconName: 'user',
       },
     ],
   },
@@ -259,7 +244,6 @@ const ko: FiberStateNodeContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       file: 'packages/react-reconciler/src/ReactFiberRoot.js',
       lookForLabel: '볼 것',
@@ -269,7 +253,6 @@ const ko: FiberStateNodeContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
     },
     code: {
-      fileName: 'ReactFiberRoot.js',
       language: 'JavaScript',
       content: checkpointCode,
     },
@@ -284,21 +267,18 @@ const ko: FiberStateNodeContent = {
         title: 'DOM으로 단정하면 HostRoot를 설명할 수 없다',
         body: '루트 Fiber의 stateNode는 DOM이 아니라 FiberRoot 객체다.',
         tone: 'sky',
-        iconName: 'alert',
       },
       {
         id: 'by-tag',
         title: 'Fiber tag마다 연결 대상이 달라진다는 점을 놓치게 된다',
         body: 'HostComponent, ClassComponent 등 모두 다른 대상을 가리킨다.',
         tone: 'emerald',
-        iconName: 'workflow',
       },
       {
         id: 'commit-phase',
         title: 'Commit Phase에서 host instance 연결을 이해하기 어려워진다',
         body: 'stateNode가 실제 렌더링 대상과 언제 연결되는지 흐름을 놓치게 된다.',
         tone: 'violet',
-        iconName: 'link',
       },
     ],
   },
@@ -320,7 +300,6 @@ const en: FiberStateNodeContent = {
       line2: 'where a Fiber connects',
       line3: 'to something external.',
     },
-    emphasis: 'where a Fiber connects',
     description:
       'Some Fibers connect to a root object, some to a renderer host instance, and some to an internal instance.',
     cardLabel: 'Fiber',
@@ -338,21 +317,18 @@ const en: FiberStateNodeContent = {
         id: 'hostRoot',
         title: 'Root object',
         subtitle: 'HostRoot Fiber',
-        iconName: 'home',
         tone: 'sky',
       },
       {
         id: 'hostComponent',
         title: 'Host instance',
         subtitle: 'HostComponent Fiber',
-        iconName: 'cube',
         tone: 'emerald',
       },
       {
         id: 'classComponent',
         title: 'Class instance',
         subtitle: 'ClassComponent Fiber',
-        iconName: 'user',
         tone: 'violet',
       },
     ],
@@ -381,7 +357,6 @@ const en: FiberStateNodeContent = {
         body: 'The root Fiber connects to the FiberRoot object that manages the whole tree.',
         badge: 'tag: HostRoot',
         tone: 'sky',
-        iconName: 'home',
       },
       {
         id: 'hostComponent',
@@ -390,7 +365,6 @@ const en: FiberStateNodeContent = {
         body: 'Connects to the actual render target — DOM nodes, native nodes, etc.',
         badge: 'tag: HostComponent',
         tone: 'emerald',
-        iconName: 'cube',
       },
       {
         id: 'classComponent',
@@ -399,7 +373,6 @@ const en: FiberStateNodeContent = {
         body: 'Connects to the real instance of the class component.',
         badge: 'tag: ClassComponent',
         tone: 'violet',
-        iconName: 'user',
       },
     ],
   },
@@ -441,7 +414,6 @@ const en: FiberStateNodeContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'File',
       file: 'packages/react-reconciler/src/ReactFiberRoot.js',
       lookForLabel: 'Look for',
@@ -451,7 +423,6 @@ const en: FiberStateNodeContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.js',
     },
     code: {
-      fileName: 'ReactFiberRoot.js',
       language: 'JavaScript',
       content: checkpointCode,
     },
@@ -466,21 +437,18 @@ const en: FiberStateNodeContent = {
         title: 'Calling it a DOM node breaks HostRoot',
         body: 'The root Fiber’s stateNode is the FiberRoot object, not a DOM node.',
         tone: 'sky',
-        iconName: 'alert',
       },
       {
         id: 'by-tag',
         title: 'You miss that targets change per Fiber tag',
         body: 'HostComponent and ClassComponent each point to different things.',
         tone: 'emerald',
-        iconName: 'workflow',
       },
       {
         id: 'commit-phase',
         title: 'You lose the host-instance link in commit phase',
         body: 'You can no longer track when stateNode connects to the real render target.',
         tone: 'violet',
-        iconName: 'link',
       },
     ],
   },

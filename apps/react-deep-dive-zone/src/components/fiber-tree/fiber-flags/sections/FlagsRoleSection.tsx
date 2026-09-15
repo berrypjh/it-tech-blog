@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Anchor, Eye, Flag, Move, Pencil } from 'lucide-react';
+import { Anchor, Eye, Flag, type LucideIcon, Move, Pencil } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -8,7 +8,7 @@ import type { FiberFlagsContent, FlagMiniCard } from '../content';
 
 type Props = { content: FiberFlagsContent['flagsRole'] };
 
-const iconMap: Record<FlagMiniCard['id'], React.ComponentType<{ className?: string }>> = {
+const flagIcon: Record<FlagMiniCard['id'], LucideIcon> = {
   placement: Move,
   update: Pencil,
   ref: Anchor,
@@ -67,7 +67,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
 );
 
 const MiniCard = ({ card }: { card: FlagMiniCard }) => {
-  const Icon = iconMap[card.id];
+  const Icon = flagIcon[card.id];
   return (
     <article
       className={cx(

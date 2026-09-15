@@ -4,13 +4,12 @@ import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
 export type HeroFlowItem = {
-  id: string;
+  id: 'jsx' | 'runtime' | 'element' | 'fiber';
   title: string;
   iconHint: string;
   body: string;
   highlighted?: boolean;
   tone: ToneKey;
-  iconName: 'code' | 'cube' | 'document' | 'tree';
 };
 
 export type FinalFlowStep = {
@@ -32,11 +31,10 @@ export type CompareRow = {
 };
 
 export type SummaryCard = {
-  id: string;
+  id: 's1' | 's2' | 's3' | 's4' | 's5';
   number: string;
   title: string;
   body: string;
-  iconName: 'code' | 'cube' | 'document' | 'layers' | 'tree';
   tone: ToneKey;
 };
 
@@ -119,7 +117,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         iconHint: '코드 문법',
         body: '개발자가 작성하는 UI 표현 문법입니다.',
         tone: 'sky',
-        iconName: 'code',
       },
       {
         id: 'runtime',
@@ -127,7 +124,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         iconHint: '변환 함수',
         body: 'jsx / jsxs / jsxDEV 또는 createElement 호출로 이어집니다.',
         tone: 'violet',
-        iconName: 'cube',
       },
       {
         id: 'element',
@@ -136,7 +132,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         body: 'React가 읽는 계산의 첫 입력값입니다.',
         highlighted: true,
         tone: 'blue',
-        iconName: 'document',
       },
       {
         id: 'fiber',
@@ -144,7 +139,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         iconHint: '작업 단위',
         body: '렌더링을 준비하기 위한 내부 작업 단위입니다.',
         tone: 'teal',
-        iconName: 'tree',
       },
     ],
   },
@@ -271,7 +265,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         number: '1',
         title: 'JSX는 HTML이 아니다.',
         body: 'JSX는 JavaScript 안의 문법 확장이며, 브라우저가 직접 실행하지 않습니다.',
-        iconName: 'code',
         tone: 'sky',
       },
       {
@@ -279,7 +272,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         number: '2',
         title: 'JSX는 runtime 호출로 변환된다.',
         body: '컴파일러는 jsx / jsxs / jsxDEV 또는 createElement 호출로 바꿉니다.',
-        iconName: 'cube',
         tone: 'violet',
       },
       {
@@ -287,7 +279,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         number: '3',
         title: '그 결과 React Element가 만들어진다.',
         body: 'type, key, props 등의 정보를 담은 설명 객체가 생성됩니다.',
-        iconName: 'document',
         tone: 'blue',
       },
       {
@@ -295,7 +286,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         number: '4',
         title: 'Element는 type, key, props 중심 구조다.',
         body: '렌더링에 필요한 정보를 담고 있는 불변에 가까운 데이터 구조입니다.',
-        iconName: 'layers',
         tone: 'amber',
       },
       {
@@ -303,7 +293,6 @@ const ko: ReactElementSummaryBeforeFiberContent = {
         number: '5',
         title: 'Element는 이후 Fiber 생성으로 이어진다.',
         body: 'React는 Element를 바탕으로 작업 단위인 Fiber 트리를 만듭니다.',
-        iconName: 'tree',
         tone: 'teal',
       },
     ],
@@ -388,7 +377,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         iconHint: 'Code syntax',
         body: 'The UI-describing syntax developers write.',
         tone: 'sky',
-        iconName: 'code',
       },
       {
         id: 'runtime',
@@ -396,7 +384,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         iconHint: 'Transform calls',
         body: 'Becomes jsx / jsxs / jsxDEV — or createElement — calls.',
         tone: 'violet',
-        iconName: 'cube',
       },
       {
         id: 'element',
@@ -405,7 +392,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         body: 'The first input React reads to start computing.',
         highlighted: true,
         tone: 'blue',
-        iconName: 'document',
       },
       {
         id: 'fiber',
@@ -413,7 +399,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         iconHint: 'Unit of work',
         body: 'The internal unit of work that prepares rendering.',
         tone: 'teal',
-        iconName: 'tree',
       },
     ],
   },
@@ -540,7 +525,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         number: '1',
         title: 'JSX is not HTML.',
         body: 'JSX is a JS syntax extension — the browser does not run it directly.',
-        iconName: 'code',
         tone: 'sky',
       },
       {
@@ -548,7 +532,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         number: '2',
         title: 'JSX is compiled into runtime calls.',
         body: 'A compiler turns it into jsx / jsxs / jsxDEV or createElement calls.',
-        iconName: 'cube',
         tone: 'violet',
       },
       {
@@ -556,7 +539,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         number: '3',
         title: 'A React Element is produced.',
         body: 'A description object holding type, key, props, and friends.',
-        iconName: 'document',
         tone: 'blue',
       },
       {
@@ -564,7 +546,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         number: '4',
         title: 'The Element is shaped around type / key / props.',
         body: 'A nearly-immutable data structure with everything render needs.',
-        iconName: 'layers',
         tone: 'amber',
       },
       {
@@ -572,7 +553,6 @@ const en: ReactElementSummaryBeforeFiberContent = {
         number: '5',
         title: 'Elements lead into Fiber creation.',
         body: 'React uses Elements to build the Fiber tree of work units.',
-        iconName: 'tree',
         tone: 'teal',
       },
     ],

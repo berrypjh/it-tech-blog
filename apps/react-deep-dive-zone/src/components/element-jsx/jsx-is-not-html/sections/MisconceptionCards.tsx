@@ -1,23 +1,22 @@
-import { Boxes, HelpCircle, Monitor, Network } from 'lucide-react';
+import { Boxes, HelpCircle, type LucideIcon, Monitor, Network } from 'lucide-react';
 
-import type { MisconceptionItem } from '../../../shared/misconception';
-import { MisconceptionCardGrid } from '../../../shared/misconception';
+import { MisconceptionCardGrid, type MisconceptionItem } from '../../../shared/misconception';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { JsxIsNotHtmlContent } from '../content';
+import type { JsxIsNotHtmlContent, MisconceptionCard } from '../content';
 
 type Props = { content: JsxIsNotHtmlContent['misconception'] };
 
-const sideIcon = {
-  box: Boxes,
-  network: Network,
-  browser: Monitor,
-} as const;
+const sideIcon: Record<MisconceptionCard['id'], LucideIcon> = {
+  'jsx-is-html': Boxes,
+  'jsx-is-dom': Network,
+  'jsx-renders-directly': Monitor,
+};
 
 export const MisconceptionCards = ({ content }: Props) => {
   const items: MisconceptionItem[] = content.cards.map((card) => ({
     id: card.id,
-    icon: sideIcon[card.iconName],
+    icon: sideIcon[card.id],
     accentClassName: toneTokens[card.iconTone].text,
     badgeWrong: card.badgeWrong,
     wrong: card.wrong,

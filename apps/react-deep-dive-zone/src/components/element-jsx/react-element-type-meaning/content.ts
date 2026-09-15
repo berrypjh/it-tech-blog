@@ -11,7 +11,6 @@ export type HeroDiagramItem = {
   category: string;
   body: string;
   tone: ToneKey;
-  iconName: 'tag' | 'user' | 'sparkles';
 };
 
 export type TypeKindCard = {
@@ -22,7 +21,6 @@ export type TypeKindCard = {
   body: string;
   checks: string[];
   tone: ToneKey;
-  iconName: 'tag' | 'user' | 'sparkles';
 };
 
 export type JsxRow = {
@@ -36,12 +34,11 @@ export type JsxRow = {
 };
 
 export type FiberFlowStep = {
-  id: string;
+  id: 'element-type' | 'create-fiber' | 'fibers';
   number: string;
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'box' | 'workflow' | 'atom';
   chips?: string[];
 };
 
@@ -51,6 +48,7 @@ export type ReactElementTypeMeaningContent = {
     title: { line1: string; line2: string };
     description: string;
     diagramTitle: string;
+    shapeCode: string;
     diagramItems: HeroDiagramItem[];
     bottomNoteTitle: string;
     bottomNoteBody: string;
@@ -109,6 +107,12 @@ const ko: ReactElementTypeMeaningContent = {
     description:
       '문자열 태그인지, 사용자 정의 컴포넌트인지, React 내부의 특별한 타입인지 — type이 이후 렌더링 방향을 결정합니다.',
     diagramTitle: 'Element.type 분류도',
+    shapeCode: `const element = {
+  $$typeof: REACT_ELEMENT_TYPE,
+  type, // ← 무엇을 렌더할지
+  key,
+  props,
+};`,
     diagramItems: [
       {
         id: 'host',
@@ -117,7 +121,6 @@ const ko: ReactElementTypeMeaningContent = {
         category: 'Host Component',
         body: '브라우저가 이해하는 기본 태그입니다.',
         tone: 'cyan',
-        iconName: 'tag',
       },
       {
         id: 'custom',
@@ -126,7 +129,6 @@ const ko: ReactElementTypeMeaningContent = {
         category: 'Function / Class',
         body: '사용자가 만든 컴포넌트입니다.',
         tone: 'violet',
-        iconName: 'user',
       },
       {
         id: 'special',
@@ -135,7 +137,6 @@ const ko: ReactElementTypeMeaningContent = {
         category: 'Special Type',
         body: 'React가 전용 로직으로 처리하는 타입입니다.',
         tone: 'amber',
-        iconName: 'sparkles',
       },
     ],
     bottomNoteTitle: 'Render 방향 결정의 핵심 입력',
@@ -155,7 +156,6 @@ const ko: ReactElementTypeMeaningContent = {
         body: '브라우저가 이해하는 기본 태그입니다.',
         checks: ['문자열 형태', 'DOM node로 매핑', "예: 'div', 'span', 'button'"],
         tone: 'cyan',
-        iconName: 'tag',
       },
       {
         id: 'custom',
@@ -165,7 +165,6 @@ const ko: ReactElementTypeMeaningContent = {
         body: '사용자가 정의한 컴포넌트입니다.',
         checks: ['함수나 클래스', 'React가 컴포넌트 로직을 실행', '예: function MyButton() {}'],
         tone: 'violet',
-        iconName: 'user',
       },
       {
         id: 'special',
@@ -179,7 +178,6 @@ const ko: ReactElementTypeMeaningContent = {
           '예: Suspense, Fragment, Context 등',
         ],
         tone: 'amber',
-        iconName: 'sparkles',
       },
     ],
   },
@@ -246,7 +244,6 @@ const ko: ReactElementTypeMeaningContent = {
         title: 'Element.type',
         body: 'React Element 안의 type 값',
         tone: 'sky',
-        iconName: 'box',
       },
       {
         id: 'create-fiber',
@@ -254,7 +251,6 @@ const ko: ReactElementTypeMeaningContent = {
         title: 'createFiberFromTypeAndProps',
         body: 'type을 보고 Fiber의 종류를 결정',
         tone: 'violet',
-        iconName: 'workflow',
       },
       {
         id: 'fibers',
@@ -262,7 +258,6 @@ const ko: ReactElementTypeMeaningContent = {
         title: 'Host / Function / Class / Fragment Fiber',
         body: '각 타입에 맞는 Fiber가 생성되어 이후 렌더링 계산으로 이어집니다.',
         tone: 'teal',
-        iconName: 'atom',
         chips: ['Host', 'Function', 'Class', 'Fragment'],
       },
     ],
@@ -288,6 +283,12 @@ const en: ReactElementTypeMeaningContent = {
     description:
       'A string tag, a user-defined component, or a React-internal special type — type decides the path the rest of rendering takes.',
     diagramTitle: 'Element.type categories',
+    shapeCode: `const element = {
+  $$typeof: REACT_ELEMENT_TYPE,
+  type, // ← what to render
+  key,
+  props,
+};`,
     diagramItems: [
       {
         id: 'host',
@@ -296,7 +297,6 @@ const en: ReactElementTypeMeaningContent = {
         category: 'Host Component',
         body: 'A built-in tag the browser understands.',
         tone: 'cyan',
-        iconName: 'tag',
       },
       {
         id: 'custom',
@@ -305,7 +305,6 @@ const en: ReactElementTypeMeaningContent = {
         category: 'Function / Class',
         body: 'A component the user wrote.',
         tone: 'violet',
-        iconName: 'user',
       },
       {
         id: 'special',
@@ -314,7 +313,6 @@ const en: ReactElementTypeMeaningContent = {
         category: 'Special Type',
         body: 'A type React handles with dedicated logic.',
         tone: 'amber',
-        iconName: 'sparkles',
       },
     ],
     bottomNoteTitle: 'The key render-routing input',
@@ -334,7 +332,6 @@ const en: ReactElementTypeMeaningContent = {
         body: 'A built-in tag the browser understands.',
         checks: ['Stored as a string', 'Maps to a DOM node', "Examples: 'div', 'span', 'button'"],
         tone: 'cyan',
-        iconName: 'tag',
       },
       {
         id: 'custom',
@@ -348,7 +345,6 @@ const en: ReactElementTypeMeaningContent = {
           'Example: function MyButton() {}',
         ],
         tone: 'violet',
-        iconName: 'user',
       },
       {
         id: 'special',
@@ -362,7 +358,6 @@ const en: ReactElementTypeMeaningContent = {
           'Examples: Suspense, Fragment, Context, ...',
         ],
         tone: 'amber',
-        iconName: 'sparkles',
       },
     ],
   },
@@ -429,7 +424,6 @@ const en: ReactElementTypeMeaningContent = {
         title: 'Element.type',
         body: 'The type value inside a React Element',
         tone: 'sky',
-        iconName: 'box',
       },
       {
         id: 'create-fiber',
@@ -437,7 +431,6 @@ const en: ReactElementTypeMeaningContent = {
         title: 'createFiberFromTypeAndProps',
         body: 'Reads type and picks the Fiber kind',
         tone: 'violet',
-        iconName: 'workflow',
       },
       {
         id: 'fibers',
@@ -445,7 +438,6 @@ const en: ReactElementTypeMeaningContent = {
         title: 'Host / Function / Class / Fragment Fiber',
         body: 'Each type yields its own Fiber, feeding into rendering computation.',
         tone: 'teal',
-        iconName: 'atom',
         chips: ['Host', 'Function', 'Class', 'Fragment'],
       },
     ],

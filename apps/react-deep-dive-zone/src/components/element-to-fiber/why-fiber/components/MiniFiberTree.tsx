@@ -1,17 +1,11 @@
-import { cx } from '@berrypjh/react-ui';
-
 import { toneTokens } from '../../../shared/tones';
 
 /**
  * 다음 챕터 예고용 미니 Fiber tree 다이어그램.
  * 상단 violet root → 중간 emerald → 하단 sky cubes. 색은 톤의 text 색(currentColor)을 따른다.
  */
-export const MiniFiberTree = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 200 160"
-    aria-hidden="true"
-    className={cx('w-full h-auto max-w-[260px]', className)}
-  >
+export const MiniFiberTree = () => (
+  <svg viewBox="0 0 200 160" aria-hidden="true" className="w-full h-auto max-w-[260px]">
     {/* Root + 그 아래 링크 — violet */}
     <g className={toneTokens.violet.text} fill="currentColor" stroke="currentColor">
       <line x1="100" y1="36" x2="50" y2="84" strokeWidth="2" strokeOpacity="0.6" />

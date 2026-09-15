@@ -3,33 +3,28 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
-export type GroupTone = 'sky' | 'emerald' | 'violet' | 'amber' | 'indigo' | 'teal';
-
 export type FieldGroup = {
   id: 'identity' | 'connection' | 'input' | 'state-queue' | 'flags' | 'scheduling';
   title: string;
   fields: string[];
   description: string;
-  tone: GroupTone;
-  iconName: 'fingerprint' | 'network' | 'database' | 'list' | 'flag' | 'zap';
+  tone: ToneKey;
 };
 
 export type FlowStep = {
-  id: string;
-  number: string;
-  title: string;
-  body: string;
-  tone: GroupTone | 'blue';
-  iconName: 'cube' | 'pulse' | 'zap' | 'pencil' | 'flag' | 'shield';
-};
-
-export type PreviewItem = {
-  id: string;
+  id: 'fiber' | 'update' | 'lanes' | 'render' | 'flags' | 'commit';
   number: string;
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'send' | 'list' | 'compass' | 'arrowUp';
+};
+
+export type PreviewItem = {
+  id: 'dispatchSetState' | 'enqueueUpdate' | 'scheduleUpdateOnFiber' | 'rootBubble';
+  number: string;
+  title: string;
+  body: string;
+  tone: ToneKey;
 };
 
 export type FiberCentralContent = {
@@ -98,7 +93,6 @@ const ko: FiberCentralContent = {
         fields: ['tag', 'key', 'elementType', 'type'],
         description: '이 Fiber가 누구인지 식별합니다.',
         tone: 'sky',
-        iconName: 'fingerprint',
       },
       {
         id: 'connection',
@@ -106,7 +100,6 @@ const ko: FiberCentralContent = {
         fields: ['return', 'child', 'sibling'],
         description: 'Fiber 트리 구조를 연결합니다.',
         tone: 'emerald',
-        iconName: 'network',
       },
       {
         id: 'input',
@@ -114,7 +107,6 @@ const ko: FiberCentralContent = {
         fields: ['pendingProps', 'memoizedProps'],
         description: '새 입력과 이전 입력을 구분합니다.',
         tone: 'violet',
-        iconName: 'database',
       },
       {
         id: 'state-queue',
@@ -122,7 +114,6 @@ const ko: FiberCentralContent = {
         fields: ['memoizedState', 'updateQueue'],
         description: '현재 상태와 대기 중인 업데이트를 관리합니다.',
         tone: 'amber',
-        iconName: 'list',
       },
       {
         id: 'flags',
@@ -130,7 +121,6 @@ const ko: FiberCentralContent = {
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: '변경 효과와 삭제 정보를 표시합니다.',
         tone: 'indigo',
-        iconName: 'flag',
       },
       {
         id: 'scheduling',
@@ -138,7 +128,6 @@ const ko: FiberCentralContent = {
         fields: ['lanes', 'childLanes', 'alternate'],
         description: '우선순위 정보와 현재/다음 버전 연결을 관리합니다.',
         tone: 'teal',
-        iconName: 'zap',
       },
     ],
   },
@@ -153,7 +142,6 @@ const ko: FiberCentralContent = {
         title: 'Fiber',
         body: 'React는 이 객체 하나로 트리 노드, 상태, 업데이트, effect, 우선순위, 버전 정보를 모두 담습니다.',
         tone: 'sky',
-        iconName: 'cube',
       },
       {
         id: 'update',
@@ -161,7 +149,6 @@ const ko: FiberCentralContent = {
         title: '업데이트 발생',
         body: '사용자의 setState, props 변경, 이벤트 등이 발생합니다.',
         tone: 'emerald',
-        iconName: 'pulse',
       },
       {
         id: 'lanes',
@@ -169,7 +156,6 @@ const ko: FiberCentralContent = {
         title: 'lanes 표시',
         body: 'Fiber의 우선순위가 lanes / childLanes에 기록됩니다.',
         tone: 'violet',
-        iconName: 'zap',
       },
       {
         id: 'render',
@@ -177,7 +163,6 @@ const ko: FiberCentralContent = {
         title: 'render phase에서 비교',
         body: '새 입력(pendingProps), update 등과 이전 결과를 비교하여 새 Fiber 트리를 계산합니다.',
         tone: 'amber',
-        iconName: 'pencil',
       },
       {
         id: 'flags',
@@ -185,7 +170,6 @@ const ko: FiberCentralContent = {
         title: 'flags 기록',
         body: '변경이 필요한 부분에 flags / subtreeFlags / deletions를 남깁니다.',
         tone: 'indigo',
-        iconName: 'flag',
       },
       {
         id: 'commit',
@@ -193,7 +177,6 @@ const ko: FiberCentralContent = {
         title: 'commit phase에서 실제 반영',
         body: 'Commit 단계에서 기록된 effect를 실제 DOM/Host 환경에 반영합니다.',
         tone: 'blue',
-        iconName: 'shield',
       },
     ],
   },
@@ -211,7 +194,6 @@ const ko: FiberCentralContent = {
         title: 'dispatchSetState',
         body: '사용자의 setState 호출 지점',
         tone: 'violet',
-        iconName: 'send',
       },
       {
         id: 'enqueueUpdate',
@@ -219,7 +201,6 @@ const ko: FiberCentralContent = {
         title: 'enqueueUpdate',
         body: 'update 객체를 updateQueue에 연결',
         tone: 'sky',
-        iconName: 'list',
       },
       {
         id: 'scheduleUpdateOnFiber',
@@ -227,7 +208,6 @@ const ko: FiberCentralContent = {
         title: 'scheduleUpdateOnFiber',
         body: '해당 Fiber와 루트에 우선순위(lanes)를 표시',
         tone: 'emerald',
-        iconName: 'compass',
       },
       {
         id: 'rootBubble',
@@ -235,7 +215,6 @@ const ko: FiberCentralContent = {
         title: 'root까지 올라가기',
         body: '상위 Fiber와 root까지 우선순위 전파',
         tone: 'amber',
-        iconName: 'arrowUp',
       },
     ],
   },
@@ -284,7 +263,6 @@ const en: FiberCentralContent = {
         fields: ['tag', 'key', 'elementType', 'type'],
         description: 'Identifies what this Fiber represents.',
         tone: 'sky',
-        iconName: 'fingerprint',
       },
       {
         id: 'connection',
@@ -292,7 +270,6 @@ const en: FiberCentralContent = {
         fields: ['return', 'child', 'sibling'],
         description: 'Connects the Fiber tree.',
         tone: 'emerald',
-        iconName: 'network',
       },
       {
         id: 'input',
@@ -300,7 +277,6 @@ const en: FiberCentralContent = {
         fields: ['pendingProps', 'memoizedProps'],
         description: 'Separates new input from prior input.',
         tone: 'violet',
-        iconName: 'database',
       },
       {
         id: 'state-queue',
@@ -308,7 +284,6 @@ const en: FiberCentralContent = {
         fields: ['memoizedState', 'updateQueue'],
         description: 'Manages current state and pending updates.',
         tone: 'amber',
-        iconName: 'list',
       },
       {
         id: 'flags',
@@ -316,7 +291,6 @@ const en: FiberCentralContent = {
         fields: ['flags', 'subtreeFlags', 'deletions'],
         description: 'Marks change effects and deletion info.',
         tone: 'indigo',
-        iconName: 'flag',
       },
       {
         id: 'scheduling',
@@ -324,7 +298,6 @@ const en: FiberCentralContent = {
         fields: ['lanes', 'childLanes', 'alternate'],
         description: 'Holds priority info and the current/next version link.',
         tone: 'teal',
-        iconName: 'zap',
       },
     ],
   },
@@ -339,7 +312,6 @@ const en: FiberCentralContent = {
         title: 'Fiber',
         body: 'React stores tree node, state, updates, effects, priority, and version info in this single object.',
         tone: 'sky',
-        iconName: 'cube',
       },
       {
         id: 'update',
@@ -347,7 +319,6 @@ const en: FiberCentralContent = {
         title: 'Update arrives',
         body: 'setState, prop changes, events, and so on produce an update.',
         tone: 'emerald',
-        iconName: 'pulse',
       },
       {
         id: 'lanes',
@@ -355,7 +326,6 @@ const en: FiberCentralContent = {
         title: 'Mark lanes',
         body: 'Priority for the Fiber is recorded into lanes / childLanes.',
         tone: 'violet',
-        iconName: 'zap',
       },
       {
         id: 'render',
@@ -363,7 +333,6 @@ const en: FiberCentralContent = {
         title: 'Compare during render phase',
         body: 'pendingProps and updates are compared with the previous result to compute a new Fiber tree.',
         tone: 'amber',
-        iconName: 'pencil',
       },
       {
         id: 'flags',
@@ -371,7 +340,6 @@ const en: FiberCentralContent = {
         title: 'Record flags',
         body: 'flags / subtreeFlags / deletions are written where changes are needed.',
         tone: 'indigo',
-        iconName: 'flag',
       },
       {
         id: 'commit',
@@ -379,7 +347,6 @@ const en: FiberCentralContent = {
         title: 'Apply during commit phase',
         body: 'The commit phase applies recorded effects to the actual DOM/host environment.',
         tone: 'blue',
-        iconName: 'shield',
       },
     ],
   },
@@ -397,7 +364,6 @@ const en: FiberCentralContent = {
         title: 'dispatchSetState',
         body: 'The entry point where setState is called.',
         tone: 'violet',
-        iconName: 'send',
       },
       {
         id: 'enqueueUpdate',
@@ -405,7 +371,6 @@ const en: FiberCentralContent = {
         title: 'enqueueUpdate',
         body: 'Attaches the update object to updateQueue.',
         tone: 'sky',
-        iconName: 'list',
       },
       {
         id: 'scheduleUpdateOnFiber',
@@ -413,7 +378,6 @@ const en: FiberCentralContent = {
         title: 'scheduleUpdateOnFiber',
         body: 'Marks priority (lanes) on the Fiber and the root.',
         tone: 'emerald',
-        iconName: 'compass',
       },
       {
         id: 'rootBubble',
@@ -421,7 +385,6 @@ const en: FiberCentralContent = {
         title: 'Bubble up to the root',
         body: 'Propagates priority up to ancestor Fibers and the root.',
         tone: 'amber',
-        iconName: 'arrowUp',
       },
     ],
   },

@@ -8,19 +8,17 @@ export type ExtractionChip = {
 };
 
 export type MappingRow = {
-  id: string;
+  id: 'type' | 'key' | 'props';
   field: string;
   title: string;
   description: string;
-  iconName: 'inspect' | 'key' | 'package';
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'element' | 'create-fiber' | 'split' | 'delegate' | 'fiber';
   number: string;
   title: string;
   description: string;
-  iconName: 'box' | 'wand' | 'split' | 'puzzle' | 'sparkles';
   tone: ToneKey;
 };
 
@@ -154,21 +152,18 @@ const ko: CreateFiberFromElementContent = {
         field: 'element.type',
         title: '어떤 Fiber 종류를 만들지 판단하는 기준',
         description: "ex) 'div' → HostComponent, 함수 → FunctionComponent",
-        iconName: 'inspect',
       },
       {
         id: 'key',
         field: 'element.key',
         title: 'Fiber key로 전달',
         description: '형제 재조정 시 동일성을 판단하는 핵심 값',
-        iconName: 'key',
       },
       {
         id: 'props',
         field: 'element.props',
         title: 'pendingProps로 전달될 초기 입력',
         description: '컴포넌트가 받을 초기 props',
-        iconName: 'package',
       },
     ],
   },
@@ -213,7 +208,6 @@ const ko: CreateFiberFromElementContent = {
         number: '1',
         title: 'React Element',
         description: 'JSX로부터 만들어진 Element 객체',
-        iconName: 'box',
         tone: 'blue',
       },
       {
@@ -221,7 +215,6 @@ const ko: CreateFiberFromElementContent = {
         number: '2',
         title: 'createFiberFromElement',
         description: 'Element를 받아 핵심 데이터를 추출',
-        iconName: 'wand',
         tone: 'sky',
       },
       {
@@ -229,7 +222,6 @@ const ko: CreateFiberFromElementContent = {
         number: '3',
         title: 'type / key / props 분리',
         description: 'element.type, element.key, element.props 추출',
-        iconName: 'split',
         tone: 'cyan',
       },
       {
@@ -237,7 +229,6 @@ const ko: CreateFiberFromElementContent = {
         number: '4',
         title: 'createFiberFromTypeAndProps',
         description: 'type을 보고 어떤 Fiber를 만들지 결정',
-        iconName: 'puzzle',
         tone: 'violet',
       },
       {
@@ -245,7 +236,6 @@ const ko: CreateFiberFromElementContent = {
         number: '5',
         title: 'Fiber 생성',
         description: '적절한 tag와 초기 필드로 Fiber 객체 생성',
-        iconName: 'sparkles',
         tone: 'teal',
       },
     ],
@@ -335,21 +325,18 @@ const en: CreateFiberFromElementContent = {
         field: 'element.type',
         title: 'Determines which kind of Fiber to build',
         description: "ex) 'div' → HostComponent, function → FunctionComponent",
-        iconName: 'inspect',
       },
       {
         id: 'key',
         field: 'element.key',
         title: 'Passed through as the Fiber key',
         description: 'Used to judge identity during sibling reconciliation',
-        iconName: 'key',
       },
       {
         id: 'props',
         field: 'element.props',
         title: 'Becomes pendingProps — the initial input',
         description: 'The initial props the component will receive',
-        iconName: 'package',
       },
     ],
   },
@@ -394,7 +381,6 @@ const en: CreateFiberFromElementContent = {
         number: '1',
         title: 'React Element',
         description: 'The Element object produced from JSX',
-        iconName: 'box',
         tone: 'blue',
       },
       {
@@ -402,7 +388,6 @@ const en: CreateFiberFromElementContent = {
         number: '2',
         title: 'createFiberFromElement',
         description: 'Receives the Element and extracts the essentials',
-        iconName: 'wand',
         tone: 'sky',
       },
       {
@@ -410,7 +395,6 @@ const en: CreateFiberFromElementContent = {
         number: '3',
         title: 'Split type / key / props',
         description: 'Pulls element.type, element.key, and element.props',
-        iconName: 'split',
         tone: 'cyan',
       },
       {
@@ -418,7 +402,6 @@ const en: CreateFiberFromElementContent = {
         number: '4',
         title: 'createFiberFromTypeAndProps',
         description: 'Looks at type and picks which Fiber to build',
-        iconName: 'puzzle',
         tone: 'violet',
       },
       {
@@ -426,7 +409,6 @@ const en: CreateFiberFromElementContent = {
         number: '5',
         title: 'Fiber created',
         description: 'A Fiber with the right tag and initial fields',
-        iconName: 'sparkles',
         tone: 'teal',
       },
     ],

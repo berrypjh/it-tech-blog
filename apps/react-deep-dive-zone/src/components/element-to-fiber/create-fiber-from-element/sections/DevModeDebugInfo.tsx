@@ -28,7 +28,7 @@ export const DevModeDebugInfo = ({ content }: Props) => (
     </ToneBadge>
 
     <ComparisonTable
-      caption="DEV 모드의 Element 필드와 Fiber로 전달되는 필드 매핑"
+      caption={content.title}
       headers={[content.tableHeader.element, content.tableHeader.fiber]}
       columnWidths={['50%', '50%']}
       rows={content.rows.map((row) => ({

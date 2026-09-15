@@ -1,19 +1,19 @@
 import { cx } from '@berrypjh/react-ui';
-import { Braces, Eye, Lightbulb, Puzzle, TreePine } from 'lucide-react';
+import { Braces, Eye, Lightbulb, type LucideIcon, Puzzle, TreePine } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { JsxIsNotHtmlContent } from '../content';
+import type { JsxIsNotHtmlContent, ValueCard } from '../content';
 
 type Props = { content: JsxIsNotHtmlContent['uiFit'] };
 
-const iconMap = {
-  eye: Eye,
-  braces: Braces,
-  puzzle: Puzzle,
-  tree: TreePine,
-} as const;
+const cardIcon: Record<ValueCard['id'], LucideIcon> = {
+  structure: Eye,
+  'js-combine': Braces,
+  'component-model': Puzzle,
+  'tree-shape': TreePine,
+};
 
 export const JsxUiFitSection = ({ content }: Props) => (
   <section aria-labelledby="heading-uifit" className="space-y-md scroll-mt-xl">
@@ -29,7 +29,7 @@ export const JsxUiFitSection = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>

@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Move, Pencil, Trash2 } from 'lucide-react';
+import { type LucideIcon, Move, Pencil, Trash2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import type { EffectKind, RepresentativeFlagCard } from '../content';
@@ -14,7 +14,7 @@ type Props = {
   resultLabel: string;
 };
 
-const iconMap: Record<EffectKind, React.ComponentType<{ className?: string }>> = {
+const effectIcon: Record<EffectKind, LucideIcon> = {
   placement: Move,
   update: Pencil,
   childDeletion: Trash2,
@@ -34,7 +34,7 @@ export const BeforeAfterCard = ({
   afterLabel,
   resultLabel,
 }: Props) => {
-  const Icon = iconMap[card.id];
+  const Icon = effectIcon[card.id];
   return (
     <article
       className={cx(

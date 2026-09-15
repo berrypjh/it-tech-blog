@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, ListChecks, Sparkles, Tag, User } from 'lucide-react';
+import { CheckCircle2, ListChecks, type LucideIcon, Sparkles, Tag, User } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,11 +7,11 @@ import type { ReactElementTypeMeaningContent, TypeKindCard } from '../content';
 
 type Props = { content: ReactElementTypeMeaningContent['kinds'] };
 
-const iconMap = {
-  tag: Tag,
-  user: User,
-  sparkles: Sparkles,
-} as const;
+const cardIcon: Record<TypeKindCard['id'], LucideIcon> = {
+  host: Tag,
+  custom: User,
+  special: Sparkles,
+};
 
 export const TypeKindCards = ({ content }: Props) => (
   <section id="kinds" aria-labelledby="heading-kinds" className="space-y-md scroll-mt-xl">
@@ -36,7 +36,7 @@ export const TypeKindCards = ({ content }: Props) => (
 );
 
 const KindCardView = ({ card }: { card: TypeKindCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

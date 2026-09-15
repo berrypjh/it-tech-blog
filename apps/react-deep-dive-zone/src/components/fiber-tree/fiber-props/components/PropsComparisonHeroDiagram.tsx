@@ -8,7 +8,9 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberPropsContent } from '../content';
 
-type Props = { content: FiberPropsContent['hero']; className?: string };
+import { propsTone } from './propsTone';
+
+type Props = { content: FiberPropsContent['hero'] };
 
 type CardData = FiberPropsContent['hero']['pendingCard'];
 
@@ -17,15 +19,15 @@ type CardData = FiberPropsContent['hero']['pendingCard'];
  * 이번 작업에서 들어온 pendingProps와 지난 렌더에서 쓰인 memoizedProps를
  * 위에서 아래로 잇는 컴팩트 비교 stepper.
  */
-export const PropsComparisonHeroDiagram = ({ content, className }: Props) => {
+export const PropsComparisonHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.pendingCard.title} — ${content.pendingCard.subtitle}. ${content.vs}. ${content.memoizedCard.title} — ${content.memoizedCard.subtitle}.`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <PropsCard
-            tone="sky"
+            tone={propsTone.pendingProps}
             icon={<Zap className="h-[18px] w-[18px]" aria-hidden="true" />}
             card={content.pendingCard}
           />
@@ -35,7 +37,7 @@ export const PropsComparisonHeroDiagram = ({ content, className }: Props) => {
 
         <li className="flex flex-col gap-sm">
           <PropsCard
-            tone="emerald"
+            tone={propsTone.memoizedProps}
             icon={<Clock className="h-[18px] w-[18px]" aria-hidden="true" />}
             card={content.memoizedCard}
           />

@@ -1,5 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, Inspect, KeyRound, ListTree, Package } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  Inspect,
+  KeyRound,
+  ListTree,
+  type LucideIcon,
+  Package,
+} from 'lucide-react';
 
 import { MappingRowCard } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -9,11 +17,11 @@ import type { CreateFiberFromElementContent, MappingRow } from '../content';
 
 type Props = { content: CreateFiberFromElementContent['mapping'] };
 
-const iconMap = {
-  inspect: Inspect,
+const rowIcon: Record<MappingRow['id'], LucideIcon> = {
+  type: Inspect,
   key: KeyRound,
-  package: Package,
-} as const;
+  props: Package,
+};
 
 export const ElementFieldMapping = ({ content }: Props) => (
   <section id="mapping" aria-labelledby="heading-mapping" className="space-y-md scroll-mt-xl">
@@ -38,14 +46,14 @@ export const ElementFieldMapping = ({ content }: Props) => (
 );
 
 const Row = ({ row }: { row: MappingRow }) => {
-  const Icon = iconMap[row.iconName];
+  const Icon = rowIcon[row.id];
   return (
     <MappingRowCard
       columns="md:grid-cols-[minmax(0,220px)_auto_minmax(0,1fr)]"
       arrow={
         <>
           <ArrowRight className="h-4 w-4 hidden md:block" aria-hidden="true" />
-          <ArrowRight className="h-4 w-4 md:hidden rotate-90" aria-hidden="true" />
+          <ArrowDown className="h-4 w-4 md:hidden" aria-hidden="true" />
         </>
       }
       left={

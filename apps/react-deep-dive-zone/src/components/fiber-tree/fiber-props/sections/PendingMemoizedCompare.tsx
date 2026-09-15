@@ -1,21 +1,16 @@
-import { Clock, GitCompare, Zap } from 'lucide-react';
+import { Clock, GitCompare, type LucideIcon, Zap } from 'lucide-react';
 
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionBadgeHeader } from '../../../shared/section';
-import { type ToneKey } from '../../../shared/tones';
+import { propsTone } from '../components/propsTone';
 import type { FiberPropsContent, PropsKind } from '../content';
 
 type Props = { content: FiberPropsContent['comparison'] };
 
-const kindTone: Record<PropsKind, ToneKey> = {
-  pendingProps: 'sky',
-  memoizedProps: 'emerald',
-};
-
-const kindIcon = {
+const propsIcon: Record<PropsKind, LucideIcon> = {
   pendingProps: Zap,
   memoizedProps: Clock,
-} as const;
+};
 
 export const PendingMemoizedCompare = ({ content }: Props) => (
   <section id="comparison" aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">
@@ -32,8 +27,8 @@ export const PendingMemoizedCompare = ({ content }: Props) => (
         <li key={card.kind} className="flex">
           <ToneDetailCard
             className="flex-1"
-            tone={kindTone[card.kind]}
-            icon={kindIcon[card.kind]}
+            tone={propsTone[card.kind]}
+            icon={propsIcon[card.kind]}
             title={card.title}
             description={card.subtitle}
             bullets={card.items}

@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Box, Hexagon, Map, PlayCircle, Wand2 } from 'lucide-react';
+import { ArrowDown, Box, Hexagon, type LucideIcon, Map, PlayCircle, Wand2 } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
@@ -8,7 +8,7 @@ import type { FiberWhyNeededContent, FinalFlowRow } from '../content';
 
 type Props = { content: FiberWhyNeededContent['finalFlow'] };
 
-const iconByRow: Record<string, React.ComponentType<{ className?: string }>> = {
+const rowIcon: Record<FinalFlowRow['id'], LucideIcon> = {
   jsx: Box,
   element: Box,
   'create-from-element': Wand2,
@@ -57,7 +57,7 @@ export const FinalFlowSummary = ({ content }: Props) => (
 
 const Row = ({ row }: { row: FinalFlowRow }) => {
   const t = toneTokens[row.accent];
-  const Icon = iconByRow[row.id] ?? Box;
+  const Icon = rowIcon[row.id];
   return (
     <article
       className={cx(

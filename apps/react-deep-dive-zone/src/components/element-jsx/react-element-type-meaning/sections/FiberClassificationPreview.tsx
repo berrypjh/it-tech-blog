@@ -1,5 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, Atom, Box, Sparkles, Workflow } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  Atom,
+  Box,
+  type LucideIcon,
+  Sparkles,
+  Workflow,
+} from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -8,11 +16,11 @@ import type { FiberFlowStep, ReactElementTypeMeaningContent } from '../content';
 
 type Props = { content: ReactElementTypeMeaningContent['fiber'] };
 
-const iconMap = {
-  box: Box,
-  workflow: Workflow,
-  atom: Atom,
-} as const;
+const stepIcon: Record<FiberFlowStep['id'], LucideIcon> = {
+  'element-type': Box,
+  'create-fiber': Workflow,
+  fibers: Atom,
+};
 
 export const FiberClassificationPreview = ({ content }: Props) => (
   <section id="fiber" aria-labelledby="heading-fiber" className="space-y-md scroll-mt-xl">
@@ -57,7 +65,7 @@ const ItemWithArrow = ({ step, last }: { step: FiberFlowStep; last: boolean }) =
 );
 
 const FlowCard = ({ step }: { step: FiberFlowStep }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return (
     <article
       className={cx(

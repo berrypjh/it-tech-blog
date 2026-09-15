@@ -1,20 +1,20 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Code, FileText, Layers, ListChecks, Network } from 'lucide-react';
+import { Box, Code, FileText, Layers, ListChecks, type LucideIcon, Network } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactElementSummaryBeforeFiberContent } from '../content';
+import type { ReactElementSummaryBeforeFiberContent, SummaryCard } from '../content';
 
 type Props = { content: ReactElementSummaryBeforeFiberContent['summary'] };
 
-const iconMap = {
-  code: Code,
-  cube: Box,
-  document: FileText,
-  layers: Layers,
-  tree: Network,
-} as const;
+const cardIcon: Record<SummaryCard['id'], LucideIcon> = {
+  s1: Code,
+  s2: Box,
+  s3: FileText,
+  s4: Layers,
+  s5: Network,
+};
 
 export const FiveKeyTakeaways = ({ content }: Props) => (
   <section aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
@@ -30,7 +30,7 @@ export const FiveKeyTakeaways = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem

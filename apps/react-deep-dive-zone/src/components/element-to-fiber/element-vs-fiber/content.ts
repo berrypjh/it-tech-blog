@@ -3,10 +3,9 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { ToneKey } from '../../shared/tones';
 
 export type RecapStep = {
-  id: string;
+  id: 'jsx' | 'runtime' | 'element';
   title: string;
   subtitle: string;
-  iconName: 'code' | 'wand' | 'box';
 };
 
 export type ComparisonColumnKey = 'element' | 'fiber';
@@ -19,10 +18,9 @@ export type ComparisonRow = {
 };
 
 export type WhyFiberCard = {
-  id: string;
+  id: 'tree' | 'priority' | 'update-state' | 'alternate';
   title: string;
   body: string;
-  iconName: 'tree' | 'flag' | 'refresh' | 'layers';
   tone: ToneKey;
 };
 
@@ -121,19 +119,16 @@ const ko: ElementVsFiberContent = {
         id: 'jsx',
         title: 'JSX',
         subtitle: '개발자가 작성한 UI 표현 문법',
-        iconName: 'code',
       },
       {
         id: 'runtime',
         title: 'jsx / jsxs / jsxDEV 또는 createElement',
         subtitle: '컴파일러가 호출하는 runtime 함수',
-        iconName: 'wand',
       },
       {
         id: 'element',
         title: 'React Element',
         subtitle: 'type / key / props를 담은 설명 객체',
-        iconName: 'box',
       },
     ],
     notice: '이번 챕터에서는 그 Element가 Fiber가 되는 과정을 본다.',
@@ -192,28 +187,24 @@ const ko: ElementVsFiberContent = {
         id: 'tree',
         title: '트리 연결과 진행 위치',
         body: 'return, child, sibling 포인터로 트리를 잇고, 렌더링이 어디까지 진행됐는지 기록합니다.',
-        iconName: 'tree',
         tone: 'blue',
       },
       {
         id: 'priority',
         title: '우선순위와 중단·재개',
         body: 'lanes로 먼저 처리할 작업을 고르고, 급한 사용자 입력이 오면 멈췄다가 이어갑니다.',
-        iconName: 'flag',
         tone: 'amber',
       },
       {
         id: 'update-state',
         title: '업데이트 상태',
         body: '무엇이 바뀌었는지, 어떤 props/state로 다시 그릴지 저장합니다.',
-        iconName: 'refresh',
         tone: 'teal',
       },
       {
         id: 'alternate',
         title: '현재 / 다음 화면 분리',
         body: 'alternate로 화면에 보이는 트리와 작업 중인 트리를 짝지어 둡니다.',
-        iconName: 'layers',
         tone: 'violet',
       },
     ],
@@ -296,19 +287,16 @@ const en: ElementVsFiberContent = {
         id: 'jsx',
         title: 'JSX',
         subtitle: 'UI syntax the developer writes',
-        iconName: 'code',
       },
       {
         id: 'runtime',
         title: 'jsx / jsxs / jsxDEV or createElement',
         subtitle: 'Runtime functions the compiler emits',
-        iconName: 'wand',
       },
       {
         id: 'element',
         title: 'React Element',
         subtitle: 'Description object with type / key / props',
-        iconName: 'box',
       },
     ],
     notice: 'This chapter follows that Element as it becomes a Fiber.',
@@ -368,28 +356,24 @@ const en: ElementVsFiberContent = {
         id: 'tree',
         title: 'Tree links and progress',
         body: 'Links the tree through return, child, and sibling pointers and records how far rendering has gone.',
-        iconName: 'tree',
         tone: 'blue',
       },
       {
         id: 'priority',
         title: 'Priority and pause / resume',
         body: 'Uses lanes to pick which work runs first, pausing and resuming when urgent user input arrives.',
-        iconName: 'flag',
         tone: 'amber',
       },
       {
         id: 'update-state',
         title: 'Update state',
         body: 'Records what changed and which props/state to re-render with.',
-        iconName: 'refresh',
         tone: 'teal',
       },
       {
         id: 'alternate',
         title: 'Current vs next screen',
         body: 'Uses alternate to pair the tree on screen with the tree being worked on.',
-        iconName: 'layers',
         tone: 'violet',
       },
     ],

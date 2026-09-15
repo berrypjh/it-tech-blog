@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, Key, KeyRound, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -45,7 +45,7 @@ const SiblingReorderDiagram = ({ content }: Props) => {
 
   return (
     <div className="rounded-2xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <p className="sr-only">{a11y}</p>
+      <VisuallyHidden>{a11y}</VisuallyHidden>
 
       <div aria-hidden="true" className="flex flex-col gap-md">
         <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] items-center gap-sm">

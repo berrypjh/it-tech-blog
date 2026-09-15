@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberStateNodeContent } from '../content';
@@ -93,7 +93,7 @@ const Connector = ({
     </div>
 
     <div className="flex flex-col items-center gap-1">
-      <ArrowDown className={cx('h-4 w-4 rotate-180', toneTokens.emerald.text)} aria-hidden="true" />
+      <ArrowUp className={cx('h-4 w-4', toneTokens.emerald.text)} aria-hidden="true" />
       <span
         className={cx(
           'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono',

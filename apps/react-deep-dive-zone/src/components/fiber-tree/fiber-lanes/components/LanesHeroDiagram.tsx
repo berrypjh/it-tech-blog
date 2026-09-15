@@ -10,20 +10,18 @@ import { LaneIcon } from './LaneIcon';
 import { laneStyle } from './laneTone';
 
 type Hero = FiberLanesContent['hero'];
-type Props = { content: Hero; className?: string };
+type Props = { content: Hero };
 
 /**
  * Hero 핵심 비주얼.
  * Fiber 객체의 lanes/childLanes 필드 → 작업 우선순위(lanes) 스택으로
  * 이어지는 흐름을 위에서 아래로 잇는 컴팩트 다이어그램.
  */
-export const LanesHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.cardLabel} 객체의 lanes/childLanes 필드는 ${content.stackTitle}를 나타내며, ${content.items
-    .map((item) => item.label)
-    .join(', ')} 순으로 우선순위가 정리됩니다.`;
+export const LanesHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.cardLabel} lanes / childLanes → ${content.stackTitle}: ${content.items.map((item) => item.label).join(', ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <SectionHeader label={content.cardLabel} caption="object" />
@@ -89,7 +87,6 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
       className={cx(
         'flex items-center gap-2 rounded-lg border bg-[var(--term-bg)] px-2 py-1.5',
         'border-[var(--term-border)]',
-        t.borderHover,
       )}
     >
       {item.tone === 'slate' ? (
@@ -100,11 +97,11 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
             t.chip,
           )}
         >
-          <LaneIcon iconName={item.iconName} className="h-4 w-4" />
+          <LaneIcon id={item.id} className="h-4 w-4" />
         </span>
       ) : (
         <ToneIconBox tone={item.tone} size="sm">
-          <LaneIcon iconName={item.iconName} className="h-4 w-4" />
+          <LaneIcon id={item.id} className="h-4 w-4" />
         </ToneIconBox>
       )}
       <span className="flex min-w-0 flex-col">

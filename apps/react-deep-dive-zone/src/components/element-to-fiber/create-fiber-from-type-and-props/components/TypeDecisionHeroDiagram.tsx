@@ -1,45 +1,30 @@
 import { cx } from '@berrypjh/react-ui';
-import { Binary, Braces, Hexagon, SquareFunction, Type } from 'lucide-react';
+import { Binary, Braces, Hexagon, type LucideIcon, SquareFunction, Type } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { Branch, BranchKey, CreateFiberFromTypeAndPropsContent } from '../content';
 
-type Props = { content: CreateFiberFromTypeAndPropsContent['hero']; className?: string };
+import { branchTone } from './BranchMap';
 
-const branchTone: Record<BranchKey, ToneKey> = {
-  string: 'emerald',
-  function: 'sky',
-  fragment: 'violet',
-  mode: 'cyan',
-};
+type Props = { content: CreateFiberFromTypeAndPropsContent['hero'] };
 
-const branchIcon: Record<BranchKey, typeof Type> = {
+const branchIcon: Record<BranchKey, LucideIcon> = {
   string: Binary,
   function: SquareFunction,
   fragment: Braces,
   mode: Hexagon,
 };
 
-export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
+export const TypeDecisionHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.centerLabel}: ${content.branches
     .map((b) => `${b.condition} → ${b.result}`)
     .join(', ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm" aria-hidden="true">
         <CenterNode label={content.centerLabel} />
 
@@ -53,7 +38,7 @@ export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ul>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -104,12 +89,3 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

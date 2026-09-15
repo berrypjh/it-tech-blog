@@ -1,5 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { Clock, GitCompare, Hammer, Lightbulb, RefreshCw, Share2, Zap } from 'lucide-react';
+import {
+  Clock,
+  GitCompare,
+  Hammer,
+  Lightbulb,
+  type LucideIcon,
+  RefreshCw,
+  Share2,
+  Zap,
+} from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -7,24 +16,24 @@ import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberPropsContent, MeaningStep } from '../content';
+import type { ContinueCase, FiberPropsContent, MeaningStep } from '../content';
 
 type Props = { content: FiberPropsContent['meaning'] };
 
-const stepIconMap = {
-  clock: Clock,
-  zap: Zap,
-  gitCompare: GitCompare,
-} as const;
+const stepIcon: Record<MeaningStep['id'], LucideIcon> = {
+  memo: Clock,
+  pending: Zap,
+  compare: GitCompare,
+};
 
-const caseIconMap = {
-  refresh: RefreshCw,
-  share: Share2,
-  hammer: Hammer,
-} as const;
+const caseIcon: Record<ContinueCase['id'], LucideIcon> = {
+  state: RefreshCw,
+  context: Share2,
+  'force-update': Hammer,
+};
 
 const toFlowStep = (step: MeaningStep): FlowStepItem => {
-  const Icon = stepIconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: step.number,
@@ -55,7 +64,7 @@ export const FiberPropsMeaningFlow = ({ content }: Props) => (
       </h3>
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
         {content.cases.map((item) => {
-          const Icon = caseIconMap[item.iconName];
+          const Icon = caseIcon[item.id];
           return (
             <ToneCardItem key={item.id} tone={item.tone} icon={<Icon className="h-5 w-5" />}>
               <h4

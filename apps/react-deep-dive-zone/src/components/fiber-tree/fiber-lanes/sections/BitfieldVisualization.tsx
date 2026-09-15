@@ -42,7 +42,7 @@ export const BitfieldVisualization = ({ content }: Props) => (
 const BitfieldRowItem = ({ row }: { row: BitfieldRow }) => {
   const t = laneStyle(row.tone);
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-[var(--term-surface)]">
+    <div className="flex flex-wrap items-center gap-3 rounded-md px-2 py-2">
       <code
         className={cx('whitespace-pre tracking-wider text-[13px] sm:text-sm font-bold', t.text)}
       >

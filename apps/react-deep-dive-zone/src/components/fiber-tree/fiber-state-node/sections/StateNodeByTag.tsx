@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Home, Network, User } from 'lucide-react';
+import { Boxes, Home, type LucideIcon, Network, User } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ByTagCard, FiberStateNodeContent } from '../content';
+import type { ByTagCard, FiberKind, FiberStateNodeContent } from '../content';
 
 type Props = { content: FiberStateNodeContent['byTag'] };
 
-const iconMap = {
-  home: Home,
-  cube: Boxes,
-  user: User,
-} as const;
+const cardIcon: Record<FiberKind, LucideIcon> = {
+  hostRoot: Home,
+  hostComponent: Boxes,
+  classComponent: User,
+};
 
 export const StateNodeByTag = ({ content }: Props) => (
   <section id="by-tag" aria-labelledby="heading-by-tag" className="space-y-md scroll-mt-xl">
@@ -35,7 +35,7 @@ export const StateNodeByTag = ({ content }: Props) => (
 );
 
 const ByTagCardItem = ({ card }: { card: ByTagCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

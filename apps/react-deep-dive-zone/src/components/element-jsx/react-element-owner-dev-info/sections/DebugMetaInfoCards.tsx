@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Layers, Sparkles, Workflow } from 'lucide-react';
+import { Layers, type LucideIcon, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactElementOwnerDevInfoContent } from '../content';
+import type { DebugCard, ReactElementOwnerDevInfoContent } from '../content';
 
 type Props = { content: ReactElementOwnerDevInfoContent['debug'] };
 
-const iconMap = {
-  stack: Layers,
-  task: Workflow,
-} as const;
+const cardIcon: Record<DebugCard['id'], LucideIcon> = {
+  _debugStack: Layers,
+  _debugTask: Workflow,
+};
 
 export const DebugMetaInfoCards = ({ content }: Props) => (
   <section aria-labelledby="heading-debug" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>

@@ -8,8 +8,7 @@ import type { ReactCreateElementContent } from '../content';
 type Props = { content: ReactCreateElementContent['checkpoint'] };
 
 export const CreateElementSourceCheckpoint = ({ content }: Props) => {
-  const fileInfo = content.infos.find((info) => info.id === 'file');
-  const functionInfo = content.infos.find((info) => info.id === 'function');
+  const [fileInfo, functionInfo] = content.infos;
 
   return (
     <section
@@ -30,34 +29,26 @@ export const CreateElementSourceCheckpoint = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
         <CheckpointInfoCard
           rows={[
-            ...(fileInfo
-              ? [
-                  {
-                    label: fileInfo.label,
-                    value: <code className="font-mono break-all">{fileInfo.value}</code>,
-                    icon: FileText,
-                  },
-                ]
-              : []),
-            ...(functionInfo
-              ? [
-                  {
-                    label: functionInfo.label,
-                    value: (
-                      <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                        {functionInfo.value}
-                      </code>
-                    ),
-                    icon: Code,
-                  },
-                ]
-              : []),
+            {
+              label: fileInfo.label,
+              value: <code className="font-mono break-all">{fileInfo.value}</code>,
+              icon: FileText,
+            },
+            {
+              label: functionInfo.label,
+              value: (
+                <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                  {functionInfo.value}
+                </code>
+              ),
+              icon: Code,
+            },
           ]}
         />
 
         {/* 우측 코드 패널 + 버튼 */}
         <div className="flex flex-col gap-md min-w-0">
-          <CodePreviewPanel header={fileInfo?.value} code={content.code} />
+          <CodePreviewPanel header={fileInfo.value} code={content.code} />
 
           <GithubButton href={content.primaryHref} label={content.primaryCta} />
         </div>

@@ -127,9 +127,9 @@ const conceptCls = {
     title: toneTokens.violet.text,
   },
   rose: {
-    border: 'border-rose-200/70 dark:border-rose-800/60',
-    iconWrap: cx(EFFECT_NEUTRAL, 'text-rose-600 dark:text-rose-300'),
-    title: 'text-rose-600 dark:text-rose-300',
+    border: effectBorder.childDeletion,
+    iconWrap: cx(EFFECT_NEUTRAL, effectText.childDeletion),
+    title: effectText.childDeletion,
   },
 } as const;
 

@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Bug, CheckCircle2, Gauge, GitCompare, Sparkles } from 'lucide-react';
+import { Bug, CheckCircle2, Gauge, GitCompare, type LucideIcon, Sparkles } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -8,10 +8,10 @@ import type { ProdDevCard, ReactElementOwnerDevInfoContent } from '../content';
 
 type Props = { content: ReactElementOwnerDevInfoContent['prodDev'] };
 
-const iconMap = {
-  gauge: Gauge,
-  bug: Bug,
-} as const;
+const cardIcon: Record<ProdDevCard['id'], LucideIcon> = {
+  production: Gauge,
+  development: Bug,
+};
 
 export const ProdDevComparison = ({ content }: Props) => (
   <section id="prod-dev" aria-labelledby="heading-prod-dev" className="space-y-md scroll-mt-xl">
@@ -41,7 +41,7 @@ export const ProdDevComparison = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: ProdDevCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

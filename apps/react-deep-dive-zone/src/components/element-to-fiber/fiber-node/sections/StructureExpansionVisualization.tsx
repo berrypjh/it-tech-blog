@@ -30,7 +30,6 @@ export const StructureExpansionVisualization = ({ content }: Props) => (
         elementFields={content.elementFields}
         fiberTitle={content.fiberTitle}
         fiberFields={content.fiberFields}
-        size="md"
       />
     </article>
   </section>

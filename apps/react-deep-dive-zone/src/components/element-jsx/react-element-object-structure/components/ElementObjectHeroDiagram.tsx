@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Fingerprint, Key, LayoutPanelTop, User } from 'lucide-react';
+import { Box, Fingerprint, Key, LayoutPanelTop, type LucideIcon, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -8,9 +8,9 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroCallout, ReactElementObjectStructureContent } from '../content';
 
-type Props = { content: ReactElementObjectStructureContent['hero']; className?: string };
+type Props = { content: ReactElementObjectStructureContent['hero'] };
 
-const fieldIcon: Record<string, typeof Box> = {
+const fieldIcon: Record<HeroCallout['field'], LucideIcon> = {
   $$typeof: Fingerprint,
   type: Box,
   key: Key,
@@ -18,13 +18,13 @@ const fieldIcon: Record<string, typeof Box> = {
   _owner: User,
 };
 
-export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
+export const ElementObjectHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.codeCardLabel} — ${content.callouts
     .map((c) => `${c.field}: ${c.label}`)
     .join(', ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm">
         <CodePreviewPanel
           code={content.code}
@@ -49,7 +49,7 @@ export const ElementObjectHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FieldCard = ({ callout }: { callout: HeroCallout }) => {
-  const Icon = fieldIcon[callout.field] ?? Box;
+  const Icon = fieldIcon[callout.field];
   return (
     <article
       className={cx(

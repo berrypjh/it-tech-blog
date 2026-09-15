@@ -1,21 +1,30 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Fingerprint, Flag, Layers, List, Network, Zap } from 'lucide-react';
+import {
+  Database,
+  Fingerprint,
+  Flag,
+  Layers,
+  List,
+  type LucideIcon,
+  Network,
+  Zap,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberCentralContent } from '../content';
+import type { FiberCentralContent, FieldGroup } from '../content';
 
 type Props = { content: FiberCentralContent['summary'] };
 
-const iconMap = {
-  fingerprint: Fingerprint,
-  network: Network,
-  database: Database,
-  list: List,
-  flag: Flag,
-  zap: Zap,
-} as const;
+const groupIcon: Record<FieldGroup['id'], LucideIcon> = {
+  identity: Fingerprint,
+  connection: Network,
+  input: Database,
+  'state-queue': List,
+  flags: Flag,
+  scheduling: Zap,
+};
 
 export const FiberStructureFinalSummary = ({ content }: Props) => (
   <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
@@ -29,7 +38,7 @@ export const FiberStructureFinalSummary = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = groupIcon[card.id];
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <h3

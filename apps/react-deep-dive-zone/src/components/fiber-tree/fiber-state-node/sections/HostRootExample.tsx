@@ -52,8 +52,13 @@ const StepCard = ({ step }: { step: FlowStep }) => (
   <article
     className={cx(
       'rounded-xl border-2 p-sm sm:p-md',
-      toneTokens[step.tone].chip,
-      step.isEmphasis && 'shadow-[0_4px_16px_-8px_rgba(16,185,129,0.5)]',
+      step.isEmphasis
+        ? cx(
+            toneTokens[step.tone].fill.bg,
+            toneTokens[step.tone].fill.border,
+            toneTokens[step.tone].fill.text,
+          )
+        : toneTokens[step.tone].chip,
     )}
   >
     <code className="font-mono text-[12.5px] sm:text-xsm font-bold break-all">{step.code}</code>

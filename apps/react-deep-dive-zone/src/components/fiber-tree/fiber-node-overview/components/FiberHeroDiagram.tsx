@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Fingerprint, Flag, Layers, Network, Zap } from 'lucide-react';
+import { Database, Fingerprint, Flag, Layers, type LucideIcon, Network, Zap } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -7,29 +7,29 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberNodeOverviewContent, HeroFieldGroup } from '../content';
 
-type Props = { content: FiberNodeOverviewContent['hero']; className?: string };
+type Props = { content: FiberNodeOverviewContent['hero'] };
 
-const iconMap = {
-  fingerprint: Fingerprint,
-  network: Network,
-  database: Database,
-  flag: Flag,
-  zap: Zap,
-  layers: Layers,
-} as const;
+const groupIcon: Record<HeroFieldGroup['id'], LucideIcon> = {
+  identity: Fingerprint,
+  tree: Network,
+  'props-state': Database,
+  flags: Flag,
+  scheduling: Zap,
+  alternate: Layers,
+};
 
 /**
  * Hero 핵심 비주얼.
  * 하나의 Fiber 객체가 정체성·트리 연결·입력/상태·변경 표시·스케줄링·이중 트리까지
  * 여러 필드 그룹을 한 몸에 품는다는 점을, 객체 헤더 → 필드 그룹 카드로 보여준다.
  */
-export const FiberHeroDiagram = ({ content, className }: Props) => {
+export const FiberHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.cardTitle}: ${content.groups
     .map((g) => `${g.title}(${g.fields.join(', ')})`)
     .join('; ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
@@ -59,14 +59,13 @@ export const FiberHeroDiagram = ({ content, className }: Props) => {
 
 const GroupCard = ({ group }: { group: HeroFieldGroup }) => {
   const t = toneTokens[group.tone];
-  const Icon = iconMap[group.iconName];
+  const Icon = groupIcon[group.id];
   return (
     <article
       className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">

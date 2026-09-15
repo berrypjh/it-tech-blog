@@ -1,36 +1,26 @@
 import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Hexagon, Tag } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HostComponentFiberContent } from '../content';
 
-type Props = { content: HostComponentFiberContent['hero']; className?: string };
+type Props = { content: HostComponentFiberContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * 문자열 type을 가진 호스트 태그(div, button, input)가 하나의
  * HostComponent Fiber로 모이는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const HostComponentHeroDiagram = ({ content, className }: Props) => {
+export const HostComponentHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.domTags
     .map((t) => `${t.code} (${t.type})`)
     .join(', ')} → ${content.resultTitle}: ${content.resultItems.join(', ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <ul className="flex flex-col gap-2">
           {content.domTags.map((tag) => (
@@ -44,7 +34,7 @@ export const HostComponentHeroDiagram = ({ content, className }: Props) => {
 
         <ResultCard title={content.resultTitle} items={content.resultItems} />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -108,7 +98,7 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
               aria-hidden="true"
               className={cx(
                 'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
-                'text-white dark:text-slate-950',
+                'text-[var(--term-bg)]',
                 toneTokens.emerald.dot,
               )}
             >
@@ -123,12 +113,3 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

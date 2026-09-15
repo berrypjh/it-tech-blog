@@ -8,13 +8,13 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReactCreateElementContent } from '../content';
 
-type Props = { content: ReactCreateElementContent['hero']; className?: string };
+type Props = { content: ReactCreateElementContent['hero'] };
 
-export const CreateElementHeroDiagram = ({ content, className }: Props) => {
+export const CreateElementHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.leftCardLabel}: ${content.leftCode} → ${content.rightCardLabel}: ${content.rightCode} → ${content.resultTitle}: ${content.resultBody}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StepHeader

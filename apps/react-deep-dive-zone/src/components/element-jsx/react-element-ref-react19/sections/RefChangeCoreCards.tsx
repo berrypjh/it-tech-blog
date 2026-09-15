@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, ListChecks, UserCheck, Workflow, Zap } from 'lucide-react';
+import { CheckCircle2, ListChecks, type LucideIcon, UserCheck, Workflow, Zap } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,11 +7,11 @@ import type { CoreChangeCard, ReactElementRefReact19Content } from '../content';
 
 type Props = { content: ReactElementRefReact19Content['core'] };
 
-const iconMap = {
-  user: UserCheck,
-  flow: Workflow,
-  zap: Zap,
-} as const;
+const cardIcon: Record<CoreChangeCard['id'], LucideIcon> = {
+  'as-prop': UserCheck,
+  consistent: Workflow,
+  wider: Zap,
+};
 
 export const RefChangeCoreCards = ({ content }: Props) => (
   <section aria-labelledby="heading-core" className="space-y-md scroll-mt-xl">
@@ -37,7 +37,7 @@ export const RefChangeCoreCards = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: CoreChangeCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

@@ -26,8 +26,7 @@ export type JsxToFiberCard = {
 
 export type ComparisonRow = {
   id: string;
-  shape: '문자열 (string)' | '함수 (function)' | '내부 심벌 (symbol)';
-  shapeEn: 'string' | 'function' | 'symbol';
+  shape: string;
   exampleJsx: string;
   typeValue: string;
   condition: string;
@@ -38,11 +37,10 @@ export type ComparisonRow = {
 };
 
 export type SpecialCard = {
-  id: string;
+  id: 'suspense' | 'offscreen' | 'activity' | 'view-transition';
   title: string;
   type: string;
   result: string;
-  iconName: 'shield' | 'eyeoff' | 'zap' | 'sparkles';
   tone: ToneKey;
 };
 
@@ -301,7 +299,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       {
         id: 'string',
         shape: '문자열 (string)',
-        shapeEn: 'string',
         exampleJsx: '<div />',
         typeValue: "'div'",
         condition: "typeof type === 'string'",
@@ -312,7 +309,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       {
         id: 'fn',
         shape: '함수 (function)',
-        shapeEn: 'function',
         exampleJsx: '<MyButton />',
         typeValue: 'MyButton',
         condition: "typeof type === 'function'",
@@ -323,7 +319,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       {
         id: 'class',
         shape: '함수 (function)',
-        shapeEn: 'function',
         exampleJsx: '<MyClassComponent />',
         typeValue: 'MyClassComponent',
         condition: "typeof type === 'function'",
@@ -334,7 +329,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       {
         id: 'fragment',
         shape: '내부 심벌 (symbol)',
-        shapeEn: 'symbol',
         exampleJsx: '<>...</>',
         typeValue: 'REACT_FRAGMENT_TYPE',
         condition: 'switch (type)',
@@ -345,7 +339,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
       {
         id: 'strict',
         shape: '내부 심벌 (symbol)',
-        shapeEn: 'symbol',
         exampleJsx: '<React.StrictMode>',
         typeValue: 'REACT_STRICT_MODE_TYPE',
         condition: 'switch (type)',
@@ -367,7 +360,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         title: 'Suspense',
         type: 'REACT_SUSPENSE_TYPE',
         result: '→ SuspenseComponent Fiber',
-        iconName: 'shield',
         tone: 'sky',
       },
       {
@@ -375,7 +367,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         title: 'Offscreen',
         type: 'REACT_OFFSCREEN_TYPE',
         result: '→ OffscreenComponent Fiber',
-        iconName: 'eyeoff',
         tone: 'cyan',
       },
       {
@@ -383,7 +374,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         title: 'Activity',
         type: 'REACT_ACTIVITY_TYPE',
         result: '→ ActivityComponent Fiber',
-        iconName: 'zap',
         tone: 'violet',
       },
       {
@@ -391,7 +381,6 @@ const ko: CreateFiberFromTypeAndPropsContent = {
         title: 'ViewTransition',
         type: 'REACT_VIEW_TRANSITION_TYPE',
         result: '→ ViewTransitionComponent Fiber',
-        iconName: 'sparkles',
         tone: 'indigo',
       },
     ],
@@ -524,8 +513,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
     rows: [
       {
         id: 'string',
-        shape: '문자열 (string)',
-        shapeEn: 'string',
+        shape: 'string',
         exampleJsx: '<div />',
         typeValue: "'div'",
         condition: "typeof type === 'string'",
@@ -535,8 +523,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
       },
       {
         id: 'fn',
-        shape: '함수 (function)',
-        shapeEn: 'function',
+        shape: 'function',
         exampleJsx: '<MyButton />',
         typeValue: 'MyButton',
         condition: "typeof type === 'function'",
@@ -546,8 +533,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
       },
       {
         id: 'class',
-        shape: '함수 (function)',
-        shapeEn: 'function',
+        shape: 'function',
         exampleJsx: '<MyClassComponent />',
         typeValue: 'MyClassComponent',
         condition: "typeof type === 'function'",
@@ -557,8 +543,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
       },
       {
         id: 'fragment',
-        shape: '내부 심벌 (symbol)',
-        shapeEn: 'symbol',
+        shape: 'symbol',
         exampleJsx: '<>...</>',
         typeValue: 'REACT_FRAGMENT_TYPE',
         condition: 'switch (type)',
@@ -568,8 +553,7 @@ const en: CreateFiberFromTypeAndPropsContent = {
       },
       {
         id: 'strict',
-        shape: '내부 심벌 (symbol)',
-        shapeEn: 'symbol',
+        shape: 'symbol',
         exampleJsx: '<React.StrictMode>',
         typeValue: 'REACT_STRICT_MODE_TYPE',
         condition: 'switch (type)',
@@ -591,7 +575,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
         title: 'Suspense',
         type: 'REACT_SUSPENSE_TYPE',
         result: '→ SuspenseComponent Fiber',
-        iconName: 'shield',
         tone: 'sky',
       },
       {
@@ -599,7 +582,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
         title: 'Offscreen',
         type: 'REACT_OFFSCREEN_TYPE',
         result: '→ OffscreenComponent Fiber',
-        iconName: 'eyeoff',
         tone: 'cyan',
       },
       {
@@ -607,7 +589,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
         title: 'Activity',
         type: 'REACT_ACTIVITY_TYPE',
         result: '→ ActivityComponent Fiber',
-        iconName: 'zap',
         tone: 'violet',
       },
       {
@@ -615,7 +596,6 @@ const en: CreateFiberFromTypeAndPropsContent = {
         title: 'ViewTransition',
         type: 'REACT_VIEW_TRANSITION_TYPE',
         result: '→ ViewTransitionComponent Fiber',
-        iconName: 'sparkles',
         tone: 'indigo',
       },
     ],

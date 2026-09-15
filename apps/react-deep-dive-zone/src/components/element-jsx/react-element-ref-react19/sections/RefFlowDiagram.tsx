@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Layers, Monitor, Sparkles, User, Workflow } from 'lucide-react';
+import { Boxes, Layers, type LucideIcon, Monitor, Sparkles, User, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -9,15 +9,15 @@ import type { FlowStep, ReactElementRefReact19Content } from '../content';
 
 type Props = { content: ReactElementRefReact19Content['flow'] };
 
-const iconMap = {
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
   parent: User,
   middle: Layers,
   child: Boxes,
   dom: Monitor,
-} as const;
+};
 
 const toFlowStep = (step: FlowStep): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: step.number,

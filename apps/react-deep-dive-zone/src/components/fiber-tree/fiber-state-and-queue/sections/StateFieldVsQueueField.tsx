@@ -1,25 +1,28 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, CheckCircle2, Component, Database, List } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  CheckCircle2,
+  Component,
+  Database,
+  List,
+  type LucideIcon,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FiberStateAndQueueContent, FieldKind, RoleFlowCard } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import { fieldTone } from '../components/fieldTone';
+import type { FiberStateAndQueueContent, RoleFlowCard } from '../content';
 
 type Props = { content: FiberStateAndQueueContent['roleFlow'] };
 
-const iconMap = {
-  database: Database,
-  list: List,
-  check: CheckCircle2,
-} as const;
-
-/** field 칩 색은 항상 필드 정체성을 따른다: memoizedState=emerald, updateQueue=violet. */
-const fieldTone: Record<FieldKind, ToneKey> = {
-  memoizedState: 'emerald',
-  updateQueue: 'violet',
+const roleIcon: Record<RoleFlowCard['id'], LucideIcon> = {
+  now: Database,
+  request: List,
+  after: CheckCircle2,
 };
 
 export const StateFieldVsQueueField = ({ content }: Props) => (
@@ -85,7 +88,7 @@ const ConnectorArrow = ({ dotted }: { dotted: boolean }) => (
 const RoleCard = ({ card }: { card: RoleFlowCard }) => {
   const t = toneTokens[card.tone];
   const ft = toneTokens[fieldTone[card.field]];
-  const Icon = iconMap[card.iconName];
+  const Icon = roleIcon[card.id];
   return (
     <article
       className={cx(
@@ -93,7 +96,6 @@ const RoleCard = ({ card }: { card: RoleFlowCard }) => {
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         t.border,
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={card.tone}>

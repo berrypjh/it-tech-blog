@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Code, FileText, Network } from 'lucide-react';
+import { Box, Code, FileText, type LucideIcon, Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -7,20 +7,20 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroFlowItem, ReactElementSummaryBeforeFiberContent } from '../content';
 
-type Props = { content: ReactElementSummaryBeforeFiberContent['hero']; className?: string };
+type Props = { content: ReactElementSummaryBeforeFiberContent['hero'] };
 
-const iconMap = {
-  code: Code,
-  cube: Box,
-  document: FileText,
-  tree: Network,
-} as const;
+const itemIcon: Record<HeroFlowItem['id'], LucideIcon> = {
+  jsx: Code,
+  runtime: Box,
+  element: FileText,
+  fiber: Network,
+};
 
-export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
+export const ElementSummaryHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.flowTitle}: ${content.flowItems.map((item) => item.title).join(' → ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col items-center gap-sm" aria-hidden="true">
         {content.flowItems.map((item, i) => (
           <li key={item.id} className="flex w-full flex-col items-center gap-sm">
@@ -34,7 +34,7 @@ export const ElementSummaryHeroDiagram = ({ content, className }: Props) => {
 };
 
 const FlowBox = ({ item }: { item: HeroFlowItem }) => {
-  const Icon = iconMap[item.iconName];
+  const Icon = itemIcon[item.id];
 
   return (
     <article

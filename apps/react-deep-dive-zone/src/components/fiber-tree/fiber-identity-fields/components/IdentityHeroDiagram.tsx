@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Code2, Key, Tag, Target } from 'lucide-react';
+import { Code2, Key, type LucideIcon, Tag, Target } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -8,9 +8,9 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberIdentityFieldsContent, IdentityField, IdentityFieldKey } from '../content';
 
-type Props = { content: FiberIdentityFieldsContent['hero']; className?: string };
+type Props = { content: FiberIdentityFieldsContent['hero'] };
 
-const fieldIcon: Record<IdentityFieldKey, typeof Tag> = {
+const fieldIcon: Record<IdentityFieldKey, LucideIcon> = {
   tag: Tag,
   key: Key,
   elementType: Code2,
@@ -22,17 +22,15 @@ const fieldIcon: Record<IdentityFieldKey, typeof Tag> = {
  * Fiber 객체 한 덩어리가 정체성 필드(tag, key, elementType, type)로
  * 나뉘는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const IdentityHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.cardLabel} 객체는 ${content.fiberFields
-    .map((f) => `${f.label}(${f.meaning})`)
-    .join(', ')} 필드로 정체성을 나누어 저장합니다.`;
+export const IdentityHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.cardLabel}: ${content.fiberFields.map((f) => `${f.label} (${f.meaning})`).join(', ')}`;
 
   const objectCode = `type ${content.cardLabel} = {\n${content.fiberFields
     .map((f) => `  ${f.label}; // ${f.meaning}`)
     .join('\n')}\n  ${content.extraNote}\n};`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm">
         <CodePreviewPanel code={objectCode} caption={content.cardLabel} language="TS" size="md" />
 
@@ -59,7 +57,6 @@ const FieldCard = ({ field }: { field: IdentityField }) => {
         'flex h-full items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        t.borderHover,
       )}
     >
       <ToneIconBox tone={field.tone} size="sm">

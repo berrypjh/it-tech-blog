@@ -1,21 +1,21 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, CircleDashed, Eye, Info, List, ScanLine, Zap } from 'lucide-react';
+import { Atom, CircleDashed, Eye, Info, List, type LucideIcon, ScanLine, Zap } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FragmentModeFiberContent } from '../content';
+import type { FragmentModeFiberContent, SpecialTypeCard } from '../content';
 
 type Props = { content: FragmentModeFiberContent['others'] };
 
-const iconMap = {
-  loader: CircleDashed,
-  list: List,
-  eye: Eye,
-  zap: Zap,
-  scan: ScanLine,
-} as const;
+const cardIcon: Record<SpecialTypeCard['id'], LucideIcon> = {
+  suspense: CircleDashed,
+  'suspense-list': List,
+  offscreen: Eye,
+  activity: Zap,
+  'view-transition': ScanLine,
+};
 
 export const OtherSpecialTypes = ({ content }: Props) => (
   <section id="others" aria-labelledby="heading-others" className="space-y-md scroll-mt-xl">
@@ -31,7 +31,7 @@ export const OtherSpecialTypes = ({ content }: Props) => (
 
     <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.accent} icon={<Icon className="h-5 w-5" />}>

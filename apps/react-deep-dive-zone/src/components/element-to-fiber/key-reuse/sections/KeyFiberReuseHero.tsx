@@ -25,10 +25,8 @@ export const KeyFiberReuseHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">
-          <code className="font-mono text-[var(--term-accent)]">key</code>는 Fiber 재사용
-        </span>
-        <span className="block text-[var(--term-accent)]">판단과 연결됩니다.</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
       <HeroDescription>{content.description}</HeroDescription>

@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentType, useState } from 'react';
+import { useState } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
 import {
@@ -10,6 +10,7 @@ import {
   Fingerprint,
   KeyRound,
   ListOrdered,
+  type LucideIcon,
   Shuffle,
 } from 'lucide-react';
 
@@ -21,7 +22,6 @@ import type { KeyFiberReuseContent } from '../content';
 
 type Props = { content: KeyFiberReuseContent['simulation'] };
 type Item = { id: string; label: string };
-type IconType = ComponentType<{ className?: string }>;
 
 export const VisualSimulation = ({ content }: Props) => {
   const [items, setItems] = useState<Item[]>(content.items);
@@ -104,12 +104,12 @@ type ColumnProps = {
   tone: ToneKey;
   title: string;
   code: string;
-  Icon: IconType;
+  Icon: LucideIcon;
   items: Item[];
   selectedId: string;
   useIndexKey: boolean;
   result: string;
-  ResultIcon: IconType;
+  ResultIcon: LucideIcon;
   selectedLabel: string;
 };
 
@@ -163,7 +163,7 @@ const Column = ({
           t.chip,
         )}
       >
-        <ResultIcon className="h-4 w-4 shrink-0 mt-0.5" />
+        <ResultIcon className="h-4 w-4 shrink-0 mt-0.5" aria-hidden="true" />
         {result}
       </p>
     </article>

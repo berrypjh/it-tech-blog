@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Lightbulb, Package, Target, Waypoints } from 'lucide-react';
+import { Box, Lightbulb, type LucideIcon, Package, Target, Waypoints } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -8,11 +8,11 @@ import type { HostComponentFiberContent, ModernHostCard } from '../content';
 
 type Props = { content: HostComponentFiberContent['modern'] };
 
-const iconMap = {
-  box: Box,
-  package: Package,
-  target: Target,
-} as const;
+const cardIcon: Record<ModernHostCard['id'], LucideIcon> = {
+  'host-component': Box,
+  'host-hoistable': Package,
+  'host-singleton': Target,
+};
 
 export const ModernHostFamily = ({ content }: Props) => (
   <section id="modern" aria-labelledby="heading-modern" className="space-y-md scroll-mt-xl">
@@ -44,7 +44,7 @@ export const ModernHostFamily = ({ content }: Props) => (
 
 const CardView = ({ card }: { card: ModernHostCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

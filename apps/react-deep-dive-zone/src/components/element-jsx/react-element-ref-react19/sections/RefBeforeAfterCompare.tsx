@@ -56,12 +56,10 @@ export const RefBeforeAfterCompare = ({ content }: Props) => (
 const variantClass = {
   legacy: {
     badge: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
-    border: 'border-[var(--term-border)]',
     head: 'text-[var(--term-fg)]',
   },
   modern: {
     badge: 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
-    border: 'border-[var(--term-border)]',
     head: 'text-[var(--term-accent)]',
   },
 } as const;
@@ -84,8 +82,7 @@ const CompareCard = ({
     <article
       className={cx(
         'group flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
-        'shadow-[0_2px_0_var(--term-border)]',
-        v.border,
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">

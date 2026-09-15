@@ -1,31 +1,21 @@
 import { cx } from '@berrypjh/react-ui';
 import { Link } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { AlternateFiberContent } from '../content';
 
 import { FiberPairCard } from './FiberPairCard';
 
-type Props = { content: AlternateFiberContent['hero']; className?: string };
+type Props = { content: AlternateFiberContent['hero'] };
 
-export const AlternateHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `React는 같은 노드에 대해 ${content.currentTitle}와 ${content.workTitle} 두 가지를 동시에 가지며, alternate 포인터로 서로 양방향 연결합니다. current는 화면에 반영된 안정적인 트리이고, workInProgress는 다음 화면을 계산 중인 작업 트리입니다.`;
+export const AlternateHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.currentTitle}: ${content.currentItems.join(', ')} — ${content.forwardLabel} ↔ ${content.backwardLabel} — ${content.workTitle}: ${content.workItems.join(', ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col">
           <FiberPairCard
@@ -56,7 +46,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
           />
         </li>
       </ol>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -82,12 +72,3 @@ const AlternateLinkChip = ({
     </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

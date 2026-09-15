@@ -4,16 +4,12 @@ import { Hexagon, Lightbulb, Link, Monitor, Workflow } from 'lucide-react';
 import { SectionNote } from '../../../shared/note';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import { VerticalAlternateLink } from '../components/AlternateLink';
+import { roleTone } from '../components/FiberPairCard';
 import type { AlternateFiberContent, FiberRole } from '../content';
 
 type Props = { content: AlternateFiberContent['connection'] };
-
-const roleTone: Record<FiberRole, ToneKey> = {
-  current: 'emerald',
-  workInProgress: 'violet',
-};
 
 export const AlternateConnectionDiagram = ({ content }: Props) => (
   <section id="connection" aria-labelledby="heading-connection" className="space-y-md scroll-mt-xl">
@@ -64,7 +60,7 @@ const DiagramNode = ({ variant, label }: { variant: FiberRole; label: string }) 
       </ToneIconBox>
       <div className="flex flex-col">
         <span className={cx('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
-          {isCurrent ? 'current' : 'workInProgress'}
+          {variant}
         </span>
         <code className={cx('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
           {label}

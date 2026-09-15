@@ -6,9 +6,9 @@ import { DownArrow } from '../../../shared/icon';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FieldChip, ReactElementOwnerDevInfoContent } from '../content';
 
-type Props = { content: ReactElementOwnerDevInfoContent['hero']; className?: string };
+type Props = { content: ReactElementOwnerDevInfoContent['hero'] };
 
-export const OwnerDevInfoHeroDiagram = ({ content, className }: Props) => {
+export const OwnerDevInfoHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.diagramTitle} — ${content.baseLabel}: ${content.baseFields
     .map((f) => f.label)
     .join(', ')}; ${content.devLabel}: ${content.devFields
@@ -16,7 +16,7 @@ export const OwnerDevInfoHeroDiagram = ({ content, className }: Props) => {
     .join(', ')}. ${content.bottomNote}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StepHeader

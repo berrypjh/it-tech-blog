@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Activity, Eye, Lightbulb, MoveUp } from 'lucide-react';
+import { Activity, Eye, Lightbulb, type LucideIcon, MoveUp } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -9,14 +9,14 @@ import type { FiberLanesContent, PropagationStep } from '../content';
 
 type Props = { content: FiberLanesContent['propagation'] };
 
-const iconMap = {
-  pulse: Activity,
-  arrowUp: MoveUp,
-  eye: Eye,
-} as const;
+const stepIcon: Record<PropagationStep['id'], LucideIcon> = {
+  pending: Activity,
+  reflect: MoveUp,
+  detect: Eye,
+};
 
 const toFlowStep = (step: PropagationStep): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return {
     id: step.id,
     number: step.number,

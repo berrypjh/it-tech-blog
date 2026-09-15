@@ -8,18 +8,16 @@ export type MappingRow = {
 };
 
 export type InfoGroupCard = {
-  id: string;
+  id: 'tree' | 'update-state' | 'work-state' | 'alternate';
   title: string;
   fields: string[];
-  iconName: 'network' | 'refresh' | 'flag' | 'link';
   accent: 'emerald' | 'violet' | 'sky' | 'amber';
 };
 
 export type ReasonCard = {
-  id: string;
+  id: 'traverse' | 'compare' | 'mark' | 'priority';
   title: string;
   description: string;
-  iconName: 'network' | 'compare' | 'flag' | 'clock';
   accent: 'emerald' | 'violet' | 'amber' | 'sky';
 };
 
@@ -153,28 +151,24 @@ const ko: FiberStoredInformationContent = {
         id: 'tree',
         title: '트리 구조',
         fields: ['return', 'child', 'sibling'],
-        iconName: 'network',
         accent: 'emerald',
       },
       {
         id: 'update-state',
         title: '업데이트 상태',
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
-        iconName: 'refresh',
         accent: 'violet',
       },
       {
         id: 'work-state',
         title: '작업 상태',
         fields: ['flags', 'subtreeFlags', 'lanes', 'childLanes'],
-        iconName: 'flag',
         accent: 'sky',
       },
       {
         id: 'alternate',
         title: '이중 트리 연결',
         fields: ['alternate'],
-        iconName: 'link',
         accent: 'amber',
       },
     ],
@@ -249,28 +243,24 @@ const ko: FiberStoredInformationContent = {
         id: 'traverse',
         title: '트리를 순회하기 위해',
         description: '부모-자식-형제 관계를 따라 이동할 수 있다.',
-        iconName: 'network',
         accent: 'emerald',
       },
       {
         id: 'compare',
         title: '이전 결과 대비 값을 비교하기 위해',
         description: '변경 여부를 판단하고 재사용할 수 있다.',
-        iconName: 'compare',
         accent: 'violet',
       },
       {
         id: 'mark',
         title: '어떤 변경이 필요한지 표시하기 위해',
         description: '업데이트가 커밋될 부분만 선택적으로 처리한다.',
-        iconName: 'flag',
         accent: 'amber',
       },
       {
         id: 'priority',
         title: '작업 우선순위를 관리하기 위해',
         description: '중요한 작업을 먼저 처리할 수 있다.',
-        iconName: 'clock',
         accent: 'sky',
       },
     ],
@@ -350,28 +340,24 @@ const en: FiberStoredInformationContent = {
         id: 'tree',
         title: 'Tree structure',
         fields: ['return', 'child', 'sibling'],
-        iconName: 'network',
         accent: 'emerald',
       },
       {
         id: 'update-state',
         title: 'Update state',
         fields: ['pendingProps', 'memoizedProps', 'memoizedState', 'updateQueue'],
-        iconName: 'refresh',
         accent: 'violet',
       },
       {
         id: 'work-state',
         title: 'Work state',
         fields: ['flags', 'subtreeFlags', 'lanes', 'childLanes'],
-        iconName: 'flag',
         accent: 'sky',
       },
       {
         id: 'alternate',
         title: 'Double-tree link',
         fields: ['alternate'],
-        iconName: 'link',
         accent: 'amber',
       },
     ],
@@ -446,28 +432,24 @@ const en: FiberStoredInformationContent = {
         id: 'traverse',
         title: 'To walk the tree',
         description: 'Move along parent / child / sibling relationships.',
-        iconName: 'network',
         accent: 'emerald',
       },
       {
         id: 'compare',
         title: 'To compare against the previous result',
         description: 'Detect changes and reuse what is still valid.',
-        iconName: 'compare',
         accent: 'violet',
       },
       {
         id: 'mark',
         title: 'To mark what needs to change',
         description: 'Process only the parts that will be committed.',
-        iconName: 'flag',
         accent: 'amber',
       },
       {
         id: 'priority',
         title: 'To manage work priority',
         description: 'Handle important work first.',
-        iconName: 'clock',
         accent: 'sky',
       },
     ],

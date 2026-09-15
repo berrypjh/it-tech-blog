@@ -8,29 +8,26 @@ export type HeroFlowStep = {
 };
 
 export type CoreChangeCard = {
-  id: string;
+  id: 'as-prop' | 'consistent' | 'wider';
   number: string;
   title: string;
   body: string;
   checks: string[];
-  iconName: 'user' | 'flow' | 'zap';
   tone: ToneKey;
 };
 
 export type BenefitCard = {
-  id: string;
+  id: 'simpler' | 'predictable' | 'ecosystem';
   title: string;
   body: string;
-  iconName: 'code' | 'link' | 'package';
   tone: ToneKey;
 };
 
 export type FlowStep = {
-  id: string;
+  id: 'parent' | 'middle' | 'child' | 'dom';
   number: string;
   title: string;
   body: string;
-  iconName: 'parent' | 'middle' | 'child' | 'dom';
   tone: ToneKey;
 };
 
@@ -83,7 +80,6 @@ export type ReactElementRefReact19Content = {
     filePath: string;
     changeLabel: string;
     changePoint: string;
-    ideaLabel: string;
     coreIdea: string;
     code: string;
     primaryCta: string;
@@ -139,7 +135,6 @@ const ko: ReactElementRefReact19Content = {
         title: 'ref as prop',
         body: 'ref가 더 이상 특별한 통로가 아니라 일반 prop처럼 전달됩니다.',
         checks: ['함수 컴포넌트에서 직접 받음', 'forwardRef 없이도 사용 가능'],
-        iconName: 'user',
         tone: 'violet',
       },
       {
@@ -148,7 +143,6 @@ const ko: ReactElementRefReact19Content = {
         title: '일관된 전달 모델',
         body: 'ref 전달 방식이 단순해지고 예측 가능해져 컴포넌트 설계가 쉬워집니다.',
         checks: ['상위 → 하위 → 내부로 일관 전달', '조건부/래퍼 구조에서도 안정적'],
-        iconName: 'flow',
         tone: 'teal',
       },
       {
@@ -157,7 +151,6 @@ const ko: ReactElementRefReact19Content = {
         title: '더 넓은 활용 범위',
         body: 'DOM 접근을 넘어, 컴포넌트 API와 상태/메서드 노출까지 확장됩니다.',
         checks: ['Imperative Handle 더 자연스러워짐', '복잡한 라이브러리 설계에 유리'],
-        iconName: 'zap',
         tone: 'amber',
       },
     ],
@@ -190,7 +183,6 @@ const ko: ReactElementRefReact19Content = {
         number: '01',
         title: '상위 컴포넌트',
         body: 'ref 생성 및 전달',
-        iconName: 'parent',
         tone: 'sky',
       },
       {
@@ -198,7 +190,6 @@ const ko: ReactElementRefReact19Content = {
         number: '02',
         title: '중간 컴포넌트',
         body: 'ref를 일반 prop으로 전달',
-        iconName: 'middle',
         tone: 'violet',
       },
       {
@@ -206,7 +197,6 @@ const ko: ReactElementRefReact19Content = {
         number: '03',
         title: '하위 컴포넌트',
         body: 'ref를 props로 수신',
-        iconName: 'child',
         tone: 'teal',
       },
       {
@@ -214,7 +204,6 @@ const ko: ReactElementRefReact19Content = {
         number: '04',
         title: 'DOM / 인스턴스',
         body: 'ref가 실제 대상을 참조',
-        iconName: 'dom',
         tone: 'amber',
       },
     ],
@@ -230,7 +219,6 @@ const ko: ReactElementRefReact19Content = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     changeLabel: '변경 포인트',
     changePoint: 'ref 처리 방식 단순화',
-    ideaLabel: '핵심 아이디어',
     coreIdea: 'ref를 더 이상 특별한 경로에서 처리하지 않고, 일반 prop과 동일하게 흐르게 한다.',
     code: "function createElement(type, config, children) {\n  const props = {};\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) key = '' + config.key;\n\n    // React 19: ref를 따로 추출하지 않고 props에 그대로 둡니다.\n    for (const name in config) {\n      if (name !== 'key') props[name] = config[name];\n    }\n  }\n\n  return ReactElement(type, key, props);\n}",
     primaryCta: '관련 코드 더 보기',
@@ -247,21 +235,18 @@ const ko: ReactElementRefReact19Content = {
         id: 'simpler',
         title: '컴포넌트 설계가 단순해진다',
         body: 'forwardRef 래퍼 없이도 ref를 직접 받을 수 있어요.',
-        iconName: 'code',
         tone: 'cyan',
       },
       {
         id: 'predictable',
         title: '예측 가능한 데이터 흐름',
         body: 'ref가 일반 prop처럼 흐르므로 디버깅과 추적이 쉬워집니다.',
-        iconName: 'link',
         tone: 'teal',
       },
       {
         id: 'ecosystem',
         title: '라이브러리와 생태계의 발전',
         body: '더 일관된 패턴으로 더 강력한 컴포넌트 API를 만들 수 있습니다.',
-        iconName: 'package',
         tone: 'violet',
       },
     ],
@@ -311,7 +296,6 @@ const en: ReactElementRefReact19Content = {
         title: 'ref as prop',
         body: 'ref is no longer a special channel — it flows like an ordinary prop.',
         checks: ['Received directly in function components', 'Works without forwardRef'],
-        iconName: 'user',
         tone: 'violet',
       },
       {
@@ -323,7 +307,6 @@ const en: ReactElementRefReact19Content = {
           'Parent → child → inner is consistent',
           'Stable in conditional/wrapper structures',
         ],
-        iconName: 'flow',
         tone: 'teal',
       },
       {
@@ -332,7 +315,6 @@ const en: ReactElementRefReact19Content = {
         title: 'A wider use surface',
         body: 'Beyond DOM access — component APIs and exposed methods become more natural.',
         checks: ['Imperative Handle reads more naturally', 'Helps with complex library design'],
-        iconName: 'zap',
         tone: 'amber',
       },
     ],
@@ -365,7 +347,6 @@ const en: ReactElementRefReact19Content = {
         number: '01',
         title: 'Parent component',
         body: 'Creates and forwards the ref',
-        iconName: 'parent',
         tone: 'sky',
       },
       {
@@ -373,7 +354,6 @@ const en: ReactElementRefReact19Content = {
         number: '02',
         title: 'Middle component',
         body: 'Forwards ref as a regular prop',
-        iconName: 'middle',
         tone: 'violet',
       },
       {
@@ -381,7 +361,6 @@ const en: ReactElementRefReact19Content = {
         number: '03',
         title: 'Child component',
         body: 'Receives ref via props',
-        iconName: 'child',
         tone: 'teal',
       },
       {
@@ -389,7 +368,6 @@ const en: ReactElementRefReact19Content = {
         number: '04',
         title: 'DOM / instance',
         body: 'ref points to the actual target',
-        iconName: 'dom',
         tone: 'amber',
       },
     ],
@@ -405,7 +383,6 @@ const en: ReactElementRefReact19Content = {
     filePath: 'packages/react/src/jsx/ReactJSXElement.js',
     changeLabel: 'Change point',
     changePoint: 'Ref handling simplified',
-    ideaLabel: 'Core idea',
     coreIdea: 'Stop treating ref as a special path; let it flow exactly like an ordinary prop.',
     code: "function createElement(type, config, children) {\n  const props = {};\n  let key = null;\n\n  if (config != null) {\n    if (hasValidKey(config)) key = '' + config.key;\n\n    // React 19: ref is no longer extracted; it stays in props.\n    for (const name in config) {\n      if (name !== 'key') props[name] = config[name];\n    }\n  }\n\n  return ReactElement(type, key, props);\n}",
     primaryCta: 'Open related source',
@@ -422,21 +399,18 @@ const en: ReactElementRefReact19Content = {
         id: 'simpler',
         title: 'Component design gets simpler',
         body: 'You can receive ref directly without a forwardRef wrapper.',
-        iconName: 'code',
         tone: 'cyan',
       },
       {
         id: 'predictable',
         title: 'Predictable data flow',
         body: 'ref flows like a prop, so debugging and tracing become easier.',
-        iconName: 'link',
         tone: 'teal',
       },
       {
         id: 'ecosystem',
         title: 'Libraries and the ecosystem grow',
         body: 'A more consistent pattern enables more powerful component APIs.',
-        iconName: 'package',
         tone: 'violet',
       },
     ],

@@ -1,19 +1,19 @@
-import { Boxes, Clock, Leaf, MousePointer2, RefreshCw, Zap } from 'lucide-react';
+import { Boxes, Clock, Leaf, type LucideIcon, MousePointer2, RefreshCw, Zap } from 'lucide-react';
 
-import type { PriorityItem } from '../content';
+import type { LaneId } from '../content';
 
-type Props = { iconName: PriorityItem['iconName']; className?: string };
+type Props = { id: LaneId; className: string };
 
-const map = {
-  zap: Zap,
-  mouse: MousePointer2,
-  cube: Boxes,
-  clock: Clock,
-  refresh: RefreshCw,
-  leaf: Leaf,
-} as const;
+const laneIcon: Record<LaneId, LucideIcon> = {
+  sync: Zap,
+  inputContinuous: MousePointer2,
+  default: Boxes,
+  transition: Clock,
+  retry: RefreshCw,
+  idle: Leaf,
+};
 
-export const LaneIcon = ({ iconName, className }: Props) => {
-  const Icon = map[iconName];
+export const LaneIcon = ({ id, className }: Props) => {
+  const Icon = laneIcon[id];
   return <Icon className={className} aria-hidden="true" />;
 };

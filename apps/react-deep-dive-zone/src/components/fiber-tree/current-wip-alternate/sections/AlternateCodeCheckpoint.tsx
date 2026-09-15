@@ -61,7 +61,7 @@ export const AlternateCodeCheckpoint = ({ content }: Props) => {
             header={info.file}
             badge="main"
             code={content.code.content}
-            language="js"
+            language={content.code.language}
           />
 
           <GithubButton href={info.buttonHref} label={info.buttonLabel} />

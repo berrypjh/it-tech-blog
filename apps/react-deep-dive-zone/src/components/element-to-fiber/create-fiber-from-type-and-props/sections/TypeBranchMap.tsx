@@ -25,7 +25,7 @@ export const TypeBranchMap = ({ content }: Props) => (
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
-      <BranchMap centerLabel={content.centerLabel} branches={content.branches} size="lg" />
+      <BranchMap centerLabel={content.centerLabel} branches={content.branches} />
     </article>
   </section>
 );

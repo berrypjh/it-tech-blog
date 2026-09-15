@@ -71,7 +71,6 @@ export type FiberTreePointersContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       file: string;
       lookForLabel: string;
@@ -80,7 +79,6 @@ export type FiberTreePointersContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -224,7 +222,6 @@ const ko: FiberTreePointersContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
@@ -234,7 +231,6 @@ const ko: FiberTreePointersContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCode,
     },
@@ -386,7 +382,6 @@ const en: FiberTreePointersContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'File',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
@@ -396,7 +391,6 @@ const en: FiberTreePointersContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCode,
     },

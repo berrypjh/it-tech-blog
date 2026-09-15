@@ -1,5 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Atom, Braces, FunctionSquare, Link2, Target } from 'lucide-react';
+import {
+  ArrowDown,
+  Atom,
+  Braces,
+  FunctionSquare,
+  Link2,
+  type LucideIcon,
+  Target,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,11 +15,11 @@ import type { ReactCreateElementContent, RelationCard } from '../content';
 
 type Props = { content: ReactCreateElementContent['relation'] };
 
-const iconMap = {
-  braces: Braces,
-  functionSquare: FunctionSquare,
-  target: Target,
-} as const;
+const cardIcon: Record<RelationCard['id'], LucideIcon> = {
+  runtime: Braces,
+  'create-element': FunctionSquare,
+  goal: Target,
+};
 
 export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
   <section aria-labelledby="heading-relation" className="space-y-md scroll-mt-xl">
@@ -64,7 +72,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
 
 const RelationCardView = ({ card }: { card: RelationCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

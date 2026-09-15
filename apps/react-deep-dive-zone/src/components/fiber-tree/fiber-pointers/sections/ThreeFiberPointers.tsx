@@ -1,20 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { GitBranch, MoveDown, MoveRight, MoveUp } from 'lucide-react';
+import { GitBranch } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import { MiniPointerDiagram } from '../components/MiniPointerDiagram';
-import { pointerTone } from '../components/pointerStyles';
+import { pointerIcon, pointerTone } from '../components/pointerStyles';
 import type { FiberTreePointersContent, PointerCard } from '../content';
 
 type Props = { content: FiberTreePointersContent['pointers'] };
-
-const iconMap = {
-  child: MoveDown,
-  sibling: MoveRight,
-  return: MoveUp,
-} as const;
 
 export const ThreeFiberPointers = ({ content }: Props) => (
   <section id="pointers" aria-labelledby="heading-pointers" className="space-y-md scroll-mt-xl">
@@ -39,7 +33,7 @@ export const ThreeFiberPointers = ({ content }: Props) => (
 const PointerCardItem = ({ card }: { card: PointerCard }) => {
   const tone = pointerTone[card.id];
   const t = toneTokens[tone];
-  const Icon = iconMap[card.id];
+  const Icon = pointerIcon[card.id];
   return (
     <article
       className={cx(
@@ -47,7 +41,6 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         t.border,
-        t.borderHover,
       )}
     >
       <header className="flex items-center gap-sm">

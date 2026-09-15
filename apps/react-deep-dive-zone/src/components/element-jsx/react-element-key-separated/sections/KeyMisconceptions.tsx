@@ -3,6 +3,7 @@ import {
   ArrowDown,
   CheckCircle2,
   HelpCircle,
+  type LucideIcon,
   MessageSquareWarning,
   Shuffle,
   XCircle,
@@ -14,10 +15,10 @@ import type { Misconception, ReactElementKeySeparatedContent } from '../content'
 
 type Props = { content: ReactElementKeySeparatedContent['misconceptions'] };
 
-const iconMap = {
-  message: MessageSquareWarning,
-  shuffle: Shuffle,
-} as const;
+const sideIcon: Record<Misconception['id'], LucideIcon> = {
+  'props-key': MessageSquareWarning,
+  'index-key': Shuffle,
+};
 
 export const KeyMisconceptions = ({ content }: Props) => (
   <section
@@ -46,7 +47,7 @@ export const KeyMisconceptions = ({ content }: Props) => (
 );
 
 const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: string }) => {
-  const SideIcon = iconMap[card.iconName];
+  const SideIcon = sideIcon[card.id];
   return (
     <article
       className={cx(

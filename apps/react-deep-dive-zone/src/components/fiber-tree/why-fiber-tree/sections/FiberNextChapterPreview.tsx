@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowUp, Compass, HelpCircle, List, Send } from 'lucide-react';
+import { ArrowUp, Compass, HelpCircle, List, type LucideIcon, Send } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -10,15 +10,15 @@ import type { FiberCentralContent, PreviewItem } from '../content';
 
 type Props = { content: FiberCentralContent['nextPreview'] };
 
-const iconMap = {
-  send: Send,
-  list: List,
-  compass: Compass,
-  arrowUp: ArrowUp,
-} as const;
+const itemIcon: Record<PreviewItem['id'], LucideIcon> = {
+  dispatchSetState: Send,
+  enqueueUpdate: List,
+  scheduleUpdateOnFiber: Compass,
+  rootBubble: ArrowUp,
+};
 
 const toFlowStep = (item: PreviewItem): FlowStepItem => {
-  const Icon = iconMap[item.iconName];
+  const Icon = itemIcon[item.id];
   return {
     id: item.id,
     number: item.number,

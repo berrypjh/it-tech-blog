@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Braces, Eye } from 'lucide-react';
+import { Braces, Eye, type LucideIcon } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -8,15 +8,15 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroExplanationCard, JsxIsNotHtmlContent } from '../content';
 
-type Props = { content: JsxIsNotHtmlContent['hero']; className?: string };
+type Props = { content: JsxIsNotHtmlContent['hero'] };
 
-export const JsxHeroDiagram = ({ content, className }: Props) => {
+export const JsxHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.code} — ${content.explanationCards
     .map((c) => `${c.label}: ${c.title}`)
     .join(', ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm">
         <CodePreviewPanel
           code={content.code}
@@ -40,8 +40,13 @@ export const JsxHeroDiagram = ({ content, className }: Props) => {
   );
 };
 
+const cardIcon: Record<HeroExplanationCard['id'], LucideIcon> = {
+  appearance: Eye,
+  actual: Braces,
+};
+
 const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
-  const Icon = card.iconName === 'eye' ? Eye : Braces;
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

@@ -30,10 +30,8 @@ export const HostComponentHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">
-          <code className="font-mono text-[var(--term-accent)]">&lt;div /&gt;</code>는
-        </span>
-        <span className="block text-[var(--term-accent)]">어떤 Fiber가 될까?</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
       <HeroDescription>{content.description1}</HeroDescription>

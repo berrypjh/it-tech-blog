@@ -12,11 +12,10 @@ export type ComparisonCard = {
 };
 
 export type ReasonCard = {
-  id: string;
+  id: 'detect-change' | 'skip-work' | 'track-diff';
   title: string;
   body: string;
   example: string;
-  iconName: 'scales' | 'gauge' | 'trending';
   tone: 'emerald' | 'sky' | 'violet';
 };
 
@@ -25,7 +24,6 @@ export type MeaningStep = {
   number: string;
   title: string;
   body: string;
-  iconName: 'clock' | 'zap' | 'gitCompare';
   tone: ToneKey;
 };
 
@@ -33,7 +31,6 @@ export type ContinueCase = {
   id: 'state' | 'context' | 'force-update';
   title: string;
   body: string;
-  iconName: 'refresh' | 'share' | 'hammer';
   tone: ToneKey;
 };
 
@@ -97,7 +94,6 @@ export type FiberPropsContent = {
     eyebrow: string;
     title: string;
     info: {
-      title: string;
       filesLabel: string;
       file: string;
       lookForLabel: string;
@@ -106,7 +102,6 @@ export type FiberPropsContent = {
       buttonHref: string;
     };
     code: {
-      fileName: string;
       language: string;
       content: string;
     };
@@ -240,7 +235,6 @@ const ko: FiberPropsContent = {
         number: '01',
         title: 'memoizedProps',
         body: '마지막으로 커밋된 렌더에서 사용한 입력입니다.',
-        iconName: 'clock',
         tone: 'emerald',
       },
       {
@@ -248,7 +242,6 @@ const ko: FiberPropsContent = {
         number: '02',
         title: 'pendingProps',
         body: '이번 렌더 작업에 새로 들어온 입력입니다.',
-        iconName: 'zap',
         tone: 'sky',
       },
       {
@@ -256,7 +249,6 @@ const ko: FiberPropsContent = {
         number: '03',
         title: '둘을 비교',
         body: '두 props가 같은 참조(`===`)인지 확인해 다시 렌더링할지 판단합니다.',
-        iconName: 'gitCompare',
         tone: 'violet',
       },
     ],
@@ -266,21 +258,18 @@ const ko: FiberPropsContent = {
         id: 'state',
         title: 'state 업데이트',
         body: '이 Fiber에 `setState` 같은 업데이트가 예약돼 있으면 다시 렌더링합니다.',
-        iconName: 'refresh',
         tone: 'amber',
       },
       {
         id: 'context',
         title: 'context 변경',
         body: '읽고 있는 context 값이 바뀌면 props가 같아도 다시 렌더링합니다.',
-        iconName: 'share',
         tone: 'teal',
       },
       {
         id: 'force-update',
         title: 'forceUpdate',
         body: '클래스 컴포넌트의 `forceUpdate()`는 props 비교와 상관없이 다시 렌더링하게 합니다.',
-        iconName: 'hammer',
         tone: 'indigo',
       },
     ],
@@ -291,7 +280,6 @@ const ko: FiberPropsContent = {
     eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     info: {
-      title: 'React 소스코드에서 직접 확인',
       filesLabel: '파일',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: '볼 것',
@@ -301,7 +289,6 @@ const ko: FiberPropsContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCode,
     },
@@ -316,7 +303,6 @@ const ko: FiberPropsContent = {
         title: '변경 여부 판단',
         body: '이전 값과 새 값을 비교해 실제로 변경이 있는지 확인합니다.',
         example: 'label: "저장" ≠ label: "전송"',
-        iconName: 'scales',
         tone: 'emerald',
       },
       {
@@ -324,7 +310,6 @@ const ko: FiberPropsContent = {
         title: '불필요한 작업 생략 가능성',
         body: '변경이 없다면 렌더링/커밋을 건너뛰어 성능을 최적화할 수 있습니다.',
         example: '변경 없음 → 작업 생략',
-        iconName: 'gauge',
         tone: 'sky',
       },
       {
@@ -332,7 +317,6 @@ const ko: FiberPropsContent = {
         title: '이전 렌더 결과와 현재 입력의 차이 추적',
         body: '두 값을 통해 "무엇이 바뀌었는지"를 정확히 추적하고 디버깅할 수 있습니다.',
         example: '이전: 저장 → 현재: 전송',
-        iconName: 'trending',
         tone: 'violet',
       },
     ],
@@ -429,7 +413,6 @@ const en: FiberPropsContent = {
         number: '01',
         title: 'memoizedProps',
         body: 'The input used by the last committed render.',
-        iconName: 'clock',
         tone: 'emerald',
       },
       {
@@ -437,7 +420,6 @@ const en: FiberPropsContent = {
         number: '02',
         title: 'pendingProps',
         body: 'The new input that arrived for this render.',
-        iconName: 'zap',
         tone: 'sky',
       },
       {
@@ -445,7 +427,6 @@ const en: FiberPropsContent = {
         number: '03',
         title: 'Compare both',
         body: 'Checks whether the two props are the same reference (`===`) to decide whether to render again.',
-        iconName: 'gitCompare',
         tone: 'violet',
       },
     ],
@@ -455,21 +436,18 @@ const en: FiberPropsContent = {
         id: 'state',
         title: 'state update',
         body: 'If an update such as `setState` is scheduled on this Fiber, it renders again.',
-        iconName: 'refresh',
         tone: 'amber',
       },
       {
         id: 'context',
         title: 'context change',
         body: 'If a context value it reads changes, it renders again even with equal props.',
-        iconName: 'share',
         tone: 'teal',
       },
       {
         id: 'force-update',
         title: 'forceUpdate',
         body: 'A class component’s `forceUpdate()` renders again regardless of the props comparison.',
-        iconName: 'hammer',
         tone: 'indigo',
       },
     ],
@@ -480,7 +458,6 @@ const en: FiberPropsContent = {
     eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
     info: {
-      title: 'Verify in the React source',
       filesLabel: 'File',
       file: 'packages/react-reconciler/src/ReactInternalTypes.js',
       lookForLabel: 'Look for',
@@ -490,7 +467,6 @@ const en: FiberPropsContent = {
         'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js',
     },
     code: {
-      fileName: 'ReactInternalTypes.js',
       language: 'TypeScript',
       content: checkpointCodeEn,
     },
@@ -505,7 +481,6 @@ const en: FiberPropsContent = {
         title: 'Detect whether anything changed',
         body: 'Compare the prior value with the new one to confirm a real change.',
         example: 'label: "Save" ≠ label: "Send"',
-        iconName: 'scales',
         tone: 'emerald',
       },
       {
@@ -513,7 +488,6 @@ const en: FiberPropsContent = {
         title: 'Skip work when nothing changed',
         body: 'When unchanged, render/commit can be skipped to save work.',
         example: 'no change → skip work',
-        iconName: 'gauge',
         tone: 'sky',
       },
       {
@@ -521,7 +495,6 @@ const en: FiberPropsContent = {
         title: 'Track the diff between old and new',
         body: 'Knowing both values lets you trace exactly what changed when debugging.',
         example: 'before: Save → after: Send',
-        iconName: 'trending',
         tone: 'violet',
       },
     ],

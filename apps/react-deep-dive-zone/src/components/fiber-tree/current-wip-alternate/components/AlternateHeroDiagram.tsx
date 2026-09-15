@@ -7,20 +7,18 @@ import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CurrentWipAlternateContent } from '../content';
 
-type Props = { content: CurrentWipAlternateContent['hero']; className?: string };
+type Props = { content: CurrentWipAlternateContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * 현재 화면을 대표하는 current 트리와 다음 화면을 계산하는 workInProgress 트리가
  * alternate 포인터로 연결되는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const AlternateHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.currentTitle}(${content.currentSubtitle})와 ${content.wipTitle}(${content.wipSubtitle})는 ${content.centerLabel}로 연결되어 같은 논리 노드의 두 버전을 가리킵니다: ${content.nodes
-    .map((n) => n.label)
-    .join(', ')}.`;
+export const AlternateHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.currentTitle} (${content.currentSubtitle}) ↔ ${content.centerLabel} ↔ ${content.wipTitle} (${content.wipSubtitle}): ${content.nodes.map((n) => n.label).join(', ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <TreeHeader

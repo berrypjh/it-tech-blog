@@ -1,18 +1,24 @@
 import { cx } from '@berrypjh/react-ui';
-import { LayoutPanelTop, MessageSquareWarning, Search, Sparkles } from 'lucide-react';
+import {
+  LayoutPanelTop,
+  type LucideIcon,
+  MessageSquareWarning,
+  Search,
+  Sparkles,
+} from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ReactElementOwnerDevInfoContent } from '../content';
+import type { DebugBenefit, ReactElementOwnerDevInfoContent } from '../content';
 
 type Props = { content: ReactElementOwnerDevInfoContent['benefits'] };
 
-const iconMap = {
-  message: MessageSquareWarning,
-  search: Search,
-  panel: LayoutPanelTop,
-} as const;
+const cardIcon: Record<DebugBenefit['id'], LucideIcon> = {
+  warnings: MessageSquareWarning,
+  'jsx-trace': Search,
+  devtools: LayoutPanelTop,
+};
 
 export const DebugExperienceBenefits = ({ content }: Props) => (
   <section id="benefits" aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
@@ -28,7 +34,7 @@ export const DebugExperienceBenefits = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>

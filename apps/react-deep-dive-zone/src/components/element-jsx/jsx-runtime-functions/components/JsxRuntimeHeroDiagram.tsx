@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Box, Braces, Layers } from 'lucide-react';
+import { Atom, Box, Braces, Layers, type LucideIcon } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -7,19 +7,19 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { JsxRuntimeFunctionsContent, RuntimeFunctionCard } from '../content';
 
-type Props = { content: JsxRuntimeFunctionsContent['hero']; className?: string };
+type Props = { content: JsxRuntimeFunctionsContent['hero'] };
 
-const iconMap = {
-  box: Box,
-  layers: Layers,
-  braces: Braces,
-} as const;
+const cardIcon: Record<RuntimeFunctionCard['id'], LucideIcon> = {
+  jsx: Box,
+  jsxs: Layers,
+  jsxDEV: Braces,
+};
 
-export const JsxRuntimeHeroDiagram = ({ content, className }: Props) => {
+export const JsxRuntimeHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.runtimeCards.map((c) => c.name).join(', ')} → ${content.resultTitle}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col items-stretch gap-sm" aria-hidden="true">
         <ul className="grid grid-cols-1 @xl:grid-cols-3 gap-sm items-stretch">
           {content.runtimeCards.map((card) => (
@@ -38,7 +38,7 @@ export const JsxRuntimeHeroDiagram = ({ content, className }: Props) => {
 };
 
 const RuntimeFnCard = ({ card }: { card: RuntimeFunctionCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

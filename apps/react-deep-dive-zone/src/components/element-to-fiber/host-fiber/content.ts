@@ -13,7 +13,6 @@ export type TreeNode = {
   label: string;
   depth: number;
   isLast?: boolean;
-  hasChild?: boolean;
 };
 
 export type ComparisonRow = {
@@ -24,11 +23,10 @@ export type ComparisonRow = {
 };
 
 export type ModernHostCard = {
-  id: string;
+  id: 'host-component' | 'host-hoistable' | 'host-singleton';
   title: string;
   subtitle: string;
   description: string;
-  iconName: 'box' | 'package' | 'target';
   tone: ToneKey;
 };
 
@@ -103,10 +101,10 @@ export type HostComponentFiberContent = {
 };
 
 const treeNodes: TreeNode[] = [
-  { id: 'root', label: 'div', depth: 0, hasChild: true },
-  { id: 'header', label: 'header', depth: 1, hasChild: true },
+  { id: 'root', label: 'div', depth: 0 },
+  { id: 'header', label: 'header', depth: 1 },
   { id: 'button', label: 'button', depth: 2, isLast: true },
-  { id: 'main', label: 'main', depth: 1, hasChild: true, isLast: true },
+  { id: 'main', label: 'main', depth: 1, isLast: true },
   { id: 'input', label: 'input', depth: 2, isLast: true },
 ];
 
@@ -229,7 +227,6 @@ const ko: HostComponentFiberContent = {
         title: 'HostComponent',
         subtitle: '일반 DOM 요소',
         description: 'div, span, button, input 등 일반적인 DOM 태그를 위한 기본 Host Fiber.',
-        iconName: 'box',
         tone: 'emerald',
       },
       {
@@ -238,7 +235,6 @@ const ko: HostComponentFiberContent = {
         subtitle: '리소스/hoist 관련 Host 흐름',
         description:
           '스타일, 스크립트, 메타 데이터처럼 head 등으로 끌어올릴 수 있는 요소 처리 흐름.',
-        iconName: 'package',
         tone: 'sky',
       },
       {
@@ -247,7 +243,6 @@ const ko: HostComponentFiberContent = {
         subtitle: '싱글턴 성격의 Host 처리',
         description:
           '앱에서 하나만 존재해야 하는 특수 리소스나 전역 스타일 등에 사용되는 Host 흐름.',
-        iconName: 'target',
         tone: 'violet',
       },
     ],
@@ -380,7 +375,6 @@ const en: HostComponentFiberContent = {
         subtitle: 'General DOM element',
         description:
           'The default Host fiber for ordinary DOM tags like div, span, button, input, …',
-        iconName: 'box',
         tone: 'emerald',
       },
       {
@@ -389,7 +383,6 @@ const en: HostComponentFiberContent = {
         subtitle: 'Resource / hoistable Host flow',
         description:
           'Handles styles, scripts, and meta — elements that can be hoisted into <head>.',
-        iconName: 'package',
         tone: 'sky',
       },
       {
@@ -398,7 +391,6 @@ const en: HostComponentFiberContent = {
         subtitle: 'Singleton-style Host handling',
         description:
           'For elements that must exist only once in the app — special resources or global style.',
-        iconName: 'target',
         tone: 'violet',
       },
     ],

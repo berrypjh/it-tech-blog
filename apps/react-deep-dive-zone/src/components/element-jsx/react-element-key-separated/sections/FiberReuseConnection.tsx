@@ -1,4 +1,4 @@
-import { Key, Recycle, Sparkles, Split, Workflow } from 'lucide-react';
+import { Key, type LucideIcon, Recycle, Sparkles, Split, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
 import { SectionNote } from '../../../shared/note';
@@ -7,15 +7,15 @@ import type { FiberFlowStep, ReactElementKeySeparatedContent } from '../content'
 
 type Props = { content: ReactElementKeySeparatedContent['fiber'] };
 
-const iconMap = {
-  key: Key,
-  workflow: Workflow,
-  recycle: Recycle,
-  split: Split,
-} as const;
+const stepIcon: Record<FiberFlowStep['id'], LucideIcon> = {
+  'element-key': Key,
+  reconciliation: Workflow,
+  reuse: Recycle,
+  decision: Split,
+};
 
 const toFlowStep = (step: FiberFlowStep): FlowStepItem => {
-  const Icon = iconMap[step.iconName];
+  const Icon = stepIcon[step.id];
   return { ...step, icon: <Icon className="h-5 w-5" /> };
 };
 

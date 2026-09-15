@@ -2,13 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type FlowNode = {
-  id: string;
-  label: string;
-  yes: string;
-  no: string;
-};
-
 export type CompareCard = {
   id: 'function' | 'class';
   badge: string;
@@ -21,8 +14,8 @@ export type CompareCard = {
 export type FlowStep = {
   id: string;
   prompt: string;
-  yes?: { label: string; result: string; tone: 'green' | 'purple' };
-  no?: { label: string; result: string; tone: 'green' | 'purple' };
+  yes?: { label: string; result: string; tone: 'emerald' | 'violet' };
+  no?: { label: string; result: string; tone: 'emerald' | 'violet' };
 };
 
 export type WorkTagCard = {
@@ -33,10 +26,9 @@ export type WorkTagCard = {
 };
 
 export type ReasonCard = {
-  id: string;
+  id: 'call' | 'state' | 'update';
   title: string;
   description: string;
-  iconName: 'phone' | 'database' | 'zap';
   accent: ToneKey;
 };
 
@@ -169,7 +161,7 @@ const ko: FunctionClassComponentFiberContent = {
     eyebrow: '판단 기준',
     title: 'shouldConstruct는 무엇을 볼까?',
     description:
-      'React는 Component.prototype.isReactComponent 존재 여부를 바탕으로 클래스 컴포넌트인지 판단합니다.',
+      'React는 `Component.prototype.isReactComponent` 존재 여부를 바탕으로 클래스 컴포넌트인지 판단합니다.',
     emphasis:
       '핵심: 클래스 컴포넌트는 React.Component를 상속하며, prototype에 isReactComponent가 설정되어 있습니다.',
     flow: [
@@ -179,7 +171,7 @@ const ko: FunctionClassComponentFiberContent = {
         no: {
           label: '없음',
           result: 'FunctionComponent',
-          tone: 'green',
+          tone: 'emerald',
         },
       },
       {
@@ -188,12 +180,12 @@ const ko: FunctionClassComponentFiberContent = {
         yes: {
           label: '있음',
           result: 'ClassComponent',
-          tone: 'purple',
+          tone: 'violet',
         },
         no: {
           label: '없음',
           result: 'FunctionComponent',
-          tone: 'green',
+          tone: 'emerald',
         },
       },
     ],
@@ -272,7 +264,6 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
         title: '호출 방식이 다르다',
         description:
           '함수 컴포넌트는 함수 호출, 클래스 컴포넌트는 인스턴스 생성 + render 호출 방식이 필요합니다.',
-        iconName: 'phone',
         accent: 'emerald',
       },
       {
@@ -280,7 +271,6 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
         title: '상태 처리 방식이 다르다',
         description:
           '함수 컴포넌트는 Hooks 기반 상태, 클래스 컴포넌트는 this.state 기반 상태를 사용합니다.',
-        iconName: 'database',
         accent: 'sky',
       },
       {
@@ -288,7 +278,6 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
         title: '업데이트 로직이 다르다',
         description:
           '스케줄링, 재조정, 라이프사이클 처리 방식이 달라서 업데이트 로직이 다르게 적용됩니다.',
-        iconName: 'zap',
         accent: 'violet',
       },
     ],
@@ -353,7 +342,7 @@ const en: FunctionClassComponentFiberContent = {
     eyebrow: 'DECISION BASIS',
     title: 'What does shouldConstruct check?',
     description:
-      'React decides whether something is a class component by looking at Component.prototype.isReactComponent.',
+      'React decides whether something is a class component by looking at `Component.prototype.isReactComponent`.',
     emphasis:
       'Key idea: class components extend React.Component, so their prototype has isReactComponent set.',
     flow: [
@@ -363,7 +352,7 @@ const en: FunctionClassComponentFiberContent = {
         no: {
           label: 'No',
           result: 'FunctionComponent',
-          tone: 'green',
+          tone: 'emerald',
         },
       },
       {
@@ -372,12 +361,12 @@ const en: FunctionClassComponentFiberContent = {
         yes: {
           label: 'Yes',
           result: 'ClassComponent',
-          tone: 'purple',
+          tone: 'violet',
         },
         no: {
           label: 'No',
           result: 'FunctionComponent',
-          tone: 'green',
+          tone: 'emerald',
         },
       },
     ],
@@ -456,14 +445,12 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
         title: 'Different invocation',
         description:
           'Function components are called as functions; class components need to be instantiated and then have render() called.',
-        iconName: 'phone',
         accent: 'emerald',
       },
       {
         id: 'state',
         title: 'Different state handling',
         description: 'Function components use Hooks-based state; class components use this.state.',
-        iconName: 'database',
         accent: 'sky',
       },
       {
@@ -471,7 +458,6 @@ export function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode
         title: 'Different update logic',
         description:
           'Scheduling, reconciliation, and lifecycle handling all differ — update logic must apply differently.',
-        iconName: 'zap',
         accent: 'violet',
       },
     ],

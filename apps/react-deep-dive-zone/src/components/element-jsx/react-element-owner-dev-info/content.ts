@@ -12,15 +12,13 @@ export type ProdDevCard = {
   title: string;
   body: string;
   items: string[];
-  iconName: 'gauge' | 'bug';
   tone: ToneKey;
 };
 
 export type OwnerInfoCard = {
-  id: string;
+  id: 'creator' | 'warning' | 'context';
   title: string;
   body: string;
-  iconName: 'user' | 'message' | 'wrench';
   tone: ToneKey;
 };
 
@@ -29,7 +27,6 @@ export type DebugCard = {
   field: string;
   short: string;
   body: string;
-  iconName: 'stack' | 'task';
   tone: ToneKey;
 };
 
@@ -38,15 +35,13 @@ export type FreezeCard = {
   title: string;
   code: string;
   body: string;
-  iconName: 'unlock' | 'lock';
   tone: ToneKey;
 };
 
 export type DebugBenefit = {
-  id: string;
+  id: 'warnings' | 'jsx-trace' | 'devtools';
   title: string;
   body: string;
-  iconName: 'message' | 'search' | 'panel';
   tone: ToneKey;
 };
 
@@ -77,10 +72,9 @@ export type ReactElementOwnerDevInfoContent = {
     description: string;
     diagramTitle: string;
     diagramSteps: {
-      id: string;
+      id: 'parent' | 'jsx' | 'owner';
       label: string;
       tone: ToneKey;
-      iconName: 'parent' | 'jsx' | 'tag';
     }[];
     cards: OwnerInfoCard[];
   };
@@ -171,7 +165,6 @@ const ko: ReactElementOwnerDevInfoContent = {
           '실행 효율 우선',
           '번들 크기와 성능 고려',
         ],
-        iconName: 'gauge',
         tone: 'sky',
       },
       {
@@ -185,7 +178,6 @@ const ko: ReactElementOwnerDevInfoContent = {
           'Object.freeze',
           '경고와 오류 메시지 품질 향상',
         ],
-        iconName: 'bug',
         tone: 'violet',
       },
     ],
@@ -199,30 +191,27 @@ const ko: ReactElementOwnerDevInfoContent = {
       '_owner는 어떤 컴포넌트 맥락에서 이 Element가 만들어졌는지 추적하는 데 도움을 줍니다.',
     diagramTitle: '_owner가 가리키는 흐름',
     diagramSteps: [
-      { id: 'parent', label: 'ParentComponent', tone: 'sky', iconName: 'parent' },
-      { id: 'jsx', label: '<MyButton />', tone: 'violet', iconName: 'jsx' },
-      { id: 'owner', label: 'React Element._owner', tone: 'teal', iconName: 'tag' },
+      { id: 'parent', label: 'ParentComponent', tone: 'sky' },
+      { id: 'jsx', label: '<MyButton />', tone: 'violet' },
+      { id: 'owner', label: 'React Element._owner', tone: 'teal' },
     ],
     cards: [
       {
         id: 'creator',
         title: '생성 주체 추적',
         body: '어떤 컴포넌트가 해당 Element를 만들었는지 파악하는 데 도움을 줍니다.',
-        iconName: 'user',
         tone: 'cyan',
       },
       {
         id: 'warning',
         title: '경고 메시지 개선',
         body: '잘못된 key, ref, children 사용과 같은 문제를 더 정확히 안내할 수 있습니다.',
-        iconName: 'message',
         tone: 'violet',
       },
       {
         id: 'context',
         title: '개발 모드 전용 맥락',
         body: '렌더링 결과보다 개발자 경험 개선을 위한 메타데이터에 가깝습니다.',
-        iconName: 'wrench',
         tone: 'teal',
       },
     ],
@@ -239,7 +228,6 @@ const ko: ReactElementOwnerDevInfoContent = {
         field: '_debugStack',
         short: 'Element가 만들어진 호출 맥락을 추적합니다.',
         body: '어떤 파일과 컴포넌트 흐름에서 Element가 생성되었는지 오류 메시지와 디버깅 정보에 연결할 수 있습니다.',
-        iconName: 'stack',
         tone: 'violet',
       },
       {
@@ -247,7 +235,6 @@ const ko: ReactElementOwnerDevInfoContent = {
         field: '_debugTask',
         short: '개발 도구와 디버깅 정보 연결에 도움을 줍니다.',
         body: '비동기 작업이나 개발 도구의 추적 정보와 연결되어 React 내부 동작을 더 이해하기 쉽게 만듭니다.',
-        iconName: 'task',
         tone: 'teal',
       },
     ],
@@ -266,7 +253,6 @@ const ko: ReactElementOwnerDevInfoContent = {
         title: '변경 가능한 객체',
         code: "element.props.title = 'changed';",
         body: '객체가 변경 가능하면 잘못된 mutation이 조용히 지나갈 수 있습니다.',
-        iconName: 'unlock',
         tone: 'amber',
       },
       {
@@ -274,7 +260,6 @@ const ko: ReactElementOwnerDevInfoContent = {
         title: 'freeze된 Element',
         code: 'Object.freeze(element.props);\nObject.freeze(element);',
         body: '개발 모드에서는 잘못된 변경 시도를 더 빨리 알아차릴 수 있습니다.',
-        iconName: 'lock',
         tone: 'teal',
       },
     ],
@@ -306,21 +291,18 @@ const ko: ReactElementOwnerDevInfoContent = {
         id: 'warnings',
         title: '경고 메시지가 더 정확해진다',
         body: '어떤 컴포넌트가 문제 Element를 만들었는지 추적하기 쉬워집니다.',
-        iconName: 'message',
         tone: 'cyan',
       },
       {
         id: 'jsx-trace',
         title: '잘못된 JSX 사용을 빠르게 추적할 수 있다',
         body: 'key, ref, children 관련 실수를 더 구체적인 맥락에서 확인할 수 있습니다.',
-        iconName: 'search',
         tone: 'violet',
       },
       {
         id: 'devtools',
         title: '개발 도구가 더 풍부한 맥락을 제공할 수 있다',
         body: 'debug stack과 owner 정보가 더 나은 개발자 경험으로 이어집니다.',
-        iconName: 'panel',
         tone: 'teal',
       },
     ],
@@ -381,7 +363,6 @@ const en: ReactElementOwnerDevInfoContent = {
           'Execution efficiency first',
           'Bundle size and performance aware',
         ],
-        iconName: 'gauge',
         tone: 'sky',
       },
       {
@@ -395,7 +376,6 @@ const en: ReactElementOwnerDevInfoContent = {
           'Object.freeze',
           'Better warnings and error messages',
         ],
-        iconName: 'bug',
         tone: 'violet',
       },
     ],
@@ -408,30 +388,27 @@ const en: ReactElementOwnerDevInfoContent = {
     description: '_owner helps track the component context in which an Element was created.',
     diagramTitle: 'Where _owner points',
     diagramSteps: [
-      { id: 'parent', label: 'ParentComponent', tone: 'sky', iconName: 'parent' },
-      { id: 'jsx', label: '<MyButton />', tone: 'violet', iconName: 'jsx' },
-      { id: 'owner', label: 'React Element._owner', tone: 'teal', iconName: 'tag' },
+      { id: 'parent', label: 'ParentComponent', tone: 'sky' },
+      { id: 'jsx', label: '<MyButton />', tone: 'violet' },
+      { id: 'owner', label: 'React Element._owner', tone: 'teal' },
     ],
     cards: [
       {
         id: 'creator',
         title: 'Creator tracking',
         body: 'Helps identify which component produced a given Element.',
-        iconName: 'user',
         tone: 'cyan',
       },
       {
         id: 'warning',
         title: 'Better warning messages',
         body: 'Issues with key, ref, children can be reported with more precise context.',
-        iconName: 'message',
         tone: 'violet',
       },
       {
         id: 'context',
         title: 'Dev-only context',
         body: 'Closer to metadata that improves developer experience than to render output.',
-        iconName: 'wrench',
         tone: 'teal',
       },
     ],
@@ -448,7 +425,6 @@ const en: ReactElementOwnerDevInfoContent = {
         field: '_debugStack',
         short: 'Tracks the call context in which the Element was created.',
         body: 'Connects errors and debug info to the file and component flow that produced the Element.',
-        iconName: 'stack',
         tone: 'violet',
       },
       {
@@ -456,7 +432,6 @@ const en: ReactElementOwnerDevInfoContent = {
         field: '_debugTask',
         short: 'Bridges dev tools and debug info.',
         body: 'Links to async work and dev-tool traces, making React internals easier to follow.',
-        iconName: 'task',
         tone: 'teal',
       },
     ],
@@ -475,7 +450,6 @@ const en: ReactElementOwnerDevInfoContent = {
         title: 'Mutable object',
         code: "element.props.title = 'changed';",
         body: 'A mutable object lets bad mutations slip through quietly.',
-        iconName: 'unlock',
         tone: 'amber',
       },
       {
@@ -483,7 +457,6 @@ const en: ReactElementOwnerDevInfoContent = {
         title: 'Frozen Element',
         code: 'Object.freeze(element.props);\nObject.freeze(element);',
         body: 'Dev mode catches improper mutation attempts much faster.',
-        iconName: 'lock',
         tone: 'teal',
       },
     ],
@@ -515,21 +488,18 @@ const en: ReactElementOwnerDevInfoContent = {
         id: 'warnings',
         title: 'Warnings get more precise',
         body: 'Easier to trace which component produced the problematic Element.',
-        iconName: 'message',
         tone: 'cyan',
       },
       {
         id: 'jsx-trace',
         title: 'Bad JSX usage is easier to spot',
         body: 'Mistakes around key, ref, children show up with more concrete context.',
-        iconName: 'search',
         tone: 'violet',
       },
       {
         id: 'devtools',
         title: 'Dev tools offer richer context',
         body: 'debug stack and owner info translate into a better developer experience.',
-        iconName: 'panel',
         tone: 'teal',
       },
     ],

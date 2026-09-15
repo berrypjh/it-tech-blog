@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Code2, FunctionSquare, Sliders, Users } from 'lucide-react';
+import { Box, Code2, FunctionSquare, type LucideIcon, Sliders, Users } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
@@ -7,11 +7,11 @@ import type { InputCard, ReactCreateElementContent } from '../content';
 
 type Props = { content: ReactCreateElementContent['input'] };
 
-const iconMap = {
-  box: Box,
-  sliders: Sliders,
-  users: Users,
-} as const;
+const cardIcon: Record<InputCard['id'], LucideIcon> = {
+  type: Box,
+  props: Sliders,
+  children: Users,
+};
 
 export const CreateElementInputStructure = ({ content }: Props) => (
   <section aria-labelledby="heading-input" className="space-y-md scroll-mt-xl">
@@ -56,7 +56,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
 
 const InputPartCard = ({ card }: { card: InputCard }) => {
   const t = toneTokens[card.tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <article
       className={cx(

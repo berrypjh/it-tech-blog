@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, HelpCircle, Phone, Zap } from 'lucide-react';
+import { Database, HelpCircle, type LucideIcon, Phone, Zap } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FunctionClassComponentFiberContent } from '../content';
+import type { FunctionClassComponentFiberContent, ReasonCard } from '../content';
 
 type Props = { content: FunctionClassComponentFiberContent['reasons'] };
 
-const iconMap = {
-  phone: Phone,
-  database: Database,
-  zap: Zap,
-} as const;
+const cardIcon: Record<ReasonCard['id'], LucideIcon> = {
+  call: Phone,
+  state: Database,
+  update: Zap,
+};
 
 export const WhyFiberTagsDiffer = ({ content }: Props) => (
   <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const WhyFiberTagsDiffer = ({ content }: Props) => (
 
     <ul className="grid grid-cols-1 md:grid-cols-3 gap-md">
       {content.cards.map((card) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = cardIcon[card.id];
 
         return (
           <ToneCardItem key={card.id} tone={card.accent} icon={<Icon className="h-5 w-5" />}>

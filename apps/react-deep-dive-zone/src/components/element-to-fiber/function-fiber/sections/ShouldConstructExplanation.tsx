@@ -2,19 +2,15 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, HelpCircle, Lightbulb, Split } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
+import { formatInline } from '../../../shared/text';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
+import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, FunctionClassComponentFiberContent } from '../content';
 
 type Props = { content: FunctionClassComponentFiberContent['shouldConstruct'] };
 
 const amber = toneTokens.amber;
 const sky = toneTokens.sky;
-
-const branchToneKey: Record<'green' | 'purple', ToneKey> = {
-  green: 'emerald',
-  purple: 'violet',
-};
 
 export const ShouldConstructExplanation = ({ content }: Props) => (
   <section
@@ -40,11 +36,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
           )}
         >
           <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
-            React는{' '}
-            <code className={cx('font-mono font-bold', sky.text)}>
-              Component.prototype.isReactComponent
-            </code>{' '}
-            존재 여부를 바탕으로 클래스 컴포넌트인지 판단합니다.
+            {formatInline(content.description)}
           </p>
         </article>
 
@@ -127,16 +119,8 @@ const BranchOutputs = ({ step }: { step: FlowStep }) => (
   </div>
 );
 
-const BranchRow = ({
-  label,
-  result,
-  tone,
-}: {
-  label: string;
-  result: string;
-  tone: 'green' | 'purple';
-}) => {
-  const t = toneTokens[branchToneKey[tone]];
+const BranchRow = ({ label, result, tone }: NonNullable<FlowStep['yes']>) => {
+  const t = toneTokens[tone];
   return (
     <div
       className={cx(

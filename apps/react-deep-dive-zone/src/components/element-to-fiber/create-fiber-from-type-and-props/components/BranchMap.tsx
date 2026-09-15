@@ -1,10 +1,10 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Type } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { Branch, BranchKey } from '../content';
 
-const branchTone: Record<BranchKey, ToneKey> = {
+export const branchTone: Record<BranchKey, ToneKey> = {
   string: 'emerald',
   function: 'sky',
   fragment: 'violet',
@@ -21,8 +21,6 @@ const branchLabel: Record<BranchKey, string> = {
 type Props = {
   centerLabel: string;
   branches: Branch[];
-  /** sm 사이즈는 Hero용으로 조금 컴팩트 */
-  size?: 'md' | 'lg';
 };
 
 /**
@@ -30,7 +28,7 @@ type Props = {
  * - lg(데스크톱): 3x3 grid로 + 모양 배치
  * - sm/md(모바일): 위에 type, 아래 4개 카드 세로 스택
  */
-export const BranchMap = ({ centerLabel, branches, size = 'md' }: Props) => {
+export const BranchMap = ({ centerLabel, branches }: Props) => {
   const byPos = {
     top: branches.find((b) => b.position === 'top'),
     right: branches.find((b) => b.position === 'right'),
@@ -46,7 +44,7 @@ export const BranchMap = ({ centerLabel, branches, size = 'md' }: Props) => {
           'hidden lg:grid items-stretch w-full min-w-0',
           'grid-cols-[minmax(0,1fr)_minmax(0,_0.85fr)_minmax(0,1fr)]',
           'grid-rows-[auto_auto_auto]',
-          size === 'lg' ? 'gap-md' : 'gap-sm',
+          'gap-md',
         )}
         aria-hidden="true"
       >
@@ -57,7 +55,7 @@ export const BranchMap = ({ centerLabel, branches, size = 'md' }: Props) => {
 
         {/* row 2 */}
         {byPos.left && <BranchCard branch={byPos.left} />}
-        <CenterCard label={centerLabel} size={size} />
+        <CenterCard label={centerLabel} />
         {byPos.right && <BranchCard branch={byPos.right} />}
 
         {/* row 3 */}
@@ -67,37 +65,21 @@ export const BranchMap = ({ centerLabel, branches, size = 'md' }: Props) => {
       </div>
 
       {/* Mobile/Tablet: vertical stack */}
-      <div className="lg:hidden flex flex-col gap-sm">
-        <CenterCard label={centerLabel} size={size} className="self-center min-w-[140px]" />
+      <div className="lg:hidden flex flex-col gap-sm" aria-hidden="true">
+        <CenterCard label={centerLabel} className="self-center min-w-[140px]" />
         {branches.map((b) => (
           <BranchCard branch={b} key={b.id} />
         ))}
       </div>
 
-      {/* SR-only summary */}
-      <div className="sr-only">
-        <p>가운데 type 값을 기준으로 네 갈래 분기가 존재합니다.</p>
-        <ul>
-          {branches.map((b) => (
-            <li key={b.id}>
-              조건 {b.condition}일 때 {b.result}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <VisuallyHidden>
+        {`${centerLabel}: ${branches.map((b) => `${b.condition} → ${b.result}`).join(', ')}`}
+      </VisuallyHidden>
     </>
   );
 };
 
-const CenterCard = ({
-  label,
-  size,
-  className,
-}: {
-  label: string;
-  size: 'md' | 'lg';
-  className?: string;
-}) => (
+const CenterCard = ({ label, className }: { label: string; className?: string }) => (
   <div
     className={cx(
       'relative flex flex-col items-center justify-center rounded-2xl border-2',
@@ -105,22 +87,12 @@ const CenterCard = ({
       toneTokens.sky.fill.border,
       toneTokens.sky.fill.text,
       'shadow-[0_2px_0_var(--term-border)]',
-      size === 'lg' ? 'min-h-[120px] p-md' : 'min-h-[96px] p-md',
+      'min-h-[120px] p-md',
       className,
     )}
   >
-    <Type
-      className={cx(size === 'lg' ? 'h-7 w-7' : 'h-6 w-6', 'opacity-90 mb-1')}
-      aria-hidden="true"
-    />
-    <code
-      className={cx(
-        'font-mono font-extrabold tracking-tight',
-        size === 'lg' ? 'text-2xl' : 'text-xl',
-      )}
-    >
-      {label}
-    </code>
+    <Type className="h-7 w-7 opacity-90 mb-1" aria-hidden="true" />
+    <code className="font-mono font-extrabold tracking-tight text-2xl">{label}</code>
   </div>
 );
 
@@ -151,7 +123,7 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
         {branch.condition}
       </code>
 
-      <code className={cx('font-mono text-[11px] text-[var(--term-muted)] break-all')}>
+      <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">
         {branch.example}
       </code>
 

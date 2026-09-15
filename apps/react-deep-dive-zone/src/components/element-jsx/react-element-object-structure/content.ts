@@ -4,17 +4,16 @@ import type { ToneKey } from '../../shared/tones';
 
 export type HeroCallout = {
   id: string;
-  field: string;
+  field: '$$typeof' | 'type' | 'key' | 'props' | '_owner';
   label: string;
   tone: ToneKey;
 };
 
 export type SummaryPill = {
-  id: string;
+  id: 'description' | 'not-dom' | 'not-fiber' | 'render-input';
   title: string;
   body: string;
   tone: ToneKey;
-  iconName: 'fileText' | 'monitor' | 'workflow' | 'arrowRight';
 };
 
 export type FieldCard = {
@@ -23,7 +22,6 @@ export type FieldCard = {
   title: string;
   short: string;
   body: string;
-  iconName: 'fingerprint' | 'box' | 'key' | 'panel' | 'user';
   tone: ToneKey;
 };
 
@@ -31,7 +29,6 @@ export type CheckpointInfo = {
   id: string;
   label: string;
   value: string;
-  monospaced?: boolean;
 };
 
 export type IsValidRow = {
@@ -168,28 +165,24 @@ const ko: ReactElementObjectStructureContent = {
         title: '설명 객체',
         body: 'React에게 UI 구조와 데이터를 설명하는 값입니다.',
         tone: 'cyan',
-        iconName: 'fileText',
       },
       {
         id: 'not-dom',
         title: 'DOM 아님',
         body: '브라우저의 실제 DOM 노드가 아닙니다.',
         tone: 'sky',
-        iconName: 'monitor',
       },
       {
         id: 'not-fiber',
         title: 'Fiber 아님',
         body: '렌더링 계산을 담당하는 Fiber 노드가 아닙니다.',
         tone: 'violet',
-        iconName: 'workflow',
       },
       {
         id: 'render-input',
         title: '다음 계산의 입력',
         body: 'reconciler가 계산을 시작할 때의 입력입니다.',
         tone: 'teal',
-        iconName: 'arrowRight',
       },
     ],
   },
@@ -205,7 +198,6 @@ const ko: ReactElementObjectStructureContent = {
         title: 'React Element 식별 태그',
         short: 'Symbol(react.element)',
         body: '이 값이 있어야 React는 해당 객체를 React Element라고 인식할 수 있습니다.',
-        iconName: 'fingerprint',
         tone: 'cyan',
       },
       {
@@ -214,7 +206,6 @@ const ko: ReactElementObjectStructureContent = {
         title: '무엇을 렌더링할지',
         short: '문자열 태그 또는 컴포넌트',
         body: "'div' 또는 Button 같은 값으로, 렌더링 대상의 종류를 나타냅니다.",
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -223,7 +214,6 @@ const ko: ReactElementObjectStructureContent = {
         title: '형제 목록 비교용 식별자',
         short: '리스트 비교의 힌트',
         body: '리스트에서 형제 사이의 안정적인 식별을 위해 사용됩니다. 없으면 null입니다.',
-        iconName: 'key',
         tone: 'indigo',
       },
       {
@@ -232,7 +222,6 @@ const ko: ReactElementObjectStructureContent = {
         title: '렌더링 입력값',
         short: '컴포넌트에 전달되는 데이터',
         body: '컴포넌트에 전달할 모든 데이터와 children이 저장됩니다.',
-        iconName: 'panel',
         tone: 'teal',
       },
       {
@@ -241,7 +230,6 @@ const ko: ReactElementObjectStructureContent = {
         title: '개발 모드 생성 주체 추적',
         short: '디버깅용 메타 정보',
         body: '어떤 컴포넌트가 이 Element를 생성했는지 추적하는 정보입니다. 개발 모드에서 의미가 큽니다.',
-        iconName: 'user',
         tone: 'violet',
       },
     ],
@@ -393,28 +381,24 @@ const en: ReactElementObjectStructureContent = {
         title: 'Description object',
         body: 'It describes UI structure and data for React.',
         tone: 'cyan',
-        iconName: 'fileText',
       },
       {
         id: 'not-dom',
         title: 'Not a DOM node',
         body: 'It is not the actual DOM node in the browser.',
         tone: 'sky',
-        iconName: 'monitor',
       },
       {
         id: 'not-fiber',
         title: 'Not a Fiber',
         body: 'It is not the Fiber node that drives render computation.',
         tone: 'violet',
-        iconName: 'workflow',
       },
       {
         id: 'render-input',
         title: 'Input for the next step',
         body: 'It is the input the reconciler starts its computation from.',
         tone: 'teal',
-        iconName: 'arrowRight',
       },
     ],
   },
@@ -430,7 +414,6 @@ const en: ReactElementObjectStructureContent = {
         title: 'React Element identity tag',
         short: 'Symbol(react.element)',
         body: 'Without this marker, React cannot tell that the value is a React Element.',
-        iconName: 'fingerprint',
         tone: 'cyan',
       },
       {
@@ -439,7 +422,6 @@ const en: ReactElementObjectStructureContent = {
         title: 'What to render',
         short: 'A string tag or a component',
         body: "A value like 'div' or Button — the kind of thing to render.",
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -448,7 +430,6 @@ const en: ReactElementObjectStructureContent = {
         title: 'Sibling list identity',
         short: 'A hint for list diffing',
         body: 'Provides stable identity across siblings in a list. null when not used.',
-        iconName: 'key',
         tone: 'indigo',
       },
       {
@@ -457,7 +438,6 @@ const en: ReactElementObjectStructureContent = {
         title: 'Render input',
         short: 'Data handed to the component',
         body: 'Holds all data passed to the component plus children.',
-        iconName: 'panel',
         tone: 'teal',
       },
       {
@@ -466,7 +446,6 @@ const en: ReactElementObjectStructureContent = {
         title: 'Dev-mode creator trace',
         short: 'Metadata for debugging',
         body: 'Tracks which component created this Element. Mostly meaningful in dev mode.',
-        iconName: 'user',
         tone: 'violet',
       },
     ],

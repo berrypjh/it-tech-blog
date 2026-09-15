@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, Flag, Link, Network, RefreshCw } from 'lucide-react';
+import { Boxes, Flag, Link, type LucideIcon, Network, RefreshCw } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCard, ToneIconBox } from '../../../shared/tone';
@@ -8,12 +8,12 @@ import type { FiberStoredInformationContent, InfoGroupCard } from '../content';
 
 type Props = { content: FiberStoredInformationContent['groups'] };
 
-const iconMap = {
-  network: Network,
-  refresh: RefreshCw,
-  flag: Flag,
-  link: Link,
-} as const;
+const cardIcon: Record<InfoGroupCard['id'], LucideIcon> = {
+  tree: Network,
+  'update-state': RefreshCw,
+  'work-state': Flag,
+  alternate: Link,
+};
 
 export const FiberInfoGroups = ({ content }: Props) => (
   <section id="groups" aria-labelledby="heading-groups" className="space-y-md scroll-mt-xl">
@@ -38,7 +38,7 @@ export const FiberInfoGroups = ({ content }: Props) => (
 );
 
 const CardView = ({ card }: { card: InfoGroupCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = cardIcon[card.id];
   return (
     <ToneCard tone={card.accent}>
       <header className="flex items-center justify-between gap-sm">

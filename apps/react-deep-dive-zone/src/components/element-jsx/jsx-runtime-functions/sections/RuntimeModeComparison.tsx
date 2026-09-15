@@ -1,5 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Bug, CheckCircle2, Gauge, Sparkles } from 'lucide-react';
+import { Bug, CheckCircle2, Gauge, type LucideIcon, Sparkles } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -8,10 +8,10 @@ import type { JsxRuntimeFunctionsContent, ModeCard } from '../content';
 
 type Props = { content: JsxRuntimeFunctionsContent['modes'] };
 
-const iconMap = {
-  gauge: Gauge,
-  bug: Bug,
-} as const;
+const modeIcon: Record<ModeCard['id'], LucideIcon> = {
+  production: Gauge,
+  development: Bug,
+};
 
 export const RuntimeModeComparison = ({ content }: Props) => (
   <section aria-labelledby="heading-modes" className="space-y-md scroll-mt-xl">
@@ -36,7 +36,7 @@ export const RuntimeModeComparison = ({ content }: Props) => (
 );
 
 const ModeCardView = ({ card }: { card: ModeCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = modeIcon[card.id];
   return (
     <article
       className={cx(

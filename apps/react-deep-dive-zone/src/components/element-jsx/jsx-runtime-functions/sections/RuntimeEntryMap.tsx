@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Box, Braces, Code, Layers, Map } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -25,7 +25,7 @@ export const RuntimeEntryMap = ({ content }: Props) => (
       icon={<Map className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <p className="sr-only">{content.a11ySummary}</p>
+    <VisuallyHidden>{content.a11ySummary}</VisuallyHidden>
 
     <div
       className={cx(

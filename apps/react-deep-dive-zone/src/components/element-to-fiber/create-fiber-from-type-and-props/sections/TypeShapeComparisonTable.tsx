@@ -21,7 +21,7 @@ export const TypeShapeComparisonTable = ({ content }: Props) => (
     />
 
     <ComparisonTable
-      caption={`${content.title} — type 형태별 분기 비교`}
+      caption={content.title}
       headers={[
         content.headers.shape,
         content.headers.jsx,

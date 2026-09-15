@@ -1,18 +1,18 @@
-import { List, MousePointerClick, Package, Sparkles, Zap } from 'lucide-react';
+import { List, type LucideIcon, MousePointerClick, Package, Sparkles, Zap } from 'lucide-react';
 
 import { NumberedStepList } from '../../../shared/grid';
 import { SectionBadgeHeader } from '../../../shared/section';
-import type { FiberStateAndQueueContent } from '../content';
+import type { FiberStateAndQueueContent, FlowStep } from '../content';
 
 type Props = { content: FiberStateAndQueueContent['setStateFlow'] };
 
-const iconMap = {
-  cursor: MousePointerClick,
-  zap: Zap,
-  package: Package,
-  list: List,
-  sparkles: Sparkles,
-} as const;
+const stepIcon: Record<FlowStep['id'], LucideIcon> = {
+  click: MousePointerClick,
+  setstate: Zap,
+  update: Package,
+  enqueue: List,
+  process: Sparkles,
+};
 
 export const SetStateFlow = ({ content }: Props) => (
   <section id="setstate" aria-labelledby="heading-setstate" className="space-y-md scroll-mt-xl">
@@ -28,7 +28,7 @@ export const SetStateFlow = ({ content }: Props) => (
 
     <NumberedStepList
       rows={content.steps.map((step) => {
-        const Icon = iconMap[step.iconName];
+        const Icon = stepIcon[step.id];
         return {
           id: step.id,
           num: step.number,

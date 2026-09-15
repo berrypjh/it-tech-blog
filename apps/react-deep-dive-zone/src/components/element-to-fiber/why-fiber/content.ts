@@ -3,15 +3,20 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 
 export type HeroFlowStep = {
-  id: string;
+  id: 'jsx' | 'element' | 'fiber' | 'render';
   title: string;
   description: string;
-  iconName: 'braces' | 'box' | 'hexagon' | 'play';
   accent: 'emerald' | 'sky' | 'violet';
 };
 
 export type FinalFlowRow = {
-  id: string;
+  id:
+    | 'jsx'
+    | 'element'
+    | 'create-from-element'
+    | 'create-from-type-and-props'
+    | 'fiber-created'
+    | 'render-phase';
   title: string;
   description: string;
   accent: 'emerald' | 'sky' | 'violet' | 'amber';
@@ -75,28 +80,24 @@ const ko: FiberWhyNeededContent = {
         id: 'jsx',
         title: 'JSX',
         description: '개발자가 작성한 코드',
-        iconName: 'braces',
         accent: 'emerald',
       },
       {
         id: 'element',
         title: 'Element',
         description: 'UI의 고정된 설명 객체',
-        iconName: 'box',
         accent: 'emerald',
       },
       {
         id: 'fiber',
         title: 'Fiber',
         description: '작업과 상태를 가진 실행 단위',
-        iconName: 'hexagon',
         accent: 'violet',
       },
       {
         id: 'render',
         title: 'Render Phase',
         description: '실제 렌더링을 위한 작업 처리 단계',
-        iconName: 'play',
         accent: 'sky',
       },
     ],
@@ -228,28 +229,24 @@ const en: FiberWhyNeededContent = {
         id: 'jsx',
         title: 'JSX',
         description: 'Code the developer writes',
-        iconName: 'braces',
         accent: 'emerald',
       },
       {
         id: 'element',
         title: 'Element',
         description: 'A static UI description object',
-        iconName: 'box',
         accent: 'emerald',
       },
       {
         id: 'fiber',
         title: 'Fiber',
         description: 'A unit of work and state',
-        iconName: 'hexagon',
         accent: 'violet',
       },
       {
         id: 'render',
         title: 'Render Phase',
         description: 'The actual rendering work phase',
-        iconName: 'play',
         accent: 'sky',
       },
     ],

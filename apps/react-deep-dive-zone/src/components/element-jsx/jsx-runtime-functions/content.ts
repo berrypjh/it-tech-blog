@@ -9,7 +9,6 @@ export type RuntimeFunctionCard = {
   name: string;
   body1: string;
   body2: string;
-  iconName: 'box' | 'layers' | 'braces';
   tone: ToneKey;
 };
 
@@ -49,7 +48,6 @@ export type ChecklistItem = { id: string; text: string };
 export type ModeCard = {
   id: 'production' | 'development';
   title: string;
-  iconName: 'gauge' | 'bug';
   tone: ToneKey;
   checks: ChecklistItem[];
   miniCode: string;
@@ -129,7 +127,6 @@ const ko: JsxRuntimeFunctionsContent = {
         name: 'jsx',
         body1: '단일 child 경로',
         body2: '일반 요소 생성',
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -137,7 +134,6 @@ const ko: JsxRuntimeFunctionsContent = {
         name: 'jsxs',
         body1: '다중 children 경로',
         body2: '최적화된 배열 처리',
-        iconName: 'layers',
         tone: 'teal',
       },
       {
@@ -145,7 +141,6 @@ const ko: JsxRuntimeFunctionsContent = {
         name: 'jsxDEV',
         body1: '개발 모드 전용',
         body2: '디버깅 & 검증',
-        iconName: 'braces',
         tone: 'violet',
       },
     ],
@@ -282,7 +277,6 @@ const ko: JsxRuntimeFunctionsContent = {
       {
         id: 'production',
         title: 'production runtime',
-        iconName: 'gauge',
         tone: 'sky',
         checks: [
           { id: 'simple', text: '더 간결한 생성 흐름' },
@@ -293,7 +287,6 @@ const ko: JsxRuntimeFunctionsContent = {
       {
         id: 'development',
         title: 'development runtime',
-        iconName: 'bug',
         tone: 'teal',
         checks: [
           { id: 'debug-stack', text: 'debug stack' },
@@ -326,7 +319,6 @@ const en: JsxRuntimeFunctionsContent = {
         name: 'jsx',
         body1: 'Single-child path',
         body2: 'General element creation',
-        iconName: 'box',
         tone: 'sky',
       },
       {
@@ -334,7 +326,6 @@ const en: JsxRuntimeFunctionsContent = {
         name: 'jsxs',
         body1: 'Multi-children path',
         body2: 'Optimized children arrays',
-        iconName: 'layers',
         tone: 'teal',
       },
       {
@@ -342,7 +333,6 @@ const en: JsxRuntimeFunctionsContent = {
         name: 'jsxDEV',
         body1: 'Dev-mode only',
         body2: 'Debugging & validation',
-        iconName: 'braces',
         tone: 'violet',
       },
     ],
@@ -480,7 +470,6 @@ const en: JsxRuntimeFunctionsContent = {
       {
         id: 'production',
         title: 'production runtime',
-        iconName: 'gauge',
         tone: 'sky',
         checks: [
           { id: 'simple', text: 'Leaner creation flow' },
@@ -491,7 +480,6 @@ const en: JsxRuntimeFunctionsContent = {
       {
         id: 'development',
         title: 'development runtime',
-        iconName: 'bug',
         tone: 'teal',
         checks: [
           { id: 'debug-stack', text: 'debug stack' },
