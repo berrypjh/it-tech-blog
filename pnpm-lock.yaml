@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@berrypjh/react-ui':
-        specifier: ^1.1.0
-        version: 1.1.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: ^1.1.1
+        version: 1.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       lucide-react:
         specifier: ^1.16.0
         version: 1.16.0(react@19.2.5)
@@ -1039,8 +1039,8 @@ packages:
   '@berrypjh/prettier-config@1.1.0':
     resolution: {integrity: sha512-6pfhPabNgm6k1on/yh6GSirv6fwwnjhSu6M9rAVpLkNklbrUb50r+tIXCynjQD3CWIgKUn/zzj/Dt9TtDbEPsg==, tarball: https://npm.pkg.github.com/download/@berrypjh/prettier-config/1.1.0/9eac85d69d1bc41df681bc7227f6a947b54d4372}
 
-  '@berrypjh/react-ui@1.1.0':
-    resolution: {integrity: sha512-JrEgdUBi1CFoeWEygDegk98/o6/gPX4TPIJNlZ2oq4VD8zaqFFilEwWfPBhln7V036o/FU0YJErUW3K60I4qMQ==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.1.0/692407b7b8f6ecc8104f047a0801edd9849ce0d6}
+  '@berrypjh/react-ui@1.1.1':
+    resolution: {integrity: sha512-5DGczoaUEufnRVaYVI93RCiT5A5XXlAYXVtw95umL2xEhA0rvHBnpT6wQBWdqus18cs1vvGWC5BIBnLli9ZwfQ==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.1.1/9c736b1c37e201e5e8bf1d58854d31d05c854d5f}
     hasBin: true
     peerDependencies:
       react: ^19.0.0
@@ -10215,7 +10215,7 @@ snapshots:
 
   '@berrypjh/prettier-config@1.1.0': {}
 
-  '@berrypjh/react-ui@1.1.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@berrypjh/react-ui@1.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
