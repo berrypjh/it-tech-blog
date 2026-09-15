@@ -1,3 +1,5 @@
+import { VisuallyHidden } from '@berrypjh/react-ui';
+
 import { GithubIcon } from '../../../shared/icon';
 import { ExternalLink } from '../../../shared/link';
 import type { WhySourceContent } from '../content';
@@ -56,7 +58,7 @@ export const RepoCard = ({ repo }: Props) => {
               {sym}
             </span>
             <span className="text-xsm font-bold text-[var(--term-fg)] tabular-nums">
-              <span className="sr-only">{label}: </span>
+              <VisuallyHidden>{label}: </VisuallyHidden>
               {val}
             </span>
           </li>

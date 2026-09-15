@@ -2,11 +2,12 @@ import { cx } from '@berrypjh/react-ui';
 import { AppWindow, type LucideIcon, Monitor, Server } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ReactAtomIcon } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroDiagramNode, ReactDomContent } from '../content';
 
-type Props = { content: ReactDomContent['hero']; className?: string };
+type Props = { content: ReactDomContent['hero'] };
 
 const nodeIcon: Record<HeroDiagramNode['id'], LucideIcon> = {
   container: AppWindow,
@@ -18,10 +19,9 @@ const nodeIcon: Record<HeroDiagramNode['id'], LucideIcon> = {
  * Hero 우측 다이어그램 (react-package ApiNetworkDiagram과 같은 결).
  * 중앙 react-dom atom 카드 → 점선 → renderer가 만들어내는 출력 3종을 반응형 그리드(1 → 3열)로 보여준다.
  */
-export const RendererDiagram = ({ content, className }: Props) => (
+export const RendererDiagram = ({ content }: Props) => (
   <HeroDiagramShell
     a11yLabel={content.a11yFlow}
-    className={className}
     gradient="radial-gradient(circle at 50% 0%, rgba(251,191,36,0.14), transparent 55%)"
   >
     <div className="relative flex flex-col items-center gap-md">
@@ -104,19 +104,3 @@ const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
     </article>
   );
 };
-
-const ReactAtomIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.4"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
-  </svg>
-);

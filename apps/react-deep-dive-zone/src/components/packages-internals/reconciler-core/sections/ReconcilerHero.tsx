@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Layers } from 'lucide-react';
 
 import {
@@ -50,7 +50,7 @@ export const ReconcilerHero = ({ content }: Props) => {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(245,158,11,0.12),transparent_55%)]"
           />
-          <p className="sr-only">{content.a11yFlow}</p>
+          <VisuallyHidden>{content.a11yFlow}</VisuallyHidden>
 
           {/* flow header */}
           <div className="relative flex items-center gap-sm mb-md">
@@ -77,7 +77,7 @@ export const ReconcilerHero = ({ content }: Props) => {
               tone="violet"
             />
             <FieldCard
-              title="Fiber 노드"
+              title={content.fiberTitle}
               subtitle={content.fiberCaption}
               fields={content.fiberFields}
               icon={Boxes}

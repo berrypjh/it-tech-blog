@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type CorePackageId = 'react' | 'react-dom' | 'react-reconciler' | 'scheduler' | 'shared';
 
 export type CorePackage = {
@@ -430,9 +428,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       eyebrow: '다음 학습으로 이어집니다',
       title: 'packages의 중심 축을 잡았다면,',
       description:
-        '이제 저장소 루트의 다른 디렉터리인 ' +
-        'fixtures / scripts / compiler' +
-        '가 어떤 역할을 하는지 살펴봅니다.',
+        '이제 저장소 루트의 다른 디렉터리인 fixtures / scripts / compiler가 어떤 역할을 하는지 살펴봅니다.',
       cta: '다음 페이지로 이동',
       href: '/other-dirs',
     },
@@ -696,9 +692,7 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       eyebrow: 'The journey continues',
       title: 'You have the core axis of packages,',
       description:
-        'now look at the other root directories — ' +
-        'fixtures / scripts / compiler' +
-        ' — and what each is responsible for.',
+        'now look at the other root directories — fixtures / scripts / compiler — and what each is responsible for.',
       cta: 'Go to the next page',
       href: '/other-dirs',
     },

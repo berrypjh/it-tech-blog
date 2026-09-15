@@ -62,7 +62,6 @@ export type RnContent = {
     title: string;
     description: string;
     cards: CompareCard[];
-    vsLabel: string;
   };
   common: {
     eyebrow: string;
@@ -173,7 +172,6 @@ export const rnContent: Record<Locale, RnContent> = {
       eyebrow: '02 · DOM vs Native',
       title: 'DOM과 Native가 달라지는 지점',
       description: '공통 계산 축은 같지만, 실제 환경에 반영하는 방식은 이렇게 달라집니다.',
-      vsLabel: 'VS',
       cards: [
         {
           id: 'dom',
@@ -366,7 +364,6 @@ export const rnContent: Record<Locale, RnContent> = {
       eyebrow: '02 · DOM VS NATIVE',
       title: 'Where DOM and Native diverge',
       description: 'Shared axis stays the same, but environment application differs like this.',
-      vsLabel: 'VS',
       cards: [
         {
           id: 'dom',

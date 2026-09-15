@@ -44,6 +44,7 @@ export type ReconcilerContent = {
     elementFields: CodeField[];
     fiberFields: CodeField[];
     elementCaption: string;
+    fiberTitle: string;
     fiberCaption: string;
     treeCaption: string;
     treeDescription: string;
@@ -65,6 +66,7 @@ export type ReconcilerContent = {
     eyebrow: string;
     title: string;
     description: string;
+    jsxTitle: string;
     jsxCode: string;
     elementTitle: string;
     elementSubtitle: string;
@@ -225,6 +227,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       elementFields: HERO_ELEMENT_FIELDS_KO,
       fiberFields: HERO_FIBER_FIELDS_KO,
       elementCaption: '설명 객체',
+      fiberTitle: 'Fiber 노드',
       fiberCaption: '작업 단위',
       treeCaption: 'Fiber tree',
       treeDescription: 'return / child / sibling 으로 연결',
@@ -297,6 +300,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       eyebrow: '03 · Element → Fiber',
       title: 'Element → Fiber 변환 시각화',
       description: 'JSX 한 줄이 Element 설명 객체를 거쳐 Fiber 작업 단위로 바뀌어 트리를 이룹니다.',
+      jsxTitle: 'JSX 예시',
       jsxCode: '<MyButton label="저장" />',
       elementTitle: 'React Element',
       elementSubtitle: '설명 객체',
@@ -391,6 +395,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       elementFields: HERO_ELEMENT_FIELDS_EN,
       fiberFields: HERO_FIBER_FIELDS_EN,
       elementCaption: 'Description object',
+      fiberTitle: 'Fiber node',
       fiberCaption: 'Work unit',
       treeCaption: 'Fiber tree',
       treeDescription: 'connected by return / child / sibling',
@@ -466,6 +471,7 @@ export const reconcilerContent: Record<Locale, ReconcilerContent> = {
       title: 'Visualizing the Element → Fiber conversion',
       description:
         'A single line of JSX turns into a description object, then a work unit, then a tree.',
+      jsxTitle: 'JSX example',
       jsxCode: '<MyButton label="Save" />',
       elementTitle: 'React Element',
       elementSubtitle: 'Description object',

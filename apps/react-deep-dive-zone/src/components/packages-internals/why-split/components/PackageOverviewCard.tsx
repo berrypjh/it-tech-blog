@@ -32,20 +32,11 @@ type Props = {
   flowLabel: string;
   sideLabel: string;
   a11yFlow: string;
-  className?: string;
 };
 
-export const PackageOverviewCard = ({
-  mainFlow,
-  side,
-  flowLabel,
-  sideLabel,
-  a11yFlow,
-  className,
-}: Props) => (
+export const PackageOverviewCard = ({ mainFlow, side, flowLabel, sideLabel, a11yFlow }: Props) => (
   <HeroDiagramShell
     a11yLabel={a11yFlow}
-    className={className}
     gradient="radial-gradient(circle at 18% 12%, rgba(56,189,248,0.10), transparent 55%), radial-gradient(circle at 82% 88%, rgba(251,191,36,0.10), transparent 55%)"
   >
     <span className="relative block text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">

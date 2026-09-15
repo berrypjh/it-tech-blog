@@ -18,33 +18,10 @@ type Props = { content: NotAllFilesContent['approaches'] };
 
 type Variant = 'wrong' | 'good';
 
-const variantClasses: Record<
-  Variant,
-  {
-    border: string;
-    headerIconBg: string;
-    headerIconText: string;
-    headerText: string;
-    rowAccent: string;
-    rowHover: string;
-  }
-> = {
-  wrong: {
-    border: 'border-[var(--term-border)]',
-    headerIconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
-    headerIconText: 'text-rose-600 dark:text-rose-300',
-    headerText: 'text-rose-600 dark:text-rose-300',
-    rowAccent: 'text-rose-600 dark:text-rose-300',
-    rowHover: 'group-hover:bg-[var(--term-surface)]',
-  },
-  good: {
-    border: 'border-[var(--term-border)]',
-    headerIconBg: 'bg-[var(--term-surface)] border border-[var(--term-border)]',
-    headerIconText: 'text-teal-600 dark:text-teal-300',
-    headerText: 'text-teal-600 dark:text-teal-300',
-    rowAccent: 'text-teal-600 dark:text-teal-300',
-    rowHover: 'group-hover:bg-[var(--term-surface)]',
-  },
+/** 잘못된/좋은 접근을 구분하는 의미색. */
+const accentText: Record<Variant, string> = {
+  wrong: 'text-rose-600 dark:text-rose-300',
+  good: 'text-teal-600 dark:text-teal-300',
 };
 
 const ApproachPanel = ({
@@ -56,45 +33,35 @@ const ApproachPanel = ({
   title: string;
   items: ApproachItem[];
 }) => {
-  const t = variantClasses[variant];
+  const accent = accentText[variant];
   const HeaderIcon = variant === 'wrong' ? X : Check;
   return (
-    <article
-      className={cx(
-        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-      )}
-    >
+    <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
         <span
           aria-hidden="true"
           className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full shadow-[0_1px_0_var(--term-border)]',
-            t.headerIconBg,
-            t.headerIconText,
+            'bg-[var(--term-surface)] border border-[var(--term-border)]',
+            accent,
           )}
         >
           <HeaderIcon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
         </span>
-        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', t.headerText)}>{title}</h3>
+        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', accent)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-sm">
         {items.map((item) => {
           const Icon = itemIcon[item.id];
           return (
-            <li key={item.id} className="group">
-              <div
-                className={cx(
-                  'grid grid-cols-[auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
-                  t.rowHover,
-                )}
-              >
+            <li key={item.id}>
+              <div className="grid grid-cols-[auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-all hover:-translate-y-0.5">
                 <span
                   aria-hidden="true"
                   className={cx(
                     'inline-flex items-center justify-center w-7 h-7 rounded-md shrink-0',
-                    t.rowAccent,
+                    accent,
                   )}
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />

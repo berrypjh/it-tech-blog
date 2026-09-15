@@ -4,21 +4,20 @@ import { type LucideIcon, Monitor, Package, Smartphone } from 'lucide-react';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
-import { toneTokens } from '../../../shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RnContent } from '../content';
 
-type Props = { hero: RnContent['hero']; className?: string };
+type Props = { hero: RnContent['hero'] };
 
 /**
  * Hero 우측 다이어그램.
  * React Element → react-reconciler → Web/Native 분기 구조.
  * 데스크톱은 가로 분기, 모바일은 세로 stack.
  */
-export const BranchDiagram = ({ hero, className }: Props) => {
+export const BranchDiagram = ({ hero }: Props) => {
   return (
     <HeroDiagramShell
       a11yLabel={hero.a11y}
-      className={className}
       padding="px-md py-lg sm:p-lg"
       gradient="radial-gradient(circle at 50% 25%, rgba(245,158,11,0.12), transparent 55%)"
     >
@@ -105,7 +104,7 @@ const ReconcilerCenter = ({ label, subtitle }: { label: string; subtitle: string
 type BranchColumnProps = {
   title: string;
   steps: string[];
-  tone: 'sky' | 'violet';
+  tone: ToneKey;
   icon: LucideIcon;
 };
 

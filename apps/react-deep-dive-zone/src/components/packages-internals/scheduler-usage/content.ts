@@ -96,6 +96,15 @@ export type SchedulerContent = {
     orderTitle: string;
     tasks: { label: string; priority: number; reason: string }[];
     result: { title: string; items: string[] };
+    labels: {
+      run: string;
+      running: string;
+      rerun: string;
+      idle: string;
+      dispatching: string;
+      done: string;
+      pending: string;
+    };
   };
   nextStep: {
     eyebrow: string;
@@ -321,6 +330,15 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
           '큰 작업도 UI를 멈추지 않고 처리',
         ],
       },
+      labels: {
+        run: '스케줄러 실행',
+        running: '처리 중…',
+        rerun: '다시 실행',
+        idle: '실행 대기 중',
+        dispatching: '우선순위로 디스패치 중',
+        done: '모든 작업 처리 완료',
+        pending: '처리 대기',
+      },
     },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
@@ -507,6 +525,15 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       result: {
         title: 'Outcome',
         items: ['Minimal input lag', 'Smooth scroll & typing', 'Large work without UI freezes'],
+      },
+      labels: {
+        run: 'Run scheduler',
+        running: 'Processing…',
+        rerun: 'Run again',
+        idle: 'Waiting to run',
+        dispatching: 'Dispatching by priority',
+        done: 'All tasks processed',
+        pending: 'Pending',
       },
     },
     nextStep: {

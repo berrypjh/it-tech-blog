@@ -1,8 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import type { LucideIcon } from 'lucide-react';
 
-import type { ToneKey } from '../../../shared/tones';
-import { toneTokens } from '../../../shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DiagramStep } from '../content';
 
 type Props = {
@@ -13,22 +12,13 @@ type Props = {
   icon: LucideIcon;
   /** reconciler는 페이지 chrome accent, renderer는 sky 톤을 쓴다. */
   tone?: ToneKey;
-  className?: string;
 };
 
 /**
  * Hero 우측에서 사용하는 reconciler/renderer 단계 카드.
  * 제목 + 부제 + 3단계 pill + 하단 라벨로 구성된다.
  */
-export const RoleStepsCard = ({
-  title,
-  subtitle,
-  steps,
-  footerLabel,
-  icon: Icon,
-  tone,
-  className,
-}: Props) => {
+export const RoleStepsCard = ({ title, subtitle, steps, footerLabel, icon: Icon, tone }: Props) => {
   const text = tone ? toneTokens[tone].text : 'text-[var(--term-accent)]';
 
   return (
@@ -37,7 +27,6 @@ export const RoleStepsCard = ({
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        className,
       )}
     >
       <header className="flex items-center gap-sm">

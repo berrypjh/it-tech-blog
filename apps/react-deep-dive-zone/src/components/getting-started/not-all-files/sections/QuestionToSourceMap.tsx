@@ -71,6 +71,7 @@ export const QuestionToSourceMap = ({ content }: Props) => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md items-stretch">
         {content.rows.map((row) => {
           const tone = toneTokens[row.tone].text;
+          const pill = cx(chip, tone);
           return (
             <li
               key={row.id}
@@ -94,18 +95,18 @@ export const QuestionToSourceMap = ({ content }: Props) => {
               {/* 질문 → 파일 → fn 단계 */}
               <ol className="flex flex-col gap-1.5 pl-3 border-l-2 border-[var(--term-border)]">
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file1} cls={cx(chip, tone)} />
+                  <FilePill name={row.file1} cls={pill} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn1} cls={cx(chip, tone)} />
+                  <FnPill name={row.fn1} cls={pill} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file2} cls={cx(chip, tone)} />
+                  <FilePill name={row.file2} cls={pill} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn2} cls={cx(chip, tone)} />
+                  <FnPill name={row.fn2} cls={pill} />
                 </li>
               </ol>
             </li>

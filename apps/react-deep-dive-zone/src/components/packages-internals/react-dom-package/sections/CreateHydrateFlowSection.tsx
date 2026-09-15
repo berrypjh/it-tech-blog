@@ -46,8 +46,8 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
 
       <ol className="flex flex-col gap-sm">
         {card.steps.map((step) => (
-          <li key={step.id} className="group">
-            <div className="flex min-w-0 flex-col gap-0.5 p-md rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-colors group-hover:bg-[var(--term-surface)]">
+          <li key={step.id}>
+            <div className="flex min-w-0 flex-col gap-0.5 p-md rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-all hover:-translate-y-0.5">
               <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
                 {step.step}
               </span>

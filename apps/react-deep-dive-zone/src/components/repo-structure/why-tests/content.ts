@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ComparePoint = {
   text: string;
 };
@@ -61,7 +59,6 @@ export type TestCodeContent = {
     title: string;
     description: string;
     rows: FilePair[];
-    banner: string;
     implementationLabel: string;
     testLabel: string;
   };
@@ -236,7 +233,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           },
         },
       ],
-      banner: '구현과 테스트를 함께 읽는 습관을 들이세요.',
     },
     spotlight: {
       eyebrow: '04 · 테스트 읽기',
@@ -289,7 +285,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '구현과 테스트를 함께 읽는 방법을 익혔다면,',
-      description: '이제 버전 맥락을 읽는 법, 즉 ' + 'CHANGELOG와 Releases' + '를 구분해봅니다.',
+      description: '이제 버전 맥락을 읽는 법, 즉 CHANGELOG와 Releases를 구분해봅니다.',
       cta: '다음 페이지로 이동',
       href: '/changelog',
     },
@@ -400,7 +396,6 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
           },
         },
       ],
-      banner: 'Build the habit of reading implementation and tests together.',
     },
     spotlight: {
       eyebrow: '04 · READ A TEST',
@@ -453,7 +448,7 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'With implementation + tests mastered,',
-      description: 'next learn to read the version context — ' + 'CHANGELOG vs Releases' + '.',
+      description: 'next learn to read the version context — CHANGELOG vs Releases.',
       cta: 'Go to the next page',
       href: '/changelog',
     },

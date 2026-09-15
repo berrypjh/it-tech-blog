@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type RepoTreeRowKind = 'dir' | 'doc';
 
 export type RepoTreeRow = {
@@ -309,7 +307,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 루트 구조를 읽었다면,',
-      description: '이제 React 구현의 중심인 ' + 'packages 디렉터리' + '로 들어갑니다.',
+      description: '이제 React 구현의 중심인 packages 디렉터리로 들어갑니다.',
       cta: '다음 페이지로 이동',
       href: '/packages-dir',
     },
@@ -535,7 +533,7 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'You have read the repo root structure,',
-      description: 'now step into ' + 'packages' + ', the heart of the React implementation.',
+      description: 'now step into packages, the heart of the React implementation.',
       cta: 'Go to the next page',
       href: '/packages-dir',
     },

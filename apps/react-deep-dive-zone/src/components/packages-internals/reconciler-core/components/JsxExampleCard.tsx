@@ -6,10 +6,9 @@ import { toneTokens } from '../../../shared/tones';
 type Props = {
   title: string;
   code: string;
-  className?: string;
 };
 
-export const JsxExampleCard = ({ title, code, className }: Props) => {
+export const JsxExampleCard = ({ title, code }: Props) => {
   const tone = toneTokens.sky;
 
   return (
@@ -19,7 +18,6 @@ export const JsxExampleCard = ({ title, code, className }: Props) => {
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        className,
       )}
     >
       <header className="flex items-center gap-2">

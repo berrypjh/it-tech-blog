@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type HeroBranchNode = {
   id: 'fixtures' | 'scripts' | 'compiler';
   name: string;
@@ -317,8 +315,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 전체 주변 구조를 파악했다면,',
-      description:
-        '이제 가장 자주 혼동되는 두 패키지, ' + 'react와 react-dom' + '의 차이를 정리합니다.',
+      description: '이제 가장 자주 혼동되는 두 패키지, react와 react-dom의 차이를 정리합니다.',
       cta: '다음 페이지로 이동',
       href: '/react-vs-react-dom',
     },
@@ -515,7 +512,7 @@ export const surroundingContent: Record<Locale, SurroundingContent> = {
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'With the surrounding structure mapped out,',
-      description: 'time to clear up the most-confused pair — ' + 'react vs react-dom' + '.',
+      description: 'time to clear up the most-confused pair — react vs react-dom.',
       cta: 'Go to the next page',
       href: '/react-vs-react-dom',
     },

@@ -7,8 +7,6 @@ import type { PackageDesignContent } from '../content';
 
 type Props = { content: PackageDesignContent['recap'] };
 
-const DIAGRAM_A11Y = `사용자 코드 → react → react-reconciler → renderer → DOM / Native 중앙 흐름과, 우측에 scheduler / shared 두 보조 축이 있는 종합 다이어그램. 각 단계에는 패키지 역할을 한 문장으로 설명하는 문구가 붙어 있다.`;
-
 export const RecapSection = ({ content }: Props) => {
   return (
     <section aria-labelledby="heading-recap" className="space-y-md">
@@ -24,7 +22,7 @@ export const RecapSection = ({ content }: Props) => {
         main={content.main}
         scheduler={content.scheduler}
         shared={content.shared}
-        a11y={DIAGRAM_A11Y}
+        a11y={content.a11y}
       />
 
       <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />}>

@@ -1,6 +1,7 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Code, Layers, type LucideIcon, Map, Monitor, Smartphone } from 'lucide-react';
 
+import { DownArrow } from '../../../shared/icon';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -50,7 +51,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(56,189,248,0.10),transparent_55%)]"
           />
-          <p className="sr-only">{a11y}</p>
+          <VisuallyHidden>{a11y}</VisuallyHidden>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
             <FlowNode label={d.elementTitle} tone="sky" icon={Layers} />
@@ -194,15 +195,6 @@ const FlowNode = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);
 
 const BranchArrows = () => (
   <svg

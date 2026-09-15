@@ -13,7 +13,6 @@ type Props = {
   tone: ToneKey;
   /** 더 큰 강조용 */
   emphasized?: boolean;
-  className?: string;
 };
 
 /**
@@ -27,7 +26,6 @@ export const FieldCard = ({
   icon: Icon,
   tone,
   emphasized = false,
-  className,
 }: Props) => {
   const t = toneTokens[tone];
 
@@ -39,7 +37,6 @@ export const FieldCard = ({
         emphasized ? 'bg-[var(--term-surface)]' : 'bg-[var(--term-bg)]',
         'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        className,
       )}
     >
       <header className="flex items-center gap-sm">

@@ -1,7 +1,6 @@
 import { Boxes, Clock, HelpCircle, type LucideIcon, Monitor } from 'lucide-react';
 
-import type { MisconceptionItem } from '../../../shared/misconception';
-import { MisconceptionCardGrid } from '../../../shared/misconception';
+import { MisconceptionCardGrid, type MisconceptionItem } from '../../../shared/misconception';
 import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { MisconceptionCard, WhySplitContent } from '../content';

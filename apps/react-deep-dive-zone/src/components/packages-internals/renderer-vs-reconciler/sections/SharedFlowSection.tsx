@@ -1,9 +1,9 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Code, GitBranch, Layers, type LucideIcon, Monitor, Smartphone } from 'lucide-react';
 
+import { DownArrow } from '../../../shared/icon';
 import { SectionHeader } from '../../../shared/section';
-import type { ToneKey } from '../../../shared/tones';
-import { toneTokens } from '../../../shared/tones';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 
 type Props = { content: RvrContent['flow'] };
@@ -39,7 +39,7 @@ export const SharedFlowSection = ({ content }: Props) => {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,var(--term-accent-soft),transparent_55%)] opacity-50"
           />
-          <p className="sr-only">{a11y}</p>
+          <VisuallyHidden>{a11y}</VisuallyHidden>
 
           <div className="relative flex flex-col items-center gap-sm" aria-hidden="true">
             <FlowNode label={content.elementLabel} tone="sky" icon={Layers} />
@@ -169,15 +169,6 @@ const FlowNode = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);
 
 const BranchArrows = () => (
   <svg

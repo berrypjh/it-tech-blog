@@ -20,7 +20,7 @@ export const ComparisonSection = ({ content }: Props) => {
 
       <ComparisonTable
         caption={content.title}
-        headers={['항목', content.columns.reconciler, content.columns.renderer]}
+        headers={[content.columns.item, content.columns.reconciler, content.columns.renderer]}
         columnWidths={['20%', '40%', '40%']}
         rows={content.rows.map((row) => ({
           label: row.label,

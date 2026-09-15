@@ -40,11 +40,12 @@ export const QueueSection = ({ content }: Props) => {
     const step = priority - 1;
     return cursor === step ? 'active' : cursor > step ? 'done' : 'idle';
   };
+  const { labels } = content;
   const status = completed
-    ? '모든 작업 처리 완료'
+    ? labels.done
     : running
-      ? `우선순위로 디스패치 중 ${cursor + 1}/${taskCount}`
-      : '실행 대기 중';
+      ? `${labels.dispatching} ${cursor + 1}/${taskCount}`
+      : labels.idle;
 
   return (
     <section aria-labelledby="heading-queue" className="space-y-md">
@@ -82,7 +83,7 @@ export const QueueSection = ({ content }: Props) => {
             ) : (
               <PlayCircle className="h-4 w-4" aria-hidden="true" />
             )}
-            {completed ? '다시 실행' : running ? '처리 중…' : '스케줄러 실행'}
+            {completed ? labels.rerun : running ? labels.running : labels.run}
           </button>
           <span
             aria-live="polite"
@@ -215,7 +216,7 @@ export const QueueSection = ({ content }: Props) => {
                       </span>
                     ) : (
                       <span className="self-center text-xsm text-[var(--term-dim)] break-keep">
-                        처리 대기
+                        {labels.pending}
                       </span>
                     )}
                   </li>

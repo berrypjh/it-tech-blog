@@ -21,7 +21,7 @@ export const ElementFiberSection = ({ content }: Props) => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md items-stretch">
-        <JsxExampleCard title="JSX 예시" code={content.jsxCode} />
+        <JsxExampleCard title={content.jsxTitle} code={content.jsxCode} />
         <FieldCard
           title={content.elementTitle}
           subtitle={content.elementSubtitle}

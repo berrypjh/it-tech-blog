@@ -50,7 +50,7 @@ export type RvrContent = {
     eyebrow: string;
     title: string;
     description: string;
-    columns: { reconciler: string; renderer: string };
+    columns: { item: string; reconciler: string; renderer: string };
     rows: ComparisonRow[];
   };
   hostConfig: {
@@ -196,7 +196,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       eyebrow: '02 · 비교',
       title: 'reconciler vs renderer 비교',
       description: '네 가지 관점에서 두 패키지의 책임을 한 번에 정리합니다.',
-      columns: { reconciler: 'reconciler', renderer: 'renderer' },
+      columns: { item: '항목', reconciler: 'reconciler', renderer: 'renderer' },
       rows: [
         {
           id: 'question',
@@ -352,7 +352,7 @@ export const rvrContent: Record<Locale, RvrContent> = {
       eyebrow: '02 · COMPARISON',
       title: 'reconciler vs renderer',
       description: 'Four angles, two answers — at a glance.',
-      columns: { reconciler: 'reconciler', renderer: 'renderer' },
+      columns: { item: 'Aspect', reconciler: 'reconciler', renderer: 'renderer' },
       rows: [
         {
           id: 'question',

@@ -11,8 +11,7 @@ import type { InternalFileCard, ReactPackageContent } from '../content';
 type Props = { content: ReactPackageContent['sourceCheckpoint'] };
 
 export const PublicApiSourceCheckpoint = ({ content }: Props) => {
-  const fileItem = content.items.find((item) => item.id === 'file');
-  const viewItem = content.items.find((item) => item.id === 'view');
+  const [fileItem, viewItem] = content.items;
 
   return (
     <section aria-labelledby="heading-source-checkpoint" className="space-y-md scroll-mt-2xl">
@@ -30,15 +29,15 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
         <CheckpointInfoCard
           rows={[
             {
-              label: fileItem?.label ?? '',
-              value: <code className="font-mono break-all">{fileItem?.value}</code>,
+              label: fileItem.label,
+              value: <code className="font-mono break-all">{fileItem.value}</code>,
               icon: FileText,
             },
             {
-              label: viewItem?.label ?? '',
+              label: viewItem.label,
               value: (
                 <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                  {viewItem?.value}
+                  {viewItem.value}
                 </code>
               ),
               icon: FileCode,

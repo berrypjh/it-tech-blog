@@ -5,7 +5,7 @@ import { HeroDiagramShell } from '../../../shared/hero';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DvcContent, HeroAreaItemId, HeroSideArea } from '../content';
 
-type Props = { hero: DvcContent['hero']; className?: string };
+type Props = { hero: DvcContent['hero'] };
 
 const itemIcon: Record<HeroAreaItemId, LucideIcon> = {
   element: Code,
@@ -19,13 +19,12 @@ const itemIcon: Record<HeroAreaItemId, LucideIcon> = {
 
 /**
  * Hero 우측 다이어그램.
- * 공통 렌더링 구조(amber) | DOM 전용 구현(sky) 두 영역을 중앙 분리선으로 나눈다.
+ * 공통 렌더링 구조(teal) | DOM 전용 구현(violet) 두 영역을 중앙 분리선으로 나눈다.
  */
-export const SplitDiagram = ({ hero, className }: Props) => {
+export const SplitDiagram = ({ hero }: Props) => {
   return (
     <HeroDiagramShell
       a11yLabel={hero.a11y}
-      className={className}
       padding="px-md py-lg sm:p-lg"
       gradient="radial-gradient(circle at 18% 45%, rgba(245,158,11,0.14), transparent 55%), radial-gradient(circle at 82% 45%, rgba(56,189,248,0.14), transparent 55%)"
     >

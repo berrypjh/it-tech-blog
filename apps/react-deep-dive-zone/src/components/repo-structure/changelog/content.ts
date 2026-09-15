@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type ScenarioCard = {
   id: 'latest' | 'old' | 'reason';
   question: string;
@@ -305,7 +303,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '저장소 구조와 버전 맥락까지 읽을 수 있게 되었다면,',
-      description: '마지막으로 전체 ' + '탐색 루틴' + '을 하나의 실전 순서로 정리합니다.',
+      description: '마지막으로 전체 탐색 루틴을 하나의 실전 순서로 정리합니다.',
       cta: '다음 페이지로 이동',
       href: '/exploration-order',
     },
@@ -512,8 +510,7 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'With repo structure and version context behind you,',
-      description:
-        'finally turn the full ' + 'exploration order' + ' into a single practical sequence.',
+      description: 'finally turn the full exploration order into a single practical sequence.',
       cta: 'Go to the next page',
       href: '/exploration-order',
     },

@@ -13,13 +13,10 @@ type Props = { content: UsageVsInternalsContent['demo'] };
 
 const STEP_INTERVAL_MS = 480;
 
-const prefersReducedMotion = () => {
-  if (typeof window === 'undefined' || !window.matchMedia) return false;
-  return (
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-    document.documentElement.dataset.motion === 'reduce'
-  );
-};
+/** OS 설정 또는 사이트 모션 설정(data-motion)이 reduce인지. 클릭 핸들러에서만 호출된다. */
+const prefersReducedMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+  document.documentElement.dataset.motion === 'reduce';
 
 export const InternalFlowDemo = ({ content }: Props) => {
   const totalSteps = content.progress.steps.length;

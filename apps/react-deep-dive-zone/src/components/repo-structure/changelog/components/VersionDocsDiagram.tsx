@@ -81,10 +81,6 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
   const isReleases = variant === 'releases';
   const Icon = isReleases ? FileText : BookOpen;
   const labelText = isReleases ? 'Releases' : 'CHANGELOG';
-  const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
-  const iconClass = isReleases
-    ? cx('bg-[var(--term-surface)] border-[var(--term-border)]', toneTokens.sky.text)
-    : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]';
   const titleClass = isReleases ? toneTokens.sky.text : 'text-[var(--term-accent)]';
   const dotClass = isReleases ? toneTokens.sky.dot : 'bg-[var(--term-accent)]';
 
@@ -93,7 +89,7 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
       className={cx(
         'flex flex-col gap-sm rounded-xl border p-md',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tintClass,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -102,7 +98,8 @@ const DocCard = ({ title, description, items, variant }: DocCardProps) => {
             aria-hidden="true"
             className={cx(
               'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
-              iconClass,
+              'bg-[var(--term-surface)] border-[var(--term-border)]',
+              titleClass,
             )}
           >
             <Icon className="h-4 w-4" aria-hidden="true" />

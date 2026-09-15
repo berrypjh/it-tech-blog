@@ -65,6 +65,7 @@ export type WhySplitContent = {
     description: string;
     diagramFlowLabel: string;
     diagramSideLabel: string;
+    diagramA11y: string;
   };
   architecture: {
     mainFlow: ArchitectureNode[];
@@ -101,6 +102,7 @@ export type WhySplitContent = {
     description: string;
     code: string;
     codeCaption: string;
+    codeLabel: string;
     steps: FlowStep[];
   };
   questions: {
@@ -290,6 +292,8 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
         '사용자 API, 렌더링 계산, 실제 출력 환경, 스케줄링, 공통 기반층이 서로 다른 패키지로 협력합니다.',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
+      diagramA11y:
+        '사용자 코드 → react → react-reconciler → renderer → DOM 또는 Native. scheduler와 shared는 보조 축으로 모든 단계를 떠받칩니다.',
     },
     architecture: koArchitecture,
     misconception: {
@@ -379,6 +383,7 @@ function App() {
   return <button>{count}</button>;
 }`,
       codeCaption: 'App.jsx',
+      codeLabel: '사용자 코드 예시',
       steps: [
         {
           id: 'useState',
@@ -481,6 +486,8 @@ function App() {
         'The user API, render computation, output environments, scheduling, and a shared foundation each live in their own package and cooperate.',
       diagramFlowLabel: 'main flow',
       diagramSideLabel: 'shared axis',
+      diagramA11y:
+        'User code → react → react-reconciler → renderer → DOM or Native. scheduler and shared are supporting axes beneath every step.',
     },
     architecture: enArchitecture,
     misconception: {
@@ -570,6 +577,7 @@ function App() {
   return <button>{count}</button>;
 }`,
       codeCaption: 'App.jsx',
+      codeLabel: 'User code example',
       steps: [
         {
           id: 'useState',

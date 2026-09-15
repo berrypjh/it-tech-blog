@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Monitor } from 'lucide-react';
 
 import {
@@ -47,7 +47,7 @@ export const RvrHero = ({ content }: Props) => {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,var(--term-accent-soft),transparent_55%)] opacity-50"
           />
-          <p className="sr-only">{content.a11yFlow}</p>
+          <VisuallyHidden>{content.a11yFlow}</VisuallyHidden>
 
           {/* flow label */}
           <div className="relative flex items-center gap-sm mb-md">

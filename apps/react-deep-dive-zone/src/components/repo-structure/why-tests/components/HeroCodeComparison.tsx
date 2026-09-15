@@ -68,8 +68,6 @@ const CodeCard = ({ label, code, badge, variant }: CardProps) => {
   const isImpl = variant === 'impl';
   const Icon = isImpl ? Code2 : FlaskConical;
   const accentText = isImpl ? toneTokens.sky.text : 'text-[var(--term-accent)]';
-  const tintClass = 'bg-[var(--term-surface)] border-[var(--term-border)]';
-  const labelTextClass = accentText;
   const iconChipClass = cx('bg-[var(--term-surface)] border-[var(--term-border)]', accentText);
 
   const lines = code.replace(/\n$/, '').split('\n');
@@ -79,7 +77,7 @@ const CodeCard = ({ label, code, badge, variant }: CardProps) => {
       className={cx(
         'flex flex-col gap-sm rounded-xl border p-3',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        tintClass,
+        'bg-[var(--term-surface)] border-[var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
@@ -93,7 +91,7 @@ const CodeCard = ({ label, code, badge, variant }: CardProps) => {
           >
             <Icon className="h-4 w-4" aria-hidden="true" />
           </span>
-          <span className={cx('text-[11px] font-bold tracking-tight truncate', labelTextClass)}>
+          <span className={cx('text-[11px] font-bold tracking-tight truncate', accentText)}>
             {label}
           </span>
         </div>

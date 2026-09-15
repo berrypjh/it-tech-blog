@@ -1,8 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Code } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
@@ -38,7 +37,7 @@ export const FirstCodePreview = ({ content }: Props) => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-sm pt-sm">
+      <div className="flex justify-center pt-sm">
         <GithubButton
           href="https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js"
           label={content.primaryCta}

@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type PackageBranch = {
   id: 'react' | 'react-dom' | 'react-reconciler';
   title: string;
@@ -283,7 +281,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '이제 디렉터리와 패키지 구조를 읽을 수 있게 되었습니다.',
-      description: '다음은 구현만큼 중요한 ' + '테스트 코드' + '를 어떻게 볼지 살펴봅니다.',
+      description: '다음은 구현만큼 중요한 테스트 코드를 어떻게 볼지 살펴봅니다.',
       cta: '다음 페이지로 이동',
       href: '/why-tests',
     },
@@ -459,9 +457,7 @@ export const sharedContent: Record<Locale, SharedContent> = {
       eyebrow: 'The journey continues',
       title: 'You can now read the directory and package structure.',
       description:
-        'Next, look at how to read ' +
-        'test code' +
-        ' — which is as important as the implementation itself.',
+        'Next, look at how to read test code — which is as important as the implementation itself.',
       cta: 'Go to the next page',
       href: '/why-tests',
     },

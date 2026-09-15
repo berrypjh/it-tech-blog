@@ -1,8 +1,7 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ExternalLink, FileJson, Info, Lightbulb } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
@@ -76,7 +75,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
               )}
             >
               {content.secondaryCta}
-              <span className="sr-only">(새 창에서 열림)</span>
+              <VisuallyHidden>(새 창에서 열림)</VisuallyHidden>
               <ExternalLink
                 className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
                 aria-hidden="true"

@@ -6,17 +6,16 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
 
-type Props = { hero: SchedulerContent['hero']; className?: string };
+type Props = { hero: SchedulerContent['hero'] };
 
 /**
  * Hero 우측 다이어그램.
  * 좌 - 섞여있는 작업 / 중앙 - scheduler / 우 - 재정렬된 실행 순서.
  */
-export const QueueFlowDiagram = ({ hero, className }: Props) => {
+export const QueueFlowDiagram = ({ hero }: Props) => {
   return (
     <HeroDiagramShell
       a11yLabel={hero.a11yFlow}
-      className={className}
       padding="px-md py-lg sm:p-lg"
       gradient="radial-gradient(circle at 50% 40%, rgba(217,119,6,0.10), transparent 55%)"
     >

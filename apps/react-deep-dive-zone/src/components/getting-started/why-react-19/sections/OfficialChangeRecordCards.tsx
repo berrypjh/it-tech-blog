@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Book, ExternalLink, Rss } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -126,7 +126,7 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
         )}
       >
         {card.cta}
-        <span className="sr-only">(새 창에서 열림)</span>
+        <VisuallyHidden>(새 창에서 열림)</VisuallyHidden>
         <ExternalLink
           className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
           aria-hidden="true"
@@ -149,9 +149,7 @@ export const OfficialChangeRecordCards = ({ content }: Props) => {
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-md lg:gap-lg">
         {content.cards.map((card) => (
           <li key={card.id} className="flex">
-            <div className="flex w-full">
-              <ResourceCardItem card={card} />
-            </div>
+            <ResourceCardItem card={card} />
           </li>
         ))}
       </ul>

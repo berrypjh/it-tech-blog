@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type PriorityKey = 'immediate' | 'normal' | 'low';
 
 export type HeroPriorityCard = {
@@ -358,8 +356,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '실행 타이밍을 조율하는 scheduler를 봤다면,',
-      description:
-        '이번에는 여러 패키지가 공통으로 쓰는 기반층인 ' + 'shared 패키지' + '를 살펴봅니다.',
+      description: '이번에는 여러 패키지가 공통으로 쓰는 기반층인 shared 패키지를 살펴봅니다.',
       cta: '다음 페이지로 이동',
       href: '/shared-role',
     },
@@ -561,8 +558,7 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'With the scheduler in view,',
-      description:
-        'next look at the foundation layer many packages depend on — ' + 'shared package' + '.',
+      description: 'next look at the foundation layer many packages depend on — shared package.',
       cta: 'Go to the next page',
       href: '/shared-role',
     },

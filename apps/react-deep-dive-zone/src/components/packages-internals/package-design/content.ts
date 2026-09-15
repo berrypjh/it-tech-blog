@@ -43,6 +43,7 @@ export type PackageDesignContent = {
     main: FlowNode[];
     scheduler: { title: string; subtitle: string; description: string };
     shared: { title: string; subtitle: string; description: string };
+    a11y: string;
     banner: string;
   };
   values: {
@@ -165,6 +166,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         subtitle: '공통 기반',
         description: '심벌, 타입, 버전, 기능 플래그를 공유합니다.',
       },
+      a11y: '사용자 코드 → react → react-reconciler → renderer → DOM / Native 중앙 흐름과, 우측에 scheduler / shared 두 보조 축이 있는 종합 다이어그램. 각 단계에는 패키지 역할을 한 문장으로 설명하는 문구가 붙어 있다.',
       banner: 'API는 분리되고, 계산은 공유되며, 반영은 환경별로 달라진다.',
     },
     values: {
@@ -287,6 +289,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
         subtitle: 'Common foundation',
         description: 'Shares symbols, types, version and feature flags.',
       },
+      a11y: 'A combined diagram: the central flow user code → react → react-reconciler → renderer → DOM / Native, with scheduler and shared as two supporting axes on the right. Each step carries a one-sentence description of its package role.',
       banner: 'APIs are split, compute is shared, application differs per environment.',
     },
     values: {

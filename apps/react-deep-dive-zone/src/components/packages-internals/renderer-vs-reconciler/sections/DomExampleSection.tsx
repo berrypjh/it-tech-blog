@@ -1,6 +1,5 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, CheckCircle2, Monitor, Star, Workflow } from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Boxes, CheckCircle2, Monitor, Star, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';

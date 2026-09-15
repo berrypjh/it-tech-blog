@@ -52,7 +52,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
     <article
       aria-labelledby={`entrypoint-${card.id}-header`}
       className={cx(
-        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px',
+        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >

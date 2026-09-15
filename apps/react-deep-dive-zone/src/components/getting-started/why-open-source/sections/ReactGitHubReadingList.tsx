@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import {
   Code,
   ExternalLink,
@@ -37,14 +37,14 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
           const t = toneTokens[row.tone];
           const Icon = rowIcon[row.id];
           return (
-            <li key={row.id} className="group transition-colors">
+            <li key={row.id} className="group">
               <a
                 href={row.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cx(
                   'grid grid-cols-[auto_auto_1fr_auto] sm:grid-cols-[auto_auto_minmax(120px,_180px)_1fr_auto] items-center gap-sm sm:gap-md',
-                  'px-md sm:px-lg py-md sm:py-lg',
+                  'px-md sm:px-lg py-md sm:py-lg transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-inset',
                   'group-hover:bg-[var(--term-surface)]',
                 )}
@@ -84,7 +84,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 </p>
 
                 {/* 외부 링크 ↗ */}
-                <span className="sr-only">(새 창에서 열림)</span>
+                <VisuallyHidden>(새 창에서 열림)</VisuallyHidden>
                 <span
                   aria-hidden="true"
                   className="text-[var(--term-accent)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

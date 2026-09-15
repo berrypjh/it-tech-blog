@@ -12,14 +12,12 @@ import {
 } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { ReactAtomIcon } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ApiToken, ReactPackageContent } from '../content';
 
-type Props = {
-  hero: ReactPackageContent['hero'];
-  className?: string;
-};
+type Props = { hero: ReactPackageContent['hero'] };
 
 const tokenIcon: Record<ApiToken['id'], LucideIcon> = {
   useState: Database,
@@ -37,14 +35,13 @@ const tokenIcon: Record<ApiToken['id'], LucideIcon> = {
  * 중앙 react 카드를 두고 좌/우에 API 토큰들이 grid로 배치된다.
  * 데스크톱에서는 점선 connector가 보이고, 모바일에서는 connector를 숨기고 grid로만 보여준다.
  */
-export const ApiNetworkDiagram = ({ hero, className }: Props) => {
+export const ApiNetworkDiagram = ({ hero }: Props) => {
   const leftTokens = hero.tokens.filter((t) => t.side === 'left');
   const rightTokens = hero.tokens.filter((t) => t.side === 'right');
 
   return (
     <HeroDiagramShell
       a11yLabel={hero.apiNetworkAriaLabel}
-      className={className}
       padding="px-md py-lg sm:p-lg"
       gradient="radial-gradient(circle at 50% 50%, rgba(251,191,36,0.14), transparent 55%)"
     >
@@ -58,7 +55,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
         <ul className="grid grid-cols-2 gap-2 sm:gap-3 order-2 @xl:order-1">
           {leftTokens.map((token) => (
             <li key={token.id} className="flex min-w-0">
-              <TokenCard token={token} side="left" />
+              <TokenCard token={token} />
             </li>
           ))}
         </ul>
@@ -86,7 +83,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
         <ul className="grid grid-cols-2 gap-2 sm:gap-3 order-3">
           {rightTokens.map((token) => (
             <li key={token.id} className="flex min-w-0">
-              <TokenCard token={token} side="right" />
+              <TokenCard token={token} />
             </li>
           ))}
         </ul>
@@ -123,7 +120,7 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
   </div>
 );
 
-type TokenCardProps = { token: ApiToken; side: 'left' | 'right' };
+type TokenCardProps = { token: ApiToken };
 
 const TokenCard = ({ token }: TokenCardProps) => {
   const tone = toneTokens[token.tone];
@@ -185,19 +182,3 @@ const ConnectorLines = ({ direction, count }: ConnectorLinesProps) => {
     </svg>
   );
 };
-
-const ReactAtomIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.4"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
-    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
-  </svg>
-);

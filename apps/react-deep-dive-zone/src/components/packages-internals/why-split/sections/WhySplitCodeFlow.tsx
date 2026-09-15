@@ -50,7 +50,11 @@ export const WhySplitCodeFlow = ({ content }: Props) => (
       icon={<ArrowRight className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <CodePreviewPanel code={content.code} header={content.codeCaption} caption="사용자 코드 예시" />
+    <CodePreviewPanel
+      code={content.code}
+      header={content.codeCaption}
+      caption={content.codeLabel}
+    />
 
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={3} />
   </section>

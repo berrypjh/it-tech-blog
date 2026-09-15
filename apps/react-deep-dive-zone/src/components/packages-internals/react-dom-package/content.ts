@@ -73,7 +73,6 @@ export type ReactDomContent = {
     title: string;
     description: string;
     cards: CompareCardEntry[];
-    vsLabel: string;
     banner: string;
   };
   clientServer: {
@@ -190,7 +189,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           tone: 'teal',
         },
       ],
-      vsLabel: 'VS',
       banner: 'react는 UI를 설명하고, react-dom은 환경에 붙인다.',
     },
     clientServer: {
@@ -378,7 +376,6 @@ export const reactDomContent: Record<Locale, ReactDomContent> = {
           tone: 'teal',
         },
       ],
-      vsLabel: 'VS',
       banner: 'react describes the UI; react-dom mounts it onto an environment.',
     },
     clientServer: {

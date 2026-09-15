@@ -1,7 +1,6 @@
 import { cx } from '@berrypjh/react-ui';
 
-import { toneTokens } from '../../../shared/tones';
-import type { ToneKey } from '../content';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 
 type Props = {
   label: string;

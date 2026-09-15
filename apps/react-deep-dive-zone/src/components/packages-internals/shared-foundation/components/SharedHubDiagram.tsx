@@ -6,7 +6,7 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
 
-type Props = { hero: SharedContent['hero']; className?: string };
+type Props = { hero: SharedContent['hero'] };
 
 const packageIcon: Record<PackageNode['id'], LucideIcon> = {
   react: Atom,
@@ -18,10 +18,9 @@ const packageIcon: Record<PackageNode['id'], LucideIcon> = {
  * Hero 우측 허브 다이어그램.
  * 중앙 shared 허브 → 점선 → shared를 함께 쓰는 패키지 3종(반응형 그리드) → 공통 항목 체크리스트.
  */
-export const SharedHubDiagram = ({ hero, className }: Props) => (
+export const SharedHubDiagram = ({ hero }: Props) => (
   <HeroDiagramShell
     a11yLabel={hero.a11yDiagram}
-    className={className}
     gradient="radial-gradient(circle at 50% 0%, rgba(245,158,11,0.12), transparent 55%)"
   >
     <div className="relative flex flex-col items-center gap-md">

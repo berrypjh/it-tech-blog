@@ -39,7 +39,7 @@ export const WhySplitHero = ({ content, architecture }: Props) => {
           side={architecture.side}
           flowLabel={content.diagramFlowLabel}
           sideLabel={content.diagramSideLabel}
-          a11yFlow="사용자 코드 → react → react-reconciler → renderer → DOM 또는 Native. scheduler와 shared는 보조 축으로 모든 단계를 떠받칩니다."
+          a11yFlow={content.diagramA11y}
         />
       </HeroVisualColumn>
     </HeroSection>

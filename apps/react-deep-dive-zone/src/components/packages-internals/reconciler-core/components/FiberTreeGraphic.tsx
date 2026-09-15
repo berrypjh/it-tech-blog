@@ -3,7 +3,6 @@ import { cx } from '@berrypjh/react-ui';
 type Props = {
   title: string;
   description: string;
-  className?: string;
 };
 
 /**
@@ -11,7 +10,7 @@ type Props = {
  * root → 2개의 child → 각 child의 sibling 형태로 SVG 노드를 그린다.
  * accent outline 노드와 중립 outline 노드가 섞여 있다.
  */
-export const FiberTreeGraphic = ({ title, description, className }: Props) => {
+export const FiberTreeGraphic = ({ title, description }: Props) => {
   return (
     <article
       className={cx(
@@ -19,7 +18,6 @@ export const FiberTreeGraphic = ({ title, description, className }: Props) => {
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
-        className,
       )}
     >
       <header className="flex flex-col gap-1">

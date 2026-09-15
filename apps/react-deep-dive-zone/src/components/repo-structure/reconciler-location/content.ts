@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type PositionCard = {
   id: 'element' | 'reconciler' | 'renderer' | 'host';
   title: string;
@@ -110,12 +108,6 @@ export type ReconcilerEntryContent = {
     title: string;
     description: string;
     cards: PreviewCard[];
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    hint: string;
   };
   nextStep: {
     eyebrow: string;
@@ -341,16 +333,10 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         },
       ],
     },
-    question: {
-      eyebrow: '06 · 개념 점검',
-      title: '개념 점검 질문',
-      question: 'React가 Element를 바로 DOM으로 바꾸지 않고 중간에 Fiber를 두는 이유는 무엇일까?',
-      hint: '작업 단위를 관리하고, 변경 계산을 나누어 처리하기 위해서.',
-    },
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: '렌더링 계산의 중심을 이해했다면,',
-      description: '이제 그 작업을 언제 실행할지 조율하는 ' + 'scheduler 패키지' + '를 살펴봅니다.',
+      description: '이제 그 작업을 언제 실행할지 조율하는 scheduler 패키지를 살펴봅니다.',
       cta: '다음 페이지로 이동',
       href: '/scheduler-role',
     },
@@ -545,20 +531,11 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
         },
       ],
     },
-    question: {
-      eyebrow: '06 · CONCEPT CHECK',
-      title: 'Concept-check question',
-      question:
-        'Why does React put a Fiber in between, instead of turning Element directly into DOM?',
-      hint: 'To manage units of work and split change calculation into chunks.',
-    },
     nextStep: {
       eyebrow: 'The journey continues',
       title: 'With the rendering core understood,',
       description:
-        'next we look at the ' +
-        'scheduler package' +
-        ' — the one that decides when that work runs.',
+        'next we look at the scheduler package — the one that decides when that work runs.',
       cta: 'Go to the next page',
       href: '/scheduler-role',
     },

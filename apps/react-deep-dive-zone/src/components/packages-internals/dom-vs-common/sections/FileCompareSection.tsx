@@ -1,8 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { FileCode, Scale } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { GithubButton } from '../../../shared/code';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
 import { SectionHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';

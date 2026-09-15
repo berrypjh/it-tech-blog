@@ -1,4 +1,4 @@
-import { cx } from '@berrypjh/react-ui';
+import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import {
   Atom,
   Boxes,
@@ -31,17 +31,9 @@ type Props = {
   flowLabel: string;
   sideLabel: string;
   a11yFlow: string;
-  className?: string;
 };
 
-export const ArchitectureDiagram = ({
-  mainFlow,
-  side,
-  flowLabel,
-  sideLabel,
-  a11yFlow,
-  className,
-}: Props) => {
+export const ArchitectureDiagram = ({ mainFlow, side, flowLabel, sideLabel, a11yFlow }: Props) => {
   const [userCode, react, reconciler, renderer, dom, native] = mainFlow;
 
   return (
@@ -50,7 +42,6 @@ export const ArchitectureDiagram = ({
         '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
-        className,
       )}
     >
       <div
@@ -58,7 +49,7 @@ export const ArchitectureDiagram = ({
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(56,189,248,0.10),transparent_55%),radial-gradient(circle_at_82%_88%,rgba(251,191,36,0.10),transparent_55%)]"
       />
 
-      <p className="sr-only">{a11yFlow}</p>
+      <VisuallyHidden>{a11yFlow}</VisuallyHidden>
 
       <div className="relative flex items-center gap-sm">
         <span

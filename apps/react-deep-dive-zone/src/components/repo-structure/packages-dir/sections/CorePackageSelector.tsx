@@ -150,7 +150,7 @@ export const CorePackageSelector = ({ content }: Props) => {
               return (
                 <li
                   key={file}
-                  className="flex items-center gap-2 px-2 py-1 rounded text-xsm font-mono text-[var(--term-fg)] hover:bg-[var(--term-bg)]"
+                  className="flex items-center gap-2 px-2 py-1 rounded text-xsm font-mono text-[var(--term-fg)]"
                 >
                   <span
                     aria-hidden="true"

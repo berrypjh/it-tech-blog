@@ -2,8 +2,6 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type { ToneKey };
-
 export type RoleCard = {
   id: 'react' | 'react-dom';
   title: string;
@@ -325,8 +323,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
     nextStep: {
       eyebrow: '다음 학습으로 이어집니다',
       title: 'React와 DOM renderer의 경계를 이해했다면,',
-      description:
-        '이제 그 사이에서 실제 렌더링 계산을 담당하는 ' + 'react-reconciler' + '를 살펴봅니다.',
+      description: '이제 그 사이에서 실제 렌더링 계산을 담당하는 react-reconciler를 살펴봅니다.',
       cta: '다음 페이지로 이동',
       href: '/reconciler-location',
     },
@@ -519,9 +516,7 @@ export const reactVsReactDomContent: Record<Locale, ReactVsReactDomContent> = {
       eyebrow: 'The journey continues',
       title: 'Now that the React–DOM renderer boundary is clear,',
       description:
-        'turn to the engine in between — ' +
-        'react-reconciler' +
-        ' — that runs the actual rendering math.',
+        'turn to the engine in between — react-reconciler — that runs the actual rendering math.',
       cta: 'Go to the next page',
       href: '/reconciler-location',
     },

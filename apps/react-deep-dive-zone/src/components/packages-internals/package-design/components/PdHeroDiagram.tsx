@@ -7,7 +7,7 @@ import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowNode } from '../content';
 
-type Props = { main: FlowNode[]; a11y: string; className?: string };
+type Props = { main: FlowNode[]; a11y: string };
 
 const nodeIcon: Record<FlowNode['id'], LucideIcon> = {
   'user-code': Code,
@@ -22,10 +22,9 @@ const nodeIcon: Record<FlowNode['id'], LucideIcon> = {
  * 사용자 코드 → react → react-reconciler → renderer → DOM/Native 파이프라인을
  * 위에서 아래로 잇는 컴팩트 stepper. (보조 축은 본문 다이어그램에서 다룬다)
  */
-export const PdHeroDiagram = ({ main, a11y, className }: Props) => (
+export const PdHeroDiagram = ({ main, a11y }: Props) => (
   <HeroDiagramShell
     a11yLabel={a11y}
-    className={className}
     gradient="radial-gradient(circle at 50% 0%, rgba(56,189,248,0.12), transparent 55%)"
   >
     <ol className="relative flex flex-col items-center gap-sm" aria-hidden="true">
