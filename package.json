@@ -14,7 +14,6 @@
     "build:a11y": "nx run @it-tech-blog/accessibility-zone:build",
     "build:react-deep-dive": "nx run @it-tech-blog/react-deep-dive-zone:build",
     "build:next-deep-dive": "nx run @it-tech-blog/next-deep-dive-zone:build",
-    "build:mcp:commit": "nx run commit-mcp:build",
     "lint": "nx run-many -t lint --parallel",
     "test": "nx run-many -t test --parallel",
     "typecheck": "nx run-many -t typecheck --parallel",
