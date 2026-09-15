@@ -11,9 +11,9 @@ import {
   useMotion,
   useTheme,
 } from '@it-tech-blog/preferences';
-import { cn } from '@it-tech-blog/utils';
 
 import {
+  cx,
   Popover,
   PopoverPanel,
   PopoverTrigger,
@@ -207,7 +207,7 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
           <button
             onClick={resetAll}
             disabled={isDefault}
-            className={cn(
+            className={cx(
               'w-full text-[10px] py-1.5 rounded-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
               isDefault
                 ? 'text-text-light/25 cursor-default'

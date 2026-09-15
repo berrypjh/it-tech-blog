@@ -28,17 +28,17 @@
   },
   "private": true,
   "dependencies": {
-    "@berrypjh/commitlint-config": "^1.0.0",
-    "@berrypjh/eslint-config": "^1.0.0",
-    "@berrypjh/prettier-config": "^1.0.0",
-    "@berrypjh/react-ui": "^1.0.1",
-    "@berrypjh/tsconfig": "^1.0.0",
+    "@berrypjh/react-ui": "^1.1.0",
     "lucide-react": "^1.16.0",
     "next": "~16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@berrypjh/commitlint-config": "^1.1.0",
+    "@berrypjh/eslint-config": "^1.1.0",
+    "@berrypjh/prettier-config": "^1.1.0",
+    "@berrypjh/tsconfig": "^1.1.0",
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^9.8.0",

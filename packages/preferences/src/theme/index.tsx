@@ -2,7 +2,10 @@
 
 import { createContext, useCallback, useContext, useState } from 'react';
 
-export type Theme = 'dark' | 'light';
+import type { ThemeName } from '@berrypjh/react-ui';
+
+/** 사용자가 고를 수 있는 테마. react-ui `ThemeName` 중 지원하는 부분집합. */
+export type Theme = Extract<ThemeName, 'dark' | 'light'>;
 
 interface ThemeContextValue {
   resolvedTheme: Theme;

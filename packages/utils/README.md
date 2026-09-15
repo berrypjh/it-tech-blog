@@ -6,28 +6,17 @@
 
 ```
 src/
-  cn.ts     — cn, focusRing
   a11y.ts   — WCAG, getContrastRatio
   i18n.ts   — useLang
   index.ts  — 전체 re-export
 ```
 
+className 병합은 `@berrypjh/react-ui`의 `cx`를 직접 쓴다.
+
 ## 사용법
 
 ```ts
-import { cn, focusRing, WCAG, getContrastRatio, useLang } from '@it-tech-blog/utils';
-```
-
-### cn
-
-```ts
-cn('base', isActive && 'active', undefined) // → 'base active'
-```
-
-### focusRing
-
-```tsx
-<button className={cn('btn', focusRing)} />
+import { WCAG, getContrastRatio, useLang } from '@it-tech-blog/utils';
 ```
 
 ### getContrastRatio / WCAG

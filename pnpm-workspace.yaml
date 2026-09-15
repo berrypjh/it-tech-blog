@@ -13,3 +13,10 @@ allowBuilds:
   unrs-resolver: true
 
 autoInstallPeers: true
+
+minimumReleaseAgeExclude:
+  - "@berrypjh/tsconfig@1.1.0"
+  - "@berrypjh/react-ui@1.1.0"
+  - "@berrypjh/commitlint-config@1.1.0"
+  - "@berrypjh/eslint-config@1.1.0"
+  - "@berrypjh/prettier-config@1.1.0"

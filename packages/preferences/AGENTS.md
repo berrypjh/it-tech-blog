@@ -27,6 +27,8 @@ src/
 
 기본값은 HTML 속성을 생략한다. CSS는 속성이 있을 때만 오버라이드하는 방식.
 
+`Theme` 타입은 `@berrypjh/react-ui`의 `ThemeName`에서 `Extract`로 뽑는다. react-ui에 없는 테마 이름은 추가할 수 없다.
+
 ## 패턴
 
 모든 설정은 동일한 패턴을 따른다.
