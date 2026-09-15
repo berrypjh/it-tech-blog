@@ -62,6 +62,7 @@ export type DvcContent = {
     domSpecific: HeroSideArea;
   };
   table: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -69,12 +70,14 @@ export type DvcContent = {
     rows: TableRow[];
   };
   reading: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ReadingCard[];
   };
   fileCompare: {
+    badge: string;
     eyebrow: string;
     title: string;
     centerMessage: { line1: string; line2: string; line3: string };
@@ -82,6 +85,7 @@ export type DvcContent = {
     rightFile: FileCard;
   };
   concerns: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -155,7 +159,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
     },
     table: {
-      eyebrow: '01 · 코드 비교',
+      badge: '01',
+      eyebrow: '코드 비교',
       title: '공통 코드 vs DOM 전용 코드',
       description: '같은 React 내부 코드라도 책임이 어디에 속하는지 표로 한 번에 정리합니다.',
       headers: {
@@ -197,7 +202,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     reading: {
-      eyebrow: '02 · 읽기법',
+      badge: '02',
+      eyebrow: '읽기법',
       title: '두 축을 나누어 보는 저장소 읽기법',
       description: '관심사에 따라 들어가야 할 패키지가 달라집니다.',
       cards: [
@@ -228,7 +234,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     fileCompare: {
-      eyebrow: '03 · 실제 파일',
+      badge: '03',
+      eyebrow: '실제 파일',
       title: '실제 파일 두 개로 비교',
       centerMessage: {
         line1: '같은 React 내부라도',
@@ -257,7 +264,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
     },
     concerns: {
-      eyebrow: '04 · DOM 관심사',
+      badge: '04',
+      eyebrow: 'DOM 관심사',
       title: 'DOM 전용 관심사 예시',
       description: 'react-dom이 다루는 환경 특화 관심사를 4가지로 살펴봅니다.',
       cards: [
@@ -332,7 +340,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
     },
     table: {
-      eyebrow: '01 · COMPARISON',
+      badge: '01',
+      eyebrow: 'COMPARISON',
       title: 'Shared code vs DOM-only code',
       description: 'Same React internals, different responsibility — at a glance.',
       headers: {
@@ -374,7 +383,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     reading: {
-      eyebrow: '02 · READING METHOD',
+      badge: '02',
+      eyebrow: 'READING METHOD',
       title: 'Reading the repo along two axes',
       description: 'Choose which package to dive into based on what you want to learn.',
       cards: [
@@ -405,7 +415,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       ],
     },
     fileCompare: {
-      eyebrow: '03 · REAL FILES',
+      badge: '03',
+      eyebrow: 'REAL FILES',
       title: 'A side-by-side of two real files',
       centerMessage: {
         line1: 'Same React internals,',
@@ -434,7 +445,8 @@ export const dvcContent: Record<Locale, DvcContent> = {
       },
     },
     concerns: {
-      eyebrow: '04 · DOM CONCERNS',
+      badge: '04',
+      eyebrow: 'DOM CONCERNS',
       title: 'DOM-only concerns by example',
       description: 'Four environment-specific responsibilities that react-dom owns.',
       cards: [

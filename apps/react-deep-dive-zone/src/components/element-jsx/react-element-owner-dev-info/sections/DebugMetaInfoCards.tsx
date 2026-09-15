@@ -15,7 +15,7 @@ const cardIcon: Record<DebugCard['id'], LucideIcon> = {
 };
 
 export const DebugMetaInfoCards = ({ content }: Props) => (
-  <section aria-labelledby="heading-debug" className="space-y-md scroll-mt-xl">
+  <section id="debug" aria-labelledby="heading-debug" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="debug"

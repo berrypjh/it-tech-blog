@@ -40,6 +40,7 @@ export type RepoOverviewContent = {
     logoCaption: string;
   };
   overwhelm: {
+    badge: string;
     eyebrow: string;
     title: string;
     floatingDirs: RepoTreeRow[];
@@ -48,6 +49,7 @@ export type RepoOverviewContent = {
     highlightPill: string;
   };
   miniMap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -67,11 +69,13 @@ export type RepoOverviewContent = {
     defaultSelected: string;
   };
   directory: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: DirectoryCard[];
   };
   rootFiles: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: RootFileCard[];
@@ -114,7 +118,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       logoCaption: 'React',
     },
     overwhelm: {
-      eyebrow: '01 · 첫인상',
+      badge: '01',
+      eyebrow: '첫인상',
       title: '처음 열면 왜 막막할까?',
       floatingDirs: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },
@@ -133,7 +138,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       highlightPill: '하지만 볼 순서가 있다!',
     },
     miniMap: {
-      eyebrow: '02 · 루트 미니맵',
+      badge: '02',
+      eyebrow: '루트 미니맵',
       title: '저장소 루트 구조 미니맵',
       description:
         '폴더와 문서 파일을 클릭하면, 각 항목이 어떤 역할을 하는지 한 줄씩 살펴볼 수 있습니다.',
@@ -239,7 +245,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       defaultSelected: 'packages',
     },
     directory: {
-      eyebrow: '03 · 핵심 디렉터리',
+      badge: '03',
+      eyebrow: '핵심 디렉터리',
       title: '루트 디렉터리 4개 핵심 요약',
       cards: [
         {
@@ -273,7 +280,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     rootFiles: {
-      eyebrow: '04 · 루트 파일',
+      badge: '04',
+      eyebrow: '루트 파일',
       title: '루트 파일들은 왜 존재할까?',
       cards: [
         {
@@ -339,7 +347,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       logoCaption: 'React',
     },
     overwhelm: {
-      eyebrow: '01 · FIRST LOOK',
+      badge: '01',
+      eyebrow: 'FIRST LOOK',
       title: 'Why does it feel overwhelming at first?',
       floatingDirs: [
         { id: 'packages', name: 'packages', kind: 'dir', tone: 'sky' },
@@ -357,7 +366,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       highlightPill: 'But there is an order!',
     },
     miniMap: {
-      eyebrow: '02 · ROOT MAP',
+      badge: '02',
+      eyebrow: 'ROOT MAP',
       title: 'Repository Root Mini Map',
       description:
         'Click a folder or file to see what each item is responsible for in one short line.',
@@ -463,7 +473,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       defaultSelected: 'packages',
     },
     directory: {
-      eyebrow: '03 · KEY DIRECTORIES',
+      badge: '03',
+      eyebrow: 'KEY DIRECTORIES',
       title: 'Four Key Root Directories',
       cards: [
         {
@@ -497,7 +508,8 @@ export const repoOverviewContent: Record<Locale, RepoOverviewContent> = {
       ],
     },
     rootFiles: {
-      eyebrow: '04 · ROOT FILES',
+      badge: '04',
+      eyebrow: 'ROOT FILES',
       title: 'Why the root files exist',
       cards: [
         {

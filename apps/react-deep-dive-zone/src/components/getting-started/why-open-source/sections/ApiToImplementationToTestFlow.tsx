@@ -1,7 +1,7 @@
 import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ArrowRight, ExternalLink, FlaskConical } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { WhyOpenSourceContent } from '../content';
 
@@ -11,9 +11,10 @@ const COLUMNS = 3;
 
 export const ApiToImplementationToTestFlow = ({ content }: Props) => {
   return (
-    <section id="section-chain" aria-labelledby="heading-chain" className="space-y-lg">
-      <SectionHeader
+    <section id="chain" aria-labelledby="heading-chain" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="chain"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FlaskConical className="h-5 w-5" aria-hidden="true" />}

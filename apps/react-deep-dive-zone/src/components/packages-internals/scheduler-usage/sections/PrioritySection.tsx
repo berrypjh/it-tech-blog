@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PriorityLevel, SchedulerContent } from '../content';
 
@@ -42,9 +42,11 @@ const toFlowStep = (level: PriorityLevel, idx: number): FlowStepItem => {
 
 export const PrioritySection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-priority" className="space-y-lg">
-      <SectionHeader
+    <section id="priority" aria-labelledby="heading-priority" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="priority"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

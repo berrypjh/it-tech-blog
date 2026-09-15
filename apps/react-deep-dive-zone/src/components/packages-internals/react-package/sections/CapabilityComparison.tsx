@@ -26,7 +26,11 @@ const variantClasses: Record<Variant, { card: string; iconBadge: string; header:
 
 export const CapabilityComparison = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-capabilities" className="space-y-md scroll-mt-xl">
+    <section
+      id="capabilities"
+      aria-labelledby="heading-capabilities"
+      className="space-y-md scroll-mt-xl"
+    >
       <SectionBadgeHeader
         id="capabilities"
         number={content.badge}

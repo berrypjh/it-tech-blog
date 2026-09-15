@@ -1,7 +1,7 @@
 import { Table } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { RvrContent } from '../content';
 
@@ -9,9 +9,15 @@ type Props = { content: RvrContent['comparison'] };
 
 export const ComparisonSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-comparison" className="space-y-md">
-      <SectionHeader
+    <section
+      id="comparison"
+      aria-labelledby="heading-comparison"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="comparison"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

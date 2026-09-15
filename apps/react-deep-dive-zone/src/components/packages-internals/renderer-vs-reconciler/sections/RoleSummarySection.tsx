@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Boxes, type LucideIcon, Monitor, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RoleCard, RvrContent } from '../content';
@@ -15,9 +15,11 @@ const roleIcon: Record<RoleCard['id'], LucideIcon> = {
 
 export const RoleSummarySection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-summary" className="space-y-md">
-      <SectionHeader
+    <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="summary"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

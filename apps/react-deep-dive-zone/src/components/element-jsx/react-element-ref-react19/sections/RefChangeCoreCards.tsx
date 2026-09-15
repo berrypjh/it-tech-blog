@@ -14,7 +14,7 @@ const cardIcon: Record<CoreChangeCard['id'], LucideIcon> = {
 };
 
 export const RefChangeCoreCards = ({ content }: Props) => (
-  <section aria-labelledby="heading-core" className="space-y-md scroll-mt-xl">
+  <section id="core" aria-labelledby="heading-core" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="core"

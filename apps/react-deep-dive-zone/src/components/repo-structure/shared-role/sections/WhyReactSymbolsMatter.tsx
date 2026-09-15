@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CircleDashed, CircleDot, Hash, Info, type LucideIcon, SquareStack } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SharedContent, SymbolCard } from '../content';
@@ -17,9 +17,10 @@ type Props = { content: SharedContent['symbols'] };
 
 export const WhyReactSymbolsMatter = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-symbols" className="space-y-lg">
-      <SectionHeader
+    <section id="symbols" aria-labelledby="heading-symbols" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="symbols"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Hash className="h-5 w-5" aria-hidden="true" />}

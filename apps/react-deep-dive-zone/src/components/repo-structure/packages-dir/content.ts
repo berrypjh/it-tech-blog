@@ -48,6 +48,7 @@ export type PackagesDirectoryContent = {
     secondaryNodes: string[];
   };
   landscape: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -56,6 +57,7 @@ export type PackagesDirectoryContent = {
     additionalRow2: string[];
   };
   selector: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -64,6 +66,7 @@ export type PackagesDirectoryContent = {
     details: Record<CorePackageId, CorePackageDetail>;
   };
   diagram: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -77,6 +80,7 @@ export type PackagesDirectoryContent = {
     };
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
@@ -90,6 +94,7 @@ export type PackagesDirectoryContent = {
     code: string;
   };
   later: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: LaterPackage[];
@@ -188,7 +193,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       secondaryNodes: ['react-server', 'react-devtools', 'react-native-renderer', '...'],
     },
     landscape: {
-      eyebrow: '01 · 패키지 풍경',
+      badge: '01',
+      eyebrow: '패키지 풍경',
       title: 'packages 전체 풍경',
       description: '한눈에 보면 압도적이지만, 처음 잡아야 할 핵심은 5개로 좁혀집니다.',
       coreNames: ['react', 'react-dom', 'react-reconciler', 'scheduler', 'shared'],
@@ -209,7 +215,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     selector: {
-      eyebrow: '02 · 핵심 패키지',
+      badge: '02',
+      eyebrow: '핵심 패키지',
       title: '처음 볼 핵심 패키지 5개',
       description: '탭을 눌러 각 패키지의 역할과 대표 디렉터리를 확인해보세요.',
       tabs: coreKo,
@@ -319,7 +326,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     diagram: {
-      eyebrow: '03 · 패키지 관계',
+      badge: '03',
+      eyebrow: '패키지 관계',
       title: '패키지 간 관계 다이어그램',
       description: '핵심 5개가 어떻게 역할을 나누고 서로 연결되는지 한 장으로 정리합니다.',
       flowLabel: 'react → react-reconciler → react-dom',
@@ -362,7 +370,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     checkpoint: {
-      eyebrow: '04 · 코드 체크포인트',
+      badge: '04',
+      eyebrow: '코드 체크포인트',
       title: '코드로 확인하기: React 공개 API는 어디서 모일까?',
       fileLabel: '파일',
       filePath: 'packages/react/src/ReactClient.js',
@@ -382,7 +391,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       code: codeBody,
     },
     later: {
-      eyebrow: '05 · 후순위 패키지',
+      badge: '05',
+      eyebrow: '후순위 패키지',
       title: '처음엔 나중에 봐도 되는 패키지',
       cards: [
         {
@@ -449,7 +459,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       secondaryNodes: ['react-server', 'react-devtools', 'react-native-renderer', '...'],
     },
     landscape: {
-      eyebrow: '01 · LANDSCAPE',
+      badge: '01',
+      eyebrow: 'LANDSCAPE',
       title: 'The whole packages landscape',
       description:
         'It looks overwhelming at a glance, but the must-read set narrows down to five packages.',
@@ -471,7 +482,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       ],
     },
     selector: {
-      eyebrow: '02 · CORE PACKAGES',
+      badge: '02',
+      eyebrow: 'CORE PACKAGES',
       title: 'The five core packages to read first',
       description:
         'Click a tab to see what each package is responsible for and its representative directory.',
@@ -582,7 +594,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     diagram: {
-      eyebrow: '03 · RELATIONSHIPS',
+      badge: '03',
+      eyebrow: 'RELATIONSHIPS',
       title: 'How the core packages connect',
       description:
         'A one-glance summary of how the five core packages split responsibilities and connect.',
@@ -626,7 +639,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       },
     },
     checkpoint: {
-      eyebrow: '04 · CODE CHECKPOINT',
+      badge: '04',
+      eyebrow: 'CODE CHECKPOINT',
       title: 'Code checkpoint: where do React’s public APIs converge?',
       fileLabel: 'File',
       filePath: 'packages/react/src/ReactClient.js',
@@ -646,7 +660,8 @@ export const packagesDirectoryContent: Record<Locale, PackagesDirectoryContent> 
       code: codeBody,
     },
     later: {
-      eyebrow: '05 · LATER PACKAGES',
+      badge: '05',
+      eyebrow: 'LATER PACKAGES',
       title: 'Packages you can read later',
       cards: [
         {

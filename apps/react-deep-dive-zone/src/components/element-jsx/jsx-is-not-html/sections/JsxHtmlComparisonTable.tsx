@@ -8,7 +8,7 @@ import type { JsxIsNotHtmlContent } from '../content';
 type Props = { content: JsxIsNotHtmlContent['comparison'] };
 
 export const JsxHtmlComparisonTable = ({ content }: Props) => (
-  <section aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+  <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="compare"

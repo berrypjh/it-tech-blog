@@ -1,7 +1,7 @@
 import { Scale } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { DvcContent } from '../content';
 
@@ -9,9 +9,11 @@ type Props = { content: DvcContent['table'] };
 
 export const ComparisonTableSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-table" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section id="table" aria-labelledby="heading-table" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="table"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

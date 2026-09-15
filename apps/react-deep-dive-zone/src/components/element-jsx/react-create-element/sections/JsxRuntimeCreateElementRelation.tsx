@@ -22,7 +22,7 @@ const cardIcon: Record<RelationCard['id'], LucideIcon> = {
 };
 
 export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
-  <section aria-labelledby="heading-relation" className="space-y-md scroll-mt-xl">
+  <section id="relation" aria-labelledby="heading-relation" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="relation"

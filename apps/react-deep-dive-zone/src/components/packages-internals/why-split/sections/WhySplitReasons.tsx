@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Book, Globe, type LucideIcon, Network, Shield, Sparkles } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ReasonCard, WhySplitContent } from '../content';
@@ -18,9 +18,10 @@ const reasonIcon: Record<ReasonCard['id'], LucideIcon> = {
 
 export const WhySplitReasons = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-reasons" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section id="reasons" aria-labelledby="heading-reasons" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="reasons"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}

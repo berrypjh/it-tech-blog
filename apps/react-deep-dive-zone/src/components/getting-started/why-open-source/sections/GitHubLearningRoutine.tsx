@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RoutineStep, WhyOpenSourceContent } from '../content';
 
@@ -37,9 +37,10 @@ const toFlowStep = (step: RoutineStep): FlowStepItem => {
 };
 
 export const GitHubLearningRoutine = ({ content }: Props) => (
-  <section id="section-routine" aria-labelledby="heading-routine" className="space-y-lg">
-    <SectionHeader
+  <section id="routine" aria-labelledby="heading-routine" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="routine"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}

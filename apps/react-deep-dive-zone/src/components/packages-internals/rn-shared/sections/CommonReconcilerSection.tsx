@@ -2,7 +2,7 @@ import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Code, Layers, type LucideIcon, Map, Monitor, Smartphone } from 'lucide-react';
 
 import { DownArrow } from '../../../shared/icon';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RnContent } from '../content';
@@ -14,9 +14,10 @@ export const CommonReconcilerSection = ({ content }: Props) => {
   const a11y = `${d.elementTitle} → ${d.reconcilerTitle} (${d.reconcilerSubtitle}) → ${d.domTitle}/${d.nativeTitle} → ${d.domOutputTitle}/${d.nativeOutputTitle}.`;
 
   return (
-    <section aria-labelledby="heading-common" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section id="common" aria-labelledby="heading-common" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="common"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Map className="h-5 w-5" aria-hidden="true" />}

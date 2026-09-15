@@ -3,7 +3,7 @@ import { Atom, Boxes, Code, type LucideIcon, Monitor, Workflow } from 'lucide-re
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowStep, PackageDesignContent } from '../content';
 
@@ -36,9 +36,11 @@ const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
 
 export const UserFlowSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-user-flow" className="space-y-md">
-      <SectionHeader
+    <section id="user-flow" aria-labelledby="heading-user-flow" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="user-flow"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Code } from 'lucide-react';
 
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FileCard } from '../components/FileCard';
 import { RepoCard } from '../components/RepoCard';
 import type { WhySourceContent } from '../content';
@@ -12,16 +12,17 @@ type Props = { content: WhySourceContent['firstCode'] };
 export const FirstCodePreview = ({ content }: Props) => {
   return (
     <section
-      id="section-first-code"
+      id="first-code"
       aria-labelledby="heading-first-code"
       className={cx(
-        'relative space-y-lg',
+        'relative space-y-md scroll-mt-xl',
         'rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)]',
         'p-md sm:p-lg lg:p-xl',
       )}
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="first-code"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Code className="h-5 w-5" aria-hidden="true" />}

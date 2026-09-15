@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight } from 'lucide-react';
 
 import { MappingRowCard } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TestCodeContent } from '../content';
 
@@ -10,9 +10,11 @@ type Props = { content: TestCodeContent['pairMap'] };
 
 export const ImplementationTestPairMap = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-pair" className="space-y-lg">
-      <SectionHeader
+    <section id="pair" aria-labelledby="heading-pair" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="pair"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

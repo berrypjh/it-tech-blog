@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { FileText, Flag, GitBranch, type LucideIcon, Sparkles, Star } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FileCard, SharedContent } from '../content';
@@ -17,9 +17,11 @@ const fileIcon: Record<FileCard['id'], LucideIcon> = {
 
 export const FilesSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-files" className="space-y-md">
-      <SectionHeader
+    <section id="files" aria-labelledby="heading-files" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="files"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneChoiceCard } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
@@ -27,9 +27,10 @@ const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
 
 export const DirectoryChoiceGuide = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-choice" className="space-y-md">
-      <SectionHeader
+    <section id="choice" aria-labelledby="heading-choice" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="choice"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<MapPinned className="h-5 w-5" aria-hidden="true" />}

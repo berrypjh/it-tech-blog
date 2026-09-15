@@ -11,7 +11,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { AdvancedLink, ReconcilerContent } from '../content';
@@ -27,9 +27,11 @@ const linkIcon: Record<AdvancedLink['id'], LucideIcon> = {
 
 export const AdvancedLearningSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-advanced" className="space-y-md">
-      <SectionHeader
+    <section id="advanced" aria-labelledby="heading-advanced" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="advanced"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

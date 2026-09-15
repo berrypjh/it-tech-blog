@@ -9,7 +9,7 @@ import {
   Terminal,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BenefitCard, RnContent } from '../content';
@@ -24,9 +24,10 @@ const benefitIcon: Record<BenefitCard['id'], LucideIcon> = {
 
 export const BenefitSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-benefit" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section id="benefit" aria-labelledby="heading-benefit" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="benefit"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Star className="h-5 w-5" aria-hidden="true" />}

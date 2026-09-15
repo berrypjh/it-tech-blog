@@ -4,7 +4,7 @@ import type { ComponentType, SVGProps } from 'react';
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import type { ComparePoint, TestCodeContent } from '../content';
 
@@ -12,9 +12,15 @@ type Props = { content: TestCodeContent['comparison'] };
 
 export const WhyTestsMatterComparison = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-comparison" className="space-y-md">
-      <SectionHeader
+    <section
+      id="comparison"
+      aria-labelledby="heading-comparison"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="comparison"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

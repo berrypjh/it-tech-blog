@@ -9,7 +9,7 @@ import type { ReactElementSummaryBeforeFiberContent } from '../content';
 type Props = { content: ReactElementSummaryBeforeFiberContent['compare'] };
 
 export const JsxElementFiberDomComparison = ({ content }: Props) => (
-  <section aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+  <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="compare"

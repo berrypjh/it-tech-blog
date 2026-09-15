@@ -1,16 +1,21 @@
 import { CheckCircle2, CircleHelp, XCircle } from 'lucide-react';
 
 import { ContrastCard, StatusPill } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactVsReactDomContent } from '../content';
 
 type Props = { content: ReactVsReactDomContent['misconception'] };
 
 export const ReactDomMisconceptionSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-misconception" className="space-y-md">
-      <SectionHeader
+    <section
+      id="misconception"
+      aria-labelledby="heading-misconception"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="misconception"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}

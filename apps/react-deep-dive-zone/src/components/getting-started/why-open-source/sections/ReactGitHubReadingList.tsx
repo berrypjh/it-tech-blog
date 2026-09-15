@@ -9,7 +9,7 @@ import {
   Tag,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReadingPriorityRow, WhyOpenSourceContent } from '../content';
 
@@ -24,9 +24,14 @@ type Props = { content: WhyOpenSourceContent['readingPriorities'] };
 
 export const ReactGitHubReadingList = ({ content }: Props) => {
   return (
-    <section id="section-priorities" aria-labelledby="heading-priorities" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="priorities"
+      aria-labelledby="heading-priorities"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="priorities"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Code className="h-5 w-5" aria-hidden="true" />}

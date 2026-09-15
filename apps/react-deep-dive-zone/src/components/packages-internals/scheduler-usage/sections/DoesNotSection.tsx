@@ -2,7 +2,7 @@ import { CheckCircle2, Info, Star, XCircle } from 'lucide-react';
 
 import { ComparePanel } from '../../../shared/compare';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { DoesItem, SchedulerContent } from '../content';
 
@@ -26,9 +26,11 @@ const variantClasses: Record<Variant, { card: string; iconBadge: string; header:
 
 export const DoesNotSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-does-not" className="space-y-md">
-      <SectionHeader
+    <section id="does-not" aria-labelledby="heading-does-not" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="does-not"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

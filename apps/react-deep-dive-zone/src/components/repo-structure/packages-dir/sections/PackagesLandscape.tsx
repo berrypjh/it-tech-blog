@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Layers } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import { PackagePill } from '../components/PackagePill';
 import type { PackagesDirectoryContent } from '../content';
@@ -12,9 +12,11 @@ const coreTones: ToneKey[] = ['blue', 'emerald', 'violet', 'amber', 'teal'];
 
 export const PackagesLandscape = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-landscape" className="space-y-md">
-      <SectionHeader
+    <section id="landscape" aria-labelledby="heading-landscape" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="landscape"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

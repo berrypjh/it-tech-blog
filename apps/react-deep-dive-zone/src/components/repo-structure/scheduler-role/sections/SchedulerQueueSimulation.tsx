@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListOrdered, RefreshCw } from 'lucide-react';
 
 import { CompareBridge } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { priorityTone } from '../components/HeroPriorityCards';
 import type { ExecutionRow, QueueTask, SchedulerContent } from '../content';
@@ -11,9 +11,14 @@ type Props = { content: SchedulerContent['simulation'] };
 
 export const SchedulerQueueSimulation = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-simulation" className="space-y-md">
-      <SectionHeader
+    <section
+      id="simulation"
+      aria-labelledby="heading-simulation"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="simulation"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<ListOrdered className="h-5 w-5" aria-hidden="true" />}

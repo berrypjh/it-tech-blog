@@ -13,7 +13,7 @@ const cardIcon: Record<SeparationCard['id'], LucideIcon> = {
 };
 
 export const KeyPropsSeparation = ({ content }: Props) => (
-  <section aria-labelledby="heading-separation" className="space-y-md scroll-mt-xl">
+  <section id="separation" aria-labelledby="heading-separation" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="separation"

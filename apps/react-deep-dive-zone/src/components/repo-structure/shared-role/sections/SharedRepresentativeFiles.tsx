@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Braces, Brackets, FileCode2, Flag, type LucideIcon, ShieldCheck } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RepFile, SharedContent } from '../content';
@@ -17,9 +17,10 @@ type Props = { content: SharedContent['files'] };
 
 export const SharedRepresentativeFiles = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-files" className="space-y-lg">
-      <SectionHeader
+    <section id="files" aria-labelledby="heading-files" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="files"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}

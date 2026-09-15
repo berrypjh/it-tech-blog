@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { FileText, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent } from '../content';
@@ -11,9 +11,14 @@ type Props = { content: RepoOverviewContent['rootFiles'] };
 
 export const RootFilesSummary = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-root-files" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="root-files"
+      aria-labelledby="heading-root-files"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="root-files"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FileText className="h-5 w-5" aria-hidden="true" />}

@@ -2,7 +2,7 @@ import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { ExternalLink, FileJson, Info, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
 
@@ -10,9 +10,14 @@ type Props = { content: SurroundingContent['errorCodes'] };
 
 export const ErrorCodesFilePreview = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-error-codes" className="space-y-md">
-      <SectionHeader
+    <section
+      id="error-codes"
+      aria-labelledby="heading-error-codes"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="error-codes"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FileJson className="h-5 w-5" aria-hidden="true" />}

@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcilerContent, ResponsibilityCard } from '../content';
 
@@ -35,9 +35,15 @@ const toFlowStep = (card: ResponsibilityCard): FlowStepItem => {
 };
 
 export const ResponsibilitiesSection = ({ content }: Props) => (
-  <section aria-labelledby="heading-responsibilities" className="space-y-md">
-    <SectionHeader
+  <section
+    id="responsibilities"
+    aria-labelledby="heading-responsibilities"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="responsibilities"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

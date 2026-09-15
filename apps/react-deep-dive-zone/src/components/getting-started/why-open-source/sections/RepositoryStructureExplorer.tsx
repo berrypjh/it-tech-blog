@@ -17,6 +17,7 @@ export const RepositoryStructureExplorer = ({ content }: Props) => {
   return (
     <RepoBrowserShell
       id="explorer"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Folder className="h-5 w-5" aria-hidden="true" />}

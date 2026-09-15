@@ -37,7 +37,8 @@ const Demo = () => {
   return (
     <RepoBrowserShell
       id="demo"
-      eyebrow="01 · STRUCTURE"
+      number="01"
+      eyebrow="STRUCTURE"
       title="저장소 구조 살펴보기"
       icon={<Folder className="h-5 w-5" />}
       repoLabel="facebook / react"

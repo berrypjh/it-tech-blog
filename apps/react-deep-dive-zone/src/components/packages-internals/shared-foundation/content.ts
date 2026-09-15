@@ -34,6 +34,7 @@ export type SharedContent = {
     checklist: string[];
   };
   why: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -42,12 +43,14 @@ export type SharedContent = {
     example: { title: string; tags: ExampleTag[] };
   };
   files: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: FileCard[];
   };
   symbolsCheckpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     checkpoint: {
@@ -61,6 +64,7 @@ export type SharedContent = {
     callouts: { id: string; title: string; code: string }[];
   };
   clientImport: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -71,6 +75,7 @@ export type SharedContent = {
     primaryHref: string;
   };
   connection: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -175,7 +180,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       checklist: ['공통 심벌', '공통 타입 정의', '공통 버전 정보', '공통 기능 플래그'],
     },
     why: {
-      eyebrow: '01 · shared 필요성',
+      badge: '01',
+      eyebrow: 'shared 필요성',
       title: 'shared가 필요한 이유',
       description: '같은 개념을 제각각 정의하면 일관성이 깨집니다. shared가 그 문제를 해결합니다.',
       problem: {
@@ -198,7 +204,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
     },
     files: {
-      eyebrow: '02 · 대표 파일',
+      badge: '02',
+      eyebrow: '대표 파일',
       title: 'shared의 대표 파일들',
       description: '네 개의 대표 파일이 shared의 책임을 보여줍니다.',
       cards: [
@@ -238,7 +245,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbolsCheckpoint: {
-      eyebrow: '03 · 코드 체크포인트',
+      badge: '03',
+      eyebrow: '코드 체크포인트',
       title: 'ReactSymbols.js 코드 체크포인트',
       checkpoint: {
         file: { label: '파일', value: 'packages/shared/ReactSymbols.js' },
@@ -257,7 +265,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     clientImport: {
-      eyebrow: '04 · import 확인',
+      badge: '04',
+      eyebrow: 'import 확인',
       title: 'ReactClient.js에서 shared import 확인',
       description:
         'shared가 public API 구성에도 직접 연결되는 흐름을 import 한 블록으로 확인합니다.',
@@ -274,7 +283,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     connection: {
-      eyebrow: '05 · 패키지 연결',
+      badge: '05',
+      eyebrow: '패키지 연결',
       title: 'shared가 연결하는 패키지',
       description: '하나의 shared가 세 패키지의 공통 언어를 만들어 줍니다.',
       centerLabel: 'shared',
@@ -319,7 +329,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     why: {
-      eyebrow: '01 · WHY SHARED',
+      badge: '01',
+      eyebrow: 'WHY SHARED',
       title: 'Why shared is needed',
       description:
         'When packages define the same concept independently, consistency breaks. shared fixes that.',
@@ -343,7 +354,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       },
     },
     files: {
-      eyebrow: '02 · KEY FILES',
+      badge: '02',
+      eyebrow: 'KEY FILES',
       title: 'Representative shared files',
       description: 'Four files show what shared is responsible for.',
       cards: [
@@ -383,7 +395,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     symbolsCheckpoint: {
-      eyebrow: '03 · CODE CHECKPOINT',
+      badge: '03',
+      eyebrow: 'CODE CHECKPOINT',
       title: 'ReactSymbols.js code checkpoint',
       checkpoint: {
         file: { label: 'File', value: 'packages/shared/ReactSymbols.js' },
@@ -399,7 +412,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       ],
     },
     clientImport: {
-      eyebrow: '04 · CLIENT IMPORT',
+      badge: '04',
+      eyebrow: 'CLIENT IMPORT',
       title: 'shared import inside ReactClient.js',
       description: 'Confirm that shared also wires into the public API construction.',
       explanation: {
@@ -415,7 +429,8 @@ export const sharedContent: Record<Locale, SharedContent> = {
       primaryHref: 'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js',
     },
     connection: {
-      eyebrow: '05 · CONNECTIONS',
+      badge: '05',
+      eyebrow: 'CONNECTIONS',
       title: 'Packages that shared connects',
       description: 'A single shared layer becomes the common vocabulary of three packages.',
       centerLabel: 'shared',

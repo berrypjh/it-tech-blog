@@ -71,16 +71,19 @@ export type WhyOpenSourceContent = {
     };
   };
   perspectives: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: PerspectiveCard[];
   };
   readingPriorities: {
+    badge: string;
     eyebrow: string;
     title: string;
     rows: ReadingPriorityRow[];
   };
   repoExplorer: {
+    badge: string;
     eyebrow: string;
     title: string;
     repoLabel: string;
@@ -89,11 +92,13 @@ export type WhyOpenSourceContent = {
     defaultFolder: string;
   };
   chain: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ChainCard[];
   };
   routine: {
+    badge: string;
     eyebrow: string;
     title: string;
     steps: RoutineStep[];
@@ -168,7 +173,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      eyebrow: '01 · 관점',
+      badge: '01',
+      eyebrow: '관점',
       title: 'GitHub가 제공하는 4가지 관점',
       cards: [
         {
@@ -202,7 +208,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      eyebrow: '02 · 읽기 목록',
+      badge: '02',
+      eyebrow: '읽기 목록',
       title: 'React GitHub에서 읽어야 할 4가지',
       rows: [
         {
@@ -244,7 +251,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      eyebrow: '03 · 저장소 구조',
+      badge: '03',
+      eyebrow: '저장소 구조',
       title: '저장소 구조 훑어보기 (예: facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -318,7 +326,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      eyebrow: '04 · 연결 읽기',
+      badge: '04',
+      eyebrow: '연결 읽기',
       title: 'API → 구현 → 테스트로 이어서 읽기 (예: useState)',
       cards: [
         {
@@ -358,7 +367,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      eyebrow: '05 · 학습 루틴',
+      badge: '05',
+      eyebrow: '학습 루틴',
       title: 'GitHub 기반 학습 루틴',
       steps: [
         {
@@ -429,7 +439,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     perspectives: {
-      eyebrow: '01 · PERSPECTIVES',
+      badge: '01',
+      eyebrow: 'PERSPECTIVES',
       title: 'Four perspectives GitHub offers',
       cards: [
         {
@@ -463,7 +474,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     readingPriorities: {
-      eyebrow: '02 · READING LIST',
+      badge: '02',
+      eyebrow: 'READING LIST',
       title: 'Four things to read in React GitHub',
       rows: [
         {
@@ -504,7 +516,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     repoExplorer: {
-      eyebrow: '03 · REPO',
+      badge: '03',
+      eyebrow: 'REPO',
       title: 'Skim the repository structure (e.g. facebook/react)',
       repoLabel: 'facebook / react',
       tree: repoTreeKo,
@@ -580,7 +593,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       },
     },
     chain: {
-      eyebrow: '04 · CHAIN',
+      badge: '04',
+      eyebrow: 'CHAIN',
       title: 'Read API → implementation → test in sequence (e.g. useState)',
       cards: [
         {
@@ -622,7 +636,8 @@ export const whyOpenSourceContent: Record<Locale, WhyOpenSourceContent> = {
       ],
     },
     routine: {
-      eyebrow: '05 · ROUTINE',
+      badge: '05',
+      eyebrow: 'ROUTINE',
       title: 'A GitHub-based learning routine',
       steps: [
         {

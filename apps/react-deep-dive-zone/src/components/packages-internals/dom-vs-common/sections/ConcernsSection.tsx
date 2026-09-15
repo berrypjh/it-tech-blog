@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Code, Droplet, type LucideIcon, Monitor, MousePointer, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ConcernCard, DvcContent } from '../content';
@@ -17,9 +17,11 @@ const concernIcon: Record<ConcernCard['id'], LucideIcon> = {
 
 export const ConcernsSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-concerns" className="space-y-md">
-      <SectionHeader
+    <section id="concerns" aria-labelledby="heading-concerns" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="concerns"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -9,7 +9,11 @@ import type { ReactElementObjectStructureContent } from '../content';
 type Props = { content: ReactElementObjectStructureContent['compare'] };
 
 export const PlainObjectComparison = ({ content }: Props) => (
-  <section aria-labelledby="heading-compare-plain" className="space-y-md scroll-mt-xl">
+  <section
+    id="compare-plain"
+    aria-labelledby="heading-compare-plain"
+    className="space-y-md scroll-mt-xl"
+  >
     <SectionBadgeHeader
       descriptionFullWidth
       id="compare-plain"

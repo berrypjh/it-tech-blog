@@ -15,7 +15,7 @@ import {
   Timer,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CorePackage, CorePackageId, PackagesDirectoryContent } from '../content';
@@ -39,9 +39,11 @@ export const CorePackageSelector = ({ content }: Props) => {
   const tablistId = useId();
 
   return (
-    <section aria-labelledby="heading-selector" className="space-y-md">
-      <SectionHeader
+    <section id="selector" aria-labelledby="heading-selector" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="selector"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

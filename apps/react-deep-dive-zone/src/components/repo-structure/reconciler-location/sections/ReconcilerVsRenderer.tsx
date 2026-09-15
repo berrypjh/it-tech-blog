@@ -2,7 +2,7 @@ import { Cuboid, type LucideIcon, MonitorSmartphone, Sparkles } from 'lucide-rea
 
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { CompareCard, ReconcilerEntryContent } from '../content';
 
 const compareIcon: Record<CompareCard['id'], LucideIcon> = {
@@ -14,9 +14,11 @@ type Props = { content: ReconcilerEntryContent['compare'] };
 
 export const ReconcilerVsRenderer = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-compare" className="space-y-md">
-      <SectionHeader
+    <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="compare"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

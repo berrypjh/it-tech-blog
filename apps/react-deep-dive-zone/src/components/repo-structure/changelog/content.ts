@@ -45,6 +45,7 @@ export type ChangelogContent = {
     };
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -54,12 +55,14 @@ export type ChangelogContent = {
     rows: { label: string; changelog: string; releases: string }[];
   };
   scenarios: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ScenarioCard[];
   };
   latest: {
+    badge: string;
     eyebrow: string;
     title: string;
     versionLabel: string;
@@ -80,6 +83,7 @@ export type ChangelogContent = {
     highlightsItems: { kind: string; text: string }[];
   };
   timeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -87,6 +91,7 @@ export type ChangelogContent = {
     banner: string;
   };
   trace: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -125,7 +130,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       },
     },
     comparison: {
-      eyebrow: '01 · 역할 비교',
+      badge: '01',
+      eyebrow: '역할 비교',
       title: 'CHANGELOG와 Releases 역할 비교',
       description: '두 자료의 차이를 한 표에 정리합니다.',
       columnLabel: '항목',
@@ -160,7 +166,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     scenarios: {
-      eyebrow: '02 · 출처 선택',
+      badge: '02',
+      eyebrow: '출처 선택',
       title: '이런 상황에는 무엇을 볼까?',
       description: '읽으려는 목적에 따라 어디를 먼저 볼지 정해보세요.',
       cards: [
@@ -198,7 +205,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     latest: {
-      eyebrow: '03 · 최신 릴리즈',
+      badge: '03',
+      eyebrow: '최신 릴리즈',
       title: '최신 릴리즈 확인 예시',
       versionLabel: '현재 버전 확인',
       exampleBadge: '예시',
@@ -234,7 +242,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     timeline: {
-      eyebrow: '04 · 과거 흐름',
+      badge: '04',
+      eyebrow: '과거 흐름',
       title: '과거 흐름 확인 예시',
       description: '버전 사이의 큰 변화는 CHANGELOG를 따라가면 한눈에 들어옵니다.',
       items: [
@@ -266,7 +275,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       banner: '장기적인 변화 흐름은 CHANGELOG 쪽이 더 보기 좋다.',
     },
     trace: {
-      eyebrow: '05 · 변경점 추적',
+      badge: '05',
+      eyebrow: '변경점 추적',
       title: '변경점 → 코드 탐색 연결 흐름',
       description: '릴리즈 노트에서 시작해 실제 코드까지 내려가는 4단계 추적 루틴입니다.',
       steps: [
@@ -332,7 +342,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       },
     },
     comparison: {
-      eyebrow: '01 · ROLE COMPARISON',
+      badge: '01',
+      eyebrow: 'ROLE COMPARISON',
       title: 'CHANGELOG vs Releases role comparison',
       description: 'A single table that summarises the difference between the two.',
       columnLabel: 'Aspect',
@@ -367,7 +378,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     scenarios: {
-      eyebrow: '02 · PICK SOURCE',
+      badge: '02',
+      eyebrow: 'PICK SOURCE',
       title: 'Which source do you read?',
       description: 'Different reading goals call for different starting points.',
       cards: [
@@ -405,7 +417,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     latest: {
-      eyebrow: '03 · LATEST RELEASE',
+      badge: '03',
+      eyebrow: 'LATEST RELEASE',
       title: 'Latest release example',
       versionLabel: 'Current version',
       exampleBadge: 'Example',
@@ -441,7 +454,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       ],
     },
     timeline: {
-      eyebrow: '04 · LONG-TERM FLOW',
+      badge: '04',
+      eyebrow: 'LONG-TERM FLOW',
       title: 'Past flow example',
       description: 'Big shifts between versions are easy to scan in CHANGELOG.',
       items: [
@@ -473,7 +487,8 @@ export const changelogContent: Record<Locale, ChangelogContent> = {
       banner: 'CHANGELOG is the right place to read long-term change flow.',
     },
     trace: {
-      eyebrow: '05 · TRACE CHANGES',
+      badge: '05',
+      eyebrow: 'TRACE CHANGES',
       title: 'From changes to code: a 4-step trace',
       description: 'Start from release notes and walk down to actual code in four steps.',
       steps: [

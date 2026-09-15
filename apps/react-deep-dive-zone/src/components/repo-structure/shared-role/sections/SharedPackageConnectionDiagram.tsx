@@ -8,7 +8,7 @@ import {
   Package,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionRow, SharedContent } from '../content';
 
@@ -22,9 +22,15 @@ type Props = { content: SharedContent['connection'] };
 
 export const SharedPackageConnectionDiagram = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-connection" className="space-y-md">
-      <SectionHeader
+    <section
+      id="connection"
+      aria-labelledby="heading-connection"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="connection"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

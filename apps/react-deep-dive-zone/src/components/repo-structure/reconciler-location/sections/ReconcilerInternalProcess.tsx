@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FileBox, Flag, type LucideIcon, Network, Package } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { StepNumberBadge } from '../../../shared/step';
 import { FiberTreeCard } from '../components/FiberTreeCard';
 import type { ProcessStep, ReconcilerEntryContent } from '../content';
@@ -17,9 +17,11 @@ type Props = { content: ReconcilerEntryContent['process'] };
 
 export const ReconcilerInternalProcess = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-process" className="space-y-md">
-      <SectionHeader
+    <section id="process" aria-labelledby="heading-process" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="process"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

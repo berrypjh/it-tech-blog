@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Box, Link, type LucideIcon, Sparkle, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FocusTopic, WhyReact19Content } from '../content';
@@ -17,9 +17,10 @@ type Props = { content: WhyReact19Content['focusTopics'] };
 
 export const React19FocusTopics = ({ content }: Props) => {
   return (
-    <section id="section-focus" aria-labelledby="heading-focus" className="space-y-lg">
-      <SectionHeader
+    <section id="focus" aria-labelledby="heading-focus" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="focus"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Sparkle className="h-5 w-5" aria-hidden="true" />}

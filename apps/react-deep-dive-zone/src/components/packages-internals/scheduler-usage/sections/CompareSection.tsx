@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Boxes, Clock, type LucideIcon, Star } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareCard, SchedulerContent } from '../content';
@@ -15,9 +15,11 @@ const cardIcon: Record<CompareCard['id'], LucideIcon> = {
 
 export const CompareSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-compare" className="space-y-md">
-      <SectionHeader
+    <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="compare"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

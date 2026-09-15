@@ -14,7 +14,7 @@ const cardIcon: Record<InputCard['id'], LucideIcon> = {
 };
 
 export const CreateElementInputStructure = ({ content }: Props) => (
-  <section aria-labelledby="heading-input" className="space-y-md scroll-mt-xl">
+  <section id="input" aria-labelledby="heading-input" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="input"

@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Compass, type LucideIcon, Map, Network, Shield, Sparkles, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageDesignContent, ValueCard } from '../content';
@@ -18,9 +18,11 @@ const valueIcon: Record<ValueCard['id'], LucideIcon> = {
 
 export const ValuesSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-values" className="space-y-md">
-      <SectionHeader
+    <section id="values" aria-labelledby="heading-values" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="values"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

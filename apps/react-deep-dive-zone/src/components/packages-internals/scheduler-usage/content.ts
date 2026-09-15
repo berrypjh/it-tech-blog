@@ -49,12 +49,14 @@ export type SchedulerContent = {
     emphasis: string;
   };
   needs: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: NeedCard[];
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -62,6 +64,7 @@ export type SchedulerContent = {
     centerBadge: { line1: string; line2: string };
   };
   priority: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -70,6 +73,7 @@ export type SchedulerContent = {
     criteria: string[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     items: CheckpointItem[];
@@ -79,6 +83,7 @@ export type SchedulerContent = {
     primaryHref: string;
   };
   doesNot: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -89,6 +94,7 @@ export type SchedulerContent = {
     banner: string;
   };
   queue: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -177,7 +183,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       emphasis: '중요한 것은 먼저, 덜 중요한 것은 나중에.',
     },
     needs: {
-      eyebrow: '01 · 필요성',
+      badge: '01',
+      eyebrow: '필요성',
       title: 'scheduler가 필요한 상황',
       description: '세 가지 대표 상황으로 scheduler가 왜 필요한지 살펴봅니다.',
       cards: [
@@ -205,7 +212,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · scheduler 차이',
+      badge: '02',
+      eyebrow: 'scheduler 차이',
       title: 'reconciler와 scheduler의 차이',
       description: 'reconciler는 "무엇을", scheduler는 "언제"를 책임집니다.',
       centerBadge: { line1: '계산과 시간 관리도', line2: '분리되어 있다.' },
@@ -229,7 +237,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     priority: {
-      eyebrow: '03 · 우선순위 모델',
+      badge: '03',
+      eyebrow: '우선순위 모델',
       title: '우선순위 모델 요약',
       description: '높은 우선순위는 먼저, 낮은 우선순위는 뒤로. 4단계로 정리합니다.',
       levels: [
@@ -267,7 +276,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · 코드 체크포인트',
+      badge: '04',
+      eyebrow: '코드 체크포인트',
       title: '코드 체크포인트',
       items: [
         {
@@ -288,7 +298,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
     },
     doesNot: {
-      eyebrow: '05 · 역할 경계',
+      badge: '05',
+      eyebrow: '역할 경계',
       title: 'scheduler가 하는 일 / 하지 않는 일',
       description: 'scheduler의 책임과 다른 패키지의 책임을 분명히 나눕니다.',
       doesTitle: 'scheduler가 하는 일',
@@ -308,7 +319,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'scheduler는 렌더링 엔진이 아니라 예약 조율 계층이다.',
     },
     queue: {
-      eyebrow: '06 · 작업 대기열',
+      badge: '06',
+      eyebrow: '작업 대기열',
       title: '작업 대기열 체험하기',
       description: '도착한 순서를 스케줄러가 어떻게 처리 순서로 재배치하는지 실행해 봅니다.',
       waitingTitle: '대기열 (도착 순서)',
@@ -383,7 +395,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       emphasis: 'Important things first; less important things later.',
     },
     needs: {
-      eyebrow: '01 · NEED',
+      badge: '01',
+      eyebrow: 'NEED',
       title: 'When scheduler is needed',
       description: 'Three scenarios that explain why scheduler exists.',
       cards: [
@@ -409,7 +422,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · VS RECONCILER',
+      badge: '02',
+      eyebrow: 'VS RECONCILER',
       title: 'reconciler vs scheduler',
       description: 'reconciler owns "what"; scheduler owns "when".',
       centerBadge: { line1: 'Compute and timing', line2: 'are separated too.' },
@@ -433,7 +447,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     priority: {
-      eyebrow: '03 · PRIORITY MODEL',
+      badge: '03',
+      eyebrow: 'PRIORITY MODEL',
       title: 'Priority model summary',
       description: 'High priority first, low priority later — four tiers.',
       levels: [
@@ -471,7 +486,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · CODE CHECKPOINT',
+      badge: '04',
+      eyebrow: 'CODE CHECKPOINT',
       title: 'Code checkpoint',
       items: [
         {
@@ -492,7 +508,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
         'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js',
     },
     doesNot: {
-      eyebrow: '05 · DOES / DOES NOT',
+      badge: '05',
+      eyebrow: 'DOES / DOES NOT',
       title: 'What scheduler does — and does not — do',
       description: 'Map scheduler’s responsibilities versus the other packages’.',
       doesTitle: 'scheduler does',
@@ -512,7 +529,8 @@ export const schedulerContent: Record<Locale, SchedulerContent> = {
       banner: 'scheduler is a coordination layer, not a rendering engine.',
     },
     queue: {
-      eyebrow: '06 · TASK QUEUE',
+      badge: '06',
+      eyebrow: 'TASK QUEUE',
       title: 'Walk through a task queue',
       description: 'Run it and watch the scheduler reshape arrival order into execution order.',
       waitingTitle: 'Queue (arrival order)',

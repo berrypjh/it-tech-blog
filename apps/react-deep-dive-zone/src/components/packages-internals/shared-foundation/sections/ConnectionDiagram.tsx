@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Code, type LucideIcon, Package, Share2, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PackageNode, SharedContent } from '../content';
@@ -17,9 +17,15 @@ const packageIcon: Record<PackageNode['id'], LucideIcon> = {
 
 export const ConnectionDiagram = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-connection" className="space-y-md">
-      <SectionHeader
+    <section
+      id="connection"
+      aria-labelledby="heading-connection"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="connection"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

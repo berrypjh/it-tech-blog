@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { NumberedStepList } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ToneKey } from '../../../shared/tones';
 import type { ExplorationContent, RoutineStep } from '../content';
 
@@ -31,9 +31,11 @@ const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
 
 export const FinalExplorationRoutineSteps = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-routine" className="space-y-lg">
-      <SectionHeader
+    <section id="routine" aria-labelledby="heading-routine" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="routine"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

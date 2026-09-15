@@ -2,16 +2,17 @@ import { cx } from '@berrypjh/react-ui';
 import { Folder, Info } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { SurroundingContent } from '../content';
 
 type Props = { content: SurroundingContent['compiler'] };
 
 export const CompilerIntroSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-compiler" className="space-y-md">
-      <SectionHeader
+    <section id="compiler" aria-labelledby="heading-compiler" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="compiler"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Folder className="h-5 w-5" aria-hidden="true" />}

@@ -3,7 +3,7 @@ import { Layers, type LucideIcon, Pencil, Sparkles } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ModeCard, RnContent } from '../content';
 
@@ -16,9 +16,11 @@ const modeIcon: Record<ModeCard['id'], LucideIcon> = {
 
 export const ModesSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-modes" className="space-y-md">
-      <SectionHeader
+    <section id="modes" aria-labelledby="heading-modes" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="modes"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

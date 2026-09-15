@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Lightbulb, type LucideIcon, Map, Monitor } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PositionCard, ReconcilerContent } from '../content';
@@ -17,9 +17,11 @@ const positionIcon: Record<PositionCard['id'], LucideIcon> = {
 
 export const PositionSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-position" className="space-y-lg">
-      <SectionHeader
+    <section id="position" aria-labelledby="heading-position" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="position"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -8,7 +8,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DvcContent, ReadingCard } from '../content';
@@ -22,9 +22,11 @@ const cardIcon: Record<ReadingCard['id'], LucideIcon> = {
 
 export const ReadingMethodSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-reading" className="space-y-md">
-      <SectionHeader
+    <section id="reading" aria-labelledby="heading-reading" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="reading"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

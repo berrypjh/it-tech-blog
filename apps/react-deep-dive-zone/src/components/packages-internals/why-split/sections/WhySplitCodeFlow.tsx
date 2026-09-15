@@ -12,7 +12,7 @@ import {
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, WhySplitContent } from '../content';
@@ -41,9 +41,11 @@ const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
 };
 
 export const WhySplitCodeFlow = ({ content }: Props) => (
-  <section aria-labelledby="heading-code-flow" className="space-y-md">
-    <SectionHeader
+  <section id="code-flow" aria-labelledby="heading-code-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="code-flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

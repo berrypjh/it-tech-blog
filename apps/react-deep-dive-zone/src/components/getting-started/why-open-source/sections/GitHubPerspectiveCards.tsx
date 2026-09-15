@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Code, FileText, FlaskConical, type LucideIcon, MessageCircle } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PerspectiveCard, WhyOpenSourceContent } from '../content';
@@ -18,12 +18,13 @@ type Props = { content: WhyOpenSourceContent['perspectives'] };
 export const GitHubPerspectiveCards = ({ content }: Props) => {
   return (
     <section
-      id="section-perspectives"
+      id="perspectives"
       aria-labelledby="heading-perspectives"
-      className="space-y-lg"
+      className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="perspectives"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FileText className="h-5 w-5" aria-hidden="true" />}

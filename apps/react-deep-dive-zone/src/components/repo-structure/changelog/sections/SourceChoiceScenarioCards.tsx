@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, GitPullRequest, History, type LucideIcon, Sparkles, Tag } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneChoiceCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, ScenarioCard } from '../content';
@@ -16,9 +16,11 @@ type Props = { content: ChangelogContent['scenarios'] };
 
 export const SourceChoiceScenarioCards = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-scenarios" className="space-y-md">
-      <SectionHeader
+    <section id="scenarios" aria-labelledby="heading-scenarios" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="scenarios"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Map } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import { ArchitectureDiagram } from '../components/ArchitectureDiagram';
@@ -14,9 +14,15 @@ type Props = {
 
 export const WhySplitArchitectureMap = ({ content, architecture }: Props) => {
   return (
-    <section aria-labelledby="heading-architecture" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section
+      id="architecture"
+      aria-labelledby="heading-architecture"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="architecture"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

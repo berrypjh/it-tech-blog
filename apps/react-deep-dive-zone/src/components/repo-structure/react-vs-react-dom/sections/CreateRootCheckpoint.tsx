@@ -2,15 +2,16 @@ import { Code2, FileCode2, Info } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactVsReactDomContent } from '../content';
 
 type Props = { content: ReactVsReactDomContent['checkpoint'] };
 
 export const CreateRootCheckpoint = ({ content }: Props) => (
-  <section aria-labelledby="heading-checkpoint" className="space-y-md">
-    <SectionHeader
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}

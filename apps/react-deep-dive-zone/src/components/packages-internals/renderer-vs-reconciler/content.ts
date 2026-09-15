@@ -40,6 +40,7 @@ export type RvrContent = {
     };
   };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -47,6 +48,7 @@ export type RvrContent = {
     centerBadge: { lead: string; symbol: string; tail: string };
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -54,6 +56,7 @@ export type RvrContent = {
     rows: ComparisonRow[];
   };
   hostConfig: {
+    badge: string;
     eyebrow: string;
     title: string;
     cardTitle: string;
@@ -63,6 +66,7 @@ export type RvrContent = {
     infoBanner: string;
   };
   domExample: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -80,6 +84,7 @@ export type RvrContent = {
     banner: string;
   };
   flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -169,7 +174,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     summary: {
-      eyebrow: '01 · 한 문장 정리',
+      badge: '01',
+      eyebrow: '한 문장 정리',
       title: '두 역할을 한 문장으로 정리',
       description: '두 패키지의 책임을 한 문장으로 구분합니다.',
       centerBadge: { lead: '계산', symbol: '≠', tail: '반영' },
@@ -193,7 +199,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     comparison: {
-      eyebrow: '02 · 비교',
+      badge: '02',
+      eyebrow: '비교',
       title: 'reconciler vs renderer 비교',
       description: '네 가지 관점에서 두 패키지의 책임을 한 번에 정리합니다.',
       columns: { item: '항목', reconciler: 'reconciler', renderer: 'renderer' },
@@ -225,7 +232,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     hostConfig: {
-      eyebrow: '03 · Host Config',
+      badge: '03',
+      eyebrow: 'Host Config',
       title: 'Host Config란 무엇인가?',
       cardTitle: 'renderer는 환경별 구현을 Host Config 형태로 제공합니다.',
       cardBody:
@@ -237,7 +245,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'DOM renderer라면 DOM node 생성, 속성 설정, 이벤트 연결, 브라우저 특화 동작이 여기에 들어갑니다.',
     },
     domExample: {
-      eyebrow: '04 · DOM 렌더러 흐름',
+      badge: '04',
+      eyebrow: 'DOM 렌더러 흐름',
       title: 'DOM renderer 예시 흐름',
       description: '계산이 끝난 변경 목록이 어떻게 실제 DOM 조작으로 이어지는지 따라갑니다.',
       reconciler: {
@@ -258,7 +267,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       banner: '계산 결과를 실제 환경에 반영하는 역할은 renderer가 맡는다.',
     },
     flow: {
-      eyebrow: '05 · 공통/환경별 흐름',
+      badge: '05',
+      eyebrow: '공통/환경별 흐름',
       title: '공통 reconciler / 환경별 renderer 흐름도',
       description:
         '하나의 reconciler가 DOM과 Native 두 환경으로 갈라지는 구조를 한 번에 보여줍니다.',
@@ -325,7 +335,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       },
     },
     summary: {
-      eyebrow: '01 · IN ONE SENTENCE',
+      badge: '01',
+      eyebrow: 'IN ONE SENTENCE',
       title: 'Both roles, in one sentence',
       description: 'A single line per package, side by side.',
       centerBadge: { lead: 'compute', symbol: '≠', tail: 'apply' },
@@ -349,7 +360,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     comparison: {
-      eyebrow: '02 · COMPARISON',
+      badge: '02',
+      eyebrow: 'COMPARISON',
       title: 'reconciler vs renderer',
       description: 'Four angles, two answers — at a glance.',
       columns: { item: 'Aspect', reconciler: 'reconciler', renderer: 'renderer' },
@@ -381,7 +393,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       ],
     },
     hostConfig: {
-      eyebrow: '03 · HOST CONFIG',
+      badge: '03',
+      eyebrow: 'HOST CONFIG',
       title: 'What is Host Config?',
       cardTitle: 'Renderers expose their per-environment implementation through a Host Config.',
       cardBody:
@@ -393,7 +406,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
         'For the DOM renderer, this is where DOM-node creation, attribute setting, event wiring, and browser-specific behavior live.',
     },
     domExample: {
-      eyebrow: '04 · DOM RENDERER FLOW',
+      badge: '04',
+      eyebrow: 'DOM RENDERER FLOW',
       title: 'A DOM renderer example flow',
       description: 'Follow a single change list from computation to actual DOM mutation.',
       reconciler: {
@@ -414,7 +428,8 @@ export const rvrContent: Record<Locale, RvrContent> = {
       banner: 'Applying the computed result to the real environment is the renderer’s job.',
     },
     flow: {
-      eyebrow: '05 · SHARED / PER-ENV FLOW',
+      badge: '05',
+      eyebrow: 'SHARED / PER-ENV FLOW',
       title: 'Shared reconciler / per-environment renderer',
       description: 'One reconciler, two environments — DOM and Native — in a single picture.',
       elementLabel: 'React Element',

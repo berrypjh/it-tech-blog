@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Boxes, Clock, Code, type LucideIcon, Network, Sparkles } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { AxisCard, RnContent } from '../content';
 
@@ -29,9 +29,11 @@ const toFlowStep = (card: AxisCard, index: number): FlowStepItem => {
 
 export const AxisSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-axis" className="space-y-md">
-      <SectionHeader
+    <section id="axis" aria-labelledby="heading-axis" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="axis"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

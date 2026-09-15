@@ -14,7 +14,11 @@ export const PublicApiSourceCheckpoint = ({ content }: Props) => {
   const [fileItem, viewItem] = content.items;
 
   return (
-    <section aria-labelledby="heading-source-checkpoint" className="space-y-md scroll-mt-2xl">
+    <section
+      id="source-checkpoint"
+      aria-labelledby="heading-source-checkpoint"
+      className="space-y-md scroll-mt-xl"
+    >
       <SectionBadgeHeader
         id="source-checkpoint"
         number={content.badge}

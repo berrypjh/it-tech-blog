@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Clock, HelpCircle, Layers, type LucideIcon, Monitor } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { QuestionCard, WhySplitContent } from '../content';
@@ -19,9 +19,10 @@ const questionIcon: Record<QuestionCard['id'], LucideIcon> = {
 
 export const WhySplitPackageQuestions = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-questions" className="space-y-md">
-      <SectionHeader
+    <section id="questions" aria-labelledby="heading-questions" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="questions"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}

@@ -43,17 +43,20 @@ export type UsageVsInternalsContent = {
     stackLayers: StackLayer[];
   };
   perspectives: {
+    badge: string;
     eyebrow: string;
     title: string;
     left: { title: string; subtitle: string; steps: UsageStep[] };
     right: { title: string; subtitle: string; steps: InternalStep[] };
   };
   flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     steps: FlowStep[];
   };
   demo: {
+    badge: string;
     eyebrow: string;
     title: string;
     counter: { title: string; button: string; hint: string };
@@ -64,17 +67,20 @@ export type UsageVsInternalsContent = {
     };
   };
   table: {
+    badge: string;
     eyebrow: string;
     title: string;
     headers: { phenomenon: string; usage: string; internal: string };
     rows: TableRow[];
   };
   sourceCode: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: CodeCard[];
   };
   takeaway: {
+    badge: string;
     eyebrow: string;
     title: string;
     lines: string[];
@@ -125,7 +131,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '01 · 관점 비교',
+      badge: '01',
+      eyebrow: '관점 비교',
       title: '두 관점으로 읽어보기',
       left: {
         title: '사용법 관점 (4단계)',
@@ -168,7 +175,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '02 · 내부 흐름',
+      badge: '02',
+      eyebrow: '내부 흐름',
       title: '버튼을 누르면 내부에서는 무슨 일이 일어날까?',
       steps: [
         {
@@ -216,7 +224,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      eyebrow: '03 · 라이브 데모',
+      badge: '03',
+      eyebrow: '라이브 데모',
       title: '직접 경험해보기 (상상 데모)',
       counter: {
         title: 'Counter 데모',
@@ -241,7 +250,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '04 · 해석 비교',
+      badge: '04',
+      eyebrow: '해석 비교',
       title: '같은 현상, 다른 해석',
       headers: {
         phenomenon: '현상',
@@ -267,7 +277,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '05 · 소스 코드',
+      badge: '05',
+      eyebrow: '소스 코드',
       title: '실제 React 코드에서 확인하기',
       cards: [
         {
@@ -289,7 +300,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '06 · 핵심 정리',
+      badge: '06',
+      eyebrow: '핵심 정리',
       title: '기억할 한 가지',
       lines: [
         '상태가 바뀌었다고 DOM이 바로 바뀌는 것이 아닙니다.',
@@ -320,7 +332,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     perspectives: {
-      eyebrow: '01 · PERSPECTIVES',
+      badge: '01',
+      eyebrow: 'PERSPECTIVES',
       title: 'Two Perspectives, Same Code',
       left: {
         title: 'Usage perspective (4 steps)',
@@ -367,7 +380,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     flow: {
-      eyebrow: '02 · INTERNAL FLOW',
+      badge: '02',
+      eyebrow: 'INTERNAL FLOW',
       title: 'When you press the button, what happens inside?',
       steps: [
         {
@@ -415,7 +429,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     demo: {
-      eyebrow: '03 · LIVE DEMO',
+      badge: '03',
+      eyebrow: 'LIVE DEMO',
       title: 'Try it yourself (imagined demo)',
       counter: {
         title: 'Counter Demo',
@@ -440,7 +455,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       },
     },
     table: {
-      eyebrow: '04 · INTERPRETATION',
+      badge: '04',
+      eyebrow: 'INTERPRETATION',
       title: 'Same phenomenon, different interpretation',
       headers: {
         phenomenon: 'Phenomenon',
@@ -466,7 +482,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     sourceCode: {
-      eyebrow: '05 · SOURCE CODE',
+      badge: '05',
+      eyebrow: 'SOURCE CODE',
       title: 'See it in the real React source',
       cards: [
         {
@@ -488,7 +505,8 @@ export const usageVsInternalsContent: Record<Locale, UsageVsInternalsContent> = 
       ],
     },
     takeaway: {
-      eyebrow: '06 · KEY TAKEAWAY',
+      badge: '06',
+      eyebrow: 'KEY TAKEAWAY',
       title: 'One thing to remember',
       lines: [
         "Changing state doesn't change the DOM instantly.",

@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { MoveRight } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { Timeline } from '../../../shared/timeline';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -13,9 +13,10 @@ const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
 
 export const VersionEvolutionTimeline = ({ content }: Props) => {
   return (
-    <section id="section-timeline" aria-labelledby="heading-timeline" className="space-y-lg">
-      <SectionHeader
+    <section id="timeline" aria-labelledby="heading-timeline" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="timeline"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<MoveRight className="h-5 w-5" aria-hidden="true" />}

@@ -9,7 +9,7 @@ import {
   Zap,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { priorityTone } from '../components/HeroPriorityCards';
 import type { PriorityKey, PriorityRow, SchedulerContent } from '../content';
@@ -24,9 +24,11 @@ type Props = { content: SchedulerContent['priority'] };
 
 export const SchedulerPriorityTable = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-priority" className="space-y-md">
-      <SectionHeader
+    <section id="priority" aria-labelledby="heading-priority" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="priority"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -8,7 +8,7 @@ import type { ReactElementTypeMeaningContent } from '../content';
 type Props = { content: ReactElementTypeMeaningContent['checkpoint'] };
 
 export const TypeSourceCheckpoint = ({ content }: Props) => (
-  <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="checkpoint"

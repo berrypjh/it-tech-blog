@@ -37,6 +37,7 @@ export type PackageDesignContent = {
     main: FlowNode[];
   };
   recap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -47,6 +48,7 @@ export type PackageDesignContent = {
     banner: string;
   };
   values: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -54,6 +56,7 @@ export type PackageDesignContent = {
     banner: string;
   };
   userFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -152,7 +155,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_KO,
     },
     recap: {
-      eyebrow: '01 · 회고와 최종 구조',
+      badge: '01',
+      eyebrow: '회고와 최종 구조',
       title: '다섯 패키지 회고와 전체 구조',
       description: '챕터에서 본 다섯 패키지를 한 장의 구조도와 한 문장 요약으로 정리합니다.',
       main: MAIN_FLOW_KO,
@@ -170,7 +174,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'API는 분리되고, 계산은 공유되며, 반영은 환경별로 달라진다.',
     },
     values: {
-      eyebrow: '02 · 설계 가치',
+      badge: '02',
+      eyebrow: '설계 가치',
       title: '패키지 분리가 만든 설계 가치',
       description: '폴더가 아니라, React의 미래를 만든 네 가지 설계 결정입니다.',
       cards: [
@@ -202,7 +207,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
     },
     userFlow: {
-      eyebrow: '03 · 코드 흐름',
+      badge: '03',
+      eyebrow: '코드 흐름',
       title: '하나의 사용자 코드가 패키지를 거치는 전체 흐름',
       description: '간단한 컴포넌트도 네 패키지를 거쳐 화면이 됩니다.',
       code: APP_CODE,
@@ -275,7 +281,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       main: MAIN_FLOW_EN,
     },
     recap: {
-      eyebrow: '01 · RECAP & ARCHITECTURE',
+      badge: '01',
+      eyebrow: 'RECAP & ARCHITECTURE',
       title: 'The five packages and the whole architecture',
       description: 'One map and one sentence per package for everything this chapter covered.',
       main: MAIN_FLOW_EN,
@@ -293,7 +300,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'APIs are split, compute is shared, application differs per environment.',
     },
     values: {
-      eyebrow: '02 · DESIGN VALUES',
+      badge: '02',
+      eyebrow: 'DESIGN VALUES',
       title: 'Design values produced by package separation',
       description: 'Not folder housekeeping — four decisions that shaped React’s future.',
       cards: [
@@ -325,7 +333,8 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
     },
     userFlow: {
-      eyebrow: '03 · CODE FLOW',
+      badge: '03',
+      eyebrow: 'CODE FLOW',
       title: 'A single piece of user code, across the packages',
       description: 'Even a tiny component travels through four packages on its way to the screen.',
       code: APP_CODE,

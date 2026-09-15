@@ -3,7 +3,7 @@ import { Info, Map, SlidersHorizontal } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 
@@ -11,9 +11,14 @@ type Props = { content: RvrContent['hostConfig'] };
 
 export const HostConfigSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-host-config" className="space-y-md">
-      <SectionHeader
+    <section
+      id="host-config"
+      aria-labelledby="heading-host-config"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="host-config"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Map className="h-5 w-5" aria-hidden="true" />}

@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Code2, ListChecks, type LucideIcon, Search, ShieldCheck } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReadingStep, TestCodeContent } from '../content';
 
@@ -28,9 +28,11 @@ const toFlowStep = (step: ReadingStep): FlowStepItem => {
 };
 
 export const TestReadingSteps = ({ content }: Props) => (
-  <section aria-labelledby="heading-steps" className="space-y-md">
-    <SectionHeader
+  <section id="steps" aria-labelledby="heading-steps" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="steps"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

@@ -15,7 +15,7 @@ const cardIcon: Record<BenefitCard['id'], LucideIcon> = {
 };
 
 export const RefBenefits = ({ content }: Props) => (
-  <section aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
+  <section id="benefits" aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="benefits"

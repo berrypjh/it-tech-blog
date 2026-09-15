@@ -9,7 +9,11 @@ import type { ReactElementSummaryBeforeFiberContent } from '../content';
 type Props = { content: ReactElementSummaryBeforeFiberContent['fiberPreview'] };
 
 export const FiberChapterPreview = ({ content }: Props) => (
-  <section aria-labelledby="heading-fiber-preview" className="space-y-md scroll-mt-xl">
+  <section
+    id="fiber-preview"
+    aria-labelledby="heading-fiber-preview"
+    className="space-y-md scroll-mt-xl"
+  >
     <SectionBadgeHeader
       descriptionFullWidth
       id="fiber-preview"

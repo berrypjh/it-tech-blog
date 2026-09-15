@@ -48,7 +48,7 @@ const FlowGroup = ({
   const modern = variant === 'modern';
 
   return (
-    <section className="flex flex-col gap-sm">
+    <div className="flex flex-col gap-sm">
       <span
         className={cx(
           'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
@@ -66,7 +66,7 @@ const FlowGroup = ({
           </li>
         ))}
       </ol>
-    </section>
+    </div>
   );
 };
 

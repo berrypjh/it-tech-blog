@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { BarChart3, Eye, type LucideIcon, Puzzle, Search, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BenefitCard, WhySourceContent } from '../content';
@@ -17,9 +17,10 @@ const cardIcon: Record<BenefitCard['id'], LucideIcon> = {
 
 export const SourceReadingBenefits = ({ content }: Props) => {
   return (
-    <section id="section-benefits" aria-labelledby="heading-benefits" className="space-y-lg">
-      <SectionHeader
+    <section id="benefits" aria-labelledby="heading-benefits" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="benefits"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}

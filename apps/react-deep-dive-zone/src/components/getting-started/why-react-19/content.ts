@@ -60,16 +60,19 @@ export type WhyReact19Content = {
     };
   };
   timeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     rows: TimelineRow[];
   };
   focusTopics: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: FocusTopic[];
   };
   reinterpret: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -77,6 +80,7 @@ export type WhyReact19Content = {
     rows: ReinterpretRow[];
   };
   resources: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ResourceCard[];
@@ -113,7 +117,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '01 · 버전 흐름',
+      badge: '01',
+      eyebrow: '버전 흐름',
       title: 'React 버전별 핵심 변화',
       rows: [
         {
@@ -155,7 +160,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '02 · 집중 주제',
+      badge: '02',
+      eyebrow: '집중 주제',
       title: 'React 19에서 특히 읽을 가치가 큰 주제',
       cards: [
         {
@@ -193,7 +199,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '03 · 재해석',
+      badge: '03',
+      eyebrow: '재해석',
       title: '오래된 용어를 최신 관점으로 다시 읽기',
       description:
         '버전이 달라지면 내부 표현도 달라집니다. 같은 목적이라도 구현 방식과 용어가 바뀌었습니다.',
@@ -230,7 +237,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '04 · 공식 자료',
+      badge: '04',
+      eyebrow: '공식 자료',
       title: '공식 변경 기록 확인하기',
       cards: [
         {
@@ -299,7 +307,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       },
     },
     timeline: {
-      eyebrow: '01 · TIMELINE',
+      badge: '01',
+      eyebrow: 'TIMELINE',
       title: 'Key shifts across React versions',
       rows: [
         {
@@ -338,7 +347,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     focusTopics: {
-      eyebrow: '02 · FOCUS TOPICS',
+      badge: '02',
+      eyebrow: 'FOCUS TOPICS',
       title: 'Topics most worth reading in React 19',
       cards: [
         {
@@ -375,7 +385,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     reinterpret: {
-      eyebrow: '03 · REINTERPRETATION',
+      badge: '03',
+      eyebrow: 'REINTERPRETATION',
       title: 'Re-reading older terms through a modern lens',
       description:
         'When versions change, the internal vocabulary changes too — same intent, different implementation and terminology.',
@@ -412,7 +423,8 @@ export const whyReact19Content: Record<Locale, WhyReact19Content> = {
       ],
     },
     resources: {
-      eyebrow: '04 · RESOURCES',
+      badge: '04',
+      eyebrow: 'RESOURCES',
       title: 'Check the official change records',
       cards: [
         {

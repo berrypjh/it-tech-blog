@@ -18,6 +18,7 @@ export const RepoRootMiniMap = ({ content }: Props) => {
   return (
     <RepoBrowserShell
       id="mini-map"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

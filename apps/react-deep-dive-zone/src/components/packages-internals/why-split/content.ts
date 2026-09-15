@@ -81,6 +81,7 @@ export type WhySplitContent = {
     cards: MisconceptionCard[];
   };
   fullMap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -91,12 +92,14 @@ export type WhySplitContent = {
     packagesLabel: string;
   };
   reasons: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: ReasonCard[];
     banner: string;
   };
   codeFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -106,6 +109,7 @@ export type WhySplitContent = {
     steps: FlowStep[];
   };
   questions: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: QuestionCard[];
@@ -330,7 +334,8 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       ],
     },
     fullMap: {
-      eyebrow: '02 · 아키텍처 지도',
+      badge: '02',
+      eyebrow: '아키텍처 지도',
       title: 'React 패키지 아키텍처 전체 지도',
       description:
         '사용자 코드가 react를 거쳐 reconciler에서 계산되고, renderer가 환경별로 반영합니다. scheduler와 shared가 모든 단계를 떠받칩니다.',
@@ -342,7 +347,8 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       packagesLabel: '패키지별 역할',
     },
     reasons: {
-      eyebrow: '03 · 분리 이유',
+      badge: '03',
+      eyebrow: '분리 이유',
       title: '왜 역할을 나누었는가?',
       cards: [
         {
@@ -373,7 +379,8 @@ export const whySplitContent: Record<Locale, WhySplitContent> = {
       banner: 'React의 패키지 구조는 폴더 정리가 아니라 설계 전략이다.',
     },
     codeFlow: {
-      eyebrow: '04 · 코드 흐름',
+      badge: '04',
+      eyebrow: '코드 흐름',
       title: '하나의 사용자 코드가 여러 패키지를 거치는 흐름',
       description: '단순한 컴포넌트 한 줄도 여섯 단계에 걸쳐 여러 패키지를 통과합니다.',
       code: `import { useState } from 'react';
@@ -430,7 +437,8 @@ function App() {
       ],
     },
     questions: {
-      eyebrow: '05 · 핵심 질문',
+      badge: '05',
+      eyebrow: '핵심 질문',
       title: '패키지별 핵심 질문',
       cards: [
         {
@@ -524,7 +532,8 @@ function App() {
       ],
     },
     fullMap: {
-      eyebrow: '02 · ARCHITECTURE MAP',
+      badge: '02',
+      eyebrow: 'ARCHITECTURE MAP',
       title: 'React package architecture — full map',
       description:
         'User code passes through react, is computed by the reconciler, and a renderer applies the result to each environment. scheduler and shared support every step.',
@@ -536,7 +545,8 @@ function App() {
       packagesLabel: 'What each package does',
     },
     reasons: {
-      eyebrow: '03 · WHY SPLIT',
+      badge: '03',
+      eyebrow: 'WHY SPLIT',
       title: 'Why split the roles?',
       cards: [
         {
@@ -567,7 +577,8 @@ function App() {
       banner: 'React’s package structure is a design strategy, not folder housekeeping.',
     },
     codeFlow: {
-      eyebrow: '04 · CODE FLOW',
+      badge: '04',
+      eyebrow: 'CODE FLOW',
       title: 'One snippet, many packages',
       description: 'Even a single component travels through six steps and several packages.',
       code: `import { useState } from 'react';
@@ -624,7 +635,8 @@ function App() {
       ],
     },
     questions: {
-      eyebrow: '05 · PACKAGE QUESTIONS',
+      badge: '05',
+      eyebrow: 'PACKAGE QUESTIONS',
       title: 'A core question per package',
       cards: [
         {

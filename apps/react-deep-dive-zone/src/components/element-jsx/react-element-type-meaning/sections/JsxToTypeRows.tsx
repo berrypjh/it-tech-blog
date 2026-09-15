@@ -9,7 +9,7 @@ import type { JsxRow, ReactElementTypeMeaningContent } from '../content';
 type Props = { content: ReactElementTypeMeaningContent['rows'] };
 
 export const JsxToTypeRows = ({ content }: Props) => (
-  <section aria-labelledby="heading-rows" className="space-y-md scroll-mt-xl">
+  <section id="rows" aria-labelledby="heading-rows" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="rows"

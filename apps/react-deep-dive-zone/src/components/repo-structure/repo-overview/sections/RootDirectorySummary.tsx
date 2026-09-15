@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { FlaskConical, Folder, type LucideIcon, Sparkles, TerminalSquare } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DirectoryCard, RepoOverviewContent } from '../content';
@@ -17,9 +17,10 @@ type Props = { content: RepoOverviewContent['directory'] };
 
 export const RootDirectorySummary = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-directory" className="space-y-lg">
-      <SectionHeader
+    <section id="directory" aria-labelledby="heading-directory" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="directory"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Folder className="h-5 w-5" aria-hidden="true" />}

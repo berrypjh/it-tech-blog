@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Map } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CreateHydrateCard, ReactDomContent } from '../content';
 
@@ -10,9 +10,11 @@ type Props = { content: ReactDomContent['flow'] };
 
 export const CreateHydrateFlowSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-flow" className="space-y-lg">
-      <SectionHeader
+    <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="flow"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

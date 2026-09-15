@@ -3,7 +3,7 @@ import { Lightbulb, type LucideIcon, Monitor, Network, Server } from 'lucide-rea
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ClientServerCard, ReactDomContent } from '../content';
 
 type Props = { content: ReactDomContent['clientServer'] };
@@ -15,9 +15,15 @@ const cardIcon: Record<ClientServerCard['id'], LucideIcon> = {
 
 export const ClientServerSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-client-server" className="space-y-md">
-      <SectionHeader
+    <section
+      id="client-server"
+      aria-labelledby="heading-client-server"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="client-server"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

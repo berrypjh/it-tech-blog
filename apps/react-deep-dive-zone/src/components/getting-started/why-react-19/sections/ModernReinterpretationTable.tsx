@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight, RefreshCw } from 'lucide-react';
 
 import { MappingRowCard } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { WhyReact19Content } from '../content';
 
@@ -9,9 +9,15 @@ type Props = { content: WhyReact19Content['reinterpret'] };
 
 export const ModernReinterpretationTable = ({ content }: Props) => {
   return (
-    <section id="section-reinterpret" aria-labelledby="heading-reinterpret" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="reinterpret"
+      aria-labelledby="heading-reinterpret"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="reinterpret"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

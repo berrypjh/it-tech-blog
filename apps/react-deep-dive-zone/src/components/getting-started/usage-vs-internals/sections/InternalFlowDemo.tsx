@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { cx } from '@berrypjh/react-ui';
 import { Atom, Lightbulb } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
 
@@ -48,9 +48,10 @@ export const InternalFlowDemo = ({ content }: Props) => {
   }, [clearTimers, totalSteps]);
 
   return (
-    <section id="section-demo" aria-labelledby="heading-demo" className="space-y-lg">
-      <SectionHeader
+    <section id="demo" aria-labelledby="heading-demo" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="demo"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Atom className="h-5 w-5" aria-hidden="true" />}

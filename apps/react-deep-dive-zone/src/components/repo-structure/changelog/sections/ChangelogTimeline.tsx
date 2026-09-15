@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { BookOpen, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { Timeline } from '../../../shared/timeline';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -14,9 +14,11 @@ const toneCycle: ToneKey[] = ['amber', 'sky', 'violet'];
 
 export const ChangelogTimeline = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-timeline" className="space-y-lg">
-      <SectionHeader
+    <section id="timeline" aria-labelledby="heading-timeline" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="timeline"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

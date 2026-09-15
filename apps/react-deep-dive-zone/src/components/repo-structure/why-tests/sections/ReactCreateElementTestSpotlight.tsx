@@ -2,16 +2,17 @@ import { Code2, FileCode2, Info } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { TestCodeContent } from '../content';
 
 type Props = { content: TestCodeContent['spotlight'] };
 
 export const ReactCreateElementTestSpotlight = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-spotlight" className="space-y-md">
-      <SectionHeader
+    <section id="spotlight" aria-labelledby="heading-spotlight" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="spotlight"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<FileCode2 className="h-5 w-5" aria-hidden="true" />}

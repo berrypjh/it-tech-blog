@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneCard } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PreviewCard, ReconcilerEntryContent } from '../content';
@@ -12,9 +12,11 @@ type Props = { content: ReconcilerEntryContent['preview'] };
 
 export const ReconcilerNextTopicsPreview = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-preview" className="space-y-lg">
-      <SectionHeader
+    <section id="preview" aria-labelledby="heading-preview" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="preview"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

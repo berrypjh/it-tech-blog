@@ -1,7 +1,7 @@
 import { FileCode2 } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ReactVsReactDomContent } from '../content';
 
@@ -16,9 +16,11 @@ const toCell = (lines: string[]) => (
 );
 
 export const ReactDomComparisonTable = ({ content }: Props) => (
-  <section aria-labelledby="heading-comparison" className="space-y-lg">
-    <SectionHeader
+  <section id="comparison" aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="comparison"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

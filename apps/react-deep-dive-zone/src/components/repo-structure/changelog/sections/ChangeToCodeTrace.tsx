@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent, TraceStep } from '../content';
 
@@ -35,9 +35,11 @@ const toFlowStep = (step: TraceStep): FlowStepItem => {
 };
 
 export const ChangeToCodeTrace = ({ content }: Props) => (
-  <section aria-labelledby="heading-trace" className="space-y-lg">
-    <SectionHeader
+  <section id="trace" aria-labelledby="heading-trace" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="trace"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

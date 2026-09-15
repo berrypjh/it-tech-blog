@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { DeliverableCard, RoadmapContent } from '../content';
 
@@ -44,9 +44,15 @@ const toFlowStep = (card: DeliverableCard): FlowStepItem => {
 };
 
 export const StageDeliverables = ({ content }: Props) => (
-  <section id="section-deliverables" aria-labelledby="heading-deliverables" className="space-y-lg">
-    <SectionHeader
+  <section
+    id="deliverables"
+    aria-labelledby="heading-deliverables"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="deliverables"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.supporting}

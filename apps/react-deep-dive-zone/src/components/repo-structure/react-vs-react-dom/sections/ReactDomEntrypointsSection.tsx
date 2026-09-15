@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { AppWindow, type LucideIcon, Server, Split } from 'lucide-react';
 
 import { CompareBridge } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { EntrypointCard, ReactVsReactDomContent } from '../content';
 
@@ -19,9 +19,14 @@ type Props = { content: ReactVsReactDomContent['entrypoints'] };
 
 export const ReactDomEntrypointsSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-entrypoints" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="entrypoints"
+      aria-labelledby="heading-entrypoints"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="entrypoints"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Split className="h-5 w-5" aria-hidden="true" />}

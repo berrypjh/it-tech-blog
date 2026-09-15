@@ -1,7 +1,7 @@
 import { Box } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { StepNumberBadge } from '../../../shared/step';
 import { formatInline } from '../../../shared/text';
 import type { UsageStep, UsageVsInternalsContent } from '../content';
@@ -51,12 +51,13 @@ const PerspectivePanel = ({
 export const PerspectiveComparison = ({ content }: Props) => {
   return (
     <section
-      id="section-perspectives"
+      id="perspectives"
       aria-labelledby="heading-perspectives"
-      className="space-y-lg"
+      className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="perspectives"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Box className="h-5 w-5" aria-hidden="true" />}

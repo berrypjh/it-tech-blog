@@ -10,11 +10,7 @@ import type { FiberWhyNeededContent } from '../content';
 type Props = { content: FiberWhyNeededContent['preview'] };
 
 export const NextChapterPreview = ({ content }: Props) => (
-  <section
-    id="preview"
-    aria-labelledby="heading-preview"
-    className="space-y-md scroll-mt-xl h-full"
-  >
+  <section id="preview" aria-labelledby="heading-preview" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="preview"
       number={content.badge}

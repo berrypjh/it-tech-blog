@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FlaskConical, Folder, type LucideIcon, TerminalSquare } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SurroundingContent } from '../content';
@@ -16,9 +16,15 @@ type Props = { content: SurroundingContent['comparison'] };
 
 export const DirectoryComparisonCards = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-comparison" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="comparison"
+      aria-labelledby="heading-comparison"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="comparison"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

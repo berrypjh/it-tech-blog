@@ -1,16 +1,17 @@
 import { FunctionSquare } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { UsageVsInternalsContent } from '../content';
 
 type Props = { content: UsageVsInternalsContent['table'] };
 
 export const InterpretationTable = ({ content }: Props) => (
-  <section id="section-table" aria-labelledby="heading-table" className="space-y-lg">
-    <SectionHeader
+  <section id="table" aria-labelledby="heading-table" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="table"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FunctionSquare className="h-5 w-5" aria-hidden="true" />}

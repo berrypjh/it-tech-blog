@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ChangelogContent } from '../content';
 
@@ -25,9 +25,10 @@ type Props = { content: ChangelogContent['latest'] };
 
 export const LatestReleaseExample = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-latest" className="space-y-md">
-      <SectionHeader
+    <section id="latest" aria-labelledby="heading-latest" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="latest"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Tag className="h-5 w-5" aria-hidden="true" />}

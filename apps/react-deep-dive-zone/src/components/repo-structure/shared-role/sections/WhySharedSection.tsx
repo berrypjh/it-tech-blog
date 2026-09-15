@@ -3,16 +3,18 @@ import { CircleHelp, FolderCheck, Sparkles, TriangleAlert } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { ContrastCard, StatusPill } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { SharedContent } from '../content';
 
 type Props = { content: SharedContent['why'] };
 
 export const WhySharedSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-why" className="space-y-md">
-      <SectionHeader
+    <section id="why" aria-labelledby="heading-why" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="why"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

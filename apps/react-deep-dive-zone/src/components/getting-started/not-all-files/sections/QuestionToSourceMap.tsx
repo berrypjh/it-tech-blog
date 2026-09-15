@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, File, Route } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { NotAllFilesContent } from '../content';
 
@@ -37,9 +37,10 @@ const FnPill = ({ name, cls }: { name: string; cls: string }) => (
 
 export const QuestionToSourceMap = ({ content }: Props) => {
   return (
-    <section id="section-mapping" aria-labelledby="heading-mapping" className="space-y-lg">
-      <SectionHeader
+    <section id="mapping" aria-labelledby="heading-mapping" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="mapping"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Route className="h-5 w-5" aria-hidden="true" />}

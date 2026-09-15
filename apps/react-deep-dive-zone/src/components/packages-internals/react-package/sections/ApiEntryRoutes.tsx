@@ -23,8 +23,9 @@ const routeIcon: Record<EntryRouteCard['id'], LucideIcon> = {
 
 export const ApiEntryRoutes = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-routes" className="space-y-md scroll-mt-2xl">
+    <section id="routes" aria-labelledby="heading-routes" className="space-y-md scroll-mt-xl">
       <SectionBadgeHeader
+        descriptionFullWidth
         id="routes"
         number={content.badge}
         eyebrow={content.eyebrow}

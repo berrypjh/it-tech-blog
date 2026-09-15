@@ -18,8 +18,9 @@ const groupIcon: Record<ApiGroupCard['id'], LucideIcon> = {
 
 export const ApiGroups = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-groups" className="space-y-md scroll-mt-xl">
+    <section id="groups" aria-labelledby="heading-groups" className="space-y-md scroll-mt-xl">
       <SectionBadgeHeader
+        descriptionFullWidth
         id="groups"
         number={content.badge}
         eyebrow={content.eyebrow}

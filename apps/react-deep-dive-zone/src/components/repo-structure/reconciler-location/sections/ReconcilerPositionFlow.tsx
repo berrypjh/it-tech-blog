@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Atom, CircleCheck, Cuboid, type LucideIcon, Map, MonitorSmartphone } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import { toneTokens } from '../../../shared/tones';
 import type { PositionCard, ReconcilerEntryContent } from '../content';
@@ -29,9 +29,11 @@ const toFlowStep = (card: PositionCard, idx: number): FlowStepItem => {
 };
 
 export const ReconcilerPositionFlow = ({ content }: Props) => (
-  <section aria-labelledby="heading-position" className="space-y-lg">
-    <SectionHeader
+  <section id="position" aria-labelledby="heading-position" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="position"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

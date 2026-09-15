@@ -36,12 +36,14 @@ export type RoadmapContent = {
     };
   };
   roadmap: {
+    badge: string;
     eyebrow: string;
     title: string;
     coreFilesLabel: string;
     rows: RoadmapRow[];
   };
   deliverables: {
+    badge: string;
     eyebrow: string;
     title: string;
     supporting: string;
@@ -84,7 +86,8 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     roadmap: {
-      eyebrow: '01 · 로드맵',
+      badge: '01',
+      eyebrow: '로드맵',
       title: '8단계 학습 로드맵',
       coreFilesLabel: '핵심 파일',
       rows: [
@@ -147,7 +150,8 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     deliverables: {
-      eyebrow: '02 · 산출물',
+      badge: '02',
+      eyebrow: '산출물',
       title: '단계별 산출물',
       supporting: '학습 후, 내가 만들어야 할 결과물',
       cards: [
@@ -239,7 +243,8 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       },
     },
     roadmap: {
-      eyebrow: '01 · ROADMAP',
+      badge: '01',
+      eyebrow: 'ROADMAP',
       title: '8-step learning roadmap',
       coreFilesLabel: 'Core files',
       rows: [
@@ -302,7 +307,8 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     deliverables: {
-      eyebrow: '02 · DELIVERABLES',
+      badge: '02',
+      eyebrow: 'DELIVERABLES',
       title: 'Per-stage deliverables',
       supporting: 'What you should be able to produce after learning',
       cards: [

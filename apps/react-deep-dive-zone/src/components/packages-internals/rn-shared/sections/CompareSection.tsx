@@ -2,7 +2,7 @@ import { type LucideIcon, Monitor, Smartphone, Star } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { CompareCard, RnContent } from '../content';
 
 type Props = { content: RnContent['compare'] };
@@ -14,9 +14,11 @@ const cardIcon: Record<CompareCard['id'], LucideIcon> = {
 
 export const CompareSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-compare" className="space-y-md">
-      <SectionHeader
+    <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="compare"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

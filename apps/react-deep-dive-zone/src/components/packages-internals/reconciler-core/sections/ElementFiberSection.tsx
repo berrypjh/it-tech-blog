@@ -1,7 +1,7 @@
 import { Boxes, Layers, Map, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FiberTreeGraphic } from '../components/FiberTreeGraphic';
 import { FieldCard } from '../components/FieldCard';
 import { JsxExampleCard } from '../components/JsxExampleCard';
@@ -11,9 +11,15 @@ type Props = { content: ReconcilerContent['elementFiber'] };
 
 export const ElementFiberSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-element-fiber" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section
+      id="element-fiber"
+      aria-labelledby="heading-element-fiber"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="element-fiber"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

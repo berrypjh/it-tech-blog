@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Bug, Folder, Lightbulb, type LucideIcon, Server, Sparkles, Zap } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FixtureCard, SurroundingContent } from '../content';
@@ -20,9 +20,10 @@ const tone: ToneKey = 'amber';
 
 export const FixturesDeepDive = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-fixtures" className="space-y-lg">
-      <SectionHeader
+    <section id="fixtures" aria-labelledby="heading-fixtures" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="fixtures"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Folder className="h-5 w-5" aria-hidden="true" />}

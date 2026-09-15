@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Brain, Check, FolderOpen, type LucideIcon, Pencil, Pin, Route, X } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ApproachItem, NotAllFilesContent } from '../content';
 
 const itemIcon: Record<ApproachItem['id'], LucideIcon> = {
@@ -85,9 +85,14 @@ const ApproachPanel = ({
 
 export const WrongVsGoodApproach = ({ content }: Props) => {
   return (
-    <section id="section-approaches" aria-labelledby="heading-approaches" className="space-y-lg">
-      <SectionHeader
+    <section
+      id="approaches"
+      aria-labelledby="heading-approaches"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="approaches"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<X className="h-5 w-5" aria-hidden="true" />}

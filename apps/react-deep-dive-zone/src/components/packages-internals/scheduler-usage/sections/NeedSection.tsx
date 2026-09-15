@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Clock, Keyboard, type LucideIcon, Puzzle, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { NeedCard, SchedulerContent } from '../content';
@@ -16,9 +16,11 @@ const needIcon: Record<NeedCard['id'], LucideIcon> = {
 
 export const NeedSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-needs" className="space-y-md">
-      <SectionHeader
+    <section id="needs" aria-labelledby="heading-needs" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="needs"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

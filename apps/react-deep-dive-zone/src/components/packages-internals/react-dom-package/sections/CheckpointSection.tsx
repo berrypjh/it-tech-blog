@@ -2,7 +2,7 @@ import { FileCode, FileText, SquareCheckBig } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReactDomContent } from '../content';
 
 type Props = { content: ReactDomContent['checkpoint'] };
@@ -11,9 +11,14 @@ export const CheckpointSection = ({ content }: Props) => {
   const [fileItem, functionsItem] = content.items;
 
   return (
-    <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section
+      id="checkpoint"
+      aria-labelledby="heading-checkpoint"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="checkpoint"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<SquareCheckBig className="h-5 w-5" aria-hidden="true" />}

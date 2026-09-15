@@ -1,6 +1,6 @@
 import { Clock, Gauge, HelpCircle, Key, type LucideIcon, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import type { QuestionCard, WhySourceContent } from '../content';
 
@@ -15,9 +15,10 @@ const cardIcon: Record<QuestionCard['id'], LucideIcon> = {
 
 export const ReactQuestionCards = ({ content }: Props) => {
   return (
-    <section id="section-questions" aria-labelledby="heading-questions" className="space-y-lg">
-      <SectionHeader
+    <section id="questions" aria-labelledby="heading-questions" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="questions"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}

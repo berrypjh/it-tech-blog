@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowStep, NotAllFilesContent } from '../content';
 
@@ -39,9 +39,14 @@ const toFlowStep = (step: FlowStep): FlowStepItem => {
 };
 
 export const FollowQuestionFlow = ({ content }: Props) => (
-  <section id="section-follow-flow" aria-labelledby="heading-follow-flow" className="space-y-lg">
-    <SectionHeader
+  <section
+    id="follow-flow"
+    aria-labelledby="heading-follow-flow"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="follow-flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Network className="h-5 w-5" aria-hidden="true" />}

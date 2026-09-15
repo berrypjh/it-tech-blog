@@ -52,18 +52,21 @@ export type RnContent = {
     };
   };
   axis: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: AxisCard[];
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: CompareCard[];
   };
   common: {
+    badge: string;
     eyebrow: string;
     title: string;
     leftNote: string;
@@ -84,6 +87,7 @@ export type RnContent = {
     };
   };
   modes: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -91,6 +95,7 @@ export type RnContent = {
     pills: { id: string; left: string; right: string; tone: ToneKey }[];
   };
   benefit: {
+    badge: string;
     eyebrow: string;
     title: string;
     quote: string;
@@ -134,7 +139,8 @@ export const rnContent: Record<Locale, RnContent> = {
       },
     },
     axis: {
-      eyebrow: '01 · 공유 축',
+      badge: '01',
+      eyebrow: '공유 축',
       title: '공통으로 공유되는 내부 축',
       description: 'React DOM과 React Native 양쪽에서 똑같이 사용되는 네 가지 내부 개념입니다.',
       cards: [
@@ -169,7 +175,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · DOM vs Native',
+      badge: '02',
+      eyebrow: 'DOM vs Native',
       title: 'DOM과 Native가 달라지는 지점',
       description: '공통 계산 축은 같지만, 실제 환경에 반영하는 방식은 이렇게 달라집니다.',
       cards: [
@@ -200,7 +207,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     common: {
-      eyebrow: '03 · 공통 reconciler',
+      badge: '03',
+      eyebrow: '공통 reconciler',
       title: '공통 reconciler → 환경별 renderer',
       leftNote:
         'React Element부터 변경 계산까지는 공통으로 처리하고, 실제 화면에 반영하는 방식은 환경별로 구현합니다.',
@@ -225,7 +233,8 @@ export const rnContent: Record<Locale, RnContent> = {
       },
     },
     modes: {
-      eyebrow: '04 · Mutation/Persistence',
+      badge: '04',
+      eyebrow: 'Mutation/Persistence',
       title: 'Mutation / Persistence 관점 맛보기',
       description:
         '같은 reconciler가 환경에 따라 어떻게 다른 적용 방식을 가지는지 모드 단위로 살펴봅니다.',
@@ -264,7 +273,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     benefit: {
-      eyebrow: '05 · 설계 장점',
+      badge: '05',
+      eyebrow: '설계 장점',
       title: 'React Native 사례를 통해 보는 설계 장점',
       quote: '같은 React 모델을 유지하면서도 출력 환경은 바꿀 수 있다.',
       quoteBody:
@@ -326,7 +336,8 @@ export const rnContent: Record<Locale, RnContent> = {
       },
     },
     axis: {
-      eyebrow: '01 · SHARED AXIS',
+      badge: '01',
+      eyebrow: 'SHARED AXIS',
       title: 'The internal axis both sides share',
       description: 'Four internal concepts that React DOM and React Native use identically.',
       cards: [
@@ -361,7 +372,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · DOM VS NATIVE',
+      badge: '02',
+      eyebrow: 'DOM VS NATIVE',
       title: 'Where DOM and Native diverge',
       description: 'Shared axis stays the same, but environment application differs like this.',
       cards: [
@@ -392,7 +404,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     common: {
-      eyebrow: '03 · COMMON RECONCILER',
+      badge: '03',
+      eyebrow: 'COMMON RECONCILER',
       title: 'Shared reconciler → per-environment renderer',
       leftNote:
         'From React Element to diff computation is shared; how that is applied to the screen is per-environment.',
@@ -417,7 +430,8 @@ export const rnContent: Record<Locale, RnContent> = {
       },
     },
     modes: {
-      eyebrow: '04 · MUTATION / PERSISTENCE',
+      badge: '04',
+      eyebrow: 'MUTATION / PERSISTENCE',
       title: 'A taste of Mutation / Persistence',
       description:
         'The same reconciler can apply work in two different modes depending on the environment.',
@@ -456,7 +470,8 @@ export const rnContent: Record<Locale, RnContent> = {
       ],
     },
     benefit: {
-      eyebrow: '05 · DESIGN BENEFIT',
+      badge: '05',
+      eyebrow: 'DESIGN BENEFIT',
       title: 'Design benefits seen through React Native',
       quote: 'Keep the React model, swap the output environment.',
       quoteBody:

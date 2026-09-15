@@ -18,11 +18,7 @@ const rowIcon: Record<FinalFlowRow['id'], LucideIcon> = {
 };
 
 export const FinalFlowSummary = ({ content }: Props) => (
-  <section
-    id="final-flow"
-    aria-labelledby="heading-final-flow"
-    className="space-y-md scroll-mt-xl h-full"
-  >
+  <section id="final-flow" aria-labelledby="heading-final-flow" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="final-flow"
       number={content.badge}

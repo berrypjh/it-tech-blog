@@ -26,7 +26,7 @@ const cardTone = (id: FreezeCard['id']) =>
       };
 
 export const ObjectFreezeSection = ({ content }: Props) => (
-  <section aria-labelledby="heading-freeze" className="space-y-md scroll-mt-xl">
+  <section id="freeze" aria-labelledby="heading-freeze" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="freeze"

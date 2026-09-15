@@ -14,7 +14,7 @@ const modeIcon: Record<ModeCard['id'], LucideIcon> = {
 };
 
 export const RuntimeModeComparison = ({ content }: Props) => (
-  <section aria-labelledby="heading-modes" className="space-y-md scroll-mt-xl">
+  <section id="modes" aria-labelledby="heading-modes" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="modes"

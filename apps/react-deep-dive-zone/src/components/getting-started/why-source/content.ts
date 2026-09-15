@@ -44,16 +44,19 @@ export type WhySourceContent = {
     flowLoop: string;
   };
   questions: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: QuestionCard[];
   };
   benefits: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: BenefitCard[];
   };
   firstCode: {
+    badge: string;
     eyebrow: string;
     title: string;
     file: {
@@ -132,7 +135,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       flowLoop: '상태 변화에 따라 다시 시작되는 사이클',
     },
     questions: {
-      eyebrow: '01 · 문제 제기',
+      badge: '01',
+      eyebrow: '문제 제기',
       title: 'React를 쓰며 자주 생기는 의문',
       cards: [
         {
@@ -166,7 +170,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     benefits: {
-      eyebrow: '02 · 학습 효과',
+      badge: '02',
+      eyebrow: '학습 효과',
       title: '소스코드를 읽으면 얻는 것',
       cards: [
         {
@@ -200,7 +205,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '03 · 첫 코드',
+      badge: '03',
+      eyebrow: '첫 코드',
       title: '첫 코드 맛보기',
       file: {
         fileName: 'ReactJSXElement.js',
@@ -263,7 +269,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       flowLoop: 'The cycle restarts on every state change',
     },
     questions: {
-      eyebrow: '01 · PROBLEM',
+      badge: '01',
+      eyebrow: 'PROBLEM',
       title: 'Questions React Developers Keep Hitting',
       cards: [
         {
@@ -297,7 +304,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     benefits: {
-      eyebrow: '02 · BENEFITS',
+      badge: '02',
+      eyebrow: 'BENEFITS',
       title: 'What You Gain by Reading the Source',
       cards: [
         {
@@ -331,7 +339,8 @@ export const whySourceContent: Record<Locale, WhySourceContent> = {
       ],
     },
     firstCode: {
-      eyebrow: '03 · FIRST CODE',
+      badge: '03',
+      eyebrow: 'FIRST CODE',
       title: 'First Taste of the Source',
       file: {
         fileName: 'ReactJSXElement.js',

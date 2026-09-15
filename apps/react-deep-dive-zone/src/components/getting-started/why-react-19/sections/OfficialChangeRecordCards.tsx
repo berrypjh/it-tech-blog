@@ -2,7 +2,7 @@ import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Book, ExternalLink, Rss } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { formatInline } from '../../../shared/text';
 import type { ResourceCard, WhyReact19Content } from '../content';
 
@@ -138,9 +138,10 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
 
 export const OfficialChangeRecordCards = ({ content }: Props) => {
   return (
-    <section id="section-resources" aria-labelledby="heading-resources" className="space-y-lg">
-      <SectionHeader
+    <section id="resources" aria-labelledby="heading-resources" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="resources"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Book className="h-5 w-5" aria-hidden="true" />}

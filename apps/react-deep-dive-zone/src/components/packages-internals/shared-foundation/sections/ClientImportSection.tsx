@@ -2,16 +2,22 @@ import { FileText, Map } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { SharedContent } from '../content';
 
 type Props = { content: SharedContent['clientImport'] };
 
 export const ClientImportSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-client-import" className="space-y-md">
-      <SectionHeader
+    <section
+      id="client-import"
+      aria-labelledby="heading-client-import"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="client-import"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

@@ -1,7 +1,7 @@
 import { Map, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { FinalArchitectureDiagram } from '../components/FinalArchitectureDiagram';
 import type { PackageDesignContent } from '../content';
 
@@ -9,9 +9,11 @@ type Props = { content: PackageDesignContent['recap'] };
 
 export const RecapSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-recap" className="space-y-md">
-      <SectionHeader
+    <section id="recap" aria-labelledby="heading-recap" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="recap"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

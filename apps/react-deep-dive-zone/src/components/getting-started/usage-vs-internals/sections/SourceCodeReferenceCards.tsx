@@ -2,22 +2,23 @@ import { cx } from '@berrypjh/react-ui';
 import { BookOpen } from 'lucide-react';
 
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { UsageVsInternalsContent } from '../content';
 
 type Props = { content: UsageVsInternalsContent['sourceCode'] };
 
 export const SourceCodeReferenceCards = ({ content }: Props) => (
   <section
-    id="section-source"
+    id="source"
     aria-labelledby="heading-source"
     className={cx(
-      'space-y-lg rounded-lg border border-[var(--term-border)] p-md sm:p-lg lg:p-xl',
+      'space-y-md scroll-mt-xl rounded-lg border border-[var(--term-border)] p-md sm:p-lg lg:p-xl',
       'bg-[var(--term-surface)]',
     )}
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="source"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}

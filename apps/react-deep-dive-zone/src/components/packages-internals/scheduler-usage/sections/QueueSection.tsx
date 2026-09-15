@@ -12,7 +12,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { SchedulerContent } from '../content';
 
@@ -48,9 +48,11 @@ export const QueueSection = ({ content }: Props) => {
       : labels.idle;
 
   return (
-    <section aria-labelledby="heading-queue" className="space-y-md">
-      <SectionHeader
+    <section id="queue" aria-labelledby="heading-queue" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="queue"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

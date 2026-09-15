@@ -2,7 +2,7 @@ import { cx, VisuallyHidden } from '@berrypjh/react-ui';
 import { Boxes, Code, GitBranch, Layers, type LucideIcon, Monitor, Smartphone } from 'lucide-react';
 
 import { DownArrow } from '../../../shared/icon';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 
@@ -15,9 +15,11 @@ export const SharedFlowSection = ({ content }: Props) => {
   const a11y = `${content.elementLabel} → ${content.reconcilerLabel} (${content.reconcilerSubtitle}) → ${content.domRendererLabel}/${content.nativeRendererLabel} → ${content.domNodeLabel}/${content.nativeViewLabel}.`;
 
   return (
-    <section aria-labelledby="heading-flow" className="space-y-md">
-      <SectionHeader
+    <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="flow"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

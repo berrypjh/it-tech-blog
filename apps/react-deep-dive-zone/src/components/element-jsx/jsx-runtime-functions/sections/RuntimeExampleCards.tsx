@@ -9,7 +9,7 @@ import type { ExampleCard, JsxRuntimeFunctionsContent } from '../content';
 type Props = { content: JsxRuntimeFunctionsContent['examples'] };
 
 export const RuntimeExampleCards = ({ content }: Props) => (
-  <section aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
+  <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="examples"

@@ -46,6 +46,7 @@ export type NotAllFilesContent = {
     };
   };
   approaches: {
+    badge: string;
     eyebrow: string;
     title: string;
     wrong: {
@@ -58,12 +59,14 @@ export type NotAllFilesContent = {
     };
   };
   mapping: {
+    badge: string;
     eyebrow: string;
     title: string;
     rows: MappingRow[];
     labels: { question: string; file: string; fn: string };
   };
   followFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     mainQuestion: string;
@@ -114,7 +117,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '01 · 접근 비교',
+      badge: '01',
+      eyebrow: '접근 비교',
       title: '잘못된 접근 vs 좋은 접근',
       wrong: {
         title: '잘못된 접근',
@@ -163,7 +167,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     mapping: {
-      eyebrow: '02 · 매핑',
+      badge: '02',
+      eyebrow: '매핑',
       title: '질문 → 파일 → 핵심 함수 매핑',
       labels: { question: '질문', file: '파일', fn: '함수' },
       rows: [
@@ -206,7 +211,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '03 · 흐름 따라가기',
+      badge: '03',
+      eyebrow: '흐름 따라가기',
       title: '한 질문을 실제로 따라가 보기',
       mainQuestion: 'setState는 어떻게 렌더링으로 이어지는가?',
       steps: [
@@ -286,7 +292,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     approaches: {
-      eyebrow: '01 · COMPARE',
+      badge: '01',
+      eyebrow: 'COMPARE',
       title: 'Wrong approach vs Good approach',
       wrong: {
         title: 'Wrong approach',
@@ -335,7 +342,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       },
     },
     mapping: {
-      eyebrow: '02 · MAPPING',
+      badge: '02',
+      eyebrow: 'MAPPING',
       title: 'Question → File → Key function mapping',
       labels: { question: 'Question', file: 'File', fn: 'Function' },
       rows: [
@@ -378,7 +386,8 @@ export const notAllFilesContent: Record<Locale, NotAllFilesContent> = {
       ],
     },
     followFlow: {
-      eyebrow: '03 · FOLLOW FLOW',
+      badge: '03',
+      eyebrow: 'FOLLOW FLOW',
       title: 'Follow one question end-to-end',
       mainQuestion: 'How does setState end up triggering a render?',
       steps: [

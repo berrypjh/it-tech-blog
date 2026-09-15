@@ -8,11 +8,7 @@ import type { CoreFiveItem, FiberWhyNeededContent } from '../content';
 type Props = { content: FiberWhyNeededContent['coreFive'] };
 
 export const ChapterCoreFive = ({ content }: Props) => (
-  <section
-    id="core-five"
-    aria-labelledby="heading-core-five"
-    className="space-y-md scroll-mt-xl h-full"
-  >
+  <section id="core-five" aria-labelledby="heading-core-five" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       id="core-five"
       number={content.badge}

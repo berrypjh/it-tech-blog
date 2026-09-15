@@ -1,11 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
 
 import { GithubIcon } from '../icon';
-import { SectionHeader } from '../section';
+import { SectionBadgeHeader } from '../section';
 
 type Props = {
-  /** SectionHeader id. section/heading의 id로도 쓰인다. */
+  /** SectionBadgeHeader id. section/heading의 id로도 쓰인다. */
   id: string;
+  /** 섹션 번호 (예: '02') */
+  number: string;
   eyebrow: string;
   title: string;
   description?: string;
@@ -25,11 +27,12 @@ type Props = {
 };
 
 /**
- * 저장소 브라우저 틀: SectionHeader → GitHub 크롬 바 → 좌(트리) / 우(디테일) 2컬럼 카드.
+ * 저장소 브라우저 틀: SectionBadgeHeader → GitHub 크롬 바 → 좌(트리) / 우(디테일) 2컬럼 카드.
  * 트리와 디테일 내용은 슬롯으로 받고, 카드·크롬·divider·디테일 패널 골격만 공유한다.
  */
 export const RepoBrowserShell = ({
   id,
+  number,
   eyebrow,
   title,
   description,
@@ -41,8 +44,16 @@ export const RepoBrowserShell = ({
   tree,
   detail,
 }: Props) => (
-  <section id={`section-${id}`} aria-labelledby={`heading-${id}`} className="space-y-lg">
-    <SectionHeader id={id} eyebrow={eyebrow} title={title} description={description} icon={icon} />
+  <section id={id} aria-labelledby={`heading-${id}`} className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
+      id={id}
+      number={number}
+      eyebrow={eyebrow}
+      title={title}
+      description={description}
+      icon={icon}
+    />
 
     <div className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
       <header className="flex items-center justify-between px-md py-2 border-b border-[var(--term-border)] bg-[var(--term-surface)]">

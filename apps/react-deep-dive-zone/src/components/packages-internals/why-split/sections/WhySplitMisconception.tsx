@@ -31,6 +31,7 @@ export const WhySplitMisconception = ({ content }: Props) => {
       className="space-y-md scroll-mt-xl"
     >
       <SectionBadgeHeader
+        descriptionFullWidth
         id="misconception"
         number={content.badge}
         eyebrow={content.eyebrow}

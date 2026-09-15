@@ -3,7 +3,7 @@ import { ArrowRight, Boxes, CheckCircle2, Monitor, Star, Workflow } from 'lucide
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RvrContent } from '../content';
 
@@ -11,9 +11,15 @@ type Props = { content: RvrContent['domExample'] };
 
 export const DomExampleSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-dom-example" className="space-y-md scroll-mt-2xl">
-      <SectionHeader
+    <section
+      id="dom-example"
+      aria-labelledby="heading-dom-example"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="dom-example"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

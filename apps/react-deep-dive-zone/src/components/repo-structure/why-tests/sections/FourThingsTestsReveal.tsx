@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { type LucideIcon, RefreshCw, Search, ShieldCheck, Sparkles, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { InsightCard, TestCodeContent } from '../content';
@@ -17,9 +17,10 @@ type Props = { content: TestCodeContent['insights'] };
 
 export const FourThingsTestsReveal = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-insights" className="space-y-lg">
-      <SectionHeader
+    <section id="insights" aria-labelledby="heading-insights" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="insights"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}

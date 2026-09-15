@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CircleHelp, FileText, Folder } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RepoOverviewContent, RepoTreeRow } from '../content';
 
@@ -11,9 +11,10 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
   const items = [...content.floatingDirs, ...content.floatingDocs];
 
   return (
-    <section aria-labelledby="heading-overwhelm" className="space-y-md">
-      <SectionHeader
+    <section id="overwhelm" aria-labelledby="heading-overwhelm" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="overwhelm"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}

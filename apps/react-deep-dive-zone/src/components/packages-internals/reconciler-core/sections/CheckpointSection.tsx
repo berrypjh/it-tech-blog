@@ -2,15 +2,16 @@ import { FileCode, FileText, SquareCheckBig } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { ReconcilerContent } from '../content';
 
 type Props = { content: ReconcilerContent['checkpoint'] };
 
 export const CheckpointSection = ({ content }: Props) => (
-  <section aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-2xl">
-    <SectionHeader
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<SquareCheckBig className="h-5 w-5" aria-hidden="true" />}

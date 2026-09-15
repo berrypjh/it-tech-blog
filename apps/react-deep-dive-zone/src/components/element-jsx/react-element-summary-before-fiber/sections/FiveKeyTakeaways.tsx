@@ -17,7 +17,7 @@ const cardIcon: Record<SummaryCard['id'], LucideIcon> = {
 };
 
 export const FiveKeyTakeaways = ({ content }: Props) => (
-  <section aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
+  <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="summary"

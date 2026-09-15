@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import { RoleFlowDiagram } from '../components/RoleFlowDiagram';
 import type { ReactVsReactDomContent } from '../content';
@@ -11,9 +11,10 @@ type Props = { content: ReactVsReactDomContent['usage'] };
 
 export const ReactDomUsageFlowSection = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-usage" className="space-y-md">
-      <SectionHeader
+    <section id="usage" aria-labelledby="heading-usage" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="usage"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Code2 className="h-5 w-5" aria-hidden="true" />}

@@ -10,7 +10,7 @@ import type { CheckPoint, JsxTransformFlowContent } from '../content';
 type Props = { content: JsxTransformFlowContent['comparison'] };
 
 export const TransformComparison = ({ content }: Props) => (
-  <section aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">
+  <section id="comparison" aria-labelledby="heading-comparison" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="comparison"

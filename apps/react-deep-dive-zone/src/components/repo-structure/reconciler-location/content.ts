@@ -66,12 +66,14 @@ export type ReconcilerEntryContent = {
     };
   };
   position: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: PositionCard[];
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -79,6 +81,7 @@ export type ReconcilerEntryContent = {
     right: CompareCard;
   };
   process: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -89,6 +92,7 @@ export type ReconcilerEntryContent = {
     legendItems: { state: FiberTreeNode['state']; label: string }[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
@@ -104,6 +108,7 @@ export type ReconcilerEntryContent = {
     code: string;
   };
   preview: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -177,7 +182,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     position: {
-      eyebrow: '01 · reconciler 위치',
+      badge: '01',
+      eyebrow: 'reconciler 위치',
       title: 'reconciler의 위치 한눈에 보기',
       description: '전체 렌더링 파이프라인에서 reconciler가 어디에 위치하는지 짚어둡니다.',
       cards: [
@@ -208,7 +214,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · renderer와 차이',
+      badge: '02',
+      eyebrow: 'renderer와 차이',
       title: 'renderer와 reconciler의 차이',
       description: '계산과 반영은 분리되어 있고, 각자 다른 책임을 가집니다.',
       left: {
@@ -237,7 +244,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     process: {
-      eyebrow: '03 · 내부 동작',
+      badge: '03',
+      eyebrow: '내부 동작',
       title: 'reconciler 안에서 벌어지는 일',
       description: 'Element가 들어오면 reconciler는 다음 4단계를 순서대로 수행합니다.',
       steps: [
@@ -279,7 +287,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · 코드 체크포인트',
+      badge: '04',
+      eyebrow: '코드 체크포인트',
       title: '코드 체크포인트: Element가 Fiber로 바뀌는 순간',
       fileLabel: '파일',
       filePath: 'packages/react-reconciler/src/ReactFiber.js',
@@ -295,7 +304,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       code: createFiberFromElementCode,
     },
     preview: {
-      eyebrow: '05 · 다음 예고',
+      badge: '05',
+      eyebrow: '다음 예고',
       title: '이후 심화 페이지 예고',
       description: '이번 페이지는 React 내부 구조 학습의 관문일 뿐입니다.',
       cards: [
@@ -375,7 +385,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     position: {
-      eyebrow: '01 · POSITION',
+      badge: '01',
+      eyebrow: 'POSITION',
       title: 'Where reconciler sits in the flow',
       description: 'A quick look at where reconciler lives inside the broader rendering pipeline.',
       cards: [
@@ -406,7 +417,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     compare: {
-      eyebrow: '02 · VS RENDERER',
+      badge: '02',
+      eyebrow: 'VS RENDERER',
       title: 'How reconciler and renderer differ',
       description: 'Calculation and reflection are split — each side owns its responsibility.',
       left: {
@@ -435,7 +447,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       },
     },
     process: {
-      eyebrow: '03 · INSIDE',
+      badge: '03',
+      eyebrow: 'INSIDE',
       title: 'What happens inside the reconciler',
       description: 'When Elements come in, the reconciler runs these four steps in order.',
       steps: [
@@ -477,7 +490,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       ],
     },
     checkpoint: {
-      eyebrow: '04 · CODE CHECKPOINT',
+      badge: '04',
+      eyebrow: 'CODE CHECKPOINT',
       title: 'Code checkpoint: the moment Element becomes Fiber',
       fileLabel: 'File',
       filePath: 'packages/react-reconciler/src/ReactFiber.js',
@@ -493,7 +507,8 @@ export const reconcilerEntryContent: Record<Locale, ReconcilerEntryContent> = {
       code: createFiberFromElementCode,
     },
     preview: {
-      eyebrow: "05 · WHAT'S NEXT",
+      badge: '05',
+      eyebrow: "WHAT'S NEXT",
       title: 'What comes next in this series',
       description: 'This page is only the doorway to a deeper internals tour.',
       cards: [

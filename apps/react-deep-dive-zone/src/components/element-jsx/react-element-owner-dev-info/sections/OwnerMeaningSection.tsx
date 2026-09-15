@@ -30,7 +30,7 @@ const cardIcon: Record<OwnerInfoCard['id'], LucideIcon> = {
 };
 
 export const OwnerMeaningSection = ({ content }: Props) => (
-  <section aria-labelledby="heading-owner" className="space-y-md scroll-mt-xl">
+  <section id="owner" aria-labelledby="heading-owner" className="space-y-md scroll-mt-xl">
     <SectionBadgeHeader
       descriptionFullWidth
       id="owner"

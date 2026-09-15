@@ -3,7 +3,7 @@ import { Layers, type LucideIcon, RefreshCw, Timer } from 'lucide-react';
 import { CompareVs } from '../../../shared/compare';
 import { ToneDetailCard } from '../../../shared/detail';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { RelationCard, SchedulerContent } from '../content';
 
 const relationIcon: Record<RelationCard['id'], LucideIcon> = {
@@ -15,9 +15,11 @@ type Props = { content: SchedulerContent['relation'] };
 
 export const ReconcilerSchedulerRelation = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-relation" className="space-y-md">
-      <SectionHeader
+    <section id="relation" aria-labelledby="heading-relation" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="relation"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

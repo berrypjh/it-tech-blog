@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 import { NumberedStepList, stepChip } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RoadmapContent, RoadmapRow } from '../content';
 
@@ -33,9 +33,10 @@ type Props = { content: RoadmapContent['roadmap'] };
 
 export const EightStepLearningRoadmap = ({ content }: Props) => {
   return (
-    <section id="section-roadmap" aria-labelledby="heading-roadmap" className="space-y-lg">
-      <SectionHeader
+    <section id="roadmap" aria-labelledby="heading-roadmap" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="roadmap"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Route className="h-5 w-5" aria-hidden="true" />}

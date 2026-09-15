@@ -40,6 +40,7 @@ export type TestCodeContent = {
     badge2: string;
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -50,11 +51,13 @@ export type TestCodeContent = {
     quote: string;
   };
   insights: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: InsightCard[];
   };
   pairMap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -63,6 +66,7 @@ export type TestCodeContent = {
     testLabel: string;
   };
   spotlight: {
+    badge: string;
     eyebrow: string;
     title: string;
     leftFileTitle: string;
@@ -79,6 +83,7 @@ export type TestCodeContent = {
     primaryHref: string;
   };
   steps: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -149,7 +154,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       badge2: 'JS',
     },
     comparison: {
-      eyebrow: '01 · 구현만으론 부족',
+      badge: '01',
+      eyebrow: '구현만으론 부족',
       title: '구현만 보면 부족한 이유',
       description: '같은 코드를 읽어도, 무엇을 읽느냐에 따라 보이는 것이 다릅니다.',
       leftTitle: '구현 코드만 읽으면',
@@ -159,7 +165,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       quote: '테스트는 문서보다 더 구체적인 설계 메모가 되기도 합니다.',
     },
     insights: {
-      eyebrow: '02 · 테스트의 역할',
+      badge: '02',
+      eyebrow: '테스트의 역할',
       title: '테스트가 알려주는 4가지',
       cards: [
         {
@@ -193,7 +200,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     pairMap: {
-      eyebrow: '03 · 구현과 테스트',
+      badge: '03',
+      eyebrow: '구현과 테스트',
       title: '구현 파일 ↔ 테스트 파일 짝지어 보기',
       description: '한 파일을 단독으로 읽지 말고, 짝이 되는 테스트 파일과 같이 읽으세요.',
       implementationLabel: '구현 파일',
@@ -235,7 +243,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     spotlight: {
-      eyebrow: '04 · 테스트 읽기',
+      badge: '04',
+      eyebrow: '테스트 읽기',
       title: '실제로 읽어보기: ReactCreateElement-test.js',
       leftFileTitle: '파일',
       leftFile: 'packages/react/src/jsx/ReactJSXElement.js',
@@ -252,7 +261,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         'https://github.com/facebook/react/blob/main/packages/react/src/__tests__/ReactCreateElement-test.js',
     },
     steps: {
-      eyebrow: '05 · 읽는 순서',
+      badge: '05',
+      eyebrow: '읽는 순서',
       title: '테스트 읽기 순서',
       description: '실전에서는 다음 네 단계를 따라가면 테스트 파일이 훨씬 잘 읽힙니다.',
       steps: [
@@ -309,7 +319,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       badge2: 'JS',
     },
     comparison: {
-      eyebrow: '01 · WHY TESTS',
+      badge: '01',
+      eyebrow: 'WHY TESTS',
       title: 'Why implementation alone is not enough',
       description: 'The same code reveals different things depending on what you read.',
       leftTitle: 'If you read only implementation',
@@ -322,7 +333,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       quote: 'Tests can be more concrete design memos than documentation.',
     },
     insights: {
-      eyebrow: '02 · WHAT TESTS REVEAL',
+      badge: '02',
+      eyebrow: 'WHAT TESTS REVEAL',
       title: 'Four things tests reveal',
       cards: [
         {
@@ -356,7 +368,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     pairMap: {
-      eyebrow: '03 · PAIRING',
+      badge: '03',
+      eyebrow: 'PAIRING',
       title: 'Pair implementation files with test files',
       description: 'Do not read implementation files alone — pair them with their test files.',
       implementationLabel: 'Implementation',
@@ -398,7 +411,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
       ],
     },
     spotlight: {
-      eyebrow: '04 · READ A TEST',
+      badge: '04',
+      eyebrow: 'READ A TEST',
       title: 'Read one test file: ReactCreateElement-test.js',
       leftFileTitle: 'File',
       leftFile: 'packages/react/src/jsx/ReactJSXElement.js',
@@ -415,7 +429,8 @@ export const testCodeContent: Record<Locale, TestCodeContent> = {
         'https://github.com/facebook/react/blob/main/packages/react/src/__tests__/ReactCreateElement-test.js',
     },
     steps: {
-      eyebrow: '05 · HOW TO READ',
+      badge: '05',
+      eyebrow: 'HOW TO READ',
       title: 'How to read tests',
       description: 'Follow these four steps and the test file reads much more clearly.',
       steps: [

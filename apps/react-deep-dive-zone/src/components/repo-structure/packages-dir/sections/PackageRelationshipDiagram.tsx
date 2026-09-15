@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Atom, Layers, type LucideIcon, MonitorSmartphone, Network, Timer } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DiagramNode, PackagesDirectoryContent } from '../content';
@@ -20,9 +20,11 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
   const { react, reconciler, reactDom, scheduler, shared } = content.nodes;
 
   return (
-    <section aria-labelledby="heading-diagram" className="space-y-md">
-      <SectionHeader
+    <section id="diagram" aria-labelledby="heading-diagram" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="diagram"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

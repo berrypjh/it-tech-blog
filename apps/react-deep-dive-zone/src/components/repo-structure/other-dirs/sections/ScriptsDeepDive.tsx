@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ScriptCard, SurroundingContent } from '../content';
@@ -28,9 +28,10 @@ const tone: ToneKey = 'sky';
 
 export const ScriptsDeepDive = ({ content }: Props) => {
   return (
-    <section aria-labelledby="heading-scripts" className="space-y-lg">
-      <SectionHeader
+    <section id="scripts" aria-labelledby="heading-scripts" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="scripts"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<TerminalSquare className="h-5 w-5" aria-hidden="true" />}
