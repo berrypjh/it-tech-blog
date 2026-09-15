@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitBranch, GitCompareArrows, type LucideIcon, Sparkles, Tag } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -22,7 +21,7 @@ const Card = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -31,7 +30,7 @@ const Card = ({
       <div className="flex items-center justify-between gap-sm">
         <div className="flex items-center gap-sm">
           <span
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-md border',
               t.chip,
             )}
@@ -39,10 +38,10 @@ const Card = ({
           >
             <Icon className="h-5 w-5" />
           </span>
-          <h3 className={cn('text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
+          <h3 className={cx('text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
         </div>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold',
             t.chip,
           )}
@@ -56,7 +55,7 @@ const Card = ({
           <li key={item} className="flex items-start gap-sm">
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+              className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
             />
             <span className="text-xsm text-[var(--term-fg)] break-keep">{item}</span>
           </li>

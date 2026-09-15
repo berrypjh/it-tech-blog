@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   id?: string;
@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const HeroVisualColumn = ({ id, className, children }: Props) => (
-  <div id={id} className={cn('order-first lg:order-none', className)}>
+  <div id={id} className={cx('order-first lg:order-none', className)}>
     {children}
   </div>
 );

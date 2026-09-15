@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Database,
   Hammer,
@@ -42,7 +41,7 @@ const ChipRow = ({
         {items.map((item) => (
           <li key={item}>
             <code
-              className={cn(
+              className={cx(
                 'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                 t.chip,
               )}
@@ -62,7 +61,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes'][
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -70,7 +69,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes'][
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -78,7 +77,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: Next16Content['axes'][
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
+        <h3 className={cx('text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
       </div>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.summary}</p>

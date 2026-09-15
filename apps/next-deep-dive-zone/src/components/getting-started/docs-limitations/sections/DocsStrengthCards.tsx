@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   BookOpen,
   FileCode2,
@@ -49,7 +48,7 @@ export const DocsStrengthCards = ({ content }: Props) => {
                   <Icon className="h-5 w-5" />
                 </ToneIconBox>
 
-                <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.text)}>
+                <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', t.text)}>
                   {card.title}
                 </h3>
                 <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

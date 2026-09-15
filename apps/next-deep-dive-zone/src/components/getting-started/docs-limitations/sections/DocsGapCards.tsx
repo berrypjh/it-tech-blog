@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Bug,
   FlaskConical,
@@ -41,7 +40,7 @@ const Card = ({
   const Icon = gapIcon[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -49,7 +48,7 @@ const Card = ({
     >
       <div className="flex items-center justify-between">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -77,7 +76,7 @@ const Card = ({
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-bold">
           {sourcesLabel}
         </span>
-        <p className={cn('text-[11px] leading-relaxed break-keep font-medium', t.text)}>
+        <p className={cx('text-[11px] leading-relaxed break-keep font-medium', t.text)}>
           {card.sources}
         </p>
       </div>

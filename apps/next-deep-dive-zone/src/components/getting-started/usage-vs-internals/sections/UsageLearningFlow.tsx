@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Database,
   FilePlus2,
@@ -49,7 +48,7 @@ export const UsageLearningFlow = ({ content }: Props) => {
           return (
             <li key={step.number} className="flex">
               <article
-                className={cn(
+                className={cx(
                   'flex h-full w-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
                   'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   'border-[var(--term-border)]',
@@ -57,7 +56,7 @@ export const UsageLearningFlow = ({ content }: Props) => {
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-md border',
                       t.chip,
                     )}
@@ -65,7 +64,7 @@ export const UsageLearningFlow = ({ content }: Props) => {
                   >
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className={cn('text-lg font-bold tabular-nums', t.text)} aria-hidden="true">
+                  <span className={cx('text-lg font-bold tabular-nums', t.text)} aria-hidden="true">
                     {step.number}
                   </span>
                 </div>
@@ -87,7 +86,7 @@ export const UsageLearningFlow = ({ content }: Props) => {
                   <span className="text-[10px] uppercase tracking-wider text-[var(--term-dim)] font-bold">
                     {content.resultLabel}
                   </span>
-                  <p className={cn('text-xsm leading-relaxed break-keep font-medium', t.text)}>
+                  <p className={cx('text-xsm leading-relaxed break-keep font-medium', t.text)}>
                     {step.result}
                   </p>
                 </div>

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, type LucideIcon, Package, Sprout, Users, Wrench } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -28,7 +27,7 @@ const Card = ({
   const Icon = personaIcon[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -36,7 +35,7 @@ const Card = ({
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -44,7 +43,7 @@ const Card = ({
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}>
           {card.title}
         </h3>
       </div>
@@ -59,7 +58,7 @@ const Card = ({
             <Fragment key={node}>
               <li>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-block rounded-md border px-2 py-0.5 text-[11px] font-medium break-keep',
                     t.chip,
                   )}

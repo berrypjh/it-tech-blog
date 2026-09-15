@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, BookOpen, Code2, type LucideIcon } from 'lucide-react';
 
 import { HeroTitle } from '../../../shared/HeroTitle';
@@ -31,14 +30,14 @@ const Card = ({
       : 'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-800/60 dark:bg-cyan-950/40 dark:text-cyan-200';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             chip,
           )}
@@ -47,7 +46,7 @@ const Card = ({
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col">
-          <h2 className={cn('text-md sm:text-lg font-bold tracking-tight', cls)}>{card.title}</h2>
+          <h2 className={cx('text-md sm:text-lg font-bold tracking-tight', cls)}>{card.title}</h2>
           <p className="text-[11px] text-[var(--term-muted)] break-keep">{card.summary}</p>
         </div>
       </div>
@@ -58,7 +57,7 @@ const Card = ({
             <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1.5 w-1.5 rounded-full shrink-0',
                   tone === 'blue' ? 'bg-blue-500' : 'bg-cyan-500',
                 )}
@@ -71,7 +70,7 @@ const Card = ({
 
       <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xsm font-bold',
             chip,
           )}
@@ -119,7 +118,7 @@ export const DocsLimitsHero = ({ content }: Props) => {
         <div className="flex flex-col sm:flex-row gap-sm pt-xs">
           <a
             href="#section-connector"
-            className={cn(
+            className={cx(
               ctaBase,
               'bg-[var(--term-accent)] text-[var(--term-bg)] hover:opacity-90',
             )}
@@ -129,7 +128,7 @@ export const DocsLimitsHero = ({ content }: Props) => {
           </a>
           <a
             href="#section-transformer"
-            className={cn(
+            className={cx(
               ctaBase,
               'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
             )}

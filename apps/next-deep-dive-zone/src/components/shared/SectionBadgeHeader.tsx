@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   id: string;
@@ -17,7 +17,7 @@ export const SectionBadgeHeader = ({ id, number, eyebrow, title, description, ic
   <header className="flex flex-col gap-sm">
     <div className="flex items-center gap-sm">
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center min-w-[2.25rem] px-2 py-1',
           'rounded-md text-xxsm font-bold tabular-nums tracking-wider',
           'bg-sky-600 text-white shadow-[0_1px_0_rgba(0,0,0,0.08)]',

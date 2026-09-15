@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   BookOpen,
   Code2,
@@ -42,7 +41,7 @@ const StepCard = ({
     <div className="flex h-full flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md min-w-0">
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -107,11 +106,11 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setSelectedId(tp.id)}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xsm font-bold transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                   isSelected
-                    ? cn(t.chip, 'ring-1 ring-inset')
+                    ? cx(t.chip, 'ring-1 ring-inset')
                     : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] hover:border-[var(--term-accent)] hover:text-[var(--term-fg)]',
                 )}
               >
@@ -133,7 +132,7 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
             {topic.docItems.map((d) => (
               <li key={d}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                     tt.chip,
                   )}
@@ -168,7 +167,7 @@ export const DocsCodeTestConnector = ({ content }: Props) => {
               {topic.questions.map((q) => (
                 <li key={q} className="flex items-start gap-1.5">
                   <HelpCircle
-                    className={cn('mt-0.5 h-3 w-3 shrink-0', tt.text)}
+                    className={cx('mt-0.5 h-3 w-3 shrink-0', tt.text)}
                     aria-hidden="true"
                   />
                   <span className="text-[11px] leading-snug text-[var(--term-fg)] break-keep">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, type LucideIcon, Route, Workflow, Zap } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -20,7 +19,7 @@ export const KeywordCard = ({ card }: Props) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -28,7 +27,7 @@ export const KeywordCard = ({ card }: Props) => {
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -36,7 +35,7 @@ export const KeywordCard = ({ card }: Props) => {
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h2 className={cn('text-md font-bold tracking-tight', t.text)}>{card.title}</h2>
+        <h2 className={cx('text-md font-bold tracking-tight', t.text)}>{card.title}</h2>
       </div>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -45,7 +44,7 @@ export const KeywordCard = ({ card }: Props) => {
 
       <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
         <code
-          className={cn(
+          className={cx(
             'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
             t.chip,
           )}

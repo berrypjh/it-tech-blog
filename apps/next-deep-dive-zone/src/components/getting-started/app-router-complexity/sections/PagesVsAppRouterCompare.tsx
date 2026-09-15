@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitCompareArrows } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -24,7 +23,7 @@ const Card = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         variant === 'app'
@@ -32,7 +31,7 @@ const Card = ({
           : 'border-[var(--term-border)]',
       )}
     >
-      <h3 className={cn('text-lg sm:text-xl font-bold tracking-tight', t.text)}>{card.title}</h3>
+      <h3 className={cx('text-lg sm:text-xl font-bold tracking-tight', t.text)}>{card.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.summary}</p>
 
       <ul className="flex flex-col gap-1.5">
@@ -41,7 +40,7 @@ const Card = ({
             <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-2">
               <span
                 aria-hidden="true"
-                className={cn('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+                className={cx('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
               />
               <span className="text-xsm font-medium text-[var(--term-fg)] break-keep">{item}</span>
             </div>
@@ -51,7 +50,7 @@ const Card = ({
 
       <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xsm font-bold',
             t.chip,
           )}

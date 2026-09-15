@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Bug,
   Compass,
@@ -57,7 +56,7 @@ export const SourceReadingBenefits = ({ content }: Props) => {
                 </ToneIconBox>
 
                 <h3
-                  className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}
+                  className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}
                 >
                   {card.title}
                 </h3>
@@ -74,7 +73,7 @@ export const SourceReadingBenefits = ({ content }: Props) => {
                     {card.entries.map((entry) => (
                       <li key={entry}>
                         <code
-                          className={cn(
+                          className={cx(
                             'inline-block rounded border px-1.5 py-0.5 font-mono text-[10px] [overflow-wrap:anywhere]',
                             t.chip,
                           )}

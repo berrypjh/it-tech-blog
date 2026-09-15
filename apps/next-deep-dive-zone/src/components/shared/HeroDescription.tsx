@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   /** 본문 최대 너비 클래스. 기본값 'max-w-[56ch]'. */
@@ -17,7 +17,7 @@ export const HeroDescription = ({
   lines,
   children,
 }: Props) => {
-  const wrapperClass = cn(baseClass, maxWidth, className);
+  const wrapperClass = cx(baseClass, maxWidth, className);
 
   if (lines) {
     return (

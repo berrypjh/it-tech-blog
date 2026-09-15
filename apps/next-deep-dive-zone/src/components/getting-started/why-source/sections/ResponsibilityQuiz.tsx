@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -35,7 +34,7 @@ const QuizCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         revealed && isCorrect
           ? 'border-emerald-300 dark:border-emerald-700'
@@ -72,7 +71,7 @@ const QuizCard = ({
               role="radio"
               aria-checked={isSelected}
               onClick={() => setSelected(cat)}
-              className={cn(
+              className={cx(
                 'rounded-md border px-1.5 py-2 text-[11px] font-bold leading-tight break-keep transition-colors',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-bg)]',
                 showCorrect || showWrong || isSelected
@@ -89,7 +88,7 @@ const QuizCard = ({
       {/* 피드백 */}
       <div
         aria-live="polite"
-        className={cn(
+        className={cx(
           'mt-auto rounded-md border p-sm',
           revealed && isCorrect
             ? 'border-emerald-300 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-950/30'
@@ -101,7 +100,7 @@ const QuizCard = ({
         {revealed ? (
           <>
             <p
-              className={cn(
+              className={cx(
                 'text-xsm font-bold',
                 isCorrect
                   ? 'text-emerald-700 dark:text-emerald-200'

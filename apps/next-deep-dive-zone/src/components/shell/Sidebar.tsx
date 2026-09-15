@@ -5,7 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useLocale } from '@it-tech-blog/preferences';
 import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
-import { cn } from '@it-tech-blog/utils';
+
+import { cx } from '@berrypjh/react-ui';
 
 import { navData, sidebarStrings } from '@/data';
 
@@ -46,7 +47,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
   return (
     <aside
-      className={cn(
+      className={cx(
         'flex flex-col h-full text-xxsm',
         'bg-[var(--term-bg)] text-[var(--term-fg)] border-r border-[var(--term-border)]',
         className,
@@ -99,7 +100,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
           return (
             <div
               key={groupIndex}
-              className={cn(
+              className={cx(
                 'mb-xs',
                 groupIndex > 0 && 'mt-sm pt-sm border-t border-dashed border-[var(--term-border)]',
               )}
@@ -108,7 +109,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 onClick={() => toggle(groupIndex)}
                 aria-expanded={isExpanded}
                 aria-controls={panelId}
-                className={cn(
+                className={cx(
                   'w-full flex flex-col px-lg py-1.5 text-left text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                   hasActiveItem
                     ? 'text-[var(--term-accent)]'
@@ -135,7 +136,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
               <div
                 id={panelId}
-                className={cn(
+                className={cx(
                   'grid transition-all duration-200 ease-in-out',
                   isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                 )}
@@ -152,7 +153,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                           <Link
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
-                            className={cn(
+                            className={cx(
                               'group flex items-start gap-sm pl-lg pr-lg py-1.5 text-xxsm leading-relaxed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--term-accent)]',
                               isActive
                                 ? 'bg-[var(--term-accent-soft)] text-[var(--term-accent)]'
@@ -161,7 +162,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                           >
                             <span className="shrink-0 w-3 text-center text-[var(--term-dim)]" />
                             <span
-                              className={cn(
+                              className={cx(
                                 'shrink-0 tabular-nums select-none',
                                 isActive ? 'text-[var(--term-accent)]' : 'text-[var(--term-dim)]',
                               )}
@@ -172,7 +173,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
                             {item.badge && (
                               <span
-                                className={cn(
+                                className={cx(
                                   'ml-auto shrink-0 text-[9px] uppercase tracking-wider px-1 border',
                                   item.badgeColor === 'warning' &&
                                     'border-[var(--term-accent)] text-[var(--term-accent)]',

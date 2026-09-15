@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -51,7 +50,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => setSelectedId(item.id)}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-xsm font-bold transition-colors [overflow-wrap:anywhere]',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   isActive
@@ -63,7 +62,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
                 {answered && (
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'text-[10px]',
                       itemCorrect ? 'text-emerald-500' : 'text-rose-500',
                     )}
@@ -103,7 +102,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
                 role="radio"
                 aria-checked={isChosen}
                 onClick={() => setAnswers((prev) => ({ ...prev, [selected.id]: cat }))}
-                className={cn(
+                className={cx(
                   'rounded-md border px-3 py-2.5 text-xsm font-bold break-keep transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                   showCorrect || showWrong || isChosen
@@ -120,7 +119,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
         {/* 피드백 */}
         <div
           aria-live="polite"
-          className={cn(
+          className={cx(
             'rounded-md border p-md',
             revealed && isCorrect
               ? 'border-emerald-300 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-950/30'
@@ -132,7 +131,7 @@ export const ResponsibilityQuiz = ({ content }: Props) => {
           {revealed ? (
             <>
               <p
-                className={cn(
+                className={cx(
                   'text-xsm font-bold',
                   isCorrect
                     ? 'text-emerald-700 dark:text-emerald-200'

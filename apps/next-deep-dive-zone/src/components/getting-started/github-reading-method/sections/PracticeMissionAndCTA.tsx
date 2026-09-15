@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -40,7 +39,7 @@ export const PracticeMissionAndCTA = ({ content, nextStep }: Props) => {
                 role="checkbox"
                 aria-checked={isDone}
                 onClick={() => toggle(m.id)}
-                className={cn(
+                className={cx(
                   'group flex h-full w-full flex-col gap-sm rounded-lg border p-md sm:p-lg text-left transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   isDone
@@ -51,7 +50,7 @@ export const PracticeMissionAndCTA = ({ content, nextStep }: Props) => {
                 <div className="flex items-start gap-sm">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border',
                       isDone
                         ? 'border-[var(--term-accent)] bg-[var(--term-accent)] text-[var(--term-bg)]'

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { type ToneKey, toneTokens } from './tones';
 
@@ -21,7 +21,7 @@ export const ToneIconBox = ({ tone, size = 'md', children, className }: Props) =
   return (
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex items-center justify-center rounded-md border',
         sizeClass[size],
         t.chip,

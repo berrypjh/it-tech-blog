@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   code: string;
@@ -29,7 +29,7 @@ export const CodePanel = ({
   const lines = code.split('\n');
   return (
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-lg border border-slate-800 bg-slate-950 text-slate-100',
         'shadow-[0_8px_24px_-12px_rgba(15,23,42,0.65),0_2px_0_var(--term-border)]',
         className,
@@ -61,7 +61,7 @@ export const CodePanel = ({
       </div>
 
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto px-md py-md font-mono leading-[1.7]',
           size === 'md' ? 'text-[14px] sm:text-[15px]' : 'text-[12.5px]',
         )}

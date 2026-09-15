@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   BookOpen,
   FlaskConical,
@@ -93,17 +92,17 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => setSelectedId(step.id)}
-                      className={cn(
+                      className={cx(
                         'group flex w-full items-center gap-sm rounded-md border bg-[var(--term-bg)] p-sm text-left transition-all',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                         'motion-safe:hover:-translate-y-0.5',
                         isSelected
                           ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                          : cn('border-[var(--term-border)]', t.borderHover),
+                          : cx('border-[var(--term-border)]', t.borderHover),
                       )}
                     >
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
                           t.chip,
                         )}
@@ -112,7 +111,7 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
                         <Icon className="h-3.5 w-3.5" />
                       </span>
                       <span
-                        className={cn('text-[10px] font-bold tabular-nums shrink-0', t.text)}
+                        className={cx('text-[10px] font-bold tabular-nums shrink-0', t.text)}
                         aria-hidden="true"
                       >
                         {step.number}
@@ -134,7 +133,7 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
           >
             <div className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 items-center justify-center rounded-md border',
                   st.chip,
                 )}
@@ -142,7 +141,7 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
               >
                 <SelectedIcon className="h-4 w-4" />
               </span>
-              <h3 className={cn('text-md font-bold tracking-tight break-keep', st.text)}>
+              <h3 className={cx('text-md font-bold tracking-tight break-keep', st.text)}>
                 <span className="tabular-nums">{selected.number}</span> {selected.title}
               </h3>
             </div>
@@ -163,8 +162,8 @@ export const FeatureTraceRoutine = ({ content }: Props) => {
                 {selected.why}
               </p>
             </div>
-            <div className={cn('flex flex-col gap-0.5 rounded-md border p-sm', st.border)}>
-              <span className={cn('text-[10px] uppercase tracking-wider font-bold', st.text)}>
+            <div className={cx('flex flex-col gap-0.5 rounded-md border p-sm', st.border)}>
+              <span className={cx('text-[10px] uppercase tracking-wider font-bold', st.text)}>
                 {content.labels.question}
               </span>
               <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">

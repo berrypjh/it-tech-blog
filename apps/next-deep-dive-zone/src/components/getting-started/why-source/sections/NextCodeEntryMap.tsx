@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Code2,
@@ -38,7 +37,7 @@ const EntryCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -47,7 +46,7 @@ const EntryCard = ({
       {/* 영역 + 경로 */}
       <div className="flex items-start gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -56,7 +55,7 @@ const EntryCard = ({
           <Icon className="h-5 w-5" />
         </span>
         <div className="min-w-0 flex flex-col gap-1">
-          <h3 className={cn('text-md font-bold tracking-tight', t.text)}>{entry.area}</h3>
+          <h3 className={cx('text-md font-bold tracking-tight', t.text)}>{entry.area}</h3>
           <code className="block rounded border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1 font-mono text-[10.5px] leading-snug text-[var(--term-fg)] [overflow-wrap:anywhere]">
             {entry.path}
           </code>

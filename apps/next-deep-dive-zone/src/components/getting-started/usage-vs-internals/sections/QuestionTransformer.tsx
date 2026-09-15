@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Database,
@@ -70,11 +69,11 @@ export const QuestionTransformer = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedId(ex.id)}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xsm font-medium transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                     isSelected
-                      ? cn(t.chip, 'ring-1 ring-inset font-bold')
+                      ? cx(t.chip, 'ring-1 ring-inset font-bold')
                       : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] hover:border-[var(--term-accent)] hover:text-[var(--term-fg)]',
                   )}
                 >
@@ -101,7 +100,7 @@ export const QuestionTransformer = ({ content }: Props) => {
 
         {/* 화살표 + 내부 구조 질문 */}
         <div
-          className={cn(
+          className={cx(
             'relative flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
             st.border,
           )}
@@ -113,7 +112,7 @@ export const QuestionTransformer = ({ content }: Props) => {
             <ArrowRight className="h-3.5 w-3.5" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold',
               st.text,
             )}

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Database,
   FileText,
@@ -38,7 +37,7 @@ const ChipList = ({ items, tone }: { items: string[]; tone: TimelineStep['tone']
       {items.map((item) => (
         <li key={item}>
           <code
-            className={cn(
+            className={cx(
               'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
               t.chip,
             )}
@@ -88,17 +87,17 @@ export const VersionShiftTimeline = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => setSelectedId(step.id)}
-                    className={cn(
+                    className={cx(
                       'group flex w-full items-start gap-sm rounded-md border bg-[var(--term-bg)] p-sm text-left transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                       'motion-safe:hover:-translate-y-0.5',
                       isSelected
                         ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                        : cn('border-[var(--term-border)]', t.borderHover),
+                        : cx('border-[var(--term-border)]', t.borderHover),
                     )}
                   >
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border',
                         t.chip,
                       )}
@@ -109,7 +108,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
                     <span className="min-w-0 flex flex-col">
                       <span className="flex items-center gap-1.5">
                         <span
-                          className={cn('text-[10px] font-bold tabular-nums', t.text)}
+                          className={cx('text-[10px] font-bold tabular-nums', t.text)}
                           aria-hidden="true"
                         >
                           {String(idx + 1).padStart(2, '0')}
@@ -136,7 +135,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
         >
           <div className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex h-6 w-6 items-center justify-center rounded-full border text-[10px] font-bold tabular-nums',
                 st.chip,
               )}
@@ -144,7 +143,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
             >
               {String(selectedIndex + 1).padStart(2, '0')}
             </span>
-            <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', st.text)}>
+            <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', st.text)}>
               {selected.title}
             </h3>
           </div>
@@ -164,7 +163,7 @@ export const VersionShiftTimeline = ({ content }: Props) => {
                 {content.panel.doc}
               </span>
               <span
-                className={cn(
+                className={cx(
                   'inline-block w-fit rounded border px-2 py-0.5 text-[11px] font-medium',
                   st.chip,
                 )}

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Boxes,
   Columns3,
@@ -63,18 +62,18 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setSelectedId(card.id)}
-                className={cn(
+                className={cx(
                   'group flex w-full min-w-0 flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md text-left transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   isSelected
                     ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                    : cn('border-[var(--term-border)]', t.borderHover),
+                    : cx('border-[var(--term-border)]', t.borderHover),
                 )}
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-md border',
                       t.chip,
                     )}
@@ -92,7 +91,7 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
                 </h3>
 
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-block w-fit max-w-full rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                     t.chip,
                   )}
@@ -112,7 +111,7 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
       >
         <div className="flex items-center gap-sm pb-md border-b border-dashed border-[var(--term-border)]">
           <span
-            className={cn(
+            className={cx(
               'inline-flex h-7 w-7 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums',
               st.chip,
             )}
@@ -120,7 +119,7 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
           >
             {selected.number}
           </span>
-          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', st.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', st.text)}>
             {selected.title}
           </h3>
         </div>
@@ -131,7 +130,7 @@ export const ComplexityFactorGrid = ({ content }: Props) => {
               {content.panel.surface}
             </span>
             <code
-              className={cn(
+              className={cx(
                 'inline-block w-fit max-w-full rounded border px-1.5 py-0.5 font-mono text-[11px] [overflow-wrap:anywhere]',
                 st.chip,
               )}

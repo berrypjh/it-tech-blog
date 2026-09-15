@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Map } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -58,17 +57,17 @@ export const FullLearningRoadmap = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => setSelectedNo(step.number)}
-                    className={cn(
+                    className={cx(
                       'group flex w-full items-center gap-sm rounded-md border bg-[var(--term-bg)] p-sm text-left transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                       'motion-safe:hover:-translate-y-0.5',
                       isSelected
                         ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                        : cn('border-[var(--term-border)]', t.borderHover),
+                        : cx('border-[var(--term-border)]', t.borderHover),
                     )}
                   >
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums',
                         t.chip,
                       )}
@@ -99,7 +98,7 @@ export const FullLearningRoadmap = ({ content }: Props) => {
           <div className="flex items-center justify-between gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
             <div className="flex items-center gap-sm min-w-0">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border text-xsm font-bold tabular-nums',
                   st.chip,
                 )}
@@ -107,12 +106,12 @@ export const FullLearningRoadmap = ({ content }: Props) => {
               >
                 {selected.number}
               </span>
-              <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', st.text)}>
+              <h3 className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', st.text)}>
                 {selected.title}
               </h3>
             </div>
             <span
-              className={cn(
+              className={cx(
                 'shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold',
                 st.chip,
               )}
@@ -138,7 +137,7 @@ export const FullLearningRoadmap = ({ content }: Props) => {
               {selected.dirs.map((d) => (
                 <li key={d}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                       st.chip,
                     )}
@@ -150,8 +149,8 @@ export const FullLearningRoadmap = ({ content }: Props) => {
             </ul>
           </div>
 
-          <div className={cn('flex flex-col gap-0.5 rounded-md border p-sm', st.border)}>
-            <span className={cn('text-[10px] uppercase tracking-wider font-bold', st.text)}>
+          <div className={cx('flex flex-col gap-0.5 rounded-md border p-sm', st.border)}>
+            <span className={cx('text-[10px] uppercase tracking-wider font-bold', st.text)}>
               {content.labels.mission}
             </span>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">

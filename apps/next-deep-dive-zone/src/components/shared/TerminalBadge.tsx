@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Size = 'sm' | 'md';
 
@@ -26,7 +26,7 @@ export const TerminalBadge = ({
   children,
 }: Props) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center gap-1.5 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
       sizeClass[size],
       className,
@@ -35,7 +35,7 @@ export const TerminalBadge = ({
     {showDot && (
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-block w-1.5 h-1.5 rounded-full',
           dotClassName ?? 'bg-[var(--term-accent)]',
         )}

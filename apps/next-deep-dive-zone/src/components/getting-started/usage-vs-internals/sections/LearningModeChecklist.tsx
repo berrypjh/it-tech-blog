@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -36,7 +35,7 @@ export const LearningModeChecklist = ({ content }: Props) => {
                 role="checkbox"
                 aria-checked={isChecked}
                 onClick={() => toggle(item.id)}
-                className={cn(
+                className={cx(
                   'group flex w-full items-start gap-sm rounded-lg border p-md text-left transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   isChecked
@@ -46,7 +45,7 @@ export const LearningModeChecklist = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border',
                     isChecked
                       ? 'border-[var(--term-accent)] bg-[var(--term-accent)] text-[var(--term-bg)]'
@@ -56,7 +55,7 @@ export const LearningModeChecklist = ({ content }: Props) => {
                   {isChecked && <CheckCircle2 className="h-3.5 w-3.5" />}
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'text-xsm leading-snug break-keep',
                     isChecked ? 'text-[var(--term-fg)] font-medium' : 'text-[var(--term-muted)]',
                   )}

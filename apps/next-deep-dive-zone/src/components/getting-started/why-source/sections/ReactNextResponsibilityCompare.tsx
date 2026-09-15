@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -26,7 +25,7 @@ const Column = ({
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] tabular-nums">
           {label}
         </span>
-        <h3 className={cn('text-lg sm:text-xl font-bold tracking-tight', t.text)}>{title}</h3>
+        <h3 className={cx('text-lg sm:text-xl font-bold tracking-tight', t.text)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-1.5">
@@ -35,7 +34,7 @@ const Column = ({
             <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-2">
               <span
                 aria-hidden="true"
-                className={cn('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+                className={cx('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
               />
               <span className="text-xsm sm:text-sm font-medium text-[var(--term-fg)] break-keep">
                 {item}

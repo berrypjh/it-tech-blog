@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Search } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -54,11 +53,11 @@ export const GithubSearchPractice = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => setSelectedId(r.id)}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full border px-3 py-1.5 font-mono text-xsm font-bold transition-colors [overflow-wrap:anywhere]',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                       isSelected
-                        ? cn(t.chip, 'ring-1 ring-inset')
+                        ? cx(t.chip, 'ring-1 ring-inset')
                         : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] hover:border-[var(--term-accent)] hover:text-[var(--term-fg)]',
                     )}
                   >
@@ -76,9 +75,9 @@ export const GithubSearchPractice = ({ content }: Props) => {
           className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg"
         >
           <div className="flex items-center gap-sm">
-            <Search className={cn('h-4 w-4 shrink-0', rt.text)} aria-hidden="true" />
+            <Search className={cx('h-4 w-4 shrink-0', rt.text)} aria-hidden="true" />
             <code
-              className={cn(
+              className={cx(
                 'rounded border px-2 py-0.5 font-mono text-sm font-bold [overflow-wrap:anywhere]',
                 rt.chip,
               )}

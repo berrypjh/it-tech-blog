@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, FolderTree, Globe, Layers, type LucideIcon, Network, Send } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -29,7 +28,7 @@ export const RuntimeFlowDiagram = ({ content }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full min-w-0 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_1px_0_var(--term-border)]',
       )}
@@ -54,17 +53,17 @@ export const RuntimeFlowDiagram = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setSelectedId(step.id)}
-                className={cn(
+                className={cx(
                   'group flex w-full min-w-0 flex-col items-center gap-1 text-center rounded-md border bg-[var(--term-surface)] px-1.5 py-2.5 transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-bg)]',
                   'motion-safe:hover:-translate-y-0.5',
                   isSelected
                     ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                    : cn('border-[var(--term-border)]', t.borderHover),
+                    : cx('border-[var(--term-border)]', t.borderHover),
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded border',
                     t.chip,
                   )}
@@ -73,7 +72,7 @@ export const RuntimeFlowDiagram = ({ content }: Props) => {
                   <Icon className="h-4 w-4" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[11px] font-bold leading-tight break-keep',
                     isSelected ? t.text : 'text-[var(--term-fg)]',
                   )}
@@ -100,14 +99,14 @@ export const RuntimeFlowDiagram = ({ content }: Props) => {
         className="mt-md rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-md"
       >
         <div className="flex items-center gap-sm flex-wrap">
-          <span className={cn('text-sm font-bold tracking-tight', st.text)}>{selected.label}</span>
+          <span className={cx('text-sm font-bold tracking-tight', st.text)}>{selected.label}</span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium',
               st.chip,
             )}
           >
-            <span aria-hidden="true" className={cn('inline-block h-1 w-1 rounded-full', st.dot)} />
+            <span aria-hidden="true" className={cx('inline-block h-1 w-1 rounded-full', st.dot)} />
             {content.categoryLabel}: {selected.category}
           </span>
         </div>

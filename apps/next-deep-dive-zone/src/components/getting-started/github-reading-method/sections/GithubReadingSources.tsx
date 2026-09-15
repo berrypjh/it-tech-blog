@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CircleDot,
   Code2,
@@ -35,7 +34,7 @@ const Card = ({
   const Icon = sourceIcon[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -43,7 +42,7 @@ const Card = ({
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -52,7 +51,7 @@ const Card = ({
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col">
-          <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', t.text)}>
             {card.title}
           </h3>
           <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--term-muted)]">
@@ -85,7 +84,7 @@ const Card = ({
           {card.examples.map((ex) => (
             <li key={ex}>
               <code
-                className={cn(
+                className={cx(
                   'block rounded border px-1.5 py-0.5 font-mono text-[10.5px] leading-snug [overflow-wrap:anywhere]',
                   t.chip,
                 )}

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Wand2 } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -52,11 +51,11 @@ export const DocsSentenceTransformer = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedId(e.id)}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-3 py-1.5 text-xsm font-medium transition-colors break-keep',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                     isSelected
-                      ? cn(et.chip, 'ring-1 ring-inset font-bold')
+                      ? cx(et.chip, 'ring-1 ring-inset font-bold')
                       : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] hover:border-[var(--term-accent)] hover:text-[var(--term-fg)]',
                   )}
                 >
@@ -80,12 +79,12 @@ export const DocsSentenceTransformer = ({ content }: Props) => {
         </div>
 
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-md',
             t.border,
           )}
         >
-          <span className={cn('text-[10px] uppercase tracking-wider font-bold', t.text)}>
+          <span className={cx('text-[10px] uppercase tracking-wider font-bold', t.text)}>
             {content.labels.question}
           </span>
           <p className="text-xsm leading-relaxed text-[var(--term-fg)] font-medium break-keep">
@@ -101,7 +100,7 @@ export const DocsSentenceTransformer = ({ content }: Props) => {
             {ex.readCode.map((c) => (
               <li key={c}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                     t.chip,
                   )}

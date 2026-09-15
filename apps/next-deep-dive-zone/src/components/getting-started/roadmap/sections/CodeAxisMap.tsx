@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Database,
   FolderTree,
@@ -31,7 +30,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']
   const Icon = axisIcon[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
         'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -39,7 +38,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']
     >
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -47,7 +46,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
+        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', t.text)}>{card.title}</h3>
       </div>
 
       {/* 경로 또는 키워드 */}
@@ -64,7 +63,7 @@ const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']
             {card.keywords?.map((k) => (
               <li key={k}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                     t.chip,
                   )}
@@ -97,8 +96,8 @@ const Card = ({ card, labels }: { card: AxisCard; labels: RoadmapContent['axes']
       <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">{card.role}</p>
 
       {/* 읽기 질문 */}
-      <div className={cn('mt-auto flex flex-col gap-0.5 rounded-md border p-sm', t.border)}>
-        <span className={cn('text-[10px] uppercase tracking-wider font-bold', t.text)}>
+      <div className={cx('mt-auto flex flex-col gap-0.5 rounded-md border p-sm', t.border)}>
+        <span className={cx('text-[10px] uppercase tracking-wider font-bold', t.text)}>
           {labels.question}
         </span>
         <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">

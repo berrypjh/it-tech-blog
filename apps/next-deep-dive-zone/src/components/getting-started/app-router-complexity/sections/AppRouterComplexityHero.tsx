@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight } from 'lucide-react';
 
 import { HeroDescription } from '../../../shared/HeroDescription';
@@ -47,7 +46,7 @@ export const AppRouterComplexityHero = ({ content }: Props) => {
         <div className="flex flex-col sm:flex-row gap-sm pt-xs">
           <a
             href="#section-factors"
-            className={cn(
+            className={cx(
               ctaBase,
               'bg-[var(--term-accent)] text-[var(--term-bg)] hover:opacity-90',
             )}
@@ -57,7 +56,7 @@ export const AppRouterComplexityHero = ({ content }: Props) => {
           </a>
           <a
             href="#section-segment-tree"
-            className={cn(
+            className={cx(
               ctaBase,
               'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] hover:border-[var(--term-accent)] hover:text-[var(--term-accent)]',
             )}

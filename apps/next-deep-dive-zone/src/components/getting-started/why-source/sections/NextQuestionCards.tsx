@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Bug,
   Compass,
@@ -52,7 +51,7 @@ const PanelStep = ({
     <div className="flex flex-col gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-md min-w-0">
       <div className="flex items-center gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-6 w-6 items-center justify-center rounded-full border text-[10px] font-bold tabular-nums',
             t.chip,
           )}
@@ -95,18 +94,18 @@ export const NextQuestionCards = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setSelectedId(card.id)}
-                className={cn(
+                className={cx(
                   'group flex w-full min-w-0 flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md text-left transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   'motion-safe:hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',
                   isSelected
                     ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                    : cn('border-[var(--term-border)]', t.borderHover),
+                    : cx('border-[var(--term-border)]', t.borderHover),
                 )}
               >
                 <div className="flex items-start justify-between">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-md border',
                       t.chip,
                     )}
@@ -129,21 +128,21 @@ export const NextQuestionCards = ({ content }: Props) => {
 
                 <div className="mt-auto flex items-center justify-between gap-1 pt-sm border-t border-dashed border-[var(--term-border)]">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium',
                       t.chip,
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('inline-block h-1 w-1 rounded-full', t.dot)}
+                      className={cx('inline-block h-1 w-1 rounded-full', t.dot)}
                     />
                     {card.concept}
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'text-[10px] font-bold transition-opacity',
-                      isSelected ? cn('opacity-100', t.text) : 'opacity-0',
+                      isSelected ? cx('opacity-100', t.text) : 'opacity-0',
                     )}
                   >
                     ●
@@ -162,14 +161,14 @@ export const NextQuestionCards = ({ content }: Props) => {
       >
         <div className="flex items-center gap-sm flex-wrap pb-md mb-md border-b border-dashed border-[var(--term-border)]">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[10px] font-bold',
               st.chip,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn('inline-block h-1.5 w-1.5 rounded-full', st.dot)}
+              className={cx('inline-block h-1.5 w-1.5 rounded-full', st.dot)}
             />
             {selected.concept}
           </span>

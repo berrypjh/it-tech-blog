@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -24,7 +23,7 @@ const ComparePanel = ({
   variant: 'old' | 'new';
 }) => (
   <div
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg',
       variant === 'new'
         ? 'border-cyan-300 bg-cyan-50/50 dark:border-cyan-700/70 dark:bg-cyan-950/20'
@@ -32,7 +31,7 @@ const ComparePanel = ({
     )}
   >
     <h3
-      className={cn(
+      className={cx(
         'text-md sm:text-lg font-bold tracking-tight',
         variant === 'new' ? 'text-cyan-700 dark:text-cyan-300' : 'text-[var(--term-muted)]',
       )}
@@ -43,7 +42,7 @@ const ComparePanel = ({
       {items.map((item) => (
         <li key={item}>
           <code
-            className={cn(
+            className={cx(
               'flex items-center gap-sm rounded-md border px-2 py-1.5 font-mono text-[11px] [overflow-wrap:anywhere]',
               variant === 'new'
                 ? 'border-cyan-200 bg-[var(--term-bg)] text-cyan-800 dark:border-cyan-800/60 dark:text-cyan-200'
@@ -119,11 +118,11 @@ export const CacheComponentsCompare = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedId(tg.id)}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-3 py-1.5 font-mono text-xsm font-bold transition-colors [overflow-wrap:anywhere]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                     isSelected
-                      ? cn(t.chip, 'ring-1 ring-inset')
+                      ? cx(t.chip, 'ring-1 ring-inset')
                       : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)] hover:border-[var(--term-accent)] hover:text-[var(--term-fg)]',
                   )}
                 >
@@ -138,7 +137,7 @@ export const CacheComponentsCompare = ({ content }: Props) => {
           aria-live="polite"
           className="mt-md flex flex-col gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-md"
         >
-          <h3 className={cn('text-md font-bold tracking-tight', st.text)}>{selected.title}</h3>
+          <h3 className={cx('text-md font-bold tracking-tight', st.text)}>{selected.title}</h3>
           <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
             {selected.description}
           </p>
@@ -150,7 +149,7 @@ export const CacheComponentsCompare = ({ content }: Props) => {
               {selected.keywords.map((kw) => (
                 <li key={kw}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                       st.chip,
                     )}

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   /** 기본값 'hero-heading' — section의 aria-labelledby와 일치. */
@@ -10,7 +10,7 @@ type Props = {
 export const HeroTitle = ({ id = 'hero-heading', className, children }: Props) => (
   <h1
     id={id}
-    className={cn(
+    className={cx(
       'text-3xl sm:text-4xl lg:text-[2.625rem] font-bold leading-[1.18] tracking-tight text-[var(--term-fg)] break-keep',
       className,
     )}

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, FolderTree, LayoutTemplate } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -40,7 +39,7 @@ const TreeNodeRow = ({
         </span>
       )}
       <div
-        className={cn(
+        className={cx(
           'flex min-w-0 flex-1 items-center gap-sm rounded-md border px-sm py-2',
           tone.chip,
           isLeaf && 'ring-1 ring-inset',
@@ -53,7 +52,7 @@ const TreeNodeRow = ({
           {node.label}
         </code>
         <span
-          className={cn(
+          className={cx(
             'shrink-0 rounded-full border px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider',
             isLayout
               ? 'border-blue-300 text-blue-700 dark:border-blue-700 dark:text-blue-200'
@@ -84,7 +83,7 @@ const ListBlock = ({
       {items.map((item) => (
         <li key={item}>
           <code
-            className={cn(
+            className={cx(
               'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
               variant === 'kept'
                 ? 'border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-800/60 dark:bg-blue-950/30 dark:text-blue-200'
@@ -131,7 +130,7 @@ export const SegmentTreeExplorer = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedId(opt.id)}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-3 py-1.5 font-mono text-xsm font-bold transition-colors [overflow-wrap:anywhere]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-surface)]',
                     isSelected

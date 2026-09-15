@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   command: React.ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const TerminalPrompt = ({ command, path, suffix, className }: Props) => (
-  <p className={cn('mb-md text-xxsm text-[var(--term-muted)] tabular-nums', className)}>
+  <p className={cx('mb-md text-xxsm text-[var(--term-muted)] tabular-nums', className)}>
     <span className="text-[var(--term-accent)] font-bold">$</span> {command}
     {path != null && (
       <>

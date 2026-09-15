@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/SectionHeader';
@@ -30,12 +29,12 @@ const Card = ({
       role="checkbox"
       aria-checked={done}
       onClick={onToggle}
-      className={cn(
+      className={cx(
         'group flex h-full w-full flex-col gap-sm rounded-lg border p-md sm:p-lg text-left transition-all',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         done
           ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)]'
-          : cn(
+          : cx(
               'border-[var(--term-border)] bg-[var(--term-bg)] motion-safe:hover:-translate-y-0.5',
               t.borderHover,
             ),
@@ -44,11 +43,11 @@ const Card = ({
       <div className="flex items-start gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border',
             done
               ? 'border-[var(--term-accent)] bg-[var(--term-accent)] text-[var(--term-bg)]'
-              : cn('bg-[var(--term-bg)]', t.chip),
+              : cx('bg-[var(--term-bg)]', t.chip),
           )}
         >
           {done && <CheckCircle2 className="h-3.5 w-3.5" />}
@@ -75,7 +74,7 @@ const Card = ({
           {mission.files.map((f) => (
             <li key={f}>
               <code
-                className={cn(
+                className={cx(
                   'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                   t.chip,
                 )}

@@ -2,8 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Boxes,
   FileCode2,
@@ -86,17 +85,17 @@ export const InternalStructureFlow = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => setSelectedId(file.id)}
-                    className={cn(
+                    className={cx(
                       'group flex w-full min-w-0 items-center gap-sm rounded-md border bg-[var(--term-bg)] p-sm text-left transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       'motion-safe:hover:-translate-y-0.5',
                       isSelected
                         ? 'border-[var(--term-accent)] bg-[var(--term-accent-soft)] ring-1 ring-[var(--term-accent)]'
-                        : cn('border-[var(--term-border)]', t.borderHover),
+                        : cx('border-[var(--term-border)]', t.borderHover),
                     )}
                   >
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded border',
                         t.chip,
                       )}
@@ -114,7 +113,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
                     </span>
                     {isSelected && (
                       <span
-                        className={cn('ml-auto shrink-0 text-[10px] font-bold', st.text)}
+                        className={cx('ml-auto shrink-0 text-[10px] font-bold', st.text)}
                         aria-hidden="true"
                       >
                         ●
@@ -144,10 +143,10 @@ export const InternalStructureFlow = ({ content }: Props) => {
                   <Fragment key={step.id}>
                     <li
                       aria-current={on ? 'step' : undefined}
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-md border px-2 py-1.5 transition-all',
                         on
-                          ? cn(t.chip, 'ring-1 ring-inset font-bold')
+                          ? cx(t.chip, 'ring-1 ring-inset font-bold')
                           : 'border-dashed border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-dim)] opacity-60',
                       )}
                     >
@@ -176,7 +175,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
           >
             <div className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
               <code
-                className={cn(
+                className={cx(
                   'rounded border bg-[var(--term-bg)] px-2 py-1 font-mono text-sm font-bold [overflow-wrap:anywhere]',
                   st.chip,
                 )}
@@ -214,7 +213,7 @@ export const InternalStructureFlow = ({ content }: Props) => {
                   <Fragment key={node}>
                     <li>
                       <code
-                        className={cn(
+                        className={cx(
                           'inline-block rounded border px-1.5 py-0.5 font-mono text-[10.5px] [overflow-wrap:anywhere]',
                           st.chip,
                         )}
