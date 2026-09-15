@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Search, Sparkles, Target } from 'lucide-react';
 
 import type { HooksEntryFlowContent } from '../content';
@@ -18,7 +17,7 @@ const goalIcons = [Search, Target, Sparkles];
 export const TodayQuestionCard = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-sky-200/70 bg-gradient-to-br from-sky-50/80 via-white to-cyan-50/40',
       'dark:border-sky-800/60 dark:from-sky-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -28,7 +27,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
     <div className="flex flex-col gap-md sm:flex-row sm:items-center sm:gap-lg">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-full',
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)]',
           'dark:bg-blue-500',
@@ -56,7 +55,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
         return (
           <li
             key={goal.label}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xsm font-medium',
               'shadow-[0_1px_0_var(--term-border)] transition-colors',
               toneStyle[goal.tone] ?? toneStyle.sky,

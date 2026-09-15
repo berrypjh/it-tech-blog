@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cpu, HelpCircle, PauseCircle, PlayCircle, Zap } from 'lucide-react';
 
 import type { RenderYieldingContent, YieldAccent } from '../content';
@@ -18,7 +17,7 @@ const cardIcon: Record<YieldAccent, typeof HelpCircle> = {
 export const RenderYieldingQuestionPanel = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-blue-200/70 bg-gradient-to-br from-blue-50/80 via-white to-teal-50/40',
       'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -29,7 +28,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
       <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-full',
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
@@ -56,7 +55,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
           return (
             <li
               key={card.title}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-xl border-2 px-3 py-2',
                 'shadow-[0_1px_0_var(--term-border)] transition-colors',
                 yldPill[card.accent],
@@ -64,7 +63,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
                   yldIconBox[card.accent],
                 )}
@@ -73,7 +72,7 @@ export const RenderYieldingQuestionPanel = ({ content }: Props) => (
               </span>
               <div className="flex flex-col min-w-0">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[11px] sm:text-xsm font-bold leading-tight break-keep',
                     yldTextStrong[card.accent],
                   )}

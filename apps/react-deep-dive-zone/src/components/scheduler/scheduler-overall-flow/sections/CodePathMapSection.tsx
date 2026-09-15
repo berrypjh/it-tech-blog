@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, Map } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ export const CodePathMapSection = ({ content }: Props) => (
       {content.cards.map((card) => (
         <li key={card.fileName} className="h-full">
           <article
-            className={cn(
+            className={cx(
               'group flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-cyan-50/30',
               'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/10',
@@ -49,7 +48,7 @@ export const CodePathMapSection = ({ content }: Props) => (
               {card.chips.map((chip) => (
                 <li key={chip}>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border px-2 py-0.5',
                       'font-mono text-[10px] font-medium',
                       'border-blue-200 bg-blue-100/80 text-blue-900 dark:border-blue-700/60 dark:bg-blue-950/40 dark:text-blue-200',

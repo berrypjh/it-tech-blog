@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, ScanSearch, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
         {content.cards.map((card) => (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-xl border-2 p-md sm:p-lg',
                 'border-amber-200 bg-amber-50/40',
                 'dark:border-amber-800/60 dark:bg-amber-950/20',
@@ -38,7 +37,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
             >
               <div className="flex items-center justify-between">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border px-2 py-1',
                     'border-amber-300 bg-white text-amber-800',
                     'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -50,7 +49,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-md',
                     'border border-amber-300 bg-amber-100 text-amber-700',
                     'dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200',
@@ -73,7 +72,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
                   {card.fnHints.map((hint) => (
                     <li key={hint}>
                       <code
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center rounded-md border px-2 py-0.5',
                           'border-amber-300 bg-white text-amber-800',
                           'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -92,7 +91,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -102,7 +101,7 @@ export const WhyCompressionSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}

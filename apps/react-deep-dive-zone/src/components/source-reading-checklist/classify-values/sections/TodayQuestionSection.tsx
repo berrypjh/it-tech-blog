@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Quote } from 'lucide-react';
 
 import type { ValueClassificationContent } from '../content';
@@ -16,7 +15,7 @@ const renderLine = (line: string, emphasize: string) => {
       return (
         <span
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md px-1.5 py-0.5 align-baseline',
             'bg-blue-100 text-blue-800',
             'dark:bg-blue-950/60 dark:text-blue-200',
@@ -39,7 +38,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
       className="space-y-md"
     >
       <article
-        className={cn(
+        className={cx(
           'relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-violet-50/40',
           'dark:border-blue-800/60 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-violet-950/30',
@@ -57,7 +56,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-lg',
                 'border border-blue-300 bg-blue-100 text-blue-700',
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -78,7 +77,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex flex-col gap-md">
             <h2
               id="heading-today-question"
-              className={cn(
+              className={cx(
                 'text-xl sm:text-xxl lg:text-[1.6rem] font-bold leading-[1.3] tracking-tight',
                 'text-[var(--term-fg)] break-keep',
               )}
@@ -99,7 +98,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
                     </ValueBadge>
                   ) : (
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
                         'border-blue-300 bg-white text-blue-700',
                         'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',

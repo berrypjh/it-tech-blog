@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Info, Map, SlidersHorizontal } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -22,7 +21,7 @@ export const HostConfigSection = ({ content }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg h-full',
             'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
@@ -30,7 +29,7 @@ export const HostConfigSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center w-11 h-11 rounded-md border',
               'bg-[var(--term-surface)] border-[var(--term-border)]',
               toneTokens.sky.text,
@@ -40,7 +39,7 @@ export const HostConfigSection = ({ content }: Props) => {
           </span>
 
           <h3
-            className={cn(
+            className={cx(
               'text-md sm:text-lg font-bold leading-snug break-keep',
               toneTokens.sky.text,
             )}
@@ -53,7 +52,7 @@ export const HostConfigSection = ({ content }: Props) => {
           </p>
 
           <p
-            className={cn(
+            className={cx(
               'mt-auto rounded-lg border px-3 py-2 text-xsm leading-relaxed break-keep',
               'border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}

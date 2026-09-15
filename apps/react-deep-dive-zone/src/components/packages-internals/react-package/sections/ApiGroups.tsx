@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code, GitBranch, Layers, type LucideIcon, Network, Sparkles, User } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ export const ApiGroups = ({ content }: Props) => {
               topRight={card.number}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md font-bold tracking-tight break-keep',
                   toneTokens[card.tone].text,
                 )}
@@ -54,7 +53,7 @@ export const ApiGroups = ({ content }: Props) => {
               </p>
 
               <ul
-                className={cn(
+                className={cx(
                   'mt-auto flex flex-col gap-1 rounded-lg border px-3 py-2 font-mono',
                   'border-dashed border-[var(--term-border)] bg-[var(--term-surface)]',
                 )}
@@ -62,14 +61,14 @@ export const ApiGroups = ({ content }: Props) => {
                 {card.apis.map((api) => (
                   <li
                     key={api}
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-1.5 text-[11px] leading-snug',
                       toneTokens[card.tone].text,
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-block w-1 h-1 shrink-0 rounded-full',
                         toneTokens[card.tone].dot,
                       )}

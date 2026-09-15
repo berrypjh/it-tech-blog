@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, RefreshCcw, RotateCcw, ShieldCheck } from 'lucide-react';
 
 import type { BranchKind, WhyFailableRenderContent } from '../content';
@@ -37,7 +36,7 @@ export const PartFlowMap = ({ content }: Props) => (
     </header>
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -51,19 +50,19 @@ export const PartFlowMap = ({ content }: Props) => (
           return (
             <li key={row.kind}>
               <div
-                className={cn(
+                className={cx(
                   'flex flex-col lg:grid lg:grid-cols-[180px_1fr_56px] gap-3 lg:gap-md items-stretch',
                 )}
               >
                 {/* Label */}
                 <div
-                  className={cn(
+                  className={cx(
                     'flex flex-col items-start justify-center gap-1 rounded-2xl border-2 px-md py-3',
                     accent.border,
                     accent.bg,
                   )}
                 >
-                  <span className={cn('text-md font-bold', accent.text)}>{row.label}</span>
+                  <span className={cx('text-md font-bold', accent.text)}>{row.label}</span>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                     {row.sublabel}
                   </span>
@@ -71,7 +70,7 @@ export const PartFlowMap = ({ content }: Props) => (
 
                 {/* Steps */}
                 <ol
-                  className={cn(
+                  className={cx(
                     'flex flex-wrap items-center gap-1.5 rounded-2xl border p-2',
                     'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
                   )}
@@ -79,7 +78,7 @@ export const PartFlowMap = ({ content }: Props) => (
                   {row.steps.map((step, i) => (
                     <li key={step.label} className="flex items-center gap-1.5">
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center rounded-lg border px-2.5 py-1.5',
                           'text-[11px] font-mono font-bold bg-white dark:bg-[var(--term-bg)]',
                           accent.border,
@@ -91,7 +90,7 @@ export const PartFlowMap = ({ content }: Props) => (
                       {i < row.steps.length - 1 && (
                         <ArrowRight
                           aria-hidden="true"
-                          className={cn('h-3.5 w-3.5 shrink-0', accent.text)}
+                          className={cx('h-3.5 w-3.5 shrink-0', accent.text)}
                         />
                       )}
                     </li>
@@ -100,16 +99,16 @@ export const PartFlowMap = ({ content }: Props) => (
 
                 {/* End state icon */}
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center justify-center gap-2 rounded-2xl border-2 px-3 py-2 lg:px-2',
                     accent.border,
                     'bg-white dark:bg-[var(--term-bg)]',
                   )}
                 >
-                  <EndLargeIcon className={cn('h-6 w-6 hidden lg:block', accent.text)} />
-                  <EndIcon className={cn('h-4 w-4 lg:hidden', accent.text)} />
+                  <EndLargeIcon className={cx('h-6 w-6 hidden lg:block', accent.text)} />
+                  <EndIcon className={cx('h-4 w-4 lg:hidden', accent.text)} />
                   <span
-                    className={cn(
+                    className={cx(
                       'text-[10px] font-mono font-bold uppercase tracking-wider',
                       accent.text,
                     )}

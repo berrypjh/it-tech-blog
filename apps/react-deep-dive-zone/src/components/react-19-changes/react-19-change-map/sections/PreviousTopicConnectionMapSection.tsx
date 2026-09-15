@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { ArrowRightIcon, CircleHelpIcon, SparklesIcon, TargetIcon } from '../icons';
@@ -19,7 +19,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -50,7 +50,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
           return (
             <li
               key={row.question}
-              className={cn(
+              className={cx(
                 'grid grid-cols-1 gap-2 rounded-xl border-2 p-3',
                 'border-slate-200 bg-slate-50/50',
                 'dark:border-slate-700 dark:bg-slate-900/30',
@@ -60,7 +60,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
             >
               {/* question */}
               <div
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-lg border bg-white px-3 py-2',
                   'border-slate-200 dark:border-slate-700 dark:bg-[var(--term-bg)]',
                 )}
@@ -82,7 +82,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
               {/* feature */}
               <div className="flex justify-start lg:justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1.5',
                     'bg-white dark:bg-[var(--term-bg)]',
                     tone.borderStrong,
@@ -92,7 +92,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)}
+                    className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)}
                   />
                   {row.feature}
                 </span>
@@ -103,7 +103,7 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
 
               {/* structure */}
               <div
-                className={cn(
+                className={cx(
                   'flex flex-col gap-1 rounded-lg border-2 px-3 py-2',
                   tone.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -112,10 +112,10 @@ export const PreviousTopicConnectionMapSection = ({ content }: Props) => (
                 {row.structureLines.map((line, idx) => (
                   <span
                     key={line}
-                    className={cn(
+                    className={cx(
                       'break-keep',
                       idx === 0
-                        ? cn('text-xsm font-bold', tone.text)
+                        ? cx('text-xsm font-bold', tone.text)
                         : 'text-xxsm leading-relaxed text-[var(--term-muted)]',
                     )}
                   >
@@ -141,7 +141,7 @@ const ColumnHead = ({
   align?: 'center';
 }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]',
       align === 'center' && 'justify-center',
     )}

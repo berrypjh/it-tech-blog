@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, ArrowUpFromLine } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -19,7 +18,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg',
         'border-teal-300/80 bg-gradient-to-br from-teal-50/60 via-white to-emerald-50/30',
         'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
@@ -34,7 +33,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
             return (
               <li key={step} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border-2 px-md py-2.5',
                     'border-teal-200/80 bg-white dark:border-teal-700/60 dark:bg-slate-950/40',
                   )}
@@ -69,7 +68,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
         {/* Result */}
         <div className="flex flex-col gap-md">
           <div
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md',
               'border-teal-300/80 bg-white dark:border-teal-700/70 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -82,7 +81,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
               {content.results.map((entry) => (
                 <li
                   key={entry.handler}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-lg border bg-teal-50/40 px-3 py-2',
                     'border-teal-200/70 dark:border-teal-800/60 dark:bg-teal-950/30',
                   )}
@@ -102,7 +101,7 @@ export const BubbleListenerCollection = ({ content }: Props) => (
           </div>
 
           <aside
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md',
               'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
             )}

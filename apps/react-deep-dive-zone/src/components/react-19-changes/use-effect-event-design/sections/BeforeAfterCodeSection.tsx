@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ProblemListItem } from '../content';
 import { CheckCircleIcon, XCircleIcon } from '../icons';
@@ -62,7 +62,7 @@ export const BeforeAfterCodeSection = ({
 
         {/* Problem / Improvement card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             tone.borderStrong,
             tone.bg,
@@ -72,14 +72,14 @@ export const BeforeAfterCodeSection = ({
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                 tone.iconChip,
               )}
             >
               <Icon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', tone.text)}>{cardTitle}</h3>
+            <h3 className={cx('text-sm font-bold break-keep', tone.text)}>{cardTitle}</h3>
           </header>
 
           <ul className="flex flex-col gap-1.5">
@@ -88,20 +88,20 @@ export const BeforeAfterCodeSection = ({
                 key={item.text}
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
-                <Icon aria-hidden="true" className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)} />
+                <Icon aria-hidden="true" className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)} />
                 <span>{item.text}</span>
               </li>
             ))}
           </ul>
 
           <div
-            className={cn(
+            className={cx(
               'mt-auto rounded-xl border-2 px-3 py-2.5',
               tone.border,
               'bg-white dark:bg-[var(--term-bg)]',
             )}
           >
-            <p className={cn('text-xsm font-bold leading-relaxed break-keep', tone.text)}>
+            <p className={cx('text-xsm font-bold leading-relaxed break-keep', tone.text)}>
               {summary}
             </p>
           </div>

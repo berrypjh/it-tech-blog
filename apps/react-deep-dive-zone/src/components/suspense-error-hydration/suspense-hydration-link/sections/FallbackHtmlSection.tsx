@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Server, Waypoints } from 'lucide-react';
 
 import type { SuspenseHydrationLinkContent } from '../content';
@@ -16,7 +15,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-violet-200/80 bg-white dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -24,7 +23,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
       >
         <CodeBlock code={content.code.content} fileLabel={content.code.fileLabel} language="html" />
         <span
-          className={cn(
+          className={cx(
             'mx-md mb-md inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5',
             'border-violet-200 bg-violet-50 text-violet-700 text-[10px] font-mono font-bold uppercase tracking-wider',
             'dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200',
@@ -36,7 +35,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
 
       {/* description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -64,7 +63,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
 
       {/* streaming flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-blue-50/30 dark:border-blue-800/60 dark:bg-blue-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -87,7 +86,7 @@ export const FallbackHtmlSection = ({ content }: Props) => (
             return (
               <li key={step} className="flex flex-col gap-0.5">
                 <div
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-lg border bg-white px-3 py-2',
                     'dark:bg-[var(--term-bg)] border-blue-200 dark:border-blue-800/60',
                   )}

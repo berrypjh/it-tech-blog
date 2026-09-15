@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   AlertTriangle,
   CheckCircle2,
@@ -86,14 +85,14 @@ const SlotItem = ({ slot }: { slot: HookSlot }) => {
   };
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-lg border-2 px-3 py-2',
         styleByStatus[slot.status],
       )}
     >
       <code className="font-mono text-[11px] font-bold tabular-nums">{slot.index}</code>
       <code
-        className={cn(
+        className={cx(
           'font-mono text-xsm font-bold break-all',
           slot.status === 'missing' && 'line-through',
         )}
@@ -119,7 +118,7 @@ const StatePanel = ({
     <div className="flex flex-col gap-md">
       {/* Hooks list */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           isOk
@@ -130,7 +129,7 @@ const StatePanel = ({
         <header className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-7 w-7 items-center justify-center rounded-full',
               isOk
                 ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900'
@@ -157,7 +156,7 @@ const StatePanel = ({
       {/* Result cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-1 rounded-xl border-2 p-3',
             isOk
               ? 'border-emerald-300/70 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30'
@@ -168,7 +167,7 @@ const StatePanel = ({
             {matchLabel}
           </p>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 text-xsm font-bold',
               isOk ? 'text-emerald-800 dark:text-emerald-100' : 'text-rose-800 dark:text-rose-100',
             )}
@@ -182,7 +181,7 @@ const StatePanel = ({
           </span>
         </article>
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-1 rounded-xl border-2 p-3',
             isNoWarning
               ? 'border-emerald-300/70 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30'
@@ -193,7 +192,7 @@ const StatePanel = ({
             {warningLabel}
           </p>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 text-xsm font-bold break-keep',
               isNoWarning
                 ? 'text-emerald-800 dark:text-emerald-100'
@@ -220,7 +219,7 @@ export const HookOrderBreakExperiment = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-break-experiment"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -258,7 +257,7 @@ export const HookOrderBreakExperiment = ({ content }: Props) => {
             <div
               role="tablist"
               aria-label="visible value"
-              className={cn(
+              className={cx(
                 'mx-auto sm:mx-0 inline-flex items-center gap-1 rounded-full border-2 p-1',
                 'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
               )}
@@ -306,7 +305,7 @@ const ToggleButton = ({
     role="tab"
     aria-selected={active}
     onClick={onClick}
-    className={cn(
+    className={cx(
       'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xsm font-mono font-bold transition-all',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
       active

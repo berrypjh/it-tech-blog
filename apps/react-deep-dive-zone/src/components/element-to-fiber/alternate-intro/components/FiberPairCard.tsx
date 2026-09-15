@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Monitor, Workflow } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -31,7 +30,7 @@ export const FiberPairCard = ({ variant, badge, title, items, compact = false }:
   const Icon = variant === 'current' ? Monitor : Workflow;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 min-w-0 h-full',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         compact ? 'p-md' : 'p-md sm:p-lg',
@@ -40,7 +39,7 @@ export const FiberPairCard = ({ variant, badge, title, items, compact = false }:
     >
       {badge && (
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5',
             'text-[10px] font-bold uppercase tracking-wider font-mono',
             t.chip,
@@ -55,7 +54,7 @@ export const FiberPairCard = ({ variant, badge, title, items, compact = false }:
           <Icon className="h-5 w-5" />
         </ToneIconBox>
         <code
-          className={cn(
+          className={cx(
             'font-mono font-extrabold tracking-tight',
             compact ? 'text-sm' : 'text-md sm:text-lg',
             t.text,
@@ -69,13 +68,13 @@ export const FiberPairCard = ({ variant, badge, title, items, compact = false }:
         {items.map((item) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-lg border px-sm py-2',
               t.border,
               'bg-[var(--term-bg)]',
             )}
           >
-            <CheckCircle2 className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+            <CheckCircle2 className={cx('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
             <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep font-bold">
               {item}
             </span>
@@ -94,7 +93,7 @@ export const MiniFiberTree = ({ variant }: { variant: FiberRole }) => {
   const t = toneTokens[roleTone[variant]];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center justify-center rounded-xl border p-md',
         t.border,
         'bg-[var(--term-bg)]',
@@ -103,7 +102,7 @@ export const MiniFiberTree = ({ variant }: { variant: FiberRole }) => {
     >
       <svg
         viewBox="0 0 160 100"
-        className={cn('w-full h-24', t.text)}
+        className={cx('w-full h-24', t.text)}
         fill="currentColor"
         stroke="currentColor"
       >

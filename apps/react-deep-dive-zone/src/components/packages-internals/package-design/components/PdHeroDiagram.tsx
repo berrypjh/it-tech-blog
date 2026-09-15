@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, Boxes, Code, type LucideIcon, Monitor } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -46,7 +45,7 @@ const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean })
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 flex-col items-center gap-1 rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         emphasized
@@ -59,7 +58,7 @@ const FlowBox = ({ node, emphasized }: { node: FlowNode; emphasized?: boolean })
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+          className={cx('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
         >
           {node.label}
         </span>

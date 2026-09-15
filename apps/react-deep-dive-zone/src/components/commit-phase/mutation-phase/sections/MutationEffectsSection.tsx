@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Pencil, Plus, Trash2 } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -51,11 +50,11 @@ const Card = ({
   return (
     <ToneCardItem tone={card.tone} icon={<Icon className="h-5 w-5" />} topRight={index}>
       <div className="flex flex-col gap-1">
-        <h3 className={cn('text-md font-bold tracking-tight font-mono break-keep', t.text)}>
+        <h3 className={cx('text-md font-bold tracking-tight font-mono break-keep', t.text)}>
           {card.title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center self-start gap-1 rounded-full border px-2 py-0.5 text-[10px] font-mono lowercase tracking-wider',
             t.chip,
           )}
@@ -72,7 +71,7 @@ const Card = ({
           {card.examples.map((ex) => (
             <li
               key={ex}
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-1 text-[11px] font-mono',
                 t.chip,
               )}

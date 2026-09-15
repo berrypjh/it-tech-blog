@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Clock, PlayCircle, Target, Terminal } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -19,14 +18,14 @@ export const CurrentTargetInjection = ({ content }: Props) => (
       icon={<Target className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
+    <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
         const Icon = stepIcons[i] ?? Clock;
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -55,7 +54,7 @@ export const CurrentTargetInjection = ({ content }: Props) => (
             </code>
 
             {step.inspector && (
-              <div className={cn('rounded-xl border-2 bg-slate-950 p-md', 'border-slate-800')}>
+              <div className={cx('rounded-xl border-2 bg-slate-950 p-md', 'border-slate-800')}>
                 <div className="flex items-center gap-2 mb-1">
                   <Terminal aria-hidden="true" className="h-3.5 w-3.5 text-slate-400" />
                   <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
@@ -67,7 +66,7 @@ export const CurrentTargetInjection = ({ content }: Props) => (
                     <div key={row.key} className="contents">
                       <dt className="font-mono text-[10px] text-slate-500">{row.key}:</dt>
                       <dd
-                        className={cn(
+                        className={cx(
                           'font-mono text-[11px] sm:text-xsm break-all',
                           row.highlight
                             ? row.value === 'null'

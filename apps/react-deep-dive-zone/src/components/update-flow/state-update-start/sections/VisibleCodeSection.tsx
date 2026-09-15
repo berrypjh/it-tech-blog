@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -31,7 +30,7 @@ export const VisibleCodeSection = ({ content }: Props) => (
           <User className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
 
-        <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', sky.text)}>
+        <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', sky.text)}>
           {content.explain.title}
         </h3>
 
@@ -40,13 +39,13 @@ export const VisibleCodeSection = ({ content }: Props) => (
         </p>
 
         <span
-          className={cn(
+          className={cx(
             'mt-auto inline-flex w-fit items-center gap-2 rounded-md border bg-[var(--term-surface)] px-3 py-1.5 text-xxsm font-mono',
             sky.border,
             sky.text,
           )}
         >
-          <span aria-hidden="true" className={cn('h-1.5 w-1.5 rounded-full', sky.dot)} />
+          <span aria-hidden="true" className={cx('h-1.5 w-1.5 rounded-full', sky.dot)} />
           {content.explain.tag}
         </span>
       </article>

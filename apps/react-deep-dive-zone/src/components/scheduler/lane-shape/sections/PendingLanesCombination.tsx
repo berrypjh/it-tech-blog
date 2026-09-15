@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Flag, GitMerge, Layers, Lightbulb, Plus, Zap } from 'lucide-react';
 
 import { BitCellRow } from '../../_shared/BitCellRow';
@@ -22,7 +21,7 @@ const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResu
   const Icon = iconFor[data.accent];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
         'transition-colors shadow-[0_2px_0_var(--term-border)]',
         laneCardBorder[data.accent],
@@ -32,7 +31,7 @@ const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResu
       <header className="flex items-center justify-between gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
             laneIconBox[data.accent],
           )}
@@ -41,7 +40,7 @@ const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResu
         </span>
         {isResult && (
           <span
-            className={cn(
+            className={cx(
               'font-mono text-[10px] uppercase tracking-wider font-bold',
               laneTextStrong[data.accent],
             )}
@@ -51,7 +50,7 @@ const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResu
         )}
       </header>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-keep',
           laneTextStrong[data.accent],
         )}
@@ -75,7 +74,7 @@ const OperandCard = ({ data, isResult = false }: { data: CombinationCard; isResu
 const Symbol = ({ kind }: { kind: 'plus' | 'equal' }) => (
   <span
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'inline-flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full',
       'border-2 border-blue-300 bg-white text-blue-700 shadow-[0_2px_0_var(--term-border)]',
       'dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200',
@@ -103,7 +102,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
       {/* equation row */}
       <div
         aria-label="lane combination equation"
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -139,7 +138,7 @@ export const PendingLanesCombination = ({ content }: Props) => (
 
       {/* core point */}
       <aside
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
           'border-amber-300/80 bg-gradient-to-br from-amber-50/80 via-white to-amber-50/30',
           'dark:border-amber-700/70 dark:from-amber-950/30 dark:via-[var(--term-bg)] dark:to-amber-950/10',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   AppWindow,
   Atom,
@@ -31,7 +30,7 @@ type Props = { content: ReactVsReactDomContent['usage'] };
 export const RoleFlowDiagram = ({ content }: Props) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'p-md sm:p-lg',
@@ -52,7 +51,7 @@ export const RoleFlowDiagram = ({ content }: Props) => {
         <span className="text-[10px] uppercase tracking-wider">
           <span className="font-bold text-[var(--term-accent)]">react</span>
           <span className="text-[var(--term-muted)]"> ↔ </span>
-          <span className={cn('font-bold', toneTokens.sky.text)}>react-dom</span>
+          <span className={cx('font-bold', toneTokens.sky.text)}>react-dom</span>
         </span>
         <span
           aria-hidden="true"
@@ -88,10 +87,10 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
       <div className="flex flex-col items-center">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-7 h-7 rounded-md border shrink-0 bg-[var(--term-surface)]',
             isPackage
-              ? cn(accent, 'border-current')
+              ? cx(accent, 'border-current')
               : 'border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
@@ -106,19 +105,19 @@ const FlowStep = ({ node, isLast }: FlowStepProps) => {
       </div>
 
       {/* 우측: 제목 + 설명 */}
-      <div className={cn('min-w-0 flex-1', isLast ? 'pb-0' : 'pb-3')}>
+      <div className={cx('min-w-0 flex-1', isLast ? 'pb-0' : 'pb-3')}>
         <div className="flex items-center gap-2">
           <span
-            className={cn(
+            className={cx(
               'text-xsm font-bold tracking-tight',
-              isPackage ? cn(accent, 'font-mono') : 'text-[var(--term-fg)]',
+              isPackage ? cx(accent, 'font-mono') : 'text-[var(--term-fg)]',
             )}
           >
             {node.title}
           </span>
           {isPackage && (
             <span
-              className={cn(
+              className={cx(
                 'rounded border px-1.5 py-px text-[9px] font-bold uppercase tracking-wider',
                 'border-current/40',
                 accent,

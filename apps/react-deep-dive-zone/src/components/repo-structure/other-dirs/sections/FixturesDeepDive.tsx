@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Bug, Folder, Lightbulb, type LucideIcon, Server, Sparkles, Zap } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -41,7 +40,7 @@ export const FixturesDeepDive = ({ content }: Props) => {
               badge={card.badge}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md sm:text-lg font-bold font-mono tracking-tight break-keep',
                   toneTokens[tone].text,
                 )}

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Atom,
@@ -59,7 +58,7 @@ const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: 
       <ToneCard tone={card.tone} nav className="w-full">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-11 w-11 items-center justify-center rounded-md',
             toneTokens[card.tone].chip,
           )}
@@ -68,7 +67,7 @@ const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: 
         </span>
 
         <h3
-          className={cn('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}
+          className={cx('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}
         >
           {card.title}
         </h3>
@@ -78,7 +77,7 @@ const AdvancedCardView = ({ card, moreLabel }: { card: AdvancedLink; moreLabel: 
         </p>
 
         <span
-          className={cn(
+          className={cx(
             'mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold font-mono tracking-tight',
             toneTokens[card.tone].text,
           )}

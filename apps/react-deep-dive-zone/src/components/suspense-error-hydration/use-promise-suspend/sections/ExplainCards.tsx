@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -26,7 +25,7 @@ export const ExplainCards = ({ content }: Props) => (
       return (
         <article
           key={card.state}
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'bg-white dark:bg-[var(--term-bg)]',
             accent.border,
@@ -41,7 +40,7 @@ export const ExplainCards = ({ content }: Props) => (
             <h3 className="text-md font-bold text-[var(--term-fg)] break-keep">{card.title}</h3>
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'ml-auto inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                 accent.iconChip,
               )}

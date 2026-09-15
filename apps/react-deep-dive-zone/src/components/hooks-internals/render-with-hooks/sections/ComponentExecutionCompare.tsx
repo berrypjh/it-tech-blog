@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Code2 } from 'lucide-react';
 
 import type { RenderWithHooksContent } from '../content';
@@ -9,7 +8,7 @@ type Props = { content: RenderWithHooksContent['compare'] };
 export const ComponentExecutionCompare = ({ content }: Props) => (
   <section
     aria-label="component-execution-compare"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -47,7 +46,7 @@ export const ComponentExecutionCompare = ({ content }: Props) => (
       {/* Center VS badge */}
       <div aria-hidden="true" className="flex items-center justify-center lg:px-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full',
             'bg-slate-900 text-white font-mono text-sm sm:text-md font-bold tracking-wider',
             'border-4 border-[var(--term-bg)] shadow-[0_3px_0_var(--term-border)]',
@@ -78,7 +77,7 @@ export const ComponentExecutionCompare = ({ content }: Props) => (
             return (
               <li key={step.label} className="flex flex-col gap-2">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-950 px-md py-3',
                   )}
                 >

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Home, User } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -23,7 +22,7 @@ export const StateNodeHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -79,10 +78,10 @@ const FiberCard = ({
       {fields.map((field, i) => (
         <li
           key={`${field.label}-${i}`}
-          className={cn(
+          className={cx(
             'rounded-md border px-2 py-0.5 font-mono text-[11px]',
             field.isStateNode
-              ? cn(toneTokens.emerald.chip, 'font-bold')
+              ? cx(toneTokens.emerald.chip, 'font-bold')
               : 'border-[var(--term-border)] text-[var(--term-muted)]',
           )}
         >
@@ -99,7 +98,7 @@ const TargetRow = ({ target }: { target: TargetCard }) => {
   const Icon = iconMap[target.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-sm',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -113,7 +112,7 @@ const TargetRow = ({ target }: { target: TargetCard }) => {
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {target.subtitle}
         </span>
-        <span className={cn('text-sm font-bold tracking-tight', t.text)}>{target.title}</span>
+        <span className={cx('text-sm font-bold tracking-tight', t.text)}>{target.title}</span>
       </div>
     </article>
   );

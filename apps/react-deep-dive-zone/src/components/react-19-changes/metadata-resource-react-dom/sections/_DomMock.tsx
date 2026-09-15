@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { DomLine } from '../content';
 
@@ -24,7 +24,7 @@ export const DomMock = ({ dom, ariaLabel }: Props) => (
   <div
     role="img"
     aria-label={ariaLabel}
-    className={cn(
+    className={cx(
       'overflow-x-auto rounded-xl border-2',
       'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
     )}
@@ -36,7 +36,7 @@ export const DomMock = ({ dom, ariaLabel }: Props) => (
           return (
             <span
               key={i}
-              className={cn(
+              className={cx(
                 'block px-3 py-0.5 whitespace-pre',
                 zoneBg[line.zone],
                 zoneClass[line.zone],

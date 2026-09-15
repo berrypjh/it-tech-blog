@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Zap } from 'lucide-react';
 
 import type { HydrationStartContent } from '../content';
@@ -13,7 +12,7 @@ export const EnterFlowSection = ({ content }: Props) => (
     <SectionHeader id="enter-flow-heading" number={content.number} title={content.title} />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -28,7 +27,7 @@ export const EnterFlowSection = ({ content }: Props) => (
               className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1"
             >
               <div
-                className={cn(
+                className={cx(
                   'flex flex-1 flex-col gap-2 rounded-xl border-2 p-md',
                   step.highlight
                     ? 'border-blue-500 bg-blue-50 shadow-[0_2px_0_rgba(59,130,246,0.25)] dark:border-blue-400 dark:bg-blue-950/40'
@@ -39,7 +38,7 @@ export const EnterFlowSection = ({ content }: Props) => (
                 <div className="flex items-center justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums text-white',
                       step.highlight
                         ? 'bg-blue-600 dark:bg-blue-500'
@@ -58,7 +57,7 @@ export const EnterFlowSection = ({ content }: Props) => (
                   )}
                 </div>
                 <span
-                  className={cn(
+                  className={cx(
                     'text-xsm font-mono font-bold break-keep',
                     step.highlight ? 'text-blue-700 dark:text-blue-200' : 'text-[var(--term-fg)]',
                   )}

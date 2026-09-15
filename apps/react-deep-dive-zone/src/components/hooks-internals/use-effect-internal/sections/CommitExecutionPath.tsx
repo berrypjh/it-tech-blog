@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Cog, FileText, PlayCircle, Rocket } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -70,7 +69,7 @@ const toneText: Record<Tone, string> = {
 export const CommitExecutionPath = ({ content }: Props) => (
   <section
     aria-labelledby="heading-commit-path"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -89,7 +88,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
         return (
           <li key={step.number} className="relative">
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                 'shadow-[0_1px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -99,7 +98,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
               <header className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
                     toneNumber[step.tone],
                   )}
@@ -108,7 +107,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     toneIconBox[step.tone],
                   )}
@@ -117,7 +116,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
                 </span>
               </header>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold leading-tight break-all',
                   toneText[step.tone],
                 )}
@@ -152,7 +151,7 @@ export const CommitExecutionPath = ({ content }: Props) => (
 
     {/* Cleanup note */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-orange-300/70 bg-orange-50/60 dark:border-orange-800/60 dark:bg-orange-950/30',
       )}

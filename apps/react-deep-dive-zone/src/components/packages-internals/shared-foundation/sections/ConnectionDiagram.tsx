@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Code, type LucideIcon, Package, Share2, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -28,7 +27,7 @@ export const ConnectionDiagram = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'relative rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg overflow-hidden',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -53,7 +52,7 @@ export const ConnectionDiagram = ({ content }: Props) => {
           {content.conceptTags.map((tag) => (
             <li key={tag.id}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full px-3 py-1 text-[10px] font-mono font-bold tracking-tight',
                   'bg-[var(--term-surface)] border border-[var(--term-border)]',
                   'text-[var(--term-accent)]',
@@ -75,7 +74,7 @@ export const ConnectionDiagram = ({ content }: Props) => {
 
 const SharedHub = ({ label, subtitle }: { label: string; subtitle: string }) => (
   <div
-    className={cn(
+    className={cx(
       'relative inline-flex flex-col items-center justify-center gap-1 px-md py-md min-w-[14rem]',
       'rounded-2xl border-2 border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_4px_0_var(--term-border)] overflow-hidden',
@@ -102,7 +101,7 @@ const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 items-center gap-sm rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -113,7 +112,7 @@ const PackageCardLarge = ({ pkg }: { pkg: PackageNode }) => {
         <Icon className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex flex-col min-w-0">
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', tone.text)}>
+        <h3 className={cx('text-sm font-bold font-mono tracking-tight truncate', tone.text)}>
           {pkg.name}
         </h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">

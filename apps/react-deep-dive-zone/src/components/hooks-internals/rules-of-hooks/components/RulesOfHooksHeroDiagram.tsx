@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, CheckCircle2, ListOrdered, XCircle } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -25,7 +24,7 @@ export const RulesOfHooksHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -69,7 +68,7 @@ const RenderCard = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' | '
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -84,7 +83,7 @@ const RenderCard = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' | '
             <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
           )}
         </ToneIconBox>
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
           {side.label}
         </span>
       </header>
@@ -95,7 +94,7 @@ const RenderCard = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' | '
         ))}
       </ul>
 
-      <p className={cn('text-xsm font-bold leading-relaxed break-keep', t.text)}>
+      <p className={cx('text-xsm font-bold leading-relaxed break-keep', t.text)}>
         {side.matchLabel}
       </p>
     </article>
@@ -112,7 +111,7 @@ const SlotRow = ({ slot }: { slot: HookSlot }) => {
   const t = toneTokens[slotTone[slot.status]];
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-start gap-2 rounded-lg border bg-[var(--term-bg)] px-2.5 py-1.5',
         'border-[var(--term-border)]',
         t.borderHover,
@@ -124,7 +123,7 @@ const SlotRow = ({ slot }: { slot: HookSlot }) => {
       </code>
       <div className="flex min-w-0 flex-col gap-0.5">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-[11px] sm:text-xsm font-bold break-all',
             t.text,
             slot.status === 'missing' && 'line-through',
@@ -144,7 +143,7 @@ const SlotRow = ({ slot }: { slot: HookSlot }) => {
 
 const WarningNote = ({ text }: { text: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

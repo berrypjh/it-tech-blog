@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Flag, Package, Workflow, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -34,7 +33,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
           return (
             <li
               key={step.title}
-              className={cn(
+              className={cx(
                 'relative flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                 pkgCardBorder[step.accent],
@@ -43,7 +42,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-mono font-bold tabular-nums',
                     pkgNumberBadge[step.accent],
                   )}
@@ -52,7 +51,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     pkgIconBox[step.accent],
                   )}
@@ -63,7 +62,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
 
               {step.isCode ? (
                 <code
-                  className={cn(
+                  className={cx(
                     'font-mono text-xsm sm:text-sm font-bold break-all',
                     pkgTextStrong[step.accent],
                   )}
@@ -72,7 +71,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
                 </code>
               ) : (
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-xsm sm:text-sm font-bold leading-tight break-keep',
                     pkgTextStrong[step.accent],
                   )}
@@ -107,7 +106,7 @@ export const ScheduleCallbackMoment = ({ content }: Props) => (
 
       {/* bottom note */}
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-2xl border-2 px-md py-3',
           'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-blue-50/30',
           'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',

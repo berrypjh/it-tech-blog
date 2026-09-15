@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, ChevronRight, HelpCircle, Layers, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -64,7 +63,7 @@ const CenterArrow = ({ lines }: { lines: string[] }) => {
     <div className="flex flex-col items-center justify-center gap-2 py-2 md:py-0">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -76,14 +75,14 @@ const CenterArrow = ({ lines }: { lines: string[] }) => {
         <ArrowDown className="md:hidden h-6 w-6" aria-hidden="true" />
       </span>
       <ul
-        className={cn(
+        className={cx(
           'flex flex-col gap-0.5 rounded-lg border-2 px-sm py-1.5 text-center',
           t.fill.border,
           t.fill.bg,
         )}
       >
         {lines.map((line) => (
-          <li key={line} className={cn('text-[11px] font-mono font-bold break-keep', t.fill.text)}>
+          <li key={line} className={cx('text-[11px] font-mono font-bold break-keep', t.fill.text)}>
             {line}
           </li>
         ))}
@@ -109,7 +108,7 @@ const DomCard = ({
   const t = toneTokens[isAfter ? 'teal' : 'sky'];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -117,7 +116,7 @@ const DomCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
             t.text,
           )}
@@ -126,7 +125,7 @@ const DomCard = ({
         </h3>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -136,7 +135,7 @@ const DomCard = ({
       </header>
 
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border bg-[var(--term-surface)] p-sm text-[11px] sm:text-xsm leading-snug font-mono',
           t.fill.border,
           t.fill.text,
@@ -154,10 +153,10 @@ const DomCard = ({
           return (
             <li
               key={item}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-md border px-2 py-1 text-xsm font-mono',
                 isNew
-                  ? cn(
+                  ? cx(
                       toneTokens.teal.fill.border,
                       toneTokens.teal.fill.bg,
                       toneTokens.teal.fill.text,
@@ -167,7 +166,7 @@ const DomCard = ({
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1.5 w-1.5 rounded-full',
                   isNew ? toneTokens.teal.dot : 'bg-[var(--term-dim)]',
                 )}
@@ -175,7 +174,7 @@ const DomCard = ({
               <span>{item}</span>
               {isNew && newBadge && (
                 <span
-                  className={cn(
+                  className={cx(
                     'ml-auto text-[9px] font-mono uppercase tracking-wider font-bold',
                     toneTokens.teal.text,
                   )}
@@ -205,7 +204,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
 
       <div className="flex flex-col gap-3">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-lg border-2 p-md sm:p-lg',
             q.fill.border,
             q.fill.bg,
@@ -215,7 +214,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-10 w-10 items-center justify-center rounded-lg border font-mono font-bold',
                 q.fill.bg,
                 q.fill.border,
@@ -224,12 +223,12 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
             >
               Q
             </span>
-            <span className={cn('text-[10px] font-mono uppercase tracking-wider', q.text)}>
+            <span className={cx('text-[10px] font-mono uppercase tracking-wider', q.text)}>
               question
             </span>
-            <HelpCircle aria-hidden="true" className={cn('ml-auto h-4 w-4', q.text)} />
+            <HelpCircle aria-hidden="true" className={cx('ml-auto h-4 w-4', q.text)} />
           </header>
-          <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', q.fill.text)}>
+          <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', q.fill.text)}>
             {quiz.question}
           </p>
         </article>
@@ -237,7 +236,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
         <ArrowDown aria-hidden="true" className="h-4 w-4 mx-auto text-[var(--term-dim)]" />
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-lg border-2 p-md sm:p-lg',
             a.fill.border,
             a.fill.bg,
@@ -248,7 +247,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 items-center justify-center rounded-lg border font-mono font-bold',
                   a.fill.bg,
                   a.fill.border,
@@ -257,13 +256,13 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
               >
                 A
               </span>
-              <span className={cn('text-[10px] font-mono uppercase tracking-wider', a.text)}>
+              <span className={cx('text-[10px] font-mono uppercase tracking-wider', a.text)}>
                 answer
               </span>
             </div>
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-full border',
                 a.chip,
               )}
@@ -271,7 +270,7 @@ const MiniQuiz = ({ quiz }: { quiz: PlacementContent['quiz'] }) => {
               <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
             </span>
           </header>
-          <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', a.fill.text)}>
+          <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', a.fill.text)}>
             {quiz.answer}
           </p>
         </article>

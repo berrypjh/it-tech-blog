@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -15,7 +14,7 @@ export const JsxExampleCard = ({ title, code, className }: Props) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -24,11 +23,11 @@ export const JsxExampleCard = ({ title, code, className }: Props) => {
       )}
     >
       <header className="flex items-center gap-2">
-        <Code className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight', tone.text)}>{title}</h3>
+        <Code className={cx('h-4 w-4', tone.text)} aria-hidden="true" />
+        <h3 className={cx('text-sm font-bold font-mono tracking-tight', tone.text)}>{title}</h3>
       </header>
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border p-2 text-[11.5px] leading-snug font-mono',
           'border-dashed border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, CircleDashed, Eye, Info, List, ScanLine, Zap } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -37,7 +36,7 @@ export const OtherSpecialTypes = ({ content }: Props) => (
         return (
           <ToneCardItem key={card.id} tone={card.accent} icon={<Icon className="h-5 w-5" />}>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold tracking-tight break-keep',
                 toneTokens[card.accent].text,
               )}

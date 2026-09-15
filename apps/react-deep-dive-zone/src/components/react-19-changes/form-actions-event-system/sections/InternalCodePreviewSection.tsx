@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { ExternalLinkIcon, FileCodeIcon, GithubIcon } from '../icons';
@@ -25,7 +25,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
         return (
           <article
             key={panel.title}
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md',
               tone.border,
               'bg-white dark:bg-[var(--term-bg)]',
@@ -35,14 +35,14 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                   tone.iconChip,
                 )}
               >
                 <FileCodeIcon className="h-4 w-4" />
               </span>
-              <h3 className={cn('text-sm font-bold break-keep', tone.text)}>{panel.title}</h3>
+              <h3 className={cx('text-sm font-bold break-keep', tone.text)}>{panel.title}</h3>
             </header>
             <CodePanel code={panel.code} langBadge={panel.langBadge} />
           </article>
@@ -51,7 +51,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
 
       {/* file info card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-gradient-to-br from-white via-blue-50/30 to-white',
           'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-blue-950/20 dark:to-[var(--term-bg)]',
@@ -71,7 +71,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
         </header>
 
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/40',
           )}
@@ -85,7 +85,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
           href={content.fileCard.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
             'border-slate-900 bg-slate-900 text-white',
             'dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900',

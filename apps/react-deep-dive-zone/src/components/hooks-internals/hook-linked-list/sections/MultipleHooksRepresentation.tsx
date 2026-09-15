@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -11,7 +10,7 @@ type Props = { content: HookLinkedListContent['multipleHooks'] };
 export const MultipleHooksRepresentation = ({ content }: Props) => (
   <section
     aria-labelledby="heading-multiple"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -29,7 +28,7 @@ export const MultipleHooksRepresentation = ({ content }: Props) => (
         return (
           <li key={card.index}>
             <article
-              className={cn(
+              className={cx(
                 'h-full flex flex-col gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -40,7 +39,7 @@ export const MultipleHooksRepresentation = ({ content }: Props) => (
                 <div className="flex items-center gap-2 min-w-0">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 px-2.5 items-center justify-center rounded-full border text-[11px] font-mono font-bold tabular-nums',
                       t.fill.bg,
                       t.fill.border,
@@ -49,12 +48,12 @@ export const MultipleHooksRepresentation = ({ content }: Props) => (
                   >
                     Hook #{card.index}
                   </span>
-                  <code className={cn('font-mono text-xsm sm:text-sm font-bold break-all', t.text)}>
+                  <code className={cx('font-mono text-xsm sm:text-sm font-bold break-all', t.text)}>
                     {card.hookName}
                   </code>
                 </div>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider break-keep',
                     t.chip,
                   )}
@@ -70,7 +69,7 @@ export const MultipleHooksRepresentation = ({ content }: Props) => (
                     className="rounded-lg border border-[var(--term-border)] bg-[var(--term-border)]/15 p-2"
                   >
                     <p
-                      className={cn(
+                      className={cx(
                         'text-[10px] font-mono font-bold uppercase tracking-wider mb-0.5',
                         t.text,
                       )}

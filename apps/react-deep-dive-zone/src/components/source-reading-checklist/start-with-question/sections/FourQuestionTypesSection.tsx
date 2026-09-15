@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, GitBranch, History, ListChecks, Plug } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
           return (
             <li key={card.id}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   'shadow-[0_2px_0_var(--term-border)]',
@@ -50,7 +49,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                       t.chip,
                     )}
@@ -58,7 +57,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
                     <Icon className="h-5 w-5" />
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 min-w-7 px-1.5 items-center justify-center rounded-md border',
                       'bg-white dark:bg-[var(--term-bg)]',
                       t.border,
@@ -71,7 +70,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
                 </div>
 
                 <h3
-                  className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}
+                  className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}
                 >
                   {card.title}
                 </h3>
@@ -94,7 +93,7 @@ export const FourQuestionTypesSection = ({ content }: Props) => {
                       {content.entryPrefix}
                     </span>
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center rounded-md border px-2 py-0.5',
                         'bg-white dark:bg-[var(--term-bg)]',
                         t.border,

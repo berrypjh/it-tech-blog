@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Network, Sparkles } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -51,14 +50,14 @@ export const ElementKeyPosition = ({ content }: Props) => (
 const CalloutCard = ({ callout }: { callout: ElementCallout }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center rounded-md border px-2 py-1 text-xsm font-mono font-bold tracking-tight shrink-0',
           toneTokens[callout.tone].chip,
         )}

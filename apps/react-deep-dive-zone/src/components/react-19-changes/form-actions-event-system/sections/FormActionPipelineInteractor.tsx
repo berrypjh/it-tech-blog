@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { CheckCircleIcon, CircleIcon, PlayCircleIcon, SendIcon, SparklesIcon } from '../icons';
@@ -53,7 +53,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -62,7 +62,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
         <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_5fr)_minmax(0,_7fr)] lg:gap-lg items-stretch">
           {/* LEFT: form mock */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
               'border-blue-200/80 bg-blue-50/30 dark:border-blue-800/60 dark:bg-blue-950/20',
             )}
@@ -80,7 +80,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
             </header>
 
             <div
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 rounded-xl border-2 p-md',
                 'border-slate-200 bg-white',
                 'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -99,7 +99,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
                 type="text"
                 placeholder={content.leftPlaceholder}
                 readOnly
-                className={cn(
+                className={cx(
                   'w-full rounded-lg border-2 px-3 py-2 font-mono text-xsm',
                   'border-slate-200 bg-slate-50 text-[var(--term-fg)] placeholder:text-[var(--term-dim)]',
                   'dark:border-slate-700 dark:bg-slate-900/40',
@@ -110,7 +110,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
                 <button
                   type="button"
                   onClick={advance}
-                  className={cn(
+                  className={cx(
                     'group inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2',
                     'bg-blue-600 text-white font-bold text-xsm dark:bg-blue-500',
                     'shadow-[0_2px_0_rgba(15,23,42,0.25)]',
@@ -124,7 +124,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
                 <button
                   type="button"
                   onClick={reset}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center gap-1 rounded-lg border-2 px-3 py-2',
                     'border-slate-200 bg-white text-[var(--term-fg)] dark:border-slate-700 dark:bg-[var(--term-bg)]',
                     'font-mono text-[10px] font-bold uppercase tracking-wider',
@@ -177,7 +177,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
         {/* Completion message */}
         {progress >= content.steps.length && (
           <div
-            className={cn(
+            className={cx(
               'mt-md flex items-start gap-2 rounded-xl border-2 px-3 py-3',
               'border-emerald-300 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-950/30',
             )}
@@ -201,7 +201,7 @@ export const FormActionPipelineInteractor = ({ content }: Props) => {
 
 const LegendItem = ({ dot, label }: { dot: string; label: string }) => (
   <li className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2 py-0.5 dark:border-slate-700 dark:bg-[var(--term-bg)]">
-    <span aria-hidden="true" className={cn('block h-1.5 w-1.5 rounded-full', dot)} />
+    <span aria-hidden="true" className={cx('block h-1.5 w-1.5 rounded-full', dot)} />
     <span className="font-mono text-[10px] font-bold text-[var(--term-muted)] break-keep">
       {label}
     </span>
@@ -231,12 +231,12 @@ const StepRow = ({
     <li>
       <article
         aria-current={isCurrent ? 'step' : undefined}
-        className={cn(
+        className={cx(
           'flex items-start gap-3 rounded-xl border-2 p-3',
           'transition-all duration-200',
-          isIdle && cn(idleAccent.border, 'bg-white dark:bg-[var(--term-bg)]'),
+          isIdle && cx(idleAccent.border, 'bg-white dark:bg-[var(--term-bg)]'),
           isCurrent &&
-            cn(
+            cx(
               tone.borderStrong,
               tone.bg,
               'shadow-[0_3px_0_var(--term-border)] motion-safe:-translate-y-0.5',
@@ -247,10 +247,10 @@ const StepRow = ({
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border-2',
-            isIdle && cn(idleAccent.iconChip, 'border-slate-200 dark:border-slate-700'),
-            isCurrent && cn(tone.solidBg, 'text-white border-transparent'),
+            isIdle && cx(idleAccent.iconChip, 'border-slate-200 dark:border-slate-700'),
+            isCurrent && cx(tone.solidBg, 'text-white border-transparent'),
             isDone && 'border-emerald-500 bg-emerald-500 text-white dark:bg-emerald-500',
           )}
         >
@@ -266,7 +266,7 @@ const StepRow = ({
         <div className="flex flex-col min-w-0">
           <div className="flex items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md px-1.5 py-0.5 font-mono text-[10px] font-bold tabular-nums',
                 isIdle && idleAccent.iconChip + ' border',
                 isCurrent && tone.chip + ' border',
@@ -277,7 +277,7 @@ const StepRow = ({
               {String(index).padStart(2, '0')}
             </span>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold break-keep',
                 isIdle && idleAccent.text,
                 isCurrent && tone.text,
@@ -288,7 +288,7 @@ const StepRow = ({
             </h3>
           </div>
           <p
-            className={cn(
+            className={cx(
               'mt-0.5 text-xxsm leading-relaxed break-keep',
               isIdle ? idleAccent.text : 'text-[var(--term-muted)]',
             )}

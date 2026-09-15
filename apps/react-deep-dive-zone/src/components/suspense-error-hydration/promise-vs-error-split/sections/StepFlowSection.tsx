@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Hourglass, TriangleAlert } from 'lucide-react';
 
 import type { PromiseVsErrorSplitContent } from '../content';
@@ -14,7 +13,7 @@ export const StepFlowSection = ({ content }: Props) => (
     <SectionHeader id="stepflow-heading" number={content.number} title={content.title} />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -29,7 +28,7 @@ export const StepFlowSection = ({ content }: Props) => (
               className="flex flex-col lg:flex-row lg:items-stretch lg:flex-1 gap-2"
             >
               <article
-                className={cn(
+                className={cx(
                   'flex flex-1 flex-col gap-2 rounded-2xl border-2 p-md',
                   'border-blue-200/80 bg-blue-50/40',
                   'dark:border-blue-800/60 dark:bg-blue-950/20',
@@ -68,7 +67,7 @@ export const StepFlowSection = ({ content }: Props) => (
             return (
               <article
                 key={res.badge}
-                className={cn(
+                className={cx(
                   'flex flex-col gap-1.5 rounded-2xl border-2 p-md',
                   accent.border,
                   accent.bg,
@@ -78,7 +77,7 @@ export const StepFlowSection = ({ content }: Props) => (
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                       accent.iconChip,
                     )}
@@ -86,7 +85,7 @@ export const StepFlowSection = ({ content }: Props) => (
                     <Icon className="h-4 w-4" />
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                       accent.chip,
                     )}
@@ -94,7 +93,7 @@ export const StepFlowSection = ({ content }: Props) => (
                     {res.badge}
                   </span>
                 </div>
-                <h3 className={cn('text-sm font-bold break-keep', accent.text)}>{res.title}</h3>
+                <h3 className={cx('text-sm font-bold break-keep', accent.text)}>{res.title}</h3>
                 <p className="text-xsm text-[var(--term-fg)] break-keep">{res.body}</p>
               </article>
             );

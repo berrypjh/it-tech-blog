@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Map } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -54,13 +53,13 @@ export const WhySplitArchitectureMap = ({ content, architecture }: Props) => {
                   <span className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-block w-1.5 h-1.5 rounded-full',
                         toneTokens[card.tone].dot,
                       )}
                     />
                     <h4
-                      className={cn(
+                      className={cx(
                         'text-sm font-bold font-mono tracking-tight',
                         toneTokens[card.tone].text,
                       )}

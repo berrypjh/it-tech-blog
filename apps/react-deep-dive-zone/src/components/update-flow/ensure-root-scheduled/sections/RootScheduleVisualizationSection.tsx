@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ListChecks, Network, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,26 +35,26 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
             return (
               <li
                 key={root.id}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-3 py-2 shadow-[0_2px_0_var(--term-border)]',
                   t.border,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                     t.chip,
                   )}
                 >
                   <Network className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span className={cn('text-xsm sm:text-sm font-bold font-mono', t.text)}>
+                <span className={cx('text-xsm sm:text-sm font-bold font-mono', t.text)}>
                   {root.title}
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn('ml-auto block h-2 w-2 rounded-full', t.dot)}
+                  className={cx('ml-auto block h-2 w-2 rounded-full', t.dot)}
                 />
               </li>
             );
@@ -81,7 +80,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
 
       {/* 우: Root Schedule Queue */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           sky.border,
         )}
@@ -90,14 +89,14 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
           <div className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 sky.chip,
               )}
             >
               <ListChecks className="h-4 w-4" aria-hidden="true" />
             </span>
-            <span className={cn('text-xsm sm:text-sm font-bold', sky.text)}>
+            <span className={cx('text-xsm sm:text-sm font-bold', sky.text)}>
               {content.rightTitle}
             </span>
           </div>
@@ -106,7 +105,7 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
           </span>
         </header>
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-2.5 py-1 font-mono text-sm sm:text-md font-bold',
             sky.border,
             sky.text,

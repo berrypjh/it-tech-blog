@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, Lightbulb, Target } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -78,7 +77,7 @@ const CompareCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -86,8 +85,8 @@ const CompareCard = ({
       )}
     >
       <ToneIconBox tone={tone}>{icon}</ToneIconBox>
-      <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{title}</code>
-      <p className={cn('text-xsm font-medium leading-snug break-keep', t.text)}>{subtitle}</p>
+      <code className={cx('font-mono text-md font-bold tracking-tight', t.text)}>{title}</code>
+      <p className={cx('text-xsm font-medium leading-snug break-keep', t.text)}>{subtitle}</p>
       <p className="mt-auto text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">
         {body}
       </p>
@@ -108,7 +107,7 @@ const ExampleCard = ({
   const same = ex.elementType === ex.type;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-sm sm:p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         same ? 'border-[var(--term-border)]' : toneTokens.amber.border,
@@ -119,7 +118,7 @@ const ExampleCard = ({
           {ex.code}
         </code>
         <span
-          className={cn(
+          className={cx(
             'shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold',
             same ? 'border-[var(--term-border)] text-[var(--term-muted)]' : toneTokens.amber.chip,
           )}
@@ -128,9 +127,9 @@ const ExampleCard = ({
         </span>
       </div>
       <dl className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[11.5px]">
-        <dt className={cn('font-mono font-bold', toneTokens.violet.text)}>elementType</dt>
+        <dt className={cx('font-mono font-bold', toneTokens.violet.text)}>elementType</dt>
         <dd className="font-mono text-[var(--term-fg)] break-all">{ex.elementType}</dd>
-        <dt className={cn('font-mono font-bold', toneTokens.amber.text)}>type</dt>
+        <dt className={cx('font-mono font-bold', toneTokens.amber.text)}>type</dt>
         <dd className="font-mono text-[var(--term-fg)] break-all">{ex.type}</dd>
       </dl>
     </article>

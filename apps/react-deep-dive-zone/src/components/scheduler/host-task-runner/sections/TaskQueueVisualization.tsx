@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ListOrdered, Package } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* Left: taskQueue (priorities) */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-blue-50/30',
           'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -31,7 +30,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               pkgIconBox.teal,
             )}
@@ -54,7 +53,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
             return (
               <li key={item.label} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border-2 p-3',
                     pkgPill[item.accent],
                   )}
@@ -82,7 +81,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
 
       {/* Right: current queue example */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -90,7 +89,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               pkgIconBox.blue,
             )}
@@ -108,7 +107,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
             return (
               <li key={item.label + i} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border-2 p-3',
                     pkgPill[item.accent],
                   )}
@@ -120,7 +119,7 @@ export const TaskQueueVisualization = ({ content }: Props) => (
                     #{String(i + 1).padStart(2, '0')}
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'font-mono text-xsm font-bold break-keep',
                       pkgTextStrong[item.accent],
                     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, HelpCircle, ListTree } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
 
       {/* Desktop table */}
       <div
-        className={cn(
+        className={cx(
           'hidden lg:block rounded-2xl border-2 overflow-hidden',
           'border-slate-200 dark:border-slate-700',
           'bg-white dark:bg-[var(--term-bg)]',
@@ -34,7 +33,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
       >
         <table className="w-full text-sm">
           <thead
-            className={cn(
+            className={cx(
               'border-b-2 border-slate-200 dark:border-slate-700',
               'bg-slate-50/80 dark:bg-slate-900/40',
             )}
@@ -72,7 +71,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
               return (
                 <tr
                   key={row.valueKey}
-                  className={cn(
+                  className={cx(
                     i !== 0 && 'border-t border-slate-200 dark:border-slate-800',
                     'transition-colors motion-safe:hover:bg-blue-50/40 dark:motion-safe:hover:bg-blue-950/20',
                   )}
@@ -87,7 +86,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
                   </td>
                   <td className="px-md py-3 align-top">
                     <p
-                      className={cn(
+                      className={cx(
                         'inline-flex items-start gap-1.5 text-xsm font-bold break-keep max-w-[34ch]',
                         t.text,
                       )}
@@ -98,7 +97,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
                   </td>
                   <td className="px-md py-3 align-top">
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1',
                         'border-[var(--term-border)] bg-[var(--term-surface)]',
                         'font-mono text-[11px] text-[var(--term-fg)]',
@@ -122,7 +121,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
           return (
             <li key={row.valueKey}>
               <article
-                className={cn(
+                className={cx(
                   'rounded-xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -143,7 +142,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
                     {content.questionLabel}
                   </dt>
                   <dd
-                    className={cn(
+                    className={cx(
                       'inline-flex items-start gap-1.5 text-xsm font-bold break-keep',
                       t.text,
                     )}
@@ -157,7 +156,7 @@ export const CoreClassificationTableSection = ({ content }: Props) => {
                   </dt>
                   <dd>
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1',
                         'border-[var(--term-border)] bg-[var(--term-surface)]',
                         'font-mono text-[11px] text-[var(--term-fg)]',

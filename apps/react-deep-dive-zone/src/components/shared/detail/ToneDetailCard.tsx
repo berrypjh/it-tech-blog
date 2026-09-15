@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ComponentProps } from 'react';
 
 import { ToneDetailPanel } from './ToneDetailPanel';
@@ -12,7 +11,7 @@ type Props = ComponentProps<typeof ToneDetailPanel> & { className?: string };
  */
 export const ToneDetailCard = ({ className, ...panel }: Props) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-xl border p-md sm:p-lg transition-all hover:-translate-y-0.5',
       'shadow-[0_2px_0_var(--term-border)]',
       'bg-[var(--term-surface)] border-[var(--term-border)]',

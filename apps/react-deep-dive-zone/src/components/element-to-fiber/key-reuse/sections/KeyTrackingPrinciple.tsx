@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Fingerprint } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -21,7 +20,7 @@ export const KeyTrackingPrinciple = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border p-md sm:p-lg lg:p-xl text-center',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -34,7 +33,7 @@ export const KeyTrackingPrinciple = ({ content }: Props) => (
           {content.pills.map((pill) => (
             <li key={pill}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-3 py-1',
                   'text-[11px] font-mono font-bold tracking-tight',
                   sky.chip,

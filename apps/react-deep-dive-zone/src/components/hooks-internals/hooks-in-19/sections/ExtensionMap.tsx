@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   Atom,
@@ -80,14 +79,14 @@ const FoundationRow = ({ item }: { item: FoundationItem }) => {
   const Icon = foundationIconMap[item.key as keyof typeof foundationIconMap] ?? Settings;
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-start gap-2.5 rounded-lg border bg-white p-2.5 dark:bg-slate-950/40',
         'border-[var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border',
           toneIconBox[item.tone],
         )}
@@ -96,7 +95,7 @@ const FoundationRow = ({ item }: { item: FoundationItem }) => {
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-[11px] sm:text-xsm font-bold break-all',
             toneText[item.tone],
           )}
@@ -115,7 +114,7 @@ const ApiOuterCard = ({ api }: { api: ApiHero }) => {
   const Icon = apiIconMap[api.key];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-2xl border-2 p-md transition-all',
         'shadow-[0_2px_0_var(--term-border)] motion-safe:hover:-translate-y-0.5',
         toneCardBg[api.tone],
@@ -124,14 +123,14 @@ const ApiOuterCard = ({ api }: { api: ApiHero }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
             toneIconBox[api.tone],
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <code className={cn('font-mono text-sm font-bold break-all', toneText[api.tone])}>
+        <code className={cx('font-mono text-sm font-bold break-all', toneText[api.tone])}>
           {api.title}
         </code>
       </header>
@@ -145,7 +144,7 @@ const ApiOuterCard = ({ api }: { api: ApiHero }) => {
 export const ExtensionMap = ({ content }: Props) => (
   <section
     aria-labelledby="heading-extension-map"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -181,7 +180,7 @@ export const ExtensionMap = ({ content }: Props) => (
 
       {/* Center foundation card */}
       <article
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-400/80 bg-blue-50/70 shadow-[0_3px_0_var(--term-border)]',
           'dark:border-blue-700/60 dark:bg-blue-950/30',

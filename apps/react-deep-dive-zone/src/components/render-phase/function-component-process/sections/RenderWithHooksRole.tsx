@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FunctionSquare, Lightbulb, Settings } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -42,7 +41,7 @@ export const RenderWithHooksRole = ({ content }: Props) => {
         {/* Right: FunctionComponent Fiber card */}
         <article
           aria-labelledby="fiber-card-title"
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-lg border p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
             t.border,
@@ -53,7 +52,7 @@ export const RenderWithHooksRole = ({ content }: Props) => {
               <FunctionSquare className="h-5 w-5" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider font-bold',
                 t.chip,
               )}
@@ -64,13 +63,13 @@ export const RenderWithHooksRole = ({ content }: Props) => {
 
           <h3
             id="fiber-card-title"
-            className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}
+            className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}
           >
             {content.fiberCard.title}
           </h3>
 
           <div className="flex items-baseline gap-2">
-            <span className={cn('text-xxsm font-mono uppercase tracking-wider', t.text)}>
+            <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>
               {content.fiberCard.tagLabel}
             </span>
             <code className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold text-[var(--term-fg)]">
@@ -79,13 +78,13 @@ export const RenderWithHooksRole = ({ content }: Props) => {
           </div>
 
           <div
-            className={cn(
+            className={cx(
               'flex items-center justify-center rounded-lg border border-dashed p-lg',
               t.fill.bg,
               t.fill.border,
             )}
           >
-            <code className={cn('font-mono text-3xl sm:text-4xl font-bold', t.fill.text)}>
+            <code className={cx('font-mono text-3xl sm:text-4xl font-bold', t.fill.text)}>
               {'f()'}
             </code>
           </div>

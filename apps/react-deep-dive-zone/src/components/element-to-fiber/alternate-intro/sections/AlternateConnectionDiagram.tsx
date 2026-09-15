@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Hexagon, Lightbulb, Link, Monitor, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -30,7 +29,7 @@ export const AlternateConnectionDiagram = ({ content }: Props) => (
 
     {/* Central vertical diagram */}
     <article
-      className={cn(
+      className={cx(
         'flex flex-col items-center justify-center gap-md rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -53,7 +52,7 @@ const DiagramNode = ({ variant, label }: { variant: FiberRole; label: string }) 
   const Icon = isCurrent ? Monitor : Workflow;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-2xl border-2 p-md min-w-[240px]',
         'shadow-[0_2px_0_var(--term-border)]',
         t.fill.bg,
@@ -64,16 +63,16 @@ const DiagramNode = ({ variant, label }: { variant: FiberRole; label: string }) 
         <Icon className="h-5 w-5" />
       </ToneIconBox>
       <div className="flex flex-col">
-        <span className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
+        <span className={cx('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
           {isCurrent ? 'current' : 'workInProgress'}
         </span>
-        <code className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
+        <code className={cx('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
           {label}
         </code>
       </div>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'ml-auto inline-flex items-center justify-center w-9 h-9 rounded-full border',
           t.chip,
         )}

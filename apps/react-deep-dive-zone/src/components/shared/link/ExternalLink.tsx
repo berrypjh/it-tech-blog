@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -23,7 +22,7 @@ export const ExternalLink = ({ href, children, className }: Props) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={cn(
+    className={cx(
       'group -mx-1 inline-flex items-center gap-1.5 rounded-md px-1 py-0.5 underline-offset-2 transition-colors',
       'hover:bg-[var(--term-accent-soft)] hover:text-[var(--term-accent)] hover:underline hover:decoration-2',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',

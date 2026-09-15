@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 export type ComparisonRow = {
   /** 첫 열(행 머리글) */
@@ -26,7 +26,7 @@ export const ComparisonTable = ({ headers, rows, caption, columnWidths, classNam
   const [, ...valueHeaders] = headers;
   return (
     <div
-      className={cn(
+      className={cx(
         'rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden',
         className,
       )}

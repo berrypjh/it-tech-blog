@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ServerComponentsContractContent } from '../content';
 import { CheckCircleIcon, PackageIcon, SparklesIcon } from '../icons';
@@ -21,7 +21,7 @@ export const ReactServerExportConditionSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_4fr)_minmax(0,_5fr)_minmax(0,_4fr)] lg:gap-md items-stretch">
       {/* LEFT: description card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-purple-200/80 bg-purple-50/30 dark:border-purple-700/70 dark:bg-purple-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -55,7 +55,7 @@ export const ReactServerExportConditionSection = ({ content }: Props) => (
 
       {/* RIGHT: explanation */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/30 dark:border-teal-700/70 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

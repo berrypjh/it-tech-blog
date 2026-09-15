@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Lightbulb, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ export const CommitMiniQuizSection = ({ content }: Props) => (
     </div>
 
     <aside
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border-2 p-md sm:p-lg',
         toneTokens.amber.fill.border,
         toneTokens.amber.fill.bg,
@@ -43,7 +42,7 @@ export const CommitMiniQuizSection = ({ content }: Props) => (
         <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <p
-        className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.amber.fill.text)}
+        className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.amber.fill.text)}
       >
         {content.explanation}
       </p>
@@ -63,7 +62,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, children }: QuizCardProps) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -74,7 +73,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, children }: QuizCardProps) => {
         <div className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-lg border font-mono font-bold',
               t.fill.bg,
               t.fill.border,
@@ -83,14 +82,14 @@ const QuizCard = ({ tone, eyebrow, badge, icon, children }: QuizCardProps) => {
           >
             {badge}
           </span>
-          <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+          <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
             {eyebrow}
           </span>
         </div>
         {icon && (
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-full border',
               t.chip,
             )}
@@ -99,7 +98,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, children }: QuizCardProps) => {
           </span>
         )}
       </header>
-      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {children}
       </p>
     </article>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Network } from 'lucide-react';
 
 import { DownArrow } from '../../../shared/icon';
@@ -26,7 +25,7 @@ export const RootCurrentStructure = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -51,12 +50,12 @@ const StepBox = ({ step }: { step: Step }) => {
   const t = step.tone ? toneTokens[step.tone] : null;
   return (
     <article
-      className={cn(
+      className={cx(
         'min-w-[180px] rounded-xl border px-4 py-2 text-center bg-[var(--term-surface)]',
         t ? t.border : 'border-[var(--term-border)]',
       )}
     >
-      <code className={cn('font-mono text-xsm font-bold', t ? t.text : 'text-[var(--term-fg)]')}>
+      <code className={cx('font-mono text-xsm font-bold', t ? t.text : 'text-[var(--term-fg)]')}>
         {step.label}
       </code>
       {step.subtitle && (

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -87,7 +86,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
 
       {/* Insight */}
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.sky.fill.border,
           toneTokens.sky.fill.bg,
@@ -97,7 +96,7 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
           <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.sky.fill.text,
           )}
@@ -114,7 +113,7 @@ const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => 
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -125,7 +124,7 @@ const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => 
           <Icon className="h-4 w-4" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-6 w-6 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
             t.chip,
           )}
@@ -133,7 +132,7 @@ const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => 
           {index}
         </span>
       </header>
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
       <p className="text-[10.5px] sm:text-[11px] leading-snug text-[var(--term-muted)] break-keep">
@@ -155,7 +154,7 @@ const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
         <Fragment key={step.label}>
           <li>
             <code
-              className={cn(
+              className={cx(
                 'inline-block rounded-md border px-2 py-1 text-[11px] font-mono break-all',
                 toneTokens[step.tone].chip,
               )}

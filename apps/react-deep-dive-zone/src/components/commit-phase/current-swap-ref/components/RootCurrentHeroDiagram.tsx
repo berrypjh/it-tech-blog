@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { History, Rocket, TreePine } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const RootCurrentHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -91,7 +90,7 @@ const TreeCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -102,9 +101,9 @@ const TreeCard = ({
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <span className="flex items-center gap-2">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
           <span
-            className={cn(
+            className={cx(
               'shrink-0 rounded-md border px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider',
               t.chip,
             )}
@@ -131,20 +130,20 @@ const Timeline = ({ items }: { items: CommitTimelineItem[] }) => (
       return (
         <li
           key={item.key}
-          className={cn(
+          className={cx(
             'flex flex-1 min-w-[110px] items-center gap-1.5 rounded-md border px-2 py-1.5',
-            item.active ? cn(t.chip, t.border) : 'border-[var(--term-border)] bg-[var(--term-bg)]',
+            item.active ? cx(t.chip, t.border) : 'border-[var(--term-border)] bg-[var(--term-bg)]',
           )}
         >
           <span
-            className={cn(
+            className={cx(
               'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
               item.active ? t.dot : 'bg-[var(--term-dim)]',
             )}
           />
           <span className="flex min-w-0 flex-col">
             <span
-              className={cn(
+              className={cx(
                 'text-[10px] font-bold leading-tight break-keep',
                 item.active ? t.text : 'text-[var(--term-fg)]',
               )}

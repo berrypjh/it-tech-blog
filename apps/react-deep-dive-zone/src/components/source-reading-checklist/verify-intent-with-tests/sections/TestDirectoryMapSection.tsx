@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, FolderTree, ScanSearch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -62,7 +61,7 @@ const DirCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
         'bg-white dark:bg-[var(--term-bg)]',
         'shadow-[0_3px_0_var(--term-border)]',
@@ -74,7 +73,7 @@ const DirCard = ({
       {isSpotlight && (
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'absolute top-0 right-0 px-3 py-1 rounded-bl-xl',
             t.chip,
             'border-l border-b',
@@ -89,7 +88,7 @@ const DirCard = ({
       <header className="flex items-center gap-2 mb-md">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border-2',
             t.border,
             t.chip,
@@ -99,7 +98,7 @@ const DirCard = ({
           <FolderTree className="h-4 w-4" aria-hidden="true" />
         </span>
         <code
-          className={cn(
+          className={cx(
             'flex-1 overflow-x-auto rounded-md border px-2.5 py-1.5',
             t.border,
             t.chip,
@@ -111,7 +110,7 @@ const DirCard = ({
       </header>
 
       <div
-        className={cn(
+        className={cx(
           isSpotlight
             ? 'grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg'
             : 'flex flex-col gap-md',
@@ -130,7 +129,7 @@ const DirCard = ({
         {/* Reading point + keywords */}
         <div className="flex flex-col gap-md">
           <div className="flex items-start gap-2 rounded-md border border-dashed p-3 border-[var(--term-border)] bg-[var(--term-surface)]">
-            <ScanSearch className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+            <ScanSearch className={cx('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
             <div className="flex flex-col">
               <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                 {labels.readingPointLabel}
@@ -149,7 +148,7 @@ const DirCard = ({
               {dir.keywords.map((kw) => (
                 <li key={kw}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1 rounded-md border px-2 py-0.5',
                       t.border,
                       'bg-white dark:bg-[var(--term-bg)]',

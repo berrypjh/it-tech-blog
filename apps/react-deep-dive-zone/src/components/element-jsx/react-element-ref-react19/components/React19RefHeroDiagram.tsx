@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -51,7 +50,7 @@ const FlowGroup = ({
   return (
     <section className="flex flex-col gap-sm">
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
           modern ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
         )}
@@ -73,20 +72,20 @@ const FlowGroup = ({
 
 const StepChip = ({ label, modern }: { label: string; modern: boolean }) => (
   <article
-    className={cn(
+    className={cx(
       'flex min-w-0 items-center gap-2 rounded-xl border border-[var(--term-border)] px-md py-2 bg-[var(--term-bg)]',
       'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
     )}
   >
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
         modern ? 'bg-[var(--term-accent)]' : 'bg-[var(--term-muted)]',
       )}
     />
     <span
-      className={cn(
+      className={cx(
         'min-w-0 truncate text-[11px] font-bold font-mono tracking-tight',
         modern ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
       )}

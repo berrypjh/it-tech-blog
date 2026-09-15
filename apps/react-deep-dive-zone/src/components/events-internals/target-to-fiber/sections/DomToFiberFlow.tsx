@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Workflow } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -50,7 +49,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
           return (
             <li key={step.label} className="flex flex-col">
               <div
-                className={cn(
+                className={cx(
                   'group flex items-center gap-3 rounded-2xl border-2 px-md py-3 transition-all',
                   'hover:-translate-y-0.5 motion-reduce:transform-none',
                   tonePill[step.tone],
@@ -58,7 +57,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full',
                     'text-[10px] font-mono font-bold tabular-nums',
                     toneNumber[step.tone],
@@ -85,7 +84,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
         {content.steps.map((step, i) => (
           <li
             key={step.label}
-            className={cn(
+            className={cx(
               'group flex items-start gap-3 rounded-2xl border bg-[var(--term-bg)] px-md py-3 transition-colors',
               'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
               'hover:border-blue-300/70 dark:hover:border-blue-700/70',
@@ -93,7 +92,7 @@ export const DomToFiberFlow = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full',
                 'text-[10px] font-mono font-bold tabular-nums',
                 toneNumber[step.tone],

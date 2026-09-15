@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRightLeft, CheckCircle2, FileText, Key } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const KeyPropsSeparation = ({ content }: Props) => (
       {/* Center badge (desktop, 카드 사이 전용 컬럼) */}
       <div aria-hidden="true" className="hidden lg:flex items-center justify-center -mx-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-14 h-14 rounded-full text-center shrink-0',
             'bg-[var(--term-bg)] border-2 border-[var(--term-border)] shadow-md',
             'text-[10px] font-extrabold text-[var(--term-fg)] tracking-tight whitespace-pre-line leading-tight',
@@ -47,7 +46,7 @@ export const KeyPropsSeparation = ({ content }: Props) => (
     {/* mobile center badge */}
     <div className="flex justify-center lg:hidden -mt-2" aria-hidden="true">
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center px-3 py-1 rounded-full',
           'bg-[var(--term-bg)] border-2 border-[var(--term-border)] shadow-md',
           'text-[10px] font-extrabold text-[var(--term-fg)] tracking-tight',
@@ -63,7 +62,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -72,7 +71,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             toneTokens[card.tone].chip,
           )}
@@ -81,7 +80,7 @@ const CardView = ({ card }: { card: SeparationCard }) => {
         </span>
         <div className="flex flex-col gap-0.5 min-w-0">
           <code
-            className={cn('font-mono text-md font-bold tracking-tight', toneTokens[card.tone].text)}
+            className={cx('font-mono text-md font-bold tracking-tight', toneTokens[card.tone].text)}
           >
             {card.title}
           </code>

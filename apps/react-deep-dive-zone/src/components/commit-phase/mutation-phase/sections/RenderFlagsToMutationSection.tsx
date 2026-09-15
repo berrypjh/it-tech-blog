@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Flag, Workflow, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,9 +35,9 @@ export const RenderFlagsToMutationSection = ({ content }: Props) => (
 const Arrow = () => {
   const t = toneTokens.teal;
   return (
-    <div aria-hidden="true" className={cn('flex items-center justify-center py-1 md:py-0', t.text)}>
+    <div aria-hidden="true" className={cx('flex items-center justify-center py-1 md:py-0', t.text)}>
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -58,7 +57,7 @@ const ConnCard = ({ card }: { card: ConnectionCard }) => {
   const Icon = isRender ? Flag : Zap;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -70,7 +69,7 @@ const ConnCard = ({ card }: { card: ConnectionCard }) => {
           <Icon className="h-5 w-5" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -78,22 +77,22 @@ const ConnCard = ({ card }: { card: ConnectionCard }) => {
           {isRender ? 'plan' : 'execute'}
         </span>
       </header>
-      <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         {card.title}
       </h3>
-      <p className={cn('text-xsm font-bold break-keep', t.text)}>{card.subtitle}</p>
+      <p className={cx('text-xsm font-bold break-keep', t.text)}>{card.subtitle}</p>
       <ul className="flex flex-col gap-1.5 mt-1">
         {card.lines.map((line) => (
           <li
             key={line}
-            className={cn(
+            className={cx(
               'flex items-center gap-2 text-xsm sm:text-sm leading-snug break-keep',
               t.fill.text,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+              className={cx('inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
             />
             <span className={isRender ? 'font-mono' : undefined}>{line}</span>
           </li>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cpu, Package, ScanSearch } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ const ColumnHeader = ({
   <div className="flex items-center gap-2">
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
         pkgIconBox[accent],
       )}
@@ -28,7 +27,7 @@ const ColumnHeader = ({
       {icon}
     </span>
     <span
-      className={cn('text-xsm sm:text-sm font-bold break-keep font-mono', pkgTextStrong[accent])}
+      className={cx('text-xsm sm:text-sm font-bold break-keep font-mono', pkgTextStrong[accent])}
     >
       {title}
     </span>
@@ -47,7 +46,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
 
     {/* DESKTOP table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}

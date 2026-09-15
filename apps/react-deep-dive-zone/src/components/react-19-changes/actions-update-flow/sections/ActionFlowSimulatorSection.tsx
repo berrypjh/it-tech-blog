@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent, SimulatorScenario } from '../content';
 import {
@@ -47,7 +47,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -77,7 +77,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setScenario(sc.key)}
-                    className={cn(
+                    className={cx(
                       'group flex flex-col items-start gap-1 rounded-xl border-2 p-3 text-left',
                       'transition-all motion-safe:hover:-translate-y-0.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -85,7 +85,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                         ? isFailure
                           ? 'border-rose-500 bg-rose-600 text-white dark:bg-rose-500 dark:border-rose-400'
                           : 'border-emerald-500 bg-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-400'
-                        : cn(
+                        : cx(
                             'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',
                             'border-slate-200 dark:border-slate-700',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -103,7 +103,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                       </div>
                       <ChevronRightIcon
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'h-3.5 w-3.5 shrink-0 transition-transform',
                           isActive
                             ? 'translate-x-0.5'
@@ -112,7 +112,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                       />
                     </div>
                     <p
-                      className={cn(
+                      className={cx(
                         'text-xxsm leading-relaxed break-keep',
                         isActive ? 'text-white/85' : 'text-[var(--term-muted)]',
                       )}
@@ -142,18 +142,18 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                 return (
                   <li key={step.title}>
                     <article
-                      className={cn(
+                      className={cx(
                         'h-full flex flex-col gap-1.5 rounded-xl border-2 p-3',
                         'transition-colors duration-300',
                         isRollback
-                          ? cn(danger.border, danger.bg)
-                          : cn(tone.border, 'bg-white dark:bg-[var(--term-bg)]'),
+                          ? cx(danger.border, danger.bg)
+                          : cx(tone.border, 'bg-white dark:bg-[var(--term-bg)]'),
                       )}
                     >
                       <div className="flex items-center gap-2">
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-6 w-6 items-center justify-center rounded-md border font-mono text-[10px] font-bold tabular-nums',
                             isRollback ? danger.iconChip : tone.iconChip,
                           )}
@@ -162,7 +162,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                         </span>
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-5 w-5 items-center justify-center rounded-full',
                             isRollback ? danger.iconChip : tone.iconChip,
                             'border',
@@ -178,7 +178,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                         </span>
                       </div>
                       <h4
-                        className={cn(
+                        className={cx(
                           'text-xsm font-bold break-keep',
                           isRollback ? danger.text : tone.text,
                         )}
@@ -196,16 +196,16 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
 
             {/* note bar */}
             <div
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-xl border-2 px-3 py-2.5',
                 scenario === 'failure'
-                  ? cn(danger.border, danger.bg)
+                  ? cx(danger.border, danger.bg)
                   : 'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border',
                   scenario === 'failure'
                     ? danger.iconChip
@@ -219,7 +219,7 @@ export const ActionFlowSimulatorSection = ({ content }: Props) => {
                 )}
               </span>
               <p
-                className={cn(
+                className={cx(
                   'text-xsm leading-relaxed break-keep',
                   scenario === 'failure' ? danger.text : 'text-blue-700 dark:text-blue-200',
                 )}

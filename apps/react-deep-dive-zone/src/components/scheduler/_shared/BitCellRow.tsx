@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { LaneAccent, LaneBitRange } from '../lane-shape/content';
 
@@ -60,7 +60,7 @@ export const BitCellRow = ({
     <div
       role="img"
       aria-label={srLabel ?? `bitmask ${bits}`}
-      className={cn(
+      className={cx(
         'inline-flex flex-wrap items-center font-mono tabular-nums',
         gapMap[size],
         className,
@@ -73,7 +73,7 @@ export const BitCellRow = ({
           <span
             key={i}
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center rounded border font-bold',
               sizeMap[size],
               isOn

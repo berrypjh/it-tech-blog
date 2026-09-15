@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Braces, Network } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -75,7 +74,7 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-breakdown"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -102,7 +101,7 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
                   return (
                     <div
                       key={i}
-                      className={cn(
+                      className={cx(
                         'flex',
                         isHighlight && 'bg-cyan-500/15 border-l-2 border-cyan-400 -ml-px pl-[5px]',
                       )}
@@ -142,7 +141,7 @@ export const FiberStructureBreakdown = ({ content }: Props) => {
               return (
                 <li key={node.label} className="flex flex-col gap-1.5">
                   <article
-                    className={cn(
+                    className={cx(
                       'flex items-center justify-between gap-2 rounded-xl border-2 px-md py-2.5',
                       toneCard[node.tone],
                     )}

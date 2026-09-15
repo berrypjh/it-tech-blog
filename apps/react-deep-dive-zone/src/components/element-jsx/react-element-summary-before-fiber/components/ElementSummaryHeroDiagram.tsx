@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Code, FileText, Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -39,11 +38,11 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 items-start gap-sm rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         item.highlighted
-          ? cn(toneTokens[item.tone].border, '@sm:shadow-[0_3px_0_var(--term-border)]')
+          ? cx(toneTokens[item.tone].border, '@sm:shadow-[0_3px_0_var(--term-border)]')
           : 'border-[var(--term-border)]',
       )}
     >
@@ -53,7 +52,7 @@ const FlowBox = ({ item }: { item: HeroFlowItem }) => {
       <div className="flex min-w-0 flex-col gap-1">
         <span className="flex min-w-0 items-center gap-2">
           <span
-            className={cn(
+            className={cx(
               'min-w-0 truncate font-mono text-sm font-bold tracking-tight',
               toneTokens[item.tone].text,
             )}

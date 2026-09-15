@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MetadataResourceContent } from '../content';
 import { TriangleAlertIcon } from '../icons';
@@ -24,7 +24,7 @@ export const PreviousHeadManagementProblems = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                 'border-rose-200/80 bg-rose-50/40 dark:border-rose-800/70 dark:bg-rose-950/30',
                 'shadow-[0_2px_0_var(--term-border)]',

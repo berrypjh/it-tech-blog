@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RefAsPropElementShapeContent } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -22,7 +22,7 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
       )}
@@ -35,7 +35,7 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
           <Fragment key={step.title}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
                   tone.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -47,7 +47,7 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                       tone.iconChip,
                     )}
@@ -56,7 +56,7 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       tone.chip,
                     )}
@@ -65,13 +65,13 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
                   </span>
                 </div>
 
-                <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                   {step.title}
                 </h3>
 
                 {step.code && (
                   <pre
-                    className={cn(
+                    className={cx(
                       'overflow-x-auto rounded-lg border-2 bg-slate-950 px-2 py-1.5',
                       'border-teal-700/60',
                       'text-[11px] leading-relaxed',
@@ -91,7 +91,7 @@ export const PropsRefSourceOfTruthFlow = ({ content }: Props) => (
             {!isLast && (
               <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                     tone.iconChip,
                   )}

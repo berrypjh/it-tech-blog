@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Boxes, Code2, Network } from 'lucide-react';
 
@@ -61,7 +60,7 @@ export const WithExtraColumn: Story = {
             {['ReactElement.js', 'ReactFiber.js'].map((f) => (
               <li key={f}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center px-2 py-0.5 rounded border text-[10px] font-mono font-bold break-all',
                     stepChip,
                   )}

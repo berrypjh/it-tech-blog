@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   AlertTriangle,
   ArrowDown,
@@ -44,7 +43,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
         <div className="flex flex-col gap-md">
           {/* Main concept */}
           <article
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-cyan-300 bg-gradient-to-br from-cyan-50/80 via-white to-blue-50/40',
               'dark:border-cyan-700/70 dark:from-cyan-950/40 dark:via-[var(--term-bg)] dark:to-blue-950/30',
@@ -54,7 +53,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
             <div className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2',
                   'border-cyan-300 bg-white text-cyan-700',
                   'dark:border-cyan-700/70 dark:bg-[var(--term-bg)] dark:text-cyan-200',
@@ -71,7 +70,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
 
           {/* Flow diagram */}
           <div
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-slate-200 bg-white shadow-[0_2px_0_var(--term-border)]',
               'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -85,28 +84,28 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
                 return (
                   <Fragment key={step.label}>
                     <li
-                      className={cn(
+                      className={cx(
                         'group flex items-center gap-3 rounded-xl border-2 p-3',
                         'bg-white dark:bg-[var(--term-bg)]',
                         step.emphasize
-                          ? cn(t.border, t.chip, 'shadow-[0_2px_0_var(--term-border)]')
-                          : cn(t.border, 'border-dashed'),
+                          ? cx(t.border, t.chip, 'shadow-[0_2px_0_var(--term-border)]')
+                          : cx(t.border, 'border-dashed'),
                       )}
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2',
                           'font-mono text-[11px] font-bold tabular-nums',
                           step.emphasize
-                            ? cn(t.border, 'bg-white dark:bg-[var(--term-bg)]', t.text)
-                            : cn(t.chip),
+                            ? cx(t.border, 'bg-white dark:bg-[var(--term-bg)]', t.text)
+                            : cx(t.chip),
                         )}
                       >
                         {i + 1}
                       </span>
                       <code
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold break-keep',
                           step.emphasize ? t.text : 'text-[var(--term-fg)]',
                         )}
@@ -116,7 +115,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
                     </li>
                     {!isLast && (
                       <span aria-hidden="true" className="flex items-center justify-center py-1">
-                        <ArrowDown className={cn('h-4 w-4', 'text-cyan-500')} aria-hidden="true" />
+                        <ArrowDown className={cx('h-4 w-4', 'text-cyan-500')} aria-hidden="true" />
                       </span>
                     )}
                   </Fragment>
@@ -134,7 +133,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
             return (
               <li key={card.id}>
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex flex-col gap-2 rounded-xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     t.border,
@@ -146,14 +145,14 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                         t.chip,
                       )}
                     >
                       <Icon className="h-4 w-4" />
                     </span>
-                    <h4 className={cn('text-sm sm:text-md font-bold break-keep', t.text)}>
+                    <h4 className={cx('text-sm sm:text-md font-bold break-keep', t.text)}>
                       {card.title}
                     </h4>
                   </div>
@@ -169,7 +168,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
 
       {/* Bridge banner */}
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -179,7 +178,7 @@ export const ResolveDispatcherSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-cyan-400/60 bg-cyan-500/15 text-cyan-200',
           )}

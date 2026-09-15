@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { SeparationCard, UseEffectEventContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, SplitIcon } from '../icons';
@@ -27,7 +27,7 @@ export const EffectEventSeparationSection = ({ content }: Props) => (
       <div className="flex lg:flex-col items-center justify-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed',
             'border-blue-400 bg-blue-50 text-blue-700',
             'dark:border-blue-600 dark:bg-blue-950/40 dark:text-blue-200',
@@ -64,7 +64,7 @@ const SeparationItem = ({ card }: { card: SeparationCard }) => {
   const Icon = iconRegistry[card.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
         tone.borderStrong,
         tone.bg,
@@ -74,14 +74,14 @@ const SeparationItem = ({ card }: { card: SeparationCard }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
             tone.iconChip,
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-md sm:text-lg font-bold break-keep', tone.text)}>{card.title}</h3>
+        <h3 className={cx('text-md sm:text-lg font-bold break-keep', tone.text)}>{card.title}</h3>
       </header>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -92,7 +92,7 @@ const SeparationItem = ({ card }: { card: SeparationCard }) => {
         {card.items.map((item) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-lg border px-3 py-2',
               'bg-white dark:bg-[var(--term-bg)]',
               tone.border,
@@ -100,7 +100,7 @@ const SeparationItem = ({ card }: { card: SeparationCard }) => {
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 block h-1.5 w-1.5 rounded-full', tone.dot)}
+              className={cx('mt-1.5 block h-1.5 w-1.5 rounded-full', tone.dot)}
             />
             <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">{item}</span>
           </li>

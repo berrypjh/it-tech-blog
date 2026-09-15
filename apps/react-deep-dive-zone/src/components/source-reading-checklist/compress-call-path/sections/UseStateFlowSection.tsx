@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cable, Compass, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
         <div className="flex flex-col gap-md">
           {/* One-line summary */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-blue-300 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/40',
               'dark:border-blue-700/70 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-cyan-950/30',
@@ -39,7 +38,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
             <div className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
                   'border border-blue-300 bg-white text-blue-700',
                   'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
@@ -55,7 +54,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
 
           {/* Related note */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-xl border-2 p-md',
               'border-emerald-200 bg-emerald-50/40',
               'dark:border-emerald-800/60 dark:bg-emerald-950/20',
@@ -64,7 +63,7 @@ export const UseStateFlowSection = ({ content }: Props) => {
             <div className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md',
                   'border border-emerald-300 bg-white text-emerald-700',
                   'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',

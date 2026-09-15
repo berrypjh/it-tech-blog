@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Fingerprint, Flag, Layers, ListTree, Network } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -50,7 +49,7 @@ const AreaCard = ({ area, number }: { area: FieldArea; number: string }) => {
   const Icon = iconMap[area.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 items-start gap-md rounded-2xl border p-md',
         'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',

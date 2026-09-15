@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Fingerprint, Key, LayoutPanelTop, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -53,7 +52,7 @@ const FieldCard = ({ callout }: { callout: HeroCallout }) => {
   const Icon = fieldIcon[callout.field] ?? Box;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 min-w-0 items-start gap-sm rounded-xl border bg-[var(--term-surface)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -64,14 +63,14 @@ const FieldCard = ({ callout }: { callout: HeroCallout }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-[11px] font-mono font-bold tracking-tight',
             toneTokens[callout.tone].chip,
           )}
         >
           {callout.field}
         </span>
-        <h3 className={cn('text-sm font-bold tracking-tight', toneTokens[callout.tone].text)}>
+        <h3 className={cx('text-sm font-bold tracking-tight', toneTokens[callout.tone].text)}>
           {callout.label}
         </h3>
       </div>

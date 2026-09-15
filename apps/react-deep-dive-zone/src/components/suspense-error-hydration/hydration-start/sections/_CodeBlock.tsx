@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   code: string;
@@ -112,7 +112,7 @@ export const CodeBlock = ({
   const dark = variant === 'dark';
   return (
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-xl border',
         dark ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-slate-50',
         className,
@@ -120,7 +120,7 @@ export const CodeBlock = ({
     >
       {fileLabel && (
         <div
-          className={cn(
+          className={cx(
             'flex items-center justify-between gap-2 border-b px-3 py-2',
             dark ? 'border-slate-800' : 'border-slate-200',
           )}
@@ -130,7 +130,7 @@ export const CodeBlock = ({
             <span aria-hidden="true" className="block h-2 w-2 rounded-full bg-amber-300/80" />
             <span aria-hidden="true" className="block h-2 w-2 rounded-full bg-emerald-400/80" />
             <span
-              className={cn(
+              className={cx(
                 'ml-2 text-[10px] font-mono uppercase tracking-wider',
                 dark ? 'text-slate-500' : 'text-slate-500',
               )}
@@ -139,7 +139,7 @@ export const CodeBlock = ({
             </span>
           </div>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider',
               dark ? 'text-slate-500' : 'text-slate-500',
             )}
@@ -157,7 +157,7 @@ export const CodeBlock = ({
                 {withLineNumbers && (
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'select-none w-7 shrink-0 pr-3 text-right tabular-nums',
                       dark ? 'text-slate-600' : 'text-slate-400',
                     )}

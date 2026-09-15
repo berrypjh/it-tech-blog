@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Anchor, ArrowRight, Component, HelpCircle, Send } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -46,7 +45,7 @@ const ConnectionCardItem = ({ card }: { card: ConnectionCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -56,12 +55,12 @@ const ConnectionCardItem = ({ card }: { card: ConnectionCard }) => {
       <ToneIconBox tone={card.tone}>
         <Icon className="h-6 w-6" />
       </ToneIconBox>
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
-      <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>{card.subtitle}</p>
+      <h3 className={cx('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+      <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>{card.subtitle}</p>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
       <Link
         href={card.buttonHref}
-        className={cn(
+        className={cx(
           'mt-auto group inline-flex w-fit items-center gap-2 rounded-md border px-3 py-2',
           'text-xsm font-bold tracking-tight',
           'transition-colors hover:bg-[var(--term-surface)]',

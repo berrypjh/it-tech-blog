@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ListTree } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
             <Fragment key={card.number}>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     t.border,
@@ -42,7 +41,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
                   <div className="flex items-center justify-between gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 items-center justify-center rounded-full border-2',
                         t.border,
                         t.chip,
@@ -54,7 +53,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
                     <StepBadge kind={card.kind} size="sm" />
                   </div>
 
-                  <h3 className={cn('text-md font-bold leading-snug break-keep', t.text)}>
+                  <h3 className={cx('text-md font-bold leading-snug break-keep', t.text)}>
                     {card.title}
                   </h3>
 
@@ -70,7 +69,7 @@ export const CompressionRulesSection = ({ content }: Props) => {
                       {card.examples.map((ex) => (
                         <li key={ex}>
                           <code
-                            className={cn(
+                            className={cx(
                               'inline-flex items-center rounded-md border px-1.5 py-0.5',
                               t.border,
                               'bg-white dark:bg-[var(--term-bg)]',

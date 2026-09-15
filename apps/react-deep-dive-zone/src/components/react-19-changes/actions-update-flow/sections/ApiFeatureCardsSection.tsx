@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent } from '../content';
 import { CheckCircleIcon } from '../icons';
@@ -25,7 +25,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
         return (
           <li key={card.hookName} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col overflow-hidden rounded-2xl border-2',
                 'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -37,7 +37,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
               {/* top accent line */}
               <span
                 aria-hidden="true"
-                className={cn('block h-1 w-full', tone.solidBg, 'opacity-80')}
+                className={cx('block h-1 w-full', tone.solidBg, 'opacity-80')}
               />
 
               <div className="flex flex-col gap-sm p-md sm:p-lg">
@@ -46,7 +46,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center rounded-md px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
                         tone.chip,
                         'border',
@@ -55,7 +55,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
                       {card.number}
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase',
                         tone.chip,
                       )}
@@ -65,7 +65,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
                   </div>
                 </div>
 
-                <h3 className={cn('text-md sm:text-lg font-mono font-bold break-all', tone.text)}>
+                <h3 className={cx('text-md sm:text-lg font-mono font-bold break-all', tone.text)}>
                   {card.hookName}()
                 </h3>
 
@@ -81,7 +81,7 @@ export const ApiFeatureCardsSection = ({ content }: Props) => (
                     >
                       <CheckCircleIcon
                         aria-hidden="true"
-                        className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
+                        className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
                       />
                       <span>{p}</span>
                     </li>

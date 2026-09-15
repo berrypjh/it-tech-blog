@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { CheckCircleIcon, ServerIcon, SparklesIcon, XCircleIcon } from '../icons';
@@ -20,7 +20,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_5fr)_minmax(0,_5fr)_minmax(0,_4fr)] lg:gap-md items-stretch">
       {/* Before */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-rose-200/80 bg-rose-50/40 dark:border-rose-800/70 dark:bg-rose-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -40,7 +40,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
         {/* Server stream */}
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           )}
@@ -71,7 +71,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
         {/* Client */}
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-rose-200/80 bg-rose-50/40 dark:border-rose-700/70 dark:bg-rose-950/30',
           )}
@@ -93,7 +93,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
       {/* After */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/70 dark:bg-teal-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -113,7 +113,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
         {/* Server stream */}
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           )}
@@ -144,7 +144,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
         {/* Client */}
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-teal-200/80 bg-teal-50/40 dark:border-teal-700/70 dark:bg-teal-950/30',
           )}
@@ -165,7 +165,7 @@ export const SuspenseBatchingSection = ({ content }: Props) => (
 
       {/* Expected effects */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
           'shadow-[0_2px_0_var(--term-border)]',

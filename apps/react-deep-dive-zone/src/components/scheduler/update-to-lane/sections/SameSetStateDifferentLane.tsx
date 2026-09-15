@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, GitFork, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
 
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
@@ -74,7 +73,7 @@ const Card = ({ card, index }: { card: SameSetStateCard; index: number }) => {
   const lines = card.code.split('\n');
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-colors',
         'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -85,7 +84,7 @@ const Card = ({ card, index }: { card: SameSetStateCard; index: number }) => {
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
               axisIconBox[card.accent],
             )}
@@ -94,7 +93,7 @@ const Card = ({ card, index }: { card: SameSetStateCard; index: number }) => {
           </span>
           <div className="flex flex-col gap-0.5">
             <span
-              className={cn(
+              className={cx(
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 axisTextStrong[card.accent],
               )}
@@ -116,7 +115,7 @@ const Card = ({ card, index }: { card: SameSetStateCard; index: number }) => {
 
       {/* code box - light theme */}
       <div
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-xl border bg-[var(--term-bg)]',
           'border-[var(--term-border)] shadow-inner',
         )}
@@ -153,13 +152,13 @@ const Card = ({ card, index }: { card: SameSetStateCard; index: number }) => {
           assigned lane
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center self-start gap-2 rounded-xl border-2 px-3 py-2',
             'font-mono text-xsm sm:text-sm font-bold',
             axisPill[card.accent],
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block h-2 w-2 rounded-full bg-current')} />
+          <span aria-hidden="true" className={cx('inline-block h-2 w-2 rounded-full bg-current')} />
           {card.assignedLane}
         </span>
       </div>

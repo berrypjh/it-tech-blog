@@ -2,8 +2,7 @@
 
 import { type ComponentType, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   AlertTriangle,
   Check,
@@ -78,7 +77,7 @@ export const VisualSimulation = ({ content }: Props) => {
         <button
           type="button"
           onClick={shuffle}
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center gap-2 rounded-lg border-2 px-md py-2.5',
             'font-mono text-xsm font-bold',
             'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -129,7 +128,7 @@ const Column = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.fill.border,
@@ -140,7 +139,7 @@ const Column = ({
           <Icon className="h-4 w-4" />
         </ToneIconBox>
         <div className="flex flex-col">
-          <span className={cn('text-sm font-bold tracking-tight', t.text)}>{title}</span>
+          <span className={cx('text-sm font-bold tracking-tight', t.text)}>{title}</span>
           <code className="font-mono text-[11px] text-[var(--term-muted)]">{code}</code>
         </div>
       </header>
@@ -158,7 +157,7 @@ const Column = ({
       </ul>
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto flex items-start gap-2 rounded-lg border px-sm py-2',
           'text-xsm font-bold leading-snug break-keep',
           t.chip,
@@ -179,13 +178,13 @@ const Row = ({ tone, label, defaultChecked, selectedLabel }: RowProps) => {
 
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border px-sm py-2 transition-colors',
         checked ? t.chip : 'border-[var(--term-border)] bg-[var(--term-bg)]',
       )}
     >
       {checked ? (
-        <Check className={cn('h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+        <Check className={cx('h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
       ) : (
         <span
           aria-hidden="true"
@@ -193,7 +192,7 @@ const Row = ({ tone, label, defaultChecked, selectedLabel }: RowProps) => {
         />
       )}
       <code
-        className={cn(
+        className={cx(
           'font-mono text-sm font-extrabold',
           checked ? t.text : 'text-[var(--term-fg)]',
         )}

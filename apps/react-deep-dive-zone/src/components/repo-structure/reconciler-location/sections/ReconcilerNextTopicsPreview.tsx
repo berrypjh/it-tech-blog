@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -73,7 +72,7 @@ const PreviewCardItem = ({ card }: { card: PreviewCard }) => (
         {card.description}
       </p>
       <div
-        className={cn(
+        className={cx(
           'pt-xs text-xsm font-bold inline-flex items-center gap-1',
           toneTokens[card.tone].text,
         )}

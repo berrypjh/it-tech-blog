@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Monitor } from 'lucide-react';
 
 import { ContrastCard } from '../../../shared/compare';
@@ -42,7 +41,7 @@ export const HostComponentConcept = ({ content }: Props) => (
         <div className="flex flex-col gap-sm p-md sm:p-lg lg:justify-center">
           <PanelLabel>output</PanelLabel>
           <div
-            className={cn(
+            className={cx(
               'flex items-center gap-sm rounded-xl border-2 p-md',
               sky.fill.bg,
               sky.fill.border,
@@ -51,7 +50,7 @@ export const HostComponentConcept = ({ content }: Props) => (
             <ToneIconBox tone="sky" size="md">
               <Monitor className="h-6 w-6" aria-hidden="true" />
             </ToneIconBox>
-            <code className={cn('font-mono text-sm font-bold', sky.fill.text)}>
+            <code className={cx('font-mono text-sm font-bold', sky.fill.text)}>
               {content.domLabel}
             </code>
           </div>
@@ -71,11 +70,11 @@ const TreeRow = ({ node }: { node: TreeNode }) => {
   const prefix =
     node.depth === 0 ? '' : '│  '.repeat(node.depth - 1) + (node.isLast ? '└─ ' : '├─ ');
   return (
-    <div className={cn('flex items-center gap-2 rounded-md border px-sm py-2', emerald.chip)}>
+    <div className={cx('flex items-center gap-2 rounded-md border px-sm py-2', emerald.chip)}>
       <code className="font-mono text-[11px] text-[var(--term-muted)] whitespace-pre">
         {prefix}
       </code>
-      <code className={cn('font-mono text-xsm font-bold break-all', emerald.text)}>
+      <code className={cx('font-mono text-xsm font-bold break-all', emerald.text)}>
         {node.label}
       </code>
     </div>

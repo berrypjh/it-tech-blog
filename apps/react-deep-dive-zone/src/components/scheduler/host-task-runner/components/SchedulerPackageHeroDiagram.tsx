@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Cpu, Package } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const SchedulerPackageHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -78,7 +77,7 @@ const RoleCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -90,7 +89,7 @@ const RoleCard = ({
           {icon}
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             {subtitle}
           </span>
@@ -103,7 +102,7 @@ const RoleCard = ({
             className="flex items-start gap-2 text-xsm leading-snug text-[var(--term-fg)] break-keep"
           >
             <CheckCircle2
-              className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
+              className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
               aria-hidden="true"
             />
             <span>{item}</span>

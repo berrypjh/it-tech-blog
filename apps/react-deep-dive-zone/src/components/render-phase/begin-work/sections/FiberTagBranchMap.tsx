@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Box,
   Code2,
@@ -42,7 +41,7 @@ export const FiberTagBranchMap = ({ content }: Props) => (
 
     {/* Root: beginWork → dispatch */}
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border px-md py-3',
         'shadow-[0_2px_0_var(--term-border)]',
         toneTokens.sky.fill.bg,
@@ -54,7 +53,7 @@ export const FiberTagBranchMap = ({ content }: Props) => (
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <code
-          className={cn('text-sm font-bold font-mono tracking-tight', toneTokens.sky.fill.text)}
+          className={cx('text-sm font-bold font-mono tracking-tight', toneTokens.sky.fill.text)}
         >
           {content.rootTitle}
         </code>
@@ -71,11 +70,11 @@ export const FiberTagBranchMap = ({ content }: Props) => (
           <ToneCardItem
             key={branch.id}
             tone={branch.tone}
-            icon={<Icon className={cn('h-5 w-5', toneTokens[branch.tone].text)} />}
+            icon={<Icon className={cx('h-5 w-5', toneTokens[branch.tone].text)} />}
           >
             <div className="flex flex-col gap-1 min-w-0">
               <h3
-                className={cn(
+                className={cx(
                   'text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
                   toneTokens[branch.tone].text,
                 )}

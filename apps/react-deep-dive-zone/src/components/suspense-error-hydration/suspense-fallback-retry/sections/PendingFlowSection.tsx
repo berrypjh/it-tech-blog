@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Box, Hourglass, PauseCircle, Zap } from 'lucide-react';
 
 import type { SuspenseFallbackRetryContent } from '../content';
@@ -23,7 +22,7 @@ export const PendingFlowSection = ({ content }: Props) => (
         return (
           <li key={step.title} className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1">
             <article
-              className={cn(
+              className={cx(
                 'flex flex-1 flex-col gap-2 rounded-2xl border-2 p-md',
                 accent.border,
                 accent.bg,
@@ -34,7 +33,7 @@ export const PendingFlowSection = ({ content }: Props) => (
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums text-white',
                     accent.solidBg,
                   )}
@@ -43,7 +42,7 @@ export const PendingFlowSection = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-lg border',
                     accent.iconChip,
                   )}
@@ -51,14 +50,14 @@ export const PendingFlowSection = ({ content }: Props) => (
                   <Icon className="h-3.5 w-3.5" />
                 </span>
               </div>
-              <h3 className={cn('text-sm font-bold break-keep', accent.text)}>{step.title}</h3>
+              <h3 className={cx('text-sm font-bold break-keep', accent.text)}>{step.title}</h3>
               <p className="text-xsm text-[var(--term-muted)] break-keep">{step.subtitle}</p>
               <div
-                className={cn(
+                className={cx(
                   'mt-auto rounded-lg border px-2 py-1.5',
                   step.innerKind === 'code'
                     ? 'border-slate-800 bg-slate-950 font-mono text-[11px] text-slate-100'
-                    : cn(accent.border, accent.bg, 'font-mono text-[11px]', accent.text),
+                    : cx(accent.border, accent.bg, 'font-mono text-[11px]', accent.text),
                 )}
               >
                 {step.inner}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle } from 'lucide-react';
 
 import type { PluginEventSystemContent } from '../content';
@@ -27,7 +26,7 @@ const renderHighlighted = (line: string, tokens: string[]) => {
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-blue-200/70 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/40',
       'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -59,7 +58,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
       {/* Right: icon */}
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full justify-self-center sm:justify-self-end',
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
         )}

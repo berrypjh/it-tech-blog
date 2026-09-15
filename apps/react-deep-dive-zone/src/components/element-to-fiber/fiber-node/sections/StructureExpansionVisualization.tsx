@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Workflow } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -21,7 +20,7 @@ export const StructureExpansionVisualization = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}

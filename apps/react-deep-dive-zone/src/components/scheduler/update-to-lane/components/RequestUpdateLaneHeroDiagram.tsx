@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -34,7 +33,7 @@ export const RequestUpdateLaneHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -70,7 +69,7 @@ const ContextCardBox = ({ card }: { card: ContextCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -82,7 +81,7 @@ const ContextCardBox = ({ card }: { card: ContextCard }) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span className="flex min-w-0 flex-col">
-          <span className={cn('truncate text-sm font-bold tracking-tight', t.text)}>
+          <span className={cx('truncate text-sm font-bold tracking-tight', t.text)}>
             {card.label}
           </span>
           <span className="truncate text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -94,10 +93,10 @@ const ContextCardBox = ({ card }: { card: ContextCard }) => {
         {card.descriptionLines.map((line, i) => (
           <li
             key={line}
-            className={cn(
+            className={cx(
               'text-[11px] leading-snug break-keep',
               i === card.descriptionLines.length - 1
-                ? cn('font-bold', t.text)
+                ? cx('font-bold', t.text)
                 : 'text-[var(--term-muted)]',
             )}
           >

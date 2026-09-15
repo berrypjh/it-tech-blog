@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, FileText, SquareCheckBig } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -61,7 +60,7 @@ export const SymbolsCheckpoint = ({ content }: Props) => {
 
 const CalloutCard = ({ title, code }: { title: string; code: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-1.5 rounded-xl border p-md',
       'bg-[var(--term-bg)] border-[var(--term-border)]',
       'shadow-[0_2px_0_var(--term-border)]',

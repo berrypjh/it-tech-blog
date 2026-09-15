@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Sparkles, XCircle } from 'lucide-react';
 
 import { ContrastCard, StatusPill } from '../../../shared/compare';
@@ -58,7 +57,7 @@ export const WhyShared = ({ content }: Props) => {
               {content.example.tags.map((tag) => (
                 <li key={tag.id}>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
                       'bg-[var(--term-surface)] border border-[var(--term-border)]',
                       toneTokens[tag.tone].text,

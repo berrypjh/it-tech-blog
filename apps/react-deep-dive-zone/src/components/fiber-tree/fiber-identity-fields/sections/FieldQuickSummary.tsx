@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Code2, Key, ListTree, Target } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ const QuickCard = ({ card }: { card: QuickSummaryCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -51,7 +50,7 @@ const QuickCard = ({ card }: { card: QuickSummaryCard }) => {
         <Icon className="h-5 w-5" />
       </ToneIconBox>
       <code
-        className={cn('font-mono text-md font-bold tracking-tight', toneTokens[card.tone].text)}
+        className={cx('font-mono text-md font-bold tracking-tight', toneTokens[card.tone].text)}
       >
         {card.field}
       </code>

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { CheckCircleIcon, PackageIcon, SparklesIcon } from '../icons';
 import { type PathKey, pathTone } from '../tone';
@@ -53,7 +53,7 @@ export const PatternSection = ({
 
         {/* Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             tone.border,
             'bg-white dark:bg-[var(--term-bg)]',
@@ -63,14 +63,14 @@ export const PatternSection = ({
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 tone.iconChip,
               )}
             >
               <Icon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', tone.text)}>{explanationTitle}</h3>
+            <h3 className={cx('text-sm font-bold break-keep', tone.text)}>{explanationTitle}</h3>
           </header>
 
           <ul className="flex flex-col gap-1.5">
@@ -81,7 +81,7 @@ export const PatternSection = ({
               >
                 <CheckCircleIcon
                   aria-hidden="true"
-                  className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
+                  className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
                 />
                 <span>{p}</span>
               </li>

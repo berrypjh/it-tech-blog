@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -45,7 +44,7 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
               yldCardBorder[step.accent],
@@ -56,7 +55,7 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
             <header className="flex items-center justify-between gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-mono font-bold tabular-nums',
                   yldNumberBadge[step.accent],
                 )}
@@ -65,7 +64,7 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   yldIconBox[step.accent],
                 )}
@@ -74,7 +73,7 @@ export const SchedulerWorkLoopFlow = ({ content }: Props) => (
               </span>
             </header>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 yldTextStrong[step.accent],
               )}

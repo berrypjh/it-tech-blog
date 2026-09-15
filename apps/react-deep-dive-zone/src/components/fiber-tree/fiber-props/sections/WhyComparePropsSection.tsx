@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Gauge, HelpCircle, Scale, TrendingUp } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -50,12 +49,12 @@ const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
       <ToneIconBox tone={card.tone}>
         <Icon className="h-6 w-6" />
       </ToneIconBox>
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
+      <h3 className={cx('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
         {card.title}
       </h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
       <div
-        className={cn(
+        className={cx(
           'mt-auto inline-flex items-center self-start rounded-full border px-3 py-1 font-mono text-[11.5px] font-bold break-all',
           t.chip,
         )}

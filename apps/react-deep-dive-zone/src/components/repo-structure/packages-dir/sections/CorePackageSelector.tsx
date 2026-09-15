@@ -2,8 +2,7 @@
 
 import { useId, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   CheckCircle2,
@@ -73,7 +72,7 @@ export const CorePackageSelector = ({ content }: Props) => {
         role="tabpanel"
         id={`${tablistId}-panel`}
         aria-labelledby={`${tablistId}-tab-${active.id}`}
-        className={cn(
+        className={cx(
           'grid grid-cols-1 lg:grid-cols-[minmax(0,_0.58fr)_minmax(0,_0.42fr)] gap-md',
           'rounded-xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           'border-[var(--term-border)] p-md sm:p-lg',
@@ -88,7 +87,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                 <ActiveIcon className="h-5 w-5" aria-hidden="true" />
               </ToneIconBox>
               <h3
-                className={cn(
+                className={cx(
                   'text-lg sm:text-xl font-bold font-mono tracking-tight truncate',
                   tone.text,
                 )}
@@ -110,7 +109,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
                 <CheckCircle2
-                  className={cn('mt-0.5 h-4 w-4 shrink-0', tone.text)}
+                  className={cx('mt-0.5 h-4 w-4 shrink-0', tone.text)}
                   aria-hidden="true"
                 />
                 <span>{bullet}</span>
@@ -121,7 +120,7 @@ export const CorePackageSelector = ({ content }: Props) => {
 
         {/* 우측 대표 디렉터리 카드 */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-lg border bg-[var(--term-surface)] p-md',
             'border-[var(--term-border)]',
           )}
@@ -136,7 +135,7 @@ export const CorePackageSelector = ({ content }: Props) => {
           </header>
 
           <code
-            className={cn(
+            className={cx(
               'inline-flex w-fit max-w-full items-center gap-1.5 rounded-md border px-2 py-1',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[11px] font-mono text-[var(--term-fg)] break-all',
             )}
@@ -159,7 +158,7 @@ export const CorePackageSelector = ({ content }: Props) => {
                   >
                     {branch}
                   </span>
-                  <FileCode className={cn('h-3.5 w-3.5 shrink-0', tone.text)} aria-hidden="true" />
+                  <FileCode className={cx('h-3.5 w-3.5 shrink-0', tone.text)} aria-hidden="true" />
                   <span className="truncate">{file}</span>
                 </li>
               );
@@ -191,13 +190,13 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
       aria-controls={panelId}
       tabIndex={isActive ? 0 : -1}
       onClick={onSelect}
-      className={cn(
+      className={cx(
         'group flex flex-col items-start gap-1 rounded-lg border p-md text-left min-w-0',
         'transition-all hover:-translate-y-0.5',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
         isActive
-          ? cn(tone.chip, tone.border, 'shadow-[0_3px_0_var(--term-border)] font-bold')
-          : cn(
+          ? cx(tone.chip, tone.border, 'shadow-[0_3px_0_var(--term-border)] font-bold')
+          : cx(
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-muted)]',
               tone.borderHover,
             ),
@@ -206,17 +205,17 @@ const TabCard = ({ tab, isActive, onSelect, panelId }: TabCardProps) => {
       <span className="flex w-full items-center gap-2 min-w-0">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-7 h-7 rounded border shrink-0',
             isActive
               ? 'bg-[var(--term-bg)] border-current'
-              : cn(tone.chip, 'border-[var(--term-border)]'),
+              : cx(tone.chip, 'border-[var(--term-border)]'),
           )}
         >
-          <Icon className={cn('h-4 w-4', tone.text)} aria-hidden="true" />
+          <Icon className={cx('h-4 w-4', tone.text)} aria-hidden="true" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'min-w-0 break-words text-sm font-bold font-mono tracking-tight',
             isActive ? tone.text : 'text-[var(--term-fg)]',
           )}

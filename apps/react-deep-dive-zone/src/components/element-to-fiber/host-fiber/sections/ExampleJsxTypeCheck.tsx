@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Braces, CheckCircle2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -25,7 +24,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'grid items-center min-w-0',
         'grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)]',
         'gap-sm lg:gap-md',
@@ -58,7 +57,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
 
     {/* Key point callout */}
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-md rounded-2xl border-2 px-md py-sm sm:px-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         emerald.fill.bg,
@@ -69,10 +68,10 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
         <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex flex-col sm:flex-row sm:items-baseline gap-x-sm gap-y-0.5 min-w-0">
-        <code className={cn('font-mono text-sm sm:text-md font-bold break-all', emerald.fill.text)}>
+        <code className={cx('font-mono text-sm sm:text-md font-bold break-all', emerald.fill.text)}>
           {content.keyPointTitle}
         </code>
-        <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', emerald.fill.text)}>
+        <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', emerald.fill.text)}>
           {content.keyPointDescription}
         </p>
       </div>
@@ -82,7 +81,7 @@ export const ExampleJsxTypeCheck = ({ content }: Props) => (
 
 const Label = ({ children }: { children: React.ReactNode }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex w-fit items-center rounded-full border px-2.5 py-0.5',
       'text-[10px] font-bold uppercase tracking-wider font-mono',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',

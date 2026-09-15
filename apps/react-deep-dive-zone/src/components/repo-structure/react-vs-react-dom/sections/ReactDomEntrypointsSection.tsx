@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AppWindow, type LucideIcon, Server, Split } from 'lucide-react';
 
 import { CompareBridge } from '../../../shared/compare';
@@ -52,7 +51,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
   return (
     <article
       aria-labelledby={`entrypoint-${card.id}-header`}
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -60,7 +59,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
       <header className="flex items-center gap-2 pb-sm border-b border-dashed border-[var(--term-border)]">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full shrink-0',
             'bg-[var(--term-surface)] border border-[var(--term-border)]',
             accent,
@@ -71,7 +70,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
         <div className="flex flex-col min-w-0">
           <h3
             id={`entrypoint-${card.id}-header`}
-            className={cn(
+            className={cx(
               'text-sm sm:text-md font-bold font-mono tracking-tight break-words',
               accent,
             )}
@@ -89,7 +88,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
           <li key={bullet} className="flex items-start gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0 bg-current',
                 accent,
               )}
@@ -105,7 +104,7 @@ const EntrypointCardItem = ({ card }: ItemProps) => {
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1 text-[10px] font-medium text-[var(--term-muted)]">
           <span
             aria-hidden="true"
-            className={cn('inline-block w-1 h-1 rounded-full bg-current', accent)}
+            className={cx('inline-block w-1 h-1 rounded-full bg-current', accent)}
           />
           {card.tag}
         </span>

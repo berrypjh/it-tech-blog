@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -70,14 +69,14 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border p-md shadow-[0_1px_0_var(--term-border)]',
         t.border,
       )}
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -85,7 +84,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
           {callout.conditionLabel}
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -93,12 +92,12 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
           {callout.kind}
         </span>
       </header>
-      <p className={cn('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
+      <p className={cx('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
         {callout.conditionBody}
       </p>
       <div className="my-1 h-px w-full bg-[var(--term-border)]" aria-hidden="true" />
       <div className="flex items-baseline gap-2">
-        <span className={cn('text-xxsm font-mono uppercase tracking-wider', t.text)}>
+        <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>
           {callout.meaningLabel}
         </span>
         <span className="flex-1 text-xsm sm:text-sm leading-snug text-[var(--term-muted)] break-keep">

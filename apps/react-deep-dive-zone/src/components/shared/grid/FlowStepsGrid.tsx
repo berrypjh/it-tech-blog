@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../tones';
@@ -38,7 +37,7 @@ type Props = {
  */
 export const FlowStepsGrid = ({ steps, columns = 4, className }: Props) => (
   <ol
-    className={cn(
+    className={cx(
       'grid grid-cols-1 sm:grid-cols-2 gap-md lg:gap-x-xl items-stretch',
       columnClass[columns],
       className,
@@ -60,7 +59,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -69,7 +68,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
     >
       <header className="flex items-center justify-between">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             t.chip,
           )}
@@ -78,7 +77,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
             t.chip,
           )}
@@ -87,7 +86,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
         </span>
       </header>
       <h3
-        className={cn(
+        className={cx(
           'text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
           t.text,
         )}
@@ -106,7 +105,7 @@ const FlowStepCard = ({ step }: { step: FlowStepItem }) => {
 const StepConnector = () => (
   <span
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'pointer-events-none absolute z-10 hidden lg:flex items-center justify-center',
       'top-1/2 left-full ml-1 -translate-y-1/2 text-[var(--term-accent)]',
     )}

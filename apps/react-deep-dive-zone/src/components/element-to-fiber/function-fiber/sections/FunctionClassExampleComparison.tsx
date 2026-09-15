@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Component, GitFork, Hexagon, SquareFunction } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -43,7 +42,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
   const Icon = card.id === 'function' ? SquareFunction : Component;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -56,14 +55,14 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         </ToneIconBox>
         <div className="flex flex-col gap-0.5">
           <span
-            className={cn(
+            className={cx(
               'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider font-mono font-bold',
               t.chip,
             )}
           >
             {card.badge}
           </span>
-          <h3 className={cn('text-sm sm:text-md font-bold tracking-tight break-keep', t.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold tracking-tight break-keep', t.text)}>
             {card.title}
           </h3>
         </div>
@@ -78,7 +77,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
 
       <div className="flex justify-center" aria-hidden="true">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-8 h-8 rounded-full border',
             t.chip,
           )}
@@ -88,7 +87,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
       </div>
 
       <div
-        className={cn(
+        className={cx(
           'flex items-center gap-sm rounded-xl border-2 p-md',
           t.fill.bg,
           t.fill.border,
@@ -98,7 +97,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
           <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col gap-0.5 min-w-0">
-          <code className={cn('font-mono text-sm font-extrabold', t.text)}>{card.resultTitle}</code>
+          <code className={cx('font-mono text-sm font-extrabold', t.text)}>{card.resultTitle}</code>
           <code className="font-mono text-[11px] text-[var(--term-muted)] font-bold">
             {card.resultSubtitle}
           </code>

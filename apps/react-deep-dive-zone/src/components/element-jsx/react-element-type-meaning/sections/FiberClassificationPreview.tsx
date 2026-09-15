@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Atom, Box, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -61,7 +60,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
   const Icon = iconMap[step.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -69,7 +68,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
     >
       <header className="flex items-center justify-between">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             toneTokens[step.tone].chip,
           )}
@@ -78,7 +77,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
             toneTokens[step.tone].chip,
           )}
@@ -87,7 +86,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
         </span>
       </header>
       <h3
-        className={cn(
+        className={cx(
           'font-mono text-sm font-bold tracking-tight break-keep [overflow-wrap:anywhere]',
           toneTokens[step.tone].text,
         )}
@@ -101,7 +100,7 @@ const FlowCard = ({ step }: { step: FiberFlowStep }) => {
           {step.chips.map((chip) => (
             <li key={chip}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold',
                   toneTokens[step.tone].chip,
                 )}

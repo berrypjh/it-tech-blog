@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BookOpen, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -33,7 +32,7 @@ export const ChangelogTimeline = ({ content }: Props) => {
             body: (
               <div className="flex flex-col gap-1">
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-md sm:text-lg font-bold tracking-tight leading-none',
                     toneTokens[toneKey].text,
                   )}

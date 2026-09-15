@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -34,7 +33,7 @@ const LaneCardItem = ({ card }: { card: LaneCard }) => {
   const t = laneStyle(card.tone);
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -46,7 +45,7 @@ const LaneCardItem = ({ card }: { card: LaneCard }) => {
         {card.tone === 'slate' ? (
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center w-11 h-11 rounded-md border',
               t.chip,
             )}
@@ -59,7 +58,7 @@ const LaneCardItem = ({ card }: { card: LaneCard }) => {
           </ToneIconBox>
         )}
         <div className="flex flex-col min-w-0">
-          <code className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
+          <code className={cx('font-mono text-md font-bold tracking-tight break-all', t.text)}>
             {card.label}
           </code>
           <span className="text-xsm font-bold text-[var(--term-muted)] break-keep">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, GitBranch, PlayCircle, Target, Workflow } from 'lucide-react';
 
 import type { PluginEventSystemContent } from '../content';
@@ -17,14 +16,14 @@ export const DispatchEventForPluginFlow = ({ content }: Props) => (
     title={content.title}
     icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
   >
-    <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
+    <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
         const Icon = stepIcons[i] ?? Target;
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex items-center gap-3 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -34,7 +33,7 @@ export const DispatchEventForPluginFlow = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
                 toneIconBox[step.tone],
               )}
@@ -43,7 +42,7 @@ export const DispatchEventForPluginFlow = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0.5 min-w-0 flex-1">
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold leading-tight break-all',
                   toneAccent[step.tone],
                 )}

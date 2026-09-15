@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { BookOpenIcon, CheckCircleIcon, ListChecksIcon } from '../icons';
@@ -42,7 +42,7 @@ export const FollowAlongMission = ({ content }: Props) => {
       <div className="grid grid-cols-1 gap-md lg:grid-cols-2 lg:gap-lg items-stretch">
         {/* LEFT: checklist */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -67,7 +67,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isChecked}
                     onClick={() => setChecked((prev) => ({ ...prev, [i]: !prev[i] }))}
-                    className={cn(
+                    className={cx(
                       'group w-full text-left rounded-xl border-2 p-3 transition-all',
                       'flex items-start gap-2.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -78,7 +78,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border-2',
                         isChecked
                           ? 'border-emerald-500 bg-emerald-500 text-white'
@@ -88,7 +88,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                       {isChecked && <CheckCircleIcon className="h-3.5 w-3.5" />}
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'text-xsm font-bold break-keep leading-snug',
                         isChecked
                           ? 'text-emerald-700 dark:text-emerald-200 line-through decoration-emerald-400/60'
@@ -106,7 +106,7 @@ export const FollowAlongMission = ({ content }: Props) => {
 
         {/* RIGHT: reading guide */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-teal-300/80 bg-teal-50/30 dark:border-teal-700/70 dark:bg-teal-950/20',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -130,7 +130,7 @@ export const FollowAlongMission = ({ content }: Props) => {
               return (
                 <li
                   key={g.body}
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-2 rounded-xl border px-3 py-2.5',
                     'border-teal-200 bg-white dark:border-teal-800/60 dark:bg-[var(--term-bg)]',
                   )}

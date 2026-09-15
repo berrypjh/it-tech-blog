@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowLeftRight,
@@ -69,11 +68,11 @@ const StepCard = ({ step, index }: { step: TransitionStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border p-md',
         step.emphasis
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -81,7 +80,7 @@ const StepCard = ({ step, index }: { step: TransitionStep; index: number }) => {
         <Icon className="h-5 w-5" />
       </ToneIconBox>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h3>
         <p className="text-xsm leading-snug text-[var(--term-muted)] break-keep">
@@ -90,7 +89,7 @@ const StepCard = ({ step, index }: { step: TransitionStep; index: number }) => {
       </div>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden sm:inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}
@@ -105,7 +104,7 @@ const FormulaCallout = ({ formula, note }: { formula: string; note: string }) =>
   const t = toneTokens.blue;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -116,13 +115,13 @@ const FormulaCallout = ({ formula, note }: { formula: string; note: string }) =>
         <ToneIconBox tone="blue">
           <ArrowLeftRight className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.fill.text)}>
+        <h3 className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.fill.text)}>
           the swap
         </h3>
       </header>
 
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border bg-[var(--term-bg)] p-md text-sm leading-snug font-mono font-bold',
           t.fill.border,
           t.fill.text,
@@ -131,7 +130,7 @@ const FormulaCallout = ({ formula, note }: { formula: string; note: string }) =>
         <code>{formula}</code>
       </pre>
 
-      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{note}</p>
+      <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{note}</p>
     </article>
   );
 };

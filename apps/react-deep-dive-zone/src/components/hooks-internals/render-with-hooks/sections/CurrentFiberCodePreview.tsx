@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, FileCode, FileSearch } from 'lucide-react';
 
 import type { RenderWithHooksContent } from '../content';
@@ -65,7 +64,7 @@ export const CurrentFiberCodePreview = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-code-preview"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -124,7 +123,7 @@ export const CurrentFiberCodePreview = ({ content }: Props) => {
 
         {/* File info card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -169,7 +168,7 @@ export const CurrentFiberCodePreview = ({ content }: Props) => {
             href={content.buttonHref}
             target="_blank"
             rel="noreferrer noopener"
-            className={cn(
+            className={cx(
               'group inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5',
               'border-blue-300/70 bg-blue-50 text-blue-700 font-bold text-xsm sm:text-sm',
               'dark:border-blue-800/60 dark:bg-blue-950/40 dark:text-blue-200',

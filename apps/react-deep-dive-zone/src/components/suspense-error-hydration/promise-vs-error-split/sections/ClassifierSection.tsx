@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Hourglass, Sparkles, TriangleAlert } from 'lucide-react';
 
 import type { PromiseVsErrorSplitContent } from '../content';
@@ -34,7 +33,7 @@ export const ClassifierSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,4fr)_auto_minmax(0,5fr)_minmax(0,3fr)] items-stretch',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -57,18 +56,18 @@ export const ClassifierSection = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.path)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-xl border-2 p-3 transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
-                        ? cn(optAccent.border, optAccent.bg)
+                        ? cx(optAccent.border, optAccent.bg)
                         : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-700 dark:bg-[var(--term-bg)] dark:hover:border-slate-600',
                     )}
                   >
                     <div className="flex items-center gap-2">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                           optAccent.iconChip,
                         )}
@@ -76,7 +75,7 @@ export const ClassifierSection = ({ content }: Props) => {
                         <Icon className="h-3.5 w-3.5" />
                       </span>
                       <code
-                        className={cn(
+                        className={cx(
                           'flex-1 rounded bg-slate-950 px-2 py-1 text-[11px] font-mono font-bold text-slate-100 break-all',
                         )}
                       >
@@ -85,7 +84,7 @@ export const ClassifierSection = ({ content }: Props) => {
                       {isActive && (
                         <CheckCircle2
                           aria-hidden="true"
-                          className={cn('h-4 w-4 shrink-0', optAccent.text)}
+                          className={cx('h-4 w-4 shrink-0', optAccent.text)}
                         />
                       )}
                     </div>
@@ -112,7 +111,7 @@ export const ClassifierSection = ({ content }: Props) => {
         {/* CENTER: result */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
             accent.border,
             accent.bg,
@@ -120,7 +119,7 @@ export const ClassifierSection = ({ content }: Props) => {
         >
           <header className="flex items-center justify-between gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-3 py-1',
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 accent.chip,
@@ -135,7 +134,7 @@ export const ClassifierSection = ({ content }: Props) => {
               <dt className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
                 {content.classificationLabel}
               </dt>
-              <dd className={cn('text-lg font-bold font-mono break-keep', accent.text)}>
+              <dd className={cx('text-lg font-bold font-mono break-keep', accent.text)}>
                 {result.classification}
               </dd>
             </div>
@@ -144,14 +143,14 @@ export const ClassifierSection = ({ content }: Props) => {
                 {content.nextRouteLabel}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-lg border bg-white px-2 py-1 mt-0.5',
                   'dark:bg-[var(--term-bg)]',
                   accent.border,
                 )}
               >
-                <ArrowRight className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
-                <span className={cn('text-xsm font-bold', accent.text)}>{result.nextRoute}</span>
+                <ArrowRight className={cx('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
+                <span className={cx('text-xsm font-bold', accent.text)}>{result.nextRoute}</span>
               </dd>
             </div>
             <div>
@@ -167,7 +166,7 @@ export const ClassifierSection = ({ content }: Props) => {
 
         {/* RIGHT: help */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 border-dashed p-md',
             'border-blue-300 bg-blue-50/50 dark:border-blue-700 dark:bg-blue-950/20',
           )}

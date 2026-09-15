@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Loader, Rocket, Send, Sparkles, Zap } from 'lucide-react';
 
 import type { PluginEventSystemContent } from '../content';
@@ -21,7 +20,7 @@ export const FormActionEventPluginSupplement = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-center">
       {/* LEFT: description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-emerald-300/80 bg-white dark:border-emerald-700/70 dark:bg-slate-950/40',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -49,14 +48,14 @@ export const FormActionEventPluginSupplement = ({ content }: Props) => (
       </article>
 
       {/* RIGHT: flow */}
-      <ol className={cn('grid items-stretch gap-2', 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4')}>
+      <ol className={cx('grid items-stretch gap-2', 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4')}>
         {content.flow.map((step, i) => {
           const isLast = i === content.flow.length - 1;
           const Icon = stepIcons[i] ?? Send;
           return (
             <li
               key={step.name}
-              className={cn(
+              className={cx(
                 'group relative flex flex-col items-center gap-1.5 rounded-2xl border-2 p-md text-center transition-all',
                 'hover:-translate-y-0.5 motion-reduce:transform-none',
                 'border-emerald-200/80 bg-white dark:border-emerald-800/60 dark:bg-slate-950/40',
@@ -65,7 +64,7 @@ export const FormActionEventPluginSupplement = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border',
                   toneIconBox[step.tone],
                 )}
@@ -73,7 +72,7 @@ export const FormActionEventPluginSupplement = ({ content }: Props) => (
                 <Icon className="h-5 w-5" />
               </span>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold break-all',
                   toneAccent[step.tone],
                 )}

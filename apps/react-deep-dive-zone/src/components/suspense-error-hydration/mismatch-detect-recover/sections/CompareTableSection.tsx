@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MismatchDetectRecoverContent } from '../content';
 
@@ -12,7 +12,7 @@ export const CompareTableSection = ({ content }: Props) => (
 
     {/* Desktop: table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -26,7 +26,7 @@ export const CompareTableSection = ({ content }: Props) => (
               <th
                 key={h}
                 scope="col"
-                className={cn(
+                className={cx(
                   'border-b-2 border-slate-200 dark:border-slate-700',
                   'bg-blue-50/60 dark:bg-blue-950/30',
                   'px-3 py-3 text-left text-[11.5px] font-bold text-blue-700 dark:text-blue-200',
@@ -41,7 +41,7 @@ export const CompareTableSection = ({ content }: Props) => (
           {content.rows.map((row, i) => (
             <tr
               key={row.name}
-              className={cn(
+              className={cx(
                 i % 2 === 0
                   ? 'bg-white dark:bg-[var(--term-bg)]'
                   : 'bg-slate-50/40 dark:bg-slate-900/30',
@@ -80,7 +80,7 @@ export const CompareTableSection = ({ content }: Props) => (
       {content.rows.map((row) => (
         <li key={row.name}>
           <article
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 border-slate-200 bg-white p-md',
               'dark:border-slate-700 dark:bg-[var(--term-bg)]',
             )}

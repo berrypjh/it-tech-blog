@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Cog,
   Database,
@@ -60,7 +59,7 @@ export const HooksSummaryHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -127,7 +126,7 @@ const StepCard = ({ step }: { step: FlowStep }) => {
   const Icon = visualMap[step.visual];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -138,7 +137,7 @@ const StepCard = ({ step }: { step: FlowStep }) => {
         <Icon className="h-[18px] w-[18px]" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <span className={cn('text-sm font-bold tracking-tight font-mono break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight font-mono break-keep', t.text)}>
           {step.title}
         </span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

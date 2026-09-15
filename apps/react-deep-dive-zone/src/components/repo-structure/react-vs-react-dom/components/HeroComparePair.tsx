@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Atom, CheckCircle2, type LucideIcon, MonitorSmartphone } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -41,7 +40,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
         'shadow-[0_3px_0_var(--term-border)]',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
@@ -51,7 +50,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-10 h-10 rounded-md border',
             'bg-[var(--term-surface)] border-[var(--term-border)]',
             accent,
@@ -60,7 +59,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-lg font-bold font-mono tracking-tight break-words', accent)}>
+          <h3 className={cx('text-lg font-bold font-mono tracking-tight break-words', accent)}>
             {card.title}
           </h3>
           <p className="text-[11px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -75,7 +74,7 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
             key={bullet}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <CheckCircle2 className={cn('mt-0.5 h-4 w-4 shrink-0', accent)} aria-hidden="true" />
+            <CheckCircle2 className={cx('mt-0.5 h-4 w-4 shrink-0', accent)} aria-hidden="true" />
             <span className="min-w-0 break-words">{bullet}</span>
           </li>
         ))}
@@ -85,14 +84,14 @@ const RoleCardItem = ({ card }: RoleCardItemProps) => {
         {card.tags.map((tag) => (
           <span
             key={tag}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[10px] font-medium',
               'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn('inline-block w-1 h-1 rounded-full bg-current', accent)}
+              className={cx('inline-block w-1 h-1 rounded-full bg-current', accent)}
             />
             {tag}
           </span>

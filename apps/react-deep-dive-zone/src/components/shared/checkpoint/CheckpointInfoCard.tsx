@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb } from 'lucide-react';
 import type { ComponentType, ReactNode, SVGProps } from 'react';
 
@@ -30,7 +29,7 @@ const rowToneClass = ['text-[var(--term-accent)]', toneTokens.sky.text, toneToke
  */
 export const CheckpointInfoCard = ({ rows, question, className }: Props) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
       className,
@@ -40,7 +39,7 @@ export const CheckpointInfoCard = ({ rows, question, className }: Props) => (
       <div key={row.label} className="flex flex-col gap-1">
         <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
           <span aria-hidden="true" className="inline-flex items-center justify-center">
-            <row.icon className={cn('h-4 w-4', rowToneClass[i] ?? toneTokens.sky.text)} />
+            <row.icon className={cx('h-4 w-4', rowToneClass[i] ?? toneTokens.sky.text)} />
           </span>
           {row.label}
         </span>
@@ -51,7 +50,7 @@ export const CheckpointInfoCard = ({ rows, question, className }: Props) => (
     {question && (
       <div className="mt-auto flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-3 text-[var(--term-fg)]">
         <Lightbulb
-          className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
+          className={cx('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
           aria-hidden="true"
         />
         <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Database, Lightbulb, Plus, Zap } from 'lucide-react';
 
 import { axisCardBorder, axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
@@ -71,7 +70,7 @@ export const PendingLanesChange = ({ content }: Props) => (
         return (
           <li
             key={card.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg transition-colors',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
               axisCardBorder[accent],
@@ -80,7 +79,7 @@ export const PendingLanesChange = ({ content }: Props) => (
             <header className="flex items-center justify-between gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   axisIconBox[accent],
                 )}
@@ -88,7 +87,7 @@ export const PendingLanesChange = ({ content }: Props) => (
                 <Icon className="h-4 w-4" />
               </span>
               <span
-                className={cn(
+                className={cx(
                   'font-mono text-[10px] uppercase tracking-wider',
                   axisTextStrong[accent],
                 )}
@@ -97,7 +96,7 @@ export const PendingLanesChange = ({ content }: Props) => (
               </span>
             </header>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 axisTextStrong[accent],
               )}
@@ -119,7 +118,7 @@ export const PendingLanesChange = ({ content }: Props) => (
                 />
               </div>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-[10px] sm:text-[11px]',
                   isEmpty ? 'text-[var(--term-dim)]' : 'text-[var(--term-fg)]',
                 )}
@@ -155,7 +154,7 @@ export const PendingLanesChange = ({ content }: Props) => (
 
     {/* note */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-2 rounded-2xl border-2 border-dashed px-md py-3',
         'border-amber-300/80 bg-amber-50/60 text-amber-800',
         'dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-100',

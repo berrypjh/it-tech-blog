@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Clock, Layers, Lightbulb, Loader2 } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -107,23 +106,23 @@ const TreeNode = ({ node, statusLabel }: { node: FiberTreeNode; statusLabel: str
   const isCurrent = node.status === 'current';
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-2 rounded-lg border p-sm sm:p-md',
-        isCurrent ? cn('border-2', s.border) : s.border,
+        isCurrent ? cx('border-2', s.border) : s.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn('inline-flex h-9 w-9 items-center justify-center rounded-md border', s.chip)}
+        className={cx('inline-flex h-9 w-9 items-center justify-center rounded-md border', s.chip)}
       >
-        <s.Icon className={cn('h-4 w-4', isCurrent && 'animate-spin motion-reduce:animate-none')} />
+        <s.Icon className={cx('h-4 w-4', isCurrent && 'animate-spin motion-reduce:animate-none')} />
       </span>
-      <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', s.text)}>
+      <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', s.text)}>
         {node.name}
       </h4>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
           s.chip,
         )}
@@ -140,7 +139,7 @@ const LegendRow = ({ item }: { item: LegendItem }) => {
     <li className="flex items-start gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border',
           s.chip,
         )}
@@ -148,7 +147,7 @@ const LegendRow = ({ item }: { item: LegendItem }) => {
         <s.Icon className="h-4 w-4" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', s.text)}>
+        <span className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', s.text)}>
           {item.label}
         </span>
         <span className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

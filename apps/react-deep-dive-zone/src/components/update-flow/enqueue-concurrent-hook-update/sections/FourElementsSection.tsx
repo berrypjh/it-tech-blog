@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, FileText, Flag, Layers, Settings, SquareDashed } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -35,7 +34,7 @@ export const FourElementsSection = ({ content }: Props) => (
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <h3
-              className={cn(
+              className={cx(
                 'text-md sm:text-lg font-bold font-mono tracking-tight break-keep',
                 t.text,
               )}
@@ -43,7 +42,7 @@ export const FourElementsSection = ({ content }: Props) => (
               {card.title}
             </h3>
 
-            <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+            <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
               {card.question}
             </p>
 

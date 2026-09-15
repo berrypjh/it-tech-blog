@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListOrdered } from 'lucide-react';
 
 import {
@@ -54,7 +53,7 @@ export const DispatchQueueHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -75,14 +74,14 @@ export const DispatchQueueHero = ({ content }: Props) => (
           {content.collected.map((entry) => (
             <li
               key={entry.label}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-lg border px-3 py-2',
                 toneBadge(entry.tone),
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
                   toneNumber(entry.tone),
                 )}

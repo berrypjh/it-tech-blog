@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, FileText, Info, Map } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -78,14 +77,14 @@ const FileChip = ({ file }: { file: InternalFileCard }) => {
   const tokens = toneTokens[file.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-center gap-sm rounded-lg border p-2',
         'bg-[var(--term-bg)] border-[var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-md border font-mono text-[10px] font-bold',
           tokens.chip,
         )}
@@ -93,7 +92,7 @@ const FileChip = ({ file }: { file: InternalFileCard }) => {
         {'<>'}
       </span>
       <div className="flex flex-col min-w-0">
-        <h3 className={cn('text-xsm font-bold font-mono tracking-tight truncate', tokens.text)}>
+        <h3 className={cx('text-xsm font-bold font-mono tracking-tight truncate', tokens.text)}>
           {file.name}
         </h3>
         <p className="text-[10px] leading-snug text-[var(--term-muted)] truncate">

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, Component, Database, List } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -56,7 +55,7 @@ const ConnectorArrow = ({ dotted }: { dotted: boolean }) => (
     <span className="hidden lg:inline-flex flex-col items-center gap-1">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'block h-px w-10 border-t-2 border-[var(--term-border)]',
           dotted && 'border-dashed',
         )}
@@ -89,7 +88,7 @@ const RoleCard = ({ card }: { card: RoleFlowCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-1 min-w-0 flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -100,11 +99,11 @@ const RoleCard = ({ card }: { card: RoleFlowCard }) => {
       <ToneIconBox tone={card.tone}>
         <Icon className="h-5 w-5" />
       </ToneIconBox>
-      <h3 className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
+      <h3 className={cx('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
         {card.title}
       </h3>
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-full border px-3 py-1 font-mono text-[12.5px] font-bold',
           t.chip,
         )}
@@ -112,7 +111,7 @@ const RoleCard = ({ card }: { card: RoleFlowCard }) => {
         {card.valuePill}
       </span>
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-md border px-2 py-0.5 font-mono text-[11.5px] font-bold',
           ft.chip,
         )}

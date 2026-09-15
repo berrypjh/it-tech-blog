@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Gauge, List, Search, Target, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -15,7 +14,7 @@ type Props = { content: TransitionDeferredContent['problem'] };
 
 const GaugeCard = ({ high, low, title }: { high: string; low: string; title: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       'items-center justify-center',
@@ -75,7 +74,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
       {/* input UI */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           responseCardBorder.emerald,
@@ -84,7 +83,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
         <header className="flex items-center justify-between gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               responseIconBox.emerald,
             )}
@@ -92,7 +91,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
             <Search className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               responsePill.emerald,
@@ -102,7 +101,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
           </span>
         </header>
         <h3
-          className={cn(
+          className={cx(
             'text-md sm:text-lg font-bold leading-tight break-keep',
             responseTextStrong.emerald,
           )}
@@ -145,7 +144,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
 
       {/* result list */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           responseCardBorder.blue,
@@ -154,7 +153,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
         <header className="flex items-center justify-between gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               responseIconBox.blue,
             )}
@@ -162,7 +161,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
             <List className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               responsePill.blue,
@@ -172,7 +171,7 @@ export const TransitionProblemSection = ({ content }: Props) => (
           </span>
         </header>
         <h3
-          className={cn(
+          className={cx(
             'text-md sm:text-lg font-bold leading-tight break-keep',
             responseTextStrong.blue,
           )}

@@ -2,8 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRightLeft,
@@ -56,7 +55,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -86,27 +85,27 @@ export const OrderMatchingSection = ({ content }: Props) => {
                     aria-pressed={isPicked}
                     disabled={isPicked}
                     onClick={() => handlePick(card.id)}
-                    className={cn(
+                    className={cx(
                       'group flex items-center justify-between gap-3 rounded-xl border-2 p-3 text-left',
                       'transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       'disabled:cursor-not-allowed disabled:opacity-60',
                       !isPicked &&
-                        cn(
+                        cx(
                           'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                           'hover:border-blue-300 dark:hover:border-blue-700/70',
                           'motion-safe:hover:-translate-y-0.5',
                         ),
                       isPicked &&
                         isCorrectSlot &&
-                        cn(
+                        cx(
                           'border-emerald-400 bg-emerald-50',
                           'dark:border-emerald-600/80 dark:bg-emerald-950/40',
                           'shadow-[0_2px_0_var(--term-border)]',
                         ),
                       isPicked &&
                         isWrongSlot &&
-                        cn(
+                        cx(
                           'border-amber-400 bg-amber-50',
                           'dark:border-amber-600/80 dark:bg-amber-950/40',
                         ),
@@ -115,7 +114,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                     <span className="flex items-center gap-2 min-w-0">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 font-mono text-[10px] font-bold tabular-nums',
                           isPicked
                             ? isCorrectSlot
@@ -127,7 +126,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                         {isPicked ? pickedIdx + 1 : ''}
                       </span>
                       <code
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold',
                           isPicked
                             ? isCorrectSlot
@@ -164,7 +163,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                 type="button"
                 onClick={reset}
                 disabled={selected.length === 0}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-md border-2 px-3 py-1.5',
                   'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                   'text-xsm font-bold text-[var(--term-fg)]',
@@ -180,7 +179,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
               <button
                 type="button"
                 onClick={reveal}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-md border-2 px-3 py-1.5',
                   'border-blue-400 bg-blue-50 text-blue-800',
                   'dark:border-blue-600/80 dark:bg-blue-950/40 dark:text-blue-100',
@@ -199,7 +198,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
           {/* RIGHT — Restored path + explanation */}
           <article
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
               isAllCorrect
                 ? 'border-emerald-300 bg-emerald-50/60 dark:border-emerald-700/70 dark:bg-emerald-950/30'
@@ -227,10 +226,10 @@ export const OrderMatchingSection = ({ content }: Props) => {
                   <Fragment key={slot}>
                     <li>
                       <div
-                        className={cn(
+                        className={cx(
                           'flex items-center gap-2 rounded-md border-2 px-3 py-2',
                           !isFilled &&
-                            cn(
+                            cx(
                               'border-dashed border-[var(--term-border)]',
                               'bg-[var(--term-surface)]',
                             ),
@@ -244,7 +243,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                       >
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 font-mono text-[10px] font-bold tabular-nums',
                             !isFilled &&
                               'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)] text-[var(--term-muted)]',
@@ -260,7 +259,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                         </span>
                         {isFilled ? (
                           <code
-                            className={cn(
+                            className={cx(
                               'font-mono text-xsm font-bold',
                               isCorrect
                                 ? 'text-emerald-800 dark:text-emerald-100'
@@ -298,7 +297,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                 {content.explanationLabel}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'bg-white dark:bg-[var(--term-bg)]',
                   isAllCorrect
@@ -307,7 +306,7 @@ export const OrderMatchingSection = ({ content }: Props) => {
                 )}
               >
                 <Sparkles
-                  className={cn(
+                  className={cx(
                     'mt-0.5 h-4 w-4 shrink-0',
                     isAllCorrect
                       ? 'text-emerald-600 dark:text-emerald-400'

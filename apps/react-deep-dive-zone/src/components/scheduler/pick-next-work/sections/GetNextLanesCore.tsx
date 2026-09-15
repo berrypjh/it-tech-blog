@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Compass, Database, Hourglass, Layers, PauseCircle, RefreshCw, Target } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -40,7 +39,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
         return (
           <li key={card.name} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-colors',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -50,7 +49,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     schedIconBox[card.accent],
                   )}
@@ -58,7 +57,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
                   <Icon className="h-4 w-4" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'font-mono text-[10px] uppercase tracking-wider',
                     schedTextStrong[card.accent],
                   )}
@@ -67,7 +66,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
                 </span>
               </header>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold break-keep break-all',
                   schedTextStrong[card.accent],
                 )}
@@ -85,7 +84,7 @@ export const GetNextLanesCore = ({ content }: Props) => (
 
     {/* core note */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-3 rounded-2xl border-2 px-md py-3',
         'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-violet-50/40',
         'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',

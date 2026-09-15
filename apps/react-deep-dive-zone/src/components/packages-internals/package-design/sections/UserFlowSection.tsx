@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Code, type LucideIcon, Monitor, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -25,13 +24,13 @@ const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
     title: step.title,
     body: (
       <>
-        <span className={cn('font-mono font-bold', toneTokens[step.tone].text)}>→ {step.pkg}</span>
+        <span className={cx('font-mono font-bold', toneTokens[step.tone].text)}>→ {step.pkg}</span>
         <br />
         {step.description}
       </>
     ),
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -68,13 +67,13 @@ export const UserFlowSection = ({ content }: Props) => {
 
 const SideAxisCard = ({ title, body, tone }: { title: string; body: string; tone: ToneKey }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-1 rounded-xl border-2 border-dashed p-md',
       'border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
     )}
   >
-    <h3 className={cn('text-sm font-bold font-mono tracking-tight', toneTokens[tone].text)}>
+    <h3 className={cx('text-sm font-bold font-mono tracking-tight', toneTokens[tone].text)}>
       {title}
     </h3>
     <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>

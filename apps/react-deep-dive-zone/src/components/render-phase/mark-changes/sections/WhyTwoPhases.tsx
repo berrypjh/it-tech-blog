@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, Gauge, type LucideIcon, Shield, Sparkles, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,11 +31,11 @@ export const WhyTwoPhases = ({ content }: Props) => (
           <ToneCardItem
             key={reason.title}
             tone={reason.tone}
-            icon={<Icon className={cn('h-5 w-5', toneTokens[reason.tone].text)} />}
+            icon={<Icon className={cx('h-5 w-5', toneTokens[reason.tone].text)} />}
             topRight={idx + 1}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md font-bold tracking-tight break-keep',
                 toneTokens[reason.tone].text,
               )}

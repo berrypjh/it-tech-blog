@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 import { type ToneKey, toneTokens } from '../tones';
@@ -22,7 +21,7 @@ type Props = {
  * 노드 점은 축 위에 얹히고(페이지 배경색 ring), 카드 본문은 호출부가 entry.body로 주입한다.
  */
 export const Timeline = ({ entries, className }: Props) => (
-  <ol className={cn('relative pl-6 sm:pl-8 flex flex-col gap-md', className)}>
+  <ol className={cx('relative pl-6 sm:pl-8 flex flex-col gap-md', className)}>
     {/* 세로 축 */}
     <span
       aria-hidden="true"
@@ -34,7 +33,7 @@ export const Timeline = ({ entries, className }: Props) => (
         {/* 노드 */}
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'absolute -left-[1.4rem] sm:-left-[1.6rem] top-md inline-flex items-center justify-center',
             'w-4 h-4 rounded-full ring-4 ring-[var(--color-canvas)]',
             toneTokens[entry.tone].dot,
@@ -42,7 +41,7 @@ export const Timeline = ({ entries, className }: Props) => (
         />
 
         <article
-          className={cn(
+          className={cx(
             'group rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all',
             'border-[var(--term-border)] hover:-translate-y-px hover:shadow-[0_3px_0_var(--term-border)]',
           )}

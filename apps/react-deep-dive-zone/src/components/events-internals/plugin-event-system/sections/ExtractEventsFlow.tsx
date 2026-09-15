@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CornerDownRight,
   FormInput,
@@ -39,7 +38,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
     {/* Center extractEvents card */}
     <div className="flex flex-col items-center gap-2">
       <article
-        className={cn(
+        className={cx(
           'relative w-full max-w-[520px] rounded-2xl border-2 p-md sm:p-lg text-center',
           'border-violet-300/90 bg-gradient-to-br from-violet-50 to-blue-50/60',
           'dark:border-violet-600/80 dark:from-violet-950/40 dark:to-blue-950/30',
@@ -72,13 +71,13 @@ export const ExtractEventsFlow = ({ content }: Props) => (
     </div>
 
     {/* Plugin grid */}
-    <ul className={cn('mt-2 grid gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3')}>
+    <ul className={cx('mt-2 grid gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3')}>
       {content.plugins.map((plugin) => {
         const Icon = pluginIcons[plugin.name] ?? Sparkles;
         return (
           <li
             key={plugin.name}
-            className={cn(
+            className={cx(
               'group flex items-start gap-3 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -87,7 +86,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                 toneIconBox[plugin.tone],
               )}
@@ -96,7 +95,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0.5 min-w-0 flex-1">
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold break-all',
                   toneAccent[plugin.tone],
                 )}
@@ -109,7 +108,7 @@ export const ExtractEventsFlow = ({ content }: Props) => (
             </div>
             <Zap
               aria-hidden="true"
-              className={cn('h-3.5 w-3.5 shrink-0 mt-1 opacity-50', toneAccent[plugin.tone])}
+              className={cx('h-3.5 w-3.5 shrink-0 mt-1 opacity-50', toneAccent[plugin.tone])}
             />
           </li>
         );

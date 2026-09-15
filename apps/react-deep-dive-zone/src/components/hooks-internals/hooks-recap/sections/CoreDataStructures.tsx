@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Box, Braces } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -11,7 +10,7 @@ type Props = { content: HooksRecapContent['dataStructures'] };
 
 const StructureCard = ({ item }: { item: DataStructure }) => (
   <article
-    className={cn(
+    className={cx(
       'h-full flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5',
@@ -21,7 +20,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
     <header className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-white dark:bg-slate-950/40',
           'border-[var(--term-border)]',
           toneText[item.tone],
@@ -30,7 +29,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
         <Box className="h-4 w-4" aria-hidden="true" />
       </span>
       <code
-        className={cn('font-mono text-xsm sm:text-sm font-bold break-all', toneText[item.tone])}
+        className={cx('font-mono text-xsm sm:text-sm font-bold break-all', toneText[item.tone])}
       >
         {item.title}
       </code>
@@ -42,7 +41,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
     {/* Visual or fields */}
     {item.visualLines && (
       <div
-        className={cn(
+        className={cx(
           'rounded-xl border bg-white p-3 dark:bg-slate-950/40',
           'border-[var(--term-border)]',
         )}
@@ -53,7 +52,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
             return (
               <li key={line} className="flex flex-col items-center gap-1">
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-lg border px-3 py-1.5 font-mono text-[11px] font-bold break-all',
                     toneChip[item.tone],
                   )}
@@ -61,7 +60,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
                   {line}
                 </code>
                 {!isLast && (
-                  <ArrowDown aria-hidden="true" className={cn('h-3 w-3', toneText[item.tone])} />
+                  <ArrowDown aria-hidden="true" className={cx('h-3 w-3', toneText[item.tone])} />
                 )}
               </li>
             );
@@ -75,7 +74,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
         {item.fields.map((field) => (
           <li key={field}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex w-full rounded-lg border px-3 py-1.5 font-mono text-[11px] font-bold break-all',
                 toneChip[item.tone],
               )}
@@ -92,7 +91,7 @@ const StructureCard = ({ item }: { item: DataStructure }) => (
 export const CoreDataStructures = ({ content }: Props) => (
   <section
     aria-labelledby="heading-data-structures"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

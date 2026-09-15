@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, GitBranch, HelpCircle, X } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
           return (
             <li key={col.phase}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -44,17 +43,17 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
 
                 {/* Core question */}
                 <div
-                  className={cn('flex items-start gap-2 rounded-md border-2 p-3', t.border, t.chip)}
+                  className={cx('flex items-start gap-2 rounded-md border-2 p-3', t.border, t.chip)}
                 >
                   <HelpCircle
-                    className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
+                    className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">
-                    <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                    <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.questionLabel}
                     </span>
-                    <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                    <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                       {col.question}
                     </p>
                   </div>
@@ -63,7 +62,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                 {/* Does */}
                 <div className="flex flex-col gap-1">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider',
                       'text-emerald-700 dark:text-emerald-300',
                     )}
@@ -79,7 +78,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                 {/* Does NOT */}
                 <div className="flex flex-col gap-1">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider',
                       'text-amber-700 dark:text-amber-300',
                     )}
@@ -88,7 +87,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                     {content.doesNotLabel}
                   </span>
                   <p
-                    className={cn(
+                    className={cx(
                       'text-xsm leading-relaxed break-keep',
                       'text-amber-900 dark:text-amber-100',
                     )}
@@ -106,7 +105,7 @@ export const PhaseRoleComparisonSection = ({ content }: Props) => {
                     {col.functions.map((fn) => (
                       <li key={fn}>
                         <code
-                          className={cn(
+                          className={cx(
                             'inline-flex items-center rounded-md border px-1.5 py-0.5',
                             t.border,
                             'bg-white dark:bg-[var(--term-bg)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Layers, RefreshCcw } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -27,7 +26,7 @@ export const WorkLoopComparison = ({ content }: Props) => (
 
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'pointer-events-none absolute z-10 inline-flex items-center justify-center',
           'h-12 w-12 sm:h-14 sm:w-14 rounded-full border bg-[var(--term-bg)] text-[var(--term-fg)]',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
@@ -47,7 +46,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -56,7 +55,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
       <header className="flex items-center justify-between gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-12 w-12 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -64,7 +63,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
           <RefreshCcw className="h-5 w-5" aria-hidden="true" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -73,7 +72,7 @@ const Card = ({ card }: { card: ComparisonCard }) => {
         </span>
       </header>
 
-      <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}>
+      <h3 className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', t.text)}>
         {card.title}
       </h3>
 
@@ -83,14 +82,14 @@ const Card = ({ card }: { card: ComparisonCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep"
           >
-            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span>{item}</span>
           </li>
         ))}
       </ul>
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto inline-flex w-fit items-center rounded-full border px-2.5 py-1 text-xxsm font-mono uppercase tracking-wider',
           t.chip,
         )}

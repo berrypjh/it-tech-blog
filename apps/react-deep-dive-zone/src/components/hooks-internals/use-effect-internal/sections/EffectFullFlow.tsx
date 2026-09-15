@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -83,7 +82,7 @@ const toneText: Record<Tone, string> = {
 export const EffectFullFlow = ({ content }: Props) => (
   <section
     aria-labelledby="heading-effect-flow"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -102,7 +101,7 @@ export const EffectFullFlow = ({ content }: Props) => (
         return (
           <li key={step.number} className="relative">
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-2 rounded-2xl border-2 p-3 text-center',
                 'shadow-[0_1px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -112,7 +111,7 @@ export const EffectFullFlow = ({ content }: Props) => (
               <header className="flex items-center justify-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums',
                     toneNumber[step.tone],
                   )}
@@ -121,7 +120,7 @@ export const EffectFullFlow = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     toneIconBox[step.tone],
                   )}
@@ -130,7 +129,7 @@ export const EffectFullFlow = ({ content }: Props) => (
                 </span>
               </header>
               <h3
-                className={cn(
+                className={cx(
                   'text-[11px] sm:text-xsm font-bold leading-tight break-keep',
                   toneText[step.tone],
                 )}

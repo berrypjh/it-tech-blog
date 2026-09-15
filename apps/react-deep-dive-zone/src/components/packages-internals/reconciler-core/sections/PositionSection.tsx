@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, Lightbulb, type LucideIcon, Map, Monitor } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -54,7 +53,7 @@ const PositionCardView = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
@@ -67,7 +66,7 @@ const PositionCardView = ({
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', tone.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold font-mono tracking-tight', tone.text)}>
             {card.name}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">

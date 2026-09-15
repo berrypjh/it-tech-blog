@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, Flag, GitBranch, type LucideIcon, Sparkles, Star } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ export const FilesSection = ({ content }: Props) => {
               icon={<Icon className="h-5 w-5" aria-hidden="true" />}
               topRight={
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center w-7 h-7 rounded-md font-mono font-bold text-sm',
                     'bg-[var(--term-surface)] border border-[var(--term-border)]',
                     toneTokens[card.tone].text,
@@ -49,7 +48,7 @@ export const FilesSection = ({ content }: Props) => {
               }
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-sm font-bold font-mono tracking-tight truncate',
                   toneTokens[card.tone].text,
                 )}

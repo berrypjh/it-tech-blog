@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Braces, Hexagon, PlayCircle } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -25,7 +24,7 @@ export const FiberWhyNeededHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -55,7 +54,7 @@ const FlowCard = ({ step }: { step: HeroFlowStep }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -65,7 +64,7 @@ const FlowCard = ({ step }: { step: HeroFlowStep }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <span className={cn('font-mono text-sm font-bold tracking-tight', tone.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight', tone.text)}>
           {step.title}
         </span>
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

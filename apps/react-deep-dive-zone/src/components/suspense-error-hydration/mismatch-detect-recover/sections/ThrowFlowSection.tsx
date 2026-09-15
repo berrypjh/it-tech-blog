@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, FileCode, ShieldAlert, Zap } from 'lucide-react';
 
 import type { MismatchDetectRecoverContent } from '../content';
@@ -16,7 +15,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* left flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -30,7 +29,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
             return (
               <li key={step.title} className="flex flex-col items-center gap-1.5 w-full">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex flex-col items-start gap-1 rounded-xl border-2 px-3 py-2.5 w-full',
                     accent.border,
                     accent.bg,
@@ -46,7 +45,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
                         className="h-3.5 w-3.5 text-rose-600 dark:text-rose-300"
                       />
                     )}
-                    <span className={cn('text-xsm font-mono font-bold break-keep', accent.text)}>
+                    <span className={cx('text-xsm font-mono font-bold break-keep', accent.text)}>
                       {step.title}
                     </span>
                   </div>
@@ -68,7 +67,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
 
       {/* center key point */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -103,7 +102,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
 
       {/* right code location */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-blue-50/30 dark:border-blue-800/60 dark:bg-blue-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -121,7 +120,7 @@ export const ThrowFlowSection = ({ content }: Props) => (
           </h3>
         </header>
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-lg border px-2 py-1',
             'border-blue-200 bg-white text-blue-700 text-[11px] font-mono font-bold',
             'dark:border-blue-800/60 dark:bg-slate-900 dark:text-blue-200',

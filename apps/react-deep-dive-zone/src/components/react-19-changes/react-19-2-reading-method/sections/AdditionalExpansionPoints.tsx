@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { ArrowRightIcon, ExternalLinkIcon } from '../icons';
@@ -29,7 +29,7 @@ export const AdditionalExpansionPoints = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
                 'bg-white dark:bg-[var(--term-bg)]',
                 t.border,
@@ -40,12 +40,12 @@ export const AdditionalExpansionPoints = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn('absolute inset-x-0 top-0 h-1', t.solidBg, 'opacity-80')}
+                className={cx('absolute inset-x-0 top-0 h-1', t.solidBg, 'opacity-80')}
               />
 
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-12 w-12 items-center justify-center rounded-xl border',
                   t.iconChip,
                 )}
@@ -53,7 +53,7 @@ export const AdditionalExpansionPoints = ({ content }: Props) => (
                 <Icon className="h-6 w-6" />
               </span>
 
-              <h3 className={cn('text-md sm:text-lg font-bold break-keep', t.text)}>
+              <h3 className={cx('text-md sm:text-lg font-bold break-keep', t.text)}>
                 {card.title}
               </h3>
 
@@ -65,7 +65,7 @@ export const AdditionalExpansionPoints = ({ content }: Props) => (
                 href={card.buttonHref}
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noreferrer' : undefined}
-                className={cn(
+                className={cx(
                   'group/btn mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-3 py-2',
                   t.border,
                   'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',

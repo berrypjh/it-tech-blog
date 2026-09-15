@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CornerDownRight, Network, Plug, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
           return (
             <li key={card.id}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -42,7 +41,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                 {/* API header */}
                 <header className="flex items-center justify-between gap-2">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-md border-2 px-2.5 py-1',
                       t.border,
                       t.chip,
@@ -51,13 +50,13 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('block h-1.5 w-1.5 rounded-full', t.dot)}
+                      className={cx('block h-1.5 w-1.5 rounded-full', t.dot)}
                     />
                     {card.api}
                   </code>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 w-7 items-center justify-center rounded-md border',
                       t.chip,
                     )}
@@ -72,7 +71,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                     {content.publicApiLabel}
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 self-start rounded-md border px-2 py-0.5',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-[11px] text-[var(--term-fg)]',
@@ -84,11 +83,11 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
 
                 {/* dispatcher method — emphasized */}
                 <div className="flex flex-col gap-1">
-                  <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                  <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                     {content.dispatcherLabel}
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 self-start rounded-md border-2 px-2.5 py-1',
                       t.border,
                       'bg-white dark:bg-[var(--term-bg)]',
@@ -109,7 +108,7 @@ export const SamePatternAcrossApisSection = ({ content }: Props) => {
                     {content.hintLabel}
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 self-start rounded-md border px-2 py-0.5',
                       'border-violet-200 bg-violet-50 text-violet-800',
                       'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',

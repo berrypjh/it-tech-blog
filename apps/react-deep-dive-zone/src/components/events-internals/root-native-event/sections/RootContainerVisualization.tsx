@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Container, Eye, Layers, Network } from 'lucide-react';
 
 import type { RootNativeEventContent } from '../content';
@@ -19,7 +18,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -30,7 +29,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
           <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-md items-stretch">
             {/* DOM box */}
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 rounded-2xl border-2 p-md',
                 'border-violet-300/90 bg-gradient-to-br from-violet-50 to-blue-50/60',
                 'dark:border-violet-600/80 dark:from-violet-950/40 dark:to-blue-950/30',
@@ -54,7 +53,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
 
               {/* root badge */}
               <div
-                className={cn(
+                className={cx(
                   'mt-1 flex items-start gap-2 rounded-xl border-2 p-3',
                   'border-teal-300/80 bg-teal-50/70 dark:border-teal-700/60 dark:bg-teal-950/30',
                 )}
@@ -78,7 +77,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
 
             {/* listener pills — vertical list */}
             <div
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-md',
                 'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
               )}
@@ -104,7 +103,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
         {/* RIGHT: explanation + note */}
         <div className="flex flex-col gap-md">
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
               'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             )}
@@ -126,7 +125,7 @@ export const RootContainerVisualization = ({ content }: Props) => (
           </article>
 
           <aside
-            className={cn(
+            className={cx(
               'flex items-start gap-sm rounded-2xl border-2 p-md',
               'border-amber-300/80 bg-amber-50/60 dark:border-amber-800/60 dark:bg-amber-950/30',
             )}

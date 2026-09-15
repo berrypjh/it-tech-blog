@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Merge, Route } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -48,7 +47,7 @@ const pathTone: Record<Tone, { card: string; node: string; arrow: string }> = {
 export const InternalConnectionMap = ({ content }: Props) => (
   <section
     aria-labelledby="heading-connection-map"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -68,14 +67,14 @@ export const InternalConnectionMap = ({ content }: Props) => (
           return (
             <article
               key={path.label}
-              className={cn(
+              className={cx(
                 'rounded-2xl border-2 p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 t.card,
               )}
             >
               <p
-                className={cn(
+                className={cx(
                   'mb-2 text-[10px] font-mono font-bold uppercase tracking-wider',
                   t.arrow,
                 )}
@@ -88,7 +87,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
                   return (
                     <span key={node} className="inline-flex items-center gap-1.5 sm:gap-2">
                       <code
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center rounded-lg border-2 px-2.5 py-1.5 font-mono text-[11px] sm:text-xsm font-bold break-all',
                           t.node,
                         )}
@@ -96,7 +95,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
                         {node}
                       </code>
                       {!isLast && (
-                        <ArrowRight aria-hidden="true" className={cn('h-4 w-4', t.arrow)} />
+                        <ArrowRight aria-hidden="true" className={cx('h-4 w-4', t.arrow)} />
                       )}
                     </span>
                   );
@@ -117,7 +116,7 @@ export const InternalConnectionMap = ({ content }: Props) => (
 
       {/* Common pipeline box */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg text-center',
           'border-violet-400/80 bg-violet-50/70 shadow-[0_3px_0_var(--term-border)]',
           'dark:border-violet-600/70 dark:bg-violet-950/40',

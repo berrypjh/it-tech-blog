@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CalendarClock,
   Code2,
@@ -62,7 +61,7 @@ export const InternalFlowPreviewSection = ({ content }: Props) => (
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />
 
     <div
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         amber.border,
       )}

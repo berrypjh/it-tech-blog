@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Map, Star } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -42,11 +41,11 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-md rounded-2xl border p-md transition-all hover:-translate-y-0.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         step.highlighted
-          ? cn(
+          ? cx(
               'ring-2 ring-[var(--term-accent)]/60 ring-offset-2 ring-offset-[var(--term-bg)]',
               t.border,
             )
@@ -55,7 +54,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
             t.chip,
           )}
@@ -64,7 +63,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
         </span>
         {step.highlighted && (
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider',
               t.text,
             )}
@@ -75,7 +74,7 @@ const StepCard = ({ step }: { step: FinalFlowStep }) => {
           </span>
         )}
       </header>
-      <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <h3 className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {step.title}
       </h3>
       {step.code && <CodePreviewPanel code={step.code} language="JS" />}

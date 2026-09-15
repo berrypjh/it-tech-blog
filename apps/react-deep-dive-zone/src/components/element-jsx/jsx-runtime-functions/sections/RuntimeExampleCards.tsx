@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -34,7 +33,7 @@ export const RuntimeExampleCards = ({ content }: Props) => (
 const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel: string }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -44,7 +43,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
         <h3 className="text-xsm font-bold tracking-tight text-[var(--term-fg)]">{card.label}</h3>
         {card.badge && (
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
               toneTokens[card.tone].chip,
             )}
@@ -63,7 +62,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
       </div>
 
       <div
-        className={cn(
+        className={cx(
           'flex items-center justify-between gap-sm rounded-xl border px-md py-2.5 mt-auto',
           toneTokens[card.tone].chip,
         )}
@@ -71,7 +70,7 @@ const ExampleCardView = ({ card, resultLabel }: { card: ExampleCard; resultLabel
         <span className="text-[10px] uppercase tracking-wider font-bold text-[var(--term-muted)]">
           {resultLabel}
         </span>
-        <span className={cn('font-mono text-md font-bold', toneTokens[card.tone].text)}>
+        <span className={cx('font-mono text-md font-bold', toneTokens[card.tone].text)}>
           {card.resultRuntime}
         </span>
       </div>

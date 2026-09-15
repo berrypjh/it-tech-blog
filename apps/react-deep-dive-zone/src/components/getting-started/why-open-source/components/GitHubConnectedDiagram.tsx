@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleCheck, GitBranch, GitCommit } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -148,7 +147,7 @@ export const GitHubConnectedDiagram = ({ diagram }: Props) => {
         {/* 중앙: GitHub hub card (가운데 row, 전체 폭) */}
         <div className="col-span-12 row-start-2 flex items-center justify-center py-1">
           <div
-            className={cn(
+            className={cx(
               'relative inline-flex flex-col items-center justify-center gap-1',
               'rounded-full border-2 border-[var(--term-fg)] bg-white dark:bg-slate-900',
               'w-[120px] h-[120px] sm:w-[132px] sm:h-[132px]',
@@ -257,7 +256,7 @@ const colorizeTree = (mock: string): React.ReactNode => {
     return (
       <div
         key={i}
-        className={cn('block', isReconciler && 'text-sky-900 dark:text-sky-50 font-bold')}
+        className={cx('block', isReconciler && 'text-sky-900 dark:text-sky-50 font-bold')}
       >
         {line}
       </div>

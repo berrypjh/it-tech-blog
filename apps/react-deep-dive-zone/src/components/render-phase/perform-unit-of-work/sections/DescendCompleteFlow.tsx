@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowUp,
@@ -45,14 +44,14 @@ export const DescendCompleteFlow = ({ content }: Props) => (
           {content.flow.topSteps.map((step, idx) => (
             <div key={step} className="flex w-full flex-col items-center">
               <article
-                className={cn(
+                className={cx(
                   'inline-flex w-full max-w-[420px] items-center justify-center rounded-lg border px-md py-2.5 shadow-[0_1px_0_var(--term-border)]',
                   toneTokens.sky.fill.bg,
                   toneTokens.sky.fill.border,
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'text-xsm sm:text-sm font-bold leading-tight text-center break-keep',
                     toneTokens.sky.fill.text,
                   )}
@@ -74,16 +73,16 @@ export const DescendCompleteFlow = ({ content }: Props) => (
           <div className="relative flex h-24 w-[min(280px,100%)] items-center justify-center">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'absolute inset-0 m-auto rotate-45 h-[80%] w-[80%] rounded-lg border',
                 toneTokens.violet.fill.bg,
                 toneTokens.violet.fill.border,
               )}
             />
             <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-              <HelpCircle aria-hidden="true" className={cn('h-4 w-4', toneTokens.violet.text)} />
+              <HelpCircle aria-hidden="true" className={cx('h-4 w-4', toneTokens.violet.text)} />
               <span
-                className={cn(
+                className={cx(
                   'text-xsm sm:text-sm font-bold break-keep',
                   toneTokens.violet.fill.text,
                 )}
@@ -138,7 +137,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border',
                     t.chip,
                   )}
@@ -176,7 +175,7 @@ const SmallBranch = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-1.5 rounded-lg border p-sm sm:p-md shadow-[0_1px_0_var(--term-border)]',
         t.border,
       )}
@@ -185,10 +184,10 @@ const SmallBranch = ({
         {labels.map((label, idx) => (
           <span
             key={`${label}-${idx}`}
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
               idx === 0
-                ? cn(t.chip, 'font-bold')
+                ? cx(t.chip, 'font-bold')
                 : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
             )}
           >
@@ -196,7 +195,7 @@ const SmallBranch = ({
           </span>
         ))}
       </header>
-      <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+      <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
         {title}
       </h4>
       <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

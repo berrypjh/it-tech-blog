@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Trophy } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -22,7 +21,7 @@ export const WholeChapterTakeaways = ({ content }: Props) => (
       {content.cards.map((card) => (
         <article
           key={card.num}
-          className={cn(
+          className={cx(
             'group relative flex flex-col gap-md rounded-2xl border-2 p-md transition-all',
             'shadow-[0_2px_0_var(--term-border)]',
             'hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -32,7 +31,7 @@ export const WholeChapterTakeaways = ({ content }: Props) => (
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                 'text-md font-mono font-bold tabular-nums shadow-[0_3px_0_rgba(0,0,0,0.08)]',
                 toneNumber[card.tone],
@@ -41,7 +40,7 @@ export const WholeChapterTakeaways = ({ content }: Props) => (
               {card.num}
             </span>
             <span
-              className={cn(
+              className={cx(
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 toneAccent[card.tone],
               )}

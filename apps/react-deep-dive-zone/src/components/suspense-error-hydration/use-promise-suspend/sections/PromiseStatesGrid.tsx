@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Hourglass, TriangleAlert } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -27,7 +26,7 @@ export const PromiseStatesGrid = ({ content }: Props) => (
         return (
           <li key={card.state}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-md h-full rounded-2xl border-2 p-md sm:p-lg',
                 accent.border,
                 accent.bg,
@@ -38,7 +37,7 @@ export const PromiseStatesGrid = ({ content }: Props) => (
               <div className="flex items-start gap-3">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-2',
                     accent.iconChip,
                   )}
@@ -46,7 +45,7 @@ export const PromiseStatesGrid = ({ content }: Props) => (
                   <Icon className="h-6 w-6" />
                 </span>
                 <div className="flex flex-col">
-                  <h3 className={cn('text-lg font-bold font-mono', accent.text)}>{card.label}</h3>
+                  <h3 className={cx('text-lg font-bold font-mono', accent.text)}>{card.label}</h3>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--term-muted)]">
                     {card.sublabel}
                   </span>
@@ -56,7 +55,7 @@ export const PromiseStatesGrid = ({ content }: Props) => (
               <p className="text-xsm text-[var(--term-fg)] break-keep">{card.description}</p>
 
               <div
-                className={cn(
+                className={cx(
                   'mt-auto rounded-xl border bg-white p-3 dark:bg-[var(--term-bg)]',
                   accent.border,
                 )}
@@ -65,14 +64,14 @@ export const PromiseStatesGrid = ({ content }: Props) => (
                   {card.decisionLabel}
                 </span>
                 <p
-                  className={cn(
+                  className={cx(
                     'mt-1 flex items-center gap-1.5 text-xsm font-bold break-keep',
                     accent.text,
                   )}
                 >
                   <ArrowRight
                     aria-hidden="true"
-                    className={cn('h-3.5 w-3.5 shrink-0', accent.text)}
+                    className={cx('h-3.5 w-3.5 shrink-0', accent.text)}
                   />
                   {card.decisionText}
                 </p>

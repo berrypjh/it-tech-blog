@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -16,7 +15,7 @@ export const FirstCodePreview = ({ content }: Props) => {
     <section
       id="section-first-code"
       aria-labelledby="heading-first-code"
-      className={cn(
+      className={cx(
         'relative space-y-lg',
         'rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)]',
         'p-md sm:p-lg lg:p-xl',

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-lg border-2 p-md sm:p-lg',
           t.fill.border,
           t.fill.bg,
@@ -38,7 +37,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
           <div className="flex lg:justify-center">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-lg border-2',
                 t.fill.bg,
                 t.fill.border,
@@ -54,7 +53,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
           <div className="flex flex-col gap-md min-w-0">
             <div className="flex flex-col gap-1">
               <h3
-                className={cn(
+                className={cx(
                   'text-xl sm:text-xxl lg:text-2xl font-bold leading-tight tracking-tight break-keep',
                   t.fill.text,
                 )}
@@ -62,7 +61,7 @@ export const CommitKeySummarySection = ({ content }: Props) => {
                 <span className="block">{content.mainSentence.line1}</span>
                 <span className="block">{content.mainSentence.line2}</span>
               </h3>
-              <p className={cn('text-xsm sm:text-sm break-keep', t.text)}>{content.description}</p>
+              <p className={cx('text-xsm sm:text-sm break-keep', t.text)}>{content.description}</p>
             </div>
 
             <div className="flex flex-col gap-sm">
@@ -103,13 +102,13 @@ const FlowCard = ({ step }: { step: FlowStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+      <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h4>
       <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock, Replace, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const WhyOldSection = ({ content }: Props) => {
         {content.cards.map((card) => (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-xl border-2 p-md',
                 'border-amber-200 bg-amber-50/40',
                 'dark:border-amber-800/60 dark:bg-amber-950/20',
@@ -34,7 +33,7 @@ export const WhyOldSection = ({ content }: Props) => {
             >
               <div className="flex items-center justify-between">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border px-2 py-1',
                     'border-amber-300 bg-white text-amber-800',
                     'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -46,7 +45,7 @@ export const WhyOldSection = ({ content }: Props) => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-md',
                     'border border-amber-300 bg-amber-100 text-amber-700',
                     'dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200',
@@ -67,7 +66,7 @@ export const WhyOldSection = ({ content }: Props) => {
               <div className="mt-auto pt-sm border-t border-dashed border-amber-300/70 dark:border-amber-700/60">
                 <div className="flex flex-wrap items-center gap-1.5">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border px-1.5 py-0.5',
                       'border-amber-300 bg-white text-amber-800',
                       'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -78,7 +77,7 @@ export const WhyOldSection = ({ content }: Props) => {
                   </code>
                   <ArrowRight className="h-3 w-3 text-blue-500 shrink-0" aria-hidden="true" />
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border-2 px-1.5 py-0.5',
                       'border-blue-300 bg-blue-50 text-blue-800',
                       'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -95,7 +94,7 @@ export const WhyOldSection = ({ content }: Props) => {
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -105,7 +104,7 @@ export const WhyOldSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}

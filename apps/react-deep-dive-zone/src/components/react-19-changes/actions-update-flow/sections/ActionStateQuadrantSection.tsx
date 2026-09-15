@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent } from '../content';
 import { ArrowRightIcon, AtomIcon } from '../icons';
@@ -20,7 +20,7 @@ export const ActionStateQuadrantSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'relative rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
         'border-slate-200 bg-gradient-to-br from-white via-blue-50/40 to-white',
         'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-blue-950/20 dark:to-[var(--term-bg)]',
@@ -48,7 +48,7 @@ export const ActionStateQuadrantSection = ({ content }: Props) => (
             <span aria-hidden="true" className="hidden sm:block" />
             <div className="col-span-2 sm:col-span-1 flex justify-center">
               <article
-                className={cn(
+                className={cx(
                   'inline-flex flex-col items-center gap-1 rounded-2xl border-2 px-md py-md',
                   'border-blue-700/60 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950',
                   'text-white shadow-[0_4px_0_rgba(15,23,42,0.25)]',
@@ -98,7 +98,7 @@ const QuadrantCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col items-center text-center gap-2 rounded-2xl border-2 p-md',
         'bg-white dark:bg-[var(--term-bg)]',
         tone.border,
@@ -109,19 +109,19 @@ const QuadrantCard = ({
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
           tone.iconChip,
         )}
       >
         <Icon className="h-5 w-5" />
       </span>
-      <h3 className={cn('text-sm font-bold break-keep', tone.text)}>{state.title}</h3>
+      <h3 className={cx('text-sm font-bold break-keep', tone.text)}>{state.title}</h3>
       <p className="text-xxsm leading-relaxed text-[var(--term-muted)] break-keep">
         {state.description}
       </p>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
           'font-mono text-[10px] font-bold',
           tone.chip,

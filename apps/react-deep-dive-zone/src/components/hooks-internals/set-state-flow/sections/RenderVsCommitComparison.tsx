@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Save, Timer, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ const columnIcons = [Timer, Layers, Save];
 export const RenderVsCommitComparison = ({ content }: Props) => (
   <section
     aria-labelledby="heading-render-vs-commit"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -67,7 +66,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
                 <th
                   key={col.index}
                   scope="col"
-                  className={cn(
+                  className={cx(
                     'text-left p-md border-b-2 border-l border-[var(--term-border)]',
                     headerTone[col.tone],
                   )}
@@ -106,7 +105,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'mt-1.5 inline-block h-1.5 w-1.5 rounded-full',
                           keywordChip[col.tone],
                         )}
@@ -131,7 +130,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
               return (
                 <td
                   key={col.index}
-                  className={cn(
+                  className={cx(
                     'p-md border-b border-l border-[var(--term-border)] align-top text-xsm break-keep',
                     isCommit
                       ? 'font-bold text-emerald-700 dark:text-emerald-300'
@@ -156,7 +155,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
               return (
                 <td
                   key={col.index}
-                  className={cn(
+                  className={cx(
                     'p-md border-b border-l border-[var(--term-border)] align-top text-xsm break-keep',
                     isCommit
                       ? 'font-bold text-emerald-700 dark:text-emerald-300'
@@ -179,7 +178,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
             {content.columns.map((col) => (
               <td key={col.index} className="p-md border-l border-[var(--term-border)] align-top">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider',
                     keywordChip[col.tone],
                   )}
@@ -200,7 +199,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
         return (
           <li key={col.index}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-sm rounded-2xl border-2 p-md',
                 'shadow-[0_2px_0_var(--term-border)]',
                 headerTone[col.tone],
@@ -213,7 +212,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
                   <h3 className="text-xsm font-bold break-keep">{col.title}</h3>
                 </div>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider',
                     keywordChip[col.tone],
                   )}
@@ -236,7 +235,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
                     {content.rowLabels.dom}
                   </dt>
                   <dd
-                    className={cn(
+                    className={cx(
                       'mt-0.5 text-[11px] break-keep',
                       col.index === 3
                         ? 'font-bold text-emerald-700 dark:text-emerald-300'
@@ -251,7 +250,7 @@ export const RenderVsCommitComparison = ({ content }: Props) => (
                     {content.rowLabels.user}
                   </dt>
                   <dd
-                    className={cn(
+                    className={cx(
                       'mt-0.5 text-[11px] break-keep',
                       col.index === 3
                         ? 'font-bold text-emerald-700 dark:text-emerald-300'

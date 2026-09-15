@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseSuspenseErrorModelContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, GitBranchIcon } from '../icons';
@@ -22,7 +22,7 @@ export const ThenableTrackingSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-gradient-to-br from-white via-purple-50/30 to-white',
         'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-purple-950/20 dark:to-[var(--term-bg)]',
@@ -31,7 +31,7 @@ export const ThenableTrackingSection = ({ content }: Props) => (
     >
       {/* Main 3 steps */}
       <ol
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-2',
           'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1.4fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
         )}
@@ -44,7 +44,7 @@ export const ThenableTrackingSection = ({ content }: Props) => (
             <Fragment key={step.title}>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
                     tone.border,
                     'bg-white dark:bg-[var(--term-bg)]',
@@ -54,14 +54,14 @@ export const ThenableTrackingSection = ({ content }: Props) => (
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                         tone.iconChip,
                       )}
                     >
                       <Icon className="h-4 w-4" />
                     </span>
-                    <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                    <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                       {step.title}
                     </h3>
                   </div>
@@ -75,17 +75,17 @@ export const ThenableTrackingSection = ({ content }: Props) => (
                       {step.items.map((item) => (
                         <li
                           key={item}
-                          className={cn(
+                          className={cx(
                             'inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5',
                             tone.chip,
                           )}
                         >
                           <span
                             aria-hidden="true"
-                            className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)}
+                            className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)}
                           />
                           <code
-                            className={cn('font-mono text-[11px] font-bold break-all', tone.text)}
+                            className={cx('font-mono text-[11px] font-bold break-all', tone.text)}
                           >
                             {item}
                           </code>
@@ -98,7 +98,7 @@ export const ThenableTrackingSection = ({ content }: Props) => (
               {!isLast && (
                 <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                       tone.iconChip,
                     )}
@@ -130,7 +130,7 @@ export const ThenableTrackingSection = ({ content }: Props) => (
           return (
             <li key={branch.title} className="h-full">
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
                   tone.borderStrong,
                   tone.bg,
@@ -140,14 +140,14 @@ export const ThenableTrackingSection = ({ content }: Props) => (
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                       tone.iconChip,
                     )}
                   >
                     <Icon className="h-4 w-4" />
                   </span>
-                  <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                  <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                     {branch.title}
                   </h3>
                 </div>

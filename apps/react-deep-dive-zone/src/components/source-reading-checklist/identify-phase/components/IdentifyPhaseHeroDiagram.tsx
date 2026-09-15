@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CalendarClock, Monitor, Route, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -29,7 +28,7 @@ export const IdentifyPhaseHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -77,7 +76,7 @@ const PhaseCard = ({ card }: { card: HeroPhaseCard }) => {
   const Icon = heroPhaseIcon[card.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -89,7 +88,7 @@ const PhaseCard = ({ card }: { card: HeroPhaseCard }) => {
           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <PhaseBadge phase={card.phase} size="sm" />
-        <span className={cn('ml-auto text-[10px] italic break-keep text-right', t.text)}>
+        <span className={cx('ml-auto text-[10px] italic break-keep text-right', t.text)}>
           {card.subtitle}
         </span>
       </div>
@@ -98,7 +97,7 @@ const PhaseCard = ({ card }: { card: HeroPhaseCard }) => {
         {card.functions.map((fn) => (
           <li key={fn}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-1.5 py-0.5',
                 t.border,
                 'bg-[var(--term-bg)] font-mono text-[10.5px] text-[var(--term-fg)]',
@@ -111,7 +110,7 @@ const PhaseCard = ({ card }: { card: HeroPhaseCard }) => {
       </ul>
 
       <div className="flex items-start gap-1.5 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1">
-        <span className={cn('font-bold text-[10px]', t.text)}>Q.</span>
+        <span className={cx('font-bold text-[10px]', t.text)}>Q.</span>
         <p className="text-[11px] leading-snug text-[var(--term-fg)] break-keep">{card.question}</p>
       </div>
     </article>

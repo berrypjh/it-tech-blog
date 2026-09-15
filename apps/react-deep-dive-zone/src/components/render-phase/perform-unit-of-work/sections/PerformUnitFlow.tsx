@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, HelpCircle, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -64,7 +63,7 @@ const CodeStep = ({ title, mono }: { title: string; mono?: boolean }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'inline-flex w-full max-w-[640px] items-center justify-center rounded-lg border px-md py-3',
         'shadow-[0_1px_0_var(--term-border)]',
         t.fill.bg,
@@ -72,7 +71,7 @@ const CodeStep = ({ title, mono }: { title: string; mono?: boolean }) => {
       )}
     >
       <code
-        className={cn(
+        className={cx(
           'text-xsm sm:text-sm font-bold break-all text-center',
           mono && 'font-mono',
           t.fill.text,
@@ -88,7 +87,7 @@ const Diamond = ({ title }: { title: string }) => (
   <div className="relative flex h-28 sm:h-32 w-[min(360px,100%)] items-center justify-center">
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'absolute inset-0 m-auto rotate-45 h-[78%] w-[78%] rounded-lg border',
         'shadow-[0_1px_0_var(--term-border)]',
         toneTokens.violet.fill.bg,
@@ -96,8 +95,8 @@ const Diamond = ({ title }: { title: string }) => (
       )}
     />
     <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-      <HelpCircle aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
-      <span className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}>
+      <HelpCircle aria-hidden="true" className={cx('h-5 w-5', toneTokens.violet.text)} />
+      <span className={cx('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}>
         {title}
       </span>
     </div>
@@ -118,7 +117,7 @@ const BranchPanel = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -128,10 +127,10 @@ const BranchPanel = ({
         {label.map((line, idx) => (
           <span
             key={`${line}-${idx}`}
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
               idx === 0
-                ? cn(t.chip, 'font-bold')
+                ? cx(t.chip, 'font-bold')
                 : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
             )}
           >
@@ -140,7 +139,7 @@ const BranchPanel = ({
         ))}
       </header>
       <code
-        className={cn(
+        className={cx(
           'mt-1 inline-flex items-center self-start rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1 font-mono text-xsm sm:text-sm font-bold break-all',
           t.text,
         )}

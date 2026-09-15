@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Code, GitBranch, Layers, type LucideIcon, Monitor, Smartphone } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const SharedFlowSection = ({ content }: Props) => {
 
         {/* 중앙 다이어그램 */}
         <div
-          className={cn(
+          className={cx(
             'relative order-1 lg:order-2 rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] overflow-hidden',
           )}
@@ -130,7 +129,7 @@ const FlowNode = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'inline-flex min-w-0 flex-col items-center gap-1 rounded-xl border',
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized
@@ -144,7 +143,7 @@ const FlowNode = ({
       <span className="flex w-full min-w-0 items-center justify-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
             'bg-[var(--term-surface)] border-[var(--term-border)]',
             text,
@@ -153,7 +152,7 @@ const FlowNode = ({
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'min-w-0 font-bold font-mono tracking-tight break-keep',
             small ? 'text-xsm' : 'text-sm',
             text,
@@ -227,7 +226,7 @@ const HelperCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -237,7 +236,7 @@ const HelperCard = ({
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-11 h-11 rounded-md border',
           'bg-[var(--term-surface)] border-[var(--term-border)]',
           text,
@@ -245,7 +244,7 @@ const HelperCard = ({
       >
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', text)}>{helper.title}</h3>
+      <h3 className={cx('text-md font-bold tracking-tight break-keep', text)}>{helper.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{helper.body}</p>
     </article>
   );

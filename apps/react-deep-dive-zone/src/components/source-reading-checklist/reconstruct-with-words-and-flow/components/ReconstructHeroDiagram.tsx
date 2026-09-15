@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, MessageSquareText, Repeat, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const ReconstructHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -55,7 +54,7 @@ export const ReconstructHeroDiagram = ({ content, className }: Props) => {
           {content.connectorLabels.map((label, i) => (
             <li key={label}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1 rounded-full border px-2.5 py-1',
                   'font-mono text-[10px] font-bold uppercase tracking-wider',
                   toneTokens.blue.chip,
@@ -96,7 +95,7 @@ const Panel = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -107,7 +106,7 @@ const Panel = ({
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <h3 className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
+        <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
       </header>
       {children}
       <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">{caption}</p>

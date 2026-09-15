@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Archive, ArrowDown, Box, FunctionSquare, GitBranch, Lightbulb } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ export const ClassSnapshotSection = ({ content }: Props) => (
       </ol>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border p-md',
           toneTokens.violet.fill.border,
           toneTokens.violet.fill.bg,
@@ -53,7 +52,7 @@ export const ClassSnapshotSection = ({ content }: Props) => (
           <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep',
             toneTokens.violet.fill.text,
           )}
@@ -70,7 +69,7 @@ const StepCard = ({ step, index }: { step: ClassSnapshotStep; index: number }) =
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -80,7 +79,7 @@ const StepCard = ({ step, index }: { step: ClassSnapshotStep; index: number }) =
         <Icon className="h-5 w-5" />
       </ToneIconBox>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-all font-mono',
           t.fill.text,
         )}
@@ -89,7 +88,7 @@ const StepCard = ({ step, index }: { step: ClassSnapshotStep; index: number }) =
       </h3>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, HelpCircle, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -9,7 +8,7 @@ type Props = { content: HooksRecapContent['quiz'] };
 
 const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string }) => (
   <article
-    className={cn(
+    className={cx(
       'h-full flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] transition-all',
       'hover:border-sky-300/70 dark:hover:border-sky-700/70',
@@ -31,7 +30,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
       {quiz.options.map((opt) => (
         <li
           key={opt.label}
-          className={cn(
+          className={cx(
             'flex items-start gap-2 rounded-lg border px-3 py-2',
             opt.isAnswer
               ? 'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30'
@@ -40,7 +39,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums',
               opt.isAnswer
                 ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900'
@@ -50,7 +49,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
             {opt.label}
           </span>
           <span
-            className={cn(
+            className={cx(
               'text-[11px] sm:text-xsm break-keep',
               opt.isAnswer
                 ? 'font-bold text-emerald-800 dark:text-emerald-100'
@@ -70,7 +69,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
     </ul>
 
     <aside
-      className={cn(
+      className={cx(
         'mt-auto flex items-start gap-2 rounded-xl border-2 p-3',
         'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30',
       )}
@@ -97,7 +96,7 @@ const QuizCard = ({ quiz, answerPrefix }: { quiz: QuizItem; answerPrefix: string
 export const MiniQuiz = ({ content }: Props) => (
   <section
     aria-labelledby="heading-quiz"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

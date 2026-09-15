@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, GitBranch, Layers, Wand2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -24,7 +23,7 @@ export const InputOutputStructure = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'grid grid-cols-1 items-stretch gap-md',
         'lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1fr)]',
       )}
@@ -68,7 +67,7 @@ const IoPanel = ({ tone, label, badge, icon, code, showWindowDots = false }: IoP
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -77,11 +76,11 @@ const IoPanel = ({ tone, label, badge, icon, code, showWindowDots = false }: IoP
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {label}
         </span>
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
             t.chip,
           )}

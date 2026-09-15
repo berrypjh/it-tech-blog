@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { tone } from '../tone';
@@ -25,7 +25,7 @@ export const ExpansionOverviewCards = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
                 'bg-white dark:bg-[var(--term-bg)]',
                 t.border,
@@ -36,12 +36,12 @@ export const ExpansionOverviewCards = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn('absolute inset-x-0 top-0 h-1', t.solidBg, 'opacity-80')}
+                className={cx('absolute inset-x-0 top-0 h-1', t.solidBg, 'opacity-80')}
               />
 
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-12 w-12 items-center justify-center rounded-xl border',
                   t.iconChip,
                 )}
@@ -49,7 +49,7 @@ export const ExpansionOverviewCards = ({ content }: Props) => (
                 <Icon className="h-6 w-6" />
               </span>
 
-              <h3 className={cn('text-sm sm:text-md font-bold break-keep', t.text)}>
+              <h3 className={cx('text-sm sm:text-md font-bold break-keep', t.text)}>
                 {card.title}
               </h3>
 

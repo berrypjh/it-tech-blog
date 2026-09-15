@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   /** 화면에는 숨기고 스크린리더에 읽힐 다이어그램 설명 */
@@ -26,7 +26,7 @@ export const HeroDiagramShell = ({
   padding = 'p-md sm:p-lg',
 }: Props) => (
   <div
-    className={cn(
+    className={cx(
       '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       padding,

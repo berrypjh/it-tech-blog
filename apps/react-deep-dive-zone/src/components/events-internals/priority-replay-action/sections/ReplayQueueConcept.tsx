@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Database, Repeat } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
 
     {/* 4-step flow */}
     <ol
-      className={cn(
+      className={cx(
         'grid items-stretch gap-2 sm:gap-3 mb-md',
         'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
       )}
@@ -31,7 +30,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-2 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -40,7 +39,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full',
                 'text-[11px] font-mono font-bold tabular-nums',
                 toneNumber[step.tone],
@@ -49,7 +48,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
               {step.step}
             </span>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 toneAccent[step.tone],
               )}
@@ -83,7 +82,7 @@ export const ReplayQueueConcept = ({ content }: Props) => (
 
     {/* Event buffer */}
     <article
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md',
         'border-violet-300/80 bg-gradient-to-br from-violet-50/60 via-white to-blue-50/30',
         'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',

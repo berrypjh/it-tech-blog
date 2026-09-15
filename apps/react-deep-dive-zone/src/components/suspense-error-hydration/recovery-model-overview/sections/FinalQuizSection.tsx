@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Info, XCircle } from 'lucide-react';
 
 import type { QuizCard, RecoveryModelOverviewContent } from '../content';
@@ -36,7 +35,7 @@ const QuizCardView = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md h-full rounded-3xl border-2 p-md sm:p-lg',
         isAnswered
           ? isCorrect
@@ -84,7 +83,7 @@ const QuizCardView = ({
                   type="button"
                   aria-pressed={isPicked}
                   onClick={() => onPick(opt.key)}
-                  className={cn(
+                  className={cx(
                     'w-full text-left rounded-xl border-2 p-2.5 transition-all',
                     'flex items-center gap-2',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -101,7 +100,7 @@ const QuizCardView = ({
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border font-mono text-[10px] font-bold uppercase',
                       isAnswered && isAnswerHere
                         ? 'border-emerald-400 bg-emerald-100 text-emerald-700 dark:border-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-200'
@@ -136,7 +135,7 @@ const QuizCardView = ({
       {isAnswered && (
         <div
           aria-live="polite"
-          className={cn(
+          className={cx(
             'mt-auto rounded-xl border p-3 text-xsm break-keep',
             isCorrect
               ? 'border-emerald-200 bg-emerald-50/60 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/30 dark:text-emerald-200'

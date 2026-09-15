@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers } from 'lucide-react';
 
 import type { ComparisonRow, Tone, WhyNotImmediateContent } from '../content';
@@ -61,14 +60,14 @@ const CellList = ({ items }: { items: string[] }) => (
 const Row = ({ row }: { row: ComparisonRow }) => (
   <>
     {/* DESKTOP: table-row inline */}
-    <tr className={cn('hidden md:table-row align-top transition-colors', toneRow[row.tone])}>
+    <tr className={cx('hidden md:table-row align-top transition-colors', toneRow[row.tone])}>
       <td className="border-t border-[var(--term-border)] px-md py-3 align-top">
         <div className="flex flex-col gap-2">
-          <p className={cn('font-bold text-xsm sm:text-sm break-keep', toneText[row.tone])}>
+          <p className={cx('font-bold text-xsm sm:text-sm break-keep', toneText[row.tone])}>
             {row.situation}
           </p>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center self-start rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               toneBadge[row.tone],
@@ -102,16 +101,16 @@ const MobileRow = ({
   headers: Props['content']['headers'];
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-3 rounded-2xl border-2 p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       toneRow[row.tone],
     )}
   >
     <header className="flex items-center justify-between gap-2">
-      <p className={cn('font-bold text-sm break-keep', toneText[row.tone])}>{row.situation}</p>
+      <p className={cx('font-bold text-sm break-keep', toneText[row.tone])}>{row.situation}</p>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-full border px-2 py-0.5',
           'text-[10px] font-mono font-bold uppercase tracking-wider',
           toneBadge[row.tone],
@@ -164,7 +163,7 @@ export const SchedulerComparisonTable = ({ content }: Props) => (
 
     {/* DESKTOP table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}

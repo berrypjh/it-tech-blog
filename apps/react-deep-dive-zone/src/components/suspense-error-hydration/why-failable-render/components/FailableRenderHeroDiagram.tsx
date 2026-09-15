@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Hourglass, RefreshCcw, ShieldCheck } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const FailableRenderHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -115,7 +114,7 @@ const StepRow = ({ label, step }: { label: string; step: Step }) => {
   const { Icon, caption } = step;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -126,7 +125,7 @@ const StepRow = ({ label, step }: { label: string; step: Step }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
           {label}
         </span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

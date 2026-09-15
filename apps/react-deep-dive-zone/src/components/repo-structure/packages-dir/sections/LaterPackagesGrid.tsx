@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   FlaskConical,
   Info,
@@ -51,7 +50,7 @@ export const LaterPackagesGrid = ({ content }: Props) => {
                 {card.name}
               </h3>
 
-              <p className={cn('text-xsm font-bold', toneTokens[card.tone].text)}>
+              <p className={cx('text-xsm font-bold', toneTokens[card.tone].text)}>
                 {card.description1}
               </p>
 

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -80,7 +79,7 @@ export const HookInternalStructure = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-hook-structure"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -136,14 +135,14 @@ export const HookInternalStructure = ({ content }: Props) => {
             .map((field) => (
               <li key={field.name}>
                 <article
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-3 rounded-xl border bg-[var(--term-bg)] p-md',
                     'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)] transition-all',
                     'hover:border-sky-300/70 dark:hover:border-sky-700/70',
                   )}
                 >
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-mono font-bold break-all',
                       toneChip[field.tone],
                     )}
@@ -161,14 +160,14 @@ export const HookInternalStructure = ({ content }: Props) => {
           {queueParentField && (
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex flex-col gap-2 rounded-xl border-2 bg-[var(--term-bg)] p-md',
                   'border-cyan-300/80 dark:border-cyan-700/70 shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
                 <div className="flex items-start gap-3">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-mono font-bold break-all',
                       toneChip.cyan,
                     )}
@@ -185,7 +184,7 @@ export const HookInternalStructure = ({ content }: Props) => {
                     .map((child) => (
                       <li key={child.name} className="flex items-start gap-2">
                         <span
-                          className={cn(
+                          className={cx(
                             'inline-flex shrink-0 rounded-md border px-2 py-0.5 text-[10px] font-mono font-bold break-all',
                             toneChip[child.tone],
                           )}

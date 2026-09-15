@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -68,7 +67,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-experiment"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -98,7 +97,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
               aria-controls={`exp-panel-${t.key}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(t.key)}
-              className={cn(
+              className={cx(
                 'relative -mb-px inline-flex items-center gap-1.5 rounded-t-xl border-x border-t px-4 py-2',
                 'text-xsm sm:text-sm font-mono font-bold transition-colors',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -109,7 +108,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1.5 w-1.5 rounded-full',
                   selected ? 'bg-blue-500 dark:bg-blue-400' : 'bg-[var(--term-dim)]',
                 )}
@@ -168,7 +167,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
             {content.internalLabel}
           </span>
           <article
-            className={cn(
+            className={cx(
               'flex-1 rounded-xl border-2 p-md font-mono text-[11px] sm:text-xsm leading-[1.85]',
               'border-cyan-300/70 bg-cyan-50/30 dark:border-cyan-800/60 dark:bg-cyan-950/20',
             )}
@@ -203,7 +202,7 @@ export const UseStateDissectionExperiment = ({ content }: Props) => {
 
         {/* Right: tip card */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md',
             'border-teal-300/70 bg-teal-50/60 dark:border-teal-800/60 dark:bg-teal-950/30',
             'shadow-[0_2px_0_var(--term-border)]',

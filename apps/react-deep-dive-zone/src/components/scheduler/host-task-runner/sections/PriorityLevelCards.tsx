@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock3, Gauge, Moon, User, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -33,7 +32,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
         return (
           <li key={card.key} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'relative flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-colors',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -44,7 +43,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
             >
               {card.badge && (
                 <span
-                  className={cn(
+                  className={cx(
                     'absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center rounded-full border px-2 py-0.5',
                     'text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap',
                     pkgPill[card.accent],
@@ -57,7 +56,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                     pkgIconBox[card.accent],
                   )}
@@ -66,7 +65,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums',
                     'bg-white border border-current/30 text-[var(--term-muted)] shadow-sm dark:bg-slate-950/40',
                   )}
@@ -77,7 +76,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
 
               <div className="flex flex-col gap-0.5">
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-md sm:text-lg font-bold break-keep',
                     pkgTextStrong[card.accent],
                   )}
@@ -100,7 +99,7 @@ export const PriorityLevelCards = ({ content }: Props) => (
 
     {/* direction */}
     <div
-      className={cn(
+      className={cx(
         'mt-md flex items-center justify-between gap-3 rounded-2xl border-2 px-md py-3',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}

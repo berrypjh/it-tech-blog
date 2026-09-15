@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, PauseCircle, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -67,7 +66,7 @@ const ResultCard = ({
   const isRun = result.result === 'run';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         'motion-safe:hover:-translate-y-0.5',
@@ -78,7 +77,7 @@ const ResultCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-xsm sm:text-sm font-bold break-all',
             isRun
               ? 'text-emerald-800 dark:text-emerald-100'
@@ -88,7 +87,7 @@ const ResultCard = ({
           {result.transition}
         </code>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
             isRun
               ? 'border-emerald-300/80 bg-emerald-100 text-emerald-800 dark:border-emerald-700/60 dark:bg-emerald-950/60 dark:text-emerald-100'
@@ -111,7 +110,7 @@ const ResultCard = ({
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0',
                 isRun ? 'bg-emerald-500 dark:bg-emerald-400' : 'bg-violet-500 dark:bg-violet-400',
               )}
@@ -131,7 +130,7 @@ export const DependenciesExperiment = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-deps-experiment"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -162,7 +161,7 @@ export const DependenciesExperiment = ({ content }: Props) => {
         {/* Right: count flow + results */}
         <div className="flex flex-col gap-md">
           <div
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border bg-[var(--term-bg)] p-md',
               'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
             )}

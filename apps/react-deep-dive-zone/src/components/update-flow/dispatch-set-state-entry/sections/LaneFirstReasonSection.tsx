@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Crosshair, Database, Lightbulb, PenTool, Server } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -41,7 +40,7 @@ export const LaneFirstReasonSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         amber.border,
       )}

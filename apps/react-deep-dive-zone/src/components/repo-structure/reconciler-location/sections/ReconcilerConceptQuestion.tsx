@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleHelp, Lightbulb } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -18,7 +17,7 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'relative flex items-start gap-md overflow-hidden rounded-2xl border py-md pl-lg pr-md',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -31,7 +30,7 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
 
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-12 h-12 rounded-2xl border shrink-0',
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
@@ -42,7 +41,7 @@ export const ReconcilerConceptQuestion = ({ content }: Props) => (
       <div className="flex flex-col gap-2 min-w-0">
         {/* 맥락: 질문을 작은 줄로 */}
         <span className="inline-flex items-center gap-1.5 text-xsm text-[var(--term-muted)] break-keep">
-          <CircleHelp aria-hidden="true" className={cn('h-4 w-4 shrink-0', toneTokens.sky.text)} />
+          <CircleHelp aria-hidden="true" className={cx('h-4 w-4 shrink-0', toneTokens.sky.text)} />
           {content.question}
         </span>
 

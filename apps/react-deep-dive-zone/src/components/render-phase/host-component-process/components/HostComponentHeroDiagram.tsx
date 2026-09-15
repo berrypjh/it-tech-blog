@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, FileText, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -37,7 +36,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <FlowRow tone="teal" icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <span
-            className={cn(
+            className={cx(
               'font-mono text-sm font-bold tracking-tight break-keep',
               toneTokens.teal.text,
             )}
@@ -53,7 +52,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <FlowRow tone="violet" icon={<FileText className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <span
-            className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.violet.text)}
+            className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.violet.text)}
           >
             {diagram.childrenStep.title}
           </span>
@@ -61,12 +60,12 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
             {diagram.childrenStep.description}
           </code>
           <span
-            className={cn(
+            className={cx(
               'mt-0.5 inline-flex w-fit items-center gap-1.5 rounded-md border border-dashed px-2 py-0.5',
               toneTokens.violet.border,
             )}
           >
-            <code className={cn('font-mono text-xsm font-bold', toneTokens.violet.text)}>
+            <code className={cx('font-mono text-xsm font-bold', toneTokens.violet.text)}>
               {diagram.childrenStep.result}
             </code>
             <span className="text-xxsm uppercase tracking-wider text-[var(--term-muted)]">
@@ -79,7 +78,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <FlowRow tone="sky" icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}>
           <code
-            className={cn(
+            className={cx(
               'font-mono text-sm font-bold tracking-tight break-all',
               toneTokens.sky.text,
             )}
@@ -107,7 +106,7 @@ const FlowRow = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,

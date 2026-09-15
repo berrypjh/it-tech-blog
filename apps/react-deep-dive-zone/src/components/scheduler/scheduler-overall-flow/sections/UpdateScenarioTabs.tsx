@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock3, MousePointerClick, Repeat, Split } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -91,7 +90,7 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
               aria-controls={`scenario-panel-${item.id}`}
               id={`scenario-tab-${item.id}`}
               onClick={() => setActive(item.id)}
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-2 rounded-full border-2 px-3.5 py-1.5',
                 'text-xsm sm:text-sm font-bold whitespace-nowrap',
                 'transition-colors',
@@ -119,13 +118,13 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
         id={`scenario-panel-${current.id}`}
         role="tabpanel"
         aria-labelledby={`scenario-tab-${current.id}`}
-        className={cn(
+        className={cx(
           'mt-md grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-md items-stretch',
         )}
       >
         {/* Summary card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             accent.pipeline,
@@ -182,7 +181,7 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
 
         {/* Mini pipeline preview */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -199,7 +198,7 @@ export const UpdateScenarioTabs = ({ content }: Props) => {
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn('inline-block h-2 w-2 rounded-full', summaryDot[current.id])}
+                      className={cx('inline-block h-2 w-2 rounded-full', summaryDot[current.id])}
                     />
                     <span className="text-xsm font-medium text-[var(--term-fg)] break-keep">
                       {step}

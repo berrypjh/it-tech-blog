@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Network, RotateCw } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -9,7 +8,7 @@ type Props = { content: SetStateFlowContent['queueCircular'] };
 
 const StageCard = ({ stage }: { stage: CircularStage }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5 hover:border-violet-300/70 dark:hover:border-violet-700/70',
@@ -74,7 +73,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
               return (
                 <span key={node} className="inline-flex items-center gap-1.5">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-lg border-2 px-2.5 py-1.5 font-mono text-[11px] font-bold break-all',
                       isLast
                         ? 'border-violet-400 bg-violet-100 text-violet-800 dark:border-violet-600 dark:bg-violet-950/60 dark:text-violet-100'
@@ -110,7 +109,7 @@ const StageCard = ({ stage }: { stage: CircularStage }) => (
 export const QueuePendingCircularList = ({ content }: Props) => (
   <section
     aria-labelledby="heading-queue-circular"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

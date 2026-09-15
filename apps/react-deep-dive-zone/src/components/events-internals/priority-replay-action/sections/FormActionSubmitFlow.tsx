@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -67,7 +66,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-emerald-300/80 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/40',
           'dark:border-emerald-700/70 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -89,7 +88,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
               </span>
             </header>
             <article
-              className={cn(
+              className={cx(
                 'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
                 'border-emerald-200/80 dark:border-emerald-800/60',
               )}
@@ -116,7 +115,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
 
             {/* pending pill */}
             <div
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-2xl border-2 px-md py-3',
                 'border-amber-300/80 bg-amber-50/60 dark:border-amber-700/60 dark:bg-amber-950/30',
               )}
@@ -147,7 +146,7 @@ export const FormActionSubmitFlow = ({ content }: Props) => {
               return (
                 <li key={step.title} className="flex flex-col">
                   <div
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-3 rounded-2xl border-2 px-md py-2.5 transition-colors',
                       'border-emerald-200/80 bg-white dark:border-emerald-700/60 dark:bg-slate-950/40',
                       'hover:border-emerald-400 dark:hover:border-emerald-500',

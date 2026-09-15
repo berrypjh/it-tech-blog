@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Clock, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -42,7 +41,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
         <div className="flex flex-col gap-3">
           <article
             aria-labelledby="flow-result-title"
-            className={cn('rounded-lg border p-md', toneTokens.emerald.border)}
+            className={cx('rounded-lg border p-md', toneTokens.emerald.border)}
           >
             <header className="mb-2 flex items-center gap-2">
               <ToneIconBox tone="emerald" size="sm">
@@ -50,7 +49,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
               </ToneIconBox>
               <h3
                 id="flow-result-title"
-                className={cn('text-sm sm:text-md font-bold', toneTokens.emerald.text)}
+                className={cx('text-sm sm:text-md font-bold', toneTokens.emerald.text)}
               >
                 {content.resultTitle}
               </h3>
@@ -63,7 +62,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0',
                       toneTokens.emerald.dot,
                     )}
@@ -90,7 +89,7 @@ const StepRow = ({ step, isLast }: { step: FlowPreviewStep; isLast: boolean }) =
       <div className="flex flex-col items-center">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-full border text-xxsm font-mono font-bold tabular-nums',
             t.chip,
           )}
@@ -102,12 +101,12 @@ const StepRow = ({ step, isLast }: { step: FlowPreviewStep; isLast: boolean }) =
         )}
       </div>
       <article
-        className={cn(
+        className={cx(
           'flex-1 min-w-0 flex flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md shadow-[0_1px_0_var(--term-border)]',
           t.border,
         )}
       >
-        <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
           {step.title}
         </h3>
         <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

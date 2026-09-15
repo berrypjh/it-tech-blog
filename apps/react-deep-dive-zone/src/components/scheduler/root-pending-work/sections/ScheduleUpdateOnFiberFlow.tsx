@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Database, PauseCircle, Workflow, Zap } from 'lucide-react';
 
 import {
@@ -30,7 +29,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -42,7 +41,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
           return (
             <li key={step.title} className="flex flex-col">
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-3 rounded-2xl border-2 p-md transition-colors',
                   'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                   axisCardBorder[step.accent],
@@ -50,7 +49,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
                     'text-[11px] font-mono font-bold tabular-nums text-white',
                     axisNumberBadge[step.accent],
@@ -60,7 +59,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                     axisIconBox[step.accent],
                   )}
@@ -70,7 +69,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
                 <div className="flex flex-col gap-1 min-w-0 flex-1">
                   {step.isCode ? (
                     <code
-                      className={cn(
+                      className={cx(
                         'font-mono text-xsm sm:text-sm font-bold break-all',
                         axisTextStrong[step.accent],
                       )}
@@ -79,7 +78,7 @@ export const ScheduleUpdateOnFiberFlow = ({ content }: Props) => (
                     </code>
                   ) : (
                     <h3
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm font-bold leading-tight break-keep',
                         axisTextStrong[step.accent],
                       )}

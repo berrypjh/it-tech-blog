@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowLeftRight,
   ArrowUpDown,
@@ -40,7 +39,7 @@ export const DoubleBufferingSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'grid items-stretch min-w-0',
         'grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)]',
         'gap-md',
@@ -60,7 +59,7 @@ export const DoubleBufferingSection = ({ content }: Props) => (
             <RefreshCw className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'text-[11px] font-bold uppercase tracking-wider font-mono',
               toneTokens.sky.chip,
@@ -107,7 +106,7 @@ const Card = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg min-w-0',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.fill.border,
@@ -117,7 +116,7 @@ const Card = ({
         <ToneIconBox tone={tone} size="md">
           {icon}
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-extrabold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-sm sm:text-md font-extrabold tracking-tight break-keep', t.text)}>
           {title}
         </h3>
       </header>

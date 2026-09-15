@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, HelpCircle, Workflow } from 'lucide-react';
 
 import type { WhyFailableRenderContent } from '../content';
@@ -17,7 +16,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
   >
     {/* Today's question */}
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'border-blue-200/80 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -51,7 +50,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
         {question.badges.map((badge) => (
           <li
             key={badge.label}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'text-xsm font-mono font-bold',
               toneChip[badge.tone],
@@ -59,7 +58,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'block h-1.5 w-1.5 rounded-full',
                 badge.tone === 'blue' && 'bg-blue-500',
                 badge.tone === 'red' && 'bg-rose-500',
@@ -75,7 +74,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
 
     {/* Happy-path render flow */}
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -97,7 +96,7 @@ export const QuestionAndNormalRender = ({ question, normalRender }: Props) => (
         {normalRender.steps.map((step, i) => (
           <li key={step.label} className="flex items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-xl border-2 px-3 py-2',
                 'border-slate-200 bg-slate-50 text-slate-700 font-mono text-xsm font-bold',
                 'dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Loader, TriangleAlert } from 'lucide-react';
 
 import type { SuspendErrorCard, SuspenseHydrationLinkContent } from '../content';
@@ -47,7 +46,7 @@ export const ServerSuspendErrorSection = ({ content }: Props) => (
         return (
           <article
             key={card.kind}
-            className={cn(
+            className={cx(
               'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
               style.border,
               style.bg,
@@ -58,14 +57,14 @@ export const ServerSuspendErrorSection = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   style.iconChip,
                 )}
               >
                 <Icon className="h-4 w-4" />
               </span>
-              <h3 className={cn('text-md font-bold break-keep', style.text)}>{card.title}</h3>
+              <h3 className={cx('text-md font-bold break-keep', style.text)}>{card.title}</h3>
             </header>
             <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
               {card.description}
@@ -74,7 +73,7 @@ export const ServerSuspendErrorSection = ({ content }: Props) => (
               {card.flow.map((step, i) => (
                 <li key={step} className="flex items-center gap-1.5">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-lg border bg-white px-2.5 py-1.5',
                       'dark:bg-[var(--term-bg)]',
                       'text-[11px] font-mono font-bold break-keep',
@@ -87,7 +86,7 @@ export const ServerSuspendErrorSection = ({ content }: Props) => (
                   {i < card.flow.length - 1 && (
                     <ArrowRight
                       aria-hidden="true"
-                      className={cn('h-3.5 w-3.5 shrink-0', style.text)}
+                      className={cx('h-3.5 w-3.5 shrink-0', style.text)}
                     />
                   )}
                 </li>

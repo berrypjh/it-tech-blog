@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, Code2, ExternalLink, GitBranch, Info, Repeat, Rocket } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -88,7 +87,7 @@ const CodeCard = ({
             <span className="ml-2 text-[10px] font-mono text-slate-500">{fileLabel}</span>
           </div>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px] font-bold',
               isReplay ? 'bg-sky-500/20 text-sky-300' : 'bg-emerald-500/20 text-emerald-300',
             )}
@@ -127,7 +126,7 @@ const CodeCard = ({
       </div>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
         )}
@@ -135,7 +134,7 @@ const CodeCard = ({
         <header className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
               isReplay
                 ? 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200'
@@ -145,7 +144,7 @@ const CodeCard = ({
             <Info className="h-4 w-4" aria-hidden="true" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               isReplay
                 ? 'text-sky-700 dark:text-sky-300'
@@ -164,7 +163,7 @@ const CodeCard = ({
         href={href}
         target="_blank"
         rel="noreferrer noopener"
-        className={cn(
+        className={cx(
           'group flex items-center gap-3 rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'transition-all hover:-translate-y-0.5 hover:border-blue-300/70 dark:hover:border-blue-700/70',

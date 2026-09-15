@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Sparkles, Tag, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -45,7 +44,7 @@ export const ElementTypeHeroDiagram = ({ content, className }: Props) => {
         </ol>
 
         <div
-          className={cn(
+          className={cx(
             'mt-2 flex flex-col gap-0.5 rounded-xl border px-md py-3',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
           )}
@@ -66,7 +65,7 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
   const Icon = iconMap[item.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-2 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -78,7 +77,7 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <code
-          className={cn(
+          className={cx(
             'min-w-0 truncate font-mono text-xsm font-bold tracking-tight',
             toneTokens[item.tone].text,
           )}
@@ -88,7 +87,7 @@ const BranchCard = ({ item }: { item: HeroDiagramItem }) => {
       </span>
       <p className="text-[11px] font-bold text-[var(--term-fg)] break-keep">{item.title}</p>
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-full border px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider',
           toneTokens[item.tone].chip,
         )}

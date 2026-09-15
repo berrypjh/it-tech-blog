@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, Lightbulb, Sparkles, TimerReset } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,15 +36,15 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
         </p>
 
         <div
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-sm rounded-lg border p-md',
             emerald.border,
             emerald.fill.bg,
           )}
         >
-          <Lightbulb aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
+          <Lightbulb aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
           <p
-            className={cn(
+            className={cx(
               'text-xsm sm:text-sm font-bold leading-snug break-keep',
               emerald.fill.text,
             )}
@@ -57,17 +56,17 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
 
       {/* 우: 다이어그램 */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           emerald.border,
         )}
       >
         <header className="flex items-center justify-between gap-sm">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight', emerald.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight', emerald.text)}>
             {content.diagramTitle}
           </h3>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               emerald.chip,
             )}
@@ -78,14 +77,14 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
 
         <div className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-4">
           <div className="flex items-center justify-center gap-1.5 sm:gap-3 flex-wrap">
-            <span aria-hidden="true" className={cn('font-mono', emerald.text)}>
+            <span aria-hidden="true" className={cx('font-mono', emerald.text)}>
               ...
             </span>
             <span aria-hidden="true" className={emerald.text}>
               →
             </span>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex flex-col items-center gap-1 rounded-lg border px-4 py-3',
                 emerald.border,
                 emerald.fill.bg,
@@ -95,7 +94,7 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
                 <Clock className="h-4 w-4" aria-hidden="true" />
               </ToneIconBox>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-md border bg-[var(--term-surface)] px-2 py-0.5 font-mono text-[11px] font-bold',
                   emerald.border,
                   emerald.text,
@@ -103,14 +102,14 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
               >
                 {content.diagramMain}
               </code>
-              <span className={cn('text-[10px] text-center break-keep', emerald.fill.text)}>
+              <span className={cx('text-[10px] text-center break-keep', emerald.fill.text)}>
                 {content.diagramSub}
               </span>
             </span>
             <span aria-hidden="true" className={emerald.text}>
               →
             </span>
-            <span aria-hidden="true" className={cn('font-mono', emerald.text)}>
+            <span aria-hidden="true" className={cx('font-mono', emerald.text)}>
               ...
             </span>
           </div>

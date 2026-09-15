@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Globe, Loader } from 'lucide-react';
 
 import type { HydrationStartContent } from '../content';
@@ -18,7 +17,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
     <section aria-labelledby="server-html-heading" className="flex flex-col gap-md">
       <SectionHeader id="server-html-heading" number={serverHtml.number} title={serverHtml.title} />
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md h-full rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/70 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -61,7 +60,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
         title={hydrateCall.title}
       />
       <div
-        className={cn(
+        className={cx(
           'flex flex-col gap-md h-full rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -73,7 +72,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
           language="ts"
         />
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border-2 p-md',
             'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
           )}
@@ -91,7 +90,7 @@ export const ServerHtmlAndCallSection = ({ serverHtml, hydrateCall }: Props) => 
           </header>
           <p className="text-xsm text-[var(--term-fg)] break-keep">{hydrateCall.statusBody}</p>
           <code
-            className={cn(
+            className={cx(
               'inline-flex w-fit items-center rounded-full border px-2.5 py-0.5',
               'border-teal-200 bg-white text-teal-700 text-[11px] font-mono font-bold',
               'dark:border-teal-800/60 dark:bg-teal-950/60 dark:text-teal-200',

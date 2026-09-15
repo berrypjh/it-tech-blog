@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Layers, Network } from 'lucide-react';
 
 import { CompareBridge } from '../../../shared/compare';
@@ -49,7 +48,7 @@ export const AlternateDiagram = ({ content }: Props) => (
 
 const WholeTreeLinks = ({ content }: { content: CurrentWipAlternateContent['alternate'] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-xl border p-md sm:p-lg',
       'bg-[var(--term-surface)] border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -58,7 +57,7 @@ const WholeTreeLinks = ({ content }: { content: CurrentWipAlternateContent['alte
       <ToneIconBox tone="violet" size="sm">
         <Layers className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <h3 className={cn('text-sm font-bold tracking-tight', toneTokens.violet.text)}>
+      <h3 className={cx('text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {content.rightTitle}
       </h3>
     </header>
@@ -70,7 +69,7 @@ const WholeTreeLinks = ({ content }: { content: CurrentWipAlternateContent['alte
           className="grid grid-cols-[1fr_auto_1fr] items-center gap-2"
         >
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center rounded-md border px-2 py-1 font-mono text-[11.5px] font-bold',
               toneTokens.sky.chip,
             )}
@@ -79,10 +78,10 @@ const WholeTreeLinks = ({ content }: { content: CurrentWipAlternateContent['alte
           </span>
           <span
             aria-hidden="true"
-            className={cn('block w-full border-t-2 border-dashed', toneTokens.violet.border)}
+            className={cx('block w-full border-t-2 border-dashed', toneTokens.violet.border)}
           />
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center rounded-md border px-2 py-1 font-mono text-[11.5px] font-bold',
               toneTokens.emerald.chip,
             )}

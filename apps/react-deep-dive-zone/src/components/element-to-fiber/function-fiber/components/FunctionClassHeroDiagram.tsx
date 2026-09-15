@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Component, HelpCircle, SquareFunction } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -19,7 +18,7 @@ export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -69,7 +68,7 @@ export const FunctionClassHeroDiagram = ({ content, className }: Props) => {
 
 const StartNode = ({ title, subtitle }: { title: string; subtitle: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center justify-center gap-sm rounded-xl border px-md py-2.5',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -77,7 +76,7 @@ const StartNode = ({ title, subtitle }: { title: string; subtitle: string }) => 
     <ToneIconBox tone="sky" size="sm">
       <SquareFunction className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <code className={cn('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
+    <code className={cx('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
       {title}
       <span className="text-[var(--term-muted)]"> {subtitle}</span>
     </code>
@@ -86,7 +85,7 @@ const StartNode = ({ title, subtitle }: { title: string; subtitle: string }) => 
 
 const QuestionNode = ({ title }: { title: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border border-dashed px-md py-2.5',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -114,7 +113,7 @@ const BranchCard = ({ tone, icon, branchLabel, title, line1, line2 }: BranchCard
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full min-w-0 flex-col gap-1.5 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -125,7 +124,7 @@ const BranchCard = ({ tone, icon, branchLabel, title, line1, line2 }: BranchCard
           {icon}
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
             t.chip,
           )}
@@ -133,9 +132,9 @@ const BranchCard = ({ tone, icon, branchLabel, title, line1, line2 }: BranchCard
           {branchLabel}
         </span>
       </span>
-      <code className={cn('min-w-0 truncate font-mono text-xsm font-bold', t.text)}>{title}</code>
+      <code className={cx('min-w-0 truncate font-mono text-xsm font-bold', t.text)}>{title}</code>
       <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">{line1}</code>
-      <code className={cn('font-mono text-[11px] font-bold break-keep', t.text)}>{line2}</code>
+      <code className={cx('font-mono text-[11px] font-bold break-keep', t.text)}>{line2}</code>
     </article>
   );
 };

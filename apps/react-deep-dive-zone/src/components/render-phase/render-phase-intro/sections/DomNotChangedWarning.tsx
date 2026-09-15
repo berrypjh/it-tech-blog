@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, BellRing, CheckCircle2, Cpu, type LucideIcon, Monitor } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -18,7 +17,7 @@ type Props = { content: RenderPhaseIntroContent['warning'] };
 export const DomNotChangedWarning = ({ content }: Props) => (
   <section id="dom-not-changed" aria-labelledby="heading-dom-not-changed">
     <div
-      className={cn(
+      className={cx(
         'rounded-lg border p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         toneTokens.amber.fill.bg,
         toneTokens.amber.fill.border,
@@ -29,7 +28,7 @@ export const DomNotChangedWarning = ({ content }: Props) => (
         <div className="flex items-start gap-md min-w-0">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border',
               toneTokens.amber.chip,
             )}
@@ -38,13 +37,13 @@ export const DomNotChangedWarning = ({ content }: Props) => (
           </span>
           <div className="flex flex-col gap-2 min-w-0">
             <span
-              className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.amber.text)}
+              className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.amber.text)}
             >
               {`// ${content.eyebrow}`}
             </span>
             <h2
               id="heading-dom-not-changed"
-              className={cn(
+              className={cx(
                 'text-lg sm:text-xl lg:text-xxl font-bold tracking-tight break-keep leading-tight',
                 toneTokens.amber.fill.text,
               )}
@@ -60,7 +59,7 @@ export const DomNotChangedWarning = ({ content }: Props) => (
 
         {/* Right: 3-step mini flow */}
         <div
-          className={cn(
+          className={cx(
             'w-full rounded-lg border bg-[var(--term-bg)] p-md',
             toneTokens.amber.border,
           )}
@@ -103,18 +102,18 @@ const MiniStep = ({ step }: { step: WarningStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm shadow-[0_1px_0_var(--term-border)]',
         t.border,
       )}
     >
       <span
         aria-hidden="true"
-        className={cn('inline-flex h-9 w-9 items-center justify-center rounded-md border', t.chip)}
+        className={cx('inline-flex h-9 w-9 items-center justify-center rounded-md border', t.chip)}
       >
         <Icon className="h-4 w-4" />
       </span>
-      <h3 className={cn('text-xsm font-bold leading-tight text-center break-keep', t.text)}>
+      <h3 className={cx('text-xsm font-bold leading-tight text-center break-keep', t.text)}>
         {step.title}
       </h3>
       <p className="text-xxsm leading-snug text-center text-[var(--term-muted)] break-keep">

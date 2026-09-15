@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, Component, ListChecks, Star } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -60,14 +59,14 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
 
       {/* Lifecycle names */}
       <div
-        className={cn(
+        className={cx(
           'flex flex-wrap gap-2 rounded-lg border p-sm',
           toneTokens.violet.border,
           'bg-[var(--term-surface)]',
         )}
       >
         <span
-          className={cn(
+          className={cx(
             'text-[10px] font-mono uppercase tracking-wider font-bold w-full',
             toneTokens.violet.text,
           )}
@@ -77,7 +76,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
         {content.lifecycleNames.map((name) => (
           <code
             key={name}
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-md border px-2 py-1 text-[11px] font-mono font-bold',
               toneTokens.violet.chip,
             )}
@@ -89,7 +88,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
 
       {/* Note */}
       <aside
-        className={cn(
+        className={cx(
           'mt-auto flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.amber.fill.border,
           toneTokens.amber.fill.bg,
@@ -99,7 +98,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
           <Star className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep',
             toneTokens.amber.fill.text,
           )}
@@ -115,13 +114,13 @@ const FlowPill = ({ label, tone }: { label: string; tone: ToneKey }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-1 rounded-lg border-2 p-sm sm:p-md text-center',
         t.fill.border,
         t.fill.bg,
       )}
     >
-      <code className={cn('text-xsm sm:text-sm font-mono font-bold break-all', t.fill.text)}>
+      <code className={cx('text-xsm sm:text-sm font-mono font-bold break-all', t.fill.text)}>
         {label}
       </code>
     </article>
@@ -141,7 +140,7 @@ const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }
       />
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-1 flex-col gap-sm rounded-lg border-2 p-md sm:p-lg',
           t.fill.border,
           t.fill.bg,
@@ -152,21 +151,21 @@ const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }
           {content.items.map((item) => (
             <li
               key={item.text}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-md border bg-[var(--term-bg)] p-sm',
                 t.border,
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border',
                   t.chip,
                 )}
               >
                 <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
-              <span className={cn('text-xsm sm:text-sm leading-snug break-keep', t.fill.text)}>
+              <span className={cx('text-xsm sm:text-sm leading-snug break-keep', t.fill.text)}>
                 {item.text}
               </span>
             </li>

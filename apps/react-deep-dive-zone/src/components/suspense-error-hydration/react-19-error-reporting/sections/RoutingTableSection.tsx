@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { RefreshCcw, ShieldCheck, TriangleAlert } from 'lucide-react';
 
 import type { React19ErrorReportingContent, RoutingRow } from '../content';
@@ -21,7 +20,7 @@ export const RoutingTableSection = ({ content }: Props) => (
 
     {/* Desktop table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -35,7 +34,7 @@ export const RoutingTableSection = ({ content }: Props) => (
               <th
                 key={h}
                 scope="col"
-                className={cn(
+                className={cx(
                   'border-b-2 border-slate-200 dark:border-slate-700',
                   'bg-blue-50/60 dark:bg-blue-950/30',
                   'px-3 py-3 text-left text-[11.5px] font-bold text-blue-700 dark:text-blue-200',
@@ -53,7 +52,7 @@ export const RoutingTableSection = ({ content }: Props) => (
             return (
               <tr
                 key={row.scenario}
-                className={cn(
+                className={cx(
                   i % 2 === 0
                     ? 'bg-white dark:bg-[var(--term-bg)]'
                     : 'bg-slate-50/40 dark:bg-slate-900/30',
@@ -64,7 +63,7 @@ export const RoutingTableSection = ({ content }: Props) => (
                   <div className="flex items-start gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                         accent.iconChip,
                       )}
@@ -81,7 +80,7 @@ export const RoutingTableSection = ({ content }: Props) => (
                 </td>
                 <td className="border-t border-slate-200 dark:border-slate-700 px-3 py-3 align-top">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-block rounded border px-1.5 py-0.5 text-[11px] font-mono font-bold break-all',
                       accent.chip,
                     )}
@@ -94,7 +93,7 @@ export const RoutingTableSection = ({ content }: Props) => (
                 </td>
                 <td className="border-t border-slate-200 dark:border-slate-700 px-3 py-3 align-top">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                       logLevelBadge[row.logLevel],
                     )}
@@ -119,12 +118,12 @@ export const RoutingTableSection = ({ content }: Props) => (
         const RowIcon = rowIcon[row.icon];
         return (
           <li key={row.scenario}>
-            <article className={cn('rounded-2xl border-2 p-md', accent.border, accent.bg)}>
+            <article className={cx('rounded-2xl border-2 p-md', accent.border, accent.bg)}>
               <header className="flex items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 w-7 items-center justify-center rounded-lg border',
                       accent.iconChip,
                     )}
@@ -136,7 +135,7 @@ export const RoutingTableSection = ({ content }: Props) => (
                   </span>
                 </div>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                     logLevelBadge[row.logLevel],
                   )}
@@ -147,7 +146,7 @@ export const RoutingTableSection = ({ content }: Props) => (
               <p className="mb-2 text-xsm text-[var(--term-fg)] break-keep">{row.description}</p>
               <div className="flex flex-wrap items-center gap-2">
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-block rounded border px-1.5 py-0.5 text-[11px] font-mono font-bold break-all',
                     accent.chip,
                   )}

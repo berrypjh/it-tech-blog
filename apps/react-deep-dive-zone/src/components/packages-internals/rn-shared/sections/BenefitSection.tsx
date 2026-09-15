@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CheckCircle2,
   type LucideIcon,
@@ -35,7 +34,7 @@ export const BenefitSection = ({ content }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.4fr)] gap-md items-stretch">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -43,7 +42,7 @@ export const BenefitSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center self-start w-9 h-9 rounded-md border',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-accent)]',
             )}
@@ -59,7 +58,7 @@ export const BenefitSection = ({ content }: Props) => {
         </article>
 
         <div
-          className={cn(
+          className={cx(
             '@container relative flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg overflow-hidden',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -71,7 +70,7 @@ export const BenefitSection = ({ content }: Props) => {
 
           <div className="relative flex justify-center">
             <article
-              className={cn(
+              className={cx(
                 'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md min-w-[14rem]',
                 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
                 'shadow-[0_3px_0_var(--term-border)]',
@@ -112,7 +111,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
   const Icon = benefitIcon[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -124,7 +123,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3
-          className={cn(
+          className={cx(
             'text-sm font-bold font-mono tracking-tight break-keep',
             toneTokens[card.tone].text,
           )}
@@ -138,7 +137,7 @@ const BenefitCardView = ({ card }: { card: BenefitCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens[card.tone].text)}>
+            <span aria-hidden="true" className={cx('shrink-0 mt-0.5', toneTokens[card.tone].text)}>
               <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span>{item}</span>

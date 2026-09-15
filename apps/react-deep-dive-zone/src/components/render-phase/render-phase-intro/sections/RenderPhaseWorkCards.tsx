@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, GitBranch, Layers, type LucideIcon, RefreshCcw, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,11 +32,11 @@ export const RenderPhaseWorkCards = ({ content }: Props) => (
           <ToneCardItem
             key={card.title}
             tone={card.tone}
-            icon={<Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />}
+            icon={<Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />}
             topRight={idx + 1}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-sm sm:text-md font-bold leading-tight break-keep',
                 toneTokens[card.tone].text,
               )}

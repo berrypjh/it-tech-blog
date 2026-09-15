@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Route, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
             return (
               <li key={step.number} className="relative">
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex items-start gap-md rounded-xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     'shadow-[0_2px_0_var(--term-border)]',
@@ -43,7 +42,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2',
                       t.chip,
                       'font-mono text-sm font-bold tabular-nums',
@@ -53,14 +52,14 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                   </span>
 
                   <div className="flex flex-col gap-1.5 min-w-0">
-                    <h3 className={cn('text-md font-bold leading-snug break-keep', t.text)}>
+                    <h3 className={cx('text-md font-bold leading-snug break-keep', t.text)}>
                       {step.title}
                     </h3>
                     <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                       {step.body}
                     </p>
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 self-start rounded-md border px-2 py-1',
                         'bg-white dark:bg-[var(--term-bg)]',
                         t.border,
@@ -70,7 +69,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('block h-1 w-1 rounded-full', t.dot)}
+                        className={cx('block h-1 w-1 rounded-full', t.dot)}
                       />
                       {step.example}
                     </code>
@@ -89,7 +88,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
 
         {/* RIGHT — Example transform card */}
         <aside
-          className={cn(
+          className={cx(
             'sticky top-24 self-start',
             'rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-200 bg-gradient-to-br from-blue-50/70 via-white to-cyan-50/40',
@@ -101,7 +100,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
           <div className="flex items-center gap-2 mb-md">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg',
                 'border border-blue-300 bg-blue-100 text-blue-700',
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -143,7 +142,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                   {content.exampleKeywords.map((kw) => (
                     <li key={kw}>
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                           'border-cyan-300 bg-cyan-50 text-cyan-800',
                           'dark:border-cyan-700/70 dark:bg-cyan-950/40 dark:text-cyan-200',
@@ -169,7 +168,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
               </dt>
               <dd>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-md border-2 px-2.5 py-1.5',
                     'border-blue-400 bg-blue-50 text-blue-800',
                     'dark:border-blue-600/80 dark:bg-blue-950/50 dark:text-blue-100',
@@ -193,7 +192,7 @@ export const QuestionToEntryFlowSection = ({ content }: Props) => {
                   {content.exampleNext.map((step) => (
                     <li key={step}>
                       <code
-                        className={cn(
+                        className={cx(
                           'flex items-center gap-1.5 rounded-md border px-2 py-1',
                           'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                           'font-mono text-[11px] text-[var(--term-fg)]',

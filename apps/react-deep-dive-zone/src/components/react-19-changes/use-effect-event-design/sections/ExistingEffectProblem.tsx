@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseEffectEventContent } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -22,7 +22,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-md sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
       )}
@@ -34,7 +34,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
           <Fragment key={card.title}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                   tone.border,
                   card.tone === 'problem' ? tone.bg : 'bg-white dark:bg-[var(--term-bg)]',
@@ -45,7 +45,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
                 <header className="flex items-center justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                       tone.iconChip,
                     )}
@@ -54,7 +54,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       tone.chip,
                     )}
@@ -63,7 +63,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
                   </span>
                 </header>
                 <h3
-                  className={cn('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}
+                  className={cx('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}
                 >
                   {card.title}
                 </h3>
@@ -71,16 +71,16 @@ export const ExistingEffectProblem = ({ content }: Props) => (
                   {card.caption}
                 </p>
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 w-fit',
                     tone.chip,
                   )}
                 >
                   <span
                     aria-hidden="true"
-                    className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)}
+                    className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)}
                   />
-                  <span className={cn('text-xxsm font-bold break-keep', tone.text)}>
+                  <span className={cx('text-xxsm font-bold break-keep', tone.text)}>
                     {card.conclusion}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export const ExistingEffectProblem = ({ content }: Props) => (
             {card.connector && (
               <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full border-2',
                     card.connector === '+'
                       ? 'border-blue-300 bg-blue-50 text-blue-700 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200'

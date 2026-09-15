@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -34,7 +33,7 @@ const branchIcon: Record<string, typeof Zap> = {
 
 const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'badge' }> }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-colors',
       axisCardBorder[card.accent],
@@ -43,7 +42,7 @@ const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'bad
     <header className="flex items-center gap-3">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
           axisIconBox[card.accent],
         )}
@@ -51,7 +50,7 @@ const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'bad
         <Zap className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-keep',
           axisTextStrong[card.accent],
         )}
@@ -63,7 +62,7 @@ const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'bad
       {card.body}
     </p>
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center self-start gap-2 rounded-xl border-2 px-3 py-1.5',
         'font-mono text-xsm sm:text-sm font-bold',
         axisPill[card.accent],
@@ -77,7 +76,7 @@ const BadgeCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'bad
 
 const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'render' }> }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-colors',
       axisCardBorder[card.accent],
@@ -86,7 +85,7 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
     <header className="flex items-center gap-3">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
           axisIconBox[card.accent],
         )}
@@ -94,7 +93,7 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
         <RefreshCw className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-keep',
           axisTextStrong[card.accent],
         )}
@@ -115,7 +114,7 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
         {['0', '0', '1', '0', '1', '0', '0', '0'].map((b, i) => (
           <li
             key={i}
-            className={cn(
+            className={cx(
               'inline-flex h-5 w-5 items-center justify-center rounded border font-mono text-[10px] font-bold',
               b === '1'
                 ? 'bg-violet-500 border-violet-500 text-white dark:bg-violet-400 dark:border-violet-400 dark:text-slate-900'
@@ -131,16 +130,16 @@ const RenderCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 're
     <div className="flex items-center gap-2 text-xsm">
       <ArrowRight
         aria-hidden="true"
-        className={cn('h-4 w-4 shrink-0', axisTextStrong[card.accent])}
+        className={cx('h-4 w-4 shrink-0', axisTextStrong[card.accent])}
       />
-      <span className={cn('font-mono font-bold', axisTextStrong[card.accent])}>{card.result}</span>
+      <span className={cx('font-mono font-bold', axisTextStrong[card.accent])}>{card.result}</span>
     </div>
   </article>
 );
 
 const FlowCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'flow' }> }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-colors',
       axisCardBorder[card.accent],
@@ -149,7 +148,7 @@ const FlowCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'flow
     <header className="flex items-center gap-3">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
           axisIconBox[card.accent],
         )}
@@ -157,7 +156,7 @@ const FlowCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'flow
         <Workflow className="h-4 w-4" aria-hidden="true" />
       </span>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-keep',
           axisTextStrong[card.accent],
         )}
@@ -176,14 +175,14 @@ const FlowCard = ({ card }: { card: Extract<BranchExplanationCard, { kind: 'flow
         return (
           <li key={step} className="flex flex-col">
             <div
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-lg border px-2.5 py-1.5',
                 'border-[var(--term-border)] bg-[var(--term-bg)]',
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums text-white',
                   card.accent === 'teal' && 'bg-teal-600 dark:bg-teal-500',
                   card.accent === 'blue' && 'bg-blue-600 dark:bg-blue-500',
@@ -229,7 +228,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
       {/* LEFT: flow chart */}
       <article
         aria-label="branch flow chart"
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -237,7 +236,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
         {/* start node */}
         <div className="flex justify-center">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-2 rounded-xl px-4 py-2',
               'bg-slate-950 text-white font-mono text-xsm sm:text-sm font-bold',
               'shadow-[0_2px_0_var(--term-border)] border border-slate-800',
@@ -259,7 +258,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                   <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <div
-                  className={cn(
+                  className={cx(
                     'flex flex-col gap-2 rounded-2xl border-2 p-3 transition-colors',
                     'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                     axisCardBorder[accent],
@@ -269,7 +268,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                   <header className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums text-white',
                         accent === 'blue' && 'bg-blue-600 dark:bg-blue-500',
                         accent === 'teal' && 'bg-teal-600 dark:bg-teal-500',
@@ -280,7 +279,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                     </span>
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                         axisIconBox[accent],
                       )}
@@ -288,7 +287,7 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     <h3
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm font-bold leading-tight break-keep',
                         axisTextStrong[accent],
                       )}
@@ -299,13 +298,13 @@ export const RequestUpdateLaneBranchFlow = ({ content }: Props) => (
                   <div className="ml-9 flex items-center gap-2">
                     <CornerDownRight
                       aria-hidden="true"
-                      className={cn('h-3.5 w-3.5', axisTextStrong[accent])}
+                      className={cx('h-3.5 w-3.5', axisTextStrong[accent])}
                     />
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--term-muted)]">
                       {node.yesLabel}
                     </span>
                     <code
-                      className={cn(
+                      className={cx(
                         'font-mono text-[11px] sm:text-xsm font-bold break-all',
                         axisTextStrong[accent],
                       )}

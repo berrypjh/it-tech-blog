@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, Scale } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -30,7 +29,7 @@ export const FileCompareSection = ({ content }: Props) => {
           aria-hidden="true"
         >
           <div
-            className={cn(
+            className={cx(
               'flex flex-col items-center justify-center text-center gap-1',
               'w-32 h-32 sm:w-36 sm:h-36 rounded-full',
               'border-2 border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -62,7 +61,7 @@ const FileCardView = ({ card }: { card: FileCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -73,7 +72,7 @@ const FileCardView = ({ card }: { card: FileCard }) => {
           <FileCode className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
             {card.fileName}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono break-all">
@@ -84,7 +83,7 @@ const FileCardView = ({ card }: { card: FileCard }) => {
 
       <div className="flex flex-col gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border px-3 py-1 text-xsm font-mono font-bold',
             t.chip,
           )}

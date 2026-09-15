@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -38,7 +37,7 @@ export const JavaScriptEvidenceCards = ({ content }: Props) => (
 const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -49,7 +48,7 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
           {card.title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             toneTokens[card.tone].chip,
           )}
@@ -61,14 +60,14 @@ const EvidenceCardView = ({ card }: { card: EvidenceCard }) => {
       <CodePreviewPanel code={card.code} language="JS" />
 
       <div
-        className={cn(
+        className={cx(
           'flex items-start gap-sm rounded-lg px-md py-2.5 mt-auto',
           'bg-[var(--term-surface)] border border-[var(--term-border)]',
         )}
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-block w-1.5 h-1.5 rounded-full mt-2 shrink-0',
             toneTokens[card.tone].dot,
           )}

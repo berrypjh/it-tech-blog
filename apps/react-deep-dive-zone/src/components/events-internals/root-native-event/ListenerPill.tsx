@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Keyboard,
   MousePointerClick,
@@ -48,7 +47,7 @@ export const ListenerPill = ({ label, kind, size = 'md', showIcon = true }: Prop
   const Icon = kindIcon[kind];
   return (
     <span
-      className={cn(
+      className={cx(
         'group inline-flex items-center gap-1.5 rounded-full border font-mono font-medium transition-colors',
         'hover:brightness-105 hover:shadow-[0_1px_0_var(--term-border)]',
         size === 'sm' ? 'px-2.5 py-1 text-[10px]' : 'px-3 py-1.5 text-[11px] sm:text-xsm',

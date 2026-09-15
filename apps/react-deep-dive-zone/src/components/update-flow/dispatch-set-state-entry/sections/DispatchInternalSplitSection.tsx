@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, CheckCircle2, Split, Workflow } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -38,7 +37,7 @@ const SplitCard = ({ card }: { card: FunctionSplitCard }) => {
   const t = toneTokens[card.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -48,7 +47,7 @@ const SplitCard = ({ card }: { card: FunctionSplitCard }) => {
           <ToneIconBox tone={card.tone} size="sm">
             <Icon className="h-[18px] w-[18px]" />
           </ToneIconBox>
-          <h3 className={cn('text-sm sm:text-md font-bold font-mono break-keep', t.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold font-mono break-keep', t.text)}>
             {card.title}
           </h3>
         </div>
@@ -61,7 +60,7 @@ const SplitCard = ({ card }: { card: FunctionSplitCard }) => {
             key={item}
             className="flex items-start gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2"
           >
-            <CheckCircle2 aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} />
+            <CheckCircle2 aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)} />
             <span className="text-xsm sm:text-sm text-[var(--term-fg)] leading-snug break-keep">
               {item}
             </span>

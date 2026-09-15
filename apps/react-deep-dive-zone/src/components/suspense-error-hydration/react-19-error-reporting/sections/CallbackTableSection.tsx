@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, XCircle } from 'lucide-react';
 
 import type { React19ErrorReportingContent } from '../content';
@@ -15,7 +14,7 @@ export const CallbackTableSection = ({ content }: Props) => (
 
     {/* Desktop: table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -29,7 +28,7 @@ export const CallbackTableSection = ({ content }: Props) => (
               <th
                 key={h}
                 scope="col"
-                className={cn(
+                className={cx(
                   'border-b-2 border-slate-200 dark:border-slate-700',
                   'bg-blue-50/60 dark:bg-blue-950/30',
                   'px-3 py-3 text-left text-[11.5px] font-bold text-blue-700 dark:text-blue-200',
@@ -48,7 +47,7 @@ export const CallbackTableSection = ({ content }: Props) => (
             return (
               <tr
                 key={row.callback}
-                className={cn(
+                className={cx(
                   i % 2 === 0
                     ? 'bg-white dark:bg-[var(--term-bg)]'
                     : 'bg-slate-50/40 dark:bg-slate-900/30',
@@ -57,7 +56,7 @@ export const CallbackTableSection = ({ content }: Props) => (
               >
                 <td className="border-t border-slate-200 dark:border-slate-700 px-3 py-3 align-top">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-block rounded border px-1.5 py-0.5 text-[11px] font-mono font-bold break-all',
                       accent.chip,
                     )}
@@ -73,7 +72,7 @@ export const CallbackTableSection = ({ content }: Props) => (
                 </td>
                 <td className="border-t border-slate-200 dark:border-slate-700 px-3 py-3 align-top">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 text-xsm font-bold break-keep',
                       row.uiRecover.kind === 'check'
                         ? 'text-emerald-700 dark:text-emerald-300'
@@ -89,7 +88,7 @@ export const CallbackTableSection = ({ content }: Props) => (
                 </td>
                 <td className="border-t border-slate-200 dark:border-slate-700 px-3 py-3 align-top">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                       sev.className,
                     )}
@@ -112,13 +111,13 @@ export const CallbackTableSection = ({ content }: Props) => (
         const UICheck = row.uiRecover.kind === 'check' ? CheckCircle2 : XCircle;
         return (
           <li key={row.callback}>
-            <article className={cn('rounded-2xl border-2 p-md', accent.border, accent.bg)}>
+            <article className={cx('rounded-2xl border-2 p-md', accent.border, accent.bg)}>
               <header className="flex items-center justify-between gap-2 mb-3">
-                <code className={cn('text-[11px] font-mono font-bold break-all', accent.text)}>
+                <code className={cx('text-[11px] font-mono font-bold break-all', accent.text)}>
                   {row.callback}
                 </code>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                     sev.className,
                   )}
@@ -144,7 +143,7 @@ export const CallbackTableSection = ({ content }: Props) => (
                     {content.headers.uiRecover}
                   </dt>
                   <dd
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 font-bold break-keep',
                       row.uiRecover.kind === 'check'
                         ? 'text-emerald-700 dark:text-emerald-300'

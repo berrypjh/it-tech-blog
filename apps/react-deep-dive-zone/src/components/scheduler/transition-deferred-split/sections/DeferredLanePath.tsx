@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Network } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -33,7 +32,7 @@ export const DeferredLanePath = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -48,7 +47,7 @@ export const DeferredLanePath = ({ content }: Props) => (
           {content.legend.map((l) => (
             <li
               key={l.label}
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                 'text-[10px] sm:text-xsm font-mono',
                 l.accent === 'emerald'
@@ -58,7 +57,7 @@ export const DeferredLanePath = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'block h-2 w-2 rounded-full',
                   l.accent === 'emerald' ? 'bg-emerald-500' : 'bg-blue-500',
                 )}
@@ -77,7 +76,7 @@ export const DeferredLanePath = ({ content }: Props) => (
             <li key={step.title} className="flex flex-col items-center gap-2 relative">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-5 w-5 items-center justify-center rounded-full border-2 z-10',
                   dotColor[step.accent],
                   step.emphasis &&
@@ -87,11 +86,11 @@ export const DeferredLanePath = ({ content }: Props) => (
               {!isLast && (
                 <span
                   aria-hidden="true"
-                  className={cn('absolute left-1/2 top-2 h-1 w-full', lineColor[step.accent])}
+                  className={cx('absolute left-1/2 top-2 h-1 w-full', lineColor[step.accent])}
                 />
               )}
               <span
-                className={cn(
+                className={cx(
                   'mt-2 text-center text-xsm sm:text-sm font-bold leading-snug break-keep',
                   textColor[step.accent],
                   step.emphasis && 'underline decoration-2 underline-offset-4',
@@ -116,7 +115,7 @@ export const DeferredLanePath = ({ content }: Props) => (
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                     dotColor[step.accent],
                     step.emphasis &&
@@ -124,7 +123,7 @@ export const DeferredLanePath = ({ content }: Props) => (
                   )}
                 />
                 <span
-                  className={cn(
+                  className={cx(
                     'text-xsm sm:text-sm font-bold leading-tight break-keep',
                     textColor[step.accent],
                   )}
@@ -138,7 +137,7 @@ export const DeferredLanePath = ({ content }: Props) => (
               {!isLast && (
                 <span
                   aria-hidden="true"
-                  className={cn('ml-2 my-1 inline-block h-3 w-0.5', lineColor[step.accent])}
+                  className={cx('ml-2 my-1 inline-block h-3 w-0.5', lineColor[step.accent])}
                 />
               )}
             </li>

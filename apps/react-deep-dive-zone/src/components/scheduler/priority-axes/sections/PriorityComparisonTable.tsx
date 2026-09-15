@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Layers, ScanSearch, Zap } from 'lucide-react';
 
 import {
@@ -24,7 +23,7 @@ const CellList = ({ items, mono = false }: { items: string[]; mono?: boolean }) 
     {items.map((it) => (
       <li
         key={it}
-        className={cn(
+        className={cx(
           'text-[11px] sm:text-xsm leading-snug text-[var(--term-fg)] break-keep',
           mono && 'font-mono text-[11px]',
         )}
@@ -42,7 +41,7 @@ const AxisCell = ({ row }: { row: ComparisonRow }) => {
       <div className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border',
             axisIconBox[row.accent],
           )}
@@ -50,7 +49,7 @@ const AxisCell = ({ row }: { row: ComparisonRow }) => {
           <Icon className="h-4 w-4" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums',
             axisNumberBadge[row.accent],
           )}
@@ -59,7 +58,7 @@ const AxisCell = ({ row }: { row: ComparisonRow }) => {
           {row.key === 'event' ? 1 : row.key === 'lane' ? 2 : 3}
         </span>
       </div>
-      <p className={cn('font-bold text-xsm sm:text-sm break-keep', axisTextStrong[row.accent])}>
+      <p className={cx('font-bold text-xsm sm:text-sm break-keep', axisTextStrong[row.accent])}>
         {row.name}
       </p>
     </div>
@@ -78,7 +77,7 @@ export const PriorityComparisonTable = ({ content }: Props) => (
 
     {/* Desktop table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -107,7 +106,7 @@ export const PriorityComparisonTable = ({ content }: Props) => (
           {content.rows.map((row) => (
             <tr
               key={row.key}
-              className={cn('align-top transition-colors', axisRowTint[row.accent])}
+              className={cx('align-top transition-colors', axisRowTint[row.accent])}
             >
               <td className="border-t border-[var(--term-border)] px-md py-3 align-top">
                 <AxisCell row={row} />
@@ -135,7 +134,7 @@ export const PriorityComparisonTable = ({ content }: Props) => (
       {content.rows.map((row) => (
         <li key={row.key}>
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-3 rounded-2xl border-2 p-md',
               'shadow-[0_2px_0_var(--term-border)]',
               axisRowTint[row.accent],

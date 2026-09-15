@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cog, Database, PlayCircle, Plus, RefreshCw, RotateCcw, Zap } from 'lucide-react';
 
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
@@ -75,7 +74,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,3fr)] gap-md items-stretch">
         {/* Action panel */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -101,12 +100,12 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                   <button
                     type="button"
                     onClick={() => handleAdd(lane)}
-                    className={cn(
+                    className={cx(
                       'w-full inline-flex items-center gap-3 rounded-xl border-2 p-3 transition-all text-left',
                       'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       isOn
-                        ? cn(
+                        ? cx(
                             axisCardBorder[lane.accent],
                             'shadow-[0_2px_0_var(--term-border)]',
                             lane.accent === 'blue' && 'focus-visible:ring-blue-400',
@@ -118,7 +117,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         isOn
                           ? axisIconBox[lane.accent]
@@ -129,7 +128,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                     </span>
                     <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-xsm sm:text-sm font-bold leading-tight break-keep',
                           isOn ? axisTextStrong[lane.accent] : 'text-[var(--term-fg)]',
                         )}
@@ -137,7 +136,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                         {lane.buttonLabel}
                       </span>
                       <span
-                        className={cn(
+                        className={cx(
                           'font-mono text-[10px] uppercase tracking-wider',
                           isOn ? axisTextStrong[lane.accent] : 'text-[var(--term-dim)]',
                         )}
@@ -147,7 +146,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
                     </div>
                     <Plus
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'h-4 w-4 shrink-0',
                         isOn ? axisTextStrong[lane.accent] : 'text-[var(--term-muted)]',
                       )}
@@ -162,7 +161,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
             type="button"
             onClick={handleReset}
             disabled={!hasWork}
-            className={cn(
+            className={cx(
               'mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
               'font-bold text-xsm sm:text-sm transition-all',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -181,7 +180,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
         {/* Bitmask panel */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-teal-300/80 bg-gradient-to-br from-teal-50/80 via-white to-blue-50/40',
             'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -249,7 +248,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
 
         {/* Status panel */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             hasWork
@@ -260,7 +259,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 hasWork
                   ? 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60'
@@ -275,7 +274,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
           </header>
 
           <p
-            className={cn(
+            className={cx(
               'inline-flex items-center self-start gap-2 rounded-full border-2 px-3 py-1.5',
               'font-mono text-xsm sm:text-sm font-bold',
               hasWork
@@ -285,7 +284,7 @@ export const PendingLanesSimulator = ({ content }: Props) => {
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-block h-2 w-2 rounded-full',
                 hasWork ? 'bg-blue-500 dark:bg-blue-400' : 'bg-[var(--term-dim)]',
               )}
@@ -298,14 +297,14 @@ export const PendingLanesSimulator = ({ content }: Props) => {
               {activeLanes.map((lane) => (
                 <li key={lane.key}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 font-mono text-[10px] sm:text-[11px] font-semibold',
                       axisPill[lane.accent],
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-block h-1.5 w-1.5 rounded-full',
                         lane.accent === 'blue' && 'bg-blue-500',
                         lane.accent === 'teal' && 'bg-teal-500',

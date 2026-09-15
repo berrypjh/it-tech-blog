@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, List } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -75,9 +74,9 @@ const FiberCard = ({
         return (
           <li
             key={`${f.label}-${i}`}
-            className={cn(
+            className={cx(
               'rounded-md px-2 py-1 text-[12px] font-mono',
-              tone ? cn('border font-bold', tone.chip) : 'text-[var(--term-muted)] opacity-80',
+              tone ? cx('border font-bold', tone.chip) : 'text-[var(--term-muted)] opacity-80',
             )}
           >
             {f.label}
@@ -100,7 +99,7 @@ const FieldCardView = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-1 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -112,7 +111,7 @@ const FieldCardView = ({
           {icon}
         </ToneIconBox>
         <code
-          className={cn('min-w-0 truncate font-mono text-xsm font-bold tracking-tight', t.text)}
+          className={cx('min-w-0 truncate font-mono text-xsm font-bold tracking-tight', t.text)}
         >
           {card.title}
         </code>

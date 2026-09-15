@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AppWindow, type LucideIcon, Monitor, Server } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -46,7 +45,7 @@ export const RendererDiagram = ({ content, className }: Props) => (
 
 const CenterReactDomCard = ({ center }: { center: ReactDomContent['hero']['centerCard'] }) => (
   <div
-    className={cn(
+    className={cx(
       'relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-2xl border',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] px-lg py-md min-w-[10rem]',
@@ -72,7 +71,7 @@ const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-2 rounded-xl border p-3',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -84,7 +83,7 @@ const OutputNodeCard = ({ node }: { node: HeroDiagramNode }) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
-          <h3 className={cn('text-sm font-bold font-mono tracking-tight break-keep', tone.text)}>
+          <h3 className={cx('text-sm font-bold font-mono tracking-tight break-keep', tone.text)}>
             {node.title}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">

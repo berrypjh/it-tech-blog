@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { sectionNumberBadge } from '../tone';
 
@@ -17,7 +17,7 @@ export const SectionHeader = ({ number, title, subtitle, id }: Props) => (
     <div className="flex flex-col">
       <h2
         id={id}
-        className={cn(
+        className={cx(
           'text-xl sm:text-xxl font-bold text-[var(--term-fg)] break-keep leading-tight',
         )}
       >

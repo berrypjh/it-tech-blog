@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ArrowUp, ChevronDown, HelpCircle, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -21,7 +20,7 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
       <div className="flex flex-col items-center gap-2">
         {/* Top node */}
         <article
-          className={cn(
+          className={cx(
             'inline-flex w-full max-w-[460px] flex-col items-center rounded-lg border px-md py-3 text-center',
             'shadow-[0_1px_0_var(--term-border)]',
             toneTokens.sky.fill.bg,
@@ -29,11 +28,11 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
           )}
         >
           <h3
-            className={cn('text-sm sm:text-md font-bold leading-tight', toneTokens.sky.fill.text)}
+            className={cx('text-sm sm:text-md font-bold leading-tight', toneTokens.sky.fill.text)}
           >
             {content.topTitle}
           </h3>
-          <code className={cn('font-mono text-xsm sm:text-sm', toneTokens.sky.text)}>
+          <code className={cx('font-mono text-xsm sm:text-sm', toneTokens.sky.text)}>
             {content.topSubtitle}
           </code>
         </article>
@@ -44,7 +43,7 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
         <div className="relative flex h-28 w-[min(360px,100%)] items-center justify-center">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'absolute inset-0 m-auto rotate-45 h-[78%] w-[78%] rounded-lg border',
               'shadow-[0_1px_0_var(--term-border)]',
               toneTokens.violet.fill.bg,
@@ -52,9 +51,9 @@ export const CompleteWorkMoveDirection = ({ content }: Props) => (
             )}
           />
           <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-            <HelpCircle aria-hidden="true" className={cn('h-5 w-5', toneTokens.violet.text)} />
+            <HelpCircle aria-hidden="true" className={cx('h-5 w-5', toneTokens.violet.text)} />
             <span
-              className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}
+              className={cx('text-sm sm:text-md font-bold break-keep', toneTokens.violet.fill.text)}
             >
               {content.decision}
             </span>
@@ -100,7 +99,7 @@ const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
   const Arrow = kind === 'sibling' ? ArrowRight : ArrowUp;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border p-md',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -108,7 +107,7 @@ const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider font-bold',
             t.chip,
           )}
@@ -117,7 +116,7 @@ const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -125,7 +124,7 @@ const BranchCard = ({ tone, label, title, code, kind }: BranchProps) => {
           <Arrow className="h-4 w-4" />
         </span>
       </header>
-      <h4 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+      <h4 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
         {title}
       </h4>
       <code className="self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold text-[var(--term-fg)] break-all">

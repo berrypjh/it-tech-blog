@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Link2 } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -31,7 +30,7 @@ export const HookLinkedListHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -79,7 +78,7 @@ const FiberCard = ({
   highlight: string;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -102,7 +101,7 @@ const FiberCard = ({
         </li>
       ))}
       <li
-        className={cn(
+        className={cx(
           'rounded-md border px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none',
           toneTokens.cyan.chip,
         )}
@@ -117,7 +116,7 @@ const HookCard = ({ node }: { node: HookNode }) => {
   const t = toneTokens[toToneKey[node.tone]];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -128,7 +127,7 @@ const HookCard = ({ node }: { node: HookNode }) => {
         <ToneIconBox tone={toToneKey[node.tone]} size="sm">
           <Link2 className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('text-sm font-bold tracking-tight', t.text)}>Hook #{node.index}</span>
+        <span className={cx('text-sm font-bold tracking-tight', t.text)}>Hook #{node.index}</span>
         <code className="ml-auto shrink-0 font-mono text-[11px] font-bold text-[var(--term-muted)]">
           {node.hookName}
         </code>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, TriangleAlert } from 'lucide-react';
 
 import type { Tone, WhyFailableRenderContent } from '../content';
@@ -30,7 +29,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
 
     {/* Normal flow */}
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'border-emerald-200/80 bg-emerald-50/40 dark:border-emerald-800/60 dark:bg-emerald-950/20',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -52,7 +51,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
         {content.normal.steps.map((step, i) => (
           <li key={step.label} className="flex items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-xl border-2 px-3 py-2',
                 'border-emerald-300/80 bg-white text-emerald-800 font-mono text-xsm font-bold',
                 'dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200',
@@ -89,7 +88,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
 
     {/* Extended flow */}
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'border-violet-200/80 bg-gradient-to-br from-violet-50/60 to-blue-50/40',
         'dark:border-violet-800/60 dark:from-violet-950/30 dark:to-blue-950/20',
@@ -112,7 +111,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
         {content.extended.steps.map((step, i) => (
           <li key={step.label} className="flex items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-xl border-2 px-3 py-2',
                 'font-mono text-xsm font-bold',
                 stepBoxTone[step.tone],
@@ -134,7 +133,7 @@ export const NormalVsExtendedFlows = ({ content }: Props) => (
         {content.extended.captionLines.map((line, i) => (
           <li
             key={line}
-            className={cn(
+            className={cx(
               'rounded-xl border px-3 py-2 text-center text-[11px] font-bold',
               toneChip[content.extended.steps[i]?.tone ?? 'violet'],
             )}

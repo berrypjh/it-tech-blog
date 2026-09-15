@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Layers } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -64,7 +63,7 @@ export const HookObjectStructure = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-object-structure"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -118,14 +117,14 @@ export const HookObjectStructure = ({ content }: Props) => {
           {content.fields.map((field) => (
             <li key={field.name}>
               <article
-                className={cn(
+                className={cx(
                   'flex items-start gap-3 rounded-xl border bg-[var(--term-bg)] p-md',
                   'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)] transition-all',
                   'hover:border-sky-300/70 dark:hover:border-sky-700/70',
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1 shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-mono font-bold break-all',
                     toneFieldChip[field.tone],
                   )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, XCircle } from 'lucide-react';
 import type { ComponentType } from 'react';
 
@@ -41,7 +40,7 @@ const MisconceptionCard = ({ item }: { item: MisconceptionItem }) => {
   const { icon: Icon } = item;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-1 flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -51,7 +50,7 @@ const MisconceptionCard = ({ item }: { item: MisconceptionItem }) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl',
             'bg-[var(--term-surface)] border border-[var(--term-border)]',
             item.accentClassName,

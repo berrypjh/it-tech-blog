@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { MoveRight } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -34,7 +33,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                 {/* 좌: 버전 / 연도 */}
                 <div className="flex md:flex-col items-baseline md:items-start gap-2 md:gap-0">
                   <h3
-                    className={cn(
+                    className={cx(
                       'text-md sm:text-lg font-bold tracking-tight leading-none',
                       accent.text,
                     )}
@@ -53,7 +52,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                     {row.highlight && (
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold align-middle',
                           'bg-[var(--term-surface)] border border-[var(--term-border)]',
                           accent.text,
@@ -73,7 +72,7 @@ export const VersionEvolutionTimeline = ({ content }: Props) => {
                   {row.tags.map((tag) => (
                     <li
                       key={tag}
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono border',
                         'bg-[var(--term-surface)] border-[var(--term-border)]',
                         accent.text,

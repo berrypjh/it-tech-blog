@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, ShieldCheck, TriangleAlert, User } from 'lucide-react';
 
 import type { ErrorBoundaryRecoverContent, TreeNode } from '../content';
@@ -42,7 +41,7 @@ const TreeRow = ({ node, depth }: { node: TreeNode; depth: number }) => {
         </span>
       )}
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5',
           'font-mono text-[11px] font-bold break-keep',
           style.box,
@@ -67,7 +66,7 @@ export const ChildThrowSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* left: code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col overflow-hidden rounded-2xl border-2',
           'border-rose-200/80 bg-white dark:border-rose-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -78,7 +77,7 @@ export const ChildThrowSection = ({ content }: Props) => (
 
       {/* center: emphasis */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col items-center justify-center gap-3 rounded-2xl border-2 p-md sm:p-lg text-center',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -100,7 +99,7 @@ export const ChildThrowSection = ({ content }: Props) => (
 
       {/* right: tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, CheckCircle2, CircleHelp, Layers, PenTool, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
       {/* 좌: 예고 질문 */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           violet.border,
         )}
@@ -48,7 +47,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
           {content.tags.map((tag) => (
             <li
               key={tag.label}
-              className={cn(
+              className={cx(
                 'rounded-md border px-2 py-0.5 text-[10px] font-mono',
                 toneTokens[tag.tone].chip,
               )}
@@ -61,13 +60,13 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
 
       {/* 우: 다음 개념 */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           sky.border,
         )}
       >
         <header className="flex items-center justify-between gap-2">
-          <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', sky.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', sky.text)}>
             {content.rightTitle}
           </h3>
           <ToneIconBox tone="sky" size="md">
@@ -82,7 +81,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
             return (
               <li
                 key={item.title}
-                className={cn(
+                className={cx(
                   'flex flex-col gap-1 rounded-md border bg-[var(--term-bg)] p-3 shadow-[0_2px_0_var(--term-border)]',
                   t.border,
                 )}
@@ -90,7 +89,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
                 <header className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                       t.chip,
                     )}
@@ -98,7 +97,7 @@ export const NextChapterPreviewSection = ({ content }: Props) => (
                     <Icon className="h-4 w-4" />
                   </span>
                   <span
-                    className={cn('text-xsm sm:text-sm font-bold font-mono break-keep', t.text)}
+                    className={cx('text-xsm sm:text-sm font-bold font-mono break-keep', t.text)}
                   >
                     {item.title}
                   </span>

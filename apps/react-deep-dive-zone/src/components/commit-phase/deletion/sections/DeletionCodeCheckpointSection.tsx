@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -52,7 +51,7 @@ const PathList = ({ items, mono }: { items: string[]; mono?: boolean }) => (
     {items.map((v) => (
       <li key={v}>
         <code
-          className={cn(
+          className={cx(
             'block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
             mono && 'font-mono font-bold',
           )}
@@ -95,7 +94,7 @@ const FileLabelsRow = ({
       {labels.map((label) => (
         <li key={label.name}>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-[11px] font-mono font-bold',
               toneTokens[label.tone].chip,
             )}

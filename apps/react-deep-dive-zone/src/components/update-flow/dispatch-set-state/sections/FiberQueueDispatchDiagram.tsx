@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   Cuboid,
@@ -112,7 +111,7 @@ const PanelShell = ({
           </span>
         </div>
         <span
-          className={cn(
+          className={cx(
             'shrink-0 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -130,7 +129,7 @@ const MemoryNodeCard = ({ node }: { node: MemoryNode }) => {
   const t = toneTokens[node.tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -138,7 +137,7 @@ const MemoryNodeCard = ({ node }: { node: MemoryNode }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
             t.chip,
           )}
@@ -147,7 +146,7 @@ const MemoryNodeCard = ({ node }: { node: MemoryNode }) => {
         </span>
         <div className="flex flex-col min-w-0">
           <span
-            className={cn(
+            className={cx(
               'text-xsm sm:text-sm font-bold font-mono leading-tight break-keep',
               t.text,
             )}
@@ -170,7 +169,7 @@ const MemoryNodeCard = ({ node }: { node: MemoryNode }) => {
       )}
 
       {node.body && (
-        <p className={cn('rounded-md border px-2.5 py-2 text-xxsm font-mono leading-snug', t.chip)}>
+        <p className={cx('rounded-md border px-2.5 py-2 text-xxsm font-mono leading-snug', t.chip)}>
           {node.body}
         </p>
       )}
@@ -193,14 +192,14 @@ const RuntimeStepCard = ({ step }: { step: RuntimeStep }) => {
   const t = toneTokens[step.tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] p-sm shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border',
           t.chip,
         )}
@@ -210,14 +209,14 @@ const RuntimeStepCard = ({ step }: { step: RuntimeStep }) => {
       <div className="flex flex-col gap-0.5 min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <span
-            className={cn(
+            className={cx(
               'inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full border px-1.5 text-[10px] font-mono font-bold tabular-nums',
               t.chip,
             )}
           >
             {step.number}
           </span>
-          <h4 className={cn('text-xsm sm:text-sm font-bold break-keep', t.text)}>{step.title}</h4>
+          <h4 className={cx('text-xsm sm:text-sm font-bold break-keep', t.text)}>{step.title}</h4>
         </div>
         <p className="text-xxsm text-[var(--term-muted)] leading-snug break-keep">
           {step.subtitle}

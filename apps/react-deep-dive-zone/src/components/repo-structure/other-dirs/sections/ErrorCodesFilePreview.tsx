@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileJson, Info, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.34fr)_minmax(0,_0.66fr)] gap-md items-stretch">
         {/* 좌측 정보 카드 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
           )}
@@ -36,17 +35,17 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
           <InfoRow
             label={content.descriptionLabel}
             value={<span>{content.descriptionValue}</span>}
-            icon={<Info className={cn('h-4 w-4', toneTokens.sky.text)} aria-hidden="true" />}
+            icon={<Info className={cx('h-4 w-4', toneTokens.sky.text)} aria-hidden="true" />}
           />
 
           <div
-            className={cn(
+            className={cx(
               'mt-auto flex items-start gap-2 rounded-lg border p-3',
               'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}
           >
             <Lightbulb
-              className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
+              className={cx('mt-0.5 h-4 w-4 shrink-0', toneTokens.sky.text)}
               aria-hidden="true"
             />
             <p className="text-xsm leading-relaxed font-medium break-keep whitespace-pre-line">
@@ -69,7 +68,7 @@ export const ErrorCodesFilePreview = ({ content }: Props) => {
               href={content.secondaryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
+              className={cx(
                 'group/cta inline-flex items-center justify-center gap-2 rounded-md px-lg py-3 text-xsm font-bold',
                 'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
                 'transition-colors hover:bg-[var(--term-surface)]',

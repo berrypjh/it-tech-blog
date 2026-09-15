@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Server, TriangleAlert } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -19,7 +18,7 @@ export const MismatchRecoverHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -78,7 +77,7 @@ const RenderCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -89,9 +88,9 @@ const RenderCard = ({
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 rounded-md border px-2 py-0.5 font-mono text-lg font-bold tabular-nums',
             t.chip,
           )}
@@ -109,7 +108,7 @@ const MismatchCard = ({ title, body }: { title: string; body: string }) => {
   const t = toneTokens.amber;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border p-md',
         t.chip,
         t.border,
@@ -120,8 +119,8 @@ const MismatchCard = ({ title, body }: { title: string; body: string }) => {
         <TriangleAlert className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
-        <p className={cn('text-xsm leading-relaxed break-keep', t.text)}>{body}</p>
+        <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
+        <p className={cx('text-xsm leading-relaxed break-keep', t.text)}>{body}</p>
       </div>
     </article>
   );

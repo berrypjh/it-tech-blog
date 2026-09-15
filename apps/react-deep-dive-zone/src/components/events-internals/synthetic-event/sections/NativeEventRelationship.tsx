@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Link } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -18,7 +17,7 @@ export const NativeEventRelationship = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
       )}
@@ -51,7 +50,7 @@ export const NativeEventRelationship = ({ content }: Props) => (
             {content.rows.map((row, i) => (
               <tr
                 key={row.name}
-                className={cn(
+                className={cx(
                   'transition-colors hover:bg-blue-50/30 dark:hover:bg-blue-950/10',
                   i % 2 === 1 && 'bg-[var(--term-surface)]/40',
                 )}

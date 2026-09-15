@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Droplet, Globe, Layers, type LucideIcon, Monitor, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ export const ConcernsSection = ({ content }: Props) => {
               icon={<Icon className="h-5 w-5" aria-hidden="true" />}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md font-bold tracking-tight break-keep',
                   toneTokens[card.tone].text,
                 )}

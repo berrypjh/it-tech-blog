@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, Sparkles, Tag, User } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -49,7 +48,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             toneTokens[card.tone].chip,
           )}
@@ -57,7 +56,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
           <Icon className="h-5 w-5" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             toneTokens[card.tone].chip,
           )}
@@ -67,7 +66,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
       </header>
 
       <code
-        className={cn(
+        className={cx(
           'font-mono text-md font-bold tracking-tight break-all',
           toneTokens[card.tone].text,
         )}
@@ -86,7 +85,7 @@ const KindCardView = ({ card }: { card: TypeKindCard }) => {
           <li key={check} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-4 h-4 rounded-full border shrink-0 mt-0.5',
                 toneTokens[card.tone].chip,
               )}

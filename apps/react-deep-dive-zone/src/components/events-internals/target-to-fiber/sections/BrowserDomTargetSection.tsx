@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Globe, Target } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -81,7 +80,7 @@ export const BrowserDomTargetSection = ({ content }: Props) => {
 
         {/* Value card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-sky-50/30',
             'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-sky-950/20',

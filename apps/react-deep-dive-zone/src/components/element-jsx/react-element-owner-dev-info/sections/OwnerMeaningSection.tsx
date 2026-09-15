@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Code, MessageSquareWarning, Tag, User, Wrench } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -34,7 +33,7 @@ export const OwnerMeaningSection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-stretch">
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -50,21 +49,21 @@ export const OwnerMeaningSection = ({ content }: Props) => (
             return (
               <li key={step.id} className="flex flex-col">
                 <article
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-sm rounded-xl border p-sm',
                     'bg-[var(--term-bg)] border-[var(--term-border)]',
                   )}
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center justify-center w-9 h-9 rounded-lg border',
                       t.chip,
                     )}
                   >
                     <Icon className="h-4 w-4" />
                   </span>
-                  <code className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+                  <code className={cx('font-mono text-xsm font-bold tracking-tight', t.text)}>
                     {step.label}
                   </code>
                 </article>
@@ -97,7 +96,7 @@ const InfoCardView = ({ card }: { card: OwnerInfoCard }) => {
   const Icon = cardIconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -105,14 +104,14 @@ const InfoCardView = ({ card }: { card: OwnerInfoCard }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-11 h-11 rounded-xl border',
           t.chip,
         )}
       >
         <Icon className="h-5 w-5" />
       </span>
-      <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+      <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
     </article>
   );

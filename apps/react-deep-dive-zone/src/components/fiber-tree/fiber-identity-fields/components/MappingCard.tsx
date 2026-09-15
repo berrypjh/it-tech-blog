@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Puzzle, Rocket } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -26,7 +25,7 @@ export const MappingCardItem = ({ card }: Props) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -47,7 +46,7 @@ export const MappingCardItem = ({ card }: Props) => {
         {card.rows.map((row) => (
           <div key={row.field} className="contents">
             <dt
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap',
                 toneTokens[fieldTone[row.field]].chip,
               )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lock, Pencil, Repeat, Type } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const UpdateHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -95,7 +94,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       {detail ? (
@@ -116,7 +115,7 @@ const FlagRow = ({ title, subtitle }: { title: string; subtitle: string }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.chip,
@@ -128,7 +127,7 @@ const FlagRow = ({ title, subtitle }: { title: string; subtitle: string }) => {
         <Pencil className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
         <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
           {subtitle}
         </span>
@@ -141,7 +140,7 @@ const DiffRow = ({ before, after }: { before: string; after: string }) => {
   const t = toneTokens.teal;
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border px-md py-2',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -150,7 +149,7 @@ const DiffRow = ({ before, after }: { before: string; after: string }) => {
     >
       <code className="font-mono text-[12px] text-[var(--term-fg)]">{before}</code>
       <DownArrow horizontal />
-      <code className={cn('font-mono text-[12px] font-bold', t.text)}>{after}</code>
+      <code className={cx('font-mono text-[12px] font-bold', t.text)}>{after}</code>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2, FileCode, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -51,7 +50,7 @@ const PathList = ({ items, mono }: { items: string[]; mono?: boolean }) => (
     {items.map((v) => (
       <li key={v}>
         <code
-          className={cn(
+          className={cx(
             'block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
             mono && 'font-mono font-bold',
           )}
@@ -111,18 +110,18 @@ const CodeBlockCard = ({ block }: { block: CodeBlock }) => {
   const t = toneTokens[block.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-sm',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-2 px-1">
-        <h4 className={cn('text-xsm font-bold leading-tight break-keep', t.fill.text)}>
+        <h4 className={cx('text-xsm font-bold leading-tight break-keep', t.fill.text)}>
           {block.title}
         </h4>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}

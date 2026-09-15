@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { LayersIcon, ShieldCheckIcon } from '../icons';
@@ -22,7 +22,7 @@ export const OffscreenConnectionSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-2 lg:gap-lg items-stretch">
       {/* LEFT: diagram */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -43,7 +43,7 @@ export const OffscreenConnectionSection = ({ content }: Props) => (
         <pre
           role="img"
           aria-label={content.diagramTitle}
-          className={cn(
+          className={cx(
             'overflow-x-auto rounded-xl border-2 px-3 py-3',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/40',
             'font-mono text-[12px] leading-relaxed sm:text-[13px]',
@@ -56,7 +56,7 @@ export const OffscreenConnectionSection = ({ content }: Props) => (
               return (
                 <span key={idx} className="block">
                   <span className="text-slate-400 dark:text-slate-600">{indent}</span>
-                  <span className={cn('font-bold', tone.text)}>{line.label}</span>
+                  <span className={cx('font-bold', tone.text)}>{line.label}</span>
                 </span>
               );
             })}
@@ -70,7 +70,7 @@ export const OffscreenConnectionSection = ({ content }: Props) => (
 
       {/* RIGHT: management points */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-purple-300/80 bg-purple-50/30 dark:border-purple-700/70 dark:bg-purple-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -94,7 +94,7 @@ export const OffscreenConnectionSection = ({ content }: Props) => (
             return (
               <li
                 key={item.body}
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-lg border px-3 py-2',
                   'border-purple-200 bg-white dark:border-purple-800/60 dark:bg-[var(--term-bg)]',
                 )}

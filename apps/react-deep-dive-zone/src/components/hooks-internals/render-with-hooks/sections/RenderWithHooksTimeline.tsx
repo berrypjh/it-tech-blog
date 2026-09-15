@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Braces, Cog, Layers, PlayCircle, Rocket, Split, Workflow, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ const toneIconBox: Record<Tone, string> = {
 export const RenderWithHooksTimeline = ({ content }: Props) => (
   <section
     aria-labelledby="heading-timeline"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -54,7 +53,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
       {/* Vertical line */}
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'absolute left-3 sm:left-4 top-2 bottom-2 w-0.5',
           'bg-gradient-to-b from-blue-400 via-cyan-400 to-emerald-400',
           'dark:from-blue-500 dark:via-cyan-500 dark:to-emerald-500',
@@ -70,7 +69,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
               {/* Number badge over the line */}
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute -left-10 sm:-left-12 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full',
                   'bg-blue-500 text-white text-[11px] font-mono font-bold tabular-nums',
                   'border-2 border-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
@@ -81,7 +80,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
               </span>
 
               <article
-                className={cn(
+                className={cx(
                   'flex items-center gap-3 rounded-xl border bg-[var(--term-bg)] p-md',
                   'border-[var(--term-border)] border-l-4',
                   'shadow-[0_1px_0_var(--term-border)] transition-colors',
@@ -91,7 +90,7 @@ export const RenderWithHooksTimeline = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
                     toneIconBox[step.tone],
                   )}

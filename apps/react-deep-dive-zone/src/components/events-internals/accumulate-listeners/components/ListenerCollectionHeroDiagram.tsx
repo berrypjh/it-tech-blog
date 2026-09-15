@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, GitBranch } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -30,7 +29,7 @@ export const ListenerCollectionHeroDiagram = ({ content, className }: Props) => 
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -70,7 +69,7 @@ const FiberRow = ({ node, isTarget }: { node: FiberNode; isTarget: boolean }) =>
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -81,7 +80,7 @@ const FiberRow = ({ node, isTarget }: { node: FiberNode; isTarget: boolean }) =>
         <Box className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
           {node.name}
         </span>
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -89,7 +88,7 @@ const FiberRow = ({ node, isTarget }: { node: FiberNode; isTarget: boolean }) =>
         </span>
       </div>
       <span
-        className={cn(
+        className={cx(
           'ml-auto shrink-0 inline-flex items-center gap-1 rounded-md border px-2 py-0.5',
           'font-mono text-[10px] font-bold whitespace-nowrap',
           t.chip,

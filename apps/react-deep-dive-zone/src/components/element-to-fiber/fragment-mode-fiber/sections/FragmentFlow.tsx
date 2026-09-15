@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Group, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -31,7 +30,7 @@ export const FragmentFlow = ({ content }: Props) => (
       {/* JSX */}
       <article className="flex flex-col gap-2 min-w-0">
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border px-2.5 py-0.5',
             'text-[10px] font-bold uppercase tracking-wider font-mono',
             toneTokens.violet.chip,
@@ -49,13 +48,13 @@ export const FragmentFlow = ({ content }: Props) => (
 
       {/* Flow steps */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
       >
         <span
-          className={cn(
+          className={cx(
             'text-[10px] uppercase tracking-wider font-mono font-bold',
             toneTokens.violet.text,
           )}

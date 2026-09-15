@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Code2, HelpCircle } from 'lucide-react';
 
 import type { HooksEntryFlowContent } from '../content';
@@ -68,7 +67,7 @@ export const CounterQuizSection = ({ content }: Props) => {
     <section aria-label="counter-quiz" className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
       {/* Left: Counter code card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'transition-colors hover:border-sky-300/70 dark:hover:border-sky-700/70',
@@ -120,7 +119,7 @@ export const CounterQuizSection = ({ content }: Props) => {
 
       {/* Right: quiz card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -147,7 +146,7 @@ export const CounterQuizSection = ({ content }: Props) => {
                   role="radio"
                   aria-checked={isSelected}
                   onClick={() => setSelected(opt.key)}
-                  className={cn(
+                  className={cx(
                     'group w-full flex items-center gap-3 rounded-xl border-2 px-3 py-3 text-left transition-all',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                     'motion-safe:transition-transform',
@@ -158,7 +157,7 @@ export const CounterQuizSection = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
                       isSelected
                         ? 'border-blue-500 bg-blue-500 dark:border-blue-400 dark:bg-blue-400'
@@ -170,7 +169,7 @@ export const CounterQuizSection = ({ content }: Props) => {
                     )}
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'font-mono text-xsm sm:text-sm font-bold',
                       isSelected ? 'text-blue-700 dark:text-blue-200' : 'text-[var(--term-fg)]',
                     )}
@@ -184,7 +183,7 @@ export const CounterQuizSection = ({ content }: Props) => {
         </ul>
 
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-sm rounded-xl border-2 p-md',
             'border-emerald-300/70 bg-emerald-50/60',
             'dark:border-emerald-800/60 dark:bg-emerald-950/30',

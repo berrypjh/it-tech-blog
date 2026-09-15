@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MetadataResourceContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, AtomIcon, GlobeIcon, SparklesIcon } from '../icons';
@@ -22,7 +22,7 @@ export const ReactTreeDomHeadSplit = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_5fr)_auto_minmax(0,_5fr)] lg:gap-md items-stretch">
       {/* LEFT: React Tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -46,7 +46,7 @@ export const ReactTreeDomHeadSplit = ({ content }: Props) => (
       <div className="flex lg:flex-col items-center justify-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
             'border-blue-300 bg-blue-50 text-blue-700',
             'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -76,7 +76,7 @@ export const ReactTreeDomHeadSplit = ({ content }: Props) => (
 
       {/* RIGHT: DOM (final placement) */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/30 dark:border-teal-700/70 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

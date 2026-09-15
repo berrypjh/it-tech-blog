@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Gauge, GitBranch, Link2, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -69,7 +68,7 @@ const DifferenceCardItem = ({ card }: { card: DifferenceCard }) => {
   const Icon = visualMap[card.visual];
   return (
     <article
-      className={cn(
+      className={cx(
         'h-full flex flex-col gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         'motion-safe:hover:-translate-y-0.5',
@@ -79,7 +78,7 @@ const DifferenceCardItem = ({ card }: { card: DifferenceCard }) => {
       <header className="flex items-start gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border',
             iconBoxTone[card.tone],
           )}
@@ -91,7 +90,7 @@ const DifferenceCardItem = ({ card }: { card: DifferenceCard }) => {
             {card.title}
           </h3>
           <code
-            className={cn(
+            className={cx(
               'inline-flex w-fit items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold break-all',
               chipTone[card.tone],
             )}
@@ -110,7 +109,7 @@ const DifferenceCardItem = ({ card }: { card: DifferenceCard }) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0',
                   dotTone[card.tone],
                 )}
@@ -133,7 +132,7 @@ const DifferenceCardItem = ({ card }: { card: DifferenceCard }) => {
 export const WhenDifferenceAppears = ({ content }: Props) => (
   <section
     aria-labelledby="heading-when-difference"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

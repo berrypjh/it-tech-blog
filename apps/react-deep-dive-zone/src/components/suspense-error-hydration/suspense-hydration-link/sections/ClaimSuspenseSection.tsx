@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Globe, Package, Radar } from 'lucide-react';
 
 import type { SuspenseHydrationLinkContent } from '../content';
@@ -24,7 +23,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* DOM */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-blue-50/30 dark:border-blue-800/60 dark:bg-blue-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -42,7 +41,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
           </h3>
         </header>
         <pre
-          className={cn(
+          className={cx(
             'overflow-x-auto rounded-lg border bg-slate-950 px-3 py-3 text-[11px] font-mono leading-[1.7]',
             'border-slate-800 text-slate-100',
           )}
@@ -51,7 +50,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
             {content.domLines.map((line, i) => (
               <div key={i}>
                 <span
-                  className={cn(
+                  className={cx(
                     line.startsWith('<!--') ? 'text-violet-300 italic' : 'text-blue-200',
                   )}
                 >
@@ -76,7 +75,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
 
       {/* matching */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -100,7 +99,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
             return (
               <li key={step.label} className="flex flex-col items-center gap-1 w-full">
                 <div
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-xl border-2 px-3 py-2 w-full text-center justify-center',
                     accent.border,
                     accent.bg,
@@ -108,14 +107,14 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                       accent.solidBg,
                     )}
                   >
                     {i + 1}
                   </span>
-                  <span className={cn('text-[11px] font-mono font-bold break-keep', accent.text)}>
+                  <span className={cx('text-[11px] font-mono font-bold break-keep', accent.text)}>
                     {step.label}
                   </span>
                 </div>
@@ -133,7 +132,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
 
       {/* Fiber */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-200/80 bg-violet-50/30 dark:border-violet-800/60 dark:bg-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -166,7 +165,7 @@ export const ClaimSuspenseSection = ({ content }: Props) => (
                 </span>
               )}
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5',
                   'font-mono text-[11px] font-bold break-keep',
                   fiberLineStyle[line.kind],

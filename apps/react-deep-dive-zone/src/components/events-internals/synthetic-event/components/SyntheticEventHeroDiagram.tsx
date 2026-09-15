@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Link } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -20,7 +19,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -48,7 +47,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
         <DownArrow />
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -58,7 +57,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
               <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <h2
-              className={cn('text-xsm font-bold tracking-tight break-keep', toneTokens.violet.text)}
+              className={cx('text-xsm font-bold tracking-tight break-keep', toneTokens.violet.text)}
             >
               {content.title}
             </h2>
@@ -74,7 +73,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
         <DownArrow />
 
         <article
-          className={cn(
+          className={cx(
             'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             toneTokens.teal.borderHover,
@@ -100,7 +99,7 @@ export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
 const PropertyItem = ({ row }: { row: PropertyRow }) => (
   <li className="grid grid-cols-[minmax(0,0.55fr)_minmax(0,1fr)] items-start gap-2">
     <code
-      className={cn(
+      className={cx(
         'min-w-0 truncate rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5',
         'font-mono text-[11px] font-bold leading-none',
         toneTokens.violet.text,

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, RefreshCcw, ShieldAlert, ShieldCheck } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -34,7 +33,7 @@ export const ErrorReportingHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -63,7 +62,7 @@ export const ErrorReportingHeroDiagram = ({ content, className }: Props) => {
 
 const SourceRow = () => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -87,7 +86,7 @@ const CallbackRow = ({ card }: { card: RootCallbackCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -99,17 +98,17 @@ const CallbackRow = ({ card }: { card: RootCallbackCard }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <span className="flex flex-wrap items-center gap-2">
-          <span className={cn('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
+          <span className={cx('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
             {card.name}
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               t.chip,
             )}
           >
-            <span className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} />
+            <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} />
             {card.badge}
           </span>
         </span>

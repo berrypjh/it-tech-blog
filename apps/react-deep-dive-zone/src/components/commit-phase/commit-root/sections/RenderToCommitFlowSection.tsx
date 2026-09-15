@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, DoorOpen, GitMerge, Rocket, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -52,11 +51,11 @@ const StepCard = ({ step, index }: { step: RenderToCommitStep; index: number }) 
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border p-md',
         step.emphasis
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -65,12 +64,12 @@ const StepCard = ({ step, index }: { step: RenderToCommitStep; index: number }) 
       </ToneIconBox>
       <div className="flex flex-col gap-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.emphasis && (
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
                 t.chip,
               )}
@@ -85,7 +84,7 @@ const StepCard = ({ step, index }: { step: RenderToCommitStep; index: number }) 
       </div>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden sm:inline-flex h-8 w-8 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

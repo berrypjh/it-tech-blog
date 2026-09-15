@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, HelpCircle, MapPin, Save, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ export const BeforeMutationNeedSection = ({ content }: Props) => (
             badge={card.subtitle}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md font-bold tracking-tight break-keep',
                 toneTokens[card.tone].text,
               )}
@@ -91,14 +90,14 @@ const MiniStep = ({ step }: { step: MiniTimelineStep }) => {
     <div className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-block h-2 w-2 rounded-full shrink-0',
-          step.active ? cn(t.dot, 'ring-2 ring-[var(--term-border)]') : 'bg-[var(--term-dim)]',
+          step.active ? cx(t.dot, 'ring-2 ring-[var(--term-border)]') : 'bg-[var(--term-dim)]',
         )}
       />
       <div className="flex flex-col min-w-0">
         <span
-          className={cn(
+          className={cx(
             'text-xsm font-bold leading-tight break-keep',
             step.active ? t.text : 'text-[var(--term-fg)]',
           )}
@@ -106,7 +105,7 @@ const MiniStep = ({ step }: { step: MiniTimelineStep }) => {
           {step.label}
         </span>
         <span
-          className={cn(
+          className={cx(
             'text-[10px] uppercase tracking-wider leading-tight',
             step.active ? t.text : 'text-[var(--term-muted)]',
           )}

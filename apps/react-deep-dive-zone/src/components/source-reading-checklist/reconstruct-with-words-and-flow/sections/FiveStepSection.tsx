@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Layers } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const FiveStepSection = ({ content }: Props) => {
         {content.steps.map((step) => (
           <li key={step.number}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 'border-blue-200 dark:border-blue-800/60',
@@ -38,7 +37,7 @@ export const FiveStepSection = ({ content }: Props) => {
               <div className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-full border-2',
                     'border-blue-400 bg-blue-50 text-blue-700',
                     'dark:border-blue-600/80 dark:bg-blue-950/40 dark:text-blue-200',
@@ -59,7 +58,7 @@ export const FiveStepSection = ({ content }: Props) => {
 
               <div className="mt-auto pt-sm border-t border-dashed border-blue-300/70 dark:border-blue-700/60">
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-md border px-2 py-0.5',
                     'border-blue-300 bg-blue-50 text-blue-800',
                     'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -76,7 +75,7 @@ export const FiveStepSection = ({ content }: Props) => {
 
       {/* Flow line */}
       <aside
-        className={cn(
+        className={cx(
           'flex flex-wrap items-center gap-2 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300 bg-gradient-to-r from-blue-50/60 via-white to-violet-50/30',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -92,7 +91,7 @@ export const FiveStepSection = ({ content }: Props) => {
             <Fragment key={step}>
               <li>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border-2 px-2.5 py-1',
                     'border-blue-300 bg-white text-blue-800',
                     'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-100',

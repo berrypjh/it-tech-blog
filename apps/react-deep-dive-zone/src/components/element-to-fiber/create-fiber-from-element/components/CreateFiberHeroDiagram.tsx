@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Layers, Wand2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -16,7 +15,7 @@ export const CreateFiberHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -95,12 +94,12 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+      <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
         {label}
       </span>
       {badge ? (
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
             t.chip,
           )}
@@ -119,13 +118,13 @@ const StepHeader = ({
 
 const ExtractionRow = ({ chip }: { chip: ExtractionChip }) => (
   <span
-    className={cn(
+    className={cx(
       'flex items-center gap-2 rounded-lg border px-sm py-2',
       'border-[var(--term-border)] bg-[var(--term-bg)]',
     )}
   >
     <span
-      className={cn(
+      className={cx(
         'inline-flex h-6 w-6 items-center justify-center rounded-md font-mono text-[11px] font-bold tabular-nums',
         'bg-[var(--term-accent)] text-[var(--term-bg)]',
       )}

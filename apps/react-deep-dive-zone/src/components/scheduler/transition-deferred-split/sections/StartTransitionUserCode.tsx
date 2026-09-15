@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, Split, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -34,7 +33,7 @@ const renderToken = (tok: string, i: number) => {
     return (
       <span
         key={i}
-        className={cn(
+        className={cx(
           tok === 'useTransition' && 'text-cyan-300 font-semibold',
           tok === 'startTransition' && 'text-emerald-300 font-semibold',
           tok === 'setInput' && 'text-emerald-300 font-semibold',
@@ -110,7 +109,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
 
         {/* state separation diagram */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -130,7 +129,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
           <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-3 items-stretch">
             {/* input state */}
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-2 rounded-xl border-2 p-3',
                 responseCardBorder.emerald,
               )}
@@ -138,7 +137,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                     responseIconBox.emerald,
                   )}
@@ -146,7 +145,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                   <Zap className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'font-mono text-[10px] uppercase tracking-wider',
                     responseTextStrong.emerald,
                   )}
@@ -155,7 +154,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                 </span>
               </header>
               <h4
-                className={cn(
+                className={cx(
                   'text-xsm sm:text-sm font-bold break-keep',
                   responseTextStrong.emerald,
                 )}
@@ -169,7 +168,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                 {content.inputState.action}()
               </code>
               <span
-                className={cn(
+                className={cx(
                   'mt-auto inline-flex items-center self-start rounded-full border px-2 py-0.5',
                   'text-[10px] font-mono font-bold uppercase tracking-wider',
                   responsePill.emerald,
@@ -196,7 +195,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
 
             {/* list state */}
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-2 rounded-xl border-2 p-3',
                 responseCardBorder.blue,
               )}
@@ -204,7 +203,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                     responseIconBox.blue,
                   )}
@@ -212,7 +211,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                   <Split className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'font-mono text-[10px] uppercase tracking-wider',
                     responseTextStrong.blue,
                   )}
@@ -221,7 +220,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                 </span>
               </header>
               <h4
-                className={cn('text-xsm sm:text-sm font-bold break-keep', responseTextStrong.blue)}
+                className={cx('text-xsm sm:text-sm font-bold break-keep', responseTextStrong.blue)}
               >
                 {content.listState.title}
               </h4>
@@ -229,7 +228,7 @@ export const StartTransitionUserCode = ({ content }: Props) => {
                 {content.listState.value}
               </code>
               <span
-                className={cn(
+                className={cx(
                   'mt-auto inline-flex items-center self-start rounded-full border px-2 py-0.5',
                   'text-[10px] font-mono font-bold uppercase tracking-wider',
                   responsePill.blue,

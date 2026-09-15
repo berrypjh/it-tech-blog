@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { type LucideIcon, MousePointerClick, Search, Sparkles } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -28,7 +27,7 @@ const chipChrome = 'bg-[var(--term-surface)] border border-[var(--term-border)]'
 export const HeroPriorityCards = ({ content }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
@@ -49,11 +48,11 @@ export const HeroPriorityCards = ({ content }: Props) => {
             />
             {content.priorityHighLabel}
           </span>
-          <span className={cn('inline-flex items-center gap-1.5', toneTokens.sky.text)}>
+          <span className={cx('inline-flex items-center gap-1.5', toneTokens.sky.text)}>
             {content.priorityLowLabel}
             <span
               aria-hidden="true"
-              className={cn('inline-block w-1.5 h-1.5 rounded-full', toneTokens.sky.dot)}
+              className={cx('inline-block w-1.5 h-1.5 rounded-full', toneTokens.sky.dot)}
             />
           </span>
         </div>
@@ -82,7 +81,7 @@ const PriorityCard = ({ card }: CardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border p-3',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -91,7 +90,7 @@ const PriorityCard = ({ card }: CardProps) => {
       <header className="flex flex-wrap items-center justify-between gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex shrink-0 items-center justify-center w-8 h-8 rounded-md',
             chipChrome,
             t.text,
@@ -100,7 +99,7 @@ const PriorityCard = ({ card }: CardProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex min-w-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             chipChrome,
             t.text,
@@ -108,12 +107,12 @@ const PriorityCard = ({ card }: CardProps) => {
         >
           <span
             aria-hidden="true"
-            className={cn('inline-block shrink-0 w-1 h-1 rounded-full', t.dot)}
+            className={cx('inline-block shrink-0 w-1 h-1 rounded-full', t.dot)}
           />
           <span className="truncate">{card.badge}</span>
         </span>
       </header>
-      <h3 className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+      <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
         {card.description}
       </p>

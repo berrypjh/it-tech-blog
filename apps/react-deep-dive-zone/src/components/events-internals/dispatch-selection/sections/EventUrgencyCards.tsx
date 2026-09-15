@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Circle, Timer, Waves, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -30,7 +29,7 @@ export const EventUrgencyCards = ({ content }: Props) => (
         return (
           <article
             key={card.title}
-            className={cn(
+            className={cx(
               'group flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -40,7 +39,7 @@ export const EventUrgencyCards = ({ content }: Props) => (
             <header className="flex items-start justify-between gap-2">
               <div className="flex flex-col">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     priorityText[card.priority],
                   )}
@@ -53,7 +52,7 @@ export const EventUrgencyCards = ({ content }: Props) => (
               </div>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                   priorityIconBox[card.priority],
                 )}
@@ -70,7 +69,7 @@ export const EventUrgencyCards = ({ content }: Props) => (
               {card.events.map((ev) => (
                 <li
                   key={ev}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                     'font-mono text-[11px] sm:text-xsm font-medium',
                     priorityBadge[card.priority],

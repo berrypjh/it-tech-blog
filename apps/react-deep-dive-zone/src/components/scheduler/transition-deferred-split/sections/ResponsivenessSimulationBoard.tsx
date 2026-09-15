@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CheckCircle2,
@@ -36,10 +35,10 @@ const SkeletonRow = ({ width, accent }: { width: number; accent: 'rose' | 'emera
   }[accent];
   return (
     <li className="flex items-center gap-2" aria-hidden="true">
-      <span className={cn('h-6 w-6 shrink-0 rounded', thumb)} />
+      <span className={cx('h-6 w-6 shrink-0 rounded', thumb)} />
       <span className="flex flex-col gap-1 flex-1">
-        <span className={cn('h-2 rounded', bar)} style={{ width: `${width}%` }} />
-        <span className={cn('h-2 rounded opacity-70', bar)} style={{ width: `${width - 22}%` }} />
+        <span className={cx('h-2 rounded', bar)} style={{ width: `${width}%` }} />
+        <span className={cx('h-2 rounded opacity-70', bar)} style={{ width: `${width - 22}%` }} />
       </span>
     </li>
   );
@@ -58,7 +57,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
     <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_minmax(0,1fr)] gap-md items-stretch">
       {/* BAD: plain update */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           responseCardBorder.rose,
@@ -67,7 +66,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
         <header className="flex items-center justify-between gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               responseIconBox.rose,
             )}
@@ -75,7 +74,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
             <X className="h-5 w-5" aria-hidden="true" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               responsePill.rose,
@@ -85,7 +84,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           </span>
         </header>
         <h3
-          className={cn(
+          className={cx(
             'text-md sm:text-lg font-bold leading-tight break-keep',
             responseTextStrong.rose,
           )}
@@ -133,7 +132,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
       {/* VS badge */}
       <div aria-hidden="true" className="hidden lg:flex items-center justify-center self-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-12 w-12 items-center justify-center rounded-full',
             'border-2 border-blue-300 bg-white text-blue-700 font-mono font-bold text-sm',
             'shadow-[0_3px_0_var(--term-border)]',
@@ -146,7 +145,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
 
       {/* GOOD: transition / deferred */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           responseCardBorder.emerald,
@@ -155,7 +154,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
         <header className="flex items-center justify-between gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               responseIconBox.emerald,
             )}
@@ -163,7 +162,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
             <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5',
               'text-[10px] font-mono font-bold uppercase tracking-wider',
               responsePill.emerald,
@@ -173,7 +172,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
           </span>
         </header>
         <h3
-          className={cn(
+          className={cx(
             'text-md sm:text-lg font-bold leading-tight break-keep',
             responseTextStrong.emerald,
           )}
@@ -226,7 +225,7 @@ export const ResponsivenessSimulationBoard = ({ content }: Props) => (
 
       {/* HOW-TO */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-gradient-to-br from-blue-50/60 via-white to-violet-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',

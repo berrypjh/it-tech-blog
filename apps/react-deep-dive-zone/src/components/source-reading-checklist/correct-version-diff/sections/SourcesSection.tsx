@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BookOpen, ListTree, Megaphone, Newspaper, Tag } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const SourcesSection = ({ content }: Props) => {
           return (
             <li key={card.id}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   'border-violet-200 dark:border-violet-800/60',
@@ -47,7 +46,7 @@ export const SourcesSection = ({ content }: Props) => {
                   </h3>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-md',
                       'border border-violet-300 bg-violet-100 text-violet-700',
                       'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   id: string;
@@ -12,7 +12,7 @@ type Props = {
 export const SectionHeader = ({ id, eyebrow, title, description, icon, align = 'left' }: Props) => {
   return (
     <header
-      className={cn('flex flex-col gap-sm mb-lg', align === 'center' && 'items-center text-center')}
+      className={cx('flex flex-col gap-sm mb-lg', align === 'center' && 'items-center text-center')}
     >
       <div className="flex items-center gap-sm w-full">
         <span className="text-[var(--term-accent)] font-bold text-xsm">{'//'}</span>

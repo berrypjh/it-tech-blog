@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, FileSearch, ListChecks } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ export const ReadingChecklistSection = ({ content }: Props) => (
       {content.items.map((item, i) => (
         <li key={item.question} className="h-full">
           <article
-            className={cn(
+            className={cx(
               'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
               'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
               'transition-all motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',

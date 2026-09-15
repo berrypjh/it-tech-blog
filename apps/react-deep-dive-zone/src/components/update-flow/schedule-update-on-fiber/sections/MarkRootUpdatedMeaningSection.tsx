@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Flag, Network, Zap } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -26,7 +25,7 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
       {/* 좌: 설명 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-3 py-1.5 font-mono text-sm sm:text-md font-bold',
             sky.border,
             sky.text,
@@ -49,14 +48,14 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
           {content.description.bullets.map((b) => (
             <li
               key={b}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-md border bg-[var(--term-surface)] px-3 py-2',
                 sky.border,
               )}
             >
               <CheckCircle2
                 aria-hidden="true"
-                className={cn('mt-0.5 h-4 w-4 shrink-0', sky.text)}
+                className={cx('mt-0.5 h-4 w-4 shrink-0', sky.text)}
               />
               <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">
                 {b}
@@ -73,7 +72,7 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
             {content.diagramTitle}
           </h3>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               emerald.chip,
             )}
@@ -108,7 +107,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
   const isAfter = variant === 'after';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         isAfter ? sky.border : 'border-[var(--term-border)]',
       )}
@@ -128,7 +127,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
             </span>
           )}
           <span
-            className={cn(
+            className={cx(
               'text-xsm sm:text-sm font-bold font-mono',
               isAfter ? sky.text : 'text-[var(--term-fg)]',
             )}
@@ -138,7 +137,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
         </div>
         {badge && (
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider',
               emerald.chip,
             )}
@@ -154,7 +153,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
           <li key={f.key} className="flex items-center justify-between gap-2">
             <span className="text-[var(--term-muted)]">{f.key}</span>
             <span
-              className={f.emphasized ? cn(emerald.text, 'font-bold') : 'text-[var(--term-muted)]'}
+              className={f.emphasized ? cx(emerald.text, 'font-bold') : 'text-[var(--term-muted)]'}
             >
               {f.value}
             </span>

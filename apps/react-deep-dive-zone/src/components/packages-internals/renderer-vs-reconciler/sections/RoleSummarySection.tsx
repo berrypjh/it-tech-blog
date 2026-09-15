@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, type LucideIcon, Monitor, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ export const RoleSummarySection = ({ content }: Props) => {
 
         <div className="flex md:flex-col items-center justify-center md:py-md" aria-hidden="true">
           <span
-            className={cn(
+            className={cx(
               'inline-flex flex-col items-center justify-center gap-0.5 w-20 h-20 rounded-full',
               'border-2 bg-[var(--term-bg)] text-[var(--term-fg)] font-bold font-mono tracking-tight',
               'border-[var(--term-border)]',
@@ -41,7 +40,7 @@ export const RoleSummarySection = ({ content }: Props) => {
               {content.centerBadge.lead}
             </span>
             <span className="text-2xl leading-none">{content.centerBadge.symbol}</span>
-            <span className={cn('text-[10px] uppercase tracking-wider', toneTokens.sky.text)}>
+            <span className={cx('text-[10px] uppercase tracking-wider', toneTokens.sky.text)}>
               {content.centerBadge.tail}
             </span>
           </span>
@@ -59,7 +58,7 @@ const RoleCardView = ({ card }: { card: RoleCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -69,11 +68,11 @@ const RoleCardView = ({ card }: { card: RoleCard }) => {
         <ToneIconBox tone={card.tone}>
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
+        <h3 className={cx('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
       </header>
 
       <p
-        className={cn(
+        className={cx(
           'text-md sm:text-lg font-bold leading-snug break-keep',
           'text-[var(--term-fg)]',
         )}
@@ -89,7 +88,7 @@ const RoleCardView = ({ card }: { card: RoleCard }) => {
         {card.tags.map((tag) => (
           <li key={tag}>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
                 t.chip,
               )}

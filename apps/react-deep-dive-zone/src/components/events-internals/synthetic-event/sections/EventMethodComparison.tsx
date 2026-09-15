@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Ban, Octagon, Shield, ShieldOff } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const EventMethodComparison = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* preventDefault — teal */}
       <article
-        className={cn(
+        className={cx(
           'group flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg transition-all',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/80 via-white to-cyan-50/40',
           'dark:border-teal-700/60 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -50,7 +49,7 @@ export const EventMethodComparison = ({ content }: Props) => (
 
         <div className="mt-auto flex flex-wrap items-center gap-2">
           <code
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'font-mono text-[11px] sm:text-xsm font-bold',
               'border-teal-300/80 bg-white text-teal-700 dark:border-teal-700/70 dark:bg-slate-950/40 dark:text-teal-200',
@@ -67,7 +66,7 @@ export const EventMethodComparison = ({ content }: Props) => (
 
       {/* stopPropagation — rose */}
       <article
-        className={cn(
+        className={cx(
           'group flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg transition-all',
           'border-rose-200/80 bg-gradient-to-br from-rose-50/80 via-white to-amber-50/30',
           'dark:border-rose-700/60 dark:from-rose-950/30 dark:via-[var(--term-bg)] dark:to-amber-950/10',
@@ -97,7 +96,7 @@ export const EventMethodComparison = ({ content }: Props) => (
 
         <div className="mt-auto flex flex-wrap items-center gap-2">
           <code
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'font-mono text-[11px] sm:text-xsm font-bold',
               'border-rose-300/80 bg-white text-rose-700 dark:border-rose-700/70 dark:bg-slate-950/40 dark:text-rose-200',

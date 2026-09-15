@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 /** 카드 셸·아이콘 배지·헤더 텍스트에 입힐 톤 클래스 번들. */
@@ -23,7 +22,7 @@ type Props = {
 export const ComparePanel = ({ tone, icon, title, headerId, children }: Props) => (
   <article
     aria-labelledby={headerId}
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px',
       tone.card,
     )}
@@ -31,7 +30,7 @@ export const ComparePanel = ({ tone, icon, title, headerId, children }: Props) =
     <header className="flex items-center gap-2 pb-sm border-b border-dashed border-[var(--term-border)]">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-7 h-7 rounded-full',
           tone.iconBadge,
         )}
@@ -40,7 +39,7 @@ export const ComparePanel = ({ tone, icon, title, headerId, children }: Props) =
       </span>
       <h3
         id={headerId}
-        className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', tone.header)}
+        className={cx('text-xsm sm:text-sm font-bold tracking-tight break-keep', tone.header)}
       >
         {title}
       </h3>

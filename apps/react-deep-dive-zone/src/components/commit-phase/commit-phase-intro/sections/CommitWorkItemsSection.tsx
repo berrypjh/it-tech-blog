@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Link, Monitor, Pencil, PlusSquare, Sparkles, Trash2, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -44,7 +43,7 @@ export const CommitWorkItemsSection = ({ content }: Props) => (
             badge={item.subtitle}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-sm sm:text-md font-bold leading-tight break-keep',
                 toneTokens[item.tone].text,
               )}

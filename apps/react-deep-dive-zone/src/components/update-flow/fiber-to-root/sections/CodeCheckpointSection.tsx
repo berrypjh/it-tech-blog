@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, FunctionSquare } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -64,14 +63,14 @@ const CalloutCard = ({ callout }: { callout: CheckpointCallout }) => {
   const t = toneTokens[callout.tone];
   return (
     <li
-      className={cn(
+      className={cx(
         'flex gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border font-mono font-bold text-sm',
           t.chip,
         )}
@@ -79,12 +78,12 @@ const CalloutCard = ({ callout }: { callout: CheckpointCallout }) => {
         {callout.number}
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+        <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
           {callout.title}
         </h4>
         <p className="text-xxsm leading-snug text-[var(--term-muted)] break-keep">{callout.body}</p>
         <span
-          className={cn(
+          className={cx(
             'mt-0.5 inline-flex w-fit items-center rounded border px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}

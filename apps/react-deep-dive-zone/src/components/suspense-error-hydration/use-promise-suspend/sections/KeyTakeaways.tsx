@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Hourglass, Sparkles } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -59,7 +58,7 @@ export const KeyTakeaways = ({ content }: Props) => (
         return (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-3xl border-2 p-md sm:p-lg',
                 a.border,
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -69,7 +68,7 @@ export const KeyTakeaways = ({ content }: Props) => (
               <div className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full',
                     'font-mono text-sm font-bold tabular-nums text-white',
                     a.numberBg,
@@ -79,7 +78,7 @@ export const KeyTakeaways = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                     a.iconChip,
                   )}

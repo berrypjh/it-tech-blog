@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces, Brackets, FileCode2, Flag, type LucideIcon, ShieldCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -39,7 +38,7 @@ export const SharedRepresentativeFiles = ({ content }: Props) => {
             >
               <header className="flex flex-col gap-0.5">
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-sm sm:text-md font-bold font-mono tracking-tight break-all',
                     toneTokens[card.tone].text,
                   )}

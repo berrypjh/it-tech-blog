@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Workflow, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ export const UseLayoutEffectTimingSection = ({ content }: Props) => (
       </ol>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.teal.fill.border,
           toneTokens.teal.fill.bg,
@@ -48,7 +47,7 @@ export const UseLayoutEffectTimingSection = ({ content }: Props) => (
           <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed font-bold break-keep',
             toneTokens.teal.fill.text,
           )}
@@ -64,19 +63,19 @@ const StepCard = ({ step, index }: { step: TimingStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border p-md',
         step.active
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-11 w-11 items-center justify-center rounded-lg border',
-          step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
+          step.active ? cx(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
         {step.active ? (
@@ -87,12 +86,12 @@ const StepCard = ({ step, index }: { step: TimingStep; index: number }) => {
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.active && (
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
                 t.chip,
               )}
@@ -107,7 +106,7 @@ const StepCard = ({ step, index }: { step: TimingStep; index: number }) => {
       </div>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden sm:inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

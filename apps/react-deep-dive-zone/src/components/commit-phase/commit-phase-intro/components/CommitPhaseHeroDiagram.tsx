@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Cpu, Layers } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -43,7 +42,7 @@ export const CommitPhaseHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -82,7 +81,7 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -92,7 +91,7 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
         {step.icon}
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
           {step.title}
         </span>
         <ul className="flex flex-col gap-0.5">

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = { lines: string[]; className?: string };
 
@@ -8,7 +8,7 @@ type Props = { lines: string[]; className?: string };
  */
 export const TakeawayBanner = ({ lines, className }: Props) => (
   <div
-    className={cn(
+    className={cx(
       'relative overflow-hidden rounded-xl border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-lg sm:p-xl shadow-[0_2px_0_var(--term-border)]',
       className,
     )}

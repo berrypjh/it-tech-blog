@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, MousePointerClick } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -69,7 +68,7 @@ export const UserOnClickView = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-md">
         {/* Light code panel with line numbers */}
         <div
-          className={cn(
+          className={cx(
             'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)] hover:border-blue-300/70 dark:hover:border-blue-700/70',
             'transition-colors',
@@ -113,7 +112,7 @@ export const UserOnClickView = ({ content }: Props) => {
 
         {/* Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'hover:border-emerald-300/70 dark:hover:border-emerald-700/70 transition-colors',
@@ -139,7 +138,7 @@ export const UserOnClickView = ({ content }: Props) => {
             {content.badges.map((b) => (
               <li
                 key={b}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                   'border-emerald-200/80 bg-emerald-50/60 text-emerald-800 text-[11px] sm:text-xsm font-medium',
                   'dark:border-emerald-800/60 dark:bg-emerald-950/30 dark:text-emerald-200',

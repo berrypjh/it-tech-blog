@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, Key, Tag, Target } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -56,7 +55,7 @@ const FieldCard = ({ field }: { field: IdentityField }) => {
   const Icon = fieldIcon[field.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -67,7 +66,7 @@ const FieldCard = ({ field }: { field: IdentityField }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cn('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+        <code className={cx('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {field.label}
         </code>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

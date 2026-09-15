@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ const ItemCard = ({ item }: { item: CoreFiveItem }) => {
   const t = toneTokens[item.accent];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -45,7 +44,7 @@ const ItemCard = ({ item }: { item: CoreFiveItem }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-11 h-11 rounded-full border shrink-0',
           'font-mono text-md font-extrabold tabular-nums',
           t.chip,
@@ -54,7 +53,7 @@ const ItemCard = ({ item }: { item: CoreFiveItem }) => {
         {item.number}
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <h3 className={cn('text-sm sm:text-md font-extrabold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-sm sm:text-md font-extrabold tracking-tight break-keep', t.text)}>
           {item.title}
         </h3>
         <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">

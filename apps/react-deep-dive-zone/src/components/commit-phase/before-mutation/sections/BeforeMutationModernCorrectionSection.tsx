@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Sparkles, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const BeforeMutationModernCorrectionSection = ({ content }: Props) => (
       <StepRail steps={content.steps} />
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.teal.fill.border,
           toneTokens.teal.fill.bg,
@@ -39,7 +38,7 @@ export const BeforeMutationModernCorrectionSection = ({ content }: Props) => (
           <Target className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.teal.fill.text,
           )}
@@ -76,7 +75,7 @@ const StepPill = ({ step, index }: { step: ModernStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-lg border-2 p-sm sm:p-md text-center',
         t.fill.border,
         t.fill.bg,
@@ -85,7 +84,7 @@ const StepPill = ({ step, index }: { step: ModernStep; index: number }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'self-center inline-flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-mono font-bold tabular-nums',
           t.fill.bg,
           t.fill.border,
@@ -94,7 +93,7 @@ const StepPill = ({ step, index }: { step: ModernStep; index: number }) => {
       >
         {String(index).padStart(2, '0')}
       </span>
-      <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+      <span className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.label}
       </span>
       {step.subLabel && (

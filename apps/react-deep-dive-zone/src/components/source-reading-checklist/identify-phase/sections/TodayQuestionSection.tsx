@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Quote } from 'lucide-react';
 
 import type { PhaseDetectionContent } from '../content';
@@ -28,7 +27,7 @@ const renderLine = (
       return (
         <code
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md border px-1.5 py-0.5 align-baseline',
             fnTokenChipClasses.sched,
             'font-mono text-[0.8em] font-bold',
@@ -42,7 +41,7 @@ const renderLine = (
       return (
         <code
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md border px-1.5 py-0.5 align-baseline',
             fnTokenChipClasses.render,
             'font-mono text-[0.8em] font-bold',
@@ -56,7 +55,7 @@ const renderLine = (
       return (
         <code
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md border px-1.5 py-0.5 align-baseline',
             fnTokenChipClasses.commit,
             'font-mono text-[0.8em] font-bold',
@@ -78,7 +77,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
       className="space-y-md"
     >
       <article
-        className={cn(
+        className={cx(
           'relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-emerald-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-emerald-950/30',
@@ -96,7 +95,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-lg',
                 'border border-blue-300 bg-blue-100 text-blue-700',
                 'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -117,7 +116,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex flex-col gap-md">
             <h2
               id="heading-today-question"
-              className={cn(
+              className={cx(
                 'text-xl sm:text-xxl lg:text-[1.55rem] font-bold leading-[1.4] tracking-tight',
                 'text-[var(--term-fg)] break-keep',
               )}
@@ -138,7 +137,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
                     </PhaseBadge>
                   ) : (
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
                         'border-blue-300 bg-white text-blue-700',
                         'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',

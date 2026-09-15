@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Anchor,
   Box,
@@ -40,7 +39,7 @@ const toFlowStep = (card: DeliverableCard): FlowStepItem => {
       </span>
     )),
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 

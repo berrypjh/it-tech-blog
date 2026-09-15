@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -17,11 +16,11 @@ export const FlowSteps = ({ tone, steps }: Props) => {
       {steps.map((step, idx) => (
         <li key={step.id} className="flex flex-col">
           <article
-            className={cn('flex items-center gap-sm rounded-xl border-2 p-md', t.border, t.fill.bg)}
+            className={cx('flex items-center gap-sm rounded-xl border-2 p-md', t.border, t.fill.bg)}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-9 h-9 rounded-full shrink-0',
                 'font-mono text-sm font-bold tabular-nums border',
                 t.chip,
@@ -31,7 +30,7 @@ export const FlowSteps = ({ tone, steps }: Props) => {
             </span>
             <div className="flex flex-col gap-0.5 min-w-0">
               <code
-                className={cn('font-mono text-xsm sm:text-sm font-extrabold break-all', t.text)}
+                className={cx('font-mono text-xsm sm:text-sm font-extrabold break-all', t.text)}
               >
                 {step.text}
               </code>
@@ -45,7 +44,7 @@ export const FlowSteps = ({ tone, steps }: Props) => {
           {idx < steps.length - 1 && (
             <div className="flex items-center justify-center py-1" aria-hidden="true">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center w-7 h-7 rounded-full border',
                   t.chip,
                 )}

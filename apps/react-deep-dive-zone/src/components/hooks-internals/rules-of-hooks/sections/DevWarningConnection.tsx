@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, ArrowRight, TerminalSquare } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -13,10 +12,10 @@ const SlotItem = ({ slot, side }: { slot: HookSlot; side: 'expected' | 'actual' 
     ? 'border-rose-300/80 bg-rose-50 text-rose-800 dark:border-rose-700/60 dark:bg-rose-950/40 dark:text-rose-100'
     : 'border-emerald-300/80 bg-emerald-50 text-emerald-800 dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-100';
   return (
-    <li className={cn('flex items-center gap-2 rounded-lg border-2 px-3 py-2', colorClass)}>
+    <li className={cx('flex items-center gap-2 rounded-lg border-2 px-3 py-2', colorClass)}>
       <code className="font-mono text-[11px] font-bold tabular-nums">{slot.index}</code>
       <code
-        className={cn(
+        className={cx(
           'font-mono text-xsm font-bold break-all',
           slot.status === 'missing' && 'line-through',
         )}
@@ -30,7 +29,7 @@ const SlotItem = ({ slot, side }: { slot: HookSlot; side: 'expected' | 'actual' 
 export const DevWarningConnection = ({ content }: Props) => (
   <section
     aria-labelledby="heading-dev-warning"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -89,7 +88,7 @@ export const DevWarningConnection = ({ content }: Props) => (
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-2 items-stretch">
           {/* Expected */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-2xl border-2 p-md',
               'border-emerald-300/70 bg-emerald-50/40 dark:border-emerald-700/60 dark:bg-emerald-950/20',
             )}
@@ -122,7 +121,7 @@ export const DevWarningConnection = ({ content }: Props) => (
 
           {/* Actual */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-2xl border-2 p-md',
               'border-rose-300/70 bg-rose-50/40 dark:border-rose-700/60 dark:bg-rose-950/20',
             )}

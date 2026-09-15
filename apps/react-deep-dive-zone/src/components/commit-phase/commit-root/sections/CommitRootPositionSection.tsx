@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Calendar, CheckCircle2, Cpu, DoorOpen, List, Map } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ export const CommitRootPositionSection = ({ content }: Props) => (
           {'// update → render → commit-root → commit sub-phases'}
         </span>
         <span
-          className={cn(
+          className={cx(
             'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
             toneTokens.teal.chip,
           )}
@@ -67,11 +66,11 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] gap-md items-start rounded-lg border p-md',
         step.emphasis
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
@@ -81,12 +80,12 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
 
       <div className="flex flex-col gap-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.emphasis && (
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
                 t.chip,
               )}
@@ -103,14 +102,14 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
             {step.subItems.map((sub) => (
               <li
                 key={sub}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono',
                   t.chip,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block h-1 w-1 rounded-full', t.dot)}
+                  className={cx('inline-block h-1 w-1 rounded-full', t.dot)}
                 />
                 {sub}
               </li>
@@ -121,7 +120,7 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
 
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden sm:inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

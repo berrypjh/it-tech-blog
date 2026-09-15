@@ -2,8 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Blocks, Code2, PanelsTopLeft, RefreshCw, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -55,7 +54,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -83,19 +82,19 @@ export const FlowBuilderSection = ({ content }: Props) => {
                       aria-controls="builder-explanation"
                       disabled={isUsed}
                       onClick={() => handlePick(step.id)}
-                      className={cn(
+                      className={cx(
                         'group flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left',
                         'transition-all',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                         'disabled:cursor-not-allowed disabled:opacity-50',
                         !isUsed &&
-                          cn(
+                          cx(
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
                             'motion-safe:hover:-translate-y-0.5',
                           ),
                         isUsed &&
-                          cn(
+                          cx(
                             'border-blue-300 bg-blue-50/60',
                             'dark:border-blue-700/70 dark:bg-blue-950/30',
                           ),
@@ -103,7 +102,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
                           isUsed
                             ? 'border-blue-400 bg-white text-blue-700 dark:border-blue-600/80 dark:bg-[var(--term-bg)] dark:text-blue-200'
@@ -113,7 +112,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                         <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                       <code
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold truncate',
                           isUsed ? 'text-blue-800 dark:text-blue-100' : 'text-[var(--term-fg)]',
                         )}
@@ -137,7 +136,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                 type="button"
                 onClick={reset}
                 disabled={order.length === 0}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-md border-2 px-3 py-1.5',
                   'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                   'text-xsm font-bold text-[var(--term-fg)]',
@@ -153,7 +152,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
               <button
                 type="button"
                 onClick={fill}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-md border-2 px-3 py-1.5',
                   'border-blue-400 bg-blue-50 text-blue-800',
                   'dark:border-blue-600/80 dark:bg-blue-950/40 dark:text-blue-100',
@@ -174,7 +173,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
             {/* Board */}
             <article
               aria-live="polite"
-              className={cn(
+              className={cx(
                 'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
                 'border-blue-200 bg-gradient-to-br from-blue-50/60 via-white to-violet-50/30',
                 'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -193,7 +192,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
 
               {order.length === 0 ? (
                 <p
-                  className={cn(
+                  className={cx(
                     'rounded-md border border-dashed p-md text-center text-xsm',
                     'border-[var(--term-border)] text-[var(--term-muted)] break-keep',
                   )}
@@ -214,17 +213,17 @@ export const FlowBuilderSection = ({ content }: Props) => {
                             type="button"
                             aria-pressed={isFocused}
                             onClick={() => setFocusedId(id)}
-                            className={cn(
+                            className={cx(
                               'group flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left',
                               'transition-all',
                               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                               isFocused
-                                ? cn(
+                                ? cx(
                                     'border-blue-400 bg-blue-50 text-blue-800',
                                     'dark:border-blue-600/80 dark:bg-blue-950/40 dark:text-blue-100',
                                     'shadow-[0_2px_0_var(--term-border)]',
                                   )
-                                : cn(
+                                : cx(
                                     'border-blue-200 bg-white',
                                     'dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
                                     'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -233,7 +232,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                           >
                             <span
                               aria-hidden="true"
-                              className={cn(
+                              className={cx(
                                 'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2',
                                 'border-blue-400 bg-white text-blue-700',
                                 'dark:border-blue-600/80 dark:bg-[var(--term-bg)] dark:text-blue-200',
@@ -260,7 +259,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
                                   handleRemove(id);
                                 }
                               }}
-                              className={cn(
+                              className={cx(
                                 'inline-flex h-5 w-5 items-center justify-center rounded-full border',
                                 'border-[var(--term-border)] bg-white text-[var(--term-muted)]',
                                 'dark:bg-[var(--term-bg)]',
@@ -292,7 +291,7 @@ export const FlowBuilderSection = ({ content }: Props) => {
             <aside
               id="builder-explanation"
               aria-live="polite"
-              className={cn(
+              className={cx(
                 'rounded-xl border-2 p-md',
                 'border-emerald-300 bg-emerald-50/60',
                 'dark:border-emerald-700/70 dark:bg-emerald-950/30',

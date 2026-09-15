@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Brackets, Clock, Dices } from 'lucide-react';
 
 import type { CaseCard, MismatchDetectRecoverContent } from '../content';
@@ -26,7 +25,7 @@ export const MismatchCasesSection = ({ content }: Props) => (
         return (
           <li key={card.title}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-2xl border-2 p-md sm:p-lg',
                 accent.border,
                 accent.bg,
@@ -37,7 +36,7 @@ export const MismatchCasesSection = ({ content }: Props) => (
               <header className="flex items-start gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
                     accent.iconChip,
                   )}
@@ -45,7 +44,7 @@ export const MismatchCasesSection = ({ content }: Props) => (
                   <Icon className="h-5 w-5" />
                 </span>
                 <div className="flex flex-col gap-0.5">
-                  <h3 className={cn('text-md font-bold break-keep', accent.text)}>{card.title}</h3>
+                  <h3 className={cx('text-md font-bold break-keep', accent.text)}>{card.title}</h3>
                   <span className="text-[11px] text-[var(--term-muted)] break-keep">
                     {card.subtitle}
                   </span>
@@ -54,7 +53,7 @@ export const MismatchCasesSection = ({ content }: Props) => (
 
               <div className="grid grid-cols-1 gap-2 mt-auto">
                 <div
-                  className={cn(
+                  className={cx(
                     'rounded-lg border bg-white px-3 py-2',
                     'dark:bg-[var(--term-bg)]',
                     accent.border,
@@ -68,7 +67,7 @@ export const MismatchCasesSection = ({ content }: Props) => (
                   </pre>
                 </div>
                 <div
-                  className={cn(
+                  className={cx(
                     'rounded-lg border bg-white px-3 py-2',
                     'dark:bg-[var(--term-bg)]',
                     'border-violet-200 dark:border-violet-800/60',

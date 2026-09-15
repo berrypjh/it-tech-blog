@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileSearch } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -16,7 +15,7 @@ export const CodePreviewSection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-stretch">
       <article
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-2xl border-2 bg-slate-950',
           'border-slate-800 shadow-[0_4px_0_var(--term-border)]',
           'transition-shadow motion-safe:hover:shadow-[0_6px_0_var(--term-border)]',
@@ -26,7 +25,7 @@ export const CodePreviewSection = ({ content }: Props) => (
       </article>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const CodePreviewSection = ({ content }: Props) => (
           href={content.button.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'mt-auto group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3',
             'text-xsm font-bold transition-all',
             'border-blue-300 bg-white text-blue-700',

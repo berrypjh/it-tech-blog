@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Box,
   CircleCheck,
@@ -32,7 +31,7 @@ const toFlowStep = (step: FlowStep): FlowStepItem => {
   return {
     ...step,
     body: formatInline(step.body),
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 

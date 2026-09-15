@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Circle, MousePointerClick, Waves } from 'lucide-react';
 
 import {
@@ -49,7 +48,7 @@ export const DispatchPriorityHero = ({ content }: Props) => (
           return (
             <li
               key={ex.name}
-              className={cn(
+              className={cx(
                 'group flex items-center gap-3 rounded-2xl border-2 px-md py-3 transition-colors',
                 'shadow-[0_1px_0_var(--term-border)]',
                 priorityCard[ex.tone],
@@ -57,7 +56,7 @@ export const DispatchPriorityHero = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
                   priorityIconBox[ex.tone],
                 )}
@@ -65,7 +64,7 @@ export const DispatchPriorityHero = ({ content }: Props) => (
                 <Icon className="h-5 w-5" />
               </span>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-md sm:text-lg font-bold break-all',
                   priorityText[ex.tone],
                 )}

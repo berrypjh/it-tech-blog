@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Database, Target, Zap } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -28,7 +27,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -43,7 +42,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         {/* Step 1: pendingLanes */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'transition-all hover:-translate-y-0.5',
@@ -55,7 +54,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
               <Database className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.teal.text)}
+              className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.teal.text)}
             >
               {content.step1.title}
             </span>
@@ -69,12 +68,12 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
               return (
                 <li
                   key={lane.label}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-mono text-[11px]',
                     t.chip,
                   )}
                 >
-                  <span className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} />
+                  <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} />
                   {lane.label}
                 </li>
               );
@@ -86,7 +85,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
 
         {/* Step 2: selected nextLanes */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border p-md',
             toneTokens.blue.chip,
             toneTokens.blue.border,
@@ -98,7 +97,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
               <Target className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
+              className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
             >
               {content.step2.title}
             </span>
@@ -107,13 +106,13 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
             {content.step2.body}
           </p>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center self-start gap-2 rounded-lg border px-3 py-1.5',
               'font-mono text-xsm font-bold',
               toneTokens.blue.chip,
             )}
           >
-            <span className={cn('inline-block h-2 w-2 rounded-full', toneTokens.blue.dot)} />
+            <span className={cx('inline-block h-2 w-2 rounded-full', toneTokens.blue.dot)} />
             {content.step2.selected}
           </span>
           <p className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -125,7 +124,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
 
         {/* Step 3: execution path */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'transition-all hover:-translate-y-0.5',
@@ -137,7 +136,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
               <Clock3 className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}
+              className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}
             >
               {content.step3.title}
             </span>
@@ -152,7 +151,7 @@ export const RootSchedulerHeroDiagram = ({ content, className }: Props) => {
               return (
                 <li
                   key={p.label}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-lg border px-3 py-1.5',
                     'text-xsm font-mono',
                     t.chip,

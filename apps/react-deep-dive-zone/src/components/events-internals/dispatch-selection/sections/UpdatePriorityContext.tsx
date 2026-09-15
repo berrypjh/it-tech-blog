@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Shield } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -18,7 +17,7 @@ export const UpdatePriorityContext = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-blue-200/80 bg-gradient-to-br from-blue-50/80 via-white to-violet-50/40',
         'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -31,7 +30,7 @@ export const UpdatePriorityContext = ({ content }: Props) => (
           <header className="flex items-center gap-3">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl',
                 'bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
               )}
@@ -57,7 +56,7 @@ export const UpdatePriorityContext = ({ content }: Props) => (
             return (
               <li key={step} className="relative flex">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex flex-col items-center justify-center gap-2 rounded-2xl border-2 p-md w-full text-center',
                     'border-violet-300/80 bg-white dark:border-violet-700/60 dark:bg-slate-950/40',
                     'shadow-[0_1px_0_var(--term-border)]',

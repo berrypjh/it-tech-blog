@@ -2,8 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Clock3, Compass, Layers, Zap } from 'lucide-react';
 
 import { axisIconBox, axisTextStrong } from '../../_shared/axisAccent';
@@ -63,7 +62,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -90,7 +89,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(tab.key)}
                 onKeyDown={(e) => handleKey(e, tab.key)}
-                className={cn(
+                className={cx(
                   'group relative inline-flex items-center gap-2 rounded-xl px-3 py-2 whitespace-nowrap',
                   'text-xsm sm:text-sm font-mono font-bold transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -101,7 +100,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-block h-1.5 w-1.5 rounded-full',
                     selected ? 'bg-blue-500 dark:bg-blue-300' : 'bg-[var(--term-dim)]',
                   )}
@@ -122,7 +121,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 relative">
             {/* Event Priority */}
             <li
-              className={cn(
+              className={cx(
                 'relative flex flex-col gap-2 rounded-2xl border-2 p-md',
                 'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-blue-50/30',
                 'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -131,7 +130,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     axisIconBox.blue,
                   )}
@@ -142,7 +141,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                   {content.stageLabels.eventPriority}
                 </span>
               </header>
-              <p className={cn('font-mono text-md font-bold break-keep', axisTextStrong.blue)}>
+              <p className={cx('font-mono text-md font-bold break-keep', axisTextStrong.blue)}>
                 {scenario.event.kind}
               </p>
               <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
@@ -164,7 +163,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
 
             {/* Lane */}
             <li
-              className={cn(
+              className={cx(
                 'relative flex flex-col gap-2 rounded-2xl border-2 p-md',
                 'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-teal-50/30',
                 'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/10',
@@ -173,7 +172,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     axisIconBox.teal,
                   )}
@@ -184,7 +183,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                   {content.stageLabels.lane}
                 </span>
               </header>
-              <p className={cn('font-mono text-md font-bold break-keep', axisTextStrong.teal)}>
+              <p className={cx('font-mono text-md font-bold break-keep', axisTextStrong.teal)}>
                 {scenario.lane.name}
               </p>
               <p className="font-mono text-[11px] sm:text-xsm text-[var(--term-muted)] break-keep">
@@ -206,7 +205,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
 
             {/* Scheduling */}
             <li
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 rounded-2xl border-2 p-md',
                 'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-violet-50/30',
                 'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/10',
@@ -215,7 +214,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     axisIconBox.violet,
                   )}
@@ -226,7 +225,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
                   {content.stageLabels.scheduling}
                 </span>
               </header>
-              <p className={cn('text-sm sm:text-md font-bold break-keep', axisTextStrong.violet)}>
+              <p className={cx('text-sm sm:text-md font-bold break-keep', axisTextStrong.violet)}>
                 {scenario.scheduling.label}
               </p>
               <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
@@ -237,7 +236,7 @@ export const InteractivePriorityMap = ({ content }: Props) => {
 
           {/* Summary */}
           <aside
-            className={cn(
+            className={cx(
               'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
               'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-violet-50/30',
               'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',

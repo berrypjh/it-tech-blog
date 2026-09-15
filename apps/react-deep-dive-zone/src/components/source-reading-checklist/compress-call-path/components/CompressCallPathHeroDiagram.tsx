@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleDot, Route } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -26,7 +25,7 @@ export const CompressCallPathHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -76,7 +75,7 @@ const ScatteredPanel = ({
   caption: string;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -85,7 +84,7 @@ const ScatteredPanel = ({
       <ToneIconBox tone="amber" size="sm">
         <CircleDot className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('min-w-0 text-sm font-bold tracking-tight', toneTokens.amber.text)}>
+      <span className={cx('min-w-0 text-sm font-bold tracking-tight', toneTokens.amber.text)}>
         {title}
       </span>
     </span>
@@ -93,12 +92,12 @@ const ScatteredPanel = ({
       {functions.map((fn) => (
         <li
           key={fn}
-          className={cn(
+          className={cx(
             'flex items-center gap-2 rounded-md border px-2 py-1.5',
             toneTokens.amber.border,
           )}
         >
-          <span className={cn('block h-1.5 w-1.5 shrink-0 rounded-full', toneTokens.amber.dot)} />
+          <span className={cx('block h-1.5 w-1.5 shrink-0 rounded-full', toneTokens.amber.dot)} />
           <code className="min-w-0 truncate font-mono text-[11px] text-[var(--term-fg)]">{fn}</code>
         </li>
       ))}
@@ -117,7 +116,7 @@ const CompressedPanel = ({
   caption: string;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -126,7 +125,7 @@ const CompressedPanel = ({
       <ToneIconBox tone="cyan" size="sm">
         <Route className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('min-w-0 text-sm font-bold tracking-tight', toneTokens.cyan.text)}>
+      <span className={cx('min-w-0 text-sm font-bold tracking-tight', toneTokens.cyan.text)}>
         {title}
       </span>
     </span>
@@ -140,11 +139,11 @@ const CompressedPanel = ({
         const t = toneTokens[stepToneKey[step.kind]];
         return (
           <Fragment key={`${step.fn}-${i}`}>
-            <li className={cn('flex items-center gap-2 rounded-md border px-2 py-1.5', t.border)}>
+            <li className={cx('flex items-center gap-2 rounded-md border px-2 py-1.5', t.border)}>
               <ToneIconBox tone={stepToneKey[step.kind]} size="sm" className="h-5 w-5">
                 <span className="font-mono text-[9px] font-bold tabular-nums">{i + 1}</span>
               </ToneIconBox>
-              <code className={cn('min-w-0 truncate font-mono text-[11px] font-bold', t.text)}>
+              <code className={cx('min-w-0 truncate font-mono text-[11px] font-bold', t.text)}>
                 {step.fn}
               </code>
             </li>

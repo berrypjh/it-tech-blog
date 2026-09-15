@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, CheckCircle2, Monitor, Star, Workflow } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 
@@ -25,7 +24,7 @@ export const DomExampleSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
         {/* reconciler card */}
         <article
-          className={cn(
+          className={cx(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
             'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -34,7 +33,7 @@ export const DomExampleSection = ({ content }: Props) => {
           <header className="flex items-center gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-11 h-11 rounded-md border',
                 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)]',
               )}
@@ -47,7 +46,7 @@ export const DomExampleSection = ({ content }: Props) => {
           </header>
 
           <blockquote
-            className={cn(
+            className={cx(
               'rounded-lg border px-3 py-2 text-md font-bold italic',
               'border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}
@@ -80,7 +79,7 @@ export const DomExampleSection = ({ content }: Props) => {
 
         {/* DOM renderer card */}
         <article
-          className={cn(
+          className={cx(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
             'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -89,7 +88,7 @@ export const DomExampleSection = ({ content }: Props) => {
           <header className="flex items-center gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-11 h-11 rounded-md border',
                 'bg-[var(--term-surface)] border-[var(--term-border)]',
                 toneTokens.sky.text,
@@ -98,7 +97,7 @@ export const DomExampleSection = ({ content }: Props) => {
               <Monitor className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="flex flex-col min-w-0">
-              <h3 className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.sky.text)}>
+              <h3 className={cx('text-lg font-bold font-mono tracking-tight', toneTokens.sky.text)}>
                 {content.renderer.title}
               </h3>
               <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">
@@ -115,7 +114,7 @@ export const DomExampleSection = ({ content }: Props) => {
                 key={item}
                 className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
               >
-                <span aria-hidden="true" className={cn('shrink-0 mt-0.5', toneTokens.sky.text)}>
+                <span aria-hidden="true" className={cx('shrink-0 mt-0.5', toneTokens.sky.text)}>
                   <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 <span>{item}</span>

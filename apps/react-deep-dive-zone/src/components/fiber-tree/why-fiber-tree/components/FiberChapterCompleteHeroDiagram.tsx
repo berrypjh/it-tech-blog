@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Fingerprint, Flag, List, Network, Zap } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -61,7 +60,7 @@ const GroupCard = ({ group, rows }: { group: FieldGroup; rows: string[] }) => {
   const Icon = iconMap[group.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 flex-col gap-1.5 rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
@@ -72,7 +71,7 @@ const GroupCard = ({ group, rows }: { group: FieldGroup; rows: string[] }) => {
         <ToneIconBox tone={group.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('min-w-0 truncate text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('min-w-0 truncate text-sm font-bold tracking-tight', t.text)}>
           {group.title}
         </span>
       </span>
@@ -87,14 +86,14 @@ const FiberCard = ({ label }: { label: string }) => {
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full items-center justify-center gap-2 rounded-xl border px-md py-3',
         t.chip,
         t.border,
         'shadow-[0_3px_0_var(--term-border)]',
       )}
     >
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
         object
       </span>

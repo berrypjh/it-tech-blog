@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Atom, CheckCircle2, Globe, Play } from 'lucide-react';
 
 import type { HydrationStartContent, MatchOption } from '../content';
@@ -48,7 +47,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
       <SectionHeader id="matcher-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -58,7 +57,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
         <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch">
           {/* DOM */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
             )}
@@ -78,7 +77,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
               {content.domTree.map((line) => (
                 <li
                   key={line}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-lg border-2 px-2.5 py-1.5',
                     'font-mono text-[11px] font-bold break-keep transition-all',
                     treeRowHighlightClass(line, result.highlight, 'dom'),
@@ -94,7 +93,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
           <div className="flex flex-col items-center justify-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-10 w-10 items-center justify-center rounded-full',
                 'border-2 border-blue-300 bg-white text-blue-600',
                 'dark:border-blue-700 dark:bg-slate-900 dark:text-blue-300',
@@ -110,7 +109,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
 
           {/* Fiber */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
             )}
@@ -130,7 +129,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
               {content.fiberTree.map((line) => (
                 <li
                   key={line}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-lg border-2 px-2.5 py-1.5',
                     'font-mono text-[11px] font-bold break-keep transition-all',
                     treeRowHighlightClass(line, result.highlight, 'fiber'),
@@ -148,7 +147,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
           {content.checklist.map((c) => (
             <li
               key={c}
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                 'text-[11px] font-bold',
                 'border-blue-200 bg-blue-50 text-blue-700',
@@ -173,7 +172,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.key)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-xl border-2 p-3 transition-all',
                       'flex items-center gap-2',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -184,7 +183,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                         isActive
                           ? 'border-blue-300 bg-blue-100 text-blue-700 dark:border-blue-700 dark:bg-blue-950/60 dark:text-blue-200'
@@ -194,7 +193,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
                       <Play className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'text-xsm font-mono font-bold break-keep',
                         isActive ? 'text-blue-700 dark:text-blue-200' : 'text-[var(--term-fg)]',
                       )}
@@ -216,7 +215,7 @@ export const DomFiberMatcherSection = ({ content }: Props) => {
           {/* result */}
           <article
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
             )}

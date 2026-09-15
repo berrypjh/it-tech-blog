@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { CheckCircleIcon, MapPinIcon, RouteIcon } from '../icons';
@@ -18,7 +18,7 @@ export const TenPageRoadmapSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -31,15 +31,15 @@ export const TenPageRoadmapSection = ({ content }: Props) => (
             <li key={item.number}>
               <article
                 aria-current={item.active ? 'step' : undefined}
-                className={cn(
+                className={cx(
                   'flex h-full items-start gap-3 rounded-xl border-2 p-3',
                   'transition-all motion-safe:hover:-translate-y-0.5',
                   item.active
-                    ? cn(
+                    ? cx(
                         'border-blue-400 bg-blue-50/80 shadow-[0_3px_0_var(--term-border)]',
                         'dark:border-blue-600 dark:bg-blue-950/40',
                       )
-                    : cn(
+                    : cx(
                         'border-slate-200 bg-white hover:border-blue-300',
                         'dark:border-slate-700 dark:bg-[var(--term-bg)] dark:hover:border-blue-700/70',
                       ),
@@ -47,7 +47,7 @@ export const TenPageRoadmapSection = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 font-mono text-xxsm font-bold tabular-nums',
                     item.active
                       ? 'border-blue-500 bg-blue-600 text-white dark:bg-blue-500 dark:border-blue-400'
@@ -69,7 +69,7 @@ export const TenPageRoadmapSection = ({ content }: Props) => (
                       </span>
                     )}
                     <h3
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm font-bold break-keep',
                         item.active ? 'text-blue-700 dark:text-blue-200' : 'text-[var(--term-fg)]',
                       )}
@@ -94,7 +94,7 @@ export const TenPageRoadmapSection = ({ content }: Props) => (
 
         {/* side panel */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-300/80 bg-white dark:border-blue-700/70 dark:bg-[var(--term-bg)]',
             'shadow-[0_2px_0_var(--term-border)]',

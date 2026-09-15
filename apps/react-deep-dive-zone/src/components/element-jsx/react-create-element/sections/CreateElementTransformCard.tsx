@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Sparkles, Wand2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -31,7 +30,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -49,7 +48,7 @@ export const CreateElementTransformCard = ({ content }: Props) => {
                 type="button"
                 aria-pressed={tab === t.id}
                 onClick={() => setTab(t.id)}
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
                   tab === t.id
@@ -123,14 +122,14 @@ const FlowStep = ({
   tone: ToneKey;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
       'bg-[var(--term-bg)] border-[var(--term-border)]',
       active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-[var(--term-accent)]' : '',
     )}
   >
     <span
-      className={cn(
+      className={cx(
         'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
         toneTokens[tone].text,
       )}
@@ -138,7 +137,7 @@ const FlowStep = ({
       {label}
     </span>
     <CodePreviewPanel code={code} language={language} />
-    <p className={cn('text-xsm leading-relaxed break-keep', toneTokens[tone].text)}>{footer}</p>
+    <p className={cx('text-xsm leading-relaxed break-keep', toneTokens[tone].text)}>{footer}</p>
   </article>
 );
 
@@ -152,7 +151,7 @@ const FlowArrow = () => (
 
 const FlowResult = ({ active, label, code }: { active: boolean; label: string; code: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-2xl border p-md min-w-0',
       'bg-[var(--term-bg)] border-[var(--term-border)]',
       active ? 'ring-2 ring-offset-2 ring-offset-[var(--term-bg)] ring-[var(--term-accent)]' : '',
@@ -169,12 +168,12 @@ const CalloutCard = ({ callout }: { callout: FieldCallout }) => {
   const t = toneTokens[callout.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-1 flex-col gap-1 rounded-xl border p-md',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
       )}
     >
-      <span className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+      <span className={cx('font-mono text-xsm font-bold tracking-tight', t.text)}>
         {callout.field}
       </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

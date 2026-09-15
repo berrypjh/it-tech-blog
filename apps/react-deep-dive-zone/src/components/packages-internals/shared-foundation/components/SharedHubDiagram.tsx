@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Boxes, CheckCircle2, Code, type LucideIcon, Package } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -47,7 +46,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
         {hero.checklist.map((item) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex min-w-0 items-start gap-2 rounded-lg border px-3 py-2 text-xsm leading-snug',
               'bg-[var(--term-bg)] border-[var(--term-border)] text-[var(--term-fg)] break-keep',
             )}
@@ -65,7 +64,7 @@ export const SharedHubDiagram = ({ hero, className }: Props) => (
 
 const HubCenter = ({ label, subtitle }: { label: string; subtitle: string }) => (
   <div
-    className={cn(
+    className={cx(
       'relative inline-flex flex-col items-center justify-center gap-1',
       'w-28 h-28 rounded-full overflow-hidden',
       'border-2 border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -93,7 +92,7 @@ const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full min-w-0 flex-1 flex-col gap-1 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -105,7 +104,7 @@ const PackageCardNode = ({ pkg }: { pkg: PackageNode }) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
+          className={cx('min-w-0 truncate text-sm font-bold font-mono tracking-tight', tone.text)}
         >
           {pkg.name}
         </span>

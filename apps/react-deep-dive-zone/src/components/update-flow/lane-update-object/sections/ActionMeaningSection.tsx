@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Crosshair, FunctionSquare, Lightbulb, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ export const ActionMeaningSection = ({ content }: Props) => (
     </div>
 
     <div
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         amber.border,
       )}
@@ -53,7 +52,7 @@ const CompareCard = ({ card }: { card: ActionCompareCard }) => {
   const t = toneTokens[card.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -63,7 +62,7 @@ const CompareCard = ({ card }: { card: ActionCompareCard }) => {
           <ToneIconBox tone={card.tone} size="sm">
             <Icon className="h-4 w-4" />
           </ToneIconBox>
-          <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+          <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
             {card.title}
           </h3>
         </div>
@@ -74,9 +73,9 @@ const CompareCard = ({ card }: { card: ActionCompareCard }) => {
         <code>{card.code}</code>
       </pre>
 
-      <div className={cn('mt-auto rounded-md border px-3 py-2 font-mono', t.chip)}>
+      <div className={cx('mt-auto rounded-md border px-3 py-2 font-mono', t.chip)}>
         <span className="block text-[10px] uppercase tracking-wider opacity-80">{card.result}</span>
-        <span className={cn('block text-xsm sm:text-sm font-bold break-keep', t.text)}>
+        <span className={cx('block text-xsm sm:text-sm font-bold break-keep', t.text)}>
           {card.resultDetail}
         </span>
       </div>

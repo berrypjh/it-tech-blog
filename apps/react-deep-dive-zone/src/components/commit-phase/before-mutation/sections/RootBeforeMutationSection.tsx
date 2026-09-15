@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Camera, GitBranch, Layers, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const RootBeforeMutationSection = ({ content }: Props) => (
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <p className="mb-md text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
         <span className="block">{content.description.line1}</span>
-        <span className={cn('block font-bold', toneTokens.teal.text)}>
+        <span className={cx('block font-bold', toneTokens.teal.text)}>
           {content.description.line2}
         </span>
       </p>
@@ -44,7 +43,7 @@ export const RootBeforeMutationSection = ({ content }: Props) => (
 const Arrow = () => (
   <div
     aria-hidden="true"
-    className={cn('flex items-center justify-center py-1 md:py-0', toneTokens.teal.text)}
+    className={cx('flex items-center justify-center py-1 md:py-0', toneTokens.teal.text)}
   >
     <ArrowRight className="hidden md:inline-block h-5 w-5" aria-hidden="true" />
     <ArrowDown className="md:hidden h-5 w-5" aria-hidden="true" />
@@ -65,7 +64,7 @@ const SideCard = ({
   const Icon = variant === 'left' ? GitBranch : Layers;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -76,7 +75,7 @@ const SideCard = ({
           <Icon className="h-5 w-5" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -85,7 +84,7 @@ const SideCard = ({
         </span>
       </header>
 
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
 
@@ -98,7 +97,7 @@ const CenterCard = ({ title, label }: { title: string; label: string }) => {
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-sm rounded-lg border-2 p-md text-center',
         t.fill.border,
         t.fill.bg,
@@ -107,7 +106,7 @@ const CenterCard = ({ title, label }: { title: string; label: string }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 items-center justify-center rounded-lg border-2',
           t.fill.bg,
           t.fill.border,
@@ -116,11 +115,11 @@ const CenterCard = ({ title, label }: { title: string; label: string }) => {
       >
         <Camera className="h-7 w-7" aria-hidden="true" />
       </span>
-      <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
           t.chip,
         )}

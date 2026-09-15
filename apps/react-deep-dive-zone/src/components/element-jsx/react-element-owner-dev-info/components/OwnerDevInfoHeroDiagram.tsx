@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Bug, Code } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -65,11 +64,11 @@ const StepHeader = ({
     <div className="flex items-center gap-sm">
       <span
         aria-hidden="true"
-        className={cn('inline-flex items-center justify-center w-9 h-9 rounded-md border', t.chip)}
+        className={cx('inline-flex items-center justify-center w-9 h-9 rounded-md border', t.chip)}
       >
         {icon}
       </span>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"
         className="flex-1 border-t border-dashed border-[var(--term-border)]"
@@ -85,7 +84,7 @@ const FieldChips = ({ fields, tone }: { fields: FieldChip[]; tone: ToneKey }) =>
       {fields.map((field) => (
         <li key={field.id}>
           <code
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-mono font-bold tracking-tight',
               t.chip,
             )}

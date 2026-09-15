@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Network, ScanSearch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
           return (
             <li key={example.id}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
                   'bg-white dark:bg-[var(--term-bg)]',
                   'shadow-[0_3px_0_var(--term-border)]',
@@ -44,7 +43,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
                 {/* Header */}
                 <header className="flex flex-col gap-2">
                   <h3
-                    className={cn(
+                    className={cx(
                       'text-md sm:text-lg font-bold tracking-tight break-keep',
                       accent.text,
                     )}
@@ -56,7 +55,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
                       {content.startLabel}
                     </span>
                     <pre
-                      className={cn(
+                      className={cx(
                         'overflow-x-auto rounded-md border px-2.5 py-1.5',
                         accent.border,
                         accent.chip,
@@ -99,7 +98,7 @@ export const CrossPackageExamplesSection = ({ content }: Props) => {
 
                 {/* Reading point */}
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto flex items-start gap-2 rounded-md border-2 p-3',
                     'border-amber-300 bg-amber-50 text-amber-900',
                     'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
@@ -129,13 +128,13 @@ const FlowStepRow = ({ step }: { step: CrossPackageStep }) => {
   if (step.packageKey === 'jsx') {
     return (
       <div
-        className={cn(
+        className={cx(
           'flex items-center gap-2 rounded-md border-2 px-2.5 py-2',
           'border-amber-300 bg-amber-50 dark:border-amber-700/70 dark:bg-amber-950/30',
         )}
       >
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5',
             'border-amber-300 bg-white text-amber-800',
             'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -152,7 +151,7 @@ const FlowStepRow = ({ step }: { step: CrossPackageStep }) => {
   const t = getPackageClasses(step.packageKey);
   return (
     <div
-      className={cn(
+      className={cx(
         'flex flex-wrap items-center gap-2 rounded-md border-2 px-2.5 py-2',
         t.border,
         t.chip,
@@ -161,7 +160,7 @@ const FlowStepRow = ({ step }: { step: CrossPackageStep }) => {
       <PackageBadge packageKey={step.packageKey} size="sm">
         {step.packageKey}
       </PackageBadge>
-      <code className={cn('font-mono text-xsm font-bold', t.text)}>{step.label}</code>
+      <code className={cx('font-mono text-xsm font-bold', t.text)}>{step.label}</code>
       {step.hint && (
         <span className="text-[10px] font-mono text-[var(--term-muted)] ml-auto">{step.hint}</span>
       )}

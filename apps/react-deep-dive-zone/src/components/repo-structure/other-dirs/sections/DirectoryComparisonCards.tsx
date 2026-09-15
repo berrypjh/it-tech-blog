@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FlaskConical, Folder, type LucideIcon, TerminalSquare } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ export const DirectoryComparisonCards = ({ content }: Props) => {
                 {card.name}
               </h3>
 
-              <p className={cn('text-xsm font-bold', toneTokens[card.tone].text)}>
+              <p className={cx('text-xsm font-bold', toneTokens[card.tone].text)}>
                 {card.subtitle}
               </p>
 

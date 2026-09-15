@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CheckCircle2,
@@ -56,7 +55,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
       <SectionHeader id="interactive-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -77,7 +76,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.key)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-2xl border-2 p-md transition-all',
                       'flex items-start gap-2.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -88,7 +87,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         tone.iconChip,
                       )}
@@ -97,7 +96,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                     </span>
                     <span className="flex flex-col gap-0 min-w-0 flex-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-sm font-bold break-keep',
                           isActive ? tone.text : 'text-[var(--term-fg)]',
                         )}
@@ -111,7 +110,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                     {isActive && (
                       <CheckCircle2
                         aria-hidden="true"
-                        className={cn('h-4 w-4 shrink-0', tone.text)}
+                        className={cx('h-4 w-4 shrink-0', tone.text)}
                       />
                     )}
                   </button>
@@ -135,7 +134,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
               return (
                 <li key={step.title} className="flex flex-col gap-1">
                   <div
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-2.5 rounded-xl border-2 p-2.5',
                       accent.border,
                       accent.bg,
@@ -144,14 +143,14 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums text-white',
                         accent.solidBg,
                       )}
                     >
                       {i + 1}
                     </span>
-                    <span className={cn('text-xsm font-bold break-keep', accent.text)}>
+                    <span className={cx('text-xsm font-bold break-keep', accent.text)}>
                       {step.title}
                     </span>
                   </div>
@@ -168,7 +167,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
 
           {/* note */}
           <div
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-3',
               'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
             )}
@@ -192,7 +191,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                 return (
                   <li
                     key={badge.label}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                       'text-[11px] font-bold',
                       accent.chip,
@@ -200,7 +199,7 @@ export const InteractiveTimelineSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('block h-1.5 w-1.5 rounded-full', accent.solidBg)}
+                      className={cx('block h-1.5 w-1.5 rounded-full', accent.solidBg)}
                     />
                     {badge.label}
                   </li>

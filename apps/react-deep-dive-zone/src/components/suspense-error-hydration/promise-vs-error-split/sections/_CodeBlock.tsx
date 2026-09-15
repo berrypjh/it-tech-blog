@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   code: string;
@@ -85,7 +85,7 @@ export const CodeBlock = ({
   const lines = code.split('\n');
   return (
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-xl border',
         variant === 'dark' ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-slate-50',
         className,

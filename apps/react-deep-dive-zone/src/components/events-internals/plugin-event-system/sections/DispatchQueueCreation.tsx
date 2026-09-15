@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -27,14 +26,14 @@ export const DispatchQueueCreation = ({ content }: Props) => (
   >
     <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-md items-start">
       {/* LEFT: 4-step horizontal flow */}
-      <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-2')}>
+      <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-2')}>
         {content.flow.map((step, i) => {
           const isLast = i === content.flow.length - 1;
           const Icon = flowIcons[i] ?? MousePointerClick;
           return (
             <li
               key={step.title}
-              className={cn(
+              className={cx(
                 'group relative flex flex-col gap-2 rounded-2xl border-2 p-md transition-all',
                 'hover:-translate-y-0.5 motion-reduce:transform-none',
                 'shadow-[0_1px_0_var(--term-border)]',
@@ -44,7 +43,7 @@ export const DispatchQueueCreation = ({ content }: Props) => (
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full',
                     'text-[10px] font-mono font-bold tabular-nums',
                     toneNumber[step.tone],
@@ -54,7 +53,7 @@ export const DispatchQueueCreation = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                     toneIconBox[step.tone],
                   )}
@@ -63,7 +62,7 @@ export const DispatchQueueCreation = ({ content }: Props) => (
                 </span>
               </div>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold leading-tight break-keep',
                   toneAccent[step.tone],
                 )}
@@ -102,7 +101,7 @@ export const DispatchQueueCreation = ({ content }: Props) => (
 
       {/* RIGHT: queue entry visualization */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md',
           'border-violet-300/80 bg-gradient-to-br from-violet-50/60 via-white to-blue-50/30',
           'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',

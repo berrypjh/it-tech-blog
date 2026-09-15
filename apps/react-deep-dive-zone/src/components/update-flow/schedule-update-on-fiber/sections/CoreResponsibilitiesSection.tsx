@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, Layers, Repeat2, User } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ export const CoreResponsibilitiesSection = ({ content }: Props) => (
             topRight={card.number}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md sm:text-lg font-bold tracking-tight leading-tight break-keep',
                 toneTokens[card.tone].text,
               )}

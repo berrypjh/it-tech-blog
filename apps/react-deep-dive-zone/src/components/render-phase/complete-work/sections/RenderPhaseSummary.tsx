@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ const ItemRow = ({ item }: { item: FlowItem }) => {
   const t = toneTokens[item.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -41,7 +40,7 @@ const ItemRow = ({ item }: { item: FlowItem }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
           t.chip,
         )}
@@ -49,7 +48,7 @@ const ItemRow = ({ item }: { item: FlowItem }) => {
         {item.number}
       </span>
       <div className="flex flex-col gap-0 min-w-0">
-        <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+        <span className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
           {item.title}
         </span>
         <span className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

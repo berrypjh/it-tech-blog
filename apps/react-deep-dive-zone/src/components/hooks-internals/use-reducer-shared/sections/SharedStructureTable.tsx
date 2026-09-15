@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Network } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ const cellAccent: Record<Tone, string> = {
 export const SharedStructureTable = ({ content }: Props) => (
   <section
     aria-labelledby="heading-shared-table"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -77,9 +76,9 @@ export const SharedStructureTable = ({ content }: Props) => (
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn('inline-block h-2 w-2 rounded-full', dotTone[row.tone])}
+                    className={cx('inline-block h-2 w-2 rounded-full', dotTone[row.tone])}
                   />
-                  <span className={cn('text-xsm font-bold break-keep', cellAccent[row.tone])}>
+                  <span className={cx('text-xsm font-bold break-keep', cellAccent[row.tone])}>
                     {row.category}
                   </span>
                 </div>
@@ -101,7 +100,7 @@ export const SharedStructureTable = ({ content }: Props) => (
       {content.rows.map((row) => (
         <li key={row.category}>
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
               'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             )}
@@ -109,9 +108,9 @@ export const SharedStructureTable = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn('inline-block h-2 w-2 rounded-full', dotTone[row.tone])}
+                className={cx('inline-block h-2 w-2 rounded-full', dotTone[row.tone])}
               />
-              <h3 className={cn('text-xsm font-bold break-keep', cellAccent[row.tone])}>
+              <h3 className={cx('text-xsm font-bold break-keep', cellAccent[row.tone])}>
                 {row.category}
               </h3>
             </header>
@@ -140,7 +139,7 @@ export const SharedStructureTable = ({ content }: Props) => (
 
     {/* Highlight box */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-violet-300/70 bg-violet-50/60 dark:border-violet-800/60 dark:bg-violet-950/30',
       )}

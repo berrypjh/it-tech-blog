@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Globe, Table2 } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -19,7 +18,7 @@ export const EventPriorityTable = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
       )}
@@ -61,7 +60,7 @@ export const EventPriorityTable = ({ content }: Props) => (
             {content.rows.map((row, i) => (
               <tr
                 key={`${row.native}-${i}`}
-                className={cn(
+                className={cx(
                   'transition-colors hover:bg-blue-50/30 dark:hover:bg-blue-950/10',
                   i % 2 === 1 && 'bg-[var(--term-surface)]/40',
                 )}
@@ -73,7 +72,7 @@ export const EventPriorityTable = ({ content }: Props) => (
                 </td>
                 <td className="px-md py-2.5 border-t border-[var(--term-border)] whitespace-nowrap">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] font-bold',
                       priorityBadge[row.tone],
                     )}
@@ -90,7 +89,7 @@ export const EventPriorityTable = ({ content }: Props) => (
                 </td>
                 <td className="px-md py-2.5 border-t border-[var(--term-border)] whitespace-nowrap">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)]/60 px-2 py-0.5 font-mono text-[11px] sm:text-xsm font-bold break-all',
                       priorityText[row.tone],
                     )}

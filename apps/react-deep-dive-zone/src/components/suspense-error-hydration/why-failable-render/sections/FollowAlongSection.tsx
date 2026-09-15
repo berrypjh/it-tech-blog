@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileSearch, ListChecks } from 'lucide-react';
 
 import type { WhyFailableRenderContent } from '../content';
@@ -9,7 +8,7 @@ type Props = { content: WhyFailableRenderContent['followAlong'] };
 export const FollowAlongSection = ({ content }: Props) => (
   <section
     aria-labelledby="follow-heading"
-    className={cn(
+    className={cx(
       'grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)]',
       'rounded-3xl border-2 p-md sm:p-lg',
       'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -19,7 +18,7 @@ export const FollowAlongSection = ({ content }: Props) => (
     {/* LEFT: illustration */}
     <div
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'relative flex items-center justify-center min-h-[200px] lg:min-h-[260px] rounded-2xl border-2 overflow-hidden',
         'border-blue-200/80 bg-gradient-to-br from-blue-100 via-blue-50 to-violet-50/60',
         'dark:border-blue-800/60 dark:from-blue-950/40 dark:via-blue-950/20 dark:to-violet-950/30',
@@ -38,7 +37,7 @@ export const FollowAlongSection = ({ content }: Props) => (
       <div className="flex items-center gap-4">
         {/* code bracket */}
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 items-center justify-center rounded-2xl border-2',
             'border-blue-300 bg-white text-blue-600 shadow-[0_4px_0_rgba(59,130,246,0.2)]',
             'dark:border-blue-700 dark:bg-slate-900 dark:text-blue-300',
@@ -48,7 +47,7 @@ export const FollowAlongSection = ({ content }: Props) => (
         </span>
         {/* magnifier */}
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-20 w-20 items-center justify-center rounded-full border-2',
             'border-violet-300 bg-white text-violet-600 shadow-[0_4px_12px_rgba(139,92,246,0.25)]',
             'dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300',
@@ -85,7 +84,7 @@ export const FollowAlongSection = ({ content }: Props) => (
         {content.items.map((item) => (
           <li
             key={item.label}
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border p-md',
               'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
             )}
@@ -102,7 +101,7 @@ export const FollowAlongSection = ({ content }: Props) => (
               </span>
             </div>
             <code
-              className={cn(
+              className={cx(
                 'overflow-x-auto rounded-lg border px-3 py-2 text-[11px] font-mono',
                 'border-slate-300 bg-slate-950 text-slate-100',
                 'dark:border-slate-700',

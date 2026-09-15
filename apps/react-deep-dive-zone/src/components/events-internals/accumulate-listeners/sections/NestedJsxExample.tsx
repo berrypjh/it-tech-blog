@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileText } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -61,7 +60,7 @@ export const NestedJsxExample = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           'border-[var(--term-border)]',
         )}
@@ -101,7 +100,7 @@ export const NestedJsxExample = ({ content }: Props) => {
         {content.legend.map((item) => (
           <li
             key={item.label}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-2 rounded-full border px-3 py-1.5',
               item.tone === 'violet'
                 ? 'border-violet-300/80 bg-violet-50 text-violet-700 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200'
@@ -110,7 +109,7 @@ export const NestedJsxExample = ({ content }: Props) => {
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'block h-2 w-2 rounded-full',
                 item.tone === 'violet'
                   ? 'bg-violet-500 dark:bg-violet-400'

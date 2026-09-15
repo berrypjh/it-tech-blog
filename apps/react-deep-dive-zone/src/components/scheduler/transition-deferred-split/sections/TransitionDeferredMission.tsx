@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, BookOpen, ExternalLink, Hash, Link2, ListChecks } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ const LinkCard = ({
   index: number;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'group flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -31,7 +30,7 @@ const LinkCard = ({
     <header className="flex items-center justify-between gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
           responseIconBox[card.accent],
         )}
@@ -58,7 +57,7 @@ const LinkCard = ({
       href={card.href}
       target="_blank"
       rel="noreferrer"
-      className={cn(
+      className={cx(
         'mt-auto group inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2',
         'border-2 border-[var(--term-border)] bg-[var(--term-bg)] font-bold text-[11px] sm:text-xsm',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
@@ -85,7 +84,7 @@ const KeywordsCard = ({
   index: number;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'group flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -95,7 +94,7 @@ const KeywordsCard = ({
     <header className="flex items-center justify-between gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
           responseIconBox[card.accent],
         )}
@@ -118,7 +117,7 @@ const KeywordsCard = ({
       {card.keywords.map((kw) => (
         <li key={kw}>
           <code
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-md border px-2 py-1 font-mono text-[10px] sm:text-[11px] font-semibold',
               responsePill[card.accent],
             )}

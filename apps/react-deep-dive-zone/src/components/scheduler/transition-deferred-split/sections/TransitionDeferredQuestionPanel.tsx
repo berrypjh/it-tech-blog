@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle } from 'lucide-react';
 
 import type { TransitionDeferredContent } from '../content';
@@ -9,7 +8,7 @@ type Props = { content: TransitionDeferredContent['question'] };
 export const TransitionDeferredQuestionPanel = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-blue-200/70 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/50',
       'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -20,7 +19,7 @@ export const TransitionDeferredQuestionPanel = ({ content }: Props) => (
       <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-full',
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
@@ -29,7 +28,7 @@ export const TransitionDeferredQuestionPanel = ({ content }: Props) => (
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-full',
             'text-[11px] font-mono font-bold tabular-nums',
             'bg-blue-600 text-white dark:bg-blue-500',

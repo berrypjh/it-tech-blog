@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Braces, Tag } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -49,7 +48,7 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
   const t = toneTokens[toneByKey[card.id]];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-sm rounded-2xl border-2 p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -58,12 +57,12 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-bold',
             t.text,
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
+          <span aria-hidden="true" className={cx('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
           {labelByKey[card.id]}
         </span>
       </header>
@@ -76,7 +75,7 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
 
       <div className="flex justify-center py-1" aria-hidden="true">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-7 h-7 rounded-full border',
             t.chip,
           )}
@@ -86,7 +85,7 @@ const CardView = ({ card }: { card: JsxToFiberCard }) => {
       </div>
 
       <div
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center gap-1.5 rounded-md border px-2 py-1.5',
           'font-mono text-xsm font-bold',
           t.chip,

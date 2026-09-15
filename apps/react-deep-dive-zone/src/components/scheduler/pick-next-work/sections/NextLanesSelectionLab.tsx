@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Compass, Eye, Layers, RotateCcw, Target, Zap } from 'lucide-react';
 
 import { BitCellRow } from '../../_shared/BitCellRow';
@@ -100,7 +99,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
         {/* LEFT: lane checkboxes */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -124,11 +123,11 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               return (
                 <li key={lane.key}>
                   <label
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-3 rounded-xl border-2 p-3 transition-all cursor-pointer',
                       'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                       isOn
-                        ? cn(schedCardBorder[lane.accent], 'shadow-[0_2px_0_var(--term-border)]')
+                        ? cx(schedCardBorder[lane.accent], 'shadow-[0_2px_0_var(--term-border)]')
                         : 'border-[var(--term-border)] bg-[var(--term-bg)] hover:border-blue-200 dark:hover:border-blue-700/60',
                     )}
                   >
@@ -136,14 +135,14 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
                       type="checkbox"
                       checked={isOn}
                       onChange={() => toggleLane(lane.key)}
-                      className={cn(
+                      className={cx(
                         'h-4 w-4 shrink-0 rounded border-[var(--term-border)] accent-blue-600',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       )}
                     />
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         isOn
                           ? schedIconBox[lane.accent]
@@ -154,7 +153,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
                     </span>
                     <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold leading-tight break-keep',
                           isOn ? schedTextStrong[lane.accent] : 'text-[var(--term-fg)]',
                         )}
@@ -162,7 +161,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
                         {lane.label}
                       </span>
                       <span
-                        className={cn(
+                        className={cx(
                           'font-mono text-[10px] uppercase tracking-wider',
                           isOn ? schedTextStrong[lane.accent] : 'text-[var(--term-dim)]',
                         )}
@@ -178,7 +177,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
 
           {/* Sync remove toggle */}
           <label
-            className={cn(
+            className={cx(
               'flex items-center gap-3 rounded-xl border-2 p-3 cursor-pointer',
               excludeSync
                 ? 'border-rose-300/80 bg-rose-50/60 dark:border-rose-700/70 dark:bg-rose-950/30'
@@ -189,13 +188,13 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               type="checkbox"
               checked={excludeSync}
               onChange={(e) => setExcludeSync(e.target.checked)}
-              className={cn(
+              className={cx(
                 'h-4 w-4 shrink-0 rounded border-[var(--term-border)] accent-rose-600',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
               )}
             />
             <span
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 excludeSync ? 'text-rose-700 dark:text-rose-300' : 'text-[var(--term-fg)]',
               )}
@@ -208,7 +207,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
           <button
             type="button"
             onClick={handleReset}
-            className={cn(
+            className={cx(
               'mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
               'font-bold text-xsm sm:text-sm transition-all',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -226,7 +225,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
         {/* CENTER: bitmask */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-teal-300/80 bg-gradient-to-br from-teal-50/80 via-white to-blue-50/40',
             'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -279,7 +278,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               {candidates.map((lane) => (
                 <li key={lane.key}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 font-mono text-[10px] sm:text-[11px] font-semibold',
                       schedPill[lane.accent],
                     )}
@@ -294,18 +293,18 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
 
         {/* RIGHT: selected nextLanes */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             selectedLane
-              ? cn(schedCardBorder[selectedLane.accent], 'shadow-[0_3px_0_var(--term-border)]')
+              ? cx(schedCardBorder[selectedLane.accent], 'shadow-[0_3px_0_var(--term-border)]')
               : 'border-[var(--term-border)] bg-[var(--term-bg)]',
           )}
         >
           <header className="flex items-center justify-between gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 selectedLane
                   ? schedIconBox[selectedLane.accent]
@@ -315,7 +314,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
               <Target className="h-4 w-4" aria-hidden="true" />
             </span>
             <span
-              className={cn(
+              className={cx(
                 'font-mono text-[10px] uppercase tracking-wider font-bold',
                 selectedLane ? schedTextStrong[selectedLane.accent] : 'text-[var(--term-muted)]',
               )}
@@ -329,7 +328,7 @@ export const NextLanesSelectionLab = ({ content }: Props) => {
 
           {selectedLane ? (
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center self-start gap-2 rounded-xl border-2 px-3 py-1.5',
                 'font-mono text-xsm sm:text-sm font-bold',
                 schedPill[selectedLane.accent],

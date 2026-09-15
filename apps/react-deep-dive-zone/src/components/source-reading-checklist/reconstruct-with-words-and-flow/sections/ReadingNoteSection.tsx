@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, MessageSquareText, Notebook } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,14 +25,14 @@ export const ReadingNoteSection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 overflow-hidden',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
         )}
       >
         <header
-          className={cn(
+          className={cx(
             'flex items-center justify-between gap-2 border-b-2 px-md py-3',
             'border-slate-200 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-900/40',
           )}
@@ -61,7 +60,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
           {content.fields.map((field, idx) => (
             <Fragment key={field.label}>
               <dt
-                className={cn(
+                className={cx(
                   'pt-3 pb-1 lg:py-3 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]',
                   'lg:border-t border-[var(--term-border)]',
                   idx === 0 && 'lg:border-t-0',
@@ -70,7 +69,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
                 {field.label}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'pb-3 lg:py-3 border-t border-dashed border-[var(--term-border)] lg:border-t-0',
                   idx === 0 && 'border-t-0',
                   'lg:border-t lg:border-solid',
@@ -83,7 +82,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
 
           {/* Summary (highlighted) */}
           <dt
-            className={cn(
+            className={cx(
               'pt-3 pb-1 lg:py-3 text-[10px] font-mono uppercase tracking-wider',
               'lg:border-t border-[var(--term-border)]',
               'text-emerald-700 dark:text-emerald-300 font-bold',
@@ -93,7 +92,7 @@ export const ReadingNoteSection = ({ content }: Props) => {
           </dt>
           <dd className="pb-3 lg:py-3 border-t border-dashed border-[var(--term-border)] lg:border-solid">
             <div
-              className={cn(
+              className={cx(
                 'flex items-start gap-3 rounded-xl border-2 p-md',
                 'border-emerald-300 bg-emerald-50/60 text-emerald-900',
                 'dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-100',
@@ -126,7 +125,7 @@ const NoteValue = ({ field }: { field: NoteField }) => {
   if (field.format === 'code') {
     return (
       <code
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-md border px-2 py-0.5',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           'font-mono text-[11px] text-[var(--term-fg)]',

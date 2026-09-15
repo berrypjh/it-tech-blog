@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -21,7 +21,7 @@ export const ChangeMapHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -77,7 +77,7 @@ const BadgeCard = ({ badge, tone }: { badge: HeroSideBadge; tone: ToneKey }) => 
   const Icon = iconRegistry[badge.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-2 rounded-xl border bg-[var(--term-bg)] p-md text-center',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -87,7 +87,7 @@ const BadgeCard = ({ badge, tone }: { badge: HeroSideBadge; tone: ToneKey }) => 
       <ToneIconBox tone={tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <span className={cn('text-[10px] font-mono font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('text-[10px] font-mono font-bold tracking-tight break-keep', t.text)}>
         {badge.label}
       </span>
     </article>
@@ -104,7 +104,7 @@ const GuideNote = ({
   source: string;
 }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -118,7 +118,7 @@ const GuideNote = ({
       </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>
       <span
-        className={cn(
+        className={cx(
           'mt-1 inline-flex items-center gap-1.5 self-start rounded-full border px-2 py-0.5',
           'border-[var(--term-border)] text-[10px] font-mono font-bold tracking-wider text-[var(--term-muted)]',
         )}

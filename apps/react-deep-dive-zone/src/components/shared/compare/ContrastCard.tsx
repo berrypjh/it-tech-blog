@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 import { ArrowDivider } from './ArrowDivider';
@@ -20,7 +19,7 @@ type Props = {
  */
 export const ContrastCard = ({ left, right, footer }: Props) => (
   <div
-    className={cn(
+    className={cx(
       'relative overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

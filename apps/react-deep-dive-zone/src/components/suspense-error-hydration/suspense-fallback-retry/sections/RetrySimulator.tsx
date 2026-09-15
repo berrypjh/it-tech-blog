@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   CheckCircle2,
@@ -88,7 +87,7 @@ export const RetrySimulator = ({ content }: Props) => {
       <SectionHeader id="simulator-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,3fr)_minmax(0,7fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -98,7 +97,7 @@ export const RetrySimulator = ({ content }: Props) => {
         {/* LEFT: Profile status */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-2xl border-2 p-md',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
           )}
@@ -122,7 +121,7 @@ export const RetrySimulator = ({ content }: Props) => {
               {content.statusLabel}
             </span>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-mono font-bold',
                 isResolved
                   ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-200'
@@ -131,7 +130,7 @@ export const RetrySimulator = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'block h-1.5 w-1.5 rounded-full',
                   isResolved ? 'bg-emerald-500' : 'bg-violet-500',
                 )}
@@ -148,7 +147,7 @@ export const RetrySimulator = ({ content }: Props) => {
           </div>
 
           <div
-            className={cn(
+            className={cx(
               'mt-2 flex flex-col items-center gap-2 rounded-xl border-2 p-3',
               preview.className,
             )}
@@ -156,7 +155,7 @@ export const RetrySimulator = ({ content }: Props) => {
             <span aria-hidden="true" className={preview.labelClass}>
               {preview.icon}
             </span>
-            <span className={cn('font-mono text-[11px] font-bold', preview.labelClass)}>
+            <span className={cx('font-mono text-[11px] font-bold', preview.labelClass)}>
               {preview.title}
             </span>
             <span className="text-[10px] text-[var(--term-muted)] break-keep text-center">
@@ -188,7 +187,7 @@ export const RetrySimulator = ({ content }: Props) => {
                     aria-pressed={isActive}
                     aria-current={isActive ? 'step' : undefined}
                     onClick={() => setActiveIndex(i)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-xl border-2 p-2.5 h-full transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
@@ -199,7 +198,7 @@ export const RetrySimulator = ({ content }: Props) => {
                     <div className="flex items-center gap-1.5 mb-1">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                           isActive
                             ? 'bg-blue-600 dark:bg-blue-500'
@@ -216,7 +215,7 @@ export const RetrySimulator = ({ content }: Props) => {
                       )}
                     </div>
                     <span
-                      className={cn(
+                      className={cx(
                         'block text-xsm font-bold break-keep',
                         isActive ? 'text-blue-700 dark:text-blue-200' : 'text-[var(--term-fg)]',
                       )}
@@ -237,7 +236,7 @@ export const RetrySimulator = ({ content }: Props) => {
             <div className="relative h-2 w-full rounded-full bg-slate-200/70 dark:bg-slate-700/40 overflow-hidden">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute left-0 top-0 h-full rounded-full transition-all',
                   'bg-gradient-to-r from-violet-500 via-teal-500 to-emerald-500',
                 )}
@@ -248,7 +247,7 @@ export const RetrySimulator = ({ content }: Props) => {
               {content.railLabels.map((label, i) => (
                 <li
                   key={label}
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider break-keep',
                     i === activeIndex
                       ? 'text-blue-600 dark:text-blue-300'

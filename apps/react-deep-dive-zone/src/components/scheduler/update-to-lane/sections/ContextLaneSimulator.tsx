@@ -2,8 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock3, Compass, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
 
 import { axisCardBorder, axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
@@ -49,7 +48,7 @@ const BitCells = ({
         return (
           <li
             key={i}
-            className={cn(
+            className={cx(
               'inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded border font-mono text-[10px] sm:text-[11px] font-bold',
               isOn
                 ? accent === 'blue'
@@ -123,7 +122,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] gap-md items-stretch">
         {/* MAIN simulator card */}
         <div
-          className={cn(
+          className={cx(
             'rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -151,12 +150,12 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setActive(s.key)}
                   onKeyDown={(e) => handleKey(e, s.key)}
-                  className={cn(
+                  className={cx(
                     'group inline-flex items-center gap-2 rounded-xl px-3 py-2 whitespace-nowrap',
                     'text-xsm sm:text-sm font-mono font-bold transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                     selected
-                      ? cn(
+                      ? cx(
                           'border-2 shadow-[0_2px_0_var(--term-border)]',
                           s.accent === 'blue' &&
                             'border-blue-500 bg-blue-50 text-blue-800 focus-visible:ring-blue-400 dark:border-blue-400 dark:bg-blue-950/40 dark:text-blue-100',
@@ -185,7 +184,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
           >
             {/* context + lane */}
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)]',
                 axisCardBorder[scenario.accent],
@@ -194,7 +193,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     axisIconBox[scenario.accent],
                   )}
@@ -202,7 +201,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                   <Icon className="h-5 w-5" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'font-mono text-[10px] uppercase tracking-wider',
                     axisTextStrong[scenario.accent],
                   )}
@@ -211,7 +210,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                 </span>
               </header>
               <h3
-                className={cn(
+                className={cx(
                   'text-md sm:text-lg font-bold leading-tight break-keep',
                   axisTextStrong[scenario.accent],
                 )}
@@ -227,7 +226,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                   {content.stageLabels.lane}
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center self-start gap-2 rounded-xl border-2 px-3 py-1.5',
                     'font-mono text-xsm sm:text-sm font-bold',
                     axisPill[scenario.accent],
@@ -257,7 +256,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
 
             {/* code flow */}
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                 'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
               )}
@@ -276,14 +275,14 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                   return (
                     <li key={step} className="flex flex-col">
                       <div
-                        className={cn(
+                        className={cx(
                           'flex items-center gap-2 rounded-lg border px-3 py-1.5',
                           'border-[var(--term-border)] bg-[var(--term-bg)]',
                         )}
                       >
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums text-white',
                             scenario.accent === 'blue' && 'bg-blue-600 dark:bg-blue-500',
                             scenario.accent === 'teal' && 'bg-teal-600 dark:bg-teal-500',
@@ -293,7 +292,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
                           {i + 1}
                         </span>
                         <code
-                          className={cn(
+                          className={cx(
                             'font-mono text-[11px] sm:text-xsm break-all',
                             isLast
                               ? axisTextStrong[scenario.accent] + ' font-bold'
@@ -320,7 +319,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
         {/* Lane group summary */}
         <aside
           aria-label={content.laneSummaryTitle}
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -335,7 +334,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
             {content.laneSummary.map((item) => (
               <li
                 key={item.name}
-                className={cn(
+                className={cx(
                   'flex items-start gap-3 rounded-xl border p-3',
                   'border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                   'hover:border-blue-200 dark:hover:border-blue-700/60',
@@ -343,7 +342,7 @@ export const ContextLaneSimulator = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'mt-0.5 inline-block h-3 w-3 shrink-0 rounded-sm border border-[var(--term-border)]',
                     summaryDot[item.accent],
                   )}

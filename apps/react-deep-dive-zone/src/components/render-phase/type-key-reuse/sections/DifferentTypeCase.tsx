@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ChevronDown, Component, Key } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -91,10 +90,10 @@ const RoleRow = ({
 }) => {
   const t = toneTokens[tone];
   return (
-    <article className={cn('flex items-start gap-2 rounded-md border p-sm', t.border)}>
+    <article className={cx('flex items-start gap-2 rounded-md border p-sm', t.border)}>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-md border',
           t.chip,
         )}
@@ -102,7 +101,7 @@ const RoleRow = ({
         {icon}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <code className={cn('font-mono text-xsm font-bold', t.text)}>{label}</code>
+        <code className={cx('font-mono text-xsm font-bold', t.text)}>{label}</code>
         <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-fg)] break-keep">
           {description}
         </p>

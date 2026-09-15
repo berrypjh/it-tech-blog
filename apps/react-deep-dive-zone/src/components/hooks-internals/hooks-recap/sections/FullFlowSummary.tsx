@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   Cog,
@@ -39,7 +38,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
   return (
     <li className="flex flex-col gap-1.5">
       <article
-        className={cn(
+        className={cx(
           'flex items-start gap-3 rounded-xl border-2 p-md',
           'shadow-[0_1px_0_var(--term-border)] transition-all',
           'motion-safe:hover:-translate-y-0.5',
@@ -48,7 +47,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 px-2 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums shrink-0',
             toneNumber[step.tone],
           )}
@@ -57,7 +56,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-white dark:bg-slate-950/40',
             'border-[var(--term-border)]',
             toneText[step.tone],
@@ -67,7 +66,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
         </span>
         <div className="flex flex-col gap-0.5 min-w-0 flex-1">
           <code
-            className={cn('font-mono text-xsm sm:text-sm font-bold break-all', toneText[step.tone])}
+            className={cx('font-mono text-xsm sm:text-sm font-bold break-all', toneText[step.tone])}
           >
             {step.title}
           </code>
@@ -88,7 +87,7 @@ const FlowStepRow = ({ step, hasArrow }: { step: FlowStep; hasArrow: boolean }) 
 export const FullFlowSummary = ({ content }: Props) => (
   <section
     aria-labelledby="heading-full-flow"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -111,7 +110,7 @@ export const FullFlowSummary = ({ content }: Props) => (
       {/* Right: explanation card */}
       <aside className="flex flex-col gap-md">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -145,7 +144,7 @@ export const FullFlowSummary = ({ content }: Props) => (
 
         {/* Memory point */}
         <aside
-          className={cn(
+          className={cx(
             'flex items-start gap-sm rounded-2xl border-2 p-md',
             'border-amber-300/70 bg-amber-50/60 dark:border-amber-700/60 dark:bg-amber-950/30',
           )}

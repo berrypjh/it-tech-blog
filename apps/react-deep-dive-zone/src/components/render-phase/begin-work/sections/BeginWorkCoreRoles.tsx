@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitFork, ListChecks, type LucideIcon, Network, Sparkles } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -23,7 +22,7 @@ const toFlowStep = (card: RoleCard): FlowStepItem => {
     title: card.title,
     body: card.description,
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />,
   };
 };
 

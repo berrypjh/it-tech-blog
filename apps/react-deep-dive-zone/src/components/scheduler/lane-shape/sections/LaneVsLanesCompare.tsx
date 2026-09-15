@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleDot, Layers, Split } from 'lucide-react';
 
 import { BitCellRow } from '../../_shared/BitCellRow';
@@ -13,7 +12,7 @@ const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' 
   const Icon = kind === 'single' ? CircleDot : Layers;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-colors',
         'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -24,7 +23,7 @@ const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' 
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border',
               laneIconBox[data.accent],
             )}
@@ -33,7 +32,7 @@ const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' 
           </span>
           <div className="flex flex-col gap-0.5">
             <span
-              className={cn(
+              className={cx(
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 laneTextStrong[data.accent],
               )}
@@ -52,7 +51,7 @@ const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' 
       </p>
 
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center self-start rounded-full border px-3 py-1',
           'font-mono text-[11px] sm:text-xsm font-semibold break-keep',
           lanePill[data.accent],
@@ -72,7 +71,7 @@ const Card = ({ data, kind }: { data: LaneVsLanesCard; kind: 'single' | 'multi' 
       </div>
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto text-[11px] sm:text-xsm font-mono uppercase tracking-wider',
           laneTextStrong[data.accent],
         )}

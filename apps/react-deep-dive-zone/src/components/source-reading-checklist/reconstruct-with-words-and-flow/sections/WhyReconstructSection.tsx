@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { RefreshCw, Sparkles, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
         {content.cards.map((card) => (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-xl border-2 p-md',
                 'border-blue-200 bg-blue-50/40',
                 'dark:border-blue-800/60 dark:bg-blue-950/20',
@@ -38,7 +37,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
             >
               <div className="flex items-center justify-between">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full border px-2 py-1',
                     'border-blue-300 bg-white text-blue-800',
                     'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
@@ -50,7 +49,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-md',
                     'border border-blue-300 bg-blue-100 text-blue-700',
                     'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -79,7 +78,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -89,7 +88,7 @@ export const WhyReconstructSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-violet-400/60 bg-violet-500/15 text-violet-200',
           )}

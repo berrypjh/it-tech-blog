@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ResponsibilityItem, ServerComponentsContractContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, HammerIcon, ShieldCheckIcon } from '../icons';
@@ -31,7 +31,7 @@ export const FrameworkReactBoundarySection = ({ content }: Props) => (
       <div className="flex lg:flex-col items-center justify-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full border-2 border-dashed',
             'border-blue-400 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50',
             'dark:border-blue-600 dark:from-blue-950/40 dark:via-purple-950/40 dark:to-blue-950/40',
@@ -87,7 +87,7 @@ const ResponsibilityCard = ({
   const tone = boundaryTone[accent];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
         tone.borderStrong,
         tone.bg,
@@ -97,14 +97,14 @@ const ResponsibilityCard = ({
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
             tone.iconChip,
           )}
         >
           <Icon className="h-4 w-4" />
         </span>
-        <h3 className={cn('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}>
           {title}
         </h3>
       </header>
@@ -113,7 +113,7 @@ const ResponsibilityCard = ({
         {items.map((item) => (
           <li
             key={item.body}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-lg border px-3 py-2',
               'bg-white dark:bg-[var(--term-bg)]',
               tone.border,
@@ -121,7 +121,7 @@ const ResponsibilityCard = ({
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 block h-1.5 w-1.5 rounded-full', tone.dot)}
+              className={cx('mt-1.5 block h-1.5 w-1.5 rounded-full', tone.dot)}
             />
             <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
               {item.body}

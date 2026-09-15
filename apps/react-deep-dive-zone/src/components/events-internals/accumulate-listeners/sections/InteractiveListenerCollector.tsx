@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { MousePointerClick, PlayCircle, Target } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -23,7 +22,7 @@ const ListenerList = ({
   tone: 'violet' | 'teal';
 }) => (
   <div
-    className={cn(
+    className={cx(
       'rounded-2xl border-2 p-md',
       tone === 'violet'
         ? 'border-violet-300/80 bg-white dark:border-violet-700/70 dark:bg-slate-950/40'
@@ -34,7 +33,7 @@ const ListenerList = ({
     <header className="flex items-center gap-2 mb-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-7 w-7 items-center justify-center rounded-md',
           tone === 'violet'
             ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900'
@@ -44,7 +43,7 @@ const ListenerList = ({
         <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <span
-        className={cn(
+        className={cx(
           'text-[10px] font-mono font-bold uppercase tracking-wider',
           tone === 'violet'
             ? 'text-violet-700 dark:text-violet-300'
@@ -63,7 +62,7 @@ const ListenerList = ({
         {entries.map((entry) => (
           <li
             key={entry.handler}
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-lg border px-3 py-2',
               tone === 'violet'
                 ? 'border-violet-200/70 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/30'
@@ -72,7 +71,7 @@ const ListenerList = ({
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold',
                 tone === 'violet'
                   ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900'
@@ -82,7 +81,7 @@ const ListenerList = ({
               {entry.step}
             </span>
             <code
-              className={cn(
+              className={cx(
                 'font-mono text-[11px] sm:text-xsm font-bold break-all flex-1',
                 tone === 'violet'
                   ? 'text-violet-700 dark:text-violet-200'
@@ -156,7 +155,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200/70 bg-gradient-to-br from-blue-50/60 via-white to-teal-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -167,7 +166,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
           {/* LEFT: code + target picker */}
           <div className="flex flex-col gap-md">
             <article
-              className={cn(
+              className={cx(
                 'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
                 'border-[var(--term-border)]',
               )}
@@ -193,7 +192,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
             </article>
 
             <article
-              className={cn(
+              className={cx(
                 'rounded-2xl border-2 bg-[var(--term-bg)] p-md',
                 'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
               )}
@@ -223,7 +222,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                       role="radio"
                       aria-checked={isSelected}
                       onClick={() => setTarget(t.value)}
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-xl border-2 px-3 py-2',
                         'font-mono text-xsm sm:text-sm font-bold transition-all',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -235,7 +234,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'block h-1.5 w-1.5 rounded-full',
                           isSelected ? 'bg-white/90' : 'bg-blue-500 dark:bg-blue-400',
                         )}
@@ -262,7 +261,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
           {/* RIGHT: tab + result */}
           <article
             aria-live="polite"
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
               'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             )}
@@ -278,7 +277,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                     role="tab"
                     aria-selected={isSelected}
                     onClick={() => setTab(t.value)}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2',
                       'font-mono text-xsm sm:text-sm font-bold transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -294,7 +293,7 @@ export const InteractiveListenerCollector = ({ content }: Props) => {
                   >
                     <MousePointerClick
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'h-3.5 w-3.5 shrink-0',
                         isSelected ? 'opacity-80' : 'opacity-60',
                       )}

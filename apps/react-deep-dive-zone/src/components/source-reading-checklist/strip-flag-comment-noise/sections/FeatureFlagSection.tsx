@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, HelpCircle, Sparkles, ToggleLeft } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
 
       {/* Main point */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-300 bg-violet-50/60',
           'dark:border-violet-700/70 dark:bg-violet-950/30',
@@ -42,7 +41,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
         <div className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2',
               'border-violet-400 bg-white text-violet-700',
               'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
@@ -65,7 +64,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
             return (
               <li key={flag.name}>
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex h-full flex-col gap-sm rounded-xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     t.border,
@@ -76,7 +75,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
                 >
                   <header className="flex items-center justify-between gap-2">
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full border-2 px-2.5 py-1',
                         t.chip,
                         'text-[10px] font-mono font-bold uppercase tracking-wider',
@@ -85,13 +84,13 @@ export const FeatureFlagSection = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('block h-1 w-1 rounded-full', t.dot)}
+                        className={cx('block h-1 w-1 rounded-full', t.dot)}
                       />
                       {content.kindLabel[flag.kind]}
                     </span>
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 items-center justify-center rounded-md border',
                         t.chip,
                       )}
@@ -101,7 +100,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
                   </header>
 
                   <code
-                    className={cn(
+                    className={cx(
                       'overflow-x-auto rounded-md border px-2.5 py-1.5',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-xsm font-bold text-[var(--term-fg)]',
@@ -112,14 +111,14 @@ export const FeatureFlagSection = ({ content }: Props) => {
 
                   <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
                     <HelpCircle
-                      className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
+                      className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
                       aria-hidden="true"
                     />
                     <div className="flex flex-col">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                         {content.questionLabel}
                       </span>
-                      <p className={cn('text-xsm leading-snug break-keep', t.text)}>
+                      <p className={cx('text-xsm leading-snug break-keep', t.text)}>
                         {flag.question}
                       </p>
                     </div>
@@ -132,7 +131,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
 
         {/* Reading questions */}
         <aside
-          className={cn(
+          className={cx(
             'sticky top-24 rounded-2xl border-2 p-md sm:p-lg',
             'border-violet-200 bg-gradient-to-br from-violet-50/60 via-white to-blue-50/30',
             'dark:border-violet-800/60 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -151,7 +150,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
             {content.questions.map((q, i) => (
               <li
                 key={q}
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border px-2.5 py-2',
                   'border-violet-200 bg-white',
                   'dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
@@ -159,7 +158,7 @@ export const FeatureFlagSection = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                     'border-violet-300 bg-violet-50 text-violet-700',
                     'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',

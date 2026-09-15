@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Merge, Sprout } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -21,7 +20,7 @@ export const UseReducerSharedHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -54,7 +53,7 @@ const HookCard = ({ card }: { card: HookSideCard }) => {
   return (
     <article className="flex h-full flex-col gap-sm">
       <div className="flex items-center gap-sm">
-        <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>
           {card.hookName}
         </span>
         <span
@@ -72,7 +71,7 @@ const SharedCard = ({ title, items }: { title: string; items: string[] }) => {
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         t.chip,
@@ -83,7 +82,7 @@ const SharedCard = ({ title, items }: { title: string; items: string[] }) => {
         <ToneIconBox tone="violet" size="sm">
           <Merge className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
-        <h2 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h2>
+        <h2 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h2>
       </header>
       <ul className="flex flex-wrap gap-1">
         {items.map((item) => (

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -139,10 +138,10 @@ const cardTone: Record<Tone, { card: string; chip: string; text: string }> = {
 const HookCardItem = ({ card }: { card: CorrectHookCard }) => {
   const t = cardTone[card.tone];
   return (
-    <article className={cn('flex items-center gap-3 rounded-xl border-2 px-md py-3', t.card)}>
+    <article className={cx('flex items-center gap-3 rounded-xl border-2 px-md py-3', t.card)}>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 px-2.5 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums shrink-0',
           t.chip,
         )}
@@ -150,7 +149,7 @@ const HookCardItem = ({ card }: { card: CorrectHookCard }) => {
         Hook {card.index}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <code className={cn('font-mono text-xsm sm:text-sm font-bold break-all', t.text)}>
+        <code className={cx('font-mono text-xsm sm:text-sm font-bold break-all', t.text)}>
           {card.hookName}
         </code>
         <p className="text-[10px] font-mono text-[var(--term-muted)] break-keep">{card.detail}</p>
@@ -164,7 +163,7 @@ export const CorrectHookOrder = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-correct-order"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -216,7 +215,7 @@ export const CorrectHookOrder = ({ content }: Props) => {
           </ol>
 
           <aside
-            className={cn(
+            className={cx(
               'mt-auto flex items-start gap-2 rounded-xl border-2 p-md',
               'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30',
             )}

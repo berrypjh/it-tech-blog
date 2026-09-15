@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { SimulatorStep, UseEffectEventContent } from '../content';
 import {
@@ -53,7 +53,7 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -74,13 +74,13 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveKey(s.key)}
-                  className={cn(
+                  className={cx(
                     'group inline-flex items-center gap-2 rounded-xl border-2 px-3 py-2',
                     'transition-all motion-safe:hover:-translate-y-0.5',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                     isActive
                       ? 'border-blue-500 bg-blue-600 text-white dark:bg-blue-500 dark:border-blue-400 shadow-[0_3px_0_var(--term-border)]'
-                      : cn(
+                      : cx(
                           'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',
                           'border-slate-200 dark:border-slate-700',
                           'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -89,7 +89,7 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'block h-2 w-2 rounded-full',
                       isActive ? 'bg-white/90' : 'bg-blue-500 dark:bg-blue-400',
                     )}
@@ -97,7 +97,7 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
                   <span className="font-mono text-xsm font-bold break-keep">{s.tabLabel}</span>
                   <ChevronRightIcon
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'h-3.5 w-3.5 shrink-0 transition-transform',
                       isActive
                         ? 'translate-x-0.5'
@@ -135,7 +135,7 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
 
           {/* Legend */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
               'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -153,13 +153,13 @@ export const EffectReconnectSimulator = ({ content }: Props) => {
                 return (
                   <li
                     key={item.label}
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-2 rounded-lg border px-2.5 py-1.5',
                       t.chip,
                     )}
                   >
-                    <Icon aria-hidden="true" className={cn('h-3.5 w-3.5', t.text)} />
-                    <span className={cn('text-xsm font-bold break-keep', t.text)}>
+                    <Icon aria-hidden="true" className={cx('h-3.5 w-3.5', t.text)} />
+                    <span className={cx('text-xsm font-bold break-keep', t.text)}>
                       {item.label}
                     </span>
                   </li>
@@ -190,7 +190,7 @@ const FlowColumn = ({
   const resultToneTokens = effectTone[resultTone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
         accentTone.border,
         'bg-white dark:bg-[var(--term-bg)]',
@@ -199,7 +199,7 @@ const FlowColumn = ({
     >
       <header>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
             accentTone.chip,
             'font-mono text-[10px] font-bold uppercase tracking-wider',
@@ -207,7 +207,7 @@ const FlowColumn = ({
         >
           <span
             aria-hidden="true"
-            className={cn('block h-1.5 w-1.5 rounded-full', accentTone.dot)}
+            className={cx('block h-1.5 w-1.5 rounded-full', accentTone.dot)}
           />
           {title}
         </span>
@@ -222,7 +222,7 @@ const FlowColumn = ({
             <Fragment key={`${step.title}-${idx}`}>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-2 rounded-xl border-2 px-3 py-2',
                     t.border,
                     'bg-white dark:bg-[var(--term-bg)]',
@@ -232,7 +232,7 @@ const FlowColumn = ({
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                       t.iconChip,
                     )}
@@ -240,7 +240,7 @@ const FlowColumn = ({
                     <Icon className="h-4 w-4" />
                   </span>
                   <div className="flex flex-col min-w-0">
-                    <span className={cn('text-xsm font-bold break-keep', t.text)}>
+                    <span className={cx('text-xsm font-bold break-keep', t.text)}>
                       {step.title}
                     </span>
                     {step.caption && (
@@ -251,7 +251,7 @@ const FlowColumn = ({
                   </div>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 items-center px-1 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       t.chip,
                     )}
@@ -273,7 +273,7 @@ const FlowColumn = ({
       </ol>
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto flex items-start gap-2 rounded-xl border-2 px-3 py-2.5',
           resultToneTokens.borderStrong,
           resultToneTokens.bg,
@@ -281,9 +281,9 @@ const FlowColumn = ({
       >
         <span
           aria-hidden="true"
-          className={cn('mt-1 block h-2 w-2 rounded-full', resultToneTokens.dot)}
+          className={cx('mt-1 block h-2 w-2 rounded-full', resultToneTokens.dot)}
         />
-        <p className={cn('text-xsm font-bold leading-relaxed break-keep', resultToneTokens.text)}>
+        <p className={cx('text-xsm font-bold leading-relaxed break-keep', resultToneTokens.text)}>
           {result}
         </p>
       </div>

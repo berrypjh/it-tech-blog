@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, MessageCircle } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -25,7 +24,7 @@ export const HostUserCodeExample = ({ content }: Props) => (
       </div>
 
       <article
-        className={cn(
+        className={cx(
           'flex items-start gap-md rounded-lg border p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           toneTokens.sky.border,
@@ -35,11 +34,11 @@ export const HostUserCodeExample = ({ content }: Props) => (
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col gap-1 min-w-0">
-          <span className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}>
+          <span className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}>
             props · children
           </span>
           <p
-            className={cn(
+            className={cx(
               'text-sm sm:text-md leading-relaxed font-bold break-keep',
               toneTokens.sky.text,
             )}

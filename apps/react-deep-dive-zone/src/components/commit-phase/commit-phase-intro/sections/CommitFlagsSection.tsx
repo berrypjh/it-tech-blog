@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, Flag, Lightbulb, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -85,7 +84,7 @@ const LearningPointCard = ({ title, items }: { title: string; items: string[] })
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -96,21 +95,21 @@ const LearningPointCard = ({ title, items }: { title: string; items: string[] })
         <ToneIconBox tone="sky" size="sm">
           <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 text-xsm sm:text-sm leading-snug break-keep',
               t.fill.text,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+              className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
             />
             <span>{item}</span>
           </li>
@@ -144,7 +143,7 @@ const FlagTableCard = ({
     </ul>
 
     <footer
-      className={cn(
+      className={cx(
         'flex items-start gap-2 border-t px-md py-sm',
         toneTokens.amber.fill.border,
         toneTokens.amber.fill.bg,
@@ -152,10 +151,10 @@ const FlagTableCard = ({
     >
       <Sparkles
         aria-hidden="true"
-        className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', toneTokens.amber.text)}
+        className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', toneTokens.amber.text)}
       />
       <p
-        className={cn(
+        className={cx(
           'text-[11px] sm:text-xsm leading-snug break-keep',
           toneTokens.amber.fill.text,
         )}
@@ -173,14 +172,14 @@ const FlagRowItem = ({ row }: { row: FlagRow }) => {
       <div className="flex items-center gap-2 min-w-0">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
             t.chip,
           )}
         >
           <Flag className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
-        <code className={cn('text-xsm font-bold font-mono break-all', t.text)}>{row.name}</code>
+        <code className={cx('text-xsm font-bold font-mono break-all', t.text)}>{row.name}</code>
       </div>
       <code className="text-[11px] sm:text-xsm font-mono text-[var(--term-muted)] break-all">
         {row.bitMask}

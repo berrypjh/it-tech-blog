@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RepoOverviewContent } from '../content';
 
@@ -83,7 +83,7 @@ const CodeCard = ({ caption, code }: CodeCardProps) => {
   const lines = code.split('\n');
   return (
     <div
-      className={cn(
+      className={cx(
         'rounded-lg border bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] overflow-hidden',
       )}
@@ -160,7 +160,7 @@ type ReactBrandCardProps = { caption: string };
 const ReactBrandCard = ({ caption }: ReactBrandCardProps) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative flex flex-col items-center justify-center gap-1 rounded-lg border',
         'border-[var(--term-border)] bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)] px-md py-md',

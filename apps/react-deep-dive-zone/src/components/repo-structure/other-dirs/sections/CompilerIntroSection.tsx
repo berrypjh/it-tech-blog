@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Folder, Info } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -20,7 +19,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.36fr)_minmax(0,_0.64fr)] gap-md items-stretch">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
           )}
@@ -43,7 +42,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
           </header>
 
           <pre
-            className={cn(
+            className={cx(
               'rounded-md border bg-[var(--term-surface)] border-[var(--term-border)]',
               'px-md py-3 text-xsm font-mono leading-relaxed text-[var(--term-fg)]',
               'overflow-x-auto',
@@ -57,7 +56,7 @@ export const CompilerIntroSection = ({ content }: Props) => {
 
         {/* 우측 설명 카드 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
           )}

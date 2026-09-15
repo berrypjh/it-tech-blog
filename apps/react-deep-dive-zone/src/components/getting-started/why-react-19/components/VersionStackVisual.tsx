@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowUp } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -56,7 +55,7 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
           return (
             <li key={v.id}>
               <div
-                className={cn(
+                className={cx(
                   'relative flex items-center justify-between gap-sm min-w-0',
                   'px-md py-2.5 sm:py-3 rounded-md border',
                   t.fill.bg,
@@ -68,14 +67,14 @@ export const VersionStackVisual = ({ versions, axisTop, axisBottom }: Props) => 
               >
                 <div className="flex flex-col min-w-0">
                   <div className="flex items-baseline gap-2">
-                    <span className={cn('text-xsm sm:text-sm font-bold tracking-tight', t.text)}>
+                    <span className={cx('text-xsm sm:text-sm font-bold tracking-tight', t.text)}>
                       {v.version}
                     </span>
-                    <span className={cn('text-[10px] font-mono tabular-nums', t.text)}>
+                    <span className={cx('text-[10px] font-mono tabular-nums', t.text)}>
                       {v.year}
                     </span>
                   </div>
-                  <span className={cn('text-[11px] sm:text-xsm leading-tight truncate', t.text)}>
+                  <span className={cx('text-[11px] sm:text-xsm leading-tight truncate', t.text)}>
                     {v.highlight}
                   </span>
                 </div>

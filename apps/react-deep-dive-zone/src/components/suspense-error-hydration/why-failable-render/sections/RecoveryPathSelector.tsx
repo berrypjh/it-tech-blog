@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, FileCode, Hourglass, PlugZap, TriangleAlert } from 'lucide-react';
 
 import type { BranchKind, RecoveryOptionKey, WhyFailableRenderContent } from '../content';
@@ -46,7 +45,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
       </header>
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,3fr)_minmax(0,7fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -66,18 +65,18 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                   role="radio"
                   aria-checked={isActive}
                   onClick={() => setSelected(opt.key)}
-                  className={cn(
+                  className={cx(
                     'w-full text-left rounded-2xl border-2 p-md transition-all',
                     'flex items-start gap-3',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                     isActive
-                      ? cn(optAccent.border, optAccent.bg, 'shadow-[0_2px_0_var(--term-border)]')
+                      ? cx(optAccent.border, optAccent.bg, 'shadow-[0_2px_0_var(--term-border)]')
                       : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-700 dark:bg-[var(--term-bg)] dark:hover:border-slate-600',
                   )}
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
                       optAccent.chip,
                     )}
@@ -86,7 +85,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
                     <span
-                      className={cn(
+                      className={cx(
                         'text-sm font-bold break-keep',
                         isActive ? optAccent.text : 'text-[var(--term-fg)]',
                       )}
@@ -100,7 +99,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                   {isActive && (
                     <CheckCircle2
                       aria-hidden="true"
-                      className={cn('h-5 w-5 shrink-0 ml-auto', optAccent.text)}
+                      className={cx('h-5 w-5 shrink-0 ml-auto', optAccent.text)}
                     />
                   )}
                 </button>
@@ -112,7 +111,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
         {/* Right: result card */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             accent.border,
             accent.bg,
@@ -121,7 +120,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
         >
           <header className="flex flex-wrap items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 accent.chip,
@@ -130,7 +129,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
               {content.selectedBadge}: {result.selectedLabel}
             </span>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-3 py-1',
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 'border-slate-200 bg-white text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300',
@@ -140,7 +139,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
             </span>
           </header>
 
-          <h3 className={cn('text-lg sm:text-xl font-bold break-keep', accent.text)}>
+          <h3 className={cx('text-lg sm:text-xl font-bold break-keep', accent.text)}>
             {result.resultTitle}
           </h3>
           <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">
@@ -155,7 +154,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
               {result.timeline.map((step, i) => (
                 <li
                   key={step}
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-2 rounded-lg border bg-white px-3 py-2',
                     'dark:bg-[var(--term-bg)]',
                     accent.border,
@@ -163,7 +162,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
                       'text-[10px] font-mono font-bold tabular-nums text-white',
                       result.kind === 'suspense' && 'bg-blue-500',
@@ -190,7 +189,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                 {result.relatedFiles.map((file) => (
                   <li
                     key={file}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
                       'text-[11px] font-mono font-bold bg-white dark:bg-[var(--term-bg)]',
                       accent.border,
@@ -208,7 +207,7 @@ export const RecoveryPathSelector = ({ content }: Props) => {
                 {content.experienceLabel}
               </span>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-1',
                   'text-[11px] font-bold bg-white dark:bg-[var(--term-bg)]',
                   accent.border,

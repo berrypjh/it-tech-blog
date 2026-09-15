@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListTree, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ const FiberTreeCard = ({
         {'// fiber tree'}
       </span>
       <span
-        className={cn(
+        className={cx(
           'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
           toneTokens.violet.chip,
         )}
@@ -222,11 +221,11 @@ const FiberTree = () => (
 const LabelCard = ({ tag, value, tone }: { tag: string; value: string; tone: ToneKey }) => {
   const t = toneTokens[tone];
   return (
-    <div className={cn('flex flex-col gap-0.5 rounded-md border-2 p-sm', t.fill.border, t.fill.bg)}>
-      <span className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
+    <div className={cx('flex flex-col gap-0.5 rounded-md border-2 p-sm', t.fill.border, t.fill.bg)}>
+      <span className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
         {tag}
       </span>
-      <code className={cn('text-xsm font-mono font-bold break-all', t.fill.text)}>{value}</code>
+      <code className={cx('text-xsm font-mono font-bold break-all', t.fill.text)}>{value}</code>
     </div>
   );
 };
@@ -241,7 +240,7 @@ const ExplanationCard = ({
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -252,19 +251,19 @@ const ExplanationCard = ({
         <ToneIconBox tone="violet">
           <Target className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
+        <h3 className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
           decision
         </h3>
       </header>
 
-      <p className={cn('text-sm sm:text-md font-bold leading-relaxed break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md font-bold leading-relaxed break-keep', t.fill.text)}>
         <span className="block">{explanation.line1}</span>
         <span className="block">{explanation.line2}</span>
         <span className="block">{explanation.line3}</span>
         <span className="block">{explanation.line4}</span>
       </p>
 
-      <ul className={cn('flex flex-col gap-1.5 border-t border-dashed pt-sm', t.fill.border)}>
+      <ul className={cx('flex flex-col gap-1.5 border-t border-dashed pt-sm', t.fill.border)}>
         {bullets.map((b) => (
           <li key={b.label}>
             <BulletRow bullet={b} />
@@ -280,14 +279,14 @@ const BulletRow = ({ bullet }: { bullet: HostBullet }) => {
   return (
     <div className="flex items-center gap-2 text-xsm sm:text-sm">
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider shrink-0',
           t.chip,
         )}
       >
         {bullet.label}
       </span>
-      <code className={cn('font-mono font-bold break-all', t.fill.text)}>{bullet.value}</code>
+      <code className={cx('font-mono font-bold break-all', t.fill.text)}>{bullet.value}</code>
     </div>
   );
 };

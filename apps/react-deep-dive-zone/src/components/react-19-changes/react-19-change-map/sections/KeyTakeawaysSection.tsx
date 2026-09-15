@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 
@@ -47,7 +47,7 @@ export const KeyTakeawaysSection = ({ content }: Props) => (
         return (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                 accent.border,
                 'bg-white dark:bg-[var(--term-bg)]',
@@ -59,7 +59,7 @@ export const KeyTakeawaysSection = ({ content }: Props) => (
               <div className="flex items-start justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     accent.iconBg,
                   )}
@@ -68,7 +68,7 @@ export const KeyTakeawaysSection = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-lg font-mono text-xxsm font-bold tabular-nums text-white',
                     accent.numBg,
                   )}
@@ -78,7 +78,7 @@ export const KeyTakeawaysSection = ({ content }: Props) => (
               </div>
 
               <h3
-                className={cn('text-md sm:text-lg font-bold break-keep leading-snug', accent.text)}
+                className={cx('text-md sm:text-lg font-bold break-keep leading-snug', accent.text)}
               >
                 {card.title}
               </h3>

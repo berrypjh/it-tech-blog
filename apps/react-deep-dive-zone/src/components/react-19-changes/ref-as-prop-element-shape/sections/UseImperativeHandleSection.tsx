@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RefAsPropElementShapeContent } from '../content';
 import { CheckCircleIcon, ZapIcon } from '../icons';
@@ -35,7 +35,7 @@ export const UseImperativeHandleSection = ({ content }: Props) => {
 
         {/* RIGHT: imperative handle example + explanation */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             tone.border,
             'bg-white dark:bg-[var(--term-bg)]',
@@ -45,28 +45,28 @@ export const UseImperativeHandleSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 tone.iconChip,
               )}
             >
               <ZapIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', tone.text)}>
+            <h3 className={cx('text-sm font-bold break-keep', tone.text)}>
               {content.exampleTitle}
             </h3>
           </header>
 
           {/* example light code block */}
           <pre
-            className={cn(
+            className={cx(
               'overflow-x-auto rounded-xl border-2 px-3 py-3',
               tone.border,
               tone.bg,
               'font-mono text-[12px] leading-relaxed sm:text-[13px]',
             )}
           >
-            <code className={cn('block whitespace-pre', tone.text)}>{content.exampleCode}</code>
+            <code className={cx('block whitespace-pre', tone.text)}>{content.exampleCode}</code>
           </pre>
 
           <ul className="flex flex-col gap-1.5">
@@ -77,7 +77,7 @@ export const UseImperativeHandleSection = ({ content }: Props) => {
               >
                 <CheckCircleIcon
                   aria-hidden="true"
-                  className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
+                  className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
                 />
                 <span>{p}</span>
               </li>

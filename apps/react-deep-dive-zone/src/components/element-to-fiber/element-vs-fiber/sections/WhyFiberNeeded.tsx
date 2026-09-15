@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, Layers, Network, RefreshCw, Sparkles } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -42,7 +41,7 @@ const CardView = ({ card }: { card: WhyFiberCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 items-start gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -51,7 +50,7 @@ const CardView = ({ card }: { card: WhyFiberCard }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-14 h-14 rounded-2xl border shrink-0',
           t.chip,
         )}
@@ -59,7 +58,7 @@ const CardView = ({ card }: { card: WhyFiberCard }) => {
         <Icon className="h-7 w-7" />
       </span>
       <div className="flex flex-col gap-1 min-w-0">
-        <h3 className={cn('text-sm sm:text-md font-bold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold tracking-tight break-keep', t.text)}>
           {card.title}
         </h3>
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>

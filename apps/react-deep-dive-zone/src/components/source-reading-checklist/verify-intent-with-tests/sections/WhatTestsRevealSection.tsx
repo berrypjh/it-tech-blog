@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Lightbulb, RotateCcw, ScanSearch, ShieldCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -49,7 +48,7 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
           return (
             <li key={item.role}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -60,19 +59,19 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
               >
                 <header className="flex items-center justify-between gap-2">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border-2 px-2.5 py-1',
                       t.chip,
                       'text-[10px] font-mono font-bold uppercase tracking-wider',
                       'shadow-[0_2px_0_var(--term-border)]',
                     )}
                   >
-                    <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', t.dot)} />
+                    <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', t.dot)} />
                     {meta.label}
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                       t.chip,
                     )}
@@ -81,7 +80,7 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
                   </span>
                 </header>
 
-                <h3 className={cn('text-md sm:text-lg font-bold leading-snug break-keep', t.text)}>
+                <h3 className={cx('text-md sm:text-lg font-bold leading-snug break-keep', t.text)}>
                   {item.title}
                 </h3>
 
@@ -90,21 +89,21 @@ export const WhatTestsRevealSection = ({ content }: Props) => {
                 </p>
 
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto flex items-start gap-2 rounded-md border-2 p-3',
                     t.border,
                     t.chip,
                   )}
                 >
                   <HelpCircle
-                    className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
+                    className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">
-                    <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                    <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.questionLabel}
                     </span>
-                    <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                    <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                       {item.exampleQuestion}
                     </p>
                   </div>

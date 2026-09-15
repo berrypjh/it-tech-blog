@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileSearch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -12,7 +11,7 @@ type Props = { content: HooksRecapContent['functions'] };
 export const CoreFunctionReview = ({ content }: Props) => (
   <section
     aria-labelledby="heading-functions"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -59,10 +58,10 @@ export const CoreFunctionReview = ({ content }: Props) => (
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn('inline-block h-2 w-2 rounded-full', toneDot[row.tone])}
+                    className={cx('inline-block h-2 w-2 rounded-full', toneDot[row.tone])}
                   />
                   <code
-                    className={cn('font-mono text-xsm font-bold break-all', toneText[row.tone])}
+                    className={cx('font-mono text-xsm font-bold break-all', toneText[row.tone])}
                   >
                     {row.name}
                   </code>
@@ -85,7 +84,7 @@ export const CoreFunctionReview = ({ content }: Props) => (
       {content.rows.map((row) => (
         <li key={row.name}>
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
               'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             )}
@@ -93,9 +92,9 @@ export const CoreFunctionReview = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn('inline-block h-2 w-2 rounded-full', toneDot[row.tone])}
+                className={cx('inline-block h-2 w-2 rounded-full', toneDot[row.tone])}
               />
-              <code className={cn('font-mono text-sm font-bold break-all', toneText[row.tone])}>
+              <code className={cx('font-mono text-sm font-bold break-all', toneText[row.tone])}>
                 {row.name}
               </code>
             </header>

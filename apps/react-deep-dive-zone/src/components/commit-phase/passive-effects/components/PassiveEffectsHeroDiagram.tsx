@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, Eye, Pencil, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -30,7 +29,7 @@ export const PassiveEffectsHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -84,10 +83,10 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
   const Icon = iconMap[phase.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        phase.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
+        phase.active ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
@@ -95,7 +94,7 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <span className="flex items-center gap-2">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
             {phase.title}
           </span>
           {phase.subtitle && (
@@ -123,20 +122,20 @@ const ZoneTag = ({
   const t = toneTokens.teal;
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border border-dashed px-md py-1.5',
-        isAsync ? cn(t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
+        isAsync ? cx(t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
       )}
       aria-hidden="true"
     >
       <span
-        className={cn(
+        className={cx(
           'inline-block h-1.5 w-1.5 shrink-0 rounded-full',
           isAsync ? t.dot : 'bg-[var(--term-dim)]',
         )}
       />
       <span
-        className={cn(
+        className={cx(
           'text-xsm font-bold tracking-tight break-keep',
           isAsync ? t.fill.text : 'text-[var(--term-fg)]',
         )}

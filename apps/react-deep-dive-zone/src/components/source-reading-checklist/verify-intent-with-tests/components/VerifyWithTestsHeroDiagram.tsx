@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCheck2, FileCode2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const VerifyWithTestsHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -81,7 +80,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         <span className="flex h-[18px] w-[18px] items-center justify-center">{icon}</span>
       </ToneIconBox>
-      <span className={cn('min-w-0 text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('min-w-0 text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       <span
@@ -96,14 +95,14 @@ const MapRow = ({ from, to }: { from: string; to: string }) => {
   const t = toneTokens.violet;
   return (
     <li
-      className={cn(
+      className={cx(
         'flex flex-wrap items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2 py-1.5',
         'border-[var(--term-border)]',
         t.borderHover,
       )}
     >
       <code
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-md border px-1.5 py-0.5',
           t.chip,
           'font-mono text-[10.5px] font-bold',
@@ -111,7 +110,7 @@ const MapRow = ({ from, to }: { from: string; to: string }) => {
       >
         {from}
       </code>
-      <span aria-hidden="true" className={cn('shrink-0 text-[10px]', t.text)}>
+      <span aria-hidden="true" className={cx('shrink-0 text-[10px]', t.text)}>
         →
       </span>
       <span className="text-[11px] text-[var(--term-fg)] break-keep">{to}</span>

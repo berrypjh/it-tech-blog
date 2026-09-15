@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUpFromLine, PlayCircle, RotateCw } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -29,7 +28,7 @@ const PhaseCard = ({
   icon,
 }: PhaseCardProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
       tone === 'violet'
         ? 'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/30 dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20'
@@ -40,7 +39,7 @@ const PhaseCard = ({
     <header className="flex items-center gap-3">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
           tone === 'violet'
             ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900'
@@ -50,7 +49,7 @@ const PhaseCard = ({
         {icon}
       </span>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-bold leading-tight break-keep',
           tone === 'violet'
             ? 'text-violet-700 dark:text-violet-200'
@@ -63,7 +62,7 @@ const PhaseCard = ({
     <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep">{body}</p>
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border bg-white p-md',
         tone === 'violet'
           ? 'border-violet-200/70 dark:border-violet-800/60 dark:bg-slate-950/40'
@@ -71,7 +70,7 @@ const PhaseCard = ({
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'text-[10px] font-mono font-bold uppercase tracking-wider',
           tone === 'violet'
             ? 'text-violet-700 dark:text-violet-300'
@@ -86,7 +85,7 @@ const PhaseCard = ({
           return (
             <li key={step} className="flex flex-col">
               <div
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-md border px-3 py-1.5',
                   tone === 'violet'
                     ? 'border-violet-200/70 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/30'
@@ -95,7 +94,7 @@ const PhaseCard = ({
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
                     tone === 'violet'
                       ? 'bg-violet-500 text-white dark:bg-violet-400 dark:text-slate-900'
@@ -111,7 +110,7 @@ const PhaseCard = ({
               {!isLast && (
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'self-center my-0.5',
                     tone === 'violet'
                       ? 'text-violet-400 dark:text-violet-500'
@@ -128,7 +127,7 @@ const PhaseCard = ({
     </div>
 
     <div
-      className={cn(
+      className={cx(
         'mt-auto rounded-2xl border p-md',
         tone === 'violet'
           ? 'border-violet-200/80 bg-violet-50/30 dark:border-violet-800/60 dark:bg-violet-950/20'
@@ -136,7 +135,7 @@ const PhaseCard = ({
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'text-[10px] font-mono font-bold uppercase tracking-wider',
           tone === 'violet'
             ? 'text-violet-700 dark:text-violet-300'
@@ -149,7 +148,7 @@ const PhaseCard = ({
         {example.map((ex) => (
           <li
             key={ex}
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-md border bg-white px-3 py-1.5 font-mono text-[11px] sm:text-xsm font-bold',
               tone === 'violet'
                 ? 'border-violet-200/70 text-violet-700 dark:border-violet-800/60 dark:bg-slate-950/40 dark:text-violet-200'

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -90,7 +89,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-dispatch"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -111,7 +110,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
             return (
               <li key={card.title} className="relative">
                 <article
-                  className={cn(
+                  className={cx(
                     'flex h-full flex-col items-center gap-2 rounded-2xl border-2 p-3 text-center',
                     'shadow-[0_1px_0_var(--term-border)] transition-all',
                     'motion-safe:hover:-translate-y-0.5',
@@ -120,7 +119,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                       toneIconBox[card.tone],
                     )}
@@ -128,7 +127,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
                     <Icon className="h-5 w-5" />
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'font-mono text-xsm font-bold leading-tight break-all',
                       toneText[card.tone],
                     )}
@@ -188,7 +187,7 @@ export const DispatchCreationFlow = ({ content }: Props) => {
           </div>
 
           <aside
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md',
               'border-cyan-300/70 bg-cyan-50/60 dark:border-cyan-800/60 dark:bg-cyan-950/30',
             )}

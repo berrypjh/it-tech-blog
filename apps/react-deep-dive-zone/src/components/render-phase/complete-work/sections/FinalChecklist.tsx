@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckSquare, Trophy } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -20,7 +19,7 @@ export const FinalChecklist = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg bg-[var(--term-bg)]',
         toneTokens.sky.border,
         'shadow-[0_2px_0_var(--term-border)]',
@@ -30,7 +29,7 @@ export const FinalChecklist = ({ content }: Props) => (
         {content.items.map((item, idx) => (
           <li
             key={item.text}
-            className={cn(
+            className={cx(
               'flex items-start gap-3 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
               toneTokens.sky.border,
               'transition-colors hover:bg-[var(--term-surface)]',
@@ -38,7 +37,7 @@ export const FinalChecklist = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
                 toneTokens.sky.chip,
               )}
@@ -47,7 +46,7 @@ export const FinalChecklist = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0 min-w-0">
               <span
-                className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
+                className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
               >
                 Q{String(idx + 1).padStart(2, '0')}
               </span>

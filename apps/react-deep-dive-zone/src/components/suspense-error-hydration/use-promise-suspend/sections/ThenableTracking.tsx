@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Sparkles } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -15,7 +14,7 @@ export const ThenableTracking = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* LEFT */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -43,7 +42,7 @@ export const ThenableTracking = ({ content }: Props) => (
 
       {/* CENTER: index diagram */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/70 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -74,7 +73,7 @@ export const ThenableTracking = ({ content }: Props) => (
                 {content.hookCalls.map((call, i) => (
                   <div
                     key={i}
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 items-center justify-center rounded-lg border px-1 text-[10.5px] font-mono font-bold break-all text-center',
                       i === 0
                         ? 'border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-300'
@@ -92,7 +91,7 @@ export const ThenableTracking = ({ content }: Props) => (
               {content.indexes.map((_, i) => (
                 <div key={i} className="flex justify-center">
                   <ArrowDown
-                    className={cn(
+                    className={cx(
                       'h-4 w-4',
                       i === 0
                         ? 'text-slate-300 dark:text-slate-600'
@@ -113,7 +112,7 @@ export const ThenableTracking = ({ content }: Props) => (
                 {content.tracked.map((t, i) => (
                   <div
                     key={i}
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 items-center justify-center rounded-lg border text-xsm font-mono font-bold',
                       t === '-'
                         ? 'border-slate-200 bg-slate-50/50 text-slate-400 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-500'
@@ -131,7 +130,7 @@ export const ThenableTracking = ({ content }: Props) => (
 
       {/* RIGHT */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

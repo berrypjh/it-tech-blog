@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { type LucideIcon, RefreshCw, Search, ShieldCheck, Sparkles, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ export const FourThingsTestsReveal = ({ content }: Props) => {
               topRight={card.number}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md sm:text-lg font-bold tracking-tight break-keep whitespace-pre-line',
                   toneTokens[card.tone].text,
                 )}

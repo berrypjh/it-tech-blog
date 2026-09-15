@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, Monitor, Sparkles, Trash2, Unlink } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -42,7 +41,7 @@ export const DeletionCleanupItemsSection = ({ content }: Props) => (
             badge={<code className="font-mono">{card.codePill}</code>}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md font-bold tracking-tight break-keep',
                 toneTokens[card.tone].text,
               )}

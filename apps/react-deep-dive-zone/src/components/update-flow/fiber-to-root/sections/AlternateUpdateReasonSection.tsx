@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Network, RefreshCw } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -44,7 +43,7 @@ export const AlternateUpdateReasonSection = ({ content }: Props) => (
           {tags.map((tag) => (
             <li
               key={tag.label}
-              className={cn(
+              className={cx(
                 'rounded-md border px-2 py-0.5 text-[10px] font-mono',
                 toneTokens[tag.tone].chip,
               )}
@@ -86,7 +85,7 @@ const TreeCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -97,11 +96,11 @@ const TreeCard = ({
         </ToneIconBox>
         <ToneBadge tone={tone}>{badge}</ToneBadge>
       </header>
-      <h3 className={cn('text-sm sm:text-md font-bold font-mono leading-tight break-keep', t.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold font-mono leading-tight break-keep', t.text)}>
         {title}
       </h3>
       <code
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-2 py-1 font-mono text-[11px] font-bold',
           t.border,
           t.text,

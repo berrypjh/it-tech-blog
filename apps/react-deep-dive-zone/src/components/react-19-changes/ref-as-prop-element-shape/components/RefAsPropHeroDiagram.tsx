@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
@@ -30,7 +30,7 @@ export const RefAsPropHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -82,7 +82,7 @@ const ShapeCard = ({
         <ToneIconBox tone={sideTone[side]} size="sm">
           <Icon className="h-[18px] w-[18px]" />
         </ToneIconBox>
-        <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
           {label}
         </span>
         <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">

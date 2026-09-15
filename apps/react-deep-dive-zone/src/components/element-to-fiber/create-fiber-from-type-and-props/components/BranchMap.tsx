@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Type } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -43,7 +42,7 @@ export const BranchMap = ({ centerLabel, branches, size = 'md' }: Props) => {
     <>
       {/* Desktop: + grid */}
       <div
-        className={cn(
+        className={cx(
           'hidden lg:grid items-stretch w-full min-w-0',
           'grid-cols-[minmax(0,1fr)_minmax(0,_0.85fr)_minmax(0,1fr)]',
           'grid-rows-[auto_auto_auto]',
@@ -100,7 +99,7 @@ const CenterCard = ({
   className?: string;
 }) => (
   <div
-    className={cn(
+    className={cx(
       'relative flex flex-col items-center justify-center rounded-2xl border-2',
       toneTokens.sky.fill.bg,
       toneTokens.sky.fill.border,
@@ -111,11 +110,11 @@ const CenterCard = ({
     )}
   >
     <Type
-      className={cn(size === 'lg' ? 'h-7 w-7' : 'h-6 w-6', 'opacity-90 mb-1')}
+      className={cx(size === 'lg' ? 'h-7 w-7' : 'h-6 w-6', 'opacity-90 mb-1')}
       aria-hidden="true"
     />
     <code
-      className={cn(
+      className={cx(
         'font-mono font-extrabold tracking-tight',
         size === 'lg' ? 'text-2xl' : 'text-xl',
       )}
@@ -129,7 +128,7 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
   const t = toneTokens[branchTone[branch.id]];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-1.5 rounded-2xl border-2 p-sm sm:p-md min-w-0',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -138,25 +137,25 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-bold',
             t.text,
           )}
         >
-          <span aria-hidden="true" className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
+          <span aria-hidden="true" className={cx('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
           {branchLabel[branch.id]}
         </span>
       </header>
 
-      <code className={cn('font-mono text-xsm font-bold break-all', t.text)}>
+      <code className={cx('font-mono text-xsm font-bold break-all', t.text)}>
         {branch.condition}
       </code>
 
-      <code className={cn('font-mono text-[11px] text-[var(--term-muted)] break-all')}>
+      <code className={cx('font-mono text-[11px] text-[var(--term-muted)] break-all')}>
         {branch.example}
       </code>
 
-      <p className={cn('font-mono text-xsm font-bold break-keep', t.text)}>{branch.result}</p>
+      <p className={cx('font-mono text-xsm font-bold break-keep', t.text)}>{branch.result}</p>
 
       <span className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
         {branch.description}

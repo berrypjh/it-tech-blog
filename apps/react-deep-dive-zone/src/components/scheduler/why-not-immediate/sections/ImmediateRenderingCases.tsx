@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle } from 'lucide-react';
 
 import type { Tone, WhyNotImmediateContent } from '../content';
@@ -62,7 +61,7 @@ export const ImmediateRenderingCases = ({ content }: Props) => (
       {content.cases.map((c, i) => (
         <li key={c.title} className="h-full">
           <article
-            className={cn(
+            className={cx(
               'group relative flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
               'shadow-[0_2px_0_var(--term-border)] transition-all',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -72,7 +71,7 @@ export const ImmediateRenderingCases = ({ content }: Props) => (
             <header className="flex items-center gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
                   'text-sm font-mono font-bold tabular-nums shadow-[0_2px_0_rgba(0,0,0,0.08)]',
                   toneNumber[c.tone],
@@ -92,7 +91,7 @@ export const ImmediateRenderingCases = ({ content }: Props) => (
             <ScenarioMockup kind={c.mockup} />
 
             <p
-              className={cn(
+              className={cx(
                 'mt-auto rounded-xl border px-3 py-2 text-[11px] sm:text-xsm leading-snug break-keep',
                 toneNote[c.tone],
               )}

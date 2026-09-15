@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileCode } from 'lucide-react';
 
 import type { CodePathCard, RecoveryModelOverviewContent } from '../content';
@@ -13,7 +12,7 @@ const Card = ({ card }: { card: CodePathCard }) => {
   const accent = domainAccent[card.domain];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-3 h-full rounded-2xl border-2 p-md sm:p-lg',
         accent.border,
         accent.bg,
@@ -24,14 +23,14 @@ const Card = ({ card }: { card: CodePathCard }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
             accent.iconChip,
           )}
         >
           <FileCode className="h-4 w-4" aria-hidden="true" />
         </span>
-        <code className={cn('text-xsm font-mono font-bold break-all', accent.text)}>
+        <code className={cx('text-xsm font-mono font-bold break-all', accent.text)}>
           {card.fileName}
         </code>
       </header>
@@ -39,7 +38,7 @@ const Card = ({ card }: { card: CodePathCard }) => {
         {card.functions.map((fn) => (
           <li
             key={fn}
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border bg-white px-2 py-0.5',
               'dark:bg-[var(--term-bg)]',
               'text-[10.5px] font-mono font-bold break-all',

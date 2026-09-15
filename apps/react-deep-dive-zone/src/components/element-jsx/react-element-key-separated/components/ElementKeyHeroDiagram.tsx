@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Key, Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -39,7 +38,7 @@ const StepHeader = ({ label }: { label: string }) => (
     <ToneIconBox tone="sky" size="sm">
       <Network className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.sky.text)}>
+    <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.sky.text)}>
       {label}
     </span>
     <span
@@ -67,7 +66,7 @@ const ListRow = ({ label, items }: { label: string; items: DiagramItem[] }) => (
 const ItemCard = ({ item }: { item: DiagramItem }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-1 items-center gap-2 rounded-xl border p-sm',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
@@ -82,7 +81,7 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
           key
         </span>
         <code
-          className={cn(
+          className={cx(
             'font-mono text-[11px] font-bold tracking-tight break-all',
             toneTokens[item.tone].text,
           )}
@@ -96,7 +95,7 @@ const ItemCard = ({ item }: { item: DiagramItem }) => {
 
 const ResultNote = ({ text }: { text: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex items-start gap-sm rounded-xl border p-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
     )}

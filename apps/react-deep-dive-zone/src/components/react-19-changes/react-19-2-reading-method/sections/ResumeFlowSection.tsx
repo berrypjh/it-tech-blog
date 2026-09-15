@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -22,14 +22,14 @@ export const ResumeFlowSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-blue-200/80 bg-blue-50/30 dark:border-blue-700/70 dark:bg-blue-950/20',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <ol
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
           'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
         )}
@@ -42,7 +42,7 @@ export const ResumeFlowSection = ({ content }: Props) => (
             <Fragment key={step.title}>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'flex h-full flex-col items-center gap-2 rounded-2xl border-2 p-md text-center',
                     t.border,
                     'bg-white dark:bg-[var(--term-bg)]',
@@ -52,14 +52,14 @@ export const ResumeFlowSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-11 w-11 items-center justify-center rounded-full border-2',
                       t.iconChip,
                     )}
                   >
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', t.text)}>
+                  <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', t.text)}>
                     {step.title}
                   </h3>
                   <p className="text-[10px] leading-relaxed text-[var(--term-muted)] break-keep">

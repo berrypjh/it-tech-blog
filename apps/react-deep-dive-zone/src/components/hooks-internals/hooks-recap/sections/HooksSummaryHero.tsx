@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import {
   HeroDescription,
@@ -40,7 +40,7 @@ export const HooksSummaryHero = ({ content }: Props) => {
           {content.keywords.map((kw) => (
             <li key={kw.label}>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-bold break-all',
                   'bg-white dark:bg-slate-950/40',
                   toneIconBox[kw.tone],
@@ -48,7 +48,7 @@ export const HooksSummaryHero = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block h-1.5 w-1.5 rounded-full', toneNumber[kw.tone])}
+                  className={cx('inline-block h-1.5 w-1.5 rounded-full', toneNumber[kw.tone])}
                 />
                 {kw.label}
               </code>

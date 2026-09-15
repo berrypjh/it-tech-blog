@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Droplet, MousePointerClick, PauseCircle } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -39,14 +38,14 @@ export const HydrationBlockedEvent = ({ content }: Props) => (
       icon={<Droplet className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
+    <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 lg:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
         const Icon = stepIcons[i] ?? Droplet;
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -56,7 +55,7 @@ export const HydrationBlockedEvent = ({ content }: Props) => (
             <header className="flex items-center gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
                   stepIconBg(step.tone),
                 )}
@@ -65,7 +64,7 @@ export const HydrationBlockedEvent = ({ content }: Props) => (
               </span>
               <div className="flex flex-col">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     stepAccent(step.tone),
                   )}

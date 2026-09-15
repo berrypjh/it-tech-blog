@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../shared/tones';
 
@@ -34,7 +34,7 @@ export const PackageBadge = ({
   if (packageKey === 'shared') {
     return (
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border font-mono font-bold',
           sizeClass[size],
           sharedSlate.chip,
@@ -42,7 +42,7 @@ export const PackageBadge = ({
           className,
         )}
       >
-        <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', sharedSlate.dot)} />
+        <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', sharedSlate.dot)} />
         {children ?? packageKey}
       </span>
     );
@@ -51,7 +51,7 @@ export const PackageBadge = ({
   const t = toneTokens[packageToneKey[packageKey]];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border font-mono font-bold',
         sizeClass[size],
         t.chip,
@@ -59,7 +59,7 @@ export const PackageBadge = ({
         className,
       )}
     >
-      <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', t.dot)} />
+      <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', t.dot)} />
       {children ?? packageKey}
     </span>
   );

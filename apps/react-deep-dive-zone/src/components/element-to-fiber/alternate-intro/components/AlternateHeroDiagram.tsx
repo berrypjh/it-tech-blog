@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Link } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -15,7 +14,7 @@ export const AlternateHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -74,7 +73,7 @@ const AlternateLinkChip = ({
       <ToneIconBox tone="sky" size="sm">
         <Link className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', tone.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', tone.text)}>
         {forwardLabel}
       </span>
       <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[var(--term-muted)]">

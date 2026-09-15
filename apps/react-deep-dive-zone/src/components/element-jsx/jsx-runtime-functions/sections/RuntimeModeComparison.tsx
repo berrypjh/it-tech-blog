@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Bug, CheckCircle2, Gauge, Sparkles } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -40,7 +39,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col sm:flex-row gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -50,7 +49,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
         <header className="flex items-center gap-sm">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center w-14 h-14 rounded-full border',
               toneTokens[card.tone].chip,
             )}
@@ -58,7 +57,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
             <Icon className="h-6 w-6" />
           </span>
           <h3
-            className={cn(
+            className={cx(
               'font-mono text-md font-bold tracking-tight break-keep',
               toneTokens[card.tone].text,
             )}
@@ -71,7 +70,7 @@ const ModeCardView = ({ card }: { card: ModeCard }) => {
             <li key={check.id} className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center w-5 h-5 rounded-full border shrink-0 mt-0.5',
                   toneTokens[card.tone].chip,
                 )}

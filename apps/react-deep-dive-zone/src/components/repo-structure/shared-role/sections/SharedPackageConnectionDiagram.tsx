@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Atom,
@@ -33,7 +32,7 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)]',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'p-md sm:p-lg',
@@ -62,7 +61,7 @@ export const SharedPackageConnectionDiagram = ({ content }: Props) => {
                   aria-hidden="true"
                   viewBox="0 0 24 8"
                   preserveAspectRatio="none"
-                  className={cn(
+                  className={cx(
                     'hidden lg:block pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-2',
                     toneTokens[row.tone].stroke,
                   )}
@@ -91,7 +90,7 @@ type HubProps = { title: string; subtitle: string; tags: string[] };
 
 const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-sm rounded-xl border p-md sm:p-lg',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] lg:self-center',
@@ -100,7 +99,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
     <header className="flex items-center gap-sm">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-10 h-10 rounded-md border',
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
@@ -120,7 +119,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
       {tags.map((tag) => (
         <li key={tag}>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold',
               'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
             )}
@@ -143,7 +142,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
     <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_0.45fr)_auto_minmax(0,_0.55fr)] gap-2 items-stretch">
       {/* 패키지 카드 */}
       <article
-        className={cn(
+        className={cx(
           'flex items-center gap-sm rounded-lg border p-3',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -151,7 +150,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border shrink-0',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
             accent,
@@ -160,7 +159,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h4 className={cn('text-sm font-bold font-mono tracking-tight', accent)}>
+          <h4 className={cx('text-sm font-bold font-mono tracking-tight', accent)}>
             {row.packageName}
           </h4>
           <p className="text-[11px] text-[var(--term-muted)] break-keep">{row.description}</p>
@@ -181,7 +180,7 @@ const ConnectionRowItem = ({ row }: RowProps) => {
 
       {/* 사용 설명 카드 */}
       <article
-        className={cn(
+        className={cx(
           'flex items-center rounded-lg border border-dashed p-3',
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}

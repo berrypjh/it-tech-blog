@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
 /** 비교 패널 사이드 라벨 알약: 아이콘 + 대문자 라벨, surface 배경. 의미색은 tone으로. */
 export const StatusPill = ({ icon, tone, children }: Props) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center gap-1.5 self-start rounded-full border px-2.5 py-1',
       'bg-[var(--term-surface)] border-[var(--term-border)]',
       'text-[10px] font-bold uppercase tracking-wider',

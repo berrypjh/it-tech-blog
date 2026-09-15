@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, Layers, ScanSearch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
           return (
             <li key={group.phase}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -51,7 +50,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
                     {group.files.map((file) => (
                       <li key={file}>
                         <code
-                          className={cn(
+                          className={cx(
                             'flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1.5',
                             t.border,
                             t.chip,
@@ -75,7 +74,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
                     {group.functions.map((fn) => (
                       <li key={fn}>
                         <code
-                          className={cn(
+                          className={cx(
                             'inline-flex items-center rounded-md border px-1.5 py-0.5',
                             'border-[var(--term-border)] bg-[var(--term-surface)]',
                             'font-mono text-[10.5px] text-[var(--term-fg)]',
@@ -91,7 +90,7 @@ export const RepresentativeFilesSection = ({ content }: Props) => {
                 {/* Reading point */}
                 <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
                   <ScanSearch
-                    className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
+                    className={cx('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">

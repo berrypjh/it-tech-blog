@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { ArrowRightIcon, CodeIcon, DatabaseIcon, SparklesIcon } from '../icons';
@@ -23,14 +23,14 @@ export const FormDataCreationSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md items-stretch',
           'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3',
         )}
       >
         {/* LEFT: input example */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -55,7 +55,7 @@ export const FormDataCreationSection = ({ content }: Props) => {
 
         {/* MIDDLE: FormData object visualization */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md',
             tone.borderStrong,
             tone.bg,
@@ -65,26 +65,26 @@ export const FormDataCreationSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 tone.iconChip,
               )}
             >
               <DatabaseIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-mono font-bold break-keep', tone.text)}>
+            <h3 className={cx('text-sm font-mono font-bold break-keep', tone.text)}>
               {content.objectTitle}
             </h3>
           </header>
           <pre
-            className={cn(
+            className={cx(
               'overflow-x-auto rounded-xl border bg-white px-3 py-3',
               'dark:bg-[var(--term-bg)]',
               tone.border,
               'font-mono text-[12px] leading-relaxed sm:text-[13px]',
             )}
           >
-            <code className={cn('block whitespace-pre', tone.text)}>
+            <code className={cx('block whitespace-pre', tone.text)}>
               {content.objectLines.map((line, idx) => (
                 <span key={idx} className="block">
                   {line}
@@ -99,7 +99,7 @@ export const FormDataCreationSection = ({ content }: Props) => {
 
         {/* RIGHT: description card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md',
             'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
             'shadow-[0_2px_0_var(--term-border)]',

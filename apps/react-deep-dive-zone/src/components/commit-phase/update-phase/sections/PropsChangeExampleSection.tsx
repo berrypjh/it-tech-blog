@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Lock, SquareEqual } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const PropsChangeExampleSection = ({ content }: Props) => (
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.sky.fill.border,
           toneTokens.sky.fill.bg,
@@ -41,7 +40,7 @@ export const PropsChangeExampleSection = ({ content }: Props) => (
           <SquareEqual className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
+          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
         >
           {content.bottomNote}
         </p>
@@ -53,9 +52,9 @@ export const PropsChangeExampleSection = ({ content }: Props) => (
 const Arrow = () => {
   const t = toneTokens.sky;
   return (
-    <div aria-hidden="true" className={cn('flex items-center justify-center py-1 md:py-0', t.text)}>
+    <div aria-hidden="true" className={cx('flex items-center justify-center py-1 md:py-0', t.text)}>
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -82,7 +81,7 @@ const CodeCard = ({
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         isAfter ? t.fill.border : 'border-[var(--term-border)]',
         'shadow-[0_1px_0_var(--term-border)]',
@@ -90,7 +89,7 @@ const CodeCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
             isAfter ? t.text : 'text-[var(--term-fg)]',
           )}
@@ -98,7 +97,7 @@ const CodeCard = ({
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             isAfter
               ? t.chip
@@ -109,10 +108,10 @@ const CodeCard = ({
         </span>
       </header>
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border p-sm text-[11px] sm:text-xsm leading-snug font-mono',
           isAfter
-            ? cn(t.fill.border, t.fill.bg, t.fill.text)
+            ? cx(t.fill.border, t.fill.bg, t.fill.text)
             : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >

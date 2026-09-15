@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Database, Network, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -64,7 +63,7 @@ const Node = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -75,7 +74,7 @@ const Node = ({
         </ToneIconBox>
         <ToneBadge tone={tone}>{badge}</ToneBadge>
       </header>
-      <h3 className={cn('text-md sm:text-lg font-bold font-mono leading-tight break-keep', t.text)}>
+      <h3 className={cx('text-md sm:text-lg font-bold font-mono leading-tight break-keep', t.text)}>
         {title}
       </h3>
       <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep">

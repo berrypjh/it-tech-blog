@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BarChart3, Eye, type LucideIcon, Puzzle, Search, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ export const SourceReadingBenefits = ({ content }: Props) => {
               badge={card.badge}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md sm:text-lg font-bold tracking-tight',
                   toneTokens[card.tone].text,
                 )}

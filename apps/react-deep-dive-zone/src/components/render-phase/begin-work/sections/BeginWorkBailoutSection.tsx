@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, FastForward, GitFork, Sparkles } from 'lucide-react';
 
 import { ComparePanel } from '../../../shared/compare';
@@ -13,8 +12,8 @@ type Props = { content: BeginWorkContent['bailout'] };
 const panelTone = (tone: ToneKey) => {
   const t = toneTokens[tone];
   return {
-    card: cn(t.border, 'shadow-[0_2px_0_var(--term-border)]'),
-    iconBadge: cn('border border-[var(--term-border)] bg-[var(--term-surface)]', t.text),
+    card: cx(t.border, 'shadow-[0_2px_0_var(--term-border)]'),
+    iconBadge: cx('border border-[var(--term-border)] bg-[var(--term-surface)]', t.text),
     header: t.text,
   };
 };
@@ -72,7 +71,7 @@ const FlowChain = ({ items, tone, skipMiddle }: ChainProps) => {
         return (
           <li key={item} className="flex flex-col">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex w-fit items-center gap-2 rounded-lg border px-3 py-1.5',
                 'bg-[var(--term-bg)]',
                 isSkip ? 'border-[var(--term-border)]' : t.border,
@@ -80,13 +79,13 @@ const FlowChain = ({ items, tone, skipMiddle }: ChainProps) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1.5 w-1.5 rounded-full',
                   isSkip ? 'bg-[var(--term-dim)]' : t.dot,
                 )}
               />
               <span
-                className={cn(
+                className={cx(
                   'text-xsm sm:text-sm font-bold break-keep',
                   isSkip ? 'text-[var(--term-muted)] line-through' : t.text,
                 )}

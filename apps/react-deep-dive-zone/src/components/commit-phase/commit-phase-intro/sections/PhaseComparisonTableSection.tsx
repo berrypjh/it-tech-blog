@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, X } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -66,14 +65,14 @@ const ToneCell = ({ value, tone, emphasis, icon }: ToneCellProps) => {
       <div className="flex items-start gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border',
             t.chip,
           )}
         >
           {icon}
         </span>
-        <span className={cn('flex flex-col gap-0.5 font-bold', t.fill.text)}>
+        <span className={cx('flex flex-col gap-0.5 font-bold', t.fill.text)}>
           {items.map((item) => (
             <span key={item}>{item}</span>
           ))}
@@ -89,7 +88,7 @@ const ToneCell = ({ value, tone, emphasis, icon }: ToneCellProps) => {
           <li key={item} className="flex items-start gap-1.5">
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+              className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
             />
             <span>{item}</span>
           </li>

@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CheckCircle2,
   Cog,
@@ -134,7 +133,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
         {/* LEFT: controls */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -157,7 +156,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                 type="button"
                 onClick={handleStart}
                 disabled={status !== 'idle'}
-                className={cn(
+                className={cx(
                   'w-full inline-flex items-center gap-3 rounded-xl border-2 p-3 transition-all text-left',
                   'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-blue-50/30',
                   'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -183,7 +182,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                 type="button"
                 onClick={handleInput}
                 disabled={status === 'idle' || status === 'completed'}
-                className={cn(
+                className={cx(
                   'w-full inline-flex items-center gap-3 rounded-xl border-2 p-3 transition-all text-left',
                   'border-rose-300/80 bg-gradient-to-br from-rose-50/70 via-white to-rose-50/30',
                   'dark:border-rose-700/70 dark:from-rose-950/30 dark:via-[var(--term-bg)] dark:to-rose-950/10',
@@ -209,7 +208,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                 type="button"
                 onClick={handleResume}
                 disabled={processedCount === 0 || status === 'completed'}
-                className={cn(
+                className={cx(
                   'w-full inline-flex items-center gap-3 rounded-xl border-2 p-3 transition-all text-left',
                   'border-emerald-300/80 bg-gradient-to-br from-emerald-50/70 via-white to-emerald-50/30',
                   'dark:border-emerald-700/70 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/10',
@@ -236,7 +235,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
             type="button"
             onClick={handleReset}
             disabled={status === 'idle' && processedCount === 0 && !inputHandled}
-            className={cn(
+            className={cx(
               'mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
               'font-bold text-xsm sm:text-sm transition-all',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -255,7 +254,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
         {/* CENTER: frame timeline */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -284,7 +283,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
           {/* input task between frames */}
           {inputHandled && (
             <div
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-xl border-2 px-3 py-2',
                 'border-rose-300/80 bg-rose-50/60 text-rose-800 dark:border-rose-700/60 dark:bg-rose-950/30 dark:text-rose-100',
               )}
@@ -309,7 +308,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
         {/* RIGHT: status */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             tone.border,
@@ -318,7 +317,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 tone.icon,
               )}
@@ -331,7 +330,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
           </header>
 
           <p
-            className={cn(
+            className={cx(
               'inline-flex items-center self-start gap-2 rounded-xl border-2 px-3 py-2',
               'font-mono text-md font-bold',
               tone.icon.replace('text-', 'border-current/40 ').split(' ').slice(0, 2).join(' '),
@@ -340,7 +339,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
           >
             <span
               aria-hidden="true"
-              className={cn('inline-block h-2.5 w-2.5 rounded-full', tone.dot)}
+              className={cx('inline-block h-2.5 w-2.5 rounded-full', tone.dot)}
             />
             {content.statusLabels[status]}
           </p>
@@ -350,7 +349,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
               <dt className="font-mono text-[10px] sm:text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)]">
                 status (raw)
               </dt>
-              <dd className={cn('font-mono text-xsm sm:text-sm font-bold', tone.text)}>{status}</dd>
+              <dd className={cx('font-mono text-xsm sm:text-sm font-bold', tone.text)}>{status}</dd>
             </div>
             <div className="flex items-center justify-between gap-2 rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-3 py-2">
               <dt className="font-mono text-[10px] sm:text-xsm font-bold uppercase tracking-wider text-[var(--term-muted)]">
@@ -365,7 +364,7 @@ export const YieldContinuationSimulator = ({ content }: Props) => {
                 input handled
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold',
                   inputHandled ? 'text-rose-700 dark:text-rose-300' : 'text-[var(--term-muted)]',
                 )}
@@ -396,7 +395,7 @@ const FrameCard = ({
   completeMarker?: string;
 }) => (
   <div
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-2xl border-2 p-md',
       tone === 'frame1'
         ? 'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/30 dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10'
@@ -405,7 +404,7 @@ const FrameCard = ({
   >
     <header className="flex items-center justify-between gap-2">
       <span
-        className={cn(
+        className={cx(
           'font-mono text-xsm font-bold',
           tone === 'frame1'
             ? 'text-violet-700 dark:text-violet-300'
@@ -422,7 +421,7 @@ const FrameCard = ({
           <li key={item} className="flex items-center gap-2 text-[11px] sm:text-xsm leading-snug">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full border',
                 isDone
                   ? tone === 'frame1'
@@ -434,7 +433,7 @@ const FrameCard = ({
               {isDone && <CheckCircle2 className="h-3 w-3" aria-hidden="true" />}
             </span>
             <code
-              className={cn(
+              className={cx(
                 'font-mono',
                 isDone
                   ? tone === 'frame1'

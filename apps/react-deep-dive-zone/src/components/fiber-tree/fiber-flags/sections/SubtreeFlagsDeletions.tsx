@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, Trash2 } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -42,38 +41,38 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
       {/* Parent Fiber visual */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           toneTokens.violet.border,
         )}
       >
         <span
-          className={cn('text-[10px] font-mono uppercase tracking-wider', toneTokens.violet.text)}
+          className={cx('text-[10px] font-mono uppercase tracking-wider', toneTokens.violet.text)}
         >
           {`// ${content.parentLabel}`}
         </span>
         <div
-          className={cn(
+          className={cx(
             'mt-sm flex flex-col gap-2 rounded-xl border-2 p-md',
             toneTokens.violet.fill.bg,
             toneTokens.violet.fill.border,
           )}
         >
-          <span className={cn('text-xsm font-bold', toneTokens.violet.fill.text)}>
+          <span className={cx('text-xsm font-bold', toneTokens.violet.fill.text)}>
             Parent Fiber
           </span>
           <div
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-md border px-2 py-1.5',
               toneTokens.violet.fill.bg,
               toneTokens.violet.fill.border,
             )}
           >
-            <code className={cn('font-mono text-xsm font-bold', toneTokens.violet.fill.text)}>
+            <code className={cx('font-mono text-xsm font-bold', toneTokens.violet.fill.text)}>
               {content.parentFieldLabel}
             </code>
             <span
-              className={cn(
+              className={cx(
                 'ml-auto inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold tracking-tight',
                 toneTokens.violet.chip,
               )}
@@ -86,7 +85,7 @@ export const SubtreeFlagsDeletions = ({ content }: Props) => (
 
       {/* Child subtree visual */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -129,7 +128,7 @@ const conceptCls = {
   },
   rose: {
     border: 'border-rose-200/70 dark:border-rose-800/60',
-    iconWrap: cn(EFFECT_NEUTRAL, 'text-rose-600 dark:text-rose-300'),
+    iconWrap: cx(EFFECT_NEUTRAL, 'text-rose-600 dark:text-rose-300'),
     title: 'text-rose-600 dark:text-rose-300',
   },
 } as const;
@@ -150,7 +149,7 @@ const ConceptCard = ({
   const cls = conceptCls[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -160,7 +159,7 @@ const ConceptCard = ({
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border',
             cls.iconWrap,
           )}
@@ -168,7 +167,7 @@ const ConceptCard = ({
           {icon}
         </span>
         <div className="flex flex-col min-w-0">
-          <code className={cn('font-mono text-md font-bold tracking-tight', cls.title)}>
+          <code className={cx('font-mono text-md font-bold tracking-tight', cls.title)}>
             {title}
           </code>
           <p className="text-xsm font-bold text-[var(--term-muted)] break-keep">{description}</p>
@@ -181,10 +180,10 @@ const ConceptCard = ({
 
 const ChildNode = ({ label, effect }: { label: string; effect?: EffectKind }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center rounded-lg border-2 px-2.5 py-1 font-mono text-xsm font-bold',
       EFFECT_NEUTRAL,
-      effect ? cn(effectBorder[effect], effectText[effect]) : 'text-[var(--term-fg)]',
+      effect ? cx(effectBorder[effect], effectText[effect]) : 'text-[var(--term-fg)]',
       effect === 'childDeletion' && 'border-dashed',
     )}
   >

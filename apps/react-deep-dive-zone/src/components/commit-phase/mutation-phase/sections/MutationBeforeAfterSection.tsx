@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Plus, Replace } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ const CenterArrow = ({
     <div className="flex flex-col items-center justify-center gap-2 py-2 md:py-0">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -52,14 +51,14 @@ const CenterArrow = ({
         <ArrowDown className="md:hidden h-5 w-5" aria-hidden="true" />
       </span>
       <article
-        className={cn(
+        className={cx(
           'flex flex-col items-center gap-0.5 rounded-lg border-2 px-sm py-1.5 text-center',
           t.fill.border,
           t.fill.bg,
         )}
       >
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 text-xsm font-bold break-keep',
             t.fill.text,
           )}
@@ -67,7 +66,7 @@ const CenterArrow = ({
           <Plus aria-hidden="true" className="h-3.5 w-3.5" />
           {centerLabel.title}
         </span>
-        <span className={cn('text-[10px] font-mono break-keep', t.text)}>
+        <span className={cx('text-[10px] font-mono break-keep', t.text)}>
           {centerLabel.subtitle}
         </span>
       </article>
@@ -86,7 +85,7 @@ const DomCard = ({
   const t = toneTokens[isBefore ? 'sky' : 'teal'];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -94,7 +93,7 @@ const DomCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
             t.text,
           )}
@@ -103,7 +102,7 @@ const DomCard = ({
         </h3>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -114,7 +113,7 @@ const DomCard = ({
 
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1.4fr)_minmax(0,_1fr)] gap-3">
         <pre
-          className={cn(
+          className={cx(
             'overflow-x-auto rounded-md border bg-[var(--term-surface)] p-sm text-[11px] sm:text-xsm leading-snug font-mono',
             t.fill.border,
             t.fill.text,
@@ -141,16 +140,16 @@ const ListPreview = ({ items, variant }: { items: string[]; variant: 'before' | 
         return (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-md border px-2 py-1 text-xsm font-mono',
               isNew
-                ? cn(newTone.fill.border, newTone.fill.bg, newTone.fill.text)
+                ? cx(newTone.fill.border, newTone.fill.bg, newTone.fill.text)
                 : 'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-block h-1.5 w-1.5 rounded-full',
                 isNew ? newTone.dot : 'bg-[var(--term-dim)]',
               )}
@@ -158,7 +157,7 @@ const ListPreview = ({ items, variant }: { items: string[]; variant: 'before' | 
             <span>{item}</span>
             {isNew && (
               <span
-                className={cn(
+                className={cx(
                   'ml-auto text-[9px] font-mono uppercase tracking-wider',
                   newTone.text,
                 )}

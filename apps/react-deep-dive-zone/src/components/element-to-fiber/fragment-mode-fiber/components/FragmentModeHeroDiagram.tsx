@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Group, Hexagon, ShieldCheck, Type } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -46,7 +45,7 @@ export const FragmentModeHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -77,7 +76,7 @@ const TypeStartCard = ({ label }: { label: string }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -89,7 +88,7 @@ const TypeStartCard = ({ label }: { label: string }) => {
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
           input
         </span>
-        <code className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</code>
+        <code className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</code>
       </span>
     </article>
   );
@@ -102,7 +101,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
   return (
     <div className="flex flex-col gap-sm">
       <article
-        className={cn(
+        className={cx(
           'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -111,7 +110,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
           <BranchIcon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span className="flex min-w-0 flex-col">
-          <code className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>
+          <code className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>
             {branch.branchTitle}
           </code>
           <code className="font-mono text-[11px] text-[var(--term-muted)]">
@@ -123,7 +122,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
       <DownArrow />
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -136,7 +135,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
               result fiber
             </span>
-            <code className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>
+            <code className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>
               {branch.resultTitle}
             </code>
           </span>
@@ -145,7 +144,7 @@ const BranchColumn = ({ branch }: { branch: Branch }) => {
           {branch.resultItems.map((item) => (
             <li key={item} className="flex items-start gap-2">
               <CheckCircle2
-                className={cn('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
+                className={cx('h-3.5 w-3.5 shrink-0 mt-0.5', t.text)}
                 aria-hidden="true"
               />
               <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">{item}</span>

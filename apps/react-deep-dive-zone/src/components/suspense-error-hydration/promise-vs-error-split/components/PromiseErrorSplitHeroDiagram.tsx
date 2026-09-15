@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Filter, Hourglass, Loader, TriangleAlert } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -24,7 +23,7 @@ export const PromiseErrorSplitHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -126,7 +125,7 @@ const BranchCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -141,7 +140,7 @@ const BranchCard = ({
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
             {badge}
           </span>
-          <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
+          <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</h3>
         </div>
       </header>
 
@@ -150,7 +149,7 @@ const BranchCard = ({
       <CodePreviewPanel code={code} caption={caption} language="TS" size="sm" />
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1',
           'text-[11px] font-bold break-keep',
           t.chip,

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -62,14 +61,14 @@ export const PropagationStateFlow = ({ content }: Props) => (
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
+    <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
         const Icon = stepIcons[i] ?? Terminal;
         return (
           <li
             key={step.label}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -79,7 +78,7 @@ export const PropagationStateFlow = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                   toneIconBox[step.tone],
                 )}
@@ -87,7 +86,7 @@ export const PropagationStateFlow = ({ content }: Props) => (
                 <Icon className="h-5 w-5" />
               </span>
               <span
-                className={cn(
+                className={cx(
                   'text-[10px] font-mono font-bold uppercase tracking-wider',
                   toneAccent[step.tone],
                 )}
@@ -96,7 +95,7 @@ export const PropagationStateFlow = ({ content }: Props) => (
               </span>
             </header>
             <code
-              className={cn(
+              className={cx(
                 'font-mono text-xsm sm:text-sm font-bold leading-tight break-all',
                 toneAccent[step.tone],
               )}

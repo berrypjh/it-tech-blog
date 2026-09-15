@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -60,7 +59,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
           return (
             <li key={layer.id} className="relative flex flex-col items-stretch">
               <div
-                className={cn(
+                className={cx(
                   'group relative mx-auto w-[88%] sm:w-[90%]',
                   'flex items-center justify-between gap-sm',
                   'px-md py-2.5 sm:py-3',
@@ -78,11 +77,11 @@ export const InternalStackVisual = ({ layers }: Props) => {
                 <div className="flex items-center gap-sm min-w-0">
                   <span
                     aria-hidden="true"
-                    className={cn('inline-block w-2 h-2 rounded-full shrink-0', t.dot)}
+                    className={cx('inline-block w-2 h-2 rounded-full shrink-0', t.dot)}
                   />
                   <div className="flex flex-col min-w-0">
                     <span
-                      className={cn('text-xsm sm:text-sm font-bold leading-tight', t.fill.text)}
+                      className={cx('text-xsm sm:text-sm font-bold leading-tight', t.fill.text)}
                     >
                       {layer.label}
                     </span>
@@ -97,7 +96,7 @@ export const InternalStackVisual = ({ layers }: Props) => {
                 {/* 우측: 단계 번호 */}
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'shrink-0 text-[10px] tabular-nums font-mono px-1.5 py-0.5 rounded border',
                     t.fill.border,
                     t.fill.text,

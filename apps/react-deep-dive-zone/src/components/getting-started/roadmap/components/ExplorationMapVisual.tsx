@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleCheck, Flag, FolderOpen, Pencil } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -124,7 +123,7 @@ export const ExplorationMapVisual = ({ visual }: Props) => {
               return (
                 <li
                   key={p.name}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-1 text-[9.5px] font-mono pl-4 py-0.5 rounded',
                     p.active
                       ? 'bg-[var(--term-surface)] text-[var(--term-accent)] font-bold'

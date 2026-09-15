@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -17,7 +16,7 @@ export const CodePreviewSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] items-stretch">
       {/* Code A */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-teal-200/80 bg-white dark:border-teal-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -39,7 +38,7 @@ export const CodePreviewSection = ({ content }: Props) => (
 
       {/* Code B */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-emerald-200/80 bg-white dark:border-emerald-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -61,7 +60,7 @@ export const CodePreviewSection = ({ content }: Props) => (
 
       {/* Explanation */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -76,7 +75,7 @@ export const CodePreviewSection = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold text-white',
                   b.tag === 'A'
                     ? 'bg-teal-600 dark:bg-teal-500'
@@ -94,7 +93,7 @@ export const CodePreviewSection = ({ content }: Props) => (
           href={content.button.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'mt-auto group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3',
             'text-xsm font-bold transition-all',
             'border-blue-300 bg-white text-blue-700',

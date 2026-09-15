@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock3, Flag, Route, Trophy, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -47,7 +46,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg overflow-hidden',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -57,7 +56,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border',
                     responseIconBox[card.accent],
                   )}
@@ -66,7 +65,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 px-2 items-center justify-center rounded-full',
                     'text-[11px] font-mono font-bold tabular-nums shadow-[0_2px_0_rgba(0,0,0,0.08)]',
                     responseNumberBadge[card.accent],
@@ -86,7 +85,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
 
               <Icon
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute -bottom-4 -right-4 h-20 w-20 pointer-events-none',
                   iconWash[card.accent],
                 )}
@@ -95,7 +94,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
 
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-auto inline-flex w-fit items-center gap-1.5 rounded-full border px-2 py-0.5',
                   'font-mono text-[10px] uppercase tracking-wider',
                   responseTextStrong[card.accent],
@@ -113,7 +112,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
       <li className="h-full md:col-span-2 xl:col-span-1">
         <Link
           href={content.cta.href}
-          className={cn(
+          className={cx(
             'group relative flex h-full flex-col gap-3 rounded-2xl overflow-hidden p-md sm:p-lg',
             'bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 text-white',
             'shadow-[0_4px_0_rgba(29,78,216,0.45)] transition-all',
@@ -151,7 +150,7 @@ export const TransitionDeferredKeyTakeaways = ({ content }: Props) => (
           </p>
 
           <span
-            className={cn(
+            className={cx(
               'relative mt-auto inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5',
               'bg-white text-blue-900 font-bold text-xsm sm:text-sm shadow-[0_3px_0_rgba(0,0,0,0.18)]',
               'transition-transform motion-safe:group-hover:-translate-y-0.5 motion-reduce:transform-none',

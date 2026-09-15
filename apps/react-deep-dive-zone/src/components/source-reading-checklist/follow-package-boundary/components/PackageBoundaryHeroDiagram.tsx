@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, Map, Package, Repeat } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -25,7 +24,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -54,7 +53,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
               <FileCode2 className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.amber.text)}
+              className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.amber.text)}
             >
               {content.leftPanelTitle}
             </span>
@@ -78,7 +77,7 @@ export const PackageBoundaryHeroDiagram = ({ content, className }: Props) => {
               <Package className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
+              className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.blue.text)}
             >
               {content.rightPanelTitle}
             </span>
@@ -103,7 +102,7 @@ const PackageRow = ({ name, role }: { name: PackageKey; role: string }) => {
   const t = toneTokens[tone(name)];
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-3 py-2',
         'border-[var(--term-border)]',
         t.borderHover,
@@ -112,7 +111,7 @@ const PackageRow = ({ name, role }: { name: PackageKey; role: string }) => {
       <ToneIconBox tone={tone(name)} size="sm">
         <Package className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('shrink-0 font-mono text-xsm font-bold tracking-tight', t.text)}>
+      <span className={cx('shrink-0 font-mono text-xsm font-bold tracking-tight', t.text)}>
         {name}
       </span>
       <span aria-hidden="true" className="text-[var(--term-accent)] text-sm leading-none">
@@ -129,7 +128,7 @@ const DownArrow = ({ label, sub }: { label: string; sub: string }) => (
       ↓
     </span>
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
         'text-[10px] font-bold uppercase tracking-wider font-mono',
         toneTokens.blue.chip,

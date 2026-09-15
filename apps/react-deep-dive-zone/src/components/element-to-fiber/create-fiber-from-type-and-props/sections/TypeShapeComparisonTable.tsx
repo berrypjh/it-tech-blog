@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -36,10 +35,10 @@ export const TypeShapeComparisonTable = ({ content }: Props) => (
         const a = toneTokens[row.accent];
         return {
           label: (
-            <span className={cn('inline-flex items-center gap-1.5 font-mono', a.text)}>
+            <span className={cx('inline-flex items-center gap-1.5 font-mono', a.text)}>
               <span
                 aria-hidden="true"
-                className={cn('inline-block w-1.5 h-1.5 rounded-full', a.dot)}
+                className={cx('inline-block w-1.5 h-1.5 rounded-full', a.dot)}
               />
               {row.shape}
             </span>
@@ -59,7 +58,7 @@ export const TypeShapeComparisonTable = ({ content }: Props) => (
             </code>,
             <span
               key="fiber"
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-xsm font-bold',
                 a.chip,
               )}

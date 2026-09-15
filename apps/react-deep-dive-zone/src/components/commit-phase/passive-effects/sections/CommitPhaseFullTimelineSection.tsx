@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Clock, Link, ListChecks, Sparkles, Star } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -65,7 +64,7 @@ const NumberCircle = ({ step }: { step: TimelineStep }) => {
   return (
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-mono font-bold tabular-nums',
         t.fill.bg,
         t.fill.border,
@@ -81,20 +80,20 @@ const StepCard = ({ step }: { step: TimelineStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-1.5 rounded-lg border p-md',
         step.isAsync
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
             t.chip,
           )}
@@ -113,7 +112,7 @@ const SummaryCard = ({ title, items }: { title: string; items: SummaryItem[] }) 
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -124,7 +123,7 @@ const SummaryCard = ({ title, items }: { title: string; items: SummaryItem[] }) 
         <ToneIconBox tone="teal">
           <Sparkles className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-2">
@@ -133,21 +132,21 @@ const SummaryCard = ({ title, items }: { title: string; items: SummaryItem[] }) 
           return (
             <li
               key={item.text}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-md border bg-[var(--term-bg)] p-sm',
                 t.border,
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border',
                   t.chip,
                 )}
               >
                 <Icon className="h-3.5 w-3.5" />
               </span>
-              <span className={cn('text-xsm leading-snug break-keep', t.fill.text)}>
+              <span className={cx('text-xsm leading-snug break-keep', t.fill.text)}>
                 {item.text}
               </span>
             </li>

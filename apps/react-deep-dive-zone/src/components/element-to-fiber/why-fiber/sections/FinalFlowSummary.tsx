@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Box, Hexagon, Map, PlayCircle, Wand2 } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ export const FinalFlowSummary = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -61,7 +60,7 @@ const Row = ({ row }: { row: FinalFlowRow }) => {
   const Icon = iconByRow[row.id] ?? Box;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-center gap-sm rounded-xl border-2 p-md',
         'bg-[var(--term-surface)] transition-all hover:-translate-y-0.5',
         t.fill.border,
@@ -72,7 +71,7 @@ const Row = ({ row }: { row: FinalFlowRow }) => {
       </ToneIconBox>
       <div className="flex flex-col gap-0.5 min-w-0 flex-1">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-xsm sm:text-sm font-extrabold tracking-tight break-all',
             t.text,
           )}

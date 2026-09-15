@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cylinder, Layers, ListTree } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -61,7 +60,7 @@ const ConceptCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -71,9 +70,9 @@ const ConceptCard = ({
     >
       <header className="flex items-center gap-sm">
         <ToneIconBox tone={tone}>{icon}</ToneIconBox>
-        <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{title}</code>
+        <code className={cx('font-mono text-md font-bold tracking-tight', t.text)}>{title}</code>
       </header>
-      <p className={cn('text-sm font-bold leading-snug break-keep', t.text)}>{description}</p>
+      <p className={cx('text-sm font-bold leading-snug break-keep', t.text)}>{description}</p>
     </article>
   );
 };

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CalendarDays, Compass, FileCode2, History, Milestone, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -64,7 +63,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -87,14 +86,14 @@ export const VersionTimelineSection = ({ content }: Props) => {
                     aria-pressed={isActive}
                     aria-controls="timeline-result"
                     onClick={() => setActiveId(tab.id)}
-                    className={cn(
+                    className={cx(
                       'group flex items-center justify-between gap-3 rounded-xl border-2 p-3 text-left',
                       'transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       tt.ring,
                       isActive
-                        ? cn(tt.chip, tt.border, 'shadow-[0_2px_0_var(--term-border)]')
-                        : cn(
+                        ? cx(tt.chip, tt.border, 'shadow-[0_2px_0_var(--term-border)]')
+                        : cx(
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
                             'motion-safe:hover:-translate-y-0.5',
@@ -104,17 +103,17 @@ export const VersionTimelineSection = ({ content }: Props) => {
                     <span className="flex items-center gap-2 min-w-0">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                           isActive
-                            ? cn(tt.border, 'bg-white dark:bg-[var(--term-bg)]')
+                            ? cx(tt.border, 'bg-white dark:bg-[var(--term-bg)]')
                             : 'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                         )}
                       >
-                        {isActive && <span className={cn('block h-2 w-2 rounded-full', tt.dot)} />}
+                        {isActive && <span className={cx('block h-2 w-2 rounded-full', tt.dot)} />}
                       </span>
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center gap-1.5 font-mono text-xsm sm:text-sm font-bold',
                           isActive ? tt.text : 'text-[var(--term-fg)]',
                         )}
@@ -126,7 +125,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                     {isActive && (
                       <span
                         aria-hidden="true"
-                        className={cn('inline-block h-2 w-2 rounded-full', tt.dot)}
+                        className={cx('inline-block h-2 w-2 rounded-full', tt.dot)}
                       />
                     )}
                   </button>
@@ -139,7 +138,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
           <article
             id="timeline-result"
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
               t.border,
               t.chip,
@@ -152,7 +151,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                 {content.labels.selected}
               </span>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1',
                   t.chip,
                   t.border,
@@ -160,7 +159,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                   'shadow-[0_2px_0_var(--term-border)]',
                 )}
               >
-                <span aria-hidden="true" className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} />
+                <span aria-hidden="true" className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} />
                 {active.label}
               </span>
             </div>
@@ -174,7 +173,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                 {active.keywords.map((kw) => (
                   <li key={kw}>
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1 rounded-md border px-2 py-0.5',
                         'bg-white dark:bg-[var(--term-bg)]',
                         t.border,
@@ -196,13 +195,13 @@ export const VersionTimelineSection = ({ content }: Props) => {
                 {content.labels.readingPoint}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
                 )}
               >
-                <History className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                <History className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                 <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                   {active.readingPoint}
                 </p>
@@ -215,7 +214,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
                 {content.labels.modernView}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'border-blue-300 bg-blue-50 text-blue-900',
                   'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -228,7 +227,7 @@ export const VersionTimelineSection = ({ content }: Props) => {
 
             {/* Hint */}
             <p
-              className={cn(
+              className={cx(
                 'mt-auto flex items-center gap-2 rounded-md border border-dashed p-2',
                 'border-[var(--term-border)] text-[var(--term-muted)]',
               )}

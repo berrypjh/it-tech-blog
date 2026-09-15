@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { LineChart, Search, ShieldCheck } from 'lucide-react';
 
 import type { React19ErrorReportingContent, WhyCard } from '../content';
@@ -47,7 +46,7 @@ export const WhyNeededSection = ({ content }: Props) => (
         return (
           <li key={card.title}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-2xl border-2 p-md sm:p-lg',
                 tone.border,
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -56,7 +55,7 @@ export const WhyNeededSection = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                   tone.iconChip,
                 )}
@@ -66,7 +65,7 @@ export const WhyNeededSection = ({ content }: Props) => (
               <div className="flex flex-col gap-0.5">
                 <h3 className="text-md font-bold text-[var(--term-fg)] break-keep">{card.title}</h3>
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[11px] font-mono font-bold uppercase tracking-wider',
                     tone.arrow,
                   )}

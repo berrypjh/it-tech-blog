@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   CheckCircle2,
@@ -46,7 +45,7 @@ export const RecoverySimulator = ({ content }: Props) => {
       <SectionHeader id="simulator-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,3fr)_minmax(0,7fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -67,7 +66,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.scenario)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-xl border-2 p-md transition-all',
                       'flex items-start gap-2.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -78,7 +77,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         opt.scenario === 'normal'
                           ? 'border-emerald-200 bg-emerald-100 text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/60 dark:text-emerald-200'
@@ -89,7 +88,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                     </span>
                     <div className="flex flex-col gap-0 min-w-0">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-sm font-bold break-keep',
                           isActive ? optColor.text : 'text-[var(--term-fg)]',
                         )}
@@ -103,7 +102,7 @@ export const RecoverySimulator = ({ content }: Props) => {
                     {isActive && (
                       <CheckCircle2
                         aria-hidden="true"
-                        className={cn('h-4 w-4 shrink-0 ml-auto', optColor.text)}
+                        className={cx('h-4 w-4 shrink-0 ml-auto', optColor.text)}
                       />
                     )}
                   </button>
@@ -118,7 +117,7 @@ export const RecoverySimulator = ({ content }: Props) => {
           <header className="flex items-center justify-between gap-2">
             <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.timelineTitle}</h3>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                 selected === 'error'
                   ? 'border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/40 dark:text-rose-200'
@@ -127,7 +126,7 @@ export const RecoverySimulator = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'block h-1.5 w-1.5 rounded-full',
                   selected === 'error' ? 'bg-rose-500' : 'bg-emerald-500',
                 )}
@@ -143,7 +142,7 @@ export const RecoverySimulator = ({ content }: Props) => {
               return (
                 <li
                   key={step.number}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-xl border-2 p-2.5',
                     accent.border,
                     accent.bg,
@@ -151,19 +150,19 @@ export const RecoverySimulator = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 w-6 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                       accent.solidBg,
                     )}
                   >
                     {step.number}
                   </span>
-                  <span className={cn('text-xsm font-bold break-keep', accent.text)}>
+                  <span className={cx('text-xsm font-bold break-keep', accent.text)}>
                     {step.title}
                   </span>
                   <ChevronRight
                     aria-hidden="true"
-                    className={cn('ml-auto h-3.5 w-3.5 shrink-0 opacity-60', accent.text)}
+                    className={cx('ml-auto h-3.5 w-3.5 shrink-0 opacity-60', accent.text)}
                   />
                 </li>
               );
@@ -172,7 +171,7 @@ export const RecoverySimulator = ({ content }: Props) => {
 
           {/* result banner */}
           <div
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md',
               selected === 'error'
                 ? 'border-rose-200 bg-rose-50/60 dark:border-rose-800/60 dark:bg-rose-950/30'
@@ -182,7 +181,7 @@ export const RecoverySimulator = ({ content }: Props) => {
             <div className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-2',
                   selected === 'error'
                     ? 'border-rose-300 bg-white text-rose-600 dark:border-rose-700 dark:bg-slate-900 dark:text-rose-300'
@@ -201,14 +200,14 @@ export const RecoverySimulator = ({ content }: Props) => {
               </span>
               <div className="flex flex-col gap-0.5 min-w-0">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     sc.text,
                   )}
                 >
                   {result.resultLabel}
                 </span>
-                <p className={cn('text-sm sm:text-md font-bold break-keep', sc.text)}>
+                <p className={cx('text-sm sm:text-md font-bold break-keep', sc.text)}>
                   {result.result}
                 </p>
               </div>

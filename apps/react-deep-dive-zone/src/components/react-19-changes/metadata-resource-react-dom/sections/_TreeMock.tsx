@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { TreeLine } from '../content';
 import { domainTone } from '../tone';
@@ -15,7 +15,7 @@ export const TreeMock = ({ tree, ariaLabel }: Props) => (
   <pre
     role="img"
     aria-label={ariaLabel}
-    className={cn(
+    className={cx(
       'overflow-x-auto rounded-xl border-2 px-3 py-3',
       'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
       'font-mono text-[12px] leading-relaxed sm:text-[13px]',
@@ -32,7 +32,7 @@ export const TreeMock = ({ tree, ariaLabel }: Props) => (
             {Icon && (
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center align-middle mr-1.5 h-4 w-4 rounded border',
                   tone?.iconChip ?? 'border-slate-200 bg-slate-100 text-slate-500',
                 )}
@@ -40,7 +40,7 @@ export const TreeMock = ({ tree, ariaLabel }: Props) => (
                 <Icon className="h-2.5 w-2.5" />
               </span>
             )}
-            <span className={cn('font-bold', tone?.text ?? 'text-[var(--term-fg)]')}>
+            <span className={cx('font-bold', tone?.text ?? 'text-[var(--term-fg)]')}>
               {line.tag}
             </span>
           </span>

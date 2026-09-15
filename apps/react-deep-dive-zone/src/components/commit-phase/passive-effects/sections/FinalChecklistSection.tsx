@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Sparkles, SquareCheck, Trophy } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -52,7 +51,7 @@ const ChecklistItem = ({ text, index }: { text: string; index: number }) => (
   <div className="flex items-start gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] p-sm transition-colors hover:bg-[var(--term-surface)]">
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2',
         toneTokens.teal.fill.bg,
         toneTokens.teal.fill.border,
@@ -74,7 +73,7 @@ const TrophyCard = ({ text }: { text: string }) => {
   const t = toneTokens.amber;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-md rounded-lg border-2 p-md sm:p-lg text-center',
         t.fill.border,
         t.fill.bg,
@@ -83,7 +82,7 @@ const TrophyCard = ({ text }: { text: string }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 items-center justify-center rounded-lg border-2',
           t.fill.bg,
           t.fill.border,
@@ -92,7 +91,7 @@ const TrophyCard = ({ text }: { text: string }) => {
       >
         <Trophy className="h-7 w-7" aria-hidden="true" />
       </span>
-      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {text}
       </p>
     </article>
@@ -123,7 +122,7 @@ const IntroCard = ({ intro, chapterTitle }: { intro: string; chapterTitle: strin
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -134,11 +133,11 @@ const IntroCard = ({ intro, chapterTitle }: { intro: string; chapterTitle: strin
         <ToneIconBox tone="violet">
           <Layers className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-bold break-keep', t.fill.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold break-keep', t.fill.text)}>
           {chapterTitle}
         </h3>
       </header>
-      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{intro}</p>
+      <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', t.fill.text)}>{intro}</p>
     </article>
   );
 };
@@ -157,19 +156,19 @@ const NextChapterCardView = ({ card, index }: { card: NextChapterCard; index: nu
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <code className={cn('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}>
+        <code className={cx('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}>
           {card.title}
         </code>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-6 w-6 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
             t.chip,
           )}
@@ -177,7 +176,7 @@ const NextChapterCardView = ({ card, index }: { card: NextChapterCard; index: nu
           {String(index).padStart(2, '0')}
         </span>
       </header>
-      <p className={cn('text-[11px] sm:text-xsm leading-snug break-keep', t.text)}>
+      <p className={cx('text-[11px] sm:text-xsm leading-snug break-keep', t.text)}>
         {card.subtitle}
       </p>
     </article>

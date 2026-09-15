@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Clock, History, Sparkles } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -18,7 +17,7 @@ export const PersistModernNote = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-amber-300/80 bg-gradient-to-br from-amber-50/70 via-white to-rose-50/30',
         'dark:border-amber-700/70 dark:from-amber-950/30 dark:via-[var(--term-bg)] dark:to-rose-950/10',
@@ -47,7 +46,7 @@ export const PersistModernNote = ({ content }: Props) => (
         {/* Old → modern compare */}
         <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
           <article
-            className={cn(
+            className={cx(
               'flex flex-col items-center gap-1 rounded-2xl border-2 p-md text-center',
               'border-rose-200/80 bg-white dark:border-rose-800/60 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -75,7 +74,7 @@ export const PersistModernNote = ({ content }: Props) => (
           </span>
 
           <article
-            className={cn(
+            className={cx(
               'flex flex-col items-center gap-1 rounded-2xl border-2 p-md text-center',
               'border-emerald-300/80 bg-white dark:border-emerald-800/60 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code, FileText, FlaskConical, type LucideIcon, MessageCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -44,7 +43,7 @@ export const GitHubPerspectiveCards = ({ content }: Props) => {
                 {card.title}
               </h3>
 
-              <p className={cn('text-xsm font-bold', toneTokens[card.tone].text)}>
+              <p className={cx('text-xsm font-bold', toneTokens[card.tone].text)}>
                 {card.subtitle}
               </p>
 

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, ListChecks, Network } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -52,7 +51,7 @@ export const EnsureRootHeroDiagram = ({ content, className }: Props) => {
             {diagram.scheduleQueueItems.map((item, idx) => (
               <li key={item} className="flex items-center gap-2">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-md border font-mono text-sm font-bold tabular-nums',
                     'bg-[var(--term-accent)] text-[var(--term-bg)] border-[var(--term-accent)]',
                   )}
@@ -106,12 +105,12 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('min-w-0 truncate text-sm font-bold tracking-tight', t.text)}>
+      <span className={cx('min-w-0 truncate text-sm font-bold tracking-tight', t.text)}>
         {label}
       </span>
       {badge ? (
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
             t.chip,
           )}
@@ -132,7 +131,7 @@ const RootChip = ({ root }: { root: HeroRootCard }) => {
   const t = toneTokens[root.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 flex-col gap-1 rounded-xl border bg-[var(--term-bg)] px-sm py-2',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         root.inactive
@@ -143,13 +142,13 @@ const RootChip = ({ root }: { root: HeroRootCard }) => {
       <span className="flex items-center gap-1.5">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-block h-2 w-2 rounded-full',
             root.inactive ? 'bg-[var(--term-border)]' : t.dot,
           )}
         />
         <span
-          className={cn(
+          className={cx(
             'min-w-0 truncate font-mono text-xsm font-bold tracking-tight',
             root.inactive ? 'text-[var(--term-muted)]' : t.text,
           )}

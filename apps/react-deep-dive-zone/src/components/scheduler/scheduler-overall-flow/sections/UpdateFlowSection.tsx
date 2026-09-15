@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ChevronRight,
@@ -80,7 +79,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
       />
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           v.card,
@@ -94,7 +93,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
               <li key={step.label} className="contents md:contents">
                 <div className="flex md:flex-col items-stretch md:items-stretch gap-1">
                   <article
-                    className={cn(
+                    className={cx(
                       'flex flex-col gap-1 rounded-xl border-2 p-2.5 flex-1 min-w-0',
                       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                     )}
@@ -102,7 +101,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
                     <header className="flex items-center gap-1.5">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
                           'text-[10px] font-mono font-bold tabular-nums',
                           v.stepBadge,
@@ -111,7 +110,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
                         {i + 1}
                       </span>
                       <h3
-                        className={cn(
+                        className={cx(
                           'text-xsm sm:text-sm font-bold break-keep leading-snug',
                           v.headLabel,
                         )}
@@ -126,7 +125,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
                   {!isLast && (
                     <span
                       aria-hidden="true"
-                      className={cn('self-center inline-flex items-center justify-center', v.arrow)}
+                      className={cx('self-center inline-flex items-center justify-center', v.arrow)}
                     >
                       <span className="md:hidden">
                         <ArrowDown className="h-4 w-4" aria-hidden="true" />
@@ -143,7 +142,7 @@ export const UpdateFlowSection = ({ id, variant, number, title, helper, steps, n
         </ol>
 
         <p
-          className={cn(
+          className={cx(
             'rounded-xl border-2 p-3 text-xsm sm:text-sm leading-relaxed break-keep',
             v.note,
           )}

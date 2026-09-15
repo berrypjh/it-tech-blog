@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, CheckCircle2, XCircle } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -37,7 +36,7 @@ export const FiberReuseHeroDiagram = ({ content }: Props) => {
 
 const ChipBox = ({ t, children }: { t: SemanticFacet; children: React.ReactNode }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border',
       t.chip,
     )}
@@ -59,7 +58,7 @@ const BranchPanel = ({
   const Icon = kind === 'reuse' ? CheckCircle2 : XCircle;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -72,7 +71,7 @@ const BranchPanel = ({
           <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] break-keep">
             {branch.header}
           </span>
-          <span className={cn('text-sm font-bold font-mono tracking-tight', t.text)}>
+          <span className={cx('text-sm font-bold font-mono tracking-tight', t.text)}>
             {branch.result}
           </span>
         </div>

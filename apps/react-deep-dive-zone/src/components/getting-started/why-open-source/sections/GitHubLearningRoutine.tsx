@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   BookOpen,
   FileText,
@@ -33,7 +32,7 @@ const toFlowStep = (step: RoutineStep): FlowStepItem => {
     title: step.title,
     body: step.description,
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 

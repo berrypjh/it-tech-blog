@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   /** 좌측 사각 배지에 담길 아이콘(`h-4 w-4` 크기로 전달). */
@@ -13,7 +13,7 @@ type Props = {
  */
 export const SectionNote = ({ icon, children, className }: Props) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-lg border px-md py-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       className,
@@ -21,7 +21,7 @@ export const SectionNote = ({ icon, children, className }: Props) => (
   >
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
         'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
       )}

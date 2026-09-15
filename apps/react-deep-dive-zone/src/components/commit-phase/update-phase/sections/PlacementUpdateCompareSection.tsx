@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, GitCompareArrows } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -46,11 +45,11 @@ const ToneCell = ({ value, tone }: { value: string | string[]; tone: ToneKey }) 
       {items.map((item) => (
         <li
           key={item}
-          className={cn('flex items-start gap-1.5 leading-snug break-keep', t.fill.text)}
+          className={cx('flex items-start gap-1.5 leading-snug break-keep', t.fill.text)}
         >
           <span
             aria-hidden="true"
-            className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+            className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
           />
           <span>{item}</span>
         </li>
@@ -63,7 +62,7 @@ const QuickSummary = ({ title, items }: { title: string; items: SummaryItem[] })
   const card = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         card.fill.border,
         card.fill.bg,
@@ -74,7 +73,7 @@ const QuickSummary = ({ title, items }: { title: string; items: SummaryItem[] })
         <ToneIconBox tone="sky" size="sm">
           <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-bold', card.fill.text)}>{title}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold', card.fill.text)}>{title}</h3>
       </header>
 
       <ol className="flex flex-col gap-2">
@@ -94,7 +93,7 @@ const SummaryRow = ({ item }: { item: SummaryItem }) => {
     <div className="flex items-start gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border',
           t.chip,
         )}
@@ -105,7 +104,7 @@ const SummaryRow = ({ item }: { item: SummaryItem }) => {
         <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">
           {item.text}
         </span>
-        <span className={cn('text-[10px] font-mono lowercase tracking-wider', t.text)}>
+        <span className={cx('text-[10px] font-mono lowercase tracking-wider', t.text)}>
           {item.emphasis}
         </span>
       </div>

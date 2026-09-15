@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, File, Route } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -12,7 +11,7 @@ const chip = 'bg-[var(--term-surface)] border border-[var(--term-border)]';
 
 const FilePill = ({ name, cls }: { name: string; cls: string }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono font-bold min-w-0 max-w-full',
       cls,
     )}
@@ -24,7 +23,7 @@ const FilePill = ({ name, cls }: { name: string; cls: string }) => (
 
 const FnPill = ({ name, cls }: { name: string; cls: string }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md border text-[10px] sm:text-[11px] font-mono min-w-0 max-w-full',
       cls,
     )}
@@ -79,7 +78,7 @@ export const QuestionToSourceMap = ({ content }: Props) => {
             >
               {/* question pill */}
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xsm font-bold tracking-tight w-fit max-w-full break-keep',
                   chip,
                   tone,
@@ -95,18 +94,18 @@ export const QuestionToSourceMap = ({ content }: Props) => {
               {/* 질문 → 파일 → fn 단계 */}
               <ol className="flex flex-col gap-1.5 pl-3 border-l-2 border-[var(--term-border)]">
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file1} cls={cn(chip, tone)} />
+                  <FilePill name={row.file1} cls={cx(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn1} cls={cn(chip, tone)} />
+                  <FnPill name={row.fn1} cls={cx(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
-                  <FilePill name={row.file2} cls={cn(chip, tone)} />
+                  <FilePill name={row.file2} cls={cx(chip, tone)} />
                 </li>
                 <li className="flex items-start gap-1.5 min-w-0">
                   <span className="text-[10px] text-[var(--term-dim)] pl-0.5 pt-1.5">↳</span>
-                  <FnPill name={row.fn2} cls={cn(chip, tone)} />
+                  <FnPill name={row.fn2} cls={cx(chip, tone)} />
                 </li>
               </ol>
             </li>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Fingerprint, Flag, Layers, Network, Zap } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -63,7 +62,7 @@ const GroupCard = ({ group }: { group: HeroFieldGroup }) => {
   const Icon = iconMap[group.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -74,7 +73,7 @@ const GroupCard = ({ group }: { group: HeroFieldGroup }) => {
         <ToneIconBox tone={group.tone} size="sm">
           <Icon className="h-4 w-4" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm font-bold tracking-tight', t.text)}>{group.title}</h3>
+        <h3 className={cx('text-xsm font-bold tracking-tight', t.text)}>{group.title}</h3>
       </header>
       <ul className="flex flex-wrap gap-1">
         {group.fields.map((f) => (

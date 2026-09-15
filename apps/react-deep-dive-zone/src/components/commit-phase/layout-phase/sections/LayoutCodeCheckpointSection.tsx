@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode, Lightbulb, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -59,7 +58,7 @@ const PathList = ({ items, mono }: { items: string[]; mono?: boolean }) => (
     {items.map((v) => (
       <li key={v}>
         <code
-          className={cn(
+          className={cx(
             'block rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1 text-xsm text-[var(--term-fg)] break-all',
             mono && 'font-mono font-bold',
           )}
@@ -81,16 +80,16 @@ const PhaseStrip = ({ items }: { items: PhaseStripItem[] }) => (
       return (
         <div key={item.label} className="flex items-center gap-1.5">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
               item.active
-                ? cn('border-2', t.fill.border, t.fill.bg, t.fill.text, 'font-bold')
+                ? cx('border-2', t.fill.border, t.fill.bg, t.fill.text, 'font-bold')
                 : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-block h-1.5 w-1.5 rounded-full',
                 item.active ? t.dot : 'bg-[var(--term-dim)]',
               )}
@@ -115,7 +114,7 @@ const CodeCard = ({ panel }: { panel: CodePanel }) => (
         {panel.title}
       </h3>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
           toneTokens.teal.chip,
         )}
@@ -132,7 +131,7 @@ const CodeCard = ({ panel }: { panel: CodePanel }) => (
 
 const InsightBar = ({ text }: { text: string }) => (
   <aside
-    className={cn(
+    className={cx(
       'flex items-start gap-sm rounded-lg border-2 p-md',
       toneTokens.teal.fill.border,
       toneTokens.teal.fill.bg,
@@ -142,7 +141,7 @@ const InsightBar = ({ text }: { text: string }) => (
       <Lightbulb className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
     <p
-      className={cn(
+      className={cx(
         'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
         toneTokens.teal.fill.text,
       )}

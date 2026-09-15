@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -12,7 +11,7 @@ export const GithubButton = ({ href, label, className }: Props) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={cn(
+    className={cx(
       'group inline-flex items-center justify-center gap-2 rounded-md px-md py-2.5 text-xsm font-bold',
       'border border-transparent bg-slate-900 text-slate-50 transition-colors hover:bg-slate-800',
       'dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-slate-700',

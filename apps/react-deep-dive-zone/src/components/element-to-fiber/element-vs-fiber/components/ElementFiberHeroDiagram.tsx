@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -19,7 +18,7 @@ export const ElementFiberHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -75,7 +74,7 @@ const ObjectHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span className="ml-auto shrink-0 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
         {caption}
       </span>
@@ -89,7 +88,7 @@ const DownArrow = ({ label }: { label: string }) => (
       ↓
     </span>
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center rounded-full border px-2 py-0.5',
         'text-[10px] font-bold uppercase tracking-wider font-mono',
         toneTokens.violet.chip,

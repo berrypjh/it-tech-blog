@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Map } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -35,7 +34,7 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
   return (
     <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <header className="flex flex-col gap-0.5 pb-sm border-b border-dashed border-[var(--term-border)]">
-        <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
+        <h3 className={cx('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
           {card.name}
         </h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold">
@@ -57,7 +56,7 @@ const CreateHydrateCardView = ({ card }: { card: CreateHydrateCard }) => {
               </span>
               {step.caption && (
                 <code
-                  className={cn(
+                  className={cx(
                     'mt-0.5 w-fit max-w-full overflow-x-auto rounded-md px-2 py-1 text-[11px] leading-snug font-mono',
                     'bg-[var(--term-surface)]',
                     t.text,

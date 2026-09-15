@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Gauge, Lightbulb, PauseCircle, PlayCircle, Timer } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* concept + formula */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-teal-50/30',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/10',
@@ -40,7 +39,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
         </header>
 
         <div
-          className={cn(
+          className={cx(
             'overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 px-md py-md',
           )}
         >
@@ -56,7 +55,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
         </div>
 
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-xl border-2 border-dashed px-3 py-2',
             'border-blue-300/80 bg-blue-50/60 text-blue-800 dark:border-blue-700/60 dark:bg-blue-950/30 dark:text-blue-100',
           )}
@@ -73,7 +72,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
       <div className="flex h-full flex-col gap-3">
         {/* Continue */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-emerald-300/80 bg-gradient-to-br from-emerald-50/70 via-white to-emerald-50/30',
             'dark:border-emerald-700/70 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/10',
@@ -112,7 +111,7 @@ export const ShouldYieldToHostSection = ({ content }: Props) => (
 
         {/* Yield */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/30',
             'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',

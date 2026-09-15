@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, ListTree } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -19,7 +18,7 @@ export const ClassifyValuesHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -42,7 +41,7 @@ export const ClassifyValuesHeroDiagram = ({ content, className }: Props) => {
             {content.leftFields.map((field, i) => (
               <li
                 key={field}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-md border px-2 py-1.5',
                   'border-[var(--term-border)] bg-[var(--term-bg)]',
                   i >= 5 && 'opacity-60',
@@ -73,7 +72,7 @@ export const ClassifyValuesHeroDiagram = ({ content, className }: Props) => {
             {content.rightMap.map((row) => (
               <li
                 key={row.valueKey}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-md border px-2 py-1.5',
                   'border-[var(--term-border)] bg-[var(--term-bg)]',
                 )}
@@ -110,7 +109,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"
         className="flex-1 border-t border-dashed border-[var(--term-border)]"

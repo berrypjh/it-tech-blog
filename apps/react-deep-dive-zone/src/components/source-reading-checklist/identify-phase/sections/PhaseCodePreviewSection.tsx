@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const PhaseCodePreviewSection = ({ content }: Props) => {
           return (
             <li key={card.phase}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -44,7 +43,7 @@ export const PhaseCodePreviewSection = ({ content }: Props) => {
 
                 {/* Code panel (dark) */}
                 <pre
-                  className={cn(
+                  className={cx(
                     'overflow-x-auto rounded-md border px-3 py-2.5',
                     'border-slate-700 bg-slate-900 text-slate-100',
                     'dark:border-slate-700',
@@ -61,18 +60,18 @@ export const PhaseCodePreviewSection = ({ content }: Props) => {
 
                 {/* Why this phase */}
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto flex items-start gap-2 rounded-md border-2 p-3',
                     t.border,
                     t.chip,
                   )}
                 >
-                  <Sparkles className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
+                  <Sparkles className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)} aria-hidden="true" />
                   <div className="flex flex-col">
-                    <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                    <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.whyLabel}
                     </span>
-                    <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                    <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                       {card.why}
                     </p>
                   </div>

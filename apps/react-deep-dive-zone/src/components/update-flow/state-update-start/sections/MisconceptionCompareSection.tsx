@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -45,7 +44,7 @@ export const MisconceptionCompareSection = ({ content }: Props) => (
         {content.rows.map((row, idx) => (
           <li
             key={row.id}
-            className={cn(
+            className={cx(
               'grid grid-cols-1 md:grid-cols-2',
               idx < content.rows.length - 1 && 'border-b border-[var(--term-border)]',
             )}

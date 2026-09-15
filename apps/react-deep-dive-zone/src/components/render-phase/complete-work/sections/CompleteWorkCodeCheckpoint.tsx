@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -80,7 +79,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
   const t = toneTokens[callout.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full items-start gap-3 rounded-lg border p-md',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -88,14 +87,14 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
           t.chip,
         )}
       >
         {callout.number}
       </span>
-      <p className={cn('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
+      <p className={cx('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
         {callout.body}
       </p>
     </article>

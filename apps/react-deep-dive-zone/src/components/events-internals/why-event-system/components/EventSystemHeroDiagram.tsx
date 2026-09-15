@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Code2, PlayCircle } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -24,7 +23,7 @@ export const EventSystemHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -64,7 +63,7 @@ const StepCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -79,7 +78,7 @@ const StepCard = ({
           <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
             step {step}
           </span>
-          <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{col.title}</h3>
+          <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{col.title}</h3>
         </div>
         <span
           aria-hidden="true"
@@ -100,7 +99,7 @@ const StepCard = ({
             >
               <span
                 aria-hidden="true"
-                className={cn('mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
+                className={cx('mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
               />
               <span>{b}</span>
             </li>

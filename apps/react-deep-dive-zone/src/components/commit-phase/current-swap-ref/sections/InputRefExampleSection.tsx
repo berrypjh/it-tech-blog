@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Box, Lightbulb, Link } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -51,7 +50,7 @@ const ExplanationCard = ({ title, text }: { title: string; text: string }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-md rounded-lg border-2 p-md sm:p-lg text-center',
         t.fill.border,
         t.fill.bg,
@@ -60,7 +59,7 @@ const ExplanationCard = ({ title, text }: { title: string; text: string }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-lg border-2',
           t.fill.bg,
           t.fill.border,
@@ -69,10 +68,10 @@ const ExplanationCard = ({ title, text }: { title: string; text: string }) => {
       >
         <Lightbulb className="h-6 w-6" aria-hidden="true" />
       </span>
-      <span className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
+      <span className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
         {title}
       </span>
-      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {text}
       </p>
     </article>
@@ -83,18 +82,18 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -103,7 +102,7 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
         </span>
       </header>
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border bg-[var(--term-surface)] p-sm text-xsm leading-snug font-mono',
           t.fill.border,
           t.fill.text,
@@ -117,7 +116,7 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
           <ArrowRight className="md:hidden h-5 w-5" aria-hidden="true" />
         </span>
         <code
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-md border-2 px-3 py-1 text-xsm font-mono font-bold',
             t.fill.bg,
             t.fill.border,

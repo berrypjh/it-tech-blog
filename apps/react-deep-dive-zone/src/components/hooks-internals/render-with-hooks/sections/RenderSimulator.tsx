@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, PlayCircle, RefreshCw, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -66,7 +65,7 @@ export const RenderSimulator = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-simulator"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -151,7 +150,7 @@ export const RenderSimulator = ({ content }: Props) => {
               return (
                 <li key={card.title} className="flex flex-col gap-2">
                   <article
-                    className={cn(
+                    className={cx(
                       'flex flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md',
                       'shadow-[0_2px_0_var(--term-border)] transition-colors',
                       accent.border,
@@ -161,19 +160,19 @@ export const RenderSimulator = ({ content }: Props) => {
                       <div className="flex items-center gap-2 min-w-0">
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                             accent.iconBox,
                           )}
                         >
                           <Icon className="h-4 w-4" />
                         </span>
-                        <h4 className={cn('text-xsm sm:text-sm font-bold break-keep', accent.text)}>
+                        <h4 className={cx('text-xsm sm:text-sm font-bold break-keep', accent.text)}>
                           {card.title}
                         </h4>
                       </div>
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
                           accent.chip,
                         )}
@@ -190,7 +189,7 @@ export const RenderSimulator = ({ content }: Props) => {
                         >
                           <span
                             aria-hidden="true"
-                            className={cn(
+                            className={cx(
                               'mt-1.5 inline-block h-1.5 w-1.5 rounded-full',
                               accent.dot,
                             )}
@@ -198,7 +197,7 @@ export const RenderSimulator = ({ content }: Props) => {
                           <span className="break-keep min-w-0 flex-1">
                             <span className="text-[var(--term-muted)] mr-1.5">{item.label}:</span>
                             {item.highlight ? (
-                              <code className={cn('font-mono font-bold break-all', accent.text)}>
+                              <code className={cx('font-mono font-bold break-all', accent.text)}>
                                 {item.value}
                               </code>
                             ) : (

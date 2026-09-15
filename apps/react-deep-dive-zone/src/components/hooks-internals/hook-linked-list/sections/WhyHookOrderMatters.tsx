@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, ArrowRight, CheckCircle2, ListOrdered, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -12,7 +11,7 @@ type Props = { content: HookLinkedListContent['whyOrder'] };
 export const WhyHookOrderMatters = ({ content }: Props) => (
   <section
     aria-labelledby="heading-why-order"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -27,7 +26,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md lg:gap-lg">
       {/* Left: normal */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-emerald-300/80 bg-emerald-50/60 dark:border-emerald-700/60 dark:bg-emerald-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -86,7 +85,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
 
       {/* Right: broken */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-rose-300/80 bg-rose-50/60 dark:border-rose-700/60 dark:bg-rose-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -124,7 +123,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
         </ol>
 
         <aside
-          className={cn(
+          className={cx(
             'flex items-start gap-2 rounded-lg border-2 border-rose-400/80 bg-rose-100/70 p-2.5',
             'dark:border-rose-600/60 dark:bg-rose-950/50',
           )}
@@ -142,7 +141,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
 
     {/* Warning banner */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between rounded-2xl border-2 p-md',
         'border-rose-400/80 bg-rose-50 dark:border-rose-600/60 dark:bg-rose-950/40',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -162,7 +161,7 @@ export const WhyHookOrderMatters = ({ content }: Props) => (
 
       <Link
         href={content.banner.ctaHref}
-        className={cn(
+        className={cx(
           'group inline-flex items-center justify-center gap-2 shrink-0 rounded-xl border-2 px-4 py-2.5',
           'border-rose-400 bg-white text-rose-700 font-bold text-xsm sm:text-sm',
           'dark:border-rose-600/60 dark:bg-rose-950/30 dark:text-rose-200',

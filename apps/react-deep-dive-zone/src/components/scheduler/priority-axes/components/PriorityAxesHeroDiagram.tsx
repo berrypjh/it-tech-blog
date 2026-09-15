@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Layers, Zap } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -31,7 +30,7 @@ export const PriorityAxesHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -62,7 +61,7 @@ const AxisCardRow = ({ axis }: { axis: AxisCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -74,7 +73,7 @@ const AxisCardRow = ({ axis }: { axis: AxisCard }) => {
           <Icon className="h-[18px] w-[18px]" />
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
-          <span className={cn('text-[10px] font-mono font-bold uppercase tracking-wider', t.text)}>
+          <span className={cx('text-[10px] font-mono font-bold uppercase tracking-wider', t.text)}>
             {axis.label}
           </span>
           <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
@@ -82,7 +81,7 @@ const AxisCardRow = ({ axis }: { axis: AxisCard }) => {
           </h3>
         </div>
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full',
             'border border-[var(--term-border)] text-[11px] font-mono font-bold tabular-nums',
             t.text,

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Flag, Link, Network, RefreshCw } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -47,7 +46,7 @@ const CardView = ({ card }: { card: InfoGroupCard }) => {
           <Icon className="h-6 w-6" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5',
             'text-[10px] font-bold uppercase tracking-wider font-mono',
             toneTokens[card.accent].chip,
@@ -57,7 +56,7 @@ const CardView = ({ card }: { card: InfoGroupCard }) => {
         </span>
       </header>
       <h3
-        className={cn(
+        className={cx(
           'text-sm sm:text-md font-extrabold tracking-tight break-keep',
           toneTokens[card.accent].text,
         )}
@@ -68,7 +67,7 @@ const CardView = ({ card }: { card: InfoGroupCard }) => {
         {card.fields.map((field) => (
           <li key={field}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-1',
                 'font-mono text-[11px] font-bold',
                 'border-[var(--term-border)] bg-[var(--term-bg)]',

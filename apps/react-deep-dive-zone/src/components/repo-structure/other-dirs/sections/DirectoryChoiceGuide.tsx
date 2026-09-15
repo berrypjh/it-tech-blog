@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   Cuboid,
@@ -50,7 +49,7 @@ export const DirectoryChoiceGuide = ({ content }: Props) => {
                 result={card.destination}
                 lead={
                   <ArrowDown
-                    className={cn(
+                    className={cx(
                       'h-5 w-5 my-2 transition-transform group-hover:translate-y-0.5',
                       toneTokens[toneKey].text,
                     )}

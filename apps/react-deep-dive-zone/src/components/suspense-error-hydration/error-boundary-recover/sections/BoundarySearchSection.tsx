@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowUp, Atom, Box, CheckCircle2, ShieldCheck, User } from 'lucide-react';
 
 import type { ErrorBoundaryRecoverContent, TreeNode } from '../content';
@@ -40,7 +39,7 @@ const NodeCard = ({ node, highlight }: { node: TreeNode; highlight?: boolean }) 
   const Icon = s.Icon;
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-xl border-2 px-3 py-2 w-full',
         s.border,
         s.bg,
@@ -52,7 +51,7 @@ const NodeCard = ({ node, highlight }: { node: TreeNode; highlight?: boolean }) 
       <span className="font-mono text-xsm font-bold">{node.label}</span>
       {node.marker && (
         <span
-          className={cn(
+          className={cx(
             'ml-auto text-[10px] font-mono font-bold break-keep',
             node.kind === 'boundary' && 'text-teal-600 dark:text-teal-300',
             node.kind === 'profile' && 'text-rose-600 dark:text-rose-300',
@@ -74,7 +73,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-stretch">
       {/* tree diagram */}
       <article
-        className={cn(
+        className={cx(
           'relative flex flex-col gap-2 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/70 bg-gradient-to-b from-blue-50/30 to-white',
           'dark:border-blue-800/60 dark:from-blue-950/20 dark:to-[var(--term-bg)]',
@@ -87,7 +86,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
             {i < content.tree.length - 1 && (
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center text-[10px] font-mono font-bold uppercase tracking-wider',
                   'text-teal-600 dark:text-teal-300',
                 )}
@@ -102,7 +101,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
 
       {/* rules */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-teal-50/30 dark:border-teal-800/60 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

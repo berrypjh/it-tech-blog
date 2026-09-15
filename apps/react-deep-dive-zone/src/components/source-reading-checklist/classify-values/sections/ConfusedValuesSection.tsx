@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, Cable, Database, HelpCircle, Inbox } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
           return (
             <li key={card.valueKey}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -45,7 +44,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
                   <ValueBadge valueKey={card.valueKey} size="md" strong />
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                       t.chip,
                     )}
@@ -59,7 +58,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
                   <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                     {content.roleLabel}
                   </span>
-                  <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                  <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                     {card.role}
                   </p>
                 </div>
@@ -70,7 +69,7 @@ export const ConfusedValuesSection = ({ content }: Props) => {
                     {content.misunderstandingLabel}
                   </span>
                   <div
-                    className={cn(
+                    className={cx(
                       'flex items-start gap-2 rounded-md border-2 p-2.5',
                       'border-amber-300 bg-amber-50 text-amber-900',
                       'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
@@ -85,21 +84,21 @@ export const ConfusedValuesSection = ({ content }: Props) => {
 
                 {/* Reading question (emphasized footer) */}
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto flex items-start gap-2 rounded-md border-2 p-3',
                     t.border,
                     t.chip,
                   )}
                 >
                   <HelpCircle
-                    className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
+                    className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">
-                    <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                    <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.questionLabel}
                     </span>
-                    <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                    <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                       {card.question}
                     </p>
                   </div>

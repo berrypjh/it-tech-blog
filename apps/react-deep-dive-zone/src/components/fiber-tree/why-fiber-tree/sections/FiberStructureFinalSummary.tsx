@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Fingerprint, Flag, Layers, List, Network, Zap } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -34,7 +33,7 @@ export const FiberStructureFinalSummary = ({ content }: Props) => (
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <h3
-              className={cn(
+              className={cx(
                 'text-md font-bold tracking-tight break-keep',
                 toneTokens[card.tone].text,
               )}
@@ -46,7 +45,7 @@ export const FiberStructureFinalSummary = ({ content }: Props) => (
               {card.fields.map((f) => (
                 <li key={f}>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
                       toneTokens[card.tone].chip,
                     )}

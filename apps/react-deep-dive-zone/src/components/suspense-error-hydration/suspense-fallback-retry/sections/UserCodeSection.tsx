@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Box, ShieldCheck } from 'lucide-react';
 
 import type { SuspenseFallbackRetryContent } from '../content';
@@ -30,7 +29,7 @@ export const UserCodeSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,3fr)_minmax(0,4fr)_minmax(0,3fr)] items-stretch">
       {/* description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col justify-center rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -43,7 +42,7 @@ export const UserCodeSection = ({ content }: Props) => (
 
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col overflow-hidden rounded-2xl border-2',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -54,7 +53,7 @@ export const UserCodeSection = ({ content }: Props) => (
 
       {/* tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -69,7 +68,7 @@ export const UserCodeSection = ({ content }: Props) => (
             return (
               <li key={node.label} className="flex flex-col items-center gap-1 w-full">
                 <div
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center gap-1.5 rounded-xl border-2 px-3 py-2 w-full text-center',
                     'font-mono text-[11px] font-bold break-keep',
                     treeAccent[node.kind],

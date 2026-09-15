@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Bug, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -49,7 +48,7 @@ export const DevModeDebugInfo = ({ content }: Props) => (
         {content.mappingTitle}
       </p>
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 items-stretch gap-md',
           'lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         )}
@@ -87,7 +86,7 @@ const DebugPanel = ({ tone, label, icon, code }: DebugPanelProps) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -97,7 +96,7 @@ const DebugPanel = ({ tone, label, icon, code }: DebugPanelProps) => {
           {icon}
         </ToneIconBox>
         <code
-          className={cn('min-w-0 truncate font-mono text-xsm font-bold tracking-tight', t.text)}
+          className={cx('min-w-0 truncate font-mono text-xsm font-bold tracking-tight', t.text)}
         >
           {label}
         </code>

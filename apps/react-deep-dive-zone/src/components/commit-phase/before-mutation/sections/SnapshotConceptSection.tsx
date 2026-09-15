@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Camera, Eye } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -51,19 +50,19 @@ const DomStateCard = ({
   const t = isBefore ? toneTokens.teal : toneTokens.amber;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
           {title}
         </h3>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -81,7 +80,7 @@ const DomStateCard = ({
             <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
               {item.label}
             </span>
-            <code className={cn('text-xsm font-mono font-bold break-all', t.text)}>
+            <code className={cx('text-xsm font-mono font-bold break-all', t.text)}>
               {item.value}
             </code>
           </li>
@@ -93,7 +92,7 @@ const DomStateCard = ({
 
 const MiddleFlow = ({ steps }: { steps: SnapshotFlowStep[] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
       'border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_1px_0_var(--term-border)]',
@@ -121,25 +120,25 @@ const FlowStepCard = ({ step, index }: { step: SnapshotFlowStep; index: number }
   const t = toneTokens[step.tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-start gap-2 rounded-md border p-sm',
         step.active
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-mono font-bold tabular-nums',
-          step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
+          step.active ? cx(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
         {step.active ? <Eye className="h-3.5 w-3.5" aria-hidden="true" /> : String(index)}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <span
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold leading-tight break-keep',
             step.active ? t.fill.text : 'text-[var(--term-fg)]',
           )}

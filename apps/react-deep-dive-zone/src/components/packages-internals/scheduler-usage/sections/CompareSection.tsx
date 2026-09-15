@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Clock, type LucideIcon, Star } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const CompareSection = ({ content }: Props) => {
         {/* center badge */}
         <div className="flex md:flex-col items-center justify-center md:py-md" aria-hidden="true">
           <span
-            className={cn(
+            className={cx(
               'inline-flex flex-col items-center justify-center gap-0.5 w-24 h-24 rounded-full',
               'border-2 bg-[var(--term-bg)] text-[var(--term-fg)] font-bold tracking-tight text-center',
               'border-[var(--term-border)]',
@@ -60,7 +59,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -70,11 +69,11 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
+        <h3 className={cx('text-lg font-bold font-mono tracking-tight', t.text)}>{card.name}</h3>
       </header>
 
       <p
-        className={cn(
+        className={cx(
           'rounded-lg border px-3 py-2 text-md font-bold italic break-keep',
           'border-dashed border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
         )}
@@ -90,7 +89,7 @@ const CompareCardView = ({ card }: { card: CompareCard }) => {
         {card.tags.map((tag) => (
           <li key={tag}>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
                 t.chip,
               )}

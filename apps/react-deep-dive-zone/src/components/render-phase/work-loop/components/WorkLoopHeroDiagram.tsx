@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, PauseCircle, RotateCw } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -84,14 +83,14 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,
       )}
     >
       <div className="flex flex-wrap items-center gap-x-sm gap-y-1">
-        <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+        <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
         <span className="text-xxsm uppercase tracking-wider text-[var(--term-muted)] break-keep">
           {sideText}
         </span>
@@ -107,16 +106,16 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
               <li className="flex min-w-0 max-w-[84px] flex-col items-center gap-1">
                 <LoopNode node={node} tone={tone} />
                 <span
-                  className={cn(
+                  className={cx(
                     'text-center text-xxsm leading-snug break-keep',
-                    isYield ? cn(toneTokens.amber.text, 'font-bold') : 'text-[var(--term-muted)]',
+                    isYield ? cx(toneTokens.amber.text, 'font-bold') : 'text-[var(--term-muted)]',
                   )}
                 >
                   {node.caption}
                 </span>
                 {subNote && (
                   <span
-                    className={cn(
+                    className={cx(
                       'text-center text-[9px] font-mono uppercase tracking-wider break-keep',
                       t.text,
                     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ChevronRight,
   Code,
@@ -51,7 +50,7 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -64,7 +63,7 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3
-          className={cn('text-md sm:text-lg font-bold font-mono tracking-tight truncate', t.text)}
+          className={cx('text-md sm:text-lg font-bold font-mono tracking-tight truncate', t.text)}
         >
           {card.api}
         </h3>
@@ -72,7 +71,7 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
 
       {/* 진입 → 내부 파일 경로 */}
       <div
-        className={cn(
+        className={cx(
           'inline-flex flex-wrap items-center gap-1.5 rounded-lg border p-2 font-mono text-[11px]',
           'border-dashed border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
@@ -81,7 +80,7 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
         <span aria-hidden="true" className="text-[var(--term-accent)]">
           →
         </span>
-        <span className={cn('font-bold truncate', t.text)}>{card.route.to}</span>
+        <span className={cx('font-bold truncate', t.text)}>{card.route.to}</span>
       </div>
 
       {/* 설명 */}
@@ -94,7 +93,7 @@ const EntryRouteCardView = ({ card }: { card: EntryRouteCard }) => {
         href={card.href}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(
+        className={cx(
           'group/cta inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
           'transition-colors mt-auto hover:bg-[var(--term-surface)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, Folder } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -26,7 +25,7 @@ export const RepoTreeCard = ({
 
   return (
     <div
-      className={cn(
+      className={cx(
         'flex flex-col rounded-lg border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] overflow-hidden',
         className,
@@ -60,7 +59,7 @@ export const RepoTreeCard = ({
           const toneText = row.tone ? toneTokens[row.tone].text : null;
           const Icon = row.kind === 'dir' ? Folder : FileText;
 
-          const baseClass = cn(
+          const baseClass = cx(
             'group w-full flex items-center gap-2 px-md py-1.5 text-xsm leading-none transition-colors',
             'text-left',
             interactive &&
@@ -74,7 +73,7 @@ export const RepoTreeCard = ({
             <>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'shrink-0 tabular-nums text-[10px] text-[var(--term-dim)] w-5',
                   isSelected && toneText ? toneText : undefined,
                 )}
@@ -83,7 +82,7 @@ export const RepoTreeCard = ({
               </span>
               <Icon
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'h-3.5 w-3.5 shrink-0',
                   isSelected && toneText ? toneText : 'text-[var(--term-dim)]',
                 )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, GitBranch, Globe, Lightbulb } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const DomFiberTreeCompare = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* DOM tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-sky-50/40',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-sky-950/20',
@@ -50,7 +49,7 @@ export const DomFiberTreeCompare = ({ content }: Props) => (
 
       {/* Fiber tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-emerald-50/40',
           'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
@@ -80,7 +79,7 @@ export const DomFiberTreeCompare = ({ content }: Props) => (
     </div>
 
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-amber-300/80 bg-amber-50/60 dark:border-amber-800/60 dark:bg-amber-950/30',
       )}

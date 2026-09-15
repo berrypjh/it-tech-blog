@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Box, CheckCircle2, ChevronDown, RefreshCw, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -69,7 +68,7 @@ export const SiblingParentTreeWalk = ({ content }: Props) => (
 
 const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full w-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -82,7 +81,7 @@ const Panel = ({ panel, index }: { panel: TreePanel; index: number }) => (
       {index > 0 && (
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-6 w-6 items-center justify-center rounded-md border font-mono font-bold text-xxsm tabular-nums',
             toneTokens.sky.chip,
           )}
@@ -124,21 +123,21 @@ const MiniTree = ({ nodes }: { nodes: TreePanel['nodes'] }) => {
 const TreeNode = ({ name, state }: { name: string; state: TreePanelState }) => {
   const cls =
     state === 'current'
-      ? cn(toneTokens.violet.fill.bg, toneTokens.violet.fill.border, toneTokens.violet.fill.text)
+      ? cx(toneTokens.violet.fill.bg, toneTokens.violet.fill.border, toneTokens.violet.fill.text)
       : state === 'done'
-        ? cn(toneTokens.teal.fill.bg, toneTokens.teal.fill.border, toneTokens.teal.fill.text)
+        ? cx(toneTokens.teal.fill.bg, toneTokens.teal.fill.border, toneTokens.teal.fill.text)
         : 'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-muted)]';
   const Icon = state === 'current' ? RefreshCw : state === 'done' ? CheckCircle2 : Box;
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-xsm font-bold',
         cls,
       )}
     >
       <Icon
         aria-hidden="true"
-        className={cn('h-3 w-3', state === 'current' && 'animate-spin motion-reduce:animate-none')}
+        className={cx('h-3 w-3', state === 'current' && 'animate-spin motion-reduce:animate-none')}
       />
       {name}
     </span>

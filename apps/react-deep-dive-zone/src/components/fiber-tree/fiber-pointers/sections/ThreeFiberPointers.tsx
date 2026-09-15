@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitBranch, MoveDown, MoveRight, MoveUp } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
   const Icon = iconMap[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -55,7 +54,7 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
         <ToneIconBox tone={tone}>
           <Icon className="h-5 w-5" />
         </ToneIconBox>
-        <code className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{card.id}</code>
+        <code className={cx('font-mono text-md font-bold tracking-tight', t.text)}>{card.id}</code>
       </header>
 
       <h3 className="text-xsm sm:text-sm font-bold leading-snug text-[var(--term-fg)] break-keep">
@@ -64,7 +63,7 @@ const PointerCardItem = ({ card }: { card: PointerCard }) => {
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto flex min-h-[88px] items-center justify-center rounded-xl border border-dashed p-sm',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}

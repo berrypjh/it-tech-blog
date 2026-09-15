@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Cog, Database, GitFork, Target, Workflow, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -37,7 +36,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
               schedCardBorder[step.accent],
@@ -46,7 +45,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
             <header className="flex items-center justify-between gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-mono font-bold tabular-nums',
                   schedNumberBadge[step.accent],
                 )}
@@ -55,7 +54,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   schedIconBox[step.accent],
                 )}
@@ -64,7 +63,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
               </span>
             </header>
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 schedTextStrong[step.accent],
               )}
@@ -73,7 +72,7 @@ export const ScheduleTaskDuringMicrotaskFlow = ({ content }: Props) => (
             </h3>
             {step.isCode ? (
               <code
-                className={cn(
+                className={cx(
                   'mt-auto inline-flex items-center self-start rounded-md border px-2 py-1 font-mono text-[11px] sm:text-xsm font-semibold break-all',
                   'border-[var(--term-border)] bg-[var(--term-bg)]',
                   schedTextStrong[step.accent],

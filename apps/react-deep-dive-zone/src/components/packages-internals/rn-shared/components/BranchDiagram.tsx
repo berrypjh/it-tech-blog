@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { type LucideIcon, Monitor, Package, Smartphone } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -57,7 +56,7 @@ export const BranchDiagram = ({ hero, className }: Props) => {
 
 const ElementCard = ({ label, code }: { label: string; code: string }) => (
   <article
-    className={cn(
+    className={cx(
       'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-2.5',
       'bg-[var(--term-bg)] border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -66,7 +65,7 @@ const ElementCard = ({ label, code }: { label: string; code: string }) => (
       {label}
     </span>
     <code
-      className={cn(
+      className={cx(
         'rounded-md border px-2 py-0.5 text-[11px] font-mono leading-snug',
         'border-dashed border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       )}
@@ -78,7 +77,7 @@ const ElementCard = ({ label, code }: { label: string; code: string }) => (
 
 const ReconcilerCenter = ({ label, subtitle }: { label: string; subtitle: string }) => (
   <article
-    className={cn(
+    className={cx(
       'relative inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] overflow-hidden',
@@ -114,7 +113,7 @@ const BranchColumn = ({ title, steps, tone, icon: Icon }: BranchColumnProps) => 
   const accent = toneTokens[tone].text;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -124,20 +123,20 @@ const BranchColumn = ({ title, steps, tone, icon: Icon }: BranchColumnProps) => 
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm font-bold font-mono tracking-tight', accent)}>{title}</h3>
+        <h3 className={cx('text-sm font-bold font-mono tracking-tight', accent)}>{title}</h3>
       </header>
       <ul className="flex flex-col gap-1.5">
         {steps.map((step, i) => (
           <li
             key={step}
-            className={cn(
+            className={cx(
               'flex items-stretch gap-2 rounded-md border px-2 py-1.5 text-[11px] leading-snug',
               'bg-[var(--term-bg)] border-[var(--term-border)] text-[var(--term-fg)] break-keep',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-5 h-5 rounded-full font-mono text-[10px] font-bold shrink-0',
                 'bg-[var(--term-surface)] border border-[var(--term-border)]',
                 accent,

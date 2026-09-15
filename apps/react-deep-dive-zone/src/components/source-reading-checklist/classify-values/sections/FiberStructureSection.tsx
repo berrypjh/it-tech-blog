@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Network, Sparkles } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -42,14 +41,14 @@ export const FiberStructureSection = ({ content }: Props) => {
                 return (
                   <li
                     key={group.label}
-                    className={cn(
+                    className={cx(
                       'flex flex-wrap items-center gap-2 rounded-md border px-2.5 py-2',
                       t.border,
                       t.chip,
                     )}
                   >
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center rounded-full border px-2 py-0.5',
                         'bg-white dark:bg-[var(--term-bg)]',
                         t.border,
@@ -66,7 +65,7 @@ export const FiberStructureSection = ({ content }: Props) => {
                       {group.fields.map((field) => (
                         <code
                           key={field}
-                          className={cn(
+                          className={cx(
                             'inline-flex items-center rounded border px-1.5 py-0.5',
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'font-mono text-[10.5px] text-[var(--term-fg)]',
@@ -85,7 +84,7 @@ export const FiberStructureSection = ({ content }: Props) => {
 
         {/* RIGHT — Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-violet-200 bg-violet-50/60',
             'dark:border-violet-800/60 dark:bg-violet-950/30',
@@ -100,7 +99,7 @@ export const FiberStructureSection = ({ content }: Props) => {
             {content.points.map((p) => (
               <li
                 key={p}
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border px-3 py-2',
                   'border-violet-200 bg-white',
                   'dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
@@ -119,7 +118,7 @@ export const FiberStructureSection = ({ content }: Props) => {
 
       {/* Key sentence banner */}
       <aside
-        className={cn(
+        className={cx(
           'flex items-start gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-300 bg-violet-100/60',
           'dark:border-violet-700/70 dark:bg-violet-950/40',
@@ -128,7 +127,7 @@ export const FiberStructureSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
             'border border-violet-300 bg-white text-violet-700',
             'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',

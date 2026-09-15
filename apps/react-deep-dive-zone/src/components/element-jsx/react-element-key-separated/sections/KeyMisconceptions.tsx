@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   CheckCircle2,
@@ -50,7 +49,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
   const SideIcon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -60,7 +59,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
             toneTokens[card.tone].chip,
           )}
@@ -100,7 +99,7 @@ const CardView = ({ card, wrongLabel }: { card: Misconception; wrongLabel: strin
             <li key={bullet} className="flex items-start gap-1.5">
               <span
                 aria-hidden="true"
-                className={cn('mt-1.5 h-1 w-1 shrink-0 rounded-full', toneTokens[card.tone].dot)}
+                className={cx('mt-1.5 h-1 w-1 shrink-0 rounded-full', toneTokens[card.tone].dot)}
               />
               <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                 {bullet}

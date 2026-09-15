@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, CornerDownRight } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -18,7 +17,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/40',
         'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -28,7 +27,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-md lg:gap-lg">
         {/* Tree */}
         <div
-          className={cn(
+          className={cx(
             'rounded-2xl border bg-white p-md',
             'border-violet-200/70 dark:border-violet-800/60 dark:bg-slate-950/40',
             'shadow-[0_1px_0_var(--term-border)]',
@@ -70,7 +69,7 @@ export const SyntheticEventStructure = ({ content }: Props) => (
 
         {/* Descriptions */}
         <div
-          className={cn(
+          className={cx(
             'rounded-2xl border bg-white p-md',
             'border-[var(--term-border)] dark:bg-slate-950/40',
             'shadow-[0_1px_0_var(--term-border)]',

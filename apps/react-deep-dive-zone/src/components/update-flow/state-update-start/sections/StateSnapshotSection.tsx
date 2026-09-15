@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Database, Lightbulb, MonitorCheck, MousePointer } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const StateSnapshotSection = ({ content }: Props) => (
 
     {/* 상단 노트 */}
     <div
-      className={cn(
+      className={cx(
         'flex items-center justify-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-3 shadow-[0_2px_0_var(--term-border)]',
         sky.border,
       )}
@@ -91,7 +90,7 @@ const SnapshotCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -101,7 +100,7 @@ const SnapshotCard = ({
           {icon}
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
+          <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
             {title}
           </h3>
           <span className="text-xxsm text-[var(--term-muted)] mt-0.5">{subtitle}</span>
@@ -109,13 +108,13 @@ const SnapshotCard = ({
       </header>
 
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center gap-2 rounded-md border bg-[var(--term-surface)] px-3 py-1.5 text-xxsm font-mono font-bold',
           t.border,
           t.text,
         )}
       >
-        <span aria-hidden="true" className={cn('h-1.5 w-1.5 rounded-full', t.dot)} />
+        <span aria-hidden="true" className={cx('h-1.5 w-1.5 rounded-full', t.dot)} />
         {pill}
       </span>
 
@@ -130,12 +129,12 @@ const SnapshotCard = ({
       )}
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto flex flex-col gap-1 rounded-md border bg-[var(--term-surface)] px-md py-2',
           t.border,
         )}
       >
-        <span className={cn('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
+        <span className={cx('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
           {callout}
         </span>
         <span className="text-xxsm text-[var(--term-muted)] break-keep">{footnote}</span>

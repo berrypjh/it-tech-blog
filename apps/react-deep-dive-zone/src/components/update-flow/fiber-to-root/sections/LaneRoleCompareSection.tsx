@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowUp, Database, GitBranch, Network } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ const Card = ({ card, variant }: { card: LaneCard; variant: 'source' | 'parent' 
   const t = toneTokens[card.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -50,7 +49,7 @@ const Card = ({ card, variant }: { card: LaneCard; variant: 'source' | 'parent' 
       </header>
 
       <code
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-2.5 py-1 font-mono text-sm sm:text-md font-bold',
           t.border,
           t.text,
@@ -59,12 +58,12 @@ const Card = ({ card, variant }: { card: LaneCard; variant: 'source' | 'parent' 
         {card.title}
       </code>
 
-      <p className={cn('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
+      <p className={cx('text-xsm sm:text-sm font-bold leading-snug break-keep', t.text)}>
         {card.body}
       </p>
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto rounded-md border px-3 py-2 text-xxsm sm:text-xsm leading-snug break-keep',
           t.chip,
         )}

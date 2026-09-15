@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2, Sparkles, Split, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-tabs"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -67,7 +66,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
               aria-controls={`panel-${tab.key}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(tab.key)}
-              className={cn(
+              className={cx(
                 'relative -mb-px inline-flex items-center gap-1.5 rounded-t-xl border-x border-t px-4 py-2',
                 'text-xsm sm:text-sm font-mono font-bold transition-colors',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -78,7 +77,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1.5 w-1.5 rounded-full',
                   selected ? 'bg-blue-500 dark:bg-blue-400' : 'bg-[var(--term-dim)]',
                 )}
@@ -104,7 +103,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
             return (
               <li
                 key={step.title}
-                className={cn(
+                className={cx(
                   'relative flex flex-col gap-2 rounded-2xl border-2 p-md',
                   accent.card,
                 )}
@@ -112,7 +111,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                       accent.icon,
                     )}
@@ -153,7 +152,7 @@ export const HookConnectionTabs = ({ content }: Props) => {
 
         {/* Summary card */}
         <aside
-          className={cn(
+          className={cx(
             'rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-300/70 bg-blue-50/60',
             'dark:border-blue-800/60 dark:bg-blue-950/30',

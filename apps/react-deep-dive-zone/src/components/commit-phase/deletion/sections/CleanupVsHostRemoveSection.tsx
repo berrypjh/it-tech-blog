@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, ListChecks, SprayCan, Trash2 } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -52,7 +51,7 @@ const TaskLabel = ({ row }: { row: CleanupVsRemoveRow }) => {
       <ToneIconBox tone={row.tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <code className={cn('text-xsm font-bold font-mono', t.text)}>{row.task}</code>
+      <code className={cx('text-xsm font-bold font-mono', t.text)}>{row.task}</code>
     </div>
   );
 };
@@ -68,7 +67,7 @@ const MeaningList = ({ row }: { row: CleanupVsRemoveRow }) => {
         >
           <span
             aria-hidden="true"
-            className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
+            className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', t.dot)}
           />
           <span>{line}</span>
         </li>
@@ -81,7 +80,7 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -92,11 +91,11 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
         <ToneIconBox tone="teal">
           <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
           {title}
         </h3>
       </header>
-      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {text}
       </p>
     </article>

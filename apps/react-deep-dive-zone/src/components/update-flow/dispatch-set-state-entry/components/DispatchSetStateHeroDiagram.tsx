@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, GitBranch, Sparkles, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -83,11 +82,11 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+      <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
         {label}
       </span>
       <span
-        className={cn(
+        className={cx(
           'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
         )}
@@ -100,7 +99,7 @@ const StepHeader = ({
 
 const EntryRow = ({ main, sub }: { main: string; sub: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex flex-col items-center gap-0.5 rounded-lg border px-md py-2.5 text-center',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}

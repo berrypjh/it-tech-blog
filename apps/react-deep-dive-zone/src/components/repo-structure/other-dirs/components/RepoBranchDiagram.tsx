@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FlaskConical, Folder, type LucideIcon, TerminalSquare } from 'lucide-react';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -21,7 +20,7 @@ type Props = { content: SurroundingContent['hero'] };
 export const RepoBranchDiagram = ({ content }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg',
@@ -68,7 +67,7 @@ type RepoRootCardProps = { label: string; caption: string };
 
 const RepoRootCard = ({ label, caption }: RepoRootCardProps) => (
   <div
-    className={cn(
+    className={cx(
       'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
       'shadow-[0_3px_0_var(--term-border)]',
@@ -99,7 +98,7 @@ const BranchCard = ({ node, index }: BranchCardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full flex-col items-center gap-1 rounded-lg border',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'px-3 py-3 text-center transition-all hover:-translate-y-0.5',
@@ -107,14 +106,14 @@ const BranchCard = ({ node, index }: BranchCardProps) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-8 h-8 rounded-md border',
           tone.chip,
         )}
       >
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>
+      <span className={cx('text-xsm font-bold font-mono tracking-tight', tone.text)}>
         {node.name}
       </span>
       <span className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

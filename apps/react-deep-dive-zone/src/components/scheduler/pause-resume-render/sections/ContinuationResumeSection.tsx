@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -28,7 +27,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] gap-md items-stretch">
       {/* description + flow */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-emerald-300/80 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/30',
           'dark:border-emerald-700/70 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/10',
@@ -56,7 +55,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
             return (
               <li key={step} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-lg border px-3 py-1.5',
                     'border-[var(--term-border)] bg-[var(--term-bg)]',
                   )}
@@ -68,7 +67,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
                     {i + 1}
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'text-[11px] sm:text-xsm font-medium break-keep',
                       isLast
                         ? 'text-emerald-700 dark:text-emerald-300 font-bold'
@@ -94,7 +93,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md items-stretch">
         {/* Frame 1 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/30',
             'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -118,7 +117,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
               return (
                 <li
                   key={item}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-1.5 text-[11px] sm:text-xsm leading-snug break-keep',
                     isYield
                       ? 'text-violet-700 dark:text-violet-300 font-bold'
@@ -127,7 +126,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-block h-1.5 w-1.5 rounded-full',
                       isYield ? 'bg-violet-500' : 'bg-blue-500',
                     )}
@@ -164,7 +163,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
 
         {/* Frame 2 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-emerald-300/80 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/30',
             'dark:border-emerald-700/70 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/10',
@@ -188,7 +187,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
               return (
                 <li
                   key={item}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-1.5 text-[11px] sm:text-xsm leading-snug break-keep',
                     isComplete
                       ? 'text-emerald-700 dark:text-emerald-300 font-bold'
@@ -197,7 +196,7 @@ export const ContinuationResumeSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-block h-1.5 w-1.5 rounded-full',
                       isComplete ? 'bg-emerald-500' : 'bg-teal-500',
                     )}

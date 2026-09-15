@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Flag, ListChecks, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -63,7 +62,7 @@ const FiberCard = ({ card }: { card: HeroContent['diagram']['fiberCard'] }) => (
       <ToneIconBox tone="violet" size="sm">
         <Box className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {card.title}
       </span>
       <span className="font-mono text-xxsm text-[var(--term-muted)]">{card.subtitle}</span>
@@ -82,14 +81,14 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
   const Icon = markIconByName[card.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border',
           t.chip,
         )}
@@ -97,7 +96,7 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
         <Icon className="h-[18px] w-[18px]" />
       </span>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
           {card.title}
         </span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

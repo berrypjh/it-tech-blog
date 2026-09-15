@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Boxes,
   CheckCircle2,
@@ -49,7 +48,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-1 flex-col gap-md rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -59,13 +58,13 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
         <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-md sm:text-lg font-bold tracking-tight break-keep', tone.text)}>
+        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight break-keep', tone.text)}>
           {card.title}
         </h3>
       </header>
 
       <span
-        className={cn(
+        className={cx(
           'self-start inline-flex items-center rounded-full border px-3 py-1 text-xsm font-mono font-bold',
           'bg-[var(--term-bg)] border-[var(--term-border)]',
           tone.text,
@@ -80,7 +79,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
             key={item}
             className="flex items-start gap-2 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('shrink-0 mt-0.5', tone.text)}>
+            <span aria-hidden="true" className={cx('shrink-0 mt-0.5', tone.text)}>
               <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span>{item}</span>
@@ -92,7 +91,7 @@ const ReadingCardView = ({ card }: { card: ReadingCard }) => {
         {card.flow.map((step, i) => (
           <li key={step} className="flex items-center gap-1.5">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-1 text-[11px] font-mono font-bold',
                 'bg-[var(--term-bg)] border-[var(--term-border)]',
                 tone.text,

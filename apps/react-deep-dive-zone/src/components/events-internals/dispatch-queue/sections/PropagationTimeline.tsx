@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Ban, Clock, PlayCircle, ShieldOff } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -81,7 +80,7 @@ export const PropagationTimeline = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200/70 bg-gradient-to-br from-blue-50/60 via-white to-violet-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -100,7 +99,7 @@ export const PropagationTimeline = ({ content }: Props) => {
                 role="radio"
                 aria-checked={isSelected}
                 onClick={() => setActive(toggle.value)}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2',
                   'font-mono text-xsm sm:text-sm font-bold transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -126,7 +125,7 @@ export const PropagationTimeline = ({ content }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-start">
           {/* Code */}
           <article
-            className={cn(
+            className={cx(
               'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
               'border-[var(--term-border)]',
             )}
@@ -154,7 +153,7 @@ export const PropagationTimeline = ({ content }: Props) => {
           {/* Timeline */}
           <article
             aria-live="polite"
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
               active === 'stopped'
                 ? 'border-rose-300/80 dark:border-rose-700/70'
@@ -164,7 +163,7 @@ export const PropagationTimeline = ({ content }: Props) => {
           >
             <header className="flex items-center justify-between mb-md">
               <h3
-                className={cn(
+                className={cx(
                   'text-xsm sm:text-sm font-bold break-keep',
                   active === 'stopped'
                     ? 'text-rose-700 dark:text-rose-200'
@@ -175,7 +174,7 @@ export const PropagationTimeline = ({ content }: Props) => {
               </h3>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 items-center justify-center rounded-md',
                   active === 'stopped'
                     ? 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900'
@@ -194,7 +193,7 @@ export const PropagationTimeline = ({ content }: Props) => {
               {activeCase.entries.map((entry, i) => (
                 <li
                   key={`${entry.label}-${i}`}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-lg border px-3 py-2',
                     entry.blocked && 'opacity-80',
                     entryTone(entry.tone),
@@ -202,7 +201,7 @@ export const PropagationTimeline = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold',
                       entryNumberTone(entry.tone),
                     )}
@@ -222,7 +221,7 @@ export const PropagationTimeline = ({ content }: Props) => {
             </ol>
 
             <aside
-              className={cn(
+              className={cx(
                 'mt-md rounded-xl border p-md text-[11px] sm:text-xsm leading-relaxed break-keep',
                 active === 'stopped'
                   ? 'border-rose-200/80 bg-rose-50/40 text-rose-900 dark:border-rose-800/60 dark:bg-rose-950/20 dark:text-rose-100'

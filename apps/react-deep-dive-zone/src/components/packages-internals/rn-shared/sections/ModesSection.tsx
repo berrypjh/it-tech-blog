@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, type LucideIcon, Pencil, Sparkles } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -57,7 +56,7 @@ const ModeColumn = ({
 
 const ModePill = ({ pill }: { pill: RnContent['modes']['pills'][number] }) => (
   <span
-    className={cn(
+    className={cx(
       'flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border px-md py-2 text-center text-xsm font-bold font-mono tracking-tight',
       'bg-[var(--term-surface)] border-[var(--term-border)]',
       toneTokens[pill.tone].text,

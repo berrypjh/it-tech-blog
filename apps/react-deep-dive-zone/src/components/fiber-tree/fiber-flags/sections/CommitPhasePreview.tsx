@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Pencil, ShieldCheck } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -17,7 +16,7 @@ export const CommitPhasePreview = ({ content }: Props) => {
       title: content.renderCard.title,
       body: content.renderCard.body,
       tone: 'sky',
-      icon: <Pencil className={cn('h-5 w-5', toneTokens.sky.text)} aria-hidden="true" />,
+      icon: <Pencil className={cx('h-5 w-5', toneTokens.sky.text)} aria-hidden="true" />,
     },
     {
       id: 'commit',
@@ -25,7 +24,7 @@ export const CommitPhasePreview = ({ content }: Props) => {
       title: content.commitCard.title,
       body: content.commitCard.body,
       tone: 'emerald',
-      icon: <ShieldCheck className={cn('h-5 w-5', toneTokens.emerald.text)} aria-hidden="true" />,
+      icon: <ShieldCheck className={cx('h-5 w-5', toneTokens.emerald.text)} aria-hidden="true" />,
     },
   ];
 

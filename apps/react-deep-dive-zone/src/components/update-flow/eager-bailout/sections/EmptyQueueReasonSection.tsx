@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, CheckCircle2, CircleDotDashed } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ const CompareCard = ({ card }: { card: QueueCompareCard }) => {
   const Icon = queueIconByName[card.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -48,17 +47,17 @@ const CompareCard = ({ card }: { card: QueueCompareCard }) => {
         <ToneBadge tone={card.tone}>{card.pillLabel}</ToneBadge>
       </header>
 
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
         {card.title}
       </h3>
 
       <div
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 rounded-md border bg-[var(--term-surface)] px-md py-3',
           t.border,
         )}
       >
-        <code className={cn('font-mono text-xsm sm:text-sm font-bold', t.text)}>{card.state}</code>
+        <code className={cx('font-mono text-xsm sm:text-sm font-bold', t.text)}>{card.state}</code>
         <QueueVisual variant={card.variant} tone={card.tone} />
       </div>
 
@@ -77,10 +76,10 @@ const QueueVisual = ({ variant, tone }: { variant: 'empty' | 'pending'; tone: To
         {Array.from({ length: 5 }).map((_, i) => (
           <span
             key={i}
-            className={cn('block h-3 w-3 rounded-full border-2 border-dashed', t.border)}
+            className={cx('block h-3 w-3 rounded-full border-2 border-dashed', t.border)}
           />
         ))}
-        <span className={cn('ml-1 text-[10px] font-mono uppercase tracking-wider', t.text)}>
+        <span className={cx('ml-1 text-[10px] font-mono uppercase tracking-wider', t.text)}>
           empty
         </span>
       </div>
@@ -91,7 +90,7 @@ const QueueVisual = ({ variant, tone }: { variant: 'empty' | 'pending'; tone: To
       {['U1', 'U2', 'U3'].map((label, i, arr) => (
         <span key={label} className="flex items-center gap-1.5">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-[10px] font-bold',
               t.chip,
             )}

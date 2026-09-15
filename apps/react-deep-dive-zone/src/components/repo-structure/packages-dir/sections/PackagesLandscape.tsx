@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const PackagesLandscape = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)]',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'p-md sm:p-lg lg:p-xl',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, Box, CheckCircle2 } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -10,7 +9,7 @@ export const PreviousCard = ({ side }: { side: CompareSide }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -18,7 +17,7 @@ export const PreviousCard = ({ side }: { side: CompareSide }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -27,7 +26,7 @@ export const PreviousCard = ({ side }: { side: CompareSide }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -49,7 +48,7 @@ export const NextCard = ({ side, kind }: { side: CompareSide; kind: 'reuse' | 'r
   const t = facetFor(kind === 'reuse' ? 'teal' : 'rose');
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -57,7 +56,7 @@ export const NextCard = ({ side, kind }: { side: CompareSide; kind: 'reuse' | 'r
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -66,7 +65,7 @@ export const NextCard = ({ side, kind }: { side: CompareSide; kind: 'reuse' | 'r
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -89,7 +88,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
   const t = facetFor(isReuse ? 'teal' : 'rose');
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -97,7 +96,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -106,7 +105,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -118,7 +117,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
           )}
         </span>
       </header>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
         {result.title}
       </h3>
       <ul className="flex flex-col gap-1">
@@ -137,7 +136,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
 
 const CodeChip = ({ t, children }: { t: { text: string }; children: React.ReactNode }) => (
   <code
-    className={cn(
+    className={cx(
       'self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold',
       t.text,
     )}

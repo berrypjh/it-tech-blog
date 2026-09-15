@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, GitBranch, type LucideIcon } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -43,7 +42,7 @@ const toRow = (row: CompareRow) => {
       <span className="inline-flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -51,7 +50,7 @@ const toRow = (row: CompareRow) => {
           <Arrow className="h-4 w-4" />
         </span>
         <span className="flex flex-col">
-          <span className={cn('text-sm font-bold leading-tight', t.text)}>
+          <span className={cx('text-sm font-bold leading-tight', t.text)}>
             {row.direction.label}
           </span>
           <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -65,7 +64,7 @@ const toRow = (row: CompareRow) => {
         {row.fn.map((fn) => (
           <li key={fn}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold',
                 t.text,
               )}
@@ -79,7 +78,7 @@ const toRow = (row: CompareRow) => {
         {row.role.map((r, idx) => (
           <li
             key={r}
-            className={cn(
+            className={cx(
               'leading-snug break-keep',
               idx === 0 ? 'font-bold text-[var(--term-fg)]' : 'text-[var(--term-muted)]',
             )}
@@ -88,7 +87,7 @@ const toRow = (row: CompareRow) => {
           </li>
         ))}
       </ul>,
-      <span key="target" className={cn('font-bold break-keep', t.text)}>
+      <span key="target" className={cx('font-bold break-keep', t.text)}>
         {row.target}
       </span>,
     ],

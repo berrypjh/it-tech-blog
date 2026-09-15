@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Bug, Flag, GitBranch, Monitor, Split, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -35,7 +34,7 @@ export const WhyBranchySection = ({ content }: Props) => {
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -45,7 +44,7 @@ export const WhyBranchySection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}
@@ -70,7 +69,7 @@ const BranchyCardItem = ({ card }: { card: BranchyCard }) => {
   const Icon = cardIcon[card.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
         'bg-white dark:bg-[var(--term-bg)]',
         t.border,
@@ -84,7 +83,7 @@ const BranchyCardItem = ({ card }: { card: BranchyCard }) => {
         <LabelChip label={card.label} size="md" strong />
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
             t.chip,
           )}
@@ -93,7 +92,7 @@ const BranchyCardItem = ({ card }: { card: BranchyCard }) => {
         </span>
       </header>
 
-      <h3 className={cn('text-md font-bold leading-snug break-keep', t.text)}>{card.title}</h3>
+      <h3 className={cx('text-md font-bold leading-snug break-keep', t.text)}>{card.title}</h3>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
     </article>

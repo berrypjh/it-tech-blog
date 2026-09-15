@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Eye, Info, MousePointerClick, RefreshCw, ShieldOff, Terminal } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -38,7 +37,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200/70 bg-gradient-to-br from-blue-50/60 via-white to-violet-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -48,7 +47,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
           {/* LEFT: Test UI */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-300/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
               </span>
             </header>
             <div
-              className={cn(
+              className={cx(
                 'rounded-xl border-2 border-dashed bg-blue-50/40 px-md py-md',
                 'border-blue-300/70 dark:border-blue-700/60 dark:bg-blue-950/20',
               )}
@@ -75,7 +74,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 {content.panelLabel}
               </p>
               <div
-                className={cn(
+                className={cx(
                   'mt-3 inline-flex items-center gap-2 rounded-lg border-2 bg-white px-3 py-2',
                   'border-blue-400/80 text-blue-700 shadow-[0_2px_0_rgba(29,78,216,0.2)]',
                   'dark:border-blue-500/70 dark:bg-slate-950/60 dark:text-blue-200',
@@ -94,7 +93,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
 
           {/* MIDDLE: Usage */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-[var(--term-border)] bg-[var(--term-bg)]',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -121,7 +120,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 onClick={handleStop}
                 disabled={stopped}
                 aria-pressed={stopped}
-                className={cn(
+                className={cx(
                   'group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-3 py-2',
                   'font-mono text-xsm sm:text-sm font-bold transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -137,7 +136,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
               <button
                 type="button"
                 onClick={handleReset}
-                className={cn(
+                className={cx(
                   'group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-3 py-2',
                   'font-mono text-xsm sm:text-sm font-bold transition-all',
                   'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -155,7 +154,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
           {/* RIGHT: Inspector */}
           <article
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-violet-300/80 bg-white dark:border-violet-700/70 dark:bg-slate-950/40',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -174,7 +173,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 </span>
               </div>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold',
                   stopped
                     ? 'border-rose-300/80 bg-rose-50 text-rose-700 dark:border-rose-700/70 dark:bg-rose-950/40 dark:text-rose-200'
@@ -197,7 +196,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 return (
                   <div key={field.key} className="contents">
                     <dt
-                      className={cn(
+                      className={cx(
                         'px-3 py-2 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[var(--term-muted)]',
                         i > 0 && 'border-t border-[var(--term-border)]',
                       )}
@@ -205,7 +204,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                       {field.key}
                     </dt>
                     <dd
-                      className={cn(
+                      className={cx(
                         'px-3 py-2 font-mono text-[11px] sm:text-xsm font-bold break-all',
                         i > 0 && 'border-t border-[var(--term-border)]',
                         isPropagation && stopped
@@ -224,7 +223,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
 
             {/* Log */}
             <div
-              className={cn('mt-2 rounded-lg border bg-slate-950 px-3 py-2', 'border-slate-800')}
+              className={cx('mt-2 rounded-lg border bg-slate-950 px-3 py-2', 'border-slate-800')}
             >
               <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
                 {content.logTitle}
@@ -233,7 +232,7 @@ export const InteractiveEventInspector = ({ content }: Props) => {
                 {log.map((entry, i) => (
                   <li
                     key={`${i}-${entry}`}
-                    className={cn(
+                    className={cx(
                       'font-mono text-[11px] break-all',
                       entry.startsWith('[action]')
                         ? 'text-rose-300'

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, CheckCircle2, Sparkles } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -33,7 +32,7 @@ export const ElementStructureSection = ({ content }: Props) => {
 
         {/* RIGHT — Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-200 bg-blue-50/60',
             'dark:border-blue-800/60 dark:bg-blue-950/30',
@@ -48,7 +47,7 @@ export const ElementStructureSection = ({ content }: Props) => {
             {content.points.map((p) => (
               <li
                 key={p}
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border px-3 py-2',
                   'border-blue-200 bg-white',
                   'dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
@@ -67,7 +66,7 @@ export const ElementStructureSection = ({ content }: Props) => {
 
       {/* Key sentence banner */}
       <aside
-        className={cn(
+        className={cx(
           'flex items-start gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300 bg-blue-100/60',
           'dark:border-blue-700/70 dark:bg-blue-950/40',
@@ -76,7 +75,7 @@ export const ElementStructureSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
             'border border-blue-300 bg-white text-blue-700',
             'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',

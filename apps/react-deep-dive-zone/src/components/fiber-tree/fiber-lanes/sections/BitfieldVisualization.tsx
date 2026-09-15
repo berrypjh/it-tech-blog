@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Binary, Lightbulb } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -20,7 +19,7 @@ export const BitfieldVisualization = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -45,18 +44,18 @@ const BitfieldRowItem = ({ row }: { row: BitfieldRow }) => {
   return (
     <div className="flex flex-wrap items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-[var(--term-surface)]">
       <code
-        className={cn('whitespace-pre tracking-wider text-[13px] sm:text-sm font-bold', t.text)}
+        className={cx('whitespace-pre tracking-wider text-[13px] sm:text-sm font-bold', t.text)}
       >
         {row.bits}
       </code>
       <ArrowRight aria-hidden="true" className="h-4 w-4 text-[var(--term-muted)]" />
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-xsm font-bold',
           t.chip,
         )}
       >
-        <span aria-hidden="true" className={cn('inline-block h-1 w-1 rounded-full', t.dot)} />
+        <span aria-hidden="true" className={cx('inline-block h-1 w-1 rounded-full', t.dot)} />
         {row.lane}
       </span>
     </div>

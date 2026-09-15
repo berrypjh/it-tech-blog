@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, ArrowDown, ArrowRight, PlayCircle } from 'lucide-react';
 
 import type { SetStateFlowContent, Tone } from '../content';
@@ -25,7 +24,7 @@ type ColumnProps = {
 
 const ColumnCard = ({ title, items, variant }: ColumnProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)]',
       variant === 'before'
@@ -35,7 +34,7 @@ const ColumnCard = ({ title, items, variant }: ColumnProps) => (
   >
     <header className="flex items-center gap-2">
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
           variant === 'before'
             ? 'border-[var(--term-border)] bg-[var(--term-border)]/20 text-[var(--term-muted)]'
@@ -56,7 +55,7 @@ const ColumnCard = ({ title, items, variant }: ColumnProps) => (
             {item.label}
           </code>
           <code
-            className={cn(
+            className={cx(
               'font-mono text-[11px] sm:text-xsm font-bold break-all text-right',
               valueTone[item.tone],
             )}
@@ -72,7 +71,7 @@ const ColumnCard = ({ title, items, variant }: ColumnProps) => (
 export const BeforeAfterUpdateState = ({ content }: Props) => (
   <section
     aria-label="before-after"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -90,7 +89,7 @@ export const BeforeAfterUpdateState = ({ content }: Props) => (
         </span>
 
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-2',
             'border-blue-400 bg-blue-50 text-blue-700 font-mono text-xsm font-bold',
             'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -102,7 +101,7 @@ export const BeforeAfterUpdateState = ({ content }: Props) => (
         </span>
 
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1.5',
             'border-rose-400/80 bg-rose-50 text-rose-700 text-[11px] font-bold',
             'dark:border-rose-700/60 dark:bg-rose-950/40 dark:text-rose-200',

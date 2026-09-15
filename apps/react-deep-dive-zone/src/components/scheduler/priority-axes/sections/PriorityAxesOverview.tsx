@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Layers, Map, Target, Zap } from 'lucide-react';
 
 import {
@@ -37,7 +36,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
         return (
           <li key={axis.label} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg overflow-hidden',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -47,7 +46,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                     'text-md font-mono font-bold tabular-nums shadow-[0_3px_0_rgba(0,0,0,0.08)]',
                     axisNumberBadge[axis.accent],
@@ -57,7 +56,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border',
                     axisIconBox[axis.accent],
                   )}
@@ -68,7 +67,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
 
               <div className="flex flex-col gap-1">
                 <p
-                  className={cn(
+                  className={cx(
                     'text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider',
                     axisTextStrong[axis.accent],
                   )}
@@ -84,7 +83,7 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
               </div>
 
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center self-start rounded-full border px-3 py-1',
                   'font-mono text-[11px] sm:text-xsm font-semibold break-keep',
                   axisPill[axis.accent],
@@ -94,14 +93,14 @@ export const PriorityAxesOverview = ({ content, axes }: Props) => (
               </span>
 
               <div
-                className={cn(
+                className={cx(
                   'mt-auto flex items-start gap-2 rounded-xl border-2 px-md py-3',
                   axisCoreBox[axis.accent],
                 )}
               >
                 <Target
                   aria-hidden="true"
-                  className={cn('mt-0.5 h-4 w-4 shrink-0', axisTextStrong[axis.accent])}
+                  className={cx('mt-0.5 h-4 w-4 shrink-0', axisTextStrong[axis.accent])}
                 />
                 <p className="text-[11px] sm:text-xsm leading-relaxed break-keep">
                   {axis.coreQuestion}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitCompare, Quote } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -26,7 +25,7 @@ export const JsxCreateElementComparison = ({ content }: Props) => (
       <FlowArrow />
 
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-sm items-center justify-center rounded-3xl p-md text-center',
           'bg-[var(--term-surface)]',
           'border-2 border-dashed border-[var(--term-border)]',
@@ -56,14 +55,14 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
   const t = toneTokens[card.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
         )}
@@ -71,7 +70,7 @@ const SideCard = ({ card }: { card: ComparisonSideCard }) => {
         {card.label}
       </span>
       <CodePreviewPanel code={card.code} language={card.id === 'jsx' ? 'JSX' : 'JS'} />
-      <p className={cn('text-xsm leading-relaxed break-keep', t.text)}>{card.body}</p>
+      <p className={cx('text-xsm leading-relaxed break-keep', t.text)}>{card.body}</p>
     </article>
   );
 };

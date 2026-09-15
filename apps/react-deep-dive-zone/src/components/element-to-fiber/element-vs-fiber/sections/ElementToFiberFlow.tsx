@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Sprout, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -29,7 +28,7 @@ export const ElementToFiberFlow = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -67,15 +66,15 @@ const FlowCardView = ({ card }: { card: FlowCard }) => {
   const t = toneTokens[toneByKind[card.kind]];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-1 flex-col gap-sm rounded-2xl border-2 p-md min-w-0',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
       <header className="flex items-center gap-2">
-        <span aria-hidden="true" className={cn('inline-block w-2 h-2 rounded-full', t.dot)} />
-        <span className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+        <span aria-hidden="true" className={cx('inline-block w-2 h-2 rounded-full', t.dot)} />
+        <span className={cx('font-mono text-xsm font-bold tracking-tight', t.text)}>
           {card.label}
         </span>
       </header>
@@ -90,20 +89,20 @@ const FlowCardView = ({ card }: { card: FlowCard }) => {
           {card.items.map((item) => (
             <li
               key={item.label}
-              className={cn(
+              className={cx(
                 'flex flex-col gap-0.5 rounded-lg border px-sm py-2',
                 'border-[var(--term-border)] bg-[var(--term-surface)]',
               )}
             >
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 font-mono text-[11px] font-bold',
                   t.text,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block w-1 h-1 rounded-full', t.dot)}
+                  className={cx('inline-block w-1 h-1 rounded-full', t.dot)}
                 />
                 {item.label}
               </span>

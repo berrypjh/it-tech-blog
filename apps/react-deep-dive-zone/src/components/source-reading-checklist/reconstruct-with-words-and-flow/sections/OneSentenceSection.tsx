@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, Quote } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const OneSentenceSection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 overflow-hidden',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -31,7 +30,7 @@ export const OneSentenceSection = ({ content }: Props) => {
       >
         {/* Notebook header */}
         <header
-          className={cn(
+          className={cx(
             'flex items-center justify-between gap-2 border-b-2 px-md py-3',
             'border-slate-200 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-900/40',
           )}
@@ -62,7 +61,7 @@ export const OneSentenceSection = ({ content }: Props) => {
           </span>
           <div className="pb-3 lg:py-3 lg:border-t border-[var(--term-border)] lg:border-solid">
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-0.5',
                 'border-[var(--term-border)] bg-[var(--term-surface)]',
                 'font-mono text-[11px] text-[var(--term-fg)]',
@@ -78,7 +77,7 @@ export const OneSentenceSection = ({ content }: Props) => {
           </span>
           <div className="pb-3 lg:py-3 border-t border-dashed border-[var(--term-border)] lg:border-solid">
             <blockquote
-              className={cn(
+              className={cx(
                 'flex items-start gap-3 rounded-xl border-2 p-md',
                 'border-blue-300 bg-blue-50/60 text-blue-900',
                 'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -98,7 +97,7 @@ export const OneSentenceSection = ({ content }: Props) => {
 
         {/* Helper bar */}
         <footer
-          className={cn(
+          className={cx(
             'border-t-2 px-md sm:px-lg py-3',
             'border-slate-200 bg-slate-50/60',
             'dark:border-slate-700 dark:bg-slate-900/30',
@@ -112,7 +111,7 @@ export const OneSentenceSection = ({ content }: Props) => {
               {content.helperFlow.map((step, i) => (
                 <li key={step} className="flex items-center gap-1.5">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border px-2 py-0.5',
                       'border-blue-200 bg-white text-blue-800',
                       'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',

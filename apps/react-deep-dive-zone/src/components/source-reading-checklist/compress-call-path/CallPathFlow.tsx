@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown } from 'lucide-react';
 
 import type { CallStep } from './content';
@@ -18,7 +17,7 @@ type Props = {
 export const CallPathFlow = ({ flow, className }: Props) => {
   return (
     <ol
-      className={cn(
+      className={cx(
         'flex flex-col gap-0 rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
         'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -32,7 +31,7 @@ export const CallPathFlow = ({ flow, className }: Props) => {
           <Fragment key={`${step.fn}-${i}`}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'group flex items-start gap-3 rounded-xl border-2 p-3',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -43,7 +42,7 @@ export const CallPathFlow = ({ flow, className }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2',
                     t.border,
                     t.chip,
@@ -54,7 +53,7 @@ export const CallPathFlow = ({ flow, className }: Props) => {
                 </span>
                 <div className="flex flex-col gap-1 min-w-0 flex-1">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <code className={cn('font-mono text-xsm sm:text-sm font-bold', t.text)}>
+                    <code className={cx('font-mono text-xsm sm:text-sm font-bold', t.text)}>
                       {step.fn}
                     </code>
                     <StepBadge kind={step.kind} size="sm" />

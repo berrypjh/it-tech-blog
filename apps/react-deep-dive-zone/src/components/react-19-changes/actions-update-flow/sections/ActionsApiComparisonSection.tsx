@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent } from '../content';
 import { stateTone } from '../tone';
@@ -18,7 +18,7 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -52,7 +52,7 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
               return (
                 <tr
                   key={row.hookName}
-                  className={cn(
+                  className={cx(
                     'border-t border-slate-200 dark:border-slate-700',
                     'transition-colors hover:bg-blue-50/40 dark:hover:bg-blue-950/20',
                     i % 2 === 1 && 'bg-slate-50/40 dark:bg-slate-900/30',
@@ -61,7 +61,7 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
                   <th scope="row" className="px-md py-4 align-top">
                     <div className="flex flex-col items-start gap-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
                           'font-mono text-[10px] font-bold',
                           tone.chip,
@@ -69,11 +69,11 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
                       >
                         <span
                           aria-hidden="true"
-                          className={cn('block h-1 w-1 rounded-full', tone.dot)}
+                          className={cx('block h-1 w-1 rounded-full', tone.dot)}
                         />
                         Hook
                       </span>
-                      <span className={cn('font-mono text-sm font-bold break-all', tone.text)}>
+                      <span className={cx('font-mono text-sm font-bold break-all', tone.text)}>
                         {row.hookName}()
                       </span>
                     </div>
@@ -106,7 +106,7 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
           return (
             <li
               key={row.hookName}
-              className={cn(
+              className={cx(
                 'flex flex-col gap-sm p-md',
                 i > 0 && 'border-t border-slate-200 dark:border-slate-700',
               )}
@@ -114,15 +114,15 @@ export const ActionsApiComparisonSection = ({ content }: Props) => (
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold',
                     tone.chip,
                   )}
                 >
-                  <span className={cn('block h-1 w-1 rounded-full', tone.dot)} />
+                  <span className={cx('block h-1 w-1 rounded-full', tone.dot)} />
                   Hook
                 </span>
-                <span className={cn('font-mono text-sm font-bold break-all', tone.text)}>
+                <span className={cx('font-mono text-sm font-bold break-all', tone.text)}>
                   {row.hookName}()
                 </span>
               </div>
@@ -152,7 +152,7 @@ const Cell = ({ label, value, muted }: { label: string; value: string; muted?: b
       {label}
     </p>
     <p
-      className={cn(
+      className={cx(
         'text-xsm leading-relaxed break-keep',
         muted ? 'text-[var(--term-muted)]' : 'text-[var(--term-fg)]',
       )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -34,7 +33,7 @@ export const JsxToTypeRows = ({ content }: Props) => (
 const RowView = ({ row }: { row: JsxRow }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'group grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1.2fr)] gap-md items-stretch',
         'rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -59,7 +58,7 @@ const RowView = ({ row }: { row: JsxRow }) => {
             result
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
               toneTokens[row.tone].chip,
             )}
@@ -68,7 +67,7 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
         </div>
         <code
-          className={cn(
+          className={cx(
             'font-mono text-sm sm:text-md font-bold tracking-tight break-all rounded-xl border px-md py-3',
             toneTokens[row.tone].chip,
           )}
@@ -86,7 +85,7 @@ const RowView = ({ row }: { row: JsxRow }) => {
             meaning
           </span>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
               toneTokens[row.tone].chip,
             )}
@@ -95,7 +94,7 @@ const RowView = ({ row }: { row: JsxRow }) => {
           </span>
         </div>
         <p
-          className={cn('text-xsm sm:text-sm leading-relaxed break-keep', 'text-[var(--term-fg)]')}
+          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', 'text-[var(--term-fg)]')}
         >
           {row.meaning}
         </p>

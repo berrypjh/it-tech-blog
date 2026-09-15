@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces, Eye } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -45,7 +44,7 @@ const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
   const Icon = card.iconName === 'eye' ? Eye : Braces;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -56,7 +55,7 @@ const FlowCard = ({ card }: { card: HeroExplanationCard }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             toneTokens[card.tone].chip,
           )}

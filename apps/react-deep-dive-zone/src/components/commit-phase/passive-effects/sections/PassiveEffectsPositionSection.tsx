@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Clock, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -52,7 +51,7 @@ const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['call
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-2 rounded-lg border-2 p-md sm:p-lg text-center',
         t.fill.border,
         t.fill.bg,
@@ -61,7 +60,7 @@ const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['call
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 items-center justify-center rounded-lg border-2',
           t.fill.bg,
           t.fill.border,
@@ -70,11 +69,11 @@ const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['call
       >
         <Clock className="h-7 w-7" aria-hidden="true" />
       </span>
-      <p className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
+      <p className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         <span className="block">{callout.line1}</span>
         <span className="block">{callout.line2}</span>
       </p>
-      <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+      <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
         after paint
       </span>
     </article>
@@ -85,31 +84,31 @@ const StepCard = ({ step, index }: { step: PositionStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border p-md',
         step.active
-          ? cn('border-2', t.fill.border, t.fill.bg)
-          : cn(t.border, 'bg-[var(--term-bg)]'),
+          ? cx('border-2', t.fill.border, t.fill.bg)
+          : cx(t.border, 'bg-[var(--term-bg)]'),
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-11 w-11 items-center justify-center rounded-lg border text-xsm font-mono font-bold',
-          step.active ? cn(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
+          step.active ? cx(t.fill.bg, t.fill.border, t.fill.text) : t.chip,
         )}
       >
         {index}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
             {step.title}
           </h3>
           {step.active && (
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
                 t.chip,
               )}
@@ -122,7 +121,7 @@ const StepCard = ({ step, index }: { step: PositionStep; index: number }) => {
       </div>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden sm:inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

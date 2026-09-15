@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 import { ToneIconBox } from '../tone';
@@ -21,7 +20,7 @@ export const WorkTagValueCard = ({ tone, icon, title, subtitle, value, descripti
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -34,25 +33,25 @@ export const WorkTagValueCard = ({ tone, icon, title, subtitle, value, descripti
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
           <code
-            className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}
+            className={cx('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}
           >
             {title}
           </code>
-          {subtitle && <code className={cn('font-mono text-[11px]', t.text)}>{subtitle}</code>}
+          {subtitle && <code className={cx('font-mono text-[11px]', t.text)}>{subtitle}</code>}
         </div>
       </header>
 
       <div
-        className={cn(
+        className={cx(
           'flex items-center justify-between gap-sm rounded-xl border-2 p-md',
           t.fill.bg,
           t.fill.border,
         )}
       >
-        <span className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
+        <span className={cx('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}>
           Work Tag
         </span>
-        <code className={cn('font-mono text-3xl sm:text-4xl font-extrabold tabular-nums', t.text)}>
+        <code className={cx('font-mono text-3xl sm:text-4xl font-extrabold tabular-nums', t.text)}>
           {value}
         </code>
       </div>

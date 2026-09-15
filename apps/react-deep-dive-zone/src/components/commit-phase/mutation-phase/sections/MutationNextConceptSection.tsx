@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowLeftRight,
@@ -67,7 +66,7 @@ const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['ro
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.sky.fill.border,
           toneTokens.sky.fill.bg,
@@ -77,7 +76,7 @@ const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['ro
           <Sparkles className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
+          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
         >
           {content.bottomNote}
         </p>
@@ -108,14 +107,14 @@ const FlowCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-1 rounded-lg border-2 p-md text-center',
         t.fill.border,
         t.fill.bg,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <code className={cn('text-sm sm:text-md font-bold font-mono break-keep', t.fill.text)}>
+      <code className={cx('text-sm sm:text-md font-bold font-mono break-keep', t.fill.text)}>
         {title}
       </code>
       <span className="text-[11px] text-[var(--term-muted)] break-keep">{subtitle}</span>
@@ -147,7 +146,7 @@ const PointCard = ({ point }: { point: ExtraPoint }) => {
   const t = toneTokens[point.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -157,7 +156,7 @@ const PointCard = ({ point }: { point: ExtraPoint }) => {
         <ToneIconBox tone={point.tone} size="sm">
           <Icon className="h-4 w-4" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
           {point.title}
         </h3>
       </header>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -22,14 +21,14 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
       gradient="radial-gradient(circle at 50% 40%, rgba(217,119,6,0.10), transparent 55%)"
     >
       <div
-        className={cn(
+        className={cx(
           'relative grid items-stretch gap-md',
           'grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         )}
       >
         {/* 좌측: 섞여 있는 작업 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border p-md',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
@@ -43,7 +42,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
             {hero.mixed.map((item) => (
               <li
                 key={item}
-                className={cn(
+                className={cx(
                   'rounded-md border px-2.5 py-1.5 text-[11px] leading-snug text-[var(--term-fg)] break-keep',
                   'border-dashed border-[var(--term-border)] bg-[var(--term-surface)]',
                 )}
@@ -75,7 +74,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
 
         {/* 우측: 재정렬된 실행 순서 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border p-md',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
@@ -90,7 +89,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
               <li key={item} className="flex items-stretch gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center shrink-0 w-7 h-7 rounded-full mt-0.5',
                     'border-2 border-[var(--term-border)] bg-[var(--term-surface)] font-mono text-[11px] font-bold',
                     toneTokens.violet.text,
@@ -109,7 +108,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
 
       {/* 하단 강조 */}
       <p
-        className={cn(
+        className={cx(
           'relative mt-md rounded-lg border px-md py-2.5 text-center text-xsm font-bold tracking-tight',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           toneTokens.sky.text,
@@ -124,7 +123,7 @@ export const QueueFlowDiagram = ({ hero, className }: Props) => {
 const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative flex flex-col items-center justify-center gap-1 rounded-xl border min-w-[10rem]',
         'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         'shadow-[0_3px_0_var(--term-border)] px-md py-md',
@@ -133,7 +132,7 @@ const SchedulerCenterCard = ({ hero }: { hero: SchedulerContent['hero'] }) => {
       <ToneIconBox tone="violet" size="md">
         <Clock className="h-5 w-5" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('text-lg font-bold font-mono tracking-tight', toneTokens.violet.text)}>
+      <span className={cx('text-lg font-bold font-mono tracking-tight', toneTokens.violet.text)}>
         {hero.schedulerTitle}
       </span>
       <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">

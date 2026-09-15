@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces, Crosshair, Database, Hand, Link2, Route } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -72,7 +71,7 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
   const Icon = heroFlowIconByName[step.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -82,7 +81,7 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
           {step.label}
         </h3>
         {step.code && (
@@ -112,11 +111,11 @@ const UpdateObjectCard = ({ step }: { step: HeroFlowStep }) => {
         <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>
           {step.label}
         </span>
         <span
-          className={cn(
+          className={cx(
             'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
             t.chip,
           )}

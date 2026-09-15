@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -66,7 +65,7 @@ export const PriorityWrapperFlow = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid items-stretch gap-2 sm:gap-3',
         'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
       )}
@@ -77,7 +76,7 @@ export const PriorityWrapperFlow = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-2 rounded-2xl border-2 p-3 sm:p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               toneCard[step.tone],
@@ -87,7 +86,7 @@ export const PriorityWrapperFlow = ({ content }: Props) => (
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full',
                   'text-[11px] font-mono font-bold tabular-nums shadow-[0_2px_0_var(--term-border)]',
                   'transition-transform group-hover:scale-110 motion-reduce:transform-none',
@@ -98,7 +97,7 @@ export const PriorityWrapperFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                   toneIconBox[step.tone],
                 )}
@@ -108,7 +107,7 @@ export const PriorityWrapperFlow = ({ content }: Props) => (
             </div>
 
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight text-[var(--term-fg)] break-keep font-mono',
                 step.isCore && 'text-cyan-700 dark:text-cyan-200',
               )}

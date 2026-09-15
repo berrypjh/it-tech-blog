@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { LucideIcon } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -34,7 +33,7 @@ export const FieldCard = ({
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized ? 'bg-[var(--term-surface)]' : 'bg-[var(--term-bg)]',
@@ -48,7 +47,7 @@ export const FieldCard = ({
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('text-sm font-bold font-mono tracking-tight truncate', t.text)}>
+          <h3 className={cx('text-sm font-bold font-mono tracking-tight truncate', t.text)}>
             {title}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -58,14 +57,14 @@ export const FieldCard = ({
       </header>
 
       <ul
-        className={cn(
+        className={cx(
           'flex flex-col gap-0.5 rounded-lg border px-3 py-2 font-mono text-[11px] leading-snug',
           'border-dashed border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         {fields.map((field, i) => (
           <li key={`${field.name}-${i}`} className="flex items-baseline gap-1.5 break-all">
-            <span className={cn('shrink-0', t.text)}>{field.name}</span>
+            <span className={cx('shrink-0', t.text)}>{field.name}</span>
             {field.value && (
               <>
                 <span className="text-[var(--term-dim)]">:</span>

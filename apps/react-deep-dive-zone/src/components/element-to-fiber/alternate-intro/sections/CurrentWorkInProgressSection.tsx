@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitCompare } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -55,7 +54,7 @@ const PairBlock = ({
   <div className="flex flex-col gap-md min-w-0">
     <FiberPairCard variant={variant} badge={badge} title={title} items={items} />
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-2xl border p-md',
         'border-[var(--term-border)] bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',

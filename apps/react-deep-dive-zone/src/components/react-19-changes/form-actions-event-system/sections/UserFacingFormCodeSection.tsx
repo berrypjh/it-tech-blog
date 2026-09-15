@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { SendIcon, SparklesIcon } from '../icons';
@@ -30,7 +30,7 @@ export const UserFacingFormCodeSection = ({ content }: Props) => (
 
       {/* RIGHT: rendered form mock — NOT a real submit */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -50,7 +50,7 @@ export const UserFacingFormCodeSection = ({ content }: Props) => (
 
         {/* Form mock — preventDefault inside button (type=button) and form onSubmit prevented */}
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border-2 p-md',
             'border-slate-200 bg-slate-50/40',
             'dark:border-slate-700 dark:bg-slate-900/30',
@@ -69,7 +69,7 @@ export const UserFacingFormCodeSection = ({ content }: Props) => (
             type="text"
             placeholder={content.mock.placeholder}
             readOnly
-            className={cn(
+            className={cx(
               'w-full rounded-lg border-2 px-3 py-2 font-mono text-xsm',
               'border-slate-200 bg-white text-[var(--term-fg)] placeholder:text-[var(--term-dim)]',
               'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -79,7 +79,7 @@ export const UserFacingFormCodeSection = ({ content }: Props) => (
           <button
             type="button"
             disabled
-            className={cn(
+            className={cx(
               'mt-1 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2',
               'bg-blue-600 text-white font-bold text-xsm dark:bg-blue-500',
               'shadow-[0_2px_0_rgba(15,23,42,0.25)]',
@@ -93,7 +93,7 @@ export const UserFacingFormCodeSection = ({ content }: Props) => (
 
         {/* info bar */}
         <div
-          className={cn(
+          className={cx(
             'flex items-start gap-2 rounded-xl border px-3 py-2.5',
             'border-blue-200 bg-blue-50/60 dark:border-blue-800/60 dark:bg-blue-950/30',
           )}

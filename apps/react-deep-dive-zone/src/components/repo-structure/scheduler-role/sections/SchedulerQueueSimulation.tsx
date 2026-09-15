@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListOrdered, RefreshCw } from 'lucide-react';
 
 import { CompareBridge } from '../../../shared/compare';
@@ -23,7 +22,7 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
         {/* 좌측 incoming */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)]',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'p-md sm:p-lg',
@@ -55,7 +54,7 @@ export const SchedulerQueueSimulation = ({ content }: Props) => {
 
         {/* 우측 execution */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)]',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'p-md sm:p-lg',
@@ -93,20 +92,20 @@ const IncomingTaskCard = ({ task }: TaskProps) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center justify-between gap-sm rounded-lg border p-3',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
     >
       <span className="text-xsm font-medium text-[var(--term-fg)] break-keep">{task.title}</span>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
           'bg-[var(--term-surface)] border-[var(--term-border)]',
           t.text,
         )}
       >
-        <span aria-hidden="true" className={cn('inline-block w-1 h-1 rounded-full', t.dot)} />
+        <span aria-hidden="true" className={cx('inline-block w-1 h-1 rounded-full', t.dot)} />
         {task.badge}
       </span>
     </div>
@@ -129,7 +128,7 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center justify-between gap-sm rounded-lg border p-3',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
       )}
@@ -137,7 +136,7 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
       <div className="flex items-center gap-sm min-w-0">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-7 h-7 rounded-full border shrink-0',
             'font-bold text-sm tabular-nums',
             'bg-[var(--term-surface)] border-[var(--term-border)]',
@@ -152,7 +151,7 @@ const ExecutionRowItem = ({ row, doneLabel, waitingLabel }: RowItemProps) => {
         </div>
       </div>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
           statusClass,
         )}

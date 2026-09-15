@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -40,7 +39,7 @@ const QaCard = ({ tone, label, mark, text }: QaCardProps) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -49,16 +48,16 @@ const QaCard = ({ tone, label, mark, text }: QaCardProps) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border font-mono font-bold',
             t.chip,
           )}
         >
           {mark}
         </span>
-        <span className={cn('text-xxsm font-mono uppercase tracking-wider', t.text)}>{label}</span>
+        <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>{label}</span>
       </header>
-      <p className={cn('text-sm sm:text-md font-bold leading-relaxed break-keep', t.text)}>
+      <p className={cx('text-sm sm:text-md font-bold leading-relaxed break-keep', t.text)}>
         {text}
       </p>
     </article>

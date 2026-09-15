@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleHelp, PauseCircle, RefreshCcw, ShieldCheck, Zap } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -28,7 +27,7 @@ const conceptTone = {
 export const TodayQuestion = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'rounded-3xl border-2 p-md sm:p-lg',
       'border-blue-200/80 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -50,7 +49,7 @@ export const TodayQuestion = ({ content }: Props) => (
       {/* LEFT: big ? icon */}
       <div
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full mx-auto lg:mx-0',
           'bg-blue-100 text-blue-600 shadow-[inset_0_-2px_0_rgba(59,130,246,0.15)]',
           'dark:bg-blue-950/60 dark:text-blue-300',
@@ -71,7 +70,7 @@ export const TodayQuestion = ({ content }: Props) => (
           return (
             <li
               key={c.label}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-xl border bg-slate-50/50 px-3 py-2',
                 'dark:bg-slate-900/30 dark:border-slate-700',
                 'border-slate-200',
@@ -80,7 +79,7 @@ export const TodayQuestion = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                   conceptTone[c.icon],
                 )}

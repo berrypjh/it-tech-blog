@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseEffectEventContent } from '../content';
 import { effectTone } from '../tone';
@@ -24,7 +24,7 @@ export const KeyTakeaways = ({ content }: Props) => (
         return (
           <li key={card.number} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                 tone.border,
                 'bg-white dark:bg-[var(--term-bg)]',
@@ -36,7 +36,7 @@ export const KeyTakeaways = ({ content }: Props) => (
               <div className="flex items-start justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     tone.iconChip,
                   )}
@@ -45,7 +45,7 @@ export const KeyTakeaways = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl font-mono text-xsm font-bold tabular-nums text-white',
                     tone.solidBg,
                   )}
@@ -54,7 +54,7 @@ export const KeyTakeaways = ({ content }: Props) => (
                 </span>
               </div>
 
-              <h3 className={cn('text-md sm:text-lg font-bold break-keep leading-snug', tone.text)}>
+              <h3 className={cx('text-md sm:text-lg font-bold break-keep leading-snug', tone.text)}>
                 {card.title}
               </h3>
 

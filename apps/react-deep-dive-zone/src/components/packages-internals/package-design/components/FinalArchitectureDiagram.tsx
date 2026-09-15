@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, Boxes, Clock, Code, Layers, type LucideIcon, Monitor } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -38,7 +37,7 @@ export const FinalArchitectureDiagram = ({
 }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         compact ? 'px-md py-md sm:p-md' : 'px-md py-lg sm:p-lg',
@@ -53,7 +52,7 @@ export const FinalArchitectureDiagram = ({
       <p className="sr-only">{a11y}</p>
 
       <div
-        className={cn(
+        className={cx(
           'relative grid gap-md',
           'grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)]',
         )}
@@ -108,7 +107,7 @@ const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         CARD_CLASS,
         'rounded-xl border',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
@@ -121,11 +120,11 @@ const FlowBox = ({ node, compact, emphasized }: FlowBoxProps) => {
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn(TITLE_CLASS, tone.text)}>{node.label}</span>
+        <span className={cx(TITLE_CLASS, tone.text)}>{node.label}</span>
       </span>
       {node.subtitle && <span className={SUBTITLE_CLASS}>{node.subtitle}</span>}
       {!compact && node.description && (
-        <p className={cn(DESCRIPTION_CLASS, 'mt-1')}>{node.description}</p>
+        <p className={cx(DESCRIPTION_CLASS, 'mt-1')}>{node.description}</p>
       )}
     </article>
   );
@@ -152,7 +151,7 @@ const SideAxisCard = ({ title, subtitle, description, tone, icon: Icon }: SideAx
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         CARD_CLASS,
         'rounded-xl border-2 border-dashed p-md',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -163,10 +162,10 @@ const SideAxisCard = ({ title, subtitle, description, tone, icon: Icon }: SideAx
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn(TITLE_CLASS, t.text)}>{title}</span>
+        <span className={cx(TITLE_CLASS, t.text)}>{title}</span>
       </span>
       <span className={SUBTITLE_CLASS}>{subtitle}</span>
-      {description && <p className={cn(DESCRIPTION_CLASS, 'mt-1')}>{description}</p>}
+      {description && <p className={cx(DESCRIPTION_CLASS, 'mt-1')}>{description}</p>}
     </article>
   );
 };

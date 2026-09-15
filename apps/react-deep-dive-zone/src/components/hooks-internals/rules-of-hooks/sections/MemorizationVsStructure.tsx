@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BrainCircuit, CheckCircle2, Network, Split, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -19,7 +18,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
   const isMisconception = variant === 'misconception';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         'motion-safe:hover:-translate-y-0.5',
@@ -31,7 +30,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-full',
             isMisconception
               ? 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900'
@@ -46,7 +45,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
           )}
         </span>
         <p
-          className={cn(
+          className={cx(
             'text-[10px] font-mono font-bold uppercase tracking-wider',
             isMisconception
               ? 'text-rose-700 dark:text-rose-300'
@@ -60,7 +59,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
       <div className="flex items-start gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
             isMisconception
               ? 'border-rose-200/80 bg-rose-100 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/60 dark:text-rose-200'
@@ -74,7 +73,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
           )}
         </span>
         <h3
-          className={cn(
+          className={cx(
             'text-sm sm:text-md font-bold leading-snug break-keep flex-1 pt-1',
             isMisconception
               ? 'text-rose-800 dark:text-rose-100'
@@ -86,7 +85,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
       </div>
 
       <p
-        className={cn(
+        className={cx(
           'rounded-lg border px-3 py-2 text-[11px] sm:text-xsm font-bold break-keep',
           isMisconception
             ? 'border-rose-200/70 bg-white text-rose-900 dark:border-rose-800/60 dark:bg-rose-950/20 dark:text-rose-100'
@@ -97,7 +96,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
       </p>
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto text-[11px] sm:text-xsm italic leading-relaxed break-keep',
           isMisconception
             ? 'text-rose-700/85 dark:text-rose-300/85'
@@ -113,7 +112,7 @@ const SideCard = ({ variant, label, title, body, caption }: SideProps) => {
 export const MemorizationVsStructure = ({ content }: Props) => (
   <section
     aria-labelledby="heading-memorization"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -135,7 +134,7 @@ export const MemorizationVsStructure = ({ content }: Props) => (
       />
       <div aria-hidden="true" className="flex items-center justify-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full',
             'bg-slate-900 text-white font-mono text-sm sm:text-md font-bold tracking-wider',
             'border-4 border-[var(--term-bg)] shadow-[0_3px_0_var(--term-border)]',

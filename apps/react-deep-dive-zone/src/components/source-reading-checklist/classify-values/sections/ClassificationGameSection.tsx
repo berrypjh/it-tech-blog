@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Gauge, Sparkles, Tags } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -58,13 +57,13 @@ export const ClassificationGameSection = ({ content }: Props) => {
                     aria-pressed={isActive}
                     aria-controls="game-result"
                     onClick={() => setActiveId(opt.id)}
-                    className={cn(
+                    className={cx(
                       'group flex items-center justify-between gap-3 rounded-xl border-2 p-3 text-left',
                       'transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       isActive
-                        ? cn(ot.chip, ot.border, 'shadow-[0_2px_0_var(--term-border)]')
-                        : cn(
+                        ? cx(ot.chip, ot.border, 'shadow-[0_2px_0_var(--term-border)]')
+                        : cx(
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
                             'motion-safe:hover:-translate-y-0.5',
@@ -74,17 +73,17 @@ export const ClassificationGameSection = ({ content }: Props) => {
                     <span className="flex items-center gap-2 min-w-0">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                           isActive
-                            ? cn(ot.border, 'bg-white dark:bg-[var(--term-bg)]')
+                            ? cx(ot.border, 'bg-white dark:bg-[var(--term-bg)]')
                             : 'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                         )}
                       >
-                        {isActive && <span className={cn('block h-2 w-2 rounded-full', ot.dot)} />}
+                        {isActive && <span className={cx('block h-2 w-2 rounded-full', ot.dot)} />}
                       </span>
                       <code
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold truncate',
                           isActive ? ot.text : 'text-[var(--term-fg)]',
                         )}
@@ -102,7 +101,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
           <article
             id="game-result"
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
               activeT.border,
               activeT.chip,
@@ -115,7 +114,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                 {content.labels.selected}
               </span>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex w-fit items-center gap-1.5 rounded-md border-2 px-2.5 py-1.5',
                   'bg-white dark:bg-[var(--term-bg)]',
                   activeT.border,
@@ -135,14 +134,14 @@ export const ClassificationGameSection = ({ content }: Props) => {
                 {content.labels.answer}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-md border-2 p-3',
                   'bg-white dark:bg-[var(--term-bg)]',
                   activeT.border,
                 )}
               >
-                <CheckCircle2 className={cn('h-5 w-5 shrink-0', activeT.text)} aria-hidden="true" />
-                <span className={cn('text-md font-bold', activeT.text)}>
+                <CheckCircle2 className={cx('h-5 w-5 shrink-0', activeT.text)} aria-hidden="true" />
+                <span className={cx('text-md font-bold', activeT.text)}>
                   {activeCategory.label}
                 </span>
               </div>
@@ -154,14 +153,14 @@ export const ClassificationGameSection = ({ content }: Props) => {
                 {content.labels.description}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'bg-white dark:bg-[var(--term-bg)]',
                   activeT.border,
                 )}
               >
                 <Sparkles
-                  className={cn('mt-0.5 h-4 w-4 shrink-0', activeT.text)}
+                  className={cx('mt-0.5 h-4 w-4 shrink-0', activeT.text)}
                   aria-hidden="true"
                 />
                 <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
@@ -182,7 +181,7 @@ export const ClassificationGameSection = ({ content }: Props) => {
                   return (
                     <li key={cat.key}>
                       <span
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
                           'bg-white dark:bg-[var(--term-bg)]',
                           t.border,
@@ -193,11 +192,11 @@ export const ClassificationGameSection = ({ content }: Props) => {
                       >
                         <span
                           aria-hidden="true"
-                          className={cn('block h-1 w-1 rounded-full', t.dot)}
+                          className={cx('block h-1 w-1 rounded-full', t.dot)}
                         />
                         {cat.label}
                         {isAnswer && (
-                          <CheckCircle2 className={cn('h-3 w-3', t.text)} aria-hidden="true" />
+                          <CheckCircle2 className={cx('h-3 w-3', t.text)} aria-hidden="true" />
                         )}
                       </span>
                     </li>

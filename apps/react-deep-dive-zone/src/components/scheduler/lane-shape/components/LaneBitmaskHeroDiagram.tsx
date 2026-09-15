@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Repeat, Sparkles, Zap } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -46,7 +45,7 @@ export const LaneBitmaskHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -79,8 +78,8 @@ export const LaneBitmaskHeroDiagram = ({ content, className }: Props) => {
                 key={a}
                 className="inline-flex items-center gap-1.5 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5"
               >
-                <span className={cn('block h-2 w-2 rounded-full', t.dot)} />
-                <span className={cn('font-mono', t.text)}>{laneLegendLabel[a]}</span>
+                <span className={cx('block h-2 w-2 rounded-full', t.dot)} />
+                <span className={cx('font-mono', t.text)}>{laneLegendLabel[a]}</span>
               </li>
             );
           })}
@@ -96,7 +95,7 @@ const LaneRow = ({ card }: { card: HeroLaneCard }) => {
   const Icon = laneIcon[card.accent];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -107,7 +106,7 @@ const LaneRow = ({ card }: { card: HeroLaneCard }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
           {card.name}
         </span>
         <BitCellRow bits={card.bits} accent={card.accent} size="md" />
@@ -118,7 +117,7 @@ const LaneRow = ({ card }: { card: HeroLaneCard }) => {
 
 const ResultCard = ({ title, bits }: { title: string; bits: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

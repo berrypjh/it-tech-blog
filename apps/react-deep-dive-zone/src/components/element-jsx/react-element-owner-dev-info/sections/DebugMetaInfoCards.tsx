@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -34,7 +33,7 @@ export const DebugMetaInfoCards = ({ content }: Props) => (
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <code
-              className={cn(
+              className={cx(
                 'font-mono text-md font-bold tracking-tight',
                 toneTokens[card.tone].text,
               )}

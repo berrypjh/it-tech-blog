@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Hexagon, Tag } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -20,7 +19,7 @@ export const HostComponentHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -53,7 +52,7 @@ const DomTagCard = ({ code, type }: { code: string; type: string }) => {
   const t = toneTokens.emerald;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-sm pl-md min-w-0',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -63,7 +62,7 @@ const DomTagCard = ({ code, type }: { code: string; type: string }) => {
         <Tag className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cn('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
+        <code className={cx('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
           {code}
         </code>
         <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">{type}</code>
@@ -76,7 +75,7 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md min-w-0',
         'shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -90,7 +89,7 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
             result fiber
           </span>
-          <code className={cn('font-mono text-md font-extrabold tracking-tight', t.text)}>
+          <code className={cx('font-mono text-md font-extrabold tracking-tight', t.text)}>
             {title}
           </code>
         </div>
@@ -100,14 +99,14 @@ const ResultCard = ({ title, items }: { title: string; items: string[] }) => {
         {items.map((item) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-lg border bg-[var(--term-bg)] px-sm py-2',
               'border-[var(--term-border)]',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
                 'text-white dark:text-slate-950',
                 toneTokens.emerald.dot,

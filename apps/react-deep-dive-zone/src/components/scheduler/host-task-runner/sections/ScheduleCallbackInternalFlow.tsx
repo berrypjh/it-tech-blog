@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Cog, Database, Gauge, Package, Timer, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -33,7 +32,7 @@ export const ScheduleCallbackInternalFlow = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
               pkgCardBorder[step.accent],
@@ -42,7 +41,7 @@ export const ScheduleCallbackInternalFlow = ({ content }: Props) => (
             <header className="flex items-center justify-between gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-mono font-bold tabular-nums',
                   pkgNumberBadge[step.accent],
                 )}
@@ -51,7 +50,7 @@ export const ScheduleCallbackInternalFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   pkgIconBox[step.accent],
                 )}
@@ -60,7 +59,7 @@ export const ScheduleCallbackInternalFlow = ({ content }: Props) => (
               </span>
             </header>
             <code
-              className={cn(
+              className={cx(
                 'font-mono text-xsm sm:text-sm font-bold break-all',
                 pkgTextStrong[step.accent],
               )}

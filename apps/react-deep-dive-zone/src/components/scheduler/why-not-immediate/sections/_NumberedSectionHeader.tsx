@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   id: string;
@@ -25,7 +25,7 @@ export const NumberedSectionHeader = ({ id, number, eyebrow, title, description,
     <div className="flex items-center gap-sm">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
           'text-sm font-mono font-bold tabular-nums',
           'bg-blue-600 text-white shadow-[0_2px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',

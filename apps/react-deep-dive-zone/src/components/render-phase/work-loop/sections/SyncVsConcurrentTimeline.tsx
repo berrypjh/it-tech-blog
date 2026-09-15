@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,17 +31,17 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
+        <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
           {card.title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -57,9 +56,9 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
             <li className="flex flex-col items-center min-w-0">
               <TimelineNodeBox node={node} tone={tone} />
               <span
-                className={cn(
+                className={cx(
                   'mt-1 text-xxsm sm:text-xsm leading-snug text-center break-keep max-w-[88px]',
-                  node.yield ? cn(toneTokens.amber.text, 'font-bold') : 'text-[var(--term-muted)]',
+                  node.yield ? cx(toneTokens.amber.text, 'font-bold') : 'text-[var(--term-muted)]',
                 )}
               >
                 {node.caption}
@@ -78,18 +77,18 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
       </ol>
 
       <footer
-        className={cn('mt-auto flex items-start gap-sm rounded-lg border p-sm sm:p-md', t.border)}
+        className={cx('mt-auto flex items-start gap-sm rounded-lg border p-sm sm:p-md', t.border)}
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
             t.chip,
           )}
         >
           <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
-        <p className={cn('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
+        <p className={cx('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
           {card.footer}
         </p>
       </footer>
@@ -102,7 +101,7 @@ const TimelineNodeBox = ({ node, tone }: { node: TimelineNode; tone: ToneKey }) 
   const t = toneTokens[nodeTone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border shadow-[0_1px_0_var(--term-border)]',
         node.yield && 'border-dashed',
         t.fill.bg,
@@ -111,7 +110,7 @@ const TimelineNodeBox = ({ node, tone }: { node: TimelineNode; tone: ToneKey }) 
       )}
     >
       <span
-        className={cn(
+        className={cx(
           node.yield || node.finish ? 'text-lg sm:text-xl' : 'text-md sm:text-lg font-bold',
           'leading-none',
         )}

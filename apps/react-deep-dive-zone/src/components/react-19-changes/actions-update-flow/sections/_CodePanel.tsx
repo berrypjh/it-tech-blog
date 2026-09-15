@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   code: string;
@@ -14,7 +14,7 @@ type Props = {
  */
 export const CodePanel = ({ code, langBadge, fileName, ariaLabel }: Props) => (
   <div
-    className={cn(
+    className={cx(
       'relative overflow-hidden rounded-2xl border-2',
       'border-slate-700/80 bg-slate-950',
       'shadow-[0_2px_0_rgba(0,0,0,0.25)]',

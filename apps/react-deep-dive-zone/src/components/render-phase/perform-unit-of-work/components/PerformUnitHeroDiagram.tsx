@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, Box, HelpCircle, Settings } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -84,7 +83,7 @@ const StepRow = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,
@@ -93,7 +92,7 @@ const StepRow = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {title}
       </span>
     </article>
@@ -102,7 +101,7 @@ const StepRow = ({
 
 const DecisionRow = ({ title }: { title: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
       'shadow-[0_2px_0_var(--term-border)]',
       toneTokens.indigo.border,
@@ -111,7 +110,7 @@ const DecisionRow = ({ title }: { title: string }) => (
     <ToneIconBox tone="indigo" size="sm">
       <HelpCircle className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
-    <span className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.indigo.text)}>
+    <span className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.indigo.text)}>
       {title}
     </span>
   </article>
@@ -133,7 +132,7 @@ const BranchCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex min-w-0 flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,
@@ -144,7 +143,7 @@ const BranchCard = ({
           {icon}
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-xxsm font-bold uppercase tracking-wider',
             t.chip,
           )}

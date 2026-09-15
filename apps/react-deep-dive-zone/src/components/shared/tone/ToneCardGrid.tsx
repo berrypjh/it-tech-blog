@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ToneKey } from '../tones';
 
@@ -13,7 +13,7 @@ type GridProps = {
 
 /** 톤 카드 패턴 공통 그리드. 1 → 2 → 4열 반응형. 자식은 <ToneCardItem>. */
 export const ToneCardGrid = ({ children, className }: GridProps) => (
-  <ul className={cn('grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md', className)}>
+  <ul className={cx('grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md', className)}>
     {children}
   </ul>
 );

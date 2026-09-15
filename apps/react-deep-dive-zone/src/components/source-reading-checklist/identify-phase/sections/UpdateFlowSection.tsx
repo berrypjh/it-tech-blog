@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, MousePointerClick, Route } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -32,7 +31,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
           {/* setState start */}
           <li>
             <div
-              className={cn(
+              className={cx(
                 'flex items-center gap-3 rounded-xl border-2 px-3 py-3',
                 'border-amber-300 bg-amber-50',
                 'dark:border-amber-700/70 dark:bg-amber-950/30',
@@ -40,7 +39,7 @@ export const UpdateFlowSection = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-md',
                   'border-2 border-amber-400 bg-white text-amber-700',
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -83,7 +82,7 @@ const FlowBlockCard = ({ block, index }: { block: FlowBlock; index: number }) =>
   const t = getPhaseClasses(block.phase);
   return (
     <article
-      className={cn(
+      className={cx(
         'group rounded-xl border-2 p-md',
         'bg-white dark:bg-[var(--term-bg)]',
         t.border,
@@ -96,7 +95,7 @@ const FlowBlockCard = ({ block, index }: { block: FlowBlock; index: number }) =>
         <div className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-7 w-7 items-center justify-center rounded-full border-2',
               t.border,
               t.chip,
@@ -113,7 +112,7 @@ const FlowBlockCard = ({ block, index }: { block: FlowBlock; index: number }) =>
         {block.functions.map((fn) => (
           <li key={fn}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border-2 px-2 py-0.5',
                 t.border,
                 'bg-white dark:bg-[var(--term-bg)]',
@@ -128,7 +127,7 @@ const FlowBlockCard = ({ block, index }: { block: FlowBlock; index: number }) =>
       </ul>
 
       <p
-        className={cn(
+        className={cx(
           'mt-md text-xsm leading-relaxed break-keep pt-sm border-t border-dashed',
           'border-[var(--term-border)]',
           'text-[var(--term-muted)]',

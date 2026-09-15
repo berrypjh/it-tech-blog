@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, BadgeCheck, CopyX, ListChecks, Network, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -39,15 +38,15 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
         </p>
 
         <div
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-sm rounded-lg border p-md',
             emerald.border,
             emerald.fill.bg,
           )}
         >
-          <Sparkles aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
+          <Sparkles aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', emerald.text)} />
           <p
-            className={cn(
+            className={cx(
               'text-xsm sm:text-sm font-bold leading-snug break-keep',
               emerald.fill.text,
             )}
@@ -64,7 +63,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
             {content.diagramTitle}
           </h3>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               emerald.chip,
             )}
@@ -77,21 +76,21 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
           {content.updates.map((upd) => (
             <li
               key={upd}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-3 py-2 shadow-[0_2px_0_var(--term-border)]',
                 emerald.border,
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                   emerald.chip,
                 )}
               >
                 <Network className="h-4 w-4" aria-hidden="true" />
               </span>
-              <span className={cn('text-xsm sm:text-sm font-mono font-bold', emerald.text)}>
+              <span className={cx('text-xsm sm:text-sm font-mono font-bold', emerald.text)}>
                 {upd}
               </span>
             </li>
@@ -102,7 +101,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
 
         {/* 중복 방지 박스 */}
         <div
-          className={cn(
+          className={cx(
             'flex items-center gap-sm rounded-lg border p-md',
             amber.border,
             amber.fill.bg,
@@ -113,7 +112,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
           </ToneIconBox>
           <div className="flex flex-col min-w-0">
             <code
-              className={cn(
+              className={cx(
                 'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-2 py-0.5 font-mono text-[11px] font-bold',
                 amber.border,
                 amber.text,
@@ -121,7 +120,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
             >
               {content.middleLabel}
             </code>
-            <span className={cn('text-[10px] leading-snug break-keep mt-1', amber.fill.text)}>
+            <span className={cx('text-[10px] leading-snug break-keep mt-1', amber.fill.text)}>
               {content.middleSub}
             </span>
           </div>
@@ -131,17 +130,17 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
 
         {/* 결과 */}
         <div
-          className={cn('flex items-center gap-sm rounded-lg border p-md', sky.border, sky.fill.bg)}
+          className={cx('flex items-center gap-sm rounded-lg border p-md', sky.border, sky.fill.bg)}
         >
           <ToneIconBox tone="sky" size="md">
             <ListChecks className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <div className="flex flex-col min-w-0 flex-1">
-            <span className={cn('text-[10px] uppercase tracking-wider font-mono', sky.text)}>
+            <span className={cx('text-[10px] uppercase tracking-wider font-mono', sky.text)}>
               {content.resultTitle}
             </span>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex w-fit items-center rounded-md border bg-[var(--term-surface)] px-3 py-1 font-mono text-md font-bold',
                 sky.border,
                 sky.fill.text,
@@ -151,7 +150,7 @@ export const DuplicateRootGuardSection = ({ content }: Props) => (
             </code>
           </div>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider text-right break-keep',
               sky.text,
             )}

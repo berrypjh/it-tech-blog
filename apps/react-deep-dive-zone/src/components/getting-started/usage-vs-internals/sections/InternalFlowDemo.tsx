@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Lightbulb } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -110,7 +109,7 @@ const CounterDemoCard = ({ title, count, buttonLabel, hint, onClick }: CounterDe
     <button
       type="button"
       onClick={onClick}
-      className={cn(
+      className={cx(
         'w-full inline-flex items-center justify-center gap-2 px-md py-3 rounded-md',
         'bg-slate-900 text-slate-50 border border-transparent dark:border-slate-600 dark:bg-slate-800',
         'text-sm font-bold transition-colors hover:bg-slate-800 dark:hover:bg-slate-700',
@@ -159,7 +158,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
             <li key={step.num}>
               <div
                 aria-current={status === 'active' ? 'step' : undefined}
-                className={cn(
+                className={cx(
                   'flex items-start gap-sm p-sm rounded-md border transition-colors',
                   status === 'active' && 'border-[var(--term-accent)] bg-[var(--term-surface)]',
                   status === 'done' && 'border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -167,7 +166,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full text-xxsm font-bold tabular-nums',
                     status === 'active' &&
                       'bg-[var(--term-surface)] border border-[var(--term-accent)] text-[var(--term-accent)]',
@@ -182,7 +181,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                 <div className="min-w-0 flex flex-col gap-0.5 flex-1">
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <h4
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm font-bold leading-tight',
                         status === 'active'
                           ? 'text-[var(--term-accent)]'
@@ -205,7 +204,7 @@ const ProgressCard = ({ title, autoPill, steps, activeStep }: ProgressProps) => 
                     )}
                   </div>
                   <p
-                    className={cn(
+                    className={cx(
                       'text-[11px] sm:text-xsm leading-relaxed break-keep',
                       status === 'idle' ? 'text-[var(--term-dim)]' : 'text-[var(--term-muted)]',
                     )}

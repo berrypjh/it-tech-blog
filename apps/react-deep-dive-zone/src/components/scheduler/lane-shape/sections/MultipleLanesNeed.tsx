@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   EyeOff,
@@ -51,7 +50,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
           return (
             <li key={c.title} className="h-full">
               <article
-                className={cn(
+                className={cx(
                   'group relative flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
                   'shadow-[0_2px_0_var(--term-border)] transition-all',
                   'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -61,7 +60,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
                 <header className="flex items-center justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
                       laneIconBox[c.accent],
                     )}
@@ -69,7 +68,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
                     <Icon className="h-5 w-5" />
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center self-start rounded-full border px-2 py-0.5',
                       'text-[10px] font-mono font-bold uppercase tracking-wider',
                       lanePill[c.accent],
@@ -98,7 +97,7 @@ export const MultipleLanesNeed = ({ content }: Props) => (
       {/* root.pendingLanes box */}
       <article
         aria-label={content.root.title}
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-300/90 bg-gradient-to-br from-blue-50/80 via-white to-violet-50/50',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -138,8 +137,8 @@ export const MultipleLanesNeed = ({ content }: Props) => (
               key={a}
               className="inline-flex items-center gap-1.5 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5"
             >
-              <span aria-hidden="true" className={cn('block h-2 w-2 rounded-full', laneDot[a])} />
-              <span className={cn('font-mono', laneTextStrong[a])}>
+              <span aria-hidden="true" className={cx('block h-2 w-2 rounded-full', laneDot[a])} />
+              <span className={cx('font-mono', laneTextStrong[a])}>
                 {a === 'transition'
                   ? 'TransitionLane'
                   : a === 'retry'

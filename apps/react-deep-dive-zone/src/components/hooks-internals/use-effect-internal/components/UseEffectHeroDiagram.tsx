@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ClipboardList, PlayCircle } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -26,7 +25,7 @@ export const UseEffectHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -60,7 +59,7 @@ const PhaseCard = ({ phase }: { phase: HeroPhase }) => {
   const Icon = visualMap[phase.visual];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -72,7 +71,7 @@ const PhaseCard = ({ phase }: { phase: HeroPhase }) => {
           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
             {phase.title}
           </span>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">

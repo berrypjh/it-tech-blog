@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, List, Search, Zap } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -22,7 +21,7 @@ export const TransitionDeferredHeroDiagram = ({ content, className }: Props) => 
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -83,7 +82,7 @@ const LaneCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -94,7 +93,7 @@ const LaneCard = ({
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
         {subtitle && (
           <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
             {subtitle}
@@ -110,7 +109,7 @@ const LaneCard = ({
 
       <div className="flex items-center gap-1.5">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider',
             t.text,
           )}

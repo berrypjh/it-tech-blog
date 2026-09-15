@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, FileText, Flag, Settings, SquareDashed } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -57,7 +56,7 @@ const ElementCard = ({ element }: { element: FourElement }) => {
   const Icon = elementIconByName[element.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
@@ -66,7 +65,7 @@ const ElementCard = ({ element }: { element: FourElement }) => {
         <Icon className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <span className="flex min-w-0 flex-col gap-0.5">
-        <span className={cn('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {element.title}
         </span>
         <span className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

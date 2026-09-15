@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Move, Pencil, Trash2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -38,7 +37,7 @@ export const BeforeAfterCard = ({
   const Icon = iconMap[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_0_var(--term-border)]',
@@ -48,7 +47,7 @@ export const BeforeAfterCard = ({
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border',
             EFFECT_NEUTRAL,
             effectText[card.id],
@@ -57,7 +56,7 @@ export const BeforeAfterCard = ({
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col min-w-0">
-          <h3 className={cn('font-mono text-md font-bold tracking-tight', effectText[card.id])}>
+          <h3 className={cx('font-mono text-md font-bold tracking-tight', effectText[card.id])}>
             {card.title}
           </h3>
           <p className="text-xsm leading-snug text-[var(--term-muted)] break-keep">
@@ -94,7 +93,7 @@ export const BeforeAfterCard = ({
           <span aria-hidden="true" className="mx-1">
             →
           </span>
-          <span className={cn('font-bold', effectText[card.id])}>{card.resultDescription}</span>
+          <span className={cx('font-bold', effectText[card.id])}>{card.resultDescription}</span>
         </p>
       </div>
     </article>

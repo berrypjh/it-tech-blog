@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Lightbulb, Package, Target, Waypoints } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -48,7 +47,7 @@ const CardView = ({ card }: { card: ModernHostCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-sm rounded-2xl border-2 p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -58,7 +57,7 @@ const CardView = ({ card }: { card: ModernHostCard }) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-11 h-11 rounded-2xl border shrink-0',
             t.chip,
           )}
@@ -66,7 +65,7 @@ const CardView = ({ card }: { card: ModernHostCard }) => {
           <Icon className="h-5 w-5" />
         </span>
         <div className="flex flex-col">
-          <h3 className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{card.title}</h3>
+          <h3 className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{card.title}</h3>
           <span className="text-[11px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             {card.subtitle}
           </span>

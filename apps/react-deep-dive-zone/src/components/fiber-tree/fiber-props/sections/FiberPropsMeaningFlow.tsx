@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, GitCompare, Hammer, Lightbulb, RefreshCw, Share2, Zap } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -32,7 +31,7 @@ const toFlowStep = (step: MeaningStep): FlowStepItem => {
     title: step.title,
     body: formatInline(step.body),
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} />,
   };
 };
 
@@ -60,7 +59,7 @@ export const FiberPropsMeaningFlow = ({ content }: Props) => (
           return (
             <ToneCardItem key={item.id} tone={item.tone} icon={<Icon className="h-5 w-5" />}>
               <h4
-                className={cn(
+                className={cx(
                   'text-sm font-bold tracking-tight break-keep',
                   toneTokens[item.tone].text,
                 )}

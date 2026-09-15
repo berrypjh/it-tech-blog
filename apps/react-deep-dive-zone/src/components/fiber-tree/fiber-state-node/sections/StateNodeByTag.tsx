@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Home, Network, User } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -39,7 +38,7 @@ const ByTagCardItem = ({ card }: { card: ByTagCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -51,7 +50,7 @@ const ByTagCardItem = ({ card }: { card: ByTagCard }) => {
           <Icon className="h-6 w-6" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono whitespace-nowrap',
             toneTokens[card.tone].chip,
           )}
@@ -60,11 +59,11 @@ const ByTagCardItem = ({ card }: { card: ByTagCard }) => {
         </span>
       </header>
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}>
+      <h3 className={cx('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}>
         {card.title}
       </h3>
       <p
-        className={cn(
+        className={cx(
           'font-mono text-xsm sm:text-sm font-bold break-keep',
           toneTokens[card.tone].text,
         )}

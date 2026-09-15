@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const ListKeyScene = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -41,7 +40,7 @@ export const ListKeyScene = ({ content }: Props) => (
       </article>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -70,7 +69,7 @@ export const ListKeyScene = ({ content }: Props) => (
 const ItemRow = ({ item }: { item: RenderedItem }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center justify-between gap-md rounded-xl border p-sm',
         'bg-[var(--term-bg)] border-[var(--term-border)]',
       )}
@@ -78,7 +77,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
       <div className="flex items-center gap-sm min-w-0">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-8 h-8 rounded-md border font-mono text-[11px] font-bold tabular-nums',
             toneTokens[item.tone].chip,
           )}
@@ -92,7 +91,7 @@ const ItemRow = ({ item }: { item: RenderedItem }) => {
           {item.idText}
         </code>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold tracking-tight',
             toneTokens[item.tone].chip,
           )}

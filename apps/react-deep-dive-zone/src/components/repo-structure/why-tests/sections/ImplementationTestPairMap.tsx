@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight } from 'lucide-react';
 
 import { MappingRowCard } from '../../../shared/grid';
@@ -58,7 +57,7 @@ type FileColumnProps = { label: string; name: string; description: string; tone:
 
 const FileColumn = ({ label, name, description, tone }: FileColumnProps) => (
   <div className="flex flex-col gap-1.5">
-    <span className={cn('text-[10px] uppercase tracking-wider', tone)}>{label}</span>
+    <span className={cx('text-[10px] uppercase tracking-wider', tone)}>{label}</span>
     <code className="inline-flex w-fit items-center px-2 py-1 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] text-xsm sm:text-sm font-mono font-bold text-[var(--term-fg)] break-all">
       {name}
     </code>

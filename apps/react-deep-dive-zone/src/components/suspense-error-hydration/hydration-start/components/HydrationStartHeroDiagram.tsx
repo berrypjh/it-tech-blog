@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Globe, Link2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -19,7 +18,7 @@ export const HydrationStartHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -87,7 +86,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       <span
@@ -102,7 +101,7 @@ const FiberChip = ({ tone, label }: { tone: ToneKey; label: string }) => {
   const t = toneTokens[tone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center rounded-md border px-2 py-1 font-mono text-[11px] font-bold break-keep',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.border,

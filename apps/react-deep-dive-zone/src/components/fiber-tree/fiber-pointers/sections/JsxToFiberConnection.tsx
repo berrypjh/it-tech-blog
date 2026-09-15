@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Network } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -10,7 +9,7 @@ import type { FiberTreePointersContent } from '../content';
 
 type Props = { content: FiberTreePointersContent['conversion'] };
 
-const PANEL = cn(
+const PANEL = cx(
   'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
   'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
 );

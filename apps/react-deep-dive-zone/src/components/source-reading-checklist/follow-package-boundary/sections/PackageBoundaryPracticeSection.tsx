@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileCode2, ScanSearch, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
         {content.cards.map((card) => (
           <li key={card.id}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 'border-slate-200 dark:border-slate-700',
@@ -35,7 +34,7 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
               <header className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-md',
                     'border border-blue-300 bg-blue-50 text-blue-700',
                     'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -52,13 +51,13 @@ export const PackageBoundaryPracticeSection = ({ content }: Props) => {
                 {card.pairs.map((pair) => (
                   <li
                     key={pair.file}
-                    className={cn(
+                    className={cx(
                       'flex flex-wrap items-center gap-2 rounded-md border px-2.5 py-2',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                     )}
                   >
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1 font-mono text-[11px] text-[var(--term-fg)]',
                       )}
                     >

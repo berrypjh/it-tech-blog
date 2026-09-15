@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionRow } from '../content';
@@ -26,7 +26,7 @@ export const ConnectionTable = ({ childSiblingRows, returnRows, label, wide }: P
       <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
         <RowList rows={childSiblingRows} />
         <div
-          className={cn(
+          className={cx(
             'border-t border-dashed border-[var(--term-border)] pt-sm',
             'md:border-t-0 md:border-l md:pt-0 md:pl-md',
           )}
@@ -58,7 +58,7 @@ const ConnectionRowItem = ({ row }: { row: ConnectionRow }) => {
     <li className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'block h-px w-4 border-t-2 shrink-0',
           t.border,
           pointerDashed[row.pointer] ? 'border-dashed' : 'border-solid',
@@ -67,7 +67,7 @@ const ConnectionRowItem = ({ row }: { row: ConnectionRow }) => {
       <span className="text-[var(--term-fg)] break-all">
         <span className="text-[var(--term-fg)]">{row.from}</span>.
         <span
-          className={cn('inline-flex items-center rounded-md border px-1.5 py-0 font-bold', t.chip)}
+          className={cx('inline-flex items-center rounded-md border px-1.5 py-0 font-bold', t.chip)}
         >
           {row.pointer}
         </span>

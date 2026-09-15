@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -19,7 +18,7 @@ export const DispatcherSelection = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-dispatcher"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -43,7 +42,7 @@ export const DispatcherSelection = ({ content }: Props) => {
           <div
             role="tablist"
             aria-label="Dispatcher render mode"
-            className={cn(
+            className={cx(
               'mx-auto inline-flex w-full max-w-[260px] items-center gap-1 rounded-full border-2 p-1',
               'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             )}
@@ -64,14 +63,14 @@ export const DispatcherSelection = ({ content }: Props) => {
 
           {/* Decoration */}
           <div
-            className={cn(
+            className={cx(
               'relative flex flex-1 flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-md',
               'border-[var(--term-border)] bg-[var(--term-border)]/15 dark:bg-slate-950/30',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-14 w-14 items-center justify-center rounded-full',
                 'bg-gradient-to-br',
                 mode === 'mount'
@@ -145,7 +144,7 @@ const DispatcherCard = ({
   return (
     <article
       aria-current={highlighted ? 'true' : undefined}
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         s.border,
@@ -153,9 +152,9 @@ const DispatcherCard = ({
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-sm sm:text-md font-bold', s.mono)}>{card.title}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold', s.mono)}>{card.title}</h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
             s.chip,
           )}
@@ -164,12 +163,12 @@ const DispatcherCard = ({
         </span>
       </header>
 
-      <code className={cn('font-mono text-xsm sm:text-sm font-bold break-all', s.iconText)}>
+      <code className={cx('font-mono text-xsm sm:text-sm font-bold break-all', s.iconText)}>
         {card.dispatcher}
       </code>
 
       <div
-        className={cn(
+        className={cx(
           'flex flex-col items-center gap-1 rounded-xl border bg-[var(--term-border)]/10 dark:bg-slate-950/30 p-md text-center',
           'border-[var(--term-border)]',
         )}
@@ -177,10 +176,10 @@ const DispatcherCard = ({
         {card.flow.map((row, i) => (
           <code
             key={i}
-            className={cn(
+            className={cx(
               'font-mono text-xsm sm:text-sm leading-relaxed',
               row.mono ? 'text-[var(--term-fg)]' : 'text-[var(--term-muted)]',
-              row.emphasis && cn('font-bold', s.mono),
+              row.emphasis && cx('font-bold', s.mono),
             )}
           >
             {row.line}
@@ -207,7 +206,7 @@ const ToggleButton = ({
     role="tab"
     aria-selected={active}
     onClick={onClick}
-    className={cn(
+    className={cx(
       'flex-1 inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xsm font-bold transition-all',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
       active

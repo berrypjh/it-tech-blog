@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
@@ -30,7 +30,7 @@ export const ActionsHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -82,7 +82,7 @@ const StateCardBox = ({ card }: { card: StateCard }) => {
   const Icon = iconRegistry[card.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -93,7 +93,7 @@ const StateCardBox = ({ card }: { card: StateCard }) => {
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+        <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       </header>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.caption}</p>
       <span className="w-fit rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5 font-mono text-[11px] leading-none text-[var(--term-muted)]">

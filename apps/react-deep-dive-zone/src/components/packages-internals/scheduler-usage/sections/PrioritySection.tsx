@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CheckCircle2,
   Lightbulb,
@@ -37,7 +36,7 @@ const toFlowStep = (level: PriorityLevel, idx: number): FlowStepItem => {
     title: level.title,
     body: level.description,
     tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[tone].text)} aria-hidden="true" />,
   };
 };
 
@@ -55,7 +54,7 @@ export const PrioritySection = ({ content }: Props) => {
       <FlowStepsGrid steps={content.levels.map(toFlowStep)} columns={4} />
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border p-md sm:p-lg',
           'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           'transition-all hover:-translate-y-0.5',
@@ -65,7 +64,7 @@ export const PrioritySection = ({ content }: Props) => {
         <header className="flex items-center gap-sm">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
               toneTokens.sky.chip,
             )}
@@ -73,7 +72,7 @@ export const PrioritySection = ({ content }: Props) => {
             <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3
-            className={cn(
+            className={cx(
               'text-md sm:text-lg font-bold tracking-tight break-keep',
               toneTokens.sky.text,
             )}
@@ -89,7 +88,7 @@ export const PrioritySection = ({ content }: Props) => {
               className="flex items-center gap-2 text-xsm sm:text-sm text-[var(--term-fg)] break-keep"
             >
               <CheckCircle2
-                className={cn('h-4 w-4 shrink-0', toneTokens.emerald.text)}
+                className={cx('h-4 w-4 shrink-0', toneTokens.emerald.text)}
                 aria-hidden="true"
               />
               <span>{item}</span>

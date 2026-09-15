@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../shared/tones';
 
@@ -24,7 +24,7 @@ export const RoleBadge = ({ tone, size = 'sm', strong, className, children }: Pr
   const t = toneTokens[roleToneKey[tone]];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border font-mono font-bold uppercase tracking-wider',
         sizeClass[size],
         t.chip,
@@ -32,7 +32,7 @@ export const RoleBadge = ({ tone, size = 'sm', strong, className, children }: Pr
         className,
       )}
     >
-      <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', t.dot)} />
+      <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', t.dot)} />
       {children ?? roleLabel[tone]}
     </span>
   );

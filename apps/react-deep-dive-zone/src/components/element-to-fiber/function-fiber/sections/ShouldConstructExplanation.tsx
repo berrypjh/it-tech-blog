@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, HelpCircle, Lightbulb, Split } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -35,14 +34,14 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
       {/* Left: description + emphasis */}
       <div className="flex flex-col gap-md">
         <article
-          className={cn(
+          className={cx(
             'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
         >
           <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
             React는{' '}
-            <code className={cn('font-mono font-bold', sky.text)}>
+            <code className={cx('font-mono font-bold', sky.text)}>
               Component.prototype.isReactComponent
             </code>{' '}
             존재 여부를 바탕으로 클래스 컴포넌트인지 판단합니다.
@@ -50,7 +49,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
         </article>
 
         <article
-          className={cn(
+          className={cx(
             'flex items-start gap-sm rounded-2xl border-2 p-md sm:p-lg',
             amber.fill.bg,
             amber.fill.border,
@@ -60,7 +59,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
             <Lightbulb className="h-5 w-5" aria-hidden="true" />
           </ToneIconBox>
           <p
-            className={cn('text-sm sm:text-md font-bold leading-snug break-keep', amber.fill.text)}
+            className={cx('text-sm sm:text-md font-bold leading-snug break-keep', amber.fill.text)}
           >
             {content.emphasis}
           </p>
@@ -69,7 +68,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
 
       {/* Right: flow chart */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'flex flex-col gap-sm',
@@ -87,7 +86,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
               {idx < content.flow.length - 1 && (
                 <div className="flex justify-center py-1" aria-hidden="true">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center justify-center w-7 h-7 rounded-full border',
                       sky.chip,
                     )}
@@ -106,7 +105,7 @@ export const ShouldConstructExplanation = ({ content }: Props) => (
 
 const FlowQuestion = ({ prompt }: { prompt: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border-2 px-md py-3',
       sky.fill.bg,
       sky.fill.border,
@@ -115,7 +114,7 @@ const FlowQuestion = ({ prompt }: { prompt: string }) => (
     <ToneIconBox tone="sky" size="sm">
       <HelpCircle className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <code className={cn('font-mono text-xsm sm:text-sm font-bold break-keep', sky.fill.text)}>
+    <code className={cx('font-mono text-xsm sm:text-sm font-bold break-keep', sky.fill.text)}>
       {prompt}
     </code>
   </div>
@@ -140,14 +139,14 @@ const BranchRow = ({
   const t = toneTokens[branchToneKey[tone]];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-lg border px-sm py-2',
         t.border,
         'bg-[var(--term-bg)]',
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono shrink-0',
           t.chip,
         )}
@@ -155,7 +154,7 @@ const BranchRow = ({
         {label}
       </span>
       <ArrowRight className="h-3.5 w-3.5 text-[var(--term-muted)] shrink-0" aria-hidden="true" />
-      <code className={cn('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
+      <code className={cx('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
         {result}
       </code>
     </div>

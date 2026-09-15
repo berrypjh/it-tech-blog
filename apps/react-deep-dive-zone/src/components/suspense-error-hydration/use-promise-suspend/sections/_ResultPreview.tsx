@@ -1,12 +1,11 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Loader, TriangleAlert } from 'lucide-react';
 
 type FulfilledProps = { code: string; label?: string };
 
 export const FulfilledPreview = ({ code, label }: FulfilledProps) => (
   <div
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border-2 p-3',
       'border-emerald-200 bg-emerald-50/60 dark:border-emerald-800/60 dark:bg-emerald-950/30',
     )}
@@ -25,7 +24,7 @@ export const FulfilledPreview = ({ code, label }: FulfilledProps) => (
 
 export const PendingPreview = ({ label }: { label: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border-2 p-3',
       'border-violet-200 bg-violet-50/60 dark:border-violet-800/60 dark:bg-violet-950/30',
     )}
@@ -57,7 +56,7 @@ type RejectedProps = { title: string; body?: string };
 
 export const RejectedPreview = ({ title, body }: RejectedProps) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-start gap-2 rounded-xl border-2 p-3',
       'border-rose-200 bg-rose-50/60 dark:border-rose-800/60 dark:bg-rose-950/30',
     )}

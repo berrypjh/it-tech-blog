@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ArrowUp, CheckCircle2, ChevronDown } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -28,7 +27,7 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
           return (
             <Fragment key={node.title}>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col items-center justify-center gap-1 rounded-lg border p-md text-center',
                   'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
                   t.fill.bg,
@@ -36,7 +35,7 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
                 )}
               >
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-sm sm:text-md font-bold leading-tight break-keep',
                     t.fill.text,
                   )}

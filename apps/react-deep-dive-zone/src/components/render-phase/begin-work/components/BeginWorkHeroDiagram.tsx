@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Box,
   Code2,
@@ -70,7 +69,7 @@ const CenterNode = ({ title, subtitle }: { title: string; subtitle: string }) =>
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full min-w-0 items-center gap-sm rounded-lg border px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)]',
         t.fill.bg,
@@ -81,7 +80,7 @@ const CenterNode = ({ title, subtitle }: { title: string; subtitle: string }) =>
         <Settings className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('text-sm font-bold font-mono tracking-tight break-keep', t.fill.text)}>
+        <span className={cx('text-sm font-bold font-mono tracking-tight break-keep', t.fill.text)}>
           {title}
         </span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -97,7 +96,7 @@ const BranchChip = ({ branch }: { branch: FiberTagItem }) => {
   const Icon = fiberTagIconByName[branch.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -105,14 +104,14 @@ const BranchChip = ({ branch }: { branch: FiberTagItem }) => {
     >
       <header className="flex items-center gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
             t.chip,
           )}
         >
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <h3 className={cn('min-w-0 truncate text-xsm font-bold leading-tight break-keep', t.text)}>
+        <h3 className={cx('min-w-0 truncate text-xsm font-bold leading-tight break-keep', t.text)}>
           {branch.title}
         </h3>
       </header>

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   code: string;
@@ -93,7 +93,7 @@ export const CodeBlock = ({
   const lines = code.split('\n');
   return (
     <div
-      className={cn('overflow-hidden rounded-xl border bg-slate-950 border-slate-800', className)}
+      className={cx('overflow-hidden rounded-xl border bg-slate-950 border-slate-800', className)}
     >
       {fileLabel && (
         <div className="flex items-center justify-between gap-2 border-b border-slate-800 px-3 py-2">

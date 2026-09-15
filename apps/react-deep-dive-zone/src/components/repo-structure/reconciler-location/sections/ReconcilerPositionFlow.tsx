@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, CircleCheck, Cuboid, type LucideIcon, Map, MonitorSmartphone } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -25,7 +24,7 @@ const toFlowStep = (card: PositionCard, idx: number): FlowStepItem => {
     title: card.title,
     body: formatInline(card.description),
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 

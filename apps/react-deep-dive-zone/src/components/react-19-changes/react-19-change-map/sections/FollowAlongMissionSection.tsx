@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { CheckCircleIcon, ListChecksIcon } from '../icons';
@@ -25,7 +25,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -50,7 +50,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isChecked}
                   onClick={() => setChecked((prev) => ({ ...prev, [i]: !prev[i] }))}
-                  className={cn(
+                  className={cx(
                     'group w-full text-left rounded-xl border-2 p-3 transition-all',
                     'grid grid-cols-[auto_minmax(0,_1fr)] sm:grid-cols-[auto_minmax(0,_1fr)_minmax(0,_1fr)] items-start gap-3',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -61,7 +61,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border-2',
                       isChecked
                         ? 'border-emerald-500 bg-emerald-500 text-white'
@@ -72,7 +72,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
                   </span>
 
                   <span
-                    className={cn(
+                    className={cx(
                       'text-xsm sm:text-sm font-bold break-keep leading-snug',
                       isChecked
                         ? 'text-emerald-700 dark:text-emerald-200 line-through decoration-emerald-400/60'
@@ -83,7 +83,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
                   </span>
 
                   <span
-                    className={cn(
+                    className={cx(
                       'col-span-2 sm:col-span-1 text-xxsm leading-relaxed break-keep',
                       isChecked
                         ? 'text-emerald-700/80 dark:text-emerald-200/80'

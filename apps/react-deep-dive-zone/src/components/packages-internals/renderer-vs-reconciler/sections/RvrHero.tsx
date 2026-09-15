@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Monitor } from 'lucide-react';
 
 import {
@@ -39,7 +38,7 @@ export const RvrHero = ({ content }: Props) => {
 
       <HeroVisualColumn id="hero-compute-apply">
         <div
-          className={cn(
+          className={cx(
             '@container relative rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] overflow-hidden',
           )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Brain, Check, FolderOpen, type LucideIcon, Pencil, Pin, Route, X } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -61,7 +60,7 @@ const ApproachPanel = ({
   const HeaderIcon = variant === 'wrong' ? X : Check;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
@@ -69,7 +68,7 @@ const ApproachPanel = ({
       <header className="flex items-center gap-sm pb-sm border-b border-dashed border-[var(--term-border)]">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full shadow-[0_1px_0_var(--term-border)]',
             t.headerIconBg,
             t.headerIconText,
@@ -77,7 +76,7 @@ const ApproachPanel = ({
         >
           <HeaderIcon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
         </span>
-        <h3 className={cn('text-md sm:text-lg font-bold tracking-tight', t.headerText)}>{title}</h3>
+        <h3 className={cx('text-md sm:text-lg font-bold tracking-tight', t.headerText)}>{title}</h3>
       </header>
 
       <ul className="flex flex-col gap-sm">
@@ -86,14 +85,14 @@ const ApproachPanel = ({
           return (
             <li key={item.id} className="group">
               <div
-                className={cn(
+                className={cx(
                   'grid grid-cols-[auto_1fr] items-start gap-sm p-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                   t.rowHover,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center w-7 h-7 rounded-md shrink-0',
                     t.rowAccent,
                   )}

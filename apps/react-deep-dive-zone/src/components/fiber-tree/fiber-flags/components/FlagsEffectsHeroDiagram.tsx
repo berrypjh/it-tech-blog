@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -76,7 +75,7 @@ const FiberRow = ({ node }: { node: TreeNode }) => {
   const effect = node.effect && node.effect !== 'normal' ? (node.effect as EffectKind) : undefined;
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-md py-1 pr-1.5',
         indentByDepth[node.depth] ?? 'pl-12',
         effect && 'bg-[var(--term-surface)]',

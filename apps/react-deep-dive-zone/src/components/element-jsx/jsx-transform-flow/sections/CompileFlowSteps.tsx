@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, Code, Settings, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -20,7 +19,7 @@ const toFlowStep = (step: FlowStep): FlowStepItem => {
   const Icon = iconMap[step.iconName];
   return {
     ...step,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} />,
   };
 };
 

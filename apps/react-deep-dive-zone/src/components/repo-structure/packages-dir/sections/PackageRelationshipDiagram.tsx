@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Layers, type LucideIcon, MonitorSmartphone, Network, Timer } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)]',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'p-md sm:p-lg lg:p-xl',
@@ -54,7 +53,7 @@ export const PackageRelationshipDiagram = ({ content }: Props) => {
 
         {/* 메인 흐름: react → reconciler → react-dom (1행), reconciler ↓ scheduler (2행) */}
         <div
-          className={cn(
+          className={cx(
             'grid grid-cols-1 gap-md',
             'lg:grid-cols-[1fr_auto_1.15fr_auto_1fr] lg:gap-y-lg lg:items-stretch',
           )}
@@ -111,7 +110,7 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-lg border p-md transition-all hover:-translate-y-0.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)]',
@@ -122,7 +121,7 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
         <ToneIconBox tone={node.tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold font-mono tracking-tight', tone.text)}>
           {node.title}
         </h3>
       </header>
@@ -136,7 +135,7 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
               key={item}
               className="flex items-center gap-2 text-xsm leading-snug text-[var(--term-fg)] break-keep"
             >
-              <span aria-hidden="true" className={cn('h-1 w-1 rounded-full', tone.dot)} />
+              <span aria-hidden="true" className={cx('h-1 w-1 rounded-full', tone.dot)} />
               {item}
             </li>
           ))}
@@ -152,7 +151,7 @@ const DiagramNodeCard = ({ node, emphasized }: DiagramNodeCardProps) => {
 };
 
 const FlowArrow = ({ className }: { className?: string }) => (
-  <div className={cn('flex items-center justify-center', className)} aria-hidden="true">
+  <div className={cx('flex items-center justify-center', className)} aria-hidden="true">
     {/* 데스크톱: 가로 화살표 */}
     <span className="hidden lg:inline-flex items-center text-[var(--term-accent)] text-xl">→</span>
     {/* 모바일: 세로 화살표 */}
@@ -168,7 +167,7 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'mt-xs flex flex-col gap-2 rounded-lg border p-md sm:p-lg transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
@@ -197,7 +196,7 @@ const SharedWideCard = ({ node }: SharedWideCardProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <span className={cn('text-md font-bold font-mono tracking-tight', tone.text)}>
+          <span className={cx('text-md font-bold font-mono tracking-tight', tone.text)}>
             {node.title}
           </span>
           <span className="text-[11px] uppercase tracking-wider text-[var(--term-muted)]">

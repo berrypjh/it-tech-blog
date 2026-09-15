@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Hourglass, ListOrdered } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -24,7 +23,7 @@ export const DispatchQueueHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -73,7 +72,7 @@ const QueueCard = ({
   listeners: CollectedListener[];
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5',
@@ -84,7 +83,7 @@ const QueueCard = ({
       <ToneIconBox tone="violet" size="sm">
         <Database className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {title}
       </span>
     </header>
@@ -106,14 +105,14 @@ const ListenerChip = ({ entry }: { entry: CollectedListener }) => {
   const t = toneTokens[toToneKey(entry.tone)];
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2 py-1',
         'border-[var(--term-border)]',
         t.borderHover,
       )}
     >
-      <span className={cn('shrink-0 font-mono text-[10px] font-bold', t.text)}>#{entry.step}</span>
-      <code className={cn('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
+      <span className={cx('shrink-0 font-mono text-[10px] font-bold', t.text)}>#{entry.step}</span>
+      <code className={cx('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
         {entry.label}
       </code>
       <code className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -125,7 +124,7 @@ const ListenerChip = ({ entry }: { entry: CollectedListener }) => {
 
 const TimelineCard = ({ title, timeline }: { title: string; timeline: TimelineEntry[] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5',
@@ -152,21 +151,21 @@ const TimelineRow = ({ entry }: { entry: TimelineEntry }) => {
   const t = toneTokens[toToneKey(entry.tone)];
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2.5 py-1.5',
         'border-[var(--term-border)]',
         t.borderHover,
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border font-mono text-[10px] font-bold',
           t.chip,
         )}
       >
         {entry.step}
       </span>
-      <code className={cn('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
+      <code className={cx('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
         {entry.label}
       </code>
       {entry.phase && (

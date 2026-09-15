@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Layers, Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -66,7 +65,7 @@ const TreeHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span className="ml-auto shrink-0 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
         {caption}
       </span>
@@ -84,7 +83,7 @@ const NodeList = ({
   const t = toneTokens[tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex flex-wrap gap-1.5 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -92,7 +91,7 @@ const NodeList = ({
       {nodes.map((node) => (
         <span
           key={node.id}
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-xsm font-bold',
             t.chip,
           )}
@@ -108,7 +107,7 @@ const AlternateArrow = ({ label, subLabel }: { label: string; subLabel: string }
   <div className="flex flex-col items-center gap-1" aria-hidden="true">
     <DownArrow />
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center rounded-full border px-2 py-0.5',
         'text-[10px] font-bold uppercase tracking-wider font-mono',
         toneTokens.violet.chip,

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { ArrowRightIcon, CircleIcon, SparklesIcon } from '../icons';
@@ -18,21 +18,21 @@ export const FeatureListTrapSection = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/40',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md items-stretch',
           'lg:grid-cols-[minmax(0,_5fr)_auto_minmax(0,_7fr)] lg:gap-lg',
         )}
       >
         {/* LEFT: muted feature list */}
         <article
-          className={cn(
+          className={cx(
             'rounded-xl border-2 p-md flex flex-col gap-sm',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           )}
@@ -53,7 +53,7 @@ export const FeatureListTrapSection = ({ content }: Props) => (
             {content.leftCard.items.map((item) => (
               <li
                 key={item}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-lg border px-3 py-2',
                   'border-slate-200 bg-slate-50/70 text-[var(--term-fg)]',
                   'dark:border-slate-700 dark:bg-slate-900/40',
@@ -73,7 +73,7 @@ export const FeatureListTrapSection = ({ content }: Props) => (
         <div className="flex lg:flex-col items-center justify-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-full',
               'border-2 border-blue-300 bg-blue-50 text-blue-700',
               'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -89,7 +89,7 @@ export const FeatureListTrapSection = ({ content }: Props) => (
 
         {/* RIGHT: structural reading */}
         <article
-          className={cn(
+          className={cx(
             'relative rounded-xl border-2 p-md flex flex-col gap-sm overflow-hidden',
             'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
             'shadow-[0_3px_0_var(--term-border)]',
@@ -114,14 +114,14 @@ export const FeatureListTrapSection = ({ content }: Props) => (
               return (
                 <li
                   key={item.feature}
-                  className={cn(
+                  className={cx(
                     'grid grid-cols-[auto_auto_minmax(0,_1fr)] items-center gap-2',
                     'rounded-lg border-2 px-3 py-2',
                     'border-blue-200 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
                   )}
                 >
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                       tone.chip,
                       'font-mono text-xxsm font-bold',
@@ -129,15 +129,15 @@ export const FeatureListTrapSection = ({ content }: Props) => (
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)}
+                      className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)}
                     />
                     {item.feature}
                   </span>
                   <ArrowRightIcon
                     aria-hidden="true"
-                    className={cn('h-3 w-3 shrink-0', tone.text)}
+                    className={cx('h-3 w-3 shrink-0', tone.text)}
                   />
-                  <span className={cn('text-xsm font-bold break-keep', tone.text)}>
+                  <span className={cx('text-xsm font-bold break-keep', tone.text)}>
                     {item.body}
                   </span>
                 </li>

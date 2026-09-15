@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ChevronDown, Key, Link2Off, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -55,7 +54,7 @@ const StateBreakCard = ({ data }: { data: TypeKeyReuseContent['differentKey']['s
   const sky = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-lg border border-dashed p-md sm:p-lg shadow-[0_1px_0_var(--term-border)]',
         rose.border,
       )}
@@ -63,29 +62,29 @@ const StateBreakCard = ({ data }: { data: TypeKeyReuseContent['differentKey']['s
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-9 w-9 items-center justify-center rounded-md border',
             rose.chip,
           )}
         >
           <Link2Off className="h-4 w-4" aria-hidden="true" />
         </span>
-        <h3 className={cn('text-sm sm:text-md font-bold break-keep', rose.text)}>{data.title}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold break-keep', rose.text)}>{data.title}</h3>
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] items-center gap-2">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col items-center gap-0.5 rounded-md border bg-[var(--term-bg)] p-sm',
             sky.border,
           )}
         >
-          <code className={cn('font-mono text-xsm font-bold', sky.text)}>{data.previous.key}</code>
-          <code className={cn('font-mono text-xxsm', sky.text)}>{data.previous.count}</code>
+          <code className={cx('font-mono text-xsm font-bold', sky.text)}>{data.previous.key}</code>
+          <code className={cx('font-mono text-xxsm', sky.text)}>{data.previous.count}</code>
         </article>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'mx-auto inline-flex h-8 w-8 items-center justify-center rounded-full border',
             rose.chip,
           )}
@@ -93,14 +92,14 @@ const StateBreakCard = ({ data }: { data: TypeKeyReuseContent['differentKey']['s
           <Zap className="h-4 w-4" aria-hidden="true" />
         </span>
         <article
-          className={cn(
+          className={cx(
             'flex flex-col items-center gap-0.5 rounded-md border bg-[var(--term-bg)] p-sm',
             rose.border,
           )}
         >
-          <code className={cn('font-mono text-xsm font-bold', rose.text)}>{data.next.key}</code>
-          <code className={cn('font-mono text-xxsm', rose.text)}>{data.next.count}</code>
-          <span className={cn('text-xxsm font-mono uppercase tracking-wider', rose.text)}>
+          <code className={cx('font-mono text-xsm font-bold', rose.text)}>{data.next.key}</code>
+          <code className={cx('font-mono text-xxsm', rose.text)}>{data.next.count}</code>
+          <span className={cx('text-xxsm font-mono uppercase tracking-wider', rose.text)}>
             {data.next.note}
           </span>
         </article>

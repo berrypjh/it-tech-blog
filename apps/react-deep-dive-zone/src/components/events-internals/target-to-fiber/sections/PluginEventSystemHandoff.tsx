@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Puzzle, Target, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -75,14 +74,14 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
       icon={<Puzzle className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ol className={cn('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
+    <ol className={cx('grid items-stretch gap-2 sm:gap-3', 'grid-cols-1 sm:grid-cols-3')}>
       {content.steps.map((step, i) => {
         const isLast = i === content.steps.length - 1;
         const Icon = stepIcons[i] ?? Target;
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-2 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -92,7 +91,7 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                   toneIconBox[step.tone],
                 )}
@@ -100,7 +99,7 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
                 <Icon className="h-4 w-4" />
               </span>
               <span
-                className={cn(
+                className={cx(
                   'text-[10px] font-mono font-bold uppercase tracking-wider',
                   toneAccent[step.tone],
                 )}
@@ -113,7 +112,7 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
               {step.title}
             </h3>
             <code
-              className={cn(
+              className={cx(
                 'mt-auto inline-flex w-fit items-center rounded-md border bg-[var(--term-bg)] px-2 py-0.5',
                 'font-mono text-[10px] sm:text-[11px] font-bold break-all',
                 toneIconBox[step.tone],
@@ -144,7 +143,7 @@ export const PluginEventSystemHandoff = ({ content }: Props) => (
     </ol>
 
     <aside
-      className={cn(
+      className={cx(
         'mt-md rounded-2xl border-2 px-md py-md text-center',
         'border-teal-200/80 bg-teal-50/60 dark:border-teal-700/60 dark:bg-teal-950/30',
         'shadow-[0_1px_0_var(--term-border)]',

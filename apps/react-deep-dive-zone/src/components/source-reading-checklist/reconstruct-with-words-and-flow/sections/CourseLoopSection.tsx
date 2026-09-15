@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Repeat, Route, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -20,7 +19,7 @@ export const CourseLoopSection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
           'border-violet-200 bg-gradient-to-br from-blue-50/80 via-white to-violet-50/40',
           'dark:border-violet-800/60 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-violet-950/30',
@@ -30,7 +29,7 @@ export const CourseLoopSection = ({ content }: Props) => {
         <header className="flex items-center gap-2 mb-md">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-lg',
               'border border-violet-300 bg-violet-100 text-violet-700',
               'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
@@ -74,7 +73,7 @@ const LoopStepBadge = ({ step, index }: { step: LoopStep; index: number }) => {
   if (step.highlight) {
     return (
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1.5',
           'border-violet-400 bg-gradient-to-r from-blue-100 to-violet-200 text-violet-900',
           'dark:border-violet-600/80 dark:from-blue-950/60 dark:to-violet-950/60 dark:text-violet-100',
@@ -89,7 +88,7 @@ const LoopStepBadge = ({ step, index }: { step: LoopStep; index: number }) => {
   }
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
         'border-violet-300 bg-white text-violet-700',
         'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
@@ -98,7 +97,7 @@ const LoopStepBadge = ({ step, index }: { step: LoopStep; index: number }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-4 w-4 items-center justify-center rounded-full border bg-white dark:bg-[var(--term-bg)]',
           'border-violet-300 dark:border-violet-700/70',
           'text-[9px] font-bold tabular-nums',

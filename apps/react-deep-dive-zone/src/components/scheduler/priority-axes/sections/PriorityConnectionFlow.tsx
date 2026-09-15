@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Network, Sparkles } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -30,7 +29,7 @@ const highlightKeyword = (text: string, keywords: string[]) => {
       return (
         <code
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[11px] sm:text-xsm font-semibold',
             'border-blue-200/80 bg-blue-50 text-blue-800',
             'dark:border-blue-800/60 dark:bg-blue-950/40 dark:text-blue-200',
@@ -49,7 +48,7 @@ const BitmaskCells = ({ bits }: { bits: string }) => (
     {bits.split('').map((b, i) => (
       <li
         key={i}
-        className={cn(
+        className={cx(
           'h-6 w-6 sm:h-7 sm:w-7 rounded border flex items-center justify-center',
           'font-mono text-[10px] sm:text-xsm tabular-nums',
           b === '1'
@@ -77,7 +76,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
       {/* LEFT: vertical flow */}
       <article
         aria-label="flow-steps"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-3 rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -91,7 +90,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
             return (
               <li key={step.title} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-3 rounded-xl border px-3 py-2.5',
                     'border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                     'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -100,7 +99,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full',
                       'text-[11px] font-mono font-bold tabular-nums text-white',
                       numberToneCycle[i] ?? numberToneCycle[0],
@@ -132,7 +131,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
       {/* CENTER: explanation */}
       <article
         aria-label="flow-explanation"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-violet-50/40',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -170,7 +169,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
       {/* RIGHT: bitmask card */}
       <article
         aria-label="lane-bitmask"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/70 via-white to-cyan-50/40',
           'dark:border-teal-800/60 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -193,7 +192,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
           {content.bitmask.rows.map((row) => (
             <li
               key={row.name}
-              className={cn(
+              className={cx(
                 'flex items-center justify-between gap-3 rounded-xl border-2 px-3 py-2',
                 'border-teal-200/80 bg-white/70 dark:border-teal-800/60 dark:bg-slate-950/30',
               )}
@@ -212,7 +211,7 @@ export const PriorityConnectionFlow = ({ content }: Props) => (
         </ul>
 
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-xl border-2 border-dashed px-md py-3',
             'border-teal-300/80 bg-teal-50/60 text-teal-800',
             'dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',

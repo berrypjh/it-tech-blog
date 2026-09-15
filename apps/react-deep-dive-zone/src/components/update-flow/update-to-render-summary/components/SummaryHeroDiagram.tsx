@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CheckCircle2,
   CircleHelp,
@@ -77,10 +76,10 @@ const StepRow = ({ step }: { step: FlowStep }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex min-w-0 items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        step.final ? cn(tone.chip, tone.border) : 'border-[var(--term-border)]',
+        step.final ? cx(tone.chip, tone.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={step.tone} size="sm">
@@ -91,7 +90,7 @@ const StepRow = ({ step }: { step: FlowStep }) => {
           <span className="font-mono text-[10px] tabular-nums text-[var(--term-muted)]">
             {step.number}.
           </span>
-          <span className={cn('min-w-0 truncate text-sm font-bold tracking-tight', tone.text)}>
+          <span className={cx('min-w-0 truncate text-sm font-bold tracking-tight', tone.text)}>
             {step.title}
           </span>
         </span>

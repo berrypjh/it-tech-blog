@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -22,7 +22,7 @@ export const StatePreservationTimeline = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-2 items-stretch',
       )}
@@ -35,7 +35,7 @@ export const StatePreservationTimeline = ({ content }: Props) => (
           <Fragment key={step.number}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
                   tone.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -46,7 +46,7 @@ export const StatePreservationTimeline = ({ content }: Props) => (
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-full border-2 font-mono text-xsm font-bold',
                       tone.iconChip,
                     )}
@@ -55,7 +55,7 @@ export const StatePreservationTimeline = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                       tone.iconChip,
                     )}
@@ -63,14 +63,14 @@ export const StatePreservationTimeline = ({ content }: Props) => (
                     <Icon className="h-4 w-4" />
                   </span>
                 </div>
-                <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                   {step.title}
                 </h3>
                 <p className="text-[10px] leading-relaxed text-[var(--term-muted)] break-keep">
                   {step.body}
                 </p>
                 <pre
-                  className={cn(
+                  className={cx(
                     'overflow-x-auto rounded-lg border bg-slate-950 px-2 py-1.5',
                     'border-slate-700/70',
                     'mt-auto',
@@ -85,7 +85,7 @@ export const StatePreservationTimeline = ({ content }: Props) => (
             {!isLast && (
               <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                     tone.iconChip,
                   )}

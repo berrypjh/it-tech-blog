@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, List, Package, PlayCircle, Repeat, Workflow } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -54,7 +53,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid items-stretch gap-2 sm:gap-3',
         'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
       )}
@@ -65,7 +64,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col gap-2 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -75,7 +74,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full',
                   'text-[11px] font-mono font-bold tabular-nums',
                   toneNumber[step.tone],
@@ -85,7 +84,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border',
                   'bg-white dark:bg-slate-950/40',
                   toneAccent[step.tone],
@@ -96,7 +95,7 @@ export const ProcessDispatchQueueFlow = ({ content }: Props) => (
             </div>
 
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight font-mono break-keep',
                 toneAccent[step.tone],
               )}

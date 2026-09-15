@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ExternalLink, FlaskConical } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -27,7 +26,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
           return (
             <li key={card.id} className="relative flex min-w-0">
               <article
-                className={cn(
+                className={cx(
                   'group flex min-w-0 flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
                   'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                   'transition-all hover:-translate-y-0.5',
@@ -38,7 +37,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                 <header className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
                       t.chip,
                     )}
@@ -52,7 +51,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
 
                 {/* 파일명 */}
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-md sm:text-lg font-bold font-mono tracking-tight break-all',
                     t.text,
                   )}
@@ -75,7 +74,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
                   href={card.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(
+                  className={cx(
                     'group/cta inline-flex items-center justify-center gap-2 px-md py-2 rounded-md border border-[var(--term-border)] text-xsm font-bold',
                     'transition-colors mt-auto hover:bg-[var(--term-surface)]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -95,7 +94,7 @@ export const ApiToImplementationToTestFlow = ({ content }: Props) => {
               {showConnector && (
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'pointer-events-none absolute z-10 hidden lg:flex items-center justify-center',
                     'top-1/2 left-full ml-1 -translate-y-1/2 text-[var(--term-accent)]',
                   )}

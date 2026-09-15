@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Boxes, Clock, Code, Database, type LucideIcon, Monitor, Network } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -50,14 +49,14 @@ const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-xl border p-md',
         'bg-[var(--term-surface)] border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <header className="flex flex-col gap-1">
-        <h3 className={cn('text-md font-bold tracking-tight', t.text)}>{area.title}</h3>
+        <h3 className={cx('text-md font-bold tracking-tight', t.text)}>{area.title}</h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-bold font-mono">
           {area.subtitle}
         </span>
@@ -69,7 +68,7 @@ const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
           return (
             <li key={item.id}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[11px] font-mono font-bold',
                   'bg-[var(--term-bg)] border-[var(--term-border)]',
                   t.text,
@@ -84,7 +83,7 @@ const SideArea = ({ area, tone }: { area: HeroSideArea; tone: ToneKey }) => {
       </ul>
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto rounded-lg border px-3 py-2 text-[11px] font-bold tracking-tight text-center',
           'border-dashed border-[var(--term-border)] bg-[var(--term-bg)]',
           t.text,

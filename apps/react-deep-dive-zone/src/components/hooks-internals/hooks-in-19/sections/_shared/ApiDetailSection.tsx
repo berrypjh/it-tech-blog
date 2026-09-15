@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Code2, Lightbulb, Tag, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../../shared/section';
@@ -191,7 +190,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
   return (
     <section
       aria-labelledby={`heading-api-${detail.key}`}
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -203,7 +202,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
         icon={
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
               toneHeader[detail.tone],
             )}
@@ -216,7 +215,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg">
         {/* Left: What it does + concepts */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)] transition-all',
             'motion-safe:hover:-translate-y-0.5',
@@ -226,7 +225,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-white dark:bg-slate-950/40',
                 'border-[var(--term-border)]',
                 toneText[detail.tone],
@@ -250,7 +249,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
               {detail.concepts.map((concept) => (
                 <li key={concept}>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-mono font-bold break-keep',
                       toneChip[detail.tone],
                     )}
@@ -296,7 +295,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
 
         {/* Right: Flow */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             toneCard[detail.tone],
@@ -305,7 +304,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-white dark:bg-slate-950/40',
                 'border-[var(--term-border)]',
                 toneText[detail.tone],
@@ -326,7 +325,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                   <div className="flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-white px-3 py-2 dark:bg-slate-950/40">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums',
                         toneHeader[detail.tone],
                       )}
@@ -347,7 +346,7 @@ export const ApiDetailSection = ({ detail, labels }: Props) => {
                   {!isLast && (
                     <span
                       aria-hidden="true"
-                      className={cn('mt-0.5 flex justify-center', toneText[detail.tone])}
+                      className={cx('mt-0.5 flex justify-center', toneText[detail.tone])}
                     >
                       <ArrowRight className="h-3 w-3 rotate-90" aria-hidden="true" />
                     </span>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowLeftRight, ArrowRight, ListChecks, TreePine } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -66,14 +65,14 @@ const LifecycleStepCard = ({ step }: { step: LifecycleStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <h4
-        className={cn(
+        className={cx(
           'text-[10px] sm:text-xsm font-bold uppercase tracking-wider break-keep',
           t.text,
         )}
@@ -81,7 +80,7 @@ const LifecycleStepCard = ({ step }: { step: LifecycleStep }) => {
         {step.label}
       </h4>
       <code
-        className={cn(
+        className={cx(
           'inline-block rounded-md border px-2 py-1 text-[11px] font-mono break-all',
           t.chip,
         )}
@@ -114,7 +113,7 @@ const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] })
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.blue.fill.border,
           toneTokens.blue.fill.bg,
@@ -124,7 +123,7 @@ const MeaningCard = ({ content }: { content: RootCurrentRefContent['meaning'] })
           <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.blue.fill.text,
           )}
@@ -149,7 +148,7 @@ const TreeSideCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md text-center',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -160,7 +159,7 @@ const TreeSideCard = ({
           <TreePine className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -168,10 +167,10 @@ const TreeSideCard = ({
           {variant === 'before' ? 'before swap' : 'after swap'}
         </span>
       </header>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
         {title}
       </h3>
-      <p className={cn('text-xsm leading-snug break-keep', t.text)}>{subtitle}</p>
+      <p className={cx('text-xsm leading-snug break-keep', t.text)}>{subtitle}</p>
     </article>
   );
 };
@@ -182,7 +181,7 @@ const FormulaArrow = ({ formula }: { formula: string }) => {
     <div className="flex flex-col items-center justify-center gap-2 py-2 md:py-0">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -193,7 +192,7 @@ const FormulaArrow = ({ formula }: { formula: string }) => {
         <ArrowDown className="md:hidden h-6 w-6" aria-hidden="true" />
       </span>
       <code
-        className={cn(
+        className={cx(
           'inline-block rounded-md border px-2 py-1 text-[11px] font-mono font-bold whitespace-nowrap',
           t.chip,
         )}

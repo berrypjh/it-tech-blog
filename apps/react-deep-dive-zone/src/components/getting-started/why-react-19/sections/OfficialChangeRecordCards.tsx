@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Book, ExternalLink, Rss } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -75,7 +74,7 @@ const ReleasesPreview = () => (
 const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-md w-full rounded-lg border bg-[var(--term-bg)]',
         'p-md sm:p-lg transition-all',
         'border-[var(--term-border)]',
@@ -120,7 +119,7 @@ const ResourceCardItem = ({ card }: { card: ResourceCard }) => {
         href={card.href}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(
+        className={cx(
           'group/cta mt-auto inline-flex items-center justify-center gap-2 px-md py-2.5 rounded-md border border-[var(--term-border)] text-xsm font-bold',
           'text-[var(--term-accent)] transition-colors hover:bg-[var(--term-surface)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',

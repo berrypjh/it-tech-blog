@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import {
   HeroDescription,
@@ -35,7 +35,7 @@ export const HeroSection = ({ content }: Props) => (
 
       <HeroDescription>{content.description}</HeroDescription>
 
-      <p className={cn('text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep')}>
+      <p className={cx('text-xsm sm:text-sm leading-relaxed text-[var(--term-muted)] break-keep')}>
         {content.supporting}
       </p>
     </HeroTextColumn>

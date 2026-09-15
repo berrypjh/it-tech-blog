@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ChevronDown, Plus, Star, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -61,14 +60,14 @@ const VisualNodeCard = ({ node }: { node: VisualNode }) => {
   const t = toneTokens[node.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1.5 rounded-lg border p-md',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.fill.bg,
         t.fill.border,
       )}
     >
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {node.title}
       </h3>
       {node.subtitle && (

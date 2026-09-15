@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Flag, ListTree, SprayCan, Trash2 } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -92,7 +91,7 @@ const StateTopCard = ({ title, value }: { title: string; value: string }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -100,7 +99,7 @@ const StateTopCard = ({ title, value }: { title: string; value: string }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
             t.text,
           )}
@@ -108,7 +107,7 @@ const StateTopCard = ({ title, value }: { title: string; value: string }) => {
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -125,14 +124,14 @@ const StateChange = ({ value }: { value: string }) => {
   const [left, right] = value.includes('→') ? value.split('→').map((s) => s.trim()) : [value, ''];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center justify-center gap-3 rounded-md border p-sm',
         toneTokens.sky.fill.border,
         toneTokens.sky.fill.bg,
       )}
     >
       <StateBadge label={left} tone="teal" />
-      <ArrowRight aria-hidden="true" className={cn('h-5 w-5', toneTokens.sky.text)} />
+      <ArrowRight aria-hidden="true" className={cx('h-5 w-5', toneTokens.sky.text)} />
       <StateBadge label={right} muted />
     </div>
   );
@@ -145,7 +144,7 @@ const StateBadge = ({ label, tone, muted }: { label: string; tone?: 'teal'; mute
     </span>
   ) : (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1 rounded-md border-2 px-3 py-1 text-xsm font-mono font-bold',
         toneTokens[tone].fill.border,
         toneTokens[tone].fill.bg,
@@ -161,7 +160,7 @@ const FlowCard = ({ step }: { step: ModalFlowStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -171,7 +170,7 @@ const FlowCard = ({ step }: { step: ModalFlowStep }) => {
         <ToneIconBox tone={step.tone} size="sm">
           <Icon className="h-4 w-4" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-xsm font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h3>
       </header>
@@ -191,10 +190,10 @@ const FlowCard = ({ step }: { step: ModalFlowStep }) => {
               {idx > 0 && (
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block h-2 w-2 border-l border-b shrink-0', t.border)}
+                  className={cx('inline-block h-2 w-2 border-l border-b shrink-0', t.border)}
                 />
               )}
-              <span className={cn('inline-block rounded border px-1.5 py-0.5', t.chip)}>
+              <span className={cx('inline-block rounded border px-1.5 py-0.5', t.chip)}>
                 {item}
               </span>
             </li>
@@ -218,7 +217,7 @@ const BrowserMock = ({
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         isBefore ? 'border-[var(--term-border)]' : t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -226,7 +225,7 @@ const BrowserMock = ({
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
             isBefore ? 'text-[var(--term-fg)]' : t.text,
           )}
@@ -234,7 +233,7 @@ const BrowserMock = ({
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             isBefore
               ? 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]'
@@ -247,7 +246,7 @@ const BrowserMock = ({
 
       {/* Browser UI mockup (intentional UI mimicry) */}
       <div
-        className={cn(
+        className={cx(
           'rounded-lg border bg-white dark:bg-slate-950 overflow-hidden',
           isBefore
             ? 'border-slate-300/70 dark:border-slate-700/60'

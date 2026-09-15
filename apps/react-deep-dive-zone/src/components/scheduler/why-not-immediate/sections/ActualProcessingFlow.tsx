@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   Code2,
@@ -60,7 +59,7 @@ export const ActualProcessingFlow = ({ content }: Props) => (
   <section
     id="flow-heading"
     aria-labelledby="heading-flow"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] scroll-mt-24',
     )}
@@ -80,7 +79,7 @@ export const ActualProcessingFlow = ({ content }: Props) => (
         return (
           <li key={step.title} className="flex flex-col">
             <article
-              className={cn(
+              className={cx(
                 'group flex items-center gap-3 sm:gap-4 rounded-2xl border-2 px-md py-3 sm:py-4 transition-colors',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                 toneCard[step.tone],
@@ -88,7 +87,7 @@ export const ActualProcessingFlow = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full',
                   'text-xsm font-mono font-bold tabular-nums shadow-[0_2px_0_rgba(0,0,0,0.08)]',
                   toneNumber[step.tone],
@@ -98,7 +97,7 @@ export const ActualProcessingFlow = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                   toneIconBox[step.tone],
                 )}

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileText, Notebook } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
 
       {/* Notebook-style card */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 overflow-hidden',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -34,7 +33,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
       >
         {/* Notebook header */}
         <header
-          className={cn(
+          className={cx(
             'flex items-center justify-between gap-2 border-b-2 px-md py-3',
             'border-slate-200 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-900/40',
           )}
@@ -63,7 +62,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
           {content.fields.map((field, idx) => (
             <Fragment key={field.label}>
               <dt
-                className={cn(
+                className={cx(
                   'pt-3 pb-1 lg:py-3 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]',
                   'lg:border-t border-[var(--term-border)]',
                   idx === 0 && 'lg:border-t-0',
@@ -72,7 +71,7 @@ export const ReadingNotePanelSection = ({ content }: Props) => {
                 {field.label}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'pb-3 lg:py-3 border-t border-dashed border-[var(--term-border)] lg:border-t-0',
                   idx === 0 && 'lg:border-t-0 border-t-0',
                   'lg:border-t lg:border-solid',
@@ -100,7 +99,7 @@ const NoteValue = ({ field }: { field: NoteField }) => {
   if (field.format === 'code' && typeof field.value === 'string') {
     return (
       <code
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-md border-2 px-2.5 py-1',
           'border-blue-300 bg-blue-50 text-blue-800',
           'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -118,7 +117,7 @@ const NoteValue = ({ field }: { field: NoteField }) => {
         {field.value.map((v) => (
           <li key={v}>
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-0.5',
                 'border-[var(--term-border)] bg-[var(--term-surface)]',
                 'font-mono text-[11px] text-[var(--term-fg)]',
@@ -138,7 +137,7 @@ const NoteValue = ({ field }: { field: NoteField }) => {
         {field.value.map((v, i) => (
           <li key={v} className="flex items-center gap-1.5">
             <code
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-2 py-0.5',
                 'border-violet-300 bg-violet-50 text-violet-800',
                 'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',

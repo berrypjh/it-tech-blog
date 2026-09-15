@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, UserCheck, Workflow, Zap } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -49,7 +48,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
             t.chip,
           )}
@@ -58,7 +57,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             t.chip,
           )}
@@ -67,7 +66,7 @@ const CardView = ({ card }: { card: CoreChangeCard }) => {
         </span>
       </header>
 
-      <h3 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+      <h3 className={cx('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.body}</p>
 
       <ul className="flex flex-col gap-1.5 mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">

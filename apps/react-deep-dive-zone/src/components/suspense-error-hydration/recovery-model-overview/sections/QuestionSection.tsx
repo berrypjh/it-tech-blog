@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleHelp } from 'lucide-react';
 
 import type { RecoveryModelOverviewContent } from '../content';
@@ -9,7 +8,7 @@ type Props = { content: RecoveryModelOverviewContent['question'] };
 export const QuestionSection = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'rounded-3xl border-2 p-md sm:p-lg',
       'border-blue-200/80 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -22,7 +21,7 @@ export const QuestionSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.6fr)] items-center">
       <div
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full mx-auto lg:mx-0',
           'bg-blue-100 text-blue-600 shadow-[inset_0_-2px_0_rgba(59,130,246,0.15)]',
           'dark:bg-blue-950/60 dark:text-blue-300',
@@ -44,7 +43,7 @@ export const QuestionSection = ({ content }: Props) => (
         {content.badges.map((badge) => (
           <li
             key={badge}
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border bg-slate-50 px-3 py-1',
               'border-slate-200 dark:border-slate-700 dark:bg-slate-900/50',
               'text-[11px] sm:text-xsm font-bold text-[var(--term-fg)] break-keep',

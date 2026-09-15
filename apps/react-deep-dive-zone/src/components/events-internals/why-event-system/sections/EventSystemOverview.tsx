@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -62,7 +61,7 @@ const stepIcons = [Code2, Radio, Zap, Target, Puzzle, Atom, Route, MousePointerC
 export const EventSystemOverview = ({ content }: Props) => (
   <section
     aria-labelledby="heading-overview"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -75,7 +74,7 @@ export const EventSystemOverview = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid items-stretch gap-2 sm:gap-3',
         'grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-8',
       )}
@@ -86,7 +85,7 @@ export const EventSystemOverview = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col items-center gap-2 rounded-2xl border-2 p-3 transition-all text-center',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               toneCard[step.tone],
@@ -95,7 +94,7 @@ export const EventSystemOverview = ({ content }: Props) => (
             {/* Number badge — anchored top center */}
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'absolute -top-3 inline-flex h-7 w-7 items-center justify-center rounded-full',
                 'text-[11px] font-mono font-bold tabular-nums shadow-[0_2px_0_var(--term-border)]',
                 'transition-transform group-hover:scale-110 motion-reduce:transform-none',
@@ -107,7 +106,7 @@ export const EventSystemOverview = ({ content }: Props) => (
 
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-3 inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 toneIconBox[step.tone],
               )}
@@ -127,7 +126,7 @@ export const EventSystemOverview = ({ content }: Props) => (
                 {/* Horizontal arrow for desktop 8-col */}
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'hidden xl:inline-flex absolute -right-4 top-1/2 z-10 -translate-y-1/2',
                     'h-6 w-6 items-center justify-center rounded-full border border-[var(--term-border)]',
                     'bg-[var(--term-bg)] text-[var(--term-muted)] shadow-[0_1px_0_var(--term-border)]',

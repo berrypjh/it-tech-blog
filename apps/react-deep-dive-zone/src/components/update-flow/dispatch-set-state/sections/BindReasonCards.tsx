@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Link2, ShieldCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -38,7 +37,7 @@ export const BindReasonCards = ({ content }: Props) => (
             badge={card.sub}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md sm:text-lg font-bold leading-snug break-keep',
                 toneTokens[card.tone].text,
               )}

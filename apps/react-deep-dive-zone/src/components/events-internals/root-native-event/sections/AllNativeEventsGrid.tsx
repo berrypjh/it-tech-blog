@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Container, Network } from 'lucide-react';
 
 import type { RootNativeEventContent } from '../content';
@@ -19,7 +18,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-cyan-50/40',
         'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -39,7 +38,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
       </header>
 
       {/* Listener pill grid */}
-      <ul className={cn('grid gap-2', 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5')}>
+      <ul className={cx('grid gap-2', 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5')}>
         {content.listeners.map((l) => (
           <li key={l.label} className="flex justify-center">
             <ListenerPill label={`${l.label} listener`} kind={l.kind} size="sm" />
@@ -49,7 +48,7 @@ export const AllNativeEventsGrid = ({ content }: Props) => (
 
       {/* Emphasis */}
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
           'border-teal-300/80 bg-teal-50/70',
           'dark:border-teal-700/60 dark:bg-teal-950/30',

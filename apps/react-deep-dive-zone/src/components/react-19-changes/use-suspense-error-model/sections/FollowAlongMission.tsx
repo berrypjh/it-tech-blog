@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseSuspenseErrorModelContent } from '../content';
 import { CheckCircleIcon } from '../icons';
@@ -35,7 +35,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                 type="button"
                 aria-pressed={isChecked}
                 onClick={() => setChecked((prev) => ({ ...prev, [i]: !prev[i] }))}
-                className={cn(
+                className={cx(
                   'group w-full h-full text-left rounded-2xl border-2 p-md transition-all',
                   'flex flex-col gap-sm',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -47,7 +47,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                       isChecked
                         ? 'border-emerald-300 bg-emerald-100 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-950/60 dark:text-emerald-200'
@@ -59,7 +59,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                   <span className="flex items-center gap-1.5">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 items-center px-1.5 rounded-md font-mono text-[10px] font-bold tabular-nums',
                         isChecked
                           ? 'bg-emerald-600 text-white dark:bg-emerald-500'
@@ -70,7 +70,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                     </span>
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-5 w-5 items-center justify-center rounded border-2',
                         isChecked
                           ? 'border-emerald-500 bg-emerald-500 text-white'
@@ -83,7 +83,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                 </div>
 
                 <h3
-                  className={cn(
+                  className={cx(
                     'text-xsm sm:text-sm font-bold break-keep leading-snug',
                     isChecked ? 'text-emerald-700 dark:text-emerald-200' : 'text-[var(--term-fg)]',
                   )}
@@ -92,7 +92,7 @@ export const FollowAlongMission = ({ content }: Props) => {
                 </h3>
 
                 <p
-                  className={cn(
+                  className={cx(
                     'text-xxsm leading-relaxed break-keep',
                     isChecked
                       ? 'text-emerald-700/80 dark:text-emerald-200/80'

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Loader, RefreshCcw, ShieldCheck, TriangleAlert } from 'lucide-react';
 
 import type { PromiseVsErrorSplitContent } from '../content';
@@ -22,7 +21,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
     >
       {/* 06 Suspense reason */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           t.border,
           t.bg,
@@ -37,7 +36,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center">
           {/* left preview */}
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 bg-white p-3',
               'dark:bg-[var(--term-bg)]',
               'border-emerald-200/70 dark:border-emerald-800/60',
@@ -69,7 +68,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
 
           {/* right preview */}
           <div
-            className={cn('rounded-xl border-2 bg-white p-3', 'dark:bg-[var(--term-bg)]', t.border)}
+            className={cx('rounded-xl border-2 bg-white p-3', 'dark:bg-[var(--term-bg)]', t.border)}
           >
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
               {suspense.rightLabel}
@@ -95,7 +94,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             return (
               <li
                 key={p}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                   'text-[11px] font-bold',
                   t.chip,
@@ -111,7 +110,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
 
       {/* 07 Error reason */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           e.border,
           e.bg,
@@ -126,7 +125,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center">
           {/* left preview */}
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 bg-white p-3',
               'dark:bg-[var(--term-bg)]',
               'border-rose-200/70 dark:border-rose-800/60',
@@ -163,7 +162,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
 
           {/* right preview */}
           <div
-            className={cn('rounded-xl border-2 bg-white p-3', 'dark:bg-[var(--term-bg)]', e.border)}
+            className={cx('rounded-xl border-2 bg-white p-3', 'dark:bg-[var(--term-bg)]', e.border)}
           >
             <div className="flex items-center gap-2">
               <ShieldCheck
@@ -195,7 +194,7 @@ export const ReasonCards = ({ suspense, error }: Props) => {
             return (
               <li
                 key={p}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
                   'text-[11px] font-bold',
                   e.chip,

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RefAsPropElementShapeContent } from '../content';
 import { ArrowRightIcon, ShieldAlertIcon, SparklesIcon, TriangleAlertIcon } from '../icons';
@@ -26,7 +26,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_minmax(0,_1fr)] lg:gap-md items-stretch">
         {/* LEFT: 이전 감각 (React 18) */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             oldTone.border,
             oldTone.bg,
@@ -36,19 +36,19 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 oldTone.iconChip,
               )}
             >
               <TriangleAlertIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', oldTone.text)}>
+            <h3 className={cx('text-sm font-bold break-keep', oldTone.text)}>
               {content.left.title}
             </h3>
           </header>
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 bg-slate-950 px-3 py-3',
               'border-rose-700/60 dark:border-rose-700/70',
             )}
@@ -74,7 +74,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
 
         {/* MIDDLE: React 19 방향 */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             newTone.border,
             newTone.bg,
@@ -84,19 +84,19 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 newTone.iconChip,
               )}
             >
               <SparklesIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', newTone.text)}>
+            <h3 className={cx('text-sm font-bold break-keep', newTone.text)}>
               {content.middle.title}
             </h3>
           </header>
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 bg-slate-950 px-3 py-3',
               'border-teal-700/60 dark:border-teal-700/70',
             )}
@@ -112,7 +112,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
 
         {/* WARNING: deprecation */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             warnTone.borderStrong,
             warnTone.bg,
@@ -123,7 +123,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
           <header className="flex items-start justify-between gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                 warnTone.iconChip,
               )}
@@ -131,7 +131,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
               <ShieldAlertIcon className="h-5 w-5" />
             </span>
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-md border px-2 py-0.5',
                 'border-rose-300 bg-rose-100 text-rose-700',
                 'dark:border-rose-700/70 dark:bg-rose-950/60 dark:text-rose-200',
@@ -141,7 +141,7 @@ export const ElementRefDeprecationSection = ({ content }: Props) => {
               {content.warning.badge}
             </span>
           </header>
-          <h3 className={cn('text-sm sm:text-md font-mono font-bold break-keep', warnTone.text)}>
+          <h3 className={cx('text-sm sm:text-md font-mono font-bold break-keep', warnTone.text)}>
             {content.warning.title}
           </h3>
           <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">

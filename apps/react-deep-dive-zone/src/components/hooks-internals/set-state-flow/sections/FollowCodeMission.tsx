@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -10,7 +9,7 @@ type Props = { content: SetStateFlowContent['mission'] };
 export const FollowCodeMission = ({ content }: Props) => (
   <section
     aria-labelledby="heading-mission"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -26,7 +25,7 @@ export const FollowCodeMission = ({ content }: Props) => (
       {content.items.map((item) => (
         <li key={item.number}>
           <article
-            className={cn(
+            className={cx(
               'group h-full flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
               'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)] transition-all',
               'hover:border-sky-300/70 hover:bg-sky-50/30 dark:hover:border-sky-700/70 dark:hover:bg-sky-950/20',

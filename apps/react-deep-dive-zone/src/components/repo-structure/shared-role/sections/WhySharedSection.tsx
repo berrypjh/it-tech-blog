@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleHelp, FolderCheck, Sparkles, TriangleAlert } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -76,7 +75,7 @@ const ListPanel = ({ icon, tone, dotClass, badge, copy, items }: ListPanelProps)
         >
           <span
             aria-hidden="true"
-            className={cn('mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0', dotClass)}
+            className={cx('mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0', dotClass)}
           />
           <span>{item}</span>
         </li>
@@ -100,7 +99,7 @@ const ExamplePanel = ({ title, tags }: ExampleProps) => (
       {tags.map((tag) => (
         <li key={tag}>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-md border px-2 py-1.5 text-xsm font-mono break-keep',
               'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
             )}

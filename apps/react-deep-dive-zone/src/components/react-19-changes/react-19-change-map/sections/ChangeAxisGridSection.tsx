@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { layerTone } from '../tone';
@@ -25,7 +25,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
         return (
           <li key={card.title}>
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg overflow-hidden',
                 'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -37,7 +37,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
               {/* top accent line */}
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute inset-x-0 top-0 h-1',
                   tone.solidBg,
                   'opacity-80 group-hover:opacity-100 transition-opacity',
@@ -48,7 +48,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
               <div className="flex items-start justify-between gap-2 pt-1">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     tone.iconChip,
                     'shadow-[0_1px_0_var(--term-border)]',
@@ -58,7 +58,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 min-w-7 px-1.5 items-center justify-center rounded-md',
                     'border font-mono text-xxsm font-bold tabular-nums',
                     tone.chip,
@@ -70,7 +70,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
 
               {/* title */}
               <h3
-                className={cn('text-md sm:text-lg font-bold break-keep tracking-tight', tone.text)}
+                className={cx('text-md sm:text-lg font-bold break-keep tracking-tight', tone.text)}
               >
                 {card.title}
               </h3>
@@ -90,7 +90,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
                 {card.tags.map((tag) => (
                   <li
                     key={tag}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
                       tone.chip,
                       'font-mono text-[10px] font-bold',
@@ -98,7 +98,7 @@ export const ChangeAxisGridSection = ({ content }: Props) => (
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('block h-1 w-1 rounded-full', tone.dot)}
+                      className={cx('block h-1 w-1 rounded-full', tone.dot)}
                     />
                     {tag}
                   </li>

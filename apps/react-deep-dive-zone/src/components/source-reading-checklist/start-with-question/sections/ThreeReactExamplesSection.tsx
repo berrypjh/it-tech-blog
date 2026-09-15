@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileCode2, Route } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
           return (
             <li key={card.id}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   'shadow-[0_2px_0_var(--term-border)]',
@@ -43,13 +42,13 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1',
                       t.chip,
                       'text-[10px] font-mono font-bold uppercase tracking-wider',
                     )}
                   >
-                    <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', t.dot)} />
+                    <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', t.dot)} />
                     {card.label}
                   </span>
                 </div>
@@ -64,7 +63,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                     {content.entryLabel}
                   </span>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 self-start rounded-md border px-2 py-1',
                       t.chip,
                       'font-mono text-xsm font-bold',
@@ -84,7 +83,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                     {card.path.map((p, i) => (
                       <li key={p}>
                         <code
-                          className={cn(
+                          className={cx(
                             'flex items-center gap-1.5 rounded-md border px-2 py-1',
                             'border-[var(--term-border)] bg-[var(--term-surface)]',
                             'font-mono text-[11px] text-[var(--term-fg)]',
@@ -92,7 +91,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                         >
                           <span
                             aria-hidden="true"
-                            className={cn(
+                            className={cx(
                               'inline-flex h-4 w-4 items-center justify-center rounded text-[9px] font-bold tabular-nums',
                               t.chip,
                             )}
@@ -110,7 +109,7 @@ export const ThreeReactExamplesSection = ({ content }: Props) => {
                 <div className="mt-auto pt-sm border-t border-dashed border-[var(--term-border)]">
                   <Link
                     href={card.href}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 text-xsm font-bold',
                       t.text,
                       'transition-transform motion-safe:group-hover:translate-x-0.5',

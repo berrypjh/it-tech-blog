@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, CheckCircle2, ShieldAlert, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -86,7 +85,7 @@ const SlotItem = ({ slot }: { slot: HookSlot }) => {
   };
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-start gap-2 rounded-lg border-2 px-3 py-2',
         styleByStatus[slot.status],
       )}
@@ -94,7 +93,7 @@ const SlotItem = ({ slot }: { slot: HookSlot }) => {
       <code className="font-mono text-[11px] font-bold tabular-nums shrink-0">{slot.index}</code>
       <div className="flex flex-col gap-0.5 min-w-0">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-[11px] sm:text-xsm font-bold break-all',
             slot.status === 'missing' && 'line-through',
           )}
@@ -115,7 +114,7 @@ const RenderColumn = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' |
   const isBroken = variant === 'broken';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-2xl border-2 p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         isBroken
@@ -126,7 +125,7 @@ const RenderColumn = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' |
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 items-center justify-center rounded-full',
             isBroken
               ? 'bg-rose-500 text-white dark:bg-rose-400 dark:text-slate-900'
@@ -140,7 +139,7 @@ const RenderColumn = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' |
           )}
         </span>
         <p
-          className={cn(
+          className={cx(
             'text-[11px] font-mono font-bold uppercase tracking-wider break-keep',
             isBroken
               ? 'text-rose-700 dark:text-rose-300'
@@ -156,7 +155,7 @@ const RenderColumn = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' |
         ))}
       </ul>
       <p
-        className={cn(
+        className={cx(
           'text-[11px] sm:text-xsm font-bold break-keep text-center',
           isBroken ? 'text-rose-800 dark:text-rose-200' : 'text-emerald-800 dark:text-emerald-200',
         )}
@@ -172,7 +171,7 @@ export const WrongHookOrder = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-wrong-order"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -206,7 +205,7 @@ export const WrongHookOrder = ({ content }: Props) => {
           </div>
 
           <aside
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-2xl border-2 p-md mt-auto',
               'border-rose-400/80 bg-rose-50/70 dark:border-rose-600/60 dark:bg-rose-950/40',
             )}

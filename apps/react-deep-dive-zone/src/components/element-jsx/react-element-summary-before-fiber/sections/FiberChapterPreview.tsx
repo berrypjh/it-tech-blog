@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ScanSearch, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -24,7 +23,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.7fr)_minmax(0,_1.3fr)] gap-md items-stretch">
       {/* preview question */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border p-md bg-[var(--term-bg)]',
           'border-[var(--term-border)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -32,7 +31,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             'bg-[var(--term-surface)] border-[var(--term-border)]',
             toneTokens.violet.text,
@@ -41,7 +40,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
           <ScanSearch className="h-5 w-5" aria-hidden="true" />
         </span>
         <span
-          className={cn('text-[10px] uppercase tracking-wider font-mono', toneTokens.violet.text)}
+          className={cx('text-[10px] uppercase tracking-wider font-mono', toneTokens.violet.text)}
         >
           next chapter
         </span>
@@ -55,7 +54,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
 
       {/* flow steps */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -66,14 +65,14 @@ export const FiberChapterPreview = ({ content }: Props) => (
             return (
               <li key={step.id} className="flex flex-col">
                 <article
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-md rounded-xl border p-sm bg-[var(--term-bg)]',
                     'border-[var(--term-border)]',
                   )}
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center justify-center w-10 h-10 rounded-lg border font-mono text-[11px] font-bold tabular-nums',
                       t.chip,
                     )}
@@ -81,7 +80,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
                     {idx + 1}
                   </span>
                   <div className="flex flex-col gap-1 min-w-0 flex-1">
-                    <code className={cn('font-mono text-xsm font-bold tracking-tight', t.text)}>
+                    <code className={cx('font-mono text-xsm font-bold tracking-tight', t.text)}>
                       {step.title}
                     </code>
                     <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -92,7 +91,7 @@ export const FiberChapterPreview = ({ content }: Props) => (
                         {content.fiberChips.map((chip) => (
                           <li key={chip}>
                             <span
-                              className={cn(
+                              className={cx(
                                 'inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-mono font-bold tracking-tight',
                                 t.chip,
                               )}

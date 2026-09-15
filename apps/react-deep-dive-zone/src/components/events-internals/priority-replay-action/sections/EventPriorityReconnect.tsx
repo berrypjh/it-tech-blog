@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Filter, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -21,7 +20,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-md lg:gap-lg items-stretch">
       {/* Table */}
       <div
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-2xl border bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           'border-[var(--term-border)]',
         )}
@@ -45,7 +44,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
               {content.tableRows.map((row, i) => (
                 <tr
                   key={i}
-                  className={cn(
+                  className={cx(
                     'transition-colors hover:bg-blue-50/30 dark:hover:bg-blue-950/10',
                     i % 2 === 1 && 'bg-[var(--term-surface)]/40',
                   )}
@@ -56,11 +55,11 @@ export const EventPriorityReconnect = ({ content }: Props) => (
                     return (
                       <td
                         key={`${i}-${j}`}
-                        className={cn(
+                        className={cx(
                           'px-md py-2.5 border-t border-[var(--term-border)] break-keep',
                           isFirst && 'font-mono font-bold text-sky-700 dark:text-sky-300',
                           isSecond &&
-                            cn(
+                            cx(
                               'font-mono font-bold whitespace-nowrap',
                               toneAccent[row.tone ?? 'teal'],
                             ),
@@ -80,7 +79,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
 
       {/* Priority flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-300/80 bg-gradient-to-br from-violet-50/70 via-white to-blue-50/30',
           'dark:border-violet-700/70 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -105,7 +104,7 @@ export const EventPriorityReconnect = ({ content }: Props) => (
             return (
               <li key={step} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-xl border-2 px-md py-2.5',
                     'border-violet-200/70 bg-white dark:border-violet-700/60 dark:bg-slate-950/40',
                   )}

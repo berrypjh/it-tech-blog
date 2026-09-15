@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitFork } from 'lucide-react';
 
 import { ComparePanel } from '../../../shared/compare';
@@ -14,8 +13,8 @@ type Branch = ReconcileChildrenContent['mountVsUpdate']['mount'];
 const panelTone = (tone: ToneKey) => {
   const t = toneTokens[tone];
   return {
-    card: cn(t.border, 'shadow-[0_2px_0_var(--term-border)]'),
-    iconBadge: cn('border border-[var(--term-border)] bg-[var(--term-surface)]', t.text),
+    card: cx(t.border, 'shadow-[0_2px_0_var(--term-border)]'),
+    iconBadge: cx('border border-[var(--term-border)] bg-[var(--term-surface)]', t.text),
     header: t.text,
   };
 };
@@ -49,7 +48,7 @@ const BranchPanel = ({ branch, tone, headerId }: PanelProps) => {
     >
       <div className="flex flex-wrap items-center gap-2">
         <code
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm font-bold',
             t.text,
           )}
@@ -83,7 +82,7 @@ const OutcomeChip = ({ outcome, fallbackTone }: { outcome: string; fallbackTone:
   if (outcome === 'delete') {
     return (
       <span
-        className={cn(
+        className={cx(
           base,
           'line-through border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800/70 dark:bg-rose-950/40 dark:text-rose-200',
         )}
@@ -95,7 +94,7 @@ const OutcomeChip = ({ outcome, fallbackTone }: { outcome: string; fallbackTone:
   if (outcome === 'reuse') {
     return (
       <span
-        className={cn(
+        className={cx(
           base,
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
         )}
@@ -104,5 +103,5 @@ const OutcomeChip = ({ outcome, fallbackTone }: { outcome: string; fallbackTone:
       </span>
     );
   }
-  return <span className={cn(base, toneTokens[fallbackTone].chip)}>{outcome}</span>;
+  return <span className={cx(base, toneTokens[fallbackTone].chip)}>{outcome}</span>;
 };

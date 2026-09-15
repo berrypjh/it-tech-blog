@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, PlayCircle, Search, Sparkles } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -38,7 +37,7 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
         return (
           <article
             key={card.title}
-            className={cn(
+            className={cx(
               'group flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -48,7 +47,7 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
             <header className="flex items-center gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                   'shadow-[0_3px_0_rgba(0,0,0,0.08)]',
                   iconBg(card.tone),
@@ -58,7 +57,7 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
               </span>
               <div className="flex flex-col">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     accent(card.tone),
                   )}
@@ -79,7 +78,7 @@ export const CollectionExecutionSeparation = ({ content }: Props) => (
     </div>
 
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-amber-300/80 bg-amber-50/60 dark:border-amber-800/60 dark:bg-amber-950/30',
       )}

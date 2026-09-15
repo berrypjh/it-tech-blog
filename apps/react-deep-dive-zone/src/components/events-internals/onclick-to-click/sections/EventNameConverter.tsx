@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Globe, MousePointerClick, Repeat } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -29,7 +28,7 @@ export const EventNameConverter = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200/70 bg-gradient-to-br from-blue-50/60 via-white to-cyan-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -56,7 +55,7 @@ export const EventNameConverter = ({ content }: Props) => {
                     role="radio"
                     aria-checked={isSelected}
                     onClick={() => setSelectedNative(option.native)}
-                    className={cn(
+                    className={cx(
                       'group inline-flex items-center justify-center gap-1.5 rounded-xl border-2 px-3 py-2.5',
                       'font-mono text-xsm sm:text-sm font-bold transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -68,7 +67,7 @@ export const EventNameConverter = ({ content }: Props) => {
                   >
                     <Globe
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'h-3.5 w-3.5 shrink-0',
                         isSelected ? 'text-white/90' : 'text-blue-500 dark:text-blue-300',
                       )}
@@ -83,7 +82,7 @@ export const EventNameConverter = ({ content }: Props) => {
           {/* Center: animated arrow */}
           <div className="flex items-center justify-center" aria-hidden="true">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full',
                 'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.35)] dark:bg-blue-500',
               )}
@@ -98,7 +97,7 @@ export const EventNameConverter = ({ content }: Props) => {
 
           {/* Right: result */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-3 rounded-2xl border-2 p-md',
               'border-teal-300/80 bg-white dark:border-teal-700/60 dark:bg-slate-950/40',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -146,7 +145,7 @@ export const EventNameConverter = ({ content }: Props) => {
             </div>
 
             <div
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-xl border px-3 py-2 text-[11px] sm:text-xsm',
                 isSpecial
                   ? 'border-amber-300/80 bg-amber-50/60 text-amber-900 dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-100'

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent } from '../content';
 import { BookOpenIcon, ExternalLinkIcon } from '../icons';
@@ -26,7 +26,7 @@ export const OfficialDocsCardsSection = ({ content }: Props) => (
         return (
           <li key={card.hookName} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                 'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -37,7 +37,7 @@ export const OfficialDocsCardsSection = ({ content }: Props) => (
               <div className="flex items-start justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                     tone.iconChip,
                   )}
@@ -45,7 +45,7 @@ export const OfficialDocsCardsSection = ({ content }: Props) => (
                   <Icon className="h-5 w-5" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1 rounded-md border px-2 py-0.5',
                     'font-mono text-[10px] font-bold uppercase tracking-wider',
                     tone.chip,
@@ -56,7 +56,7 @@ export const OfficialDocsCardsSection = ({ content }: Props) => (
                 </span>
               </div>
 
-              <h3 className={cn('text-md sm:text-lg font-mono font-bold break-all', tone.text)}>
+              <h3 className={cx('text-md sm:text-lg font-mono font-bold break-all', tone.text)}>
                 {card.hookName}()
               </h3>
 
@@ -73,7 +73,7 @@ export const OfficialDocsCardsSection = ({ content }: Props) => (
                 href={card.cta.href}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(
+                className={cx(
                   'group mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-3 py-2',
                   'border-slate-200 bg-white text-[var(--term-fg)]',
                   'dark:border-slate-700 dark:bg-[var(--term-bg)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Clock3, Hourglass, Layers, Sparkles, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -29,7 +28,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-md items-stretch">
       {/* inline code panel */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -56,7 +55,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
         </div>
 
         <div
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-xl border-2 px-md py-3',
             'border-blue-300/80 bg-blue-50/60 text-blue-900',
             'dark:border-blue-700/60 dark:bg-blue-950/30 dark:text-blue-100',
@@ -78,7 +77,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
           return (
             <li
               key={c.title}
-              className={cn(
+              className={cx(
                 'relative flex flex-col gap-2 rounded-2xl border-2 p-md transition-colors',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                 responseCardBorder[c.accent],
@@ -87,7 +86,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     responseIconBox[c.accent],
                   )}
@@ -95,7 +94,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
                   <Icon className="h-4 w-4" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'font-mono text-[10px] uppercase tracking-wider',
                     responseTextStrong[c.accent],
                   )}
@@ -104,7 +103,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
                 </span>
               </header>
               <h3
-                className={cn(
+                className={cx(
                   'text-xsm sm:text-sm font-bold leading-tight break-keep',
                   responseTextStrong[c.accent],
                 )}
@@ -115,7 +114,7 @@ export const DeferredValueUserCode = ({ content }: Props) => (
                 {c.description}
               </p>
               <p
-                className={cn(
+                className={cx(
                   'mt-auto font-mono text-[10px] font-bold uppercase tracking-wider break-keep',
                   responseTextStrong[c.accent],
                 )}

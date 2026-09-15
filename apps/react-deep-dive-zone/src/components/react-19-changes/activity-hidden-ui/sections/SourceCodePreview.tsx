@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import {
@@ -35,7 +35,7 @@ export const SourceCodePreview = ({ content }: Props) => (
       </div>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-purple-200/80 bg-purple-50/30 dark:border-purple-700/70 dark:bg-purple-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -69,7 +69,7 @@ export const SourceCodePreview = ({ content }: Props) => (
       </article>
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-gradient-to-br from-white via-purple-50/30 to-white',
           'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-purple-950/20 dark:to-[var(--term-bg)]',
@@ -89,7 +89,7 @@ export const SourceCodePreview = ({ content }: Props) => (
         </header>
 
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/40',
           )}
@@ -103,7 +103,7 @@ export const SourceCodePreview = ({ content }: Props) => (
           href={content.fileCard.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'group mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
             'border-slate-900 bg-slate-900 text-white',
             'dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900',

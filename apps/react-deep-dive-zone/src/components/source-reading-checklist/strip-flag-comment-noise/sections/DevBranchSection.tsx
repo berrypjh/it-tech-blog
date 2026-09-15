@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, Bug, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const DevBranchSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_6fr)_minmax(0,_6fr)] gap-md lg:gap-lg items-start">
         {/* Left — Code */}
         <article
-          className={cn(
+          className={cx(
             'rounded-2xl border-2 overflow-hidden',
             'border-amber-300 bg-slate-900 text-slate-100',
             'dark:border-amber-700/70',
@@ -45,7 +44,7 @@ export const DevBranchSection = ({ content }: Props) => {
         {/* Right — Explanation */}
         <div className="flex flex-col gap-md">
           <article
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-amber-300 bg-amber-50/60',
               'dark:border-amber-700/70 dark:bg-amber-950/30',
@@ -55,7 +54,7 @@ export const DevBranchSection = ({ content }: Props) => {
             <div className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2',
                   'border-amber-400 bg-white text-amber-700',
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -72,7 +71,7 @@ export const DevBranchSection = ({ content }: Props) => {
 
           {/* Caution */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-xl border-2 p-md',
               'border-slate-300 bg-slate-50/60',
               'dark:border-slate-700 dark:bg-slate-900/40',

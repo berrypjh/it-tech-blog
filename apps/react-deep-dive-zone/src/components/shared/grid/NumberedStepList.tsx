@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 import { type ToneKey, toneTokens } from '../tones';
@@ -36,14 +35,14 @@ export const NumberedStepList = ({ rows, rowClassName }: Props) => (
       return (
         <li key={row.id} className="group transition-colors hover:bg-[var(--term-surface)]">
           <div
-            className={cn(
+            className={cx(
               'grid grid-cols-[auto_auto_1fr] gap-sm md:gap-md items-center px-md sm:px-lg py-md sm:py-lg',
               rowClassName,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-9 h-9 rounded-md text-sm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)] shrink-0',
                 stepChip,
                 tone,
@@ -54,7 +53,7 @@ export const NumberedStepList = ({ rows, rowClassName }: Props) => (
 
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0',
                 stepChip,
                 tone,
@@ -65,7 +64,7 @@ export const NumberedStepList = ({ rows, rowClassName }: Props) => (
 
             <div className="flex flex-col gap-0.5 min-w-0">
               <h3
-                className={cn(
+                className={cx(
                   'text-sm sm:text-md font-bold tracking-tight break-keep leading-snug',
                   tone,
                 )}

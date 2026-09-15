@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Link2, ListOrdered, Trophy } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -48,7 +47,7 @@ const iconBoxTone: Record<Tone, string> = {
 export const KeyTakeaways = ({ content }: Props) => (
   <section
     aria-labelledby="heading-summary"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -66,7 +65,7 @@ export const KeyTakeaways = ({ content }: Props) => (
         return (
           <li key={item.number}>
             <article
-              className={cn(
+              className={cx(
                 'h-full flex flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -76,7 +75,7 @@ export const KeyTakeaways = ({ content }: Props) => (
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
                     numberTone[item.tone],
                   )}
@@ -85,7 +84,7 @@ export const KeyTakeaways = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     iconBoxTone[item.tone],
                   )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Crosshair, Hand, Lightbulb, Route, Split, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -35,8 +34,8 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
             const t = toneTokens[node.tone];
             return (
               <li key={node.label} className="flex flex-col">
-                <div className={cn('rounded-md border px-3 py-2 text-center font-mono', t.chip)}>
-                  <span className={cn('text-xsm sm:text-sm font-bold', t.text)}>{node.label}</span>
+                <div className={cx('rounded-md border px-3 py-2 text-center font-mono', t.chip)}>
+                  <span className={cx('text-xsm sm:text-sm font-bold', t.text)}>{node.label}</span>
                 </div>
                 {idx < content.flow.length - 1 && (
                   <span
@@ -54,16 +53,16 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
         <div className="space-y-2">
           <p className="text-sm sm:text-md text-[var(--term-fg)] leading-relaxed break-keep">
             {content.mainBody}{' '}
-            <span className={cn('font-bold', sky.text)}>{content.mainBodyEmphasis}</span>
+            <span className={cx('font-bold', sky.text)}>{content.mainBodyEmphasis}</span>
           </p>
           <div
-            className={cn(
+            className={cx(
               'flex items-start gap-sm rounded-md border px-3 py-2',
               amber.border,
               amber.fill.bg,
             )}
           >
-            <Lightbulb aria-hidden="true" className={cn('mt-0.5 h-4 w-4 shrink-0', amber.text)} />
+            <Lightbulb aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', amber.text)} />
             <p className="text-xxsm sm:text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
               {content.subBody}
             </p>
@@ -83,7 +82,7 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
             </span>
           </div>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               amber.chip,
             )}
@@ -117,7 +116,7 @@ const DecisionStep = ({ step }: { step: LaneDecisionStep }) => {
   const t = toneTokens[step.tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] p-sm shadow-[0_2px_0_var(--term-border)]',
         step.emphasized ? 'border-2' : 'border',
         t.border,
@@ -125,7 +124,7 @@ const DecisionStep = ({ step }: { step: LaneDecisionStep }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border',
           t.chip,
         )}
@@ -135,17 +134,17 @@ const DecisionStep = ({ step }: { step: LaneDecisionStep }) => {
       <div className="flex items-center gap-2 flex-1 min-w-0">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full border px-1.5 text-[10px] font-mono font-bold tabular-nums',
             t.chip,
           )}
         >
           {step.number}
         </span>
-        <span className={cn('text-xsm sm:text-sm font-bold break-keep', t.text)}>{step.title}</span>
+        <span className={cx('text-xsm sm:text-sm font-bold break-keep', t.text)}>{step.title}</span>
         {step.emphasized && (
           <span
-            className={cn(
+            className={cx(
               'ml-auto inline-flex items-center rounded border px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider',
               amber.chip,
             )}

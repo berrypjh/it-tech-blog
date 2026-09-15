@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Equal, PlayCircle, SkipForward, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ const ResultCard = ({ data }: { data: DepsResult }) => {
   const Icon = data.visual === 'skip' ? SkipForward : PlayCircle;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         'motion-safe:hover:-translate-y-0.5',
@@ -41,25 +40,25 @@ const ResultCard = ({ data }: { data: DepsResult }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn('inline-flex h-10 w-10 items-center justify-center rounded-full', a.head)}
+          className={cx('inline-flex h-10 w-10 items-center justify-center rounded-full', a.head)}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-sm sm:text-md font-bold break-keep', a.text)}>{data.result}</h3>
+        <h3 className={cx('text-sm sm:text-md font-bold break-keep', a.text)}>{data.result}</h3>
       </header>
 
       <ul className="flex flex-col gap-1.5">
         {data.body.map((line) => (
           <li
             key={line}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-lg border px-3 py-2 text-[11px] sm:text-xsm break-keep',
               a.bodyBg,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', a.dot)}
+              className={cx('mt-1.5 inline-block h-1.5 w-1.5 rounded-full shrink-0', a.dot)}
             />
             <span className="text-[var(--term-fg)]">{line}</span>
           </li>
@@ -72,7 +71,7 @@ const ResultCard = ({ data }: { data: DepsResult }) => {
 export const DependenciesComparisonFlow = ({ content }: Props) => (
   <section
     aria-labelledby="heading-deps-compare"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -87,7 +86,7 @@ export const DependenciesComparisonFlow = ({ content }: Props) => (
     <div className="flex flex-col gap-md">
       {/* Decision node */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col items-center gap-2 rounded-2xl border-2 p-md sm:p-lg text-center',
           'border-indigo-300/80 bg-indigo-50/40 dark:border-indigo-800/60 dark:bg-indigo-950/30',
           'shadow-[0_2px_0_var(--term-border)]',

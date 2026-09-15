@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Droplets, Rocket, Server, ServerCrash } from 'lucide-react';
 
 import type { RecoveryModelOverviewContent } from '../content';
@@ -34,7 +33,7 @@ export const ServerFallbackTimelineSection = ({ content }: Props) => (
         return (
           <li key={step.title}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 h-full rounded-2xl border-2 p-md',
                 accent.border,
                 accent.bg,
@@ -46,7 +45,7 @@ export const ServerFallbackTimelineSection = ({ content }: Props) => (
               <div className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums text-white',
                     accent.solidBg,
                   )}
@@ -55,7 +54,7 @@ export const ServerFallbackTimelineSection = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-lg border',
                     accent.iconChip,
                   )}
@@ -63,7 +62,7 @@ export const ServerFallbackTimelineSection = ({ content }: Props) => (
                   <Icon className="h-3.5 w-3.5" />
                 </span>
               </div>
-              <h3 className={cn('text-sm font-bold break-keep', accent.text)}>{step.title}</h3>
+              <h3 className={cx('text-sm font-bold break-keep', accent.text)}>{step.title}</h3>
               <p className="text-[11px] text-[var(--term-muted)] break-keep">{step.caption}</p>
             </article>
           </li>

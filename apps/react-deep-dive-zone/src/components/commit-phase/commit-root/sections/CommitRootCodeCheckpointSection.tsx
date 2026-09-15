@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2, FileCode, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -105,13 +104,13 @@ const PipelineCard = ({ item }: { item: PipelineFunction }) => {
   const t = toneTokens[item.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
         t.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
-      <code className={cn('text-[11px] sm:text-xsm font-bold font-mono break-all', t.text)}>
+      <code className={cx('text-[11px] sm:text-xsm font-bold font-mono break-all', t.text)}>
         {item.name}
       </code>
       <span className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { GitPullRequest, Search, Tag } from 'lucide-react';
 
@@ -33,7 +32,7 @@ export const Versions: Story = {
       body: (
         <div className="flex flex-col gap-1">
           <h3
-            className={cn(
+            className={cx(
               'text-md sm:text-lg font-bold tracking-tight leading-none',
               toneTokens[tone].text,
             )}
@@ -70,7 +69,7 @@ export const Steps: Story = {
           <div className="flex flex-col gap-sm">
             <header className="flex items-center justify-between gap-2">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
                   'bg-[var(--term-surface)] border-[var(--term-border)]',
                   t,
@@ -80,7 +79,7 @@ export const Steps: Story = {
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center w-11 h-11 rounded-2xl border',
                   'bg-[var(--term-surface)] border-[var(--term-border)]',
                   t,

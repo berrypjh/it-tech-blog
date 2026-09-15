@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Map, MapPin } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -11,7 +10,7 @@ type Props = { content: HooksRecapContent['pageMap'] };
 
 const PageCard = ({ item }: { item: PageMapItem }) => (
   <article
-    className={cn(
+    className={cx(
       'h-full flex flex-col gap-2 rounded-2xl border-2 p-md',
       'shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5',
@@ -21,17 +20,17 @@ const PageCard = ({ item }: { item: PageMapItem }) => (
     <header className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
           toneNumber[item.tone],
         )}
       >
         {item.number}
       </span>
-      <MapPin aria-hidden="true" className={cn('h-4 w-4', toneText[item.tone])} />
+      <MapPin aria-hidden="true" className={cx('h-4 w-4', toneText[item.tone])} />
     </header>
     <h3
-      className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', toneText[item.tone])}
+      className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', toneText[item.tone])}
     >
       {item.title}
     </h3>
@@ -44,7 +43,7 @@ const PageCard = ({ item }: { item: PageMapItem }) => (
 export const PageConnectionMap = ({ content }: Props) => (
   <section
     aria-labelledby="heading-page-map"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Sliders, Target, Trophy, Zap } from 'lucide-react';
 
 import type { Tone, WhyNotImmediateContent } from '../content';
@@ -73,7 +72,7 @@ export const SchedulerKeyTakeaways = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg overflow-hidden',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -83,7 +82,7 @@ export const SchedulerKeyTakeaways = ({ content }: Props) => (
               <header className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                     'text-md font-mono font-bold tabular-nums shadow-[0_3px_0_rgba(0,0,0,0.08)]',
                     toneNumber[card.tone],
@@ -92,7 +91,7 @@ export const SchedulerKeyTakeaways = ({ content }: Props) => (
                   {i + 1}
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     toneAccent[card.tone],
                   )}
@@ -111,7 +110,7 @@ export const SchedulerKeyTakeaways = ({ content }: Props) => (
 
               <Icon
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute -bottom-4 -right-4 h-20 w-20 pointer-events-none',
                   toneIconWash[card.tone],
                 )}

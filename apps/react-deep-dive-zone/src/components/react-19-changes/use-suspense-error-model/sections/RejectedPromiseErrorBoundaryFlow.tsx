@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseSuspenseErrorModelContent } from '../content';
 import { ArrowRightIcon, RotateCcwIcon, ShieldAlertIcon } from '../icons';
@@ -22,7 +22,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
       )}
@@ -35,7 +35,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
           <Fragment key={step.title}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
                   tone.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -46,7 +46,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                       tone.iconChip,
                     )}
@@ -55,7 +55,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       tone.chip,
                     )}
@@ -63,7 +63,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                   {step.title}
                 </h3>
                 {step.caption && (
@@ -76,7 +76,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
             {!isLast && (
               <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                     tone.iconChip,
                   )}
@@ -92,7 +92,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
 
     {/* Error fallback UI card */}
     <article
-      className={cn(
+      className={cx(
         'mt-md flex items-center gap-md rounded-2xl border-2 p-md sm:p-lg',
         'border-rose-300/80 bg-rose-50/40 dark:border-rose-700/70 dark:bg-rose-950/30',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -114,7 +114,7 @@ export const RejectedPromiseErrorBoundaryFlow = ({ content }: Props) => (
       </div>
       <button
         type="button"
-        className={cn(
+        className={cx(
           'group inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2',
           'bg-rose-600 text-white font-bold text-xsm dark:bg-rose-500',
           'shadow-[0_2px_0_rgba(15,23,42,0.25)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileCode, GitBranch, Sparkles } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -29,7 +28,7 @@ const renderToken = (tok: string, i: number) => {
     return (
       <span
         key={i}
-        className={cn(
+        className={cx(
           tok === 'requestUpdateLane' && 'text-cyan-300 font-semibold',
           tok === 'eventPriorityToLane' && 'text-emerald-300 font-semibold',
           tok === 'resolveUpdatePriority' && 'text-amber-200 font-semibold',
@@ -110,7 +109,7 @@ export const PriorityCodePreview = ({ content }: Props) => {
 
         {/* explanation */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-violet-50/40',
             'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -148,7 +147,7 @@ export const PriorityCodePreview = ({ content }: Props) => {
             {content.apiBadges.map((api) => (
               <li key={api}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-md border px-2 py-1 font-mono',
                     'border-violet-200/80 bg-violet-50 text-violet-800 text-[11px] sm:text-xsm font-semibold',
                     'dark:border-violet-800/60 dark:bg-violet-950/40 dark:text-violet-200',
@@ -164,7 +163,7 @@ export const PriorityCodePreview = ({ content }: Props) => {
             href={content.button.href}
             target="_blank"
             rel="noreferrer"
-            className={cn(
+            className={cx(
               'mt-auto group inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3',
               'border-2 border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] font-bold text-xsm sm:text-sm',
               'shadow-[0_2px_0_var(--term-border)] transition-all',

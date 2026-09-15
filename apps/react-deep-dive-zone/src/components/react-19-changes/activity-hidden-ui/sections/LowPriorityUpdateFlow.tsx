@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { ArrowRightIcon, SparklesIcon } from '../icons';
@@ -22,7 +22,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-2 items-stretch',
       )}
@@ -35,7 +35,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
           <Fragment key={step.title}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
                   tone.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -46,7 +46,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
                 <div className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                       tone.iconChip,
                     )}
@@ -55,7 +55,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       tone.chip,
                     )}
@@ -63,7 +63,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
+                <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>
                   {step.title}
                 </h3>
                 <p className="text-xxsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -74,7 +74,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
             {!isLast && (
               <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                     tone.iconChip,
                   )}
@@ -90,7 +90,7 @@ export const LowPriorityUpdateFlow = ({ content }: Props) => (
 
     {/* Footer label */}
     <div
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-2 rounded-xl border-2 px-3 py-3',
         'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
         'shadow-[0_2px_0_var(--term-border)]',

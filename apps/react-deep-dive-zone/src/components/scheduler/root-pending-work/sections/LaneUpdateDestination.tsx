@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CornerDownRight, Database, Route } from 'lucide-react';
 
 import {
@@ -33,7 +32,7 @@ const codeTokenize = (line: string) => {
       return (
         <span
           key={i}
-          className={cn(
+          className={cx(
             'text-blue-700 dark:text-blue-300',
             tok === 'pendingLanes' && 'text-teal-700 dark:text-teal-300 font-bold',
           )}
@@ -80,7 +79,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
       {/* Fiber tree card */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           axisCardBorder.blue,
@@ -89,14 +88,14 @@ export const LaneUpdateDestination = ({ content }: Props) => (
         <header className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
               axisIconBox.blue,
             )}
           >
             <Database className="h-4 w-4" aria-hidden="true" />
           </span>
-          <h3 className={cn('text-sm sm:text-md font-bold break-keep', axisTextStrong.blue)}>
+          <h3 className={cx('text-sm sm:text-md font-bold break-keep', axisTextStrong.blue)}>
             {content.fiberTreeTitle}
           </h3>
         </header>
@@ -119,7 +118,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
                     </span>
                   )}
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-md border px-2 py-1 font-mono text-[11px] sm:text-xsm',
                       node.emphasis
                         ? 'border-teal-300/80 bg-teal-50 text-teal-800 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200 font-bold'
@@ -137,7 +136,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
 
       {/* Steps card */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -160,7 +159,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
             return (
               <li key={step.title} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-start gap-3 rounded-xl border px-3 py-2.5',
                     'border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                     'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -169,7 +168,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full',
                       'text-[10px] font-mono font-bold tabular-nums text-white',
                       i === 3 ? axisNumberBadge.teal : axisNumberBadge.blue,
@@ -178,7 +177,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
                     {i + 1}
                   </span>
                   <p
-                    className={cn(
+                    className={cx(
                       'text-xsm sm:text-sm leading-tight break-keep flex-1',
                       i === 3 ? axisTextStrong.teal + ' font-bold' : 'text-[var(--term-fg)]',
                     )}
@@ -200,7 +199,7 @@ export const LaneUpdateDestination = ({ content }: Props) => (
 
       {/* Root object card */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           axisCardBorder.teal,
@@ -209,14 +208,14 @@ export const LaneUpdateDestination = ({ content }: Props) => (
         <header className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
               axisIconBox.teal,
             )}
           >
             <Database className="h-4 w-4" aria-hidden="true" />
           </span>
-          <h3 className={cn('text-sm sm:text-md font-bold break-keep', axisTextStrong.teal)}>
+          <h3 className={cx('text-sm sm:text-md font-bold break-keep', axisTextStrong.teal)}>
             {content.rootObjectTitle}
           </h3>
         </header>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FunctionSquare, Network, Target, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -46,7 +45,7 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
     <FlowStepsGrid steps={content.steps.map(toFlowStep)} columns={4} />
 
     <div
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
         amber.border,
       )}
@@ -56,7 +55,7 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
           <Target className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', amber.text)}
+          className={cx('text-[10px] uppercase tracking-wider font-mono font-bold', amber.text)}
         >
           {content.keyPointTitle}
         </span>
@@ -65,11 +64,11 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
         {content.keyPointBody}
       </p>
       <ul className="flex flex-wrap items-center gap-1.5">
-        <li className={cn('rounded-md border px-2 py-0.5 text-[10px] font-mono', violet.chip)}>
+        <li className={cx('rounded-md border px-2 py-0.5 text-[10px] font-mono', violet.chip)}>
           Fiber-level
         </li>
         <li className="text-[10px] font-mono text-[var(--term-muted)]">→</li>
-        <li className={cn('rounded-md border px-2 py-0.5 text-[10px] font-mono', sky.chip)}>
+        <li className={cx('rounded-md border px-2 py-0.5 text-[10px] font-mono', sky.chip)}>
           Root pending
         </li>
       </ul>

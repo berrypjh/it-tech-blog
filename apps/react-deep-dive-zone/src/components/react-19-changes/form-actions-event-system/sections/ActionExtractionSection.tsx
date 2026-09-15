@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { ArrowDownIcon, ArrowRightIcon, GitBranchIcon, SplitIcon } from '../icons';
@@ -27,7 +27,7 @@ export const ActionExtractionSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 gap-md lg:grid-cols-3 lg:gap-lg items-stretch">
         {/* LEFT: form-level action */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             actionTone.border,
             'bg-white dark:bg-[var(--term-bg)]',
@@ -37,26 +37,26 @@ export const ActionExtractionSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 actionTone.iconChip,
               )}
             >
               <ArrowRightIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', actionTone.text)}>
+            <h3 className={cx('text-sm font-bold break-keep', actionTone.text)}>
               {content.left.title}
             </h3>
           </header>
           <CodePanel code={content.left.code} langBadge="TSX" />
           <div
-            className={cn('flex items-center gap-2 rounded-lg border px-3 py-2', actionTone.chip)}
+            className={cx('flex items-center gap-2 rounded-lg border px-3 py-2', actionTone.chip)}
           >
             <span
               aria-hidden="true"
-              className={cn('block h-1.5 w-1.5 rounded-full', actionTone.dot)}
+              className={cx('block h-1.5 w-1.5 rounded-full', actionTone.dot)}
             />
-            <p className={cn('text-xsm font-bold break-keep', actionTone.text)}>
+            <p className={cx('text-xsm font-bold break-keep', actionTone.text)}>
               {content.left.result}
             </p>
           </div>
@@ -64,7 +64,7 @@ export const ActionExtractionSection = ({ content }: Props) => {
 
         {/* MIDDLE: button formAction wins */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             pluginTone.border,
             'bg-white dark:bg-[var(--term-bg)]',
@@ -74,26 +74,26 @@ export const ActionExtractionSection = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                 pluginTone.iconChip,
               )}
             >
               <SplitIcon className="h-4 w-4" />
             </span>
-            <h3 className={cn('text-sm font-bold break-keep', pluginTone.text)}>
+            <h3 className={cx('text-sm font-bold break-keep', pluginTone.text)}>
               {content.middle.title}
             </h3>
           </header>
           <CodePanel code={content.middle.code} langBadge="TSX" />
           <div
-            className={cn('flex items-center gap-2 rounded-lg border px-3 py-2', pluginTone.chip)}
+            className={cx('flex items-center gap-2 rounded-lg border px-3 py-2', pluginTone.chip)}
           >
             <span
               aria-hidden="true"
-              className={cn('block h-1.5 w-1.5 rounded-full', pluginTone.dot)}
+              className={cx('block h-1.5 w-1.5 rounded-full', pluginTone.dot)}
             />
-            <p className={cn('text-xsm font-bold break-keep', pluginTone.text)}>
+            <p className={cx('text-xsm font-bold break-keep', pluginTone.text)}>
               {content.middle.result}
             </p>
           </div>
@@ -101,7 +101,7 @@ export const ActionExtractionSection = ({ content }: Props) => {
 
         {/* RIGHT: decision flow */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-slate-200 bg-gradient-to-br from-white via-blue-50/40 to-white',
             'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-blue-950/20 dark:to-[var(--term-bg)]',
@@ -122,7 +122,7 @@ export const ActionExtractionSection = ({ content }: Props) => {
 
           {/* decision diamond-card */}
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 px-3 py-3 text-center',
               'border-blue-300/80 bg-blue-50/60 dark:border-blue-700/70 dark:bg-blue-950/30',
             )}
@@ -149,7 +149,7 @@ export const ActionExtractionSection = ({ content }: Props) => {
           {/* Arrow down */}
           <div aria-hidden="true" className="flex justify-center">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex h-7 w-7 items-center justify-center rounded-full border',
                 transitionTone.iconChip,
               )}
@@ -160,13 +160,13 @@ export const ActionExtractionSection = ({ content }: Props) => {
 
           {/* Final */}
           <div
-            className={cn(
+            className={cx(
               'rounded-xl border-2 px-3 py-2 text-center',
               transitionTone.borderStrong,
               transitionTone.bg,
             )}
           >
-            <p className={cn('text-xsm font-bold break-keep', transitionTone.text)}>
+            <p className={cx('text-xsm font-bold break-keep', transitionTone.text)}>
               {content.right.final}
             </p>
           </div>
@@ -186,7 +186,7 @@ const BranchCard = ({
   tone: (typeof pipelineTone)[keyof typeof pipelineTone];
 }) => (
   <div
-    className={cn(
+    className={cx(
       'flex flex-col gap-1 rounded-lg border-2 p-3',
       tone.border,
       'bg-white dark:bg-[var(--term-bg)]',
@@ -194,13 +194,13 @@ const BranchCard = ({
   >
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex w-fit items-center gap-1 rounded-md border px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase',
         tone.chip,
       )}
     >
       {label}
     </span>
-    <p className={cn('text-xsm font-bold break-keep leading-snug', tone.text)}>{body}</p>
+    <p className={cx('text-xsm font-bold break-keep leading-snug', tone.text)}>{body}</p>
   </div>
 );

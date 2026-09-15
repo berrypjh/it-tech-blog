@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, RotateCcw, TriangleAlert } from 'lucide-react';
 
 import type { ErrorBoundaryRecoverContent } from '../content';
@@ -16,7 +15,7 @@ export const UserCodeSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-stretch">
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col overflow-hidden rounded-2xl border-2',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -30,7 +29,7 @@ export const UserCodeSection = ({ content }: Props) => (
       <div className="flex flex-col gap-md">
         {/* fallback example */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-rose-200 bg-rose-50/60 dark:border-rose-800/60 dark:bg-rose-950/30',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -57,7 +56,7 @@ export const UserCodeSection = ({ content }: Props) => (
             type="button"
             tabIndex={-1}
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'mt-2 inline-flex w-fit items-center gap-1.5 rounded-lg border-2 px-3 py-1.5',
               'border-rose-300 bg-white text-rose-700 font-bold text-xsm',
               'dark:border-rose-700 dark:bg-slate-900 dark:text-rose-200',
@@ -70,7 +69,7 @@ export const UserCodeSection = ({ content }: Props) => (
 
         {/* key points */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
             'shadow-[0_2px_0_var(--term-border)]',

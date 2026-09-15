@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, ChevronRight, File, Folder, FolderOpen } from 'lucide-react';
 
 export type RepoBrowserTreeNode = {
@@ -96,11 +95,11 @@ const TreeNode = ({
     if (selectable) onSelect(key);
   };
 
-  const rowClass = cn(
+  const rowClass = cx(
     'flex items-center gap-1.5 w-full py-1 pr-2 rounded text-xsm font-mono text-left transition-colors',
     isSelected
       ? 'bg-[var(--term-surface)] text-[var(--term-accent)] font-bold'
-      : cn('text-[var(--term-fg)]', interactive && 'hover:bg-[var(--term-surface)]'),
+      : cx('text-[var(--term-fg)]', interactive && 'hover:bg-[var(--term-surface)]'),
     interactive ? 'cursor-pointer' : 'cursor-default',
   );
 
@@ -114,7 +113,7 @@ const TreeNode = ({
         <span aria-hidden="true" className="inline-block w-3 shrink-0" />
       )}
       <Icon
-        className={cn(
+        className={cx(
           'h-3.5 w-3.5 shrink-0',
           isSelected ? 'text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
         )}
@@ -139,7 +138,7 @@ const TreeNode = ({
         <button
           type="button"
           onClick={handleClick}
-          className={cn(
+          className={cx(
             rowClass,
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-inset',
           )}

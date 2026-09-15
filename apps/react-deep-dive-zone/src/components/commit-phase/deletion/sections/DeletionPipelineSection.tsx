@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -86,7 +85,7 @@ const PipelineCard = ({ step }: { step: PipelineStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1.5 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -97,7 +96,7 @@ const PipelineCard = ({ step }: { step: PipelineStep }) => {
           <Icon className="h-4 w-4" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
             t.chip,
           )}
@@ -105,7 +104,7 @@ const PipelineCard = ({ step }: { step: PipelineStep }) => {
           {step.number}
         </span>
       </header>
-      <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
       <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

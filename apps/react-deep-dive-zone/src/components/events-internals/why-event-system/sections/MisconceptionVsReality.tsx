@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, CornerDownRight, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ export const MisconceptionVsReality = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* LEFT: misconception (red/rose tint) */}
       <article
-        className={cn(
+        className={cx(
           'group relative flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-rose-200/80 bg-gradient-to-br from-rose-50/80 via-white to-rose-50/30',
           'dark:border-rose-800/60 dark:from-rose-950/30 dark:via-[var(--term-bg)] dark:to-rose-950/10',
@@ -43,7 +42,7 @@ export const MisconceptionVsReality = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
               'bg-rose-500 text-white shadow-[0_3px_0_rgba(225,29,72,0.3)] dark:bg-rose-500/90',
             )}
@@ -88,7 +87,7 @@ export const MisconceptionVsReality = ({ content }: Props) => (
         </div>
 
         <div
-          className={cn(
+          className={cx(
             'flex items-center gap-2 rounded-xl border-2 border-dashed px-md py-3',
             'border-rose-300/80 bg-rose-50/60 text-rose-700',
             'dark:border-rose-700/60 dark:bg-rose-950/30 dark:text-rose-200',
@@ -105,7 +104,7 @@ export const MisconceptionVsReality = ({ content }: Props) => (
 
       {/* RIGHT: reality (teal/blue tint) */}
       <article
-        className={cn(
+        className={cx(
           'group relative flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/80 via-white to-cyan-50/40',
           'dark:border-teal-800/60 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -115,7 +114,7 @@ export const MisconceptionVsReality = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
               'bg-teal-500 text-white shadow-[0_3px_0_rgba(13,148,136,0.3)] dark:bg-teal-500/90',
             )}
@@ -142,14 +141,14 @@ export const MisconceptionVsReality = ({ content }: Props) => (
             return (
               <li key={step.label} className="flex flex-col">
                 <div
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border-2 px-md py-2.5 transition-colors',
                     flowTone[step.tone],
                   )}
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full',
                       'bg-white text-[10px] font-mono font-bold tabular-nums shadow-sm',
                       'dark:bg-slate-950/60',

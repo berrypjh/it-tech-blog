@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
@@ -35,7 +35,7 @@ export const ServerComponentsHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -88,7 +88,7 @@ const HeroCard = ({ card }: { card: BoundaryCard }) => {
   const Icon = iconRegistry[card.iconKey];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -100,7 +100,7 @@ const HeroCard = ({ card }: { card: BoundaryCard }) => {
           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <div className="flex min-w-0 flex-col">
-          <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+          <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
             {card.title}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -114,7 +114,7 @@ const HeroCard = ({ card }: { card: BoundaryCard }) => {
             key={item}
             className="flex items-start gap-1.5 text-xsm leading-relaxed text-[var(--term-fg)] break-keep"
           >
-            <CheckCircleIcon aria-hidden="true" className={cn('mt-0.5 h-3 w-3 shrink-0', t.text)} />
+            <CheckCircleIcon aria-hidden="true" className={cx('mt-0.5 h-3 w-3 shrink-0', t.text)} />
             <span>{item}</span>
           </li>
         ))}

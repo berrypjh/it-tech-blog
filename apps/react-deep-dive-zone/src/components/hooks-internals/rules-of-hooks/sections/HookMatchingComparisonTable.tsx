@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, Link2Off, Network, Unlink } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ const ResultBadge = ({ kind, label }: { kind: MatchingRow['resultKind']; label: 
   const Icon = kind === 'broken' ? Unlink : Link2Off;
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider',
         s.chip,
       )}
@@ -37,7 +36,7 @@ const ResultBadge = ({ kind, label }: { kind: MatchingRow['resultKind']; label: 
 export const HookMatchingComparisonTable = ({ content }: Props) => (
   <section
     aria-labelledby="heading-matching-table"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -104,7 +103,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
                 <td className="p-md border-b border-l border-[var(--term-border)] align-top">
                   <div className="flex flex-col gap-1">
                     <ResultBadge kind={row.resultKind} label={row.resultLabel} />
-                    <p className={cn('text-[11px] break-keep', s.text)}>{row.resultDetail}</p>
+                    <p className={cx('text-[11px] break-keep', s.text)}>{row.resultDetail}</p>
                   </div>
                 </td>
               </tr>
@@ -121,7 +120,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
         return (
           <li key={row.position}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-2 rounded-2xl border-2 bg-[var(--term-bg)] p-md',
                 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
               )}
@@ -152,7 +151,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
                   </dd>
                 </div>
               </dl>
-              <p className={cn('text-[11px] break-keep', s.text)}>{row.resultDetail}</p>
+              <p className={cx('text-[11px] break-keep', s.text)}>{row.resultDetail}</p>
             </article>
           </li>
         );
@@ -161,7 +160,7 @@ export const HookMatchingComparisonTable = ({ content }: Props) => (
 
     {/* Warning banner */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-rose-400/80 bg-rose-50/70 dark:border-rose-600/60 dark:bg-rose-950/40',
       )}

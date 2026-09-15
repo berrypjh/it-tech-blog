@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Bug, CheckCircle2, Gauge, GitCompare, Sparkles } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -45,7 +44,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -54,7 +53,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-14 h-14 rounded-full border',
             t.chip,
           )}
@@ -62,7 +61,7 @@ const CardView = ({ card }: { card: ProdDevCard }) => {
           <Icon className="h-6 w-6" />
         </span>
         <div className="flex flex-col gap-0.5 min-w-0">
-          <code className={cn('font-mono text-lg font-bold tracking-tight', t.text)}>
+          <code className={cx('font-mono text-lg font-bold tracking-tight', t.text)}>
             {card.title}
           </code>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] font-mono">

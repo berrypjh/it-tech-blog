@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Binary, Braces, Hexagon, SquareFunction, Type } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -29,7 +28,7 @@ export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -60,7 +59,7 @@ export const TypeDecisionHeroDiagram = ({ content, className }: Props) => {
 
 const CenterNode = ({ label }: { label: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center justify-center gap-sm rounded-xl border px-md py-2.5',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -68,7 +67,7 @@ const CenterNode = ({ label }: { label: string }) => (
     <ToneIconBox tone="sky" size="sm">
       <Type className="h-4 w-4" aria-hidden="true" />
     </ToneIconBox>
-    <code className={cn('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
+    <code className={cx('font-mono text-base font-bold tracking-tight', toneTokens.sky.text)}>
       {label}
     </code>
   </div>
@@ -81,7 +80,7 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full min-w-0 flex-col gap-1.5 rounded-xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -91,14 +90,14 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <code className={cn('min-w-0 truncate font-mono text-xsm font-bold', t.text)}>
+        <code className={cx('min-w-0 truncate font-mono text-xsm font-bold', t.text)}>
           {branch.condition}
         </code>
       </span>
       <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">
         {branch.example}
       </code>
-      <p className={cn('font-mono text-xsm font-bold break-keep', t.text)}>{branch.result}</p>
+      <p className={cx('font-mono text-xsm font-bold break-keep', t.text)}>{branch.result}</p>
       <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
         {branch.description}
       </p>

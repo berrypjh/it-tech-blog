@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Code, Layers, type LucideIcon, Map, Monitor, Smartphone } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.3fr)_minmax(0,_0.85fr)] gap-md items-stretch">
         {/* 좌측 보조 카드 */}
         <article
-          className={cn(
+          className={cx(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg order-2 lg:order-1',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
@@ -42,7 +41,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
 
         {/* 중앙 다이어그램 */}
         <div
-          className={cn(
+          className={cx(
             'relative order-1 lg:order-2 rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] overflow-hidden',
           )}
@@ -107,7 +106,7 @@ export const CommonReconcilerSection = ({ content }: Props) => {
 
         {/* 우측 강조 카드 */}
         <article
-          className={cn(
+          className={cx(
             'group flex h-full flex-col gap-sm rounded-2xl border p-md sm:p-lg order-3',
             'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             'border-[var(--term-border)]',
@@ -119,17 +118,17 @@ export const CommonReconcilerSection = ({ content }: Props) => {
           </ToneIconBox>
           <div className="flex flex-col">
             <p
-              className={cn('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
+              className={cx('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
             >
               {content.rightEmphasis.line1}
             </p>
             <p
-              className={cn('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
+              className={cx('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
             >
               {content.rightEmphasis.line2}
             </p>
             <p
-              className={cn('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
+              className={cx('text-md font-bold tracking-tight break-keep', toneTokens.violet.text)}
             >
               {content.rightEmphasis.line3}
             </p>
@@ -162,7 +161,7 @@ const FlowNode = ({
 }: FlowNodeProps) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'inline-flex min-w-0 flex-col items-center gap-1 rounded-xl border',
         'shadow-[0_2px_0_var(--term-border)]',
         emphasized
@@ -178,7 +177,7 @@ const FlowNode = ({
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'min-w-0 font-bold font-mono tracking-tight break-keep',
             small ? 'text-xsm' : 'text-sm',
             toneTokens[tone].text,

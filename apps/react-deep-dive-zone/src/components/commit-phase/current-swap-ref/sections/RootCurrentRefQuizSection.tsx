@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Lightbulb, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -56,7 +55,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, emphasis, children }: QuizCardPr
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -67,7 +66,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, emphasis, children }: QuizCardPr
         <div className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-lg border font-mono font-bold',
               t.fill.bg,
               t.fill.border,
@@ -76,14 +75,14 @@ const QuizCard = ({ tone, eyebrow, badge, icon, emphasis, children }: QuizCardPr
           >
             {badge}
           </span>
-          <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+          <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
             {eyebrow}
           </span>
         </div>
         {icon && (
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-full border',
               t.chip,
             )}
@@ -93,7 +92,7 @@ const QuizCard = ({ tone, eyebrow, badge, icon, emphasis, children }: QuizCardPr
         )}
       </header>
       <p
-        className={cn(
+        className={cx(
           'leading-relaxed break-keep',
           emphasis ? 'text-sm sm:text-md font-bold' : 'text-xsm sm:text-sm',
           t.fill.text,

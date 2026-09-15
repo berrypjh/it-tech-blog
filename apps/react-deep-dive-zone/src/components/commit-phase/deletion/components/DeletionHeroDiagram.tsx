@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Droplet, LogOut, Repeat, Trash2, Unlink } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -28,7 +27,7 @@ export const DeletionHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -71,27 +70,27 @@ export const DeletionHeroDiagram = ({ content, className }: Props) => {
 
 const SubtreePanel = ({ title, nodes }: { title: string; nodes: string[] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
     aria-hidden="true"
   >
-    <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
+    <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
       {title}
     </span>
     <ul className="flex flex-wrap gap-1.5">
       {nodes.map((node) => (
         <li
           key={node}
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] font-mono',
             toneTokens.violet.chip,
           )}
         >
           <span
             aria-hidden="true"
-            className={cn('inline-block h-1.5 w-1.5 rounded-full', toneTokens.violet.dot)}
+            className={cx('inline-block h-1.5 w-1.5 rounded-full', toneTokens.violet.dot)}
           />
           {node}
         </li>
@@ -106,7 +105,7 @@ const StepRow = ({ step }: { step: HeroStepItem }) => {
   const Icon = stepIconMap[step.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -116,7 +115,7 @@ const StepRow = ({ step }: { step: HeroStepItem }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
           {step.title}
         </span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -126,7 +125,7 @@ const StepRow = ({ step }: { step: HeroStepItem }) => {
           {step.examples.map((ex) => (
             <li
               key={ex}
-              className={cn(
+              className={cx(
                 'rounded border px-1.5 py-0.5 text-[10px] font-mono leading-snug break-all',
                 t.chip,
               )}
@@ -144,7 +143,7 @@ const BottomLabel = ({ label }: { label: string }) => (
   <div className="flex items-center gap-2" aria-hidden="true">
     <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
         toneTokens.teal.chip,
       )}

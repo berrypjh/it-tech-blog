@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 type Props = {
   id: string;
@@ -28,7 +28,7 @@ export const SectionFrame = ({
 }: Props) => (
   <section
     aria-labelledby={`heading-${id}`}
-    className={cn(
+    className={cx(
       'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'shadow-[0_2px_0_var(--term-border)]',
       tone === 'mint'
@@ -40,7 +40,7 @@ export const SectionFrame = ({
       <div className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-7 sm:h-8 items-center justify-center rounded-lg px-2.5',
             'font-mono text-xsm sm:text-sm font-bold tabular-nums tracking-wider',
             tone === 'mint'
@@ -52,7 +52,7 @@ export const SectionFrame = ({
         </span>
         {icon && (
           <span
-            className={cn(
+            className={cx(
               'shrink-0',
               tone === 'mint'
                 ? 'text-emerald-600 dark:text-emerald-300'

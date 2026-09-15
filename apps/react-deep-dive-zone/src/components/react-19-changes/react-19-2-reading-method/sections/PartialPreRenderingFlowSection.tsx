@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { ArrowDownIcon, ArrowRightIcon } from '../icons';
@@ -22,7 +22,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-md sm:grid-cols-1',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-md items-stretch',
       )}
@@ -35,7 +35,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
           <Fragment key={step.number}>
             <li>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                   t.border,
                   'bg-white dark:bg-[var(--term-bg)]',
@@ -46,7 +46,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
                 <header className="flex items-start justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                       t.iconChip,
                     )}
@@ -55,7 +55,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
                   </span>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                       t.chip,
                     )}
@@ -64,7 +64,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
                   </span>
                 </header>
 
-                <h3 className={cn('text-md sm:text-lg font-bold break-keep leading-snug', t.text)}>
+                <h3 className={cx('text-md sm:text-lg font-bold break-keep leading-snug', t.text)}>
                   {step.title}
                 </h3>
                 <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
@@ -74,7 +74,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
                 {/* Inline code box */}
                 {step.code && (
                   <pre
-                    className={cn(
+                    className={cx(
                       'overflow-x-auto rounded-xl border-2 px-3 py-2',
                       'border-slate-700/80 bg-slate-950',
                       'font-mono text-[11px] leading-relaxed',
@@ -90,9 +90,9 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
                     {step.pieces.map((piece) => (
                       <li
                         key={piece.label}
-                        className={cn('flex flex-col rounded-lg border px-2.5 py-1.5', t.chip)}
+                        className={cx('flex flex-col rounded-lg border px-2.5 py-1.5', t.chip)}
                       >
-                        <code className={cn('font-mono text-[11px] font-bold', t.text)}>
+                        <code className={cx('font-mono text-[11px] font-bold', t.text)}>
                           {piece.label}
                         </code>
                         <span className="text-[10px] text-[var(--term-muted)] break-keep">
@@ -107,7 +107,7 @@ export const PartialPreRenderingFlowSection = ({ content }: Props) => (
             {!isLast && (
               <li aria-hidden="true" className="flex justify-center items-center">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full border-2',
                     t.iconChip,
                   )}

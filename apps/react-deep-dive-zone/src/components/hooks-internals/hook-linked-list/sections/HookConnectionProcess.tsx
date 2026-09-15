@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -112,7 +111,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-connection"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -175,7 +174,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
           {content.steps.map((step) => (
             <li key={step.number}>
               <article
-                className={cn(
+                className={cx(
                   'flex flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md',
                   'shadow-[0_1px_0_var(--term-border)] transition-all',
                   'motion-safe:hover:-translate-y-0.5',
@@ -185,7 +184,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
                 <header className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
                       toneCircle[step.tone],
                     )}
@@ -208,7 +207,7 @@ export const HookConnectionProcess = ({ content }: Props) => {
                     return (
                       <span key={node} className="inline-flex items-center gap-1.5">
                         <code
-                          className={cn(
+                          className={cx(
                             'inline-flex items-center rounded-lg border px-2 py-1 font-mono text-[10px] font-bold break-all',
                             j === 0 ? toneNodeChip.cyan : toneNodeChip[step.tone],
                           )}

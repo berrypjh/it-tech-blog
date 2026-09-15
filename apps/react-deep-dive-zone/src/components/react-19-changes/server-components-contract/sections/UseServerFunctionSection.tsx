@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ServerComponentsContractContent } from '../content';
 import { ArrowDownIcon, BracesIcon } from '../icons';
@@ -35,7 +35,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
 
       {/* RIGHT: server function flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -62,7 +62,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
               <Fragment key={step.title}>
                 <li>
                   <article
-                    className={cn(
+                    className={cx(
                       'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-2 rounded-xl border-2 px-3 py-2',
                       tone.border,
                       'bg-white dark:bg-[var(--term-bg)]',
@@ -72,7 +72,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                         tone.iconChip,
                       )}
@@ -80,7 +80,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
                       <Icon className="h-4 w-4" />
                     </span>
                     <div className="flex flex-col">
-                      <span className={cn('text-xsm font-bold break-keep', tone.text)}>
+                      <span className={cx('text-xsm font-bold break-keep', tone.text)}>
                         {step.title}
                       </span>
                       <span className="text-[10px] text-[var(--term-muted)] break-keep">
@@ -89,7 +89,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
                     </div>
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                         tone.chip,
                       )}
@@ -101,7 +101,7 @@ export const UseServerFunctionSection = ({ content }: Props) => (
                 {!isLast && (
                   <li aria-hidden="true" className="flex justify-center">
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex h-6 w-6 items-center justify-center rounded-full border',
                         tone.iconChip,
                       )}

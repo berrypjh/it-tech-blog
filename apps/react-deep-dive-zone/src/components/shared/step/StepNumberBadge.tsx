@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 type Size = 'sm' | 'md';
@@ -18,7 +17,7 @@ type Props = {
 export const StepNumberBadge = ({ children, size = 'sm', className }: Props) => (
   <span
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'inline-flex shrink-0 items-center justify-center rounded-full',
       'bg-[var(--term-surface)] border-[var(--term-border)] text-[var(--term-accent)] font-bold tabular-nums',
       sizeClass[size],

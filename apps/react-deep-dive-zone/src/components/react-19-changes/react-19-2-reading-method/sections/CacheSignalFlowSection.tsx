@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { ArrowRightIcon, DatabaseIcon, SparklesIcon } from '../icons';
@@ -37,7 +37,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
       <div className="flex flex-col gap-md">
         {/* Flow */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-blue-200/80 bg-blue-50/30 dark:border-blue-700/70 dark:bg-blue-950/20',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -64,7 +64,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
                 <Fragment key={step.title}>
                   <li>
                     <article
-                      className={cn(
+                      className={cx(
                         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-2 rounded-xl border-2 px-3 py-2',
                         t.border,
                         'bg-white dark:bg-[var(--term-bg)]',
@@ -72,7 +72,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                           t.iconChip,
                         )}
@@ -80,7 +80,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
                         <Icon className="h-4 w-4" />
                       </span>
                       <div className="flex flex-col">
-                        <span className={cn('text-xsm font-bold break-keep', t.text)}>
+                        <span className={cx('text-xsm font-bold break-keep', t.text)}>
                           {step.title}
                         </span>
                         <span className="text-[10px] text-[var(--term-muted)] break-keep">
@@ -89,7 +89,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
                       </div>
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-6 items-center px-1 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                           t.chip,
                         )}
@@ -113,7 +113,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
 
         {/* AbortSignal states */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -137,7 +137,7 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
               return (
                 <li key={state.state}>
                   <article
-                    className={cn(
+                    className={cx(
                       'flex flex-col items-center gap-1 rounded-xl border-2 px-2 py-2 text-center',
                       t.borderStrong,
                       t.bg,
@@ -145,9 +145,9 @@ export const CacheSignalFlowSection = ({ content }: Props) => (
                   >
                     <span
                       aria-hidden="true"
-                      className={cn('inline-flex h-2 w-2 rounded-full', t.dot)}
+                      className={cx('inline-flex h-2 w-2 rounded-full', t.dot)}
                     />
-                    <code className={cn('font-mono text-xsm font-bold', t.text)}>
+                    <code className={cx('font-mono text-xsm font-bold', t.text)}>
                       {state.label}
                     </code>
                     <span className="text-[10px] text-[var(--term-muted)] break-keep">

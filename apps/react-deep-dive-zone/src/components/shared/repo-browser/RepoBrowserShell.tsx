@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { GithubIcon } from '../icon';
 import { SectionHeader } from '../section';
@@ -62,7 +62,7 @@ export const RepoBrowserShell = ({
         )}
       </header>
 
-      <div className={cn('grid grid-cols-1', gridColumns)}>
+      <div className={cx('grid grid-cols-1', gridColumns)}>
         <aside
           aria-label="repository tree"
           className="border-b lg:border-b-0 lg:border-r border-[var(--term-border)] p-sm sm:p-md"

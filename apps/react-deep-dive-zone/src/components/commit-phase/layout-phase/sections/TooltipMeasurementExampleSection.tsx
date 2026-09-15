@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Ruler, Sparkles, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -57,7 +56,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.teal.fill.border,
           toneTokens.teal.fill.bg,
@@ -67,7 +66,7 @@ export const TooltipMeasurementExampleSection = ({ content }: Props) => (
           <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.teal.fill.text,
           )}
@@ -83,7 +82,7 @@ const FlowCard = ({ step, index }: { step: TooltipStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -91,7 +90,7 @@ const FlowCard = ({ step, index }: { step: TooltipStep; index: number }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-xsm font-mono font-bold',
           t.fill.bg,
           t.fill.border,
@@ -101,7 +100,7 @@ const FlowCard = ({ step, index }: { step: TooltipStep; index: number }) => {
         {index}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <h3 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h3>
         <p className="text-[11px] sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
@@ -125,7 +124,7 @@ const TooltipMock = ({
   const t = toneTokens[isAfter ? 'teal' : 'violet'];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -133,7 +132,7 @@ const TooltipMock = ({
     >
       <header className="flex items-center justify-between gap-2">
         <h3
-          className={cn(
+          className={cx(
             'text-[10px] sm:text-xsm font-bold uppercase tracking-wider break-keep',
             t.text,
           )}
@@ -141,7 +140,7 @@ const TooltipMock = ({
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -152,7 +151,7 @@ const TooltipMock = ({
 
       {/* Tooltip UI mockup (intentional UI mimicry) */}
       <div
-        className={cn(
+        className={cx(
           'relative rounded-lg border bg-white dark:bg-slate-950 overflow-hidden h-32',
           isAfter
             ? 'border-teal-300/80 dark:border-teal-700/70'

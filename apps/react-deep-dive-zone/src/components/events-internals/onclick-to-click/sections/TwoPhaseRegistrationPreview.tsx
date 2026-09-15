@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ChevronRight,
@@ -43,7 +42,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
       {/* LEFT: bubble preview */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/60 dark:border-teal-700/70 dark:bg-teal-950/30',
           'shadow-[0_2px_0_var(--term-border)] transition-colors hover:border-teal-400',
@@ -70,7 +69,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
 
       {/* CENTER: branching diagram */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col items-center gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-300/90 bg-gradient-to-br from-violet-50 to-blue-50/60',
           'dark:border-violet-600/80 dark:from-violet-950/40 dark:to-blue-950/30',
@@ -79,7 +78,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
       >
         {/* Center code pill */}
         <code
-          className={cn(
+          className={cx(
             'rounded-full border-2 px-4 py-2 font-mono text-[11px] sm:text-xsm font-bold text-center break-all',
             'border-violet-400/80 bg-white text-violet-700 shadow-sm',
             'dark:border-violet-600/70 dark:bg-slate-950/40 dark:text-violet-200',
@@ -103,7 +102,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
           {content.branches.map((b) => (
             <li
               key={b.label}
-              className={cn(
+              className={cx(
                 'flex flex-col items-center gap-1 rounded-xl border-2 px-3 py-3 text-center',
                 branchTone[b.tone],
               )}
@@ -123,7 +122,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
 
       {/* RIGHT: next-step preview */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-violet-50/40',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -147,7 +146,7 @@ export const TwoPhaseRegistrationPreview = ({ content }: Props) => (
 
         <Link
           href={content.nextPreview.href}
-          className={cn(
+          className={cx(
             'group mt-auto inline-flex items-center justify-between gap-2 rounded-xl border bg-blue-600 text-white px-md py-3',
             'border-blue-700 shadow-[0_3px_0_rgba(29,78,216,0.35)]',
             'transition-all motion-safe:hover:-translate-y-0.5',

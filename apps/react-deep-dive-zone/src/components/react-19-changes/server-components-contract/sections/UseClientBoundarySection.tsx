@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ServerComponentsContractContent } from '../content';
 import { BookOpenIcon, CheckCircleIcon, FolderIcon } from '../icons';
@@ -43,7 +43,7 @@ export const UseClientBoundarySection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_6fr)_minmax(0,_4fr)_minmax(0,_3fr)] lg:gap-md items-stretch">
       {/* Module Tree (dark navy) */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md',
           'border-slate-700/80 bg-slate-950',
           'shadow-[0_2px_0_rgba(0,0,0,0.25)]',
@@ -71,7 +71,7 @@ export const UseClientBoundarySection = ({ content }: Props) => (
               return (
                 <span key={node.label} className="block">
                   <span className="text-slate-600">{indent}</span>
-                  <span className={cn('font-bold', nodeColor[node.kind])}>{node.label}</span>
+                  <span className={cx('font-bold', nodeColor[node.kind])}>{node.label}</span>
                 </span>
               );
             })}
@@ -81,7 +81,7 @@ export const UseClientBoundarySection = ({ content }: Props) => (
 
       {/* Explanation card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/30 dark:border-teal-700/70 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -116,7 +116,7 @@ export const UseClientBoundarySection = ({ content }: Props) => (
 
       {/* Legend card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -133,7 +133,7 @@ export const UseClientBoundarySection = ({ content }: Props) => (
             return (
               <li key={l.tag} className="flex flex-col gap-0.5">
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex w-fit items-center rounded-md border px-1.5 py-0.5',
                     color.chip,
                     'font-mono text-[11px] font-bold',

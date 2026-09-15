@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Box, CheckCircle2, Radar, ShieldCheck, Target } from 'lucide-react';
 
 import type { SuspenseFallbackRetryContent } from '../content';
@@ -15,7 +14,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,3fr)_minmax(0,4fr)_minmax(0,3fr)] items-stretch">
       {/* description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col justify-center rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -29,7 +28,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
 
       {/* diagram */}
       <article
-        className={cn(
+        className={cx(
           'relative flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/70 bg-gradient-to-b from-blue-50/30 to-white',
           'dark:border-blue-800/60 dark:from-blue-950/20 dark:to-[var(--term-bg)]',
@@ -95,7 +94,7 @@ export const BoundarySearchSection = ({ content }: Props) => (
 
       {/* rules */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-teal-50/30 dark:border-teal-800/60 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

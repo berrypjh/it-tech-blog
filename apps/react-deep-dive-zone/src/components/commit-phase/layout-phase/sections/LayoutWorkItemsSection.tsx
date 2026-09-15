@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Component, Layers, Link, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ export const LayoutWorkItemsSection = ({ content }: Props) => (
             badge={item.pill}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md font-bold tracking-tight font-mono break-keep',
                 toneTokens[item.tone].text,
               )}

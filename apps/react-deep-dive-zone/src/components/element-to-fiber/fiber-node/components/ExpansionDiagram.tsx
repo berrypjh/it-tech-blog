@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Box, Hexagon } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -30,7 +29,7 @@ export const ExpansionDiagram = ({
 }: Props) => (
   <>
     <div
-      className={cn(
+      className={cx(
         'grid items-stretch min-w-0',
         'grid-cols-1 lg:grid-cols-[minmax(0,_0.78fr)_auto_minmax(0,_1.4fr)]',
         'gap-sm lg:gap-md',
@@ -83,7 +82,7 @@ const ObjectCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 min-w-0 h-full',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.fill.border,
@@ -97,12 +96,12 @@ const ObjectCard = ({
           </ToneIconBox>
           <div className="flex flex-col">
             <span
-              className={cn('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}
+              className={cx('text-[10px] uppercase tracking-wider font-mono font-bold', t.text)}
             >
               {eyebrow}
             </span>
             <code
-              className={cn(
+              className={cx(
                 'font-mono font-extrabold tracking-tight',
                 size === 'sm' ? 'text-md' : 'text-lg',
                 t.text,
@@ -114,7 +113,7 @@ const ObjectCard = ({
         </div>
         {showCount && (
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5',
               'text-[10px] font-bold uppercase tracking-wider font-mono',
               t.chip,
@@ -138,7 +137,7 @@ const ExpansionArrow = () => (
         <ArrowRight className="h-5 w-5 hidden lg:block" aria-hidden="true" />
       </ToneIconBox>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center rounded-full border px-2 py-0.5',
           'text-[10px] font-bold uppercase tracking-wider font-mono',
           toneTokens.sky.chip,

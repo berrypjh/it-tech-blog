@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BookOpen } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -13,7 +12,7 @@ export const SourceCodeReferenceCards = ({ content }: Props) => (
   <section
     id="section-source"
     aria-labelledby="heading-source"
-    className={cn(
+    className={cx(
       'space-y-lg rounded-lg border border-[var(--term-border)] p-md sm:p-lg lg:p-xl',
       'bg-[var(--term-surface)]',
     )}
@@ -29,14 +28,14 @@ export const SourceCodeReferenceCards = ({ content }: Props) => (
       {content.cards.map((card) => (
         <li key={card.num}>
           <article
-            className={cn(
+            className={cx(
               'flex h-full flex-col gap-md rounded-lg border bg-[var(--term-bg)]',
               'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
             )}
           >
             <header className="flex items-start gap-sm">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md',
                   'bg-[var(--term-surface)] border border-[var(--term-border)] text-[var(--term-accent)]',
                   'text-xsm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)]',

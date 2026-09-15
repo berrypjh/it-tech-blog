@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Database, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -40,7 +39,7 @@ export const RootPendingWorkHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -79,7 +78,7 @@ const StepCard = ({ step }: { step: HeroStep }) => {
   const Icon = stepIcon[step.accent];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -90,7 +89,7 @@ const StepCard = ({ step }: { step: HeroStep }) => {
         <ToneIconBox tone={accentTone[step.accent]} size="sm">
           <Icon className="h-[18px] w-[18px]" />
         </ToneIconBox>
-        <h3 className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{step.title}</h3>
+        <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{step.title}</h3>
       </header>
 
       <ul className="flex flex-wrap gap-1">

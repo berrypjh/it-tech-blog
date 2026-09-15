@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Layers, Lightbulb, Zap } from 'lucide-react';
 
 import {
@@ -35,7 +34,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
       {/* Event Priority */}
       <article
         aria-labelledby="heading-event-priority"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)] transition-colors',
           axisCardBorder.blue,
@@ -44,7 +43,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
               'text-sm font-mono font-bold tabular-nums',
               axisNumberBadge.blue,
@@ -54,7 +53,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
               axisIconBox.blue,
             )}
@@ -63,7 +62,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <h2
             id="heading-event-priority"
-            className={cn(
+            className={cx(
               'text-sm sm:text-md font-bold leading-tight break-keep',
               axisTextStrong.blue,
             )}
@@ -86,7 +85,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
                 {row.event}
               </code>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center self-start rounded-full border px-2 py-0.5',
                   'text-[10px] font-mono font-bold uppercase tracking-wider',
                   KIND_PILL[row.kind],
@@ -105,7 +104,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
       {/* Lane */}
       <article
         aria-labelledby="heading-lane"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)] transition-colors',
           axisCardBorder.teal,
@@ -114,7 +113,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
               'text-sm font-mono font-bold tabular-nums',
               axisNumberBadge.teal,
@@ -124,7 +123,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
               axisIconBox.teal,
             )}
@@ -133,7 +132,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <h2
             id="heading-lane"
-            className={cn(
+            className={cx(
               'text-sm sm:text-md font-bold leading-tight break-keep',
               axisTextStrong.teal,
             )}
@@ -150,14 +149,14 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           {content.lane.rows.map((row, i) => (
             <li
               key={row.name}
-              className={cn(
+              className={cx(
                 'flex items-center gap-3 rounded-xl border-2 p-3',
                 'border-teal-200/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-mono font-bold tabular-nums',
                   axisNumberBadge.teal,
                 )}
@@ -166,7 +165,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
               </span>
               <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                 <code
-                  className={cn(
+                  className={cx(
                     'font-mono text-xsm sm:text-sm font-bold break-keep',
                     axisTextStrong.teal,
                   )}
@@ -178,7 +177,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
                 </p>
               </div>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex shrink-0 items-center rounded-md border px-2 py-1 font-mono text-[10px] sm:text-[11px]',
                   axisPill.teal,
                 )}
@@ -190,7 +189,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
         </ul>
 
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-xl border-2 border-dashed px-md py-3',
             'border-teal-300/80 bg-teal-50/60 text-teal-800',
             'dark:border-teal-700/60 dark:bg-teal-950/30 dark:text-teal-100',
@@ -204,7 +203,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
       {/* Scheduler Priority */}
       <article
         aria-labelledby="heading-scheduler-priority"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)] transition-colors',
           axisCardBorder.violet,
@@ -213,7 +212,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
               'text-sm font-mono font-bold tabular-nums',
               axisNumberBadge.violet,
@@ -223,7 +222,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
               axisIconBox.violet,
             )}
@@ -232,7 +231,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
           </span>
           <h2
             id="heading-scheduler-priority"
-            className={cn(
+            className={cx(
               'text-sm sm:text-md font-bold leading-tight break-keep',
               axisTextStrong.violet,
             )}
@@ -255,7 +254,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
                 {i + 1}
               </span>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold whitespace-nowrap',
                   SchedulerName[row.name] ?? axisTextStrong.violet,
                 )}
@@ -270,7 +269,7 @@ export const PriorityAxisDetailGrid = ({ content }: Props) => (
         </ol>
 
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-xl border-2 border-dashed px-md py-3',
             'border-violet-300/80 bg-violet-50/60 text-violet-800',
             'dark:border-violet-700/60 dark:bg-violet-950/30 dark:text-violet-100',

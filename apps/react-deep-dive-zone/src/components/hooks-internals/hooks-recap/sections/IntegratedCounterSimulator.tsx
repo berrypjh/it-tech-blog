@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Box,
   Cpu,
@@ -103,7 +102,7 @@ const SimulatorStepCard = ({ step }: { step: SimulatorStep }) => {
   const Icon = visualMap[step.visual];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-3 rounded-xl border-2 p-md transition-all',
         'shadow-[0_1px_0_var(--term-border)] motion-safe:hover:-translate-y-0.5',
         toneCardBg[step.tone],
@@ -111,7 +110,7 @@ const SimulatorStepCard = ({ step }: { step: SimulatorStep }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums',
           toneNumber[step.tone],
         )}
@@ -120,7 +119,7 @@ const SimulatorStepCard = ({ step }: { step: SimulatorStep }) => {
       </span>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border bg-white dark:bg-slate-950/40',
           'border-[var(--term-border)]',
           toneText[step.tone],
@@ -129,7 +128,7 @@ const SimulatorStepCard = ({ step }: { step: SimulatorStep }) => {
         <Icon className="h-4 w-4" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <code className={cn('font-mono text-xsm font-bold break-all', toneText[step.tone])}>
+        <code className={cx('font-mono text-xsm font-bold break-all', toneText[step.tone])}>
           {step.title}
         </code>
         <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
@@ -145,7 +144,7 @@ export const IntegratedCounterSimulator = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-simulator"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -177,7 +176,7 @@ export const IntegratedCounterSimulator = ({ content }: Props) => {
 
           {/* Mock UI */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-300/70 bg-blue-50/40 dark:border-blue-700/60 dark:bg-blue-950/20',
             )}
@@ -195,7 +194,7 @@ export const IntegratedCounterSimulator = ({ content }: Props) => {
               <button
                 type="button"
                 disabled
-                className={cn(
+                className={cx(
                   'inline-flex items-center justify-center gap-1.5 rounded-xl border-2 px-4 py-2.5',
                   'border-blue-400/80 bg-blue-500 text-white font-mono text-xsm font-bold',
                   'dark:border-blue-700/60 dark:bg-blue-400 dark:text-slate-900',

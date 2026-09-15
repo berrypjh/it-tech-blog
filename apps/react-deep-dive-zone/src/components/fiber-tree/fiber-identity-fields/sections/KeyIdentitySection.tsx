@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, Key, KeyRound, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -56,7 +55,7 @@ const SiblingReorderDiagram = ({ content }: Props) => {
         </div>
 
         <p className="flex items-center justify-center gap-2 text-xsm sm:text-sm font-medium text-[var(--term-fg)] break-keep text-center">
-          <CheckCircle2 className={cn('h-4 w-4 shrink-0', toneTokens.emerald.text)} />
+          <CheckCircle2 className={cx('h-4 w-4 shrink-0', toneTokens.emerald.text)} />
           {content.matchNote}
         </p>
       </div>
@@ -90,7 +89,7 @@ const SiblingRow = ({ item }: { item: SiblingItem }) => {
         <span className="truncate text-sm font-bold text-[var(--term-fg)]">{item.label}</span>
       </span>
       <span
-        className={cn(
+        className={cx(
           'inline-flex shrink-0 items-center gap-1 rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
           t.chip,
         )}
@@ -118,7 +117,7 @@ const renderWithHighlights = (text: string, highlights: string[]): React.ReactNo
   return text.split(pattern).map((part, i) => {
     if (highlights.includes(part)) {
       return (
-        <span key={i} className={cn('font-bold', toneTokens.emerald.text)}>
+        <span key={i} className={cx('font-bold', toneTokens.emerald.text)}>
           {part}
         </span>
       );

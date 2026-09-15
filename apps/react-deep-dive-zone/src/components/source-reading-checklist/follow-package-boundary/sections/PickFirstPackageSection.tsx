@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Compass, FileCode2 } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
 
       {/* Desktop table card */}
       <div
-        className={cn(
+        className={cx(
           'hidden lg:block rounded-2xl border-2 overflow-hidden',
           'border-slate-200 dark:border-slate-700',
           'bg-white dark:bg-[var(--term-bg)]',
@@ -34,7 +33,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
       >
         <table className="w-full text-sm">
           <thead
-            className={cn(
+            className={cx(
               'border-b-2 border-slate-200 dark:border-slate-700',
               'bg-slate-50/80 dark:bg-slate-900/40',
             )}
@@ -70,7 +69,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
             {content.rows.map((row, i) => (
               <tr
                 key={row.question}
-                className={cn(
+                className={cx(
                   i !== 0 && 'border-t border-slate-200 dark:border-slate-800',
                   'transition-colors motion-safe:hover:bg-blue-50/40 dark:motion-safe:hover:bg-blue-950/20',
                 )}
@@ -87,7 +86,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
                 </td>
                 <td className="px-md py-3 align-top">
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-md border px-2 py-1',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-[11px] text-[var(--term-fg)]',
@@ -113,7 +112,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
         {content.rows.map((row) => (
           <li key={row.question}>
             <article
-              className={cn(
+              className={cx(
                 'rounded-xl border-2 p-md',
                 'border-slate-200 dark:border-slate-700',
                 'bg-white dark:bg-[var(--term-bg)]',
@@ -139,7 +138,7 @@ export const PickFirstPackageSection = ({ content }: Props) => {
                 </dt>
                 <dd>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-md border px-2 py-1',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-[11px] text-[var(--term-fg)]',

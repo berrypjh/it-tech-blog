@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, Route, Sparkles, Target } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -28,7 +27,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
         <div className="flex flex-col gap-md">
           {/* User code card */}
           <article
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-sky-200 bg-sky-50/60',
               'dark:border-sky-800/60 dark:bg-sky-950/30',
@@ -38,7 +37,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
             <div className="flex items-center gap-2 mb-sm">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 items-center justify-center rounded-md',
                   'border border-sky-300 bg-sky-100 text-sky-700',
                   'dark:border-sky-700/70 dark:bg-sky-900/60 dark:text-sky-200',
@@ -51,7 +50,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
               </span>
             </div>
             <pre
-              className={cn(
+              className={cx(
                 'overflow-x-auto rounded-md border px-3 py-2.5',
                 'border-sky-200 bg-white dark:border-sky-800/70 dark:bg-[var(--term-bg)]',
                 'font-mono text-xsm leading-relaxed text-[var(--term-fg)]',
@@ -66,7 +65,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
 
           {/* Source file card */}
           <article
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-blue-200 bg-blue-50/60',
               'dark:border-blue-800/60 dark:bg-blue-950/30',
@@ -76,7 +75,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
             <div className="flex items-center gap-2 mb-sm">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 items-center justify-center rounded-md',
                   'border border-blue-300 bg-blue-100 text-blue-700',
                   'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -89,7 +88,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
               </span>
             </div>
             <code
-              className={cn(
+              className={cx(
                 'flex items-center gap-1.5 overflow-x-auto rounded-md border-2 px-2.5 py-2',
                 'border-blue-300 bg-white text-blue-900',
                 'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-100',
@@ -112,7 +111,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
 
           {/* Key point */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-amber-200 bg-amber-50/60',
               'dark:border-amber-800/60 dark:bg-amber-950/30',
@@ -123,7 +122,7 @@ export const UseStateEntrySection = ({ content }: Props) => {
             <div className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
                   'border border-amber-300 bg-white text-amber-700',
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',

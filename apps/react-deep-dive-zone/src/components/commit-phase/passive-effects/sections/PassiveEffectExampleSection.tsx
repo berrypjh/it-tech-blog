@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -39,7 +38,7 @@ const CodeArea = ({ code }: { code: string }) => (
         useEffect example
       </h3>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
           toneTokens.teal.chip,
         )}
@@ -60,7 +59,7 @@ const ExecutionFlow = ({ steps }: { steps: PassiveEffectsContent['example']['flo
         execution flow
       </span>
       <span
-        className={cn(
+        className={cx(
           'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
           toneTokens.teal.chip,
         )}
@@ -99,13 +98,13 @@ const FlowPill = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-1 rounded-lg border-2 p-sm sm:p-md text-center',
         t.fill.border,
         t.fill.bg,
       )}
     >
-      <code className={cn('text-xsm sm:text-sm font-mono font-bold break-keep', t.fill.text)}>
+      <code className={cx('text-xsm sm:text-sm font-mono font-bold break-keep', t.fill.text)}>
         {label}
       </code>
     </article>

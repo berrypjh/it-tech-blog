@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Component, Globe, Layers, Lightbulb } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -45,7 +44,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -58,7 +57,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
           return (
             <li key={layer.title} className="flex flex-col">
               <article
-                className={cn(
+                className={cx(
                   'group flex items-center gap-3 sm:gap-4 rounded-2xl border-2 px-md py-3 sm:py-4 transition-colors',
                   'hover:-translate-y-0.5 motion-reduce:transform-none',
                   toneCard[layer.tone],
@@ -67,7 +66,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full',
                     'text-xsm font-mono font-bold tabular-nums',
                     'bg-white shadow-sm dark:bg-slate-950/60',
@@ -78,7 +77,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
 
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                     toneIcon[layer.tone],
                   )}
@@ -115,7 +114,7 @@ export const EventMiddleLayer = ({ content }: Props) => (
 
       {/* Closing note */}
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
           'border-amber-300/80 bg-amber-50/60',
           'dark:border-amber-800/60 dark:bg-amber-950/30',

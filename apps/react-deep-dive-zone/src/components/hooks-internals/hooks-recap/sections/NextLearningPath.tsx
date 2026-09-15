@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Compass, Gauge, Network, Rocket, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -19,7 +18,7 @@ const Card = ({ item }: { item: LearningPathItem }) => {
   const Icon = visualMap[item.visual] ?? Network;
   return (
     <article
-      className={cn(
+      className={cx(
         'h-full flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         'motion-safe:hover:-translate-y-0.5',
@@ -29,14 +28,14 @@ const Card = ({ item }: { item: LearningPathItem }) => {
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
             toneIconBox[item.tone],
           )}
         >
           <Icon className="h-5 w-5" />
         </span>
-        <h3 className={cn('text-sm sm:text-md font-bold break-keep', toneText[item.tone])}>
+        <h3 className={cx('text-sm sm:text-md font-bold break-keep', toneText[item.tone])}>
           {item.title}
         </h3>
       </header>
@@ -50,7 +49,7 @@ const Card = ({ item }: { item: LearningPathItem }) => {
 export const NextLearningPath = ({ content }: Props) => (
   <section
     aria-labelledby="heading-next-path"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces, ListChecks } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -48,7 +47,7 @@ export const UpdateObjectStructureSection = ({ content }: Props) => (
                 className="flex items-start gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-3 py-2"
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'rounded-md border px-2 py-0.5 font-mono text-[10px] font-bold',
                     t.chip,
                   )}

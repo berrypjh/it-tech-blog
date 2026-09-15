@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FunctionSquare, Settings, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -81,7 +80,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
     </div>
   );
@@ -103,7 +102,7 @@ const StepRow = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         t.border,
@@ -114,7 +113,7 @@ const StepRow = ({
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span
-          className={cn('text-sm font-bold tracking-tight break-keep', mono && 'font-mono', t.text)}
+          className={cx('text-sm font-bold tracking-tight break-keep', mono && 'font-mono', t.text)}
         >
           {title}
         </span>

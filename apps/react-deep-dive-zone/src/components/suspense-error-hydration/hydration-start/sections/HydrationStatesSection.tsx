@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Globe, PlayCircle } from 'lucide-react';
 
 import type { HydrationStartContent } from '../content';
@@ -27,7 +26,7 @@ export const HydrationStatesSection = ({ content }: Props) => (
         return (
           <li key={card.name}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-2xl border-2 p-md sm:p-lg',
                 accent.border,
                 accent.bg,
@@ -38,21 +37,21 @@ export const HydrationStatesSection = ({ content }: Props) => (
               <header className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     accent.iconChip,
                   )}
                 >
                   <Icon className="h-4 w-4" />
                 </span>
-                <h3 className={cn('text-sm font-mono font-bold break-all', accent.text)}>
+                <h3 className={cx('text-sm font-mono font-bold break-all', accent.text)}>
                   {card.name}
                 </h3>
               </header>
               <p className="text-xsm font-bold text-[var(--term-fg)] break-keep">{card.summary}</p>
 
               <div
-                className={cn(
+                className={cx(
                   'rounded-lg border bg-white p-3 dark:bg-[var(--term-bg)]',
                   accent.border,
                 )}
@@ -61,7 +60,7 @@ export const HydrationStatesSection = ({ content }: Props) => (
                   {card.mini.title}
                 </span>
                 <pre
-                  className={cn(
+                  className={cx(
                     'mt-1 overflow-x-auto text-[11px] font-mono leading-[1.6]',
                     accent.text,
                   )}

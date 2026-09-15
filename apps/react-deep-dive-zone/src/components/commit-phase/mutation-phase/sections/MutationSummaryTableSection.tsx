@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks, Pencil, Plus, Trash2 } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -50,7 +49,7 @@ const FlagLabel = ({ row }: { row: SummaryRow }) => {
       <ToneIconBox tone={row.tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <code className={cn('text-xsm font-bold font-mono', t.text)}>{row.flag}</code>
+      <code className={cx('text-xsm font-bold font-mono', t.text)}>{row.flag}</code>
     </div>
   );
 };
@@ -59,7 +58,7 @@ const MeaningBadge = ({ row }: { row: SummaryRow }) => {
   const t = toneTokens[row.tone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center rounded-md border px-2 py-0.5 text-xsm font-bold',
         t.chip,
       )}

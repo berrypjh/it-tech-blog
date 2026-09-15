@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Trophy } from 'lucide-react';
 
 import type { HooksEntryFlowContent } from '../content';
@@ -9,7 +8,7 @@ type Props = { content: HooksEntryFlowContent['summary'] };
 export const KeyTakeaways = ({ content }: Props) => (
   <section
     aria-labelledby="heading-summary"
-    className={cn(
+    className={cx(
       'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-emerald-300/70 bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/40',
       'dark:border-emerald-800/60 dark:from-emerald-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -19,7 +18,7 @@ export const KeyTakeaways = ({ content }: Props) => (
     <div className="flex flex-col gap-md sm:flex-row sm:items-start sm:gap-lg">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full',
           'bg-emerald-500 text-white shadow-[0_4px_0_rgba(5,150,105,0.25)]',
           'dark:bg-emerald-400 dark:text-slate-900',
@@ -46,7 +45,7 @@ export const KeyTakeaways = ({ content }: Props) => (
             <li key={i} className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full',
                   'bg-emerald-500 text-white text-xsm font-bold tabular-nums',
                   'dark:bg-emerald-400 dark:text-slate-900',

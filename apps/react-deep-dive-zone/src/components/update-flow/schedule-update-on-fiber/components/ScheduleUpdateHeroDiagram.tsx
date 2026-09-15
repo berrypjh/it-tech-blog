@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Network, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -70,22 +69,22 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border px-md py-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        emphasized ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
+        emphasized ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm">
         <ToneIconBox tone={tone} size="sm">
           <Network className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {title}
         </span>
         {badge ? (
           <span
-            className={cn(
+            className={cx(
               'ml-auto shrink-0 inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
               t.chip,
             )}
@@ -95,7 +94,7 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
           </span>
         ) : (
           <span
-            className={cn(
+            className={cx(
               'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
               'border-[var(--term-border)] text-[var(--term-muted)]',
             )}

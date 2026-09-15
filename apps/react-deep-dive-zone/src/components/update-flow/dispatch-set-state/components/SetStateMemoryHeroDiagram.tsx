@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FunctionSquare, Layers, Sparkles } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -73,7 +72,7 @@ const SourceCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex min-w-0 flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -84,7 +83,7 @@ const SourceCard = ({
           {icon}
         </ToneIconBox>
         <span className="flex min-w-0 flex-col">
-          <span className={cn('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+          <span className={cx('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
             {title}
           </span>
           <span className="truncate text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -108,7 +107,7 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md',
         t.chip,
         t.border,
@@ -120,7 +119,7 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
           <FunctionSquare className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
         <span className="flex min-w-0 flex-col">
-          <span className={cn('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+          <span className={cx('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
             {content.title}
           </span>
           <span className="truncate text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -140,7 +139,7 @@ const DispatchCard = ({ content }: { content: HeroContent['centerCard'] }) => {
             className="flex items-center gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2"
           >
             <span
-              className={cn(
+              className={cx(
                 'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[11px] font-bold tabular-nums',
                 'bg-[var(--term-accent)] text-[var(--term-bg)]',
               )}

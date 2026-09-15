@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, MessageCircleQuestion } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -21,7 +20,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -44,7 +43,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
           {content.leftPanel.files.map((f) => (
             <li
               key={f.name}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2 py-1.5',
                 'border-[var(--term-border)]',
                 f.muted && 'opacity-55',
@@ -52,7 +51,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn('block h-1.5 w-1.5 shrink-0 rounded-full', toneTokens.amber.dot)}
+                className={cx('block h-1.5 w-1.5 shrink-0 rounded-full', toneTokens.amber.dot)}
               />
               <code className="truncate font-mono text-[11px] text-[var(--term-fg)]">{f.name}</code>
             </li>
@@ -78,7 +77,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
           {content.rightPanel.flow.map((step, i) => (
             <li key={step} className="flex items-center gap-1.5">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5',
                   'font-mono text-[10px] font-bold',
                   toneTokens.cyan.chip,
@@ -88,7 +87,7 @@ export const StartWithQuestionHeroDiagram = ({ content, className }: Props) => {
               </span>
               {i < content.rightPanel.flow.length - 1 && (
                 <span
-                  className={cn('text-sm leading-none', toneTokens.cyan.text)}
+                  className={cx('text-sm leading-none', toneTokens.cyan.text)}
                   aria-hidden="true"
                 >
                   →
@@ -118,7 +117,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{label}</span>
+      <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{label}</span>
       <span
         aria-hidden="true"
         className="flex-1 border-t border-dashed border-[var(--term-border)]"
@@ -135,7 +134,7 @@ const ReframeArrow = ({ label, sub }: { label: string; sub: string }) => (
   <div className="flex flex-col items-center gap-1 py-0.5">
     <span className="text-lg leading-none text-[var(--term-accent)]">↓</span>
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1 rounded-full border px-3 py-1',
         'font-mono text-[10px] font-bold uppercase tracking-wider',
         toneTokens.blue.chip,

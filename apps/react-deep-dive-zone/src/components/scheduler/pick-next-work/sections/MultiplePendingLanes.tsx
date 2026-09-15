@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Layers, Repeat, Zap } from 'lucide-react';
 
 import { BitCellRow } from '../../_shared/BitCellRow';
@@ -54,7 +53,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-teal-50/30',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/10',
@@ -64,7 +63,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
         <header className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-11 w-11 items-center justify-center rounded-2xl border',
               schedIconBox.blue,
             )}
@@ -102,7 +101,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
             return (
               <li
                 key={row.name}
-                className={cn(
+                className={cx(
                   'flex items-center gap-3 rounded-xl border-2 p-3',
                   'border-[var(--term-border)] bg-[var(--term-bg)] transition-colors',
                   'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -110,7 +109,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                     schedIconBox[row.accent],
                   )}
@@ -119,7 +118,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
                 </span>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                   <code
-                    className={cn(
+                    className={cx(
                       'font-mono text-xsm sm:text-sm font-bold break-keep',
                       schedTextStrong[row.accent],
                     )}
@@ -131,7 +130,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
                   </p>
                 </div>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-full border px-2 py-0.5',
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     URGENCY_STYLE[row.accent],
@@ -141,7 +140,7 @@ export const MultiplePendingLanes = ({ content }: Props) => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'hidden sm:inline-flex h-7 px-2 items-center justify-center rounded-md font-mono text-[10px] uppercase tracking-wider',
                     schedPill[row.accent],
                   )}

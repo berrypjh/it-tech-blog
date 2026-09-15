@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Box, Link, Workflow } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -57,7 +56,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
         {content.steps.map((step, i) => (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group flex items-start gap-3 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full',
                 'text-[11px] font-mono font-bold tabular-nums',
                 toneNumber[step.tone],
@@ -76,7 +75,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0.5 min-w-0 flex-1">
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold break-keep',
                   toneAccent[step.tone],
                 )}
@@ -93,7 +92,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
 
       {/* RIGHT: diagram + listeners */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-gradient-to-br from-blue-50/60 via-white to-violet-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-violet-950/20',
@@ -119,7 +118,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
               <li
                 key={node.name}
                 style={{ marginLeft: `${i * 10}px` }}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-xl border bg-white px-3 py-2',
                   'border-teal-200/70 dark:border-teal-800/60 dark:bg-slate-950/40',
                 )}
@@ -147,7 +146,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
 
           {/* listeners[] */}
           <div
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-xl border-2 p-md',
               'border-violet-300/80 bg-white dark:border-violet-700/70 dark:bg-slate-950/40',
             )}
@@ -173,7 +172,7 @@ export const AccumulateSinglePhaseFlow = ({ content }: Props) => (
           {content.notes.map((note) => (
             <aside
               key={note}
-              className={cn(
+              className={cx(
                 'rounded-xl border-2 p-md',
                 'border-amber-200/80 bg-amber-50/50 dark:border-amber-800/60 dark:bg-amber-950/20',
               )}

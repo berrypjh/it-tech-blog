@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, GitCompare } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -83,16 +82,16 @@ const CompareCard = ({
   const v = variantClass[variant];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         v.border,
       )}
     >
       <header className="flex items-center justify-between gap-sm">
-        <h3 className={cn('text-md font-bold tracking-tight', v.head)}>{title}</h3>
+        <h3 className={cx('text-md font-bold tracking-tight', v.head)}>{title}</h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
             v.badge,
           )}

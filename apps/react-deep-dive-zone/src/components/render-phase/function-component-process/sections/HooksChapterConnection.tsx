@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Link, PlayCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -45,7 +44,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
 
         {/* Side points */}
         <aside
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-lg border p-md sm:p-lg',
             toneTokens.violet.border,
           )}
@@ -54,7 +53,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
             <ToneIconBox tone="violet" size="sm">
               <PlayCircle className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
-            <h3 className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.text)}>
+            <h3 className={cx('text-sm sm:text-md font-bold break-keep', toneTokens.violet.text)}>
               {content.sidePointTitle}
             </h3>
           </header>
@@ -66,7 +65,7 @@ export const HooksChapterConnection = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full',
                     toneTokens.violet.dot,
                   )}
@@ -95,21 +94,21 @@ const ChapterCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-lg border p-md sm:p-lg',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
           t.chip,
         )}
       >
         {label}
       </span>
-      <h4 className={cn('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
+      <h4 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
         {title}
       </h4>
       <p className="text-xsm sm:text-sm leading-snug text-[var(--term-muted)] break-keep">

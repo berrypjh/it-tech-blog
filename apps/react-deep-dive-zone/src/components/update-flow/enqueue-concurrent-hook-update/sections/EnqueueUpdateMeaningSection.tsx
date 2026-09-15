@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Database,
@@ -57,7 +56,7 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
           {content.tags.map((tag) => (
             <li
               key={tag.label}
-              className={cn(
+              className={cx(
                 'rounded-md border px-2 py-0.5 text-[10px] font-mono',
                 toneTokens[tag.tone].chip,
               )}
@@ -75,7 +74,7 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
             {'// fiber → queue → update → lane → handler'}
           </span>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               emerald.chip,
             )}
@@ -108,27 +107,27 @@ const SmallChip = ({ step }: { step: EnqueueMeaningStep }) => {
   const t = toneTokens[step.tone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 font-mono',
         t.chip,
       )}
     >
       <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-      <span className={cn('text-xsm font-bold', t.text)}>{step.label}</span>
+      <span className={cx('text-xsm font-bold', t.text)}>{step.label}</span>
     </span>
   );
 };
 
 const FinalCard = ({ label, body }: { label: string; body: string }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex flex-col items-center gap-0.5 rounded-lg border px-3 py-2 max-w-[18ch]',
       emerald.border,
       emerald.fill.bg,
     )}
   >
     <span
-      className={cn(
+      className={cx(
         'text-xsm sm:text-sm font-bold font-mono leading-tight text-center break-keep',
         emerald.fill.text,
       )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, Braces, Layers } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -42,7 +41,7 @@ const RuntimeFnCard = ({ card }: { card: RuntimeFunctionCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col items-center gap-1 rounded-xl border p-md text-center',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -52,7 +51,7 @@ const RuntimeFnCard = ({ card }: { card: RuntimeFunctionCard }) => {
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <span
-        className={cn(
+        className={cx(
           'font-mono text-sm font-bold tracking-tight break-words',
           toneTokens[card.tone].text,
         )}
@@ -67,7 +66,7 @@ const RuntimeFnCard = ({ card }: { card: RuntimeFunctionCard }) => {
 
 const ResultCard = ({ title, body }: { title: string; body: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5',
@@ -77,7 +76,7 @@ const ResultCard = ({ title, body }: { title: string; body: string }) => (
       <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col gap-1">
-      <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.amber.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.amber.text)}>
         {title}
       </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>

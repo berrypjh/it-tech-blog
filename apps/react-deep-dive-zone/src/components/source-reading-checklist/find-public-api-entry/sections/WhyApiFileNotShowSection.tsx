@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, DoorOpen, FileCode2, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -27,7 +26,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
 
       {/* Main statement card */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-amber-200 bg-amber-50/60',
           'dark:border-amber-800/60 dark:bg-amber-950/20',
@@ -38,7 +37,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
         <div className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,_1fr)] gap-md items-start">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-12 w-12 items-center justify-center rounded-xl',
               'border-2 border-amber-300 bg-white text-amber-700',
               'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',
@@ -70,7 +69,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
             <Fragment key={step.number}>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex h-full flex-col gap-sm rounded-xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     t.border,
@@ -81,7 +80,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                         t.chip,
                         'text-[10px] font-mono font-bold tabular-nums',
@@ -89,13 +88,13 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('block h-1 w-1 rounded-full', t.dot)}
+                        className={cx('block h-1 w-1 rounded-full', t.dot)}
                       />
                       {step.number}
                     </span>
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 items-center justify-center rounded-md border',
                         t.chip,
                       )}
@@ -104,12 +103,12 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
                     </span>
                   </div>
 
-                  <h4 className={cn('text-md font-bold tracking-tight break-keep', t.text)}>
+                  <h4 className={cx('text-md font-bold tracking-tight break-keep', t.text)}>
                     {step.title}
                   </h4>
 
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex w-fit items-center rounded-md border px-2 py-1',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-[11px] text-[var(--term-fg)]',
@@ -136,7 +135,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
 
       {/* Emphasis banner */}
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md',
           'border-blue-300 bg-blue-50 text-blue-900',
           'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -146,7 +145,7 @@ export const WhyApiFileNotShowSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md',
             'border border-blue-300 bg-white text-blue-700',
             'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',

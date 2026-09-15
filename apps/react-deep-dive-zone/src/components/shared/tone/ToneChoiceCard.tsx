@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 import type { ToneKey } from '../tones';
@@ -33,7 +32,7 @@ export const ToneChoiceCard = ({
   detail,
 }: Props) => (
   <article
-    className={cn(
+    className={cx(
       'group flex w-full flex-col items-center text-center gap-sm rounded-lg border',
       'border-[var(--term-border)] bg-[var(--term-bg)]',
       'p-md sm:p-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',

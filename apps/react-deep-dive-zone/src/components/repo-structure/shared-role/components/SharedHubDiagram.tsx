@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Cuboid, type LucideIcon, MonitorSmartphone, Package } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -19,7 +18,7 @@ type Props = { content: SharedContent['hero'] };
 export const SharedHubDiagram = ({ content }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
@@ -94,7 +93,7 @@ type HubProps = { title: string; subtitle: string; tags: string[] };
 
 const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col items-center gap-2 rounded-xl border w-full',
       'px-md py-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
@@ -104,7 +103,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
     <header className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-9 h-9 rounded-md border',
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
@@ -124,7 +123,7 @@ const SharedHubCard = ({ title, subtitle, tags }: HubProps) => (
       {tags.map((tag) => (
         <li key={tag}>
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold',
               'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
             )}
@@ -145,7 +144,7 @@ const BranchCard = ({ branch }: BranchProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col items-center gap-1 rounded-lg border p-3 text-center',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -153,7 +152,7 @@ const BranchCard = ({ branch }: BranchProps) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-8 h-8 rounded-md border',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           accent,
@@ -161,7 +160,7 @@ const BranchCard = ({ branch }: BranchProps) => {
       >
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <h4 className={cn('text-xsm font-bold font-mono tracking-tight min-w-0 break-words', accent)}>
+      <h4 className={cx('text-xsm font-bold font-mono tracking-tight min-w-0 break-words', accent)}>
         {branch.title}
       </h4>
       <p className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">

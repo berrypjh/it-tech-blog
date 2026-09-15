@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import type { ReactNode } from 'react';
 
 type Props = {
@@ -24,7 +23,7 @@ export const MappingRowCard = ({
   columns = 'md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
 }: Props) => (
   <article className="group rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg transition-all hover:-translate-y-px hover:shadow-[0_2px_0_var(--term-border)]">
-    <div className={cn('grid grid-cols-1 gap-sm md:gap-md items-center', columns)}>
+    <div className={cx('grid grid-cols-1 gap-sm md:gap-md items-center', columns)}>
       {left}
       <span
         aria-hidden="true"

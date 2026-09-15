@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Droplet, Shield } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-violet-200/80 bg-gradient-to-br from-violet-50/80 via-white to-blue-50/40',
         'dark:border-violet-700/70 dark:from-violet-950/40 dark:via-[var(--term-bg)] dark:to-blue-950/20',
@@ -36,14 +35,14 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
         {/* Center hydration card */}
         <div
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'flex flex-col items-center gap-2 rounded-2xl border-2 px-md py-3 sm:py-md text-center',
             'border-violet-300/80 bg-white dark:border-violet-700/60 dark:bg-slate-950/40',
             'shadow-[0_2px_0_var(--term-border)]',
           )}
         >
           <span
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-full',
               'bg-violet-500 text-white shadow-[0_3px_0_rgba(124,58,237,0.35)] dark:bg-violet-400 dark:text-slate-900',
             )}
@@ -61,7 +60,7 @@ export const HydrationBlockedPreview = ({ content }: Props) => (
         {/* Right CTA */}
         <Link
           href={content.button.href}
-          className={cn(
+          className={cx(
             'group inline-flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-2.5',
             'border-violet-300/80 bg-white text-violet-700 font-bold text-xsm sm:text-sm whitespace-nowrap',
             'transition-all motion-safe:hover:-translate-y-0.5 hover:border-violet-500',

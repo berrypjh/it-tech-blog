@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -29,7 +28,7 @@ export const UserCodeExample = ({ content }: Props) => (
           return (
             <li key={callout.title} className="flex">
               <article
-                className={cn(
+                className={cx(
                   'flex w-full items-center gap-3 rounded-lg border p-md',
                   'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
                   t.border,
@@ -37,7 +36,7 @@ export const UserCodeExample = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
                     t.chip,
                   )}
@@ -45,7 +44,7 @@ export const UserCodeExample = ({ content }: Props) => (
                   {idx + 1}
                 </span>
                 <span
-                  className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}
+                  className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}
                 >
                   {callout.title}
                 </span>

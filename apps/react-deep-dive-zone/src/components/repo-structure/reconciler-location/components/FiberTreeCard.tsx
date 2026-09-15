@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../../shared/tones';
 import type { FiberTreeNode, ReconcilerEntryContent } from '../content';
@@ -8,10 +8,10 @@ type Props = { content: ReconcilerEntryContent['process'] };
 const NEUTRAL = 'border-[var(--term-border)] bg-[var(--term-surface)]';
 
 const stateClass: Record<FiberTreeNode['state'], string> = {
-  none: cn(NEUTRAL, 'text-[var(--term-muted)]'),
-  update: cn(NEUTRAL, 'text-[var(--term-accent)]'),
-  placement: cn(NEUTRAL, toneTokens.sky.text),
-  deletion: cn(NEUTRAL, 'text-rose-600 dark:text-rose-300'),
+  none: cx(NEUTRAL, 'text-[var(--term-muted)]'),
+  update: cx(NEUTRAL, 'text-[var(--term-accent)]'),
+  placement: cx(NEUTRAL, toneTokens.sky.text),
+  deletion: cx(NEUTRAL, 'text-rose-600 dark:text-rose-300'),
 };
 
 const stateDotClass: Record<FiberTreeNode['state'], string> = {
@@ -24,7 +24,7 @@ const stateDotClass: Record<FiberTreeNode['state'], string> = {
 export const FiberTreeCard = ({ content }: Props) => {
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
       )}
@@ -55,14 +55,14 @@ export const FiberTreeCard = ({ content }: Props) => {
                 </span>
               )}
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-2 rounded-md border px-2 py-1 text-xsm font-mono',
                   stateClass[node.state],
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block w-1.5 h-1.5 rounded-full', stateDotClass[node.state])}
+                  className={cx('inline-block w-1.5 h-1.5 rounded-full', stateDotClass[node.state])}
                 />
                 <span className="font-bold">{node.label}</span>
                 {stateLabel && node.state !== 'none' && (
@@ -85,14 +85,14 @@ export const FiberTreeCard = ({ content }: Props) => {
           {content.legendItems.map((item) => (
             <li key={item.state}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-medium',
                   stateClass[item.state],
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn('inline-block w-1 h-1 rounded-full', stateDotClass[item.state])}
+                  className={cx('inline-block w-1 h-1 rounded-full', stateDotClass[item.state])}
                 />
                 {item.label}
               </span>

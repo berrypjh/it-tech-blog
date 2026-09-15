@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { FormActionsEventSystemContent } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -20,7 +20,7 @@ export const SubmitEventPipeline = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3',
         'lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)_auto_minmax(0,_1fr)] lg:gap-3 items-stretch',
       )}
@@ -63,7 +63,7 @@ const PipelineNode = ({
   <>
     <li>
       <article
-        className={cn(
+        className={cx(
           'group flex h-full flex-col gap-2 rounded-2xl border-2 p-md',
           'bg-white dark:bg-[var(--term-bg)]',
           tone.border,
@@ -75,7 +75,7 @@ const PipelineNode = ({
         <div className="flex items-start justify-between gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
               tone.iconChip,
             )}
@@ -84,7 +84,7 @@ const PipelineNode = ({
           </span>
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-6 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
               tone.chip,
             )}
@@ -92,14 +92,14 @@ const PipelineNode = ({
             {number}
           </span>
         </div>
-        <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', tone.text)}>{title}</h3>
+        <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', tone.text)}>{title}</h3>
         <p className="text-xxsm leading-relaxed text-[var(--term-muted)] break-keep">{caption}</p>
       </article>
     </li>
     {withArrow && (
       <li aria-hidden="true" className="hidden lg:flex items-center justify-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 items-center justify-center rounded-full border',
             tone.iconChip,
           )}

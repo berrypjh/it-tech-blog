@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode, Flag, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -81,7 +80,7 @@ const Card = ({ card }: { card: FlagCard }) => {
   const Icon = markIconByName[card.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full flex-col gap-2 rounded-lg border p-md',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -90,7 +89,7 @@ const Card = ({ card }: { card: FlagCard }) => {
       <header className="flex items-center justify-between gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -98,7 +97,7 @@ const Card = ({ card }: { card: FlagCard }) => {
           <Icon className="h-5 w-5" />
         </span>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -107,14 +106,14 @@ const Card = ({ card }: { card: FlagCard }) => {
         </span>
       </header>
       <code
-        className={cn(
+        className={cx(
           'self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm sm:text-sm font-bold',
           t.text,
         )}
       >
         {card.name}
       </code>
-      <p className={cn('text-xsm leading-snug font-bold break-keep', t.text)}>{card.description}</p>
+      <p className={cx('text-xsm leading-snug font-bold break-keep', t.text)}>{card.description}</p>
       <code className="font-mono text-xxsm sm:text-xsm text-[var(--term-muted)] break-all">
         {card.bit}
       </code>

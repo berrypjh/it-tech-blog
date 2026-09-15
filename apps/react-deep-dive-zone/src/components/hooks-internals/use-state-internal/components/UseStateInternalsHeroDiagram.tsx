@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cpu, Database, FunctionSquare, Settings } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -28,7 +27,7 @@ export const UseStateInternalsHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -70,7 +69,7 @@ const PieceCard = ({ piece }: { piece: Piece }) => {
   const Icon = pieceIconMap[piece.visual];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -81,7 +80,7 @@ const PieceCard = ({ piece }: { piece: Piece }) => {
         <Icon className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
           {piece.title}
         </span>
         <code className="font-mono text-[11px] leading-none text-[var(--term-muted)] break-all">

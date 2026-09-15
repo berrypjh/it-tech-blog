@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, X } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -61,7 +60,7 @@ const Cell = ({
           <li key={item} className="flex items-start gap-2 break-keep">
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full', t.dot)}
+              className={cx('mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full', t.dot)}
             />
             <span>{item}</span>
           </li>
@@ -74,11 +73,11 @@ const Cell = ({
     const isRender = kind === 'render';
     return (
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xsm font-bold',
           isRender
             ? 'border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800/70 dark:bg-rose-950/40 dark:text-rose-200'
-            : cn(toneTokens.teal.chip),
+            : cx(toneTokens.teal.chip),
         )}
       >
         {isRender ? (
@@ -91,5 +90,5 @@ const Cell = ({
     );
   }
 
-  return <span className={cn('block break-keep font-medium', t.text)}>{value}</span>;
+  return <span className={cx('block break-keep font-medium', t.text)}>{value}</span>;
 };

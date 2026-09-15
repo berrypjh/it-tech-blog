@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Circle, GitBranch, Waves, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -30,7 +29,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
         return (
           <article
             key={card.fnName}
-            className={cn(
+            className={cx(
               'group flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -40,7 +39,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
             <header className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full',
                   priorityIconBox[card.priority],
                 )}
@@ -49,7 +48,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
               </span>
               <div className="flex flex-col min-w-0">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     priorityText[card.priority],
                   )}
@@ -57,7 +56,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
                   wrapper / {card.priority}
                 </span>
                 <code
-                  className={cn(
+                  className={cx(
                     'font-mono text-sm sm:text-md font-bold leading-tight break-all',
                     priorityText[card.priority],
                   )}
@@ -79,7 +78,7 @@ export const DispatchWrapperCompare = ({ content }: Props) => (
                 {card.events.map((ev) => (
                   <li
                     key={ev}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5',
                       'font-mono text-[10px] sm:text-[11px] font-medium',
                       priorityBadge[card.priority],

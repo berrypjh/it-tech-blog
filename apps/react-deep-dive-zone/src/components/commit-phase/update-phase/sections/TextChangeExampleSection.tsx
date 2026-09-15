@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Type } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ export const TextChangeExampleSection = ({ content }: Props) => (
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.teal.fill.border,
           toneTokens.teal.fill.bg,
@@ -40,7 +39,7 @@ export const TextChangeExampleSection = ({ content }: Props) => (
           <Type className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep',
             toneTokens.teal.fill.text,
           )}
@@ -72,18 +71,18 @@ const StateCard = ({ title, from, to }: { title: string; from: string; to: strin
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-lg border-2 bg-[var(--term-bg)] p-md',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-2">
-        <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
           {title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -93,7 +92,7 @@ const StateCard = ({ title, from, to }: { title: string; from: string; to: strin
       </header>
       <div className="flex items-center justify-center gap-3 py-3">
         <StateCircle value={from} variant="from" />
-        <ArrowRight aria-hidden="true" className={cn('h-6 w-6', t.text)} />
+        <ArrowRight aria-hidden="true" className={cx('h-6 w-6', t.text)} />
         <StateCircle value={to} variant="to" />
       </div>
       <p className="text-center text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -109,10 +108,10 @@ const StateCircle = ({ value, variant }: { value: string; variant: 'from' | 'to'
   return (
     <span
       aria-label={`count ${variant} ${value}`}
-      className={cn(
+      className={cx(
         'inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full border-2 font-mono font-bold text-lg sm:text-xl tabular-nums shadow-[0_2px_0_var(--term-border)]',
         isTo
-          ? cn(t.fill.bg, t.fill.border, t.fill.text)
+          ? cx(t.fill.bg, t.fill.border, t.fill.text)
           : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       )}
     >

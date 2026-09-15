@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ClipboardCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -19,7 +18,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
           'border-emerald-200 bg-emerald-50/40',
           'dark:border-emerald-800/60 dark:bg-emerald-950/20',
@@ -30,7 +29,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
           {content.items.map((item, i) => (
             <li
               key={item}
-              className={cn(
+              className={cx(
                 'flex items-start gap-3 rounded-xl border-2 p-3 sm:p-md',
                 'border-emerald-200 bg-white',
                 'dark:border-emerald-800/60 dark:bg-[var(--term-bg)]',
@@ -40,7 +39,7 @@ export const FollowAlongMissionSection = ({ content }: Props) => {
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2',
                   'border-emerald-300 bg-white text-emerald-700',
                   'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',

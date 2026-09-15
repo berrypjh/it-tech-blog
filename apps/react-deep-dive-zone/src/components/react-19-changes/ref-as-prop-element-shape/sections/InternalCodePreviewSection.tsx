@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RefAsPropElementShapeContent } from '../content';
 import { ExternalLinkIcon, FileCodeIcon, GithubIcon } from '../icons';
@@ -31,7 +31,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
 
       {/* RIGHT: file info card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-gradient-to-br from-white via-purple-50/30 to-white',
           'dark:border-slate-700 dark:from-[var(--term-bg)] dark:via-purple-950/20 dark:to-[var(--term-bg)]',
@@ -51,7 +51,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
         </header>
 
         <div
-          className={cn(
+          className={cx(
             'rounded-xl border-2 px-3 py-3',
             'border-purple-200 bg-purple-50/30 dark:border-purple-800/60 dark:bg-purple-950/20',
           )}
@@ -65,7 +65,7 @@ export const InternalCodePreviewSection = ({ content }: Props) => (
           href={content.fileCard.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'group mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
             'border-slate-900 bg-slate-900 text-white',
             'dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900',

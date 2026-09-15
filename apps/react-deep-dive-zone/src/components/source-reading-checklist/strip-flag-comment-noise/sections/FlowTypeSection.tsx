@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Braces, HelpCircle, Sparkles, Type } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const FlowTypeSection = ({ content }: Props) => {
 
       {/* Main point */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300 bg-blue-50/60',
           'dark:border-blue-700/70 dark:bg-blue-950/30',
@@ -32,7 +31,7 @@ export const FlowTypeSection = ({ content }: Props) => {
         <div className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2',
               'border-blue-400 bg-white text-blue-700',
               'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
@@ -51,7 +50,7 @@ export const FlowTypeSection = ({ content }: Props) => {
         {content.types.map((type) => (
           <li key={type.name}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 t.border,
@@ -62,7 +61,7 @@ export const FlowTypeSection = ({ content }: Props) => {
             >
               <header className="flex items-center justify-between gap-2">
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-md border-2 px-2.5 py-1',
                     t.border,
                     t.chip,
@@ -78,12 +77,12 @@ export const FlowTypeSection = ({ content }: Props) => {
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                   {content.hintLabel}
                 </span>
-                <p className={cn('text-xsm leading-relaxed break-keep', t.text)}>{type.hint}</p>
+                <p className={cx('text-xsm leading-relaxed break-keep', t.text)}>{type.hint}</p>
               </div>
 
               <div className="mt-auto flex items-start gap-2 pt-sm border-t border-dashed border-[var(--term-border)]">
                 <HelpCircle
-                  className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
+                  className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', t.text)}
                   aria-hidden="true"
                 />
                 <div className="flex flex-col">
@@ -102,7 +101,7 @@ export const FlowTypeSection = ({ content }: Props) => {
 
       {/* Spotlight: FiberRoot interpretation */}
       <aside
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-300 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/30',
           'dark:border-blue-700/70 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-cyan-950/20',

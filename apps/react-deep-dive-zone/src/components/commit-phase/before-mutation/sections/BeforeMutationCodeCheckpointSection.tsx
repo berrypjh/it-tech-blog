@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2, Eye, FileCode, Flag, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -56,7 +55,7 @@ export const BeforeMutationCodeCheckpointSection = ({ content }: Props) => (
           {content.pipelineTitle}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
             toneTokens.teal.chip,
           )}
@@ -105,7 +104,7 @@ const SnapshotCallout = ({
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -116,7 +115,7 @@ const SnapshotCallout = ({
         <ToneIconBox tone="teal" size="sm">
           <Flag className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', t.fill.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', t.fill.text)}>
           {callout.title}
         </h3>
       </header>
@@ -128,7 +127,7 @@ const SnapshotCallout = ({
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1 w-1 rounded-full shrink-0', t.dot)}
+              className={cx('mt-1.5 inline-block h-1 w-1 rounded-full shrink-0', t.dot)}
             />
             <code className="font-mono">{item}</code>
           </li>
@@ -163,16 +162,16 @@ const PipelinePill = ({ item }: { item: PipelineFunction }) => {
   const t = toneTokens[item.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'relative flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
-        item.active ? cn('border-2', t.fill.border, t.fill.bg) : t.border,
+        item.active ? cx('border-2', t.fill.border, t.fill.bg) : t.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       {item.active && (
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'absolute -top-2 left-2 inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
             'text-[9px] font-mono uppercase tracking-wider font-bold',
             t.fill.bg,
@@ -185,7 +184,7 @@ const PipelinePill = ({ item }: { item: PipelineFunction }) => {
         </span>
       )}
       <code
-        className={cn(
+        className={cx(
           'text-[11px] sm:text-xsm font-bold font-mono break-all',
           item.active ? t.fill.text : t.text,
         )}

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { BadgeCheck, CheckCircle2, ClipboardCheck } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
       />
 
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           isComplete
             ? 'border-emerald-300 bg-emerald-50/40 dark:border-emerald-700/70 dark:bg-emerald-950/20'
@@ -68,7 +67,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
               </span>
             )}
             <span
-              className={cn(
+              className={cx(
                 'text-xsm font-bold',
                 isComplete
                   ? 'text-emerald-800 dark:text-emerald-100'
@@ -85,13 +84,13 @@ export const FinalChecklistSection = ({ content }: Props) => {
         </div>
         <div
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'h-2 w-full rounded-full overflow-hidden mb-md',
             'bg-slate-200 dark:bg-slate-800',
           )}
         >
           <div
-            className={cn(
+            className={cx(
               'h-full transition-all duration-300',
               isComplete
                 ? 'bg-gradient-to-r from-emerald-400 to-emerald-500 dark:from-emerald-500 dark:to-emerald-400'
@@ -110,15 +109,15 @@ export const FinalChecklistSection = ({ content }: Props) => {
               <li key={item.id}>
                 <label
                   htmlFor={inputId}
-                  className={cn(
+                  className={cx(
                     'group flex items-start gap-3 rounded-xl border-2 p-3 sm:p-md cursor-pointer',
                     'transition-all',
                     isChecked
-                      ? cn(
+                      ? cx(
                           'border-emerald-300 bg-emerald-50/60',
                           'dark:border-emerald-700/70 dark:bg-emerald-950/30',
                         )
-                      : cn(
+                      : cx(
                           'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                           'hover:border-blue-300 dark:hover:border-blue-700/70',
                           'motion-safe:hover:-translate-y-0.5',
@@ -134,7 +133,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
                   />
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2',
                       isChecked
                         ? 'border-emerald-400 bg-emerald-500 text-white dark:border-emerald-500 dark:bg-emerald-500'
@@ -149,7 +148,7 @@ export const FinalChecklistSection = ({ content }: Props) => {
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm leading-relaxed break-keep',
                         isChecked
                           ? 'text-emerald-900 dark:text-emerald-100 font-bold'

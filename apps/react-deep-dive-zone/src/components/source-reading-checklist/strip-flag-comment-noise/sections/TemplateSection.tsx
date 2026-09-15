@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const TemplateSection = ({ content }: Props) => {
 
       {/* Horizontal stepper on xl, vertical timeline below */}
       <ol
-        className={cn(
+        className={cx(
           'grid grid-cols-1 sm:grid-cols-2',
           'xl:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr]',
           'gap-md xl:gap-3 items-stretch',
@@ -53,7 +52,7 @@ const TemplateStepCard = ({ step }: { step: TemplateStep }) => {
   const t = getLabelClasses(step.label);
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
         'bg-white dark:bg-[var(--term-bg)]',
         t.border,
@@ -65,7 +64,7 @@ const TemplateStepCard = ({ step }: { step: TemplateStep }) => {
       <div className="flex items-center justify-between gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-full border-2',
             t.border,
             t.chip,
@@ -77,7 +76,7 @@ const TemplateStepCard = ({ step }: { step: TemplateStep }) => {
         <LabelChip label={step.label} size="sm" />
       </div>
 
-      <h3 className={cn('text-md font-bold leading-snug break-keep', t.text)}>{step.title}</h3>
+      <h3 className={cx('text-md font-bold leading-snug break-keep', t.text)}>{step.title}</h3>
 
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{step.body}</p>
     </article>

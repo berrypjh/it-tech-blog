@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Atom, Braces, FunctionSquare, Link2, Target } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ export const JsxRuntimeCreateElementRelation = ({ content }: Props) => (
     </div>
 
     <article
-      className={cn(
+      className={cx(
         'flex items-center justify-center gap-md rounded-2xl border-2 p-md',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -68,7 +67,7 @@ const RelationCardView = ({ card }: { card: RelationCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -76,7 +75,7 @@ const RelationCardView = ({ card }: { card: RelationCard }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
           t.chip,
         )}
@@ -85,7 +84,7 @@ const RelationCardView = ({ card }: { card: RelationCard }) => {
       </span>
       <div className="flex flex-col gap-1 min-w-0">
         <h3
-          className={cn(
+          className={cx(
             'font-mono text-sm sm:text-md font-bold tracking-tight break-keep whitespace-pre-line',
             t.text,
           )}

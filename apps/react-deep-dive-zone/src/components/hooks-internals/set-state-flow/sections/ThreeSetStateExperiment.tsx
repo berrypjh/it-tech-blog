@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, RotateCw, Sparkles, XCircle } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -48,7 +47,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
   const isSuccess = side.tone === 'emerald';
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all',
         isSuccess
@@ -60,7 +59,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
         <div className="flex items-center gap-2 min-w-0">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-full',
               isSuccess
                 ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-slate-900'
@@ -74,7 +73,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
             )}
           </span>
           <h3
-            className={cn(
+            className={cx(
               'text-sm sm:text-md font-bold break-keep',
               isSuccess
                 ? 'text-emerald-800 dark:text-emerald-100'
@@ -85,7 +84,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
           </h3>
         </div>
         <code
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold break-all',
             isSuccess
               ? 'border-emerald-300/80 bg-emerald-100 text-emerald-800 dark:border-emerald-700/60 dark:bg-emerald-950/60 dark:text-emerald-100'
@@ -131,7 +130,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'rounded-xl border p-md',
           isSuccess
             ? 'border-emerald-300/70 bg-white dark:border-emerald-800/60 dark:bg-emerald-950/30'
@@ -139,7 +138,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
         )}
       >
         <p
-          className={cn(
+          className={cx(
             'text-sm sm:text-md font-bold mb-1',
             isSuccess
               ? 'text-emerald-800 dark:text-emerald-100'
@@ -159,7 +158,7 @@ const ExperimentCard = ({ side }: { side: ExperimentSide }) => {
 export const ThreeSetStateExperiment = ({ content }: Props) => (
   <section
     aria-labelledby="heading-experiment"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -178,7 +177,7 @@ export const ThreeSetStateExperiment = ({ content }: Props) => (
 
     {/* Bottom queue visualization */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md rounded-2xl border-2 p-md',
         'border-cyan-300/70 bg-cyan-50/40 dark:border-cyan-800/60 dark:bg-cyan-950/20',
       )}

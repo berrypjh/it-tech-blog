@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Code,
   ExternalLink,
@@ -43,7 +42,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 href={row.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
+                className={cx(
                   'grid grid-cols-[auto_auto_1fr_auto] sm:grid-cols-[auto_auto_minmax(120px,_180px)_1fr_auto] items-center gap-sm sm:gap-md',
                   'px-md sm:px-lg py-md sm:py-lg',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-inset',
@@ -53,7 +52,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 {/* 번호 원형 */}
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full',
                     'bg-[var(--term-surface)] border border-[var(--term-border)]',
                     'text-xsm font-bold tabular-nums shadow-[0_1px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 {/* 아이콘 */}
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center w-9 h-9 rounded-md bg-[var(--term-surface)]',
                     t.text,
                   )}
@@ -75,7 +74,7 @@ export const ReactGitHubReadingList = ({ content }: Props) => {
                 </span>
 
                 {/* 항목명 */}
-                <h3 className={cn('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
+                <h3 className={cx('text-md sm:text-lg font-bold font-mono tracking-tight', t.text)}>
                   {row.title}
                 </h3>
 

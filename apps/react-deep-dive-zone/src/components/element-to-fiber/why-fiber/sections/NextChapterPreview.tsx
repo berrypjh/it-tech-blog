@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Network, Sparkles } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -29,7 +28,7 @@ export const NextChapterPreview = ({ content }: Props) => (
     </SectionNote>
 
     <article
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -37,7 +36,7 @@ export const NextChapterPreview = ({ content }: Props) => (
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1.2fr)_minmax(0,_1fr)] gap-md items-center">
         <div className="flex flex-col gap-sm min-w-0">
           <span
-            className={cn(
+            className={cx(
               'inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5',
               'text-[10px] font-bold uppercase tracking-wider font-mono',
               toneTokens.violet.chip,
@@ -53,7 +52,7 @@ export const NextChapterPreview = ({ content }: Props) => (
             {content.previewItems.map((item) => (
               <li key={item.id}>
                 <code
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-md border px-2 py-1',
                     'font-mono text-[11px] font-bold',
                     toneTokens.violet.chip,

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Cable, Cpu, FileCode2, Plug, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -19,7 +18,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -28,7 +27,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
           {/* LEFT — ReactHooks.js */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-xl border-2 p-md',
               'border-blue-200 bg-blue-50/60',
               'dark:border-blue-800/60 dark:bg-blue-950/30',
@@ -40,7 +39,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-md',
                     'border border-blue-300 bg-blue-100 text-blue-700',
                     'dark:border-blue-700/70 dark:bg-blue-900/60 dark:text-blue-200',
@@ -56,7 +55,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                 </h3>
               </div>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5',
                   'border-blue-300 bg-white text-blue-700',
                   'dark:border-blue-700/70 dark:bg-[var(--term-bg)] dark:text-blue-200',
@@ -68,7 +67,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
             </div>
 
             <code
-              className={cn(
+              className={cx(
                 'flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1',
                 'border-blue-200 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
                 'font-mono text-[11px] text-[var(--term-fg)]',
@@ -95,7 +94,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
             />
 
             <div
-              className={cn(
+              className={cx(
                 'relative inline-flex flex-col items-center gap-1 rounded-2xl border-2 px-3 py-2',
                 'border-cyan-300 bg-white text-cyan-800 shadow-[0_3px_0_var(--term-border)]',
                 'dark:border-cyan-700/70 dark:bg-[var(--term-bg)] dark:text-cyan-200',
@@ -113,7 +112,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
 
           {/* RIGHT — ReactFiberHooks.js */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-xl border-2 p-md',
               'border-violet-200 bg-violet-50/60',
               'dark:border-violet-800/60 dark:bg-violet-950/30',
@@ -125,7 +124,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-md',
                     'border border-violet-300 bg-violet-100 text-violet-700',
                     'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
@@ -141,7 +140,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
                 </h3>
               </div>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5',
                   'border-violet-300 bg-white text-violet-700',
                   'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
@@ -153,7 +152,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
             </div>
 
             <code
-              className={cn(
+              className={cx(
                 'flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1',
                 'border-violet-200 bg-white dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
                 'font-mono text-[11px] text-[var(--term-fg)]',
@@ -171,7 +170,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
 
         {/* Key sentence */}
         <aside
-          className={cn(
+          className={cx(
             'mt-md flex items-center gap-3 rounded-xl border-2 p-md',
             'border-slate-800 bg-slate-900 text-slate-50',
             'dark:border-slate-700 dark:bg-slate-950',
@@ -180,7 +179,7 @@ export const BridgeToFiberHooksSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
               'border border-cyan-400/60 bg-cyan-500/15 text-cyan-200',
             )}

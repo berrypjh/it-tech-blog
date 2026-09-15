@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { type ToneKey, toneTokens } from '../tones';
 
@@ -14,7 +14,7 @@ export const ToneCard = ({ tone, children, className, nav }: Props) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-md h-full',
         'rounded-lg border bg-[var(--term-bg)] p-md',
         'transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]',

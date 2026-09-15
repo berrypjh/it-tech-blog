@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CircleCheck,
@@ -26,7 +25,7 @@ type Props = { content: ExplorationContent['hero'] };
 export const HeroExplorationFlow = ({ content }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_3px_0_var(--term-border)]',
         'p-md sm:p-lg overflow-hidden',
@@ -96,7 +95,7 @@ const FlowNode = ({ node }: NodeProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col items-center gap-1.5 rounded-lg border p-3 text-center',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         tone.border,
@@ -104,14 +103,14 @@ const FlowNode = ({ node }: NodeProps) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-9 h-9 rounded-md border',
           tone.chip,
         )}
       >
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <h3 className={cn('text-xsm font-bold font-mono tracking-tight', tone.text)}>{node.title}</h3>
+      <h3 className={cx('text-xsm font-bold font-mono tracking-tight', tone.text)}>{node.title}</h3>
       <p className="text-[10px] leading-snug text-[var(--term-muted)] break-keep">
         {node.subtitle}
       </p>

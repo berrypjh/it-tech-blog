@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CheckCircle2,
@@ -64,7 +63,7 @@ const resultAccentFor = (kind: CallbackKind | 'mixed') => {
   }
   const a = callbackAccent[kind];
   return {
-    border: cn(a.border, a.bg),
+    border: cx(a.border, a.bg),
     text: a.text,
     chip: a.chip,
     solidBg: a.solidBg,
@@ -81,7 +80,7 @@ const renderLogPill = (level: LogLevel | 'mixed', logging: string) => {
   }
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider',
         logLevelBadge[level],
       )}
@@ -101,7 +100,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
       <SectionHeader id="router-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -120,7 +119,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setSelected(opt.key)}
-                  className={cn(
+                  className={cx(
                     'w-full text-left rounded-2xl border-2 p-md h-full transition-all',
                     'flex items-start gap-2.5',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -131,7 +130,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                       tone.icon,
                     )}
@@ -140,7 +139,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                   </span>
                   <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                     <span
-                      className={cn(
+                      className={cx(
                         'text-sm font-bold break-keep',
                         isActive ? tone.text : 'text-[var(--term-fg)]',
                       )}
@@ -154,7 +153,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                   {isActive && (
                     <CheckCircle2
                       aria-hidden="true"
-                      className={cn('h-4 w-4 shrink-0', tone.text)}
+                      className={cx('h-4 w-4 shrink-0', tone.text)}
                     />
                   )}
                 </button>
@@ -166,15 +165,15 @@ export const ErrorRouterSection = ({ content }: Props) => {
         {/* result */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
             accent.border,
           )}
         >
           <header className="flex items-center gap-2">
-            <Zap aria-hidden="true" className={cn('h-4 w-4', accent.text)} />
+            <Zap aria-hidden="true" className={cx('h-4 w-4', accent.text)} />
             <span
-              className={cn(
+              className={cx(
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 accent.text,
               )}
@@ -183,7 +182,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
             </span>
           </header>
           <code
-            className={cn(
+            className={cx(
               'inline-flex w-fit items-center rounded-lg border px-2 py-1 text-xsm font-mono font-bold break-all',
               accent.chip,
             )}
@@ -197,7 +196,7 @@ export const ErrorRouterSection = ({ content }: Props) => {
                 {content.labels.uiResult}
               </dt>
               <dd className="mt-0.5 inline-flex items-center gap-1.5 text-xsm font-bold text-[var(--term-fg)] break-keep">
-                <ArrowRight className={cn('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
+                <ArrowRight className={cx('h-3.5 w-3.5', accent.text)} aria-hidden="true" />
                 {result.uiResult}
               </dd>
             </div>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, CheckCircle2, Component } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* Left description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/70 via-white to-emerald-50/30',
           'dark:border-teal-800/60 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
@@ -50,7 +49,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
 
       {/* Fiber table */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-white dark:border-teal-700/70 dark:bg-slate-950/40',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -69,7 +68,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
         </header>
 
         <dl
-          className={cn(
+          className={cx(
             'grid grid-cols-[auto_minmax(0,1fr)] rounded-xl border border-teal-200/70 bg-[var(--term-bg)]',
             'dark:border-teal-800/60',
             'overflow-hidden',
@@ -78,7 +77,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
           {content.rows.map((row, i) => (
             <div key={row.key} className="contents">
               <dt
-                className={cn(
+                className={cx(
                   'px-md py-2.5 text-[10px] sm:text-xsm font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300',
                   i > 0 && 'border-t border-teal-100/80 dark:border-teal-800/40',
                 )}
@@ -86,7 +85,7 @@ export const ReactFiberTargetSection = ({ content }: Props) => (
                 {row.key}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'px-md py-2.5 font-mono text-[11px] sm:text-xsm text-[var(--term-fg)] break-all',
                   i > 0 && 'border-t border-teal-100/80 dark:border-teal-800/40',
                   row.key === 'memoizedProps' && 'text-violet-700 dark:text-violet-300 font-bold',

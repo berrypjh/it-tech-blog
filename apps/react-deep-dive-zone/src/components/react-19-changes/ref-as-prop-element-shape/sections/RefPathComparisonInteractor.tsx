@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { RefAsPropElementShapeContent } from '../content';
 import {
@@ -36,7 +36,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -66,17 +66,17 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActive(p.path as 'react18' | 'react19')}
-                    className={cn(
+                    className={cx(
                       'group inline-flex items-center justify-between gap-2 rounded-xl border-2 px-3 py-2.5 text-left',
                       'transition-all motion-safe:hover:-translate-y-0.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
-                        ? cn(
+                        ? cx(
                             'text-white shadow-[0_3px_0_var(--term-border)]',
                             t.solidBg,
                             'border-transparent',
                           )
-                        : cn(
+                        : cx(
                             'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',
                             'border-slate-200 dark:border-slate-700',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -86,7 +86,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                     <span className="flex items-center gap-2 min-w-0">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'block h-2 w-2 rounded-full',
                           isActive ? 'bg-white/90' : t.dot,
                         )}
@@ -97,7 +97,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                     </span>
                     <ChevronRightIcon
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'h-3.5 w-3.5 shrink-0 transition-transform',
                         isActive
                           ? 'translate-x-0.5'
@@ -113,7 +113,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
           {/* CENTER: path flow diagram (vertical steps) */}
           <div className="flex flex-col gap-2">
             <p
-              className={cn('text-[10px] font-mono font-bold uppercase tracking-wider', tone.text)}
+              className={cx('text-[10px] font-mono font-bold uppercase tracking-wider', tone.text)}
             >
               {current.label}
             </p>
@@ -125,7 +125,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                   <Fragment key={step.title}>
                     <li>
                       <article
-                        className={cn(
+                        className={cx(
                           'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-2 rounded-xl border-2 px-3 py-2',
                           'bg-white dark:bg-[var(--term-bg)]',
                           tone.border,
@@ -135,7 +135,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                       >
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                             tone.iconChip,
                           )}
@@ -143,7 +143,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                           <Icon className="h-4 w-4" />
                         </span>
                         <div className="flex flex-col min-w-0">
-                          <span className={cn('text-xsm font-bold break-keep', tone.text)}>
+                          <span className={cx('text-xsm font-bold break-keep', tone.text)}>
                             {step.title}
                           </span>
                           <span className="text-[10px] text-[var(--term-muted)] break-keep">
@@ -152,7 +152,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                         </div>
                         <span
                           aria-hidden="true"
-                          className={cn(
+                          className={cx(
                             'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                             tone.chip,
                           )}
@@ -164,7 +164,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
                     {!isLast && (
                       <li aria-hidden="true" className="flex justify-center">
                         <span
-                          className={cn(
+                          className={cx(
                             'inline-flex h-6 w-6 items-center justify-center rounded-full border',
                             tone.iconChip,
                           )}
@@ -181,7 +181,7 @@ export const RefPathComparisonInteractor = ({ content }: Props) => {
 
           {/* RIGHT: React 19 benefits */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
               'border-emerald-300/80 bg-emerald-50/30 dark:border-emerald-700/70 dark:bg-emerald-950/20',
               'shadow-[0_2px_0_var(--term-border)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Cpu, Package, Trophy, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -40,7 +39,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg overflow-hidden',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -50,7 +49,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
               <header className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border',
                     pkgIconBox[card.accent],
                   )}
@@ -59,7 +58,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 px-2 items-center justify-center rounded-full',
                     'text-[11px] font-mono font-bold tabular-nums shadow-[0_2px_0_rgba(0,0,0,0.08)]',
                     pkgNumberBadge[card.accent],
@@ -79,7 +78,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
 
               <Icon
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'absolute -bottom-4 -right-4 h-20 w-20 pointer-events-none',
                   iconWash[card.accent],
                 )}
@@ -88,7 +87,7 @@ export const SchedulerPackageKeyTakeaways = ({ content }: Props) => (
 
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-auto inline-flex w-fit items-center gap-1.5 rounded-full border px-2 py-0.5',
                   'font-mono text-[10px] uppercase tracking-wider',
                   pkgTextStrong[card.accent],

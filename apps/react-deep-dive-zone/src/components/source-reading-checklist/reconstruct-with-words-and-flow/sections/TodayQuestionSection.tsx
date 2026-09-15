@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Quote } from 'lucide-react';
 
 import type { ReconstructContent } from '../content';
@@ -15,7 +14,7 @@ const renderLine = (line: string, emphasize: string) => {
       return (
         <span
           key={i}
-          className={cn(
+          className={cx(
             'mx-0.5 inline-flex items-center rounded-md px-1.5 py-0.5 align-baseline',
             'bg-gradient-to-r from-blue-100 to-violet-100 text-violet-900',
             'dark:from-blue-950/60 dark:to-violet-950/60 dark:text-violet-100',
@@ -38,7 +37,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
       className="space-y-md"
     >
       <article
-        className={cn(
+        className={cx(
           'relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg lg:p-xl',
           'border-violet-200 bg-gradient-to-br from-blue-50/80 via-white to-violet-50/60',
           'dark:border-violet-800/60 dark:from-blue-950/40 dark:via-[var(--term-bg)] dark:to-violet-950/40',
@@ -56,7 +55,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-lg',
                 'border border-violet-300 bg-violet-100 text-violet-700',
                 'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
@@ -77,7 +76,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
           <div className="flex flex-col gap-md">
             <h2
               id="heading-today-question"
-              className={cn(
+              className={cx(
                 'text-xl sm:text-xxl lg:text-[1.65rem] font-bold leading-[1.35] tracking-tight',
                 'text-[var(--term-fg)] break-keep',
               )}
@@ -93,7 +92,7 @@ export const TodayQuestionSection = ({ content }: Props) => {
               {content.badges.map((badge) => (
                 <li key={badge}>
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border-2 px-2.5 py-1',
                       'border-violet-300 bg-white text-violet-700',
                       'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',

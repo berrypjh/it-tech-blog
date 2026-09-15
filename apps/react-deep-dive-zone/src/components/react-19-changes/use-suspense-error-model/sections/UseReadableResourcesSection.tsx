@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseSuspenseErrorModelContent } from '../content';
 import { ArrowRightIcon } from '../icons';
@@ -26,7 +26,7 @@ export const UseReadableResourcesSection = ({ content }: Props) => (
         return (
           <li key={card.title} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
                 'bg-white dark:bg-[var(--term-bg)]',
                 tone.border,
@@ -38,13 +38,13 @@ export const UseReadableResourcesSection = ({ content }: Props) => (
               {/* top accent line */}
               <span
                 aria-hidden="true"
-                className={cn('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
+                className={cx('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
               />
 
               <div className="flex items-start justify-between gap-2 pt-1">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-12 w-12 items-center justify-center rounded-xl border',
                     tone.iconChip,
                   )}
@@ -52,7 +52,7 @@ export const UseReadableResourcesSection = ({ content }: Props) => (
                   <Icon className="h-6 w-6" />
                 </span>
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center rounded-md border px-2 py-0.5',
                     'font-mono text-[10px] font-bold uppercase tracking-wider',
                     tone.chip,
@@ -62,7 +62,7 @@ export const UseReadableResourcesSection = ({ content }: Props) => (
                 </span>
               </div>
 
-              <h3 className={cn('text-md sm:text-lg font-mono font-bold break-keep', tone.text)}>
+              <h3 className={cx('text-md sm:text-lg font-mono font-bold break-keep', tone.text)}>
                 {card.title}
               </h3>
 
@@ -71,16 +71,16 @@ export const UseReadableResourcesSection = ({ content }: Props) => (
               </p>
 
               <div
-                className={cn(
+                className={cx(
                   'mt-auto flex items-start gap-2 rounded-lg border px-3 py-2',
                   tone.chip,
                 )}
               >
                 <ArrowRightIcon
                   aria-hidden="true"
-                  className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
+                  className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', tone.text)}
                 />
-                <p className={cn('text-xsm font-bold break-keep leading-snug', tone.text)}>
+                <p className={cx('text-xsm font-bold break-keep leading-snug', tone.text)}>
                   {card.result.replace('→ ', '')}
                 </p>
               </div>

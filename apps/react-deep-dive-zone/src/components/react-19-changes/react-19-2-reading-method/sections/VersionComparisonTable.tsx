@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content } from '../content';
 import { tone } from '../tone';
@@ -18,7 +18,7 @@ export const VersionComparisonTable = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -52,14 +52,14 @@ export const VersionComparisonTable = ({ content }: Props) => (
               return (
                 <tr
                   key={row.version}
-                  className={cn(
+                  className={cx(
                     'border-t border-slate-200 dark:border-slate-700',
                     i % 2 === 1 && 'bg-slate-50/40 dark:bg-slate-900/30',
                   )}
                 >
                   <th scope="row" className="px-md py-3 align-top">
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
                         t.solidBg,
                         'text-white font-mono text-xsm font-bold',
@@ -78,7 +78,7 @@ export const VersionComparisonTable = ({ content }: Props) => (
                     </span>
                   </td>
                   <td className="px-md py-3 align-top">
-                    <span className={cn('text-xsm font-bold break-keep', t.text)}>
+                    <span className={cx('text-xsm font-bold break-keep', t.text)}>
                       {row.keyword}
                     </span>
                   </td>
@@ -102,14 +102,14 @@ export const VersionComparisonTable = ({ content }: Props) => (
           return (
             <li
               key={row.version}
-              className={cn(
+              className={cx(
                 'flex flex-col gap-sm p-md',
                 i > 0 && 'border-t border-slate-200 dark:border-slate-700',
               )}
             >
               <div className="flex items-center gap-2">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full px-3 py-1',
                     t.solidBg,
                     'text-white font-mono text-xsm font-bold',
@@ -121,7 +121,7 @@ export const VersionComparisonTable = ({ content }: Props) => (
                   {row.releasedAt}
                 </span>
               </div>
-              <h3 className={cn('text-sm font-bold break-keep', t.text)}>{row.keyword}</h3>
+              <h3 className={cx('text-sm font-bold break-keep', t.text)}>{row.keyword}</h3>
               <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
                 {row.body}
               </p>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -46,7 +45,7 @@ const toneIconBox: Record<Tone, string> = {
 export const HookFlowOverview = ({ content }: Props) => (
   <section
     aria-labelledby="heading-overview"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -66,7 +65,7 @@ export const HookFlowOverview = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-2 rounded-2xl border-2 p-3 sm:p-md transition-colors',
               toneCard[step.tone],
             )}
@@ -74,7 +73,7 @@ export const HookFlowOverview = ({ content }: Props) => (
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border',
                   toneIconBox[step.tone],
                 )}
@@ -124,7 +123,7 @@ export const HookFlowOverview = ({ content }: Props) => (
 
     {/* Highlight box */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-amber-300/80 bg-amber-50/60',
         'dark:border-amber-800/60 dark:bg-amber-950/30',

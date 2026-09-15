@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, PanelsTopLeft, Pin, Workflow } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -54,7 +53,7 @@ const StackBox = ({ node }: { node: FiberStackNode }) => {
   const Icon = fiberStackIconByName[node.icon];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex min-w-0 items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
@@ -64,7 +63,7 @@ const StackBox = ({ node }: { node: FiberStackNode }) => {
         <Icon className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <span className={cn('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
+        <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {node.title}
         </span>
         <code className="min-w-0 truncate font-mono text-[11px] text-[var(--term-muted)]">
@@ -72,7 +71,7 @@ const StackBox = ({ node }: { node: FiberStackNode }) => {
         </code>
       </div>
       <span
-        className={cn(
+        className={cx(
           'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
         )}

@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { React19ChangeMapContent } from '../content';
 import { ArrowRightIcon, ExternalLinkIcon, MilestoneIcon } from '../icons';
@@ -62,24 +62,24 @@ export const VersionTimelineSection = ({ content }: Props) => (
               <div className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full border-2',
                     'bg-white dark:bg-[var(--term-bg)]',
                     accent.border,
                     'shadow-[0_2px_0_var(--term-border)]',
                   )}
                 >
-                  <span className={cn('block h-2.5 w-2.5 rounded-full', accent.dot)} />
+                  <span className={cx('block h-2.5 w-2.5 rounded-full', accent.dot)} />
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn('flex-1 h-px border-t-2 border-dashed lg:hidden', accent.line)}
+                  className={cx('flex-1 h-px border-t-2 border-dashed lg:hidden', accent.line)}
                 />
               </div>
 
               {/* card */}
               <article
-                className={cn(
+                className={cx(
                   'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg overflow-hidden',
                   'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
                   'shadow-[0_2px_0_var(--term-border)]',
@@ -92,19 +92,19 @@ export const VersionTimelineSection = ({ content }: Props) => (
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
                         accent.chip,
                       )}
                     >
                       <MilestoneIcon className="h-3.5 w-3.5" />
                     </span>
-                    <h3 className={cn('text-md sm:text-lg font-bold break-keep', accent.text)}>
+                    <h3 className={cx('text-md sm:text-lg font-bold break-keep', accent.text)}>
                       {card.version}
                     </h3>
                   </div>
                   <span
-                    className={cn(
+                    className={cx(
                       'shrink-0 inline-flex items-center rounded-full border px-2 py-0.5',
                       'font-mono text-[10px] font-bold tabular-nums',
                       accent.chip,
@@ -131,7 +131,7 @@ export const VersionTimelineSection = ({ content }: Props) => (
                   {card.tags.map((tag) => (
                     <li
                       key={tag}
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
                         accent.chip,
                         'font-mono text-[10px] font-bold',
@@ -139,7 +139,7 @@ export const VersionTimelineSection = ({ content }: Props) => (
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('block h-1 w-1 rounded-full', accent.dot)}
+                        className={cx('block h-1 w-1 rounded-full', accent.dot)}
                       />
                       {tag}
                     </li>
@@ -152,7 +152,7 @@ export const VersionTimelineSection = ({ content }: Props) => (
                     href={card.cta.href}
                     target={isExternal(card.cta.href) ? '_blank' : undefined}
                     rel={isExternal(card.cta.href) ? 'noreferrer' : undefined}
-                    className={cn(
+                    className={cx(
                       'mt-1 group inline-flex items-center gap-1.5 self-start rounded-lg border px-3 py-1.5',
                       'border-emerald-300 bg-emerald-50 text-emerald-700',
                       'dark:border-emerald-700/70 dark:bg-emerald-950/40 dark:text-emerald-200',

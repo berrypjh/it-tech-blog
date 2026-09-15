@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   Folder,
@@ -33,7 +32,7 @@ type Props = { content: PackagesDirectoryContent['hero'] };
 export const PackageHubDiagram = ({ content }: Props) => {
   return (
     <div
-      className={cn(
+      className={cx(
         'relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg',
@@ -91,13 +90,13 @@ type HubCardProps = { label: string; caption: string };
 
 const HubCard = ({ label, caption }: HubCardProps) => (
   <div
-    className={cn(
+    className={cx(
       'inline-flex flex-col items-center gap-1 rounded-xl border px-md py-md',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)]',
     )}
   >
-    <span className={cn('inline-flex items-center gap-2', toneTokens.sky.text)}>
+    <span className={cx('inline-flex items-center gap-2', toneTokens.sky.text)}>
       <Folder className="h-4 w-4" aria-hidden="true" />
       <span className="text-md font-bold font-mono tracking-tight">{label}</span>
     </span>
@@ -113,7 +112,7 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full flex-col items-center gap-1 rounded-lg border',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'px-2 py-2.5 text-center transition-all hover:-translate-y-0.5',
@@ -121,7 +120,7 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-7 h-7 rounded-md border',
           tone.chip,
         )}
@@ -129,7 +128,7 @@ const CoreNodeCard = ({ pkg }: CoreNodeCardProps) => {
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span
-        className={cn(
+        className={cx(
           'text-[11px] font-bold font-mono tracking-tight min-w-0 break-words',
           tone.text,
         )}

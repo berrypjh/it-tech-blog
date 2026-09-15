@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { EyeOff, Info, LifeBuoy, ShieldCheck, TriangleAlert } from 'lucide-react';
 
 import type { MismatchDetectRecoverContent, SuppressCard } from '../content';
@@ -62,7 +61,7 @@ export const SuppressSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-stretch">
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-amber-200/80 bg-white dark:border-amber-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -96,7 +95,7 @@ export const SuppressSection = ({ content }: Props) => (
           return (
             <li key={card.title}>
               <article
-                className={cn(
+                className={cx(
                   'flex flex-col gap-2 h-full rounded-2xl border-2 p-md',
                   style.border,
                   'transition-transform motion-safe:hover:-translate-y-0.5',
@@ -105,14 +104,14 @@ export const SuppressSection = ({ content }: Props) => (
                 <header className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                       style.iconChip,
                     )}
                   >
                     <Icon className="h-4 w-4" />
                   </span>
-                  <h3 className={cn('text-sm font-bold break-keep', style.text)}>{card.title}</h3>
+                  <h3 className={cx('text-sm font-bold break-keep', style.text)}>{card.title}</h3>
                 </header>
                 <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
                   {card.body}
@@ -125,7 +124,7 @@ export const SuppressSection = ({ content }: Props) => (
     </div>
 
     <p
-      className={cn(
+      className={cx(
         'rounded-2xl border p-3 text-xsm text-[var(--term-fg)] break-keep',
         'border-amber-200 bg-amber-50/40 dark:border-amber-800/60 dark:bg-amber-950/20',
       )}

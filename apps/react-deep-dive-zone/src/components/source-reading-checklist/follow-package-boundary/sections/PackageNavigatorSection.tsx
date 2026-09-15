@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Compass, FileCode2, ScanSearch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -52,13 +51,13 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                     aria-pressed={isActive}
                     aria-controls="navigator-result"
                     onClick={() => setActiveId(opt.id)}
-                    className={cn(
+                    className={cx(
                       'group flex items-start gap-3 rounded-xl border-2 p-3 text-left',
                       'transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       isActive
-                        ? cn(ot.chip, ot.border, 'shadow-[0_2px_0_var(--term-border)]')
-                        : cn(
+                        ? cx(ot.chip, ot.border, 'shadow-[0_2px_0_var(--term-border)]')
+                        : cx(
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
                             'motion-safe:hover:-translate-y-0.5',
@@ -67,19 +66,19 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                         isActive
-                          ? cn(ot.border, 'bg-white dark:bg-[var(--term-bg)]')
+                          ? cx(ot.border, 'bg-white dark:bg-[var(--term-bg)]')
                           : 'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                       )}
                     >
-                      {isActive && <span className={cn('block h-2 w-2 rounded-full', ot.dot)} />}
+                      {isActive && <span className={cx('block h-2 w-2 rounded-full', ot.dot)} />}
                     </span>
 
                     <span className="flex flex-col gap-1 min-w-0">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-xsm sm:text-sm font-bold leading-snug break-keep',
                           isActive ? ot.text : 'text-[var(--term-fg)]',
                         )}
@@ -102,7 +101,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
           <article
             id="navigator-result"
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
               pickedT.border,
               pickedT.chip,
@@ -115,7 +114,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 {content.labels.question}
               </span>
               <p
-                className={cn('text-md sm:text-lg font-bold leading-snug break-keep', pickedT.text)}
+                className={cx('text-md sm:text-lg font-bold leading-snug break-keep', pickedT.text)}
               >
                 {active.question}
               </p>
@@ -140,14 +139,14 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 {active.files.map((file) => (
                   <li key={file}>
                     <code
-                      className={cn(
+                      className={cx(
                         'flex items-center gap-1.5 overflow-x-auto rounded-md border px-2 py-1',
                         'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                         'font-mono text-[11px] text-[var(--term-fg)]',
                       )}
                     >
                       <FileCode2
-                        className={cn('h-3 w-3 shrink-0', pickedT.text)}
+                        className={cx('h-3 w-3 shrink-0', pickedT.text)}
                         aria-hidden="true"
                       />
                       <span className="whitespace-nowrap">{file}</span>
@@ -166,7 +165,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 <PackageBadge packageKey={active.pickedPackage} size="md">
                   {active.pickedPackage}
                 </PackageBadge>
-                <ArrowRight className={cn('h-4 w-4', nextT.text)} aria-hidden="true" />
+                <ArrowRight className={cx('h-4 w-4', nextT.text)} aria-hidden="true" />
                 <PackageBadge packageKey={active.nextPackage} size="md" strong>
                   {active.nextPackage}
                 </PackageBadge>
@@ -179,7 +178,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 {content.labels.readingPoint}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'border-amber-300 bg-amber-50 text-amber-900',
                   'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',
@@ -199,7 +198,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                 {active.keywords.map((kw) => (
                   <li key={kw}>
                     <span
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                         'bg-white dark:bg-[var(--term-bg)]',
                         pickedT.border,
@@ -209,7 +208,7 @@ export const PackageNavigatorSection = ({ content }: Props) => {
                     >
                       <span
                         aria-hidden="true"
-                        className={cn('block h-1 w-1 rounded-full', pickedT.dot)}
+                        className={cx('block h-1 w-1 rounded-full', pickedT.dot)}
                       />
                       {kw}
                     </span>

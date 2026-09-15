@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, Code2, ExternalLink, FileCode, GitBranch, Info } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -79,7 +78,7 @@ const CodeBlock = ({ code, fileLabel, caption }: CodeBlockProps) => {
             return (
               <div
                 key={i}
-                className={cn(
+                className={cx(
                   'flex',
                   isHighlight && 'bg-violet-950/40 -mx-md px-md border-l-2 border-violet-400',
                 )}
@@ -130,7 +129,7 @@ export const RealCodePreview = ({ content }: Props) => (
 
       <div className="flex flex-col gap-md">
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -152,7 +151,7 @@ export const RealCodePreview = ({ content }: Props) => (
         </article>
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_1px_0_var(--term-border)]',
           )}
@@ -177,7 +176,7 @@ export const RealCodePreview = ({ content }: Props) => (
           href={content.button.href}
           target="_blank"
           rel="noreferrer noopener"
-          className={cn(
+          className={cx(
             'group flex items-center gap-3 rounded-2xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
             'transition-all hover:-translate-y-0.5 hover:border-blue-300/70 dark:hover:border-blue-700/70',

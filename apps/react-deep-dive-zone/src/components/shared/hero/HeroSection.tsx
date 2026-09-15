@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { TerminalPrompt } from '../terminal';
 
@@ -31,7 +31,7 @@ export const HeroSection = ({
   <section aria-labelledby="hero-heading" className="relative">
     <TerminalPrompt command={promptCommand} path={promptPath} suffix={promptSuffix} />
 
-    <div className={cn('mt-lg grid grid-cols-1 gap-xl lg:gap-2xl', alignClass[align], gridColumns)}>
+    <div className={cx('mt-lg grid grid-cols-1 gap-xl lg:gap-2xl', alignClass[align], gridColumns)}>
       {children}
     </div>
   </section>

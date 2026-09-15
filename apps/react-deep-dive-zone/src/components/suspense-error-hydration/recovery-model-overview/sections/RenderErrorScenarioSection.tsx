@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, ShieldCheck } from 'lucide-react';
 
 import type { RecoveryModelOverviewContent } from '../content';
@@ -24,7 +23,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-3 items-stretch">
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col overflow-hidden rounded-2xl border-2',
           'border-rose-200/80 bg-white dark:border-rose-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -35,7 +34,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
 
       {/* tree */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -46,7 +45,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
           {content.tree.map((label, i) => (
             <li key={label} className="flex flex-col items-center gap-1">
               <div
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-lg border-2 px-3 py-1.5',
                   'font-mono text-[11px] font-bold break-keep',
                   treeStyle(label),
@@ -70,7 +69,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
 
       {/* captured update */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-200/80 bg-violet-50/30 dark:border-violet-800/60 dark:bg-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -93,7 +92,7 @@ export const RenderErrorScenarioSection = ({ content }: Props) => (
             return (
               <li key={step} className="flex flex-col gap-0.5">
                 <div
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-lg border bg-white px-2.5 py-1.5',
                     'dark:bg-[var(--term-bg)] border-violet-200 dark:border-violet-800/60',
                   )}

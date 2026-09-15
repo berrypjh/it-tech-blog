@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, CheckCircle2, GitBranch, Sparkles, Tag } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const VersionTagsSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -36,7 +35,7 @@ export const VersionTagsSection = ({ content }: Props) => {
 
         {/* Conclusion banner */}
         <aside
-          className={cn(
+          className={cx(
             'mt-md flex items-start gap-3 rounded-xl border-2 p-md',
             'border-emerald-300 bg-emerald-50 text-emerald-900',
             'dark:border-emerald-700/70 dark:bg-emerald-950/30 dark:text-emerald-100',
@@ -44,7 +43,7 @@ export const VersionTagsSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
               'border border-emerald-300 bg-white text-emerald-700',
               'dark:border-emerald-700/70 dark:bg-[var(--term-bg)] dark:text-emerald-200',
@@ -72,7 +71,7 @@ const CompareCard = ({
   const Icon = isWarning ? GitBranch : Tag;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
         'bg-white dark:bg-[var(--term-bg)]',
         isWarning
@@ -86,7 +85,7 @@ const CompareCard = ({
         <div className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 items-center justify-center rounded-lg border-2',
               isWarning
                 ? 'border-amber-300 bg-amber-100 text-amber-700 dark:border-amber-700/70 dark:bg-amber-900/60 dark:text-amber-200'
@@ -96,7 +95,7 @@ const CompareCard = ({
             <Icon className="h-4 w-4" />
           </span>
           <h3
-            className={cn(
+            className={cx(
               'text-md font-bold leading-snug break-keep',
               isWarning
                 ? 'text-amber-900 dark:text-amber-100'
@@ -107,7 +106,7 @@ const CompareCard = ({
           </h3>
         </div>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border-2 px-2.5 py-1',
             isWarning
               ? 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-200'
@@ -124,7 +123,7 @@ const CompareCard = ({
         {side.bullets.map((bullet) => (
           <li
             key={bullet}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-md border px-2.5 py-2',
               isWarning
                 ? 'border-amber-200 bg-amber-50/40 dark:border-amber-800/60 dark:bg-amber-950/20'

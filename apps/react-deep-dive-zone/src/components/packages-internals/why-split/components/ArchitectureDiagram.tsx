@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   Boxes,
@@ -47,7 +46,7 @@ export const ArchitectureDiagram = ({
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'px-md py-lg sm:p-lg overflow-hidden',
@@ -126,7 +125,7 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'group inline-flex min-w-0 flex-col items-center gap-1 rounded-lg border',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -139,7 +138,7 @@ const FlowBox = ({ node, emphasized }: FlowBoxProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'min-w-0 truncate text-sm font-bold font-mono tracking-tight',
             toneTokens[node.tone].text,
           )}
@@ -163,7 +162,7 @@ const SideNodeBox = ({ node }: SideNodeBoxProps) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         'group inline-flex flex-col items-start gap-1 rounded-lg border-2 border-dashed',
         'border-[var(--term-border)]',
         'bg-[var(--term-bg)] transition-all hover:-translate-y-0.5',
@@ -175,7 +174,7 @@ const SideNodeBox = ({ node }: SideNodeBoxProps) => {
           <Icon className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn('text-sm font-bold font-mono tracking-tight', toneTokens[node.tone].text)}
+          className={cx('text-sm font-bold font-mono tracking-tight', toneTokens[node.tone].text)}
         >
           {node.label}
         </span>

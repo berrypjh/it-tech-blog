@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Lightbulb, Sparkles, Split } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,7 +19,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-md items-stretch">
       {/* Simple mapping */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/70 via-white to-cyan-50/40',
           'dark:border-teal-700/60 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -62,7 +61,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
 
       {/* Special mapping */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-rose-200/80 bg-gradient-to-br from-rose-50/70 via-white to-amber-50/30',
           'dark:border-rose-800/60 dark:from-rose-950/30 dark:via-[var(--term-bg)] dark:to-amber-950/10',
@@ -110,7 +109,7 @@ export const SimpleVsSpecialMapping = ({ content }: Props) => (
 
     {/* Insight banner */}
     <aside
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-sm rounded-2xl border-2 p-md',
         'border-amber-300/80 bg-amber-50/60',
         'dark:border-amber-800/60 dark:bg-amber-950/30',

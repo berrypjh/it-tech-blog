@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ServerComponentsContractContent } from '../content';
 import { CircleHelpIcon } from '../icons';
@@ -10,7 +10,7 @@ type Props = { content: ServerComponentsContractContent['question'] };
 export const TodayQuestionCard = ({ content }: Props) => (
   <section aria-labelledby="today-question-heading" className="flex flex-col">
     <div
-      className={cn(
+      className={cx(
         'rounded-2xl border-2 p-md sm:p-lg',
         'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -20,7 +20,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
         <div className="flex justify-center lg:justify-start">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl',
               'border-2 border-blue-300 bg-white text-blue-700',
               'dark:border-blue-600 dark:bg-blue-950/40 dark:text-blue-200',
@@ -53,7 +53,7 @@ export const TodayQuestionCard = ({ content }: Props) => (
             return (
               <li key={q.label} className="h-full">
                 <article
-                  className={cn(
+                  className={cx(
                     'flex h-full items-start gap-2 rounded-xl border-2 p-3',
                     'border-blue-200 bg-white dark:border-blue-800/60 dark:bg-[var(--term-bg)]',
                     'transition-all motion-safe:hover:-translate-y-0.5',

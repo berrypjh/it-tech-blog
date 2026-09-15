@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -72,7 +71,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
   const t = toneTokens[callout.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex w-full flex-col gap-1.5 rounded-lg border p-md',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -80,7 +79,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -89,7 +88,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-7 w-7 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
             t.chip,
           )}
@@ -97,7 +96,7 @@ const Callout = ({ callout }: { callout: CodeCallout }) => {
           {callout.number}
         </span>
       </header>
-      <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+      <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
         {callout.title}
       </h4>
       <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">

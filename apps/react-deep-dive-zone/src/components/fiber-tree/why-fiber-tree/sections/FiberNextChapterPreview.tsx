@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowUp, Compass, HelpCircle, List, Send } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
@@ -26,7 +25,7 @@ const toFlowStep = (item: PreviewItem): FlowStepItem => {
     title: item.title,
     body: item.body,
     tone: item.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[item.tone].text)} />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[item.tone].text)} />,
   };
 };
 

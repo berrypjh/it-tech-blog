@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { HelpCircle, Network, Target, TimerReset } from 'lucide-react';
 
 import type { Tone, WhyEventSystemContent } from '../content';
@@ -36,7 +35,7 @@ const badgeIcons = [Network, Target, TimerReset];
 export const TodayQuestionBanner = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-blue-200/70 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/50',
       'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -47,7 +46,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
       {/* Left: large question icon */}
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-full',
           'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)]',
           'dark:bg-blue-500',
@@ -76,7 +75,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
           return (
             <li
               key={badge.label}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-xl border-2 px-3 py-2',
                 'shadow-[0_1px_0_var(--term-border)] transition-colors',
                 toneBadge[badge.tone],
@@ -84,7 +83,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-current/30',
                 )}
               >
@@ -100,7 +99,7 @@ export const TodayQuestionBanner = ({ content }: Props) => (
               </div>
               <span
                 aria-hidden="true"
-                className={cn('ml-auto inline-block h-2 w-2 rounded-full', toneDot[badge.tone])}
+                className={cx('ml-auto inline-block h-2 w-2 rounded-full', toneDot[badge.tone])}
               />
             </li>
           );

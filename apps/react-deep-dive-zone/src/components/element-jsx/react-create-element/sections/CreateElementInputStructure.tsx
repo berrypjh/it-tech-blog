@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Code2, FunctionSquare, Sliders, Users } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -28,7 +27,7 @@ export const CreateElementInputStructure = ({ content }: Props) => (
 
     {/* Signature card */}
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-md rounded-2xl border-2 px-md py-4 sm:py-5',
         'border-[var(--term-border)] bg-[var(--term-surface)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -60,7 +59,7 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-md rounded-2xl border p-md',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -68,7 +67,7 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-8 h-8 rounded-full border font-mono text-xsm font-bold tabular-nums',
             t.chip,
           )}
@@ -77,7 +76,7 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-2xl border',
             t.chip,
           )}
@@ -85,7 +84,7 @@ const InputPartCard = ({ card }: { card: InputCard }) => {
           <Icon className="h-5 w-5" />
         </span>
       </header>
-      <h3 className={cn('font-mono text-md font-bold tracking-tight', t.text)}>{card.title}</h3>
+      <h3 className={cx('font-mono text-md font-bold tracking-tight', t.text)}>{card.title}</h3>
       <p className="text-xsm font-bold leading-snug text-[var(--term-fg)] break-keep">
         {card.body}
       </p>

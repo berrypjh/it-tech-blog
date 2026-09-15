@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Link, type LucideIcon, Sparkle, Zap } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ export const React19FocusTopics = ({ content }: Props) => {
               icon={<Icon className="h-5 w-5" aria-hidden="true" />}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-sm sm:text-md font-bold tracking-tight break-keep leading-snug',
                   toneTokens[card.tone].text,
                 )}
@@ -53,7 +52,7 @@ export const React19FocusTopics = ({ content }: Props) => {
                 {card.tags.map((tag) => (
                   <li
                     key={tag}
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono border',
                       toneTokens[card.tone].chip,
                     )}

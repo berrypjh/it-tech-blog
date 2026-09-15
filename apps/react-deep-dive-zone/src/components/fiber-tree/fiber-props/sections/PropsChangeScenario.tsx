@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitCompare, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -36,7 +35,7 @@ export const PropsChangeScenario = ({ content }: Props) => (
 
       {/* Right: current fiber internal state */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 border-dashed p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
@@ -64,8 +63,8 @@ export const PropsChangeScenario = ({ content }: Props) => (
 const RenderCard = ({ label, code, tone }: { label: string; code: string; tone: ToneKey }) => {
   const t = toneTokens[tone];
   return (
-    <article className={cn('rounded-2xl border-2 bg-[var(--term-bg)] p-md', t.border)}>
-      <h3 className={cn('text-xsm font-bold tracking-tight mb-sm', t.text)}>{label}</h3>
+    <article className={cx('rounded-2xl border-2 bg-[var(--term-bg)] p-md', t.border)}>
+      <h3 className={cx('text-xsm font-bold tracking-tight mb-sm', t.text)}>{label}</h3>
       <CodePreviewPanel code={code} caption="render.jsx" language="JSX" size="sm" />
     </article>
   );
@@ -75,7 +74,7 @@ const StateRow = ({ line, kind }: { line: string; kind: PropsKind }) => {
   const t = toneTokens[stateTone[kind]];
   return (
     <code
-      className={cn(
+      className={cx(
         'block rounded-lg border px-3 py-2 font-mono text-xsm sm:text-sm font-bold break-all',
         t.chip,
       )}
@@ -87,7 +86,7 @@ const StateRow = ({ line, kind }: { line: string; kind: PropsKind }) => {
 
 const ValueBadge = ({ children, tone }: { children: React.ReactNode; tone: ToneKey }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center rounded-md border px-1.5 py-0 font-mono text-[12px] font-bold',
       toneTokens[tone].chip,
     )}

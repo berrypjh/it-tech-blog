@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   BadgeCheck,
   Box,
@@ -50,7 +49,7 @@ type CurrentProps = { content: ChangelogContent['latest'] };
 
 const CurrentReleaseCard = ({ content }: CurrentProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-xl border bg-[var(--term-bg)]',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'p-md sm:p-lg',
@@ -64,7 +63,7 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
       <div className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border-2',
             'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
           )}
@@ -102,7 +101,7 @@ const CurrentReleaseCard = ({ content }: CurrentProps) => (
         return (
           <li
             key={stat.label}
-            className={cn(
+            className={cx(
               'flex flex-col items-center gap-1 rounded-lg border p-2 text-center',
               'border-[var(--term-border)] bg-[var(--term-surface)]',
             )}
@@ -130,7 +129,7 @@ const CtaButtons = ({ content }: CtaProps) => (
       href={content.secondaryHref}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn(
+      className={cx(
         'group/cta inline-flex items-center justify-center gap-2 rounded-md px-lg py-3 text-xsm font-bold',
         'border border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
         'transition-colors hover:bg-[var(--term-surface)]',
@@ -151,7 +150,7 @@ type ChecklistProps = { title: string; items: string[] };
 
 const ChecklistCard = ({ title, items }: ChecklistProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)]',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'p-md sm:p-lg',
@@ -165,7 +164,7 @@ const ChecklistCard = ({ title, items }: ChecklistProps) => (
           className="flex items-start gap-2 text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep"
         >
           <CheckCircle2
-            className={cn('mt-0.5 h-4 w-4 shrink-0', toneTokens.violet.text)}
+            className={cx('mt-0.5 h-4 w-4 shrink-0', toneTokens.violet.text)}
             aria-hidden="true"
           />
           <span>{item}</span>
@@ -179,7 +178,7 @@ type HighlightsProps = { content: ChangelogContent['latest'] };
 
 const HighlightsCard = ({ content }: HighlightsProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-sm rounded-xl border',
       'border-[var(--term-border)] bg-[var(--term-surface)]',
       'shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
@@ -189,7 +188,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
       <div className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
             toneTokens.violet.text,
@@ -198,7 +197,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
           <Tag className="h-4 w-4" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
-          <h3 className={cn('text-md font-bold font-mono tracking-tight', toneTokens.violet.text)}>
+          <h3 className={cx('text-md font-bold font-mono tracking-tight', toneTokens.violet.text)}>
             {content.highlightsTitle}
           </h3>
           <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
@@ -212,7 +211,7 @@ const HighlightsCard = ({ content }: HighlightsProps) => (
       {content.highlightsItems.map((item) => (
         <li key={item.kind} className="flex items-start gap-2 text-xsm leading-relaxed break-keep">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0',
               'border-[var(--term-border)] bg-[var(--term-bg)]',
               toneTokens.violet.text,

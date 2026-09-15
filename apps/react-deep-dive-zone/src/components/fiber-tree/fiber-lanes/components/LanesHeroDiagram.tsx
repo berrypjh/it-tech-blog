@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { HeroDiagramShell } from '../../../shared/hero';
 import { DownArrow } from '../../../shared/icon';
@@ -61,12 +61,12 @@ const FiberCard = ({ fields }: { fields: Hero['fields'] }) => (
     {fields.map((row, i) => (
       <li
         key={`${row.field}-${i}`}
-        className={cn(
+        className={cx(
           'rounded-md px-2 py-1 text-[11px] font-mono',
           row.highlight === 'lanes'
-            ? cn('border', toneTokens.emerald.chip)
+            ? cx('border', toneTokens.emerald.chip)
             : row.highlight === 'childLanes'
-              ? cn('border', toneTokens.violet.chip)
+              ? cx('border', toneTokens.violet.chip)
               : 'text-[var(--term-muted)]',
         )}
       >
@@ -86,7 +86,7 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
   const t = laneStyle(item.tone);
   return (
     <li
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-lg border bg-[var(--term-bg)] px-2 py-1.5',
         'border-[var(--term-border)]',
         t.borderHover,
@@ -95,7 +95,7 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
       {item.tone === 'slate' ? (
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-md border',
             t.chip,
           )}
@@ -108,7 +108,7 @@ const LaneRow = ({ item }: { item: Hero['items'][number] }) => {
         </ToneIconBox>
       )}
       <span className="flex min-w-0 flex-col">
-        <code className={cn('truncate font-mono text-[11.5px] font-bold tracking-tight', t.text)}>
+        <code className={cx('truncate font-mono text-[11.5px] font-bold tracking-tight', t.text)}>
           {item.label}
         </code>
         <span className="truncate text-[10px] text-[var(--term-muted)]">{item.subtitle}</span>

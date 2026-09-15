@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode, FileText, GitBranch, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -35,7 +34,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
       topRight={card.number}
     >
-      <h3 className={cn('font-mono text-md font-bold tracking-tight break-all', t.text)}>
+      <h3 className={cx('font-mono text-md font-bold tracking-tight break-all', t.text)}>
         {card.file}
       </h3>
 
@@ -43,10 +42,10 @@ const Card = ({ card }: { card: SourcePathCard }) => {
         {card.functions.map((fn) => (
           <li
             key={fn.name}
-            className={cn('flex flex-col gap-1 rounded-md border px-3 py-2', t.chip)}
+            className={cx('flex flex-col gap-1 rounded-md border px-3 py-2', t.chip)}
           >
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 font-mono text-xsm font-bold',
                 t.text,
               )}
@@ -63,10 +62,10 @@ const Card = ({ card }: { card: SourcePathCard }) => {
 
       {card.followBoxTitle && (
         <div
-          className={cn('mt-auto rounded-md border border-dashed p-3', t.fill.bg, t.fill.border)}
+          className={cx('mt-auto rounded-md border border-dashed p-3', t.fill.bg, t.fill.border)}
         >
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider',
               t.fill.text,
             )}
@@ -74,7 +73,7 @@ const Card = ({ card }: { card: SourcePathCard }) => {
             <Sparkles aria-hidden="true" className="h-3 w-3" />
             {card.followBoxTitle}
           </span>
-          <p className={cn('mt-1 text-xxsm font-mono leading-snug break-keep', t.fill.text)}>
+          <p className={cx('mt-1 text-xxsm font-mono leading-snug break-keep', t.fill.text)}>
             {card.followBoxBody}
           </p>
         </div>

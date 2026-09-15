@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   ChevronDown,
@@ -53,14 +52,14 @@ const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['
           return (
             <li key={step.title} className="flex flex-col">
               <article
-                className={cn(
+                className={cx(
                   'flex items-start gap-3 rounded-lg border p-md shadow-[0_1px_0_var(--term-border)]',
                   t.border,
                 )}
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
                     t.chip,
                   )}
@@ -69,7 +68,7 @@ const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['
                 </span>
                 <div className="flex flex-col gap-0.5 min-w-0">
                   <h3
-                    className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}
+                    className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}
                   >
                     {step.title}
                   </h3>
@@ -130,17 +129,17 @@ const TokenColumn = ({
   const tokens = value.split(' ').filter(Boolean);
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-2 rounded-lg border p-md',
         t.border,
       )}
     >
-      <span className={cn('text-xxsm font-mono uppercase tracking-wider', t.text)}>{label}</span>
+      <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>{label}</span>
       <div className="flex flex-wrap items-center justify-center gap-1.5">
         {tokens.map((tok, idx) => (
           <span
             key={`${tok}-${idx}`}
-            className={cn(
+            className={cx(
               'inline-flex h-9 min-w-[2.25rem] items-center justify-center rounded-md border font-mono text-sm font-bold',
               t.fill.bg,
               t.fill.border,
@@ -167,12 +166,12 @@ const ArrowConnector = () => (
 
 const ResultColumn = ({ title, items }: { title: string; items: ReorderResultItem[] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-2 rounded-lg border border-dashed p-md',
       toneTokens.amber.border,
     )}
   >
-    <span className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.amber.text)}>
+    <span className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.amber.text)}>
       {title}
     </span>
     <ul className="flex flex-col gap-1.5">
@@ -182,18 +181,18 @@ const ResultColumn = ({ title, items }: { title: string; items: ReorderResultIte
         return (
           <li
             key={item.text}
-            className={cn('flex items-center gap-2 rounded-md border px-2 py-1', t.border)}
+            className={cx('flex items-center gap-2 rounded-md border px-2 py-1', t.border)}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-7 w-7 items-center justify-center rounded-md border',
                 t.chip,
               )}
             >
               <Icon className="h-3.5 w-3.5" />
             </span>
-            <code className={cn('font-mono text-xsm font-bold break-keep', t.text)}>
+            <code className={cx('font-mono text-xsm font-bold break-keep', t.text)}>
               {item.text}
             </code>
           </li>

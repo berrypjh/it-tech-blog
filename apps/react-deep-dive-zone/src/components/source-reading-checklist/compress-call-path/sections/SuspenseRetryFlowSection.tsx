@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Repeat, ScanSearch, ShieldQuestion, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -29,7 +28,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
         <div className="flex flex-col gap-md">
           {/* One-line summary */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md sm:p-lg',
               'border-cyan-300 bg-gradient-to-br from-cyan-50/80 via-white to-emerald-50/40',
               'dark:border-cyan-700/70 dark:from-cyan-950/40 dark:via-[var(--term-bg)] dark:to-emerald-950/30',
@@ -39,7 +38,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
             <div className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
                   'border border-cyan-300 bg-white text-cyan-700',
                   'dark:border-cyan-700/70 dark:bg-[var(--term-bg)] dark:text-cyan-200',
@@ -55,7 +54,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
 
           {/* Reading point */}
           <aside
-            className={cn(
+            className={cx(
               'rounded-xl border-2 p-md',
               'border-amber-200 bg-amber-50/40',
               'dark:border-amber-800/60 dark:bg-amber-950/20',
@@ -64,7 +63,7 @@ export const SuspenseRetryFlowSection = ({ content }: Props) => {
             <div className="flex items-start gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md',
                   'border border-amber-300 bg-white text-amber-700',
                   'dark:border-amber-700/70 dark:bg-[var(--term-bg)] dark:text-amber-200',

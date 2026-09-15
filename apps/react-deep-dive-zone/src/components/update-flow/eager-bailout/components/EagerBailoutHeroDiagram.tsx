@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Ban, CheckCircle2, Equal, GitCompare } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -72,14 +71,14 @@ const CompareCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-1.5 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
       )}
     >
       <div className="flex flex-col">
-        <span className={cn('font-mono text-[11px] font-bold uppercase tracking-wider', t.text)}>
+        <span className={cx('font-mono text-[11px] font-bold uppercase tracking-wider', t.text)}>
           {title}
         </span>
         {subtitle && (
@@ -87,7 +86,7 @@ const CompareCard = ({
         )}
       </div>
       <code
-        className={cn(
+        className={cx(
           'inline-flex w-fit items-center rounded-md border px-2 py-1 font-mono text-xsm font-bold',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
           t.text,
@@ -128,7 +127,7 @@ const ResultCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -136,7 +135,7 @@ const ResultCard = ({
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
             t.chip,
           )}
@@ -147,7 +146,7 @@ const ResultCard = ({
           {icon}
         </ToneIconBox>
       </header>
-      <h3 className={cn('text-sm font-bold leading-tight tracking-tight break-keep', t.text)}>
+      <h3 className={cx('text-sm font-bold leading-tight tracking-tight break-keep', t.text)}>
         {title}
       </h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>

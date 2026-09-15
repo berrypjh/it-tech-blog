@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Camera, Eye } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const BeforeMutationHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -76,7 +75,7 @@ const DomStep = ({ tone, label, code }: { tone: ToneKey; label: string; code: st
   return (
     <div className="flex flex-col gap-sm">
       <div className="flex items-center gap-sm" aria-hidden="true">
-        <span className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{label}</span>
+        <span className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{label}</span>
         <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
       </div>
       <CodePreviewPanel code={code} language="html" showWindowDots />
@@ -86,7 +85,7 @@ const DomStep = ({ tone, label, code }: { tone: ToneKey; label: string; code: st
 
 const SnapshotStep = ({ label }: { label: string }) => (
   <article
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all hover:-translate-y-0.5',
@@ -96,7 +95,7 @@ const SnapshotStep = ({ label }: { label: string }) => (
     <ToneIconBox tone="teal" size="sm">
       <Camera className="h-[18px] w-[18px]" aria-hidden="true" />
     </ToneIconBox>
-    <span className={cn('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}>
+    <span className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}>
       {label}
     </span>
   </article>
@@ -107,22 +106,22 @@ const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
   const t = toneTokens[tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
         'shadow-[0_2px_0_var(--term-border)]',
-        step.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
+        step.active ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
         {step.active ? (
           <Eye className="h-[18px] w-[18px]" aria-hidden="true" />
         ) : (
-          <span className={cn('block h-1.5 w-1.5 rounded-full', t.dot)} aria-hidden="true" />
+          <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} aria-hidden="true" />
         )}
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span
-          className={cn(
+          className={cx(
             'text-[11px] sm:text-xsm font-bold leading-tight break-keep',
             step.active ? t.text : 'text-[var(--term-fg)]',
           )}

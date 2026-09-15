@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Clock3, Cog, Database, Link2 } from 'lucide-react';
 
 import {
@@ -36,7 +35,7 @@ export const EnsureRootScheduledConnection = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'relative flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg transition-colors',
               'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
               axisCardBorder[step.accent],
@@ -45,7 +44,7 @@ export const EnsureRootScheduledConnection = ({ content }: Props) => (
             <header className="flex items-center justify-between gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-full text-[11px] font-mono font-bold tabular-nums text-white',
                   axisNumberBadge[step.accent],
                 )}
@@ -54,7 +53,7 @@ export const EnsureRootScheduledConnection = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   axisIconBox[step.accent],
                 )}
@@ -64,7 +63,7 @@ export const EnsureRootScheduledConnection = ({ content }: Props) => (
             </header>
 
             <h3
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold leading-tight break-keep',
                 axisTextStrong[step.accent],
               )}
@@ -76,7 +75,7 @@ export const EnsureRootScheduledConnection = ({ content }: Props) => (
               {step.body.map((line, j) => (
                 <li
                   key={line}
-                  className={cn(
+                  className={cx(
                     'text-[11px] sm:text-xsm leading-snug break-keep',
                     j === 0 ? 'font-mono text-[var(--term-fg)]' : 'text-[var(--term-muted)]',
                   )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2 } from 'lucide-react';
 
 import {
@@ -59,7 +58,7 @@ export const HooksEntryHero = ({ content }: Props) => (
 
       {/* Left: code card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           'transition-colors hover:border-[var(--term-accent)]',
@@ -76,7 +75,7 @@ export const HooksEntryHero = ({ content }: Props) => (
             <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
         </header>
-        <div className={cn('rounded-xl border bg-slate-950 px-md py-md', 'border-slate-800')}>
+        <div className={cx('rounded-xl border bg-slate-950 px-md py-md', 'border-slate-800')}>
           <div className="flex items-start gap-3 font-mono text-[12px] sm:text-[13px] leading-[1.7]">
             <span
               aria-hidden="true"

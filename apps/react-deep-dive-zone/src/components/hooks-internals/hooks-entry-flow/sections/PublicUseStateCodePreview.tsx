@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, ExternalLink, FileCode, FileSearch } from 'lucide-react';
 
 import type { HooksEntryFlowContent } from '../content';
@@ -104,7 +103,7 @@ export const PublicUseStateCodePreview = ({ content }: Props) => {
 
         {/* Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -156,7 +155,7 @@ export const PublicUseStateCodePreview = ({ content }: Props) => {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noreferrer noopener' : undefined}
-              className={cn(
+              className={cx(
                 'group flex items-center gap-3 rounded-2xl border bg-[var(--term-bg)] p-md',
                 'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
                 'transition-all hover:-translate-y-0.5 hover:border-sky-300/70 dark:hover:border-sky-700/70',

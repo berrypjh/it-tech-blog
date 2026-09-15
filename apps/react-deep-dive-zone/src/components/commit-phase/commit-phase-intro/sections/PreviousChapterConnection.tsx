@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -44,7 +43,7 @@ export const PreviousChapterConnection = ({ content }: Props) => (
 
       <div className="flex items-center justify-center py-2 md:py-0" aria-hidden="true">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-dashed',
             toneTokens.sky.fill.border,
             toneTokens.sky.text,
@@ -91,7 +90,7 @@ const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
   const t = toneTokens[item.tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border p-sm',
         t.border,
         'bg-[var(--term-surface)]',
@@ -102,7 +101,7 @@ const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
         <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex flex-col min-w-0">
-        <span className={cn('text-xsm font-bold leading-tight font-mono break-keep', t.text)}>
+        <span className={cx('text-xsm font-bold leading-tight font-mono break-keep', t.text)}>
           {item.label}
         </span>
         <span className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
@@ -117,7 +116,7 @@ const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightC
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center justify-center gap-sm rounded-lg border-2 border-dashed p-md sm:p-lg text-center',
         t.fill.border,
         t.fill.bg,
@@ -126,7 +125,7 @@ const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightC
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-lg border-2',
           t.fill.bg,
           t.fill.border,
@@ -135,10 +134,10 @@ const RightCard = ({ card }: { card: CommitPhaseIntroContent['previous']['rightC
       >
         <HelpCircle className="h-6 w-6" aria-hidden="true" />
       </span>
-      <p className={cn('text-sm sm:text-md font-bold leading-snug break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md font-bold leading-snug break-keep', t.fill.text)}>
         {card.question}
       </p>
-      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', t.text)}>{card.answer}</p>
+      <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', t.text)}>{card.answer}</p>
     </article>
   );
 };

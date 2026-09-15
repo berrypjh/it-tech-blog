@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Workflow } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -51,7 +50,7 @@ export const HostRootExample = ({ content }: Props) => (
 
 const StepCard = ({ step }: { step: FlowStep }) => (
   <article
-    className={cn(
+    className={cx(
       'rounded-xl border-2 p-sm sm:p-md',
       toneTokens[step.tone].chip,
       step.isEmphasis && 'shadow-[0_4px_16px_-8px_rgba(16,185,129,0.5)]',

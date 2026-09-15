@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { CheckCircleIcon, EyeIcon, EyeOffIcon } from '../icons';
@@ -63,7 +63,7 @@ export const ActivityModeSimulator = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -86,17 +86,17 @@ export const ActivityModeSimulator = ({ content }: Props) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActive(panel.mode)}
-                    className={cn(
+                    className={cx(
                       'group inline-flex items-center justify-between gap-2 rounded-xl border-2 px-3 py-2.5 text-left',
                       'transition-all motion-safe:hover:-translate-y-0.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
-                        ? cn(
+                        ? cx(
                             'text-white shadow-[0_3px_0_var(--term-border)]',
                             accent.solidBg,
                             'border-transparent',
                           )
-                        : cn(
+                        : cx(
                             'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',
                             'border-slate-200 dark:border-slate-700',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -125,11 +125,11 @@ export const ActivityModeSimulator = ({ content }: Props) => {
             return (
               <article
                 key={panel.mode}
-                className={cn(
+                className={cx(
                   'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
                   isActive
-                    ? cn(accent.borderStrong, accent.bg, 'shadow-[0_3px_0_var(--term-border)]')
-                    : cn(accent.border, 'bg-white dark:bg-[var(--term-bg)] opacity-70'),
+                    ? cx(accent.borderStrong, accent.bg, 'shadow-[0_3px_0_var(--term-border)]')
+                    : cx(accent.border, 'bg-white dark:bg-[var(--term-bg)] opacity-70'),
                   'transition-all',
                 )}
               >
@@ -137,14 +137,14 @@ export const ActivityModeSimulator = ({ content }: Props) => {
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-10 w-10 items-center justify-center rounded-xl border',
                         accent.iconChip,
                       )}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className={cn('text-sm font-bold break-keep', accent.text)}>
+                    <h3 className={cx('text-sm font-bold break-keep', accent.text)}>
                       {panel.title}
                     </h3>
                   </div>
@@ -178,7 +178,7 @@ export const ActivityModeSimulator = ({ content }: Props) => {
                     >
                       <CheckCircleIcon
                         aria-hidden="true"
-                        className={cn('mt-0.5 h-3.5 w-3.5 shrink-0', accent.text)}
+                        className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', accent.text)}
                       />
                       <span>{item}</span>
                     </li>

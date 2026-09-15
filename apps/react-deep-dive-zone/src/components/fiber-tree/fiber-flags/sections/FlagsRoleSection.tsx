@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Anchor, Eye, Flag, Move, Pencil } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -27,7 +26,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         toneTokens.emerald.border,
         'shadow-[0_2px_0_var(--term-border)]',
@@ -36,7 +35,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
       <header className="flex items-center gap-sm">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-12 h-12 rounded-xl border',
             EFFECT_NEUTRAL,
             toneTokens.emerald.text,
@@ -46,7 +45,7 @@ export const FlagsRoleSection = ({ content }: Props) => (
         </span>
         <div className="flex flex-col min-w-0">
           <code
-            className={cn('font-mono text-md font-bold tracking-tight', toneTokens.emerald.text)}
+            className={cx('font-mono text-md font-bold tracking-tight', toneTokens.emerald.text)}
           >
             {content.mainTitle}
           </code>
@@ -71,7 +70,7 @@ const MiniCard = ({ card }: { card: FlagMiniCard }) => {
   const Icon = iconMap[card.id];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -80,7 +79,7 @@ const MiniCard = ({ card }: { card: FlagMiniCard }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-10 h-10 rounded-lg border',
           EFFECT_NEUTRAL,
           flagText[card.id],
@@ -88,7 +87,7 @@ const MiniCard = ({ card }: { card: FlagMiniCard }) => {
       >
         <Icon className="h-4 w-4" />
       </span>
-      <code className={cn('font-mono text-xsm font-bold tracking-tight', flagText[card.id])}>
+      <code className={cx('font-mono text-xsm font-bold tracking-tight', flagText[card.id])}>
         {card.label}
       </code>
       <span className="text-[11.5px] font-medium text-[var(--term-muted)] break-keep">

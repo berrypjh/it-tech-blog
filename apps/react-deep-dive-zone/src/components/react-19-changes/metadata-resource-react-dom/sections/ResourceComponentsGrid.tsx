@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MetadataResourceContent } from '../content';
 import { SparklesIcon } from '../icons';
@@ -26,7 +26,7 @@ export const ResourceComponentsGrid = ({ content }: Props) => (
         return (
           <li key={card.tagName} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 tone.border,
@@ -38,13 +38,13 @@ export const ResourceComponentsGrid = ({ content }: Props) => (
               {/* top accent line */}
               <span
                 aria-hidden="true"
-                className={cn('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
+                className={cx('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
               />
 
               <div className="flex items-start justify-between gap-2 pt-1">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                     tone.iconChip,
                   )}
@@ -53,12 +53,12 @@ export const ResourceComponentsGrid = ({ content }: Props) => (
                 </span>
               </div>
 
-              <h3 className={cn('text-sm sm:text-md font-mono font-bold break-all', tone.text)}>
+              <h3 className={cx('text-sm sm:text-md font-mono font-bold break-all', tone.text)}>
                 {card.tagName}
               </h3>
 
               <p
-                className={cn(
+                className={cx(
                   'inline-flex w-fit items-center rounded-md border px-1.5 py-0.5',
                   tone.chip,
                   'font-mono text-[10px] font-bold uppercase tracking-wider',
@@ -78,7 +78,7 @@ export const ResourceComponentsGrid = ({ content }: Props) => (
 
     {/* Info bar */}
     <div
-      className={cn(
+      className={cx(
         'mt-md flex items-start gap-2 rounded-xl border-2 px-3 py-3',
         'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
         'shadow-[0_2px_0_var(--term-border)]',

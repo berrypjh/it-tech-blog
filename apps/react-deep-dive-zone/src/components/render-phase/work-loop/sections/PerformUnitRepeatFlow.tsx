@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, RotateCw, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -51,15 +50,15 @@ const StepCard = ({ step, highlight }: { step: CommonFlowStep; highlight: boolea
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)] gap-md items-center rounded-lg border bg-[var(--term-bg)] p-md',
-        highlight ? cn('border-2', t.border) : t.border,
+        highlight ? cx('border-2', t.border) : t.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-11 w-11 items-center justify-center rounded-md border',
           t.chip,
         )}
@@ -67,7 +66,7 @@ const StepCard = ({ step, highlight }: { step: CommonFlowStep; highlight: boolea
         <RotateCw className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
           {step.title}
         </h3>
         <p className="text-xsm sm:text-sm leading-snug text-[var(--term-muted)] break-keep">

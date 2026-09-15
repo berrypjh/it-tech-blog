@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Brackets, CheckCircle2, Clock, Terminal } from 'lucide-react';
 
 import type { ExperimentKey, MismatchDetectRecoverContent } from '../content';
@@ -42,7 +41,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
       <SectionHeader id="experiment-heading" number={content.number} title={content.title} />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,3fr)_minmax(0,5fr)_minmax(0,4fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -63,7 +62,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.key)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-2xl border-2 p-md transition-all',
                       'flex items-start gap-2.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -74,7 +73,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         tone.iconChip,
                       )}
@@ -83,7 +82,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                     </span>
                     <span className="flex flex-col gap-0 min-w-0 flex-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-xsm font-bold break-keep',
                           isActive ? tone.text : 'text-[var(--term-fg)]',
                         )}
@@ -97,7 +96,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                     {isActive && (
                       <CheckCircle2
                         aria-hidden="true"
-                        className={cn('h-4 w-4 shrink-0', tone.text)}
+                        className={cx('h-4 w-4 shrink-0', tone.text)}
                       />
                     )}
                   </button>
@@ -117,7 +116,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
               return (
                 <li key={step.title} className="flex flex-col gap-1">
                   <div
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-2.5 rounded-xl border-2 p-2.5',
                       accent.border,
                       accent.bg,
@@ -125,7 +124,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] font-bold tabular-nums text-white',
                         accent.solidBg,
                       )}
@@ -133,7 +132,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                       {i + 1}
                     </span>
                     <span className="flex flex-col gap-0 min-w-0">
-                      <span className={cn('text-xsm font-bold break-keep', accent.text)}>
+                      <span className={cx('text-xsm font-bold break-keep', accent.text)}>
                         {step.title}
                       </span>
                       <span className="text-[11px] text-[var(--term-muted)] break-keep">
@@ -165,7 +164,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
             <h3 className="text-sm font-bold text-[var(--term-fg)]">{content.logTitle}</h3>
           </header>
           <pre
-            className={cn(
+            className={cx(
               'overflow-x-auto rounded-2xl border-2 p-3 text-[11px] leading-[1.7] font-mono',
               'border-teal-200/80 bg-slate-950 text-teal-100',
               'dark:border-teal-800/60',
@@ -178,7 +177,7 @@ export const MismatchExperimentSection = ({ content }: Props) => {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       line.startsWith('[Hydration]')
                         ? 'text-rose-300 font-bold'
                         : line.includes('onRecoverableError')

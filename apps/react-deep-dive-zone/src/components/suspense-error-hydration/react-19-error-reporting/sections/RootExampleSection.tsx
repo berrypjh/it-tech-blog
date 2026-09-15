@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Atom, BellRing, Globe, Layers, Server, SignalHigh, Zap } from 'lucide-react';
 
 import type { FlowStep, React19ErrorReportingContent } from '../content';
@@ -71,7 +70,7 @@ const renderStepContent = (step: FlowStep) => {
           return (
             <li
               key={line}
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 w-fit',
                 'text-[11px] font-mono font-bold',
                 accent.chip,
@@ -79,7 +78,7 @@ const renderStepContent = (step: FlowStep) => {
             >
               <span
                 aria-hidden="true"
-                className={cn('block h-1.5 w-1.5 rounded-full', accent.solidBg)}
+                className={cx('block h-1.5 w-1.5 rounded-full', accent.solidBg)}
               />
               {line}
             </li>
@@ -122,7 +121,7 @@ export const RootExampleSection = ({ content, note }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-stretch">
       {/* code */}
       <article
-        className={cn(
+        className={cx(
           'overflow-hidden rounded-2xl border-2 bg-slate-950',
           'border-slate-800 shadow-[0_4px_0_var(--term-border)]',
           'transition-shadow motion-safe:hover:shadow-[0_6px_0_var(--term-border)]',
@@ -133,7 +132,7 @@ export const RootExampleSection = ({ content, note }: Props) => (
 
       {/* flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -147,10 +146,10 @@ export const RootExampleSection = ({ content, note }: Props) => (
             const isLast = i === content.steps.length - 1;
             return (
               <li key={step.title} className="flex flex-col gap-1">
-                <div className={cn('flex items-start gap-3 rounded-xl border-2 p-3', style.border)}>
+                <div className={cx('flex items-start gap-3 rounded-xl border-2 p-3', style.border)}>
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                       style.iconChip,
                     )}
@@ -176,7 +175,7 @@ export const RootExampleSection = ({ content, note }: Props) => (
         </ol>
         {note && (
           <p
-            className={cn(
+            className={cx(
               'mt-auto inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1',
               'text-[11px] font-mono font-bold',
               'border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200',

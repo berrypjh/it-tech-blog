@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Box, Gauge, Layers, Link2, MessageCircle, Send, Settings, Zap } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -48,7 +47,7 @@ export const React19HooksHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -71,7 +70,7 @@ export const React19HooksHeroDiagram = ({ content, className }: Props) => {
         </header>
 
         <section
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -112,7 +111,7 @@ const FoundationCard = ({ item }: { item: FoundationItem }) => {
         <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cn('font-mono text-[11px] font-bold break-all', t.text)}>
+        <code className={cx('font-mono text-[11px] font-bold break-all', t.text)}>
           {item.title}
         </code>
         <span className="text-[10px] leading-relaxed text-[var(--term-muted)] break-keep">
@@ -129,7 +128,7 @@ const ApiPillCard = ({ api }: { api: ApiHero }) => {
   const Icon = apiIcon[api.key];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -140,7 +139,7 @@ const ApiPillCard = ({ api }: { api: ApiHero }) => {
         <Icon className="h-[18px] w-[18px]" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cn('font-mono text-xsm font-bold break-all', t.text)}>{api.title}</code>
+        <code className={cx('font-mono text-xsm font-bold break-all', t.text)}>{api.title}</code>
         <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
           {api.shortDesc}
         </p>

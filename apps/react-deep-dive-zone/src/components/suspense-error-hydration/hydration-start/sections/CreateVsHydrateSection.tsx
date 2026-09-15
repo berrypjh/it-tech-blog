@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, PlugZap } from 'lucide-react';
 
 import type { HydrationStartContent } from '../content';
@@ -13,7 +12,7 @@ export const CreateVsHydrateSection = ({ content }: Props) => (
     <SectionHeader id="compare-heading" number={content.number} title={content.title} />
 
     <div
-      className={cn(
+      className={cx(
         'grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch',
         'rounded-3xl border-2 p-md sm:p-lg',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -39,7 +38,7 @@ export const CreateVsHydrateSection = ({ content }: Props) => (
             {content.createRoot.domLabel}
           </span>
           <pre
-            className={cn(
+            className={cx(
               'overflow-x-auto rounded-lg border-2 border-dashed border-blue-300 bg-blue-50/40 px-3 py-2',
               'dark:border-blue-700 dark:bg-blue-950/20',
               'text-[11px] font-mono text-blue-800 dark:text-blue-100 break-keep',
@@ -81,7 +80,7 @@ export const CreateVsHydrateSection = ({ content }: Props) => (
             {content.hydrateRoot.domLabel}
           </span>
           <pre
-            className={cn(
+            className={cx(
               'overflow-x-auto rounded-lg border-2 border-dashed border-teal-300 bg-teal-50/40 px-3 py-2',
               'dark:border-teal-700 dark:bg-teal-950/20',
               'text-[11px] font-mono text-teal-800 dark:text-teal-100 break-keep',

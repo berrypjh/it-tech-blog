@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Anchor,
   Box,
@@ -64,7 +63,7 @@ export const EightStepLearningRoadmap = ({ content }: Props) => {
                   {row.files.map((f) => (
                     <li key={f}>
                       <code
-                        className={cn(
+                        className={cx(
                           'inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[10px] font-mono font-bold break-all',
                           stepChip,
                           tone,

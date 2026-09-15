@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Braces, CheckCircle2, Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -32,7 +31,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
 
         {/* Center arrow */}
         <div className="flex lg:flex-col items-center justify-center gap-2 py-2">
-          <span className={cn('text-xxsm font-mono uppercase tracking-wider text-center', t.text)}>
+          <span className={cx('text-xxsm font-mono uppercase tracking-wider text-center', t.text)}>
             {content.arrowLabel}
           </span>
           <span
@@ -45,7 +44,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
 
         {/* Right: nextChildren */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-lg border p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             t.border,
@@ -55,11 +54,11 @@ export const NextChildrenExplanation = ({ content }: Props) => {
             <ToneIconBox tone="violet" size="sm">
               <Code2 className="h-4 w-4" aria-hidden="true" />
             </ToneIconBox>
-            <code className={cn('font-mono text-sm sm:text-md font-bold leading-tight', t.text)}>
+            <code className={cx('font-mono text-sm sm:text-md font-bold leading-tight', t.text)}>
               {content.rightTitle}
             </code>
           </header>
-          <p className={cn('text-xsm sm:text-sm leading-relaxed font-bold break-keep', t.text)}>
+          <p className={cx('text-xsm sm:text-sm leading-relaxed font-bold break-keep', t.text)}>
             {content.rightDescription}
           </p>
           <ul className="flex flex-col gap-1.5">
@@ -70,7 +69,7 @@ export const NextChildrenExplanation = ({ content }: Props) => {
               >
                 <CheckCircle2
                   aria-hidden="true"
-                  className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
+                  className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)}
                 />
                 <span>{item}</span>
               </li>

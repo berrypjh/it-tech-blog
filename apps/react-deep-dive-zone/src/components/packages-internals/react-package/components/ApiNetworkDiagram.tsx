@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Box,
   Code,
@@ -50,7 +49,7 @@ export const ApiNetworkDiagram = ({ hero, className }: Props) => {
       gradient="radial-gradient(circle at 50% 50%, rgba(251,191,36,0.14), transparent 55%)"
     >
       <div
-        className={cn(
+        className={cx(
           'relative grid items-center gap-sm',
           'grid-cols-1 @xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]',
         )}
@@ -100,7 +99,7 @@ type CenterReactCardProps = { center: ReactPackageContent['hero']['centerCard'] 
 
 const CenterReactCard = ({ center }: CenterReactCardProps) => (
   <div
-    className={cn(
+    className={cx(
       'relative flex flex-col items-center justify-center gap-1 rounded-2xl border',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
       'shadow-[0_3px_0_var(--term-border)] px-md py-md sm:px-lg sm:py-lg',
@@ -109,7 +108,7 @@ const CenterReactCard = ({ center }: CenterReactCardProps) => (
   >
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'absolute inset-0 -z-0 opacity-70 rounded-2xl',
         'bg-[radial-gradient(circle_at_50%_45%,rgba(251,191,36,0.18),transparent_60%)]',
       )}
@@ -132,7 +131,7 @@ const TokenCard = ({ token }: TokenCardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex w-full flex-col gap-1 rounded-lg border p-2.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -143,7 +142,7 @@ const TokenCard = ({ token }: TokenCardProps) => {
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'text-[11px] font-bold font-mono tracking-tight truncate min-w-0',
             tone.text,
           )}

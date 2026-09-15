@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Compass,
   Hourglass,
@@ -67,7 +66,7 @@ export const RecoveryModelHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -112,7 +111,7 @@ const InputCard = ({ card }: { card: HeroInputCard }) => {
   const Icon = inputIcon[card.domain];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-1 rounded-xl border bg-[var(--term-bg)] p-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -122,7 +121,7 @@ const InputCard = ({ card }: { card: HeroInputCard }) => {
       <ToneIconBox tone={tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <span className={cn('text-[11px] font-mono font-bold break-keep', t.text)}>{card.title}</span>
+      <span className={cx('text-[11px] font-mono font-bold break-keep', t.text)}>{card.title}</span>
       <span className="text-[10px] text-[var(--term-muted)] break-keep">{card.caption}</span>
     </article>
   );
@@ -134,7 +133,7 @@ const OutputCard = ({ card }: { card: HeroOutputCard }) => {
   const Icon = outputIcon[card.domain];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-1 rounded-xl border bg-[var(--term-bg)] p-2.5 text-center',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -144,14 +143,14 @@ const OutputCard = ({ card }: { card: HeroOutputCard }) => {
       <ToneIconBox tone={tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <span className={cn('text-xsm font-bold break-keep', t.text)}>{card.title}</span>
+      <span className={cx('text-xsm font-bold break-keep', t.text)}>{card.title}</span>
     </article>
   );
 };
 
 const CentralCard = ({ central }: { central: RecoveryModelOverviewContent['hero']['central'] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col items-center gap-2 rounded-xl border bg-[var(--term-bg)] p-md text-center',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}

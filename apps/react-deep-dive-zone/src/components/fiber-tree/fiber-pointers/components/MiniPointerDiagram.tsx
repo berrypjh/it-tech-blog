@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PointerKind } from '../content';
@@ -20,7 +20,7 @@ export const MiniPointerDiagram = ({ kind }: Props) => {
 /** 중립(slate) 노드 + 톤 노드 공용 칩. */
 const NodePill = ({ children, tone }: { children: React.ReactNode; tone?: ToneKey }) => (
   <span
-    className={cn(
+    className={cx(
       'inline-flex items-center rounded-lg border px-2 py-1 font-mono text-xxsm font-bold',
       tone
         ? toneTokens[tone].chip
@@ -37,12 +37,12 @@ const ChildDiagram = () => (
     <div className="flex flex-col items-center">
       <span
         aria-hidden="true"
-        className={cn('block w-px h-2 border-l-2', toneTokens.emerald.border)}
+        className={cx('block w-px h-2 border-l-2', toneTokens.emerald.border)}
       />
-      <span className={cn('text-[10px] font-mono font-bold', toneTokens.emerald.text)}>child</span>
+      <span className={cx('text-[10px] font-mono font-bold', toneTokens.emerald.text)}>child</span>
       <span
         aria-hidden="true"
-        className={cn('block w-px h-2 border-l-2', toneTokens.emerald.border)}
+        className={cx('block w-px h-2 border-l-2', toneTokens.emerald.border)}
       />
     </div>
     <NodePill tone="emerald">Child</NodePill>
@@ -63,9 +63,9 @@ const SiblingArrow = () => (
   <span className="flex items-center gap-0.5">
     <span
       aria-hidden="true"
-      className={cn('block h-px w-3 border-t-2', toneTokens.violet.border)}
+      className={cx('block h-px w-3 border-t-2', toneTokens.violet.border)}
     />
-    <span aria-hidden="true" className={cn('text-xsm leading-none', toneTokens.violet.text)}>
+    <span aria-hidden="true" className={cx('text-xsm leading-none', toneTokens.violet.text)}>
       →
     </span>
   </span>
@@ -77,12 +77,12 @@ const ReturnDiagram = () => (
     <div className="flex flex-col items-center">
       <span
         aria-hidden="true"
-        className={cn('block w-px h-2 border-l-2 border-dashed', toneTokens.sky.border)}
+        className={cx('block w-px h-2 border-l-2 border-dashed', toneTokens.sky.border)}
       />
-      <span className={cn('text-[10px] font-mono font-bold', toneTokens.sky.text)}>return</span>
+      <span className={cx('text-[10px] font-mono font-bold', toneTokens.sky.text)}>return</span>
       <span
         aria-hidden="true"
-        className={cn('block w-px h-2 border-l-2 border-dashed', toneTokens.sky.border)}
+        className={cx('block w-px h-2 border-l-2 border-dashed', toneTokens.sky.border)}
       />
     </div>
     <NodePill tone="sky">Parent</NodePill>

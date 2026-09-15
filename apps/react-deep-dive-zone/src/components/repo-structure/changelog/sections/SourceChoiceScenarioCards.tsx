@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, GitPullRequest, History, type LucideIcon, Sparkles, Tag } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -39,7 +38,7 @@ export const SourceChoiceScenarioCards = ({ content }: Props) => {
                 result={card.resultBadge}
                 lead={
                   <ArrowRight
-                    className={cn(
+                    className={cx(
                       'h-5 w-5 my-2 rotate-90 transition-transform group-hover:translate-y-0.5',
                       toneTokens[card.resultTone].text,
                     )}
@@ -63,14 +62,14 @@ const ScenarioFlow = ({ flow, resultTone }: FlowProps) => (
     {flow.map((step, i) => (
       <li key={i} className="flex flex-col gap-1">
         <div
-          className={cn(
+          className={cx(
             'flex items-center gap-2 rounded-md border px-2 py-1.5 text-xsm text-left',
             'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
           )}
         >
           <span
             aria-hidden="true"
-            className={cn('inline-block w-1 h-1 rounded-full shrink-0', toneTokens[resultTone].dot)}
+            className={cx('inline-block w-1 h-1 rounded-full shrink-0', toneTokens[resultTone].dot)}
           />
           <div className="flex flex-col min-w-0">
             <span className="font-bold font-mono text-xsm break-keep">{step.label}</span>

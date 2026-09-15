@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   CheckCircle2,
   Clock3,
@@ -39,7 +38,7 @@ export const SchedulerFullFlowHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -101,7 +100,7 @@ const SourceChip = ({ id, label }: { id: ScenarioId; label: string }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full items-center gap-2 rounded-xl border bg-[var(--term-bg)] px-sm py-2',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -111,7 +110,7 @@ const SourceChip = ({ id, label }: { id: ScenarioId; label: string }) => {
       <ToneIconBox tone={tone} size="sm">
         <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <span className={cn('min-w-0 text-xsm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('min-w-0 text-xsm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
     </article>
@@ -120,7 +119,7 @@ const SourceChip = ({ id, label }: { id: ScenarioId; label: string }) => {
 
 const MergeNote = ({ label }: { label: string }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -138,7 +137,7 @@ const PipelineStep = ({ index, label, tone }: { index: number; label: string; to
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -148,7 +147,7 @@ const PipelineStep = ({ index, label, tone }: { index: number; label: string; to
       <ToneIconBox tone={tone} size="sm">
         <span className="font-mono text-sm font-bold tabular-nums">{index}</span>
       </ToneIconBox>
-      <span className={cn('min-w-0 text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('min-w-0 text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       <Workflow
@@ -163,7 +162,7 @@ const CommitStep = ({ label }: { label: string }) => {
   const t = toneTokens['emerald'];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border px-md py-3',
         'bg-[var(--term-bg)] shadow-[0_3px_0_var(--term-border)]',
         t.chip,
@@ -173,7 +172,7 @@ const CommitStep = ({ label }: { label: string }) => {
       <ToneIconBox tone="emerald" size="sm">
         <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('text-sm font-bold uppercase tracking-wider font-mono', t.text)}>
+      <span className={cx('text-sm font-bold uppercase tracking-wider font-mono', t.text)}>
         {label}
       </span>
     </article>

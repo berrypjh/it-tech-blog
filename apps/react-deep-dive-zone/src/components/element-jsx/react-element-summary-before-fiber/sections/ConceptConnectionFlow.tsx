@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, CheckCircle2, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -24,7 +23,7 @@ export const ConceptConnectionFlow = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -64,7 +63,7 @@ const StepCard = ({ step }: { step: AnswerStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex min-w-0 flex-1 flex-col gap-md rounded-2xl border p-md transition-all hover:-translate-y-0.5',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -72,7 +71,7 @@ const StepCard = ({ step }: { step: AnswerStep }) => {
     >
       <header className="flex items-center justify-between gap-sm">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono text-sm font-bold tabular-nums',
             t.chip,
           )}
@@ -80,7 +79,7 @@ const StepCard = ({ step }: { step: AnswerStep }) => {
           {step.number}
         </span>
       </header>
-      <h3 className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <h3 className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {step.title}
       </h3>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{step.body}</p>

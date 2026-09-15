@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AlertTriangle, Link2, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -39,7 +38,7 @@ const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md',
         'shadow-[0_2px_0_var(--term-border)]',
         'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -50,7 +49,7 @@ const ReasonCardItem = ({ card }: { card: ReasonCard }) => {
         <Icon className="h-6 w-6" />
       </ToneIconBox>
       <h3
-        className={cn(
+        className={cx(
           'text-xsm sm:text-sm font-bold tracking-tight leading-snug break-keep',
           toneTokens[card.tone].text,
         )}

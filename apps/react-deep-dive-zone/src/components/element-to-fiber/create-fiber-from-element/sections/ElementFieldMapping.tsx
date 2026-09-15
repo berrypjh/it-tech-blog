@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Inspect, KeyRound, ListTree, Package } from 'lucide-react';
 
 import { MappingRowCard } from '../../../shared/grid';
@@ -51,7 +50,7 @@ const Row = ({ row }: { row: MappingRow }) => {
       }
       left={
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border px-2 py-1',
             'font-mono text-sm font-bold tracking-tight break-all',
             toneTokens.sky.chip,

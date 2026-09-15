@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Flag, ListTree, RefreshCw, Sparkles, Zap } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -39,7 +38,7 @@ export const FiberIsNotJustNode = ({ content }: Props) => (
         return (
           <ToneCardItem key={reason.id} tone={reason.tone} icon={<Icon className="h-5 w-5" />}>
             <h3
-              className={cn(
+              className={cx(
                 'text-sm font-bold tracking-tight break-keep',
                 toneTokens[reason.tone].text,
               )}

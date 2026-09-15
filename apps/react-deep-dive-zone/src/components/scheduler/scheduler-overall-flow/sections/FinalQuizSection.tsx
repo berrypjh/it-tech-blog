@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, Eye, EyeOff, HelpCircle, Lightbulb, Trophy } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -34,7 +33,7 @@ export const FinalQuizSection = ({ content }: Props) => {
           return (
             <li key={item.number} className="h-full">
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
                   'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                   'transition-all motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -43,7 +42,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                 <header className="flex items-center justify-between gap-2">
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-xl',
                       'bg-blue-600 text-white font-mono text-xsm font-bold tabular-nums dark:bg-blue-500',
                     )}
@@ -65,7 +64,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                   onClick={() => toggle(item.number)}
                   aria-expanded={isOpen}
                   aria-controls={`quiz-answer-${item.number}`}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center gap-1.5 self-start rounded-full px-3.5 py-1.5',
                     'text-xsm font-bold border-2',
                     'border-blue-300 bg-blue-50 text-blue-800 hover:bg-blue-100',
@@ -78,7 +77,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                   {labelText}
                   <ChevronRight
                     aria-hidden="true"
-                    className={cn('h-3.5 w-3.5 transition-transform', isOpen ? 'rotate-90' : '')}
+                    className={cx('h-3.5 w-3.5 transition-transform', isOpen ? 'rotate-90' : '')}
                   />
                 </button>
 
@@ -89,7 +88,7 @@ export const FinalQuizSection = ({ content }: Props) => {
                   hidden={!isOpen}
                 >
                   <article
-                    className={cn(
+                    className={cx(
                       'flex flex-col gap-2 rounded-xl border-2 p-3',
                       'border-emerald-300/80 bg-emerald-50/80 dark:border-emerald-700/60 dark:bg-emerald-950/30',
                     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -51,9 +50,9 @@ export const RenderRefRiskSection = ({ content }: Props) => (
 const Arrow = () => {
   const t = toneTokens.blue;
   return (
-    <div aria-hidden="true" className={cn('flex items-center justify-center py-1 lg:py-0', t.text)}>
+    <div aria-hidden="true" className={cx('flex items-center justify-center py-1 lg:py-0', t.text)}>
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -92,7 +91,7 @@ const ZoneCard = ({
   const n = toneTokens[noteTone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -102,8 +101,8 @@ const ZoneCard = ({
       <header className="flex items-center gap-2">
         <ToneIconBox tone={tone}>{icon}</ToneIconBox>
         <div className="flex flex-col">
-          <h3 className={cn('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
-          <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold', t.fill.text)}>{title}</h3>
+          <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
             {subtitle}
           </span>
         </div>
@@ -115,7 +114,7 @@ const ZoneCard = ({
             key={item.text}
             className="flex items-start gap-2 text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep"
           >
-            <span aria-hidden="true" className={cn('mt-0.5 shrink-0', t.text)}>
+            <span aria-hidden="true" className={cx('mt-0.5 shrink-0', t.text)}>
               {itemIcon}
             </span>
             <span>{item.text}</span>
@@ -124,16 +123,16 @@ const ZoneCard = ({
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-auto flex items-start gap-sm rounded-md border-2 p-sm',
           n.fill.border,
           n.fill.bg,
         )}
       >
-        <span aria-hidden="true" className={cn('mt-0.5 shrink-0', n.fill.text)}>
+        <span aria-hidden="true" className={cx('mt-0.5 shrink-0', n.fill.text)}>
           {noteIcon}
         </span>
-        <p className={cn('text-[11px] sm:text-xsm leading-snug font-bold break-keep', n.fill.text)}>
+        <p className={cx('text-[11px] sm:text-xsm leading-snug font-bold break-keep', n.fill.text)}>
           {note}
         </p>
       </aside>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CheckCircle2,
@@ -54,7 +53,7 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
   const t = facetFor(isReuse ? 'teal' : 'rose');
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -62,16 +61,16 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <div className="flex flex-col gap-0.5 min-w-0">
-          <span className={cn('text-xxsm font-mono uppercase tracking-wider', t.text)}>
+          <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>
             {side.header}
           </span>
-          <span className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+          <span className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
             {side.subtitle}
           </span>
         </div>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -94,7 +93,7 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
       <div className="flex items-center justify-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1 text-xxsm font-mono uppercase tracking-wider',
             t.text,
           )}
@@ -118,7 +117,7 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
         t={t}
       />
 
-      <p className={cn('mt-auto text-xsm sm:text-sm leading-relaxed font-bold break-keep', t.text)}>
+      <p className={cx('mt-auto text-xsm sm:text-sm leading-relaxed font-bold break-keep', t.text)}>
         {side.bottom}
       </p>
     </article>
@@ -139,7 +138,7 @@ const RenderCard = ({
   t: SemanticFacet;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-1 rounded-md border bg-[var(--term-bg)] p-sm sm:p-md',
       t.border,
     )}
@@ -151,7 +150,7 @@ const RenderCard = ({
       {code}
     </code>
     <div className="flex flex-wrap items-baseline gap-2">
-      <code className={cn('font-mono text-md sm:text-lg font-bold', t.text)}>{count}</code>
+      <code className={cx('font-mono text-md sm:text-lg font-bold', t.text)}>{count}</code>
       {note && (
         <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
           {note}

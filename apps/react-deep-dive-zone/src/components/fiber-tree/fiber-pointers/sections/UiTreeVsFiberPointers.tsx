@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, ListTree } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -22,7 +21,7 @@ export const UiTreeVsFiberPointers = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-md lg:gap-lg items-stretch">
       {/* Left: normal UI tree (neutral) */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -55,7 +54,7 @@ export const UiTreeVsFiberPointers = ({ content }: Props) => (
 
       {/* Right: fiber pointer structure (emerald) */}
       <article
-        className={cn(
+        className={cx(
           'rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         )}

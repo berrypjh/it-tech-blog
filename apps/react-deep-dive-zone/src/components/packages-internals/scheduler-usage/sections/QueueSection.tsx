@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   CheckCircle2,
@@ -58,7 +57,7 @@ export const QueueSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border p-md sm:p-lg space-y-md',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -69,7 +68,7 @@ export const QueueSection = ({ content }: Props) => {
             type="button"
             onClick={() => setCursor(0)}
             disabled={running}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-xsm font-bold transition-all',
               toneTokens.violet.chip,
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -96,7 +95,7 @@ export const QueueSection = ({ content }: Props) => {
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center">
           <div className="space-y-2">
             <p
-              className={cn(
+              className={cx(
                 'px-1 text-xsm font-bold tracking-tight break-keep',
                 toneTokens.sky.text,
               )}
@@ -109,7 +108,7 @@ export const QueueSection = ({ content }: Props) => {
                 return (
                   <li
                     key={task.label}
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-2 rounded-lg border px-3 py-2.5 transition-all duration-300',
                       st === 'active' &&
                         'border-[var(--term-accent)] bg-[var(--term-surface)] shadow-[inset_3px_0_0_0_var(--term-accent)]',
@@ -119,7 +118,7 @@ export const QueueSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'shrink-0 transition-colors duration-300',
                         st === 'done' ? 'text-[var(--term-accent)]' : toneTokens.sky.text,
                       )}
@@ -128,7 +127,7 @@ export const QueueSection = ({ content }: Props) => {
                         <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                       ) : (
                         <ArrowRight
-                          className={cn(
+                          className={cx(
                             'h-4 w-4 transition-transform duration-300',
                             st === 'active' && 'translate-x-0.5',
                           )}
@@ -137,7 +136,7 @@ export const QueueSection = ({ content }: Props) => {
                       )}
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'min-w-0 text-xsm leading-snug break-keep transition-colors duration-300',
                         st === 'done' ? 'text-[var(--term-dim)]' : 'text-[var(--term-fg)]',
                       )}
@@ -153,7 +152,7 @@ export const QueueSection = ({ content }: Props) => {
           {/* scheduler 커넥터 */}
           <div
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'flex items-center justify-center gap-1.5 py-1 lg:flex-col',
               toneTokens.violet.text,
             )}
@@ -164,7 +163,7 @@ export const QueueSection = ({ content }: Props) => {
 
           <div className="space-y-2">
             <p
-              className={cn(
+              className={cx(
                 'px-1 text-xsm font-bold tracking-tight break-keep',
                 toneTokens.violet.text,
               )}
@@ -178,7 +177,7 @@ export const QueueSection = ({ content }: Props) => {
                 return (
                   <li
                     key={task.label}
-                    className={cn(
+                    className={cx(
                       'flex items-start gap-2.5 rounded-lg border px-3 py-2.5 transition-all duration-300',
                       !revealed && 'border-dashed border-[var(--term-border)]',
                       revealed && !active && 'border-[var(--term-border)] bg-[var(--term-surface)]',
@@ -191,10 +190,10 @@ export const QueueSection = ({ content }: Props) => {
                       style={
                         active ? { animation: 'qd-pulse 1.2s ease-in-out infinite' } : undefined
                       }
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-mono text-xsm font-bold border-2 transition-all duration-300',
                         revealed
-                          ? cn(
+                          ? cx(
                               'border-[var(--term-border)] bg-[var(--term-bg)]',
                               toneTokens.violet.text,
                               active &&
@@ -237,7 +236,7 @@ export const QueueSection = ({ content }: Props) => {
             {results.map((r) => (
               <li
                 key={r}
-                className={cn(
+                className={cx(
                   'flex items-center gap-2 rounded-lg border px-3 py-2 text-xsm leading-snug break-keep transition-all duration-300 sm:flex-1',
                   completed
                     ? 'border-[var(--term-accent)] bg-[var(--term-surface)] text-[var(--term-fg)]'
@@ -246,7 +245,7 @@ export const QueueSection = ({ content }: Props) => {
               >
                 <CheckCircle2
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'h-4 w-4 shrink-0 transition-all duration-300',
                     completed
                       ? 'text-[var(--term-accent)] scale-110'

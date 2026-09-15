@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -29,7 +28,7 @@ export const RootFilesSummary = ({ content }: Props) => {
             badge={card.badge}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-md sm:text-lg font-bold tracking-tight font-mono',
                 toneTokens[card.tone].text,
               )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Lightbulb } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -28,7 +27,7 @@ export const ElementFiberMappingTable = ({ content }: Props) => (
       columnWidths={['24%', '40%', '36%']}
       rows={content.rows.map((row) => ({
         label: (
-          <code className={cn('font-mono font-bold break-all', toneTokens.emerald.text)}>
+          <code className={cx('font-mono font-bold break-all', toneTokens.emerald.text)}>
             {row.element}
           </code>
         ),
@@ -39,7 +38,7 @@ export const ElementFiberMappingTable = ({ content }: Props) => (
               className="h-3.5 w-3.5 shrink-0 text-[var(--term-muted)]"
               aria-hidden="true"
             />
-            <code className={cn('font-mono font-bold break-all', toneTokens.violet.text)}>
+            <code className={cx('font-mono font-bold break-all', toneTokens.violet.text)}>
               {row.fiber}
             </code>
           </span>,

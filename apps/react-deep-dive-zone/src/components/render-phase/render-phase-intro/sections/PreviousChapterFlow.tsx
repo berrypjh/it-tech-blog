@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -102,7 +101,7 @@ const StepCard = ({ step }: { step: PreviousChapterStep }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col items-center gap-2 rounded-lg border bg-[var(--term-bg)] p-sm',
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -110,14 +109,14 @@ const StepCard = ({ step }: { step: PreviousChapterStep }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-10 w-10 items-center justify-center rounded-md border',
           t.chip,
         )}
       >
         <Icon className="h-5 w-5" />
       </span>
-      <h3 className={cn('text-xsm font-bold leading-tight text-center break-keep', t.text)}>
+      <h3 className={cx('text-xsm font-bold leading-tight text-center break-keep', t.text)}>
         {step.title}
       </h3>
       <p className="text-xxsm leading-snug text-[var(--term-muted)] text-center break-keep">

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Award, Compass, Crown, Target, Trophy } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -70,7 +69,7 @@ const toneTextStrong: Record<Tone, string> = {
 export const LearningPriority = ({ content }: Props) => (
   <section
     aria-labelledby="heading-priority"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -88,7 +87,7 @@ export const LearningPriority = ({ content }: Props) => (
         return (
           <li key={item.rank}>
             <article
-              className={cn(
+              className={cx(
                 'h-full flex flex-col gap-sm rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -97,7 +96,7 @@ export const LearningPriority = ({ content }: Props) => (
             >
               <header className="flex items-center justify-between gap-2">
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider',
                     rankBadge[item.tone],
                   )}
@@ -107,7 +106,7 @@ export const LearningPriority = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                     iconBoxTone[item.tone],
                   )}
@@ -116,7 +115,7 @@ export const LearningPriority = ({ content }: Props) => (
                 </span>
               </header>
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-md sm:text-lg font-bold break-all',
                   toneTextStrong[item.tone],
                 )}

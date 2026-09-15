@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Crosshair, Flag, Layers, Plus, Target } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
         <header className="mb-md flex items-center justify-between gap-2">
           <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">commit insert flow</h3>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               toneTokens.violet.chip,
             )}
@@ -68,7 +67,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
             {content.domStagesTitle}
           </h3>
           <span
-            className={cn(
+            className={cx(
               'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
               toneTokens.teal.chip,
             )}
@@ -101,7 +100,7 @@ const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -112,7 +111,7 @@ const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
           <Icon className="h-4 w-4" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-5 w-5 items-center justify-center rounded-full border text-[10px] font-mono font-bold tabular-nums',
             t.chip,
           )}
@@ -121,7 +120,7 @@ const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
         </span>
       </div>
       <div className="flex flex-col gap-1 min-w-0">
-        <h4 className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+        <h4 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
           {step.title}
         </h4>
         {step.description && (
@@ -138,7 +137,7 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-lg border bg-[var(--term-bg)] p-sm sm:p-md',
         stage.highlightNew ? t.fill.border : 'border-[var(--term-border)]',
         'shadow-[0_1px_0_var(--term-border)]',
@@ -146,7 +145,7 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
     >
       <header className="flex items-center justify-between gap-2">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
             stage.highlightNew
               ? t.chip
@@ -155,7 +154,7 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-block h-1.5 w-1.5 rounded-full',
               stage.highlightNew ? t.dot : 'bg-[var(--term-dim)]',
             )}
@@ -167,10 +166,10 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
         </span>
       </header>
       <pre
-        className={cn(
+        className={cx(
           'overflow-x-auto rounded-md border p-sm text-[10.5px] sm:text-[11px] leading-snug font-mono',
           stage.highlightNew
-            ? cn(t.fill.border, t.fill.bg, t.fill.text)
+            ? cx(t.fill.border, t.fill.bg, t.fill.text)
             : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',
         )}
       >
@@ -178,7 +177,7 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
       </pre>
       {stage.note && (
         <p
-          className={cn(
+          className={cx(
             'text-[10px] sm:text-xsm break-keep font-bold',
             stage.highlightNew ? t.text : toneTokens.violet.text,
           )}

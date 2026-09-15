@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -24,7 +23,7 @@ export const KeySummarySection = ({ content }: Props) => {
           return (
             <li key={card.number}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
                   'bg-white dark:bg-[var(--term-bg)]',
                   'shadow-[0_3px_0_var(--term-border)]',
@@ -35,7 +34,7 @@ export const KeySummarySection = ({ content }: Props) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'font-mono font-bold leading-none tracking-tight tabular-nums',
                     'text-[3.5rem] sm:text-[4rem]',
                     t.text,

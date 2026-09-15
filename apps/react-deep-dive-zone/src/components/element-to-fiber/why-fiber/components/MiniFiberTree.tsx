@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../../shared/tones';
 
@@ -10,7 +10,7 @@ export const MiniFiberTree = ({ className }: { className?: string }) => (
   <svg
     viewBox="0 0 200 160"
     aria-hidden="true"
-    className={cn('w-full h-auto max-w-[260px]', className)}
+    className={cx('w-full h-auto max-w-[260px]', className)}
   >
     {/* Root + 그 아래 링크 — violet */}
     <g className={toneTokens.violet.text} fill="currentColor" stroke="currentColor">

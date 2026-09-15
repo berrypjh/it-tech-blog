@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../../shared/tones';
 import type { WorkTagCard as WorkTagCardData } from '../content';
@@ -7,7 +7,7 @@ type Props = { card: WorkTagCardData };
 
 export const WorkTagCardItem = ({ card }: Props) => (
   <article
-    className={cn(
+    className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] p-sm sm:p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       'transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
@@ -15,7 +15,7 @@ export const WorkTagCardItem = ({ card }: Props) => (
   >
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'inline-flex items-center justify-center w-9 h-9 rounded-full border font-mono font-bold text-[12px] shrink-0',
         toneTokens[card.tone].chip,
       )}
@@ -27,7 +27,7 @@ export const WorkTagCardItem = ({ card }: Props) => (
         {card.name}
       </code>
       <span
-        className={cn('text-[10px] uppercase tracking-wider font-mono', toneTokens[card.tone].text)}
+        className={cx('text-[10px] uppercase tracking-wider font-mono', toneTokens[card.tone].text)}
       >
         WorkTag = {card.value}
       </span>

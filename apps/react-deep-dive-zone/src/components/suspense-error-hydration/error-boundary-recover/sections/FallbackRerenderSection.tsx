@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ShieldAlert, TriangleAlert, User } from 'lucide-react';
 
 import type { ErrorBoundaryRecoverContent } from '../content';
@@ -15,7 +14,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch">
       {/* Before */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md',
           'border-slate-200 bg-slate-50/60 dark:border-slate-700 dark:bg-slate-900/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
 
       {/* State transition */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 rounded-2xl border-2 p-md',
           'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -76,7 +75,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
           {content.transition.title}
         </h3>
         <div
-          className={cn(
+          className={cx(
             'rounded-lg border border-slate-800 bg-slate-950 p-2.5 font-mono text-[11px] leading-[1.65]',
           )}
         >
@@ -97,7 +96,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
 
       {/* After */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md',
           'border-rose-200/80 bg-rose-50/60 dark:border-rose-800/60 dark:bg-rose-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -121,7 +120,7 @@ export const FallbackRerenderSection = ({ content }: Props) => (
           {content.after.body}
         </p>
         <div
-          className={cn(
+          className={cx(
             'mt-auto flex items-center gap-2 rounded-xl border-2 p-3',
             'border-rose-300 bg-white dark:border-rose-700 dark:bg-slate-900',
           )}

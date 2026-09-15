@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Clock3, PauseCircle, TimerReset, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -40,7 +39,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -50,7 +49,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
         {(['work', 'budget', 'overflow', 'yield'] as DeadlineMarker['phase'][]).map((p) => (
           <li
             key={p}
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
               p === 'work' &&
                 'border-blue-300/80 bg-blue-50 text-blue-800 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -62,7 +61,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
                 'border-violet-300/80 bg-violet-50 text-violet-800 dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-200',
             )}
           >
-            <span aria-hidden="true" className={cn('block h-2 w-2 rounded-full', phaseDot[p])} />
+            <span aria-hidden="true" className={cx('block h-2 w-2 rounded-full', phaseDot[p])} />
             {p === 'work' && 'frame work'}
             {p === 'budget' && 'frame budget'}
             {p === 'overflow' && 'interval exceeded'}
@@ -76,10 +75,10 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
         aria-hidden="true"
         className="grid grid-cols-4 h-7 rounded-full overflow-hidden border border-[var(--term-border)]"
       >
-        <div className={cn('h-full', segmentBg.work)} />
-        <div className={cn('h-full', segmentBg.budget)} />
-        <div className={cn('h-full', segmentBg.overflow)} />
-        <div className={cn('h-full', segmentBg.yield)} />
+        <div className={cx('h-full', segmentBg.work)} />
+        <div className={cx('h-full', segmentBg.budget)} />
+        <div className={cx('h-full', segmentBg.overflow)} />
+        <div className={cx('h-full', segmentBg.yield)} />
       </div>
 
       {/* threshold marker line */}
@@ -100,7 +99,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
           <li key={m.label} className="flex flex-col items-center gap-2 relative">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-5 w-5 items-center justify-center rounded-full border-2 z-10',
                 phaseDot[m.phase],
               )}
@@ -112,7 +111,7 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
               />
             )}
             <span
-              className={cn(
+              className={cx(
                 'mt-2 text-center text-xsm font-bold leading-snug break-keep',
                 phaseText[m.phase],
               )}
@@ -132,13 +131,13 @@ export const DeadlineFrameIntervalSection = ({ content }: Props) => (
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
                     phaseDot[m.phase],
                   )}
                 />
                 <span
-                  className={cn('text-xsm font-bold leading-tight break-keep', phaseText[m.phase])}
+                  className={cx('text-xsm font-bold leading-tight break-keep', phaseText[m.phase])}
                 >
                   {m.label}
                 </span>

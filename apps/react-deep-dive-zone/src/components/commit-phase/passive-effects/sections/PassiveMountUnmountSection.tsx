@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Leaf, Lightbulb, Repeat, Trash2, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -36,7 +35,7 @@ export const PassiveMountUnmountSection = ({ content }: Props) => (
       </div>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.sky.fill.border,
           toneTokens.sky.fill.bg,
@@ -46,7 +45,7 @@ export const PassiveMountUnmountSection = ({ content }: Props) => (
           <Lightbulb className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.sky.fill.text,
           )}
@@ -61,9 +60,9 @@ export const PassiveMountUnmountSection = ({ content }: Props) => (
 const CenterSwap = () => {
   const t = toneTokens.sky;
   return (
-    <div aria-hidden="true" className={cn('flex items-center justify-center py-1 md:py-0', t.text)}>
+    <div aria-hidden="true" className={cx('flex items-center justify-center py-1 md:py-0', t.text)}>
       <span
-        className={cn(
+        className={cx(
           'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
           t.fill.bg,
           t.fill.border,
@@ -81,7 +80,7 @@ const LifecycleCardView = ({ card }: { card: LifecycleCard }) => {
   const t = toneTokens[card.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -93,7 +92,7 @@ const LifecycleCardView = ({ card }: { card: LifecycleCard }) => {
           <Icon className="h-5 w-5" />
         </ToneIconBox>
         <div className="flex flex-col">
-          <h3 className={cn('text-sm sm:text-md font-bold leading-tight', t.fill.text)}>
+          <h3 className={cx('text-sm sm:text-md font-bold leading-tight', t.fill.text)}>
             {card.title}
           </h3>
           {card.subtitle && (
@@ -105,12 +104,12 @@ const LifecycleCardView = ({ card }: { card: LifecycleCard }) => {
       </header>
 
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center self-start gap-1.5 rounded-md border px-2 py-1 text-[10px] font-mono uppercase tracking-wider font-bold',
           t.chip,
         )}
       >
-        <span aria-hidden="true" className={cn('inline-block h-1.5 w-1.5 rounded-full', t.dot)} />
+        <span aria-hidden="true" className={cx('inline-block h-1.5 w-1.5 rounded-full', t.dot)} />
         {card.pill}
       </span>
 
@@ -118,14 +117,14 @@ const LifecycleCardView = ({ card }: { card: LifecycleCard }) => {
         {card.items.map((item, idx) => (
           <li
             key={item}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 rounded-md border bg-[var(--term-bg)] p-sm',
               t.border,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
                 t.chip,
               )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Lock, Sparkles, Type } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -59,7 +58,7 @@ const DiffCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         t.fill.border,
         'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
@@ -67,7 +66,7 @@ const DiffCard = ({
     >
       <header className="flex items-center gap-2">
         <ToneIconBox tone={tone}>{icon}</ToneIconBox>
-        <code className={cn('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}>
+        <code className={cx('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}>
           {title}
         </code>
       </header>
@@ -80,10 +79,10 @@ const DiffCard = ({
         {rows.map((row) => (
           <li
             key={row.label}
-            className={cn('flex flex-col gap-0.5 rounded-md border p-sm', t.border, t.fill.bg)}
+            className={cx('flex flex-col gap-0.5 rounded-md border p-sm', t.border, t.fill.bg)}
           >
             <span
-              className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}
+              className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}
             >
               {row.label}
             </span>
@@ -99,7 +98,7 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
   const t = toneTokens.amber;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -110,12 +109,12 @@ const PointCard = ({ title, text }: { title: string; text: string }) => {
         <ToneIconBox tone="amber">
           <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.fill.text)}>
           {title}
         </h3>
       </header>
 
-      <p className={cn('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
+      <p className={cx('text-sm sm:text-md leading-relaxed font-bold break-keep', t.fill.text)}>
         {text}
       </p>
     </article>

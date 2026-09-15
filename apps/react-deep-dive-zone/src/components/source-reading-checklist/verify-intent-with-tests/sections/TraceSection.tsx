@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Route, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -24,7 +23,7 @@ export const TraceSection = ({ content }: Props) => {
       />
 
       <ol
-        className={cn(
+        className={cx(
           'flex flex-col gap-0 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -33,7 +32,7 @@ export const TraceSection = ({ content }: Props) => {
         {/* Start indicator */}
         <li>
           <div
-            className={cn(
+            className={cx(
               'flex items-center gap-3 rounded-xl border-2 px-3 py-3',
               'border-violet-300 bg-violet-50',
               'dark:border-violet-700/70 dark:bg-violet-950/30',
@@ -41,7 +40,7 @@ export const TraceSection = ({ content }: Props) => {
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-md',
                 'border-2 border-violet-400 bg-white text-violet-700',
                 'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',
@@ -71,7 +70,7 @@ export const TraceSection = ({ content }: Props) => {
               </li>
               <li>
                 <article
-                  className={cn(
+                  className={cx(
                     'group flex items-start gap-md rounded-xl border-2 p-md',
                     'bg-white dark:bg-[var(--term-bg)]',
                     t.border,
@@ -82,7 +81,7 @@ export const TraceSection = ({ content }: Props) => {
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2',
                       t.border,
                       t.chip,
@@ -92,7 +91,7 @@ export const TraceSection = ({ content }: Props) => {
                     {step.number}
                   </span>
                   <div className="flex flex-col gap-1.5 min-w-0">
-                    <h3 className={cn('text-md font-bold leading-snug break-keep', t.text)}>
+                    <h3 className={cx('text-md font-bold leading-snug break-keep', t.text)}>
                       {step.title}
                     </h3>
                     <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

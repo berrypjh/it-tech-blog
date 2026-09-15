@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Boxes, Globe, MousePointerClick, Target } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -32,7 +31,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
           'border-blue-200/70 bg-gradient-to-br from-blue-50/60 via-white to-teal-50/30',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -42,7 +41,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-md items-stretch">
           {/* DOM Tree (blue) */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-blue-300/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -66,7 +65,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
 
           {/* Fiber Tree (teal) */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-teal-300/80 bg-white dark:border-teal-700/70 dark:bg-slate-950/40',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -88,7 +87,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                 <li
                   key={node.label}
                   style={{ marginLeft: `${node.depth * 12}px` }}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 transition-colors',
                     'font-mono text-[11px] sm:text-xsm',
                     fiberNodeTone(node.tone, selected),
@@ -105,7 +104,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
 
           {/* Target selector */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_1px_0_var(--term-border)]',
             )}
@@ -135,7 +134,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                     role="radio"
                     aria-checked={isSelected}
                     onClick={() => setSelected(target.value)}
-                    className={cn(
+                    className={cx(
                       'group inline-flex items-center justify-between gap-2 rounded-xl border-2 px-md py-2.5',
                       'font-mono text-xsm sm:text-sm font-bold transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -148,7 +147,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
                     <span className="flex items-center gap-1.5">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'block h-1.5 w-1.5 rounded-full',
                           isSelected ? 'bg-blue-500 dark:bg-blue-300' : 'bg-[var(--term-dim)]',
                         )}
@@ -170,7 +169,7 @@ export const DomFiberMappingLab = ({ content }: Props) => {
         {/* Result row */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'mt-md grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3',
             'rounded-2xl border-2 p-md',
             'border-blue-200/80 bg-white dark:border-blue-700/70 dark:bg-slate-950/40',

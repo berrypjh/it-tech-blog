@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, GitBranch } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
   const Icon = isDown ? ArrowDown : ArrowUp;
   return (
     <article
-      className={cn(
+      className={cx(
         'grid h-full grid-cols-[auto_minmax(0,_1fr)] items-start gap-md rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -40,7 +39,7 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-14 w-14 items-center justify-center rounded-lg border',
           t.chip,
         )}
@@ -49,11 +48,11 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
       </span>
 
       <div className="flex flex-col gap-2 min-w-0">
-        <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
           {card.title}
         </h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-xsm font-bold tracking-tight',
             t.chip,
           )}
@@ -70,7 +69,7 @@ const DirectionCard = ({ card }: { card: ReturnDirectionCard }) => {
               >
                 <span
                   aria-hidden="true"
-                  className={cn('mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
+                  className={cx('mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
                 />
                 {isMono ? <code className="font-mono">{item}</code> : <span>{item}</span>}
               </li>

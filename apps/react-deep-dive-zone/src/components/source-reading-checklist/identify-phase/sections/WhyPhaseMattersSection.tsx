@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CalendarClock, HelpCircle, Monitor, ScanSearch, Target, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -33,7 +32,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
           return (
             <li key={card.phase}>
               <article
-                className={cn(
+                className={cx(
                   'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                   'bg-white dark:bg-[var(--term-bg)]',
                   t.border,
@@ -46,7 +45,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
                   <PhaseBadge phase={card.phase} size="md" strong />
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-9 w-9 items-center justify-center rounded-lg border',
                       t.chip,
                     )}
@@ -55,7 +54,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
                   </span>
                 </header>
 
-                <h3 className={cn('text-md sm:text-lg font-bold leading-snug break-keep', t.text)}>
+                <h3 className={cx('text-md sm:text-lg font-bold leading-snug break-keep', t.text)}>
                   {card.title}
                 </h3>
 
@@ -64,21 +63,21 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
                 </p>
 
                 <div
-                  className={cn(
+                  className={cx(
                     'mt-auto flex items-start gap-2 rounded-md border-2 p-3',
                     t.border,
                     t.chip,
                   )}
                 >
                   <HelpCircle
-                    className={cn('mt-0.5 h-4 w-4 shrink-0', t.text)}
+                    className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)}
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">
-                    <span className={cn('text-[10px] font-mono uppercase tracking-wider', t.text)}>
+                    <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
                       {content.questionLabel}
                     </span>
-                    <p className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>
+                    <p className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>
                       {card.representativeQuestion}
                     </p>
                   </div>
@@ -90,7 +89,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
       </ul>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-center gap-3 rounded-xl border-2 p-md sm:p-lg',
           'border-slate-800 bg-slate-900 text-slate-50',
           'dark:border-slate-700 dark:bg-slate-950',
@@ -100,7 +99,7 @@ export const WhyPhaseMattersSection = ({ content }: Props) => {
       >
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
             'border border-blue-400/60 bg-blue-500/15 text-blue-200',
           )}

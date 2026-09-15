@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import {
   HeroDescription,
@@ -39,7 +39,7 @@ export const HeroSection = ({ content }: Props) => (
 
       {/* Layer diagram */}
       <div
-        className={cn(
+        className={cx(
           'mt-md relative rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_2px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -63,14 +63,14 @@ export const HeroSection = ({ content }: Props) => (
             return (
               <li
                 key={layer.layer}
-                className={cn(
+                className={cx(
                   'grid grid-cols-1 items-stretch gap-2',
                   'sm:grid-cols-[minmax(0,_1fr)_auto_minmax(140px,_auto)] sm:items-center sm:gap-3',
                 )}
               >
                 {/* Plate */}
                 <article
-                  className={cn(
+                  className={cx(
                     'group/plate relative rounded-xl border-2 px-3 py-2.5',
                     tone.plate,
                     tone.border,
@@ -82,7 +82,7 @@ export const HeroSection = ({ content }: Props) => (
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-5 w-5 items-center justify-center rounded-md text-[9px] font-mono font-bold tabular-nums',
                         tone.iconChip,
                         'border',
@@ -91,7 +91,7 @@ export const HeroSection = ({ content }: Props) => (
                       {layer.number}
                     </span>
                     <h4
-                      className={cn(
+                      className={cx(
                         'text-xsm sm:text-sm font-bold break-keep tracking-tight',
                         tone.text,
                       )}
@@ -107,17 +107,17 @@ export const HeroSection = ({ content }: Props) => (
                 {/* Connector */}
                 <span aria-hidden="true" className="hidden sm:flex items-center gap-1">
                   <span
-                    className={cn(
+                    className={cx(
                       'block h-px w-8 lg:w-12 border-t border-dashed',
                       tone.connectorBorder,
                     )}
                   />
-                  <span className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)} />
+                  <span className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)} />
                 </span>
 
                 {/* Feature chip */}
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-1.5 self-start sm:self-center',
                     'rounded-full border-2 px-3 py-1.5 font-mono text-xxsm font-bold',
                     'bg-white dark:bg-[var(--term-bg)]',
@@ -129,7 +129,7 @@ export const HeroSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn('block h-1.5 w-1.5 rounded-full', tone.dot)}
+                    className={cx('block h-1.5 w-1.5 rounded-full', tone.dot)}
                   />
                   {layer.feature}
                 </span>

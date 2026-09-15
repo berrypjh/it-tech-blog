@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, EyeOff, Info, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -36,7 +35,7 @@ export const SpecialFiberTypes = ({ content }: Props) => (
         return (
           <ToneCardItem key={card.id} tone={card.tone} icon={<Icon className="h-5 w-5" />}>
             <h3
-              className={cn(
+              className={cx(
                 'text-sm font-bold tracking-tight break-keep',
                 toneTokens[card.tone].text,
               )}
@@ -52,7 +51,7 @@ export const SpecialFiberTypes = ({ content }: Props) => (
               </code>
             </div>
             <p
-              className={cn('font-mono text-xsm font-bold break-keep', toneTokens[card.tone].text)}
+              className={cx('font-mono text-xsm font-bold break-keep', toneTokens[card.tone].text)}
             >
               {card.result}
             </p>

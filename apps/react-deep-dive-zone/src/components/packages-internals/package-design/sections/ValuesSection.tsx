@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Compass, type LucideIcon, Map, Network, Shield, Sparkles, Star } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
@@ -39,7 +38,7 @@ export const ValuesSection = ({ content }: Props) => {
               icon={<Icon className="h-5 w-5" aria-hidden="true" />}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md font-bold tracking-tight break-keep',
                   toneTokens[card.tone].text,
                 )}

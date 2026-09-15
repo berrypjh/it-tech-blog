@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { PlayCircle, RefreshCw, Repeat, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -45,7 +44,7 @@ const cardIcons = [PlayCircle, RefreshCw, Repeat];
 export const DispatcherExplanation = ({ content }: Props) => (
   <section
     aria-labelledby="heading-dispatcher"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -64,7 +63,7 @@ export const DispatcherExplanation = ({ content }: Props) => (
         return (
           <li key={card.title}>
             <article
-              className={cn(
+              className={cx(
                 'group flex flex-col gap-sm h-full rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
                 'shadow-[0_2px_0_var(--term-border)] transition-all',
                 'motion-safe:hover:-translate-y-0.5',
@@ -73,7 +72,7 @@ export const DispatcherExplanation = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                   iconBoxTone[card.tone],
                 )}
@@ -85,7 +84,7 @@ export const DispatcherExplanation = ({ content }: Props) => (
                   {card.title}
                 </h3>
                 <code
-                  className={cn(
+                  className={cx(
                     'font-mono text-[11px] sm:text-xsm font-bold break-all',
                     subtitleTone[card.tone],
                   )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Code, FileText, Layers, ListChecks, Network } from 'lucide-react';
 
 import { SectionBadgeHeader } from '../../../shared/section';
@@ -41,7 +40,7 @@ export const FiveKeyTakeaways = ({ content }: Props) => (
             topRight={card.number}
           >
             <h3
-              className={cn(
+              className={cx(
                 'text-sm font-bold tracking-tight break-keep',
                 toneTokens[card.tone].text,
               )}

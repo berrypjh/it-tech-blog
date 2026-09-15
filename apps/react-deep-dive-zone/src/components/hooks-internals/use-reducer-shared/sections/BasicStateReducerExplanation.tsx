@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Lightbulb, Repeat } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -47,7 +46,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
   return (
     <section
       aria-labelledby="heading-basic-reducer"
-      className={cn(
+      className={cx(
         'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -98,7 +97,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
 
         {/* Explanation card */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
             'border-teal-300/80 bg-teal-50/40 dark:border-teal-800/60 dark:bg-teal-950/20',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -134,7 +133,7 @@ export const BasicStateReducerExplanation = ({ content }: Props) => {
           </ul>
 
           <span
-            className={cn(
+            className={cx(
               'mt-auto inline-flex items-center gap-2 self-start rounded-full border-2 px-3 py-1.5',
               'border-emerald-400/70 bg-emerald-50 text-emerald-700 text-[11px] sm:text-xsm font-bold',
               'dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200',

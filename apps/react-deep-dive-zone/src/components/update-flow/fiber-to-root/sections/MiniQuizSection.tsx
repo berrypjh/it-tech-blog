@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, CircleHelp } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const MiniQuizSection = ({ content }: Props) => (
         <div className="flex items-start gap-sm">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border font-mono font-bold text-md',
               sky.chip,
             )}
@@ -34,7 +33,7 @@ export const MiniQuizSection = ({ content }: Props) => (
             Q.
           </span>
           <div className="flex flex-col gap-1 min-w-0">
-            <span className={cn('text-[10px] uppercase tracking-wider font-mono', sky.text)}>
+            <span className={cx('text-[10px] uppercase tracking-wider font-mono', sky.text)}>
               {content.questionLabel}
             </span>
             <p className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
@@ -48,20 +47,20 @@ export const MiniQuizSection = ({ content }: Props) => (
           <div className="flex items-center gap-sm">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-full border font-mono font-bold',
                 emerald.chip,
               )}
             >
               A.
             </span>
-            <span className={cn('text-[10px] uppercase tracking-wider font-mono', emerald.text)}>
+            <span className={cx('text-[10px] uppercase tracking-wider font-mono', emerald.text)}>
               {content.answerLabel}
             </span>
           </div>
 
           <div
-            className={cn(
+            className={cx(
               'flex items-start gap-sm rounded-lg border p-md',
               emerald.border,
               emerald.fill.bg,
@@ -69,11 +68,11 @@ export const MiniQuizSection = ({ content }: Props) => (
           >
             <CheckCircle2
               aria-hidden="true"
-              className={cn('mt-0.5 h-5 w-5 shrink-0', emerald.text)}
+              className={cx('mt-0.5 h-5 w-5 shrink-0', emerald.text)}
             />
             <div className="flex flex-col gap-1.5 min-w-0">
               <p
-                className={cn(
+                className={cx(
                   'text-sm sm:text-md font-bold leading-snug break-keep',
                   emerald.fill.text,
                 )}

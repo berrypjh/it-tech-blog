@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock, Database, Monitor, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -30,7 +29,7 @@ export const LayoutHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -78,9 +77,9 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
   const Icon = iconMap[phase.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        phase.active ? cn(t.chip, t.border) : 'border-[var(--term-border)]',
+        phase.active ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
@@ -89,7 +88,7 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
       </ToneIconBox>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex items-baseline gap-2">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
             {phase.title}
           </span>
           <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)] break-keep">
@@ -100,14 +99,14 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
           {phase.details.map((detail) => (
             <li
               key={detail}
-              className={cn(
+              className={cx(
                 'flex items-center gap-1.5 text-xsm leading-snug break-keep',
                 phase.active ? t.text : 'text-[var(--term-muted)]',
               )}
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-block h-1 w-1 shrink-0 rounded-full',
                   phase.active ? t.dot : 'bg-[var(--term-dim)]',
                 )}

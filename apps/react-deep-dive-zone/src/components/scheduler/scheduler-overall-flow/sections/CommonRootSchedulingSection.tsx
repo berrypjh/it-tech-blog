@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ChevronRight, Compass, GitMerge, Workflow } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -18,7 +17,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
     />
 
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
         'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-indigo-50/30',
         'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-indigo-950/10',
@@ -27,7 +26,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
     >
       <header className="flex items-center justify-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1',
             'font-mono text-[10px] font-bold uppercase tracking-wider',
             'border-blue-300 bg-white text-blue-800 dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -46,7 +45,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
             <li key={step.label} className="contents">
               <div className="flex md:flex-col items-stretch gap-1">
                 <article
-                  className={cn(
+                  className={cx(
                     'flex flex-col gap-1 rounded-xl border-2 p-3 flex-1 min-w-0',
                     'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                   )}
@@ -86,7 +85,7 @@ export const CommonRootSchedulingSection = ({ content }: Props) => (
       </ol>
 
       <aside
-        className={cn(
+        className={cx(
           'flex items-start gap-2 rounded-xl border-2 p-3',
           'border-blue-200/80 bg-blue-50/80 dark:border-blue-700/60 dark:bg-blue-950/30',
         )}

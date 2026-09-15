@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, Link2 } from 'lucide-react';
 
 import {
@@ -86,7 +85,7 @@ export const HookLinkedListHero = ({ content }: Props) => (
           return (
             <li key={card.label}>
               <article
-                className={cn(
+                className={cx(
                   'h-full flex items-start gap-3 rounded-2xl border-2 p-md',
                   'shadow-[0_2px_0_var(--term-border)] transition-all',
                   'motion-safe:hover:-translate-y-0.5',
@@ -95,7 +94,7 @@ export const HookLinkedListHero = ({ content }: Props) => (
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl',
                     toneHeader[card.tone],
                   )}
@@ -107,7 +106,7 @@ export const HookLinkedListHero = ({ content }: Props) => (
                     {card.label}
                   </p>
                   <p
-                    className={cn(
+                    className={cx(
                       'text-xsm sm:text-sm font-bold break-all',
                       toneTextStrong[card.tone],
                     )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileCode } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -43,7 +42,7 @@ export const CodeEntryMap = ({ content }: Props) => (
         return (
           <li key={file.fileName}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 accent.border,
@@ -54,7 +53,7 @@ export const CodeEntryMap = ({ content }: Props) => (
               <header className="flex items-start gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                     accent.chip,
                   )}
@@ -62,7 +61,7 @@ export const CodeEntryMap = ({ content }: Props) => (
                   <FileCode className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <div className="flex flex-col min-w-0">
-                  <span className={cn('text-xsm font-mono font-bold break-all', accent.text)}>
+                  <span className={cx('text-xsm font-mono font-bold break-all', accent.text)}>
                     {file.fileName}
                   </span>
                   <span className="text-[11px] text-[var(--term-muted)] break-keep">
@@ -72,7 +71,7 @@ export const CodeEntryMap = ({ content }: Props) => (
               </header>
 
               <pre
-                className={cn(
+                className={cx(
                   'overflow-x-auto rounded-xl border bg-slate-950 px-3 py-2.5 text-[10.5px] sm:text-[11px] leading-[1.55] font-mono text-slate-100',
                   'border-slate-800',
                 )}
@@ -84,7 +83,7 @@ export const CodeEntryMap = ({ content }: Props) => (
                 href={file.href}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(
+                className={cx(
                   'mt-auto group inline-flex items-center justify-center gap-1.5 rounded-xl border-2 px-3 py-2',
                   'text-xsm font-bold transition-colors',
                   accent.border,

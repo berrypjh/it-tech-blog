@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight, ListChecks } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -10,7 +9,7 @@ type Props = { content: HooksEntryFlowContent['mission'] };
 export const FollowCodeMission = ({ content }: Props) => (
   <section
     aria-labelledby="heading-mission"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -27,7 +26,7 @@ export const FollowCodeMission = ({ content }: Props) => (
       {content.items.map((item, i) => (
         <li key={item.title}>
           <div
-            className={cn(
+            className={cx(
               'group flex items-center gap-3 rounded-xl border bg-[var(--term-bg)] p-md',
               'border-[var(--term-border)] transition-all',
               'hover:border-sky-300/70 hover:bg-sky-50/30 dark:hover:border-sky-700/70 dark:hover:bg-sky-950/20',
@@ -36,7 +35,7 @@ export const FollowCodeMission = ({ content }: Props) => (
             {/* Checkbox */}
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 border-[var(--term-border)] bg-white text-[var(--term-muted)] text-[10px] font-mono font-bold tabular-nums',
                 'dark:bg-slate-950/40',
               )}

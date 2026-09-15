@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { activityTone } from '../tone';
@@ -25,7 +25,7 @@ export const HiddenBehaviorCards = ({ content }: Props) => (
         return (
           <li key={card.number} className="h-full">
             <article
-              className={cn(
+              className={cx(
                 'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
                 'bg-white dark:bg-[var(--term-bg)]',
                 tone.border,
@@ -36,13 +36,13 @@ export const HiddenBehaviorCards = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
+                className={cx('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
               />
 
               <div className="flex items-start justify-between gap-2 pt-1">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
                     tone.iconChip,
                   )}
@@ -51,7 +51,7 @@ export const HiddenBehaviorCards = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
                     tone.chip,
                   )}
@@ -60,7 +60,7 @@ export const HiddenBehaviorCards = ({ content }: Props) => (
                 </span>
               </div>
 
-              <h3 className={cn('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}>
+              <h3 className={cx('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}>
                 {card.title}
               </h3>
 

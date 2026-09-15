@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -81,14 +80,14 @@ const FunctionsCard = ({
         return (
           <li key={fn.name}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-1 rounded-lg border-2 p-sm sm:p-md',
                 t.fill.border,
                 t.fill.bg,
               )}
             >
               <code
-                className={cn('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}
+                className={cx('text-xsm sm:text-sm font-bold font-mono break-all', t.fill.text)}
               >
                 {fn.name}
               </code>

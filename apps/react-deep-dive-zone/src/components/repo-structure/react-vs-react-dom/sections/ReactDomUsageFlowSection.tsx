@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -59,13 +58,13 @@ const ExplanationPill = ({ accentClass, lead, description }: ExplanationPillProp
   <div className="flex items-start gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_var(--term-border)]">
     <span
       aria-hidden="true"
-      className={cn(
+      className={cx(
         'mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-current shrink-0',
         accentClass,
       )}
     />
     <div className="flex flex-col gap-0.5 min-w-0">
-      <span className={cn('text-xsm font-bold font-mono tracking-tight break-keep', accentClass)}>
+      <span className={cx('text-xsm font-bold font-mono tracking-tight break-keep', accentClass)}>
         {lead}
       </span>
       <span className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">

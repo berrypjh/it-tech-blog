@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { RotateCw } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -22,13 +21,13 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
           return (
             <li key={cat.id}>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10px] font-medium',
                   t.chip,
                 )}
               >
                 <span
-                  className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)}
+                  className={cx('inline-block w-1.5 h-1.5 rounded-full', t.dot)}
                   aria-hidden="true"
                 />
                 {cat.label}
@@ -45,7 +44,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
           return (
             <li key={stage.id} className="relative flex flex-col">
               <div
-                className={cn(
+                className={cx(
                   'group flex flex-col items-center text-center',
                   'rounded-md border bg-[var(--term-surface)]',
                   'px-2 py-3 transition-all',
@@ -54,7 +53,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center w-9 h-9 rounded border',
                     'mb-1.5 text-xsm font-bold',
                     t.chip,
@@ -63,7 +62,7 @@ export const FlowDiagram = ({ categories, stages, loop }: Props) => {
                 >
                   {stage.label.slice(0, 1)}
                 </span>
-                <p className={cn('text-xsm font-bold', t.text)}>{stage.label}</p>
+                <p className={cx('text-xsm font-bold', t.text)}>{stage.label}</p>
                 <p className="mt-1 text-[10px] leading-snug text-[var(--term-muted)] break-keep">
                   {stage.hint}
                 </p>

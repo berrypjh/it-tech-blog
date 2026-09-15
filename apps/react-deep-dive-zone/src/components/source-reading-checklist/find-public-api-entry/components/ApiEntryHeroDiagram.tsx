@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cable, Cpu, DoorOpen, FileCode2, Plug, Split } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -28,7 +27,7 @@ export const ApiEntryHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -72,7 +71,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
   const Icon = layerIcon[layer.key];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -83,7 +82,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
         <ToneIconBox tone={layer.tone} size="sm">
           <Icon className="h-4 w-4" />
         </ToneIconBox>
-        <span className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>
           {layer.layerTitle}
         </span>
         <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
@@ -93,7 +92,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
 
       {layer.func && (
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-md border px-2 py-1 font-mono text-[11px] font-bold',
             t.chip,
           )}
@@ -108,7 +107,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
 
       {layer.file && !layer.code && (
         <code className="flex items-center gap-1.5 overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-1 font-mono text-[10.5px] text-[var(--term-fg)]">
-          <FileCode2 className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
+          <FileCode2 className={cx('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
           <span className="whitespace-nowrap">{layer.file}</span>
         </code>
       )}
@@ -122,7 +121,7 @@ const LayerCard = ({ layer }: { layer: HeroLayer }) => {
 
 const FlowFooter = ({ text }: { text: string }) => (
   <p
-    className={cn(
+    className={cx(
       'mt-1 flex flex-wrap items-center gap-1.5 rounded-lg border px-3 py-2',
       'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
       'text-[10px] @sm:text-[11px] font-mono',

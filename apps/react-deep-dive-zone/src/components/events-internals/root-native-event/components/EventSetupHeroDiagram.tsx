@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Container, Globe, MousePointer, Radio } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -23,7 +22,7 @@ export const EventSetupHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -58,7 +57,7 @@ const BrowserCard = ({ title, bullets }: { title: string; bullets: string[] }) =
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -69,7 +68,7 @@ const BrowserCard = ({ title, bullets }: { title: string; bullets: string[] }) =
         <Globe className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
-        <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
         <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
           {bullets.join(' · ')}
         </span>
@@ -85,7 +84,7 @@ const RootCard = ({ title, dom }: { title: string; dom: string }) => {
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -96,7 +95,7 @@ const RootCard = ({ title, dom }: { title: string; dom: string }) => {
         <ToneIconBox tone="violet" size="sm">
           <Container className="h-[18px] w-[18px]" aria-hidden="true" />
         </ToneIconBox>
-        <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</span>
+        <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</span>
         <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
           rootContainerElement
         </span>
@@ -114,7 +113,7 @@ const ListenerCard = ({
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',

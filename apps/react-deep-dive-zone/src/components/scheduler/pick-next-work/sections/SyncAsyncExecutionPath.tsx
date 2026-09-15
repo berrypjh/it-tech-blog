@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Clock3, GitFork, HelpCircle, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -20,14 +19,14 @@ const FlowList = ({
       return (
         <li key={s.label} className="flex flex-col">
           <div
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-lg border px-2.5 py-1.5',
               'border-[var(--term-border)] bg-[var(--term-bg)]',
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white text-[10px] font-mono font-bold tabular-nums',
                 accent === 'blue' ? 'bg-blue-600 dark:bg-blue-500' : 'bg-teal-600 dark:bg-teal-500',
               )}
@@ -36,7 +35,7 @@ const FlowList = ({
             </span>
             {s.isCode ? (
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-[11px] sm:text-xsm font-bold break-all',
                   accent === 'blue'
                     ? 'text-blue-700 dark:text-blue-300'
@@ -76,7 +75,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
     {/* Branch question card */}
     <div className="mb-md flex justify-center">
       <div
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-2 rounded-2xl border-2 px-md py-2',
           'border-blue-300 bg-white text-blue-800 shadow-[0_3px_0_var(--term-border)]',
           'dark:border-blue-700/70 dark:bg-slate-950/40 dark:text-blue-200',
@@ -95,7 +94,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
     <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-md items-stretch">
       {/* SYNC */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-blue-300/80 bg-gradient-to-br from-blue-50/80 via-white to-blue-50/30',
           'dark:border-blue-700/70 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -130,7 +129,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
       {/* center vs */}
       <div aria-hidden="true" className="hidden lg:flex items-center justify-center self-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-14 w-14 items-center justify-center rounded-full',
             'border-2 border-blue-300 bg-white text-blue-700 font-mono font-bold text-sm',
             'shadow-[0_3px_0_var(--term-border)]',
@@ -146,7 +145,7 @@ export const SyncAsyncExecutionPath = ({ content }: Props) => (
 
       {/* ASYNC */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-gradient-to-br from-teal-50/80 via-white to-cyan-50/30',
           'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/10',

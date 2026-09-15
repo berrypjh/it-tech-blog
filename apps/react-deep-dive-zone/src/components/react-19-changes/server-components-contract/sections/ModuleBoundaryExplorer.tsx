@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ExplorerFile, ServerComponentsContractContent } from '../content';
 import { CheckCircleIcon, ChevronRightIcon, FolderIcon, ShieldCheckIcon } from '../icons';
@@ -94,7 +94,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -103,7 +103,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
         <div className="grid grid-cols-1 gap-md lg:grid-cols-4 lg:gap-md items-stretch">
           {/* COL 1: project structure */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md',
               'border-slate-700/80 bg-slate-950',
               'shadow-[0_2px_0_rgba(0,0,0,0.25)]',
@@ -131,7 +131,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
                   return (
                     <span key={node.label} className="block">
                       <span className="text-slate-600">{indent}</span>
-                      <span className={cn('font-bold', nodeColor[node.kind])}>{node.label}</span>
+                      <span className={cx('font-bold', nodeColor[node.kind])}>{node.label}</span>
                     </span>
                   );
                 })}
@@ -141,7 +141,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
 
           {/* COL 2: file selection */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md',
               'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -167,17 +167,17 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActiveKey(file.key)}
-                    className={cn(
+                    className={cx(
                       'group inline-flex items-center justify-between gap-2 rounded-xl border-2 px-3 py-2.5 text-left',
                       'transition-all motion-safe:hover:-translate-y-0.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
-                        ? cn(
+                        ? cx(
                             'text-white shadow-[0_3px_0_var(--term-border)]',
                             fileTone.solidBg,
                             'border-transparent',
                           )
-                        : cn(
+                        : cx(
                             'bg-white text-[var(--term-fg)] dark:bg-[var(--term-bg)]',
                             'border-slate-200 dark:border-slate-700',
                             'hover:border-blue-300 dark:hover:border-blue-700/70',
@@ -187,7 +187,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
                     <span className="flex items-center gap-2 min-w-0">
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-6 w-6 items-center justify-center rounded-md border font-mono text-[10px] font-bold',
                           isActive ? 'border-white/40 bg-white/10 text-white' : fileTone.iconChip,
                         )}
@@ -200,7 +200,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
                     </span>
                     <ChevronRightIcon
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'h-3.5 w-3.5 shrink-0 transition-transform',
                         isActive
                           ? 'translate-x-0.5'
@@ -215,7 +215,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
 
           {/* COL 3: analysis result */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md',
               accent.borderStrong,
               accent.bg,
@@ -227,18 +227,18 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
                 {content.analysisTitle}
               </span>
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
                   'font-mono text-[10px] font-bold',
                   accent.chip,
                 )}
               >
-                <span aria-hidden="true" className={cn('block h-1 w-1 rounded-full', accent.dot)} />
+                <span aria-hidden="true" className={cx('block h-1 w-1 rounded-full', accent.dot)} />
                 {accent.label}
               </span>
             </header>
 
-            <code className={cn('font-mono text-sm font-bold break-all', accent.text)}>
+            <code className={cx('font-mono text-sm font-bold break-all', accent.text)}>
               {current.fileName}
             </code>
 
@@ -267,7 +267,7 @@ export const ModuleBoundaryExplorer = ({ content }: Props) => {
 
           {/* COL 4: rule summary */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm rounded-2xl border-2 p-md',
               'border-blue-300/80 bg-blue-50/30 dark:border-blue-700/70 dark:bg-blue-950/20',
               'shadow-[0_2px_0_var(--term-border)]',

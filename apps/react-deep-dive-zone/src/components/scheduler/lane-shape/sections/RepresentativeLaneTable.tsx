@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Layers, Repeat, TimerReset, Zap } from 'lucide-react';
 
 import { BitCellRow } from '../../_shared/BitCellRow';
@@ -24,7 +23,7 @@ const NameCell = ({ row }: { row: RepresentativeLaneRow }) => {
     <div className="flex items-center gap-2 min-w-0">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border',
           laneIconBox[row.accent],
         )}
@@ -32,7 +31,7 @@ const NameCell = ({ row }: { row: RepresentativeLaneRow }) => {
         <Icon className="h-4 w-4" />
       </span>
       <code
-        className={cn(
+        className={cx(
           'font-mono text-xsm sm:text-sm font-bold break-keep',
           laneTextStrong[row.accent],
         )}
@@ -65,7 +64,7 @@ export const RepresentativeLaneTable = ({ content }: Props) => (
 
     {/* DESKTOP table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -133,7 +132,7 @@ export const RepresentativeLaneTable = ({ content }: Props) => (
       {content.rows.map((row) => (
         <li key={row.name}>
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-3 rounded-2xl border-2 p-md',
               'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
             )}

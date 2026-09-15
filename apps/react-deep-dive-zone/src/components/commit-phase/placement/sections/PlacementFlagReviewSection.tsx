@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Eye, Flag, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -43,7 +42,7 @@ export const PlacementFlagReviewSection = ({ content }: Props) => (
       </ol>
 
       <aside
-        className={cn(
+        className={cx(
           'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
           toneTokens.violet.fill.border,
           toneTokens.violet.fill.bg,
@@ -53,7 +52,7 @@ export const PlacementFlagReviewSection = ({ content }: Props) => (
           <Sparkles className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
             toneTokens.violet.fill.text,
           )}
@@ -70,7 +69,7 @@ const StepCard = ({ step, index }: { step: ReviewStep; index: number }) => {
   const t = toneTokens[step.tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
         'shadow-[0_1px_0_var(--term-border)]',
@@ -79,12 +78,12 @@ const StepCard = ({ step, index }: { step: ReviewStep; index: number }) => {
       <ToneIconBox tone={step.tone}>
         <Icon className="h-5 w-5" />
       </ToneIconBox>
-      <h3 className={cn('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-7 w-7 items-center justify-center rounded-md border text-[11px] font-mono font-bold tabular-nums',
           t.chip,
         )}

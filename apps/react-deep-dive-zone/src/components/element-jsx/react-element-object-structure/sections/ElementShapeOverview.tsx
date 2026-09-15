@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileText, Monitor, ScanSearch, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -55,7 +54,7 @@ const PillCard = ({ pill }: { pill: SummaryPill }) => {
   const Icon = iconMap[pill.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 items-start gap-md rounded-2xl border p-md',
         'bg-[var(--term-surface)] shadow-[0_2px_0_var(--term-border)]',
         'border-[var(--term-border)] transition-all hover:-translate-y-0.5',
@@ -66,7 +65,7 @@ const PillCard = ({ pill }: { pill: SummaryPill }) => {
       </ToneIconBox>
       <div className="flex flex-col gap-1 min-w-0">
         <h3
-          className={cn('text-sm font-bold tracking-tight break-keep', toneTokens[pill.tone].text)}
+          className={cx('text-sm font-bold tracking-tight break-keep', toneTokens[pill.tone].text)}
         >
           {pill.title}
         </h3>

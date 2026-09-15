@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   Boxes,
@@ -84,7 +83,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
   if (variant === 'spotlight') {
     return (
       <article
-        className={cn(
+        className={cx(
           'group relative overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
           'bg-white dark:bg-[var(--term-bg)]',
           'shadow-[0_3px_0_var(--term-border)]',
@@ -95,7 +94,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
       >
         {/* Spotlight ribbon */}
         <span
-          className={cn(
+          className={cx(
             'absolute top-0 right-0 px-3 py-1 rounded-bl-xl',
             t.chip,
             'border-l border-b',
@@ -112,7 +111,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
             <header className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-2',
                   t.border,
                   t.chip,
@@ -125,7 +124,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
                 <PackageBadge packageKey={pkg.key} size="md" strong>
                   {pkg.name}
                 </PackageBadge>
-                <span className={cn('text-sm font-bold break-keep', t.text)}>{pkg.role}</span>
+                <span className={cx('text-sm font-bold break-keep', t.text)}>{pkg.role}</span>
               </div>
             </header>
 
@@ -134,7 +133,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
             </p>
 
             <div className="mt-auto flex items-start gap-2 rounded-md border border-dashed p-3 border-[var(--term-border)] bg-[var(--term-surface)]">
-              <ScanSearch className={cn('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+              <ScanSearch className={cx('h-4 w-4 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] block mb-1">
                   {readingPointLabel}
@@ -155,13 +154,13 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
               {pkg.files.map((file) => (
                 <li key={file}>
                   <code
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-1.5 overflow-x-auto rounded-md border px-2.5 py-1.5',
                       'border-[var(--term-border)] bg-[var(--term-surface)]',
                       'font-mono text-[11px] text-[var(--term-fg)]',
                     )}
                   >
-                    <FileCode2 className={cn('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
+                    <FileCode2 className={cx('h-3 w-3 shrink-0', t.text)} aria-hidden="true" />
                     <span className="whitespace-nowrap">{file}</span>
                   </code>
                 </li>
@@ -176,7 +175,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
   // compact
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex h-full flex-col gap-sm rounded-2xl border-2 p-md',
         'bg-white dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -191,7 +190,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
         </PackageBadge>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-md border',
             t.chip,
           )}
@@ -200,7 +199,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
         </span>
       </header>
 
-      <span className={cn('text-xsm font-bold break-keep', t.text)}>{pkg.role}</span>
+      <span className={cx('text-xsm font-bold break-keep', t.text)}>{pkg.role}</span>
 
       <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
         {pkg.description}
@@ -214,13 +213,13 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
           {pkg.files.map((file) => (
             <li key={file}>
               <code
-                className={cn(
+                className={cx(
                   'flex items-center gap-1 overflow-x-auto rounded-md border px-2 py-1',
                   'border-[var(--term-border)] bg-[var(--term-surface)]',
                   'font-mono text-[10.5px] text-[var(--term-fg)]',
                 )}
               >
-                <FileCode2 className={cn('h-2.5 w-2.5 shrink-0', t.text)} aria-hidden="true" />
+                <FileCode2 className={cx('h-2.5 w-2.5 shrink-0', t.text)} aria-hidden="true" />
                 <span className="whitespace-nowrap">{file}</span>
               </code>
             </li>
@@ -229,7 +228,7 @@ const PackageCard = ({ pkg, filesLabel, readingPointLabel, variant }: CardProps)
       </div>
 
       <div className="mt-auto pt-sm flex items-start gap-1.5 border-t border-dashed border-[var(--term-border)]">
-        <ScanSearch className={cn('h-3 w-3 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
+        <ScanSearch className={cx('h-3 w-3 shrink-0 mt-0.5', t.text)} aria-hidden="true" />
         <p className="text-[10.5px] leading-relaxed text-[var(--term-muted)] break-keep">
           {pkg.readingPoint}
         </p>

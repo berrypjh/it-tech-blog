@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Boxes,
   GitCommit,
@@ -31,7 +30,7 @@ const toFlowStep = (card: ResponsibilityCard): FlowStepItem => {
     title: card.title,
     body: card.description,
     tone: card.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 

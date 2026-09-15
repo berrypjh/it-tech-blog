@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, FastForward, HelpCircle, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -32,7 +31,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
       <div className="flex flex-col items-center gap-2">
         {/* Start */}
         <article
-          className={cn(
+          className={cx(
             'inline-flex w-full max-w-[420px] items-center justify-center rounded-lg border px-md py-3',
             'shadow-[0_1px_0_var(--term-border)]',
             toneTokens.sky.fill.bg,
@@ -40,7 +39,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
           )}
         >
           <span
-            className={cn(
+            className={cx(
               'text-xsm sm:text-sm font-bold leading-tight text-center break-keep',
               toneTokens.sky.fill.text,
             )}
@@ -55,7 +54,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
         <div className="relative flex h-24 w-[min(280px,100%)] items-center justify-center">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'absolute inset-0 m-auto rotate-45 h-[80%] w-[80%] rounded-lg border',
               'shadow-[0_1px_0_var(--term-border)]',
               toneTokens.violet.fill.bg,
@@ -63,9 +62,9 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
             )}
           />
           <div className="relative flex flex-col items-center justify-center gap-1 text-center">
-            <HelpCircle aria-hidden="true" className={cn('h-4 w-4', toneTokens.violet.text)} />
+            <HelpCircle aria-hidden="true" className={cx('h-4 w-4', toneTokens.violet.text)} />
             <span
-              className={cn(
+              className={cx(
                 'text-xsm sm:text-sm font-bold break-keep',
                 toneTokens.violet.fill.text,
               )}
@@ -79,14 +78,14 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
         <div className="mt-2 grid w-full grid-cols-1 lg:grid-cols-2 gap-md">
           {/* Bailout path (yes) */}
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-lg border border-dashed p-md',
               toneTokens.violet.border,
             )}
           >
             <header className="flex items-center justify-between gap-2">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider font-bold',
                   toneTokens.violet.chip,
                 )}
@@ -95,7 +94,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                 yes
               </span>
               <span
-                className={cn(
+                className={cx(
                   'text-xxsm font-mono uppercase tracking-wider',
                   toneTokens.violet.text,
                 )}
@@ -111,7 +110,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
             </p>
             <ChevronDown
               aria-hidden="true"
-              className={cn('mx-auto h-4 w-4', toneTokens.violet.text)}
+              className={cx('mx-auto h-4 w-4', toneTokens.violet.text)}
             />
             <PathBox tone="violet" filled>
               {content.bailout.afterTitle}
@@ -120,11 +119,11 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
 
           {/* Normal path (no) */}
           <article
-            className={cn('flex flex-col gap-2 rounded-lg border p-md', toneTokens.sky.border)}
+            className={cx('flex flex-col gap-2 rounded-lg border p-md', toneTokens.sky.border)}
           >
             <header className="flex items-center justify-between gap-2">
               <span
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider font-bold',
                   toneTokens.sky.chip,
                 )}
@@ -132,7 +131,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                 no
               </span>
               <span
-                className={cn('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
+                className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
               >
                 normal path
               </span>
@@ -151,7 +150,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                     </PathBox>
                     {step.description && (
                       <span
-                        className={cn(
+                        className={cx(
                           'mt-1 text-xxsm font-mono uppercase tracking-wider text-center',
                           toneTokens.violet.text,
                         )}
@@ -162,7 +161,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                     {!isLast && (
                       <ChevronDown
                         aria-hidden="true"
-                        className={cn('mx-auto my-1 h-4 w-4', toneTokens.sky.text)}
+                        className={cx('mx-auto my-1 h-4 w-4', toneTokens.sky.text)}
                       />
                     )}
                   </li>
@@ -187,11 +186,11 @@ const PathBox = ({ tone, children, mono, filled }: PathBoxProps) => {
   const t = toneTokens[tone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex w-full items-center justify-center rounded-lg border px-md py-2',
         filled
-          ? cn(t.fill.bg, t.fill.border, t.fill.text)
-          : cn('bg-[var(--term-bg)]', t.border, t.text),
+          ? cx(t.fill.bg, t.fill.border, t.fill.text)
+          : cx('bg-[var(--term-bg)]', t.border, t.text),
         mono ? 'font-mono break-all' : 'break-keep',
         'text-xsm sm:text-sm font-bold leading-tight text-center',
       )}

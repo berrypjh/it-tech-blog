@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Component, Info, SquareFunction, Tag } from 'lucide-react';
 
 import { GithubButton } from '../../../shared/code';
@@ -58,7 +57,7 @@ const InfoCard = ({ info }: { info: Content['info'] }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-1 flex-col gap-sm rounded-2xl border p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -69,7 +68,7 @@ const InfoCard = ({ info }: { info: Content['info'] }) => {
         <ToneIconBox tone="sky" size="md">
           <Info className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
+        <h3 className={cx('font-mono text-sm sm:text-md font-extrabold tracking-tight', t.text)}>
           {info.title}
         </h3>
       </header>

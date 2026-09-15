@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { MoveDown, MoveRight, MoveUp } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
@@ -55,7 +54,7 @@ export const FiberTreeHeroDiagram = ({ content, className }: Props) => {
 
 const NodeRow = ({ node, index }: { node: TreeNode; index: number }) => (
   <div
-    className={cn(
+    className={cx(
       'flex items-center gap-2.5 rounded-xl border px-3 py-2',
       'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -79,7 +78,7 @@ const PointerEdge = ({ kind }: { kind: PointerKind }) => {
     <div className="flex items-center gap-2 py-1 pl-3">
       <DownArrow />
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5',
           'font-mono text-[10px] font-bold uppercase tracking-wider',
           t.chip,
@@ -110,7 +109,7 @@ const Legend = ({
         return (
           <li key={item.kind} className="flex items-center gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
                 t.chip,
               )}

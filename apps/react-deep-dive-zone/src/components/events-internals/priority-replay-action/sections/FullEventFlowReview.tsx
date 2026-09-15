@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowDown,
   ArrowRight,
@@ -45,7 +44,7 @@ export const FullEventFlowReview = ({ content }: Props) => (
     />
 
     <ol
-      className={cn(
+      className={cx(
         'grid items-stretch gap-2 sm:gap-3',
         'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-9',
       )}
@@ -56,7 +55,7 @@ export const FullEventFlowReview = ({ content }: Props) => (
         return (
           <li
             key={step.title}
-            className={cn(
+            className={cx(
               'group relative flex flex-col items-center gap-2 rounded-2xl border-2 p-3 transition-all text-center',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               toneCard[step.tone],
@@ -64,7 +63,7 @@ export const FullEventFlowReview = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'absolute -top-3 inline-flex h-7 w-7 items-center justify-center rounded-full',
                 'text-[11px] font-mono font-bold tabular-nums shadow-[0_2px_0_var(--term-border)]',
                 toneNumber[step.tone],
@@ -74,7 +73,7 @@ export const FullEventFlowReview = ({ content }: Props) => (
             </span>
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'mt-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white dark:bg-slate-950/40',
                 toneAccent[step.tone],
               )}

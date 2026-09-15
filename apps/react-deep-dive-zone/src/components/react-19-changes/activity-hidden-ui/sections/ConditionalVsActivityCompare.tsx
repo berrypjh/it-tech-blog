@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActivityHiddenUiContent } from '../content';
 import { CheckCircleIcon, XCircleIcon } from '../icons';
@@ -21,7 +21,7 @@ export const ConditionalVsActivityCompare = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-[minmax(0,_5fr)_auto_minmax(0,_5fr)] lg:gap-md items-stretch">
       {/* Before */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-rose-200/80 bg-rose-50/40 dark:border-rose-800/70 dark:bg-rose-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -63,7 +63,7 @@ export const ConditionalVsActivityCompare = ({ content }: Props) => (
       <div className="flex lg:flex-col items-center justify-center">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-12 w-12 items-center justify-center rounded-full border-2',
             'border-blue-300 bg-blue-50 text-blue-700',
             'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-200',
@@ -77,7 +77,7 @@ export const ConditionalVsActivityCompare = ({ content }: Props) => (
 
       {/* After */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/40 dark:border-teal-700/70 dark:bg-teal-950/30',
           'shadow-[0_2px_0_var(--term-border)]',

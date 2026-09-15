@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Clock3, Cog, Compass, PlayCircle, Plus, RotateCcw, XCircle, Zap } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -67,7 +66,7 @@ export const TaskQueueLab = ({ content }: Props) => {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(0,4fr)] gap-md items-stretch">
         {/* LEFT: action panel */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -92,7 +91,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                   <button
                     type="button"
                     onClick={() => addTask(action)}
-                    className={cn(
+                    className={cx(
                       'w-full inline-flex items-center gap-3 rounded-xl border-2 p-3 transition-all text-left',
                       'motion-safe:hover:-translate-y-0.5 motion-reduce:transform-none',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
@@ -104,7 +103,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                         pkgIconBox[action.accent],
                       )}
@@ -113,7 +112,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                     </span>
                     <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                       <span
-                        className={cn(
+                        className={cx(
                           'font-mono text-xsm sm:text-sm font-bold leading-tight break-keep',
                           pkgTextStrong[action.accent],
                         )}
@@ -121,7 +120,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                         {action.label}
                       </span>
                       <span
-                        className={cn(
+                        className={cx(
                           'font-mono text-[10px] uppercase tracking-wider',
                           pkgTextStrong[action.accent],
                         )}
@@ -131,7 +130,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                     </div>
                     <Plus
                       aria-hidden="true"
-                      className={cn('h-4 w-4 shrink-0', pkgTextStrong[action.accent])}
+                      className={cx('h-4 w-4 shrink-0', pkgTextStrong[action.accent])}
                     />
                   </button>
                 </li>
@@ -143,7 +142,7 @@ export const TaskQueueLab = ({ content }: Props) => {
             type="button"
             onClick={handleReset}
             disabled={!hasWork}
-            className={cn(
+            className={cx(
               'mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2.5',
               'font-bold text-xsm sm:text-sm transition-all',
               'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
@@ -162,7 +161,7 @@ export const TaskQueueLab = ({ content }: Props) => {
         {/* CENTER: current task queue */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'border-teal-300/80 bg-gradient-to-br from-teal-50/70 via-white to-blue-50/30',
             'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-blue-950/10',
@@ -188,7 +187,7 @@ export const TaskQueueLab = ({ content }: Props) => {
 
           {sortedTasks.length === 0 ? (
             <div
-              className={cn(
+              className={cx(
                 'flex items-center justify-center gap-2 rounded-xl border-2 border-dashed py-md',
                 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
               )}
@@ -201,7 +200,7 @@ export const TaskQueueLab = ({ content }: Props) => {
               {sortedTasks.map((task, i) => (
                 <li
                   key={task.id}
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-3 rounded-xl border-2 p-3',
                     pkgPill[task.action.accent],
                   )}
@@ -213,7 +212,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                     #{String(i + 1).padStart(2, '0')}
                   </span>
                   <span
-                    className={cn(
+                    className={cx(
                       'font-mono text-xsm sm:text-sm font-bold break-keep',
                       pkgTextStrong[task.action.accent],
                     )}
@@ -235,7 +234,7 @@ export const TaskQueueLab = ({ content }: Props) => {
 
         {/* RIGHT: status */}
         <article
-          className={cn(
+          className={cx(
             'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
             'shadow-[0_2px_0_var(--term-border)]',
             hasWork
@@ -246,7 +245,7 @@ export const TaskQueueLab = ({ content }: Props) => {
           <header className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                 hasWork
                   ? 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-200 dark:border-blue-800/60'
@@ -274,7 +273,7 @@ export const TaskQueueLab = ({ content }: Props) => {
                 {content.nextLabel}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold',
                   nextTask ? pkgTextStrong[nextTask.action.accent] : 'text-[var(--term-muted)]',
                 )}
@@ -285,7 +284,7 @@ export const TaskQueueLab = ({ content }: Props) => {
           </dl>
 
           <p
-            className={cn(
+            className={cx(
               'inline-flex items-center self-start gap-2 rounded-full border-2 px-3 py-1.5',
               'font-mono text-xsm sm:text-sm font-bold',
               hasWork
@@ -295,7 +294,7 @@ export const TaskQueueLab = ({ content }: Props) => {
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-block h-2 w-2 rounded-full',
                 hasWork ? 'bg-blue-500 dark:bg-blue-400' : 'bg-[var(--term-dim)]',
               )}

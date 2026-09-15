@@ -2,8 +2,7 @@
 
 import { type ComponentType, type ReactNode, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   AlertTriangle,
   CheckCircle2,
@@ -118,7 +117,7 @@ const ContactButton = ({ name, active, onClick }: ContactButtonProps) => (
     type="button"
     aria-pressed={active}
     onClick={onClick}
-    className={cn(
+    className={cx(
       'inline-flex items-center rounded-lg border-2 px-md py-1.5 text-xsm font-bold transition-colors',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
       active
@@ -144,7 +143,7 @@ const Column = ({ tone, title, code, Icon, result, ResultIcon, children }: Colum
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
         'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         t.fill.border,
@@ -155,7 +154,7 @@ const Column = ({ tone, title, code, Icon, result, ResultIcon, children }: Colum
           <Icon className="h-4 w-4" />
         </ToneIconBox>
         <div className="flex flex-col min-w-0">
-          <span className={cn('text-sm font-bold tracking-tight', t.text)}>{title}</span>
+          <span className={cx('text-sm font-bold tracking-tight', t.text)}>{title}</span>
           <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">{code}</code>
         </div>
       </header>
@@ -163,7 +162,7 @@ const Column = ({ tone, title, code, Icon, result, ResultIcon, children }: Colum
       {children}
 
       <p
-        className={cn(
+        className={cx(
           'mt-auto flex items-start gap-2 rounded-lg border px-sm py-2',
           'text-xsm font-bold leading-snug break-keep',
           t.chip,
@@ -193,7 +192,7 @@ const ChatBox = ({ contactName, label, placeholder }: ChatBoxProps) => {
           onChange={(e) => setDraft(e.target.value)}
           placeholder={placeholder}
           aria-label={`${label} — ${contactName}`}
-          className={cn(
+          className={cx(
             'min-w-0 flex-1 rounded-md border-2 px-3 py-2 font-mono text-xsm',
             'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] placeholder:text-[var(--term-dim)]',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)]',

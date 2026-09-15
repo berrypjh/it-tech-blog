@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Code, Settings } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -83,7 +82,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens[tone].text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens[tone].text)}>
         {label}
       </span>
       <span

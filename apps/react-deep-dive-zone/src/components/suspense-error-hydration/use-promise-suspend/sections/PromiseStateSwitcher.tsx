@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, Hourglass, Play, TriangleAlert } from 'lucide-react';
 
 import type { UsePromiseSuspendContent } from '../content';
@@ -36,7 +35,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'grid grid-cols-1 gap-md rounded-3xl border-2 p-md sm:p-lg',
           'lg:grid-cols-[minmax(0,3fr)_minmax(0,5fr)_minmax(0,4fr)]',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -59,18 +58,18 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setSelected(opt.state)}
-                    className={cn(
+                    className={cx(
                       'w-full text-left rounded-xl border-2 p-3 transition-all',
                       'flex items-center gap-2.5',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                       isActive
-                        ? cn(optAccent.border, optAccent.bg)
+                        ? cx(optAccent.border, optAccent.bg)
                         : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-700 dark:bg-[var(--term-bg)] dark:hover:border-slate-600',
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border',
                         optAccent.iconChip,
                       )}
@@ -79,7 +78,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                     </span>
                     <span className="flex flex-col gap-0 min-w-0">
                       <span
-                        className={cn(
+                        className={cx(
                           'text-xsm font-mono font-bold break-keep',
                           isActive ? optAccent.text : 'text-[var(--term-fg)]',
                         )}
@@ -93,7 +92,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                     {isActive && (
                       <CheckCircle2
                         aria-hidden="true"
-                        className={cn('h-4 w-4 shrink-0 ml-auto', optAccent.text)}
+                        className={cx('h-4 w-4 shrink-0 ml-auto', optAccent.text)}
                       />
                     )}
                   </button>
@@ -106,7 +105,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
         {/* CENTER: result card */}
         <article
           aria-live="polite"
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-2xl border-2 p-md transition-colors',
             accent.border,
             accent.bg,
@@ -114,7 +113,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
         >
           <header className="flex items-center justify-between gap-2">
             <span
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-3 py-1',
                 'text-[10px] font-mono font-bold uppercase tracking-wider',
                 accent.chip,
@@ -123,7 +122,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
               {content.resultLabel}
             </span>
           </header>
-          <h3 className={cn('text-lg font-bold break-keep', accent.text)}>{result.title}</h3>
+          <h3 className={cx('text-lg font-bold break-keep', accent.text)}>{result.title}</h3>
           <p className="text-xsm leading-relaxed text-[var(--term-fg)] break-keep">
             {result.description}
           </p>
@@ -142,7 +141,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
 
         {/* RIGHT: timeline */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-2xl border-2 p-md',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
           )}
@@ -160,10 +159,10 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
               return (
                 <li key={i} className="flex flex-col gap-1">
                   <div
-                    className={cn(
+                    className={cx(
                       'flex items-center gap-2 rounded-lg border px-2.5 py-1.5',
                       isHighlighted && sAccent
-                        ? cn(
+                        ? cx(
                             sAccent.border,
                             sAccent.bg,
                             'ring-2',
@@ -174,7 +173,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                         step.state
                           ? stateAccent[step.state].solidBg
@@ -184,7 +183,7 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                       {i + 1}
                     </span>
                     <span
-                      className={cn(
+                      className={cx(
                         'text-[11px] font-mono font-bold break-keep',
                         isHighlighted && sAccent ? sAccent.text : 'text-[var(--term-fg)]',
                       )}
@@ -221,16 +220,16 @@ export const PromiseStateSwitcher = ({ content }: Props) => {
                 <li key={i} className="flex items-center gap-2">
                   <ArrowRight
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'h-3.5 w-3.5 shrink-0',
                       isHighlighted ? sAccent.text : 'text-rose-400 dark:text-rose-500',
                     )}
                   />
                   <span
-                    className={cn(
+                    className={cx(
                       'flex-1 rounded-lg border px-2.5 py-1.5 text-[11px] font-mono font-bold break-keep',
                       isHighlighted
-                        ? cn(sAccent.border, sAccent.bg, sAccent.text)
+                        ? cx(sAccent.border, sAccent.bg, sAccent.text)
                         : 'border-rose-200 bg-rose-50/50 text-rose-700 dark:border-rose-800/60 dark:bg-rose-950/20 dark:text-rose-200',
                     )}
                   >

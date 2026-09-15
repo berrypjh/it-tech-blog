@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Code2, FunctionSquare, Info } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -40,7 +39,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
     </div>
 
     <aside
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
         amber.border,
       )}
@@ -49,7 +48,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
         <ToneIconBox tone="amber" size="sm">
           <Info className="h-3.5 w-3.5" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold break-keep', amber.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold break-keep', amber.text)}>
           {content.sideNote.title}
         </h3>
       </header>
@@ -60,7 +59,7 @@ export const SetCountToDispatchSection = ({ content }: Props) => (
         {content.sideNote.tags.map((tag) => (
           <li
             key={tag}
-            className={cn(
+            className={cx(
               'rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
               amber.chip,
             )}
@@ -84,7 +83,7 @@ const CodeComparePanel = ({ tone, title, code, icon }: PanelProps) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -94,7 +93,7 @@ const CodeComparePanel = ({ tone, title, code, icon }: PanelProps) => {
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
           {title}
         </h3>
       </header>

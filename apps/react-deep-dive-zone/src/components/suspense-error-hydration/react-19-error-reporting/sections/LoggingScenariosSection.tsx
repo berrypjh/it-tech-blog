@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, RefreshCcw, ShieldCheck } from 'lucide-react';
 
 import type { React19ErrorReportingContent } from '../content';
@@ -20,7 +19,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
         return (
           <article
             key={card.title}
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
               accent.border,
               accent.bg,
@@ -31,14 +30,14 @@ export const LoggingScenariosSection = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   accent.iconChip,
                 )}
               >
                 <Icon className="h-4 w-4" />
               </span>
-              <h3 className={cn('text-md font-bold break-keep', accent.text)}>{card.title}</h3>
+              <h3 className={cx('text-md font-bold break-keep', accent.text)}>{card.title}</h3>
             </header>
 
             <ol className="flex flex-col gap-1.5">
@@ -47,7 +46,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                 return (
                   <li key={step} className="flex flex-col gap-0.5">
                     <div
-                      className={cn(
+                      className={cx(
                         'flex items-center gap-2 rounded-lg border bg-white px-2.5 py-1.5',
                         'dark:bg-[var(--term-bg)]',
                         accent.border,
@@ -55,7 +54,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                     >
                       <span
                         aria-hidden="true"
-                        className={cn(
+                        className={cx(
                           'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                           accent.solidBg,
                         )}
@@ -69,7 +68,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                     {!isLast && (
                       <ArrowRight
                         aria-hidden="true"
-                        className={cn('h-3.5 w-3.5 ml-2 rotate-90', accent.text)}
+                        className={cx('h-3.5 w-3.5 ml-2 rotate-90', accent.text)}
                       />
                     )}
                   </li>
@@ -85,7 +84,7 @@ export const LoggingScenariosSection = ({ content }: Props) => (
                 >
                   <CheckCircle2
                     aria-hidden="true"
-                    className={cn('mt-0.5 h-4 w-4 shrink-0', accent.text)}
+                    className={cx('mt-0.5 h-4 w-4 shrink-0', accent.text)}
                   />
                   <span>{check}</span>
                 </li>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MetadataResourceContent } from '../content';
 import {
@@ -35,7 +35,7 @@ export const HeadHoistingSimulator = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -64,16 +64,16 @@ export const HeadHoistingSimulator = ({ content }: Props) => {
               type="button"
               aria-pressed={hoisted}
               onClick={() => setHoisted((prev) => !prev)}
-              className={cn(
+              className={cx(
                 'group inline-flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3',
                 'transition-all motion-safe:hover:-translate-y-0.5',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
                 hoisted
-                  ? cn(
+                  ? cx(
                       'border-emerald-500 bg-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-400',
                       'shadow-[0_3px_0_var(--term-border)]',
                     )
-                  : cn(
+                  : cx(
                       'border-blue-500 bg-blue-600 text-white dark:bg-blue-500 dark:border-blue-400',
                       'shadow-[0_3px_0_var(--term-border)]',
                     ),
@@ -117,7 +117,7 @@ export const HeadHoistingSimulator = ({ content }: Props) => {
               </h3>
             </header>
             <div
-              className={cn(
+              className={cx(
                 'rounded-2xl border-2 transition-all',
                 hoisted
                   ? 'border-emerald-300/80 dark:border-emerald-700/70 shadow-[0_3px_0_var(--term-border)]'
@@ -131,7 +131,7 @@ export const HeadHoistingSimulator = ({ content }: Props) => {
 
         {/* Note */}
         <div
-          className={cn(
+          className={cx(
             'mt-md flex items-start gap-2 rounded-xl border-2 px-3 py-3',
             'border-blue-300/80 bg-blue-50/40 dark:border-blue-700/70 dark:bg-blue-950/30',
           )}

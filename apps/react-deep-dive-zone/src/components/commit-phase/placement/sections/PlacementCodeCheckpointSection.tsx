@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, FileCode, ListChecks, PackageOpen } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
@@ -71,7 +70,7 @@ const CommentsCard = ({ title, comments }: { title: string; comments: string[] }
   const t = toneTokens.violet;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-lg border-2 p-md sm:p-lg',
         t.fill.border,
         t.fill.bg,
@@ -82,7 +81,7 @@ const CommentsCard = ({ title, comments }: { title: string; comments: string[] }
         <ToneIconBox tone="violet" size="sm">
           <ListChecks className="h-4 w-4" aria-hidden="true" />
         </ToneIconBox>
-        <h3 className={cn('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
+        <h3 className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.text)}>
           {title}
         </h3>
       </header>
@@ -90,14 +89,14 @@ const CommentsCard = ({ title, comments }: { title: string; comments: string[] }
         {comments.map((c, idx) => (
           <li
             key={c}
-            className={cn(
+            className={cx(
               'flex items-start gap-2 text-xsm sm:text-sm leading-snug break-keep',
               t.fill.text,
             )}
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-[10px] font-mono font-bold tabular-nums',
                 t.chip,
               )}

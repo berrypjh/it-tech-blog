@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseEffectEventContent } from '../content';
 import { CheckCircleIcon, XCircleIcon } from '../icons';
@@ -18,7 +18,7 @@ export const BeforeAfterBehaviorTable = ({ content }: Props) => (
     />
 
     <div
-      className={cn(
+      className={cx(
         'overflow-hidden rounded-2xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -59,7 +59,7 @@ export const BeforeAfterBehaviorTable = ({ content }: Props) => (
             {content.rows.map((row, i) => (
               <tr
                 key={row.topic}
-                className={cn(
+                className={cx(
                   'border-t border-slate-200 dark:border-slate-700',
                   i % 2 === 1 && 'bg-slate-50/40 dark:bg-slate-900/30',
                 )}
@@ -109,7 +109,7 @@ export const BeforeAfterBehaviorTable = ({ content }: Props) => (
         {content.rows.map((row, i) => (
           <li
             key={row.topic}
-            className={cn(
+            className={cx(
               'flex flex-col gap-sm p-md',
               i > 0 && 'border-t border-slate-200 dark:border-slate-700',
             )}

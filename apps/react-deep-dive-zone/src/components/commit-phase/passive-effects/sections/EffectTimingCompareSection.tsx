@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitCompareArrows, Lightbulb } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
@@ -35,7 +34,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
     />
 
     <aside
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border-2 p-md',
         toneTokens.sky.fill.border,
         toneTokens.sky.fill.bg,
@@ -44,7 +43,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
       <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
         <Lightbulb className="h-4 w-4" aria-hidden="true" />
       </ToneIconBox>
-      <p className={cn('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}>
+      <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}>
         {content.note}
       </p>
     </aside>
@@ -54,7 +53,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
 const HookLabel = ({ row }: { row: CompareRow }) => {
   const t = toneTokens[row.timing.tone];
   return (
-    <code className={cn('text-xsm sm:text-sm font-bold font-mono break-all', t.text)}>
+    <code className={cx('text-xsm sm:text-sm font-bold font-mono break-all', t.text)}>
       {row.hook}
     </code>
   );
@@ -74,11 +73,11 @@ const TimingCell = ({ row }: { row: CompareRow }) => {
   const t = toneTokens[row.timing.tone];
   return (
     <div className="flex flex-col gap-1">
-      <code className={cn('text-xsm font-bold font-mono break-all', t.fill.text)}>
+      <code className={cx('text-xsm font-bold font-mono break-all', t.fill.text)}>
         {row.timing.phase}
       </code>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center self-start rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
           t.chip,
         )}

@@ -2,8 +2,7 @@
 
 import { Fragment, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, GitBranch, Network, Sparkles } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -63,17 +62,17 @@ export const FlowDiagramSection = ({ content }: Props) => {
                   setActiveId(next.id);
                   document.getElementById(`flow-tab-${next.id}`)?.focus();
                 }}
-                className={cn(
+                className={cx(
                   'inline-flex items-center gap-2 rounded-md border-2 px-3 py-2',
                   'transition-all',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                   isActive
-                    ? cn(
+                    ? cx(
                         'border-blue-400 bg-blue-50 text-blue-800',
                         'dark:border-blue-600/80 dark:bg-blue-950/40 dark:text-blue-100',
                         'shadow-[0_2px_0_var(--term-border)]',
                       )
-                    : cn(
+                    : cx(
                         'border-[var(--term-border)] bg-white text-[var(--term-fg)]',
                         'dark:bg-[var(--term-bg)]',
                         'hover:border-blue-300',
@@ -94,7 +93,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
           aria-labelledby={`flow-tab-${active.id}`}
           aria-live="polite"
           tabIndex={0}
-          className={cn(
+          className={cx(
             'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
             'border-blue-200 bg-blue-50/40',
             'dark:border-blue-800/60 dark:bg-blue-950/20',
@@ -103,7 +102,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
         >
           {/* Flow */}
           <ul
-            className={cn(
+            className={cx(
               'flex flex-wrap items-center gap-1.5 rounded-lg border-2 p-md',
               'border-blue-300 bg-white',
               'dark:border-blue-700/70 dark:bg-[var(--term-bg)]',
@@ -113,7 +112,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
               <Fragment key={`${active.id}-${i}`}>
                 <li>
                   <code
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center gap-1.5 rounded-full border-2 px-2.5 py-1',
                       'border-blue-300 bg-blue-50 text-blue-800',
                       'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -152,7 +151,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
 
         {/* Emphasis banner */}
         <aside
-          className={cn(
+          className={cx(
             'mt-md flex items-start gap-3 rounded-xl border-2 p-md',
             'border-violet-300 bg-violet-50 text-violet-900',
             'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-100',
@@ -161,7 +160,7 @@ export const FlowDiagramSection = ({ content }: Props) => {
         >
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
               'border border-violet-300 bg-white text-violet-700',
               'dark:border-violet-700/70 dark:bg-[var(--term-bg)] dark:text-violet-200',

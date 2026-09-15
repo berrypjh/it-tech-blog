@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ListOrdered } from 'lucide-react';
 
 import { toneTokens } from '../../../shared/tones';
@@ -12,12 +11,12 @@ type Props = { highLabel: string; lowLabel: string; className?: string };
  */
 export const PriorityRail = ({ highLabel, lowLabel, className }: Props) => {
   return (
-    <div className={cn('flex flex-col gap-2', className)}>
+    <div className={cx('flex flex-col gap-2', className)}>
       {/* 레일 본체 */}
       <div className="relative h-6">
         <div
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'absolute inset-0 rounded-full',
             'bg-[var(--term-surface)]',
             'border border-[var(--term-border)]',
@@ -33,7 +32,7 @@ export const PriorityRail = ({ highLabel, lowLabel, className }: Props) => {
           <span
             key={i}
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'absolute top-1/2 -translate-x-1/2 -translate-y-1/2',
               'inline-flex items-center justify-center w-4 h-4 rounded-full',
               'border-2 border-[var(--term-bg)]',

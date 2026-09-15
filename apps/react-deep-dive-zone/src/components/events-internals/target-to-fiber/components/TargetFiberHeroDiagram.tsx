@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Globe } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -53,7 +52,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
           tag={fiberCard.tag}
         />
         <dl
-          className={cn(
+          className={cx(
             'grid grid-cols-[auto_minmax(0,1fr)] overflow-hidden rounded-lg border',
             'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -61,7 +60,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
           {fiberCard.rows.map((row, i) => (
             <div key={row.key} className="contents">
               <dt
-                className={cn(
+                className={cx(
                   'px-md py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-300',
                   i > 0 && 'border-t border-[var(--term-border)]',
                 )}
@@ -69,7 +68,7 @@ export const TargetFiberHeroDiagram = ({ content, className }: Props) => {
                 {row.key}
               </dt>
               <dd
-                className={cn(
+                className={cx(
                   'break-all px-md py-2 font-mono text-[11px] text-[var(--term-fg)]',
                   i > 0 && 'border-t border-[var(--term-border)]',
                 )}
@@ -108,12 +107,12 @@ const StepHeader = ({
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
           {eyebrow}
         </span>
-        <span className={cn('truncate text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('truncate text-sm font-bold tracking-tight break-keep', t.text)}>
           {label}
         </span>
       </div>
       <span
-        className={cn(
+        className={cx(
           'ml-auto shrink-0 rounded-md border px-2 py-0.5 font-mono text-[10px] font-bold',
           t.chip,
         )}

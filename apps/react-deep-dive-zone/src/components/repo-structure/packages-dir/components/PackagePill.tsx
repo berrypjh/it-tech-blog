@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { toneTokens } from '../../../shared/tones';
 import type { ToneKey } from '../content';
@@ -17,7 +17,7 @@ export const PackagePill = ({ label, tone, emphasis = 'core', icon, className }:
 
   const variantClass =
     emphasis === 'core'
-      ? cn(
+      ? cx(
           'shadow-[0_2px_0_var(--term-border)] font-bold text-[var(--term-fg)]',
           'border-[var(--term-border)]',
           t ? t.chip : 'bg-[var(--term-surface)]',
@@ -28,14 +28,14 @@ export const PackagePill = ({ label, tone, emphasis = 'core', icon, className }:
 
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xsm tracking-tight font-mono',
         variantClass,
         className,
       )}
     >
       {icon && (
-        <span aria-hidden="true" className={cn('shrink-0', t?.text)}>
+        <span aria-hidden="true" className={cx('shrink-0', t?.text)}>
           {icon}
         </span>
       )}

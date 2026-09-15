@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Hourglass, PlugZap, TriangleAlert } from 'lucide-react';
 
 import type { BranchKind, WhyFailableRenderContent } from '../content';
@@ -29,7 +28,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
 
     {/* Desktop: table */}
     <div
-      className={cn(
+      className={cx(
         'hidden md:block overflow-hidden rounded-3xl border-2',
         'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)]',
@@ -41,7 +40,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
           <tr>
             <th
               scope="col"
-              className={cn(
+              className={cx(
                 'w-[160px] border-b-2 border-slate-200 px-md py-3 text-left',
                 'text-xsm font-bold text-slate-600 dark:text-slate-300 dark:border-slate-700',
                 'bg-slate-50/70 dark:bg-slate-900/40',
@@ -56,14 +55,14 @@ export const RoleComparisonTable = ({ content }: Props) => (
                 <th
                   key={col.kind}
                   scope="col"
-                  className={cn(
+                  className={cx(
                     'border-b-2 border-slate-200 px-md py-3 text-left dark:border-slate-700',
                   )}
                 >
                   <div className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                         accent.chip,
                       )}
@@ -71,7 +70,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
                       <Icon className="h-4 w-4" />
                     </span>
                     <div className="flex flex-col">
-                      <span className={cn('text-sm font-bold', accent.text)}>{col.label}</span>
+                      <span className={cx('text-sm font-bold', accent.text)}>{col.label}</span>
                       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                         {col.sub}
                       </span>
@@ -86,7 +85,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
           {content.rows.map((row, i) => (
             <tr
               key={row.label}
-              className={cn(
+              className={cx(
                 i % 2 === 0
                   ? 'bg-white dark:bg-[var(--term-bg)]'
                   : 'bg-slate-50/50 dark:bg-slate-900/30',
@@ -121,7 +120,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
         return (
           <article
             key={col.kind}
-            className={cn(
+            className={cx(
               'rounded-2xl border-2 p-md',
               accent.border,
               'bg-white dark:bg-[var(--term-bg)]',
@@ -131,7 +130,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
             <header className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
                   accent.chip,
                 )}
@@ -139,7 +138,7 @@ export const RoleComparisonTable = ({ content }: Props) => (
                 <Icon className="h-4 w-4" />
               </span>
               <div className="flex flex-col">
-                <span className={cn('text-sm font-bold', accent.text)}>{col.label}</span>
+                <span className={cx('text-sm font-bold', accent.text)}>{col.label}</span>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
                   {col.sub}
                 </span>

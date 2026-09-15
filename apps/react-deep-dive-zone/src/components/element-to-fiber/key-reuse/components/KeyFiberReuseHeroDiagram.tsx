@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Fingerprint, KeyRound } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -22,7 +21,7 @@ export const KeyFiberReuseHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -51,7 +50,7 @@ export const KeyFiberReuseHeroDiagram = ({ content, className }: Props) => {
 
 const ListBlock = ({ label, items }: { label: string; items: ListItem[] }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -77,10 +76,10 @@ const KeyChipRow = ({ item }: { item: ListItem }) => {
         <ToneIconBox tone={item.tone} size="sm">
           <span className="font-mono text-sm font-extrabold">{item.label}</span>
         </ToneIconBox>
-        <code className={cn('font-mono text-sm font-extrabold', t.text)}>{item.label}</code>
+        <code className={cx('font-mono text-sm font-extrabold', t.text)}>{item.label}</code>
       </span>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
           t.chip,
         )}
@@ -98,7 +97,7 @@ const TrackingStep = ({ label }: { label: string }) => {
     <div className="flex flex-col items-center gap-sm">
       <DownArrow />
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
           'font-mono text-[10px] font-bold uppercase tracking-wider',
           t.chip,
@@ -116,7 +115,7 @@ const ResultBlock = ({ title, items }: { title: string; items: string[] }) => {
   const t = toneTokens.sky;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -132,7 +131,7 @@ const ResultBlock = ({ title, items }: { title: string; items: string[] }) => {
           {items.map((item) => (
             <li
               key={item}
-              className={cn(
+              className={cx(
                 'inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[11px] font-bold',
                 t.chip,
               )}

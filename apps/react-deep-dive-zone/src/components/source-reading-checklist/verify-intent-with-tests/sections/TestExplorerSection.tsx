@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, FileCheck2, FileCode2, ScanSearch, TestTube } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -30,7 +29,7 @@ export const TestExplorerSection = ({ content }: Props) => {
       />
 
       <div
-        className={cn(
+        className={cx(
           'rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white shadow-[0_3px_0_var(--term-border)]',
           'dark:border-slate-700 dark:bg-[var(--term-bg)]',
@@ -52,17 +51,17 @@ export const TestExplorerSection = ({ content }: Props) => {
                     aria-pressed={isActive}
                     aria-controls="test-explorer-result"
                     onClick={() => setActiveId(opt.id)}
-                    className={cn(
+                    className={cx(
                       'group flex items-center gap-3 rounded-xl border-2 p-3 text-left',
                       'transition-all',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]',
                       isActive
-                        ? cn(
+                        ? cx(
                             'border-violet-400 bg-violet-50 text-violet-800',
                             'dark:border-violet-600/80 dark:bg-violet-950/40 dark:text-violet-100',
                             'shadow-[0_2px_0_var(--term-border)]',
                           )
-                        : cn(
+                        : cx(
                             'border-[var(--term-border)] bg-white dark:bg-[var(--term-bg)]',
                             'hover:border-violet-300 dark:hover:border-violet-700/70',
                             'motion-safe:hover:-translate-y-0.5',
@@ -71,7 +70,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border-2',
                         isActive
                           ? 'border-violet-400 bg-white text-violet-700 dark:border-violet-600/80 dark:bg-[var(--term-bg)] dark:text-violet-200'
@@ -81,7 +80,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                       <FileCheck2 className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                     <code
-                      className={cn(
+                      className={cx(
                         'font-mono text-xsm sm:text-sm font-bold truncate',
                         isActive ? 'text-violet-800 dark:text-violet-100' : 'text-[var(--term-fg)]',
                       )}
@@ -104,7 +103,7 @@ export const TestExplorerSection = ({ content }: Props) => {
           <article
             id="test-explorer-result"
             aria-live="polite"
-            className={cn(
+            className={cx(
               'flex flex-col gap-md rounded-xl border-2 p-md sm:p-lg',
               'border-violet-200 bg-gradient-to-br from-violet-50/60 via-white to-emerald-50/30',
               'dark:border-violet-800/60 dark:from-violet-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/20',
@@ -117,7 +116,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                 {content.labels.file}
               </span>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex w-fit items-center gap-2 overflow-x-auto rounded-md border-2 px-2.5 py-1.5',
                   'border-violet-400 bg-violet-50 text-violet-800',
                   'dark:border-violet-600/80 dark:bg-violet-950/40 dark:text-violet-100',
@@ -139,7 +138,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                 {active.checks.map((check) => (
                   <li key={check}>
                     <div
-                      className={cn(
+                      className={cx(
                         'flex items-start gap-2 rounded-md border px-2.5 py-1.5',
                         'border-emerald-300 bg-emerald-50 text-emerald-900',
                         'dark:border-emerald-700/70 dark:bg-emerald-950/30 dark:text-emerald-100',
@@ -165,7 +164,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                 {active.related.map((impl) => (
                   <li key={impl}>
                     <code
-                      className={cn(
+                      className={cx(
                         'inline-flex items-center gap-1.5 rounded-md border px-2 py-1',
                         'border-blue-300 bg-blue-50 text-blue-800',
                         'dark:border-blue-700/70 dark:bg-blue-950/40 dark:text-blue-100',
@@ -186,7 +185,7 @@ export const TestExplorerSection = ({ content }: Props) => {
                 {content.labels.readingPoint}
               </span>
               <div
-                className={cn(
+                className={cx(
                   'flex items-start gap-2 rounded-md border-2 p-3',
                   'border-amber-300 bg-amber-50 text-amber-900',
                   'dark:border-amber-700/70 dark:bg-amber-950/40 dark:text-amber-100',

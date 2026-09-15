@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Search } from 'lucide-react';
 
 type MockupKind = 'search-input' | 'skeleton-list' | 'offscreen-placeholder';
@@ -9,7 +8,7 @@ type Props = { kind: MockupKind; placeholder?: string };
 const SearchInputMockup = ({ placeholder = 'real' }: { placeholder?: string }) => (
   <div
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'flex items-center gap-2 rounded-xl border border-blue-200/80 bg-white px-3 py-2',
       'shadow-[0_1px_0_var(--term-border)] dark:border-blue-800/60 dark:bg-slate-950/40',
     )}
@@ -30,7 +29,7 @@ const SearchInputMockup = ({ placeholder = 'real' }: { placeholder?: string }) =
 const SkeletonListMockup = () => (
   <div
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'flex flex-col gap-1.5 rounded-xl border border-violet-200/80 bg-white p-3',
       'dark:border-violet-800/60 dark:bg-slate-950/40',
     )}
@@ -56,7 +55,7 @@ const SkeletonListMockup = () => (
 const OffscreenPlaceholderMockup = () => (
   <div
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'grid grid-cols-3 gap-2 rounded-xl border border-teal-200/80 bg-white p-3',
       'dark:border-teal-800/60 dark:bg-slate-950/40',
     )}

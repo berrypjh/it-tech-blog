@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { MousePointer, Pencil, Puzzle, Zap } from 'lucide-react';
 
 import type { PluginEventSystemContent } from '../content';
@@ -23,7 +22,7 @@ export const WhyPluginSystem = ({ content }: Props) => (
         return (
           <article
             key={card.title}
-            className={cn(
+            className={cx(
               'group flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -33,7 +32,7 @@ export const WhyPluginSystem = ({ content }: Props) => (
             <header className="flex items-center gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
                   'text-[10px] font-mono font-bold tabular-nums',
                   toneNumber[card.tone],
@@ -43,7 +42,7 @@ export const WhyPluginSystem = ({ content }: Props) => (
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                   toneIconBox[card.tone],
                 )}
@@ -53,7 +52,7 @@ export const WhyPluginSystem = ({ content }: Props) => (
             </header>
 
             <h3
-              className={cn(
+              className={cx(
                 'text-sm sm:text-md font-bold leading-tight break-keep',
                 toneAccent[card.tone],
               )}
@@ -66,7 +65,7 @@ export const WhyPluginSystem = ({ content }: Props) => (
             </p>
 
             <code
-              className={cn(
+              className={cx(
                 'mt-auto inline-flex w-fit items-center rounded-md border px-2 py-0.5',
                 'font-mono text-[10px] sm:text-[11px] font-bold break-all',
                 toneIconBox[card.tone],

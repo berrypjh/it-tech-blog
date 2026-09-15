@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileText, Hexagon, Layers, Network } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -47,7 +46,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
         <DownArrow />
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-lg border px-md py-2.5',
             'shadow-[0_3px_0_var(--term-border)]',
             toneTokens.teal.fill.bg,
@@ -59,7 +58,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
               <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
             </ToneIconBox>
             <span
-              className={cn(
+              className={cx(
                 'font-mono text-sm font-bold tracking-tight',
                 toneTokens.teal.fill.text,
               )}
@@ -108,7 +107,7 @@ const FlowCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -119,7 +118,7 @@ const FlowCard = ({
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <span className="flex flex-wrap items-baseline gap-x-2">
-          <span className={cn('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
+          <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{title}</span>
           {mono && (
             <code className="font-mono text-xxsm text-[var(--term-muted)] break-all">{mono}</code>
           )}

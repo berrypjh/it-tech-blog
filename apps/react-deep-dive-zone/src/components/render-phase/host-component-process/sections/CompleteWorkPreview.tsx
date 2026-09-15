@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, ChevronDown, Lightbulb, Sparkles, Workflow } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -31,7 +30,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg items-stretch">
       {/* Left: explanation card */}
       <article
-        className={cn(
+        className={cx(
           'flex items-start gap-md rounded-lg border p-md sm:p-lg',
           'shadow-[0_2px_0_var(--term-border)]',
           toneTokens.amber.border,
@@ -41,7 +40,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
           <Lightbulb className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <p
-          className={cn(
+          className={cx(
             'text-xsm sm:text-sm leading-relaxed font-bold break-keep',
             toneTokens.amber.text,
           )}
@@ -78,7 +77,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
       {/* Right: work items */}
       <article
         aria-labelledby="completework-card-title"
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-lg border p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
           toneTokens.violet.border,
         )}
@@ -89,7 +88,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
           </ToneIconBox>
           <h3
             id="completework-card-title"
-            className={cn('text-sm sm:text-md font-bold break-keep', toneTokens.violet.text)}
+            className={cx('text-sm sm:text-md font-bold break-keep', toneTokens.violet.text)}
           >
             {content.workCardTitle}
           </h3>
@@ -102,7 +101,7 @@ export const CompleteWorkPreview = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full',
                   toneTokens.violet.dot,
                 )}
@@ -121,7 +120,7 @@ const FlowNode = ({ node }: { node: CompleteWorkFlowNode }) => {
   const Arrow = directionIcon[node.direction];
   return (
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2 rounded-lg border p-sm sm:p-md shadow-[0_1px_0_var(--term-border)]',
         t.fill.bg,
         t.fill.border,
@@ -129,12 +128,12 @@ const FlowNode = ({ node }: { node: CompleteWorkFlowNode }) => {
     >
       <span
         aria-hidden="true"
-        className={cn('inline-flex h-9 w-9 items-center justify-center rounded-md border', t.chip)}
+        className={cx('inline-flex h-9 w-9 items-center justify-center rounded-md border', t.chip)}
       >
         <Arrow className="h-4 w-4" />
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
+        <span className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
           {node.title}
         </span>
         <span className="text-xxsm leading-snug text-[var(--term-muted)] break-keep">

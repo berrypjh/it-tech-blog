@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Atom, Braces, FunctionSquare } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -62,7 +61,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{label}</span>
       <span
         aria-hidden="true"
         className="flex-1 border-t border-dashed border-[var(--term-border)]"
@@ -75,7 +74,7 @@ const ResultCard = ({ title, body }: { title: string; body: string }) => {
   const t = toneTokens.teal;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex items-center gap-md rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -85,7 +84,7 @@ const ResultCard = ({ title, body }: { title: string; body: string }) => {
         <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <h3 className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</h3>
+        <h3 className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</h3>
         <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>
       </div>
     </article>

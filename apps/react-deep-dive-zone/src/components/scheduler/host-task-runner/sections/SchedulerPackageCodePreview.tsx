@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileCode, GitBranch, Sparkles } from 'lucide-react';
 
 import { NumberedSectionHeader } from '../../_shared/NumberedSectionHeader';
@@ -41,7 +40,7 @@ const renderToken = (tok: string, i: number) => {
     return (
       <span
         key={i}
-        className={cn(
+        className={cx(
           tok === 'Scheduler_scheduleCallback' && 'text-cyan-300 font-semibold',
           tok === 'performWorkOnRootViaSchedulerTask' && 'text-amber-200 font-semibold',
           tok === 'unstable_scheduleCallback' && 'text-cyan-300 font-semibold',
@@ -80,7 +79,7 @@ const CodeCard = ({
   const lines = card.code.split('\n');
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
         'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
       )}
@@ -88,7 +87,7 @@ const CodeCard = ({
       <header className="flex items-center gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-full text-white font-mono font-bold text-xsm',
             letter === 'A' ? 'bg-blue-600 dark:bg-blue-500' : 'bg-teal-600 dark:bg-teal-500',
           )}
@@ -150,7 +149,7 @@ export const SchedulerPackageCodePreview = ({ content }: Props) => (
       <CodeCard card={content.cardB} letter="B" />
 
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-teal-50/40',
           'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-teal-950/20',
@@ -193,7 +192,7 @@ export const SchedulerPackageCodePreview = ({ content }: Props) => (
           ].map((api) => (
             <li key={api}>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-md border px-2 py-1 font-mono',
                   'border-teal-200/80 bg-teal-50 text-teal-800 text-[10px] sm:text-[11px] font-semibold',
                   'dark:border-teal-800/60 dark:bg-teal-950/40 dark:text-teal-200',
@@ -209,7 +208,7 @@ export const SchedulerPackageCodePreview = ({ content }: Props) => (
           href={content.button.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'mt-auto group inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3',
             'border-2 border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)] font-bold text-xsm sm:text-sm',
             'shadow-[0_2px_0_var(--term-border)] transition-all',

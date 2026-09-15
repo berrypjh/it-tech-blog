@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Code2, Split } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -93,7 +92,7 @@ const sideAccent: Record<'sky' | 'teal', { border: string; text: string }> = {
 
 const SideCard = ({ title, code, examples, accent }: SideProps) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-md rounded-2xl border-2 bg-[var(--term-bg)] p-md sm:p-lg',
       'shadow-[0_2px_0_var(--term-border)] transition-all',
       'motion-safe:hover:-translate-y-0.5',
@@ -103,7 +102,7 @@ const SideCard = ({ title, code, examples, accent }: SideProps) => (
     <header className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-8 w-8 items-center justify-center rounded-lg border',
           accent === 'sky'
             ? 'border-sky-200/80 bg-sky-50 text-sky-700 dark:border-sky-800/60 dark:bg-sky-950/40 dark:text-sky-200'
@@ -112,7 +111,7 @@ const SideCard = ({ title, code, examples, accent }: SideProps) => (
       >
         <Code2 className="h-4 w-4" aria-hidden="true" />
       </span>
-      <h3 className={cn('text-sm sm:text-md font-bold break-keep', sideAccent[accent].text)}>
+      <h3 className={cx('text-sm sm:text-md font-bold break-keep', sideAccent[accent].text)}>
         {title}
       </h3>
     </header>
@@ -141,7 +140,7 @@ const SideCard = ({ title, code, examples, accent }: SideProps) => (
 export const ApiShapeComparison = ({ content }: Props) => (
   <section
     aria-labelledby="heading-api-compare"
-    className={cn(
+    className={cx(
       'rounded-3xl border bg-[var(--term-bg)] p-md sm:p-lg lg:p-xl',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -163,7 +162,7 @@ export const ApiShapeComparison = ({ content }: Props) => (
 
       <div aria-hidden="true" className="flex items-center justify-center">
         <span
-          className={cn(
+          className={cx(
             'inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full',
             'bg-slate-900 text-white font-mono text-sm sm:text-md font-bold tracking-wider',
             'border-4 border-[var(--term-bg)] shadow-[0_3px_0_var(--term-border)]',
@@ -183,7 +182,7 @@ export const ApiShapeComparison = ({ content }: Props) => (
     </div>
 
     <aside
-      className={cn(
+      className={cx(
         'mt-md rounded-2xl border-2 p-md',
         'border-blue-300/70 bg-blue-50/60 dark:border-blue-800/60 dark:bg-blue-950/30',
       )}

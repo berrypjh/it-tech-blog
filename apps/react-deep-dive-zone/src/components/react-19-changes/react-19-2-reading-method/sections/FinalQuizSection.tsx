@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { After192Content, Quiz } from '../content';
 import { CheckCircleIcon, CircleHelpIcon, XCircleIcon } from '../icons';
@@ -51,7 +51,7 @@ const QuizCard = ({
   onPick: (label: 'A' | 'B' | 'C' | 'D') => void;
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex h-full flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
       'border-blue-200/80 bg-white dark:border-blue-800/70 dark:bg-[var(--term-bg)]',
       'shadow-[0_2px_0_var(--term-border)]',
@@ -86,7 +86,7 @@ const QuizCard = ({
               type="button"
               aria-pressed={isPicked}
               onClick={() => onPick(opt.label)}
-              className={cn(
+              className={cx(
                 'group w-full inline-flex items-start gap-2 rounded-xl border-2 px-3 py-2 text-left',
                 'transition-all motion-safe:hover:-translate-y-0.5',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2',
@@ -103,7 +103,7 @@ const QuizCard = ({
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 font-mono text-[10px] font-bold',
                   correctReveal && 'border-emerald-500 bg-emerald-500 text-white',
                   wrongReveal && 'border-rose-500 bg-rose-500 text-white',
@@ -121,7 +121,7 @@ const QuizCard = ({
                 )}
               </span>
               <span
-                className={cn(
+                className={cx(
                   'text-xsm leading-snug break-keep',
                   correctReveal && 'text-emerald-700 dark:text-emerald-200 font-bold',
                   wrongReveal && 'text-rose-700 dark:text-rose-200',

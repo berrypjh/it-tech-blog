@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { ToneIconBox } from '../../../shared/tone';
@@ -25,7 +25,7 @@ export const UseEffectEventHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -92,7 +92,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       <span
@@ -107,13 +107,13 @@ const StepNote = ({ tone, lines }: { tone: ToneKey; lines: readonly [string, str
   const t = toneTokens[tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex flex-col gap-0.5 rounded-xl border bg-[var(--term-bg)] px-md py-2',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         t.borderHover,
       )}
     >
-      <code className={cn('font-mono text-[11px] font-bold break-all', t.text)}>{lines[0]}</code>
+      <code className={cx('font-mono text-[11px] font-bold break-all', t.text)}>{lines[0]}</code>
       <span className="text-[10px] leading-relaxed text-[var(--term-muted)] break-keep">
         {lines[1]}
       </span>
@@ -127,7 +127,7 @@ const SeparationCard = ({
   reconnect: UseEffectEventContent['hero']['reconnect'];
 }) => (
   <article
-    className={cn(
+    className={cx(
       'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
@@ -150,21 +150,21 @@ const ReconnectRow = ({ tone, label, body }: { tone: ToneKey; label: string; bod
   const t = toneTokens[tone];
   return (
     <div
-      className={cn(
+      className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2',
         'border-[var(--term-border)]',
         t.borderHover,
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'shrink-0 rounded-md border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
           t.chip,
         )}
       >
         {label}
       </span>
-      <span className={cn('text-xsm font-bold leading-snug break-keep', t.text)}>{body}</span>
+      <span className={cx('text-xsm font-bold leading-snug break-keep', t.text)}>{body}</span>
     </div>
   );
 };

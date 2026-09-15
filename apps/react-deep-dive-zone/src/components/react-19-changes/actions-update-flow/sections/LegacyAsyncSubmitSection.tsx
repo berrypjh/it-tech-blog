@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ActionsUpdateFlowContent } from '../content';
 import { TriangleAlertIcon, XIcon } from '../icons';
@@ -30,7 +30,7 @@ export const LegacyAsyncSubmitSection = ({ content }: Props) => (
 
       {/* RIGHT: red problem card */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-rose-200/80 bg-rose-50/60 dark:border-rose-800/70 dark:bg-rose-950/30',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -52,7 +52,7 @@ export const LegacyAsyncSubmitSection = ({ content }: Props) => (
           {content.problems.map((p) => (
             <li
               key={p}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-lg border px-3 py-2',
                 'border-rose-200 bg-white dark:border-rose-800/60 dark:bg-[var(--term-bg)]',
               )}

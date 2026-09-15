@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FileCode2, ScanLine } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -20,7 +19,7 @@ export const StripNoiseHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -49,7 +48,7 @@ export const StripNoiseHeroDiagram = ({ content, className }: Props) => {
         <DownArrow label={content.connectorLabel} sub={content.connectorSub} />
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-3',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
           )}
@@ -69,13 +68,13 @@ export const StripNoiseHeroDiagram = ({ content, className }: Props) => {
               return (
                 <li
                   key={`${row.label}-${row.snippet}`}
-                  className={cn(
+                  className={cx(
                     'flex flex-wrap items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2 py-1.5',
                     t.border,
                   )}
                 >
                   <LabelChip label={row.label} size="sm" />
-                  <code className={cn('font-mono text-[11px] break-all', t.text)}>
+                  <code className={cx('font-mono text-[11px] break-all', t.text)}>
                     {row.snippet}
                   </code>
                 </li>
@@ -107,7 +106,7 @@ const StepHeader = ({
       <ToneIconBox tone={tone} size="sm">
         {icon}
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
         {label}
       </span>
       <span

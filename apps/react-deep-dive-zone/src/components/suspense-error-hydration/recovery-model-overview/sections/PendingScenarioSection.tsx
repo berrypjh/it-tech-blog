@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, FileCode } from 'lucide-react';
 
 import type { RecoveryModelOverviewContent } from '../content';
@@ -16,7 +15,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-2 items-stretch">
       {/* description */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-violet-200/80 bg-violet-50/30 dark:border-violet-800/60 dark:bg-violet-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -45,7 +44,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
       {/* flow + code hints */}
       <div className="flex flex-col gap-md">
         <article
-          className={cn(
+          className={cx(
             'rounded-2xl border-2 p-md',
             'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -57,7 +56,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
               return (
                 <li key={step.label} className="flex items-center gap-1.5">
                   <span
-                    className={cn(
+                    className={cx(
                       'inline-flex items-center rounded-lg border bg-white px-2 py-1',
                       'dark:bg-[var(--term-bg)]',
                       'text-[11px] font-mono font-bold break-keep',
@@ -80,7 +79,7 @@ export const PendingScenarioSection = ({ content }: Props) => (
         </article>
 
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-slate-200 bg-slate-50/50 dark:border-slate-700 dark:bg-slate-900/30',
           )}

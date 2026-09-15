@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Info, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -106,7 +105,7 @@ const TabButton = ({
     type="button"
     aria-pressed={active}
     onClick={onClick}
-    className={cn(
+    className={cx(
       'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xsm font-bold transition-colors',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--term-surface)]',
       active
@@ -123,12 +122,12 @@ const LegendPill = ({ item }: { item: ExampleLegend }) => {
   return (
     <li>
       <span
-        className={cn(
+        className={cx(
           'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider font-mono',
           t.chip,
         )}
       >
-        <span aria-hidden="true" className={cn('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
+        <span aria-hidden="true" className={cx('inline-block w-1.5 h-1.5 rounded-full', t.dot)} />
         <span className="tracking-normal normal-case font-mono">{item.label}</span>
         <span className="text-[var(--term-muted)] font-normal normal-case">·</span>
         <span className="font-normal normal-case tracking-tight">{item.description}</span>
@@ -159,7 +158,7 @@ const ExampleCard = ({
   return (
     <article
       id={panelId}
-      className={cn(
+      className={cx(
         'flex flex-1 flex-col overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         'border-[var(--term-border)]',
@@ -169,7 +168,7 @@ const ExampleCard = ({
         <h3 className="flex items-center gap-2 text-xsm font-bold tracking-tight text-[var(--term-fg)]">
           <span
             aria-hidden="true"
-            className={cn(
+            className={cx(
               'inline-block w-1.5 h-1.5 rounded-full',
               tone ? tone.dot : 'bg-[var(--term-accent)]',
             )}
@@ -178,7 +177,7 @@ const ExampleCard = ({
         </h3>
         {matchedLegend ? (
           <span
-            className={cn(
+            className={cx(
               'inline-flex shrink-0 items-center rounded-full border px-2 py-0.5 text-[10px] font-bold font-mono',
               tone ? tone.chip : 'border-[var(--term-border)] text-[var(--term-muted)]',
             )}
@@ -191,14 +190,14 @@ const ExampleCard = ({
       <div className="flex flex-col gap-2 p-md">
         <div>
           <PanelLabel active={tab === 'jsx'}>{previewLabel}</PanelLabel>
-          <div className={cn('rounded-lg transition-all duration-200', emphasis(tab === 'jsx'))}>
+          <div className={cx('rounded-lg transition-all duration-200', emphasis(tab === 'jsx'))}>
             <CodePreviewPanel code={example.jsx} language="JSX" />
           </div>
         </div>
 
         <div aria-hidden="true" className="flex items-center justify-center py-0.5">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center justify-center w-7 h-7 rounded-full',
               'bg-[var(--term-surface)] border border-[var(--term-border)]',
               tone ? tone.text : 'text-[var(--term-accent)]',
@@ -211,7 +210,7 @@ const ExampleCard = ({
         <div>
           <PanelLabel active={tab === 'compiled'}>{compiledLabel}</PanelLabel>
           <div
-            className={cn('rounded-lg transition-all duration-200', emphasis(tab === 'compiled'))}
+            className={cx('rounded-lg transition-all duration-200', emphasis(tab === 'compiled'))}
           >
             <CodePreviewPanel code={example.compiled} language="JS" />
           </div>
@@ -219,13 +218,13 @@ const ExampleCard = ({
       </div>
 
       <div
-        className={cn(
+        className={cx(
           'mt-auto flex flex-col gap-1.5 border-t px-md py-3',
           'border-[var(--term-border)] bg-[var(--term-surface)]',
         )}
       >
         <span
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             tone ? tone.text : 'text-[var(--term-muted)]',
           )}
@@ -247,7 +246,7 @@ const emphasis = (active: boolean) =>
 
 const PanelLabel = ({ active, children }: { active: boolean; children: React.ReactNode }) => (
   <h4
-    className={cn(
+    className={cx(
       'mb-1.5 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-mono transition-colors',
       active ? 'font-bold text-[var(--term-accent)]' : 'text-[var(--term-muted)]',
     )}

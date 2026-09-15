@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ShieldCheck, TriangleAlert } from 'lucide-react';
 
 import type { WhyFailableRenderContent } from '../content';
@@ -29,7 +28,7 @@ export const TakeawaysSection = ({ content }: Props) => (
         return (
           <li key={card.number}>
             <article
-              className={cn(
+              className={cx(
                 'flex flex-col gap-3 h-full rounded-3xl border-2 p-md sm:p-lg',
                 toneCardSoft[card.tone],
                 'shadow-[0_2px_0_var(--term-border)]',
@@ -39,7 +38,7 @@ export const TakeawaysSection = ({ content }: Props) => (
               <div className="flex items-center justify-between gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-9 w-9 items-center justify-center rounded-full',
                     'font-mono text-xsm font-bold tabular-nums',
                     toneNumberBadge[card.tone],
@@ -49,7 +48,7 @@ export const TakeawaysSection = ({ content }: Props) => (
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-8 w-8 items-center justify-center rounded-xl border',
                     card.tone === 'blue' &&
                       'border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-800/60 dark:bg-blue-950/50 dark:text-blue-200',

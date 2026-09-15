@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cloud, Droplets, Package, ShieldCheck } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -30,7 +29,7 @@ export const SuspenseHydrationHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -64,7 +63,7 @@ const PathCard = ({ card }: { card: HeroTopCard }) => {
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -75,7 +74,7 @@ const PathCard = ({ card }: { card: HeroTopCard }) => {
         <ToneIconBox tone={tone} size="sm">
           <Icon className="h-[18px] w-[18px]" />
         </ToneIconBox>
-        <h3 className={cn('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
+        <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
       </header>
       <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
         {card.description}
@@ -90,7 +89,7 @@ const BoundaryPanel = ({ code, caption }: { code: string; caption: string }) => 
       <ToneIconBox tone="violet" size="sm">
         <Package className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
-      <span className={cn('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
+      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         Suspense Boundary
       </span>
       <span

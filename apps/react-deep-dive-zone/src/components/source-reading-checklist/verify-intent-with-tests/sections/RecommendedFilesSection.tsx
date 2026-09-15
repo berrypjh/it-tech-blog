@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Beaker, FileCheck2, FileCode2 } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -26,7 +25,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
         {content.rows.map((row) => (
           <li key={row.id}>
             <article
-              className={cn(
+              className={cx(
                 'group flex h-full flex-col gap-md rounded-2xl border-2 p-md',
                 'bg-white dark:bg-[var(--term-bg)]',
                 'border-violet-200 dark:border-violet-800/60',
@@ -42,7 +41,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-7 w-7 items-center justify-center rounded-md',
                     'border border-violet-300 bg-violet-100 text-violet-700',
                     'dark:border-violet-700/70 dark:bg-violet-900/60 dark:text-violet-200',
@@ -61,7 +60,7 @@ export const RecommendedFilesSection = ({ content }: Props) => {
                   {content.fileLabel}
                 </span>
                 <code
-                  className={cn(
+                  className={cx(
                     'flex items-center gap-1.5 overflow-x-auto rounded-md border-2 px-2.5 py-1.5',
                     'border-violet-300 bg-violet-50 text-violet-800',
                     'dark:border-violet-700/70 dark:bg-violet-950/40 dark:text-violet-100',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Braces, Code2, Sparkles } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
@@ -60,7 +59,7 @@ const CodeComparePanel = ({ tone, title, code, description, icon }: PanelProps) 
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)]',
         t.border,
@@ -70,7 +69,7 @@ const CodeComparePanel = ({ tone, title, code, description, icon }: PanelProps) 
         <ToneIconBox tone={tone} size="sm">
           {icon}
         </ToneIconBox>
-        <h3 className={cn('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
+        <h3 className={cx('text-xsm sm:text-sm font-bold tracking-tight break-keep', t.text)}>
           {title}
         </h3>
       </header>

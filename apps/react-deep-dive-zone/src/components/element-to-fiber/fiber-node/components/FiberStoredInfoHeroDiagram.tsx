@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, Hexagon } from 'lucide-react';
 
 import { ToneIconBox } from '../../../shared/tone';
@@ -22,7 +21,7 @@ export const FiberStoredInfoHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -76,7 +75,7 @@ const ObjectCard = ({
   const t = toneTokens[tone];
   return (
     <article
-      className={cn(
+      className={cx(
         'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'transition-all hover:-translate-y-0.5',
@@ -90,10 +89,10 @@ const ObjectCard = ({
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
             {eyebrow}
           </span>
-          <code className={cn('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</code>
+          <code className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>{title}</code>
         </div>
         <span
-          className={cn(
+          className={cx(
             'ml-auto inline-flex shrink-0 items-center rounded-full border px-2 py-0.5',
             'text-[10px] font-bold font-mono uppercase tracking-wider',
             t.chip,
@@ -119,16 +118,16 @@ const FieldList = ({
 }) => {
   const t = toneTokens[tone];
   return (
-    <ul className={cn('grid gap-1.5', columns ? 'grid-cols-2 @sm:grid-cols-3' : 'grid-cols-3')}>
+    <ul className={cx('grid gap-1.5', columns ? 'grid-cols-2 @sm:grid-cols-3' : 'grid-cols-3')}>
       {fields.map((field) => (
         <li
           key={field}
-          className={cn(
+          className={cx(
             'flex items-center gap-1.5 rounded-md border px-2 py-1 min-w-0',
             'border-[var(--term-border)] bg-[var(--term-surface)]',
           )}
         >
-          <span aria-hidden="true" className={cn('h-1.5 w-1.5 shrink-0 rounded-full', t.dot)} />
+          <span aria-hidden="true" className={cx('h-1.5 w-1.5 shrink-0 rounded-full', t.dot)} />
           <code className="min-w-0 truncate font-mono text-[11px] font-bold text-[var(--term-fg)]">
             {field}
           </code>

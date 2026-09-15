@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Link2, Network, ShieldQuestion } from 'lucide-react';
 
 import { axisIconBox, axisPill, axisTextStrong } from '../../_shared/axisAccent';
@@ -16,7 +15,7 @@ const cardIcon: Record<AxisAccent, typeof Network> = {
 export const PriorityQuestionPanel = ({ content }: Props) => (
   <section
     aria-labelledby="question-heading"
-    className={cn(
+    className={cx(
       'relative rounded-3xl border-2 p-md sm:p-lg lg:p-xl',
       'border-blue-200/70 bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/50',
       'dark:border-blue-800/60 dark:from-blue-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -28,7 +27,7 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
       <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-2">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-full',
             'bg-blue-600 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)] dark:bg-blue-500',
           )}
@@ -41,7 +40,7 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
         </span>
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'inline-flex h-8 w-8 items-center justify-center rounded-full',
             'text-[11px] font-mono font-bold tabular-nums',
             'bg-blue-600 text-white dark:bg-blue-500',
@@ -69,7 +68,7 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
           return (
             <li
               key={card.title}
-              className={cn(
+              className={cx(
                 'flex items-center gap-2 rounded-xl border-2 px-3 py-2',
                 'shadow-[0_1px_0_var(--term-border)] transition-colors',
                 axisPill[card.accent],
@@ -77,7 +76,7 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border',
                   axisIconBox[card.accent],
                 )}
@@ -86,7 +85,7 @@ export const PriorityQuestionPanel = ({ content }: Props) => (
               </span>
               <div className="flex flex-col min-w-0">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[11px] sm:text-xsm font-bold leading-tight break-keep',
                     axisTextStrong[card.accent],
                   )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ExternalLink, FileCode } from 'lucide-react';
 
 import { GithubIcon } from '../../../shared/icon';
@@ -17,7 +16,7 @@ export const CodePreviewSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-[minmax(0,4fr)_minmax(0,4fr)_minmax(0,3fr)] items-stretch">
       {/* Code A */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-rose-200/80 bg-white dark:border-rose-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -39,7 +38,7 @@ export const CodePreviewSection = ({ content }: Props) => (
 
       {/* Code B */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-2 overflow-hidden rounded-2xl border-2',
           'border-teal-200/80 bg-white dark:border-teal-800/60 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -61,7 +60,7 @@ export const CodePreviewSection = ({ content }: Props) => (
 
       {/* Related file */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -80,7 +79,7 @@ export const CodePreviewSection = ({ content }: Props) => (
         </header>
 
         <code
-          className={cn(
+          className={cx(
             'inline-flex w-fit items-center rounded-lg border px-2 py-1',
             'border-blue-200 bg-white text-blue-700 text-[11px] font-mono font-bold break-all',
             'dark:border-blue-800/60 dark:bg-slate-900 dark:text-blue-200',
@@ -93,7 +92,7 @@ export const CodePreviewSection = ({ content }: Props) => (
           href={content.button.href}
           target="_blank"
           rel="noreferrer"
-          className={cn(
+          className={cx(
             'mt-auto group inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3',
             'text-xsm font-bold transition-all',
             'border-blue-300 bg-white text-blue-700',

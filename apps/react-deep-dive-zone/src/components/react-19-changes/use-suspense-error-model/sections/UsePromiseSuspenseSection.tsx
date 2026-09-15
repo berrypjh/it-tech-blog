@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { UseSuspenseErrorModelContent } from '../content';
 import { HourglassIcon, ShieldCheckIcon, SparklesIcon } from '../icons';
@@ -28,7 +28,7 @@ export const UsePromiseSuspenseSection = ({ content }: Props) => (
         />
 
         <div
-          className={cn(
+          className={cx(
             'flex items-start gap-2 rounded-xl border-2 px-3 py-3',
             'border-blue-200 bg-blue-50/60 dark:border-blue-800/60 dark:bg-blue-950/30',
           )}
@@ -47,7 +47,7 @@ export const UsePromiseSuspenseSection = ({ content }: Props) => (
 
       {/* RIGHT: Suspense fallback mock */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -67,7 +67,7 @@ export const UsePromiseSuspenseSection = ({ content }: Props) => (
 
         {/* skeleton card */}
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-3 rounded-xl border-2 p-md',
             'border-blue-200/80 bg-blue-50/30',
             'dark:border-blue-800/60 dark:bg-blue-950/20',

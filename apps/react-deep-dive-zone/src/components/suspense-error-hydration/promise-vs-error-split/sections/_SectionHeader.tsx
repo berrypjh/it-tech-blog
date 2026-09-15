@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { sectionNumberBadge } from '../tone';
 
@@ -12,7 +12,7 @@ type Props = {
 
 export const SectionHeader = ({ number, title, subtitle, id, align = 'left' }: Props) => (
   <header
-    className={cn(
+    className={cx(
       'flex items-start gap-3',
       align === 'center' && 'flex-col items-center text-center',
     )}

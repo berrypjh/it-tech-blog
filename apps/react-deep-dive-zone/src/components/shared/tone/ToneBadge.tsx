@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import { type ToneKey, toneTokens } from '../tones';
 
@@ -26,14 +26,14 @@ export const ToneBadge = ({ tone, children, size = 'sm', className }: Props) => 
   const t = toneTokens[tone];
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border',
         sizeClass[size],
         t.chip,
         className,
       )}
     >
-      <span aria-hidden="true" className={cn('inline-block rounded-full', dotClass[size], t.dot)} />
+      <span aria-hidden="true" className={cx('inline-block rounded-full', dotClass[size], t.dot)} />
       {children}
     </span>
   );

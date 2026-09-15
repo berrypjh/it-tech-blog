@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CircleHelp, FileText, Folder } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -23,7 +22,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
       <div className="overflow-hidden rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)]">
         <div className="grid md:grid-cols-[1.2fr_1fr]">
           <div
-            className={cn(
+            className={cx(
               'bg-[var(--term-surface)] px-md py-md',
               'border-b border-dashed border-[var(--term-border)]',
               'md:border-b-0 md:border-r',
@@ -45,7 +44,7 @@ export const RepoOverwhelmCard = ({ content }: Props) => {
         </div>
 
         <div
-          className={cn(
+          className={cx(
             'flex items-center gap-2 border-t border-[var(--term-border)] px-md py-sm',
             'bg-[var(--term-surface)] text-[var(--term-accent)] text-xsm font-bold',
           )}
@@ -66,14 +65,14 @@ const FilePill = ({ row }: FilePillProps) => {
 
   return (
     <span
-      className={cn(
+      className={cx(
         'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xsm font-medium',
         'border-[var(--term-border)] bg-[var(--term-bg)] text-[var(--term-fg)]',
       )}
     >
       <Icon
         aria-hidden="true"
-        className={cn('h-3.5 w-3.5 shrink-0', toneText ?? 'text-[var(--term-muted)]')}
+        className={cx('h-3.5 w-3.5 shrink-0', toneText ?? 'text-[var(--term-muted)]')}
       />
       {row.name}
     </span>

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   Atom,
   Boxes,
@@ -78,7 +77,7 @@ const PackageRow = ({ node, dashed }: PackageRowProps) => {
 
   return (
     <li
-      className={cn(
+      className={cx(
         'group flex min-w-0 items-center gap-2 rounded-lg border bg-[var(--term-bg)] px-3 py-2',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
         dashed
@@ -91,7 +90,7 @@ const PackageRow = ({ node, dashed }: PackageRowProps) => {
       </ToneIconBox>
       <span className="flex min-w-0 flex-col">
         <span
-          className={cn(
+          className={cx(
             'truncate text-sm font-bold font-mono tracking-tight',
             toneTokens[node.tone].text,
           )}

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Database, GitBranch, Monitor } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -25,7 +24,7 @@ export const CurrentWorkInProgressCompare = ({ content }: Props) => (
 
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'pointer-events-none absolute z-10 hidden md:inline-flex items-center justify-center gap-1.5',
           'rounded-full border border-dashed bg-[var(--term-bg)] px-3 py-1',
           'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
@@ -48,7 +47,7 @@ const Card = ({ card }: { card: CompareCard }) => {
   const Icon = isCurrent ? Database : Monitor;
   return (
     <article
-      className={cn(
+      className={cx(
         'flex h-full flex-col gap-3 rounded-lg border p-md sm:p-lg',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
         t.border,
@@ -59,7 +58,7 @@ const Card = ({ card }: { card: CompareCard }) => {
           <Icon className="h-5 w-5" />
         </ToneIconBox>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
             t.chip,
           )}
@@ -70,14 +69,14 @@ const Card = ({ card }: { card: CompareCard }) => {
 
       <div className="flex flex-col gap-1">
         <code
-          className={cn(
+          className={cx(
             'self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-sm font-bold',
             t.text,
           )}
         >
           {card.title}
         </code>
-        <span className={cn('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
+        <span className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.text)}>
           {card.subtitle}
         </span>
       </div>
@@ -94,7 +93,7 @@ const Card = ({ card }: { card: CompareCard }) => {
           >
             <span
               aria-hidden="true"
-              className={cn('mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
+              className={cx('mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full', t.dot)}
             />
             <span>{item}</span>
           </li>

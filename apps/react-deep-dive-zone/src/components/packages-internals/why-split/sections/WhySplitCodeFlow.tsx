@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Atom,
@@ -37,7 +36,7 @@ const toFlowStep = (step: FlowStep, index: number): FlowStepItem => {
     title: step.title,
     body: formatInline(`→ \`${step.pkg}\` · ${step.description}`),
     tone: step.tone,
-    icon: <Icon className={cn('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 

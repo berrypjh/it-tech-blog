@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { GitBranch, GitMerge, HelpCircle, Zap } from 'lucide-react';
 
 import type { FullFlowContent } from '../content';
@@ -11,7 +10,7 @@ const cardIcons = [GitBranch, GitMerge, Zap];
 export const FullFlowQuestionPanel = ({ content }: Props) => (
   <section aria-labelledby="question-heading">
     <article
-      className={cn(
+      className={cx(
         'grid grid-cols-1 lg:grid-cols-[auto_minmax(0,5fr)_minmax(0,7fr)] gap-md lg:gap-lg items-center',
         'rounded-3xl border-2 p-md sm:p-lg',
         'border-blue-300/80 bg-gradient-to-br from-blue-50/70 via-white to-cyan-50/30',
@@ -21,7 +20,7 @@ export const FullFlowQuestionPanel = ({ content }: Props) => (
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full',
           'bg-blue-600 text-white shadow-[0_3px_0_rgba(29,78,216,0.4)] dark:bg-blue-500',
         )}
@@ -50,7 +49,7 @@ export const FullFlowQuestionPanel = ({ content }: Props) => (
           return (
             <li key={card.title}>
               <article
-                className={cn(
+                className={cx(
                   'flex h-full flex-col gap-1.5 rounded-xl border-2 p-3',
                   'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
                 )}

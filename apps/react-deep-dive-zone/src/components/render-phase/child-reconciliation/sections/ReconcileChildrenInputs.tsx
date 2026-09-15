@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Box, FileText, ListChecks, type LucideIcon, Network } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,11 +36,11 @@ const Card = ({ card, index }: { card: InputCard; index: number }) => {
   return (
     <ToneCardItem
       tone={card.tone}
-      icon={<Icon className={cn('h-5 w-5', toneTokens[card.tone].text)} />}
+      icon={<Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />}
       topRight={index}
     >
       <h3
-        className={cn(
+        className={cx(
           'font-mono text-md font-bold tracking-tight break-keep',
           toneTokens[card.tone].text,
         )}

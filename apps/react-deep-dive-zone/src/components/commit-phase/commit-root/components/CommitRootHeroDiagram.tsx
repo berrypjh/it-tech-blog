@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cpu, DoorOpen, GitMerge, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -29,7 +28,7 @@ export const CommitRootHeroDiagram = ({ content, className }: Props) => {
 
   return (
     <div
-      className={cn(
+      className={cx(
         '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
         className,
@@ -77,17 +76,17 @@ const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
   const Icon = iconMap[card.iconName];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        card.isGate ? cn('border-2', t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
+        card.isGate ? cx('border-2', t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
-        <span className={cn('text-sm font-bold font-mono tracking-tight break-keep', t.text)}>
+        <span className={cx('text-sm font-bold font-mono tracking-tight break-keep', t.text)}>
           {card.title}
         </span>
         <span className="text-[10px] uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -103,7 +102,7 @@ const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
             {card.items.map((item) => (
               <li
                 key={item}
-                className={cn(
+                className={cx(
                   'rounded-md border border-[var(--term-border)] px-1.5 py-0.5',
                   'text-[10px] font-mono tracking-tight break-keep',
                   t.text,

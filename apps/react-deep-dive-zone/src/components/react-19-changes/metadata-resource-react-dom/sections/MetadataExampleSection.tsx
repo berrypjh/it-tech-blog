@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MetadataResourceContent } from '../content';
 import { GlobeIcon } from '../icons';
@@ -31,7 +31,7 @@ export const MetadataExampleSection = ({ content }: Props) => (
 
       {/* RIGHT: DOM result mock */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-sm rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-300/80 bg-teal-50/30 dark:border-teal-700/70 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',

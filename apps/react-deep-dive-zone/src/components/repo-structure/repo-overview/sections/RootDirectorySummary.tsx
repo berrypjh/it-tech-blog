@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { FlaskConical, Folder, type LucideIcon, Sparkles, TerminalSquare } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -37,7 +36,7 @@ export const RootDirectorySummary = ({ content }: Props) => {
               icon={<Icon className="h-5 w-5" aria-hidden="true" />}
             >
               <h3
-                className={cn(
+                className={cx(
                   'text-md sm:text-lg font-bold tracking-tight font-mono',
                   toneTokens[card.tone].text,
                 )}

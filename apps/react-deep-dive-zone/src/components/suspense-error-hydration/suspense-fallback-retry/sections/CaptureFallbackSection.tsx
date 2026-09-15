@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Loader, ShieldCheck } from 'lucide-react';
 
 import type { SuspenseFallbackRetryContent } from '../content';
@@ -19,14 +18,14 @@ export const CaptureFallbackSection = ({ content }: Props) => {
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,3fr)_auto_minmax(0,3fr)_auto_minmax(0,2fr)_auto_minmax(0,2fr)] items-stretch">
         {/* 1. Internal state changes */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             capture.border,
             capture.bg,
             'shadow-[0_2px_0_var(--term-border)]',
           )}
         >
-          <h3 className={cn('text-xsm font-bold uppercase tracking-wider', capture.text)}>
+          <h3 className={cx('text-xsm font-bold uppercase tracking-wider', capture.text)}>
             {content.internalTitle}
           </h3>
           <ol className="flex flex-col gap-1.5">
@@ -34,7 +33,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
               <li key={step.number} className="flex items-start gap-2">
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                     capture.solidBg,
                   )}
@@ -65,7 +64,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
 
         {/* 2. Boundary state */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/30',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -78,7 +77,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
             </h3>
           </header>
           <dl
-            className={cn(
+            className={cx(
               'rounded-xl border bg-slate-950 p-3 font-mono text-[11px] leading-[1.7]',
               'border-slate-800 text-slate-100',
             )}
@@ -87,7 +86,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
               <div key={line.key} className="flex items-baseline gap-2">
                 <dt className="text-violet-300">{line.key}</dt>
                 <span className="text-slate-500">:</span>
-                <dd className={cn(line.highlight ? 'text-teal-300 font-bold' : 'text-slate-200')}>
+                <dd className={cx(line.highlight ? 'text-teal-300 font-bold' : 'text-slate-200')}>
                   {line.value}
                 </dd>
               </div>
@@ -106,14 +105,14 @@ export const CaptureFallbackSection = ({ content }: Props) => {
 
         {/* 3. Fallback pass */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             pending.border,
             pending.bg,
             'shadow-[0_2px_0_var(--term-border)]',
           )}
         >
-          <h3 className={cn('text-sm font-bold break-keep', pending.text)}>
+          <h3 className={cx('text-sm font-bold break-keep', pending.text)}>
             {content.fallbackTitle}
           </h3>
           <p className="text-xsm text-[var(--term-fg)] break-keep">{content.fallbackBody}</p>
@@ -130,7 +129,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
 
         {/* 4. UI result */}
         <article
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-2xl border-2 p-md',
             'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
             'shadow-[0_2px_0_var(--term-border)]',
@@ -140,7 +139,7 @@ export const CaptureFallbackSection = ({ content }: Props) => {
             {content.resultTitle}
           </h3>
           <div
-            className={cn(
+            className={cx(
               'flex flex-col items-center gap-2 rounded-xl border-2 p-3',
               'border-violet-200 bg-white dark:border-violet-800/60 dark:bg-[var(--term-bg)]',
             )}

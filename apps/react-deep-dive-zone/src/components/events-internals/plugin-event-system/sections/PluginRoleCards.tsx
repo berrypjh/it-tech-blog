@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   FormInput,
   LayoutGrid,
@@ -34,7 +33,7 @@ export const PluginRoleCards = ({ content }: Props) => (
         return (
           <article
             key={card.name}
-            className={cn(
+            className={cx(
               'group flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_2px_0_var(--term-border)]',
@@ -44,7 +43,7 @@ export const PluginRoleCards = ({ content }: Props) => (
             <header className="flex items-center gap-3">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border',
                   toneIconBox[card.tone],
                 )}
@@ -53,7 +52,7 @@ export const PluginRoleCards = ({ content }: Props) => (
               </span>
               <div className="flex flex-col min-w-0">
                 <span
-                  className={cn(
+                  className={cx(
                     'text-[10px] font-mono font-bold uppercase tracking-wider',
                     toneAccent[card.tone],
                   )}
@@ -61,7 +60,7 @@ export const PluginRoleCards = ({ content }: Props) => (
                   plugin
                 </span>
                 <code
-                  className={cn(
+                  className={cx(
                     'font-mono text-sm sm:text-md font-bold leading-tight break-all',
                     toneAccent[card.tone],
                   )}
@@ -84,7 +83,7 @@ export const PluginRoleCards = ({ content }: Props) => (
                   >
                     <span
                       aria-hidden="true"
-                      className={cn(
+                      className={cx(
                         'mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full',
                         toneAccent[card.tone],
                       )}
@@ -107,7 +106,7 @@ export const PluginRoleCards = ({ content }: Props) => (
         return (
           <article
             key={card.name}
-            className={cn(
+            className={cx(
               'group flex items-start gap-3 rounded-2xl border-2 p-md transition-all',
               'hover:-translate-y-0.5 motion-reduce:transform-none',
               'shadow-[0_1px_0_var(--term-border)]',
@@ -116,7 +115,7 @@ export const PluginRoleCards = ({ content }: Props) => (
           >
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
                 toneIconBox[card.tone],
               )}
@@ -125,7 +124,7 @@ export const PluginRoleCards = ({ content }: Props) => (
             </span>
             <div className="flex flex-col gap-0.5 min-w-0 flex-1">
               <code
-                className={cn(
+                className={cx(
                   'font-mono text-xsm sm:text-sm font-bold break-all',
                   toneAccent[card.tone],
                 )}
@@ -143,14 +142,14 @@ export const PluginRoleCards = ({ content }: Props) => (
 
     {/* More extension card */}
     <article
-      className={cn(
+      className={cx(
         'mt-md flex items-center gap-3 rounded-2xl border-2 border-dashed p-md transition-colors',
         'border-rose-300/70 bg-rose-50/40 dark:border-rose-700/60 dark:bg-rose-950/20',
       )}
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border',
           toneIconBox[content.more.tone],
         )}
@@ -159,7 +158,7 @@ export const PluginRoleCards = ({ content }: Props) => (
       </span>
       <div className="flex flex-col gap-0.5 min-w-0 flex-1">
         <code
-          className={cn(
+          className={cx(
             'font-mono text-xsm sm:text-sm font-bold break-keep',
             toneAccent[content.more.tone],
           )}

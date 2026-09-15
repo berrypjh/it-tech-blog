@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { MismatchDetectRecoverContent } from '../content';
 
@@ -14,7 +14,7 @@ export const FollowAlongSection = ({ content }: Props) => (
       {content.items.map((item, i) => (
         <li key={item.title}>
           <article
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 h-full rounded-2xl border-2 p-md',
               'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
               'shadow-[0_2px_0_var(--term-border)]',

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Atom, BellRing, Globe, TriangleAlert } from 'lucide-react';
 
 import type { RecoveryModelOverviewContent } from '../content';
@@ -16,14 +15,14 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 gap-md lg:grid-cols-2 items-stretch">
       {/* server / client comparison */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-3 rounded-2xl border-2 p-md sm:p-lg',
           'border-slate-200 bg-white dark:border-slate-700 dark:bg-[var(--term-bg)]',
           'shadow-[0_2px_0_var(--term-border)]',
         )}
       >
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border-2 p-3',
             'border-blue-200/80 bg-blue-50/40 dark:border-blue-800/60 dark:bg-blue-950/20',
           )}
@@ -46,7 +45,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
 
         <div className="flex items-center justify-center gap-2">
           <span
-            className={cn(
+            className={cx(
               'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
               'border-rose-300 bg-rose-50 text-rose-700 text-xsm font-bold',
               'dark:border-rose-700 dark:bg-rose-950/40 dark:text-rose-200',
@@ -58,7 +57,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
         </div>
 
         <div
-          className={cn(
+          className={cx(
             'flex flex-col gap-2 rounded-xl border-2 p-3',
             'border-violet-200/80 bg-violet-50/40 dark:border-violet-800/60 dark:bg-violet-950/20',
           )}
@@ -82,7 +81,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
 
       {/* recovery flow */}
       <article
-        className={cn(
+        className={cx(
           'flex flex-col gap-md rounded-2xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-teal-50/30 dark:border-teal-800/60 dark:bg-teal-950/20',
           'shadow-[0_2px_0_var(--term-border)]',
@@ -98,7 +97,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
             return (
               <li key={step.label} className="flex flex-col gap-0.5">
                 <div
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center gap-2 rounded-lg border-2 px-3 py-2',
                     accent.border,
                     'bg-white dark:bg-[var(--term-bg)]',
@@ -106,14 +105,14 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
                 >
                   <span
                     aria-hidden="true"
-                    className={cn(
+                    className={cx(
                       'inline-flex h-5 w-5 items-center justify-center rounded-full font-mono text-[10px] font-bold tabular-nums text-white',
                       accent.solidBg,
                     )}
                   >
                     {i + 1}
                   </span>
-                  <span className={cn('text-xsm font-mono font-bold break-keep', accent.text)}>
+                  <span className={cx('text-xsm font-mono font-bold break-keep', accent.text)}>
                     {step.label}
                   </span>
                 </div>
@@ -128,7 +127,7 @@ export const HydrationMismatchScenarioSection = ({ content }: Props) => (
           })}
         </ol>
         <p
-          className={cn(
+          className={cx(
             'mt-auto rounded-xl border p-3 text-xsm text-[var(--term-fg)] break-keep',
             'border-teal-200 bg-white/60 dark:border-teal-800/60 dark:bg-teal-950/40',
           )}

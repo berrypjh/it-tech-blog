@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Boxes, Layers } from 'lucide-react';
 
 import {
@@ -42,7 +41,7 @@ export const ReconcilerHero = ({ content }: Props) => {
 
       <HeroVisualColumn id="hero-element-fiber">
         <div
-          className={cn(
+          className={cx(
             'relative rounded-2xl border bg-[var(--term-bg)] p-md sm:p-lg',
             'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] overflow-hidden',
           )}

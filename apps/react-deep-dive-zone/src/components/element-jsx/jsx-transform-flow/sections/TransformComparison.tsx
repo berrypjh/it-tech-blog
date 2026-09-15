@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, GitCompare } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
@@ -24,7 +23,7 @@ export const TransformComparison = ({ content }: Props) => (
 
     {/* sample JSX strip */}
     <div
-      className={cn(
+      className={cx(
         'flex flex-col md:flex-row gap-md items-stretch md:items-center justify-between',
         'rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
@@ -32,7 +31,7 @@ export const TransformComparison = ({ content }: Props) => (
     >
       <div className="flex items-center gap-sm min-w-0">
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
             toneTokens.sky.text,
           )}
@@ -67,7 +66,7 @@ export const TransformComparison = ({ content }: Props) => (
 
     {/* same-result card */}
     <div
-      className={cn(
+      className={cx(
         'flex flex-col sm:flex-row gap-md items-stretch sm:items-center',
         'rounded-2xl border bg-[var(--term-surface)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
@@ -97,12 +96,12 @@ const chrome = 'border border-[var(--term-border)] bg-[var(--term-surface)]';
 
 const variantClass: Record<CardVariant, { chip: string; head: string; check: string }> = {
   old: {
-    chip: cn(chrome, 'text-[var(--term-muted)]'),
+    chip: cx(chrome, 'text-[var(--term-muted)]'),
     head: 'text-[var(--term-fg)]',
     check: 'text-[var(--term-accent)]',
   },
   modern: {
-    chip: cn(chrome, toneTokens.violet.text),
+    chip: cx(chrome, toneTokens.violet.text),
     head: toneTokens.violet.text,
     check: toneTokens.violet.text,
   },
@@ -124,15 +123,15 @@ const TransformCard = ({
   const v = variantClass[variant];
   return (
     <article
-      className={cn(
+      className={cx(
         'group flex flex-col gap-md rounded-2xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <header className="flex items-center justify-between gap-sm">
-        <h3 className={cn('text-md font-bold tracking-tight', v.head)}>{title}</h3>
+        <h3 className={cx('text-md font-bold tracking-tight', v.head)}>{title}</h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider tabular-nums',
             v.chip,
           )}
@@ -148,7 +147,7 @@ const TransformCard = ({
           <li key={check.id} className="flex items-start gap-2">
             <span
               aria-hidden="true"
-              className={cn(
+              className={cx(
                 'inline-flex items-center justify-center w-5 h-5 rounded-full shrink-0 mt-0.5',
                 'bg-[var(--term-surface)] border border-[var(--term-border)]',
                 v.check,

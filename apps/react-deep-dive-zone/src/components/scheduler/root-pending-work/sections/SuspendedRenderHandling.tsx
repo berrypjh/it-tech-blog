@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import {
   ArrowRight,
   Lightbulb,
@@ -28,7 +27,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] gap-md items-stretch">
       {/* Left description */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-teal-200/80 bg-gradient-to-br from-teal-50/80 via-white to-cyan-50/40',
           'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-cyan-950/20',
@@ -54,7 +53,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
           {['SuspendedOnData', 'SuspendedOnAction', 'fresh stack'].map((kw) => (
             <li key={kw}>
               <code
-                className={cn(
+                className={cx(
                   'inline-flex items-center rounded-md border px-2 py-1 font-mono text-[10px] sm:text-[11px] font-semibold',
                   'border-teal-300/80 bg-teal-50 text-teal-800 dark:border-teal-700/70 dark:bg-teal-950/40 dark:text-teal-200',
                 )}
@@ -68,7 +67,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
 
       {/* Right diagram */}
       <article
-        className={cn(
+        className={cx(
           'flex h-full flex-col gap-md rounded-3xl border-2 p-md sm:p-lg',
           'border-[var(--term-border)] bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         )}
@@ -76,7 +75,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
           {/* Suspended (left) */}
           <div
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-rose-300/80 bg-gradient-to-br from-rose-50/80 via-white to-rose-50/30',
               'dark:border-rose-700/70 dark:from-rose-950/30 dark:via-[var(--term-bg)] dark:to-rose-950/10',
@@ -120,7 +119,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
 
           {/* Fresh stack (right) */}
           <div
-            className={cn(
+            className={cx(
               'flex flex-col gap-2 rounded-2xl border-2 p-md',
               'border-teal-300/80 bg-gradient-to-br from-teal-50/80 via-white to-emerald-50/30',
               'dark:border-teal-700/70 dark:from-teal-950/30 dark:via-[var(--term-bg)] dark:to-emerald-950/10',
@@ -145,7 +144,7 @@ export const SuspendedRenderHandling = ({ content }: Props) => (
 
         {/* Core point */}
         <aside
-          className={cn(
+          className={cx(
             'mt-auto flex items-start gap-2 rounded-2xl border-2 p-md',
             'border-amber-300/80 bg-amber-50/60 text-amber-900',
             'dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-100',

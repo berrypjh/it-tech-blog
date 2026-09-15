@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Cuboid, FileBox, Flag, type LucideIcon, Network, Package } from 'lucide-react';
 
 import { SectionHeader } from '../../../shared/section';
@@ -53,7 +52,7 @@ const StepCard = ({ step }: StepCardProps) => {
 
   return (
     <article
-      className={cn(
+      className={cx(
         'relative flex items-start gap-md rounded-lg border bg-[var(--term-bg)]',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
         'p-md transition-all hover:-translate-y-0.5',
@@ -74,7 +73,7 @@ const StepCard = ({ step }: StepCardProps) => {
 
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'inline-flex items-center justify-center w-8 h-8 rounded-md border shrink-0',
           'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-accent)]',
         )}
