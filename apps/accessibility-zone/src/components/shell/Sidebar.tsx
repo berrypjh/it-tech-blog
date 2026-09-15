@@ -5,8 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useLocale } from '@it-tech-blog/preferences';
 import { SettingsPopover, useSidebarNav } from '@it-tech-blog/ui';
-import { cn } from '@it-tech-blog/utils';
 
+import { cx } from '@berrypjh/react-ui';
 import {
   Accessibility,
   ArrowLeft,
@@ -48,7 +48,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
   return (
     <aside
-      className={cn(
+      className={cx(
         'flex flex-col h-full bg-background-surface border-r border-stroke-default',
         className,
       )}
@@ -102,13 +102,13 @@ export const Sidebar = ({ className }: { className?: string }) => {
                 onClick={() => toggle(groupIndex)}
                 aria-expanded={isExpanded}
                 aria-controls={panelId}
-                className={cn(
+                className={cx(
                   'w-full flex items-center gap-2.5 px-lg py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-stroke-primary',
                   hasActiveItem ? 'text-text-default' : 'text-text-light hover:text-text-default',
                 )}
               >
                 <span
-                  className={cn(
+                  className={cx(
                     'shrink-0 transition-colors',
                     hasActiveItem ? 'text-text-primary' : 'text-text-light/40',
                   )}
@@ -122,7 +122,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
                 <ChevronDown
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'h-3 w-3 transition-all duration-200',
                     hasActiveItem ? 'text-text-primary' : 'text-text-light/30',
                     isExpanded && 'rotate-180',
@@ -132,7 +132,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
               <div
                 id={panelId}
-                className={cn(
+                className={cx(
                   'grid transition-all duration-200 ease-in-out',
                   isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                 )}
@@ -144,7 +144,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
 
                       const badge = item.badge ? (
                         <span
-                          className={cn(
+                          className={cx(
                             'ml-sm shrink-0 text-[10px] px-sm py-0.5 rounded-xs font-bold uppercase tracking-wide',
                             item.badgeColor === 'warning' && 'bg-warning-wa100 text-text-warning',
                             item.badgeColor === 'purple' &&
@@ -164,7 +164,7 @@ export const Sidebar = ({ className }: { className?: string }) => {
                           <Link
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
-                            className={cn(
+                            className={cx(
                               'flex items-center justify-between px-2.5 py-1.5 rounded-xs transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
                               isActive
                                 ? 'bg-primary-pr100 text-text-primary font-medium'

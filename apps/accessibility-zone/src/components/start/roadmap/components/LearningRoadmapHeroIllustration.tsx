@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ALargeSmall, ClipboardCheck, Image, LayoutGrid } from 'lucide-react';
 
 import type { RoadmapContent } from '../content';
@@ -25,14 +24,14 @@ const FloatingChip = ({
           : 'bg-warning-wa100 text-text-warning dark:bg-warning-wa900/40';
   return (
     <div
-      className={cn(
+      className={cx(
         'absolute z-10 flex items-center gap-1.5 rounded-lg border border-stroke-light bg-background-surface px-2 py-1.5 text-[0.625rem] font-semiBold shadow-md sm:gap-2 sm:text-xxsm',
         className,
       )}
       aria-hidden="true"
     >
       <span
-        className={cn(
+        className={cx(
           'flex h-6 w-6 items-center justify-center rounded-md sm:h-7 sm:w-7',
           toneClass,
         )}

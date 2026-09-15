@@ -1,7 +1,6 @@
 'use client';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, X } from 'lucide-react';
 
 type Props = {
@@ -38,7 +37,7 @@ export const QuizOptionButton = ({
       role="radio"
       aria-checked={isSelected}
       onClick={() => onSelect(id)}
-      className={cn(
+      className={cx(
         'group flex w-full items-start gap-2 rounded-md border px-sm py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
         state === 'correct' && 'border-stroke-success bg-success-su100/40',
         state === 'incorrect' && 'border-stroke-error bg-error-er100/40',
@@ -51,7 +50,7 @@ export const QuizOptionButton = ({
     >
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-rounded border text-[0.625rem] font-extraBold',
           state === 'correct' || state === 'reveal'
             ? 'border-stroke-success bg-background-success text-text-contrastText'

@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ALargeSmall, Captions, Check, Contrast, Keyboard, Volume2 } from 'lucide-react';
 
 import type { IntroContent } from '../content';
@@ -33,13 +32,13 @@ const FloatingChip = ({
             : 'text-text-error bg-error-er100/80 dark:bg-error-er900/40';
   return (
     <div
-      className={cn(
+      className={cx(
         'absolute flex items-center gap-1.5 rounded-lg border border-stroke-light bg-background-surface px-2 py-1.5 text-[0.625rem] font-semiBold shadow-sm backdrop-blur-sm sm:gap-2 sm:px-2.5 sm:py-2 sm:text-xxsm',
         className,
       )}
     >
       <span
-        className={cn(
+        className={cx(
           'flex h-5 w-5 items-center justify-center rounded-full sm:h-6 sm:w-6',
           toneClass,
         )}

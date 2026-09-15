@@ -2,8 +2,7 @@
 
 import { useRef } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check } from 'lucide-react';
 
 import type { Situation, SituationId } from '../content';
@@ -63,7 +62,7 @@ export const SituationTabList = ({
             type="button"
             onClick={() => onSelect(s.id)}
             onKeyDown={(e) => onKeyDown(e, i)}
-            className={cn(
+            className={cx(
               'flex items-center gap-2 rounded-md border px-sm py-2.5 text-left text-xsm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
               isActive
                 ? 'border-stroke-primary bg-primary-pr100/60 text-text-primary shadow-sm dark:bg-primary-pr900/40'
@@ -71,7 +70,7 @@ export const SituationTabList = ({
             )}
           >
             <span
-              className={cn(
+              className={cx(
                 'flex h-7 w-7 shrink-0 items-center justify-center rounded-md',
                 isActive
                   ? 'bg-background-primary text-text-contrastText'

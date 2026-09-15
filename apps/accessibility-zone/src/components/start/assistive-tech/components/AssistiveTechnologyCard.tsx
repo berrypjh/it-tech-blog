@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { AssistiveTechCard } from '../content';
 
@@ -37,7 +37,7 @@ export const AssistiveTechnologyCard = ({ card, icon }: Props) => {
       <div className="flex items-center justify-between">
         <span
           aria-hidden="true"
-          className={cn(
+          className={cx(
             'flex h-7 w-7 items-center justify-center rounded-rounded text-xsm font-extraBold',
             t.numberBg,
           )}
@@ -46,7 +46,7 @@ export const AssistiveTechnologyCard = ({ card, icon }: Props) => {
         </span>
         <span
           aria-hidden="true"
-          className={cn('flex h-9 w-9 items-center justify-center rounded-md', t.iconBg)}
+          className={cx('flex h-9 w-9 items-center justify-center rounded-md', t.iconBg)}
         >
           {icon}
         </span>

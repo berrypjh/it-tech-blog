@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ChecklistStatus, ImportanceContent } from '../content';
 
@@ -84,7 +84,7 @@ export const AccessibilityScoreDonut = ({ score, counts, diagnosis }: Props) => 
       <header className="flex items-center justify-between">
         <h3 className="text-sm font-bold text-text-default sm:text-md">{diagnosis.scoreTitle}</h3>
         <span
-          className={cn(
+          className={cx(
             'inline-flex items-center rounded-rounded px-2 py-0.5 text-xxsm font-semiBold',
             level.tone,
           )}
@@ -127,7 +127,7 @@ export const AccessibilityScoreDonut = ({ score, counts, diagnosis }: Props) => 
             >
               <span className="flex items-center gap-2">
                 <span
-                  className={cn('h-2.5 w-2.5 rounded-rounded', legendBgClass[status])}
+                  className={cx('h-2.5 w-2.5 rounded-rounded', legendBgClass[status])}
                   aria-hidden="true"
                 />
                 <span className="text-xsm text-text-default">{diagnosis.legendLabels[status]}</span>

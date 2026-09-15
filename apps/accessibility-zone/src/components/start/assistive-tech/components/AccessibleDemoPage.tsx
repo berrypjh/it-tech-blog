@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Heart, Star } from 'lucide-react';
 
 import type { AssistiveTechContent, ReadingItem } from '../content';
@@ -12,7 +11,7 @@ type Props = {
 const NumberBadge = ({ value, active }: { value: number; active: boolean }) => (
   <span
     aria-hidden="true"
-    className={cn(
+    className={cx(
       'flex h-6 w-6 shrink-0 items-center justify-center rounded-rounded text-xxsm font-extraBold transition-colors',
       active
         ? 'bg-background-primary text-text-contrastText shadow-sm'
@@ -33,7 +32,7 @@ const Row = ({
   children: React.ReactNode;
 }) => (
   <li
-    className={cn(
+    className={cx(
       'flex items-start gap-2 rounded-md border px-sm py-2 transition-colors',
       isActive
         ? 'border-stroke-primary bg-primary-pr100/40 shadow-sm dark:bg-primary-pr900/30'
@@ -128,7 +127,7 @@ export const AccessibleDemoPage = ({ content, activeIndex }: Props) => {
               <Row key={item.index} item={item} isActive={isActive}>
                 <button
                   type="button"
-                  className={cn(
+                  className={cx(
                     'rounded-md px-3 py-1.5 text-xsm font-semiBold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
                     isPrimary
                       ? 'bg-background-primary text-text-contrastText hover:bg-primary-pr700'

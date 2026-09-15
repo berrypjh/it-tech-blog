@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, X } from 'lucide-react';
 
 import { QuizOptionButton } from '../components/QuizOptionButton';
@@ -47,7 +46,7 @@ const AccessibleNameQuizCard = ({
       {selected !== null && (
         <p
           aria-live="polite"
-          className={cn(
+          className={cx(
             'mt-auto rounded-md border px-sm py-2 text-xsm leading-relaxed',
             selected === content.correctId
               ? 'border-stroke-success/40 bg-success-su100/40 text-text-default dark:bg-success-su900/30'
@@ -95,7 +94,7 @@ const HeadingStructureQuizCard = ({
       {selected !== null && (
         <p
           aria-live="polite"
-          className={cn(
+          className={cx(
             'mt-auto rounded-md border px-sm py-2 text-xsm leading-relaxed',
             selected === content.correctId
               ? 'border-stroke-success/40 bg-success-su100/40 text-text-default dark:bg-success-su900/30'
@@ -138,7 +137,7 @@ const AccessibleInputQuizCard = ({
           role="radio"
           aria-checked={selected === 'before'}
           onClick={() => setSelected('before')}
-          className={cn(
+          className={cx(
             'flex flex-col gap-1.5 rounded-md border px-md py-md text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
             selected === 'before' && 'border-stroke-error bg-error-er100/40 dark:bg-error-er900/30',
             selected !== 'before' &&
@@ -166,7 +165,7 @@ const AccessibleInputQuizCard = ({
           role="radio"
           aria-checked={selected === 'after'}
           onClick={() => setSelected('after')}
-          className={cn(
+          className={cx(
             'flex flex-col gap-1.5 rounded-md border px-md py-md text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
             selected === 'after' &&
               'border-stroke-success bg-success-su100/40 dark:bg-success-su900/30',
@@ -198,7 +197,7 @@ const AccessibleInputQuizCard = ({
       {selected !== null && (
         <p
           aria-live="polite"
-          className={cn(
+          className={cx(
             'mt-auto rounded-md border px-sm py-2 text-xsm leading-relaxed',
             selected === 'after'
               ? 'border-stroke-success/40 bg-success-su100/40 text-text-default dark:bg-success-su900/30'

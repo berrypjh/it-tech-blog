@@ -2,8 +2,7 @@
 
 import { useId } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, ClipboardCheck } from 'lucide-react';
 
 import type { ChecklistItem, ChecklistStatus } from '../content';
@@ -63,7 +62,7 @@ export const DiagnosisChecklist = ({
             <li key={item.id}>
               <label
                 htmlFor={id}
-                className={cn(
+                className={cx(
                   'flex cursor-pointer items-center gap-2 rounded-md border px-sm py-2.5 text-xsm transition-colors',
                   isChecked
                     ? 'border-stroke-success/40 bg-success-su100/30 text-text-default dark:bg-success-su900/30'
@@ -79,7 +78,7 @@ export const DiagnosisChecklist = ({
                 />
                 <span
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'flex h-4 w-4 shrink-0 items-center justify-center rounded-xs border transition-colors',
                     isChecked
                       ? 'border-stroke-success bg-background-success text-text-contrastText'
@@ -90,7 +89,7 @@ export const DiagnosisChecklist = ({
                 </span>
                 <span className="flex-1">{item.label}</span>
                 <span
-                  className={cn(
+                  className={cx(
                     'ml-auto inline-flex shrink-0 items-center rounded-rounded px-2 py-0.5 text-xxsm font-semiBold',
                     badgeToneClass(status),
                   )}

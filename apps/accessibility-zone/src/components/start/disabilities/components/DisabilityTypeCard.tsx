@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { DisabilityTypeCard as Card } from '../content';
 
@@ -27,7 +27,7 @@ export const DisabilityTypeCard = ({ card, icon }: Props) => {
   return (
     <article className="flex h-full flex-col gap-md rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
       <div
-        className={cn(
+        className={cx(
           'flex h-11 w-11 items-center justify-center rounded-rounded',
           t.iconBg,
           t.iconColor,

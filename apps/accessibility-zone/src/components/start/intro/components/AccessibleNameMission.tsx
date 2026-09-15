@@ -2,8 +2,7 @@
 
 import { useId, useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, ShoppingCart } from 'lucide-react';
 
 import type { IntroContent } from '../content';
@@ -47,7 +46,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
             <label
               key={i}
               htmlFor={id}
-              className={cn(
+              className={cx(
                 'flex cursor-pointer items-center gap-2 rounded-md border px-sm py-2 text-xsm transition-colors',
                 isThisCorrect
                   ? 'border-stroke-success bg-success-su100/50 text-text-default dark:bg-success-su900/30'
@@ -82,7 +81,7 @@ export const AccessibleNameMission = ({ content }: Props) => {
       <div
         role="status"
         aria-live="polite"
-        className={cn(
+        className={cx(
           'mt-auto rounded-md px-sm py-2 text-[0.6875rem] font-semiBold',
           isCorrect
             ? 'border border-stroke-success/40 bg-success-su100/40 text-text-success'

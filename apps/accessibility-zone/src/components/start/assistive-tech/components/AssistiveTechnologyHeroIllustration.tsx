@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { CircleDot, Keyboard, Mic, Volume2, ZoomIn } from 'lucide-react';
 
 import type { AssistiveTechContent } from '../content';
@@ -27,14 +26,14 @@ const FloatingChip = ({
             : 'bg-secondary-se100 text-text-secondary dark:bg-secondary-se900/40';
   return (
     <div
-      className={cn(
+      className={cx(
         'absolute z-10 flex flex-col items-center gap-1 rounded-lg border border-stroke-light bg-background-surface px-2 py-1.5 text-[0.5625rem] font-semiBold shadow-md sm:text-[0.625rem]',
         className,
       )}
       aria-hidden="true"
     >
       <span
-        className={cn(
+        className={cx(
           'flex h-6 w-6 items-center justify-center rounded-md sm:h-7 sm:w-7',
           toneClass,
         )}

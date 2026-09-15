@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ChevronRight } from 'lucide-react';
 
 import type { ReasonCard } from '../content';
@@ -34,7 +33,7 @@ export const ImportanceReasonCard = ({ card, icon, detailCta }: Props) => {
   return (
     <article className="group flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
       <div
-        className={cn(
+        className={cx(
           'flex h-12 w-12 items-center justify-center rounded-rounded',
           t.iconBg,
           t.iconColor,

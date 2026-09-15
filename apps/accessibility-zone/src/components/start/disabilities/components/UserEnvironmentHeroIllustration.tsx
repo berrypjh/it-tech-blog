@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ALargeSmall, Ear, Keyboard, Sun } from 'lucide-react';
 
 import type { DisabilitiesContent } from '../content';
@@ -29,14 +28,14 @@ const FloatingChip = ({
           : 'text-text-warning bg-warning-wa100 dark:bg-warning-wa900/40';
   return (
     <div
-      className={cn(
+      className={cx(
         'absolute z-10 flex h-12 w-12 flex-col items-center justify-center gap-0 rounded-rounded border border-stroke-light bg-background-surface text-[0.5625rem] font-bold shadow-md sm:h-14 sm:w-14 sm:text-[0.625rem]',
         className,
       )}
       aria-hidden="true"
     >
       <span
-        className={cn(
+        className={cx(
           'flex h-6 w-6 items-center justify-center rounded-rounded sm:h-7 sm:w-7',
           toneClass,
         )}

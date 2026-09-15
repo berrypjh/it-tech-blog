@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { AudioLines } from 'lucide-react';
 
 import type { AssistiveTechContent } from '../content';
@@ -36,7 +35,7 @@ export const ScreenReaderLogPanel = ({ content, activeIndex }: Props) => {
           return (
             <li
               key={item.index}
-              className={cn(
+              className={cx(
                 'flex items-start gap-2 rounded-md px-2 py-1.5 transition-colors',
                 isActive
                   ? 'bg-primary-pr700/60 text-neutral-ne100 ring-1 ring-primary-pr400 dark:bg-primary-pr400/60 dark:text-neutral-ne900'
@@ -48,7 +47,7 @@ export const ScreenReaderLogPanel = ({ content, activeIndex }: Props) => {
               </span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'flex h-4 w-4 shrink-0 items-center justify-center rounded-rounded text-[0.625rem] font-extraBold',
                   isActive
                     ? 'bg-primary-pr400 text-text-contrastText'

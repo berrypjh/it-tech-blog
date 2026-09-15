@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { LearningStage, StageStatus } from '../content';
 
@@ -18,7 +18,7 @@ const iconTone: Record<StageStatus, string> = {
 export const LearningStageRow = ({ stage, isLast }: Props) => {
   return (
     <li
-      className={cn(
+      className={cx(
         'grid grid-cols-[auto_auto_1fr] items-center gap-sm px-lg py-md transition-colors hover:bg-background-default/40 sm:gap-md sm:px-lg',
         !isLast && 'border-b border-stroke-default/60',
       )}
@@ -31,7 +31,7 @@ export const LearningStageRow = ({ stage, isLast }: Props) => {
       </span>
       <span
         aria-hidden="true"
-        className={cn(
+        className={cx(
           'hidden h-9 w-9 shrink-0 items-center justify-center rounded-md sm:flex',
           iconTone[stage.status],
         )}

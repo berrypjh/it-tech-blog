@@ -1,4 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { ProblemStep } from '../content';
 
@@ -57,7 +57,7 @@ export const ProblemFlowItem = ({ step, icon, isLast }: Props) => {
     <li className="relative flex gap-md">
       <div className="flex flex-col items-center">
         <span
-          className={cn(
+          className={cx(
             'flex h-9 w-9 shrink-0 items-center justify-center rounded-rounded text-sm font-bold ring-2',
             t.numberBg,
             t.ring,
@@ -66,17 +66,17 @@ export const ProblemFlowItem = ({ step, icon, isLast }: Props) => {
         >
           {step.index}
         </span>
-        {!isLast && <span className={cn('mt-1 w-px flex-1', t.line)} aria-hidden="true" />}
+        {!isLast && <span className={cx('mt-1 w-px flex-1', t.line)} aria-hidden="true" />}
       </div>
 
       <div
-        className={cn(
+        className={cx(
           'mb-md flex flex-1 flex-col gap-1.5 rounded-lg border bg-background-surface p-lg shadow-sm sm:flex-row sm:items-center sm:gap-md',
           t.border,
         )}
       >
         <span
-          className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-md', t.iconBg)}
+          className={cx('flex h-9 w-9 shrink-0 items-center justify-center rounded-md', t.iconBg)}
           aria-hidden="true"
         >
           {icon}
@@ -86,7 +86,7 @@ export const ProblemFlowItem = ({ step, icon, isLast }: Props) => {
           <p className="mt-0.5 text-xsm leading-relaxed text-text-light">{step.description}</p>
         </div>
         <span
-          className={cn(
+          className={cx(
             'inline-flex shrink-0 items-center self-start rounded-rounded px-2 py-1 text-xxsm font-semiBold sm:self-center',
             t.badgeBg,
           )}

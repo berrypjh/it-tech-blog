@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, Leaf, ShoppingCart, VolumeX } from 'lucide-react';
 
 import type { DisabilitiesContent, SimulationModeId } from '../content';
@@ -103,7 +102,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
     <div className="flex flex-col gap-2">
       <div className="overflow-hidden rounded-xl border border-stroke-default bg-background-surface shadow-md">
         <div
-          className={cn('relative', mode === 'low-vision' && 'text-text-light/80')}
+          className={cx('relative', mode === 'low-vision' && 'text-text-light/80')}
           style={{
             filter: `${modeFilter(mode)} contrast(${contrastValue})`,
             fontSize: `${fontScale}%`,
@@ -131,7 +130,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
               ))}
             </nav>
             <span
-              className={cn(
+              className={cx(
                 'flex h-7 w-7 shrink-0 items-center justify-center rounded-rounded text-text-default',
                 showFocusRings && 'ring-2 ring-stroke-primary ring-offset-1',
               )}
@@ -155,7 +154,7 @@ export const PreviewWebsitePanel = ({ preview, mode, contrastLevel, fontScale }:
                   type="button"
                   tabIndex={-1}
                   aria-hidden="true"
-                  className={cn(
+                  className={cx(
                     'pointer-events-none rounded-md bg-background-primary px-2.5 py-1.5 text-[0.625rem] font-semiBold text-text-contrastText',
                     showFocusRings && 'ring-2 ring-stroke-primary ring-offset-1',
                   )}

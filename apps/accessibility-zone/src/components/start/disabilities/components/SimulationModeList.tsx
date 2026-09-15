@@ -2,8 +2,7 @@
 
 import { useRef } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check } from 'lucide-react';
 
 import type { SimulationMode, SimulationModeId } from '../content';
@@ -58,7 +57,7 @@ export const SimulationModeList = ({
               aria-pressed={isActive}
               onClick={() => onSelect(m.id)}
               onKeyDown={(e) => onKeyDown(e, i)}
-              className={cn(
+              className={cx(
                 'group flex items-center gap-2 rounded-md border px-sm py-2.5 text-left text-xsm font-semiBold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary focus-visible:ring-offset-2',
                 isActive
                   ? 'border-stroke-primary bg-background-primary text-text-contrastText shadow-sm'
@@ -67,7 +66,7 @@ export const SimulationModeList = ({
             >
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'flex h-7 w-7 shrink-0 items-center justify-center rounded-md',
                   isActive
                     ? 'bg-background-surface/20 text-text-contrastText'
@@ -79,7 +78,7 @@ export const SimulationModeList = ({
               <span className="flex-1 truncate">{m.label}</span>
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'flex h-4 w-4 shrink-0 items-center justify-center rounded-rounded',
                   isActive
                     ? 'bg-background-surface text-text-primary'

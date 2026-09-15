@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { ArrowRight } from 'lucide-react';
 
 type Props = {
@@ -53,7 +52,7 @@ export const PrincipleCard = ({
     <article className="group flex h-full flex-col gap-sm rounded-xl border border-stroke-default bg-background-surface p-lg shadow-sm transition-all hover:-translate-y-0.5 hover:border-stroke-primary hover:shadow-md focus-within:ring-2 focus-within:ring-stroke-primary focus-within:ring-offset-2">
       <div className="flex items-center justify-between">
         <div
-          className={cn(
+          className={cx(
             'flex h-11 w-11 items-center justify-center rounded-xl',
             t.iconBg,
             t.iconColor,
@@ -61,7 +60,7 @@ export const PrincipleCard = ({
         >
           {icon}
         </div>
-        <span className={cn('text-[0.625rem] font-semiBold uppercase tracking-wide', t.pill)}>
+        <span className={cx('text-[0.625rem] font-semiBold uppercase tracking-wide', t.pill)}>
           {`${cardLabel} 0${index + 1}`}
         </span>
       </div>

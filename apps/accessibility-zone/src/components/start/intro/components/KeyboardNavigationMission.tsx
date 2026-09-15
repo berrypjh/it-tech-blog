@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { cn } from '@it-tech-blog/utils';
+import { cx } from '@berrypjh/react-ui';
 
 import type { IntroContent } from '../content';
 
@@ -36,7 +36,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
             <li key={i} className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className={cn(
+                className={cx(
                   'flex h-6 w-6 shrink-0 items-center justify-center rounded-rounded text-[0.625rem] font-bold transition-colors',
                   isFocused
                     ? 'bg-background-primary text-text-contrastText'
@@ -52,7 +52,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
                   id={numberId}
                   onFocus={() => setFocusIndex(i)}
                   onClick={() => setFocusIndex(i)}
-                  className={cn(
+                  className={cx(
                     'inline-flex items-center justify-center rounded-md px-2.5 py-1.5 text-[0.6875rem] font-semiBold transition-colors focus-visible:outline-none',
                     isFocused
                       ? 'bg-background-primary text-text-contrastText shadow-sm ring-2 ring-stroke-primary ring-offset-2'
@@ -76,7 +76,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
                     type="email"
                     placeholder={content.inputPlaceholder}
                     onFocus={() => setFocusIndex(i)}
-                    className={cn(
+                    className={cx(
                       'mt-0.5 rounded-sm border bg-background-surface px-2 py-1 text-[0.6875rem] text-text-default transition-colors focus-visible:outline-none',
                       isFocused
                         ? 'border-stroke-primary ring-2 ring-stroke-primary/40'
@@ -97,7 +97,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
                   <select
                     id={numberId}
                     onFocus={() => setFocusIndex(i)}
-                    className={cn(
+                    className={cx(
                       'mt-0.5 rounded-sm border bg-background-surface px-2 py-1 text-[0.6875rem] text-text-default transition-colors focus-visible:outline-none',
                       isFocused
                         ? 'border-stroke-primary ring-2 ring-stroke-primary/40'
@@ -122,7 +122,7 @@ export const KeyboardNavigationMission = ({ content }: Props) => {
                     id={numberId}
                     type="checkbox"
                     onFocus={() => setFocusIndex(i)}
-                    className={cn(
+                    className={cx(
                       'h-4 w-4 rounded-xs border-stroke-default text-text-primary focus-visible:outline-none',
                       isFocused && 'ring-2 ring-stroke-primary/40',
                     )}

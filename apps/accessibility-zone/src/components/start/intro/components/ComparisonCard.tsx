@@ -1,5 +1,4 @@
-import { cn } from '@it-tech-blog/utils';
-
+import { cx } from '@berrypjh/react-ui';
 import { Check, X } from 'lucide-react';
 
 type Props = {
@@ -44,7 +43,7 @@ export const ComparisonCard = ({
             {beforeLabel}
           </div>
           <div
-            className={cn(
+            className={cx(
               'flex min-h-[5rem] items-center rounded-md border border-stroke-default/70 bg-background-default/40 p-md',
             )}
           >
