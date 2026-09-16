@@ -3,15 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { EventMiddleLayer } from './sections/EventMiddleLayer';
-import { EventSystemHero } from './sections/EventSystemHero';
-import { EventSystemOverview } from './sections/EventSystemOverview';
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MisconceptionVsReality } from './sections/MisconceptionVsReality';
-import { SourceEntryMap } from './sections/SourceEntryMap';
-import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
-import { UserOnClickView } from './sections/UserOnClickView';
+import { EventPipelineOverview } from './sections/EventPipelineOverview';
+import { ListenerMisconception } from './sections/ListenerMisconception';
+import { SourceEntryFiles } from './sections/SourceEntryFiles';
+import { WhyEventSystemCodeCheckpoint } from './sections/WhyEventSystemCodeCheckpoint';
+import { WhyEventSystemHero } from './sections/WhyEventSystemHero';
 import { whyEventSystemContent } from './content';
 
 type Props = { locale: Locale };
@@ -21,15 +17,11 @@ export const WhyEventSystemPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <EventSystemHero content={c.hero} />
-      <TodayQuestionBanner content={c.question} />
-      <UserOnClickView content={c.userOnClick} />
-      <MisconceptionVsReality content={c.misconception} />
-      <EventSystemOverview content={c.overview} />
-      <EventMiddleLayer content={c.middle} />
-      <SourceEntryMap content={c.sourceMap} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <WhyEventSystemHero content={c.hero} />
+      <ListenerMisconception content={c.misconception} />
+      <EventPipelineOverview content={c.pipeline} />
+      <SourceEntryFiles content={c.entryFiles} />
+      <WhyEventSystemCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

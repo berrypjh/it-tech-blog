@@ -1,13 +1,13 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
-  onClickClickContent,
-  OnClickClickMappingPage,
+  onClickToClickContent,
+  OnClickToClickPage,
 } from '@/components/events-internals/onclick-to-click';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = onClickClickContent[locale];
+  const c = onClickToClickContent[locale];
 
   return {
     title:
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <OnClickClickMappingPage locale={locale} />;
+  return <OnClickToClickPage locale={locale} />;
 };
 
 export default Page;

@@ -1,2 +1,2 @@
-export { onClickClickContent } from './content';
-export { OnClickClickMappingPage } from './OnClickClickMappingPage';
+export { onClickToClickContent } from './content';
+export { OnClickToClickPage } from './OnClickToClickPage';

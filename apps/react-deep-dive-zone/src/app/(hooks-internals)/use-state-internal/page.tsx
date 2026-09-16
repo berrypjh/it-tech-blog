@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'useState Internals: state, queue, dispatch — React Lab'
         : 'useState 내부 구조: state, queue, dispatch — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 

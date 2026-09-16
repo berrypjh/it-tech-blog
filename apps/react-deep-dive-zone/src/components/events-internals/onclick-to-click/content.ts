@@ -1,117 +1,89 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type MappingPair = { native: string; prop: string };
-
-export type FlowStep = {
-  title: string;
-  description: string;
-  code: string;
-  tone: Tone;
-  isCore?: boolean;
+export type MappingPair = {
+  native: string;
+  prop: string;
+  special?: boolean;
 };
 
-export type ConverterOption = MappingPair;
+export type MappingRow = {
+  native: string;
+  prop: string;
+  rule: string;
+};
 
-export type TakeawayCard = {
+export type NamingSideId = 'simple' | 'special';
+
+export type NamingSide = {
+  id: NamingSideId;
+  title: string;
+  badge: string;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
+};
+
+export type RegisterStepId = 'list' | 'loop' | 'name' | 'two-phase';
+
+export type RegisterStep = {
+  id: RegisterStepId;
+  badge: string;
   title: string;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
-export type OnClickClickContent = {
+export type OnClickToClickContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    codeCard: { fileLabel: string; code: string };
-    diagram: {
-      title: string;
-      columnLabels: { native: string; prop: string };
-      rows: MappingPair[];
-      helper: { title: string; body: string };
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    nativeLabel: string;
+    propLabel: string;
+    pairs: MappingPair[];
   };
-  question: {
+  mappingTable: {
+    badge: string;
     eyebrow: string;
     title: string;
-    badges: { title: string; description: string; tone: Tone }[];
+    description: string;
+    headers: [string, string, string];
+    rows: MappingRow[];
+    note: string;
   };
-  compare: {
-    step: number;
+  naming: {
+    badge: string;
     eyebrow: string;
     title: string;
-    columnLabels: { native: string; prop: string };
-    rows: MappingPair[];
+    description: string;
+    sides: [NamingSide, NamingSide];
+    note: string;
   };
-  mapping: {
-    step: number;
+  registration: {
+    badge: string;
     eyebrow: string;
     title: string;
-    simple: {
-      title: string;
-      pair: MappingPair;
-    };
-    special: {
-      title: string;
-      pairs: MappingPair[];
-    };
-    insight: string;
+    description: string;
+    steps: RegisterStep[];
+    note: string;
   };
-  flow: {
-    step: number;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    steps: FlowStep[];
-  };
-  converter: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    hint: string;
-    options: ConverterOption[];
-    defaultNative: string;
-    resultLabels: {
-      native: string;
-      prop: string;
-      result: string;
-      note: string;
-      simpleNote: string;
-    };
-  };
-  realCode: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    smallDescription: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanation: { label: string; body: string };
-    fileLocation: { label: string; path: string };
-    button: { label: string; href: string };
-  };
-  twoPhase: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    bubbleCard: { label: string; description: string };
-    centerCode: string;
-    branches: { label: string; sub: string; tone: Tone }[];
-    nextPreview: { label: string; body: string; cta: string; href: string };
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: { title: string; description: string }[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -122,467 +94,330 @@ export type OnClickClickContent = {
   };
 };
 
-const HERO_CODE = `function SaveButton() {
-  function handleClick() {
-    console.log("저장 완료!");
-  }
-
-  return <button onClick={handleClick}>저장</button>;
-}`;
-
-const HERO_CODE_EN = `function SaveButton() {
-  function handleClick() {
-    console.log("Saved!");
-  }
-
-  return <button onClick={handleClick}>Save</button>;
-}`;
-
-const REAL_CODE = `// DOMEventProperties.js
-registerSimpleEvent("click", "onClick");
-registerSimpleEvent("dblclick", "onDoubleClick");
-registerSimpleEvent("focusin", "onFocus");
-registerSimpleEvent("focusout", "onBlur");
-registerSimpleEvent("keydown", "onKeyDown");
-registerSimpleEvent("pointerdown", "onPointerDown");
-
-// ... 더 많은 이벤트
-//
-// registerSimpleEvent(domEventName, reactPropName)
-// 내부적으로 registerTwoPhaseEvent를 호출합니다.`;
-
-const REAL_CODE_EN = `// DOMEventProperties.js
-registerSimpleEvent("click", "onClick");
-registerSimpleEvent("dblclick", "onDoubleClick");
-registerSimpleEvent("focusin", "onFocus");
-registerSimpleEvent("focusout", "onBlur");
-registerSimpleEvent("keydown", "onKeyDown");
-registerSimpleEvent("pointerdown", "onPointerDown");
-
-// ... more events
-//
-// registerSimpleEvent(domEventName, reactPropName)
-// internally invokes registerTwoPhaseEvent.`;
-
-const FULL_TABLE: MappingPair[] = [
-  { native: 'click', prop: 'onClick' },
-  { native: 'dblclick', prop: 'onDoubleClick' },
-  { native: 'focusin', prop: 'onFocus' },
-  { native: 'focusout', prop: 'onBlur' },
-  { native: 'keydown', prop: 'onKeyDown' },
-  { native: 'pointerdown', prop: 'onPointerDown' },
-  { native: '...', prop: '...' },
+const REGISTER_SIMPLE_CODE = `const simpleEventPluginEvents = [
+  'abort', 'auxClick', 'cancel', 'canPlay', 'click',
+  'close', 'contextMenu', 'copy', 'cut', 'drag', ...
 ];
 
-const CONVERTER_OPTIONS: ConverterOption[] = [
-  { native: 'click', prop: 'onClick' },
-  { native: 'dblclick', prop: 'onDoubleClick' },
-  { native: 'focusin', prop: 'onFocus' },
-  { native: 'focusout', prop: 'onBlur' },
-  { native: 'keydown', prop: 'onKeyDown' },
-  { native: 'pointerdown', prop: 'onPointerDown' },
-];
+function registerSimpleEvent(domEventName, reactName) {
+  topLevelEventsToReactNames.set(domEventName, reactName);
+  registerTwoPhaseEvent(reactName, [domEventName]);
+}
 
-const ko: OnClickClickContent = {
+export function registerSimpleEvents() {
+  for (let i = 0; i < simpleEventPluginEvents.length; i++) {
+    const eventName = simpleEventPluginEvents[i];
+    const domEventName = eventName.toLowerCase();
+    const capitalizedEvent = eventName[0].toUpperCase() + eventName.slice(1);
+    registerSimpleEvent(domEventName, 'on' + capitalizedEvent);
+  }
+
+  registerSimpleEvent('dblclick', 'onDoubleClick');
+  registerSimpleEvent('focusin', 'onFocus');
+  registerSimpleEvent('focusout', 'onBlur');
+}`;
+
+const SIMPLE_EVENT_PLUGIN_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/SimpleEventPlugin.js';
+
+const ko: OnClickToClickContent = {
   hero: {
     badge: '이벤트 시스템 · 3/10단계',
-    titleLines: ['onClick과 click은', '같은 이름이 아니다'],
+    title: { line1: 'onClick과 click은', line2: '이름이 겹칠 뿐이다' },
     description:
-      'React는 사용자가 쓰는 prop 이름과 브라우저 native event 이름을 내부에서 연결합니다.',
-    codeCard: { fileLabel: 'JSX', code: HERO_CODE },
-    diagram: {
-      title: 'React 내부 매핑 일부 예시',
-      columnLabels: { native: '브라우저 Native Event', prop: 'React Prop (Handler)' },
-      rows: [
-        { native: 'click', prop: 'onClick' },
-        { native: 'focusin', prop: 'onFocus' },
-        { native: 'dblclick', prop: 'onDoubleClick' },
-        { native: '...', prop: '...' },
-      ],
-      helper: {
-        title: '내부 매핑 테이블',
-        body: '연결 후 실행됩니다.',
-      },
-    },
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: '브라우저는 click을 발생시키는데, React는 어떻게 onClick handler를 찾을까?',
-    badges: [
-      { title: '이벤트 이름 매핑', description: '내부 테이블', tone: 'sky' },
-      { title: '이름 변환 및 특수 매핑', description: '로직 존재', tone: 'violet' },
-      { title: '이후 Listener 수집의 기준', description: '등록 정보', tone: 'teal' },
+      'React prop 이름과 브라우저 이벤트 이름은 별개입니다. 둘을 잇는 것은 규칙이 아니라 앱 시작 시 채워지는 Map 하나입니다.',
+    diagramBadge: 'name mapping',
+    diagramCaption: 'native → react prop',
+    nativeLabel: 'native event',
+    propLabel: 'react prop',
+    pairs: [
+      { native: 'click', prop: 'onClick' },
+      { native: 'keydown', prop: 'onKeyDown' },
+      { native: 'dblclick', prop: 'onDoubleClick', special: true },
+      { native: 'focusin', prop: 'onFocus', special: true },
+      { native: 'focusout', prop: 'onBlur', special: true },
     ],
   },
-  compare: {
-    step: 1,
-    eyebrow: 'prop-vs-native',
-    title: 'React prop vs Native Event 비교',
-    columnLabels: { native: 'Native Event (브라우저)', prop: 'React Prop (사용자 코드)' },
-    rows: FULL_TABLE,
-  },
-  mapping: {
-    step: 2,
-    eyebrow: 'simple-vs-special',
-    title: '단순 매핑 vs 특수 매핑',
-    simple: {
-      title: '단순 매핑 대부분',
-      pair: { native: 'click', prop: 'onClick' },
-    },
-    special: {
-      title: '특수 매핑 일부 이벤트',
-      pairs: [
-        { native: 'dblclick', prop: 'onDoubleClick' },
-        { native: 'focusin', prop: 'onFocus' },
-        { native: 'focusout', prop: 'onBlur' },
-      ],
-    },
-    insight: 'React 이벤트 이름은 브라우저 이벤트 이름의 단순 대문자 변환만으로 결정되지 않습니다.',
-  },
-  flow: {
-    step: 3,
-    eyebrow: 'register-simple-events',
-    title: 'registerSimpleEvents 흐름',
-    steps: [
+  mappingTable: {
+    badge: '01',
+    eyebrow: 'mapping table',
+    title: '이름이 어긋나는 지점들',
+    description:
+      '대부분은 앞에 on을 붙이고 첫 글자를 대문자로 바꾸면 끝입니다. 문제는 그 규칙이 통하지 않는 몇 개입니다.',
+    headers: ['native event', 'React prop', '어떻게 정해지나'],
+    rows: [
       {
-        title: 'simpleEventPluginEvents',
-        description: '내장된 DOM 이벤트 목록',
-        code: `'click',\n'dblclick',\n'focusin',\n'focusout',\n'keydown',\n'pointerdown',\n...`,
+        native: 'click',
+        prop: 'onClick',
+        rule: '규칙대로: on + 첫 글자 대문자',
+      },
+      {
+        native: 'keydown',
+        prop: 'onKeyDown',
+        rule: '규칙대로. 목록에 keyDown으로 적혀 있어 D가 살아남습니다.',
+      },
+      {
+        native: 'dblclick',
+        prop: 'onDoubleClick',
+        rule: '예외: 손으로 따로 등록합니다. 규칙대로면 onDblclick이 됩니다.',
+      },
+      {
+        native: 'focusin',
+        prop: 'onFocus',
+        rule: '예외: focus는 버블링하지 않아 focusin을 쓰되 이름은 onFocus로 둡니다.',
+      },
+      {
+        native: 'focusout',
+        prop: 'onBlur',
+        rule: '예외: 같은 이유로 focusout을 onBlur에 잇습니다.',
+      },
+    ],
+    note: 'onFocus가 focus가 아니라 focusin에 연결된다는 점이 중요합니다. 위임하려면 버블링하는 이벤트가 필요하기 때문입니다.',
+  },
+  naming: {
+    badge: '02',
+    eyebrow: 'two kinds',
+    title: '규칙으로 되는 것과 손으로 적는 것',
+    description:
+      'registerSimpleEvents는 목록을 돌며 이름을 자동으로 만들고, 그 뒤에 예외 세 줄을 따로 적습니다.',
+    sides: [
+      {
+        id: 'simple',
+        title: '규칙 변환',
+        badge: '대부분',
+        description: 'simpleEventPluginEvents 목록의 이름을 그대로 변환합니다.',
+        bullets: [
+          '목록의 이름을 소문자로 낮춰 native event 이름을 만든다',
+          '첫 글자를 올리고 앞에 on을 붙여 prop 이름을 만든다',
+          'click → onClick, keyDown → keydown / onKeyDown',
+        ],
         tone: 'sky',
       },
       {
-        title: '각 DOM event 반복',
-        description: 'for loop',
-        code: `for (const domEventName\n  of simpleEventPluginEvents) {\n  ...\n}`,
+        id: 'special',
+        title: '수동 등록',
+        badge: '세 개',
+        description: '규칙으로 만들 수 없는 것만 함수 끝에서 직접 이어 붙입니다.',
+        bullets: [
+          'dblclick을 onDoubleClick으로 — 읽기 좋은 이름을 쓰려고',
+          'focusin을 onFocus로 — 버블링하는 쪽을 써야 해서',
+          'focusout을 onBlur로 — 같은 이유',
+        ],
+        tone: 'violet',
+      },
+    ],
+    note: '예외가 세 개뿐이라는 점이 오히려 단서입니다. 나머지 이름은 목록만 보면 예측할 수 있습니다.',
+  },
+  registration: {
+    badge: '03',
+    eyebrow: 'registerSimpleEvents',
+    title: '이름 한 쌍이 등록되는 네 단계',
+    description:
+      '이 함수는 앱이 시작될 때 한 번만 돕니다. 결과로 남는 것은 Map 하나와 두 배로 불어난 prop 이름 목록입니다.',
+    steps: [
+      {
+        id: 'list',
+        badge: 'step 1',
+        title: '이벤트 이름 목록',
+        body: 'simpleEventPluginEvents 배열에 지원할 이벤트 이름이 적혀 있습니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'loop',
+        badge: 'step 2',
+        title: '목록 순회',
+        body: '하나씩 꺼내 native 이름과 prop 이름을 계산합니다.',
         tone: 'cyan',
       },
       {
-        title: 'React prop name 계산',
-        description: '특수 매핑 포함',
-        code: `const reactPropName =\n  getReactName(domEventName);`,
+        id: 'name',
+        badge: 'step 3',
+        title: 'Map에 기록',
+        body: 'topLevelEventsToReactNames에 native → prop 쌍을 넣습니다.',
         tone: 'violet',
-        isCore: true,
       },
       {
-        title: 'registerTwoPhaseEvent(...)',
-        description: '버블 + 캡처 양쪽 등록',
-        code: `registerTwoPhaseEvent(\n  reactPropName,\n  [domEventName],\n);`,
+        id: 'two-phase',
+        badge: 'step 4',
+        title: 'registerTwoPhaseEvent',
+        body: 'onClick과 onClickCapture 두 prop 이름을 동시에 등록합니다.',
         tone: 'emerald',
       },
     ],
+    note: '04 때문에 prop 이름은 항상 짝으로 생깁니다. onClickCapture를 따로 정의한 적이 없는데 동작하는 이유입니다.',
   },
-  converter: {
-    step: 4,
-    eyebrow: 'name-converter',
-    title: '이벤트 이름 변환기',
-    hint: '직접 선택해 보세요',
-    options: CONVERTER_OPTIONS,
-    defaultNative: 'focusin',
-    resultLabels: {
-      native: '선택한 Native Event',
-      prop: 'React Handler Prop',
-      result: '결과',
-      note: '특수 매핑이 적용된 결과입니다.',
-      simpleNote: '단순 매핑입니다.',
-    },
-  },
-  realCode: {
-    step: 5,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    smallDescription: '특수 이벤트 매핑 일부',
-    fileLabel: 'DOMEventProperties.js',
-    code: REAL_CODE,
-    explanation: {
-      label: '설명',
-      body: 'focus 대신 focusin을 사용하여 위임(delegation)이 가능합니다. focusout과 blur의 차이도 React 추상화 안에서 사용됩니다. 이렇게 등록된 정보는 이후 listener 수집의 기준이 됩니다.',
-    },
-    fileLocation: {
-      label: '파일 위치',
-      path: 'packages/react-dom-bindings/src/events/DOMEventProperties.js',
-    },
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMEventProperties.js',
-    },
-  },
-  twoPhase: {
-    step: 6,
-    eyebrow: 'two-phase-preview',
-    title: 'two-phase registration 미리보기',
-    bubbleCard: {
-      label: 'onClick (bubble)',
-      description: '버블 단계에서 실행',
-    },
-    centerCode: `registerTwoPhaseEvent('onClick', 'click')`,
-    branches: [
-      { label: 'onClick', sub: '버블 단계', tone: 'teal' },
-      { label: 'onClickCapture', sub: '캡처 단계', tone: 'violet' },
-    ],
-    nextPreview: {
-      label: '다음 단계 예고',
-      body: '이렇게 등록된 두 prop을 기준으로 이후 Capture/Bubble 순서에 맞는 listener가 수집됩니다.',
-      cta: '다음: Capture / Bubble 유지',
-      href: '/accumulate-listeners',
-    },
-  },
-  mission: {
-    step: 7,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
-    description: 'React 저장소를 직접 열어 매핑 등록 흐름을 손으로 확인해 보세요.',
-    items: [
-      {
-        title: 'DOMEventProperties.js를 연다',
-        description: '특수 매핑 규칙이 모인 핵심 파일을 펼친다.',
-      },
-      {
-        title: 'simpleEventPluginEvents 배열을 확인한다',
-        description: 'React가 미리 알고 있는 native event 목록이다.',
-      },
-      {
-        title: 'special case 매핑을 찾는다',
-        description: 'dblclick → onDoubleClick 같은 케이스를 직접 본다.',
-      },
-      {
-        title: 'onClick과 onClickCapture가 함께 등록될 수 있음을 기억한다',
-        description: 'two-phase registration의 의미를 짧게 기록한다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 8,
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: 'React prop 이름과 native event 이름은 내부에서 매핑된다.',
-        body: '사용자는 onClick을 쓰지만, 브라우저는 click을 발생시킨다.',
-        tone: 'blue',
-      },
-      {
-        title: '일부 이벤트는 특수 매핑이 필요하다.',
-        body: 'dblclick, focusin, focusout 등은 단순 변환으로 해결되지 않는다.',
-        tone: 'teal',
-      },
-      {
-        title: '이 등록 정보가 이후 listener 수집의 기준이 된다.',
-        body: '매핑된 prop 이름이 있어야 정확한 handler를 찾을 수 있다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/plugins/SimpleEventPlugin.js',
+    lookForLabel: '볼 것',
+    lookFor: 'registerSimpleEvents, topLevelEventsToReactNames, registerTwoPhaseEvent',
+    whyLabel: '설명',
+    why: '함수 끝에 예외 세 줄이 for 루프 바깥에 따로 적혀 있습니다. 규칙과 예외가 코드 모양으로 갈려 있습니다.',
+    code: REGISTER_SIMPLE_CODE,
+    primaryCta: 'SimpleEventPlugin.js 읽기',
+    primaryHref: SIMPLE_EVENT_PLUGIN_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '이벤트 우선순위와 dispatch wrapper 보기',
+    title: '이벤트가 들어오면 무엇부터 정하는가',
     description:
-      'onClick과 click 매핑을 이해했으니, 이벤트 우선순위와 dispatch wrapper의 동작을 이어서 살펴봅니다.',
+      '이름을 다 이어 두었어도, 실제 이벤트가 들어오면 우선순위부터 정해야 합니다. 그 분기를 다음 페이지에서 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/dispatch-selection',
   },
 };
 
-const en: OnClickClickContent = {
+const en: OnClickToClickContent = {
   hero: {
     badge: 'Event System · 3/10',
-    titleLines: ['onClick and click', 'are not the same name'],
+    title: { line1: 'onClick and click', line2: 'merely share a name' },
     description:
-      'React internally connects the prop name you write to the native event name fired by the browser.',
-    codeCard: { fileLabel: 'JSX', code: HERO_CODE_EN },
-    diagram: {
-      title: 'A peek at the internal mapping table',
-      columnLabels: { native: 'Browser Native Event', prop: 'React Prop (Handler)' },
-      rows: [
-        { native: 'click', prop: 'onClick' },
-        { native: 'focusin', prop: 'onFocus' },
-        { native: 'dblclick', prop: 'onDoubleClick' },
-        { native: '...', prop: '...' },
-      ],
-      helper: {
-        title: 'Internal mapping table',
-        body: 'connected here before invocation.',
-      },
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: 'The browser fires click — so how does React find your onClick handler?',
-    badges: [
-      { title: 'Event name mapping', description: 'internal table', tone: 'sky' },
-      { title: 'Name conversion & special cases', description: 'logic involved', tone: 'violet' },
-      {
-        title: 'Foundation for listener collection',
-        description: 'registration info',
-        tone: 'teal',
-      },
+      'The React prop name and the browser event name are separate things. What connects them is not a rule but one Map filled in at startup.',
+    diagramBadge: 'name mapping',
+    diagramCaption: 'native → react prop',
+    nativeLabel: 'native event',
+    propLabel: 'react prop',
+    pairs: [
+      { native: 'click', prop: 'onClick' },
+      { native: 'keydown', prop: 'onKeyDown' },
+      { native: 'dblclick', prop: 'onDoubleClick', special: true },
+      { native: 'focusin', prop: 'onFocus', special: true },
+      { native: 'focusout', prop: 'onBlur', special: true },
     ],
   },
-  compare: {
-    step: 1,
-    eyebrow: 'prop-vs-native',
-    title: 'React prop vs Native Event compared',
-    columnLabels: { native: 'Native Event (browser)', prop: 'React Prop (your code)' },
-    rows: FULL_TABLE,
-  },
-  mapping: {
-    step: 2,
-    eyebrow: 'simple-vs-special',
-    title: 'Simple mapping vs Special mapping',
-    simple: {
-      title: 'Simple mapping (most cases)',
-      pair: { native: 'click', prop: 'onClick' },
-    },
-    special: {
-      title: 'Special mapping (some events)',
-      pairs: [
-        { native: 'dblclick', prop: 'onDoubleClick' },
-        { native: 'focusin', prop: 'onFocus' },
-        { native: 'focusout', prop: 'onBlur' },
-      ],
-    },
-    insight: "React event names are not just upper-cased versions of the browser's event names.",
-  },
-  flow: {
-    step: 3,
-    eyebrow: 'register-simple-events',
-    title: 'How registerSimpleEvents runs',
-    steps: [
+  mappingTable: {
+    badge: '01',
+    eyebrow: 'mapping table',
+    title: 'Where the names stop lining up',
+    description:
+      'For most events, prefixing on and capitalising the first letter is the whole story. The interest is in the few where it is not.',
+    headers: ['native event', 'React prop', 'How it is decided'],
+    rows: [
       {
-        title: 'simpleEventPluginEvents',
-        description: 'built-in DOM event list',
-        code: `'click',\n'dblclick',\n'focusin',\n'focusout',\n'keydown',\n'pointerdown',\n...`,
+        native: 'click',
+        prop: 'onClick',
+        rule: 'By the rule: on + capitalised first letter.',
+      },
+      {
+        native: 'keydown',
+        prop: 'onKeyDown',
+        rule: 'By the rule. The list spells it keyDown, so the D survives.',
+      },
+      {
+        native: 'dblclick',
+        prop: 'onDoubleClick',
+        rule: 'Exception, registered by hand. The rule would have produced onDblclick.',
+      },
+      {
+        native: 'focusin',
+        prop: 'onFocus',
+        rule: 'Exception: focus does not bubble, so focusin is used but the name stays onFocus.',
+      },
+      {
+        native: 'focusout',
+        prop: 'onBlur',
+        rule: 'Exception: focusout is wired to onBlur for the same reason.',
+      },
+    ],
+    note: 'That onFocus maps to focusin rather than focus is the important one — delegation needs an event that bubbles.',
+  },
+  naming: {
+    badge: '02',
+    eyebrow: 'two kinds',
+    title: 'What the rule covers and what is written by hand',
+    description:
+      'registerSimpleEvents loops the list generating names automatically, then writes three exceptions afterwards.',
+    sides: [
+      {
+        id: 'simple',
+        title: 'Generated by rule',
+        badge: 'most of them',
+        description: 'Names in the simpleEventPluginEvents list are converted as-is.',
+        bullets: [
+          'Lowercase the list entry to get the native event name',
+          'Capitalise the first letter and prefix on to get the prop name',
+          'click → onClick, keyDown → keydown / onKeyDown',
+        ],
         tone: 'sky',
       },
       {
-        title: 'iterate each DOM event',
-        description: 'for loop',
-        code: `for (const domEventName\n  of simpleEventPluginEvents) {\n  ...\n}`,
+        id: 'special',
+        title: 'Registered by hand',
+        badge: 'three of them',
+        description: 'Only the pairs the rule cannot produce are appended at the end.',
+        bullets: [
+          'dblclick to onDoubleClick — for a name that reads well',
+          'focusin to onFocus — because the bubbling variant is needed',
+          'focusout to onBlur — for the same reason',
+        ],
+        tone: 'violet',
+      },
+    ],
+    note: 'Having only three exceptions is itself the clue: every other name is predictable from the list alone.',
+  },
+  registration: {
+    badge: '03',
+    eyebrow: 'registerSimpleEvents',
+    title: 'Four steps to register one name pair',
+    description:
+      'The function runs once at startup. What it leaves behind is one Map and a prop-name list twice as long as the event list.',
+    steps: [
+      {
+        id: 'list',
+        badge: 'step 1',
+        title: 'The event name list',
+        body: 'simpleEventPluginEvents holds every event name React will support.',
+        tone: 'sky',
+      },
+      {
+        id: 'loop',
+        badge: 'step 2',
+        title: 'Walk the list',
+        body: 'Take one entry at a time and compute the native and prop names.',
         tone: 'cyan',
       },
       {
-        title: 'compute the React prop name',
-        description: 'includes special cases',
-        code: `const reactPropName =\n  getReactName(domEventName);`,
+        id: 'name',
+        badge: 'step 3',
+        title: 'Record in the Map',
+        body: 'Store the native → prop pair in topLevelEventsToReactNames.',
         tone: 'violet',
-        isCore: true,
       },
       {
-        title: 'registerTwoPhaseEvent(...)',
-        description: 'register bubble + capture',
-        code: `registerTwoPhaseEvent(\n  reactPropName,\n  [domEventName],\n);`,
+        id: 'two-phase',
+        badge: 'step 4',
+        title: 'registerTwoPhaseEvent',
+        body: 'Register both onClick and onClickCapture as prop names at once.',
         tone: 'emerald',
       },
     ],
+    note: 'Step 04 is why prop names always arrive in pairs — and why onClickCapture works without you ever declaring it.',
   },
-  converter: {
-    step: 4,
-    eyebrow: 'name-converter',
-    title: 'Event name converter',
-    hint: 'pick one to see the mapping',
-    options: CONVERTER_OPTIONS,
-    defaultNative: 'focusin',
-    resultLabels: {
-      native: 'Selected Native Event',
-      prop: 'React Handler Prop',
-      result: 'Result',
-      note: 'Special mapping was applied to this result.',
-      simpleNote: 'This is a simple mapping.',
-    },
-  },
-  realCode: {
-    step: 5,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    smallDescription: 'A slice of special-mapping registration',
-    fileLabel: 'DOMEventProperties.js',
-    code: REAL_CODE_EN,
-    explanation: {
-      label: 'Explanation',
-      body: 'Using focusin instead of focus enables delegation. The focusout/blur distinction lives inside React abstractions too. This registration info is what later listener collection relies on.',
-    },
-    fileLocation: {
-      label: 'File location',
-      path: 'packages/react-dom-bindings/src/events/DOMEventProperties.js',
-    },
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMEventProperties.js',
-    },
-  },
-  twoPhase: {
-    step: 6,
-    eyebrow: 'two-phase-preview',
-    title: 'Two-phase registration preview',
-    bubbleCard: {
-      label: 'onClick (bubble)',
-      description: 'runs during the bubble phase',
-    },
-    centerCode: `registerTwoPhaseEvent('onClick', 'click')`,
-    branches: [
-      { label: 'onClick', sub: 'bubble phase', tone: 'teal' },
-      { label: 'onClickCapture', sub: 'capture phase', tone: 'violet' },
-    ],
-    nextPreview: {
-      label: 'Next step preview',
-      body: 'These two registered props become the basis for collecting listeners in capture/bubble order.',
-      cta: 'Next: Capture / Bubble flow',
-      href: '/accumulate-listeners',
-    },
-  },
-  mission: {
-    step: 7,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
-    description: 'Open the React repository and verify the mapping registration by hand.',
-    items: [
-      {
-        title: 'Open DOMEventProperties.js',
-        description: 'The hub for special-mapping rules.',
-      },
-      {
-        title: 'Inspect the simpleEventPluginEvents array',
-        description: 'The native events React already knows about.',
-      },
-      {
-        title: 'Find the special-case mappings',
-        description: 'See dblclick → onDoubleClick and friends directly.',
-      },
-      {
-        title: 'Remember onClick & onClickCapture can register together',
-        description: 'Jot down what two-phase registration means.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 8,
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'React prop names and native event names are mapped internally.',
-        body: 'You write onClick but the browser fires click.',
-        tone: 'blue',
-      },
-      {
-        title: 'Some events need a special mapping.',
-        body: 'dblclick, focusin, focusout do not resolve via simple casing.',
-        tone: 'teal',
-      },
-      {
-        title: 'This registration becomes the basis for listener collection.',
-        body: 'You need the right mapped prop name to find the correct handler.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/plugins/SimpleEventPlugin.js',
+    lookForLabel: 'Look for',
+    lookFor: 'registerSimpleEvents, topLevelEventsToReactNames, registerTwoPhaseEvent',
+    whyLabel: 'Why',
+    why: 'The three exceptions sit outside the for loop at the end of the function — rule and exception separated by shape.',
+    code: REGISTER_SIMPLE_CODE,
+    primaryCta: 'Read SimpleEventPlugin.js',
+    primaryHref: SIMPLE_EVENT_PLUGIN_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'event priority and the dispatch wrapper',
+    title: 'What gets decided first when an event arrives',
     description:
-      'Now that onClick maps to click, follow event priority and how the dispatch wrapper works.',
+      'With the names wired up, an incoming event still needs a priority before anything else. The next page opens that fork.',
     cta: 'Go to the next page',
     href: '/dispatch-selection',
   },
 };
 
-export const onClickClickContent: Record<Locale, OnClickClickContent> = { ko, en };
+export const onClickToClickContent: Record<Locale, OnClickToClickContent> = { ko, en };

@@ -1,165 +1,76 @@
 import { cx } from '@berrypjh/react-ui';
-import { AlertTriangle, CheckCircle2, ListOrdered, XCircle } from 'lucide-react';
+import { AlertTriangle, ArrowRight } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
-import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HeroRenderSide, HookSlot, RulesOfHooksContent } from '../content';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { TerminalBadge } from '../../../shared/terminal';
+import type { HeroSlot, RulesOfHooksContent } from '../content';
 
-type Props = { content: RulesOfHooksContent['hero']; className?: string };
+type Props = { content: RulesOfHooksContent['hero'] };
 
-/**
- * Hero 핵심 비주얼.
- * Hook은 이름이 아니라 호출 순서로 연결 리스트에 저장된다는 점을,
- * 정상 매칭 → 순서가 바뀐 다음 렌더로 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const RulesOfHooksHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.diagramTitle}. ${content.normalRender.label}: ${content.normalRender.slots
-    .map((s) => `${s.index} ${s.hookName}`)
-    .join(', ')} — ${content.normalRender.matchLabel}. ${
-    content.nextRender.label
-  }: ${content.nextRender.slots
-    .map((s) => `${s.index} ${s.hookName}`)
-    .join(', ')} — ${content.nextRender.matchLabel}. ${content.warning}`;
+/** Hero 핵심 비주얼: 슬롯 번호는 그대로인데 들어오는 Hook만 어긋나는 대조표. */
+export const RulesOfHooksHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="violet" size="sm">
-            <ListOrdered className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {content.diagramTitle}
-          </h2>
-        </header>
-
-        <CodePreviewPanel code={content.leftCode} header="MyComponent.jsx" language="JSX" />
-
-        <DownArrow />
-
-        <RenderCard side={content.normalRender} variant="ok" />
-
-        <DownArrow />
-
-        <RenderCard side={content.nextRender} variant="broken" />
-
-        <WarningNote text={content.warning} />
-      </div>
-    </div>
-  );
-};
-
-const RenderCard = ({ side, variant }: { side: HeroRenderSide; variant: 'ok' | 'broken' }) => {
-  const isBroken = variant === 'broken';
-  const tone: ToneKey = isBroken ? 'amber' : 'emerald';
-  const t = toneTokens[tone];
-  return (
-    <article
-      className={cx(
-        'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone} size="sm">
-          {isBroken ? (
-            <XCircle className="h-[18px] w-[18px]" aria-hidden="true" />
-          ) : (
-            <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />
-          )}
-        </ToneIconBox>
-        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
-          {side.label}
-        </span>
-      </header>
-
-      <ul className="flex flex-col gap-1.5">
-        {side.slots.map((slot) => (
-          <SlotRow key={slot.index} slot={slot} />
-        ))}
-      </ul>
-
-      <p className={cx('text-xsm font-bold leading-relaxed break-keep', t.text)}>
-        {side.matchLabel}
-      </p>
-    </article>
-  );
-};
-
-const slotTone: Record<HookSlot['status'], ToneKey> = {
-  ok: 'emerald',
-  shifted: 'amber',
-  missing: 'amber',
-};
-
-const SlotRow = ({ slot }: { slot: HookSlot }) => {
-  const t = toneTokens[slotTone[slot.status]];
-  return (
-    <li
-      className={cx(
-        'flex items-start gap-2 rounded-lg border bg-[var(--term-bg)] px-2.5 py-1.5',
-        'border-[var(--term-border)]',
-        t.borderHover,
-        slot.status === 'missing' && 'opacity-90',
-      )}
-    >
-      <code className="font-mono text-[11px] font-bold tabular-nums shrink-0 text-[var(--term-muted)]">
-        {slot.index}
-      </code>
-      <div className="flex min-w-0 flex-col gap-0.5">
-        <code
-          className={cx(
-            'font-mono text-[11px] sm:text-xsm font-bold break-all',
-            t.text,
-            slot.status === 'missing' && 'line-through',
-          )}
-        >
-          {slot.hookName}
-        </code>
-        {slot.caption && (
-          <span className="text-[10px] font-mono text-[var(--term-muted)] break-keep">
-            {slot.caption}
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-        )}
+        </div>
+
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 px-sm">
+          <span className="font-mono text-[10px] text-[var(--term-dim)]">slot</span>
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {content.expectedLabel}
+          </span>
+          <span />
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {content.actualLabel}
+          </span>
+        </div>
+
+        <ul className="flex flex-col gap-1.5">
+          {content.slots.map((slot) => (
+            <li key={slot.id}>
+              <SlotRow slot={slot} />
+            </li>
+          ))}
+        </ul>
       </div>
-    </li>
+    </HeroDiagramShell>
   );
 };
 
-const WarningNote = ({ text }: { text: string }) => (
+const SlotRow = ({ slot }: { slot: HeroSlot }) => (
   <div
     className={cx(
-      'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+      'grid grid-cols-[auto_minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 rounded-md border px-sm py-2',
+      slot.status === 'ok'
+        ? 'border-[var(--term-border)] bg-[var(--term-surface)]'
+        : 'border-rose-200/70 bg-rose-50/40 dark:border-rose-800/60 dark:bg-rose-950/20',
     )}
   >
-    <ToneIconBox tone="amber" size="sm">
-      <AlertTriangle className="h-[18px] w-[18px]" aria-hidden="true" />
-    </ToneIconBox>
-    <p className="text-xsm font-bold leading-relaxed text-[var(--term-fg)] break-keep">{text}</p>
+    <span className="font-mono text-[10px] tabular-nums text-[var(--term-dim)]">{slot.index}</span>
+    <code className="font-mono text-[11px] text-[var(--term-muted)] break-all">
+      {slot.expected}
+    </code>
+    {slot.status === 'ok' ? (
+      <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" />
+    ) : (
+      <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-rose-600 dark:text-rose-300" />
+    )}
+    <code
+      className={cx(
+        'font-mono text-[11px] font-bold break-all',
+        slot.status === 'ok' ? 'text-[var(--term-fg)]' : 'text-rose-600 dark:text-rose-300',
+      )}
+    >
+      {slot.actual}
+    </code>
   </div>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
 );

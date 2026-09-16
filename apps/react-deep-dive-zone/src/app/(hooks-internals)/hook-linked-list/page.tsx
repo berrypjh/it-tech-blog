@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Hook Linked List: How Hooks Are Stored on a Fiber — React Lab'
         : 'Hook linked list: Hooks가 Fiber에 저장되는 방식 — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 

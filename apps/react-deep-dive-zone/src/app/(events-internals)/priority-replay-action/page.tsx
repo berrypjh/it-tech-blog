@@ -1,13 +1,13 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
-  advancedWrapupContent,
-  EventSystemAdvancedWrapupPage,
+  priorityReplayActionContent,
+  PriorityReplayActionPage,
 } from '@/components/events-internals/priority-replay-action';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = advancedWrapupContent[locale];
+  const c = priorityReplayActionContent[locale];
 
   return {
     title:
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <EventSystemAdvancedWrapupPage locale={locale} />;
+  return <PriorityReplayActionPage locale={locale} />;
 };
 
 export default Page;

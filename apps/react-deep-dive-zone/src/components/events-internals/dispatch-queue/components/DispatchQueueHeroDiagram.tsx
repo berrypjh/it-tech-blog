@@ -1,187 +1,73 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Hourglass, ListOrdered } from 'lucide-react';
+import { ListOrdered } from 'lucide-react';
 
-import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CollectedListener, DispatchQueueOrderContent, TimelineEntry } from '../content';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { TerminalBadge } from '../../../shared/terminal';
+import { toneTokens } from '../../../shared/tones';
+import type { DispatchQueueContent, QueueEntry } from '../content';
 
-type Props = { content: DispatchQueueOrderContent['hero']; className?: string };
+type Props = { content: DispatchQueueContent['hero'] };
 
-/** content의 tone(rose 포함)을 공유 ToneKey로 매핑한다. rose는 가장 가까운 amber로 둔다. */
-const toToneKey = (tone: 'violet' | 'teal' | 'rose'): ToneKey => (tone === 'rose' ? 'amber' : tone);
-
-/**
- * Hero 핵심 비주얼.
- * 수집된 listener를 담은 dispatchQueue → phase 규칙이 적용된 실행 타임라인으로
- * 바뀌는 과정을 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const DispatchQueueHeroDiagram = ({ content, className }: Props) => {
-  const { diagram } = content;
-  const a11y = `${diagram.title}: ${diagram.queueTitle}(${diagram.eventLabel}) → ${diagram.timelineTitle} — ${diagram.timeline
-    .map((t) => `${t.step} ${t.label}`)
-    .join(', ')}`;
+/** Hero 핵심 비주얼: 큐에 쌓인 리스너 엔트리를 인덱스와 함께 나열한 목록. */
+export const DispatchQueueHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="teal" size="sm">
-            <Hourglass className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {diagram.title}
-          </h2>
-        </header>
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-        <QueueCard
-          title={diagram.queueTitle}
-          eventLabel={diagram.eventLabel}
-          listenersLabel={diagram.listenersLabel}
-          listeners={diagram.listeners}
-        />
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <header className="mb-2 flex items-center gap-1.5 border-b border-dashed border-[var(--term-border)] pb-2">
+            <ListOrdered
+              className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]"
+              aria-hidden="true"
+            />
+            <code className="font-mono text-[11px] font-bold text-[var(--term-fg)]">
+              {content.queueLabel}
+            </code>
+          </header>
 
-        <DownArrow />
+          <ol className="flex flex-col gap-1.5">
+            {content.entries.map((entry, i) => (
+              <li key={entry.id}>
+                <EntryRow entry={entry} index={i} />
+              </li>
+            ))}
+          </ol>
 
-        <TimelineCard title={diagram.timelineTitle} timeline={diagram.timeline} />
+          <p className="mt-2 border-t border-dashed border-[var(--term-border)] pt-2 font-mono text-[10px] text-[var(--term-dim)]">
+            {content.tailLabel}
+          </p>
+        </article>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const QueueCard = ({
-  title,
-  eventLabel,
-  listenersLabel,
-  listeners,
-}: {
-  title: string;
-  eventLabel: string;
-  listenersLabel: string;
-  listeners: CollectedListener[];
-}) => (
-  <article
-    className={cx(
-      'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      'transition-all hover:-translate-y-0.5',
-      toneTokens.violet.borderHover,
-    )}
-  >
-    <header className="flex items-center gap-sm">
-      <ToneIconBox tone="violet" size="sm">
-        <Database className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
-        {title}
-      </span>
-    </header>
-    <code className="block rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-2 py-1 font-mono text-[11px] text-[var(--term-muted)] break-all">
-      {eventLabel}
-    </code>
-    <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-      {listenersLabel}
-    </span>
-    <ul className="flex flex-col gap-1">
-      {listeners.map((entry) => (
-        <ListenerChip key={entry.label} entry={entry} />
-      ))}
-    </ul>
-  </article>
-);
-
-const ListenerChip = ({ entry }: { entry: CollectedListener }) => {
-  const t = toneTokens[toToneKey(entry.tone)];
+const EntryRow = ({ entry, index }: { entry: QueueEntry; index: number }) => {
+  const t = toneTokens[entry.tone];
   return (
-    <li
-      className={cx(
-        'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2 py-1',
-        'border-[var(--term-border)]',
-        t.borderHover,
-      )}
-    >
-      <span className={cx('shrink-0 font-mono text-[10px] font-bold', t.text)}>#{entry.step}</span>
-      <code className={cx('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
-        {entry.label}
+    <div className="flex items-center gap-2 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-1.5">
+      <span className="font-mono text-[10px] tabular-nums text-[var(--term-dim)]">[{index}]</span>
+      <code className="font-mono text-[11px] font-bold text-[var(--term-fg)] break-all">
+        {entry.handler}
       </code>
-      <code className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
-        {entry.phase}
-      </code>
-    </li>
-  );
-};
-
-const TimelineCard = ({ title, timeline }: { title: string; timeline: TimelineEntry[] }) => (
-  <article
-    className={cx(
-      'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      'transition-all hover:-translate-y-0.5',
-      toneTokens.teal.borderHover,
-    )}
-  >
-    <header className="flex items-center gap-sm">
-      <ToneIconBox tone="teal" size="sm">
-        <ListOrdered className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-        {title}
-      </span>
-    </header>
-    <ol className="flex flex-col gap-1.5">
-      {timeline.map((entry) => (
-        <TimelineRow key={entry.label} entry={entry} />
-      ))}
-    </ol>
-  </article>
-);
-
-const TimelineRow = ({ entry }: { entry: TimelineEntry }) => {
-  const t = toneTokens[toToneKey(entry.tone)];
-  return (
-    <li
-      className={cx(
-        'flex items-center gap-2 rounded-md border bg-[var(--term-bg)] px-2.5 py-1.5',
-        'border-[var(--term-border)]',
-        t.borderHover,
-      )}
-    >
-      <span
+      <code
         className={cx(
-          'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border font-mono text-[10px] font-bold',
+          'ml-auto shrink-0 rounded border px-1.5 py-0.5 font-mono text-[10px] font-bold',
           t.chip,
         )}
       >
-        {entry.step}
-      </span>
-      <code className={cx('flex-1 break-all font-mono text-[11px] font-bold', t.text)}>
-        {entry.label}
+        {entry.phase}
       </code>
-      {entry.phase && (
-        <code className="font-mono text-[9px] uppercase tracking-wider text-[var(--term-muted)]">
-          {entry.phase}
-        </code>
-      )}
-    </li>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

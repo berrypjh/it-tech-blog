@@ -3,16 +3,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { FiberStructureBreakdown } from './sections/FiberStructureBreakdown';
-import { FollowCodeMission } from './sections/FollowCodeMission';
-import { HookConnectionProcess } from './sections/HookConnectionProcess';
+import { CallOrderMatters } from './sections/CallOrderMatters';
+import { HookLinkedListCodeCheckpoint } from './sections/HookLinkedListCodeCheckpoint';
 import { HookLinkedListHero } from './sections/HookLinkedListHero';
-import { HookObjectStructure } from './sections/HookObjectStructure';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MountWorkInProgressHookPreview } from './sections/MountWorkInProgressHookPreview';
-import { MultipleHooksRepresentation } from './sections/MultipleHooksRepresentation';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { WhyHookOrderMatters } from './sections/WhyHookOrderMatters';
+import { HookLinkingSteps } from './sections/HookLinkingSteps';
+import { HookObjectFields } from './sections/HookObjectFields';
+import { MemoizedStateSlot } from './sections/MemoizedStateSlot';
 import { hookLinkedListContent } from './content';
 
 type Props = { locale: Locale };
@@ -23,15 +19,11 @@ export const HookLinkedListPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <HookLinkedListHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <FiberStructureBreakdown content={c.breakdown} />
-      <HookObjectStructure content={c.objectStructure} />
-      <HookConnectionProcess content={c.connection} />
-      <MountWorkInProgressHookPreview content={c.mountPreview} />
-      <MultipleHooksRepresentation content={c.multipleHooks} />
-      <WhyHookOrderMatters content={c.whyOrder} />
-      <FollowCodeMission content={c.mission} />
-      <KeyTakeaways content={c.summary} />
+      <MemoizedStateSlot content={c.slot} />
+      <HookObjectFields content={c.fields} />
+      <HookLinkingSteps content={c.linking} />
+      <CallOrderMatters content={c.order} />
+      <HookLinkedListCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

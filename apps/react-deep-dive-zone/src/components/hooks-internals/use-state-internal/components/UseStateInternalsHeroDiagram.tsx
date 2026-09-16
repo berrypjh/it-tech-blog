@@ -1,101 +1,72 @@
 import { cx } from '@berrypjh/react-ui';
-import { Cpu, Database, FunctionSquare, Settings } from 'lucide-react';
+import { Database, ListPlus, type LucideIcon, Zap } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { Piece, UseStateInternalsContent } from '../content';
+import type { Product, ProductId, UseStateInternalsContent } from '../content';
 
-type Props = { content: UseStateInternalsContent['hero']; className?: string };
+type Props = { content: UseStateInternalsContent['hero'] };
 
-const pieceIconMap = {
-  number: Database,
-  fn: FunctionSquare,
-  queue: Cpu,
-  init: Settings,
-} as const;
+const productIcon: Record<ProductId, LucideIcon> = {
+  state: Database,
+  queue: ListPlus,
+  dispatch: Zap,
+};
 
-/**
- * Hero 핵심 비주얼.
- * 내가 쓰는 한 줄(useState 호출)이 React 내부에서 상태값·dispatch·queue·초기화 로직으로
- * 분해되는 모습을, 코드 → 화살표 → 조각 카드 목록으로 컴팩트하게 보여준다.
- */
-export const UseStateInternalsHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.diagramSubtitle}: ${content.pieces
-    .map((p) => `${p.title}(${p.label})`)
-    .join(', ')}`;
+/** Hero 핵심 비주얼: 호출 한 줄에서 세 갈래 산출물로 갈라지는 구조. */
+export const UseStateInternalsHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--term-muted)]">
-          {content.diagramTitle}
-        </span>
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-        <CodePreviewPanel code={content.diagramCode} showWindowDots language="JS" size="md" />
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {'//'} {content.callLabel}
+          </p>
+          <code className="font-mono text-[11px] font-bold text-[var(--term-fg)] break-all">
+            {content.call}
+          </code>
+        </article>
 
         <DownArrow />
 
-        <p className="text-center text-xsm font-bold text-[var(--term-fg)] break-keep">
-          {content.diagramSubtitle}
-        </p>
-
-        <ol className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
-          {content.pieces.map((piece) => (
-            <li key={piece.title}>
-              <PieceCard piece={piece} />
+        <ul className="flex flex-col gap-sm @sm:grid @sm:grid-cols-3">
+          {content.products.map((product) => (
+            <li key={product.id} className="min-w-0">
+              <ProductCard product={product} />
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const PieceCard = ({ piece }: { piece: Piece }) => {
-  const t = toneTokens[piece.tone];
-  const Icon = pieceIconMap[piece.visual];
+const ProductCard = ({ product }: { product: Product }) => {
+  const Icon = productIcon[product.id];
+  const t = toneTokens[product.tone];
   return (
-    <article
-      className={cx(
-        'flex h-full items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <ToneIconBox tone={piece.tone} size="sm">
-        <Icon className="h-4 w-4" aria-hidden="true" />
+    <article className="flex h-full flex-col gap-2 rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={product.tone} size="sm">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col">
-        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
-          {piece.title}
-        </span>
-        <code className="font-mono text-[11px] leading-none text-[var(--term-muted)] break-all">
-          {piece.label}
-        </code>
-      </div>
+      <code className={cx('font-mono text-[11px] font-bold tracking-tight break-all', t.text)}>
+        {product.label}
+      </code>
+      <span className="text-[10px] text-[var(--term-muted)] break-keep">{product.caption}</span>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

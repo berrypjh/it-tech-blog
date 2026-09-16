@@ -1,2 +1,2 @@
-export { targetFiberContent } from './content';
-export { EventTargetFiberPage } from './EventTargetFiberPage';
+export { targetToFiberContent } from './content';
+export { TargetToFiberPage } from './TargetToFiberPage';

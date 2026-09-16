@@ -1,13 +1,13 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
-  dispatchQueueOrderContent,
-  DispatchQueueOrderPage,
+  dispatchQueueContent,
+  DispatchQueuePage,
 } from '@/components/events-internals/dispatch-queue';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = dispatchQueueOrderContent[locale];
+  const c = dispatchQueueContent[locale];
 
   return {
     title:
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <DispatchQueueOrderPage locale={locale} />;
+  return <DispatchQueuePage locale={locale} />;
 };
 
 export default Page;

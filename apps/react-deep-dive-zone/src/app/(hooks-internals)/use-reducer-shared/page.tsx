@@ -2,7 +2,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
   useReducerSharedContent,
-  UseReducerSharedModelPage,
+  UseReducerSharedPage,
 } from '@/components/hooks-internals/use-reducer-shared';
 
 export const generateMetadata = async () => {
@@ -14,14 +14,14 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'What Does useReducer Share with useState? — React Lab'
         : 'useReducer는 useState와 무엇을 공유하는가? — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <UseReducerSharedModelPage locale={locale} />;
+  return <UseReducerSharedPage locale={locale} />;
 };
 
 export default Page;

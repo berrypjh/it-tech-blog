@@ -1,106 +1,74 @@
 import { cx } from '@berrypjh/react-ui';
-import { Calendar, FileText, Link2 } from 'lucide-react';
+import { CalendarClock, FilePlus2, ListPlus, type LucideIcon } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HeroStep, SetStateFlowContent, Tone } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { Outcome, OutcomeId, SetStateFlowContent } from '../content';
 
-type Props = { content: SetStateFlowContent['hero']; className?: string };
+type Props = { content: SetStateFlowContent['hero'] };
 
-const stepIconMap = {
-  file: FileText,
-  queue: Link2,
-  calendar: Calendar,
-} as const;
-
-/** content의 Tone을 공유 ToneKey로 매핑. 누락 톤은 가장 가까운 값으로 대체. */
-const toneKeyMap: Record<Tone, ToneKey> = {
-  sky: 'sky',
-  cyan: 'cyan',
-  teal: 'teal',
-  emerald: 'emerald',
-  violet: 'violet',
-  amber: 'amber',
-  rose: 'amber',
-  indigo: 'indigo',
+const outcomeIcon: Record<OutcomeId, LucideIcon> = {
+  create: FilePlus2,
+  enqueue: ListPlus,
+  schedule: CalendarClock,
 };
 
-/**
- * Hero 핵심 비주얼.
- * setState 한 줄 호출 → Update 생성 → queue 등록 → render 예약으로 이어지는
- * setter 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const SetStateFlowHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.titleLine1} ${content.titleAccent}. ${content.steps
-    .map((s) => s.title)
-    .join(' → ')}`;
+/** Hero 핵심 비주얼: 호출 한 줄이 남기는 것은 DOM 변경이 아니라 세 가지 기록이라는 구조. */
+export const SetStateFlowHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-      <div className="relative flex flex-col gap-sm">
-        <CodePreviewPanel code={content.leftCode} showWindowDots language="JS" size="md" />
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {'//'} {content.callLabel}
+          </p>
+          <code className="font-mono text-[11px] font-bold text-[var(--term-fg)] break-all">
+            {content.call}
+          </code>
+        </article>
 
         <DownArrow />
 
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
-          {content.steps.map((step, i) => (
-            <li key={step.number} className="flex flex-col gap-sm">
-              <FlowStepRow step={step} />
-              {i < content.steps.length - 1 && <DownArrow />}
+        <ol className="flex flex-col gap-sm">
+          {content.outcomes.map((outcome) => (
+            <li key={outcome.id}>
+              <OutcomeCard outcome={outcome} />
             </li>
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const FlowStepRow = ({ step }: { step: HeroStep }) => {
-  const tone = toneKeyMap[step.tone];
-  const t = toneTokens[tone];
-  const Icon = stepIconMap[step.visual];
+const OutcomeCard = ({ outcome }: { outcome: Outcome }) => {
+  const Icon = outcomeIcon[outcome.id];
+  const t = toneTokens[outcome.tone];
   return (
-    <article
-      className={cx(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={outcome.tone} size="sm">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col">
-        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
-          {step.title}
-        </span>
-        <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {step.description}
-        </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
+          {outcome.label}
+        </code>
+        <span className="text-[11px] text-[var(--term-muted)] break-keep">{outcome.caption}</span>
       </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

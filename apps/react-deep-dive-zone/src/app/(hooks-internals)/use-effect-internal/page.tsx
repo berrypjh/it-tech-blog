@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'useEffect Internals: Effect Object and Commit Link — React Lab'
         : 'useEffect 내부 구조: Effect 객체와 Commit 연결 — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 

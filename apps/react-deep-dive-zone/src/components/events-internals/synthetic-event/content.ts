@@ -1,141 +1,84 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type PropertyRow = { name: string; meaning: string };
+export type PropRow = {
+  name: string;
+  meaning: string;
+  note: string;
+};
 
-export type TableRow = { name: string; meaning: string; note: string };
+export type HeroField = { name: string; value: string };
 
-export type FlowCard = { label: string; main: string; sub: string; tone: Tone };
+export type ControlSideId = 'prevent' | 'stop';
 
-export type ChecklistItem = { title: string; body: string };
-
-export type TakeawayCard = {
+export type ControlSide = {
+  id: ControlSideId;
   title: string;
-  body: string;
-  tone: Tone;
+  badge: string;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
+};
+
+export type ReasonId = 'consistency' | 'scope' | 'pooling';
+
+export type Reason = {
+  id: ReasonId;
+  title: string;
+  role: string;
+  description: string;
+  tone: ToneKey;
 };
 
 export type SyntheticEventContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    code: { fileLabel: string; code: string };
-    diagram: {
-      title: string;
-      properties: PropertyRow[];
-      helper: { title: string; body: string };
-    };
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-    badges: string[];
-  };
-  handlerE: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    fileLabel: string;
-    code: string;
-    explanation: { label: string; body: string };
-    badges: string[];
+    diagramBadge: string;
+    diagramCaption: string;
+    objectLabel: string;
+    fields: HeroField[];
   };
   structure: {
-    step: number;
+    badge: string;
     eyebrow: string;
     title: string;
-    rows: PropertyRow[];
-  };
-  relationship: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    columns: { name: string; meaning: string; note: string };
-    rows: TableRow[];
-  };
-  methods: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    preventDefault: {
-      title: string;
-      body: string;
-      example: string;
-      chip: string;
-    };
-    stopPropagation: {
-      title: string;
-      body: string;
-      example: string;
-      chip: string;
-    };
-  };
-  propagation: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: FlowCard[];
-  };
-  persist: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    label: string;
     description: string;
-    oldLabel: string;
-    oldText: string;
-    modernLabel: string;
-    modernText: string;
+    headers: [string, string, string];
+    rows: PropRow[];
+    note: string;
   };
-  realCode: {
-    step: number;
+  control: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    sides: [ControlSide, ControlSide];
+    bridge: { headline: string; sub: string };
+  };
+  reasons: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Reason[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    code1: string;
-    code2: string;
-    code1Caption: string;
-    code2Caption: string;
-    fileLocation: { label: string; path: string };
-    explanation: string;
-    button: { label: string; href: string };
-  };
-  inspector: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    testUiTitle: string;
-    panelLabel: string;
-    buttonLabel: string;
-    usageTitle: string;
-    usageBody: string;
-    inspectorLabel: string;
-    fields: { key: string; value: string }[];
-    afterStopPropagationField: { key: string; value: string };
-    controls: {
-      stopPropagation: string;
-      reset: string;
-    };
-    logTitle: string;
-    logEntries: {
-      initial: string;
-      afterStop: string;
-      afterReset: string;
-    };
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -146,320 +89,188 @@ export type SyntheticEventContent = {
   };
 };
 
-const HERO_CODE = `function SaveButton() {
-  return (
-    <button onClick={(e) => e.stopPropagation()}>
-      저장
-    </button>
-  );
-}`;
+const SYNTHETIC_CODE = `function createSyntheticEvent(Interface) {
+  function SyntheticBaseEvent(
+    reactName, reactEventType, targetInst, nativeEvent, nativeEventTarget,
+  ) {
+    this._reactName = reactName;
+    this.type = reactEventType;
+    this.nativeEvent = nativeEvent;
+    this.target = nativeEventTarget;
+    this.currentTarget = null;
 
-const HERO_CODE_EN = `function SaveButton() {
-  return (
-    <button onClick={(e) => e.stopPropagation()}>
-      Save
-    </button>
-  );
-}`;
+    // Interface에 적힌 속성만 골라 복사한다
+    for (const propName in Interface) {
+      const normalize = Interface[propName];
+      this[propName] = normalize
+        ? normalize(nativeEvent)
+        : nativeEvent[propName];
+    }
 
-const HANDLER_CODE = `function Button() {
-  const handleClick = (e) => {
-    console.log("event object:", e);
-    e.stopPropagation();
-  };
-
-  return <button onClick={handleClick}>저장</button>;
-}`;
-
-const HANDLER_CODE_EN = `function Button() {
-  const handleClick = (e) => {
-    console.log("event object:", e);
-    e.stopPropagation();
-  };
-
-  return <button onClick={handleClick}>Save</button>;
-}`;
-
-const REAL_CODE_1 = `function SyntheticBaseEvent(
-  reactName,
-  reactEventType,
-  targetInst,
-  nativeEvent,
-  nativeEventTarget,
-) {
-  this._reactName = reactName;
-  this.type = reactEventType;
-  this.nativeEvent = nativeEvent;
-  this.target = nativeEventTarget;
-  this.currentTarget = null;
-}`;
-
-const REAL_CODE_2 = `this.isDefaultPrevented = functionThatReturnsFalse;
-this.isPropagationStopped = functionThatReturnsFalse;
-
-this.preventDefault = function () {
-  const event = this.nativeEvent;
-  if (event.preventDefault) {
-    event.preventDefault();
+    this.isDefaultPrevented = functionThatReturnsFalse;
+    this.isPropagationStopped = functionThatReturnsFalse;
+    return this;
   }
-  this.isDefaultPrevented = functionThatReturnsTrue;
-};
 
-this.stopPropagation = function () {
-  const event = this.nativeEvent;
-  if (event.stopPropagation) {
-    event.stopPropagation();
-  }
-  this.isPropagationStopped = functionThatReturnsTrue;
-};`;
+  assign(SyntheticBaseEvent.prototype, {
+    stopPropagation() {
+      const event = this.nativeEvent;
+      if (event.stopPropagation) event.stopPropagation();
+      this.isPropagationStopped = functionThatReturnsTrue;
+    },
+  });
 
-const SYNTHETIC_PROPS: PropertyRow[] = [
-  { name: 'nativeEvent', meaning: '브라우저의 원본 Event 객체' },
-  { name: 'target', meaning: '이벤트가 실제로 발생한 DOM 요소' },
-  { name: 'currentTarget', meaning: '현재 listener가 붙은 DOM 요소' },
-  { name: 'type', meaning: 'React가 해석한 이벤트 타입' },
-  { name: 'preventDefault()', meaning: '기본 브라우저 동작 방지' },
-  { name: 'stopPropagation()', meaning: '이후 React listener 전파 중단' },
-  { name: 'isDefaultPrevented()', meaning: '기본 동작이 방지되었는지 여부' },
-  { name: 'isPropagationStopped()', meaning: '전파가 중단되었는지 여부' },
-];
+  return SyntheticBaseEvent;
+}`;
 
-const SYNTHETIC_PROPS_EN: PropertyRow[] = [
-  { name: 'nativeEvent', meaning: "The browser's raw Event object" },
-  { name: 'target', meaning: 'The DOM element where the event actually fired' },
-  { name: 'currentTarget', meaning: 'The DOM element where the current listener lives' },
-  { name: 'type', meaning: 'The event type interpreted by React' },
-  { name: 'preventDefault()', meaning: 'Prevent the default browser action' },
-  { name: 'stopPropagation()', meaning: 'Stop later React listener propagation' },
-  { name: 'isDefaultPrevented()', meaning: 'Whether the default action has been prevented' },
-  { name: 'isPropagationStopped()', meaning: 'Whether propagation has been stopped' },
-];
+const SYNTHETIC_EVENT_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/SyntheticEvent.js';
 
 const ko: SyntheticEventContent = {
   hero: {
     badge: '이벤트 시스템 · 7/10단계',
-    titleLines: ['handler가 받는 e는', '그냥 브라우저 Event일까?'],
+    title: { line1: '핸들러가 받는 e는', line2: '브라우저 이벤트가 아니다' },
     description:
-      'React는 일관된 인터페이스를 제공하기 위해 SyntheticEvent 객체를 만들어 handler에 전달합니다.',
-    code: { fileLabel: 'JSX', code: HERO_CODE },
-    diagram: {
-      title: 'React가 handler에 전달하는 e (SyntheticEvent)',
-      properties: SYNTHETIC_PROPS,
-      helper: {
-        title: 'React 전용 이벤트 객체',
-        body: '일관된 인터페이스 제공',
-      },
-    },
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: 'e.stopPropagation()은 React 이벤트 흐름 어디에 영향을 줄까?',
-    badges: [
-      '이벤트 흐름의 전달 단계',
-      'dispatchQueue 처리 중 제어',
-      '이후 listener 실행 여부 결정',
+      'React는 native event를 감싼 별도 객체를 만들어 넘깁니다. 원본은 nativeEvent 필드에 그대로 들어 있습니다.',
+    diagramBadge: 'synthetic',
+    diagramCaption: 'wraps the native event',
+    objectLabel: 'SyntheticEvent',
+    fields: [
+      { name: 'type', value: "'click'" },
+      { name: 'target', value: '<button id="save">' },
+      { name: 'currentTarget', value: '리스너가 붙은 노드' },
+      { name: 'nativeEvent', value: 'MouseEvent (원본)' },
+      { name: 'isPropagationStopped', value: '() => false' },
     ],
   },
-  handlerE: {
-    step: 1,
-    eyebrow: 'handler-event',
-    title: 'handler가 받는 e는 무엇인가?',
-    fileLabel: 'Button.jsx',
-    code: HANDLER_CODE,
-    explanation: {
-      label: '설명',
-      body: 'handleClick의 매개변수 e는 브라우저 Event를 감싼 React의 SyntheticEvent 객체입니다.',
-    },
-    badges: ['React 내부 생성', '일관된 인터페이스', 'plugin system에서 생성'],
-  },
   structure: {
-    step: 2,
-    eyebrow: 'synthetic-structure',
-    title: 'SyntheticEvent 구조',
-    rows: SYNTHETIC_PROPS,
-  },
-  relationship: {
-    step: 3,
-    eyebrow: 'native-event-relationship',
-    title: 'nativeEvent와의 관계',
-    columns: { name: '속성', meaning: '의미', note: '비고' },
+    badge: '01',
+    eyebrow: 'structure',
+    title: '무엇이 들어 있고 무엇이 다른가',
+    description:
+      'native event의 모든 속성을 복사하지는 않습니다. 이벤트 종류마다 정의된 Interface 목록에 있는 것만 골라 담습니다.',
+    headers: ['속성', '의미', '주의할 점'],
     rows: [
       {
         name: 'nativeEvent',
-        meaning: '브라우저의 원본 Event 객체',
-        note: '원본 이벤트 접근 가능',
+        meaning: '브라우저가 만든 원본 Event 객체',
+        note: '필요하면 언제든 원본에 바로 접근할 수 있습니다.',
       },
       {
         name: 'target',
-        meaning: '이벤트가 실제로 발생한 DOM',
-        note: '이벤트 발생 지점',
+        meaning: '이벤트가 실제로 발생한 DOM 요소',
+        note: '리스너가 어디 붙었든 변하지 않습니다.',
       },
       {
         name: 'currentTarget',
-        meaning: '현재 handler가 등록된 DOM',
-        note: 'bubble 단계마다 달라질 수 있음',
+        meaning: '지금 실행 중인 리스너가 붙은 요소',
+        note: '리스너마다 바뀝니다. 비동기로 읽으면 null입니다.',
       },
       {
         name: 'type',
         meaning: 'React가 해석한 이벤트 타입',
-        note: '예: click, change',
+        note: 'native 이름과 다를 수 있습니다. onChange가 대표적입니다.',
+      },
+      {
+        name: 'isPropagationStopped()',
+        meaning: '전파가 멈췄는지 알려 주는 함수',
+        note: 'boolean 속성이 아니라 함수입니다. 호출해야 값이 나옵니다.',
       },
     ],
+    note: 'currentTarget은 리스너 실행 직전에 채우고 끝나면 지웁니다. setTimeout 안에서 읽으면 이미 null입니다.',
   },
-  methods: {
-    step: 4,
-    eyebrow: 'event-methods',
-    title: 'preventDefault / stopPropagation',
-    preventDefault: {
-      title: 'preventDefault()',
-      body: '기본 브라우저 동작을 방지합니다. 예: <a> 이동, form submit, 입력 기본 동작',
-      example: '브라우저 기본 동작 차단',
-      chip: 'e.preventDefault()',
-    },
-    stopPropagation: {
-      title: 'stopPropagation()',
-      body: '이후 React listener의 전파를 중단합니다. 버블 단계에서 더 이상 상위로 올라가지 않습니다.',
-      example: '이후 listener 실행 차단',
-      chip: 'e.stopPropagation()',
-    },
-  },
-  propagation: {
-    step: 5,
-    eyebrow: 'propagation-state',
-    title: 'Propagation 상태 변화',
-    steps: [
+  control: {
+    badge: '02',
+    eyebrow: 'two controls',
+    title: '막는 대상이 서로 다른 두 함수',
+    description:
+      '이름이 비슷해 헷갈리지만 상대가 다릅니다. 하나는 브라우저를, 하나는 React의 리스너 목록을 막습니다.',
+    sides: [
       {
-        label: 'Before',
-        main: 'isPropagationStopped = false',
-        sub: '전파 계속 진행',
-        tone: 'teal',
+        id: 'prevent',
+        title: 'preventDefault()',
+        badge: '브라우저를 막는다',
+        description: '브라우저가 하려던 기본 동작을 취소합니다.',
+        bullets: [
+          'a 태그의 페이지 이동을 막는다',
+          'form의 기본 제출을 막는다',
+          'nativeEvent.preventDefault를 그대로 호출한다',
+          '리스너 실행 순서에는 영향이 없다',
+        ],
+        tone: 'amber',
       },
       {
-        label: 'Action',
-        main: 'e.stopPropagation() 호출',
-        sub: '전파 중단 요청',
+        id: 'stop',
+        title: 'stopPropagation()',
+        badge: '리스너를 막는다',
+        description: 'dispatchQueue에 남아 있는 다음 리스너들을 건너뜁니다.',
+        bullets: [
+          'isPropagationStopped를 true 반환 함수로 바꾼다',
+          'processDispatchQueue가 매 리스너 전에 이 값을 확인한다',
+          'native event의 전파도 함께 멈춘다',
+          '이미 실행된 리스너는 되돌리지 않는다',
+        ],
         tone: 'violet',
       },
-      {
-        label: 'After',
-        main: 'isPropagationStopped = true',
-        sub: '이후 listener 실행 중단',
-        tone: 'rose',
-      },
     ],
+    bridge: {
+      headline: '브라우저냐\nReact냐',
+      sub: 'preventDefault는 브라우저 기본 동작을, stopPropagation은 React가 모아 둔 리스너 목록을 상대합니다.',
+    },
   },
-  persist: {
-    step: 6,
-    eyebrow: 'persist-modern',
-    title: 'persist 최신 기준 보정',
-    label: '최신 기준 보정',
+  reasons: {
+    badge: '03',
+    eyebrow: 'why wrap',
+    title: '굳이 감싸는 세 가지 이유',
     description:
-      '과거 React에서는 이벤트 풀링(event pooling) 때문에 persist()가 자주 언급됐지만, 현대 React 이벤트 시스템은 이전과 같은 방식의 pooling에 의존하지 않습니다. 따라서 대부분의 경우 persist()를 호출할 필요가 없습니다.',
-    oldLabel: '과거',
-    oldText: 'e.persist() 필요',
-    modernLabel: '현재',
-    modernText: 'persist() 대부분 불필요',
-  },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    fileLabel: 'SyntheticEvent.js',
-    code1: REAL_CODE_1,
-    code2: REAL_CODE_2,
-    code1Caption: 'SyntheticEvent 초기화',
-    code2Caption: 'preventDefault / stopPropagation 구현',
-    fileLocation: {
-      label: '파일 위치',
-      path: 'packages/react-dom-bindings/src/events/SyntheticEvent.js',
-    },
-    explanation:
-      'SyntheticEvent는 React 내부에서 생성됩니다. nativeEvent, target, currentTarget을 감싸고, preventDefault / stopPropagation은 상태 플래그를 함께 바꿉니다.',
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/SyntheticEvent.js',
-    },
-  },
-  inspector: {
-    step: 8,
-    eyebrow: 'event-inspector',
-    title: 'Interactive Event Inspector',
-    testUiTitle: '테스트 UI',
-    panelLabel: '패널 영역 (div#panel)',
-    buttonLabel: '저장 버튼 (button#save)',
-    usageTitle: '사용 방법',
-    usageBody:
-      '버튼 요소를 클릭하면 SyntheticEvent 객체의 상태가 인스펙터에 실시간으로 반영됩니다. stopPropagation을 호출하면 isPropagationStopped 플래그가 true로 바뀝니다.',
-    inspectorLabel: '이벤트 인스펙터',
-    fields: [
-      { key: 'type', value: 'click' },
-      { key: 'target', value: 'button#save' },
-      { key: 'currentTarget', value: 'button#save' },
-      { key: 'isDefaultPrevented', value: 'false' },
-      { key: 'isPropagationStopped', value: 'false' },
-    ],
-    afterStopPropagationField: { key: 'isPropagationStopped', value: 'true' },
-    controls: {
-      stopPropagation: 'stopPropagation 실행',
-      reset: '상태 초기화',
-    },
-    logTitle: '실행 로그',
-    logEntries: {
-      initial: '[init] SyntheticEvent 생성: isPropagationStopped = false',
-      afterStop: '[action] e.stopPropagation() 호출: isPropagationStopped = true',
-      afterReset: '[reset] SyntheticEvent 상태 초기화',
-    },
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
+      '원본을 그대로 넘기면 될 것 같지만, 그러면 아래 세 가지를 React가 통제할 수 없게 됩니다.',
     items: [
       {
-        title: 'SyntheticEvent.js를 연다',
-        body: '구현 파일을 펼쳐 어떤 정보가 wrapping되는지 확인한다.',
+        id: 'consistency',
+        title: '브라우저 차이 흡수',
+        role: '일관된 인터페이스',
+        description:
+          'Interface 목록으로 속성을 정규화해, 어느 브라우저에서든 같은 이름으로 같은 값을 읽게 합니다.',
+        tone: 'sky',
       },
       {
-        title: 'nativeEvent, target, currentTarget 초기화를 찾는다',
-        body: '생성자 안에서 무엇이 어떻게 채워지는지 본다.',
-      },
-      {
-        title: 'stopPropagation 구현을 본다',
-        body: '내부에서 nativeEvent와 플래그가 어떻게 함께 바뀌는지 본다.',
-      },
-      {
-        title: 'isPropagationStopped가 어떻게 바뀌는지 확인한다',
-        body: 'functionThatReturnsFalse → functionThatReturnsTrue 패턴을 기억한다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: 'React handler가 받는 e는 SyntheticEvent다.',
-        body: '브라우저 Event를 감싼 React 전용 이벤트 객체입니다.',
-        tone: 'teal',
-      },
-      {
-        title: '원본 native event를 감싸며 공통 인터페이스를 제공한다.',
-        body: 'target, currentTarget, type, 메서드 등이 일관된 형태로 제공됩니다.',
+        id: 'scope',
+        title: '전파 범위 분리',
+        role: 'React 트리 기준',
+        description:
+          'stopPropagation이 DOM이 아니라 React가 모은 리스너 목록을 기준으로 동작해야 하기 때문입니다.',
         tone: 'violet',
       },
       {
-        title: 'stopPropagation은 이후 dispatch 흐름에 영향을 준다.',
-        body: '이후 React listener 실행 여부를 결정하는 핵심 플래그가 됩니다.',
-        tone: 'rose',
+        id: 'pooling',
+        title: '풀링은 이제 없다',
+        role: 'persist() 불필요',
+        description:
+          '과거에는 객체를 재사용해 e.persist()가 필요했지만, React 17부터 풀링을 없애 이제 그대로 들고 있어도 됩니다.',
+        tone: 'emerald',
       },
     ],
+    note: '오래된 글에서 본 e.persist()는 지금 코드에 넣을 이유가 없습니다. 남아 있어도 아무 일도 하지 않습니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/SyntheticEvent.js',
+    lookForLabel: '볼 것',
+    lookFor: 'createSyntheticEvent, SyntheticBaseEvent, isPropagationStopped',
+    whyLabel: '설명',
+    why: 'isPropagationStopped가 boolean이 아니라 함수를 갈아 끼우는 방식이라는 점이, 뒤에서 큐를 끊는 장치입니다.',
+    code: SYNTHETIC_CODE,
+    primaryCta: 'SyntheticEvent.js 읽기',
+    primaryHref: SYNTHETIC_EVENT_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Capture / Bubble listener 수집 보기',
+    title: '실행할 리스너는 어떻게 모으는가',
     description:
-      'SyntheticEvent가 만들어진 뒤, React가 어떤 listener들을 모아 dispatch하는지 살펴본다.',
+      'stopPropagation이 끊는 그 목록이 어떻게 만들어지는지, Fiber 트리를 타고 올라가는 수집 과정을 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/accumulate-listeners',
   },
@@ -468,228 +279,148 @@ const ko: SyntheticEventContent = {
 const en: SyntheticEventContent = {
   hero: {
     badge: 'Event System · 7/10',
-    titleLines: ['Is the e your handler receives', 'just the browser Event?'],
+    title: { line1: 'The e your handler receives', line2: 'is not the browser event' },
     description:
-      'React builds a SyntheticEvent object and passes it to your handler so the interface stays consistent.',
-    code: { fileLabel: 'JSX', code: HERO_CODE_EN },
-    diagram: {
-      title: 'The e React hands to your handler (SyntheticEvent)',
-      properties: SYNTHETIC_PROPS_EN,
-      helper: {
-        title: "React's own event object",
-        body: 'Consistent interface guaranteed',
-      },
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: 'Where exactly does e.stopPropagation() take effect in the React event flow?',
-    badges: [
-      'Event propagation stage',
-      'Mid-dispatchQueue control',
-      'Decides whether later listeners run',
+      'React builds a separate object wrapping the native event and passes that along. The original stays available on the nativeEvent field.',
+    diagramBadge: 'synthetic',
+    diagramCaption: 'wraps the native event',
+    objectLabel: 'SyntheticEvent',
+    fields: [
+      { name: 'type', value: "'click'" },
+      { name: 'target', value: '<button id="save">' },
+      { name: 'currentTarget', value: 'node the listener sits on' },
+      { name: 'nativeEvent', value: 'MouseEvent (original)' },
+      { name: 'isPropagationStopped', value: '() => false' },
     ],
   },
-  handlerE: {
-    step: 1,
-    eyebrow: 'handler-event',
-    title: 'What is the e your handler receives?',
-    fileLabel: 'Button.jsx',
-    code: HANDLER_CODE_EN,
-    explanation: {
-      label: 'Explanation',
-      body: "The e parameter on handleClick is React's SyntheticEvent — a wrapper around the browser Event.",
-    },
-    badges: ['Built inside React', 'Consistent interface', 'Created in the plugin system'],
-  },
   structure: {
-    step: 2,
-    eyebrow: 'synthetic-structure',
-    title: 'SyntheticEvent structure',
-    rows: SYNTHETIC_PROPS_EN,
-  },
-  relationship: {
-    step: 3,
-    eyebrow: 'native-event-relationship',
-    title: 'Relationship with nativeEvent',
-    columns: { name: 'Property', meaning: 'Meaning', note: 'Note' },
+    badge: '01',
+    eyebrow: 'structure',
+    title: 'What is inside, and what differs',
+    description:
+      'Not every native property is copied. Only the ones listed in the Interface defined per event type are carried across.',
+    headers: ['Property', 'Meaning', 'Watch out for'],
     rows: [
       {
         name: 'nativeEvent',
-        meaning: "The browser's raw Event object",
-        note: 'Lets you reach the underlying event',
+        meaning: 'The original Event object built by the browser',
+        note: 'The original is reachable directly whenever you need it.',
       },
       {
         name: 'target',
-        meaning: 'DOM where the event actually fired',
-        note: 'Origin of the event',
+        meaning: 'The DOM element where the event actually fired',
+        note: 'It does not change no matter where the listener sits.',
       },
       {
         name: 'currentTarget',
-        meaning: 'DOM where the current handler is registered',
-        note: 'Changes per bubble step',
+        meaning: 'The element the currently running listener is attached to',
+        note: 'Changes per listener, and reads as null if you read it asynchronously.',
       },
       {
         name: 'type',
-        meaning: 'Event type interpreted by React',
-        note: 'e.g. click, change',
+        meaning: 'The event type as React interprets it',
+        note: 'May differ from the native name; onChange is the classic case.',
+      },
+      {
+        name: 'isPropagationStopped()',
+        meaning: 'Tells you whether propagation has stopped',
+        note: 'A function, not a boolean property — you have to call it.',
       },
     ],
+    note: 'currentTarget is filled right before a listener runs and cleared afterwards. Read it inside a setTimeout and it is already null.',
   },
-  methods: {
-    step: 4,
-    eyebrow: 'event-methods',
-    title: 'preventDefault / stopPropagation',
-    preventDefault: {
-      title: 'preventDefault()',
-      body: 'Prevents the default browser action. e.g. <a> navigation, form submit, input default behavior.',
-      example: 'Blocks the browser default',
-      chip: 'e.preventDefault()',
-    },
-    stopPropagation: {
-      title: 'stopPropagation()',
-      body: 'Stops further React listener propagation. The bubble phase will not go any higher.',
-      example: 'Blocks later listeners',
-      chip: 'e.stopPropagation()',
-    },
-  },
-  propagation: {
-    step: 5,
-    eyebrow: 'propagation-state',
-    title: 'Propagation state transitions',
-    steps: [
+  control: {
+    badge: '02',
+    eyebrow: 'two controls',
+    title: 'Two functions that block different things',
+    description:
+      'The names look alike but their targets differ. One blocks the browser, the other blocks React list of listeners.',
+    sides: [
       {
-        label: 'Before',
-        main: 'isPropagationStopped = false',
-        sub: 'Propagation keeps going',
-        tone: 'teal',
+        id: 'prevent',
+        title: 'preventDefault()',
+        badge: 'blocks the browser',
+        description: 'Cancels the default action the browser was about to take.',
+        bullets: [
+          'Stops an a tag from navigating',
+          'Stops a form from submitting by default',
+          'Calls nativeEvent.preventDefault directly',
+          'Has no effect on listener ordering',
+        ],
+        tone: 'amber',
       },
       {
-        label: 'Action',
-        main: 'e.stopPropagation() called',
-        sub: 'Propagation halt requested',
+        id: 'stop',
+        title: 'stopPropagation()',
+        badge: 'blocks the listeners',
+        description: 'Skips the remaining listeners left in the dispatchQueue.',
+        bullets: [
+          'Swaps isPropagationStopped for a function returning true',
+          'processDispatchQueue checks it before every listener',
+          'Also stops propagation of the native event',
+          'Already-executed listeners are not undone',
+        ],
         tone: 'violet',
       },
-      {
-        label: 'After',
-        main: 'isPropagationStopped = true',
-        sub: 'No more listeners run',
-        tone: 'rose',
-      },
     ],
+    bridge: {
+      headline: 'The browser\nor React',
+      sub: 'preventDefault addresses the browser default action; stopPropagation addresses the listener list React gathered.',
+    },
   },
-  persist: {
-    step: 6,
-    eyebrow: 'persist-modern',
-    title: 'persist — modern correction note',
-    label: 'modern correction',
+  reasons: {
+    badge: '03',
+    eyebrow: 'why wrap',
+    title: 'Three reasons to wrap at all',
     description:
-      'persist() used to be mentioned often because of event pooling, but the modern React event system no longer relies on the same kind of pooling — so persist() is unnecessary in most cases.',
-    oldLabel: 'Past',
-    oldText: 'e.persist() needed',
-    modernLabel: 'Now',
-    modernText: 'persist() mostly unnecessary',
-  },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    fileLabel: 'SyntheticEvent.js',
-    code1: REAL_CODE_1,
-    code2: REAL_CODE_2,
-    code1Caption: 'SyntheticEvent initialization',
-    code2Caption: 'preventDefault / stopPropagation implementation',
-    fileLocation: {
-      label: 'File location',
-      path: 'packages/react-dom-bindings/src/events/SyntheticEvent.js',
-    },
-    explanation:
-      'SyntheticEvent is built inside React. It wraps nativeEvent, target, currentTarget — and preventDefault / stopPropagation flip status flags as they go.',
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/SyntheticEvent.js',
-    },
-  },
-  inspector: {
-    step: 8,
-    eyebrow: 'event-inspector',
-    title: 'Interactive Event Inspector',
-    testUiTitle: 'Test UI',
-    panelLabel: 'Panel area (div#panel)',
-    buttonLabel: 'Save button (button#save)',
-    usageTitle: 'How to use',
-    usageBody:
-      'Clicking the button updates the SyntheticEvent state in the inspector live. Calling stopPropagation flips isPropagationStopped to true.',
-    inspectorLabel: 'Event inspector',
-    fields: [
-      { key: 'type', value: 'click' },
-      { key: 'target', value: 'button#save' },
-      { key: 'currentTarget', value: 'button#save' },
-      { key: 'isDefaultPrevented', value: 'false' },
-      { key: 'isPropagationStopped', value: 'false' },
-    ],
-    afterStopPropagationField: { key: 'isPropagationStopped', value: 'true' },
-    controls: {
-      stopPropagation: 'Call stopPropagation',
-      reset: 'Reset state',
-    },
-    logTitle: 'Execution log',
-    logEntries: {
-      initial: '[init] SyntheticEvent created: isPropagationStopped = false',
-      afterStop: '[action] e.stopPropagation() called: isPropagationStopped = true',
-      afterReset: '[reset] SyntheticEvent state reset',
-    },
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
+      'Passing the original through would seem simpler, but React would lose control of these three things.',
     items: [
       {
-        title: 'Open SyntheticEvent.js',
-        body: 'Open the implementation file and see what information is wrapped.',
+        id: 'consistency',
+        title: 'Absorb browser differences',
+        role: 'Consistent interface',
+        description:
+          'The Interface list normalises properties so the same name yields the same value in every browser.',
+        tone: 'sky',
       },
       {
-        title: 'Find where nativeEvent, target, currentTarget are initialized',
-        body: 'Inspect what is filled in inside the constructor.',
-      },
-      {
-        title: 'Read the stopPropagation implementation',
-        body: 'See how nativeEvent and the flags flip together.',
-      },
-      {
-        title: 'Confirm how isPropagationStopped flips',
-        body: 'Remember the functionThatReturnsFalse → functionThatReturnsTrue pattern.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'The e your React handler receives is a SyntheticEvent.',
-        body: "It is React's own event object wrapping the browser Event.",
-        tone: 'teal',
-      },
-      {
-        title: 'It wraps the native event with a consistent interface.',
-        body: 'target, currentTarget, type, and methods are exposed in a uniform shape.',
+        id: 'scope',
+        title: 'Separate the propagation scope',
+        role: 'Scoped to the React tree',
+        description:
+          'stopPropagation has to act on the listener list React gathered, not on the DOM tree.',
         tone: 'violet',
       },
       {
-        title: 'stopPropagation drives the rest of the dispatch flow.',
-        body: 'It becomes the flag that decides whether later React listeners run.',
-        tone: 'rose',
+        id: 'pooling',
+        title: 'Pooling is gone',
+        role: 'persist() unnecessary',
+        description:
+          'Objects used to be reused, which is why e.persist() existed. React 17 removed pooling, so you can simply keep the object.',
+        tone: 'emerald',
       },
     ],
+    note: 'The e.persist() you saw in older articles has no reason to appear in new code. Left in place, it does nothing.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/SyntheticEvent.js',
+    lookForLabel: 'Look for',
+    lookFor: 'createSyntheticEvent, SyntheticBaseEvent, isPropagationStopped',
+    whyLabel: 'Why',
+    why: 'isPropagationStopped swapping a function rather than flipping a boolean is the device that cuts the queue short later.',
+    code: SYNTHETIC_CODE,
+    primaryCta: 'Read SyntheticEvent.js',
+    primaryHref: SYNTHETIC_EVENT_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Capture / bubble listener accumulation',
+    title: 'How the listeners to run get gathered',
     description:
-      'Once the SyntheticEvent is built, see which listeners React gathers and dispatches.',
+      'Next we watch that very list being built by walking up the Fiber tree — the list stopPropagation cuts.',
     cta: 'Go to the next page',
     href: '/accumulate-listeners',
   },

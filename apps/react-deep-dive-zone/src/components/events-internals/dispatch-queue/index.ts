@@ -1,2 +1,2 @@
-export { dispatchQueueOrderContent } from './content';
-export { DispatchQueueOrderPage } from './DispatchQueueOrderPage';
+export { dispatchQueueContent } from './content';
+export { DispatchQueuePage } from './DispatchQueuePage';

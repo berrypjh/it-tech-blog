@@ -1,158 +1,91 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Box, Gauge, Layers, Link2, MessageCircle, Send, Settings, Zap } from 'lucide-react';
+import { Link2, ListPlus, type LucideIcon, PlayCircle, Route } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { ApiHero, FoundationItem, React19HooksContent, Tone } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { Foundation, FoundationId, React19HooksContent } from '../content';
 
-type Props = { content: React19HooksContent['hero']; className?: string };
+type Props = { content: React19HooksContent['hero'] };
 
-const foundationIcon = {
-  dispatcher: Settings,
+const foundationIcon: Record<FoundationId, LucideIcon> = {
+  dispatcher: Route,
   'linked-list': Link2,
-  'update-queue': Box,
-  suspense: Atom,
-  effect: Zap,
-} as const;
-
-const apiIcon = {
-  use: Atom,
-  useActionState: Send,
-  useOptimistic: Gauge,
-  useEffectEvent: MessageCircle,
-} as const;
-
-/** content의 Tone을 공유 ToneKey로 매핑. ToneKey에 없는 톤은 가장 가까운 톤으로 대체한다. */
-const toneKeyMap: Record<Tone, ToneKey> = {
-  sky: 'sky',
-  cyan: 'cyan',
-  teal: 'teal',
-  emerald: 'emerald',
-  violet: 'violet',
-  amber: 'amber',
-  orange: 'amber',
-  rose: 'amber',
-  indigo: 'indigo',
+  'update-queue': ListPlus,
+  effect: PlayCircle,
 };
 
-/**
- * Hero 핵심 비주얼.
- * 기존 Hook 내부 구조(기반) 위에 React 19의 새 Hook API들이 올라간다는 점을
- * 기반 그룹 → 확장 화살표 → API 카드 그리드로 보여주는 컴팩트 다이어그램.
- */
-export const React19HooksHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.diagramTitle}. ${content.foundationTitle}: ${content.foundationItems
-    .map((i) => i.title)
-    .join(', ')}. ${content.apiCards.map((a) => `${a.title} ${a.shortDesc}`).join('; ')}`;
+/** Hero 핵심 비주얼: 새 API 층이 이미 읽은 기반 층 위에 얹혀 있다는 2단 구조. */
+export const React19HooksHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="teal" size="sm">
-            <Layers className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {content.diagramTitle}
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-        </header>
+        </div>
 
-        <section
-          className={cx(
-            'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-            'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-          )}
-        >
-          <h3 className="text-xsm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {content.foundationTitle}
-          </h3>
-          <ul className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
-            {content.foundationItems.map((item) => (
-              <li key={item.key}>
-                <FoundationCard item={item} />
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {'//'} {content.apiLabel}
+          </p>
+          <ul className="flex flex-wrap gap-1.5">
+            {content.apis.map((api) => (
+              <li key={api}>
+                <code
+                  className={cx(
+                    'inline-block rounded-md border px-2 py-0.5 font-mono text-[11px] font-bold',
+                    toneTokens.amber.chip,
+                  )}
+                >
+                  {api}
+                </code>
               </li>
             ))}
           </ul>
-        </section>
+        </article>
 
         <DownArrow />
 
-        <ul className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
-          {content.apiCards.map((api) => (
-            <li key={api.key}>
-              <ApiPillCard api={api} />
-            </li>
-          ))}
-        </ul>
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-surface)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+            {'//'} {content.foundationLabel}
+          </p>
+          <ul className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
+            {content.foundations.map((item) => (
+              <li key={item.id} className="min-w-0">
+                <FoundationRow item={item} />
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </HeroDiagramShell>
+  );
+};
+
+const FoundationRow = ({ item }: { item: Foundation }) => {
+  const Icon = foundationIcon[item.id];
+  const t = toneTokens[item.tone];
+  return (
+    <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2">
+      <ToneIconBox tone={item.tone} size="sm" className="h-7 w-7">
+        <Icon className="h-3.5 w-3.5" />
+      </ToneIconBox>
+      <div className="flex min-w-0 flex-col">
+        <code className={cx('font-mono text-[11px] font-bold break-all', t.text)}>
+          {item.label}
+        </code>
+        <span className="text-[10px] text-[var(--term-muted)] break-keep">{item.caption}</span>
       </div>
     </div>
   );
 };
-
-const FoundationCard = ({ item }: { item: FoundationItem }) => {
-  const tone = toneKeyMap[item.tone];
-  const t = toneTokens[tone];
-  const Icon = foundationIcon[item.key as keyof typeof foundationIcon] ?? Settings;
-  return (
-    <article className="flex h-full items-start gap-sm">
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-4 w-4" />
-      </ToneIconBox>
-      <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cx('font-mono text-[11px] font-bold break-all', t.text)}>
-          {item.title}
-        </code>
-        <span className="text-[10px] leading-relaxed text-[var(--term-muted)] break-keep">
-          {item.description}
-        </span>
-      </div>
-    </article>
-  );
-};
-
-const ApiPillCard = ({ api }: { api: ApiHero }) => {
-  const tone = toneKeyMap[api.tone];
-  const t = toneTokens[tone];
-  const Icon = apiIcon[api.key];
-  return (
-    <article
-      className={cx(
-        'flex h-full items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" />
-      </ToneIconBox>
-      <div className="flex min-w-0 flex-col gap-0.5">
-        <code className={cx('font-mono text-xsm font-bold break-all', t.text)}>{api.title}</code>
-        <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">
-          {api.shortDesc}
-        </p>
-      </div>
-    </article>
-  );
-};
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

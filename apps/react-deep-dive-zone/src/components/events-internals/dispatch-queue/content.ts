@@ -1,157 +1,92 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type CollectedListener = {
-  step: string;
-  label: string;
+export type QueueEntry = {
+  id: string;
+  order: string;
+  handler: string;
   phase: string;
-  tone: 'violet' | 'teal' | 'rose';
+  tone: ToneKey;
 };
 
-export type TimelineEntry = {
-  step: string;
-  label: string;
-  phase?: string;
-  tone: 'violet' | 'teal' | 'rose';
-  blocked?: boolean;
+export type PartId = 'event' | 'listeners' | 'phase';
+
+export type QueuePart = {
+  id: PartId;
+  name: string;
+  role: string;
+  description: string;
+  tone: ToneKey;
 };
 
-export type FlowStep = {
+export type LoopStepId = 'take' | 'direction' | 'check' | 'set-target' | 'invoke';
+
+export type LoopStep = {
+  id: LoopStepId;
+  num: string;
   title: string;
-  body: string;
-  code?: string;
-  tone: Tone;
+  description: string;
+  tone: ToneKey;
 };
 
-export type DispatchQueueOrderContent = {
+export type StopRow = {
+  situation: string;
+  runs: string;
+  why: string;
+};
+
+export type DispatchQueueContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    listenerTitle: string;
-    collected: CollectedListener[];
-    diagram: {
-      title: string;
-      queueTitle: string;
-      eventLabel: string;
-      listenersLabel: string;
-      listeners: CollectedListener[];
-      timelineTitle: string;
-      timeline: TimelineEntry[];
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    queueLabel: string;
+    entries: QueueEntry[];
+    tailLabel: string;
   };
-  question: {
+  shape: {
+    badge: string;
     eyebrow: string;
     title: string;
-    badges: string[];
-  };
-  separation: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: { title: string; body: string; tone: 'violet' | 'teal' }[];
+    description: string;
+    codeHeader: string;
+    code: string;
+    parts: QueuePart[];
     note: string;
   };
-  structure: {
-    step: number;
+  loop: {
+    badge: string;
     eyebrow: string;
     title: string;
-    queue: {
-      title: string;
-      entry: string;
-      event: string;
-      listenersLabel: string;
-      listeners: string[];
-    };
-    listener: {
-      title: string;
-      rows: { key: string; value: string }[];
-    };
+    description: string;
+    steps: LoopStep[];
+    note: string;
   };
-  flow: {
-    step: number;
+  stopping: {
+    badge: string;
     eyebrow: string;
     title: string;
-    steps: FlowStep[];
+    description: string;
+    headers: [string, string, string];
+    rows: StopRow[];
+    note: string;
   };
-  phases: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    capture: {
-      title: string;
-      body: string;
-      pathTitle: string;
-      path: string[];
-      exampleTitle: string;
-      example: string[];
-    };
-    bubble: {
-      title: string;
-      body: string;
-      pathTitle: string;
-      path: string[];
-      exampleTitle: string;
-      example: string[];
-    };
-  };
-  stop: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: FlowStep[];
-  };
-  currentTarget: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: {
-      title: string;
-      body: string;
-      inspectorTitle?: string;
-      inspector?: { key: string; value: string; highlight?: boolean }[];
-      code?: string;
-    }[];
-  };
-  realCode: {
-    step: number;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    code1: string;
-    code1Caption: string;
-    code2: string;
-    code2Caption: string;
-    explanation: { label: string; body: string };
-    fileLocation: { label: string; path: string };
-    button: { label: string; href: string };
-  };
-  timeline: {
-    step: number;
-    eyebrow: string;
-    title: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    cases: {
-      key: 'none' | 'stopped';
-      title: string;
-      entries: TimelineEntry[];
-      note: string;
-    }[];
-    toggles: { value: 'none' | 'stopped'; label: string }[];
-    defaultCase: 'none' | 'stopped';
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    items: { title: string; body: string }[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: { title: string; body: string; tone: Tone }[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -162,653 +97,368 @@ export type DispatchQueueOrderContent = {
   };
 };
 
-const REAL_CODE_1 = `// 코드 1: dispatchQueue 실행 진입
-processDispatchQueue(dispatchQueue, eventSystemFlags);`;
+const QUEUE_SHAPE_CODE = `// dispatchQueue 한 칸의 모양
+type DispatchEntry = {
+  event: SyntheticEvent;
+  listeners: DispatchListener[];
+};
 
-const REAL_CODE_2 = `// 코드 2: stopPropagation 체크
-for (let i = 0; i < dispatchListeners.length; i++) {
-  const { instance, currentTarget, listener } = dispatchListeners[i];
+type DispatchListener = {
+  instance: Fiber | null;
+  listener: Function;
+  currentTarget: EventTarget;
+};`;
 
-  if (instance !== previousInstance && event.isPropagationStopped()) {
-    return;
+const PROCESS_CODE = `function processDispatchQueue(dispatchQueue, eventSystemFlags) {
+  const inCapturePhase = (eventSystemFlags & IS_CAPTURE_PHASE) !== 0;
+
+  for (let i = 0; i < dispatchQueue.length; i++) {
+    const { event, listeners } = dispatchQueue[i];
+    processDispatchQueueItemsInOrder(event, listeners, inCapturePhase);
   }
+}
 
-  executeDispatch(event, listener, currentTarget);
-  previousInstance = instance;
+function processDispatchQueueItemsInOrder(event, dispatchListeners, inCapturePhase) {
+  let previousInstance;
+
+  if (inCapturePhase) {
+    for (let i = dispatchListeners.length - 1; i >= 0; i--) {
+      const { instance, currentTarget, listener } = dispatchListeners[i];
+      if (instance !== previousInstance && event.isPropagationStopped()) {
+        return;
+      }
+      executeDispatch(event, listener, currentTarget);
+      previousInstance = instance;
+    }
+  } else {
+    for (let i = 0; i < dispatchListeners.length; i++) {
+      const { instance, currentTarget, listener } = dispatchListeners[i];
+      if (instance !== previousInstance && event.isPropagationStopped()) {
+        return;
+      }
+      executeDispatch(event, listener, currentTarget);
+      previousInstance = instance;
+    }
+  }
 }`;
 
-const TIMELINE_CODE = `<section onClickCapture={handleSectionCapture}>
-  <div onClick={handleDivClick}>
-    <button onClick={handleButtonClick}>저장</button>
-  </div>
-</section>`;
+const DOM_PLUGIN_EVENT_SYSTEM_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js';
 
-const TIMELINE_CODE_EN = `<section onClickCapture={handleSectionCapture}>
-  <div onClick={handleDivClick}>
-    <button onClick={handleButtonClick}>Save</button>
-  </div>
-</section>`;
-
-const COLLECTED_KO: CollectedListener[] = [
-  { step: '1', label: 'section capture', phase: 'onClickCapture', tone: 'violet' },
-  { step: '2', label: 'button click', phase: 'onClick', tone: 'teal' },
-  { step: '3', label: 'div click', phase: 'onClick', tone: 'teal' },
-];
-
-const COLLECTED_EN: CollectedListener[] = [
-  { step: '1', label: 'section capture', phase: 'onClickCapture', tone: 'violet' },
-  { step: '2', label: 'button click', phase: 'onClick', tone: 'teal' },
-  { step: '3', label: 'div click', phase: 'onClick', tone: 'teal' },
-];
-
-const ko: DispatchQueueOrderContent = {
+const ko: DispatchQueueContent = {
   hero: {
     badge: '이벤트 시스템 · 9/10단계',
-    titleLines: ['React는 listener를 찾는 즉시', '바로 실행하지 않는다'],
+    title: { line1: '리스너를 찾자마자', line2: '바로 부르지는 않는다' },
     description:
-      '먼저 dispatchQueue를 만들고, phase 규칙에 따라 정해진 순서로 handler를 실행합니다.',
-    listenerTitle: '수집된 listener 목록 예시',
-    collected: COLLECTED_KO,
-    diagram: {
-      title: 'dispatchQueue가 실행 타임라인으로 바뀌는 과정',
-      queueTitle: 'dispatchQueue',
-      eventLabel: 'SyntheticEvent(click)',
-      listenersLabel: 'listeners[]',
-      listeners: COLLECTED_KO,
-      timelineTitle: '실행 타임라인 (phase 규칙 적용)',
-      timeline: [
-        { step: '1', label: 'section capture', phase: 'capture · 부모 → 자식', tone: 'violet' },
-        { step: '2', label: 'button click', phase: 'bubble · target', tone: 'teal' },
-        { step: '3', label: 'div click', phase: 'bubble · 자식 → 부모', tone: 'teal' },
-      ],
-    },
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: 'section capture, button click, div click은 어떤 순서로 실제 실행될까?',
-    badges: [
-      '수집과 실행은 분리된 과정',
-      'phase 규칙에 따라 순서가 결정됨',
-      'stopPropagation은 중간에서 흐름을 끊는다',
-    ],
-  },
-  separation: {
-    step: 1,
-    eyebrow: 'collect-vs-execute',
-    title: 'listener 수집과 실행의 분리',
-    cards: [
+      '수집과 실행은 완전히 분리되어 있습니다. 먼저 dispatchQueue를 다 채운 뒤, 정해진 방향으로 한 번에 훑으며 실행합니다.',
+    diagramBadge: 'dispatch queue',
+    diagramCaption: 'collect all, then run',
+    queueLabel: 'dispatchQueue[0].listeners',
+    entries: [
       {
-        title: '1단계: listener 수집 (accumulate)',
-        body: 'Fiber 경로를 따라 모든 관련 listener를 찾아 dispatchQueue에 담는다.',
+        id: 'section',
+        order: '0',
+        handler: 'handleSectionCapture',
+        phase: 'onClickCapture',
+        tone: 'violet',
+      },
+      { id: 'button', order: '0', handler: 'handleButtonClick', phase: 'onClick', tone: 'teal' },
+      { id: 'div', order: '1', handler: 'handleDivClick', phase: 'onClick', tone: 'teal' },
+    ],
+    tailLabel: 'capture는 역순, bubble은 정순으로 실행',
+  },
+  shape: {
+    badge: '01',
+    eyebrow: 'queue shape',
+    title: '큐 한 칸에 무엇이 들어 있나',
+    description:
+      'dispatchQueue는 리스너 배열이 아닙니다. 이벤트 하나와 그 이벤트가 부를 리스너 목록이 한 쌍으로 들어갑니다.',
+    codeHeader: 'DispatchEntry',
+    code: QUEUE_SHAPE_CODE,
+    parts: [
+      {
+        id: 'event',
+        name: 'event',
+        role: '공유되는 한 개',
+        description:
+          '이 칸의 모든 리스너가 같은 SyntheticEvent 객체를 받습니다. stopPropagation이 통하는 이유입니다.',
         tone: 'teal',
       },
       {
-        title: '2단계: dispatchQueue 실행 (process)',
-        body: 'phase 규칙에 따라 정해진 순서로 handler를 실행한다.',
-        tone: 'violet',
+        id: 'listeners',
+        name: 'listeners',
+        role: '자식에서 부모 순',
+        description:
+          '앞 페이지에서 올라가며 모은 순서 그대로입니다. 뒤집는 일은 실행 루프가 합니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'phase',
+        name: 'currentTarget',
+        role: '리스너마다 다름',
+        description:
+          '리스너가 붙어 있던 DOM 노드를 함께 들고 있습니다. 실행 직전에 event에 꽂아 넣습니다.',
+        tone: 'sky',
       },
     ],
-    note: 'React는 성능과 일관성을 위해 수집과 실행을 명확히 분리합니다.',
+    note: '한 native 이벤트가 큐에 두 칸 이상을 만들 수 있습니다. 칸마다 event 객체가 따로 있으므로 stopPropagation은 그 칸 안에서만 통합니다.',
   },
-  structure: {
-    step: 2,
-    eyebrow: 'dispatch-queue-structure',
-    title: 'dispatchQueue 구조',
-    queue: {
-      title: 'dispatchQueue',
-      entry: 'entry(0)',
-      event: 'SyntheticEvent(click)',
-      listenersLabel: 'listeners: Array<DispatchListener>',
-      listeners: [
-        '#1 DispatchListener (capture)',
-        '#2 DispatchListener (target)',
-        '#3 DispatchListener (bubble)',
-      ],
-    },
-    listener: {
-      title: 'DispatchListener 구조',
-      rows: [
-        { key: 'currentTarget', value: 'DOM node' },
-        { key: 'instance', value: 'Fiber' },
-        { key: 'listener', value: 'Function' },
-        { key: 'capture', value: 'boolean' },
-      ],
-    },
-  },
-  flow: {
-    step: 3,
-    eyebrow: 'process-dispatch-queue',
-    title: 'processDispatchQueue 흐름',
+  loop: {
+    badge: '02',
+    eyebrow: 'processDispatchQueue',
+    title: '실행 루프가 하는 다섯 가지',
+    description:
+      '루프는 단순하지만 매 반복마다 확인하는 것이 있습니다. 그 확인이 stopPropagation을 실제로 동작하게 만듭니다.',
     steps: [
       {
-        title: 'dispatchQueue 순회',
-        body: 'entry를 순서대로 꺼낸다.',
+        id: 'take',
+        num: '01',
+        title: '큐에서 한 칸 꺼낸다',
+        description: 'event와 listeners 한 쌍을 꺼내 처리 함수에 넘깁니다.',
         tone: 'sky',
       },
       {
-        title: 'event와 listeners 추출',
-        body: 'entry.event와 entry.listeners를 꺼낸다.',
-        tone: 'cyan',
-      },
-      {
-        title: 'processDispatchQueueItemsInOrder 호출',
-        body: 'capture/bubble 규칙에 따라 listeners를 순서대로 실행한다.',
+        id: 'direction',
+        num: '02',
+        title: '방향을 정한다',
+        description: 'capture 플래그가 켜져 있으면 배열을 뒤에서부터, 아니면 앞에서부터 돕니다.',
         tone: 'violet',
       },
       {
-        title: 'executeDispatch로 각 listener 실행',
-        body: 'currentTarget을 주입 후 handler를 호출한다.',
-        tone: 'emerald',
-      },
-    ],
-  },
-  phases: {
-    step: 4,
-    eyebrow: 'capture-bubble-order',
-    title: 'capture / bubble 실행 순서',
-    capture: {
-      title: 'Capture phase (부모 → 자식)',
-      body: '이벤트가 아래로 내려가기 전에, 부모에서 자식 방향으로 처리됩니다.',
-      pathTitle: '실행 경로',
-      path: ['Section (ancestor)', 'Div (parent)', 'Button (target)'],
-      exampleTitle: '실제 예시',
-      example: ['1 section capture'],
-    },
-    bubble: {
-      title: 'Bubble phase (자식 → 부모)',
-      body: '이벤트가 위로 올라오면서, 자식부터 부모 순으로 처리됩니다.',
-      pathTitle: '실행 경로',
-      path: ['Button (target)', 'Div (parent)', 'Section (ancestor)'],
-      exampleTitle: '실제 예시',
-      example: ['1 button click', '2 div click'],
-    },
-  },
-  stop: {
-    step: 5,
-    eyebrow: 'stop-propagation',
-    title: 'stopPropagation이 끊는 지점',
-    steps: [
-      {
-        title: 'button handler 실행',
-        body: 'bubble phase에서 button의 onClick 실행',
-        code: 'e.stopPropagation();',
-        tone: 'teal',
-      },
-      {
-        title: 'e.stopPropagation() 호출',
-        body: 'event 객체 내부 flag가 true로 변경된다.',
-        code: 'isPropagationStopped = true',
-        tone: 'violet',
-      },
-      {
-        title: 'isPropagationStopped() === true',
-        body: '이후 listener 실행 전에 중단 여부를 확인한다.',
-        code: 'event.isPropagationStopped()',
+        id: 'check',
+        num: '03',
+        title: '매번 전파 여부 확인',
+        description: 'isPropagationStopped()가 true면 남은 리스너를 버리고 즉시 빠져나옵니다.',
         tone: 'amber',
       },
       {
-        title: '다음 listener 실행 중단',
-        body: '이후로 올라가는 bubble 전파가 더 이상 진행되지 않는다.',
-        tone: 'rose',
+        id: 'set-target',
+        num: '04',
+        title: 'currentTarget 꽂기',
+        description: '리스너가 붙어 있던 노드를 event.currentTarget에 넣었다가 끝나면 지웁니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'invoke',
+        num: '05',
+        title: '핸들러 호출',
+        description: 'listener(event)를 부릅니다. 여기서 우리가 쓴 함수가 처음 실행됩니다.',
+        tone: 'emerald',
       },
     ],
+    note: '04에서 넣었다 지우기 때문에 setTimeout 안에서 e.currentTarget을 읽으면 null입니다. 05가 끝나면 이미 비워집니다.',
   },
-  currentTarget: {
-    step: 6,
-    eyebrow: 'current-target',
-    title: 'currentTarget이 주입되는 순간',
-    steps: [
+  stopping: {
+    badge: '03',
+    eyebrow: 'stopPropagation',
+    title: '어디까지 멈추고 어디부터 안 멈추나',
+    description:
+      '확인 조건에 instance 비교가 붙어 있습니다. 같은 Fiber에 달린 리스너끼리는 중간에 끊기지 않습니다.',
+    headers: ['상황', '실행되나', '이유'],
+    rows: [
       {
-        title: 'handler 실행 직전',
-        body: 'event.currentTarget = currentTarget DOM',
-        inspectorTitle: 'Event Inspector',
-        inspector: [
-          { key: 'type', value: 'click' },
-          { key: 'target', value: 'button' },
-          { key: 'currentTarget', value: 'button', highlight: true },
-        ],
+        situation: '같은 칸의 다음 리스너',
+        runs: '실행 안 됨',
+        why: '같은 event 객체를 공유하므로 isPropagationStopped가 true로 보입니다.',
       },
       {
-        title: 'handler 실행 중',
-        body: 'handler는 currentTarget을 통해 현재 처리 중인 DOM을 알 수 있다.',
-        code: 'console.log(e.currentTarget);\n// <button id="save">',
+        situation: '이미 실행된 앞쪽 리스너',
+        runs: '되돌아가지 않음',
+        why: '루프는 앞으로만 갑니다. capture에서 이미 실행된 것은 그대로 남습니다.',
       },
       {
-        title: 'handler 실행 직후',
-        body: 'event.currentTarget = null',
-        inspectorTitle: 'Event Inspector',
-        inspector: [
-          { key: 'type', value: 'click' },
-          { key: 'target', value: 'button' },
-          { key: 'currentTarget', value: 'null', highlight: true },
-        ],
+        situation: '같은 Fiber의 다른 리스너',
+        runs: '실행됨',
+        why: 'instance가 직전과 같으면 조건이 성립하지 않아 검사를 통과합니다.',
+      },
+      {
+        situation: '다른 칸의 리스너',
+        runs: '실행됨',
+        why: 'event 객체가 다릅니다. onChange를 멈춰도 onClick은 그대로 돕니다.',
       },
     ],
+    note: 'React의 stopPropagation은 DOM 전파가 아니라 이 배열의 나머지를 건너뛰는 일입니다. 두 개념을 섞으면 예측이 어긋납니다.',
   },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    fileLabel: 'DOMPluginEventSystem.js',
-    code1: REAL_CODE_1,
-    code1Caption: 'dispatchQueue 실행 진입',
-    code2: REAL_CODE_2,
-    code2Caption: 'stopPropagation 체크 루프',
-    explanation: {
-      label: '설명',
-      body: 'processDispatchQueue는 각 entry를 순회하며 실제 실행 루프를 시작합니다. processDispatchQueueItemsInOrder는 각 listener마다 stopPropagation 여부를 확인해 순서를 제어합니다.',
-    },
-    fileLocation: {
-      label: '파일 위치',
-      path: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-  },
-  timeline: {
-    step: 8,
-    eyebrow: 'propagation-timeline',
-    title: 'Propagation Timeline',
-    code: TIMELINE_CODE,
-    cases: [
-      {
-        key: 'none',
-        title: '케이스 A: stopPropagation 없음',
-        entries: [
-          { step: '1', label: 'section capture', phase: 'capture', tone: 'violet' },
-          { step: '2', label: 'button click', phase: 'bubble · target', tone: 'teal' },
-          { step: '3', label: 'div click', phase: 'bubble', tone: 'teal' },
-        ],
-        note: '모든 listener가 순서대로 실행됩니다.',
-      },
-      {
-        key: 'stopped',
-        title: '케이스 B: button에서 stopPropagation 실행',
-        entries: [
-          { step: '1', label: 'section capture', phase: 'capture', tone: 'violet' },
-          {
-            step: '2',
-            label: 'button click',
-            phase: 'bubble · target · stopPropagation()',
-            tone: 'teal',
-          },
-          {
-            step: '—',
-            label: 'div click 실행 안 됨',
-            phase: 'blocked',
-            tone: 'rose',
-            blocked: true,
-          },
-        ],
-        note: 'button handler에서 전파가 중단되어 이후 listener는 실행되지 않습니다.',
-      },
-    ],
-    toggles: [
-      { value: 'none', label: 'stopPropagation 없음' },
-      { value: 'stopped', label: 'button에서 stopPropagation 실행' },
-    ],
-    defaultCase: 'none',
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        title: 'processDispatchQueue를 찾는다',
-        body: '실행 루프의 진입점을 확인한다.',
-      },
-      {
-        title: 'processDispatchQueueItemsInOrder를 찾는다',
-        body: 'capture/bubble 순서가 어떻게 정해지는지 본다.',
-      },
-      {
-        title: 'event.isPropagationStopped() 분기를 확인한다',
-        body: 'listener 실행 직전의 중단 조건을 본다.',
-      },
-      {
-        title: 'executeDispatch가 currentTarget을 어떻게 쓰는지 확인한다',
-        body: '주입과 정리(null로 되돌리기) 흐름을 직접 본다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: 'React는 listener 실행 전에 dispatchQueue를 만든다.',
-        body: '수집과 실행을 분리해 일관성과 성능을 확보합니다.',
-        tone: 'teal',
-      },
-      {
-        title: 'capture와 bubble에 따라 실행 순서가 달라진다.',
-        body: 'Capture는 부모 → 자식, Bubble은 자식 → 부모 순서로 처리됩니다.',
-        tone: 'violet',
-      },
-      {
-        title: 'stopPropagation은 queue 처리 중간에서 실행을 끊는다.',
-        body: '이후 listener는 더 이상 실행되지 않습니다.',
-        tone: 'rose',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: '볼 것',
+    lookFor: 'processDispatchQueue, processDispatchQueueItemsInOrder, isPropagationStopped',
+    whyLabel: '설명',
+    why: 'capture와 bubble이 같은 본문을 방향만 바꿔 두 번 적어 둔 모습이, 수집을 한 번만 하는 설계의 대가입니다.',
+    code: PROCESS_CODE,
+    primaryCta: 'DOMPluginEventSystem.js 읽기',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Hydration Replay와 Form Action 보기',
+    title: '아직 남은 세 가지 갈래',
     description:
-      'dispatchQueue 실행 이후, Hydration 중 보류된 이벤트와 Form Action 흐름을 이어서 살펴봅니다.',
+      '우선순위와 Hydration Replay, 그리고 Form Action이 이 파이프라인 어디에 붙는지 마지막 페이지에서 정리합니다.',
     cta: '다음 페이지로 이동',
     href: '/priority-replay-action',
   },
 };
 
-const en: DispatchQueueOrderContent = {
+const en: DispatchQueueContent = {
   hero: {
     badge: 'Event System · 9/10',
-    titleLines: ['React does not run a listener', 'the instant it finds one'],
+    title: { line1: 'Finding a listener', line2: 'does not mean calling it' },
     description:
-      'It first builds a dispatchQueue and then runs handlers in the order dictated by phase rules.',
-    listenerTitle: 'Sample of collected listeners',
-    collected: COLLECTED_EN,
-    diagram: {
-      title: 'How dispatchQueue becomes an execution timeline',
-      queueTitle: 'dispatchQueue',
-      eventLabel: 'SyntheticEvent(click)',
-      listenersLabel: 'listeners[]',
-      listeners: COLLECTED_EN,
-      timelineTitle: 'Execution timeline (phase rules applied)',
-      timeline: [
-        { step: '1', label: 'section capture', phase: 'capture · parent → child', tone: 'violet' },
-        { step: '2', label: 'button click', phase: 'bubble · target', tone: 'teal' },
-        { step: '3', label: 'div click', phase: 'bubble · child → parent', tone: 'teal' },
-      ],
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: 'In what order do section capture, button click, and div click actually run?',
-    badges: [
-      'Collection and execution are separate processes',
-      'Phase rules decide the order',
-      'stopPropagation can cut the chain mid-way',
-    ],
-  },
-  separation: {
-    step: 1,
-    eyebrow: 'collect-vs-execute',
-    title: 'Listener collection vs execution',
-    cards: [
+      'Collection and execution are fully separated. React fills the dispatchQueue first, then sweeps it once in a fixed direction.',
+    diagramBadge: 'dispatch queue',
+    diagramCaption: 'collect all, then run',
+    queueLabel: 'dispatchQueue[0].listeners',
+    entries: [
       {
-        title: 'Stage 1: listener collection (accumulate)',
-        body: 'Walk the Fiber path, find every relevant listener, and place them in dispatchQueue.',
+        id: 'section',
+        order: '0',
+        handler: 'handleSectionCapture',
+        phase: 'onClickCapture',
+        tone: 'violet',
+      },
+      { id: 'button', order: '0', handler: 'handleButtonClick', phase: 'onClick', tone: 'teal' },
+      { id: 'div', order: '1', handler: 'handleDivClick', phase: 'onClick', tone: 'teal' },
+    ],
+    tailLabel: 'capture runs in reverse, bubble in order',
+  },
+  shape: {
+    badge: '01',
+    eyebrow: 'queue shape',
+    title: 'What one queue entry holds',
+    description:
+      'dispatchQueue is not an array of listeners. Each entry pairs one event with the list of listeners it will call.',
+    codeHeader: 'DispatchEntry',
+    code: QUEUE_SHAPE_CODE,
+    parts: [
+      {
+        id: 'event',
+        name: 'event',
+        role: 'One, shared',
+        description:
+          'Every listener in this entry receives the same SyntheticEvent object — which is why stopPropagation works.',
         tone: 'teal',
       },
       {
-        title: 'Stage 2: dispatchQueue execution (process)',
-        body: 'Run handlers in the order dictated by phase rules.',
-        tone: 'violet',
+        id: 'listeners',
+        name: 'listeners',
+        role: 'Child to parent',
+        description:
+          'Exactly the order gathered while climbing on the previous page. Reversing is the execution loop job.',
+        tone: 'indigo',
+      },
+      {
+        id: 'phase',
+        name: 'currentTarget',
+        role: 'Differs per listener',
+        description:
+          'Each carries the DOM node its listener was attached to, slotted into the event right before it runs.',
+        tone: 'sky',
       },
     ],
-    note: 'React separates collection from execution to ensure both consistency and performance.',
+    note: 'One native event can create several entries. Each has its own event object, so stopPropagation only holds within that entry.',
   },
-  structure: {
-    step: 2,
-    eyebrow: 'dispatch-queue-structure',
-    title: 'dispatchQueue structure',
-    queue: {
-      title: 'dispatchQueue',
-      entry: 'entry(0)',
-      event: 'SyntheticEvent(click)',
-      listenersLabel: 'listeners: Array<DispatchListener>',
-      listeners: [
-        '#1 DispatchListener (capture)',
-        '#2 DispatchListener (target)',
-        '#3 DispatchListener (bubble)',
-      ],
-    },
-    listener: {
-      title: 'DispatchListener shape',
-      rows: [
-        { key: 'currentTarget', value: 'DOM node' },
-        { key: 'instance', value: 'Fiber' },
-        { key: 'listener', value: 'Function' },
-        { key: 'capture', value: 'boolean' },
-      ],
-    },
-  },
-  flow: {
-    step: 3,
-    eyebrow: 'process-dispatch-queue',
-    title: 'processDispatchQueue flow',
+  loop: {
+    badge: '02',
+    eyebrow: 'processDispatchQueue',
+    title: 'Five things the execution loop does',
+    description:
+      'The loop is simple, but there is a check on every iteration — and that check is what actually makes stopPropagation work.',
     steps: [
       {
-        title: 'Walk the dispatchQueue',
-        body: 'Pull each entry in order.',
+        id: 'take',
+        num: '01',
+        title: 'Take one entry',
+        description: 'Pull an event and listeners pair and hand it to the processing function.',
         tone: 'sky',
       },
       {
-        title: 'Extract event and listeners',
-        body: 'Pull entry.event and entry.listeners.',
-        tone: 'cyan',
-      },
-      {
-        title: 'Call processDispatchQueueItemsInOrder',
-        body: 'Run listeners in the order dictated by capture/bubble rules.',
+        id: 'direction',
+        num: '02',
+        title: 'Choose the direction',
+        description: 'With the capture flag set, iterate from the back; otherwise from the front.',
         tone: 'violet',
       },
       {
-        title: 'Run each listener with executeDispatch',
-        body: 'Inject currentTarget and invoke the handler.',
-        tone: 'emerald',
-      },
-    ],
-  },
-  phases: {
-    step: 4,
-    eyebrow: 'capture-bubble-order',
-    title: 'capture / bubble execution order',
-    capture: {
-      title: 'Capture phase (parent → child)',
-      body: 'Processed from parent toward child before the event flows downward.',
-      pathTitle: 'Execution path',
-      path: ['Section (ancestor)', 'Div (parent)', 'Button (target)'],
-      exampleTitle: 'Concrete example',
-      example: ['1 section capture'],
-    },
-    bubble: {
-      title: 'Bubble phase (child → parent)',
-      body: 'As the event bubbles up, handlers run from the child toward the parents.',
-      pathTitle: 'Execution path',
-      path: ['Button (target)', 'Div (parent)', 'Section (ancestor)'],
-      exampleTitle: 'Concrete example',
-      example: ['1 button click', '2 div click'],
-    },
-  },
-  stop: {
-    step: 5,
-    eyebrow: 'stop-propagation',
-    title: 'Where stopPropagation cuts the chain',
-    steps: [
-      {
-        title: 'button handler runs',
-        body: 'In the bubble phase, button onClick runs',
-        code: 'e.stopPropagation();',
-        tone: 'teal',
-      },
-      {
-        title: 'e.stopPropagation() called',
-        body: 'The internal flag on the event flips to true.',
-        code: 'isPropagationStopped = true',
-        tone: 'violet',
-      },
-      {
-        title: 'isPropagationStopped() === true',
-        body: 'Before each subsequent listener, check whether propagation has stopped.',
-        code: 'event.isPropagationStopped()',
+        id: 'check',
+        num: '03',
+        title: 'Check propagation every time',
+        description: 'If isPropagationStopped() is true, drop the rest and return immediately.',
         tone: 'amber',
       },
       {
-        title: 'Next listener skipped',
-        body: 'Bubble propagation stops climbing further.',
-        tone: 'rose',
+        id: 'set-target',
+        num: '04',
+        title: 'Slot in currentTarget',
+        description: 'Set the node the listener sits on, then clear it once the call returns.',
+        tone: 'indigo',
+      },
+      {
+        id: 'invoke',
+        num: '05',
+        title: 'Invoke the handler',
+        description: 'Call listener(event). This is where the function you wrote finally runs.',
+        tone: 'emerald',
       },
     ],
+    note: 'Because step 04 sets and clears, reading e.currentTarget inside a setTimeout gives null — step 05 has already emptied it.',
   },
-  currentTarget: {
-    step: 6,
-    eyebrow: 'current-target',
-    title: 'When currentTarget is injected',
-    steps: [
+  stopping: {
+    badge: '03',
+    eyebrow: 'stopPropagation',
+    title: 'What it stops and what it does not',
+    description:
+      'The check also compares instance, so listeners attached to the same Fiber are never cut apart mid-way.',
+    headers: ['Situation', 'Does it run', 'Why'],
+    rows: [
       {
-        title: 'Right before handler runs',
-        body: 'event.currentTarget = currentTarget DOM',
-        inspectorTitle: 'Event Inspector',
-        inspector: [
-          { key: 'type', value: 'click' },
-          { key: 'target', value: 'button' },
-          { key: 'currentTarget', value: 'button', highlight: true },
-        ],
+        situation: 'The next listener in the same entry',
+        runs: 'Does not run',
+        why: 'They share one event object, so isPropagationStopped already reads true.',
       },
       {
-        title: 'During handler execution',
-        body: 'The handler can read currentTarget to know which DOM is being processed right now.',
-        code: 'console.log(e.currentTarget);\n// <button id="save">',
+        situation: 'An earlier listener already executed',
+        runs: 'Never revisited',
+        why: 'The loop only moves forward. Whatever capture already ran stays run.',
       },
       {
-        title: 'Right after handler returns',
-        body: 'event.currentTarget = null',
-        inspectorTitle: 'Event Inspector',
-        inspector: [
-          { key: 'type', value: 'click' },
-          { key: 'target', value: 'button' },
-          { key: 'currentTarget', value: 'null', highlight: true },
-        ],
+        situation: 'Another listener on the same Fiber',
+        runs: 'Runs',
+        why: 'With instance equal to the previous one the condition fails and the check is skipped.',
+      },
+      {
+        situation: 'A listener in a different entry',
+        runs: 'Runs',
+        why: 'Different event object. Stopping onChange leaves onClick untouched.',
       },
     ],
+    note: 'React stopPropagation skips the rest of this array rather than stopping DOM propagation. Conflating the two breaks predictions.',
   },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    fileLabel: 'DOMPluginEventSystem.js',
-    code1: REAL_CODE_1,
-    code1Caption: 'dispatchQueue execution entry',
-    code2: REAL_CODE_2,
-    code2Caption: 'stopPropagation check loop',
-    explanation: {
-      label: 'Explanation',
-      body: 'processDispatchQueue iterates each entry to start the execution loop. processDispatchQueueItemsInOrder checks stopPropagation per listener and gates the order.',
-    },
-    fileLocation: {
-      label: 'File location',
-      path: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-  },
-  timeline: {
-    step: 8,
-    eyebrow: 'propagation-timeline',
-    title: 'Propagation Timeline',
-    code: TIMELINE_CODE_EN,
-    cases: [
-      {
-        key: 'none',
-        title: 'Case A: no stopPropagation',
-        entries: [
-          { step: '1', label: 'section capture', phase: 'capture', tone: 'violet' },
-          { step: '2', label: 'button click', phase: 'bubble · target', tone: 'teal' },
-          { step: '3', label: 'div click', phase: 'bubble', tone: 'teal' },
-        ],
-        note: 'Every listener runs in order.',
-      },
-      {
-        key: 'stopped',
-        title: 'Case B: button calls stopPropagation',
-        entries: [
-          { step: '1', label: 'section capture', phase: 'capture', tone: 'violet' },
-          {
-            step: '2',
-            label: 'button click',
-            phase: 'bubble · target · stopPropagation()',
-            tone: 'teal',
-          },
-          {
-            step: '—',
-            label: 'div click is skipped',
-            phase: 'blocked',
-            tone: 'rose',
-            blocked: true,
-          },
-        ],
-        note: 'The button handler stopped propagation so later listeners do not run.',
-      },
-    ],
-    toggles: [
-      { value: 'none', label: 'no stopPropagation' },
-      { value: 'stopped', label: 'button calls stopPropagation' },
-    ],
-    defaultCase: 'none',
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
-    items: [
-      {
-        title: 'Find processDispatchQueue',
-        body: 'Locate the execution loop entry.',
-      },
-      {
-        title: 'Find processDispatchQueueItemsInOrder',
-        body: 'See how capture/bubble order is decided.',
-      },
-      {
-        title: 'Inspect the event.isPropagationStopped() branch',
-        body: 'See the early-return condition right before each listener runs.',
-      },
-      {
-        title: 'See how executeDispatch uses currentTarget',
-        body: 'Trace injection and the cleanup that resets it to null.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'React builds the dispatchQueue before running listeners.',
-        body: 'Separating collection from execution keeps things consistent and fast.',
-        tone: 'teal',
-      },
-      {
-        title: 'Capture and bubble drive different execution orders.',
-        body: 'Capture goes parent → child, bubble goes child → parent.',
-        tone: 'violet',
-      },
-      {
-        title: 'stopPropagation cuts the queue execution mid-way.',
-        body: 'Later listeners no longer run.',
-        tone: 'rose',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: 'Look for',
+    lookFor: 'processDispatchQueue, processDispatchQueueItemsInOrder, isPropagationStopped',
+    whyLabel: 'Why',
+    why: 'The same body written twice, differing only in direction, is the price paid for collecting the listeners just once.',
+    code: PROCESS_CODE,
+    primaryCta: 'Read DOMPluginEventSystem.js',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Hydration Replay and Form Action',
+    title: 'Three branches still open',
     description:
-      'After the dispatchQueue runs, follow events deferred during hydration and the form action flow.',
+      'The last page places priority, hydration replay and form actions onto this pipeline.',
     cta: 'Go to the next page',
     href: '/priority-replay-action',
   },
 };
 
-export const dispatchQueueOrderContent: Record<Locale, DispatchQueueOrderContent> = { ko, en };
+export const dispatchQueueContent: Record<Locale, DispatchQueueContent> = { ko, en };

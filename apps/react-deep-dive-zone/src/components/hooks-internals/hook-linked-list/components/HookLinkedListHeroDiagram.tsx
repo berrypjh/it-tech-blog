@@ -1,159 +1,85 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, Link2 } from 'lucide-react';
+import { Link2 } from 'lucide-react';
 
-import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HookLinkedListContent, HookNode, Tone } from '../content';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
+import { toneTokens } from '../../../shared/tones';
+import type { HookLinkedListContent, HookNode } from '../content';
 
-type Props = { content: HookLinkedListContent['hero']; className?: string };
-
-/** content의 Tone을 공유 ToneKey로 매핑한다. rose는 가장 가까운 amber로 좁힌다. */
-const toToneKey: Record<Tone, ToneKey> = {
-  sky: 'sky',
-  cyan: 'cyan',
-  teal: 'teal',
-  emerald: 'emerald',
-  violet: 'violet',
-  amber: 'amber',
-  rose: 'amber',
-};
+type Props = { content: HookLinkedListContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
- * Fiber.memoizedState에서 시작해 next 포인터로 이어지는 Hook 노드 단방향
- * 연결 리스트를, 위에서 아래로 잇는 컴팩트 stepper로 보여준다.
+ * Fiber 카드의 memoizedState 한 칸에서 출발해 Hook 노드가 next로 이어지는 체인.
  */
-export const HookLinkedListHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.diagramTitle}: ${content.fiberHighlight} → ${content.hookNodes
-    .map((n) => `Hook #${n.index} ${n.hookName}`)
-    .join(' → ')}. ${content.bottomLabel}`;
+export const HookLinkedListHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <FiberCard
-          title={content.diagramTitle}
-          fields={content.fiberFields}
-          highlight={content.fiberHighlight}
-        />
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
+
+        <article className="rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <header className="mb-2 flex items-center gap-1.5 border-b border-dashed border-[var(--term-border)] pb-2">
+            <Link2 className="h-3.5 w-3.5 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
+            <span className="font-mono text-[11px] font-bold text-[var(--term-fg)]">
+              {content.fiberLabel}
+            </span>
+          </header>
+          <div className="flex items-center justify-between gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-sm py-2">
+            <code className="font-mono text-[11px] font-bold text-[var(--term-fg)]">
+              {content.fiberField}
+            </code>
+            <code className="font-mono text-[10px] text-[var(--term-accent)]">Hook #1</code>
+          </div>
+        </article>
 
         <DownArrow />
 
-        <ol className="flex flex-col gap-sm">
-          {content.hookNodes.map((node, i) => (
-            <li key={node.index} className="flex flex-col gap-sm">
-              <HookCard node={node} />
-              {i < content.hookNodes.length - 1 && <DownArrow />}
-            </li>
-          ))}
-        </ol>
+        {content.nodes.map((node, i) => (
+          <div key={node.id} className="flex flex-col gap-sm">
+            <HookCard node={node} />
+            {i < content.nodes.length - 1 && <DownArrow />}
+          </div>
+        ))}
 
-        <p className="text-center text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {content.bottomLabel}
+        <p className="text-center font-mono text-[10px] text-[var(--term-dim)]">
+          {content.tailLabel}
         </p>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const FiberCard = ({
-  title,
-  fields,
-  highlight,
-}: {
-  title: string;
-  fields: string[];
-  highlight: string;
-}) => (
-  <article
-    className={cx(
-      'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <header className="flex items-center gap-sm">
-      <ToneIconBox tone="teal" size="sm">
-        <Database className="h-[18px] w-[18px]" aria-hidden="true" />
-      </ToneIconBox>
-      <span className="min-w-0 truncate font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
-        {title}
-      </span>
-    </header>
-    <ul className="flex flex-wrap gap-1">
-      {fields.map((f) => (
-        <li
-          key={f}
-          className="rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5 font-mono text-[11px] leading-none text-[var(--term-muted)]"
-        >
-          {f}
-        </li>
-      ))}
-      <li
+const HookCard = ({ node }: { node: HookNode }) => {
+  const t = toneTokens[node.tone];
+  return (
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <span
         className={cx(
-          'rounded-md border px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none',
-          toneTokens.cyan.chip,
+          'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border text-xsm font-bold tabular-nums',
+          t.chip,
         )}
       >
-        {highlight}
-      </li>
-    </ul>
-  </article>
-);
-
-const HookCard = ({ node }: { node: HookNode }) => {
-  const t = toneTokens[toToneKey[node.tone]];
-  return (
-    <article
-      className={cx(
-        'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={toToneKey[node.tone]} size="sm">
-          <Link2 className="h-[18px] w-[18px]" aria-hidden="true" />
-        </ToneIconBox>
-        <span className={cx('text-sm font-bold tracking-tight', t.text)}>Hook #{node.index}</span>
-        <code className="ml-auto shrink-0 font-mono text-[11px] font-bold text-[var(--term-muted)]">
+        {node.order}
+      </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-xsm font-bold tracking-tight', t.text)}>
           {node.hookName}
         </code>
-      </header>
-      <ul className="flex flex-wrap gap-1">
-        {node.fields.map((field) => (
-          <li
-            key={field.name}
-            className="rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5 font-mono text-[11px] leading-none text-[var(--term-muted)]"
-          >
-            {field.name}
-            {field.value && (
-              <span className="ml-1 font-bold text-[var(--term-accent)]">{field.value}</span>
-            )}
-          </li>
-        ))}
-      </ul>
+        <span className="font-mono text-[10px] text-[var(--term-muted)] break-all">
+          memoizedState: {node.memoized}
+        </span>
+      </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

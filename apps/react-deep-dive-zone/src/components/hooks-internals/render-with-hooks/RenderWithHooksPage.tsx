@@ -3,15 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { ComponentExecutionCompare } from './sections/ComponentExecutionCompare';
-import { CurrentFiberCodePreview } from './sections/CurrentFiberCodePreview';
-import { DispatcherSelection } from './sections/DispatcherSelection';
-import { FollowCodeMission } from './sections/FollowCodeMission';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { RenderSimulator } from './sections/RenderSimulator';
+import { ComponentCallPath } from './sections/ComponentCallPath';
+import { DispatcherSwitchCompare } from './sections/DispatcherSwitchCompare';
+import { RenderWithHooksCodeCheckpoint } from './sections/RenderWithHooksCodeCheckpoint';
 import { RenderWithHooksHero } from './sections/RenderWithHooksHero';
-import { RenderWithHooksTimeline } from './sections/RenderWithHooksTimeline';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
+import { RenderWithHooksPhases } from './sections/RenderWithHooksPhases';
 import { renderWithHooksContent } from './content';
 
 type Props = { locale: Locale };
@@ -22,14 +18,10 @@ export const RenderWithHooksPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <RenderWithHooksHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <ComponentExecutionCompare content={c.compare} />
-      <RenderWithHooksTimeline content={c.timeline} />
-      <CurrentFiberCodePreview content={c.codePreview} />
-      <DispatcherSelection content={c.dispatcher} />
-      <RenderSimulator content={c.simulator} />
-      <FollowCodeMission content={c.mission} />
-      <KeyTakeaways content={c.summary} />
+      <ComponentCallPath content={c.callPath} />
+      <RenderWithHooksPhases content={c.phases} />
+      <DispatcherSwitchCompare content={c.dispatcherSwitch} />
+      <RenderWithHooksCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

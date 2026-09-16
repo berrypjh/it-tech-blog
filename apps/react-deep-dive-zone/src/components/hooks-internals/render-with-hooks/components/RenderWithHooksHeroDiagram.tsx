@@ -1,97 +1,76 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, Code2, Settings } from 'lucide-react';
+import { Boxes, Code2, type LucideIcon, Sparkles } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HeroStep, RenderWithHooksContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { RenderWithHooksContent, StageId, StageNode } from '../content';
 
-type Props = { content: RenderWithHooksContent['hero']; className?: string };
+type Props = { content: RenderWithHooksContent['hero'] };
 
-const stepIcons = [Code2, Settings, CheckCircle2];
-
-/** renderWithHooks 핵심 동작: dispatcher 설정 → 컴포넌트 호출 → reset. */
-const RENDER_WITH_HOOKS_CODE = `ReactCurrentDispatcher.current = HooksDispatcher;
-const children = Component(props, secondArg);
-ReactCurrentDispatcher.current = ContextOnlyDispatcher;`;
+const stageIcon: Record<StageId, LucideIcon> = {
+  component: Code2,
+  'render-with-hooks': Boxes,
+  'hooks-ready': Sparkles,
+};
 
 /**
  * Hero 핵심 비주얼.
- * 함수 컴포넌트 → renderWithHooks(Hook 추적 환경 준비) → Hook 실행 가능 상태로
- * 이어지는 흐름을 위에서 아래로 잇는 컴팩트 stepper. 중앙 단계 아래에는
- * renderWithHooks가 dispatcher를 설정하고 컴포넌트를 호출한 뒤 reset하는 핵심 코드를 보여준다.
+ * 가운데 renderWithHooks 단계만 실선 프레임으로 감싸 "무대를 세운 뒤 안에서 실행된다"를 보여준다.
  */
-export const RenderWithHooksHeroDiagram = ({ content, className }: Props) => {
-  const a11y = content.steps.map((s) => `${s.title} — ${s.description}`).join(' → ');
+export const RenderWithHooksHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-      <ol className="relative flex flex-col gap-sm" aria-hidden="true">
-        {content.steps.map((step, i) => {
-          const Icon = stepIcons[i] ?? Code2;
-          const isMiddle = i === 1;
-          return (
-            <li key={step.title} className="flex flex-col gap-sm">
-              <StepRow step={step} icon={<Icon className="h-[18px] w-[18px]" />} />
-              {isMiddle && (
-                <CodePreviewPanel
-                  code={RENDER_WITH_HOOKS_CODE}
-                  header="renderWithHooks()"
-                  language="JS"
-                  size="sm"
-                />
-              )}
-              {i < content.steps.length - 1 && <DownArrow />}
-            </li>
-          );
-        })}
-      </ol>
-    </div>
+        {content.stages.map((stage, i) => (
+          <div key={stage.id} className="flex flex-col gap-sm">
+            <StageCard stage={stage} framed={stage.id === 'render-with-hooks'} />
+            {i < content.stages.length - 1 && <DownArrow />}
+          </div>
+        ))}
+      </div>
+    </HeroDiagramShell>
   );
 };
 
-const StepRow = ({ step, icon }: { step: HeroStep; icon: React.ReactNode }) => {
-  const t = toneTokens[step.tone as ToneKey];
+const StageCard = ({ stage, framed }: { stage: StageNode; framed?: boolean }) => {
+  const Icon = stageIcon[stage.id];
   return (
     <article
       className={cx(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
-        step.emphasis ? cx(t.chip, t.border) : cx('border-[var(--term-border)]', t.borderHover),
+        'flex items-center gap-sm rounded-xl bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
+        framed
+          ? cx('border-2', toneTokens[stage.tone].border)
+          : 'border border-[var(--term-border)]',
       )}
     >
-      <ToneIconBox tone={step.tone as ToneKey} size="sm">
-        {icon}
+      <ToneIconBox tone={stage.tone} size="sm">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col">
-        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
-          {step.title}
-        </span>
-        <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {step.description}
-        </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code
+          className={cx(
+            'font-mono text-xsm font-bold tracking-tight break-all',
+            toneTokens[stage.tone].text,
+          )}
+        >
+          {stage.label}
+        </code>
+        <span className="text-[11px] text-[var(--term-muted)] break-keep">{stage.caption}</span>
       </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

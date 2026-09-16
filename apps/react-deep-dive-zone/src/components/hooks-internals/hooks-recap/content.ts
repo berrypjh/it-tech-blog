@@ -1,616 +1,311 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
+import type { ToneKey } from '../../shared/tones';
 
-export type Tone =
-  | 'sky'
-  | 'cyan'
-  | 'teal'
-  | 'emerald'
-  | 'violet'
-  | 'amber'
-  | 'orange'
-  | 'rose'
-  | 'indigo';
+export type StageId = 'public' | 'render' | 'list' | 'store' | 'dispatch' | 'commit';
+
+export type Stage = {
+  id: StageId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
+};
+
+export type FlowStepId =
+  | 'call'
+  | 'resolve'
+  | 'render-with-hooks'
+  | 'link'
+  | 'store'
+  | 'dispatch'
+  | 'reprocess'
+  | 'effects';
 
 export type FlowStep = {
-  number: string;
+  id: FlowStepId;
+  num: string;
   title: string;
   description: string;
-  tone: Tone;
-  visual: 'play' | 'fn' | 'split' | 'cog' | 'list' | 'state' | 'effect' | 'commit' | 'zap';
-  isBranch?: boolean;
+  tone: ToneKey;
 };
 
-export type PageMapItem = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
-};
+export type StructureId = 'hook' | 'queue' | 'effect';
 
-export type DataStructure = {
-  title: string;
+export type Structure = {
+  id: StructureId;
+  name: string;
+  role: string;
   description: string;
-  fields?: string[];
-  visualLines?: string[];
-  tone: Tone;
+  fields: string;
+  tone: ToneKey;
 };
 
 export type FunctionRow = {
   name: string;
-  file: string;
-  description: string;
-  tone: Tone;
-};
-
-export type SimulatorStep = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
-  visual: 'click' | 'box' | 'queue' | 'replay' | 'compute' | 'compare' | 'commit' | 'play';
-};
-
-export type ChecklistItem = {
-  title: string;
-  detail: string;
-  tone: Tone;
-};
-
-export type QuizItem = {
-  question: string;
-  options: { label: string; text: string; isAnswer: boolean }[];
-  answerLabel: string;
-  answerExplain: string;
-};
-
-export type LearningPathItem = {
-  title: string;
-  description: string;
-  tone: Tone;
-  visual: 'event' | 'scheduler' | 'suspense';
+  when: string;
+  does: string;
 };
 
 export type HooksRecapContent = {
   hero: {
     badge: string;
-    titleLine1: string;
-    titleAccent: string;
+    title: { line1: string; line2: string };
     description: string;
-    keywords: { label: string; tone: Tone }[];
-    diagramTitle: string;
-    diagramSteps: FlowStep[];
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
   };
   fullFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
     steps: FlowStep[];
-    explanationTitle: string;
-    explanation: string[];
-    memoryPoint: string;
+    note: string;
   };
-  pageMap: {
+  structures: {
+    badge: string;
     eyebrow: string;
     title: string;
-    items: PageMapItem[];
-  };
-  dataStructures: {
-    eyebrow: string;
-    title: string;
-    items: DataStructure[];
+    description: string;
+    items: Structure[];
+    note: string;
   };
   functions: {
+    badge: string;
     eyebrow: string;
     title: string;
-    headers: { name: string; file: string; description: string };
+    description: string;
+    headers: [string, string, string];
     rows: FunctionRow[];
+    note: string;
   };
-  simulator: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    mockLabel: string;
-    mockValue: string;
-    mockButton: string;
-    steps: SimulatorStep[];
-  };
-  checklist: {
-    eyebrow: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    answerPrefix: string;
-    quizzes: QuizItem[];
-  };
-  nextPath: {
-    eyebrow: string;
-    title: string;
-    items: LearningPathItem[];
+    primaryCta: string;
+    primaryHref: string;
   };
   finale: FinaleBannerContent;
 };
 
-const COUNTER_CODE = `function Counter() {
-  const [count, setCount] = useState(0);
+const RECAP_CODE = `// 1. 진입: 공개 API는 Dispatcher로 넘길 뿐이다
+export function useState(initialState) {
+  const dispatcher = resolveDispatcher();
+  return dispatcher.useState(initialState);
+}
 
-  useEffect(() => {
-    console.log('effect run:', count);
-    return () => console.log('cleanup:', count);
-  }, [count]);
+// 2. 무대: 렌더 전에 Fiber와 Dispatcher를 세팅한다
+currentlyRenderingFiber = workInProgress;
+ReactSharedInternals.H =
+  current === null ? HooksDispatcherOnMount : HooksDispatcherOnUpdate;
 
-  return <button onClick={() => setCount((c) => c + 1)}>{count}</button>;
-}`;
+// 3. 저장: Hook은 순서대로 linked list에 매달린다
+workInProgressHook = workInProgressHook.next = hook;
 
-const HERO_DIAGRAM_KO: FlowStep[] = [
-  {
-    number: '1',
-    title: '공개 API',
-    description: 'useState() / useEffect()',
-    tone: 'sky',
-    visual: 'play',
-  },
-  {
-    number: '2',
-    title: 'Dispatcher',
-    description: 'resolveDispatcher()',
-    tone: 'cyan',
-    visual: 'fn',
-  },
-  {
-    number: '3',
-    title: 'renderWithHooks',
-    description: '현재 Fiber 설정',
-    tone: 'teal',
-    visual: 'cog',
-  },
-  {
-    number: '4',
-    title: 'Hook linked list',
-    description: 'Fiber.memoizedState',
-    tone: 'violet',
-    visual: 'list',
-  },
-  {
-    number: '5',
-    title: '각 Hook 처리',
-    description: 'State Hook / Effect Hook',
-    tone: 'indigo',
-    visual: 'split',
-    isBranch: true,
-  },
-  {
-    number: 'A',
-    title: 'State Hook',
-    description: 'queue / dispatch',
-    tone: 'teal',
-    visual: 'state',
-  },
-  {
-    number: 'B',
-    title: 'Effect Hook',
-    description: 'effect object',
-    tone: 'orange',
-    visual: 'effect',
-  },
-  {
-    number: '6',
-    title: 'Commit 이후 실행',
-    description: 'Passive Effect 단계에서 callback 실행',
-    tone: 'emerald',
-    visual: 'commit',
-  },
-];
+// 4. 예약: setState는 update를 큐에 걸고 렌더를 예약한다
+enqueueConcurrentHookUpdate(fiber, queue, update, lane);
+scheduleUpdateOnFiber(root, fiber, lane);`;
 
-const FULL_FLOW_STEPS_KO: FlowStep[] = [
-  {
-    number: '1',
-    title: '사용자 코드',
-    description: 'useState / useEffect 호출',
-    tone: 'sky',
-    visual: 'play',
-  },
-  { number: '2', title: 'ReactHooks.js', description: '공개 API 실행', tone: 'cyan', visual: 'fn' },
-  {
-    number: '3',
-    title: 'resolveDispatcher()',
-    description: '현재 렌더 상황에 맞는 dispatcher 선택',
-    tone: 'cyan',
-    visual: 'split',
-  },
-  {
-    number: '4',
-    title: 'renderWithHooks()',
-    description: 'Fiber, lanes, props를 준비한 뒤 컴포넌트 실행',
-    tone: 'teal',
-    visual: 'cog',
-  },
-  {
-    number: '5',
-    title: 'Hook linked list 생성',
-    description: 'Fiber.memoizedState를 통해 Hook 노드 연결',
-    tone: 'violet',
-    visual: 'list',
-  },
-  {
-    number: '6-1',
-    title: '상태(State) Hook 흐름',
-    description: 'useState / useReducer · 노드 생성 · UpdateQueue · dispatch',
-    tone: 'teal',
-    visual: 'state',
-  },
-  {
-    number: '6-2',
-    title: 'Effect Hook 흐름',
-    description: 'useEffect / useLayoutEffect · Effect 객체 · fiber.flags · Commit 이후 실행',
-    tone: 'orange',
-    visual: 'effect',
-  },
-  {
-    number: '7',
-    title: 'Commit Phase',
-    description: 'DOM 반영 및 Effect 처리',
-    tone: 'rose',
-    visual: 'commit',
-  },
-  {
-    number: '8',
-    title: 'Passive Effect 실행',
-    description: 'commitHookPassiveMountEffects · useEffect callback 실행',
-    tone: 'emerald',
-    visual: 'zap',
-  },
-];
+const REACT_FIBER_HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: HooksRecapContent = {
   hero: {
     badge: 'Hooks 내부 · 10/10단계',
-    titleLine1: 'Hooks 내부 구조,',
-    titleAccent: '이제 한 장으로 정리해보자',
+    title: { line1: '아홉 페이지의 구조를', line2: '한 장의 흐름으로' },
     description:
-      '공개 API에서 시작해 Fiber의 Hook 리스트, 업데이트 큐, Effect 처리까지 하나의 내부 흐름으로 다시 연결합니다.',
-    keywords: [
-      { label: 'Dispatcher', tone: 'cyan' },
-      { label: 'Hook linked list', tone: 'violet' },
-      { label: 'UpdateQueue', tone: 'teal' },
-      { label: 'Effect', tone: 'orange' },
-      { label: 'Commit', tone: 'rose' },
-    ],
-    diagramTitle: 'Hooks 전체 흐름',
-    diagramSteps: HERO_DIAGRAM_KO,
-  },
-  fullFlow: {
-    eyebrow: 'full-flow-summary',
-    title: 'Hooks 전체 흐름 한 장 요약',
-    steps: FULL_FLOW_STEPS_KO,
-    explanationTitle: '흐름 설명',
-    explanation: [
-      '개발자가 Hooks를 호출하면 공개 API가 실행됩니다.',
-      '공개 API는 내부에서 resolveDispatcher()를 호출합니다.',
-      '현재 렌더 상황에 맞는 Dispatcher가 선택됩니다.',
-      'renderWithHooks가 컴포넌트를 호출하여 Hooks 호출 환경을 만듭니다.',
-      '각 Hook 호출은 Hook linked list 노드로 저장됩니다.',
-      '상태 Hook은 queue/dispatch를 사용해 업데이트를 관리하고, Effect Hook은 Effect 객체로 등록됩니다.',
-      'Commit 단계에서 DOM이 반영됩니다.',
-      'Commit 이후 Passive Effect가 실제로 실행됩니다.',
-    ],
-    memoryPoint: 'Hooks는 "렌더 중 기록, Commit 이후 실행"이 핵심입니다.',
-  },
-  pageMap: {
-    eyebrow: 'page-connection-map',
-    title: '9개 핵심 페이지 연결 지도',
-    items: [
+      '공개 API에서 시작해 Dispatcher, Hook linked list, UpdateQueue, Effect 실행까지. 챕터 전체를 하나의 경로로 다시 잇습니다.',
+    diagramBadge: 'recap',
+    diagramCaption: 'entry → store → commit',
+    stages: [
+      { id: 'public', label: '공개 API', caption: 'ReactHooks.js · 1페이지', tone: 'sky' },
       {
-        number: 1,
-        title: 'Hook의 입구',
-        description: 'useState와 useEffect는 Dispatcher로 들어가는 공개 API입니다.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: 'renderWithHooks',
-        description: '함수 컴포넌트를 실행하기 전 Hook 추적 환경을 만듭니다.',
+        id: 'render',
+        label: 'renderWithHooks',
+        caption: 'Dispatcher 선택 · 2페이지',
         tone: 'cyan',
       },
       {
-        number: 3,
-        title: 'Hook linked list',
-        description: 'Hook 노드가 호출 순서대로 Fiber에 연결됩니다.',
+        id: 'list',
+        label: 'Hook linked list',
+        caption: '순서 = 슬롯 · 3, 8페이지',
         tone: 'violet',
       },
+      { id: 'store', label: 'Hook 객체', caption: '값과 queue · 4, 6페이지', tone: 'teal' },
+      { id: 'dispatch', label: 'UpdateQueue', caption: 'update 적재 · 5페이지', tone: 'amber' },
       {
-        number: 4,
-        title: 'useState',
-        description: 'state, queue, dispatch를 함께 만드는 구조입니다.',
-        tone: 'teal',
-      },
-      {
-        number: 5,
-        title: 'setState 이후 흐름',
-        description: 'Update 객체 → queue 등록 → 렌더 작업 예약까지의 흐름입니다.',
-        tone: 'indigo',
-      },
-      {
-        number: 6,
-        title: 'useReducer',
-        description: 'useState와 같은 queue 모델을 공유합니다.',
-        tone: 'cyan',
-      },
-      {
-        number: 7,
-        title: 'useEffect',
-        description: 'Effect 객체를 등록하고 Commit 이후 실행합니다.',
-        tone: 'orange',
-      },
-      {
-        number: 8,
-        title: 'Rules of Hooks',
-        description: 'Hook 순서가 바뀌면 매칭이 무너지는 이유를 이해합니다.',
-        tone: 'rose',
-      },
-      {
-        number: 9,
-        title: 'React 19 Hooks',
-        description: '새로운 Hook도 기존 구조 위에서 읽습니다.',
+        id: 'commit',
+        label: 'Passive Effects',
+        caption: '커밋 이후 실행 · 7페이지',
         tone: 'emerald',
       },
     ],
   },
-  dataStructures: {
-    eyebrow: 'core-data-structures',
-    title: '핵심 내부 자료구조 4가지',
-    items: [
+  fullFlow: {
+    badge: '01',
+    eyebrow: 'one flow',
+    title: '호출 한 줄에서 화면까지 여덟 단계',
+    description:
+      '아홉 페이지에서 따로 본 함수들을 시간 순으로 한 줄에 세우면, 챕터 전체가 이 여덟 칸에 들어갑니다.',
+    steps: [
       {
-        title: 'Fiber.memoizedState',
-        description: 'Hook linked list의 헤드 포인터가 저장됩니다.',
-        visualLines: ['Fiber.memoizedState', 'Hook #1', 'Hook #2'],
+        id: 'call',
+        num: '01',
+        title: '공개 Hook 호출',
+        description: 'useState / useEffect는 react 패키지의 얇은 진입점입니다.',
         tone: 'sky',
       },
       {
-        title: 'Hook 노드',
-        description: '각 Hook 호출이 하나의 노드로 연결됩니다.',
-        fields: ['memoizedState', 'baseState', 'queue / deps', 'next'],
-        tone: 'violet',
+        id: 'resolve',
+        num: '02',
+        title: 'resolveDispatcher',
+        description: '지금 렌더 상황에 맞는 Dispatcher를 찾아 호출을 넘깁니다.',
+        tone: 'sky',
       },
       {
-        title: 'UpdateQueue',
-        description: '상태 업데이트를 저장하고 스케줄링을 돕습니다.',
-        fields: ['pending', 'lanes', 'lastRenderedReducer', 'lastRenderedState', 'dispatch'],
-        tone: 'teal',
-      },
-      {
-        title: 'Effect list',
-        description: 'Effect 객체가 모여 Commit 후 처리됩니다.',
-        fields: ['tag', 'create', 'inst', 'deps', 'next'],
-        tone: 'orange',
-      },
-    ],
-  },
-  functions: {
-    eyebrow: 'core-functions-review',
-    title: '핵심 함수 복습',
-    headers: { name: '함수명', file: '위치(파일)', description: '역할 설명' },
-    rows: [
-      {
-        name: 'resolveDispatcher',
-        file: 'ReactHooks.js',
-        description: '현재 렌더 컨텍스트에 맞는 dispatcher를 선택합니다.',
+        id: 'render-with-hooks',
+        num: '03',
+        title: 'renderWithHooks가 무대를 세운다',
+        description: 'currentlyRenderingFiber를 잡고 Hook 자리를 비운 뒤 컴포넌트를 부릅니다.',
         tone: 'cyan',
       },
       {
-        name: 'renderWithHooks',
-        file: 'ReactFiberHooks.js',
-        description: '함수 컴포넌트를 실행할 준비를 하고, Hook 추적을 시작합니다.',
+        id: 'link',
+        num: '04',
+        title: 'Hook이 순서대로 매달린다',
+        description: 'memoizedState가 첫 Hook을, 그다음은 next가 이어 붙습니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'store',
+        num: '05',
+        title: '값과 queue와 dispatch가 만들어진다',
+        description: 'mountState가 상태, UpdateQueue, bind된 dispatch를 한 번에 준비합니다.',
         tone: 'teal',
+      },
+      {
+        id: 'dispatch',
+        num: '06',
+        title: 'setState는 요청서만 남긴다',
+        description: 'Update를 queue에 걸고 scheduleUpdateOnFiber로 렌더를 예약합니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'reprocess',
+        num: '07',
+        title: '다음 렌더가 큐를 처리한다',
+        description: 'updateReducerImpl이 리스트를 돌며 새 상태를 계산합니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'effects',
+        num: '08',
+        title: '커밋 이후 Effect가 실행된다',
+        description: 'flag가 붙은 Effect만 cleanup → create 순으로 실행됩니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '여덟 칸 중 06까지는 기록이고, 실제로 무언가 실행되는 것은 07과 08뿐입니다.',
+  },
+  structures: {
+    badge: '02',
+    eyebrow: 'three structures',
+    title: '기억해 둘 자료구조 셋',
+    description:
+      '이름을 외우기보다 각각이 무엇을 들고 있는지를 기억하면, 다음에 코드를 열었을 때 바로 붙습니다.',
+    items: [
+      {
+        id: 'hook',
+        name: 'Hook',
+        role: '값을 들고 있는 칸',
+        description: 'Fiber의 memoizedState에서 시작해 next로 이어지는 연결 리스트의 노드입니다.',
+        fields: 'memoizedState · baseState · baseQueue · queue · next',
+        tone: 'sky',
+      },
+      {
+        id: 'queue',
+        name: 'UpdateQueue',
+        role: '변경 요청을 모으는 곳',
+        description: 'dispatch가 만든 Update가 pending 원형 리스트에 쌓입니다.',
+        fields: 'pending · lanes · dispatch · lastRenderedReducer · lastRenderedState',
+        tone: 'violet',
+      },
+      {
+        id: 'effect',
+        name: 'Effect',
+        role: '나중에 할 일을 적어 둔 것',
+        description: 'Hook의 memoizedState에 들어가고, Fiber updateQueue에도 함께 매달립니다.',
+        fields: 'tag · create · inst · deps · next',
+        tone: 'emerald',
+      },
+    ],
+    note: '셋 다 next 필드를 가집니다. React 내부 자료구조가 배열 대신 연결 리스트를 고르는 이유가 여기 보입니다.',
+  },
+  functions: {
+    badge: '03',
+    eyebrow: 'five functions',
+    title: '다시 열 때 찾을 다섯 함수',
+    description:
+      'ReactFiberHooks.js는 길지만, 이 다섯 개만 짚으면 챕터에서 본 흐름을 그대로 되짚을 수 있습니다.',
+    headers: ['함수', '언제 도는가', '하는 일'],
+    rows: [
+      {
+        name: 'renderWithHooks',
+        when: '함수 컴포넌트를 렌더할 때마다',
+        does: 'Fiber를 잡고 Hook 자리를 비운 뒤 Dispatcher를 꽂고 컴포넌트를 호출합니다.',
       },
       {
         name: 'mountWorkInProgressHook',
-        file: 'ReactFiberHooks.js',
-        description: '새로운 Hook 노드를 만들고 linked list에 연결합니다.',
-        tone: 'violet',
+        when: '첫 렌더에서 Hook을 부를 때마다',
+        does: '빈 Hook 객체를 만들어 linked list 끝에 붙입니다.',
       },
       {
         name: 'mountStateImpl',
-        file: 'ReactFiberHooks.js',
-        description: '초기 state와 UpdateQueue를 만들고 dispatch를 준비합니다.',
-        tone: 'sky',
+        when: '첫 렌더의 useState',
+        does: '초기값을 넣고 UpdateQueue를 만들어 Hook에 연결합니다.',
       },
       {
         name: 'dispatchSetState',
-        file: 'ReactFiberHooks.js',
-        description: 'Update 객체를 생성하고 queue에 등록 후 렌더를 예약합니다.',
-        tone: 'indigo',
+        when: 'setState를 부를 때마다',
+        does: 'Update를 만들어 큐에 걸고 렌더를 예약합니다.',
       },
       {
-        name: 'updateEffectImpl',
-        file: 'ReactFiberHooks.js',
-        description: 'deps 비교 후 Effect 객체 생성 여부를 결정합니다.',
-        tone: 'orange',
-      },
-      {
-        name: 'commitHookPassiveMountEffects',
-        file: 'ReactFiberCommitEffects.js',
-        description: 'Commit 이후 Passive Effect callback을 실제로 실행합니다.',
-        tone: 'emerald',
+        name: 'updateReducerImpl',
+        when: '재렌더의 useState / useReducer',
+        does: '큐를 순회하며 새 상태를 계산합니다. 두 Hook이 공유합니다.',
       },
     ],
+    note: 'useEffect 쪽은 updateEffectImpl 하나를 더 보면 됩니다. deps 비교와 flag 설정이 전부 거기 있습니다.',
   },
-  simulator: {
-    eyebrow: 'integrated-simulator',
-    title: '종합 시뮬레이터: Counter 동작 흐름 따라가기',
-    code: COUNTER_CODE,
-    mockLabel: '현재 화면',
-    mockValue: '0',
-    mockButton: '+1',
-    steps: [
-      {
-        number: 1,
-        title: 'setCount 호출',
-        description: '사용자 클릭으로 dispatch가 호출됩니다.',
-        tone: 'sky',
-        visual: 'click',
-      },
-      {
-        number: 2,
-        title: 'Update 객체 생성',
-        description: 'action c => c + 1과 lane을 가진 Update 생성',
-        tone: 'violet',
-        visual: 'box',
-      },
-      {
-        number: 3,
-        title: 'queue 등록',
-        description: 'Update가 queue.pending에 순환 연결됩니다.',
-        tone: 'cyan',
-        visual: 'queue',
-      },
-      {
-        number: 4,
-        title: 'renderWithHooks 재진입',
-        description: '스케줄된 작업으로 컴포넌트를 다시 렌더링합니다.',
-        tone: 'teal',
-        visual: 'replay',
-      },
-      {
-        number: 5,
-        title: 'updateState로 계산',
-        description: 'queue의 Update를 처리해 새 state를 계산합니다.',
-        tone: 'indigo',
-        visual: 'compute',
-      },
-      {
-        number: 6,
-        title: 'updateEffectImpl',
-        description: 'deps [count] 비교 후 Effect 객체를 준비합니다.',
-        tone: 'orange',
-        visual: 'compare',
-      },
-      {
-        number: 7,
-        title: 'Commit',
-        description: 'DOM 반영 및 fiber.flags 처리가 일어납니다.',
-        tone: 'rose',
-        visual: 'commit',
-      },
-      {
-        number: 8,
-        title: 'Passive Effect 실행',
-        description: 'commitHookPassiveMountEffects가 useEffect callback을 실행합니다.',
-        tone: 'emerald',
-        visual: 'play',
-      },
-    ],
-  },
-  checklist: {
-    eyebrow: 'reading-checklist',
-    title: '실전 읽기 체크리스트',
-    items: [
-      {
-        title: '공개 API에서 시작했는가?',
-        detail: '진입점이 useState/useEffect 같은 공개 API인지 확인',
-        tone: 'sky',
-      },
-      {
-        title: 'Dispatcher를 거쳤는가?',
-        detail: 'resolveDispatcher가 어떤 dispatcher를 골랐는지 추적',
-        tone: 'cyan',
-      },
-      {
-        title: 'mount / update 구분을 봤는가?',
-        detail: 'mountX / updateX 분기 식별',
-        tone: 'violet',
-      },
-      {
-        title: 'Hook이 어느 Fiber에 연결되는지 봤는가?',
-        detail: 'currentlyRenderingFiber 흐름 확인',
-        tone: 'teal',
-      },
-      {
-        title: 'queue / effect list가 등장하는가?',
-        detail: 'UpdateQueue / Effect linked list 식별',
-        tone: 'orange',
-      },
-      {
-        title: 'render와 commit을 분리했는가?',
-        detail: '렌더 중 기록 / Commit 이후 실행 분리',
-        tone: 'rose',
-      },
-    ],
-  },
-  quiz: {
-    eyebrow: 'mini-quiz',
-    title: '미니 퀴즈',
-    answerPrefix: '정답',
-    quizzes: [
-      {
-        question: 'useState의 실제 상태값은 어디에 저장될까?',
-        options: [
-          { label: 'A', text: 'Fiber.memoizedProps', isAnswer: false },
-          { label: 'B', text: 'Hook.memoizedState', isAnswer: true },
-          { label: 'C', text: 'UpdateQueue.lanes', isAnswer: false },
-          { label: 'D', text: 'effect.deps', isAnswer: false },
-        ],
-        answerLabel: 'B',
-        answerExplain: 'state Hook의 현재 상태값은 그 Hook 노드의 memoizedState 필드에 저장됩니다.',
-      },
-      {
-        question: 'useEffect의 callback은 언제 실행될까?',
-        options: [
-          { label: 'A', text: '렌더 중 즉시', isAnswer: false },
-          { label: 'B', text: 'Commit 전', isAnswer: false },
-          { label: 'C', text: 'Commit 이후 Passive Effect 단계', isAnswer: true },
-          { label: 'D', text: '업데이트 큐 등록 직후', isAnswer: false },
-        ],
-        answerLabel: 'C',
-        answerExplain:
-          'render에서는 Effect 등록만, 실행은 Commit 이후 Passive Effect 단계에서 일어납니다.',
-      },
-      {
-        question: 'Rules of Hooks가 필요한 이유는?',
-        options: [
-          { label: 'A', text: '성능 최적화 때문에', isAnswer: false },
-          { label: 'B', text: '코드 스타일 유지 때문에', isAnswer: false },
-          { label: 'C', text: 'Hook linked list 순서 매칭을 유지하기 위해', isAnswer: true },
-          { label: 'D', text: '빌드 용량을 줄이기 위해', isAnswer: false },
-        ],
-        answerLabel: 'C',
-        answerExplain:
-          'React는 Hook을 호출 순서로 매칭하므로 순서가 바뀌면 이전 상태를 잘못 읽게 됩니다.',
-      },
-    ],
-  },
-  nextPath: {
-    eyebrow: 'next-learning-path',
-    title: '다음 마무리',
-    items: [
-      {
-        title: '이벤트 시스템 내부 흐름',
-        description: 'Synthetic Event, 이벤트 위임, React에서 이벤트가 처리되는 과정을 읽습니다.',
-        tone: 'sky',
-        visual: 'event',
-      },
-      {
-        title: 'Scheduler와 우선순위',
-        description: 'Lane과 우선순위, 스케줄링된 업데이트가 어떤 순서로 처리되는지 살펴봅니다.',
-        tone: 'violet',
-        visual: 'scheduler',
-      },
-      {
-        title: 'Suspense / Hydration 내부 구조',
-        description: 'Suspense와 Thenable 추적, 서버 렌더링 후 이어지는 Hydration 구조를 읽습니다.',
-        tone: 'teal',
-        visual: 'suspense',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'renderWithHooks, mountWorkInProgressHook, dispatchSetState, updateReducerImpl',
+    whyLabel: '설명',
+    why: '네 조각을 이어 붙이면 진입부터 예약까지가 한 화면에 들어옵니다. 챕터 전체의 축약본입니다.',
+    code: RECAP_CODE,
+    primaryCta: 'ReactFiberHooks.js 읽기',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   finale: {
     progressLabel: '10/15 챕터 완료',
-    copyLine1: 'Hooks 내부 구조를',
-    copyLine2: '전체적으로 복습했습니다.',
-    copyLine3: '이제 이벤트 시스템으로.',
+    copyLine1: 'Hooks가 어디에 저장되고',
+    copyLine2: '언제 실행되는지까지 읽었습니다.',
+    copyLine3: '다음은 이벤트 시스템입니다.',
     primaryCta: '이벤트 시스템 내부 흐름 읽기',
     primaryHref: '/why-event-system',
     secondaryCta: 'Hooks 챕터 처음부터 다시 보기',
@@ -618,482 +313,217 @@ const ko: HooksRecapContent = {
   },
 };
 
-const HERO_DIAGRAM_EN: FlowStep[] = [
-  {
-    number: '1',
-    title: 'Public API',
-    description: 'useState() / useEffect()',
-    tone: 'sky',
-    visual: 'play',
-  },
-  {
-    number: '2',
-    title: 'Dispatcher',
-    description: 'resolveDispatcher()',
-    tone: 'cyan',
-    visual: 'fn',
-  },
-  {
-    number: '3',
-    title: 'renderWithHooks',
-    description: 'Set the current Fiber',
-    tone: 'teal',
-    visual: 'cog',
-  },
-  {
-    number: '4',
-    title: 'Hook linked list',
-    description: 'Fiber.memoizedState',
-    tone: 'violet',
-    visual: 'list',
-  },
-  {
-    number: '5',
-    title: 'Per-hook processing',
-    description: 'State Hook / Effect Hook',
-    tone: 'indigo',
-    visual: 'split',
-    isBranch: true,
-  },
-  {
-    number: 'A',
-    title: 'State Hook',
-    description: 'queue / dispatch',
-    tone: 'teal',
-    visual: 'state',
-  },
-  {
-    number: 'B',
-    title: 'Effect Hook',
-    description: 'effect object',
-    tone: 'orange',
-    visual: 'effect',
-  },
-  {
-    number: '6',
-    title: 'Run after Commit',
-    description: 'callbacks run in the Passive Effect phase',
-    tone: 'emerald',
-    visual: 'commit',
-  },
-];
+const RECAP_CODE_EN = `// 1. Entry: the public API only hands off to the Dispatcher
+export function useState(initialState) {
+  const dispatcher = resolveDispatcher();
+  return dispatcher.useState(initialState);
+}
 
-const FULL_FLOW_STEPS_EN: FlowStep[] = [
-  {
-    number: '1',
-    title: 'User code',
-    description: 'useState / useEffect call',
-    tone: 'sky',
-    visual: 'play',
-  },
-  {
-    number: '2',
-    title: 'ReactHooks.js',
-    description: 'Public API runs',
-    tone: 'cyan',
-    visual: 'fn',
-  },
-  {
-    number: '3',
-    title: 'resolveDispatcher()',
-    description: 'Pick the dispatcher for the current render',
-    tone: 'cyan',
-    visual: 'split',
-  },
-  {
-    number: '4',
-    title: 'renderWithHooks()',
-    description: 'Prepare Fiber, lanes, props and run the component',
-    tone: 'teal',
-    visual: 'cog',
-  },
-  {
-    number: '5',
-    title: 'Build Hook linked list',
-    description: 'Hook nodes hang off Fiber.memoizedState',
-    tone: 'violet',
-    visual: 'list',
-  },
-  {
-    number: '6-1',
-    title: 'State Hook flow',
-    description: 'useState / useReducer · create node · UpdateQueue · dispatch',
-    tone: 'teal',
-    visual: 'state',
-  },
-  {
-    number: '6-2',
-    title: 'Effect Hook flow',
-    description: 'useEffect / useLayoutEffect · Effect object · fiber.flags · run after Commit',
-    tone: 'orange',
-    visual: 'effect',
-  },
-  {
-    number: '7',
-    title: 'Commit Phase',
-    description: 'DOM applied + Effect processing',
-    tone: 'rose',
-    visual: 'commit',
-  },
-  {
-    number: '8',
-    title: 'Passive Effect runs',
-    description: 'commitHookPassiveMountEffects · run useEffect callbacks',
-    tone: 'emerald',
-    visual: 'zap',
-  },
-];
+// 2. Stage: set the Fiber and Dispatcher before rendering
+currentlyRenderingFiber = workInProgress;
+ReactSharedInternals.H =
+  current === null ? HooksDispatcherOnMount : HooksDispatcherOnUpdate;
+
+// 3. Storage: Hooks hang on the linked list in call order
+workInProgressHook = workInProgressHook.next = hook;
+
+// 4. Booking: setState queues an update and schedules a render
+enqueueConcurrentHookUpdate(fiber, queue, update, lane);
+scheduleUpdateOnFiber(root, fiber, lane);`;
 
 const en: HooksRecapContent = {
   hero: {
     badge: 'Hooks Internals · 10/10',
-    titleLine1: 'Hook internals,',
-    titleAccent: 'wrapped up on one page',
+    title: { line1: 'Nine pages of structure', line2: 'as a single flow' },
     description:
-      'Reconnect the public API, Fiber Hook list, update queue, and Effect handling as a single internal flow.',
-    keywords: [
-      { label: 'Dispatcher', tone: 'cyan' },
-      { label: 'Hook linked list', tone: 'violet' },
-      { label: 'UpdateQueue', tone: 'teal' },
-      { label: 'Effect', tone: 'orange' },
-      { label: 'Commit', tone: 'rose' },
-    ],
-    diagramTitle: 'Full Hook flow',
-    diagramSteps: HERO_DIAGRAM_EN,
-  },
-  fullFlow: {
-    eyebrow: 'full-flow-summary',
-    title: 'Full Hook flow — one page',
-    steps: FULL_FLOW_STEPS_EN,
-    explanationTitle: 'Flow notes',
-    explanation: [
-      'When you call a Hook, the public API runs.',
-      'The public API calls resolveDispatcher() internally.',
-      'A Dispatcher matching the current render is selected.',
-      'renderWithHooks calls the component and sets up the Hook environment.',
-      'Each Hook call is stored as a node in the Hook linked list.',
-      'State Hooks manage updates via queue/dispatch, Effect Hooks are registered as Effect objects.',
-      'During Commit the DOM is applied.',
-      'After Commit, Passive Effects actually run.',
-    ],
-    memoryPoint: 'Hooks record during render, run after Commit.',
-  },
-  pageMap: {
-    eyebrow: 'page-connection-map',
-    title: '9-page connection map',
-    items: [
+      'From the public API through the Dispatcher, the Hook linked list, the UpdateQueue and Effect execution — the chapter joined back into one path.',
+    diagramBadge: 'recap',
+    diagramCaption: 'entry → store → commit',
+    stages: [
+      { id: 'public', label: 'Public API', caption: 'ReactHooks.js · page 1', tone: 'sky' },
       {
-        number: 1,
-        title: 'Hook entry',
-        description: 'useState / useEffect are public APIs into the Dispatcher.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: 'renderWithHooks',
-        description: 'Sets up the Hook tracking environment before the component runs.',
+        id: 'render',
+        label: 'renderWithHooks',
+        caption: 'picks the Dispatcher · page 2',
         tone: 'cyan',
       },
       {
-        number: 3,
-        title: 'Hook linked list',
-        description: 'Hook nodes are linked to the Fiber in call order.',
+        id: 'list',
+        label: 'Hook linked list',
+        caption: 'order is the slot · pages 3, 8',
         tone: 'violet',
       },
+      { id: 'store', label: 'Hook object', caption: 'value and queue · pages 4, 6', tone: 'teal' },
+      { id: 'dispatch', label: 'UpdateQueue', caption: 'updates pile up · page 5', tone: 'amber' },
       {
-        number: 4,
-        title: 'useState',
-        description: 'Creates state, queue, and dispatch together.',
-        tone: 'teal',
-      },
-      {
-        number: 5,
-        title: 'After setState',
-        description: 'Update object → enqueue → schedule render.',
-        tone: 'indigo',
-      },
-      {
-        number: 6,
-        title: 'useReducer',
-        description: 'Shares the same queue model as useState.',
-        tone: 'cyan',
-      },
-      {
-        number: 7,
-        title: 'useEffect',
-        description: 'Registers Effects and runs them after Commit.',
-        tone: 'orange',
-      },
-      {
-        number: 8,
-        title: 'Rules of Hooks',
-        description: 'Why call order breaks state matching.',
-        tone: 'rose',
-      },
-      {
-        number: 9,
-        title: 'React 19 Hooks',
-        description: 'New Hooks read on top of the same internals.',
+        id: 'commit',
+        label: 'Passive Effects',
+        caption: 'run after commit · page 7',
         tone: 'emerald',
       },
     ],
   },
-  dataStructures: {
-    eyebrow: 'core-data-structures',
-    title: 'Four core internal data structures',
-    items: [
+  fullFlow: {
+    badge: '01',
+    eyebrow: 'one flow',
+    title: 'Eight steps from one call to the screen',
+    description:
+      'Line the functions from all nine pages up in time order and the whole chapter fits in these eight slots.',
+    steps: [
       {
-        title: 'Fiber.memoizedState',
-        description: 'Holds the head pointer of the Hook linked list.',
-        visualLines: ['Fiber.memoizedState', 'Hook #1', 'Hook #2'],
+        id: 'call',
+        num: '01',
+        title: 'A public Hook is called',
+        description: 'useState and useEffect are thin entry points in the react package.',
         tone: 'sky',
       },
       {
-        title: 'Hook node',
-        description: 'Each Hook call becomes a node in the list.',
-        fields: ['memoizedState', 'baseState', 'queue / deps', 'next'],
-        tone: 'violet',
+        id: 'resolve',
+        num: '02',
+        title: 'resolveDispatcher',
+        description: 'Finds the Dispatcher for the current render and hands the call over.',
+        tone: 'sky',
       },
       {
-        title: 'UpdateQueue',
-        description: 'Stores updates and helps scheduling.',
-        fields: ['pending', 'lanes', 'lastRenderedReducer', 'lastRenderedState', 'dispatch'],
-        tone: 'teal',
-      },
-      {
-        title: 'Effect list',
-        description: 'Effect objects are gathered and processed after Commit.',
-        fields: ['tag', 'create', 'inst', 'deps', 'next'],
-        tone: 'orange',
-      },
-    ],
-  },
-  functions: {
-    eyebrow: 'core-functions-review',
-    title: 'Core functions recap',
-    headers: { name: 'Function', file: 'File', description: 'What it does' },
-    rows: [
-      {
-        name: 'resolveDispatcher',
-        file: 'ReactHooks.js',
-        description: 'Picks the dispatcher for the current render context.',
+        id: 'render-with-hooks',
+        num: '03',
+        title: 'renderWithHooks builds the stage',
+        description:
+          'Pins currentlyRenderingFiber, clears the Hook slots, then calls the component.',
         tone: 'cyan',
       },
       {
-        name: 'renderWithHooks',
-        file: 'ReactFiberHooks.js',
-        description: 'Prepares to run the function component and starts Hook tracking.',
+        id: 'link',
+        num: '04',
+        title: 'Hooks hang on in order',
+        description: 'memoizedState holds the first Hook and next carries every one after it.',
+        tone: 'violet',
+      },
+      {
+        id: 'store',
+        num: '05',
+        title: 'Value, queue and dispatch are built',
+        description:
+          'mountState prepares the state, the UpdateQueue and the bound dispatch at once.',
         tone: 'teal',
+      },
+      {
+        id: 'dispatch',
+        num: '06',
+        title: 'setState only files a request',
+        description: 'It queues an Update and schedules a render through scheduleUpdateOnFiber.',
+        tone: 'amber',
+      },
+      {
+        id: 'reprocess',
+        num: '07',
+        title: 'The next render processes the queue',
+        description: 'updateReducerImpl walks the list and computes the new state.',
+        tone: 'indigo',
+      },
+      {
+        id: 'effects',
+        num: '08',
+        title: 'Effects run after commit',
+        description: 'Only flagged Effects run, cleanup first and then create.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'Everything through step 06 is recording. Only 07 and 08 actually execute anything.',
+  },
+  structures: {
+    badge: '02',
+    eyebrow: 'three structures',
+    title: 'Three structures worth remembering',
+    description:
+      'Rather than the names, remember what each one holds and the code will click the next time you open it.',
+    items: [
+      {
+        id: 'hook',
+        name: 'Hook',
+        role: 'The slot that holds a value',
+        description:
+          'A node in the linked list that starts at the Fiber memoizedState and runs along next.',
+        fields: 'memoizedState · baseState · baseQueue · queue · next',
+        tone: 'sky',
+      },
+      {
+        id: 'queue',
+        name: 'UpdateQueue',
+        role: 'Where change requests gather',
+        description: 'Updates created by dispatch stack up on the circular pending list.',
+        fields: 'pending · lanes · dispatch · lastRenderedReducer · lastRenderedState',
+        tone: 'violet',
+      },
+      {
+        id: 'effect',
+        name: 'Effect',
+        role: 'Work written down for later',
+        description: 'Stored in the Hook memoizedState and also hung on the Fiber updateQueue.',
+        fields: 'tag · create · inst · deps · next',
+        tone: 'emerald',
+      },
+    ],
+    note: 'All three carry a next field. That is where React internals prefer linked lists over arrays.',
+  },
+  functions: {
+    badge: '03',
+    eyebrow: 'five functions',
+    title: 'Five functions to find on reopening',
+    description:
+      'ReactFiberHooks.js is long, but these five are enough to retrace the whole flow from this chapter.',
+    headers: ['Function', 'When it runs', 'What it does'],
+    rows: [
+      {
+        name: 'renderWithHooks',
+        when: 'Every function component render',
+        does: 'Pins the Fiber, clears the Hook slots, installs the Dispatcher and calls the component.',
       },
       {
         name: 'mountWorkInProgressHook',
-        file: 'ReactFiberHooks.js',
-        description: 'Creates a new Hook node and links it into the list.',
-        tone: 'violet',
+        when: 'Every Hook call on the first render',
+        does: 'Creates an empty Hook object and appends it to the linked list.',
       },
       {
         name: 'mountStateImpl',
-        file: 'ReactFiberHooks.js',
-        description: 'Builds initial state + UpdateQueue and prepares dispatch.',
-        tone: 'sky',
+        when: 'useState on the first render',
+        does: 'Stores the initial value and builds the UpdateQueue onto the Hook.',
       },
       {
         name: 'dispatchSetState',
-        file: 'ReactFiberHooks.js',
-        description: 'Creates an Update, enqueues it, and schedules a render.',
-        tone: 'indigo',
+        when: 'Every setState call',
+        does: 'Creates an Update, queues it and schedules a render.',
       },
       {
-        name: 'updateEffectImpl',
-        file: 'ReactFiberHooks.js',
-        description: 'Compares deps and decides whether to create a new Effect.',
-        tone: 'orange',
-      },
-      {
-        name: 'commitHookPassiveMountEffects',
-        file: 'ReactFiberCommitEffects.js',
-        description: 'Actually runs Passive Effect callbacks after Commit.',
-        tone: 'emerald',
+        name: 'updateReducerImpl',
+        when: 'useState / useReducer on a re-render',
+        does: 'Walks the queue to compute the new state. Both Hooks share it.',
       },
     ],
+    note: 'For the effect side add updateEffectImpl — the deps comparison and flag setting all live there.',
   },
-  simulator: {
-    eyebrow: 'integrated-simulator',
-    title: 'Integrated simulator: tracing the Counter flow',
-    code: COUNTER_CODE,
-    mockLabel: 'Mock UI',
-    mockValue: '0',
-    mockButton: '+1',
-    steps: [
-      {
-        number: 1,
-        title: 'setCount called',
-        description: 'User click triggers dispatch.',
-        tone: 'sky',
-        visual: 'click',
-      },
-      {
-        number: 2,
-        title: 'Build Update',
-        description: 'Create an Update with action `c => c + 1` and a lane',
-        tone: 'violet',
-        visual: 'box',
-      },
-      {
-        number: 3,
-        title: 'Enqueue',
-        description: 'The Update is appended to queue.pending (circular).',
-        tone: 'cyan',
-        visual: 'queue',
-      },
-      {
-        number: 4,
-        title: 'renderWithHooks again',
-        description: 'Scheduled work re-runs the component.',
-        tone: 'teal',
-        visual: 'replay',
-      },
-      {
-        number: 5,
-        title: 'updateState computes',
-        description: 'Processes queued updates and computes the next state.',
-        tone: 'indigo',
-        visual: 'compute',
-      },
-      {
-        number: 6,
-        title: 'updateEffectImpl',
-        description: 'Compares deps [count] and prepares the Effect object.',
-        tone: 'orange',
-        visual: 'compare',
-      },
-      {
-        number: 7,
-        title: 'Commit',
-        description: 'DOM is applied; fiber.flags are processed.',
-        tone: 'rose',
-        visual: 'commit',
-      },
-      {
-        number: 8,
-        title: 'Passive Effect',
-        description: 'commitHookPassiveMountEffects runs the useEffect callback.',
-        tone: 'emerald',
-        visual: 'play',
-      },
-    ],
-  },
-  checklist: {
-    eyebrow: 'reading-checklist',
-    title: 'Practical reading checklist',
-    items: [
-      {
-        title: 'Did I start from a public API?',
-        detail: 'Identify the useState/useEffect entry point.',
-        tone: 'sky',
-      },
-      {
-        title: 'Did I go through the Dispatcher?',
-        detail: 'Trace which dispatcher resolveDispatcher picks.',
-        tone: 'cyan',
-      },
-      {
-        title: 'Did I see the mount/update split?',
-        detail: 'Spot the mountX / updateX branches.',
-        tone: 'violet',
-      },
-      {
-        title: 'Did I see which Fiber the Hook attaches to?',
-        detail: 'Follow currentlyRenderingFiber.',
-        tone: 'teal',
-      },
-      {
-        title: 'Did queue / effect list show up?',
-        detail: 'Identify UpdateQueue / Effect linked list.',
-        tone: 'orange',
-      },
-      {
-        title: 'Did I split render vs commit?',
-        detail: 'Record during render, run after Commit.',
-        tone: 'rose',
-      },
-    ],
-  },
-  quiz: {
-    eyebrow: 'mini-quiz',
-    title: 'Mini quiz',
-    answerPrefix: 'Answer',
-    quizzes: [
-      {
-        question: 'Where is the actual useState value stored?',
-        options: [
-          { label: 'A', text: 'Fiber.memoizedProps', isAnswer: false },
-          { label: 'B', text: 'Hook.memoizedState', isAnswer: true },
-          { label: 'C', text: 'UpdateQueue.lanes', isAnswer: false },
-          { label: 'D', text: 'effect.deps', isAnswer: false },
-        ],
-        answerLabel: 'B',
-        answerExplain:
-          'The current state of a state Hook is stored on that Hook node’s memoizedState.',
-      },
-      {
-        question: 'When does the useEffect callback run?',
-        options: [
-          { label: 'A', text: 'Immediately during render', isAnswer: false },
-          { label: 'B', text: 'Just before commit', isAnswer: false },
-          { label: 'C', text: 'After commit, in the Passive Effect phase', isAnswer: true },
-          { label: 'D', text: 'Right after enqueuing the update', isAnswer: false },
-        ],
-        answerLabel: 'C',
-        answerExplain:
-          'Render only registers — execution happens after commit, in Passive Effects.',
-      },
-      {
-        question: 'Why do Rules of Hooks exist?',
-        options: [
-          { label: 'A', text: 'For performance', isAnswer: false },
-          { label: 'B', text: 'To enforce code style', isAnswer: false },
-          { label: 'C', text: 'To keep Hook linked list matching by call order', isAnswer: true },
-          { label: 'D', text: 'To reduce bundle size', isAnswer: false },
-        ],
-        answerLabel: 'C',
-        answerExplain:
-          'React matches Hooks by call order; reorder them and previous state is read wrong.',
-      },
-    ],
-  },
-  nextPath: {
-    eyebrow: 'next-learning-path',
-    title: 'What to read next',
-    items: [
-      {
-        title: 'Event system internals',
-        description: 'Read Synthetic Events, event delegation, and how React handles events.',
-        tone: 'sky',
-        visual: 'event',
-      },
-      {
-        title: 'Scheduler & priority',
-        description: 'Explore Lanes, priorities, and the order in which scheduled updates run.',
-        tone: 'violet',
-        visual: 'scheduler',
-      },
-      {
-        title: 'Suspense / Hydration internals',
-        description: 'Read Suspense & Thenable tracking, and the Hydration flow after SSR.',
-        tone: 'teal',
-        visual: 'suspense',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'renderWithHooks, mountWorkInProgressHook, dispatchSetState, updateReducerImpl',
+    whyLabel: 'Why',
+    why: 'Stitched together, these four fragments put entry through scheduling on one screen — the whole chapter, abridged.',
+    code: RECAP_CODE_EN,
+    primaryCta: 'Read ReactFiberHooks.js',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   finale: {
     progressLabel: 'Chapter 10 of 15 complete',
-    copyLine1: 'You reviewed Hooks',
-    copyLine2: 'internals end to end.',
-    copyLine3: 'Now the event system.',
+    copyLine1: 'You have read where Hooks are stored',
+    copyLine2: 'and when they actually run.',
+    copyLine3: 'Next comes the event system.',
     primaryCta: 'Read the event system internals',
     primaryHref: '/why-event-system',
-    secondaryCta: 'Review Hooks from the start',
+    secondaryCta: 'Restart the Hooks chapter',
     secondaryHref: '/hooks-entry-point',
   },
 };

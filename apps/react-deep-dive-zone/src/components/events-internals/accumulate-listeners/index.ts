@@ -1,2 +1,2 @@
-export { listenerCollectionContent } from './content';
-export { ListenerCollectionPage } from './ListenerCollectionPage';
+export { AccumulateListenersPage } from './AccumulateListenersPage';
+export { accumulateListenersContent } from './content';

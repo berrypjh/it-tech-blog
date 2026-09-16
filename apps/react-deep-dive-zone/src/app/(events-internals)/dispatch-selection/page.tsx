@@ -2,7 +2,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
   dispatchSelectionContent,
-  NativeEventDispatchPriorityPage,
+  DispatchSelectionPage,
 } from '@/components/events-internals/dispatch-selection';
 
 export const generateMetadata = async () => {
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <NativeEventDispatchPriorityPage locale={locale} />;
+  return <DispatchSelectionPage locale={locale} />;
 };
 
 export default Page;

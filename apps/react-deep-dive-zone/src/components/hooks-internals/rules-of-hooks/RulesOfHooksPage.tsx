@@ -3,17 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CorrectHookOrder } from './sections/CorrectHookOrder';
-import { DevWarningConnection } from './sections/DevWarningConnection';
-import { FollowCodeMission } from './sections/FollowCodeMission';
-import { HookMatchingComparisonTable } from './sections/HookMatchingComparisonTable';
-import { HookOrderBreakExperiment } from './sections/HookOrderBreakExperiment';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MemorizationVsStructure } from './sections/MemorizationVsStructure';
-import { RealCodeCheck } from './sections/RealCodeCheck';
+import { RulesOfHooksCodeCheckpoint } from './sections/RulesOfHooksCodeCheckpoint';
 import { RulesOfHooksHero } from './sections/RulesOfHooksHero';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { WrongHookOrder } from './sections/WrongHookOrder';
+import { SlotMatchingDiff } from './sections/SlotMatchingDiff';
+import { TwoRulesAndReasons } from './sections/TwoRulesAndReasons';
+import { WhereOrderBreaks } from './sections/WhereOrderBreaks';
 import { rulesOfHooksContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,16 +18,10 @@ export const RulesOfHooksPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <RulesOfHooksHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <MemorizationVsStructure content={c.memorization} />
-      <CorrectHookOrder content={c.correctOrder} />
-      <WrongHookOrder content={c.wrongOrder} />
-      <HookMatchingComparisonTable content={c.matchingTable} />
-      <DevWarningConnection content={c.devWarning} />
-      <HookOrderBreakExperiment content={c.breakExperiment} />
-      <RealCodeCheck content={c.realCode} />
-      <FollowCodeMission content={c.mission} />
-      <KeyTakeaways content={c.summary} />
+      <WhereOrderBreaks content={c.breaking} />
+      <SlotMatchingDiff content={c.matching} />
+      <TwoRulesAndReasons content={c.rules} />
+      <RulesOfHooksCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

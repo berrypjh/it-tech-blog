@@ -1,132 +1,90 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone =
-  | 'sky'
-  | 'cyan'
-  | 'teal'
-  | 'emerald'
-  | 'violet'
-  | 'blue'
-  | 'amber'
-  | 'rose'
-  | 'mint';
+import type { ToneKey } from '../../shared/tones';
 
-export type FlowStep = {
+export type StageId = 'native' | 'extract' | 'queue' | 'process';
+
+export type Stage = {
+  id: StageId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
+};
+
+export type KindId = 'simple' | 'interpreted' | 'action';
+
+export type EventKind = {
+  id: KindId;
   title: string;
+  plugin: string;
   description: string;
-  example?: string;
-  tone: Tone;
+  examples: string[];
+  tone: ToneKey;
 };
 
-export type PluginCard = {
+export type PluginRow = {
   name: string;
-  summary: string;
-  bullets?: string[];
-  tone: Tone;
+  owns: string;
+  work: string;
 };
 
-export type TakeawayCard = {
+export type ExtractStepId = 'queue-init' | 'extract' | 'accumulate' | 'process';
+
+export type ExtractStep = {
+  id: ExtractStepId;
+  badge: string;
   title: string;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
-
-export type WhyCard = {
-  number: string;
-  title: string;
-  body: string;
-  example: string;
-  tone: Tone;
-};
-
-export type ResponsibilityStep = {
-  title: string;
-  body: string;
-  tone: Tone;
-};
-
-export type RouteStep = {
-  title: string;
-  body: string;
-  tone: Tone;
-  isCore?: boolean;
-};
-
-export type ChecklistItem = { title: string; body: string };
-
-export type FormActionStep = { name: string; body: string; tone: Tone };
 
 export type PluginEventSystemContent = {
   hero: {
     badge: string;
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
+  };
+  kinds: {
+    badge: string;
+    eyebrow: string;
     title: string;
     description: string;
-    steps: FlowStep[];
+    items: EventKind[];
+    note: string;
   };
-  question: {
-    sectionNumber: string;
-    label: string;
+  plugins: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    highlightTokens: string[];
+    description: string;
+    headers: [string, string, string];
+    rows: PluginRow[];
+    note: string;
   };
-  why: {
-    sectionNumber: string;
+  extraction: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: WhyCard[];
+    description: string;
+    steps: ExtractStep[];
+    note: string;
   };
-  dispatchRoute: {
-    sectionNumber: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: RouteStep[];
-  };
-  responsibilities: {
-    sectionNumber: string;
-    title: string;
-    steps: ResponsibilityStep[];
-  };
-  extract: {
-    sectionNumber: string;
-    title: string;
-    centerCard: { title: string; body: string };
-    plugins: PluginCard[];
-  };
-  pluginRoles: {
-    sectionNumber: string;
-    title: string;
-    large: PluginCard[];
-    small: PluginCard[];
-    more: PluginCard;
-  };
-  queue: {
-    sectionNumber: string;
-    title: string;
-    flow: FlowStep[];
-    entry: { title: string; fields: string[] };
-    indexLabels: string[];
-  };
-  realCode: {
-    sectionNumber: string;
-    title: string;
-    code: string;
-    explanation: string;
     fileLabel: string;
-    button: { label: string; href: string };
-  };
-  formAction: {
-    sectionNumber: string;
-    title: string;
-    description: string;
-    flow: FormActionStep[];
-  };
-  mission: {
-    sectionNumber: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    sectionNumber: string;
-    title: string;
-    cards: TakeawayCard[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -137,330 +95,205 @@ export type PluginEventSystemContent = {
   };
 };
 
-const REAL_CODE = `// DOMPluginEventSystem.js
-const dispatchQueue = [];
+const EXTRACT_CODE = `function extractEvents(
+  dispatchQueue, domEventName, targetInst, nativeEvent,
+  nativeEventTarget, eventSystemFlags, targetContainer,
+) {
+  SimpleEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
 
-extractEvents(
-  dispatchQueue,
-  domEventName,
-  targetInst,
-  nativeEvent,
-  nativeEventTarget,
-  eventSystemFlags,
-  targetContainer,
-);
+  const shouldProcessPolyfillPlugins =
+    (eventSystemFlags & SHOULD_NOT_PROCESS_POLYFILL_PLUGINS) === 0;
 
-processDispatchQueue(dispatchQueue, eventSystemFlags);`;
+  if (shouldProcessPolyfillPlugins) {
+    EnterLeaveEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
+    ChangeEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
+    SelectEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
+    BeforeInputEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
+    FormActionEventPlugin.extractEvents(dispatchQueue, domEventName, ...);
+  }
+}
+
+function dispatchEventsForPlugins(...) {
+  const nativeEventTarget = getEventTarget(nativeEvent);
+  const dispatchQueue = [];
+
+  extractEvents(dispatchQueue, ...);
+  processDispatchQueue(dispatchQueue, eventSystemFlags);
+}`;
+
+const DOM_PLUGIN_EVENT_SYSTEM_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js';
 
 const ko: PluginEventSystemContent = {
   hero: {
     badge: '이벤트 시스템 · 6/10단계',
-    title: 'React는 native event를 그대로 handler에 넘기지 않는다',
+    title: { line1: 'native event 하나가', line2: '여러 플러그인을 거친다' },
     description:
-      'Plugin Event System은 이벤트를 어떤 React 이벤트로 다룰지 분석하는 중앙 처리소입니다.',
-    steps: [
+      'React는 이벤트를 그대로 넘기지 않습니다. 등록된 플러그인들이 차례로 들여다보며 무엇을 만들지 각자 결정합니다.',
+    diagramBadge: 'plugins',
+    diagramCaption: 'extract → queue → process',
+    stages: [
       {
-        title: 'native event',
-        description: '브라우저가 발생시킨 원시 이벤트',
-        example: '예) click, keydown, submit',
+        id: 'native',
+        label: 'nativeEvent + targetInst',
+        caption: '이름과 Fiber를 손에 쥔 상태',
         tone: 'sky',
       },
       {
-        title: 'plugin extraction',
-        description: 'Plugin들이 이벤트를 분석하고 React 이벤트 의미를 추출',
-        tone: 'teal',
-      },
-      {
-        title: 'SyntheticEvent + listeners',
-        description: '적절한 SyntheticEvent 객체와 연결된 listener들을 구성',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue',
-        description: 'listener 실행 순서가 담긴 dispatchQueue 생성',
-        tone: 'violet',
-      },
-    ],
-  },
-  question: {
-    sectionNumber: '02',
-    label: '오늘의 질문',
-    title: 'click, change, submit은 모두 같은 방식으로 처리될까?',
-    highlightTokens: ['click', 'change', 'submit'],
-  },
-  why: {
-    sectionNumber: '03',
-    title: 'Plugin System이 필요한 이유',
-    cards: [
-      {
-        number: '1',
-        title: '단순 이벤트',
-        body: '브라우저 이벤트를 거의 그대로 React 이벤트로 매핑하면 충분합니다.',
-        example: '예) click, keydown',
-        tone: 'teal',
-      },
-      {
-        number: '2',
-        title: '해석이 필요한 이벤트',
-        body: '브라우저 이벤트만으로는 부족해서 추가적인 상태 비교나 조합이 필요합니다.',
-        example: '예) change, select',
-        tone: 'amber',
-      },
-      {
-        number: '3',
-        title: 'React 19와 연결되는 이벤트',
-        body: 'UI 선언 수준의 새 API와 연결되며 별도 플러그인에서 해석됩니다.',
-        example: '예) submit → form action',
-        tone: 'violet',
-      },
-    ],
-  },
-  dispatchRoute: {
-    sectionNumber: '04',
-    title: 'dispatchEventForPluginEventSystem 흐름',
-    steps: [
-      {
-        title: 'dispatchEvent',
-        body: '최상위 이벤트 진입점',
-        tone: 'sky',
-      },
-      {
-        title: 'dispatchEventForPluginEventSystem',
-        body: '이벤트 시스템 핵심 라우터',
-        tone: 'violet',
-        isCore: true,
-      },
-      {
-        title: 'batchedUpdates 안에서 dispatchEventsForPlugins 호출',
-        body: '플러그인 분석 및 큐 생성',
-        tone: 'teal',
-      },
-    ],
-  },
-  responsibilities: {
-    sectionNumber: '05',
-    title: 'dispatchEventsForPlugins가 하는 일',
-    steps: [
-      {
-        title: 'nativeEventTarget 구하기',
-        body: '실제 DOM 타깃을 정규화하고 내부 타깃 기준을 준비합니다.',
-        tone: 'sky',
-      },
-      {
-        title: 'dispatchQueue 생성',
-        body: 'listener 실행 순서를 담을 빈 큐를 만듭니다.',
+        id: 'extract',
+        label: 'extractEvents()',
+        caption: '플러그인들이 차례로 훑는다',
         tone: 'violet',
       },
       {
-        title: 'extractEvents 실행',
-        body: '모든 plugin들이 이벤트를 분석하며 React 이벤트로 의미를 추출합니다.',
-        tone: 'teal',
+        id: 'queue',
+        label: 'dispatchQueue',
+        caption: '만들어진 이벤트와 리스너가 쌓인다',
+        tone: 'indigo',
       },
       {
-        title: 'processDispatchQueue 실행',
-        body: 'dispatchQueue에 담긴 listener를 순서대로 실행합니다.',
+        id: 'process',
+        label: 'processDispatchQueue()',
+        caption: '쌓인 것을 순서대로 실행',
         tone: 'emerald',
       },
     ],
   },
-  extract: {
-    sectionNumber: '06',
-    title: 'extractEvents 흐름',
-    centerCard: {
-      title: 'extractEvents',
-      body: '모든 plugin에 이벤트를 맡기고, 추출한 결과를 dispatchQueue에 누적',
-    },
-    plugins: [
-      {
-        name: 'SimpleEventPlugin',
-        summary: 'click, keydown 등 기본 이벤트 추출',
-        tone: 'blue',
-      },
-      {
-        name: 'ChangeEventPlugin',
-        summary: 'input/change 계열의 변경 감지 및 합성',
-        tone: 'emerald',
-      },
-      {
-        name: 'SelectEventPlugin',
-        summary: 'select 변경 감지 및 option 선택 추출',
-        tone: 'amber',
-      },
-      {
-        name: 'BeforeInputEventPlugin',
-        summary: 'composition / beforeinput 등 입력 전 단계 처리',
-        tone: 'violet',
-      },
-      {
-        name: 'ScrollEndEventPlugin',
-        summary: 'scroll 종료 시점을 감지하여 scrollend 이벤트 추출',
-        tone: 'cyan',
-      },
-      {
-        name: 'FormActionEventPlugin',
-        summary: 'submit과 action을 연결하고 React 19 흐름으로 진입',
-        tone: 'rose',
-      },
-    ],
-  },
-  pluginRoles: {
-    sectionNumber: '07',
-    title: 'Plugin별 역할',
-    large: [
-      {
-        name: 'SimpleEventPlugin',
-        summary: 'click, keydown 같은 기본 이벤트',
-        bullets: [
-          '브라우저 이벤트를 거의 그대로 매핑',
-          '대부분의 이벤트를 담당',
-          '생활 이벤트의 주 담당',
-        ],
-        tone: 'blue',
-      },
-      {
-        name: 'ChangeEventPlugin',
-        summary: 'input/change 계열 해석',
-        bullets: ['값 비교, 상태 변경 감지', '여러 이벤트 조합 가능', '일관된 change 이벤트 제공'],
-        tone: 'emerald',
-      },
-      {
-        name: 'FormActionEventPlugin',
-        summary: 'submit과 React 19 action 연결',
-        bullets: [
-          'form action 찾기 및 확인',
-          'pending/transition과 연동',
-          '서버 액션/선언 흐름 준비',
-        ],
-        tone: 'violet',
-      },
-    ],
-    small: [
-      {
-        name: 'BeforeInputEventPlugin',
-        summary: '조합 입력(composition)과 beforeinput을 다룹니다.',
-        tone: 'violet',
-      },
-      {
-        name: 'SelectEventPlugin',
-        summary: 'select의 값/옵션 변경 해석을 담당합니다.',
-        tone: 'amber',
-      },
-      {
-        name: 'ScrollEndEventPlugin',
-        summary: 'scroll이 끝나는 시점을 감지합니다.',
-        tone: 'cyan',
-      },
-    ],
-    more: {
-      name: '그리고 더 많은 plugin들...',
-      summary: '추가 도메인별 이벤트 plugin이 확장 가능합니다.',
-      tone: 'rose',
-    },
-  },
-  queue: {
-    sectionNumber: '08',
-    title: 'dispatchQueue가 만들어지는 순간',
-    flow: [
-      {
-        title: 'native event',
-        description: '브라우저에서 이벤트 발생',
-        example: 'click',
-        tone: 'sky',
-      },
-      {
-        title: 'plugin extraction',
-        description: 'Plugin들이 이벤트 분석 및 React 의미 추출',
-        tone: 'teal',
-      },
-      {
-        title: 'SyntheticEvent + listeners',
-        description: '재현된 SyntheticEvent와 관련 listener 구성',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue',
-        description: '실행 순서를 담을 queue 생성',
-        tone: 'violet',
-      },
-    ],
-    entry: {
-      title: 'dispatchQueue entry 생성',
-      fields: ['event', 'listeners[]', 'priority', '...'],
-    },
-    indexLabels: ['0', '1', '2', '...', 'n'],
-  },
-  realCode: {
-    sectionNumber: '09',
-    title: '실제 코드 미리보기',
-    code: REAL_CODE,
-    explanation:
-      '이 단계에서 plugin들이 이벤트를 해석하고, dispatchQueue를 만든 뒤, 수집된 listener를 순서대로 실행할 준비를 합니다.',
-    fileLabel: 'DOMPluginEventSystem.js',
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-  },
-  formAction: {
-    sectionNumber: '10',
-    title: 'React 19 보충: FormActionEventPlugin',
+  kinds: {
+    badge: '01',
+    eyebrow: 'why plugins',
+    title: '이벤트마다 해석의 깊이가 다르다',
     description:
-      'React 19의 form action은 UI 선언 수준의 새 API이고, 내부적으로는 submit 이벤트 해석과 연결됩니다.',
-    flow: [
-      { name: 'submit', body: '폼 제출 발생', tone: 'mint' },
-      { name: 'action', body: '서버/클라이언트 액션 호출', tone: 'teal' },
-      { name: 'pending', body: '진행 상태 표시', tone: 'amber' },
-      { name: 'transition', body: 'UI 전환 및 결과 반영', tone: 'violet' },
-    ],
-  },
-  mission: {
-    sectionNumber: '11',
-    title: '직접 코드에서 따라가 보기',
+      '이름만 바꿔 주면 되는 이벤트가 있고, 값을 비교해 봐야 의미가 생기는 이벤트가 있습니다. 플러그인은 이 차이를 흡수합니다.',
     items: [
       {
-        title: 'DOMPluginEventSystem.js를 연다',
-        body: '이벤트 시스템 진입점을 직접 펼쳐 본다.',
+        id: 'simple',
+        title: '거의 그대로',
+        plugin: 'SimpleEventPlugin',
+        description:
+          '브라우저 이벤트를 React 이름으로 바꾸고 감싸기만 하면 끝입니다. 대부분이 여기 속합니다.',
+        examples: ['click', 'keydown', 'pointerdown'],
+        tone: 'sky',
       },
       {
-        title: 'dispatchEventsForPlugins를 찾는다',
-        body: '핵심 라우터 함수의 위치를 확인한다.',
-      },
-      {
-        title: 'extractEvents가 어떤 plugin들을 부르는지 훑는다',
-        body: 'plugin 배열을 따라 의미 해석 흐름을 본다.',
-      },
-      {
-        title: 'FormActionEventPlugin 이름을 기억한다',
-        body: 'React 19 form action과 어떻게 만나는지 기억한다.',
-      },
-    ],
-  },
-  takeaways: {
-    sectionNumber: '12',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: 'React는 plugin system에서 이벤트 의미를 해석한다.',
-        body: '브라우저의 native event를 그대로 넘기지 않고, plugin들이 분석해 React 이벤트로 변환합니다.',
-        tone: 'blue',
-      },
-      {
-        title: '그 결과 dispatchQueue가 만들어진다.',
-        body: '실행 순서와 listener 정보를 담아 처리 단계로 넘깁니다.',
-        tone: 'teal',
-      },
-      {
-        title: '기본 이벤트와 특수 이벤트는 여기서 갈라진다.',
-        body: 'Plugin별 역할에 따라 click, change, submit 등이 서로 다르게 해석됩니다.',
+        id: 'interpreted',
+        title: '해석이 필요한',
+        plugin: 'ChangeEventPlugin',
+        description:
+          '브라우저의 change만으로는 부족합니다. 이전 값과 비교하고 여러 이벤트를 합쳐 하나의 onChange를 만듭니다.',
+        examples: ['input', 'change', 'select'],
         tone: 'violet',
       },
+      {
+        id: 'action',
+        title: 'React 기능과 엮인',
+        plugin: 'FormActionEventPlugin',
+        description:
+          'form의 action prop이 함수면 기본 제출을 막고 React 19의 action 흐름으로 연결합니다.',
+        examples: ['submit'],
+        tone: 'teal',
+      },
     ],
+    note: 'React의 onChange가 브라우저 change와 다르게 동작하는 이유가 여기 있습니다. 실제로는 input 이벤트를 해석해 만듭니다.',
+  },
+  plugins: {
+    badge: '02',
+    eyebrow: 'plugin list',
+    title: '등록된 플러그인과 담당 범위',
+    description:
+      'extractEvents는 이 목록을 위에서 아래로 한 번씩 부릅니다. 자기 이벤트가 아니면 각 플러그인은 아무것도 하지 않고 돌아갑니다.',
+    headers: ['플러그인', '담당 이벤트', '하는 일'],
+    rows: [
+      {
+        name: 'SimpleEventPlugin',
+        owns: 'click, keydown 등 대부분',
+        work: '이름 매핑 후 알맞은 SyntheticEvent 생성자를 골라 감쌉니다.',
+      },
+      {
+        name: 'EnterLeaveEventPlugin',
+        owns: 'mouseover, mouseout',
+        work: 'onMouseEnter / onMouseLeave처럼 버블링하지 않는 이벤트를 합성해 만듭니다.',
+      },
+      {
+        name: 'ChangeEventPlugin',
+        owns: 'input, change, click',
+        work: '요소 종류별로 값 변화를 감지해 일관된 onChange를 만들어 냅니다.',
+      },
+      {
+        name: 'SelectEventPlugin',
+        owns: 'focus, select, keyup',
+        work: '선택 영역이 실제로 바뀌었는지 비교해 onSelect를 만듭니다.',
+      },
+      {
+        name: 'BeforeInputEventPlugin',
+        owns: 'compositionstart, textInput',
+        work: '한글 같은 조합 입력을 정리해 onBeforeInput으로 정규화합니다.',
+      },
+      {
+        name: 'FormActionEventPlugin',
+        owns: 'submit',
+        work: 'action이 함수면 기본 동작을 막고 React action 실행을 예약합니다.',
+      },
+    ],
+    note: 'SimpleEventPlugin만 항상 돌고, 나머지는 polyfill 플래그가 꺼져 있을 때만 돕니다. 순서도 고정되어 있습니다.',
+  },
+  extraction: {
+    badge: '03',
+    eyebrow: 'extract to process',
+    title: '큐 하나를 돌려 가며 채운다',
+    description:
+      '플러그인들은 각자 결과를 반환하지 않습니다. 빈 배열 하나를 받아 거기에 직접 밀어 넣습니다.',
+    steps: [
+      {
+        id: 'queue-init',
+        badge: 'step 1',
+        title: '빈 dispatchQueue',
+        body: '배열 하나를 만들어 모든 플러그인에 같은 참조로 넘깁니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'extract',
+        badge: 'step 2',
+        title: '플러그인 순회',
+        body: '각 플러그인이 자기 이벤트인지 보고, 맞으면 SyntheticEvent를 만듭니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'accumulate',
+        badge: 'step 3',
+        title: '리스너와 함께 push',
+        body: 'Fiber 트리를 훑어 모은 리스너 목록을 이벤트와 한 쌍으로 담습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'process',
+        badge: 'step 4',
+        title: 'processDispatchQueue',
+        body: '쌓인 쌍들을 순서대로 꺼내 리스너를 실행합니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '한 번의 native 이벤트가 큐에 두 개 이상을 넣을 수 있습니다. click 하나가 onClick과 onChange를 동시에 만들 수 있습니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: '볼 것',
+    lookFor: 'extractEvents, SimpleEventPlugin, ChangeEventPlugin, dispatchQueue',
+    whyLabel: '설명',
+    why: '플러그인들이 반환값 없이 dispatchQueue를 인자로만 받는다는 점이, 큐가 공유 버퍼라는 사실을 드러냅니다.',
+    code: EXTRACT_CODE,
+    primaryCta: 'DOMPluginEventSystem.js 읽기',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'SyntheticEvent 이해하기',
+    title: '플러그인이 만드는 그 객체는 무엇인가',
     description:
-      'Plugin이 만들어 내는 SyntheticEvent가 어떤 구조이고 어떻게 동작하는지 이어서 살펴봅니다.',
+      'SyntheticEvent가 native event와 무엇이 다르고 왜 필요한지 다음 페이지에서 뜯어봅니다.',
     cta: '다음 페이지로 이동',
     href: '/synthetic-event',
   },
@@ -469,315 +302,172 @@ const ko: PluginEventSystemContent = {
 const en: PluginEventSystemContent = {
   hero: {
     badge: 'Event System · 6/10',
-    title: 'React does not hand the native event directly to your handler',
+    title: { line1: 'One native event', line2: 'passes through several plugins' },
     description:
-      'The Plugin Event System is the central interpreter that decides which React event a native event becomes.',
-    steps: [
+      'React never forwards the event as-is. Registered plugins each inspect it in turn and decide for themselves what to produce.',
+    diagramBadge: 'plugins',
+    diagramCaption: 'extract → queue → process',
+    stages: [
       {
-        title: 'native event',
-        description: 'The raw event fired by the browser',
-        example: 'e.g. click, keydown, submit',
+        id: 'native',
+        label: 'nativeEvent + targetInst',
+        caption: 'name and Fiber both in hand',
         tone: 'sky',
       },
       {
-        title: 'plugin extraction',
-        description: 'Plugins analyze the event and extract React event meaning',
-        tone: 'teal',
-      },
-      {
-        title: 'SyntheticEvent + listeners',
-        description: 'Build the proper SyntheticEvent and the listeners attached to it',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue',
-        description: 'Build the queue that captures listener execution order',
-        tone: 'violet',
-      },
-    ],
-  },
-  question: {
-    sectionNumber: '02',
-    label: "Today's question",
-    title: 'Are click, change, and submit all handled the same way?',
-    highlightTokens: ['click', 'change', 'submit'],
-  },
-  why: {
-    sectionNumber: '03',
-    title: 'Why a plugin system?',
-    cards: [
-      {
-        number: '1',
-        title: 'Simple events',
-        body: 'Mapping the browser event almost directly to a React event is enough.',
-        example: 'e.g. click, keydown',
-        tone: 'teal',
-      },
-      {
-        number: '2',
-        title: 'Events that need interpretation',
-        body: 'The browser event alone is not enough — state comparison or composition is needed.',
-        example: 'e.g. change, select',
-        tone: 'amber',
-      },
-      {
-        number: '3',
-        title: 'Events wired into React 19',
-        body: 'Tied to a new UI-declarative API and interpreted by dedicated plugins.',
-        example: 'e.g. submit → form action',
-        tone: 'violet',
-      },
-    ],
-  },
-  dispatchRoute: {
-    sectionNumber: '04',
-    title: 'dispatchEventForPluginEventSystem flow',
-    steps: [
-      {
-        title: 'dispatchEvent',
-        body: 'Top-level event entry',
-        tone: 'sky',
-      },
-      {
-        title: 'dispatchEventForPluginEventSystem',
-        body: 'The core event-system router',
-        tone: 'violet',
-        isCore: true,
-      },
-      {
-        title: 'Calls dispatchEventsForPlugins inside batchedUpdates',
-        body: 'Plugin analysis and queue creation',
-        tone: 'teal',
-      },
-    ],
-  },
-  responsibilities: {
-    sectionNumber: '05',
-    title: 'What dispatchEventsForPlugins does',
-    steps: [
-      {
-        title: 'Resolve nativeEventTarget',
-        body: 'Normalize the real DOM target and prepare the internal target reference.',
-        tone: 'sky',
-      },
-      {
-        title: 'Create dispatchQueue',
-        body: 'Make an empty queue to hold listener execution order.',
+        id: 'extract',
+        label: 'extractEvents()',
+        caption: 'plugins inspect it one by one',
         tone: 'violet',
       },
       {
-        title: 'Run extractEvents',
-        body: 'All plugins analyze the event and extract React event meaning.',
-        tone: 'teal',
+        id: 'queue',
+        label: 'dispatchQueue',
+        caption: 'built events and listeners pile up',
+        tone: 'indigo',
       },
       {
-        title: 'Run processDispatchQueue',
-        body: 'Invoke the listeners on the dispatchQueue in order.',
+        id: 'process',
+        label: 'processDispatchQueue()',
+        caption: 'run what piled up, in order',
         tone: 'emerald',
       },
     ],
   },
-  extract: {
-    sectionNumber: '06',
-    title: 'extractEvents flow',
-    centerCard: {
-      title: 'extractEvents',
-      body: 'Hands the event to every plugin and accumulates the extracted results in dispatchQueue.',
-    },
-    plugins: [
-      {
-        name: 'SimpleEventPlugin',
-        summary: 'Extract basic events like click, keydown',
-        tone: 'blue',
-      },
-      {
-        name: 'ChangeEventPlugin',
-        summary: 'Detect and synthesize input/change family changes',
-        tone: 'emerald',
-      },
-      {
-        name: 'SelectEventPlugin',
-        summary: 'Detect select changes and extract option selection',
-        tone: 'amber',
-      },
-      {
-        name: 'BeforeInputEventPlugin',
-        summary: 'Handle composition / beforeinput pre-input stages',
-        tone: 'violet',
-      },
-      {
-        name: 'ScrollEndEventPlugin',
-        summary: 'Detect when scrolling ends and extract scrollend',
-        tone: 'cyan',
-      },
-      {
-        name: 'FormActionEventPlugin',
-        summary: 'Link submit and action and enter the React 19 flow',
-        tone: 'rose',
-      },
-    ],
-  },
-  pluginRoles: {
-    sectionNumber: '07',
-    title: 'Plugin responsibilities',
-    large: [
-      {
-        name: 'SimpleEventPlugin',
-        summary: 'Basic events like click, keydown',
-        bullets: [
-          'Maps browser events almost directly',
-          'Covers most events',
-          'Primary owner of common events',
-        ],
-        tone: 'blue',
-      },
-      {
-        name: 'ChangeEventPlugin',
-        summary: 'Interpret input/change family',
-        bullets: [
-          'Value comparison and state change detection',
-          'Can combine several events',
-          'Provides a consistent change event',
-        ],
-        tone: 'emerald',
-      },
-      {
-        name: 'FormActionEventPlugin',
-        summary: 'Connects submit with React 19 actions',
-        bullets: [
-          'Find and verify form action',
-          'Works with pending/transition',
-          'Prepares server actions / declarative flow',
-        ],
-        tone: 'violet',
-      },
-    ],
-    small: [
-      {
-        name: 'BeforeInputEventPlugin',
-        summary: 'Handles composition input and beforeinput.',
-        tone: 'violet',
-      },
-      {
-        name: 'SelectEventPlugin',
-        summary: 'Interprets select value / option changes.',
-        tone: 'amber',
-      },
-      {
-        name: 'ScrollEndEventPlugin',
-        summary: 'Detects when scrolling stops.',
-        tone: 'cyan',
-      },
-    ],
-    more: {
-      name: 'And many more plugins...',
-      summary: 'Additional domain-specific event plugins are extensible.',
-      tone: 'rose',
-    },
-  },
-  queue: {
-    sectionNumber: '08',
-    title: 'The moment dispatchQueue is built',
-    flow: [
-      {
-        title: 'native event',
-        description: 'An event fires in the browser',
-        example: 'click',
-        tone: 'sky',
-      },
-      {
-        title: 'plugin extraction',
-        description: 'Plugins analyze the event and extract React meaning',
-        tone: 'teal',
-      },
-      {
-        title: 'SyntheticEvent + listeners',
-        description: 'A SyntheticEvent is reconstructed with its listeners',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue',
-        description: 'A queue is built to hold the execution order',
-        tone: 'violet',
-      },
-    ],
-    entry: {
-      title: 'dispatchQueue entry built',
-      fields: ['event', 'listeners[]', 'priority', '...'],
-    },
-    indexLabels: ['0', '1', '2', '...', 'n'],
-  },
-  realCode: {
-    sectionNumber: '09',
-    title: 'Real source preview',
-    code: REAL_CODE,
-    explanation:
-      'At this stage the plugins interpret the event, build the dispatchQueue, and prepare to invoke the collected listeners in order.',
-    fileLabel: 'DOMPluginEventSystem.js',
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
-  },
-  formAction: {
-    sectionNumber: '10',
-    title: 'React 19 supplement: FormActionEventPlugin',
+  kinds: {
+    badge: '01',
+    eyebrow: 'why plugins',
+    title: 'Events differ in how much interpretation they need',
     description:
-      "React 19's form action is a new UI-declarative API, internally tied to submit event interpretation.",
-    flow: [
-      { name: 'submit', body: 'Form submission fires', tone: 'mint' },
-      { name: 'action', body: 'Server/client action invoked', tone: 'teal' },
-      { name: 'pending', body: 'Indicates progress', tone: 'amber' },
-      { name: 'transition', body: 'UI transition and result applied', tone: 'violet' },
-    ],
-  },
-  mission: {
-    sectionNumber: '11',
-    title: 'Walk it in the source',
+      'Some events only need renaming; others only mean something once values are compared. Plugins absorb that difference.',
     items: [
       {
-        title: 'Open DOMPluginEventSystem.js',
-        body: 'Open the event system entry file by hand.',
+        id: 'simple',
+        title: 'Almost as-is',
+        plugin: 'SimpleEventPlugin',
+        description: 'Rename the browser event, wrap it, done. The majority of events land here.',
+        examples: ['click', 'keydown', 'pointerdown'],
+        tone: 'sky',
       },
       {
-        title: 'Find dispatchEventsForPlugins',
-        body: 'Locate the core router function.',
-      },
-      {
-        title: 'Skim which plugins extractEvents calls',
-        body: 'Follow the plugin array and see how interpretations are dispatched.',
-      },
-      {
-        title: 'Remember the FormActionEventPlugin name',
-        body: 'Note how it meets React 19 form actions.',
-      },
-    ],
-  },
-  takeaways: {
-    sectionNumber: '12',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'React interprets event meaning in the plugin system.',
-        body: 'It does not pass native events straight through — plugins analyze them and convert them into React events.',
-        tone: 'blue',
-      },
-      {
-        title: 'The result is a dispatchQueue.',
-        body: 'It carries execution order and listener info into the processing stage.',
-        tone: 'teal',
-      },
-      {
-        title: 'Simple and special events diverge here.',
-        body: 'Click, change, and submit are interpreted differently depending on each plugin.',
+        id: 'interpreted',
+        title: 'Needs interpretation',
+        plugin: 'ChangeEventPlugin',
+        description:
+          'The browser change event is not enough. It compares the previous value and merges several events into one onChange.',
+        examples: ['input', 'change', 'select'],
         tone: 'violet',
       },
+      {
+        id: 'action',
+        title: 'Tied to React features',
+        plugin: 'FormActionEventPlugin',
+        description:
+          'When a form action prop is a function, it prevents the default submit and routes into the React 19 action flow.',
+        examples: ['submit'],
+        tone: 'teal',
+      },
     ],
+    note: "That React's onChange behaves unlike the browser change event follows from this: it is really built by interpreting input.",
+  },
+  plugins: {
+    badge: '02',
+    eyebrow: 'plugin list',
+    title: 'The registered plugins and what they own',
+    description:
+      'extractEvents calls this list top to bottom once. A plugin that does not own the event simply returns without doing anything.',
+    headers: ['Plugin', 'Events it owns', 'What it does'],
+    rows: [
+      {
+        name: 'SimpleEventPlugin',
+        owns: 'click, keydown and most others',
+        work: 'Maps the name, then picks the right SyntheticEvent constructor to wrap it.',
+      },
+      {
+        name: 'EnterLeaveEventPlugin',
+        owns: 'mouseover, mouseout',
+        work: 'Synthesises non-bubbling events such as onMouseEnter and onMouseLeave.',
+      },
+      {
+        name: 'ChangeEventPlugin',
+        owns: 'input, change, click',
+        work: 'Detects value changes per element type to produce a consistent onChange.',
+      },
+      {
+        name: 'SelectEventPlugin',
+        owns: 'focus, select, keyup',
+        work: 'Compares whether the selection actually moved before producing onSelect.',
+      },
+      {
+        name: 'BeforeInputEventPlugin',
+        owns: 'compositionstart, textInput',
+        work: 'Normalises composition input, such as IME, into onBeforeInput.',
+      },
+      {
+        name: 'FormActionEventPlugin',
+        owns: 'submit',
+        work: 'When action is a function, blocks the default and schedules the React action.',
+      },
+    ],
+    note: 'Only SimpleEventPlugin always runs; the rest run when the polyfill flag is off. The order is fixed too.',
+  },
+  extraction: {
+    badge: '03',
+    eyebrow: 'extract to process',
+    title: 'One queue, filled as it goes around',
+    description:
+      'Plugins do not return their results. They receive a single empty array and push into it directly.',
+    steps: [
+      {
+        id: 'queue-init',
+        badge: 'step 1',
+        title: 'An empty dispatchQueue',
+        body: 'Create one array and pass the same reference to every plugin.',
+        tone: 'sky',
+      },
+      {
+        id: 'extract',
+        badge: 'step 2',
+        title: 'Walk the plugins',
+        body: 'Each checks whether the event is theirs and builds a SyntheticEvent if so.',
+        tone: 'violet',
+      },
+      {
+        id: 'accumulate',
+        badge: 'step 3',
+        title: 'Push with the listeners',
+        body: 'The listener list gathered from the Fiber tree is stored paired with the event.',
+        tone: 'indigo',
+      },
+      {
+        id: 'process',
+        badge: 'step 4',
+        title: 'processDispatchQueue',
+        body: 'Take the pairs in order and invoke the listeners.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'A single native event can add more than one entry: one click may produce both onClick and onChange.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: 'Look for',
+    lookFor: 'extractEvents, SimpleEventPlugin, ChangeEventPlugin, dispatchQueue',
+    whyLabel: 'Why',
+    why: 'Plugins taking dispatchQueue as an argument and returning nothing reveals that the queue is a shared buffer.',
+    code: EXTRACT_CODE,
+    primaryCta: 'Read DOMPluginEventSystem.js',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'understanding SyntheticEvent',
-    description: 'See the structure and behavior of the SyntheticEvent that plugins produce.',
+    title: 'What exactly is the object plugins build',
+    description:
+      'The next page takes apart how SyntheticEvent differs from the native event, and why it exists at all.',
     cta: 'Go to the next page',
     href: '/synthetic-event',
   },

@@ -3,16 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CommitExecutionPath } from './sections/CommitExecutionPath';
-import { DependenciesComparisonFlow } from './sections/DependenciesComparisonFlow';
-import { DependenciesExperiment } from './sections/DependenciesExperiment';
-import { EffectFullFlow } from './sections/EffectFullFlow';
-import { EffectObjectStructure } from './sections/EffectObjectStructure';
-import { FollowCodeMission } from './sections/FollowCodeMission';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MisconceptionReality } from './sections/MisconceptionReality';
-import { RealEffectCodePreview } from './sections/RealEffectCodePreview';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
+import { DepsDecision } from './sections/DepsDecision';
+import { EffectMyths } from './sections/EffectMyths';
+import { EffectObjectShape } from './sections/EffectObjectShape';
+import { EffectRegistrationFlow } from './sections/EffectRegistrationFlow';
+import { UseEffectCodeCheckpoint } from './sections/UseEffectCodeCheckpoint';
 import { UseEffectHero } from './sections/UseEffectHero';
 import { useEffectInternalsContent } from './content';
 
@@ -24,16 +19,11 @@ export const UseEffectInternalsPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <UseEffectHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <MisconceptionReality content={c.misconception} />
-      <EffectFullFlow content={c.effectFlow} />
-      <EffectObjectStructure content={c.effectObject} />
-      <DependenciesComparisonFlow content={c.depsCompare} />
-      <RealEffectCodePreview content={c.realCode} />
-      <CommitExecutionPath content={c.commitPath} />
-      <DependenciesExperiment content={c.depsExperiment} />
-      <FollowCodeMission content={c.mission} />
-      <KeyTakeaways content={c.summary} />
+      <EffectMyths content={c.myths} />
+      <EffectRegistrationFlow content={c.flow} />
+      <EffectObjectShape content={c.effectObject} />
+      <DepsDecision content={c.deps} />
+      <UseEffectCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -1,133 +1,91 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
+
+export type PropKind = 'capture' | 'bubble' | 'none';
 
 export type FiberNode = {
+  id: string;
   name: string;
-  type: string;
+  depth: number;
   prop: string;
-  propKind: 'capture' | 'bubble' | 'none';
+  propKind: PropKind;
 };
 
-export type ListenerEntry = {
-  step: string;
-  handler: string;
-  tone: 'violet' | 'teal';
-};
+export type WalkStepId = 'start' | 'read-prop' | 'push' | 'reverse';
 
-export type CollectorTarget = 'section' | 'div' | 'button';
-
-export type CollectorState = {
-  capture: ListenerEntry[];
-  bubble: ListenerEntry[];
-  currentLabel: string;
-};
-
-export type TakeawayCard = {
+export type WalkStep = {
+  id: WalkStepId;
+  badge: string;
   title: string;
   body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
-export type ListenerCollectionContent = {
+export type PhasePanel = {
+  label: string;
+  caption: string;
+  propName: string;
+  order: string[];
+};
+
+export type OrderRow = {
+  step: string;
+  phase: string;
+  handler: string;
+  fiber: string;
+};
+
+export type AccumulateListenersContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    code: { fileLabel: string; code: string };
-    diagram: {
-      title: string;
-      nodes: FiberNode[];
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    treeLabel: string;
+    nodes: FiberNode[];
+    tailLabel: string;
   };
-  question: {
+  walk: {
+    badge: string;
     eyebrow: string;
     title: string;
-    badges: string[];
+    description: string;
+    steps: WalkStep[];
+    note: string;
   };
-  nested: {
-    step: number;
+  phases: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    capture: PhasePanel;
+    bubble: PhasePanel;
+    note: string;
+  };
+  order: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    headers: [string, string, string, string];
+    rows: OrderRow[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    legend: { label: string; description: string; tone: 'violet' | 'teal' }[];
-  };
-  compare: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    dom: { title: string; lines: string[] };
-    fiber: { title: string; lines: string[] };
-    note: string;
-  };
-  capture: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    flow: string[];
-    resultTitle: string;
-    results: ListenerEntry[];
-    note: string;
-  };
-  bubble: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    flow: string[];
-    resultTitle: string;
-    results: ListenerEntry[];
-    note: string;
-  };
-  accumulate: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: { title: string; body: string; tone: Tone }[];
-    diagramTitle: string;
-    diagramNodes: FiberNode[];
-    listenersTitle: string;
-    notes: string[];
-  };
-  realCode: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    fileLabel: string;
-    code: string;
-    explanation: { label: string; body: string };
-    fileLocation: { label: string; path: string };
-    button: { label: string; href: string };
-  };
-  collector: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    code: string;
-    targetSelectorLabel: string;
-    targets: { value: CollectorTarget; label: string; recommended?: boolean }[];
-    defaultTarget: CollectorTarget;
-    tabs: { value: 'capture' | 'bubble'; label: string }[];
-    defaultTab: 'capture' | 'bubble';
-    captureTitle: string;
-    bubbleTitle: string;
-    emptyMessage: string;
-    states: Record<CollectorTarget, CollectorState>;
-    currentSelectionLabel: string;
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    items: { title: string; body: string }[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -138,491 +96,295 @@ export type ListenerCollectionContent = {
   };
 };
 
-const HERO_CODE = `<section onClickCapture={handleSectionCapture}>
-  <div onClick={handleDivClick}>
-    <button onClick={handleButtonClick}>저장</button>
-  </div>
-</section>`;
+const ACCUMULATE_CODE = `export function accumulateSinglePhaseListeners(
+  targetFiber, reactName, nativeEventType, inCapturePhase, accumulateTargetOnly,
+) {
+  const captureName = reactName !== null ? reactName + 'Capture' : null;
+  const reactEventName = inCapturePhase ? captureName : reactName;
+  const listeners = [];
 
-const HERO_CODE_EN = `<section onClickCapture={handleSectionCapture}>
-  <div onClick={handleDivClick}>
-    <button onClick={handleButtonClick}>Save</button>
-  </div>
-</section>`;
+  let instance = targetFiber;
 
-const REAL_CODE = `// DOMPluginEventSystem.js
-let instance = targetFiber;
+  while (instance !== null) {
+    const { stateNode, tag } = instance;
 
-while (instance !== null) {
-  const listener = getListener(instance, reactEventName);
+    if (tag === HostComponent && stateNode !== null) {
+      const listener = getListener(instance, reactEventName);
 
-  if (listener != null) {
-    listeners.push(
-      createDispatchListener(instance, listener, lastHostComponent),
-    );
+      if (listener != null) {
+        listeners.push(createDispatchListener(instance, listener, stateNode));
+      }
+    }
+
+    if (accumulateTargetOnly) {
+      break;
+    }
+
+    instance = instance.return;
   }
 
-  instance = instance.return;
+  return listeners;
 }`;
 
-const FIBER_NODES_KO: FiberNode[] = [
-  { name: 'Section Fiber', type: "type: 'section'", prop: 'onClickCapture', propKind: 'capture' },
-  { name: 'Div Fiber', type: "type: 'div'", prop: 'onClick', propKind: 'bubble' },
-  { name: 'Button Fiber', type: "type: 'button'", prop: 'onClick', propKind: 'bubble' },
+const DOM_PLUGIN_EVENT_SYSTEM_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js';
+
+const KO_NODES: FiberNode[] = [
+  { id: 'section', name: 'Section Fiber', depth: 0, prop: 'onClickCapture', propKind: 'capture' },
+  { id: 'div', name: 'Div Fiber', depth: 1, prop: 'onClick', propKind: 'bubble' },
+  { id: 'button', name: 'Button Fiber', depth: 2, prop: 'onClick', propKind: 'bubble' },
 ];
 
-const FIBER_NODES_EN = FIBER_NODES_KO;
-
-const ko: ListenerCollectionContent = {
+const ko: AccumulateListenersContent = {
   hero: {
     badge: '이벤트 시스템 · 8/10단계',
-    titleLines: ['React는 이벤트 listener를', 'Fiber 경로를 따라 모은다'],
+    title: { line1: '리스너는 DOM이 아니라', line2: 'Fiber 경로에서 모은다' },
     description:
-      'target Fiber에서 시작해 부모 방향으로 올라가며 capture와 bubble listener를 수집합니다.',
-    code: { fileLabel: 'JSX', code: HERO_CODE },
-    diagram: {
-      title: 'Fiber 트리 (React가 보는 구조)',
-      nodes: FIBER_NODES_KO,
-    },
+      '클릭된 Fiber에서 시작해 return 포인터를 타고 루트까지 한 번 올라갑니다. 그 길에서 만난 핸들러가 실행 대상입니다.',
+    diagramBadge: 'accumulate',
+    diagramCaption: 'target → return → root',
+    treeLabel: 'Fiber 트리',
+    nodes: KO_NODES,
+    tailLabel: 'target Fiber에서 위로 올라가며 수집',
   },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: '중첩된 컴포넌트에서 어떤 handler가 어떤 순서로 실행될지 React는 어떻게 준비할까?',
-    badges: [
-      'React는 Fiber 경로를 기준으로 수집한다',
-      'capture와 bubble은 다른 방향으로 수집된다',
-      '최종 실행은 dispatchQueue가 담당한다',
-    ],
-  },
-  nested: {
-    step: 1,
-    eyebrow: 'nested-jsx',
-    title: '중첩 JSX 예제',
-    fileLabel: 'JSX',
-    code: HERO_CODE,
-    legend: [
-      { label: 'onClickCapture', description: 'capture phase', tone: 'violet' },
-      { label: 'onClick', description: 'bubble phase', tone: 'teal' },
-    ],
-  },
-  compare: {
-    step: 2,
-    eyebrow: 'dom-vs-fiber',
-    title: 'DOM 트리와 Fiber 트리 비교',
-    dom: {
-      title: 'DOM 트리 (브라우저가 보는 구조)',
-      lines: ['<section>', '└─ <div>', '   └─ <button>저장</button>'],
-    },
-    fiber: {
-      title: 'Fiber 트리 (React가 보는 구조)',
-      lines: ['Section Fiber', '└─ Div Fiber', '   └─ Button Fiber'],
-    },
-    note: '구조는 유사하지만, React는 DOM이 아닌 Fiber 경로를 따라 listener를 찾습니다.',
-  },
-  capture: {
-    step: 3,
-    eyebrow: 'capture-collection',
-    title: 'capture listener 수집',
-    subtitle: '부모 → 자식 방향으로 실행되도록 준비',
-    flow: [
-      'Button Fiber (시작)',
-      'Div Fiber (부모)',
-      'Section Fiber (부모의 부모)',
-      'onClickCapture 확인',
-    ],
-    resultTitle: '최종 수집 결과 (capture phase)',
-    results: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-    note: 'capture phase에서는 부모에서 자식 방향으로 실행됩니다.',
-  },
-  bubble: {
-    step: 4,
-    eyebrow: 'bubble-collection',
-    title: 'bubble listener 수집',
-    subtitle: '자식 → 부모 방향 그대로 유지',
-    flow: ['Button Fiber (시작)', 'Div Fiber (부모)', 'Section Fiber (부모의 부모)'],
-    resultTitle: '최종 수집 결과 (bubble phase)',
-    results: [
-      { step: '1', handler: 'button click (handleButtonClick)', tone: 'teal' },
-      { step: '2', handler: 'div click (handleDivClick)', tone: 'teal' },
-    ],
-    note: 'bubble phase에서는 target부터 부모 방향으로 실행됩니다.',
-  },
-  accumulate: {
-    step: 5,
-    eyebrow: 'accumulate-flow',
-    title: 'accumulateSinglePhaseListeners 흐름',
+  walk: {
+    badge: '01',
+    eyebrow: 'accumulateSinglePhaseListeners',
+    title: '한 번만 올라가며 모은다',
+    description:
+      '트리를 두 번 훑지 않습니다. target에서 루트까지 한 번 올라가며 담고, capture일 때만 마지막에 뒤집습니다.',
     steps: [
-      { title: 'targetFiber부터 시작', body: '이벤트가 발생한 Fiber에서 시작합니다.', tone: 'sky' },
       {
-        title: 'instance.return으로 부모 이동',
-        body: '부모 Fiber로 이동하며 트리를 거슬러 올라갑니다.',
-        tone: 'cyan',
+        id: 'start',
+        badge: 'step 1',
+        title: 'target Fiber에서 시작',
+        body: '앞 페이지에서 찾아 둔 Fiber가 출발점입니다.',
+        tone: 'sky',
       },
       {
-        title: 'HostComponent 여부 확인',
-        body: 'listener를 가질 수 있는 호스트 컴포넌트인지 검사합니다.',
+        id: 'read-prop',
+        badge: 'step 2',
+        title: 'prop 이름을 골라 읽는다',
+        body: 'capture 단계면 onClickCapture를, bubble 단계면 onClick을 찾습니다.',
         tone: 'violet',
       },
       {
-        title: 'reactEventName listener 찾기',
-        body: 'onClick / onClickCapture 등 phase별 prop을 조회합니다.',
-        tone: 'teal',
+        id: 'push',
+        badge: 'step 3',
+        title: '있으면 배열에 담는다',
+        body: 'HostComponent이면서 그 prop이 함수일 때만 목록에 넣습니다.',
+        tone: 'indigo',
       },
       {
-        title: 'listeners 배열에 push',
-        body: '찾은 dispatchListener를 listeners 배열에 누적합니다.',
+        id: 'reverse',
+        badge: 'step 4',
+        title: 'return으로 한 칸 위로',
+        body: '루트에 닿을 때까지 반복합니다. 결과는 자식에서 부모 순서로 쌓입니다.',
         tone: 'emerald',
       },
     ],
-    diagramTitle: '수집 방향과 listeners[]',
-    diagramNodes: FIBER_NODES_KO,
-    listenersTitle: 'listeners[]',
-    notes: [
-      'capture 수집: 위에서 아래로 실행되도록 역순으로 정리됩니다.',
-      'bubble 수집: target → 부모 순서 그대로 유지됩니다.',
-    ],
+    note: 'HostComponent만 본다는 점이 중요합니다. 함수 컴포넌트 Fiber에는 DOM prop이 없으므로 건너뜁니다.',
   },
-  realCode: {
-    step: 6,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    fileLabel: 'DOMPluginEventSystem.js',
-    code: REAL_CODE,
-    explanation: {
-      label: '설명',
-      body: 'targetFiber에서 시작해 부모 방향으로 올라갑니다. 각 Fiber에서 reactEventName에 해당하는 listener를 찾고, 발견되면 DispatchListener 형태로 listeners 배열에 추가됩니다.',
+  phases: {
+    badge: '02',
+    eyebrow: 'capture vs bubble',
+    title: '같은 방향으로 모으고, 실행에서 갈린다',
+    description:
+      '수집은 둘 다 자식에서 부모로 올라가며 합니다. 방향이 갈리는 것은 실행할 때입니다.',
+    capture: {
+      label: 'capture 단계',
+      caption: '모은 뒤 역순으로 실행합니다. 부모가 먼저 반응합니다.',
+      propName: 'onClickCapture',
+      order: ['Section (부모)', 'Div', 'Button (target)'],
     },
-    fileLocation: {
-      label: '파일 위치',
-      path: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    bubble: {
+      label: 'bubble 단계',
+      caption: '모은 순서 그대로 실행합니다. target이 먼저 반응합니다.',
+      propName: 'onClick',
+      order: ['Button (target)', 'Div', 'Section (부모)'],
     },
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
+    note: '수집 자체는 한 방향뿐이라 순회 비용이 절반입니다. 방향 차이는 실행 루프의 반복 방향으로만 처리합니다.',
   },
-  collector: {
-    step: 7,
-    eyebrow: 'listener-collector',
-    title: 'Listener Collector',
-    code: HERO_CODE,
-    targetSelectorLabel: '이벤트 발생 위치 선택',
-    targets: [
-      { value: 'section', label: 'section' },
-      { value: 'div', label: 'div' },
-      { value: 'button', label: 'button', recommended: true },
+  order: {
+    badge: '03',
+    eyebrow: 'example',
+    title: '예제에서 실제로 불리는 순서',
+    description:
+      'section에 onClickCapture, div와 button에 onClick이 있을 때 button을 클릭하면 이 순서로 실행됩니다.',
+    headers: ['순서', '단계', '실행되는 핸들러', '어느 Fiber'],
+    rows: [
+      {
+        step: '1',
+        phase: 'capture',
+        handler: 'handleSectionCapture',
+        fiber: 'Section Fiber',
+      },
+      {
+        step: '2',
+        phase: 'bubble',
+        handler: 'handleButtonClick',
+        fiber: 'Button Fiber (target)',
+      },
+      {
+        step: '3',
+        phase: 'bubble',
+        handler: 'handleDivClick',
+        fiber: 'Div Fiber',
+      },
     ],
-    defaultTarget: 'button',
-    tabs: [
-      { value: 'capture', label: 'Capture 보기' },
-      { value: 'bubble', label: 'Bubble 보기' },
-    ],
-    defaultTab: 'capture',
-    captureTitle: 'Capture phase listeners (부모 → 자식)',
-    bubbleTitle: 'Bubble phase listeners (자식 → 부모)',
-    emptyMessage: '이 phase에서 수집된 listener가 없습니다.',
-    currentSelectionLabel: '현재 선택 위치',
-    states: {
-      button: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [
-          { step: '1', handler: 'button click (handleButtonClick)', tone: 'teal' },
-          { step: '2', handler: 'div click (handleDivClick)', tone: 'teal' },
-        ],
-        currentLabel: '<button>저장</button>',
-      },
-      div: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [{ step: '1', handler: 'div click (handleDivClick)', tone: 'teal' }],
-        currentLabel: '<div>',
-      },
-      section: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [],
-        currentLabel: '<section>',
-      },
-    },
+    note: 'button의 onClick에서 e.stopPropagation()을 부르면 3번이 실행되지 않습니다. 1번은 이미 끝났으므로 되돌아가지 않습니다.',
   },
-  mission: {
-    step: 8,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        title: 'accumulateSinglePhaseListeners를 찾는다',
-        body: '함수 정의 위치와 호출 시점을 확인한다.',
-      },
-      {
-        title: 'targetFiber에서 시작해 부모 방향으로 이동하는지 확인한다',
-        body: 'while 루프 조건과 초기값을 따라간다.',
-      },
-      {
-        title: 'instance.return으로 올라가는 흐름을 본다',
-        body: '루프 종료 조건과 부모 이동 순서를 확인한다.',
-      },
-      {
-        title: 'getListener 결과가 listeners 배열에 들어가는지 확인한다',
-        body: 'push 호출 직전의 분기를 따라간다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 9,
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: 'React는 Fiber 경로를 따라 listener를 수집한다.',
-        body: 'target Fiber에서 시작해 부모 방향으로 올라가며 listener를 찾습니다.',
-        tone: 'teal',
-      },
-      {
-        title: 'capture와 bubble은 서로 다른 reactEventName을 기준으로 모인다.',
-        body: 'onClickCapture와 onClick은 서로 다른 phase의 listener로 분리됩니다.',
-        tone: 'violet',
-      },
-      {
-        title: '실제 실행은 dispatchQueue가 담당한다.',
-        body: '수집된 listener들은 DispatchQueue에 담긴 뒤 이후 단계에서 순서대로 실행됩니다.',
-        tone: 'rose',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: '볼 것',
+    lookFor: 'accumulateSinglePhaseListeners, getListener, instance.return',
+    whyLabel: '설명',
+    why: 'while 루프가 instance.return을 따라간다는 점이, 수집 기준이 DOM 부모가 아니라 Fiber 부모라는 증거입니다.',
+    code: ACCUMULATE_CODE,
+    primaryCta: 'DOMPluginEventSystem.js 읽기',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'dispatchQueue 실행 순서 보기',
-    description: '수집된 listener들이 dispatchQueue에서 어떤 순서로 실행되는지 살펴봅니다.',
+    title: '모아 둔 목록은 어떻게 실행되는가',
+    description:
+      'capture를 뒤집고 stopPropagation을 확인하는 실행 루프를 다음 페이지에서 직접 읽습니다.',
     cta: '다음 페이지로 이동',
     href: '/dispatch-queue',
   },
 };
 
-const en: ListenerCollectionContent = {
+const EN_NODES: FiberNode[] = [
+  { id: 'section', name: 'Section Fiber', depth: 0, prop: 'onClickCapture', propKind: 'capture' },
+  { id: 'div', name: 'Div Fiber', depth: 1, prop: 'onClick', propKind: 'bubble' },
+  { id: 'button', name: 'Button Fiber', depth: 2, prop: 'onClick', propKind: 'bubble' },
+];
+
+const en: AccumulateListenersContent = {
   hero: {
     badge: 'Event System · 8/10',
-    titleLines: ['React collects event listeners', 'along the Fiber path'],
+    title: { line1: 'Listeners are gathered from Fibers', line2: 'never from the DOM' },
     description:
-      'Starting at the target Fiber, React walks toward the parent direction to gather both capture and bubble listeners.',
-    code: { fileLabel: 'JSX', code: HERO_CODE_EN },
-    diagram: {
-      title: 'Fiber tree (what React sees)',
-      nodes: FIBER_NODES_EN,
-    },
+      'Starting at the clicked Fiber, React climbs return pointers to the root exactly once. Handlers met along that path are what will run.',
+    diagramBadge: 'accumulate',
+    diagramCaption: 'target → return → root',
+    treeLabel: 'Fiber tree',
+    nodes: EN_NODES,
+    tailLabel: 'collected upward from the target Fiber',
   },
-  question: {
-    eyebrow: "Today's question",
-    title: 'In nested components, how does React prepare which handler runs in which order?',
-    badges: [
-      'React collects along the Fiber path',
-      'capture and bubble are collected in different directions',
-      'Final execution is handled by the dispatchQueue',
-    ],
-  },
-  nested: {
-    step: 1,
-    eyebrow: 'nested-jsx',
-    title: 'Nested JSX example',
-    fileLabel: 'JSX',
-    code: HERO_CODE_EN,
-    legend: [
-      { label: 'onClickCapture', description: 'capture phase', tone: 'violet' },
-      { label: 'onClick', description: 'bubble phase', tone: 'teal' },
-    ],
-  },
-  compare: {
-    step: 2,
-    eyebrow: 'dom-vs-fiber',
-    title: 'DOM tree vs Fiber tree',
-    dom: {
-      title: 'DOM tree (what the browser sees)',
-      lines: ['<section>', '└─ <div>', '   └─ <button>Save</button>'],
-    },
-    fiber: {
-      title: 'Fiber tree (what React sees)',
-      lines: ['Section Fiber', '└─ Div Fiber', '   └─ Button Fiber'],
-    },
-    note: 'The shape is similar, but React follows the Fiber path — not the DOM path — to find listeners.',
-  },
-  capture: {
-    step: 3,
-    eyebrow: 'capture-collection',
-    title: 'capture listener collection',
-    subtitle: 'Prepared so it runs parent → child',
-    flow: [
-      'Button Fiber (start)',
-      'Div Fiber (parent)',
-      'Section Fiber (grandparent)',
-      'check onClickCapture',
-    ],
-    resultTitle: 'Final result (capture phase)',
-    results: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-    note: 'In the capture phase, handlers run from the parent toward the child.',
-  },
-  bubble: {
-    step: 4,
-    eyebrow: 'bubble-collection',
-    title: 'bubble listener collection',
-    subtitle: 'Kept in child → parent order',
-    flow: ['Button Fiber (start)', 'Div Fiber (parent)', 'Section Fiber (grandparent)'],
-    resultTitle: 'Final result (bubble phase)',
-    results: [
-      { step: '1', handler: 'button click (handleButtonClick)', tone: 'teal' },
-      { step: '2', handler: 'div click (handleDivClick)', tone: 'teal' },
-    ],
-    note: 'In the bubble phase, handlers run from the target toward the parents.',
-  },
-  accumulate: {
-    step: 5,
-    eyebrow: 'accumulate-flow',
-    title: 'accumulateSinglePhaseListeners flow',
+  walk: {
+    badge: '01',
+    eyebrow: 'accumulateSinglePhaseListeners',
+    title: 'One climb, gathering as it goes',
+    description:
+      'The tree is not walked twice. React climbs once from target to root collecting handlers, and only reverses at the end for capture.',
     steps: [
       {
-        title: 'Start from targetFiber',
-        body: 'Begin at the Fiber where the event fired.',
+        id: 'start',
+        badge: 'step 1',
+        title: 'Start at the target Fiber',
+        body: 'The Fiber located on the previous page is the starting point.',
         tone: 'sky',
       },
       {
-        title: 'Move to parent via instance.return',
-        body: 'Climb the Fiber tree toward the parent.',
-        tone: 'cyan',
-      },
-      {
-        title: 'Check whether it is a HostComponent',
-        body: 'Inspect whether the Fiber is a host component that can hold listeners.',
+        id: 'read-prop',
+        badge: 'step 2',
+        title: 'Pick which prop to read',
+        body: 'onClickCapture in the capture phase, onClick in the bubble phase.',
         tone: 'violet',
       },
       {
-        title: 'Find the reactEventName listener',
-        body: 'Look up the per-phase prop like onClick / onClickCapture.',
-        tone: 'teal',
+        id: 'push',
+        badge: 'step 3',
+        title: 'Push it when present',
+        body: 'Only added when the Fiber is a HostComponent and that prop is a function.',
+        tone: 'indigo',
       },
       {
-        title: 'Push into the listeners array',
-        body: 'Accumulate the found dispatchListener into the listeners array.',
+        id: 'reverse',
+        badge: 'step 4',
+        title: 'Move up through return',
+        body: 'Repeat until the root. The result stacks child-first, parent-last.',
         tone: 'emerald',
       },
     ],
-    diagramTitle: 'Collection direction and listeners[]',
-    diagramNodes: FIBER_NODES_EN,
-    listenersTitle: 'listeners[]',
-    notes: [
-      'Capture collection: reversed so it runs top → bottom.',
-      'Bubble collection: kept in target → parent order.',
-    ],
+    note: 'Only HostComponents are inspected. Function component Fibers hold no DOM props, so they are skipped.',
   },
-  realCode: {
-    step: 6,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    fileLabel: 'DOMPluginEventSystem.js',
-    code: REAL_CODE,
-    explanation: {
-      label: 'Explanation',
-      body: 'Starting at targetFiber, it walks toward the parent direction. At each Fiber it looks up the listener for the reactEventName; whenever found, the dispatchListener is added to the listeners array.',
+  phases: {
+    badge: '02',
+    eyebrow: 'capture vs bubble',
+    title: 'Same collection order, different execution',
+    description:
+      'Both phases collect by climbing from child to parent. The direction only diverges at execution time.',
+    capture: {
+      label: 'Capture phase',
+      caption: 'Collected, then run in reverse — the parent reacts first.',
+      propName: 'onClickCapture',
+      order: ['Section (parent)', 'Div', 'Button (target)'],
     },
-    fileLocation: {
-      label: 'File location',
-      path: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    bubble: {
+      label: 'Bubble phase',
+      caption: 'Run in the order collected — the target reacts first.',
+      propName: 'onClick',
+      order: ['Button (target)', 'Div', 'Section (parent)'],
     },
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
-    },
+    note: 'Because collection runs in one direction only, traversal cost is halved. Direction is handled purely by the execution loop.',
   },
-  collector: {
-    step: 7,
-    eyebrow: 'listener-collector',
-    title: 'Listener Collector',
-    code: HERO_CODE_EN,
-    targetSelectorLabel: 'Pick where the event fires',
-    targets: [
-      { value: 'section', label: 'section' },
-      { value: 'div', label: 'div' },
-      { value: 'button', label: 'button', recommended: true },
+  order: {
+    badge: '03',
+    eyebrow: 'example',
+    title: 'The order that actually fires',
+    description:
+      'With onClickCapture on section and onClick on div and button, clicking the button runs them in this order.',
+    headers: ['Order', 'Phase', 'Handler that runs', 'Which Fiber'],
+    rows: [
+      {
+        step: '1',
+        phase: 'capture',
+        handler: 'handleSectionCapture',
+        fiber: 'Section Fiber',
+      },
+      {
+        step: '2',
+        phase: 'bubble',
+        handler: 'handleButtonClick',
+        fiber: 'Button Fiber (target)',
+      },
+      {
+        step: '3',
+        phase: 'bubble',
+        handler: 'handleDivClick',
+        fiber: 'Div Fiber',
+      },
     ],
-    defaultTarget: 'button',
-    tabs: [
-      { value: 'capture', label: 'Capture view' },
-      { value: 'bubble', label: 'Bubble view' },
-    ],
-    defaultTab: 'capture',
-    captureTitle: 'Capture phase listeners (parent → child)',
-    bubbleTitle: 'Bubble phase listeners (child → parent)',
-    emptyMessage: 'No listeners collected for this phase.',
-    currentSelectionLabel: 'Current selection',
-    states: {
-      button: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [
-          { step: '1', handler: 'button click (handleButtonClick)', tone: 'teal' },
-          { step: '2', handler: 'div click (handleDivClick)', tone: 'teal' },
-        ],
-        currentLabel: '<button>Save</button>',
-      },
-      div: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [{ step: '1', handler: 'div click (handleDivClick)', tone: 'teal' }],
-        currentLabel: '<div>',
-      },
-      section: {
-        capture: [{ step: '1', handler: 'section capture (handleSectionCapture)', tone: 'violet' }],
-        bubble: [],
-        currentLabel: '<section>',
-      },
-    },
+    note: 'Calling e.stopPropagation() in the button onClick removes step 3. Step 1 already ran and is never undone.',
   },
-  mission: {
-    step: 8,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
-    items: [
-      {
-        title: 'Find accumulateSinglePhaseListeners',
-        body: 'Locate the function definition and where it is called.',
-      },
-      {
-        title: 'Confirm it starts at targetFiber and moves toward parents',
-        body: 'Trace the while-loop initial value and condition.',
-      },
-      {
-        title: 'See the instance.return upward step',
-        body: 'Read how the parent traversal terminates.',
-      },
-      {
-        title: 'Confirm getListener results land in the listeners array',
-        body: 'Inspect the branch right before push is called.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 9,
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'React collects listeners along the Fiber path.',
-        body: 'Starting at the target Fiber, it climbs toward the parent to gather listeners.',
-        tone: 'teal',
-      },
-      {
-        title: 'capture and bubble are collected via different reactEventNames.',
-        body: 'onClickCapture and onClick are separated into different phase listeners.',
-        tone: 'violet',
-      },
-      {
-        title: 'Actual execution is handled by the dispatchQueue.',
-        body: 'The collected listeners go into the DispatchQueue and are invoked in order later.',
-        tone: 'rose',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: 'Look for',
+    lookFor: 'accumulateSinglePhaseListeners, getListener, instance.return',
+    whyLabel: 'Why',
+    why: 'The while loop following instance.return proves the climb tracks Fiber parents rather than DOM parents.',
+    code: ACCUMULATE_CODE,
+    primaryCta: 'Read DOMPluginEventSystem.js',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'dispatchQueue execution order',
-    description: 'See the order in which the collected listeners run inside the dispatchQueue.',
+    title: 'How the gathered list gets executed',
+    description:
+      'Next we read the loop that reverses capture and checks stopPropagation before each listener.',
     cta: 'Go to the next page',
     href: '/dispatch-queue',
   },
 };
 
-export const listenerCollectionContent: Record<Locale, ListenerCollectionContent> = { ko, en };
+export const accumulateListenersContent: Record<Locale, AccumulateListenersContent> = { ko, en };

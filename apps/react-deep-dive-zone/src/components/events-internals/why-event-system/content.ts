@@ -1,111 +1,91 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type FlowStep = {
-  title: string;
-  description: string;
-  tone: Tone;
+export type LayerId = 'jsx' | 'system' | 'handler';
+
+export type Layer = {
+  id: LayerId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type LayerRow = {
+export type PipelineStepId =
+  | 'jsx'
+  | 'root-listener'
+  | 'priority'
+  | 'target'
+  | 'plugin'
+  | 'synthetic'
+  | 'accumulate'
+  | 'dispatch';
+
+export type PipelineStep = {
+  id: PipelineStepId;
+  num: string;
   title: string;
   description: string;
-  tone: Tone;
+  tone: ToneKey;
 };
+
+export type EntryFileId = 'root' | 'listener' | 'plugin';
 
 export type EntryFile = {
+  id: EntryFileId;
   fileName: string;
-  badge: string;
+  role: string;
   description: string;
-  tone: Tone;
-};
-
-export type TakeawayCard = {
-  title: string;
-  body: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
 export type WhyEventSystemContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    highlight: string;
+    title: { line1: string; line2: string };
     description: string;
-    codeCard: {
-      fileLabel: string;
-      code: string;
-    };
-    diagram: {
-      title: string;
-      columns: {
-        title: string;
-        subtitle: string;
-        kind: 'code' | 'bullet';
-        code?: string;
-        bullets?: string[];
-        tone: Tone;
-      }[];
-    };
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-    badges: { label: string; description: string; tone: Tone }[];
-  };
-  userOnClick: {
-    eyebrow: string;
-    title: string;
-    fileName: string;
-    code: string;
-    explanation: {
-      label: string;
-      body: string;
-    };
-    badges: string[];
+    diagramBadge: string;
+    diagramCaption: string;
+    layers: Layer[];
   };
   misconception: {
-    eyebrow: string;
-    title: string;
-    misconception: {
-      label: string;
-      title: string;
-      code: string;
-      question: string;
-    };
-    reality: {
-      label: string;
-      title: string;
-      flow: { label: string; tone: Tone }[];
-    };
-  };
-  overview: {
-    eyebrow: string;
-    title: string;
-    steps: FlowStep[];
-  };
-  middle: {
-    eyebrow: string;
-    title: string;
-    layers: LayerRow[];
-    closingNote: string;
-  };
-  sourceMap: {
-    eyebrow: string;
-    title: string;
-    entries: EntryFile[];
-  };
-  mission: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    items: string[];
+    wrong: { label: string; caption: string; code: string };
+    right: { label: string; caption: string; steps: string[] };
+    note: string;
   };
-  takeaways: {
+  pipeline: {
+    badge: string;
     eyebrow: string;
     title: string;
-    cards: TakeawayCard[];
+    description: string;
+    steps: PipelineStep[];
+    note: string;
+  };
+  entryFiles: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    files: EntryFile[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -116,251 +96,214 @@ export type WhyEventSystemContent = {
   };
 };
 
-const HERO_CODE = `function SaveButton() {
-  const handleClick = () => {
-    console.log("저장 버튼 클릭!");
-  };
+const NAIVE_CODE = `// 우리가 상상하는 모습
+const button = document.getElementById('save');
 
-  return <button onClick={handleClick}>저장</button>;
+button.addEventListener('click', handleClick);`;
+
+const NAIVE_CODE_EN = `// what we picture happening
+const button = document.getElementById('save');
+
+button.addEventListener('click', handleClick);`;
+
+const DISPATCH_CODE = `export function dispatchEventForPluginEventSystem(
+  domEventName,
+  eventSystemFlags,
+  nativeEvent,
+  targetInst,
+  targetContainer,
+) {
+  batchedUpdates(() =>
+    dispatchEventsForPlugins(
+      domEventName,
+      eventSystemFlags,
+      nativeEvent,
+      targetInst,
+      targetContainer,
+    ),
+  );
+}
+
+function dispatchEventsForPlugins(...) {
+  const nativeEventTarget = getEventTarget(nativeEvent);
+  const dispatchQueue = [];
+
+  extractEvents(dispatchQueue, ...);
+  processDispatchQueue(dispatchQueue, eventSystemFlags);
 }`;
 
-const HERO_CODE_EN = `function SaveButton() {
-  const handleClick = () => {
-    console.log("Save button clicked!");
-  };
-
-  return <button onClick={handleClick}>Save</button>;
-}`;
-
-const USER_CODE = `function SaveButton() {
-  const handleClick = () => {
-    alert("저장 완료!");
-  };
-
-  return <button onClick={handleClick}>저장</button>;
-}`;
-
-const USER_CODE_EN = `function SaveButton() {
-  const handleClick = () => {
-    alert("Saved!");
-  };
-
-  return <button onClick={handleClick}>Save</button>;
-}`;
+const DOM_PLUGIN_EVENT_SYSTEM_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/DOMPluginEventSystem.js';
 
 const ko: WhyEventSystemContent = {
   hero: {
     badge: '이벤트 시스템 · 1/10단계',
-    titleLines: ['React 이벤트 시스템은', '왜 따로 존재할까?'],
-    highlight: 'onClick은 단순히 DOM에 붙은 listener가 아닙니다.',
+    title: { line1: 'onClick은 button에 붙은', line2: 'listener가 아니다' },
     description:
-      'React는 Native Event를 수신하고, Fiber 트리 기준으로 적절한 핸들러를 찾아 실행합니다.',
-    codeCard: {
-      fileLabel: 'JSX',
-      code: HERO_CODE,
-    },
-    diagram: {
-      title: 'onClick은 이 흐름을 거칩니다',
-      columns: [
-        {
-          title: 'JSX 코드',
-          subtitle: 'onClick prop 선언',
-          kind: 'code',
-          code: '<button onClick={handleClick}>저장</button>',
-          tone: 'sky',
-        },
-        {
-          title: 'React Event System',
-          subtitle: '중간 처리 계층',
-          kind: 'bullet',
-          bullets: [
-            'Native Event 수신',
-            'Fiber 트리 기준 탐색',
-            '우선순위 & 플러그인 처리',
-            'SyntheticEvent 생성',
-            'listener 수집 & 실행',
-          ],
-          tone: 'violet',
-        },
-        {
-          title: 'handleClick 실행',
-          subtitle: '사용자 함수 호출',
-          kind: 'code',
-          code: 'const handleClick = () => {\n  console.log("저장!");\n};',
-          tone: 'emerald',
-        },
-      ],
-    },
-  },
-  question: {
-    eyebrow: '오늘 해결할 질문',
-    title: 'React는 왜 브라우저 이벤트를 그대로 handler에 넘기지 않고, 중간 이벤트 시스템을 둘까?',
-    badges: [
-      { label: '이벤트 위임', description: '생성 최적화', tone: 'sky' },
-      { label: 'React 트리 기준 실행', description: '정확한 핸들러 탐색', tone: 'cyan' },
-      { label: '우선순위 연결', description: '스케줄링과 통합', tone: 'violet' },
+      'React는 root 하나에 native listener를 걸어 두고, 이벤트가 들어오면 Fiber 트리를 훑어 실행할 핸들러를 직접 찾습니다.',
+    diagramBadge: 'event layer',
+    diagramCaption: 'jsx → system → handler',
+    layers: [
+      {
+        id: 'jsx',
+        label: '<button onClick={handleClick}>',
+        caption: '우리가 선언한 prop',
+        tone: 'sky',
+      },
+      {
+        id: 'system',
+        label: 'React Event System',
+        caption: '수신 · 우선순위 · 플러그인 · 수집',
+        tone: 'violet',
+      },
+      {
+        id: 'handler',
+        label: 'handleClick()',
+        caption: '마지막에야 우리 함수가 불린다',
+        tone: 'emerald',
+      },
     ],
   },
-  userOnClick: {
-    eyebrow: 'user-view',
-    title: '사용자가 보는 onClick',
-    fileName: 'SaveButton.jsx',
-    code: USER_CODE,
-    explanation: {
-      label: '사용자 입장에서는',
-      body: '버튼을 클릭하면 handleClick이 실행되는 것처럼 보입니다.',
-    },
-    badges: ['코드가 간단하다', '직관적이다', '동작이 예측 가능해 보인다'],
-  },
   misconception: {
-    eyebrow: 'misconception-vs-reality',
-    title: '흔한 오해 vs 실제 구조',
-    misconception: {
-      label: '오해',
-      title: 'button DOM에 onClick listener가 직접 등록된다.',
-      code: '<button id="btn">저장</button>',
-      question: "addEventListener('click', ...) 직접 등록?",
+    badge: '01',
+    eyebrow: 'misconception',
+    title: 'button에는 listener가 없다',
+    description:
+      '개발자 도구로 button의 이벤트 리스너를 열어 보면 비어 있습니다. 클릭을 받는 것은 button이 아니라 React root입니다.',
+    wrong: {
+      label: '흔한 오해',
+      caption: 'JSX의 onClick이 그대로 addEventListener로 번역된다고 생각하기 쉽습니다.',
+      code: NAIVE_CODE,
     },
-    reality: {
+    right: {
       label: '실제 구조',
-      title:
-        'React root가 native event를 수신하고, 내부에서 target에 맞는 listener를 찾아 실행한다.',
-      flow: [
-        { label: 'Browser Native Event', tone: 'sky' },
-        { label: 'React Root', tone: 'cyan' },
-        { label: 'React 내부 이벤트 시스템', tone: 'violet' },
-        { label: '해당 Fiber의 onClick 실행', tone: 'emerald' },
+      caption: 'root에 걸린 하나의 listener가 모든 클릭을 먼저 받습니다.',
+      steps: [
+        '브라우저가 button에서 click 이벤트를 발생시킨다',
+        '이벤트가 버블링되어 React root에 도달한다',
+        'root의 native listener가 이벤트를 받는다',
+        'React가 target DOM으로 Fiber를 찾는다',
+        '그 Fiber의 onClick을 찾아 실행한다',
       ],
     },
+    note: '리스너가 노드 수만큼 필요 없다는 것이 이 구조의 첫 번째 이득입니다. 노드가 천 개여도 listener는 하나입니다.',
   },
-  overview: {
-    eyebrow: 'event-pipeline',
-    title: '이벤트 시스템 전체 미리보기',
+  pipeline: {
+    badge: '02',
+    eyebrow: 'pipeline',
+    title: '클릭 한 번이 지나는 여덟 칸',
+    description:
+      '이 챕터의 나머지 아홉 페이지는 이 여덟 칸을 하나씩 확대해 읽습니다. 지금은 순서만 잡아 두면 됩니다.',
     steps: [
-      { title: 'JSX onClick', description: 'onClick prop 선언', tone: 'sky' },
       {
-        title: 'root native listener',
-        description: 'React root가 하나의 listener로 이벤트 수신',
+        id: 'jsx',
+        num: '01',
+        title: 'JSX의 onClick prop',
+        description: 'Fiber의 props에 함수가 담길 뿐, DOM에는 아무것도 붙지 않습니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'root-listener',
+        num: '02',
+        title: 'root의 native listener',
+        description: 'createRoot가 지원하는 모든 이벤트 타입을 root 컨테이너에 미리 걸어 둡니다.',
         tone: 'cyan',
       },
       {
-        title: 'priority dispatch',
-        description: '이벤트 타입에 맞는 우선순위 결정 및 스케줄러 연동',
-        tone: 'teal',
-      },
-      {
-        title: 'DOM target → Fiber target',
-        description: 'DOM node를 Fiber node로 매핑',
-        tone: 'emerald',
-      },
-      {
-        title: 'Plugin Event System',
-        description: '이벤트 타입에 맞는 플러그인 로직 실행',
+        id: 'priority',
+        num: '03',
+        title: '우선순위 결정',
+        description: '이벤트 타입에 따라 discrete인지 continuous인지 나누고 lane을 고릅니다.',
         tone: 'amber',
       },
       {
+        id: 'target',
+        num: '04',
+        title: 'DOM target → Fiber',
+        description: 'event.target에 붙어 있는 내부 키로 대응하는 Fiber를 찾아냅니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'plugin',
+        num: '05',
+        title: 'Plugin Event System',
+        description: '이벤트 타입을 맡은 플러그인이 무엇을 만들지 결정합니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'synthetic',
+        num: '06',
         title: 'SyntheticEvent 생성',
-        description: 'NativeEvent를 감싸는 SyntheticEvent',
-        tone: 'violet',
-      },
-      {
-        title: 'capture / bubble 수집',
-        description: 'Fiber 트리를 따라 캡처 → 버블 listener 수집',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue 실행',
-        description: '수집된 listener를 순서대로 실행',
-        tone: 'rose',
-      },
-    ],
-  },
-  middle: {
-    eyebrow: 'middle-layer',
-    title: 'DOM 이벤트와 React 이벤트 사이의 중간 계층',
-    layers: [
-      {
-        title: 'Browser Native click event',
-        description: '브라우저가 발생시키는 실제 이벤트 (MouseEvent)',
-        tone: 'sky',
-      },
-      {
-        title: 'React DOM Event Layer',
-        description: 'React 내부 이벤트 시스템. 우선순위, 플러그인, SyntheticEvent, 위임을 담당',
-        tone: 'violet',
-      },
-      {
-        title: 'React handler props (onClick / onClickCapture)',
-        description: '개발자가 작성한 핸들러 실행',
-        tone: 'emerald',
-      },
-    ],
-    closingNote:
-      'React 이벤트 시스템은 브라우저 이벤트와 React 컴포넌트 이벤트 사이의 번역기입니다.',
-  },
-  sourceMap: {
-    eyebrow: 'source-entry-map',
-    title: '실제 코드 진입점 지도',
-    entries: [
-      {
-        fileName: 'ReactDOMRoot.js',
-        badge: 'root 초기화',
-        description:
-          'createRoot 호출 시 root container 생성 및 이벤트 시스템 초기화 흐름을 확인합니다.',
-        tone: 'sky',
-      },
-      {
-        fileName: 'DOMPluginEventSystem.js',
-        badge: '이벤트 시스템 중심',
-        description: '플러그인 시스템, 이벤트 추출, listener 수집의 중심 파일입니다.',
-        tone: 'violet',
-      },
-      {
-        fileName: 'ReactDOMEventListener.js',
-        badge: 'native event 수신',
-        description:
-          'root에 등록된 native listener가 이벤트를 수신하고 우선순위와 함께 dispatch합니다.',
-        tone: 'emerald',
-      },
-    ],
-  },
-  mission: {
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
-    description: '실제 React 소스를 열어 아래 5가지 흐름을 손으로 확인해 보세요.',
-    items: [
-      'React 공식 이벤트 문서에서 onClick과 전파 설명 확인',
-      'ReactDOMRoot.js 이름 기억하기',
-      'DOMPluginEventSystem.js가 이벤트 파트 중심 파일임을 확인하기',
-      '이벤트가 root에서 수신된다는 구조를 코드에서 확인하기',
-      'SyntheticEvent가 생성되는 위치를 찾아보기',
-    ],
-  },
-  takeaways: {
-    eyebrow: 'key-takeaways',
-    title: '이번 페이지에서 반드시 기억할 것',
-    cards: [
-      {
-        title: 'React의 onClick은 내부 이벤트 시스템을 거쳐 실행된다.',
-        body: 'root → 이벤트 시스템 → Fiber → handler 실행 순으로 흐른다.',
-        tone: 'blue',
-      },
-      {
-        title: '브라우저 이벤트와 React handler 사이에는 해석 계층이 있다.',
-        body: '우선순위, 플러그인, SyntheticEvent 등이 여기서 관여한다.',
+        description: 'native event를 감싼 React 전용 이벤트 객체를 만듭니다.',
         tone: 'teal',
       },
       {
-        title: '이후 페이지에서는 이 계층을 단계별로 분해한다.',
-        body: '각 단계의 역할을 이해해야 디버깅과 성능 분석이 쉬워진다.',
+        id: 'accumulate',
+        num: '07',
+        title: 'capture / bubble 수집',
+        description: 'Fiber를 타고 올라가며 실행할 리스너를 순서대로 모읍니다.',
+        tone: 'blue',
+      },
+      {
+        id: 'dispatch',
+        num: '08',
+        title: 'dispatchQueue 실행',
+        description: '모아 둔 리스너를 capture는 역순, bubble은 정순으로 실행합니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '이벤트 시스템은 브라우저 이벤트와 React 핸들러 사이의 번역기입니다. 여덟 칸 전부가 그 번역 과정입니다.',
+  },
+  entryFiles: {
+    badge: '03',
+    eyebrow: 'entry files',
+    title: '열어 둘 파일 세 개',
+    description:
+      '이벤트 코드는 react-dom-bindings/src/events 아래에 모여 있습니다. 그중 이 셋만 열어 두면 챕터 전체를 따라갈 수 있습니다.',
+    files: [
+      {
+        id: 'root',
+        fileName: 'ReactDOMRoot.js',
+        role: 'root 초기화',
+        description: 'createRoot가 컨테이너를 만들고 이벤트 시스템을 켜는 지점입니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'listener',
+        fileName: 'ReactDOMEventListener.js',
+        role: 'native event 수신',
+        description: 'root에 걸린 리스너가 이벤트를 받아 우선순위와 함께 넘기는 쪽입니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'plugin',
+        fileName: 'DOMPluginEventSystem.js',
+        role: '이벤트 시스템 중심',
+        description: '플러그인 실행, 리스너 수집, dispatchQueue 처리가 전부 여기 있습니다.',
         tone: 'violet',
       },
     ],
+    note: '셋 중 DOMPluginEventSystem.js가 가장 깁니다. 나머지 두 파일은 이 파일로 들어가는 입구라고 봐도 됩니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: '볼 것',
+    lookFor: 'dispatchEventForPluginEventSystem, extractEvents, processDispatchQueue',
+    whyLabel: '설명',
+    why: '이벤트를 만들고(extract) 실행하는(process) 두 단계가 한 함수 안에 나란히 있습니다. 챕터 후반의 뼈대입니다.',
+    code: DISPATCH_CODE,
+    primaryCta: 'DOMPluginEventSystem.js 읽기',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'createRoot는 왜 root에 Native Event를 등록할까?',
-    description: '그렇다면 React는 이 이벤트 시스템을 언제 준비할까?',
+    title: 'root에 리스너는 언제 걸리는가',
+    description:
+      'createRoot가 호출되는 순간 무슨 이벤트가 몇 개나 등록되는지 다음 페이지에서 세어 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/root-native-event',
   },
@@ -369,218 +312,172 @@ const ko: WhyEventSystemContent = {
 const en: WhyEventSystemContent = {
   hero: {
     badge: 'Event System · 1/10',
-    titleLines: ['Why does React have', 'its own event system?'],
-    highlight: 'onClick is not a plain listener bound to the DOM button.',
+    title: { line1: 'onClick is not a listener', line2: 'attached to the button' },
     description:
-      'React receives the native event and walks the Fiber tree to find the right handler to run.',
-    codeCard: {
-      fileLabel: 'JSX',
-      code: HERO_CODE_EN,
-    },
-    diagram: {
-      title: 'How onClick actually travels',
-      columns: [
-        {
-          title: 'JSX code',
-          subtitle: 'onClick prop declaration',
-          kind: 'code',
-          code: '<button onClick={handleClick}>Save</button>',
-          tone: 'sky',
-        },
-        {
-          title: 'React Event System',
-          subtitle: 'Intermediate processing layer',
-          kind: 'bullet',
-          bullets: [
-            'Receive Native Event',
-            'Walk the Fiber tree',
-            'Priority & plugin handling',
-            'Create SyntheticEvent',
-            'Collect & execute listeners',
-          ],
-          tone: 'violet',
-        },
-        {
-          title: 'handleClick runs',
-          subtitle: 'User function is invoked',
-          kind: 'code',
-          code: 'const handleClick = () => {\n  console.log("Save!");\n};',
-          tone: 'emerald',
-        },
-      ],
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title:
-      "Why doesn't React pass the browser event straight to your handler — what is the middle event system for?",
-    badges: [
-      { label: 'Event delegation', description: 'Creation optimized', tone: 'sky' },
-      { label: 'React-tree-aware', description: 'Exact handler lookup', tone: 'cyan' },
-      { label: 'Priority hookup', description: 'Wired to scheduling', tone: 'violet' },
+      'React keeps native listeners on a single root and, when an event arrives, walks the Fiber tree to find the handler to run.',
+    diagramBadge: 'event layer',
+    diagramCaption: 'jsx → system → handler',
+    layers: [
+      {
+        id: 'jsx',
+        label: '<button onClick={handleClick}>',
+        caption: 'the prop we declared',
+        tone: 'sky',
+      },
+      {
+        id: 'system',
+        label: 'React Event System',
+        caption: 'receive · prioritize · plugins · collect',
+        tone: 'violet',
+      },
+      {
+        id: 'handler',
+        label: 'handleClick()',
+        caption: 'our function runs only at the end',
+        tone: 'emerald',
+      },
     ],
   },
-  userOnClick: {
-    eyebrow: 'user-view',
-    title: 'onClick as the user sees it',
-    fileName: 'SaveButton.jsx',
-    code: USER_CODE_EN,
-    explanation: {
-      label: 'From the user point of view',
-      body: 'Click the button and handleClick appears to run directly.',
-    },
-    badges: ['Simple code', 'Intuitive', 'Behavior looks predictable'],
-  },
   misconception: {
-    eyebrow: 'misconception-vs-reality',
-    title: 'Common misconception vs. real structure',
-    misconception: {
-      label: 'Misconception',
-      title: 'An onClick listener is attached directly to the button DOM.',
-      code: '<button id="btn">Save</button>',
-      question: "addEventListener('click', ...) attached directly?",
+    badge: '01',
+    eyebrow: 'misconception',
+    title: 'The button carries no listener',
+    description:
+      'Open the event listeners panel on that button in devtools and it is empty. What receives the click is the React root, not the button.',
+    wrong: {
+      label: 'The common assumption',
+      caption: 'It is easy to assume the JSX onClick translates straight into addEventListener.',
+      code: NAIVE_CODE_EN,
     },
-    reality: {
-      label: 'Real structure',
-      title:
-        'The React root receives the native event, then internally finds the right listener for the target and runs it.',
-      flow: [
-        { label: 'Browser Native Event', tone: 'sky' },
-        { label: 'React Root', tone: 'cyan' },
-        { label: 'React internal event system', tone: 'violet' },
-        { label: "Run that Fiber's onClick", tone: 'emerald' },
+    right: {
+      label: 'The real structure',
+      caption: 'A single listener on the root receives every click first.',
+      steps: [
+        'The browser fires a click event on the button',
+        'The event bubbles up and reaches the React root',
+        "The root's native listener receives it",
+        'React maps the target DOM node back to a Fiber',
+        "It finds that Fiber's onClick and runs it",
       ],
     },
+    note: 'The first payoff is that listeners do not scale with nodes. A thousand nodes still need only one listener.',
   },
-  overview: {
-    eyebrow: 'event-pipeline',
-    title: 'The full event system at a glance',
+  pipeline: {
+    badge: '02',
+    eyebrow: 'pipeline',
+    title: 'Eight stops behind one click',
+    description:
+      'The remaining nine pages of this chapter zoom into these eight stops one at a time. For now the order is enough.',
     steps: [
-      { title: 'JSX onClick', description: 'Declare the onClick prop', tone: 'sky' },
       {
-        title: 'root native listener',
-        description: 'The React root receives the event via one listener',
+        id: 'jsx',
+        num: '01',
+        title: 'The onClick prop in JSX',
+        description: 'The function only lands in the Fiber props; nothing attaches to the DOM.',
+        tone: 'sky',
+      },
+      {
+        id: 'root-listener',
+        num: '02',
+        title: 'Native listeners on the root',
+        description: 'createRoot pre-attaches every supported event type to the root container.',
         tone: 'cyan',
       },
       {
-        title: 'priority dispatch',
-        description: 'Pick a priority for the event type and hand off to the scheduler',
-        tone: 'teal',
-      },
-      {
-        title: 'DOM target → Fiber target',
-        description: 'Map the DOM node back to its Fiber',
-        tone: 'emerald',
-      },
-      {
-        title: 'Plugin Event System',
-        description: 'Run the right plugin logic for the event type',
+        id: 'priority',
+        num: '03',
+        title: 'Pick a priority',
+        description: 'Split discrete from continuous by event type and choose a lane.',
         tone: 'amber',
       },
       {
-        title: 'SyntheticEvent creation',
-        description: 'Wrap the native event into a SyntheticEvent',
+        id: 'target',
+        num: '04',
+        title: 'DOM target → Fiber',
+        description: 'Use the internal key on event.target to find the matching Fiber.',
+        tone: 'indigo',
+      },
+      {
+        id: 'plugin',
+        num: '05',
+        title: 'Plugin Event System',
+        description: 'The plugin that owns this event type decides what to build.',
         tone: 'violet',
       },
       {
-        title: 'capture / bubble collection',
-        description: 'Walk the Fiber tree to gather capture → bubble listeners',
-        tone: 'blue',
-      },
-      {
-        title: 'dispatchQueue execution',
-        description: 'Invoke the collected listeners in order',
-        tone: 'rose',
-      },
-    ],
-  },
-  middle: {
-    eyebrow: 'middle-layer',
-    title: 'The middle layer between DOM events and React events',
-    layers: [
-      {
-        title: 'Browser native click event',
-        description: 'The real event the browser fires (MouseEvent).',
-        tone: 'sky',
-      },
-      {
-        title: 'React DOM Event Layer',
-        description:
-          "React's internal event system. Handles priority, plugins, SyntheticEvent, delegation.",
-        tone: 'violet',
-      },
-      {
-        title: 'React handler props (onClick / onClickCapture)',
-        description: 'The handler you actually wrote runs.',
-        tone: 'emerald',
-      },
-    ],
-    closingNote:
-      "React's event system is a translator between browser events and React component events.",
-  },
-  sourceMap: {
-    eyebrow: 'source-entry-map',
-    title: 'Source entry-point map',
-    entries: [
-      {
-        fileName: 'ReactDOMRoot.js',
-        badge: 'root setup',
-        description:
-          'See how createRoot builds the root container and bootstraps the event system.',
-        tone: 'sky',
-      },
-      {
-        fileName: 'DOMPluginEventSystem.js',
-        badge: 'event system core',
-        description: 'Plugins, event extraction, and listener accumulation live here.',
-        tone: 'violet',
-      },
-      {
-        fileName: 'ReactDOMEventListener.js',
-        badge: 'native event reception',
-        description:
-          'The native listener attached to the root receives the event and dispatches it with priority.',
-        tone: 'emerald',
-      },
-    ],
-  },
-  mission: {
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
-    description: 'Open the React repo and confirm the following five things by hand.',
-    items: [
-      'Read about onClick and event propagation in the official React docs',
-      'Remember the file name ReactDOMRoot.js',
-      'Confirm DOMPluginEventSystem.js is the central file of the event system',
-      'Confirm in code that events are received at the root',
-      'Find where SyntheticEvent is created',
-    ],
-  },
-  takeaways: {
-    eyebrow: 'key-takeaways',
-    title: 'Must remember from this page',
-    cards: [
-      {
-        title: "React's onClick goes through the internal event system before running.",
-        body: 'Flow: root → event system → Fiber → handler execution.',
-        tone: 'blue',
-      },
-      {
-        title: 'There is an interpretation layer between browser events and React handlers.',
-        body: 'Priority, plugins, SyntheticEvent — they all live here.',
+        id: 'synthetic',
+        num: '06',
+        title: 'Create the SyntheticEvent',
+        description: 'Build the React-specific event object wrapping the native one.',
         tone: 'teal',
       },
       {
-        title: 'Later pages break this layer apart step by step.',
-        body: 'Understanding each stage makes debugging and perf work much easier.',
+        id: 'accumulate',
+        num: '07',
+        title: 'Collect capture / bubble',
+        description: 'Walk up the Fibers gathering the listeners to run, in order.',
+        tone: 'blue',
+      },
+      {
+        id: 'dispatch',
+        num: '08',
+        title: 'Run the dispatchQueue',
+        description: 'Invoke the gathered listeners, capture in reverse and bubble in order.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'The event system is a translator between browser events and React handlers. All eight stops are that translation.',
+  },
+  entryFiles: {
+    badge: '03',
+    eyebrow: 'entry files',
+    title: 'Three files to keep open',
+    description:
+      'The event code lives under react-dom-bindings/src/events. These three are enough to follow the whole chapter.',
+    files: [
+      {
+        id: 'root',
+        fileName: 'ReactDOMRoot.js',
+        role: 'Root setup',
+        description: 'Where createRoot builds the container and switches the event system on.',
+        tone: 'sky',
+      },
+      {
+        id: 'listener',
+        fileName: 'ReactDOMEventListener.js',
+        role: 'Native event reception',
+        description: 'The root listener that receives events and hands them on with a priority.',
+        tone: 'cyan',
+      },
+      {
+        id: 'plugin',
+        fileName: 'DOMPluginEventSystem.js',
+        role: 'Core of the system',
+        description: 'Plugin execution, listener accumulation and dispatchQueue all live here.',
         tone: 'violet',
       },
     ],
+    note: 'DOMPluginEventSystem.js is the longest of the three. The other two are effectively doorways into it.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/DOMPluginEventSystem.js',
+    lookForLabel: 'Look for',
+    lookFor: 'dispatchEventForPluginEventSystem, extractEvents, processDispatchQueue',
+    whyLabel: 'Why',
+    why: 'Building the events (extract) and running them (process) sit side by side in one function — the spine of the later pages.',
+    code: DISPATCH_CODE,
+    primaryCta: 'Read DOMPluginEventSystem.js',
+    primaryHref: DOM_PLUGIN_EVENT_SYSTEM_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Why does createRoot attach native events to the root?',
-    description: 'So when does React actually set up this event system?',
+    title: 'When do the root listeners get attached',
+    description:
+      'The next page counts exactly which events, and how many, are registered the moment createRoot runs.',
     cta: 'Go to the next page',
     href: '/root-native-event',
   },

@@ -1,137 +1,84 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type PriorityKey = 'discrete' | 'continuous' | 'default';
+export type PriorityId = 'discrete' | 'continuous' | 'default';
 
-export type FlowStep = {
-  title: string;
-  description: string;
-  tone: Tone;
-  isCore?: boolean;
-};
-
-export type DispatchWrapperCard = {
-  fnName: string;
-  description: string;
-  events: string[];
-  tone: Tone;
-  priority: PriorityKey;
-};
-
-export type TakeawayCard = {
-  title: string;
-  body: string;
-  tone: Tone;
-};
-
-export type LabFlowStep = {
+export type PriorityGrade = {
+  id: PriorityId;
   label: string;
-  hint?: string;
-};
-
-export type LabState = {
-  selected: string;
-  priority: PriorityKey;
-  priorityLabel: string;
   wrapper: string;
   description: string;
-  flow: LabFlowStep[];
+  events: string[];
+  tone: ToneKey;
+};
+
+export type EventRow = {
+  event: string;
+  priority: string;
+  wrapper: string;
+  why: string;
+};
+
+export type SelectStepId = 'name' | 'lookup' | 'switch' | 'set-priority' | 'dispatch';
+
+export type SelectStep = {
+  id: SelectStepId;
+  num: string;
+  title: string;
+  description: string;
+  tone: ToneKey;
 };
 
 export type DispatchSelectionContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    examples: { name: string; tag: string; tone: PriorityKey }[];
-    diagram: {
-      title: string;
-      rows: { priority: string; description: string; example: string; tone: PriorityKey }[];
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    eventLabel: string;
+    wrapperLabel: string;
+    grades: PriorityGrade[];
   };
-  question: {
+  grades: {
+    badge: string;
     eyebrow: string;
     title: string;
-    badges: { title: string; description: string; tone: Tone }[];
-  };
-  urgency: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: {
-      title: string;
-      body: string;
-      events: string[];
-      priority: PriorityKey;
-    }[];
+    description: string;
+    items: PriorityGrade[];
+    note: string;
   };
   table: {
-    step: number;
+    badge: string;
     eyebrow: string;
     title: string;
-    columns: { native: string; priority: string; description: string; wrapper: string };
-    rows: {
-      native: string;
-      priority: string;
-      description: string;
-      wrapper: string;
-      tone: PriorityKey;
-    }[];
-  };
-  flow: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: FlowStep[];
-  };
-  wrappers: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: DispatchWrapperCard[];
-  };
-  updatePriority: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    mainMessage: string;
-    flow: string[];
     description: string;
+    headers: [string, string, string, string];
+    rows: EventRow[];
+    note: string;
   };
-  lab: {
-    step: number;
+  selection: {
+    badge: string;
     eyebrow: string;
     title: string;
-    hint: string;
-    tabs: string[];
-    defaultTab: string;
-    labels: { event: string; priority: string; wrapper: string; description: string; flow: string };
-    states: Record<string, LabState>;
+    description: string;
+    steps: SelectStep[];
+    note: string;
   };
-  realCode: {
-    step: number;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanation: { label: string; body: string };
-    relatedLabel: string;
-    related: string[];
-    button: { label: string; href: string };
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: { title: string; description: string }[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -142,8 +89,7 @@ export type DispatchSelectionContent = {
   };
 };
 
-const REAL_CODE = `// ReactDOMEventListener.js
-function createEventListenerWrapperWithPriority(
+const WRAPPER_CODE = `function createEventListenerWrapperWithPriority(
   targetContainer,
   domEventName,
   eventSystemFlags,
@@ -155,360 +101,210 @@ function createEventListenerWrapperWithPriority(
     case DiscreteEventPriority:
       listenerWrapper = dispatchDiscreteEvent;
       break;
-
     case ContinuousEventPriority:
       listenerWrapper = dispatchContinuousEvent;
       break;
-
     default:
       listenerWrapper = dispatchEvent;
       break;
   }
 
-  return listenerWrapper.bind(
-    null,
-    domEventName,
-    eventSystemFlags,
-    targetContainer,
-  );
+  return listenerWrapper.bind(null, domEventName, eventSystemFlags, targetContainer);
+}
+
+function dispatchDiscreteEvent(domEventName, eventSystemFlags, container, nativeEvent) {
+  const previousPriority = getCurrentUpdatePriority();
+  try {
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+  } finally {
+    setCurrentUpdatePriority(previousPriority);
+  }
 }`;
+
+const REACT_DOM_EVENT_LISTENER_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventListener.js';
+
+const KO_GRADES: PriorityGrade[] = [
+  {
+    id: 'discrete',
+    label: 'Discrete',
+    wrapper: 'dispatchDiscreteEvent',
+    description: '사용자가 한 번 딱 하는 동작입니다. 결과가 바로 보여야 합니다.',
+    events: ['click', 'keydown', 'submit', 'input'],
+    tone: 'emerald',
+  },
+  {
+    id: 'continuous',
+    label: 'Continuous',
+    wrapper: 'dispatchContinuousEvent',
+    description: '끊임없이 쏟아지는 흐름입니다. 하나쯤 늦어도 사용자는 모릅니다.',
+    events: ['mousemove', 'pointermove', 'scroll', 'drag'],
+    tone: 'violet',
+  },
+  {
+    id: 'default',
+    label: 'Default',
+    wrapper: 'dispatchEvent',
+    description: '사용자 입력이 아닌 것들입니다. 급할 이유가 없습니다.',
+    events: ['load', 'error', 'animationend', 'transitionend'],
+    tone: 'amber',
+  },
+];
+
+const EN_GRADES: PriorityGrade[] = [
+  {
+    id: 'discrete',
+    label: 'Discrete',
+    wrapper: 'dispatchDiscreteEvent',
+    description: 'A single deliberate action by the user. The result must show immediately.',
+    events: ['click', 'keydown', 'submit', 'input'],
+    tone: 'emerald',
+  },
+  {
+    id: 'continuous',
+    label: 'Continuous',
+    wrapper: 'dispatchContinuousEvent',
+    description: 'A stream that never stops. Nobody notices if one of them lands late.',
+    events: ['mousemove', 'pointermove', 'scroll', 'drag'],
+    tone: 'violet',
+  },
+  {
+    id: 'default',
+    label: 'Default',
+    wrapper: 'dispatchEvent',
+    description: 'Not user input at all, so there is no reason to hurry.',
+    events: ['load', 'error', 'animationend', 'transitionend'],
+    tone: 'amber',
+  },
+];
 
 const ko: DispatchSelectionContent = {
   hero: {
     badge: '이벤트 시스템 · 4/10단계',
-    titleLines: ['React는 모든 이벤트를', '같은 급도로 처리하지 않는다'],
+    title: { line1: '이벤트마다 급한 정도가 다르다', line2: 'React는 그것부터 정한다' },
     description:
-      'click은 즉각적이고, mousemove는 연속적이며, 일부 이벤트는 기본 우선순위로 처리됩니다.',
-    examples: [
-      { name: 'click', tag: '즉각적 반응', tone: 'discrete' },
-      { name: 'mousemove', tag: '연속적 입력', tone: 'continuous' },
-      { name: 'load', tag: '기본 처리', tone: 'default' },
-    ],
-    diagram: {
-      title: 'React 이벤트 우선순위 분류',
-      rows: [
-        {
-          priority: 'Discrete',
-          description: '즉각적인 사용자 입력',
-          example: 'click, keydown, submit',
-          tone: 'discrete',
-        },
-        {
-          priority: 'Continuous',
-          description: '연속적인 입력 흐름',
-          example: 'mousemove, pointermove, scroll',
-          tone: 'continuous',
-        },
-        {
-          priority: 'Default',
-          description: '기본 또는 비긴급 이벤트',
-          example: 'load, error, 기타 기본 이벤트',
-          tone: 'default',
-        },
-      ],
-    },
+      'root에 리스너를 걸 때 React는 이벤트 이름만 보고 급한 정도를 판정하고, 그에 맞는 dispatch 함수를 미리 골라 둡니다.',
+    diagramBadge: 'priority',
+    diagramCaption: 'event name → wrapper',
+    eventLabel: '이벤트',
+    wrapperLabel: 'dispatch wrapper',
+    grades: KO_GRADES,
   },
-  question: {
-    eyebrow: '오늘의 질문',
-    title:
-      'click, mousemove, load가 발생했을 때 React 내부에서는 모두 같은 dispatch 함수가 실행될까?',
-    badges: [
-      { title: '이벤트마다 긴급도가 다름', description: '우선순위 분류', tone: 'teal' },
-      { title: '긴급도에 따라 dispatch가 바뀜', description: 'wrapper 선택', tone: 'violet' },
-      { title: '이후 상태 업데이트 우선순위에 영향', description: '스케줄링 연결', tone: 'amber' },
-    ],
-  },
-  urgency: {
-    step: 1,
-    eyebrow: 'event-urgency',
-    title: '이벤트에도 긴급도가 있다',
-    cards: [
-      {
-        title: 'Discrete (즉각)',
-        body: '즉각적인 사용자 입력에 사용됩니다.',
-        events: ['click', 'keydown', 'submit'],
-        priority: 'discrete',
-      },
-      {
-        title: 'Continuous (연속)',
-        body: '연속적으로 발생하는 입력 흐름입니다.',
-        events: ['mousemove', 'pointermove', 'scroll'],
-        priority: 'continuous',
-      },
-      {
-        title: 'Default (기본)',
-        body: '긴급하지 않은 대부분의 이벤트입니다.',
-        events: ['load', 'error', 'animationend'],
-        priority: 'default',
-      },
-    ],
+  grades: {
+    badge: '01',
+    eyebrow: 'three grades',
+    title: '급한 정도는 세 등급뿐이다',
+    description:
+      '수백 개의 이벤트 이름이 결국 이 셋 중 하나로 접힙니다. 판정 기준은 "사용자가 결과를 언제 기대하는가"입니다.',
+    items: KO_GRADES,
+    note: '등급은 이벤트 이름만으로 정해집니다. 어떤 컴포넌트에서 났는지, 핸들러가 무엇을 하는지는 보지 않습니다.',
   },
   table: {
-    step: 2,
-    eyebrow: 'event-comparison',
-    title: '이벤트별 처리 비교',
-    columns: {
-      native: '이벤트 (Native)',
-      priority: '우선순위 (Event Priority)',
-      description: '설명',
-      wrapper: 'dispatch 경로 (Wrapper)',
-    },
+    badge: '02',
+    eyebrow: 'per event',
+    title: '이벤트별로 어떤 함수가 걸리는가',
+    description:
+      'getEventPriority는 switch 하나로 이름을 등급에 매핑합니다. 목록에 없는 이름은 전부 Default로 떨어집니다.',
+    headers: ['native event', '등급', 'dispatch wrapper', '왜 이 등급인가'],
     rows: [
       {
-        native: 'click',
+        event: 'click',
         priority: 'Discrete',
-        description: '사용자 입력에 즉시 반응해야 하는 이벤트',
         wrapper: 'dispatchDiscreteEvent',
-        tone: 'discrete',
+        why: '한 번 누르면 결과가 바로 보여야 합니다. 늦으면 앱이 멈춘 것처럼 느껴집니다.',
       },
       {
-        native: 'keydown',
+        event: 'input',
         priority: 'Discrete',
-        description: '키보드 입력',
         wrapper: 'dispatchDiscreteEvent',
-        tone: 'discrete',
+        why: '타이핑한 글자가 즉시 나타나야 합니다. 제어 컴포넌트의 체감 성능이 여기 걸립니다.',
       },
       {
-        native: 'mousemove',
+        event: 'mousemove',
         priority: 'Continuous',
-        description: '연속적으로 발생하는 포인터 이동',
         wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
+        why: '초당 수십 번 발생합니다. 하나를 건너뛰어도 다음 이벤트가 곧 덮어씁니다.',
       },
       {
-        native: 'pointermove',
+        event: 'scroll',
         priority: 'Continuous',
-        description: '연속적인 포인터 이동',
         wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
+        why: '연속 흐름이고, 마지막 위치만 맞으면 됩니다.',
       },
       {
-        native: 'scroll',
-        priority: 'Continuous',
-        description: '연속 스크롤',
-        wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
-      },
-      {
-        native: 'load',
+        event: 'load',
         priority: 'Default',
-        description: '비긴급, 기본 이벤트',
         wrapper: 'dispatchEvent',
-        tone: 'default',
-      },
-      {
-        native: 'error',
-        priority: 'Default',
-        description: '에러 이벤트',
-        wrapper: 'dispatchEvent',
-        tone: 'default',
-      },
-      {
-        native: '...',
-        priority: '...',
-        description: '기타 이벤트',
-        wrapper: 'dispatchEvent',
-        tone: 'default',
+        why: '사용자 동작이 아닙니다. 기다리게 해도 체감되지 않습니다.',
       },
     ],
+    note: '등급이 다르면 같은 setState라도 배정되는 lane이 달라집니다. 이벤트 시스템이 스케줄러에 닿는 지점입니다.',
   },
-  flow: {
-    step: 3,
-    eyebrow: 'wrapper-flow',
-    title: 'createEventListenerWrapperWithPriority 흐름',
+  selection: {
+    badge: '03',
+    eyebrow: 'wrapper selection',
+    title: '리스너를 걸 때 이미 끝나는 판정',
+    description:
+      '이 판정은 이벤트가 발생할 때가 아니라 리스너를 등록할 때 일어납니다. 실행 시점에는 이미 고정된 함수가 불립니다.',
     steps: [
       {
-        title: 'Native Event 이름',
-        description: '예: click',
+        id: 'name',
+        num: '01',
+        title: 'native 이벤트 이름',
+        description: 'listenToNativeEvent가 등록하려는 이름 하나를 넘깁니다.',
         tone: 'sky',
       },
       {
-        title: 'getEventPriority(domEventName)',
-        description: '이벤트 이름으로 우선순위 조회',
+        id: 'lookup',
+        num: '02',
+        title: 'getEventPriority 조회',
+        description: '이름을 switch에 넣어 세 등급 중 하나를 돌려받습니다.',
         tone: 'cyan',
-        isCore: true,
       },
       {
-        title: '우선순위 결정',
-        description: 'Discrete / Continuous / Default',
+        id: 'switch',
+        num: '03',
+        title: 'wrapper 선택',
+        description: '등급에 대응하는 dispatch 함수를 고르고 인자를 bind해 둡니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'set-priority',
+        num: '04',
+        title: '실행 시 update priority 설정',
+        description: '이벤트가 오면 wrapper가 현재 update priority를 자기 등급으로 바꿉니다.',
         tone: 'violet',
       },
       {
-        title: '적절한 dispatch wrapper 선택',
-        description: 'dispatchDiscreteEvent / dispatchContinuousEvent / dispatchEvent',
+        id: 'dispatch',
+        num: '05',
+        title: '본체 dispatchEvent 호출',
+        description: '세 wrapper 모두 결국 같은 dispatchEvent로 들어갑니다.',
         tone: 'emerald',
       },
     ],
+    note: '04가 핵심입니다. 핸들러 안에서 부르는 setState는 이 때 세팅된 우선순위 문맥을 그대로 물려받습니다.',
   },
-  wrappers: {
-    step: 4,
-    eyebrow: 'dispatch-compare',
-    title: 'dispatch 함수 비교',
-    cards: [
-      {
-        fnName: 'dispatchDiscreteEvent',
-        description: '긴급한 사용자 입력을 우선 처리합니다.',
-        events: ['click', 'keydown', 'submit'],
-        tone: 'teal',
-        priority: 'discrete',
-      },
-      {
-        fnName: 'dispatchContinuousEvent',
-        description: '연속적인 이벤트 흐름을 적절히 처리합니다.',
-        events: ['mousemove', 'pointermove', 'scroll'],
-        tone: 'violet',
-        priority: 'continuous',
-      },
-      {
-        fnName: 'dispatchEvent',
-        description: '기본 우선순위로 이벤트를 처리합니다.',
-        events: ['load', 'error', 'animationend'],
-        tone: 'amber',
-        priority: 'default',
-      },
-    ],
-  },
-  updatePriority: {
-    step: 5,
-    eyebrow: 'update-priority',
-    title: 'update priority가 설정되는 지점',
-    mainMessage: '이벤트 dispatch 전에 현재 update priority가 먼저 설정됩니다.',
-    flow: ['event priority', 'current update priority 설정', 'handler 안의 setState 문맥'],
-    description:
-      '이후 handler 안에서 발생하는 상태 업데이트는 이 이벤트 우선순위 문맥의 영향을 받습니다.',
-  },
-  lab: {
-    step: 6,
-    eyebrow: 'priority-lab',
-    title: '이벤트 우선순위 실험기',
-    hint: '탭을 클릭해보세요',
-    tabs: ['click', 'mousemove', 'load'],
-    defaultTab: 'click',
-    labels: {
-      event: 'Selected event',
-      priority: 'Priority',
-      wrapper: 'Wrapper',
-      description: '설명',
-      flow: '처리 흐름',
-    },
-    states: {
-      click: {
-        selected: 'click',
-        priority: 'discrete',
-        priorityLabel: 'Discrete',
-        wrapper: 'dispatchDiscreteEvent',
-        description: '즉각적인 사용자 입력 이벤트',
-        flow: [
-          { label: 'Browser Native click', hint: 'browser event' },
-          { label: 'getEventPriority(click)', hint: 'priority lookup' },
-          { label: 'Priority = Discrete', hint: 'classification' },
-          { label: 'dispatchDiscreteEvent 호출', hint: 'wrapper' },
-          { label: 'SyntheticEvent 생성 및 handler 실행', hint: 'invoke' },
-        ],
-      },
-      mousemove: {
-        selected: 'mousemove',
-        priority: 'continuous',
-        priorityLabel: 'Continuous',
-        wrapper: 'dispatchContinuousEvent',
-        description: '연속적으로 발생하는 포인터 이동 이벤트',
-        flow: [
-          { label: 'Browser Native mousemove', hint: 'browser event' },
-          { label: 'getEventPriority(mousemove)', hint: 'priority lookup' },
-          { label: 'Priority = Continuous', hint: 'classification' },
-          { label: 'dispatchContinuousEvent 호출', hint: 'wrapper' },
-          { label: 'SyntheticEvent 생성 및 handler 실행', hint: 'invoke' },
-        ],
-      },
-      load: {
-        selected: 'load',
-        priority: 'default',
-        priorityLabel: 'Default',
-        wrapper: 'dispatchEvent',
-        description: '기본 우선순위 이벤트',
-        flow: [
-          { label: 'Browser Native load', hint: 'browser event' },
-          { label: 'getEventPriority(load)', hint: 'priority lookup' },
-          { label: 'Priority = Default', hint: 'classification' },
-          { label: 'dispatchEvent 호출', hint: 'wrapper' },
-          { label: 'SyntheticEvent 생성 및 handler 실행', hint: 'invoke' },
-        ],
-      },
-    },
-  },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    fileLabel: 'ReactDOMEventListener.js',
-    code: REAL_CODE,
-    explanation: {
-      label: '설명',
-      body: 'getEventPriority가 이벤트 이름을 보고 우선순위를 반환합니다. 우선순위에 따라 서로 다른 dispatch wrapper가 선택됩니다. 이 wrapper가 SyntheticEvent 생성과 handler 실행을 담당합니다.',
-    },
-    relatedLabel: '관련 함수',
-    related: [
-      'getEventPriority',
-      'dispatchDiscreteEvent',
-      'dispatchContinuousEvent',
-      'dispatchEvent',
-    ],
-    button: {
-      label: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventListener.js',
-    },
-  },
-  mission: {
-    step: 8,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
-    description: 'React 저장소를 직접 열어 dispatch wrapper 선택 흐름을 손으로 확인해 보세요.',
-    items: [
-      {
-        title: 'ReactDOMEventListener.js를 연다',
-        description: '이벤트 시스템의 native 리스너 파일을 펼친다.',
-      },
-      {
-        title: 'createEventListenerWrapperWithPriority 함수를 찾는다',
-        description: 'wrapper 선택의 진입점이 되는 함수다.',
-      },
-      {
-        title: 'getEventPriority 분기를 확인한다',
-        description: '이벤트 이름이 어떻게 priority로 변환되는지 본다.',
-      },
-      {
-        title: 'dispatchDiscreteEvent와 dispatchContinuousEvent를 비교한다',
-        description: '서로 다른 wrapper의 차이를 직접 비교해 둔다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 9,
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    cards: [
-      {
-        title: '이벤트마다 dispatch wrapper가 다를 수 있다.',
-        body: '이벤트 종류에 따라 호출되는 dispatch 함수가 달라집니다.',
-        tone: 'blue',
-      },
-      {
-        title: '이는 이벤트 우선순위와 연결된다.',
-        body: 'Discrete / Continuous / Default가 wrapper 선택 기준이 됩니다.',
-        tone: 'teal',
-      },
-      {
-        title: '이벤트 처리와 상태 업데이트 스케줄링은 여기서 처음 만난다.',
-        body: '이 우선순위가 setState의 우선순위에도 영향을 줍니다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/ReactDOMEventListener.js',
+    lookForLabel: '볼 것',
+    lookFor: 'createEventListenerWrapperWithPriority, getEventPriority, setCurrentUpdatePriority',
+    whyLabel: '설명',
+    why: 'dispatchDiscreteEvent가 try/finally로 우선순위를 세웠다 되돌리는 모습이 문맥 전달의 실체입니다.',
+    code: WRAPPER_CODE,
+    primaryCta: 'ReactDOMEventListener.js 읽기',
+    primaryHref: REACT_DOM_EVENT_LISTENER_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'DOM target에서 Fiber target 찾기',
+    title: '클릭된 DOM에서 Fiber를 어떻게 찾는가',
     description:
-      '이벤트 우선순위를 정한 뒤, DOM target에서 어떻게 대응하는 Fiber target을 찾는지 살펴봅니다.',
+      'wrapper가 정해졌으니 이제 누가 클릭됐는지 알아야 합니다. DOM 노드에서 Fiber로 건너가는 길을 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/target-to-fiber',
   },
@@ -517,343 +313,130 @@ const ko: DispatchSelectionContent = {
 const en: DispatchSelectionContent = {
   hero: {
     badge: 'Event System · 4/10',
-    titleLines: ['React does not treat every event', 'with the same urgency'],
+    title: { line1: 'Events differ in urgency', line2: 'and React decides that first' },
     description:
-      'click is immediate, mousemove is continuous, and some events are simply handled at default priority.',
-    examples: [
-      { name: 'click', tag: 'immediate reaction', tone: 'discrete' },
-      { name: 'mousemove', tag: 'continuous input', tone: 'continuous' },
-      { name: 'load', tag: 'default handling', tone: 'default' },
-    ],
-    diagram: {
-      title: 'React event priority classification',
-      rows: [
-        {
-          priority: 'Discrete',
-          description: 'Immediate user input',
-          example: 'click, keydown, submit',
-          tone: 'discrete',
-        },
-        {
-          priority: 'Continuous',
-          description: 'Continuous input streams',
-          example: 'mousemove, pointermove, scroll',
-          tone: 'continuous',
-        },
-        {
-          priority: 'Default',
-          description: 'Non-urgent or default events',
-          example: 'load, error, other default events',
-          tone: 'default',
-        },
-      ],
-    },
+      'While attaching listeners to the root, React judges urgency from the event name alone and picks the matching dispatch function up front.',
+    diagramBadge: 'priority',
+    diagramCaption: 'event name → wrapper',
+    eventLabel: 'event',
+    wrapperLabel: 'dispatch wrapper',
+    grades: EN_GRADES,
   },
-  question: {
-    eyebrow: "Today's question",
-    title:
-      'When click, mousemove, or load fires — does React run the same dispatch function for all of them?',
-    badges: [
-      {
-        title: 'Events have different urgency',
-        description: 'priority classification',
-        tone: 'teal',
-      },
-      { title: 'Urgency changes the dispatch', description: 'wrapper selection', tone: 'violet' },
-      { title: 'Affects later update priority', description: 'scheduling hook-up', tone: 'amber' },
-    ],
-  },
-  urgency: {
-    step: 1,
-    eyebrow: 'event-urgency',
-    title: 'Events have urgency too',
-    cards: [
-      {
-        title: 'Discrete (immediate)',
-        body: 'Used for immediate user input.',
-        events: ['click', 'keydown', 'submit'],
-        priority: 'discrete',
-      },
-      {
-        title: 'Continuous',
-        body: 'A continuous stream of input.',
-        events: ['mousemove', 'pointermove', 'scroll'],
-        priority: 'continuous',
-      },
-      {
-        title: 'Default',
-        body: 'Most non-urgent events.',
-        events: ['load', 'error', 'animationend'],
-        priority: 'default',
-      },
-    ],
+  grades: {
+    badge: '01',
+    eyebrow: 'three grades',
+    title: 'Urgency comes in exactly three grades',
+    description:
+      'Hundreds of event names collapse into one of these three. The test is simply when the user expects to see a result.',
+    items: EN_GRADES,
+    note: 'The grade comes from the event name only. Neither the component nor what the handler does is consulted.',
   },
   table: {
-    step: 2,
-    eyebrow: 'event-comparison',
-    title: 'Per-event handling compared',
-    columns: {
-      native: 'Event (Native)',
-      priority: 'Event Priority',
-      description: 'Description',
-      wrapper: 'Dispatch wrapper',
-    },
+    badge: '02',
+    eyebrow: 'per event',
+    title: 'Which function each event gets',
+    description:
+      'getEventPriority maps names to grades through a single switch. Any name not listed falls through to Default.',
+    headers: ['native event', 'Grade', 'dispatch wrapper', 'Why this grade'],
     rows: [
       {
-        native: 'click',
+        event: 'click',
         priority: 'Discrete',
-        description: 'Needs an immediate reaction to user input',
         wrapper: 'dispatchDiscreteEvent',
-        tone: 'discrete',
+        why: 'One press must show a result at once; a delay reads as the app freezing.',
       },
       {
-        native: 'keydown',
+        event: 'input',
         priority: 'Discrete',
-        description: 'Keyboard input',
         wrapper: 'dispatchDiscreteEvent',
-        tone: 'discrete',
+        why: 'Typed characters must appear immediately. Controlled-input feel depends on this.',
       },
       {
-        native: 'mousemove',
+        event: 'mousemove',
         priority: 'Continuous',
-        description: 'A continuous stream of pointer movement',
         wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
+        why: 'It fires dozens of times a second, and the next event overwrites a skipped one.',
       },
       {
-        native: 'pointermove',
+        event: 'scroll',
         priority: 'Continuous',
-        description: 'Continuous pointer movement',
         wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
+        why: 'A continuous stream where only the final position has to be right.',
       },
       {
-        native: 'scroll',
-        priority: 'Continuous',
-        description: 'Continuous scrolling',
-        wrapper: 'dispatchContinuousEvent',
-        tone: 'continuous',
-      },
-      {
-        native: 'load',
+        event: 'load',
         priority: 'Default',
-        description: 'Non-urgent, default event',
         wrapper: 'dispatchEvent',
-        tone: 'default',
-      },
-      {
-        native: 'error',
-        priority: 'Default',
-        description: 'Error event',
-        wrapper: 'dispatchEvent',
-        tone: 'default',
-      },
-      {
-        native: '...',
-        priority: '...',
-        description: 'other events',
-        wrapper: 'dispatchEvent',
-        tone: 'default',
+        why: 'Not a user action at all, so waiting is not perceived.',
       },
     ],
+    note: 'A different grade means the same setState lands in a different lane. This is where the event system touches the scheduler.',
   },
-  flow: {
-    step: 3,
-    eyebrow: 'wrapper-flow',
-    title: 'createEventListenerWrapperWithPriority flow',
+  selection: {
+    badge: '03',
+    eyebrow: 'wrapper selection',
+    title: 'The decision is already made at registration',
+    description:
+      'This judgement happens when the listener is attached, not when the event fires. At fire time a fixed function is simply invoked.',
     steps: [
       {
-        title: 'Native event name',
-        description: 'e.g. click',
+        id: 'name',
+        num: '01',
+        title: 'The native event name',
+        description: 'listenToNativeEvent passes in the one name it is about to register.',
         tone: 'sky',
       },
       {
-        title: 'getEventPriority(domEventName)',
-        description: 'Look up the priority for the event name',
+        id: 'lookup',
+        num: '02',
+        title: 'Ask getEventPriority',
+        description: 'Feed the name to a switch and get one of the three grades back.',
         tone: 'cyan',
-        isCore: true,
       },
       {
-        title: 'Decide the priority',
-        description: 'Discrete / Continuous / Default',
+        id: 'switch',
+        num: '03',
+        title: 'Pick the wrapper',
+        description: 'Choose the dispatch function for that grade and bind its arguments.',
+        tone: 'amber',
+      },
+      {
+        id: 'set-priority',
+        num: '04',
+        title: 'Set update priority at fire time',
+        description:
+          'When the event arrives the wrapper swaps the current update priority to its grade.',
         tone: 'violet',
       },
       {
-        title: 'Pick the right dispatch wrapper',
-        description: 'dispatchDiscreteEvent / dispatchContinuousEvent / dispatchEvent',
+        id: 'dispatch',
+        num: '05',
+        title: 'Call the real dispatchEvent',
+        description: 'All three wrappers funnel into the same dispatchEvent in the end.',
         tone: 'emerald',
       },
     ],
+    note: 'Step 04 is the crux: a setState called inside your handler inherits exactly the priority context set here.',
   },
-  wrappers: {
-    step: 4,
-    eyebrow: 'dispatch-compare',
-    title: 'dispatch functions compared',
-    cards: [
-      {
-        fnName: 'dispatchDiscreteEvent',
-        description: 'Prioritizes urgent user input.',
-        events: ['click', 'keydown', 'submit'],
-        tone: 'teal',
-        priority: 'discrete',
-      },
-      {
-        fnName: 'dispatchContinuousEvent',
-        description: 'Handles continuous event streams appropriately.',
-        events: ['mousemove', 'pointermove', 'scroll'],
-        tone: 'violet',
-        priority: 'continuous',
-      },
-      {
-        fnName: 'dispatchEvent',
-        description: 'Handles events at the default priority.',
-        events: ['load', 'error', 'animationend'],
-        tone: 'amber',
-        priority: 'default',
-      },
-    ],
-  },
-  updatePriority: {
-    step: 5,
-    eyebrow: 'update-priority',
-    title: 'Where the update priority is set',
-    mainMessage: 'Before the event dispatch runs, the current update priority is set first.',
-    flow: ['event priority', 'set current update priority', 'setState context inside the handler'],
-    description:
-      'State updates that happen inside the handler are influenced by this event-priority context.',
-  },
-  lab: {
-    step: 6,
-    eyebrow: 'priority-lab',
-    title: 'Event priority lab',
-    hint: 'Try clicking a tab',
-    tabs: ['click', 'mousemove', 'load'],
-    defaultTab: 'click',
-    labels: {
-      event: 'Selected event',
-      priority: 'Priority',
-      wrapper: 'Wrapper',
-      description: 'Description',
-      flow: 'Processing flow',
-    },
-    states: {
-      click: {
-        selected: 'click',
-        priority: 'discrete',
-        priorityLabel: 'Discrete',
-        wrapper: 'dispatchDiscreteEvent',
-        description: 'Immediate user input event',
-        flow: [
-          { label: 'Browser native click', hint: 'browser event' },
-          { label: 'getEventPriority(click)', hint: 'priority lookup' },
-          { label: 'Priority = Discrete', hint: 'classification' },
-          { label: 'dispatchDiscreteEvent invoked', hint: 'wrapper' },
-          { label: 'SyntheticEvent built & handler run', hint: 'invoke' },
-        ],
-      },
-      mousemove: {
-        selected: 'mousemove',
-        priority: 'continuous',
-        priorityLabel: 'Continuous',
-        wrapper: 'dispatchContinuousEvent',
-        description: 'Continuous pointer movement event',
-        flow: [
-          { label: 'Browser native mousemove', hint: 'browser event' },
-          { label: 'getEventPriority(mousemove)', hint: 'priority lookup' },
-          { label: 'Priority = Continuous', hint: 'classification' },
-          { label: 'dispatchContinuousEvent invoked', hint: 'wrapper' },
-          { label: 'SyntheticEvent built & handler run', hint: 'invoke' },
-        ],
-      },
-      load: {
-        selected: 'load',
-        priority: 'default',
-        priorityLabel: 'Default',
-        wrapper: 'dispatchEvent',
-        description: 'Default priority event',
-        flow: [
-          { label: 'Browser native load', hint: 'browser event' },
-          { label: 'getEventPriority(load)', hint: 'priority lookup' },
-          { label: 'Priority = Default', hint: 'classification' },
-          { label: 'dispatchEvent invoked', hint: 'wrapper' },
-          { label: 'SyntheticEvent built & handler run', hint: 'invoke' },
-        ],
-      },
-    },
-  },
-  realCode: {
-    step: 7,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    fileLabel: 'ReactDOMEventListener.js',
-    code: REAL_CODE,
-    explanation: {
-      label: 'Explanation',
-      body: 'getEventPriority returns a priority based on the event name. Different dispatch wrappers are chosen based on that priority. The chosen wrapper builds the SyntheticEvent and runs the handler.',
-    },
-    relatedLabel: 'Related functions',
-    related: [
-      'getEventPriority',
-      'dispatchDiscreteEvent',
-      'dispatchContinuousEvent',
-      'dispatchEvent',
-    ],
-    button: {
-      label: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventListener.js',
-    },
-  },
-  mission: {
-    step: 8,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
-    description: 'Open the React repository and verify the wrapper-selection flow by hand.',
-    items: [
-      {
-        title: 'Open ReactDOMEventListener.js',
-        description: 'The native listener file for the event system.',
-      },
-      {
-        title: 'Find createEventListenerWrapperWithPriority',
-        description: 'The entry point of wrapper selection.',
-      },
-      {
-        title: 'Check the getEventPriority branches',
-        description: 'See how an event name maps to a priority.',
-      },
-      {
-        title: 'Compare dispatchDiscreteEvent and dispatchContinuousEvent',
-        description: 'Take notes on what differs between them.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 9,
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    cards: [
-      {
-        title: 'The dispatch wrapper can differ per event.',
-        body: 'Different events route to different dispatch functions.',
-        tone: 'blue',
-      },
-      {
-        title: 'This is wired to event priority.',
-        body: 'Discrete / Continuous / Default drive the wrapper choice.',
-        tone: 'teal',
-      },
-      {
-        title: 'Event handling meets state-update scheduling here.',
-        body: 'This priority also feeds the priority of subsequent setState calls.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/ReactDOMEventListener.js',
+    lookForLabel: 'Look for',
+    lookFor: 'createEventListenerWrapperWithPriority, getEventPriority, setCurrentUpdatePriority',
+    whyLabel: 'Why',
+    why: 'dispatchDiscreteEvent raising and restoring the priority in try/finally is what passing a context actually looks like.',
+    code: WRAPPER_CODE,
+    primaryCta: 'Read ReactDOMEventListener.js',
+    primaryHref: REACT_DOM_EVENT_LISTENER_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'from DOM target to Fiber target',
+    title: 'How the clicked DOM node finds its Fiber',
     description:
-      'After deciding event priority, see how React finds the matching Fiber target from a DOM target.',
+      'With the wrapper settled, React still has to learn who was clicked. Next: the crossing from DOM node to Fiber.',
     cta: 'Go to the next page',
     href: '/target-to-fiber',
   },

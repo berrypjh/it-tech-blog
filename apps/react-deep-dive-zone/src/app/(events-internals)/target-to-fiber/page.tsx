@@ -1,13 +1,13 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
-  EventTargetFiberPage,
-  targetFiberContent,
+  targetToFiberContent,
+  TargetToFiberPage,
 } from '@/components/events-internals/target-to-fiber';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = targetFiberContent[locale];
+  const c = targetToFiberContent[locale];
 
   return {
     title:
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <EventTargetFiberPage locale={locale} />;
+  return <TargetToFiberPage locale={locale} />;
 };
 
 export default Page;

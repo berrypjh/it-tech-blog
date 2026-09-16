@@ -3,14 +3,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { DispatchCreationFlow } from './sections/DispatchCreationFlow';
-import { FollowCodeMission } from './sections/FollowCodeMission';
-import { HookInternalStructure } from './sections/HookInternalStructure';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MountStateImplPreview } from './sections/MountStateImplPreview';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { UseStateDissectionExperiment } from './sections/UseStateDissectionExperiment';
-import { UseStateFullProcess } from './sections/UseStateFullProcess';
+import { DispatchBindFlow } from './sections/DispatchBindFlow';
+import { MountStateFlow } from './sections/MountStateFlow';
+import { UpdateQueueShape } from './sections/UpdateQueueShape';
+import { UseStateCodeCheckpoint } from './sections/UseStateCodeCheckpoint';
 import { UseStateInternalsHero } from './sections/UseStateInternalsHero';
 import { useStateInternalsContent } from './content';
 
@@ -22,14 +18,10 @@ export const UseStateInternalsPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <UseStateInternalsHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <UseStateFullProcess content={c.fullProcess} />
-      <HookInternalStructure content={c.hookStructure} />
-      <MountStateImplPreview content={c.mountStateImpl} />
-      <DispatchCreationFlow content={c.dispatch} />
-      <UseStateDissectionExperiment content={c.experiment} />
-      <FollowCodeMission content={c.mission} />
-      <KeyTakeaways content={c.summary} />
+      <MountStateFlow content={c.mountFlow} />
+      <UpdateQueueShape content={c.queueShape} />
+      <DispatchBindFlow content={c.dispatchBind} />
+      <UseStateCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

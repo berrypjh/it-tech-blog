@@ -3,16 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { AllNativeEventsGrid } from './sections/AllNativeEventsGrid';
-import { CreateRootCodeStart } from './sections/CreateRootCodeStart';
-import { EventSetupHero } from './sections/EventSetupHero';
-import { ExceptionEventHints } from './sections/ExceptionEventHints';
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { ListenToAllSupportedEventsFlow } from './sections/ListenToAllSupportedEventsFlow';
-import { RealCodePreview } from './sections/RealCodePreview';
-import { RootContainerVisualization } from './sections/RootContainerVisualization';
-import { TodayQuestionBanner } from './sections/TodayQuestionBanner';
+import { ListenerCoverage } from './sections/ListenerCoverage';
+import { NonDelegatedEvents } from './sections/NonDelegatedEvents';
+import { RootNativeEventCodeCheckpoint } from './sections/RootNativeEventCodeCheckpoint';
+import { RootNativeEventHero } from './sections/RootNativeEventHero';
+import { RootSetupFlow } from './sections/RootSetupFlow';
 import { rootNativeEventContent } from './content';
 
 type Props = { locale: Locale };
@@ -22,16 +17,11 @@ export const RootNativeEventPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <EventSetupHero content={c.hero} />
-      <TodayQuestionBanner content={c.question} />
-      <CreateRootCodeStart content={c.createRoot} />
-      <RootContainerVisualization content={c.rootViz} />
-      <ListenToAllSupportedEventsFlow content={c.flow} />
-      <AllNativeEventsGrid content={c.allEvents} />
-      <RealCodePreview content={c.realCode} />
-      <ExceptionEventHints content={c.exceptions} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <RootNativeEventHero content={c.hero} />
+      <RootSetupFlow content={c.setup} />
+      <ListenerCoverage content={c.coverage} />
+      <NonDelegatedEvents content={c.exceptions} />
+      <RootNativeEventCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

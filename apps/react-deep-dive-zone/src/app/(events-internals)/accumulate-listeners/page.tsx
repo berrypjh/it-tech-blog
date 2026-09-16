@@ -1,13 +1,13 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
-  listenerCollectionContent,
-  ListenerCollectionPage,
+  accumulateListenersContent,
+  AccumulateListenersPage,
 } from '@/components/events-internals/accumulate-listeners';
 
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
-  const c = listenerCollectionContent[locale];
+  const c = accumulateListenersContent[locale];
 
   return {
     title:
@@ -21,7 +21,7 @@ export const generateMetadata = async () => {
 const Page = async () => {
   const locale = await getServerLocale();
 
-  return <ListenerCollectionPage locale={locale} />;
+  return <AccumulateListenersPage locale={locale} />;
 };
 
 export default Page;

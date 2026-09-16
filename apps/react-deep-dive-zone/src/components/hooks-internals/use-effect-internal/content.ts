@@ -1,163 +1,116 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone =
-  | 'sky'
-  | 'cyan'
-  | 'teal'
-  | 'emerald'
-  | 'violet'
-  | 'amber'
-  | 'rose'
-  | 'orange'
-  | 'indigo';
+import type { ToneKey } from '../../shared/tones';
+
+export type PhaseId = 'render' | 'commit' | 'passive';
 
 export type HeroPhase = {
-  number: number;
-  title: string;
-  subtitle: string;
-  items: string[];
-  tone: Tone;
-  visual: 'clipboard' | 'play';
+  id: PhaseId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type FlowStep = {
-  number: number;
+export type MythId = 'timing' | 'cleanup' | 'deps';
+
+export type Myth = {
+  id: MythId;
+  badgeWrong: string;
+  wrong: string;
+  right: string;
+  note: string;
+  tone: ToneKey;
+};
+
+export type EffectStepId = 'call' | 'hook' | 'compare' | 'push' | 'flag' | 'run';
+
+export type EffectStep = {
+  id: EffectStepId;
+  num: string;
   title: string;
   description: string;
-  tone: Tone;
-  visual: 'play' | 'search' | 'compare' | 'box' | 'flag' | 'commit';
+  tone: ToneKey;
 };
 
-export type FieldRow = {
+export type EffectFieldId = 'tag' | 'create' | 'inst' | 'deps' | 'next';
+
+export type EffectField = {
+  id: EffectFieldId;
   name: string;
-  comment: string;
+  role: string;
   description: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
-export type DepsResult = {
-  result: '같음' | '다름' | 'Same' | 'Different';
-  body: string[];
-  tone: 'teal' | 'violet';
-  visual: 'skip' | 'play';
-};
+export type DepsSideId = 'same' | 'different';
 
-export type CommitStep = {
-  number: number;
-  fileOrFn: string;
-  description: string;
-  tone: Tone;
-  visual: 'file' | 'process' | 'play';
-};
-
-export type ExperimentResult = {
-  transition: string;
-  resultLabel: string;
-  result: 'run' | 'skip';
-  body: string[];
-};
-
-export type MissionItem = {
-  number: string;
+export type DepsSide = {
+  id: DepsSideId;
   title: string;
+  badge: string;
   description: string;
-};
-
-export type SummaryItem = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
-  visual: 'block' | 'commit' | 'branch' | 'list';
+  bullets: string[];
+  tone: ToneKey;
 };
 
 export type UseEffectInternalsContent = {
   hero: {
     badge: string;
-    titleLine1: string;
-    titleAccent: string;
+    title: { line1: string; line2: string };
     description: string;
-    leftCode: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    call: string;
     phases: HeroPhase[];
   };
-  question: {
+  myths: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
+    items: Myth[];
+    note: string;
   };
-  misconception: {
+  flow: {
+    badge: string;
     eyebrow: string;
     title: string;
-    misconception: {
-      label: string;
-      title: string;
-      body: string[];
-      caption: string;
-    };
-    reality: {
-      label: string;
-      title: string;
-      body: string[];
-      caption: string;
-    };
-    vsBadge: string;
-  };
-  effectFlow: {
-    eyebrow: string;
-    title: string;
-    steps: FlowStep[];
+    description: string;
+    steps: EffectStep[];
+    note: string;
   };
   effectObject: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
+    codeHeader: string;
     code: string;
-    fields: FieldRow[];
+    fields: EffectField[];
+    note: string;
   };
-  depsCompare: {
+  deps: {
+    badge: string;
     eyebrow: string;
     title: string;
-    decision: string;
-    decisionDetail: string;
-    same: DepsResult;
-    different: DepsResult;
+    description: string;
+    sides: [DepsSide, DepsSide];
+    bridge: { headline: string; sub: string };
   };
-  realCode: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    code: string;
-    explanationTitle: string;
-    explanation: string;
     fileLabel: string;
-    fileName: string;
-    buttonLabel: string;
-    buttonHref: string;
-  };
-  commitPath: {
-    eyebrow: string;
-    title: string;
-    steps: CommitStep[];
-    cleanupNote: string;
-  };
-  depsExperiment: {
-    eyebrow: string;
-    title: string;
-    codeLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    codeDescription: string;
-    countFlowLabel: string;
-    countFlow: string;
-    results: ExperimentResult[];
-    runLabel: string;
-    skipLabel: string;
-  };
-  mission: {
-    eyebrow: string;
-    title: string;
-    items: MissionItem[];
-  };
-  summary: {
-    eyebrow: string;
-    title: string;
-    items: SummaryItem[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -167,10 +120,6 @@ export type UseEffectInternalsContent = {
     href: string;
   };
 };
-
-const HERO_CODE = `useEffect(() => {
-  console.log(count);
-}, [count]);`;
 
 const EFFECT_TYPE_CODE = `type Effect = {
   tag: HookFlags;
@@ -183,615 +132,485 @@ const EFFECT_TYPE_CODE = `type Effect = {
   next: Effect;
 };`;
 
-const REAL_CODE = `hook.memoizedState = pushSimpleEffect(
-  HookHasEffect | hookFlags,
-  inst,
-  create,
-  nextDeps,
-);`;
+const PUSH_EFFECT_CODE = `function updateEffectImpl(fiberFlags, hookFlags, create, deps) {
+  const hook = updateWorkInProgressHook();
+  const nextDeps = deps === undefined ? null : deps;
 
-const EXPERIMENT_CODE = `useEffect(() => {
-  console.log("effect run");
-  return () => console.log("cleanup");
+  if (currentHook !== null) {
+    const prevEffect = currentHook.memoizedState;
+    const inst = prevEffect.inst;
+
+    if (nextDeps !== null && areHookInputsEqual(nextDeps, prevEffect.deps)) {
+      hook.memoizedState = pushSimpleEffect(hookFlags, inst, create, nextDeps);
+      return;
+    }
+  }
+
+  currentlyRenderingFiber.flags |= fiberFlags;
+  hook.memoizedState = pushSimpleEffect(
+    HookHasEffect | hookFlags,
+    inst,
+    create,
+    nextDeps,
+  );
+}`;
+
+const HERO_CALL_CODE = `useEffect(() => {
+  console.log(count);
 }, [count]);`;
+
+const REACT_FIBER_HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: UseEffectInternalsContent = {
   hero: {
     badge: 'Hooks 내부 · 7/10단계',
-    titleLine1: 'useEffect는',
-    titleAccent: '렌더 중 실행되는 코드가 아니다',
+    title: { line1: 'useEffect가 렌더 중에 하는 일은', line2: '실행이 아니라 예약이다' },
     description:
-      '렌더 중에는 나중에 실행할 Effect를 기록하고, 실제 실행은 Commit 이후의 Effect 처리 단계에서 일어납니다.',
-    leftCode: HERO_CODE,
+      '렌더 중에는 Effect 객체 한 장을 만들어 Hook에 매달아 둘 뿐입니다. 콜백은 DOM이 커밋된 뒤 별도 단계에서 실행됩니다.',
+    diagramBadge: 'effect timing',
+    diagramCaption: 'register now, run later',
+    callLabel: '우리가 쓰는 코드',
+    call: HERO_CALL_CODE,
     phases: [
       {
-        number: 1,
-        title: 'Render Phase',
-        subtitle: 'Effect 등록',
-        items: ['useEffect 호출', 'Effect 객체 생성', 'Fiber에 연결', '실행하지 않음'],
+        id: 'render',
+        label: 'Render Phase',
+        caption: 'Effect 객체 생성 · Hook에 연결 · flags 표시',
         tone: 'sky',
-        visual: 'clipboard',
       },
       {
-        number: 2,
-        title: 'Commit 이후',
-        subtitle: 'Effect 실행',
-        items: ['DOM 반영 완료 후', 'Passive Effect 실행', 'callback 실행', 'cleanup도 여기서'],
-        tone: 'teal',
-        visual: 'play',
+        id: 'commit',
+        label: 'Commit Phase',
+        caption: 'DOM 변경 반영. 아직 콜백은 실행 안 됨',
+        tone: 'violet',
+      },
+      {
+        id: 'passive',
+        label: 'Passive Effects',
+        caption: '커밋이 끝난 뒤 cleanup → create 순으로 실행',
+        tone: 'emerald',
       },
     ],
   },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: 'useEffect를 만나면 React는 지금 callback을 실행할까, 아니면 실행 예약만 할까?',
+  myths: {
+    badge: '01',
+    eyebrow: 'myth vs reality',
+    title: '자주 어긋나는 세 가지',
+    description:
+      'useEffect를 둘러싼 오해는 대부분 "언제 실행되는가"를 렌더 시점으로 잡는 데서 시작합니다.',
+    items: [
+      {
+        id: 'timing',
+        badgeWrong: '오해',
+        wrong: '렌더가 끝나면 콜백이 바로 실행된다',
+        right: '렌더 중에는 등록만 하고, 커밋 이후 별도 단계에서 실행된다',
+        note: '그래서 effect 안에서 읽는 DOM은 이미 갱신된 DOM입니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'cleanup',
+        badgeWrong: '오해',
+        wrong: 'cleanup은 컴포넌트가 사라질 때만 돈다',
+        right: 'deps가 바뀔 때마다 이전 destroy를 먼저 부르고 새 create를 부른다',
+        note: 'inst.destroy에 직전 반환값이 저장돼 있어 다음 실행 전에 쓰입니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'deps',
+        badgeWrong: '오해',
+        wrong: 'deps가 같으면 Effect 객체도 만들지 않는다',
+        right: '객체는 항상 만든다. 다만 HookHasEffect 플래그를 붙이지 않는다',
+        note: '리스트를 유지해야 순서가 맞기 때문에 건너뛰는 것은 실행뿐입니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '세 오해 모두 "등록"과 "실행"을 한 시점으로 묶어 버린 데서 나옵니다.',
   },
-  misconception: {
-    eyebrow: 'misconception-vs-reality',
-    title: '오해와 실제',
-    misconception: {
-      label: '오해',
-      title: '컴포넌트 렌더 중 effect callback 즉시 실행',
-      body: ['렌더가 끝나자마자 callback이 호출된다고 생각한다'],
-      caption: '“렌더가 끝나면 바로 실행될 것”이라고 생각하기 쉽습니다.',
-    },
-    reality: {
-      label: '실제',
-      title: 'Render Phase에서 Effect 객체 등록 / Commit 이후 Passive Effect 실행',
-      body: ['Render 중에는 등록만, 실행은 Commit 이후로 미뤄진다'],
-      caption: '렌더와 실행은 철저히 분리되어 있습니다.',
-    },
-    vsBadge: 'VS',
-  },
-  effectFlow: {
-    eyebrow: 'effect-full-flow',
-    title: 'Effect 전체 흐름',
+  flow: {
+    badge: '02',
+    eyebrow: 'effect flow',
+    title: '등록에서 실행까지 여섯 단계',
+    description:
+      '앞의 다섯 단계는 렌더 중에 끝나고, 마지막 하나만 커밋 이후로 넘어갑니다. 이 경계가 이 페이지의 전부입니다.',
     steps: [
       {
-        number: 1,
+        id: 'call',
+        num: '01',
         title: 'useEffect 호출',
-        description: '컴포넌트 함수 내부에서 useEffect를 호출한다.',
+        description: '컴포넌트 본문에서 create 함수와 deps 배열을 넘깁니다.',
         tone: 'sky',
-        visual: 'play',
       },
       {
-        number: 2,
-        title: 'Hook 조회',
-        description: '현재 Fiber의 Hook linked list에서 useEffect Hook을 찾거나 생성한다.',
+        id: 'hook',
+        num: '02',
+        title: 'Hook 확보',
+        description: 'Hook linked list에서 이 순번의 Hook을 만들거나 이어받습니다.',
         tone: 'cyan',
-        visual: 'search',
       },
       {
-        number: 3,
+        id: 'compare',
+        num: '03',
         title: 'deps 비교',
-        description: '이전 deps와 새 deps를 비교해 실행 여부를 판단한다.',
+        description: 'areHookInputsEqual이 이전 deps와 새 deps를 Object.is로 훑습니다.',
         tone: 'violet',
-        visual: 'compare',
       },
       {
-        number: 4,
+        id: 'push',
+        num: '04',
         title: 'Effect 객체 생성',
-        description: 'Effect 객체를 만들어 Hook의 memoizedState에 연결한다.',
+        description: 'pushSimpleEffect가 Effect를 만들어 Hook과 updateQueue에 잇습니다.',
         tone: 'teal',
-        visual: 'box',
       },
       {
-        number: 5,
-        title: 'fiber.flags 표시',
-        description: 'Passive 효과가 필요하면 Fiber에 관련 flag를 표시한다.',
-        tone: 'indigo',
-        visual: 'flag',
+        id: 'flag',
+        num: '05',
+        title: 'flags 표시',
+        description: '실행이 필요하면 Fiber에 Passive flag를, Effect에 HookHasEffect를 붙입니다.',
+        tone: 'amber',
       },
       {
-        number: 6,
-        title: 'Commit 이후 Passive Effect 실행',
-        description: '커밋 완료 후 별도 단계에서 callback을 실행한다.',
+        id: 'run',
+        num: '06',
+        title: '커밋 이후 실행',
+        description: 'flag가 붙은 Effect만 골라 cleanup → create 순으로 실행합니다.',
         tone: 'emerald',
-        visual: 'commit',
       },
     ],
+    note: '05에서 flag를 붙이지 않으면 06은 그 Effect를 그냥 지나칩니다. deps가 하는 일이 바로 이것입니다.',
   },
   effectObject: {
-    eyebrow: 'effect-object',
-    title: 'Effect 객체 구조',
+    badge: '03',
+    eyebrow: 'effect object',
+    title: 'Effect 객체가 담는 다섯 칸',
+    description:
+      'useState의 Hook이 값을 담았다면, useEffect의 Hook은 이 Effect 객체를 memoizedState에 담습니다.',
+    codeHeader: 'Effect',
     code: EFFECT_TYPE_CODE,
     fields: [
       {
+        id: 'tag',
         name: 'tag',
-        comment: 'HookFlags',
-        description: 'HookHasEffect | Passive | PassiveStatic 등의 플래그 조합',
-        tone: 'sky',
-      },
-      {
-        name: 'create',
-        comment: '() => (() => void) | void',
-        description: '실제 실행할 callback 함수 — useEffect의 첫 번째 인자',
-        tone: 'teal',
-      },
-      {
-        name: 'inst',
-        comment: '{ destroy, resource? }',
-        description: 'cleanup 함수가 저장되는 객체 — destroy 필드 사용',
-        tone: 'orange',
-      },
-      {
-        name: 'deps',
-        comment: 'Array<mixed> | null',
-        description: '의존성 배열 — 다음 렌더 시 비교에 사용',
-        tone: 'violet',
-      },
-      {
-        name: 'next',
-        comment: 'Effect',
-        description: '다음 Effect를 가리키는 포인터 — 단일 연결 리스트',
+        role: '실행 조건 플래그',
+        description: 'Passive인지 Layout인지, 이번에 실행할지(HookHasEffect)를 비트로 담습니다.',
         tone: 'amber',
       },
-    ],
-  },
-  depsCompare: {
-    eyebrow: 'deps-comparison',
-    title: 'deps 비교 흐름',
-    decision: 'areHookInputsEqual(prevDeps, nextDeps)',
-    decisionDetail: '이전 deps와 새 deps를 자리별로 Object.is로 비교',
-    same: {
-      result: '같음',
-      body: ['실행 생략', 'HookHasEffect 없음', '이번 Commit에서 callback이 호출되지 않음'],
-      tone: 'teal',
-      visual: 'skip',
-    },
-    different: {
-      result: '다름',
-      body: ['HookHasEffect 부여', 'Commit 이후 실행', 'create() 실행 + 이전 destroy 정리'],
-      tone: 'violet',
-      visual: 'play',
-    },
-  },
-  realCode: {
-    eyebrow: 'real-code',
-    title: '실제 코드: Effect 객체 등록',
-    code: REAL_CODE,
-    explanationTitle: 'useEffect는 callback을 즉시 실행하지 않고, Effect 객체로 저장한다.',
-    explanation: '이 객체는 이후 Commit 단계에서 실행됩니다.',
-    fileLabel: '파일',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'GitHub에서 전체 코드 보기',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  commitPath: {
-    eyebrow: 'commit-path',
-    title: 'Commit 이후 실행 경로',
-    steps: [
       {
-        number: 1,
-        fileOrFn: 'ReactFiberHooks.js',
-        description: 'Effect 등록 — pushSimpleEffect',
+        id: 'create',
+        name: 'create',
+        role: '우리가 넘긴 콜백',
+        description: 'useEffect의 첫 인자 그대로입니다. 반환값이 cleanup이 됩니다.',
         tone: 'sky',
-        visual: 'file',
       },
       {
-        number: 2,
-        fileOrFn: 'ReactFiberCommitEffects.js',
-        description: 'commitHookPassiveMountEffects 또는 update 효과',
+        id: 'inst',
+        name: 'inst',
+        role: 'cleanup 보관함',
+        description: '직전 create가 돌려준 destroy를 렌더를 넘어 들고 있는 자리입니다.',
         tone: 'violet',
-        visual: 'process',
       },
       {
-        number: 3,
-        fileOrFn: 'effect callback 실행 (create)',
-        description: 'create() 호출 후, 이전 destroy로 cleanup 처리',
+        id: 'deps',
+        name: 'deps',
+        role: '비교 대상 배열',
+        description: '다음 렌더에서 이 배열과 새 배열을 비교합니다. 생략하면 null입니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'next',
+        name: 'next',
+        role: '다음 Effect 포인터',
+        description: 'Fiber updateQueue에 매달린 Effect들의 원형 리스트를 잇습니다.',
         tone: 'emerald',
-        visual: 'play',
       },
     ],
-    cleanupNote: 'cleanup은 이후 destroy 호출로 처리됩니다.',
+    note: 'cleanup이 Effect가 아니라 inst에 들어 있다는 점이 중요합니다. Effect는 렌더마다 새로 만들어지기 때문입니다.',
   },
-  depsExperiment: {
-    eyebrow: 'deps-experiment',
-    title: '의존성 배열(deps) 실험',
-    codeLabel: '코드',
-    code: EXPERIMENT_CODE,
-    codeDescription: 'count가 바뀔 때만 effect가 실행된다.',
-    countFlowLabel: 'count 값 변화',
-    countFlow: '0 → 1 → 1 → 2',
-    results: [
+  deps: {
+    badge: '04',
+    eyebrow: 'deps',
+    title: 'deps가 실제로 가르는 것',
+    description:
+      'deps 비교의 결과는 Effect를 만들지 말지가 아니라, 만든 Effect에 실행 플래그를 붙일지 말지입니다.',
+    sides: [
       {
-        transition: '0 → 1',
-        resultLabel: '실행',
-        result: 'run',
-        body: ['deps 다름', 'HookHasEffect 부여'],
-      },
-      {
-        transition: '1 → 1',
-        resultLabel: '생략',
-        result: 'skip',
-        body: ['deps 같음', 'HookHasEffect 없음'],
-      },
-      {
-        transition: '1 → 2',
-        resultLabel: '실행',
-        result: 'run',
-        body: ['deps 다름', 'HookHasEffect 부여'],
-      },
-    ],
-    runLabel: '실행',
-    skipLabel: '생략',
-  },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        number: '01',
-        title: 'mountEffect / updateEffect 찾기',
-        description: 'ReactFiberHooks.js에서 mountEffect와 updateEffect 함수를 찾아보세요.',
-      },
-      {
-        number: '02',
-        title: 'deps 비교 로직 확인',
-        description: 'areHookInputsEqual 함수가 어떻게 deps를 비교하는지 확인해보세요.',
-      },
-      {
-        number: '03',
-        title: 'Effect 객체 생성 확인',
-        description: 'pushSimpleEffect가 Effect 객체를 만들고 Hook에 연결하는 과정을 살펴보세요.',
-      },
-      {
-        number: '04',
-        title: 'passive mount 실행 코드 보기',
-        description:
-          'ReactFiberCommitEffects.js에서 effect callback을 실행하는 코드를 확인해보세요.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    items: [
-      {
-        number: 1,
-        title: '렌더 중 실행하지 않는다',
-        description: 'useEffect는 렌더 중에 실행되지 않고 Effect 객체로 등록된다.',
-        tone: 'sky',
-        visual: 'block',
-      },
-      {
-        number: 2,
-        title: 'Commit 이후 실행된다',
-        description: 'DOM 반영이 끝난 뒤 Passive Effect가 실행된다.',
+        id: 'same',
+        title: 'deps가 같을 때',
+        badge: 'skip',
+        description: 'areHookInputsEqual이 true를 돌려준 경우입니다.',
+        bullets: [
+          'Effect 객체는 그대로 만들어 리스트에 잇는다',
+          'HookHasEffect를 붙이지 않는다',
+          'Fiber에 Passive flag도 켜지 않는다',
+          '결과적으로 커밋 이후 이 Effect는 건너뛴다',
+        ],
         tone: 'teal',
-        visual: 'commit',
       },
       {
-        number: 3,
-        title: 'deps로 실행 여부 결정',
-        description: 'deps 비교 결과에 따라 실행 여부가 결정되고 필요한 때만 실행된다.',
+        id: 'different',
+        title: 'deps가 다를 때',
+        badge: 'run',
+        description: '하나라도 Object.is 비교에서 어긋난 경우입니다.',
+        bullets: [
+          'HookHasEffect를 tag에 함께 넣는다',
+          'Fiber에 Passive flag를 켠다',
+          '커밋 후 inst.destroy를 먼저 실행한다',
+          '그다음 create를 실행하고 반환값을 inst.destroy에 저장한다',
+        ],
         tone: 'violet',
-        visual: 'branch',
-      },
-      {
-        number: 4,
-        title: '구조는 연결 리스트',
-        description:
-          'Effect 객체는 Hook의 memoizedState와 Effect list에 연결되어 순차적으로 관리된다.',
-        tone: 'orange',
-        visual: 'list',
       },
     ],
+    bridge: {
+      headline: 'areHookInputsEqual\n(prev, next)',
+      sub: '길이가 다르거나 원소 하나라도 Object.is에서 어긋나면 false입니다. 얕은 비교라서 객체 리터럴은 매번 다릅니다.',
+    },
+  },
+  checkpoint: {
+    badge: '05',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'updateEffectImpl, pushSimpleEffect, areHookInputsEqual, HookHasEffect',
+    whyLabel: '설명',
+    why: 'deps가 같은 분기에서도 pushSimpleEffect를 부른다는 점, 다만 HookHasEffect가 빠져 있다는 점이 핵심입니다.',
+    code: PUSH_EFFECT_CODE,
+    primaryCta: 'ReactFiberHooks.js 읽기',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Rules of Hooks의 이유 이해하기',
+    title: '규칙이 관례가 아닌 이유',
     description:
-      'Hooks가 상태와 Effect를 어떻게 저장하는지 알았다면, 이제 왜 Hook을 조건문 안에서 부르면 안 되는지 내부 구조로 설명할 수 있습니다.',
+      '지금까지 본 linked list와 순서 의존을 근거로, Rules of Hooks가 왜 강제인지 정리합니다.',
     cta: '다음 페이지로 이동',
     href: '/rules-of-hooks',
   },
 };
 
-const HERO_CODE_EN = HERO_CODE;
-const EXPERIMENT_CODE_EN = `useEffect(() => {
-  console.log("effect run");
-  return () => console.log("cleanup");
-}, [count]);`;
-
 const en: UseEffectInternalsContent = {
   hero: {
     badge: 'Hooks Internals · 7/10',
-    titleLine1: 'useEffect is not',
-    titleAccent: 'code that runs during render',
+    title: { line1: 'During render useEffect does not run', line2: 'it only books the work' },
     description:
-      'During render React records future Effects, but the actual execution happens after Commit, in the Effect processing phase.',
-    leftCode: HERO_CODE_EN,
+      'While rendering, React builds one Effect object and hangs it on the Hook. The callback runs later, in a separate pass after the DOM is committed.',
+    diagramBadge: 'effect timing',
+    diagramCaption: 'register now, run later',
+    callLabel: 'the code we write',
+    call: HERO_CALL_CODE,
     phases: [
       {
-        number: 1,
-        title: 'Render Phase',
-        subtitle: 'Register Effect',
-        items: [
-          'useEffect is called',
-          'Build Effect object',
-          'Attach to Fiber',
-          'Does not run yet',
-        ],
+        id: 'render',
+        label: 'Render Phase',
+        caption: 'build the Effect, link the Hook, set flags',
         tone: 'sky',
-        visual: 'clipboard',
       },
       {
-        number: 2,
-        title: 'After Commit',
-        subtitle: 'Run Effect',
-        items: [
-          'After DOM is reflected',
-          'Run Passive Effect',
-          'Call create()',
-          'cleanup also happens here',
-        ],
-        tone: 'teal',
-        visual: 'play',
+        id: 'commit',
+        label: 'Commit Phase',
+        caption: 'DOM changes land. The callback still has not run',
+        tone: 'violet',
+      },
+      {
+        id: 'passive',
+        label: 'Passive Effects',
+        caption: 'after commit, cleanup runs and then create',
+        tone: 'emerald',
       },
     ],
   },
-  question: {
-    eyebrow: "Today's question",
-    title: 'When React meets useEffect, does it run the callback now — or only schedule it?',
+  myths: {
+    badge: '01',
+    eyebrow: 'myth vs reality',
+    title: 'Three assumptions that break',
+    description:
+      'Most confusion about useEffect starts by placing "when does it run" inside the render.',
+    items: [
+      {
+        id: 'timing',
+        badgeWrong: 'Myth',
+        wrong: 'The callback runs as soon as the render finishes',
+        right: 'Render only registers it; execution happens in a pass after commit',
+        note: 'That is why the DOM you read inside an effect is already the updated DOM.',
+        tone: 'sky',
+      },
+      {
+        id: 'cleanup',
+        badgeWrong: 'Myth',
+        wrong: 'Cleanup only runs when the component unmounts',
+        right: 'Whenever deps change, the previous destroy runs before the new create',
+        note: 'inst.destroy holds the last returned function so it is available next time.',
+        tone: 'violet',
+      },
+      {
+        id: 'deps',
+        badgeWrong: 'Myth',
+        wrong: 'Matching deps means no Effect object is created',
+        right: 'The object is always created — it simply gets no HookHasEffect flag',
+        note: 'The list must stay intact for ordering, so only execution is skipped.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'All three collapse "registering" and "running" into a single moment.',
   },
-  misconception: {
-    eyebrow: 'misconception-vs-reality',
-    title: 'Misconception vs reality',
-    misconception: {
-      label: 'Misconception',
-      title: 'Effect callback runs immediately during render',
-      body: ['People assume the callback fires the moment render finishes'],
-      caption: 'It feels natural to think “after render, the callback runs right away”.',
-    },
-    reality: {
-      label: 'Reality',
-      title: 'Register Effect during Render Phase / run Passive Effect after Commit',
-      body: ['Render just registers — execution waits until after Commit'],
-      caption: 'Render and execution are strictly separated.',
-    },
-    vsBadge: 'VS',
-  },
-  effectFlow: {
-    eyebrow: 'effect-full-flow',
-    title: 'Effect full flow',
+  flow: {
+    badge: '02',
+    eyebrow: 'effect flow',
+    title: 'Six steps from registration to execution',
+    description:
+      'The first five finish during render and only the last one crosses into post-commit. That boundary is the whole page.',
     steps: [
       {
-        number: 1,
-        title: 'Call useEffect',
-        description: 'Called inside the component function.',
+        id: 'call',
+        num: '01',
+        title: 'useEffect is called',
+        description: 'The component body passes a create function and a deps array.',
         tone: 'sky',
-        visual: 'play',
       },
       {
-        number: 2,
-        title: 'Find Hook',
-        description: 'Locate or create the useEffect Hook in the current Fiber’s Hook list.',
+        id: 'hook',
+        num: '02',
+        title: 'Take the Hook',
+        description: 'Create or inherit the Hook at this position in the linked list.',
         tone: 'cyan',
-        visual: 'search',
       },
       {
-        number: 3,
+        id: 'compare',
+        num: '03',
         title: 'Compare deps',
-        description: 'Compare previous deps with new deps to decide execution.',
+        description: 'areHookInputsEqual walks old and new deps with Object.is.',
         tone: 'violet',
-        visual: 'compare',
       },
       {
-        number: 4,
-        title: 'Build Effect object',
-        description: 'Create the Effect object and link it to the Hook’s memoizedState.',
+        id: 'push',
+        num: '04',
+        title: 'Create the Effect object',
+        description: 'pushSimpleEffect builds the Effect and links it to the Hook and updateQueue.',
         tone: 'teal',
-        visual: 'box',
       },
       {
-        number: 5,
-        title: 'Set fiber.flags',
-        description: 'If a Passive effect is needed, set the relevant flag on the Fiber.',
-        tone: 'indigo',
-        visual: 'flag',
+        id: 'flag',
+        num: '05',
+        title: 'Set the flags',
+        description: 'If it must run, set Passive on the Fiber and HookHasEffect on the Effect.',
+        tone: 'amber',
       },
       {
-        number: 6,
-        title: 'Run after Commit',
-        description: 'After commit completes, the callback runs in a separate Passive Effect step.',
+        id: 'run',
+        num: '06',
+        title: 'Run after commit',
+        description: 'Only flagged Effects are picked up, cleanup first and then create.',
         tone: 'emerald',
-        visual: 'commit',
       },
     ],
+    note: 'Without the flag from step 05, step 06 walks straight past that Effect. That is all deps really do.',
   },
   effectObject: {
-    eyebrow: 'effect-object',
-    title: 'Effect object structure',
+    badge: '03',
+    eyebrow: 'effect object',
+    title: 'The five slots of an Effect',
+    description:
+      'Where a useState Hook stores a value, a useEffect Hook stores this Effect object in memoizedState.',
+    codeHeader: 'Effect',
     code: EFFECT_TYPE_CODE,
     fields: [
       {
+        id: 'tag',
         name: 'tag',
-        comment: 'HookFlags',
-        description: 'Flag combo like HookHasEffect | Passive | PassiveStatic',
-        tone: 'sky',
-      },
-      {
-        name: 'create',
-        comment: '() => (() => void) | void',
-        description: 'The actual user callback — first argument of useEffect',
-        tone: 'teal',
-      },
-      {
-        name: 'inst',
-        comment: '{ destroy, resource? }',
-        description: 'Holds the cleanup function in the destroy field',
-        tone: 'orange',
-      },
-      {
-        name: 'deps',
-        comment: 'Array<mixed> | null',
-        description: 'Dependency array — compared on the next render',
-        tone: 'violet',
-      },
-      {
-        name: 'next',
-        comment: 'Effect',
-        description: 'Pointer to the next Effect — singly linked list',
+        role: 'Execution flags',
+        description: 'Bits saying Passive or Layout, and whether to run this time (HookHasEffect).',
         tone: 'amber',
       },
-    ],
-  },
-  depsCompare: {
-    eyebrow: 'deps-comparison',
-    title: 'deps comparison flow',
-    decision: 'areHookInputsEqual(prevDeps, nextDeps)',
-    decisionDetail: 'Compares previous and next deps element-by-element with Object.is',
-    same: {
-      result: 'Same',
-      body: ['Skip execution', 'No HookHasEffect', 'callback does not run this Commit'],
-      tone: 'teal',
-      visual: 'skip',
-    },
-    different: {
-      result: 'Different',
-      body: ['Set HookHasEffect', 'Run after Commit', 'Run create() + cleanup previous destroy'],
-      tone: 'violet',
-      visual: 'play',
-    },
-  },
-  realCode: {
-    eyebrow: 'real-code',
-    title: 'Real code: registering the Effect object',
-    code: REAL_CODE,
-    explanationTitle: 'useEffect does not run the callback right away — it stores it as an Effect.',
-    explanation: 'That object runs later during the Commit phase.',
-    fileLabel: 'file',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'View full code on GitHub',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  commitPath: {
-    eyebrow: 'commit-path',
-    title: 'Execution path after Commit',
-    steps: [
       {
-        number: 1,
-        fileOrFn: 'ReactFiberHooks.js',
-        description: 'Register Effect — pushSimpleEffect',
+        id: 'create',
+        name: 'create',
+        role: 'The callback you passed',
+        description: 'Exactly the first argument to useEffect. Its return value becomes cleanup.',
         tone: 'sky',
-        visual: 'file',
       },
       {
-        number: 2,
-        fileOrFn: 'ReactFiberCommitEffects.js',
-        description: 'commitHookPassiveMountEffects or update effect',
+        id: 'inst',
+        name: 'inst',
+        role: 'Cleanup holder',
+        description: 'The slot that carries the previous destroy function across renders.',
         tone: 'violet',
-        visual: 'process',
       },
       {
-        number: 3,
-        fileOrFn: 'effect callback (create)',
-        description: 'Run create(); cleanup runs via destroy afterwards',
+        id: 'deps',
+        name: 'deps',
+        role: 'Array to compare',
+        description: 'Compared against the next array on the following render. null when omitted.',
+        tone: 'cyan',
+      },
+      {
+        id: 'next',
+        name: 'next',
+        role: 'Pointer to the next Effect',
+        description: 'Links the circular list of Effects hanging on the Fiber updateQueue.',
         tone: 'emerald',
-        visual: 'play',
       },
     ],
-    cleanupNote: 'cleanup runs later via the destroy call.',
+    note: 'Cleanup living on inst rather than on the Effect matters, because a fresh Effect is built every render.',
   },
-  depsExperiment: {
-    eyebrow: 'deps-experiment',
-    title: 'Dependency array (deps) experiment',
-    codeLabel: 'Code',
-    code: EXPERIMENT_CODE_EN,
-    codeDescription: 'The effect runs only when count changes.',
-    countFlowLabel: 'count value changes',
-    countFlow: '0 → 1 → 1 → 2',
-    results: [
+  deps: {
+    badge: '04',
+    eyebrow: 'deps',
+    title: 'What deps actually decide',
+    description:
+      'The deps comparison does not decide whether an Effect is created. It decides whether the created Effect gets an execution flag.',
+    sides: [
       {
-        transition: '0 → 1',
-        resultLabel: 'Run',
-        result: 'run',
-        body: ['deps differ', 'HookHasEffect set'],
-      },
-      {
-        transition: '1 → 1',
-        resultLabel: 'Skip',
-        result: 'skip',
-        body: ['deps equal', 'no HookHasEffect'],
-      },
-      {
-        transition: '1 → 2',
-        resultLabel: 'Run',
-        result: 'run',
-        body: ['deps differ', 'HookHasEffect set'],
-      },
-    ],
-    runLabel: 'Run',
-    skipLabel: 'Skip',
-  },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: 'Follow it in the source',
-    items: [
-      {
-        number: '01',
-        title: 'Find mountEffect / updateEffect',
-        description: 'Locate mountEffect and updateEffect in ReactFiberHooks.js.',
-      },
-      {
-        number: '02',
-        title: 'Check the deps comparison logic',
-        description: 'See how areHookInputsEqual compares the deps array.',
-      },
-      {
-        number: '03',
-        title: 'Read Effect creation',
-        description: 'Walk through how pushSimpleEffect builds the Effect and links it.',
-      },
-      {
-        number: '04',
-        title: 'See passive mount execution',
-        description: 'Open ReactFiberCommitEffects.js and read the callback execution.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    items: [
-      {
-        number: 1,
-        title: 'Not during render',
-        description: 'useEffect does not execute during render — it is registered as an Effect.',
-        tone: 'sky',
-        visual: 'block',
-      },
-      {
-        number: 2,
-        title: 'After Commit',
-        description: 'Passive Effects run after the DOM has been reflected.',
+        id: 'same',
+        title: 'When deps match',
+        badge: 'skip',
+        description: 'areHookInputsEqual returned true.',
+        bullets: [
+          'The Effect object is still created and linked',
+          'HookHasEffect is not added',
+          'No Passive flag is set on the Fiber',
+          'So the post-commit pass skips this Effect',
+        ],
         tone: 'teal',
-        visual: 'commit',
       },
       {
-        number: 3,
-        title: 'deps decide execution',
-        description: 'The deps comparison decides whether to run or skip the callback.',
+        id: 'different',
+        title: 'When deps differ',
+        badge: 'run',
+        description: 'At least one element failed the Object.is comparison.',
+        bullets: [
+          'HookHasEffect joins the tag',
+          'The Passive flag is set on the Fiber',
+          'After commit, inst.destroy runs first',
+          'Then create runs and its return goes back into inst.destroy',
+        ],
         tone: 'violet',
-        visual: 'branch',
-      },
-      {
-        number: 4,
-        title: 'It is a linked list',
-        description: 'Effect objects are linked through Hook.memoizedState and an Effect list.',
-        tone: 'orange',
-        visual: 'list',
       },
     ],
+    bridge: {
+      headline: 'areHookInputsEqual\n(prev, next)',
+      sub: 'False when the lengths differ or any element fails Object.is. It is a shallow check, so an object literal differs every time.',
+    },
+  },
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'updateEffectImpl, pushSimpleEffect, areHookInputsEqual, HookHasEffect',
+    whyLabel: 'Why',
+    why: 'Note that the matching-deps branch still calls pushSimpleEffect — it just leaves HookHasEffect out.',
+    code: PUSH_EFFECT_CODE,
+    primaryCta: 'Read ReactFiberHooks.js',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'understanding why Rules of Hooks exist',
+    title: 'Why the rules are not a convention',
     description:
-      'Now that you know how Hooks store state and Effects, you can explain — from internals — why Hooks must not be called inside conditionals.',
+      'With the linked list and its order dependence in hand, we can say exactly why the Rules of Hooks are enforced.',
     cta: 'Go to the next page',
     href: '/rules-of-hooks',
   },

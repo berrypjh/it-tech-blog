@@ -1,122 +1,98 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'amber' | 'indigo';
+import type { ToneKey } from '../../shared/tones';
 
-export type Piece = {
-  title: string;
-  value: string;
+export type ProductId = 'state' | 'dispatch' | 'queue';
+
+export type Product = {
+  id: ProductId;
   label: string;
-  tone: Tone;
-  visual: 'number' | 'fn' | 'queue' | 'init';
+  caption: string;
+  tone: ToneKey;
 };
 
-export type ProcessStep = {
-  number: number;
+export type MountStepId = 'call' | 'hook' | 'lazy-init' | 'store' | 'queue' | 'bind' | 'return';
+
+export type MountStep = {
+  id: MountStepId;
+  num: string;
   title: string;
   description: string;
-  tone: Tone;
+  tone: ToneKey;
 };
 
-export type FieldRow = {
+export type QueueFieldId = 'pending' | 'lanes' | 'dispatch' | 'last-reducer' | 'last-state';
+
+export type QueueField = {
+  id: QueueFieldId;
   name: string;
+  role: string;
   description: string;
-  tone: Tone;
-  isQueueChild?: boolean;
+  tone: ToneKey;
 };
 
-export type FlowCard = {
+export type BindStepId = 'raw' | 'bind' | 'handed';
+
+export type BindStep = {
+  id: BindStepId;
+  badge: string;
   title: string;
-  subtitle: string;
-  tone: Tone;
-  visual: 'fn' | 'bind' | 'cube' | 'play';
-};
-
-export type TabKey = 'number' | 'string' | 'function';
-
-export type ExperimentTab = {
-  key: TabKey;
-  label: string;
-  userCode: string;
-  flow: string[];
-  internal: { key: string; value: string; children?: { key: string; value: string }[] }[];
-};
-
-export type MissionItem = {
-  number: string;
-  title: string;
-  description: string;
-};
-
-export type SummaryItem = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
+  body: string;
+  tone: ToneKey;
 };
 
 export type UseStateInternalsContent = {
   hero: {
     badge: string;
-    titleLine1: string;
-    titleAccent: string;
+    title: { line1: string; line2: string };
     description: string;
-    leftCode: string;
-    diagramTitle: string;
-    diagramCode: string;
-    diagramSubtitle: string;
-    pieces: Piece[];
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    call: string;
+    products: Product[];
   };
-  question: {
+  mountFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
+    steps: MountStep[];
+    note: string;
   };
-  fullProcess: {
+  queueShape: {
+    badge: string;
     eyebrow: string;
     title: string;
-    steps: ProcessStep[];
-  };
-  hookStructure: {
-    eyebrow: string;
-    title: string;
+    description: string;
+    codeHeader: string;
     code: string;
-    fields: FieldRow[];
+    fields: QueueField[];
+    note: string;
   };
-  mountStateImpl: {
+  dispatchBind: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
+    steps: BindStep[];
+    codeHeader: string;
     code: string;
-    explanation: string;
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
     fileLabel: string;
-    fileName: string;
-    buttonLabel: string;
-    buttonHref: string;
-  };
-  dispatch: {
-    eyebrow: string;
-    title: string;
-    flow: FlowCard[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanation: string;
-  };
-  experiment: {
-    eyebrow: string;
-    title: string;
-    tabs: ExperimentTab[];
-    userCodeLabel: string;
-    flowLabel: string;
-    internalLabel: string;
-    tipTitle: string;
-    tipBody: string;
-  };
-  mission: {
-    eyebrow: string;
-    title: string;
-    items: MissionItem[];
-  };
-  summary: {
-    eyebrow: string;
-    title: string;
-    items: SummaryItem[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -127,7 +103,7 @@ export type UseStateInternalsContent = {
   };
 };
 
-const HOOK_STRUCTURE_CODE = `Hook {
+const HOOK_SHAPE_CODE = `Hook {
   memoizedState: 0,
   baseState: 0,
   baseQueue: null,
@@ -138,14 +114,13 @@ const HOOK_STRUCTURE_CODE = `Hook {
     lastRenderedReducer: basicStateReducer,
     lastRenderedState: 0,
   },
-  next: null
+  next: null,
 }`;
 
-const MOUNT_STATE_IMPL_CODE = `// ReactFiberHooks.js
-function mountStateImpl(initialState) {
+const MOUNT_STATE_CODE = `function mountStateImpl(initialState) {
   const hook = mountWorkInProgressHook();
 
-  if (typeof initialState === "function") {
+  if (typeof initialState === 'function') {
     initialState = initialState();
   }
 
@@ -163,313 +138,201 @@ function mountStateImpl(initialState) {
   return hook;
 }`;
 
-const DISPATCH_BIND_CODE = `queue.dispatch = dispatchSetState.bind(
+const DISPATCH_BIND_CODE = `const dispatch = (queue.dispatch = dispatchSetState.bind(
   null,
   currentlyRenderingFiber,
   queue,
-);`;
+));
+
+return [hook.memoizedState, dispatch];`;
+
+const REACT_FIBER_HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: UseStateInternalsContent = {
   hero: {
     badge: 'Hooks 내부 · 4/10단계',
-    titleLine1: 'useState는',
-    titleAccent: '값만 저장하지 않는다',
+    title: { line1: 'useState가 만드는 것은', line2: '값 하나가 아니라 셋이다' },
     description:
-      'useState는 현재 상태값뿐 아니라, 앞으로 들어올 업데이트를 쌓는 queue와 업데이트를 등록하는 dispatch 함수까지 준비합니다.',
-    leftCode: 'const [count, setCount] = useState(0);',
-    diagramTitle: '내가 쓰는 한 줄',
-    diagramCode: 'const [count, setCount] = useState(0);',
-    diagramSubtitle: 'React 내부에서 만들어지는 것들',
-    pieces: [
+      '한 줄 호출로 상태값, 업데이트를 쌓을 queue, 그리고 그 queue를 기억하는 dispatch 함수가 한꺼번에 만들어집니다.',
+    diagramBadge: 'mount state',
+    diagramCaption: 'one call, three outputs',
+    callLabel: '우리가 쓰는 한 줄',
+    call: 'const [count, setCount] = useState(0);',
+    products: [
+      { id: 'state', label: 'hook.memoizedState', caption: '0 — 이번 렌더의 상태값', tone: 'sky' },
       {
-        title: '현재 상태값',
-        value: '0',
-        label: 'count',
-        tone: 'sky',
-        visual: 'number',
-      },
-      {
-        title: 'dispatch 함수',
-        value: 'setCount()',
-        label: 'setCount',
-        tone: 'teal',
-        visual: 'fn',
-      },
-      {
-        title: '업데이트 큐',
-        value: 'queue',
-        label: 'queue',
+        id: 'queue',
+        label: 'hook.queue',
+        caption: '앞으로 들어올 update를 쌓을 자리',
         tone: 'violet',
-        visual: 'queue',
       },
       {
-        title: '초기화 로직',
-        value: 'useState(0)',
-        label: 'initialState',
-        tone: 'cyan',
-        visual: 'init',
+        id: 'dispatch',
+        label: 'queue.dispatch',
+        caption: 'fiber와 queue를 묶어 둔 setCount',
+        tone: 'teal',
       },
     ],
   },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: '이 한 줄을 실행했을 때 React 내부에는 정확히 무엇이 만들어질까?',
-  },
-  fullProcess: {
-    eyebrow: 'full-process',
-    title: 'useState(0)가 만들어지는 전체 과정',
+  mountFlow: {
+    badge: '01',
+    eyebrow: 'mountState',
+    title: '첫 렌더에서 벌어지는 일곱 단계',
+    description:
+      'mountState는 앞 페이지에서 본 빈 Hook 객체를 받아, 상태와 queue와 dispatch를 차례로 채워 넣습니다.',
     steps: [
       {
-        number: 1,
+        id: 'call',
+        num: '01',
         title: 'useState(0) 호출',
-        description: '사용자 코드에서 useState 호출',
-        tone: 'sky',
-      },
-      { number: 2, title: 'Hook 생성', description: 'Hook 노드 객체를 생성', tone: 'violet' },
-      {
-        number: 3,
-        title: 'initialState 저장',
-        description: 'initialState를 memoizedState, baseState에 저장',
+        description: 'Dispatcher가 mount 계열이므로 mountState로 들어옵니다.',
         tone: 'sky',
       },
       {
-        number: 4,
-        title: 'UpdateQueue 생성',
-        description: '업데이트들을 담을 queue 객체 생성',
+        id: 'hook',
+        num: '02',
+        title: '빈 Hook 확보',
+        description: 'mountWorkInProgressHook이 새 Hook을 만들어 리스트 끝에 붙입니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'lazy-init',
+        num: '03',
+        title: '함수면 한 번 실행',
+        description: 'initialState가 함수면 여기서 호출해 값으로 바꿉니다. 게으른 초기화입니다.',
         tone: 'cyan',
       },
       {
-        number: 5,
-        title: 'dispatch 연결',
-        description: 'fiber와 queue를 기억하는 dispatch 함수 생성 및 연결',
+        id: 'store',
+        num: '04',
+        title: 'memoizedState와 baseState에 저장',
+        description: '같은 값을 두 칸에 함께 넣어 둡니다. 재계산의 기준이 필요하기 때문입니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'queue',
+        num: '05',
+        title: 'UpdateQueue 생성',
+        description: 'pending, lanes, dispatch, lastRendered* 다섯 칸을 가진 객체를 만듭니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'bind',
+        num: '06',
+        title: 'dispatch 바인딩',
+        description: 'dispatchSetState에 현재 fiber와 이 queue를 미리 묶어 둡니다.',
         tone: 'teal',
       },
       {
-        number: 6,
+        id: 'return',
+        num: '07',
         title: '[state, dispatch] 반환',
-        description: '[memoizedState, dispatch]를 사용자에게 반환',
+        description: '구조 분해로 받는 그 배열이 여기서 만들어집니다.',
         tone: 'emerald',
       },
     ],
+    note: '03의 게으른 초기화는 첫 렌더에서만 일어납니다. 재렌더에서는 initialState를 아예 쳐다보지 않습니다.',
   },
-  hookStructure: {
-    eyebrow: 'hook-structure',
-    title: 'Hook 내부 구조 (useState 예시)',
-    code: HOOK_STRUCTURE_CODE,
+  queueShape: {
+    badge: '02',
+    eyebrow: 'update queue',
+    title: 'queue가 가진 다섯 칸',
+    description:
+      'Hook 객체의 queue 필드를 열면 다시 다섯 칸이 나옵니다. 상태를 저장하는 쪽이 아니라, 앞으로 들어올 변경을 관리하는 쪽입니다.',
+    codeHeader: 'Hook (useState 기준)',
+    code: HOOK_SHAPE_CODE,
     fields: [
       {
-        name: 'memoizedState',
-        description: '현재 렌더에서의 상태값 (렌더가 끝난 값)',
-        tone: 'sky',
-      },
-      { name: 'baseState', description: '업데이트 계산의 기준이 되는 상태', tone: 'sky' },
-      { name: 'baseQueue', description: '기존에 처리되지 않은 업데이트 큐', tone: 'amber' },
-      { name: 'queue', description: '이 Hook의 업데이트 관리 객체', tone: 'cyan' },
-      {
+        id: 'pending',
         name: 'pending',
-        description: '처리 대기 중인 업데이트의 원형 리스트',
-        tone: 'cyan',
-        isQueueChild: true,
+        role: '대기 중인 update',
+        description: 'setCount가 만든 update가 붙는 원형 연결 리스트의 끝을 가리킵니다.',
+        tone: 'violet',
       },
-      { name: 'lanes', description: '업데이트 우선순위 정보', tone: 'cyan', isQueueChild: true },
       {
+        id: 'lanes',
+        name: 'lanes',
+        role: '쌓인 우선순위',
+        description: '이 queue에 들어온 update들의 lane을 모아 둡니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'dispatch',
         name: 'dispatch',
-        description: '사용자가 호출하는 setCount 함수',
+        role: '사용자가 부르는 함수',
+        description: 'bind로 fiber와 queue가 미리 묶인 setCount 자신입니다.',
         tone: 'teal',
-        isQueueChild: true,
       },
       {
+        id: 'last-reducer',
         name: 'lastRenderedReducer',
-        description: '마지막으로 사용한 reducer (useState는 basicStateReducer)',
-        tone: 'violet',
-        isQueueChild: true,
+        role: '마지막에 쓴 reducer',
+        description: 'useState는 항상 basicStateReducer가 들어갑니다.',
+        tone: 'cyan',
       },
       {
+        id: 'last-state',
         name: 'lastRenderedState',
-        description: '마지막 렌더에서의 상태값',
+        role: '마지막 렌더의 값',
+        description: '같은 값으로의 setState를 조기에 걸러 내는 비교 기준이 됩니다.',
         tone: 'sky',
-        isQueueChild: true,
       },
+    ],
+    note: 'lastRenderedReducer가 있다는 것은 useState가 내부적으로 reducer로 돌아간다는 뜻입니다. 6페이지에서 이어집니다.',
+  },
+  dispatchBind: {
+    badge: '03',
+    eyebrow: 'dispatchSetState',
+    title: 'setCount가 컴포넌트를 기억하는 법',
+    description:
+      'setCount는 특별한 함수가 아닙니다. 공용 함수 하나에 현재 fiber와 이 Hook의 queue를 bind로 붙여 둔 것뿐입니다.',
+    steps: [
       {
-        name: 'next',
-        description: '다음 Hook 노드를 가리키는 포인터 — linked list',
+        id: 'raw',
+        badge: 'step 1',
+        title: 'dispatchSetState',
+        body: '모든 useState가 공유하는 하나의 내부 함수입니다.',
         tone: 'violet',
       },
-    ],
-  },
-  mountStateImpl: {
-    eyebrow: 'mount-state-impl',
-    title: '실제 코드: 초기 상태와 queue 생성',
-    code: MOUNT_STATE_IMPL_CODE,
-    explanation:
-      '초기 상태를 설정하고, 업데이트를 관리할 queue 객체를 생성한 뒤 Hook에 연결합니다.',
-    fileLabel: '파일',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'GitHub에서 전체 코드 보기',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  dispatch: {
-    eyebrow: 'dispatch-flow',
-    title: 'dispatch 생성 흐름',
-    flow: [
-      { title: 'dispatchSetState', subtitle: '함수', tone: 'violet', visual: 'fn' },
-      { title: 'bind', subtitle: 'this 아님', tone: 'cyan', visual: 'bind' },
       {
-        title: 'fiber + queue',
-        subtitle: '현재 컴포넌트 / 해당 Hook',
-        tone: 'teal',
-        visual: 'cube',
+        id: 'bind',
+        badge: 'step 2',
+        title: 'bind(fiber, queue)',
+        body: '지금 렌더 중인 fiber와 이 Hook의 queue를 앞 인자로 고정합니다.',
+        tone: 'cyan',
       },
-      { title: 'setCount', subtitle: '사용자가 호출하는 함수', tone: 'sky', visual: 'play' },
+      {
+        id: 'handed',
+        badge: 'step 3',
+        title: 'setCount로 반환',
+        body: '우리는 값 하나만 넘기면 되고, 나머지 두 인자는 이미 박혀 있습니다.',
+        tone: 'teal',
+      },
     ],
+    codeHeader: 'packages/react-reconciler/src/ReactFiberHooks.js',
     code: DISPATCH_BIND_CODE,
-    explanation: 'setCount는 현재 Fiber와 해당 Hook의 queue를 기억하는 함수입니다.',
+    note: 'setCount의 정체성이 렌더마다 유지되는 이유가 이것입니다. 같은 queue에 묶여 있으면 같은 함수로 남습니다.',
   },
-  experiment: {
-    eyebrow: 'dissection-experiment',
-    title: 'useState 해체 실험',
-    tabs: [
-      {
-        key: 'number',
-        label: '숫자 상태',
-        userCode: 'const [count, setCount] = useState(0);',
-        flow: [
-          '0을 initialState로 사용',
-          "typeof !== 'function' 이므로 그대로 사용",
-          'memoizedState, baseState에 0 저장',
-        ],
-        internal: [
-          { key: 'memoizedState', value: '0' },
-          { key: 'baseState', value: '0' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setCount' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: '0' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-      {
-        key: 'string',
-        label: '문자열 상태',
-        userCode: 'const [name, setName] = useState("Park");',
-        flow: [
-          '"Park"을 initialState로 사용',
-          "typeof !== 'function' 이므로 그대로 사용",
-          'memoizedState, baseState에 "Park" 저장',
-        ],
-        internal: [
-          { key: 'memoizedState', value: '"Park"' },
-          { key: 'baseState', value: '"Park"' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setName' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: '"Park"' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-      {
-        key: 'function',
-        label: '함수 초기화',
-        userCode: 'const [items, setItems] = useState(() => heavyInit());',
-        flow: [
-          '() => heavyInit()을 initialState로 사용',
-          "typeof === 'function' 이므로 한 번 호출해 결과를 얻음",
-          'heavyInit() 결과를 memoizedState, baseState에 저장',
-        ],
-        internal: [
-          { key: 'memoizedState', value: 'heavyInit()' },
-          { key: 'baseState', value: 'heavyInit()' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setItems' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: 'heavyInit()' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-    ],
-    userCodeLabel: '사용자 코드',
-    flowLabel: '초기화 흐름',
-    internalLabel: '내부 구조 (초기 렌더 이후)',
-    tipTitle: '팁을 바꿔보세요!',
-    tipBody: '초기값의 타입에 따라 초기화 흐름과 저장되는 값이 어떻게 달라지는지 확인할 수 있어요.',
-  },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        number: '01',
-        title: 'mountState 확인',
-        description: 'ReactFiberHooks.js에서 mountState 함수로 들어가는 역할을 확인하세요.',
-      },
-      {
-        number: '02',
-        title: 'mountStateImpl 확인',
-        description: 'Hook 객체 생성 및 초기화 과정을 단계별로 살펴보세요.',
-      },
-      {
-        number: '03',
-        title: 'queue 객체 확인',
-        description: 'queue 내부 필드들의 의미와 초기 값을 확인해보세요.',
-      },
-      {
-        number: '04',
-        title: 'dispatch bind 확인',
-        description: 'dispatchSetState.bind(...)가 어떤 값을 묶어서 기억하는지 추적해보세요.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: '핵심 요약',
-    items: [
-      {
-        number: 1,
-        title: 'useState는 3가지를 준비한다',
-        description: '현재 상태값, 업데이트 queue, dispatch 함수를 한 번에 만든다.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: 'Hook 노드에 모든 것이 연결된다',
-        description: '상태값과 queue, dispatch가 하나의 Hook 객체를 중심으로 연결된다.',
-        tone: 'teal',
-      },
-      {
-        number: 3,
-        title: 'dispatch는 Fiber와 queue를 기억한다',
-        description: 'setCount는 현재 컴포넌트 Fiber와 해당 Hook의 queue를 기억한다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'mountState, mountStateImpl, basicStateReducer',
+    whyLabel: '설명',
+    why: 'queue 리터럴이 함수 안에서 통째로 만들어지는 모습을 보면, queue가 Hook마다 따로 존재한다는 점이 분명해집니다.',
+    code: MOUNT_STATE_CODE,
+    primaryCta: 'ReactFiberHooks.js 읽기',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'setState 이후 실제로 무슨 일이 일어나는가?',
+    title: 'setCount를 누르면 무슨 일이 생기나',
     description:
-      'useState가 무엇을 준비하는지 알았다면, 이제 setState를 호출했을 때 queue가 어떻게 움직이는지 살펴봅니다.',
+      '만들어 둔 dispatch가 실제로 호출됐을 때 update가 어떻게 queue에 쌓이는지 따라갑니다.',
     cta: '다음 페이지로 이동',
     href: '/set-state-flow',
   },
@@ -478,302 +341,192 @@ const ko: UseStateInternalsContent = {
 const en: UseStateInternalsContent = {
   hero: {
     badge: 'Hooks Internals · 4/10',
-    titleLine1: 'useState does not',
-    titleAccent: 'just store a value',
+    title: { line1: 'useState does not build one thing', line2: 'it builds three' },
     description:
-      'useState prepares the current state, the update queue that will collect future updates, and the dispatch function — all at once.',
-    leftCode: 'const [count, setCount] = useState(0);',
-    diagramTitle: 'The one line we write',
-    diagramCode: 'const [count, setCount] = useState(0);',
-    diagramSubtitle: 'What React actually builds inside',
-    pieces: [
-      { title: 'Current state', value: '0', label: 'count', tone: 'sky', visual: 'number' },
-      { title: 'Dispatch fn', value: 'setCount()', label: 'setCount', tone: 'teal', visual: 'fn' },
-      { title: 'Update queue', value: 'queue', label: 'queue', tone: 'violet', visual: 'queue' },
+      'A single call produces the state value, a queue for updates still to come, and a dispatch function that remembers that queue.',
+    diagramBadge: 'mount state',
+    diagramCaption: 'one call, three outputs',
+    callLabel: 'the line we write',
+    call: 'const [count, setCount] = useState(0);',
+    products: [
       {
-        title: 'Init logic',
-        value: 'useState(0)',
-        label: 'initialState',
-        tone: 'cyan',
-        visual: 'init',
-      },
-    ],
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: 'When this single line runs, what does React actually build inside?',
-  },
-  fullProcess: {
-    eyebrow: 'full-process',
-    title: 'The full path of useState(0)',
-    steps: [
-      {
-        number: 1,
-        title: 'Call useState(0)',
-        description: 'User code calls useState',
+        id: 'state',
+        label: 'hook.memoizedState',
+        caption: '0 — the value for this render',
         tone: 'sky',
       },
       {
-        number: 2,
-        title: 'Create Hook',
-        description: 'Allocate a Hook node object',
+        id: 'queue',
+        label: 'hook.queue',
+        caption: 'where future updates will pile up',
         tone: 'violet',
       },
       {
-        number: 3,
-        title: 'Store initialState',
-        description: 'Put initialState into memoizedState and baseState',
+        id: 'dispatch',
+        label: 'queue.dispatch',
+        caption: 'setCount, with fiber and queue bound in',
+        tone: 'teal',
+      },
+    ],
+  },
+  mountFlow: {
+    badge: '01',
+    eyebrow: 'mountState',
+    title: 'Seven steps on the first render',
+    description:
+      'mountState takes the empty Hook object from the previous page and fills in state, queue and dispatch in order.',
+    steps: [
+      {
+        id: 'call',
+        num: '01',
+        title: 'useState(0) is called',
+        description: 'The Dispatcher is a mount one, so the call lands in mountState.',
         tone: 'sky',
       },
       {
-        number: 4,
-        title: 'Build UpdateQueue',
-        description: 'Create the queue object that holds future updates',
+        id: 'hook',
+        num: '02',
+        title: 'Take an empty Hook',
+        description: 'mountWorkInProgressHook creates a Hook and appends it to the list.',
+        tone: 'violet',
+      },
+      {
+        id: 'lazy-init',
+        num: '03',
+        title: 'Call it once if it is a function',
+        description: 'A function initialState is invoked here to become a value. Lazy init.',
         tone: 'cyan',
       },
       {
-        number: 5,
-        title: 'Wire up dispatch',
-        description: 'Create a dispatch function bound to the current fiber + queue',
+        id: 'store',
+        num: '04',
+        title: 'Store in memoizedState and baseState',
+        description: 'The same value goes into both slots, because recomputation needs a base.',
+        tone: 'sky',
+      },
+      {
+        id: 'queue',
+        num: '05',
+        title: 'Create the UpdateQueue',
+        description: 'Build an object with pending, lanes, dispatch and the lastRendered pair.',
+        tone: 'violet',
+      },
+      {
+        id: 'bind',
+        num: '06',
+        title: 'Bind the dispatch',
+        description: 'Pre-bind the current fiber and this queue onto dispatchSetState.',
         tone: 'teal',
       },
       {
-        number: 6,
+        id: 'return',
+        num: '07',
         title: 'Return [state, dispatch]',
-        description: 'Return [memoizedState, dispatch] to the caller',
+        description: 'The array you destructure is created right here.',
         tone: 'emerald',
       },
     ],
+    note: 'The lazy init in step 03 only ever happens on the first render. A re-render never looks at initialState again.',
   },
-  hookStructure: {
-    eyebrow: 'hook-structure',
-    title: 'Hook internal structure (useState example)',
-    code: HOOK_STRUCTURE_CODE,
+  queueShape: {
+    badge: '02',
+    eyebrow: 'update queue',
+    title: 'The five slots inside queue',
+    description:
+      'Open the queue field of the Hook and you find five more slots. This side does not store state — it manages the changes still to come.',
+    codeHeader: 'Hook (as built by useState)',
+    code: HOOK_SHAPE_CODE,
     fields: [
       {
-        name: 'memoizedState',
-        description: 'State value for the current render (finished render)',
-        tone: 'sky',
-      },
-      {
-        name: 'baseState',
-        description: 'Base state used when computing the next state',
-        tone: 'sky',
-      },
-      { name: 'baseQueue', description: 'Updates that have not been processed yet', tone: 'amber' },
-      { name: 'queue', description: 'This Hook’s update-management object', tone: 'cyan' },
-      {
+        id: 'pending',
         name: 'pending',
-        description: 'Circular list of pending updates',
-        tone: 'cyan',
-        isQueueChild: true,
+        role: 'Updates waiting',
+        description: 'Points at the tail of the circular list that setCount updates attach to.',
+        tone: 'violet',
       },
       {
+        id: 'lanes',
         name: 'lanes',
-        description: 'Priority info for the updates',
-        tone: 'cyan',
-        isQueueChild: true,
+        role: 'Accumulated priority',
+        description: 'Collects the lanes of every update that entered this queue.',
+        tone: 'amber',
       },
       {
+        id: 'dispatch',
         name: 'dispatch',
-        description: 'The setCount function the user calls',
+        role: 'The function you call',
+        description: 'setCount itself, with fiber and queue already bound in.',
         tone: 'teal',
-        isQueueChild: true,
       },
       {
+        id: 'last-reducer',
         name: 'lastRenderedReducer',
-        description: 'Reducer used last render (basicStateReducer for useState)',
-        tone: 'violet',
-        isQueueChild: true,
+        role: 'Reducer last used',
+        description: 'For useState this is always basicStateReducer.',
+        tone: 'cyan',
       },
       {
+        id: 'last-state',
         name: 'lastRenderedState',
-        description: 'State value from the last render',
+        role: 'Value of the last render',
+        description: 'Used as the comparison base to bail out of a setState to the same value.',
         tone: 'sky',
-        isQueueChild: true,
       },
+    ],
+    note: 'The presence of lastRenderedReducer is the hint that useState runs on a reducer internally. Page 6 follows that thread.',
+  },
+  dispatchBind: {
+    badge: '03',
+    eyebrow: 'dispatchSetState',
+    title: 'How setCount remembers its component',
+    description:
+      'setCount is not a special function. It is one shared internal function with the current fiber and this Hook queue bound onto it.',
+    steps: [
       {
-        name: 'next',
-        description: 'Pointer to the next Hook — linked list backbone',
+        id: 'raw',
+        badge: 'step 1',
+        title: 'dispatchSetState',
+        body: 'A single internal function shared by every useState.',
         tone: 'violet',
       },
-    ],
-  },
-  mountStateImpl: {
-    eyebrow: 'mount-state-impl',
-    title: 'Real code: initial state and queue creation',
-    code: MOUNT_STATE_IMPL_CODE,
-    explanation:
-      'Set the initial state, build the queue object that manages updates, and attach it to the Hook.',
-    fileLabel: 'file',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'View full code on GitHub',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  dispatch: {
-    eyebrow: 'dispatch-flow',
-    title: 'How dispatch is created',
-    flow: [
-      { title: 'dispatchSetState', subtitle: 'function', tone: 'violet', visual: 'fn' },
-      { title: 'bind', subtitle: 'not this binding', tone: 'cyan', visual: 'bind' },
       {
-        title: 'fiber + queue',
-        subtitle: 'current component / this Hook',
-        tone: 'teal',
-        visual: 'cube',
+        id: 'bind',
+        badge: 'step 2',
+        title: 'bind(fiber, queue)',
+        body: 'Pin the rendering fiber and this Hook queue as the leading arguments.',
+        tone: 'cyan',
       },
-      { title: 'setCount', subtitle: 'the function the user calls', tone: 'sky', visual: 'play' },
+      {
+        id: 'handed',
+        badge: 'step 3',
+        title: 'Handed back as setCount',
+        body: 'You only pass a value; the other two arguments are already baked in.',
+        tone: 'teal',
+      },
     ],
+    codeHeader: 'packages/react-reconciler/src/ReactFiberHooks.js',
     code: DISPATCH_BIND_CODE,
-    explanation: 'setCount is a function that remembers the current Fiber and this Hook’s queue.',
+    note: 'That is why the identity of setCount survives renders: bound to the same queue, it stays the same function.',
   },
-  experiment: {
-    eyebrow: 'dissection-experiment',
-    title: 'useState dissection experiment',
-    tabs: [
-      {
-        key: 'number',
-        label: 'Number',
-        userCode: 'const [count, setCount] = useState(0);',
-        flow: [
-          'Use 0 as initialState',
-          "typeof !== 'function', so use it as-is",
-          'Save 0 into memoizedState and baseState',
-        ],
-        internal: [
-          { key: 'memoizedState', value: '0' },
-          { key: 'baseState', value: '0' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setCount' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: '0' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-      {
-        key: 'string',
-        label: 'String',
-        userCode: 'const [name, setName] = useState("Park");',
-        flow: [
-          'Use "Park" as initialState',
-          "typeof !== 'function', so use it as-is",
-          'Save "Park" into memoizedState and baseState',
-        ],
-        internal: [
-          { key: 'memoizedState', value: '"Park"' },
-          { key: 'baseState', value: '"Park"' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setName' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: '"Park"' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-      {
-        key: 'function',
-        label: 'Function init',
-        userCode: 'const [items, setItems] = useState(() => heavyInit());',
-        flow: [
-          'Use () => heavyInit() as initialState',
-          "typeof === 'function', so call it once to get the result",
-          'Save heavyInit() result into memoizedState and baseState',
-        ],
-        internal: [
-          { key: 'memoizedState', value: 'heavyInit()' },
-          { key: 'baseState', value: 'heavyInit()' },
-          {
-            key: 'queue',
-            value: '',
-            children: [
-              { key: 'pending', value: 'null' },
-              { key: 'lanes', value: 'NoLanes' },
-              { key: 'dispatch', value: 'setItems' },
-              { key: 'lastRenderedReducer', value: 'basicStateReducer' },
-              { key: 'lastRenderedState', value: 'heavyInit()' },
-            ],
-          },
-          { key: 'next', value: 'null' },
-        ],
-      },
-    ],
-    userCodeLabel: 'User code',
-    flowLabel: 'Initialization flow',
-    internalLabel: 'Internal structure (after first render)',
-    tipTitle: 'Try the tabs!',
-    tipBody:
-      'See how the initialization flow and stored values change with the type of initial value.',
-  },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: 'Follow it in the source',
-    items: [
-      {
-        number: '01',
-        title: 'Check mountState',
-        description: 'See how mountState dispatches into the rest of the flow.',
-      },
-      {
-        number: '02',
-        title: 'Read mountStateImpl',
-        description: 'Walk through Hook creation and initialization step by step.',
-      },
-      {
-        number: '03',
-        title: 'Inspect the queue object',
-        description: 'Confirm the meaning and initial values of each queue field.',
-      },
-      {
-        number: '04',
-        title: 'Track the dispatch bind',
-        description: 'Trace exactly what dispatchSetState.bind(...) closes over.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    items: [
-      {
-        number: 1,
-        title: 'useState prepares three things',
-        description:
-          'It builds the current state, the update queue, and the dispatch function at once.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: 'Everything attaches to the Hook node',
-        description: 'state, queue and dispatch all live around a single Hook object.',
-        tone: 'teal',
-      },
-      {
-        number: 3,
-        title: 'dispatch remembers Fiber + queue',
-        description: 'setCount carries the current component Fiber and this Hook’s queue.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'mountState, mountStateImpl, basicStateReducer',
+    whyLabel: 'Why',
+    why: 'Seeing the queue literal built inside the function makes it clear that every Hook carries its own queue.',
+    code: MOUNT_STATE_CODE,
+    primaryCta: 'Read ReactFiberHooks.js',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'what really happens after setState?',
+    title: 'What happens when setCount fires',
     description:
-      'Now that you know what useState prepares, see how the queue moves the moment setState is called.',
+      'Next we follow the dispatch we just built and watch an update pile into the queue.',
     cta: 'Go to the next page',
     href: '/set-state-flow',
   },

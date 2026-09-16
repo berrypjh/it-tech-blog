@@ -11,7 +11,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Why Rules of Hooks Exist — React Lab'
         : 'Rules of Hooks는 왜 필요한가? — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 

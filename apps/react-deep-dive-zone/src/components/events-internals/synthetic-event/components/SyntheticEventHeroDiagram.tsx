@@ -1,121 +1,73 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Link } from 'lucide-react';
+import { Package } from 'lucide-react';
 
-import { ToneIconBox } from '../../../shared/tone';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { TerminalBadge } from '../../../shared/terminal';
 import { toneTokens } from '../../../shared/tones';
-import type { PropertyRow, SyntheticEventContent } from '../content';
+import type { SyntheticEventContent } from '../content';
 
-type Props = { content: SyntheticEventContent['hero']['diagram']; className?: string };
+type Props = { content: SyntheticEventContent['hero'] };
 
-/**
- * Hero 핵심 비주얼.
- * 브라우저의 native event를 React가 감싸 handler에 넘기는 SyntheticEvent를,
- * 객체 헤더 → 정규화된 필드/메서드 목록 → helper 설명으로 컴팩트하게 보여준다.
- */
-export const SyntheticEventHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.title}: ${content.properties
-    .map((p) => `${p.name}(${p.meaning})`)
-    .join(', ')}. ${content.helper.title} — ${content.helper.body}`;
+/** Hero 핵심 비주얼: SyntheticEvent 객체 한 장을 열어 필드를 나열한다. nativeEvent 행만 강조. */
+export const SyntheticEventHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="amber" size="sm">
-            <Link className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
-            nativeEvent
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            browser
-          </span>
-        </header>
-
-        <DownArrow />
+        </div>
 
         <article
           className={cx(
-            'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-            'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
+            'rounded-xl border-2 bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
+            toneTokens.teal.border,
           )}
         >
-          <header className="flex items-center gap-sm">
-            <ToneIconBox tone="violet" size="sm">
-              <Atom className="h-[18px] w-[18px]" aria-hidden="true" />
-            </ToneIconBox>
-            <h2
-              className={cx('text-xsm font-bold tracking-tight break-keep', toneTokens.violet.text)}
-            >
-              {content.title}
-            </h2>
+          <header className="mb-2 flex items-center gap-1.5 border-b border-dashed border-[var(--term-border)] pb-2">
+            <Package
+              className={cx('h-3.5 w-3.5 shrink-0', toneTokens.teal.text)}
+              aria-hidden="true"
+            />
+            <code className={cx('font-mono text-[11px] font-bold', toneTokens.teal.text)}>
+              {content.objectLabel}
+            </code>
           </header>
 
           <ul className="flex flex-col gap-1">
-            {content.properties.map((row) => (
-              <PropertyItem key={row.name} row={row} />
-            ))}
+            {content.fields.map((field) => {
+              const isNative = field.name === 'nativeEvent';
+              return (
+                <li
+                  key={field.name}
+                  className={cx(
+                    'grid grid-cols-[minmax(0,auto)_minmax(0,1fr)] items-baseline gap-2 rounded-md px-sm py-1.5',
+                    isNative && 'bg-[var(--term-surface)]',
+                  )}
+                >
+                  <code
+                    className={cx(
+                      'font-mono text-[10px]',
+                      isNative ? toneTokens.sky.text : 'text-[var(--term-dim)]',
+                    )}
+                  >
+                    {field.name}:
+                  </code>
+                  <code className="font-mono text-[10px] text-[var(--term-fg)] break-all">
+                    {field.value}
+                  </code>
+                </li>
+              );
+            })}
           </ul>
         </article>
-
-        <DownArrow />
-
-        <article
-          className={cx(
-            'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-            'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-            toneTokens.teal.borderHover,
-          )}
-        >
-          <ToneIconBox tone="teal" size="sm">
-            <Link className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <div className="flex min-w-0 flex-col gap-1">
-            <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-              {content.helper.title}
-            </h3>
-            <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-              {content.helper.body}
-            </p>
-          </div>
-        </article>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
-
-const PropertyItem = ({ row }: { row: PropertyRow }) => (
-  <li className="grid grid-cols-[minmax(0,0.55fr)_minmax(0,1fr)] items-start gap-2">
-    <code
-      className={cx(
-        'min-w-0 truncate rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5',
-        'font-mono text-[11px] font-bold leading-none',
-        toneTokens.violet.text,
-      )}
-    >
-      {row.name}
-    </code>
-    <p className="text-[11px] leading-relaxed text-[var(--term-muted)] break-keep">{row.meaning}</p>
-  </li>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

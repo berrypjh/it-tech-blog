@@ -1,2 +1,2 @@
-export { advancedWrapupContent } from './content';
-export { EventSystemAdvancedWrapupPage } from './EventSystemAdvancedWrapupPage';
+export { priorityReplayActionContent } from './content';
+export { PriorityReplayActionPage } from './PriorityReplayActionPage';

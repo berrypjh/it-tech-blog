@@ -14,9 +14,8 @@ type Props = { content: RenderWithHooksContent['hero'] };
 export const RenderWithHooksHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react/hooks/render-with-hooks.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// hook execution stage'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.86fr)_minmax(0,_1.14fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberHooks.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -25,11 +24,11 @@ export const RenderWithHooksHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">{content.titleLine1}</span>
-        <span className="block break-all text-[var(--term-accent)]">{content.titleAccent}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-render-with-hooks">

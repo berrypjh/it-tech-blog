@@ -1,146 +1,120 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'amber' | 'rose' | 'indigo';
+import type { ToneKey } from '../../shared/tones';
 
-export type HeroStep = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
-  visual: 'file' | 'queue' | 'calendar';
-};
+export type OutcomeId = 'create' | 'enqueue' | 'schedule';
 
-export type FlowStep = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
-  visual: 'play' | 'fn' | 'priority' | 'box' | 'queue' | 'schedule';
-};
-
-export type FieldRow = {
-  name: string;
-  comment: string;
-  description: string;
-  tone: Tone;
-};
-
-export type CircularStage = {
-  number: number;
-  title: string;
+export type Outcome = {
+  id: OutcomeId;
+  label: string;
   caption: string;
-  nodes: string[];
-  selfLoop?: boolean;
-  fullCircular?: boolean;
+  tone: ToneKey;
 };
 
-export type TableCell = {
-  text: string;
-  highlight?: boolean;
-};
+export type DispatchStepId = 'call' | 'lane' | 'update' | 'eager' | 'enqueue' | 'schedule';
 
-export type TableColumn = {
-  index: number;
+export type DispatchStep = {
+  id: DispatchStepId;
+  num: string;
   title: string;
-  keyword: string;
-  tone: Tone;
-  rows: { what: string[]; dom: string; user: string };
+  description: string;
+  tone: ToneKey;
 };
 
-export type ExperimentSide = {
-  title: string;
+export type QueueStageId = 'empty' | 'one' | 'many';
+
+export type QueueStage = {
+  id: QueueStageId;
   badge: string;
-  code: string;
-  resultValue: string;
-  resultReason: string;
-  tone: 'rose' | 'emerald';
+  title: string;
+  body: string;
+  tone: ToneKey;
 };
 
-export type MissionItem = {
-  number: string;
-  title: string;
-  description: string;
+export type PhaseColumn = {
+  moment: string;
+  work: string;
+  dom: string;
+  screen: string;
 };
 
-export type SummaryItem = {
-  number: number;
-  title: string;
-  description: string;
-  tone: Tone;
+export type BatchRow = {
+  call: string;
+  action: string;
+  result: string;
 };
 
 export type SetStateFlowContent = {
   hero: {
     badge: string;
-    titleLine1: string;
-    titleAccent: string;
+    title: { line1: string; line2: string };
     description: string;
-    leftCode: string;
-    steps: HeroStep[];
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-  };
-  beforeAfter: {
-    beforeTitle: string;
-    beforeItems: { label: string; value: string; tone: Tone }[];
-    centerCall: string;
-    warning: string;
-    afterTitle: string;
-    afterItems: { label: string; value: string; tone: Tone }[];
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    call: string;
+    outcomes: Outcome[];
   };
   dispatchFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
-    steps: FlowStep[];
+    description: string;
+    steps: DispatchStep[];
+    note: string;
   };
-  updateObject: {
+  updateShape: {
+    badge: string;
     eyebrow: string;
     title: string;
+    description: string;
+    codeHeader: string;
     code: string;
-    fields: FieldRow[];
+    stages: QueueStage[];
+    note: string;
   };
-  queueCircular: {
+  phases: {
+    badge: string;
     eyebrow: string;
     title: string;
-    stages: CircularStage[];
+    description: string;
+    headers: [string, string, string, string];
+    rowLabels: { work: string; dom: string; screen: string };
+    columns: [PhaseColumn, PhaseColumn, PhaseColumn];
+    note: string;
   };
-  realCode: {
+  batching: {
+    badge: string;
     eyebrow: string;
     title: string;
-    code: string;
-    explanationTitle: string;
-    explanation: string;
+    description: string;
+    value: {
+      label: string;
+      caption: string;
+      code: string;
+      rows: BatchRow[];
+    };
+    updater: {
+      label: string;
+      caption: string;
+      code: string;
+      rows: BatchRow[];
+    };
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
     fileLabel: string;
-    fileName: string;
-    buttonLabel: string;
-    buttonHref: string;
-  };
-  renderVsCommit: {
-    eyebrow: string;
-    title: string;
-    rowLabels: { what: string; dom: string; user: string; keyword: string };
-    columns: TableColumn[];
-  };
-  experiment: {
-    eyebrow: string;
-    title: string;
-    left: ExperimentSide;
-    right: ExperimentSide;
-    queueLabel: string;
-    queueNodes: string[];
-    bottomExplanation: string;
-  };
-  mission: {
-    eyebrow: string;
-    title: string;
-    items: MissionItem[];
-  };
-  summary: {
-    eyebrow: string;
-    title: string;
-    items: SummaryItem[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -153,357 +127,238 @@ export type SetStateFlowContent = {
 
 const UPDATE_TYPE_CODE = `type Update = {
   lane: Lane,              // 우선순위
-  action: any,             // 어떤 변경인가
-  hasEagerState: boolean,  // eager 계산 여부
-  eagerState: any,         // eager 계산된 다음 상태
-  next: Update | null,     // 다음 update 연결
+  action: any,             // 값 또는 updater 함수
+  hasEagerState: boolean,  // 미리 계산했는가
+  eagerState: any,         // 미리 계산한 다음 상태
+  next: Update | null,     // 원형 리스트의 다음 노드
 }`;
 
 const UPDATE_TYPE_CODE_EN = `type Update = {
   lane: Lane,              // priority
-  action: any,             // what to change
-  hasEagerState: boolean,  // eager-computed?
-  eagerState: any,         // eager-computed next state
-  next: Update | null,     // next update link
+  action: any,             // a value or an updater function
+  hasEagerState: boolean,  // was it computed ahead of time
+  eagerState: any,         // the eagerly computed next state
+  next: Update | null,     // next node in the circular list
 }`;
 
-const REAL_CODE = `const lane = requestUpdateLane(fiber);
+const DISPATCH_SET_STATE_CODE = `function dispatchSetState(fiber, queue, action) {
+  const lane = requestUpdateLane(fiber);
 
-const update = {
-  lane,
-  action,
-  hasEagerState: false,
-  eagerState: null,
-  next: null,
-};`;
+  const update = {
+    lane,
+    action,
+    hasEagerState: false,
+    eagerState: null,
+    next: null,
+  };
 
-const NORMAL_EXPERIMENT_CODE = `const [count, setCount] = useState(0);
+  const root = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
 
+  if (root !== null) {
+    scheduleUpdateOnFiber(root, fiber, lane);
+  }
+}`;
+
+const VALUE_CODE = `setCount(count + 1);
 setCount(count + 1);
-setCount(count + 1);
-setCount(count + 1);
+setCount(count + 1);`;
 
-// 결과: 1`;
-
-const FUNCTIONAL_EXPERIMENT_CODE = `const [count, setCount] = useState(0);
-
+const UPDATER_CODE = `setCount((c) => c + 1);
 setCount((c) => c + 1);
-setCount((c) => c + 1);
-setCount((c) => c + 1);
+setCount((c) => c + 1);`;
 
-// 결과: 3`;
-
-const NORMAL_EXPERIMENT_CODE_EN = `const [count, setCount] = useState(0);
-
-setCount(count + 1);
-setCount(count + 1);
-setCount(count + 1);
-
-// result: 1`;
-
-const FUNCTIONAL_EXPERIMENT_CODE_EN = `const [count, setCount] = useState(0);
-
-setCount((c) => c + 1);
-setCount((c) => c + 1);
-setCount((c) => c + 1);
-
-// result: 3`;
+const REACT_FIBER_HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: SetStateFlowContent = {
   hero: {
     badge: 'Hooks 내부 · 5/10단계',
-    titleLine1: 'setState는',
-    titleAccent: '즉시 DOM을 바꾸지 않는다',
+    title: { line1: 'setState는 화면을 바꾸지 않는다', line2: '바꿔 달라고 적어 둘 뿐이다' },
     description:
-      '상태 업데이트를 호출하면 React는 먼저 업데이트 요청을 기록하고, 그 작업을 언제 렌더링할지 스케줄합니다.',
-    leftCode: 'setCount((c) => c + 1);',
-    steps: [
+      'setCount를 부른 순간 DOM은 그대로입니다. React가 하는 일은 update 한 장을 만들어 큐에 걸고, 렌더를 예약하는 것까지입니다.',
+    diagramBadge: 'dispatch',
+    diagramCaption: 'record, queue, schedule',
+    callLabel: '호출한 한 줄',
+    call: 'setCount((c) => c + 1);',
+    outcomes: [
+      { id: 'create', label: 'Update 생성', caption: 'lane과 action을 담은 객체', tone: 'sky' },
       {
-        number: 1,
-        title: 'Update 생성',
-        description: '업데이트 정보를 담은 Update 객체를 만든다',
-        tone: 'sky',
-        visual: 'file',
-      },
-      {
-        number: 2,
-        title: 'queue 등록',
-        description: '해당 Hook의 queue에 업데이트를 연결한다',
+        id: 'enqueue',
+        label: 'queue.pending에 연결',
+        caption: '원형 리스트의 끝에 매단다',
         tone: 'violet',
-        visual: 'queue',
       },
       {
-        number: 3,
-        title: 'render 예약',
-        description: '해당 Fiber의 루트에서 렌더 작업을 예약한다',
+        id: 'schedule',
+        label: 'scheduleUpdateOnFiber',
+        caption: '루트에서 렌더 작업을 예약',
         tone: 'teal',
-        visual: 'calendar',
       },
-    ],
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: 'setCount(count + 1)을 호출한 순간, React는 정확히 무엇을 만들고 어디에 연결할까?',
-  },
-  beforeAfter: {
-    beforeTitle: 'Before (호출 전)',
-    beforeItems: [
-      { label: 'queue.pending', value: 'null', tone: 'amber' },
-      { label: '화면 count', value: '0', tone: 'sky' },
-      { label: '렌더 작업', value: '없음', tone: 'amber' },
-    ],
-    centerCall: 'setCount(c => c + 1) 호출',
-    warning: 'DOM은 아직 변경되지 않음',
-    afterTitle: 'After (호출 직후)',
-    afterItems: [
-      { label: 'queue.pending', value: 'Update #1', tone: 'violet' },
-      { label: '화면 count', value: '아직 0', tone: 'sky' },
-      { label: '렌더 작업', value: '예약됨', tone: 'teal' },
     ],
   },
   dispatchFlow: {
-    eyebrow: 'dispatch-flow',
-    title: 'dispatchSetState 전체 흐름',
+    badge: '01',
+    eyebrow: 'dispatchSetState',
+    title: 'setCount를 누르면 도는 여섯 단계',
+    description:
+      '앞 페이지에서 bind해 둔 fiber와 queue가 여기서 쓰입니다. 우리는 action 하나만 넘겼는데 나머지는 이미 손에 쥐고 있습니다.',
     steps: [
       {
-        number: 1,
-        title: 'setCount(action)',
-        description: '사용자 코드에서 setCount 호출',
+        id: 'call',
+        num: '01',
+        title: 'setCount(action) 호출',
+        description: 'bind된 fiber와 queue가 앞 인자로 이미 들어가 있습니다.',
         tone: 'sky',
-        visual: 'play',
       },
       {
-        number: 2,
-        title: 'dispatchSetState',
-        description: 'Fiber와 queue를 기억한 dispatch 함수 실행',
-        tone: 'violet',
-        visual: 'fn',
-      },
-      {
-        number: 3,
-        title: 'requestUpdateLane',
-        description: '현재 업데이트의 우선순위(Lane)를 결정',
-        tone: 'cyan',
-        visual: 'priority',
-      },
-      {
-        number: 4,
-        title: 'Update 객체 생성',
-        description: 'lane, action 등을 담은 Update 객체 생성',
-        tone: 'teal',
-        visual: 'box',
-      },
-      {
-        number: 5,
-        title: 'enqueueConcurrentHookUpdate',
-        description: '해당 Hook queue에 업데이트를 연결',
-        tone: 'indigo',
-        visual: 'queue',
-      },
-      {
-        number: 6,
-        title: 'scheduleUpdateOnFiber',
-        description: '루트에 렌더 작업을 스케줄링',
-        tone: 'emerald',
-        visual: 'schedule',
-      },
-    ],
-  },
-  updateObject: {
-    eyebrow: 'update-object',
-    title: 'Update 객체 구조',
-    code: UPDATE_TYPE_CODE,
-    fields: [
-      {
-        name: 'lane',
-        comment: 'Lane',
-        description: '이 업데이트의 우선순위. 어떤 시점에 처리할지 결정',
-        tone: 'cyan',
-      },
-      { name: 'action', comment: 'any', description: '상태 변경 내용. 값 또는 함수', tone: 'sky' },
-      {
-        name: 'hasEagerState',
-        comment: 'boolean',
-        description: 'eager 상태 계산 여부. 성능 최적화에 사용',
+        id: 'lane',
+        num: '02',
+        title: 'lane 결정',
+        description: 'requestUpdateLane이 지금 실행 맥락에 맞는 우선순위를 고릅니다.',
         tone: 'amber',
       },
       {
-        name: 'eagerState',
-        comment: 'any',
-        description: '계산된 다음 상태. 비교에 사용',
-        tone: 'teal',
-      },
-      {
-        name: 'next',
-        comment: 'Update | null',
-        description: '다음 update를 가리키는 포인터 — 순환 연결 리스트',
+        id: 'update',
+        num: '03',
+        title: 'Update 객체 생성',
+        description: 'lane과 action을 담은 다섯 칸짜리 객체를 만듭니다.',
         tone: 'violet',
       },
+      {
+        id: 'eager',
+        num: '04',
+        title: '가능하면 미리 계산',
+        description:
+          '큐가 비어 있으면 다음 상태를 먼저 계산해 보고, 값이 같으면 렌더를 건너뜁니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'enqueue',
+        num: '05',
+        title: 'queue.pending에 연결',
+        description: 'update를 원형 리스트에 매달고 루트 Fiber를 찾아 올라갑니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'schedule',
+        num: '06',
+        title: '렌더 예약',
+        description: 'scheduleUpdateOnFiber가 루트에 작업을 걸고 함수는 그대로 끝납니다.',
+        tone: 'teal',
+      },
     ],
+    note: '04의 조기 종료 덕분에 같은 값으로 setState를 부르면 렌더가 아예 일어나지 않을 수 있습니다.',
   },
-  queueCircular: {
-    eyebrow: 'queue-pending-circular',
-    title: 'queue.pending 연결 (순환 연결 리스트)',
+  updateShape: {
+    badge: '02',
+    eyebrow: 'update object',
+    title: 'Update 한 장과 원형 큐',
+    description:
+      'update는 상태가 아니라 "이렇게 바꿔 달라"는 요청서입니다. 요청서들은 queue.pending에 원형으로 매달립니다.',
+    codeHeader: 'Update',
+    code: UPDATE_TYPE_CODE,
     stages: [
       {
-        number: 1,
-        title: '처음 (업데이트 없음)',
-        caption: 'queue.pending → null',
-        nodes: ['null'],
+        id: 'empty',
+        badge: 'stage 1',
+        title: 'pending = null',
+        body: '아직 아무도 setState를 부르지 않은 상태입니다.',
+        tone: 'sky',
       },
       {
-        number: 2,
-        title: '1회 setState 호출 후',
-        caption: 'queue.pending → Update A',
-        nodes: ['Update A'],
-        selfLoop: true,
+        id: 'one',
+        badge: 'stage 2',
+        title: '첫 update는 자기 자신을 가리킨다',
+        body: 'A.next = A로 두어 한 개짜리 원형 리스트를 만듭니다.',
+        tone: 'violet',
       },
       {
-        number: 3,
-        title: '3회 setState 호출 후',
-        caption: 'queue.pending → Update C (last)',
-        nodes: ['Update A', 'Update B', 'Update C'],
-        fullCircular: true,
+        id: 'many',
+        badge: 'stage 3',
+        title: 'pending은 항상 마지막을 가리킨다',
+        body: 'C가 들어오면 pending은 C를 가리키고, C.next가 첫 노드 A입니다.',
+        tone: 'emerald',
       },
     ],
+    note: '마지막을 가리키는 덕분에 pending.next 한 번으로 첫 update에 바로 닿습니다. 순회 시작점을 O(1)에 얻으려는 설계입니다.',
   },
-  realCode: {
-    eyebrow: 'real-code',
-    title: '실제 코드: 업데이트 객체 생성',
-    code: REAL_CODE,
-    explanationTitle: 'setState는 먼저 업데이트 객체를 만든다.',
-    explanation: '이 객체가 queue에 들어가고, 나중에 렌더 단계에서 처리됩니다.',
-    fileLabel: '파일',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'GitHub에서 전체 코드 보기',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  renderVsCommit: {
-    eyebrow: 'render-vs-commit',
-    title: 'Render 예약과 DOM 변경의 차이',
-    rowLabels: {
-      what: '무엇이 일어나나?',
-      dom: 'DOM 상태',
-      user: '사용자 화면',
-      keyword: '키워드',
-    },
+  phases: {
+    badge: '03',
+    eyebrow: 'record vs apply',
+    title: '기록 · 계산 · 반영은 다른 시점이다',
+    description:
+      'setState 호출과 화면 갱신 사이에는 최소 두 개의 단계가 더 있습니다. 세 시점을 분리해서 보면 "왜 바로 안 바뀌지"가 사라집니다.',
+    headers: ['시점', 'setState 호출 순간', 'Render Phase', 'Commit Phase'],
+    rowLabels: { work: '하는 일', dom: 'DOM', screen: '사용자 화면' },
     columns: [
       {
-        index: 1,
-        title: 'setState 호출 순간',
-        keyword: '기록 & 예약',
-        tone: 'sky',
-        rows: {
-          what: ['업데이트 객체 생성', 'queue에 등록', '렌더 작업 예약'],
-          dom: '변경 없음',
-          user: '이전 화면 그대로',
-        },
+        moment: '기록 & 예약',
+        work: 'Update 생성 · queue 연결 · 렌더 예약',
+        dom: '손대지 않음',
+        screen: '이전 화면 그대로',
       },
       {
-        index: 2,
-        title: 'Render Phase (렌더 단계)',
-        keyword: '계산',
-        tone: 'violet',
-        rows: {
-          what: ['업데이트 큐 처리', '새 Virtual DOM 계산', '변경 사항 결정'],
-          dom: '아직 변경 없음',
-          user: '이전 화면 그대로',
-        },
+        moment: '계산',
+        work: '큐를 처리해 새 상태와 새 트리를 계산',
+        dom: '아직 손대지 않음',
+        screen: '이전 화면 그대로',
       },
       {
-        index: 3,
-        title: 'Commit Phase (커밋 단계)',
-        keyword: '적용',
-        tone: 'emerald',
-        rows: {
-          what: ['DOM 실제 변경', 'useEffect 실행', '화면 갱신'],
-          dom: '실제 변경됨',
-          user: '새 화면 반영',
-        },
+        moment: '반영',
+        work: '변경된 부분을 DOM에 적용하고 effect 실행',
+        dom: '실제로 변경',
+        screen: '새 화면이 보임',
       },
     ],
+    note: 'setState 바로 다음 줄에서 count를 읽으면 옛 값이 나오는 이유가 이 표에 그대로 있습니다.',
   },
-  experiment: {
-    eyebrow: 'three-setstate-experiment',
-    title: '3번 setState 실험',
-    left: {
-      title: '일반 값 업데이트',
-      badge: 'count + 1',
-      code: NORMAL_EXPERIMENT_CODE,
-      resultValue: '화면 count = 1',
-      resultReason: '같은 값을 3번 설정',
-      tone: 'rose',
+  batching: {
+    badge: '04',
+    eyebrow: 'value vs updater',
+    title: '같은 세 번인데 결과가 다른 이유',
+    description:
+      'update에 담기는 action이 값이냐 함수냐에 따라, 큐를 처리할 때 이전 상태를 쓰는지 아닌지가 갈립니다.',
+    value: {
+      label: '값을 넘길 때',
+      caption: 'action에 1이라는 숫자가 세 번 들어갑니다. 셋 다 같은 count(0)를 보고 계산됐습니다.',
+      code: VALUE_CODE,
+      rows: [
+        { call: '1번째', action: 'action = 1', result: 'state = 1' },
+        { call: '2번째', action: 'action = 1', result: 'state = 1' },
+        { call: '3번째', action: 'action = 1', result: 'state = 1' },
+      ],
     },
-    right: {
-      title: '함수형 업데이트',
-      badge: 'c => c + 1',
-      code: FUNCTIONAL_EXPERIMENT_CODE,
-      resultValue: '화면 count = 3',
-      resultReason: '순차적으로 누적',
-      tone: 'emerald',
+    updater: {
+      label: '함수를 넘길 때',
+      caption: 'action에 함수가 들어가고, 큐 처리 때 직전 결과를 인자로 받아 실행됩니다.',
+      code: UPDATER_CODE,
+      rows: [
+        { call: '1번째', action: 'c => c + 1', result: '0 → 1' },
+        { call: '2번째', action: 'c => c + 1', result: '1 → 2' },
+        { call: '3번째', action: 'c => c + 1', result: '2 → 3' },
+      ],
     },
-    queueLabel: '업데이트 큐 처리 순서',
-    queueNodes: ['Update #1 (+1)', 'Update #2 (+1)', 'Update #3 (+1)'],
-    bottomExplanation: '함수형 업데이트는 렌더 단계에서 순차적으로 처리되어 최종값이 3이 됩니다.',
+    note: '차이를 만드는 것은 배칭이 아니라 action의 종류입니다. 세 update 모두 같은 렌더에서 처리되는 것은 동일합니다.',
   },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        number: '01',
-        title: 'dispatchSetState 찾기',
-        description: 'ReactFiberHooks.js에서 dispatchSetState 함수의 위치와 역할을 확인하세요.',
-      },
-      {
-        number: '02',
-        title: 'requestUpdateLane 확인',
-        description:
-          '현재 렌더/이벤트 상황에 어떤 우선순위 Lane이 할당되는지 코드를 따라가 보세요.',
-      },
-      {
-        number: '03',
-        title: 'update 객체 생성 확인',
-        description: 'Update 객체의 필드가 어떻게 채워지는지 확인하고, 의미를 정리해보세요.',
-      },
-      {
-        number: '04',
-        title: 'scheduleUpdateOnFiber로 이어지는 흐름 확인',
-        description: 'enqueue 후, 루트에 렌더를 예약하는 과정까지 실제 흐름을 연결해 보세요.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: '핵심 정리',
-    items: [
-      {
-        number: 1,
-        title: 'setState는 기록부터 한다',
-        description: '화면을 즉시 바꾸는 명령이 아니라 Update 요청을 먼저 만든다.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: '업데이트는 queue에 쌓인다',
-        description: '여러 setState 호출은 Hook의 queue에 연결된다.',
-        tone: 'teal',
-      },
-      {
-        number: 3,
-        title: '렌더/커밋 단계에서 반영된다',
-        description:
-          'queue에 쌓인 작업은 Render Phase에서 계산되고 Commit Phase에서 화면에 반영된다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'dispatchSetState, requestUpdateLane, enqueueConcurrentHookUpdate',
+    whyLabel: '설명',
+    why: '함수 마지막 줄이 scheduleUpdateOnFiber라는 점을 보면, 이 함수가 상태를 바꾸지 않는다는 사실이 확정됩니다.',
+    code: DISPATCH_SET_STATE_CODE,
+    primaryCta: 'ReactFiberHooks.js 읽기',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'useReducer와 공통 구조 보기',
+    title: 'useReducer와 나눠 쓰는 코드',
     description:
-      'useState 업데이트 흐름을 봤다면, 이제 useReducer가 이 queue 모델을 어떻게 공유하는지 살펴봅니다.',
+      '큐를 처리하는 쪽 코드는 useState 전용이 아닙니다. useReducer와 같은 함수를 쓴다는 사실을 확인합니다.',
     cta: '다음 페이지로 이동',
     href: '/use-reducer-shared',
   },
@@ -512,303 +367,198 @@ const ko: SetStateFlowContent = {
 const en: SetStateFlowContent = {
   hero: {
     badge: 'Hooks Internals · 5/10',
-    titleLine1: 'setState does not',
-    titleAccent: 'change the DOM immediately',
+    title: { line1: 'setState does not change the screen', line2: 'it files a request to' },
     description:
-      'When you call a setter, React first records an update request and then schedules when to render that work.',
-    leftCode: 'setCount((c) => c + 1);',
-    steps: [
+      'The moment setCount runs, the DOM is untouched. React builds one update, hangs it on a queue, and schedules a render — that is all.',
+    diagramBadge: 'dispatch',
+    diagramCaption: 'record, queue, schedule',
+    callLabel: 'the line you called',
+    call: 'setCount((c) => c + 1);',
+    outcomes: [
       {
-        number: 1,
-        title: 'Create Update',
-        description: 'Build an Update object with the change info',
+        id: 'create',
+        label: 'Create an Update',
+        caption: 'an object carrying lane and action',
         tone: 'sky',
-        visual: 'file',
       },
       {
-        number: 2,
-        title: 'Enqueue',
-        description: 'Link the update into this Hook’s queue',
+        id: 'enqueue',
+        label: 'Link into queue.pending',
+        caption: 'appended to the circular list',
         tone: 'violet',
-        visual: 'queue',
       },
       {
-        number: 3,
-        title: 'Schedule render',
-        description: 'Schedule render work at this Fiber’s root',
+        id: 'schedule',
+        label: 'scheduleUpdateOnFiber',
+        caption: 'schedule render work on the root',
         tone: 'teal',
-        visual: 'calendar',
       },
-    ],
-  },
-  question: {
-    eyebrow: "Today's question",
-    title:
-      'The moment you call setCount(count + 1), what does React build and where does it attach it?',
-  },
-  beforeAfter: {
-    beforeTitle: 'Before (before the call)',
-    beforeItems: [
-      { label: 'queue.pending', value: 'null', tone: 'amber' },
-      { label: 'screen count', value: '0', tone: 'sky' },
-      { label: 'render work', value: 'none', tone: 'amber' },
-    ],
-    centerCall: 'setCount(c => c + 1) call',
-    warning: 'DOM is not changed yet',
-    afterTitle: 'After (right after the call)',
-    afterItems: [
-      { label: 'queue.pending', value: 'Update #1', tone: 'violet' },
-      { label: 'screen count', value: 'still 0', tone: 'sky' },
-      { label: 'render work', value: 'scheduled', tone: 'teal' },
     ],
   },
   dispatchFlow: {
-    eyebrow: 'dispatch-flow',
-    title: 'dispatchSetState full flow',
+    badge: '01',
+    eyebrow: 'dispatchSetState',
+    title: 'Six steps behind one setCount',
+    description:
+      'The fiber and queue bound in on the previous page get used here. You passed a single action; the rest was already in hand.',
     steps: [
       {
-        number: 1,
-        title: 'setCount(action)',
-        description: 'User code calls setCount',
-        tone: 'sky',
-        visual: 'play',
-      },
-      {
-        number: 2,
-        title: 'dispatchSetState',
-        description: 'Run the dispatch function bound to Fiber + queue',
-        tone: 'violet',
-        visual: 'fn',
-      },
-      {
-        number: 3,
-        title: 'requestUpdateLane',
-        description: 'Pick the Lane (priority) for this update',
-        tone: 'cyan',
-        visual: 'priority',
-      },
-      {
-        number: 4,
-        title: 'Build Update object',
-        description: 'Create an Update with lane, action, …',
-        tone: 'teal',
-        visual: 'box',
-      },
-      {
-        number: 5,
-        title: 'enqueueConcurrentHookUpdate',
-        description: 'Link the update into this Hook’s queue',
-        tone: 'indigo',
-        visual: 'queue',
-      },
-      {
-        number: 6,
-        title: 'scheduleUpdateOnFiber',
-        description: 'Schedule render work at the root',
-        tone: 'emerald',
-        visual: 'schedule',
-      },
-    ],
-  },
-  updateObject: {
-    eyebrow: 'update-object',
-    title: 'Update object structure',
-    code: UPDATE_TYPE_CODE_EN,
-    fields: [
-      {
-        name: 'lane',
-        comment: 'Lane',
-        description: 'Priority of this update. Decides when to process.',
-        tone: 'cyan',
-      },
-      {
-        name: 'action',
-        comment: 'any',
-        description: 'The state change — a value or a function.',
+        id: 'call',
+        num: '01',
+        title: 'setCount(action) runs',
+        description: 'The bound fiber and queue are already sitting in the leading arguments.',
         tone: 'sky',
       },
       {
-        name: 'hasEagerState',
-        comment: 'boolean',
-        description: 'Was the next state computed eagerly?',
+        id: 'lane',
+        num: '02',
+        title: 'Decide the lane',
+        description: 'requestUpdateLane picks a priority based on the current execution context.',
         tone: 'amber',
       },
       {
-        name: 'eagerState',
-        comment: 'any',
-        description: 'Eager-computed next state, used for comparison.',
-        tone: 'teal',
-      },
-      {
-        name: 'next',
-        comment: 'Update | null',
-        description: 'Pointer to the next update — circular linked list.',
+        id: 'update',
+        num: '03',
+        title: 'Create the Update object',
+        description: 'Build the five-slot object that carries the lane and the action.',
         tone: 'violet',
       },
+      {
+        id: 'eager',
+        num: '04',
+        title: 'Compute ahead when possible',
+        description:
+          'If the queue is empty React computes the next state first and bails out when it is unchanged.',
+        tone: 'cyan',
+      },
+      {
+        id: 'enqueue',
+        num: '05',
+        title: 'Link into queue.pending',
+        description: 'Append the update to the circular list and walk up to find the root Fiber.',
+        tone: 'violet',
+      },
+      {
+        id: 'schedule',
+        num: '06',
+        title: 'Schedule the render',
+        description:
+          'scheduleUpdateOnFiber posts work on the root and the function simply returns.',
+        tone: 'teal',
+      },
     ],
+    note: 'Thanks to the bailout in step 04, calling setState with the same value can skip rendering entirely.',
   },
-  queueCircular: {
-    eyebrow: 'queue-pending-circular',
-    title: 'queue.pending links (circular linked list)',
+  updateShape: {
+    badge: '02',
+    eyebrow: 'update object',
+    title: 'One Update and the circular queue',
+    description:
+      'An update is not state — it is a request saying "change it like this". Those requests hang on queue.pending in a circle.',
+    codeHeader: 'Update',
+    code: UPDATE_TYPE_CODE_EN,
     stages: [
       {
-        number: 1,
-        title: 'Initial (no updates)',
-        caption: 'queue.pending → null',
-        nodes: ['null'],
+        id: 'empty',
+        badge: 'stage 1',
+        title: 'pending = null',
+        body: 'Nobody has called setState yet.',
+        tone: 'sky',
       },
       {
-        number: 2,
-        title: 'After 1 setState',
-        caption: 'queue.pending → Update A',
-        nodes: ['Update A'],
-        selfLoop: true,
+        id: 'one',
+        badge: 'stage 2',
+        title: 'The first update points at itself',
+        body: 'A.next = A, forming a circular list of exactly one node.',
+        tone: 'violet',
       },
       {
-        number: 3,
-        title: 'After 3 setState',
-        caption: 'queue.pending → Update C (last)',
-        nodes: ['Update A', 'Update B', 'Update C'],
-        fullCircular: true,
+        id: 'many',
+        badge: 'stage 3',
+        title: 'pending always points at the last one',
+        body: 'When C arrives, pending points at C and C.next is the first node A.',
+        tone: 'emerald',
       },
     ],
+    note: 'Because it holds the tail, a single pending.next reaches the first update. The design buys an O(1) starting point.',
   },
-  realCode: {
-    eyebrow: 'real-code',
-    title: 'Real code: building the Update object',
-    code: REAL_CODE,
-    explanationTitle: 'setState first builds an Update object.',
-    explanation: 'That object enters the queue and is processed later during the render phase.',
-    fileLabel: 'file',
-    fileName: 'ReactFiberHooks.js',
-    buttonLabel: 'View full code on GitHub',
-    buttonHref:
-      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js',
-  },
-  renderVsCommit: {
-    eyebrow: 'render-vs-commit',
-    title: 'Render reservation vs. DOM change',
-    rowLabels: {
-      what: 'What happens?',
-      dom: 'DOM state',
-      user: 'User screen',
-      keyword: 'Keyword',
-    },
+  phases: {
+    badge: '03',
+    eyebrow: 'record vs apply',
+    title: 'Recording, computing and applying are three moments',
+    description:
+      'At least two more phases sit between a setState call and a repaint. Separating the three moments dissolves the "why did it not update" question.',
+    headers: ['Moment', 'At the setState call', 'Render Phase', 'Commit Phase'],
+    rowLabels: { work: 'Work done', dom: 'DOM', screen: 'What the user sees' },
     columns: [
       {
-        index: 1,
-        title: 'Calling setState',
-        keyword: 'Record & schedule',
-        tone: 'sky',
-        rows: {
-          what: ['Build Update object', 'Enqueue into queue', 'Schedule render work'],
-          dom: 'Unchanged',
-          user: 'Previous screen',
-        },
+        moment: 'Record & schedule',
+        work: 'Create the Update, link the queue, schedule a render',
+        dom: 'Untouched',
+        screen: 'The previous screen',
       },
       {
-        index: 2,
-        title: 'Render Phase',
-        keyword: 'Compute',
-        tone: 'violet',
-        rows: {
-          what: ['Process update queue', 'Compute new Virtual DOM', 'Decide changes'],
-          dom: 'Still unchanged',
-          user: 'Previous screen',
-        },
+        moment: 'Compute',
+        work: 'Process the queue to compute the new state and tree',
+        dom: 'Still untouched',
+        screen: 'The previous screen',
       },
       {
-        index: 3,
-        title: 'Commit Phase',
-        keyword: 'Apply',
-        tone: 'emerald',
-        rows: {
-          what: ['Mutate the DOM', 'Run useEffect', 'Refresh the view'],
-          dom: 'Actually changed',
-          user: 'New screen',
-        },
+        moment: 'Apply',
+        work: 'Write the changes to the DOM and run effects',
+        dom: 'Actually mutated',
+        screen: 'The new screen',
       },
     ],
+    note: 'Reading count on the line right after setState returns the old value for exactly the reason this table shows.',
   },
-  experiment: {
-    eyebrow: 'three-setstate-experiment',
-    title: '3-setState experiment',
-    left: {
-      title: 'Plain value update',
-      badge: 'count + 1',
-      code: NORMAL_EXPERIMENT_CODE_EN,
-      resultValue: 'screen count = 1',
-      resultReason: 'Same value set 3 times',
-      tone: 'rose',
+  batching: {
+    badge: '04',
+    eyebrow: 'value vs updater',
+    title: 'Same three calls, different results',
+    description:
+      'Whether the action holds a value or a function decides if the previous state is used while the queue is processed.',
+    value: {
+      label: 'Passing a value',
+      caption: 'The action is the number 1 three times — all three were computed from count = 0.',
+      code: VALUE_CODE,
+      rows: [
+        { call: 'call 1', action: 'action = 1', result: 'state = 1' },
+        { call: 'call 2', action: 'action = 1', result: 'state = 1' },
+        { call: 'call 3', action: 'action = 1', result: 'state = 1' },
+      ],
     },
-    right: {
-      title: 'Functional update',
-      badge: 'c => c + 1',
-      code: FUNCTIONAL_EXPERIMENT_CODE_EN,
-      resultValue: 'screen count = 3',
-      resultReason: 'Accumulated sequentially',
-      tone: 'emerald',
+    updater: {
+      label: 'Passing a function',
+      caption: 'The action is a function, invoked with the previous result while the queue runs.',
+      code: UPDATER_CODE,
+      rows: [
+        { call: 'call 1', action: 'c => c + 1', result: '0 → 1' },
+        { call: 'call 2', action: 'c => c + 1', result: '1 → 2' },
+        { call: 'call 3', action: 'c => c + 1', result: '2 → 3' },
+      ],
     },
-    queueLabel: 'Update queue processing order',
-    queueNodes: ['Update #1 (+1)', 'Update #2 (+1)', 'Update #3 (+1)'],
-    bottomExplanation: 'Functional updates are processed sequentially during render, ending at 3.',
+    note: 'What makes the difference is the kind of action, not batching. All three updates are processed in the same render either way.',
   },
-  mission: {
-    eyebrow: 'follow-mission',
-    title: 'Follow it in the source',
-    items: [
-      {
-        number: '01',
-        title: 'Find dispatchSetState',
-        description: 'Locate dispatchSetState in ReactFiberHooks.js and read its role.',
-      },
-      {
-        number: '02',
-        title: 'Check requestUpdateLane',
-        description: 'See which Lane is assigned depending on the render/event context.',
-      },
-      {
-        number: '03',
-        title: 'Inspect Update creation',
-        description: 'Trace how each field of the Update object is filled in.',
-      },
-      {
-        number: '04',
-        title: 'Follow into scheduleUpdateOnFiber',
-        description: 'Walk from enqueue all the way to scheduling render at the root.',
-      },
-    ],
-  },
-  summary: {
-    eyebrow: 'key-takeaways',
-    title: 'Key takeaways',
-    items: [
-      {
-        number: 1,
-        title: 'setState records first',
-        description:
-          'It is not a "change the screen now" command — it builds an Update request first.',
-        tone: 'sky',
-      },
-      {
-        number: 2,
-        title: 'Updates stack in the queue',
-        description: 'Multiple setState calls all link into this Hook’s queue.',
-        tone: 'teal',
-      },
-      {
-        number: 3,
-        title: 'Render/Commit apply them',
-        description: 'Work in the queue is computed in Render Phase and applied in Commit Phase.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'dispatchSetState, requestUpdateLane, enqueueConcurrentHookUpdate',
+    whyLabel: 'Why',
+    why: 'Seeing scheduleUpdateOnFiber as the last line settles it: this function never changes state itself.',
+    code: DISPATCH_SET_STATE_CODE,
+    primaryCta: 'Read ReactFiberHooks.js',
+    primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'shared structure with useReducer',
+    title: 'The code useReducer shares',
     description:
-      'Now that you know the setState update flow, see how useReducer shares this same queue model.',
+      'The side that processes the queue is not useState-specific. Next we confirm it is literally the same function as useReducer.',
     cta: 'Go to the next page',
     href: '/use-reducer-shared',
   },

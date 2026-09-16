@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'renderWithHooks: Where Function Components and Hooks Begin — React Lab'
         : 'renderWithHooks: 함수 컴포넌트와 Hook 실행의 시작점 — React Lab',
-    description: c.question.title,
+    description: c.hero.description,
   };
 };
 

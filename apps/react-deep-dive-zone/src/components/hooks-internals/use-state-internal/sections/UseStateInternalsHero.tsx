@@ -11,57 +11,26 @@ import type { UseStateInternalsContent } from '../content';
 
 type Props = { content: UseStateInternalsContent['hero'] };
 
-const renderHeroCode = () => (
-  <>
-    <span className="text-sky-400">const</span>
-    <span className="text-slate-300"> [</span>
-    <span className="text-amber-200">count</span>
-    <span className="text-slate-300">, </span>
-    <span className="text-amber-200">setCount</span>
-    <span className="text-slate-300">] = </span>
-    <span className="text-violet-300">useState</span>
-    <span className="text-slate-300">(</span>
-    <span className="text-emerald-300">0</span>
-    <span className="text-slate-300">);</span>
-  </>
-);
-
 export const UseStateInternalsHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react/hooks/use-state-internal.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// state + queue + dispatch'}</span>}
+    promptPath="packages/react-reconciler/src/ReactFiberHooks.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
     align="center"
   >
-    {/* Left: text + compact code */}
     <HeroTextColumn>
       <TerminalBadge size="md" className="w-fit">
         {content.badge}
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">{content.titleLine1}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleAccent}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[55ch]">{content.description}</HeroDescription>
-
-      {/* Compact code panel */}
-      <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_2px_0_var(--term-border)]">
-        <div className="flex items-center gap-2 border-b border-slate-800 px-md py-1.5">
-          <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-red-400/80" />
-          <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-amber-300/80" />
-          <span aria-hidden="true" className="block h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-          <span className="ml-2 text-[10px] font-mono text-slate-500">useState</span>
-        </div>
-        <pre className="overflow-x-auto px-md py-2.5 text-[12px] sm:text-xsm leading-[1.7] font-mono">
-          <code>{renderHeroCode()}</code>
-        </pre>
-      </div>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    {/* Right: decomposition diagram */}
     <HeroVisualColumn id="hero-use-state-internal">
       <UseStateInternalsHeroDiagram content={content} />
     </HeroVisualColumn>

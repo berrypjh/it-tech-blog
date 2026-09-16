@@ -1,479 +1,324 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
 import type { FinaleBannerContent } from '../../shared/banner';
+import type { ToneKey } from '../../shared/tones';
 
-export type Tone =
-  | 'sky'
-  | 'cyan'
-  | 'teal'
-  | 'emerald'
-  | 'violet'
-  | 'blue'
-  | 'amber'
-  | 'rose'
-  | 'mint';
+export type BranchId = 'priority' | 'replay' | 'action';
 
-export type ExpansionCard = {
-  title: string;
-  description: string;
-  bullets?: string[];
-  tone: Tone;
+export type Branch = {
+  id: BranchId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type FlowStep = {
-  step: string;
-  title: string;
-  body: string;
-  tone: Tone;
-};
+export type RecapStepId =
+  | 'prop'
+  | 'root'
+  | 'priority'
+  | 'fiber'
+  | 'plugin'
+  | 'synthetic'
+  | 'accumulate'
+  | 'queue'
+  | 'run';
 
-export type StepCard = {
-  title: string;
-  body: string;
-  example?: string;
-  tone: Tone;
-};
-
-export type TableRow = {
-  cells: string[];
-  tone?: Tone;
-};
-
-export type TakeawayCard = {
+export type RecapStep = {
+  id: RecapStepId;
   num: string;
   title: string;
-  body: string;
-  tone: Tone;
+  description: string;
+  tone: ToneKey;
 };
 
-export type AdvancedWrapupContent = {
+export type Extension = {
+  id: BranchId;
+  title: string;
+  role: string;
+  description: string;
+  snippet: string;
+  tone: ToneKey;
+};
+
+export type AttachRow = {
+  branch: string;
+  stage: string;
+  effect: string;
+};
+
+export type PriorityReplayActionContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    diagramTitle: string;
-    expansionCards: ExpansionCard[];
+    diagramBadge: string;
+    diagramCaption: string;
+    pipelineLabel: string;
+    branches: Branch[];
   };
-  question: {
-    eyebrow: string;
-    title: string;
-    badges: string[];
-  };
-  review: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: { title: string; body: string; tone: Tone }[];
-  };
-  priority: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    tableColumns: string[];
-    tableRows: { cells: string[]; tone: 'teal' | 'violet' | 'amber' }[];
-    flowSteps: string[];
-    description: string;
-  };
-  hydration: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    steps: { title: string; body: string; example?: string; tone: 'sky' | 'violet' | 'rose' }[];
-  };
-  replay: {
-    step: number;
+  recap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    flow: FlowStep[];
-    bufferLabel: string;
-    bufferItems: string[];
+    steps: RecapStep[];
+    note: string;
   };
-  formAction: {
-    step: number;
+  extensions: {
+    badge: string;
     eyebrow: string;
     title: string;
-    label: string;
+    description: string;
+    items: Extension[];
+    note: string;
+  };
+  attach: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    headers: [string, string, string];
+    rows: AttachRow[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    flow: { step: string; title: string; body: string }[];
-    pendingLabel: string;
-    pendingText: string;
-  };
-  expansionMap: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    centerLabel: string;
-    leftTitle: string;
-    leftItems: { title: string; body: string }[];
-    rightTitle: string;
-    rightItems: { title: string; body: string }[];
-  };
-  comparison: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    columns: string[];
-    rows: TableRow[];
-  };
-  realCode: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cardA: {
-      fileLabel: string;
-      caption: string;
-      code: string;
-      description: string;
-      buttonLabel: string;
-      href: string;
-    };
-    cardB: {
-      fileLabel: string;
-      caption: string;
-      code: string;
-      description: string;
-      buttonLabel: string;
-      href: string;
-    };
-  };
-  mission: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    items: { title: string; body: string }[];
-  };
-  takeaways: {
-    step: number;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   finale: FinaleBannerContent;
 };
 
-const REPLAY_CODE = `// 보류 가능한 이벤트를 queue에 넣기
+const REPLAY_CODE = `// hydration이 끝나지 않아 막혔을 때
 export function queueIfContinuousEvent(
-  blockedOn,
-  domEventName,
-  eventSystemFlags,
-  targetContainer,
-  nativeEvent,
+  blockedOn, domEventName, eventSystemFlags, targetContainer, nativeEvent,
 ) {
-  // ... queued event 생성 및 보관
+  switch (domEventName) {
+    case 'focusin':
+      queuedFocus = accumulateOrCreateContinuousQueuedReplayableEvent(
+        queuedFocus, blockedOn, domEventName, eventSystemFlags,
+        targetContainer, nativeEvent,
+      );
+      return true;
+    case 'dragenter':
+    case 'mouseover':
+    case 'pointerover':
+      // ... 타입별로 한 개씩만 보관한다
+      return true;
+  }
+  return false;
 }
 
-// hydration 완료 후 replay
+// hydration이 끝난 뒤 다시 꺼내 실행한다
 export function replayUnblockedEvents() {
-  // ... queue를 순회하며 이벤트 재실행
-}`;
+  hasScheduledReplayAttempt = false;
 
-const FORM_ACTION_CODE = `export function extractEvents(
-  dispatchQueue,
-  domEventName,
-  maybeTargetInst,
-  nativeEvent,
-  nativeEventTarget,
-  eventSystemFlags,
-  targetContainer,
-) {
-  if (domEventName !== "submit") {
-    return;
+  while (queuedExplicitHydrationTargets.length > 0) {
+    const nextDiscreteEvent = queuedDiscreteEvents[0];
+    attemptReplayContinuousQueuedEvent(nextDiscreteEvent);
   }
-
-  // submit 이벤트를 action 흐름으로 연결
-  // startHostTransition / action 실행 준비
 }`;
 
-const FORM_CODE = `<form action={saveTodo}>
-  <input name="text" />
-  <button type="submit">저장</button>
-</form>`;
+const REACT_DOM_EVENT_REPLAYING_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventReplaying.js';
 
-const FORM_CODE_EN = `<form action={saveTodo}>
-  <input name="text" />
-  <button type="submit">Save</button>
-</form>`;
-
-const ko: AdvancedWrapupContent = {
+const ko: PriorityReplayActionContent = {
   hero: {
     badge: '이벤트 시스템 · 10/10단계',
-    titleLines: ['React 이벤트 시스템은', 'handler 실행기로 끝나지 않는다'],
+    title: { line1: '이벤트 시스템은', line2: '핸들러 실행기로 끝나지 않는다' },
     description:
-      '이벤트는 업데이트 우선순위를 만들고, hydration 중에는 보류될 수 있으며, React 19의 form action 흐름과도 연결됩니다.',
-    diagramTitle: 'React 이벤트 시스템 확장 지도',
-    expansionCards: [
+      '같은 파이프라인에서 업데이트 우선순위가 정해지고, hydration 중에는 이벤트가 보류되며, form의 action이 실행됩니다.',
+    diagramBadge: 'three branches',
+    diagramCaption: 'one pipeline, three exits',
+    pipelineLabel: '이벤트 파이프라인',
+    branches: [
       {
-        title: 'Event Priority',
-        description: '업데이트 우선순위 결정',
-        bullets: ['dispatch wrapper 선택'],
-        tone: 'violet',
+        id: 'priority',
+        label: 'Event Priority',
+        caption: '핸들러 안 setState의 lane을 정한다',
+        tone: 'amber',
       },
       {
-        title: 'Hydration Replay',
-        description: 'hydration 중 이벤트 보류 & replay',
+        id: 'replay',
+        label: 'Hydration Replay',
+        caption: '아직 연결 전이면 보관했다 다시 실행',
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        label: 'Form Action',
+        caption: 'submit을 React 19 action으로 연결',
+        tone: 'teal',
+      },
+    ],
+  },
+  recap: {
+    badge: '01',
+    eyebrow: 'recap',
+    title: '아홉 페이지를 아홉 칸으로',
+    description:
+      '클릭 한 번이 지나는 길을 다시 한 줄로 세웠습니다. 각 칸이 앞선 페이지 하나씩에 대응합니다.',
+    steps: [
+      {
+        id: 'prop',
+        num: '01',
+        title: 'onClick prop 선언',
+        description: 'DOM에는 아무것도 붙지 않고 Fiber props에만 함수가 담깁니다.',
         tone: 'sky',
       },
       {
-        title: 'Form Action (React 19)',
-        description: 'submit → action 연결',
-        bullets: ['pending & transition'],
-        tone: 'mint',
+        id: 'root',
+        num: '02',
+        title: 'root의 native listener',
+        description: 'createRoot가 지원 이벤트를 capture·bubble 두 벌로 미리 등록합니다.',
+        tone: 'cyan',
       },
-    ],
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    title: 'React 이벤트 시스템은 단순 클릭 처리 이상의 어떤 역할을 할까?',
-    badges: [
-      '우선순위로 상태 업데이트 조율',
-      'Hydration 중 사용자 입력 보존',
-      'UI 선언 기반 form action 연결',
-      '하나의 일관된 파이프라인',
-    ],
-  },
-  review: {
-    step: 1,
-    eyebrow: 'full-flow-review',
-    title: '지금까지의 전체 이벤트 흐름 복습',
-    steps: [
-      { title: 'onClick', body: 'JSX prop', tone: 'sky' },
-      { title: 'root listener', body: 'native event 수신', tone: 'cyan' },
-      { title: 'priority wrapper', body: 'dispatch 결정', tone: 'violet' },
-      { title: 'DOM → Fiber', body: 'target 찾기', tone: 'teal' },
-      { title: 'Plugin System', body: '이벤트 해석', tone: 'amber' },
-      { title: 'SyntheticEvent', body: 'event 객체 생성', tone: 'blue' },
-      { title: 'listener 수집', body: 'capture & bubble', tone: 'emerald' },
-      { title: 'dispatchQueue', body: '생성', tone: 'rose' },
-      { title: 'queue 실행', body: 'handler 실행', tone: 'mint' },
-    ],
-  },
-  priority: {
-    step: 2,
-    eyebrow: 'priority-reconnect',
-    title: '이벤트 우선순위 재연결',
-    tableColumns: ['이벤트 예시', '우선순위', '특징', 'update priority → setState'],
-    tableRows: [
       {
-        cells: [
-          'click, keydown',
-          'Discrete',
-          '즉각적 사용자 입력',
-          '더 높은 우선순위로 즉시 처리 지향',
-        ],
+        id: 'priority',
+        num: '03',
+        title: 'wrapper와 우선순위',
+        description: '이벤트 이름으로 등급을 정하고 dispatch 함수를 고릅니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'fiber',
+        num: '04',
+        title: 'DOM target → Fiber',
+        description: '내부 키를 읽어 가장 가까운 Fiber를 찾습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'plugin',
+        num: '05',
+        title: 'Plugin Event System',
+        description: '플러그인들이 차례로 훑으며 무엇을 만들지 정합니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'synthetic',
+        num: '06',
+        title: 'SyntheticEvent 생성',
+        description: 'native event를 감싼 React 전용 객체를 만듭니다.',
         tone: 'teal',
       },
       {
-        cells: [
-          'mousemove, pointermove',
-          'Continuous',
-          '연속적인 입력 흐름',
-          '연속 입력 흐름에 맞춘 우선순위',
-        ],
-        tone: 'violet',
+        id: 'accumulate',
+        num: '07',
+        title: 'Fiber를 타고 리스너 수집',
+        description: 'target에서 루트까지 한 번 올라가며 핸들러를 모읍니다.',
+        tone: 'blue',
       },
       {
-        cells: ['기타(load 등)', 'Default', '기본/비긴급 이벤트', '기본 우선순위'],
-        tone: 'amber',
+        id: 'queue',
+        num: '08',
+        title: 'dispatchQueue 구성',
+        description: '이벤트와 리스너 목록을 한 쌍으로 큐에 담습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'run',
+        num: '09',
+        title: '순서대로 실행',
+        description: 'capture는 역순, bubble은 정순으로 훑으며 핸들러를 부릅니다.',
+        tone: 'emerald',
       },
     ],
-    flowSteps: ['Event Priority', 'Current Update Priority', 'setState() inside handler'],
+    note: '01부터 08까지는 준비입니다. 우리가 쓴 함수가 실제로 실행되는 것은 09 한 칸뿐입니다.',
+  },
+  extensions: {
+    badge: '02',
+    eyebrow: 'three extensions',
+    title: '같은 파이프라인이 떠받치는 세 가지',
     description:
-      '이벤트 dispatch 과정에서 설정된 우선순위 문맥은 handler 내부 상태 업데이트에도 영향을 줍니다.',
-  },
-  hydration: {
-    step: 3,
-    eyebrow: 'hydration-blocked',
-    title: 'Hydration 중 blocked event 상황',
-    steps: [
-      {
-        title: 'SSR HTML',
-        body: '화면에는 보이지만 hydration 전',
-        example: '<div id="root"><button>저장</button></div>',
-        tone: 'sky',
-      },
-      {
-        title: 'Hydration Boundary',
-        body: '아직 React가 연결 중',
-        tone: 'violet',
-      },
-      {
-        title: '사용자 클릭 발생',
-        body: '즉시 처리 불가 → blocked event 판단',
-        tone: 'rose',
-      },
-    ],
-  },
-  replay: {
-    step: 4,
-    eyebrow: 'replay-queue',
-    title: 'Replay Queue 개념',
-    description: 'hydration이 완료되면, 보류됐던 이벤트를 순서대로 다시 재생(replay)합니다.',
-    flow: [
-      { step: '1', title: 'blocked event', body: '이벤트 도착', tone: 'rose' },
-      { step: '2', title: 'queue 보관', body: '보류(buffer)', tone: 'violet' },
-      { step: '3', title: 'hydration 완료', body: 'React 연결 완료', tone: 'sky' },
-      { step: '4', title: 'event replay', body: '순서대로 재생', tone: 'emerald' },
-    ],
-    bufferLabel: 'event buffer (Replay Queue)',
-    bufferItems: ['click', 'focusin', 'mouseover', 'keydown', '...'],
-  },
-  formAction: {
-    step: 5,
-    eyebrow: 'form-action-flow',
-    title: 'Form Action (React 19) submit 흐름',
-    label: 'React 19',
-    code: FORM_CODE,
-    flow: [
-      { step: '1', title: 'submit', body: '사용자 제출' },
-      { step: '2', title: 'FormActionEventPlugin', body: 'submit 추출 & 해석' },
-      { step: '3', title: 'action 해석', body: 'action 함수 식별' },
-      { step: '4', title: 'pending 상태 연결', body: 'useFormStatus 등 연동' },
-      { step: '5', title: 'transition 흐름 진입', body: 'startTransition / action 실행' },
-    ],
-    pendingLabel: 'pending',
-    pendingText: '저장 중...',
-  },
-  expansionMap: {
-    step: 6,
-    eyebrow: 'expansion-map',
-    title: 'React 19 이벤트 시스템 확장 지도',
-    centerLabel: 'React 이벤트 시스템',
-    leftTitle: '기본 이벤트 시스템',
-    leftItems: [
-      { title: 'priority', body: '이벤트 우선순위 계산' },
-      { title: 'plugin dispatch', body: 'Plugin Event System 진입' },
-      { title: 'SyntheticEvent', body: 'event 객체 생성' },
-      { title: 'dispatchQueue', body: 'listener 수집 & queue 생성' },
-    ],
-    rightTitle: '확장 (React 18/19)',
-    rightItems: [
-      { title: 'hydration replay', body: 'blocked event 보관 → replay' },
-      { title: 'form actions', body: 'submit → action 연결 (pending & transition)' },
-    ],
-  },
-  comparison: {
-    step: 7,
-    eyebrow: 'comparison-table',
-    title: '종합 비교 테이블',
-    columns: ['주제', '기본 이벤트 흐름과 연결되는 지점', '핵심 역할'],
-    rows: [
-      {
-        cells: ['priority', 'dispatch wrapper 선택', 'update priority 문맥 생성'],
-        tone: 'violet',
-      },
-      {
-        cells: [
-          'Hydration Replay',
-          'DOM → Fiber 이후 blocked 보기',
-          'hydration 중 보류, 완료 후 순서대로 재생',
-        ],
-        tone: 'sky',
-      },
-      {
-        cells: [
-          'Form Action (React 19)',
-          'Plugin System 단계',
-          'FormActionEventPlugin에서 submit을 action으로 해석',
-        ],
-        tone: 'mint',
-      },
-      {
-        cells: [
-          '상태 업데이트 문맥',
-          'dispatch 실행 단계 관련',
-          '이벤트 priority 문맥이 setState/transition에 적용',
-        ],
-        tone: 'amber',
-      },
-    ],
-  },
-  realCode: {
-    step: 8,
-    eyebrow: 'real-code',
-    title: '실제 코드 미리보기',
-    cardA: {
-      fileLabel: 'ReactDOMEventReplaying.js',
-      caption: 'Replay Queue',
-      code: REPLAY_CODE,
-      description: 'hydrate 중 보류된 이벤트를 queue에 넣고 replay한다.',
-      buttonLabel: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventReplaying.js',
-    },
-    cardB: {
-      fileLabel: 'FormActionEventPlugin.js',
-      caption: 'Form Action',
-      code: FORM_ACTION_CODE,
-      description: 'submit을 action으로 연결하는 plugin 흐름이다.',
-      buttonLabel: 'GitHub에서 전체 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
-    },
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: '직접 코드에서 따라가 보기',
+      '이벤트 시스템이 핸들러만 부르고 끝났다면 아래 셋은 다른 곳에 따로 있어야 했을 것입니다.',
     items: [
       {
-        title: 'ReactDOMEventReplaying.js를 연다',
-        body: 'queueIfContinuousEvent / replayUnblockedEvents를 찾는다.',
-      },
-      {
-        title: 'replay 관련 흐름을 확인한다',
-        body: 'blocked → queue → replay 흐름을 추적한다.',
-      },
-      {
-        title: 'FormActionEventPlugin.js를 연다',
-        body: 'submit 이벤트가 별도 plugin으로 처리되는지 확인한다.',
-      },
-      {
-        title: 'startHostTransition / action 흐름을 본다',
-        body: 'pending → action 실행 → transition 흐름을 확인한다.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'whole-chapter',
-    title: '전체 파트 핵심 정리',
-    cards: [
-      {
-        num: '1',
-        title: 'React 이벤트 시스템은 root 수신에서 시작된다.',
-        body: 'Native Event를 받은 뒤 전체 흐름으로 연결되는 출발점입니다.',
-        tone: 'sky',
-      },
-      {
-        num: '2',
-        title: 'Native Event는 priority와 Fiber target을 거쳐 해석된다.',
-        body: '정확한 대상과 우선순위를 결정합니다.',
-        tone: 'violet',
-      },
-      {
-        num: '3',
-        title: 'Plugin System은 React 이벤트 의미를 만든다.',
-        body: '단순 / 특수 / React 19 이벤트를 각 plugin이 해석합니다.',
-        tone: 'teal',
-      },
-      {
-        num: '4',
-        title: 'SyntheticEvent와 dispatchQueue가 실행 단계를 맡는다.',
-        body: 'event 객체 구성과 listener 실행 순서를 보장합니다.',
+        id: 'priority',
+        title: 'Event Priority',
+        role: '스케줄러와의 접점',
+        description:
+          'wrapper가 세운 우선순위 문맥 안에서 setState가 불립니다. 그래서 클릭발 업데이트가 스크롤발 업데이트보다 급해집니다.',
+        snippet: 'setCurrentUpdatePriority(DiscreteEventPriority)',
         tone: 'amber',
       },
       {
-        num: '5',
-        title: 'React 19에서는 hydration replay와 form action까지 연결된다.',
-        body: '입력 보존과 선언적 action 흐름을 지원합니다.',
-        tone: 'mint',
+        id: 'replay',
+        title: 'Hydration Replay',
+        role: '연결 전 입력 보존',
+        description:
+          '서버 HTML이 아직 React와 연결되지 않았으면 이벤트를 버리지 않고 보관했다가, 연결된 뒤 다시 실행합니다.',
+        snippet: 'queueIfContinuousEvent → replayUnblockedEvents',
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        title: 'Form Action',
+        role: 'React 19 연결',
+        description:
+          'form의 action prop이 함수면 플러그인이 기본 제출을 막고 transition 안에서 그 함수를 실행합니다.',
+        snippet: 'FormActionEventPlugin → startHostTransition',
+        tone: 'teal',
       },
     ],
+    note: '셋 다 새 시스템이 아니라 기존 파이프라인의 특정 칸에 얹힌 분기입니다. 읽을 코드가 그만큼 줄어듭니다.',
+  },
+  attach: {
+    badge: '03',
+    eyebrow: 'where they attach',
+    title: '아홉 칸 중 어디에 붙는가',
+    description:
+      '각 확장이 앞의 복습 표 몇 번 칸에서 갈라지는지 짚어 두면, 디버깅할 때 어느 파일을 열지가 분명해집니다.',
+    headers: ['확장', '붙는 칸', '무엇을 바꾸나'],
+    rows: [
+      {
+        branch: 'Event Priority',
+        stage: '03 wrapper 선택',
+        effect:
+          '실행 직전 update priority를 갈아 끼웁니다. 핸들러 안 모든 setState가 이 문맥을 물려받습니다.',
+      },
+      {
+        branch: 'Hydration Replay',
+        stage: '04 Fiber 찾기',
+        effect:
+          'blockedOn이 null이 아니면 05로 넘어가지 않고 이벤트를 큐에 보관합니다. 파이프라인이 잠시 멈춥니다.',
+      },
+      {
+        branch: 'Form Action',
+        stage: '05 플러그인',
+        effect:
+          'submit일 때만 FormActionEventPlugin이 끼어들어 기본 동작 대신 action 실행을 예약합니다.',
+      },
+    ],
+    note: '세 갈래가 서로 다른 칸에 붙어 있다는 점이 중요합니다. 증상이 어디서 나는지로 어느 확장 문제인지 좁힐 수 있습니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/ReactDOMEventReplaying.js',
+    lookForLabel: '볼 것',
+    lookFor: 'queueIfContinuousEvent, replayUnblockedEvents, attemptReplayContinuousQueuedEvent',
+    whyLabel: '설명',
+    why: 'continuous 이벤트를 타입마다 한 개씩만 보관한다는 점이, replay가 큐 재생이 아니라 마지막 상태 복원임을 보여 줍니다.',
+    code: REPLAY_CODE,
+    primaryCta: 'ReactDOMEventReplaying.js 읽기',
+    primaryHref: REACT_DOM_EVENT_REPLAYING_HREF,
   },
   finale: {
     progressLabel: '11/15 챕터 완료',
-    copyLine1: '이벤트 시스템의 내부',
-    copyLine2: '흐름을 끝까지 봤습니다.',
-    copyLine3: '이제 Scheduler와 우선순위로.',
+    copyLine1: '클릭 한 번이 어디를 지나',
+    copyLine2: '핸들러에 닿는지 끝까지 읽었습니다.',
+    copyLine3: '다음은 Scheduler와 우선순위입니다.',
     primaryCta: 'Scheduler와 우선순위 읽기',
     primaryHref: '/why-not-immediate',
     secondaryCta: '이벤트 챕터 처음부터 다시 보기',
@@ -481,295 +326,229 @@ const ko: AdvancedWrapupContent = {
   },
 };
 
-const en: AdvancedWrapupContent = {
+const REPLAY_CODE_EN = `// when hydration has not finished and the event is blocked
+export function queueIfContinuousEvent(
+  blockedOn, domEventName, eventSystemFlags, targetContainer, nativeEvent,
+) {
+  switch (domEventName) {
+    case 'focusin':
+      queuedFocus = accumulateOrCreateContinuousQueuedReplayableEvent(
+        queuedFocus, blockedOn, domEventName, eventSystemFlags,
+        targetContainer, nativeEvent,
+      );
+      return true;
+    case 'dragenter':
+    case 'mouseover':
+    case 'pointerover':
+      // ... only one is kept per type
+      return true;
+  }
+  return false;
+}
+
+// once hydration completes, take them back out and run them
+export function replayUnblockedEvents() {
+  hasScheduledReplayAttempt = false;
+
+  while (queuedExplicitHydrationTargets.length > 0) {
+    const nextDiscreteEvent = queuedDiscreteEvents[0];
+    attemptReplayContinuousQueuedEvent(nextDiscreteEvent);
+  }
+}`;
+
+const en: PriorityReplayActionContent = {
   hero: {
     badge: 'Event System · 10/10',
-    titleLines: ['React event system', "doesn't end at the handler"],
+    title: { line1: 'The event system is', line2: 'more than a handler runner' },
     description:
-      'Events create update priority context, can be deferred during hydration, and connect to the React 19 form action flow.',
-    diagramTitle: 'React event system expansion map',
-    expansionCards: [
+      'The same pipeline decides update priority, holds events back during hydration, and runs a form action.',
+    diagramBadge: 'three branches',
+    diagramCaption: 'one pipeline, three exits',
+    pipelineLabel: 'event pipeline',
+    branches: [
       {
-        title: 'Event Priority',
-        description: 'Decide update priority',
-        bullets: ['Pick the dispatch wrapper'],
-        tone: 'violet',
+        id: 'priority',
+        label: 'Event Priority',
+        caption: 'sets the lane for setState in your handler',
+        tone: 'amber',
       },
       {
-        title: 'Hydration Replay',
-        description: 'Defer and replay events during hydration',
+        id: 'replay',
+        label: 'Hydration Replay',
+        caption: 'holds and re-runs events before wiring completes',
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        label: 'Form Action',
+        caption: 'routes submit into a React 19 action',
+        tone: 'teal',
+      },
+    ],
+  },
+  recap: {
+    badge: '01',
+    eyebrow: 'recap',
+    title: 'Nine pages as nine stops',
+    description:
+      'The path of a single click, lined up once more. Each stop maps to one of the earlier pages.',
+    steps: [
+      {
+        id: 'prop',
+        num: '01',
+        title: 'The onClick prop',
+        description: 'Nothing attaches to the DOM; the function only lands in Fiber props.',
         tone: 'sky',
       },
       {
-        title: 'Form Action (React 19)',
-        description: 'Wire submit → action',
-        bullets: ['pending & transition'],
-        tone: 'mint',
+        id: 'root',
+        num: '02',
+        title: 'Native listeners on the root',
+        description: 'createRoot pre-registers supported events in capture and bubble pairs.',
+        tone: 'cyan',
       },
-    ],
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: 'Beyond simple click handling, what else does the React event system do?',
-    badges: [
-      'Orchestrates state updates by priority',
-      'Preserves user input during hydration',
-      'Wires UI-declarative form actions',
-      'A single, consistent pipeline',
-    ],
-  },
-  review: {
-    step: 1,
-    eyebrow: 'full-flow-review',
-    title: 'Recap of the full event flow so far',
-    steps: [
-      { title: 'onClick', body: 'JSX prop', tone: 'sky' },
-      { title: 'root listener', body: 'Receives native event', tone: 'cyan' },
-      { title: 'priority wrapper', body: 'Decides dispatch', tone: 'violet' },
-      { title: 'DOM → Fiber', body: 'Find the target', tone: 'teal' },
-      { title: 'Plugin System', body: 'Interpret event', tone: 'amber' },
-      { title: 'SyntheticEvent', body: 'Build event object', tone: 'blue' },
-      { title: 'listener collection', body: 'capture & bubble', tone: 'emerald' },
-      { title: 'dispatchQueue', body: 'Built', tone: 'rose' },
-      { title: 'queue execution', body: 'Run handlers', tone: 'mint' },
-    ],
-  },
-  priority: {
-    step: 2,
-    eyebrow: 'priority-reconnect',
-    title: 'Event priority reconnected',
-    tableColumns: ['Event examples', 'Priority', 'Trait', 'update priority → setState'],
-    tableRows: [
       {
-        cells: [
-          'click, keydown',
-          'Discrete',
-          'Immediate user input',
-          'Aims for higher-priority immediate processing',
-        ],
+        id: 'priority',
+        num: '03',
+        title: 'Wrapper and priority',
+        description: 'Grade the event by name and pick the dispatch function.',
+        tone: 'amber',
+      },
+      {
+        id: 'fiber',
+        num: '04',
+        title: 'DOM target → Fiber',
+        description: 'Read the internal key to find the closest Fiber.',
+        tone: 'indigo',
+      },
+      {
+        id: 'plugin',
+        num: '05',
+        title: 'Plugin Event System',
+        description: 'Plugins inspect in turn and decide what to produce.',
+        tone: 'violet',
+      },
+      {
+        id: 'synthetic',
+        num: '06',
+        title: 'Create the SyntheticEvent',
+        description: 'Build the React-specific object wrapping the native event.',
         tone: 'teal',
       },
       {
-        cells: [
-          'mousemove, pointermove',
-          'Continuous',
-          'Continuous input stream',
-          'Priority tuned for continuous input',
-        ],
-        tone: 'violet',
+        id: 'accumulate',
+        num: '07',
+        title: 'Collect listeners along Fibers',
+        description: 'Climb once from target to root gathering handlers.',
+        tone: 'blue',
       },
       {
-        cells: [
-          'Others (load, etc.)',
-          'Default',
-          'Non-urgent / default events',
-          'Default priority',
-        ],
-        tone: 'amber',
+        id: 'queue',
+        num: '08',
+        title: 'Build the dispatchQueue',
+        description: 'Store the event and its listener list as one pair.',
+        tone: 'indigo',
+      },
+      {
+        id: 'run',
+        num: '09',
+        title: 'Run them in order',
+        description: 'Sweep capture in reverse and bubble in order, invoking each handler.',
+        tone: 'emerald',
       },
     ],
-    flowSteps: ['Event Priority', 'Current Update Priority', 'setState() inside handler'],
+    note: 'Stops 01 through 08 are all preparation. The function you wrote actually runs at exactly one stop: 09.',
+  },
+  extensions: {
+    badge: '02',
+    eyebrow: 'three extensions',
+    title: 'Three things the same pipeline carries',
     description:
-      'The priority context set during event dispatch also affects state updates that happen inside the handler.',
-  },
-  hydration: {
-    step: 3,
-    eyebrow: 'hydration-blocked',
-    title: 'Blocked events during hydration',
-    steps: [
-      {
-        title: 'SSR HTML',
-        body: 'Visible on screen but before hydration',
-        example: '<div id="root"><button>Save</button></div>',
-        tone: 'sky',
-      },
-      {
-        title: 'Hydration Boundary',
-        body: 'React is still wiring things up',
-        tone: 'violet',
-      },
-      {
-        title: 'User clicks',
-        body: "Can't be processed immediately → marked as a blocked event",
-        tone: 'rose',
-      },
-    ],
-  },
-  replay: {
-    step: 4,
-    eyebrow: 'replay-queue',
-    title: 'Replay Queue idea',
-    description: 'Once hydration finishes, the deferred events are replayed in order.',
-    flow: [
-      { step: '1', title: 'blocked event', body: 'Event arrives', tone: 'rose' },
-      { step: '2', title: 'Queue holds it', body: 'Buffered', tone: 'violet' },
-      { step: '3', title: 'Hydration done', body: 'React wired up', tone: 'sky' },
-      { step: '4', title: 'Event replay', body: 'Replayed in order', tone: 'emerald' },
-    ],
-    bufferLabel: 'event buffer (Replay Queue)',
-    bufferItems: ['click', 'focusin', 'mouseover', 'keydown', '...'],
-  },
-  formAction: {
-    step: 5,
-    eyebrow: 'form-action-flow',
-    title: 'Form Action (React 19) submit flow',
-    label: 'React 19',
-    code: FORM_CODE_EN,
-    flow: [
-      { step: '1', title: 'submit', body: 'User submits the form' },
-      { step: '2', title: 'FormActionEventPlugin', body: 'Extract & interpret submit' },
-      { step: '3', title: 'Resolve action', body: 'Identify the action function' },
-      { step: '4', title: 'Wire pending state', body: 'Hooks like useFormStatus' },
-      { step: '5', title: 'Enter the transition', body: 'startTransition / action runs' },
-    ],
-    pendingLabel: 'pending',
-    pendingText: 'Saving...',
-  },
-  expansionMap: {
-    step: 6,
-    eyebrow: 'expansion-map',
-    title: 'React 19 event system expansion map',
-    centerLabel: 'React event system',
-    leftTitle: 'Base event system',
-    leftItems: [
-      { title: 'priority', body: 'Compute event priority' },
-      { title: 'plugin dispatch', body: 'Enter the Plugin Event System' },
-      { title: 'SyntheticEvent', body: 'Build the event object' },
-      { title: 'dispatchQueue', body: 'Collect listeners & build queue' },
-    ],
-    rightTitle: 'Extension (React 18/19)',
-    rightItems: [
-      { title: 'hydration replay', body: 'Hold blocked events → replay later' },
-      { title: 'form actions', body: 'submit → action (pending & transition)' },
-    ],
-  },
-  comparison: {
-    step: 7,
-    eyebrow: 'comparison-table',
-    title: 'Comprehensive comparison',
-    columns: ['Topic', 'Hook-in point in the base flow', 'Core role'],
-    rows: [
-      {
-        cells: ['priority', 'Pick the dispatch wrapper', 'Builds the update-priority context'],
-        tone: 'violet',
-      },
-      {
-        cells: [
-          'Hydration Replay',
-          'After DOM → Fiber, see blocked',
-          'Defer during hydration, replay in order',
-        ],
-        tone: 'sky',
-      },
-      {
-        cells: [
-          'Form Action (React 19)',
-          'Plugin System stage',
-          'FormActionEventPlugin maps submit to an action',
-        ],
-        tone: 'mint',
-      },
-      {
-        cells: [
-          'State-update context',
-          'Dispatch execution stage',
-          'Event priority context flows into setState / transition',
-        ],
-        tone: 'amber',
-      },
-    ],
-  },
-  realCode: {
-    step: 8,
-    eyebrow: 'real-code',
-    title: 'Real source preview',
-    cardA: {
-      fileLabel: 'ReactDOMEventReplaying.js',
-      caption: 'Replay Queue',
-      code: REPLAY_CODE,
-      description: 'Hold events deferred during hydration in a queue and replay them.',
-      buttonLabel: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/ReactDOMEventReplaying.js',
-    },
-    cardB: {
-      fileLabel: 'FormActionEventPlugin.js',
-      caption: 'Form Action',
-      code: FORM_ACTION_CODE,
-      description: 'The plugin flow that wires submit to an action.',
-      buttonLabel: 'View full code on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
-    },
-  },
-  mission: {
-    step: 9,
-    eyebrow: 'follow-along',
-    title: 'Walk it in the source',
+      'Had the event system stopped at calling handlers, each of these would have needed a separate home.',
     items: [
       {
-        title: 'Open ReactDOMEventReplaying.js',
-        body: 'Find queueIfContinuousEvent and replayUnblockedEvents.',
-      },
-      {
-        title: 'Trace the replay flow',
-        body: 'Follow blocked → queue → replay end-to-end.',
-      },
-      {
-        title: 'Open FormActionEventPlugin.js',
-        body: 'Confirm submit is handled by a dedicated plugin.',
-      },
-      {
-        title: 'Read startHostTransition / action flow',
-        body: 'Trace pending → action execution → transition.',
-      },
-    ],
-  },
-  takeaways: {
-    step: 10,
-    eyebrow: 'whole-chapter',
-    title: 'Whole chapter takeaways',
-    cards: [
-      {
-        num: '1',
-        title: 'The React event system starts at the root.',
-        body: 'Receiving the native event is the entry point of the whole pipeline.',
-        tone: 'sky',
-      },
-      {
-        num: '2',
-        title: 'Native events get a priority and a Fiber target.',
-        body: 'It decides the right target and the right urgency.',
-        tone: 'violet',
-      },
-      {
-        num: '3',
-        title: 'The Plugin System builds the React event meaning.',
-        body: 'Simple, special, and React-19 events each have a plugin.',
-        tone: 'teal',
-      },
-      {
-        num: '4',
-        title: 'SyntheticEvent and dispatchQueue own execution.',
-        body: 'They build the event object and guarantee listener order.',
+        id: 'priority',
+        title: 'Event Priority',
+        role: 'The scheduler seam',
+        description:
+          'setState runs inside the priority context the wrapper raised, which is why a click-driven update outranks a scroll-driven one.',
+        snippet: 'setCurrentUpdatePriority(DiscreteEventPriority)',
         tone: 'amber',
       },
       {
-        num: '5',
-        title: 'React 19 extends the system to replay and form actions.',
-        body: 'Inputs survive hydration, declarative actions flow natively.',
-        tone: 'mint',
+        id: 'replay',
+        title: 'Hydration Replay',
+        role: 'Preserving early input',
+        description:
+          'If server HTML is not wired to React yet, the event is stored rather than dropped and replayed once wiring completes.',
+        snippet: 'queueIfContinuousEvent → replayUnblockedEvents',
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        title: 'Form Action',
+        role: 'The React 19 hookup',
+        description:
+          'When a form action prop is a function, the plugin blocks the default submit and runs that function inside a transition.',
+        snippet: 'FormActionEventPlugin → startHostTransition',
+        tone: 'teal',
       },
     ],
+    note: 'None of the three is a new system; each is a branch grafted onto one stop of the existing pipeline.',
+  },
+  attach: {
+    badge: '03',
+    eyebrow: 'where they attach',
+    title: 'Which of the nine stops each hooks into',
+    description:
+      'Knowing which stop an extension branches from makes it obvious which file to open when something misbehaves.',
+    headers: ['Extension', 'Stop it attaches to', 'What it changes'],
+    rows: [
+      {
+        branch: 'Event Priority',
+        stage: '03 wrapper selection',
+        effect:
+          'Swaps the update priority just before execution, so every setState in the handler inherits that context.',
+      },
+      {
+        branch: 'Hydration Replay',
+        stage: '04 finding the Fiber',
+        effect:
+          'When blockedOn is not null the pipeline pauses instead of reaching 05, and the event is queued.',
+      },
+      {
+        branch: 'Form Action',
+        stage: '05 plugins',
+        effect:
+          'Only for submit, FormActionEventPlugin steps in and schedules the action instead of the default.',
+      },
+    ],
+    note: 'That the three attach at different stops matters: where a symptom appears narrows down which extension is involved.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/ReactDOMEventReplaying.js',
+    lookForLabel: 'Look for',
+    lookFor: 'queueIfContinuousEvent, replayUnblockedEvents, attemptReplayContinuousQueuedEvent',
+    whyLabel: 'Why',
+    why: 'Keeping only one continuous event per type shows replay is about restoring the final state, not replaying a queue.',
+    code: REPLAY_CODE_EN,
+    primaryCta: 'Read ReactDOMEventReplaying.js',
+    primaryHref: REACT_DOM_EVENT_REPLAYING_HREF,
   },
   finale: {
     progressLabel: 'Chapter 11 of 15 complete',
-    copyLine1: 'You followed the event',
-    copyLine2: "system's inner flow.",
-    copyLine3: 'Now the Scheduler & priorities.',
-    primaryCta: 'Read the Scheduler & priorities',
+    copyLine1: 'You followed one click',
+    copyLine2: 'all the way to the handler.',
+    copyLine3: 'Next comes the Scheduler and priority.',
+    primaryCta: 'Read the Scheduler and priority',
     primaryHref: '/why-not-immediate',
-    secondaryCta: 'Review events from the start',
+    secondaryCta: 'Restart the event chapter',
     secondaryHref: '/why-event-system',
   },
 };
 
-export const advancedWrapupContent: Record<Locale, AdvancedWrapupContent> = { ko, en };
+export const priorityReplayActionContent: Record<Locale, PriorityReplayActionContent> = { ko, en };
